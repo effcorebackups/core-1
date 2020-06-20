@@ -34,6 +34,8 @@ entities
         - weight: 200
         managing_control_element_attributes
         - disabled: true
+        selection_params_default
+        - weight: 400
     - description
         title: Description
         type: varchar
@@ -52,6 +54,7 @@ entities
         - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 380
     - weight
         title: Weight
         type: integer
@@ -63,6 +66,8 @@ entities
         managing_control_class: \effcore\field_weight
         managing_control_properties
         - weight: 180
+        selection_params_default
+        - weight: 360
     - created
         title: Created
         type: datetime
@@ -70,6 +75,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: 340
     - updated
         title: Updated
         type: datetime
@@ -77,6 +84,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: 320
     - access
         title: Access
         type: blob
@@ -88,6 +97,8 @@ entities
         managing_control_class: \effcore\widget_access
         managing_control_properties
         - weight: 150
+        selection_params_default
+        - weight: 300
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer
     # ─────────────────────────────────────────────────────────────────────
@@ -102,6 +113,8 @@ entities
         managing_control_class: \effcore\field_number
         managing_control_properties
         - weight: 140
+        selection_params_default
+        - weight: 280
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: real
     # ─────────────────────────────────────────────────────────────────────
@@ -120,6 +133,8 @@ entities
         - min: -1000
         - max: +1000
         - step: 0.000002
+        selection_params_default
+        - weight: 260
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -143,6 +158,7 @@ entities
         - value: default text
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 240
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -157,6 +173,8 @@ entities
         managing_control_class: \effcore\field_time
         managing_control_properties
         - weight: 110
+        selection_params_default
+        - weight: 220
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -171,6 +189,8 @@ entities
         managing_control_class: \effcore\field_date
         managing_control_properties
         - weight: 100
+        selection_params_default
+        - weight: 200
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: text
     # ─────────────────────────────────────────────────────────────────────
@@ -185,6 +205,8 @@ entities
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
         - weight: 90
+        selection_params_default
+        - weight: 180
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: integer | mysql equivalent: tinyint
     # ─────────────────────────────────────────────────────────────────────
@@ -204,6 +226,7 @@ entities
           - =: 0
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 160
     # ─────────────────────────────────────────────────────────────────────
     # sqlite implicit storage class: blob
     # ─────────────────────────────────────────────────────────────────────
@@ -221,6 +244,8 @@ entities
         - required: null
         - minlength: null
         - maxlength: null
+        selection_params_default
+        - weight: 140
     constraints
     - primary_id
         type: primary
@@ -272,6 +297,8 @@ entities
         - weight: 200
         managing_control_element_attributes
         - disabled: true
+        selection_params_default
+        - weight: 400
     - description
         title: Description
         type: varchar
@@ -291,6 +318,7 @@ entities
         - weight: 190
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 380
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # mysql : field_1 integer … primary key auto_increment
@@ -341,6 +369,8 @@ entities
         - weight: 200
         managing_control_element_attributes
         - disabled: true
+        selection_params_default
+        - weight: 400
     - f_nocase
         title: Field nocase
         type: varchar
@@ -357,6 +387,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: 190
+        selection_params_default
+        - weight: 380
     - f_binary
         title: Field binary
         type: varchar
@@ -373,6 +405,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: 180
+        selection_params_default
+        - weight: 360
     constraints
     - primary_id
         type: primary
@@ -415,6 +449,8 @@ entities
         - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
+        selection_params_default
+        - weight: 400
     - f_unique
         title: Field unique
         type: varchar
@@ -432,6 +468,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: 190
+        selection_params_default
+        - weight: 380
     - f_foreign
         title: Field foreign
         type: integer
@@ -446,6 +484,8 @@ entities
         - related_entity_field_id_name: id
         - related_entity_field_title_name: description
         - weight: 180
+        selection_params_default
+        - weight: 360
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -509,6 +549,8 @@ entities
         - weight: 200
         managing_control_element_attributes
         - disabled: true
+        selection_params_default
+        - weight: 400
     - nickname
         title: Nickname
         type: varchar
@@ -524,6 +566,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: 190
+        selection_params_default
+        - weight: 380
     - is_even
         title: Is even
         type: boolean
@@ -537,6 +581,7 @@ entities
         - weight: 180
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 360
     - created
         title: Created
         type: datetime
@@ -548,6 +593,8 @@ entities
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
         - weight: 170
+        selection_params_default
+        - weight: 340
     constraints
     - primary_id
         type: primary
@@ -595,6 +642,8 @@ entities
         - weight: 200
         managing_control_element_attributes
         - disabled: true
+        selection_params_default
+        - weight: 400
     - f_index_unique
         title: Field index unique
         type: varchar
@@ -612,6 +661,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: 190
+        selection_params_default
+        - weight: 380
     - f_index
         title: Field index
         type: varchar
@@ -628,6 +679,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: 180
+        selection_params_default
+        - weight: 360
     constraints
     - primary_id
         type: primary
@@ -682,6 +735,8 @@ entities
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
         - weight: 200
+        selection_params_default
+        - weight: 400
     - email
         title: EMail
         type: varchar
@@ -697,6 +752,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: 190
+        selection_params_default
+        - weight: 380
     constraints
     - foreign_id_data
         type: foreign

@@ -48,6 +48,8 @@ entities
         - weight: 200
         managing_control_element_attributes_on_update
         - disabled: true
+        selection_params_default
+        - weight: 400
     - title
         title: Title
         type: varchar
@@ -68,6 +70,7 @@ entities
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
+        - weight: 380
     - attributes
         title: Attributes
         type: blob
@@ -83,6 +86,7 @@ entities
         - weight: 180
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
+        - weight: 360
     - fields
         title: Fields
         type: blob
@@ -94,6 +98,8 @@ entities
         managing_control_properties
         - name_complex: fields
         - weight: 170
+        selection_params_default
+        - weight: 340
     - query_params
         title: Query parameters
         type: blob
@@ -102,6 +108,8 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
+        selection_params_default
+        - weight: 320
     - decorator_params
         title: Decorator parameters
         type: blob
@@ -110,6 +118,8 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
+        selection_params_default
+        - weight: 300
     - created
         title: Created
         type: datetime
@@ -117,6 +127,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: 280
     - updated
         title: Updated
         type: datetime
@@ -124,6 +136,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: 260
     constraints
     - primary_id
         type: primary

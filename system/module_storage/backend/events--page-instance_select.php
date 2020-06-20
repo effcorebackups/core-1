@@ -85,7 +85,7 @@ namespace effcore\modules\storage {
               if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
               if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
               return $c_actions_list;
-            });
+            }, ['weight' => -500]);
             $selection->build();
             return $selection;
           }

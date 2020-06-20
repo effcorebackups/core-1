@@ -647,6 +647,7 @@ translations
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Агент пользователя
+    - User ID: ID пользователя
     - User name: Имя пользователя
     - User roles: Роли пользователя
     - User type: Тип пользователя
