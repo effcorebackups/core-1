@@ -131,6 +131,13 @@ pages
           - title: Selection of "demo_data" entities + join (ID: 200+)
           - pager_id: 2
           - query_params
+            - join_script
+              - with_demo_join
+                  type: left outer join
+                  entity_name: demo_join
+                  entity_field_name: id_data
+                  on_entity_name: demo_data
+                  on_entity_field_name: id
             - conditions
               - id_!f: ~demo_data.id
               - operator: >=

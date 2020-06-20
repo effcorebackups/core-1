@@ -69,13 +69,16 @@ namespace effcore {
             $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
           }
         }
-        foreach ($this->join ?? [] as $c_id => $c_join) {
-          $this->query_params['join'][$c_id] = [
-              'type'    => 'LEFT OUTER JOIN',
-            'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
-              'left_!f' => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
-             'right_!f' => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
-          ];
+        if (!isset($this->query_params['join']) &&
+             isset($this->query_params['join_script'])) {
+          foreach ($this->query_params['join_script'] as $c_id => $c_join) {
+            $this->query_params['join'][$c_id] = [
+                'type'    =>     $c_join->type,
+              'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
+                'left_!f' => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
+               'right_!f' => '~'.$c_join->on_entity_name.'.'.$c_join->on_entity_field_name
+            ];
+          }
         }
         if (empty($this->query_params['limit']))
                   $this->query_params['limit'] = 50;
