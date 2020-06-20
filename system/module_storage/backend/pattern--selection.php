@@ -46,12 +46,16 @@ namespace effcore {
         core::array_sort_by_weight($this->fields, 3);
 
     # analyze fields
+      $this->_main_entity = null;
       foreach ($this->fields ?? [] as $c_row_id => $c_field) {
-        if ($c_field->type == 'field' ||
-            $c_field->type == 'join_field') {
+        if ($c_field->type === 'field' ||
+            $c_field->type === 'join_field') {
           $c_entity = entity::get($c_field->entity_name, false);
           $used_entities[$c_entity->name        ] = $c_entity->name;
           $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
+          if ($this->_main_entity === null && $c_field->type === 'field') {
+              $this->_main_entity = entity::get($c_field->entity_name);
+          }
         }
       }
 
@@ -59,9 +63,7 @@ namespace effcore {
     # prepare the query and request data from the storage
     # ─────────────────────────────────────────────────────────────────────
       if (count($used_storages) == 1) {
-        $main_entity = entity::get(reset($used_entities));
-        $this->_main_entity = $main_entity->name;
-        $this->attribute_insert('data-main-entity', $main_entity->name, 'attributes', true);
+        $this->attribute_insert('data-main-entity', $this->_main_entity->name, 'attributes', true);
 
       # prepare query params
         foreach ($this->fields as $c_row_id => $c_field) {
@@ -85,7 +87,7 @@ namespace effcore {
 
       # prepare pager
         if ($this->pager_is_enabled) {
-          $instances_count = $main_entity->instances_select_count($this->query_params);
+          $instances_count = $this->_main_entity->instances_select_count($this->query_params);
           $page_max_number = ceil($instances_count / $this->query_params['limit']);
           if ($page_max_number > 1) {
             $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
@@ -99,7 +101,7 @@ namespace effcore {
         }
 
       # select instances
-        $this->_instances = $main_entity->instances_select(
+        $this->_instances = $this->_main_entity->instances_select(
           $this->query_params
         );
 
@@ -123,8 +125,8 @@ namespace effcore {
 
         $decorator = new decorator;
         $decorator->id = $this->id;
-        $decorator->_main_entity = $main_entity->name;
-        $decorator->attribute_insert('data-main-entity', $main_entity->name);
+        $decorator->_main_entity = $this->_main_entity;
+        $decorator->attribute_insert('data-main-entity', $this->_main_entity->name);
         foreach ($this->decorator_params ?? [] as $c_key => $c_value)
           $decorator->                           {$c_key} = $c_value;
 
