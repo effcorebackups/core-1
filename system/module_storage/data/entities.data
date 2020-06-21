@@ -45,7 +45,7 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
@@ -65,7 +65,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
+        - weight: 380
         managing_control_element_attributes
         - maxlength: 1024
         selection_params_default
@@ -83,7 +83,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: 180
+        - weight: 360
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
         - weight: 360
@@ -97,7 +97,7 @@ entities
         managing_control_class: \effcore\widget_entity_fields
         managing_control_properties
         - name_complex: fields
-        - weight: 170
+        - weight: 340
         selection_params_default
         - weight: 340
     - query_params
@@ -108,6 +108,8 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
+        managing_control_properties
+        - weight: 320
         selection_params_default
         - weight: 320
     - decorator_params
@@ -118,6 +120,8 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
+        managing_control_properties
+        - weight: 300
         selection_params_default
         - weight: 300
     - created
@@ -127,6 +131,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 280
         selection_params_default
         - weight: 280
     - updated
@@ -136,6 +142,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 260
         selection_params_default
         - weight: 260
     constraints
