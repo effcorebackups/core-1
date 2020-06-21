@@ -6,7 +6,7 @@ tab_items
     action_name: menu
     action_name_default: menu/tree
     title: Menu
-    weight: 40
+    weight: +40
     access
       roles
       - =: admins

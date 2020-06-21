@@ -6,7 +6,7 @@ tab_items
     action_name: user
     action_name_default: user/user
     title: Users
-    weight: 30
+    weight: +30
     access
       roles
       - =: admins
