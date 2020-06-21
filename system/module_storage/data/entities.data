@@ -45,11 +45,11 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - title
         title: Title
         type: varchar
@@ -65,12 +65,12 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         managing_control_element_attributes
         - maxlength: 1024
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 380
+        - weight: +380
     - attributes
         title: Attributes
         type: blob
@@ -83,10 +83,10 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: 360
+        - weight: +360
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
-        - weight: 360
+        - weight: +360
     - fields
         title: Fields
         type: blob
@@ -97,9 +97,9 @@ entities
         managing_control_class: \effcore\widget_entity_fields
         managing_control_properties
         - name_complex: fields
-        - weight: 340
+        - weight: +340
         selection_params_default
-        - weight: 340
+        - weight: +340
     - query_params
         title: Query parameters
         type: blob
@@ -109,9 +109,9 @@ entities
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
         managing_control_properties
-        - weight: 320
+        - weight: +320
         selection_params_default
-        - weight: 320
+        - weight: +320
     - decorator_params
         title: Decorator parameters
         type: blob
@@ -121,9 +121,9 @@ entities
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
         managing_control_properties
-        - weight: 300
+        - weight: +300
         selection_params_default
-        - weight: 300
+        - weight: +300
     - created
         title: Created
         type: datetime
@@ -132,9 +132,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 280
+        - weight: +280
         selection_params_default
-        - weight: 280
+        - weight: +280
     - updated
         title: Updated
         type: datetime
@@ -143,9 +143,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 260
+        - weight: +260
         selection_params_default
-        - weight: 260
+        - weight: +260
     constraints
     - primary_id
         type: primary

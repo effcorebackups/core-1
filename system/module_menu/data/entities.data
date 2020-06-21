@@ -45,11 +45,11 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - title
         title: Title
         type: varchar
@@ -65,10 +65,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 380
+        - weight: +380
     - title_is_visible
         title: Title is visible
         type: boolean
@@ -79,13 +79,13 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_logic
         managing_control_properties
-        - weight: 360
+        - weight: +360
         managing_control_properties_on_insert
         - selected
           - =: 1
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 360
+        - weight: +360
     - attributes
         title: Attributes
         type: blob
@@ -98,10 +98,10 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: 340
+        - weight: +340
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
-        - weight: 340
+        - weight: +340
     - created
         title: Created
         type: datetime
@@ -110,7 +110,7 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         selection_params_default
-        - weight: 320
+        - weight: +320
     - updated
         title: Updated
         type: datetime
@@ -119,7 +119,7 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         selection_params_default
-        - weight: 300
+        - weight: +300
     - access
         title: Access
         type: blob
@@ -130,7 +130,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_access
         selection_params_default
-        - weight: 280
+        - weight: +280
     constraints
     - primary_id
         type: primary
@@ -206,7 +206,7 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
     - id_tree
@@ -224,7 +224,7 @@ entities
         - related_entity_name: tree
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 380
+        - weight: +380
         managing_control_element_attributes
         - disabled: true
     - id_parent
@@ -245,7 +245,7 @@ entities
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
-        - weight: 360
+        - weight: +360
         managing_control_element_attributes
         - required: null
     - title
@@ -263,7 +263,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 340
+        - weight: +340
         selection_params_default
         - filter: \effcore\translation::apply
     - attributes
@@ -278,7 +278,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: 320
+        - weight: +320
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - url
@@ -293,7 +293,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_url
         managing_control_properties
-        - weight: 300
+        - weight: +300
         managing_control_element_attributes
         - required: null
         - maxlength: 2048
@@ -309,7 +309,7 @@ entities
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: link_attributes
-        - weight: 280
+        - weight: +280
         selection_params_default
         - filter: \effcore\widget_attributes::complex_value_to_value
     - weight
@@ -323,7 +323,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_weight
         managing_control_properties
-        - weight: 260
+        - weight: +260
     - created
         title: Created
         type: datetime
@@ -332,7 +332,7 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 240
+        - weight: +240
     - updated
         title: Updated
         type: datetime
@@ -341,7 +341,7 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 220
+        - weight: +220
     - access
         title: Access
         type: blob
@@ -352,7 +352,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_access
         managing_control_properties
-        - weight: 200
+        - weight: +200
     constraints
     - primary_id
         type: primary

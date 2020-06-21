@@ -39,11 +39,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - question
         title: Question
         type: varchar
@@ -59,12 +59,12 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         managing_control_element_attributes
         - maxlength: 2048
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 380
+        - weight: +380
     - expired
         title: Expiration date
         type: datetime
@@ -74,9 +74,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - diagram_type
         title: Diagramm type
         type: varchar
@@ -93,10 +93,10 @@ entities
           - not_selected: - select -
           - linear: Linear diagram
           - radial: Radial diagram
-        - weight: 340
+        - weight: +340
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 340
+        - weight: +340
     - user_type
         title: User type
         type: integer
@@ -115,9 +115,9 @@ entities
           - 0: 0
         - selected
           - 1: 1
-        - weight: 320
+        - weight: +320
         selection_params_default
-        - weight: 320
+        - weight: +320
     - is_multiple
         title: Multiple choice
         type: boolean
@@ -128,10 +128,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
         managing_control_properties
-        - weight: 300
+        - weight: +300
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 300
+        - weight: +300
     - is_cancelable
         title: Voting can be canceled
         type: boolean
@@ -142,10 +142,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_switcher
         managing_control_properties
-        - weight: 280
+        - weight: +280
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 280
+        - weight: +280
     - created
         title: Created
         type: datetime
@@ -155,9 +155,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 260
+        - weight: +260
         selection_params_default
-        - weight: 260
+        - weight: +260
     - updated
         title: Updated
         type: datetime
@@ -166,9 +166,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 240
+        - weight: +240
         selection_params_default
-        - weight: 240
+        - weight: +240
     constraints
     - primary_id
         type: primary

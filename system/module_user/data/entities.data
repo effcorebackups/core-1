@@ -37,11 +37,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - name
         title: Name
         type: varchar
@@ -57,12 +57,12 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         managing_control_element_attributes
         - minlength: 4
         - maxlength: 64
         selection_params_default
-        - weight: 380
+        - weight: +380
     - email
         title: EMail
         type: varchar
@@ -76,9 +76,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - message
         title: Message
         type: varchar
@@ -93,12 +93,12 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_textarea
         managing_control_properties
-        - weight: 340
+        - weight: +340
         managing_control_element_attributes
         - minlength: 50
         - maxlength: 2048
         selection_params_default
-        - weight: 340
+        - weight: +340
     - created
         title: Created
         type: datetime
@@ -108,9 +108,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 320
+        - weight: +320
         selection_params_default
-        - weight: 320
+        - weight: +320
     constraints
     - primary_id
         type: primary
@@ -170,11 +170,11 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - title
         title: Title
         type: varchar
@@ -190,10 +190,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 380
+        - weight: +380
     - created
         title: Created
         type: datetime
@@ -202,9 +202,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - updated
         title: Updated
         type: datetime
@@ -213,9 +213,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 340
+        - weight: +340
         selection_params_default
-        - weight: 340
+        - weight: +340
     constraints
     - primary_id
         type: primary
@@ -279,11 +279,11 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - id_permission
         title: Permission
         type: varchar
@@ -299,9 +299,9 @@ entities
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 380
+        - weight: +380
         selection_params_default
-        - weight: 380
+        - weight: +380
     - created
         title: Created
         type: datetime
@@ -310,9 +310,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - updated
         title: Updated
         type: datetime
@@ -321,9 +321,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 340
+        - weight: +340
         selection_params_default
-        - weight: 340
+        - weight: +340
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -396,11 +396,11 @@ entities
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - id_role
         title: Role
         type: varchar
@@ -416,9 +416,9 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 380
+        - weight: +380
         selection_params_default
-        - weight: 380
+        - weight: +380
     - created
         title: Created
         type: datetime
@@ -427,9 +427,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - updated
         title: Updated
         type: datetime
@@ -438,9 +438,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 340
+        - weight: +340
         selection_params_default
-        - weight: 340
+        - weight: +340
     constraints
     - primary_id_role_id_user
         type: primary
@@ -516,11 +516,11 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - title
         title: Title
         type: varchar
@@ -536,10 +536,10 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 380
+        - weight: +380
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 380
+        - weight: +380
     - weight
         title: Weight
         type: integer
@@ -551,9 +551,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_weight
         managing_control_properties
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - created
         title: Created
         type: datetime
@@ -562,9 +562,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 340
+        - weight: +340
         selection_params_default
-        - weight: 340
+        - weight: +340
     - updated
         title: Updated
         type: datetime
@@ -573,9 +573,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 320
+        - weight: +320
         selection_params_default
-        - weight: 320
+        - weight: +320
     constraints
     - primary_id
         type: primary
@@ -689,11 +689,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
-        - weight: 400
+        - weight: +400
         managing_control_element_attributes
         - disabled: true
         selection_params_default
-        - weight: 400
+        - weight: +400
     - nickname
         title: Nickname
         type: varchar
@@ -708,9 +708,9 @@ entities
         managing_control_class: \effcore\field_nickname
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 380
+        - weight: +380
         selection_params_default
-        - weight: 380
+        - weight: +380
     - email
         title: EMail
         type: varchar
@@ -725,9 +725,9 @@ entities
         managing_control_class: \effcore\field_email
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 360
+        - weight: +360
         selection_params_default
-        - weight: 360
+        - weight: +360
     - avatar_path
         title: Avatar
         type: varchar
@@ -742,11 +742,11 @@ entities
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
-        - weight: 340
+        - weight: +340
         managing_control_element_attributes_on_insert
         - disabled: true
         selection_params_default
-        - weight: 340
+        - weight: +340
     - timezone
         title: Time zone
         type: varchar
@@ -758,12 +758,12 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_timezone
         managing_control_properties
-        - weight: 320
+        - weight: +320
         managing_control_element_attributes
         - data-source: uagent-timezone
         selection_params_default
         - filter: \effcore\translation::apply
-        - weight: 320
+        - weight: +320
     - password_hash
         title: New password
         type: varchar
@@ -776,7 +776,7 @@ entities
         managing_control_value_manual_set: true
         managing_control_value_manual_get_if_empty: true
         managing_control_properties
-        - weight: 300
+        - weight: +300
         managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_control_element_attributes_on_update
@@ -784,7 +784,7 @@ entities
         managing_control_element_attributes_on_insert
         - required: true
         selection_params_default
-        - weight: 300
+        - weight: +300
     - created
         title: Created
         type: datetime
@@ -794,9 +794,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 280
+        - weight: +280
         selection_params_default
-        - weight: 280
+        - weight: +280
     - updated
         title: Updated
         type: datetime
@@ -805,9 +805,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: 260
+        - weight: +260
         selection_params_default
-        - weight: 260
+        - weight: +260
     constraints
     - primary_id
         type: primary
