@@ -14,7 +14,7 @@ namespace effcore\modules\user {
           use \effcore\user;
           abstract class events_page_user {
 
-  static function on_check_access($event, $page) {
+  static function on_check_access_and_existence($event, $page) {
     $user = (new instance('user', [
       'nickname' => $page->args_get('nickname')
     ]))->select();

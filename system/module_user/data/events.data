@@ -77,11 +77,11 @@ events
   - user|event
       for: user
       weight: +500
-      handler: \effcore\modules\user\events_page_user::on_check_access
+      handler: \effcore\modules\user\events_page_user::on_check_access_and_existence
   - user_edit|event
       for: user_edit
       weight: +500
-      handler: \effcore\modules\user\events_page_user_edit::on_check_access
+      handler: \effcore\modules\user\events_page_user_edit::on_check_access_and_existence
 # ─────────────────────────────────────────────────────────────────────
   on_selection_build_before
   - instance_select_multiple|event
