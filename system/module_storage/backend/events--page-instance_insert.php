@@ -22,8 +22,8 @@ namespace effcore\modules\storage {
         if ($entity->managing_is_enabled) {
           return true;
         } else core::send_header_and_exit('page_not_found', null, new text_multiline(['management for this entity is disabled', 'go to <a href="/">front page</a>'], [], br.br));
-      }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown entity',                         'go to <a href="/">front page</a>'], [], br.br));
-    }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown management group',               'go to <a href="/">front page</a>'], [], br.br));
+      }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',                      'go to <a href="/">front page</a>'], [], br.br));
+    }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group',                 'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_check_access($event, $page) {

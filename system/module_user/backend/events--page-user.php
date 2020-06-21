@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\user {
+          use const \effcore\br;
           use \effcore\access;
           use \effcore\core;
           use \effcore\instance;
@@ -18,10 +19,10 @@ namespace effcore\modules\user {
       'nickname' => $page->args_get('nickname')
     ]))->select();
     if ($user) {
-      if ($user->id == user::get_current()->id ||                       # owner
+      if ($user->id === user::get_current()->id ||                      # owner
           access::check((object)['roles' => ['admins' => 'admins']])) { # admin
       } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found');
+    }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong user nickname', 'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_show_user_roles($c_row, $c_instance) {

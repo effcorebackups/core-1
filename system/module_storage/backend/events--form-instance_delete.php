@@ -37,11 +37,11 @@ namespace effcore\modules\storage {
               $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
               $items['info']->child_insert($question, 'question');
               $items['~delete']->disabled_set(false);
-            } else $items['info']->child_insert(new markup('p', [], new text('entity is embedded'      )), 'error_message');
-          }   else $items['info']->child_insert(new markup('p', [], new text('unknown instance'        )), 'error_message');
-        }     else $items['info']->child_insert(new markup('p', [], new text('unknown instance keys'   )), 'error_message');
-      }       else $items['info']->child_insert(new markup('p', [], new text('unknown entity'          )), 'error_message');
-    }         else $items['info']->child_insert(new markup('p', [], new text('unknown management group')), 'error_message');
+            } else $items['info']->child_insert(new markup('p', [], new text('entity is embedded'    )), 'error_message');
+          }   else $items['info']->child_insert(new markup('p', [], new text('wrong instance key'    )), 'error_message');
+        }     else $items['info']->child_insert(new markup('p', [], new text('wrong instance keys'   )), 'error_message');
+      }       else $items['info']->child_insert(new markup('p', [], new text('wrong entity name'     )), 'error_message');
+    }         else $items['info']->child_insert(new markup('p', [], new text('wrong management group')), 'error_message');
   }
 
   static function on_submit($event, $form, $items) {

@@ -628,11 +628,6 @@ translations
     - Uninstall the existing profile first.: Спачатку выдаліце існуючы профіль.
     - uninstall: выдаліць
     - Uninstall: Выдаліць
-    - unknown category: невядомая катэгорыя
-    - unknown entity: невядомая сутнасць
-    - unknown instance keys: невядомыя ключы асобніка
-    - unknown instance: невядомы асобнік
-    - unknown management group: невядомая група кіравання
     - Unordered list: Неўпарадкаваны спіс
     - Update Cache: Абнавіць кэш
     - Update instance: Абнавіць асобнік
@@ -689,6 +684,14 @@ translations
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!
     - Widget "%%_title".: Віджэт "%%_title".
     - With it, you can speed up the system from 2-3x and more.: З ягонай дапамогай Вы можаце паскорыць сістэму ў 2-3 і больш разоў.
+    - wrong category: няправільная катэгорыя
+    - wrong cron key: няправільны ключ cron
+    - wrong entity name: няправільнае імя сутнасці
+    - wrong instance key: няправільны ключ асобніка
+    - wrong instance keys: няправільныя ключы асобніка
+    - wrong management group: няправільная група кіравання
+    - wrong pager value: няправільнае значэнне пэйджара
+    - wrong user nickname: няправільны псеўданім карыстальніка
     - Yes: Так
     - yes: так
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!

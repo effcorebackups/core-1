@@ -29,10 +29,10 @@ namespace effcore\modules\storage {
           $instance = new instance($entity_name, $conditions);
           if ($instance->select()) {
             return true;
-          } else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown instance',         'go to <a href="/">front page</a>'], [], br.br));
-        }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown instance keys',    'go to <a href="/">front page</a>'], [], br.br));
-      }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown entity',           'go to <a href="/">front page</a>'], [], br.br));
-    }       else core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown management group', 'go to <a href="/">front page</a>'], [], br.br));
+          } else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',     'go to <a href="/">front page</a>'], [], br.br));
+        }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',    'go to <a href="/">front page</a>'], [], br.br));
+      }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',      'go to <a href="/">front page</a>'], [], br.br));
+    }       else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group', 'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_check_access($event, $page) {

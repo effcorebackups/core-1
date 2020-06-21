@@ -18,7 +18,7 @@ namespace effcore\modules\menu {
     if ($entity_name == 'tree_item') {
       $trees = tree::select_all('sql');
       if (!$category_id || empty($trees[$category_id])) {
-        core::send_header_and_exit('page_not_found', null, new text_multiline(['unknown category', 'go to <a href="/">front page</a>'], [], br.br));
+        core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong category', 'go to <a href="/">front page</a>'], [], br.br));
       }
     }
   }

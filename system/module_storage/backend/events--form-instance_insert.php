@@ -70,8 +70,8 @@ namespace effcore\modules\storage {
             );
           }
         } else $items['fields']->child_insert(new markup('p', [], new text('management for this entity is disabled')), 'error_message');
-      }   else $items['fields']->child_insert(new markup('p', [], new text('unknown entity'                        )), 'error_message');
-    }     else $items['fields']->child_insert(new markup('p', [], new text('unknown management group'              )), 'error_message');
+      }   else $items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                     )), 'error_message');
+    }     else $items['fields']->child_insert(new markup('p', [], new text('wrong management group'                )), 'error_message');
   }
 
   static function on_submit($event, $form, $items) {

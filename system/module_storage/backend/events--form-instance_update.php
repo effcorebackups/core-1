@@ -76,10 +76,10 @@ namespace effcore\modules\storage {
                 'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
               );
             }
-          } else $items['fields']->child_insert(new markup('p', [], new text('unknown instance'        )), 'error_message');
-        }   else $items['fields']->child_insert(new markup('p', [], new text('unknown instance keys'   )), 'error_message');
-      }     else $items['fields']->child_insert(new markup('p', [], new text('unknown entity'          )), 'error_message');
-    }       else $items['fields']->child_insert(new markup('p', [], new text('unknown management group')), 'error_message');
+          } else $items['fields']->child_insert(new markup('p', [], new text('wrong instance key'    )), 'error_message');
+        }   else $items['fields']->child_insert(new markup('p', [], new text('wrong instance keys'   )), 'error_message');
+      }     else $items['fields']->child_insert(new markup('p', [], new text('wrong entity name'     )), 'error_message');
+    }       else $items['fields']->child_insert(new markup('p', [], new text('wrong management group')), 'error_message');
   }
 
   static function on_validate($event, $form, $items) {
