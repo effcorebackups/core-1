@@ -77,6 +77,12 @@ namespace effcore\modules\core {
         if ($c_dependencies_php_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-sys'  ], [new markup('x-title', [                       ], 'depend from PHP extensions'), new markup('x-value', [],                                    $c_dependencies_php_items                                                                                           )]), 'dependencies_php'  );
         if ($c_dependencies_sys_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-php'  ], [new markup('x-title', [                       ], 'depend from modules'       ), new markup('x-value', [],                                    $c_dependencies_sys_items                                                                                           )]), 'dependencies_sys'  );
         if ($c_depended_sys_items    ->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-use'  ], [new markup('x-title', [                       ], 'used by modules'           ), new markup('x-value', [],                                    $c_depended_sys_items                                                                                               )]), 'dependencies_use'  );
+        foreach ($c_module->urls ?? [] as $c_title => $c_url) {
+          if (isset($enabled[$c_module->id])) {
+            $c_info->child_insert(new markup('x-param', ['data-type' => 'url'], [
+              new markup('x-title', [], $c_title),
+              new markup('x-value', [], new markup('a', ['href' => $c_url], $c_url))
+            ]), 'url_'.core::sanitize_id($c_title, '_')); }}
         $info->child_select($c_module->group_get_id())->child_insert($c_info, 'module_'.$c_module->id);
       }
     }

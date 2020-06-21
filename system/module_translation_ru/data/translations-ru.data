@@ -530,6 +530,7 @@ translations
     - Session with ID = "%%_id" was not deleted!: Сессия с ID = "%%_id" не была удалена!
     - Session: Сессия
     - Sessions: Сессии
+    - settings page: страница настроек
     - Settings: Настройки
     - Shared parameters: Общие параметры
     - Simple layout: Простой макет
