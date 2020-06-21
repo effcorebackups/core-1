@@ -37,7 +37,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes
         - disabled: true
         selection_params_default
@@ -57,7 +57,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
+        - weight: 380
         managing_control_element_attributes
         - minlength: 4
         - maxlength: 64
@@ -76,7 +76,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_email
         managing_control_properties
-        - weight: 180
+        - weight: 360
         selection_params_default
         - weight: 360
     - message
@@ -93,7 +93,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_textarea
         managing_control_properties
-        - weight: 170
+        - weight: 340
         managing_control_element_attributes
         - minlength: 50
         - maxlength: 2048
@@ -107,6 +107,8 @@ entities
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 320
         selection_params_default
         - weight: 320
     constraints
@@ -168,7 +170,7 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
@@ -188,7 +190,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
+        - weight: 380
         selection_params_default
         - filter: \effcore\translation::apply
         - weight: 380
@@ -199,6 +201,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 360
         selection_params_default
         - weight: 360
     - updated
@@ -208,6 +212,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 340
         selection_params_default
         - weight: 340
     constraints
@@ -273,7 +279,7 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
@@ -293,7 +299,7 @@ entities
         - related_entity_name: permission
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 190
+        - weight: 380
         selection_params_default
         - weight: 380
     - created
@@ -303,6 +309,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 360
         selection_params_default
         - weight: 360
     - updated
@@ -312,6 +320,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 340
         selection_params_default
         - weight: 340
     constraints
@@ -386,7 +396,7 @@ entities
         - related_entity_name: user
         - related_entity_field_id_name: id
         - related_entity_field_title_name: nickname
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
@@ -406,7 +416,7 @@ entities
         - related_entity_name: role
         - related_entity_field_id_name: id
         - related_entity_field_title_name: title
-        - weight: 190
+        - weight: 380
         selection_params_default
         - weight: 380
     - created
@@ -416,6 +426,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 360
         selection_params_default
         - weight: 360
     - updated
@@ -425,6 +437,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 340
         selection_params_default
         - weight: 340
     constraints
@@ -502,7 +516,7 @@ entities
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes_on_update
         - disabled: true
         selection_params_default
@@ -522,7 +536,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: 190
+        - weight: 380
         selection_params_default
         - filter: \effcore\translation::apply
         - weight: 380
@@ -537,7 +551,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_weight
         managing_control_properties
-        - weight: 180
+        - weight: 360
         selection_params_default
         - weight: 360
     - created
@@ -547,6 +561,8 @@ entities
         check: (created <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 340
         selection_params_default
         - weight: 340
     - updated
@@ -556,6 +572,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 320
         selection_params_default
         - weight: 320
     constraints
@@ -671,7 +689,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
-        - weight: 200
+        - weight: 400
         managing_control_element_attributes
         - disabled: true
         selection_params_default
@@ -690,7 +708,7 @@ entities
         managing_control_class: \effcore\field_nickname
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 190
+        - weight: 380
         selection_params_default
         - weight: 380
     - email
@@ -707,7 +725,7 @@ entities
         managing_control_class: \effcore\field_email
         managing_control_properties
         - is_validate_uniqueness: true
-        - weight: 180
+        - weight: 360
         selection_params_default
         - weight: 360
     - avatar_path
@@ -724,7 +742,7 @@ entities
         - max_file_size: 10K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
-        - weight: 170
+        - weight: 340
         managing_control_element_attributes_on_insert
         - disabled: true
         selection_params_default
@@ -740,7 +758,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_timezone
         managing_control_properties
-        - weight: 160
+        - weight: 320
         managing_control_element_attributes
         - data-source: uagent-timezone
         selection_params_default
@@ -758,7 +776,7 @@ entities
         managing_control_value_manual_set: true
         managing_control_value_manual_get_if_empty: true
         managing_control_properties
-        - weight: -100
+        - weight: 300
         managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
         managing_control_element_attributes_on_update
@@ -775,6 +793,8 @@ entities
         managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 280
         selection_params_default
         - weight: 280
     - updated
@@ -784,6 +804,8 @@ entities
         check: (updated <> '')
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: 260
         selection_params_default
         - weight: 260
     constraints
