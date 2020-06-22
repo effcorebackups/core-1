@@ -39,8 +39,9 @@ namespace effcore\modules\user {
     $user = user::get_current();
     if (access::check((object)['roles' => ['registered' => 'registered']]) && $user->avatar_path) {
       $tree_item = tree_item::select('registered', 'user_registered');
-      if ($tree_item)
-          $tree_item->attribute_insert('data-has-avatar', 'true');
+      if ($tree_item) {
+        $tree_item->attribute_insert('data-has-avatar', 'true');
+      }
     }
   }
 
