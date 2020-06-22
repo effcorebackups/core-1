@@ -32,8 +32,8 @@ namespace effcore\modules\menu {
   }
 
   static function on_part_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                  ) {foreach (tree::select_all('sql') as $c_tree)                                                               part_preset::insert('tree_sql_'.$c_tree->id, 'Menus', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');}
-    if ($id !== null && strpos($id, 'tree_sql_') === 0) {                                    $c_tree = tree::select(substr($id, strlen('tree_sql_'))); if ($c_tree) part_preset::insert('tree_sql_'.$c_tree->id, 'Menus', $c_tree->title ?: 'NO TITLE', [], null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [], ['id' => $c_tree->id], 0, 'menu');}
+    if ($id === null                                  ) {foreach (tree::select_all('sql') as $c_item)    part_preset::insert('tree_sql_'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item->id], 0, 'menu');}
+    if ($id !== null && strpos($id, 'tree_sql_') === 0) {$c_item__id = substr($id, strlen('tree_sql_')); part_preset::insert('tree_sql_'.$c_item__id, 'Menus',                   'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item__id], 0, 'menu');}
   }
 
   static function block_tree_sql($page, $args) {

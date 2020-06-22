@@ -11,8 +11,8 @@ namespace effcore\modules\polls {
           abstract class events_page {
 
   static function on_part_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                   ) {foreach (entity::get('poll')->instances_select() as $c_poll)                                                                                              part_preset::insert('poll_form_'.$c_poll->id, 'Polls', $c_poll->question, ['content' => 'content'], null, 'copy', 'forms/polls/poll', ['_id_poll' => $c_poll->id], [], 0, 'polls');}
-    if ($id !== null && strpos($id, 'poll_form_') === 0) {                                                    $c_poll = (new instance('poll', ['id' => substr($id, strlen('poll_form_'))]))->select(); if ($c_poll) part_preset::insert('poll_form_'.$c_poll->id, 'Polls', $c_poll->question, ['content' => 'content'], null, 'copy', 'forms/polls/poll', ['_id_poll' => $c_poll->id], [], 0, 'polls');}
+    if ($id === null                                   ) {foreach (entity::get('poll')->instances_select() as $c_item) part_preset::insert('poll_form_'.$c_item->id, 'Polls', $c_item->question, ['content' => 'content'], /* display = */ null, 'copy', 'forms/polls/poll', ['_id_poll' => $c_item->id], [ /* no args */ ], 0, 'polls');}
+    if ($id !== null && strpos($id, 'poll_form_') === 0) {$c_item__id = substr($id, strlen('poll_form_'));             part_preset::insert('poll_form_'.$c_item__id, 'Polls', 'NO TITLE',        ['content' => 'content'], /* display = */ null, 'copy', 'forms/polls/poll', ['_id_poll' => $c_item__id], [ /* no args */ ], 0, 'polls');}
   }
 
 }}
