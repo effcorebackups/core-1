@@ -32,6 +32,7 @@ namespace effcore\modules\user {
           $field_captcha = $class_captcha->object_get();
           $field_captcha->cform = $form;
           $field_captcha->build();
+          $field_captcha->weight = -500;
           $items['fields']->child_insert($field_captcha, 'captcha');
         }
       # button 'cancel'

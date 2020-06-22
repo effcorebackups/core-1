@@ -25,6 +25,7 @@ namespace effcore\modules\polls {
         $widget_answers->item_title = 'Answer';
         $widget_answers->name_complex = 'widget_answers';
         $widget_answers->cform = $form;
+        $widget_answers->weight = -500;
         $widget_answers->build();
         $widget_answers->value_set_complex([
           (object)['weight' =>  0, 'id' => 0, 'text' => 'Answer 1'],

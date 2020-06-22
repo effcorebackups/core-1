@@ -27,7 +27,7 @@ events
       handler: \effcore\modules\user\events_form_registration::on_init
   - instance_insert_user|event
       for: instance_insert
-      weight: -50
+      weight: +500
       handler: \effcore\modules\user\events_form_instance_insert::on_init
   - instance_update_user|event
       for: instance_update
