@@ -608,7 +608,7 @@ entities
     - id
         title: ID
         type: varchar
-        size: 255
+        size: 127
         collate: nocase
         not_null: true
         check: (id <> '')
