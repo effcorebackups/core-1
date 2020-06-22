@@ -48,9 +48,7 @@ namespace effcore\modules\menu {
           ]);
         });
         $form->_selection->build();
-        if (!count($form->_selection->_instances)) {
-          $items['~apply']->disabled_set();
-        }
+        $items['~apply']->disabled_set();
       }
     }
   }
