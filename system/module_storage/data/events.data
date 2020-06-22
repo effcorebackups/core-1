@@ -27,11 +27,11 @@ events
       handler: \effcore\modules\storage\events_form_instance_insert::on_init
   - instance_update|event
       for: instance_update
-      weight: +500
+      weight: +600
       handler: \effcore\modules\storage\events_form_instance_update::on_init
   - instance_update_selection|event
       for: instance_update
-      weight: +400
+      weight: +500
       handler: \effcore\modules\storage\events_form_instance_update_selection::on_init
   - instance_delete|event
       for: instance_delete
