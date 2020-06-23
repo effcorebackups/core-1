@@ -15,6 +15,7 @@ namespace effcore\modules\demo {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
         # field 'id_data'
           if ($entity->name == 'demo_join' && !$form->has_error()) {
             $id_data = $items['#id_data']->value_get();

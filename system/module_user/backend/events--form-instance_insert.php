@@ -52,6 +52,7 @@ namespace effcore\modules\user {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
         # field 'user' + field 'role'
           if ($entity->name == 'relation_role_ws_user' && !$form->has_error()) {
             $id_user = $items['#id_user']->value_get();

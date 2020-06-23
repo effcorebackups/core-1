@@ -45,7 +45,7 @@ events
       handler: \effcore\modules\page\events_form_decoration_settings::on_validate
   - instance_insert_page|event
       for: instance_insert
-      weight: -50
+      weight: +500
       handler: \effcore\modules\page\events_form_instance_insert::on_validate
   on_form_submit
   - colors|event
