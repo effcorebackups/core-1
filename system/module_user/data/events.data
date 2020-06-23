@@ -49,7 +49,7 @@ events
       handler: \effcore\modules\user\events_form_instance_insert::on_validate
   - instance_update_user|event
       for: instance_update
-      weight: -50
+      weight: +500
       handler: \effcore\modules\user\events_form_instance_update::on_validate
   on_form_submit
   - login|event
