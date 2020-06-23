@@ -57,6 +57,7 @@ namespace effcore\modules\polls {
       if ($entity->name == 'poll' && !empty($form->_instance)) {
         switch ($form->clicked_button->value_get()) {
           case 'insert':
+          case 'insert_and_update':
             foreach ($items['*widget_answers']->value_get_complex() as $c_item) {
               (new instance('poll_answer', [
                 'id_poll' => $form->_instance->id,

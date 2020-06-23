@@ -65,6 +65,7 @@ namespace effcore\modules\menu {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
         case 'cancel':
           if ($entity->name == 'tree_item') {
             $id_tree = $items['#id_tree']->value_get();

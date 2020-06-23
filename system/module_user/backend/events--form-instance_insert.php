@@ -93,6 +93,7 @@ namespace effcore\modules\user {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
+        case 'insert_and_update':
         # feedback
           if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
             message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
