@@ -69,13 +69,14 @@ events
       handler: \effcore\modules\storage\events_form_instance_insert::on_submit
   - instance_update|event
       for: instance_update
+      weight: +500
       handler: \effcore\modules\storage\events_form_instance_update::on_submit
   - instance_delete|event
       for: instance_delete
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
   - instance_update_selection|event
       for: instance_update
-      weight: +50
+      weight: +600
       handler: \effcore\modules\storage\events_form_instance_update_selection::on_submit
 # ─────────────────────────────────────────────────────────────────────
   on_instance_delete_before

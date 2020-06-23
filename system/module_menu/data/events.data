@@ -47,7 +47,7 @@ events
       handler: \effcore\modules\menu\events_form_instance_insert::on_submit
   - instance_update_menu|event
       for: instance_update
-      weight: +50
+      weight: +600
       handler: \effcore\modules\menu\events_form_instance_update::on_submit
   - instance_delete_menu|event
       for: instance_delete

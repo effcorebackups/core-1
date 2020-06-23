@@ -62,7 +62,7 @@ events
       handler: \effcore\modules\page\events_form_decoration_settings::on_submit
   - instance_update_page|event
       for: instance_update
-      weight: +50
+      weight: +600
       handler: \effcore\modules\page\events_form_instance_update::on_submit
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
