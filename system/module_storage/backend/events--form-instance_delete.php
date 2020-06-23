@@ -44,6 +44,16 @@ namespace effcore\modules\storage {
     }         else $items['info']->child_insert(new markup('p', [], new text('wrong management group')), 'error_message');
   }
 
+  static function on_validate($event, $form, $items) {
+    $entity = entity::get($form->entity_name);
+    if ($entity) {
+      switch ($form->clicked_button->value_get()) {
+        case 'delete':
+          break;
+      }
+    }
+  }
+
   static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
