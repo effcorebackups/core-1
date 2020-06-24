@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\access;
           use \effcore\actions_list;
           use \effcore\entity;
           use \effcore\markup;
@@ -22,6 +23,10 @@ namespace effcore\modules\storage {
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
     if ($entity) {
+      $form->_has_access_select = access::check($entity->access_select);
+      $form->_has_access_insert = access::check($entity->access_insert);
+      $form->_has_access_update = access::check($entity->access_update);
+      $form->_has_access_delete = access::check($entity->access_delete);
       $form->attribute_insert('data-entity_name', $form->entity_name);
       $selection = new selection;
       $selection->id = 'instance_select_multiple-'.$entity->name;
@@ -46,15 +51,19 @@ namespace effcore\modules\storage {
         );
       } else {
         $selection->field_insert_checkbox(null, null, ['weight' => 500]);
-        $selection->field_insert_code('actions', null, function ($c_row, $c_instance) {
+        $selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
           $c_actions_list = new actions_list;
-          if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
-          if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
-          if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
+          if ($form->_has_access_delete && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
+          if ($form->_has_access_select                                ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
+          if ($form->_has_access_update                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
           return $c_actions_list;
         }, ['weight' => -500]);
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
+      }
+    # disable controls if no access rights
+      if (!$form->_has_access_insert) {
+        $items['~insert']->disabled_set();
       }
     # disable controls if no items
       if (!count($selection->_instances)) {

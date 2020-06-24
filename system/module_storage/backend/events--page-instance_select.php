@@ -80,12 +80,17 @@ namespace effcore\modules\storage {
           if (!$has_visible_fields) {
             return new markup('x-no-items', ['data-style' => 'table'], 'no fields');
           } else {
-            $selection->field_insert_code('actions', 'Actions', function ($c_row, $c_instance) {
-              $c_actions_list = new actions_list;
-              if (true && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
-              if (true                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
-              return $c_actions_list;
-            }, ['weight' => -500]);
+            $has_access_update = access::check($entity->access_update);
+            $has_access_delete = access::check($entity->access_delete);
+            if ($has_access_update ||
+                $has_access_delete) {
+              $selection->field_insert_code('actions', 'Actions', function ($c_row, $c_instance) use ($has_access_update, $has_access_delete) {
+                $c_actions_list = new actions_list;
+                if ($has_access_delete && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
+                if ($has_access_update                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
+                return $c_actions_list;
+              }, ['weight' => -500]);
+            }
             $selection->build();
             return $selection;
           }
