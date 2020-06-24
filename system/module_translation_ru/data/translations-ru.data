@@ -444,6 +444,7 @@ translations
     - Poll\: update: Опрос: обновить
     - Polls: Опросы
     - Port: Порт
+    - Possible options can be seen on page\: %%_page: Возможные варианты можно увидеть на странице: %%_page
     - Poster: Плакат
     - Presets: Предустановки
     - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
@@ -696,7 +697,6 @@ translations
     - Yes: Да
     - yes: да
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
-    - You can enable or disable the language "%%_language" on page "%%_page".: Вы можете включить или отключить язык "%%_language" на странице "%%_page".
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.

@@ -16,10 +16,13 @@ forms
             - disabled: true
         - format_date|field_text
             title: Date format
-            description|text
-              text: Examples: %%_examples
+            description|text_multiline
+              text
+              - 0: Examples: %%_examples
+              - 1: Possible options can be seen on page: %%_page
               args
               - examples: "Y-m-d" | "d.m.Y"
+              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
             element_attributes
             - name: format_date
             - value: Y-m-d
@@ -27,6 +30,10 @@ forms
             - maxlength: 100
         - format_time|field_text
             title: Time format
+            description|text
+              text: Possible options can be seen on page: %%_page
+              args
+              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
             element_attributes
             - name: format_time
             - value: H:i:s
@@ -34,10 +41,13 @@ forms
             - maxlength: 100
         - format_datetime|field_text
             title: Date/time format
-            description|text
-              text: Examples: %%_examples
+            description|text_multiline
+              text
+              - 0: Examples: %%_examples
+              - 1: Possible options can be seen on page: %%_page
               args
               - examples: "Y-m-d H:i:s" | "d.m.Y H:i:s"
+              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
             element_attributes
             - name: format_datetime
             - value: Y-m-d H:i:s
