@@ -141,20 +141,12 @@ entities
       permissions
       - =: permission_select
     access_insert
-      roles
-      - =: admins
-      permissions
-      - =: permission_insert
     access_update
       roles
       - =: admins
       permissions
       - =: permission_update
     access_delete
-      roles
-      - =: admins
-      permissions
-      - =: permission_delete
     fields
     - id
         title: ID
