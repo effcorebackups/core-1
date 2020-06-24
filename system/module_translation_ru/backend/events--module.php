@@ -6,12 +6,9 @@
 
 namespace effcore\modules\translation_ru {
           use \effcore\language;
-          use \effcore\message;
           use \effcore\module;
           use \effcore\page;
           use \effcore\storage;
-          use \effcore\text;
-          use \effcore\translation;
           abstract class events_module {
 
   static function on_enable($event) {
