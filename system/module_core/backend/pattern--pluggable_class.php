@@ -17,7 +17,7 @@ namespace effcore {
   }
 
   function name_get() {
-           return $this->name[0] == '\\' ?
+           return $this->name[0] === '\\' ?
                   $this->name :
     '\\effcore\\'.$this->name;
   }

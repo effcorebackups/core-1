@@ -22,7 +22,7 @@ namespace effcore\modules\menu {
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # drag-and-drop functionality
-      if ($entity->name == 'tree_item' && $form->category_id && !empty($form->_selection)) {
+      if ($entity->name === 'tree_item' && $form->category_id && !empty($form->_selection)) {
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
         $form->_selection->query_params['conditions'] = [
@@ -60,7 +60,7 @@ namespace effcore\modules\menu {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'apply':
-          if ($entity->name == 'tree_item' && $form->category_id) {
+          if ($entity->name === 'tree_item' && $form->category_id) {
             $event->is_last = true;
             $has_changes = false;
             $tree_items = entity::get('tree_item')->instances_select(['conditions' => [
@@ -92,7 +92,7 @@ namespace effcore\modules\menu {
           }
           break;
         case 'insert':
-          if ($entity->name == 'tree_item' && $form->category_id) {
+          if ($entity->name === 'tree_item' && $form->category_id) {
             url::go($entity->make_url_for_insert().'/'.$form->category_id.'?'.url::back_part_make());
           }
           break;

@@ -17,7 +17,7 @@ namespace effcore\modules\polls {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'poll') {
+      if ($entity->name === 'poll') {
         $form->is_redirect_enabled = false;
         $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
         $widget_answers = new widget_texts;
@@ -41,7 +41,7 @@ namespace effcore\modules\polls {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         case 'insert_and_update':
-          if ($entity->name == 'poll' && !empty($form->_instance)) {
+          if ($entity->name === 'poll' && !empty($form->_instance)) {
             if (count($items['*widget_answers']->value_get_complex()) < 2) {
               $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => 2]);
             }
@@ -54,7 +54,7 @@ namespace effcore\modules\polls {
   static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'poll' && !empty($form->_instance)) {
+      if ($entity->name === 'poll' && !empty($form->_instance)) {
         switch ($form->clicked_button->value_get()) {
           case 'insert':
           case 'insert_and_update':

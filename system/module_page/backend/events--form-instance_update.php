@@ -19,7 +19,7 @@ namespace effcore\modules\page {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'page' && !empty($form->_instance)) {
+      if ($entity->name === 'page' && !empty($form->_instance)) {
       # disable field 'url' for embedded instance
         if (!empty($form->_instance->is_embed)) {
           $items['#url']->disabled_set(true);
@@ -76,7 +76,7 @@ namespace effcore\modules\page {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-          if ($entity->name == 'page' && !empty($form->_instance)) {
+          if ($entity->name === 'page' && !empty($form->_instance)) {
           # field 'min width' + field 'max width'
             $data = $form->_instance->data;
             $data['width_min'] = $items['#width_min']->value_get();

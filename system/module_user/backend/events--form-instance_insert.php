@@ -18,14 +18,14 @@ namespace effcore\modules\user {
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # field 'role'
-      if ($entity->name == 'relation_role_ws_user') {
+      if ($entity->name === 'relation_role_ws_user') {
         $items['#id_role']->is_builded = false;
         $items['#id_role']->disabled['anonymous' ] = 'anonymous';
         $items['#id_role']->disabled['registered'] = 'registered';
         $items['#id_role']->build();
       }
     # feedback
-      if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
+      if ($entity->name === 'feedback' && page::get_current()->id != 'instance_insert') {
       # field 'CAPTCHA'
         $class_captcha = new pluggable_class('field_captcha');
         if ($class_captcha->is_exists_class()) {
@@ -54,7 +54,7 @@ namespace effcore\modules\user {
         case 'insert':
         case 'insert_and_update':
         # field 'user' + field 'role'
-          if ($entity->name == 'relation_role_ws_user' && !$form->has_error()) {
+          if ($entity->name === 'relation_role_ws_user' && !$form->has_error()) {
             $id_user = $items['#id_user']->value_get();
             $id_role = $items['#id_role']->value_get();
             $result = $entity->instances_select(['conditions' => [
@@ -69,7 +69,7 @@ namespace effcore\modules\user {
             }
           }
         # field 'role' + field 'permission'
-          if ($entity->name == 'relation_role_ws_permission' && !$form->has_error()) {
+          if ($entity->name === 'relation_role_ws_permission' && !$form->has_error()) {
             $id_role       = $items['#id_role'      ]->value_get();
             $id_permission = $items['#id_permission']->value_get();
             $result = $entity->instances_select(['conditions' => [
@@ -95,7 +95,7 @@ namespace effcore\modules\user {
         case 'insert':
         case 'insert_and_update':
         # feedback
-          if ($entity->name == 'feedback' && page::get_current()->id != 'instance_insert') {
+          if ($entity->name === 'feedback' && page::get_current()->id != 'instance_insert') {
             message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
             storage_events_form_instance_insert::on_init(null, $form, $items);
             static                             ::on_init(null, $form, $items);

@@ -15,7 +15,7 @@ namespace effcore\modules\menu {
   static function on_redirect($event, $page) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
-    if ($entity_name == 'tree_item') {
+    if ($entity_name === 'tree_item') {
       $trees = tree::select_all('sql');
       core::array_sort_by_text_property($trees);
       if (empty($trees[$category_id])) {
@@ -27,7 +27,7 @@ namespace effcore\modules\menu {
   static function on_tab_build_before($event, $tab) {
     $entity_name = page::get_current()->args_get('entity_name');
     $category_id = page::get_current()->args_get('category_id');
-    if ($entity_name == 'tree_item') {
+    if ($entity_name === 'tree_item') {
       $trees = tree::select_all('sql');
       core::array_sort_by_text_property($trees);
       foreach ($trees as $c_tree) {

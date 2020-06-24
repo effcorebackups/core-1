@@ -18,7 +18,7 @@ namespace effcore\modules\menu {
     $entity = entity::get($form->entity_name);
     if ($entity) {
     # field 'id_tree'
-      if ($entity->name == 'tree_item') {
+      if ($entity->name === 'tree_item') {
         $items['#id_tree']->value_set($form->category_id);
         $items['#id_parent']->is_builded = false;
         $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
@@ -34,7 +34,7 @@ namespace effcore\modules\menu {
         case 'insert':
         case 'insert_and_update':
         # field 'id'
-          if ($entity->name == 'tree') {
+          if ($entity->name === 'tree') {
             if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (tree::select($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
@@ -45,7 +45,7 @@ namespace effcore\modules\menu {
             }
           }
         # field 'id'
-          if ($entity->name == 'tree_item') {
+          if ($entity->name === 'tree_item') {
             if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (tree_item::select($items['#id']->value_get(), null)) {
                 $items['#id']->error_set(new text_multiline([
@@ -67,7 +67,7 @@ namespace effcore\modules\menu {
         case 'insert':
         case 'insert_and_update':
         case 'cancel':
-          if ($entity->name == 'tree_item') {
+          if ($entity->name === 'tree_item') {
             $id_tree = $items['#id_tree']->value_get();
             page::get_current()->args_set('back_insert_0', $entity->make_url_for_select_multiple().'///'.$id_tree);
           }

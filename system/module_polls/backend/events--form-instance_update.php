@@ -16,7 +16,7 @@ namespace effcore\modules\polls {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'poll') {
+      if ($entity->name === 'poll') {
         $form->is_redirect_enabled = false;
         $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
           'id_poll_!f'       => 'id_poll',
@@ -48,7 +48,7 @@ namespace effcore\modules\polls {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-          if ($entity->name == 'poll') {
+          if ($entity->name === 'poll') {
             if (count($items['*widget_answers']->value_get_complex()) < 2) {
               $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => 2]);
             }
@@ -61,7 +61,7 @@ namespace effcore\modules\polls {
   static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'poll') {
+      if ($entity->name === 'poll') {
         switch ($form->clicked_button->value_get()) {
           case 'update':
             $used_ids = [];

@@ -328,9 +328,9 @@ namespace effcore {
     }
     if ($this->description) $result[] = new markup('p', [], $this->description);
     if (count($result)) {
-      if ($this->description_state == 'hidden'                      ) return '';
-      if ($this->description_state == 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
-      if ($this->description_state == 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
+      if ($this->description_state === 'hidden'                      ) return '';
+      if ($this->description_state === 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
+      if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
       return '';
     }
   }

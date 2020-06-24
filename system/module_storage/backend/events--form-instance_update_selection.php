@@ -14,7 +14,7 @@ namespace effcore\modules\storage {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'selection' && !empty($form->_instance)) {
+      if ($entity->name === 'selection' && !empty($form->_instance)) {
         $fieldset_query_params     = new fieldset('Query parameters');
         $fieldset_decorator_params = new fieldset('Decorator parameters');
         $fieldset_conditions       = new fieldset('Conditions');
@@ -41,7 +41,7 @@ namespace effcore\modules\storage {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-          if ($entity->name == 'selection') {
+          if ($entity->name === 'selection') {
             if (count($items['*fields']->value_get_complex()) < 1) {
               $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*fields']->title))->render(), 'number' => 1]);
             }
@@ -56,7 +56,7 @@ namespace effcore\modules\storage {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-          if ($entity->name == 'selection' && !empty($form->_instance)) {
+          if ($entity->name === 'selection' && !empty($form->_instance)) {
           }
           break;
       }

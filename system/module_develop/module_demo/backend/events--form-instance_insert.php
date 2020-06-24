@@ -17,7 +17,7 @@ namespace effcore\modules\demo {
         case 'insert':
         case 'insert_and_update':
         # field 'id_data'
-          if ($entity->name == 'demo_join' && !$form->has_error()) {
+          if ($entity->name === 'demo_join' && !$form->has_error()) {
             $id_data = $items['#id_data']->value_get();
             $result = $entity->instances_select(['conditions' => [
               'id_data_!f' => 'id_data',

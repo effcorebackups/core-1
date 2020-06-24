@@ -18,7 +18,7 @@ namespace effcore\modules\menu {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      if ($entity->name == 'tree_item' && !empty($form->_instance)) {
+      if ($entity->name === 'tree_item' && !empty($form->_instance)) {
         $tree_item = tree_item::select(
           $form->_instance->id,
           $form->_instance->id_tree);
@@ -43,7 +43,7 @@ namespace effcore\modules\menu {
       switch ($form->clicked_button->value_get()) {
         case 'delete':
         case 'cancel':
-          if ($entity->name == 'tree_item' && !empty($form->_instance)) {
+          if ($entity->name === 'tree_item' && !empty($form->_instance)) {
             $id_tree = $form->_instance->id_tree;
             page::get_current()->args_set('back_delete_0', $entity->make_url_for_select_multiple().'///'.$id_tree);
           }
