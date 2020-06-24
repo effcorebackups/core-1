@@ -11,7 +11,7 @@ events
   on_breadcrumbs_build_before
   - system|event
       for: system
-      weight: -60
+      weight: +400
       handler: \effcore\modules\menu\events_page::on_breadcrumbs_build_before
 # ─────────────────────────────────────────────────────────────────────
   on_form_init

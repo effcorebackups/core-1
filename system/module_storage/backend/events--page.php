@@ -14,10 +14,10 @@ namespace effcore\modules\storage {
           abstract class events_page {
 
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
-    if (page::get_current()->id == 'instance_select' ||
-        page::get_current()->id == 'instance_insert' ||
-        page::get_current()->id == 'instance_update' ||
-        page::get_current()->id == 'instance_delete') {
+    if (page::get_current()->id === 'instance_select' ||
+        page::get_current()->id === 'instance_insert' ||
+        page::get_current()->id === 'instance_update' ||
+        page::get_current()->id === 'instance_delete') {
       $breadcrumbs->is_remove_last_link = false;
       $tab_data = tabs::select('data');
       $tab_data->build();
@@ -37,10 +37,10 @@ namespace effcore\modules\storage {
   }
 
   static function on_breadcrumbs_build_after_apply_back_return($event, $breadcrumbs) {
-    if (page::get_current()->id == 'instance_select' ||
-        page::get_current()->id == 'instance_insert' ||
-        page::get_current()->id == 'instance_update' ||
-        page::get_current()->id == 'instance_delete') {
+    if (page::get_current()->id === 'instance_select' ||
+        page::get_current()->id === 'instance_insert' ||
+        page::get_current()->id === 'instance_update' ||
+        page::get_current()->id === 'instance_delete') {
       $back_return_0 = page::get_current()->args_get('back_return_0');
       $back_return_n = page::get_current()->args_get('back_return_n');
       $rowids = array_keys($breadcrumbs->link_select_all());

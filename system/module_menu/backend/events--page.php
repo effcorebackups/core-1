@@ -14,19 +14,19 @@ namespace effcore\modules\menu {
           abstract class events_page {
 
   static function on_breadcrumbs_build_before($event, $breadcrumbs) {
-    if (page::get_current()->id == 'instance_select' ||
-        page::get_current()->id == 'instance_insert' ||
-        page::get_current()->id == 'instance_update' ||
-        page::get_current()->id == 'instance_delete') {
+    if (page::get_current()->id === 'instance_select' ||
+        page::get_current()->id === 'instance_insert' ||
+        page::get_current()->id === 'instance_update' ||
+        page::get_current()->id === 'instance_delete') {
       $entity_name = page::get_current()->args_get('entity_name');
       $instance_id = page::get_current()->args_get('instance_id');
       $category_id = page::get_current()->args_get('category_id');
-      if ($entity_name == 'tree_item') {
-          if ($category_id) {                                                    $tree = tree::select($category_id       );}
-          if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
-          if (isset($tree)) { # p.s. $tree is undefined on 'insert instance' page
-            $breadcrumbs->link_insert('category', $tree->title, '/manage/data/menu/tree_item///'.$tree->id);
-          }
+      if ($entity_name === 'tree_item') {
+        if ($category_id) {                                                    $tree = tree::select($category_id       );}
+        if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
+        if (isset($tree)) { # p.s. $tree is undefined on 'insert instance' page
+          $breadcrumbs->link_insert('category', $tree->title, '/manage/data/menu/tree_item///'.$tree->id);
+        }
       }
     }
   }

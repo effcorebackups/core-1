@@ -11,11 +11,11 @@ events
   on_breadcrumbs_build_before
   - system|event
       for: system
-      weight: -50
+      weight: +500
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
   - system_apply_back_return|event
       for: system
-      weight: -90
+      weight: +300
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_after_apply_back_return
 # ─────────────────────────────────────────────────────────────────────
   on_form_init

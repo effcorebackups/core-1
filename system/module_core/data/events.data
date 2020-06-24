@@ -20,12 +20,15 @@ events
   on_breadcrumbs_build_before
   - system|event
       for: system
+      weight: +600
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
   - user_registered|event
       for: user_registered
+      weight: +600
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
   - user_anonymous|event
       for: user_anonymous
+      weight: +600
       handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
 # ─────────────────────────────────────────────────────────────────────
   on_cron_run
