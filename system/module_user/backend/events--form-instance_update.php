@@ -10,6 +10,7 @@ namespace effcore\modules\user {
           use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\text;
+          use \effcore\user;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -22,6 +23,7 @@ namespace effcore\modules\user {
         $items['#id_role']->disabled['registered'] = 'registered';
         $items['#id_role']->build();
         $items['#id_role']->value_set($form->_instance->id_role);
+        $items['#id_role']->disabled_set($form->_instance->id_user === '1');
       }
     # field 'password'
       if ($entity->name === 'user') {
