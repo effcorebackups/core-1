@@ -65,6 +65,11 @@ namespace effcore\modules\storage {
       if (!$form->_has_access_insert) {
         $items['~insert']->disabled_set();
       }
+      if (!$form->_has_access_delete) {
+        $items['#actions']->is_builded = false;
+        $items['#actions']->disabled = ['delete' => 'delete'];
+        $items['#actions']->build();
+      }
     # disable controls if no items
       if (!count($selection->_instances)) {
         $items['~apply'  ]->disabled_set();
@@ -87,7 +92,7 @@ namespace effcore\modules\storage {
                    $form->_selected_instances[$c_instance_id] = $c_instance;
               }
             }
-            if ($form->_selected_instances == []) {
+            if ($form->_selected_instances === []) {
               message::insert('No one item was selected!', 'warning');
               foreach ($form->_selection->_instances as $c_instance) {
                 $c_instance_id = implode('+', $c_instance->values_id_get());
@@ -108,11 +113,11 @@ namespace effcore\modules\storage {
         case 'apply':
           if (!empty($form->_selected_instances)) {
             foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
-              if ($items['#actions']->value_get() == 'delete') {
+              if ($items['#actions']->value_get() === 'delete') {
                 if (empty($c_instance->is_embed)) {
                   $c_result = $c_instance->delete();
-                  if ($form->is_show_result_message && $c_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::apply($entity->title), 'id' => $c_instance_id])         );
-                  if ($form->is_show_result_message && $c_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error');
+                  if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => translation::apply($entity->title), 'id' => $c_instance_id])         );
+                  if ($form->is_show_result_message && $c_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error');
                 }
               }
             }

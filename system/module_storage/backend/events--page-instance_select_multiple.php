@@ -44,8 +44,7 @@ namespace effcore\modules\storage {
   static function on_check_access($event, $page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
-    if (isset($entity->access_select) && !access::check(
-              $entity->access_select)) {
+    if (!access::check($entity->access_select)) {
       core::send_header_and_exit('access_forbidden');
     }
   }

@@ -39,8 +39,7 @@ namespace effcore\modules\storage {
     $entity_name = $page->args_get('entity_name');
     $instance_id = $page->args_get('instance_id');
     $entity = entity::get($entity_name);
-    if (isset($entity->access_delete) && !access::check(
-              $entity->access_delete)) {
+    if (!access::check($entity->access_delete)) {
       core::send_header_and_exit('access_forbidden');
     }
     $id_keys = $entity->id_get_real();
