@@ -197,6 +197,7 @@ entities
     managing_is_enabled: true
     has_button_insert_and_update: true
     has_message_for_additional_controls: true
+    ws_is_embed: true
     ws_module_id: true
     ws_data: true
     access_select
@@ -751,6 +752,7 @@ entities
     catalog_name: texts
     managing_is_enabled: true
     has_parallel_checking: true
+    ws_is_embed: true
     ws_module_id: true
     ws_data: true
     access_select
