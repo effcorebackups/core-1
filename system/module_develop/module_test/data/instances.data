@@ -1,0 +1,12 @@
+instances
+# ─────────────────────────────────────────────────────────────────────
+# embedded instances for perform the tests
+# ─────────────────────────────────────────────────────────────────────
+- test_text|instance
+    entity_name: text
+    values
+    - id: test
+    - description: embedded text for perform the tests
+    - text: some text
+    - is_embed: 1
+    - module_id: test
