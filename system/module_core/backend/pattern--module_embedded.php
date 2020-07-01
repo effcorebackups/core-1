@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class module_embed {
+          class module_embedded {
 
   # module state diagram for modules without installation process
   # ─────────────────────────────────────────────────────────────────────
@@ -146,7 +146,7 @@ namespace effcore {
   static function get_embed($property = null) {
     $result = [];
     foreach (static::get_all() as $c_module)
-      if ($c_module instanceof module_embed &&
+      if ($c_module instanceof module_embedded &&
          !$c_module instanceof module)
         $result[$c_module->id] = $property ?
                      $c_module->{$property} :

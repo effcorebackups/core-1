@@ -1,4 +1,4 @@
-module|module_embed
+module|module_embedded
   id: menu
   id_bundle: system
   title: Menu

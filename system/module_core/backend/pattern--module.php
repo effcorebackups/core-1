@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class module extends module_embed {
+          class module extends module_embedded {
 
   public $group = 'Other';
   public $enabled = 'no';
