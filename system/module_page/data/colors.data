@@ -668,7 +668,7 @@ colors
     value_hex: #b0c4de
     group: bluegray
 # ─────────────────────────────────────────────────────────────────────
-# embed custom colors
+# embeded custom colors
 # ─────────────────────────────────────────────────────────────────────
 - embed_dark_3|color
     id: embed_dark_3

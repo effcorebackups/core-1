@@ -23,7 +23,7 @@ namespace effcore\modules\core {
     $embed     = module::get_embed    ();
     $modules   = module::get_all      ();
     $checkboxes = new group_checkboxes;
-    $checkboxes->description = 'The removing module should be disabled at first. Embed modules cannot be disabled.';
+    $checkboxes->description = 'The removing module should be disabled at first. Embedded modules cannot be disabled.';
     $checkboxes->build();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {

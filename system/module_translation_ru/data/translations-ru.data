@@ -589,7 +589,7 @@ translations
     - The minimum value is greater than the maximum value!: Минимальное значение больше максимального значения!
     - The PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
     - The PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
-    - The removing module should be disabled at first. Embed modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
+    - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - The required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
     - the size of uploaded file more than %%_size: размер загружаемого файла больше чем %%_size
