@@ -143,7 +143,7 @@ namespace effcore {
     return $result;
   }
 
-  static function get_embed($property = null) {
+  static function get_embedded($property = null) {
     $result = [];
     foreach (static::get_all() as $c_module)
       if ($c_module instanceof module_embedded &&

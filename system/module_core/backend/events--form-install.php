@@ -22,7 +22,7 @@ namespace effcore\modules\core {
     if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
     # check for PHP dependencies
-      $embed = module::get_embed();
+      $embed = module::get_embedded();
       $dependencies = [];
       foreach ($embed as $c_module)
         $dependencies += $c_module->dependencies->php ?? [];
@@ -163,8 +163,8 @@ namespace effcore\modules\core {
           ]);
           $lang_code = page::get_current()->args_get('lang_code');
           $enabled_by_default = module::get_enabled_by_default();
-          $embed              = module::get_embed();
-          $modules            = module::get_all();
+          $embed              = module::get_embedded          ();
+          $modules            = module::get_all               ();
           core::array_sort_by_property($modules, 'deploy_weight');
           foreach ($modules as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) ||
