@@ -116,9 +116,9 @@ namespace effcore\modules\storage {
               if ($items['#actions']->value_get() === 'delete') {
                 if (empty($c_instance->is_embed)) {
                   $c_result = $c_instance->delete();
-                  if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',                         ['type' => translation::apply($entity->title), 'id' => $c_instance_id])           );
-                  if ($form->is_show_result_message && $c_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!',                     ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error'  );
-                } else                                                     message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted because it\'s embed!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'warning');
+                  if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',                            ['type' => translation::apply($entity->title), 'id' => $c_instance_id])           );
+                  if ($form->is_show_result_message && $c_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!',                        ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error'  );
+                } else                                                     message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted because it\'s embedded!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'warning');
               }
             }
           }
