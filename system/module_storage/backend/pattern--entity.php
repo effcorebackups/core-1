@@ -41,18 +41,18 @@ namespace effcore {
     if ($this->managing_is_enabled && $this->access_insert === null) $this->access_insert = (object)['roles' => ['admins' => 'admins']];
     if ($this->managing_is_enabled && $this->access_update === null) $this->access_update = (object)['roles' => ['admins' => 'admins']];
     if ($this->managing_is_enabled && $this->access_delete === null) $this->access_delete = (object)['roles' => ['admins' => 'admins']];
-  # insert field 'is_embed'
+  # insert field 'is_embedded'
     if ($this->ws_is_embedded) {
-      $this->fields['is_embed'] = new \stdClass;
-      $this->fields['is_embed']->title = 'Is embed';
-      $this->fields['is_embed']->type = 'boolean';
-      $this->fields['is_embed']->not_null = true;
-      $this->fields['is_embed']->default = 0;
-      $this->fields['is_embed']->managing_on_select_is_enabled = true;
-      $this->fields['is_embed']->managing_control_class = '\\effcore\\field_switcher';
-      $this->fields['is_embed']->managing_control_properties['weight'] = 390;
-      $this->fields['is_embed']->managing_control_element_attributes['disabled'] = true;
-      $this->fields['is_embed']->selection_params_default['filter'] = '\\effcore\\translation::apply';
+      $this->fields['is_embedded'] = new \stdClass;
+      $this->fields['is_embedded']->title = 'Is embed';
+      $this->fields['is_embedded']->type = 'boolean';
+      $this->fields['is_embedded']->not_null = true;
+      $this->fields['is_embedded']->default = 0;
+      $this->fields['is_embedded']->managing_on_select_is_enabled = true;
+      $this->fields['is_embedded']->managing_control_class = '\\effcore\\field_switcher';
+      $this->fields['is_embedded']->managing_control_properties['weight'] = 390;
+      $this->fields['is_embedded']->managing_control_element_attributes['disabled'] = true;
+      $this->fields['is_embedded']->selection_params_default['filter'] = '\\effcore\\translation::apply';
     }
   # insert field 'module_id' and index for it
     if ($this->ws_module_id) {

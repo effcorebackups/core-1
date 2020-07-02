@@ -9,7 +9,7 @@ instances
     - description: Logotype main
     - path: dynamic/files/pictures/picture-logotype_classic.svg
     - url: /
-    - is_embed: 1
+    - is_embedded: 1
     - module_id: profile_classic
     - attributes
       - 0
@@ -483,7 +483,7 @@ instances
     - title: About Us
     - url: /about
     - is_https: 0
-    - is_embed: 0
+    - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
     - parts
@@ -521,7 +521,7 @@ instances
     - title: Contact Us
     - url: /contact
     - is_https: 0
-    - is_embed: 0
+    - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
     - parts
@@ -561,7 +561,7 @@ instances
     - title: Front
     - url: /
     - is_https: 0
-    - is_embed: 1
+    - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
     - parts
@@ -601,7 +601,7 @@ instances
     - title: Login
     - url: /login
     - is_https: 1
-    - is_embed: 1
+    - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
     - access
@@ -643,7 +643,7 @@ instances
     - title: Logout
     - url: /logout
     - is_https: 1
-    - is_embed: 1
+    - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
     - access
@@ -687,7 +687,7 @@ instances
     - title: Access recovery
     - url: /recovery
     - is_https: 1
-    - is_embed: 1
+    - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
     - access
@@ -729,7 +729,7 @@ instances
     - title: New User Registration
     - url: /registration
     - is_https: 1
-    - is_embed: 1
+    - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
     - access

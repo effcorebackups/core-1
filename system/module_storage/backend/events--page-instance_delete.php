@@ -46,7 +46,7 @@ namespace effcore\modules\storage {
     $id_values = explode('+', $instance_id);
     $conditions = array_combine($id_keys, $id_values);
     $instance = new instance($entity_name, $conditions);
-    if ($instance->select() && !empty($instance->is_embed)) {
+    if ($instance->select() && !empty($instance->is_embedded)) {
       core::send_header_and_exit('access_forbidden', null, new text_multiline(['entity is embedded', 'go to <a href="/">front page</a>'], [], br.br));
     }
   }

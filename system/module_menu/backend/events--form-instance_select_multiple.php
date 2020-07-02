@@ -32,9 +32,9 @@ namespace effcore\modules\menu {
       # $c_row 'actions'
         $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
           $c_actions_list = new actions_list;
-          if ($form->_has_access_delete && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
-          if ($form->_has_access_select                                ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
-          if ($form->_has_access_update                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
+          if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
+          if ($form->_has_access_select                                   ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
+          if ($form->_has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
           return $c_actions_list;
         });
       # $c_row 'extra'

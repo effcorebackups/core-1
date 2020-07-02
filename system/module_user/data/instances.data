@@ -8,7 +8,7 @@ instances
     - id: 1
     - nickname: Admin
     - email: admin@example.com
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
@@ -17,375 +17,375 @@ instances
     values
     - id: audio_select
     - title: Audio: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_audio_insert|instance
     entity_name: permission
     values
     - id: audio_insert
     - title: Audio: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_audio_update|instance
     entity_name: permission
     values
     - id: audio_update
     - title: Audio: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_audio_delete|instance
     entity_name: permission
     values
     - id: audio_delete
     - title: Audio: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_gallery_select|instance
     entity_name: permission
     values
     - id: gallery_select
     - title: Gallery: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_gallery_insert|instance
     entity_name: permission
     values
     - id: gallery_insert
     - title: Gallery: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_gallery_update|instance
     entity_name: permission
     values
     - id: gallery_update
     - title: Gallery: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_gallery_delete|instance
     entity_name: permission
     values
     - id: gallery_delete
     - title: Gallery: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_feedback_select|instance
     entity_name: permission
     values
     - id: feedback_select
     - title: Feedback: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_feedback_insert|instance
     entity_name: permission
     values
     - id: feedback_insert
     - title: Feedback: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_feedback_update|instance
     entity_name: permission
     values
     - id: feedback_update
     - title: Feedback: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_feedback_delete|instance
     entity_name: permission
     values
     - id: feedback_delete
     - title: Feedback: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_page_select|instance
     entity_name: permission
     values
     - id: page_select
     - title: Page: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_page_insert|instance
     entity_name: permission
     values
     - id: page_insert
     - title: Page: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_page_update|instance
     entity_name: permission
     values
     - id: page_update
     - title: Page: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_page_delete|instance
     entity_name: permission
     values
     - id: page_delete
     - title: Page: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_permission_select|instance
     entity_name: permission
     values
     - id: permission_select
     - title: Permission: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_permission_insert|instance
     entity_name: permission
     values
     - id: permission_insert
     - title: Permission: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_permission_update|instance
     entity_name: permission
     values
     - id: permission_update
     - title: Permission: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_permission_delete|instance
     entity_name: permission
     values
     - id: permission_delete
     - title: Permission: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_picture_select|instance
     entity_name: permission
     values
     - id: picture_select
     - title: Picture: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_picture_insert|instance
     entity_name: permission
     values
     - id: picture_insert
     - title: Picture: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_picture_update|instance
     entity_name: permission
     values
     - id: picture_update
     - title: Picture: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_picture_delete|instance
     entity_name: permission
     values
     - id: picture_delete
     - title: Picture: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_relation_role_ws_permission_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_select
     - title: Relation: Role ↔ Permission: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_permission_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_insert
     - title: Relation: Role ↔ Permission: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_permission_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_update
     - title: Relation: Role ↔ Permission: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_permission_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_delete
     - title: Relation: Role ↔ Permission: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_relation_role_ws_user_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_select
     - title: Relation: Role ↔ User: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_user_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_insert
     - title: Relation: Role ↔ User: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_user_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_update
     - title: Relation: Role ↔ User: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_relation_role_ws_user_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_delete
     - title: Relation: Role ↔ User: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_role_select|instance
     entity_name: permission
     values
     - id: role_select
     - title: Role: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_role_insert|instance
     entity_name: permission
     values
     - id: role_insert
     - title: Role: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_role_update|instance
     entity_name: permission
     values
     - id: role_update
     - title: Role: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_role_delete|instance
     entity_name: permission
     values
     - id: role_delete
     - title: Role: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_selection_select|instance
     entity_name: permission
     values
     - id: selection_select
     - title: Selection: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_selection_insert|instance
     entity_name: permission
     values
     - id: selection_insert
     - title: Selection: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_selection_update|instance
     entity_name: permission
     values
     - id: selection_update
     - title: Selection: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_selection_delete|instance
     entity_name: permission
     values
     - id: selection_delete
     - title: Selection: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_text_select|instance
     entity_name: permission
     values
     - id: text_select
     - title: Text: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_text_insert|instance
     entity_name: permission
     values
     - id: text_insert
     - title: Text: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_text_update|instance
     entity_name: permission
     values
     - id: text_update
     - title: Text: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_text_delete|instance
     entity_name: permission
     values
     - id: text_delete
     - title: Text: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_tree_select|instance
     entity_name: permission
     values
     - id: tree_select
     - title: Tree: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_insert|instance
     entity_name: permission
     values
     - id: tree_insert
     - title: Tree: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_update|instance
     entity_name: permission
     values
     - id: tree_update
     - title: Tree: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_delete|instance
     entity_name: permission
     values
     - id: tree_delete
     - title: Tree: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_tree_item_select|instance
     entity_name: permission
     values
     - id: tree_item_select
     - title: Tree item: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_item_insert|instance
     entity_name: permission
     values
     - id: tree_item_insert
     - title: Tree item: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_item_update|instance
     entity_name: permission
     values
     - id: tree_item_update
     - title: Tree item: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_tree_item_delete|instance
     entity_name: permission
     values
     - id: tree_item_delete
     - title: Tree item: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_user_select|instance
     entity_name: permission
     values
     - id: user_select
     - title: User: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_user_insert|instance
     entity_name: permission
     values
     - id: user_insert
     - title: User: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_user_update|instance
     entity_name: permission
     values
     - id: user_update
     - title: User: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_user_delete|instance
     entity_name: permission
     values
     - id: user_delete
     - title: User: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_video_select|instance
     entity_name: permission
     values
     - id: video_select
     - title: Video: select
-    - is_embed: 1
+    - is_embedded: 1
 - permission_video_insert|instance
     entity_name: permission
     values
     - id: video_insert
     - title: Video: insert
-    - is_embed: 1
+    - is_embedded: 1
 - permission_video_update|instance
     entity_name: permission
     values
     - id: video_update
     - title: Video: update
-    - is_embed: 1
+    - is_embedded: 1
 - permission_video_delete|instance
     entity_name: permission
     values
     - id: video_delete
     - title: Video: delete
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
@@ -711,7 +711,7 @@ instances
     values
     - id_role: admins
     - id_user: 1
-    - is_embed: 1
+    - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 # roles
 # ─────────────────────────────────────────────────────────────────────
@@ -720,28 +720,28 @@ instances
     values
     - id: admins
     - title: Administrators
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +80
 - role_managers|instance
     entity_name: role
     values
     - id: managers
     - title: Managers
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +70
 - role_registered|instance
     entity_name: role
     values
     - id: registered
     - title: Registered
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +50
 - role_anonymous|instance
     entity_name: role
     values
     - id: anonymous
     - title: Anonymous
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +40
 # ─────────────────────────────────────────────────────────────────────
 # trees
@@ -752,7 +752,7 @@ instances
     - id: user_registered
     - title: Registered user
     - title_is_visible: 0
-    - is_embed: 1
+    - is_embedded: 1
     - access
         roles
         - =: registered
@@ -762,7 +762,7 @@ instances
     - id: user_anonymous
     - title: Anonymous user
     - title_is_visible: 0
-    - is_embed: 1
+    - is_embedded: 1
     - access
         roles
         - =: anonymous
@@ -777,7 +777,7 @@ instances
     - id_tree: user_registered
     - title: %%_nickname
     - url: /user/%%_nickname
-    - is_embed: 1
+    - is_embedded: 1
     - access
         roles
         - =: registered
@@ -789,7 +789,7 @@ instances
     - id_tree: user_registered
     - title: Edit
     - url: /user/%%_nickname/edit
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +50
     - access
         roles
@@ -802,7 +802,7 @@ instances
     - id_tree: user_registered
     - title: Logout
     - url: /logout
-    - is_embed: 1
+    - is_embedded: 1
     - weight: -50
     - access
         roles
@@ -815,7 +815,7 @@ instances
     - id_parent: null
     - id_tree: user_anonymous
     - title: Anonymous
-    - is_embed: 1
+    - is_embedded: 1
     - access
         roles
         - =: anonymous
@@ -827,7 +827,7 @@ instances
     - id_tree: user_anonymous
     - title: Login
     - url: /login
-    - is_embed: 1
+    - is_embedded: 1
     - weight: +50
     - access
         roles
@@ -840,7 +840,7 @@ instances
     - id_tree: user_anonymous
     - title: Registration
     - url: /registration
-    - is_embed: 1
+    - is_embedded: 1
     - access
         roles
         - =: anonymous
@@ -852,7 +852,7 @@ instances
     - id_tree: user_anonymous
     - title: Recovery
     - url: /recovery
-    - is_embed: 1
+    - is_embedded: 1
     - weight: -50
     - access
         roles

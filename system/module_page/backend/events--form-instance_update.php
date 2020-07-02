@@ -21,7 +21,7 @@ namespace effcore\modules\page {
     if ($entity) {
       if ($entity->name === 'page' && !empty($form->_instance)) {
       # disable field 'url' for embedded instance
-        if (!empty($form->_instance->is_embed)) {
+        if (!empty($form->_instance->is_embedded)) {
           $items['#url']->disabled_set(true);
         }
       # field 'min width' + field 'max width'

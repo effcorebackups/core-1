@@ -19,7 +19,7 @@ namespace effcore {
   public $text_direction = 'ltr';
   public $data = null;
   public $origin = 'nosql'; # nosql | sql
-  public $is_embed = 1;
+  public $is_embedded = 1;
   public $access;
   public $parts;
   public $_markup;

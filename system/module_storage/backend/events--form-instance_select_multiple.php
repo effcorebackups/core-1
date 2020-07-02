@@ -53,9 +53,9 @@ namespace effcore\modules\storage {
         $selection->field_insert_checkbox(null, null, ['weight' => 500]);
         $selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
           $c_actions_list = new actions_list;
-          if ($form->_has_access_delete && empty($c_instance->is_embed)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
-          if ($form->_has_access_select                                ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
-          if ($form->_has_access_update                                ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
+          if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
+          if ($form->_has_access_select                                   ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
+          if ($form->_has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
           return $c_actions_list;
         }, ['weight' => -500]);
         $selection->build();
@@ -114,7 +114,7 @@ namespace effcore\modules\storage {
           if (!empty($form->_selected_instances)) {
             foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
               if ($items['#actions']->value_get() === 'delete') {
-                if (empty($c_instance->is_embed)) {
+                if (empty($c_instance->is_embedded)) {
                   $c_result = $c_instance->delete();
                   if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',                            ['type' => translation::apply($entity->title), 'id' => $c_instance_id])           );
                   if ($form->is_show_result_message && $c_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!',                        ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error'  );

@@ -31,7 +31,7 @@ namespace effcore\modules\storage {
           $conditions = array_combine($id_keys, $id_values);
           $form->_instance = new instance($form->entity_name, $conditions);
           if ($form->_instance->select()) {
-            if (empty($form->_instance->is_embed)) {
+            if (empty($form->_instance->is_embedded)) {
               $form->attribute_insert('data-entity_name', $form->entity_name);
               $form->attribute_insert('data-instance_id', $form->instance_id);
               $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));

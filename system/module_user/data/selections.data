@@ -29,10 +29,10 @@ selections
         entity_name: user
         entity_field_name: timezone
         filter: \effcore\translation::apply
-    - user.is_embed
+    - user.is_embedded
         type: field
         entity_name: user
-        entity_field_name: is_embed
+        entity_field_name: is_embedded
         filter: \effcore\translation::apply
     - user.avatar_path
         type: field
