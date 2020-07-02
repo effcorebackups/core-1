@@ -44,7 +44,7 @@ namespace effcore {
   # insert field 'is_embedded'
     if ($this->ws_is_embedded) {
       $this->fields['is_embedded'] = new \stdClass;
-      $this->fields['is_embedded']->title = 'Is embed';
+      $this->fields['is_embedded']->title = 'Is embedded';
       $this->fields['is_embedded']->type = 'boolean';
       $this->fields['is_embedded']->not_null = true;
       $this->fields['is_embedded']->default = 0;

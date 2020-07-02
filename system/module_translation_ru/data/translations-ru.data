@@ -275,8 +275,8 @@ translations
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ниже версии %%_number больше не поддерживается!
     - invalid session was deleted!: Недействительный сеанс был удалён!
     - Is active: Активная
-    - Is embed: Встроенный
-    - is embed: встроенный
+    - Is embedded: Встроенный
+    - is embedded: встроенный
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
     - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!
