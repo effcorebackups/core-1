@@ -4,16 +4,16 @@ settings
   page_min_width: 200
   page_max_width: 950
   page_meta_viewport: width=300, initial-scale=1
-  color_page_id: embed_dark_1
+  color_page_id: embedded_dark_1
   color_text_id: white
   color_main_id: royalblue
   color_link_id: white
   color_link_active_id: gold
-  color_table_row_odd_id: embed_dark_2
-  color_table_row_even_id: embed_dark_3
+  color_table_row_odd_id: embedded_dark_2
+  color_table_row_even_id: embedded_dark_3
   color_relation_id: white
-  color_menu_id: embed_dark_2
-  color_menu_active_id: embed_dark_3
+  color_menu_id: embedded_dark_2
+  color_menu_active_id: embedded_dark_3
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: gold
@@ -21,13 +21,13 @@ settings
   color_tabs_link_id: white
   color_tabs_link_active_id: white
   color_tabs_link_active_no_bg_id: gold
-  color_ok_id: embed_state_ok
-  color_warning_id: embed_state_warning
-  color_error_id: embed_state_error
-  color_fieldset_id: embed_dark_2
-  color_fieldset_nested_id: embed_dark_1
-  color_field_id: embed_dark_1
+  color_ok_id: embedded_state_ok
+  color_warning_id: embedded_state_warning
+  color_error_id: embedded_state_error
+  color_fieldset_id: embedded_dark_2
+  color_fieldset_nested_id: embedded_dark_1
+  color_field_id: embedded_dark_1
   color_field_text_id: white
-  color_button_id: embed_main
+  color_button_id: embedded_main
   color_button_active_id: dodgerblue
   color_button_text_id: white

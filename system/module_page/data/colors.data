@@ -670,43 +670,43 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # embeded custom colors
 # ─────────────────────────────────────────────────────────────────────
-- embed_dark_3|color
-    id: embed_dark_3
+- embedded_dark_3|color
+    id: embedded_dark_3
     value: #3b4157
     value_hex: #3b4157
     group: default
-- embed_dark_2|color
-    id: embed_dark_2
+- embedded_dark_2|color
+    id: embedded_dark_2
     value: #313852
     value_hex: #313852
     group: default
-- embed_dark_1|color
-    id: embed_dark_1
+- embedded_dark_1|color
+    id: embedded_dark_1
     value: #2a304a
     value_hex: #2a304a
     group: default
-- embed_main|color
-    id: embed_main
+- embedded_main|color
+    id: embedded_main
     value: #216ce4
     value_hex: #216ce4
     group: default
-- embed_light_1|color
-    id: embed_light_1
+- embedded_light_1|color
+    id: embedded_light_1
     value: #81a5eb
     value_hex: #81a5eb
     group: default
-- embed_state_ok|color
-    id: embed_state_ok
+- embedded_state_ok|color
+    id: embedded_state_ok
     value: #48be38
     value_hex: #48be38
     group: default
-- embed_state_warning|color
-    id: embed_state_warning
+- embedded_state_warning|color
+    id: embedded_state_warning
     value: #fd9a1e
     value_hex: #fd9a1e
     group: default
-- embed_state_error|color
-    id: embed_state_error
+- embedded_state_error|color
+    id: embedded_state_error
     value: #fc5740
     value_hex: #fc5740
     group: default
