@@ -23,10 +23,10 @@ namespace effcore\modules\core {
 
   static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
-    $enabled = module::get_enabled ();
-    $embed   = module::get_embedded();
-    $modules = module::get_all     ();
-    $groups  = module::groups_get  ();
+    $enabled  = module::get_enabled ();
+    $embedded = module::get_embedded();
+    $modules  = module::get_all     ();
+    $groups   = module::groups_get  ();
     $modules_by_groups = [];
     core::array_sort_text($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
@@ -59,14 +59,14 @@ namespace effcore\modules\core {
         $c_switcher->build();
         $c_switcher->name_set('is_enabled[]');
         $c_switcher->value_set($c_module->id);
-        $c_switcher->checked_set (isset($enabled[$c_module->id]));
-        $c_switcher->disabled_set(isset($embed  [$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
+        $c_switcher->checked_set (isset($enabled [$c_module->id]));
+        $c_switcher->disabled_set(isset($embedded[$c_module->id]) || !$c_is_ok_php_dependencies || !$c_is_ok_sys_dependencies || !$c_is_ok_sys_depended);
         $c_info->child_insert($c_switcher, 'switcher');
         if ($c_module->icon_path                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'icon'              ], [new markup('x-title', ['aria-hidden' => 'true'], 'icon'                      ), new markup('x-value', [], new markup_simple('img', ['src' => $c_module->icon_path[0] == '/' ? $c_module->icon_path : '/'.$c_module->path.$c_module->icon_path, 'alt' => 'icon']) )]), 'icon'              );
         if (true                                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'title'             ], [new markup('x-title', ['aria-hidden' => 'true'], 'title'                     ), new markup('x-value', [],                                    $c_module->title                                                                                                    )]), 'title'             );
         if (true                                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'id'                ], [new markup('x-title', [                       ], 'id'                        ), new markup('x-value', [],                    new text_simple($c_module->id)                                                                                                      )]), 'id'                );
         if (true                                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'version'           ], [new markup('x-title', [                       ], 'version'                   ), new markup('x-value', [],             locale::format_version($c_module->version)                                                                                                 )]), 'version'           );
-        if (true                                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'is-embedded'       ], [new markup('x-title', [                       ], 'is embedded'               ), new markup('x-value', [],                       isset($embed[$c_module->id]) ? 'yes' : 'no'                                                                                      )]), 'is_embedded'       );
+        if (true                                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'is-embedded'       ], [new markup('x-title', [                       ], 'is embedded'               ), new markup('x-value', [],                    isset($embedded[$c_module->id]) ? 'yes' : 'no'                                                                                      )]), 'is_embedded'       );
         if ($c_module->description                            ) $c_info->child_insert(new markup('x-param', ['data-type' => 'description'       ], [new markup('x-title', [                       ], 'description'               ), new markup('x-value', [],                                    $c_module->description                                                                                              )]), 'description'       );
         if ($c_module->copyright                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'copyright'         ], [new markup('x-title', [                       ], 'copyright'                 ), new markup('x-value', [],                                    $c_module->copyright                                                                                                )]), 'copyright'         );
         if ($c_module->path                                   ) $c_info->child_insert(new markup('x-param', ['data-type' => 'path'              ], [new markup('x-title', [                       ], 'path'                      ), new markup('x-value', [],                                    $c_module->path                                                                                                     )]), 'path'              );
@@ -91,13 +91,13 @@ namespace effcore\modules\core {
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $enabled = module::get_enabled ();
-        $embed   = module::get_embedded();
-        $modules = module::get_all     ();
+        $enabled  = module::get_enabled ();
+        $embedded = module::get_embedded();
+        $modules  = module::get_all     ();
         $modules_to_enable  = [];
         $modules_to_disable = [];
         foreach ($modules as $c_module) {
-          if (!isset($embed[$c_module->id])) {
+          if (!isset($embedded[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
             if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled[$c_module->id]) != false) $modules_to_disable[$c_module->id] = $c_module;
           }
@@ -133,9 +133,9 @@ namespace effcore\modules\core {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $enabled = module::get_enabled ();
-        $embed   = module::get_embedded();
-        $modules = module::get_all     ();
+        $enabled  = module::get_enabled ();
+        $embedded = module::get_embedded();
+        $modules  = module::get_all     ();
         $modules_to_enable  = [];
         $modules_to_disable = [];
         $modules_to_install = [];
@@ -143,7 +143,7 @@ namespace effcore\modules\core {
       # collect information
         core::array_sort_by_property($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
-          if (!isset($embed[$c_module->id])) {
+          if (!isset($embedded[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
             if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled[$c_module->id]) != false) {$modules_to_disable[$c_module->id] = $c_module;                                                 }
           }

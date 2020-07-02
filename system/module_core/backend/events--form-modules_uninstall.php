@@ -20,14 +20,14 @@ namespace effcore\modules\core {
     $info = $form->child_select('info');
     $installed = module::get_installed();
     $enabled   = module::get_enabled  ();
-    $embed     = module::get_embedded ();
+    $embedded  = module::get_embedded ();
     $modules   = module::get_all      ();
     $checkboxes = new group_checkboxes;
     $checkboxes->description = 'The removing module should be disabled at first. Embedded modules cannot be disabled.';
     $checkboxes->build();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
-      if  (!isset($embed    [$c_module->id]) &&
+      if  (!isset($embedded [$c_module->id]) &&
             isset($installed[$c_module->id])) {
         if (isset($enabled  [$c_module->id]))
         $checkboxes->disabled[$c_module->id] = $c_module->id;
@@ -48,14 +48,14 @@ namespace effcore\modules\core {
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $embed   = module::get_embedded();
-        $modules = module::get_all     ();
+        $embedded = module::get_embedded();
+        $modules  = module::get_all     ();
         $modules_to_uninstall = [];
       # collect information
         if  (isset($items['*uninstall'])) {
           foreach ($items['*uninstall']->values_get() as $c_module_id) {
             $c_module = $modules[$c_module_id];
-            if (!isset($embed[$c_module->id])) {
+            if (!isset($embedded[$c_module->id])) {
               $modules_to_uninstall[$c_module->id] = $c_module;
             }
           }
@@ -72,15 +72,15 @@ namespace effcore\modules\core {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $embed   = module::get_embedded();
-        $modules = module::get_all     ();
+        $embedded = module::get_embedded();
+        $modules  = module::get_all     ();
         $modules_to_uninstall = [];
         $include_paths        = [];
       # collect information
         if  (isset($items['*uninstall'])) {
           foreach ($items['*uninstall']->values_get() as $c_module_id) {
             $c_module = $modules[$c_module_id];
-            if (!isset($embed[$c_module->id])) {
+            if (!isset($embedded[$c_module->id])) {
               $modules_to_uninstall[$c_module->id] = $c_module;
               $include_paths       [$c_module->id] = $c_module->path;
             }
