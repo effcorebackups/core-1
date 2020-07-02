@@ -1,0 +1,58 @@
+tests
+- access|test
+    id: access
+    title: Access
+    scenario
+  # ─────────────────────────────────────────────────────────────────────
+  # anonymous user
+  # ─────────────────────────────────────────────────────────────────────
+    # url: /manage/data/content/text
+    - request_url-/manage/data/content/text|step_request
+        url: /manage/data/content/text
+    - response_check-/manage/data/content/text|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test
+    - request_url-/manage/data/content/text/test|step_request
+        url: /manage/data/content/text/test
+    - response_check-/manage/data/content/text/test|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text//insert
+    - request_url-/manage/data/content/text//insert|step_request
+        url: /manage/data/content/text//insert
+    - response_check-/manage/data/content/text//insert|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test/update
+    - request_url-/manage/data/content/text/test/update|step_request
+        url: /manage/data/content/text/test/update
+    - response_check-/manage/data/content/text/test/update|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test/delete
+    - request_url-/manage/data/content/text/test/delete|step_request
+        url: /manage/data/content/text/test/delete
+    - response_check-/manage/data/content/text/test/delete|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+  # ─────────────────────────────────────────────────────────────────────
+  # return
+  # ─────────────────────────────────────────────────────────────────────
+    - return_result|step_return
+        value: 1
