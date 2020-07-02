@@ -83,9 +83,6 @@ tests
     - response_check|step_check
         where: subm_errs
         match: 0
-        on_success
-        - return_result|step_return
-            value: 1
         on_failure
         - return_result|step_return
             value: 0
