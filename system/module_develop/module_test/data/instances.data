@@ -1,12 +1,19 @@
 instances
 # ─────────────────────────────────────────────────────────────────────
-# embedded instances for perform the tests
+# instances for perform the tests
 # ─────────────────────────────────────────────────────────────────────
 - test_text|instance
     entity_name: text
     values
     - id: test
-    - description: embedded text for perform the tests
+    - description: text for perform the tests
     - text: some text
+    - is_embedded: 0
+    - module_id: test
+- role_test|instance
+    entity_name: role
+    values
+    - id: test
+    - title: Test
     - is_embedded: 1
     - module_id: test
