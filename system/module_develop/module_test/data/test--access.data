@@ -2,6 +2,12 @@ tests
 - access|test
     id: access
     title: Access
+    description: After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.
+    params
+    - is_https|field_switcher
+        title: HTTPS
+        element_attributes
+        - name: is_https
     scenario
   # ─────────────────────────────────────────────────────────────────────
   # anonymous user
@@ -48,6 +54,38 @@ tests
     - response_check-/manage/data/content/text/test/delete|step_check
         where: http_code
         match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+  # ─────────────────────────────────────────────────────────────────────
+  # registered user
+  # ─────────────────────────────────────────────────────────────────────
+    # warming up the form for initialize CAPTCHA and Validation ID
+    - form_warming_up|step_request
+        url: /registration
+        is_https|param_from_form
+          name: is_https
+    - form_submit|step_request
+        url: /registration
+        is_https|param_from_form
+          name: is_https
+        post
+        - form_id: registration
+        - validation_id: %%_validation_id
+        - email: %%_email_random
+        - nickname: %%_nickname_random
+        - password: %%_password_random
+        - timezone: UTC
+        - session_params[0]: is_remember
+        - session_params[1]: is_fixed_ip
+        - captcha: %%_captcha
+        - button: register
+    - response_check|step_check
+        where: subm_errs
+        match: 0
+        on_success
+        - return_result|step_return
+            value: 1
         on_failure
         - return_result|step_return
             value: 0
