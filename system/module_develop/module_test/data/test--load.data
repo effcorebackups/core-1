@@ -866,15 +866,6 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/licenses/license-ru.md
-        - request_url-/system/module_locales/licenses/license-ru.md|step_request
-            url: /system/module_locales/licenses/license-ru.md
-        - response_check-/system/module_locales/licenses/license-ru.md|step_check
-            where: http_code
-            match: 403
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /system/module_page/module.data
         - request_url-/system/module_page/module.data|step_request
             url: /system/module_page/module.data
@@ -1273,15 +1264,6 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/licenses/license-ru.md/
-        - request_url-/system/module_locales/licenses/license-ru.md/|step_request
-            url: /system/module_locales/licenses/license-ru.md/
-        - response_check-/system/module_locales/licenses/license-ru.md/|step_check
-            where: http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /system/module_page/module.data/
         - request_url-/system/module_page/module.data/|step_request
             url: /system/module_page/module.data/
@@ -1649,15 +1631,6 @@ tests
         - request_url-/system/module_locales/frontend/pictures|step_request
             url: /system/module_locales/frontend/pictures
         - response_check-/system/module_locales/frontend/pictures|step_check
-            where: http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /system/module_locales/licenses
-        - request_url-/system/module_locales/licenses|step_request
-            url: /system/module_locales/licenses
-        - response_check-/system/module_locales/licenses|step_check
             where: http_code
             match: 404
             on_failure
@@ -2111,15 +2084,6 @@ tests
         - request_url-/system/module_locales/frontend/pictures/|step_request
             url: /system/module_locales/frontend/pictures/
         - response_check-/system/module_locales/frontend/pictures/|step_check
-            where: http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /system/module_locales/licenses/
-        - request_url-/system/module_locales/licenses/|step_request
-            url: /system/module_locales/licenses/
-        - response_check-/system/module_locales/licenses/|step_check
             where: http_code
             match: 302
             on_failure
