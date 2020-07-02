@@ -133,7 +133,7 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
-    ws_is_embed: true
+    ws_is_embedded: true
     ws_module_id: true
     access_select
       roles
@@ -353,7 +353,7 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
-    ws_is_embed: true
+    ws_is_embedded: true
     ws_module_id: true
     access_select
       roles
@@ -471,7 +471,7 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
-    ws_is_embed: true
+    ws_is_embedded: true
     ws_module_id: true
     ws_data: true
     access_select
@@ -648,7 +648,7 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
-    ws_is_embed: true
+    ws_is_embedded: true
     ws_module_id: true
     ws_data: true
     access_select

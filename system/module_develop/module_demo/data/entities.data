@@ -6,7 +6,7 @@ entities
     catalog_name: demo_types
     managing_is_enabled: true
     managing_group_id: demo
-    ws_is_embed: true
+    ws_is_embedded: true
     ws_data: true
     access_select
       roles

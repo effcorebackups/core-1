@@ -18,9 +18,9 @@ namespace effcore {
   public $has_button_insert_and_update        = false;
   public $has_message_for_additional_controls = false;
 
-  public $ws_is_embed  = false;
-  public $ws_module_id = false;
-  public $ws_data      = false;
+  public $ws_is_embedded = false;
+  public $ws_module_id   = false;
+  public $ws_data        = false;
 
   public $title;
   public $title_plural;
@@ -42,7 +42,7 @@ namespace effcore {
     if ($this->managing_is_enabled && $this->access_update === null) $this->access_update = (object)['roles' => ['admins' => 'admins']];
     if ($this->managing_is_enabled && $this->access_delete === null) $this->access_delete = (object)['roles' => ['admins' => 'admins']];
   # insert field 'is_embed'
-    if ($this->ws_is_embed) {
+    if ($this->ws_is_embedded) {
       $this->fields['is_embed'] = new \stdClass;
       $this->fields['is_embed']->title = 'Is embed';
       $this->fields['is_embed']->type = 'boolean';
