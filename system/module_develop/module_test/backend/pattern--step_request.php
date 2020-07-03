@@ -25,12 +25,16 @@ namespace effcore {
       $prepared_url,
       $prepared_headers,
       $prepared_post, $this->proxy);
-    if (isset($response['info'   ]['http_code'   ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info'   ]['http_code'   ]]);
-    if (isset($response['info'   ]['primary_ip'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info'   ]['primary_ip'  ]]);
-    if (isset($response['info'   ]['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info'   ]['primary_port']]);
-    if (isset($response['info'   ]['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info'   ]['local_ip'    ]]);
-    if (isset($response['info'   ]['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info'   ]['local_port'  ]]);
-    if (isset($response['headers']['Set-Cookie'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie',   'value' => $response['headers']['Set-Cookie'  ]]);
+    if (isset($response['info']['http_code'   ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info']['http_code'   ]]);
+    if (isset($response['info']['primary_ip'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info']['primary_ip'  ]]);
+    if (isset($response['info']['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
+    if (isset($response['info']['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
+    if (isset($response['info']['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
+    if (is_array($response['headers']['Set-Cookie'])) {
+      foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
+        $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
+      }
+    }
     $c_results['reports'][] = $reports;
     $c_results['response'] = $response;
     static::$history[    ] = $response;
@@ -125,7 +129,8 @@ namespace effcore {
     curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
-      if ($c_matches) $result['headers'][$c_matches['name']] = trim($c_matches['value'], "\r\n\"");
+      if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], "\r\n\"");
+      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], "\r\n\""), 'parsed' => static::cookie_parse(trim($c_matches['value'], "\r\n\""))];
       return strlen($c_header);
     });
   # prepare return
@@ -135,6 +140,18 @@ namespace effcore {
     $result['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
     $result['info'] = curl_getinfo($curl);
     curl_close($curl);
+    return $result;
+  }
+
+  static function cookie_parse($string) {
+    $result = [];
+    foreach (explode('; ', $string) as $c_part) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^=]+)=(?<value>.*)$%S', $c_part, $c_matches);
+      if ($c_matches) {
+        $result[$c_matches['name']] = $c_matches['value'];
+      }
+    }
     return $result;
   }
 
