@@ -14,7 +14,6 @@ namespace effcore {
   public $post     = [];
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    if (isset($c_results['response'])) static::$history[] = $c_results['response'];
     $prepared_url     = $this->prepared_url_get    ();
     $prepared_headers = $this->prepared_headers_get();
     $prepared_post    = $this->prepared_post_get   ();
@@ -25,11 +24,16 @@ namespace effcore {
     $response = static::request(
       $prepared_url,
       $prepared_headers,
-      $prepared_post,
-      $this->proxy);
-    $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code', 'value' => $response['info']['http_code']]);
+      $prepared_post, $this->proxy);
+    if (isset($response['info'   ]['http_code'   ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info'   ]['http_code'   ]]);
+    if (isset($response['info'   ]['primary_ip'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info'   ]['primary_ip'  ]]);
+    if (isset($response['info'   ]['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info'   ]['primary_port']]);
+    if (isset($response['info'   ]['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info'   ]['local_ip'    ]]);
+    if (isset($response['info'   ]['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info'   ]['local_port'  ]]);
+    if (isset($response['headers']['Set-Cookie'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie',   'value' => $response['headers']['Set-Cookie'  ]]);
     $c_results['reports'][] = $reports;
     $c_results['response'] = $response;
+    static::$history[    ] = $response;
   }
 
   function prepared_url_get() {
