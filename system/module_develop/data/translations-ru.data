@@ -11,7 +11,7 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&NewLine;
     - (default type): (тип по умолчанию)
-    - &ndash; request header param "%%_name" = "%%_value": &ndash; header-параметр запроса "%%_name" = "%%_value"
+    - &ndash; request header param "%%_value": &ndash; header-параметр запроса "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; результат проверки = "%%_result"
@@ -129,6 +129,7 @@ translations
     - property private: свойство приватное
     - property protected: свойство защищённое
     - property public: свойство публичное
+    - proxy server = %%_proxy: прокси-сервер = %%_proxy
     - Quantity of iterations: Количество итераций
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br>arguments = [%%_args]: запрос = "%%_query"<br>аргументы = [%%_args]

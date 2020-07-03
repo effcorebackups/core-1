@@ -17,9 +17,10 @@ namespace effcore {
     $prepared_url     = $this->prepared_url_get    ();
     $prepared_headers = $this->prepared_headers_get();
     $prepared_post    = $this->prepared_post_get   ();
-    $reports[] = translation::apply('make request to "%%_url"', ['url' => $this->prepared_url_get()]);
-    foreach ($prepared_headers as $c_key => $c_value) $reports[] = translation::apply('&ndash; request header param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
-    foreach ($prepared_post    as $c_key => $c_value) $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"',   ['name' => $c_key, 'value' => $c_value]);
+                      $reports[] = translation::apply('make request to "%%_url"', ['url'   => $this->prepared_url_get()]);
+    if ($this->proxy) $reports[] = translation::apply('proxy server = %%_proxy',  ['proxy' => $this->proxy]);
+    foreach ($prepared_headers as           $c_value) $reports[] = translation::apply('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
+    foreach ($prepared_post    as $c_key => $c_value) $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
   # make request
     $response = static::request(
       $prepared_url,
@@ -30,7 +31,7 @@ namespace effcore {
     if (isset($response['info']['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
     if (isset($response['info']['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
     if (isset($response['info']['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
-    if (isset($response['headers']['Set-Cookie'])) {
+    if (isset( $response['headers']['Set-Cookie']) ) {
       foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
         $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
       }
@@ -48,17 +49,22 @@ namespace effcore {
   }
 
   function prepared_headers_get() {
-    return $this->headers;
+    $result = [];
+    foreach ($this->headers as $c_key => $c_value) {
+      if ($c_value === '%%_cookies') $c_value = 'Cookie: '.$this->cookies_get();
+      $result[$c_key] = $c_value;
+    }
+    return $result;
   }
 
   function prepared_post_get() {
     $result = [];
     foreach ($this->post as $c_key => $c_value) {
-      if ($c_value == '%%_nickname_random') $c_value = $this->random_nickname_get();
-      if ($c_value == '%%_password_random') $c_value = $this->random_password_get();
-      if ($c_value == '%%_email_random'   ) $c_value = $this->random_email_get   ();
-      if ($c_value == '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
-      if ($c_value == '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
+      if ($c_value === '%%_nickname_random') $c_value = $this->random_nickname_get();
+      if ($c_value === '%%_password_random') $c_value = $this->random_password_get();
+      if ($c_value === '%%_email_random'   ) $c_value = $this->random_email_get   ();
+      if ($c_value === '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
+      if ($c_value === '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
       $result[$c_key] = $c_value;
     }
     return $result;
@@ -96,6 +102,17 @@ namespace effcore {
     }
   }
 
+  function cookies_get() {
+    $result = [];
+    foreach (static::$history as $c_responce) {
+      if ( isset($c_responce['headers']['Set-Cookie']) ) {
+        foreach ($c_responce['headers']['Set-Cookie'] as $c_cookie) {
+          $c_key   = core::array_key_first($c_cookie['parsed']);
+          $c_value =                 reset($c_cookie['parsed']);
+          $result[$c_key] = $c_value; }}}
+    return core::data_to_attr($result, false, '; ', '', '');
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -112,8 +129,8 @@ namespace effcore {
     curl_setopt($curl, CURLOPT_URL,             $url);
     curl_setopt($curl, CURLOPT_PATH_AS_IS,      true); # added in CURL v.7.42.0 (2015-04-22)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
-    curl_setopt($curl, CURLOPT_HEADER,         false);
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($curl, CURLOPT_HEADER,         false);
     curl_setopt($curl, CURLOPT_HTTPHEADER,  $headers);
     curl_setopt($curl, CURLOPT_TIMEOUT,        static::$curlopt_timeout       );
     curl_setopt($curl, CURLOPT_SSLVERSION,     static::$curlopt_sslversion    );
