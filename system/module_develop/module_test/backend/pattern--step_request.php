@@ -18,8 +18,8 @@ namespace effcore {
     $prepared_headers = $this->prepared_headers_get();
     $prepared_post    = $this->prepared_post_get   ();
     $reports[] = translation::apply('make request to "%%_url"', ['url' => $this->prepared_url_get()]);
-    foreach ($prepared_post as $c_key => $c_value)
-      $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
+    foreach ($prepared_headers as $c_key => $c_value) $reports[] = translation::apply('&ndash; request header param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
+    foreach ($prepared_post    as $c_key => $c_value) $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"',   ['name' => $c_key, 'value' => $c_value]);
   # make request
     $response = static::request(
       $prepared_url,

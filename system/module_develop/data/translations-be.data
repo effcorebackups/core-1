@@ -11,6 +11,7 @@ translations
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&NewLine;
     - (default type): (тып па змаўчанню)
+    - &ndash; request header param "%%_name" = "%%_value": &ndash; header-параметр запыту "%%_name" = "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
     - &ndash; result of checking is = "%%_result": &ndash; вынік праверкі = "%%_result"

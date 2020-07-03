@@ -86,6 +86,12 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - logout|step_request
+        url: /logout
+        headers
+        - Cookie: cookies_is_enabled=true
+        is_https|param_from_form
+          name: is_https
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
