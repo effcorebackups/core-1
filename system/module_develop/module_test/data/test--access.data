@@ -15,6 +15,8 @@ tests
     # url: /manage/data/content/text
     - request_url-/manage/data/content/text|step_request
         url: /manage/data/content/text
+        is_https|param_from_form
+          name: is_https
     - response_check-/manage/data/content/text|step_check
         where: http_code
         match: 403
@@ -24,6 +26,10 @@ tests
     # url: /manage/data/content/text/test
     - request_url-/manage/data/content/text/test|step_request
         url: /manage/data/content/text/test
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
     - response_check-/manage/data/content/text/test|step_check
         where: http_code
         match: 403
@@ -33,6 +39,10 @@ tests
     # url: /manage/data/content/text//insert
     - request_url-/manage/data/content/text//insert|step_request
         url: /manage/data/content/text//insert
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
     - response_check-/manage/data/content/text//insert|step_check
         where: http_code
         match: 403
@@ -42,6 +52,10 @@ tests
     # url: /manage/data/content/text/test/update
     - request_url-/manage/data/content/text/test/update|step_request
         url: /manage/data/content/text/test/update
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
     - response_check-/manage/data/content/text/test/update|step_check
         where: http_code
         match: 403
@@ -51,6 +65,10 @@ tests
     # url: /manage/data/content/text/test/delete
     - request_url-/manage/data/content/text/test/delete|step_request
         url: /manage/data/content/text/test/delete
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
     - response_check-/manage/data/content/text/test/delete|step_check
         where: http_code
         match: 403
@@ -63,10 +81,14 @@ tests
     # warming up the form for initialize CAPTCHA and Validation ID
     - form_warming_up|step_request
         url: /registration
+        headers
+        - Cookie: %%_cookies
         is_https|param_from_form
           name: is_https
     - form_submit|step_request
         url: /registration
+        headers
+        - Cookie: %%_cookies
         is_https|param_from_form
           name: is_https
         post
@@ -86,12 +108,71 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    - logout|step_request
-        url: /logout
+    # url: /manage/data/content/text
+    - request_url-/manage/data/content/text-registered|step_request
+        url: /manage/data/content/text
         headers
-        - Cookie: cookies_is_enabled=true
+        - Cookie: %%_cookies
         is_https|param_from_form
           name: is_https
+    - response_check-/manage/data/content/text-registered|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test
+    - request_url-/manage/data/content/text/test-registered|step_request
+        url: /manage/data/content/text/test
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
+    - response_check-/manage/data/content/text/test-registered|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text//insert
+    - request_url-/manage/data/content/text//insert-registered|step_request
+        url: /manage/data/content/text//insert
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
+    - response_check-/manage/data/content/text//insert-registered|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test/update
+    - request_url-/manage/data/content/text/test/update-registered|step_request
+        url: /manage/data/content/text/test/update
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
+    - response_check-/manage/data/content/text/test/update-registered|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url: /manage/data/content/text/test/delete
+    - request_url-/manage/data/content/text/test/delete-registered|step_request
+        url: /manage/data/content/text/test/delete
+        headers
+        - Cookie: %%_cookies
+        is_https|param_from_form
+          name: is_https
+    - response_check-/manage/data/content/text/test/delete-registered|step_check
+        where: http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
