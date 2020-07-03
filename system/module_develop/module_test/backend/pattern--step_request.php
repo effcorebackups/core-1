@@ -30,7 +30,7 @@ namespace effcore {
     if (isset($response['info']['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
     if (isset($response['info']['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
     if (isset($response['info']['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
-    if (is_array($response['headers']['Set-Cookie'])) {
+    if (isset($response['headers']['Set-Cookie'])) {
       foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
         $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
       }

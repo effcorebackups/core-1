@@ -107,6 +107,7 @@ namespace effcore {
                   $hex_uagent_hash_8. # strlen == 8
                   $hex_random;        # strlen == 8
     $session_id.= core::signature_get($session_id, 'session', 8);
+    header_remove('Set-Cookie');
     setcookie('session_id', ($_COOKIE['session_id'] = $session_id), $expired, '/', $cookie_domain);
     setcookie('cookies_is_enabled', 'true',                         $expired, '/', $cookie_domain);
     return $session_id;
