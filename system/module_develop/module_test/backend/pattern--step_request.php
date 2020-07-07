@@ -51,7 +51,7 @@ namespace effcore {
   function prepared_headers_get() {
     $result = [];
     foreach ($this->headers as $c_key => $c_value) {
-      if ($c_value === '%%_cookies') $c_value = 'Cookie: '.$this->cookies_get();
+      if ($c_value === '%%_test_cookies') $c_value = 'Cookie: '.$this->cookies_get();
       $result[$c_key] = $c_value;
     }
     return $result;
@@ -60,11 +60,11 @@ namespace effcore {
   function prepared_post_get() {
     $result = [];
     foreach ($this->post as $c_key => $c_value) {
-      if ($c_value === '%%_nickname_random') $c_value = $this->random_nickname_get();
-      if ($c_value === '%%_password_random') $c_value = $this->random_password_get();
-      if ($c_value === '%%_email_random'   ) $c_value = $this->random_email_get   ();
-      if ($c_value === '%%_captcha'        ) $c_value = $this->captcha_code_get   ();
-      if ($c_value === '%%_validation_id'  ) $c_value = $this->validation_id_get  ();
+      if ($c_value === '%%_test_nickname_random'   ) $c_value = $this->random_nickname_get();
+      if ($c_value === '%%_test_password_random'   ) $c_value = $this->random_password_get();
+      if ($c_value === '%%_test_email_random'      ) $c_value = $this->random_email_get   ();
+      if ($c_value === '%%_test_captcha'           ) $c_value = $this->captcha_code_get   ();
+      if ($c_value === '%%_test_form_validation_id') $c_value = $this->validation_id_get  ();
       $result[$c_key] = $c_value;
     }
     return $result;

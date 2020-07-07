@@ -27,7 +27,7 @@ tests
     - request_url-/manage/data/content/text/test|step_request
         url: /manage/data/content/text/test
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test|step_check
@@ -40,7 +40,7 @@ tests
     - request_url-/manage/data/content/text//insert|step_request
         url: /manage/data/content/text//insert
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text//insert|step_check
@@ -53,7 +53,7 @@ tests
     - request_url-/manage/data/content/text/test/update|step_request
         url: /manage/data/content/text/test/update
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test/update|step_check
@@ -66,7 +66,7 @@ tests
     - request_url-/manage/data/content/text/test/delete|step_request
         url: /manage/data/content/text/test/delete
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test/delete|step_check
@@ -82,25 +82,25 @@ tests
     - form_registration_warming_up|step_request
         url: /registration
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - form_registration_submit|step_request
         url: /registration
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
         post
         - form_id: registration
-        - validation_id: %%_validation_id
-        - email: %%_email_random
-        - nickname: %%_nickname_random
-        - password: %%_password_random
+        - validation_id: %%_test_form_validation_id
+        - email: %%_test_email_random
+        - nickname: %%_test_nickname_random
+        - password: %%_test_password_random
         - timezone: UTC
         - session_params[0]: is_remember
         - session_params[1]: is_fixed_ip
-        - captcha: %%_captcha
+        - captcha: %%_test_captcha
         - button: register
     - response_check|step_check
         where: subm_errs
@@ -112,7 +112,7 @@ tests
     - request_url-/manage/data/content/text-registered|step_request
         url: /manage/data/content/text
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text-registered|step_check
@@ -125,7 +125,7 @@ tests
     - request_url-/manage/data/content/text/test-registered|step_request
         url: /manage/data/content/text/test
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test-registered|step_check
@@ -138,7 +138,7 @@ tests
     - request_url-/manage/data/content/text//insert-registered|step_request
         url: /manage/data/content/text//insert
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text//insert-registered|step_check
@@ -151,7 +151,7 @@ tests
     - request_url-/manage/data/content/text/test/update-registered|step_request
         url: /manage/data/content/text/test/update
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test/update-registered|step_check
@@ -164,7 +164,7 @@ tests
     - request_url-/manage/data/content/text/test/delete-registered|step_request
         url: /manage/data/content/text/test/delete
         headers
-        - Cookie: %%_cookies
+        - Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
     - response_check-/manage/data/content/text/test/delete-registered|step_check
