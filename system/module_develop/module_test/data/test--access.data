@@ -79,13 +79,13 @@ tests
   # registered user
   # ─────────────────────────────────────────────────────────────────────
     # warming up the form for initialize CAPTCHA and Validation ID
-    - form_warming_up|step_request
+    - form_registration_warming_up|step_request
         url: /registration
         headers
         - Cookie: %%_cookies
         is_https|param_from_form
           name: is_https
-    - form_submit|step_request
+    - form_registration_submit|step_request
         url: /registration
         headers
         - Cookie: %%_cookies
@@ -173,6 +173,14 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+  # ─────────────────────────────────────────────────────────────────────
+  # registered user + role
+  # ─────────────────────────────────────────────────────────────────────
+    - set_roles|step_code
+        handler: \effcore\modules\test\events_test::set_roles
+        args
+        - id_user: %%_user_last_registered
+        - id_role: test
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
