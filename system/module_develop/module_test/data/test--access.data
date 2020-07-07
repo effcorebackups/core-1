@@ -93,7 +93,7 @@ tests
           name: is_https
         post
         - form_id: registration
-        - validation_id: %%_test_form_validation_id
+        - validation_id: %%_test_form_validation_id{registration}
         - email: %%_test_email_random
         - nickname: %%_test_nickname_random
         - password: %%_test_password_random

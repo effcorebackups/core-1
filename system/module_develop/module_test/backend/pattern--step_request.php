@@ -59,47 +59,9 @@ namespace effcore {
 
   function prepared_post_get() {
     $result = [];
-    foreach ($this->post as $c_key => $c_value) {
-      if ($c_value === '%%_test_nickname_random'   ) $c_value = $this->random_nickname_get();
-      if ($c_value === '%%_test_password_random'   ) $c_value = $this->random_password_get();
-      if ($c_value === '%%_test_email_random'      ) $c_value = $this->random_email_get   ();
-      if ($c_value === '%%_test_captcha'           ) $c_value = $this->captcha_code_get   ();
-      if ($c_value === '%%_test_form_validation_id') $c_value = $this->validation_id_get  ();
-      $result[$c_key] = $c_value;
-    }
+    foreach ($this->post as $c_key              => $c_value)
+                    $result[$c_key] = token::apply($c_value);
     return $result;
-  }
-
-  function random_nickname_get() {
-    return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));
-  }
-
-  function random_email_get() {
-    return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com';
-  }
-
-  function random_password_get() {
-    return core::password_generate();
-  }
-
-  function captcha_code_get() {
-    if (module::is_enabled('captcha')) {
-      $last_responce = end(static::$history);
-      if ($last_responce) {
-        return field_captcha::get_code_by_id(
-          core::ip_to_hex($last_responce['info']['primary_ip'])
-        );
-      }
-    }
-  }
-
-  function validation_id_get() {
-    $last_responce = end(static::$history);
-    if ($last_responce) {
-      $form_id            = $this->post   ['form_id']                                    ?? '';
-      $prev_validation_id = $last_responce['headers']['X-Form-Validation-Id--'.$form_id] ?? '';
-      return $prev_validation_id;
-    }
   }
 
   function cookies_get() {
