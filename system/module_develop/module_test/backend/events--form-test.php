@@ -6,10 +6,12 @@
 
 namespace effcore\modules\test {
           use const \effcore\br;
+          use \effcore\core;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\page;
           use \effcore\test;
+          use \effcore\text_multiline;
           use \effcore\text;
           abstract class events_form_test {
 
@@ -50,9 +52,9 @@ namespace effcore\modules\test {
           if (!empty($test_result['reports'])) {
             $items['report']->child_select('document')->children_delete();
             foreach ($test_result['reports'] as $c_part) {
-              if (is_array($c_part))
-                   $items['report']->child_select('document')->child_insert(new markup('p', [], implode(br, $c_part)));
-              else $items['report']->child_select('document')->child_insert(new markup('p', [],             $c_part) );
+              if (is_array($c_part)) foreach ($c_part as &$c_line) $c_line = core::return_rendered($c_line);
+              if (is_array($c_part)) $items['report']->child_select('document')->child_insert(new markup('p', [], new text_multiline($c_part) ));
+              else                   $items['report']->child_select('document')->child_insert(new markup('p', [],                    $c_part  ));
             }
           }
         }

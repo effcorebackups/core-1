@@ -17,23 +17,23 @@ namespace effcore {
     $prepared_url     = $this->prepared_url_get    ();
     $prepared_headers = $this->prepared_headers_get();
     $prepared_post    = $this->prepared_post_get   ();
-                      $reports[] = translation::apply('make request to "%%_url"', ['url'   => $this->prepared_url_get()]);
-    if ($this->proxy) $reports[] = translation::apply('proxy server = %%_proxy',  ['proxy' => $this->proxy]);
-    foreach ($prepared_headers as           $c_value) $reports[] = translation::apply('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
-    foreach ($prepared_post    as $c_key => $c_value) $reports[] = translation::apply('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
+                      $reports[] = new text('make request to "%%_url"', ['url'   => $this->prepared_url_get()]);
+    if ($this->proxy) $reports[] = new text('proxy server = %%_proxy',  ['proxy' => $this->proxy]);
+    foreach ($prepared_headers as           $c_value) $reports[] = new text('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
+    foreach ($prepared_post    as $c_key => $c_value) $reports[] = new text('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
   # make request
     $response = static::request(
       $prepared_url,
       $prepared_headers,
       $prepared_post, $this->proxy);
-    if (isset($response['info']['http_code'   ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info']['http_code'   ]]);
-    if (isset($response['info']['primary_ip'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info']['primary_ip'  ]]);
-    if (isset($response['info']['primary_port'])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
-    if (isset($response['info']['local_ip'    ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
-    if (isset($response['info']['local_port'  ])) $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
+    if (isset($response['info']['http_code'   ])) $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info']['http_code'   ]]);
+    if (isset($response['info']['primary_ip'  ])) $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info']['primary_ip'  ]]);
+    if (isset($response['info']['primary_port'])) $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
+    if (isset($response['info']['local_ip'    ])) $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
+    if (isset($response['info']['local_port'  ])) $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
     if (isset( $response['headers']['Set-Cookie']) ) {
       foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
-        $reports[] = translation::apply('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
+        $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
       }
     }
     $c_results['reports'][] = $reports;
