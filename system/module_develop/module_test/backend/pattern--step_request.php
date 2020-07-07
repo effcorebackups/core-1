@@ -50,29 +50,16 @@ namespace effcore {
 
   function prepared_headers_get() {
     $result = [];
-    foreach ($this->headers as $c_key => $c_value) {
-      if ($c_value === '%%_test_cookies') $c_value = 'Cookie: '.$this->cookies_get();
-      $result[$c_key] = $c_value;
-    }
+    foreach ($this->headers as $c_key => $c_value)
+      $result[$c_key] = token::apply($c_value);
     return $result;
   }
 
   function prepared_post_get() {
     $result = [];
-    foreach ($this->post as $c_key              => $c_value)
-                    $result[$c_key] = token::apply($c_value);
+    foreach ($this->post as $c_key => $c_value)
+      $result[$c_key] = token::apply($c_value);
     return $result;
-  }
-
-  function cookies_get() {
-    $result = [];
-    foreach (static::$history as $c_responce) {
-      if ( isset($c_responce['headers']['Set-Cookie']) ) {
-        foreach ($c_responce['headers']['Set-Cookie'] as $c_cookie) {
-          $c_key   = core::array_key_first($c_cookie['parsed']);
-          $c_value =                 reset($c_cookie['parsed']);
-          $result[$c_key] = $c_value; }}}
-    return core::data_to_attr($result, false, '; ', '', '');
   }
 
   ###########################

@@ -19,3 +19,7 @@ tokens
     match: %%_test_form_validation_id
     type: code
     handler: \effcore\modules\test\events_token::on_apply
+- test_cookies
+    match: %%_test_cookies
+    type: code
+    handler: \effcore\modules\test\events_token::on_apply
