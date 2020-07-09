@@ -9,14 +9,18 @@ namespace effcore {
 
   public $handler;
   public $args;
+  public $is_apply_tokens = true;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    return call_user_func_array($this->handler, $this->args + ['data' => [
+    if ($this->is_apply_tokens)
+      foreach ($this->args as &$c_arg)
+        $c_arg = token::apply($c_arg);
+    $c_results['return'] = call_user_func_array($this->handler, [
       'test'     => &$test,
       'scenario' => &$c_scenario,
       'step'     => &$c_step,
       'results'  => &$c_results
-    ]]);
+    ] + $this->args);
   }
 
 }}

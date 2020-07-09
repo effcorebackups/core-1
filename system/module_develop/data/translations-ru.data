@@ -73,6 +73,7 @@ translations
     - Field varchar: Поле varchar
     - For ID: Для ID
     - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: По соображениям производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
+    - found user ID = "%%_id_user" by nickname = "%%_nickname": найден ID пользователя = "%%_id_user" по псевдониму = "%%_nickname"
     - Full report: Полный отчёт
     - Gradient of main color: Градиент основного цвета
     - Group 1: Группа 1

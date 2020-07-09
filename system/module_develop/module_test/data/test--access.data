@@ -95,7 +95,7 @@ tests
         - form_id: registration
         - validation_id: %%_test_form_validation_id{registration}
         - email: %%_test_email_random
-        - nickname: %%_test_nickname_random
+        - nickname: %%_test_nickname_random{0}
         - password: %%_test_password_random
         - timezone: UTC
         - session_params[0]: is_remember
@@ -178,9 +178,12 @@ tests
   # ─────────────────────────────────────────────────────────────────────
     - set_roles|step_code
         handler: \effcore\modules\test\events_test::set_roles
+        is_apply_tokens: true
         args
-        - id_user: %%_user_last_registered
-        - id_role: test
+        - nickname: %%_test_nickname_random{0}
+        - roles
+          - =: test
+        - is_delete_old_roles: true
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────

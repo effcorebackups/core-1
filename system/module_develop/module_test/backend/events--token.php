@@ -14,9 +14,12 @@ namespace effcore\modules\test {
   static $cache = [];
 
   static function on_apply($name, $args = []) {
-    if ($name === 'test_email_random'   ) return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com';
-    if ($name === 'test_nickname_random') return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));
-    if ($name === 'test_password_random') return core::password_generate();
+    if ($name === 'test_email_random'    && count($args) === 0) {                                                                                                            return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com';}
+    if ($name === 'test_nickname_random' && count($args) === 0) {                                                                                                            return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));               }
+    if ($name === 'test_password_random' && count($args) === 0) {                                                                                                            return         core::password_generate();                                    }
+    if ($name === 'test_email_random'    && count($args) === 1) {if (!isset( static::$cache['test_email_random'   ][$args[0]] )) static::$cache['test_email_random'   ][$args[0]] = 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com'; return static::$cache['test_email_random'   ][$args[0]];}
+    if ($name === 'test_nickname_random' && count($args) === 1) {if (!isset( static::$cache['test_nickname_random'][$args[0]] )) static::$cache['test_nickname_random'][$args[0]] = 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));                return static::$cache['test_nickname_random'][$args[0]];}
+    if ($name === 'test_password_random' && count($args) === 1) {if (!isset( static::$cache['test_password_random'][$args[0]] )) static::$cache['test_password_random'][$args[0]] =         core::password_generate();                                     return static::$cache['test_password_random'][$args[0]];}
     if ($name === 'test_captcha') {
       if (module::is_enabled('captcha')) {
         $last_responce = end(step_request::$history);
