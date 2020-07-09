@@ -14,7 +14,9 @@ namespace effcore\modules\test {
       'nickname' => $nickname
     ]))->select();
     if ($user) {
-      $c_results['reports'][] = new text('found user ID = "%%_id_user" by nickname = "%%_nickname"', ['id_user' => $user->id, 'nickname' => $nickname]);
+      $reports[] = new text('changing roles for user with nickname = "%%_nickname"', ['nickname' => $nickname]);
+      $reports[] = new text('found user ID = "%%_id_user" by nickname = "%%_nickname"', ['id_user' => $user->id, 'nickname' => $nickname]);
+      $c_results['reports'][] = $reports;
       return true;
     }
   }

@@ -14,7 +14,6 @@ translations
     - &ndash; request header param "%%_value": &ndash; header-параметр запыту "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
-    - &ndash; result of checking is = "%%_result": &ndash; вынік праверкі = "%%_result"
     - Adaptive table: Адаптыўная табліца
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х рэгістрацый Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.
     - All types of messages you can see above.: Усе тыпы паведамленняў Вы можаце ўбачыць вышэй.
@@ -25,6 +24,7 @@ translations
     - Call "%%_call": Выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: ячэйка №%%_number
+    - changing roles for user with nickname = "%%_nickname": змена роляў для карыстальніка з псеўданімам = "%%_nickname"
     - Checkbox 1: Сцяжок 1
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
@@ -139,6 +139,7 @@ translations
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
+    - result of checking is = "%%_result": вынік праверкі = "%%_result"
     - return = "%%_return": вяртанне = "%%_return"
     - Row ID: ID радка
     - row with auto id = 1: радок з аўтаматычным ідэнтыфікатарам = 1
