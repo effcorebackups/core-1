@@ -8,8 +8,11 @@ namespace effcore\modules\user {
           abstract class events_selection {
 
   static function on_selection_build_before($event, $selection) {
+    if ($selection->id === 'instance_select-user') {
+      $selection->field_insert_handler('roles', 'Roles', '\\effcore\\modules\\user\\events_page_user::on_show_user_roles');
+    }
     if ($selection->id === 'instance_select_multiple-relation_role_ws_user' ||
-        $selection->id === 'instance_select-relation_role_ws_user') {
+        $selection->id === 'instance_select'.      '-relation_role_ws_user') {
       $selection->field_insert_entity('user.nickname', 'user', 'nickname', ['type' => 'join_field', 'weight' => 390]);
    /* $selection->fields['relation_role_ws_user.id_user']->title = 'User ID'; */
       $selection->query_params['join_script']['with_user'] = (object)[

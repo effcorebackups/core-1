@@ -24,20 +24,15 @@ selections
         type: field
         entity_name: user
         entity_field_name: email
+    - user.avatar_path
+        type: field
+        entity_name: user
+        entity_field_name: avatar_path
     - user.timezone
         type: field
         entity_name: user
         entity_field_name: timezone
         filter: \effcore\translation::apply
-    - user.is_embedded
-        type: field
-        entity_name: user
-        entity_field_name: is_embedded
-        filter: \effcore\translation::apply
-    - user.avatar_path
-        type: field
-        entity_name: user
-        entity_field_name: avatar_path
     - user.created
         type: field
         entity_name: user
@@ -46,6 +41,11 @@ selections
         type: field
         entity_name: user
         entity_field_name: updated
+    - user.is_embedded
+        type: field
+        entity_name: user
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
     - roles
         type: handler
         title: Roles
