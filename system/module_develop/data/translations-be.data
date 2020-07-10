@@ -168,6 +168,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
     - The test was failed!: Тэст не атрымаўся!
     - The test was successful.: Тэст выкананы паспяхова.
+    - there will be try to delete all roles: будзе спроба выдаліць усе ролі
     - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.
