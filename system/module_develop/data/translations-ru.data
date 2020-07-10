@@ -168,7 +168,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
-    - there will be try to delete all roles: будет попытаться удалить все роли
+    - there will be try to delete all roles: будет попытка удалить все роли
     - there will be try to insert roles\: %%_roles: будет попытка вставить роли: %%_roles
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.
