@@ -141,6 +141,8 @@ translations
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
     - return = "%%_return": вяртанне = "%%_return"
+    - roles after insertion\: %%_roles: ролі пасля ўстаўкі: %%_roles
+    - roles before insertion\: %%_roles: ролі перад устаўкай: %%_roles
     - Row ID: ID радка
     - row with auto id = 1: радок з аўтаматычным ідэнтыфікатарам = 1
     - row with auto id = 2: радок з аўтаматычным ідэнтыфікатарам = 2
@@ -166,6 +168,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
     - The test was failed!: Тэст не атрымаўся!
     - The test was successful.: Тэст выкананы паспяхова.
+    - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.
     - Total generation time: Агульны час генерацыі
