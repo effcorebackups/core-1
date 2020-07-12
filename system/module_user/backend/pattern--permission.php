@@ -52,4 +52,41 @@ namespace effcore {
     return static::$cache_relations[$id_permission] ?? [];
   }
 
+  static function relation_role_select($id_permission) {
+    $result = [];
+    $roles = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
+      'id_permission_!f' => 'id_permission',
+      'operator'         => '=',
+      'id_permission_!v' => $id_permission]]);
+    foreach ($roles as $c_role)
+      $result[$c_role->id_role] =
+              $c_role->id_role;
+    return $result;
+  }
+
+  static function relation_role_insert($id_permission, $roles, $module_id = null) {
+    foreach ($roles as $c_role) {
+      (new instance('relation_role_ws_permission', [
+        'id_permission' => $id_permission,
+        'id_role'       => $c_role,
+        'module_id'     => $module_id
+      ]))->insert();
+    }
+  }
+
+  static function relation_role_delete($id_permission, $id_role) {
+    (new instance('relation_role_ws_permission', [
+      'id_permission' => $id_permission,
+      'id_role'       => $id_role,
+    ]))->delete();
+  }
+
+  static function relation_role_delete_all($id_permission) {
+    entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
+      'id_permission_!f' => 'id_permission',
+      'operator'         => '=',
+      'id_permission_!v' => $id_permission
+    ]]);
+  }
+
 }}
