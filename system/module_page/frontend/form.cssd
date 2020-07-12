@@ -81,7 +81,7 @@
     appearance: none; -webkit-appearance: none; -moz-appearance: none;
     margin: 5px 0;
     padding: 10px;
-    border: 3px solid %%_color_main;
+    border: 1px solid %%_color_main;
     border-radius: 0;
     font-family: 'Arial';
     font-size: 16px;
@@ -89,10 +89,12 @@
     color: %%_color_field_text;
     background-color: %%_color_field}
   select {cursor: pointer}
+  select option {color: %%_color_field_text}
   textarea {display: block; box-sizing: border-box; width: 100%; min-width: 100px}
   input[type='range'] {border-radius: 20px}
   input[type='email'] {text-transform: lowercase}
   input[type='color'] {text-transform: lowercase}
+  input[type='file' ] {padding: 8px}
 
   /* checkboxes and radiobuttons */
 
@@ -103,6 +105,7 @@
     height: 26px;
     margin: 2px 7px 2px 0;
     padding: 0;
+    border: 3px solid %%_color_main;
     vertical-align: middle;
     cursor: pointer}
   input[type='radio'   ] {border-radius: 13px}
@@ -154,9 +157,9 @@
   /* buttons */
 
   button {
-    min-height: 44px;
+    min-height: 40px;
     margin: 10px 20px 10px 0;
-    padding: 13px 30px;
+    padding: 11px 30px;
     cursor: pointer;
     border: none;
     border-radius: 25px;
@@ -181,17 +184,18 @@
   button[data-style^='narrow'] {
     margin: 0 0 0 8px;
     padding: 0;
-    width: 44px;
+    width: 40px;
     background-repeat: no-repeat}
   button[data-style^='narrow-update'] {background-image: url('pictures/icons-button.svgd'); background-position: 50%   0  }
-  button[data-style^='narrow-insert'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -44px}
-  button[data-style^='narrow-delete'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -88px}
+  button[data-style^='narrow-insert'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -40px}
+  button[data-style^='narrow-delete'] {background-image: url('pictures/icons-button.svgd'); background-position: 50% -80px}
 
   /* disabled elements */
 
   x-field[aria-disabled='true']   {opacity: .3}
   x-field[aria-disabled='true'] * {cursor: default !important}
   button:disabled {cursor: default; opacity: .3}
+  select option:disabled {color: %%_color_field_text{0,0,0,.5}}
 
   /* checkbox color */
 
@@ -277,8 +281,8 @@
     margin-right: 10px;
     vertical-align: middle}
 
-  x-widget[data-controls-is-inline-full] x-field                    {display: inline-block; margin: 0 20px 0 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full] x-field [data-field-title] {display: inline-block; margin: 0 10px 0 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full] x-field                    {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
+  x-widget[data-controls-is-inline-full] x-field [data-field-title] {display: inline-block; margin: 2px 10px 2px 0; vertical-align: middle}
   x-widget[data-controls-is-inline-full] x-field input {margin: 0}
   x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] {margin-right: 10px}
   x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
@@ -315,7 +319,7 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type='select'] select {max-width: 130px; vertical-align: top}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type^='file'] input {max-width: 300px; vertical-align: top}
   x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type^='file'] x-description {max-width: 300px}
-  x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 33px 8px 0 0}
+  x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style^='narrow'] {border-radius: 5px}
 
   /* widget 'items-info' */
