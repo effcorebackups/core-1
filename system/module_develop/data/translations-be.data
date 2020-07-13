@@ -17,6 +17,7 @@ translations
     - Adaptive table: Адаптыўная табліца
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х рэгістрацый Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.
     - All types of messages you can see above.: Усе тыпы паведамленняў Вы можаце ўбачыць вышэй.
+    - ANONYMOUS USER: АНАНІМНЫ КАРЫСТАЛЬНІК
     - Autoincrement: Аўтаінкрымент
     - autoload: аўтазагрузка
     - beginning: пачатак
@@ -138,6 +139,8 @@ translations
     - Radiobutton 1: Перамыкач 1
     - Radiobutton 2 (checked): Перамыкач 2 (адзначаны)
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
+    - REGISTERED USER + ROLE: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК + РОЛЯ
+    - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - result of checking is = "%%_result": вынік праверкі = "%%_result"

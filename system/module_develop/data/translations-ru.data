@@ -17,6 +17,7 @@ translations
     - Adaptive table: Адаптивная таблица
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х регистраций Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
+    - ANONYMOUS USER: АНОНИМНЫЙ ПОЛЬЗОВАТЕЛЬ
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
     - beginning: начало
@@ -138,6 +139,8 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (отмечен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
+    - REGISTERED USER + ROLE: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ + РОЛЬ
+    - REGISTERED USER: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
     - Relation (tree view): Связь (в виде дерева)
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - result of checking is = "%%_result": результат проверки = "%%_result"

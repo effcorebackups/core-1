@@ -12,6 +12,8 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # anonymous user
   # ─────────────────────────────────────────────────────────────────────
+    - title_for_anonymous_user|step_title
+        title: ANONYMOUS USER
     # url: /manage/data/content/text
     - request_url-/manage/data/content/text|step_request
         url: /manage/data/content/text
@@ -78,6 +80,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # registered user
   # ─────────────────────────────────────────────────────────────────────
+    - title_for_registered_user_delimiter|step_title
+        title: ==================================================================
+    - title_for_registered_user|step_title
+        title: REGISTERED USER
     # warming up the form for initialize CAPTCHA and Validation ID
     - form_registration_warming_up|step_request
         url: /registration
@@ -176,6 +182,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # registered user + role
   # ─────────────────────────────────────────────────────────────────────
+    - title_for_registered_user_ws_role_delimiter|step_title
+        title: ==================================================================
+    - title_for_registered_user_ws_role|step_title
+        title: REGISTERED USER + ROLE
     - set_user_roles|step_set_user_roles
         nickname: %%_test_nickname_random{0}
         roles

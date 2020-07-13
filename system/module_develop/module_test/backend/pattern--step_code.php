@@ -8,7 +8,7 @@ namespace effcore {
           class step_code {
 
   public $handler;
-  public $args;
+  public $args = [];
   public $is_apply_tokens = true;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
