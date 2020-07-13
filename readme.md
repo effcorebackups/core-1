@@ -99,7 +99,7 @@ their purpose without resorting to any documentation.
 Also, everything that seems complicated was rejected or remade.
 Each function iteratively improved from 3 to 10 times.
 Functional testing was performed on the whole set of
-combinatorial permutations.
+combinatorial transpositions.
 
 Has a built-in parser and class loader PSR-0, thanks to which, to add
 a new library (a set of classes), it's enough to place the files

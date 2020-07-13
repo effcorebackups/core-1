@@ -18,6 +18,8 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # combinatorics: possible transpositions of '.|..|...' + '0' + '1' in file path from URL
   # ─────────────────────────────────────────────────────────────────────
+        - title_0|step_title
+            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.|..|...' + '0' + '1' IN FILE PATH FROM URL
         # url: /
         - request_url-/|step_request
             url: /
@@ -323,6 +325,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # combinatorics: possible transpositions of '.' + '/' + '0' in file path from URL (excluding duplicates)
   # ─────────────────────────────────────────────────────────────────────
+        - title_1_delimiter|step_title
+            title: ==================================================================
+        - title_1|step_title
+            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN FILE PATH FROM URL (EXCLUDING DUPLICATES)
         # url: //
         - request_url-//|step_request
             url: //
@@ -573,6 +579,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing files
   # ─────────────────────────────────────────────────────────────────────
+        - title_2_delimiter|step_title
+            title: ==================================================================
+        - title_2|step_title
+            title: EXISTING FILES
         # url: /~/.ssh/id_rsa
         - request_url-/~/.ssh/id_rsa|step_request
             url: /~/.ssh/id_rsa
@@ -950,6 +960,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing files + redirect
   # ─────────────────────────────────────────────────────────────────────
+        - title_3_delimiter|step_title
+            title: ==================================================================
+        - title_3|step_title
+            title: EXISTING FILES + REDIRECT
         # url: /~/.ssh/id_rsa/
         - request_url-/~/.ssh/id_rsa/|step_request
             url: /~/.ssh/id_rsa/
@@ -1348,6 +1362,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing directories
   # ─────────────────────────────────────────────────────────────────────
+        - title_4_delimiter|step_title
+            title: ==================================================================
+        - title_4|step_title
+            title: EXISTING DIRECTORIES
         # url: /dynamic
         - request_url-/dynamic|step_request
             url: /dynamic
@@ -1801,6 +1819,10 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # existing directories + redirect
   # ─────────────────────────────────────────────────────────────────────
+        - title_5_delimiter|step_title
+            title: ==================================================================
+        - title_5|step_title
+            title: EXISTING DIRECTORIES + REDIRECT
         # url: /dynamic/
         - request_url-/dynamic/|step_request
             url: /dynamic/
