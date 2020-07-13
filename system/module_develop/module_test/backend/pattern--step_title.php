@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore {
-          class step_code {
+          class step_title {
 
-  public $handler;
+  public $title;
   public $args;
   public $is_apply_tokens = true;
 
@@ -15,13 +15,7 @@ namespace effcore {
     if ($this->is_apply_tokens)
       foreach ($this->args as &$c_arg)
         $c_arg = token::apply($c_arg);
-    $c_results['reports'][] = new text('call "%%_call"', ['call' => $this->handler]);
-    call_user_func_array($this->handler, [
-      'test'     => &$test,
-      'scenario' => &$c_scenario,
-      'step'     => &$c_step,
-      'results'  => &$c_results
-    ] + $this->args);
+    $c_results['reports'][] = new text($this->title, $this->args);
   }
 
 }}

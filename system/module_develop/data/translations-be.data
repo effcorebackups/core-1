@@ -22,6 +22,7 @@ translations
     - beginning: пачатак
     - Call "%%_call" for #%%_number: Выклік "%%_call" для #%%_number
     - Call "%%_call": Выклік "%%_call"
+    - call "%%_call": выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: ячэйка №%%_number
     - changing roles for user with nickname = "%%_nickname": змена роляў для карыстальніка з псеўданімам = "%%_nickname"

@@ -1,0 +1,14 @@
+tests
+- demo|test
+    id: demo
+    title: Demo
+    scenario
+    - step_code_demo|step_code
+        handler: \effcore\modules\test\events_test::step_code_demo_handler
+        args
+        - param_1: value 1
+        - param_2: value 2
+        - param_3: value 3
+        is_apply_tokens: true
+    - return_result|step_return
+        value: 1
