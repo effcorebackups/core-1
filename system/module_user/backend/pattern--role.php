@@ -43,4 +43,41 @@ namespace effcore {
     return static::$cache;
   }
 
+  static function relation_permission_select($id_role) {
+    $result = [];
+    $items = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
+      'id_role_!f' => 'id_role',
+      'operator'   => '=',
+      'id_role_!v' => $id_role]]);
+    foreach ($items as $c_item)
+      $result[$c_item->id_permission] =
+              $c_item->id_permission;
+    return $result;
+  }
+
+  static function relation_permission_insert($id_role, $permissions, $module_id = null) {
+    foreach ($permissions as $c_id_permission) {
+      (new instance('relation_role_ws_permission', [
+        'id_permission' => $c_id_permission,
+        'id_role'       =>   $id_role,
+        'module_id'     => $module_id
+      ]))->insert();
+    }
+  }
+
+  static function relation_permission_delete($id_role, $id_permission) {
+    (new instance('relation_role_ws_permission', [
+      'id_role'       => $id_role,
+      'id_permission' => $id_permission
+    ]))->delete();
+  }
+
+  static function relation_permission_delete_all($id_role) {
+    entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
+      'id_role_!f' => 'id_role',
+      'operator'   => '=',
+      'id_role_!v' => $id_role
+    ]]);
+  }
+
 }}

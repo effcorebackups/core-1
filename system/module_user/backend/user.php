@@ -44,21 +44,21 @@ namespace effcore {
 
   static function relation_role_select($id_user) {
     $result = [];
-    $roles = entity::get('relation_role_ws_user')->instances_select(['conditions' => [
+    $items = entity::get('relation_role_ws_user')->instances_select(['conditions' => [
       'id_user_!f' => 'id_user',
       'operator'   => '=',
       'id_user_!v' => $id_user]]);
-    foreach ($roles as $c_role)
-      $result[$c_role->id_role] =
-              $c_role->id_role;
+    foreach ($items as $c_item)
+      $result[$c_item->id_role] =
+              $c_item->id_role;
     return $result;
   }
 
   static function relation_role_insert($id_user, $roles, $module_id = null) {
-    foreach ($roles as $c_role) {
+    foreach ($roles as $c_id_role) {
       (new instance('relation_role_ws_user', [
-        'id_user'   => $id_user,
-        'id_role'   => $c_role,
+        'id_role'   => $c_id_role,
+        'id_user'   =>   $id_user,
         'module_id' => $module_id
       ]))->insert();
     }
@@ -67,7 +67,7 @@ namespace effcore {
   static function relation_role_delete($id_user, $id_role) {
     (new instance('relation_role_ws_user', [
       'id_user' => $id_user,
-      'id_role' => $id_role,
+      'id_role' => $id_role
     ]))->delete();
   }
 
