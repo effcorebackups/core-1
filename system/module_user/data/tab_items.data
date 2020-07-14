@@ -83,3 +83,10 @@ tab_items
       - =: admins
       permissions
       - =: feedback_select
+# ─────────────────────────────────────────────────────────────────────
+- security_settings|tab_item
+    id: security_settings
+    id_parent: null
+    id_tab: security
+    action_name: settings
+    title: Settings

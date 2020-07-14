@@ -74,6 +74,10 @@ events
       handler: \effcore\modules\user\events_form_instance_update::on_submit
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
+  - security|event
+      for: security
+      weight: +600
+      handler: \effcore\modules\user\events_page_security::on_redirect
   - user|event
       for: user
       weight: +500

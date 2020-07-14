@@ -267,7 +267,7 @@ namespace effcore {
         );
       } else {
         $this->child_insert(
-          new markup('x-no-items', [], 'no items'), 'no_items'
+          new markup('x-no-items', ['data-style' => 'table'], 'no items'), 'no_items'
         );
       }
       event::start('on_decorator_build_after', $this->id, [&$this]);

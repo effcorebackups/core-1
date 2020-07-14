@@ -30,26 +30,26 @@ namespace effcore\modules\develop {
   static function on_redirect($event, $page) {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');
-    if ($type == null) url::go($page->args_get('base').'/trees');
-    if ($type == 'trees') {
+    if ($type === null) url::go($page->args_get('base').'/trees');
+    if ($type === 'trees') {
       $trees = tree::select_all('nosql');
       core::array_sort_by_text_property($trees);
       if (empty($trees[$id])) {
         url::go($page->args_get('base').'/trees/'.reset($trees)->id);
       }
     }
-    if ($type == 'translations') {
+    if ($type === 'translations') {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       unset($languages['en']);
-      if (count($languages) == 0 && $id != null           ) url::go($page->args_get('base').'/translations/'                        );
-      if (count($languages) != 0 && empty($languages[$id])) url::go($page->args_get('base').'/translations/'.reset($languages)->code);
+      if (count($languages) === 0 && $id != null           ) url::go($page->args_get('base').'/translations/'                        );
+      if (count($languages) !== 0 && empty($languages[$id])) url::go($page->args_get('base').'/translations/'.reset($languages)->code);
     }
   }
 
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
-    if ($type == 'trees') {
+    if ($type === 'trees') {
       $trees = tree::select_all('nosql');
       core::array_sort_by_text_property($trees);
       foreach ($trees as $c_tree) {
@@ -59,7 +59,7 @@ namespace effcore\modules\develop {
         );
       }
     }
-    if ($type == 'translations') {
+    if ($type === 'translations') {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       unset($languages['en']);

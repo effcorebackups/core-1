@@ -3,7 +3,8 @@ pages
     id: security
     title: Security
     is_https: true
-    url: /manage/security
+    url: %^(?<base>/manage/security)(/
+>>>>>>>>>>>(?<type>settings)|)$%
     access
       roles
       - =: admins
@@ -22,6 +23,10 @@ pages
     - title
       - title|part_preset_link
           id: title
+    - tabs
+      - tabs|part
+          type: link
+          source: tabs/user/security
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block_security|part

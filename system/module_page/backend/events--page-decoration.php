@@ -16,16 +16,16 @@ namespace effcore\modules\page {
   static function on_redirect($event, $page) {
     $type = $page->args_get('type');
     $id   = $page->args_get('id');
-    if ($type == null            ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
-    if ($type == 'colors'        ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
-    if ($type == 'colors/presets') {$presets = color::preset_get_all(); core::array_sort_by_text_property($presets); if (empty($presets[$id])) url::go($page->args_get('base').'/colors/presets/'.reset($presets)->id);}
-    if ($type == 'layouts'       ) {$layouts = layout::select_all   (); core::array_sort_by_text_property($layouts); if (empty($layouts[$id])) url::go($page->args_get('base').'/layouts/'.       reset($layouts)->id);}
+    if ($type === null            ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
+    if ($type === 'colors'        ) {                                                                                                           url::go($page->args_get('base').'/colors/current'                     );}
+    if ($type === 'colors/presets') {$presets = color::preset_get_all(); core::array_sort_by_text_property($presets); if (empty($presets[$id])) url::go($page->args_get('base').'/colors/presets/'.reset($presets)->id);}
+    if ($type === 'layouts'       ) {$layouts = layout::select_all   (); core::array_sort_by_text_property($layouts); if (empty($layouts[$id])) url::go($page->args_get('base').'/layouts/'.       reset($layouts)->id);}
   }
 
   static function on_tab_build_before($event, $tab) {
     $type = page::get_current()->args_get('type');
   # colors presets
-    if ($type == 'colors/presets') {
+    if ($type === 'colors/presets') {
       $presets = color::preset_get_all();
       core::array_sort_by_text_property($presets);
       foreach ($presets as $c_preset) {
@@ -36,7 +36,7 @@ namespace effcore\modules\page {
       }
     }
   # layouts
-    if ($type == 'layouts') {
+    if ($type === 'layouts') {
       $layouts = layout::select_all();
       core::array_sort_by_text_property($layouts);
       foreach ($layouts as $c_layout) {

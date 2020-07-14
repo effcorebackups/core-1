@@ -10,7 +10,7 @@ namespace effcore\modules\core {
 
   static function on_redirect($event, $page) {
     $action = $page->args_get('action');
-    if ($action == null) {
+    if ($action === null) {
       url::go($page->args_get('base').'/install');
     }
   }

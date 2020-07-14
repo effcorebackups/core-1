@@ -25,7 +25,7 @@ namespace effcore\modules\demo {
 
   static function on_redirect($event, $page) {
     $type = $page->args_get('type');
-    if ($type == null) {
+    if ($type === null) {
       $items = tab_item::select_all(null, 'demo_embedded');
       url::go($page->args_get('base').'/'.reset($items)->action_name);
     }
