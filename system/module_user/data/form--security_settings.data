@@ -1,0 +1,18 @@
+forms
+- security_settings|form
+    title: Settings
+    attributes
+    - id: security_settings
+    - method: post
+    - novalidate: true
+    children
+    - main|fieldset
+        title: Main
+        children
+        - info|text
+            text: UNDER CONSTRUCTION
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        - disabled: true

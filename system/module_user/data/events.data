@@ -36,6 +36,9 @@ events
   - logout|event
       for: logout
       handler: \effcore\modules\user\events_form_logout::on_init
+  - security_settings|event
+      for: security_settings
+      handler: \effcore\modules\user\events_form_security_settings::on_init
   on_form_validate
   - login|event
       for: login
@@ -51,6 +54,9 @@ events
       for: instance_update
       weight: +500
       handler: \effcore\modules\user\events_form_instance_update::on_validate
+  - security_settings|event
+      for: security_settings
+      handler: \effcore\modules\user\events_form_security_settings::on_validate
   on_form_submit
   - login|event
       for: login
@@ -72,6 +78,9 @@ events
       for: instance_update
       weight: +600
       handler: \effcore\modules\user\events_form_instance_update::on_submit
+  - security_settings|event
+      for: security_settings
+      handler: \effcore\modules\user\events_form_security_settings::on_submit
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - security|event

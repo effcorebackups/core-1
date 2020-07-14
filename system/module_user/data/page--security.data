@@ -29,6 +29,12 @@ pages
           source: tabs/user/security
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_security|part
-          type: code
-          source: \effcore\modules\user\events_page_security::block_security
+      - form_security_settings|part
+          display
+            check: page_args
+            where: type
+            match: %^settings$%
+          type: link
+          source: forms/user/security_settings
+          properties
+          - title_is_visible: false
