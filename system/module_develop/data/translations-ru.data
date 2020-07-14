@@ -34,6 +34,8 @@ translations
     - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
     - Classes: Классы
     - Collations: Сравнения
+    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES): КОМБИНАТОРИКА: ВОЗМОЖНЫЕ ПЕРЕСТАНОВКИ '.' + '/' + '0' В ПУТИ ФАЙЛА ИЗ URL (ИСКЛЮЧАЯ ДУБЛИКАТЫ)
+    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КОМБИНАТОРИКА: ВОЗМОЖНЫЕ ПЕРЕСТАНОВКИ '.|..|...' + '0' + '1' В ПУТИ ФАЙЛА ИЗ URL
     - Console: Консоль
     - Constraints: Ограничения
     - Current language: Текущий язык
@@ -54,6 +56,10 @@ translations
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"<br>аргументы = [%%_args]
     - event system was initialized: система событий была инициализирована
     - Execution plan: План выполнения
+    - EXISTING DIRECTORIES + REDIRECT: СУЩЕСТВУЮЩИЕ ДИРЕКТОРИИ + ПЕРЕНАПРАВЛЕНИЕ
+    - EXISTING DIRECTORIES: СУЩЕСТВУЮЩИЕ ДИРЕКТОРИИ
+    - EXISTING FILES + REDIRECT: СУЩЕСТВУЮЩИЕ ФАЙЛЫ + ПЕРЕНАПРАВЛЕНИЕ
+    - EXISTING FILES: СУЩЕСТВУЮЩИЕ ФАЙЛЫ
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспорт диаграммы в файл "%%_file" для использования в программе "StarUML".
     - Field #1: Поле №1
     - Field #2: Поле №2

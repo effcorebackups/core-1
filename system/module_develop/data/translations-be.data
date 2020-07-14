@@ -34,6 +34,8 @@ translations
     - checking on "%%_name" = "%%_value": праверка на "%%_name" = "%%_value"
     - Classes: Класы
     - Collations: Параўнанні
+    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES): КАМБІНАТОРЫКА: МАГЧЫМЫЯ ПЕРАСТАНОЎКІ '.' + '/' + '0' У ШЛЯХУ ФАЙЛА З URL (ВЫКЛЮЧАЮЧЫ ДУБЛІКАТЫ)
+    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КАМБІНАТОРЫКА: МАГЧЫМЫЯ ПЕРАСТАНОЎКІ '.|..|...' + '0' + '1' У ШЛЯХУ ФАЙЛА З URL
     - Console: Кансоль
     - Constraints: Абмежаванні
     - Current language: Бягучая мова
@@ -54,6 +56,10 @@ translations
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"<br>аргументы = [%%_args]
     - event system was initialized: сістэма падзей была ініцыялізавана
     - Execution plan: План выканання
+    - EXISTING DIRECTORIES + REDIRECT: ІСНУЮЧЫЯ ДЫРЭКТОРЫІ + ПЕРАНАКІРАВАННЕ
+    - EXISTING DIRECTORIES: ІСНУЮЧЫЯ ДЫРЭКТОРЫІ
+    - EXISTING FILES + REDIRECT: ІСНУЮЧЫЯ ФАЙЛЫ + ПЕРАНАКІРАВАННЕ
+    - EXISTING FILES: ІСНУЮЧЫЯ ФАЙЛЫ
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспарт дыяграмы ў файл "%%_file" для выкарыстання ў праграме "StarUML".
     - Field #1: Поле №1
     - Field #2: Поле №2

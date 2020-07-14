@@ -16,10 +16,10 @@ tests
           name: quantity_of_iterations
         actions
   # ─────────────────────────────────────────────────────────────────────
-  # combinatorics: possible transpositions of '.|..|...' + '0' + '1' in file path from URL
+  # combinatorics: possible transpositions of '.|..|...' + '0' + '1' in path of file from url
   # ─────────────────────────────────────────────────────────────────────
         - title_0|step_title
-            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.|..|...' + '0' + '1' IN FILE PATH FROM URL
+            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.|..|...' + '0' + '1' IN PATH OF FILE FROM URL
         # url: /
         - request_url-/|step_request
             url: /
@@ -323,12 +323,12 @@ tests
                 - return_result|step_return
                     value: 0
   # ─────────────────────────────────────────────────────────────────────
-  # combinatorics: possible transpositions of '.' + '/' + '0' in file path from URL (excluding duplicates)
+  # combinatorics: possible transpositions of '.' + '/' + '0' in path of file from url (excluding duplicates)
   # ─────────────────────────────────────────────────────────────────────
         - title_1_delimiter|step_title
             title: ==================================================================
         - title_1|step_title
-            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN FILE PATH FROM URL (EXCLUDING DUPLICATES)
+            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES)
         # url: //
         - request_url-//|step_request
             url: //
