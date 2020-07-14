@@ -51,14 +51,16 @@ namespace effcore {
   function prepared_headers_get() {
     $result = [];
     foreach ($this->headers as $c_key => $c_value)
-      $result[$c_key] = token::apply($c_value);
+      if (is_string($c_value))
+        $result[$c_key] = token::apply($c_value);
     return $result;
   }
 
   function prepared_post_get() {
     $result = [];
     foreach ($this->post as $c_key => $c_value)
-      $result[$c_key] = token::apply($c_value);
+      if (is_string($c_value))
+        $result[$c_key] = token::apply($c_value);
     return $result;
   }
 

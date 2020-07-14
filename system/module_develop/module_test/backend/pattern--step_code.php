@@ -12,16 +12,18 @@ namespace effcore {
   public $is_apply_tokens = true;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
-    if ($this->is_apply_tokens)
-      foreach ($this->args as &$c_arg)
-        $c_arg = token::apply($c_arg);
+    $args = [];
+    foreach ($this->args as $c_key => $c_value)
+      if ($this->is_apply_tokens && is_string($c_value))
+           $args[$c_key] = token::apply($c_value);
+      else $args[$c_key] =              $c_value;
     $c_results['reports'][] = new text('call "%%_call"', ['call' => $this->handler]);
     call_user_func_array($this->handler, [
       'test'     => &$test,
       'scenario' => &$c_scenario,
       'step'     => &$c_step,
       'results'  => &$c_results
-    ] + $this->args);
+    ] + $args);
   }
 
 }}
