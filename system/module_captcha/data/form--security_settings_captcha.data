@@ -8,8 +8,13 @@ forms
     children
     - main|fieldset
         children
-        - info|text
-            text: UNDER CONSTRUCTION
+        - length|field_number
+            title: Length
+            element_attributes
+            - name: length
+            - value: 6
+            - min: 3
+            - max: 15
     - button_save|button
         title: save
         attributes
