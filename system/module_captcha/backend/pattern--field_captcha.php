@@ -32,18 +32,15 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
-      $element = $this->child_select('element');
-      $element->attribute_insert('size',      $captcha_length);
-      $element->attribute_insert('minlength', $captcha_length);
-      $element->attribute_insert('maxlength', $captcha_length);
-    # build canvas on form
       $captcha = $this->captcha_select();
       if (!$captcha) {
            $captcha = $this->captcha_generate();
-           $captcha->insert();
-      }
+           $captcha->insert();}
       $this->child_insert_first($captcha->canvas, 'canvas');
+      $element = $this->child_select('element');
+      $element->attribute_insert('size',      $captcha->length);
+      $element->attribute_insert('minlength', $captcha->length);
+      $element->attribute_insert('maxlength', $captcha->length);
       if (!frontend::select('captcha_form'))
            frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
       $this->is_builded = true;
@@ -55,8 +52,7 @@ namespace effcore {
       'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
     ]))->select();
     if ($captcha) {
-      $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
-      $captcha->canvas = new canvas_svg(5 * $captcha_length, 15, 5);
+      $captcha->canvas = new canvas_svg(5 * $captcha->length, 15, 5);
       $captcha->canvas->matrix_set($captcha->canvas->hexstr_to_clmask($captcha->canvas_data));
       return $captcha;
     }
@@ -81,6 +77,7 @@ namespace effcore {
       'ip_hex'      => core::ip_to_hex(core::server_get_addr_remote()),
       'characters'  => $characters,
       'attempts'    => $this->attempts_max,
+      'length'      => $captcha_length,
       'canvas'      => $canvas,
       'canvas_data' => $canvas->clmask_to_hexstr()
     ]);

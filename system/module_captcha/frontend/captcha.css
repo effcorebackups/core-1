@@ -2,7 +2,7 @@
   x-field[data-type='captcha'] svg {display: block; margin: 10px 0}
   x-field[data-type='captcha'] input[name='captcha'] {font-size: 2em; text-align: center}
 
-/* width: calc(attr(size) * 25 - 22px) */
+/* width: calc(attr(size number) * 25 - 22px) */
   x-field[data-type='captcha'] input[name='captcha'][size='3'] {width:  53px}
   x-field[data-type='captcha'] input[name='captcha'][size='4'] {width:  78px}
   x-field[data-type='captcha'] input[name='captcha'][size='5'] {width: 103px}

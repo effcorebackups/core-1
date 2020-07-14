@@ -23,6 +23,11 @@ entities
         title: Attempts
         type: integer
         not_null: true
+    - length
+        title: Length
+        type: integer
+        not_null: true
+        default: 6
     - canvas_data
         title: Canvas data
         type: blob
