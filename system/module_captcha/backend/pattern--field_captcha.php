@@ -24,7 +24,7 @@ namespace effcore {
     'autocomplete' => 'off',
     'required'     => true];
 # ─────────────────────────────────────────────────────────────────────
-  public $length       = 6;
+  public $length       = null;
   public $attempts_max = 3;
   public $attempts_cur = null;
   public $noise        = 1;
@@ -32,10 +32,11 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
       $element = $this->child_select('element');
-      $element->attribute_insert('size',      $this->length);
-      $element->attribute_insert('minlength', $this->length);
-      $element->attribute_insert('maxlength', $this->length);
+      $element->attribute_insert('size',      $captcha_length);
+      $element->attribute_insert('minlength', $captcha_length);
+      $element->attribute_insert('maxlength', $captcha_length);
     # build canvas on form
       $captcha = $this->captcha_select();
       if (!$captcha) {
@@ -54,7 +55,8 @@ namespace effcore {
       'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
     ]))->select();
     if ($captcha) {
-      $captcha->canvas = new canvas_svg(5 * $this->length, 15, 5);
+      $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
+      $captcha->canvas = new canvas_svg(5 * $captcha_length, 15, 5);
       $captcha->canvas->matrix_set($captcha->canvas->hexstr_to_clmask($captcha->canvas_data));
       return $captcha;
     }
@@ -63,9 +65,10 @@ namespace effcore {
   function captcha_generate() {
     $glyphs = static::glyphs_get();
     $characters = '';
-    $canvas = new canvas_svg(5 * $this->length, 15, 5);
+    $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
+    $canvas = new canvas_svg(5 * $captcha_length, 15, 5);
     $canvas->fill('#000000', 0, 0, null, null, $this->noise);
-    for ($i = 0; $i < $this->length; $i++) {
+    for ($i = 0; $i < $captcha_length; $i++) {
       $c_glyph = array_rand($glyphs);
       $c_character = $glyphs[$c_glyph];
       $characters.= $c_character;
