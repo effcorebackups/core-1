@@ -20,3 +20,16 @@ events
   - captcha|event
       for: captcha
       handler: \effcore\modules\captcha\events_module::on_cron_run
+# ─────────────────────────────────────────────────────────────────────
+  on_form_init
+  - security_settings_captcha|event
+      for: security_settings_captcha
+      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_init
+  on_form_validate
+  - security_settings_captcha|event
+      for: security_settings_captcha
+      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_validate
+  on_form_submit
+  - security_settings_captcha|event
+      for: security_settings_captcha
+      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_submit

@@ -1,0 +1,40 @@
+pages
+- security_captcha|page
+    id: security_captcha
+    title: Security
+    is_https: true
+    url: %^(?<base>/manage/security)/
+>>>>>>>>>>>(?<type>settings_captcha)$%
+    access
+      roles
+      - =: admins
+    parts
+    - system
+      - tree_sql_user_registered|part_preset_link
+          id: tree_sql_user_registered
+      - tree_system|part_preset_link
+          id: tree_system
+    - breadcrumbs
+      - breadcrumbs_system|part_preset_link
+          id: breadcrumbs_system
+    - messages
+      - messages|part_preset_link
+          id: messages
+    - title
+      - title|part_preset_link
+          id: title
+    - tabs
+      - tabs|part
+          type: link
+          source: tabs/user/security
+    # ─────────────────────────────────────────────────────────────────────
+    - content
+      - form_security_settings_captcha|part
+          display
+            check: page_args
+            where: type
+            match: %^settings_captcha$%
+          type: link
+          source: forms/captcha/security_settings_captcha
+          properties
+          - title_is_visible: false
