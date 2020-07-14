@@ -4,7 +4,7 @@
   ### Copyright © 2017—2020 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\test {
+namespace effcore\modules\demo {
           use \effcore\text;
           abstract class events_test {
 

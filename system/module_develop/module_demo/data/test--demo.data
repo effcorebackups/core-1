@@ -4,7 +4,7 @@ tests
     title: Demo
     scenario
     - step_code_demo|step_code
-        handler: \effcore\modules\test\events_test::step_code_demo_handler
+        handler: \effcore\modules\demo\events_test::step_code_demo_handler
         args
         - param_1: value 1
         - param_2: value 2
