@@ -6,9 +6,7 @@
 
 namespace effcore\modules\captcha {
           use \effcore\field_captcha;
-          use \effcore\glyph;
           use \effcore\module;
-          use \effcore\storage;
           abstract class events_module {
 
   static function on_install($event) {
