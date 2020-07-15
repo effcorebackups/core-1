@@ -173,8 +173,8 @@ namespace effcore {
       foreach (static::$cache_orig as $c_module_id => $c_entities) {
         foreach ($c_entities as $c_row_id => $c_entity) {
           if (isset(static::$cache[$c_entity->name])) console::log_insert_about_duplicate('entity', $c_entity->name, $c_module_id);
-          static::$cache[$c_entity->name] = $c_entity;
-          static::$cache[$c_entity->name]->module_id = $c_module_id;
+                    static::$cache[$c_entity->name] = $c_entity;
+                    static::$cache[$c_entity->name]->module_id = $c_module_id;
         }
       }
     }

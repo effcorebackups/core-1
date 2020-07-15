@@ -28,8 +28,8 @@ namespace effcore {
       foreach (storage::get('files')->select('languages') as $c_module_id => $c_languages) {
         foreach ($c_languages as $c_row_id => $c_language) {
           if (isset(static::$cache[$c_language->code])) console::log_insert_about_duplicate('language', $c_language->code, $c_module_id);
-          static::$cache[$c_language->code] = $c_language;
-          static::$cache[$c_language->code]->module_id = $c_module_id;
+                    static::$cache[$c_language->code] = $c_language;
+                    static::$cache[$c_language->code]->module_id = $c_module_id;
         }
       }
       foreach (storage::get('files')->select('plurals') as $c_module_id => $c_plurals_by_module) {

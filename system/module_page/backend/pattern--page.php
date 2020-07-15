@@ -167,9 +167,9 @@ namespace effcore {
       foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
         foreach ($c_pages as $c_id => $c_page) {
           if (isset(static::$cache[$c_id])) console::log_insert_about_duplicate('page', $c_id, $c_module_id);
-          static::$cache[$c_id] = $c_page;
-          static::$cache[$c_id]->module_id = $c_module_id;
-          static::$cache[$c_id]->origin = 'nosql';
+                    static::$cache[$c_id] = $c_page;
+                    static::$cache[$c_id]->module_id = $c_module_id;
+                    static::$cache[$c_id]->origin = 'nosql';
         }
       }
     }

@@ -54,9 +54,9 @@ namespace effcore {
       foreach (storage::get('files')->select('part_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_preset) {
           if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('part_preset', $c_preset->id, $c_module_id);
-          static::$cache[$c_preset->id] = $c_preset;
-          static::$cache[$c_preset->id]->module_id = $c_module_id;
-          static::$cache[$c_preset->id]->origin = 'nosql';
+                    static::$cache[$c_preset->id] = $c_preset;
+                    static::$cache[$c_preset->id]->module_id = $c_module_id;
+                    static::$cache[$c_preset->id]->origin = 'nosql';
         }
       }
     }
