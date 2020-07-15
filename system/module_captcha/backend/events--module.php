@@ -6,12 +6,15 @@
 
 namespace effcore\modules\captcha {
           use \effcore\field_captcha;
+          use \effcore\glyph;
           use \effcore\module;
+          use \effcore\storage;
           abstract class events_module {
 
   static function on_install($event) {
     $module = module::get('captcha');
     $module->install();
+    storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', glyph::get_all());
   }
 
   static function on_uninstall($event) {

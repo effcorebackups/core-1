@@ -33,7 +33,7 @@ namespace effcore\modules\captcha {
       $c_switcher->build();
       $c_switcher->name_set('is_enabled_glyph[]');
       $c_switcher->value_set($c_glyph);
-      $c_switcher->checked_set($settings->captcha_glyphs === null || isset($settings->captcha_glyphs[$c_glyph]));
+      $c_switcher->checked_set(isset($settings->captcha_glyphs[$c_glyph]));
       $c_item->child_insert($c_canvas, 'canvas');
       $c_item->child_insert($c_switcher, 'switcher');
       $items['main/glyphs']->child_insert($c_item, $c_glyph);
