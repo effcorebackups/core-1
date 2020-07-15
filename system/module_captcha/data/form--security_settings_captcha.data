@@ -21,3 +21,7 @@ forms
         title: save
         attributes
         - value: save
+    - button_reset|button
+        title: reset
+        attributes
+        - value: reset

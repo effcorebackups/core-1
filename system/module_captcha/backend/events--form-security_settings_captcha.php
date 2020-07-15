@@ -61,10 +61,17 @@ namespace effcore\modules\captcha {
         foreach ($form->glyphs as $c_glyph => $c_character)
           if ($items['#is_enabled_glyph:'.$c_glyph]->checked_get())
             $captcha_glyphs[$c_glyph] = $c_character;
-        storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs, false);
+        storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs,         false);
         storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
         field_captcha::captcha_cleaning();
         message::insert('The changes was saved.');
+        break;
+      case 'reset':
+        storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs', false);
+        storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length'       );
+        field_captcha::captcha_cleaning();
+        message::insert('The changes was deleted.');
+        static::on_init(null, $form, $items);
         break;
     }
   }
