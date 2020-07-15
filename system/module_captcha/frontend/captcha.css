@@ -11,5 +11,6 @@
   x-field[data-type='captcha'] input[name='captcha'][size='8'] {width: 178px}
   x-field[data-type='captcha'] input[name='captcha'][size='9'] {width: 203px}
 
-  x-glyph {display: inline-block; margin: 5px 10px 10px 0}
-  x-glyph x-field[data-type='switcher'] {margin: 0}
+  x-glyph {display: inline-block; margin: 10px 10px 5px 0}
+  x-glyph x-field[data-type='switcher'] {margin: 0; transform: scale(.7)}
+  x-glyph x-field[data-type='switcher'] input {margin: 0}
