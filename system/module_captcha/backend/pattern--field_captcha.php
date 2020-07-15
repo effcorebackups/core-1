@@ -59,15 +59,14 @@ namespace effcore {
   }
 
   function captcha_generate() {
-    $glyphs = glyph::get_all();
     $characters = '';
     $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
+    $captcha_glyphs =                  module::settings_get('captcha')->captcha_glyphs;
     $canvas = new canvas_svg(5 * $captcha_length, 15, 5);
     $canvas->fill('#000000', 0, 0, null, null, $this->noise);
     for ($i = 0; $i < $captcha_length; $i++) {
-      $c_glyph = array_rand($glyphs);
-      $c_character = $glyphs[$c_glyph];
-      $characters.= $c_character;
+      $c_glyph = array_rand($captcha_glyphs);
+      $characters.= $captcha_glyphs[$c_glyph];
       $canvas->glyph_set($c_glyph,
         random_int(0, 2) - 1 + ($i * 5),
         random_int(1, 5)
