@@ -15,12 +15,10 @@ namespace effcore {
 
   static function init() {
     if (!static::$cache) {
-      foreach (storage::get('files')->select('glyphs') as $c_module_id => $c_characters) {
-        foreach ($c_characters as $c_row_id => $c_character) {
-          foreach ($c_character->glyphs as $c_group => $c_glyph) {
-            if (isset(static::$cache[$c_glyph])) console::log_insert_about_duplicate('glyph', $c_glyph, $c_module_id);
-                      static::$cache[$c_glyph] = (string)$c_character->character;
-          }
+      foreach (storage::get('files')->select('glyphs') as $c_module_id => $c_items) {
+        foreach ($c_items as $c_row_id => $c_item) {
+          if (isset(static::$cache[$c_item->glyph])) console::log_insert_about_duplicate('glyph', $c_item->glyph, $c_module_id);
+                    static::$cache[$c_item->glyph] = (string)$c_item->character;
         }
       }
     }
