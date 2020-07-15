@@ -238,6 +238,7 @@ translations
     - Gallery\: select: Галерея: выбрать
     - Gallery\: update: Галерея: обновить
     - GiB: ГиБ
+    - Glyphs: Глифы
     - go to %%_language language: перейти на %%_language язык
     - go to <a href="/">front page</a>: перейти на <a href="/">главную страницу</a>
     - go to page #%%_number: перейти на страницу №%%_number
