@@ -14,7 +14,6 @@ namespace effcore\modules\captcha {
   static function on_install($event) {
     $module = module::get('captcha');
     $module->install();
-    storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', glyph::get_all());
   }
 
   static function on_uninstall($event) {
