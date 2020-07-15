@@ -59,7 +59,7 @@ namespace effcore {
   }
 
   function captcha_generate() {
-    $glyphs = static::glyphs_get();
+    $glyphs = glyph::get_all();
     $characters = '';
     $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
     $canvas = new canvas_svg(5 * $captcha_length, 15, 5);
@@ -118,40 +118,6 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static protected $glyphs;
-
-  static function cache_cleaning() {
-    static::$glyphs = null;
-  }
-
-  static function init() {
-    if (!static::$glyphs) {
-      foreach (storage::get('files')->select('captcha_characters') as $c_module_id => $c_characters) {
-        foreach ($c_characters as $c_row_id => $c_character) {
-          foreach ($c_character->glyphs as $c_group => $c_glyph) {
-            if (isset(static::$glyphs[$c_group][$c_glyph])) console::log_insert_about_duplicate('glyph', $c_glyph, $c_module_id);
-            static::$glyphs[$c_group][$c_glyph] = $c_character->character;
-          }
-        }
-      }
-    }
-  }
-
-  static function glyphs_get($group = 'default') {
-    static::init();
-    return static::$glyphs[$group] ?? [];
-  }
-
-  static function character_get_glyphs($character, $group = 'default') {
-    $result = [];
-    foreach (static::glyphs_get($group) as $c_glyph => $c_character) {
-      if ($c_character == $character) {
-        $result[] = $c_glyph;
-      }
-    }
-    return $result;
-  }
-
   static function get_code_by_id($id) {
     $captcha = (new instance('captcha', [
       'ip_hex' => $id
@@ -167,6 +133,10 @@ namespace effcore {
       'operator'   => '<',
       'created_!v' => core::datetime_get('-1 hour')
     ]]);
+  }
+
+  static function captcha_cleaning() {
+    entity::get('captcha')->instances_delete();
   }
 
   static function validate_value($field, $form, $element, &$new_value) {

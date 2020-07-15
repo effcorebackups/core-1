@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\captcha {
+          use \effcore\field_captcha;
           use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
@@ -26,6 +27,7 @@ namespace effcore\modules\captcha {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
+        field_captcha::captcha_cleaning();
         message::insert('The changes was saved.');
         break;
     }
