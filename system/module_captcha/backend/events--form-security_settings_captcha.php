@@ -23,9 +23,12 @@ namespace effcore\modules\captcha {
          frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
     $settings = module::settings_get('captcha');
     $items['#length']->value_set($settings->captcha_length);
-    $form->glyphs = glyph::get_all();
-    core::array_sort_text($form->glyphs);
-    foreach ($form->glyphs as $c_glyph => $c_character) {
+    $glyphs_saved = $settings->captcha_glyphs;
+    $glyphs_available = glyph::get_all();
+    $glyphs = $glyphs_saved + $glyphs_available;
+    core::array_sort_text($glyphs);
+    $items['main/glyphs']->children_delete();
+    foreach ($glyphs as $c_glyph => $c_character) {
       $c_item = new markup('x-glyph-control');
       $c_canvas = new canvas_svg(7, 12, 6);
       $c_canvas->glyph_set($c_glyph, 1, 1);
@@ -33,7 +36,8 @@ namespace effcore\modules\captcha {
       $c_switcher->build();
       $c_switcher->name_set('is_enabled_glyph[]');
       $c_switcher->value_set($c_glyph);
-      $c_switcher->checked_set(isset($settings->captcha_glyphs[$c_glyph]));
+      $c_switcher->checked_set(isset($glyphs_saved[$c_glyph]));
+      $c_switcher->disabled_set(!isset($glyphs_available[$c_glyph]));
       $c_item->child_insert($c_canvas, 'canvas');
       $c_item->child_insert($c_switcher, 'switcher');
       $items['main/glyphs']->child_insert($c_item, $c_glyph);
@@ -44,7 +48,7 @@ namespace effcore\modules\captcha {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $captcha_glyphs = [];
-        foreach ($form->glyphs as $c_glyph => $c_character)
+        foreach (glyph::get_all() as $c_glyph => $c_character)
           if ($items['#is_enabled_glyph:'.$c_glyph]->checked_get())
             $captcha_glyphs[$c_glyph] = $c_character;
         if (count($captcha_glyphs) === 0) {
@@ -58,13 +62,14 @@ namespace effcore\modules\captcha {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $captcha_glyphs = [];
-        foreach ($form->glyphs as $c_glyph => $c_character)
+        foreach (glyph::get_all() as $c_glyph => $c_character)
           if ($items['#is_enabled_glyph:'.$c_glyph]->checked_get())
             $captcha_glyphs[$c_glyph] = $c_character;
         storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs,         false);
         storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
         field_captcha::captcha_cleaning();
         message::insert('The changes was saved.');
+        static::on_init(null, $form, $items);
         break;
       case 'reset':
         storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs', false);
