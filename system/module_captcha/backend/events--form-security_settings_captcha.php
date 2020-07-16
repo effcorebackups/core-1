@@ -8,7 +8,7 @@ namespace effcore\modules\captcha {
           use \effcore\canvas_svg;
           use \effcore\core;
           use \effcore\field_captcha;
-          use \effcore\field_switcher;
+          use \effcore\field_checkbox;
           use \effcore\frontend;
           use \effcore\glyph;
           use \effcore\markup;
@@ -26,10 +26,10 @@ namespace effcore\modules\captcha {
     $form->glyphs = glyph::get_all();
     core::array_sort_text($form->glyphs);
     foreach ($form->glyphs as $c_glyph => $c_character) {
-      $c_item = new markup('x-glyph');
+      $c_item = new markup('x-glyph-control');
       $c_canvas = new canvas_svg(7, 12, 6);
       $c_canvas->glyph_set($c_glyph, 1, 1);
-      $c_switcher = new field_switcher;
+      $c_switcher = new field_checkbox;
       $c_switcher->build();
       $c_switcher->name_set('is_enabled_glyph[]');
       $c_switcher->value_set($c_glyph);
