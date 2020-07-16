@@ -29,8 +29,9 @@ namespace effcore\modules\captcha {
     core::array_sort_text($glyphs);
     $items['main/glyphs']->children_delete();
     foreach ($glyphs as $c_glyph => $c_character) {
+      $c_sizes = glyph::get_sizes($c_glyph);
       $c_item = new markup('x-glyph-control');
-      $c_canvas = new canvas_svg(7, 12, 6);
+      $c_canvas = new canvas_svg($c_sizes->width + 2, $c_sizes->height + 2, 6);
       $c_canvas->glyph_set($c_glyph, 1, 1);
       $c_switcher = new field_checkbox;
       $c_switcher->build();

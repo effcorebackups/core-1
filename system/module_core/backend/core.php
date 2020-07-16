@@ -221,7 +221,7 @@ namespace effcore {
       case 'object' :
       case 'array'  :
         $expressions = [];
-        foreach($data as $c_key => $c_value) {
+        foreach ($data as $c_key => $c_value) {
           $expressions[] = static::data_to_string($c_key).' => '.
                            static::data_to_string($c_value);
         }

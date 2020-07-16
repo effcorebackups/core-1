@@ -33,11 +33,22 @@ namespace effcore {
     static::init();
     $result = [];
     foreach (static::$cache as $c_glyph => $c_character) {
-      if ($c_character === $character) {
+      if ((string)$c_character === (string)$character) {
         $result[$c_glyph] = $c_character;
       }
     }
     return $result;
+  }
+
+  static function get_sizes($glyph) {
+    $width = 0;
+    $rows = explode('|', $glyph);
+    foreach ($rows as $c_row)
+      $width = max($width, strlen($c_row));
+    return (object)[
+      'width'  => $width,
+      'height' => count($rows)
+    ];
   }
 
 }}
