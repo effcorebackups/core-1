@@ -157,9 +157,9 @@ translations
     - roles after insertion\: %%_roles: ролі пасля ўстаўкі: %%_roles
     - roles before insertion\: %%_roles: ролі перад устаўкай: %%_roles
     - Row ID: ID радка
-    - row with auto id = 1: радок з аўтаматычным ідэнтыфікатарам = 1
-    - row with auto id = 2: радок з аўтаматычным ідэнтыфікатарам = 2
-    - row with auto id = 3: радок з аўтаматычным ідэнтыфікатарам = 3
+    - row with auto id value = 1: радок з аўтаматычным значэннем id = 1
+    - row with auto id value = 2: радок з аўтаматычным значэннем id = 2
+    - row with auto id value = 3: радок з аўтаматычным значэннем id = 3
     - row with default values: радок са значэннямі па змаўчанні
     - row with non-default values: радок са значэннямі ня па змаўчанні
     - sec.: сек.
