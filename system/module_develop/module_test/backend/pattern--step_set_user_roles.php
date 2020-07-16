@@ -21,12 +21,12 @@ namespace effcore {
       if (true           ) $reports[] = new text('found user ID = "%%_id_user" by nickname = "%%_nickname"', ['id_user' => $user->id, 'nickname' => $nickname]);
       if ($this->is_reset) $reports[] = new text('there will be try to delete all roles');
       if (true           ) $reports[] = new text('there will be try to insert roles: %%_roles', ['roles' => implode(', ', $this->roles) ?: 'n/a']);
-      $old_id_roles =      user::relation_role_select    ($user->id);
+      $old_roles =         user::relation_role_select    ($user->id);
       if ($this->is_reset) user::relation_role_delete_all($user->id);
                            user::relation_role_insert    ($user->id, $this->roles, 'test');
-      $new_id_roles =      user::relation_role_select    ($user->id);
-      $reports[] = new text('roles before insertion: %%_roles', ['roles' => implode(', ', $old_id_roles) ?: 'n/a']);
-      $reports[] = new text('roles after insertion: %%_roles',  ['roles' => implode(', ', $new_id_roles) ?: 'n/a']);
+      $new_roles =         user::relation_role_select    ($user->id);
+      $reports[] = new text('roles before insertion: %%_roles', ['roles' => implode(', ', $old_roles) ?: 'n/a']);
+      $reports[] = new text('roles after insertion: %%_roles',  ['roles' => implode(', ', $new_roles) ?: 'n/a']);
       $c_results['reports'][] = $reports;
     }
   }

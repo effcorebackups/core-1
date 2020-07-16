@@ -26,6 +26,7 @@ translations
     - call "%%_call": вызов "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталог "%%_catalog_name" в хранилище "%%_storage_name" будет инициализирован
     - cell #%%_number: ячейка №%%_number
+    - changing permissions for role = "%%_role": изменение разрешений для роли = "%%_role"
     - changing roles for user with nickname = "%%_nickname": изменение ролей для пользователя с псевдонимом = "%%_nickname"
     - Checkbox 1: Флажок 1
     - Checkbox 2 (checked): Флажок 2 (отмечен)
@@ -131,6 +132,8 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
+    - permissions after insertion\: %%_permissions: разрешения после вставки: %%_permissions
+    - permissions before insertion\: %%_permissions: разрешения перед вставкой: %%_permissions
     - PHP ext.: PHP-расш.
     - PHP extension: PHP-расширение
     - PHP functions usage: Использование PHP-функций
@@ -178,7 +181,9 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
+    - there will be try to delete all permissions: будет попытка удалить все разрешения
     - there will be try to delete all roles: будет попытка удалить все роли
+    - there will be try to insert permissions\: %%_permissions: будет попытка вставить разрешения: %%_permissions
     - there will be try to insert roles\: %%_roles: будет попытка вставить роли: %%_roles
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.

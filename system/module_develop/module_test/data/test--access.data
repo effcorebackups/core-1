@@ -191,6 +191,14 @@ tests
         roles
         - =: test
         is_reset: true
+    - set_role_permissions|step_set_role_permissions
+        id_role: test
+        permissions
+        - =: text_select
+        - =: text_update
+        - =: text_insert
+        - =: text_delete
+        is_reset: true
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────

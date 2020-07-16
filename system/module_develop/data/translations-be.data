@@ -26,6 +26,7 @@ translations
     - call "%%_call": выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: ячэйка №%%_number
+    - changing permissions for role = "%%_role": змена дазволаў для ролі = "%%_role"
     - changing roles for user with nickname = "%%_nickname": змена роляў для карыстальніка з псеўданімам = "%%_nickname"
     - Checkbox 1: Сцяжок 1
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
@@ -131,6 +132,8 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
+    - permissions after insertion\: %%_permissions: дазволы пасля ўстаўкі: %%_permissions
+    - permissions before insertion\: %%_permissions: дазволы перад устаўкай: %%_permissions
     - PHP ext.: PHP-паш.
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
@@ -178,7 +181,9 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
     - The test was failed!: Тэст не атрымаўся!
     - The test was successful.: Тэст выкананы паспяхова.
+    - there will be try to delete all permissions: будзе спроба выдаліць усе дазволы
     - there will be try to delete all roles: будзе спроба выдаліць усе ролі
+    - there will be try to insert permissions\: %%_permissions: будзе спроба ўставіць дазволы: %%_permissions
     - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.
