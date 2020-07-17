@@ -240,6 +240,11 @@ tests
                 id_role: test
                 permissions
                 - =: text_delete
+        action_after|step_title
+          title: CHECK PERMISSIONS
+    - reset_role_permissions|step_set_role_permissions
+        id_role: test
+        is_reset: true
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
