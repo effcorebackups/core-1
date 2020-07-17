@@ -245,6 +245,9 @@ tests
     - reset_role_permissions|step_set_role_permissions
         id_role: test
         is_reset: true
+    - reset_user_roles|step_set_user_roles
+        nickname: %%_test_nickname_random{0}
+        is_reset: true
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
