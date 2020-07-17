@@ -221,22 +221,22 @@ tests
       # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111
       # └────╨─────────┴─────────┴─────────┴─────────┘
         actions
-        - title_1|step_title
-            title: Transposition action %%_num
-            args
-            - num: 1
-        - title_2|step_title
-            title: Transposition action %%_num
-            args
-            - num: 2
-        - title_3|step_title
-            title: Transposition action %%_num
-            args
-            - num: 3
-        - title_4|step_title
-            title: Transposition action %%_num
-            args
-            - num: 4
+        - set_role_permission_select|step_actions
+            actions
+            - title|step_title
+                title: SELECT
+        - set_role_permission_insert|step_actions
+            actions
+            - title|step_title
+                title: INSERT
+        - set_role_permission_update|step_actions
+            actions
+            - title|step_title
+                title: UPDATE
+        - set_role_permission_delete|step_actions
+            actions
+            - title|step_title
+                title: DELETE
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
