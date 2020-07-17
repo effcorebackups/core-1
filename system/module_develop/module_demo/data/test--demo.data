@@ -20,7 +20,7 @@ tests
             title: Title with token: "current iteration" = "%%_value"
             args
             - value: %%_test_step_repeat_i_cycle_1
-        - step_code|step_code
+        - code|step_code
             handler: \effcore\modules\demo\events_test::step_code_demo_handler
             args
             - param_1: value 1
@@ -28,5 +28,31 @@ tests
             - param_3: value 3
             - current_iteration: %%_test_step_repeat_i_cycle_1
             is_apply_tokens: true
-    - return_result|step_return
+        - transpositions|step_transpositions
+          # ┌───╥───────────┬───────────┬───────────┐
+          # │ i ║ action #1 │ action #2 │ action #3 │
+          # ╞═══╬═══════════╪═══════════╪═══════════╡
+          # │ 0 ║           │           │           │ ← 000
+          # │ 1 ║           │           │     x     │ ← 001
+          # │ 2 ║           │     x     │           │ ← 010
+          # │ 3 ║           │     x     │     x     │ ← 011
+          # │ 4 ║     x     │           │           │ ← 100
+          # │ 5 ║     x     │           │     x     │ ← 101
+          # │ 6 ║     x     │     x     │           │ ← 110
+          # │ 7 ║     x     │     x     │     x     │ ← 111
+          # └───╨───────────┴───────────┴───────────┘
+            actions
+            - title_1|step_title
+                title: Transposition action %%_num
+                args
+                - num: 1
+            - title_2|step_title
+                title: Transposition action %%_num
+                args
+                - num: 2
+            - title_3|step_title
+                title: Transposition action %%_num
+                args
+                - num: 3
+    - return|step_return
         value: 1
