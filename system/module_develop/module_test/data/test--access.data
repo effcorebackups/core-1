@@ -191,14 +191,6 @@ tests
         roles
         - =: test
         is_reset: true
-    - set_role_permissions|step_set_role_permissions
-        id_role: test
-        permissions
-        - =: text_select
-        - =: text_update
-        - =: text_insert
-        - =: text_delete
-        is_reset: true
     - transpositions|step_transpositions
       # ┌────╥─────────┬─────────┬─────────┬─────────┐
       # │  i ║ …select │ …insert │ …update │ …delete │
@@ -224,22 +216,30 @@ tests
           id_role: test
           is_reset: true
         actions
-        - set_role_permission_select|step_actions
+        - select|step_actions
             actions
-            - title|step_title
-                title: SELECT
-        - set_role_permission_insert|step_actions
+            - set_role_permissions|step_set_role_permissions
+                id_role: test
+                permissions
+                - =: text_select
+        - insert|step_actions
             actions
-            - title|step_title
-                title: INSERT
-        - set_role_permission_update|step_actions
+            - set_role_permissions|step_set_role_permissions
+                id_role: test
+                permissions
+                - =: text_insert
+        - update|step_actions
             actions
-            - title|step_title
-                title: UPDATE
-        - set_role_permission_delete|step_actions
+            - set_role_permissions|step_set_role_permissions
+                id_role: test
+                permissions
+                - =: text_update
+        - delete|step_actions
             actions
-            - title|step_title
-                title: DELETE
+            - set_role_permissions|step_set_role_permissions
+                id_role: test
+                permissions
+                - =: text_delete
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
