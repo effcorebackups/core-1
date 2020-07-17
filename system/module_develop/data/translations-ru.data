@@ -14,6 +14,7 @@ translations
     - &ndash; request header param "%%_value": &ndash; header-параметр запроса "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
+    - action with rowid = "%%_rowid" will be started: действие с rowid = "%%_rowid" будет запущено
     - Adaptive table: Адаптивная таблица
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х регистраций Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
@@ -190,6 +191,7 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрузка
     - Traits: Трейты
+    - transposition %%_cur from %%_max (%%_bits): перестановка %%_cur из %%_max (%%_bits)
     - UML Diagram: UML-диаграмма
     - Update Description 1.: Описание обновления 1.
     - Update Description 2.: Описание обновления 2.

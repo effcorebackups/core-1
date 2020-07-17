@@ -199,6 +199,44 @@ tests
         - =: text_insert
         - =: text_delete
         is_reset: true
+    - transpositions|step_transpositions
+      # ┌────╥─────────┬─────────┬─────────┬─────────┐
+      # │  i ║ …select │ …insert │ …update │ …delete │
+      # ╞════╬═════════╪═════════╪═════════╪═════════╡
+      # │  0 ║         │         │         │         │ ← 0000
+      # │  1 ║         │         │         │    x    │ ← 0001
+      # │  2 ║         │         │    x    │         │ ← 0010
+      # │  3 ║         │         │    x    │    x    │ ← 0011
+      # │  4 ║         │    x    │         │         │ ← 0100
+      # │  5 ║         │    x    │         │    x    │ ← 0101
+      # │  6 ║         │    x    │    x    │         │ ← 0110
+      # │  7 ║         │    x    │    x    │    x    │ ← 0111
+      # │  8 ║    x    │         │         │         │ ← 1000
+      # │  9 ║    x    │         │         │    x    │ ← 1001
+      # │ 10 ║    x    │         │    x    │         │ ← 1010
+      # │ 11 ║    x    │         │    x    │    x    │ ← 1011
+      # │ 12 ║    x    │    x    │         │         │ ← 1100
+      # │ 13 ║    x    │    x    │         │    x    │ ← 1101
+      # │ 14 ║    x    │    x    │    x    │         │ ← 1110
+      # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111
+      # └────╨─────────┴─────────┴─────────┴─────────┘
+        actions
+        - title_1|step_title
+            title: Transposition action %%_num
+            args
+            - num: 1
+        - title_2|step_title
+            title: Transposition action %%_num
+            args
+            - num: 2
+        - title_3|step_title
+            title: Transposition action %%_num
+            args
+            - num: 3
+        - title_4|step_title
+            title: Transposition action %%_num
+            args
+            - num: 4
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
