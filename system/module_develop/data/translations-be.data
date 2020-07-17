@@ -14,6 +14,7 @@ translations
     - &ndash; request header param "%%_value": &ndash; header-параметр запыту "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
+    - action "%%_name" will be started: дзеянне "%%_name" будзе запушчана
     - action with rowid = "%%_rowid" will be started: дзеянне з rowid = "%%_rowid" будзе запушчана
     - Adaptive table: Адаптыўная табліца
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х рэгістрацый Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.

@@ -220,6 +220,9 @@ tests
       # │ 14 ║    x    │    x    │    x    │         │ ← 1110
       # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111
       # └────╨─────────┴─────────┴─────────┴─────────┘
+        action_before|step_set_role_permissions
+          id_role: test
+          is_reset: true
         actions
         - set_role_permission_select|step_actions
             actions

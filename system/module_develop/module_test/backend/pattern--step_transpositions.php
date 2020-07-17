@@ -7,8 +7,9 @@
 namespace effcore {
           class step_transpositions {
 
-  public $id;
-  public $quantity = 1;
+  public $action_before;
+  public $actions = [];
+  public $action_after;
 
   function run(&$test, &$c_scenario, &$c_step, &$c_results) {
     $rowids = array_keys($this->actions);
@@ -17,6 +18,13 @@ namespace effcore {
     for ($i = 1; $i < $max; $i++) {
       $c_results['reports'][] = new text('=================================');
       $c_results['reports'][] = new text('transposition %%_cur from %%_max (%%_bits)', ['cur' => $i + 1, 'max' => $max, 'bits' => str_pad(decbin($i), $actions_count, '0', STR_PAD_LEFT)]);
+      if ($this->action_before) {
+        $c_results['reports'][] = new text('action "%%_name" will be started', ['name' => 'action_before']);
+        $this->action_before->run($test, $this->action_before, $c_step, $c_results);
+        if (array_key_exists('return', $c_results)) {
+          return;
+        }
+      }
       for ($j = $actions_count - 1; $j >= 0; $j--) {
         if ($i >> $j & 1) {
           $c_rowid = $rowids[$actions_count - 1 - $j];
@@ -25,6 +33,13 @@ namespace effcore {
           if (array_key_exists('return', $c_results)) {
             return;
           }
+        }
+      }
+      if ($this->action_after) {
+        $c_results['reports'][] = new text('action "%%_name" will be started', ['name' => 'action_after']);
+        $this->action_after->run($test, $this->action_after, $c_step, $c_results);
+        if (array_key_exists('return', $c_results)) {
+          return;
         }
       }
     }
