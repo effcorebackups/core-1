@@ -14,64 +14,64 @@ tests
   # ─────────────────────────────────────────────────────────────────────
     - title_for_anonymous_user|step_title
         title: ANONYMOUS USER
-    # url: /manage/data/content/text
-    - request_url-/manage/data/content/text|step_request
+    # multiple instance select page
+    - request_url-select-multiple|step_request
         url: /manage/data/content/text
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text|step_check
+    - response_check-select-multiple|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test
-    - request_url-/manage/data/content/text/test|step_request
+    # instance select page
+    - request_url-select|step_request
         url: /manage/data/content/text/test
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test|step_check
+    - response_check-select|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text//insert
-    - request_url-/manage/data/content/text//insert|step_request
+    # instance insert page
+    - request_url-insert|step_request
         url: /manage/data/content/text//insert
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text//insert|step_check
+    - response_check-insert|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test/update
-    - request_url-/manage/data/content/text/test/update|step_request
+    # instance update page
+    - request_url-update|step_request
         url: /manage/data/content/text/test/update
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test/update|step_check
+    - response_check-update|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test/delete
-    - request_url-/manage/data/content/text/test/delete|step_request
+    # instance delete page
+    - request_url-delete|step_request
         url: /manage/data/content/text/test/delete
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test/delete|step_check
+    - response_check-delete|step_check
         where: http_code
         match: 403
         on_failure
@@ -114,66 +114,66 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text
-    - request_url-/manage/data/content/text-registered|step_request
+    # multiple instance select page
+    - request_url-select-multiple-registered|step_request
         url: /manage/data/content/text
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text-registered|step_check
+    - response_check-select-multiple-registered|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test
-    - request_url-/manage/data/content/text/test-registered|step_request
+    # instance select page
+    - request_url-select-registered|step_request
         url: /manage/data/content/text/test
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test-registered|step_check
+    - response_check-select-registered|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text//insert
-    - request_url-/manage/data/content/text//insert-registered|step_request
+    # instance insert page
+    - request_url-insert-registered|step_request
         url: /manage/data/content/text//insert
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text//insert-registered|step_check
+    - response_check-insert-registered|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test/update
-    - request_url-/manage/data/content/text/test/update-registered|step_request
+    # instance update page
+    - request_url-update-registered|step_request
         url: /manage/data/content/text/test/update
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test/update-registered|step_check
+    - response_check-update-registered|step_check
         where: http_code
         match: 403
         on_failure
         - return_result|step_return
             value: 0
-    # url: /manage/data/content/text/test/delete
-    - request_url-/manage/data/content/text/test/delete-registered|step_request
+    # instance delete page
+    - request_url-delete-registered|step_request
         url: /manage/data/content/text/test/delete
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
-    - response_check-/manage/data/content/text/test/delete-registered|step_check
+    - response_check-delete-registered|step_check
         where: http_code
         match: 403
         on_failure
@@ -242,8 +242,8 @@ tests
                 - =: text_delete
         action_after|step_actions
           actions
-          # url: /manage/data/content/text
-          - request_url-/manage/data/content/text-registered-role|step_request
+          # multiple instance select page
+          - request_url-select-multiple-registered-role|step_request
               url: /manage/data/content/text
               headers
               - cookie: Cookie: %%_test_cookies
