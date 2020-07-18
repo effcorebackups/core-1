@@ -10,6 +10,19 @@ tests
         - value: 1
         - min: 1
         - max: 5000
+    - proxy|field_text
+        title: Proxy server
+        description|text
+          text: Examples: %%_examples
+          args
+          - examples: "127.0.0.1:8888" | "127.0.0.1:4321"
+        element_attributes
+        - name: proxy
+        - required: false
+    - is_https|field_switcher
+        title: HTTPS
+        element_attributes
+        - name: is_https
     scenario
     - repeat|step_repeat
         quantity|param_from_form
@@ -23,6 +36,10 @@ tests
         # url: /
         - request_url-/|step_request
             url: /
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/|step_check
             where: http_code
             match: 200
@@ -32,6 +49,10 @@ tests
         # url: /.
         - request_url-/.|step_request
             url: /.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.|step_check
             where: http_code
             match: 404
@@ -45,6 +66,10 @@ tests
         # url: /..
         - request_url-/..|step_request
             url: /..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..|step_check
             where: http_code
             match: 400
@@ -64,6 +89,10 @@ tests
         # url: /...
         - request_url-/...|step_request
             url: /...
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/...|step_check
             where: http_code
             match: 404
@@ -78,6 +107,10 @@ tests
         # url: /0
         - request_url-/0|step_request
             url: /0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0|step_check
             where: http_code
             match: 404
@@ -87,6 +120,10 @@ tests
         # url: /0.
         - request_url-/0.|step_request
             url: /0.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0.|step_check
             where: http_code
             match: 404
@@ -96,6 +133,10 @@ tests
         # url: /0..
         - request_url-/0..|step_request
             url: /0..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0..|step_check
             where: http_code
             match: 404
@@ -105,6 +146,10 @@ tests
         # url: /0...
         - request_url-/0...|step_request
             url: /0...
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0...|step_check
             where: http_code
             match: 404
@@ -114,6 +159,10 @@ tests
         # url: /.0
         - request_url-/.0|step_request
             url: /.0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.0|step_check
             where: http_code
             match: 403
@@ -123,6 +172,10 @@ tests
         # url: /..0
         - request_url-/..0|step_request
             url: /..0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..0|step_check
             where: http_code
             match: 404
@@ -136,6 +189,10 @@ tests
         # url: /...0
         - request_url-/...0|step_request
             url: /...0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/...0|step_check
             where: http_code
             match: 404
@@ -149,6 +206,10 @@ tests
         # url: /01
         - request_url-/01|step_request
             url: /01
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/01|step_check
             where: http_code
             match: 404
@@ -158,6 +219,10 @@ tests
         # url: /0.1
         - request_url-/0.1|step_request
             url: /0.1
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0.1|step_check
             where: http_code
             match: 404
@@ -167,6 +232,10 @@ tests
         # url: /0..1
         - request_url-/0..1|step_request
             url: /0..1
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0..1|step_check
             where: http_code
             match: 404
@@ -176,6 +245,10 @@ tests
         # url: /0...1
         - request_url-/0...1|step_request
             url: /0...1
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0...1|step_check
             where: http_code
             match: 404
@@ -185,6 +258,10 @@ tests
         # url: /10
         - request_url-/10|step_request
             url: /10
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/10|step_check
             where: http_code
             match: 404
@@ -194,6 +271,10 @@ tests
         # url: /1.0
         - request_url-/1.0|step_request
             url: /1.0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/1.0|step_check
             where: http_code
             match: 404
@@ -203,6 +284,10 @@ tests
         # url: /1..0
         - request_url-/1..0|step_request
             url: /1..0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/1..0|step_check
             where: http_code
             match: 404
@@ -212,6 +297,10 @@ tests
         # url: /1...0
         - request_url-/1...0|step_request
             url: /1...0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/1...0|step_check
             where: http_code
             match: 404
@@ -221,6 +310,10 @@ tests
         # url: /.0.
         - request_url-/.0.|step_request
             url: /.0.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.0.|step_check
             where: http_code
             match: 404
@@ -234,6 +327,10 @@ tests
         # url: /..0..
         - request_url-/..0..|step_request
             url: /..0..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..0..|step_check
             where: http_code
             match: 404
@@ -247,6 +344,10 @@ tests
         # url: /.0.1.
         - request_url-/.0.1.|step_request
             url: /.0.1.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.0.1.|step_check
             where: http_code
             match: 404
@@ -260,6 +361,10 @@ tests
         # url: /..0.1..
         - request_url-/..0.1..|step_request
             url: /..0.1..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..0.1..|step_check
             where: http_code
             match: 404
@@ -273,6 +378,10 @@ tests
         # url: /..0..1..
         - request_url-/..0..1..|step_request
             url: /..0..1..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..0..1..|step_check
             where: http_code
             match: 404
@@ -286,6 +395,10 @@ tests
         # url: /.1.0.
         - request_url-/.1.0.|step_request
             url: /.1.0.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.1.0.|step_check
             where: http_code
             match: 404
@@ -299,6 +412,10 @@ tests
         # url: /..1.0..
         - request_url-/..1.0..|step_request
             url: /..1.0..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..1.0..|step_check
             where: http_code
             match: 404
@@ -312,6 +429,10 @@ tests
         # url: /..1..0..
         - request_url-/..1..0..|step_request
             url: /..1..0..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/..1..0..|step_check
             where: http_code
             match: 404
@@ -332,6 +453,10 @@ tests
         # url: //
         - request_url-//|step_request
             url: //
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//|step_check
             where: http_code
             match: 302
@@ -341,6 +466,10 @@ tests
         # url: /./
         - request_url-/./|step_request
             url: /./
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/./|step_check
             where: http_code
             match: 302
@@ -350,6 +479,10 @@ tests
         # url: //.
         - request_url-//.|step_request
             url: //.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//.|step_check
             where: http_code
             match: 404
@@ -363,6 +496,10 @@ tests
         # url: ///
         - request_url-///|step_request
             url: ///
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-///|step_check
             where: http_code
             match: 302
@@ -372,6 +509,10 @@ tests
         # url: //0
         - request_url-//0|step_request
             url: //0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//0|step_check
             where: http_code
             match: 404
@@ -381,6 +522,10 @@ tests
         # url: /0/
         - request_url-/0/|step_request
             url: /0/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0/|step_check
             where: http_code
             match: 302
@@ -390,6 +535,10 @@ tests
         # url: /../
         - request_url-/../|step_request
             url: /../
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/../|step_check
             where: http_code
             match: 400
@@ -404,6 +553,10 @@ tests
         # url: /./.
         - request_url-/./.|step_request
             url: /./.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/./.|step_check
             where: http_code
             match: 404
@@ -417,6 +570,10 @@ tests
         # url: /.//
         - request_url-/.//|step_request
             url: /.//
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.//|step_check
             where: http_code
             match: 302
@@ -426,6 +583,10 @@ tests
         # url: /./0
         - request_url-/./0|step_request
             url: /./0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/./0|step_check
             where: http_code
             match: 404
@@ -435,6 +596,10 @@ tests
         # url: /.0/
         - request_url-/.0/|step_request
             url: /.0/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.0/|step_check
             where: http_code
             match: 302
@@ -448,6 +613,10 @@ tests
         # url: //..
         - request_url-//..|step_request
             url: //..
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//..|step_check
             where: http_code
             match: 400
@@ -467,6 +636,10 @@ tests
         # url: //./
         - request_url-//./|step_request
             url: //./
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//./|step_check
             where: http_code
             match: 302
@@ -476,6 +649,10 @@ tests
         # url: //.0
         - request_url-//.0|step_request
             url: //.0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//.0|step_check
             where: http_code
             match: 403
@@ -485,6 +662,10 @@ tests
         # url: ///.
         - request_url-///.|step_request
             url: ///.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-///.|step_check
             where: http_code
             match: 404
@@ -498,6 +679,10 @@ tests
         # url: ////
         - request_url-////|step_request
             url: ////
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-////|step_check
             where: http_code
             match: 302
@@ -507,6 +692,10 @@ tests
         # url: ///0
         - request_url-///0|step_request
             url: ///0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-///0|step_check
             where: http_code
             match: 404
@@ -516,6 +705,10 @@ tests
         # url: //0.
         - request_url-//0.|step_request
             url: //0.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//0.|step_check
             where: http_code
             match: 404
@@ -525,6 +718,10 @@ tests
         # url: //0/
         - request_url-//0/|step_request
             url: //0/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-//0/|step_check
             where: http_code
             match: 302
@@ -534,6 +731,10 @@ tests
         # url: /0./
         - request_url-/0./|step_request
             url: /0./
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0./|step_check
             where: http_code
             match: 302
@@ -543,6 +744,10 @@ tests
         # url: /0.0
         - request_url-/0.0|step_request
             url: /0.0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0.0|step_check
             where: http_code
             match: 404
@@ -552,6 +757,10 @@ tests
         # url: /0/.
         - request_url-/0/.|step_request
             url: /0/.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0/.|step_check
             where: http_code
             match: 404
@@ -561,6 +770,10 @@ tests
         # url: /0//
         - request_url-/0//|step_request
             url: /0//
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0//|step_check
             where: http_code
             match: 302
@@ -570,6 +783,10 @@ tests
         # url: /0/0
         - request_url-/0/0|step_request
             url: /0/0
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/0/0|step_check
             where: http_code
             match: 404
@@ -586,6 +803,10 @@ tests
         # url: /~/.ssh/id_rsa
         - request_url-/~/.ssh/id_rsa|step_request
             url: /~/.ssh/id_rsa
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/~/.ssh/id_rsa|step_check
             where: http_code
             match: 404
@@ -595,6 +816,10 @@ tests
         # url: /../../../../../../etc/passwd
         - request_url-/../../../../../../etc/passwd|step_request
             url: /../../../../../../etc/passwd
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/../../../../../../etc/passwd|step_check
             where: http_code
             match: 400
@@ -609,6 +834,10 @@ tests
         # url: /.editorconfig
         - request_url-/.editorconfig|step_request
             url: /.editorconfig
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.editorconfig|step_check
             where: http_code
             match: 403
@@ -618,6 +847,10 @@ tests
         # url: /.gitattributes
         - request_url-/.gitattributes|step_request
             url: /.gitattributes
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.gitattributes|step_check
             where: http_code
             match: 403
@@ -627,6 +860,10 @@ tests
         # url: /.gitignore
         - request_url-/.gitignore|step_request
             url: /.gitignore
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.gitignore|step_check
             where: http_code
             match: 403
@@ -636,6 +873,10 @@ tests
         # url: /.htaccess
         - request_url-/.htaccess|step_request
             url: /.htaccess
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.htaccess|step_check
             where: http_code
             match: 403
@@ -645,6 +886,10 @@ tests
         # url: /.nginx
         - request_url-/.nginx|step_request
             url: /.nginx
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.nginx|step_check
             where: http_code
             match: 403
@@ -654,6 +899,10 @@ tests
         # url: /web.config
         - request_url-/web.config|step_request
             url: /web.config
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/web.config|step_check
             where: http_code
             match: 403
@@ -663,6 +912,10 @@ tests
         # url: /index.php
         - request_url-/index.php|step_request
             url: /index.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/index.php|step_check
             where: http_code
             match: 403
@@ -672,6 +925,10 @@ tests
         # url: /license.md
         - request_url-/license.md|step_request
             url: /license.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/license.md|step_check
             where: http_code
             match: 403
@@ -681,6 +938,10 @@ tests
         # url: /dynamic/cache/data_original.php
         - request_url-/dynamic/cache/data_original.php|step_request
             url: /dynamic/cache/data_original.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/data_original.php|step_check
             where: http_code
             match: 403
@@ -690,6 +951,10 @@ tests
         # url: /dynamic/cache/readme.md
         - request_url-/dynamic/cache/readme.md|step_request
             url: /dynamic/cache/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/readme.md|step_check
             where: http_code
             match: 403
@@ -699,6 +964,10 @@ tests
         # url: /dynamic/cache/structures.php
         - request_url-/dynamic/cache/structures.php|step_request
             url: /dynamic/cache/structures.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/structures.php|step_check
             where: http_code
             match: 403
@@ -708,6 +977,10 @@ tests
         # url: /dynamic/data/boot.php
         - request_url-/dynamic/data/boot.php|step_request
             url: /dynamic/data/boot.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/boot.php|step_check
             where: http_code
             match: 403
@@ -717,6 +990,10 @@ tests
         # url: /dynamic/data/changes.php
         - request_url-/dynamic/data/changes.php|step_request
             url: /dynamic/data/changes.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/changes.php|step_check
             where: http_code
             match: 403
@@ -726,6 +1003,10 @@ tests
         # url: /dynamic/data/data.sqlite
         - request_url-/dynamic/data/data.sqlite|step_request
             url: /dynamic/data/data.sqlite
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/data.sqlite|step_check
             where: http_code
             match: 403
@@ -735,6 +1016,10 @@ tests
         # url: /dynamic/data/readme.md
         - request_url-/dynamic/data/readme.md|step_request
             url: /dynamic/data/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/readme.md|step_check
             where: http_code
             match: 403
@@ -744,6 +1029,10 @@ tests
         # url: /dynamic/files/readme.md
         - request_url-/dynamic/files/readme.md|step_request
             url: /dynamic/files/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/files/readme.md|step_check
             where: http_code
             match: 403
@@ -753,6 +1042,10 @@ tests
         # url: /dynamic/logs/readme.md
         - request_url-/dynamic/logs/readme.md|step_request
             url: /dynamic/logs/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/logs/readme.md|step_check
             where: http_code
             match: 403
@@ -762,6 +1055,10 @@ tests
         # url: /dynamic/tmp/readme.md
         - request_url-/dynamic/tmp/readme.md|step_request
             url: /dynamic/tmp/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/tmp/readme.md|step_check
             where: http_code
             match: 403
@@ -771,6 +1068,10 @@ tests
         # url: /modules/readme.md
         - request_url-/modules/readme.md|step_request
             url: /modules/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/modules/readme.md|step_check
             where: http_code
             match: 403
@@ -780,6 +1081,10 @@ tests
         # url: /readme/about-en.md
         - request_url-/readme/about-en.md|step_request
             url: /readme/about-en.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/about-en.md|step_check
             where: http_code
             match: 403
@@ -789,6 +1094,10 @@ tests
         # url: /readme/develop.md
         - request_url-/readme/develop.md|step_request
             url: /readme/develop.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/develop.md|step_check
             where: http_code
             match: 403
@@ -798,6 +1107,10 @@ tests
         # url: /readme/installation-en.md
         - request_url-/readme/installation-en.md|step_request
             url: /readme/installation-en.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/installation-en.md|step_check
             where: http_code
             match: 403
@@ -807,6 +1120,10 @@ tests
         # url: /readme/security.md
         - request_url-/readme/security.md|step_request
             url: /readme/security.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/security.md|step_check
             where: http_code
             match: 403
@@ -816,6 +1133,10 @@ tests
         # url: /readme/software.md
         - request_url-/readme/software.md|step_request
             url: /readme/software.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/software.md|step_check
             where: http_code
             match: 403
@@ -825,6 +1146,10 @@ tests
         # url: /shell/bundle_create.sh
         - request_url-/shell/bundle_create.sh|step_request
             url: /shell/bundle_create.sh
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/bundle_create.sh|step_check
             where: http_code
             match: 403
@@ -834,6 +1159,10 @@ tests
         # url: /shell/cache_clear.sh
         - request_url-/shell/cache_clear.sh|step_request
             url: /shell/cache_clear.sh
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/cache_clear.sh|step_check
             where: http_code
             match: 403
@@ -843,6 +1172,10 @@ tests
         # url: /shell/dynamic_reset.sh
         - request_url-/shell/dynamic_reset.sh|step_request
             url: /shell/dynamic_reset.sh
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/dynamic_reset.sh|step_check
             where: http_code
             match: 403
@@ -852,6 +1185,10 @@ tests
         # url: /shell/update.sh
         - request_url-/shell/update.sh|step_request
             url: /shell/update.sh
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/update.sh|step_check
             where: http_code
             match: 403
@@ -861,6 +1198,10 @@ tests
         # url: /system/boot.php
         - request_url-/system/boot.php|step_request
             url: /system/boot.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/boot.php|step_check
             where: http_code
             match: 403
@@ -870,6 +1211,10 @@ tests
         # url: /system/bundle.data
         - request_url-/system/bundle.data|step_request
             url: /system/bundle.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/bundle.data|step_check
             where: http_code
             match: 403
@@ -879,6 +1224,10 @@ tests
         # url: /system/module_page/module.data
         - request_url-/system/module_page/module.data|step_request
             url: /system/module_page/module.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/module.data|step_check
             where: http_code
             match: 403
@@ -888,6 +1237,10 @@ tests
         # url: /system/module_page/backend/markers.php
         - request_url-/system/module_page/backend/markers.php|step_request
             url: /system/module_page/backend/markers.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/backend/markers.php|step_check
             where: http_code
             match: 403
@@ -897,6 +1250,10 @@ tests
         # url: /system/module_page/frontend/template--canvas_svg.tpl
         - request_url-/system/module_page/frontend/template--canvas_svg.tpl|step_request
             url: /system/module_page/frontend/template--canvas_svg.tpl
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/template--canvas_svg.tpl|step_check
             where: http_code
             match: 403
@@ -906,6 +1263,10 @@ tests
         # url: /system/module_page/frontend/core.jsd
         - request_url-/system/module_page/frontend/core.jsd|step_request
             url: /system/module_page/frontend/core.jsd
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/core.jsd|step_check
             where: http_code
             match: 200
@@ -915,6 +1276,10 @@ tests
         # url: /system/module_page/frontend/form.cssd
         - request_url-/system/module_page/frontend/form.cssd|step_request
             url: /system/module_page/frontend/form.cssd
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/form.cssd|step_check
             where: http_code
             match: 200
@@ -924,6 +1289,10 @@ tests
         # url: /system/module_page/frontend/form.js
         - request_url-/system/module_page/frontend/form.js|step_request
             url: /system/module_page/frontend/form.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/form.js|step_check
             where: http_code
             match: 200
@@ -933,6 +1302,10 @@ tests
         # url: /system/module_page/frontend/pictures/icons-form.svgd
         - request_url-/system/module_page/frontend/pictures/icons-form.svgd|step_request
             url: /system/module_page/frontend/pictures/icons-form.svgd
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures/icons-form.svgd|step_check
             where: http_code
             match: 200
@@ -942,6 +1315,10 @@ tests
         # url: /system/module_page/frontend/pictures/lines.svg
         - request_url-/system/module_page/frontend/pictures/lines.svg|step_request
             url: /system/module_page/frontend/pictures/lines.svg
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures/lines.svg|step_check
             where: http_code
             match: 200
@@ -951,6 +1328,10 @@ tests
         # url: /system/module_captcha/frontend/captcha.css
         - request_url-/system/module_captcha/frontend/captcha.css|step_request
             url: /system/module_captcha/frontend/captcha.css
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/frontend/captcha.css|step_check
             where: http_code
             match: 200
@@ -967,6 +1348,10 @@ tests
         # url: /~/.ssh/id_rsa/
         - request_url-/~/.ssh/id_rsa/|step_request
             url: /~/.ssh/id_rsa/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/~/.ssh/id_rsa/|step_check
             where: http_code
             match: 302
@@ -976,6 +1361,10 @@ tests
         # url: /../../../../../../etc/passwd/
         - request_url-/../../../../../../etc/passwd/|step_request
             url: /../../../../../../etc/passwd/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/../../../../../../etc/passwd/|step_check
             where: http_code
             match: 400
@@ -990,6 +1379,10 @@ tests
         # url: /.editorconfig/
         - request_url-/.editorconfig/|step_request
             url: /.editorconfig/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.editorconfig/|step_check
             where: http_code
             match: 302
@@ -1003,6 +1396,10 @@ tests
         # url: /.gitattributes/
         - request_url-/.gitattributes/|step_request
             url: /.gitattributes/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.gitattributes/|step_check
             where: http_code
             match: 302
@@ -1016,6 +1413,10 @@ tests
         # url: /.gitignore/
         - request_url-/.gitignore/|step_request
             url: /.gitignore/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.gitignore/|step_check
             where: http_code
             match: 302
@@ -1029,6 +1430,10 @@ tests
         # url: /.htaccess/
         - request_url-/.htaccess/|step_request
             url: /.htaccess/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.htaccess/|step_check
             where: http_code
             match: 403
@@ -1043,6 +1448,10 @@ tests
         # url: /.nginx/
         - request_url-/.nginx/|step_request
             url: /.nginx/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/.nginx/|step_check
             where: http_code
             match: 302
@@ -1056,6 +1465,10 @@ tests
         # url: /web.config/
         - request_url-/web.config/|step_request
             url: /web.config/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/web.config/|step_check
             where: http_code
             match: 302
@@ -1065,6 +1478,10 @@ tests
         # url: /index.php/
         - request_url-/index.php/|step_request
             url: /index.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/index.php/|step_check
             where: http_code
             match: 302
@@ -1074,6 +1491,10 @@ tests
         # url: /license.md/
         - request_url-/license.md/|step_request
             url: /license.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/license.md/|step_check
             where: http_code
             match: 302
@@ -1083,6 +1504,10 @@ tests
         # url: /dynamic/cache/data_original.php/
         - request_url-/dynamic/cache/data_original.php/|step_request
             url: /dynamic/cache/data_original.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/data_original.php/|step_check
             where: http_code
             match: 302
@@ -1092,6 +1517,10 @@ tests
         # url: /dynamic/cache/readme.md/
         - request_url-/dynamic/cache/readme.md/|step_request
             url: /dynamic/cache/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/readme.md/|step_check
             where: http_code
             match: 302
@@ -1101,6 +1530,10 @@ tests
         # url: /dynamic/cache/structures.php/
         - request_url-/dynamic/cache/structures.php/|step_request
             url: /dynamic/cache/structures.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/structures.php/|step_check
             where: http_code
             match: 302
@@ -1110,6 +1543,10 @@ tests
         # url: /dynamic/data/boot.php/
         - request_url-/dynamic/data/boot.php/|step_request
             url: /dynamic/data/boot.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/boot.php/|step_check
             where: http_code
             match: 302
@@ -1119,6 +1556,10 @@ tests
         # url: /dynamic/data/changes.php/
         - request_url-/dynamic/data/changes.php/|step_request
             url: /dynamic/data/changes.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/changes.php/|step_check
             where: http_code
             match: 302
@@ -1128,6 +1569,10 @@ tests
         # url: /dynamic/data/data.sqlite/
         - request_url-/dynamic/data/data.sqlite/|step_request
             url: /dynamic/data/data.sqlite/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/data.sqlite/|step_check
             where: http_code
             match: 302
@@ -1137,6 +1582,10 @@ tests
         # url: /dynamic/data/readme.md/
         - request_url-/dynamic/data/readme.md/|step_request
             url: /dynamic/data/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/readme.md/|step_check
             where: http_code
             match: 302
@@ -1146,6 +1595,10 @@ tests
         # url: /dynamic/files/readme.md/
         - request_url-/dynamic/files/readme.md/|step_request
             url: /dynamic/files/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/files/readme.md/|step_check
             where: http_code
             match: 302
@@ -1155,6 +1608,10 @@ tests
         # url: /dynamic/logs/readme.md/
         - request_url-/dynamic/logs/readme.md/|step_request
             url: /dynamic/logs/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/logs/readme.md/|step_check
             where: http_code
             match: 302
@@ -1164,6 +1621,10 @@ tests
         # url: /dynamic/tmp/readme.md/
         - request_url-/dynamic/tmp/readme.md/|step_request
             url: /dynamic/tmp/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/tmp/readme.md/|step_check
             where: http_code
             match: 302
@@ -1173,6 +1634,10 @@ tests
         # url: /modules/readme.md/
         - request_url-/modules/readme.md/|step_request
             url: /modules/readme.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/modules/readme.md/|step_check
             where: http_code
             match: 302
@@ -1182,6 +1647,10 @@ tests
         # url: /readme/about-en.md/
         - request_url-/readme/about-en.md/|step_request
             url: /readme/about-en.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/about-en.md/|step_check
             where: http_code
             match: 302
@@ -1191,6 +1660,10 @@ tests
         # url: /readme/develop.md/
         - request_url-/readme/develop.md/|step_request
             url: /readme/develop.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/develop.md/|step_check
             where: http_code
             match: 302
@@ -1200,6 +1673,10 @@ tests
         # url: /readme/installation-en.md/
         - request_url-/readme/installation-en.md/|step_request
             url: /readme/installation-en.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/installation-en.md/|step_check
             where: http_code
             match: 302
@@ -1209,6 +1686,10 @@ tests
         # url: /readme/security.md/
         - request_url-/readme/security.md/|step_request
             url: /readme/security.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/security.md/|step_check
             where: http_code
             match: 302
@@ -1218,6 +1699,10 @@ tests
         # url: /readme/software.md/
         - request_url-/readme/software.md/|step_request
             url: /readme/software.md/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/software.md/|step_check
             where: http_code
             match: 302
@@ -1227,6 +1712,10 @@ tests
         # url: /shell/bundle_create.sh/
         - request_url-/shell/bundle_create.sh/|step_request
             url: /shell/bundle_create.sh/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/bundle_create.sh/|step_check
             where: http_code
             match: 302
@@ -1236,6 +1725,10 @@ tests
         # url: /shell/cache_clear.sh/
         - request_url-/shell/cache_clear.sh/|step_request
             url: /shell/cache_clear.sh/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/cache_clear.sh/|step_check
             where: http_code
             match: 302
@@ -1245,6 +1738,10 @@ tests
         # url: /shell/dynamic_reset.sh/
         - request_url-/shell/dynamic_reset.sh/|step_request
             url: /shell/dynamic_reset.sh/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/dynamic_reset.sh/|step_check
             where: http_code
             match: 302
@@ -1254,6 +1751,10 @@ tests
         # url: /shell/update.sh/
         - request_url-/shell/update.sh/|step_request
             url: /shell/update.sh/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/update.sh/|step_check
             where: http_code
             match: 302
@@ -1263,6 +1764,10 @@ tests
         # url: /system/boot.php/
         - request_url-/system/boot.php/|step_request
             url: /system/boot.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/boot.php/|step_check
             where: http_code
             match: 302
@@ -1272,6 +1777,10 @@ tests
         # url: /system/bundle.data/
         - request_url-/system/bundle.data/|step_request
             url: /system/bundle.data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/bundle.data/|step_check
             where: http_code
             match: 302
@@ -1281,6 +1790,10 @@ tests
         # url: /system/module_page/module.data/
         - request_url-/system/module_page/module.data/|step_request
             url: /system/module_page/module.data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/module.data/|step_check
             where: http_code
             match: 302
@@ -1290,6 +1803,10 @@ tests
         # url: /system/module_page/backend/markers.php/
         - request_url-/system/module_page/backend/markers.php/|step_request
             url: /system/module_page/backend/markers.php/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/backend/markers.php/|step_check
             where: http_code
             match: 302
@@ -1299,6 +1816,10 @@ tests
         # url: /system/module_page/frontend/template--canvas_svg.tpl/
         - request_url-/system/module_page/frontend/template--canvas_svg.tpl/|step_request
             url: /system/module_page/frontend/template--canvas_svg.tpl/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/template--canvas_svg.tpl/|step_check
             where: http_code
             match: 302
@@ -1308,6 +1829,10 @@ tests
         # url: /system/module_page/frontend/core.jsd/
         - request_url-/system/module_page/frontend/core.jsd/|step_request
             url: /system/module_page/frontend/core.jsd/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/core.jsd/|step_check
             where: http_code
             match: 302
@@ -1317,6 +1842,10 @@ tests
         # url: /system/module_page/frontend/form.cssd/
         - request_url-/system/module_page/frontend/form.cssd/|step_request
             url: /system/module_page/frontend/form.cssd/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/form.cssd/|step_check
             where: http_code
             match: 302
@@ -1326,6 +1855,10 @@ tests
         # url: /system/module_page/frontend/form.js/
         - request_url-/system/module_page/frontend/form.js/|step_request
             url: /system/module_page/frontend/form.js/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/form.js/|step_check
             where: http_code
             match: 302
@@ -1335,6 +1868,10 @@ tests
         # url: /system/module_page/frontend/pictures/icons-form.svgd/
         - request_url-/system/module_page/frontend/pictures/icons-form.svgd/|step_request
             url: /system/module_page/frontend/pictures/icons-form.svgd/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures/icons-form.svgd/|step_check
             where: http_code
             match: 302
@@ -1344,6 +1881,10 @@ tests
         # url: /system/module_page/frontend/pictures/lines.svg/
         - request_url-/system/module_page/frontend/pictures/lines.svg/|step_request
             url: /system/module_page/frontend/pictures/lines.svg/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures/lines.svg/|step_check
             where: http_code
             match: 302
@@ -1353,6 +1894,10 @@ tests
         # url: /system/module_captcha/frontend/captcha.css/
         - request_url-/system/module_captcha/frontend/captcha.css/|step_request
             url: /system/module_captcha/frontend/captcha.css/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/frontend/captcha.css/|step_check
             where: http_code
             match: 302
@@ -1369,6 +1914,10 @@ tests
         # url: /dynamic
         - request_url-/dynamic|step_request
             url: /dynamic
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic|step_check
             where: http_code
             match: 404
@@ -1378,6 +1927,10 @@ tests
         # url: /dynamic/cache
         - request_url-/dynamic/cache|step_request
             url: /dynamic/cache
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache|step_check
             where: http_code
             match: 404
@@ -1387,6 +1940,10 @@ tests
         # url: /dynamic/data
         - request_url-/dynamic/data|step_request
             url: /dynamic/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data|step_check
             where: http_code
             match: 404
@@ -1396,6 +1953,10 @@ tests
         # url: /dynamic/files
         - request_url-/dynamic/files|step_request
             url: /dynamic/files
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/files|step_check
             where: http_code
             match: 404
@@ -1405,6 +1966,10 @@ tests
         # url: /dynamic/logs
         - request_url-/dynamic/logs|step_request
             url: /dynamic/logs
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/logs|step_check
             where: http_code
             match: 404
@@ -1414,6 +1979,10 @@ tests
         # url: /dynamic/tmp
         - request_url-/dynamic/tmp|step_request
             url: /dynamic/tmp
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/tmp|step_check
             where: http_code
             match: 404
@@ -1423,6 +1992,10 @@ tests
         # url: /modules
         - request_url-/modules|step_request
             url: /modules
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/modules|step_check
             where: http_code
             match: 404
@@ -1432,6 +2005,10 @@ tests
         # url: /readme
         - request_url-/readme|step_request
             url: /readme
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme|step_check
             where: http_code
             match: 404
@@ -1441,6 +2018,10 @@ tests
         # url: /shell
         - request_url-/shell|step_request
             url: /shell
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell|step_check
             where: http_code
             match: 404
@@ -1450,6 +2031,10 @@ tests
         # url: /system
         - request_url-/system|step_request
             url: /system
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system|step_check
             where: http_code
             match: 404
@@ -1459,6 +2044,10 @@ tests
         # url: /system/module_captcha
         - request_url-/system/module_captcha|step_request
             url: /system/module_captcha
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha|step_check
             where: http_code
             match: 404
@@ -1468,6 +2057,10 @@ tests
         # url: /system/module_captcha/backend
         - request_url-/system/module_captcha/backend|step_request
             url: /system/module_captcha/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/backend|step_check
             where: http_code
             match: 404
@@ -1477,6 +2070,10 @@ tests
         # url: /system/module_captcha/data
         - request_url-/system/module_captcha/data|step_request
             url: /system/module_captcha/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/data|step_check
             where: http_code
             match: 404
@@ -1486,6 +2083,10 @@ tests
         # url: /system/module_captcha/frontend
         - request_url-/system/module_captcha/frontend|step_request
             url: /system/module_captcha/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/frontend|step_check
             where: http_code
             match: 404
@@ -1495,6 +2096,10 @@ tests
         # url: /system/module_core
         - request_url-/system/module_core|step_request
             url: /system/module_core
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core|step_check
             where: http_code
             match: 404
@@ -1504,6 +2109,10 @@ tests
         # url: /system/module_core/backend
         - request_url-/system/module_core/backend|step_request
             url: /system/module_core/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core/backend|step_check
             where: http_code
             match: 404
@@ -1513,6 +2122,10 @@ tests
         # url: /system/module_core/data
         - request_url-/system/module_core/data|step_request
             url: /system/module_core/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core/data|step_check
             where: http_code
             match: 404
@@ -1522,6 +2135,10 @@ tests
         # url: /system/module_develop
         - request_url-/system/module_develop|step_request
             url: /system/module_develop
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop|step_check
             where: http_code
             match: 404
@@ -1531,6 +2148,10 @@ tests
         # url: /system/module_develop/backend
         - request_url-/system/module_develop/backend|step_request
             url: /system/module_develop/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/backend|step_check
             where: http_code
             match: 404
@@ -1540,6 +2161,10 @@ tests
         # url: /system/module_develop/data
         - request_url-/system/module_develop/data|step_request
             url: /system/module_develop/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/data|step_check
             where: http_code
             match: 404
@@ -1549,6 +2174,10 @@ tests
         # url: /system/module_develop/frontend
         - request_url-/system/module_develop/frontend|step_request
             url: /system/module_develop/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/frontend|step_check
             where: http_code
             match: 404
@@ -1558,6 +2187,10 @@ tests
         # url: /system/module_develop/frontend/pictures
         - request_url-/system/module_develop/frontend/pictures|step_request
             url: /system/module_develop/frontend/pictures
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/frontend/pictures|step_check
             where: http_code
             match: 404
@@ -1567,6 +2200,10 @@ tests
         # url: /system/module_develop/module_demo
         - request_url-/system/module_develop/module_demo|step_request
             url: /system/module_develop/module_demo
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo|step_check
             where: http_code
             match: 404
@@ -1576,6 +2213,10 @@ tests
         # url: /system/module_develop/module_demo/backend
         - request_url-/system/module_develop/module_demo/backend|step_request
             url: /system/module_develop/module_demo/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo/backend|step_check
             where: http_code
             match: 404
@@ -1585,6 +2226,10 @@ tests
         # url: /system/module_develop/module_demo/data
         - request_url-/system/module_develop/module_demo/data|step_request
             url: /system/module_develop/module_demo/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo/data|step_check
             where: http_code
             match: 404
@@ -1594,6 +2239,10 @@ tests
         # url: /system/module_develop/module_test
         - request_url-/system/module_develop/module_test|step_request
             url: /system/module_develop/module_test
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test|step_check
             where: http_code
             match: 404
@@ -1603,6 +2252,10 @@ tests
         # url: /system/module_develop/module_test/backend
         - request_url-/system/module_develop/module_test/backend|step_request
             url: /system/module_develop/module_test/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test/backend|step_check
             where: http_code
             match: 404
@@ -1612,6 +2265,10 @@ tests
         # url: /system/module_develop/module_test/data
         - request_url-/system/module_develop/module_test/data|step_request
             url: /system/module_develop/module_test/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test/data|step_check
             where: http_code
             match: 404
@@ -1621,6 +2278,10 @@ tests
         # url: /system/module_locales
         - request_url-/system/module_locales|step_request
             url: /system/module_locales
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales|step_check
             where: http_code
             match: 404
@@ -1630,6 +2291,10 @@ tests
         # url: /system/module_locales/backend
         - request_url-/system/module_locales/backend|step_request
             url: /system/module_locales/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/backend|step_check
             where: http_code
             match: 404
@@ -1639,6 +2304,10 @@ tests
         # url: /system/module_locales/frontend
         - request_url-/system/module_locales/frontend|step_request
             url: /system/module_locales/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/frontend|step_check
             where: http_code
             match: 404
@@ -1648,6 +2317,10 @@ tests
         # url: /system/module_locales/frontend/pictures
         - request_url-/system/module_locales/frontend/pictures|step_request
             url: /system/module_locales/frontend/pictures
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/frontend/pictures|step_check
             where: http_code
             match: 404
@@ -1657,6 +2330,10 @@ tests
         # url: /system/module_menu
         - request_url-/system/module_menu|step_request
             url: /system/module_menu
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu|step_check
             where: http_code
             match: 404
@@ -1666,6 +2343,10 @@ tests
         # url: /system/module_menu/backend
         - request_url-/system/module_menu/backend|step_request
             url: /system/module_menu/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/backend|step_check
             where: http_code
             match: 404
@@ -1675,6 +2356,10 @@ tests
         # url: /system/module_menu/data
         - request_url-/system/module_menu/data|step_request
             url: /system/module_menu/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/data|step_check
             where: http_code
             match: 404
@@ -1684,6 +2369,10 @@ tests
         # url: /system/module_menu/frontend
         - request_url-/system/module_menu/frontend|step_request
             url: /system/module_menu/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/frontend|step_check
             where: http_code
             match: 404
@@ -1693,6 +2382,10 @@ tests
         # url: /system/module_menu/frontend/pictures
         - request_url-/system/module_menu/frontend/pictures|step_request
             url: /system/module_menu/frontend/pictures
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/frontend/pictures|step_check
             where: http_code
             match: 404
@@ -1702,6 +2395,10 @@ tests
         # url: /system/module_page
         - request_url-/system/module_page|step_request
             url: /system/module_page
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page|step_check
             where: http_code
             match: 404
@@ -1711,6 +2408,10 @@ tests
         # url: /system/module_page/backend
         - request_url-/system/module_page/backend|step_request
             url: /system/module_page/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/backend|step_check
             where: http_code
             match: 404
@@ -1720,6 +2421,10 @@ tests
         # url: /system/module_page/data
         - request_url-/system/module_page/data|step_request
             url: /system/module_page/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/data|step_check
             where: http_code
             match: 404
@@ -1729,6 +2434,10 @@ tests
         # url: /system/module_page/frontend
         - request_url-/system/module_page/frontend|step_request
             url: /system/module_page/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend|step_check
             where: http_code
             match: 404
@@ -1738,6 +2447,10 @@ tests
         # url: /system/module_page/frontend/pictures
         - request_url-/system/module_page/frontend/pictures|step_request
             url: /system/module_page/frontend/pictures
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures|step_check
             where: http_code
             match: 404
@@ -1747,6 +2460,10 @@ tests
         # url: /system/module_storage
         - request_url-/system/module_storage|step_request
             url: /system/module_storage
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage|step_check
             where: http_code
             match: 404
@@ -1756,6 +2473,10 @@ tests
         # url: /system/module_storage/backend
         - request_url-/system/module_storage/backend|step_request
             url: /system/module_storage/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage/backend|step_check
             where: http_code
             match: 404
@@ -1765,6 +2486,10 @@ tests
         # url: /system/module_storage/data
         - request_url-/system/module_storage/data|step_request
             url: /system/module_storage/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage/data|step_check
             where: http_code
             match: 404
@@ -1774,6 +2499,10 @@ tests
         # url: /system/module_user
         - request_url-/system/module_user|step_request
             url: /system/module_user
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user|step_check
             where: http_code
             match: 404
@@ -1783,6 +2512,10 @@ tests
         # url: /system/module_user/backend
         - request_url-/system/module_user/backend|step_request
             url: /system/module_user/backend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/backend|step_check
             where: http_code
             match: 404
@@ -1792,6 +2525,10 @@ tests
         # url: /system/module_user/data
         - request_url-/system/module_user/data|step_request
             url: /system/module_user/data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/data|step_check
             where: http_code
             match: 404
@@ -1801,6 +2538,10 @@ tests
         # url: /system/module_user/frontend
         - request_url-/system/module_user/frontend|step_request
             url: /system/module_user/frontend
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/frontend|step_check
             where: http_code
             match: 404
@@ -1810,6 +2551,10 @@ tests
         # url: /system/module_user/frontend/pictures
         - request_url-/system/module_user/frontend/pictures|step_request
             url: /system/module_user/frontend/pictures
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/frontend/pictures|step_check
             where: http_code
             match: 404
@@ -1826,6 +2571,10 @@ tests
         # url: /dynamic/
         - request_url-/dynamic/|step_request
             url: /dynamic/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/|step_check
             where: http_code
             match: 302
@@ -1835,6 +2584,10 @@ tests
         # url: /dynamic/cache/
         - request_url-/dynamic/cache/|step_request
             url: /dynamic/cache/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/cache/|step_check
             where: http_code
             match: 302
@@ -1844,6 +2597,10 @@ tests
         # url: /dynamic/data/
         - request_url-/dynamic/data/|step_request
             url: /dynamic/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/data/|step_check
             where: http_code
             match: 302
@@ -1853,6 +2610,10 @@ tests
         # url: /dynamic/files/
         - request_url-/dynamic/files/|step_request
             url: /dynamic/files/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/files/|step_check
             where: http_code
             match: 302
@@ -1862,6 +2623,10 @@ tests
         # url: /dynamic/logs/
         - request_url-/dynamic/logs/|step_request
             url: /dynamic/logs/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/logs/|step_check
             where: http_code
             match: 302
@@ -1871,6 +2636,10 @@ tests
         # url: /dynamic/tmp/
         - request_url-/dynamic/tmp/|step_request
             url: /dynamic/tmp/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/dynamic/tmp/|step_check
             where: http_code
             match: 302
@@ -1880,6 +2649,10 @@ tests
         # url: /modules/
         - request_url-/modules/|step_request
             url: /modules/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/modules/|step_check
             where: http_code
             match: 302
@@ -1889,6 +2662,10 @@ tests
         # url: /readme/
         - request_url-/readme/|step_request
             url: /readme/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/readme/|step_check
             where: http_code
             match: 302
@@ -1898,6 +2675,10 @@ tests
         # url: /shell/
         - request_url-/shell/|step_request
             url: /shell/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/shell/|step_check
             where: http_code
             match: 302
@@ -1907,6 +2688,10 @@ tests
         # url: /system/
         - request_url-/system/|step_request
             url: /system/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/|step_check
             where: http_code
             match: 302
@@ -1916,6 +2701,10 @@ tests
         # url: /system/module_captcha/
         - request_url-/system/module_captcha/|step_request
             url: /system/module_captcha/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/|step_check
             where: http_code
             match: 302
@@ -1925,6 +2714,10 @@ tests
         # url: /system/module_captcha/backend/
         - request_url-/system/module_captcha/backend/|step_request
             url: /system/module_captcha/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/backend/|step_check
             where: http_code
             match: 302
@@ -1934,6 +2727,10 @@ tests
         # url: /system/module_captcha/data/
         - request_url-/system/module_captcha/data/|step_request
             url: /system/module_captcha/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/data/|step_check
             where: http_code
             match: 302
@@ -1943,6 +2740,10 @@ tests
         # url: /system/module_captcha/frontend/
         - request_url-/system/module_captcha/frontend/|step_request
             url: /system/module_captcha/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_captcha/frontend/|step_check
             where: http_code
             match: 302
@@ -1952,6 +2753,10 @@ tests
         # url: /system/module_core/
         - request_url-/system/module_core/|step_request
             url: /system/module_core/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core/|step_check
             where: http_code
             match: 302
@@ -1961,6 +2766,10 @@ tests
         # url: /system/module_core/backend/
         - request_url-/system/module_core/backend/|step_request
             url: /system/module_core/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core/backend/|step_check
             where: http_code
             match: 302
@@ -1970,6 +2779,10 @@ tests
         # url: /system/module_core/data/
         - request_url-/system/module_core/data/|step_request
             url: /system/module_core/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_core/data/|step_check
             where: http_code
             match: 302
@@ -1979,6 +2792,10 @@ tests
         # url: /system/module_develop/
         - request_url-/system/module_develop/|step_request
             url: /system/module_develop/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/|step_check
             where: http_code
             match: 302
@@ -1988,6 +2805,10 @@ tests
         # url: /system/module_develop/backend/
         - request_url-/system/module_develop/backend/|step_request
             url: /system/module_develop/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/backend/|step_check
             where: http_code
             match: 302
@@ -1997,6 +2818,10 @@ tests
         # url: /system/module_develop/data/
         - request_url-/system/module_develop/data/|step_request
             url: /system/module_develop/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/data/|step_check
             where: http_code
             match: 302
@@ -2006,6 +2831,10 @@ tests
         # url: /system/module_develop/frontend/
         - request_url-/system/module_develop/frontend/|step_request
             url: /system/module_develop/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/frontend/|step_check
             where: http_code
             match: 302
@@ -2015,6 +2844,10 @@ tests
         # url: /system/module_develop/frontend/pictures/
         - request_url-/system/module_develop/frontend/pictures/|step_request
             url: /system/module_develop/frontend/pictures/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/frontend/pictures/|step_check
             where: http_code
             match: 302
@@ -2024,6 +2857,10 @@ tests
         # url: /system/module_develop/module_demo/
         - request_url-/system/module_develop/module_demo/|step_request
             url: /system/module_develop/module_demo/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo/|step_check
             where: http_code
             match: 302
@@ -2033,6 +2870,10 @@ tests
         # url: /system/module_develop/module_demo/backend/
         - request_url-/system/module_develop/module_demo/backend/|step_request
             url: /system/module_develop/module_demo/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo/backend/|step_check
             where: http_code
             match: 302
@@ -2042,6 +2883,10 @@ tests
         # url: /system/module_develop/module_demo/data/
         - request_url-/system/module_develop/module_demo/data/|step_request
             url: /system/module_develop/module_demo/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_demo/data/|step_check
             where: http_code
             match: 302
@@ -2051,6 +2896,10 @@ tests
         # url: /system/module_develop/module_test/
         - request_url-/system/module_develop/module_test/|step_request
             url: /system/module_develop/module_test/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test/|step_check
             where: http_code
             match: 302
@@ -2060,6 +2909,10 @@ tests
         # url: /system/module_develop/module_test/backend/
         - request_url-/system/module_develop/module_test/backend/|step_request
             url: /system/module_develop/module_test/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test/backend/|step_check
             where: http_code
             match: 302
@@ -2069,6 +2922,10 @@ tests
         # url: /system/module_develop/module_test/data/
         - request_url-/system/module_develop/module_test/data/|step_request
             url: /system/module_develop/module_test/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_develop/module_test/data/|step_check
             where: http_code
             match: 302
@@ -2078,6 +2935,10 @@ tests
         # url: /system/module_locales/
         - request_url-/system/module_locales/|step_request
             url: /system/module_locales/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/|step_check
             where: http_code
             match: 302
@@ -2087,6 +2948,10 @@ tests
         # url: /system/module_locales/backend/
         - request_url-/system/module_locales/backend/|step_request
             url: /system/module_locales/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/backend/|step_check
             where: http_code
             match: 302
@@ -2096,6 +2961,10 @@ tests
         # url: /system/module_locales/frontend/
         - request_url-/system/module_locales/frontend/|step_request
             url: /system/module_locales/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/frontend/|step_check
             where: http_code
             match: 302
@@ -2105,6 +2974,10 @@ tests
         # url: /system/module_locales/frontend/pictures/
         - request_url-/system/module_locales/frontend/pictures/|step_request
             url: /system/module_locales/frontend/pictures/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_locales/frontend/pictures/|step_check
             where: http_code
             match: 302
@@ -2114,6 +2987,10 @@ tests
         # url: /system/module_menu/
         - request_url-/system/module_menu/|step_request
             url: /system/module_menu/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/|step_check
             where: http_code
             match: 302
@@ -2123,6 +3000,10 @@ tests
         # url: /system/module_menu/backend/
         - request_url-/system/module_menu/backend/|step_request
             url: /system/module_menu/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/backend/|step_check
             where: http_code
             match: 302
@@ -2132,6 +3013,10 @@ tests
         # url: /system/module_menu/data/
         - request_url-/system/module_menu/data/|step_request
             url: /system/module_menu/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/data/|step_check
             where: http_code
             match: 302
@@ -2141,6 +3026,10 @@ tests
         # url: /system/module_menu/frontend/
         - request_url-/system/module_menu/frontend/|step_request
             url: /system/module_menu/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/frontend/|step_check
             where: http_code
             match: 302
@@ -2150,6 +3039,10 @@ tests
         # url: /system/module_menu/frontend/pictures/
         - request_url-/system/module_menu/frontend/pictures/|step_request
             url: /system/module_menu/frontend/pictures/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_menu/frontend/pictures/|step_check
             where: http_code
             match: 302
@@ -2159,6 +3052,10 @@ tests
         # url: /system/module_page/
         - request_url-/system/module_page/|step_request
             url: /system/module_page/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/|step_check
             where: http_code
             match: 302
@@ -2168,6 +3065,10 @@ tests
         # url: /system/module_page/backend/
         - request_url-/system/module_page/backend/|step_request
             url: /system/module_page/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/backend/|step_check
             where: http_code
             match: 302
@@ -2177,6 +3078,10 @@ tests
         # url: /system/module_page/data/
         - request_url-/system/module_page/data/|step_request
             url: /system/module_page/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/data/|step_check
             where: http_code
             match: 302
@@ -2186,6 +3091,10 @@ tests
         # url: /system/module_page/frontend/
         - request_url-/system/module_page/frontend/|step_request
             url: /system/module_page/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/|step_check
             where: http_code
             match: 302
@@ -2195,6 +3104,10 @@ tests
         # url: /system/module_page/frontend/pictures/
         - request_url-/system/module_page/frontend/pictures/|step_request
             url: /system/module_page/frontend/pictures/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_page/frontend/pictures/|step_check
             where: http_code
             match: 302
@@ -2204,6 +3117,10 @@ tests
         # url: /system/module_storage/
         - request_url-/system/module_storage/|step_request
             url: /system/module_storage/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage/|step_check
             where: http_code
             match: 302
@@ -2213,6 +3130,10 @@ tests
         # url: /system/module_storage/backend/
         - request_url-/system/module_storage/backend/|step_request
             url: /system/module_storage/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage/backend/|step_check
             where: http_code
             match: 302
@@ -2222,6 +3143,10 @@ tests
         # url: /system/module_storage/data/
         - request_url-/system/module_storage/data/|step_request
             url: /system/module_storage/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_storage/data/|step_check
             where: http_code
             match: 302
@@ -2231,6 +3156,10 @@ tests
         # url: /system/module_user/
         - request_url-/system/module_user/|step_request
             url: /system/module_user/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/|step_check
             where: http_code
             match: 302
@@ -2240,6 +3169,10 @@ tests
         # url: /system/module_user/backend/
         - request_url-/system/module_user/backend/|step_request
             url: /system/module_user/backend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/backend/|step_check
             where: http_code
             match: 302
@@ -2249,6 +3182,10 @@ tests
         # url: /system/module_user/data/
         - request_url-/system/module_user/data/|step_request
             url: /system/module_user/data/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/data/|step_check
             where: http_code
             match: 302
@@ -2258,6 +3195,10 @@ tests
         # url: /system/module_user/frontend/
         - request_url-/system/module_user/frontend/|step_request
             url: /system/module_user/frontend/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/frontend/|step_check
             where: http_code
             match: 302
@@ -2267,6 +3208,10 @@ tests
         # url: /system/module_user/frontend/pictures/
         - request_url-/system/module_user/frontend/pictures/|step_request
             url: /system/module_user/frontend/pictures/
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
         - response_check-/system/module_user/frontend/pictures/|step_check
             where: http_code
             match: 302
