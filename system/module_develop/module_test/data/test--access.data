@@ -249,12 +249,84 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
-          - response_check-/manage/data/content/text-registered-role|step_check
-              where: http_code
-              match: 403
+          - response_check-select-multiple-registered-role|step_check
+              where: token
+              which: %%_test_step_transpositions_is_active_select
+              match: 1
+              on_success
+              - title_on_success|step_title
+                  title: Multiple SELECT
               on_failure
-              - return_result|step_return
-                  value: 0
+              - title_on_failure|step_title
+                  title: NO Multiple SELECT
+          # instance select page
+          - request_url-select-role|step_request
+              url: /manage/data/content/text/test
+              headers
+              - cookie: Cookie: %%_test_cookies
+              is_https|param_from_form
+                name: is_https
+          - response_check-select-role|step_check
+              where: token
+              which: %%_test_step_transpositions_is_active_select
+              match: 1
+              on_success
+              - title_on_success|step_title
+                  title: SELECT
+              on_failure
+              - title_on_failure|step_title
+                  title: NO SELECT
+          # instance insert page
+          - request_url-insert-role|step_request
+              url: /manage/data/content/text//insert
+              headers
+              - cookie: Cookie: %%_test_cookies
+              is_https|param_from_form
+                name: is_https
+          - response_check-insert-role|step_check
+              where: token
+              which: %%_test_step_transpositions_is_active_insert
+              match: 1
+              on_success
+              - title_on_success|step_title
+                  title: INSERT
+              on_failure
+              - title_on_failure|step_title
+                  title: NO INSERT
+          # instance update page
+          - request_url-update-role|step_request
+              url: /manage/data/content/text/test/update
+              headers
+              - cookie: Cookie: %%_test_cookies
+              is_https|param_from_form
+                name: is_https
+          - response_check-update-role|step_check
+              where: token
+              which: %%_test_step_transpositions_is_active_update
+              match: 1
+              on_success
+              - title_on_success|step_title
+                  title: UPDATE
+              on_failure
+              - title_on_failure|step_title
+                  title: NO UPDATE
+          # instance delete page
+          - request_url-delete-role|step_request
+              url: /manage/data/content/text/test/delete
+              headers
+              - cookie: Cookie: %%_test_cookies
+              is_https|param_from_form
+                name: is_https
+          - response_check-delete-role|step_check
+              where: token
+              which: %%_test_step_transpositions_is_active_delete
+              match: 1
+              on_success
+              - title_on_success|step_title
+                  title: DELETE
+              on_failure
+              - title_on_failure|step_title
+                  title: NO DELETE
     - reset_role_permissions|step_set_role_permissions
         id_role: test
         is_reset: true
