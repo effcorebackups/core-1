@@ -215,6 +215,7 @@ tests
         action_before|step_set_role_permissions
           id_role: test
           is_reset: true
+      # ─────────────────────────────────────────────────────────────────────
         actions
         - select|step_actions
             actions
@@ -240,9 +241,12 @@ tests
                 id_role: test
                 permissions
                 - =: text_delete
+      # ─────────────────────────────────────────────────────────────────────
         action_after|step_actions
           actions
           # multiple instance select page
+          - title_select_multiple|step_title
+              title: SELECT MULTIPLE
           - request_url-select-multiple-registered-role|step_request
               url: /manage/data/content/text
               headers
@@ -268,6 +272,8 @@ tests
                   - return_result|step_return
                       value: 0
           # instance select page
+          - title_select|step_title
+              title: SELECT
           - request_url-select-registered-role|step_request
               url: /manage/data/content/text/test
               headers
@@ -293,6 +299,8 @@ tests
                   - return_result|step_return
                       value: 0
           # instance insert page
+          - title_insert|step_title
+              title: INSERT
           - request_url-insert-registered-role|step_request
               url: /manage/data/content/text//insert
               headers
@@ -318,6 +326,8 @@ tests
                   - return_result|step_return
                       value: 0
           # instance update page
+          - title_update|step_title
+              title: UPDATE
           - request_url-update-registered-role|step_request
               url: /manage/data/content/text/test/update
               headers
@@ -343,6 +353,8 @@ tests
                   - return_result|step_return
                       value: 0
           # instance delete page
+          - title_delete|step_title
+              title: DELETE
           - request_url-delete-registered-role|step_request
               url: /manage/data/content/text/test/delete
               headers
