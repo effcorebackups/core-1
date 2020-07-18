@@ -254,11 +254,19 @@ tests
               which: %%_test_step_transpositions_is_active_select
               match: 1
               on_success
-              - title_on_success|step_title
-                  title: Multiple SELECT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 200
+                  on_failure
+                  - return_result|step_return
+                      value: 0
               on_failure
-              - title_on_failure|step_title
-                  title: NO Multiple SELECT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 403
+                  on_failure
+                  - return_result|step_return
+                      value: 0
           # instance select page
           - request_url-select-registered-role|step_request
               url: /manage/data/content/text/test
@@ -271,11 +279,19 @@ tests
               which: %%_test_step_transpositions_is_active_select
               match: 1
               on_success
-              - title_on_success|step_title
-                  title: SELECT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 200
+                  on_failure
+                  - return_result|step_return
+                      value: 0
               on_failure
-              - title_on_failure|step_title
-                  title: NO SELECT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 403
+                  on_failure
+                  - return_result|step_return
+                      value: 0
           # instance insert page
           - request_url-insert-registered-role|step_request
               url: /manage/data/content/text//insert
@@ -288,11 +304,19 @@ tests
               which: %%_test_step_transpositions_is_active_insert
               match: 1
               on_success
-              - title_on_success|step_title
-                  title: INSERT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 200
+                  on_failure
+                  - return_result|step_return
+                      value: 0
               on_failure
-              - title_on_failure|step_title
-                  title: NO INSERT
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 403
+                  on_failure
+                  - return_result|step_return
+                      value: 0
           # instance update page
           - request_url-update-registered-role|step_request
               url: /manage/data/content/text/test/update
@@ -305,11 +329,19 @@ tests
               which: %%_test_step_transpositions_is_active_update
               match: 1
               on_success
-              - title_on_success|step_title
-                  title: UPDATE
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 200
+                  on_failure
+                  - return_result|step_return
+                      value: 0
               on_failure
-              - title_on_failure|step_title
-                  title: NO UPDATE
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 403
+                  on_failure
+                  - return_result|step_return
+                      value: 0
           # instance delete page
           - request_url-delete-registered-role|step_request
               url: /manage/data/content/text/test/delete
@@ -322,11 +354,19 @@ tests
               which: %%_test_step_transpositions_is_active_delete
               match: 1
               on_success
-              - title_on_success|step_title
-                  title: DELETE
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 200
+                  on_failure
+                  - return_result|step_return
+                      value: 0
               on_failure
-              - title_on_failure|step_title
-                  title: NO DELETE
+              - response_check_http_code|step_check
+                  where: http_code
+                  match: 403
+                  on_failure
+                  - return_result|step_return
+                      value: 0
     - reset_role_permissions|step_set_role_permissions
         id_role: test
         is_reset: true
