@@ -260,13 +260,13 @@ tests
               - title_on_failure|step_title
                   title: NO Multiple SELECT
           # instance select page
-          - request_url-select-role|step_request
+          - request_url-select-registered-role|step_request
               url: /manage/data/content/text/test
               headers
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
-          - response_check-select-role|step_check
+          - response_check-select-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_select
               match: 1
@@ -277,13 +277,13 @@ tests
               - title_on_failure|step_title
                   title: NO SELECT
           # instance insert page
-          - request_url-insert-role|step_request
+          - request_url-insert-registered-role|step_request
               url: /manage/data/content/text//insert
               headers
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
-          - response_check-insert-role|step_check
+          - response_check-insert-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_insert
               match: 1
@@ -294,13 +294,13 @@ tests
               - title_on_failure|step_title
                   title: NO INSERT
           # instance update page
-          - request_url-update-role|step_request
+          - request_url-update-registered-role|step_request
               url: /manage/data/content/text/test/update
               headers
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
-          - response_check-update-role|step_check
+          - response_check-update-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_update
               match: 1
@@ -311,13 +311,13 @@ tests
               - title_on_failure|step_title
                   title: NO UPDATE
           # instance delete page
-          - request_url-delete-role|step_request
+          - request_url-delete-registered-role|step_request
               url: /manage/data/content/text/test/delete
               headers
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
-          - response_check-delete-role|step_check
+          - response_check-delete-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_delete
               match: 1
