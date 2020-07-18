@@ -144,6 +144,7 @@ translations
     - property protected: свойство защищённое
     - property public: свойство публичное
     - proxy server = %%_proxy: прокси-сервер = %%_proxy
+    - Proxy server: Прокси-сервер
     - Quantity of iterations: Количество итераций
     - query = "%%_query": запрос = "%%_query"
     - query = "%%_query"<br>arguments = [%%_args]: запрос = "%%_query"<br>аргументы = [%%_args]

@@ -4,6 +4,15 @@ tests
     title: Access
     description: After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.
     params
+    - proxy|field_text
+        title: Proxy server
+        description|text
+          text: Examples: %%_examples
+          args
+          - examples: "127.0.0.1:8888" | "127.0.0.1:4321"
+        element_attributes
+        - name: proxy
+        - required: false
     - is_https|field_switcher
         title: HTTPS
         element_attributes
@@ -19,6 +28,8 @@ tests
         url: /manage/data/content/text
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-select-multiple|step_check
         where: http_code
         match: 403
@@ -32,6 +43,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-select|step_check
         where: http_code
         match: 403
@@ -45,6 +58,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-insert|step_check
         where: http_code
         match: 403
@@ -58,6 +73,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-update|step_check
         where: http_code
         match: 403
@@ -71,6 +88,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-delete|step_check
         where: http_code
         match: 403
@@ -91,12 +110,16 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - form_registration_submit|step_request
         url: /registration
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
         post
         - form_id: registration
         - validation_id: %%_test_form_validation_id{registration}
@@ -121,6 +144,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-select-multiple-registered|step_check
         where: http_code
         match: 403
@@ -134,6 +159,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-select-registered|step_check
         where: http_code
         match: 403
@@ -147,6 +174,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-insert-registered|step_check
         where: http_code
         match: 403
@@ -160,6 +189,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-update-registered|step_check
         where: http_code
         match: 403
@@ -173,6 +204,8 @@ tests
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
+        proxy|param_from_form
+          name: proxy
     - response_check-delete-registered|step_check
         where: http_code
         match: 403
@@ -253,6 +286,8 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
+              proxy|param_from_form
+                name: proxy
           - response_check-select-multiple-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_select
@@ -280,6 +315,8 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
+              proxy|param_from_form
+                name: proxy
           - response_check-select-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_select
@@ -307,6 +344,8 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
+              proxy|param_from_form
+                name: proxy
           - response_check-insert-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_insert
@@ -334,6 +373,8 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
+              proxy|param_from_form
+                name: proxy
           - response_check-update-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_update
@@ -361,6 +402,8 @@ tests
               - cookie: Cookie: %%_test_cookies
               is_https|param_from_form
                 name: is_https
+              proxy|param_from_form
+                name: proxy
           - response_check-delete-registered-role|step_check
               where: token
               which: %%_test_step_transpositions_is_active_delete
