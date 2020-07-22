@@ -11,7 +11,7 @@ namespace effcore {
   public $permissions = [];
   public $is_reset = false;
 
-  function run(&$test, &$c_scenario, &$c_results) {
+  function run(&$test, $dpath, &$c_results) {
     if (true           ) $reports[] = new text('changing permissions for role = "%%_role"', ['role' => $this->id_role]);
     if ($this->is_reset) $reports[] = new text('there will be try to delete all permissions');
     if (true           ) $reports[] = new text('there will be try to insert permissions: %%_permissions', ['permissions' => implode(', ', $this->permissions) ?: 'n/a']);
@@ -21,7 +21,7 @@ namespace effcore {
     $new_permissions =   role::relation_permission_select    ($this->id_role);
     $reports[] = new text('permissions before insertion: %%_permissions', ['permissions' => implode(', ', $old_permissions) ?: 'n/a']);
     $reports[] = new text('permissions after insertion: %%_permissions',  ['permissions' => implode(', ', $new_permissions) ?: 'n/a']);
-    $c_results['reports'][] = $reports;
+    $c_results['reports'][$dpath] = $reports;
   }
 
 }}

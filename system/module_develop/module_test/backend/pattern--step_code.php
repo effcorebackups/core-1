@@ -11,17 +11,17 @@ namespace effcore {
   public $args = [];
   public $is_apply_tokens = true;
 
-  function run(&$test, &$c_scenario, &$c_results) {
+  function run(&$test, $dpath, &$c_results) {
     $args = [];
     foreach ($this->args as $c_key => $c_value)
       if ($this->is_apply_tokens && is_string($c_value))
            $args[$c_key] = token::apply($c_value);
       else $args[$c_key] =              $c_value;
-    $c_results['reports'][] = new text('call "%%_call"', ['call' => $this->handler]);
+    $c_results['reports'][$dpath] = new text('call "%%_call"', ['call' => $this->handler]);
     call_user_func_array($this->handler, [
-      'test'     => &$test,
-      'scenario' => &$c_scenario,
-      'results'  => &$c_results
+      'test'    => &$test,
+      'dpath'   => $dpath.'::'.core::structure_get_part_handler($this->handler, 'method'),
+      'results' => &$c_results
     ] + $args);
   }
 

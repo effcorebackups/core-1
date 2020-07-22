@@ -11,7 +11,7 @@ namespace effcore {
   public $roles = [];
   public $is_reset = false;
 
-  function run(&$test, &$c_scenario, &$c_results) {
+  function run(&$test, $dpath, &$c_results) {
     $nickname = token::apply($this->nickname);
     $user = (new instance('user', [
       'nickname' => $nickname
@@ -27,7 +27,7 @@ namespace effcore {
       $new_roles =         user::relation_role_select    ($user->id);
       $reports[] = new text('roles before insertion: %%_roles', ['roles' => implode(', ', $old_roles) ?: 'n/a']);
       $reports[] = new text('roles after insertion: %%_roles',  ['roles' => implode(', ', $new_roles) ?: 'n/a']);
-      $c_results['reports'][] = $reports;
+      $c_results['reports'][$dpath] = $reports;
     }
   }
 

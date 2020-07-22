@@ -13,7 +13,7 @@ namespace effcore {
   public $headers  = [];
   public $post     = [];
 
-  function run(&$test, &$c_scenario, &$c_results) {
+  function run(&$test, $dpath, &$c_results) {
     $proxy = $this->proxy instanceof param_from_form ?
              $this->proxy->get() :
              $this->proxy;
@@ -39,7 +39,7 @@ namespace effcore {
         $reports[] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
       }
     }
-    $c_results['reports'][] = $reports;
+    $c_results['reports'][$dpath] = $reports;
     $c_results['response'] = $response;
     static::$history[    ] = $response;
   }
