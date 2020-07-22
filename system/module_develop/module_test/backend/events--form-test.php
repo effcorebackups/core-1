@@ -51,7 +51,7 @@ namespace effcore\modules\test {
         # make report
           if (!empty($test_result['reports'])) {
             $items['report']->child_select('document')->children_delete();
-            foreach ($test_result['reports'] as $c_part) {
+            foreach ($test_result['reports'] as $c_dpath => $c_part) {
               if (is_array($c_part)) foreach ($c_part as &$c_line) $c_line = core::return_rendered($c_line);
               if (is_array($c_part)) $items['report']->child_select('document')->child_insert(new markup('p', [], new text_multiline($c_part) ));
               else                   $items['report']->child_select('document')->child_insert(new markup('p', [],                    $c_part  ));
