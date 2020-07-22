@@ -16,7 +16,7 @@ namespace effcore {
   function run() {
     $c_results = [];
     foreach ($this->scenario as $c_step) {
-      $c_step->run($this, $this->scenario, $c_step, $c_results);
+      $c_step->run($this, $this->scenario, $c_results);
       if (array_key_exists('return', $c_results)) {
         break;
       }

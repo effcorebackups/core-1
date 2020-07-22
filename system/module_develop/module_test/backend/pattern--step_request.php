@@ -13,7 +13,7 @@ namespace effcore {
   public $headers  = [];
   public $post     = [];
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     $proxy = $this->proxy instanceof param_from_form ?
              $this->proxy->get() :
              $this->proxy;

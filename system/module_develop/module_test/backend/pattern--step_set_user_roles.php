@@ -11,7 +11,7 @@ namespace effcore {
   public $roles = [];
   public $is_reset = false;
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     $nickname = token::apply($this->nickname);
     $user = (new instance('user', [
       'nickname' => $nickname

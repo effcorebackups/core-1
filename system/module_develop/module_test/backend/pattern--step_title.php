@@ -11,7 +11,7 @@ namespace effcore {
   public $args = [];
   public $is_apply_tokens = true;
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     $args = [];
     foreach ($this->args as $c_key => $c_value)
       if ($this->is_apply_tokens && is_string($c_value))

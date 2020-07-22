@@ -11,7 +11,7 @@ namespace effcore {
   public $actions = [];
   public $action_after;
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     $rowids = array_keys($this->actions);
     $actions_count = count($this->actions);
     $max = 2 ** $actions_count;
@@ -26,7 +26,7 @@ namespace effcore {
       }
       if ($this->action_before) {
         $c_results['reports'][] = new text('action "%%_name" will be started', ['name' => 'action_before']);
-        $this->action_before->run($test, $this->action_before, $c_step, $c_results);
+        $this->action_before->run($test, $this->action_before, $c_results);
         if (array_key_exists('return', $c_results)) {
           return;
         }
@@ -35,7 +35,7 @@ namespace effcore {
         if ($i >> $j & 1) {
           $c_rowid = $rowids[$actions_count - 1 - $j];
           $c_results['reports'][] = new text('action with rowid = "%%_rowid" will be started', ['rowid' => $c_rowid]);
-          $this->actions[$c_rowid]->run($test, $this->actions, $c_step, $c_results);
+          $this->actions[$c_rowid]->run($test, $this->actions, $c_results);
           if (array_key_exists('return', $c_results)) {
             return;
           }
@@ -43,7 +43,7 @@ namespace effcore {
       }
       if ($this->action_after) {
         $c_results['reports'][] = new text('action "%%_name" will be started', ['name' => 'action_after']);
-        $this->action_after->run($test, $this->action_after, $c_step, $c_results);
+        $this->action_after->run($test, $this->action_after, $c_results);
         if (array_key_exists('return', $c_results)) {
           return;
         }

@@ -11,7 +11,7 @@ namespace effcore {
   public $permissions = [];
   public $is_reset = false;
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     if (true           ) $reports[] = new text('changing permissions for role = "%%_role"', ['role' => $this->id_role]);
     if ($this->is_reset) $reports[] = new text('there will be try to delete all permissions');
     if (true           ) $reports[] = new text('there will be try to insert permissions: %%_permissions', ['permissions' => implode(', ', $this->permissions) ?: 'n/a']);

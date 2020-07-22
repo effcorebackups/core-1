@@ -9,7 +9,7 @@ namespace effcore {
 
   public $value;
 
-  function run(&$test, &$c_scenario, &$c_step, &$c_results) {
+  function run(&$test, &$c_scenario, &$c_results) {
     $c_results['reports'][] = new text('return = "%%_return"', ['return' => $this->value]);
     $c_results['return'] = $this->value;
   }
