@@ -45,6 +45,19 @@
   section[data-id='logs'] x-param x-title::after {content: ': '}
   section[data-id='logs'] x-param x-value {font-family: monospace}
 
+  /* x-document ('report for test' and etc.)
+     note: CSS4 margin-left: calc(20px * attr(data-depth number, 0)) */
+
+  x-document[data-type='report'] p[data-depth='1'] {margin-left:  15px}
+  x-document[data-type='report'] p[data-depth='2'] {margin-left:  30px}
+  x-document[data-type='report'] p[data-depth='3'] {margin-left:  45px}
+  x-document[data-type='report'] p[data-depth='4'] {margin-left:  60px}
+  x-document[data-type='report'] p[data-depth='5'] {margin-left:  75px}
+  x-document[data-type='report'] p[data-depth='6'] {margin-left:  90px}
+  x-document[data-type='report'] p[data-depth='7'] {margin-left: 105px}
+  x-document[data-type='report'] p[data-depth='8'] {margin-left: 120px}
+  x-document[data-type='report'] p[data-depth='9'] {margin-left: 135px}
+
   /* PHP dependencies */
 
   x-decorator[data-id='extensions_dependency'] {font-size: .9em}

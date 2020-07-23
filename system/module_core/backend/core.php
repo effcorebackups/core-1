@@ -482,6 +482,10 @@ namespace effcore {
     return $result;
   }
 
+  static function path_get_depth($path) {
+    return count_chars($path, 1)[ord('/')] ?? 0;
+  }
+
   ###################################
   ### functionality for date|time ###
   ###################################
