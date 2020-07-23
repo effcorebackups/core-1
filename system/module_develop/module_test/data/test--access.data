@@ -31,7 +31,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-multiple|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -46,7 +47,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -61,7 +63,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-insert|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -76,7 +79,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-update|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -91,7 +95,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-delete|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -132,7 +137,8 @@ tests
         - captcha: %%_test_captcha
         - button: register
     - response_check|step_check
-        where: submit_error
+        where: token
+        which: %%_test_responce_submit_error
         match: 0
         on_failure
         - return_result|step_return
@@ -147,7 +153,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-multiple-registered|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -162,7 +169,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-registered|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -177,7 +185,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-insert-registered|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -192,7 +201,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-update-registered|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -207,7 +217,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-delete-registered|step_check
-        where: http_code
+        where: token
+        which: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -294,14 +305,16 @@ tests
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -323,14 +336,16 @@ tests
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -352,14 +367,16 @@ tests
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -381,14 +398,16 @@ tests
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -410,14 +429,16 @@ tests
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: http_code
+                  where: token
+                  which: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return

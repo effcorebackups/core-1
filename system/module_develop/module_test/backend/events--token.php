@@ -47,6 +47,18 @@ namespace effcore\modules\test {
             $result[$c_key] = $c_value; }}}
       return core::data_to_attr($result, false, '; ', '', '');
     }
+    if ($name === 'test_responce_http_code') {
+      $last_response = end(step_request::$history);
+      if ($last_response && isset($last_response['info']) && array_key_exists('http_code', $last_response['info'])) {
+        return (int)$last_response['info']['http_code'];
+      }
+    }
+    if ($name === 'test_responce_submit_error') {
+      $last_response = end(step_request::$history);
+      if ($last_response && isset($last_response['headers']) && array_key_exists('X-Form-Submit-Errors-Count', $last_response['headers'])) {
+        return (int)$last_response['headers']['X-Form-Submit-Errors-Count'];
+      }
+    }
   }
 
 }}
