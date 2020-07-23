@@ -132,7 +132,7 @@ tests
         - captcha: %%_test_captcha
         - button: register
     - response_check|step_check
-        where: subm_errs
+        where: submit_error
         match: 0
         on_failure
         - return_result|step_return
