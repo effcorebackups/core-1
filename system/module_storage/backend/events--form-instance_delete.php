@@ -24,24 +24,26 @@ namespace effcore\modules\storage {
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
       if ($entity) {
-        $id_keys   = $entity->id_get_real();
-        $id_values = explode('+', $form->instance_id);
-        if (count($id_keys) ==
-            count($id_values)) {
-          $conditions = array_combine($id_keys, $id_values);
-          $form->_instance = new instance($form->entity_name, $conditions);
-          if ($form->_instance->select()) {
-            if (empty($form->_instance->is_embedded)) {
-              $form->attribute_insert('data-entity_name', $form->entity_name);
-              $form->attribute_insert('data-instance_id', $form->instance_id);
-              $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
-              $items['info']->child_insert($question, 'question');
-              $items['~delete']->disabled_set(false);
-            } else $items['info']->child_insert(new markup('p', [], new text('entity is embedded'    )), 'error_message');
-          }   else $items['info']->child_insert(new markup('p', [], new text('wrong instance key'    )), 'error_message');
-        }     else $items['info']->child_insert(new markup('p', [], new text('wrong instance keys'   )), 'error_message');
-      }       else $items['info']->child_insert(new markup('p', [], new text('wrong entity name'     )), 'error_message');
-    }         else $items['info']->child_insert(new markup('p', [], new text('wrong management group')), 'error_message');
+        if ($entity->managing_is_enabled) {
+          $id_keys   = $entity->id_get_real();
+          $id_values = explode('+', $form->instance_id);
+          if (count($id_keys) ==
+              count($id_values)) {
+            $conditions = array_combine($id_keys, $id_values);
+            $form->_instance = new instance($form->entity_name, $conditions);
+            if ($form->_instance->select()) {
+              if (empty($form->_instance->is_embedded)) {
+                $form->attribute_insert('data-entity_name', $form->entity_name);
+                $form->attribute_insert('data-instance_id', $form->instance_id);
+                $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
+                $items['info']->child_insert($question, 'question');
+                $items['~delete']->disabled_set(false);
+              } else $items['info']->child_insert(new markup('p', [], new text('entity is embedded'                         )), 'error_message');
+            }   else $items['info']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message');
+          }     else $items['info']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message');
+        }       else $items['info']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message');
+      }         else $items['info']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message');
+    }           else $items['info']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message');
   }
 
   static function on_validate($event, $form, $items) {
