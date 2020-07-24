@@ -25,18 +25,20 @@ namespace effcore\modules\storage {
     $groups = entity::get_managing_group_ids();
     if (isset($groups[$managing_group_id])) {
       if ($entity) {
-        $id_keys   = $entity->id_get_real();
-        $id_values = explode('+', $instance_id);
-        if (count($id_keys) ==
-            count($id_values)) {
-          $conditions = array_combine($id_keys, $id_values);
-          $instance = new instance($entity_name, $conditions);
-          if ($instance->select() == null && url::back_url_get() != '') url::go(url::back_url_get()); # after deletion
-          if ($instance->select() == null && url::back_url_get() == '')
-               core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',     'go to <a href="/">front page</a>'], [], br.br));
-        } else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',    'go to <a href="/">front page</a>'], [], br.br));
-      }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',      'go to <a href="/">front page</a>'], [], br.br));
-    }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group', 'go to <a href="/">front page</a>'], [], br.br));
+        if ($entity->managing_is_enabled) {
+          $id_keys   = $entity->id_get_real();
+          $id_values = explode('+', $instance_id);
+          if (count($id_keys) ==
+              count($id_values)) {
+            $conditions = array_combine($id_keys, $id_values);
+            $instance = new instance($entity_name, $conditions);
+            if ($instance->select() == null && url::back_url_get() != '') url::go(url::back_url_get()); # after deletion
+            if ($instance->select() == null && url::back_url_get() == '')
+                 core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], br.br));
+          } else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',                         'go to <a href="/">front page</a>'], [], br.br));
+        }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], br.br));
+      }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',                           'go to <a href="/">front page</a>'], [], br.br));
+    }       else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group',                      'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_check_access($event, $page) {
