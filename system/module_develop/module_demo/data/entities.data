@@ -87,7 +87,7 @@ entities
         selection_params_default
         - weight: +320
     - access
-        title: Access
+        title: Read access
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
