@@ -9,4 +9,4 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: poll_select
+      - =: manage_data__content_poll__select
