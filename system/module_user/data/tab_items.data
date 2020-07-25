@@ -16,7 +16,7 @@ tab_items
       - =: relation_role_ws_user_select
       - =: role_select
       - =: user_select
-      - =: feedback_select
+      - =: manage_data__content_feedback__select
 - data_user_role|tab_item
     id: data_user_role
     id_parent: data_user_user
@@ -82,7 +82,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: feedback_select
+      - =: manage_data__content_feedback__select
 # ─────────────────────────────────────────────────────────────────────
 - security_settings|tab_item
     id: security_settings

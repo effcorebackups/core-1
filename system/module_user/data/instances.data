@@ -65,25 +65,25 @@ instances
 - permission_feedback_select|instance
     entity_name: permission
     values
-    - id: feedback_select
+    - id: manage_data__content_feedback__select
     - title: Feedback: select
     - is_embedded: 1
 - permission_feedback_insert|instance
     entity_name: permission
     values
-    - id: feedback_insert
+    - id: manage_data__content_feedback__insert
     - title: Feedback: insert
     - is_embedded: 1
 - permission_feedback_update|instance
     entity_name: permission
     values
-    - id: feedback_update
+    - id: manage_data__content_feedback__update
     - title: Feedback: update
     - is_embedded: 1
 - permission_feedback_delete|instance
     entity_name: permission
     values
-    - id: feedback_delete
+    - id: manage_data__content_feedback__delete
     - title: Feedback: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -435,22 +435,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: feedback_select
+    - id_permission: manage_data__content_feedback__select
 - relation_role_ws_permission_managers_feedback_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: feedback_insert
+    - id_permission: manage_data__content_feedback__insert
 - relation_role_ws_permission_managers_feedback_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: feedback_update
+    - id_permission: manage_data__content_feedback__update
 - relation_role_ws_permission_managers_feedback_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: feedback_delete
+    - id_permission: manage_data__content_feedback__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_page_select|instance
     entity_name: relation_role_ws_permission
