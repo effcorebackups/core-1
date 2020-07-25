@@ -11,7 +11,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: page_select
+      - =: manage_data__content_page__select
       - =: text_select
       - =: picture_select
       - =: manage_data__content_audio__select
@@ -30,7 +30,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: page_select
+      - =: manage_data__content_page__select
 - data_content_text|tab_item
     id: data_content_text
     id_parent: data_content_page

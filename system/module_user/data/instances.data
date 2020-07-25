@@ -90,25 +90,25 @@ instances
 - permission_page_select|instance
     entity_name: permission
     values
-    - id: page_select
+    - id: manage_data__content_page__select
     - title: Page: select
     - is_embedded: 1
 - permission_page_insert|instance
     entity_name: permission
     values
-    - id: page_insert
+    - id: manage_data__content_page__insert
     - title: Page: insert
     - is_embedded: 1
 - permission_page_update|instance
     entity_name: permission
     values
-    - id: page_update
+    - id: manage_data__content_page__update
     - title: Page: update
     - is_embedded: 1
 - permission_page_delete|instance
     entity_name: permission
     values
-    - id: page_delete
+    - id: manage_data__content_page__delete
     - title: Page: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -456,22 +456,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: page_select
+    - id_permission: manage_data__content_page__select
 - relation_role_ws_permission_managers_page_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: page_insert
+    - id_permission: manage_data__content_page__insert
 - relation_role_ws_permission_managers_page_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: page_update
+    - id_permission: manage_data__content_page__update
 - relation_role_ws_permission_managers_page_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: page_delete
+    - id_permission: manage_data__content_page__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_permission_select|instance
     entity_name: relation_role_ws_permission

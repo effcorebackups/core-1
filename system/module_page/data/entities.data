@@ -319,22 +319,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: page_select
+      - =: manage_data__content_page__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: page_insert
+      - =: manage_data__content_page__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: page_update
+      - =: manage_data__content_page__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: page_delete
+      - =: manage_data__content_page__delete
     fields
     - id
         title: ID
