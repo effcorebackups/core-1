@@ -12,363 +12,363 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
-- permission__audio_select|instance
+- permission_audio_select|instance
     entity_name: permission
     values
     - id: manage_data__content_audio__select
     - title: Audio: select
     - is_embedded: 1
-- permission__audio_insert|instance
+- permission_audio_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_audio__insert
     - title: Audio: insert
     - is_embedded: 1
-- permission__audio_update|instance
+- permission_audio_update|instance
     entity_name: permission
     values
     - id: manage_data__content_audio__update
     - title: Audio: update
     - is_embedded: 1
-- permission__audio_delete|instance
+- permission_audio_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_audio__delete
     - title: Audio: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__gallery_select|instance
+- permission_gallery_select|instance
     entity_name: permission
     values
     - id: manage_data__content_gallery__select
     - title: Gallery: select
     - is_embedded: 1
-- permission__gallery_insert|instance
+- permission_gallery_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_gallery__insert
     - title: Gallery: insert
     - is_embedded: 1
-- permission__gallery_update|instance
+- permission_gallery_update|instance
     entity_name: permission
     values
     - id: manage_data__content_gallery__update
     - title: Gallery: update
     - is_embedded: 1
-- permission__gallery_delete|instance
+- permission_gallery_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_gallery__delete
     - title: Gallery: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__feedback_select|instance
+- permission_feedback_select|instance
     entity_name: permission
     values
     - id: manage_data__content_feedback__select
     - title: Feedback: select
     - is_embedded: 1
-- permission__feedback_insert|instance
+- permission_feedback_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_feedback__insert
     - title: Feedback: insert
     - is_embedded: 1
-- permission__feedback_update|instance
+- permission_feedback_update|instance
     entity_name: permission
     values
     - id: manage_data__content_feedback__update
     - title: Feedback: update
     - is_embedded: 1
-- permission__feedback_delete|instance
+- permission_feedback_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_feedback__delete
     - title: Feedback: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__page_select|instance
+- permission_page_select|instance
     entity_name: permission
     values
     - id: manage_data__content_page__select
     - title: Page: select
     - is_embedded: 1
-- permission__page_insert|instance
+- permission_page_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_page__insert
     - title: Page: insert
     - is_embedded: 1
-- permission__page_update|instance
+- permission_page_update|instance
     entity_name: permission
     values
     - id: manage_data__content_page__update
     - title: Page: update
     - is_embedded: 1
-- permission__page_delete|instance
+- permission_page_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_page__delete
     - title: Page: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__permission_select|instance
+- permission_permission_select|instance
     entity_name: permission
     values
     - id: manage_data__content_permission__select
     - title: Permission: select
     - is_embedded: 1
-- permission__permission_update|instance
+- permission_permission_update|instance
     entity_name: permission
     values
     - id: manage_data__content_permission__update
     - title: Permission: update
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__picture_select|instance
+- permission_picture_select|instance
     entity_name: permission
     values
     - id: manage_data__content_picture__select
     - title: Picture: select
     - is_embedded: 1
-- permission__picture_insert|instance
+- permission_picture_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_picture__insert
     - title: Picture: insert
     - is_embedded: 1
-- permission__picture_update|instance
+- permission_picture_update|instance
     entity_name: permission
     values
     - id: manage_data__content_picture__update
     - title: Picture: update
     - is_embedded: 1
-- permission__picture_delete|instance
+- permission_picture_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_picture__delete
     - title: Picture: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__relation_role_ws_permission_select|instance
+- permission_relation_role_ws_permission_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_select
     - title: Relation: Role ↔ Permission: select
     - is_embedded: 1
-- permission__relation_role_ws_permission_insert|instance
+- permission_relation_role_ws_permission_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_insert
     - title: Relation: Role ↔ Permission: insert
     - is_embedded: 1
-- permission__relation_role_ws_permission_update|instance
+- permission_relation_role_ws_permission_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_update
     - title: Relation: Role ↔ Permission: update
     - is_embedded: 1
-- permission__relation_role_ws_permission_delete|instance
+- permission_relation_role_ws_permission_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_delete
     - title: Relation: Role ↔ Permission: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__relation_role_ws_user_select|instance
+- permission_relation_role_ws_user_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_select
     - title: Relation: Role ↔ User: select
     - is_embedded: 1
-- permission__relation_role_ws_user_insert|instance
+- permission_relation_role_ws_user_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_insert
     - title: Relation: Role ↔ User: insert
     - is_embedded: 1
-- permission__relation_role_ws_user_update|instance
+- permission_relation_role_ws_user_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_update
     - title: Relation: Role ↔ User: update
     - is_embedded: 1
-- permission__relation_role_ws_user_delete|instance
+- permission_relation_role_ws_user_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_delete
     - title: Relation: Role ↔ User: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__role_select|instance
+- permission_role_select|instance
     entity_name: permission
     values
     - id: manage_data__content_role__select
     - title: Role: select
     - is_embedded: 1
-- permission__role_insert|instance
+- permission_role_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_role__insert
     - title: Role: insert
     - is_embedded: 1
-- permission__role_update|instance
+- permission_role_update|instance
     entity_name: permission
     values
     - id: manage_data__content_role__update
     - title: Role: update
     - is_embedded: 1
-- permission__role_delete|instance
+- permission_role_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_role__delete
     - title: Role: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__selection_select|instance
+- permission_selection_select|instance
     entity_name: permission
     values
     - id: manage_data__content_selection__select
     - title: Selection: select
     - is_embedded: 1
-- permission__selection_insert|instance
+- permission_selection_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_selection__insert
     - title: Selection: insert
     - is_embedded: 1
-- permission__selection_update|instance
+- permission_selection_update|instance
     entity_name: permission
     values
     - id: manage_data__content_selection__update
     - title: Selection: update
     - is_embedded: 1
-- permission__selection_delete|instance
+- permission_selection_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_selection__delete
     - title: Selection: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__text_select|instance
+- permission_text_select|instance
     entity_name: permission
     values
     - id: manage_data__content_text__select
     - title: Text: select
     - is_embedded: 1
-- permission__text_insert|instance
+- permission_text_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_text__insert
     - title: Text: insert
     - is_embedded: 1
-- permission__text_update|instance
+- permission_text_update|instance
     entity_name: permission
     values
     - id: manage_data__content_text__update
     - title: Text: update
     - is_embedded: 1
-- permission__text_delete|instance
+- permission_text_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_text__delete
     - title: Text: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__tree_select|instance
+- permission_tree_select|instance
     entity_name: permission
     values
     - id: manage_data__content_tree__select
     - title: Tree: select
     - is_embedded: 1
-- permission__tree_insert|instance
+- permission_tree_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_tree__insert
     - title: Tree: insert
     - is_embedded: 1
-- permission__tree_update|instance
+- permission_tree_update|instance
     entity_name: permission
     values
     - id: manage_data__content_tree__update
     - title: Tree: update
     - is_embedded: 1
-- permission__tree_delete|instance
+- permission_tree_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_tree__delete
     - title: Tree: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__tree_item_select|instance
+- permission_tree_item_select|instance
     entity_name: permission
     values
     - id: manage_data__content_tree_item__select
     - title: Tree item: select
     - is_embedded: 1
-- permission__tree_item_insert|instance
+- permission_tree_item_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_tree_item__insert
     - title: Tree item: insert
     - is_embedded: 1
-- permission__tree_item_update|instance
+- permission_tree_item_update|instance
     entity_name: permission
     values
     - id: manage_data__content_tree_item__update
     - title: Tree item: update
     - is_embedded: 1
-- permission__tree_item_delete|instance
+- permission_tree_item_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_tree_item__delete
     - title: Tree item: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__user_select|instance
+- permission_user_select|instance
     entity_name: permission
     values
     - id: manage_data__content_user__select
     - title: User: select
     - is_embedded: 1
-- permission__user_insert|instance
+- permission_user_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_user__insert
     - title: User: insert
     - is_embedded: 1
-- permission__user_update|instance
+- permission_user_update|instance
     entity_name: permission
     values
     - id: manage_data__content_user__update
     - title: User: update
     - is_embedded: 1
-- permission__user_delete|instance
+- permission_user_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_user__delete
     - title: User: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission__video_select|instance
+- permission_video_select|instance
     entity_name: permission
     values
     - id: manage_data__content_video__select
     - title: Video: select
     - is_embedded: 1
-- permission__video_insert|instance
+- permission_video_insert|instance
     entity_name: permission
     values
     - id: manage_data__content_video__insert
     - title: Video: insert
     - is_embedded: 1
-- permission__video_update|instance
+- permission_video_update|instance
     entity_name: permission
     values
     - id: manage_data__content_video__update
     - title: Video: update
     - is_embedded: 1
-- permission__video_delete|instance
+- permission_video_delete|instance
     entity_name: permission
     values
     - id: manage_data__content_video__delete
