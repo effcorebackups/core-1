@@ -14,22 +14,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__select
+      - =: manage_data__menu_tree__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__insert
+      - =: manage_data__menu_tree__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__update
+      - =: manage_data__menu_tree__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__delete
+      - =: manage_data__menu_tree__delete
     fields
     - id
         title: ID
@@ -164,22 +164,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree_item__select
+      - =: manage_data__menu_tree_item__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree_item__insert
+      - =: manage_data__menu_tree_item__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree_item__update
+      - =: manage_data__menu_tree_item__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree_item__delete
+      - =: manage_data__menu_tree_item__delete
     selection_params_for_managing_multiple
     - decorator_params
       - view_type: tree

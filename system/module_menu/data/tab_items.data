@@ -11,8 +11,8 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__select
-      - =: manage_data__content_tree_item__select
+      - =: manage_data__menu_tree__select
+      - =: manage_data__menu_tree_item__select
 - data_menu_tree|tab_item
     id: data_menu_tree
     id_parent: data_menu
@@ -23,7 +23,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree__select
+      - =: manage_data__menu_tree__select
 - data_menu_tree_item|tab_item
     id: data_menu_tree_item
     id_parent: data_menu
@@ -34,4 +34,4 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_tree_item__select
+      - =: manage_data__menu_tree_item__select

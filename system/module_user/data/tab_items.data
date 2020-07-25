@@ -11,11 +11,11 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_permission__select
+      - =: manage_data__user_permission__select
       - =: relation_role_ws_permission_select
       - =: relation_role_ws_user_select
-      - =: manage_data__content_role__select
-      - =: manage_data__content_user__select
+      - =: manage_data__user_role__select
+      - =: manage_data__user_user__select
       - =: manage_data__content_feedback__select
 - data_user_role|tab_item
     id: data_user_role
@@ -27,7 +27,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_role__select
+      - =: manage_data__user_role__select
 - data_user_relation_role_ws_user|tab_item
     id: data_user_relation_role_ws_user
     id_parent: data_user_user
@@ -60,7 +60,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_permission__select
+      - =: manage_data__user_permission__select
 - data_user_user|tab_item
     id: data_user_user
     id_parent: data_user
@@ -71,7 +71,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_user__select
+      - =: manage_data__user_user__select
 - data_user_feedback|tab_item
     id: data_user_feedback
     id_parent: data_user

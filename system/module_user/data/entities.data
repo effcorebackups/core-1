@@ -139,13 +139,13 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_permission__select
+      - =: manage_data__user_permission__select
     access_insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_permission__update
+      - =: manage_data__user_permission__update
     access_delete
     fields
     - id
@@ -478,22 +478,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_role__select
+      - =: manage_data__user_role__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_role__insert
+      - =: manage_data__user_role__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_role__update
+      - =: manage_data__user_role__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_role__delete
+      - =: manage_data__user_role__delete
     fields
     - id
         title: ID
@@ -655,22 +655,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_user__select
+      - =: manage_data__user_user__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_user__insert
+      - =: manage_data__user_user__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_user__update
+      - =: manage_data__user_user__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_user__delete
+      - =: manage_data__user_user__delete
     fields
     - id
         title: ID
