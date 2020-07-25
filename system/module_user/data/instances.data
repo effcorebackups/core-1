@@ -315,25 +315,25 @@ instances
 - permission_tree_item_select|instance
     entity_name: permission
     values
-    - id: tree_item_select
+    - id: manage_data__content_tree_item__select
     - title: Tree item: select
     - is_embedded: 1
 - permission_tree_item_insert|instance
     entity_name: permission
     values
-    - id: tree_item_insert
+    - id: manage_data__content_tree_item__insert
     - title: Tree item: insert
     - is_embedded: 1
 - permission_tree_item_update|instance
     entity_name: permission
     values
-    - id: tree_item_update
+    - id: manage_data__content_tree_item__update
     - title: Tree item: update
     - is_embedded: 1
 - permission_tree_item_delete|instance
     entity_name: permission
     values
-    - id: tree_item_delete
+    - id: manage_data__content_tree_item__delete
     - title: Tree item: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -645,22 +645,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_item_select
+    - id_permission: manage_data__content_tree_item__select
 - relation_role_ws_permission_managers_tree_item_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_item_insert
+    - id_permission: manage_data__content_tree_item__insert
 - relation_role_ws_permission_managers_tree_item_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_item_update
+    - id_permission: manage_data__content_tree_item__update
 - relation_role_ws_permission_managers_tree_item_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_item_delete
+    - id_permission: manage_data__content_tree_item__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_user_select|instance
     entity_name: relation_role_ws_permission

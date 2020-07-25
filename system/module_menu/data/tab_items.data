@@ -12,7 +12,7 @@ tab_items
       - =: admins
       permissions
       - =: tree_select
-      - =: tree_item_select
+      - =: manage_data__content_tree_item__select
 - data_menu_tree|tab_item
     id: data_menu_tree
     id_parent: data_menu
@@ -34,4 +34,4 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: tree_item_select
+      - =: manage_data__content_tree_item__select
