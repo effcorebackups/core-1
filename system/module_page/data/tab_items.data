@@ -15,7 +15,7 @@ tab_items
       - =: manage_data__content_text__select
       - =: manage_data__content_picture__select
       - =: manage_data__content_audio__select
-      - =: video_select
+      - =: manage_data__content_video__select
       - =: manage_data__content_gallery__select
       - =: poll_select
       - =: manage_data__content_selection__select
@@ -78,7 +78,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: video_select
+      - =: manage_data__content_video__select
 - data_content_gallery|tab_item
     id: data_content_gallery
     id_parent: data_content_page

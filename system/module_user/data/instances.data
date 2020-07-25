@@ -365,25 +365,25 @@ instances
 - permission_video_select|instance
     entity_name: permission
     values
-    - id: video_select
+    - id: manage_data__content_video__select
     - title: Video: select
     - is_embedded: 1
 - permission_video_insert|instance
     entity_name: permission
     values
-    - id: video_insert
+    - id: manage_data__content_video__insert
     - title: Video: insert
     - is_embedded: 1
 - permission_video_update|instance
     entity_name: permission
     values
-    - id: video_update
+    - id: manage_data__content_video__update
     - title: Video: update
     - is_embedded: 1
 - permission_video_delete|instance
     entity_name: permission
     values
-    - id: video_delete
+    - id: manage_data__content_video__delete
     - title: Video: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -687,22 +687,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: video_select
+    - id_permission: manage_data__content_video__select
 - relation_role_ws_permission_managers_video_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: video_insert
+    - id_permission: manage_data__content_video__insert
 - relation_role_ws_permission_managers_video_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: video_update
+    - id_permission: manage_data__content_video__update
 - relation_role_ws_permission_managers_video_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: video_delete
+    - id_permission: manage_data__content_video__delete
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_user
 # ─────────────────────────────────────────────────────────────────────
