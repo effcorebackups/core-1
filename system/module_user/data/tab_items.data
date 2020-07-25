@@ -11,7 +11,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: permission_select
+      - =: manage_data__content_permission__select
       - =: relation_role_ws_permission_select
       - =: relation_role_ws_user_select
       - =: manage_data__content_role__select
@@ -60,7 +60,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: permission_select
+      - =: manage_data__content_permission__select
 - data_user_user|tab_item
     id: data_user_user
     id_parent: data_user

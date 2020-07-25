@@ -139,13 +139,13 @@ entities
       roles
       - =: admins
       permissions
-      - =: permission_select
+      - =: manage_data__content_permission__select
     access_insert
     access_update
       roles
       - =: admins
       permissions
-      - =: permission_update
+      - =: manage_data__content_permission__update
     access_delete
     fields
     - id

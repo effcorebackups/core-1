@@ -427,8 +427,6 @@ translations
     - Path: Шлях
     - path: шлях
     - Permission: Дазваленне
-    - Permission\: delete: Дазваленне: выдаліць
-    - Permission\: insert: Дазваленне: уставіць
     - Permission\: select: Дазваленне: абраць
     - Permission\: update: Дазваленне: абнавіць
     - Permissions: Дазваленні

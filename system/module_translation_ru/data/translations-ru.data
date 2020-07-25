@@ -427,8 +427,6 @@ translations
     - Path: Путь
     - path: путь
     - Permission: Разрешение
-    - Permission\: delete: Разрешение: удалить
-    - Permission\: insert: Разрешение: вставить
     - Permission\: select: Разрешение: выбрать
     - Permission\: update: Разрешение: обновить
     - Permissions: Разрешения
