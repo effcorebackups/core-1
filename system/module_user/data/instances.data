@@ -340,25 +340,25 @@ instances
 - permission__user_select|instance
     entity_name: permission
     values
-    - id: user_select
+    - id: manage_data__content_user__select
     - title: User: select
     - is_embedded: 1
 - permission__user_insert|instance
     entity_name: permission
     values
-    - id: user_insert
+    - id: manage_data__content_user__insert
     - title: User: insert
     - is_embedded: 1
 - permission__user_update|instance
     entity_name: permission
     values
-    - id: user_update
+    - id: manage_data__content_user__update
     - title: User: update
     - is_embedded: 1
 - permission__user_delete|instance
     entity_name: permission
     values
-    - id: user_delete
+    - id: manage_data__content_user__delete
     - title: User: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -666,22 +666,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: user_select
+    - id_permission: manage_data__content_user__select
 - relation_role_ws_permission__managers_user_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: user_insert
+    - id_permission: manage_data__content_user__insert
 - relation_role_ws_permission__managers_user_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: user_update
+    - id_permission: manage_data__content_user__update
 - relation_role_ws_permission__managers_user_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: user_delete
+    - id_permission: manage_data__content_user__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission__managers_video_select|instance
     entity_name: relation_role_ws_permission
