@@ -14,22 +14,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: tree_select
+      - =: manage_data__content_tree__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: tree_insert
+      - =: manage_data__content_tree__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: tree_update
+      - =: manage_data__content_tree__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: tree_delete
+      - =: manage_data__content_tree__delete
     fields
     - id
         title: ID

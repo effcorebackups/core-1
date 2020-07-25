@@ -290,25 +290,25 @@ instances
 - permission_tree_select|instance
     entity_name: permission
     values
-    - id: tree_select
+    - id: manage_data__content_tree__select
     - title: Tree: select
     - is_embedded: 1
 - permission_tree_insert|instance
     entity_name: permission
     values
-    - id: tree_insert
+    - id: manage_data__content_tree__insert
     - title: Tree: insert
     - is_embedded: 1
 - permission_tree_update|instance
     entity_name: permission
     values
-    - id: tree_update
+    - id: manage_data__content_tree__update
     - title: Tree: update
     - is_embedded: 1
 - permission_tree_delete|instance
     entity_name: permission
     values
-    - id: tree_delete
+    - id: manage_data__content_tree__delete
     - title: Tree: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -624,22 +624,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_select
+    - id_permission: manage_data__content_tree__select
 - relation_role_ws_permission_managers_tree_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_insert
+    - id_permission: manage_data__content_tree__insert
 - relation_role_ws_permission_managers_tree_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_update
+    - id_permission: manage_data__content_tree__update
 - relation_role_ws_permission_managers_tree_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: tree_delete
+    - id_permission: manage_data__content_tree__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_tree_item_select|instance
     entity_name: relation_role_ws_permission
