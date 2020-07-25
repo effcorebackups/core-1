@@ -8,6 +8,8 @@ pages
     access
       roles
       - =: admins
+      permissions
+      - =: manage_security
     parts
     - system
       - tree_sql_user_registered|part_preset_link

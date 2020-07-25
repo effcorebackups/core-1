@@ -12,6 +12,37 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
+- permission_manage_security|instance
+    entity_name: permission
+    values
+    - id: manage_security
+    - title: Security: manage
+    - is_embedded: 1
+- permission_manage_decoration|instance
+    entity_name: permission
+    values
+    - id: manage_decoration
+    - title: Decoration: manage
+    - is_embedded: 1
+- permission_manage_locales|instance
+    entity_name: permission
+    values
+    - id: manage_locales
+    - title: Locales: manage
+    - is_embedded: 1
+- permission_manage_modules|instance
+    entity_name: permission
+    values
+    - id: manage_modules
+    - title: Modules: manage
+    - is_embedded: 1
+- permission_manage_info|instance
+    entity_name: permission
+    values
+    - id: manage_info
+    - title: Info: manage
+    - is_embedded: 1
+# ─────────────────────────────────────────────────────────────────────
 - permission_manage_data_audio_select|instance
     entity_name: permission
     values

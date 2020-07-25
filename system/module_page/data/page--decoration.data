@@ -12,6 +12,8 @@ pages
     access
       roles
       - =: admins
+      permissions
+      - =: manage_decoration
     parts
     - system
       - tree_sql_user_registered|part_preset_link
