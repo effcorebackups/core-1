@@ -153,50 +153,50 @@ instances
 - permission_rel_role_ws_perm_select|instance
     entity_name: permission
     values
-    - id: relation_role_ws_permission_select
+    - id: manage_data__user_rel_role_ws_perm__select
     - title: Relation: Role ↔ Permission: select
     - is_embedded: 1
 - permission_rel_role_ws_perm_insert|instance
     entity_name: permission
     values
-    - id: relation_role_ws_permission_insert
+    - id: manage_data__user_rel_role_ws_perm__insert
     - title: Relation: Role ↔ Permission: insert
     - is_embedded: 1
 - permission_rel_role_ws_perm_update|instance
     entity_name: permission
     values
-    - id: relation_role_ws_permission_update
+    - id: manage_data__user_rel_role_ws_perm__update
     - title: Relation: Role ↔ Permission: update
     - is_embedded: 1
 - permission_rel_role_ws_perm_delete|instance
     entity_name: permission
     values
-    - id: relation_role_ws_permission_delete
+    - id: manage_data__user_rel_role_ws_perm__delete
     - title: Relation: Role ↔ Permission: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
 - permission_rel_role_ws_user_select|instance
     entity_name: permission
     values
-    - id: relation_role_ws_user_select
+    - id: manage_data__user_rel_role_ws_user__select
     - title: Relation: Role ↔ User: select
     - is_embedded: 1
 - permission_rel_role_ws_user_insert|instance
     entity_name: permission
     values
-    - id: relation_role_ws_user_insert
+    - id: manage_data__user_rel_role_ws_user__insert
     - title: Relation: Role ↔ User: insert
     - is_embedded: 1
 - permission_rel_role_ws_user_update|instance
     entity_name: permission
     values
-    - id: relation_role_ws_user_update
+    - id: manage_data__user_rel_role_ws_user__update
     - title: Relation: Role ↔ User: update
     - is_embedded: 1
 - permission_rel_role_ws_user_delete|instance
     entity_name: permission
     values
-    - id: relation_role_ws_user_delete
+    - id: manage_data__user_rel_role_ws_user__delete
     - title: Relation: Role ↔ User: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -497,43 +497,43 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_permission_select
+    - id_permission: manage_data__user_rel_role_ws_perm__select
 - rel_role_ws_perm_managers_rel_role_ws_perm_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_permission_insert
+    - id_permission: manage_data__user_rel_role_ws_perm__insert
 - rel_role_ws_perm_managers_rel_role_ws_perm_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_permission_update
+    - id_permission: manage_data__user_rel_role_ws_perm__update
 - rel_role_ws_perm_managers_rel_role_ws_perm_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_permission_delete
+    - id_permission: manage_data__user_rel_role_ws_perm__delete
 # ─────────────────────────────────────────────────────────────────────
 - rel_role_ws_perm_managers_rel_role_ws_user_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_user_select
+    - id_permission: manage_data__user_rel_role_ws_user__select
 - rel_role_ws_perm_managers_rel_role_ws_user_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_user_insert
+    - id_permission: manage_data__user_rel_role_ws_user__insert
 - rel_role_ws_perm_managers_rel_role_ws_user_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_user_update
+    - id_permission: manage_data__user_rel_role_ws_user__update
 - rel_role_ws_perm_managers_rel_role_ws_user_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: relation_role_ws_user_delete
+    - id_permission: manage_data__user_rel_role_ws_user__delete
 # ─────────────────────────────────────────────────────────────────────
 - rel_role_ws_perm_managers_role_select|instance
     entity_name: relation_role_ws_permission

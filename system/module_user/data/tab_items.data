@@ -12,8 +12,8 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__user_permission__select
-      - =: relation_role_ws_permission_select
-      - =: relation_role_ws_user_select
+      - =: manage_data__user_rel_role_ws_perm__select
+      - =: manage_data__user_rel_role_ws_user__select
       - =: manage_data__user_role__select
       - =: manage_data__user_user__select
       - =: manage_data__content_feedback__select
@@ -38,7 +38,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_user_select
+      - =: manage_data__user_rel_role_ws_user__select
 - data_user_rel_role_ws_perm|tab_item
     id: data_user_rel_role_ws_perm
     id_parent: data_user_user
@@ -49,7 +49,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_permission_select
+      - =: manage_data__user_rel_role_ws_perm__select
 - data_user_permission|tab_item
     id: data_user_permission
     id_parent: data_user_user

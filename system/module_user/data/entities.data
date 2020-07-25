@@ -239,22 +239,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_permission_select
+      - =: manage_data__user_rel_role_ws_perm__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_permission_insert
+      - =: manage_data__user_rel_role_ws_perm__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_permission_update
+      - =: manage_data__user_rel_role_ws_perm__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_permission_delete
+      - =: manage_data__user_rel_role_ws_perm__delete
     fields
     - id_role
         title: Role
@@ -359,22 +359,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_user_select
+      - =: manage_data__user_rel_role_ws_user__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_user_insert
+      - =: manage_data__user_rel_role_ws_user__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_user_update
+      - =: manage_data__user_rel_role_ws_user__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: relation_role_ws_user_delete
+      - =: manage_data__user_rel_role_ws_user__delete
     fields
     - id_user
         title: User
