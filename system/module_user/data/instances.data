@@ -150,50 +150,50 @@ instances
     - title: Picture: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission_relation_role_ws_permission_select|instance
+- permission_rel_role_ws_perm_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_select
     - title: Relation: Role ↔ Permission: select
     - is_embedded: 1
-- permission_relation_role_ws_permission_insert|instance
+- permission_rel_role_ws_perm_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_insert
     - title: Relation: Role ↔ Permission: insert
     - is_embedded: 1
-- permission_relation_role_ws_permission_update|instance
+- permission_rel_role_ws_perm_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_update
     - title: Relation: Role ↔ Permission: update
     - is_embedded: 1
-- permission_relation_role_ws_permission_delete|instance
+- permission_rel_role_ws_perm_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_permission_delete
     - title: Relation: Role ↔ Permission: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
-- permission_relation_role_ws_user_select|instance
+- permission_rel_role_ws_user_select|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_select
     - title: Relation: Role ↔ User: select
     - is_embedded: 1
-- permission_relation_role_ws_user_insert|instance
+- permission_rel_role_ws_user_insert|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_insert
     - title: Relation: Role ↔ User: insert
     - is_embedded: 1
-- permission_relation_role_ws_user_update|instance
+- permission_rel_role_ws_user_update|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_update
     - title: Relation: Role ↔ User: update
     - is_embedded: 1
-- permission_relation_role_ws_user_delete|instance
+- permission_rel_role_ws_user_delete|instance
     entity_name: permission
     values
     - id: relation_role_ws_user_delete
@@ -377,306 +377,306 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_permission
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_audio_select|instance
+- rel_role_ws_perm_managers_audio_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_audio__select
-- relation_role_ws_permission_managers_audio_insert|instance
+- rel_role_ws_perm_managers_audio_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_audio__insert
-- relation_role_ws_permission_managers_audio_update|instance
+- rel_role_ws_perm_managers_audio_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_audio__update
-- relation_role_ws_permission_managers_audio_delete|instance
+- rel_role_ws_perm_managers_audio_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_audio__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_gallery_select|instance
+- rel_role_ws_perm_managers_gallery_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_gallery__select
-- relation_role_ws_permission_managers_gallery_insert|instance
+- rel_role_ws_perm_managers_gallery_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_gallery__insert
-- relation_role_ws_permission_managers_gallery_update|instance
+- rel_role_ws_perm_managers_gallery_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_gallery__update
-- relation_role_ws_permission_managers_gallery_delete|instance
+- rel_role_ws_perm_managers_gallery_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_gallery__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_feedback_select|instance
+- rel_role_ws_perm_managers_feedback_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_feedback__select
-- relation_role_ws_permission_managers_feedback_insert|instance
+- rel_role_ws_perm_managers_feedback_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_feedback__insert
-- relation_role_ws_permission_managers_feedback_update|instance
+- rel_role_ws_perm_managers_feedback_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_feedback__update
-- relation_role_ws_permission_managers_feedback_delete|instance
+- rel_role_ws_perm_managers_feedback_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_feedback__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_page_select|instance
+- rel_role_ws_perm_managers_page_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_page__select
-- relation_role_ws_permission_managers_page_insert|instance
+- rel_role_ws_perm_managers_page_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_page__insert
-- relation_role_ws_permission_managers_page_update|instance
+- rel_role_ws_perm_managers_page_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_page__update
-- relation_role_ws_permission_managers_page_delete|instance
+- rel_role_ws_perm_managers_page_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_page__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_permission_select|instance
+- rel_role_ws_perm_managers_permission_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_permission__select
-- relation_role_ws_permission_managers_permission_update|instance
+- rel_role_ws_perm_managers_permission_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_permission__update
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_picture_select|instance
+- rel_role_ws_perm_managers_picture_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_picture__select
-- relation_role_ws_permission_managers_picture_insert|instance
+- rel_role_ws_perm_managers_picture_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_picture__insert
-- relation_role_ws_permission_managers_picture_update|instance
+- rel_role_ws_perm_managers_picture_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_picture__update
-- relation_role_ws_permission_managers_picture_delete|instance
+- rel_role_ws_perm_managers_picture_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_picture__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_relation_role_ws_permission_select|instance
+- rel_role_ws_perm_managers_rel_role_ws_perm_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_permission_select
-- relation_role_ws_permission_managers_relation_role_ws_permission_insert|instance
+- rel_role_ws_perm_managers_rel_role_ws_perm_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_permission_insert
-- relation_role_ws_permission_managers_relation_role_ws_permission_update|instance
+- rel_role_ws_perm_managers_rel_role_ws_perm_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_permission_update
-- relation_role_ws_permission_managers_relation_role_ws_permission_delete|instance
+- rel_role_ws_perm_managers_rel_role_ws_perm_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_permission_delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_relation_role_ws_user_select|instance
+- rel_role_ws_perm_managers_rel_role_ws_user_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_user_select
-- relation_role_ws_permission_managers_relation_role_ws_user_insert|instance
+- rel_role_ws_perm_managers_rel_role_ws_user_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_user_insert
-- relation_role_ws_permission_managers_relation_role_ws_user_update|instance
+- rel_role_ws_perm_managers_rel_role_ws_user_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_user_update
-- relation_role_ws_permission_managers_relation_role_ws_user_delete|instance
+- rel_role_ws_perm_managers_rel_role_ws_user_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: relation_role_ws_user_delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_role_select|instance
+- rel_role_ws_perm_managers_role_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_role__select
-- relation_role_ws_permission_managers_role_insert|instance
+- rel_role_ws_perm_managers_role_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_role__insert
-- relation_role_ws_permission_managers_role_update|instance
+- rel_role_ws_perm_managers_role_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_role__update
-- relation_role_ws_permission_managers_role_delete|instance
+- rel_role_ws_perm_managers_role_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_role__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_selection_select|instance
+- rel_role_ws_perm_managers_selection_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_selection__select
-- relation_role_ws_permission_managers_selection_insert|instance
+- rel_role_ws_perm_managers_selection_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_selection__insert
-- relation_role_ws_permission_managers_selection_update|instance
+- rel_role_ws_perm_managers_selection_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_selection__update
-- relation_role_ws_permission_managers_selection_delete|instance
+- rel_role_ws_perm_managers_selection_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_selection__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_text_select|instance
+- rel_role_ws_perm_managers_text_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_text__select
-- relation_role_ws_permission_managers_text_insert|instance
+- rel_role_ws_perm_managers_text_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_text__insert
-- relation_role_ws_permission_managers_text_update|instance
+- rel_role_ws_perm_managers_text_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_text__update
-- relation_role_ws_permission_managers_text_delete|instance
+- rel_role_ws_perm_managers_text_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_text__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_tree_select|instance
+- rel_role_ws_perm_managers_tree_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree__select
-- relation_role_ws_permission_managers_tree_insert|instance
+- rel_role_ws_perm_managers_tree_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree__insert
-- relation_role_ws_permission_managers_tree_update|instance
+- rel_role_ws_perm_managers_tree_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree__update
-- relation_role_ws_permission_managers_tree_delete|instance
+- rel_role_ws_perm_managers_tree_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_tree_item_select|instance
+- rel_role_ws_perm_managers_tree_item_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree_item__select
-- relation_role_ws_permission_managers_tree_item_insert|instance
+- rel_role_ws_perm_managers_tree_item_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree_item__insert
-- relation_role_ws_permission_managers_tree_item_update|instance
+- rel_role_ws_perm_managers_tree_item_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree_item__update
-- relation_role_ws_permission_managers_tree_item_delete|instance
+- rel_role_ws_perm_managers_tree_item_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree_item__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_user_select|instance
+- rel_role_ws_perm_managers_user_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_user__select
-- relation_role_ws_permission_managers_user_insert|instance
+- rel_role_ws_perm_managers_user_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_user__insert
-- relation_role_ws_permission_managers_user_update|instance
+- rel_role_ws_perm_managers_user_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_user__update
-- relation_role_ws_permission_managers_user_delete|instance
+- rel_role_ws_perm_managers_user_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__user_user__delete
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_permission_managers_video_select|instance
+- rel_role_ws_perm_managers_video_select|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_video__select
-- relation_role_ws_permission_managers_video_insert|instance
+- rel_role_ws_perm_managers_video_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_video__insert
-- relation_role_ws_permission_managers_video_update|instance
+- rel_role_ws_perm_managers_video_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
     - id_permission: manage_data__content_video__update
-- relation_role_ws_permission_managers_video_delete|instance
+- rel_role_ws_perm_managers_video_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
@@ -684,7 +684,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # relation_role_ws_user
 # ─────────────────────────────────────────────────────────────────────
-- relation_role_ws_user_admins_1|instance
+- rel_role_ws_user_admins_1|instance
     entity_name: relation_role_ws_user
     values
     - id_role: admins
