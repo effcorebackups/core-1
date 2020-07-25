@@ -566,22 +566,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: picture_select
+      - =: manage_data__content_picture__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: picture_insert
+      - =: manage_data__content_picture__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: picture_update
+      - =: manage_data__content_picture__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: picture_delete
+      - =: manage_data__content_picture__delete
     selection_params_default
       decorator_params
       - view_type: template

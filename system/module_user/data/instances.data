@@ -140,25 +140,25 @@ instances
 - permission_picture_select|instance
     entity_name: permission
     values
-    - id: picture_select
+    - id: manage_data__content_picture__select
     - title: Picture: select
     - is_embedded: 1
 - permission_picture_insert|instance
     entity_name: permission
     values
-    - id: picture_insert
+    - id: manage_data__content_picture__insert
     - title: Picture: insert
     - is_embedded: 1
 - permission_picture_update|instance
     entity_name: permission
     values
-    - id: picture_update
+    - id: manage_data__content_picture__update
     - title: Picture: update
     - is_embedded: 1
 - permission_picture_delete|instance
     entity_name: permission
     values
-    - id: picture_delete
+    - id: manage_data__content_picture__delete
     - title: Picture: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -498,22 +498,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: picture_select
+    - id_permission: manage_data__content_picture__select
 - relation_role_ws_permission_managers_picture_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: picture_insert
+    - id_permission: manage_data__content_picture__insert
 - relation_role_ws_permission_managers_picture_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: picture_update
+    - id_permission: manage_data__content_picture__update
 - relation_role_ws_permission_managers_picture_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: picture_delete
+    - id_permission: manage_data__content_picture__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_relation_role_ws_permission_select|instance
     entity_name: relation_role_ws_permission
