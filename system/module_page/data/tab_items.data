@@ -12,7 +12,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page__select
-      - =: text_select
+      - =: manage_data__content_text__select
       - =: manage_data__content_picture__select
       - =: manage_data__content_audio__select
       - =: video_select
@@ -42,7 +42,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: text_select
+      - =: manage_data__content_text__select
 - data_content_picture|tab_item
     id: data_content_picture
     id_parent: data_content_page

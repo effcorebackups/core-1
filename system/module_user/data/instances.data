@@ -265,25 +265,25 @@ instances
 - permission_text_select|instance
     entity_name: permission
     values
-    - id: text_select
+    - id: manage_data__content_text__select
     - title: Text: select
     - is_embedded: 1
 - permission_text_insert|instance
     entity_name: permission
     values
-    - id: text_insert
+    - id: manage_data__content_text__insert
     - title: Text: insert
     - is_embedded: 1
 - permission_text_update|instance
     entity_name: permission
     values
-    - id: text_update
+    - id: manage_data__content_text__update
     - title: Text: update
     - is_embedded: 1
 - permission_text_delete|instance
     entity_name: permission
     values
-    - id: text_delete
+    - id: manage_data__content_text__delete
     - title: Text: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -603,22 +603,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: text_select
+    - id_permission: manage_data__content_text__select
 - relation_role_ws_permission_managers_text_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: text_insert
+    - id_permission: manage_data__content_text__insert
 - relation_role_ws_permission_managers_text_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: text_update
+    - id_permission: manage_data__content_text__update
 - relation_role_ws_permission_managers_text_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: text_delete
+    - id_permission: manage_data__content_text__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_tree_select|instance
     entity_name: relation_role_ws_permission
