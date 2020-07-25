@@ -9,4 +9,4 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: selection_select
+      - =: manage_data__content_selection__select

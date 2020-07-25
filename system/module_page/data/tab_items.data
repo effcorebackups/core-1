@@ -18,7 +18,7 @@ tab_items
       - =: video_select
       - =: manage_data__content_gallery__select
       - =: poll_select
-      - =: selection_select
+      - =: manage_data__content_selection__select
 - data_content_page|tab_item
     id: data_content_page
     id_parent: data_content
