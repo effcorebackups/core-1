@@ -14,22 +14,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: audio_select
+      - =: manage_data__content_audio__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: audio_insert
+      - =: manage_data__content_audio__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: audio_update
+      - =: manage_data__content_audio__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: audio_delete
+      - =: manage_data__content_audio__delete
     selection_params_default
       decorator_params
       - view_type: template

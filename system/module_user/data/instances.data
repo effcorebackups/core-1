@@ -15,25 +15,25 @@ instances
 - permission_audio_select|instance
     entity_name: permission
     values
-    - id: audio_select
+    - id: manage_data__content_audio__select
     - title: Audio: select
     - is_embedded: 1
 - permission_audio_insert|instance
     entity_name: permission
     values
-    - id: audio_insert
+    - id: manage_data__content_audio__insert
     - title: Audio: insert
     - is_embedded: 1
 - permission_audio_update|instance
     entity_name: permission
     values
-    - id: audio_update
+    - id: manage_data__content_audio__update
     - title: Audio: update
     - is_embedded: 1
 - permission_audio_delete|instance
     entity_name: permission
     values
-    - id: audio_delete
+    - id: manage_data__content_audio__delete
     - title: Audio: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -393,22 +393,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: audio_select
+    - id_permission: manage_data__content_audio__select
 - relation_role_ws_permission_managers_audio_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: audio_insert
+    - id_permission: manage_data__content_audio__insert
 - relation_role_ws_permission_managers_audio_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: audio_update
+    - id_permission: manage_data__content_audio__update
 - relation_role_ws_permission_managers_audio_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: audio_delete
+    - id_permission: manage_data__content_audio__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_gallery_select|instance
     entity_name: relation_role_ws_permission
