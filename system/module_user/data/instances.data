@@ -40,25 +40,25 @@ instances
 - permission_gallery_select|instance
     entity_name: permission
     values
-    - id: gallery_select
+    - id: manage_data__content_gallery__select
     - title: Gallery: select
     - is_embedded: 1
 - permission_gallery_insert|instance
     entity_name: permission
     values
-    - id: gallery_insert
+    - id: manage_data__content_gallery__insert
     - title: Gallery: insert
     - is_embedded: 1
 - permission_gallery_update|instance
     entity_name: permission
     values
-    - id: gallery_update
+    - id: manage_data__content_gallery__update
     - title: Gallery: update
     - is_embedded: 1
 - permission_gallery_delete|instance
     entity_name: permission
     values
-    - id: gallery_delete
+    - id: manage_data__content_gallery__delete
     - title: Gallery: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -414,22 +414,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: gallery_select
+    - id_permission: manage_data__content_gallery__select
 - relation_role_ws_permission_managers_gallery_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: gallery_insert
+    - id_permission: manage_data__content_gallery__insert
 - relation_role_ws_permission_managers_gallery_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: gallery_update
+    - id_permission: manage_data__content_gallery__update
 - relation_role_ws_permission_managers_gallery_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: gallery_delete
+    - id_permission: manage_data__content_gallery__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_feedback_select|instance
     entity_name: relation_role_ws_permission

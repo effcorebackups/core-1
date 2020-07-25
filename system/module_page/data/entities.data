@@ -204,22 +204,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: gallery_select
+      - =: manage_data__content_gallery__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: gallery_insert
+      - =: manage_data__content_gallery__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: gallery_update
+      - =: manage_data__content_gallery__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: gallery_delete
+      - =: manage_data__content_gallery__delete
     selection_params_default
       decorator_params
       - view_type: template
