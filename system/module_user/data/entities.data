@@ -478,22 +478,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: role_select
+      - =: manage_data__content_role__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: role_insert
+      - =: manage_data__content_role__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: role_update
+      - =: manage_data__content_role__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: role_delete
+      - =: manage_data__content_role__delete
     fields
     - id
         title: ID

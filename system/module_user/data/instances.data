@@ -215,25 +215,25 @@ instances
 - permission_role_select|instance
     entity_name: permission
     values
-    - id: role_select
+    - id: manage_data__content_role__select
     - title: Role: select
     - is_embedded: 1
 - permission_role_insert|instance
     entity_name: permission
     values
-    - id: role_insert
+    - id: manage_data__content_role__insert
     - title: Role: insert
     - is_embedded: 1
 - permission_role_update|instance
     entity_name: permission
     values
-    - id: role_update
+    - id: manage_data__content_role__update
     - title: Role: update
     - is_embedded: 1
 - permission_role_delete|instance
     entity_name: permission
     values
-    - id: role_delete
+    - id: manage_data__content_role__delete
     - title: Role: delete
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -561,22 +561,22 @@ instances
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: role_select
+    - id_permission: manage_data__content_role__select
 - relation_role_ws_permission_managers_role_insert|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: role_insert
+    - id_permission: manage_data__content_role__insert
 - relation_role_ws_permission_managers_role_update|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: role_update
+    - id_permission: manage_data__content_role__update
 - relation_role_ws_permission_managers_role_delete|instance
     entity_name: relation_role_ws_permission
     values
     - id_role: managers
-    - id_permission: role_delete
+    - id_permission: manage_data__content_role__delete
 # ─────────────────────────────────────────────────────────────────────
 - relation_role_ws_permission_managers_selection_select|instance
     entity_name: relation_role_ws_permission
