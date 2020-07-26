@@ -64,19 +64,19 @@ namespace effcore {
     }
   }
 
-  static function related_role_delete($id_user, $id_role) {
-    (new instance('relation_role_ws_user', [
-      'id_user' => $id_user,
-      'id_role' => $id_role
-    ]))->delete();
-  }
-
   static function related_roles_delete($id_user) {
     entity::get('relation_role_ws_user')->instances_delete(['conditions' => [
       'id_user_!f' => 'id_user',
       'operator'   => '=',
       'id_user_!v' => $id_user
     ]]);
+  }
+
+  static function related_role_delete($id_user, $id_role) {
+    (new instance('relation_role_ws_user', [
+      'id_user' => $id_user,
+      'id_role' => $id_role
+    ]))->delete();
   }
 
 }}
