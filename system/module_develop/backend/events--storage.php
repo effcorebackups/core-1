@@ -35,7 +35,7 @@ namespace effcore\modules\develop {
       foreach ($storage->args as $c_arg)
         $args_trimmed[] = mb_strimwidth($c_arg, 0, 40, '…', 'UTF-8');
       $query_prepared = $query;
-      $storage->query_prepare($query_prepared, true);
+      $storage->prepare_query($query_prepared, true);
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
       $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);

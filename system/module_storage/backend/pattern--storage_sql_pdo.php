@@ -136,41 +136,12 @@ namespace effcore {
   function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();        }
   function transaction_commit   () {if ($this->init()) return $this->connection->commit();          }
 
-  function query_prepare(&$query = [], $is_emulation = false) {
-    foreach ($query as $c_key => &$c_value) {
-      $c_modifier = strrchr($c_key, '!');
-      if (is_array($c_value)) {
-        $this->query_prepare($c_value, $is_emulation);
-        switch ($c_modifier) {
-          case '!,':
-          case '!=':
-            $c_new_values = [];
-            foreach ($c_value as $c_sub_key => $c_sub_values) {
-              if (!is_int($c_sub_key))
-                   $c_new_values[$c_sub_key] = $c_sub_values;
-              else $c_new_values[          ] = $c_sub_values;
-              $c_new_values[] = ltrim($c_modifier, '!');
-            }
-            array_pop($c_new_values);
-            $c_value = $c_new_values;
-            break;
-        }
-      } else {
-        switch ($c_modifier) {
-          case '!t': $c_value = $this->prepare_table($c_value);                break;
-          case '!f': $c_value = $this->prepare_field($c_value);                break;
-          case '!v': $c_value = $this->prepare_value($c_value, $is_emulation); break;
-        }
-      }
-    }
-  }
-
   function query(...$query) {
     if (is_array($query[0])) $query = $query[0];
     if ($this->init()) {
       event::start('on_query_before', 'pdo', [&$this, &$query]);
       $this->queries[] = $query_prepared = $query;
-      $this->query_prepare($query_prepared);
+      $this->prepare_query($query_prepared);
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
       $result = $this->connection->prepare($query_flat_string);
@@ -210,6 +181,35 @@ namespace effcore {
         case 'UPDATE': return $result->rowCount();
         case 'DELETE': return $result->rowCount();
         default      : return $result;
+      }
+    }
+  }
+
+  function prepare_query(&$query = [], $is_emulation = false) {
+    foreach ($query as $c_key => &$c_value) {
+      $c_modifier = strrchr($c_key, '!');
+      if (is_array($c_value)) {
+        $this->prepare_query($c_value, $is_emulation);
+        switch ($c_modifier) {
+          case '!,':
+          case '!=':
+            $c_new_values = [];
+            foreach ($c_value as $c_sub_key => $c_sub_values) {
+              if (!is_int($c_sub_key))
+                   $c_new_values[$c_sub_key] = $c_sub_values;
+              else $c_new_values[          ] = $c_sub_values;
+              $c_new_values[] = ltrim($c_modifier, '!');
+            }
+            array_pop($c_new_values);
+            $c_value = $c_new_values;
+            break;
+        }
+      } else {
+        switch ($c_modifier) {
+          case '!t': $c_value = $this->prepare_table($c_value);                break;
+          case '!f': $c_value = $this->prepare_field($c_value);                break;
+          case '!v': $c_value = $this->prepare_value($c_value, $is_emulation); break;
+        }
       }
     }
   }
