@@ -66,7 +66,7 @@ namespace effcore\modules\storage {
           $selection->id = 'instance_select-'.$entity->name;
           foreach ($entity->selection_params_for_managing as $c_key => $c_value)
             $selection                                    ->{$c_key} = $c_value;
-            $selection->query_params['conditions'] = $entity->storage_get()->attributes_prepare($conditions);
+            $selection->query_params['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
           if (empty($selection->decorator_params['view_type']))
                     $selection->decorator_params['view_type'] = 'ul';
           $has_visible_fields = false;

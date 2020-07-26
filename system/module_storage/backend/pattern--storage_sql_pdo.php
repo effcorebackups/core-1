@@ -148,7 +148,7 @@ namespace effcore {
             foreach ($c_value as $c_sub_key => $c_sub_values) {
               if (!is_int($c_sub_key))
                    $c_new_values[$c_sub_key] = $c_sub_values;
-              else $c_new_values[]           = $c_sub_values;
+              else $c_new_values[          ] = $c_sub_values;
               $c_new_values[] = ltrim($c_modifier, '!');
             }
             array_pop($c_new_values);
@@ -157,9 +157,9 @@ namespace effcore {
         }
       } else {
         switch ($c_modifier) {
-          case '!t': $c_value = $this->table($c_value);                break;
-          case '!f': $c_value = $this->field($c_value);                break;
-          case '!v': $c_value = $this->value($c_value, $is_emulation); break;
+          case '!t': $c_value = $this->prepare_table($c_value);                break;
+          case '!f': $c_value = $this->prepare_field($c_value);                break;
+          case '!v': $c_value = $this->prepare_value($c_value, $is_emulation); break;
         }
       }
     }
@@ -214,29 +214,29 @@ namespace effcore {
     }
   }
 
-  function table($name) {
+  function prepare_table($name) {
     if ($name[0] == '~') $name = entity::get(ltrim($name, '~'))->catalog_name;
     if ($this->driver == 'mysql' ) return '`'.$this->table_prefix.$name.'`';
     if ($this->driver == 'sqlite') return '"'.$this->table_prefix.$name.'"';
   }
 
-  function field($name) {
+  function prepare_field($name) {
     if (strpos($name, '.') !== false) {
       $parts = explode('.', $name);
-      if ($this->driver == 'mysql' ) return $this->table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
-      if ($this->driver == 'sqlite') return $this->table($parts[0]).'.'.($parts[1] === '*' ? '*' : '"'.$parts[1].'"'); } else {
+      if ($this->driver == 'mysql' ) return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
+      if ($this->driver == 'sqlite') return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '"'.$parts[1].'"'); } else {
       if ($this->driver == 'mysql' ) return $name === '*' ? '*' : '`'.$name.'`';
       if ($this->driver == 'sqlite') return $name === '*' ? '*' : '"'.$name.'"';
     }
   }
 
-  function value($value, $is_emulation = false) {
+  function prepare_value($value, $is_emulation = false) {
     if (!$is_emulation)
       $this->args[] = core::return_rendered($value);
     return '?';
   }
 
-  function tables(...$tables) {
+  function prepare_tables(...$tables) {
     $result = [];
     foreach (is_array($tables[0]) ?
                       $tables[0] : $tables as $c_id => $c_name)
@@ -245,7 +245,7 @@ namespace effcore {
   }
 
 
-  function fields(...$fields) {
+  function prepare_fields(...$fields) {
     $result = [];
     foreach (is_array($fields[0]) ?
                       $fields[0] : $fields as $c_id => $c_name)
@@ -253,7 +253,7 @@ namespace effcore {
     return $result;
   }
 
-  function values(...$values) {
+  function prepare_values(...$values) {
     $result = [];
     foreach (is_array($values[0]) ?
                       $values[0] : $values as $c_id => $c_name)
@@ -261,7 +261,7 @@ namespace effcore {
     return $result;
   }
 
-  function attributes_prepare($attributes, $group_op = 'and', $op = '=') {
+  function prepare_attributes($attributes, $group_op = 'and', $op = '=') {
     $result = [];
     foreach ($attributes as $c_field => $c_value) {
       $result[$c_field] = [
@@ -331,9 +331,9 @@ namespace effcore {
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
         if ($c_info->fields != [$auto_name => $auto_name]) {
-          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')'];
-          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+          if ($c_info->type == 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type ==  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
+          if ($c_info->type == 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->prepare_fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
         }
       }
 
@@ -356,7 +356,7 @@ namespace effcore {
           'on'           => 'ON',
           'target_!t'    => '~'.$entity->name,
           'fields_begin' => '(',
-          'fields_!,'    => $this->fields($c_info->fields),
+          'fields_!,'    => $this->prepare_fields($c_info->fields),
           'fields_end'   => ')'
         ]);
       }
@@ -459,7 +459,7 @@ namespace effcore {
         'target_begin'    => 'FROM',
         'target_!t'       => '~'.$entity->name,
         'condition_begin' => 'WHERE',
-        'condition'       => $this->attributes_prepare($id_fields),
+        'condition'       => $this->prepare_attributes($id_fields),
         'limit_begin'     => 'LIMIT',
         'limit'           => 1]);
       if  (isset($result[0])) {
@@ -488,10 +488,10 @@ namespace effcore {
         'action_subtype' => 'INTO',
         'target_!t'      => '~'.$entity->name,
         'fields_begin'   => '(',
-        'fields_!,'      => $this->fields($fields),
+        'fields_!,'      => $this->prepare_fields($fields),
         'fields_end'     => ')',
         'values_begin'   => 'VALUES (',
-        'values_!,'      => $this->values($values),
+        'values_!,'      => $this->prepare_values($values),
         'values_end'     => ')']);
       if ($new_id !== null && $auto_name == null) return $instance;
       if ($new_id !== null && $auto_name != null) {
@@ -514,9 +514,9 @@ namespace effcore {
         'action'                  => 'UPDATE',
         'target_!t'               => '~'.$entity->name,
         'fields_and_values_begin' => 'SET',
-        'fields_and_values'       => $this->attributes_prepare($values, ','),
+        'fields_and_values'       => $this->prepare_attributes($values, ','),
         'condition_begin'         => 'WHERE',
-        'condition'               => $this->attributes_prepare($instance->_id_fields_original ?: $id_fields)]);
+        'condition'               => $this->prepare_attributes($instance->_id_fields_original ?: $id_fields)]);
       if ($row_count === 1) {
         $instance->_id_fields_original = $id_fields;
         return $instance;
@@ -534,7 +534,7 @@ namespace effcore {
         'target_begin'    => 'FROM',
         'target_!t'       => '~'.$entity->name,
         'condition_begin' => 'WHERE',
-        'condition'       => $this->attributes_prepare($id_fields)]);
+        'condition'       => $this->prepare_attributes($id_fields)]);
       if ($row_count === 1) {
         $instance->values_set([]);
         return $instance;

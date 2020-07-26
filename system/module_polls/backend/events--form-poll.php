@@ -41,7 +41,7 @@ namespace effcore\modules\polls {
         'conjunction'        => 'and',
         'id_answer_!f'       => 'id_answer',
         'id_answer_in_begin' => 'in (',
-        'id_answer_in_!,'    => $form->_id_answers,
+        'id_answer_in_!,'    => entity::get('poll_vote')->storage_get()->prepare_values($form->_id_answers),
         'id_answer_in_end'   => ')']]);
       $votes = [];
       foreach ($votes_row as $c_row)
