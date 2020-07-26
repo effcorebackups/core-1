@@ -41,7 +41,7 @@ namespace effcore\modules\polls {
         'conjunction'        => 'and',
         'id_answer_!f'       => 'id_answer',
         'id_answer_in_begin' => 'in (',
-        'id_answer_in_!,'    => entity::get('poll_vote')->storage_get()->prepare_values($form->_id_answers),
+        'id_answer_in_!a'    => $form->_id_answers,
         'id_answer_in_end'   => ')']]);
       $votes = [];
       foreach ($votes_row as $c_row)
@@ -77,11 +77,11 @@ namespace effcore\modules\polls {
         $total = entity::get('poll_vote')->instances_select_count(['conditions' => [
           'id_answer_!f'       => 'id_answer',
           'id_answer_in_begin' => 'in (',
-          'id_answer_in_!,'    => $form->_id_answers,
+          'id_answer_in_!a'    => $form->_id_answers,
           'id_answer_in_end'   => ')']]);
         $total_by_answers_rows = entity::get('poll_vote')->instances_select([
           'fields'     => ['id_answer_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
-          'conditions' => ['id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!,' => $form->_id_answers, 'id_answer_in_end' => ')'],
+          'conditions' => ['id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')'],
           'group'      => ['id_answer_!f' => 'id_answer']]);
         $total_by_answers = [];
         foreach ($total_by_answers_rows as $c_row)
@@ -138,7 +138,7 @@ namespace effcore\modules\polls {
           'conjunction'        => 'and',
           'id_answer_!f'       => 'id_answer',
           'id_answer_in_begin' => 'in (',
-          'id_answer_in_!,'    => $form->_id_answers,
+          'id_answer_in_!a'    => $form->_id_answers,
           'id_answer_in_end'   => ')']]);
         if ($result) message::insert('Your answer was canceled.'             );
         else         message::insert('Your answer was not canceled!', 'error');

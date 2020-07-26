@@ -137,7 +137,8 @@ namespace effcore {
   function transaction_commit   () {if ($this->init()) return $this->connection->commit();          }
 
   function query(...$query) {
-    if (is_array($query[0])) $query = $query[0];
+    if (is_array($query[0]))
+        $query = $query[0];
     if ($this->init()) {
       event::start('on_query_before', 'pdo', [&$this, &$query]);
       $this->queries[] = $query_prepared = $query;
@@ -188,7 +189,7 @@ namespace effcore {
   function prepare_query(&$query = [], $is_emulation = false) {
     foreach ($query as $c_key => &$c_value) {
       $c_modifier = strrchr($c_key, '!');
-      if (is_array($c_value)) {
+      if (is_array($c_value) && $c_modifier !== '!a') {
         $this->prepare_query($c_value, $is_emulation);
         switch ($c_modifier) {
           case '!,':
@@ -209,6 +210,7 @@ namespace effcore {
           case '!t': $c_value = $this->prepare_table($c_value);                break;
           case '!f': $c_value = $this->prepare_field($c_value);                break;
           case '!v': $c_value = $this->prepare_value($c_value, $is_emulation); break;
+          case '!a': $c_value = $this->prepare_value($c_value, $is_emulation); break;
         }
       }
     }
@@ -232,8 +234,11 @@ namespace effcore {
 
   function prepare_value($value, $is_emulation = false) {
     if (!$is_emulation)
-      $this->args[] = core::return_rendered($value);
-    return '?';
+      if (is_array($value))
+        foreach ($value as $c_sub_value)
+           $this->args[] = core::return_rendered($c_sub_value);
+      else $this->args[] = core::return_rendered(      $value);
+    return is_array($value) ? implode(', ', array_pad([], count($value), '?')) : '?';
   }
 
   function prepare_tables(...$tables) {
