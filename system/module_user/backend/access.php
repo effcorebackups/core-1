@@ -14,7 +14,7 @@ namespace effcore {
     if (isset($access->users      ))                                   if (isset($access->users[$user->id])) return true;
     if (isset($access->permissions)) {
       foreach ($access->permissions as $c_id_permission) {
-        $c_permission_roles = permission::get_roles_by_permission($c_id_permission);
+        $c_permission_roles = permission::relation_role_select($c_id_permission);
         foreach ($user->roles as $c_role) {
           if (isset($c_permission_roles[$c_role])) {
             return true;
