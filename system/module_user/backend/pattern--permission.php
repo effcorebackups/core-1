@@ -41,7 +41,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function relation_role_select($id_permission) {
+  static function related_roles_select($id_permission) {
     $result = [];
     $items = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
       'id_permission_!f' => 'id_permission',
@@ -53,7 +53,7 @@ namespace effcore {
     return $result;
   }
 
-  static function relation_role_insert($id_permission, $roles, $module_id = null) {
+  static function related_roles_insert($id_permission, $roles, $module_id = null) {
     foreach ($roles as $c_id_role) {
       (new instance('relation_role_ws_permission', [
         'id_role'       => $c_id_role,
@@ -63,14 +63,14 @@ namespace effcore {
     }
   }
 
-  static function relation_role_delete($id_permission, $id_role) {
+  static function related_role_delete($id_permission, $id_role) {
     (new instance('relation_role_ws_permission', [
       'id_permission' => $id_permission,
       'id_role'       => $id_role
     ]))->delete();
   }
 
-  static function relation_role_delete_all($id_permission) {
+  static function related_roles_delete($id_permission) {
     entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
       'id_permission_!f' => 'id_permission',
       'operator'         => '=',

@@ -26,7 +26,7 @@ namespace effcore {
         if ($user->select()) {
           static::$cache = $user;
           static::$cache->roles = $is_load_roles ?
-            ['registered' => 'registered'] + static::relation_role_select($session->id_user) :
+            ['registered' => 'registered'] + static::related_roles_select($session->id_user) :
             ['registered' => 'registered'];
         }
       }
@@ -42,7 +42,7 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function relation_role_select($id_user) {
+  static function related_roles_select($id_user) {
     $result = [];
     $items = entity::get('relation_role_ws_user')->instances_select(['conditions' => [
       'id_user_!f' => 'id_user',
@@ -54,7 +54,7 @@ namespace effcore {
     return $result;
   }
 
-  static function relation_role_insert($id_user, $roles, $module_id = null) {
+  static function related_roles_insert($id_user, $roles, $module_id = null) {
     foreach ($roles as $c_id_role) {
       (new instance('relation_role_ws_user', [
         'id_role'   => $c_id_role,
@@ -64,14 +64,14 @@ namespace effcore {
     }
   }
 
-  static function relation_role_delete($id_user, $id_role) {
+  static function related_role_delete($id_user, $id_role) {
     (new instance('relation_role_ws_user', [
       'id_user' => $id_user,
       'id_role' => $id_role
     ]))->delete();
   }
 
-  static function relation_role_delete_all($id_user) {
+  static function related_roles_delete($id_user) {
     entity::get('relation_role_ws_user')->instances_delete(['conditions' => [
       'id_user_!f' => 'id_user',
       'operator'   => '=',

@@ -28,7 +28,7 @@ namespace effcore\modules\user {
   static function on_show_user_roles($c_row, $c_instance) {
     $roles_with_title = [];
     $roles = role::get_all();
-    $roles_by_user = user::relation_role_select($c_instance->id);
+    $roles_by_user = user::related_roles_select($c_instance->id);
     foreach ($roles_by_user as $c_id_user_role)
       $roles_with_title[$c_id_user_role] =
                  $roles[$c_id_user_role]->title ?? $c_id_user_role;
