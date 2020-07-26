@@ -55,6 +55,19 @@ namespace effcore {
     return $result;
   }
 
+  static function related_permissions_by_roles_select($roles) {
+    $result = [];
+    $items = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
+      'id_role_!f' => 'id_role',
+      'in_begin'   => 'in (',
+      'in_!a'      => $roles,
+      'in_end'     => ')']]);
+    foreach ($items as $c_item)
+      $result[$c_item->id_permission] =
+              $c_item->id_permission;
+    return $result;
+  }
+
   static function related_permissions_insert($id_role, $permissions, $module_id = null) {
     foreach ($permissions as $c_id_permission) {
       (new instance('relation_role_ws_permission', [

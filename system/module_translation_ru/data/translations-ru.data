@@ -654,6 +654,7 @@ translations
     - User agent: Агент пользователя
     - User ID: ID пользователя
     - User name: Имя пользователя
+    - User permissions: Разрешения пользователя
     - User roles: Роли пользователя
     - User type: Тип пользователя
     - User was not registered!: Пользователь не был зарегистрирован!

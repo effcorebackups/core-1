@@ -79,10 +79,11 @@ namespace effcore {
     $decorator = new decorator('table-dl');
     $decorator->id = 'page_information';
     $decorator->data = [[
-      'gen_time' => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))],
-      'memory'   => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))           ],
-      'language' => ['title' => 'Current language',       'value' => language::code_get_current()                            ],
-      'roles'    => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                             ] ]];
+      'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))              ],
+      'memory'      => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))                         ],
+      'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                                          ],
+      'roles'       => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                                           ],
+      'permissions' => ['title' => 'User permissions',       'value' => implode(', ', role::related_permissions_by_roles_select($user->roles))] ]];
     return new block('Current page information', ['data-id' => 'info', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
