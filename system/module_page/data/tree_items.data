@@ -8,7 +8,7 @@ tree_items
     weight: +80
     access
       roles
-      - =: admins
+      - =: registered
 - decoration|tree_item
     id: decoration
     id_parent: manage
@@ -18,3 +18,5 @@ tree_items
     access
       roles
       - =: admins
+      permissions
+      - =: manage_decoration

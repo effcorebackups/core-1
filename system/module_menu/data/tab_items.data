@@ -10,9 +10,8 @@ tab_items
     access
       roles
       - =: admins
-      permissions
-      - =: manage_data__menu_tree__select
-      - =: manage_data__menu_tree_item__select
+      permissions_match
+      - =: %^manage_data__menu_.+$%
 - data_menu_tree|tab_item
     id: data_menu_tree
     id_parent: data_menu

@@ -10,15 +10,8 @@ tab_items
     access
       roles
       - =: admins
-      permissions
-      - =: manage_data__content_page__select
-      - =: manage_data__content_text__select
-      - =: manage_data__content_picture__select
-      - =: manage_data__content_audio__select
-      - =: manage_data__content_video__select
-      - =: manage_data__content_gallery__select
-      - =: manage_data__content_poll__select
-      - =: manage_data__content_selection__select
+      permissions_match
+      - =: %^manage_data__content_.+$%
 - data_content_page|tab_item
     id: data_content_page
     id_parent: data_content

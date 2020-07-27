@@ -8,6 +8,8 @@ tree_items
     access
       roles
       - =: admins
+      permissions_match
+      - =: %^manage_.+$%
 - modules|tree_item
     id: modules
     id_parent: manage
@@ -17,6 +19,8 @@ tree_items
     access
       roles
       - =: admins
+      permissions
+      - =: manage_modules
 - info|tree_item
     id: info
     id_parent: manage
@@ -27,3 +31,5 @@ tree_items
     access
       roles
       - =: admins
+      permissions
+      - =: manage_info

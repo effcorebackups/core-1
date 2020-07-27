@@ -10,13 +10,8 @@ tab_items
     access
       roles
       - =: admins
-      permissions
-      - =: manage_data__user_permission__select
-      - =: manage_data__user_rel_role_ws_perm__select
-      - =: manage_data__user_rel_role_ws_user__select
-      - =: manage_data__user_role__select
-      - =: manage_data__user_user__select
-      - =: manage_data__content_feedback__select
+      permissions_match
+      - =: %^manage_data__user_.+$%
 - data_user_role|tab_item
     id: data_user_role
     id_parent: data_user_user
@@ -82,7 +77,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_feedback__select
+      - =: manage_data__user_feedback__select
 # ─────────────────────────────────────────────────────────────────────
 - security_settings|tab_item
     id: security_settings

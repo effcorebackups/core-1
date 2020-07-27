@@ -8,3 +8,5 @@ tree_items
     access
       roles
       - =: admins
+      permissions
+      - =: manage_locales

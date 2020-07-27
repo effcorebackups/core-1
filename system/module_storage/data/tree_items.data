@@ -9,3 +9,5 @@ tree_items
     access
       roles
       - =: admins
+      permissions_match
+      - =: %^manage_data__.+$%

@@ -11,22 +11,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_feedback__select
+      - =: manage_data__user_feedback__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_feedback__insert
+      - =: manage_data__user_feedback__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_feedback__update
+      - =: manage_data__user_feedback__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_feedback__delete
+      - =: manage_data__user_feedback__delete
     fields
     - id
         title: ID

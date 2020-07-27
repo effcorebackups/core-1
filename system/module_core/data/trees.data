@@ -5,4 +5,4 @@ trees
     title_is_visible: 0
     access
       roles
-      - =: admins
+      - =: registered

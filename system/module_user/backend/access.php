@@ -20,6 +20,16 @@ namespace effcore {
         }
       }
     }
+    if (isset($access->permissions_match)) {
+      $c_user_permissions = role::related_permissions_by_roles_select($user->roles);
+      foreach ($access->permissions_match as $c_permission_expression) {
+        foreach ($c_user_permissions as $c_user_permission) {
+          if (preg_match($c_permission_expression, $c_user_permission)) {
+            return true;
+          }
+        }
+      }
+    }
   }
 
 }}
