@@ -22,28 +22,31 @@ namespace effcore {
       $session = session::select();
       if ($session &&
           $session->id_user) {
-        $user = static::select($session->id_user);
+        $user = static::select($session->id_user, $is_load_roles);
         if ($user) {
           static::$cache = $user;
-          static::$cache->roles = $is_load_roles ?
-            ['registered' => 'registered'] + static::related_roles_select($session->id_user) :
-            ['registered' => 'registered'];
         }
       }
     }
   }
 
-  static function select($id) {
-    return (new instance('user', ['id' => $id]))->select();
+  static function get_current() {
+    static::init();
+    return static::$cache;
+  }
+
+  static function select($id, $is_load_roles = false) {
+    $user = new instance('user', ['id' => $id]);
+    if ($user->select()) {
+      $user->roles = $is_load_roles ?
+        ['registered' => 'registered'] + static::related_roles_select($id) :
+        ['registered' => 'registered'];
+      return $user;
+    }
   }
 
   static function insert($values) {
     return (new instance('user', $values))->insert();
-  }
-
-  static function get_current() {
-    static::init();
-    return static::$cache;
   }
 
   static function related_roles_select($id_user) {
