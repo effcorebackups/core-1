@@ -5,13 +5,14 @@ tab_items
     id_tab: modules
     action_name: install
     title: Install
-    weight: +50
+    weight: +500
 - modules_uninstall|tab_item
     id: modules_uninstall
     id_parent: null
     id_tab: modules
     action_name: uninstall
     title: Uninstall
+    weight: +480
 - modules_update|tab_item
     id: modules_update
     id_parent: null
@@ -19,6 +20,7 @@ tab_items
     action_name: update
     action_name_default: update/data
     title: Update
+    weight: +460
 - modules_update_data|tab_item
     id: modules_update_data
     id_parent: modules_update

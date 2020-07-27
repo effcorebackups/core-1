@@ -6,7 +6,7 @@ tab_items
     action_name: content
     action_name_default: content/page
     title: Content
-    weight: +50
+    weight: +500
     access
       roles
       - =: admins
@@ -18,7 +18,7 @@ tab_items
     id_tab: data
     action_name: content/page
     title: Pages
-    weight: +50
+    weight: +500
     access
       roles
       - =: admins
@@ -30,7 +30,7 @@ tab_items
     id_tab: data
     action_name: content/text
     title: Texts
-    weight: +80
+    weight: +500
     access
       roles
       - =: admins
@@ -42,7 +42,7 @@ tab_items
     id_tab: data
     action_name: content/picture
     title: Pictures
-    weight: +75
+    weight: +480
     access
       roles
       - =: admins
@@ -54,7 +54,7 @@ tab_items
     id_tab: data
     action_name: content/audio
     title: Audios
-    weight: +70
+    weight: +460
     access
       roles
       - =: admins
@@ -66,7 +66,7 @@ tab_items
     id_tab: data
     action_name: content/video
     title: Videos
-    weight: +65
+    weight: +440
     access
       roles
       - =: admins
@@ -78,7 +78,7 @@ tab_items
     id_tab: data
     action_name: content/gallery
     title: Galleries
-    weight: +60
+    weight: +420
     access
       roles
       - =: admins

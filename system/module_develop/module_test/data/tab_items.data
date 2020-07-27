@@ -4,3 +4,4 @@ tab_items
     id_parent: null
     id_tab: tests
     title: Execution
+    weight: +500

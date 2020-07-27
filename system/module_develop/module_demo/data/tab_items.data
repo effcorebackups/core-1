@@ -6,6 +6,7 @@ tab_items
     action_name: demo
     action_name_default: demo/demo_types
     title: Demo
+    weight: -500
     access
       roles
       - =: admins
@@ -15,6 +16,27 @@ tab_items
     id_tab: data
     action_name: demo/demo_types
     title: Types
+    weight: +500
+    access
+      roles
+      - =: admins
+- data_demo_data|tab_item
+    id: data_demo_data
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_data
+    title: Data
+    weight: +480
+    access
+      roles
+      - =: admins
+- data_demo_join|tab_item
+    id: data_demo_join
+    id_parent: data_demo
+    id_tab: data
+    action_name: demo/demo_join
+    title: Joins
+    weight: +460
     access
       roles
       - =: admins
@@ -45,30 +67,12 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_data|tab_item
-    id: data_demo_data
-    id_parent: data_demo
-    id_tab: data
-    action_name: demo/demo_data
-    title: Data
-    access
-      roles
-      - =: admins
 - data_demo_indexes|tab_item
     id: data_demo_indexes
     id_parent: data_demo
     id_tab: data
     action_name: demo/demo_indexes
     title: Indexes
-    access
-      roles
-      - =: admins
-- data_demo_join|tab_item
-    id: data_demo_join
-    id_parent: data_demo
-    id_tab: data
-    action_name: demo/demo_join
-    title: Joins
     access
       roles
       - =: admins
