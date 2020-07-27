@@ -13,12 +13,10 @@ namespace effcore {
     if (isset($access->roles      )) foreach ($user->roles as $c_role) if (isset($access->roles[ $c_role ])) return true;
     if (isset($access->users      ))                                   if (isset($access->users[$user->id])) return true;
     if (isset($access->permissions)) {
+      $c_user_permissions = role::related_permissions_by_roles_select($user->roles);
       foreach ($access->permissions as $c_id_permission) {
-        $c_permission_roles = permission::related_roles_select($c_id_permission);
-        foreach ($user->roles as $c_role) {
-          if (isset($c_permission_roles[$c_role])) {
-            return true;
-          }
+        if (isset($c_user_permissions[$c_id_permission])) {
+          return true;
         }
       }
     }
