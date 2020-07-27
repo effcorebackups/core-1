@@ -22,8 +22,8 @@ namespace effcore {
       $session = session::select();
       if ($session &&
           $session->id_user) {
-        $user = new instance('user', ['id' => $session->id_user]);
-        if ($user->select()) {
+        $user = static::select($session->id_user);
+        if ($user) {
           static::$cache = $user;
           static::$cache->roles = $is_load_roles ?
             ['registered' => 'registered'] + static::related_roles_select($session->id_user) :
@@ -31,6 +31,10 @@ namespace effcore {
         }
       }
     }
+  }
+
+  static function select($id) {
+    return (new instance('user', ['id' => $id]))->select();
   }
 
   static function insert($values) {
