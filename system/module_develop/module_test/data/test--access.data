@@ -31,8 +31,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-multiple|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -47,8 +47,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -63,8 +63,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-insert|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -79,8 +79,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-update|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -95,8 +95,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-delete|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -137,8 +137,8 @@ tests
         - captcha: %%_test_captcha
         - button: register
     - response_check|step_check
-        where: token
-        which: %%_test_responce_submit_error
+        check: token
+        where: %%_test_responce_submit_error
         match: 0
         on_failure
         - return_result|step_return
@@ -153,8 +153,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-multiple-registered|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -169,8 +169,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-select-registered|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -185,8 +185,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-insert-registered|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -201,8 +201,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-update-registered|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -217,8 +217,8 @@ tests
         proxy|param_from_form
           name: proxy
     - response_check-delete-registered|step_check
-        where: token
-        which: %%_test_responce_http_code
+        check: token
+        where: %%_test_responce_http_code
         match: 403
         on_failure
         - return_result|step_return
@@ -300,21 +300,21 @@ tests
               proxy|param_from_form
                 name: proxy
           - response_check-select-multiple-registered-role|step_check
-              where: token
-              which: %%_test_step_transpositions_is_active_select
+              check: token
+              where: %%_test_step_transpositions_is_active_select
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -331,21 +331,21 @@ tests
               proxy|param_from_form
                 name: proxy
           - response_check-select-registered-role|step_check
-              where: token
-              which: %%_test_step_transpositions_is_active_select
+              check: token
+              where: %%_test_step_transpositions_is_active_select
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -362,21 +362,21 @@ tests
               proxy|param_from_form
                 name: proxy
           - response_check-insert-registered-role|step_check
-              where: token
-              which: %%_test_step_transpositions_is_active_insert
+              check: token
+              where: %%_test_step_transpositions_is_active_insert
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -393,21 +393,21 @@ tests
               proxy|param_from_form
                 name: proxy
           - response_check-update-registered-role|step_check
-              where: token
-              which: %%_test_step_transpositions_is_active_update
+              check: token
+              where: %%_test_step_transpositions_is_active_update
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return
@@ -424,21 +424,21 @@ tests
               proxy|param_from_form
                 name: proxy
           - response_check-delete-registered-role|step_check
-              where: token
-              which: %%_test_step_transpositions_is_active_delete
+              check: token
+              where: %%_test_step_transpositions_is_active_delete
               match: 1
               on_success
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 200
                   on_failure
                   - return_result|step_return
                       value: 0
               on_failure
               - response_check_http_code|step_check
-                  where: token
-                  which: %%_test_responce_http_code
+                  check: token
+                  where: %%_test_responce_http_code
                   match: 403
                   on_failure
                   - return_result|step_return

@@ -41,8 +41,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -55,13 +55,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -74,20 +74,20 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 400
             on_failure
             # case for: nginx
             - response_check--..-404|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 404
                 on_failure
                 # case for: iis
                 - response_check--..-403|step_check
-                    where: token
-                    which: %%_test_responce_http_code
+                    check: token
+                    where: %%_test_responce_http_code
                     match: 403
                     on_failure
                     - return_result|step_return
@@ -100,14 +100,14 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--...|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             # case for: apache + win
             - response_check--..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -120,8 +120,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -134,8 +134,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -148,8 +148,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -162,8 +162,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0...|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -176,8 +176,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -190,13 +190,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..0-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -209,13 +209,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--...0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--...0-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -228,8 +228,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--01|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -242,8 +242,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0.1|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -256,8 +256,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0..1|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -270,8 +270,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0...1|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -284,8 +284,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--10|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -298,8 +298,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--1.0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -312,8 +312,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--1..0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -326,8 +326,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--1...0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -340,13 +340,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.0.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--.0.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -359,13 +359,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..0..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..0..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -378,13 +378,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.0.1.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--.0.1.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -397,13 +397,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..0.1..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..0.1..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -416,13 +416,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..0..1..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..0..1..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -435,13 +435,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.1.0.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--.1.0.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -454,13 +454,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..1.0..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..1.0..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -473,13 +473,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..1..0..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--..1..0..-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -499,8 +499,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -513,8 +513,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -527,13 +527,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check---.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -546,8 +546,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check----|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -560,8 +560,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -574,8 +574,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -588,14 +588,14 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 400
             on_failure
             # case for: iis
             - response_check--..--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -608,13 +608,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.-.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check--.-.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -627,8 +627,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.--|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -641,8 +641,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.-0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -655,13 +655,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.0-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - response_check--.0--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -674,20 +674,20 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---..|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 400
             on_failure
             # case for: nginx
             - response_check---..-404|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 404
                 on_failure
                 # case for: iis
                 - response_check---..-403|step_check
-                    where: token
-                    which: %%_test_responce_http_code
+                    check: token
+                    where: %%_test_responce_http_code
                     match: 403
                     on_failure
                     - return_result|step_return
@@ -700,8 +700,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---.-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -714,8 +714,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---.0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -728,13 +728,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check----.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - response_check----.-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -747,8 +747,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check-----|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -761,8 +761,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check----0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -775,8 +775,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---0.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -789,8 +789,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check---0-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -803,8 +803,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0.-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -817,8 +817,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0.0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -831,8 +831,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0-.|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -845,8 +845,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0--|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -859,8 +859,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0-0|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -880,8 +880,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--~-.ssh-id_rsa|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -894,14 +894,14 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..-..-..-..-..-..-etc-passwd|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 400
             on_failure
             # case for: iis
             - response_check--..-..-..-..-..-..-etc-passwd-403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -914,8 +914,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.editorconfig|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -928,8 +928,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.gitattributes|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -942,8 +942,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.gitignore|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -956,8 +956,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.htaccess|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -970,8 +970,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.nginx|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -984,8 +984,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--web.config|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -998,8 +998,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--index.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1012,8 +1012,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--license.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1026,8 +1026,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-data_original.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1040,8 +1040,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1054,8 +1054,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-structures.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1068,8 +1068,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-boot.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1082,8 +1082,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-changes.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1096,8 +1096,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-data.sqlite|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1110,8 +1110,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1124,8 +1124,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-files-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1138,8 +1138,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-logs-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1152,8 +1152,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-tmp-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1166,8 +1166,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--modules-readme.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1180,8 +1180,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-about-en.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1194,8 +1194,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-develop.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1208,8 +1208,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-installation-en.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1222,8 +1222,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-security.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1236,8 +1236,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-software.md|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1250,8 +1250,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-bundle_create.sh|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1264,8 +1264,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-cache_clear.sh|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1278,8 +1278,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-dynamic_reset.sh|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1292,8 +1292,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-update.sh|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1306,8 +1306,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-boot.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1320,8 +1320,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-bundle.data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1334,8 +1334,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-module.data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1348,8 +1348,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-backend-markers.php|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1362,8 +1362,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-template--canvas_svg.tpl|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             - return_result|step_return
@@ -1376,8 +1376,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-core.jsd|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1390,8 +1390,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-form.cssd|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1404,8 +1404,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-form.js|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1418,8 +1418,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures-icons-form.svgd|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1432,8 +1432,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures-lines.svg|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1446,8 +1446,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-frontend-captcha.css|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 200
             on_failure
             - return_result|step_return
@@ -1467,8 +1467,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--~-.ssh-id_rsa-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1481,14 +1481,14 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--..-..-..-..-..-..-etc-passwd-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 400
             on_failure
             # case for: iis
             - response_check--..-..-..-..-..-..-etc-passwd--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -1501,13 +1501,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.editorconfig-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - response_check--.editorconfig--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -1520,13 +1520,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.gitattributes-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - response_check--.gitattributes--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -1539,13 +1539,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.gitignore-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - response_check--.gitignore--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -1558,14 +1558,14 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.htaccess-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 403
             on_failure
             # case for: nginx
             - response_check--.htaccess--302|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 302
                 on_failure
                 - return_result|step_return
@@ -1578,13 +1578,13 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--.nginx-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - response_check--.nginx--403|step_check
-                where: token
-                which: %%_test_responce_http_code
+                check: token
+                where: %%_test_responce_http_code
                 match: 403
                 on_failure
                 - return_result|step_return
@@ -1597,8 +1597,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--web.config-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1611,8 +1611,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--index.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1625,8 +1625,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--license.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1639,8 +1639,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-data_original.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1653,8 +1653,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1667,8 +1667,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-structures.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1681,8 +1681,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-boot.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1695,8 +1695,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-changes.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1709,8 +1709,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-data.sqlite-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1723,8 +1723,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1737,8 +1737,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-files-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1751,8 +1751,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-logs-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1765,8 +1765,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-tmp-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1779,8 +1779,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--modules-readme.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1793,8 +1793,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-about-en.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1807,8 +1807,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-develop.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1821,8 +1821,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-installation-en.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1835,8 +1835,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-security.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1849,8 +1849,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-software.md-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1863,8 +1863,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-bundle_create.sh-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1877,8 +1877,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-cache_clear.sh-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1891,8 +1891,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-dynamic_reset.sh-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1905,8 +1905,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-update.sh-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1919,8 +1919,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-boot.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1933,8 +1933,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-bundle.data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1947,8 +1947,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-module.data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1961,8 +1961,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-backend-markers.php-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1975,8 +1975,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-template--canvas_svg.tpl-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -1989,8 +1989,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-core.jsd-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2003,8 +2003,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-form.cssd-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2017,8 +2017,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-form.js-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2031,8 +2031,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures-icons-form.svgd-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2045,8 +2045,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures-lines.svg-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2059,8 +2059,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-frontend-captcha.css-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2080,8 +2080,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2094,8 +2094,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2108,8 +2108,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2122,8 +2122,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-files|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2136,8 +2136,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-logs|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2150,8 +2150,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-tmp|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2164,8 +2164,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--modules|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2178,8 +2178,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2192,8 +2192,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2206,8 +2206,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2220,8 +2220,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2234,8 +2234,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2248,8 +2248,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2262,8 +2262,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2276,8 +2276,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2290,8 +2290,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2304,8 +2304,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2318,8 +2318,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2332,8 +2332,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2346,8 +2346,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2360,8 +2360,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2374,8 +2374,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-frontend-pictures|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2388,8 +2388,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2402,8 +2402,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2416,8 +2416,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2430,8 +2430,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2444,8 +2444,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2458,8 +2458,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2472,8 +2472,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2486,8 +2486,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2500,8 +2500,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2514,8 +2514,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-frontend-pictures|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2528,8 +2528,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2542,8 +2542,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2556,8 +2556,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2570,8 +2570,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2584,8 +2584,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-frontend-pictures|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2598,8 +2598,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2612,8 +2612,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2626,8 +2626,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2640,8 +2640,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2654,8 +2654,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2668,8 +2668,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2682,8 +2682,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2696,8 +2696,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2710,8 +2710,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2724,8 +2724,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-backend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2738,8 +2738,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-data|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2752,8 +2752,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-frontend|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2766,8 +2766,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-frontend-pictures|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 404
             on_failure
             - return_result|step_return
@@ -2787,8 +2787,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2801,8 +2801,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-cache-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2815,8 +2815,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2829,8 +2829,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-files-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2843,8 +2843,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-logs-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2857,8 +2857,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--dynamic-tmp-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2871,8 +2871,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--modules-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2885,8 +2885,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--readme-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2899,8 +2899,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--shell-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2913,8 +2913,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2927,8 +2927,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2941,8 +2941,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2955,8 +2955,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2969,8 +2969,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_captcha-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2983,8 +2983,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -2997,8 +2997,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3011,8 +3011,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_core-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3025,8 +3025,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3039,8 +3039,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3053,8 +3053,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3067,8 +3067,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3081,8 +3081,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-frontend-pictures-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3095,8 +3095,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3109,8 +3109,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3123,8 +3123,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_demo-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3137,8 +3137,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3151,8 +3151,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3165,8 +3165,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_develop-module_test-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3179,8 +3179,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3193,8 +3193,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3207,8 +3207,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3221,8 +3221,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_locales-frontend-pictures-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3235,8 +3235,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3249,8 +3249,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3263,8 +3263,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3277,8 +3277,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3291,8 +3291,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_menu-frontend-pictures-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3305,8 +3305,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3319,8 +3319,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3333,8 +3333,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3347,8 +3347,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3361,8 +3361,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_page-frontend-pictures-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3375,8 +3375,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3389,8 +3389,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3403,8 +3403,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_storage-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3417,8 +3417,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3431,8 +3431,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-backend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3445,8 +3445,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-data-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3459,8 +3459,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-frontend-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
@@ -3473,8 +3473,8 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--system-module_user-frontend-pictures-|step_check
-            where: token
-            which: %%_test_responce_http_code
+            check: token
+            where: %%_test_responce_http_code
             match: 302
             on_failure
             - return_result|step_return
