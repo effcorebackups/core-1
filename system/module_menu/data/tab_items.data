@@ -11,7 +11,7 @@ tab_items
       roles
       - =: admins
       permissions_match
-      - =: %^manage_data__menu_.+$%
+      - =: %^manage_data__menu_.+__select$%
 - data_menu_tree|tab_item
     id: data_menu_tree
     id_parent: data_menu

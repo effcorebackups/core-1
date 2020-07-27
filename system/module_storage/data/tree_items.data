@@ -10,4 +10,4 @@ tree_items
       roles
       - =: admins
       permissions_match
-      - =: %^manage_data__.+$%
+      - =: %^manage_data__.+__select$%

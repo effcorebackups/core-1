@@ -11,7 +11,7 @@ tab_items
       roles
       - =: admins
       permissions_match
-      - =: %^manage_data__content_.+$%
+      - =: %^manage_data__content_.+__select$%
 - data_content_page|tab_item
     id: data_content_page
     id_parent: data_content

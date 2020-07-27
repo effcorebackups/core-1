@@ -11,7 +11,7 @@ tab_items
       roles
       - =: admins
       permissions_match
-      - =: %^manage_data__user_.+$%
+      - =: %^manage_data__user_.+__select$%
 - data_user_user|tab_item
     id: data_user_user
     id_parent: data_user
