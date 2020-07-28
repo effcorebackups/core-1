@@ -9,7 +9,8 @@ tree_items
       roles
       - =: admins
       permissions_match
-      - =: %^manage_.+$%
+      - =: %^manage__.+$%
+      - =: %^manage_data__.+__select$%
 - modules|tree_item
     id: modules
     id_parent: manage
