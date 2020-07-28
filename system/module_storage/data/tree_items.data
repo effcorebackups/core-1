@@ -5,7 +5,7 @@ tree_items
     id_tree: system
     title: Data
     url: /manage/data
-    weight: +80
+    weight: +500
     access
       roles
       - =: admins

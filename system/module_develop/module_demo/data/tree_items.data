@@ -5,7 +5,7 @@ tree_items
     id_tree: system
     title: Demo
     url: /develop/demo
-    weight: +50
+    weight: +500
     access
       roles
       - =: admins

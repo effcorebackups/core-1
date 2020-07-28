@@ -5,7 +5,7 @@ tree_items
     id_tree: system
     title: Front
     url: /
-    weight: +80
+    weight: +500
     access
       roles
       - =: registered
@@ -19,4 +19,4 @@ tree_items
       roles
       - =: admins
       permissions
-      - =: manage_decoration
+      - =: manage__decoration

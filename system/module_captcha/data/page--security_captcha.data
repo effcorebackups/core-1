@@ -9,7 +9,7 @@ pages
       roles
       - =: admins
       permissions
-      - =: manage_security
+      - =: manage__security
     parts
     - system
       - tree_sql_user_registered|part_preset_link

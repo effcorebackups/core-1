@@ -8,7 +8,7 @@ pages
       roles
       - =: admins
       permissions
-      - =: manage_info
+      - =: manage__info
     parts
     - system
       - tree_sql_user_registered|part_preset_link

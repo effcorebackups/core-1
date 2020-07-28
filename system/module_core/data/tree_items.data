@@ -20,16 +20,16 @@ tree_items
       roles
       - =: admins
       permissions
-      - =: manage_modules
+      - =: manage__modules
 - info|tree_item
     id: info
     id_parent: manage
     id_tree: system
     title: Information
     url: /manage/info
-    weight: -80
+    weight: -500
     access
       roles
       - =: admins
       permissions
-      - =: manage_info
+      - =: manage__info

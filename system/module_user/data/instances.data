@@ -15,31 +15,31 @@ instances
 - permission_manage_security|instance
     entity_name: permission
     values
-    - id: manage_security
+    - id: manage__security
     - title: Security: manage
     - is_embedded: 1
 - permission_manage_decoration|instance
     entity_name: permission
     values
-    - id: manage_decoration
+    - id: manage__decoration
     - title: Decoration: manage
     - is_embedded: 1
 - permission_manage_locales|instance
     entity_name: permission
     values
-    - id: manage_locales
+    - id: manage__locales
     - title: Locales: manage
     - is_embedded: 1
 - permission_manage_modules|instance
     entity_name: permission
     values
-    - id: manage_modules
+    - id: manage__modules
     - title: Modules: manage
     - is_embedded: 1
 - permission_manage_info|instance
     entity_name: permission
     values
-    - id: manage_info
+    - id: manage__info
     - title: Info: manage
     - is_embedded: 1
 # ─────────────────────────────────────────────────────────────────────
@@ -656,28 +656,28 @@ instances
     - id: admins
     - title: Administrators
     - is_embedded: 1
-    - weight: +80
+    - weight: +500
 - role_managers|instance
     entity_name: role
     values
     - id: managers
     - title: Managers
     - is_embedded: 1
-    - weight: +70
+    - weight: +480
 - role_registered|instance
     entity_name: role
     values
     - id: registered
     - title: Registered
     - is_embedded: 1
-    - weight: +50
+    - weight: +460
 - role_anonymous|instance
     entity_name: role
     values
     - id: anonymous
     - title: Anonymous
     - is_embedded: 1
-    - weight: +40
+    - weight: +440
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
@@ -725,7 +725,7 @@ instances
     - title: Edit
     - url: /user/%%_nickname/edit
     - is_embedded: 1
-    - weight: +50
+    - weight: +500
     - access
         roles
         - =: registered
@@ -738,7 +738,7 @@ instances
     - title: Logout
     - url: /logout
     - is_embedded: 1
-    - weight: -50
+    - weight: -500
     - access
         roles
         - =: registered
@@ -763,7 +763,7 @@ instances
     - title: Login
     - url: /login
     - is_embedded: 1
-    - weight: +50
+    - weight: +500
     - access
         roles
         - =: anonymous
@@ -788,7 +788,7 @@ instances
     - title: Recovery
     - url: /recovery
     - is_embedded: 1
-    - weight: -50
+    - weight: -500
     - access
         roles
         - =: anonymous

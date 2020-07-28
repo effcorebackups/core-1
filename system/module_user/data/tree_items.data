@@ -9,4 +9,4 @@ tree_items
       roles
       - =: admins
       permissions
-      - =: manage_security
+      - =: manage__security
