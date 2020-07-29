@@ -20,10 +20,6 @@ selections
         type: field
         entity_name: user
         entity_field_name: nickname
-    - user.email
-        type: field
-        entity_name: user
-        entity_field_name: email
     - user.avatar_path
         type: field
         entity_name: user
