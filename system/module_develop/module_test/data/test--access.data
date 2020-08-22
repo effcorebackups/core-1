@@ -23,9 +23,121 @@ tests
   # ─────────────────────────────────────────────────────────────────────
     - title_for_anonymous_user|step_title
         title: ANONYMOUS USER
+    # Admin user page
+    - request_url-admin|step_request
+        url: /user/Admin
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # Admin user edit page
+    - request_url-admin-edit|step_request
+        url: /user/Admin/edit
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin-edit|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # security page
+    - request_url-security|step_request
+        url: /manage/security/settings
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-security|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # decoration page
+    - request_url-decoration|step_request
+        url: /manage/decoration/colors/current
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-decoration|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # locales page
+    - request_url-locales|step_request
+        url: /manage/locales
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-locales|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # modules page
+    - request_url-modules|step_request
+        url: /manage/modules/install
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-modules|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # info page
+    - request_url-info|step_request
+        url: /manage/info
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-info|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
     # multiple instance select page
     - request_url-select-multiple|step_request
         url: /manage/data/content/text
+        headers
+        - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
           name: is_https
         proxy|param_from_form
@@ -143,6 +255,118 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    # Admin user page
+    - request_url-admin-registered|step_request
+        url: /user/Admin
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # Admin user edit page
+    - request_url-admin-edit-registered|step_request
+        url: /user/Admin/edit
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin-edit-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # security page
+    - request_url-security-registered|step_request
+        url: /manage/security/settings
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-security-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # decoration page
+    - request_url-decoration-registered|step_request
+        url: /manage/decoration/colors/current
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-decoration-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # locales page
+    - request_url-locales-registered|step_request
+        url: /manage/locales
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-locales-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # modules page
+    - request_url-modules-registered|step_request
+        url: /manage/modules/install
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-modules-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # info page
+    - request_url-info-registered|step_request
+        url: /manage/info
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-info-registered|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
     # multiple instance select page
     - request_url-select-multiple-registered|step_request
         url: /manage/data/content/text
@@ -235,6 +459,119 @@ tests
         roles
         - =: test
         is_reset: true
+    # Admin user page
+    - request_url-admin-registered-role|step_request
+        url: /user/Admin
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # Admin user edit page
+    - request_url-admin-edit-registered-role|step_request
+        url: /user/Admin/edit
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-admin-edit-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # security page
+    - request_url-security-registered-role|step_request
+        url: /manage/security/settings
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-security-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # decoration page
+    - request_url-decoration-registered-role|step_request
+        url: /manage/decoration/colors/current
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-decoration-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # locales page
+    - request_url-locales-registered-role|step_request
+        url: /manage/locales
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-locales-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # modules page
+    - request_url-modules-registered-role|step_request
+        url: /manage/modules/install
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-modules-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # info page
+    - request_url-info-registered-role|step_request
+        url: /manage/info
+        headers
+        - cookie: Cookie: %%_test_cookies
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-info-registered-role|step_check
+        check: token
+        where: %%_test_responce_http_code
+        match: 403
+        on_failure
+        - return_result|step_return
+            value: 0
+    # ─────────────────────────────────────────────────────────────────────
     - transpositions|step_transpositions
       # ┌────╥─────────┬─────────┬─────────┬─────────┐
       # │  i ║ …select │ …insert │ …update │ …delete │
