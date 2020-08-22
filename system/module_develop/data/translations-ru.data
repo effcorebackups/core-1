@@ -193,7 +193,7 @@ translations
     - Total generation time: Общее время генерации
     - Total load: Общая загрузка
     - Traits: Трейты
-    - transposition %%_cur from %%_max (%%_bits): перестановка %%_cur из %%_max (%%_bits)
+    - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - UML Diagram: UML-диаграмма
     - Update Description 1.: Описание обновления 1.
     - Update Description 2.: Описание обновления 2.
