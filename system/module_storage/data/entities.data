@@ -15,22 +15,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_selection__select
+      - =: manage_data__content_page_selection__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_selection__insert
+      - =: manage_data__content_page_selection__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_selection__update
+      - =: manage_data__content_page_selection__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_selection__delete
+      - =: manage_data__content_page_selection__delete
     fields
     - id
         title: ID

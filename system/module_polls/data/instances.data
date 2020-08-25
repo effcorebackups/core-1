@@ -5,24 +5,24 @@ instances
 - permission_manage_data_poll_select|instance
     entity_name: permission
     values
-    - id: manage_data__content_poll__select
+    - id: manage_data__content_page_poll__select
     - title: Poll: select
     - is_embedded: 1
 - permission_manage_data_poll_insert|instance
     entity_name: permission
     values
-    - id: manage_data__content_poll__insert
+    - id: manage_data__content_page_poll__insert
     - title: Poll: insert
     - is_embedded: 1
 - permission_manage_data_poll_update|instance
     entity_name: permission
     values
-    - id: manage_data__content_poll__update
+    - id: manage_data__content_page_poll__update
     - title: Poll: update
     - is_embedded: 1
 - permission_manage_data_poll_delete|instance
     entity_name: permission
     values
-    - id: manage_data__content_poll__delete
+    - id: manage_data__content_page_poll__delete
     - title: Poll: delete
     - is_embedded: 1

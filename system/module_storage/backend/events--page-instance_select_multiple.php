@@ -8,6 +8,7 @@ namespace effcore\modules\storage {
           use \effcore\access;
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\tabs;
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
@@ -37,15 +38,13 @@ namespace effcore\modules\storage {
         }
       }
     }
-  # redirect if required (weight of tab items is not consider)
-    if (count($entities_by_groups) && empty($entities_by_groups[$managing_group_id][$entity_name])) {
-      $first_managing_group = key(      $entities_by_groups );
-      $first_entity_name    = key(reset($entities_by_groups));
-      url::go($page->args_get('base').'/'.$first_managing_group.'/'.$first_entity_name);
-    }
-    if (count($entities_by_groups) === 0) {
-      core::send_header_and_exit('access_forbidden');
-    }
+  # redirect if required or send 'access_forbidden'
+    if (count($entities_by_groups)) {
+      if (empty($entities_by_groups[$managing_group_id][$entity_name])) {
+        $first_branch = tabs::select('data')->get_first_branch();
+        if (count($first_branch)) url::go($page->args_get('base').'/'.end($first_branch)->action_name);
+        else core::send_header_and_exit('access_forbidden');
+    }}  else core::send_header_and_exit('access_forbidden');
   }
 
   static function on_check_access($event, $page) {

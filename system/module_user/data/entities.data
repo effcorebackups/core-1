@@ -139,13 +139,13 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__user_permission__select
+      - =: manage_data__user_user_permission__select
     access_insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__user_permission__update
+      - =: manage_data__user_user_permission__update
     access_delete
     fields
     - id
@@ -239,22 +239,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_perm__select
+      - =: manage_data__user_user_rel_role_ws_perm__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_perm__insert
+      - =: manage_data__user_user_rel_role_ws_perm__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_perm__update
+      - =: manage_data__user_user_rel_role_ws_perm__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_perm__delete
+      - =: manage_data__user_user_rel_role_ws_perm__delete
     fields
     - id_role
         title: Role
@@ -359,22 +359,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_user__select
+      - =: manage_data__user_user_rel_role_ws_user__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_user__insert
+      - =: manage_data__user_user_rel_role_ws_user__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_user__update
+      - =: manage_data__user_user_rel_role_ws_user__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_user__delete
+      - =: manage_data__user_user_rel_role_ws_user__delete
     fields
     - id_user
         title: User
@@ -478,22 +478,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__user_role__select
+      - =: manage_data__user_user_role__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__user_role__insert
+      - =: manage_data__user_user_role__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__user_role__update
+      - =: manage_data__user_user_role__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__user_role__delete
+      - =: manage_data__user_user_role__delete
     fields
     - id
         title: ID

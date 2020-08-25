@@ -24,6 +24,8 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page__select
+      permissions_match
+      - =: %^manage_data__content_page_.+__select$%
 - data_content_text|tab_item
     id: data_content_text
     id_parent: data_content_page
@@ -35,7 +37,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_text__select
+      - =: manage_data__content_page_text__select
 - data_content_picture|tab_item
     id: data_content_picture
     id_parent: data_content_page
@@ -47,7 +49,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_picture__select
+      - =: manage_data__content_page_picture__select
 - data_content_audio|tab_item
     id: data_content_audio
     id_parent: data_content_page
@@ -59,7 +61,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_audio__select
+      - =: manage_data__content_page_audio__select
 - data_content_video|tab_item
     id: data_content_video
     id_parent: data_content_page
@@ -71,7 +73,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_video__select
+      - =: manage_data__content_page_video__select
 - data_content_gallery|tab_item
     id: data_content_gallery
     id_parent: data_content_page
@@ -83,7 +85,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__content_gallery__select
+      - =: manage_data__content_page_gallery__select
 # ─────────────────────────────────────────────────────────────────────
 - decoration_colors|tab_item
     id: decoration_colors

@@ -13,22 +13,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_poll__select
+      - =: manage_data__content_page_poll__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_poll__insert
+      - =: manage_data__content_page_poll__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_poll__update
+      - =: manage_data__content_page_poll__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_poll__delete
+      - =: manage_data__content_page_poll__delete
     fields
     - id
         title: ID

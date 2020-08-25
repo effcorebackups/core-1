@@ -603,25 +603,25 @@ tests
             - set_role_permissions|step_set_role_permissions
                 id_role: test
                 permissions
-                - =: manage_data__content_text__select
+                - =: manage_data__content_page_text__select
         - insert|step_actions
             actions
             - set_role_permissions|step_set_role_permissions
                 id_role: test
                 permissions
-                - =: manage_data__content_text__insert
+                - =: manage_data__content_page_text__insert
         - update|step_actions
             actions
             - set_role_permissions|step_set_role_permissions
                 id_role: test
                 permissions
-                - =: manage_data__content_text__update
+                - =: manage_data__content_page_text__update
         - delete|step_actions
             actions
             - set_role_permissions|step_set_role_permissions
                 id_role: test
                 permissions
-                - =: manage_data__content_text__delete
+                - =: manage_data__content_page_text__delete
       # ─────────────────────────────────────────────────────────────────────
         action_after|step_actions
           actions

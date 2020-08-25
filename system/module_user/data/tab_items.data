@@ -24,6 +24,8 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__user_user__select
+      permissions_match
+      - =: %^manage_data__user_user_.+__select$%
 - data_user_role|tab_item
     id: data_user_role
     id_parent: data_user_user
@@ -35,7 +37,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__user_role__select
+      - =: manage_data__user_user_role__select
 - data_user_rel_role_ws_user|tab_item
     id: data_user_rel_role_ws_user
     id_parent: data_user_user
@@ -47,7 +49,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_user__select
+      - =: manage_data__user_user_rel_role_ws_user__select
 - data_user_rel_role_ws_perm|tab_item
     id: data_user_rel_role_ws_perm
     id_parent: data_user_user
@@ -59,7 +61,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__user_rel_role_ws_perm__select
+      - =: manage_data__user_user_rel_role_ws_perm__select
 - data_user_permission|tab_item
     id: data_user_permission
     id_parent: data_user_user
@@ -71,7 +73,7 @@ tab_items
       roles
       - =: admins
       permissions
-      - =: manage_data__user_permission__select
+      - =: manage_data__user_user_permission__select
 - data_user_feedback|tab_item
     id: data_user_feedback
     id_parent: data_user

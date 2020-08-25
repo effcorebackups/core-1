@@ -14,22 +14,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_audio__select
+      - =: manage_data__content_page_audio__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_audio__insert
+      - =: manage_data__content_page_audio__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_audio__update
+      - =: manage_data__content_page_audio__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_audio__delete
+      - =: manage_data__content_page_audio__delete
     selection_params_default
       decorator_params
       - view_type: template
@@ -204,22 +204,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_gallery__select
+      - =: manage_data__content_page_gallery__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_gallery__insert
+      - =: manage_data__content_page_gallery__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_gallery__update
+      - =: manage_data__content_page_gallery__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_gallery__delete
+      - =: manage_data__content_page_gallery__delete
     selection_params_default
       decorator_params
       - view_type: template
@@ -566,22 +566,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_picture__select
+      - =: manage_data__content_page_picture__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_picture__insert
+      - =: manage_data__content_page_picture__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_picture__update
+      - =: manage_data__content_page_picture__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_picture__delete
+      - =: manage_data__content_page_picture__delete
     selection_params_default
       decorator_params
       - view_type: template
@@ -759,22 +759,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_text__select
+      - =: manage_data__content_page_text__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_text__insert
+      - =: manage_data__content_page_text__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_text__update
+      - =: manage_data__content_page_text__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_text__delete
+      - =: manage_data__content_page_text__delete
     selection_params_default
       decorator_params
       - view_type: template
@@ -910,22 +910,22 @@ entities
       roles
       - =: admins
       permissions
-      - =: manage_data__content_video__select
+      - =: manage_data__content_page_video__select
     access_insert
       roles
       - =: admins
       permissions
-      - =: manage_data__content_video__insert
+      - =: manage_data__content_page_video__insert
     access_update
       roles
       - =: admins
       permissions
-      - =: manage_data__content_video__update
+      - =: manage_data__content_page_video__update
     access_delete
       roles
       - =: admins
       permissions
-      - =: manage_data__content_video__delete
+      - =: manage_data__content_page_video__delete
     selection_params_default
       decorator_params
       - view_type: template
