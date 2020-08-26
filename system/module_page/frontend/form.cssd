@@ -148,10 +148,10 @@
     line-height: 1.7em;
     opacity: .3}
   x-description p {margin: 0}
-  input[data-opener-type='description'] {display: none}
-  input[data-opener-type='description']:checked {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('pictures/icons-form.svgd') 0 -85px}
-  input[data-opener-type='description']         + x-description {display: block}
-  input[data-opener-type='description']:checked + x-description {display: none}
+  input[data-opener-type='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('pictures/icons-form.svgd') 0 -85px}
+  input[data-opener-type='description']:checked {display: none}
+  input[data-opener-type='description']         + x-description {display: none}
+  input[data-opener-type='description']:checked + x-description {display: block}
   x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
 
   /* buttons */

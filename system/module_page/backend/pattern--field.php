@@ -340,7 +340,6 @@ namespace effcore {
       'type'             => 'checkbox',
       'role'             => 'button',
       'data-opener-type' => 'description',
-      'checked'          => true,
       'title'            => new text('press to show description')
     ]))->render();
   }

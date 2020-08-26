@@ -147,7 +147,7 @@ namespace effcore {
       $c_row_attributes  = ['data-object' => core::sanitize_id(trim($c_log->object, '.'))];
       $c_row_attributes += ['data-action' => core::sanitize_id(trim($c_log->action, '.'))];
       $c_row_attributes += ['data-value'  => core::sanitize_id(trim($c_log->value,  '.'))];
-      $c_stack_opener = isset($c_log->stack) ? (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'stack', 'checked' => false, 'title' => new text('press to show stack')]))->render() : '';
+      $c_stack_opener = isset($c_log->stack) ? (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'stack', 'title' => new text('press to show stack')]))->render() : '';
       $c_stack        = isset($c_log->stack) ? (new markup('x-stack', [], $c_log->stack))->render() : '';
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
