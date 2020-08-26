@@ -225,7 +225,7 @@ namespace effcore {
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
       $result.=      str_pad($c_log->value,   5).                     ' | ';
-      $result.=    (new text($c_log->description.(isset($c_log->stack) ? ' … '.$c_log->stack : ''), $c_log->args, false))->render().nl;}
+      $result.=    (new text($c_log->description.(isset($c_log->stack) ? '   &gt;&gt;&gt;   '.$c_log->stack : ''), $c_log->args, false))->render().nl;}
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
     $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;
