@@ -9,10 +9,14 @@ translations
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - a PHP extension stopped the file upload: PHP-расширение остановило загрузку файла
+    - access allowed by permission "%%_permission": доступ разрешён по разрешению "%%_permission"
+    - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
+    - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
     - Access forbidden: Доступ запрещён
     - Access recovery: Восстановление доступа
     - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access: Доступ
+    - access: доступ
     - action: действие
     - Action: Действие
     - actions: действия
@@ -71,6 +75,7 @@ translations
     - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флажок
     - Checkboxes: Флажки
+    - checking: проверка
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"

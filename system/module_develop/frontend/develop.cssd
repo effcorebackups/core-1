@@ -29,6 +29,7 @@
   section[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
   section[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
   section[data-id='logs'] tbody tr[data-object='form'    ] {background-color: salmon}
+  section[data-id='logs'] tbody tr[data-object='access'  ] {background-color: thistle}
   section[data-id='logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
   section[data-id='logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
 

@@ -9,10 +9,14 @@ translations
     - %%_entity_title_context\: update: %%_entity_title_context: абнавіць
     - A new password was sent to the selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - a PHP extension stopped the file upload: PHP-пашырэнне спыніла загрузку файла
+    - access allowed by permission "%%_permission": доступ дазволены па дазваленні "%%_permission"
+    - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
+    - access allowed by user ID "%%_user": доступ дазволены па ID карыстальніка "%%_user"
     - Access forbidden: Доступ забаронены
     - Access recovery: Аднаўленне доступу
     - Access settings are not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
     - Access: Доступ
+    - access: доступ
     - action: дзеянне
     - Action: Дзеянне
     - actions: дзеянні
@@ -71,6 +75,7 @@ translations
     - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
+    - checking: праверка
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
