@@ -140,6 +140,7 @@ translations
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
+    - press to show stack: націсніце, каб паказаць стэк
     - property private: уласцівасць прыватная
     - property protected: уласцівасць абароненая
     - property public: уласцівасць публічная

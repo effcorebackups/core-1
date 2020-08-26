@@ -337,11 +337,11 @@ namespace effcore {
 
   function render_opener() {
     return (new markup_simple('input', [
-      'type' => 'checkbox',
-      'role' => 'button',
+      'type'             => 'checkbox',
+      'role'             => 'button',
       'data-opener-type' => 'description',
-      'checked' => true,
-      'title' => new text('press to show hidden description')
+      'checked'          => true,
+      'title'            => new text('press to show description')
     ]))->render();
   }
 

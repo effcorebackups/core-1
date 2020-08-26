@@ -140,6 +140,7 @@ translations
     - PHP extension: PHP-расширение
     - PHP functions usage: Использование PHP-функций
     - Pos.: Поз.
+    - press to show stack: нажмите, чтобы показать стек
     - property private: свойство приватное
     - property protected: свойство защищённое
     - property public: свойство публичное

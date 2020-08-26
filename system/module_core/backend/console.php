@@ -147,6 +147,8 @@ namespace effcore {
       $c_row_attributes  = ['data-object' => core::sanitize_id(trim($c_log->object, '.'))];
       $c_row_attributes += ['data-action' => core::sanitize_id(trim($c_log->action, '.'))];
       $c_row_attributes += ['data-value'  => core::sanitize_id(trim($c_log->value,  '.'))];
+      $c_stack_opener = isset($c_log->stack) ? (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'stack', 'checked' => false, 'title' => new text('press to show stack')]))->render() : '';
+      $c_stack        = isset($c_log->stack) ? (new markup('x-stack', [], $c_log->stack))->render() : '';
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
       if ($c_log->time  >=   .0099) $c_row_attributes['data-loading-level'] = 3;
@@ -155,10 +157,10 @@ namespace effcore {
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
         'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)       ],
-        'object'      => ['title' => 'Object',      'value' =>                         new text($c_log->object,      $c_log->args)],
-        'action'      => ['title' => 'Action',      'value' =>                         new text($c_log->action,      $c_log->args)],
-        'description' => ['title' => 'Description', 'value' => !isset($c_log->stack) ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, '… '.$c_log->stack], $c_log->args)],
-        'value'       => ['title' => 'Val.',        'value' =>                         new text($c_log->value                    )] ];}
+        'object'      => ['title' => 'Object',      'value' =>             new text($c_log->object,      $c_log->args)],
+        'action'      => ['title' => 'Action',      'value' =>             new text($c_log->action,      $c_log->args)],
+        'description' => ['title' => 'Description', 'value' => !$c_stack ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, $c_stack_opener, $c_stack], $c_log->args, '')],
+        'value'       => ['title' => 'Val.',        'value' =>             new text($c_log->value                    )] ];}
     return new block('Execution plan', ['data-id' => 'logs', 'data-title-is-styled' => 'false'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
