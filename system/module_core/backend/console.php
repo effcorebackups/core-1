@@ -39,7 +39,8 @@ namespace effcore {
     $new_log = new \stdClass;
     if (static::is_enabled_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-      array_shift($stack);
+      if ($stack[0]['function'] === 'log_insert'                ) array_shift($stack);
+      if ($stack[0]['function'] === 'log_insert_about_duplicate') array_shift($stack);
       $new_log->stack       = core::format_debug_backtrace($stack);
     } $new_log->object      = $object;
       $new_log->action      = $action;
