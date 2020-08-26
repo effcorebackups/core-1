@@ -9,7 +9,27 @@ namespace effcore {
 
   const directory = dir_dynamic.'logs/';
 
-  static protected $data = [];
+  static protected $data       = [];
+  static protected $is_init    = false;
+  static protected $is_enabled = false;
+
+  static function init() {
+    if (!static::$is_init) {
+         static::$is_init = true;
+      if (module::is_enabled('develop')) {
+        $settings = module::settings_get('page');
+        if (($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]) ) ||
+            ($settings->console_visibility === 'show_for_everyone')) {
+          static::$is_enabled = true;
+        }
+      }
+    }
+  }
+
+  static function is_enabled_get() {
+    static::init();
+    return static::$is_enabled;
+  }
 
   static function logs_select() {
     return static::$data;
@@ -17,12 +37,16 @@ namespace effcore {
 
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
     $new_log = new \stdClass;
-    $new_log->object      = $object;
-    $new_log->action      = $action;
-    $new_log->description = $description;
-    $new_log->value       = $value;
-    $new_log->time        = $time;
-    $new_log->args        = $args;
+    if (static::is_enabled_get()) {
+      $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+      array_shift($stack);
+      $new_log->stack       = core::format_debug_backtrace($stack);
+    } $new_log->object      = $object;
+      $new_log->action      = $action;
+      $new_log->description = $description;
+      $new_log->value       = $value;
+      $new_log->time        = $time;
+      $new_log->args        = $args;
     static::$data[] = $new_log;
     return $new_log;
   }
@@ -130,10 +154,10 @@ namespace effcore {
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
         'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)       ],
-        'object'      => ['title' => 'Object',      'value' => new text($c_log->object,      $c_log->args)],
-        'action'      => ['title' => 'Action',      'value' => new text($c_log->action,      $c_log->args)],
-        'description' => ['title' => 'Description', 'value' => new text($c_log->description, $c_log->args)],
-        'value'       => ['title' => 'Val.',        'value' => new text($c_log->value                    )]];}
+        'object'      => ['title' => 'Object',      'value' =>                         new text($c_log->object,      $c_log->args)],
+        'action'      => ['title' => 'Action',      'value' =>                         new text($c_log->action,      $c_log->args)],
+        'description' => ['title' => 'Description', 'value' => !isset($c_log->stack) ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, '… '.$c_log->stack], $c_log->args)],
+        'value'       => ['title' => 'Val.',        'value' =>                         new text($c_log->value                    )] ];}
     return new block('Execution plan', ['data-id' => 'logs', 'data-title-is-styled' => 'false'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
@@ -198,7 +222,7 @@ namespace effcore {
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
       $result.=      str_pad($c_log->value,   5).                     ' | ';
-      $result.=    (new text($c_log->description, $c_log->args, false))->render().nl;}
+      $result.=    (new text($c_log->description.(isset($c_log->stack) ? ' … '.$c_log->stack : ''), $c_log->args, false))->render().nl;}
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
     $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;

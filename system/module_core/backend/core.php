@@ -557,6 +557,31 @@ namespace effcore {
   static function sanitize_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format('Y-m-d H:i:s'  ) : null;}
   static function sanitize_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format('Y-m-d\\TH:i:s') : null;}
 
+  ##############
+  ### format ###
+  ##############
+
+  static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
+    $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
+    $result = $precision ? substr(
+      number_format($number, $precision, $dec_point, $thousands), 0, -5) :
+      number_format($number, $precision, $dec_point, $thousands);
+    if ($no_zeros && strpos($result, $dec_point) !== false) {
+      $result = rtrim($result, '0');
+      $result = rtrim($result, $dec_point);
+    }
+    return $result;
+  }
+
+  static function format_debug_backtrace($stack) {
+    $result = [];
+    foreach ($stack as $c_info)
+      $result[] = ($c_info['class'   ] ?? '').
+                  ($c_info['type'    ] ?? '').
+                   $c_info['function'];
+    return implode(' → ', array_reverse($result));
+  }
+
   ###############
   ### filters ###
   ###############
@@ -919,18 +944,6 @@ namespace effcore {
       $string = str_replace($c_old_name, $c_new_name, $string);
     }
     return unserialize($string);
-  }
-
-  static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
-    $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
-    $result = $precision ? substr(
-      number_format($number, $precision, $dec_point, $thousands), 0, -5) :
-      number_format($number, $precision, $dec_point, $thousands);
-    if ($no_zeros && strpos($result, $dec_point) !== false) {
-      $result = rtrim($result, '0');
-      $result = rtrim($result, $dec_point);
-    }
-    return $result;
   }
 
   static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
