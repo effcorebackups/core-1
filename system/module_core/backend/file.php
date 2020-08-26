@@ -161,7 +161,7 @@ namespace effcore {
       $this->name = $info->name;
       $this->type = $info->type;
     } else {
-      console::log_insert('file', 'init', 'Invalid file path "%%_path"!', 'error', 0, ['path' => $path]);
+      console::log_insert('file', 'init.', 'Invalid file path "%%_path"!', 'error', 0, ['path' => $path]);
     }
   }
 

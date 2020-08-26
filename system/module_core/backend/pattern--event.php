@@ -86,7 +86,7 @@ namespace effcore {
           $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, ['event' => $c_event] + $args);
           if ($on_after_step)                        call_user_func_array($on_after_step,    ['event' => $c_event] + $args);
           timer::tap('event call: '.$type);
-          console::log_insert('event', 'end', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : null,
+          console::log_insert('event', 'ending', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : null,
             timer::period_get('event call: '.$type, -1, -2));
           if (!empty($c_event->is_last)) {
             break;

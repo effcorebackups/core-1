@@ -53,7 +53,7 @@ translations
     - Demo via decorator: Демонстрационное через декоратор
     - DL table: DL таблица
     - Embedded elements: Встроенные элементы
-    - end: конец
+    - ending: окончание
     - Error message #%%_number.: Сообщение об ошибке №%%_number.
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"<br>аргументы = [%%_args]

@@ -53,7 +53,7 @@ translations
     - Demo via decorator: Дэманстрацыйнае праз дэкаратар
     - DL table: DL табліца
     - Embedded elements: Убудаваныя элементы
-    - end: канец
+    - ending: заканчэнне
     - Error message #%%_number.: Паведамленне пра памылку №%%_number.
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"<br>аргументы = [%%_args]

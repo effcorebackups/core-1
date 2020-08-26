@@ -119,9 +119,9 @@ namespace effcore {
       $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
-      $c_row_attributes  = ['data-object' => core::sanitize_id($c_log->object)];
-      $c_row_attributes += ['data-action' => core::sanitize_id($c_log->action)];
-      $c_row_attributes += ['data-value'  => core::sanitize_id($c_log->value )];
+      $c_row_attributes  = ['data-object' => core::sanitize_id(trim($c_log->object, '.'))];
+      $c_row_attributes += ['data-action' => core::sanitize_id(trim($c_log->action, '.'))];
+      $c_row_attributes += ['data-value'  => core::sanitize_id(trim($c_log->value,  '.'))];
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
       if ($c_log->time  >=   .0099) $c_row_attributes['data-loading-level'] = 3;
