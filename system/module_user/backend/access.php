@@ -9,6 +9,10 @@ namespace effcore {
 
   static protected $cache = [];
 
+  static function cache_cleaning() {
+    static::$cache = [];
+  }
+
   static function check($access, $user = null) {
     if ($access === null) return true;
     if (  $user === null) $user = user::get_current();
