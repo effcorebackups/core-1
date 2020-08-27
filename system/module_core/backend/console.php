@@ -13,9 +13,10 @@ namespace effcore {
   static protected $is_init    = false;
   static protected $is_visible = false;
 
-  static function init() {
-    if (!static::$is_init) {
+  static function init($reset = false) {
+    if (!static::$is_init || $reset) {
          static::$is_init = true;
+      static::$is_visible = false;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
         if (($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]) ) ||
@@ -101,14 +102,16 @@ namespace effcore {
 
   static function markup_get_block_information() {
     $user = user::get_current();
+    $user_roles = $user->roles;
+    $user_permissions = role::related_permissions_by_roles_select($user_roles);
     $decorator = new decorator('table-dl');
     $decorator->id = 'page_information';
     $decorator->data = [[
-      'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))              ],
-      'memory'      => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))                         ],
-      'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                                          ],
-      'roles'       => ['title' => 'User roles',             'value' => implode(', ', $user->roles)                                           ],
-      'permissions' => ['title' => 'User permissions',       'value' => implode(', ', role::related_permissions_by_roles_select($user->roles))] ]];
+      'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))  ],
+      'memory'      => ['title' => 'Memory for PHP (bytes)', 'value' => locale::format_number(memory_get_usage(true))             ],
+      'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                              ],
+      'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '-'],
+      'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '-'] ]];
     return new block('Current page information', ['data-id' => 'info', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);

@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\develop {
+          use \effcore\console;
           use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
@@ -20,6 +21,7 @@ namespace effcore\modules\develop {
       case 'save':
         storage::get('files')->changes_insert('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
         message::insert('The changes was saved.');
+        console::init(true);
         break;
     }
   }
