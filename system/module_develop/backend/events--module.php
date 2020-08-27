@@ -23,7 +23,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_start($event) {
-    if (console::is_visible()) {
+    if (console::visible_mode_get()) {
       frontend::insert('console', null, 'styles', [
         'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
         'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'develop_style', 'develop'

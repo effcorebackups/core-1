@@ -8,28 +8,29 @@ namespace effcore {
           abstract class console {
 
   const directory = dir_dynamic.'logs/';
+  const visible_for_nobody   = 0;
+  const visible_for_everyone = 1;
+  const visible_for_admin    = 2;
 
-  static protected $data       = [];
-  static protected $is_init    = false;
-  static protected $is_visible = false;
+  static protected $data = [];
+  static protected $is_init = false;
+  static protected $visible_mode = self::visible_for_nobody;
 
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
-      static::$is_visible = false;
+      static::$visible_mode = static::visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
-        if (($settings->console_visibility === 'show_for_everyone') ||
-            ($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]))) {
-          static::$is_visible = true;
-        }
+        if ($settings->console_visibility === 'show_for_everyone'                                                           ) {static::$visible_mode = static::visible_for_everyone; return;}
+        if ($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::visible_for_admin;    return;}
       }
     }
   }
 
-  static function is_visible() {
+  static function visible_mode_get() {
     static::init();
-    return static::$is_visible;
+    return static::$visible_mode;
   }
 
   static function logs_select() {
@@ -38,7 +39,7 @@ namespace effcore {
 
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
     $new_log = new \stdClass;
-    if (static::is_visible()) {
+    if (static::visible_mode_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
       if ($stack[0]['function'] === 'log_insert'                ) array_shift($stack);
       if ($stack[0]['function'] === 'log_insert_about_duplicate') array_shift($stack);

@@ -242,7 +242,7 @@ namespace effcore {
       $result.= str_replace(nl.nl, '', $c_result);
     }
   }
-  if (console::is_visible()) {
+  if (console::visible_mode_get()) {
     timer::tap('total');
     $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
   }
