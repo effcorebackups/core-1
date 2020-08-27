@@ -963,7 +963,7 @@ namespace effcore {
            $message = 'go to <a href="/">front page</a>';
       $colors   = color::get_all();
       $settings = module::settings_get('page');
-      $console  = module::is_enabled('develop') && $settings->console_visibility === 'show_for_everyone' ? (new markup('pre', [], console::text_get()))->render() : '';
+      $console  = console::visible_mode_get() === console::visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : '';
       print (template::make_new($template, ['attributes' => static::data_to_attr([
         'lang'              => language::code_get_current()]),
         'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(),

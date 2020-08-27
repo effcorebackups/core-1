@@ -137,14 +137,10 @@ namespace effcore {
 
       # send result data
         $result = $data;
-        if (module::is_enabled('develop')) {
-          $settings = module::settings_get('page');
-          if ($settings->console_visibility === 'show_for_everyone') {
-            if ($file_info->type === 'cssd' ||
-                $file_info->type === 'jsd') {
-              timer::tap('total');
-              $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
-            }
+        if ($file_info->type === 'cssd' || $file_info->type === 'jsd') {
+          if (console::visible_mode_get() === console::visible_for_everyone) {
+            timer::tap('total');
+            $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
           }
         }
         header('Content-Length: '.strlen($result));
