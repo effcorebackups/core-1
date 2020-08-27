@@ -77,7 +77,7 @@ namespace effcore\modules\storage {
                   'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
                 );
               }
-            } else $items['fields']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message');        
+            } else $items['fields']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message');
           }   else $items['fields']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message');
         }     else $items['fields']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message');
       }       else $items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message');

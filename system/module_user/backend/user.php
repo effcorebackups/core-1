@@ -13,7 +13,7 @@ namespace effcore {
     static::$cache = null;
   }
 
-  static function init($is_load_roles = true) {
+  static function init($is_load_roles = true, $is_load_permissions = false) {
     if (static::$cache == null) {
         static::$cache = new instance('user');
         static::$cache->nickname = null;
@@ -22,7 +22,10 @@ namespace effcore {
       $session = session::select();
       if ($session &&
           $session->id_user) {
-        $user = static::select($session->id_user, $is_load_roles);
+        $user = static::select(
+          $session->id_user,
+          $is_load_roles,
+          $is_load_permissions);
         if ($user) {
           static::$cache = $user;
         }
@@ -35,12 +38,14 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function select($id, $is_load_roles = false) {
+  static function select($id, $is_load_roles = false, $is_load_permissions = false) {
     $user = new instance('user', ['id' => $id]);
     if ($user->select()) {
       $user->roles = $is_load_roles ?
         ['registered' => 'registered'] + static::related_roles_select($id) :
         ['registered' => 'registered'];
+      $user->permissions = $is_load_permissions ?
+        role::related_permissions_by_roles_select($user->roles) : [];
       return $user;
     }
   }

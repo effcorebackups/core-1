@@ -11,7 +11,7 @@ namespace effcore\modules\test {
           use \effcore\step_request;
           abstract class events_token {
 
-  static $cache = [];
+  static protected $cache = [];
 
   static function on_apply($name, $args = []) {
     if ($name === 'test_email_random'    && count($args) === 0) {                                                                                                            return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com';}
