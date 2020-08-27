@@ -9,8 +9,8 @@ namespace effcore {
 
   const directory = dir_dynamic.'logs/';
   const visible_for_nobody   = 0;
-  const visible_for_everyone = 1;
-  const visible_for_admin    = 2;
+  const visible_for_admin    = 1;
+  const visible_for_everyone = 2;
 
   static protected $data = [];
   static protected $is_init = false;
@@ -22,8 +22,8 @@ namespace effcore {
       static::$visible_mode = static::visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
-        if ($settings->console_visibility === 'show_for_everyone'                                                           ) {static::$visible_mode = static::visible_for_everyone; return;}
-        if ($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::visible_for_admin;    return;}
+        if ($settings->console_visibility === static::visible_for_everyone                                                           ) {static::$visible_mode = static::visible_for_everyone; return;}
+        if ($settings->console_visibility === static::visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::visible_for_admin;    return;}
       }
     }
   }

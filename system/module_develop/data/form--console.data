@@ -16,11 +16,11 @@ forms
             - name: visibility
             values
             - not_selected: - select -
-            - not_show: do not show
-            - show_for_admin: show for admin
-            - show_for_everyone: show for everyone
+            - 0: do not show
+            - 1: show for admin
+            - 2: show for everyone
             selected
-            - =: not_show
+            - =: 0
     - button_save|button
         title: save
         attributes

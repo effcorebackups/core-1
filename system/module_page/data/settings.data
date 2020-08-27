@@ -1,5 +1,5 @@
 settings
-  console_visibility: not_show
+  console_visibility: 0
   show_warning_if_not_https: false
   page_min_width: 200
   page_max_width: 950
