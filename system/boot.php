@@ -138,11 +138,11 @@ namespace effcore {
       # send result data
         $result = $data;
         if (module::is_enabled('develop')) {
-          timer::tap('total');
           $settings = module::settings_get('page');
-          if ($settings->console_visibility == 'show_for_everyone') {
-            if ($file_info->type == 'cssd' ||
-                $file_info->type == 'jsd') {
+          if ($settings->console_visibility === 'show_for_everyone') {
+            if ($file_info->type === 'cssd' ||
+                $file_info->type === 'jsd') {
+              timer::tap('total');
               $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
             }
           }
@@ -242,13 +242,9 @@ namespace effcore {
       $result.= str_replace(nl.nl, '', $c_result);
     }
   }
-  if (module::is_enabled('develop')) {
+  if (console::is_visible()) {
     timer::tap('total');
-    $settings = module::settings_get('page');
-    if (($settings->console_visibility == 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]) ) ||
-        ($settings->console_visibility == 'show_for_everyone')) {
-      $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
-    }
+    $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
   }
   header('Cache-Control: private, no-cache');
   print $result;

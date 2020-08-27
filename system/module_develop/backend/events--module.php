@@ -6,6 +6,7 @@
 
 namespace effcore\modules\develop {
           use \effcore\access;
+          use \effcore\console;
           use \effcore\frontend;
           use \effcore\module;
           use \effcore\user;
@@ -22,9 +23,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_start($event) {
-    $settings = module::settings_get('page');
-    if (($settings->console_visibility == 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']])) ||
-        ($settings->console_visibility == 'show_for_everyone')) {
+    if (console::is_visible()) {
       frontend::insert('console', null, 'styles', [
         'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
         'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'develop_style', 'develop'
