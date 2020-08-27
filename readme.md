@@ -49,10 +49,10 @@ The main emphasis in the system is on to get maximum performance.
 As evaluation criteria, a simple and understandable condition was applied:
 a system which installed on a web hosting with the cheapest tariff plan (from
 ~3-5$ per month), which compliant with the minimum installation requirements,
-should generate a homepage in 0.002 seconds (when OPCache is enabled),
-or 0.02 seconds (when OPCache is disabled), which in the first case
-allows serving up to ~500 clients per second, and in the second
-to ~50 (excluding parallel loading of connected files).
+should generate a homepage in 0.005 seconds (when OPCache is enabled),
+or 0.05 seconds (when OPCache is disabled), which in the first case
+allows serving up to ~200 clients per second, and in the second
+to ~20 (excluding parallel loading of connected files).
 
 
 Content management
