@@ -11,7 +11,7 @@ namespace effcore {
 
   static protected $data       = [];
   static protected $is_init    = false;
-  static protected $is_enabled = false;
+  static protected $is_visible = false;
 
   static function init() {
     if (!static::$is_init) {
@@ -20,15 +20,15 @@ namespace effcore {
         $settings = module::settings_get('page');
         if (($settings->console_visibility === 'show_for_admin' && access::check((object)['roles' => ['admins' => 'admins']]) ) ||
             ($settings->console_visibility === 'show_for_everyone')) {
-          static::$is_enabled = true;
+          static::$is_visible = true;
         }
       }
     }
   }
 
-  static function is_enabled_get() {
+  static function is_visible() {
     static::init();
-    return static::$is_enabled;
+    return static::$is_visible;
   }
 
   static function logs_select() {
@@ -37,7 +37,7 @@ namespace effcore {
 
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
     $new_log = new \stdClass;
-    if (static::is_enabled_get()) {
+    if (static::is_visible()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
       if ($stack[0]['function'] === 'log_insert'                ) array_shift($stack);
       if ($stack[0]['function'] === 'log_insert_about_duplicate') array_shift($stack);
