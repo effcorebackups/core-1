@@ -291,6 +291,10 @@ namespace effcore {
           elseif ($c_value == '_string_false') $c_value = 'false';
           else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
+            if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
+              message::insert(new text_multiline(['Class "%%_class" does not exist!', 'The class name has been changed to "stdClass".'], ['class' => $c_class_name]), 'error');
+              $c_class_name = 'stdClass';
+            }
             $c_reflection = new \ReflectionClass($c_class_name);
             $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
             $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
