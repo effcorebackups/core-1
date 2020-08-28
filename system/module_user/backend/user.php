@@ -14,7 +14,7 @@ namespace effcore {
   }
 
   static function init($is_load_roles = true, $is_load_permissions = false) {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
         static::$cache = new instance('user');
         static::$cache->nickname = null;
         static::$cache->id       = null;

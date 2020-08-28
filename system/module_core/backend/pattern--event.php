@@ -22,7 +22,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
       console::log_insert('event', 'init.', 'event system was initialized');
       foreach (storage::get('files')->select('events') as $c_module_id => $c_type_group) {
         foreach ($c_type_group as $c_type => $c_events) {

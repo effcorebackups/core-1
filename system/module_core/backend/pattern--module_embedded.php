@@ -122,7 +122,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
       static::$cache['modules'] = storage::get('files')->select('module');
       static::$cache['bundles'] = storage::get('files')->select('bundle');
     }

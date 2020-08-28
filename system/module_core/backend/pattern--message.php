@@ -44,7 +44,7 @@ namespace effcore {
   static protected $cache;
 
   static function init() {
-    if (static::$cache == null)
+    if (static::$cache === null)
         static::$cache = [];
   }
 

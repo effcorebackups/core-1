@@ -13,7 +13,7 @@ namespace effcore\modules\demo {
   static function on_install($event) {
     $module = module::get('demo');
     $module->install();
-    if (count(storage::get('sql')->errors) == 0) {
+    if (count(storage::get('sql')->errors) === 0) {
       for ($i = 1; $i <= 500; $i++) {
         $c_base_date = new \DateTime('2030-01-01 00:08:20', new \DateTimeZone('UTC'));
         $c_id = $i;

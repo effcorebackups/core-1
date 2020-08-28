@@ -69,7 +69,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
       foreach (storage::get('files')->select('breadcrumbs') as $c_module_id => $c_breadcrumbs_by_module) {
         foreach ($c_breadcrumbs_by_module as $c_breadcrumbs) {
           if (isset(static::$cache[$c_breadcrumbs->id])) console::log_insert_about_duplicate('breadcrumbs', $c_breadcrumbs->id, $c_module_id);

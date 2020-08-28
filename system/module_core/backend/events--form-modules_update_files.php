@@ -43,7 +43,7 @@ namespace effcore\modules\core {
         $info->child_insert($c_fieldset, $c_bundle->id);
       }
     }
-    if ($info->children_select_count() == 0) {
+    if ($info->children_select_count() === 0) {
       $form->child_update('info', new markup('x-no-items', ['data-style' => 'table'], 'no updates'));
     }
   }

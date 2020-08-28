@@ -34,7 +34,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
       foreach (storage::get('files')->select('templates') as $c_module_id => $c_templates) {
         foreach ($c_templates as $c_row_id => $c_template) {
           if (isset(static::$cache[$c_template->name])) console::log_insert_about_duplicate('template', $c_template->name, $c_module_id);

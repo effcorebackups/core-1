@@ -74,7 +74,7 @@ namespace effcore {
               );
             }
           # make result
-            if ($thead_row->children_select_count() == 0) {
+            if ($thead_row->children_select_count() === 0) {
               $thead->child_delete('head_row_main');
             }
             $result->child_insert(

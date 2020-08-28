@@ -178,7 +178,7 @@ namespace effcore\modules\core {
               }
             }
           }
-          if (count(storage::get('sql')->errors) == 0) {
+          if (count(storage::get('sql')->errors) === 0) {
             cache::update_global();
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code);

@@ -23,7 +23,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache == null) {
+    if (static::$cache === null) {
       foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
         foreach ($c_frontends as $c_row_id => $c_frontend) {
           if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
