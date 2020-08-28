@@ -138,9 +138,14 @@ namespace effcore {
       # send result data
         $result = $data;
         if ($file_info->type === 'cssd' || $file_info->type === 'jsd') {
+          timer::tap('total');
           if (console::visible_mode_get() === console::visible_for_everyone) {
-            timer::tap('total');
             $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
+          }
+          if (module::is_enabled('test')) {
+            header('X-Time-total: '.locale::format_msecond(
+              timer::period_get('total', 0, 1)
+            ));
           }
         }
         header('Content-Length: '.strlen($result));
@@ -238,9 +243,14 @@ namespace effcore {
       $result.= str_replace(nl.nl, '', $c_result);
     }
   }
+  timer::tap('total');
   if (console::visible_mode_get()) {
-    timer::tap('total');
     $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
+  }
+  if (module::is_enabled('test')) {
+    header('X-Time-total: '.locale::format_msecond(
+      timer::period_get('total', 0, 1)
+    ));
   }
   header('Cache-Control: private, no-cache');
   print $result;
