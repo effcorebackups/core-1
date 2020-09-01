@@ -268,7 +268,7 @@ namespace effcore {
   }
 
   protected function pool_manager_get_deleted_items($type) {
-    if ($this->disabled_get() == false) {
+    if ($this->disabled_get() === false) {
       $name = $this->name_get();
       return core::array_kmap(
         static::request_values_get($name.'_delete_'.$type)
@@ -277,7 +277,7 @@ namespace effcore {
   }
 
   protected function pool_manager_set_deleted_items($type, $items) {
-    if ($this->disabled_get() == false) {
+    if ($this->disabled_get() === false) {
       $name = $this->name_get();
       static::request_values_set($name.'_delete_'.$type, $items);
     }

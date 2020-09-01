@@ -273,8 +273,8 @@ namespace effcore {
   }
 
   function error_set($message = null, $args = []) {
-    if ($this->disabled_get() == false &&
-        $this->readonly_get() == false) {
+    if ($this->disabled_get() === false &&
+        $this->readonly_get() === false) {
       $new_error = new \stdClass;
       $new_error->message = $message;
       $new_error->args    = $args;

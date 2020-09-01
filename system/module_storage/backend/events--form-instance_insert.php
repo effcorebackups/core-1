@@ -50,7 +50,7 @@ namespace effcore\modules\storage {
               $c_control->build();
               $c_control->value_set_initial('', true);
               $items['fields']->child_insert($c_control, $c_name);
-              if ($c_control->disabled_get() == false) {
+              if ($c_control->disabled_get() === false) {
                 $has_controls = true;
               }
             }

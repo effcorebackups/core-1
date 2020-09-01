@@ -93,7 +93,7 @@ namespace effcore {
   function value_get() {
     foreach ($this->children_select() as $c_child) {
       if ($c_child instanceof $this->field_class &&
-          $c_child->checked_get() == true) {
+          $c_child->checked_get() === true) {
         return $c_child->value_get();
       }
     }

@@ -98,8 +98,8 @@ namespace effcore\modules\core {
         $modules_to_disable = [];
         foreach ($modules as $c_module) {
           if (!isset($embedded[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled[$c_module->id]) != false) $modules_to_disable[$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() !== false && isset($enabled[$c_module->id]) == false) $modules_to_enable [$c_module->id] = $c_module;
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() === false && isset($enabled[$c_module->id]) != false) $modules_to_disable[$c_module->id] = $c_module;
           }
         }
       # check dependencies
@@ -144,8 +144,8 @@ namespace effcore\modules\core {
         core::array_sort_by_property($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
           if (!isset($embedded[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() != false && isset($enabled[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() == false && isset($enabled[$c_module->id]) != false) {$modules_to_disable[$c_module->id] = $c_module;                                                 }
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() !== false && isset($enabled[$c_module->id]) == false) {$modules_to_enable [$c_module->id] = $c_module; $include_paths[$c_module->id] = $c_module->path;}
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() === false && isset($enabled[$c_module->id]) != false) {$modules_to_disable[$c_module->id] = $c_module;                                                 }
           }
         }
       # enable modules

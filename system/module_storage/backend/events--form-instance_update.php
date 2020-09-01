@@ -66,7 +66,7 @@ namespace effcore\modules\storage {
                   elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox != true) $c_control->value_set        ($form->_instance->{$c_name});
                   elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox == true) $c_control->checked_set      ($form->_instance->{$c_name});
                   $items['fields']->child_insert($c_control, $c_name);
-                  if ($c_control->disabled_get() == false) {
+                  if ($c_control->disabled_get() === false) {
                     $has_controls = true;
                   }
                 }

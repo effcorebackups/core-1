@@ -82,8 +82,8 @@ namespace effcore\modules\core {
     switch ($form->clicked_button->value_get()) {
       case 'install':
         if (!storage::get('sql')->is_installed()) {
-          if ($items['#driver:mysql' ]->checked_get() == false &&
-              $items['#driver:sqlite']->checked_get() == false) {
+          if ($items['#driver:mysql' ]->checked_get() === false &&
+              $items['#driver:sqlite']->checked_get() === false) {
             $items['#driver:mysql' ]->error_set();
             $items['#driver:sqlite']->error_set();
             $form->error_set('Driver is not selected!');

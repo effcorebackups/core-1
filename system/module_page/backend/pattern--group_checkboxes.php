@@ -19,7 +19,7 @@ namespace effcore {
     $result = [];
     foreach ($this->children_select() as $c_id => $c_child) {
       if ($c_child instanceof $this->field_class &&
-          $c_child->checked_get() == true) {
+          $c_child->checked_get() === true) {
         $result[$c_id] = $c_child->value_get();
       }
     }
