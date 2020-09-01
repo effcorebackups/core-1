@@ -34,9 +34,11 @@ namespace effcore {
     if (isset($response['info']['primary_port'])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
     if (isset($response['info']['local_ip'    ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
     if (isset($response['info']['local_port'  ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
-    if (isset( $response['headers']['Set-Cookie']) ) {
+    if (isset($response['headers']['X-Time-total'              ])) $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Time-total',               'value' => $response['headers']['X-Time-total'              ]]);
+    if (isset($response['headers']['X-Form-Submit-Errors-Count'])) $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Form-Submit-Errors-Count', 'value' => $response['headers']['X-Form-Submit-Errors-Count']]);
+    if (isset($response['headers']['Set-Cookie'                ])) {
       foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
-        $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
+        $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
       }
     }
     $c_results['response'] = $response;

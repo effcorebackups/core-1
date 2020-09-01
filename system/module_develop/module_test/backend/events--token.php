@@ -58,6 +58,12 @@ namespace effcore\modules\test {
         return (int)$last_response['headers']['X-Form-Submit-Errors-Count'];
       }
     }
+    if ($name === 'test_response_time_total') {
+      $last_response = end(step_request::$history);
+      if ($last_response && isset($last_response['headers']) && array_key_exists('X-Time-total', $last_response['headers'])) {
+        return $last_response['headers']['X-Time-total'];
+      }
+    }
   }
 
 }}

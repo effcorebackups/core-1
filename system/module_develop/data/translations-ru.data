@@ -13,6 +13,7 @@ translations
     - (default type): (тип по умолчанию)
     - &ndash; request header param "%%_value": &ndash; header-параметр запроса "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
+    - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр ответа "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
     - action "%%_name" will be started: действие "%%_name" будет запущено
     - action with rowid = "%%_rowid" will be started: действие с rowid = "%%_rowid" будет запущено
