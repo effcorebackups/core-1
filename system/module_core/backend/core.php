@@ -948,6 +948,11 @@ namespace effcore {
 
   static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
     timer::tap('total');
+    if (module::is_enabled('test')) {
+      header('X-Time-total: '.locale::format_msecond(
+        timer::period_get('total', 0, 1)
+      ));
+    }
     switch ($type) {
       case 'redirect'        : header('Location: '.$p); exit();
       case 'page_refresh'    : header('Refresh: ' .$p); exit();
@@ -963,7 +968,6 @@ namespace effcore {
            $message = 'go to <a href="/">front page</a>';
       $colors   = color::get_all();
       $settings = module::settings_get('page');
-      $console  = console::visible_mode_get() === console::visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : '';
       print (template::make_new($template, ['attributes' => static::data_to_attr([
         'lang'              => language::code_get_current()]),
         'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(),
@@ -972,7 +976,7 @@ namespace effcore {
         'color_text'        => isset($colors[$settings->color_text_id       ]) ? $colors[$settings->color_text_id       ]->value : '',
         'color_link'        => isset($colors[$settings->color_link_id       ]) ? $colors[$settings->color_link_id       ]->value : '',
         'color_link_active' => isset($colors[$settings->color_link_active_id]) ? $colors[$settings->color_link_active_id]->value : '',
-        'console'           => $console
+        'console'           => console::visible_mode_get() === console::visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : ''
       ]))->render();
     }
     exit();
