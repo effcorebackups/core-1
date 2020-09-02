@@ -22,15 +22,15 @@ namespace effcore {
   static function         format_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC') );                                   if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locales')->format_datetime);}
   static function         format_timestmp($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp + core::timezone_get_offset_sec(core::timezone_get_client())); if ($date) return $date                                                               ->format(module::settings_get('locales')->format_datetime);}
 
-  static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
-  static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
-  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
-
   static function format_number($number, $precision = 0, $dec_point = null, $thousands = null, $no_zeros = true) {
     $dec_point = $dec_point === null ? module::settings_get('locales')->decimal_point       : $dec_point;
     $thousands = $thousands === null ? module::settings_get('locales')->thousands_separator : $thousands;
     return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
+
+  static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
+  static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
+  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
   static function format_bytes($bytes) {
     $translations = [
@@ -42,12 +42,12 @@ namespace effcore {
     return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
   }
 
-  static function format_logic($value) {
-    return $value ? 'yes' : 'no';
-  }
-
   static function format_seconds($seconds) {
     return translation::apply('%%_number second%%_plural{number,s}', ['number' => $seconds]);
+  }
+
+  static function format_logic($value) {
+    return $value ? 'yes' : 'no';
   }
 
 }}
