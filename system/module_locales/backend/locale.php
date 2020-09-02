@@ -17,10 +17,10 @@ namespace effcore {
   static function     datetime_loc_to_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new \DateTimeZone(core::timezone_get_client()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d H:i:s'  );}
   static function datetime_T_loc_to_T_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone(core::timezone_get_client()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d\\TH:i:s');}
 
-  static function     format_date    ($date)     {$date = \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC') );                                   if ($date) return $date->setTime    (0, 0)                                            ->format(module::settings_get('locales')->format_date    );}
-  static function     format_time    ($time)     {$date = \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC') );                                   if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locales')->format_time    );}
-  static function     format_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC') );                                   if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locales')->format_datetime);}
-  static function     format_timestmp($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp + core::timezone_get_offset_sec(core::timezone_get_client())); if ($date) return $date                                                               ->format(module::settings_get('locales')->format_datetime);}
+  static function         format_date    ($date)     {$date = \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC') );                                   if ($date) return $date->setTime    (0, 0)                                            ->format(module::settings_get('locales')->format_date    );}
+  static function         format_time    ($time)     {$date = \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC') );                                   if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locales')->format_time    );}
+  static function         format_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC') );                                   if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locales')->format_datetime);}
+  static function         format_timestmp($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp + core::timezone_get_offset_sec(core::timezone_get_client())); if ($date) return $date                                                               ->format(module::settings_get('locales')->format_datetime);}
 
   static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
   static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
@@ -44,6 +44,10 @@ namespace effcore {
 
   static function format_logic($value) {
     return $value ? 'yes' : 'no';
+  }
+
+  static function format_seconds($seconds) {
+    return translation::apply('%%_number second%%_plural{number,s}', ['number' => $seconds]);
   }
 
 }}

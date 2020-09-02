@@ -776,6 +776,10 @@ namespace effcore {
     else return $bytes.'B';
   }
 
+  ###############
+  ### ini_get ###
+  ###############
+
   static function upload_max_filesize_bytes_get() {
     $value = ini_get('upload_max_filesize');
     if (static::is_abbreviated_bytes($value))
@@ -788,6 +792,18 @@ namespace effcore {
     if (static::is_abbreviated_bytes($value))
          return static::abbreviated_to_bytes($value);
     else return (int)$value;
+  }
+
+  static function max_file_uploads_get() {
+    return ini_get('max_file_uploads');
+  }
+
+  static function max_input_time_get() {
+    return ini_get('max_input_time');
+  }
+
+  static function max_execution_time_get() {
+    return ini_get('max_execution_time');
   }
 
   ############################

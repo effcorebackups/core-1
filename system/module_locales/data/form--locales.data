@@ -22,7 +22,7 @@ forms
               - 1: Possible options can be seen on page: %%_page
               args
               - examples: "Y-m-d" | "d.m.Y"
-              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
             element_attributes
             - name: format_date
             - value: Y-m-d
@@ -33,7 +33,7 @@ forms
             description|text
               text: Possible options can be seen on page: %%_page
               args
-              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
             element_attributes
             - name: format_time
             - value: H:i:s
@@ -47,7 +47,7 @@ forms
               - 1: Possible options can be seen on page: %%_page
               args
               - examples: "Y-m-d H:i:s" | "d.m.Y H:i:s"
-              - page: <a href="https://php.net/manual/function.date.php" target="_blank">https://php.net/manual/function.date.php</a>
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
             element_attributes
             - name: format_datetime
             - value: Y-m-d H:i:s
