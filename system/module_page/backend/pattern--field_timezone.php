@@ -36,15 +36,15 @@ namespace effcore {
     $buffer = [];
     foreach (\DateTimeZone::listIdentifiers() as $c_zone) {
       $c_offset = core::timezone_get_offset_tme($c_zone);
-      $buffer[str_replace(':', '', $c_offset)]
-             [str_replace('/', '',  $c_zone )] = str_replace(['-'],      ['−'],        $c_offset).' — '.
-                                                 str_replace(['_', '/'], ['-', ' / '], $c_zone  );
+      $buffer[str_replace([':'     ], [''        ], $c_offset)][$c_zone] =
+              str_replace(['-'     ], ['−'       ], $c_offset).' — '.
+              str_replace(['_', '/'], ['-', ' / '], $c_zone  );
     }
     krsort($buffer, SORT_NUMERIC);
     foreach ($buffer as $c_zone_group) {
       asort($c_zone_group);
-      foreach ($c_zone_group as $c_pzone => $c_title) {
-        $result[$c_pzone] = $c_title;
+      foreach ($c_zone_group as $c_zone => $c_title) {
+        $result[$c_zone] = $c_title;
       }
     }
     return $result;
