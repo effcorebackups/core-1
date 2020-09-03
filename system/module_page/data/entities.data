@@ -356,7 +356,7 @@ entities
         selection_params_default
         - weight: +400
     - id_layout
-        title: Layout
+        title: Layout ID
         type: varchar
         size: 255
         collate: nocase
@@ -429,7 +429,7 @@ entities
         - filter: \effcore\translation::apply
         - weight: +320
     - lang_code
-        title: Language
+        title: Language code
         type: varchar
         size: 2
         collate: nocase
@@ -445,7 +445,7 @@ entities
         selection_params_default
         - weight: +300
     - text_direction
-        title: Text direction
+        title: Text direction code
         type: varchar
         size: 3
         collate: nocase

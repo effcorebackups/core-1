@@ -257,7 +257,7 @@ entities
       - =: manage_data__user_user_rel_role_ws_perm__delete
     fields
     - id_role
-        title: Role
+        title: Role ID
         type: varchar
         size: 255
         collate: nocase
@@ -277,7 +277,7 @@ entities
         selection_params_default
         - weight: +400
     - id_permission
-        title: Permission
+        title: Permission ID
         type: varchar
         size: 255
         collate: nocase
@@ -377,7 +377,7 @@ entities
       - =: manage_data__user_user_rel_role_ws_user__delete
     fields
     - id_user
-        title: User
+        title: User ID
         type: integer
         not_null: true
         managing_on_select_multiple_is_enabled: true
@@ -395,7 +395,7 @@ entities
         selection_params_default
         - weight: +400
     - id_role
-        title: Role
+        title: Role ID
         type: varchar
         size: 255
         collate: nocase

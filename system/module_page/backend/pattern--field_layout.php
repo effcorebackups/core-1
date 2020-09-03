@@ -20,8 +20,8 @@ namespace effcore {
       $this->option_insert('- no -', 'not_selected');
       foreach (layout::select_all() as $c_layout) {
         $this->option_insert(
-          $c_layout->title,
-          $c_layout->id
+          (new text($c_layout->title))->render().' ('.$c_layout->id.')',
+                    $c_layout->id
         );
       }
       $this->is_builded = true;

@@ -15,8 +15,8 @@ namespace effcore {
   ];
   public $values = [
     'not_selected' => '- no -',
-    'ltr'          => 'left to right',
-    'rtl'          => 'right to left'
+    'ltr'          => 'left to right (ltr)',
+    'rtl'          => 'right to left (rtl)'
   ];
 
 }}

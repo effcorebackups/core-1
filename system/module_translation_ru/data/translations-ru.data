@@ -303,13 +303,16 @@ translations
     - Items: Элементы
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
     - KiB: КиБ
+    - Language code: Код языка
     - Language: Язык
     - launch: запуск
+    - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Оставьте 0, если Вы хотите использовать глобальные настройки размера страницы.
     - Leave a vote: Оставить свой голос
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым, если Вы не желаете изменять его значение.
+    - left to right (ltr): слева направо (ltr)
     - left to right: слева направо
     - Length: Длина
     - License agreement: Лицензионное соглашение
@@ -436,6 +439,7 @@ translations
     - Password: Пароль
     - Path: Путь
     - path: путь
+    - Permission ID: ID разрешения
     - Permission: Разрешение
     - Permission\: select: Разрешение: выбрать
     - Permission\: update: Разрешение: обновить
@@ -507,7 +511,9 @@ translations
     - reset: сброс
     - restore repository: восстановить репозиторий
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
+    - right to left (rtl): справа налево (rtl)
     - right to left: справа налево
+    - Role ID: ID роли
     - role: роль
     - Role: Роль
     - Role\: delete: Роль: удалить
@@ -584,6 +590,7 @@ translations
     - Tests: Тесты
     - Text area: Текстовая область
     - Text Copyright: Текст Авторских прав
+    - Text direction code: Код направления текста
     - Text direction: Направление текста
     - Text Front: Текст Главной
     - Text: Текст
