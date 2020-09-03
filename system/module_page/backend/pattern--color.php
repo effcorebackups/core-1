@@ -86,7 +86,7 @@ namespace effcore {
   }
 
   static function init_presets() {
-    if (static::$cache_presets == null) {
+    if (static::$cache_presets === null) {
       foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_row_id => $c_preset) {
           if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('colors_presets', $c_preset->id, $c_module_id);

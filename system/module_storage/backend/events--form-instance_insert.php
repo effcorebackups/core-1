@@ -110,8 +110,8 @@ namespace effcore\modules\storage {
         # insert action
           $form->_result = $form->_instance->insert();
         # show messages
-          if ($form->is_show_result_message && $form->_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-          if ($form->is_show_result_message && $form->_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
+          if ($form->is_show_result_message && $form->_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+          if ($form->is_show_result_message && $form->_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
         # going back

@@ -65,8 +65,8 @@ namespace effcore\modules\storage {
           # delete action
             $form->_result = $form->_instance->delete();
           # show messages
-            if ($form->is_show_result_message && $form->_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id])         );
-            if ($form->is_show_result_message && $form->_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]), 'error');
+            if ($form->is_show_result_message && $form->_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id])         );
+            if ($form->is_show_result_message && $form->_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]), 'error');
           }
         # ↓↓↓ no break ↓↓↓
         case 'cancel':

@@ -133,8 +133,8 @@ namespace effcore\modules\storage {
           # update action
             $form->_result = $form->_instance->update();
           # show messages
-            if ($form->is_show_result_message && $form->_result != null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-            if ($form->is_show_result_message && $form->_result == null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
+            if ($form->is_show_result_message && $form->_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+            if ($form->is_show_result_message && $form->_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
           # update 'updated' value
             if ($form->_result && $entity->has_parallel_checking && $entity->field_get('updated')) {
               $form->child_select('hidden_old_updated')->value_set(

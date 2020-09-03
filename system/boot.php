@@ -78,7 +78,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
     if (isset($file_types[$file_info->type]->kind) &&
-              $file_types[$file_info->type]->kind == 'protected') {
+              $file_types[$file_info->type]->kind === 'protected') {
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
@@ -90,7 +90,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
     if (isset($file_types[$file_info->type]->kind) &&
-              $file_types[$file_info->type]->kind == 'virtual') {
+              $file_types[$file_info->type]->kind === 'virtual') {
       call_user_func_array($file_types[$file_info->type]->handler, [$file_info]);
     }
 
@@ -113,7 +113,7 @@ namespace effcore {
         is_readable($path)) {
 
       if (isset($file_types[$file_info->type]->kind) &&
-                $file_types[$file_info->type]->kind == 'dynamic') {
+                $file_types[$file_info->type]->kind === 'dynamic') {
         $file = new file($path);
         $data = token::apply($file->load());
         $etag = core::hash_get_etag($data);

@@ -55,7 +55,7 @@ namespace effcore {
       'id_user' => $id_user
     ]))->delete();
   # regenerate Session ID if session is current
-    if ($id_session == null) static::id_regenerate('a');
+    if ($id_session === null) static::id_regenerate('a');
     return $result;
   }
 
