@@ -33,19 +33,28 @@ namespace effcore {
 
   static function list_get_by_zones() {
     $result = [];
-    foreach (\DateTimeZone::listIdentifiers() as $c_name) {
-      $c_offset = core::timezone_get_offset_tme($c_name);
-      $result[$c_name] = $c_offset.' — '.str_replace('/', ' / ', $c_name);
+    $buffer = [];
+    foreach (\DateTimeZone::listIdentifiers() as $c_zone) {
+      $c_offset = core::timezone_get_offset_tme($c_zone);
+      $buffer[str_replace(':', '', $c_offset)]
+             [str_replace('/', '',  $c_zone )] = str_replace(['-'],      ['−'],        $c_offset).' — '.
+                                                 str_replace(['_', '/'], ['-', ' / '], $c_zone  );
     }
-    arsort($result, SORT_NUMERIC);
+    krsort($buffer, SORT_NUMERIC);
+    foreach ($buffer as $c_zone_group) {
+      asort($c_zone_group);
+      foreach ($c_zone_group as $c_pzone => $c_title) {
+        $result[$c_pzone] = $c_title;
+      }
+    }
     return $result;
   }
 
   static function list_get_by_names() {
     $result = [];
-    foreach (\DateTimeZone::listIdentifiers() as $c_name) {
-      $c_offset = core::timezone_get_offset_tme($c_name);
-      $result[$c_name] = str_replace('/', ' / ', $c_name).' ('.$c_offset.')';
+    foreach (\DateTimeZone::listIdentifiers() as $c_zone) {
+      $c_offset = core::timezone_get_offset_tme($c_zone);
+      $result[$c_zone] = str_replace(['_', '/'], ['-', ' / '], $c_zone).' ('.$c_offset.')';
     }
     return $result;
   }

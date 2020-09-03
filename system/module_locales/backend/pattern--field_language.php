@@ -23,7 +23,7 @@ namespace effcore {
       $this->option_insert('- no -', 'not_selected');
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(new text_simple(
-          $c_code !== 'en' ? $c_info->title_en.' | '.$c_info->title_native.' ('.$c_code.')' :
+          $c_code !== 'en' ? $c_info->title_en.' / '.$c_info->title_native.' ('.$c_code.')' :
                              $c_info->title_en                            .' ('.$c_code.')'
         ), $c_code);}
       $this->is_builded = true;
