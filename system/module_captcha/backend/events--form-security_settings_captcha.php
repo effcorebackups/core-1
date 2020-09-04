@@ -53,7 +53,7 @@ namespace effcore\modules\captcha {
           if ($items['#is_enabled_glyph:'.$c_glyph]->checked_get())
             $captcha_glyphs[$c_glyph] = $c_character;
         if (count($captcha_glyphs) === 0) {
-          $form->error_set('Group "%%_title" should contain at least one selected item!', ['title' => (new text($items['main/glyphs']->title))->render()]);
+          $form->error_set('Group "%%_title" should contain at least one selected item!', ['title' => (new text($items['main/glyphs']->title))->render() ]);
         }
         break;
     }
