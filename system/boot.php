@@ -91,15 +91,17 @@ namespace effcore {
 
     if (isset($file_types[$file_info->type]->kind) &&
               $file_types[$file_info->type]->kind === 'virtual') {
-      call_user_func_array($file_types[$file_info->type]->handler, [$file_info]);
+      $path_url = ltrim(url::get_current()->path_get(), '/');
+      event::start('on_file_load', 'virtual', [$file_types[$file_info->type], $file_info, $path_url]);
+      exit();
     }
 
     # ─────────────────────────────────────────────────────────────────────
     # define real path (breake all './', '../', '~/' and etc)
     # ─────────────────────────────────────────────────────────────────────
 
-    $path_url = url::get_current()->path_get();
-    $path = realpath(dir_root.ltrim($path_url, '/'));
+    $path_url = ltrim(url::get_current()->path_get(), '/');
+    $path = realpath(dir_root.$path_url);
     if ($path !== false && core::server_os_is_windows()) $path = str_replace('\\', '/', $path);
     if ($path === false || strpos($path, dir_root) !== 0) {
       core::send_header_and_exit('file_not_found');

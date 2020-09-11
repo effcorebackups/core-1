@@ -70,10 +70,10 @@ events
       for: example
       handler: \effcore\modules\demo\events_examples::on_email_send_before
 # ─────────────────────────────────────────────────────────────────────
-  on_file_process_demotype
-  - demo|event
-      for: demo
-      handler: \effcore\modules\demo\events_file::on_process_demotype
+  on_file_load
+  - virtual|event
+      for: virtual
+      handler: \effcore\modules\demo\events_file::on_load_virtual
 # ─────────────────────────────────────────────────────────────────────
   on_form_init
   - demo|event

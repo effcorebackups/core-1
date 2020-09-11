@@ -5,4 +5,3 @@ file_types
 - demotype
     type: demotype
     kind: virtual
-    handler: \effcore\modules\demo\events_file::process_demotype
