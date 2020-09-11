@@ -65,8 +65,8 @@ namespace effcore {
     # case for system file ('.type') - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if ($file_info->type !== '' &&
-        $file_info->name === '') {
+    if ($file_info->name === '' &&
+        $file_info->type !== '') {
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
@@ -114,44 +114,7 @@ namespace effcore {
 
       if (isset($file_types[$file_info->type]->kind) &&
                 $file_types[$file_info->type]->kind === 'dynamic') {
-        $file = new file($path);
-        $data = token::apply($file->load());
-        $etag = core::hash_get_etag($data);
-
-      # send header '304 Not Modified' if the data has no changes
-        if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
-                  $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
-          header('HTTP/1.1 304 Not Modified');
-          console::log_store();
-          exit();
-        }
-
-      # send default headers
-        header('Accept-Ranges: none');
-        header('Etag: '.$etag);
-        if (!empty($file_types[$file_info->type]->headers)) {
-          foreach ($file_types[$file_info->type]->headers as $c_key => $c_value) {
-            header($c_key.': '.$c_value);
-          }
-        }
-
-      # send result data
-        $result = $data;
-        if ($file_info->type === 'cssd' || $file_info->type === 'jsd') {
-          timer::tap('total');
-          if (console::visible_mode_get() === console::visible_for_everyone) {
-            $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
-          }
-          if (module::is_enabled('test')) {
-            header('X-Time-total: '.locale::format_msecond(
-              timer::period_get('total', 0, 1)
-            ));
-          }
-        }
-        header('Content-Length: '.strlen($result));
-        header('Cache-Control: private, no-cache');
-        print $result;
-        console::log_store();
+        event::start('on_file_load', 'dynamic', [$file_types[$file_info->type], $file_info, $path]);
         exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -159,65 +122,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       } else {
-        $last_modified = gmdate('D, d M Y H:i:s', filemtime($path)).' GMT';
-
-      # send header '304 Not Modified' if the data has not changed
-        if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) &&
-                  $_SERVER['HTTP_IF_MODIFIED_SINCE'] === $last_modified) {
-          header('HTTP/1.1 304 Not Modified');
-          console::log_store();
-          exit();
-        }
-
-        # http ranges limits:
-        # ─────────────────────────────────────────────────────────────────────
-        #
-        #           ┌┬┬┬┬┬┬┬┬┐
-        #    ┝━━━━━━┿┷┷┷┷┷┷┷┷┿━━━━━━━━━━━━━━┥
-        #    │0     │min     │max           │length
-        #
-        # .....................................................................
-        #
-        #    0 ≤ MIN ≤ max < length  →  MIN ≥ 0 ≤ max < length
-        #    0 ≤ min ≤ MAX < length  →  MAX ≥ 0 ≥ min < length
-        #
-        #    min ≥ 0 │ min ≤ max │ min < length
-        #    max ≥ 0 │ max ≥ min │ max < length
-        #
-        # ─────────────────────────────────────────────────────────────────────
-
-        $length = filesize($path);
-        $ranges = core::server_get_http_range();
-        $min = $ranges->min !== null ? $ranges->min : 0;
-        $max = $ranges->max !== null ? $ranges->max : $length - 1;
-        if ($max >= $length) $max = $length - 1;
-        if (!($min >= 0 && $min <= $max && $min < $length))   {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
-        if (!($max >= 0 && $max >= $min && $max < $length))   {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
-        if (!($ranges->min === null && $ranges->max === null)) header('HTTP/1.1 206 Partial Content');
-        if (!($ranges->min === null && $ranges->max === null)) header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
-        header('Content-Length: '.($max - $min + 1));
-        header('Accept-Ranges: bytes');
-        header('Cache-Control: private, no-cache');
-        header('Last-Modified: '.$last_modified);
-        if (!empty($file_types[$file_info->type]->headers)) {
-          foreach ($file_types[$file_info->type]->headers as $c_key => $c_value) {
-            header($c_key.': '.$c_value);
-          }
-        }
-        if ($resource = fopen($path, 'rb')) {
-          $c_print_length = $min;
-          if (fseek($resource, $min) == 0) {
-            while (!feof($resource)) {
-              $c_data = fread($resource, 1024);
-              for ($i = 0; $i < strlen($c_data); $i++, $c_print_length++) {
-                if ($c_print_length > $max) break 2;
-                print $c_data[$i];
-              }
-            }
-          }
-          fclose($resource);
-        }
-        console::log_store();
+        event::start('on_file_load', 'static', [$file_types[$file_info->type], $file_info, $path]);
         exit();
       }
 

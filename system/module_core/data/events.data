@@ -8,6 +8,14 @@ events
       for: core
       handler: \effcore\modules\core\events_module::on_enable
 # ─────────────────────────────────────────────────────────────────────
+  on_file_load
+  - dynamic|event
+      for: dynamic
+      handler: \effcore\modules\core\events_file::on_load_dynamic
+  - static|event
+      for: static
+      handler: \effcore\modules\core\events_file::on_load_static
+# ─────────────────────────────────────────────────────────────────────
   on_update_files
   - system|event
       for: system

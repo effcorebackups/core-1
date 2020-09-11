@@ -894,12 +894,18 @@ namespace effcore {
   }
 
   static function server_get_http_range() {
-    $matches = [];
-    preg_match('%^bytes=(?<min>[0-9]+)-'.
-                       '(?<max>[0-9]*|)$%', $_SERVER['HTTP_RANGE'] ?? '', $matches);
     $result = new \stdClass;
-    $result->min = array_key_exists('min', $matches) && strlen($matches['min']) ? (int)$matches['min'] : null;
-    $result->max = array_key_exists('max', $matches) && strlen($matches['max']) ? (int)$matches['max'] : null;
+    $result->has_range = false;
+    $result->min = null;
+    $result->max = null;
+    if (isset($_SERVER['HTTP_RANGE'])) {
+      $result->has_range = true;
+      $matches = [];
+      preg_match('%^bytes=(?<min>[0-9]+)-'.
+                         '(?<max>[0-9]*)$%', $_SERVER['HTTP_RANGE'], $matches);
+      if (array_key_exists('min', $matches) && strlen($matches['min'])) $result->min = (int)$matches['min'];
+      if (array_key_exists('max', $matches) && strlen($matches['max'])) $result->max = (int)$matches['max'];
+    }
     return $result;
   }
 

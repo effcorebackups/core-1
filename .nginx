@@ -11,9 +11,9 @@
 server {
   listen 127.0.0.1:80;
   server_name 127.0.0.1;
-  root %%_root;
 
   location / {
+    root %%_root;
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
     include %%_include;
@@ -27,11 +27,11 @@ server {
 server {
   listen 127.0.0.1:443 ssl;
   server_name 127.0.0.1;
-  root %%_root;
   ssl_certificate     %%_domain_crt;
   ssl_certificate_key %%_domain_private_key;
 
   location / {
+    root %%_root;
     fastcgi_index index.php;
     fastcgi_pass 127.0.0.1:9000;
     include %%_include;
