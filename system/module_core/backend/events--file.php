@@ -28,7 +28,22 @@ namespace effcore\modules\core {
       exit();
     }
 
-  # send default headers
+  # send result data
+    $result = $data;
+    timer::tap('total');
+    if (module::is_enabled('test')) {
+      header('X-Time-total: '.locale::format_msecond(
+        timer::period_get('total', 0, 1)
+      ));
+    }
+    if ($file_info->type === 'cssd' ||
+        $file_info->type === 'jsd') {
+      if (console::visible_mode_get() === console::visible_for_everyone) {
+        $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
+      }
+    }
+    header('Content-Length: '.strlen($result));
+    header('Cache-Control: private, no-cache');
     header('Accept-Ranges: none');
     header('Etag: '.$etag);
     if (!empty($type_info->headers)) {
@@ -36,23 +51,6 @@ namespace effcore\modules\core {
         header($c_key.': '.$c_value);
       }
     }
-
-  # send result data
-    $result = $data;
-    if ($file_info->type === 'cssd' ||
-        $file_info->type === 'jsd') {
-      timer::tap('total');
-      if (console::visible_mode_get() === console::visible_for_everyone) {
-        $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
-      }
-      if (module::is_enabled('test')) {
-        header('X-Time-total: '.locale::format_msecond(
-          timer::period_get('total', 0, 1)
-        ));
-      }
-    }
-    header('Content-Length: '.strlen($result));
-    header('Cache-Control: private, no-cache');
     print $result;
     console::log_store();
     exit();
