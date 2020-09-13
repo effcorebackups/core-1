@@ -9,6 +9,7 @@ namespace effcore {
 
   public $for;
   public $handler;
+  public $skip_console_log = false;
   public $weight = 0;
 
   ###########################
@@ -80,14 +81,13 @@ namespace effcore {
         if ($for == null          ||
             $for == $c_event->for ||
                     $c_event->for == null) {
-          console::log_insert('event', 'beginning', ltrim($c_event->handler, '\\'), null, 0);
-          timer::tap('event call: '.$type);
-          if ($on_before_step)                       call_user_func_array($on_before_step,   ['event' => $c_event] + $args);
-          $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, ['event' => $c_event] + $args);
-          if ($on_after_step)                        call_user_func_array($on_after_step,    ['event' => $c_event] + $args);
-          timer::tap('event call: '.$type);
-          console::log_insert('event', 'ending', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : null,
-            timer::period_get('event call: '.$type, -1, -2));
+          if ($c_event->skip_console_log === false) console::log_insert('event', 'beginning', ltrim($c_event->handler, '\\'), null, 0);
+            timer::tap('event call: '.$type);
+            if ($on_before_step)                       call_user_func_array($on_before_step,   ['event' => $c_event] + $args);
+            $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, ['event' => $c_event] + $args);
+            if ($on_after_step)                        call_user_func_array($on_after_step,    ['event' => $c_event] + $args);
+            timer::tap('event call: '.$type);
+          if ($c_event->skip_console_log === false) console::log_insert('event', 'ending', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : null, timer::period_get('event call: '.$type, -1, -2));
           if (!empty($c_event->is_last)) {
             break;
           }

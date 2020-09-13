@@ -35,10 +35,12 @@ events
   on_query_before
   - pdo|event
       for: pdo
+      skip_console_log: true
       handler: \effcore\modules\develop\events_storage::on_query_before
   on_query_after
   - pdo|event
       for: pdo
+      skip_console_log: true
       handler: \effcore\modules\develop\events_storage::on_query_after
 # ─────────────────────────────────────────────────────────────────────
   on_storage_init_before
