@@ -3,7 +3,7 @@ module|module_embedded
   id_bundle: system
   title: Core
   description: Module for support the operation of the whole system.
-  copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
     php

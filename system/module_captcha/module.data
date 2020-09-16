@@ -4,6 +4,6 @@ module|module
   title: CAPTCHA
   group: Security
   description: Module for working with CAPTCHA in forms.
-  copyright: Copyright © 2017—2020 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
   enabled: yes
   version: 0.900
