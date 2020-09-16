@@ -16,6 +16,29 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           abstract class events_page_php_dependencies {
 
+  # legend: + the extension is always enabled (built-in extension)
+  #         ± the extension is enabled by default
+  #         − the extension is not enabled by default
+
+  const extensions_default_status = [
+    'Core'         => '+',
+    'curl'         => '−',
+    'date'         => '+',
+    'exif'         => '−',
+    'fileinfo'     => '±',
+    'filter'       => '±',
+    'gd'           => '−',
+    'hash'         => '±',
+    'json'         => '+',
+    'mbstring'     => '−',
+    'pcre'         => '+',
+    'pdo_mysql'    => '−',
+    'pdo_sqlite'   => '−',
+    'SPL'          => '+',
+    'standard'     => '+',
+    'Zend OPcache' => '−',
+  ];
+
   static function block_php_dependencies_list($page) {
     $modules_path = module::get_all('path');
     arsort($modules_path);
@@ -59,14 +82,23 @@ namespace effcore\modules\develop {
   # prepare report by modules
   # ─────────────────────────────────────────────────────────────────────
     $mod_title = new markup('h2', [], 'Module dependencies from PHP extensions');
+    $mod_legend = new markup('p', [], new text_multiline([
+      '+ the extension is always enabled (built-in extension)',
+      '± the extension is enabled by default',
+      '− the extension is not enabled by default']));
     $mod_decorator = new decorator('table-adaptive');
     $mod_decorator->id = 'modules_dependency';
     foreach ($statistic_by_mod as $c_module_id => $c_extensions) {
       if ($c_module_id) {
         ksort($c_extensions);
+        $c_extensions_list = new text_multiline([], [], ', ', false, false);
+        foreach ($c_extensions as $c_name => $c_usage)
+          $c_extensions_list->text_append(
+                  !isset(static::extensions_default_status[$c_name]) ? $c_name :
+            $c_name.' ('.static::extensions_default_status[$c_name].')');
         $mod_decorator->data[$c_module_id] = [
-          'module'    => ['value' => new text_simple($c_module_id),                             'title' => 'Module'       ],
-          'extension' => ['value' => new text_simple(implode(', ', array_keys($c_extensions))), 'title' => 'PHP extension']
+          'module'    => ['value' => new text_simple($c_module_id), 'title' => 'Module'       ],
+          'extension' => ['value' => $c_extensions_list,            'title' => 'PHP extension']
         ];
       }
     }
@@ -108,6 +140,7 @@ namespace effcore\modules\develop {
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       $mod_title,
       $mod_decorator,
+      $mod_legend,
       $fnc_title,
       $fnc_decorator,
       $ext_title,

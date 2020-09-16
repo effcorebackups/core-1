@@ -15,6 +15,9 @@ translations
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр ответа "%%_name" = "%%_value"
     - &ndash; response param "%%_name" = "%%_value": &ndash; параметр ответа "%%_name" = "%%_value"
+    - + the extension is always enabled (built-in extension): + расширение всегда включено (встроенное расширение)
+    - ± the extension is enabled by default: ± расширение включено по умолчанию
+    - − the extension is not enabled by default: − расширение не включено по умолчанию
     - action "%%_name" will be started: действие "%%_name" будет запущено
     - action with rowid = "%%_rowid" will be started: действие с rowid = "%%_rowid" будет запущено
     - Adaptive table: Адаптивная таблица
