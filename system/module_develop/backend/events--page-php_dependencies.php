@@ -16,7 +16,7 @@ namespace effcore\modules\develop {
           use \effcore\text_simple;
           abstract class events_page_php_dependencies {
 
-  # legend: + the extension is always enabled (built-in extension)
+  # legend: + the extension is always enabled
   #         ± the extension is enabled by default
   #         − the extension is not enabled by default
 
@@ -83,7 +83,7 @@ namespace effcore\modules\develop {
   # ─────────────────────────────────────────────────────────────────────
     $mod_title = new markup('h2', [], 'Module dependencies from PHP extensions');
     $mod_legend = new markup('p', [], new text_multiline([
-      '+ the extension is always enabled (built-in extension)',
+      '+ the extension is always enabled',
       '± the extension is enabled by default',
       '− the extension is not enabled by default']));
     $mod_decorator = new decorator('table-adaptive');
