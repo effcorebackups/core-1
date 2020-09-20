@@ -445,6 +445,8 @@ translations
     - Permission\: update: Разрешение: обновить
     - Permissions: Разрешения
     - PHP dependencies: PHP-зависимости
+    - PHP Exif is enabled: PHP Exif включён
+    - PHP GD is enabled: PHP GD включён
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP version: PHP версия
     - Picture: Изображение
