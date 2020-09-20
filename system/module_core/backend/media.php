@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class media {
 
-  static function picture_thumbnail_create($src_path, $dst_path, $dst_w = 100) {
+  static function picture_thumbnail_create($src_path, $dst_path, $dst_w = 100, $dst_h = null) {
     $type = @exif_imagetype($src_path);
     if ($type !== false) {
       if ($type === IMAGETYPE_GIF  && function_exists('imagecreatefromgif' )) $src_resource = @imagecreatefromgif ($src_path);
@@ -18,20 +18,23 @@ namespace effcore {
         $src_h = @imagesy($src_resource);
         if (is_int($src_w) && $src_w > 0 &&
             is_int($src_h) && $src_w > 0) {
-          $dst_h = (int)($src_h / ($src_w / $dst_w));
-          $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
-          if (is_resource($dst_resource)) {
-            $dst_file = new file($dst_path);
-            @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
-            @imagealphablending   ($dst_resource, $type === IMAGETYPE_GIF);
-            @imagesavealpha       ($dst_resource, true);
-            @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
-            if ($dst_file->type === 'png'  && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_file->dirs.$dst_file->name.'.png' );
-            if ($dst_file->type === 'jpg'  && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpg' );
-            if ($dst_file->type === 'jpeg' && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpeg');
-            if ($dst_file->type === 'gif'  && function_exists('imagegif' )) $result = @imagegif ($dst_resource, $dst_file->dirs.$dst_file->name.'.gif' );
-            @imagedestroy($dst_resource);
-            return $result ?? null;
+          if ($dst_w || $dst_h) {
+            if (!$dst_h) $dst_h = (int)($src_h / ($src_w / $dst_w));
+            if (!$dst_w) $dst_w = (int)($src_w / ($src_h / $dst_h));
+            $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
+            if (is_resource($dst_resource)) {
+              $dst_file = new file($dst_path);
+              @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
+              @imagealphablending   ($dst_resource, $type === IMAGETYPE_GIF);
+              @imagesavealpha       ($dst_resource, true);
+              @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+              if ($dst_file->type === 'png'  && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_file->dirs.$dst_file->name.'.png' );
+              if ($dst_file->type === 'jpg'  && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpg' );
+              if ($dst_file->type === 'jpeg' && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpeg');
+              if ($dst_file->type === 'gif'  && function_exists('imagegif' )) $result = @imagegif ($dst_resource, $dst_file->dirs.$dst_file->name.'.gif' );
+              @imagedestroy($dst_resource);
+              return $result ?? null;
+            }
           }
         }
       }
