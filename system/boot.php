@@ -92,7 +92,7 @@ namespace effcore {
     if (isset($file_types[$file_info->type]->kind) &&
               $file_types[$file_info->type]->kind === 'virtual') {
       $path_url = ltrim(url::get_current()->path_get(), '/');
-      event::start('on_file_load', 'virtual', [$file_types[$file_info->type], $file_info, $path_url]);
+      event::start('on_file_load', 'virtual', [$file_types[$file_info->type], &$file_info, &$path_url]);
       exit();
     }
 
@@ -116,7 +116,7 @@ namespace effcore {
 
       if (isset($file_types[$file_info->type]->kind) &&
                 $file_types[$file_info->type]->kind === 'dynamic') {
-        event::start('on_file_load', 'dynamic', [$file_types[$file_info->type], $file_info, $path]);
+        event::start('on_file_load', 'dynamic', [$file_types[$file_info->type], &$file_info, &$path]);
         exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -124,7 +124,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       } else {
-        event::start('on_file_load', 'static', [$file_types[$file_info->type], $file_info, $path]);
+        event::start('on_file_load', 'static', [$file_types[$file_info->type], &$file_info, &$path]);
         exit();
       }
 

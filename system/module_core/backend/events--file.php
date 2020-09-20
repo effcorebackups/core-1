@@ -10,12 +10,14 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\file;
           use \effcore\locale;
+          use \effcore\media;
           use \effcore\module;
           use \effcore\timer;
           use \effcore\token;
+          use \effcore\url;
           abstract class events_file {
 
-  static function on_load_dynamic($event, $type_info, $file_info, $path) {
+  static function on_load_dynamic($event, $type_info, &$file_info, &$path) {
     $file = new file($path);
     $data = token::apply($file->load());
     $etag = core::hash_get_etag($data);
@@ -91,7 +93,7 @@ namespace effcore\modules\core {
   #
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_load_static($event, $type_info, $file_info, $path) {
+  static function on_load_static($event, $type_info, &$file_info, &$path) {
     $last_modified = gmdate('D, d M Y H:i:s', filemtime($path)).' GMT';
 
   # send header '304 Not Modified' if the data has not changed
@@ -147,6 +149,38 @@ namespace effcore\modules\core {
     }
     console::log_store();
     exit();
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_load_static_pictures($event, $type_info, &$file_info, &$path) {
+    if ($type_info->type === 'png' ||
+        $type_info->type === 'gif' ||
+        $type_info->type === 'jpg' ||
+        $type_info->type === 'jpeg') {
+      $thumb_url_arg = url::get_current()->query_arg_select('thumb');
+      if ($thumb_url_arg !== null) {
+        $file_thumb = new file($path);
+        $file_thumb->name_set($file_thumb->name_get().'.thumb');
+        if ($file_thumb->is_exist()) {
+          $file_info->name = $file_thumb->name_get();
+          $path            = $file_thumb->path_get();
+          return;
+        } else {
+          if (extension_loaded('exif') && extension_loaded('gd')) {
+            $result = media::picture_thumbnail_create($path, $file_thumb->path_get(), 100);
+            if ($result) {
+              $file_info->name = $file_thumb->name_get();
+              $path            = $file_thumb->path_get();
+            } else {
+              # ...
+            }
+          } else {
+            # ...
+          }
+        }
+      }
+    }
   }
 
 }}

@@ -14,7 +14,7 @@ namespace effcore\modules\demo {
           use \effcore\user;
           abstract class events_file {
 
-  static function on_load_virtual($event, $type_info, $file_info, $path) {
+  static function on_load_virtual($event, $type_info, &$file_info, &$path) {
     if (access::check((object)['roles' => ['admins' => 'admins']])) {
       $user = user::get_current();
       $data = 'dirs: '.$file_info->dirs.nl;

@@ -15,6 +15,10 @@ events
   - static|event
       for: static
       handler: \effcore\modules\core\events_file::on_load_static
+  - static_pictures|event
+      for: static
+      weight: +500
+      handler: \effcore\modules\core\events_file::on_load_static_pictures
 # ─────────────────────────────────────────────────────────────────────
   on_update_files
   - system|event
