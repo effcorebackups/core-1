@@ -62,7 +62,7 @@ namespace effcore {
     $file_types = file::types_get();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for system file ('.type') - show 'forbidden' even if it does not exist!
+    # case for any system file ('.type') - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
     if ($file_info->name === '' &&
@@ -124,7 +124,9 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       } else {
-        event::start('on_file_load', 'static', [$file_types[$file_info->type], &$file_info, &$path]);
+        if (isset($file_types[$file_info->type]))
+             event::start('on_file_load', 'static', [       $file_types[$file_info->type],                       &$file_info, &$path]);
+        else event::start('on_file_load', 'static', [(object)['type' => $file_info->type, 'module_id' => null] , &$file_info, &$path]);
         exit();
       }
 
