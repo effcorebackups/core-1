@@ -160,24 +160,30 @@ namespace effcore\modules\core {
         $type_info->type === 'jpeg') {
       $thumb_url_arg = url::get_current()->query_arg_select('thumb');
       if ($thumb_url_arg !== null) {
-        $file_thumb = new file($path);
-        $file_thumb->name_set($file_thumb->name_get().'.thumb');
-        if ($file_thumb->is_exist()) {
-          $file_info->name = $file_thumb->name_get();
-          $path            = $file_thumb->path_get();
-          return;
-        } else {
-          if (extension_loaded('exif') && extension_loaded('gd')) {
-            $result = media::picture_thumbnail_create($path, $file_thumb->path_get(), 100);
-            if ($result) {
-              $file_info->name = $file_thumb->name_get();
-              $path            = $file_thumb->path_get();
-            } else {
-              # ...
-            }
+        $thumb = new file($path);
+        if (substr($thumb->name_get(), -6) !== '.thumb') {
+          $thumb->name_set($thumb->name_get().'.thumb');
+          if ($thumb->is_exist()) {
+            $file_info->name = $thumb->name_get();
+            $path            = $thumb->path_get();
+            return;
           } else {
-            # ...
+            if (extension_loaded('exif') && extension_loaded('gd')) {
+              $result = media::picture_thumbnail_create($path, $thumb->path_get(), 100);
+              if ($result) {
+                $file_info->name = $thumb->name_get();
+                $path            = $thumb->path_get();
+                return;
+              } else {
+                # media-error-thumbnail-creation-error
+              }
+            } else {
+              # media-error-extensions-not-loaded
+            }
           }
+        } else {
+        # can not create thumbnail from thumbnail
+          core::send_header_and_exit('file_not_found');
         }
       }
     }
