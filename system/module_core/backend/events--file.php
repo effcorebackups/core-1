@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use const \effcore\dir_system;
           use const \effcore\nl;
           use \effcore\console;
           use \effcore\core;
@@ -153,6 +154,8 @@ namespace effcore\modules\core {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  const jpeg_quality = 90;
+
   static function on_load_static_pictures($event, $type_info, &$file_info, &$path) {
     if ($type_info->type === 'png' ||
         $type_info->type === 'gif' ||
@@ -169,13 +172,16 @@ namespace effcore\modules\core {
             return;
           } else {
             if (extension_loaded('exif') && extension_loaded('gd')) {
-              $result = media::picture_thumbnail_create($path, $thumb->path_get(), 100);
+              $result = media::picture_thumbnail_create($path, $thumb->path_get(), 100, null, static::jpeg_quality);
               if ($result) {
                 $file_info->name = $thumb->name_get();
                 $path            = $thumb->path_get();
                 return;
               } else {
-                # media-error-thumbnail-creation-error
+                $file_info->dirs = '/system/module_core/frontend/pictures/';
+                $file_info->name = 'media-error-extensions-not-loaded';
+                $path = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$type_info->type;
+                return;
               }
             } else {
               # media-error-extensions-not-loaded
