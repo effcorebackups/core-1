@@ -130,7 +130,10 @@ namespace effcore {
   }
 
   function file_info_get() {
-    return static::path_parse($this->path_get());
+    $file_path = static::path_parse($this->path_get());
+    if (isset($file_path->dirs))
+              $file_path->dirs = ltrim($file_path->dirs, '/');
+    return $file_path;
   }
 
   function type_get() {
@@ -188,7 +191,7 @@ namespace effcore {
 
   static function path_parse($path) {
   # each path should begin with '/' and have at least one more character
-    if (strlen($path) == 0 || $path[0] !== '/') return;
+    if (strlen($path) === 0 || $path[0] !== '/') return;
     $result = new \stdClass;
     $result->dirs = '';
     $result->name = '';

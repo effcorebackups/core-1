@@ -167,24 +167,27 @@ namespace effcore\modules\core {
         if (substr($thumb->name_get(), -6) !== '.thumb') {
           $thumb->name_set($thumb->name_get().'.thumb');
           if ($thumb->is_exist()) {
-            $file_info->name = $thumb->name_get();
             $path            = $thumb->path_get();
+            $file_info->name = $thumb->name_get();
             return;
           } else {
             if (extension_loaded('exif') && extension_loaded('gd')) {
               $result = media::picture_thumbnail_create($path, $thumb->path_get(), 100, null, static::jpeg_quality);
               if ($result) {
-                $file_info->name = $thumb->name_get();
                 $path            = $thumb->path_get();
+                $file_info->name = $thumb->name_get();
                 return;
               } else {
-                $file_info->dirs = '/system/module_core/frontend/pictures/';
+                $path            = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$type_info->type;
+                $file_info->dirs = dir_system.'module_core/frontend/pictures/';
                 $file_info->name = 'media-error-extensions-not-loaded';
-                $path = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$type_info->type;
                 return;
               }
             } else {
-              # media-error-extensions-not-loaded
+              $path            = dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$type_info->type;
+              $file_info->dirs = dir_system.'module_core/frontend/pictures/';
+              $file_info->name = 'media-error-thumbnail-creation-error';
+              return;
             }
           }
         } else {
