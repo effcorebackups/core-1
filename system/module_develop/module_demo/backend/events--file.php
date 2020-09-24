@@ -14,18 +14,19 @@ namespace effcore\modules\demo {
           use \effcore\user;
           abstract class events_file {
 
-  static function on_load_virtual($event, $type_info, &$file_info, &$path) {
+  static function on_load_virtual($event, $type_info, &$file) {
     if ($type_info->type === 'demotype') {
       if (access::check((object)['roles' => ['admins' => 'admins']])) {
         $user = user::get_current();
-        $data = 'dirs: '.$file_info->dirs.nl;
-        $data.= 'name: '.$file_info->name.nl;
-        $data.= 'type: '.$file_info->type.nl;
+      # note: be ready to clear the path from './', '../', '~/', '//' and etc
+        $data = 'dirs: '.$file->path_get_relative().nl;
+        $data.= 'name: '.$file->name.nl;
+        $data.= 'type: '.$file->type.nl;
         $data.= 'current user: '.$user->nickname.nl;
         $data.= 'current user roles: '.implode(', ', $user->roles);
         header('Content-Length: '.strlen($data));
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename='.$file_info->name.'.txt');
+        header('Content-Disposition: attachment; filename='.$file->name.'.txt');
         header('Cache-Control: private, no-cache, no-store, must-revalidate');
         header('Expires: 0');
         print $data;

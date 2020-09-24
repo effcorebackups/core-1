@@ -8,34 +8,34 @@ namespace effcore {
           class url {
 
   # valid urls:
-  # ┌──────────────────────────────────────────────────────────╥──────────┬──────────────────┬──────────────────┬───────────┬────────┬──────────────────────────────────────────────────────────┬───────────────────────────────────┐
-  # │ url                                                      ║ protocol │ domain           │ path             │ query     │ anchor │ full_get                                                 │ tiny_get                          │
-  # ╞══════════════════════════════════════════════════════════╬══════════╪══════════════════╪══════════════════╪═══════════╪════════╪══════════════════════════════════════════════════════════╪═══════════════════════════════════╡
-  # │                        /                                 ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
-  # │                        /?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │                        /#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │                        /?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │                        /dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │                        /dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │                        /dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │                        /dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # │        subdomain.domain                                  ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
-  # │        subdomain.domain/?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │        subdomain.domain/#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │        subdomain.domain/?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │        subdomain.domain/dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │        subdomain.domain/dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │        subdomain.domain/dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │        subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # │ http://subdomain.domain                                  ║ http     │ subdomain.domain │ /                │           │        │ http://subdomain.domain                                  │ /                                 │
-  # │ http://subdomain.domain/?key=value                       ║ http     │ subdomain.domain │ /                │ key=value │        │ http://subdomain.domain/?key=value                       │ /?key=value                       │
-  # │ http://subdomain.domain/#anchor                          ║ http     │ subdomain.domain │ /                │           │ anchor │ http://subdomain.domain/#anchor                          │ /#anchor                          │
-  # │ http://subdomain.domain/?key=value#anchor                ║ http     │ subdomain.domain │ /                │ key=value │ anchor │ http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
-  # │ http://subdomain.domain/dir/subdir/page                  ║ http     │ subdomain.domain │ /dir/subdir/page │           │        │ http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
-  # │ http://subdomain.domain/dir/subdir/page?key=value        ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │        │ http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
-  # │ http://subdomain.domain/dir/subdir/page#anchor           ║ http     │ subdomain.domain │ /dir/subdir/page │           │ anchor │ http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
-  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │ subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
-  # └──────────────────────────────────────────────────────────╨──────────┴──────────────────┴──────────────────┴───────────┴────────┴──────────────────────────────────────────────────────────┴───────────────────────────────────┘
+  # ┌──────────────────────────────────────────────────────────╥──────────┬──────────────────────────┬──────────────────┬───────────┬────────┬──────────────────────────────────────────────────────────────────┬───────────────────────────────────┐
+  # │ url                                                      ║ protocol │ domain                   │ path             │ query     │ anchor │ full_get                                                         │ tiny_get                          │
+  # ╞══════════════════════════════════════════════════════════╬══════════╪══════════════════════════╪══════════════════╪═══════════╪════════╪══════════════════════════════════════════════════════════════════╪═══════════════════════════════════╡
+  # │                        /                                 ║ http     │ current.subdomain.domain │ /                │           │        │ http://current.subdomain.domain                                  │ /                                 │
+  # │                        /?key=value                       ║ http     │ current.subdomain.domain │ /                │ key=value │        │ http://current.subdomain.domain/?key=value                       │ /?key=value                       │
+  # │                        /#anchor                          ║ http     │ current.subdomain.domain │ /                │           │ anchor │ http://current.subdomain.domain/#anchor                          │ /#anchor                          │
+  # │                        /?key=value#anchor                ║ http     │ current.subdomain.domain │ /                │ key=value │ anchor │ http://current.subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │                        /dir/subdir/page                  ║ http     │ current.subdomain.domain │ /dir/subdir/page │           │        │ http://current.subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │                        /dir/subdir/page?key=value        ║ http     │ current.subdomain.domain │ /dir/subdir/page │ key=value │        │ http://current.subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │                        /dir/subdir/page#anchor           ║ http     │ current.subdomain.domain │ /dir/subdir/page │           │ anchor │ http://current.subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │                        /dir/subdir/page?key=value#anchor ║ http     │ current.subdomain.domain │ /dir/subdir/page │ key=value │ anchor │ http://current.subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │        subdomain.domain                                  ║ http     │         subdomain.domain │ /                │           │        │         http://subdomain.domain                                  │ /                                 │
+  # │        subdomain.domain/?key=value                       ║ http     │         subdomain.domain │ /                │ key=value │        │         http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │        subdomain.domain/#anchor                          ║ http     │         subdomain.domain │ /                │           │ anchor │         http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │        subdomain.domain/?key=value#anchor                ║ http     │         subdomain.domain │ /                │ key=value │ anchor │         http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │        subdomain.domain/dir/subdir/page                  ║ http     │         subdomain.domain │ /dir/subdir/page │           │        │         http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │        subdomain.domain/dir/subdir/page?key=value        ║ http     │         subdomain.domain │ /dir/subdir/page │ key=value │        │         http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │        subdomain.domain/dir/subdir/page#anchor           ║ http     │         subdomain.domain │ /dir/subdir/page │           │ anchor │         http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │        subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │         subdomain.domain │ /dir/subdir/page │ key=value │ anchor │         http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # │ http://subdomain.domain                                  ║ http     │         subdomain.domain │ /                │           │        │         http://subdomain.domain                                  │ /                                 │
+  # │ http://subdomain.domain/?key=value                       ║ http     │         subdomain.domain │ /                │ key=value │        │         http://subdomain.domain/?key=value                       │ /?key=value                       │
+  # │ http://subdomain.domain/#anchor                          ║ http     │         subdomain.domain │ /                │           │ anchor │         http://subdomain.domain/#anchor                          │ /#anchor                          │
+  # │ http://subdomain.domain/?key=value#anchor                ║ http     │         subdomain.domain │ /                │ key=value │ anchor │         http://subdomain.domain/?key=value#anchor                │ /?key=value#anchor                │
+  # │ http://subdomain.domain/dir/subdir/page                  ║ http     │         subdomain.domain │ /dir/subdir/page │           │        │         http://subdomain.domain/dir/subdir/page                  │ /dir/subdir/page                  │
+  # │ http://subdomain.domain/dir/subdir/page?key=value        ║ http     │         subdomain.domain │ /dir/subdir/page │ key=value │        │         http://subdomain.domain/dir/subdir/page?key=value        │ /dir/subdir/page?key=value        │
+  # │ http://subdomain.domain/dir/subdir/page#anchor           ║ http     │         subdomain.domain │ /dir/subdir/page │           │ anchor │         http://subdomain.domain/dir/subdir/page#anchor           │ /dir/subdir/page#anchor           │
+  # │ http://subdomain.domain/dir/subdir/page?key=value#anchor ║ http     │         subdomain.domain │ /dir/subdir/page │ key=value │ anchor │         http://subdomain.domain/dir/subdir/page?key=value#anchor │ /dir/subdir/page?key=value#anchor │
+  # └──────────────────────────────────────────────────────────╨──────────┴──────────────────────────┴──────────────────┴───────────┴────────┴──────────────────────────────────────────────────────────────────┴───────────────────────────────────┘
 
   # wrong urls:
   # ┌──────────────────────────╥──────────────────────────────────────────────────────────────────────┐
@@ -130,10 +130,7 @@ namespace effcore {
   }
 
   function file_info_get() {
-    $file_path = static::path_parse($this->path_get());
-    if (isset($file_path->dirs))
-              $file_path->dirs = ltrim($file_path->dirs, '/');
-    return $file_path;
+    return new file(dir_root.urldecode(trim($this->path_get(), '/')));
   }
 
   function type_get() {
@@ -187,26 +184,6 @@ namespace effcore {
     if (static::$cache === null) {
       static::$cache = new static(core::server_get_request_uri());
     }
-  }
-
-  static function path_parse($path) {
-  # each path should begin with '/' and have at least one more character
-    if (strlen($path) === 0 || $path[0] !== '/') return;
-    $result = new \stdClass;
-    $result->dirs = '';
-    $result->name = '';
-    $result->type = '';
-    $full_name = substr(strrchr($path, '/'), 1);
-    if ($full_name === false || $full_name === '' || $full_name === '..' || $full_name === '.') return;
-    $result->dirs = substr($path, 0, - strlen($full_name));
-    $type = substr(strrchr($full_name, '.'), 1);
-    if ($type !== false &&
-        $type !== '') {
-      $result->type = $type;
-      $result->name = substr($full_name, 0, - strlen($type) - 1); } else {
-      $result->name = $full_name;
-    }
-    return $result;
   }
 
   static function get_current() {

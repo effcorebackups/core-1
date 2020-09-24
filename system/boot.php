@@ -56,8 +56,8 @@ namespace effcore {
             $new_url);
   }
 
-  $file_info = url::get_current()->file_info_get();
-  if ($file_info && strlen($file_info->type)) {
+  $file = url::get_current()->file_info_get();
+  if ($file instanceof file && strlen($file->type)) {
 
     $file_types = file::types_get();
 
@@ -65,8 +65,8 @@ namespace effcore {
     # case for any system file ('.type') - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if ($file_info->name === '' &&
-        $file_info->type !== '') {
+    if ($file->name === '' &&
+        $file->type !== '') {
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
@@ -77,8 +77,8 @@ namespace effcore {
     # case for protected file - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if (isset($file_types[$file_info->type]->kind) &&
-              $file_types[$file_info->type]->kind === 'protected') {
+    if (isset($file_types[$file->type]->kind) &&
+              $file_types[$file->type]->kind === 'protected') {
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
@@ -89,21 +89,19 @@ namespace effcore {
     # case for virtual file
     # ─────────────────────────────────────────────────────────────────────
 
-    if (isset($file_types[$file_info->type]->kind) &&
-              $file_types[$file_info->type]->kind === 'virtual') {
-      $path_url = ltrim(url::get_current()->path_get(), '/');
-      event::start('on_file_load', 'virtual', [$file_types[$file_info->type], &$file_info, &$path_url]);
+    if (isset($file_types[$file->type]->kind) &&
+              $file_types[$file->type]->kind === 'virtual') {
+      event::start('on_file_load', 'virtual', [$file_types[$file->type], &$file]);
       exit();
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # define real path (breake all './', '../', '~/' and etc)
+    # define real path (breake all './', '../', '~/', '//' and etc)
     # ─────────────────────────────────────────────────────────────────────
 
-    $path_url = ltrim(url::get_current()->path_get(), '/');
-    $path = realpath(dir_root.$path_url);
-    if ($path !== false && core::server_os_is_windows()) $path = str_replace('\\', '/', $path);
-    if ($path === false || strpos($path, dir_root) !== 0) {
+    $real_path = realpath($file->path_get());
+    if ($real_path !== false && core::server_os_is_windows()) $real_path = str_replace('\\', '/', $real_path);
+    if ($real_path === false || strpos($real_path, dir_root) !== 0) {
       core::send_header_and_exit('file_not_found');
     }
 
@@ -111,12 +109,12 @@ namespace effcore {
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
 
-    if (is_file    ($path) &&
-        is_readable($path)) {
+    if (is_file    ($real_path) &&
+        is_readable($real_path)) {
 
-      if (isset($file_types[$file_info->type]->kind) &&
-                $file_types[$file_info->type]->kind === 'dynamic') {
-        event::start('on_file_load', 'dynamic', [$file_types[$file_info->type], &$file_info, &$path]);
+      if (isset($file_types[$file->type]->kind) &&
+                $file_types[$file->type]->kind === 'dynamic') {
+        event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file, &$real_path]);
         exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -124,9 +122,9 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       } else {
-        if (isset($file_types[$file_info->type]))
-             event::start('on_file_load', 'static', [       $file_types[$file_info->type],                       &$file_info, &$path]);
-        else event::start('on_file_load', 'static', [(object)['type' => $file_info->type, 'module_id' => null] , &$file_info, &$path]);
+        if (isset($file_types[$file->type]))
+             event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file, &$real_path]);
+        else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file, &$real_path]);
         exit();
       }
 

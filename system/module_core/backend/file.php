@@ -19,101 +19,69 @@ namespace effcore {
   # │ 0.            ║       │ 0.       │      │ yes      │
   # │ 0..           ║       │ 0..      │      │ yes      │
   # │ 0...          ║       │ 0...     │      │ yes      │
-  # │ 0             ║       │ 0        │      │ yes      │
   # │ .0            ║       │          │ 0    │ yes      │
   # │ ..0           ║       │ .        │ 0    │ yes      │
   # │ ...0          ║       │ ..       │ 0    │ yes      │
-  # │ 01            ║       │ 01       │      │ yes      │
-  # │ 0.1           ║       │ 0        │ 1    │ yes      │
-  # │ 0..1          ║       │ 0.       │ 1    │ yes      │
-  # │ 0...1         ║       │ 0..      │ 1    │ yes      │
-  # │ 10            ║       │ 10       │      │ yes      │
-  # │ 1.0           ║       │ 1        │ 0    │ yes      │
-  # │ 1..0          ║       │ 1.       │ 0    │ yes      │
-  # │ 1...0         ║       │ 1..      │ 0    │ yes      │
+  # │ 00            ║       │ 00       │      │ yes      │
+  # │ 0.0           ║       │ 0        │ 0    │ yes      │
+  # │ 0..0          ║       │ 0.       │ 0    │ yes      │
+  # │ 0...0         ║       │ 0..      │ 0    │ yes      │
   # │ .0.           ║       │ .0.      │      │ yes      │
   # │ ..0..         ║       │ ..0..    │      │ yes      │
-  # │ .0.1.         ║       │ .0.1.    │      │ yes      │
-  # │ ..0.1..       ║       │ ..0.1..  │      │ yes      │
-  # │ ..0..1..      ║       │ ..0..1.. │      │ yes      │
-  # │ .1.0.         ║       │ .1.0.    │      │ yes      │
-  # │ ..1.0..       ║       │ ..1.0..  │      │ yes      │
-  # │ ..1..0..      ║       │ ..1..0.. │      │ yes      │
+  # │ .0.0.         ║       │ .0.0.    │      │ yes      │
+  # │ ..0.0..       ║       │ ..0.0..  │      │ yes      │
+  # │ ..0..0..      ║       │ ..0..0.. │      │ yes      │
   # │ /...          ║ /     │ ...      │      │          │
   # │ /0            ║ /     │ 0        │      │          │
   # │ /0.           ║ /     │ 0.       │      │          │
   # │ /0..          ║ /     │ 0..      │      │          │
   # │ /0...         ║ /     │ 0...     │      │          │
-  # │ /0            ║ /     │ 0        │      │          │
   # │ /.0           ║ /     │          │ 0    │          │
   # │ /..0          ║ /     │ .        │ 0    │          │
   # │ /...0         ║ /     │ ..       │ 0    │          │
-  # │ /01           ║ /     │ 01       │      │          │
-  # │ /0.1          ║ /     │ 0        │ 1    │          │
-  # │ /0..1         ║ /     │ 0.       │ 1    │          │
-  # │ /0...1        ║ /     │ 0..      │ 1    │          │
-  # │ /10           ║ /     │ 10       │      │          │
-  # │ /1.0          ║ /     │ 1        │ 0    │          │
-  # │ /1..0         ║ /     │ 1.       │ 0    │          │
-  # │ /1...0        ║ /     │ 1..      │ 0    │          │
+  # │ /00           ║ /     │ 00       │      │          │
+  # │ /0.0          ║ /     │ 0        │ 0    │          │
+  # │ /0..0         ║ /     │ 0.       │ 0    │          │
+  # │ /0...0        ║ /     │ 0..      │ 0    │          │
   # │ /.0.          ║ /     │ .0.      │      │          │
   # │ /..0..        ║ /     │ ..0..    │      │          │
-  # │ /.0.1.        ║ /     │ .0.1.    │      │          │
-  # │ /..0.1..      ║ /     │ ..0.1..  │      │          │
-  # │ /..0..1..     ║ /     │ ..0..1.. │      │          │
-  # │ /.1.0.        ║ /     │ .1.0.    │      │          │
-  # │ /..1.0..      ║ /     │ ..1.0..  │      │          │
-  # │ /..1..0..     ║ /     │ ..1..0.. │      │          │
+  # │ /.0.0.        ║ /     │ .0.0.    │      │          │
+  # │ /..0.0..      ║ /     │ ..0.0..  │      │          │
+  # │ /..0..0..     ║ /     │ ..0..0.. │      │          │
   # │ dir/...       ║ dir/  │ ...      │      │ yes      │
   # │ dir/0         ║ dir/  │ 0        │      │ yes      │
   # │ dir/0.        ║ dir/  │ 0.       │      │ yes      │
   # │ dir/0..       ║ dir/  │ 0..      │      │ yes      │
   # │ dir/0...      ║ dir/  │ 0...     │      │ yes      │
-  # │ dir/0         ║ dir/  │ 0        │      │ yes      │
   # │ dir/.0        ║ dir/  │          │ 0    │ yes      │
   # │ dir/..0       ║ dir/  │ .        │ 0    │ yes      │
   # │ dir/...0      ║ dir/  │ ..       │ 0    │ yes      │
-  # │ dir/01        ║ dir/  │ 01       │      │ yes      │
-  # │ dir/0.1       ║ dir/  │ 0        │ 1    │ yes      │
-  # │ dir/0..1      ║ dir/  │ 0.       │ 1    │ yes      │
-  # │ dir/0...1     ║ dir/  │ 0..      │ 1    │ yes      │
-  # │ dir/10        ║ dir/  │ 10       │      │ yes      │
-  # │ dir/1.0       ║ dir/  │ 1        │ 0    │ yes      │
-  # │ dir/1..0      ║ dir/  │ 1.       │ 0    │ yes      │
-  # │ dir/1...0     ║ dir/  │ 1..      │ 0    │ yes      │
+  # │ dir/00        ║ dir/  │ 00       │      │ yes      │
+  # │ dir/0.0       ║ dir/  │ 0        │ 0    │ yes      │
+  # │ dir/0..0      ║ dir/  │ 0.       │ 0    │ yes      │
+  # │ dir/0...0     ║ dir/  │ 0..      │ 0    │ yes      │
   # │ dir/.0.       ║ dir/  │ .0.      │      │ yes      │
   # │ dir/..0..     ║ dir/  │ ..0..    │      │ yes      │
-  # │ dir/.0.1.     ║ dir/  │ .0.1.    │      │ yes      │
-  # │ dir/..0.1..   ║ dir/  │ ..0.1..  │      │ yes      │
-  # │ dir/..0..1..  ║ dir/  │ ..0..1.. │      │ yes      │
-  # │ dir/.1.0.     ║ dir/  │ .1.0.    │      │ yes      │
-  # │ dir/..1.0..   ║ dir/  │ ..1.0..  │      │ yes      │
-  # │ dir/..1..0..  ║ dir/  │ ..1..0.. │      │ yes      │
+  # │ dir/.0.0.     ║ dir/  │ .0.0.    │      │ yes      │
+  # │ dir/..0.0..   ║ dir/  │ ..0.0..  │      │ yes      │
+  # │ dir/..0..0..  ║ dir/  │ ..0..0.. │      │ yes      │
   # │ /dir/...      ║ /dir/ │ ...      │      │          │
   # │ /dir/0        ║ /dir/ │ 0        │      │          │
   # │ /dir/0.       ║ /dir/ │ 0.       │      │          │
   # │ /dir/0..      ║ /dir/ │ 0..      │      │          │
   # │ /dir/0...     ║ /dir/ │ 0...     │      │          │
-  # │ /dir/0        ║ /dir/ │ 0        │      │          │
   # │ /dir/.0       ║ /dir/ │          │ 0    │          │
   # │ /dir/..0      ║ /dir/ │ .        │ 0    │          │
   # │ /dir/...0     ║ /dir/ │ ..       │ 0    │          │
-  # │ /dir/01       ║ /dir/ │ 01       │      │          │
-  # │ /dir/0.1      ║ /dir/ │ 0        │ 1    │          │
-  # │ /dir/0..1     ║ /dir/ │ 0.       │ 1    │          │
-  # │ /dir/0...1    ║ /dir/ │ 0..      │ 1    │          │
-  # │ /dir/10       ║ /dir/ │ 10       │      │          │
-  # │ /dir/1.0      ║ /dir/ │ 1        │ 0    │          │
-  # │ /dir/1..0     ║ /dir/ │ 1.       │ 0    │          │
-  # │ /dir/1...0    ║ /dir/ │ 1..      │ 0    │          │
+  # │ /dir/00       ║ /dir/ │ 00       │      │          │
+  # │ /dir/0.0      ║ /dir/ │ 0        │ 0    │          │
+  # │ /dir/0..0     ║ /dir/ │ 0.       │ 0    │          │
+  # │ /dir/0...0    ║ /dir/ │ 0..      │ 0    │          │
   # │ /dir/.0.      ║ /dir/ │ .0.      │      │          │
   # │ /dir/..0..    ║ /dir/ │ ..0..    │      │          │
-  # │ /dir/.0.1.    ║ /dir/ │ .0.1.    │      │          │
-  # │ /dir/..0.1..  ║ /dir/ │ ..0.1..  │      │          │
-  # │ /dir/..0..1.. ║ /dir/ │ ..0..1.. │      │          │
-  # │ /dir/.1.0.    ║ /dir/ │ .1.0.    │      │          │
-  # │ /dir/..1.0..  ║ /dir/ │ ..1.0..  │      │          │
-  # │ /dir/..1..0.. ║ /dir/ │ ..1..0.. │      │          │
+  # │ /dir/.0.0.    ║ /dir/ │ .0.0.    │      │          │
+  # │ /dir/..0.0..  ║ /dir/ │ ..0.0..  │      │          │
+  # │ /dir/..0..0.. ║ /dir/ │ ..0..0.. │      │          │
   # └───────────────╨───────┴──────────┴──────┴──────────┘
 
   # wrong paths:
@@ -123,7 +91,7 @@ namespace effcore {
   # │ c:\dir\        ║ should be converted to c:/dir/                      │
   # │ dir\           ║ should be converted to dir/                         │
   # │ \dir\          ║ should be converted to /dir/                        │
-  # │ \\dir\         ║ should be ignored                                   │
+  # │ \\dir\         ║ should be ignored or use function 'realpath' before │
   # │ ~/dir/         ║ should be ignored or use function 'realpath' before │
   # │ ./dir/         ║ should be ignored or use function 'realpath' before │
   # │ ../dir/        ║ should be ignored or use function 'realpath' before │
@@ -340,9 +308,9 @@ namespace effcore {
     }
   }
 
-  static function path_parse($path, $skip_not_file = true) {
-  # each path should not end with '/' and have at least one more character
-    if (strlen($path) === 0 || ($skip_not_file && $path[-1] === '/')) return;
+  static function path_parse($path) {
+  # each path should have at least one more character and not end with '/'
+    if (strlen($path) === 0 || $path[-1] === '/') return;
     $path = rtrim($path, '/');
     $result = new \stdClass;
     $result->dirs = '';
