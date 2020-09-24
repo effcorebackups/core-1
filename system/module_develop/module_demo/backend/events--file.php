@@ -18,8 +18,8 @@ namespace effcore\modules\demo {
     if ($type_info->type === 'demotype') {
       if (access::check((object)['roles' => ['admins' => 'admins']])) {
         $user = user::get_current();
-      # note: be ready to clear the path from './', '../', '~/', '//' and etc
-        $data = 'dirs: '.$file->path_get_relative().nl;
+      # note: be ready to clear the path from './', '../', '~/', '//' and etc (example: "http://example.com/дир/./../~/файл.demotype")
+        $data = 'dirs: '.$file->dirs_get_relative().nl;
         $data.= 'name: '.$file->name.nl;
         $data.= 'type: '.$file->type.nl;
         $data.= 'current user: '.$user->nickname.nl;
