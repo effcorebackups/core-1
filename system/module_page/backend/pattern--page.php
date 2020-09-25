@@ -222,7 +222,7 @@ namespace effcore {
   }
 
   static function init_current() {
-    $path_current = url::get_current()->path_get();
+    $path_current = urldecode(url::get_current()->path_get());
     $page = static::get_by_url($path_current);
     if ($page) {
       if (access::check($page->access)) {
