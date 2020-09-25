@@ -109,12 +109,12 @@ namespace effcore {
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
 
-    if (is_file    ($real_path) &&
-        is_readable($real_path)) {
+    if (is_file    ($file->path_get()) &&
+        is_readable($file->path_get())) {
 
       if (isset($file_types[$file->type]->kind) &&
                 $file_types[$file->type]->kind === 'dynamic') {
-        event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file, &$real_path]);
+        event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file]);
         exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -123,8 +123,8 @@ namespace effcore {
 
       } else {
         if (isset($file_types[$file->type]))
-             event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file, &$real_path]);
-        else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file, &$real_path]);
+             event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file]);
+        else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file]);
         exit();
       }
 
