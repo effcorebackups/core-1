@@ -130,7 +130,7 @@ namespace effcore {
   }
 
   function file_info_get() {
-    return new file(dir_root.urldecode(trim($this->path_get(), '/')));
+    return new file(rtrim(dir_root, '/').urldecode($this->path_get()));
   }
 
   function type_get() {
