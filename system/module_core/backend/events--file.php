@@ -176,8 +176,8 @@ namespace effcore\modules\core {
               if ($result) {
                 $file = $file_thumb;
                 return;
-              } else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'   .$file->type_get()); return;}
-            }   else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$file->type_get()); return;}
+              } else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$file->type_get()); return;}
+            }   else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.   $file->type_get()); return;}
           }
         } else {
         # can not create thumbnail from thumbnail
