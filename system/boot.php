@@ -101,7 +101,7 @@ namespace effcore {
 
     $real_path = realpath($file->path_get());
     if ($real_path !== false && core::server_os_is_windows()) $real_path = str_replace('\\', '/', $real_path);
-    if ($real_path === false || strpos($real_path, dir_root) !== 0) {
+    if ($real_path === false || $real_path !== $file->path_get() || strpos($real_path, dir_root) !== 0) {
       core::send_header_and_exit('file_not_found');
     }
 
