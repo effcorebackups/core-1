@@ -109,28 +109,25 @@ namespace effcore {
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
 
-    if (is_file    ($file->path_get()) &&
-        is_readable($file->path_get())) {
+    if (!is_file    ($file->path_get())) core::send_header_and_exit('file_not_found'  );
+    if (!is_readable($file->path_get())) core::send_header_and_exit('access_forbidden');
 
-      if (isset($file_types[$file->type]->kind) &&
-                $file_types[$file->type]->kind === 'dynamic') {
-        event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file]);
-        exit();
+    if (isset($file_types[$file->type]->kind) &&
+              $file_types[$file->type]->kind === 'dynamic') {
+      event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file]);
+      exit();
 
     # ─────────────────────────────────────────────────────────────────────
     # case for static file
     # ─────────────────────────────────────────────────────────────────────
 
-      } else {
-        if (isset($file_types[$file->type]))
-             event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file]);
-        else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file]);
-        exit();
-      }
-
     } else {
-      core::send_header_and_exit('file_not_found');
+      if (isset($file_types[$file->type]))
+           event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file]);
+      else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file]);
+      exit();
     }
+
   }
 
   #######################
