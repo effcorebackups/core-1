@@ -641,6 +641,13 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
   }
 
+  static function validate_realpath($value) {
+    $value = realpath($value);
+    if ($value !== false && static::server_os_is_windows())
+        $value = str_replace('\\', '/', $value);
+    return $value;
+  }
+
   static function validate_url($value) {
     return filter_var($value, FILTER_VALIDATE_URL);
   }

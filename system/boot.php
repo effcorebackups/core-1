@@ -96,21 +96,19 @@ namespace effcore {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # define real path (breake all './', '../', '~/', '//' and etc)
+    # protecting files from attacks
     # ─────────────────────────────────────────────────────────────────────
 
-    $real_path = realpath($file->path_get());
-    if ($real_path !== false && core::server_os_is_windows()) $real_path = str_replace('\\', '/', $real_path);
-    if ($real_path === false || $real_path !== $file->path_get() || strpos($real_path, dir_root) !== 0) {
-      core::send_header_and_exit('file_not_found');
-    }
+    $real_path = core::validate_realpath($file->path_get());
+    if ($real_path === false)               core::send_header_and_exit('file_not_found');
+    if ($real_path !== $file->path_get())   core::send_header_and_exit('file_not_found');
+    if (strpos($real_path, dir_root) !== 0) core::send_header_and_exit('file_not_found');
+    if (!is_file    ($file->path_get()))    core::send_header_and_exit('file_not_found');
+    if (!is_readable($file->path_get()))    core::send_header_and_exit('access_forbidden');
 
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file
     # ─────────────────────────────────────────────────────────────────────
-
-    if (!is_file    ($file->path_get())) core::send_header_and_exit('file_not_found'  );
-    if (!is_readable($file->path_get())) core::send_header_and_exit('access_forbidden');
 
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'dynamic') {
