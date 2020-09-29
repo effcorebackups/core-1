@@ -24,10 +24,11 @@ namespace effcore {
             $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
             if (is_resource($dst_resource)) {
               $dst_file = new file($dst_path);
-              if ($dst_file->type === 'gif') @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
-              if ($dst_file->type === 'png') @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
-              if ($dst_file->type === 'png') @imagealphablending   ($dst_resource, false);
-              if ($dst_file->type === 'png') @imagesavealpha       ($dst_resource, true);
+              if ($dst_file->type === 'jpg' || # fill with white background for transparency of PNG/GIF $src_resource
+                  $dst_file->type === 'jpeg') @imagefilledrectangle ($dst_resource, 0, 0, $dst_w - 1, $dst_h - 1, imagecolorallocate($dst_resource, 255, 255, 255));
+              if ($dst_file->type === 'gif' ) @imagecolortransparent($dst_resource,                               imagecolorallocate($dst_resource,   0,   0,   0));
+              if ($dst_file->type === 'png' ) @imagealphablending   ($dst_resource, false);
+              if ($dst_file->type === 'png' ) @imagesavealpha       ($dst_resource, true);
               @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
               if ($dst_file->type === 'png'  && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_file->dirs.$dst_file->name.'.png'                );
               if ($dst_file->type === 'jpg'  && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpg',  $jpeg_quality);
