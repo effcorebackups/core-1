@@ -24,7 +24,10 @@ namespace effcore {
             $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
             if (is_resource($dst_resource)) {
               $dst_file = new file($dst_path);
-              @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
+              if ($dst_file->type === 'gif') @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
+              if ($dst_file->type === 'png') @imagecolortransparent($dst_resource, imagecolorallocate($dst_resource, 0, 0, 0));
+              if ($dst_file->type === 'png') @imagealphablending   ($dst_resource, false);
+              if ($dst_file->type === 'png') @imagesavealpha       ($dst_resource, true);
               @imagecopyresampled($dst_resource, $src_resource, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
               if ($dst_file->type === 'png'  && function_exists('imagepng' )) $result = @imagepng ($dst_resource, $dst_file->dirs.$dst_file->name.'.png'                );
               if ($dst_file->type === 'jpg'  && function_exists('imagejpeg')) $result = @imagejpeg($dst_resource, $dst_file->dirs.$dst_file->name.'.jpg',  $jpeg_quality);
