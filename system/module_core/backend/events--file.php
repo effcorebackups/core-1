@@ -154,6 +154,14 @@ namespace effcore\modules\core {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+  # image_transparent-8bit.png.get_thumbnail  → 800x600-transparent-8bit.thumb.png
+  # image_transparent-24bit.png.get_thumbnail → 800x600-transparent-24bit.thumb.png
+  # image_transparent.gif.get_thumbnail       → 800x600-transparent.thumb.gif
+  # image.png.get_thumbnail                   → 800x600.thumb.png
+  # image.gif.get_thumbnail                   → 800x600.thumb.gif
+  # image.jpeg.get_thumbnail                  → 800x600.thumb.jpeg
+  # image.jpg.get_thumbnail                   → 800x600.thumb.jpg
+  # ─────────────────────────────────────────────────────────────────────
 
   const jpeg_quality = 90;
 
