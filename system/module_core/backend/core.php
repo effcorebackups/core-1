@@ -983,16 +983,17 @@ namespace effcore {
       ));
     }
     switch ($type) {
-      case 'redirect'        : header('Location: '.$p); exit();
-      case 'page_refresh'    : header('Refresh: ' .$p); exit();
-      case 'access_forbidden': header('HTTP/1.1 403 Forbidden'); if (!$title) $title = 'Access forbidden'; break;
-      case 'page_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'Page not found';   break;
-      case 'file_not_found'  : header('HTTP/1.0 404 Not Found'); if (!$title) $title = 'File not found';   break;
+      case 'redirect'              : header('Location: '.$p); exit();
+      case 'page_refresh'          : header('Refresh: ' .$p); exit();
+      case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden';       break;
+      case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';         break;
+      case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';         break;
+      case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type'; break;
     }
     if ($type == 'access_forbidden') $template = 'page_access_forbidden';
     if ($type == 'page_not_found'  ) $template = 'page_not_found';
     if ($type == 'file_not_found'  ) $template = 'page_not_found';
-    if (template::get($template)) {
+    if (isset($template) && template::get($template)) {
       if (!$message && core::server_get_request_uri() != '/')
            $message = 'go to <a href="/">front page</a>';
       $colors   = color::get_all();

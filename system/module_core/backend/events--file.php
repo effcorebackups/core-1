@@ -5,10 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use const \effcore\dir_root;
           use const \effcore\dir_system;
           use const \effcore\nl;
           use \effcore\console;
           use \effcore\core;
+          use \effcore\event;
           use \effcore\file;
           use \effcore\locale;
           use \effcore\media;
@@ -155,34 +157,46 @@ namespace effcore\modules\core {
 
   const jpeg_quality = 90;
 
-  static function on_load_static_pictures($event, $type_info, &$file) {
-    if ($type_info->type === 'png' ||
-        $type_info->type === 'gif' ||
-        $type_info->type === 'jpg' ||
-        $type_info->type === 'jpeg') {
-      $thumb_url_arg = url::get_current()->query_arg_select('thumb');
-      if ($thumb_url_arg !== null) {
-        if (substr($file->name_get(), -6) !== '.thumb') {
-          $file_thumb = new file($file->path_get());
-          $file_thumb->name_set($file->name_get().'.thumb');
-          if ($file_thumb->is_exist()) {
-            $file = $file_thumb;
-            return;
-          } else {
-            if (extension_loaded('exif') && extension_loaded('gd')) {
-              $result = media::picture_thumbnail_create(
-                $file      ->path_get(),
-                $file_thumb->path_get(), 100, null, static::jpeg_quality);
-              if ($result) {
-                $file = $file_thumb;
-                return;
-              } else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$file->type_get()); return;}
-            }   else {$file = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.   $file->type_get()); return;}
-          }
+  static function on_load_virtual_get_thumbnail($event, $type_info, &$file) {
+    if ($type_info->type === 'get_thumbnail') {
+      $picture = new file($file->dirs_get().$file->name_get());
+      $real_path = core::validate_realpath($picture->path_get());
+      if ($real_path === false)                core::send_header_and_exit('file_not_found');
+      if ($real_path !== $picture->path_get()) core::send_header_and_exit('file_not_found');
+      if (strpos($real_path, dir_root) !== 0)  core::send_header_and_exit('file_not_found');
+      if (!is_file    ($picture->path_get()))  core::send_header_and_exit('file_not_found');
+      if (!is_readable($picture->path_get()))  core::send_header_and_exit('access_forbidden');
+      if ($picture->type_get() === 'png' ||
+          $picture->type_get() === 'gif' ||
+          $picture->type_get() === 'jpg' ||
+          $picture->type_get() === 'jpeg') {
+        $thumbnail = new file($picture->path_get());
+        $thumbnail->name_set ($picture->name_get().'.thumb');
+        $file_types = file::types_get();
+        if ($thumbnail->is_exist()) {
+          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+          exit();
         } else {
-        # can not create thumbnail from thumbnail
-          core::send_header_and_exit('file_not_found');
+          if (extension_loaded('exif') && extension_loaded('gd')) {
+            $result = media::picture_thumbnail_create(
+              $picture  ->path_get(),
+              $thumbnail->path_get(), 100, null, static::jpeg_quality);
+            if ($result) {
+              event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+              exit();
+            } else {
+              $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$picture->type_get());
+              event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+              exit();
+            }
+          } else {
+            $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$picture->type_get());
+            event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+            exit();
+          }
         }
+      } else {
+        core::send_header_and_exit('unsupported_media_type');
       }
     }
   }
