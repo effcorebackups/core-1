@@ -178,19 +178,12 @@ namespace effcore\modules\core {
           exit();
         } else {
           if (extension_loaded('exif') && extension_loaded('gd')) {
-            $result = media::picture_thumbnail_create(
-              $picture  ->path_get(),
-              $thumbnail->path_get(), 100, null, static::jpeg_quality);
-            if ($result) {
-              event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-              exit();
-            } else {
-              $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$picture->type_get());
-              event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-              exit();
-            }
+            $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 100, null, static::jpeg_quality);
+            if (!$result) $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$thumbnail->type_get());
+            event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+            exit();
           } else {
-            $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$picture->type_get());
+            $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$thumbnail->type_get());
             event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
             exit();
           }
