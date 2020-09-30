@@ -61,15 +61,15 @@ namespace effcore {
 
   static function structure_autoload($name) {
     $name = strtolower($name);
-    if ($name == 'effcore\\timer'              ) {require_once(dir_system.'module_core/backend/timer.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/timer.php',                           'ok'); return;}
-    if ($name == 'effcore\\cache'              ) {require_once(dir_system.'module_core/backend/cache.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/cache.php',                           'ok'); return;}
-    if ($name == 'effcore\\dynamic'            ) {require_once(dir_system.'module_core/backend/dynamic.php'                        ); console::log_insert('file', 'insertion', 'system/module_core/backend/dynamic.php',                         'ok'); return;}
-    if ($name == 'effcore\\file'               ) {require_once(dir_system.'module_core/backend/file.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/file.php',                            'ok'); return;}
-    if ($name == 'effcore\\storage_nosql_files') {require_once(dir_system.'module_storage/backend/pattern--storage_nosql_files.php'); console::log_insert('file', 'insertion', 'system/module_storage/backend/pattern--storage_nosql_files.php', 'ok'); return;}
-    if ($name == 'effcore\\module_embedded'    ) {require_once(dir_system.'module_core/backend/pattern--module_embedded.php'       ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_embedded.php',        'ok'); return;}
-    if ($name == 'effcore\\module'             ) {require_once(dir_system.'module_core/backend/pattern--module.php'                ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module.php',                 'ok'); return;}
-    if ($name == 'effcore\\module_as_profile'  ) {require_once(dir_system.'module_core/backend/pattern--module_as_profile.php'     ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_as_profile.php',      'ok'); return;}
-    if ($name == 'effcore\\data'               ) {require_once(dir_system.'module_core/backend/data.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/data.php',                            'ok'); return;}
+    if ($name === 'effcore\\timer'              ) {require_once(dir_system.'module_core/backend/timer.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/timer.php',                           'ok'); return;}
+    if ($name === 'effcore\\cache'              ) {require_once(dir_system.'module_core/backend/cache.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/cache.php',                           'ok'); return;}
+    if ($name === 'effcore\\dynamic'            ) {require_once(dir_system.'module_core/backend/dynamic.php'                        ); console::log_insert('file', 'insertion', 'system/module_core/backend/dynamic.php',                         'ok'); return;}
+    if ($name === 'effcore\\file'               ) {require_once(dir_system.'module_core/backend/file.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/file.php',                            'ok'); return;}
+    if ($name === 'effcore\\storage_nosql_files') {require_once(dir_system.'module_storage/backend/pattern--storage_nosql_files.php'); console::log_insert('file', 'insertion', 'system/module_storage/backend/pattern--storage_nosql_files.php', 'ok'); return;}
+    if ($name === 'effcore\\module_embedded'    ) {require_once(dir_system.'module_core/backend/pattern--module_embedded.php'       ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_embedded.php',        'ok'); return;}
+    if ($name === 'effcore\\module'             ) {require_once(dir_system.'module_core/backend/pattern--module.php'                ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module.php',                 'ok'); return;}
+    if ($name === 'effcore\\module_as_profile'  ) {require_once(dir_system.'module_core/backend/pattern--module_as_profile.php'     ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_as_profile.php',      'ok'); return;}
+    if ($name === 'effcore\\data'               ) {require_once(dir_system.'module_core/backend/data.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/data.php',                            'ok'); return;}
     console::log_insert('autoload', 'search', $name, 'ok');
     if (isset(static::structures_select()[$name])) {
       $c_item_info = static::structures_select()[$name];
@@ -660,14 +660,23 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
+  static function sanitize_url_utf8($value) {
+    return preg_replace_callback('%(?<char>[\p{Ll}\p{Lt}\p{Lu}\p{Lo}])%uS', function ($c_match) {
+      if (strlen($c_match['char']) === 1) return                           $c_match['char'][0];
+      if (strlen($c_match['char']) === 2) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1])));
+      if (strlen($c_match['char']) === 3) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2])));
+      if (strlen($c_match['char']) === 4) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2]))).'%'.strtoupper(dechex(ord($c_match['char'][3])));
+    }, $value);
+  }
+
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
     $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function ($c_match) {
-      if ($c_match['char'] == ' ') return '-';
-      if (strlen($c_match['char']) == 1) return dechex(ord($c_match['char'][0]));
-      if (strlen($c_match['char']) == 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));
-      if (strlen($c_match['char']) == 3) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2]));
-      if (strlen($c_match['char']) == 4) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2])).dechex(ord($c_match['char'][3]));
+      if ($c_match['char'] === ' ') return '-';
+      if (strlen($c_match['char']) === 1) return dechex(ord($c_match['char'][0]));
+      if (strlen($c_match['char']) === 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));
+      if (strlen($c_match['char']) === 3) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2]));
+      if (strlen($c_match['char']) === 4) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2])).dechex(ord($c_match['char'][3]));
     }, $value);
     $value = substr($value, 0, $max_length);
     return $value;
@@ -990,9 +999,9 @@ namespace effcore {
       case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';         break;
       case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type'; break;
     }
-    if ($type == 'access_forbidden') $template = 'page_access_forbidden';
-    if ($type == 'page_not_found'  ) $template = 'page_not_found';
-    if ($type == 'file_not_found'  ) $template = 'page_not_found';
+    if ($type === 'access_forbidden') $template = 'page_access_forbidden';
+    if ($type === 'page_not_found'  ) $template = 'page_not_found';
+    if ($type === 'file_not_found'  ) $template = 'page_not_found';
     if (isset($template) && template::get($template)) {
       if (!$message && core::server_get_request_uri() != '/')
            $message = 'go to <a href="/">front page</a>';
