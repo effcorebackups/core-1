@@ -444,10 +444,12 @@ translations
     - Permission\: select: Дазваленне: абраць
     - Permission\: update: Дазваленне: абнавіць
     - Permissions: Дазваленні
+    - PHP CURL version: PHP CURL версія
     - PHP dependencies: PHP-залежнасці
     - PHP Exif is enabled: PHP Exif уключаны
     - PHP GD is enabled: PHP GD уключаны
     - PHP OPCache is enabled: PHP OPCache уключаны
+    - PHP PCRE version: PHP PCRE версія
     - PHP version: PHP версія
     - Picture: Малюнак
     - Picture\: delete: Малюнак: выдаліць

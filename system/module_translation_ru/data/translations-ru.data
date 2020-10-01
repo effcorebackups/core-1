@@ -444,10 +444,12 @@ translations
     - Permission\: select: Разрешение: выбрать
     - Permission\: update: Разрешение: обновить
     - Permissions: Разрешения
+    - PHP CURL version: PHP CURL версия
     - PHP dependencies: PHP-зависимости
     - PHP Exif is enabled: PHP Exif включён
     - PHP GD is enabled: PHP GD включён
     - PHP OPCache is enabled: PHP OPCache включён
+    - PHP PCRE version: PHP PCRE версия
     - PHP version: PHP версия
     - Picture: Изображение
     - Picture\: delete: Изображение: удалить
