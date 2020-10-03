@@ -134,7 +134,7 @@ namespace effcore {
   }
 
   function type_get() {
-    return ltrim(strtolower(strrchr($this->path, '.')), '.');
+    return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
   }
 
   function protocol_get() {return $this->protocol;}
@@ -145,28 +145,28 @@ namespace effcore {
 
   function tiny_get() {
     if (!$this->has_error) {
-      $result = $this->path;
-      if ($this->query ) $result.= '?'.$this->query;
-      if ($this->anchor) $result.= '#'.$this->anchor;
+      $result = $this->path_get();
+      if ($this->query_get ()) $result.= '?'.$this->query_get ();
+      if ($this->anchor_get()) $result.= '#'.$this->anchor_get();
       return $result;
     }
   }
 
   function full_get() {
     if (!$this->has_error) {
-      $result = $this->protocol.'://'.$this->domain.$this->path;
-      if ($this->query ) $result.= '?'.$this->query;
-      if ($this->anchor) $result.= '#'.$this->anchor;
+      $result = $this->protocol_get().'://'.$this->domain_get().$this->path_get();
+      if ($this->query_get ()) $result.= '?'.$this->query_get ();
+      if ($this->anchor_get()) $result.= '#'.$this->anchor_get();
       return rtrim($result, '/');
     }
   }
 
-  function query_arg_select($name)         {$args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                         }
-  function query_arg_insert($name, $value) {$args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args);}
-  function query_arg_delete($name)         {$args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args);}
+  function query_arg_select($name)         {$args = []; parse_str($this->query_get(), $args); return $args[$name] ?? null;                                         }
+  function query_arg_insert($name, $value) {$args = []; parse_str($this->query_get(), $args);        $args[$name] = $value; $this->query = http_build_query($args);}
+  function query_arg_delete($name)         {$args = []; parse_str($this->query_get(), $args);  unset($args[$name]);         $this->query = http_build_query($args);}
 
   function path_arg_select($name) {
-    $args = explode('/', $this->path);
+    $args = explode('/', $this->path_get());
     return $args[$name] ?? null;
   }
 
@@ -205,7 +205,7 @@ namespace effcore {
   }
 
   static function is_local($url) {
-    return (new static($url))->domain === core::server_get_host();
+    return (new static($url))->domain_get() === core::server_get_host();
   }
 
   static function is_active($url, $compare_type = 'full') {

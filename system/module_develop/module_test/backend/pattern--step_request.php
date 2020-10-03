@@ -49,7 +49,7 @@ namespace effcore {
     $is_https = $this->is_https instanceof param_from_form ?
                 $this->is_https->get() :
                 $this->is_https;
-    return ($is_https ? 'https' : 'http').'://'.url::get_current()->domain.$this->url;
+    return ($is_https ? 'https' : 'http').'://'.url::get_current()->domain_get().$this->url;
   }
 
   function prepared_headers_get() {
