@@ -8,22 +8,22 @@ namespace effcore {
           abstract class console {
 
   const directory = dir_dynamic.'logs/';
-  const visible_for_nobody   = 0;
-  const visible_for_admin    = 1;
-  const visible_for_everyone = 2;
+  const is_visible_for_nobody   = 0b00;
+  const is_visible_for_admin    = 0b01;
+  const is_visible_for_everyone = 0b10;
 
   static protected $data = [];
   static protected $is_init = false;
-  static protected $visible_mode = self::visible_for_nobody;
+  static protected $visible_mode = self::is_visible_for_nobody;
 
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
-      static::$visible_mode = static::visible_for_nobody;
+      static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
-        if ($settings->console_visibility === static::visible_for_everyone                                                           ) {static::$visible_mode = static::visible_for_everyone; return;}
-        if ($settings->console_visibility === static::visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::visible_for_admin;    return;}
+        if ($settings->console_visibility === static::is_visible_for_everyone                                                           ) {static::$visible_mode = static::is_visible_for_everyone; return;}
+        if ($settings->console_visibility === static::is_visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::is_visible_for_admin;    return;}
       }
     }
   }

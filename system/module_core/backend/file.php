@@ -110,7 +110,7 @@ namespace effcore {
   # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
-  const scan_mode     = fs_iterator::UNIX_PATHS | fs_iterator::SKIP_DOTS;
+  const scan_mode     = fs_iterator::UNIX_PATHS|fs_iterator::SKIP_DOTS;
   const scan_with_dir = ri_iterator::SELF_FIRST;
 
   public $dirs;

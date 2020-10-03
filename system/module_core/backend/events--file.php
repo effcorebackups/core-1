@@ -42,7 +42,7 @@ namespace effcore\modules\core {
     }
     if ($file->type === 'cssd' ||
         $file->type === 'jsd') {
-      if (console::visible_mode_get() === console::visible_for_everyone) {
+      if (console::visible_mode_get() === console::is_visible_for_everyone) {
         $result.= nl.'/*'.nl.console::text_get().nl.'*/'.nl;
       }
     }

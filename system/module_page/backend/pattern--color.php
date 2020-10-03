@@ -7,9 +7,9 @@
 namespace effcore {
           class color {
 
-  const return_hex = 0;
-  const return_rgb = 1;
-  const return_rga = 2;
+  const return_hex = 0b00;
+  const return_rgb = 0b01;
+  const return_rga = 0b10;
 
   public $id;
   public $value;

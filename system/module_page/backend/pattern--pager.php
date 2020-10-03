@@ -7,11 +7,11 @@
 namespace effcore {
           class pager extends markup {
 
-  const ERR_CODE_OK            = 0x0;
-  const ERR_CODE_INVALID_VALUE = 0x1;
-  const ERR_CODE_MIN_GT_MAX    = 0x2;
-  const ERR_CODE_CUR_LT_MIN    = 0x4;
-  const ERR_CODE_CUR_GT_MAX    = 0x8;
+  const ERR_CODE_OK            = 0b0000;
+  const ERR_CODE_INVALID_VALUE = 0b0001;
+  const ERR_CODE_MIN_GT_MAX    = 0b0010;
+  const ERR_CODE_CUR_LT_MIN    = 0b0100;
+  const ERR_CODE_CUR_GT_MAX    = 0b1000;
 
   public $tag_name = 'nav';
   public $attributes = ['aria-label' => 'pager'];

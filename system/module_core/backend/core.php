@@ -1006,7 +1006,7 @@ namespace effcore {
         'color_text'        => isset($colors[$settings->color_text_id       ]) ? $colors[$settings->color_text_id       ]->value : '',
         'color_link'        => isset($colors[$settings->color_link_id       ]) ? $colors[$settings->color_link_id       ]->value : '',
         'color_link_active' => isset($colors[$settings->color_link_active_id]) ? $colors[$settings->color_link_active_id]->value : '',
-        'console'           => console::visible_mode_get() === console::visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : ''
+        'console'           => console::visible_mode_get() === console::is_visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : ''
       ]))->render();
     }
     exit();
