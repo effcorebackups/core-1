@@ -660,15 +660,6 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_url_utf8($value) {
-    return preg_replace_callback('%(?<char>[\p{Ll}\p{Lt}\p{Lu}\p{Lo}])%uS', function ($c_match) {
-      if (strlen($c_match['char']) === 1) return                           $c_match['char'][0];
-      if (strlen($c_match['char']) === 2) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1])));
-      if (strlen($c_match['char']) === 3) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2])));
-      if (strlen($c_match['char']) === 4) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2]))).'%'.strtoupper(dechex(ord($c_match['char'][3])));
-    }, $value);
-  }
-
   static function sanitize_file_part($value, $allowed_characters, $max_length) {
     $value = trim($value, '.');
     $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function ($c_match) {
@@ -900,7 +891,8 @@ namespace effcore {
   }
 
   static function server_get_request_uri() {
-    return static::sanitize_url($_SERVER['REQUEST_URI']);
+    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return static::sanitize_url($_SERVER['HTTP_X_ORIGINAL_URL']);
+    else                                         return static::sanitize_url($_SERVER[    'REQUEST_URI'    ]);
   }
 
   static function server_get_user_agent($max_length = 240) {
@@ -1002,7 +994,7 @@ namespace effcore {
     if ($type === 'page_not_found'  ) $template = 'page_not_found';
     if ($type === 'file_not_found'  ) $template = 'page_not_found';
     if (isset($template) && template::get($template)) {
-      if (!$message && core::server_get_request_uri() != '/')
+      if (!$message && core::server_get_request_uri() !== '/')
            $message = 'go to <a href="/">front page</a>';
       $colors   = color::get_all();
       $settings = module::settings_get('page');

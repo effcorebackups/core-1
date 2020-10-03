@@ -181,9 +181,8 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$cache === null) {
-      static::$cache = new static(core::server_get_request_uri());
-    }
+    if (static::$cache === null)
+        static::$cache = new static(core::server_get_request_uri());
   }
 
   static function get_current() {
@@ -206,7 +205,7 @@ namespace effcore {
   }
 
   static function is_local($url) {
-    return (new static($url))->domain == core::server_get_host();
+    return (new static($url))->domain === core::server_get_host();
   }
 
   static function is_active($url, $compare_type = 'full') {
@@ -225,6 +224,15 @@ namespace effcore {
     $current_url =     static::get_current();
     return strpos($current_url->full_get().'/',
                   $checked_url->full_get().'/') === 0;
+  }
+
+  static function url_utf8_encode($value, $range = '\p{Ll}\p{Lt}\p{Lu}\p{Lo}') {
+    return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) {
+      if (strlen($c_match['char']) === 1) return                           $c_match['char'][0];
+      if (strlen($c_match['char']) === 2) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1])));
+      if (strlen($c_match['char']) === 3) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2])));
+      if (strlen($c_match['char']) === 4) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2]))).'%'.strtoupper(dechex(ord($c_match['char'][3])));
+    }, $value);
   }
 
   static function go($url) {
