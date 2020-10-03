@@ -226,12 +226,12 @@ namespace effcore {
                   $checked_url->full_get().'/') === 0;
   }
 
-  static function url_utf8_encode($value, $range = '\p{Ll}\p{Lt}\p{Lu}\p{Lo}') {
-    return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) {
-      if (strlen($c_match['char']) === 1) return                           $c_match['char'][0];
-      if (strlen($c_match['char']) === 2) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1])));
-      if (strlen($c_match['char']) === 3) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2])));
-      if (strlen($c_match['char']) === 4) return '%'.strtoupper(dechex(ord($c_match['char'][0]))).'%'.strtoupper(dechex(ord($c_match['char'][1]))).'%'.strtoupper(dechex(ord($c_match['char'][2]))).'%'.strtoupper(dechex(ord($c_match['char'][3])));
+  static function utf8_encode($value, $prefix = '%', $range = '\p{Ll}\p{Lt}\p{Lu}\p{Lo}') {
+    return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
+      if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
+      if (strlen($c_match['char']) === 2) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1])));
+      if (strlen($c_match['char']) === 3) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1]))).$prefix.strtoupper(dechex(ord($c_match['char'][2])));
+      if (strlen($c_match['char']) === 4) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1]))).$prefix.strtoupper(dechex(ord($c_match['char'][2]))).$prefix.strtoupper(dechex(ord($c_match['char'][3])));
     }, $value);
   }
 
