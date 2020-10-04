@@ -884,9 +884,9 @@ namespace effcore {
     else return             $_SERVER['HTTP_HOST'];
   }
 
-  static function server_get_request_uri($sanitize = true) {
-    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $sanitize ? static::sanitize_url($_SERVER['HTTP_X_ORIGINAL_URL']) : $_SERVER['HTTP_X_ORIGINAL_URL'];
-    else                                         return $sanitize ? static::sanitize_url($_SERVER[    'REQUEST_URI'    ]) : $_SERVER[    'REQUEST_URI'    ];
+  static function server_get_request_uri() {
+    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['HTTP_X_ORIGINAL_URL'];
+    else                                         return $_SERVER[    'REQUEST_URI'    ];
   }
 
   static function server_get_addr() {

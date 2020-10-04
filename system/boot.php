@@ -40,7 +40,7 @@ namespace effcore {
 
   $raw_url = core::server_get_request_scheme().'://'.
              core::server_get_host().
-             core::server_get_request_uri(false);
+             core::server_get_request_uri();
   if ($raw_url !== core::sanitize_url($raw_url) || url::get_current()->has_error === true) {
     core::send_header_and_exit('bad_request');
   }
