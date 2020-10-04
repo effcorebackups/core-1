@@ -34,9 +34,16 @@ namespace effcore {
   console::log_insert('file', 'insertion', 'system/module_core/backend/console.php',    'ok');
   timer::tap('total');
 
-  #######################
-  ### return the file ###
-  #######################
+  # ─────────────────────────────────────────────────────────────────────
+  # preventing invalid requests (for example: "http://домен/путь?запрос" instead "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81")
+  # ─────────────────────────────────────────────────────────────────────
+
+  $raw_url = core::server_get_request_scheme().'://'.
+             core::server_get_host().
+             core::server_get_request_uri(false);
+  if ($raw_url !== core::sanitize_url($raw_url) || url::get_current()->has_error === true) {
+    core::send_header_and_exit('bad_request');
+  }
 
   # note:
   # ═══════════════════╦════════════════════════════════════════════════════════════════════
@@ -55,6 +62,10 @@ namespace effcore {
     url::go($new_url === '' ? '/' :
             $new_url);
   }
+
+  #######################
+  ### return the file ###
+  #######################
 
   $file = url::get_current()->file_info_get();
   if ($file instanceof file && strlen($file->type)) {

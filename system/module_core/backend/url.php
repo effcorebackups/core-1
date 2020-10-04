@@ -92,6 +92,9 @@ namespace effcore {
   # │ n │ protocol +  domain +  path +  query +  anchor │
   # └───┴───────────────────────────────────────────────┘
 
+  const is_decode_domain = 0b01;
+  const is_decode_path   = 0b10;
+
   public $protocol;
   public $domain;
   public $path;
@@ -99,13 +102,13 @@ namespace effcore {
   public $anchor;
   public $has_error;
 
-  function __construct($url) {
+  function __construct($url, $decode = self::is_decode_path) {
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
                     '(?<domain>[a-z0-9\\-\\.\\]\\[:@]{2,200}|)'.
                     '(?<path>[^?#]*)'.
               '(?:\\?(?<query>[^#]*)|)'.
-              '(?:\\#(?<anchor>.*)|)$%S', core::sanitize_url($url), $matches);
+              '(?:\\#(?<anchor>.*)|)$%S', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
@@ -121,16 +124,18 @@ namespace effcore {
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # m
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ) { # n
       $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
-      $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host());
+      $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host(false));
       $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
       $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
       $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
+      if ($decode & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
+      if ($decode & static::is_decode_path) $this->path = urldecode($this->path);
            $this->has_error = false;
     } else $this->has_error = true;
   }
 
   function file_info_get() {
-    return new file(rtrim(dir_root, '/').urldecode($this->path_get()));
+    return new file(rtrim(dir_root, '/').$this->path_get());
   }
 
   function type_get() {

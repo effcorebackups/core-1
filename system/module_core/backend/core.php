@@ -878,8 +878,15 @@ namespace effcore {
     return 'http';
   }
 
-  static function server_get_host() {
-    return $_SERVER['HTTP_HOST'];
+  static function server_get_host($decode = false) {
+    if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST']))
+         return idn_to_utf8($_SERVER['HTTP_HOST']);
+    else return             $_SERVER['HTTP_HOST'];
+  }
+
+  static function server_get_request_uri($sanitize = true) {
+    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $sanitize ? static::sanitize_url($_SERVER['HTTP_X_ORIGINAL_URL']) : $_SERVER['HTTP_X_ORIGINAL_URL'];
+    else                                         return $sanitize ? static::sanitize_url($_SERVER[    'REQUEST_URI'    ]) : $_SERVER[    'REQUEST_URI'    ];
   }
 
   static function server_get_addr() {
@@ -888,11 +895,6 @@ namespace effcore {
 
   static function server_get_addr_remote() {
     return $_SERVER['REMOTE_ADDR'];
-  }
-
-  static function server_get_request_uri() {
-    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return static::sanitize_url($_SERVER['HTTP_X_ORIGINAL_URL']);
-    else                                         return static::sanitize_url($_SERVER[    'REQUEST_URI'    ]);
   }
 
   static function server_get_user_agent($max_length = 240) {
@@ -985,6 +987,7 @@ namespace effcore {
     switch ($type) {
       case 'redirect'              : header('Location: '.$p); exit();
       case 'page_refresh'          : header('Refresh: ' .$p); exit();
+      case 'bad_request'           : header('HTTP/1.1 400 Bad Request'           ); if (!$title) $title = 'Bad Request';            break;
       case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden';       break;
       case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';         break;
       case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';         break;
