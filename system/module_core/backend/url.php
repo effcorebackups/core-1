@@ -105,7 +105,7 @@ namespace effcore {
   function __construct($url, $decode = self::is_decode_path) {
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
-                    '(?<domain>[a-z0-9\\-\\.\\]\\[:@]{2,200}|)'.
+                    '(?<domain>[^/?#]{2,200}|)'.
                     '(?<path>[^?#]*)'.
               '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%S', $url, $matches);
