@@ -13,6 +13,7 @@ namespace effcore\modules\test {
           use \effcore\test;
           use \effcore\text_multiline;
           use \effcore\text;
+          use \effcore\timer;
           abstract class events_form_test {
 
   static function on_init($event, $form, $items) {
@@ -43,10 +44,12 @@ namespace effcore\modules\test {
         $id = page::get_current()->args_get('id');
         $test = test::get($id);
         if ($test) {
+          timer::tap('test_total');
           $test_result = $test->run();
+          timer::tap('test_total');
         # show message
           if (!empty($test_result['return']))
-               message::insert('The test was successful.'     );
+               message::insert(new text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => timer::period_get('test_total', -1, -2)]));
           else message::insert('The test was failed!', 'error');
         # make report
           if (!empty($test_result['reports'])) {

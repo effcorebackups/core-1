@@ -197,6 +197,7 @@ translations
     - This description is shown on top.: Это описание показано сверху.
     - Total generation time: Общее время генерации
     - Total load: Общая загрузка
+    - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - UML Diagram: UML-диаграмма
