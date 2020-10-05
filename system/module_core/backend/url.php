@@ -106,6 +106,7 @@ namespace effcore {
   const is_decode_domain = 0b01;
   const is_decode_path   = 0b10;
 
+  public $raw;
   public $protocol;
   public $domain;
   public $path;
@@ -114,6 +115,7 @@ namespace effcore {
   public $has_error;
 
   function __construct($url, $decode = self::is_decode_path) {
+    $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
                     '(?<domain>[0-9[:alpha:]\\-\\.:@]{2,200}|)'.
@@ -174,8 +176,10 @@ namespace effcore {
   function query_arg_delete($name)         {$args = []; parse_str($this->query_get(), $args);  unset($args[$name]);         $this->query = http_build_query($args);}
 
   function path_arg_select($name) {
-    $args = explode('/', $this->path_get());
-    return $args[$name] ?? null;
+    if (!$this->has_error) {
+      $args = explode('/', $this->path_get());
+      return $args[$name] ?? null;
+    }
   }
 
   function file_info_get() {
