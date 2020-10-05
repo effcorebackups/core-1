@@ -657,6 +657,7 @@ namespace effcore {
   }
 
   static function sanitize_url($value) {
+  # remove all characters except: abcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 

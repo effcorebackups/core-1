@@ -309,7 +309,6 @@ namespace effcore {
   static function path_parse($path) {
   # each path should have at least one more character and not end with '/'
     if (strlen($path) === 0 || $path[-1] === '/') return;
-    $path = rtrim($path, '/');
     $result = new \stdClass;
     $result->dirs = '';
     $result->name = '';
