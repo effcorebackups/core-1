@@ -172,7 +172,9 @@ namespace effcore {
   }
 
   function file_type_get() {
-    return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
+    if (!$this->has_error) {
+      return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
+    }
   }
 
   ###########################
