@@ -134,14 +134,6 @@ namespace effcore {
     } else $this->has_error = true;
   }
 
-  function file_info_get() {
-    return new file(rtrim(dir_root, '/').$this->path_get());
-  }
-
-  function type_get() {
-    return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
-  }
-
   function protocol_get() {return $this->protocol;}
   function domain_get  () {return $this->domain;  }
   function path_get    () {return $this->path;    }
@@ -173,6 +165,14 @@ namespace effcore {
   function path_arg_select($name) {
     $args = explode('/', $this->path_get());
     return $args[$name] ?? null;
+  }
+
+  function file_info_get() {
+    return new file(rtrim(dir_root, '/').$this->path_get());
+  }
+
+  function file_type_get() {
+    return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
   }
 
   ###########################

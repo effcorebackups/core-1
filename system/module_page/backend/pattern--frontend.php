@@ -106,13 +106,13 @@ namespace effcore {
   }
 
   static function is_visible_by_url($display) {
-    return ($display->check === 'url' && $display->where === 'protocol' && preg_match($display->match, url::get_current()->protocol_get())) ||
-           ($display->check === 'url' && $display->where === 'domain'   && preg_match($display->match, url::get_current()->domain_get  ())) ||
-           ($display->check === 'url' && $display->where === 'path'     && preg_match($display->match, url::get_current()->path_get    ())) ||
-           ($display->check === 'url' && $display->where === 'query'    && preg_match($display->match, url::get_current()->query_get   ())) ||
-           ($display->check === 'url' && $display->where === 'anchor'   && preg_match($display->match, url::get_current()->anchor_get  ())) ||
-           ($display->check === 'url' && $display->where === 'type'     && preg_match($display->match, url::get_current()->type_get    ())) ||
-           ($display->check === 'url' && $display->where === 'full'     && preg_match($display->match, url::get_current()->full_get    ()));
+    return ($display->check === 'url' && $display->where === 'protocol'  && preg_match($display->match, url::get_current()->protocol_get ())) ||
+           ($display->check === 'url' && $display->where === 'domain'    && preg_match($display->match, url::get_current()->domain_get   ())) ||
+           ($display->check === 'url' && $display->where === 'path'      && preg_match($display->match, url::get_current()->path_get     ())) ||
+           ($display->check === 'url' && $display->where === 'query'     && preg_match($display->match, url::get_current()->query_get    ())) ||
+           ($display->check === 'url' && $display->where === 'anchor'    && preg_match($display->match, url::get_current()->anchor_get   ())) ||
+           ($display->check === 'url' && $display->where === 'file_type' && preg_match($display->match, url::get_current()->file_type_get())) ||
+           ($display->check === 'url' && $display->where === 'full'      && preg_match($display->match, url::get_current()->full_get     ()));
   }
 
 }}
