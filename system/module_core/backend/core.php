@@ -648,8 +648,8 @@ namespace effcore {
     return $value;
   }
 
-  static function validate_url($value) {
-    return filter_var($value, FILTER_VALIDATE_URL);
+  static function validate_url($value, $flags = null) {
+    return filter_var($value, FILTER_VALIDATE_URL, $flags);
   }
 
   static function sanitize_id($value, $corrector = '-') {
