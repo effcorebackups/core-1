@@ -168,7 +168,9 @@ namespace effcore {
   }
 
   function file_info_get() {
-    return new file(rtrim(dir_root, '/').$this->path_get());
+    if (!$this->has_error) {
+      return new file(rtrim(dir_root, '/').$this->path_get());
+    }
   }
 
   function file_type_get() {
