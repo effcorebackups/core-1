@@ -56,6 +56,17 @@ namespace effcore {
   # 2. anchor is not sent through the browser
   # ────────────────────────────────────────────────────────────────────────────────────────────
 
+  # PCRE note:
+  # ═══╦════════════════════════════════════════════════════════════════════
+  # L  ║ Letter (Includes the following properties: Ll, Lm, Lo, Lt and Lu.)
+  # Ll ║ Lower case letter
+  # Lm ║ Modifier letter
+  # Lo ║ Other letter
+  # Lt ║ Title case letter
+  # Lu ║ Upper case letter
+  # ───╨────────────────────────────────────────────────────────────────────
+  # p.s.: \\p{L} === \\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu} === [:alpha:]
+
   # matrix check:
   # ┌───┬───────────────────────────────────────────────┐
   # │ a │                       path                    │
@@ -105,10 +116,10 @@ namespace effcore {
   function __construct($url, $decode = self::is_decode_path) {
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
-                    '(?<domain>[^/?#]{2,200}|)'.
+                    '(?<domain>[0-9[:alpha:]\\-\\.:@]{2,200}|)'.
                     '(?<path>[^?#]*)'.
               '(?:\\?(?<query>[^#]*)|)'.
-              '(?:\\#(?<anchor>.*)|)$%S', $url, $matches);
+              '(?:\\#(?<anchor>.*)|)$%uS', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
@@ -235,7 +246,7 @@ namespace effcore {
                   $checked_url->full_get().'/') === 0;
   }
 
-  static function utf8_encode($value, $prefix = '%', $range = '\p{Ll}\p{Lt}\p{Lu}\p{Lo}') {
+  static function utf8_encode($value, $prefix = '%', $range = '[:alpha:]') {
     return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
       if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
       if (strlen($c_match['char']) === 2) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1])));
