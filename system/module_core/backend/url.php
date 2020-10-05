@@ -250,7 +250,7 @@ namespace effcore {
                   $checked_url->full_get().'/') === 0;
   }
 
-  static function utf8_encode($value, $prefix = '%', $range = '[:alpha:]') {
+  static function utf8_encode($value, $prefix = '', $range = '[:alpha:]') {
     return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
       if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
       if (strlen($c_match['char']) === 2) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1])));

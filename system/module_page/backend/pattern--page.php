@@ -105,12 +105,12 @@ namespace effcore {
     $template = template::make_new($this->template);
 
     $html = $template->target_get('html');
-    if (true             ) $html->attribute_insert('lang',                      $this->lang_code ?: language::code_get_current()                         );
-    if (true             ) $html->attribute_insert('dir',                       $this->text_direction                                                    );
-    if (true             ) $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'                                      );
-    if (true             ) $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'), '0x')) );
-    if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version)                   );
-    if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version)                   );
+    if (true             ) $html->attribute_insert('lang',                      $this->lang_code ?: language::code_get_current()                   );
+    if (true             ) $html->attribute_insert('dir',                       $this->text_direction                                              );
+    if (true             ) $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'                                );
+    if (true             ) $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'))) );
+    if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version)             );
+    if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version)             );
     $head_title_text = $template->target_get('head_title_text', true);
     $head_title_text->text = $this->title;
 
