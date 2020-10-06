@@ -284,7 +284,7 @@ entities
     - url
         title: URL
         type: varchar
-        size: 2048
+        size: 2047
         collate: nocase
         default: null
         managing_on_select_multiple_is_enabled: true
@@ -296,7 +296,7 @@ entities
         - weight: +300
         managing_control_element_attributes
         - required: null
-        - maxlength: 2048
+        - maxlength: 2047
     - link_attributes
         title: Link attributes
         type: blob

@@ -412,6 +412,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +340
+        managing_control_element_attributes
+        - maxlength: 255
         selection_params_default
         - weight: +340
     - is_https
@@ -707,6 +709,7 @@ entities
         - weight: +300
         managing_control_element_attributes
         - required: null
+        - maxlength: 255
         selection_params_default
         - weight: +300
     - created

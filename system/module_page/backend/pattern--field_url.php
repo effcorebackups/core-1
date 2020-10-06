@@ -14,7 +14,7 @@ namespace effcore {
     'name'      => 'url',
     'required'  => true,
     'minlength' => 1,
-    'maxlength' => 255
+    'maxlength' => 2047
   ];
 
   ###########################
