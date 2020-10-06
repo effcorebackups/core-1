@@ -65,7 +65,9 @@ namespace effcore {
   # Lt ║ Title case letter
   # Lu ║ Upper case letter
   # ───╨────────────────────────────────────────────────────────────────────
-  # p.s.: \\p{L} === \\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu} === [:alpha:]
+  # utf8 letters: [:alpha:] === \\p{L} === \\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}
+  # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
+  # officially allowed characters ACSII range: \\x21-\\x7e
 
   # matrix check:
   # ┌───┬───────────────────────────────────────────────┐
@@ -118,11 +120,11 @@ namespace effcore {
   function __construct($url, $decode = self::is_decode_path) {
     $this->raw = $url;
     $matches = [];
-    preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
-                    '(?<domain>[0-9[:alpha:]\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
-                    '(?<path>/[^?#]*|)'.
-              '(?:\\?(?<query>[^#]*)|)'.
-              '(?:\\#(?<anchor>.*)|)$%uS', $url, $matches);
+    preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
+                    '(?<domain>[[:alpha:]0-9\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
+                     '(?<path>/[[:alpha:]\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
+               '(?:\\?(?<query>[[:alpha:]\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
+              '(?:\\#(?<anchor>[[:alpha:]\\x21-\\x7e]*)|)$%uS', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
