@@ -28,10 +28,9 @@ namespace effcore {
   ###########################
 
   static function validate_value($field, $form, $element, &$new_value) {
-    $url = new url($new_value);
-    if ( (strlen($new_value) && $url->has_error === true) ||
-         (strlen($new_value) && core::validate_url(url::utf8_encode($new_value), FILTER_FLAG_PATH_REQUIRED) === false) ||
-         (strlen($new_value) && !preg_match('%^/manage$|^/manage/.*$|^/user$|^/user/.*$|^[^/].*$%', $new_value))) {
+    if ( (strlen($new_value) &&                    (new url(                 $new_value))->has_error === true) ||
+         (strlen($new_value) && core::validate_url((new url(url::utf8_encode($new_value)))->full_get(), FILTER_FLAG_SCHEME_REQUIRED|FILTER_FLAG_HOST_REQUIRED|FILTER_FLAG_PATH_REQUIRED) === false) ||
+         (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$|^/user$|^/user/.*$|^[^/].*$%', $new_value)) ) {
       $field->error_set(
         'Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]
       );
