@@ -109,6 +109,7 @@ namespace effcore {
   public $raw;
   public $protocol;
   public $domain;
+  public $port;
   public $path;
   public $query;
   public $anchor;
@@ -118,8 +119,8 @@ namespace effcore {
     $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-z]+)://|)'.
-                    '(?<domain>[0-9[:alpha:]\\-\\.:@]{2,200}|)'.
-                    '(?<path>[^?#]*)'.
+                    '(?<domain>[0-9[:alpha:]\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
+                    '(?<path>/[^?#]*|)'.
               '(?:\\?(?<query>[^#]*)|)'.
               '(?:\\#(?<anchor>.*)|)$%uS', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
@@ -138,6 +139,7 @@ namespace effcore {
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ) { # n
       $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
       $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host(false));
+      $this->port     = !empty($matches['port'    ]) ? $matches['port'    ] : '';
       $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
       $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
       $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
