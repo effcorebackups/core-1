@@ -220,7 +220,8 @@ namespace effcore {
 
   static function back_url_get() {
     $url = new static(static::get_current()->query_arg_select('back'));
-    return core::validate_url($url->full_get()) ?: '';
+    return $url->has_error ? '' :
+           $url->full_get();
   }
 
   static function back_part_make_custom($url) {
