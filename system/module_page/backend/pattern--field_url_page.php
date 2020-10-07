@@ -28,12 +28,10 @@ namespace effcore {
   ###########################
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if ( (strlen($new_value) && (new url($new_value))->has_error === true) ||
-         (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$|^/user$|^/user/.*$|^[^/].*$%', (new url($new_value))->path_get())) ) {
-      $field->error_set(
-        'Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]
-      );
-    } else {
+    if (  parent::validate_value($field, $form, $element,  $new_value) === true  ) {
+      if (strlen($new_value) && preg_match('%^[^/].*$%',               $new_value)) {$field->error_set('Field value should be start with "%%_value".', ['value' => '/'       ]); return;}
+      if (strlen($new_value) && preg_match('%^/user$|^/user/.*$%',     $new_value)) {$field->error_set('Field value cannot be start with "%%_value".', ['value' => '/user/'  ]); return;}
+      if (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$%', $new_value)) {$field->error_set('Field value cannot be start with "%%_value".', ['value' => '/manage/']); return;}
       return true;
     }
   }

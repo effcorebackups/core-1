@@ -25,24 +25,19 @@ namespace effcore {
   ###########################
 
   static function validate_value($field, $form, $element, &$new_value) {
-    if ((strlen($new_value) && (new url($new_value))->has_error === true)) {
-      $field->error_set(
-        'Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]
-      );
-    } else {
-      $raw_url = new url($new_value, ['completion' => false]);
-      if (isset($field->should_be_included['protocol']) && $raw_url->protocol === '') {$field->error_set('URL should contain protocol!'    ); return;}
-      if (isset($field->should_be_included['domain'  ]) && $raw_url->domain   === '') {$field->error_set('URL should contain domain!'      ); return;}
-      if (isset($field->should_be_included['path'    ]) && $raw_url->path     === '') {$field->error_set('URL should contain path!'        ); return;}
-      if (isset($field->should_be_included['query'   ]) && $raw_url->query    === '') {$field->error_set('URL should contain query!'       ); return;}
-      if (isset($field->should_be_included['anchor'  ]) && $raw_url->anchor   === '') {$field->error_set('URL should contain anchor!'      ); return;}
-      if (isset($field->should_be_excluded['protocol']) && $raw_url->protocol !== '') {$field->error_set('URL should not contain protocol!'); return;}
-      if (isset($field->should_be_excluded['domain'  ]) && $raw_url->domain   !== '') {$field->error_set('URL should not contain domain!'  ); return;}
-      if (isset($field->should_be_excluded['path'    ]) && $raw_url->path     !== '') {$field->error_set('URL should not contain path!'    ); return;}
-      if (isset($field->should_be_excluded['query'   ]) && $raw_url->query    !== '') {$field->error_set('URL should not contain query!'   ); return;}
-      if (isset($field->should_be_excluded['anchor'  ]) && $raw_url->anchor   !== '') {$field->error_set('URL should not contain anchor!'  ); return;}
-      return true;
-    }
+    $raw_url = new url($new_value, ['completion' => false]);
+    if (strlen($new_value) && (new url($new_value))->has_error === true                                 ) {$field->error_set('Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]); return;}
+    if (strlen($new_value) && isset($field->should_be_included['protocol']) && $raw_url->protocol === '') {$field->error_set('URL should contain protocol!'                                                                  ); return;}
+    if (strlen($new_value) && isset($field->should_be_included['domain'  ]) && $raw_url->domain   === '') {$field->error_set('URL should contain domain!'                                                                    ); return;}
+    if (strlen($new_value) && isset($field->should_be_included['path'    ]) && $raw_url->path     === '') {$field->error_set('URL should contain path!'                                                                      ); return;}
+    if (strlen($new_value) && isset($field->should_be_included['query'   ]) && $raw_url->query    === '') {$field->error_set('URL should contain query!'                                                                     ); return;}
+    if (strlen($new_value) && isset($field->should_be_included['anchor'  ]) && $raw_url->anchor   === '') {$field->error_set('URL should contain anchor!'                                                                    ); return;}
+    if (strlen($new_value) && isset($field->should_be_excluded['protocol']) && $raw_url->protocol !== '') {$field->error_set('URL should not contain protocol!'                                                              ); return;}
+    if (strlen($new_value) && isset($field->should_be_excluded['domain'  ]) && $raw_url->domain   !== '') {$field->error_set('URL should not contain domain!'                                                                ); return;}
+    if (strlen($new_value) && isset($field->should_be_excluded['path'    ]) && $raw_url->path     !== '') {$field->error_set('URL should not contain path!'                                                                  ); return;}
+    if (strlen($new_value) && isset($field->should_be_excluded['query'   ]) && $raw_url->query    !== '') {$field->error_set('URL should not contain query!'                                                                 ); return;}
+    if (strlen($new_value) && isset($field->should_be_excluded['anchor'  ]) && $raw_url->anchor   !== '') {$field->error_set('URL should not contain anchor!'                                                                ); return;}
+    return true;
   }
 
 }}
