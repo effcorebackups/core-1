@@ -50,7 +50,7 @@ translations
     - Data ID: ID данных
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
-    - default text: тэкст па змаўчанні
+    - default text: текст по умолчанию
     - Demo form: Демонстрационная форма
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
