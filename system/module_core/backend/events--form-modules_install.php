@@ -110,7 +110,7 @@ namespace effcore\modules\core {
               if (isset($modules_to_disable[$c_id])) {
                 $items['#is_enabled:'.$c_id        ]->error_set();
                 $items['#is_enabled:'.$c_module->id]->error_set(
-                  'Can not enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!', [
+                  'Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!', [
                   'title'           => $c_module->title,
                   'id'              => $c_module->id,
                   'dependent_title' => module::get($c_id)->title,

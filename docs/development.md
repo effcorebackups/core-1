@@ -77,7 +77,7 @@ About forms
    - input[type=text,name=shared_name[],value=2]
    - input[type=text,name=shared_name[],value=3]
 
-   example (result form state after validate):
+   example (result of form state after validate):
    - input[type=text,name=shared_name[],value=1,disabled|readonly]
    - input[type=text,name=shared_name[],value=fake_value]
    - input[type=text,name=shared_name[],value=2]
@@ -86,7 +86,7 @@ About forms
    NAME (name="shared_name[]"), after submit you will get merged
    arrays of values.
 
-   example (result form state before validate):
+   example (result of form state before validate):
    - select[name=shared_name[],multiple]
      - option[value=1,selected]
      - option[value=2]
@@ -96,7 +96,7 @@ About forms
      - option[value=2,selected]
      - option[value=3]
 
-   example (result form state after validate):
+   example (result of form state after validate):
    - select[name=shared_name[],multiple]
      - option[value=1,selected]
      - option[value=2,selected]

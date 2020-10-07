@@ -79,7 +79,7 @@ entities
         selection_params_default
         - weight: +360
     - diagram_type
-        title: Diagramm type
+        title: Diagram type
         type: varchar
         size: 32
         collate: nocase

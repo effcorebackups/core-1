@@ -53,7 +53,7 @@ namespace effcore {
   static function validate_required($field, $form, $element, &$new_value) {
     if ($field->required_get() && strlen($new_value) == 0) {
       $field->error_set(
-        'Field "%%_title" can not be blank!', ['title' => (new text($field->title))->render() ]
+        'Field "%%_title" cannot be blank!', ['title' => (new text($field->title))->render() ]
       );
     } else {
       return true;

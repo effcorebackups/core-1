@@ -67,8 +67,8 @@ namespace effcore {
         unset($this->tmp_path);
         return true;
       } else {
-        message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
+        message::insert(new text_multiline(['Cannot copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'Cannot copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
       }
     }
   }
@@ -89,8 +89,8 @@ namespace effcore {
         unset($this->pre_path);
         return true;
       } else {
-        message::insert(new text_multiline(['Can not copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'Can not copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]);
+        message::insert(new text_multiline(['Cannot copy file from "%%_from" to "%%_to"!', 'Check directory permissions.'], ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'Cannot copy file from "%%_from" to "%%_to"!', 'error', 0,                      ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]);
       }
     }
   }
@@ -109,8 +109,8 @@ namespace effcore {
         unset($this->pre_path);
         return true;
       } else {
-        message::insert(new text_multiline(['Can not delete file "%%_file"!', 'Check directory permissions.'], ['file' => (new file($this->pre_path))->path_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'Can not delete file "%%_file"!', 'error', 0,                      ['file' => (new file($this->pre_path))->path_get_relative()]);
+        message::insert(new text_multiline(['Cannot delete file "%%_file"!', 'Check directory permissions.'], ['file' => (new file($this->pre_path))->path_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'Cannot delete file "%%_file"!', 'error', 0,                      ['file' => (new file($this->pre_path))->path_get_relative()]);
       }
     }
   }
@@ -122,8 +122,8 @@ namespace effcore {
         unset($this->fin_path);
         return true;
       } else {
-        message::insert(new text_multiline(['Can not delete file "%%_file"!', 'Check directory permissions.'], ['file' => (new file($this->fin_path))->path_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'Can not delete file "%%_file"!', 'error', 0,                      ['file' => (new file($this->fin_path))->path_get_relative()]);
+        message::insert(new text_multiline(['Cannot delete file "%%_file"!', 'Check directory permissions.'], ['file' => (new file($this->fin_path))->path_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'Cannot delete file "%%_file"!', 'error', 0,                      ['file' => (new file($this->fin_path))->path_get_relative()]);
       }
     }
   }

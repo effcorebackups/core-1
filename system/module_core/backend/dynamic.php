@@ -75,7 +75,7 @@ namespace effcore {
   static function message_on_error_select($file) {
     require_once('message.php');
     message::insert(
-      'Can not select file "'.$file->file_get().'" from the directory "'.$file->dirs_get_relative().'"!'.br.
+      'Cannot select file "'.$file->file_get().'" from the directory "'.$file->dirs_get_relative().'"!'.br.
       'Check directory permissions or try to reset the cache.', 'error'
     );
   }
@@ -83,7 +83,7 @@ namespace effcore {
   static function message_on_error_insert($file) {
     require_once('message.php');
     message::insert(
-      'Can not insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
+      'Cannot insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
       'Check file (if exists) and directory permissions.', 'error'
     );
   }
@@ -91,7 +91,7 @@ namespace effcore {
   static function message_on_error_delete($file) {
     require_once('message.php');
     message::insert(
-      'Can not delete file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
+      'Cannot delete file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
       'Check directory permissions.', 'error'
     );
   }

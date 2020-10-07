@@ -64,10 +64,10 @@ translations
     - button: кнопка
     - Button\: text: Кнопка: текст
     - cache: кэш
-    - Can not copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Can not delete file "%%_file"!: Невозможно удалить файл "%%_file"!
-    - Can not enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
-    - Can not insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
+    - Cannot copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
+    - Cannot delete file "%%_file"!: Невозможно удалить файл "%%_file"!
+    - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
+    - Cannot insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
     - cancel: отменить
     - Canvas: Холст
     - Charset: Кодировка
@@ -87,7 +87,7 @@ translations
     - Conditions: Условия
     - Console settings: Настройки консоли
     - Content: Содержимое
-    - Cookies are disabled. You can not log in!: Cookies отключены. Вы не можете войти в систему!
+    - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максим Владимирович. Все права защищены.
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
     - copyright: авторские права
@@ -128,7 +128,7 @@ translations
     - description: описание
     - Develop: Разработка
     - Diagram: Диаграмма
-    - Diagramm type: Тип диаграммы
+    - Diagram type: Тип диаграммы
     - Diagrams: Диаграммы
     - Digit: Цифра
     - Distributed queries are not supported! Selection ID = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".
@@ -173,7 +173,7 @@ translations
     - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
     - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было вставлено.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
-    - Field "%%_title" can not be blank!: Поле "%%_title" не может быть пустым!
+    - Field "%%_title" cannot be blank!: Поле "%%_title" не может быть пустым!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
     - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!

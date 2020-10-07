@@ -136,7 +136,7 @@ It's recommended to use the next software:
 - ColorSnapper (mac) for pick the "right" colors;
 - RegExRX (mac|win) for improve your regular expressions;
 - VMWare Fusion Pro (mac) for working with virtual machines;
-- Find Any Files (mac) for searching in the code (note: can not search is some cases);
+- Find Any Files (mac) for searching in the code (note: cannot search is some cases);
 - VisualGrep (mac) for searching in the code.
 
 
@@ -147,7 +147,7 @@ The following software is incompatible:
 - Kaspersky Internet Security browser plugin can insert to page
   some CSS with strings like "appearance: checkbox" and etc.
   This string can break your own styles of form elements like
-  checkboxes, radios and other. Developers can not do anything
+  checkboxes, radios and other. Developers cannot do anything
   against violating web standards from third side.
   Just ignore Kaspersky Internet Security.
 

@@ -29,8 +29,8 @@ Actions for installations:
   official site of this project.
 - Unpack archive of the system to some local directory.
   All files should be unpacked (including invisible files like ".htaccess" and other).
-  If you can not see the invisible files in your archiver, make them visible.
-  If you can not see the invisible files in your OS, make them visible.
+  If you cannot see the invisible files in your archiver, make them visible.
+  If you cannot see the invisible files in your OS, make them visible.
 - Establish a connection with the web server via FTP protocol.
   It's recommended to use the "SFTP" or "FTP with implicit SSL" or
   "FTP with TSL/SSL".
