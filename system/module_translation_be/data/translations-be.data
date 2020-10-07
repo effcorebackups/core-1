@@ -64,11 +64,11 @@ translations
     - button: кнопка
     - Button\: text: Кнопка: тэкст
     - cache: кэш
+    - cancel: адмяніць
     - Cannot copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
     - Cannot delete file "%%_file"!: Немагчыма выдаліць файл "%%_file"!
     - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Немагчыма ўключыць модуль "%%_title" (%%_id), калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
     - Cannot insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
-    - cancel: адмяніць
     - Canvas: Палатно
     - Charset: Кадзіроўка
     - Check directory permissions.: Праверце дазвалення каталога.
@@ -127,8 +127,8 @@ translations
     - Description: Апісанне
     - description: апісанне
     - Develop: Распрацоўка
-    - Diagram: Дыяграма
     - Diagram type: Тып дыяграмы
+    - Diagram: Дыяграма
     - Diagrams: Дыяграмы
     - Digit: Лічба
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
@@ -252,8 +252,8 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!: Група "%%_title" павінна утрымліваць як мінімум %%_number элемент%%_plural{number,au-a}!
-    - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна утрымліваць як мінімум адзін абраны элемент!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!: Група "%%_title" павінна змяшчаць як мінімум %%_number элемент%%_plural{number,au-a}!
+    - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна змяшчаць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
@@ -665,6 +665,16 @@ translations
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
+    - URL should contain anchor!: URL павінен змяшчаць якар!
+    - URL should contain domain!: URL павінен змяшчаць дамен!
+    - URL should contain path!: URL павінен змяшчаць шлях!
+    - URL should contain protocol!: URL павінен змяшчаць пратакол!
+    - URL should contain query!: URL павінен змяшчаць запыт!
+    - URL should not contain anchor!: URL не павінен змяшчаць якар!
+    - URL should not contain domain!: URL не павінен змяшчаць дамен!
+    - URL should not contain path!: URL не павінен змяшчаць шлях!
+    - URL should not contain protocol!: URL не павінен змяшчаць пратакол!
+    - URL should not contain query!: URL не павінен змяшчаць запыт!
     - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}

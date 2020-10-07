@@ -64,11 +64,11 @@ translations
     - button: кнопка
     - Button\: text: Кнопка: текст
     - cache: кэш
+    - cancel: отменить
     - Cannot copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
     - Cannot delete file "%%_file"!: Невозможно удалить файл "%%_file"!
     - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
     - Cannot insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
-    - cancel: отменить
     - Canvas: Холст
     - Charset: Кодировка
     - Check directory permissions.: Проверьте разрешения каталога.
@@ -127,8 +127,8 @@ translations
     - Description: Описание
     - description: описание
     - Develop: Разработка
-    - Diagram: Диаграмма
     - Diagram type: Тип диаграммы
+    - Diagram: Диаграмма
     - Diagrams: Диаграммы
     - Digit: Цифра
     - Distributed queries are not supported! Selection ID = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".
@@ -665,6 +665,16 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
+    - URL should contain anchor!: URL должен содержать якорь!
+    - URL should contain domain!: URL должен содержать домен!
+    - URL should contain path!: URL должен содержать путь!
+    - URL should contain protocol!: URL должен содержать протокол!
+    - URL should contain query!: URL должен содержать запрос!
+    - URL should not contain anchor!: URL не должен содержать якорь!
+    - URL should not contain domain!: URL не должен содержать домен!
+    - URL should not contain path!: URL не должен содержать путь!
+    - URL should not contain protocol!: URL не должен содержать протокол!
+    - URL should not contain query!: URL не должен содержать запрос!
     - Use the international format for phone number.: Используйте международный формат номера телефона.
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}

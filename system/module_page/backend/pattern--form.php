@@ -79,7 +79,7 @@ namespace effcore {
         }
       );
 
-    # if user submit this form (p.s. dynamic buttons must be inserted before)
+    # if user submit this form (p.s. dynamic buttons should be inserted before)
       if ($this->is_submitted()) {
         $this->clicked_button = $this->clicked_button_get();
         if ($this->clicked_button) {
@@ -94,7 +94,7 @@ namespace effcore {
             }
           }
 
-        # call on_validate methods (parent must be at the end)
+        # call on_validate methods (parent should be at the end)
           if (empty($this->clicked_button->break_on_validate)) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = $c_child::on_validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = $c_child::on_validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
