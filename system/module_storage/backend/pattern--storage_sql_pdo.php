@@ -382,22 +382,22 @@ namespace effcore {
     }
   }
 
-  function instances_select($entity, $params = [], $idkey = null) {
-    $params += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
+  function instances_select($entity, $options = [], $idkey = null) {
+    $options += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
-        'fields_!,'    => (count($params['fields']) ? $params['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $params['join_fields'],
+        'fields_!,'    => (count($options['fields']) ? $options['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $options['join_fields'],
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
-      foreach ($params['join'] as $c_join_id => $c_join_part)
-                $query['join']   [$c_join_id] = $c_join_part;
-      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $params['conditions']];
-      if (count($params['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $params['group'     ]];
-      if (count($params['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $params['order'     ]];
-      if (      $params['limit'     ] ) {
-        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
-        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
+      foreach ($options['join'] as $c_join_id => $c_join_part)
+               $query  ['join']   [$c_join_id] = $c_join_part;
+      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $options['conditions']];
+      if (count($options['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $options['group'     ]];
+      if (count($options['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $options['order'     ]];
+      if (      $options['limit'     ] ) {
+        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
+        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
       }
       $result = [];
       foreach ($this->query($query) ?: [] as $c_instance) {
@@ -413,21 +413,21 @@ namespace effcore {
     }
   }
 
-  function instances_delete($entity, $params = []) {
-    $params += ['conditions' => [], 'limit' => null];
+  function instances_delete($entity, $options = []) {
+    $options += ['conditions' => [], 'limit' => null];
     if ($this->init()) {
       $query = [
         'action'       => 'DELETE',
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
-      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
-      if (      $params['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$params['limit']];
+      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' =>      $options['conditions']];
+      if (      $options['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$options['limit'     ]];
       return $this->query($query);
     }
   }
 
-  function instances_select_count($entity, $params = []) {
-    $params += ['join' => [], 'conditions' => [], 'limit' => null, 'offset' => 0];
+  function instances_select_count($entity, $options = []) {
+    $options += ['join' => [], 'conditions' => [], 'limit' => null, 'offset' => 0];
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
@@ -439,12 +439,12 @@ namespace effcore {
           'alias'          => 'count']],
         'target_begin' => 'FROM',
         'target_!t'    => '~'.$entity->name];
-      foreach ($params['join'] as $c_join_id => $c_join_part)
-                $query['join']   [$c_join_id] = $c_join_part;
-      if (count($params['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $params['conditions']];
-      if (      $params['limit'     ] ) {
-        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$params['limit' ]];
-        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$params['offset']];
+      foreach ($options['join'] as $c_join_id => $c_join_part)
+               $query  ['join']   [$c_join_id] = $c_join_part;
+      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $options['conditions']];
+      if (      $options['limit'     ] ) {
+        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
+        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
       }
       $result = $this->query($query);
       if (isset($result[0]->count))

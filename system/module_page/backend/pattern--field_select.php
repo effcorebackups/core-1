@@ -103,14 +103,14 @@ namespace effcore {
     return $this->child_select('element')->child_select($id);
   }
 
-  function optgroup_insert($id, $title, $attr = []) {
+  function optgroup_insert($id, $title, $attributes = []) {
     $this->child_select('element')->child_insert(
-      new markup('optgroup', $attr + ['label' => new text($title)]), $id
+      new markup('optgroup', $attributes + ['label' => new text($title)]), $id
     );
   }
 
-  function option_insert($title, $value, $attr = [], $optgroup_id = null) {
-    $option = new markup('option', $attr, ['content' => $title]);
+  function option_insert($title, $value, $attributes = [], $optgroup_id = null) {
+    $option = new markup('option', $attributes, ['content' => $title]);
     $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
     if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
     if (isset($this->disabled[$value])) $option->attribute_insert('disabled',    true   );
