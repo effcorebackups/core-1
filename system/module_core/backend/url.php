@@ -118,7 +118,7 @@ namespace effcore {
   public $has_error;
 
   function __construct($url, $options = []) {
-    $options += ['decode' => self::is_decode_path, 'extra' => '[:alpha:]'];
+    $options += ['completion' => true, 'decode' => static::is_decode_path, 'extra' => '[:alpha:]'];
     $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
@@ -140,12 +140,15 @@ namespace effcore {
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # l
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # m
          (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ) { # n
-      $this->protocol = !empty($matches['protocol']) ? $matches['protocol'] : (!empty($matches['domain']) ? 'http' : ( /* case for local ulr */ core::server_get_request_scheme()));
-      $this->domain   = !empty($matches['domain'  ]) ? $matches['domain'  ] :                                        ( /* case for local ulr */ core::server_get_host(false));
-      $this->port     = !empty($matches['port'    ]) ? $matches['port'    ] : '';
-      $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
-      $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
-      $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
+      $this->protocol = array_key_exists('protocol', $matches) ? $matches['protocol'] : '';
+      $this->domain   = array_key_exists('domain',   $matches) ? $matches['domain'  ] : '';
+      $this->port     = array_key_exists('port',     $matches) ? $matches['port'    ] : '';
+      $this->path     = array_key_exists('path',     $matches) ? $matches['path'    ] : '';
+      $this->query    = array_key_exists('query',    $matches) ? $matches['query'   ] : '';
+      $this->anchor   = array_key_exists('anchor',   $matches) ? $matches['anchor'  ] : '';
+      if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? core::server_get_request_scheme() : 'http';
+      if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
+      if ($options['completion'] && $this->path     === '') $this->path     = '/';
       if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
       if ($options['decode'] & static::is_decode_path) $this->path = urldecode($this->path);
            $this->has_error = false;
