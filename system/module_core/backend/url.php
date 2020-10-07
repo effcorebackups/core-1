@@ -117,14 +117,15 @@ namespace effcore {
   public $anchor;
   public $has_error;
 
-  function __construct($url, $decode = self::is_decode_path, $extra = '[:alpha:]') {
+  function __construct($url, $options = []) {
+    $options += ['decode' => self::is_decode_path, 'extra' => '[:alpha:]'];
     $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
-                    '(?<domain>['.$extra.'0-9\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
-                     '(?<path>/['.$extra.'\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
-               '(?:\\?(?<query>['.$extra.'\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
-              '(?:\\#(?<anchor>['.$extra.'\\x21-\\x7e]*)|)$%uS', $url, $matches);
+                      '(?<domain>['.$options['extra'].'a-zA-Z0-9\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
+                       '(?<path>/['.$options['extra'].'\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
+                 '(?:\\?(?<query>['.$options['extra'].'\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
+                '(?:\\#(?<anchor>['.$options['extra'].'\\x21-\\x7e]*)|)$%uS', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
@@ -145,8 +146,8 @@ namespace effcore {
       $this->path     = !empty($matches['path'    ]) ? $matches['path'    ] : '/';
       $this->query    = !empty($matches['query'   ]) ? $matches['query'   ] : '';
       $this->anchor   = !empty($matches['anchor'  ]) ? $matches['anchor'  ] : '';
-      if ($decode & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
-      if ($decode & static::is_decode_path) $this->path = urldecode($this->path);
+      if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
+      if ($options['decode'] & static::is_decode_path) $this->path = urldecode($this->path);
            $this->has_error = false;
     } else $this->has_error = true;
   }
