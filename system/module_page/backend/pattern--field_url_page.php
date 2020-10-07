@@ -15,6 +15,13 @@ namespace effcore {
     'maxlength' => 2047
   ];
 
+  public $should_be_included = ['path' => 'path'];
+  public $should_be_excluded = [
+    'protocol' => 'protocol',
+    'domain'   => 'domain',
+    'query'    => 'query',
+    'anchor'   => 'anchor'];
+
   function render_description() {
     $this->description = [
       new text('Field value should be start with "%%_value".', ['value' => '/'       ]), br,
