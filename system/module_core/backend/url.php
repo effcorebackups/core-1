@@ -117,14 +117,14 @@ namespace effcore {
   public $anchor;
   public $has_error;
 
-  function __construct($url, $decode = self::is_decode_path) {
+  function __construct($url, $decode = self::is_decode_path, $extra = '[:alpha:]') {
     $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
-                    '(?<domain>[[:alpha:]0-9\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
-                     '(?<path>/[[:alpha:]\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
-               '(?:\\?(?<query>[[:alpha:]\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
-              '(?:\\#(?<anchor>[[:alpha:]\\x21-\\x7e]*)|)$%uS', $url, $matches);
+                    '(?<domain>['.$extra.'0-9\\-\\.]{2,200}(?:\\:(?<port>[0-9]{1,5})|)|)'.
+                     '(?<path>/['.$extra.'\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
+               '(?:\\?(?<query>['.$extra.'\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
+              '(?:\\#(?<anchor>['.$extra.'\\x21-\\x7e]*)|)$%uS', $url, $matches);
     if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
          ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
