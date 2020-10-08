@@ -20,6 +20,26 @@ namespace effcore {
   public $should_be_included = []; # protocol,domain,path,query,anchor
   public $should_be_excluded = []; # protocol,domain,path,query,anchor
 
+  function render_description() {
+  # convert description to array. ready for: NULL, string, object|text, object|text_multiline… object+render()
+    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
+    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+  # add custom descriptions
+    if (isset($this->should_be_included['protocol'])) $this->description[] = new markup('p', ['data-id' => 'url-protocol'    ], 'URL should contain protocol!'    );
+    if (isset($this->should_be_included['domain'  ])) $this->description[] = new markup('p', ['data-id' => 'url-domain'      ], 'URL should contain domain!'      );
+    if (isset($this->should_be_included['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-path'        ], 'URL should contain path!'        );
+    if (isset($this->should_be_included['query'   ])) $this->description[] = new markup('p', ['data-id' => 'url-query'       ], 'URL should contain query!'       );
+    if (isset($this->should_be_included['anchor'  ])) $this->description[] = new markup('p', ['data-id' => 'url-anchor'      ], 'URL should contain anchor!'      );
+    if (isset($this->should_be_excluded['protocol'])) $this->description[] = new markup('p', ['data-id' => 'url-not-protocol'], 'URL should not contain protocol!');
+    if (isset($this->should_be_excluded['domain'  ])) $this->description[] = new markup('p', ['data-id' => 'url-not-domain'  ], 'URL should not contain domain!'  );
+    if (isset($this->should_be_excluded['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-not-path'    ], 'URL should not contain path!'    );
+    if (isset($this->should_be_excluded['query'   ])) $this->description[] = new markup('p', ['data-id' => 'url-not-query'   ], 'URL should not contain query!'   );
+    if (isset($this->should_be_excluded['anchor'  ])) $this->description[] = new markup('p', ['data-id' => 'url-not-anchor'  ], 'URL should not contain anchor!'  );
+  # render "opener" + all descriptions
+    return parent::render_description();
+  }
+
   ###########################
   ### static declarations ###
   ###########################
