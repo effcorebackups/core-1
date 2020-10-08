@@ -108,7 +108,7 @@ namespace effcore {
   }
 
   function render_description() {
-  # convert description to array. ready for: NULL, string, object|text, object|text_multiline, object|markup... object->render()
+  # convert description to array. ready for: NULL, string, object|text, object|text_multiline, object|markup… object->render()
     if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
     if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
     if (gettype($this->description) === 'object') $this->description = [                                          $this->description ];
