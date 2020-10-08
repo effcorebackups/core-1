@@ -108,19 +108,19 @@ namespace effcore {
   }
 
   function render_description() {
-    $result[] = $this->render_description_file_size_max();
-    if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_min_number();
-    if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $result[] = $this->render_description_file_max_number();
-    if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $result[] = $this->render_description_file_mid_number();
-    if ($this->allowed_types           ) $result[] = $this->render_description_allowed_types     ();
-    if ($this->allowed_characters_title) $result[] = $this->render_description_allowed_characters();
-    if ($this->description) $result[] = new markup('p', [], $this->description);
-    if (count($result)) {
-      if ($this->description_state === 'hidden'                      ) return '';
-      if ($this->description_state === 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
-      if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
-      return '';
-    }
+  # convert description to array. ready for: NULL, string, object|text, object|text_multiline, object|markup... object->render()
+    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
+    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+    if (gettype($this->description) === 'object') $this->description = [                                          $this->description ];
+  # add custom descriptions
+    $this->description[] = $this->render_description_file_size_max();
+    if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_min_number   ();
+    if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_max_number   ();
+    if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $this->description[] = $this->render_description_file_mid_number   ();
+    if ($this->allowed_types                                                                  ) $this->description[] = $this->render_description_allowed_types     ();
+    if ($this->allowed_characters_title                                                       ) $this->description[] = $this->render_description_allowed_characters();
+  # render "opener" + all descriptions
+    return parent::render_description();
   }
 
   function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text($this->file_size_max_has_php_restriction() ? 'Maximum file size: %%_value (PHP restriction)' : 'Maximum file size: %%_value', ['value' => locale::format_bytes($this->file_size_max_get())]));}

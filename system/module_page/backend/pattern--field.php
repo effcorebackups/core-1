@@ -298,7 +298,6 @@ namespace effcore {
   function render() {
     $element = $this->child_select('element');
     if ($this->set_auto_id) $this->auto_id_set();
-    if ($this->id_get() && $this->render_description()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
     if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('aria-disabled', 'true');
     if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('aria-required', 'true');
     return parent::render();
@@ -315,22 +314,27 @@ namespace effcore {
   }
 
   function render_description() {
-    $result = [];
     $element = $this->child_select('element');
+  # convert description to array. ready for: NULL, string, object|text, object|text_multiline, object|markup... object->render()
+    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
+    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+    if (gettype($this->description) === 'object') $this->description = [                                          $this->description ];
+  # add custom descriptions
     if ($element instanceof node_simple) {
-      if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $result[] = $this->render_description_pattern  ($element);
-      if (strlen($element->attribute_select('min'      ))                                                                                       ) $result[] = $this->render_description_min      ($element);
-      if (strlen($element->attribute_select('max'      ))                                                                                       ) $result[] = $this->render_description_max      ($element);
-      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     )  == 'range'                                ) $result[] = $this->render_description_cur      ($element);
-      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_minlength($element);
-      if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $result[] = $this->render_description_maxlength($element);
-      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $result[] = $this->render_description_midlength($element);
+      if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description[] = $this->render_description_pattern  ($element);
+      if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description[] = $this->render_description_min      ($element);
+      if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description[] = $this->render_description_max      ($element);
+      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     )  == 'range'                                ) $this->description[] = $this->render_description_cur      ($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_minlength($element);
+      if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_maxlength($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description[] = $this->render_description_midlength($element);
     }
-    if ($this->description) $result[] = new markup('p', [], $this->description);
-    if (count($result)) {
+  # render "opener" + all descriptions
+    if (count($this->description)) {
+      if ($this->id_get()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
       if ($this->description_state === 'hidden'                      ) return '';
-      if ($this->description_state === 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
-      if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $result))->render();
+      if ($this->description_state === 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
+      if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
       return '';
     }
   }
