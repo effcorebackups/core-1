@@ -666,15 +666,25 @@ translations
     - updated: абноўлена
     - Updated: Абноўлена
     - URL should contain anchor!: URL павінен змяшчаць якар!
+    - URL should contain anchor.: URL павінен змяшчаць якар.
     - URL should contain domain!: URL павінен змяшчаць дамен!
+    - URL should contain domain.: URL павінен змяшчаць дамен.
     - URL should contain path!: URL павінен змяшчаць шлях!
+    - URL should contain path.: URL павінен змяшчаць шлях.
     - URL should contain protocol!: URL павінен змяшчаць пратакол!
+    - URL should contain protocol.: URL павінен змяшчаць пратакол.
     - URL should contain query!: URL павінен змяшчаць запыт!
+    - URL should contain query.: URL павінен змяшчаць запыт.
     - URL should not contain anchor!: URL не павінен змяшчаць якар!
+    - URL should not contain anchor.: URL не павінен змяшчаць якар.
     - URL should not contain domain!: URL не павінен змяшчаць дамен!
+    - URL should not contain domain.: URL не павінен змяшчаць дамен.
     - URL should not contain path!: URL не павінен змяшчаць шлях!
+    - URL should not contain path.: URL не павінен змяшчаць шлях.
     - URL should not contain protocol!: URL не павінен змяшчаць пратакол!
+    - URL should not contain protocol.: URL не павінен змяшчаць пратакол.
     - URL should not contain query!: URL не павінен змяшчаць запыт!
+    - URL should not contain query.: URL не павінен змяшчаць запыт.
     - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}

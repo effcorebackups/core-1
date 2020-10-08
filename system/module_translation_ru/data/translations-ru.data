@@ -666,15 +666,25 @@ translations
     - updated: обновлено
     - Updated: Обновлено
     - URL should contain anchor!: URL должен содержать якорь!
+    - URL should contain anchor.: URL должен содержать якорь.
     - URL should contain domain!: URL должен содержать домен!
+    - URL should contain domain.: URL должен содержать домен.
     - URL should contain path!: URL должен содержать путь!
+    - URL should contain path.: URL должен содержать путь.
     - URL should contain protocol!: URL должен содержать протокол!
+    - URL should contain protocol.: URL должен содержать протокол.
     - URL should contain query!: URL должен содержать запрос!
+    - URL should contain query.: URL должен содержать запрос.
     - URL should not contain anchor!: URL не должен содержать якорь!
+    - URL should not contain anchor.: URL не должен содержать якорь.
     - URL should not contain domain!: URL не должен содержать домен!
+    - URL should not contain domain.: URL не должен содержать домен.
     - URL should not contain path!: URL не должен содержать путь!
+    - URL should not contain path.: URL не должен содержать путь.
     - URL should not contain protocol!: URL не должен содержать протокол!
+    - URL should not contain protocol.: URL не должен содержать протокол.
     - URL should not contain query!: URL не должен содержать запрос!
+    - URL should not contain query.: URL не должен содержать запрос.
     - Use the international format for phone number.: Используйте международный формат номера телефона.
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
