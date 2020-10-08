@@ -314,12 +314,8 @@ namespace effcore {
   }
 
   function render_description() {
+    $this->render_prepare_description();
     $element = $this->child_select('element');
-  # convert description to array. ready for: NULL, string, object|text, object|text_multiline… object+render()
-    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
-    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-  # add custom descriptions
     if ($element instanceof node_simple) {
       if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description[] = $this->render_description_pattern  ($element);
       if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description[] = $this->render_description_min      ($element);
@@ -329,7 +325,6 @@ namespace effcore {
       if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_maxlength($element);
       if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description[] = $this->render_description_midlength($element);
     }
-  # render "opener" + all descriptions
     if (count($this->description)) {
       if ($this->id_get()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
       if ($this->description_state === 'hidden'                      ) return '';
@@ -337,6 +332,13 @@ namespace effcore {
       if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
       return '';
     }
+  }
+
+  function render_prepare_description() {
+  # ready for: NULL, string, object|text, object|text_multiline… object+render()
+    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
+    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
   }
 
   function render_opener() {

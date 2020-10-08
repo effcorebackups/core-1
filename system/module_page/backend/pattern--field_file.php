@@ -108,18 +108,13 @@ namespace effcore {
   }
 
   function render_description() {
-  # convert description to array. ready for: NULL, string, object|text, object|text_multiline… object+render()
-    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
-    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-  # add custom descriptions
+    $this->render_prepare_description();
     $this->description[] = $this->render_description_file_size_max();
     if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_min_number   ();
     if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_max_number   ();
     if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $this->description[] = $this->render_description_file_mid_number   ();
     if ($this->allowed_types                                                                  ) $this->description[] = $this->render_description_allowed_types     ();
     if ($this->allowed_characters_title                                                       ) $this->description[] = $this->render_description_allowed_characters();
-  # render "opener" + all descriptions
     return parent::render_description();
   }
 

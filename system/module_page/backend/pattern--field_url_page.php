@@ -23,15 +23,10 @@ namespace effcore {
     'anchor'   => 'anchor'];
 
   function render_description() {
-  # convert description to array. ready for: NULL, string, object|text, object|text_multiline… object+render()
-    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
-    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-  # add custom descriptions
+    $this->render_prepare_description();
     $this->description[] = new markup('p', ['data-id' => 'url-page-0'], new text('Field value should be start with "%%_value".', ['value' => '/'       ]));
     $this->description[] = new markup('p', ['data-id' => 'url-page-1'], new text('Field value cannot be start with "%%_value".', ['value' => '/manage/']));
     $this->description[] = new markup('p', ['data-id' => 'url-page-2'], new text('Field value cannot be start with "%%_value".', ['value' => '/user/'  ]));
-  # render "opener" + all descriptions
     return parent::render_description();
   }
 
