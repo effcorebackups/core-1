@@ -87,7 +87,6 @@ translations
     - Field unique: Поле unique
     - Field varchar: Поле varchar
     - For ID: Для ID
-    - For performance reasons, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Па меркаваннях прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знойдзены ID карыстальніка = "%%_id_user" па псеўданіме = "%%_nickname"
     - Full report: Поўная справаздача
     - Gradient of main color: Градыент асноўнага колеру
@@ -195,6 +194,7 @@ translations
     - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.
+    - To improve performance, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Для павышэння прадукцыйнасці кансоль у файлах тыпу "*.cssd" і "*.jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".
     - Total generation time: Агульны час генерацыі
     - Total load: Агульная загрузка
     - Total run time\: %%_time sec.: Агульны час выканання: %%_time сек.
