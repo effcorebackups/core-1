@@ -219,6 +219,8 @@ translations
     - Fieldset: Група палёў
     - File "%%_path" was deleted.: Файл "%%_path" быў выдалены.
     - File "%%_path" was not deleted!: Файл "%%_path" не быў выдалены!
+    - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
+    - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
     - file is empty: файл пусты
     - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
@@ -356,8 +358,6 @@ translations
     - Managers: Кіраўнікі
     - Match: Адпаведнасць
     - Maximum field value\: %%_value: Максімальнае значэнне поля: %%_value
-    - Maximum file size\: %%_value (PHP restriction): Максімальны памер файла: %%_value (абмежаванне PHP)
-    - Maximum file size\: %%_value: Максімальны памер файла: %%_value
     - Maximum width: Максімальная шырыня
     - Memory for PHP (bytes): Памяць для PHP (байты)
     - Menu active: Меню актыўнае

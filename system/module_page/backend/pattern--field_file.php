@@ -109,21 +109,21 @@ namespace effcore {
 
   function render_description() {
     $this->render_prepare_description();
-    $this->description[] = $this->render_description_file_size_max();
-    if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_min_number   ();
-    if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_max_number   ();
-    if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $this->description[] = $this->render_description_file_mid_number   ();
-    if ($this->allowed_types                                                                  ) $this->description[] = $this->render_description_allowed_types     ();
-    if ($this->allowed_characters_title                                                       ) $this->description[] = $this->render_description_allowed_characters();
+    if ($this->min_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_min_number();
+    if ($this->max_files_number !== null && $this->min_files_number != $this->max_files_number) $this->description[] = $this->render_description_file_max_number();
+    if ($this->min_files_number !== null && $this->min_files_number == $this->max_files_number) $this->description[] = $this->render_description_file_mid_number();
+                                         $this->description[] = $this->render_description_file_size_max();
+    if ($this->allowed_types           ) $this->description[] = $this->render_description_file_allowed_types();
+    if ($this->allowed_characters_title) $this->description[] = $this->render_description_file_name_allowed_characters();
     return parent::render_description();
   }
 
-  function render_description_file_size_max     () {return new markup('p', ['data-id' => 'file-size-max'          ], new text($this->file_size_max_has_php_restriction() ? 'Maximum file size: %%_value (PHP restriction)' : 'Maximum file size: %%_value', ['value' => locale::format_bytes($this->file_size_max_get())]));}
-  function render_description_file_min_number   () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
-  function render_description_file_max_number   () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
-  function render_description_file_mid_number   () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number,s}.',          ['number'     =>               $this->min_files_number        ]));}
-  function render_description_allowed_types     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));}
-  function render_description_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));}
+  function render_description_file_size_max               () {return new markup('p', ['data-id' => 'file-size-max'          ], new text($this->file_size_max_has_php_restriction() ? 'File can have a maximum size: %%_value (PHP restriction)' : 'File can have a maximum size: %%_value', ['value' => locale::format_bytes($this->file_size_max_get())]));}
+  function render_description_file_min_number             () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
+  function render_description_file_max_number             () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
+  function render_description_file_mid_number             () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number,s}.',          ['number'     =>               $this->min_files_number        ]));}
+  function render_description_file_allowed_types          () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));}
+  function render_description_file_name_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));}
 
   ############
   ### pool ###
