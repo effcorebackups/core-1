@@ -199,7 +199,7 @@ translations
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значэнне поля не адпавядае рэгулярнаму выразу "%%_expression".
     - Field value is less than %%_number.: Значэнне поля менш чым %%_number.
-    - Field value is more than %%_number.: Значэнне поля больш чым %%_number.
+    - Field value is greater than %%_number.: Значэнне поля больш чым %%_number.
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value must be represented in the international format of telephone numbers.: Значэнне поля павiнна быць прадстаўлена ў міжнародным фармаце тэлефонных нумароў.
@@ -621,8 +621,8 @@ translations
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The report will be created after submitting the form.: Справаздача будзе створана пасля адпраўкі формы.
     - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
-    - the size of uploaded file more than %%_size: памер загружанага файла больш чым %%_size
-    - the size of uploaded file more than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
+    - the size of uploaded file greater than %%_size: памер загружанага файла больш чым %%_size
+    - the size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца)
     - This combination of values is already in use!: Такая камбінацыя значэнняў ужо выкарыстоўваецца!
     - This page should be use HTTPS protocol!: Гэтая старонка павінна выкарыстоўваць HTTPS-пратакол!
     - Thousands separator: Раздзяляльнік тысяч

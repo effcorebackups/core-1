@@ -24,7 +24,7 @@ namespace effcore {
     if (strlen($new_value) && strlen($max) && $new_value > $max) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an incorrect value!',
-        'Field value is more than %%_number.'], ['title' => translation::apply($field->title), 'number' => $max]
+        'Field value is greater than %%_number.'], ['title' => translation::apply($field->title), 'number' => $max]
       ));
     } else {
       return true;

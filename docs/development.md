@@ -82,7 +82,7 @@ About forms
    - input[type=text,name=shared_name[],value=fake_value]
    - input[type=text,name=shared_name[],value=2]
 
-2. If you used more than 1 element with attribute MULTIPLE and shared
+2. If you used greater than 1 element with attribute MULTIPLE and shared
    NAME (name="shared_name[]"), after submit you will get merged
    arrays of values.
 
