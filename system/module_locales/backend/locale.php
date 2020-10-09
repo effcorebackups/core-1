@@ -33,13 +33,14 @@ namespace effcore {
   static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
   static function format_bytes($bytes) {
-    $translations = [
-      'KiB' => ' '.translation::apply('KiB'),
-      'MiB' => ' '.translation::apply('MiB'),
-      'GiB' => ' '.translation::apply('GiB'),
-      'TiB' => ' '.translation::apply('TiB'),
-        'B' => ' '.translation::apply(  'B')];
-    return str_replace(array_keys($translations), array_values($translations), core::bytes_to_abbreviated($bytes, true));
+    $count = 0;
+    $translation = core::bytes_to_abbreviated($bytes, true);
+    if ($count === 0) $translation = str_replace('TiB', ' '.translation::apply('TiB'), $translation, $count);
+    if ($count === 0) $translation = str_replace('GiB', ' '.translation::apply('GiB'), $translation, $count);
+    if ($count === 0) $translation = str_replace('MiB', ' '.translation::apply('MiB'), $translation, $count);
+    if ($count === 0) $translation = str_replace('KiB', ' '.translation::apply('KiB'), $translation, $count);
+    if ($count === 0) $translation = str_replace('B',   ' '.translation::apply('B'  ), $translation);
+    return $translation;
   }
 
   static function format_seconds($seconds) {
