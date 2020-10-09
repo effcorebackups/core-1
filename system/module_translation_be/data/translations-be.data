@@ -190,6 +190,16 @@ translations
     - Field "%%_title" should be selected!: Поле "%%_title" павінна быць абрана!
     - Field "%%_title" should contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць максімум %%_number сімвал%%_plural{number,au-a}!
     - Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" павінна змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}!
+    - Field "%%_title" should contain anchor!: Поле "%%_title" павінна змяшчаць якар!
+    - Field "%%_title" should contain domain!: Поле "%%_title" павінна змяшчаць дамен!
+    - Field "%%_title" should contain path!: Поле "%%_title" павінна змяшчаць шлях!
+    - Field "%%_title" should contain protocol!: Поле "%%_title" павінна змяшчаць пратакол!
+    - Field "%%_title" should contain query!: Поле "%%_title" павінна змяшчаць запыт!
+    - Field "%%_title" should not contain anchor!: Поле "%%_title" не павінна змяшчаць якар!
+    - Field "%%_title" should not contain domain!: Поле "%%_title" не павінна змяшчаць дамен!
+    - Field "%%_title" should not contain path!: Поле "%%_title" не павінна змяшчаць шлях!
+    - Field "%%_title" should not contain protocol!: Поле "%%_title" не павінна змяшчаць пратакол!
+    - Field "%%_title" should not contain query!: Поле "%%_title" не павінна змяшчаць запыт!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле павінна змяшчаць %%_number сімвал%%_plural{number,au-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
@@ -665,25 +675,15 @@ translations
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
-    - URL should contain anchor!: URL павінен змяшчаць якар!
     - URL should contain anchor.: URL павінен змяшчаць якар.
-    - URL should contain domain!: URL павінен змяшчаць дамен!
     - URL should contain domain.: URL павінен змяшчаць дамен.
-    - URL should contain path!: URL павінен змяшчаць шлях!
     - URL should contain path.: URL павінен змяшчаць шлях.
-    - URL should contain protocol!: URL павінен змяшчаць пратакол!
     - URL should contain protocol.: URL павінен змяшчаць пратакол.
-    - URL should contain query!: URL павінен змяшчаць запыт!
     - URL should contain query.: URL павінен змяшчаць запыт.
-    - URL should not contain anchor!: URL не павінен змяшчаць якар!
     - URL should not contain anchor.: URL не павінен змяшчаць якар.
-    - URL should not contain domain!: URL не павінен змяшчаць дамен!
     - URL should not contain domain.: URL не павінен змяшчаць дамен.
-    - URL should not contain path!: URL не павінен змяшчаць шлях!
     - URL should not contain path.: URL не павінен змяшчаць шлях.
-    - URL should not contain protocol!: URL не павінен змяшчаць пратакол!
     - URL should not contain protocol.: URL не павінен змяшчаць пратакол.
-    - URL should not contain query!: URL не павінен змяшчаць запыт!
     - URL should not contain query.: URL не павінен змяшчаць запыт.
     - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі

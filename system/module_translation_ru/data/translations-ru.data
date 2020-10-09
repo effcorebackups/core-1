@@ -190,6 +190,16 @@ translations
     - Field "%%_title" should be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title" should contain a maximum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать максимум %%_number символ%%_plural{number,ov-a}!
     - Field "%%_title" should contain a minimum of %%_number character%%_plural{number,s}!: Поле "%%_title" должно содержать минимум %%_number символ%%_plural{number,ov-a}!
+    - Field "%%_title" should contain anchor!: Поле "%%_title" должно содержать якорь!
+    - Field "%%_title" should contain domain!: Поле "%%_title" должно содержать домен!
+    - Field "%%_title" should contain path!: Поле "%%_title" должно содержать путь!
+    - Field "%%_title" should contain protocol!: Поле "%%_title" должно содержать протокол!
+    - Field "%%_title" should contain query!: Поле "%%_title" должно содержать запрос!
+    - Field "%%_title" should not contain anchor!: Поле "%%_title" не должно содержать якорь!
+    - Field "%%_title" should not contain domain!: Поле "%%_title" не должно содержать домен!
+    - Field "%%_title" should not contain path!: Поле "%%_title" не должно содержать путь!
+    - Field "%%_title" should not contain protocol!: Поле "%%_title" не должно содержать протокол!
+    - Field "%%_title" should not contain query!: Поле "%%_title" не должно содержать запрос!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле может содержать %%_number символ%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле может содержать максимум %%_number символ%%_plural{number,ov-a}.
@@ -665,25 +675,15 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
-    - URL should contain anchor!: URL должен содержать якорь!
     - URL should contain anchor.: URL должен содержать якорь.
-    - URL should contain domain!: URL должен содержать домен!
     - URL should contain domain.: URL должен содержать домен.
-    - URL should contain path!: URL должен содержать путь!
     - URL should contain path.: URL должен содержать путь.
-    - URL should contain protocol!: URL должен содержать протокол!
     - URL should contain protocol.: URL должен содержать протокол.
-    - URL should contain query!: URL должен содержать запрос!
     - URL should contain query.: URL должен содержать запрос.
-    - URL should not contain anchor!: URL не должен содержать якорь!
     - URL should not contain anchor.: URL не должен содержать якорь.
-    - URL should not contain domain!: URL не должен содержать домен!
     - URL should not contain domain.: URL не должен содержать домен.
-    - URL should not contain path!: URL не должен содержать путь!
     - URL should not contain path.: URL не должен содержать путь.
-    - URL should not contain protocol!: URL не должен содержать протокол!
     - URL should not contain protocol.: URL не должен содержать протокол.
-    - URL should not contain query!: URL не должен содержать запрос!
     - URL should not contain query.: URL не должен содержать запрос.
     - Use the international format for phone number.: Используйте международный формат номера телефона.
     - used by modules: используется модулями
