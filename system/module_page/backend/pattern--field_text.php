@@ -90,7 +90,7 @@ namespace effcore {
     if (strlen($new_value) && strlen($pattern) &&
                      !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains incorrect value!',
+        'Field "%%_title" contains an incorrect value!',
         'Field value does not match the regular expression "%%_expression".'], ['title' => (new text($field->title))->render(), 'expression' => $pattern]
       ));
     } else {

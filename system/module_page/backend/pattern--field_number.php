@@ -56,7 +56,7 @@ namespace effcore {
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && core::validate_number($new_value) === false) {
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains incorrect value!',
+        'Field "%%_title" contains an incorrect value!',
         'Field value is not a valid number.'], ['title' => (new text($field->title))->render() ]
       ));
     } else {
@@ -72,7 +72,7 @@ namespace effcore {
       if ($fraction_new_value_length > 11 ||
           $fraction_new_value_length > $fraction_step_length) {
         $field->error_set(new text_multiline([
-          'Field "%%_title" contains incorrect value!',
+          'Field "%%_title" contains an incorrect value!',
           'Fraction part is too long.'], ['title' => (new text($field->title))->render() ]
         ));
         return;
@@ -88,7 +88,7 @@ namespace effcore {
       $max = (float)$field->max_get();
       if (rtrim(strrchr(number_format(($new_value - $min) / $step, 11), '.'), '.0') !== '') {
         $field->error_set(new text_multiline([
-          'Field "%%_title" contains incorrect value!',
+          'Field "%%_title" contains an incorrect value!',
           'Field value is not in valid range.'], ['title' => (new text($field->title))->render() ]
         ));
         return;

@@ -180,7 +180,7 @@ translations
     - Field "%%_title" contains an incorrect telephone number!: Поле "%%_title" змяшчае няправільны нумар тэлефона!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" змяшчае няправільны час!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" змяшчае няправільны URL!
-    - Field "%%_title" contains incorrect value!: Поле "%%_title" змяшчае няправільнае значэнне!
+    - Field "%%_title" contains an incorrect value!: Поле "%%_title" змяшчае няправільнае значэнне!
     - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" змяшчае раней выкарыстаную камбінацыю значэнняў!
     - Field "%%_title" contains the previously used value!: Поле "%%_title" змяшчае раней выкарыстанае значэнне!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не падтрымлівае множны выбар!

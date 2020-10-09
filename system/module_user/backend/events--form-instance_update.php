@@ -57,7 +57,7 @@ namespace effcore\modules\user {
                 'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role_new], 'limit'       => 1]);
               if ($result) {
                 $items['#id_role']->error_set(new text_multiline([
-                  'Field "%%_title" contains incorrect value!',
+                  'Field "%%_title" contains an incorrect value!',
                   'This combination of values is already in use!'], ['title' => (new text($items['#id_role']->title))->render() ]
                 ));
               }
@@ -76,7 +76,7 @@ namespace effcore\modules\user {
               if ($result) {
                 $items['#id_role'      ]->error_set();
                 $items['#id_permission']->error_set(new text_multiline([
-                  'Field "%%_title" contains incorrect value!',
+                  'Field "%%_title" contains an incorrect value!',
                   'This combination of values is already in use!'], ['title' => (new text($items['#id_permission']->title))->render() ]
                 ));
               }
@@ -86,7 +86,7 @@ namespace effcore\modules\user {
           if ($entity->name === 'user' && !$form->has_error() && !empty($form->_instance)) {
             if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
               $items['#password_hash_current']->error_set(
-                'Field "%%_title" contains incorrect value!', ['title' => (new text($items['#password_hash_current']->title))->render() ]
+                'Field "%%_title" contains an incorrect value!', ['title' => (new text($items['#password_hash_current']->title))->render() ]
               );
               return;
             }
