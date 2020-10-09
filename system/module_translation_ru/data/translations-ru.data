@@ -200,6 +200,7 @@ translations
     - Field value is more than %%_number.: Значение поля больше чем %%_number.
     - Field value is not a valid number.: Значение поля не является допустимым числом.
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
+    - Field value must be represented in the international format of telephone numbers.: Значение поля должно быть представлено в международном формат телефонных номеров.
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".
     - Field value should contain anchor.: Значение поля должно содержать якорь.
     - Field value should contain domain.: Значение поля должно содержать домен.
@@ -669,7 +670,6 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
-    - Use the international format for phone number.: Используйте международный формат номера телефона.
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Агент пользователя
