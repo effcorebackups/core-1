@@ -200,8 +200,6 @@ translations
     - Field "%%_title" should not contain path!: Поле "%%_title" не павінна змяшчаць шлях!
     - Field "%%_title" should not contain protocol!: Поле "%%_title" не павінна змяшчаць пратакол!
     - Field "%%_title" should not contain query!: Поле "%%_title" не павінна змяшчаць запыт!
-    - Field "%%_title" value cannot be start with "%%_value"!: Значэнне поля "%%_title" не павінна пачынацца з "%%_value"!
-    - Field "%%_title" value should be start with "%%_value"!: Значэнне поля "%%_title" павінна пачынацца з "%%_value"!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
