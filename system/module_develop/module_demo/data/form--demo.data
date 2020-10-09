@@ -101,7 +101,7 @@ forms
             description|text_multiline
               text
               - 0: Field "%%_title".
-              - 1: Field can contain only the next characters: %%_characters
+              - 1: Field value can contain only the next characters: %%_characters
               args
               - characters: "a-z", "A-Z", "0-9", "_", "-"
               - title: field_nickname
