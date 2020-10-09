@@ -219,7 +219,17 @@ translations
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
+    - Field value should contain anchor.: Значэнне поля павінна змяшчаць якар.
+    - Field value should contain domain.: Значэнне поля павінна змяшчаць дамен.
+    - Field value should contain path.: Значэнне поля павінна змяшчаць шлях.
+    - Field value should contain protocol.: Значэнне поля павінна змяшчаць пратакол.
+    - Field value should contain query.: Значэнне поля павінна змяшчаць запыт.
     - Field value should match the regular expression\: %%_expression: Значэнне поля павінна адпавядаць рэгулярнаму выразу: %%_expression
+    - Field value should not contain anchor.: Значэнне поля не павінна змяшчаць якар.
+    - Field value should not contain domain.: Значэнне поля не павінна змяшчаць дамен.
+    - Field value should not contain path.: Значэнне поля не павінна змяшчаць шлях.
+    - Field value should not contain protocol.: Значэнне поля не павінна змяшчаць пратакол.
+    - Field value should not contain query.: Значэнне поля не павінна змяшчаць запыт.
     - Field: Поле
     - Field\: text: Поле: тэкст
     - Fields: Палі
@@ -677,16 +687,6 @@ translations
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
-    - URL should contain anchor.: URL павінен змяшчаць якар.
-    - URL should contain domain.: URL павінен змяшчаць дамен.
-    - URL should contain path.: URL павінен змяшчаць шлях.
-    - URL should contain protocol.: URL павінен змяшчаць пратакол.
-    - URL should contain query.: URL павінен змяшчаць запыт.
-    - URL should not contain anchor.: URL не павінен змяшчаць якар.
-    - URL should not contain domain.: URL не павінен змяшчаць дамен.
-    - URL should not contain path.: URL не павінен змяшчаць шлях.
-    - URL should not contain protocol.: URL не павінен змяшчаць пратакол.
-    - URL should not contain query.: URL не павінен змяшчаць запыт.
     - Use the international format for phone number.: Выкарыстоўвайце міжнародны фармат нумара тэлефона.
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
