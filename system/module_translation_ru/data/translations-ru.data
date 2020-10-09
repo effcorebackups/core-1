@@ -200,6 +200,8 @@ translations
     - Field "%%_title" should not contain path!: Поле "%%_title" не должно содержать путь!
     - Field "%%_title" should not contain protocol!: Поле "%%_title" не должно содержать протокол!
     - Field "%%_title" should not contain query!: Поле "%%_title" не должно содержать запрос!
+    - Field "%%_title" value cannot be start with "%%_value"!: Значение поля "%%_title" не должно начинаться с "%%_value"!
+    - Field "%%_title" value should be start with "%%_value"!: Значение поля "%%_title" должно начинаться с "%%_value"!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain %%_number character%%_plural{number,s}.: Поле может содержать %%_number символ%%_plural{number,ov-a}.
     - Field can contain a maximum of %%_number character%%_plural{number,s}.: Поле может содержать максимум %%_number символ%%_plural{number,ov-a}.
