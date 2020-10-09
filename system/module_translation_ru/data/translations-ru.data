@@ -96,7 +96,6 @@ translations
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - Cron last run: Последний запуск Cron
-    - Current field value\: %%_value: Текущее значение поля: %%_value
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
     - Current: Текущие
@@ -190,10 +189,13 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле может содержать максимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле может содержать минимум %%_number файл%%_plural{number,ov-a}.
     - Field can contain only %%_number file%%_plural{number,s}.: Поле может содержать только %%_number файл%%_plural{number,ov-a}.
+    - Field value at the current moment\: %%_value: Значение поля в текущий момент: %%_value
     - Field value can contain a maximum of %%_number character%%_plural{number,s}.: Значение поля может содержать максимум %%_number символ%%_plural{number,ov-a}.
     - Field value can contain a minimum of %%_number character%%_plural{number,s}.: Значение поля может содержать минимум %%_number символ%%_plural{number,ov-a}.
     - Field value can contain only %%_number character%%_plural{number,s}.: Значение поля может содержать только %%_number символ%%_plural{number,ov-a}.
     - Field value can contain only the next characters\: %%_characters: Значение поля может содержать только следующие символы: %%_characters
+    - Field value cannot be greater than\: %%_value: Значение поля не может быть больше чем: %%_value
+    - Field value cannot be less than\: %%_value: Значение поля не может быть меньше чем: %%_value
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значение поля не соответствует регулярному выражению "%%_expression".
     - Field value is less than %%_number.: Значение поля меньше чем %%_number.
@@ -358,7 +360,6 @@ translations
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
-    - Maximum field value\: %%_value: Максимальное значение поля: %%_value
     - Maximum width: Максимальная ширина
     - Memory for PHP (bytes): Память для PHP (байты)
     - Menu active: Меню активное
@@ -371,7 +372,6 @@ translations
     - Message: Сообщение
     - Messages: Сообщения
     - MiB: МиБ
-    - Minimum field value\: %%_value: Минимальное значение поля: %%_value
     - Minimum width: Минимальная ширина
     - missing a temporary directory: отсутствует временный каталог
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
