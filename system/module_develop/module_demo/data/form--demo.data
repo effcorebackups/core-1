@@ -30,8 +30,8 @@ forms
             description_state: opened
             description|text_multiline
               text
-              - 0: This description is always shown.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: This description is always shown.
               args
               - title: field_text
             element_attributes
@@ -45,8 +45,8 @@ forms
             description_position: top
             description|text_multiline
               text
-              - 0: This description is shown on top.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: This description is shown on top.
               args
               - title: field_password
             element_attributes
@@ -77,8 +77,8 @@ forms
             title: Telephone number
             description|text_multiline
               text
-              - 0: Use the international format for phone number.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: Use the international format for phone number.
               args
               - title: field_tel
             element_attributes
@@ -100,8 +100,8 @@ forms
             title: Nickname
             description|text_multiline
               text
-              - 0: Field can contain only the next characters: %%_characters
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: Field can contain only the next characters: %%_characters
               args
               - characters: "a-z", "A-Z", "0-9", "_", "-"
               - title: field_nickname
@@ -137,8 +137,8 @@ forms
             title: Color
             description|text_multiline
               text
-              - 0: The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" - green and "ef" - blue.
               args
               - title: field_color
             element_attributes
@@ -151,8 +151,8 @@ forms
             title: Date
             description|text_multiline
               text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: If the initial value is not specified, the current value will be used.
               args
               - title: field_date
             element_attributes
@@ -163,8 +163,8 @@ forms
             title: Time
             description|text_multiline
               text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: If the initial value is not specified, the current value will be used.
               args
               - title: field_time
             element_attributes
@@ -175,8 +175,8 @@ forms
             title: Date/Time
             description|text_multiline
               text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: If the initial value is not specified, the current value will be used.
               args
               - title: field_datetime
             element_attributes
@@ -189,8 +189,8 @@ forms
             is_set_utc: true
             description|text_multiline
               text
-              - 0: If the initial value is not specified, the current value will be used.
-              - 1: Field "%%_title".
+              - 0: Field "%%_title".
+              - 1: If the initial value is not specified, the current value will be used.
               args
               - title: field_datetime_local
             element_attributes
@@ -417,8 +417,8 @@ forms
                 title: Access
                 description|text_multiline
                   text
-                  - 0: Access settings are not applicable if no one role is active!
-                  - 1: Widget "%%_title".
+                  - 0: Widget "%%_title".
+                  - 1: Access settings are not applicable if no one role is active!
                   args
                   - title: widget_access
         # ─────────────────────────────────────────────────────────────────────
