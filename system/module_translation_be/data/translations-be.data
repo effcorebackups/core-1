@@ -204,8 +204,6 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field should contain %%_number file%%_plural{number,s}.: Поле павінна змяшчаць %%_number файл%%_plural{number,au-a}.
-    - Field should contain a maximum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць максімум %%_number файл%%_plural{number,au-a}.
-    - Field should contain a minimum of %%_number file%%_plural{number,s}.: Поле павінна змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
     - Field value can contain a maximum of %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
     - Field value can contain a minimum of %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field value can contain only %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural{number,au-a}.
