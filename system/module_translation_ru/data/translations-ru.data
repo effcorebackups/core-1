@@ -170,8 +170,6 @@ translations
     - Feedback\: select: Отзыв: выбрать
     - Feedback\: update: Отзыв: обновить
     - Feedbacks: Отзывы
-    - Field "%%_title" (%%_id) was deleted.: Поле "%%_title" (%%_id) было удалено.
-    - Field "%%_title" (%%_id) was inserted.: Поле "%%_title" (%%_id) было вставлено.
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" cannot be blank!: Поле "%%_title" не может быть пустым!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!

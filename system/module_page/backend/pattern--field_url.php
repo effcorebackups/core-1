@@ -62,7 +62,7 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     $raw_url = new url($new_value, ['completion' => false]);
-    if (strlen($new_value) && (new url($new_value))->has_error === true                                 ) {$field->error_set('Field "%%_title" contains an incorrect URL!',   ['title' => (new text($field->title))->render() ]); return;}
+    if (strlen($new_value) && (new url($new_value))->has_error === true                                 ) {$field->error_set('Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]); return;}
     if (strlen($new_value) && isset($field->should_be_excluded['protocol']) && $raw_url->protocol !== '') {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value should not contain protocol.'], ['title' => (new text($field->title))->render() ])); return;}
     if (strlen($new_value) && isset($field->should_be_excluded['domain'  ]) && $raw_url->domain   !== '') {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value should not contain domain.'  ], ['title' => (new text($field->title))->render() ])); return;}
     if (strlen($new_value) && isset($field->should_be_excluded['path'    ]) && $raw_url->path     !== '') {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value should not contain path.'    ], ['title' => (new text($field->title))->render() ])); return;}
