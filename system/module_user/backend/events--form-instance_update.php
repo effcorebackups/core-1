@@ -23,7 +23,10 @@ namespace effcore\modules\user {
         $items['#id_role']->disabled['registered'] = 'registered';
         $items['#id_role']->build();
         $items['#id_role']->value_set($form->_instance->id_role);
-        $items['#id_role']->disabled_set($form->_instance->id_user === '1');
+        $items['#id_role']->disabled_set(
+          $form->_instance->id_user === '1' &&
+          $form->_instance->id_role === 'admins'
+        );
       }
     # field 'password'
       if ($entity->name === 'user') {
