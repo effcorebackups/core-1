@@ -182,7 +182,7 @@ translations
     - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" содержит ранее использованную комбинацию значений!
     - Field "%%_title" contains the previously used value!: Поле "%%_title" содержит ранее использованное значение!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
-    - Field "%%_title" does not support uploading this file type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
+    - Field "%%_title" does not support uploading this type of file!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет изменённое значение.
     - Field "%%_title" should be enabled!: Поле "%%_title" должно быть включено!
     - Field "%%_title" should be selected!: Поле "%%_title" должно быть выбрано!
