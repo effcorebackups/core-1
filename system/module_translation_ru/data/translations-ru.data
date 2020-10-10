@@ -171,6 +171,7 @@ translations
     - Feedbacks: Отзывы
     - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" cannot be blank!: Поле "%%_title" не может быть пустым!
+    - Field "%%_title" contains an error!: Поле "%%_title" содержит ошибку!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
     - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
@@ -198,8 +199,8 @@ translations
     - Field value cannot be less than\: %%_value: Значение поля не может быть меньше чем: %%_value
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
     - Field value does not match the regular expression "%%_expression".: Значение поля не соответствует регулярному выражению "%%_expression".
-    - Field value is less than %%_number.: Значение поля меньше чем %%_number.
     - Field value is greater than %%_number.: Значение поля больше чем %%_number.
+    - Field value is less than %%_number.: Значение поля меньше чем %%_number.
     - Field value is not a valid number.: Значение поля не является допустимым числом.
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
     - Field value must be represented in the international format of telephone numbers.: Значение поля должно быть представлено в международном формат телефонных номеров.
