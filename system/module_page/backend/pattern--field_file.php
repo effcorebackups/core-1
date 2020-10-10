@@ -357,9 +357,9 @@ namespace effcore {
         case UPLOAD_ERR_CANT_WRITE: $field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Failed to write file to disk.'                                                     ], ['title' => (new text($field->title))->render()                                            ])); return;
         case UPLOAD_ERR_EXTENSION : $field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'PHP extension stopped uploading file.'                                             ], ['title' => (new text($field->title))->render()                                            ])); return;
       }
-      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => (new text($field->title))->render(), 'error' => $c_new_value->error                                                                                              ]); return;}
-      if ($c_new_value->size === 0)              {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => (new text($field->title))->render(), 'error' => (new text('file is empty'))->render()                                                                            ]); return;}
-      if ($c_new_value->size > $max_size)        {$field->error_set('Field "%%_title" after trying to upload the file returned an error: %%_error!', ['title' => (new text($field->title))->render(), 'error' => (new text('Size of uploaded file greater than %%_size.', ['size' => locale::format_bytes($max_size)]))->render() ]); return;}
+      if ($c_new_value->error !== UPLOAD_ERR_OK) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Error: %%_error'                            ], ['title' => (new text($field->title))->render(),      'error' => $c_new_value->error       ])); return;}
+      if ($c_new_value->size  === 0            ) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'File is empty.'                             ], ['title' => (new text($field->title))->render()                                            ])); return;}
+      if ($c_new_value->size   >  $max_size    ) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Size of uploaded file greater than %%_size.'], ['title' => (new text($field->title))->render(), 'size' => locale::format_bytes($max_size) ])); return;}
     }
     return true;
   }

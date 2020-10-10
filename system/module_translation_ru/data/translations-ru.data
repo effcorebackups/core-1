@@ -150,6 +150,7 @@ translations
     - Entity "%%_entity" was uninstalled.: Сущность "%%_entity" была удалена.
     - entity is embedded: сущность является встроенной
     - Error: Ошибка
+    - Error\: %%_error: Ошибка: %%_error
     - event: событие
     - Event: Событие
     - Events: События
@@ -168,7 +169,6 @@ translations
     - Feedback\: select: Отзыв: выбрать
     - Feedback\: update: Отзыв: обновить
     - Feedbacks: Отзывы
-    - Field "%%_title" after trying to upload the file returned an error\: %%_error!: Поле "%%_title" после попытки загрузить файл вернуло ошибку: %%_error!
     - Field "%%_title" cannot be blank!: Поле "%%_title" не может быть пустым!
     - Field "%%_title" contains an error!: Поле "%%_title" содержит ошибку!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
@@ -225,7 +225,7 @@ translations
     - File can have a maximum size\: %%_value (PHP restriction): Файл может иметь максимальный размер: %%_value (ограничение PHP)
     - File can have a maximum size\: %%_value: Файл может иметь максимальный размер: %%_value
     - File can only be of the next types\: %%_types: Файл может быть только следующих типов: %%_types
-    - file is empty: файл пуст
+    - File is empty.: Файл пуст.
     - File name can contain only the next characters\: %%_characters: Имя файла может содержать только следующие символы: %%_characters
     - File name: Имя файла
     - File not found: Файл не найден
