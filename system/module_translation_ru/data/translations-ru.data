@@ -728,6 +728,7 @@ translations
     - Yes: Да
     - yes: да
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
+    - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
