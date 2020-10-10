@@ -9,7 +9,6 @@ translations
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - %%_number second%%_plural{number,s}: %%_number секунд%%_plural{number,a-ji}
     - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
-    - a PHP extension stopped the file upload: PHP-расширение остановило загрузку файла
     - access allowed by permission "%%_permission": доступ разрешён по разрешению "%%_permission"
     - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
     - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
@@ -159,7 +158,7 @@ translations
     - Execution: Выполнение
     - expand: развернуть
     - Expiration date: Дата окончания
-    - failed to write file to disk: не удалось записать файл на диск
+    - Failed to write file to disk.: Не удалось записать файл на диск.
     - failure: неудача
     - Feedback form: Форма обратной связи
     - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
@@ -235,6 +234,7 @@ translations
     - File types: Типы файлов
     - File was copied from "%%_from" to "%%_to".: Файл был скопирован из "%%_from" в "%%_to".
     - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!
+    - File was only partially uploaded.: Файл был загружен только частично.
     - File: Файл
     - file: файл
     - Files: Файлы
@@ -374,7 +374,7 @@ translations
     - Messages: Сообщения
     - MiB: МиБ
     - Minimum width: Минимальная ширина
-    - missing a temporary directory: отсутствует временный каталог
+    - Missing temporary directory.: Отсутствует временный каталог.
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
@@ -453,6 +453,7 @@ translations
     - PHP CURL version: PHP CURL версия
     - PHP dependencies: PHP-зависимости
     - PHP Exif is enabled: PHP Exif включён
+    - PHP extension stopped uploading file.: PHP-расширение остановило загрузку файла.
     - PHP GD is enabled: PHP GD включён
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP PCRE version: PHP PCRE версия
@@ -565,6 +566,8 @@ translations
     - Settings: Настройки
     - Shared parameters: Общие параметры
     - Simple layout: Простой макет
+    - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.
+    - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается).
     - Social networks: Социальные сети
     - SQL state\: %%_state: SQL состояние: %%_state
     - SQL storage: SQL хранилище
@@ -613,7 +616,6 @@ translations
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - The current version number is %%_number_current.: Номер текущей версии — %%_number_current.
-    - the file was only partially uploaded: файл был загружен только частично
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The minimum value is greater than the maximum value!: Минимальное значение больше максимального значения!
@@ -622,8 +624,6 @@ translations
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - The required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
-    - the size of uploaded file greater than %%_size: размер загружаемого файла больше чем %%_size
-    - the size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported): размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается)
     - This combination of values is already in use!: Такая комбинация значений уже используется!
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
