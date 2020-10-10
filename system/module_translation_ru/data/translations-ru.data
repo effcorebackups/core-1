@@ -179,7 +179,6 @@ translations
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
     - Field "%%_title" contains an incorrect value!: Поле "%%_title" содержит неверное значение!
     - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" содержит ранее использованную комбинацию значений!
-    - Field "%%_title" contains the previously used value!: Поле "%%_title" содержит ранее использованное значение!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
     - Field "%%_title" does not support uploading this type of file!: Поле "%%_title" не поддерживает загрузку такого типа файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" имеет изменённое значение.
@@ -478,6 +477,7 @@ translations
     - press to show description: нажмите, чтобы показать описание
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
+    - Previously used value was specified.: Было указано ранее использованное значение.
     - Profile: Профиль
     - Profiles: Профили
     - Query error!: Ошибка запроса!
@@ -727,8 +727,8 @@ translations
     - wrong user nickname: неправильный псевдоним пользователя
     - Yes: Да
     - yes: да
-    - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
+    - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number,ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.

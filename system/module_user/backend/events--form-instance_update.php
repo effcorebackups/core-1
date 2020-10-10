@@ -57,7 +57,7 @@ namespace effcore\modules\user {
                 'id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role_new], 'limit'       => 1]);
               if ($result) {
                 $items['#id_role']->error_set(new text_multiline([
-                  'Field "%%_title" contains an incorrect value!',
+                  'Field "%%_title" contains an error!',
                   'This combination of values is already in use!'], ['title' => (new text($items['#id_role']->title))->render() ]
                 ));
               }
@@ -76,7 +76,7 @@ namespace effcore\modules\user {
               if ($result) {
                 $items['#id_role'      ]->error_set();
                 $items['#id_permission']->error_set(new text_multiline([
-                  'Field "%%_title" contains an incorrect value!',
+                  'Field "%%_title" contains an error!',
                   'This combination of values is already in use!'], ['title' => (new text($items['#id_permission']->title))->render() ]
                 ));
               }

@@ -36,9 +36,9 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (  parent::validate_value($field, $form, $element,  $new_value) === true  ) {
-      if (strlen($new_value) && preg_match('%^[^/].*$%',               $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value should be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/'       ])); return;}
-      if (strlen($new_value) && preg_match('%^/user$|^/user/.*$%',     $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value cannot be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/user/'  ])); return;}
-      if (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$%', $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an incorrect value!', 'Field value cannot be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/manage/'])); return;}
+      if (strlen($new_value) && preg_match('%^[^/].*$%',               $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Field value should be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/'       ])); return;}
+      if (strlen($new_value) && preg_match('%^/user$|^/user/.*$%',     $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Field value cannot be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/user/'  ])); return;}
+      if (strlen($new_value) && preg_match('%^/manage$|^/manage/.*$%', $new_value)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Field value cannot be start with "%%_value".'], ['title' => (new text($field->title))->render(), 'value' => '/manage/'])); return;}
       return true;
     }
   }

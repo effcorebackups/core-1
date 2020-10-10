@@ -64,7 +64,7 @@ namespace effcore {
     $minlength = $field->minlength_get();
     if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains an incorrect value!',
+        'Field "%%_title" contains an error!',
         'Field value can contain a minimum of %%_number character%%_plural{number,s}.'], ['title' => (new text($field->title))->render(), 'number' => $minlength]
       ));
     } else {
@@ -77,7 +77,7 @@ namespace effcore {
     if (strlen($new_value) && is_numeric($maxlength) && $maxlength < strlen($new_value)) {
       $new_value = substr($new_value, 0, $maxlength);
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains an incorrect value!',
+        'Field "%%_title" contains an error!',
         'Field value can contain a maximum of %%_number character%%_plural{number,s}.',
         'Value was trimmed to the required length!',
         'Check field again before submit.'], ['title' => (new text($field->title))->render(), 'number' => $maxlength]
@@ -92,7 +92,7 @@ namespace effcore {
     if (strlen($new_value) && strlen($pattern) &&
                      !preg_match('%'.$pattern.'%', $new_value)) {
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains an incorrect value!',
+        'Field "%%_title" contains an error!',
         'Field value does not match the regular expression "%%_expression".'], ['title' => (new text($field->title))->render(), 'expression' => $pattern]
       ));
     } else {
@@ -109,7 +109,8 @@ namespace effcore {
     if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new value
         (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(new text_multiline([
-        'Field "%%_title" contains the previously used value!',
+        'Field "%%_title" contains an error!',
+        'Previously used value was specified.',
         'Only unique value is allowed.'], ['title' => (new text($field->title))->render() ]
       ));
     } else {
