@@ -150,7 +150,7 @@ namespace effcore {
       if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
       if ($options['completion'] && $this->path     === '') $this->path     = '/';
       if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
-      if ($options['decode'] & static::is_decode_path) $this->path = urldecode($this->path);
+      if ($options['decode'] & static::is_decode_path) $this->path = rawurldecode($this->path);
            $this->has_error = false;
     } else $this->has_error = true;
   }
