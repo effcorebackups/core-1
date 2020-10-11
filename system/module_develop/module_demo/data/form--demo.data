@@ -72,6 +72,19 @@ forms
             element_attributes
             - name: url
             - value: http://example.com
+          # is_allowed_unicode: false
+          # should_be_included
+          # - =: protocol
+          # - =: domain
+          # - =: path
+          # - =: query
+          # - =: anchor
+          # should_be_excluded
+          # - =: protocol
+          # - =: domain
+          # - =: path
+          # - =: query
+          # - =: anchor
       # field 'Telephone number'
         - tel|field_tel
             title: Telephone number
