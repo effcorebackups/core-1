@@ -246,9 +246,9 @@ namespace effcore {
     $checked_url = new static($url);
     $current_url =     static::get_current();
     switch ($compare_type) {
-      case 'full': return $checked_url->full_get() ==
+      case 'full': return $checked_url->full_get() ===
                           $current_url->full_get();
-      case 'path': return $checked_url->domain_get().$checked_url->path_get() ==
+      case 'path': return $checked_url->domain_get().$checked_url->path_get() ===
                           $current_url->domain_get().$current_url->path_get();
     }
   }
