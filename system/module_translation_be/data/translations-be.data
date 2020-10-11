@@ -193,9 +193,11 @@ translations
     - Field value can contain a minimum of %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
     - Field value can contain only %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural{number,au-a}.
     - Field value can contain only the next characters\: %%_characters: Значэнне поля можа змяшчаць толькі наступныя сімвалы: %%_characters
+    - Field value can contain Unicode.: Значэнне поля можа змяшчаць Юнікод.
     - Field value cannot be greater than\: %%_value: Значэнне поля не можа быць больш чым: %%_value
     - Field value cannot be less than\: %%_value: Значэнне поля не можа быць менш чым: %%_value
     - Field value cannot be start with "%%_value".: Значэнне поля не павінна пачынацца з "%%_value".
+    - Field value cannot contain Unicode.: Значэнне поля не можа змяшчаць Юнікод.
     - Field value does not match the regular expression "%%_expression".: Значэнне поля не адпавядае рэгулярнаму выразу "%%_expression".
     - Field value is greater than %%_number.: Значэнне поля больш чым %%_number.
     - Field value is less than %%_number.: Значэнне поля менш чым %%_number.
