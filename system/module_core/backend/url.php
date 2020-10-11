@@ -105,8 +105,9 @@ namespace effcore {
   # │ n │ protocol +  domain +  path +  query +  anchor │
   # └───┴───────────────────────────────────────────────┘
 
-  const is_decode_domain = 0b01;
-  const is_decode_path   = 0b10;
+  const is_decode_nothing = 0b00;
+  const is_decode_domain  = 0b01;
+  const is_decode_path    = 0b10;
 
   public $raw;
   public $protocol;
@@ -237,8 +238,8 @@ namespace effcore {
     else       return static::back_part_make_custom(static::get_current()->tiny_get());
   }
 
-  static function is_local($url) {
-    return (new static($url))->domain_get() === core::server_get_host();
+  static function is_local($url, $decode = false) {
+    return (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain_get() === core::server_get_host($decode);
   }
 
   static function is_active($url, $compare_type = 'full') {
