@@ -23,8 +23,6 @@ namespace effcore {
 
   function render_description() {
     $this->render_prepare_description();
-    if ($this->is_allowed_unicode === true          ) $this->description[] = new markup('p', ['data-id' => 'url-unicode'     ], 'Field value can contain Unicode.'        );
-    if ($this->is_allowed_unicode !== true          ) $this->description[] = new markup('p', ['data-id' => 'url-not-unicode' ], 'Field value cannot contain Unicode.'     );
     if (isset($this->should_be_excluded['protocol'])) $this->description[] = new markup('p', ['data-id' => 'url-not-protocol'], 'Field value should not contain protocol.');
     if (isset($this->should_be_excluded['domain'  ])) $this->description[] = new markup('p', ['data-id' => 'url-not-domain'  ], 'Field value should not contain domain.'  );
     if (isset($this->should_be_excluded['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-not-path'    ], 'Field value should not contain path.'    );
@@ -35,6 +33,8 @@ namespace effcore {
     if (isset($this->should_be_included['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-path'        ], 'Field value should contain path.'        );
     if (isset($this->should_be_included['query'   ])) $this->description[] = new markup('p', ['data-id' => 'url-query'       ], 'Field value should contain query.'       );
     if (isset($this->should_be_included['anchor'  ])) $this->description[] = new markup('p', ['data-id' => 'url-anchor'      ], 'Field value should contain anchor.'      );
+    if ($this->is_allowed_unicode === true          ) $this->description[] = new markup('p', ['data-id' => 'url-unicode'     ], 'Field value can contain Unicode.'        );
+    if ($this->is_allowed_unicode !== true          ) $this->description[] = new markup('p', ['data-id' => 'url-not-unicode' ], 'Field value cannot contain Unicode.'     );
     return parent::render_description();
   }
 
