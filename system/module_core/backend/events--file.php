@@ -138,7 +138,7 @@ namespace effcore\modules\core {
   # send result data
     if ($resource = fopen($file->path_get(), 'rb')) {
       $c_print_length = $min;
-      if (fseek($resource, $min) == 0) {
+      if (fseek($resource, $min) === 0) {
         while (!feof($resource)) {
           $c_data = fread($resource, 1024);
           for ($i = 0; $i < strlen($c_data); $i++, $c_print_length++) {
