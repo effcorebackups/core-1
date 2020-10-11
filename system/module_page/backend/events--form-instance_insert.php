@@ -57,7 +57,8 @@ namespace effcore\modules\page {
             if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (page::get($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
-                  'Field "%%_title" contains the previously used value!',
+                  'Field "%%_title" contains an error!',
+                  'Previously used value was specified.',
                   'Only unique value is allowed.'], ['title' => (new text($items['#id']->title))->render() ]
                 ));
               }
@@ -68,7 +69,8 @@ namespace effcore\modules\page {
             if ($items['#url']->value_get()) { # check the uniqueness of SQL + NoSQL data
               if (page::get_by_url($items['#url']->value_get(), false)) {
                 $items['#url']->error_set(new text_multiline([
-                  'Field "%%_title" contains the previously used value!',
+                  'Field "%%_title" contains an error!',
+                  'Previously used value was specified.',
                   'Only unique value is allowed.'], ['title' => (new text($items['#url']->title))->render() ]
                 ));
               }
