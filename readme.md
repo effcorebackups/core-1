@@ -122,7 +122,7 @@ As solutions to increase the level of security were used:
 - filtering of user input in form fields;
 - filtering of URL argument;
 - single entry point of any HTTP request,
-  as a result - no negative effects when the web server
+  as a result — no negative effects when the web server
   is configured incorrectly (".htaccess", "web.config");
 - the ability to create a new file type with full access control;
 - the ability to get a page assembly hash in the system console;
