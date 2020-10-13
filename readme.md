@@ -384,7 +384,7 @@ what is originally supposed by the author.
 Decoration
 ---------------------------------------------------------------------
 
-For decoration of the site/portal in the system exists the section "Decoration".
+To decorate the site/portal in the system exists the section "Decoration".
 In this section, the administrator can change the color scheme of the page elements.
 The number of colors is limited by the full set of named CSS colors (for example, "black",
 "white" and so on). Also in this section there are a color presets and in one click the
