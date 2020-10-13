@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\core {
-          use \effcore\block;
+          use \effcore\block_markup;
           use \effcore\core;
           use \effcore\decorator;
           use \effcore\language;
@@ -24,7 +24,7 @@ namespace effcore\modules\core {
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('files')->select('bundle/system/build'))]);
-    return new block('System information', ['data-id' => 'info_system', 'data-title-is-hidden' => true], [
+    return new block_markup('System information', ['data-id' => 'info_system', 'data-title-is-hidden' => true], [
       $logo,
       $copyright,
       $build
@@ -44,7 +44,7 @@ namespace effcore\modules\core {
       'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                     ],
       'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                         ],
       'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_update ? [$is_required_update_sticker, new text(' → '), $is_required_update_fixlink] : [$is_required_update_sticker])] ]];
-    return new block('Service', ['data-id' => 'info_service', 'data-title-is-styled' => 'false'], [
+    return new block_markup('Service', ['data-id' => 'info_service', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
   }
@@ -77,7 +77,7 @@ namespace effcore\modules\core {
       'hostname'                    => ['title' => 'Hostname',                'value' => php_uname('n')                                             ],
       'timezone'                    => ['title' => 'Time zone',               'value' => date_default_timezone_get()                                ],
       'datetime'                    => ['title' => 'UTC date/time',           'value' => core::datetime_get()                                       ] ]];
-    return new block('Server', ['data-id' => 'info_server', 'data-title-is-styled' => 'false'], [
+    return new block_markup('Server', ['data-id' => 'info_server', 'data-title-is-styled' => 'false'], [
       $decorator
     ]);
   }

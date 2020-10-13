@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
-          use \effcore\block;
+          use \effcore\block_markup;
           use \effcore\canvas_svg;
           use \effcore\decorator;
           use \effcore\diagram;
@@ -111,7 +111,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Markup dynamic', ['data-id' => 'demo_markup_dynamic'], [
+    return new block_markup('Markup dynamic', ['data-id' => 'demo_markup_dynamic'], [
       $header_h2,
       $header_h2_paragraph,
       $header_h3,
@@ -239,7 +239,7 @@ namespace effcore\modules\demo {
   # ─────────────────────────────────────────────────────────────────────
   # result block
   # ─────────────────────────────────────────────────────────────────────
-    return new block('Decorators dynamic', ['data-id' => 'demo_decorators_dynamic', 'data-title-is-styled' => 'false'], [
+    return new block_markup('Decorators dynamic', ['data-id' => 'demo_decorators_dynamic', 'data-title-is-styled' => 'false'], [
       $decorator_table_title,
       $decorator_table,
       $decorator_table_adaptive_title,
@@ -289,7 +289,7 @@ namespace effcore\modules\demo {
     $canvas->glyph_set('XXXXX|----X|---X-|--X--|-X---|X----|X----|X----|X----|X----', 75, 3); # 7
     $canvas->glyph_set('-XXX-|X---X|X---X|X---X|-XXX-|X---X|X---X|X---X|X---X|-XXX-', 85, 3); # 8
     $canvas->glyph_set('-XXX-|X---X|X---X|X---X|X---X|-XXX-|----X|---X-|--X--|-X---', 95, 3); # 9
-    return new block('Canvas', ['data-id' => 'demo_canvas'], [
+    return new block_markup('Canvas', ['data-id' => 'demo_canvas'], [
       $canvas
     ]);
   }
@@ -309,8 +309,8 @@ namespace effcore\modules\demo {
     $diagram_radial->slice_insert('Parameter 3', 20, '0.02 '.translation::apply('sec.'), '#fc5740');
     $diagram_radial->slice_insert('Parameter 4', 10, '0.01 '.translation::apply('sec.'), '#fd9a1e');
     return new node([], [
-      new block('Linear diagram', ['data-id' => 'demo_diagram_linear'], $diagram_linear),
-      new block('Radial diagram', ['data-id' => 'demo_diagram_radial'], $diagram_radial)
+      new block_markup('Linear diagram', ['data-id' => 'demo_diagram_linear'], $diagram_linear),
+      new block_markup('Radial diagram', ['data-id' => 'demo_diagram_radial'], $diagram_radial)
     ]);
   }
 
@@ -324,7 +324,7 @@ namespace effcore\modules\demo {
     for ($i = 0; $i < 21; $i++) {
       $colors_via_parametric_tokens[] = new markup('x-color', []                               );
       $colors_via_overlays         [] = new markup('x-color', [], new markup('x-color-overlay'));}
-    return new block('Gradient of main color', ['data-id' => 'demo_markup_colors'], [
+    return new block_markup('Gradient of main color', ['data-id' => 'demo_markup_colors'], [
       new markup('x-colors-group', ['via-parametric-tokens' => true], $colors_via_parametric_tokens),
       new markup('x-colors-group', ['via-overlays'          => true], $colors_via_overlays)
     ]);

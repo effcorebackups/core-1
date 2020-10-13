@@ -1,5 +1,5 @@
 blocks
-- demo_decorators_static|block
+- demo_decorators_static|block_markup
     title: Decorators static
     attributes
     - data-id: demo_decorators_static

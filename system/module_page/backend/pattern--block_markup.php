@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class block extends markup {
+          class block_markup extends markup {
 
   public $tag_name = 'section';
   public $template = 'block';

@@ -1,5 +1,5 @@
 blocks
-- demo_markup_static|block
+- demo_markup_static|block_markup
     title: Markup static
     attributes
     - data-id: demo_markup_static

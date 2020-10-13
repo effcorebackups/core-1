@@ -6,7 +6,7 @@
 
 namespace effcore\modules\develop {
           use const \effcore\dir_root;
-          use \effcore\block;
+          use \effcore\block_markup;
           use \effcore\core;
           use \effcore\decorator;
           use \effcore\file;
@@ -187,7 +187,7 @@ namespace effcore\modules\develop {
       }
     }
   # return result
-    return new block('PHP dependencies', ['data-id' => 'php_dependencies', 'data-title-is-hidden' => true], [
+    return new block_markup('PHP dependencies', ['data-id' => 'php_dependencies', 'data-title-is-hidden' => true], [
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       $mod_title,
       $mod_decorator,
