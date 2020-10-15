@@ -181,10 +181,10 @@ events
       skip_console_log: true
       handler: \effcore\modules\demo\events_examples::on_page_render_before
 # ─────────────────────────────────────────────────────────────────────
-  on_part_presets_dynamic_build
+  on_block_presets_dynamic_build
   - example|event
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_part_presets_dynamic_build
+      handler: \effcore\modules\demo\events_examples::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_selection_build_before
   - example|event

@@ -5,13 +5,13 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_parts extends widget_items {
+          class widget_area_blocks extends widget_items {
 
   public $title = null;
-  public $item_title = 'Part';
+  public $item_title = 'Block';
   public $content_tag_name = null;
-  public $attributes = ['data-type' => 'items-info-area_parts'];
-  public $name_complex = 'widget_area_parts';
+  public $attributes = ['data-type' => 'items-info-area_blocks'];
+  public $name_complex = 'widget_area_blocks';
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {
@@ -22,9 +22,9 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
-    $preset = part_preset::select($item->id);
+    $preset = block_preset::select($item->id);
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'LOST PART'),
+        'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'ORPHANED BLOCK'),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($info_markup, 'info');
@@ -35,7 +35,7 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # control with type of new item
-    $presets = part_preset::select_all($this->id_area);
+    $presets = block_preset::select_all($this->id_area);
     core::array_sort_by_text_property($presets, 'managing_group');
     $options = ['not_selected' => '- no -'];
     foreach ($presets as $c_preset) {
@@ -50,7 +50,7 @@ namespace effcore {
         core::array_sort_text($c_group->values);
       }
     }
-    $select = new field_select('Insert part');
+    $select = new field_select('Insert block');
     $select->values = $options;
     $select->build();
     $select->name_set($this->name_get_complex().'__insert');
@@ -79,7 +79,7 @@ namespace effcore {
       $items = $this->items_get();
       foreach ($items as $c_row_id => $c_item)
         $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new part_preset_link($this->controls['#insert']->value_get());
+      $new_item = new block_preset_link($this->controls['#insert']->value_get());
       $new_item->weight = count($items) ? $min_weight - 5 : 0;
       $items[] = $new_item;
       $this->items_set($items);

@@ -50,6 +50,7 @@ translations
     - Avatar: Аватар
     - B: Б
     - Belarusian: Беларускі
+    - Block: Блок
     - Breadcrumbs: Хлебныя крошкі
     - Build number: Нумар зборкі
     - bundle build number: нумар зборкі пакету
@@ -275,8 +276,8 @@ translations
     - Information: Інфармацыя
     - Insert a new item of type "%%_entity_title_context" on new page.: Уставіць новы элемент тыпу "%%_entity_title_context" на новай старонцы.
     - insert and update: уставіць і абнавіць
+    - Insert block: Уставіць блок
     - Insert instance: Уставіць асобнік
-    - Insert part: Уставіць частку
     - insert: уставіць
     - Insert: Уставіць
     - insertion: устаўка
@@ -353,8 +354,8 @@ translations
     - logotypes: лагатыпы
     - logout: выхад
     - Logout: Выхад
+    - LOST FIELD: СТРАЧАНАЕ ПОЛЕ
     - LOST LAYOUT\: %%_id: СТРАЧАНЫ МАКЕТ: %%_id
-    - LOST PART: СТРАЧАНАЯ ЧАСТКА
     - Main color: Асноўны колер
     - Main colors: Асноўныя колеры
     - Main menu: Галоўнае меню
@@ -428,6 +429,7 @@ translations
     - Operating System: Аперацыйная сістэма
     - Order: Заказ
     - Ordered list: Упарадкаваны спіс
+    - ORPHANED BLOCK: АСІРАЦЕЛЫ БЛОК
     - Other: Іншыя
     - Page actions: Дзеянні старонкі
     - Page not found: Старонка не знойдзена
@@ -441,7 +443,6 @@ translations
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID бацькі
-    - Part: Частка
     - Password recovery on %%_domain: Аднаўленне пароля на %%_domain
     - Password: Пароль
     - Path: Шлях

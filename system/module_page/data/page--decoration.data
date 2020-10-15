@@ -14,28 +14,28 @@ pages
       - =: admins
       permissions
       - =: manage__decoration
-    parts
+    blocks
     - system
-      - tree_sql_user_registered|part_preset_link
+      - tree_sql_user_registered|block_preset_link
           id: tree_sql_user_registered
-      - tree_system|part_preset_link
+      - tree_system|block_preset_link
           id: tree_system
     - breadcrumbs
-      - breadcrumbs_system|part_preset_link
+      - breadcrumbs_system|block_preset_link
           id: breadcrumbs_system
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     - tabs
-      - tabs|part
+      - tabs|block
           type: link
           source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_colors|part
+      - form_colors|block
           display
             check: page_args
             where: type
@@ -44,7 +44,7 @@ pages
           source: forms/page/colors
           properties
           - title_is_visible: false
-      - form_colors_preset|part
+      - form_colors_preset|block
           display
             check: page_args
             where: type
@@ -53,7 +53,7 @@ pages
           source: forms/page/colors_preset
           properties
           - title_is_visible: false
-      - form_layout|part
+      - form_layout|block
           display
             check: page_args
             where: type
@@ -62,7 +62,7 @@ pages
           source: forms/page/layout
           properties
           - title_is_visible: false
-      - form_decoration_settings|part
+      - form_decoration_settings|block
           display
             check: page_args
             where: type

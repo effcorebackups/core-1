@@ -486,33 +486,33 @@ instances
     - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
-    - parts
+    - blocks
       - system
-        - page_actions|part_preset_link
+        - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|part_preset_link
+        - tree_sql_user_registered|block_preset_link
             id: tree_sql_user_registered
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - text_sql_about_classic|part_preset_link
+        - text_sql_about_classic|block_preset_link
             id: text_sql_about_classic
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_contact|instance
     entity_name: page
@@ -524,35 +524,35 @@ instances
     - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
-    - parts
+    - blocks
       - system
-        - page_actions|part_preset_link
+        - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|part_preset_link
+        - tree_sql_user_registered|block_preset_link
             id: tree_sql_user_registered
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - text_sql_contact_classic|part_preset_link
+        - text_sql_contact_classic|block_preset_link
             id: text_sql_contact_classic
-        - form_feedback|part_preset_link
+        - form_feedback|block_preset_link
             id: form_feedback
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_front|instance
     entity_name: page
@@ -564,35 +564,35 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
-    - parts
+    - blocks
       - system
-        - page_actions|part_preset_link
+        - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|part_preset_link
+        - tree_sql_user_registered|block_preset_link
             id: tree_sql_user_registered
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - text_sql_front_classic|part_preset_link
+        - text_sql_front_classic|block_preset_link
             id: text_sql_front_classic
       - footer
-        - selection_social_networks_classic|part_preset_link
+        - selection_social_networks_classic|block_preset_link
             id: selection_social_networks_classic
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_login|instance
     entity_name: page
@@ -607,34 +607,34 @@ instances
     - access
         roles
         - =: anonymous
-    - parts
+    - blocks
       - system
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|part_preset_link
+        - breadcrumbs_user_anonymous|block_preset_link
             id: breadcrumbs_user_anonymous
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - form_login|part_preset_link
+        - form_login|block_preset_link
             id: form_login
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_logout|instance
     entity_name: page
@@ -649,36 +649,36 @@ instances
     - access
         roles
         - =: registered
-    - parts
+    - blocks
       - system
-        - page_actions|part_preset_link
+        - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|part_preset_link
+        - tree_sql_user_registered|block_preset_link
             id: tree_sql_user_registered
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - breadcrumbs
-        - breadcrumbs_user_registered|part_preset_link
+        - breadcrumbs_user_registered|block_preset_link
             id: breadcrumbs_user_registered
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - form_logout|part_preset_link
+        - form_logout|block_preset_link
             id: form_logout
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_recovery|instance
     entity_name: page
@@ -693,34 +693,34 @@ instances
     - access
         roles
         - =: anonymous
-    - parts
+    - blocks
       - system
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|part_preset_link
+        - breadcrumbs_user_anonymous|block_preset_link
             id: breadcrumbs_user_anonymous
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - form_recovery|part_preset_link
+        - form_recovery|block_preset_link
             id: form_recovery
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 - page_registration|instance
     entity_name: page
@@ -735,34 +735,34 @@ instances
     - access
         roles
         - =: anonymous
-    - parts
+    - blocks
       - system
-        - tree_sql_user_anonymous|part_preset_link
+        - tree_sql_user_anonymous|block_preset_link
             id: tree_sql_user_anonymous
-        - tree_system|part_preset_link
+        - tree_system|block_preset_link
             id: tree_system
       - header
-        - picture_sql_logotype_classic|part_preset_link
+        - picture_sql_logotype_classic|block_preset_link
             id: picture_sql_logotype_classic
       - menu
-        - tree_sql_main|part_preset_link
+        - tree_sql_main|block_preset_link
             id: tree_sql_main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|part_preset_link
+        - breadcrumbs_user_anonymous|block_preset_link
             id: breadcrumbs_user_anonymous
       - messages
-        - messages|part_preset_link
+        - messages|block_preset_link
             id: messages
       - title
-        - title|part_preset_link
+        - title|block_preset_link
             id: title
       - content
-        - form_registration|part_preset_link
+        - form_registration|block_preset_link
             id: form_registration
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|part_preset_link
+        - text_sql_copyright_classic|block_preset_link
             id: text_sql_copyright_classic
 # ─────────────────────────────────────────────────────────────────────
 # texts

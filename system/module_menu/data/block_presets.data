@@ -1,5 +1,5 @@
-part_presets
-- tree_system|part_preset
+block_presets
+- tree_system|block_preset
     id: tree_system
     managing_group: Menus
     managing_title: System menu
@@ -7,19 +7,19 @@ part_presets
     - =: system
     type: link
     source: trees/core/system
-- breadcrumbs_system|part_preset
+- breadcrumbs_system|block_preset
     id: breadcrumbs_system
     managing_group: Breadcrumbs
     managing_title: System breadcrumbs
     type: link
     source: breadcrumbs/core/system
-- breadcrumbs_user_registered|part_preset
+- breadcrumbs_user_registered|block_preset
     id: breadcrumbs_user_registered
     managing_group: Breadcrumbs
     managing_title: Registered user
     type: link
     source: breadcrumbs/core/user_registered
-- breadcrumbs_user_anonymous|part_preset
+- breadcrumbs_user_anonymous|block_preset
     id: breadcrumbs_user_anonymous
     managing_group: Breadcrumbs
     managing_title: Anonymous user

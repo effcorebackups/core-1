@@ -9,29 +9,29 @@ pages
       - =: admins
       permissions
       - =: manage__info
-    parts
+    blocks
     - system
-      - tree_sql_user_registered|part_preset_link
+      - tree_sql_user_registered|block_preset_link
           id: tree_sql_user_registered
-      - tree_system|part_preset_link
+      - tree_system|block_preset_link
           id: tree_system
     - breadcrumbs
-      - breadcrumbs_system|part_preset_link
+      - breadcrumbs_system|block_preset_link
           id: breadcrumbs_system
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_system_info|part
+      - block_system_info|block
           type: code
           source: \effcore\modules\core\events_page_info::block_system_info
-      - block_service_info|part
+      - block_service_info|block
           type: code
           source: \effcore\modules\core\events_page_info::block_service_info
-      - block_environment_info|part
+      - block_environment_info|block
           type: code
           source: \effcore\modules\core\events_page_info::block_environment_info

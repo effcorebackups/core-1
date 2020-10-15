@@ -1,17 +1,17 @@
-part_presets
-- messages|part_preset
+block_presets
+- messages|block_preset
     id: messages
     managing_group: Other
     managing_title: Messages
     type: code
     source: \effcore\modules\page\events_page::block_messages
-- title|part_preset
+- title|block_preset
     id: title
     managing_group: Other
     managing_title: Page title
     type: code
     source: \effcore\modules\page\events_page::block_title
-- page_actions|part_preset
+- page_actions|block_preset
     id: page_actions
     managing_group: Other
     managing_title: Page actions

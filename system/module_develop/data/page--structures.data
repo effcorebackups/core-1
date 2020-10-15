@@ -13,47 +13,47 @@ pages
     access
       roles
       - =: admins
-    parts
+    blocks
     - system
-      - tree_sql_user_registered|part_preset_link
+      - tree_sql_user_registered|block_preset_link
           id: tree_sql_user_registered
-      - tree_system|part_preset_link
+      - tree_system|block_preset_link
           id: tree_system
     - breadcrumbs
-      - breadcrumbs_system|part_preset_link
+      - breadcrumbs_system|block_preset_link
           id: breadcrumbs_system
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     - tabs
-      - tabs|part
+      - tabs|block
           type: link
           source: tabs/develop/structures
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|part
+      - form_cache_update|block
           type: link
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - block_structures_list|part
+      - block_structures_list|block
           display
             check: page_args
             where: view
             match: %^list$%
           type: code
           source: \effcore\modules\develop\events_page_structures::block_structures_list
-      - block_structures_diagram|part
+      - block_structures_diagram|block
           display
             check: page_args
             where: view
             match: %^diagram$%
           type: code
           source: \effcore\modules\develop\events_page_structures::block_structures_diagram
-      - export|part
+      - export|block
           display
             check: page_args
             where: view

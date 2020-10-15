@@ -328,9 +328,9 @@
   x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
   x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-id    {display: block; opacity: .5}
 
-  /* widget 'items-info-area_parts' for page */
+  /* widget 'items-info-area_blocks' for page */
 
-  x-widget[data-type='items-info-area_parts'] {margin: 0}
+  x-widget[data-type='items-info-area_blocks'] {margin: 0}
 
   /* layout manager */
 

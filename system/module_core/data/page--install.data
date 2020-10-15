@@ -6,23 +6,23 @@ pages
     id_layout: installation
     url: %^(?<base>/install)(/
 >>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
-    parts
+    blocks
     - header
-      - menu_languages|part
+      - menu_languages|block
           type: code
           source: \effcore\modules\locales\events_page::block_menu_languages
-      - block_system_info|part
+      - block_system_info|block
           type: code
           source: \effcore\modules\core\events_page_info::block_system_info
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_install|part
+      - form_install|block
           type: link
           source: forms/core/install
           properties

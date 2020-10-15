@@ -50,6 +50,6 @@ events
       for: poll
       handler: \effcore\modules\polls\events_form_poll::on_submit
 # ─────────────────────────────────────────────────────────────────────
-  on_part_presets_dynamic_build
+  on_block_presets_dynamic_build
   - all|event
-      handler: \effcore\modules\polls\events_page::on_part_presets_dynamic_build
+      handler: \effcore\modules\polls\events_page::on_block_presets_dynamic_build

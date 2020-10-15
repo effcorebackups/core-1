@@ -5,9 +5,9 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\block_preset;
           use \effcore\frontend;
           use \effcore\page;
-          use \effcore\part_preset;
           use \effcore\tree_item;
           use \effcore\tree;
           use \effcore\url;
@@ -31,9 +31,9 @@ namespace effcore\modules\menu {
     }
   }
 
-  static function on_part_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                  ) {foreach (tree::select_all('sql') as $c_item)    part_preset::insert('tree_sql_'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item->id], 0, 'menu');}
-    if ($id !== null && strpos($id, 'tree_sql_') === 0) {$c_item__id = substr($id, strlen('tree_sql_')); part_preset::insert('tree_sql_'.$c_item__id, 'Menus',                   'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item__id], 0, 'menu');}
+  static function on_block_presets_dynamic_build($event, $id = null) {
+    if ($id === null                                  ) {foreach (tree::select_all('sql') as $c_item)    block_preset::insert('tree_sql_'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item->id], 0, 'menu');}
+    if ($id !== null && strpos($id, 'tree_sql_') === 0) {$c_item__id = substr($id, strlen('tree_sql_')); block_preset::insert('tree_sql_'.$c_item__id, 'Menus',                   'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\menu\\events_page::block_tree_sql', [ /* no properties */ ], ['id' => $c_item__id], 0, 'menu');}
   }
 
   static function block_tree_sql($page, $args) {

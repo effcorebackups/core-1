@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use \effcore\block;
           use \effcore\markup;
-          use \effcore\part;
           use \effcore\page;
           use \effcore\storage;
           use \effcore\tab_item;
@@ -58,14 +58,14 @@ namespace effcore\modules\core {
   # find all active tabs items
   # ─────────────────────────────────────────────────────────────────────
     $active_tab = null;
-    $parts = page::get_current()->parts;
-    if (is_array($parts)) {
-      foreach ($parts as $c_id_area => $c_parts_by_area) {
-        foreach ($c_parts_by_area as $c_part) {
-          if ($c_part instanceof part              &&
-              $c_part->type             === 'link' && strpos(
-              $c_part->source, 'tabs/') === 0) {
-            $active_tab = storage::get('files')->select($c_part->source, true);
+    $blocks = page::get_current()->blocks;
+    if (is_array($blocks)) {
+      foreach ($blocks as $c_id_area => $c_blocks_by_area) {
+        foreach ($c_blocks_by_area as $c_block) {
+          if ($c_block instanceof block             &&
+              $c_block->type             === 'link' && strpos(
+              $c_block->source, 'tabs/') === 0) {
+            $active_tab = storage::get('files')->select($c_block->source, true);
           }
         }
       }

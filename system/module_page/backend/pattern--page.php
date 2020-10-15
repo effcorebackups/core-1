@@ -21,7 +21,7 @@ namespace effcore {
   public $origin = 'nosql'; # nosql | sql
   public $is_embedded = 1;
   public $access;
-  public $parts;
+  public $blocks;
   public $_markup;
   public $_areas_pointers = [];
   protected $args         = [];
@@ -40,20 +40,20 @@ namespace effcore {
       if ($this->_markup) {
         foreach ($this->_markup->children_select_recursive() as $c_area) {
           if ($c_area instanceof area && isset($c_area->id)) {
-            if (isset($this->parts[$c_area->id])) {
+            if (isset($this->blocks[$c_area->id])) {
               $this->_areas_pointers[$c_area->id] = $c_area;
-              $c_area_parts = $this->parts[$c_area->id];
-              core::array_sort_by_weight($c_area_parts);
-              foreach ($c_area_parts as $c_row_id => $c_part) {
-                if ($c_area_parts[$c_row_id] instanceof part_preset_link)
-                    $c_area_parts[$c_row_id] = $c_part->part_make();
-                if ($c_area_parts[$c_row_id]) {
-                  $c_part_markup = $c_area_parts[$c_row_id]->markup_get($this);
-                  if ($c_part_markup) {
-                    $c_area->child_insert($c_part_markup, $c_row_id);
-                    if ($c_area_parts[$c_row_id]->type == 'link' ||
-                        $c_area_parts[$c_row_id]->type == 'copy') {
-                      $this->used_dpaths[] = $c_area_parts[$c_row_id]->source;
+              $c_area_blocks = $this->blocks[$c_area->id];
+              core::array_sort_by_weight($c_area_blocks);
+              foreach ($c_area_blocks as $c_row_id => $c_block) {
+                if ($c_area_blocks[$c_row_id] instanceof block_preset_link)
+                    $c_area_blocks[$c_row_id] = $c_block->block_make();
+                if ($c_area_blocks[$c_row_id]) {
+                  $c_block_markup = $c_area_blocks[$c_row_id]->markup_get($this);
+                  if ($c_block_markup) {
+                    $c_area->child_insert($c_block_markup, $c_row_id);
+                    if ($c_area_blocks[$c_row_id]->type === 'link' ||
+                        $c_area_blocks[$c_row_id]->type === 'copy') {
+                      $this->used_dpaths[] = $c_area_blocks[$c_row_id]->source;
                     }
                   }
                 }

@@ -503,8 +503,8 @@ entities
         - weight: +240
         selection_params_default
         - weight: +240
-    - parts
-        title: Parts
+    - blocks
+        title: Blocks
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize

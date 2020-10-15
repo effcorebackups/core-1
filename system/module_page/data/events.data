@@ -71,9 +71,9 @@ events
       weight: +600
       handler: \effcore\modules\page\events_page_decoration::on_redirect
 # ─────────────────────────────────────────────────────────────────────
-  on_part_presets_dynamic_build
+  on_block_presets_dynamic_build
   - all|event
-      handler: \effcore\modules\page\events_page::on_part_presets_dynamic_build
+      handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - decoration|event

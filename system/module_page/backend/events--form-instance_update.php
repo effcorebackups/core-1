@@ -13,7 +13,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\widget_area_parts;
+          use \effcore\widget_area_blocks;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -39,7 +39,7 @@ namespace effcore\modules\page {
         $width_max->max_set(10000);
         $form->child_select('fields')->child_insert($width_min, 'width_min');
         $form->child_select('fields')->child_insert($width_max, 'width_max');
-      # layout and its parts
+      # layout and its blocks
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         if ($layout) {
           foreach ($layout->children_select_recursive() as $c_area) {
@@ -47,13 +47,13 @@ namespace effcore\modules\page {
                 $c_area->managing_enable();
                 $c_area->build();
                 if ($c_area->id) {
-                  $c_widget_parts = new widget_area_parts($c_area->id);
-                  $c_widget_parts->name_complex = 'widget_area_parts__'.$c_area->id;
-                  $c_widget_parts->cform = $form;
-                  $c_widget_parts->build();
-                  $c_widget_parts->value_set_complex($form->_instance->parts[$c_area->id] ?? null, true);
-                  $c_area->child_insert($c_widget_parts, 'widget_parts');
-                  $form->_widgets_area[$c_area->id] = $c_widget_parts;
+                  $c_widget_area_blocks = new widget_area_blocks($c_area->id);
+                  $c_widget_area_blocks->name_complex = 'widget_area_blocks__'.$c_area->id;
+                  $c_widget_area_blocks->cform = $form;
+                  $c_widget_area_blocks->build();
+                  $c_widget_area_blocks->value_set_complex($form->_instance->blocks[$c_area->id] ?? null, true);
+                  $c_area->child_insert($c_widget_area_blocks, 'widget_area_blocks');
+                  $form->_widgets_area[$c_area->id] = $c_widget_area_blocks;
                 }
             }
           }
@@ -82,17 +82,18 @@ namespace effcore\modules\page {
             $data['width_min'] = $items['#width_min']->value_get();
             $data['width_max'] = $items['#width_max']->value_get();
             $form->_instance->data = $data;
-          # save layout parts
+          # save layout blocks
             if (layout::select($form->_instance->id_layout)) {
-              $all_parts = [];
+              $all_blocks = [];
               foreach ($form->_widgets_area as $c_id_area => $c_widget) {
-                $c_parts = $c_widget->value_get_complex();
-                if ($c_parts)
-                  $all_parts[$c_id_area] = $c_parts;
+                $c_blocks_by_area = $c_widget->value_get_complex();
+                if ($c_blocks_by_area) {
+                  $all_blocks[$c_id_area] = $c_blocks_by_area;
+                }
               }
-              if (count($all_parts))
-                   $form->_instance->parts = $all_parts;
-              else $form->_instance->parts = null;
+              if (count($all_blocks))
+                   $form->_instance->blocks = $all_blocks;
+              else $form->_instance->blocks = null;
             }
           }
           break;

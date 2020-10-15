@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\storage {
+          use \effcore\block_preset;
           use \effcore\page;
-          use \effcore\part_preset;
           use \effcore\selection;
           use \effcore\tab_item;
           use \effcore\tabs;
@@ -53,9 +53,9 @@ namespace effcore\modules\storage {
     }
   }
 
-  static function on_part_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                       ) {foreach (selection::get_all('sql') as $c_item)       part_preset::insert('selection_sql_'.$c_item->id, 'Selections', $c_item->title ?: 'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [ /* no properties */ ], ['id' => $c_item->id], 0, 'storage');}
-    if ($id !== null && strpos($id, 'selection_sql_') === 0) {$c_item__id = substr($id, strlen('selection_sql_')); part_preset::insert('selection_sql_'.$c_item__id, 'Selections',                   'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [ /* no properties */ ], ['id' => $c_item__id], 0, 'storage');}
+  static function on_block_presets_dynamic_build($event, $id = null) {
+    if ($id === null                                       ) {foreach (selection::get_all('sql') as $c_item)       block_preset::insert('selection_sql_'.$c_item->id, 'Selections', $c_item->title ?: 'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [ /* no properties */ ], ['id' => $c_item->id], 0, 'storage');}
+    if ($id !== null && strpos($id, 'selection_sql_') === 0) {$c_item__id = substr($id, strlen('selection_sql_')); block_preset::insert('selection_sql_'.$c_item__id, 'Selections',                   'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\storage\\events_page::block_selection_sql', [ /* no properties */ ], ['id' => $c_item__id], 0, 'storage');}
   }
 
   static function block_selection_sql($page, $args) {

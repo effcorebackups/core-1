@@ -101,8 +101,8 @@ namespace effcore {
     curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
-      if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], "\r\n\"");
-      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], "\r\n\""), 'parsed' => static::cookie_parse(trim($c_matches['value'], "\r\n\""))];
+      if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], cr.nl.'"');
+      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => static::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
       return strlen($c_header);
     });
   # prepare return

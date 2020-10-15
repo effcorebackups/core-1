@@ -13,28 +13,28 @@ pages
       - =: admins
       permissions
       - =: manage__modules
-    parts
+    blocks
     - system
-      - tree_sql_user_registered|part_preset_link
+      - tree_sql_user_registered|block_preset_link
           id: tree_sql_user_registered
-      - tree_system|part_preset_link
+      - tree_system|block_preset_link
           id: tree_system
     - breadcrumbs
-      - breadcrumbs_system|part_preset_link
+      - breadcrumbs_system|block_preset_link
           id: breadcrumbs_system
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     - tabs
-      - tabs|part
+      - tabs|block
           type: link
           source: tabs/core/modules
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|part
+      - form_cache_update|block
           display
             check: page_args
             where: action
@@ -43,7 +43,7 @@ pages
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - form_modules_install|part
+      - form_modules_install|block
           display
             check: page_args
             where: action
@@ -52,21 +52,21 @@ pages
           source: forms/core/modules_install
           properties
           - title_is_visible: false
-      - form_modules_uninstall|part
+      - form_modules_uninstall|block
           display
             check: page_args
             where: action
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - form_modules_update_data|part
+      - form_modules_update_data|block
           display
             check: page_args
             where: action
             match: %^update/data$%
           type: link
           source: forms/core/modules_update_data
-      - form_modules_update_files|part
+      - form_modules_update_files|block
           display
             check: page_args
             where: action

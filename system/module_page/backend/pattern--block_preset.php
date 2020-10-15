@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class part_preset extends part {
+          class block_preset extends block {
 
   public $id;
   public $managing_group = 'Text';
@@ -26,12 +26,12 @@ namespace effcore {
     parent::__construct($weight);
   }
 
-  function part_make() {
-    $part = new part;
+  function block_make() {
+    $block = new block;
     foreach ($this as $c_key => $c_value)
-      $part->{$c_key} =
-      $this->{$c_key};
-    return $part;
+      $block->{$c_key} =
+      $this ->{$c_key};
+    return $block;
   }
 
   ###########################
@@ -51,9 +51,9 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select('part_presets') as $c_module_id => $c_presets) {
+      foreach (storage::get('files')->select('block_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_preset) {
-          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('part_preset', $c_preset->id, $c_module_id);
+          if (isset(static::$cache[$c_preset->id])) console::log_insert_about_duplicate('block_preset', $c_preset->id, $c_module_id);
                     static::$cache[$c_preset->id] = $c_preset;
                     static::$cache[$c_preset->id]->module_id = $c_module_id;
                     static::$cache[$c_preset->id]->origin = 'nosql';
@@ -63,8 +63,8 @@ namespace effcore {
   }
 
   static function init_dynamic($id = null) {
-    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_part_presets_dynamic_build', null       );}
-    if ($id !== null                             ) {                                 event::start('on_part_presets_dynamic_build', null, [$id]);}
+    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_block_presets_dynamic_build', null       );}
+    if ($id !== null                             ) {                                 event::start('on_block_presets_dynamic_build', null, [$id]);}
   }
 
   static function select_all($id_area = null, $origin = null) {
@@ -88,8 +88,8 @@ namespace effcore {
 
   static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0, $module_id = null) {
     static::init();
-    $new_part = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $properties, $args, $weight);
-           static::$cache[$id] = $new_part;
+    $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $properties, $args, $weight);
+           static::$cache[$id] = $new_preset;
            static::$cache[$id]->module_id = $module_id;
            static::$cache[$id]->origin = 'dynamic';
     return static::$cache[$id];

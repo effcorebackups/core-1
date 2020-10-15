@@ -1,5 +1,5 @@
-part_presets
-- form_feedback|part_preset
+block_presets
+- form_feedback|block_preset
     id: form_feedback
     managing_group: Forms
     managing_title: Feedback form
@@ -11,7 +11,7 @@ part_presets
     - entity_name: feedback
     - title: Feedback form
     - title_is_visible: true
-- form_login|part_preset
+- form_login|block_preset
     id: form_login
     managing_group: Forms
     managing_title: Login
@@ -19,7 +19,7 @@ part_presets
     - =: content
     type: copy
     source: forms/user/login
-- form_logout|part_preset
+- form_logout|block_preset
     id: form_logout
     managing_group: Forms
     managing_title: Logout
@@ -27,7 +27,7 @@ part_presets
     - =: content
     type: copy
     source: forms/user/logout
-- form_recovery|part_preset
+- form_recovery|block_preset
     id: form_recovery
     managing_group: Forms
     managing_title: Access recovery
@@ -35,7 +35,7 @@ part_presets
     - =: content
     type: copy
     source: forms/user/recovery
-- form_registration|part_preset
+- form_registration|block_preset
     id: form_registration
     managing_group: Forms
     managing_title: Registration
@@ -44,7 +44,7 @@ part_presets
     type: copy
     source: forms/user/registration
 # ─────────────────────────────────────────────────────────────────────
-- selection_user|part_preset
+- selection_user|block_preset
     id: selection_user
     managing_group: Selections
     managing_title: User

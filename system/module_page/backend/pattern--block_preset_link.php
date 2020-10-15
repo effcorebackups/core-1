@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class part_preset_link {
+          class block_preset_link {
 
   public $id;
   public $weight = 0;
@@ -15,13 +15,13 @@ namespace effcore {
     if ($weight) $this->weight = $weight;
   }
 
-  function part_make() {
-    $preset = core::deep_clone(part_preset::select($this->id));
+  function block_make() {
+    $preset = core::deep_clone(block_preset::select($this->id));
     if ($preset) {
       foreach ($this as $c_key => $c_value)
         $preset->{$c_key} =
         $this  ->{$c_key};
-      return $preset->part_make();
+      return $preset->block_make();
     }
   }
 

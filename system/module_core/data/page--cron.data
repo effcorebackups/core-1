@@ -7,8 +7,8 @@ pages
       roles
       - =: anonymous
       - =: registered
-    parts
+    blocks
     - content
-      - cron|part
+      - cron|block
           type: code
           source: \effcore\modules\core\events_page_cron::cron

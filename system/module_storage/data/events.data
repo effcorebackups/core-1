@@ -128,6 +128,6 @@ events
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_delete::on_check_access
 # ─────────────────────────────────────────────────────────────────────
-  on_part_presets_dynamic_build
+  on_block_presets_dynamic_build
   - all|event
-      handler: \effcore\modules\storage\events_page::on_part_presets_dynamic_build
+      handler: \effcore\modules\storage\events_page::on_block_presets_dynamic_build

@@ -8,24 +8,24 @@ pages
       roles
       - =: admins
       - =: registered
-    parts
+    blocks
     - system
-      - tree_sql_user_registered|part_preset_link
+      - tree_sql_user_registered|block_preset_link
           id: tree_sql_user_registered
-      - tree_system|part_preset_link
+      - tree_system|block_preset_link
           id: tree_system
     - breadcrumbs
-      - breadcrumbs_user_registered|part_preset_link
+      - breadcrumbs_user_registered|block_preset_link
           id: breadcrumbs_user_registered
     - messages
-      - messages|part_preset_link
+      - messages|block_preset_link
           id: messages
     - title
-      - title|part_preset_link
+      - title|block_preset_link
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_instance_update|part
+      - form_instance_update|block
           type: link
           source: forms/storage/instance_update
           properties
