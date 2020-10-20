@@ -42,8 +42,8 @@ namespace effcore {
         $tree->build();
         foreach ($tree->children_select_recursive(null, '', false, true) as $c_npath => $c_child) {
           $c_depth = core::path_get_depth($c_npath);
-          if ($this->title_ws_id === true) $this->option_insert(str_repeat('- ', $c_depth + 1).(new text($c_child->title))->render().' ('.$c_child->id_real.')', $c_child->id_real);
-          if ($this->title_ws_id !== true) $this->option_insert(str_repeat('- ', $c_depth + 1).(new text($c_child->title))->render(),                            $c_child->id_real);
+          if ($this->title_ws_id === true) $this->option_insert(str_repeat('—', $c_depth + 1).' '.(new text($c_child->title))->render().' ('.$c_child->id_real.')', $c_child->id_real);
+          if ($this->title_ws_id !== true) $this->option_insert(str_repeat('—', $c_depth + 1).' '.(new text($c_child->title))->render(),                            $c_child->id_real);
         }
       } else {
         foreach ($instances as $c_instance) {
