@@ -22,9 +22,9 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
-    $preset = block_preset::select($item->id);
+    $presets = block_preset::select_all($this->id_area);
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], $preset ? [$preset->managing_group, ': ', $preset->managing_title] : 'ORPHANED BLOCK'),
+        'title' => new markup('x-title', [], isset($presets[$item->id]) ? [$presets[$item->id]->managing_group, ': ', $presets[$item->id]->managing_title] : 'ORPHANED BLOCK'),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($info_markup, 'info');
