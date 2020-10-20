@@ -82,7 +82,7 @@ namespace effcore {
 
   static function select($id) {
     static::init();
-    if (isset(static::$cache[$id]) == false) static::init_dynamic($id);
+    if (isset(static::$cache[$id]) === false) static::init_dynamic($id);
     return static::$cache[$id] ?? null;
   }
 

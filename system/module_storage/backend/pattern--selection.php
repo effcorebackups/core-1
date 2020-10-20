@@ -362,8 +362,8 @@ namespace effcore {
 
   static function get($id, $load = true) {
     static::init();
-    if (isset(static::$cache[$id]) == false) static::init_sql($id);
-    if (isset(static::$cache[$id]) == false) return;
+    if (isset(static::$cache[$id]) === false) static::init_sql($id);
+    if (isset(static::$cache[$id]) === false) return;
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] =
         static::$cache[$id]->external_cache_load();

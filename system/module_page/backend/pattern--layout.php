@@ -54,7 +54,7 @@ namespace effcore {
 
   static function select($id, $load = true) {
     static::init();
-    if (isset(static::$cache[$id]) == false) return;
+    if (isset(static::$cache[$id]) === false) return;
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] =
         static::$cache[$id]->external_cache_load();
