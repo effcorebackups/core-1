@@ -7,8 +7,8 @@
 namespace effcore {
           class block extends markup {
 
-  public $tag_name = 'section';
-  public $template = 'block';
+  public $tag_name = null; # 'section'
+  public $template = null; # 'block'
 # ─────────────────────────────────────────────────────────────────────
   public $title;
   public $title_tag_name = 'h2';
