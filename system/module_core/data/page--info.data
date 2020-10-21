@@ -27,11 +27,29 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__system_info|block
+          tag_name: section
+          template: block
+          title: System information
+          attributes
+          - data-id: info_system
+          - data-title-is-hidden: true
           type: code
           source: \effcore\modules\core\events_page_info::block_system_info
       - block__service_info|block
+          tag_name: section
+          template: block
+          title: Service
+          attributes
+          - data-id: info_service
+          - data-title-is-styled|_string_false
           type: code
           source: \effcore\modules\core\events_page_info::block_service_info
       - block__environment_info|block
+          tag_name: section
+          template: block
+          title: Server
+          attributes
+          - data-id: info_server
+          - data-title-is-styled|_string_false
           type: code
           source: \effcore\modules\core\events_page_info::block_environment_info
