@@ -46,7 +46,7 @@ namespace effcore {
               core::array_sort_by_weight($c_area_blocks);
               foreach ($c_area_blocks as $c_row_id => $c_block) {
                 if ($c_area_blocks[$c_row_id] instanceof block_preset_link)
-                    $c_area_blocks[$c_row_id] = $c_block->preset_build()->block_build();
+                    $c_area_blocks[$c_row_id] = $c_block->block_make();
                 if ($c_area_blocks[$c_row_id]) {
                   $c_block_markup = $c_area_blocks[$c_row_id]->markup_get($this);
                   if ($c_block_markup) {

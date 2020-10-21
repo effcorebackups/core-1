@@ -26,7 +26,7 @@ namespace effcore {
     parent::__construct($weight);
   }
 
-  function block_build() {
+  function block_make() {
     $block = new block;
     foreach ($this as $c_key => $c_value)
       $block->{$c_key} =
