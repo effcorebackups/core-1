@@ -45,12 +45,11 @@ namespace effcore {
               $c_area_blocks = $this->blocks[$c_area->id];
               core::array_sort_by_weight($c_area_blocks);
               foreach ($c_area_blocks as $c_row_id => $c_block) {
-                if ($c_area_blocks[$c_row_id] instanceof block_preset_link)
-                    $c_area_blocks[$c_row_id] = $c_block->block_make();
-                if ($c_area_blocks[$c_row_id]) {
-                  $c_block_markup = $c_area_blocks[$c_row_id]->markup_get($this);
-                  if ($c_block_markup) {
-                    $c_area->child_insert($c_block_markup, $c_row_id);
+                if ($c_area_blocks[$c_row_id] instanceof block_preset_link) $c_area_blocks[$c_row_id] = $c_block->block_make();
+                if ($c_area_blocks[$c_row_id] instanceof block) {
+                  $c_area_blocks[$c_row_id]->build($this);
+                  if ($c_area_blocks[$c_row_id]->children_select_count()) {
+                    $c_area->child_insert($c_area_blocks[$c_row_id], $c_row_id);
                     if ($c_area_blocks[$c_row_id]->type === 'link' ||
                         $c_area_blocks[$c_row_id]->type === 'copy') {
                       $this->used_dpaths[] = $c_area_blocks[$c_row_id]->source;
