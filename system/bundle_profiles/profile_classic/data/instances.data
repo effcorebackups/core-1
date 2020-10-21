@@ -490,18 +490,18 @@ instances
       - system
         - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|block_preset_link
-            id: tree_sql_user_registered
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_registered|block_preset_link
+            id: tree_sql__user_registered
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - messages
         - messages|block_preset_link
             id: messages
@@ -509,11 +509,11 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - text_sql_about_classic|block_preset_link
-            id: text_sql_about_classic
+        - text_sql__about_classic|block_preset_link
+            id: text_sql__about_classic
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_contact|instance
     entity_name: page
     values
@@ -528,18 +528,18 @@ instances
       - system
         - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|block_preset_link
-            id: tree_sql_user_registered
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_registered|block_preset_link
+            id: tree_sql__user_registered
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - messages
         - messages|block_preset_link
             id: messages
@@ -547,13 +547,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - text_sql_contact_classic|block_preset_link
-            id: text_sql_contact_classic
-        - form_feedback|block_preset_link
-            id: form_feedback
+        - text_sql__contact_classic|block_preset_link
+            id: text_sql__contact_classic
+        - form__feedback|block_preset_link
+            id: form__feedback
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_front|instance
     entity_name: page
     values
@@ -568,18 +568,18 @@ instances
       - system
         - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|block_preset_link
-            id: tree_sql_user_registered
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_registered|block_preset_link
+            id: tree_sql__user_registered
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - messages
         - messages|block_preset_link
             id: messages
@@ -587,13 +587,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - text_sql_front_classic|block_preset_link
-            id: text_sql_front_classic
+        - text_sql__front_classic|block_preset_link
+            id: text_sql__front_classic
       - footer
-        - selection_social_networks_classic|block_preset_link
-            id: selection_social_networks_classic
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - selection__social_networks_classic|block_preset_link
+            id: selection__social_networks_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_login|instance
     entity_name: page
     values
@@ -609,19 +609,19 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|block_preset_link
-            id: breadcrumbs_user_anonymous
+        - breadcrumbs__user_anonymous|block_preset_link
+            id: breadcrumbs__user_anonymous
       - messages
         - messages|block_preset_link
             id: messages
@@ -629,13 +629,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - form_login|block_preset_link
-            id: form_login
+        - form__login|block_preset_link
+            id: form__login
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_logout|instance
     entity_name: page
     values
@@ -653,19 +653,19 @@ instances
       - system
         - page_actions|block_preset_link
             id: page_actions
-        - tree_sql_user_registered|block_preset_link
-            id: tree_sql_user_registered
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_registered|block_preset_link
+            id: tree_sql__user_registered
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - breadcrumbs
-        - breadcrumbs_user_registered|block_preset_link
-            id: breadcrumbs_user_registered
+        - breadcrumbs__user_registered|block_preset_link
+            id: breadcrumbs__user_registered
       - messages
         - messages|block_preset_link
             id: messages
@@ -673,13 +673,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - form_logout|block_preset_link
-            id: form_logout
+        - form__logout|block_preset_link
+            id: form__logout
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_recovery|instance
     entity_name: page
     values
@@ -695,19 +695,19 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|block_preset_link
-            id: breadcrumbs_user_anonymous
+        - breadcrumbs__user_anonymous|block_preset_link
+            id: breadcrumbs__user_anonymous
       - messages
         - messages|block_preset_link
             id: messages
@@ -715,13 +715,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - form_recovery|block_preset_link
-            id: form_recovery
+        - form__recovery|block_preset_link
+            id: form__recovery
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 - page_registration|instance
     entity_name: page
     values
@@ -737,19 +737,19 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql_user_anonymous|block_preset_link
-            id: tree_sql_user_anonymous
-        - tree_system|block_preset_link
-            id: tree_system
+        - tree_sql__user_anonymous|block_preset_link
+            id: tree_sql__user_anonymous
+        - tree__system|block_preset_link
+            id: tree__system
       - header
-        - picture_sql_logotype_classic|block_preset_link
-            id: picture_sql_logotype_classic
+        - picture_sql__logotype_classic|block_preset_link
+            id: picture_sql__logotype_classic
       - menu
-        - tree_sql_main|block_preset_link
-            id: tree_sql_main
+        - tree_sql__main|block_preset_link
+            id: tree_sql__main
       - breadcrumbs
-        - breadcrumbs_user_anonymous|block_preset_link
-            id: breadcrumbs_user_anonymous
+        - breadcrumbs__user_anonymous|block_preset_link
+            id: breadcrumbs__user_anonymous
       - messages
         - messages|block_preset_link
             id: messages
@@ -757,13 +757,13 @@ instances
         - title|block_preset_link
             id: title
       - content
-        - form_registration|block_preset_link
-            id: form_registration
+        - form__registration|block_preset_link
+            id: form__registration
             properties
             - title_is_visible: false
       - footer
-        - text_sql_copyright_classic|block_preset_link
-            id: text_sql_copyright_classic
+        - text_sql__copyright_classic|block_preset_link
+            id: text_sql__copyright_classic
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────

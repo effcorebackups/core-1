@@ -9,13 +9,13 @@ pages
       - =: admins
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_system|block_preset_link
-          id: breadcrumbs_system
+      - breadcrumbs__system|block_preset_link
+          id: breadcrumbs__system
     - messages
       - messages|block_preset_link
           id: messages
@@ -24,6 +24,6 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block_php_dependencies_list|block
+      - block__php_dependencies_list|block
           type: code
           source: \effcore\modules\develop\events_page_php_dependencies::block_php_dependencies_list

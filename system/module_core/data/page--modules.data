@@ -15,13 +15,13 @@ pages
       - =: manage__modules
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_system|block_preset_link
-          id: breadcrumbs_system
+      - breadcrumbs__system|block_preset_link
+          id: breadcrumbs__system
     - messages
       - messages|block_preset_link
           id: messages
@@ -34,7 +34,7 @@ pages
           source: tabs/core/modules
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|block
+      - form__cache_update|block
           display
             check: page_args
             where: action
@@ -43,7 +43,7 @@ pages
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - form_modules_install|block
+      - form__modules_install|block
           display
             check: page_args
             where: action
@@ -52,21 +52,21 @@ pages
           source: forms/core/modules_install
           properties
           - title_is_visible: false
-      - form_modules_uninstall|block
+      - form__modules_uninstall|block
           display
             check: page_args
             where: action
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - form_modules_update_data|block
+      - form__modules_update_data|block
           display
             check: page_args
             where: action
             match: %^update/data$%
           type: link
           source: forms/core/modules_update_data
-      - form_modules_update_files|block
+      - form__modules_update_files|block
           display
             check: page_args
             where: action

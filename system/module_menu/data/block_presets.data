@@ -1,26 +1,26 @@
 block_presets
-- tree_system|block_preset
-    id: tree_system
+- tree__system|block_preset
+    id: tree__system
     managing_group: Menus
     managing_title: System menu
     in_areas
     - =: system
     type: link
     source: trees/core/system
-- breadcrumbs_system|block_preset
-    id: breadcrumbs_system
+- breadcrumbs__system|block_preset
+    id: breadcrumbs__system
     managing_group: Breadcrumbs
     managing_title: System breadcrumbs
     type: link
     source: breadcrumbs/core/system
-- breadcrumbs_user_registered|block_preset
-    id: breadcrumbs_user_registered
+- breadcrumbs__user_registered|block_preset
+    id: breadcrumbs__user_registered
     managing_group: Breadcrumbs
     managing_title: Registered user
     type: link
     source: breadcrumbs/core/user_registered
-- breadcrumbs_user_anonymous|block_preset
-    id: breadcrumbs_user_anonymous
+- breadcrumbs__user_anonymous|block_preset
+    id: breadcrumbs__user_anonymous
     managing_group: Breadcrumbs
     managing_title: Anonymous user
     type: link

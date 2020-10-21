@@ -17,13 +17,13 @@ pages
       - =: admins
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_system|block_preset_link
-          id: breadcrumbs_system
+      - breadcrumbs__system|block_preset_link
+          id: breadcrumbs__system
     - messages
       - messages|block_preset_link
           id: messages
@@ -36,54 +36,54 @@ pages
           source: tabs/develop/data_nosql
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_cache_update|block
+      - form__cache_update|block
           type: link
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - block_trees|block
+      - block__trees|block
           display
             check: page_args
             where: type
             match: %^trees$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_tree
-      - block_selections|block
+      - block__selections|block
           display
             check: page_args
             where: type
             match: %^selections$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_selections
-      - block_events|block
+      - block__events|block
           display
             check: page_args
             where: type
             match: %^events$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_events
-      - block_file_types|block
+      - block__file_types|block
           display
             check: page_args
             where: type
             match: %^file_types$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_file_types
-      - block_templates|block
+      - block__templates|block
           display
             check: page_args
             where: type
             match: %^templates$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_templates
-      - block_tokens|block
+      - block__tokens|block
           display
             check: page_args
             where: type
             match: %^tokens$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_tokens
-      - block_translations|block
+      - block__translations|block
           display
             check: page_args
             where: type

@@ -11,13 +11,13 @@ pages
       - =: manage__locales
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_system|block_preset_link
-          id: breadcrumbs_system
+      - breadcrumbs__system|block_preset_link
+          id: breadcrumbs__system
     - messages
       - messages|block_preset_link
           id: messages
@@ -26,7 +26,7 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_locales|block
+      - form__locales|block
           type: link
           source: forms/locales/locales
           properties

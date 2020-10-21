@@ -1,6 +1,6 @@
 block_presets
-- selection_social_networks_classic|block_preset
-    id: selection_social_networks_classic
+- selection__social_networks_classic|block_preset
+    id: selection__social_networks_classic
     managing_group: Selections
     managing_title: Social networks
     type: link

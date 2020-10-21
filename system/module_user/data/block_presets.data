@@ -1,6 +1,6 @@
 block_presets
-- form_feedback|block_preset
-    id: form_feedback
+- form__feedback|block_preset
+    id: form__feedback
     managing_group: Forms
     managing_title: Feedback form
     in_areas
@@ -11,32 +11,32 @@ block_presets
     - entity_name: feedback
     - title: Feedback form
     - title_is_visible: true
-- form_login|block_preset
-    id: form_login
+- form__login|block_preset
+    id: form__login
     managing_group: Forms
     managing_title: Login
     in_areas
     - =: content
     type: copy
     source: forms/user/login
-- form_logout|block_preset
-    id: form_logout
+- form__logout|block_preset
+    id: form__logout
     managing_group: Forms
     managing_title: Logout
     in_areas
     - =: content
     type: copy
     source: forms/user/logout
-- form_recovery|block_preset
-    id: form_recovery
+- form__recovery|block_preset
+    id: form__recovery
     managing_group: Forms
     managing_title: Access recovery
     in_areas
     - =: content
     type: copy
     source: forms/user/recovery
-- form_registration|block_preset
-    id: form_registration
+- form__registration|block_preset
+    id: form__registration
     managing_group: Forms
     managing_title: Registration
     in_areas
@@ -44,8 +44,8 @@ block_presets
     type: copy
     source: forms/user/registration
 # ─────────────────────────────────────────────────────────────────────
-- selection_user|block_preset
-    id: selection_user
+- selection__user|block_preset
+    id: selection__user
     managing_group: Selections
     managing_title: User
     type: link

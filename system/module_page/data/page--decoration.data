@@ -16,13 +16,13 @@ pages
       - =: manage__decoration
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_system|block_preset_link
-          id: breadcrumbs_system
+      - breadcrumbs__system|block_preset_link
+          id: breadcrumbs__system
     - messages
       - messages|block_preset_link
           id: messages
@@ -35,7 +35,7 @@ pages
           source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form_colors|block
+      - form__colors|block
           display
             check: page_args
             where: type
@@ -44,7 +44,7 @@ pages
           source: forms/page/colors
           properties
           - title_is_visible: false
-      - form_colors_preset|block
+      - form__colors_preset|block
           display
             check: page_args
             where: type
@@ -53,7 +53,7 @@ pages
           source: forms/page/colors_preset
           properties
           - title_is_visible: false
-      - form_layout|block
+      - form__layout|block
           display
             check: page_args
             where: type
@@ -62,7 +62,7 @@ pages
           source: forms/page/layout
           properties
           - title_is_visible: false
-      - form_decoration_settings|block
+      - form__decoration_settings|block
           display
             check: page_args
             where: type

@@ -10,13 +10,13 @@ pages
       - =: registered
     blocks
     - system
-      - tree_sql_user_registered|block_preset_link
-          id: tree_sql_user_registered
-      - tree_system|block_preset_link
-          id: tree_system
+      - tree_sql__user_registered|block_preset_link
+          id: tree_sql__user_registered
+      - tree__system|block_preset_link
+          id: tree__system
     - breadcrumbs
-      - breadcrumbs_user_registered|block_preset_link
-          id: breadcrumbs_user_registered
+      - breadcrumbs__user_registered|block_preset_link
+          id: breadcrumbs__user_registered
     - messages
       - messages|block_preset_link
           id: messages
@@ -25,5 +25,5 @@ pages
           id: title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - selection_user|block_preset_link
-          id: selection_user
+      - selection__user|block_preset_link
+          id: selection__user
