@@ -5,11 +5,11 @@
   ##################################################################
 
 namespace effcore\modules\develop {
-          use \effcore\block_markup;
           use \effcore\core;
           use \effcore\file;
           use \effcore\markup_simple;
           use \effcore\markup;
+          use \effcore\node;
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\url;
@@ -63,9 +63,7 @@ namespace effcore\modules\develop {
         $list->child_insert($c_return);
       }
     }
-    return new block_markup('Structures', ['data-id' => 'structures_list', 'data-title-is-hidden' => true], [
-      $targets, $list
-    ]);
+    return new node([], [$targets, $list]);
   }
 
   ###########################
@@ -166,7 +164,7 @@ namespace effcore\modules\develop {
     }
 
     $export_link = new markup('a', ['href' => $page->args_get('base').'/'.$page->args_get('type').'/export'], $page->args_get('type').'.mdj');
-    return new block_markup('UML Diagram', ['data-id' => 'structures_diagram', 'data-title-is-styled' => 'false'], [
+    return new node([], [
       new markup('p', [], new text('Export diagram to file "%%_file" for using with "StarUML" software.', ['file' => $export_link->render()])),
       new markup_simple('input', ['type' => 'checkbox', 'data-type' => 'switcher', 'id' => 'expand', 'checked' => true]),
       new markup('label', [], new text('expand')),

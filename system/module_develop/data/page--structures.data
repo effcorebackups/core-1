@@ -40,6 +40,12 @@ pages
           properties
           - title_is_visible: false
       - block__structures_list|block
+          tag_name: section
+          template: block
+          title: Structures
+          attributes
+          - data-id: structures_list
+          - data-title-is-hidden: true
           display
             check: page_args
             where: view
@@ -47,6 +53,12 @@ pages
           type: code
           source: \effcore\modules\develop\events_page_structures::block_structures_list
       - block__structures_diagram|block
+          tag_name: section
+          template: block
+          title: UML Diagram
+          attributes
+          - data-id: structures_diagram
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: view
