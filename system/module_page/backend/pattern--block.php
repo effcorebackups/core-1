@@ -35,7 +35,7 @@ namespace effcore {
           default    : $result =          $this->source;
         }
       }
-      if ($result) $this->child_insert($result);
+      if ($result) $this->child_insert($result, 'result');
       $this->is_builded = true;
     }
   }
