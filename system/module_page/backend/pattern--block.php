@@ -5,17 +5,16 @@
   ##################################################################
 
 namespace effcore {
-          class block extends node {
+          class block extends markup {
 
+  public $tag_name = null;
+  public $template = null;
+# ─────────────────────────────────────────────────────────────────────
   public $display;
   public $type; # code | link | text | …
   public $source;
   public $properties = [];
   public $args       = [];
-
-  function __construct($weight = 0) {
-    parent::__construct([], [], $weight);
-  }
 
   function build($page = null) {
     if (!$this->is_builded) {
