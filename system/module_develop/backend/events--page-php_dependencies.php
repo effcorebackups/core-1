@@ -6,12 +6,12 @@
 
 namespace effcore\modules\develop {
           use const \effcore\dir_root;
-          use \effcore\block_markup;
           use \effcore\core;
           use \effcore\decorator;
           use \effcore\file;
           use \effcore\markup;
           use \effcore\module;
+          use \effcore\node;
           use \effcore\text_multiline;
           use \effcore\text_simple;
           abstract class events_page_php_dependencies {
@@ -187,7 +187,7 @@ namespace effcore\modules\develop {
       }
     }
   # return result
-    return new block_markup('PHP dependencies', ['data-id' => 'php_dependencies', 'data-title-is-hidden' => true], [
+    return new node([], [
       new markup('p',  [], new text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
       $mod_title,
       $mod_decorator,

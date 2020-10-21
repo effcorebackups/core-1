@@ -25,5 +25,11 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__php_dependencies_list|block
+          tag_name: section
+          template: block
+          title: PHP dependencies
+          attributes
+          - data-id: php_dependencies
+          - data-title-is-hidden: true
           type: code
           source: \effcore\modules\develop\events_page_php_dependencies::block_php_dependencies_list
