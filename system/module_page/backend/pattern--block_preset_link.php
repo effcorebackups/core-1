@@ -15,13 +15,13 @@ namespace effcore {
     if ($weight) $this->weight = $weight;
   }
 
-  function block_make() {
+  function preset_build() {
     $preset = core::deep_clone(block_preset::select($this->id));
     if ($preset) {
       foreach ($this as $c_key => $c_value)
         $preset->{$c_key} =
         $this  ->{$c_key};
-      return $preset->block_make();
+      return $preset;
     }
   }
 
