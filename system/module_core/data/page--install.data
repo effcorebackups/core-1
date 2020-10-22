@@ -19,7 +19,7 @@ pages
           - data-id: info_system
           - data-title-is-hidden: true
           type: code
-          source: \effcore\modules\core\events_page_info::block_system_info
+          source: \effcore\modules\core\events_page_info::block_markup__system_info
     - messages
       - messages|block_preset_link
           id: messages
