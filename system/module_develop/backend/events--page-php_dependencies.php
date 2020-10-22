@@ -90,7 +90,7 @@ namespace effcore\modules\develop {
     'zlib'         => '−'
   ];
 
-  static function block_php_dependencies_list($page) {
+  static function block_markup__php_dependencies_list($page) {
     $modules_path = module::get_all('path');
     arsort($modules_path);
     $statistic_by_mod = [];

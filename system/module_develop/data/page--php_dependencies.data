@@ -32,4 +32,4 @@ pages
           - data-id: php_dependencies
           - data-title-is-hidden: true
           type: code
-          source: \effcore\modules\develop\events_page_php_dependencies::block_php_dependencies_list
+          source: \effcore\modules\develop\events_page_php_dependencies::block_markup__php_dependencies_list

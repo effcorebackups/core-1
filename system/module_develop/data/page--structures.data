@@ -51,7 +51,7 @@ pages
             where: view
             match: %^list$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::block_structures_list
+          source: \effcore\modules\develop\events_page_structures::block_markup__structures_list
       - block__structures_diagram|block
           tag_name: section
           template: block
@@ -64,7 +64,7 @@ pages
             where: view
             match: %^diagram$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::block_structures_diagram
+          source: \effcore\modules\develop\events_page_structures::block_markup__structures_diagram
       - export|block
           display
             check: page_args

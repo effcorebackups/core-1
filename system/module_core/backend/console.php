@@ -95,13 +95,13 @@ namespace effcore {
   static function markup_get() {
     return new markup('x-page-section', ['data-page-section-id' => 'console'],
       new markup('x-console', [], [
-        static::markup_get_block_information (),
-        static::markup_get_block_diagram_load(),
-        static::markup_get_block_logs        ()
+        static::block_markup__information (),
+        static::block_markup__diagram_load(),
+        static::block_markup__logs        ()
     ]));
   }
 
-  static function markup_get_block_information() {
+  static function block_markup__information() {
     $user = user::get_current();
     $user_roles = $user->roles;
     $user_permissions = role::related_permissions_by_roles_select($user_roles);
@@ -119,7 +119,7 @@ namespace effcore {
     return $result;
   }
 
-  static function markup_get_block_diagram_load() {
+  static function block_markup__diagram_load() {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
@@ -138,7 +138,7 @@ namespace effcore {
     return $result;
   }
 
-  static function markup_get_block_logs() {
+  static function block_markup__logs() {
     $total_sequence_hash = '';
     $total_data_hash     = '';
     $logs = static::logs_select();
@@ -181,12 +181,12 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function text_get() {
-    return static::text_get_block_information ().
-           static::text_get_block_diagram_load().
-           static::text_get_block_logs        ();
+    return static::block_text__information ().
+           static::block_text__diagram_load().
+           static::block_text__logs        ();
   }
 
-  static function text_get_block_information() {
+  static function block_text__information() {
     $information = [];
     $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
     $information['Memory for PHP (bytes)'] = locale::format_number(memory_get_usage(true));
@@ -197,7 +197,7 @@ namespace effcore {
     return nl.$result.nl;
   }
 
-  static function text_get_block_diagram_load() {
+  static function block_text__diagram_load() {
     $statistics = [];
     $total = 0;
     foreach (static::$data as $c_log) {
@@ -216,7 +216,7 @@ namespace effcore {
     return nl.$result.nl;
   }
 
-  static function text_get_block_logs() {
+  static function block_text__logs() {
     $total_sequence_hash = '';
     $total_data_hash     = '';
     $logs = static::logs_select();
