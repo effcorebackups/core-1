@@ -28,6 +28,7 @@ namespace effcore {
   function build($page = null) {
     if (!$this->is_builded) {
       $result = null;
+      event::start('on_block_build_before', null, [&$this]);
       if (!isset($this->display) ||
           (isset($this->display) && $this->display->check === 'page_args' && preg_match($this->display->match,         $page->args_get($this->display->where))) ||
           (isset($this->display) && $this->display->check === 'user'      &&            $this->display->where === 'role' && preg_match($this->display->match.'m', implode(nl, user::get_current()->roles)))) {
@@ -44,6 +45,7 @@ namespace effcore {
         }
       }
       if ($result) $this->child_insert($result, 'result');
+      event::start('on_block_build_after', null, [&$this]);
       $this->is_builded = true;
     }
   }
