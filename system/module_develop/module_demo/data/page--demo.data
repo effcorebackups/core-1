@@ -75,7 +75,7 @@ pages
             where: type
             match: %^embedded/markup_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_markup_dynamic
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_markup_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # decorators
       # ─────────────────────────────────────────────────────────────────────
@@ -104,7 +104,7 @@ pages
             where: type
             match: %^embedded/decorators_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_decorators_dynamic
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_decorators_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # trees
       # ─────────────────────────────────────────────────────────────────────
@@ -191,7 +191,7 @@ pages
             where: type
             match: %^embedded/messages$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_messages
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_messages
       - block__demo_messages_description|block
           display
             check: page_args
@@ -213,7 +213,7 @@ pages
             where: type
             match: %^embedded/canvas$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_canvas
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_canvas
       - block__demo_diagram_linear|block
           tag_name: section
           template: block
@@ -225,7 +225,7 @@ pages
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_diagram_linear
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_linear
       - block__demo_diagram_radial|block
           tag_name: section
           template: block
@@ -237,7 +237,7 @@ pages
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_diagram_radial
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_radial
       - block__demo_colors|block
           tag_name: section
           template: block
@@ -249,4 +249,4 @@ pages
             where: type
             match: %^embedded/colors$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_colors
+          source: \effcore\modules\demo\events_page_demo::block_markup__demo_colors
