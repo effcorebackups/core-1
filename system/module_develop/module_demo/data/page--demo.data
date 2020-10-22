@@ -127,7 +127,7 @@ pages
             where: type
             match: %^embedded/trees(/.*|)$%
           type: code
-          source: \effcore\modules\menu\events_page::block_tree_sql
+          source: \effcore\modules\menu\events_page::block_markup__tree_get
           args
           - id: demo_sql
       - block__demo_tree_nosql|block
