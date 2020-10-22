@@ -6,7 +6,6 @@
 
 namespace effcore\modules\develop {
           use const \effcore\br;
-          use \effcore\block_markup;
           use \effcore\core;
           use \effcore\decorator;
           use \effcore\event;
@@ -105,9 +104,7 @@ namespace effcore\modules\develop {
         'title' => ['value' => new text       ($c_selection->title), 'title' => 'Title']
       ];
     }
-    return new block_markup('Selections', ['data-id' => 'selections_nosql', 'data-title-is-hidden' => true], [
-      $decorator
-    ]);
+    return $decorator;
   }
 
   static function block_events($page) {
@@ -131,7 +128,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block_markup('Events', ['data-id' => 'events_nosql', 'data-title-is-hidden' => true], [
+    return new node([], [
       $targets,
       $report
     ]);
@@ -150,9 +147,7 @@ namespace effcore\modules\develop {
         'headers'   => ['value' => new text_simple(isset($c_type->headers) ? implode(br, $c_type->headers) : null), 'title' => 'Headers'  ]
       ];
     }
-    return new block_markup('File types', ['data-id' => 'file_types_nosql', 'data-title-is-hidden' => true], [
-      $decorator
-    ]);
+    return $decorator;
   }
 
   static function block_templates($page) {
@@ -167,9 +162,7 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_template->module_id), 'title' => 'Module ID'],
       ];
     }
-    return new block_markup('Templates', ['data-id' => 'templates_nosql', 'data-title-is-hidden' => true], [
-      $decorator
-    ]);
+    return $decorator;
   }
 
   static function block_tokens($page) {
@@ -185,9 +178,7 @@ namespace effcore\modules\develop {
         'module_id' => ['value' => new text_simple($c_token->module_id), 'title' => 'Module ID']
       ];
     }
-    return new block_markup('Tokens', ['data-id' => 'tokens_nosql', 'data-title-is-hidden' => true], [
-      $decorator
-    ]);
+    return $decorator;
   }
 
   static function block_translations($page) {
@@ -205,9 +196,7 @@ namespace effcore\modules\develop {
         ];
       }
     }
-    return new block_markup('Translations', ['data-id' => 'translations_nosql', 'data-title-is-hidden' => true], [
-      $decorator
-    ]);
+    return $decorator;
   }
 
 }}
