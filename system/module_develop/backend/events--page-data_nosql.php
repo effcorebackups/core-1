@@ -71,7 +71,7 @@ namespace effcore\modules\develop {
     }
   }
 
-  static function block_tree($page) {
+  static function block_markup__tree($page) {
     $id = $page->args_get('id');
     $trees = tree::select_all('nosql');
     if ($id && isset($trees[$id])) {
@@ -94,7 +94,7 @@ namespace effcore\modules\develop {
     }
   }
 
-  static function block_selections($page) {
+  static function block_markup__selections($page) {
     $selection = selection::get_all('nosql');
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'selections_nosql';
@@ -107,7 +107,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_events($page) {
+  static function block_markup__events($page) {
     $targets = new markup('x-targets');
     $report = new node;
     $events = event::get_all();
@@ -134,7 +134,7 @@ namespace effcore\modules\develop {
     ]);
   }
 
-  static function block_file_types($page) {
+  static function block_markup__file_types($page) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'file_types_nosql';
     $file_types = file::types_get();
@@ -150,7 +150,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_templates($page) {
+  static function block_markup__templates($page) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'templates_nosql';
     $templates = template::get_all();
@@ -165,7 +165,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_tokens($page) {
+  static function block_markup__tokens($page) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'tokens_nosql';
     $tokens = token::select_all();
@@ -181,7 +181,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_translations($page) {
+  static function block_markup__translations($page) {
     $id = page::get_current()->args_get('id');
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'translations_nosql';

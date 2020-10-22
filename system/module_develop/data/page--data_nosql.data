@@ -47,7 +47,7 @@ pages
             where: type
             match: %^trees$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_tree
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__tree
       - block__selections|block
           tag_name: section
           template: block
@@ -60,7 +60,7 @@ pages
             where: type
             match: %^selections$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_selections
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__selections
       - block__events|block
           tag_name: section
           template: block
@@ -73,7 +73,7 @@ pages
             where: type
             match: %^events$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_events
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__events
       - block__file_types|block
           tag_name: section
           template: block
@@ -86,7 +86,7 @@ pages
             where: type
             match: %^file_types$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_file_types
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__file_types
       - block__templates|block
           tag_name: section
           template: block
@@ -99,7 +99,7 @@ pages
             where: type
             match: %^templates$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_templates
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__templates
       - block__tokens|block
           tag_name: section
           template: block
@@ -112,7 +112,7 @@ pages
             where: type
             match: %^tokens$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_tokens
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__tokens
       - block__translations|block
           tag_name: section
           template: block
@@ -125,4 +125,4 @@ pages
             where: type
             match: %^translations$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_translations
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__translations
