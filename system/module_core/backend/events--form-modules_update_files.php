@@ -65,7 +65,7 @@ namespace effcore\modules\core {
         break;
       case 'repo_restore':
         $bundle_id = $form->clicked_button->_id;
-        $result = event::start('on_restore_repo', $bundle_id, [$bundle_id]);
+        $result = event::start('on_repo_restore', $bundle_id, [$bundle_id]);
         $report = $items['info']->child_select($bundle_id)->child_select('report');
         $report->children_delete();
         foreach ($result as $c_handler => $c_results) {

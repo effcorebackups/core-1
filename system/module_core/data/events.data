@@ -23,10 +23,10 @@ events
   - system|event
       for: system
       handler: \effcore\modules\core\events_module_update::on_update_files
-  on_restore_repo
+  on_repo_restore
   - system|event
       for: system
-      handler: \effcore\modules\core\events_module_update::on_restore_repo
+      handler: \effcore\modules\core\events_module_update::on_repo_restore
 # ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event

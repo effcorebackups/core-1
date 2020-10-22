@@ -24,8 +24,8 @@ namespace effcore\modules\demo {
     return core_events_module_update::on_update_files($event, $bundle_id); # ← unregistered event (for demonstration only)
   }
 
-  static function on_restore_repo($event, $bundle_id) {
-    return core_events_module_update::on_restore_repo($event, $bundle_id); # ← unregistered event (for demonstration only)
+  static function on_repo_restore($event, $bundle_id) {
+    return core_events_module_update::on_repo_restore($event, $bundle_id); # ← unregistered event (for demonstration only)
   }
 
   # ─────────────────────────────────────────────────────────────────────

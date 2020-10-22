@@ -37,7 +37,7 @@ namespace effcore\modules\demo {
   static function on_block_presets_dynamic_build($event, $id = null) {}
   static function on_query_before               ($event, $storage, $query) {}                   # see: \effcore\modules\develop\events_storage::on_query_before
   static function on_query_after                ($event, $storage, $query, $result, $errors) {} # see: \effcore\modules\develop\events_storage::on_query_after
-  static function on_restore_repo               ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_restore_repo
+  static function on_repo_restore               ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_repo_restore
   static function on_selection_build_before     ($event, $selection) {}
   static function on_selection_build_after      ($event, $selection) {}
   static function on_storage_init_before        ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_before

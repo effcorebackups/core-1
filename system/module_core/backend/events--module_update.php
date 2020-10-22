@@ -41,7 +41,7 @@ namespace effcore\modules\core {
     }
   }
 
-  static function on_restore_repo($event, $bundle_id) {
+  static function on_repo_restore($event, $bundle_id) {
     $bundle = module::bundle_get($bundle_id);
     if ($bundle) {
       $stderr_to_stdout        = '2>&1';
