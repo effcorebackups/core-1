@@ -59,6 +59,11 @@ pages
           type: link
           source: blocks/demo/demo_markup_static
       - block__demo_markup_dynamic|block
+          tag_name: section
+          template: block
+          title: Markup dynamic
+          attributes
+          - data-id: demo_markup_dynamic
           display
             check: page_args
             where: type
@@ -76,6 +81,12 @@ pages
           type: link
           source: blocks/demo/demo_decorators_static
       - block__demo_decorators_dynamic|block
+          tag_name: section
+          template: block
+          title: Decorators dynamic
+          attributes
+          - data-id: demo_decorators_dynamic
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: type
@@ -174,20 +185,47 @@ pages
       # other
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_canvas|block
+          tag_name: section
+          template: block
+          title: Canvas
+          attributes
+          - data-id: demo_canvas
           display
             check: page_args
             where: type
             match: %^embedded/canvas$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_demo_canvas
-      - block__demo_diagrams|block
+      - block__demo_diagram_linear|block
+          tag_name: section
+          template: block
+          title: Linear diagram
+          attributes
+          - data-id: demo_diagram_linear
           display
             check: page_args
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_demo_diagrams
+          source: \effcore\modules\demo\events_page_demo::block_demo_diagram_linear
+      - block__demo_diagram_radial|block
+          tag_name: section
+          template: block
+          title: Radial diagram
+          attributes
+          - data-id: demo_diagram_radial
+          display
+            check: page_args
+            where: type
+            match: %^embedded/diagrams$%
+          type: code
+          source: \effcore\modules\demo\events_page_demo::block_demo_diagram_radial
       - block__demo_colors|block
+          tag_name: section
+          template: block
+          title: Gradient of main color
+          attributes
+          - data-id: demo_markup_colors
           display
             check: page_args
             where: type
