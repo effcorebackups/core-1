@@ -52,12 +52,18 @@ pages
       # markup
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_markup_static|block
+          tag_name: section
+          template: block
+          title: Markup static
+          attributes
+          - data-id: demo_markup_static
+          - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^embedded/markup_static$%
           type: link
-          source: blocks/demo/demo_markup_static
+          source: markup/demo/demo_markup_static
       - block__demo_markup_dynamic|block
           tag_name: section
           template: block
@@ -74,12 +80,18 @@ pages
       # decorators
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_decorators_static|block
+          tag_name: section
+          template: block
+          title: Decorators static
+          attributes
+          - data-id: demo_decorators_static
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: type
             match: %^embedded/decorators_static$%
           type: link
-          source: blocks/demo/demo_decorators_static
+          source: markup/demo/demo_decorators_static
       - block__demo_decorators_dynamic|block
           tag_name: section
           template: block
@@ -97,12 +109,18 @@ pages
       # trees
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_tree_via_decorator|block
+          tag_name: section
+          template: block
+          title: Trees
+          attributes
+          - data-id: demo_tree_via_decorator
+          - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^embedded/trees(/.*|)$%
           type: link
-          source: blocks/demo/demo_tree_via_decorator
+          source: markup/demo/demo_tree_via_decorator
       - block__demo_tree_sql|block
           display
             check: page_args
