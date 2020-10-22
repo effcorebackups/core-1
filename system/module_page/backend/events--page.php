@@ -7,6 +7,7 @@
 namespace effcore\modules\page {
           use \effcore\access;
           use \effcore\block_preset;
+          use \effcore\block;
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\markup;
@@ -28,7 +29,7 @@ namespace effcore\modules\page {
 
   static function block_markup___page_actions($page) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['admins' => 'admins']])) {
-      return new markup('x-admin-actions', [],
+      return new markup('x-admin-actions', ['data-entity-name' => 'page'],
         new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'edit page')
       );
     }
@@ -45,6 +46,24 @@ namespace effcore\modules\page {
     if ($id !== null && strpos($id, 'picture_sql__') === 0) {$c_item__id = substr($id, strlen('picture_sql__'));             block_preset::insert('picture_sql__'.$c_item__id, 'Pictures',                          'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\page\\events_page::block_markup__selection_make', [ /* no properties */ ], ['instance_id' => $c_item__id, 'entity_name' => 'picture'], 0, 'page');}
     if ($id !== null && strpos($id,    'text_sql__') === 0) {$c_item__id = substr($id, strlen(   'text_sql__'));             block_preset::insert(   'text_sql__'.$c_item__id, 'Texts',                             'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\page\\events_page::block_markup__selection_make', [ /* no properties */ ], ['instance_id' => $c_item__id, 'entity_name' => 'text'   ], 0, 'page');}
     if ($id !== null && strpos($id,   'video_sql__') === 0) {$c_item__id = substr($id, strlen(  'video_sql__'));             block_preset::insert(  'video_sql__'.$c_item__id, 'Videos',                            'NO TITLE', [ /* no areas */ ], /* display = */ null, 'code', '\\effcore\\modules\\page\\events_page::block_markup__selection_make', [ /* no properties */ ], ['instance_id' => $c_item__id, 'entity_name' => 'video'  ], 0, 'page');}
+  }
+
+  static function on_block_build_after($event, $block) {
+    if (access::check((object)['roles' => ['admins' => 'admins']])) {
+      if (isset($block->_preset)) {
+        if (strpos($block->_preset->id,   'audio_sql__') === 0 ||
+            strpos($block->_preset->id, 'gallery_sql__') === 0 ||
+            strpos($block->_preset->id, 'picture_sql__') === 0 ||
+            strpos($block->_preset->id,    'text_sql__') === 0 ||
+            strpos($block->_preset->id,   'video_sql__') === 0) {
+          $instance_id = $block->args['instance_id'];
+          $entity_name = $block->args['entity_name'];
+          $block->extra_b = new markup('x-admin-actions', ['data-entity-name' => $entity_name],
+            new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/'.$entity_name.'/'.$instance_id.'/update?'.url::back_part_make()], 'edit')
+          );
+        }
+      }
+    }
   }
 
   static function block_markup__selection_make($page, $args) {

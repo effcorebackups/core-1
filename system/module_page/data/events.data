@@ -71,6 +71,11 @@ events
       weight: +600
       handler: \effcore\modules\page\events_page_decoration::on_redirect
 # ─────────────────────────────────────────────────────────────────────
+  on_block_build_after
+  - all|event
+      weight: +300
+      handler: \effcore\modules\page\events_page::on_block_build_after
+# ─────────────────────────────────────────────────────────────────────
   on_block_presets_dynamic_build
   - all|event
       handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build

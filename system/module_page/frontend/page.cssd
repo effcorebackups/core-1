@@ -151,10 +151,14 @@
   /* x-admin-actions */
 
   x-admin-actions {
-    display: block;
+    display: inline-block;
     padding: 5px 10px;
-    text-align: right;
+    font-size: 13px;
     background: %%_color_main url('pictures/lines.svg') -10px 0}
+  x-admin-actions::after {content: ''; clear: both; display: block}
+
+  x-admin-actions[data-entity-name='page'] {
+    display: block}
 
   /* breadcrumbs */
 
