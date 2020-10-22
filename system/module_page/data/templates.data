@@ -13,7 +13,7 @@ templates
 - block
     name: block
     type: text
-    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_extra_t%%_self%%_children%%_extra_b</%%_tag_name>
 - container
     name: container
     type: text

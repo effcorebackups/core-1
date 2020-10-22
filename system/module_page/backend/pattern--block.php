@@ -14,6 +14,8 @@ namespace effcore {
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-section-title' => true];
   public $content_tag_name = 'x-section-content';
+  public $extra_t = null;
+  public $extra_b = null;
   public $display;
   public $type; # code | link | text | …
   public $source;
@@ -55,6 +57,8 @@ namespace effcore {
       return (template::make_new($this->template, [
         'tag_name'   => $this->tag_name,
         'attributes' => $this->render_attributes(),
+        'extra_t'    => $this->render_extra_t(),
+        'extra_b'    => $this->render_extra_b(),
         'self'       => $this->render_self(),
         'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, ['data-section-content' => true],
                         $this->render_children($this->children_select(true)) ))->render() :
@@ -71,6 +75,20 @@ namespace effcore {
       return (new markup($this->title_tag_name, $this->title_attributes, [
         $this->title
       ]))->render();
+    }
+  }
+
+  function render_extra_t() {
+    if ($this->extra_t !== null) {
+      if (is_string($this->extra_t) || is_numeric($this->extra_t)) return (new text($this->extra_t))->render();
+      else                                                         return           $this->extra_t  ->render();
+    }
+  }
+
+  function render_extra_b() {
+    if ($this->extra_b !== null) {
+      if (is_string($this->extra_b) || is_numeric($this->extra_b)) return (new text($this->extra_b))->render();
+      else                                                         return           $this->extra_b  ->render();
     }
   }
 
