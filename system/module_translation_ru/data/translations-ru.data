@@ -138,6 +138,7 @@ translations
     - Driver is not selected!: Драйвер не выбран!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: был найден дубликат типа "%%_type" с ID = "%%_id"
+    - edit page: редактировать страницу
     - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - edit: редактировать
     - Edit: Редактировать
@@ -669,7 +670,6 @@ translations
     - Update instance: Обновить экземпляр
     - Update modules data: Обновить данные модулей
     - Update modules files: Обновить файлы модулей
-    - update this page: обновить эту страницу
     - Update: Обновить
     - update: обновить
     - updated: обновлено

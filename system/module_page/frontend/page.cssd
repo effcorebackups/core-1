@@ -148,12 +148,12 @@
     x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
   }
 
-  /* x-page-actions */
+  /* x-admin-actions */
 
-  x-page-actions {
+  x-admin-actions {
     display: block;
-    padding: 10px;
-    text-align: center;
+    padding: 5px 10px;
+    text-align: right;
     background: %%_color_main url('pictures/lines.svg') -10px 0}
 
   /* breadcrumbs */

@@ -10,7 +10,7 @@ events
   on_module_start
   - page|event
       for: page
-      weight: 500
+      weight: +500
       handler: \effcore\modules\page\events_module::on_start
 # ─────────────────────────────────────────────────────────────────────
   on_cron_run

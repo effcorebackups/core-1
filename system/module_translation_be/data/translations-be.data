@@ -138,6 +138,7 @@ translations
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
+    - edit page: рэдагаваць старонку
     - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - edit: рэдагаваць
     - Edit: Рэдагаваць
@@ -669,7 +670,6 @@ translations
     - Update instance: Абнавіць асобнік
     - Update modules data: Абнавіць даныя модуляў
     - Update modules files: Абнавіць файлы модуляў
-    - update this page: абнавіць гэтую старонку
     - Update: Абнавіць
     - update: абнавіць
     - updated: абноўлена

@@ -65,8 +65,10 @@ namespace effcore {
                         $this->render_children($this->children_select(true))
       ]))->render();
     } else {
-      return $this->render_self().
-             $this->render_children($this->children_select(true));
+      return $this->render_extra_t().
+             $this->render_self().
+             $this->render_children($this->children_select(true)).
+             $this->render_extra_b();
     }
   }
 
