@@ -13,7 +13,7 @@ namespace effcore\modules\locales {
           use \effcore\url;
           abstract class events_page {
 
-  static function block_menu_languages($page) {
+  static function block_markup__menu_languages($page) {
     $languages = language::get_all();
     core::array_sort_by_text_property($languages, 'title_en', 'd', false);
     $languages = ['en' => $languages['en']] + $languages;

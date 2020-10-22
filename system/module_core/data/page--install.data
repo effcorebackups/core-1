@@ -10,7 +10,7 @@ pages
     - header
       - block__menu_languages|block
           type: code
-          source: \effcore\modules\locales\events_page::block_menu_languages
+          source: \effcore\modules\locales\events_page::block_markup__menu_languages
       - block__system_info|block
           tag_name: section
           template: block

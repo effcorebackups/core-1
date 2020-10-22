@@ -16,17 +16,17 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page {
 
-  static function block_messages($page) {
+  static function block_markup___messages($page) {
     return new message;
   }
 
-  static function block_title($page) {
+  static function block_markup___title($page) {
     return new markup('h1', ['id' => 'title'],
       new text($page->title, [], true, true)
     );
   }
 
-  static function block_page_actions($page) {
+  static function block_markup___page_actions($page) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['admins' => 'admins']])) {
       return new markup('x-admin-actions', [],
         new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'edit page')

@@ -4,16 +4,16 @@ block_presets
     managing_group: Other
     managing_title: Messages
     type: code
-    source: \effcore\modules\page\events_page::block_messages
+    source: \effcore\modules\page\events_page::block_markup___messages
 - title|block_preset
     id: title
     managing_group: Other
     managing_title: Page title
     type: code
-    source: \effcore\modules\page\events_page::block_title
+    source: \effcore\modules\page\events_page::block_markup___title
 - page_actions|block_preset
     id: page_actions
     managing_group: Other
     managing_title: Page actions
     type: code
-    source: \effcore\modules\page\events_page::block_page_actions
+    source: \effcore\modules\page\events_page::block_markup___page_actions
