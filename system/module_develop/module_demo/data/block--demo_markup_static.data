@@ -1,5 +1,7 @@
 blocks
-- demo_markup_static|block_markup
+- demo_markup_static|block
+    tag_name: section
+    template: block
     title: Markup static
     attributes
     - data-id: demo_markup_static

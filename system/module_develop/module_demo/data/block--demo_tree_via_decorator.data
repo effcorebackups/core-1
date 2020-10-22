@@ -1,5 +1,7 @@
 blocks
-- demo_tree_via_decorator|block_markup
+- demo_tree_via_decorator|block
+    tag_name: section
+    template: block
     title: Trees
     attributes
     - data-id: demo_tree_via_decorator

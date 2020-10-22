@@ -1,5 +1,7 @@
 blocks
-- demo_decorators_static|block_markup
+- demo_decorators_static|block
+    tag_name: section
+    template: block
     title: Decorators static
     attributes
     - data-id: demo_decorators_static
