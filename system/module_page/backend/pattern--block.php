@@ -14,6 +14,7 @@ namespace effcore {
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-section-title' => true];
   public $content_tag_name = 'x-section-content';
+  public $content_attributes = ['data-section-content' => true];
   public $extra_t = null;
   public $extra_b = null;
   public $display;
@@ -60,7 +61,7 @@ namespace effcore {
         'extra_t'    => $this->render_extra_t(),
         'extra_b'    => $this->render_extra_b(),
         'self'       => $this->render_self(),
-        'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, ['data-section-content' => true],
+        'children'   => $this->content_tag_name ? (new markup($this->content_tag_name, $this->content_attributes,
                         $this->render_children($this->children_select(true)) ))->render() :
                         $this->render_children($this->children_select(true))
       ]))->render();
