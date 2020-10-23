@@ -156,9 +156,12 @@
     font-size: 13px;
     background: %%_color_main url('pictures/lines.svg') -10px 0}
   x-admin-actions::after {content: ''; clear: both; display: block}
+  x-admin-actions[data-entity_name='page'] {display: block}
 
-  x-admin-actions[data-entity-name='page'] {
-    display: block}
+  x-admin-actions a:not(:last-child) {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px dotted white}
 
   /* breadcrumbs */
 

@@ -29,9 +29,16 @@ namespace effcore\modules\page {
 
   static function block_markup___page_actions($page) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['admins' => 'admins']])) {
-      return new markup('x-admin-actions', ['data-entity-name' => 'page'],
-        new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'edit page')
-      );
+      $url = clone url::get_current();
+      $edit_mode = $url->query_arg_select('manage_layout');
+      if ($edit_mode === 'true')
+           $url->query_arg_delete('manage_layout'        );
+      else $url->query_arg_insert('manage_layout', 'true');
+      $admin_actions = new markup('x-admin-actions', ['data-entity_name' => 'page']);
+      if ($edit_mode !== 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'manage_layout', 'href' => $url->tiny_get()], 'enter edit mode'), 'manage_layout');
+      if ($edit_mode === 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'manage_layout', 'href' => $url->tiny_get()], 'leave edit mode'), 'manage_layout');
+      if ($edit_mode === 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'update',        'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'update page'), 'update_page');
+      return $admin_actions;
     }
   }
 
@@ -51,11 +58,13 @@ namespace effcore\modules\page {
   static function on_block_build_after($event, $block) {
     if (access::check((object)['roles' => ['admins' => 'admins']])) {
       if (!empty($block->has_admin_menu)) {
-        $instance_id = $block->args['instance_id'];
-        $entity_name = $block->args['entity_name'];
-        $block->extra_b = new markup('x-admin-actions', ['data-entity-name' => $entity_name],
-          new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/'.$entity_name.'/'.$instance_id.'/update?'.url::back_part_make()], 'edit')
-        );
+        if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+          $instance_id = $block->args['instance_id'];
+          $entity_name = $block->args['entity_name'];
+          $block->extra_b = new markup('x-admin-actions', ['data-entity_name' => $entity_name],
+            new markup('a', ['data-id' => 'update', 'href' => '/manage/data/content/'.$entity_name.'/'.$instance_id.'/update?'.url::back_part_make()], 'edit')
+          );
+        }
       }
     }
   }

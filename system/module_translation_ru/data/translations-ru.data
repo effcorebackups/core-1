@@ -138,7 +138,6 @@ translations
     - Driver is not selected!: Драйвер не выбран!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: был найден дубликат типа "%%_type" с ID = "%%_id"
-    - edit page: редактировать страницу
     - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - edit: редактировать
     - Edit: Редактировать
@@ -146,6 +145,7 @@ translations
     - Empty module: Пустой модуль
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - English: Английский
+    - enter edit mode: войти в режим редактирования
     - Entity "%%_entity" was installed.: Сущность "%%_entity" была установлена.
     - Entity "%%_entity" was not installed!: Сущность "%%_entity" не была установлена!
     - Entity "%%_entity" was not uninstalled!: Сущность "%%_entity" не была удалена!
@@ -324,6 +324,7 @@ translations
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Оставьте 0, если Вы хотите использовать глобальные настройки размера страницы.
     - Leave a vote: Оставить свой голос
+    - leave edit mode: выйти из режима редактирования
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым, если Вы не желаете изменять его значение.
     - left to right (ltr): слева направо (ltr)
     - left to right: слева направо
@@ -670,6 +671,7 @@ translations
     - Update instance: Обновить экземпляр
     - Update modules data: Обновить данные модулей
     - Update modules files: Обновить файлы модулей
+    - update page: обновить страницу
     - Update: Обновить
     - update: обновить
     - updated: обновлено

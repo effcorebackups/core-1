@@ -138,7 +138,6 @@ translations
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
-    - edit page: рэдагаваць старонку
     - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - edit: рэдагаваць
     - Edit: Рэдагаваць
@@ -146,6 +145,7 @@ translations
     - Empty module: Пусты модуль
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - English: Англійская
+    - enter edit mode: увайсці ў рэжым рэдагавання
     - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была інсталявана.
     - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была інсталявана!
     - Entity "%%_entity" was not uninstalled!: Сутнасць "%%_entity" не была выдалена!
@@ -324,6 +324,7 @@ translations
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.
     - Leave a vote: Пакінуць свой голас
+    - leave edit mode: пакінуць рэжым рэдагавання
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
     - left to right (ltr): злева направа (ltr)
     - left to right: злева направа
@@ -670,6 +671,7 @@ translations
     - Update instance: Абнавіць асобнік
     - Update modules data: Абнавіць даныя модуляў
     - Update modules files: Абнавіць файлы модуляў
+    - update page: абнавіць старонку
     - Update: Абнавіць
     - update: абнавіць
     - updated: абноўлена
