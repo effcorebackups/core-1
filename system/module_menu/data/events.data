@@ -64,6 +64,11 @@ events
       weight: +550
       handler: \effcore\modules\menu\events_page_instance_insert::on_check_existence
 # ─────────────────────────────────────────────────────────────────────
+  on_block_build_after
+  - all|event
+      weight: +300
+      handler: \effcore\modules\menu\events_page::on_block_build_after
+# ─────────────────────────────────────────────────────────────────────
   on_block_presets_dynamic_build
   - all|event
       handler: \effcore\modules\menu\events_page::on_block_presets_dynamic_build

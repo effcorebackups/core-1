@@ -5,8 +5,10 @@
   ##################################################################
 
 namespace effcore\modules\menu {
+          use \effcore\access;
           use \effcore\block_preset;
           use \effcore\frontend;
+          use \effcore\markup;
           use \effcore\page;
           use \effcore\tree_item;
           use \effcore\tree;
@@ -32,13 +34,25 @@ namespace effcore\modules\menu {
   }
 
   static function on_block_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                   ) {foreach (tree::select_all('sql') as $c_item)     block_preset::insert('tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['id' => $c_item->id]], 0, 'menu');}
-    if ($id !== null && strpos($id, 'tree_sql__') === 0) {$c_item__id = substr($id, strlen('tree_sql__')); block_preset::insert('tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['id' => $c_item__id]], 0, 'menu');}
+    if ($id === null                                   ) {foreach (tree::select_all('sql') as $c_item)     block_preset::insert('tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item->id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true], 0, 'menu');}
+    if ($id !== null && strpos($id, 'tree_sql__') === 0) {$c_item__id = substr($id, strlen('tree_sql__')); block_preset::insert('tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item__id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true], 0, 'menu');}
+  }
+
+  static function on_block_build_after($event, $block) {
+    if (access::check((object)['roles' => ['admins' => 'admins']])) {
+      if (!empty($block->has_admin_tree_menu)) {
+        $instance_id = $block->args['instance_id'];
+        $entity_name = $block->args['entity_name'];
+        $block->extra_b = new markup('x-admin-actions', ['data-entity-name' => $entity_name],
+          new markup('a', ['data-id' => 'update', 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()], 'edit')
+        );
+      }
+    }
   }
 
   static function block_markup__tree_get($page, $args) {
-    if (!empty($args['id'])) {
-      return tree::select($args['id']);
+    if (!empty($args['instance_id'])) {
+      return tree::select($args['instance_id']);
     }
   }
 
