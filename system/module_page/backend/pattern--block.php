@@ -17,7 +17,7 @@ namespace effcore {
   public $extra_t = null;
   public $extra_b = null;
   public $display;
-  public $type; # code | link | text | …
+  public $type; # copy | link | code | text
   public $source;
   public $properties = [];
   public $args       = [];

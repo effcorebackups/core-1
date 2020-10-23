@@ -5,25 +5,22 @@
   ##################################################################
 
 namespace effcore {
-          class block_preset extends block {
+          class block_preset {
 
-  public $id;
-  public $managing_group = 'Text';
-  public $managing_title;
-  public $in_areas;
-  public $origin = 'nosql'; # nosql | dynamic
+  public $id;                      # copy to: (new block)->_preset->id
+  public $managing_group = 'Text'; # copy to: (new block)->_preset->managing_group
+  public $managing_title;          # copy to: (new block)->_preset->managing_title
+  public $in_areas;                # copy to: (new block)->_preset->in_areas
+  public $module_id;               # copy to: (new block)->_preset->module_id
+  public $origin = 'nosql';        # copy to: (new block)->_preset->origin
+  public $weight = 0;              # copy to: (new block)->weight
 
-  function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0) {
+  function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $weight = 0) {
     if ($id            ) $this->id             = $id;
     if ($managing_group) $this->managing_group = $managing_group;
     if ($managing_title) $this->managing_title = $managing_title;
     if ($in_areas      ) $this->in_areas       = $in_areas;
-    if ($display       ) $this->display        = $display;
-    if ($type          ) $this->type           = $type;
-    if ($source        ) $this->source         = $source;
-    if ($properties    ) $this->properties     = $properties;
-    if ($args          ) $this->args           = $args;
-    parent::__construct($weight);
+    if ($weight        ) $this->weight         = $weight;
   }
 
   function block_make() {
@@ -34,6 +31,7 @@ namespace effcore {
       if ($c_key === 'managing_group') {$block->_preset->managing_group = $this->managing_group; continue;}
       if ($c_key === 'managing_title') {$block->_preset->managing_title = $this->managing_title; continue;}
       if ($c_key === 'in_areas'      ) {$block->_preset->in_areas       = $this->in_areas;       continue;}
+      if ($c_key === 'module_id'     ) {$block->_preset->module_id      = $this->module_id;      continue;}
       if ($c_key === 'origin'        ) {$block->_preset->origin         = $this->origin;         continue;}
       $block->{$c_key} = $this->{$c_key}; }
     return $block;
@@ -91,12 +89,13 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $display = null, $type = null, $source = null, $properties = [], $args = [], $weight = 0, $module_id = null) {
+  static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $extra = [], $weight = 0, $module_id = null) {
     static::init();
-    $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $display, $type, $source, $properties, $args, $weight);
+    $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $weight);
+    $new_preset->module_id = $module_id;
+    $new_preset->origin = 'dynamic';
+    foreach ($extra as $c_key => $c_value) $new_preset->{$c_key} = $c_value;
            static::$cache[$id] = $new_preset;
-           static::$cache[$id]->module_id = $module_id;
-           static::$cache[$id]->origin = 'dynamic';
     return static::$cache[$id];
   }
 
