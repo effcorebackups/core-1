@@ -178,13 +178,15 @@
   x-admin-actions::after {content: ''; clear: both; display: block}
   x-admin-actions a {color: white}
   x-admin-actions a:not(:last-child) {padding-right: 10px; margin-right: 10px; border-right: 1px dotted white}
+  x-admin-actions a[data-id='manage-enter'],
+  x-admin-actions a[data-id='manage-leave'] {text-decoration: none}
 
   body[data-is-managed-layout] [data-area-id] section {
     min-height: 50px;
     margin: 10px 0;
     border: 1px dotted %%_color_warning}
   body[data-is-managed-layout] [data-area-id] section x-admin-actions {margin-bottom: 5px; background-color: %%_color_warning}
-  body[data-is-managed-layout] [data-area-id] section x-admin-actions[data-entity_name='page'] {margin: 0}
+  body[data-is-managed-layout] [data-area-id] section[data-id='block__page_actions'] {min-height: auto; margin-top: 0; border: 0}
 
   /* breadcrumbs */
 
