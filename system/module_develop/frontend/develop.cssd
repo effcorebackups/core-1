@@ -7,8 +7,8 @@
 
   /* console */
 
-  [data-page-section-id='console'] {display: block; background: %%_color_page}
-  [data-page-section-id='console'] x-console {
+  [data-page-part-id='console'] {display: block; background: %%_color_page}
+  [data-page-part-id='console'] x-console {
     display: block;
     margin: 300px auto 0 auto;
     padding: 30px 0;

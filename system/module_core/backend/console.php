@@ -93,7 +93,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function markup_get() {
-    return new markup('x-page-section', ['data-page-section-id' => 'console'],
+    return new markup('x-page-part', ['data-page-part-id' => 'console'],
       new markup('x-console', [], [
         static::block_markup__information (),
         static::block_markup__diagram_load(),

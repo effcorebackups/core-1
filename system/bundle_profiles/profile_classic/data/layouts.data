@@ -3,15 +3,15 @@ layouts
     id: original_classic
     title: Original | profile "Classic"
     children
-    - page_section_head|area
-        tag_name: x-page-section
+    - page_part_head|area
+        tag_name: x-page-part
         attributes
-        - data-page-section-id: head
+        - data-page-part-id: head
         children
-        - page_section_wrapper|area
-            tag_name: x-page-section-wrapper
+        - page_part_wrapper|area
+            tag_name: x-page-part-wrapper
             attributes
-            - data-page-section-wrapper: true
+            - data-page-part-wrapper: true
             children
             - system|area
                 id: system
@@ -20,15 +20,15 @@ layouts
                 tag_name: header
             - menu|area
                 id: menu
-    - page_section_body|area
-        tag_name: x-page-section
+    - page_part_body|area
+        tag_name: x-page-part
         attributes
-        - data-page-section-id: body
+        - data-page-part-id: body
         children
-        - page_section_wrapper|area
-            tag_name: x-page-section-wrapper
+        - page_part_wrapper|area
+            tag_name: x-page-part-wrapper
             attributes
-            - data-page-section-wrapper: true
+            - data-page-part-wrapper: true
             children
             - content|area
                 type: table
@@ -58,15 +58,15 @@ layouts
                     tag_name: aside
                     attributes
                     - style: width: 200px
-    - page_section_foot|area
-        tag_name: x-page-section
+    - page_part_foot|area
+        tag_name: x-page-part
         attributes
-        - data-page-section-id: foot
+        - data-page-part-id: foot
         children
-        - page_section_wrapper|area
-            tag_name: x-page-section-wrapper
+        - page_part_wrapper|area
+            tag_name: x-page-part-wrapper
             attributes
-            - data-page-section-wrapper: true
+            - data-page-part-wrapper: true
             children
             - footer|area
                 id: footer
