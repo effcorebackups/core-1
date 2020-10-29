@@ -12,7 +12,7 @@
     color: %%_color_text;
     background: %%_color_page}
 
-  /* page areas */
+  /* page layout */
 
   [data-area-id='system'] {
     font-family: 'Arial';
@@ -147,6 +147,36 @@
     x-table[data-compact] x-cell:first-child {padding-top:    14px}
     x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
   }
+
+  /* x-layout-manager */
+
+  x-layout-manager {display: block; margin: 50px 0; border: 1px dotted %%_color_main}
+  x-layout-manager [data-area-id]            {min-height: 20px}
+  x-layout-manager [data-area-type='table' ] {}
+  x-layout-manager [data-area-type='row'   ] {}
+  x-layout-manager [data-area-type='column']:not(:last-child) {border-right: 1px dotted %%_color_main}
+
+  x-layout-manager x-area-info {
+    display: block;
+    margin: 0 0 20px 0;
+    padding: 5px 9px;
+    line-height: 1.2em;
+    color: white;
+    background: %%_color_main url('pictures/lines.svg') -10px 0}
+  x-layout-manager x-area-info * {vertical-align: middle}
+  x-layout-manager x-area-info x-area-id {margin-right: 1em; font-size: .85em; text-transform: uppercase}
+  x-layout-manager x-area-info x-area-tag-name {font-family: monospace; font-size: .8em; opacity: .5}
+  x-layout-manager x-area-info x-area-tag-name::before {content: '<'}
+  x-layout-manager x-area-info x-area-tag-name::after  {content: '>'}
+
+  body[data-is-managed-layout] [data-area-id] {
+    min-height: 20px;
+    margin-bottom: 10px;
+    border: 1px dotted %%_color_main}
+  body[data-is-managed-layout] [data-area-id] section {
+    min-height: 20px;
+    margin: 10px;
+    border: 1px dotted %%_color_warning}
 
   /* x-admin-actions */
 

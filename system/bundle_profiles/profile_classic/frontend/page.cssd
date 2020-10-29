@@ -14,7 +14,7 @@
     word-spacing: .3em;
     background: white}
 
-  /* page areas */
+  /* page layout */
 
   body[data-layout-id='original_classic'] [data-page-part-id] {display: block; padding: 0 20px; box-sizing: border-box}
   body[data-layout-id='original_classic'] [data-page-part-id='head'] {padding-top:  0  ; padding-bottom:  0  ; color: black; background: white}

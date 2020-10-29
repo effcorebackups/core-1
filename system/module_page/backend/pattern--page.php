@@ -129,6 +129,9 @@ namespace effcore {
     $template->arg_set('head_icons',   $frontend->icons  );
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
+    if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+      $template->target_get('body')->attribute_insert('data-is-managed-layout', true);
+    }
 
     $template->target_get('head_meta')->child_insert(
       new markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
