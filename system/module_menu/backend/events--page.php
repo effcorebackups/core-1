@@ -7,6 +7,7 @@
 namespace effcore\modules\menu {
           use \effcore\access;
           use \effcore\block_preset;
+          use \effcore\entity;
           use \effcore\frontend;
           use \effcore\markup;
           use \effcore\page;
@@ -39,14 +40,17 @@ namespace effcore\modules\menu {
   }
 
   static function on_block_build_after($event, $block) {
-    if (access::check((object)['roles' => ['admins' => 'admins']])) {
-      if (!empty($block->has_admin_tree_menu)) {
-        if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+    if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+      if (access::check((object)['roles' => ['registered' => 'registered']])) {
+        if (!empty($block->has_admin_tree_menu)) {
           $instance_id = $block->args['instance_id'];
           $entity_name = $block->args['entity_name'];
-          $block->extra_t = new markup('x-admin-actions', ['data-entity_name' => $entity_name],
-            new markup('a', ['data-id' => 'update', 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()], 'edit')
-          );
+          $entity = entity::get($entity_name);
+          if (!empty($entity->access_update) && access::check($entity->access_update)) {
+            $block->extra_t = new markup('x-admin-actions', ['data-entity_name' => $entity_name],
+              new markup('a', ['data-id' => 'update', 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()], 'edit')
+            );
+          }
         }
       }
     }
