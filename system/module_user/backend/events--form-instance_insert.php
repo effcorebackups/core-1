@@ -25,7 +25,7 @@ namespace effcore\modules\user {
         $items['#id_role']->build();
       }
     # feedback
-      if ($entity->name === 'feedback' && page::get_current()->id != 'instance_insert') {
+      if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
       # field 'CAPTCHA'
         $class_captcha = new pluggable_class('field_captcha');
         if ($class_captcha->is_exists_class()) {
@@ -95,7 +95,7 @@ namespace effcore\modules\user {
         case 'insert':
         case 'insert_and_update':
         # feedback
-          if ($entity->name === 'feedback' && page::get_current()->id != 'instance_insert') {
+          if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
             message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
             storage_events_form_instance_insert::on_init(null, $form, $items);
             static                             ::on_init(null, $form, $items);

@@ -12,25 +12,29 @@ pages
       - =: registered
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/storage/data
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__instance_select_multiple|block
+      - block__form__instance_select_multiple|block
+          attributes
+          - data-id: block__form__instance_select_multiple
           type: link
           source: forms/storage/instance_select_multiple

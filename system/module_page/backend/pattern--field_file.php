@@ -67,7 +67,7 @@ namespace effcore {
   public $has_on_validate         = true;
   public $has_on_validate_phase_3 = true;
 # ─────────────────────────────────────────────────────────────────────
-  public $pool_result = null;
+  public $pool_result;
   public $pool_fin = [];
   public $pool_pre = [];
 

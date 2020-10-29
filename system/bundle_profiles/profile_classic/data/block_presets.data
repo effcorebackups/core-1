@@ -1,7 +1,10 @@
 block_presets
-- selection__social_networks_classic|block_preset
-    id: selection__social_networks_classic
+- block__selection__social_networks_classic|block_preset
+    id: block__selection__social_networks_classic
     managing_group: Selections
     managing_title: Social networks
     type: link
     source: selections/profile_classic/social_networks_classic
+    attributes
+    - data-section: true
+    - data-id: block__selection__social_networks_classic

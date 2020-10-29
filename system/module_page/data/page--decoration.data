@@ -16,26 +16,30 @@ pages
       - =: manage__decoration
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/page/decoration
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__colors|block
+      - block__form__colors|block
+          attributes
+          - data-id: block__form__colors
           display
             check: page_args
             where: type
@@ -44,7 +48,9 @@ pages
           source: forms/page/colors
           properties
           - title_is_visible: false
-      - form__colors_preset|block
+      - block__form__colors_preset|block
+          attributes
+          - data-id: block__form__colors_preset
           display
             check: page_args
             where: type
@@ -53,7 +59,9 @@ pages
           source: forms/page/colors_preset
           properties
           - title_is_visible: false
-      - form__layout|block
+      - block__form__layout|block
+          attributes
+          - data-id: block__form__layout
           display
             check: page_args
             where: type
@@ -62,7 +70,9 @@ pages
           source: forms/page/layout
           properties
           - title_is_visible: false
-      - form__decoration_settings|block
+      - block__form__decoration_settings|block
+          attributes
+          - data-id: block__form__decoration_settings
           display
             check: page_args
             where: type

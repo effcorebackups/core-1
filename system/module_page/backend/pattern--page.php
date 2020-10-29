@@ -17,7 +17,7 @@ namespace effcore {
   public $charset = 'utf-8';
   public $lang_code = 'en';
   public $text_direction = 'ltr';
-  public $data = null;
+  public $data;
   public $origin = 'nosql'; # nosql | sql
   public $is_embedded = 1;
   public $access;

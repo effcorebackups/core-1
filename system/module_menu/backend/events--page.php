@@ -34,8 +34,8 @@ namespace effcore\modules\menu {
   }
 
   static function on_block_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                   ) {foreach (tree::select_all('sql') as $c_item)     block_preset::insert('tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item->id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true], 0, 'menu');}
-    if ($id !== null && strpos($id, 'tree_sql__') === 0) {$c_item__id = substr($id, strlen('tree_sql__')); block_preset::insert('tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item__id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true], 0, 'menu');}
+    if ($id === null                                          ) {foreach (tree::select_all('sql') as $c_item)            block_preset::insert('block__tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item->id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-section' => true, 'data-id' => 'block__tree_sql__'.$c_item->id]], 0, 'menu');}
+    if ($id !== null && strpos($id, 'block__tree_sql__') === 0) {$c_item__id = substr($id, strlen('block__tree_sql__')); block_preset::insert('block__tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['type' => 'code', 'source' => '\\effcore\\modules\\menu\\events_page::block_markup__tree_get', 'args' => ['instance_id' => $c_item__id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-section' => true, 'data-id' => 'block__tree_sql__'.$c_item__id]], 0, 'menu');}
   }
 
   static function on_block_build_after($event, $block) {

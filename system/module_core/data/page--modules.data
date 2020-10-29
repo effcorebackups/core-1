@@ -15,26 +15,30 @@ pages
       - =: manage__modules
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/core/modules
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__cache_update|block
+      - block__form__cache_update|block
+          attributes
+          - data-id: block__form__cache_update
           display
             check: page_args
             where: action
@@ -43,7 +47,9 @@ pages
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - form__modules_install|block
+      - block__form__modules_install|block
+          attributes
+          - data-id: block__form__modules_install
           display
             check: page_args
             where: action
@@ -52,21 +58,27 @@ pages
           source: forms/core/modules_install
           properties
           - title_is_visible: false
-      - form__modules_uninstall|block
+      - block__form__modules_uninstall|block
+          attributes
+          - data-id: block__form__modules_uninstall
           display
             check: page_args
             where: action
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - form__modules_update_data|block
+      - block__form__modules_update_data|block
+          attributes
+          - data-id: block__form__modules_update_data
           display
             check: page_args
             where: action
             match: %^update/data$%
           type: link
           source: forms/core/modules_update_data
-      - form__modules_update_files|block
+      - block__form__modules_update_files|block
+          attributes
+          - data-id: block__form__modules_update_files
           display
             check: page_args
             where: action

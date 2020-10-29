@@ -19,38 +19,38 @@
     line-height: 1.5em;
     color: %%_color_text}
 
-  /* logs */
+  /* block__logs */
 
-  section[data-id='logs'] tbody    td {vertical-align: top; color: black}
-  section[data-id='logs'] tbody tr td                      {background-color: transparent}
-  section[data-id='logs'] tbody tr                         {background-color: white}
-  section[data-id='logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
-  section[data-id='logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
-  section[data-id='logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
-  section[data-id='logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  section[data-id='logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
-  section[data-id='logs'] tbody tr[data-object='access'  ] {background-color: thistle}
-  section[data-id='logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
-  section[data-id='logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
+  [data-section][data-id='block__logs'] tbody    td {vertical-align: top; color: black}
+  [data-section][data-id='block__logs'] tbody tr td                      {background-color: transparent}
+  [data-section][data-id='block__logs'] tbody tr                         {background-color: white}
+  [data-section][data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+  [data-section][data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+  [data-section][data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+  [data-section][data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
+  [data-section][data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
+  [data-section][data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
+  [data-section][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
+  [data-section][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
 
-  section[data-id='logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
-  section[data-id='logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
-  section[data-id='logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
-  section[data-id='logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
+  [data-section][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
+  [data-section][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
+  [data-section][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
+  [data-section][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
 
-  section[data-id='logs'] tbody td[data-cellid='description'] x-stack {
+  [data-section][data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
     display: block;
     margin: 5px 0 3px 0;
     padding-top: 3px;
     border-top: 1px dotted black}
-  section[data-id='logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 7px 0 7px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
-  section[data-id='logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
-  section[data-id='logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
+  [data-section][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 7px 0 7px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
+  [data-section][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
+  [data-section][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
 
-  section[data-id='logs'] x-param {display: block; font-size: .9em}
-  section[data-id='logs'] x-param x-title {width: 200px; display: inline-block}
-  section[data-id='logs'] x-param x-title::after {content: ': '}
-  section[data-id='logs'] x-param x-value {font-family: monospace}
+  [data-section][data-id='block__logs'] x-param {display: block; font-size: .9em}
+  [data-section][data-id='block__logs'] x-param x-title {width: 200px; display: inline-block}
+  [data-section][data-id='block__logs'] x-param x-title::after {content: ': '}
+  [data-section][data-id='block__logs'] x-param x-value {font-family: monospace}
 
   /* x-document ('report for test' and etc.)
      note: CSS4 margin-left: calc(20px * attr(data-depth number, 0)) */
@@ -71,7 +71,7 @@
 
   /* events */
 
-  x-decorator[data-id^='events_nosql_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
+  x-decorator[data-id^='nosql_events_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
 
   /* x-structures-list */
 
@@ -82,7 +82,7 @@
   x-structures-list x-file-path x-directory {display: none}
   x-structures-list x-file-path:hover x-directory {display: inline-block}
 
-  /* uml class diagram */
+  /* block__structures_diagram */
 
   x-diagram-uml {font-family: 'Arial'; color: black; overflow: auto}
   x-diagram-uml, x-diagram-uml * {display: block}
@@ -108,65 +108,65 @@
   x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
   x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 
-  section[data-id='structures_diagram']                   x-diagram-uml x-attributes,
-  section[data-id='structures_diagram']                   x-diagram-uml x-operations {display: none}
-  section[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
-  section[data-id='structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
+  [data-section][data-id='block__structures_diagram']                   x-diagram-uml x-attributes,
+  [data-section][data-id='block__structures_diagram']                   x-diagram-uml x-operations {display: none}
+  [data-section][data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
+  [data-section][data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
-  /* demo_canvas */
+  /* block__demo_canvas */
 
-  section[data-id='demo_canvas'] [data-section-content] {text-align: center}
-  section[data-id='demo_canvas'] [data-section-content] svg {
+  [data-section][data-id='block__demo_canvas'] [data-section-content] {text-align: center}
+  [data-section][data-id='block__demo_canvas'] [data-section-content] svg {
     width: 100%;
     max-width: 525px;
     height: auto}
 
-  /* demo_markup_colors */
+  /* block__demo_colors */
 
-  section[data-id='demo_markup_colors'] x-colors-group {display: block; margin: 5px 0}
-  section[data-id='demo_markup_colors'] x-color {display: inline-block; width: 30px; height: 30px}
-  section[data-id='demo_markup_colors'] x-color:nth-child(11) {background: %%_color_main; border: 1px solid red; margin: -1px; position: relative; opacity: 1}
+  [data-section][data-id='block__demo_colors'] x-colors-group {display: block; margin: 5px 0; text-align: center}
+  [data-section][data-id='block__demo_colors'] x-color {display: inline-block; width: 30px; height: 30px}
+  [data-section][data-id='block__demo_colors'] x-color:nth-child(11) {background: %%_color_main; border: 1px solid red; margin: -1px; position: relative; opacity: 1}
 
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 1) {background: %%_color_main{-50,-50,-50}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 2) {background: %%_color_main{-45,-45,-45}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 3) {background: %%_color_main{-40,-40,-40}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 4) {background: %%_color_main{-35,-35,-35}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 5) {background: %%_color_main{-30,-30,-30}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 6) {background: %%_color_main{-25,-25,-25}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 7) {background: %%_color_main{-20,-20,-20}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 8) {background: %%_color_main{-15,-15,-15}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 9) {background: %%_color_main{-10,-10,-10}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(10) {background: %%_color_main{-05,-05,-05}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(12) {background: %%_color_main{05,05,05}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(13) {background: %%_color_main{10,10,10}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(14) {background: %%_color_main{15,15,15}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(15) {background: %%_color_main{20,20,20}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(16) {background: %%_color_main{25,25,25}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(17) {background: %%_color_main{30,30,30}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(18) {background: %%_color_main{35,35,35}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(19) {background: %%_color_main{40,40,40}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(20) {background: %%_color_main{45,45,45}}
-  section[data-id='demo_markup_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(21) {background: %%_color_main{50,50,50}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 1) {background: %%_color_main{-50,-50,-50}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 2) {background: %%_color_main{-45,-45,-45}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 3) {background: %%_color_main{-40,-40,-40}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 4) {background: %%_color_main{-35,-35,-35}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 5) {background: %%_color_main{-30,-30,-30}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 6) {background: %%_color_main{-25,-25,-25}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 7) {background: %%_color_main{-20,-20,-20}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 8) {background: %%_color_main{-15,-15,-15}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child( 9) {background: %%_color_main{-10,-10,-10}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(10) {background: %%_color_main{-05,-05,-05}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(12) {background: %%_color_main{05,05,05}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(13) {background: %%_color_main{10,10,10}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(14) {background: %%_color_main{15,15,15}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(15) {background: %%_color_main{20,20,20}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(16) {background: %%_color_main{25,25,25}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(17) {background: %%_color_main{30,30,30}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(18) {background: %%_color_main{35,35,35}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(19) {background: %%_color_main{40,40,40}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(20) {background: %%_color_main{45,45,45}}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-parametric-tokens] x-color:nth-child(21) {background: %%_color_main{50,50,50}}
 
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color {background: %%_color_main}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
-  section[data-id='demo_markup_colors'] x-colors-group[via-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color {background: %%_color_main}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
+  [data-section][data-id='block__demo_colors'] x-colors-group[via-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}

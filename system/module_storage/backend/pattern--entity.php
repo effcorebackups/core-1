@@ -31,10 +31,10 @@ namespace effcore {
   public $selection_params_for_managing_multiple = [];
   public $selection_params_default               = [];
 
-  public $access_select = null;
-  public $access_insert = null;
-  public $access_update = null;
-  public $access_delete = null;
+  public $access_select;
+  public $access_insert;
+  public $access_update;
+  public $access_delete;
 
   function _postparse() {
     if ($this->managing_is_enabled && $this->access_select === null) $this->access_select = (object)['roles' => ['admins' => 'admins']];

@@ -11,7 +11,7 @@ namespace effcore {
   public $tag_name = 'x-decorator';
   public $view_type = 'table'; # table | table-adaptive | table-dl | ul | dl | tree | template
   public $template = 'markup_html';
-  public $template_row = null;
+  public $template_row;
   public $template_row_mapping = [];
   public $tree_visualization_mode; # null | decorated | decorated-rearrangeable
   public $tree_mapping = [];

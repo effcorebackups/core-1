@@ -10,7 +10,6 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&NewLine;
-    - (default type): (тип по умолчанию)
     - &ndash; request header param "%%_value": &ndash; header-параметр запроса "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запроса "%%_name" = "%%_value"
     - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр ответа "%%_name" = "%%_value"
@@ -51,6 +50,7 @@ translations
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - default text: текст по умолчанию
+    - Default type.: Тип по умолчанию.
     - Demo form: Демонстрационная форма
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
@@ -194,7 +194,7 @@ translations
     - there will be try to insert roles\: %%_roles: будет попытка вставить роли: %%_roles
     - This description is always shown.: Это описание всегда показывается.
     - This description is shown on top.: Это описание показано сверху.
-    - To improve performance, the console in the file types "*.cssd" and "*.jsd" will only be displayed in the "show for everyone" mode.: Для повышения производительности консоль в файлах типа "*.cssd" и "*.jsd" будет отображаться только в режиме "показать всем".
+    - To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.: Для повышения производительности консоль в файлах типа ".cssd" и ".jsd" будет отображаться только в режиме "показать всем".
     - Total generation time: Общее время генерации
     - Total load: Общая загрузка
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.

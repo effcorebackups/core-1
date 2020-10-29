@@ -17,9 +17,9 @@ namespace effcore {
   public $attributes = ['aria-label' => 'pager'];
   public $error_code = self::ERR_CODE_OK;
 
+  public $cur;
   public $min = 1;
   public $max = 1;
-  public $cur = null;
   public $name = 'page';
   public $id = 0;
 

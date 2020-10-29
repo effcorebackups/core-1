@@ -8,3 +8,6 @@ file_types
 - sqlite
     type: sqlite
     kind: protected
+- db
+    type: db
+    kind: protected

@@ -488,32 +488,32 @@ instances
     - module_id: profile_classic
     - blocks
       - system
-        - page_actions|block_preset_link
-            id: page_actions
-        - tree_sql__user_registered|block_preset_link
-            id: tree_sql__user_registered
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - text_sql__about_classic|block_preset_link
-            id: text_sql__about_classic
+        - block__text_sql__about_classic|block_preset_link
+            id: block__text_sql__about_classic
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_contact|instance
     entity_name: page
     values
@@ -526,34 +526,34 @@ instances
     - module_id: profile_classic
     - blocks
       - system
-        - page_actions|block_preset_link
-            id: page_actions
-        - tree_sql__user_registered|block_preset_link
-            id: tree_sql__user_registered
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - text_sql__contact_classic|block_preset_link
-            id: text_sql__contact_classic
-        - form__feedback|block_preset_link
-            id: form__feedback
+        - block__text_sql__contact_classic|block_preset_link
+            id: block__text_sql__contact_classic
+        - block__form__feedback|block_preset_link
+            id: block__form__feedback
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_front|instance
     entity_name: page
     values
@@ -566,34 +566,34 @@ instances
     - module_id: profile_classic
     - blocks
       - system
-        - page_actions|block_preset_link
-            id: page_actions
-        - tree_sql__user_registered|block_preset_link
-            id: tree_sql__user_registered
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - text_sql__front_classic|block_preset_link
-            id: text_sql__front_classic
+        - block__text_sql__front_classic|block_preset_link
+            id: block__text_sql__front_classic
       - footer
-        - selection__social_networks_classic|block_preset_link
-            id: selection__social_networks_classic
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__selection__social_networks_classic|block_preset_link
+            id: block__selection__social_networks_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_login|instance
     entity_name: page
     values
@@ -609,33 +609,33 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - breadcrumbs
-        - breadcrumbs__user_anonymous|block_preset_link
-            id: breadcrumbs__user_anonymous
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - form__login|block_preset_link
-            id: form__login
+        - block__form__login|block_preset_link
+            id: block__form__login
             properties
             - title_is_visible: false
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_logout|instance
     entity_name: page
     values
@@ -651,35 +651,35 @@ instances
         - =: registered
     - blocks
       - system
-        - page_actions|block_preset_link
-            id: page_actions
-        - tree_sql__user_registered|block_preset_link
-            id: tree_sql__user_registered
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - breadcrumbs
-        - breadcrumbs__user_registered|block_preset_link
-            id: breadcrumbs__user_registered
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - form__logout|block_preset_link
-            id: form__logout
+        - block__form__logout|block_preset_link
+            id: block__form__logout
             properties
             - title_is_visible: false
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_recovery|instance
     entity_name: page
     values
@@ -695,33 +695,33 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - breadcrumbs
-        - breadcrumbs__user_anonymous|block_preset_link
-            id: breadcrumbs__user_anonymous
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - form__recovery|block_preset_link
-            id: form__recovery
+        - block__form__recovery|block_preset_link
+            id: block__form__recovery
             properties
             - title_is_visible: false
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 - page_registration|instance
     entity_name: page
     values
@@ -737,33 +737,33 @@ instances
         - =: anonymous
     - blocks
       - system
-        - tree_sql__user_anonymous|block_preset_link
-            id: tree_sql__user_anonymous
-        - tree__system|block_preset_link
-            id: tree__system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+        - block__tree__system|block_preset_link
+            id: block__tree__system
       - header
-        - picture_sql__logotype_classic|block_preset_link
-            id: picture_sql__logotype_classic
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
       - menu
-        - tree_sql__main|block_preset_link
-            id: tree_sql__main
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
       - breadcrumbs
-        - breadcrumbs__user_anonymous|block_preset_link
-            id: breadcrumbs__user_anonymous
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
       - messages
-        - messages|block_preset_link
-            id: messages
+        - block__messages|block_preset_link
+            id: block__messages
       - title
-        - title|block_preset_link
-            id: title
+        - block__title|block_preset_link
+            id: block__title
       - content
-        - form__registration|block_preset_link
-            id: form__registration
+        - block__form__registration|block_preset_link
+            id: block__form__registration
             properties
             - title_is_visible: false
       - footer
-        - text_sql__copyright_classic|block_preset_link
-            id: text_sql__copyright_classic
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────

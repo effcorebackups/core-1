@@ -9,26 +9,28 @@ pages
     blocks
     - header
       - block__menu_languages|block
+          attributes
+          - data-id: block__menu_languages
           type: code
           source: \effcore\modules\locales\events_page::block_markup__menu_languages
       - block__system_info|block
-          tag_name: section
-          template: block
           title: System information
           attributes
-          - data-id: info_system
+          - data-id: block__system_info
           - data-title-is-hidden: true
           type: code
           source: \effcore\modules\core\events_page_info::block_markup__system_info
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__install|block
+      - block__form__install|block
+          attributes
+          - data-id: block__form__install
           type: link
           source: forms/core/install
           properties

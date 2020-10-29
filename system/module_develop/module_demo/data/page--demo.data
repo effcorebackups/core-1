@@ -20,26 +20,30 @@ pages
       - =: admins
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/demo/demo
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__demo|block
+      - block__form__demo|block
+          attributes
+          - data-id: block__form__demo
           display
             check: page_args
             where: type
@@ -52,11 +56,9 @@ pages
       # markup
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_markup_static|block
-          tag_name: section
-          template: block
           title: Markup static
           attributes
-          - data-id: demo_markup_static
+          - data-id: block__demo_markup_static
           - data-title-is-hidden: true
           display
             check: page_args
@@ -65,11 +67,10 @@ pages
           type: link
           source: markup/demo/demo_markup_static
       - block__demo_markup_dynamic|block
-          tag_name: section
-          template: block
           title: Markup dynamic
           attributes
-          - data-id: demo_markup_dynamic
+          - data-id: block__demo_markup_dynamic
+          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -80,11 +81,9 @@ pages
       # decorators
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_decorators_static|block
-          tag_name: section
-          template: block
           title: Decorators static
           attributes
-          - data-id: demo_decorators_static
+          - data-id: block__demo_decorators_static
           - data-title-is-styled|_string_false
           display
             check: page_args
@@ -93,11 +92,9 @@ pages
           type: link
           source: markup/demo/demo_decorators_static
       - block__demo_decorators_dynamic|block
-          tag_name: section
-          template: block
           title: Decorators dynamic
           attributes
-          - data-id: demo_decorators_dynamic
+          - data-id: block__demo_decorators_dynamic
           - data-title-is-styled|_string_false
           display
             check: page_args
@@ -109,11 +106,9 @@ pages
       # trees
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_tree_via_decorator|block
-          tag_name: section
-          template: block
           title: Trees
           attributes
-          - data-id: demo_tree_via_decorator
+          - data-id: block__demo_tree_via_decorator
           - data-title-is-hidden: true
           display
             check: page_args
@@ -122,6 +117,8 @@ pages
           type: link
           source: markup/demo/demo_tree_via_decorator
       - block__demo_tree_sql|block
+          attributes
+          - data-id: block__demo_tree_sql
           display
             check: page_args
             where: type
@@ -129,8 +126,10 @@ pages
           type: code
           source: \effcore\modules\menu\events_page::block_markup__tree_get
           args
-          - id: demo_sql
+          - instance_id: demo_sql
       - block__demo_tree_nosql|block
+          attributes
+          - data-id: block__demo_tree_nosql
           display
             check: page_args
             where: type
@@ -141,6 +140,8 @@ pages
       # selections
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_selection_demo_join_1|block
+          attributes
+          - data-id: block__demo_selection_demo_join_1
           display
             check: page_args
             where: type
@@ -150,6 +151,8 @@ pages
           properties
           - title: Selection of "demo_data" entities + join (ID: 100+)
       - block__demo_selection_demo_join_2|block
+          attributes
+          - data-id: block__demo_selection_demo_join_2
           display
             check: page_args
             where: type
@@ -176,6 +179,8 @@ pages
               - type: ASC
             - limit: 5
       - block__demo_selection_demo_types|block
+          attributes
+          - data-id: block__demo_selection_demo_types
           display
             check: page_args
             where: type
@@ -193,6 +198,8 @@ pages
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_messages
       - block__demo_messages_description|block
+          attributes
+          - data-id: block__demo_messages_description
           display
             check: page_args
             where: type
@@ -203,11 +210,9 @@ pages
       # other
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_canvas|block
-          tag_name: section
-          template: block
           title: Canvas
           attributes
-          - data-id: demo_canvas
+          - data-id: block__demo_canvas
           display
             check: page_args
             where: type
@@ -215,11 +220,9 @@ pages
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_canvas
       - block__demo_diagram_linear|block
-          tag_name: section
-          template: block
           title: Linear diagram
           attributes
-          - data-id: demo_diagram_linear
+          - data-id: block__demo_diagram_linear
           display
             check: page_args
             where: type
@@ -227,11 +230,9 @@ pages
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_linear
       - block__demo_diagram_radial|block
-          tag_name: section
-          template: block
           title: Radial diagram
           attributes
-          - data-id: demo_diagram_radial
+          - data-id: block__demo_diagram_radial
           display
             check: page_args
             where: type
@@ -239,11 +240,9 @@ pages
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_radial
       - block__demo_colors|block
-          tag_name: section
-          template: block
           title: Gradient of main color
           attributes
-          - data-id: demo_markup_colors
+          - data-id: block__demo_colors
           display
             check: page_args
             where: type

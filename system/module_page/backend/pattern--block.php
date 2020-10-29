@@ -7,16 +7,17 @@
 namespace effcore {
           class block extends markup {
 
-  public $tag_name = null; # 'section'
-  public $template = null; # 'block'
+  public $tag_name = 'section';
+  public $template = 'block';
+  public $attributes = ['data-section' => true];
 # ─────────────────────────────────────────────────────────────────────
   public $title;
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-section-title' => true];
   public $content_tag_name = 'x-section-content';
   public $content_attributes = ['data-section-content' => true];
-  public $extra_t = null;
-  public $extra_b = null;
+  public $extra_t;
+  public $extra_b;
   public $display;
   public $type; # copy | link | code | text
   public $source;

@@ -7,7 +7,7 @@
 namespace effcore {
           class widget_area_blocks extends widget_items {
 
-  public $title = null;
+  public $title;
   public $item_title = 'Block';
   public $content_tag_name = null;
   public $attributes = ['data-type' => 'items-info-area_blocks'];

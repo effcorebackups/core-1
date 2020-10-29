@@ -12,26 +12,30 @@ pages
       - =: manage__security
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/user/security
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__security_settings|block
+      - block__form__security_settings|block
+          attributes
+          - data-id: block__form__security_settings
           display
             check: page_args
             where: type

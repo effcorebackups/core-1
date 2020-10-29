@@ -73,11 +73,11 @@ namespace effcore {
     $file_types = file::types_get();
 
     # ─────────────────────────────────────────────────────────────────────
-    # case for any system file ('.type') - show 'forbidden' even if it does not exist!
+    # case for any system file ('.type', '.name.type'…) - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if ($file->name === '' &&
-        $file->type !== '') {
+    if (($file->name !== '' && $file->name[0] === '.') ||
+        ($file->type !== '' && $file->name === '')) {
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'

@@ -257,19 +257,20 @@ namespace effcore\modules\demo {
   ################
 
   static function block_markup__demo_messages($page) {
-    message::insert( 'Credentials',                                            'credentials'                );
-    message::insert( new text('Notice message #%%_number.',  ['number' => 1]), 'notice'                     );
-    message::insert( new text('Notice message #%%_number.',  ['number' => 2]), 'notice'                     );
-    message::insert( new text('Notice message #%%_number.',  ['number' => 3]), 'notice'                     );
-    message::insert( new text_multiline(['Ok message #%%_number.', '(default type)'], ['number' => 1], ' ') );
-    message::insert( new text('Ok message #%%_number.',      ['number' => 2])                               );
-    message::insert( new text('Ok message #%%_number.',      ['number' => 3])                               );
-    message::insert( new text('Warning message #%%_number.', ['number' => 1]), 'warning'                    );
-    message::insert( new text('Warning message #%%_number.', ['number' => 2]), 'warning'                    );
-    message::insert( new text('Warning message #%%_number.', ['number' => 3]), 'warning'                    );
-    message::insert( new text('Error message #%%_number.',   ['number' => 1]), 'error'                      );
-    message::insert( new text('Error message #%%_number.',   ['number' => 2]), 'error'                      );
-    message::insert( new text('Error message #%%_number.',   ['number' => 3]), 'error'                      );
+    $link = (new markup('a', ['href' => '/'], 'Link'))->render();
+    message::insert( 'Credentials', 'credentials');
+    message::insert( new text_multiline(['Notice message #%%_number.',              $link], ['number' => 1], ' '), 'notice');
+    message::insert( new text_multiline(['Notice message #%%_number.'                    ], ['number' => 2], ' '), 'notice');
+    message::insert( new text_multiline(['Notice message #%%_number.'                    ], ['number' => 3], ' '), 'notice');
+    message::insert( new text_multiline(['Ok message #%%_number.', 'Default type.', $link], ['number' => 1], ' '));
+    message::insert( new text_multiline(['Ok message #%%_number.',                       ], ['number' => 2], ' '));
+    message::insert( new text_multiline(['Ok message #%%_number.'                        ], ['number' => 3], ' '));
+    message::insert( new text_multiline(['Warning message #%%_number.',             $link], ['number' => 1], ' '), 'warning');
+    message::insert( new text_multiline(['Warning message #%%_number.'                   ], ['number' => 2], ' '), 'warning');
+    message::insert( new text_multiline(['Warning message #%%_number.'                   ], ['number' => 3], ' '), 'warning');
+    message::insert( new text_multiline(['Error message #%%_number.',               $link], ['number' => 1], ' '), 'error');
+    message::insert( new text_multiline(['Error message #%%_number.'                     ], ['number' => 2], ' '), 'error');
+    message::insert( new text_multiline(['Error message #%%_number.'                     ], ['number' => 3], ' '), 'error');
   }
 
   ##############

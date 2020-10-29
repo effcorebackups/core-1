@@ -1,6 +1,6 @@
 block_presets
-- form__feedback|block_preset
-    id: form__feedback
+- block__form__feedback|block_preset
+    id: block__form__feedback
     managing_group: Forms
     managing_title: Feedback form
     in_areas
@@ -11,42 +11,60 @@ block_presets
     - entity_name: feedback
     - title: Feedback form
     - title_is_visible: true
-- form__login|block_preset
-    id: form__login
+    attributes
+    - data-section: true
+    - data-id: block__form__feedback
+- block__form__login|block_preset
+    id: block__form__login
     managing_group: Forms
     managing_title: Login
     in_areas
     - =: content
     type: copy
     source: forms/user/login
-- form__logout|block_preset
-    id: form__logout
+    attributes
+    - data-section: true
+    - data-id: block__form__login
+- block__form__logout|block_preset
+    id: block__form__logout
     managing_group: Forms
     managing_title: Logout
     in_areas
     - =: content
     type: copy
     source: forms/user/logout
-- form__recovery|block_preset
-    id: form__recovery
+    attributes
+    - data-section: true
+    - data-id: block__form__logout
+- block__form__recovery|block_preset
+    id: block__form__recovery
     managing_group: Forms
     managing_title: Access recovery
     in_areas
     - =: content
     type: copy
     source: forms/user/recovery
-- form__registration|block_preset
-    id: form__registration
+    attributes
+    - data-section: true
+    - data-id: block__form__recovery
+- block__form__registration|block_preset
+    id: block__form__registration
     managing_group: Forms
     managing_title: Registration
     in_areas
     - =: content
     type: copy
     source: forms/user/registration
+    attributes
+    - data-section: true
+    - data-id: block__form__registration
 # ─────────────────────────────────────────────────────────────────────
-- selection__user|block_preset
-    id: selection__user
+- block__selection__user|block_preset
+    id: block__selection__user
     managing_group: Selections
     managing_title: User
     type: link
     source: selections/user/user
+    attributes
+    - data-section: true
+    - data-id: block__selection__user

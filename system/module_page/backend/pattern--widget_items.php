@@ -7,7 +7,7 @@
 namespace effcore {
           class widget_items extends control implements complex_control {
 
-  public $title = null;
+  public $title;
   public $title_tag_name = 'label';
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $title_attributes = ['data-widget-title' => true];

@@ -21,7 +21,7 @@ namespace effcore {
   public $pager_name = 'page';
   public $pager_id = 0;
   public $origin = 'nosql'; # nosql | sql
-  public $_instances = null;
+  public $_instances;
 
   function __construct($title = null, $weight = 0) {
     if ($title) $this->title = $title;

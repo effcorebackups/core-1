@@ -154,10 +154,12 @@
     display: inline-block;
     padding: 5px 10px;
     font-size: 13px;
+    color: white;
     background: %%_color_main url('pictures/lines.svg') -10px 0}
   x-admin-actions::after {content: ''; clear: both; display: block}
   x-admin-actions[data-entity_name='page'] {display: block}
 
+  x-admin-actions a {color: white}
   x-admin-actions a:not(:last-child) {
     padding-right: 10px;
     margin-right: 10px;
@@ -242,27 +244,27 @@
 
   /* block */
 
-  section {display: block; margin: 70px 0}
-  section [data-section-title] {
+  [data-section] {display: block; margin: 0}
+  [data-section] [data-section-title] {
     display: block;
     margin-bottom: 20px;
     padding-bottom: 30px;
     border-bottom: 5px solid %%_color_main;
     font-size: 1.5em;
     line-height: 1.5em}
-  section [data-section-content] {display: block}
-  section[data-title-is-styled='false'] [data-section-title] {border:  none}
-  section[data-title-is-hidden]         [data-section-title] {display: none}
+  [data-section] [data-section-content] {display: block}
+  [data-section][data-title-is-styled='false'] [data-section-title] {border: none}
+  [data-section][data-title-is-hidden] [data-section-title] {display: none}
 
   /* block system info */
 
-  section[data-id='info_system'] {margin: 150px 0 50px 0; text-align: center}
-  section[data-id='info_system'] x-logo      {display: block; margin-bottom: 20px}
-  section[data-id='info_system'] x-logo img  {width: 100%; max-width: 300px}
-  section[data-id='info_system'] x-copyright {display: block; font-size: .8em}
-  section[data-id='info_system'] x-build     {display: block}
-  section[data-id='info_system'] x-build x-title::after {content: ': '}
-  section[data-id='info_system'] x-build x-value {font-weight: bold}
+  [data-section][data-id='block__system_info'] {margin: 150px 0 50px 0; text-align: center}
+  [data-section][data-id='block__system_info'] x-logo      {display: block; margin-bottom: 20px}
+  [data-section][data-id='block__system_info'] x-logo img  {width: 100%; max-width: 300px}
+  [data-section][data-id='block__system_info'] x-copyright {display: block; font-size: .8em}
+  [data-section][data-id='block__system_info'] x-build     {display: block}
+  [data-section][data-id='block__system_info'] x-build x-title::after {content: ': '}
+  [data-section][data-id='block__system_info'] x-build x-value {font-weight: bold}
 
   /* x-sticker */
 

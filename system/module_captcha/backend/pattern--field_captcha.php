@@ -24,10 +24,10 @@ namespace effcore {
     'autocomplete' => 'off',
     'required'     => true];
 # ─────────────────────────────────────────────────────────────────────
-  public $length       = null;
+  public $length;
+  public $attempts_cur;
   public $attempts_max = 3;
-  public $attempts_cur = null;
-  public $noise        = 1;
+  public $noise = 1;
 
   function build() {
     if (!$this->is_builded) {

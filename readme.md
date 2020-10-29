@@ -145,7 +145,7 @@ by 3-5 times (more details in the section "Performance improvement").
 Each storage subdirectory will be initialized only on demand.
 
 Any instance of the class and other NoSQL data can be described
-in text format in a file of type "*.data", like YAML, but has a more
+in text format in a file of type ".data", like YAML, but has a more
 stringent rules such as "each string can contain the only one
 phrase in the form "key: value".
 

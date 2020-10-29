@@ -17,112 +17,106 @@ pages
       - =: admins
     blocks
     - system
-      - tree_sql__user_registered|block_preset_link
-          id: tree_sql__user_registered
-      - tree__system|block_preset_link
-          id: tree__system
+      - block__tree_sql__user_registered|block_preset_link
+          id: block__tree_sql__user_registered
+      - block__tree__system|block_preset_link
+          id: block__tree__system
     - breadcrumbs
-      - breadcrumbs__system|block_preset_link
-          id: breadcrumbs__system
+      - block__breadcrumbs__system|block_preset_link
+          id: block__breadcrumbs__system
     - messages
-      - messages|block_preset_link
-          id: messages
+      - block__messages|block_preset_link
+          id: block__messages
     - title
-      - title|block_preset_link
-          id: title
+      - block__title|block_preset_link
+          id: block__title
     - tabs
-      - tabs|block
+      - block__tabs|block
+          attributes
+          - data-id: block__tabs
           type: link
           source: tabs/develop/data_nosql
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - form__cache_update|block
+      - block__form__cache_update|block
+          attributes
+          - data-id: block__form__cache_update
           type: link
           source: forms/core/cache_update
           properties
           - title_is_visible: false
-      - block__trees|block
+      - block__nosql_trees|block
+          attributes
+          - data-id: block__nosql_trees
           display
             check: page_args
             where: type
             match: %^trees$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__tree
-      - block__selections|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tree
+      - block__nosql_selections|block
           title: Selections
           attributes
-          - data-id: selections_nosql
+          - data-id: block__nosql_selections
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^selections$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__selections
-      - block__events|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_selections
+      - block__nosql_events|block
           title: Events
           attributes
-          - data-id: events_nosql
+          - data-id: block__nosql_events
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^events$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__events
-      - block__file_types|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_events
+      - block__nosql_file_types|block
           title: File types
           attributes
-          - data-id: file_types_nosql
+          - data-id: block__nosql_file_types
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^file_types$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__file_types
-      - block__templates|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_file_types
+      - block__nosql_templates|block
           title: Templates
           attributes
-          - data-id: templates_nosql
+          - data-id: block__nosql_templates
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^templates$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__templates
-      - block__tokens|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_templates
+      - block__nosql_tokens|block
           title: Tokens
           attributes
-          - data-id: tokens_nosql
+          - data-id: block__nosql_tokens
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^tokens$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__tokens
-      - block__translations|block
-          tag_name: section
-          template: block
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tokens
+      - block__nosql_translations|block
           title: Translations
           attributes
-          - data-id: translations_nosql
+          - data-id: block__nosql_translations
           - data-title-is-hidden: true
           display
             check: page_args
             where: type
             match: %^translations$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__translations
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_translations

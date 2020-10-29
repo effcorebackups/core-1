@@ -70,9 +70,9 @@ namespace effcore\modules\user {
               $mail_from.nl.
               $mail_encoding
             );
-            if ($mail_send_result)
-                 message::insert('A new password was sent to the selected EMail.'        );
-            else message::insert('The letter was not accepted for transmission.', 'error');
+            if ($mail_send_result) {
+                   message::insert('A new password was sent to the selected EMail.'); url::go('/login');
+            } else message::insert('The letter was not accepted for transmission.', 'error');
           }
         }
         break;
