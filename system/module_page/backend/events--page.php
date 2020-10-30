@@ -29,17 +29,19 @@ namespace effcore\modules\page {
 
   static function block_markup___page_actions($page) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['registered' => 'registered']])) {
-      $entity = entity::get('page');
-      if (access::check($entity->access_update)) {
+      if (access::check((object)[
+           'roles'             => [  'admins'                                 =>   'admins'                                ],
+           'permissions'       => [  'manage_data__content_page__update'      =>   'manage_data__content_page__update'     ],
+           'permissions_match' => ['%^manage_data__content_page_.+__update$%' => '%^manage_data__content_page_.+__update$%']])) {
         $url = clone url::get_current();
         $edit_mode = $url->query_arg_select('manage_layout');
         if ($edit_mode === 'true')
              $url->query_arg_delete('manage_layout'        );
         else $url->query_arg_insert('manage_layout', 'true');
         $admin_actions = new markup('x-admin-actions', ['data-entity_name' => 'page']);
-        if ($edit_mode !== 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'manage-enter', 'href' => $url->tiny_get(), 'title' => new text('enter edit mode')], '⇾'), 'manage_layout');
-        if ($edit_mode === 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'manage-leave', 'href' => $url->tiny_get(), 'title' => new text('leave edit mode')], '⇽'), 'manage_layout');
-        if ($edit_mode === 'true') $admin_actions->child_insert(new markup('a', ['data-id' => 'update',       'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'update page'), 'update_page');
+        if ($edit_mode !== 'true'                                                     ) $admin_actions->child_insert(new markup('a', ['data-id' => 'manage-enter', 'href' => $url->tiny_get(), 'title' => new text('enter edit mode')], '⇾'), 'manage_layout');
+        if ($edit_mode === 'true'                                                     ) $admin_actions->child_insert(new markup('a', ['data-id' => 'manage-leave', 'href' => $url->tiny_get(), 'title' => new text('leave edit mode')], '⇽'), 'manage_layout');
+        if ($edit_mode === 'true' && access::check(entity::get('page')->access_update)) $admin_actions->child_insert(new markup('a', ['data-id' => 'update',       'href' => '/manage/data/content/page/'.$page->id.'/update?'.url::back_part_make()], 'update page'), 'update_page');
         return $admin_actions;
       }
     }
