@@ -6,5 +6,5 @@ block_presets
     type: link
     source: selections/profile_classic/social_networks_classic
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__selection__social_networks_classic

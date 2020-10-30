@@ -8,7 +8,7 @@ block_presets
     type: link
     source: trees/core/system
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__tree__system
 - block__breadcrumbs__system|block_preset
     id: block__breadcrumbs__system
@@ -17,7 +17,7 @@ block_presets
     type: link
     source: breadcrumbs/core/system
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__breadcrumbs__system
 - block__breadcrumbs__user_registered|block_preset
     id: block__breadcrumbs__user_registered
@@ -26,7 +26,7 @@ block_presets
     type: link
     source: breadcrumbs/core/user_registered
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__breadcrumbs__user_registered
 - block__breadcrumbs__user_anonymous|block_preset
     id: block__breadcrumbs__user_anonymous
@@ -35,5 +35,5 @@ block_presets
     type: link
     source: breadcrumbs/core/user_anonymous
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__breadcrumbs__user_anonymous

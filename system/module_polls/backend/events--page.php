@@ -11,8 +11,8 @@ namespace effcore\modules\polls {
           abstract class events_page {
 
   static function on_block_presets_dynamic_build($event, $id = null) {
-    if ($id === null                                           ) {foreach (entity::get('poll')->instances_select() as $c_item) block_preset::insert('block__poll_form__'.$c_item->id, 'Polls', $c_item->question, ['content' => 'content'], ['type' => 'copy', 'source' => 'forms/polls/poll', 'properties' => ['_id_poll' => $c_item->id], 'attributes' => ['data-section' => true, 'data-id' => 'block__poll_sql__'.$c_item->id]], 0, 'polls');}
-    if ($id !== null && strpos($id, 'block__poll_form__') === 0) {$c_item__id = substr($id, strlen('block__poll_form__'));     block_preset::insert('block__poll_form__'.$c_item__id, 'Polls', 'NO TITLE',        ['content' => 'content'], ['type' => 'copy', 'source' => 'forms/polls/poll', 'properties' => ['_id_poll' => $c_item__id], 'attributes' => ['data-section' => true, 'data-id' => 'block__poll_sql__'.$c_item__id]], 0, 'polls');}
+    if ($id === null                                           ) {foreach (entity::get('poll')->instances_select() as $c_item) block_preset::insert('block__poll_form__'.$c_item->id, 'Polls', $c_item->question, ['content' => 'content'], ['type' => 'copy', 'source' => 'forms/polls/poll', 'properties' => ['_id_poll' => $c_item->id], 'attributes' => ['data-block' => true, 'data-id' => 'block__poll_sql__'.$c_item->id]], 0, 'polls');}
+    if ($id !== null && strpos($id, 'block__poll_form__') === 0) {$c_item__id = substr($id, strlen('block__poll_form__'));     block_preset::insert('block__poll_form__'.$c_item__id, 'Polls', 'NO TITLE',        ['content' => 'content'], ['type' => 'copy', 'source' => 'forms/polls/poll', 'properties' => ['_id_poll' => $c_item__id], 'attributes' => ['data-block' => true, 'data-id' => 'block__poll_sql__'.$c_item__id]], 0, 'polls');}
   }
 
 }}

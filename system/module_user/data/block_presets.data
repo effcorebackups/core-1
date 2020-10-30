@@ -12,7 +12,7 @@ block_presets
     - title: Feedback form
     - title_is_visible: true
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__form__feedback
 - block__form__login|block_preset
     id: block__form__login
@@ -23,7 +23,7 @@ block_presets
     type: copy
     source: forms/user/login
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__form__login
 - block__form__logout|block_preset
     id: block__form__logout
@@ -34,7 +34,7 @@ block_presets
     type: copy
     source: forms/user/logout
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__form__logout
 - block__form__recovery|block_preset
     id: block__form__recovery
@@ -45,7 +45,7 @@ block_presets
     type: copy
     source: forms/user/recovery
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__form__recovery
 - block__form__registration|block_preset
     id: block__form__registration
@@ -56,7 +56,7 @@ block_presets
     type: copy
     source: forms/user/registration
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__form__registration
 # ─────────────────────────────────────────────────────────────────────
 - block__selection__user|block_preset
@@ -66,5 +66,5 @@ block_presets
     type: link
     source: selections/user/user
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__selection__user

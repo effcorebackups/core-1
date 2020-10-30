@@ -6,7 +6,7 @@ block_presets
     type: code
     source: \effcore\modules\page\events_page::block_markup___messages
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__messages
 - block__title|block_preset
     id: block__title
@@ -15,7 +15,7 @@ block_presets
     type: code
     source: \effcore\modules\page\events_page::block_markup___title
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__title
 - block__page_actions|block_preset
     id: block__page_actions
@@ -24,5 +24,5 @@ block_presets
     type: code
     source: \effcore\modules\page\events_page::block_markup___page_actions
     attributes
-    - data-section: true
+    - data-block: true
     - data-id: block__page_actions
