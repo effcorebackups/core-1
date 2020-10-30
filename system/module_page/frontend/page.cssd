@@ -12,7 +12,7 @@
     color: %%_color_text;
     background: %%_color_page}
 
-  /* page layout */
+  /* layout */
 
   [data-area-id='system'] {
     font-family: 'Arial';
@@ -84,7 +84,7 @@
   table[data-compact]       td:first-child {padding-left:  17px}
   table[data-compact]       td:last-child  {padding-right: 17px}
 
-  /* adaptive table */
+  /* x-table (adaptive table) */
 
   x-table                {display: table}
   x-table x-head         {display: table-header-group}
@@ -148,7 +148,21 @@
     x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
   }
 
-  /* x-layout-manager */
+  /* section (block) */
+
+  [data-section] {display: block; margin: 0}
+  [data-section] [data-section-title] {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-bottom: 5px solid %%_color_main;
+    font-size: 1.5em;
+    line-height: 1.5em}
+  [data-section] [data-section-content] {display: block}
+  [data-section][data-title-is-styled='false'] [data-section-title] {border: none}
+  [data-section][data-title-is-hidden] [data-section-title] {display: none}
+
+  /* x-layout-manager, x-admin-actions */
 
   x-layout-manager {display: block; margin: 50px 0; border: 1px dotted %%_color_main}
   x-layout-manager [data-area-id]            {min-height: 20px}
@@ -216,7 +230,7 @@
   nav[aria-label='pager'] a[aria-current='true'] {
     color: %%_color_link_active}
 
-  /* messages */
+  /* x-messages */
 
   x-messages {display: block; margin: 100px auto}
   x-messages p {margin: 0; padding: 0}
@@ -239,31 +253,7 @@
     font-size: 1.3em;
     text-align: center}
 
-  /* block */
-
-  [data-section] {display: block; margin: 0}
-  [data-section] [data-section-title] {
-    display: block;
-    margin-bottom: 20px;
-    padding-bottom: 30px;
-    border-bottom: 5px solid %%_color_main;
-    font-size: 1.5em;
-    line-height: 1.5em}
-  [data-section] [data-section-content] {display: block}
-  [data-section][data-title-is-styled='false'] [data-section-title] {border: none}
-  [data-section][data-title-is-hidden] [data-section-title] {display: none}
-
-  /* block system info */
-
-  [data-section][data-id='block__system_info'] {margin: 150px 0 50px 0; text-align: center}
-  [data-section][data-id='block__system_info'] x-logo      {display: block; margin-bottom: 20px}
-  [data-section][data-id='block__system_info'] x-logo img  {width: 100%; max-width: 300px}
-  [data-section][data-id='block__system_info'] x-copyright {display: block; font-size: .8em}
-  [data-section][data-id='block__system_info'] x-build     {display: block}
-  [data-section][data-id='block__system_info'] x-build x-title::after {content: ': '}
-  [data-section][data-id='block__system_info'] x-build x-value {font-weight: bold}
-
-  /* media */
+  /* media: audio, video… */
 
   audio {display: block; margin: 10px 0}
 
@@ -309,14 +299,14 @@
   x-module-info x-sticker x-version::before {content: 'v'}
   x-module-info x-sticker x-version {margin-left: .5em}
 
-  /* control elements */
+  /* x-actions */
 
   x-actions a [data-action-title] {display: none}
   x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0  -1px}
   x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0 -41px}
   x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd') no-repeat 0 -61px}
 
-  /* sessions_logout */
+  /* x-decorator 'sessions_logout' */
 
   x-decorator[data-id='sessions_logout'] td[data-cellid='expired'] {width: 20%}
 
@@ -367,13 +357,13 @@
   x-document[data-type='report'] p:first-child {margin-top:    0}
   x-document[data-type='report'] p:last-child  {margin-bottom: 0}
 
-  /* file system icons */
+  /* x-file-path */
 
   x-file-path {display: inline-block}
   x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('pictures/icons-file.svg') no-repeat; margin-right: 10px}
   x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('pictures/icons-file.svg') no-repeat 0 -30px}
 
-  /* menu with targets */
+  /* x-targets */
 
   x-targets {display: block; margin: 50px 0}
   x-targets a {
@@ -418,3 +408,13 @@
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
   x-module-info x-param > x-title {opacity: .5}
   x-module-info x-param > x-title::after {content: ': '}
+
+  /* block 'system info' */
+
+  [data-section][data-id='block__system_info'] {margin: 150px 0 50px 0; text-align: center}
+  [data-section][data-id='block__system_info'] x-logo      {display: block; margin-bottom: 20px}
+  [data-section][data-id='block__system_info'] x-logo img  {width: 100%; max-width: 300px}
+  [data-section][data-id='block__system_info'] x-copyright {display: block; font-size: .8em}
+  [data-section][data-id='block__system_info'] x-build     {display: block}
+  [data-section][data-id='block__system_info'] x-build x-title::after {content: ': '}
+  [data-section][data-id='block__system_info'] x-build x-value {font-weight: bold}
