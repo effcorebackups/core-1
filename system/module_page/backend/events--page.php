@@ -30,8 +30,8 @@ namespace effcore\modules\page {
   static function block_markup___page_actions($page) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['registered' => 'registered']])) {
       if (access::check((object)[
-           'roles'             => [  'admins'                                 =>   'admins'                                ],
-           'permissions'       => [  'manage_data__content_page__update'      =>   'manage_data__content_page__update'     ],
+           'roles'             => [  'admins' => 'admins'],
+           'permissions'       => [  'manage_data__content_page__update' => 'manage_data__content_page__update', 'manage_data__menu_tree_item__update' => 'manage_data__menu_tree_item__update'],
            'permissions_match' => ['%^manage_data__content_page_.+__update$%' => '%^manage_data__content_page_.+__update$%']])) {
         $url = clone url::get_current();
         $edit_mode = $url->query_arg_select('manage_layout');

@@ -45,8 +45,9 @@ namespace effcore\modules\menu {
         if (!empty($block->has_admin_tree_menu)) {
           $instance_id = $block->args['instance_id'];
           $entity_name = $block->args['entity_name'];
-          $entity = entity::get($entity_name);
-          if (!empty($entity->access_update) && access::check($entity->access_update)) {
+          if ($entity_name === 'tree'                                &&
+              access::check(entity::get('tree_item')->access_select) &&
+              access::check(entity::get('tree_item')->access_update)) {
             $block->extra_t = new markup('x-admin-actions', ['data-entity_name' => $entity_name],
               new markup('a', ['data-id' => 'update', 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()], 'edit')
             );
