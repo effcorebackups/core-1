@@ -1,8 +1,4 @@
 
-  /* menu 'User': sizes and orientation */
-
-  [data-area-id='system'] [role='tree'][data-id^='user'] {float: right}
-
   /* menu 'User': icons */
 
   [data-area-id='system'] [role='tree'][data-id^='user'] li[data-id='anonymous' ]                         > a {padding-left: 77px; background-image: url('pictures/avatar-anonymous.svg'  ); background-repeat: no-repeat; background-position: 8px 50%}

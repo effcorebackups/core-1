@@ -148,6 +148,11 @@
     x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
   }
 
+  /* helpers */
+
+  [data-at-right] {
+    float: right}
+
   /* block */
 
   [data-block] {display: block; margin: 0}
