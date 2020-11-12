@@ -23,6 +23,10 @@ instances
             - data-at-right: true
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
         - block__tree__system|block_preset_link
             id: block__tree__system
       - messages
@@ -50,6 +54,10 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
         - block__tree__system|block_preset_link
             id: block__tree__system
       - breadcrumbs
@@ -120,6 +128,10 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
         - block__tree__system|block_preset_link
             id: block__tree__system
       - breadcrumbs
@@ -152,6 +164,10 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
         - block__tree__system|block_preset_link
             id: block__tree__system
       - breadcrumbs
