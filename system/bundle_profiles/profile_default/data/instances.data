@@ -17,6 +17,10 @@ instances
             id: block__page_actions
         - block__tree_sql__user_registered|block_preset_link
             id: block__tree_sql__user_registered
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
         - block__tree__system|block_preset_link
@@ -80,6 +84,10 @@ instances
             id: block__page_actions
         - block__tree_sql__user_registered|block_preset_link
             id: block__tree_sql__user_registered
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
         - block__tree__system|block_preset_link
             id: block__tree__system
       - breadcrumbs
