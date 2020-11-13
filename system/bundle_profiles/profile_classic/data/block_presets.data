@@ -8,3 +8,4 @@ block_presets
     attributes
     - data-block: true
     - data-id: block__selection__social_networks_classic
+    - data-at-right: true

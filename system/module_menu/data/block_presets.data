@@ -10,6 +10,7 @@ block_presets
     attributes
     - data-block: true
     - data-id: block__tree__system
+    - data-at-left: true
 - block__breadcrumbs__system|block_preset
     id: block__breadcrumbs__system
     managing_group: Breadcrumbs

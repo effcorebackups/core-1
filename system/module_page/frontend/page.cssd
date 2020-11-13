@@ -148,11 +148,6 @@
     x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
   }
 
-  /* helpers */
-
-  [data-at-right] {
-    float: right}
-
   /* block */
 
   [data-block] {display: block; margin: 0}
@@ -166,6 +161,8 @@
   [data-block-content] {display: block}
   [data-block][data-title-is-styled='false'] [data-block-title] {border: none}
   [data-block][data-title-is-hidden] [data-block-title] {display: none}
+  [data-block][data-at-left] {float: left}
+  [data-block][data-at-right] {float: right}
 
   /* x-layout-manager, x-admin-actions */
 

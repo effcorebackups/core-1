@@ -110,6 +110,6 @@
 
   /* social networks */
 
-  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] {line-height: 0; float: right}
+  body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] {line-height: 0}
   body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-id^='picture-']     {display: inline-block; margin: 0 0 0 10px}
   body[data-layout-id='original_classic'] x-decorator[data-id='social_networks_classic'] a[data-id^='picture-'] img {display: inline-block; width: 30px; height: 30px}

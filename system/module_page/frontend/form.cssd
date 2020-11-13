@@ -354,8 +354,8 @@
 
   /* form 'cache_update' */
 
-                                               form#cache_update {text-align: right}
-  html[data-css-path='manage-modules-install'] form#cache_update {margin: -70px 0}
+                                               [data-id='block__form__cache_update'] form#cache_update {margin: -70px 0 0 0; text-align: right}
+  html[data-css-path='manage-modules-install'] [data-id='block__form__cache_update'] form#cache_update {margin: -50px 0}
 
   /* Polls */
 

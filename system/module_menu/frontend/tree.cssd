@@ -7,7 +7,9 @@
 
   /* menu in area 'system': orientation and dynamics */
 
-  [data-area-id='system'] [role='tree']       {float: left; z-index: 300}
+  [data-area-id='system'] [role='tree'] {z-index: 300}
+  [data-area-id='system'] [role='tree']::after {content: ''; clear: both; display: block}
+
   [data-area-id='system'] [role='tree'] ul    {float: left}
   [data-area-id='system'] [role='tree'] li    {float: left}
   [data-area-id='system'] [role='tree'] ul ul {float: none}
@@ -50,7 +52,7 @@
   /* menu in area 'system': adaptivity */
 
   @media screen and (max-width: 600px) {
-    [data-area-id='system'] [role='tree']       {float: none !important}
+    [data-area-id='system'] [data-block][data-id^='block__tree_'] {float: none}
     [data-area-id='system'] [role='tree'] ul    {float: none; display: block}
     [data-area-id='system'] [role='tree'] li    {float: none; display: block}
     [data-area-id='system'] [role='tree'] ul ul {position: relative}

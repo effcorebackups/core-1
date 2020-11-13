@@ -522,6 +522,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_contact|instance
     entity_name: page
     values
@@ -570,6 +574,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_front|instance
     entity_name: page
     values
@@ -618,6 +626,10 @@ instances
             id: block__selection__social_networks_classic
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_login|instance
     entity_name: page
     values
@@ -664,6 +676,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_logout|instance
     entity_name: page
     values
@@ -712,6 +728,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_recovery|instance
     entity_name: page
     values
@@ -758,6 +778,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 - page_registration|instance
     entity_name: page
     values
@@ -804,6 +828,10 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
