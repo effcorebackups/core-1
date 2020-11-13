@@ -11,8 +11,9 @@ namespace effcore\modules\menu {
           use \effcore\frontend;
           use \effcore\markup;
           use \effcore\page;
-          use \effcore\tree_item;
+          use \effcore\text;
           use \effcore\tree;
+          use \effcore\tree_item;
           use \effcore\url;
           abstract class events_page {
 
@@ -49,7 +50,9 @@ namespace effcore\modules\menu {
               access::check(entity::get('tree_item')->access_select) &&
               access::check(entity::get('tree_item')->access_update)) {
             $block->extra_t = new markup('x-admin-actions', ['data-entity_name' => $entity_name],
-              new markup('a', ['data-id' => 'update', 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()], 'edit')
+              new markup('a', ['data-id' => 'update', 'title' => new text('update'), 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.url::back_part_make()],
+                new markup('x-action-title', ['data-action-title' => true], 'update')
+              )
             );
           }
         }
