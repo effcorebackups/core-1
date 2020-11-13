@@ -198,7 +198,7 @@
   x-admin-actions a:not(:last-child) {padding-right: 10px; margin-right: 10px; border-right: 1px dotted white}
   x-admin-actions a[data-id='manage-enter'],
   x-admin-actions a[data-id='manage-leave'] {text-decoration: none}
-  x-admin-actions a[data-id='update'] {padding-left: 16px; background: url('pictures/icons-actions_list.svgd') no-repeat 0 -41px}
+  x-admin-actions a[data-id='update'] {padding-left: 16px; background: url('pictures/icons-actions_list-white.svgd') no-repeat 0 -41px}
 
   body[data-is-managed-layout] [data-area-id] [data-block] {
     min-height: 50px;
@@ -271,7 +271,7 @@
   x-audio-player {display: block; margin: 10px 0; background: %%_color_main}
   x-audio-player::after {content: ''; clear: both; display: block}
   x-audio-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-  x-audio-player button[value='play'] {float: left; width: 44px; height: 44px; margin: 0; padding: 0; border: none; border-radius: 0; background: %%_color_main{20,20,20} url('pictures/icons-button.svgd') 4px -118px}
+  x-audio-player button[value='play'] {float: left; width: 44px; height: 44px; margin: 0; padding: 0; border: none; border-radius: 0; background: %%_color_main{20,20,20} url('pictures/icons-form_button.svgd') 4px -118px}
   x-audio-player button[value='play']:enabled:hover  {background-color: %%_color_main{30,30,30}}
   x-audio-player button[value='play']:enabled:active {background-color: %%_color_main{40,40,40}; box-shadow: none}
   x-audio-player x-timeline {float: left; width: calc(100% - 140px); height: 10px; margin: 17px; overflow: hidden; cursor: not-allowed; background: %%_color_main{10,10,10}}
