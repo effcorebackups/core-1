@@ -5,66 +5,66 @@ block_presets
     managing_title: Feedback form
     in_areas
     - =: content
-    type: copy
-    source: forms/storage/instance_insert
     title: Feedback form
     title_is_visible: true
-    properties
-    - entity_name: feedback
     attributes
     - data-block: true
     - data-id: block__form__feedback
+    type: copy
+    source: forms/storage/instance_insert
+    properties
+    - entity_name: feedback
 - block__form__login|block_preset
     id: block__form__login
     managing_group: Forms
     managing_title: Login
     in_areas
     - =: content
-    type: copy
-    source: forms/user/login
     attributes
     - data-block: true
     - data-id: block__form__login
+    type: copy
+    source: forms/user/login
 - block__form__logout|block_preset
     id: block__form__logout
     managing_group: Forms
     managing_title: Logout
     in_areas
     - =: content
-    type: copy
-    source: forms/user/logout
     attributes
     - data-block: true
     - data-id: block__form__logout
+    type: copy
+    source: forms/user/logout
 - block__form__recovery|block_preset
     id: block__form__recovery
     managing_group: Forms
     managing_title: Access recovery
     in_areas
     - =: content
-    type: copy
-    source: forms/user/recovery
     attributes
     - data-block: true
     - data-id: block__form__recovery
+    type: copy
+    source: forms/user/recovery
 - block__form__registration|block_preset
     id: block__form__registration
     managing_group: Forms
     managing_title: Registration
     in_areas
     - =: content
-    type: copy
-    source: forms/user/registration
     attributes
     - data-block: true
     - data-id: block__form__registration
+    type: copy
+    source: forms/user/registration
 # ─────────────────────────────────────────────────────────────────────
 - block__selection__user|block_preset
     id: block__selection__user
     managing_group: Selections
     managing_title: User
-    type: link
-    source: selections/user/user
     attributes
     - data-block: true
     - data-id: block__selection__user
+    type: link
+    source: selections/user/user

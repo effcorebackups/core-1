@@ -3,9 +3,9 @@ block_presets
     id: block__selection__social_networks_classic
     managing_group: Selections
     managing_title: Social networks
-    type: link
-    source: selections/profile_classic/social_networks_classic
     attributes
     - data-block: true
     - data-id: block__selection__social_networks_classic
     - data-at-right: true
+    type: link
+    source: selections/profile_classic/social_networks_classic

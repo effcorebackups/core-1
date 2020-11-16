@@ -3,26 +3,26 @@ block_presets
     id: block__messages
     managing_group: Other
     managing_title: Messages
-    type: code
-    source: \effcore\modules\page\events_page::block_markup___messages
     attributes
     - data-block: true
     - data-id: block__messages
+    type: code
+    source: \effcore\modules\page\events_page::block_markup___messages
 - block__title|block_preset
     id: block__title
     managing_group: Other
     managing_title: Page title
-    type: code
-    source: \effcore\modules\page\events_page::block_markup___title
     attributes
     - data-block: true
     - data-id: block__title
+    type: code
+    source: \effcore\modules\page\events_page::block_markup___title
 - block__page_actions|block_preset
     id: block__page_actions
     managing_group: Other
     managing_title: Page actions
-    type: code
-    source: \effcore\modules\page\events_page::block_markup___page_actions
     attributes
     - data-block: true
     - data-id: block__page_actions
+    type: code
+    source: \effcore\modules\page\events_page::block_markup___page_actions

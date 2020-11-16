@@ -5,36 +5,36 @@ block_presets
     managing_title: System menu
     in_areas
     - =: system
-    type: link
-    source: trees/core/system
     attributes
     - data-block: true
     - data-id: block__tree__system
     - data-at-left: true
+    type: link
+    source: trees/core/system
 - block__breadcrumbs__system|block_preset
     id: block__breadcrumbs__system
     managing_group: Breadcrumbs
     managing_title: System breadcrumbs
-    type: link
-    source: breadcrumbs/core/system
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__system
+    type: link
+    source: breadcrumbs/core/system
 - block__breadcrumbs__user_registered|block_preset
     id: block__breadcrumbs__user_registered
     managing_group: Breadcrumbs
     managing_title: Registered user
-    type: link
-    source: breadcrumbs/core/user_registered
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__user_registered
+    type: link
+    source: breadcrumbs/core/user_registered
 - block__breadcrumbs__user_anonymous|block_preset
     id: block__breadcrumbs__user_anonymous
     managing_group: Breadcrumbs
     managing_title: Anonymous user
-    type: link
-    source: breadcrumbs/core/user_anonymous
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__user_anonymous
+    type: link
+    source: breadcrumbs/core/user_anonymous
