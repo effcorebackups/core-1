@@ -1,6 +1,5 @@
 forms
 - login|form
-    title: Login
     attributes
     - id: login
     - method: post

@@ -72,8 +72,6 @@ instances
       - content
         - block__form__login|block_preset_link
             id: block__form__login
-            properties
-            - title_is_visible: false
 - page_logout|instance
     entity_name: page
     values
@@ -110,8 +108,6 @@ instances
       - content
         - block__form__logout|block_preset_link
             id: block__form__logout
-            properties
-            - title_is_visible: false
 - page_recovery|instance
     entity_name: page
     values

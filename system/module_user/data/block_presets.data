@@ -20,6 +20,8 @@ block_presets
     managing_title: Login
     in_areas
     - =: content
+    title: Login
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__login
@@ -31,6 +33,8 @@ block_presets
     managing_title: Logout
     in_areas
     - =: content
+    title: Logout
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__logout

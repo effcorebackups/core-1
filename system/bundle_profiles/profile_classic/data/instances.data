@@ -671,8 +671,6 @@ instances
       - content
         - block__form__login|block_preset_link
             id: block__form__login
-            properties
-            - title_is_visible: false
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
@@ -723,8 +721,6 @@ instances
       - content
         - block__form__logout|block_preset_link
             id: block__form__logout
-            properties
-            - title_is_visible: false
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic

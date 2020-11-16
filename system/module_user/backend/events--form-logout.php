@@ -21,20 +21,20 @@ namespace effcore\modules\user {
     $session_active = session::select();
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'sessions_logout';
-    $form->child_select('info')->children_delete();
-    $form->child_select('info')->child_insert(new markup('h2', [], 'Sessions'), 'title');
-    $form->child_select('info')->child_insert($decorator, 'decorator');
+    $form->child_select('sessions')->children_delete();
+    $form->child_select('sessions')->child_insert(new markup('h2', [], 'Sessions'), 'title');
+    $form->child_select('sessions')->child_insert($decorator, 'decorator');
     foreach ($sessions as $c_session) {
       $c_checkbox = new field_checkbox;
       $c_checkbox->build();
       $c_checkbox->name_set('is_checked[]');
       $c_checkbox->value_set($c_session->id);
-      $c_checkbox->checked_set($c_session->id == $session_active->id);
+      $c_checkbox->checked_set($c_session->id === $session_active->id);
       $decorator->data[$c_session->id] = [
-        'checkbox'  => ['value' => $c_checkbox,                                                 'title' => ''               ],
-        'is_active' => ['value' => locale::format_logic($c_session->id == $session_active->id), 'title' => 'Is active'      ],
-        'expired'   => ['value' => locale::format_datetime($c_session->expired),                'title' => 'Expiration date'],
-        'info'      => ['value' => $c_session->data->user_agent ?? null,                        'title' => 'User agent'     ]
+        'checkbox'  => ['value' => $c_checkbox,                                                  'title' => ''               ],
+        'is_active' => ['value' => locale::format_logic($c_session->id === $session_active->id), 'title' => 'Is active'      ],
+        'expired'   => ['value' => locale::format_datetime($c_session->expired),                 'title' => 'Expiration date'],
+        'info'      => ['value' => $c_session->data->user_agent ?? null,                         'title' => 'User agent'     ]
       ];}
     $decorator->build();
   }
@@ -49,7 +49,7 @@ namespace effcore\modules\user {
         foreach ($sessions as $c_session) {
           if ($items['#is_checked:'.$c_session->id]->checked_get()) {
             $has_selection = true;
-            if (session::delete(user::get_current()->id, $session_active->id == $c_session->id ? null /* for regenerate */ : $c_session->id))
+            if (session::delete(user::get_current()->id, $session_active->id === $c_session->id ? null /* for regenerate */ : $c_session->id))
                  $messages['ok'     ][] = new text('Session with ID = "%%_id" was deleted.',     ['id' => $c_session->id]);
             else $messages['warning'][] = new text('Session with ID = "%%_id" was not deleted!', ['id' => $c_session->id]);
           }
