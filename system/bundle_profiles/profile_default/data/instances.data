@@ -142,8 +142,6 @@ instances
       - content
         - block__form__recovery|block_preset_link
             id: block__form__recovery
-            properties
-            - title_is_visible: false
 - page_registration|instance
     entity_name: page
     values

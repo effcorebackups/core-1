@@ -1,6 +1,5 @@
 forms
 - recovery|form
-    title: Access recovery
     attributes
     - id: recovery
     - method: post

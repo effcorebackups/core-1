@@ -46,6 +46,8 @@ block_presets
     managing_title: Access recovery
     in_areas
     - =: content
+    title: Access recovery
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__recovery
