@@ -14,6 +14,7 @@ namespace effcore {
   public $title;
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-block-title' => true];
+  public $title_is_visible = 1;
   public $content_tag_name = 'x-section-content';
   public $content_attributes = ['data-block-content' => true];
   public $extra_t;
@@ -75,11 +76,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title) {
-      return (new markup($this->title_tag_name, $this->title_attributes, [
-        $this->title
-      ]))->render();
-    }
+    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, $this->title_attributes + [                       ], $this->title))->render();
   }
 
   function render_extra_t() {
