@@ -32,6 +32,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__instance_select|block
+          title: Instance
+          title_is_visible: false
           attributes
           - data-id: block__instance_select
           type: code

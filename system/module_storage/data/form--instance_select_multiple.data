@@ -1,7 +1,5 @@
 forms
 - instance_select_multiple|form
-    title: Instances
-    title_is_visible: false
     managing_group_id: null
     entity_name: null
     category_id: null

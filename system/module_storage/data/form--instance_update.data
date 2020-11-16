@@ -1,7 +1,5 @@
 forms
 - instance_update|form
-    title: Update instance
-    title_is_visible: false
     managing_group_id: null
     entity_name: null
     instance_id: null

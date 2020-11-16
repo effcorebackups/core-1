@@ -33,6 +33,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__instance_delete|block
+          title: Delete instance
+          title_is_visible: false
           attributes
           - data-id: block__form__instance_delete
           type: link

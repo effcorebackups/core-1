@@ -7,10 +7,10 @@ block_presets
     - =: content
     type: copy
     source: forms/storage/instance_insert
+    title: Feedback form
+    title_is_visible: true
     properties
     - entity_name: feedback
-    - title: Feedback form
-    - title_is_visible: true
     attributes
     - data-block: true
     - data-id: block__form__feedback

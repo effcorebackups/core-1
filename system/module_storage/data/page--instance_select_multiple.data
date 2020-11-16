@@ -38,6 +38,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__instance_select_multiple|block
+          title: Instances
+          title_is_visible: false
           attributes
           - data-id: block__form__instance_select_multiple
           type: link

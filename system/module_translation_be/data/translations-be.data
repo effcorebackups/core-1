@@ -289,6 +289,7 @@ translations
     - installation: інсталяванне
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
     - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў даданы!
+    - Instance: Асобнік
     - Instances: Асобнікі
     - interface: інтэрфейс
     - Interface: Інтэрфейс

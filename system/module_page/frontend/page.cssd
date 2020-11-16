@@ -151,6 +151,9 @@
   /* block */
 
   [data-block] {display: block; margin: 0}
+  [data-block][data-at-left] {float: left}
+  [data-block][data-at-right] {float: right}
+
   [data-block-title] {
     display: block;
     margin-bottom: 20px;
@@ -158,11 +161,13 @@
     border-bottom: 5px solid %%_color_main;
     font-size: 1.5em;
     line-height: 1.5em}
-  [data-block-content] {display: block}
+  [data-block][data-id^='block__form__'] [data-block-title] {
+    border: none;
+    padding-bottom: 0}
   [data-block][data-title-is-styled='false'] [data-block-title] {border: none}
   [data-block][data-title-is-hidden] [data-block-title] {display: none}
-  [data-block][data-at-left] {float: left}
-  [data-block][data-at-right] {float: right}
+
+  [data-block-content] {display: block}
 
   /* x-layout-manager, x-admin-actions */
 
