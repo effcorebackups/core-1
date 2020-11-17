@@ -3,6 +3,8 @@ block_presets
     id: block__selection__social_networks_classic
     managing_group: Selections
     managing_title: Social networks
+    title: Social networks
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__selection__social_networks_classic
