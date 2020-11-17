@@ -63,9 +63,9 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_markup_static|block
           title: Markup static
+          title_is_visible: false
           attributes
           - data-id: block__demo_markup_static
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -74,9 +74,9 @@ pages
           source: markup/demo/demo_markup_static
       - block__demo_markup_dynamic|block
           title: Markup dynamic
+          title_is_visible: false
           attributes
           - data-id: block__demo_markup_dynamic
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -112,10 +112,9 @@ pages
       # trees
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_tree_via_decorator|block
-          title: Trees
+          title: Demo via decorator
           attributes
           - data-id: block__demo_tree_via_decorator
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -123,6 +122,7 @@ pages
           type: link
           source: markup/demo/demo_tree_via_decorator
       - block__demo_tree_sql|block
+          title: Demo SQL
           attributes
           - data-id: block__demo_tree_sql
           display
@@ -134,6 +134,7 @@ pages
           args
           - instance_id: demo_sql
       - block__demo_tree_nosql|block
+          title: Demo NoSQL
           attributes
           - data-id: block__demo_tree_nosql
           display

@@ -32,9 +32,9 @@ pages
     - content
       - block__system_info|block
           title: System information
+          title_is_visible: false
           attributes
           - data-id: block__system_info
-          - data-title-is-hidden: true
           type: code
           source: \effcore\modules\core\events_page_info::block_markup__system_info
       - block__service_info|block
