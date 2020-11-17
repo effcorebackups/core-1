@@ -46,6 +46,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__demo|block
+          title: Demo form
+          title_is_visible: false
           attributes
           - data-id: block__form__demo
           display
@@ -54,8 +56,6 @@ pages
             match: %^embedded/form_elements$%
           type: link
           source: forms/demo/demo
-          properties
-          - title_is_visible: false
       # ─────────────────────────────────────────────────────────────────────
       # markup
       # ─────────────────────────────────────────────────────────────────────

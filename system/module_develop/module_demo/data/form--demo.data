@@ -1,6 +1,5 @@
 forms
 - demo|form
-    title: Demo form
     attributes
     - id: demo
     - enctype: multipart/form-data

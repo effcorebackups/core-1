@@ -1,6 +1,5 @@
 forms
 - console|form
-    title: Console settings
     attributes
     - id: console
     - method: post

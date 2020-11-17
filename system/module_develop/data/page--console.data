@@ -29,6 +29,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__console|block
+          title: Console settings
           attributes
           - data-id: block__form__console
           type: link
