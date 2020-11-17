@@ -1,6 +1,5 @@
 forms
 - modules_uninstall|form
-    title: Delete modules data
     attributes
     - id: modules_uninstall
     - method: post

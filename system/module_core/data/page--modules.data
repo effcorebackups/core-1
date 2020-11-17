@@ -52,6 +52,8 @@ pages
           type: link
           source: forms/core/cache_update
       - block__form__modules_install|block
+          title: Turn on/off modules
+          title_is_visible: false
           attributes
           - data-id: block__form__modules_install
           display
@@ -60,9 +62,8 @@ pages
             match: %^install$%
           type: link
           source: forms/core/modules_install
-          properties
-          - title_is_visible: false
       - block__form__modules_uninstall|block
+          title: Delete modules data
           attributes
           - data-id: block__form__modules_uninstall
           display
@@ -72,6 +73,7 @@ pages
           type: link
           source: forms/core/modules_uninstall
       - block__form__modules_update_data|block
+          title: Update modules data
           attributes
           - data-id: block__form__modules_update_data
           display
@@ -81,6 +83,7 @@ pages
           type: link
           source: forms/core/modules_update_data
       - block__form__modules_update_files|block
+          title: Update modules files
           attributes
           - data-id: block__form__modules_update_files
           display

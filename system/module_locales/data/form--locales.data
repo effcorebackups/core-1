@@ -1,6 +1,5 @@
 forms
 - locales|form
-    title: Locale settings
     attributes
     - id: locales
     - method: post

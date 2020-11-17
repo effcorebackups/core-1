@@ -1,6 +1,5 @@
 forms
 - modules_install|form
-    title: Turn on/off modules
     attributes
     - id: modules_install
     - method: post

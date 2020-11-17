@@ -1,6 +1,5 @@
 forms
 - modules_update_files|form
-    title: Update modules files
     attributes
     - id: modules_update_files
     - method: post

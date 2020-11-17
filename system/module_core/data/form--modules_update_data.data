@@ -1,6 +1,5 @@
 forms
 - modules_update_data|form
-    title: Update modules data
     attributes
     - id: modules_update_data
     - method: post

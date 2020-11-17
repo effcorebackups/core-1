@@ -31,9 +31,9 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__locales|block
+          title: Locale settings
+          title_is_visible: false
           attributes
           - data-id: block__form__locales
           type: link
           source: forms/locales/locales
-          properties
-          - title_is_visible: false
