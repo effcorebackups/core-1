@@ -5,6 +5,8 @@ block_presets
     managing_title: System menu
     in_areas
     - =: system
+    title: System menu
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__tree__system
@@ -15,6 +17,8 @@ block_presets
     id: block__breadcrumbs__system
     managing_group: Breadcrumbs
     managing_title: System breadcrumbs
+    title: System breadcrumbs
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__system
@@ -24,6 +28,8 @@ block_presets
     id: block__breadcrumbs__user_registered
     managing_group: Breadcrumbs
     managing_title: Registered user
+    title: Registered user's breadcrumbs
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__user_registered
@@ -33,6 +39,8 @@ block_presets
     id: block__breadcrumbs__user_anonymous
     managing_group: Breadcrumbs
     managing_title: Anonymous user
+    title: Anonymous user's breadcrumbs
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__breadcrumbs__user_anonymous

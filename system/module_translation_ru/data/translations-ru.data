@@ -29,6 +29,7 @@ translations
     - Alternative text: Альтернативный текст
     - An error occurred during installation!: При установке произошла ошибка!
     - Anonymous user: Анонимный пользователь
+    - Anonymous user's breadcrumbs: Хлебные крошки анонимного пользователя
     - Anonymous users: Анонимные пользователи
     - Anonymous: Аноним
     - Answer: Ответ
@@ -502,6 +503,7 @@ translations
     - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered user: Зарегистрированный пользователь
+    - Registered user's breadcrumbs: Хлебные крошки зарегистрированного пользователя
     - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
     - registration: регистрация
