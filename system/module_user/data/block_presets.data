@@ -59,6 +59,8 @@ block_presets
     managing_title: Registration
     in_areas
     - =: content
+    title: New User Registration
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__registration

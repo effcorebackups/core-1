@@ -176,8 +176,6 @@ instances
       - content
         - block__form__registration|block_preset_link
             id: block__form__registration
-            properties
-            - title_is_visible: false
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────

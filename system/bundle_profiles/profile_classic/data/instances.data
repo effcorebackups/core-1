@@ -817,8 +817,6 @@ instances
       - content
         - block__form__registration|block_preset_link
             id: block__form__registration
-            properties
-            - title_is_visible: false
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic

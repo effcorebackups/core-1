@@ -1,6 +1,5 @@
 forms
 - registration|form
-    title: New User Registration
     attributes
     - id: registration
     - method: post
