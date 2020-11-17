@@ -71,6 +71,10 @@ block_presets
     id: block__selection__user
     managing_group: Selections
     managing_title: User
+    title|text
+      text: User %%_nickname_page_context{nickname}
+      is_apply_tokens: true
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__selection__user

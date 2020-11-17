@@ -3,6 +3,8 @@ block_presets
     id: block__messages
     managing_group: Other
     managing_title: Messages
+    title: Messages
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__messages
@@ -12,6 +14,8 @@ block_presets
     id: block__title
     managing_group: Other
     managing_title: Page title
+    title: Title
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__title
@@ -21,6 +25,8 @@ block_presets
     id: block__page_actions
     managing_group: Other
     managing_title: Page actions
+    title: Actions
+    title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__page_actions
