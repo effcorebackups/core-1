@@ -42,6 +42,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__colors|block
+          title: Colors
+          title_is_visible: false
           attributes
           - data-id: block__form__colors
           display
@@ -50,9 +52,9 @@ pages
             match: %^colors/current$%
           type: link
           source: forms/page/colors
-          properties
-          - title_is_visible: false
       - block__form__colors_preset|block
+          title: Colors presets
+          title_is_visible: false
           attributes
           - data-id: block__form__colors_preset
           display
@@ -61,9 +63,9 @@ pages
             match: %^colors/presets$%
           type: link
           source: forms/page/colors_preset
-          properties
-          - title_is_visible: false
       - block__form__layout|block
+          title: Layout
+          title_is_visible: false
           attributes
           - data-id: block__form__layout
           display
@@ -72,9 +74,9 @@ pages
             match: %^layouts$%
           type: link
           source: forms/page/layout
-          properties
-          - title_is_visible: false
       - block__form__decoration_settings|block
+          title: Decoration settings
+          title_is_visible: false
           attributes
           - data-id: block__form__decoration_settings
           display
@@ -83,5 +85,3 @@ pages
             match: %^settings$%
           type: link
           source: forms/page/decoration_settings
-          properties
-          - title_is_visible: false

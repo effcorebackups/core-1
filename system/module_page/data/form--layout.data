@@ -1,6 +1,5 @@
 forms
 - layout|form
-    title: Layout
     attributes
     - id: layout
     - method: post

@@ -1,6 +1,5 @@
 forms
 - colors|form
-    title: Colors
     attributes
     - id: colors
     - method: post

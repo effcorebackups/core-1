@@ -1,6 +1,5 @@
 forms
 - colors_preset|form
-    title: Colors presets
     attributes
     - id: colors_preset
     - method: post
