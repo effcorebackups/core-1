@@ -1,6 +1,5 @@
 forms
 - install|form
-    title: System Installation Parameters
     attributes
     - id: install
     - method: post
