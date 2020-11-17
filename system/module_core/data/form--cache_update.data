@@ -1,6 +1,5 @@
 forms
 - cache_update|form
-    title: Update Cache
     attributes
     - id: cache_update
     - method: post

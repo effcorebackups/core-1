@@ -41,6 +41,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__cache_update|block
+          title: Update Cache
+          title_is_visible: false
           attributes
           - data-id: block__form__cache_update
           display
@@ -49,8 +51,6 @@ pages
             match: %^install$%
           type: link
           source: forms/core/cache_update
-          properties
-          - title_is_visible: false
       - block__form__modules_install|block
           attributes
           - data-id: block__form__modules_install

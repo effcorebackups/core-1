@@ -41,12 +41,12 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__cache_update|block
+          title: Update Cache
+          title_is_visible: false
           attributes
           - data-id: block__form__cache_update
           type: link
           source: forms/core/cache_update
-          properties
-          - title_is_visible: false
       - block__structures_list|block
           title: Structures
           attributes
