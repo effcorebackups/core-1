@@ -1,6 +1,5 @@
 forms
 - security_settings_captcha|form
-    title: Settings
     attributes
     - id: security_settings_captcha
     - method: post

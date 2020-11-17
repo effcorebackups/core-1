@@ -1,6 +1,5 @@
 forms
 - security_settings|form
-    title: Settings
     attributes
     - id: security_settings
     - method: post

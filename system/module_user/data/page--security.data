@@ -38,6 +38,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__security_settings|block
+          title: Settings
+          title_is_visible: false
           attributes
           - data-id: block__form__security_settings
           display
@@ -46,5 +48,3 @@ pages
             match: %^settings$%
           type: link
           source: forms/user/security_settings
-          properties
-          - title_is_visible: false

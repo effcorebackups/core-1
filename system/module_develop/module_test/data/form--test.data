@@ -1,6 +1,5 @@
 forms
 - test|form
-    title: Running the test
     attributes
     - id: test
     - method: post

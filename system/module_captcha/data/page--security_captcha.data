@@ -38,6 +38,8 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__security_settings_captcha|block
+          title: Settings
+          title_is_visible: false
           attributes
           - data-id: block__form__security_settings_captcha
           display
@@ -46,5 +48,3 @@ pages
             match: %^settings_captcha$%
           type: link
           source: forms/captcha/security_settings_captcha
-          properties
-          - title_is_visible: false
