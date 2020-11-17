@@ -50,6 +50,8 @@ pages
           type: link
           source: forms/core/cache_update
       - block__nosql_trees|block
+          title: Trees
+          title_is_visible: false
           attributes
           - data-id: block__nosql_trees
           display
@@ -60,9 +62,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tree
       - block__nosql_selections|block
           title: Selections
+          title_is_visible: false
           attributes
           - data-id: block__nosql_selections
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -71,9 +73,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_selections
       - block__nosql_events|block
           title: Events
+          title_is_visible: false
           attributes
           - data-id: block__nosql_events
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -82,9 +84,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_events
       - block__nosql_file_types|block
           title: File types
+          title_is_visible: false
           attributes
           - data-id: block__nosql_file_types
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -93,9 +95,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_file_types
       - block__nosql_templates|block
           title: Templates
+          title_is_visible: false
           attributes
           - data-id: block__nosql_templates
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -104,9 +106,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_templates
       - block__nosql_tokens|block
           title: Tokens
+          title_is_visible: false
           attributes
           - data-id: block__nosql_tokens
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
@@ -115,9 +117,9 @@ pages
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tokens
       - block__nosql_translations|block
           title: Translations
+          title_is_visible: false
           attributes
           - data-id: block__nosql_translations
-          - data-title-is-hidden: true
           display
             check: page_args
             where: type
