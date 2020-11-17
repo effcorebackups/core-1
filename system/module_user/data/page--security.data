@@ -31,6 +31,8 @@ pages
           id: block__title
     - tabs
       - block__tabs|block
+          title: Tabs
+          title_is_visible: false
           attributes
           - data-id: block__tabs
           type: link
