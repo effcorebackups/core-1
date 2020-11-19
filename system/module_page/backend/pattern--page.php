@@ -102,17 +102,10 @@ namespace effcore {
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
     $template = template::make_new($this->template);
-    $html = $template->target_get('html');
-    $meta = $template->target_get('head_meta');
-    $body = $template->target_get('body');
-
-    if (true             ) $html->attribute_insert('dir',                       $this->text_direction                                              );
-    if (true             ) $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'                                );
-    if (true             ) $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'))) );
-    if ($user_agent->name) $html->attribute_insert('data-uagent',   core::sanitize_id($user_agent->name.'-'.$user_agent->name_version)             );
-    if ($user_agent->core) $html->attribute_insert('data-uacore',   core::sanitize_id($user_agent->core.'-'.$user_agent->core_version)             );
+    $html            = $template->target_get('html');
+    $meta            = $template->target_get('head_meta');
+    $body            = $template->target_get('body');
     $head_title_text = $template->target_get('head_title_text', true);
-    $head_title_text->text = $this->title;
 
     if ($this->_areas_pointers) {
       core::array_sort_by_property($this->_areas_pointers, 'render_weight');
@@ -124,23 +117,30 @@ namespace effcore {
     }
 
     $frontend = frontend::markup_get($this->used_dpaths);
-    $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current());
-    $body->attribute_insert('data-layout-id', $this->id_layout);
-    $body->child_insert($this->_markup, 'markup');
     $template->arg_set('charset',      $this    ->charset);
     $template->arg_set('head_icons',   $frontend->icons  );
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
 
+    $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current());
+    $html->attribute_insert('dir', $this->text_direction);
+    $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'); # p.s.: refreshed after page reload
+    $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'))));
+    if ($user_agent->name) $html->attribute_insert('data-uagent', core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
+    if ($user_agent->core) $html->attribute_insert('data-uacore', core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
+
+    $head_title_text->text = $this->title;
+    $meta->child_insert(
+      new markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
+    );
+
+    $body->attribute_insert('data-layout-id', $this->id_layout);
+    $body->child_insert($this->_markup, 'markup');
     if (url::get_current()->query_arg_select('manage_layout') === 'true') {
       if (access::check((object)['roles' => ['registered' => 'registered']])) {
         $body->attribute_insert('data-is-managed-layout', true);
       }
     }
-
-    $meta->child_insert(
-      new markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
-    );
 
     return $template->render();
   }
