@@ -9,15 +9,17 @@ pages
     blocks
     - header
       - block__menu_languages|block
+          title: Languages
+          title_is_visible: false
           attributes
           - data-id: block__menu_languages
           type: code
           source: \effcore\modules\locales\events_page::block_markup__menu_languages
       - block__system_info|block
           title: System information
+          title_is_visible: false
           attributes
           - data-id: block__system_info
-          - data-title-is-hidden: true
           type: code
           source: \effcore\modules\core\events_page_info::block_markup__system_info
     - messages

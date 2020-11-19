@@ -2,6 +2,7 @@ translations
 - ru|translation
     code: ru
     data
+    - Languages: Языки
     - - no -: - нет -
     - - select -: - выбрать -
     - %%_entity_title_context\: delete: %%_entity_title_context: удалить
