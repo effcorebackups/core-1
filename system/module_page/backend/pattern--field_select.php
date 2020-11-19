@@ -39,9 +39,9 @@ namespace effcore {
   function value_get() {
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node       &&
-          $c_child->tag_name == 'option' &&
-          $c_child->attribute_select('selected') == 'selected') {
+      if ($c_child instanceof node        &&
+          $c_child->tag_name === 'option' &&
+          $c_child->attribute_select('selected') === 'selected') {
         return $c_child->attribute_select('value');
       }
     }
@@ -52,9 +52,9 @@ namespace effcore {
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
       if ($c_child instanceof node &&
-          $c_child->tag_name == 'option') {
-        if ($c_child->attribute_select('value') == $value) $c_child->attribute_insert('selected', 'selected');
-        if ($c_child->attribute_select('value') != $value) $c_child->attribute_delete('selected');
+          $c_child->tag_name === 'option') {
+        if ((string)$c_child->attribute_select('value') === (string)$value) $c_child->attribute_insert('selected', 'selected');
+        if ((string)$c_child->attribute_select('value') !== (string)$value) $c_child->attribute_delete('selected');
       }
     }
   }
@@ -63,9 +63,9 @@ namespace effcore {
     $result = [];
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node       &&
-          $c_child->tag_name == 'option' &&
-          $c_child->attribute_select('selected') == 'selected') {
+      if ($c_child instanceof node        &&
+          $c_child->tag_name === 'option' &&
+          $c_child->attribute_select('selected') === 'selected') {
         $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
       }
     }
@@ -77,7 +77,7 @@ namespace effcore {
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
       if ($c_child instanceof node &&
-          $c_child->tag_name == 'option') {
+          $c_child->tag_name === 'option') {
         if ($c_child->attribute_select('disabled') !== 'disabled' &&
             $c_child->attribute_select('disabled') !== true) {
           $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
@@ -91,7 +91,7 @@ namespace effcore {
     $element = $this->child_select('element');
     foreach ($element->children_select_recursive() as $c_child) {
       if ($c_child instanceof node &&
-          $c_child->tag_name == 'option') {
+          $c_child->tag_name === 'option') {
         if (core::in_array_string_compare($c_child->attribute_select('value'), $values))
                         $c_child->attribute_insert('selected', 'selected');
         elseif ($clear) $c_child->attribute_delete('selected');

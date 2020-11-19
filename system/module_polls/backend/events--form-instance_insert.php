@@ -65,7 +65,7 @@ namespace effcore\modules\polls {
                 'weight'  => $c_item->weight
               ]))->insert();
             }
-          # reset unactual data
+          # reset not actual data
             $items['*widget_answers']->items_reset();
             static::on_init(null, $form, $items);
           # ↓↓↓ no break ↓↓↓

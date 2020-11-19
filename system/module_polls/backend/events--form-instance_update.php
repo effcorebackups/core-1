@@ -89,7 +89,7 @@ namespace effcore\modules\polls {
                 $c_row->delete();
               }
             }
-          # reset unactual data (for load new IDs too)
+          # reset not actual data (for load new IDs too)
             $form->_answers_rows = null;
             $items['*widget_answers']->items_reset();
             static::on_init(null, $form, $items);
