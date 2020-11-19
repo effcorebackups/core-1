@@ -161,7 +161,6 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(    ),
             'salt'            => core::key_generate(    )
           ]);
-          $lang_code = page::get_current()->args_get('lang_code');
           $enabled_by_default = module::get_enabled_by_default();
           $embedded           = module::get_embedded          ();
           $modules            = module::get_all               ();
@@ -181,7 +180,7 @@ namespace effcore\modules\core {
           if (count(storage::get('sql')->errors) === 0) {
             cache::update_global();
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', $lang_code);
+            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'));
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([

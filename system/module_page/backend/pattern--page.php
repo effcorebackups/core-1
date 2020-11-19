@@ -15,7 +15,7 @@ namespace effcore {
   public $is_https;
   public $url;
   public $charset = 'utf-8';
-  public $lang_code = 'en';
+  public $lang_code;
   public $text_direction = 'ltr';
   public $data;
   public $origin = 'nosql'; # nosql | sql
@@ -102,9 +102,10 @@ namespace effcore {
   # render page
     event::start('on_page_render_before', $this->id, [&$this, &$template]);
     $template = template::make_new($this->template);
-
     $html = $template->target_get('html');
-    if (true             ) $html->attribute_insert('lang',                      $this->lang_code ?: language::code_get_current()                   );
+    $meta = $template->target_get('head_meta');
+    $body = $template->target_get('body');
+
     if (true             ) $html->attribute_insert('dir',                       $this->text_direction                                              );
     if (true             ) $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'                                );
     if (true             ) $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'))) );
@@ -123,19 +124,21 @@ namespace effcore {
     }
 
     $frontend = frontend::markup_get($this->used_dpaths);
-    $template->target_get('body')->attribute_insert('data-layout-id', $this->id_layout);
-    $template->target_get('body')->child_insert($this->_markup, 'markup');
+    $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current());
+    $body->attribute_insert('data-layout-id', $this->id_layout);
+    $body->child_insert($this->_markup, 'markup');
     $template->arg_set('charset',      $this    ->charset);
     $template->arg_set('head_icons',   $frontend->icons  );
     $template->arg_set('head_styles',  $frontend->styles );
     $template->arg_set('head_scripts', $frontend->scripts);
+
     if (url::get_current()->query_arg_select('manage_layout') === 'true') {
       if (access::check((object)['roles' => ['registered' => 'registered']])) {
-        $template->target_get('body')->attribute_insert('data-is-managed-layout', true);
+        $body->attribute_insert('data-is-managed-layout', true);
       }
     }
 
-    $template->target_get('head_meta')->child_insert(
+    $meta->child_insert(
       new markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
     );
 
