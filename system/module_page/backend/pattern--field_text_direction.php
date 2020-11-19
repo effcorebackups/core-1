@@ -14,7 +14,7 @@ namespace effcore {
     'required' => true
   ];
   public $values = [
-    'not_selected' => '- no -',
+    'not_selected' => '- select -',
     'ltr'          => 'left to right (ltr)',
     'rtl'          => 'right to left (rtl)'
   ];

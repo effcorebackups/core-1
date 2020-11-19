@@ -24,7 +24,7 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $this->child_select('element')->children_delete();
-      $this->option_insert('- no -', 'not_selected');
+      $this->option_insert('- select -', 'not_selected');
       $entity = entity::get($this->related_entity_name);
       $instances = $entity->instances_select($this->query_params);
       if ($this->related_entity_field_id_parent_name) {

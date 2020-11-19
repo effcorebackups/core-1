@@ -33,7 +33,7 @@ namespace effcore {
   # control with type of new item
     $entities = entity::get_all();
     core::array_sort_by_text_property($entities);
-    $options = ['not_selected' => '- no -'];
+    $options = ['not_selected' => '- select -'];
     foreach ($entities as $c_entity) {
       if (!empty($c_entity->managing_is_enabled)) {
         foreach ($c_entity->fields as $c_field_name => $c_field_info) {

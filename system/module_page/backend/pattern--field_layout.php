@@ -17,7 +17,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $this->option_insert('- no -', 'not_selected');
+      $this->option_insert('- select -', 'not_selected');
       foreach (layout::select_all() as $c_layout)
         $this->option_insert(
           (new text($c_layout->title))->render().' ('.$c_layout->id.')',

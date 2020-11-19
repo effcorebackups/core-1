@@ -2,8 +2,6 @@ translations
 - ru|translation
     code: ru
     data
-    - Languages: Языки
-    - - no -: - нет -
     - - select -: - выбрать -
     - %%_entity_title_context\: delete: %%_entity_title_context: удалить
     - %%_entity_title_context\: insert: %%_entity_title_context: вставить
@@ -321,6 +319,7 @@ translations
     - KiB: КиБ
     - Language code: Код языка
     - Language: Язык
+    - Languages: Языки
     - launch: запуск
     - Layout ID: ID макета
     - Layout: Макет

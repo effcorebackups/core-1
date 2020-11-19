@@ -37,7 +37,7 @@ namespace effcore {
   # control with type of new item
     $presets = block_preset::select_all($this->id_area);
     core::array_sort_by_text_property($presets, 'managing_group');
-    $options = ['not_selected' => '- no -'];
+    $options = ['not_selected' => '- select -'];
     foreach ($presets as $c_preset) {
       $c_group_id = core::sanitize_id($c_preset->managing_group);
       if (!isset($options[$c_group_id])) {

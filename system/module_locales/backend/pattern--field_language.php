@@ -20,7 +20,7 @@ namespace effcore {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       $languages = ['en' => $languages['en']] + $languages;
-      $this->option_insert('- no -', 'not_selected');
+      $this->option_insert('- select -', 'not_selected');
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(new text_simple(
           $c_code !== 'en' ? $c_info->title_en.' / '.$c_info->title_native.' ('.$c_code.')' :

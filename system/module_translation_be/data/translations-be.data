@@ -2,8 +2,6 @@ translations
 - be|translation
     code: be
     data
-    - Languages: Мовы
-    - - no -: - няма -
     - - select -: - абраць -
     - %%_entity_title_context\: delete: %%_entity_title_context: выдаліць
     - %%_entity_title_context\: insert: %%_entity_title_context: уставіць
@@ -321,6 +319,7 @@ translations
     - KiB: КіБ
     - Language code: Код мовы
     - Language: Мова
+    - Languages: Мовы
     - launch: запуск
     - Layout ID: ID макета
     - Layout: Макет
