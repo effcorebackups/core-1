@@ -14,6 +14,7 @@ namespace effcore\modules\core {
     $code = $page->args_get('lang_code');
     if (empty($languages[$code])) url::go($page->args_get('base').'/en');
     language::code_set_current($code);
+    $page->lang_code = $code;
   }
 
 }}
