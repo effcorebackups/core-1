@@ -147,8 +147,10 @@ pages
       # selections
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_selection_demo_join_1|block
+          title: Selection of "demo_data" entities + join (ID: 100+)
           attributes
           - data-id: block__demo_selection_demo_join_1
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: type
@@ -156,10 +158,12 @@ pages
           type: copy
           source: selections/demo/demo_join
           properties
-          - title: Selection of "demo_data" entities + join (ID: 100+)
+          - title: null
       - block__demo_selection_demo_join_2|block
+          title: Selection of "demo_data" entities + join (ID: 200+)
           attributes
           - data-id: block__demo_selection_demo_join_2
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: type
@@ -167,7 +171,7 @@ pages
           type: copy
           source: selections/demo/demo_join
           properties
-          - title: Selection of "demo_data" entities + join (ID: 200+)
+          - title: null
           - pager_id: 2
           - query_params
             - join_script
@@ -186,14 +190,18 @@ pages
               - type: ASC
             - limit: 5
       - block__demo_selection_demo_types|block
+          title: Selection of "demo_types" entities
           attributes
           - data-id: block__demo_selection_demo_types
+          - data-title-is-styled|_string_false
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: link
           source: selections/demo/demo_types
+          properties
+          - title: null
       # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
@@ -205,6 +213,8 @@ pages
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_messages
       - block__demo_messages_description|block
+          title: Description for messages
+          title_is_visible: false
           attributes
           - data-id: block__demo_messages_description
           display

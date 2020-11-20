@@ -55,6 +55,7 @@ translations
     - Demo NoSQL: Демонстрационное NoSQL
     - Demo SQL: Демонстрационное SQL
     - Demo via decorator: Демонстрационное через декоратор
+    - Description for messages: Описание для сообщений
     - DL table: DL таблица
     - Embedded elements: Встроенные элементы
     - ending: окончание
