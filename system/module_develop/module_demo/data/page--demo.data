@@ -113,6 +113,7 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_tree_via_decorator|block
           title: Demo via decorator
+          title_is_visible: false
           attributes
           - data-id: block__demo_tree_via_decorator
           display
@@ -123,6 +124,7 @@ pages
           source: markup/demo/demo_tree_via_decorator
       - block__demo_tree_sql|block
           title: Demo SQL
+          title_is_visible: false
           attributes
           - data-id: block__demo_tree_sql
           display
@@ -135,6 +137,7 @@ pages
           - instance_id: demo_sql
       - block__demo_tree_nosql|block
           title: Demo NoSQL
+          title_is_visible: false
           attributes
           - data-id: block__demo_tree_nosql
           display
