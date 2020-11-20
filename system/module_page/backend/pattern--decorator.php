@@ -229,7 +229,7 @@ namespace effcore {
               $c_id_tree = 'decorator-'.$c_id_tree;
               $c_tree = tree::insert($this->title ?? null, $c_id_tree);
               $c_tree->visualization_mode = $this->tree_visualization_mode;
-              if ($trees->child_select(         $c_id_tree) == null)
+              if ($trees->child_select(         $c_id_tree) === null)
                   $trees->child_insert($c_tree, $c_id_tree);
               $c_tree_item = tree_item::insert($c_title,
                 $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
