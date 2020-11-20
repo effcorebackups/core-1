@@ -51,9 +51,9 @@ pages
           source: forms/core/cache_update
       - block__structures_list|block
           title: Structures
+          title_is_visible: false
           attributes
           - data-id: block__structures_list
-          - data-title-is-hidden: true
           display
             check: page_args
             where: view

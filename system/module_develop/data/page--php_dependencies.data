@@ -30,8 +30,8 @@ pages
     - content
       - block__php_dependencies_list|block
           title: PHP dependencies
+          title_is_visible: false
           attributes
           - data-id: block__php_dependencies_list
-          - data-title-is-hidden: true
           type: code
           source: \effcore\modules\develop\events_page_php_dependencies::block_markup__php_dependencies_list
