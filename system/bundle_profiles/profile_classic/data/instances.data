@@ -527,6 +527,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -584,6 +585,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -641,6 +643,7 @@ instances
             id: block__selection__social_networks_classic
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -692,6 +695,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -745,6 +749,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -796,6 +801,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
@@ -847,6 +853,7 @@ instances
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
+            title: Copyright
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright_classic
