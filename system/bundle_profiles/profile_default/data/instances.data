@@ -24,6 +24,7 @@ instances
             - data-at-right: true
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
@@ -55,6 +56,7 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
@@ -126,6 +128,7 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
@@ -160,6 +163,7 @@ instances
       - system
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous

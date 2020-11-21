@@ -695,7 +695,7 @@ instances
     entity_name: tree
     values
     - id: user_anonymous
-    - title: Anonymous user
+    - title: Anonymous user's menu
     - title_is_visible: 0
     - is_embedded: 1
     - access
