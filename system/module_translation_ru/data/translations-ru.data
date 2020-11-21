@@ -504,6 +504,7 @@ translations
     - register: зарегистрировать
     - Registered user: Зарегистрированный пользователь
     - Registered user's breadcrumbs: Хлебные крошки зарегистрированного пользователя
+    - Registered user's menu: Меню зарегистрированного пользователя
     - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
     - registration: регистрация

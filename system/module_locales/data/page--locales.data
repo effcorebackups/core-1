@@ -13,6 +13,7 @@ pages
     - system
       - block__tree_sql__user_registered|block_preset_link
           id: block__tree_sql__user_registered
+          title: Registered user's menu
           attributes
           - data-block: true
           - data-id: block__tree_sql__user_registered
