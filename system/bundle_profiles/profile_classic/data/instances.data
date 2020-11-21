@@ -523,6 +523,7 @@ instances
       - content
         - block__text_sql__about_classic|block_preset_link
             id: block__text_sql__about_classic
+            title: The main text of the page
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
@@ -577,6 +578,7 @@ instances
       - content
         - block__text_sql__contact_classic|block_preset_link
             id: block__text_sql__contact_classic
+            title: The main text of the page
         - block__form__feedback|block_preset_link
             id: block__form__feedback
       - footer
@@ -633,6 +635,7 @@ instances
       - content
         - block__text_sql__front_classic|block_preset_link
             id: block__text_sql__front_classic
+            title: The main text of the page
       - footer
         - block__selection__social_networks_classic|block_preset_link
             id: block__selection__social_networks_classic

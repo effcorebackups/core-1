@@ -40,6 +40,7 @@ instances
       - content
         - block__text_sql__front_default|block_preset_link
             id: block__text_sql__front_default
+            title: The main text of the page
 - page_login|instance
     entity_name: page
     values

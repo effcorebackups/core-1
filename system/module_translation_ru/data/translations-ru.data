@@ -629,6 +629,7 @@ translations
     - The current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
+    - The main text of the page: Основной текст страницы
     - The minimum value is greater than the maximum value!: Минимальное значение больше максимального значения!
     - The PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
     - The PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
