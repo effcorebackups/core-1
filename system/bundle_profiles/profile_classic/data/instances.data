@@ -509,6 +509,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -562,6 +563,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -617,6 +619,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -666,6 +669,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -718,6 +722,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -768,6 +773,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
@@ -818,6 +824,7 @@ instances
       - header
         - block__picture_sql__logotype_classic|block_preset_link
             id: block__picture_sql__logotype_classic
+            title: Logotype
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
