@@ -512,6 +512,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -564,6 +565,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -618,6 +620,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -666,6 +669,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -717,6 +721,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -766,6 +771,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -815,6 +821,7 @@ instances
       - menu
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
+            title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
