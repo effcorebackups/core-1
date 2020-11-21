@@ -29,7 +29,7 @@ namespace effcore {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
     # moving of 'pre' items into the directory 'files'
-      if ($c_item->object->get_current_state() == 'pre') {
+      if ($c_item->object->get_current_state() === 'pre') {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
         $c_item->object->move_pre_to_fin(
           dynamic::dir_files.$this->upload_dir.$c_item->object->file,
@@ -38,14 +38,14 @@ namespace effcore {
         );
       }
     # deletion of 'fin' items which marked as 'deleted'
-      if ($c_item->object->get_current_state() == 'fin') {
+      if ($c_item->object->get_current_state() === 'fin') {
         if (!empty($c_item->is_deleted)) {
           $c_item->object->delete_fin();
           unset($items[$c_row_id]);
         }
       }
     # cache cleaning for lost files
-      if ($c_item->object->get_current_state() == null) {
+      if ($c_item->object->get_current_state() === null) {
         unset($items[$c_row_id]);
       }
     }
@@ -58,7 +58,7 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
     $id = (new file($item->object->get_current_path()))->file_get();
-    $title = $item->object->get_current_state() == 'pre' ?
+    $title = $item->object->get_current_state() === 'pre' ?
       new text_multiline([$item->object->file, 'new item'], [], ' | ') :
       new text          ( $item->object->file );
     $info_markup = new markup('x-info',  [], [
@@ -137,7 +137,7 @@ namespace effcore {
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
-    if ($items[$button->_id]->object->get_current_state() == 'pre') {
+    if ($items[$button->_id]->object->get_current_state() === 'pre') {
       if ($items[$button->_id]->object->delete_pre()) {
         unset($items[$button->_id]);
         $this->items_set($items);
@@ -148,7 +148,7 @@ namespace effcore {
         return true;
       }
     }
-    if ($items[$button->_id]->object->get_current_state() == 'fin') {
+    if ($items[$button->_id]->object->get_current_state() === 'fin') {
       $items[$button->_id]->is_deleted = true;
       $this->items_set($items);
       message::insert(new text_multiline([

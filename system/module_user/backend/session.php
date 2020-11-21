@@ -101,11 +101,11 @@ namespace effcore {
     $hex_ip            = static::id_get_hex_ip($ip);
     $hex_uagent_hash_8 = static::id_get_hex_uagent_hash_8();
     $hex_random        = static::id_get_hex_random();
-    $session_id = $hex_type.          # strlen == 1
-                  $hex_expired.       # strlen == 8
-                  $hex_ip.            # strlen == 32
-                  $hex_uagent_hash_8. # strlen == 8
-                  $hex_random;        # strlen == 8
+    $session_id = $hex_type.          # strlen === 1
+                  $hex_expired.       # strlen === 8
+                  $hex_ip.            # strlen === 32
+                  $hex_uagent_hash_8. # strlen === 8
+                  $hex_random;        # strlen === 8
     $session_id.= core::signature_get($session_id, 'session', 8);
     header_remove('Set-Cookie');
     setcookie('session_id', ($_COOKIE['session_id'] = $session_id), $expired, '/', $cookie_domain);

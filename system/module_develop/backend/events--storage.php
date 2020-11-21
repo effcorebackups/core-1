@@ -28,7 +28,7 @@ namespace effcore\modules\develop {
   }
 
   static function on_query_after($event, $storage, $query, $result, $errors) {
-    if ($errors[0] == '00000') {
+    if ($errors[0] === '00000') {
       $query_hash = core::hash_get_data($query);
       timer::tap('storage query with hash: '.$query_hash);
       $args_trimmed = [];

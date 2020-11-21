@@ -173,8 +173,8 @@ namespace effcore {
     $installed = core::boot_select('installed');
     $enabled   = core::boot_select('enabled'  );
     foreach ($installed as $c_id => $c_path) {
-      if ($ws_enabled  == true && isset($enabled[$c_id]) === true) $result[$c_id] = $c_path;
-      if ($ws_disabled == true && isset($enabled[$c_id]) !== true) $result[$c_id] = $c_path;
+      if ($ws_enabled  === true && isset($enabled[$c_id]) === true) $result[$c_id] = $c_path;
+      if ($ws_disabled === true && isset($enabled[$c_id]) !== true) $result[$c_id] = $c_path;
     }
     return $result;
   }

@@ -55,7 +55,7 @@ namespace effcore\modules\storage {
               }
             }
           }
-          if ($items['fields']->children_select_count() === 0 || $has_controls == false) {$items['~insert']->disabled_set(); if (isset($items['~insert_and_update'])) $items['~insert_and_update']->disabled_set();}
+          if ($items['fields']->children_select_count() === 0 || $has_controls === false) {$items['~insert']->disabled_set(); if (isset($items['~insert_and_update'])) $items['~insert_and_update']->disabled_set();}
           if ($items['fields']->children_select_count() === 0) {
             $form->child_update(
               'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')

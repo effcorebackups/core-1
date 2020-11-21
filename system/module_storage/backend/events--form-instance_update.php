@@ -62,16 +62,16 @@ namespace effcore\modules\storage {
                   $c_control->entity_field_name = $c_name;
                   $c_control->build();
                   $c_control->value_set_initial($form->_instance->{$c_name}, true);
-                  if     (empty($c_field->managing_control_value_manual_set) && $c_control instanceof complex_control       ) $c_control->value_set_complex($form->_instance->{$c_name}, true);
-                  elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox != true) $c_control->value_set        ($form->_instance->{$c_name});
-                  elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox == true) $c_control->checked_set      ($form->_instance->{$c_name});
+                  if     (empty($c_field->managing_control_value_manual_set) && $c_control instanceof complex_control        ) $c_control->value_set_complex($form->_instance->{$c_name}, true);
+                  elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox !== true) $c_control->value_set        ($form->_instance->{$c_name});
+                  elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox === true) $c_control->checked_set      ($form->_instance->{$c_name});
                   $items['fields']->child_insert($c_control, $c_name);
                   if ($c_control->disabled_get() === false) {
                     $has_controls = true;
                   }
                 }
               }
-              if ($items['fields']->children_select_count() === 0 || $has_controls == false) $items['~update']->disabled_set();
+              if ($items['fields']->children_select_count() === 0 || $has_controls === false) $items['~update']->disabled_set();
               if ($items['fields']->children_select_count() === 0) {
                 $form->child_update(
                   'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
@@ -122,9 +122,9 @@ namespace effcore\modules\storage {
                 $c_value = null;
                 $c_reflection = new \ReflectionClass($c_field->managing_control_class);
                 $c_prefix = $c_reflection->implementsInterface('\\effcore\\complex_control') ? '*' : '#';
-                if     ($items[$c_prefix.$c_name] instanceof complex_control       ) $c_value = $items[$c_prefix.$c_name]->value_get_complex();
-                elseif ($items[$c_prefix.$c_name] instanceof field_checkbox != true) $c_value = $items[$c_prefix.$c_name]->value_get        ();
-                elseif ($items[$c_prefix.$c_name] instanceof field_checkbox == true) $c_value = $items[$c_prefix.$c_name]->checked_get      () ? 1 : 0;
+                if     ($items[$c_prefix.$c_name] instanceof complex_control        ) $c_value = $items[$c_prefix.$c_name]->value_get_complex();
+                elseif ($items[$c_prefix.$c_name] instanceof field_checkbox !== true) $c_value = $items[$c_prefix.$c_name]->value_get        ();
+                elseif ($items[$c_prefix.$c_name] instanceof field_checkbox === true) $c_value = $items[$c_prefix.$c_name]->checked_get      () ? 1 : 0;
                 if (!empty($c_field->managing_control_value_manual_get_if_empty) && $c_value == '') continue;
                 if (!empty($c_field->managing_control_value_manual_get         )                  ) continue;
                 $form->_instance->{$c_name} = $c_value;

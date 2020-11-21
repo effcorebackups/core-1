@@ -59,7 +59,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function move_tmp_to_pre($dst_path) {
-    if ($this->get_current_state() == 'tmp') {
+    if ($this->get_current_state() === 'tmp') {
       $src_file = new file($this->tmp_path);
       $dst_file = new file($dst_path);
       if ($src_file->move_uploaded($dst_file->dirs_get(), $dst_file->file_get())) {
@@ -74,7 +74,7 @@ namespace effcore {
   }
 
   function move_pre_to_fin($dst_path, $fixed_name = null, $fixed_type = null, $is_save_original_data = false) {
-    if ($this->get_current_state() == 'pre') {
+    if ($this->get_current_state() === 'pre') {
       $src_file = new file($this->pre_path);
       $dst_file = new file($dst_path);
       if ($fixed_name          ) $dst_file->name_set(token::apply($fixed_name));
@@ -103,7 +103,7 @@ namespace effcore {
   }
 
   function delete_pre() {
-    if ($this->get_current_state() == 'pre') {
+    if ($this->get_current_state() === 'pre') {
       $result = @unlink($this->pre_path);
       if ($result) {
         unset($this->pre_path);
@@ -116,7 +116,7 @@ namespace effcore {
   }
 
   function delete_fin() {
-    if ($this->get_current_state() == 'fin') {
+    if ($this->get_current_state() === 'fin') {
       $result = @unlink($this->fin_path);
       if ($result) {
         unset($this->fin_path);

@@ -50,7 +50,7 @@ namespace effcore\modules\core {
       $form->child_update('info', new markup('x-no-items', ['data-style' => 'table'], 'no updates'));
       $items['~apply']->disabled_set();
     }
-    if ($has_updates == false) {
+    if ($has_updates === false) {
       $items['~apply']->disabled_set();
     }
   }

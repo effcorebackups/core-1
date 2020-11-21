@@ -20,11 +20,11 @@ namespace effcore {
     if (!empty($this->value_hex)) {
       $value = ltrim($this->value_hex, '#');
       $value_parts = [];
-      if (strlen($value) == 3) {
+      if (strlen($value) === 3) {
         $value_parts['r'] = $value[0].$value[0];
         $value_parts['g'] = $value[1].$value[1];
         $value_parts['b'] = $value[2].$value[2];}
-      if (strlen($value) == 6) {
+      if (strlen($value) === 6) {
         $value_parts['r'] = $value[0].$value[1];
         $value_parts['g'] = $value[2].$value[3];
         $value_parts['b'] = $value[4].$value[5];}

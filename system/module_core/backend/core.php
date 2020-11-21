@@ -186,8 +186,8 @@ namespace effcore {
 
   static function structure_get_part_handler($handler, $partname) {
     $parts = explode('::', $handler);
-    if ($partname == 'classname') return !empty($parts[0]) ? $parts[0] : null;
-    if ($partname == 'method')    return !empty($parts[1]) ? $parts[1] : null;
+    if ($partname === 'classname') return !empty($parts[0]) ? $parts[0] : null;
+    if ($partname === 'method'   ) return !empty($parts[1]) ? $parts[1] : null;
   }
 
   static function class_get_new_instance($name, $args = [], $use_constructor = false) {
@@ -349,34 +349,34 @@ namespace effcore {
 
   static function array_sort_text(&$array, $order = 'd', $translated = true) {
     uasort($array, function ($a, $b) use ($order, $translated) {
-      if ($order == 'a' && $translated == false) return                    $b  <=>                    $a;
-      if ($order == 'd' && $translated == false) return                    $a  <=>                    $b;
-      if ($order == 'a' && $translated)          return translation::apply($b) <=> translation::apply($a);
-      if ($order == 'd' && $translated)          return translation::apply($a) <=> translation::apply($b);
+      if ($order === 'a' && $translated === false) return                    $b  <=>                    $a;
+      if ($order === 'd' && $translated === false) return                    $a  <=>                    $b;
+      if ($order === 'a' && $translated)           return translation::apply($b) <=> translation::apply($a);
+      if ($order === 'd' && $translated)           return translation::apply($a) <=> translation::apply($b);
     });
     return $array;
   }
 
   static function array_sort_by_text_property(&$array, $property = 'title', $order = 'd', $translated = true) {
     uasort($array, function ($a, $b) use ($property, $order, $translated) {
-      if ($order == 'a' && $translated == false) return                    $b->{$property}  <=>                    $a->{$property};
-      if ($order == 'd' && $translated == false) return                    $a->{$property}  <=>                    $b->{$property};
-      if ($order == 'a' && $translated)          return translation::apply($b->{$property}) <=> translation::apply($a->{$property});
-      if ($order == 'd' && $translated)          return translation::apply($a->{$property}) <=> translation::apply($b->{$property});
+      if ($order === 'a' && $translated === false) return                    $b->{$property}  <=>                    $a->{$property};
+      if ($order === 'd' && $translated === false) return                    $a->{$property}  <=>                    $b->{$property};
+      if ($order === 'a' && $translated)           return translation::apply($b->{$property}) <=> translation::apply($a->{$property});
+      if ($order === 'd' && $translated)           return translation::apply($a->{$property}) <=> translation::apply($b->{$property});
     });
     return $array;
   }
 
   static function array_sort_by_property(&$array, $property, $order = 'a') {
     uasort($array, function ($a, $b) use ($property, $order) {
-      if ($order == 'a') return $b->{$property} <=> $a->{$property};
-      if ($order == 'd') return $a->{$property} <=> $b->{$property};
+      if ($order === 'a') return $b->{$property} <=> $a->{$property};
+      if ($order === 'd') return $a->{$property} <=> $b->{$property};
     });
     return $array;
   }
 
   static function array_sort_by_weight(&$array, $corrector = .001) {
-    $c_weight = 0;                # if $array[n].weight == 0 && $array[n+1].weight == 0, the relative
+    $c_weight = 0;                # if $array[n].weight === 0 && $array[n+1].weight === 0, the relative
     foreach ($array as $c_item)   # order of these items in the sorted array will be undefined.
       if ($c_item->weight === 0)  # we should preprocess items with weight = 0 before sorting
           $c_item->weight = $c_weight -= $corrector;

@@ -51,7 +51,7 @@ namespace effcore {
     $request_value = field::request_value_get('button', $number, $source);
     if ($this->disabled_get() === false &&
         $request_value                  &&
-        $request_value        == $this->value_get()) {
+        $request_value == $this->value_get()) {
       return true;
     }
   }

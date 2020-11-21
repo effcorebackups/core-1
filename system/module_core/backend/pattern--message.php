@@ -21,7 +21,7 @@ namespace effcore {
         foreach ($c_messages as $c_message) {
           if (!in_array($c_message->render(), $non_duplicates[$c_type])) {
             $non_duplicates[$c_type][] = $c_message->render();
-            if ($c_type == 'error' || $c_type == 'warning')
+            if ($c_type === 'error' || $c_type === 'warning')
                  $c_grpoup->child_insert(new markup('li', [], new markup('p', ['role' => 'alert'], $c_message)));
             else $c_grpoup->child_insert(new markup('li', [], new markup('p', [                 ], $c_message)));
           }

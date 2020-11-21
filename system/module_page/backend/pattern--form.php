@@ -74,7 +74,7 @@ namespace effcore {
     # call init handlers
       $this->form_items_update();
       event::start('on_form_init', $id, [&$this, &$this->items], null,
-        function ($event, $form, $items) { # == $on_after_step
+        function ($event, $form, $items) { # === $on_after_step
           $form->form_items_update();
         }
       );
@@ -308,11 +308,11 @@ namespace effcore {
     $hex_ip            = static::validation_id_get_hex_ip           (             );
     $hex_uagent_hash_8 = static::validation_id_get_hex_uagent_hash_8(             );
     $hex_random        = static::validation_id_get_hex_random       (             );
-    $validation_id = $hex_number.        # strlen == 2
-                     $hex_created.       # strlen == 8
-                     $hex_ip.            # strlen == 32
-                     $hex_uagent_hash_8. # strlen == 8
-                     $hex_random;        # strlen == 8
+    $validation_id = $hex_number.        # strlen === 2
+                     $hex_created.       # strlen === 8
+                     $hex_ip.            # strlen === 32
+                     $hex_uagent_hash_8. # strlen === 8
+                     $hex_random;        # strlen === 8
     $validation_id.= core::signature_get($validation_id, 'form_validation', 8);
     return $validation_id;
   }
