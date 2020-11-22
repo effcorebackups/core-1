@@ -8,7 +8,7 @@ namespace effcore {
           class field_url_page extends field_url {
 
   public $element_attributes = [
-    'type'      => 'url',
+    'type'      => 'text',
     'name'      => 'url',
     'required'  => true,
     'minlength' => 1,

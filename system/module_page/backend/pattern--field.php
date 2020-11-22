@@ -326,7 +326,7 @@ namespace effcore {
       if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description[] = $this->render_description_midlength($element);
     }
     if (count($this->description)) {
-      if ($this->id_get()) $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
+      if ($this->id_get() && $this->description_state !== 'hidden') $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
       if ($this->description_state === 'hidden'                      ) return '';
       if ($this->description_state === 'opened' || $this->has_error()) return                        (new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
       if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();

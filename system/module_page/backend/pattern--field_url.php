@@ -10,7 +10,7 @@ namespace effcore {
   public $title = 'URL';
   public $attributes = ['data-type' => 'url'];
   public $element_attributes = [
-    'type'      => 'url',
+    'type'      => 'text',
     'name'      => 'url',
     'required'  => true,
     'minlength' => 1,
@@ -18,8 +18,8 @@ namespace effcore {
   ];
 
   public $is_allowed_unicode = true;
-  public $should_be_included = []; # protocol,domain,path,query,anchor
-  public $should_be_excluded = []; # protocol,domain,path,query,anchor
+  public $should_be_included = []; # protocol, domain, path, query, anchor
+  public $should_be_excluded = []; # protocol, domain, path, query, anchor
 
   function render_description() {
     $this->render_prepare_description();
