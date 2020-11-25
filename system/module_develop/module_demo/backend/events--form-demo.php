@@ -32,6 +32,7 @@ namespace effcore\modules\demo {
     $items['*palette_color']->value_set('transparent');
     $paths = data::select('demo_files');
     if (!empty($paths['pictures'])) $items['#file_picture']->values_set($paths['pictures']);
+    if (!empty($paths['texts'   ])) $items['#file_text'   ]->values_set($paths['texts'   ]);
   }
 
   static function on_validate($event, $form, $items) {
@@ -100,9 +101,11 @@ namespace effcore\modules\demo {
       # save the files
         $paths = [];
         $paths['pictures'] = $items['#file_picture']->values_get();
-        if (count($paths['pictures']))
-             data::update('demo_files', $paths);
-        else data::delete('demo_files');
+        $paths['texts'   ] = $items['#file_text'   ]->values_get();
+        if (empty($paths['pictures'])) unset($paths['pictures']);
+        if (empty($paths['texts'   ])) unset($paths['texts'   ]);
+        if (count($paths)) data::update('demo_files', $paths);
+        else               data::delete('demo_files');
         break;
     }
   }

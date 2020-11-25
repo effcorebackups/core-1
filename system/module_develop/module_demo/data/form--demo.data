@@ -9,6 +9,15 @@ forms
     - form_elements|fieldset
         title: Form elements
         children
+      # field 'File'
+        - file_text|field_file
+            upload_dir: demo/
+            description|text
+              text: Field "%%_title".
+              args
+              - title: field_file
+            element_attributes
+            - name: file_text
       # field 'Pictures'
         - file_picture|field_file_picture
             title: Pictures
