@@ -662,7 +662,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_picture
+        managing_control_class: \effcore\field_file_picture
         managing_control_properties
         - max_file_size: 500K
         - upload_dir: pictures/
@@ -1024,7 +1024,7 @@ entities
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\field_picture
+        managing_control_class: \effcore\field_file_picture
         managing_control_properties
         - max_file_size: 500K
         - upload_dir: videos/

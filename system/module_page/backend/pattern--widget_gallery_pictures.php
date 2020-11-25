@@ -26,7 +26,7 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # control for upload new file
-    $field_file = new field_picture;
+    $field_file = new field_file_picture;
     $field_file->title = 'File';
     $field_file->max_file_size    = $this->max_file_size;
     $field_file->allowed_types    = $this->allowed_types;

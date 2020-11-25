@@ -10,7 +10,7 @@ forms
         title: Form elements
         children
       # field 'Picture'
-        - pictures|field_picture
+        - pictures|field_file_picture
             title: Pictures
             max_file_size: 8K
             min_files_number: 0
@@ -19,7 +19,7 @@ forms
             description|text
               text: Field "%%_title".
               args
-              - title: field_picture
+              - title: field_file_picture
             element_attributes
             - name: picture[]
             - multiple: true
