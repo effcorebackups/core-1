@@ -71,6 +71,16 @@ namespace effcore {
   public $pool_fin = [];
   public $pool_pre = [];
 
+  function build() {
+    parent::build();
+    if ($this->child_select('element')) {
+      $accept_types = [];
+      foreach ($this->allowed_types as $c_type)
+                 $accept_types[] = '.'.$c_type;
+      $this->child_select('element')->attribute_insert('accept', implode(',', $accept_types));
+    }
+  }
+
   function value_get() {
     $values = $this->values_get();
     if (isset($values[0]))
