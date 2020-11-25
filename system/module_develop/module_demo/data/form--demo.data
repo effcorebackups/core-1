@@ -9,10 +9,9 @@ forms
     - form_elements|fieldset
         title: Form elements
         children
-      # field 'Picture'
-        - pictures|field_file_picture
+      # field 'Pictures'
+        - file_picture|field_file_picture
             title: Pictures
-            max_file_size: 8K
             min_files_number: 0
             max_files_number: 3
             upload_dir: demo/
@@ -21,7 +20,7 @@ forms
               args
               - title: field_file_picture
             element_attributes
-            - name: picture[]
+            - name: file_picture[]
             - multiple: true
       # field 'Text'
         - text|field_text
@@ -299,7 +298,7 @@ forms
             - name: relation
             selected
             - demo_sql_item_1: demo_sql_item_1
-      # field 'Relation' (mode: tree)
+      # field 'Relation' (tree view)
         - relation_tree|field_relation
             title: Relation (tree view)
             description|text
