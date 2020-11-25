@@ -95,17 +95,17 @@ translations
     - copyright: аўтарскія правы
     - Core: Ядро
     - Created: Створана
-    - Credentials for storage "%%_name" was not set!: Уліковыя даныя для сховішча "%%_name" не былі зададзены!
-    - Credentials: Уліковыя даныя
+    - Credentials for storage "%%_name" was not set!: Уліковыя дадзеныя для сховішча "%%_name" не былі зададзены!
+    - Credentials: Уліковыя дадзеныя
     - Cron last run: Апошні запуск Cron
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
     - Current: Бягучыя
-    - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне даных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
-    - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне даных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
-    - Data update is required: Патрабуецца абнаўленне даных
-    - Data: Даныя
-    - Database name: Імя базы даных
+    - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
+    - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
+    - Data update is required: Патрабуецца абнаўленне дадзеных
+    - Data: Дадзеныя
+    - Database name: Імя базы дадзеных
     - Date format: Фармат даты
     - Date: Дата
     - Date/time format: Фармат даты/часу
@@ -119,7 +119,7 @@ translations
     - delete file "%%_file": выдаліць файл "%%_file"
     - Delete instance: Выдаліць асобнік
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
-    - Delete modules data: Выдаліць даныя модуляў
+    - Delete modules data: Выдаліць дадзеныя модуляў
     - Delete: Выдаліць
     - delete: выдаліць
     - Demo: Дэма
@@ -286,7 +286,7 @@ translations
     - insertion: устаўка
     - Install: Інсталяваць
     - install: Інсталяваць
-    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя даныя сховішча ўжо былі ўсталяваны.
+    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя дадзеныя сховішча ўжо былі ўсталяваны.
     - Installation: Інсталяванне
     - installation: інсталяванне
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
@@ -387,11 +387,11 @@ translations
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
     - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
-    - Module data "%%_title" (%%_id) was removed.: Даныя модуля "%%_title" (%%_id) былі выдалены.
+    - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
     - Module for localization.: Модуль для лакалізацыі.
-    - Module for storages support.: Модуль для падтрымкі сховішчаў даных.
+    - Module for storages support.: Модуль для падтрымкі сховішчаў дадзеных.
     - Module for support the operation of the whole system.: Модуль для падтрымкі працы ўсёй сістэмы.
     - Module for testing.: Модуль для тэставання.
     - Module for translation into Belarusian language.: Модуль для перакладу на беларускую мову.
@@ -532,7 +532,7 @@ translations
     - Report: Справаздача
     - reset: скінуць
     - restore repository: аднавіць рэпазітар
-    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя даныя сховішча ў "%%_file" альбо зноў інсталюйце гэтую сістэму на старонцы: %%_link
+    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя дадзеныя сховішча ў "%%_file" альбо зноў інсталюйце гэтую сістэму на старонцы: %%_link
     - right to left (rtl): справа налева (rtl)
     - right to left: справа налева
     - Role ID: ID ролі
@@ -585,7 +585,7 @@ translations
     - state: стан
     - State: Стан
     - Storage "%%_name" is not available!: Сховішча "%%_name" недаступна!
-    - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі данымі!
+    - Storage is not available with these credentials!: Сховішча недаступна з гэтымі уліковымі дадзенымі!
     - storage: сховішча
     - Storage: Сховішча
     - Structures: Структуры
@@ -677,7 +677,7 @@ translations
     - Unordered list: Неўпарадкаваны спіс
     - Update Cache: Абнавіць кэш
     - Update instance: Абнавіць асобнік
-    - Update modules data: Абнавіць даныя модуляў
+    - Update modules data: Абнавіць дадзеныя модуляў
     - Update modules files: Абнавіць файлы модуляў
     - Update: Абнавіць
     - update: абнавіць

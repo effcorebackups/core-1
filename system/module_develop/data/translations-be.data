@@ -45,8 +45,8 @@ translations
     - Console: Кансоль
     - Constraints: Абмежаванні
     - Current language: Бягучая мова
-    - Data hash: Хэш даных
-    - Data ID: ID даных
+    - Data hash: Хэш дадзеных
+    - Data ID: ID дадзеных
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
     - default text: тэкст па змаўчанні
@@ -122,7 +122,7 @@ translations
     - method public: метад публічны
     - Module dependencies from PHP extensions: Залежнасці модуляў ад PHP-пашырэнняў
     - namespace: прастора імёнаў
-    - NoSQL data: NoSQL даныя
+    - NoSQL data: NoSQL дадзеныя
     - Notice message #%%_number.: Паведамленне №%%_number.
     - Ok message #%%_number.: Добрае паведамленне №%%_number.
     - Option 1 (selected): Опцыя 1 (абрана)
