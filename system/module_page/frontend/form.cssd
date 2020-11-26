@@ -52,6 +52,9 @@
   x-field [data-field-title] {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
+  x-field[data-type^='file'] x-group[data-scope='fin'],
+  x-field[data-type^='file'] x-group[data-scope='pre'] {margin: 0}
+
   /* group */
 
   x-group {display: block; margin: 20px 0}
