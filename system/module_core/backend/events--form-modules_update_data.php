@@ -29,19 +29,18 @@ namespace effcore\modules\core {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'closed';
         $c_checkboxes = new group_checkboxes;
+        $c_checkboxes->element_attributes['name'] = 'update_'.$c_module->id.'[]';
         $c_checkboxes->build();
         $c_fieldset->child_insert($c_checkboxes, 'checkboxes');
         $info->child_insert($c_fieldset, $c_module->id);
         core::array_sort_by_property($c_updates, 'number');
         foreach ($c_updates as $c_update) {
-          if ($c_update->number > $c_update_last_number == true) {$has_updates = true; $c_fieldset->state = 'opened';}
-          if ($c_update->number > $c_update_last_number != true)
-            $c_checkboxes->disabled[$c_update->number] =
-                                    $c_update->number;
+          if ($c_update->number > $c_update_last_number === true) {$has_updates = true; $c_fieldset->state = 'opened';}
+          if ($c_update->number > $c_update_last_number !== true) {$c_checkboxes->disabled[$c_update->number] = $c_update->number;}
           $c_checkboxes->field_insert(
             $c_update->number.': '.(new text($c_update->title))->render(),
             $c_update->description ?? null,
-            $c_update->number, ['name' => 'update_'.$c_module->id.'[]']
+            $c_update->number
           );
         }
       }
