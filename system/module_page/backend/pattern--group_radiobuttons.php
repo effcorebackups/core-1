@@ -37,11 +37,7 @@ namespace effcore {
     if (!$this->is_builded) {
       foreach ($this->values as $c_value => $c_info) {
         if (!$this->child_select($c_value)) {
-          if (is_string($c_info)) $c_info = (object)[
-            'title'              => $c_info,
-            'description'        => null,
-            'element_attributes' => ['value' => $c_value],
-            'weight'             => 0];
+          if (is_string($c_info)) $c_info = (object)['title' => $c_info, 'description' => null, 'element_attributes' => ['value' => $c_value], 'weight' => 0];
           $c_field                     = new $this->field_class;
           $c_field->tag_name           = $this->field_tag_name;
           $c_field->title_tag_name     = $this->field_title_tag_name;

@@ -24,6 +24,7 @@ namespace effcore\modules\core {
     $modules   = module::get_all      ();
     $checkboxes = new group_checkboxes;
     $checkboxes->description = 'The removing module should be disabled at first. Embedded modules cannot be disabled.';
+    $checkboxes->element_attributes['name'] = 'uninstall[]';
     $checkboxes->build();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
@@ -32,7 +33,7 @@ namespace effcore\modules\core {
         if (isset($enabled  [$c_module->id]))
         $checkboxes->disabled[$c_module->id] = $c_module->id;
         $checkboxes->field_insert(
-          $c_module->title, null, $c_module->id, ['name' => 'uninstall[]']
+          $c_module->title, null, $c_module->id
         );
       }
     }
