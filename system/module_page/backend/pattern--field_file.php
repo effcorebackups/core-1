@@ -254,10 +254,19 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   protected function pool_manager_rebuild() {
-    $this->child_delete('manager');
-    $pool_manager = new group_checkboxes;
-    $pool_manager->build();
-    $this->child_insert($pool_manager, 'manager');
+    $name = $this->name_get();
+    $this->child_delete('manager_fin');
+    $this->child_delete('manager_pre');
+    $pool_manager_fin = new group_checkboxes;
+    $pool_manager_pre = new group_checkboxes;
+    $pool_manager_fin->attributes['data-scope'] = 'fin';
+    $pool_manager_pre->attributes['data-scope'] = 'pre';
+    $pool_manager_fin->element_attributes['name'] = $name.'_delete_fin[]';
+    $pool_manager_pre->element_attributes['name'] = $name.'_delete_pre[]';
+    $pool_manager_fin->build();
+    $pool_manager_pre->build();
+    $this->child_insert($pool_manager_fin, 'manager_fin');
+    $this->child_insert($pool_manager_pre, 'manager_pre');
   # insert 'delete' checkboxes for the 'fin' and the 'pre' items
     foreach ($this->pool_fin as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'fin');
     foreach ($this->pool_pre as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'pre');
@@ -265,26 +274,27 @@ namespace effcore {
 
   protected function pool_manager_insert_action($item, $id, $type) {
     $name = $this->name_get();
-    $pool_manager = $this->child_select('manager');
-    if ($this->disabled_get()) $pool_manager->disabled[$id] = $id;
-    $pool_manager->field_insert(
-      new text('delete file "%%_file"', ['file' => $item->file]), null, $id, ['name' => $name.'_delete_'.$type.'[]']
-    );
+    $pool_manager_fin = $this->child_select('manager_fin');
+    $pool_manager_pre = $this->child_select('manager_pre');
+    if ($this->disabled_get() && $type === 'fin') $pool_manager_fin->disabled[$id] = $id;
+    if ($this->disabled_get() && $type === 'pre') $pool_manager_pre->disabled[$id] = $id;
+    if ($type === 'fin') $pool_manager_fin->field_insert(new text('delete file "%%_file"', ['file' => $item->file]), null, $id);
+    if ($type === 'pre') $pool_manager_pre->field_insert(new text('delete file "%%_file"', ['file' => $item->file]), null, $id);
   }
 
   protected function pool_manager_get_deleted_items($type) {
     if ($this->disabled_get() === false) {
       $name = $this->name_get();
-      return core::array_kmap(
-        static::request_values_get($name.'_delete_'.$type)
-      );
+      if ($type === 'fin') return core::array_kmap(static::request_values_get($name.'_delete_fin'));
+      if ($type === 'pre') return core::array_kmap(static::request_values_get($name.'_delete_pre'));
     }
   }
 
   protected function pool_manager_set_deleted_items($type, $items) {
     if ($this->disabled_get() === false) {
       $name = $this->name_get();
-      static::request_values_set($name.'_delete_'.$type, $items);
+      if ($type === 'fin') static::request_values_set($name.'_delete_fin', $items);
+      if ($type === 'pre') static::request_values_set($name.'_delete_pre', $items);
     }
   }
 
