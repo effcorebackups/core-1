@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_audio extends field_file {
+          class field_file_audio extends field_file {
 
   public $title = 'Audio';
   public $attributes = ['data-type' => 'file-audio'];

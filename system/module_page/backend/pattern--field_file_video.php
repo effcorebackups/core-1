@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_video extends field_file {
+          class field_file_video extends field_file {
 
   public $title = 'Video';
   public $attributes = ['data-type' => 'file-video'];

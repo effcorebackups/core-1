@@ -26,19 +26,19 @@ namespace effcore {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
   # control for upload new file
-    $field_file = new field_file_picture;
-    $field_file->title = 'File';
-    $field_file->max_file_size    = $this->max_file_size;
-    $field_file->allowed_types    = $this->allowed_types;
-    $field_file->cform            = $this->cform;
-    $field_file->min_files_number = null;
-    $field_file->max_files_number = null;
-    $field_file->has_on_validate         = false;
-    $field_file->has_on_validate_phase_3 = false;
-    $field_file->build();
-    $field_file->multiple_set();
-    $field_file->name_set($this->name_get_complex().'__file[]');
-    $this->controls['#file'] = $field_file;
+    $field_file_picture = new field_file_picture;
+    $field_file_picture->title = 'File';
+    $field_file_picture->max_file_size    = $this->max_file_size;
+    $field_file_picture->allowed_types    = $this->allowed_types;
+    $field_file_picture->cform            = $this->cform;
+    $field_file_picture->min_files_number = null;
+    $field_file_picture->max_files_number = null;
+    $field_file_picture->has_on_validate         = false;
+    $field_file_picture->has_on_validate_phase_3 = false;
+    $field_file_picture->build();
+    $field_file_picture->multiple_set();
+    $field_file_picture->name_set($this->name_get_complex().'__file[]');
+    $this->controls['#file'] = $field_file_picture;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -47,7 +47,7 @@ namespace effcore {
     $button->_type = 'insert';
     $this->controls['~insert'] = $button;
   # grouping of previous elements in widget 'insert'
-    $widget->child_insert($field_file, 'file');
+    $widget->child_insert($field_file_picture, 'file');
     $widget->child_insert($button, 'button');
     return $widget;
   }
