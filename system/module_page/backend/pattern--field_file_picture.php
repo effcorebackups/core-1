@@ -12,7 +12,7 @@ namespace effcore {
   public $element_attributes = [
     'type' => 'file',
     'name' => 'picture'];
-  public $max_file_size = '8K';
+  public $max_file_size = '500K';
   public $allowed_types = [
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',

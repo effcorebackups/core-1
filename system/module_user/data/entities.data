@@ -732,7 +732,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
-        - max_file_size: 10K
+        - max_file_size: 30K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
         - weight: +340

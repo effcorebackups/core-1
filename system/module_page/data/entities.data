@@ -664,7 +664,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
-        - max_file_size: 500K
+        - max_file_size: 1M
         - upload_dir: pictures/
         - fixed_name: picture-%%_instance_id_context
         - allowed_types
@@ -1026,7 +1026,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
-        - max_file_size: 500K
+        - max_file_size: 1M
         - upload_dir: videos/
         - fixed_name: video_poster-%%_instance_id_context
         - weight: +320

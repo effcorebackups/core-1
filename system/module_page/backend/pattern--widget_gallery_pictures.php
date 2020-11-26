@@ -14,7 +14,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'galleries/';
   public $fixed_name = 'pictures-%%_instance_id_context-%%_item_id_context';
-  public $max_file_size = '500K';
+  public $max_file_size = '1M';
   public $allowed_types = [
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
