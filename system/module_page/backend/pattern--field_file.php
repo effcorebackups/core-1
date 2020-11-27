@@ -268,18 +268,22 @@ namespace effcore {
     $this->child_insert($pool_manager_fin, 'manager_fin');
     $this->child_insert($pool_manager_pre, 'manager_pre');
   # insert 'delete' checkboxes for the 'fin' and the 'pre' items
-    foreach ($this->pool_fin as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'fin');
-    foreach ($this->pool_pre as $c_id => $c_item) $this->pool_manager_insert_action($c_item, $c_id, 'pre');
+    foreach ($this->pool_fin as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'fin');
+    foreach ($this->pool_pre as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'pre');
   }
 
-  protected function pool_manager_insert_action($item, $id, $type) {
+  protected function pool_manager_action_insert($item, $id, $type) {
     $name = $this->name_get();
     $pool_manager_fin = $this->child_select('manager_fin');
     $pool_manager_pre = $this->child_select('manager_pre');
     if ($this->disabled_get() && $type === 'fin') $pool_manager_fin->disabled[$id] = $id;
     if ($this->disabled_get() && $type === 'pre') $pool_manager_pre->disabled[$id] = $id;
-    if ($type === 'fin') $pool_manager_fin->field_insert(new text('delete file "%%_file"', ['file' => $item->file]), null, $id);
-    if ($type === 'pre') $pool_manager_pre->field_insert(new text('delete file "%%_file"', ['file' => $item->file]), null, $id);
+    if ($type === 'fin') $pool_manager_fin->field_insert($this->pool_manager_action_insert_get_field_text($item, $id, $type), null, $id);
+    if ($type === 'pre') $pool_manager_pre->field_insert($this->pool_manager_action_insert_get_field_text($item, $id, $type), null, $id);
+  }
+
+  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
+    return new text('delete file "%%_file"', ['file' => $item->file]);
   }
 
   protected function pool_manager_get_deleted_items($type) {
