@@ -23,7 +23,7 @@ namespace effcore {
 
   protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
     $file = new file($item->get_current_path());
-    $thumbnail = new markup_simple('img', ['src' => '/'.$file->path_get_relative(), 'alt' => new text('thumbnail'), 'width' => '50', 'data-type' => 'thumbnail']);
+    $thumbnail = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '50', 'data-type' => 'thumbnail']);
     return new node([], [$thumbnail, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
   }
 

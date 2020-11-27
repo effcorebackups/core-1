@@ -24,7 +24,7 @@ namespace effcore {
             $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
             if (is_resource($dst_resource)) {
               $dst_file = new file($dst_path);
-              if ($dst_file->type === 'jpg' || # fill with white background for transparency of PNG/GIF $src_resource
+              if ($dst_file->type === 'jpg' || # fill with white background in JPG for beautiful degrade of PNG/GIF transparency in $src_resource
                   $dst_file->type === 'jpeg') @imagefilledrectangle ($dst_resource, 0, 0, $dst_w - 1, $dst_h - 1, imagecolorallocate($dst_resource, 255, 255, 255));
               if ($dst_file->type === 'gif' ) @imagecolortransparent($dst_resource,                               imagecolorallocate($dst_resource,   0,   0,   0));
               if ($dst_file->type === 'png' ) @imagealphablending   ($dst_resource, false);
