@@ -12,6 +12,7 @@ namespace effcore {
   public $element_attributes = [
     'type' => 'file',
     'name' => 'video'];
+  public $max_file_size = '50M';
   public $allowed_types = [
     'mp4' => 'mp4'
   ];

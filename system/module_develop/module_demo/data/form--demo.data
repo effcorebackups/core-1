@@ -31,6 +31,26 @@ forms
             element_attributes
             - name: file_picture[]
             - multiple: true
+      # field 'Audio'
+        - file_audio|field_file_audio
+            title: Audio
+            upload_dir: demo/
+            description|text
+              text: Field "%%_title".
+              args
+              - title: field_file_audio
+            element_attributes
+            - name: file_audio[]
+      # field 'Video'
+        - file_video|field_file_video
+            title: Video
+            upload_dir: demo/
+            description|text
+              text: Field "%%_title".
+              args
+              - title: field_file_video
+            element_attributes
+            - name: file_video[]
       # field 'Text'
         - text|field_text
             title: Text
