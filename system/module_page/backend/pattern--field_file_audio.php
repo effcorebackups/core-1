@@ -17,4 +17,8 @@ namespace effcore {
     'mp3' => 'mp3'
   ];
 
+  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
+    return new text('delete audio "%%_audio"', ['audio' => $item->file]);
+  }
+
 }}

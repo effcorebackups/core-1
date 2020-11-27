@@ -20,4 +20,9 @@ namespace effcore {
     'gif'  => 'gif'
   ];
 
+
+  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
+    return new text('delete picture "%%_picture"', ['picture' => $item->file]);
+  }
+
 }}

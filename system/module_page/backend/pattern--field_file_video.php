@@ -17,4 +17,8 @@ namespace effcore {
     'mp4' => 'mp4'
   ];
 
+  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
+    return new text('delete video "%%_video"', ['video' => $item->file]);
+  }
+
 }}

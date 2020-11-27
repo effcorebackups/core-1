@@ -116,10 +116,13 @@ translations
     - Decoration\: manage: Оформление: управлять
     - Decorator parameters: Параметры оформления
     - Definition list: Список определений
+    - delete audio "%%_audio": удалить аудио "%%_audio"
     - delete file "%%_file": удалить файл "%%_file"
     - Delete instance: Удалить экземпляр
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - Delete modules data: Удалить данные модулей
+    - delete picture "%%_picture": удалить изображение "%%_picture"
+    - delete video "%%_video": удалить видео "%%_video"
     - Delete: Удалить
     - delete: удалить
     - Demo: Демо
