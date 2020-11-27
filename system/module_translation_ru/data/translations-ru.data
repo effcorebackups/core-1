@@ -643,6 +643,7 @@ translations
     - This combination of values is already in use!: Такая комбинация значений уже используется!
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
+    - thumbnail: миниатюра
     - TiB: ТиБ
     - Time format: Формат времени
     - Time zone: Часовой пояс

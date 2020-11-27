@@ -54,6 +54,9 @@
 
   x-field[data-type^='file'] x-group[data-scope='fin'],
   x-field[data-type^='file'] x-group[data-scope='pre'] {margin: 0}
+  x-field[data-type^='file'] x-group label img[data-type='thumbnail'] {
+    margin-right: 5px;
+    vertical-align: middle}
 
   /* group */
 
