@@ -190,8 +190,8 @@ namespace effcore {
   function pool_values_init_new_from_form($new_items = []) { #2
     foreach ($new_items as $c_item) {
       $this->pool_pre[] = $c_item;
-      $c_item_id = core::array_key_last($this->pool_pre); # p.s. even after deleting the array element, the next key will be 'last used key +1'
-      $result = $c_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_item_id);
+      $c_item_id = core::array_key_last($this->pool_pre); # note: even after deleting the array element, the next key will be 'last used key +1'
+      $result = $c_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_item_id.'.'.$c_item->type);
       if (!$result) {
         unset($this->pool_pre[$c_item_id]);
       }

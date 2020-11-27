@@ -28,7 +28,7 @@ namespace effcore\modules\menu {
       if ($entity_name === 'tree_item') {
         if ($category_id) {                                                    $tree = tree::select($category_id       );}
         if ($instance_id) {$tree_item = tree_item::select($instance_id, null); $tree = tree::select($tree_item->id_tree);}
-        if (isset($tree)) { # p.s. $tree is undefined on 'insert instance' page
+        if (isset($tree)) { # note: $tree is undefined on 'insert instance' page
           $breadcrumbs->link_insert('category', $tree->title, '/manage/data/menu/tree_item///'.$tree->id);
         }
       }
