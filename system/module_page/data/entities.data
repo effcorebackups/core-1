@@ -292,7 +292,7 @@ entities
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_gallery_pictures
+        managing_control_class: \effcore\widget_files_pictures
         managing_control_properties
         - name_complex: items
         - weight: +340

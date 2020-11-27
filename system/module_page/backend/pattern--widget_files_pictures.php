@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore {
-          class widget_gallery_pictures extends widget_files {
+          class widget_files_pictures extends widget_files {
 
   public $title = 'Pictures';
   public $item_title = 'Picture';
-  public $attributes = ['data-type' => 'items-info-files-picture'];
-  public $name_complex = 'widget_gallery_pictures';
+  public $attributes = ['data-type' => 'items-info-files-pictures'];
+  public $name_complex = 'widget_files_pictures';
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'galleries/';
   public $fixed_name = 'pictures-%%_instance_id_context-%%_item_id_context';
