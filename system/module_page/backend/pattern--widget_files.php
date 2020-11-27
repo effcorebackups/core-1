@@ -57,13 +57,13 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # info markup
-    $id = (new file($item->object->get_current_path()))->file_get();
+    $file = new file($item->object->get_current_path());
     $title = $item->object->get_current_state() === 'pre' ?
       new text_multiline([$item->object->file, 'new item'], [], ' | ') :
       new text          ( $item->object->file );
     $info_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $title),
-        'id'    => new markup('x-id',    [], $id )]);
+        'id'    => new markup('x-id',    [], $file->file_get() )]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($info_markup, 'info');
     return $widget;

@@ -20,7 +20,6 @@ namespace effcore {
     'gif'  => 'gif'
   ];
 
-
   protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
     $file = new file($item->get_current_path());
     $thumbnail = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '50', 'data-type' => 'thumbnail']);

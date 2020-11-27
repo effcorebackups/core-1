@@ -22,6 +22,24 @@ namespace effcore {
     'gif'  => 'gif'
   ];
 
+  function widget_manage_get($item, $c_row_id) {
+    $widget = parent::widget_manage_get($item, $c_row_id);
+    $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+  # info markup
+    $file = new file($item->object->get_current_path());
+    $thumbnail = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']);
+    $title = $item->object->get_current_state() === 'pre' ?
+      new text_multiline([$item->object->file, 'new item'], [], ' | ') :
+      new text          ( $item->object->file );
+    $info_markup = new markup('x-info',  [], [
+        'thumbnail' => new markup('x-thumbnail', [], $thumbnail),
+        'title'     => new markup('x-title',     [], $title),
+        'id'        => new markup('x-id',        [], $file->file_get() )]);
+  # grouping of previous elements in widget 'manage'
+    $widget->child_insert($info_markup, 'info');
+    return $widget;
+  }
+
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
