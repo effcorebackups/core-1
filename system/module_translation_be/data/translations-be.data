@@ -184,7 +184,7 @@ translations
     - Field "%%_title" contains an incorrect value!: Поле "%%_title" змяшчае няправільнае значэнне!
     - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" змяшчае раней выкарыстаную камбінацыю значэнняў!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не падтрымлівае множны выбар!
-    - Field "%%_title" does not support uploading this type of file!: Поле "%%_title" не падтрымлівае загрузку такога тыпу файла!
+    - Field "%%_title" does not support uploading a file of this type!: Поле "%%_title" не падтрымлівае загрузку такога тыпу файла!
     - Field "%%_title" has a changed value.: Поле "%%_title" мае змененае значэнне.
     - Field "%%_title" should be enabled!: Поле "%%_title" павінна быць уключана!
     - Field "%%_title" should be selected!: Поле "%%_title" павінна быць абрана!

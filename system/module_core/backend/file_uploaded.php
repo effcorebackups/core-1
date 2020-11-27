@@ -81,7 +81,7 @@ namespace effcore {
       if ($fixed_type          ) $dst_file->type_set(token::apply($fixed_type));
       if ($dst_file->is_exist()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());
       if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
-        if ($is_save_original_data == false) {
+        if ($is_save_original_data === false) {
               $this->name     = $dst_file->name_get();
               $this->type     = $dst_file->type_get();
               $this->file     = $dst_file->file_get();}
@@ -137,7 +137,8 @@ namespace effcore {
     if (!strlen($this->type)) $this->type = 'unknown';
     $this->file = $this->name.'.'.$this->type;
   # special case for IIS, Apache, NGINX
-    if ($this->file == 'web.config' || $this->type == 'htaccess' || $this->type == 'nginx') {
+  # note: if the type "unknown" is not present in the "allowed_types" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
+    if ($this->file === 'web.config' || $this->type === 'htaccess' || $this->type === 'nginx') {
       $this->name = core::random_part_get();
       $this->type = 'unknown';
       $this->file = $this->name.'.'.$this->type;

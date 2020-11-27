@@ -371,7 +371,7 @@ namespace effcore {
       if (count($field->allowed_types) &&
          !isset($field->allowed_types[$c_new_value->type])) {
         $field->error_set(
-          'Field "%%_title" does not support uploading this type of file!', ['title' => (new text($field->title))->render() ]
+          'Field "%%_title" does not support uploading a file of this type!', ['title' => (new text($field->title))->render() ]
         );
         return;
       }

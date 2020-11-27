@@ -61,6 +61,9 @@ file_types
 - twig
     type: twig
     kind: protected
+- unknown
+    type: unknown
+    kind: protected
 - yml
     type: yml
     kind: protected
