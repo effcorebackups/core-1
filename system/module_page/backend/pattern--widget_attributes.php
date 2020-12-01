@@ -16,16 +16,14 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
   # control for attribute name
-    $field_name = new field_text;
-    $field_name->title = 'Name';
+    $field_name = new field_text('Name', null, [], +400);
     $field_name->description_state = 'hidden';
     $field_name->build();
     $field_name->name_set($this->name_get_complex().'__name__'.$c_row_id);
     $field_name->value_set($item->name);
     $this->controls['#name__'.$c_row_id] = $field_name;
   # control for attribute value
-    $field_value = new field_text;
-    $field_value->title = 'Val.';
+    $field_value = new field_text('Val.', null, [], +380);
     $field_value->description_state = 'hidden';
     $field_value->build();
     $field_value->name_set($this->name_get_complex().'__value__'.$c_row_id);
@@ -34,16 +32,14 @@ namespace effcore {
     $field_value->maxlength_set(2048);
     $this->controls['#value__'.$c_row_id] = $field_value;
   # control for translation status
-    $field_is_apply_translation = new field_checkbox;
-    $field_is_apply_translation->title = 'Tr.';
+    $field_is_apply_translation = new field_checkbox('Tr.', null, [], +360);
     $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
     $field_is_apply_translation->build();
     $field_is_apply_translation->name_set($this->name_get_complex().'__is_apply_translation__'.$c_row_id);
     $field_is_apply_translation->checked_set(!empty($item->is_apply_translation));
     $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
   # control for tokens status
-    $field_is_apply_tokens = new field_checkbox;
-    $field_is_apply_tokens->title = 'To.';
+    $field_is_apply_tokens = new field_checkbox('To.', null, [], +340);
     $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
     $field_is_apply_tokens->build();
     $field_is_apply_tokens->name_set($this->name_get_complex().'__is_apply_tokens__'.$c_row_id);

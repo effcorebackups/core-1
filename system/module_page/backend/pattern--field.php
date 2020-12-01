@@ -42,7 +42,7 @@
   # │ input:button         ║ not processed - use button:button instead      │
   # │ input:reset          ║ not processed - use button:reset instead       │
   # │ input:submit         ║ not processed - use button:submit instead      │
-  # │ input:image          ║ not processed - use imgage instead             │
+  # │ input:image          ║ not processed - use image instead              │
   # │ input:datetime       ║ not processed - use datetime-local instead     │
   # │ input:week           ║ not processed                                  │
   # │ input:month          ║ not processed                                  │

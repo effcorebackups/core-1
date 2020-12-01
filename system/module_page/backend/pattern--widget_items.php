@@ -102,7 +102,7 @@ namespace effcore {
       'data-rearrangeable'           => true,
       'data-controls-is-inline-full' => true], [], $item->weight);
   # control for weight
-    $field_weight = new field_weight(null, null, [], 500);
+    $field_weight = new field_weight(null, null, [], +500);
     $field_weight->description_state = 'hidden';
     $field_weight->build();
     $field_weight->name_set($this->name_get_complex().'__weight__'.$c_row_id);
@@ -110,7 +110,7 @@ namespace effcore {
     $field_weight->value_set($item->weight);
     $this->controls['#weight__'.$c_row_id] = $field_weight;
   # button for deletion of the old item
-    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')]);
+    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
     $button_delete->break_on_validate = true;
     $button_delete->build();
     $button_delete->value_set($this->name_get_complex().'__delete__'.$c_row_id);
