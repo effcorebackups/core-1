@@ -25,8 +25,8 @@ namespace effcore\modules\page {
           $items['#url']->disabled_set(true);
         }
       # field 'min width' + field 'max width'
-        $width_min = new field_number('Minimum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], 140);
-        $width_max = new field_number('Maximum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], 140);
+        $width_min = new field_number('Minimum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], +140);
+        $width_max = new field_number('Maximum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], +140);
         $width_min->build();
         $width_max->build();
         $width_min->name_set('width_min');
