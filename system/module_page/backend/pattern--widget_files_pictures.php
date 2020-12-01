@@ -9,7 +9,7 @@ namespace effcore {
 
   public $title = 'Pictures';
   public $item_title = 'Picture';
-  public $attributes = ['data-type' => 'items-info-files-pictures'];
+  public $attributes = ['data-type' => 'items-files-pictures'];
   public $name_complex = 'widget_files_pictures';
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'galleries/';

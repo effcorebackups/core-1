@@ -309,10 +309,14 @@
   x-fieldset-content x-fieldset-content                                       x-widget-content,
   x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color_fieldset}
 
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color_main{0,0,0,.5}}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-info x-id {display: block; opacity: .5}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget button {float: right; position: relative; z-index: 10}
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-no-items {
     padding: 10px 20px 20px 20px;
@@ -328,16 +332,9 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style^='narrow'] {border-radius: 5px}
 
-  /* widget 'items-info' */
+  /* widget 'items-area_blocks' for page */
 
-  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
-  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
-  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
-  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-id    {display: block; opacity: .5}
-
-  /* widget 'items-info-area_blocks' for page */
-
-  x-widget[data-type='items-info-area_blocks'] {margin: 0}
+  x-widget[data-type='items-area_blocks'] {margin: 0}
 
   /* form 'instance_update' */
 
