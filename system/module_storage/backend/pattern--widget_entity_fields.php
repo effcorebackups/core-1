@@ -17,8 +17,9 @@ namespace effcore {
   # info markup
     $entity = entity::get($item->entity_name);
     $entity_field = $entity ? $entity->field_get($item->entity_field_name) : null;
+    $title_markup = isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST FIELD';
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], isset($entity_field->title) ? [$entity->title, ': ', $entity_field->title] : 'LOST FIELD'),
+        'title' => new markup('x-title', [], $title_markup),
         'id'    => new markup('x-id',    [], [
                    new text_simple($item->entity_name      ), '.',
                    new text_simple($item->entity_field_name)]) ]);

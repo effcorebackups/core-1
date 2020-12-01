@@ -330,12 +330,10 @@
 
   /* widget 'items-info' */
 
-  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info {display: block; vertical-align: middle}
+  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
+  x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
   x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-title {display: block; font-size: 1.1em}
   x-widget[data-type^='items-info'] x-widgets-group[data-type='manage'] x-widget x-info x-id    {display: block; opacity: .5}
-
-  x-widget[data-type^='items-info-files'] x-widgets-group[data-type='manage'] x-widget x-info x-thumbnail {float: left; margin-right: 10px}
-  x-widget[data-type^='items-info-files'] x-widgets-group[data-type='manage'] x-widget[data-is-new='true'] x-info x-id {font-size: 10px}
 
   /* widget 'items-info-area_blocks' for page */
 

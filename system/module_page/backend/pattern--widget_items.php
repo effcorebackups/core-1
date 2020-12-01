@@ -102,7 +102,7 @@ namespace effcore {
       'data-rearrangeable'           => true,
       'data-controls-is-inline-full' => true], [], $item->weight);
   # control for weight
-    $field_weight = new field_weight;
+    $field_weight = new field_weight(null, null, [], 500);
     $field_weight->description_state = 'hidden';
     $field_weight->build();
     $field_weight->name_set($this->name_get_complex().'__weight__'.$c_row_id);
