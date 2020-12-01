@@ -76,7 +76,7 @@ namespace effcore {
   function move_pre_to_fin($dst_path, $fixed_name = null, $fixed_type = null, $is_save_original_data = false) {
     if ($this->get_current_state() === 'pre') {
       $src_file = new file($this->pre_path);
-      $dst_file = new file($dst_path);
+      $dst_file = new file(token::apply($dst_path));
       if ($fixed_name          ) $dst_file->name_set(token::apply($fixed_name));
       if ($fixed_type          ) $dst_file->type_set(token::apply($fixed_type));
       if ($dst_file->is_exist()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());

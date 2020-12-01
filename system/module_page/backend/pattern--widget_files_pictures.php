@@ -12,7 +12,7 @@ namespace effcore {
   public $attributes = ['data-type' => 'items-files-pictures'];
   public $name_complex = 'widget_files_pictures';
 # ─────────────────────────────────────────────────────────────────────
-  public $upload_dir = 'galleries/';
+  public $upload_dir = 'galleries/%%_instance_id_context/';
   public $fixed_name = 'gallery-%%_instance_id_context-%%_item_id_context';
   public $max_file_size = '1M';
   public $allowed_types = [
