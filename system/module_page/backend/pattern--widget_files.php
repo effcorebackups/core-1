@@ -31,8 +31,8 @@ namespace effcore {
     # moving of 'pre' items into the directory 'files'
       if ($c_item->object->get_current_state() === 'pre') {
         token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-        $c_item->object->move_pre_to_fin(
-          dynamic::dir_files.$this->upload_dir.$c_item->object->file,
+        $c_item->object->move_pre_to_fin(dynamic::dir_files.
+          $this->upload_dir.$c_item->object->file,
           $this->fixed_name,
           $this->fixed_type, true
         );

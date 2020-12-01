@@ -10,6 +10,7 @@ namespace effcore\modules\core {
           use const \effcore\nl;
           use \effcore\console;
           use \effcore\core;
+          use \effcore\dynamic;
           use \effcore\event;
           use \effcore\file;
           use \effcore\locale;
@@ -169,11 +170,11 @@ namespace effcore\modules\core {
     if ($type_info->type === 'get_thumbnail') {
       $picture = new file($file->dirs_get().$file->name_get());
       $real_path = core::validate_realpath($picture->path_get());
-      if ($real_path === false)                core::send_header_and_exit('file_not_found');
-      if ($real_path !== $picture->path_get()) core::send_header_and_exit('file_not_found');
-      if (strpos($real_path, dir_root) !== 0)  core::send_header_and_exit('file_not_found');
-      if (!is_file    ($picture->path_get()))  core::send_header_and_exit('file_not_found');
-      if (!is_readable($picture->path_get()))  core::send_header_and_exit('access_forbidden');
+      if ($real_path === false)                         core::send_header_and_exit('file_not_found');
+      if ($real_path !== $picture->path_get())          core::send_header_and_exit('file_not_found');
+      if (strpos($real_path, dynamic::dir_files) !== 0) core::send_header_and_exit('file_not_found');
+      if (!is_file    ($picture->path_get()))           core::send_header_and_exit('file_not_found');
+      if (!is_readable($picture->path_get()))           core::send_header_and_exit('access_forbidden');
       if ($picture->type_get() === 'png' ||
           $picture->type_get() === 'gif' ||
           $picture->type_get() === 'jpg' ||
