@@ -19,7 +19,8 @@ namespace effcore {
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
     'png'  => 'png',
-    'gif'  => 'gif'
+    'gif'  => 'gif',
+    'svg'  => 'svg'
   ];
 
   function widget_manage_get($item, $c_row_id) {
@@ -27,7 +28,13 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
   # info markup
     $file = new file($item->object->get_current_path());
-    $thumbnail_markup = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+    $file_is_raster_picture = $file->type === 'jpg'  ||
+                              $file->type === 'jpeg' ||
+                              $file->type === 'png'  ||
+                              $file->type === 'gif';
+    $thumbnail_markup = $file_is_raster_picture ?
+      new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
+      new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
     $title_markup = $item->object->get_current_state() === 'pre' ?
       new text_multiline([$item->object->file, 'new item'], [], ' | ') :
       new text          ( $item->object->file );
