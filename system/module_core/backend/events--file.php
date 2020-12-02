@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\core {
+          use const \effcore\dir_dynamic;
           use const \effcore\dir_root;
           use const \effcore\dir_system;
           use const \effcore\nl;
           use \effcore\console;
           use \effcore\core;
-          use \effcore\dynamic;
           use \effcore\event;
           use \effcore\file;
           use \effcore\locale;
@@ -165,6 +165,8 @@ namespace effcore\modules\core {
   # ─────────────────────────────────────────────────────────────────────
 
   const jpeg_quality = 90;
+  const prepath_media_error_thumbnail_creation_error = dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error';
+  const prepath_media_error_extensions_not_loaded    = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded';
 
   static function on_load_virtual_get_thumbnail($event, $type_info, &$file) {
     if ($type_info->type === 'get_thumbnail') {
@@ -172,7 +174,7 @@ namespace effcore\modules\core {
       $real_path = core::validate_realpath($picture->path_get());
       if ($real_path === false)                          core::send_header_and_exit('file_not_found');
       if ($real_path !== $picture->path_get())           core::send_header_and_exit('file_not_found');
-      if (strpos($real_path, dynamic::dir_files) !== 0)  core::send_header_and_exit('file_not_found');
+      if (strpos($real_path, dir_dynamic) !== 0)         core::send_header_and_exit('file_not_found');
       if (!is_file    ($picture->path_get()))            core::send_header_and_exit('file_not_found');
       if (!is_readable($picture->path_get()))            core::send_header_and_exit('access_forbidden');
       if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');
@@ -181,19 +183,19 @@ namespace effcore\modules\core {
           $picture->type_get() === 'jpg' ||
           $picture->type_get() === 'jpeg') {
         $thumbnail = new file($picture->path_get());
-        $thumbnail->name_set ($picture->name_get().'.thumb');
+        $thumbnail->name_set($picture->name_get().'.thumb');
         $file_types = file::types_get();
         if ($thumbnail->is_exist()) {
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
           exit();
         } else {
           if (extension_loaded('exif') && extension_loaded('gd')) {
-            $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 50, null, static::jpeg_quality);
-            if (!$result) $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error.'.$thumbnail->type_get());
+            $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 44, null, static::jpeg_quality);
+            if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
             event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
             exit();
           } else {
-            $thumbnail = new file(dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded.'.$thumbnail->type_get());
+            $thumbnail = new file(static::prepath_media_error_extensions_not_loaded.'.'.$thumbnail->type_get());
             event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
             exit();
           }
