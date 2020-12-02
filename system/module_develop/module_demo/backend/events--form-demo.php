@@ -35,7 +35,7 @@ namespace effcore\modules\demo {
     if (!empty($paths['pictures'         ])) $items['#file_picture'  ]->values_set($paths['pictures']);
     if (!empty($paths['audios'           ])) $items['#file_audio'    ]->values_set($paths['audios'  ]);
     if (!empty($paths['videos'           ])) $items['#file_video'    ]->values_set($paths['videos'  ]);
-    if (!empty($paths['pictures_multiple'])) $items['*files_pictures']->value_set_complex($paths['pictures_multiple']);
+    if (!empty($paths['pictures_multiple'])) $items['*files_pictures']->value_set_complex($paths['pictures_multiple'], true);
   }
 
   static function on_validate($event, $form, $items) {
