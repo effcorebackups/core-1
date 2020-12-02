@@ -13,7 +13,7 @@ namespace effcore {
   public $name_complex = 'widget_files_pictures';
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'pictures/';
-  public $fixed_name = 'picture-multiple-%%_instance_id_context-%%_item_id_context';
+  public $fixed_name = 'picture-multiple-%%_item_id_context';
   public $max_file_size = '1M';
   public $allowed_types = [
     'jpg'  => 'jpg',

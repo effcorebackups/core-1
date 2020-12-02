@@ -51,6 +51,17 @@ forms
               - title: field_file_video
             element_attributes
             - name: file_video[]
+      # widget 'Pictures'
+        - files_pictures|widget_files_pictures
+            title: Pictures
+            state: closed
+            name_complex: files_pictures
+            allowed_types
+            - =: jpg
+            - =: jpeg
+            - =: png
+            - =: gif
+            - =: svg
       # field 'Text'
         - text|field_text
             title: Text
@@ -452,7 +463,7 @@ forms
                 checked
                 - =: switcher_2
                 - =: switcher_4
-          # group 'Access'
+          # widget 'Access'
             - access|widget_access
                 title: Access
                 description|text_multiline
