@@ -12,15 +12,14 @@ namespace effcore {
   public $attributes = ['data-type' => 'items-files-pictures'];
   public $name_complex = 'widget_files_pictures';
 # ─────────────────────────────────────────────────────────────────────
-  public $upload_dir = 'galleries/%%_instance_id_context/';
-  public $fixed_name = 'gallery-%%_instance_id_context-%%_item_id_context';
+  public $upload_dir = 'pictures/';
+  public $fixed_name = 'picture-multiple-%%_instance_id_context-%%_item_id_context';
   public $max_file_size = '1M';
   public $allowed_types = [
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
     'png'  => 'png',
-    'gif'  => 'gif',
-    'svg'  => 'svg'
+    'gif'  => 'gif'
   ];
 
   function widget_manage_get($item, $c_row_id) {

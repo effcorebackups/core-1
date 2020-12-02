@@ -294,7 +294,16 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_files_pictures
         managing_control_properties
+        - max_file_size: 1M
+        - upload_dir: galleries/%%_instance_id_context/
+        - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
         - name_complex: items
+        - allowed_types
+          - =: jpg
+          - =: jpeg
+          - =: png
+          - =: gif
+          - =: svg
         - weight: +340
         selection_params_default
         - weight: +340
