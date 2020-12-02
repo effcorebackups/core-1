@@ -42,18 +42,18 @@ namespace effcore\modules\demo {
     switch ($form->clicked_button->value_get()) {
       case 'send':
         message::insert(
-          new text('Call "%%_call"', ['call' => '\\'.__METHOD__])
+          new text('Call "%%_call" on click "%%_click"', ['call' => '\\'.__METHOD__, 'click' => (new text('send'))->render()])
         );
         break;
     }
   }
 
   static function on_submit($event, $form, $items) {
-    message::insert(
-      new text('Call "%%_call"', ['call' => '\\'.__METHOD__])
-    );
     switch ($form->clicked_button->value_get()) {
       case 'send':
+        message::insert(
+          new text('Call "%%_call" on click "%%_click"', ['call' => '\\'.__METHOD__, 'click' => (new text('send'))->render()])
+        );
         $def_value_checkboxes = core::array_kmap(['checkbox_2', 'checkbox_4']);
         $def_value_switchers  = core::array_kmap(['switcher_2', 'switcher_4']);
         $def_value_email = 'test1@example.com,test2@example.com';

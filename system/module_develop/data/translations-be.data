@@ -27,6 +27,7 @@ translations
     - autoload: аўтазагрузка
     - beginning: пачатак
     - Call "%%_call" for #%%_number: Выклік "%%_call" для #%%_number
+    - Call "%%_call" on click "%%_click": Выклік "%%_call" на націск "%%_click"
     - Call "%%_call": Выклік "%%_call"
     - call "%%_call": выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
