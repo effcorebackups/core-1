@@ -84,8 +84,8 @@ namespace effcore {
       }
     }
   # message 'no items'
-    if (count($group->children_select()) != 0) $group->child_delete(                                          'no_items');
-    if (count($group->children_select()) == 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
+    if ($group->children_select_count() !== 0) $group->child_delete(                                          'no_items');
+    if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -193,9 +193,9 @@ namespace effcore {
       case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_widget_opener_'.$this->number, 'id' => 'f_widget_opener_'.$this->number, 'checked' => true]); break;
       default      : $opener = null;
     }
-    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
-    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
-    if ($opener && $this->has_error_in_container()                                                                          ) $opener->attribute_delete('checked'      );
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) === 'on') $opener->attribute_insert('checked', true);
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_widget_opener_'.$this->number) !== 'on') $opener->attribute_delete('checked'      );
+    if ($opener && $this->has_error_in_container()                                                                           ) $opener->attribute_delete('checked'      );
     return $opener ?
            $opener->render() : '';
   }
@@ -217,8 +217,8 @@ namespace effcore {
   static function on_submit(&$widget, $form, $npath) {
     foreach ($widget->controls as $c_button) {
       if ($c_button instanceof button && $c_button->is_clicked()) {
-        if (isset($c_button->_type) && $c_button->_type == 'insert') return $widget->on_button_click_insert($form, $npath, $c_button);
-        if (isset($c_button->_type) && $c_button->_type == 'delete') return $widget->on_button_click_delete($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type === 'insert') return $widget->on_button_click_insert($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type === 'delete') return $widget->on_button_click_delete($form, $npath, $c_button);
         return;
       }
     }
