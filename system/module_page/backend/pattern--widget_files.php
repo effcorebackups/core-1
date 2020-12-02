@@ -50,6 +50,8 @@ namespace effcore {
       }
     }
     $this->items_set($items);
+    $this->is_builded = false;
+    $this->build();
   }
 
   # ─────────────────────────────────────────────────────────────────────

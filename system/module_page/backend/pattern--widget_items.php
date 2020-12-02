@@ -12,7 +12,7 @@ namespace effcore {
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $title_attributes = ['data-widget-title' => true];
   public $state = 'opened'; # '' | opened | closed[checked]
-  public $number = 0;
+  public $number;
 
   public $item_title = 'Item';
   public $tag_name         = 'x-widget';
@@ -30,7 +30,8 @@ namespace effcore {
       $this->child_insert($this->widget_manage_group_get(), 'manage');
       $this->child_insert($this->widget_insert_get      (), 'insert');
       $this->widgets_manage_group_build();
-      $this->number = static::current_number_get();
+      if ($this->number === null)
+          $this->number = static::current_number_get();
       $this->is_builded = true;
     }
   }
