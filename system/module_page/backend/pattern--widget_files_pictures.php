@@ -34,12 +34,12 @@ namespace effcore {
     $thumbnail_markup = $file_is_raster_picture ?
       new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
       new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-    $title_markup = $item->object->get_current_state() === 'pre' ?
-      new text_multiline([$item->object->file, 'new item'], [], ' | ') :
-      new text          ( $item->object->file );
+    $id_markup = $item->object->get_current_state() === 'pre' ?
+      new text_multiline(['new item', '…'], [], '') :
+      new text($file->file_get());
     $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], $title_markup),
-        'id'    => new markup('x-id',    [], $file->file_get() )]);
+        'title' => new markup('x-title', [], $item->object->file),
+        'id'    => new markup('x-id',    [], $id_markup )]);
   # grouping of previous elements in widget 'manage'
     $widget->child_insert($thumbnail_markup, 'thumbnail');
     $widget->child_insert($info_markup, 'info');
