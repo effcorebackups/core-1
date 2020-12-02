@@ -9,6 +9,9 @@ forms
     - form_elements|fieldset
         title: Form elements
         children
+        - button_default|button_default
+            attributes
+            - value: send
       # field 'File'
         - file_text|field_file
             upload_dir: demo/
