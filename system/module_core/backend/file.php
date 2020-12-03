@@ -103,15 +103,16 @@ namespace effcore {
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. only files with extension are available in the URL!
-  # 2. if the first character in the path is '/' - it's a full path, оtherwise - relative path
-  # 3. if the last  character in the path is '/' - it's a directory, оtherwise - file
+  # 2. if the first character in the path is '/' - it's a full path, otherwise - relative path
+  # 3. if the last  character in the path is '/' - it's a directory, otherwise - file
   # 4. path components like  '~/' should be ignored or use function 'realpath' to resolve the path
   # 5. path components like  './' should be ignored or use function 'realpath' to resolve the path
   # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path
   # ──────────────────────────────────────────────────────────────────────────────────────────
 
-  const scan_mode     = fs_iterator::UNIX_PATHS|fs_iterator::SKIP_DOTS;
-  const scan_with_dir = ri_iterator::SELF_FIRST;
+  const scan_mode              = fs_iterator::UNIX_PATHS|fs_iterator::SKIP_DOTS;
+  const scan_with_dir_at_first = ri_iterator::SELF_FIRST;
+  const scan_with_dir_at_last  = ri_iterator::CHILD_FIRST;
 
   public $dirs;
   public $name;
@@ -340,12 +341,12 @@ namespace effcore {
   static function select_recursive($path, $filter = '', $with_dirs = false) {
     try {
       $result = [];
-      $scan = $with_dirs ? new ri_iterator(new rd_iterator($path, static::scan_mode), static::scan_with_dir) :
+      $scan = $with_dirs ? new ri_iterator(new rd_iterator($path, static::scan_mode), static::scan_with_dir_at_first) :
                            new ri_iterator(new rd_iterator($path, static::scan_mode));
-      foreach ($scan as $c_path => $spl_file_info) {
+      foreach ($scan as $c_path => $c_spl_file_info) {
         if (!$filter || ($filter && preg_match($filter, $c_path))) {
-          if     ($spl_file_info->isFile()) $result[$c_path] = new static($c_path);
-          elseif ($spl_file_info->isDir ()) $result[$c_path] =            $c_path;
+          if     ($c_spl_file_info->isFile()) $result[$c_path] = new static($c_path);
+          elseif ($c_spl_file_info->isDir ()) $result[$c_path] =            $c_path;
         }
       }
       krsort($result);

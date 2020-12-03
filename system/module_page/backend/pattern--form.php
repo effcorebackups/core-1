@@ -270,15 +270,11 @@ namespace effcore {
         if ($c_spl_dir_info->isDir()) {
           if (core::validate_date($c_spl_dir_info->getFilename()) &&
                                   $c_spl_dir_info->getFilename() < core::date_get()) {
-          # try to recursively delete all files in directory
-            foreach (new ri_iterator(
-                     new rd_iterator($c_dir_path, file::scan_mode)) as $c_file_path => $c_spl_file_info) {
-              if ($counter < $limit) {
-                @unlink($c_file_path);
-                $counter++;
-              } else {
-                return;
-              }
+          # try to recursively delete all files and directories in current "YYYY-MM-DD" directory
+            foreach (new ri_iterator(new rd_iterator($c_dir_path, file::scan_mode), file::scan_with_dir_at_last) as $c_df_path => $c_spl_dir_or_file_info) {
+              if     ($counter >= $limit) return;
+              if     ($c_spl_dir_or_file_info->isFile()) {@unlink($c_df_path); $counter++;}
+              elseif ($c_spl_dir_or_file_info->isDir ()) {@rmdir ($c_df_path);}
             }
           # try to delete empty directories
             @rmdir($c_dir_path);
