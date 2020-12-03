@@ -14,7 +14,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $state = ''; # '' | opened | closed[checked]
-  public $number = 0;
+  public $number;
 
   function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
     parent::__construct(null, $title, $description, $attributes, $children, $weight);
@@ -22,7 +22,8 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $this->number = static::current_number_generate();
+      if ($this->number === null)
+          $this->number = static::current_number_generate();
       $this->is_builded = true;
     }
   }
@@ -48,9 +49,9 @@ namespace effcore {
       case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true]); break;
       default      : $opener = null;
     }
-    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) == 'on') $opener->attribute_insert('checked', true);
-    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) != 'on') $opener->attribute_delete('checked'      );
-    if ($opener && $this->has_error_in_container()                                                                   ) $opener->attribute_delete('checked'      );
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) === 'on') $opener->attribute_insert('checked', true);
+    if ($opener && field::request_value_get('form_id') && field::request_value_get('f_opener_'.$this->number) !== 'on') $opener->attribute_delete('checked'      );
+    if ($opener && $this->has_error_in_container()                                                                    ) $opener->attribute_delete('checked'      );
     return $opener ?
            $opener->render() : '';
   }
