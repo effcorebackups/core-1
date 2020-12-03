@@ -22,7 +22,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $this->number = static::current_number_get();
+      $this->number = static::current_number_generate();
       $this->is_builded = true;
     }
   }
@@ -61,7 +61,7 @@ namespace effcore {
 
   static protected $c_number = 0;
 
-  static function current_number_get() {
+  static function current_number_generate() {
     return static::$c_number++;
   }
 

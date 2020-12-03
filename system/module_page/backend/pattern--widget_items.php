@@ -31,7 +31,7 @@ namespace effcore {
       $this->child_insert($this->widget_insert_get      (), 'insert');
       $this->widgets_manage_group_build();
       if ($this->number === null)
-          $this->number = static::current_number_get();
+          $this->number = static::current_number_generate();
       $this->is_builded = true;
     }
   }
@@ -207,7 +207,7 @@ namespace effcore {
 
   static protected $c_number = 0;
 
-  static function current_number_get() {
+  static function current_number_generate() {
     return static::$c_number++;
   }
 
