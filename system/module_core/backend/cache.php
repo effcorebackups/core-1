@@ -16,9 +16,9 @@ namespace effcore {
     static::$data = [];
     foreach (file::select_recursive(static::directory, '', true) as $c_path => $c_object) {
       if ($c_path != static::directory.'readme.md') {
-        if  ($c_object instanceof file)
-             $c_result = @unlink($c_path);
-        else             @rmdir ($c_path);
+        if ($c_object instanceof file)
+            $c_result = @unlink($c_path);
+        else            @rmdir ($c_path);
         if (!$c_result) {
           $c_file = new file($c_path);
           message::insert(
