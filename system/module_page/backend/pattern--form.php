@@ -34,8 +34,8 @@ namespace effcore {
     if (!$this->is_builded) {
 
     # variables for validation
-      $this->number        = ++static::$form_number;
-      $this->validation_id =   static::validation_id_get($this);
+      $this->number        = static::current_number_generate();
+      $this->validation_id = static::validation_id_get($this);
 
     # hidden fields
       $this->child_insert(new field_hidden('form_id',       $id                 ), 'hidden_id_form'      );
@@ -298,10 +298,15 @@ namespace effcore {
   ###########################
 
   static public $errors = [];
-  static public $form_number = 0;
 
   static function not_external_properties_get() {
     return [];
+  }
+
+  static protected $c_form_number = 0;
+
+  static function current_number_generate() {
+    return static::$c_form_number++;
   }
 
   # ──────────────────────────────────────────────────────────────────────────────
