@@ -58,6 +58,7 @@ forms
         - files_pictures|widget_files_pictures
             title: Pictures
             state: closed
+            upload_dir: demo/
             name_complex: files_pictures
             allowed_types
             - =: jpg
