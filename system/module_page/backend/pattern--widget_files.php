@@ -21,35 +21,8 @@ namespace effcore {
   ];
 
   function value_get_complex() {
-    $this->pool_values_save();
+    $this->on_pool_values_save();
     return $this->items_get();
-  }
-
-  function pool_values_save() {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      switch ($c_item->object->get_current_state()) {
-        case 'pre': # moving of 'pre' items into the directory 'files'
-          token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-          $c_item->object->move_pre_to_fin(dynamic::dir_files.
-            $this->upload_dir.$c_item->object->file,
-            $this->fixed_name,
-            $this->fixed_type, true);
-          break;
-        case 'fin': # deletion of 'fin' items which marked as 'deleted'
-          if (!empty($c_item->is_deleted)) {
-            $c_item->object->delete_fin();
-            unset($items[$c_row_id]);
-          }
-          break;
-        case null: # cache cleaning for lost files
-          unset($items[$c_row_id]);
-          break;
-      }
-    }
-    $this->items_set($items);
-    $this->is_builded = false;
-    $this->build();
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -100,6 +73,33 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+
+  function on_pool_values_save() {
+    $items = $this->items_get();
+    foreach ($items as $c_row_id => $c_item) {
+      switch ($c_item->object->get_current_state()) {
+        case 'pre': # moving of 'pre' items into the directory 'files'
+          token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
+          $c_item->object->move_pre_to_fin(dynamic::dir_files.
+            $this->upload_dir.$c_item->object->file,
+            $this->fixed_name,
+            $this->fixed_type, true);
+          break;
+        case 'fin': # deletion of 'fin' items which marked as 'deleted'
+          if (!empty($c_item->is_deleted)) {
+            $c_item->object->delete_fin();
+            unset($items[$c_row_id]);
+          }
+          break;
+        case null: # cache cleaning for lost files
+          unset($items[$c_row_id]);
+          break;
+      }
+    }
+    $this->items_set($items);
+    $this->is_builded = false;
+    $this->build();
+  }
 
   function on_button_click_insert($form, $npath, $button) {
     $values = field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);

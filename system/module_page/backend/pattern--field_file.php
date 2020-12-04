@@ -88,16 +88,16 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->pool_values_init_fin($value ? [$value] : []);
+    $this->on_pool_values_init_fin($value ? [$value] : []);
   }
 
   function values_get() {
-    if    ($this->pool_result == null) $this->pool_values_save();
+    if    ($this->pool_result == null) $this->on_pool_values_save();
     return $this->pool_result ?? [];
   }
 
   function values_set($values) {
-    $this->pool_values_init_fin($values ?: []);
+    $this->on_pool_values_init_fin($values ?: []);
   }
 
   function file_size_max_get() {
@@ -139,7 +139,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function pool_values_init_fin($fin_items = []) {
+  function on_pool_values_init_fin($fin_items = []) {
     $this->pool_fin = [];
   # insertion of 'fin' items into the pool
     foreach ($fin_items as $c_id => $c_path_relative) {
@@ -168,7 +168,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_values_init_pre_from_cache() { #1
+  function on_pool_values_init_pre_from_cache() { #1
     $this->pool_pre = $this->pool_cache_get('pre');
   # immediate deletion of 'pre' items which marked as 'deleted'
     $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
@@ -187,7 +187,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_values_init_new_from_form($new_items = []) { #2
+  function on_pool_values_init_new_from_form($new_items = []) { #2
     foreach ($new_items as $c_item) {
       $this->pool_pre[] = $c_item;
       $c_item_id = core::array_key_last($this->pool_pre); # note: even after deleting the array element, the next key will be 'last used key +1'
@@ -203,7 +203,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function pool_values_save() {
+  function on_pool_values_save() {
   # deletion of 'fin' items which marked as 'deleted'
     $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
@@ -228,8 +228,8 @@ namespace effcore {
     $this->pool_pre =                                      [];
     $this->pool_manager_set_deleted_items('fin',           []);
     $this->pool_cache_set                ('fin_to_delete', []);
-    $this->pool_values_init_fin($result_paths);
-    $this->pool_result =        $result_paths;
+    $this->on_pool_values_init_fin($result_paths);
+    $this->pool_result =           $result_paths;
     return true;
   }
 
@@ -323,12 +323,12 @@ namespace effcore {
       $type = $field->type_get();
       if ($name && $type) {
         if ($field->disabled_get()) return true;
-        $field->pool_values_init_pre_from_cache();
+        $field->on_pool_values_init_pre_from_cache();
         $new_values = static::request_files_get($name);
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->pool_values_init_new_from_form($new_values);
+        if ($result) $field->on_pool_values_init_new_from_form($new_values);
         return $result;
       }
     }
@@ -337,7 +337,7 @@ namespace effcore {
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate_phase_3 && $field->pool_result == null && !$form->has_error()) {
-      if (!$field->pool_values_save()) {
+      if (!$field->on_pool_values_save()) {
         $field->error_set();
         return;
       }
