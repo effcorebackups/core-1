@@ -27,8 +27,8 @@ namespace effcore {
   }
 
   function render() {
-    $is_bottom_title    = !empty($this->title_position)       && $this->title_position       == 'bottom';
-    $is_top_description = !empty($this->description_position) && $this->description_position == 'top';
+    $is_bottom_title    = !empty($this->title_position)       && $this->title_position       === 'bottom';
+    $is_top_description = !empty($this->description_position) && $this->description_position === 'top';
     return (template::make_new($this->template, [
       'tag_name'      => $this->tag_name,
       'attributes'    => $this->render_attributes(),
