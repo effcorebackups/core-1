@@ -48,8 +48,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return (new markup('h2', $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return (new markup('h2', $this->title_attributes + [                       ], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible !== true) return (new markup('h2', $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible === true) return (new markup('h2', $this->title_attributes + [                       ], $this->title))->render();
   }
 
   ###########################

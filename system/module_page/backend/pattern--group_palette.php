@@ -49,8 +49,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return $this->render_opener().(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_opener_'.$this->name_get_complex(), 'aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return $this->render_opener().(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_opener_'.$this->name_get_complex()                         ], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible !== true) return $this->render_opener().(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_opener_'.$this->name_get_complex(), 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible === true) return $this->render_opener().(new markup($this->title_tag_name, $this->title_attributes + ['for' => 'f_opener_'.$this->name_get_complex()                         ], $this->title))->render();
   }
 
   function render_opener() {

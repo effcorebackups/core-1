@@ -112,8 +112,8 @@ namespace effcore {
   }
 
   function render_self() {
-    if ($this->title && $this->title_is_visible == 0) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null, 'aria-hidden' => 'true'], $this->title))->render();
-    if ($this->title && $this->title_is_visible != 0) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null                         ], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible !== true) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null, 'aria-hidden' => 'true'], $this->title))->render();
+    if ($this->title && (bool)$this->title_is_visible === true) return (new markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->required_any ? true : null                         ], $this->title))->render();
   }
 
   ###########################
