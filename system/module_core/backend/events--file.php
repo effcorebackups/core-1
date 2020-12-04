@@ -183,7 +183,7 @@ namespace effcore\modules\core {
           $picture->type_get() === 'jpg' ||
           $picture->type_get() === 'jpeg') {
         $thumbnail = new file($picture->path_get());
-        $thumbnail->name_set($picture->name_get().'.thumb');
+        $thumbnail->name_set($thumbnail->name_get().'.thumb');
         $file_types = file::types_get();
         if ($thumbnail->is_exist()) {
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);

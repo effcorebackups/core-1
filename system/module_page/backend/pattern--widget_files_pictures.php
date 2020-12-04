@@ -76,6 +76,14 @@ namespace effcore {
     return $widget;
   }
 
+  function on_button_click_delete($form, $npath, $button) {
+    $items = $this->items_get();
+    $thumbnail = new file($items[$button->_id]->object->get_current_path());
+    $thumbnail->name_set($thumbnail->name_get().'.thumb');
+    @unlink($thumbnail->path_get());
+    return parent::on_button_click_delete($form, $npath, $button);
+  }
+
   function thumbnails_cleaning($path = '') {
     $path = $path ?: dynamic::dir_files.$this->upload_dir;
     if (file_exists($path)) {
