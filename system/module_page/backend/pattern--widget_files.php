@@ -28,25 +28,23 @@ namespace effcore {
   function pool_values_save() {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
-    # moving of 'pre' items into the directory 'files'
-      if ($c_item->object->get_current_state() === 'pre') {
-        token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-        $c_item->object->move_pre_to_fin(dynamic::dir_files.
-          $this->upload_dir.$c_item->object->file,
-          $this->fixed_name,
-          $this->fixed_type, true
-        );
-      }
-    # deletion of 'fin' items which marked as 'deleted'
-      if ($c_item->object->get_current_state() === 'fin') {
-        if (!empty($c_item->is_deleted)) {
-          $c_item->object->delete_fin();
+      switch ($c_item->object->get_current_state()) {
+        case 'pre': # moving of 'pre' items into the directory 'files'
+          token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
+          $c_item->object->move_pre_to_fin(dynamic::dir_files.
+            $this->upload_dir.$c_item->object->file,
+            $this->fixed_name,
+            $this->fixed_type, true);
+          break;
+        case 'fin': # deletion of 'fin' items which marked as 'deleted'
+          if (!empty($c_item->is_deleted)) {
+            $c_item->object->delete_fin();
+            unset($items[$c_row_id]);
+          }
+          break;
+        case null: # cache cleaning for lost files
           unset($items[$c_row_id]);
-        }
-      }
-    # cache cleaning for lost files
-      if ($c_item->object->get_current_state() === null) {
-        unset($items[$c_row_id]);
+          break;
       }
     }
     $this->items_set($items);
@@ -139,25 +137,25 @@ namespace effcore {
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
-    if ($items[$button->_id]->object->get_current_state() === 'pre') {
-      if ($items[$button->_id]->object->delete_pre()) {
-        unset($items[$button->_id]);
+    switch ($items[$button->_id]->object->get_current_state()) {
+      case 'pre':
+        if ($items[$button->_id]->object->delete_pre()) {
+          unset($items[$button->_id]);
+          $this->items_set($items);
+          message::insert(new text_multiline([
+            'Item of type "%%_type" was deleted.',
+            'Do not forget to save the changes!'], [
+            'type' => (new text($this->item_title))->render() ]));
+          return true;
+        } return;
+      case 'fin':
+        $items[$button->_id]->is_deleted = true;
         $this->items_set($items);
         message::insert(new text_multiline([
           'Item of type "%%_type" was deleted.',
           'Do not forget to save the changes!'], [
           'type' => (new text($this->item_title))->render() ]));
         return true;
-      }
-    }
-    if ($items[$button->_id]->object->get_current_state() === 'fin') {
-      $items[$button->_id]->is_deleted = true;
-      $this->items_set($items);
-      message::insert(new text_multiline([
-        'Item of type "%%_type" was deleted.',
-        'Do not forget to save the changes!'], [
-        'type' => (new text($this->item_title))->render() ]));
-      return true;
     }
   }
 
