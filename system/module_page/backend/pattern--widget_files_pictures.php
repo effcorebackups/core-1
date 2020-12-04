@@ -76,18 +76,11 @@ namespace effcore {
     return $widget;
   }
 
-  function thumbnails_cleaning() {
-    $thumbnails_path = dynamic::dir_files.$this->upload_dir;
-    if (file_exists($thumbnails_path)) {
-      foreach (file::select_recursive($thumbnails_path) as $c_path => $c_file) {
-        if ($c_file->type_get() === 'jpg'  ||
-            $c_file->type_get() === 'jpeg' ||
-            $c_file->type_get() === 'png'  ||
-            $c_file->type_get() === 'gif') {
-          if (substr($c_file->name_get(), -6) === '.thumb') {
-            @unlink($c_path);
-          }
-        }
+  function thumbnails_cleaning($path = '') {
+    $path = $path ?: dynamic::dir_files.$this->upload_dir;
+    if (file_exists($path)) {
+      foreach (file::select_recursive($path, '%^.*\\.thumb\\.(jpg|jpeg|png|gif)$%') as $c_path => $c_file) {
+        @unlink($c_path);
       }
     }
   }
