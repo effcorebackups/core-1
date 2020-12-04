@@ -76,6 +76,18 @@ namespace effcore {
     return $widget;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  function on_pool_values_save() {
+    $items = $this->items_get();
+    foreach ($items as $c_row_id => $c_item) {
+      if ($c_item->object->get_current_state() === 'pre') {
+        $thumbnail = new file($c_item->object->get_current_path());
+        $thumbnail->name_set($thumbnail->name_get().'.thumb');
+        @unlink($thumbnail->path_get()); }}
+    parent::on_pool_values_save();
+  }
+
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
     $thumbnail = new file($items[$button->_id]->object->get_current_path());
@@ -83,6 +95,8 @@ namespace effcore {
     @unlink($thumbnail->path_get());
     return parent::on_button_click_delete($form, $npath, $button);
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function thumbnails_cleaning($path = '') {
     $path = $path ?: dynamic::dir_files.$this->upload_dir;
