@@ -7,6 +7,13 @@
 namespace effcore {
           abstract class media {
 
+  static function is_raster_picture($type) {
+    if ($type === 'jpg' ) return true;
+    if ($type === 'jpeg') return true;
+    if ($type === 'png' ) return true;
+    if ($type === 'gif' ) return true;
+  }
+
   static function picture_thumbnail_create($src_path, $dst_path, $dst_w = 100, $dst_h = null, $jpeg_quality = -1) {
     $type = @exif_imagetype($src_path);
     if ($type !== false) {
