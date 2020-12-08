@@ -177,11 +177,8 @@ namespace effcore\modules\core {
       if (strpos($real_path, dir_dynamic) !== 0)         core::send_header_and_exit('file_not_found');
       if (!is_file    ($picture->path_get()))            core::send_header_and_exit('file_not_found');
       if (!is_readable($picture->path_get()))            core::send_header_and_exit('access_forbidden');
-      if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');
-      if ($picture->type_get() === 'png' ||
-          $picture->type_get() === 'gif' ||
-          $picture->type_get() === 'jpg' ||
-          $picture->type_get() === 'jpeg') {
+      if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');      
+      if (media::is_type_with_thumbnail($picture->type_get())) {
         $thumbnail = new file($picture->path_get());
         $thumbnail->name_set($thumbnail->name_get().'.thumb');
         $file_types = file::types_get();

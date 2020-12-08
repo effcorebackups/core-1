@@ -118,8 +118,8 @@ namespace effcore {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
         $c_item_markup = media::is_type_with_thumbnail($c_file->type) ?
-          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']) :
-          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']);
+          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail?size=middle', 'alt' => new text('thumbnail')]) :
+          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                              'alt' => new text('thumbnail')]);
         $decorator->data[$c_item_num] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_item_num   ],
