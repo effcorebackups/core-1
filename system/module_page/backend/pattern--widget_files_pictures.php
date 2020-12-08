@@ -112,19 +112,29 @@ namespace effcore {
   static function complex_value_to_markup($complex) {
     if ($complex) {
       core::array_sort_by_weight($complex);
-      $result = new node;
-      foreach ($complex as $c_complex) {
-        $c_file = new file($c_complex->object->get_current_path());
+      $decorator = new decorator('ul');
+      $decorator->id = 'gallery_items';
+      $decorator->view_type = 'template';
+      $decorator->template = 'content';
+      $decorator->template_row = 'gallery_row';
+      $decorator->template_row_mapping = core::array_kmap(['num', 'type', 'children']);
+      foreach ($complex as $c_item_num => $c_item) {
+        $c_file = new file($c_item->object->get_current_path());
         $c_file_is_raster_picture = $c_file->type === 'jpg'  ||
                                     $c_file->type === 'jpeg' ||
                                     $c_file->type === 'png'  ||
                                     $c_file->type === 'gif';
-        $c_complex_markup = $c_file_is_raster_picture ?
+        $c_item_type = 'picture';
+        $c_item_markup = $c_file_is_raster_picture ?
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']) :
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']);
-        $result->child_insert(new markup('x-item', [], $c_complex_markup));
+        $decorator->data[$c_item_num] = [
+          'type'     => ['value' => $c_item_type  ],
+          'num'      => ['value' => $c_item_num   ],
+          'children' => ['value' => $c_item_markup]
+        ];
       }
-      return $result;
+      return $decorator;
     }
   }
 

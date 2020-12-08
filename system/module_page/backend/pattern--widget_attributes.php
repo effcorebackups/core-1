@@ -94,11 +94,11 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       $attributes = [];
-      foreach ($complex as $c_complex)
-        $attributes[$c_complex->name] = new text(
-                 $c_complex->value, [],
-          !empty($c_complex->is_apply_translation),
-          !empty($c_complex->is_apply_tokens));
+      foreach ($complex as $c_item)
+        $attributes[$c_item->name] = new text(
+                 $c_item->value, [],
+          !empty($c_item->is_apply_translation),
+          !empty($c_item->is_apply_tokens));
       return $attributes;
     }
   }
