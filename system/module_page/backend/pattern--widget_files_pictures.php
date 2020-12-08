@@ -27,7 +27,7 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
   # info markup
     $file = new file($item->object->get_current_path());
-    $thumbnail_markup = media::is_raster_picture($file->type) ?
+    $thumbnail_markup = media::is_type_with_thumbnail($file->type) ?
       new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
       new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
     $id_markup = $item->object->get_current_state() === 'pre' ?
@@ -117,7 +117,7 @@ namespace effcore {
       foreach ($complex as $c_item_num => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
-        $c_item_markup = media::is_raster_picture($c_file->type) ?
+        $c_item_markup = media::is_type_with_thumbnail($c_file->type) ?
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']) :
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']);
         $decorator->data[$c_item_num] = [

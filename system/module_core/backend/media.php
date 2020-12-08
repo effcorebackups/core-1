@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class media {
 
-  static function is_raster_picture($type) {
+  static function is_type_with_thumbnail($type) {
     if ($type === 'jpg' ) return true;
     if ($type === 'jpeg') return true;
     if ($type === 'png' ) return true;
