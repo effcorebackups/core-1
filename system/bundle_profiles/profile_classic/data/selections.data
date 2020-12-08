@@ -43,9 +43,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_value
+        filter: \effcore\widget_attributes::complex_value_to_markup
     - picture.link_attributes
         type: field
         entity_name: picture
         entity_field_name: link_attributes
-        filter: \effcore\widget_attributes::complex_value_to_value
+        filter: \effcore\widget_attributes::complex_value_to_markup

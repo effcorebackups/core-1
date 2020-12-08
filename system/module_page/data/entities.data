@@ -94,7 +94,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - path
         title: Audio
@@ -228,6 +228,7 @@ entities
       - template_row_mapping
         - id: gallery.id
         - attributes: gallery.attributes
+        - children: gallery.items
     fields
     - id
         title: ID
@@ -283,7 +284,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - items
         title: Items
@@ -291,6 +292,7 @@ entities
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
+        managing_on_select_is_enabled: true
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_files_pictures
         managing_control_properties
@@ -306,6 +308,7 @@ entities
           - =: svg
         - weight: +340
         selection_params_default
+        - filter: \effcore\widget_files_pictures::complex_value_to_markup
         - weight: +340
     constraints
     - primary_id
@@ -660,7 +663,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - path
         title: Picture
@@ -702,7 +705,7 @@ entities
         - name_complex: link_attributes
         - weight: +320
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +320
     - url
         title: URL
@@ -851,7 +854,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - text
         title: Text
@@ -1003,7 +1006,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - path
         title: Video

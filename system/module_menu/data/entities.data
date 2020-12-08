@@ -100,7 +100,7 @@ entities
         - name_complex: attributes
         - weight: +340
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +340
     - created
         title: Created
@@ -280,7 +280,7 @@ entities
         - name_complex: attributes
         - weight: +320
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
     - url
         title: URL
         type: varchar
@@ -311,7 +311,7 @@ entities
         - name_complex: link_attributes
         - weight: +280
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
     - weight
         title: Weight
         type: integer

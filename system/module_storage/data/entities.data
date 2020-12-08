@@ -86,7 +86,7 @@ entities
         - name_complex: attributes
         - weight: +360
         selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_value
+        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - fields
         title: Fields

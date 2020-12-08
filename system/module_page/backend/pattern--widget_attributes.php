@@ -103,7 +103,7 @@ namespace effcore {
     }
   }
 
-  static function complex_value_to_value($complex) {
+  static function complex_value_to_markup($complex) {
     if ($complex) {
       return core::data_to_attr(
         static::complex_value_to_attributes($complex)

@@ -96,14 +96,22 @@ namespace effcore {
     return parent::on_button_click_delete($form, $npath, $button);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  ###########################
+  ### static declarations ###
+  ###########################
 
-  function thumbnails_cleaning($path = '') {
-    $path = $path ?: dynamic::dir_files.$this->upload_dir;
+  function thumbnails_cleaning($field, $path = '') {
+    $path = $path ?: dynamic::dir_files.$field->upload_dir;
     if (file_exists($path)) {
       foreach (file::select_recursive($path, '%^.*\\.thumb\\.(jpg|jpeg|png|gif)$%') as $c_path => $c_file) {
         @unlink($c_path);
       }
+    }
+  }
+
+  static function complex_value_to_markup($complex) {
+    if ($complex) {
+      return new markup('div', [], 'gallery');
     }
   }
 
