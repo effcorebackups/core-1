@@ -9,6 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\field_file;
           use \effcore\file;
           use \effcore\file_uploaded;
+          use \effcore\media;
           use \effcore\widget_files;
           use \effcore\widget_files_pictures;
           abstract class events_storage {
@@ -33,8 +34,7 @@ namespace effcore\modules\storage {
                 @unlink($c_item->object->get_current_path());
                 if ($c_reflection_instance instanceof widget_files_pictures) {
                   $thumbnail = new file($c_item->object->get_current_path());
-                  $thumbnail->name_set($thumbnail->name_get().'.thumb');
-                  @unlink($thumbnail->path_get());
+                  media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
                 }
               }
             }

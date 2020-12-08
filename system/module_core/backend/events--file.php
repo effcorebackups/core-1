@@ -155,21 +155,30 @@ namespace effcore\modules\core {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # image_transparent-8bit.png.get_thumbnail  → image_transparent-8bit.thumb.png
-  # image_transparent-24bit.png.get_thumbnail → image_transparent-24bit.thumb.png
-  # image_transparent.gif.get_thumbnail       → image_transparent.thumb.gif
-  # image.png.get_thumbnail                   → image.thumb.png
-  # image.gif.get_thumbnail                   → image.thumb.gif
-  # image.jpeg.get_thumbnail                  → image.thumb.jpeg
-  # image.jpg.get_thumbnail                   → image.thumb.jpg
+  # image_transparent-8bit.png.get_thumbnail  → image_transparent-8bit.small.thumb.png
+  # image_transparent-24bit.png.get_thumbnail → image_transparent-24bit.small.thumb.png
+  # image_transparent.gif.get_thumbnail       → image_transparent.small.thumb.gif
+  # image.png.get_thumbnail                   → image.small.thumb.png
+  # image.gif.get_thumbnail                   → image.small.thumb.gif
+  # image.jpeg.get_thumbnail                  → image.small.thumb.jpeg
+  # image.jpg.get_thumbnail                   → image.small.thumb.jpg
   # ─────────────────────────────────────────────────────────────────────
 
-  const jpeg_quality = 90;
   const prepath_media_error_thumbnail_creation_error = dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error';
   const prepath_media_error_extensions_not_loaded    = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded';
+  const thumbnail_jpeg_quality = 90;
+  const thumbnail_small_width = 44;
+  const thumbnail_middle_width = 300;
+  const thumbnail_big_width = 600;
 
   static function on_load_virtual_get_thumbnail($event, $type_info, &$file) {
     if ($type_info->type === 'get_thumbnail') {
+      switch (url::get_current()->query_arg_select('size')) {
+        case 'small' : $size = 'small';  $size_int = static::thumbnail_small_width;  break;
+        case 'middle': $size = 'middle'; $size_int = static::thumbnail_middle_width; break;
+        case 'big'   : $size = 'big';    $size_int = static::thumbnail_big_width;    break;
+        default      : $size = 'small';  $size_int = static::thumbnail_small_width;
+      }
       $picture = new file($file->dirs_get().$file->name_get());
       $real_path = core::validate_realpath($picture->path_get());
       if ($real_path === false)                          core::send_header_and_exit('file_not_found');
@@ -177,17 +186,17 @@ namespace effcore\modules\core {
       if (strpos($real_path, dir_dynamic) !== 0)         core::send_header_and_exit('file_not_found');
       if (!is_file    ($picture->path_get()))            core::send_header_and_exit('file_not_found');
       if (!is_readable($picture->path_get()))            core::send_header_and_exit('access_forbidden');
-      if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');      
+      if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');
       if (media::is_type_with_thumbnail($picture->type_get())) {
         $thumbnail = new file($picture->path_get());
-        $thumbnail->name_set($thumbnail->name_get().'.thumb');
+        $thumbnail->name_set($thumbnail->name_get().'.'.$size.'.thumb');
         $file_types = file::types_get();
         if ($thumbnail->is_exist()) {
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
           exit();
         }
         if (extension_loaded('exif') && extension_loaded('gd')) {
-          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 44, null, static::jpeg_quality);
+          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), $size_int, null, static::thumbnail_jpeg_quality);
           if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
           exit();

@@ -79,16 +79,14 @@ namespace effcore {
     foreach ($items as $c_row_id => $c_item) {
       if ($c_item->object->get_current_state() === 'pre') {
         $thumbnail = new file($c_item->object->get_current_path());
-        $thumbnail->name_set($thumbnail->name_get().'.thumb');
-        @unlink($thumbnail->path_get()); }}
+        media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }}
     parent::on_pool_values_save();
   }
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
     $thumbnail = new file($items[$button->_id]->object->get_current_path());
-    $thumbnail->name_set($thumbnail->name_get().'.thumb');
-    @unlink($thumbnail->path_get());
+    media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
     return parent::on_button_click_delete($form, $npath, $button);
   }
 

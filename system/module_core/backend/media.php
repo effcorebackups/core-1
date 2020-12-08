@@ -50,9 +50,9 @@ namespace effcore {
     }
   }
 
-  static function thumbnails_cleaning($path) {
+  static function thumbnails_cleaning($path, $name_prefix = '') {
     if (file_exists($path)) {
-      foreach (file::select_recursive($path, '%^.*\\.thumb\\.(jpg|jpeg|png|gif)$%') as $c_path => $c_file) {
+      foreach (file::select_recursive($path, '%^.*'.preg_quote($name_prefix).'(\\.[a-z]+|)\\.thumb\\.(jpg|jpeg|png|gif)$%S') as $c_path => $c_file) {
         @unlink($c_path);
       }
     }
