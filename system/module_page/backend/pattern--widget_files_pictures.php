@@ -96,15 +96,6 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  function thumbnails_cleaning($field, $path = '') {
-    $path = $path ?: dynamic::dir_files.$field->upload_dir;
-    if (file_exists($path)) {
-      foreach (file::select_recursive($path, '%^.*\\.thumb\\.(jpg|jpeg|png|gif)$%') as $c_path => $c_file) {
-        @unlink($c_path);
-      }
-    }
-  }
-
   static function complex_value_to_markup($complex) {
     if ($complex) {
       core::array_sort_by_weight($complex);

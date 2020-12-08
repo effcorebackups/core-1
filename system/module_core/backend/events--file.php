@@ -185,17 +185,16 @@ namespace effcore\modules\core {
         if ($thumbnail->is_exist()) {
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
           exit();
+        }
+        if (extension_loaded('exif') && extension_loaded('gd')) {
+          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 44, null, static::jpeg_quality);
+          if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
+          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+          exit();
         } else {
-          if (extension_loaded('exif') && extension_loaded('gd')) {
-            $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), 44, null, static::jpeg_quality);
-            if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
-            event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-            exit();
-          } else {
-            $thumbnail = new file(static::prepath_media_error_extensions_not_loaded.'.'.$thumbnail->type_get());
-            event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-            exit();
-          }
+          $thumbnail = new file(static::prepath_media_error_extensions_not_loaded.'.'.$thumbnail->type_get());
+          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
+          exit();
         }
       } else {
         core::send_header_and_exit('unsupported_media_type');
