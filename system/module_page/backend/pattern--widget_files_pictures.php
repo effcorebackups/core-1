@@ -111,7 +111,20 @@ namespace effcore {
 
   static function complex_value_to_markup($complex) {
     if ($complex) {
-      return new markup('div', [], 'gallery');
+      core::array_sort_by_weight($complex);
+      $result = new node;
+      foreach ($complex as $c_complex) {
+        $c_file = new file($c_complex->object->get_current_path());
+        $c_file_is_raster_picture = $c_file->type === 'jpg'  ||
+                                    $c_file->type === 'jpeg' ||
+                                    $c_file->type === 'png'  ||
+                                    $c_file->type === 'gif';
+        $c_complex_markup = $c_file_is_raster_picture ?
+          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']) :
+          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail']);
+        $result->child_insert(new markup('x-item', [], $c_complex_markup));
+      }
+      return $result;
     }
   }
 
