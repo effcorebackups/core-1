@@ -54,6 +54,13 @@ forms
               - title: field_file_video
             element_attributes
             - name: file_video[]
+      # widget 'Files'
+        - files|widget_files
+            title: Files
+            upload_dir: demo/
+            name_complex: files
+            allowed_types
+            - =: txt
       # widget 'Pictures'
         - files_pictures|widget_files_pictures
             title: Pictures
