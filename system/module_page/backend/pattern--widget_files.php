@@ -164,10 +164,10 @@ namespace effcore {
   ###########################
 
   static function complex_value_to_markup($complex) {
+    $decorator = new decorator('ul');
+    $decorator->id = 'widget_files-items';
     if ($complex) {
       core::array_sort_by_weight($complex);
-      $decorator = new decorator('ul');
-      $decorator->id = 'widget_files-items';
       foreach ($complex as $c_item_num => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $decorator->data[$c_item_num] = [
@@ -176,8 +176,8 @@ namespace effcore {
           'size' => ['title' => 'Size', 'value' => $c_item->object->size       ]
         ];
       }
-      return $decorator;
     }
+    return $decorator;
   }
 
 }}
