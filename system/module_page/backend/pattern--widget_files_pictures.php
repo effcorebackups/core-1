@@ -95,15 +95,15 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {
+  static function complex_value_to_markup($complex) {  
+    $decorator = new decorator;
+    $decorator->id = 'widget_files-pictures-items';
+    $decorator->view_type = 'template';
+    $decorator->template = 'content';
+    $decorator->template_row = 'gallery_row';
+    $decorator->template_row_mapping = core::array_kmap(['num', 'type', 'children']);
     if ($complex) {
       core::array_sort_by_weight($complex);
-      $decorator = new decorator('ul');
-      $decorator->id = 'gallery_items';
-      $decorator->view_type = 'template';
-      $decorator->template = 'content';
-      $decorator->template_row = 'gallery_row';
-      $decorator->template_row_mapping = core::array_kmap(['num', 'type', 'children']);
       foreach ($complex as $c_item_num => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
@@ -116,8 +116,8 @@ namespace effcore {
           'children' => ['value' => $c_item_markup]
         ];
       }
-      return $decorator;
     }
+    return $decorator;
   }
 
 }}

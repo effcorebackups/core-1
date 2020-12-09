@@ -39,16 +39,17 @@ namespace effcore\modules\storage {
     $entity = $instance->entity_get();
     foreach ($entity->fields as $c_name => $c_field) {
       if (!empty($c_field->managing_control_class)) {
-        $c_reflection = new \ReflectionClass($c_field->managing_control_class);
-        $c_reflection_instance = $c_reflection->newInstanceWithoutConstructor();
+        $c_control = (new \ReflectionClass($c_field->managing_control_class))->newInstanceWithoutConstructor();
+        foreach ($c_field->managing_control_properties ?? [] as $c_prop_name => $c_prop_value)
+          $c_control->{$c_prop_name} = $c_prop_value;
       # deleting the file associated with field_file
-        if ($c_reflection_instance instanceof field_file) {
+        if ($c_control instanceof field_file) {
           if (!empty($instance->{$c_name})) {
             @unlink(dir_root.$instance->{$c_name});
           }
         }
       # deleting files associated with widget_files
-        if ($c_reflection_instance instanceof widget_files) {
+        if ($c_control instanceof widget_files) {
           if (!empty($instance->{$c_name})) {
             foreach ($instance->{$c_name} as $c_item) {
               if ($c_item->object instanceof file_uploaded) {
@@ -58,15 +59,12 @@ namespace effcore\modules\storage {
           }
         }
       # deleting thumbnails associated with widget_files_pictures
-        if ($c_reflection_instance instanceof widget_files_pictures) {
-          if (!empty($instance->{$c_name})) {
-            foreach ($instance->{$c_name} as $c_item) {
-              if ($c_item->object instanceof file_uploaded) {
-                $thumbnail = new file($c_item->object->get_current_path());
-                media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
-              }
-            }
-          }
+        if ($c_control instanceof widget_files_pictures) {
+          token::insert('item_id_context', '%%_instance_id_context', 'text', $instance->id);
+          token::insert('item_id_context', '%%_item_id_context',     'text', '');
+          $dirs = dynamic::dir_files.$c_control->upload_dir;
+          $name =       token::apply($c_control->fixed_name);
+          media::picture_thumbnails_cleaning($dirs, $name);
         }
       }
     }
