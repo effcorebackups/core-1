@@ -582,6 +582,8 @@ translations
     - Simple layout: Просты макет
     - Size of uploaded file greater than %%_size.: Памер загружанага файла больш чым %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца).
+    - size: памер
+    - Size: Памер
     - Social networks: Сацыяльныя сеткі
     - SQL state\: %%_state: SQL стан: %%_state
     - SQL storage: SQL сховішча

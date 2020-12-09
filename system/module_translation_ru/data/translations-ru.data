@@ -582,6 +582,8 @@ translations
     - Simple layout: Простой макет
     - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается).
+    - size: размер
+    - Size: Размер
     - Social networks: Социальные сети
     - SQL state\: %%_state: SQL состояние: %%_state
     - SQL storage: SQL хранилище
