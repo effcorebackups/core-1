@@ -11,6 +11,7 @@ namespace effcore\modules\page {
           use \effcore\event;
           use \effcore\file;
           use \effcore\media;
+          use \effcore\module;
           use \effcore\url;
           abstract class events_file {
 
@@ -35,18 +36,15 @@ namespace effcore\modules\page {
 
   const prepath_media_error_thumbnail_creation_error = dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error';
   const prepath_media_error_extensions_not_loaded    = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded';
-  const thumbnail_jpeg_quality = 90;
-  const thumbnail_small_width = 44;
-  const thumbnail_middle_width = 300;
-  const thumbnail_big_width = 600;
 
   static function on_load_virtual_get_thumbnail($event, $type_info, &$file) {
     if ($type_info->type === 'get_thumbnail') {
+      $settings = module::settings_get('page');
       switch (url::get_current()->query_arg_select('size')) {
-        case 'small' : $size = 'small';  $size_int = static::thumbnail_small_width;  break;
-        case 'middle': $size = 'middle'; $size_int = static::thumbnail_middle_width; break;
-        case 'big'   : $size = 'big';    $size_int = static::thumbnail_big_width;    break;
-        default      : $size = 'small';  $size_int = static::thumbnail_small_width;
+        case 'small' : $size = 'small';  $size_int = $settings->thumbnail_small_width;  break;
+        case 'middle': $size = 'middle'; $size_int = $settings->thumbnail_middle_width; break;
+        case 'big'   : $size = 'big';    $size_int = $settings->thumbnail_big_width;    break;
+        default      : $size = 'small';  $size_int = $settings->thumbnail_small_width;
       }
       $picture = new file($file->dirs_get().$file->name_get());
       $real_path = core::validate_realpath($picture->path_get());
@@ -65,7 +63,7 @@ namespace effcore\modules\page {
           exit();
         }
         if (extension_loaded('exif') && extension_loaded('gd')) {
-          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), $size_int, null, static::thumbnail_jpeg_quality);
+          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), $size_int, null, $settings->thumbnail_jpeg_quality);
           if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
           event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
           exit();
