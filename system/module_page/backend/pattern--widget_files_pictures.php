@@ -85,8 +85,9 @@ namespace effcore {
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
-    $thumbnail = new file($items[$button->_id]->object->get_current_path());
-    media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
+    if ($items[$button->_id]->object->get_current_state() === 'pre') {
+      $thumbnail = new file($items[$button->_id]->object->get_current_path());
+      media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }
     return parent::on_button_click_delete($form, $npath, $button);
   }
 
