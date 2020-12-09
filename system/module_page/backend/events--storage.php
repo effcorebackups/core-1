@@ -4,11 +4,10 @@
   ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\storage {
+namespace effcore\modules\page {
           use const \effcore\dir_root;
           use \effcore\dynamic;
           use \effcore\field_file;
-          use \effcore\file;
           use \effcore\file_uploaded;
           use \effcore\media;
           use \effcore\token;

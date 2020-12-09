@@ -70,6 +70,13 @@ events
       weight: +600
       handler: \effcore\modules\page\events_form_instance_update::on_submit
 # ─────────────────────────────────────────────────────────────────────
+  on_instance_update_before
+  - all|event
+      handler: \effcore\modules\page\events_storage::on_instance_update_before
+  on_instance_delete_before
+  - all|event
+      handler: \effcore\modules\page\events_storage::on_instance_delete_before
+# ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - decoration|event
       for: decoration

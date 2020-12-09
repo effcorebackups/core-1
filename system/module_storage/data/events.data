@@ -82,13 +82,6 @@ events
       weight: +600
       handler: \effcore\modules\storage\events_form_instance_update_selection::on_submit
 # ─────────────────────────────────────────────────────────────────────
-  on_instance_update_before
-  - all|event
-      handler: \effcore\modules\storage\events_storage::on_instance_update_before
-  on_instance_delete_before
-  - all|event
-      handler: \effcore\modules\storage\events_storage::on_instance_delete_before
-# ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - instance_select_multiple__redirect|event
       for: instance_select_multiple
