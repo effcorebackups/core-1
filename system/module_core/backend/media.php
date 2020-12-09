@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class media {
 
-  static function is_type_with_thumbnail($type) {
+  static function is_picture_type_with_thumbnail($type) {
     if ($type === 'jpg' ) return true;
     if ($type === 'jpeg') return true;
     if ($type === 'png' ) return true;
@@ -50,7 +50,7 @@ namespace effcore {
     }
   }
 
-  static function thumbnails_cleaning($path, $name_prefix = '') {
+  static function picture_thumbnails_cleaning($path, $name_prefix = '') {
     if (file_exists($path)) {
       foreach (file::select_recursive($path, '%^.*'.preg_quote($name_prefix).'(\\.[a-z]+|)\\.thumb\\.(jpg|jpeg|png|gif)$%S') as $c_path => $c_file) {
         @unlink($c_path);

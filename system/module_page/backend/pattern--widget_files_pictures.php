@@ -27,7 +27,7 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
   # info markup
     $file = new file($item->object->get_current_path());
-    $thumbnail_markup = media::is_type_with_thumbnail($file->type) ?
+    $thumbnail_markup = media::is_picture_type_with_thumbnail($file->type) ?
       new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
       new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
     $id_markup = $item->object->get_current_state() === 'pre' ?
@@ -79,14 +79,14 @@ namespace effcore {
     foreach ($items as $c_row_id => $c_item) {
       if ($c_item->object->get_current_state() === 'pre') {
         $thumbnail = new file($c_item->object->get_current_path());
-        media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }}
+        media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }}
     parent::on_pool_values_save();
   }
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
     $thumbnail = new file($items[$button->_id]->object->get_current_path());
-    media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
+    media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
     return parent::on_button_click_delete($form, $npath, $button);
   }
 
@@ -106,7 +106,7 @@ namespace effcore {
       foreach ($complex as $c_item_num => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
-        $c_item_markup = media::is_type_with_thumbnail($c_file->type) ?
+        $c_item_markup = media::is_picture_type_with_thumbnail($c_file->type) ?
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail?size=middle', 'alt' => new text('thumbnail')]) :
           new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                              'alt' => new text('thumbnail')]);
         $decorator->data[$c_item_num] = [

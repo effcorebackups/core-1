@@ -34,7 +34,7 @@ namespace effcore\modules\storage {
                 @unlink($c_item->object->get_current_path());
                 if ($c_reflection_instance instanceof widget_files_pictures) {
                   $thumbnail = new file($c_item->object->get_current_path());
-                  media::thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
+                  media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get());
                 }
               }
             }
