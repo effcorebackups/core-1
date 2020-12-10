@@ -91,7 +91,6 @@ namespace effcore {
   }
 
   function values_get() {
-    if    ($this->pool_result == null) $this->on_pool_values_save();
     return $this->pool_result ?? [];
   }
 
@@ -350,7 +349,7 @@ namespace effcore {
 
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
-    if ($field->has_on_validate && $field->pool_result == null && !$form->has_error()) {
+    if ($field->has_on_validate && !$form->has_error() && $field->pool_result === null) {
       if (!$field->on_pool_values_save()) {
         $field->error_set();
         return;
