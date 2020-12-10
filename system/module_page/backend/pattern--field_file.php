@@ -148,7 +148,7 @@ namespace effcore {
     }
   # adding of next deleted items into the cache
     $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
-    $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
+    $deleted_from_cache = $this->items_get('fin_to_delete');
     foreach ($this->pool_fin as $c_id => $c_item) {
       if (isset($deleted_from_cform[$c_id]))
                 $deleted_from_cache[$c_id] = $c_item;
@@ -160,14 +160,14 @@ namespace effcore {
       }
     }
   # save the poll and update the pool manager
-    $this->pool_cache_set('fin_to_delete', $deleted_from_cache);
+    $this->items_set('fin_to_delete', $deleted_from_cache);
     $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
   function on_pool_values_init_pre_from_cache() { #1
-    $this->pool_pre = $this->pool_cache_get('pre');
+    $this->pool_pre = $this->items_get('pre');
   # immediate deletion of 'pre' items which marked as 'deleted'
     $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
     foreach ($this->pool_pre as $c_id => $c_item) {
@@ -179,13 +179,13 @@ namespace effcore {
       }
     }
   # save the poll and update the pool manager
-    $this->pool_cache_set('pre', $this->pool_pre);
+    $this->items_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_pool_values_init_new_from_form($new_items = []) { #2
+  function on_value_new_insert($new_items = []) {
     foreach ($new_items as $c_item) {
       $this->pool_pre[] = $c_item;
       $c_item_id = core::array_key_last($this->pool_pre); # note: even after deleting the array element, the next key will be 'last used key +1'
@@ -195,7 +195,7 @@ namespace effcore {
       }
     }
   # save the poll and update the pool manager
-    $this->pool_cache_set('pre', $this->pool_pre);
+    $this->items_set('pre', $this->pool_pre);
     $this->pool_manager_rebuild();
   }
 
@@ -203,7 +203,7 @@ namespace effcore {
 
   function on_pool_values_save() {
   # deletion of 'fin' items which marked as 'deleted'
-    $deleted_from_cache = $this->pool_cache_get('fin_to_delete');
+    $deleted_from_cache = $this->items_get('fin_to_delete');
     foreach ($deleted_from_cache as $c_id => $c_item) {
       if (!$c_item->delete_fin()) {
         return;
@@ -225,7 +225,7 @@ namespace effcore {
   # moving of 'pool_pre' values to the 'pool_fin' and return result
     $this->pool_pre =                                      [];
     $this->pool_manager_set_deleted_items('fin',           []);
-    $this->pool_cache_set                ('fin_to_delete', []);
+    $this->items_set                     ('fin_to_delete', []);
     $this->on_pool_values_init_fin($result_paths);
     $this->pool_result =           $result_paths;
     return true;
@@ -235,13 +235,13 @@ namespace effcore {
   # pool cache
   # ─────────────────────────────────────────────────────────────────────
 
-  protected function pool_cache_get($id) {
+  protected function items_get($id) {
     return $this->cform->validation_cache_get(
       $this->name_get().'_files_pool_'.$id
     ) ?: [];
   }
 
-  protected function pool_cache_set($id, $data) {
+  protected function items_set($id, $data) {
     $this->cform->validation_cache_set(
       $this->name_get().'_files_pool_'.$id, $data
     );
@@ -341,7 +341,7 @@ namespace effcore {
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->on_pool_values_init_new_from_form($new_values);
+        if ($result) $field->on_value_new_insert($new_values);
         return $result;
       }
     }
