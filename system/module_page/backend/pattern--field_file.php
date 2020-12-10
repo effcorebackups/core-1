@@ -352,12 +352,12 @@ namespace effcore {
       $type = $field->type_get();
       if ($name && $type) {
         if ($field->disabled_get()) return true;
-        $field->on_pool_values_init_pre_from_cache();
         $new_values = static::request_files_get($name);
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
         if ($result) $field->on_values_new_insert($new_values);
+        $field->pool_manager_rebuild();
         return $result;
       }
     }
