@@ -22,6 +22,10 @@ namespace effcore\modules\page {
         $c_control = (new \ReflectionClass($c_field->managing_control_class))->newInstanceWithoutConstructor();
         foreach ($c_field->managing_control_properties           ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
         foreach ($c_field->managing_control_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+      # deleting thumbnails associated with field_file_picture
+        if ($c_control instanceof field_file_picture) {
+          # @todo: for avatar, video poster, picture
+        }
       # deleting thumbnails associated with widget_files_pictures
         if ($c_control instanceof widget_files_pictures) {
           token::insert('item_id_context', '%%_instance_id_context', 'text', $instance->id);
@@ -56,6 +60,10 @@ namespace effcore\modules\page {
               }
             }
           }
+        }
+      # deleting thumbnails associated with field_file_picture
+        if ($c_control instanceof field_file_picture) {
+          # @todo: for avatar, video poster, picture
         }
       # deleting thumbnails associated with widget_files_pictures
         if ($c_control instanceof widget_files_pictures) {
