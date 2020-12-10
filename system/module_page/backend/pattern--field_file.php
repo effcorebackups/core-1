@@ -64,8 +64,7 @@ namespace effcore {
   public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
   public $allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-", "."';
   public $allowed_types = ['txt' => 'txt'];
-  public $has_on_validate         = true;
-  public $has_on_validate_phase_3 = true;
+  public $has_on_validate = true;
 # ─────────────────────────────────────────────────────────────────────
   public $pool_result;
   public $pool_fin = [];
@@ -351,7 +350,7 @@ namespace effcore {
 
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
-    if ($field->has_on_validate_phase_3 && $field->pool_result == null && !$form->has_error()) {
+    if ($field->has_on_validate && $field->pool_result == null && !$form->has_error()) {
       if (!$field->on_pool_values_save()) {
         $field->error_set();
         return;

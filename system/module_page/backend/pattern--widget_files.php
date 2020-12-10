@@ -53,8 +53,7 @@ namespace effcore {
     $field_file->cform            = $this->cform;
     $field_file->min_files_number = null;
     $field_file->max_files_number = null;
-    $field_file->has_on_validate         = false;
-    $field_file->has_on_validate_phase_3 = false;
+    $field_file->has_on_validate  = false;
     $field_file->build();
     $field_file->multiple_set();
     $field_file->name_set($this->name_get_complex().'__file[]');
