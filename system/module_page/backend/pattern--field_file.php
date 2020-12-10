@@ -138,32 +138,43 @@ namespace effcore {
   ############
 
   function on_pool_values_save() {
-  # deletion of 'fin' items which marked as 'deleted'
-    $deleted_from_cache = $this->items_get('fin_to_delete');
-    foreach ($deleted_from_cache as $c_id => $c_item) {
-      if (!$c_item->delete_fin()) {
-        return;
-      }
-    }
+    $items_pre = $this->items_get('pre');
+    $items_fin = $this->items_get('fin');
+
+//  # deletion of 'fin' items which marked as 'deleted'
+//    $deleted_from_cache = $this->items_get('fin_to_delete');
+//    foreach ($deleted_from_cache as $c_id => $c_item) {
+//      if (!$c_item->delete_fin()) {
+//        return;
+//      }
+//    }
+
   # moving of 'pre' items into the directory 'files'
-    foreach ($this->pool_pre as $c_id => $c_item) {
-      if (!$c_item->move_pre_to_fin(dynamic::dir_files.
-             $this->upload_dir.$c_item->file,
-             $this->fixed_name,
-             $this->fixed_type)) {
+    foreach ($items_pre as $c_id => $c_item) {
+      if ($c_item->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->file, $this->fixed_name, $this->fixed_type)) {
+              $items_fin[] = $c_item;
+        unset($items_pre[$c_id]);
+        $this->items_set('pre', $items_pre);
+        $this->items_set('fin', $items_fin);
+        $this->pool_manager_rebuild();
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" has been saved.', [
+          'type' => (new text('Picture'))->render(),
+          'id'   => $c_id]));
+      } else {
         return;
       }
     }
+
   # prepare return
-    $result_paths = [];
-    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
-    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
-  # moving of 'pool_pre' values to the 'pool_fin' and return result
-    $this->pool_pre =                                      [];
-    $this->pool_manager_set_deleted_items('fin',           []);
-    $this->items_set                     ('fin_to_delete', []);
-    $this->on_pool_values_init_fin($result_paths);
-    $this->pool_result =           $result_paths;
+    $this->pool_result = [];
+    foreach ($items_pre as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    foreach ($items_fin as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
+
+//  # moving of 'pool_pre' values to the 'pool_fin' and return result
+//    $this->pool_manager_set_deleted_items('fin',           []);
+//    $this->items_set                     ('fin_to_delete', []);
+//    $this->on_pool_values_init_fin($result_paths);
     return true;
   }
 
@@ -191,49 +202,49 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_pool_values_init_fin($fin_items = []) {
-    $this->pool_fin = [];
-  # insertion of 'fin' items into the pool
-    foreach ($fin_items as $c_id => $c_path_relative) {
-      $c_item = new file_uploaded;
-      if ($c_item->init_from_fin($c_path_relative)) {
-        $this->pool_fin[$c_id] = $c_item;
-      }
-    }
-  # adding of next deleted items into the cache
-    $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
-    $deleted_from_cache = $this->items_get('fin_to_delete');
-    foreach ($this->pool_fin as $c_id => $c_item) {
-      if (isset($deleted_from_cform[$c_id]))
-                $deleted_from_cache[$c_id] = $c_item;
-    }
-  # deferred deletion of 'fin' items which marked as 'deleted'
-    foreach ($this->pool_fin as $c_id => $c_item) {
-      if (isset($deleted_from_cache[$c_id])) {
-        unset($this->pool_fin[$c_id]);
-      }
-    }
-  # save the poll and update the pool manager
-    $this->items_set('fin_to_delete', $deleted_from_cache);
-    $this->pool_manager_rebuild();
+//    $this->pool_fin = [];
+//  # insertion of 'fin' items into the pool
+//    foreach ($fin_items as $c_id => $c_path_relative) {
+//      $c_item = new file_uploaded;
+//      if ($c_item->init_from_fin($c_path_relative)) {
+//        $this->pool_fin[$c_id] = $c_item;
+//      }
+//    }
+//  # adding of next deleted items into the cache
+//    $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
+//    $deleted_from_cache = $this->items_get('fin_to_delete');
+//    foreach ($this->pool_fin as $c_id => $c_item) {
+//      if (isset($deleted_from_cform[$c_id]))
+//                $deleted_from_cache[$c_id] = $c_item;
+//    }
+//  # deferred deletion of 'fin' items which marked as 'deleted'
+//    foreach ($this->pool_fin as $c_id => $c_item) {
+//      if (isset($deleted_from_cache[$c_id])) {
+//        unset($this->pool_fin[$c_id]);
+//      }
+//    }
+//  # save the poll and update the pool manager
+//    $this->items_set('fin_to_delete', $deleted_from_cache);
+//    $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_pool_values_init_pre_from_cache() { #1
-    $this->pool_pre = $this->items_get('pre');
-  # immediate deletion of 'pre' items which marked as 'deleted'
-    $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
-    foreach ($this->pool_pre as $c_id => $c_item) {
-      if (isset($deleted_from_cform[$c_id])) {
-        $result = $c_item->delete_pre();
-        if ($result) {
-          unset($this->pool_pre[$c_id]);
-        }
-      }
-    }
-  # save the poll and update the pool manager
-    $this->items_set('pre', $this->pool_pre);
-    $this->pool_manager_rebuild();
+  function on_pool_values_init_pre_from_cache() {
+//    $this->pool_pre = $this->items_get('pre');
+//  # immediate deletion of 'pre' items which marked as 'deleted'
+//    $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
+//    foreach ($this->pool_pre as $c_id => $c_item) {
+//      if (isset($deleted_from_cform[$c_id])) {
+//        $result = $c_item->delete_pre();
+//        if ($result) {
+//          unset($this->pool_pre[$c_id]);
+//        }
+//      }
+//    }
+//  # save the poll and update the pool manager
+//    $this->items_set('pre', $this->pool_pre);
+//    $this->pool_manager_rebuild();
   }
 
   # ─────────────────────────────────────────────────────────────────────

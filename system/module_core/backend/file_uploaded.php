@@ -81,10 +81,9 @@ namespace effcore {
       if ($fixed_type          ) $dst_file->type_set(token::apply($fixed_type));
       if ($dst_file->is_exist()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());
       if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
-        if ($is_save_original_data === false) {
-              $this->name     = $dst_file->name_get();
-              $this->type     = $dst_file->type_get();
-              $this->file     = $dst_file->file_get();}
+        if ($is_save_original_data === false) $this->name = $dst_file->name_get();
+        if ($is_save_original_data === false) $this->type = $dst_file->type_get();
+        if ($is_save_original_data === false) $this->file = $dst_file->file_get();
               $this->fin_path = $dst_file->path_get();
         unset($this->pre_path);
         return true;

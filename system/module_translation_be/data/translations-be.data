@@ -311,6 +311,7 @@ translations
     - Item of type "%%_type" was not inserted!: Элемент тыпу "%%_type" не быў даданы!
     - Item of type "%%_type" was not updated!: Элемент тыпу "%%_type" не быў абноўлены!
     - Item of type "%%_type" was updated.: Элемент тыпу "%%_type" быў абноўлены.
+    - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент тыпу "%%_type" з ID = "%%_id" быў захаваны.
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
     - Item of type "%%_type" with ID = "%%_id" was not deleted because it's embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены, таму што ён з'яўляецца убудаваным!
