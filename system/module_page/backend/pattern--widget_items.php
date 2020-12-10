@@ -15,7 +15,7 @@ namespace effcore {
   public $number;
 
   public $item_title = 'Item';
-  public $tag_name         = 'x-widget';
+  public $tag_name = 'x-widget';
   public $content_tag_name = 'x-widget-content';
   public $attributes = ['data-type' => 'items'];
   public $name_complex = 'widget_items';

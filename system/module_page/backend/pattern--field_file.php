@@ -316,6 +316,21 @@ namespace effcore {
     }
   }
 
+  static function on_manual_validate_and_return_value($field, $form, $npath) {
+    $element = $field->child_select('element');
+    $name = $field->name_get();
+    $type = $field->type_get();
+    if ($name && $type) {
+      if ($field->disabled_get()) return [];
+      $new_values = static::request_files_get($name);
+      static::sanitize($field, $form, $element, $new_values);
+      $result = static::validate_multiple($field, $form, $element, $new_values) &&
+                static::validate_upload  ($field, $form, $element, $new_values);
+      if ($result) return $new_values;
+      else         return [];
+    }
+  }
+
   static function on_validate($field, $form, $npath) {
     if ($field->has_on_validate) {
       $element = $field->child_select('element');
@@ -343,21 +358,6 @@ namespace effcore {
       }
     }
     return true;
-  }
-
-  static function on_manual_validate_and_return_value($field, $form, $npath) {
-    $element = $field->child_select('element');
-    $name = $field->name_get();
-    $type = $field->type_get();
-    if ($name && $type) {
-      if ($field->disabled_get()) return [];
-      $new_values = static::request_files_get($name);
-      static::sanitize($field, $form, $element, $new_values);
-      $result = static::validate_multiple($field, $form, $element, $new_values) &&
-                static::validate_upload  ($field, $form, $element, $new_values);
-      if ($result) return $new_values;
-      else         return [];
-    }
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
