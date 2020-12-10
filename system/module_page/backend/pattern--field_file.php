@@ -137,6 +137,59 @@ namespace effcore {
   ### pool ###
   ############
 
+  function on_pool_values_save() {
+  # deletion of 'fin' items which marked as 'deleted'
+    $deleted_from_cache = $this->items_get('fin_to_delete');
+    foreach ($deleted_from_cache as $c_id => $c_item) {
+      if (!$c_item->delete_fin()) {
+        return;
+      }
+    }
+  # moving of 'pre' items into the directory 'files'
+    foreach ($this->pool_pre as $c_id => $c_item) {
+      if (!$c_item->move_pre_to_fin(dynamic::dir_files.
+             $this->upload_dir.$c_item->file,
+             $this->fixed_name,
+             $this->fixed_type)) {
+        return;
+      }
+    }
+  # prepare return
+    $result_paths = [];
+    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
+    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
+  # moving of 'pool_pre' values to the 'pool_fin' and return result
+    $this->pool_pre =                                      [];
+    $this->pool_manager_set_deleted_items('fin',           []);
+    $this->items_set                     ('fin_to_delete', []);
+    $this->on_pool_values_init_fin($result_paths);
+    $this->pool_result =           $result_paths;
+    return true;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function on_values_new_insert($new_items = []) {
+    $items = $this->items_get('pre');
+    foreach ($new_items as $c_new_item) {
+      $items[] = $c_new_item;
+      $c_new_item_id = core::array_key_last($items);
+      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
+        $this->items_set('pre', $items);
+        $this->pool_manager_rebuild();
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" was inserted.', [
+          'type' => (new text('Picture'))->render(),
+          'id'   => $c_new_item_id]));
+      } else {
+        $this->error_set();
+        return;
+      }
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
   function on_pool_values_init_fin($fin_items = []) {
     $this->pool_fin = [];
   # insertion of 'fin' items into the pool
@@ -184,54 +237,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  function on_value_new_insert($new_items = []) {
-    foreach ($new_items as $c_item) {
-      $this->pool_pre[] = $c_item;
-      $c_item_id = core::array_key_last($this->pool_pre); # note: even after deleting the array element, the next key will be 'last used key +1'
-      $result = $c_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_item_id.'.'.$c_item->type);
-      if (!$result) {
-        unset($this->pool_pre[$c_item_id]);
-      }
-    }
-  # save the poll and update the pool manager
-    $this->items_set('pre', $this->pool_pre);
-    $this->pool_manager_rebuild();
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function on_pool_values_save() {
-  # deletion of 'fin' items which marked as 'deleted'
-    $deleted_from_cache = $this->items_get('fin_to_delete');
-    foreach ($deleted_from_cache as $c_id => $c_item) {
-      if (!$c_item->delete_fin()) {
-        return;
-      }
-    }
-  # moving of 'pre' items into the directory 'files'
-    foreach ($this->pool_pre as $c_id => $c_item) {
-      if (!$c_item->move_pre_to_fin(dynamic::dir_files.
-             $this->upload_dir.$c_item->file,
-             $this->fixed_name,
-             $this->fixed_type)) {
-        return;
-      }
-    }
-  # prepare return
-    $result_paths = [];
-    foreach ($this->pool_fin as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
-    foreach ($this->pool_pre as $c_item) $result_paths[] = (new file($c_item->get_current_path()))->path_get_relative();
-  # moving of 'pool_pre' values to the 'pool_fin' and return result
-    $this->pool_pre =                                      [];
-    $this->pool_manager_set_deleted_items('fin',           []);
-    $this->items_set                     ('fin_to_delete', []);
-    $this->on_pool_values_init_fin($result_paths);
-    $this->pool_result =           $result_paths;
-    return true;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
   # pool cache
   # ─────────────────────────────────────────────────────────────────────
 
@@ -266,8 +271,8 @@ namespace effcore {
     $this->child_insert($pool_manager_fin, 'manager_fin');
     $this->child_insert($pool_manager_pre, 'manager_pre');
   # insert 'delete' checkboxes for the 'fin' and the 'pre' items
-    foreach ($this->pool_fin as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'fin');
-    foreach ($this->pool_pre as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'pre');
+    foreach ($this->items_get('fin') as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'fin');
+    foreach ($this->items_get('pre') as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'pre');
   }
 
   protected function pool_manager_action_insert($item, $id, $type) {
@@ -341,7 +346,7 @@ namespace effcore {
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->on_value_new_insert($new_values);
+        if ($result) $field->on_values_new_insert($new_values);
         return $result;
       }
     }
