@@ -87,7 +87,8 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->on_pool_values_init_fin($value ? [$value] : []);
+    $this->on_values_old_insert($value ? [$value] : []);
+    $this->pool_manager_rebuild();
   }
 
   function values_get() {
@@ -95,7 +96,8 @@ namespace effcore {
   }
 
   function values_set($values) {
-    $this->on_pool_values_init_fin($values ?: []);
+    $this->on_values_old_insert($values ?: []);
+    $this->pool_manager_rebuild();
   }
 
   function file_size_max_get() {
@@ -156,7 +158,6 @@ namespace effcore {
         unset($items_pre[$c_id]);
         $this->items_set('pre', $items_pre);
         $this->items_set('fin', $items_fin);
-        $this->pool_manager_rebuild();
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" has been saved.', [
           'type' => (new text('Picture'))->render(),
@@ -170,11 +171,12 @@ namespace effcore {
     $this->pool_result = [];
     foreach ($items_pre as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
     foreach ($items_fin as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    $this->pool_manager_rebuild();
 
 //  # moving of 'pool_pre' values to the 'pool_fin' and return result
 //    $this->pool_manager_set_deleted_items('fin',           []);
 //    $this->items_set                     ('fin_to_delete', []);
-//    $this->on_pool_values_init_fin($result_paths);
+//    $this->on_values_old_insert($result_paths);
     return true;
   }
 
@@ -187,7 +189,6 @@ namespace effcore {
       $c_new_item_id = core::array_key_last($items);
       if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
         $this->items_set('pre', $items);
-        $this->pool_manager_rebuild();
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was inserted.', [
           'type' => (new text('Picture'))->render(),
@@ -201,15 +202,17 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_pool_values_init_fin($fin_items = []) {
-//    $this->pool_fin = [];
-//  # insertion of 'fin' items into the pool
-//    foreach ($fin_items as $c_id => $c_path_relative) {
-//      $c_item = new file_uploaded;
-//      if ($c_item->init_from_fin($c_path_relative)) {
-//        $this->pool_fin[$c_id] = $c_item;
-//      }
-//    }
+  function on_values_old_insert($old_items = []) {
+    $items = [];
+    foreach ($old_items as $c_id => $c_path_relative) {
+      $c_item = new file_uploaded;
+      if ($c_item->init_from_fin($c_path_relative)) {
+        $items[$c_id] = $c_item;
+        $this->items_set('fin', $items);
+      }
+    }
+
+
 //  # adding of next deleted items into the cache
 //    $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
 //    $deleted_from_cache = $this->items_get('fin_to_delete');

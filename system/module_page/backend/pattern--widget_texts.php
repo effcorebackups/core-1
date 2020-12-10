@@ -41,8 +41,8 @@ namespace effcore {
       $min_weight = min($min_weight, $c_item->weight);
     $new_item = new \stdClass;
     $new_item->weight = count($items) ? $min_weight - 5 : 0;
-    $new_item->id     = 0;
-    $new_item->text   = '';
+    $new_item->id = 0;
+    $new_item->text = '';
     $items[] = $new_item;
     $this->items_set($items);
     message::insert(new text_multiline([
