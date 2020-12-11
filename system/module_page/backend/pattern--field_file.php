@@ -149,7 +149,7 @@ namespace effcore {
 //      }
 //    }
 
-    $this->on_values_pre_to_fin();
+    $this->on_values_pre_move_to_fin();
   # prepare return
     $this->result = [];
     foreach ($this->items_get('fin') as $c_item) {
@@ -166,7 +166,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_pre_to_fin() {
+  function on_values_pre_move_to_fin() {
     $items_pre = $this->items_get('pre');
     $items_fin = $this->items_get('fin');
     foreach ($items_pre as $c_id => $c_item) {
@@ -186,11 +186,9 @@ namespace effcore {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-
-  function on_values_pre_insert($new_items = []) {
+  function on_values_pre_insert($values = []) {
     $items_pre = $this->items_get('pre');
-    foreach ($new_items as $c_new_item) {
+    foreach ($values as $c_new_item) {
       $items_pre[] = $c_new_item;
       $c_new_item_id = core::array_key_last($items_pre);
       if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
@@ -228,33 +226,32 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_fin_update($old_items = []) {
-    $items = [];
-    foreach ($old_items as $c_id => $c_path_relative) {
-      $c_item = new file_uploaded;
-      if ($c_item->init_from_fin($c_path_relative)) {
-        $items[$c_id] = $c_item;
-        $this->items_set('fin', $items);
+  function on_values_fin_update($values = []) {
+    $fin_items = [];
+    $deleted_cache = $this->items_get('fin_to_delete');
+    foreach ($values as $c_id => $c_path_relative) {
+      if (!isset($deleted_cache[$c_id])) {
+        $c_item = new file_uploaded;
+        if ($c_item->init_from_fin($c_path_relative)) {
+          $fin_items[$c_id] = $c_item;
+          $this->items_set('fin', $fin_items);
+        }
       }
     }
+  }
 
-
-//  # adding of next deleted items into the cache
-//    $deleted_from_cform = $this->pool_manager_get_deleted_items('fin');
-//    $deleted_from_cache = $this->items_get('fin_to_delete');
-//    foreach ($this->pool_fin as $c_id => $c_item) {
-//      if (isset($deleted_from_cform[$c_id]))
-//                $deleted_from_cache[$c_id] = $c_item;
-//    }
-//  # deferred deletion of 'fin' items which marked as 'deleted'
-//    foreach ($this->pool_fin as $c_id => $c_item) {
-//      if (isset($deleted_from_cache[$c_id])) {
-//        unset($this->pool_fin[$c_id]);
-//      }
-//    }
-//  # save the poll and update the pool manager
-//    $this->items_set('fin_to_delete', $deleted_from_cache);
-//    $this->pool_manager_rebuild();
+  function on_values_fin_delete() {
+    $deleted_ids_cform = $this->pool_manager_get_deleted_items('fin');
+    $deleted_cache = $this->items_get('fin_to_delete');
+    $items_fin = $this->items_get('fin');
+    foreach ($items_fin as $c_id => $c_item) {
+      if (isset($deleted_ids_cform[$c_id])) {
+        $deleted_cache[$c_id] = $c_item;
+        unset($items_fin[$c_id]);
+        $this->items_set('fin_to_delete', $deleted_cache);
+        $this->items_set('fin', $items_fin);
+      }
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -369,6 +366,7 @@ namespace effcore {
         if ($result)
           $field->on_values_pre_insert($new_values);
           $field->on_values_pre_delete();
+          $field->on_values_fin_delete();
           $field->pool_manager_rebuild();
         return $result;
       }
