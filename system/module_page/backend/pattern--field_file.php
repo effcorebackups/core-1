@@ -206,6 +206,26 @@ namespace effcore {
     }
   }
 
+  function on_values_pre_delete() {
+    $deleted_ids = $this->pool_manager_get_deleted_items('pre');
+    $items_pre = $this->items_get('pre');
+    foreach ($items_pre as $c_id => $c_item) {
+      if (isset($deleted_ids[$c_id])) {
+        if ($c_item->delete_pre()) {
+          unset($items_pre[$c_id]);
+          $this->items_set('pre', $items_pre);
+          message::insert(new text(
+            'Item of type "%%_type" with ID = "%%_id" was deleted.', [
+            'type' => (new text('Picture'))->render(),
+            'id'   => $c_id]));
+        } else {
+          $this->error_set();
+          return;
+        }
+      }
+    }
+  }
+
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_fin_update($old_items = []) {
@@ -234,25 +254,6 @@ namespace effcore {
 //    }
 //  # save the poll and update the pool manager
 //    $this->items_set('fin_to_delete', $deleted_from_cache);
-//    $this->pool_manager_rebuild();
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function on_pool_values_init_pre_from_cache() {
-//    $this->pool_pre = $this->items_get('pre');
-//  # immediate deletion of 'pre' items which marked as 'deleted'
-//    $deleted_from_cform = $this->pool_manager_get_deleted_items('pre');
-//    foreach ($this->pool_pre as $c_id => $c_item) {
-//      if (isset($deleted_from_cform[$c_id])) {
-//        $result = $c_item->delete_pre();
-//        if ($result) {
-//          unset($this->pool_pre[$c_id]);
-//        }
-//      }
-//    }
-//  # save the poll and update the pool manager
-//    $this->items_set('pre', $this->pool_pre);
 //    $this->pool_manager_rebuild();
   }
 
@@ -365,8 +366,10 @@ namespace effcore {
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->on_values_pre_insert($new_values);
-        $field->pool_manager_rebuild();
+        if ($result)
+          $field->on_values_pre_insert($new_values);
+          $field->on_values_pre_delete();
+          $field->pool_manager_rebuild();
         return $result;
       }
     }
