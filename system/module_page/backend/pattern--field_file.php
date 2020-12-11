@@ -166,26 +166,6 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_pre_insert($new_items = []) {
-    $items_pre = $this->items_get('pre');
-    foreach ($new_items as $c_new_item) {
-      $items_pre[] = $c_new_item;
-      $c_new_item_id = core::array_key_last($items_pre);
-      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
-        $this->items_set('pre', $items_pre);
-        message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-          'type' => (new text('Picture'))->render(),
-          'id'   => $c_new_item_id]));
-      } else {
-        $this->error_set();
-        return;
-      }
-    }
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_values_pre_to_fin() {
     $items_pre = $this->items_get('pre');
     $items_fin = $this->items_get('fin');
@@ -199,6 +179,26 @@ namespace effcore {
           'Item of type "%%_type" with ID = "%%_id" has been saved.', [
           'type' => (new text('Picture'))->render(),
           'id'   => $c_id]));
+      } else {
+        $this->error_set();
+        return;
+      }
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function on_values_pre_insert($new_items = []) {
+    $items_pre = $this->items_get('pre');
+    foreach ($new_items as $c_new_item) {
+      $items_pre[] = $c_new_item;
+      $c_new_item_id = core::array_key_last($items_pre);
+      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
+        $this->items_set('pre', $items_pre);
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" was inserted.', [
+          'type' => (new text('Picture'))->render(),
+          'id'   => $c_new_item_id]));
       } else {
         $this->error_set();
         return;
