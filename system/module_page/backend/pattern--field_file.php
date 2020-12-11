@@ -66,7 +66,7 @@ namespace effcore {
   public $allowed_types = ['txt' => 'txt'];
   public $has_on_validate = true;
 # ─────────────────────────────────────────────────────────────────────
-  public $pool_result;
+  public $result;
   public $pool_fin = [];
   public $pool_pre = [];
 
@@ -92,7 +92,7 @@ namespace effcore {
   }
 
   function values_get() {
-    return $this->pool_result ?? [];
+    return $this->result ?? [];
   }
 
   function values_set($values) {
@@ -166,17 +166,17 @@ namespace effcore {
         return;
       }
     }
-
   # prepare return
-    $this->pool_result = [];
-    foreach ($items_pre as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
-    foreach ($items_fin as $c_item) $this->pool_result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    $this->result = [];
+    foreach ($items_fin as $c_item) {
+      $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    }
+  # update controls
     $this->pool_manager_rebuild();
 
 //  # moving of 'pool_pre' values to the 'pool_fin' and return result
 //    $this->pool_manager_set_deleted_items('fin',           []);
 //    $this->items_set                     ('fin_to_delete', []);
-//    $this->on_values_old_update($result_paths);
     return true;
   }
 
@@ -368,7 +368,7 @@ namespace effcore {
 
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
-    if ($field->has_on_validate && !$form->has_error() && $field->pool_result === null) {
+    if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
       if (!$field->on_pool_values_save()) {
         $field->error_set();
         return;
