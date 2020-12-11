@@ -157,7 +157,6 @@ namespace effcore {
               $items_fin[] = $c_item;
         unset($items_pre[$c_id]);
         $this->items_set('pre', $items_pre);
-        $this->items_set('fin', $items_fin);
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" has been saved.', [
           'type' => (new text('Picture'))->render(),
@@ -172,6 +171,7 @@ namespace effcore {
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
     }
   # update controls
+    $this->on_values_old_update($this->result);
     $this->pool_manager_rebuild();
 
 //  # moving of 'pool_pre' values to the 'pool_fin' and return result
