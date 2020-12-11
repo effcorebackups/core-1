@@ -140,15 +140,7 @@ namespace effcore {
   ############
 
   function on_pool_values_save() {
-
-//  # deletion of 'fin' items which marked as 'deleted'
-//    $deleted_from_cache = $this->items_get('fin_to_delete');
-//    foreach ($deleted_from_cache as $c_id => $c_item) {
-//      if (!$c_item->delete_fin()) {
-//        return;
-//      }
-//    }
-
+    $this->on_values_fin_delete_physically();
     $this->on_values_pre_move_to_fin();
   # prepare return
     $this->result = [];
@@ -156,11 +148,9 @@ namespace effcore {
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
     }
   # update controls
+//  $this->pool_manager_set_deleted_items('fin', []);
+//  $this->items_set('fin_to_delete', []);
     $this->pool_manager_rebuild();
-
-//  # moving of 'pool_pre' values to the 'pool_fin' and return result
-//    $this->pool_manager_set_deleted_items('fin',           []);
-//    $this->items_set                     ('fin_to_delete', []);
     return true;
   }
 
@@ -204,7 +194,7 @@ namespace effcore {
     }
   }
 
-  function on_values_pre_delete() {
+  function on_values_pre_delete_physically() {
     $deleted_ids = $this->pool_manager_get_deleted_items('pre');
     $items_pre = $this->items_get('pre');
     foreach ($items_pre as $c_id => $c_item) {
@@ -252,6 +242,15 @@ namespace effcore {
         $this->items_set('fin', $items_fin);
       }
     }
+  }
+
+  function on_values_fin_delete_physically() {
+//  $deleted_from_cache = $this->items_get('fin_to_delete');
+//  foreach ($deleted_from_cache as $c_id => $c_item) {
+//    if (!$c_item->delete_fin()) {
+//      return;
+//    }
+//  }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -365,7 +364,7 @@ namespace effcore {
                   static::validate_upload  ($field, $form, $element, $new_values);
         if ($result)
           $field->on_values_pre_insert($new_values);
-          $field->on_values_pre_delete();
+          $field->on_values_pre_delete_physically();
           $field->on_values_fin_delete();
           $field->pool_manager_rebuild();
         return $result;
