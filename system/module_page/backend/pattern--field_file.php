@@ -140,8 +140,6 @@ namespace effcore {
   ############
 
   function on_pool_values_save() {
-    $items_pre = $this->items_get('pre');
-    $items_fin = $this->items_get('fin');
 
 //  # deletion of 'fin' items which marked as 'deleted'
 //    $deleted_from_cache = $this->items_get('fin_to_delete');
@@ -151,27 +149,13 @@ namespace effcore {
 //      }
 //    }
 
-  # moving of 'pre' items into the directory 'files'
-    foreach ($items_pre as $c_id => $c_item) {
-      if ($c_item->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->file, $this->fixed_name, $this->fixed_type)) {
-              $items_fin[] = $c_item;
-        unset($items_pre[$c_id]);
-        $this->items_set('pre', $items_pre);
-        message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" has been saved.', [
-          'type' => (new text('Picture'))->render(),
-          'id'   => $c_id]));
-      } else {
-        return;
-      }
-    }
+    $this->on_values_pre_to_fin();
   # prepare return
     $this->result = [];
-    foreach ($items_fin as $c_item) {
+    foreach ($this->items_get('fin') as $c_item) {
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
     }
   # update controls
-    $this->on_values_old_update($this->result);
     $this->pool_manager_rebuild();
 
 //  # moving of 'pool_pre' values to the 'pool_fin' and return result
@@ -183,16 +167,36 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_new_insert($new_items = []) {
-    $items = $this->items_get('pre');
+    $items_pre = $this->items_get('pre');
     foreach ($new_items as $c_new_item) {
-      $items[] = $c_new_item;
-      $c_new_item_id = core::array_key_last($items);
+      $items_pre[] = $c_new_item;
+      $c_new_item_id = core::array_key_last($items_pre);
       if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
-        $this->items_set('pre', $items);
+        $this->items_set('pre', $items_pre);
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was inserted.', [
           'type' => (new text('Picture'))->render(),
           'id'   => $c_new_item_id]));
+      } else {
+        $this->error_set();
+        return;
+      }
+    }
+  }
+
+  function on_values_pre_to_fin() {
+    $items_pre = $this->items_get('pre');
+    $items_fin = $this->items_get('fin');
+    foreach ($items_pre as $c_id => $c_item) {
+      if ($c_item->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->file, $this->fixed_name, $this->fixed_type)) {
+              $items_fin[] = $c_item;
+        unset($items_pre[$c_id]);
+        $this->items_set('pre', $items_pre);
+        $this->items_set('fin', $items_fin);
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" has been saved.', [
+          'type' => (new text('Picture'))->render(),
+          'id'   => $c_id]));
       } else {
         $this->error_set();
         return;
