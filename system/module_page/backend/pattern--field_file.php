@@ -87,7 +87,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->on_values_old_update($value ? [$value] : []);
+    $this->on_values_fin_update($value ? [$value] : []);
     $this->pool_manager_rebuild();
   }
 
@@ -96,7 +96,7 @@ namespace effcore {
   }
 
   function values_set($values) {
-    $this->on_values_old_update($values ?: []);
+    $this->on_values_fin_update($values ?: []);
     $this->pool_manager_rebuild();
   }
 
@@ -166,7 +166,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_new_insert($new_items = []) {
+  function on_values_pre_insert($new_items = []) {
     $items_pre = $this->items_get('pre');
     foreach ($new_items as $c_new_item) {
       $items_pre[] = $c_new_item;
@@ -183,6 +183,8 @@ namespace effcore {
       }
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function on_values_pre_to_fin() {
     $items_pre = $this->items_get('pre');
@@ -206,7 +208,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_old_update($old_items = []) {
+  function on_values_fin_update($old_items = []) {
     $items = [];
     foreach ($old_items as $c_id => $c_path_relative) {
       $c_item = new file_uploaded;
@@ -363,7 +365,7 @@ namespace effcore {
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->on_values_new_insert($new_values);
+        if ($result) $field->on_values_pre_insert($new_values);
         $field->pool_manager_rebuild();
         return $result;
       }
