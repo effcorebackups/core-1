@@ -144,14 +144,10 @@ namespace effcore {
     foreach ($this->items_get('fin') as $c_item) {
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
     }
-  # update controls
-//  $this->pool_manager_set_deleted_items('fin', []);
-//  $this->items_set('fin_to_delete', []);
+  # update pool_manager
     $this->pool_manager_rebuild();
     return true;
   }
-
-  # ─────────────────────────────────────────────────────────────────────
 
   function on_values_pre_move_to_fin() {
     $items_pre = $this->items_get('pre');
@@ -211,8 +207,6 @@ namespace effcore {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_values_fin_update($values = []) {
     $fin_items = [];
     $deleted_cache = $this->items_get('fin_to_delete');
@@ -242,12 +236,20 @@ namespace effcore {
   }
 
   function on_values_fin_delete_physically() {
-//  $deleted_from_cache = $this->items_get('fin_to_delete');
-//  foreach ($deleted_from_cache as $c_id => $c_item) {
-//    if (!$c_item->delete_fin()) {
-//      return;
-//    }
-//  }
+    $deleted_cache = $this->items_get('fin_to_delete');
+    foreach ($deleted_cache as $c_id => $c_item) {
+      if ($c_item->delete_fin()) {
+        unset($deleted_cache[$c_id]);
+        $this->items_set('fin_to_delete', $deleted_cache);
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" was deleted.', [
+          'type' => (new text('Picture'))->render(),
+          'id'   => $c_id]));
+      } else {
+        $this->error_set();
+        return;
+      }
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -308,14 +310,6 @@ namespace effcore {
       $name = $this->name_get();
       if ($type === 'fin') return core::array_kmap(static::request_values_get($name.'_delete_fin'));
       if ($type === 'pre') return core::array_kmap(static::request_values_get($name.'_delete_pre'));
-    }
-  }
-
-  protected function pool_manager_set_deleted_items($type, $items) {
-    if ($this->disabled_get() === false) {
-      $name = $this->name_get();
-      if ($type === 'fin') static::request_values_set($name.'_delete_fin', $items);
-      if ($type === 'pre') static::request_values_set($name.'_delete_pre', $items);
     }
   }
 
