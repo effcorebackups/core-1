@@ -75,6 +75,9 @@ namespace effcore {
       foreach ($this->allowed_types as $c_type)
                  $accept_types[] = '.'.$c_type;
       $this->child_select('element')->attribute_insert('accept', implode(',', $accept_types));
+      if ($this->is_debug_mode) {
+        $this->attribute_insert('data-debug', true);
+      }
     }
   }
 
@@ -419,9 +422,9 @@ namespace effcore {
 
   static function debug_info_pool_state_get($field, $phase = '') {
     $result = br.'########### '.$phase.' ###########'.br.br;
-    $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
     $result.= 'pool fin_to_delete:'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
     return $result;
   }
 
