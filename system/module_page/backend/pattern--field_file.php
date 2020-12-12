@@ -145,7 +145,7 @@ namespace effcore {
     $this->result = [];
     foreach ($this->items_get('fin') as $c_item)
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
-    $this->on_values_fin_update($this->result);
+    $this->on_values_fin_update($this->result); # update indexes
     $this->pool_manager_rebuild();
     return true;
   }
@@ -352,11 +352,11 @@ namespace effcore {
         if ($field->disabled_get()) return true;
         $new_values = static::request_files_get($name);
         static::sanitize($field, $form, $element, $new_values);
+        $field->on_values_pre_delete_physically();
+        $field->on_values_fin_delete();
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
         if ($result) $field->on_values_pre_insert($new_values);
-        $field->on_values_pre_delete_physically();
-        $field->on_values_fin_delete();
         $field->pool_manager_rebuild();
         if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE');
         return $result;
