@@ -66,6 +66,7 @@ namespace effcore {
   public $allowed_types = ['txt' => 'txt'];
   public $has_on_validate = true;
   public $result;
+  public $is_debug_mode = false;
 
   function build() {
     parent::build();
@@ -352,11 +353,14 @@ namespace effcore {
         static::sanitize($field, $form, $element, $new_values);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result)
-          $field->on_values_pre_insert($new_values);
-          $field->on_values_pre_delete_physically();
-          $field->on_values_fin_delete();
-          $field->pool_manager_rebuild();
+        if ($result) $field->on_values_pre_insert($new_values);
+        $field->on_values_pre_delete_physically();
+        $field->on_values_fin_delete();
+        $field->pool_manager_rebuild();
+        if ($field->is_debug_mode) {
+          print 'ON_VALIDATE'.br;
+          print static::debug_info_pool_state_get($field);
+        }
         return $result;
       }
     }
@@ -365,7 +369,12 @@ namespace effcore {
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
-      if (!$field->on_values_save()) {
+      $result = $field->on_values_save();
+      if ($field->is_debug_mode) {
+        print 'ON_VALIDATE PHASE 3'.br;
+        print static::debug_info_pool_state_get($field);
+      }
+      if (!$result) {
         $field->error_set();
         return;
       }
@@ -411,6 +420,14 @@ namespace effcore {
     } else {
       return true;
     }
+  }
+
+  static function debug_info_pool_state_get($field) {
+    $result = '';
+    $result.= 'poll: pre'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'poll: fin'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'poll: fin_to_delete'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    return $result;
   }
 
 }}
