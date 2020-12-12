@@ -1040,7 +1040,7 @@ entities
         managing_control_properties
         - max_file_size: 1M
         - upload_dir: videos/
-        - fixed_name: video_poster-%%_instance_id_context
+        - fixed_name: video-%%_instance_id_context-poster
         - weight: +320
         managing_control_element_attributes_on_insert
         - disabled: true
