@@ -162,6 +162,7 @@ namespace effcore {
           'id'   => $c_id]));
       } else {
         $this->error_set();
+        return;
       }
     }
   }
@@ -179,6 +180,7 @@ namespace effcore {
           'id'   => $c_new_item_id]));
       } else {
         $this->error_set();
+        return;
       }
     }
   }
@@ -197,6 +199,7 @@ namespace effcore {
             'id'   => $c_id]));
         } else {
           $this->error_set();
+          return;
         }
       }
     }
@@ -242,6 +245,7 @@ namespace effcore {
           'id'   => $c_id]));
       } else {
         $this->error_set();
+        return;
       }
     }
   }
