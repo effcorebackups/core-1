@@ -87,6 +87,7 @@ namespace effcore {
   function value_set($value) {
     $this->on_values_fin_update($value ? [$value] : []);
     $this->pool_manager_rebuild();
+    if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
   }
 
   function values_get() {
@@ -96,6 +97,7 @@ namespace effcore {
   function values_set($values) {
     $this->on_values_fin_update($values ?: []);
     $this->pool_manager_rebuild();
+    if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
   }
 
   function file_size_max_get() {
@@ -355,10 +357,7 @@ namespace effcore {
         $field->on_values_pre_delete_physically();
         $field->on_values_fin_delete();
         $field->pool_manager_rebuild();
-        if ($field->is_debug_mode) {
-          print 'ON_VALIDATE'.br;
-          print static::debug_info_pool_state_get($field);
-        }
+        if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE');
         return $result;
       }
     }
@@ -368,10 +367,7 @@ namespace effcore {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
       $result = $field->on_values_save();
-      if ($field->is_debug_mode) {
-        print 'ON_VALIDATE PHASE 3'.br;
-        print static::debug_info_pool_state_get($field);
-      }
+      if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE PHASE 3');
       if (!$result) {
         $field->error_set();
         return;
@@ -420,11 +416,11 @@ namespace effcore {
     }
   }
 
-  static function debug_info_pool_state_get($field) {
-    $result = '';
-    $result.= 'poll: pre'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    $result.= 'poll: fin'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    $result.= 'poll: fin_to_delete'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+  static function debug_info_pool_state_get($field, $phase = '') {
+    $result = br.'########### '.$phase.' ###########'.br.br;
+    $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+    $result.= 'pool fin_to_delete:'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
     return $result;
   }
 
