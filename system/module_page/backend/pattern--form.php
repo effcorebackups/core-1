@@ -117,7 +117,7 @@ namespace effcore {
           $this->errors_show();
 
         # call on_submit methods (if no errors)
-          if ($this->has_error() == false) {
+          if (!$this->has_error()) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath);}
             event::start('on_form_submit', $id, [&$this, &$this->items]);
           # show errors after submit for buttons with 'break_on_validate' (will not be shown if a redirect has occurred)
@@ -126,8 +126,8 @@ namespace effcore {
 
         # update or delete validation cache (will not be deleted if redirection has occurred)
           if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() != false && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() == false                                                                                ) $this->validation_cache_storage_delete();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() === true && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() !== true                                                                                ) $this->validation_cache_storage_delete();
 
         }
       }

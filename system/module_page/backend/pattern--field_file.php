@@ -138,15 +138,13 @@ namespace effcore {
   ############
 
   function on_values_save() {
-    if ($this->on_values_fin_delete_physically()) {
-      if ($this->on_values_pre_move_to_fin()) {
-        $this->result = [];
-        foreach ($this->items_get('fin') as $c_item)
-          $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
-        $this->pool_manager_rebuild();
-        return true;
-      }
-    }
+    $this->on_values_fin_delete_physically(); if ($this->has_error()) return;
+    $this->on_values_pre_move_to_fin();       if ($this->has_error()) return;
+    $this->result = [];
+    foreach ($this->items_get('fin') as $c_item)
+      $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    $this->pool_manager_rebuild();
+    return true;
   }
 
   function on_values_pre_move_to_fin() {
@@ -164,7 +162,6 @@ namespace effcore {
           'id'   => $c_id]));
       } else {
         $this->error_set();
-        return;
       }
     }
   }
@@ -182,7 +179,6 @@ namespace effcore {
           'id'   => $c_new_item_id]));
       } else {
         $this->error_set();
-        return;
       }
     }
   }
@@ -201,7 +197,6 @@ namespace effcore {
             'id'   => $c_id]));
         } else {
           $this->error_set();
-          return;
         }
       }
     }
@@ -247,7 +242,6 @@ namespace effcore {
           'id'   => $c_id]));
       } else {
         $this->error_set();
-        return;
       }
     }
   }
