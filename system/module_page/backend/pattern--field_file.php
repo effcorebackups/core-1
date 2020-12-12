@@ -162,7 +162,7 @@ namespace effcore {
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" has been saved.', [
           'type' => (new text('Picture'))->render(),
-          'id'   => $c_id]));
+          'id'   => $c_item->file]));
       } else {
         $this->error_set();
         return;
@@ -180,7 +180,7 @@ namespace effcore {
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was inserted.', [
           'type' => (new text('Picture'))->render(),
-          'id'   => $c_new_item_id]));
+          'id'   => $c_new_item->file]));
       } else {
         $this->error_set();
         return;
@@ -199,7 +199,7 @@ namespace effcore {
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was deleted.', [
             'type' => (new text('Picture'))->render(),
-            'id'   => $c_id]));
+            'id'   => $c_item->file]));
         } else {
           $this->error_set();
           return;
@@ -245,7 +245,7 @@ namespace effcore {
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was deleted.', [
           'type' => (new text('Picture'))->render(),
-          'id'   => $c_id]));
+          'id'   => $c_item->file]));
       } else {
         $this->error_set();
         return;
