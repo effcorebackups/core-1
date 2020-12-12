@@ -136,7 +136,7 @@ namespace effcore {
   ### pool ###
   ############
 
-  function on_pool_values_save() {
+  function on_values_save() {
     $this->on_values_fin_delete_physically();
     $this->on_values_pre_move_to_fin();
   # prepare return
@@ -366,7 +366,7 @@ namespace effcore {
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
-      if (!$field->on_pool_values_save()) {
+      if (!$field->on_values_save()) {
         $field->error_set();
         return;
       }
