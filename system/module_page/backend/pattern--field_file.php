@@ -145,6 +145,7 @@ namespace effcore {
     $this->result = [];
     foreach ($this->items_get('fin') as $c_item)
       $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
+    $this->on_values_fin_update($this->result);
     $this->pool_manager_rebuild();
     return true;
   }
