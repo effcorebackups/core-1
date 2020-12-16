@@ -44,7 +44,7 @@ namespace effcore {
     $result = chr(0x1c).chr(0x2).chr($key);
     if ($length < 2 ** 15)
          $result.= chr($length >> 8).chr($length & 0xff);
-    else $result.= chr(0x80).chr(0x04).
+    else $result.= chr(0x80).chr(0x4).
                    chr(($length >> 24) & 0xff).
                    chr(($length >> 16) & 0xff).
                    chr(($length >>  8) & 0xff).
