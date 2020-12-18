@@ -19,7 +19,11 @@ namespace effcore {
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
     'png'  => 'png',
-    'gif'  => 'gif'
+    'gif'  => 'gif'];
+  public $thumbnails_allowed = [
+    'small'  => 'small',
+    'middle' => 'middle',
+    'big'    => 'big'
   ];
 
   function widget_manage_get($item, $c_row_id) {
@@ -81,7 +85,7 @@ namespace effcore {
           $c_file_dst = new file($c_file_src->dirs_get().
                                  $c_file_src->name_get().'.picture');
           $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
-            'thumbnails_allowed' => ['small', 'middle', 'big'],
+            'thumbnails_allowed' => $this->thumbnails_allowed,
             'original' => [
               'type' => $c_item->object->type,
               'mime' => $c_item->object->mime,

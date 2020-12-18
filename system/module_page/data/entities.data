@@ -306,6 +306,10 @@ entities
           - =: png
           - =: gif
           - =: svg
+          thumbnails_allowed
+          - =: small
+          - =: middle
+          - =: big
         - weight: +340
         selection_params_default
         - filter: \effcore\widget_files_pictures::complex_value_to_markup
