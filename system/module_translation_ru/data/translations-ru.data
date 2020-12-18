@@ -78,6 +78,7 @@ translations
     - Checkbox: Флажок
     - Checkboxes: Флажки
     - checking: проверка
+    - click to open in new window: нажмите, чтобы открыть в новом окне
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
@@ -464,9 +465,7 @@ translations
     - Permissions: Разрешения
     - PHP CURL version: PHP CURL версия
     - PHP dependencies: PHP-зависимости
-    - PHP Exif is enabled: PHP Exif включён
     - PHP extension stopped uploading file.: PHP-расширение остановило загрузку файла.
-    - PHP GD is enabled: PHP GD включён
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP PCRE version: PHP PCRE версия
     - PHP version: PHP версия

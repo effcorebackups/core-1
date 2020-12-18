@@ -27,9 +27,9 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
   # info markup
     $file = new file($item->object->get_current_path());
-    $thumbnail_markup = media::is_picture_type_with_thumbnail($file->type) ?
-      new markup_simple('img', ['src' => '/'.$file->path_get_relative().'.get_thumbnail', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
-      new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                  'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+    $thumbnail_markup = $file->type === 'picture' ?
+      new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
+      new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
     $id_markup = $item->object->get_current_state() === 'pre' ?
       new text_multiline(['new item', '…'], [], '') :
       new text($file->file_get());
@@ -73,21 +73,32 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_pool_values_save() {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      if ($c_item->object->get_current_state() === 'pre') {
-        $thumbnail = new file($c_item->object->get_current_path());
-        media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }}
-    parent::on_pool_values_save();
-  }
-
-  function on_button_click_delete($form, $npath, $button) {
-    $items = $this->items_get();
-    if ($items[$button->_id]->object->get_current_state() === 'pre') {
-      $thumbnail = new file($items[$button->_id]->object->get_current_path());
-      media::picture_thumbnails_cleaning($thumbnail->dirs_get(), $thumbnail->name_get()); }
-    return parent::on_button_click_delete($form, $npath, $button);
+  function items_set($items, $once = false) {
+    if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
+      foreach ($items as $c_id => $c_item) {
+        if (media::is_type_for_picture_thumbnail_create($c_item->object->type)) {
+          $c_file_src = new file($c_item->object->get_current_path());
+          $c_file_dst = new file($c_file_src->dirs_get().
+                                 $c_file_src->name_get().'.picture');
+          $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
+            'thumbnails_allowed' => ['small', 'middle', 'big'],
+            'original' => [
+              'type' => $c_item->object->type,
+              'mime' => $c_item->object->mime,
+              'size' => $c_item->object->size
+          ]]);
+         if ($result) {
+           @unlink($c_file_src->path_get());
+           $items[$c_id]->object->type     = 'picture';
+           $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
+           $items[$c_id]->object->mime     = $c_file_dst->mime_get();
+           $items[$c_id]->object->pre_path = $c_file_dst->path_get();
+           $items[$c_id]->object->size     = $c_file_dst->size_get();
+         }
+        }
+      }
+    }
+    parent::items_set($items, $once);
   }
 
   ###########################
@@ -106,9 +117,9 @@ namespace effcore {
       foreach ($complex as $c_item_num => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
-        $c_item_markup = media::is_picture_type_with_thumbnail($c_file->type) ?
-          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'.get_thumbnail?size=middle', 'alt' => new text('thumbnail')]) :
-          new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                              'alt' => new text('thumbnail')]);
+        $c_item_markup = $c_file->type === 'picture' ?
+          new markup('a', ['title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')])) :
+          new markup('a', ['title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                 'alt' => new text('thumbnail')]));
         $decorator->data[$c_item_num] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_item_num   ],

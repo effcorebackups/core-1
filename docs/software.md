@@ -94,6 +94,7 @@ PHP
     | hash         | by default |                         |
     | mbstring     | no         |                         |
     | pcre         | always     |                         |
+    | Phar         | by default |                         |
     | SPL          | always     |                         |
     | standard     | always     |                         |
     | pdo_mysql    | no         | for working with MySQL  |
@@ -117,7 +118,7 @@ Recommended Development Software
 
 Only high quality licensed expensive software was used for create the project.
 It's recommended to use the next software:
-- macOS High Sierra or newer for using quality software and make development environment;
+- macOS for using quality software and make development environment;
 - Coda, Nova (mac) for working with code|markup|styles and searching in the code;
 - Tower (mac|win) for working with Git;
 - Kaleidoscope (mac) for search differences in code;
@@ -136,7 +137,7 @@ It's recommended to use the next software:
 - ColorSnapper (mac) for pick the "right" colors;
 - RegExRX (mac|win) for improve your regular expressions;
 - VMWare Fusion Pro (mac) for working with virtual machines;
-- Find Any Files (mac) for searching in the code (note: cannot search is some cases);
+- Find Any Files (mac) for searching in the code;
 - VisualGrep (mac) for searching in the code.
 
 

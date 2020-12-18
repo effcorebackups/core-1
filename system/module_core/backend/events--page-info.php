@@ -53,8 +53,6 @@ namespace effcore\modules\core {
     $php_version_curl = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(@opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_sticker = new markup('x-sticker', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
-    $is_enabled_exif_sticker    = new markup('x-sticker', ['data-state' => extension_loaded('exif') ? 'ok' : 'warning'], extension_loaded('exif') ? 'yes' : 'no');
-    $is_enabled_gd_sticker      = new markup('x-sticker', ['data-state' => extension_loaded('gd'  ) ? 'ok' : 'warning'], extension_loaded('gd'  ) ? 'yes' : 'no');
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
@@ -63,8 +61,6 @@ namespace effcore\modules\core {
       'php_version_curl'            => ['title' => 'PHP CURL version',        'value' => $php_version_curl                                          ],
       'php_version_pcre'            => ['title' => 'PHP PCRE version',        'value' => PCRE_VERSION                                               ],
       'php_state_opcache'           => ['title' => 'PHP OPCache is enabled',  'value' => $is_enabled_opcache_sticker                                ],
-      'php_state_exif'              => ['title' => 'PHP Exif is enabled',     'value' => $is_enabled_exif_sticker                                   ],
-      'php_state_gd'                => ['title' => 'PHP GD is enabled',       'value' => $is_enabled_gd_sticker                                     ],
       'php_ini_max_file_uploads'    => ['title' => 'PHP max_file_uploads',    'value' => core::max_file_uploads_get()                               ],
       'php_ini_upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => locale::format_bytes(core::upload_max_filesize_bytes_get())],
       'php_ini_post_max_size'       => ['title' => 'PHP post_max_size',       'value' => locale::format_bytes(core::post_max_size_bytes_get())      ],

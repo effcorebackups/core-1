@@ -5,7 +5,7 @@ settings
   page_max_width: 950
   page_meta_viewport: width=300, initial-scale=1
   thumbnail_jpeg_quality: 90
-  thumbnail_small_width: 44
+  thumbnail_small_width: 100
   thumbnail_middle_width: 300
   thumbnail_big_width: 600
   color_page_id: embedded_dark_1

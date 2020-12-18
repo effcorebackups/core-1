@@ -1,7 +1,6 @@
 file_types
 # ─────────────────────────────────────────────────────────────────────
-# virtual types
+# static types
 # ─────────────────────────────────────────────────────────────────────
-- get_thumbnail
-    type: get_thumbnail
-    kind: virtual
+- picture
+    type: picture

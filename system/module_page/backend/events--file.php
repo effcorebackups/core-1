@@ -8,7 +8,6 @@ namespace effcore\modules\page {
           use const \effcore\dir_dynamic;
           use const \effcore\dir_system;
           use \effcore\core;
-          use \effcore\event;
           use \effcore\file;
           use \effcore\media;
           use \effcore\module;
@@ -16,65 +15,66 @@ namespace effcore\modules\page {
           abstract class events_file {
 
   # ─────────────────────────────────────────────────────────────────────
-  # picture.jpg.get_thumbnail              → picture.small.thumb.jpg
-  # picture.jpg.get_thumbnail?size=small   → picture.small.thumb.jpg
-  # picture.jpg.get_thumbnail?size=middle  → picture.middle.thumb.jpg
-  # picture.jpg.get_thumbnail?size=big     → picture.big.thumb.jpg
-  # picture.jpeg.get_thumbnail             → picture.small.thumb.jpeg
-  # picture.jpeg.get_thumbnail?size=small  → picture.small.thumb.jpeg
-  # picture.jpeg.get_thumbnail?size=middle → picture.middle.thumb.jpeg
-  # picture.jpeg.get_thumbnail?size=big    → picture.big.thumb.jpeg
-  # picture.png.get_thumbnail              → picture.small.thumb.png
-  # picture.png.get_thumbnail?size=small   → picture.small.thumb.png
-  # picture.png.get_thumbnail?size=middle  → picture.middle.thumb.png
-  # picture.png.get_thumbnail?size=big     → picture.big.thumb.png
-  # picture.gif.get_thumbnail              → picture.small.thumb.gif
-  # picture.gif.get_thumbnail?size=small   → picture.small.thumb.gif
-  # picture.gif.get_thumbnail?size=middle  → picture.middle.thumb.gif
-  # picture.gif.get_thumbnail?size=big     → picture.big.thumb.gif
+  # meta                      → phar://test.picture/meta
+  # test.picture              → phar://test.picture/original
+  # test.picture?thumb=small  → phar://test.picture/small
+  # test.picture?thumb=middle → phar://test.picture/middle
+  # test.picture?thumb=big    → phar://test.picture/big
   # ─────────────────────────────────────────────────────────────────────
 
-  const prepath_media_error_thumbnail_creation_error = dir_system.'module_core/frontend/pictures/media-error-thumbnail-creation-error';
-  const prepath_media_error_extensions_not_loaded    = dir_system.'module_core/frontend/pictures/media-error-extensions-not-loaded';
+  const prepath_thumbnail_error = dir_system.'module_core/frontend/pictures/thumbnail-error';
 
-  static function on_load_virtual_get_thumbnail($event, $type_info, &$file) {
-    if ($type_info->type === 'get_thumbnail') {
-      $settings = module::settings_get('page');
-      switch (url::get_current()->query_arg_select('size')) {
-        case 'small' : $size = 'small';  $size_int = $settings->thumbnail_small_width;  break;
-        case 'middle': $size = 'middle'; $size_int = $settings->thumbnail_middle_width; break;
-        case 'big'   : $size = 'big';    $size_int = $settings->thumbnail_big_width;    break;
-        default      : $size = 'small';  $size_int = $settings->thumbnail_small_width;
-      }
-      $picture = new file($file->dirs_get().$file->name_get());
-      $real_path = core::validate_realpath($picture->path_get());
-      if ($real_path === false)                          core::send_header_and_exit('file_not_found');
-      if ($real_path !== $picture->path_get())           core::send_header_and_exit('file_not_found');
-      if (strpos($real_path, dir_dynamic) !== 0)         core::send_header_and_exit('file_not_found');
-      if (!is_file    ($picture->path_get()))            core::send_header_and_exit('file_not_found');
-      if (!is_readable($picture->path_get()))            core::send_header_and_exit('access_forbidden');
-      if (substr($picture->name_get(), -6) === '.thumb') core::send_header_and_exit('access_forbidden');
-      if (media::is_picture_type_with_thumbnail($picture->type_get())) {
-        $thumbnail = new file($picture->path_get());
-        $thumbnail->name_set($thumbnail->name_get().'.'.$size.'.thumb');
-        $file_types = file::types_get();
-        if ($thumbnail->is_exist()) {
-          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-          exit();
+  static function on_load_static_picture($event, &$type_info, &$file) {
+    if ($type_info->type === 'picture') {
+      $path = $file->path_get();
+      $path_container    = 'phar://'.$path;
+      $path_meta         = 'phar://'.$path.'/meta';
+      $path_original     = 'phar://'.$path.'/original';
+      $path_thumb_small  = 'phar://'.$path.'/small';
+      $path_thumb_middle = 'phar://'.$path.'/middle';
+      $path_thumb_big    = 'phar://'.$path.'/big';
+      if (file_exists($path_meta) &&
+          file_exists($path_original)) {
+        $meta = unserialize(file_get_contents($path_meta));
+        $type_info = file::types_get()[$meta['original']['type']];
+        switch (url::get_current()->query_arg_select('thumb')) {
+          case 'small' : $size = 'small';  break;
+          case 'middle': $size = 'middle'; break;
+          case 'big'   : $size = 'big';    break;
+          default      : $size = 'original';
         }
-        if (extension_loaded('exif') && extension_loaded('gd')) {
-          $result = media::picture_thumbnail_create($picture->path_get(), $thumbnail->path_get(), $size_int, null, $settings->thumbnail_jpeg_quality);
-          if (!$result) $thumbnail = new file(static::prepath_media_error_thumbnail_creation_error.'.'.$thumbnail->type_get());
-          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-          exit();
-        } else {
-          $thumbnail = new file(static::prepath_media_error_extensions_not_loaded.'.'.$thumbnail->type_get());
-          event::start('on_file_load', 'static', [$file_types[$thumbnail->type_get()], &$thumbnail]);
-          exit();
+        if ($size === 'original') {
+          $file = new file($path_original);
+          return true;
         }
-      } else {
-        core::send_header_and_exit('unsupported_media_type');
-      }
+        if ($size === 'small' ) $path_thumbnail = $path_thumb_small;
+        if ($size === 'middle') $path_thumbnail = $path_thumb_middle;
+        if ($size === 'big'   ) $path_thumbnail = $path_thumb_big;
+        if (file_exists($path_thumbnail)) {
+          $file = new file($path_thumbnail);
+          return true;
+        }
+      # generate thumbnail and insert it into container
+        if (strpos($path, dir_dynamic) === 0) {
+          if (in_array($size, $meta['thumbnails_allowed'])) {
+            $settings = module::settings_get('page');
+            if ($size === 'small' ) $width = $settings->thumbnail_small_width;
+            if ($size === 'middle') $width = $settings->thumbnail_middle_width;
+            if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+            $path_thumbnail_tmp = $path.'.'.$size.'.'.$meta['original']['type'];
+            $result = media::picture_thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+            if ($result && file_exists($path_thumbnail_tmp)) {
+              if (media::container_picture_thumbnail_insert($path_container, $path_thumbnail_tmp, $size)) {
+                @unlink($path_thumbnail_tmp);
+                $file = new file($path_thumbnail);
+                return true;
+              }
+            }
+          # show dummy if an error
+            $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
+          } $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
+        }   $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
+      } else core::send_header_and_exit('unsupported_media_type');
     }
   }
 

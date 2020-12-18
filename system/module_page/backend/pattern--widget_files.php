@@ -21,7 +21,7 @@ namespace effcore {
   ];
 
   function value_get_complex() {
-    $this->on_pool_values_save();
+    $this->on_values_save();
     return $this->items_get();
   }
 
@@ -73,7 +73,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_pool_values_save() {
+  function on_values_save() {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
       switch ($c_item->object->get_current_state()) {
@@ -100,8 +100,12 @@ namespace effcore {
     $this->build();
   }
 
+  function on_values_validate($form, $npath, $button) {
+    return field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);
+  }
+
   function on_button_click_insert($form, $npath, $button) {
-    $values = field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);
+    $values = $this->on_values_validate($form, $npath, $button);
     if (count($values)) {
       $items = $this->items_get();
       foreach ($values as $c_value) {

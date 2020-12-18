@@ -15,7 +15,7 @@ Website         : http://effcore.com
 EFFCORE is a next-generation mini CMS (Content Management System)
 and mini CMF (Content Management Framework) developed by between 2017 and 2021.
 Incorporated the new features of Web 2.0/3.0.
-Uses technologies such as: HTML5, CSS3, JS ES6, IP v6, SVG, SMIL,
+Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, PSR-0.
 
 Can be used as a tool for building sites by simple users, and also

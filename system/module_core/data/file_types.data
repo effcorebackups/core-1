@@ -203,10 +203,6 @@ file_types
     type: img
     headers
     - Content-type: application/octet-stream
-- image
-    type: image
-    headers
-    - Content-type: image/*
 - jar
     type: jar
     headers

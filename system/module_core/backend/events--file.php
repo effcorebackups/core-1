@@ -14,7 +14,7 @@ namespace effcore\modules\core {
           use \effcore\token;
           abstract class events_file {
 
-  static function on_load_dynamic($event, $type_info, &$file) {
+  static function on_load_dynamic($event, &$type_info, &$file) {
     $data = token::apply($file->load());
     $etag = core::hash_get_etag($data);
 
@@ -89,7 +89,7 @@ namespace effcore\modules\core {
   #
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_load_static($event, $type_info, &$file) {
+  static function on_load_static($event, &$type_info, &$file) {
     $last_modified = gmdate('D, d M Y H:i:s', filemtime($file->path_get())).' GMT';
 
   # send header '304 Not Modified' if the data has not changed

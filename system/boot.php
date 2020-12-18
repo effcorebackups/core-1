@@ -102,7 +102,8 @@ namespace effcore {
 
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'virtual') {
-      event::start('on_file_load', 'virtual', [$file_types[$file->type], &$file]);
+      $type = $file_types[$file->type];
+      event::start('on_file_load', 'virtual', [&$type, &$file]);
       exit();
     }
 
@@ -123,7 +124,8 @@ namespace effcore {
 
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'dynamic') {
-      event::start('on_file_load', 'dynamic', [$file_types[$file->type], &$file]);
+      $type = $file_types[$file->type];
+      event::start('on_file_load', 'dynamic', [&$type, &$file]);
       exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -131,9 +133,8 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
     } else {
-      if (isset($file_types[$file->type]))
-           event::start('on_file_load', 'static', [       $file_types[$file->type],                       &$file]);
-      else event::start('on_file_load', 'static', [(object)['type' => $file->type, 'module_id' => null] , &$file]);
+      $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
+      event::start('on_file_load', 'static', [&$type, &$file]);
       exit();
     }
 

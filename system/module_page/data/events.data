@@ -19,9 +19,10 @@ events
       handler: \effcore\modules\page\events_module::on_cron_run
 # ─────────────────────────────────────────────────────────────────────
   on_file_load
-  - virtual_get_thumbnail|event
-      for: virtual
-      handler: \effcore\modules\page\events_file::on_load_virtual_get_thumbnail
+  - static_picture|event
+      for: static
+      weight: +500
+      handler: \effcore\modules\page\events_file::on_load_static_picture
 # ─────────────────────────────────────────────────────────────────────
   on_form_init
   - colors|event
@@ -70,9 +71,6 @@ events
       weight: +600
       handler: \effcore\modules\page\events_form_instance_update::on_submit
 # ─────────────────────────────────────────────────────────────────────
-  on_instance_update_before
-  - all|event
-      handler: \effcore\modules\page\events_storage::on_instance_update_before
   on_instance_delete_before
   - all|event
       handler: \effcore\modules\page\events_storage::on_instance_delete_before
