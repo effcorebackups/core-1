@@ -123,7 +123,7 @@ namespace effcore {
         $c_item_type = 'picture';
         $c_item_markup = $c_file->type === 'picture' ?
           new markup('a', ['title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')])) :
-          new markup('a', ['title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                 'alt' => new text('thumbnail')]));
+          new markup('a', ['title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative()             ], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                 'alt' => new text('thumbnail')]));
         $decorator->data[$c_item_num] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_item_num   ],
