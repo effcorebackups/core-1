@@ -104,7 +104,7 @@ namespace effcore {
 
   function dirs_get()          {return $this->dirs;}
   function dirs_get_parts()    {return explode('/', trim($this->dirs, '/'));}
-  function dirs_get_relative() {return $this->is_path_full() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
+  function dirs_get_relative() {return $this->is_path_absolute() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 
   function dirs_set($dirs) {
     $this->dirs = $dirs;
@@ -163,7 +163,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function is_path_full() {
+  function is_path_absolute() {
     if (DIRECTORY_SEPARATOR !== '\\') return isset($this->dirs[0]) && $this->dirs[0] === '/';
     if (DIRECTORY_SEPARATOR === '\\') return isset($this->dirs[1]) && $this->dirs[1] === ':';
   }
