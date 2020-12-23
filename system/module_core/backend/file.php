@@ -10,79 +10,43 @@ namespace effcore {
           use \RecursiveIteratorIterator as ri_iterator;
           class file {
 
-  # valid paths (path = dirs/ + name + '.' + type):
-  # ┌───────────────╥───────┬──────────┬──────┬──────────┐
-  # │ path          ║ dirs  │ name     │ type │ relative │
-  # ╞═══════════════╬═══════╪══════════╪══════╪══════════╡
-  # │ ...           ║       │ ...      │      │ yes      │
-  # │ 0             ║       │ 0        │      │ yes      │
-  # │ 0.            ║       │ 0.       │      │ yes      │
-  # │ 0..           ║       │ 0..      │      │ yes      │
-  # │ 0...          ║       │ 0...     │      │ yes      │
-  # │ .0            ║       │          │ 0    │ yes      │
-  # │ ..0           ║       │ .        │ 0    │ yes      │
-  # │ ...0          ║       │ ..       │ 0    │ yes      │
-  # │ 00            ║       │ 00       │      │ yes      │
-  # │ 0.0           ║       │ 0        │ 0    │ yes      │
-  # │ 0..0          ║       │ 0.       │ 0    │ yes      │
-  # │ 0...0         ║       │ 0..      │ 0    │ yes      │
-  # │ .0.           ║       │ .0.      │      │ yes      │
-  # │ ..0..         ║       │ ..0..    │      │ yes      │
-  # │ .0.0.         ║       │ .0.0.    │      │ yes      │
-  # │ ..0.0..       ║       │ ..0.0..  │      │ yes      │
-  # │ ..0..0..      ║       │ ..0..0.. │      │ yes      │
-  # │ /...          ║ /     │ ...      │      │          │
-  # │ /0            ║ /     │ 0        │      │          │
-  # │ /0.           ║ /     │ 0.       │      │          │
-  # │ /0..          ║ /     │ 0..      │      │          │
-  # │ /0...         ║ /     │ 0...     │      │          │
-  # │ /.0           ║ /     │          │ 0    │          │
-  # │ /..0          ║ /     │ .        │ 0    │          │
-  # │ /...0         ║ /     │ ..       │ 0    │          │
-  # │ /00           ║ /     │ 00       │      │          │
-  # │ /0.0          ║ /     │ 0        │ 0    │          │
-  # │ /0..0         ║ /     │ 0.       │ 0    │          │
-  # │ /0...0        ║ /     │ 0..      │ 0    │          │
-  # │ /.0.          ║ /     │ .0.      │      │          │
-  # │ /..0..        ║ /     │ ..0..    │      │          │
-  # │ /.0.0.        ║ /     │ .0.0.    │      │          │
-  # │ /..0.0..      ║ /     │ ..0.0..  │      │          │
-  # │ /..0..0..     ║ /     │ ..0..0.. │      │          │
-  # │ dir/...       ║ dir/  │ ...      │      │ yes      │
-  # │ dir/0         ║ dir/  │ 0        │      │ yes      │
-  # │ dir/0.        ║ dir/  │ 0.       │      │ yes      │
-  # │ dir/0..       ║ dir/  │ 0..      │      │ yes      │
-  # │ dir/0...      ║ dir/  │ 0...     │      │ yes      │
-  # │ dir/.0        ║ dir/  │          │ 0    │ yes      │
-  # │ dir/..0       ║ dir/  │ .        │ 0    │ yes      │
-  # │ dir/...0      ║ dir/  │ ..       │ 0    │ yes      │
-  # │ dir/00        ║ dir/  │ 00       │      │ yes      │
-  # │ dir/0.0       ║ dir/  │ 0        │ 0    │ yes      │
-  # │ dir/0..0      ║ dir/  │ 0.       │ 0    │ yes      │
-  # │ dir/0...0     ║ dir/  │ 0..      │ 0    │ yes      │
-  # │ dir/.0.       ║ dir/  │ .0.      │      │ yes      │
-  # │ dir/..0..     ║ dir/  │ ..0..    │      │ yes      │
-  # │ dir/.0.0.     ║ dir/  │ .0.0.    │      │ yes      │
-  # │ dir/..0.0..   ║ dir/  │ ..0.0..  │      │ yes      │
-  # │ dir/..0..0..  ║ dir/  │ ..0..0.. │      │ yes      │
-  # │ /dir/...      ║ /dir/ │ ...      │      │          │
-  # │ /dir/0        ║ /dir/ │ 0        │      │          │
-  # │ /dir/0.       ║ /dir/ │ 0.       │      │          │
-  # │ /dir/0..      ║ /dir/ │ 0..      │      │          │
-  # │ /dir/0...     ║ /dir/ │ 0...     │      │          │
-  # │ /dir/.0       ║ /dir/ │          │ 0    │          │
-  # │ /dir/..0      ║ /dir/ │ .        │ 0    │          │
-  # │ /dir/...0     ║ /dir/ │ ..       │ 0    │          │
-  # │ /dir/00       ║ /dir/ │ 00       │      │          │
-  # │ /dir/0.0      ║ /dir/ │ 0        │ 0    │          │
-  # │ /dir/0..0     ║ /dir/ │ 0.       │ 0    │          │
-  # │ /dir/0...0    ║ /dir/ │ 0..      │ 0    │          │
-  # │ /dir/.0.      ║ /dir/ │ .0.      │      │          │
-  # │ /dir/..0..    ║ /dir/ │ ..0..    │      │          │
-  # │ /dir/.0.0.    ║ /dir/ │ .0.0.    │      │          │
-  # │ /dir/..0.0..  ║ /dir/ │ ..0.0..  │      │          │
-  # │ /dir/..0..0.. ║ /dir/ │ ..0..0.. │      │          │
-  # └───────────────╨───────┴──────────┴──────┴──────────┘
+  # valid paths (path = protocol + dirs + name + type):
+  # ┌──────────────────────────────╥────────────┬──────────┬────────┬────────┬─────────────┐
+  # │ path                         ║ protocol   │ dirs     │ name   │ type   │ is relative │
+  # ╞══════════════════════════════╬════════════╪══════════╪════════╪════════╪═════════════╡
+  # │ ''                           ║ NULL                                                  │
+  # │ 'name'                       ║ ''         │ ''       │ 'name' │ ''     │ +           │
+  # │ '.type'                      ║ ''         │ ''       │ ''     │ 'type' │ +           │
+  # │ 'name.type'                  ║ ''         │ ''       │ 'name' │ 'type' │ +           │
+  # │ '/'                          ║ NULL                                                  │
+  # │ '/name'                      ║ ''         │ '/'      │ 'name' │ ''     │             │
+  # │ '/.type'                     ║ ''         │ '/'      │ ''     │ 'type' │             │
+  # │ '/name.type'                 ║ ''         │ '/'      │ 'name' │ 'type' │             │
+  # │ 'dirs/'                      ║ NULL                                                  │
+  # │ 'dirs/name'                  ║ ''         │ 'dirs/'  │ 'name' │ ''     │ +           │
+  # │ 'dirs/.type'                 ║ ''         │ 'dirs/'  │ ''     │ 'type' │ +           │
+  # │ 'dirs/name.type'             ║ ''         │ 'dirs/'  │ 'name' │ 'type' │ +           │
+  # │ '/dirs/'                     ║ NULL                                                  │
+  # │ '/dirs/name'                 ║ ''         │ '/dirs/' │ 'name' │ ''     │             │
+  # │ '/dirs/.type'                ║ ''         │ '/dirs/' │ ''     │ 'type' │             │
+  # │ '/dirs/name.type'            ║ ''         │ '/dirs/' │ 'name' │ 'type' │             │
+  # │ 'protocol://'                ║ NULL                                                  │
+  # │ 'protocol://name'            ║ 'protocol' │ ''       │ 'name' │ ''     │ +           │
+  # │ 'protocol://.type'           ║ 'protocol' │ ''       │ ''     │ 'type' │ +           │
+  # │ 'protocol://name.type'       ║ 'protocol' │ ''       │ 'name' │ 'type' │ +           │
+  # │ 'protocol:///'               ║ NULL                                                  │
+  # │ 'protocol:///name'           ║ 'protocol' │ '/'      │ 'name' │ ''     │             │
+  # │ 'protocol:///.type'          ║ 'protocol' │ '/'      │ ''     │ 'type' │             │
+  # │ 'protocol:///name.type'      ║ 'protocol' │ '/'      │ 'name' │ 'type' │             │
+  # │ 'protocol://dirs/'           ║ NULL                                                  │
+  # │ 'protocol://dirs/name'       ║ 'protocol' │ 'dirs/'  │ 'name' │ ''     │ +           │
+  # │ 'protocol://dirs/.type'      ║ 'protocol' │ 'dirs/'  │ ''     │ 'type' │ +           │
+  # │ 'protocol://dirs/name.type'  ║ 'protocol' │ 'dirs/'  │ 'name' │ 'type' │ +           │
+  # │ 'protocol:///dirs/'          ║ NULL                                                  │
+  # │ 'protocol:///dirs/name'      ║ 'protocol' │ '/dirs/' │ 'name' │ ''     │             │
+  # │ 'protocol:///dirs/.type'     ║ 'protocol' │ '/dirs/' │ ''     │ 'type' │             │
+  # │ 'protocol:///dirs/name.type' ║ 'protocol' │ '/dirs/' │ 'name' │ 'type' │             │
+  # └──────────────────────────────╨────────────┴──────────┴────────┴────────┴─────────────┘
 
   # wrong paths:
   # ┌────────────────╥─────────────────────────────────────────────────────┐
@@ -114,6 +78,7 @@ namespace effcore {
   const scan_with_dir_at_first = ri_iterator::SELF_FIRST;
   const scan_with_dir_at_last  = ri_iterator::CHILD_FIRST;
 
+  public $protocol;
   public $dirs;
   public $name;
   public $type;
@@ -126,9 +91,10 @@ namespace effcore {
   function parse($path) {
     $info = static::path_parse($path);
     if ($info) {
-      $this->dirs = $info->dirs;
-      $this->name = $info->name;
-      $this->type = $info->type;
+      $this->protocol = $info->protocol;
+      $this->dirs     = $info->dirs;
+      $this->name     = $info->name;
+      $this->type     = $info->type;
     }
   }
 
@@ -307,25 +273,22 @@ namespace effcore {
     }
   }
 
-  static function path_parse($path) {
-  # each path should have at least one more character and not end with '/'
-    if (strlen($path) === 0 || $path[-1] === '/') return;
-    $result = new \stdClass;
-    $result->dirs = '';
-    $result->name = '';
-    $result->type = '';
-    $full_name = substr(strrchr($path, '/'), 1);
-    if ($full_name === false) $full_name = $path;
-    if ($full_name === '' || $full_name === '.' || $full_name === '..') return;
-    $result->dirs = substr($path, 0, - strlen($full_name));
-    $type = substr(strrchr($full_name, '.'), 1);
-    if ($type !== false &&
-        $type !== '') {
-      $result->type = $type;
-      $result->name = substr($full_name, 0, - strlen($type) - 1); } else {
-      $result->name = $full_name;
+  function path_parse($path, $is_ignore_name = false) {
+    if (strlen((string)$path)) {
+      $result = new \stdClass;
+      $matches = [];
+      preg_match('%^(?:(?<type>[^./]+)\.|)'.
+                      '(?<name>[^/]+|)'.
+                      '(?<dirs>.*?)'.
+                '(?://:(?<protocol>[a-z]{1,20})|)$%S', strrev((string)$path), $matches);
+      $result->protocol = array_key_exists('protocol', $matches) ? strrev($matches['protocol']) : '';
+      $result->dirs     = array_key_exists('dirs',     $matches) ? strrev($matches['dirs'    ]) : '';
+      $result->name     = array_key_exists('name',     $matches) ? strrev($matches['name'    ]) : '';
+      $result->type     = array_key_exists('type',     $matches) ? strrev($matches['type'    ]) : '';
+      if (strlen($result->name) === 0 && strlen($result->type) === 0 && $is_ignore_name !== true) return;
+      if (strlen($result->name) !== 0 && strlen($result->type) === 0 && ($result->name === '.' || $result->name === '..')) return;
+      return $result;
     }
-    return $result;
   }
 
   static function types_get() {
