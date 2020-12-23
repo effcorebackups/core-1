@@ -273,7 +273,7 @@ namespace effcore {
     }
   }
 
-  function path_parse($path, $is_ignore_name = false) {
+  static function path_parse($path, $is_ignore_name = false) {
     if (strlen((string)$path)) {
       $result = new \stdClass;
       $matches = [];
