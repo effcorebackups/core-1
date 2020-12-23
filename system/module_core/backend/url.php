@@ -127,26 +127,32 @@ namespace effcore {
                        '(?<path>/['.$options['extra'].'\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)'. # \\x21-\\x7e + [^?#] === \\x21-\\x22 + \\x24-\\x3e + \\x40-\\x7e
                  '(?:\\?(?<query>['.$options['extra'].'\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
                 '(?:\\#(?<anchor>['.$options['extra'].'\\x21-\\x7e]*)|)$%uS', $url, $matches);
-    if ( ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # a
-         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # b
-         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # c
-         ( empty($matches['protocol']) &&  empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ||  # d
-         ( empty($matches['protocol']) && !empty($matches['domain']) &&  empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # e
-         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # f
-         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # g
-         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # h
-         ( empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ||  # i
-         (!empty($matches['protocol']) && !empty($matches['domain']) &&  empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # j
-         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) &&  empty($matches['anchor'])) ||  # k
-         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) &&  empty($matches['anchor'])) ||  # l
-         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) &&  empty($matches['query']) && !empty($matches['anchor'])) ||  # m
-         (!empty($matches['protocol']) && !empty($matches['domain']) && !empty($matches['path']) && !empty($matches['query']) && !empty($matches['anchor'])) ) { # n
-      $this->protocol = array_key_exists('protocol', $matches) ? $matches['protocol'] : '';
-      $this->domain   = array_key_exists('domain',   $matches) ? $matches['domain'  ] : '';
-      $this->port     = array_key_exists('port',     $matches) ? $matches['port'    ] : '';
-      $this->path     = array_key_exists('path',     $matches) ? $matches['path'    ] : '';
-      $this->query    = array_key_exists('query',    $matches) ? $matches['query'   ] : '';
-      $this->anchor   = array_key_exists('anchor',   $matches) ? $matches['anchor'  ] : '';
+    $protocol = array_key_exists('protocol', $matches) ? $matches['protocol'] : '';
+    $domain   = array_key_exists('domain',   $matches) ? $matches['domain'  ] : '';
+    $port     = array_key_exists('port',     $matches) ? $matches['port'    ] : '';
+    $path     = array_key_exists('path',     $matches) ? $matches['path'    ] : '';
+    $query    = array_key_exists('query',    $matches) ? $matches['query'   ] : '';
+    $anchor   = array_key_exists('anchor',   $matches) ? $matches['anchor'  ] : '';
+    if ( (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # a
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # b
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # c
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  # d
+         (!strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  # e
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # f
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # g
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # h
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  # i
+         ( strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  # j
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # k
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # l
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # m
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ) { # n
+      $this->protocol = $protocol;
+      $this->domain   = $domain;
+      $this->port     = $port;
+      $this->path     = $path;
+      $this->query    = $query;
+      $this->anchor   = $anchor;
       if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? core::server_get_request_scheme() : 'http';
       if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
       if ($options['completion'] && $this->path     === '') $this->path     = '/';
