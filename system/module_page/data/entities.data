@@ -690,6 +690,10 @@ entities
           - =: gif
           - =: svg
           - =: svgd
+        - thumbnails_allowed
+          - =: small
+          - =: middle
+          - =: big
         - weight: +340
         managing_control_element_attributes_on_insert
         - disabled: true
@@ -1045,6 +1049,10 @@ entities
         - max_file_size: 1M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context-poster
+        - thumbnails_allowed
+          - =: small
+          - =: middle
+          - =: big
         - weight: +320
         managing_control_element_attributes_on_insert
         - disabled: true

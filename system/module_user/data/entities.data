@@ -735,6 +735,8 @@ entities
         - max_file_size: 30K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
+        - thumbnails_allowed
+          - =: small
         - weight: +340
         managing_control_element_attributes_on_insert
         - disabled: true
