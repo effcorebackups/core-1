@@ -34,6 +34,8 @@ forms
             element_attributes
             - name: file_picture[]
             - multiple: true
+            thumbnails_allowed
+            - =: small
       # field 'Audio'
         - file_audio|field_file_audio
             title: Audio

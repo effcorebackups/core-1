@@ -306,7 +306,7 @@ entities
           - =: png
           - =: gif
           - =: svg
-          thumbnails_allowed
+        - thumbnails_allowed
           - =: small
           - =: middle
           - =: big

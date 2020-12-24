@@ -19,9 +19,7 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif'];
   public $thumbnails_allowed = [
-    'small'  => 'small',
-    'middle' => 'middle',
-    'big'    => 'big'
+    'small' => 'small',
   ];
 
   protected function items_set($id, $items) {
