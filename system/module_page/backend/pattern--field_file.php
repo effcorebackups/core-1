@@ -266,9 +266,9 @@ namespace effcore {
     ) ?: [];
   }
 
-  protected function items_set($id, $data) {
+  protected function items_set($id, $items) {
     $this->cform->validation_cache_set(
-      $this->name_get().'_files_pool_'.$id, $data
+      $this->name_get().'_files_pool_'.$id, $items
     );
   }
 

@@ -127,18 +127,21 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # work with path (dirs/ + name + '.' + type)
+  # work with path (protocol + '://' + dirs + name + '.' + type)
   # ─────────────────────────────────────────────────────────────────────
 
   function path_get() {
-    return strlen($this->type) ?
-      $this->dirs.$this->name.'.'.$this->type :
-      $this->dirs.$this->name;
+    return (strlen($this->protocol) ?
+                   $this->protocol.'://' : '').
+                   $this->dirs.
+                   $this->file_get();
   }
 
   function path_get_relative() {
-    return $this->dirs_get_relative().
-           $this->file_get();
+    return (strlen($this->protocol) ?
+                   $this->protocol.'://' : '').
+                   $this->dirs_get_relative().
+                   $this->file_get();
   }
 
   # ─────────────────────────────────────────────────────────────────────

@@ -91,14 +91,14 @@ namespace effcore {
               'mime' => $c_item->object->mime,
               'size' => $c_item->object->size
           ]]);
-         if ($result) {
-           @unlink($c_file_src->path_get());
-           $items[$c_id]->object->type     = 'picture';
-           $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
-           $items[$c_id]->object->mime     = $c_file_dst->mime_get();
-           $items[$c_id]->object->pre_path = $c_file_dst->path_get();
-           $items[$c_id]->object->size     = $c_file_dst->size_get();
-         }
+          if ($result) {
+            @unlink($c_file_src->path_get());
+            $items[$c_id]->object->type     = 'picture';
+            $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
+            $items[$c_id]->object->mime     = $c_file_dst->mime_get();
+            $items[$c_id]->object->pre_path = $c_file_dst->path_get();
+            $items[$c_id]->object->size     = $c_file_dst->size_get();
+          }
         }
       }
     }
