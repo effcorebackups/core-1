@@ -314,6 +314,7 @@ translations
     - Item of type "%%_type" was updated.: Элемент типа "%%_type" был обновлён.
     - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент типа "%%_type" с ID = "%%_id" был сохранён.
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент типа "%%_type" с ID = "%%_id" был удалён.
+    - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент типа "%%_type" с ID = "%%_id" был удалён физически.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент типа "%%_type" с ID = "%%_id" был добавлен.
     - Item of type "%%_type" with ID = "%%_id" was not deleted because it's embedded!: Элемент типа "%%_type" с ID = "%%_id" не был удалён, потому что он является встроенным!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент типа "%%_type" с ID = "%%_id" не был удалён!

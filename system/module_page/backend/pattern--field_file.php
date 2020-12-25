@@ -48,6 +48,7 @@ namespace effcore {
   #                ╚═════════════╝                          .                                             └ ─ ─ ─ ─ ─ ─ ─ ─
 
   public $title = 'File';
+  public $item_title = 'File';
   public $attributes = ['data-type' => 'file'];
   public $element_attributes = [
     'type' => 'file',
@@ -164,7 +165,7 @@ namespace effcore {
         $this->items_set('fin', $items_fin);
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" has been saved.', [
-          'type' => (new text('Picture'))->render(),
+          'type' => (new text($this->item_title))->render(),
           'id'   => $c_item->file]));
       } else {
         $this->error_set();
@@ -182,7 +183,7 @@ namespace effcore {
         $this->items_set('pre', $items_pre);
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-          'type' => (new text('Picture'))->render(),
+          'type' => (new text($this->item_title))->render(),
           'id'   => $c_new_item->file]));
       } else {
         $this->error_set();
@@ -200,8 +201,8 @@ namespace effcore {
           unset($items_pre[$c_id]);
           $this->items_set('pre', $items_pre);
           message::insert(new text(
-            'Item of type "%%_type" with ID = "%%_id" was deleted.', [
-            'type' => (new text('Picture'))->render(),
+            'Item of type "%%_type" with ID = "%%_id" was deleted physically.', [
+            'type' => (new text($this->item_title))->render(),
             'id'   => $c_item->file]));
         } else {
           $this->error_set();
@@ -235,6 +236,11 @@ namespace effcore {
         unset($items_fin[$c_id]);
         $this->items_set('fin_to_delete', $deleted_cache);
         $this->items_set('fin', $items_fin);
+        message::insert(new text(
+          'Item of type "%%_type" with ID = "%%_id" was deleted.', [
+          'type' => (new text($this->item_title))->render(),
+          'id'   => $c_item->file
+        ]));
       }
     }
   }
@@ -246,8 +252,8 @@ namespace effcore {
         unset($deleted_cache[$c_id]);
         $this->items_set('fin_to_delete', $deleted_cache);
         message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" was deleted.', [
-          'type' => (new text('Picture'))->render(),
+          'Item of type "%%_type" with ID = "%%_id" was deleted physically.', [
+          'type' => (new text($this->item_title))->render(),
           'id'   => $c_item->file]));
       } else {
         $this->error_set();

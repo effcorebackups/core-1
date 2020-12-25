@@ -79,15 +79,30 @@ namespace effcore {
       switch ($c_item->object->get_current_state()) {
         case 'pre': # moving of 'pre' items into the directory 'files'
           token::insert('item_id_context', '%%_item_id_context', 'text', $c_row_id);
-          $c_item->object->move_pre_to_fin(dynamic::dir_files.
+          $c_result = $c_item->object->move_pre_to_fin(dynamic::dir_files.
             $this->upload_dir.$c_item->object->file,
             $this->fixed_name,
             $this->fixed_type, true);
+          if ($c_result) {
+            message::insert(new text(
+              'Item of type "%%_type" with ID = "%%_id" has been saved.', [
+              'type' => (new text('Picture'))->render(),
+              'id'   => $c_item->object->file
+            ]));
+          }
           break;
         case 'fin': # deletion of 'fin' items which marked as 'deleted'
           if (!empty($c_item->is_deleted)) {
-            $c_item->object->delete_fin();
+            $c_id_for_message = $c_item->object->file;
+            $c_result = $c_item->object->delete_fin();
             unset($items[$c_row_id]);
+            if ($c_result) {
+              message::insert(new text_multiline([
+                'Item of type "%%_type" with ID = "%%_id" was deleted physically.'], [
+                'type' => (new text($this->item_title))->render(),
+                'id'   => $c_id_for_message
+              ]));
+            }
           }
           break;
         case null: # cache cleaning for lost files
@@ -147,7 +162,7 @@ namespace effcore {
           unset($items[$button->_id]);
           $this->items_set($items);
           message::insert(new text_multiline([
-            'Item of type "%%_type" with ID = "%%_id" was deleted.',
+            'Item of type "%%_type" with ID = "%%_id" was deleted physically.',
             'Do not forget to save the changes!'], [
             'type' => (new text($this->item_title))->render(),
             'id'   => $id_for_message ]));
