@@ -216,7 +216,7 @@ namespace effcore {
     $deleted_cache = $this->items_get('fin_to_delete');
     foreach ($values as $c_id => $c_path_relative) {
       if (!isset($deleted_cache[$c_id])) {
-        $c_item = new file_uploaded;
+        $c_item = new file_history;
         if ($c_item->init_from_fin($c_path_relative)) {
           $fin_items[$c_id] = $c_item;
           $this->items_set('fin', $fin_items);

@@ -469,7 +469,7 @@ namespace effcore {
         $c_tmp_name = $info['tmp_name'][$c_number];
         $c_error    = $info['error'   ][$c_number];
         if ($c_error !== UPLOAD_ERR_NO_FILE) {
-          $result[$c_number] = new file_uploaded;
+          $result[$c_number] = new file_history;
           $result[$c_number]->init_from_tmp(
             $c_name,
             $c_type,

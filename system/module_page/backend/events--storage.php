@@ -7,7 +7,7 @@
 namespace effcore\modules\page {
           use const \effcore\dir_root;
           use \effcore\field_file;
-          use \effcore\file_uploaded;
+          use \effcore\file_history;
           use \effcore\widget_files;
           abstract class events_storage {
 
@@ -28,7 +28,7 @@ namespace effcore\modules\page {
         if ($c_control instanceof widget_files) {
           if (!empty($instance->{$c_name})) {
             foreach ($instance->{$c_name} as $c_item) {
-              if ($c_item->object instanceof file_uploaded) {
+              if ($c_item->object instanceof file_history) {
                 @unlink($c_item->object->get_current_path());
               }
             }

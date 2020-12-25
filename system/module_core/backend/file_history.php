@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class file_uploaded {
+          class file_history {
 
   public $name;
   public $type;
