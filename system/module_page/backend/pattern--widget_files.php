@@ -123,7 +123,7 @@ namespace effcore {
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
             'type' => (new text($this->item_title))->render(),
-            'id'   => $c_new_item_id]));
+            'id'   => $c_new_item->object->file]));
         } else {
           $form->error_set();
           return;
@@ -140,24 +140,27 @@ namespace effcore {
 
   function on_button_click_delete($form, $npath, $button) {
     $items = $this->items_get();
+    $id_for_message = $items[$button->_id]->object->file;
     switch ($items[$button->_id]->object->get_current_state()) {
       case 'pre':
         if ($items[$button->_id]->object->delete_pre()) {
           unset($items[$button->_id]);
           $this->items_set($items);
           message::insert(new text_multiline([
-            'Item of type "%%_type" was deleted.',
+            'Item of type "%%_type" with ID = "%%_id" was deleted.',
             'Do not forget to save the changes!'], [
-            'type' => (new text($this->item_title))->render() ]));
+            'type' => (new text($this->item_title))->render(),
+            'id'   => $id_for_message ]));
           return true;
         } return;
       case 'fin':
         $items[$button->_id]->is_deleted = true;
         $this->items_set($items);
         message::insert(new text_multiline([
-          'Item of type "%%_type" was deleted.',
+          'Item of type "%%_type" with ID = "%%_id" was deleted.',
           'Do not forget to save the changes!'], [
-          'type' => (new text($this->item_title))->render() ]));
+          'type' => (new text($this->item_title))->render(),
+          'id'   => $id_for_message ]));
         return true;
     }
   }
