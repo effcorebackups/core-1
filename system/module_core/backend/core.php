@@ -886,8 +886,8 @@ namespace effcore {
   }
 
   static function server_get_request_uri() {
-    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['HTTP_X_ORIGINAL_URL'];
-    else                                         return $_SERVER[    'REQUEST_URI'    ];
+    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['UNENCODED_URL'];
+    else                                         return $_SERVER[ 'REQUEST_URI' ];
   }
 
   static function server_get_addr() {
