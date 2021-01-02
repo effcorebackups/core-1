@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
     c_button_play.value = 'play';
+ /* events */
     c_audio.addEventListener('loadedmetadata', on_updateTimeInfo);
     c_audio.addEventListener('timeupdate',     on_updateTimeInfo);
     c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', '');});
@@ -62,6 +63,32 @@ document.addEventListener('DOMContentLoaded', function(){
       c_timerId = setTimeout(function(){
         c_player.removeAttribute('data-is-progressing');
       }, 1000);
+    });
+  });
+
+  /* gallery */
+
+  document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
+    var c_player          = document.createElement('x-gallery-player');
+    var c_thumbnails      = document.createElement('x-thumbnails');
+    var c_button_forward  = document.createElement('x-button-forward');
+    var c_button_backward = document.createElement('x-button-backward');
+    var c_viewing         = document.createElement('x-viewing');
+    c_player.append(c_thumbnails, c_button_forward, c_button_backward, c_viewing);
+    c_player.setAttribute('aria-hidden', 'true');
+    c_gallery.prepend(c_player);
+ /* process each item */
+    c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
+      c_item.addEventListener('click', function(event){
+        event.preventDefault();
+        c_player.removeAttribute('aria-hidden');
+      });
+    });
+ /* event for close */
+    document.addEventListener('keypress', function(event){
+      if (event.charCode === 27) {
+        c_player.setAttribute('aria-hidden', 'true');
+      }
     });
   });
 

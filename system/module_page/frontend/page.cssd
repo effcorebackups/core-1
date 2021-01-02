@@ -302,6 +302,19 @@
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block}
 
+  x-gallery-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background: rgba(0, 0, 0, .7)}
+  x-gallery-player x-thumbnails      {position: fixed; left:                  0; top:     0; width:               100%; height:              100px; background: red}
+  x-gallery-player x-button-backward {position: fixed; left:                  0; top: 100px; width:              100px; height: calc(100% - 100px); cursor: pointer; background: yellow}
+  x-gallery-player x-button-forward  {position: fixed; left: calc(100% - 100px); top: 100px; width:              100px; height: calc(100% - 100px); cursor: pointer; background: blue}
+  x-gallery-player x-viewing         {position: fixed; left:              100px; top: 100px; width: calc(100% - 200px); height: calc(100% - 100px); background: orange}
+
   /* x-sticker */
 
   x-sticker {
