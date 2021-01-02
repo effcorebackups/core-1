@@ -265,18 +265,19 @@ namespace effcore {
     $postinit_objects        = [];
     $postparse_objects       = [];
     $line_number = 0;
-    $data = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $data);
+    $data = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $data); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
+    $data = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $data); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
     $data_lines = preg_split('%'.cr.nl.'|'.cr.'|'.nl.'%S', $data);
     foreach ($data_lines as $c_line) {
       $line_number++;
-    # skip comments
-      if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue;
+      if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue; # skip comments
+      $c_line = str_replace(a0, nl, $c_line); # convert 'text'.'\0'.'text' to 'text'.'\n'.'text'
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.
                    '(?<prefix>- |)'.
                    '(?<name>[^\t].*?)'.
                    '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
-                   '(?<value>.*)$%S', $c_line, $matches);
+                   '(?<value>.*)%sS', $c_line, $matches);
       if (array_key_exists('name', $matches)) {
         $c_prefix    = $matches['prefix'];
         $c_depth     = intval(strlen($matches['indent'].$c_prefix) / 2);

@@ -10,6 +10,7 @@ namespace effcore {
   ### single entry point ###
   ##########################
 
+  const a0 = "\0";
   const nl = "\n";
   const cr = "\r";
   const tb = "\t";
