@@ -265,7 +265,7 @@ namespace effcore {
     $postinit_objects        = [];
     $postparse_objects       = [];
     $line_number = 0;
-    $data = preg_replace('%'.nl.'[>]+%S', '', $data);
+    $data = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $data);
     $data_lines = preg_split('%'.cr.nl.'|'.cr.'|'.nl.'%S', $data);
     foreach ($data_lines as $c_line) {
       $line_number++;
