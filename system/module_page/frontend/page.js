@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-/* this code activate hover state on ios devices */
+  /* this code activate hover state on ios devices */
 
   document.addEventListener('touchstart', function(){}, false);
 
-/* audio */
+  /* audio */
 
   document.effQuerySelectorAll('audio[data-player-name="default"]').forEach(function(c_audio){
     var c_player       = document.createElement('x-audio-player');
