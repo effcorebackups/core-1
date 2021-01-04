@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* range */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('input[type="range"]').forEach(function(c_range){
     c_range.parentNode.effQuerySelector('x-value').effForFirst(function(x_value){
@@ -10,14 +12,18 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* timezone */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
     if (c_timezone.value == '' && window.Intl)
         c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
   });
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* palette */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-group[data-type="palette"]').forEach(function(c_palette){
     c_palette.effQuerySelector('input[data-opener-type="palette"]').effForFirst(function(opener){
@@ -30,7 +36,9 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* table-adaptive + check all */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-selection').forEach(function(c_selection){
     c_selection.effQuerySelector('x-decorator[data-view-type="table-adaptive"]').effForFirst(function(decorator){
@@ -50,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* rearrangeable */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('[data-has-rearrangeable]').forEach(function(c_has_rearrangeable){
     c_has_rearrangeable.setAttribute('data-js-is-processed', '');

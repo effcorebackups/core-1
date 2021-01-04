@@ -1,6 +1,10 @@
 
   var effcore = new Effcore;
 
+  /* ───────────────────────────────────────────────────────────────────── */
+  /* Effcore helper class */
+  /* ───────────────────────────────────────────────────────────────────── */
+
   function Effcore() {
     this.tokens = [];
     this.tokens['text_no_items'       ] = '%%_text_no_items';
@@ -9,7 +13,9 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
-  /* polyfills and extensions */
+  /* ───────────────────────────────────────────────────────────────────── */
+  /* polyfills: prepend, append, forEach */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   if (!Element.prototype.prepend) {
        Element.prototype.prepend = function(){
@@ -34,6 +40,10 @@
   if (!NodeList.prototype.forEach) {
        NodeList.prototype.forEach = Array.prototype.forEach;
   }
+
+  /* ───────────────────────────────────────────────────────────────────── */
+  /* additions: effForFirst, effQuerySelector, effQuerySelectorAll */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   NodeList.prototype.effForFirst =
      Array.prototype.effForFirst = function(handler){

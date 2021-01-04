@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  /* this code activate hover state on ios devices */
+  /* ───────────────────────────────────────────────────────────────────── */
+  /* this code activate hover state on iOS devices */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.addEventListener('touchstart', function(){}, false);
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* audio */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('audio[data-player-name="default"]').forEach(function(c_audio){
     var c_player       = document.createElement('x-audio-player');
@@ -66,7 +70,9 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  /* ───────────────────────────────────────────────────────────────────── */
   /* gallery */
+  /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
     var c_player          = document.createElement('x-gallery-player');
