@@ -7,10 +7,10 @@ frontend
     styles
     - page_style
         path: frontend/page.cssd?page_id=%%_page_id_context
+        weight: -500
         attributes
         - rel: stylesheet
         - media: all
-        weight: -50
     favicons
   # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
     - icon_32_classic

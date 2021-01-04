@@ -7,17 +7,7 @@ frontend
     styles
     - page_style
         path: frontend/develop.cssd?page_id=%%_page_id_context
-        attributes
-        - rel: stylesheet
-        - media: all
-- page_structures__develop|frontend
-    display
-      check: url
-      where: path
-      match: %^/develop/structures/.*$%
-    styles
-    - form_style
-        path: /system/module_page/frontend/form.cssd
+        weight: +300
         attributes
         - rel: stylesheet
         - media: all

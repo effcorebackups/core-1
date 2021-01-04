@@ -7,6 +7,7 @@ frontend
     styles
     - tabs_style
         path: frontend/tabs.cssd
+        weight: +400
         attributes
         - rel: stylesheet
         - media: all
