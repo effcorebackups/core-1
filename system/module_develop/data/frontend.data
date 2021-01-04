@@ -1,16 +1,16 @@
 frontend
-- page_all_develop|frontend
+- page_all__develop|frontend
     display
       check: url
       where: path
       match: %^/develop/.*$%
     styles
-    - develop_style
+    - page_style
         path: frontend/develop.cssd?page_id=%%_page_id_context
         attributes
         - rel: stylesheet
         - media: all
-- page_structures_develop|frontend
+- page_structures__develop|frontend
     display
       check: url
       where: path

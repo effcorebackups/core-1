@@ -1,0 +1,12 @@
+frontend
+- page_all__core|frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    scripts
+    - page_script
+        path: frontend/core.jsd
+        weight: +500
+        attributes
+        - defer: true

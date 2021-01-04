@@ -1,5 +1,5 @@
 frontend
-- tabs_all|frontend
+- tabs_all__menu|frontend
     display
       check: block
       where: dpath

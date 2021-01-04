@@ -1,5 +1,5 @@
 frontend
-- page_install_translation_ru|frontend
+- page_install__translation_ru|frontend
     display
       check: url
       where: path

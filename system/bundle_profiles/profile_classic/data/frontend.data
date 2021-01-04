@@ -1,5 +1,5 @@
 frontend
-- page_all_profile_classic|frontend
+- page_all__profile_classic|frontend
     display
       check: url
       where: path

@@ -1,5 +1,5 @@
 frontend
-- page_install|frontend
+- page_install__locales|frontend
     display
       check: url
       where: path

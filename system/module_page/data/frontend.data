@@ -1,5 +1,5 @@
 frontend
-- page_all|frontend
+- page_all__page|frontend
     display
       check: url
       where: path
@@ -11,17 +11,12 @@ frontend
         - rel: stylesheet
         - media: all
     scripts
-    - page_script_core
-        path: frontend/core.jsd
-        weight: +50
-        attributes
-        - defer: true
     - page_script
         path: frontend/page.js
         weight: +30
         attributes
         - defer: true
-- form_all|frontend
+- form_all__page|frontend
     display
       check: block
       where: dpath
