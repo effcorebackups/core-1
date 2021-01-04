@@ -2,7 +2,7 @@
   var effcore = new Effcore;
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* Effcore helper class */
+  /* Effcore helper class                                                  */
   /* ───────────────────────────────────────────────────────────────────── */
 
   function Effcore() {
@@ -14,7 +14,7 @@
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* polyfills: prepend, append, forEach */
+  /* polyfills: prepend, append, forEach                                   */
   /* ───────────────────────────────────────────────────────────────────── */
 
   if (!Element.prototype.prepend) {
@@ -42,7 +42,7 @@
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* additions: effForFirst, effQuerySelector, effQuerySelectorAll */
+  /* additions: effForFirst, effQuerySelector, effQuerySelectorAll         */
   /* ───────────────────────────────────────────────────────────────────── */
 
   NodeList.prototype.effForFirst =

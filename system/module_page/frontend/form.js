@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* range */
+  /* range                                                                 */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('input[type="range"]').forEach(function(c_range){
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* timezone */
+  /* timezone                                                              */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* palette */
+  /* palette                                                               */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-group[data-type="palette"]').forEach(function(c_palette){
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* table-adaptive + check all */
+  /* table-adaptive + check all                                            */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-selection').forEach(function(c_selection){
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* rearrangeable */
+  /* rearrangeable                                                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('[data-has-rearrangeable]').forEach(function(c_has_rearrangeable){

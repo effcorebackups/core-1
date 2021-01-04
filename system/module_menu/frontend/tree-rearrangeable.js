@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* rearrangeable */
+  /* rearrangeable                                                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('[role="tree"][data-visualization-mode="decorated-rearrangeable"]').forEach(function(c_has_rearrangeable){
