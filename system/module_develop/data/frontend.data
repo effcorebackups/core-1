@@ -7,7 +7,7 @@ frontend
     styles
     - page_style
         path: frontend/develop.cssd?page_id=%%_page_id_context
-        weight: +300
+        weight: -500
         attributes
         - rel: stylesheet
         - media: all

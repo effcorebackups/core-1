@@ -1368,14 +1368,14 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/core.jsd
-        - request_url--system-module_page-frontend-core.jsd|step_request
-            url: /system/module_page/frontend/core.jsd
+        # url: /system/module_core/frontend/core.jsd
+        - request_url--system-module_core-frontend-core.jsd|step_request
+            url: /system/module_core/frontend/core.jsd
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-core.jsd|step_check
+        - response_check--system-module_core-frontend-core.jsd|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -1981,14 +1981,14 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_page/frontend/core.jsd/
-        - request_url--system-module_page-frontend-core.jsd-|step_request
-            url: /system/module_page/frontend/core.jsd/
+        # url: /system/module_core/frontend/core.jsd/
+        - request_url--system-module_core-frontend-core.jsd-|step_request
+            url: /system/module_core/frontend/core.jsd/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-core.jsd-|step_check
+        - response_check--system-module_core-frontend-core.jsd-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
