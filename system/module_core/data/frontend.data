@@ -7,6 +7,6 @@ frontend
     scripts
     - page_script
         path: frontend/core.jsd
-        weight: +500
+        weight: +600
         attributes
         - defer: true
