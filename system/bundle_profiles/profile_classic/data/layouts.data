@@ -44,14 +44,14 @@ layouts
                         id: breadcrumbs
                     - messages|area
                         id: messages
-                        render_weight: -50
+                        render_weight: -500
                     - title|area
                         id: title
                     - tabs|area
                         id: tabs
                     - content|area
                         id: content
-                        render_weight: +50
+                        render_weight: +500
                 - right|area
                     id: right
                     type: column

@@ -10,10 +10,10 @@ layouts
         id: title
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
 - simple|layout
     id: simple
     title: Simple layout
@@ -29,14 +29,14 @@ layouts
         id: breadcrumbs
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
     - footer|area
         id: footer
         tag_name: footer

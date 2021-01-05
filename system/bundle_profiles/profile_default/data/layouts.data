@@ -29,14 +29,14 @@ layouts
                 id: breadcrumbs
             - messages|area
                 id: messages
-                render_weight: -50
+                render_weight: -500
             - title|area
                 id: title
             - tabs|area
                 id: tabs
             - content|area
                 id: content
-                render_weight: +50
+                render_weight: +500
             - grid_2x2|area
                 type: table
                 attributes
@@ -96,14 +96,14 @@ layouts
         id: breadcrumbs
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
     - grid_2x5|area
         type: table
         attributes
@@ -172,14 +172,14 @@ layouts
         id: breadcrumbs
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
     - grid_3x5|area
         type: table
         attributes
@@ -263,14 +263,14 @@ layouts
         id: breadcrumbs
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
     - grid_4x5|area
         type: table
         attributes
@@ -369,14 +369,14 @@ layouts
         id: breadcrumbs
     - messages|area
         id: messages
-        render_weight: -50
+        render_weight: -500
     - title|area
         id: title
     - tabs|area
         id: tabs
     - content|area
         id: content
-        render_weight: +50
+        render_weight: +500
     - grid_5x5|area
         type: table
         attributes
