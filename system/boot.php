@@ -112,12 +112,13 @@ namespace effcore {
     # protecting files from attacks
     # ─────────────────────────────────────────────────────────────────────
 
+    $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
     $real_path = core::validate_realpath($file->path_get());
-    if ($real_path === false)               core::send_header_and_exit('file_not_found');
-    if ($real_path !== $file->path_get())   core::send_header_and_exit('file_not_found');
-    if (strpos($real_path, dir_root) !== 0) core::send_header_and_exit('file_not_found');
-    if (!is_file    ($file->path_get()))    core::send_header_and_exit('file_not_found');
-    if (!is_readable($file->path_get()))    core::send_header_and_exit('access_forbidden');
+    if ($real_path === false)               {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 1]); core::send_header_and_exit('file_not_found');} # object does not really exist
+    if ($real_path !== $file->path_get())   {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 2]); core::send_header_and_exit('file_not_found');} # resolved path is not the same as the original
+    if (strpos($real_path, dir_root) !== 0) {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 3]); core::send_header_and_exit('file_not_found');} # object is outside the web root
+    if (!is_file    ($file->path_get()))    {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 4]); core::send_header_and_exit('file_not_found');} # object exists, but it is not a file
+    if (!is_readable($file->path_get())) core::send_header_and_exit('access_forbidden'); # object is not accessible for the web server by rights
 
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file
