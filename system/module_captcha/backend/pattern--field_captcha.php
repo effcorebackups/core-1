@@ -42,7 +42,7 @@ namespace effcore {
       $element->attribute_insert('minlength', $captcha->length);
       $element->attribute_insert('maxlength', $captcha->length);
       if (!frontend::select('captcha_form'))
-           frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
+           frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -300], 'form_style', 'captcha');
       $this->is_builded = true;
     }
   }

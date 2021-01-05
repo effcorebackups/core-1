@@ -26,7 +26,8 @@ namespace effcore\modules\develop {
     if (console::visible_mode_get()) {
       frontend::insert('console', null, 'styles', [
         'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
-        'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'develop_style', 'develop'
+        'attributes' => ['rel' => 'stylesheet', 'media' => 'all'],
+        'weight'     => -500], 'develop_style', 'develop'
       );
     }
   }

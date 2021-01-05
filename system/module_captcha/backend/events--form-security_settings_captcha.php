@@ -20,7 +20,7 @@ namespace effcore\modules\captcha {
 
   static function on_init($event, $form, $items) {
     if (!frontend::select('captcha_form'))
-         frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all']], 'form_style', 'captcha');
+         frontend::insert('captcha_form', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -300], 'form_style', 'captcha');
     $settings = module::settings_get('captcha');
     $items['#length']->value_set($settings->captcha_length);
     $glyphs_saved = $settings->captcha_glyphs;
