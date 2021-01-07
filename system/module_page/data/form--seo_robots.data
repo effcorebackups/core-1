@@ -14,8 +14,9 @@ forms
             - name: content
             - required: false
             - minlength: null
+            - maxlength: null
+            - rows: 20
     - button_save|button
         title: save
         attributes
         - value: save
-        - disabled: true
