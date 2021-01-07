@@ -9,7 +9,7 @@ namespace effcore {
 
   # about CAPTCHA ID:
   # ═════════════════════════════════════════════════════════════════════════
-  # duplicates of captcha by IP - it's prevention from DDOS attacks -
+  # duplicates of captcha by IP - it is prevention from DDOS attacks -
   # user can overflow the storage if captcha_id will be a complex value
   # for example: IP + user_agent (in this case user can falsify user_agent
   # on each submit and this action will create a great variety of unique

@@ -108,7 +108,7 @@ SQLite
 ---------------------------------------------------------------------
 
 SQLite support foreign keys when:
-- it's not older than v3.6.19 and
+- it is not older than v3.6.19 and
 - it was compiled without SQLITE_OMIT_FOREIGN_KEY
   and SQLITE_OMIT_TRIGGER definitions.
 
@@ -117,7 +117,7 @@ Recommended Development Software
 =====================================================================
 
 Only high quality licensed expensive software was used for create the project.
-It's recommended to use the next software:
+It is recommended to use the next software:
 - macOS for using quality software and make development environment;
 - Coda, Nova (mac) for working with code|markup|styles and searching in the code;
 - Tower (mac|win) for working with Git;

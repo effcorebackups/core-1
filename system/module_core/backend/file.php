@@ -67,8 +67,8 @@ namespace effcore {
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. only files with extension are available in the URL!
-  # 2. if the first character in the path is '/' - it's a full path, otherwise - relative path
-  # 3. if the last  character in the path is '/' - it's a directory, otherwise - file
+  # 2. if the first character in the path is '/' - it is a full path, otherwise - relative path
+  # 3. if the last  character in the path is '/' - it is a directory, otherwise - file
   # 4. path components like  '~/' should be ignored or use function 'realpath' to resolve the path
   # 5. path components like  './' should be ignored or use function 'realpath' to resolve the path
   # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path

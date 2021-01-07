@@ -118,7 +118,7 @@ namespace effcore\modules\storage {
                   $c_result = $c_instance->delete();
                   if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was deleted.',                            ['type' => translation::apply($entity->title), 'id' => $c_instance_id])           );
                   if ($form->is_show_result_message && $c_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted!',                        ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'error'  );
-                } else                                                     message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted because it\'s embedded!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'warning');
+                } else                                                     message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!', ['type' => translation::apply($entity->title), 'id' => $c_instance_id]), 'warning');
               }
             }
           }

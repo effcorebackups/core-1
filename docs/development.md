@@ -14,12 +14,12 @@ File ".editorconfig" is describe right settings for any editor/IDE
 but only professional editors/IDE can work with this feature.
 
 The next editors/IDE need some improvements:
-- BBEdit            : Adapt to ".editorconfig" if it's in the parent directory.
+- BBEdit            : Adapt to ".editorconfig" if it is in the parent directory.
 - TextWrangler      : Adapt to ".editorconfig".
-- Atom              : Strips trailing whitespace and adds a trailing newline when it's saved.
+- Atom              : Strips trailing whitespace and adds a trailing newline when it is saved.
                       Install package "EditorConfig" with this command: "apm install editorconfig".
                       Or go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-- PHPStorm          : Strips trailing whitespace when it's saved.
+- PHPStorm          : Strips trailing whitespace when it is saved.
                       Install package "EditorConfig".
                       Or go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save".
 - Visual Studio Code: Tab Size will be automatically detected when a file is opened based on the file contents.
@@ -61,7 +61,7 @@ How to set cross-domain cookie
 About forms
 ---------------------------------------------------------------------
 
-1. It's not recommended to use DISABLED|READONLY text fields with shared
+1. It is not recommended to use DISABLED|READONLY text fields with shared
    NAME (name="shared_name[]") because user can delete DISABLED|READONLY
    state from field and change the field VALUE and submit the form — after
    this action the new VALUE will be set to the next field with

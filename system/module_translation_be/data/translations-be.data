@@ -316,7 +316,7 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
     - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены фізічна.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
-    - Item of type "%%_type" with ID = "%%_id" was not deleted because it's embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены, таму што ён з'яўляецца убудаваным!
+    - Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены, таму што ён з'яўляецца убудаваным!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены!
     - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў даданы!
     - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" не быў абноўлены!
@@ -756,6 +756,6 @@ translations
     - Your answer was not accepted!: Ваш адказ не быў прыняты!
     - Your answer was not canceled!: Ваш адказ не быў адменены!
     - your EMail is — %%_email: Ваш адрас электроннай пошты — %%_email
-    - Your EMail is not shown publicly on %%_domain and it's never shared with third parties!: Ваш адрас электроннай пошты не адлюстроўваецца публічна на %%_domain і ён ніколі не перадаецца трэцім асобам!
+    - Your EMail is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрас электроннай пошты не адлюстроўваецца публічна на %%_domain і ён ніколі не перадаецца трэцім асобам!
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новы пароль на %%_domain быў зменены аўтаматычна на: %%_new_password
     - your Password is — %%_password: Ваш Пароль — %%_password

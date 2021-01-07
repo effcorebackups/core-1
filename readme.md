@@ -30,14 +30,14 @@ solutions).
 
 The impetus for the creation of the system was a massive degradation in the
 development of Open Source projects. If consider this situation,
-it's can see that the developers of such projects are people with the
+it is can see that the developers of such projects are people with the
 different skill levels and which located in different parts of the planet.
 Incoordination in their actions and different views on solutions
 in the project is only part of the problem.
 Second significant flaw — this is an extensive way to develop code in such
 projects as opposed to intensive, i.e. instead of creating own code,
-they usually take another library which it's written not clear by whom
-and it's not clear by where and try to combine it with a group of the
+they usually take another library which it is written not clear by whom
+and it is not clear by where and try to combine it with a group of the
 same libraries, not coordinated among themselves and having redundant
 and not fully tested functionality.
 As a result, we get a set of obscure and inconsistent libraries with poorly
@@ -75,7 +75,7 @@ All NoSQL data is located in a directory "module_*/data".
 
 In fact, the operation of the files does not depend on their location
 and if necessary they will still be found and processed, and their
-location in certain directories — it's only an organizational measure
+location in certain directories — it is only an organizational measure
 designed to facilitate the work with the system.
 
 
@@ -83,7 +83,7 @@ Architecture
 ---------------------------------------------------------------------
 
 The architecture is made according to the classical MVC scheme.
-It's a hybrid system of NoSQL and SQL storages.
+It is a hybrid system of NoSQL and SQL storages.
 In turn, the NoSQL subsystem implements a hybrid document-oriented
 and object-oriented model based on a set of class-patterns.
 
@@ -102,7 +102,7 @@ Functional testing was performed on the whole set of
 combinatorial transpositions.
 
 Has a built-in parser and class loader PSR-0, thanks to which, to add
-a new library (a set of classes), it's enough to place the files
+a new library (a set of classes), it is enough to place the files
 containing them on a web server and reset the cache, after which they
 become available from anywhere in the system.
 The system includes a page with a UML diagram of all classes and a link
@@ -140,7 +140,7 @@ Core: NoSQL
 
 All data is stored as PHP code.
 Perhaps the fastest storage after "storage in RAM".
-After organizing the disk in RAM, it's possible to increase performance
+After organizing the disk in RAM, it is possible to increase performance
 by 3-5 times (more details in the section "Performance improvement").
 Each storage subdirectory will be initialized only on demand.
 
@@ -149,7 +149,7 @@ in text format in a file of type ".data", like YAML, but has a more
 stringent rules such as "each string can contain the only one
 phrase in the form "key: value".
 
-It's comfortable for controlling changes in the code — any change
+It is comfortable for controlling changes in the code — any change
 of one key or value will be highlighted in "git diff" with just one line.
 Also, this format significantly speeds up parsing the files.
 
@@ -170,7 +170,7 @@ can have any nesting levels and contain inside any other objects or
 arrays.
 
 After parsing "*.data" files, the result is converted to PHP code (single
-tree of objects — instances of class-patterns), after which it's
+tree of objects — instances of class-patterns), after which it is
 saved to files "dynamic/cache/cache-*.php" separately for each kind of
 entity, as shown in the example below:
 - dynamic/cache/data--blocks.php
@@ -194,7 +194,7 @@ file of the following form:
 
 This architecture give ability to access NoSQL data as quickly as possible.
 When using the PHP module OPCache, the access speed can increase
-from 2 to 3 times. In fact, to access NoSQL data, it's enough to
+from 2 to 3 times. In fact, to access NoSQL data, it is enough to
 load a PHP file of a certain entity and data will be available
 immediately after loading.
 
@@ -264,11 +264,11 @@ PostgreSQL was excluded during development as Web RDBMS with
 least compatible of ANSI standards.
 
 It was decided not to use field of type timestamp.
-Instead, it's recommended to use field of type datetime.
+Instead, it is recommended to use field of type datetime.
 This field has a wide range of acceptable values (from "0001-01-01"
 to "9999-12-31"), and also does not depend on the time zone.
 When adding data to the server, dates should be converted to time zone UTC±0:00.
-Instead of the original timestamp type, it's recommended
+Instead of the original timestamp type, it is recommended
 to use the integer type.
 
 
@@ -359,7 +359,7 @@ Event model
 ---------------------------------------------------------------------
 
 The event model is built fairly transparent and predictable.
-It's enough to register a new event in the "events.data" of own module,
+It is enough to register a new event in the "events.data" of own module,
 specify its weight and handler in PHP code, flush the cache and
 the event will begin to be processed. On the "NoSQL Data → Events" page,
 can view all events registered in the system (this section will be
@@ -436,7 +436,7 @@ Localization
 
 The system already has translations of its interface into
 Belarusian and Russian languages.
-It's assumed that for each language version of the site/portal,
+It is assumed that for each language version of the site/portal,
 the administrator organizes his own subdomain.
 In many cases, different language versions of a site/portal differ
 not only in content, but also in a structure. For example, the main menu in one
@@ -451,7 +451,7 @@ In this case, the administrator should control the language of the content
 that appears on this page.
 
 The system uses the more perfect "Plural" system.
-Using regular expressions, it's possible to describe almost any
+Using regular expressions, it is possible to describe almost any
 dependence of a part of a word on the numeric and non-numeric arguments
 which present in the phrase.
 
@@ -459,8 +459,8 @@ which present in the phrase.
 Performance improvement
 ---------------------------------------------------------------------
 
-It's recommended to enable the PHP OPCache.
-It's recommended to use the SSD (Solid State Drives).
+It is recommended to enable the PHP OPCache.
+It is recommended to use the SSD (Solid State Drives).
 In many cases, the "dynamic/cache" directory can be organized in RAM.
 To increase the reliability level of the server, such RAM should
 support ECC (error-correcting code), and the server itself should

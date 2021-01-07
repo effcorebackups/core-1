@@ -58,7 +58,7 @@ namespace effcore {
         }
       }
 
-    # relate each item with it's form
+    # relate each item with it is form
       foreach ($this->children_select_recursive() as $c_child) {
         if ($c_child instanceof control)
             $c_child->cform = $this;
@@ -71,7 +71,7 @@ namespace effcore {
         }
       }
 
-    # relate each item with it's form (for new elements that appeared after build)
+    # relate each item with it is form (for new elements that appeared after build)
       foreach ($this->children_select_recursive() as $c_child) {
         if ($c_child instanceof control)
             $c_child->cform = $this;

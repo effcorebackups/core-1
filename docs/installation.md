@@ -32,7 +32,7 @@ Actions for installations:
   If you cannot see the invisible files in your archiver, make them visible.
   If you cannot see the invisible files in your OS, make them visible.
 - Establish a connection with the web server via FTP protocol.
-  It's recommended to use the "SFTP" or "FTP with implicit SSL" or
+  It is recommended to use the "SFTP" or "FTP with implicit SSL" or
   "FTP with TSL/SSL".
 - Via FTP client go to the www root directory on the web server
   and copy all files of this system from the local directory
