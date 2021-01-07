@@ -88,6 +88,9 @@ translations
     - Colors: Цвета
     - Conditions: Условия
     - Console settings: Настройки консоли
+    - Content in the &lt;head&gt;: Содержимое в &lt;head&gt;
+    - Content of the "robots.txt" file: Содержимое файла robots.txt
+    - Content of the "sitemap.xml" file: Содержимое файла "sitemap.xml"
     - Content: Содержимое
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максим Владимирович. Все права защищены.
@@ -313,8 +316,8 @@ translations
     - Item of type "%%_type" was not updated!: Элемент типа "%%_type" не был обновлён!
     - Item of type "%%_type" was updated.: Элемент типа "%%_type" был обновлён.
     - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент типа "%%_type" с ID = "%%_id" был сохранён.
-    - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент типа "%%_type" с ID = "%%_id" был удалён.
     - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент типа "%%_type" с ID = "%%_id" был удалён физически.
+    - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент типа "%%_type" с ID = "%%_id" был удалён.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент типа "%%_type" с ID = "%%_id" был добавлен.
     - Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!: Элемент типа "%%_type" с ID = "%%_id" не был удалён, потому что он является встроенным!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент типа "%%_type" с ID = "%%_id" не был удалён!

@@ -88,6 +88,9 @@ translations
     - Colors: Колеры
     - Conditions: Умовы
     - Console settings: Налады кансолі
+    - Content in the &lt;head&gt;: Змесціва ў &lt;head&gt;
+    - Content of the "robots.txt" file: Змесціва файла robots.txt
+    - Content of the "sitemap.xml" file: Змесціва файла "sitemap.xml"
     - Content: Змесціва
     - Cookies are disabled. You cannot log in!: Cookies адключаны. Вы не можаце ўвайсці ў сістэму!
     - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
@@ -313,8 +316,8 @@ translations
     - Item of type "%%_type" was not updated!: Элемент тыпу "%%_type" не быў абноўлены!
     - Item of type "%%_type" was updated.: Элемент тыпу "%%_type" быў абноўлены.
     - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент тыпу "%%_type" з ID = "%%_id" быў захаваны.
-    - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
     - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены фізічна.
+    - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
     - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
     - Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены, таму што ён з'яўляецца убудаваным!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены!

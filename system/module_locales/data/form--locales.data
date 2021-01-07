@@ -61,7 +61,7 @@ forms
             element_attributes
             - name: decimal_point
             - size: 1
-            - minlength: 0
+            - minlength: null
             - maxlength: 1
             - value: .
         - thousands_separator|field_text
@@ -73,7 +73,7 @@ forms
             element_attributes
             - name: thousands_separator
             - size: 1
-            - minlength: 0
+            - minlength: null
             - maxlength: 1
             - required: null
     - button_save|button

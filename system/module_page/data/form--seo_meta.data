@@ -5,10 +5,15 @@ forms
     - method: post
     - novalidate: true
     children
-    - main|fieldset
+    - settings|fieldset
+        title: Settings
         children
-        - info|text
-            text: UNDER CONSTRUCTION
+        - content|field_textarea
+            title: Content in the &lt;head&gt;
+            element_attributes
+            - name: content
+            - required: false
+            - minlength: null
     - button_save|button
         title: save
         attributes
