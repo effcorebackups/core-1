@@ -41,6 +41,15 @@ events
   - decoration_settings|event
       for: decoration_settings
       handler: \effcore\modules\page\events_form_decoration_settings::on_init
+  - seo_meta|event
+      for: seo_meta
+      handler: \effcore\modules\page\events_form_seo_meta::on_init
+  - seo_sitemap|event
+      for: seo_sitemap
+      handler: \effcore\modules\page\events_form_seo_sitemap::on_init
+  - seo_robots|event
+      for: seo_robots
+      handler: \effcore\modules\page\events_form_seo_robots::on_init
   - instance_insert_page|event
       for: instance_insert
       weight: +500
@@ -70,6 +79,15 @@ events
   - decoration_settings|event
       for: decoration_settings
       handler: \effcore\modules\page\events_form_decoration_settings::on_submit
+  - seo_meta|event
+      for: seo_meta
+      handler: \effcore\modules\page\events_form_seo_meta::on_submit
+  - seo_sitemap|event
+      for: seo_sitemap
+      handler: \effcore\modules\page\events_form_seo_sitemap::on_submit
+  - seo_robots|event
+      for: seo_robots
+      handler: \effcore\modules\page\events_form_seo_robots::on_submit
   - instance_update_page|event
       for: instance_update
       weight: +600

@@ -5,6 +5,10 @@ forms
     - method: post
     - novalidate: true
     children
+    - main|fieldset
+        children
+        - info|text
+            text: UNDER CONSTRUCTION
     - button_save|button
         title: save
         attributes
