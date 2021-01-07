@@ -988,6 +988,7 @@ namespace effcore {
     switch ($type) {
       case 'redirect'              : header('Location: '.$p); exit();
       case 'page_refresh'          : header('Refresh: ' .$p); exit();
+      case 'moved_permanently'     : header('HTTP/1.1 301 Moved Permanently'     ); if (!$title) $title = 'Moved Permanently';      break;
       case 'bad_request'           : header('HTTP/1.1 400 Bad Request'           ); if (!$title) $title = 'Bad Request';            break;
       case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden';       break;
       case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';         break;

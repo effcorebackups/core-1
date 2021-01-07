@@ -19,6 +19,10 @@ events
       handler: \effcore\modules\page\events_module::on_cron_run
 # ─────────────────────────────────────────────────────────────────────
   on_file_load
+  - not_found|event
+      for: not_found
+      weight: +500
+      handler: \effcore\modules\page\events_file::on_load_not_found
   - static_picture|event
       for: static
       weight: +500

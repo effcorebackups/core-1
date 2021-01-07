@@ -6,13 +6,38 @@
 
 namespace effcore\modules\page {
           use const \effcore\dir_dynamic;
+          use const \effcore\dir_root;
           use const \effcore\dir_system;
           use \effcore\core;
+          use \effcore\event;
           use \effcore\file;
           use \effcore\media;
           use \effcore\module;
           use \effcore\url;
           abstract class events_file {
+
+  static function on_load_not_found($event, &$type_info, &$file, $real_path, $phase) {
+    switch ($file->path_get()) {
+      case dir_root.'sitemap.xml':
+        $real_path = dir_dynamic.'data/sitemap.xml';
+        if (file_exists($real_path)) {
+          $file = new file($real_path);
+          $type = file::types_get()[$file->type_get()];
+          event::start('on_file_load', 'static', [&$type, &$file]);
+          exit();
+        } break;
+      case dir_root.'robots.txt':
+        $real_path = dir_dynamic.'data/robots.txt';
+        if (file_exists($real_path)) {
+          $file = new file($real_path);
+          $type = file::types_get()[$file->type_get()];
+          event::start('on_file_load', 'static', [&$type, &$file]);
+          exit();
+        } break;
+      case dir_root.'favicon.ico':
+        core::send_header_and_exit('moved_permanently');
+    }
+  }
 
   # ─────────────────────────────────────────────────────────────────────
   # meta                      → phar://test.picture/meta
