@@ -1,0 +1,12 @@
+forms
+- seo_robots|form
+    attributes
+    - id: seo_robots
+    - method: post
+    - novalidate: true
+    children
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        - disabled: true

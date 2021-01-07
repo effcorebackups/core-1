@@ -1,0 +1,12 @@
+forms
+- seo_sitemap|form
+    attributes
+    - id: seo_sitemap
+    - method: post
+    - novalidate: true
+    children
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        - disabled: true

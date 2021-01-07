@@ -84,6 +84,10 @@ events
       for: decoration
       weight: +600
       handler: \effcore\modules\page\events_page_decoration::on_redirect
+  - seo|event
+      for: seo
+      weight: +600
+      handler: \effcore\modules\page\events_page_seo::on_redirect
 # ─────────────────────────────────────────────────────────────────────
   on_block_build_after
   - all|event

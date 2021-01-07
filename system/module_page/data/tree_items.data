@@ -20,3 +20,14 @@ tree_items
       - =: admins
       permissions
       - =: manage__decoration
+- seo|tree_item
+    id: seo
+    id_parent: manage
+    id_tree: system
+    title: SEO
+    url: /manage/seo
+    access
+      roles
+      - =: admins
+      permissions
+      - =: manage__seo

@@ -118,3 +118,22 @@ tab_items
     id_tab: decoration
     action_name: settings
     title: Settings
+# ─────────────────────────────────────────────────────────────────────
+- seo_meta|tab_item
+    id: seo_meta
+    id_parent: null
+    id_tab: seo
+    action_name: meta
+    title: META
+- seo_sitemap|tab_item
+    id: seo_sitemap
+    id_parent: null
+    id_tab: seo
+    action_name: sitemap
+    title: Sitemap
+- seo_robots|tab_item
+    id: seo_robots
+    id_parent: null
+    id_tab: seo
+    action_name: robots
+    title: Robots

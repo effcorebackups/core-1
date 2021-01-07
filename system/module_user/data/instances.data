@@ -24,6 +24,12 @@ instances
     - id: manage__decoration
     - title: Decoration: manage
     - is_embedded: 1
+- permission_manage_seo|instance
+    entity_name: permission
+    values
+    - id: manage__seo
+    - title: SEO: manage
+    - is_embedded: 1
 - permission_manage_locales|instance
     entity_name: permission
     values
