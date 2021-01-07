@@ -9,6 +9,9 @@ events
       handler: \effcore\modules\core\events_module::on_enable
 # ─────────────────────────────────────────────────────────────────────
   on_file_load
+  - not_found|event
+      for: not_found
+      handler: \effcore\modules\core\events_file::on_load_not_found
   - dynamic|event
       for: dynamic
       handler: \effcore\modules\core\events_file::on_load_dynamic

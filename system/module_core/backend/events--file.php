@@ -14,6 +14,12 @@ namespace effcore\modules\core {
           use \effcore\token;
           abstract class events_file {
 
+  static function on_load_not_found($event, &$type_info, &$file, $real_path, $phase) {
+    core::send_header_and_exit('file_not_found');
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
   static function on_load_dynamic($event, &$type_info, &$file) {
     $data = token::apply($file->load());
     $etag = core::hash_get_etag($data);
