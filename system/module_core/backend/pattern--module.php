@@ -24,8 +24,8 @@ namespace effcore {
       foreach ($copy[$this->id] as $c_info) {
         $c_file = new file($c_info->to);
         if (@unlink($c_file->path_get()))
-             message::insert(new text('File "%%_path" was deleted.',     ['path' => $c_file->path_get_relative()]));
-        else message::insert(new text('File "%%_path" was not deleted!', ['path' => $c_file->path_get_relative()]), 'warning');
+             message::insert(new text('File "%%_file" was deleted.',     ['file' => $c_file->path_get_relative()]));
+        else message::insert(new text('File "%%_file" was not deleted!', ['file' => $c_file->path_get_relative()]), 'warning');
       }
     }
   # reverse the deployment process: delete instances

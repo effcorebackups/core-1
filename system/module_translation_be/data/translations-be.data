@@ -229,8 +229,8 @@ translations
     - Fieldset: Група палёў
     - File "%%_file" cannot be deleted!: Файл "%%_file" не можа быць выдалены!
     - File "%%_file" cannot be inserted or updated in the directory "%%_directory"!: Файл "%%_file" не можа быць устаўлены або абноўлены ў каталозе "%%_directory"!
-    - File "%%_path" was deleted.: Файл "%%_path" быў выдалены.
-    - File "%%_path" was not deleted!: Файл "%%_path" не быў выдалены!
+    - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
+    - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
     - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
