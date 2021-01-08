@@ -305,7 +305,7 @@ translations
     - Interfaces: Інтэрфейсы
     - interfaces: інтэрфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ніжэй версіі %%_number больш не падтрымліваецца!
-    - invalid session was deleted!: Несапраўдны сеанс быў выдалены!
+    - Invalid session was deleted!: Несапраўдны сеанс быў выдалены!
     - Is active: Актыўная
     - Is embedded: Убудаваны
     - is embedded: убудаваны
@@ -730,7 +730,7 @@ translations
     - View more: Глядзець больш
     - Visibility: Бачнасць
     - vote: галасаваць
-    - Voting can be canceled: Галасаванне можа быць адменена
+    - Vote can be canceled: Голас можа быць адменены
     - Warning: Папярэджанне
     - warning: папярэджанне
     - Web server: Вэб-сервер

@@ -134,7 +134,7 @@ entities
         - filter: \effcore\translation::apply
         - weight: +300
     - is_cancelable
-        title: Voting can be canceled
+        title: Vote can be canceled
         type: boolean
         not_null: true
         default: 0

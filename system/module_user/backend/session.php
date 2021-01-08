@@ -26,7 +26,7 @@ namespace effcore {
            static::$current = (new instance('session', ['id' => $session_id]))->select();
       if (!static::$current) {
         static::id_regenerate('a');
-        message::insert('invalid session was deleted!', 'warning');
+        message::insert('Invalid session was deleted!', 'warning');
         return null;
       } else {
         return static::$current;
