@@ -66,10 +66,7 @@ translations
     - Button\: text: Кнопка: тэкст
     - cache: кэш
     - cancel: адмяніць
-    - Cannot copy file from "%%_from" to "%%_to"!: Немагчыма скапіяваць файл з "%%_from" у "%%_to"!
-    - Cannot delete file "%%_file"!: Немагчыма выдаліць файл "%%_file"!
     - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Немагчыма ўключыць модуль "%%_title" (%%_id), калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
-    - Cannot insert or update file "%%_file" in the directory "%%_directory"!: Не атрымалася ўставіць альбо абнавіць файл "%%_file" у каталозе "%%_directory"!
     - Canvas: Палатно
     - Charset: Кадзіроўка
     - Check directory permissions.: Праверце дазвалення каталога.
@@ -232,11 +229,14 @@ translations
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
+    - File "%%_file" cannot be deleted!: Файл "%%_file" не можа быць выдалены!
+    - File "%%_file" cannot be inserted or updated in the directory "%%_directory"!: Файл "%%_file" не можа быць устаўлены або абноўлены ў каталозе "%%_directory"!
     - File "%%_path" was deleted.: Файл "%%_path" быў выдалены.
     - File "%%_path" was not deleted!: Файл "%%_path" не быў выдалены!
     - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
+    - File cannot be copied from "%%_from" to "%%_to": Файл не можа быць скапіяваны з "%%_from" у "%%_to"!
     - File is empty.: Файл пусты.
     - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
     - File name: Імя файла
@@ -634,8 +634,8 @@ translations
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
     - The changes was deleted.: Змены былі выдалены.
-    - The changes was saved.: Змены былі захаваны.
     - The changes was not saved!: Змены не былі захаваны!
+    - The changes was saved.: Змены былі захаваны.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
     - The current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
@@ -729,8 +729,8 @@ translations
     - Videos: Відэа
     - View more: Глядзець больш
     - Visibility: Бачнасць
-    - vote: галасаваць
     - Vote can be canceled: Голас можа быць адменены
+    - vote: галасаваць
     - Warning: Папярэджанне
     - warning: папярэджанне
     - Web server: Вэб-сервер

@@ -78,7 +78,7 @@ namespace effcore {
                                     $c_log->object.' | '.
                                     $c_log->action.' | '.$c_info.nl)) {
           message::insert(new text_multiline([
-            'Cannot insert or update file "%%_file" in the directory "%%_directory"!',
+            'File "%%_file" cannot be inserted or updated in the directory "%%_directory"!',
             'Check file (if exists) and directory permissions.'], [
             'file'      => $file->file_get(),
             'directory' => $file->dirs_get_relative()]), 'error'

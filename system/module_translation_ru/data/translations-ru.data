@@ -66,10 +66,7 @@ translations
     - Button\: text: Кнопка: текст
     - cache: кэш
     - cancel: отменить
-    - Cannot copy file from "%%_from" to "%%_to"!: Невозможно скопировать файл из "%%_from" в "%%_to"!
-    - Cannot delete file "%%_file"!: Невозможно удалить файл "%%_file"!
     - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
-    - Cannot insert or update file "%%_file" in the directory "%%_directory"!: Не удалось вставить или обновить файл "%%_file" в каталоге "%%_directory"!
     - Canvas: Холст
     - Charset: Кодировка
     - Check directory permissions.: Проверьте разрешения каталога.
@@ -232,11 +229,14 @@ translations
     - Fields: Поля
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
+    - File "%%_file" cannot be deleted!: Файл "%%_file" не может быть удалён!
+    - File "%%_file" cannot be inserted or updated in the directory "%%_directory"!: Файл "%%_file" не может быть вставлен или обновлён в каталоге "%%_directory"!
     - File "%%_path" was deleted.: Файл "%%_path" был удалён.
     - File "%%_path" was not deleted!: Файл "%%_path" не был удалён!
     - File can have a maximum size\: %%_value (PHP restriction): Файл может иметь максимальный размер: %%_value (ограничение PHP)
     - File can have a maximum size\: %%_value: Файл может иметь максимальный размер: %%_value
     - File can only be of the next types\: %%_types: Файл может быть только следующих типов: %%_types
+    - File cannot be copied from "%%_from" to "%%_to": Файл не может быть скопирован из "%%_from" в "%%_to"!
     - File is empty.: Файл пуст.
     - File name can contain only the next characters\: %%_characters: Имя файла может содержать только следующие символы: %%_characters
     - File name: Имя файла
@@ -634,8 +634,8 @@ translations
     - Text\: update: Текст: обновить
     - Texts: Текст
     - The changes was deleted.: Изменения были удалены.
-    - The changes was saved.: Изменения были сохранены.
     - The changes was not saved!: Изменения не были сохранены!
+    - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - The current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
@@ -729,8 +729,8 @@ translations
     - Videos: Видео
     - View more: Смотреть больше
     - Visibility: Видимость
-    - vote: голосовать
     - Vote can be canceled: Голос может быть отменён
+    - vote: голосовать
     - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер
