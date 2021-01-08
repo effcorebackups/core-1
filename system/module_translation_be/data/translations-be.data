@@ -134,6 +134,7 @@ translations
     - Diagram: Дыяграма
     - Diagrams: Дыяграмы
     - Digit: Лічба
+    - Directory for temporary upload is missing.: Каталог для часовай загрузкі адсутнічае.
     - Directory permissions should be checked.: Дазвалення каталога павінны быць правераны.
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - Do not forget to save the changes!: Не забудзьце захаваць змены!
@@ -227,7 +228,6 @@ translations
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
-    - File "%%_file" cannot be deleted!: Файл "%%_file" не можа быць выдалены!
     - File "%%_file" cannot be inserted or updated in the directory "%%_directory"!: Файл "%%_file" не можа быць устаўлены або абноўлены ў каталозе "%%_directory"!
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
@@ -392,7 +392,6 @@ translations
     - Messages: Паведамленні
     - MiB: МіБ
     - Minimum width: Мінімальная шырыня
-    - Missing temporary directory.: Адсутнічае часовы каталог.
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
