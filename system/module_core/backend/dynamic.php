@@ -84,7 +84,7 @@ namespace effcore {
     require_once('message.php');
     message::insert(
       'Cannot insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
-      'Check file (if exists) and directory permissions.', 'error'
+      'File permissions (if the file exists) and directory permissions should be checked.', 'error'
     );
   }
 

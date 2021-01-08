@@ -71,7 +71,6 @@ translations
     - Charset: Кодировка
     - Check directory permissions.: Проверьте разрешения каталога.
     - Check field again before submit.: Снова проверьте поле перед отправкой.
-    - Check file (if exists) and directory permissions.: Проверьте разрешения файла (если существует) и каталога.
     - Checkbox: Флажок
     - Checkboxes: Флажки
     - checking: проверка
@@ -167,7 +166,6 @@ translations
     - Execution: Выполнение
     - expand: развернуть
     - Expiration date: Дата окончания
-    - Failed to write file to disk.: Не удалось записать файл на диск.
     - failure: неудача
     - Feedback form: Форма обратной связи
     - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
@@ -237,12 +235,14 @@ translations
     - File can have a maximum size\: %%_value: Файл может иметь максимальный размер: %%_value
     - File can only be of the next types\: %%_types: Файл может быть только следующих типов: %%_types
     - File cannot be copied from "%%_from" to "%%_to": Файл не может быть скопирован из "%%_from" в "%%_to"!
+    - File cannot be written to disc!: Файл не может быть записан на диск!
     - File is empty.: Файл пуст.
     - File name can contain only the next characters\: %%_characters: Имя файла может содержать только следующие символы: %%_characters
     - File name: Имя файла
     - File not found: Файл не найден
     - file of this type is protected: файл этого типа защищён
     - file path: путь к файлу
+    - File permissions (if the file exists) and directory permissions should be checked.: Разрешения файла (если файл существует) и разрешения каталога должны быть проверены.
     - File types: Типы файлов
     - File was copied from "%%_from" to "%%_to".: Файл был скопирован из "%%_from" в "%%_to".
     - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!

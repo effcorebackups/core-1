@@ -71,7 +71,6 @@ translations
     - Charset: Кадзіроўка
     - Check directory permissions.: Праверце дазвалення каталога.
     - Check field again before submit.: Зноў праверце поле перад адпраўкай.
-    - Check file (if exists) and directory permissions.: Праверце дазвалення файла (калі існуе) і каталога.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
     - checking: праверка
@@ -167,7 +166,6 @@ translations
     - Execution: Выкананне
     - expand: разгарнуць
     - Expiration date: Дата заканчэння
-    - Failed to write file to disk.: Не ўдалося запісаць файл на дыск.
     - failure: няўдача
     - Feedback form: Форма зваротнай сувязі
     - Feedback with ID = "%%_id" has been sent.: Водгук c ID = "%%_id" быў адпраўлены.
@@ -237,12 +235,14 @@ translations
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
     - File cannot be copied from "%%_from" to "%%_to": Файл не можа быць скапіяваны з "%%_from" у "%%_to"!
+    - File cannot be written to disc!: Файл не можа быць запісаны на дыск!
     - File is empty.: Файл пусты.
     - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
     - File name: Імя файла
     - File not found: Файл не знойдзены
     - file of this type is protected: файл гэтага тыпу абаронены
     - file path: шлях да файла
+    - File permissions (if the file exists) and directory permissions should be checked.: Дазвалення файла (калі файл існуе) і дазвалення каталога павінны быць правераны.
     - File types: Тыпы файлаў
     - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
     - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
