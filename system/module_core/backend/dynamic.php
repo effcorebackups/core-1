@@ -76,7 +76,8 @@ namespace effcore {
     require_once('message.php');
     message::insert(
       'Cannot select file "'.$file->file_get().'" from the directory "'.$file->dirs_get_relative().'"!'.br.
-      'Check directory permissions or try to reset the cache.', 'error'
+      'Directory permissions should be checked.'.br.
+      'Try to reset the cache.', 'error'
     );
   }
 
@@ -92,7 +93,7 @@ namespace effcore {
     require_once('message.php');
     message::insert(
       'Cannot delete file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
-      'Check directory permissions.', 'error'
+      'Directory permissions should be checked.', 'error'
     );
   }
 

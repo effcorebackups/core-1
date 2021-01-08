@@ -69,7 +69,6 @@ translations
     - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Немагчыма ўключыць модуль "%%_title" (%%_id), калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
     - Canvas: Палатно
     - Charset: Кадзіроўка
-    - Check directory permissions.: Праверце дазвалення каталога.
     - Check field again before submit.: Зноў праверце поле перад адпраўкай.
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
@@ -135,6 +134,7 @@ translations
     - Diagram: Дыяграма
     - Diagrams: Дыяграмы
     - Digit: Лічба
+    - Directory permissions should be checked.: Дазвалення каталога павінны быць правераны.
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - Do not forget to save the changes!: Не забудзьце захаваць змены!
     - do not show: не паказваць
@@ -244,6 +244,7 @@ translations
     - file path: шлях да файла
     - File permissions (if the file exists) and directory permissions should be checked.: Дазвалення файла (калі файл існуе) і дазвалення каталога павінны быць правераны.
     - File types: Тыпы файлаў
+    - File upload was stopped by PHP extension.: Загрузка файла была спыненая PHP-пашырэннем.
     - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
     - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
@@ -469,7 +470,6 @@ translations
     - Permissions: Дазваленні
     - PHP CURL version: PHP CURL версія
     - PHP dependencies: PHP-залежнасці
-    - PHP extension stopped uploading file.: PHP-пашырэнне спыніла загрузку файла.
     - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP PCRE version: PHP PCRE версія
     - PHP version: PHP версія
