@@ -229,6 +229,7 @@ translations
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
     - File "%%_file" cannot be inserted or updated in the directory "%%_directory"!: Файл "%%_file" не может быть вставлен или обновлён в каталоге "%%_directory"!
+    - File "%%_file" cannot be written to disc!: Файл "%%_file" не может быть записан на диск!
     - File "%%_file" was deleted.: Файл "%%_file" был удалён.
     - File "%%_file" was not deleted!: Файл "%%_file" не был удалён!
     - File can have a maximum size\: %%_value (PHP restriction): Файл может иметь максимальный размер: %%_value (ограничение PHP)
