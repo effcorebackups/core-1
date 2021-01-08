@@ -66,7 +66,6 @@ translations
     - Button\: text: Кнопка: текст
     - cache: кэш
     - cancel: отменить
-    - Cannot enable module "%%_title" (%%_id) when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Невозможно включить модуль "%%_title" (%%_id), когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
     - Canvas: Холст
     - Charset: Кодировка
     - Check field again before submit.: Снова проверьте поле перед отправкой.
@@ -392,6 +391,7 @@ translations
     - Messages: Сообщения
     - MiB: МиБ
     - Minimum width: Минимальная ширина
+    - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
