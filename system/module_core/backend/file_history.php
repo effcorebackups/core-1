@@ -67,8 +67,8 @@ namespace effcore {
         unset($this->tmp_path);
         return true;
       } else {
-        message::insert(new text_multiline(['File cannot be copied from "%%_from" to "%%_to"', 'Directory permissions should be checked.'], ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'File cannot be copied from "%%_from" to "%%_to"', 'error', 0,                                  ['from' => $src_file->dirs_get(), 'to' => $dst_file->dirs_get_relative()]);
+        message::insert(new text_multiline(['File cannot be copied from "%%_from" to "%%_to"', 'Directory permissions should be checked.'], ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'File cannot be copied from "%%_from" to "%%_to"', 'error', 0,                                  ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]);
       }
     }
   }
@@ -88,8 +88,8 @@ namespace effcore {
         unset($this->pre_path);
         return true;
       } else {
-        message::insert(new text_multiline(['File cannot be copied from "%%_from" to "%%_to"', 'Directory permissions should be checked.'], ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]), 'error');
-        console::log_insert('file', 'copy', 'File cannot be copied from "%%_from" to "%%_to"', 'error', 0,                                  ['from' => $src_file->dirs_get_relative(), 'to' => $dst_file->dirs_get_relative()]);
+        message::insert(new text_multiline(['File cannot be copied from "%%_from" to "%%_to"', 'Directory permissions should be checked.'], ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
+        console::log_insert('file', 'copy', 'File cannot be copied from "%%_from" to "%%_to"', 'error', 0,                                  ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]);
       }
     }
   }
