@@ -85,6 +85,7 @@ templates
     - head_icons: html/children/head/children/icons
     - head_styles: html/children/head/children/styles
     - head_scripts: html/children/head/children/scripts
+    - head_seo: html/children/head/children/seo
     - body: html/children/body
     data|node
       children
@@ -116,5 +117,6 @@ templates
               - icons|node
               - styles|node
               - scripts|node
+              - seo|node
           - body|markup
               tag_name: body

@@ -142,6 +142,11 @@ namespace effcore {
       }
     }
 
+    $file = new file(data::directory.'meta.txt');
+    if ($file->is_exist()) {
+      $template->arg_set('head_seo', new text($file->load()));
+    }
+
     return $template->render();
   }
 
