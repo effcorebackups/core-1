@@ -167,10 +167,6 @@ file_types
     type: flac
     headers
     - Content-type: audio/flac
-- flv
-    type: flv
-    headers
-    - Content-type: video/x-flv
 - gif
     type: gif
     headers
@@ -364,10 +360,6 @@ file_types
     type: svgz
     headers
     - Content-type: image/svg+xml
-- swf
-    type: swf
-    headers
-    - Content-type: application/x-shockwave-flash
 - tar
     type: tar
     headers
