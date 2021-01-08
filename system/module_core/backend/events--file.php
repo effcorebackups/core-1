@@ -28,7 +28,6 @@ namespace effcore\modules\core {
     if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
               $_SERVER['HTTP_IF_NONE_MATCH'] === $etag) {
       header('HTTP/1.1 304 Not Modified');
-      console::log_store();
       exit();
     }
 
@@ -56,7 +55,6 @@ namespace effcore\modules\core {
       }
     }
     print $result;
-    console::log_store();
     exit();
   }
 
@@ -102,7 +100,6 @@ namespace effcore\modules\core {
     if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) &&
               $_SERVER['HTTP_IF_MODIFIED_SINCE'] === $last_modified) {
       header('HTTP/1.1 304 Not Modified');
-      console::log_store();
       exit();
     }
 
@@ -149,7 +146,6 @@ namespace effcore\modules\core {
       }
       fclose($resource);
     }
-    console::log_store();
     exit();
   }
 

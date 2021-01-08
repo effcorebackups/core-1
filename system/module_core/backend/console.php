@@ -13,12 +13,14 @@ namespace effcore {
   const is_visible_for_everyone = 0b10;
 
   static protected $data = [];
+  static protected $file_log_err = null;
   static protected $is_init = false;
   static protected $visible_mode = self::is_visible_for_nobody;
 
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
+      static::$file_log_err = new file(static::directory.core::date_get().'/error--'.core::date_get().'.log');
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
@@ -38,11 +40,12 @@ namespace effcore {
   }
 
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
+    static::init();
     $new_log = new \stdClass;
     if (static::visible_mode_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-      if ($stack[0]['function'] === 'log_insert'                ) array_shift($stack);
-      if ($stack[0]['function'] === 'log_insert_about_duplicate') array_shift($stack);
+      if ($stack[0]['function'] === 'log_insert'            ) array_shift($stack);
+      if ($stack[0]['function'] === 'report_about_duplicate') array_shift($stack);
       $new_log->stack       = core::format_debug_backtrace($stack);
     } $new_log->object      = $object;
       $new_log->action      = $action;
@@ -51,40 +54,35 @@ namespace effcore {
       $new_log->time        = $time;
       $new_log->args        = $args;
     static::$data[] = $new_log;
+  # store errors to the static::$file_log_err
+    if ($value === 'error') {
+      $c_info = $new_log->description;
+      foreach ($new_log->args as $c_key => $c_value) $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
+      $c_line = core::time_get().' | '.$new_log->object.
+                                 ' | '.$new_log->action.
+                                 ' | '.str_replace(br, ' | ', $c_info).nl;
+      if (!static::$file_log_err->append_direct($c_line)) {
+        message::insert(new text_multiline([
+          'File "%%_file" cannot be written to disc!',
+          'File permissions (if the file exists) and directory permissions should be checked.'], [
+          'file' => static::$file_log_err->path_get_relative()]), 'error'
+        );
+      }
+    }
     return $new_log;
   }
 
-  static function log_insert_about_duplicate($type, $id, $module_id = null) {
+  static function report_about_duplicate($type, $id, $module_id = null) {
     if ($module_id && !storage::get('sql')->is_installed()) { # for page '/install' + redirect
       $module = module::get($module_id);
       if ($module instanceof module_as_profile) {
         return;
       }
     }
+    if ($module_id)                  message::insert(new text('duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"',             ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
+    else                             message::insert(new text('duplicate of type "%%_type" with ID = "%%_id" was found',                                                ['type' => $type, 'id' => $id                           ]), 'error');
     return $module_id ? static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]) :
                         static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found',                                    'error', 0, ['type' => $type, 'id' => $id                           ]);
-  }
-
-  static function log_store($log_level = 'error') {
-    $file = new file(static::directory.core::date_get().'/'.
-                       $log_level.'--'.core::date_get().'.log');
-    foreach (static::$data as $c_log) {
-      if ($c_log->value === $log_level) {
-        $c_info = $c_log->description;
-        foreach ($c_log->args as $c_key => $c_value)
-          $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
-          $c_info = str_replace(br, ' | ', $c_info);
-        if (!$file->append_direct(core::time_get().' | '.
-                                    $c_log->object.' | '.
-                                    $c_log->action.' | '.$c_info.nl)) {
-          message::insert(new text_multiline([
-            'File "%%_file" cannot be written to disc!',
-            'File permissions (if the file exists) and directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-          );
-        }
-      }
-    }
   }
 
   # ─────────────────────────────────────────────────────────────────────

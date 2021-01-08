@@ -321,7 +321,7 @@ namespace effcore {
          static::$is_init_nosql = true;
       foreach (storage::get('files')->select('selections') as $c_module_id => $c_selections) {
         foreach ($c_selections as $c_row_id => $c_selection) {
-          if (isset(static::$cache[$c_selection->id])) console::log_insert_about_duplicate('selection', $c_selection->id, $c_module_id);
+          if (isset(static::$cache[$c_selection->id])) console::report_about_duplicate('selection', $c_selection->id, $c_module_id);
                     static::$cache[$c_selection->id] = $c_selection;
                     static::$cache[$c_selection->id]->module_id = $c_module_id;
                     static::$cache[$c_selection->id]->origin = 'nosql';

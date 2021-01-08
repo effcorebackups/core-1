@@ -30,7 +30,6 @@ namespace effcore\modules\demo {
         header('Cache-Control: private, no-cache, no-store, must-revalidate');
         header('Expires: 0');
         print $data;
-        console::log_store();
         exit();
       } else {
         core::send_header_and_exit('access_forbidden', null, new text_multiline([

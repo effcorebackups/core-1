@@ -23,7 +23,6 @@ namespace effcore\modules\core {
         print 'Run: '.$c_handler.br;
         print 'Cron execution time: '.timer::period_get('cron', -1, -2).' sec.';
       storage::get('files')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', core::datetime_get());
-      console::log_store();
       exit();
     } else {
       core::send_header_and_exit('page_not_found', null, new text_multiline([

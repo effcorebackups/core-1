@@ -26,7 +26,7 @@ namespace effcore {
     if (static::$cache === null) {
       foreach (storage::get('files')->select('frontend') as $c_module_id => $c_frontends) {
         foreach ($c_frontends as $c_row_id => $c_frontend) {
-          if (isset(static::$cache[$c_row_id])) console::log_insert_about_duplicate('frontend', $c_row_id, $c_module_id);
+          if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('frontend', $c_row_id, $c_module_id);
                     static::$cache[$c_row_id] = $c_frontend;
                     static::$cache[$c_row_id]->module_id = $c_module_id;
         }

@@ -170,7 +170,6 @@ namespace effcore {
   }
   header('Cache-Control: private, no-cache');
   print $result;
-  console::log_store();
   exit();
 
 }

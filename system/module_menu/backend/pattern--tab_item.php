@@ -90,7 +90,7 @@ namespace effcore {
     if (static::$cache === null) {
       foreach (storage::get('files')->select('tab_items') as $c_module_id => $c_tab_items) {
         foreach ($c_tab_items as $c_row_id => $c_item) {
-          if (isset(static::$cache[$c_item->id])) console::log_insert_about_duplicate('tab_item', $c_item->id, $c_module_id);
+          if (isset(static::$cache[$c_item->id])) console::report_about_duplicate('tab_item', $c_item->id, $c_module_id);
                     static::$cache[$c_item->id] = $c_item;
                     static::$cache[$c_item->id]->module_id = $c_module_id;
         }
