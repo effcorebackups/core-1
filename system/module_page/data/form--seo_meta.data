@@ -11,6 +11,7 @@ forms
         - content|field_textarea
             title: Content in the &lt;head&gt;
             element_attributes
+            - data-is-code-editor: true
             - name: content
             - required: false
             - minlength: null

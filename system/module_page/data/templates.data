@@ -80,12 +80,13 @@ templates
     - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
     - head: html/children/head
     - head_meta: html/children/head/children/meta
+    - head_meta_custom_global: html/children/head/children/meta_custom_global
+    - head_meta_custom: html/children/head/children/meta_custom
     - head_title: html/children/head/children/title
     - head_title_text: html/children/head/children/title/children/content/text
     - head_icons: html/children/head/children/icons
     - head_styles: html/children/head/children/styles
     - head_scripts: html/children/head/children/scripts
-    - head_seo: html/children/head/children/seo
     - body: html/children/body
     data|node
       children
@@ -117,6 +118,7 @@ templates
               - icons|node
               - styles|node
               - scripts|node
-              - seo|node
+              - meta_custom_global|node
+              - meta_custom|node
           - body|markup
               tag_name: body

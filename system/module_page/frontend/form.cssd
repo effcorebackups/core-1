@@ -81,6 +81,12 @@
     vertical-align: top;
     background: %%_color_error}
 
+  /* helper classes */
+
+  [data-is-code-editor] {
+    font-family: monospace;
+  }
+
   /* inputs */
 
   input,

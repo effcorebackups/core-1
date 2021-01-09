@@ -11,6 +11,7 @@ forms
         - content|field_textarea
             title: Content of the "robots.txt" file
             element_attributes
+            - data-is-code-editor: true
             - name: content
             - required: false
             - minlength: null
