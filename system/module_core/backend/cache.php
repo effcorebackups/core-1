@@ -36,11 +36,11 @@ namespace effcore {
     }
   }
 
-  static function update_global($include_paths = []) {
-    static::cleaning();                                 # delete dynamic/cache/*.php
-    core::structures_select($include_paths);            # create dynamic/cache/structures.php
-    storage_nosql_files::cache_update($include_paths);  # create dynamic/cache/data--*.php
-    core::structures_cache_cleaning_after_on_install(); # method *::cache_cleaning() call for each class which implements "should_clear_cache_after_on_install"
+  static function update_global($include_modules = []) {
+    static::cleaning();                                  # delete dynamic/cache/*.php
+    core::structures_select($include_modules);           # create dynamic/cache/structures.php
+    storage_nosql_files::cache_update($include_modules); # create dynamic/cache/data--*.php
+    core::structures_cache_cleaning_after_on_install();  # method *::cache_cleaning() call for each class which implements "should_clear_cache_after_on_install"
   }
 
 }}
