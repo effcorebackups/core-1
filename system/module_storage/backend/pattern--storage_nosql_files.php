@@ -158,8 +158,8 @@ namespace effcore {
       $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
-      if ($c_file->name == 'bundle') $c_data->bundle->path = $bundles_path[$c_data->bundle->id] = $c_dirs_relative;
-      if ($c_file->name == 'module') $c_data->module->path = $modules_path[$c_data->module->id] = $c_dirs_relative;
+      if ($c_file->name === 'bundle') $c_data->bundle->path = $bundles_path[$c_data->bundle->id] = $c_dirs_relative;
+      if ($c_file->name === 'module') $c_data->module->path = $modules_path[$c_data->module->id] = $c_dirs_relative;
     }
     arsort($bundles_path);
     arsort($modules_path);
@@ -178,10 +178,10 @@ namespace effcore {
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;
     $enabled      = module::get_enabled() + $with_paths;
-    if ($enabled == []) {
+    if ($enabled === []) { # no modules in the boot (when installing)
       foreach ($preparse->parsed as $c_info) {
         if (!empty($c_info->data->module)         &&
-                   $c_info->data->module->enabled == 'yes') {
+                   $c_info->data->module->enabled === 'yes') {
           $enabled[$c_info->data->module->id] = $c_info->data->module->path;
         }
       }

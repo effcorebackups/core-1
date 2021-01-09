@@ -94,11 +94,11 @@ namespace effcore {
       $files        = [];
       $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
       $modules_path = $preparse->modules_path;
-      $enabled      = static::boot_select('enabled') + $with_paths;
-      if ($enabled == []) {
+      $enabled      = static::boot_select('enabled') + $with_paths; # === module::get_enabled() + $with_paths
+      if ($enabled === []) { # no modules in the boot (when installing)
         foreach ($preparse->parsed as $c_info) {
           if (!empty($c_info->data->module)         &&
-                     $c_info->data->module->enabled == 'yes') {
+                     $c_info->data->module->enabled === 'yes') {
             $enabled[$c_info->data->module->id] = $c_info->data->module->path;
           }
         }
