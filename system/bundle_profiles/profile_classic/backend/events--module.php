@@ -12,12 +12,11 @@ namespace effcore\modules\profile_classic {
           use \effcore\text_multiline;
           abstract class events_module {
 
-  static $conflict_has_been = false;
+  static $is_failed_installation = false;
 
   static function on_install($event) {
     $module = module::get('profile_classic');
-    if (page::get_current()->id === 'install' && field::request_value_get('profile') !== $module->id) {static::$conflict_has_been = true; return;}
-    if (page::get_current()->id === 'install' && field::request_value_get('profile') === $module->id) {$module->install();}
+    if (page::get_current()->id === 'install') $module->install();
     if (page::get_current()->id !== 'install') {
       $page_ids = [];
       if (page::get('about'       )) $page_ids[] = 'about';
@@ -30,7 +29,7 @@ namespace effcore\modules\profile_classic {
       if (!count($page_ids)) {
         $module->install();
       } else {
-        static::$conflict_has_been = true;
+        static::$is_failed_installation = true;
         message::insert(new text_multiline([
           'Unable to install the profile "%%_profile" because the system already has Pages with the following IDs: %%_ids',
           'Uninstall the existing profile first.'], ['profile' => $module->title, 'ids' => implode(', ', $page_ids)]), 'warning'
@@ -45,7 +44,7 @@ namespace effcore\modules\profile_classic {
   }
 
   static function on_enable($event) {
-    if (!static::$conflict_has_been) {
+    if (!static::$is_failed_installation) {
       $module = module::get('profile_classic');
       $module->enable();
     }
