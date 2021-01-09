@@ -162,19 +162,22 @@ namespace effcore\modules\core {
             'salt'            => core::key_generate(    )
           ]);
           $enabled_by_default = module::get_enabled_by_default();
-          $embedded           = module::get_embedded          ();
-          $modules            = module::get_all               ();
+          $embedded           = module::get_embedded();
+          $modules            = module::get_all();
           core::array_sort_by_property($modules, 'deploy_weight');
           foreach ($modules as $c_module) {
             if (isset($enabled_by_default[$c_module->id]) ||
                 isset($embedded          [$c_module->id])) {
-              event::start('on_module_install', $c_module->id);
-              event::start('on_module_enable',  $c_module->id);
-            # cancel installation and show message if module was not installed
-              if (count(storage::get('sql')->errors) != 0) {
-                message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id]), 'error');
-                break;
-              }
+              $modules_to_install[$c_module->id] = $c_module;
+            }
+          }
+          foreach ($modules_to_install as $c_module) {
+            event::start('on_module_install', $c_module->id);
+            event::start('on_module_enable',  $c_module->id);
+          # cancel installation and show message if module was not installed
+            if (count(storage::get('sql')->errors) !== 0) {
+              message::insert(new text('Module "%%_title" (%%_id) was not installed!', ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id]), 'error');
+              break;
             }
           }
           if (count(storage::get('sql')->errors) === 0) {
