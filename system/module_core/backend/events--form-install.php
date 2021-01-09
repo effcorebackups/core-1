@@ -11,6 +11,7 @@ namespace effcore\modules\core {
           use \effcore\event;
           use \effcore\message;
           use \effcore\module;
+          use \effcore\module_as_profile;
           use \effcore\page;
           use \effcore\storage;
           use \effcore\text_multiline;
@@ -164,8 +165,10 @@ namespace effcore\modules\core {
           $enabled_by_default = module::get_enabled_by_default();
           $embedded           = module::get_embedded();
           $modules            = module::get_all();
+          $modules_to_install = [];
           core::array_sort_by_property($modules, 'deploy_weight');
           foreach ($modules as $c_module) {
+            if ($c_module instanceof module_as_profile && $c_module->id !== $items['#profile']->value_get()) continue;
             if (isset($enabled_by_default[$c_module->id]) ||
                 isset($embedded          [$c_module->id])) {
               $modules_to_install[$c_module->id] = $c_module;
