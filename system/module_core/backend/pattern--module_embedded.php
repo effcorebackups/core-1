@@ -157,7 +157,7 @@ namespace effcore {
   static function get_enabled_by_default($property = null) {
     $result = [];
     foreach (static::get_all() as $c_module)
-      if ($c_module->enabled == 'yes')
+      if ($c_module->enabled === 'yes')
         $result[$c_module->id] = $property ?
                      $c_module->{$property} :
                      $c_module;
@@ -179,13 +179,14 @@ namespace effcore {
     return $result;
   }
 
-  static function get_profiles($property = null) {
+  static function get_profiles($property = null, $ws_disabled_by_default = false) {
     $result = [];
-    foreach (static::get_all() as $c_module)
-      if ($c_module instanceof module_as_profile)
-        $result[$c_module->id] = $property ?
-                     $c_module->{$property} :
-                     $c_module;
+    foreach (static::get_all() as $c_module) {
+      if ($c_module instanceof module_as_profile) {
+        if ($c_module->enabled !== 'yes' && $ws_disabled_by_default === true) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+        if ($c_module->enabled === 'yes'                                    ) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+      }
+    }
     return $result;
   }
 
@@ -217,7 +218,7 @@ namespace effcore {
   static function update_data_get_all($module_id, $from_number = 0) {
     $updates = [];
     foreach (storage::get('files')->select('modules_update_data', false, false) ?? [] as $c_module_id => $c_updates)
-      if ($c_module_id == $module_id)
+      if ($c_module_id === $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
           if ($c_update->number >= $from_number)
             $updates[$c_row_id] = $c_update;
