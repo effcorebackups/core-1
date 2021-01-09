@@ -90,12 +90,12 @@ namespace effcore {
     static::$data = [];
   }
 
-  static function cache_update($with_paths = []) {
+  static function cache_update($include_modules = []) {
   # init data and original data
     static::$data      = [];
             $data_orig = cache::select('data_original');
     if (!$data_orig) {
-      $data_orig = static::data_find_and_parse($with_paths);
+      $data_orig = static::data_find_and_parse($include_modules);
       cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -170,25 +170,31 @@ namespace effcore {
     return $result;
   }
 
-  static function data_find_and_parse($with_paths = []) {
+  static function data_find_and_parse($include_modules = []) {
     $result       = [];
     $files        = [];
     $preparse     = static::data_find_and_parse_modules_and_bundles();
     $parsed       = $preparse->parsed;
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
-    $enabled      = module::get_enabled() + $with_paths;
+    $enabled      = module::get_enabled() + $include_modules;
+    $is_no_boot   = $enabled === [];
   # if no modules in the boot (when installing)
     if ($enabled === []) {
-      foreach ($preparse->parsed as $c_info) {
+      foreach ($parsed as $c_info) {
         if (!empty($c_info->data->module) &&
                    $c_info->data->module->enabled === 'yes') {
           $enabled[$c_info->data->module->id] = $c_info->data->module->path;
         }
       }
     }
-    arsort($enabled);
+  # get modules info
+    $modules_info = [];
+    foreach ($enabled as $c_id => $c_enabled_path) {
+      $modules_info[$c_id] = $parsed[$c_enabled_path.'module.data']->data->module;
+    }
   # collect *.data files
+    arsort($enabled);
     foreach ($enabled as $c_enabled_path) {
       $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.data$%');
       foreach ($c_files as $c_path_relative => $c_file) {
@@ -196,6 +202,7 @@ namespace effcore {
         if (isset($enabled[$c_module_id])) {
           if ($c_file->name === 'bundle') continue;
           if ($c_file->name === 'module') continue;
+          if ($is_no_boot && $modules_info[$c_module_id] instanceof module_as_profile) continue;
           $files[$c_path_relative] = $c_file;
         }
       }
