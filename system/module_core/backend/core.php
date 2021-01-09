@@ -86,7 +86,7 @@ namespace effcore {
     }
   }
 
-  static function structures_select($with_paths = []) {
+  static function structures_select($modules_include = []) {
     $result = cache::select('structures') ?? [];
     if ($result) {
       return $result;
@@ -94,7 +94,7 @@ namespace effcore {
       $files        = [];
       $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
       $modules_path = $preparse->modules_path;
-      $enabled      = static::boot_select('enabled') + $with_paths; # === module::get_enabled() + $with_paths
+      $enabled      = static::boot_select('enabled') + $modules_include; # === module::get_enabled() + $modules_include
     # if no modules in the boot (when installing)
       if ($enabled === []) {
         foreach ($preparse->parsed as $c_info) {
