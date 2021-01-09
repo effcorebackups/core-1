@@ -95,7 +95,8 @@ namespace effcore {
       $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
       $modules_path = $preparse->modules_path;
       $enabled      = static::boot_select('enabled') + $with_paths; # === module::get_enabled() + $with_paths
-      if ($enabled === []) { # no modules in the boot (when installing)
+    # if no modules in the boot (when installing)
+      if ($enabled === []) {
         foreach ($preparse->parsed as $c_info) {
           if (!empty($c_info->data->module)         &&
                      $c_info->data->module->enabled === 'yes') {
@@ -104,15 +105,17 @@ namespace effcore {
         }
       }
       arsort($enabled);
+    # collect *.php files
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path, '%^.*\\.php$%');
-        foreach ($c_files as $c_file_path => $c_file) {
-          $c_module_id = key(static::in_array_inclusions_find($c_file_path, $modules_path));
+        foreach ($c_files as $c_path_relative => $c_file) {
+          $c_module_id = key(static::in_array_inclusions_find($c_path_relative, $modules_path));
           if (isset($enabled[$c_module_id])) {
-            $files[$c_file_path] = $c_file;
+            $files[$c_path_relative] = $c_file;
           }
         }
       }
+    # parse each collected file
       foreach ($files as $c_file) {
         $c_matches = [];
         preg_match_all('%(?:namespace (?<namespace>[a-zA-Z0-9_\\\\]+)\\s*[{;]\\s*(?<use>.*?|)|)\\s*'.

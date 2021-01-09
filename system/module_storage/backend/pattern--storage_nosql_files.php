@@ -178,7 +178,8 @@ namespace effcore {
     $modules_path = $preparse->modules_path;
     $parsed       = $preparse->parsed;
     $enabled      = module::get_enabled() + $with_paths;
-    if ($enabled === []) { # no modules in the boot (when installing)
+  # if no modules in the boot (when installing)
+    if ($enabled === []) {
       foreach ($preparse->parsed as $c_info) {
         if (!empty($c_info->data->module)         &&
                    $c_info->data->module->enabled === 'yes') {
@@ -187,30 +188,30 @@ namespace effcore {
       }
     }
     arsort($enabled);
+  # collect *.data files
     foreach ($enabled as $c_enabled_path) {
       $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.data$%');
-      foreach ($c_files as $c_file_path => $c_file) {
-        $c_module_id = key(core::in_array_inclusions_find($c_file_path, $modules_path));
+      foreach ($c_files as $c_path_relative => $c_file) {
+        $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
         if (isset($enabled[$c_module_id])) {
-          $files[$c_file_path] = $c_file;
+          $files[$c_path_relative] = $c_file;
         }
       }
     }
-  # parse collected *.data
-    foreach ($files as $c_file) {
-      if ($c_file->name == 'bundle') continue;
-      if ($c_file->name == 'module') continue;
+  # parse each collected file
+    foreach ($files as $c_path_relative => $c_file) {
+      if ($c_file->name === 'bundle') continue;
+      if ($c_file->name === 'module') continue;
       $c_data = static::text_to_data($c_file->load(), $c_file);
-      $c_path_relative = $c_file->path_get_relative();
       $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
     }
   # build the result
-    foreach ($parsed as $c_file_path => $c_file) {
-      $c_module_id = key(core::in_array_inclusions_find($c_file_path, $modules_path));
+    foreach ($parsed as $c_path_relative => $c_file) {
+      $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
       foreach ($c_file->data as $c_type => $c_data) {
-        if ($c_type == 'bundle') $c_module_id = $c_data->id;
+        if ($c_type === 'bundle') $c_module_id = $c_data->id;
         if ($c_module_id) {
           if (is_object($c_data)) $result[$c_type][$c_module_id] = $c_data;
           elseif (is_array($c_data)) {
