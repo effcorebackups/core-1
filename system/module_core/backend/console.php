@@ -73,12 +73,6 @@ namespace effcore {
   }
 
   static function report_about_duplicate($type, $id, $module_id = null) {
-    if ($module_id && !storage::get('sql')->is_installed()) { # for page '/install' + redirect
-      $module = module::get($module_id);
-      if ($module instanceof module_as_profile) {
-        return;
-      }
-    }
     if ($module_id)                  message::insert(new text('duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"',             ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
     else                             message::insert(new text('duplicate of type "%%_type" with ID = "%%_id" was found',                                                ['type' => $type, 'id' => $id                           ]), 'error');
     return $module_id ? static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]) :

@@ -98,7 +98,7 @@ namespace effcore {
     # if no modules in the boot (when installing)
       if ($enabled === []) {
         foreach ($preparse->parsed as $c_info) {
-          if (!empty($c_info->data->module)         &&
+          if (!empty($c_info->data->module) &&
                      $c_info->data->module->enabled === 'yes') {
             $enabled[$c_info->data->module->id] = $c_info->data->module->path;
           }

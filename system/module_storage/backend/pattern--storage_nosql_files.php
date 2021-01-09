@@ -174,14 +174,14 @@ namespace effcore {
     $result       = [];
     $files        = [];
     $preparse     = static::data_find_and_parse_modules_and_bundles();
+    $parsed       = $preparse->parsed;
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
-    $parsed       = $preparse->parsed;
     $enabled      = module::get_enabled() + $with_paths;
   # if no modules in the boot (when installing)
     if ($enabled === []) {
       foreach ($preparse->parsed as $c_info) {
-        if (!empty($c_info->data->module)         &&
+        if (!empty($c_info->data->module) &&
                    $c_info->data->module->enabled === 'yes') {
           $enabled[$c_info->data->module->id] = $c_info->data->module->path;
         }
@@ -194,14 +194,14 @@ namespace effcore {
       foreach ($c_files as $c_path_relative => $c_file) {
         $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));
         if (isset($enabled[$c_module_id])) {
+          if ($c_file->name === 'bundle') continue;
+          if ($c_file->name === 'module') continue;
           $files[$c_path_relative] = $c_file;
         }
       }
     }
   # parse each collected file
     foreach ($files as $c_path_relative => $c_file) {
-      if ($c_file->name === 'bundle') continue;
-      if ($c_file->name === 'module') continue;
       $c_data = static::text_to_data($c_file->load(), $c_file);
       $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
