@@ -162,18 +162,23 @@ namespace effcore\modules\core {
             'session'         => core::key_generate(    ),
             'salt'            => core::key_generate(    )
           ]);
+        # prepare data about modules which will be installed
           $enabled_by_default = module::get_enabled_by_default();
           $embedded           = module::get_embedded();
           $modules            = module::get_all();
           $modules_to_install = [];
+          $modules_to_include = [];
           core::array_sort_by_property($modules, 'deploy_weight');
           foreach ($modules as $c_module) {
             if ($c_module instanceof module_as_profile && $c_module->id !== $items['#profile']->value_get()) continue;
             if (isset($enabled_by_default[$c_module->id]) ||
                 isset($embedded          [$c_module->id])) {
               $modules_to_install[$c_module->id] = $c_module;
+              $modules_to_include[$c_module->id] = $c_module->path;
             }
           }
+        # installation process
+          cache::update_global($modules_to_include);
           foreach ($modules_to_install as $c_module) {
             event::start('on_module_install', $c_module->id);
             event::start('on_module_enable',  $c_module->id);
@@ -183,8 +188,8 @@ namespace effcore\modules\core {
               break;
             }
           }
+        # save the result if there are no errors
           if (count(storage::get('sql')->errors) === 0) {
-            cache::update_global();
             storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
             storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'));
             $form->children_delete();
