@@ -83,6 +83,7 @@ translations
     - Conditions: Умовы
     - Console settings: Налады кансолі
     - Content in the &lt;head&gt;: Змесціва ў &lt;head&gt;
+    - Content of the "global.css" file: Змесціва файла "global.css"
     - Content of the "robots.txt" file: Змесціва файла robots.txt
     - Content of the "sitemap.xml" file: Змесціва файла "sitemap.xml"
     - Content: Змесціва
@@ -264,6 +265,7 @@ translations
     - Gallery\: select: Галерэя: абраць
     - Gallery\: update: Галерэя: абнавіць
     - GiB: ГіБ
+    - Global CSS: Глабальны CSS
     - Glyphs: Гліфы
     - go to %%_language language: перайсці на %%_language мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>

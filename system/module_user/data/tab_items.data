@@ -92,3 +92,4 @@ tab_items
     id_tab: security
     action_name: settings
     title: Settings
+    weight: +500

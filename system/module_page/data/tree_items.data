@@ -15,6 +15,7 @@ tree_items
     id_tree: system
     title: View
     url: /manage/view
+    weight: +480
     access
       roles
       - =: admins
@@ -26,6 +27,7 @@ tree_items
     id_tree: system
     title: SEO
     url: /manage/seo
+    weight: +460
     access
       roles
       - =: admins

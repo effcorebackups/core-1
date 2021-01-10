@@ -88,6 +88,7 @@ tab_items
     id_tab: demo
     action_name: embedded/form_elements
     title: Form elements
+    weight: +500
 - demo_markup_static|tab_item
     id: demo_markup_static
     id_parent: demo_embedded

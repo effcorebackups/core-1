@@ -42,6 +42,7 @@ tree_items
     id_tree: system
     title: Console
     url: /develop/console
+    weight: -500
     access
       roles
       - =: admins

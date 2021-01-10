@@ -5,6 +5,7 @@ tree_items
     id_tree: system
     title: Tests
     url: /develop/tests
+    weight: +480
     access
       roles
       - =: admins

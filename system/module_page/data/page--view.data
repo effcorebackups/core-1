@@ -7,6 +7,7 @@ pages
 >>>>>>>>>>>(?<type>colors/current|
 >>>>>>>>>>>>>>>>>>>colors/presets|
 >>>>>>>>>>>>>>>>>>>layouts|
+>>>>>>>>>>>>>>>>>>>global_css|
 >>>>>>>>>>>>>>>>>>>settings)(/
 >>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
     access
@@ -77,6 +78,17 @@ pages
             match: %^layouts$%
           type: link
           source: forms/page/layout
+      - block__form__global_css|block
+          title: Global CSS
+          title_is_visible: false
+          attributes
+          - data-id: block__form__global_css
+          display
+            check: page_args
+            where: type
+            match: %^global_css$%
+          type: link
+          source: forms/page/global_css
       - block__form__view_settings|block
           title: View settings
           title_is_visible: false

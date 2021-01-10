@@ -38,6 +38,9 @@ events
   - layout|event
       for: layout
       handler: \effcore\modules\page\events_form_layout::on_init
+  - global_css|event
+      for: global_css
+      handler: \effcore\modules\page\events_form_global_css::on_init
   - view_settings|event
       for: view_settings
       handler: \effcore\modules\page\events_form_view_settings::on_init
@@ -76,6 +79,9 @@ events
   - layout|event
       for: layout
       handler: \effcore\modules\page\events_form_layout::on_submit
+  - global_css|event
+      for: global_css
+      handler: \effcore\modules\page\events_form_global_css::on_submit
   - view_settings|event
       for: view_settings
       handler: \effcore\modules\page\events_form_view_settings::on_submit
