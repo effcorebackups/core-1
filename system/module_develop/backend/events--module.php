@@ -24,11 +24,13 @@ namespace effcore\modules\develop {
 
   static function on_start($event) {
     if (console::visible_mode_get()) {
-      frontend::insert('console', null, 'styles', [
-        'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
-        'attributes' => ['rel' => 'stylesheet', 'media' => 'all'],
-        'weight'     => -500], 'develop_style', 'develop'
-      );
+      if (!frontend::select('page_all__console__develop')) {
+           frontend::insert('page_all__console__develop', (object)['check' => 'url', 'where' => 'path', 'match' => '%^(?!/develop/).*$%'], 'styles', [
+             'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
+             'attributes' => ['rel' => 'stylesheet', 'media' => 'all'],
+             'weight'     => -500], 'console_style', 'develop'
+           );
+      }
     }
   }
 

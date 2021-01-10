@@ -116,6 +116,11 @@ namespace effcore {
       }
     }
 
+    $file_global_css = new file(data::directory.'global.css');
+    if ($file_global_css->is_exist()) {
+      frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/data/global.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
+    }
+
     $frontend = frontend::markup_get($this->used_dpaths);
     $template->arg_set('charset',      $this    ->charset);
     $template->arg_set('head_icons',   $frontend->icons  );
@@ -142,9 +147,9 @@ namespace effcore {
       }
     }
 
-    $file = new file(data::directory.'meta.html');
-    if ($file->is_exist()) {
-      $template->arg_set('head_meta_custom_global', new text($file->load()));
+    $file_meta = new file(data::directory.'meta.html');
+    if ($file_meta->is_exist()) {
+      $template->arg_set('head_meta_custom_global', new text($file_meta->load()));
     }
 
     return $template->render();
