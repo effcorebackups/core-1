@@ -1,7 +1,7 @@
 forms
-- decoration_settings|form
+- view_settings|form
     attributes
-    - id: decoration_settings
+    - id: view_settings
     - method: post
     - novalidate: true
     children

@@ -38,9 +38,9 @@ events
   - layout|event
       for: layout
       handler: \effcore\modules\page\events_form_layout::on_init
-  - decoration_settings|event
-      for: decoration_settings
-      handler: \effcore\modules\page\events_form_decoration_settings::on_init
+  - view_settings|event
+      for: view_settings
+      handler: \effcore\modules\page\events_form_view_settings::on_init
   - seo_meta|event
       for: seo_meta
       handler: \effcore\modules\page\events_form_seo_meta::on_init
@@ -59,9 +59,9 @@ events
       weight: +500
       handler: \effcore\modules\page\events_form_instance_update::on_init
   on_form_validate
-  - decoration_settings|event
-      for: decoration_settings
-      handler: \effcore\modules\page\events_form_decoration_settings::on_validate
+  - view_settings|event
+      for: view_settings
+      handler: \effcore\modules\page\events_form_view_settings::on_validate
   - instance_insert_page|event
       for: instance_insert
       weight: +500
@@ -76,9 +76,9 @@ events
   - layout|event
       for: layout
       handler: \effcore\modules\page\events_form_layout::on_submit
-  - decoration_settings|event
-      for: decoration_settings
-      handler: \effcore\modules\page\events_form_decoration_settings::on_submit
+  - view_settings|event
+      for: view_settings
+      handler: \effcore\modules\page\events_form_view_settings::on_submit
   - seo_meta|event
       for: seo_meta
       handler: \effcore\modules\page\events_form_seo_meta::on_submit
@@ -98,10 +98,10 @@ events
       handler: \effcore\modules\page\events_storage::on_instance_delete_before
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
-  - decoration|event
-      for: decoration
+  - view|event
+      for: view
       weight: +600
-      handler: \effcore\modules\page\events_page_decoration::on_redirect
+      handler: \effcore\modules\page\events_page_view::on_redirect
   - seo|event
       for: seo
       weight: +600
@@ -117,6 +117,6 @@ events
       handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
-  - decoration|event
-      for: decoration
-      handler: \effcore\modules\page\events_page_decoration::on_tab_build_before
+  - view|event
+      for: view
+      handler: \effcore\modules\page\events_page_view::on_tab_build_before

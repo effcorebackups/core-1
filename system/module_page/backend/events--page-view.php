@@ -11,7 +11,7 @@ namespace effcore\modules\page {
           use \effcore\page;
           use \effcore\tab_item;
           use \effcore\url;
-          abstract class events_page_decoration {
+          abstract class events_page_view {
 
   static function on_redirect($event, $page) {
     $type = $page->args_get('type');
@@ -29,9 +29,9 @@ namespace effcore\modules\page {
       $presets = color::preset_get_all();
       core::array_sort_by_text_property($presets);
       foreach ($presets as $c_preset) {
-        tab_item::insert(                                              $c_preset->title,
-          'decoration_colors_presets_'.                                $c_preset->id,
-          'decoration_colors_presets', 'decoration', 'colors/presets/'.$c_preset->id
+        tab_item::insert(                                  $c_preset->title,
+          'view_colors_presets_'.                          $c_preset->id,
+          'view_colors_presets', 'view', 'colors/presets/'.$c_preset->id
         );
       }
     }
@@ -40,9 +40,9 @@ namespace effcore\modules\page {
       $layouts = layout::select_all();
       core::array_sort_by_text_property($layouts);
       foreach ($layouts as $c_layout) {
-        tab_item::insert(                                $c_layout->title,
-          'decoration_layouts_'.                         $c_layout->id,
-          'decoration_layouts', 'decoration', 'layouts/'.$c_layout->id
+        tab_item::insert(                    $c_layout->title,
+          'view_layouts_'.                   $c_layout->id,
+          'view_layouts', 'view', 'layouts/'.$c_layout->id
         );
       }
     }

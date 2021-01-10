@@ -8,7 +8,7 @@ namespace effcore\modules\page {
           use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
-          abstract class events_form_decoration_settings {
+          abstract class events_form_view_settings {
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('page');

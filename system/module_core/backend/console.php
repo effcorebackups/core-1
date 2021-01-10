@@ -63,7 +63,7 @@ namespace effcore {
                                  ' | '.str_replace(br, ' | ', $c_info).nl;
       if (!static::$file_log_err->append_direct($c_line)) {
         message::insert(new text_multiline([
-          'File "%%_file" cannot be written to disc!',
+          'File "%%_file" was not written to disc!',
           'File permissions (if the file exists) and directory permissions should be checked.'], [
           'file' => static::$file_log_err->path_get_relative()]), 'error'
         );

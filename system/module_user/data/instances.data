@@ -18,11 +18,11 @@ instances
     - id: manage__security
     - title: Security: manage
     - is_embedded: 1
-- permission_manage_decoration|instance
+- permission_manage_view|instance
     entity_name: permission
     values
-    - id: manage__decoration
-    - title: Decoration: manage
+    - id: manage__view
+    - title: View: manage
     - is_embedded: 1
 - permission_manage_seo|instance
     entity_name: permission

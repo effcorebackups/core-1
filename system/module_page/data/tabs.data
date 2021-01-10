@@ -1,5 +1,5 @@
 tabs
-- decoration|tabs
-    id: decoration
+- view|tabs
+    id: view
 - seo|tabs
     id: seo

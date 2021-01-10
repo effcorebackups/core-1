@@ -9,17 +9,17 @@ tree_items
     access
       roles
       - =: registered
-- decoration|tree_item
-    id: decoration
+- view|tree_item
+    id: view
     id_parent: manage
     id_tree: system
-    title: Decoration
-    url: /manage/decoration
+    title: View
+    url: /manage/view
     access
       roles
       - =: admins
       permissions
-      - =: manage__decoration
+      - =: manage__view
 - seo|tree_item
     id: seo
     id_parent: manage

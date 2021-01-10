@@ -1,9 +1,9 @@
 pages
-- decoration|page
-    id: decoration
-    title: Decoration
+- view|page
+    id: view
+    title: View
     is_https: true
-    url: %^(?<base>/manage/decoration)(/
+    url: %^(?<base>/manage/view)(/
 >>>>>>>>>>>(?<type>colors/current|
 >>>>>>>>>>>>>>>>>>>colors/presets|
 >>>>>>>>>>>>>>>>>>>layouts|
@@ -13,7 +13,7 @@ pages
       roles
       - =: admins
       permissions
-      - =: manage__decoration
+      - =: manage__view
     blocks
     - system
       - block__tree_sql__user_registered|block_preset_link
@@ -41,7 +41,7 @@ pages
           attributes
           - data-id: block__tabs
           type: link
-          source: tabs/page/decoration
+          source: tabs/page/view
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__colors|block
@@ -77,14 +77,14 @@ pages
             match: %^layouts$%
           type: link
           source: forms/page/layout
-      - block__form__decoration_settings|block
-          title: Decoration settings
+      - block__form__view_settings|block
+          title: View settings
           title_is_visible: false
           attributes
-          - data-id: block__form__decoration_settings
+          - data-id: block__form__view_settings
           display
             check: page_args
             where: type
             match: %^settings$%
           type: link
-          source: forms/page/decoration_settings
+          source: forms/page/view_settings

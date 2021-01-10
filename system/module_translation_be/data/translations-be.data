@@ -109,9 +109,6 @@ translations
     - Date/time format: Фармат даты/часу
     - Date/Time: Дата/Час
     - Decimal point: Дзесятковая кропка
-    - Decoration settings: Налады афармлення
-    - Decoration: Афармленне
-    - Decoration\: manage: Афармленне: кіраваць
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
     - delete audio "%%_audio": выдаліць аўдыё "%%_audio"
@@ -227,14 +224,12 @@ translations
     - Fields: Палі
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
-    - File "%%_file" cannot be written to disc!: Файл "%%_file" не можа быць запісаны на дыск!
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
+    - File "%%_file" was not written to disc!: Файл "%%_file" не быў запісаны на дыск!
     - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
-    - File cannot be copied from "%%_from" to "%%_to": Файл не можа быць скапіяваны з "%%_from" у "%%_to"!
-    - File cannot be written to disc!: Файл не можа быць запісаны на дыск!
     - File is empty.: Файл пусты.
     - File name can contain only the next characters\: %%_characters: Імя файла можа змяшчаць толькі наступныя сімвалы: %%_characters
     - File name: Імя файла
@@ -242,10 +237,12 @@ translations
     - file of this type is protected: файл гэтага тыпу абаронены
     - file path: шлях да файла
     - File permissions (if the file exists) and directory permissions should be checked.: Дазвалення файла (калі файл існуе) і дазвалення каталога павінны быць правераны.
+    - File permissions should be checked.: Дазвалення файла павінны быць правераны.
     - File types: Тыпы файлаў
     - File upload was stopped by PHP extension.: Загрузка файла была спыненая PHP-пашырэннем.
     - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
     - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
+    - File was not written to disc!: Файл не быў запісаны на дыск!
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
     - File: Файл
     - file: файл
@@ -727,6 +724,9 @@ translations
     - Video\: update: Відэа: абнавіць
     - Videos: Відэа
     - View more: Глядзець больш
+    - View settings: Налады выгляду
+    - View: Выгляд
+    - View\: manage: Выгляд: кіраваць
     - Visibility: Бачнасць
     - Vote can be canceled: Голас можа быць адменены
     - vote: галасаваць

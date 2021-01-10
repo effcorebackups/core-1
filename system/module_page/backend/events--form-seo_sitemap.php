@@ -24,13 +24,27 @@ namespace effcore\modules\page {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $file = new file(data::directory.'sitemap.xml');
-        $file->data_set($items['#content']->value_get());
-        if ($file->save()) message::insert('The changes was saved.');
-        else message::insert(new text_multiline([
-          'The changes was not saved!',
-          'File "%%_file" cannot be written to disc!',
-          'File permissions (if the file exists) and directory permissions should be checked.'], [
-          'file' => $file->path_get_relative()]), 'error');
+        $new_value = $items['#content']->value_get();
+        if (strlen($new_value)) {
+          $file->data_set($new_value);
+          if ($file->save())
+               message::insert('The changes was saved.');
+          else message::insert(new text_multiline([
+            'The changes was not saved!',
+            'File "%%_file" was not written to disc!',
+            'File permissions (if the file exists) and directory permissions should be checked.'], [
+            'file' => $file->path_get_relative()]), 'error'
+          );
+        } else {
+          if (@unlink($file->path_get()))
+               message::insert('The changes was saved.');
+          else message::insert(new text_multiline([
+            'The changes was not saved!',
+            'File "%%_file" was not deleted!',
+            'Directory permissions should be checked.'], [
+            'file' => $file->path_get_relative()]), 'error'
+          );
+        }
         break;
     }
   }

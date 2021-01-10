@@ -73,7 +73,6 @@ namespace effcore {
   }
 
   static function message_on_error_select($file) {
-    require_once('message.php');
     message::insert(
       'Cannot select file "'.$file->file_get().'" from the directory "'.$file->dirs_get_relative().'"!'.br.
       'Directory permissions should be checked.'.br.
@@ -82,7 +81,6 @@ namespace effcore {
   }
 
   static function message_on_error_insert($file) {
-    require_once('message.php');
     message::insert(
       'Cannot insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
       'File permissions (if the file exists) and directory permissions should be checked.', 'error'
@@ -90,7 +88,6 @@ namespace effcore {
   }
 
   static function message_on_error_delete($file) {
-    require_once('message.php');
     message::insert(
       'Cannot delete file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
       'Directory permissions should be checked.', 'error'
