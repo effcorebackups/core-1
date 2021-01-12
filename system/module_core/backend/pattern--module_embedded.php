@@ -58,6 +58,21 @@ namespace effcore {
       foreach ($copy[$this->id] as $c_info) {
         $c_src_file = new file($this->path.$c_info->from);
         $c_dst_file = new file(            $c_info->to  );
+      # what to do if the file exists? to make a backup and replace, skip, replace?
+        if ($c_dst_file->is_exist()) {
+          $c_if_file_exists = $c_info->if_exists ?? 'replace'; # skip | replace | backup_and_replace
+          if ($c_if_file_exists === 'replace') {} # ↓↓↓ do nothing ↓↓↓
+          if ($c_if_file_exists === 'skip') continue;
+          if ($c_if_file_exists === 'backup_and_replace') {
+            $c_dst_file_backup = clone $c_dst_file;
+            $c_dst_file_backup->name_set($c_dst_file_backup->name_get().'-'.time());
+            @rename(
+              $c_dst_file       ->path_get(),
+              $c_dst_file_backup->path_get()
+            );
+          }
+        }
+      # trying to copy the file
         if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
              message::insert(new text('File was copied from "%%_from" to "%%_to".',     ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
         else message::insert(new text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');

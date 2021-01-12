@@ -2,84 +2,112 @@ copy
 - meta
     from: copy/meta.html
     to: dynamic/data/meta.html
+    if_exists: backup_and_replace
 - robots
     from: copy/robots.txt
     to: dynamic/data/robots.txt
+    if_exists: backup_and_replace
 - sitemap
     from: copy/sitemap.xml
     to: dynamic/data/sitemap.xml
+    if_exists: backup_and_replace
 - logotype
     from: copy/logotype.svg
     to: dynamic/files/pictures/picture-logotype_classic.svg
+    if_exists: backup_and_replace
 - logotype_bitbucket
     from: copy/logotype-bitbucket.svgd
     to: dynamic/files/pictures/picture-logotype_bitbucket_classic.svgd
+    if_exists: backup_and_replace
 - logotype_behance
     from: copy/logotype-behance.svgd
     to: dynamic/files/pictures/picture-logotype_behance_classic.svgd
+    if_exists: backup_and_replace
 - logotype_blogger
     from: copy/logotype-blogger.svgd
     to: dynamic/files/pictures/picture-logotype_blogger_classic.svgd
+    if_exists: backup_and_replace
 - logotype_facebook
     from: copy/logotype-facebook.svgd
     to: dynamic/files/pictures/picture-logotype_facebook_classic.svgd
+    if_exists: backup_and_replace
 - logotype_flickr
     from: copy/logotype-flickr.svgd
     to: dynamic/files/pictures/picture-logotype_flickr_classic.svgd
+    if_exists: backup_and_replace
 - logotype_github
     from: copy/logotype-github.svgd
     to: dynamic/files/pictures/picture-logotype_github_classic.svgd
+    if_exists: backup_and_replace
 - logotype_instagram
     from: copy/logotype-instagram.svgd
     to: dynamic/files/pictures/picture-logotype_instagram_classic.svgd
+    if_exists: backup_and_replace
 - logotype_linkedin
     from: copy/logotype-linkedin.svgd
     to: dynamic/files/pictures/picture-logotype_linkedin_classic.svgd
+    if_exists: backup_and_replace
 - logotype_livejournal
     from: copy/logotype-livejournal.svgd
     to: dynamic/files/pictures/picture-logotype_livejournal_classic.svgd
+    if_exists: backup_and_replace
 - logotype_ok
     from: copy/logotype-ok.svgd
     to: dynamic/files/pictures/picture-logotype_ok_classic.svgd
+    if_exists: backup_and_replace
 - logotype_pinterest
     from: copy/logotype-pinterest.svgd
     to: dynamic/files/pictures/picture-logotype_pinterest_classic.svgd
+    if_exists: backup_and_replace
 - logotype_reddit
     from: copy/logotype-reddit.svgd
     to: dynamic/files/pictures/picture-logotype_reddit_classic.svgd
+    if_exists: backup_and_replace
 - logotype_skype
     from: copy/logotype-skype.svgd
     to: dynamic/files/pictures/picture-logotype_skype_classic.svgd
+    if_exists: backup_and_replace
 - logotype_soundcloud
     from: copy/logotype-soundcloud.svgd
     to: dynamic/files/pictures/picture-logotype_soundcloud_classic.svgd
+    if_exists: backup_and_replace
 - logotype_telegram
     from: copy/logotype-telegram.svgd
     to: dynamic/files/pictures/picture-logotype_telegram_classic.svgd
+    if_exists: backup_and_replace
 - logotype_tiktok
     from: copy/logotype-tiktok.svgd
     to: dynamic/files/pictures/picture-logotype_tiktok_classic.svgd
+    if_exists: backup_and_replace
 - logotype_tumblr
     from: copy/logotype-tumblr.svgd
     to: dynamic/files/pictures/picture-logotype_tumblr_classic.svgd
+    if_exists: backup_and_replace
 - logotype_twitter
     from: copy/logotype-twitter.svgd
     to: dynamic/files/pictures/picture-logotype_twitter_classic.svgd
+    if_exists: backup_and_replace
 - logotype_viber
     from: copy/logotype-viber.svgd
     to: dynamic/files/pictures/picture-logotype_viber_classic.svgd
+    if_exists: backup_and_replace
 - logotype_vimeo
     from: copy/logotype-vimeo.svgd
     to: dynamic/files/pictures/picture-logotype_vimeo_classic.svgd
+    if_exists: backup_and_replace
 - logotype_vk
     from: copy/logotype-vk.svgd
     to: dynamic/files/pictures/picture-logotype_vk_classic.svgd
+    if_exists: backup_and_replace
 - logotype_whatsapp
     from: copy/logotype-whatsapp.svgd
     to: dynamic/files/pictures/picture-logotype_whatsapp_classic.svgd
+    if_exists: backup_and_replace
 - logotype_yahoo
     from: copy/logotype-yahoo.svgd
     to: dynamic/files/pictures/picture-logotype_yahoo_classic.svgd
+    if_exists: backup_and_replace
 - logotype_youtube
     from: copy/logotype-youtube.svgd
     to: dynamic/files/pictures/picture-logotype_youtube_classic.svgd
+    if_exists: backup_and_replace
