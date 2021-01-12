@@ -1,4 +1,10 @@
 copy
+- robots
+    from: copy/robots.txt
+    to: dynamic/data/robots.txt
+- sitemap
+    from: copy/sitemap.xml
+    to: dynamic/data/sitemap.xml
 - logotype
     from: copy/logotype.svg
     to: dynamic/files/pictures/picture-logotype_classic.svg
