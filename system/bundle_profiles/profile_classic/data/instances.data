@@ -486,6 +486,8 @@ instances
     - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - blocks
       - system
         - block__page_actions|block_preset_link
@@ -542,6 +544,8 @@ instances
     - is_embedded: 0
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - blocks
       - system
         - block__page_actions|block_preset_link
@@ -600,6 +604,8 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - blocks
       - system
         - block__page_actions|block_preset_link
@@ -658,6 +664,8 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - access
         roles
         - =: anonymous
@@ -710,6 +718,8 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - access
         roles
         - =: registered
@@ -764,6 +774,8 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - access
         roles
         - =: anonymous
@@ -816,6 +828,8 @@ instances
     - is_embedded: 1
     - id_layout: original_classic
     - module_id: profile_classic
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
     - access
         roles
         - =: anonymous

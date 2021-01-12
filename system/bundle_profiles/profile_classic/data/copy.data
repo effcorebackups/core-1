@@ -1,4 +1,7 @@
 copy
+- meta
+    from: copy/meta.html
+    to: dynamic/data/meta.html
 - robots
     from: copy/robots.txt
     to: dynamic/data/robots.txt
