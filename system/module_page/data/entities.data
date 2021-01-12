@@ -433,7 +433,7 @@ entities
         selection_params_default
         - weight: +340
     - is_https
-        title: HTTPS
+        title: HTTPS is required
         type: boolean
         not_null: true
         default: 0
@@ -506,6 +506,32 @@ entities
         - value: utf-8
         selection_params_default
         - weight: +260
+    - meta
+        title: META
+        type: blob
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_textarea
+        managing_control_properties
+        - weight: +240
+        managing_control_element_attributes
+        - required: null
+        - minlength: null
+        - maxlength: null
+    - is_use_global_meta
+        title: Use global META
+        type: boolean
+        not_null: true
+        default: 1
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_switcher
+        managing_control_properties
+        - weight: +220
+        selection_params_default
+        - filter: \effcore\translation::apply
+        - weight: +220
     - access
         title: Read access
         type: blob
@@ -516,9 +542,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_access
         managing_control_properties
-        - weight: +240
+        - weight: +200
         selection_params_default
-        - weight: +240
+        - weight: +200
     - blocks
         title: Blocks
         type: blob
@@ -526,9 +552,9 @@ entities
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
         managing_control_properties
-        - weight: +220
+        - weight: +180
         selection_params_default
-        - weight: +220
+        - weight: +180
     - created
         title: Created
         type: datetime
@@ -537,9 +563,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +200
+        - weight: +160
         selection_params_default
-        - weight: +200
+        - weight: +160
     - updated
         title: Updated
         type: datetime
@@ -548,9 +574,9 @@ entities
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +180
+        - weight: +140
         selection_params_default
-        - weight: +180
+        - weight: +140
     constraints
     - primary_id
         type: primary

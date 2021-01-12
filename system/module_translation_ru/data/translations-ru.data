@@ -278,6 +278,7 @@ translations
     - Group "%%_title".: Группа "%%_title".
     - Headers: Заголовки
     - Hostname: Имя узла сети
+    - HTTPS is required: Требуется HTTPS
     - I accept the terms of the license agreement.: Я принимаю условия лицензионного соглашения.
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
@@ -692,6 +693,7 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
+    - Use global META: Использовать глобальный META
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Агент пользователя

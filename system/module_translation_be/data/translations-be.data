@@ -278,6 +278,7 @@ translations
     - Group "%%_title".: Група "%%_title".
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
+    - HTTPS is required: Патрабуецца HTTPS
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
@@ -692,6 +693,7 @@ translations
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
+    - Use global META: Выкарыстоўваць глабальны META
     - used by modules: выкарыстоўваецца модулямі
     - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
     - User agent: Агент карыстальніка

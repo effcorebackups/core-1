@@ -17,6 +17,8 @@ namespace effcore {
   public $charset = 'utf-8';
   public $lang_code;
   public $text_direction = 'ltr';
+  public $meta;
+  public $is_use_global_meta = 1;
   public $data;
   public $origin = 'nosql'; # nosql | sql
   public $is_embedded = 1;
@@ -148,8 +150,11 @@ namespace effcore {
     }
 
     $file_meta = new file(data::directory.'meta.html');
-    if ($file_meta->is_exist()) {
+    if ($this->is_use_global_meta && $file_meta->is_exist()) {
       $template->arg_set('head_meta_custom_global', new text($file_meta->load()));
+    }
+    if ($this->meta) {
+      $template->arg_set('head_meta_custom', new text($this->meta));
     }
 
     return $template->render();
