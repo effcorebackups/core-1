@@ -10,6 +10,12 @@ forms
         children
         - content|field_textarea
             title: Content in the &lt;head&gt;
+            description_state: opened
+            description|text_multiline
+              text
+              - 0: This block will be inserted into the &lt;head&gt; of each page.
+              - 1: Its contents are not filtered and presented as is.
+              - 2: An example of its content can be: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).
             element_attributes
             - data-is-code-editor: true
             - name: content

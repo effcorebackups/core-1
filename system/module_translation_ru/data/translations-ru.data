@@ -27,6 +27,7 @@ translations
     - All users: Все пользователи
     - Alternative text: Альтернативный текст
     - An error occurred during installation!: При установке произошла ошибка!
+    - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Примером такого содержания могут служить: мета-описание, ключевые мета-слова, пользовательские мета-поля (например, google-site-verification), пользовательские блоки CSS, пользовательские блоки JS (например, Google Analytics).
     - Anonymous user: Анонимный пользователь
     - Anonymous user's breadcrumbs: Хлебные крошки анонимного пользователя
     - Anonymous user's menu: Меню анонимного пользователя
@@ -326,6 +327,7 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент типа "%%_type" с ID = "%%_id" был обновлён.
     - items: элементы
     - Items: Элементы
+    - Its contents are not filtered and presented as is.: Его содержание не фильтруется и представляется как есть.
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
     - KiB: КиБ
     - Language code: Код языка
@@ -389,6 +391,7 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Message: Сообщение
     - Messages: Сообщения
+    - META: МЕТА
     - MiB: МиБ
     - Minimum width: Минимальная ширина
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
@@ -646,6 +649,8 @@ translations
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - The required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
+    - This block will be inserted into the &lt;head&gt; of each page.: Данный блок будет вставлен в &lt;head&gt; каждой страницы.
+    - This block will be inserted into the &lt;head&gt; of this page.: Данный блок будет вставлен в &lt;head&gt; этой страницы.
     - This combination of values is already in use!: Такая комбинация значений уже используется!
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
@@ -693,7 +698,7 @@ translations
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
-    - Use global META: Использовать глобальный META
+    - Use global META: Использовать глобальный МЕТА
     - used by modules: используется модулями
     - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Агент пользователя
