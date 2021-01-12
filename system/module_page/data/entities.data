@@ -529,6 +529,8 @@ entities
         managing_control_class: \effcore\field_switcher
         managing_control_properties
         - weight: +220
+        managing_control_element_attributes
+        - checked: true
         selection_params_default
         - filter: \effcore\translation::apply
         - weight: +220

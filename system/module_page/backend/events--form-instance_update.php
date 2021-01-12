@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\access;
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
@@ -39,6 +40,12 @@ namespace effcore\modules\page {
         $width_max->max_set(10000);
         $form->child_select('fields')->child_insert($width_min, 'width_min');
         $form->child_select('fields')->child_insert($width_max, 'width_max');
+      # meta
+        if (!access::check((object)['roles'       => ['admins'      => 'admins'     ],
+                                    'permissions' => ['manage__seo' => 'manage__seo']])) {
+          $items['#meta']->disabled_set(true);
+          $items['#is_use_global_meta']->disabled_set(true);
+        }
       # layout and its blocks
         $layout = core::deep_clone(layout::select($form->_instance->id_layout));
         if ($layout) {

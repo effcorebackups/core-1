@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\page {
+          use \effcore\access;
           use \effcore\entity;
           use \effcore\language;
           use \effcore\markup;
@@ -21,6 +22,12 @@ namespace effcore\modules\page {
         $items['#lang_code']->value_set(
           language::code_get_current()
         );
+      # meta
+        if (!access::check((object)['roles'       => ['admins'      => 'admins'     ],
+                                    'permissions' => ['manage__seo' => 'manage__seo']])) {
+          $items['#meta']->disabled_set(true);
+          $items['#is_use_global_meta']->disabled_set(true);
+        }
       }
       if ($entity->name === 'audio') {
       # widget 'attributes'
