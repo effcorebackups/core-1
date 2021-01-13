@@ -23,6 +23,10 @@ forms
             - minlength: null
             - maxlength: null
             - rows: 20
+        - is_apply_tokens|field_switcher
+            title: Apply tokens
+            element_attributes
+            - name: is_apply_tokens
     - button_save|button
         title: save
         attributes

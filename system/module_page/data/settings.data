@@ -1,13 +1,7 @@
 settings
-  console_visibility: 0
-  show_warning_if_not_https: false
-  page_min_width: 200
-  page_max_width: 950
-  page_meta_viewport: width=300, initial-scale=1
-  thumbnail_jpeg_quality: 90
-  thumbnail_small_width: 100
-  thumbnail_middle_width: 300
-  thumbnail_big_width: 600
+  apply_tokens_for_meta: false
+  apply_tokens_for_sitemap: false
+  apply_tokens_for_robots: false
   color_page_id: embedded_dark_1
   color_text_id: white
   color_main_id: royalblue
@@ -35,3 +29,12 @@ settings
   color_button_id: embedded_main
   color_button_active_id: dodgerblue
   color_button_text_id: white
+  console_visibility: 0
+  page_min_width: 200
+  page_max_width: 950
+  page_meta_viewport: width=300, initial-scale=1
+  show_warning_if_not_https: false
+  thumbnail_jpeg_quality: 90
+  thumbnail_small_width: 100
+  thumbnail_middle_width: 300
+  thumbnail_big_width: 600

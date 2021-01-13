@@ -8,10 +8,14 @@ namespace effcore\modules\page {
           use \effcore\data;
           use \effcore\file;
           use \effcore\message;
+          use \effcore\module;
+          use \effcore\storage;
           use \effcore\text_multiline;
           abstract class events_form_seo_meta {
 
   static function on_init($event, $form, $items) {
+    $settings = module::settings_get('page');
+    $items['#is_apply_tokens']->checked_set($settings->apply_tokens_for_meta);
     $file = new file(data::directory.'meta.html');
     if ($file->is_exist()) {
       $items['#content']->value_set(
@@ -23,6 +27,7 @@ namespace effcore\modules\page {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_meta', $items['#is_apply_tokens']->checked_get());
         $file = new file(data::directory.'meta.html');
         $new_value = $items['#content']->value_get();
         if (strlen($new_value)) {
@@ -36,14 +41,16 @@ namespace effcore\modules\page {
             'file' => $file->path_get_relative()]), 'error'
           );
         } else {
-          if (@unlink($file->path_get()))
-               message::insert('The changes was saved.');
-          else message::insert(new text_multiline([
-            'The changes was not saved!',
-            'File "%%_file" was not deleted!',
-            'Directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-          );
+          if ($file->is_exist()) {
+            if (@unlink($file->path_get()))
+                 message::insert('The changes was saved.');
+            else message::insert(new text_multiline([
+              'The changes was not saved!',
+              'File "%%_file" was not deleted!',
+              'Directory permissions should be checked.'], [
+              'file' => $file->path_get_relative()]), 'error'
+            );
+          }
         }
         break;
     }
