@@ -27,39 +27,22 @@ namespace effcore\modules\page {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_sitemap', $items['#is_apply_tokens']->checked_get());
         $file = new file(data::directory.'sitemap.xml');
         $new_value = $items['#content']->value_get();
         if (strlen($new_value)) {
           $file->data_set($new_value);
           if ($file->save())
-               message::insert(new text_multiline([
-                 'The changes was saved.',
-                 'File "%%_file" was written to disc.'], [
-                 'file' => $file->path_get_relative()])
-               );
-          else message::insert(new text_multiline([
-                 'The changes was not saved!',
-                 'File "%%_file" was not written to disc!',
-                 'File permissions (if the file exists) and directory permissions should be checked.'], [
-                 'file' => $file->path_get_relative()]), 'error'
-               );
+               message::insert(new text_multiline(['File "%%_file" was written to disc.'                                                                                          ], ['file' => $file->path_get_relative()])         );
+          else message::insert(new text_multiline(['File "%%_file" was not written to disc!', 'File permissions (if the file exists) and directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
         } else {
           if ($file->is_exist()) {
             if (@unlink($file->path_get()))
-                 message::insert(new text_multiline([
-                   'The changes was saved.',
-                   'File "%%_file" was deleted.'], [
-                   'file' => $file->path_get_relative()])
-                 );
-            else message::insert(new text_multiline([
-                   'The changes was not saved!',
-                   'File "%%_file" was not deleted!',
-                   'Directory permissions should be checked.'], [
-                   'file' => $file->path_get_relative()]), 'error'
-                 );
+                 message::insert(new text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
+            else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
           }
         }
+        storage::get('files')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_sitemap', $items['#is_apply_tokens']->checked_get());
+        message::insert('The changes was saved.');
         break;
     }
   }
