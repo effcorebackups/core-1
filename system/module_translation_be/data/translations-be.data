@@ -228,8 +228,10 @@ translations
     - Fieldset nested: Група палёў укладзеная
     - Fieldset: Група палёў
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
+    - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
     - File "%%_file" was not written to disc!: Файл "%%_file" не быў запісаны на дыск!
+    - File "%%_file" was written to disc.: Файл "%%_file" быў запісаны на дыск.
     - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types

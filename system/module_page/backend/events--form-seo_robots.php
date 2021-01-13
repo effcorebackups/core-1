@@ -33,23 +33,31 @@ namespace effcore\modules\page {
         if (strlen($new_value)) {
           $file->data_set($new_value);
           if ($file->save())
-               message::insert('The changes was saved.');
+               message::insert(new text_multiline([
+                 'The changes was saved.',
+                 'File "%%_file" was written to disc.'], [
+                 'file' => $file->path_get_relative()])
+               );
           else message::insert(new text_multiline([
-            'The changes was not saved!',
-            'File "%%_file" was not written to disc!',
-            'File permissions (if the file exists) and directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-          );
+                 'The changes was not saved!',
+                 'File "%%_file" was not written to disc!',
+                 'File permissions (if the file exists) and directory permissions should be checked.'], [
+                 'file' => $file->path_get_relative()]), 'error'
+               );
         } else {
           if ($file->is_exist()) {
             if (@unlink($file->path_get()))
-                 message::insert('The changes was saved.');
+                 message::insert(new text_multiline([
+                   'The changes was saved.',
+                   'File "%%_file" was deleted.'], [
+                   'file' => $file->path_get_relative()])
+                 );
             else message::insert(new text_multiline([
-              'The changes was not saved!',
-              'File "%%_file" was not deleted!',
-              'Directory permissions should be checked.'], [
-              'file' => $file->path_get_relative()]), 'error'
-            );
+                   'The changes was not saved!',
+                   'File "%%_file" was not deleted!',
+                   'Directory permissions should be checked.'], [
+                   'file' => $file->path_get_relative()]), 'error'
+                 );
           }
         }
         break;
