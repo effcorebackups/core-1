@@ -29,17 +29,16 @@ namespace effcore\modules\page {
       case 'save':
         $file = new file(data::directory.'meta.html');
         $new_value = $items['#content']->value_get();
-        if (strlen($new_value)) {
+        if (strlen($new_value) !== 0) {
           $file->data_set($new_value);
           if ($file->save())
                message::insert(new text_multiline(['File "%%_file" was written to disc.'                                                                                          ], ['file' => $file->path_get_relative()])         );
           else message::insert(new text_multiline(['File "%%_file" was not written to disc!', 'File permissions (if the file exists) and directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
-        } else {
-          if ($file->is_exist()) {
-            if (@unlink($file->path_get()))
-                 message::insert(new text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
-            else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
-          }
+        }
+        if (strlen($new_value) === 0 && $file->is_exist()) {
+          if (@unlink($file->path_get()))
+               message::insert(new text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
+          else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
         }
         storage::get('files')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_meta', $items['#is_apply_tokens']->checked_get());
         message::insert('The changes was saved.');
