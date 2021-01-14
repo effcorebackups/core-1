@@ -30,12 +30,13 @@ namespace effcore {
   # insert new dynamic changes
     $changes_d = data::select('changes') ?: [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
-    data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
+    $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
   # prevent opcache work
     static::$changes_dynamic['changes'] = $changes_d;
     if ($rebuild) {
-      static::cache_update();
+      $result&= static::cache_update();
     }
+    return $result;
   }
 
   function changes_delete($module_id, $action, $dpath, $rebuild = true) {
@@ -91,12 +92,13 @@ namespace effcore {
   }
 
   static function cache_update($modules_include = []) {
+    $result = true;
   # init data and original data
     static::$data      = [];
             $data_orig = cache::select('data_original');
     if (!$data_orig) {
       $data_orig = static::data_find_and_parse($modules_include);
-      cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
+      $result&= cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
     $changes_d = data::select('changes') ?: [];
@@ -121,8 +123,11 @@ namespace effcore {
           );
         }
       }
-      cache::update('data--'.$c_catalog_name, $c_data);
+      $result&= cache::update(
+        'data--'.$c_catalog_name, $c_data
+      );
     }
+    return $result;
   }
 
   static function data_changes_apply($changes, &$data) {

@@ -45,7 +45,8 @@ namespace effcore {
         '<?php'.nl.nl.'namespace effcore { # '.$name.nl.nl.($info ?
            core::data_to_code($info, '  '.core::structure_get_part_name(static::class).'::$info[\''.$name.'\']') : '').
            core::data_to_code($data, '  '.core::structure_get_part_name(static::class).'::$data[\''.$name.'\']').nl.
-        '}');
+        '}'
+      );
       if (!$file->save()) {
         static::message_on_error_insert($file);
         return false;
@@ -70,14 +71,6 @@ namespace effcore {
       if   (!$result) static::message_on_error_delete($file);
       return $result;
     }
-  }
-
-  static function message_on_error_select($file) {
-    message::insert(
-      'Cannot select file "'.$file->file_get().'" from the directory "'.$file->dirs_get_relative().'"!'.br.
-      'Directory permissions should be checked.'.br.
-      'Try to reset the cache.', 'error'
-    );
   }
 
   static function message_on_error_insert($file) {
