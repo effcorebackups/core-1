@@ -26,7 +26,7 @@ namespace effcore\modules\page {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        message::insert('The changes was saved.');
+        message::insert('Changes was saved.');
         break;
     }
   }

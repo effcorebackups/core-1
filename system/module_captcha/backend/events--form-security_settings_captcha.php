@@ -68,8 +68,8 @@ namespace effcore\modules\captcha {
             $captcha_glyphs[$c_glyph] = $c_character;
         $result = storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs,         false);
         $result&= storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
-        if ($result) message::insert('The changes was saved.'             );
-        else         message::insert('The changes was not saved!', 'error');
+        if ($result) message::insert('Changes was saved.'             );
+        else         message::insert('Changes was not saved!', 'error');
         if ($result) {
           field_captcha::captcha_cleaning();
           static::on_init(null, $form, $items);
@@ -78,8 +78,8 @@ namespace effcore\modules\captcha {
       case 'reset':
         $result = storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs', false);
         $result&= storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length'       );
-        if ($result) message::insert('The changes was deleted.'             );
-        else         message::insert('The changes was not deleted!', 'error');
+        if ($result) message::insert('Changes was deleted.'             );
+        else         message::insert('Changes was not deleted!', 'error');
         if ($result) {
           field_captcha::captcha_cleaning();
           static::on_init(null, $form, $items);

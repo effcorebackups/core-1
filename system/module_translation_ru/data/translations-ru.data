@@ -69,6 +69,10 @@ translations
     - cache: кэш
     - cancel: отменить
     - Canvas: Холст
+    - Changes was deleted.: Изменения были удалены.
+    - Changes was not deleted!: Изменения не были удалены!
+    - Changes was not saved!: Изменения не были сохранены!
+    - Changes was saved.: Изменения были сохранены.
     - Charset: Кодировка
     - Check field again before submit.: Снова проверьте поле перед отправкой.
     - Checkbox: Флажок
@@ -639,10 +643,6 @@ translations
     - Text\: select: Текст: выбрать
     - Text\: update: Текст: обновить
     - Texts: Текст
-    - The changes was deleted.: Изменения были удалены.
-    - The changes was not deleted!: Изменения не были удалены!
-    - The changes was not saved!: Изменения не были сохранены!
-    - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - The current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:

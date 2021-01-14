@@ -72,8 +72,8 @@ namespace effcore\modules\page {
         $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_id',                 $items['*color_button_id'                ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_active_id',          $items['*color_button_active_id'         ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/color_button_text_id',            $items['*color_button_text_id'           ]->value_get()       );
-        if ($result) message::insert('The changes was saved.'             );
-        else         message::insert('The changes was not saved!', 'error');
+        if ($result) message::insert('Changes was saved.'             );
+        else         message::insert('Changes was not saved!', 'error');
         break;
       case 'reset':
         $result = true;
@@ -104,8 +104,8 @@ namespace effcore\modules\page {
         $result&= storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_id',                 false);
         $result&= storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_active_id',          false);
         $result&= storage::get('files')->changes_delete('page', 'update', 'settings/page/color_button_text_id'                  );
-        if ($result) message::insert('The changes was deleted.'             );
-        else         message::insert('The changes was not deleted!', 'error');
+        if ($result) message::insert('Changes was deleted.'             );
+        else         message::insert('Changes was not deleted!', 'error');
         static::on_init(null, $form, $items);
         break;
     }

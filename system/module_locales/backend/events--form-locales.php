@@ -32,8 +32,8 @@ namespace effcore\modules\locales {
         $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
-        if ($result) message::insert('The changes was saved.'             );
-        else         message::insert('The changes was not saved!', 'error');
+        if ($result) message::insert('Changes was saved.'             );
+        else         message::insert('Changes was not saved!', 'error');
         if ($result) {
           language::code_set_current($items['#lang_code']->value_get());
           static::on_init(null, $form, $items);
@@ -47,8 +47,8 @@ namespace effcore\modules\locales {
         $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_datetime', false);
         $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/decimal_point',   false);
         $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/thousands_separator');
-        if ($result) message::insert('The changes was deleted.'             );
-        else         message::insert('The changes was not deleted!', 'error');
+        if ($result) message::insert('Changes was deleted.'             );
+        else         message::insert('Changes was not deleted!', 'error');
         if ($result) {
           language::code_set_current('en');
           static::on_init(null, $form, $items);

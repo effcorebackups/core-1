@@ -69,6 +69,10 @@ translations
     - cache: кэш
     - cancel: адмяніць
     - Canvas: Палатно
+    - Changes was deleted.: Змены былі выдалены.
+    - Changes was not deleted!: Змены не былі выдалены!
+    - Changes was not saved!: Змены не былі захаваны!
+    - Changes was saved.: Змены былі захаваны.
     - Charset: Кадзіроўка
     - Check field again before submit.: Зноў праверце поле перад адпраўкай.
     - Checkbox: Сцяжок
@@ -639,10 +643,6 @@ translations
     - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
-    - The changes was deleted.: Змены былі выдалены.
-    - The changes was not deleted!: Змены не былі выдалены!
-    - The changes was not saved!: Змены не былі захаваны!
-    - The changes was saved.: Змены былі захаваны.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
     - The current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:

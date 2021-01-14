@@ -36,8 +36,8 @@ namespace effcore\modules\page {
         $result = storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width',     $items['#width_min'    ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width',     $items['#width_max'    ]->value_get(), false);
         $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/page_meta_viewport', $items['#meta_viewport']->value_get()       );
-        if ($result) message::insert('The changes was saved.'             );
-        else         message::insert('The changes was not saved!', 'error');
+        if ($result) message::insert('Changes was saved.'             );
+        else         message::insert('Changes was not saved!', 'error');
         break;
     }
   }

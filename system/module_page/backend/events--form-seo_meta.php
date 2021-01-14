@@ -41,8 +41,8 @@ namespace effcore\modules\page {
           else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
         }
         $result = storage::get('files')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_meta', $items['#is_apply_tokens']->checked_get());
-        if ($result) message::insert('The changes was saved.'             );
-        else         message::insert('The changes was not saved!', 'error');
+        if ($result) message::insert('Changes was saved.'             );
+        else         message::insert('Changes was not saved!', 'error');
         break;
     }
   }
