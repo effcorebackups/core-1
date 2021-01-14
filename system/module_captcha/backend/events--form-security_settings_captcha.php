@@ -66,18 +66,24 @@ namespace effcore\modules\captcha {
         foreach (glyph::get_all() as $c_glyph => $c_character)
           if ($items['#is_enabled_glyph:'.$c_glyph]->checked_get())
             $captcha_glyphs[$c_glyph] = $c_character;
-        storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs,         false);
-        storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
-        field_captcha::captcha_cleaning();
-        message::insert('The changes was saved.');
-        static::on_init(null, $form, $items);
+        $result = storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $captcha_glyphs,         false);
+        $result&= storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', $items['#length']->value_get());
+        if ($result) message::insert('The changes was saved.'             );
+        else         message::insert('The changes was not saved!', 'error');
+        if ($result) {
+          field_captcha::captcha_cleaning();
+          static::on_init(null, $form, $items);
+        }
         break;
       case 'reset':
-        storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs', false);
-        storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length'       );
-        field_captcha::captcha_cleaning();
-        message::insert('The changes was deleted.');
-        static::on_init(null, $form, $items);
+        $result = storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs', false);
+        $result&= storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length'       );
+        if ($result) message::insert('The changes was deleted.'             );
+        else         message::insert('The changes was not deleted!', 'error');
+        if ($result) {
+          field_captcha::captcha_cleaning();
+          static::on_init(null, $form, $items);
+        }
         break;
     }
   }
