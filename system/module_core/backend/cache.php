@@ -21,10 +21,7 @@ namespace effcore {
         else            @rmdir ($c_path);
         if (!$c_result) {
           $c_file = new file($c_path);
-          message::insert(
-            'Cannot delete file "'.$c_file->file_get().'" in the directory "'.$c_file->dirs_get_relative().'"!'.br.
-            'Directory permissions should be checked.', 'error'
-          );
+          static::message_on_error_delete($c_file);
         }
       }
     }
