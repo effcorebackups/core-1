@@ -8,7 +8,9 @@ namespace effcore\modules\core {
           use const \effcore\br;
           use \effcore\cache;
           use \effcore\core;
+          use \effcore\data;
           use \effcore\event;
+          use \effcore\file;
           use \effcore\message;
           use \effcore\module;
           use \effcore\module_as_profile;
@@ -112,6 +114,7 @@ namespace effcore\modules\core {
               }
             }
             if ($items['#driver:sqlite']->checked_get()) {
+              file::mkdir_if_not_exist(data::directory);
               $test = storage::get('sql')->test('sqlite', (object)[
                 'file_name' => $items['#file_name']->value_get()
               ]);

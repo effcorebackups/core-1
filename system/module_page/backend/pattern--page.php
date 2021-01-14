@@ -157,7 +157,7 @@ namespace effcore {
     }
     if ($this->meta) {
       $template->arg_set('head_meta_custom',
-        new text($this->meta)
+        new text($this->meta, [], false, false)
       );
     }
 

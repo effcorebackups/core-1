@@ -74,16 +74,18 @@ namespace effcore {
   }
 
   static function message_on_error_insert($file) {
-    message::insert(
-      'Cannot insert or update file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
-      'File permissions (if the file exists) and directory permissions should be checked.', 'error'
+    message::insert(new text_multiline([
+      'File "%%_file" was not written to disc!',
+      'File permissions (if the file exists) and directory permissions should be checked.'], [
+      'file' => $file->path_get_relative()]), 'error'
     );
   }
 
   static function message_on_error_delete($file) {
-    message::insert(
-      'Cannot delete file "'.$file->file_get().'" in the directory "'.$file->dirs_get_relative().'"!'.br.
-      'Directory permissions should be checked.', 'error'
+    message::insert(new text_multiline([
+      'File "%%_file" was not deleted!',
+      'Directory permissions should be checked.'], [
+      'file' => $file->path_get_relative()]), 'error'
     );
   }
 
