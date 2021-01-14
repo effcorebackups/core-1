@@ -640,6 +640,7 @@ translations
     - Text\: update: Текст: обновить
     - Texts: Текст
     - The changes was deleted.: Изменения были удалены.
+    - The changes was not deleted!: Изменения не были удалены!
     - The changes was not saved!: Изменения не были сохранены!
     - The changes was saved.: Изменения были сохранены.
     - The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
