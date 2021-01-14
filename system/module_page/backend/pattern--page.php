@@ -151,10 +151,14 @@ namespace effcore {
 
     $file_meta = new file(data::directory.'meta.html');
     if ($this->is_use_global_meta && $file_meta->is_exist()) {
-      $template->arg_set('head_meta_custom_global', new text($file_meta->load()));
+      $template->arg_set('head_meta_custom_global',
+        new text($file_meta->load(), [], false, $settings->apply_tokens_for_meta)
+      );
     }
     if ($this->meta) {
-      $template->arg_set('head_meta_custom', new text($this->meta));
+      $template->arg_set('head_meta_custom',
+        new text($this->meta)
+      );
     }
 
     return $template->render();
