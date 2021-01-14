@@ -25,26 +25,34 @@ namespace effcore\modules\locales {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code',           $items['#lang_code'          ]->value_get(), false);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_date',         $items['#format_date'        ]->value_get(), false);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_time',         $items['#format_time'        ]->value_get(), false);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
-        storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
-        language::code_set_current($items['#lang_code']->value_get());
-        static::on_init(null, $form, $items);
-        message::insert('The changes was saved.');
+        $result = true;
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code',           $items['#lang_code'          ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_date',         $items['#format_date'        ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_time',         $items['#format_time'        ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('locales', 'update', 'settings/locales/thousands_separator', $items['#thousands_separator']->value_get());
+        if ($result) message::insert('The changes was saved.'             );
+        else         message::insert('The changes was not saved!', 'error');
+        if ($result) {
+          language::code_set_current($items['#lang_code']->value_get());
+          static::on_init(null, $form, $items);
+        }
         break;
       case 'reset':
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/lang_code',       false);
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_date',     false);
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_time',     false);
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_datetime', false);
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/decimal_point',   false);
-        storage::get('files')->changes_delete('locales', 'update', 'settings/locales/thousands_separator');
-        language::code_set_current('en');
-        static::on_init(null, $form, $items);
-        message::insert('The changes was deleted.');
+        $result = true;
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/lang_code',       false);
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_date',     false);
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_time',     false);
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/format_datetime', false);
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/decimal_point',   false);
+        $result&= storage::get('files')->changes_delete('locales', 'update', 'settings/locales/thousands_separator');
+        if ($result) message::insert('The changes was deleted.'             );
+        else         message::insert('The changes was not deleted!', 'error');
+        if ($result) {
+          language::code_set_current('en');
+          static::on_init(null, $form, $items);
+        }
         break;
     }
   }
