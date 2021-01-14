@@ -8,7 +8,7 @@ namespace effcore {
           class field_color extends field_text {
 
   public $title = 'Color';
-  public $description = 'The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.';
+  public $description = 'Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.';
   public $attributes = ['data-type' => 'color'];
   public $element_attributes = [
     'type'     => 'color',
@@ -46,7 +46,7 @@ namespace effcore {
     if (strlen($new_value) && !core::validate_hex_color($new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
-        'The color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.'], ['title' => (new text($field->title))->render() ]
+        'Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.'], ['title' => (new text($field->title))->render() ]
       ));
     } else {
       return true;
