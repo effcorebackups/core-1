@@ -32,9 +32,11 @@ namespace effcore {
     $changes_d[$module_id]->{$action}[$dpath] = $value;
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
   # prevent opcache work
-    static::$changes_dynamic['changes'] = $changes_d;
-    if ($rebuild) {
-      $result&= static::cache_update();
+    if ($result) {
+      static::$changes_dynamic['changes'] = $changes_d;
+      if ($rebuild) {
+        $result&= static::cache_update();
+      }
     }
     return $result;
   }
@@ -47,9 +49,11 @@ namespace effcore {
     if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            == []) unset($changes_d[$module_id]                   );
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
   # prevent opcache work
-    static::$changes_dynamic['changes'] = $changes_d;
-    if ($rebuild) {
-      $result&= static::cache_update();
+    if ($result) {
+      static::$changes_dynamic['changes'] = $changes_d;
+      if ($rebuild) {
+        $result&= static::cache_update();
+      }
     }
     return $result;
   }
@@ -60,9 +64,11 @@ namespace effcore {
     unset($changes_d[$module_id]);
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
   # prevent opcache work
-    static::$changes_dynamic['changes'] = $changes_d;
-    if ($rebuild) {
-      $result&= static::cache_update();
+    if ($result) {
+      static::$changes_dynamic['changes'] = $changes_d;
+      if ($rebuild) {
+        $result&= static::cache_update();
+      }
     }
     return $result;
   }
