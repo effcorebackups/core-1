@@ -159,12 +159,15 @@ namespace effcore\modules\core {
             $params->credentials,
             $params->table_prefix
           );
-          storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
+          $changes_is_writable = storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
             'cron'            => core::key_generate(true),
             'form_validation' => core::key_generate(    ),
             'session'         => core::key_generate(    ),
             'salt'            => core::key_generate(    )
           ]);
+          if (!$changes_is_writable) {
+            return;
+          }
         # prepare data about modules which will be installed
           $enabled_by_default = module::get_enabled_by_default();
           $embedded           = module::get_embedded();
