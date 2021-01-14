@@ -33,10 +33,11 @@ namespace effcore\modules\page {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width',     $items['#width_min'    ]->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width',     $items['#width_max'    ]->value_get(), false);
-        storage::get('files')->changes_insert('page', 'update', 'settings/page/page_meta_viewport', $items['#meta_viewport']->value_get()       );
-        message::insert('The changes was saved.');
+        $result = storage::get('files')->changes_insert('page', 'update', 'settings/page/page_min_width',     $items['#width_min'    ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/page_max_width',     $items['#width_max'    ]->value_get(), false);
+        $result&= storage::get('files')->changes_insert('page', 'update', 'settings/page/page_meta_viewport', $items['#meta_viewport']->value_get()       );
+        if ($result) message::insert('The changes was saved.'             );
+        else         message::insert('The changes was not saved!', 'error');
         break;
     }
   }
