@@ -191,19 +191,19 @@ namespace effcore {
   }
 
   function save() {
-    static::mkdir_if_not_exist($this->dirs_get());
-    return  @file_put_contents($this->path_get(), $this->data);
+    static::mkdir_if_not_exists($this->dirs_get());
+    return   @file_put_contents($this->path_get(), $this->data);
   }
 
   function append_direct($data) {
-    static::mkdir_if_not_exist($this->dirs_get());
-    return  @file_put_contents($this->path_get(), $data, FILE_APPEND);
+    static::mkdir_if_not_exists($this->dirs_get());
+    return   @file_put_contents($this->path_get(), $data, FILE_APPEND);
   }
 
   function copy($new_dirs, $new_name = null, $this_reset = false) {
     $path_old = $this->path_get();
     $path_new = $new_dirs.($new_name ?: $this->file_get());
-    static::mkdir_if_not_exist($new_dirs);
+    static::mkdir_if_not_exists($new_dirs);
     if (@copy($path_old, $path_new)) {
       if ($this_reset)
           $this->__construct($path_new);
@@ -214,7 +214,7 @@ namespace effcore {
   function move($new_dirs, $new_name = null) {
     $path_old = $this->path_get();
     $path_new = $new_dirs.($new_name ?: $this->file_get());
-    static::mkdir_if_not_exist($new_dirs);
+    static::mkdir_if_not_exists($new_dirs);
     if (@rename($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
@@ -224,7 +224,7 @@ namespace effcore {
   function move_uploaded($new_dirs, $new_name = null) {
     $path_old = $this->path_get();
     $path_new = $new_dirs.($new_name ?: $this->file_get());
-    static::mkdir_if_not_exist($new_dirs);
+    static::mkdir_if_not_exists($new_dirs);
     if (@move_uploaded_file($path_old, $path_new)) {
       $this->__construct($path_new);
       return true;
@@ -299,7 +299,7 @@ namespace effcore {
     return static::$cache_file_types;
   }
 
-  static function mkdir_if_not_exist($dirs, $mode = 0777) {
+  static function mkdir_if_not_exists($dirs, $mode = 0777) {
     return !file_exists($dirs) ?
                  @mkdir($dirs, $mode, true) : true;
   }

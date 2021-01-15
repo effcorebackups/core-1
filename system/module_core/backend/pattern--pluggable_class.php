@@ -23,7 +23,7 @@ namespace effcore {
   }
 
   function is_exists_class() {
-    return core::structure_is_exist($this->name_get());
+    return core::structure_is_exists($this->name_get());
   }
 
   function object_get() {

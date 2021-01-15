@@ -39,8 +39,8 @@ namespace effcore {
     static::$data[$name] = $data;
     $file = static::get_file_by_name($name, $sub_dirs);
     if ($info) static::$info[$name] = $info;
-    if (file::mkdir_if_not_exist($file->dirs_get()) &&
-                     is_writable($file->dirs_get())) {
+    if (file::mkdir_if_not_exists($file->dirs_get()) &&
+                      is_writable($file->dirs_get())) {
       $file->data_set(
         '<?php'.nl.nl.'namespace effcore { # '.$name.nl.nl.($info ?
            core::data_to_code($info, '  '.core::structure_get_part_name(static::class).'::$info[\''.$name.'\']') : '').

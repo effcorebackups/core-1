@@ -114,7 +114,7 @@ namespace effcore\modules\core {
               }
             }
             if ($items['#driver:sqlite']->checked_get()) {
-              file::mkdir_if_not_exist(data::directory);
+              file::mkdir_if_not_exists(data::directory);
               $test = storage::get('sql')->test('sqlite', (object)[
                 'file_name' => $items['#file_name']->value_get()
               ]);

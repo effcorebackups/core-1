@@ -17,7 +17,7 @@ Actions before installation:
 - Check if you have credentials (hostname, login, password)
   for FTP service which running on hosting web server.
   If you do not have credentials, create new FTP user account
-  or reset the password of exist account via hosting service panel.
+  or reset the password of an existing account via hosting service panel.
 - Check if you have FTP Client for transfer files
   to the web server. For example: Transmit (mac), Cyberduck (mac|win),
   FileZilla (mac|win|linux) and other.
