@@ -18,7 +18,7 @@ namespace effcore {
 
   static function is_exists($name, $sub_dirs = '') {
     $file = static::get_file_by_name($name, $sub_dirs);
-    return $file->is_exist();
+    return $file->is_exists();
   }
 
   static function select_info() {
@@ -28,7 +28,7 @@ namespace effcore {
   static function select($name, $sub_dirs = '') {
     if (!isset(static::$data[$name])) {
       $file = static::get_file_by_name($name, $sub_dirs);
-      if ($file->is_exist()) {
+      if ($file->is_exists()) {
         $file->insert();
       }
     }
@@ -66,7 +66,7 @@ namespace effcore {
     if (isset(static::$data[$name]))
         unset(static::$data[$name]);
     $file = static::get_file_by_name($name, $sub_dirs);
-    if ($file->is_exist()) {
+    if ($file->is_exists()) {
       $result = @unlink($file->path_get());
       if   (!$result) static::message_on_error_delete($file);
       return $result;

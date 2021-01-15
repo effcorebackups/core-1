@@ -171,7 +171,7 @@ namespace effcore {
     if (DIRECTORY_SEPARATOR === '\\') return isset($this->dirs[1]) && $this->dirs[1] === ':';
   }
 
-  function is_exist() {
+  function is_exists() {
     return file_exists($this->path_get());
   }
 

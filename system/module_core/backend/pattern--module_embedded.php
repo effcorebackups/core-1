@@ -59,7 +59,7 @@ namespace effcore {
         $c_src_file = new file($this->path.$c_info->from);
         $c_dst_file = new file(            $c_info->to  );
       # what to do if the file exists? to make a backup and replace, skip, replace?
-        if ($c_dst_file->is_exist()) {
+        if ($c_dst_file->is_exists()) {
           $c_if_file_exists = $c_info->if_exists ?? 'replace'; # skip | replace | backup_and_replace
           if ($c_if_file_exists === 'replace') {} # ↓↓↓ do nothing ↓↓↓
           if ($c_if_file_exists === 'skip') continue;

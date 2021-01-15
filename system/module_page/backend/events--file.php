@@ -22,7 +22,7 @@ namespace effcore\modules\page {
       case dir_root.'sitemap.xml':
         $settings = module::settings_get('page');
         $file = new file(data::directory.'sitemap.xml');
-        if ($file->is_exist()) {
+        if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_sitemap ? 'xmld' : 'xml'];
           if ($settings->apply_tokens_for_sitemap)
                event::start('on_file_load', 'dynamic', [&$type, &$file]);
@@ -32,7 +32,7 @@ namespace effcore\modules\page {
       case dir_root.'robots.txt':
         $settings = module::settings_get('page');
         $file = new file(data::directory.'robots.txt');
-        if ($file->is_exist()) {
+        if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_robots ? 'txtd' : 'txt'];
           if ($settings->apply_tokens_for_robots)
                event::start('on_file_load', 'dynamic', [&$type, &$file]);

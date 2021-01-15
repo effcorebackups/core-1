@@ -13,7 +13,7 @@ namespace effcore\modules\page {
 
   static function on_init($event, $form, $items) {
     $file = new file(data::directory.'global.css');
-    if ($file->is_exist()) {
+    if ($file->is_exists()) {
       $items['#content']->value_set(
         $file->load()
       );

@@ -17,7 +17,7 @@ namespace effcore\modules\page {
     $settings = module::settings_get('page');
     $items['#is_apply_tokens']->checked_set($settings->apply_tokens_for_sitemap);
     $file = new file(data::directory.'sitemap.xml');
-    if ($file->is_exist()) {
+    if ($file->is_exists()) {
       $items['#content']->value_set(
         $file->load()
       );
@@ -35,7 +35,7 @@ namespace effcore\modules\page {
                message::insert(new text_multiline(['File "%%_file" was written to disc.'                                                                                          ], ['file' => $file->path_get_relative()])         );
           else message::insert(new text_multiline(['File "%%_file" was not written to disc!', 'File permissions (if the file exists) and directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
         }
-        if (strlen($new_value) === 0 && $file->is_exist()) {
+        if (strlen($new_value) === 0 && $file->is_exists()) {
           if (@unlink($file->path_get()))
                message::insert(new text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
           else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');

@@ -119,7 +119,7 @@ namespace effcore {
     }
 
     $file_global_css = new file(data::directory.'global.css');
-    if ($file_global_css->is_exist()) {
+    if ($file_global_css->is_exists()) {
       frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/data/global.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
     }
 
@@ -150,7 +150,7 @@ namespace effcore {
     }
 
     $file_meta = new file(data::directory.'meta.html');
-    if ($this->is_use_global_meta && $file_meta->is_exist()) {
+    if ($this->is_use_global_meta && $file_meta->is_exists()) {
       $template->arg_set('head_meta_custom_global',
         new text($file_meta->load(), [], false, $settings->apply_tokens_for_meta)
       );

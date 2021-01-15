@@ -44,7 +44,7 @@ namespace effcore {
 
   function init_from_fin($path_relative) {
     $file = new file(dir_root.$path_relative);
-    if ($file->is_exist()) {
+    if ($file->is_exists()) {
       $this->name     = $file->name_get();
       $this->type     = $file->type_get();
       $this->file     = $file->file_get();
@@ -77,9 +77,9 @@ namespace effcore {
     if ($this->get_current_state() === 'pre') {
       $src_file = new file($this->pre_path);
       $dst_file = new file(token::apply($dst_path));
-      if ($fixed_name          ) $dst_file->name_set(token::apply($fixed_name));
-      if ($fixed_type          ) $dst_file->type_set(token::apply($fixed_type));
-      if ($dst_file->is_exist()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());
+      if ($fixed_name           ) $dst_file->name_set(token::apply($fixed_name));
+      if ($fixed_type           ) $dst_file->type_set(token::apply($fixed_type));
+      if ($dst_file->is_exists()) $dst_file->name_set($dst_file->name_get().'-'.core::random_part_get());
       if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
         if ($is_save_original_data === false) $this->name = $dst_file->name_get();
         if ($is_save_original_data === false) $this->type = $dst_file->type_get();
