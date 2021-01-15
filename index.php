@@ -12,6 +12,6 @@
     define('effcore\\dir_modules', $www_root.'/modules/');
     require_once('system/boot.php');
   } else {
-    print 'The System requires a version of PHP not lower than 7.1.0<br>';
-    print 'The current version of PHP is '.PHP_VERSION;
+    print 'Current PHP version number is '.PHP_VERSION.'<br>';
+    print 'Required version number is 7.1.0+';
   }
