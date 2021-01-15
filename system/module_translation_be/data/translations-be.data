@@ -82,6 +82,7 @@ translations
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
+    - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
     - Color: Колер
     - Colors presets: Каляровыя перадусталёўкі
     - Colors was applied.: Колеры былі ўжыты.
@@ -106,6 +107,7 @@ translations
     - Cron last run: Апошні запуск Cron
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
+    - Current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - Current: Бягучыя
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
@@ -480,6 +482,8 @@ translations
     - Permissions: Дазваленні
     - PHP CURL version: PHP CURL версія
     - PHP dependencies: PHP-залежнасці
+    - PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
+    - PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
     - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP PCRE version: PHP PCRE версія
     - PHP version: PHP версія
@@ -547,6 +551,7 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
     - Report: Справаздача
+    - Required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - reset: скінуць
     - restore repository: аднавіць рэпазітар
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя дадзеныя сховішча ў "%%_file" альбо зноў інсталюйце гэтую сістэму на старонцы: %%_link
@@ -643,17 +648,12 @@ translations
     - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
-    - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
-    - The current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission.: Ліст не быў прыняты да перадачы.
     - The main text of the page: Асноўны тэкст старонкі
     - The minimum value is greater than the maximum value!: Мінімальнае значэнне больш максімальнага значэння!
-    - The PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
-    - The PHP extension "%%_extension" is too old!: PHP-пашырэнне "%%_extension" надта старое!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Выдалены модуль спачатку павінен быць адключаны. Убудаваныя модулі не могуць быць адключаны.
     - The report will be created after submitting the form.: Справаздача будзе створана пасля адпраўкі формы.
-    - The required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - This block will be inserted into the &lt;head&gt; of each page.: Дадзены блок будзе ўстаўлены ў &lt;head&gt; кожнай старонкі.
     - This block will be inserted into the &lt;head&gt; of this page.: Дадзены блок будзе ўстаўлены ў &lt;head&gt; гэтай старонкі.
     - This combination of values is already in use!: Такая камбінацыя значэнняў ужо выкарыстоўваецца!

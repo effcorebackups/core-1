@@ -82,6 +82,7 @@ translations
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
+    - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - Color: Цвет
     - Colors presets: Цветовые предустановки
     - Colors was applied.: Цвета были применены.
@@ -106,6 +107,7 @@ translations
     - Cron last run: Последний запуск Cron
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
+    - Current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - Current: Текущие
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление данных №%%_number для модуля "%%_title" (%%_id) не было применено!
@@ -480,6 +482,8 @@ translations
     - Permissions: Разрешения
     - PHP CURL version: PHP CURL версия
     - PHP dependencies: PHP-зависимости
+    - PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
+    - PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
     - PHP OPCache is enabled: PHP OPCache включён
     - PHP PCRE version: PHP PCRE версия
     - PHP version: PHP версия
@@ -547,6 +551,7 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт
+    - Required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
     - reset: сброс
     - restore repository: восстановить репозиторий
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
@@ -643,17 +648,12 @@ translations
     - Text\: select: Текст: выбрать
     - Text\: update: Текст: обновить
     - Texts: Текст
-    - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
-    - The current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
     - The main text of the page: Основной текст страницы
     - The minimum value is greater than the maximum value!: Минимальное значение больше максимального значения!
-    - The PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
-    - The PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
-    - The required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
     - This block will be inserted into the &lt;head&gt; of each page.: Данный блок будет вставлен в &lt;head&gt; каждой страницы.
     - This block will be inserted into the &lt;head&gt; of this page.: Данный блок будет вставлен в &lt;head&gt; этой страницы.
     - This combination of values is already in use!: Такая комбинация значений уже используется!
