@@ -76,6 +76,10 @@ file_types
     headers
     - Content-type: text/css
     - X-Content-Type-Options: nosniff
+- html_dynamic
+    type: htmld
+    headers
+    - Content-type: text/html
 - js_dynamic
     type: jsd
     kind: dynamic
@@ -87,6 +91,14 @@ file_types
     kind: dynamic
     headers
     - Content-type: image/svg+xml
+- txt_dynamic
+    type: txtd
+    headers
+    - Content-type: text/plain
+- xml_dynamic
+    type: xmld
+    headers
+    - Content-type: text/xml
 # ─────────────────────────────────────────────────────────────────────
 # static types
 # ─────────────────────────────────────────────────────────────────────

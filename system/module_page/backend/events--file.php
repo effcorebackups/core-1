@@ -20,17 +20,23 @@ namespace effcore\modules\page {
   static function on_load_not_found($event, &$type_info, &$file, $real_path, $phase) {
     switch ($file->path_get()) {
       case dir_root.'sitemap.xml':
+        $settings = module::settings_get('page');
         $file = new file(data::directory.'sitemap.xml');
         if ($file->is_exist()) {
-          $type = file::types_get()[$file->type_get()];
-          event::start('on_file_load', 'static', [&$type, &$file]);
+          $type = file::types_get()[$settings->apply_tokens_for_sitemap ? 'xmld' : 'xml'];
+          if ($settings->apply_tokens_for_sitemap)
+               event::start('on_file_load', 'dynamic', [&$type, &$file]);
+          else event::start('on_file_load', 'static',  [&$type, &$file]);
           exit();
         } break;
       case dir_root.'robots.txt':
+        $settings = module::settings_get('page');
         $file = new file(data::directory.'robots.txt');
         if ($file->is_exist()) {
-          $type = file::types_get()[$file->type_get()];
-          event::start('on_file_load', 'static', [&$type, &$file]);
+          $type = file::types_get()[$settings->apply_tokens_for_robots ? 'txtd' : 'txt'];
+          if ($settings->apply_tokens_for_robots)
+               event::start('on_file_load', 'dynamic', [&$type, &$file]);
+          else event::start('on_file_load', 'static',  [&$type, &$file]);
           exit();
         } break;
       case dir_root.'favicon.ico':
