@@ -14,6 +14,66 @@
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
+  /* URL class                                                             */
+  /* ───────────────────────────────────────────────────────────────────── */
+
+  function EffURL(url) {
+    this.raw = url;
+    this.pattern = new RegExp('^(?:([a-zA-Z]+)://|)' +                                /* protocol */
+                                  '([a-zA-Z0-9\\-\\.]{2,200}(?:\\:([0-9]{1,5})|)|)' + /* domain + port */
+                                 '(/[\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)' +         /* path */
+                            '(?:\\?([\\x21-\\x22\\x24-\\x7e]*)|)' +                   /* query */
+                            '(?:\\#([\\x21-\\x7e]*)|)$');                             /* anchor */
+    var parse    = url.match(this.pattern);
+    var protocol = parse[1] !== undefined ? parse[1] : '';
+    var domain   = parse[2] !== undefined ? parse[2] : '';
+    var port     = parse[3] !== undefined ? parse[3] : '';
+    var path     = parse[4] !== undefined ? parse[4] : '';
+    var query    = parse[5] !== undefined ? parse[5] : '';
+    var anchor   = parse[6] !== undefined ? parse[6] : '';
+    if ( (!protocol.length && !domain.length &&  path.length && !query.length && !anchor.length) ||
+         (!protocol.length && !domain.length &&  path.length &&  query.length && !anchor.length) ||
+         (!protocol.length && !domain.length &&  path.length && !query.length &&  anchor.length) ||
+         (!protocol.length && !domain.length &&  path.length &&  query.length &&  anchor.length) ||
+         (!protocol.length &&  domain.length && !path.length && !query.length && !anchor.length) ||
+         (!protocol.length &&  domain.length &&  path.length && !query.length && !anchor.length) ||
+         (!protocol.length &&  domain.length &&  path.length &&  query.length && !anchor.length) ||
+         (!protocol.length &&  domain.length &&  path.length && !query.length &&  anchor.length) ||
+         (!protocol.length &&  domain.length &&  path.length &&  query.length &&  anchor.length) ||
+         ( protocol.length &&  domain.length && !path.length && !query.length && !anchor.length) ||
+         ( protocol.length &&  domain.length &&  path.length && !query.length && !anchor.length) ||
+         ( protocol.length &&  domain.length &&  path.length &&  query.length && !anchor.length) ||
+         ( protocol.length &&  domain.length &&  path.length && !query.length &&  anchor.length) ||
+         ( protocol.length &&  domain.length &&  path.length &&  query.length &&  anchor.length) ) {
+      this.protocol  = protocol;
+      this.domain    = domain;
+      this.port      = port;
+      this.path      = path;
+      this.query     = query;
+      this.anchor    = anchor;
+      this.has_error = false;
+      //if (this->protocol === '') this.protocol = this.domain === core::server_get_host(false) ? core::server_get_request_scheme() : 'http';
+      //if (this->domain   === '') this.domain   =                 core::server_get_host(false);
+      //if (this->path     === '') this.path     = '/';
+    } else this.has_error = true;
+  }
+
+  EffURL.prototype.test = function() {
+    if (!this.has_error) {
+      console.log('protocol: ' + this.protocol);
+      console.log('domain: '   + this.domain);
+      console.log('port: '     + this.port);
+      console.log('path: '     + this.path);
+      console.log('query: '    + this.query);
+      console.log('anchor: '   + this.anchor);
+    } else console.log('EffURL parse error');
+  }
+
+  //var url = new EffURL('http://example.com:80/dirs/dir?query#anchor');
+  //url.test();
+
+
+  /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */
   /* ───────────────────────────────────────────────────────────────────── */
 
