@@ -65,7 +65,7 @@ namespace effcore {
   # Lt ║ Title case letter
   # Lu ║ Upper case letter
   # ───╨────────────────────────────────────────────────────────────────────
-  # utf8 letters: '[:alpha:]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
+  # utf8 letters: '[[:alpha:]]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
   # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
   # officially allowed characters ACSII range: \\x21-\\x7e
 
