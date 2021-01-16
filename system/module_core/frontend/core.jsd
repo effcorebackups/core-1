@@ -53,7 +53,7 @@
       this.query     = query;
       this.anchor    = anchor;
       this.has_error = false;
-      if (completion && this.protocol === '') this.protocol = window.location.protocol;
+      if (completion && this.protocol === '') this.protocol = window.location.protocol.replace(/[:]*$/g, '');
       if (completion && this.domain   === '') this.domain   = window.location.hostname;
       if (completion && this.path     === '') this.path     = '/';
     } else this.has_error = true;
