@@ -59,6 +59,30 @@
     } else this.has_error = true;
   }
 
+  EffURL.prototype.protocol_get = function(){return this.protocol;}
+  EffURL.prototype.domain_get   = function(){return this.domain;  }
+  EffURL.prototype.path_get     = function(){return this.path;    }
+  EffURL.prototype.query_get    = function(){return this.query;   }
+  EffURL.prototype.anchor_get   = function(){return this.anchor;  }
+
+  EffURL.prototype.tiny_get = function() {
+    if (!this.has_error) {
+      var result = this.path_get();
+      if (this.query_get ()) result+= '?' + this.query_get ();
+      if (this.anchor_get()) result+= '#' + this.anchor_get();
+      return result;
+    }
+  }
+
+  EffURL.prototype.full_get = function() {
+    if (!this.has_error) {
+      result = this.protocol_get() + '://' + this.domain_get() + this.path_get();
+      if (this.query_get ()) result+= '?' + this.query_get ();
+      if (this.anchor_get()) result+= '#' + this.anchor_get();
+      return result.replace(/[/]*$/g, '');
+    }
+  }
+
   EffURL.prototype.test = function() {
     if (!this.has_error) {
       console.log('protocol: ' + this.protocol);
@@ -70,8 +94,9 @@
     } else console.log('EffURL parse error');
   }
 
-  //var url = new EffURL('http://example.com:80/dirs/dir?query#anchor');
-  //url.test();
+  //var url = new EffURL('http://example.com:80/dirs/name.type?query#anchor');
+  //console.log( url.tiny_get() );
+  //console.log( url.full_get() );
 
   /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */

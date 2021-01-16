@@ -67,7 +67,7 @@ namespace effcore {
   # ───╨────────────────────────────────────────────────────────────────────
   # utf8 letters: '[[:alpha:]]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
   # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
-  # officially allowed characters ACSII range: \\x21-\\x7e
+  # officially allowed characters ACSII range: '[\\x21-\\x7e]'
 
   const is_decode_nothing   = 0b00;
   const is_decode_domain    = 0b01;
