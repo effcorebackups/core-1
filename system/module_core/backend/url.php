@@ -69,42 +69,6 @@ namespace effcore {
   # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
   # officially allowed characters ACSII range: \\x21-\\x7e
 
-  # matrix check:
-  # ┌───┬───────────────────────────────────────────────┐
-  # │ a │                       path                    │
-  # │ b │                       path +  query           │
-  # │ c │                       path +           anchor │
-  # │ d │                       path +  query +  anchor │
-  # │ e │             domain                            │
-  # │ f │             domain +  path                    │
-  # │ g │             domain +  path +  query           │
-  # │ h │             domain +  path +           anchor │
-  # │ i │             domain +  path +  query +  anchor │
-  # │ j │ protocol +  domain                            │
-  # │ k │ protocol +  domain +  path                    │
-  # │ l │ protocol +  domain +  path +  query           │
-  # │ m │ protocol +  domain +  path +           anchor │
-  # │ n │ protocol +  domain +  path +  query +  anchor │
-  # └───┴───────────────────────────────────────────────┘
-  #                           │
-  #                           ▼
-  # ┌───┬───────────────────────────────────────────────┐
-  # │ a │!protocol + !domain +  path + !query + !anchor │
-  # │ b │!protocol + !domain +  path +  query + !anchor │
-  # │ c │!protocol + !domain +  path + !query +  anchor │
-  # │ d │!protocol + !domain +  path +  query +  anchor │
-  # │ e │!protocol +  domain + !path + !query + !anchor │
-  # │ f │!protocol +  domain +  path + !query + !anchor │
-  # │ g │!protocol +  domain +  path +  query + !anchor │
-  # │ h │!protocol +  domain +  path + !query +  anchor │
-  # │ i │!protocol +  domain +  path +  query +  anchor │
-  # │ j │ protocol +  domain + !path + !query + !anchor │
-  # │ k │ protocol +  domain +  path + !query + !anchor │
-  # │ l │ protocol +  domain +  path +  query + !anchor │
-  # │ m │ protocol +  domain +  path + !query +  anchor │
-  # │ n │ protocol +  domain +  path +  query +  anchor │
-  # └───┴───────────────────────────────────────────────┘
-
   const is_decode_nothing   = 0b00;
   const is_decode_domain    = 0b01;
   const is_decode_path      = 0b10;
@@ -134,32 +98,33 @@ namespace effcore {
     $path     = array_key_exists('path',     $matches) ? $matches['path'    ] : '';
     $query    = array_key_exists('query',    $matches) ? $matches['query'   ] : '';
     $anchor   = array_key_exists('anchor',   $matches) ? $matches['anchor'  ] : '';
-    if ( (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # a
-         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # b
-         (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # c
-         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  # d
-         (!strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  # e
-         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # f
-         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # g
-         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # h
-         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  # i
-         ( strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  # j
-         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # k
-         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # l
-         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # m
-         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ) { # n
-      $this->protocol = $protocol;
-      $this->domain   = $domain;
-      $this->port     = $port;
-      $this->path     = $path;
-      $this->query    = $query;
-      $this->anchor   = $anchor;
+  # matrix check
+    if ( (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  #                  /path
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  #                  /path?query
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  #                  /path#anchor
+         (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  #                  /path?query#anchor
+         (!strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  #            domain
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  #            domain/path
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  #            domain/path?query
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  #            domain/path?#anchor
+         (!strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ||  #            domain/path?query#anchor
+         ( strlen($protocol) &&  strlen($domain) && !strlen($path) && !strlen($query) && !strlen($anchor)) ||  # protocol://domain
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  # protocol://domain/path
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  # protocol://domain/path?query
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) && !strlen($query) &&  strlen($anchor)) ||  # protocol://domain/path?#anchor
+         ( strlen($protocol) &&  strlen($domain) &&  strlen($path) &&  strlen($query) &&  strlen($anchor)) ) { # protocol://domain/path?query#anchor
+      $this->protocol  = $protocol;
+      $this->domain    = $domain;
+      $this->port      = $port;
+      $this->path      = $path;
+      $this->query     = $query;
+      $this->anchor    = $anchor;
+      $this->has_error = false;
       if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? core::server_get_request_scheme() : 'http';
       if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
       if ($options['completion'] && $this->path     === '') $this->path     = '/';
       if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
       if ($options['decode'] & static::is_decode_path) $this->path = rawurldecode($this->path);
-           $this->has_error = false;
     } else $this->has_error = true;
   }
 
