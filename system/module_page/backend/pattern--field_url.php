@@ -65,7 +65,7 @@ namespace effcore {
   }
 
   static function validate_value($field, $form, $element, &$new_value) {
-    $url     = new url($new_value, ['extra'      => $field->is_allowed_unicode ? '[:alpha:]' : '']);
+    $url     = new url($new_value, ['extra'      => $field->is_allowed_unicode ? url::valid_unicode_range : '']);
     $url_raw = new url($new_value, ['completion' => false]);
     if (strlen($new_value) && $url->has_error === true                                                  ) {$field->error_set('Field "%%_title" contains an incorrect URL!', ['title' => (new text($field->title))->render() ]); return;}
     if (strlen($new_value) && isset($field->should_be_excluded['protocol']) && $url_raw->protocol !== '') {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'Field value should not contain protocol.'], ['title' => (new text($field->title))->render() ])); return;}

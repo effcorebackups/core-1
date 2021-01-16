@@ -65,7 +65,7 @@ namespace effcore {
   # Lt ║ Title case letter
   # Lu ║ Upper case letter
   # ───╨────────────────────────────────────────────────────────────────────
-  # utf8 letters: [:alpha:] === \\p{L} === \\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}
+  # utf8 letters: '[:alpha:]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
   # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
   # officially allowed characters ACSII range: \\x21-\\x7e
 
@@ -105,9 +105,10 @@ namespace effcore {
   # │ n │ protocol +  domain +  path +  query +  anchor │
   # └───┴───────────────────────────────────────────────┘
 
-  const is_decode_nothing = 0b00;
-  const is_decode_domain  = 0b01;
-  const is_decode_path    = 0b10;
+  const is_decode_nothing   = 0b00;
+  const is_decode_domain    = 0b01;
+  const is_decode_path      = 0b10;
+  const valid_unicode_range = '\\p{Ll}\\p{Lo}\\p{Lt}\\p{Lu}';
 
   public $raw;
   public $protocol;
@@ -119,7 +120,7 @@ namespace effcore {
   public $has_error;
 
   function __construct($url, $options = []) {
-    $options += ['completion' => true, 'decode' => static::is_decode_path, 'extra' => '[:alpha:]'];
+    $options += ['completion' => true, 'decode' => static::is_decode_path, 'extra' => static::valid_unicode_range];
     $this->raw = $url;
     $matches = [];
     preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
@@ -266,7 +267,7 @@ namespace effcore {
                   $checked_url->full_get().'/') === 0;
   }
 
-  static function utf8_encode($value, $prefix = '', $range = '[:alpha:]') {
+  static function utf8_encode($value, $prefix = '', $range = self::valid_unicode_range) {
     return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
       if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
       if (strlen($c_match['char']) === 2) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1])));
