@@ -13,28 +13,6 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
-  Effcore.prototype.parseUrlQuery = function(value) {
-    var result = {};
-    value.split('&').forEach(function(args){
-      var c_param = args.split('=');
-      if (c_param[0].length) {
-        var c_key = c_param.shift();
-        var c_val = c_param.join('=');
-        if (c_key.substring(c_key.length - 2) === '[]') {
-          var c_arr_key = decodeURI(c_key.substring(0, c_key.length - 2).replace(/\+/g, '%20'));
-          var c_arr_val = decodeURI(                               c_val.replace(/\+/g, '%20'));
-          if (result[c_arr_key] === undefined)
-              result[c_arr_key] = [];
-              result[c_arr_key].push(c_arr_val);
-        } else {
-          result[decodeURI(c_key.replace(/\+/g, '%20'))] =
-                 decodeURI(c_val.replace(/\+/g, '%20'));
-        }
-      }
-    });
-    return result;
-  }
-
   /* ───────────────────────────────────────────────────────────────────── */
   /* URL class                                                             */
   /* ───────────────────────────────────────────────────────────────────── */
@@ -81,7 +59,7 @@
     } else this.has_error = true;
   }
 
-  EffURL.prototype.tiny_get = function() {
+  EffURL.prototype.tinyGet = function() {
     if (!this.has_error) {
       var result = this.path;
       if (this.query ) result+= '?' + this.query;
@@ -90,7 +68,7 @@
     }
   }
 
-  EffURL.prototype.full_get = function() {
+  EffURL.prototype.fullGet = function() {
     if (!this.has_error) {
       result = this.protocol + '://' + this.domain + this.path;
       if (this.query ) result+= '?' + this.query;
@@ -99,6 +77,35 @@
     }
   }
 
+// EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;                            }
+// EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery($args);}
+// EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete(args[name]);        this.query = this.buildUrlQuery($args);}
+
+  EffURL.prototype.parseUrlQuery = function(value) {
+    var result = {};
+    value.split('&').forEach(function(args){
+      var c_param = args.split('=');
+      if (c_param[0].length) {
+        var c_key = c_param.shift();
+        var c_val = c_param.join('=');
+        if (c_key.substring(c_key.length - 2) === '[]') {
+          var c_arr_key = decodeURI(c_key.substring(0, c_key.length - 2).replace(/\+/g, '%20'));
+          var c_arr_val = decodeURI(                               c_val.replace(/\+/g, '%20'));
+          if (result[c_arr_key] === undefined)
+              result[c_arr_key] = [];
+              result[c_arr_key].push(c_arr_val);
+        } else {
+          result[decodeURI(c_key.replace(/\+/g, '%20'))] =
+                 decodeURI(c_val.replace(/\+/g, '%20'));
+        }
+      }
+    });
+    return result;
+  }
+
+  EffURL.prototype.buildUrlQuery = function(value) {
+    // @todo: make functionality
+  }
 
   /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */
