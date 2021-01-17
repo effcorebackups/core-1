@@ -147,7 +147,7 @@ namespace effcore {
   #######################
 
   if (!storage::get('sql')->is_installed()) {
-    if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::get_current()->path_get())) {
+    if (!preg_match('%^/install(/[a-z]{2,2}|)$%', url::get_current()->path)) {
       url::go('/install/en');
     }
   }

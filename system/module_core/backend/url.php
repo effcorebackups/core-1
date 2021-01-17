@@ -128,50 +128,44 @@ namespace effcore {
     } else $this->has_error = true;
   }
 
-  function protocol_get() {return $this->protocol;}
-  function domain_get  () {return $this->domain;  }
-  function path_get    () {return $this->path;    }
-  function query_get   () {return $this->query;   }
-  function anchor_get  () {return $this->anchor;  }
-
   function tiny_get() {
     if (!$this->has_error) {
-      $result = $this->path_get();
-      if ($this->query_get ()) $result.= '?'.$this->query_get ();
-      if ($this->anchor_get()) $result.= '#'.$this->anchor_get();
+      $result = $this->path;
+      if ($this->query ) $result.= '?'.$this->query;
+      if ($this->anchor) $result.= '#'.$this->anchor;
       return $result;
     }
   }
 
   function full_get() {
     if (!$this->has_error) {
-      $result = $this->protocol_get().'://'.$this->domain_get().$this->path_get();
-      if ($this->query_get ()) $result.= '?'.$this->query_get ();
-      if ($this->anchor_get()) $result.= '#'.$this->anchor_get();
+      $result = $this->protocol.'://'.$this->domain.$this->path;
+      if ($this->query ) $result.= '?'.$this->query;
+      if ($this->anchor) $result.= '#'.$this->anchor;
       return rtrim($result, '/');
     }
   }
 
-  function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query_get(), $args); return $args[$name] ?? null;                                         }
-  function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query_get(), $args);        $args[$name] = $value; $this->query = http_build_query($args);}
-  function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query_get(), $args);  unset($args[$name]);         $this->query = http_build_query($args);}
+  function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                         }
+  function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args);}
+  function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args);}
 
   function path_arg_select($name) {
     if (!$this->has_error) {
-      $args = explode('/', $this->path_get());
+      $args = explode('/', $this->path);
       return $args[$name] ?? null;
     }
   }
 
   function file_info_get() {
     if (!$this->has_error) {
-      return new file(rtrim(dir_root, '/').$this->path_get());
+      return new file(rtrim(dir_root, '/').$this->path);
     }
   }
 
   function file_type_get() {
     if (!$this->has_error) {
-      return ltrim(strtolower(strrchr($this->path_get(), '.')), '.');
+      return ltrim(strtolower(strrchr($this->path, '.')), '.');
     }
   }
 
@@ -211,7 +205,7 @@ namespace effcore {
   }
 
   static function is_local($url, $decode = false) {
-    return (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain_get() === core::server_get_host($decode);
+    return (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === core::server_get_host($decode);
   }
 
   static function is_active($url, $compare_type = 'full') {
@@ -220,8 +214,8 @@ namespace effcore {
     switch ($compare_type) {
       case 'full': return $checked_url->full_get() ===
                           $current_url->full_get();
-      case 'path': return $checked_url->domain_get().$checked_url->path_get() ===
-                          $current_url->domain_get().$current_url->path_get();
+      case 'path': return $checked_url->domain.$checked_url->path ===
+                          $current_url->domain.$current_url->path;
     }
   }
 

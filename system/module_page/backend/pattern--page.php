@@ -84,7 +84,7 @@ namespace effcore {
     }
 
   # show important messages
-    if ($settings->show_warning_if_not_https && !empty($this->is_https) && url::get_current()->protocol_get() != 'https') {
+    if ($settings->show_warning_if_not_https && !empty($this->is_https) && url::get_current()->protocol != 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
       );
@@ -132,7 +132,7 @@ namespace effcore {
     $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current());
     $html->attribute_insert('dir', $this->text_direction);
     $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? 'true' : 'false'); # note: refreshed after page reload
-    $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path_get(), '/'))));
+    $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path, '/'))));
     if ($user_agent->name) $html->attribute_insert('data-uagent', core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
     if ($user_agent->core) $html->attribute_insert('data-uacore', core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
 
@@ -248,7 +248,7 @@ namespace effcore {
   }
 
   static function init_current() {
-    $path_current = url::get_current()->path_get();
+    $path_current = url::get_current()->path;
     $page = static::get_by_url($path_current);
     if ($page) {
       if (access::check($page->access)) {
