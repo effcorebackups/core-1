@@ -99,16 +99,6 @@
     }
   }
 
-  EffURL.prototype.test = function() {
-    if (!this.has_error) {
-      console.log('protocol: ' + this.protocol);
-      console.log('domain: '   + this.domain);
-      console.log('port: '     + this.port);
-      console.log('path: '     + this.path);
-      console.log('query: '    + this.query);
-      console.log('anchor: '   + this.anchor);
-    } else console.log('EffURL parse error');
-  }
 
   /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */
