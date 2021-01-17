@@ -13,6 +13,27 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
+  Effcore.prototype.parseUrlQuery = function(value) {
+    var result = {};
+    value.split('&').forEach(function(args){
+      var c_param = args.split('=');
+      if (c_param[0].length) {
+        var c_key = c_param.shift();
+        if (c_key.substring(c_key.length - 2) === '[]') {
+          var c_arr_key = decodeURI(c_key.substring(0, c_key.length - 2).replace(/\+/g, '%20'));
+          var c_arr_val = decodeURI(                   c_param.join('=').replace(/\+/g, '%20'));
+          if (result[c_arr_key] === undefined)
+              result[c_arr_key] = [];
+              result[c_arr_key].push(c_arr_val);
+        } else {
+          result[decodeURI(            c_key.replace(/\+/g, '%20'))] =
+                 decodeURI(c_param.join('=').replace(/\+/g, '%20'));
+        }
+      }
+    });
+    return result;
+  }
+
   /* ───────────────────────────────────────────────────────────────────── */
   /* URL class                                                             */
   /* ───────────────────────────────────────────────────────────────────── */
