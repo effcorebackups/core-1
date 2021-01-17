@@ -190,7 +190,8 @@ namespace effcore {
   }
 
   static function back_url_get() {
-    $url = new static(static::get_current()->query_arg_select('back'));
+    $query_arg = static::get_current()->query_arg_select('back');
+    $url = new static(is_string($query_arg) ? $query_arg : null);
     return $url->has_error ? '' :
            $url->full_get();
   }

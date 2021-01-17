@@ -33,12 +33,29 @@ namespace effcore {
 
   function init() {
     if ($this->cur === null) {
+    # ───────────────────────────────────────────────────────────────────────
+    # query_arg_select() can return: null, '', '0', 'NaN', [''], ['0'], ['NaN']
+    # ────────────────────────────────┬──────────────────────────────────────
+    # http://domain/path              │ $this->cur === null
+    # http://domain/path?page         │ $this->cur === ''
+    # http://domain/path?page=0       │ $this->cur === '0'
+    # http://domain/path?page=NaN     │ $this->cur === 'NaN'
+    # http://domain/path?page[]       │ $this->cur === ['']
+    # http://domain/path?page[]=0     │ $this->cur === ['0']
+    # http://domain/path?page[]=NaN   │ $this->cur === ['NaN']
+    # http://domain/path?page[][]=NaN │ $this->cur === [['NaN']]
+    # ────────────────────────────────┴──────────────────────────────────────
       $this->cur = url::get_current()->query_arg_select($this->name_get());
-      if ($this->cur === null)                            {$this->cur = $this->min;                                                     }
+      if ($this->cur === null                           ) {$this->cur = $this->min;                                                     }
+      if (!(is_string($this->cur) || is_int($this->cur))) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_INVALID_VALUE;}
       if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_INVALID_VALUE;}
       if ($this->max < $this->min                       ) {$this->max = $this->min; $this->error_code |= static::ERR_CODE_MIN_GT_MAX;   }
       if ($this->cur < $this->min                       ) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_LT_MIN;   }
       if ($this->cur > $this->max                       ) {$this->cur = $this->max; $this->error_code |= static::ERR_CODE_CUR_GT_MAX;   }
+    # final correction 
+      $this->min = (int)$this->min;
+      $this->max = (int)$this->max;
+      $this->cur = (int)$this->cur;
     }
   }
 
