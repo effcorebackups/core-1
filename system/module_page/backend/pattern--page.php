@@ -37,7 +37,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_page_build_before', $this->id, [&$this]);
+      event::start('on_page_build_before', $this->id, ['page' => &$this]);
       $this->_markup = core::deep_clone(layout::select($this->id_layout));
       if ($this->_markup) {
         foreach ($this->_markup->children_select_recursive() as $c_area) {
@@ -67,7 +67,7 @@ namespace effcore {
           'LOST LAYOUT: %%_id', ['id' => $this->id_layout ?: 'n/a']
         );
       }
-      event::start('on_page_build_after', $this->id, [&$this]);
+      event::start('on_page_build_after', $this->id, ['page' => &$this]);
       $this->is_builded = true;
     }
   }
@@ -102,7 +102,7 @@ namespace effcore {
     $is_dark_palette = $color_page ? $color_page->is_dark() : false;
 
   # render page
-    event::start('on_page_render_before', $this->id, [&$this, &$template]);
+    event::start('on_page_render_before', $this->id, ['page' => &$this, 'template' => &$template]);
     $template = template::make_new($this->template);
     $html            = $template->target_get('html');
     $meta            = $template->target_get('head_meta');

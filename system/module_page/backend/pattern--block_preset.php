@@ -66,8 +66,8 @@ namespace effcore {
   }
 
   static function init_dynamic($id = null) {
-    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_block_presets_dynamic_build', null       );}
-    if ($id !== null                             ) {                                 event::start('on_block_presets_dynamic_build', null, [$id]);}
+    if ($id === null && !static::$is_init_dynamic) {static::$is_init_dynamic = true; event::start('on_block_presets_dynamic_build', null               );}
+    if ($id !== null                             ) {                                 event::start('on_block_presets_dynamic_build', null, ['id' => $id]);}
   }
 
   static function select_all($id_area = null, $origin = null) {

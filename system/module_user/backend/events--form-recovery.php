@@ -55,13 +55,13 @@ namespace effcore\modules\user {
               'new_password' => $new_password
             ])->render();
             event::start('on_email_send_before', 'recovery', [
-              &$mail_to,
-              &$mail_subject,
-              &$mail_body,
-              &$mail_from,
-              &$mail_encoding,
-              &$form,
-              &$items
+              'to'       => &$mail_to,
+              'subject'  => &$mail_subject,
+              'body'     => &$mail_body,
+              'from'     => &$mail_from,
+              'encoding' => &$mail_encoding,
+              'form'     => &$form,
+              'items'    => &$items
             ]);
             $mail_send_result = mail(
               $mail_to,

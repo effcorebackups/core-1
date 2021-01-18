@@ -17,7 +17,7 @@ namespace effcore\modules\core {
           use \effcore\text;
           abstract class events_page_info {
 
-  static function block_markup__system_info($page) {
+  static function block_markup__system_info($page, $args = []) {
     $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/pictures/logo-simplified.svgd', 'alt' => new text('system logotype'), 'width' => '300']));
     $copyright = new markup('x-copyright', [], 'Copyright © 2017—2021 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
@@ -30,7 +30,7 @@ namespace effcore\modules\core {
     ]);
   }
 
-  static function block_markup__service_info($page) {
+  static function block_markup__service_info($page, $args = []) {
     $settings           = module::settings_get('core');
     $is_required_update = module::is_required_update_data();
     $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
@@ -48,7 +48,7 @@ namespace effcore\modules\core {
     ]);
   }
 
-  static function block_markup__environment_info($page) {
+  static function block_markup__environment_info($page, $args = []) {
     $storage_sql = storage::get('sql');
     $php_version_curl = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(@opcache_get_status(false)['opcache_enabled']);

@@ -15,7 +15,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_breadcrumbs_build_before', $this->id, [&$this]);
+      event::start('on_breadcrumbs_build_before', $this->id, ['breadcrumbs' => &$this]);
       $this->children_delete();
       foreach ($this->links as $rowid => $c_link) {
         if ($this->is_remove_last_link && $c_link == end($this->links)) break;
@@ -23,7 +23,7 @@ namespace effcore {
         if (url::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current',        'true');
         if (url::is_active_trail($c_link->url)) $c_link_markup->attribute_insert('data-selected-trail', 'true');
         $this->child_insert($c_link_markup);}
-      event::start('on_breadcrumbs_build_after', $this->id, [&$this]);
+      event::start('on_breadcrumbs_build_after', $this->id, ['breadcrumbs' => &$this]);
       $this->is_builded = true;
     }
   }

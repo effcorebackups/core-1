@@ -71,7 +71,7 @@ namespace effcore\modules\develop {
     }
   }
 
-  static function block_markup__nosql_tree($page) {
+  static function block_markup__nosql_tree($page, $args = []) {
     $id = $page->args_get('id');
     $trees = tree::select_all('nosql');
     if ($id && isset($trees[$id])) {
@@ -94,7 +94,7 @@ namespace effcore\modules\develop {
     }
   }
 
-  static function block_markup__nosql_selections($page) {
+  static function block_markup__nosql_selections($page, $args = []) {
     $selection = selection::get_all('nosql');
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'nosql_selections';
@@ -107,7 +107,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_markup__nosql_events($page) {
+  static function block_markup__nosql_events($page, $args = []) {
     $targets = new markup('x-targets');
     $report = new node;
     $events = event::get_all();
@@ -134,7 +134,7 @@ namespace effcore\modules\develop {
     ]);
   }
 
-  static function block_markup__nosql_file_types($page) {
+  static function block_markup__nosql_file_types($page, $args = []) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'nosql_file_types';
     $file_types = file::types_get();
@@ -150,7 +150,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_markup__nosql_templates($page) {
+  static function block_markup__nosql_templates($page, $args = []) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'nosql_templates';
     $templates = template::get_all();
@@ -165,7 +165,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_markup__nosql_tokens($page) {
+  static function block_markup__nosql_tokens($page, $args = []) {
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'nosql_tokens';
     $tokens = token::select_all();
@@ -181,7 +181,7 @@ namespace effcore\modules\develop {
     return $decorator;
   }
 
-  static function block_markup__nosql_translations($page) {
+  static function block_markup__nosql_translations($page, $args = []) {
     $id = page::get_current()->args_get('id');
     $decorator = new decorator('table-adaptive');
     $decorator->id = 'nosql_translations';

@@ -44,7 +44,7 @@ namespace effcore\modules\demo {
   ### markup ###
   ##############
 
-  static function block_markup__demo_markup_dynamic($page) {
+  static function block_markup__demo_markup_dynamic($page, $args = []) {
   # ─────────────────────────────────────────────────────────────────────
   # headers
   # ─────────────────────────────────────────────────────────────────────
@@ -129,7 +129,7 @@ namespace effcore\modules\demo {
   ### decorators ###
   ##################
 
-  static function block_markup__demo_decorators_dynamic($page) {
+  static function block_markup__demo_decorators_dynamic($page, $args = []) {
   # ─────────────────────────────────────────────────────────────────────
   # table
   # ─────────────────────────────────────────────────────────────────────
@@ -256,7 +256,7 @@ namespace effcore\modules\demo {
   ### messages ###
   ################
 
-  static function block_markup__demo_messages($page) {
+  static function block_markup__demo_messages($page, $args = []) {
     $link = (new markup('a', ['href' => '/'], 'Link'))->render();
     message::insert( 'Credentials', 'credentials');
     message::insert( new text_multiline(['Notice message #%%_number.',              $link], ['number' => 1], ' '), 'notice');
@@ -277,7 +277,7 @@ namespace effcore\modules\demo {
   ### canvas ###
   ##############
 
-  static function block_markup__demo_canvas($page) {
+  static function block_markup__demo_canvas($page, $args = []) {
     $canvas = new canvas_svg(105, 16, 5);
     $canvas->glyph_set('-XXX-|X---X|X---X|X---X|X---X|X---X|X---X|X---X|X---X|-XXX-',  5, 3); # 0
     $canvas->glyph_set('----X|---X-|--X-X|-X--X|X---X|----X|----X|----X|----X|----X', 15, 3); # 1
@@ -296,7 +296,7 @@ namespace effcore\modules\demo {
   ### diagrams ###
   ################
 
-  static function block_markup__demo_diagram_linear($page) {
+  static function block_markup__demo_diagram_linear($page, $args = []) {
     $diagram = new diagram('Title', 'linear');
     $diagram->slice_insert('Parameter 1', 70, '0.07 '.translation::apply('sec.'));
     $diagram->slice_insert('Parameter 2', 20, '0.02 '.translation::apply('sec.'));
@@ -304,7 +304,7 @@ namespace effcore\modules\demo {
     return $diagram;
   }
 
-  static function block_markup__demo_diagram_radial($page) {
+  static function block_markup__demo_diagram_radial($page, $args = []) {
     $diagram = new diagram('Title', 'radial');
     $diagram->slice_insert('Parameter 1', 40, '0.04 '.translation::apply('sec.'), '#216ce4');
     $diagram->slice_insert('Parameter 2', 30, '0.03 '.translation::apply('sec.'), '#48be38');
@@ -317,7 +317,7 @@ namespace effcore\modules\demo {
   ### colors ###
   ##############
 
-  static function block_markup__demo_colors($page) {
+  static function block_markup__demo_colors($page, $args = []) {
     $colors_via_parametric_tokens = [];
     $colors_via_overlays          = [];
     for ($i = 0; $i < 21; $i++) {

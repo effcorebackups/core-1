@@ -60,7 +60,7 @@ namespace effcore\modules\menu {
     }
   }
 
-  static function block_markup__tree_get($page, $args) {
+  static function block_markup__tree_get($page, $args = []) {
     if (!empty($args['instance_id'])) {
       return tree::select($args['instance_id']);
     }

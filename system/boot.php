@@ -47,7 +47,7 @@ namespace effcore {
   $raw_url = core::server_get_request_scheme().'://'.
              core::server_get_host(false).
              core::server_get_request_uri();
-  if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_SCHEME_REQUIRED|FILTER_FLAG_HOST_REQUIRED|FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
+  if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
     core::send_header_and_exit('bad_request');
   }
 
@@ -109,7 +109,7 @@ namespace effcore {
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'virtual') {
       $type = $file_types[$file->type];
-      event::start('on_file_load', 'virtual', [&$type, &$file]);
+      event::start('on_file_load', 'virtual', ['type_info' => &$type, 'file' => &$file]);
       exit();
     }
 
@@ -119,10 +119,10 @@ namespace effcore {
 
     $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
     $real_path = core::validate_realpath($file->path_get());
-    if ($real_path === false)               {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 1]); exit();} # object does not really exist or object is inaccessible to the web server by rights
-    if ($real_path !== $file->path_get())   {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 2]); exit();} # resolved path is not the same as the original
-    if (strpos($real_path, dir_root) !== 0) {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 3]); exit();} # object is outside the web root
-    if (!is_file    ($file->path_get()))    {event::start('on_file_load', 'not_found', [&$type, &$file, $real_path, 4]); exit();} # object exists, but it is not a file
+    if ($real_path === false)               {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 1]); exit();} # object does not really exist or object is inaccessible to the web server by rights
+    if ($real_path !== $file->path_get())   {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 2]); exit();} # resolved path is not the same as the original
+    if (strpos($real_path, dir_root) !== 0) {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 3]); exit();} # object is outside the web root
+    if (!is_file    ($file->path_get()))    {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 4]); exit();} # object exists, but it is not a file
     if (!is_readable($file->path_get())) core::send_header_and_exit('access_forbidden'); # object is inaccessible to the web server by rights
 
     # ─────────────────────────────────────────────────────────────────────
@@ -132,7 +132,7 @@ namespace effcore {
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'dynamic') {
       $type = $file_types[$file->type];
-      event::start('on_file_load', 'dynamic', [&$type, &$file]);
+      event::start('on_file_load', 'dynamic', ['type_info' => &$type, 'file' => &$file]);
       exit();
 
     # ─────────────────────────────────────────────────────────────────────
@@ -141,7 +141,7 @@ namespace effcore {
 
     } else {
       $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
-      event::start('on_file_load', 'static', [&$type, &$file]);
+      event::start('on_file_load', 'static', ['type_info' => &$type, 'file' => &$file]);
       exit();
     }
 

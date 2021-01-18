@@ -40,33 +40,33 @@ namespace effcore {
   function entity_set_name($entity_name) {$this->entity_name = $entity_name;}
 
   function select() {
-    event::start('on_instance_select_before', $this->entity_name, [&$this]);
+    event::start('on_instance_select_before', $this->entity_name, ['instance' => &$this]);
     $result = $this->entity_get()->storage_get()->instance_select($this);
-    event::start('on_instance_select_after',  $this->entity_name, [&$this, $result]);
+    event::start('on_instance_select_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
   }
 
   function insert() {
-    event::start('on_instance_insert_before', $this->entity_name, [&$this]);
+    event::start('on_instance_insert_before', $this->entity_name, ['instance' => &$this]);
     if ($this->entity_get()->field_get('created') && empty($this->entity_get()->field_get('created')->managing_on_insert_is_enabled)) $this->created = core::datetime_get();
     if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_on_insert_is_enabled)) $this->updated = core::datetime_get();
     $result = $this->entity_get()->storage_get()->instance_insert($this);
-    event::start('on_instance_insert_after',  $this->entity_name, [&$this, $result]);
+    event::start('on_instance_insert_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
   }
 
   function update() {
-    event::start('on_instance_update_before', $this->entity_name, [&$this]);
+    event::start('on_instance_update_before', $this->entity_name, ['instance' => &$this]);
     if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_on_update_is_enabled)) $this->updated = core::datetime_get();
     $result = $this->entity_get()->storage_get()->instance_update($this);
-    event::start('on_instance_update_after',  $this->entity_name, [&$this, $result]);
+    event::start('on_instance_update_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
   }
 
   function delete() {
-    event::start('on_instance_delete_before', $this->entity_name, [&$this]);
+    event::start('on_instance_delete_before', $this->entity_name, ['instance' => &$this]);
     $result = $this->entity_get()->storage_get()->instance_delete($this);
-    event::start('on_instance_delete_after',  $this->entity_name, [&$this, $result]);
+    event::start('on_instance_delete_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
   }
 

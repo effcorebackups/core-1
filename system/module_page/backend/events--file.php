@@ -25,8 +25,8 @@ namespace effcore\modules\page {
         if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_sitemap ? 'xmld' : 'xml'];
           if ($settings->apply_tokens_for_sitemap)
-               event::start('on_file_load', 'dynamic', [&$type, &$file]);
-          else event::start('on_file_load', 'static',  [&$type, &$file]);
+               event::start('on_file_load', 'dynamic', ['type_info' => &$type, 'file' => &$file]);
+          else event::start('on_file_load', 'static',  ['type_info' => &$type, 'file' => &$file]);
           exit();
         } break;
       case dir_root.'robots.txt':
@@ -35,8 +35,8 @@ namespace effcore\modules\page {
         if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_robots ? 'txtd' : 'txt'];
           if ($settings->apply_tokens_for_robots)
-               event::start('on_file_load', 'dynamic', [&$type, &$file]);
-          else event::start('on_file_load', 'static',  [&$type, &$file]);
+               event::start('on_file_load', 'dynamic', ['type_info' => &$type, 'file' => &$file]);
+          else event::start('on_file_load', 'static',  ['type_info' => &$type, 'file' => &$file]);
           exit();
         } break;
       case dir_root.'favicon.ico':

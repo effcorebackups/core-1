@@ -31,7 +31,7 @@ namespace effcore {
       $result = new node;
       $this->attribute_insert('data-view-type', $this->view_type);
       $this->attribute_insert('data-id',        $this->id       );
-      event::start('on_decorator_build_before', $this->id, [&$this]);
+      event::start('on_decorator_build_before', $this->id, ['decorator' => &$this]);
 
       if ($this->data) {
         switch ($this->view_type) {
@@ -270,7 +270,7 @@ namespace effcore {
           new markup('x-no-items', ['data-style' => 'table'], 'no items'), 'no_items'
         );
       }
-      event::start('on_decorator_build_after', $this->id, [&$this]);
+      event::start('on_decorator_build_after', $this->id, ['decorator' => &$this]);
       $this->is_builded = true;
       return $this;
 

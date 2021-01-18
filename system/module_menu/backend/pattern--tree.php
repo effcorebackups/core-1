@@ -26,7 +26,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      event::start('on_tree_build_before', $this->id, [&$this]);
+      event::start('on_tree_build_before', $this->id, ['tree' => &$this]);
       $this->attribute_insert('data-id',                 $this->id,                 'attributes', true);
       $this->attribute_insert('data-visualization-mode', $this->visualization_mode, 'attributes', true);
       foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
@@ -34,7 +34,7 @@ namespace effcore {
             $c_item->id_parent == null) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build();}}
-      event::start('on_tree_build_after', $this->id, [&$this]);
+      event::start('on_tree_build_after', $this->id, ['tree' => &$this]);
       $this->is_builded = true;
     }
   }

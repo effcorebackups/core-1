@@ -41,7 +41,7 @@ namespace effcore {
       if ($this->driver &&
           $this->credentials) {
         try {
-          event::start('on_storage_init_before', 'pdo', [&$this]);
+          event::start('on_storage_init_before', 'pdo', ['storage' => &$this]);
           switch ($this->driver) {
             case 'mysql':
               $this->connection = new pdo(
@@ -60,7 +60,7 @@ namespace effcore {
               $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', 'operator' => '=', 'value' =>  'ON'    ]);
               break;
           }
-          event::start('on_storage_init_after', 'pdo', [&$this]);
+          event::start('on_storage_init_after', 'pdo', ['storage' => &$this]);
           return $this->connection;
         } catch (pdo_exception $e) {
           message::insert(new text(
@@ -140,7 +140,7 @@ namespace effcore {
     if (is_array($query[0]))
         $query = $query[0];
     if ($this->init()) {
-      event::start('on_query_before', 'pdo', [&$this, &$query]);
+      event::start('on_query_before', 'pdo', ['storage' => &$this, 'query' => &$query]);
       $this->queries[] = $query_prepared = $query;
       $this->prepare_query($query_prepared);
       $query_flat = core::array_values_select_recursive($query_prepared);
@@ -148,7 +148,7 @@ namespace effcore {
       $result = $this->connection->prepare($query_flat_string);
       if ($result) $result->execute($this->args);
       $c_error = $result ? $result->errorInfo() : ['query preparation process return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', [&$this, $query, &$result, &$c_error]);
+      event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'result' => &$result, 'errors' => &$c_error]);
       $this->args_previous = $this->args;
       $this->args = [];
       if ($c_error[0] != '00000') {

@@ -17,17 +17,17 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_page {
 
-  static function block_markup___messages($page) {
+  static function block_markup___messages($page, $args = []) {
     return new message;
   }
 
-  static function block_markup___title($page) {
+  static function block_markup___title($page, $args = []) {
     return new markup('h1', ['id' => 'title'],
       new text($page->title, [], true, true)
     );
   }
 
-  static function block_markup___page_actions($page) {
+  static function block_markup___page_actions($page, $args = []) {
     if ($page->origin === 'sql' && access::check((object)['roles' => ['registered' => 'registered']])) {
       if (access::check((object)[
            'roles'             => [  'admins'            =>   'admins'],
@@ -78,7 +78,7 @@ namespace effcore\modules\page {
     }
   }
 
-  static function block_markup__selection_make($page, $args) {
+  static function block_markup__selection_make($page, $args = []) {
     if (!empty($args['instance_id']) &&
         !empty($args['entity_name'])) {
       $entity = entity::get($args['entity_name']);

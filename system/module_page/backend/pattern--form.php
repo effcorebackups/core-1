@@ -79,7 +79,7 @@ namespace effcore {
 
     # call init handlers
       $this->form_items_update();
-      event::start('on_form_init', $id, [&$this, &$this->items], null,
+      event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], null,
         function ($event, $form, $items) { # === $on_after_step
           $form->form_items_update();
         }
@@ -105,7 +105,7 @@ namespace effcore {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = $c_child::on_validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = $c_child::on_validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_3')) {$c_result = $c_child::on_validate_phase_3($c_child, $this, $c_npath); console::log_insert('form', 'validation_3', $c_npath, $c_result ? 'ok' : 'warning');}
-            event::start('on_form_validate', $id, [&$this, &$this->items]);
+            event::start('on_form_validate', $id, ['form' => &$this, 'items' => &$this->items]);
           }
 
         # send test headers 'X-Form-Submit-Errors-Count: N' (before a possible redirect)
@@ -119,7 +119,7 @@ namespace effcore {
         # call on_submit methods (if no errors)
           if (!$this->has_error()) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath);}
-            event::start('on_form_submit', $id, [&$this, &$this->items]);
+            event::start('on_form_submit', $id, ['form' => &$this, 'items' => &$this->items]);
           # show errors after submit for buttons with 'break_on_validate' (will not be shown if a redirect has occurred)
             $this->errors_show();
           }
