@@ -146,9 +146,9 @@ namespace effcore {
     }
   }
 
-  function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                         }
-  function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args);}
-  function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args);}
+  function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                                                     }
+  function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args, '', '&', PHP_QUERY_RFC3986);}
+  function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args, '', '&', PHP_QUERY_RFC3986);}
 
   function path_arg_select($name) {
     if (!$this->has_error) {
