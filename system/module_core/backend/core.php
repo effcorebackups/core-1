@@ -677,19 +677,39 @@ namespace effcore {
     return $value;
   }
 
-  static function request_values_sanitize($source = '_POST') {
+  static function request_values_sanitize($source = '_POST', $is_files = false) {
     global ${$source};
     if (is_array(${$source})) {
       foreach (${$source} as $c_key => $c_value) {
-        if (!(is_string($c_value) || is_array($c_value))) {
+      # first level for $_POST, $_GET, $_REQUEST, $_FILES
+        if (!(is_string($c_value) || is_int($c_value) || is_array($c_value))) {
           unset(${$source}[$c_key]);
           continue;
         }
-        if (is_array($c_value)) {
-          foreach ($c_value as $c_array_key => $c_array_value) {
-            if (!is_string($c_array_value)) {
+      # second level for $_POST, $_GET, $_REQUEST
+        if (is_array($c_value) && $is_files !== true) {
+          foreach ($c_value as $c_2nd_value) {
+            if (!(is_string($c_2nd_value) || is_int($c_2nd_value))) {
               unset(${$source}[$c_key]);
               continue 2;
+            }
+          }
+        }
+      # second level for $_FILES
+        if (is_array($c_value) && $is_files === true) {
+          foreach ($c_value as $c_2nd_value) {
+            if (!(is_string($c_2nd_value) || is_int($c_2nd_value) || is_array($c_2nd_value))) {
+              unset(${$source}[$c_key]);
+              continue 2;
+            }
+          # third level for $_FILES
+            if (is_array($c_2nd_value)) {
+              foreach ($c_2nd_value as $c_3rd_value) {
+                if (!(is_string($c_3rd_value) || is_int($c_3rd_value))) {
+                  unset(${$source}[$c_key]);
+                  continue 3;
+                }
+              }
             }
           }
         }
