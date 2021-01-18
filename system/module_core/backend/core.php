@@ -677,6 +677,26 @@ namespace effcore {
     return $value;
   }
 
+  static function request_values_sanitize($source = '_POST') {
+    global ${$source};
+    if (is_array(${$source})) {
+      foreach (${$source} as $c_key => $c_value) {
+        if (!(is_string($c_value) || is_array($c_value))) {
+          unset(${$source}[$c_key]);
+          continue;
+        }
+        if (is_array($c_value)) {
+          foreach ($c_value as $c_array_key => $c_array_value) {
+            if (!is_string($c_array_value)) {
+              unset(${$source}[$c_key]);
+              continue 2;
+            }
+          }
+        }
+      }
+    }
+  }
+
   ##############################################
   ### functionality for signatures|keys|hash ###
   ##############################################

@@ -26,9 +26,13 @@ namespace effcore {
   ### load required classes ###
   #############################
 
-  require_once('module_core/backend/core.php'      );
+  require_once('module_core/backend/core.php');
+  core::request_values_sanitize('_POST');
+  core::request_values_sanitize('_GET');
+  core::request_values_sanitize('_REQUEST');
+
   require_once('module_storage/backend/markers.php');
-  require_once('module_core/backend/console.php'   );
+  require_once('module_core/backend/console.php');
   spl_autoload_register('\\effcore\\core::structure_autoload');
   console::log_insert('file', 'insertion', 'system/boot.php',                           'ok');
   console::log_insert('file', 'insertion', 'system/module_storage/backend/markers.php', 'ok');
