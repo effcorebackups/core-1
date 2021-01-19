@@ -29,12 +29,12 @@
                             '(?:\\?([\\x21-\\x22\\x24-\\x7e]*)|)' +                   /* query */
                             '(?:\\#([\\x21-\\x7e]*)|)$');                             /* anchor */
     var parse    = url.match(this.pattern);
-    var protocol = parse[1] !== undefined ? parse[1] : '';
-    var domain   = parse[2] !== undefined ? parse[2] : '';
-    var port     = parse[3] !== undefined ? parse[3] : '';
-    var path     = parse[4] !== undefined ? parse[4] : '';
-    var query    = parse[5] !== undefined ? parse[5] : '';
-    var anchor   = parse[6] !== undefined ? parse[6] : '';
+    var protocol = parse !== null && parse[1] !== undefined ? parse[1] : '';
+    var domain   = parse !== null && parse[2] !== undefined ? parse[2] : '';
+    var port     = parse !== null && parse[3] !== undefined ? parse[3] : '';
+    var path     = parse !== null && parse[4] !== undefined ? parse[4] : '';
+    var query    = parse !== null && parse[5] !== undefined ? parse[5] : '';
+    var anchor   = parse !== null && parse[6] !== undefined ? parse[6] : '';
  /* matrix check */
     if ( (!protocol.length && !domain.length &&  path.length && !query.length && !anchor.length) ||  //                  /path
          (!protocol.length && !domain.length &&  path.length &&  query.length && !anchor.length) ||  //                  /path?query
@@ -81,9 +81,9 @@
     }
   }
 
-// EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;                            }
-// EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery($args);}
-// EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery($args);}
+  EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;                           }
+  EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery(args);}
+  EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery(args);}
 
   EffURL.prototype.parseUrlQuery = function(value) {
     var result = {}, counters = {};
