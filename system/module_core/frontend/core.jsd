@@ -13,6 +13,10 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
+  Effcore.prototype.getType = function(value) {
+    return Object.prototype.toString.call(value).replace('[object ', '').replace(']', '');
+  }
+
   /* ───────────────────────────────────────────────────────────────────── */
   /* URL class                                                             */
   /* ───────────────────────────────────────────────────────────────────── */
@@ -105,11 +109,11 @@
 
   EffURL.prototype.buildUrlQuery = function(params) {
     var result = [];
-    Object.keys(params).forEach(function(c_key){
-      if (Array.isArray(params[c_key])) params[c_key].forEach(function(c_arr_value, c_i){
-           result.push(encodeURIComponent(c_key) + '[' + c_i + ']=' + encodeURIComponent(c_arr_value));});
-      else result.push(encodeURIComponent(c_key) +              '=' + encodeURIComponent(params[c_key]));
-    });
+    for (c_key in params)
+      if (effcore.getType(params[c_key]) === 'Object')
+        for (c_sub_key in params[c_key])
+           result.push(encodeURIComponent(c_key) + '[' + c_sub_key + ']=' + encodeURIComponent(params[c_key][c_sub_key]));
+      else result.push(encodeURIComponent(c_key) +                    '=' + encodeURIComponent(params[c_key]));
     return result.join('&');
   }
 
