@@ -14,7 +14,7 @@
   }
 
   Effcore.prototype.getType = function(value) {
-    return Object.prototype.toString.call(value).replace('[object ', '').replace(']', '');
+    return Object.prototype.toString.call(value).slice(8, -1);
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
@@ -83,21 +83,23 @@
 
 // EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;                            }
 // EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery($args);}
-// EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete(args[name]);        this.query = this.buildUrlQuery($args);}
+// EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery($args);}
 
   EffURL.prototype.parseUrlQuery = function(value) {
-    var result = {};
-    value.split('&').forEach(function(args){
-      var c_param = args.split('=');
+    var result = {}, counters = {};
+    value.split('&').forEach(function(c_param_raw){
+      var c_param = c_param_raw.split('=');
       if (c_param[0].length) {
-        var c_key = c_param.shift();
-        var c_val = c_param.join('=');
-        if (c_key.substring(c_key.length - 2) === '[]') {
-          var c_arr_key = decodeURIComponent(c_key.substring(0, c_key.length - 2));
-          var c_arr_val = decodeURIComponent(c_val);
-          if (result[c_arr_key] === undefined)
-              result[c_arr_key] = [];
-              result[c_arr_key].push(c_arr_val);
+        var c_key = c_param.shift(), c_val = c_param.join('='), c_analyze = c_key.match(/([a-z0-9\_\-]+)(?:\[([a-z0-9\_\-]*)\]|)$/i);
+        if (c_analyze[2] !== undefined) {
+          var c_sub_key = decodeURIComponent(c_analyze[1]);
+          var c_sub_idx = decodeURIComponent(c_analyze[2]);
+          var c_sub_val = decodeURIComponent(c_val);
+          if (c_sub_idx === '' && counters[c_sub_key] === undefined) counters[c_sub_key] = 0;
+          if (c_sub_idx === '' && counters[c_sub_key] !== undefined) c_sub_idx = counters[c_sub_key]++;
+          if (result[c_sub_key] === undefined)
+              result[c_sub_key] = {};
+          result[c_sub_key][c_sub_idx] = c_sub_val;
         } else {
           result[decodeURIComponent(c_key)] =
                  decodeURIComponent(c_val);
