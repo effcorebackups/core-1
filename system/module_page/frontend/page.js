@@ -83,8 +83,24 @@ document.addEventListener('DOMContentLoaded', function(){
     c_player.append(c_thumbnails, c_button_forward, c_button_backward, c_viewing);
     c_player.setAttribute('aria-hidden', 'true');
     c_gallery.prepend(c_player);
- /* process each item */
+ /* prepare each item */
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
+      var c_markup_view_small = null;
+      var c_markup_view       = null;
+      switch (c_item.getAttribute('data-type')) {
+        case 'picture':
+          var picture = c_item.getElementsByTagName('img')[0];
+          if (picture instanceof HTMLImageElement) {
+            var url = new EffURL(picture.getAttribute('src'));
+                url.queryArgDelete('thumb');
+                url.queryArgInsert('thumb', 'small');
+            var src_thumb_small = url.tinyGet();
+                url.queryArgDelete('thumb');
+                url.queryArgInsert('thumb', 'big');
+            var src_thumb_big = url.tinyGet();
+          }
+          break;
+      }
       c_item.addEventListener('click', function(event){
         event.preventDefault();
         c_player.removeAttribute('aria-hidden');
