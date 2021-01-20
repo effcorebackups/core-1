@@ -1,11 +1,11 @@
 
-  var effcore = new Effcore;
+  var effcore = new EFFCORE;
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* Effcore helper class                                                  */
+  /* EFFCORE helper class                                                  */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  function Effcore() {
+  function EFFCORE() {
     this.tokens = [];
     this.tokens['text_no_items'       ] = '%%_text_no_items';
     this.tokens['text_select_all_rows'] = '%%_text_select_all_rows';
@@ -13,7 +13,7 @@
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
   }
 
-  Effcore.prototype.getType = function(value) {
+  EFFCORE.prototype.getType = function(value) {
     return Object.prototype.toString.call(value).slice(8, -1);
   }
 
