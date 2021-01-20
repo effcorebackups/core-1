@@ -44,7 +44,7 @@ namespace effcore {
       if ($type === IMAGETYPE_GIF  && function_exists('imagecreatefromgif' )) $src_resource = @imagecreatefromgif ($src_path);
       if ($type === IMAGETYPE_JPEG && function_exists('imagecreatefromjpeg')) $src_resource = @imagecreatefromjpeg($src_path);
       if ($type === IMAGETYPE_PNG  && function_exists('imagecreatefrompng' )) $src_resource = @imagecreatefrompng ($src_path);
-      if (isset($src_resource) && is_resource($src_resource)) {
+      if (isset($src_resource) && $src_resource) {
         $src_w = @imagesx($src_resource);
         $src_h = @imagesy($src_resource);
         if (is_int($src_w) && $src_w > 0 &&
@@ -53,7 +53,7 @@ namespace effcore {
             if (!$dst_h) $dst_h = (int)($src_h / ($src_w / $dst_w));
             if (!$dst_w) $dst_w = (int)($src_w / ($src_h / $dst_h));
             $dst_resource = @imagecreatetruecolor($dst_w, $dst_h);
-            if (is_resource($dst_resource)) {
+            if ($dst_resource) {
               $dst_file = new file($dst_path);
               if ($dst_file->type === 'jpg' || # fill with white background in JPG for beautiful degrade of PNG/GIF transparency in $src_resource
                   $dst_file->type === 'jpeg') @imagefilledrectangle ($dst_resource, 0, 0, $dst_w - 1, $dst_h - 1, imagecolorallocate($dst_resource, 255, 255, 255));

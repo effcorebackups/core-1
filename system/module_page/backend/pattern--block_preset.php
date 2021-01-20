@@ -89,7 +89,7 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($id, $managing_group = null, $managing_title, $in_areas = null, $extra = [], $weight = 0, $module_id = null) {
+  static function insert($id, $managing_group = null, $managing_title = null, $in_areas = null, $extra = [], $weight = 0, $module_id = null) {
     static::init();
     $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $weight);
     $new_preset->module_id = $module_id;
