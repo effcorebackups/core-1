@@ -50,6 +50,12 @@ namespace effcore\modules\page {
           (object)['weight' => 0, 'name' => 'alt', 'value' => 'some alternative text to support markup validity']
         ], true);
       }
+      if ($entity->name === 'gallery') {
+      # widget 'attributes'
+        $items['*attributes']->value_set_complex([
+          (object)['weight' => 0, 'name' => 'data-player-name', 'value' => 'default']
+        ], true);
+      }
     }
   }
 
