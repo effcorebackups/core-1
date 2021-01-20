@@ -120,6 +120,23 @@
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
+  /* EffMarkup                                                             */
+  /* ───────────────────────────────────────────────────────────────────── */
+
+  function EffMarkup(tag_name, attributes, children) {
+    this.node = document.createElement(tag_name);
+    if (effcore.getType(attributes) === 'Object')
+      for (c_key in attributes)
+        this.node.setAttribute(c_key, attributes[c_key]);
+    if (effcore.getType(children) === 'Object') {
+      for (c_id in children) {
+        this.node.append(children[c_id].node);
+        this[c_id] = children[c_id];
+      }
+    }
+  }
+
+  /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */
   /* ───────────────────────────────────────────────────────────────────── */
 

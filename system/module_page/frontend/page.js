@@ -75,41 +75,33 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
-    var c_player          = document.createElement('x-gallery-player');
-    var c_thumbnails      = document.createElement('x-thumbnails');
-    var c_button_forward  = document.createElement('x-button-forward');
-    var c_button_backward = document.createElement('x-button-backward');
-    var c_viewing         = document.createElement('x-viewing');
-    c_player.append(c_thumbnails, c_button_forward, c_button_backward, c_viewing);
-    c_player.setAttribute('aria-hidden', 'true');
-    c_gallery.prepend(c_player);
+    var c_gal_player = new EffMarkup('x-gallery-player', {'aria-hidden' : 'true'}, {
+             'thumb' : new EffMarkup('x-thumbnails'),
+             'btn_l' : new EffMarkup('x-button-l'),
+             'btn_r' : new EffMarkup('x-button-r'),
+             'viewp' : new EffMarkup('x-viewing-area')});
+    c_gallery.prepend(c_gal_player.node);
  /* prepare each item */
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
-      var c_markup_view_small = null;
-      var c_markup_view       = null;
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
           var picture = c_item.getElementsByTagName('img')[0];
-          if (picture instanceof HTMLImageElement) {
-            var url = new EffURL(picture.getAttribute('src'));
-                url.queryArgDelete('thumb');
-                url.queryArgInsert('thumb', 'small');
-            var src_thumb_small = url.tinyGet();
-                url.queryArgDelete('thumb');
-                url.queryArgInsert('thumb', 'big');
-            var src_thumb_big = url.tinyGet();
-          }
+          var url = new EffURL(picture.getAttribute('src'));
+              url.queryArgDelete('thumb');
+              url.queryArgInsert('thumb', 'small');
+          var thumb_small = new EffMarkup('img', {'src' : url.tinyGet()});
+          c_gal_player.thumb.node.append(thumb_small.node);
           break;
       }
       c_item.addEventListener('click', function(event){
         event.preventDefault();
-        c_player.removeAttribute('aria-hidden');
+        c_gal_player.node.removeAttribute('aria-hidden');
       });
     });
  /* event for close */
     document.addEventListener('keypress', function(event){
       if (event.charCode === 27) {
-        c_player.setAttribute('aria-hidden', 'true');
+        c_gal_player.node.setAttribute('aria-hidden', 'true');
       }
     });
   });
