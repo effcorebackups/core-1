@@ -29,6 +29,8 @@ namespace effcore {
   function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
   # insert new dynamic changes
     $changes_d = data::select('changes') ?: [];
+    if (!isset($changes_d[$module_id]           )) $changes_d[$module_id] = new \stdClass;
+    if (!isset($changes_d[$module_id]->{$action})) $changes_d[$module_id]->{$action} = [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
   # prevent opcache work
