@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', function(){
              'viewp' : new EffMarkup('x-viewing-area')});
     c_gallery.prepend(c_gal_player.node);
  /* prepare each thumbnail */
+    var on_clockThumbnail = function(){
+    }
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
@@ -91,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function(){
               c_url.queryArgInsert('thumb', 'small');
           var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')}, {
                 'picture' : new EffMarkup('img', {'src' : c_url.tinyGet()}) });
+          c_thumbnail.node.addEventListener('click', on_clockThumbnail);
           c_gal_player.thumb.node.append(c_thumbnail.node);
           break;
       }
