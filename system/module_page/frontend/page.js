@@ -81,16 +81,17 @@ document.addEventListener('DOMContentLoaded', function(){
              'btn_r' : new EffMarkup('x-button-r'),
              'viewp' : new EffMarkup('x-viewing-area')});
     c_gallery.prepend(c_gal_player.node);
- /* prepare each item */
+ /* prepare each thumbnail */
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
-          var picture = c_item.getElementsByTagName('img')[0];
-          var url = new EffURL(picture.getAttribute('src'));
-              url.queryArgDelete('thumb');
-              url.queryArgInsert('thumb', 'small');
-          var thumb_small = new EffMarkup('img', {'src' : url.tinyGet()});
-          c_gal_player.thumb.node.append(thumb_small.node);
+          var c_picture = c_item.getElementsByTagName('img')[0];
+          var c_url = new EffURL(c_picture.getAttribute('src'));
+              c_url.queryArgDelete('thumb');
+              c_url.queryArgInsert('thumb', 'small');
+          var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')}, {
+                'picture' : new EffMarkup('img', {'src' : c_url.tinyGet()}) });
+          c_gal_player.thumb.node.append(c_thumbnail.node);
           break;
       }
       c_item.addEventListener('click', function(event){
