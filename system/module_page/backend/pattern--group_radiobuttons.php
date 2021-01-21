@@ -57,7 +57,7 @@ namespace effcore {
     }
   }
 
-  function field_insert($title = null, $description = null, $value, $element_attributes = [], $weight = 0, $ws_rebuild = true) {
+  function field_insert($title = null, $description = null, $value = '', $element_attributes = [], $weight = 0, $ws_rebuild = true) {
     $this->values[$value] = (object)[
       'title'              => $title,
       'description'        => $description,

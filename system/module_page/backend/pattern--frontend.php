@@ -44,7 +44,7 @@ namespace effcore {
     return static::$cache[$row_id] ?? null;
   }
 
-  static function insert($row_id, $display = null, $type = 'styles', $element, $element_row_id = null, $mudule_id = null) {
+  static function insert($row_id, $display = null, $type = 'styles', $element = [], $element_row_id = null, $mudule_id = null) {
     static::init();
     if (!isset(static::$cache[$row_id]))
                static::$cache[$row_id] = new static;

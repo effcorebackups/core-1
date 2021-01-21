@@ -116,7 +116,7 @@ namespace effcore {
     return static::$cache[$id] ?? null;
   }
 
-  static function insert($title = null, $id, $access = null, $attributes = [], $weight = 0, $module_id = null) {
+  static function insert($title = null, $id = null, $access = null, $attributes = [], $weight = 0, $module_id = null) {
     static::init    (   );
     static::init_sql($id);
     $new_tree = new static($title, $id, $access, $attributes, $weight);

@@ -216,7 +216,7 @@ namespace effcore {
   # custom fields
   # ─────────────────────────────────────────────────────────────────────
 
-  function field_insert_entity($row_id = null, $entity_name, $entity_field_name, $params = []) {
+  function field_insert_entity($row_id = null, $entity_name = '', $entity_field_name = '', $params = []) {
     $row_id = $row_id ?: $entity_name.'.'.$entity_field_name;
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type              = 'field';
@@ -237,7 +237,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_markup($row_id = null, $title = null, $markup, $params = []) {
+  function field_insert_markup($row_id = null, $title = null, $markup = null, $params = []) {
     $row_id = $row_id ?: 'markup';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type   = 'markup';
@@ -248,7 +248,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_code($row_id = null, $title = null, $code, $params = []) {
+  function field_insert_code($row_id = null, $title = null, $code = null, $params = []) {
     $row_id = $row_id ?: 'code';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type  = 'code';
@@ -259,7 +259,7 @@ namespace effcore {
     }
   }
 
-  function field_insert_handler($row_id = null, $title = null, $handler, $params = []) {
+  function field_insert_handler($row_id = null, $title = null, $handler = '', $params = []) {
     $row_id = $row_id ?: 'handler';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type    = 'handler';
