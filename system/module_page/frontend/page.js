@@ -83,6 +83,11 @@ document.addEventListener('DOMContentLoaded', function(){
     c_gallery.prepend(c_gal_player.node);
  /* prepare each thumbnail */
     var on_clockThumbnail = function(){
+      switch (this.getAttribute('data-type')) {
+        case 'picture':
+          alert( 1 )
+          break;
+      }
     }
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
