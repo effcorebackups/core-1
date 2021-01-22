@@ -139,18 +139,18 @@ namespace effcore\modules\core {
         $modules_to_enable  = [];
         $modules_to_disable = [];
         $modules_to_install = [];
-        $modules_include    = [];
+        $modules_to_include = [];
       # collect information
         core::array_sort_by_property($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
           if (!isset($embedded[$c_module->id])) {
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() !== false && isset($enabled[$c_module->id]) === false) {$modules_to_enable [$c_module->id] = $c_module; $modules_include[$c_module->id] = $c_module->path;}
-            if ($items['#is_enabled:'.$c_module->id]->checked_get() === false && isset($enabled[$c_module->id]) !== false) {$modules_to_disable[$c_module->id] = $c_module;                                                   }
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() !== false && isset($enabled[$c_module->id]) === false) {$modules_to_enable [$c_module->id] = $c_module; $modules_to_include[$c_module->id] = $c_module->path;}
+            if ($items['#is_enabled:'.$c_module->id]->checked_get() === false && isset($enabled[$c_module->id]) !== false) {$modules_to_disable[$c_module->id] = $c_module;                                                      }
           }
         }
       # enable modules
         if ($modules_to_enable) {
-          cache::update_global($modules_include);
+          cache::update_global($modules_to_include);
           foreach ($modules_to_enable as $c_module) {
             if (!module::is_installed($c_module->id)) {
               $modules_to_install[$c_module->id] = $c_module->id;

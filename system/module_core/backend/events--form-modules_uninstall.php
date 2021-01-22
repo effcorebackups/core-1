@@ -76,20 +76,20 @@ namespace effcore\modules\core {
         $embedded = module::get_embedded();
         $modules  = module::get_all     ();
         $modules_to_uninstall = [];
-        $modules_include      = [];
+        $modules_to_include   = [];
       # collect information
         if  (isset($items['*uninstall'])) {
           foreach ($items['*uninstall']->values_get() as $c_module_id) {
             $c_module = $modules[$c_module_id];
             if (!isset($embedded[$c_module->id])) {
               $modules_to_uninstall[$c_module->id] = $c_module;
-              $modules_include     [$c_module->id] = $c_module->path;
+              $modules_to_include  [$c_module->id] = $c_module->path;
             }
           }
         }
       # uninstall modules
         if ($modules_to_uninstall) {
-          cache::update_global($modules_include);
+          cache::update_global($modules_to_include);
           foreach ($modules_to_uninstall as $c_module) {
             event::start('on_module_uninstall', $c_module->id);
           }

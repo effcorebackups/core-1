@@ -101,13 +101,13 @@ namespace effcore {
     static::$data = [];
   }
 
-  static function cache_update($modules_include = []) {
+  static function cache_update($modules_to_include = []) {
     $result = true;
   # init data and original data
     static::$data      = [];
             $data_orig = cache::select('data_original');
     if (!$data_orig) {
-      $data_orig = static::data_find_and_parse($modules_include);
+      $data_orig = static::data_find_and_parse($modules_to_include);
       $result&= cache::update('data_original', $data_orig, '', ['build_date' => core::datetime_get()]);
     }
   # init dynamic and static changes
@@ -185,14 +185,14 @@ namespace effcore {
     return $result;
   }
 
-  static function data_find_and_parse($modules_include = []) {
+  static function data_find_and_parse($modules_to_include = []) {
     $result       = [];
     $files        = [];
     $preparse     = static::data_find_and_parse_modules_and_bundles();
     $parsed       = $preparse->parsed;
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
-    $enabled      = module::get_enabled() + $modules_include;
+    $enabled      = module::get_enabled() + $modules_to_include;
     $is_no_boot   = $enabled === [];
   # if no modules in the boot (when installing)
     if ($enabled === []) {
