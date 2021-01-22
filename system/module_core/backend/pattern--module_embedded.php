@@ -45,10 +45,11 @@ namespace effcore {
   public $deploy_weight = 0;
 
   function enable() {
-    core::boot_insert($this->id, $this->path, 'enabled');
-    message::insert(
-      new text('Module "%%_title" (%%_id) was enabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
-    );
+    if (core::boot_insert($this->id, $this->path, 'enabled')) {
+      message::insert(
+        new text('Module "%%_title" (%%_id) was enabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
+      );
+    }
   }
 
   function install() {
@@ -92,10 +93,11 @@ namespace effcore {
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(1);
     }
   # insert to boot
-    core::boot_insert($this->id, $this->path, 'installed');
-    message::insert(
-      new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::apply($this->title), 'id' => $this->id])
-    );
+    if (core::boot_insert($this->id, $this->path, 'installed')) {
+      message::insert(
+        new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::apply($this->title), 'id' => $this->id])
+      );
+    }
   }
 
   function dependencies_status_get() {

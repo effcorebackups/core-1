@@ -11,10 +11,11 @@ namespace effcore {
   public $enabled = 'no';
 
   function disable() {
-    core::boot_delete($this->id, 'enabled');
-    message::insert(
-      new text('Module "%%_title" (%%_id) was disabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
-    );
+    if (core::boot_delete($this->id, 'enabled')) {
+      message::insert(
+        new text('Module "%%_title" (%%_id) was disabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
+      );
+    }
   }
 
   function uninstall() {
@@ -42,10 +43,11 @@ namespace effcore {
   # delete changes
     storage::get('files')->changes_delete_all($this->id);
   # delete from boot
-    core::boot_delete($this->id, 'installed');
-    message::insert(
-      new text('Module data "%%_title" (%%_id) was removed.', ['title' => translation::apply($this->title), 'id' => $this->id])
-    );
+    if (core::boot_delete($this->id, 'installed')) {
+      message::insert(
+        new text('Module data "%%_title" (%%_id) was removed.', ['title' => translation::apply($this->title), 'id' => $this->id])
+      );
+    }
   }
 
 }}

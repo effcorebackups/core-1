@@ -42,7 +42,7 @@ namespace effcore {
     $boot_buffer[$module_id] = $module_path;
     asort($boot_buffer);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
+    return data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
   }
 
   static function boot_delete($module_id, $type) {
@@ -52,7 +52,7 @@ namespace effcore {
         $boot_buffer = $boot->{'modules_'.$type};
     unset($boot_buffer[$module_id]);
     $boot->{'modules_'.$type} = $boot_buffer;
-    data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
+    return data::update('boot', $boot, '', ['build_date' => static::datetime_get()]);
   }
 
   ###############################################
