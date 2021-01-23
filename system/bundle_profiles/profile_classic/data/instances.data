@@ -131,6 +131,25 @@ instances
           weight: 0
           name: target
           value: _blank
+- logotype_gitlab_classic|instance
+    entity_name: picture
+    values
+    - id: logotype_gitlab_classic
+    - description: Logotype Gitlab
+    - path: dynamic/files/pictures/picture-logotype_gitlab_classic.svgd
+    - url: https://gitlab.com
+    - module_id: profile_classic
+    - attributes
+      - 0
+          weight: 0
+          name: alt
+          value: Logotype Gitlab
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
 - logotype_instagram_classic|instance
     entity_name: picture
     values
@@ -144,6 +163,25 @@ instances
           weight: 0
           name: alt
           value: Logotype Instagram
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
+- logotype_line_classic|instance
+    entity_name: picture
+    values
+    - id: logotype_line_classic
+    - description: Logotype Line
+    - path: dynamic/files/pictures/picture-logotype_line_classic.svgd
+    - url: https://line.me
+    - module_id: profile_classic
+    - attributes
+      - 0
+          weight: 0
+          name: alt
+          value: Logotype Line
           is_apply_translation: true
     - link_attributes
       - 0
@@ -182,6 +220,25 @@ instances
           weight: 0
           name: alt
           value: Logotype Livejournal
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
+- logotype_messenger_classic|instance
+    entity_name: picture
+    values
+    - id: logotype_messenger_classic
+    - description: Logotype Messenger
+    - path: dynamic/files/pictures/picture-logotype_messenger_classic.svgd
+    - url: https://messenger.com
+    - module_id: profile_classic
+    - attributes
+      - 0
+          weight: 0
+          name: alt
+          value: Logotype Messenger
           is_apply_translation: true
     - link_attributes
       - 0
@@ -258,6 +315,25 @@ instances
           weight: 0
           name: alt
           value: Logotype Skype
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
+- logotype_snapchat_classic|instance
+    entity_name: picture
+    values
+    - id: logotype_snapchat_classic
+    - description: Logotype Snapchat
+    - path: dynamic/files/pictures/picture-logotype_snapchat_classic.svgd
+    - url: https://snapchat.com
+    - module_id: profile_classic
+    - attributes
+      - 0
+          weight: 0
+          name: alt
+          value: Logotype Snapchat
           is_apply_translation: true
     - link_attributes
       - 0
@@ -410,6 +486,25 @@ instances
           weight: 0
           name: alt
           value: Logotype VK
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: 0
+          name: target
+          value: _blank
+- logotype_wechat_classic|instance
+    entity_name: picture
+    values
+    - id: logotype_wechat_classic
+    - description: Logotype Wechat
+    - path: dynamic/files/pictures/picture-logotype_wechat_classic.svgd
+    - url: https://wechat.com
+    - module_id: profile_classic
+    - attributes
+      - 0
+          weight: 0
+          name: alt
+          value: Logotype Wechat
           is_apply_translation: true
     - link_attributes
       - 0
