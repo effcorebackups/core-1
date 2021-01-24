@@ -319,6 +319,7 @@
   x-gallery-player x-thumbnails {white-space: nowrap; overflow: scroll}
   x-gallery-player x-thumbnails img {max-height: 80px; margin: 5px}
   x-gallery-player x-thumbnails x-thumbnail {cursor: pointer}
+  x-gallery-player x-viewing-area {text-align: center}
 
   /* x-sticker */
 

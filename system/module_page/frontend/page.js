@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
     var c_gal_player = new EffMarkup('x-gallery-player', {'aria-hidden' : 'true'}, {
-             'thumb' : new EffMarkup('x-thumbnails'),
-             'btn_l' : new EffMarkup('x-button-l'),
-             'btn_r' : new EffMarkup('x-button-r'),
-             'btn_c' : new EffMarkup('x-button-c'),
-             'viewa' : new EffMarkup('x-viewing-area')});
+             'thumbnails'   : new EffMarkup('x-thumbnails'),
+             'btn_l'        : new EffMarkup('x-button-l'),
+             'btn_r'        : new EffMarkup('x-button-r'),
+             'btn_c'        : new EffMarkup('x-button-c'),
+             'viewing_area' : new EffMarkup('x-viewing-area')});
     c_gallery.prepend(c_gal_player.node);
  /* events for close */
     c_gal_player.btn_c.node.addEventListener('click', function(){                    c_gal_player.node.setAttribute('aria-hidden', 'true');});
@@ -93,21 +93,30 @@ document.addEventListener('DOMContentLoaded', function(){
           var c_url = new EffURL(c_picture.getAttribute('src'));
               c_url.queryArgDelete('thumb');
               c_url.queryArgInsert('thumb', 'small');
-          var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')}, {
+          var src_small = c_url.tinyGet();
+              c_url.queryArgDelete('thumb');
+              c_url.queryArgInsert('thumb', 'big');
+          var src_big = c_url.tinyGet();
+          var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num'), 'data-src-big' : src_big}, {
                 'picture' : new EffMarkup('img', {'src' : c_url.tinyGet()}) });
-          c_gal_player.thumb.node.append(c_thumbnail.node);
-          c_thumbnail.node.addEventListener('click', function(){
-            switch (this.getAttribute('data-type')) {
-              case 'picture':
-                alert( 1 )
-                break;
-            }
-          });
+          c_gal_player.thumbnails.node.append(c_thumbnail.node);
           break;
       }
+      c_thumbnail.node.addEventListener('click', function(){
+        c_gal_player.viewing_area.node.innerHTML = '';
+        switch (this.getAttribute('data-type')) {
+          case 'picture':
+            c_gal_player.viewing_area.node.append(
+              (new EffMarkup('img', {'src' : this.getAttribute('data-src-big')})).node
+            );
+            break;
+        }
+      });
       c_item.addEventListener('click', function(event){
         event.preventDefault();
         c_gal_player.node.removeAttribute('aria-hidden');
+        var c_thumbnail = c_gal_player.thumbnails.node.effQuerySelectorAll('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]')[0];
+        c_thumbnail.click();
       });
     });
   });
