@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function(){
              'thumb' : new EffMarkup('x-thumbnails'),
              'btn_l' : new EffMarkup('x-button-l'),
              'btn_r' : new EffMarkup('x-button-r'),
-             'viewp' : new EffMarkup('x-viewing-area')});
+             'btn_c' : new EffMarkup('x-button-c'),
+             'viewa' : new EffMarkup('x-viewing-area')});
     c_gallery.prepend(c_gal_player.node);
  /* prepare each thumbnail */
     var on_clockThumbnail = function(){
