@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_viewing_area = document.createElement('x-viewing-area');
     c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
     c_gallery.prepend(c_player);
-    c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true');});
-    document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true');});
+    c_player_button_l.addEventListener('click', function(){});
+    c_player_button_r.addEventListener('click', function(){});
+    c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
+    document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
@@ -107,12 +109,15 @@ document.addEventListener('DOMContentLoaded', function(){
           c_item.addEventListener('click', function(event){
             event.preventDefault();
             c_player.removeAttribute('aria-hidden');
+            document.body.setAttribute('data-is-active-gallery-player', 'true');
             c_player_thumbnails.effQuerySelectorAll(
               'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
             )[0].click();
           });
         /* when click on thumbnail in player */
           c_thumbnail.addEventListener('click', function(){
+            c_player_thumbnails.effQuerySelectorAll('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
+            c_thumbnail.setAttribute('aria-selected', 'true');
             c_player_viewing_area.innerHTML = '';
             switch (this.getAttribute('data-type')) {
               case 'picture':

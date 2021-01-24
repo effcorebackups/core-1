@@ -309,17 +309,22 @@
     width: 100%;
     height: 100%;
     z-index: 500;
-    background: rgba(0, 0, 0, .7)}
+    background: rgba(0, 0, 0, .9)}
   x-gallery-player x-thumbnails   {position: fixed; left:             100px; top:     0; width: calc(100% - 200px); height:              100px}
   x-gallery-player x-button-l     {position: fixed; left:                 0; top: 100px; width:               70px; height: calc(100% - 100px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat 0 50%}
   x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 100px; width:               70px; height: calc(100% - 100px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -210px 50%}
-  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 75px); top:  20px; width:               50px; height:               50px; cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
+  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:   5px; width:               50px; height:               50px; cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
   x-gallery-player x-viewing-area {position: fixed; left:              70px; top: 100px; width: calc(100% - 140px); height: calc(100% - 100px)}
 
   x-gallery-player x-thumbnails {white-space: nowrap; overflow: scroll}
-  x-gallery-player x-thumbnails img {max-height: 80px; margin: 5px}
-  x-gallery-player x-thumbnails x-thumbnail {cursor: pointer}
-  x-gallery-player x-viewing-area {text-align: center}
+  x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}
+  x-gallery-player x-thumbnails x-thumbnail[aria-selected='true'] {border: 3px solid orange}
+  x-gallery-player x-thumbnails x-thumbnail img {display: block; margin: 1px; max-height: 75px}
+  x-gallery-player x-viewing-area {text-align: center; overflow: scroll}
+
+  [data-is-active-gallery-player] {
+    overflow: hidden; /* disable scroll on body */
+  }
 
   /* x-sticker */
 

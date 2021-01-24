@@ -171,8 +171,8 @@
            result : [];
   }
 
-  document.createElementWithAttribute = function(tag_name, attributes){
-    var node = document.createElement(tag_name);
+  document.createElementWithAttribute = function(tag_name, attributes, options){
+    var node = document.createElement(tag_name, options);
     if (effcore.getType(attributes) === 'Object')
       for (c_key in attributes)
         node.setAttribute(c_key, attributes[c_key]);
