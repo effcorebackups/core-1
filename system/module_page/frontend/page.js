@@ -82,14 +82,10 @@ document.addEventListener('DOMContentLoaded', function(){
              'btn_c' : new EffMarkup('x-button-c'),
              'viewa' : new EffMarkup('x-viewing-area')});
     c_gallery.prepend(c_gal_player.node);
+ /* events for close */
+    c_gal_player.btn_c.node.addEventListener('click', function(){                    c_gal_player.node.setAttribute('aria-hidden', 'true');});
+    document.addEventListener('keypress', function(event){if (event.charCode === 27) c_gal_player.node.setAttribute('aria-hidden', 'true');});
  /* prepare each thumbnail */
-    var on_clockThumbnail = function(){
-      switch (this.getAttribute('data-type')) {
-        case 'picture':
-          alert( 1 )
-          break;
-      }
-    }
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
@@ -99,20 +95,20 @@ document.addEventListener('DOMContentLoaded', function(){
               c_url.queryArgInsert('thumb', 'small');
           var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')}, {
                 'picture' : new EffMarkup('img', {'src' : c_url.tinyGet()}) });
-          c_thumbnail.node.addEventListener('click', on_clockThumbnail);
           c_gal_player.thumb.node.append(c_thumbnail.node);
+          c_thumbnail.node.addEventListener('click', function(){
+            switch (this.getAttribute('data-type')) {
+              case 'picture':
+                alert( 1 )
+                break;
+            }
+          });
           break;
       }
       c_item.addEventListener('click', function(event){
         event.preventDefault();
         c_gal_player.node.removeAttribute('aria-hidden');
       });
-    });
- /* event for close */
-    document.addEventListener('keypress', function(event){
-      if (event.charCode === 27) {
-        c_gal_player.node.setAttribute('aria-hidden', 'true');
-      }
     });
   });
 
