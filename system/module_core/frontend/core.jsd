@@ -120,23 +120,6 @@
   }
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* EffMarkup                                                             */
-  /* ───────────────────────────────────────────────────────────────────── */
-
-  function EffMarkup(tag_name, attributes, children) {
-    this.node = document.createElement(tag_name);
-    if (effcore.getType(attributes) === 'Object')
-      for (c_key in attributes)
-        this.node.setAttribute(c_key, attributes[c_key]);
-    if (effcore.getType(children) === 'Object') {
-      for (c_id in children) {
-        this.node.append(children[c_id].node);
-        this[c_id] = children[c_id];
-      }
-    }
-  }
-
-  /* ───────────────────────────────────────────────────────────────────── */
   /* polyfills: prepend, append, forEach                                   */
   /* ───────────────────────────────────────────────────────────────────── */
 
@@ -186,4 +169,12 @@
     var result = this.querySelectorAll(query);
     return result instanceof NodeList ?
            result : [];
+  }
+
+  document.createElementWithAttribute = function(tag_name, attributes){
+    var node = document.createElement(tag_name);
+    if (effcore.getType(attributes) === 'Object')
+      for (c_key in attributes)
+        node.setAttribute(c_key, attributes[c_key]);
+    return node;
   }

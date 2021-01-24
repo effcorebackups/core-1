@@ -71,53 +71,59 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* gallery                                                               */
+  /* gallery player                                                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
-    var c_gal_player = new EffMarkup('x-gallery-player', {'aria-hidden' : 'true'}, {
-             'thumbnails'   : new EffMarkup('x-thumbnails'),
-             'btn_l'        : new EffMarkup('x-button-l'),
-             'btn_r'        : new EffMarkup('x-button-r'),
-             'btn_c'        : new EffMarkup('x-button-c'),
-             'viewing_area' : new EffMarkup('x-viewing-area')});
-    c_gallery.prepend(c_gal_player.node);
- /* events for close */
-    c_gal_player.btn_c.node.addEventListener('click', function(){                    c_gal_player.node.setAttribute('aria-hidden', 'true');});
-    document.addEventListener('keypress', function(event){if (event.charCode === 27) c_gal_player.node.setAttribute('aria-hidden', 'true');});
- /* prepare each thumbnail */
+    var c_player              = document.createElementWithAttribute('x-gallery-player', {'aria-hidden' : 'true'});
+    var c_player_thumbnails   = document.createElement('x-thumbnails');
+    var c_player_button_l     = document.createElement('x-button-l');
+    var c_player_button_r     = document.createElement('x-button-r');
+    var c_player_button_c     = document.createElement('x-button-c');
+    var c_player_viewing_area = document.createElement('x-viewing-area');
+    c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
+    c_gallery.prepend(c_player);
+    c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true');});
+    document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true');});
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
-          var c_picture = c_item.getElementsByTagName('img')[0];
-          var c_url = new EffURL(c_picture.getAttribute('src'));
+          var c_img = c_item.getElementsByTagName('img')[0];
+          var c_url = new EffURL(c_img.getAttribute('src'));
               c_url.queryArgDelete('thumb');
               c_url.queryArgInsert('thumb', 'small');
-          var src_small = c_url.tinyGet();
+          var c_src_small = c_url.tinyGet();
               c_url.queryArgDelete('thumb');
               c_url.queryArgInsert('thumb', 'big');
-          var src_big = c_url.tinyGet();
-          var c_thumbnail = new EffMarkup('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num'), 'data-src-big' : src_big}, {
-                'picture' : new EffMarkup('img', {'src' : c_url.tinyGet()}) });
-          c_gal_player.thumbnails.node.append(c_thumbnail.node);
+          var c_src_big = c_url.tinyGet();
+          var c_thumbnail = document.createElementWithAttribute('x-thumbnail', {
+            'data-type'    : c_item.getAttribute('data-type'),
+            'data-num'     : c_item.getAttribute('data-num'),
+            'data-src-big' : c_src_big});
+          var c_thumbnail_img = document.createElementWithAttribute('img', {'src' : c_src_small});
+          c_thumbnail.append(c_thumbnail_img);
+          c_player_thumbnails.append(c_thumbnail);
+       /* when click on picture in gallery */
+          c_item.addEventListener('click', function(event){
+            event.preventDefault();
+            c_player.removeAttribute('aria-hidden');
+            c_player_thumbnails.effQuerySelectorAll(
+              'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
+            )[0].click();
+          });
+        /* when click on thumbnail in player */
+          c_thumbnail.addEventListener('click', function(){
+            c_player_viewing_area.innerHTML = '';
+            switch (this.getAttribute('data-type')) {
+              case 'picture':
+                c_player_viewing_area.append(
+                  document.createElementWithAttribute('img', {'src' : this.getAttribute('data-src-big')})
+                );
+                break;
+            }
+          });
           break;
       }
-      c_thumbnail.node.addEventListener('click', function(){
-        c_gal_player.viewing_area.node.innerHTML = '';
-        switch (this.getAttribute('data-type')) {
-          case 'picture':
-            c_gal_player.viewing_area.node.append(
-              (new EffMarkup('img', {'src' : this.getAttribute('data-src-big')})).node
-            );
-            break;
-        }
-      });
-      c_item.addEventListener('click', function(event){
-        event.preventDefault();
-        c_gal_player.node.removeAttribute('aria-hidden');
-        var c_thumbnail = c_gal_player.thumbnails.node.effQuerySelectorAll('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]')[0];
-        c_thumbnail.click();
-      });
     });
   });
 
