@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function(){
   /* range                                                                 */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('input[type="range"]').forEach(function(c_range){
-    c_range.parentNode.effQuerySelector('x-value').effForFirst(function(x_value){
+  document.querySelectorAll__notNull('input[type="range"]').forEach(function(c_range){
+    c_range.parentNode.querySelector__notNull('x-value').forFirst__(function(x_value){
       c_range.addEventListener('mousemove', function(){
         x_value.innerText = c_range.title = c_range.value;
       });
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* timezone                                                              */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
+  document.querySelectorAll__notNull('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
     if (c_timezone.value == '' && window.Intl)
         c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
   });
@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function(){
   /* palette                                                               */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('x-group[data-type="palette"]').forEach(function(c_palette){
-    c_palette.effQuerySelector('input[data-opener-type="palette"]').effForFirst(function(opener){
-      c_palette.effQuerySelectorAll('x-field input').forEach(function(c_input){
+  document.querySelectorAll__notNull('x-group[data-type="palette"]').forEach(function(c_palette){
+    c_palette.querySelector__notNull('input[data-opener-type="palette"]').forFirst__(function(opener){
+      c_palette.querySelectorAll__notNull('x-field input').forEach(function(c_input){
         c_input.addEventListener('click', function(){
           opener.style.backgroundColor = c_input.style.backgroundColor;
           opener.value                 = c_input.value;
@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function(){
   /* table-adaptive + check all                                            */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('x-selection').forEach(function(c_selection){
-    c_selection.effQuerySelector('x-decorator[data-view-type="table-adaptive"]').effForFirst(function(decorator){
-      var head_cell       = decorator.effQuerySelector   ('x-head x-cell[data-cellid="checkbox"]'                       );
-      var body_checkboxes = decorator.effQuerySelectorAll('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
+  document.querySelectorAll__notNull('x-selection').forEach(function(c_selection){
+    c_selection.querySelector__notNull('x-decorator[data-view-type="table-adaptive"]').forFirst__(function(decorator){
+      var head_cell       = decorator.querySelector__notNull   ('x-head x-cell[data-cellid="checkbox"]'                       );
+      var body_checkboxes = decorator.querySelectorAll__notNull('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
       if (head_cell.length == 1 && body_checkboxes.length) {
         var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function(){
   /* rearrangeable                                                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('[data-has-rearrangeable]').forEach(function(c_has_rearrangeable){
+  document.querySelectorAll__notNull('[data-has-rearrangeable]').forEach(function(c_has_rearrangeable){
     c_has_rearrangeable.setAttribute('data-js-is-processed', '');
-    c_has_rearrangeable.effQuerySelectorAll('[data-rearrangeable]').forEach(function(c_rearrangeable){
+    c_has_rearrangeable.querySelectorAll__notNull('[data-rearrangeable]').forEach(function(c_rearrangeable){
 
       var draggable_icon = document.createElement('x-draggable-icon');
           draggable_icon.setAttribute('draggable', 'true');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var c_weight = 0;
           if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
           if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
-          c_has_rearrangeable.effQuerySelectorAll('x-field[data-type="weight"] input').forEach(function(c_input){
+          c_has_rearrangeable.querySelectorAll__notNull('x-field[data-type="weight"] input').forEach(function(c_input){
             c_input.value = c_weight;
             c_weight -= 5;
           });

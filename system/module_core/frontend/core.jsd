@@ -151,21 +151,21 @@
   /* additions                                                             */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  NodeList.prototype.effForFirst =
-     Array.prototype.effForFirst = function(handler){
+  NodeList.prototype.forFirst__ =
+     Array.prototype.forFirst__ = function(handler){
     if (this[0]) handler(this[0]);
   }
 
-  Document.prototype.effQuerySelector =
-      Node.prototype.effQuerySelector = function(query){
+  Document.prototype.querySelector__notNull =
+      Node.prototype.querySelector__notNull = function(query){
     var result = this.querySelector(query);
     if (result instanceof Node)
          return [result];
     else return [      ];
   }
 
-  Document.prototype.effQuerySelectorAll =
-      Node.prototype.effQuerySelectorAll = function(query){
+  Document.prototype.querySelectorAll__notNull =
+      Node.prototype.querySelectorAll__notNull = function(query){
     var result = this.querySelectorAll(query);
     return result instanceof NodeList ?
            result : [];

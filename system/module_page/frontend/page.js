@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* audio player                                                          */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('audio[data-player-name="default"]').forEach(function(c_audio){
+  document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
     var c_player       = document.createElement('x-audio-player');
     var c_button_play  = document.createElement('button');
     var c_timeline     = document.createElement('x-timeline');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* gallery player                                                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
+  document.querySelectorAll__notNull('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
     var c_player              = document.createElement__withAttribute('x-gallery-player', {'aria-hidden' : 'true'});
     var c_player_thumbnails   = document.createElement('x-thumbnails');
     var c_player_button_l     = document.createElement('x-button-l');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
  /* process each gallery item */
-    c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
+    c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
       var c_thumbnail = document.createElement__withAttribute('x-thumbnail', {
           'data-type' : c_item.getAttribute('data-type'),
           'data-num'  : c_item.getAttribute('data-num')});
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', function(){
         event.preventDefault();
         c_player.removeAttribute('aria-hidden');
         document.body.setAttribute('data-is-active-gallery-player', 'true');
-        c_player_thumbnails.effQuerySelectorAll(
+        c_player_thumbnails.querySelectorAll__notNull(
           'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
         )[0].click();
       });
     /* when click on thumbnail in player */
       c_thumbnail.addEventListener('click', function(){
-        c_player_thumbnails.effQuerySelectorAll('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
+        c_player_thumbnails.querySelectorAll__notNull('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
         c_thumbnail.setAttribute('aria-selected', 'true');
         c_player_viewing_area.innerHTML = '';
         switch (this.getAttribute('data-type')) {
