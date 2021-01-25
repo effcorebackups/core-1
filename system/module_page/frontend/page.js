@@ -87,7 +87,11 @@ document.addEventListener('DOMContentLoaded', function(){
     c_player_button_r.addEventListener('click', function(){});
     c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
+ /* process each gallery item */
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
+      var c_thumbnail = document.createElementWithAttribute('x-thumbnail', {
+          'data-type' : c_item.getAttribute('data-type'),
+          'data-num'  : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
           var c_img = c_item.getElementsByTagName('img')[0];
@@ -98,14 +102,11 @@ document.addEventListener('DOMContentLoaded', function(){
               c_url.queryArgDelete('thumb');
               c_url.queryArgInsert('thumb', 'big');
           var c_src_big = c_url.tinyGet();
-          var c_thumbnail = document.createElementWithAttribute('x-thumbnail', {
-            'data-type'    : c_item.getAttribute('data-type'),
-            'data-num'     : c_item.getAttribute('data-num'),
-            'data-src-big' : c_src_big});
           var c_thumbnail_img = document.createElementWithAttribute('img', {'src' : c_src_small});
+          c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
-       /* when click on picture in gallery */
+       /* when click on item in gallery */
           c_item.addEventListener('click', function(event){
             event.preventDefault();
             c_player.removeAttribute('aria-hidden');
