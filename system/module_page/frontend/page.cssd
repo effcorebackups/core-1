@@ -311,10 +311,16 @@
     z-index: 500;
     background: rgba(0, 0, 0, .9)}
   x-gallery-player x-thumbnails   {position: fixed; left:              70px; top:     0; width: calc(100% - 140px); height:              100px}
-  x-gallery-player x-button-l     {position: fixed; left:                 0; top: 110px; width:               70px; height: calc(100% - 110px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat 0 50%}
-  x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 110px; width:               70px; height: calc(100% - 110px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -210px 50%}
-  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:  14px; width:               50px; height:               50px; cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
+  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:  14px; width:               50px; height:               50px}
+  x-gallery-player x-button-l     {position: fixed; left:                 0; top: 110px; width:               70px; height: calc(100% - 110px)}
+  x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 110px; width:               70px; height: calc(100% - 110px)}
   x-gallery-player x-viewing-area {position: fixed; left:              70px; top: 110px; width: calc(100% - 140px); height: calc(100% - 110px)}
+
+  x-gallery-player x-button-c {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
+  x-gallery-player x-button-l {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat 0 50%}
+  x-gallery-player x-button-r {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -210px 50%}
+  x-gallery-player x-button-l[data-is-blocked='true'],
+  x-gallery-player x-button-r[data-is-blocked='true'] {opacity: .2; cursor: default}
 
   x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
   x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px 0 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}
