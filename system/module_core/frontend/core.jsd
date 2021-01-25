@@ -81,9 +81,9 @@
     }
   }
 
-  EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;                           }
-  EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery(args);}
-  EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery(args);}
+  EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;}
+  EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery(args); return this;}
+  EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery(args); return this;}
 
   EffURL.prototype.parseUrlQuery = function(value) {
     var result = {}, counters = {};

@@ -95,13 +95,8 @@ document.addEventListener('DOMContentLoaded', function(){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
           var c_img = c_item.getElementsByTagName('img')[0];
-          var c_url = new EffURL(c_img.getAttribute('src'));
-              c_url.queryArgDelete('thumb');
-              c_url.queryArgInsert('thumb', 'small');
-          var c_src_small = c_url.tinyGet();
-              c_url.queryArgDelete('thumb');
-              c_url.queryArgInsert('thumb', 'big');
-          var c_src_big = c_url.tinyGet();
+          var c_src_small = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
+          var c_src_big   = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
           var c_thumbnail_img = document.createElement__withAttribute('img', {'src' : c_src_small});
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
