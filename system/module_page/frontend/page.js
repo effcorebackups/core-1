@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.effQuerySelectorAll('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
-    var c_player              = document.createElementWithAttribute('x-gallery-player', {'aria-hidden' : 'true'});
+    var c_player              = document.createElement__withAttribute('x-gallery-player', {'aria-hidden' : 'true'});
     var c_player_thumbnails   = document.createElement('x-thumbnails');
     var c_player_button_l     = document.createElement('x-button-l');
     var c_player_button_r     = document.createElement('x-button-r');
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
  /* process each gallery item */
     c_gallery.effQuerySelectorAll('x-item').forEach(function(c_item){
-      var c_thumbnail = document.createElementWithAttribute('x-thumbnail', {
+      var c_thumbnail = document.createElement__withAttribute('x-thumbnail', {
           'data-type' : c_item.getAttribute('data-type'),
           'data-num'  : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(){
               c_url.queryArgDelete('thumb');
               c_url.queryArgInsert('thumb', 'big');
           var c_src_big = c_url.tinyGet();
-          var c_thumbnail_img = document.createElementWithAttribute('img', {'src' : c_src_small});
+          var c_thumbnail_img = document.createElement__withAttribute('img', {'src' : c_src_small});
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function(){
         switch (this.getAttribute('data-type')) {
           case 'picture':
             c_player_viewing_area.append(
-              document.createElementWithAttribute('img', {'src' : this.getAttribute('data-src-big')})
+              document.createElement__withAttribute('img', {'src' : this.getAttribute('data-src-big')})
             );
             break;
         }
