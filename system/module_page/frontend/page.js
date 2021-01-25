@@ -106,30 +106,30 @@ document.addEventListener('DOMContentLoaded', function(){
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
-       /* when click on item in gallery */
-          c_item.addEventListener('click', function(event){
-            event.preventDefault();
-            c_player.removeAttribute('aria-hidden');
-            document.body.setAttribute('data-is-active-gallery-player', 'true');
-            c_player_thumbnails.effQuerySelectorAll(
-              'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
-            )[0].click();
-          });
-        /* when click on thumbnail in player */
-          c_thumbnail.addEventListener('click', function(){
-            c_player_thumbnails.effQuerySelectorAll('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
-            c_thumbnail.setAttribute('aria-selected', 'true');
-            c_player_viewing_area.innerHTML = '';
-            switch (this.getAttribute('data-type')) {
-              case 'picture':
-                c_player_viewing_area.append(
-                  document.createElementWithAttribute('img', {'src' : this.getAttribute('data-src-big')})
-                );
-                break;
-            }
-          });
           break;
       }
+   /* when click on item in gallery */
+      c_item.addEventListener('click', function(event){
+        event.preventDefault();
+        c_player.removeAttribute('aria-hidden');
+        document.body.setAttribute('data-is-active-gallery-player', 'true');
+        c_player_thumbnails.effQuerySelectorAll(
+          'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
+        )[0].click();
+      });
+    /* when click on thumbnail in player */
+      c_thumbnail.addEventListener('click', function(){
+        c_player_thumbnails.effQuerySelectorAll('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
+        c_thumbnail.setAttribute('aria-selected', 'true');
+        c_player_viewing_area.innerHTML = '';
+        switch (this.getAttribute('data-type')) {
+          case 'picture':
+            c_player_viewing_area.append(
+              document.createElementWithAttribute('img', {'src' : this.getAttribute('data-src-big')})
+            );
+            break;
+        }
+      });
     });
   });
 
