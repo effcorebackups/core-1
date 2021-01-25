@@ -313,7 +313,7 @@
   x-gallery-player x-thumbnails   {position: fixed; left:              70px; top:     0; width: calc(100% - 140px); height:              100px}
   x-gallery-player x-button-l     {position: fixed; left:                 0; top: 110px; width:               70px; height: calc(100% - 110px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat 0 50%}
   x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 110px; width:               70px; height: calc(100% - 110px); cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -210px 50%}
-  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:     0; width:               50px; height:               50px; cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
+  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:  14px; width:               50px; height:               50px; cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat -290px 100%}
   x-gallery-player x-viewing-area {position: fixed; left:              70px; top: 110px; width: calc(100% - 140px); height: calc(100% - 110px)}
 
   x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
