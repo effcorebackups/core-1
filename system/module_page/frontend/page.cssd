@@ -45,6 +45,10 @@
   a[aria-selected='true']       {color: %%_color_link_active}
   a[data-selected-trail='true'] {color: %%_color_link_active}
 
+  /* pictures */
+
+  img {border: 0}
+
   /* universal styles */
 
   [aria-hidden='true'] {display: none !important}

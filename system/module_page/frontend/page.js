@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', function(){
         event.preventDefault();
         c_player.removeAttribute('aria-hidden');
         document.body.setAttribute('data-is-active-gallery-player', 'true');
-        c_player_thumbnails.querySelector__notNull(
-          'x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]'
-        ).forFirst__(function(c_selected){c_selected.click();})
+        c_player_thumbnails.querySelector__notNull('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]').forFirst__(function(c_selected){
+          c_selected.click(); c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3;
+        });
       });
     /* when click on thumbnail in player */
       c_thumbnail.addEventListener('click', function(){
