@@ -62,7 +62,7 @@ namespace effcore {
   public $max_files_number = 1;
   public $max_length_name = 227; # = 255 - strlen('-TimestmpRandom_v.') - max_length_type
   public $max_length_type =  10;
-  public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
+  public $characters_allowed = 'a-zA-Z0-9_\\-\\.';
   public $characters_allowed_for_title = '"a-z", "A-Z", "0-9", "_", "-", "."';
   public $types_allowed = ['txt' => 'txt'];
   public $has_on_validate = true;
@@ -128,7 +128,7 @@ namespace effcore {
     if ($this->min_files_number !== null && $this->min_files_number === $this->max_files_number) $this->description[] = $this->render_description_file_mid_number();
                                              $this->description[] = $this->render_description_file_size_max();
     if ($this->types_allowed               ) $this->description[] = $this->render_description_file_types_allowed();
-    if ($this->characters_allowed_for_title) $this->description[] = $this->render_description_file_name_allowed_characters();
+    if ($this->characters_allowed_for_title) $this->description[] = $this->render_description_file_name_characters_allowed();
     return parent::render_description();
   }
 
@@ -137,7 +137,7 @@ namespace effcore {
   function render_description_file_max_number             () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number            ]));}
   function render_description_file_mid_number             () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number,s}.',          ['number'     =>               $this->min_files_number            ]));}
   function render_description_file_types_allowed          () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->types_allowed              )]));}
-  function render_description_file_name_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->characters_allowed_for_title]));}
+  function render_description_file_name_characters_allowed() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->characters_allowed_for_title]));}
 
   ############
   ### pool ###
@@ -330,7 +330,7 @@ namespace effcore {
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
       $c_value->sanitize_tmp(
-        $field->allowed_characters,
+        $field->characters_allowed,
         $field->max_length_name,
         $field->max_length_type
       );

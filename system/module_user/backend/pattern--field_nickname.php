@@ -7,7 +7,7 @@
 namespace effcore {
           class field_nickname extends field_text {
 
-  const allowed_characters = 'a-zA-Z0-9_\\-';
+  const characters_allowed = 'a-zA-Z0-9_\\-';
   const characters_allowed_for_title = '"a-z", "A-Z", "0-9", "_", "-"';
 
   public $title = 'Nickname';

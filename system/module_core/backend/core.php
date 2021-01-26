@@ -621,7 +621,7 @@ namespace effcore {
   }
 
   static function validate_id($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::allowed_characters.']+$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::characters_allowed.']+$%']]);
   }
 
   static function validate_ip_v4($value) {
@@ -637,7 +637,7 @@ namespace effcore {
   }
 
   static function validate_nickname($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nickname::allowed_characters.']{4,32}$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_nickname::characters_allowed.']{4,32}$%']]);
   }
 
   static function validate_tel($value) {
@@ -664,9 +664,9 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_part($value, $allowed_characters, $max_length) {
+  static function sanitize_file_part($value, $characters_allowed, $max_length) {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$allowed_characters.'])%uS', function ($c_match) {
+    $value = preg_replace_callback('%(?<char>[^'.$characters_allowed.'])%uS', function ($c_match) {
       if ($c_match['char'] === ' ') return '-';
       if (strlen($c_match['char']) === 1) return dechex(ord($c_match['char'][0]));
       if (strlen($c_match['char']) === 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));

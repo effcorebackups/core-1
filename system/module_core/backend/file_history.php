@@ -129,9 +129,9 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function sanitize_tmp($allowed_characters = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
-    $this->name = core::sanitize_file_part($this->name, $allowed_characters, $max_length_name);
-    $this->type = core::sanitize_file_part($this->type, $allowed_characters, $max_length_type);
+  function sanitize_tmp($characters_allowed = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
+    $this->name = core::sanitize_file_part($this->name, $characters_allowed, $max_length_name);
+    $this->type = core::sanitize_file_part($this->type, $characters_allowed, $max_length_type);
     if (!strlen($this->name)) $this->name = core::random_part_get();
     if (!strlen($this->type)) $this->type = 'unknown';
     $this->file = $this->name.'.'.$this->type;
