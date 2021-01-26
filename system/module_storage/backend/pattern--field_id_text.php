@@ -8,7 +8,7 @@ namespace effcore {
           class field_id_text extends field_text {
 
   const allowed_characters = 'a-z0-9_\\-';
-  const allowed_characters_title = '"a-z", "0-9", "_", "-"';
+  const characters_allowed_for_title = '"a-z", "0-9", "_", "-"';
 
   public $title = 'ID';
   public $attributes = ['data-type' => 'id_text'];
@@ -21,7 +21,7 @@ namespace effcore {
 
   function render_description() {
     if (!$this->description)
-         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::allowed_characters_title]);
+         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_for_title]);
     return parent::render_description();
   }
 
