@@ -19,6 +19,7 @@ namespace effcore {
     'jpeg' => 'jpeg',
     'png'  => 'png',
     'gif'  => 'gif'];
+  public $thumbnails_is_visible = true;
   public $thumbnails_allowed = [
     'small' => 'small',
   ];
@@ -52,11 +53,13 @@ namespace effcore {
   }
 
   protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
-    $file = new file($item->get_current_path());
-    $thumbnail_markup = $file->type === 'picture' ?
-      new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
-      new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-    return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
+    if ($this->thumbnails_is_visible) {
+      $file = new file($item->get_current_path());
+      $thumbnail_markup = $file->type === 'picture' ?
+        new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
+        new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+           return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
+    } else return parent::pool_manager_action_insert_get_field_text($item, $id, $type);
   }
 
 }}
