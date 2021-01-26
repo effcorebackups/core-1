@@ -13,7 +13,7 @@ namespace effcore {
     'type' => 'file',
     'name' => 'audio'];
   public $max_file_size = '10M';
-  public $allowed_types = [
+  public $types_allowed = [
     'mp3' => 'mp3'
   ];
 

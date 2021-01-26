@@ -14,7 +14,7 @@ namespace effcore {
     'type' => 'file',
     'name' => 'picture'];
   public $max_file_size = '500K';
-  public $allowed_types = [
+  public $types_allowed = [
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
     'png'  => 'png',

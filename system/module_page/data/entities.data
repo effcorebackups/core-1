@@ -300,7 +300,7 @@ entities
         - upload_dir: galleries/
         - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
         - name_complex: items
-        - allowed_types
+        - types_allowed
           - =: jpg
           - =: jpeg
           - =: png
@@ -716,7 +716,7 @@ entities
         - max_file_size: 1M
         - upload_dir: pictures/
         - fixed_name: picture-%%_instance_id_context
-        - allowed_types
+        - types_allowed
           - =: jpeg
           - =: jpg
           - =: png

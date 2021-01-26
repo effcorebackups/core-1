@@ -16,7 +16,7 @@ namespace effcore {
   public $fixed_name = 'file-multiple-%%_item_id_context';
   public $fixed_type;
   public $max_file_size = '5K';
-  public $allowed_types = [
+  public $types_allowed = [
     'txt' => 'txt'
   ];
 
@@ -49,7 +49,7 @@ namespace effcore {
     $field_file = new field_file;
     $field_file->title = 'File';
     $field_file->max_file_size    = $this->max_file_size;
-    $field_file->allowed_types    = $this->allowed_types;
+    $field_file->types_allowed    = $this->types_allowed;
     $field_file->cform            = $this->cform;
     $field_file->min_files_number = null;
     $field_file->max_files_number = null;

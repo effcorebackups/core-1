@@ -136,7 +136,7 @@ namespace effcore {
     if (!strlen($this->type)) $this->type = 'unknown';
     $this->file = $this->name.'.'.$this->type;
   # special case for IIS, Apache, NGINX
-  # note: if the type "unknown" is not present in the "allowed_types" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
+  # note: if the type "unknown" is not present in the "types_allowed" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
     if ($this->file === 'web.config' || $this->type === 'htaccess' || $this->type === 'nginx') {
       $this->name = core::random_part_get();
       $this->type = 'unknown';

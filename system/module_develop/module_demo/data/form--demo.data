@@ -61,14 +61,14 @@ forms
             title: Files
             upload_dir: demo/
             name_complex: files
-            allowed_types
+            types_allowed
             - =: txt
       # widget 'Pictures'
         - files_pictures|widget_files_pictures
             title: Pictures
             upload_dir: demo/
             name_complex: files_pictures
-            allowed_types
+            types_allowed
             - =: jpg
             - =: jpeg
             - =: png

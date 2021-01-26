@@ -64,7 +64,7 @@ namespace effcore {
   public $max_length_type =  10;
   public $allowed_characters = 'a-zA-Z0-9_\\-\\.';
   public $allowed_characters_title = '"a-z", "A-Z", "0-9", "_", "-", "."';
-  public $allowed_types = ['txt' => 'txt'];
+  public $types_allowed = ['txt' => 'txt'];
   public $has_on_validate = true;
   public $result;
   public $is_debug_mode = false;
@@ -73,7 +73,7 @@ namespace effcore {
     parent::build();
     if ($this->child_select('element')) {
       $accept_types = [];
-      foreach ($this->allowed_types as $c_type)
+      foreach ($this->types_allowed as $c_type)
                  $accept_types[] = '.'.$c_type;
       $this->child_select('element')->attribute_insert('accept', implode(',', $accept_types));
       if ($this->is_debug_mode) {
@@ -127,7 +127,7 @@ namespace effcore {
     if ($this->max_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description[] = $this->render_description_file_max_number();
     if ($this->min_files_number !== null && $this->min_files_number === $this->max_files_number) $this->description[] = $this->render_description_file_mid_number();
                                          $this->description[] = $this->render_description_file_size_max();
-    if ($this->allowed_types           ) $this->description[] = $this->render_description_file_allowed_types();
+    if ($this->types_allowed           ) $this->description[] = $this->render_description_file_types_allowed();
     if ($this->allowed_characters_title) $this->description[] = $this->render_description_file_name_allowed_characters();
     return parent::render_description();
   }
@@ -136,7 +136,7 @@ namespace effcore {
   function render_description_file_min_number             () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->min_files_number        ]));}
   function render_description_file_max_number             () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number,s}.',  ['number'     =>               $this->max_files_number        ]));}
   function render_description_file_mid_number             () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number,s}.',          ['number'     =>               $this->min_files_number        ]));}
-  function render_description_file_allowed_types          () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->allowed_types          )]));}
+  function render_description_file_types_allowed          () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->types_allowed          )]));}
   function render_description_file_name_allowed_characters() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->allowed_characters_title]));}
 
   ############
@@ -394,8 +394,8 @@ namespace effcore {
   # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {
-      if (count($field->allowed_types) &&
-         !isset($field->allowed_types[$c_new_value->type])) {
+      if (count($field->types_allowed) &&
+         !isset($field->types_allowed[$c_new_value->type])) {
         $field->error_set(
           'Field "%%_title" does not support uploading a file of this type!', ['title' => (new text($field->title))->render() ]
         );

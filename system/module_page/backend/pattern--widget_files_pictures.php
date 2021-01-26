@@ -15,7 +15,7 @@ namespace effcore {
   public $upload_dir = 'pictures/';
   public $fixed_name = 'picture-multiple-%%_item_id_context';
   public $max_file_size = '1M';
-  public $allowed_types = [
+  public $types_allowed = [
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg',
     'png'  => 'png',
@@ -51,7 +51,7 @@ namespace effcore {
     $field_file_picture = new field_file_picture;
     $field_file_picture->title = 'File';
     $field_file_picture->max_file_size    = $this->max_file_size;
-    $field_file_picture->allowed_types    = $this->allowed_types;
+    $field_file_picture->types_allowed    = $this->types_allowed;
     $field_file_picture->cform            = $this->cform;
     $field_file_picture->min_files_number = null;
     $field_file_picture->max_files_number = null;
