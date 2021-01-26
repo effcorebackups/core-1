@@ -8,7 +8,7 @@ namespace effcore {
           class field_nickname extends field_text {
 
   const characters_allowed = 'a-zA-Z0-9_\\-';
-  const characters_allowed_for_title = '"a-z", "A-Z", "0-9", "_", "-"';
+  const characters_allowed_in_description = '"a-z", "A-Z", "0-9", "_", "-"';
 
   public $title = 'Nickname';
   public $attributes = ['data-type' => 'nickname'];
@@ -22,7 +22,7 @@ namespace effcore {
 
   function render_description() {
     if (!$this->description)
-         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_for_title]);
+         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_in_description]);
     return parent::render_description();
   }
 
@@ -67,7 +67,7 @@ namespace effcore {
     if (strlen($new_value) && !core::validate_nickname($new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
-        'Field value can contain only the next characters: %%_characters'], ['title' => (new text($field->title))->render(), 'characters' => static::characters_allowed_for_title ]
+        'Field value can contain only the next characters: %%_characters'], ['title' => (new text($field->title))->render(), 'characters' => static::characters_allowed_in_description ]
       ));
     } else {
       return true;

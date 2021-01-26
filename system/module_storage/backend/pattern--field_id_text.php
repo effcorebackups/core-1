@@ -8,7 +8,7 @@ namespace effcore {
           class field_id_text extends field_text {
 
   const characters_allowed = 'a-z0-9_\\-';
-  const characters_allowed_for_title = '"a-z", "0-9", "_", "-"';
+  const characters_allowed_in_description = '"a-z", "0-9", "_", "-"';
 
   public $title = 'ID';
   public $attributes = ['data-type' => 'id_text'];
@@ -21,7 +21,7 @@ namespace effcore {
 
   function render_description() {
     if (!$this->description)
-         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_for_title]);
+         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_in_description]);
     return parent::render_description();
   }
 
@@ -31,9 +31,10 @@ namespace effcore {
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (strlen($new_value) && !core::validate_id($new_value)) {
-      $field->error_set(
-        'Field "%%_title" contains an error!', ['title' => (new text($field->title))->render() ]
-      );
+      $field->error_set(new text_multiline([
+        'Field "%%_title" contains an error!',
+        'Field value can contain only the next characters: %%_characters'], ['title' => (new text($field->title))->render(), 'characters' => static::characters_allowed_in_description ]
+      ));
     } else {
       return true;
     }
