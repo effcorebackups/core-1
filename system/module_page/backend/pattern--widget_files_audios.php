@@ -18,7 +18,10 @@ namespace effcore {
   public $types_allowed = [
     'mp3' => 'mp3'];
   public $player_is_visible = true;
+  public $player_controls = true;
+  public $player_preload = 'metadata';
   public $player_name = 'default';
+  public $player_timeline_is_visible = 'false';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
@@ -26,7 +29,11 @@ namespace effcore {
     if ($this->player_is_visible) {
     # info markup
       $file = new file($item->object->get_current_path());
-      $player_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$file->path_get_relative(), 'preload' => 'metadata', 'data-player-name' => $this->player_name], [], +450);
+      $player_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$file->path_get_relative(),
+        'controls'                        => $this->player_controls,
+        'preload'                         => $this->player_preload,
+        'data-player-name'                => $this->player_name,
+        'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
       $id_markup = $item->object->get_current_state() === 'pre' ?
         new text_multiline(['new item', '…'], [], '') :
         new text($file->file_get());

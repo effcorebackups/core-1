@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
-    var c_player       = document.createElement('x-audio-player');
+    var c_player       = document.createElement__withAttribute('x-audio-player', {'data-player-timeline-is-visible' : c_audio.getAttribute('data-player-timeline-is-visible')});
     var c_button_play  = document.createElement('button');
     var c_timeline     = document.createElement('x-timeline');
     var c_trackpos     = document.createElement('x-track-position');

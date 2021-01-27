@@ -32,9 +32,10 @@ namespace effcore\modules\page {
       if ($entity->name === 'audio') {
       # widget 'attributes'
         $items['*attributes']->value_set_complex([
-          (object)['weight' =>   0, 'name' => 'controls',         'value' => ''        ],
-          (object)['weight' =>  -5, 'name' => 'preload',          'value' => 'metadata'],
-          (object)['weight' => -10, 'name' => 'data-player-name', 'value' => 'default' ]
+          (object)['weight' =>   0, 'name' => 'controls',                        'value' => ''        ],
+          (object)['weight' =>  -5, 'name' => 'preload',                         'value' => 'metadata'],
+          (object)['weight' => -10, 'name' => 'data-player-name',                'value' => 'default' ],
+          (object)['weight' => -15, 'name' => 'data-player-timeline-is-visible', 'value' => 'true'    ]
         ], true);
       }
       if ($entity->name === 'video') {

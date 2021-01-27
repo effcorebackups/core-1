@@ -346,8 +346,11 @@
 
   /* widget 'items-files-audios' */
 
-  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player {display: inline-block; margin: 0 10px 0 0; max-width: 400px; vertical-align: middle}
-  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player x-timeline {display: none}
+  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    max-width: 400px;
+    vertical-align: middle}
 
   /* form 'instance_update' */
 

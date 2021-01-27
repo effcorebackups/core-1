@@ -79,6 +79,7 @@ forms
             title: Audios
             upload_dir: demo/
             name_complex: files_audios
+            player_timeline_is_visible|_string_false
             types_allowed
             - =: mp3
       # field 'Text'
