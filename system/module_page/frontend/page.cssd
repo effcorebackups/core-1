@@ -291,7 +291,7 @@
   x-audio-player[data-is-playing] button[value='play'] {background-position: 2px -158px}
   x-audio-player[data-is-loadedmetadata] x-timeline {cursor: pointer}
   x-audio-player[data-is-progressing] x-timeline {background-image: url('pictures/lines-animated.svg'); background-size: 20px 20px}
-  x-audio-player[data-player-timeline-is-visible='false'] x-timeline {display: none}
+  audio[data-player-timeline-is-visible='false'] + x-audio-player x-timeline {display: none}
 
   video {
     display: block;

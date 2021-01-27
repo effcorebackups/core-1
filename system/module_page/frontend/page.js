@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
-    var c_player       = document.createElement__withAttribute('x-audio-player', {'data-player-timeline-is-visible' : c_audio.getAttribute('data-player-timeline-is-visible')});
+    var c_player       = document.createElement('x-audio-player');
     var c_button_play  = document.createElement('button');
     var c_timeline     = document.createElement('x-timeline');
     var c_trackpos     = document.createElement('x-track-position');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_player.append(c_button_play, c_timeline, c_time);
     c_timeline.append(c_trackpos);
     c_time.append(c_time_elpsd, c_time_total);
-    c_audio.parentNode.insertBefore(c_player, c_audio);
+    c_audio.parentNode.insertBefore(c_player, c_audio.nextSibling);
     c_audio.controls = false;
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
