@@ -59,7 +59,7 @@ namespace effcore {
         new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
         new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
            return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
-    } else return parent::pool_manager_action_insert_get_field_text($item, $id, $type);
+    } else return new node([], [                   new text('delete picture "%%_picture"', ['picture' => $item->file])]);
   }
 
 }}

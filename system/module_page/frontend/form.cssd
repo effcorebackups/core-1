@@ -344,9 +344,12 @@
 
   x-widget[data-type='items-area_blocks'] {margin: 0}
 
-  /* widget 'items-files-audios' */
+  /* audio player in: field 'file-audio' and widget 'items-files-audios' */
 
-  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player {
+   x-field[data-type='file-audio']         audio,
+  x-widget[data-type='items-files-audios'] audio {display: inline-block; vertical-align: middle}
+   x-field[data-type='file-audio']         x-audio-player,
+  x-widget[data-type='items-files-audios'] x-audio-player {
     display: inline-block;
     margin: 0 10px 0 0;
     max-width: 400px;
