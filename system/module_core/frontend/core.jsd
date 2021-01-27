@@ -171,7 +171,7 @@
            result : [];
   }
 
-  Document.prototype.createElement__withAttribute = function(tag_name, attributes, options){
+  Document.prototype.createElement__withAttributes = function(tag_name, attributes, options){
     var node = document.createElement(tag_name, options);
     if (effcore.getType(attributes) === 'Object')
       for (c_key in attributes)

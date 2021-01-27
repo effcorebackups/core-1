@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
     var c_player       = document.createElement('x-audio-player');
-    var c_button_play  = document.createElement('button');
+    var c_button_play  = document.createElement__withAttributes('button', {'type' : 'button'});
     var c_timeline     = document.createElement('x-timeline');
     var c_trackpos     = document.createElement('x-track-position');
     var c_time         = document.createElement('x-time');
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
-    var c_player              = document.createElement__withAttribute('x-gallery-player', {'aria-hidden' : 'true'});
+    var c_player              = document.createElement__withAttributes('x-gallery-player', {'aria-hidden' : 'true'});
     var c_player_thumbnails   = document.createElement('x-thumbnails');
     var c_player_button_l     = document.createElement('x-button-l');
     var c_player_button_r     = document.createElement('x-button-r');
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
  /* process each gallery item */
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
-      var c_thumbnail = document.createElement__withAttribute('x-thumbnail', {
+      var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {
           'data-type' : c_item.getAttribute('data-type'),
           'data-num'  : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var c_img = c_item.getElementsByTagName('img')[0];
           var c_src_small = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
           var c_src_big   = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
-          var c_thumbnail_img = document.createElement__withAttribute('img', {'src' : c_src_small});
+          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_src_small});
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function(){
         switch (this.getAttribute('data-type')) {
           case 'picture':
             c_player_viewing_area.append(
-              document.createElement__withAttribute('img', {'src' : this.getAttribute('data-src-big')})
+              document.createElement__withAttributes('img', {'src' : this.getAttribute('data-src-big')})
             );
             break;
         }
