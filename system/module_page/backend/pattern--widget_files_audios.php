@@ -16,11 +16,24 @@ namespace effcore {
   public $fixed_name = 'audio-multiple-%%_item_id_context';
   public $max_file_size = '10M';
   public $types_allowed = [
-    'mp3' => 'mp3'
-  ];
+    'mp3' => 'mp3'];
+  public $player_name = 'default';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
+    $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+  # info markup
+    $file = new file($item->object->get_current_path());
+    $player_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$file->path_get_relative(), 'preload' => 'metadata', 'data-player-name' => $this->player_name], [], +450);
+    $id_markup = $item->object->get_current_state() === 'pre' ?
+      new text_multiline(['new item', '…'], [], '') :
+      new text($file->file_get());
+    $info_markup = new markup('x-info',  [], [
+        'title' => new markup('x-title', [], $item->object->file),
+        'id'    => new markup('x-id',    [], $id_markup )]);
+  # grouping of previous elements in widget 'manage'
+    $widget->child_insert($player_markup, 'player');
+    $widget->child_insert($info_markup, 'info');
     return $widget;
   }
 

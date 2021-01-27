@@ -340,9 +340,14 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style^='narrow'] {border-radius: 5px}
 
-  /* widget 'items-area_blocks' for page */
+  /* widget 'items-area_blocks' */
 
   x-widget[data-type='items-area_blocks'] {margin: 0}
+
+  /* widget 'items-files-audios' */
+
+  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player {display: inline-block; margin: 0 10px 0 0; max-width: 400px; vertical-align: middle}
+  x-widget[data-type='items-files-audios'] x-widgets-group[data-type='manage'] x-widget x-audio-player x-timeline {display: none}
 
   /* form 'instance_update' */
 
