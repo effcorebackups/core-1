@@ -74,6 +74,13 @@ forms
             - =: png
             - =: gif
             - =: svg
+      # widget 'Audios'
+        - files_audios|widget_files_audios
+            title: Audios
+            upload_dir: demo/
+            name_complex: files_audios
+            types_allowed
+            - =: mp3
       # field 'Text'
         - text|field_text
             title: Text

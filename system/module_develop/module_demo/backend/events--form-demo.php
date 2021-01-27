@@ -37,6 +37,7 @@ namespace effcore\modules\demo {
     if (!empty($paths['videos'           ])) $items['#file_video'    ]->values_set($paths['videos'  ]);
     if (!empty($paths[   'files_multiple'])) $items['*files'         ]->value_set_complex($paths[   'files_multiple'], true);
     if (!empty($paths['pictures_multiple'])) $items['*files_pictures']->value_set_complex($paths['pictures_multiple'], true);
+    if (!empty($paths[  'audios_multiple'])) $items['*files_audios'  ]->value_set_complex($paths[  'audios_multiple'], true);
   }
 
   static function on_validate($event, $form, $items) {
@@ -110,12 +111,14 @@ namespace effcore\modules\demo {
         $paths['videos'           ] = $items['#file_video'  ]->values_get();
         $paths[   'files_multiple'] = $items['*files'         ]->value_get_complex();
         $paths['pictures_multiple'] = $items['*files_pictures']->value_get_complex();
+        $paths[  'audios_multiple'] = $items['*files_audios'  ]->value_get_complex();
         if (empty($paths['texts'            ])) unset($paths['texts'         ]);
         if (empty($paths['pictures'         ])) unset($paths['pictures'      ]);
         if (empty($paths['audios'           ])) unset($paths['audios'        ]);
         if (empty($paths['videos'           ])) unset($paths['videos'        ]);
         if (empty($paths[   'files_multiple'])) unset($paths[   'files_multiple']);
         if (empty($paths['pictures_multiple'])) unset($paths['pictures_multiple']);
+        if (empty($paths[  'audios_multiple'])) unset($paths[  'audios_multiple']);
         if (count($paths)) data::update('demo_files', $paths);
         else               data::delete('demo_files');
         break;
