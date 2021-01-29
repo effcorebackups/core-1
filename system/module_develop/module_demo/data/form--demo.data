@@ -75,6 +75,8 @@ forms
             - =: png
             - =: gif
             - =: svg
+            thumbnails_allowed
+            - =: small
       # widget 'Audios'
         - files_audios|widget_files_audios
             title: Audios
