@@ -31,9 +31,7 @@ namespace effcore {
     if ($this->thumbnails_is_visible) {
     # info markup
       $file = new file($item->object->get_current_path());
-      $thumbnail_markup = $file->type === 'picture' ?
-        new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450) :
-        new markup_simple('img', ['src' => '/'.$file->path_get_relative(),                'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+      $thumbnail_markup = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
       $id_markup = $item->object->get_current_state() === 'pre' ?
         new text_multiline(['new item', '…'], [], '') :
         new text($file->file_get());
@@ -122,9 +120,7 @@ namespace effcore {
       foreach ($complex as $c_row_id => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'picture';
-        $c_item_markup = $c_file->type === 'picture' ?
-          new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')])) :
-          new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative()             ], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative(),                 'alt' => new text('thumbnail')]));
+        $c_item_markup = new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')]), +450);
         $decorator->data[$c_row_id] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_row_id     ],
