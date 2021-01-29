@@ -347,7 +347,7 @@
   /* audio player in: field 'file-audio' and widget 'items-files-audios' */
 
    x-field[data-type='file-audio']         audio,
-  x-widget[data-type='items-files-audios'] audio {display: inline-block; vertical-align: middle}
+  x-widget[data-type='items-files-audios'] audio,
    x-field[data-type='file-audio']         x-audio-player,
   x-widget[data-type='items-files-audios'] x-audio-player {
     display: inline-block;
