@@ -76,4 +76,35 @@ namespace effcore {
     return $widget;
   }
 
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function complex_value_to_markup($complex) {  
+    $decorator = new decorator;
+    $decorator->id = 'widget_files-audios-items';
+    $decorator->view_type = 'template';
+    $decorator->template = 'content';
+    $decorator->template_row = 'gallery_row';
+    $decorator->template_row_mapping = core::array_kmap(['num', 'type', 'children']);
+    if ($complex) {
+      core::array_sort_by_weight($complex);
+      foreach ($complex as $c_row_id => $c_item) {
+        $c_file = new file($c_item->object->get_current_path());
+        $c_item_type = 'audio';
+        $c_item_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$c_file->path_get_relative(),
+          'controls'                        => true,
+          'preload'                         => 'metadata',
+          'data-player-name'                => 'default',
+          'data-player-timeline-is-visible' => 'true'], [], +450);
+        $decorator->data[$c_row_id] = [
+          'type'     => ['value' => $c_item_type  ],
+          'num'      => ['value' => $c_row_id     ],
+          'children' => ['value' => $c_item_markup]
+        ];
+      }
+    }
+    return $decorator;
+  }
+
 }}
