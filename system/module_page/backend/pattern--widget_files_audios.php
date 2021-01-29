@@ -29,7 +29,7 @@ namespace effcore {
     if ($this->player_is_visible) {
     # info markup
       $file = new file($item->object->get_current_path());
-      $player_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$file->path_get_relative(),
+      $player_markup = new markup('audio', ['src' => '/'.$file->path_get_relative(),
         'controls'                        => $this->player_controls,
         'preload'                         => $this->player_preload,
         'data-player-name'                => $this->player_name,

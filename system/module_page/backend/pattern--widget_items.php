@@ -100,6 +100,7 @@ namespace effcore {
 
   function widget_manage_get($item, $c_row_id) {
     $widget = new markup('x-widget', [
+      'data-rowid'                   => $c_row_id,
       'data-rearrangeable'           => true,
       'data-controls-is-inline-full' => true], [], $item->weight);
   # control for weight
