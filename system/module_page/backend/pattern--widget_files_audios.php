@@ -92,7 +92,7 @@ namespace effcore {
       foreach ($complex as $c_row_id => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
         $c_item_type = 'audio';
-        $c_item_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$c_file->path_get_relative(),
+        $c_item_markup = new markup('audio', ['src' => '/'.$c_file->path_get_relative(),
           'controls'                        => true,
           'preload'                         => 'metadata',
           'data-player-name'                => 'default',
