@@ -96,7 +96,7 @@ namespace effcore {
           'controls'                        => true,
           'preload'                         => 'metadata',
           'data-player-name'                => 'default',
-          'data-player-timeline-is-visible' => 'true'], [], +450);
+          'data-player-timeline-is-visible' => 'true']);
         $decorator->data[$c_row_id] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_row_id     ],

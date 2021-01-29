@@ -29,7 +29,7 @@ namespace effcore {
             break;
           case 'mp3':
             $c_item_type = 'audio';
-            $c_item_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$c_file->path_get_relative(), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'], [], +450);
+            $c_item_markup = new markup('audio', ['data-id' => $c_row_id, 'src' => '/'.$c_file->path_get_relative(), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true']);
             break;
         }
         $decorator->data[$c_row_id] = [
