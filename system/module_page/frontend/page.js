@@ -122,9 +122,12 @@ document.addEventListener('DOMContentLoaded', function(){
         c_player_viewing_area.innerHTML = '';
         switch (this.getAttribute('data-type')) {
           case 'picture':
-            c_player_viewing_area.append(
-              document.createElement__withAttributes('img', {'src' : this.getAttribute('data-src-big')})
-            );
+            var centrator_wrapper = document.createElement('x-centrator-wrapper');
+            var centrator         = document.createElement('x-centrator');
+            var big_img           = document.createElement__withAttributes('img', {'src' : this.getAttribute('data-src-big')});
+            centrator_wrapper    .append(centrator);
+            centrator            .append(big_img);
+            c_player_viewing_area.append(centrator_wrapper);
             break;
         }
         on_setButtonLState();
