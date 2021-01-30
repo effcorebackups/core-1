@@ -24,6 +24,10 @@ namespace effcore {
         $c_file = new file($c_item->object->get_current_path());
         switch ($c_item->object->type) {
           case 'picture':
+          case 'png':
+          case 'gif':
+          case 'jpg':
+          case 'jpeg':
             $c_item_type = 'picture';
             $c_item_markup = new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')]));
             break;
@@ -31,6 +35,8 @@ namespace effcore {
             $c_item_type = 'audio';
             $c_item_markup = new markup('audio', ['src' => '/'.$c_file->path_get_relative(), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true']);
             break;
+          default:
+            continue 2;
         }
         $decorator->data[$c_row_id] = [
           'type'     => ['value' => $c_item_type  ],
