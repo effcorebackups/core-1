@@ -91,12 +91,18 @@ namespace effcore {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
-        $c_item_type = 'audio';
-        $c_item_markup = new markup('audio', ['src' => '/'.$c_file->path_get_relative(),
-          'controls'                        => true,
-          'preload'                         => 'metadata',
-          'data-player-name'                => 'default',
-          'data-player-timeline-is-visible' => 'true']);
+        switch ($c_item->object->type) {
+          case 'mp3':
+            $c_item_type = 'audio';
+            $c_item_markup = new markup('audio', ['src' => '/'.$c_file->path_get_relative(),
+              'controls'                        => true,
+              'preload'                         => 'metadata',
+              'data-player-name'                => 'default',
+              'data-player-timeline-is-visible' => 'true']);
+            break;
+          default:
+            continue 2;
+        }
         $decorator->data[$c_row_id] = [
           'type'     => ['value' => $c_item_type  ],
           'num'      => ['value' => $c_row_id     ],
