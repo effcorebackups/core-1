@@ -4,8 +4,8 @@
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;
-    min-width: %%_page_min_width{-}px; %%_css_page_min_width_context;
-    max-width: %%_page_max_width{-}px; %%_css_page_max_width_context;
+    min-width: %%_page_min_width{null}px; %%_css_page_min_width_context;
+    max-width: %%_page_max_width{null}px; %%_css_page_max_width_context;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
@@ -304,7 +304,7 @@
   x-gallery::after {content: ''; clear: both; display: block}
   x-gallery x-item {float: left; margin: 0 10px 10px 0}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
-  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block}
+  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_middle_width{null}px}
 
   x-gallery-player {
     position: fixed;

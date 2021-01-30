@@ -15,6 +15,18 @@ tokens
     match: %%_css_page_max_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
+- thumbnail_small_width
+    match: %%_thumbnail_small_width
+    type: code
+    handler: \effcore\modules\page\events_token::on_apply
+- thumbnail_middle_width
+    match: %%_thumbnail_middle_width
+    type: code
+    handler: \effcore\modules\page\events_token::on_apply
+- thumbnail_big_width
+    match: %%_thumbnail_big_width
+    type: code
+    handler: \effcore\modules\page\events_token::on_apply
 # ─────────────────────────────────────────────────────────────────────
 # colors
 # ─────────────────────────────────────────────────────────────────────
