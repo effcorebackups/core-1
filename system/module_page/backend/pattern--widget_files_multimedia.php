@@ -5,8 +5,15 @@
   ##################################################################
 
 namespace effcore {
-          class widget_files_media extends widget_files {
+          class widget_files_multimedia extends widget_files {
 
+  public $title = 'Multimedia';
+  public $item_title = 'File';
+  public $attributes = ['data-type' => 'items-files-multimedia'];
+  public $name_complex = 'widget_files_multimedia';
+# ─────────────────────────────────────────────────────────────────────
+  public $upload_dir = 'multimedia/';
+  public $fixed_name = 'multimedia-multiple-%%_item_id_context';
   public $max_file_size = '10M';
   public $types_allowed = [
     'mp3'  => 'mp3',
