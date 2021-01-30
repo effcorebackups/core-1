@@ -16,10 +16,10 @@ namespace effcore {
   public $fixed_name = 'picture-multiple-%%_item_id_context';
   public $max_file_size = '1M';
   public $types_allowed = [
-    'jpg'  => 'jpg',
-    'jpeg' => 'jpeg',
     'png'  => 'png',
-    'gif'  => 'gif'];
+    'gif'  => 'gif',
+    'jpg'  => 'jpg',
+    'jpeg' => 'jpeg'];
   public $thumbnails_is_visible = true;
   public $thumbnails_allowed = [];
 
@@ -27,18 +27,11 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if ($this->thumbnails_is_visible) {
-    # info markup
-      $file = new file($item->object->get_current_path());
-      $thumbnail_markup = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-      $id_markup = $item->object->get_current_state() === 'pre' ?
-        new text_multiline(['new item', '…'], [], '') :
-        new text($file->file_get());
-      $info_markup = new markup('x-info',  [], [
-          'title' => new markup('x-title', [], $item->object->file),
-          'id'    => new markup('x-id',    [], $id_markup )]);
-    # grouping of previous elements in widget 'manage'
-      $widget->child_insert($thumbnail_markup, 'thumbnail');
-      $widget->child_insert($info_markup, 'info');
+      if (in_array($item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
+        $file = new file($item->object->get_current_path());
+        $thumbnail_markup = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+        $widget->child_insert($thumbnail_markup, 'thumbnail');
+      }
     }
     return $widget;
   }
@@ -119,7 +112,7 @@ namespace effcore {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
         $c_file = new file($c_item->object->get_current_path());
-        if ($c_item->object->type === 'picture' || $c_item->object->type === 'png' || $c_item->object->type === 'gif' || $c_item->object->type === 'jpg' || $c_item->object->type === 'jpeg') {
+        if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'picture'],
             'num'      => ['value' => $c_row_id],

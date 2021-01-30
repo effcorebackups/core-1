@@ -27,22 +27,11 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if ($this->player_is_visible) {
-    # info markup
-      $file = new file($item->object->get_current_path());
-      $player_markup = new markup('audio', ['src' => '/'.$file->path_get_relative(),
-        'controls'                        => $this->player_controls,
-        'preload'                         => $this->player_preload,
-        'data-player-name'                => $this->player_name,
-        'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
-      $id_markup = $item->object->get_current_state() === 'pre' ?
-        new text_multiline(['new item', '…'], [], '') :
-        new text($file->file_get());
-      $info_markup = new markup('x-info',  [], [
-          'title' => new markup('x-title', [], $item->object->file),
-          'id'    => new markup('x-id',    [], $id_markup )]);
-    # grouping of previous elements in widget 'manage'
-      $widget->child_insert($player_markup, 'player');
-      $widget->child_insert($info_markup, 'info');
+      if ($item->object->type === 'mp3') {
+        $file = new file($item->object->get_current_path());
+        $player_markup = new markup('audio', ['src' => '/'.$file->path_get_relative(), 'controls' => $this->player_controls, 'preload' => $this->player_preload, 'data-player-name' => $this->player_name, 'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
+        $widget->child_insert($player_markup, 'player');
+      }
     }
     return $widget;
   }

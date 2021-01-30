@@ -346,10 +346,10 @@
 
   /* audio player in: field 'file-audio' and widget 'items-files-audios' */
 
-   x-field[data-type='file-audio']         audio,
-  x-widget[data-type='items-files-audios'] audio,
-   x-field[data-type='file-audio']         x-audio-player,
-  x-widget[data-type='items-files-audios'] x-audio-player {
+   x-field[data-type^='file-audio' ] audio,
+  x-widget[data-type^='items-files'] audio,
+   x-field[data-type^='file-audio' ] x-audio-player,
+  x-widget[data-type^='items-files'] x-audio-player {
     display: inline-block;
     margin: 0 10px 0 0;
     max-width: 400px;
