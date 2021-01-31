@@ -28,8 +28,7 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if ($this->player_is_visible) {
       if ($item->object->type === 'mp3') {
-        $file = new file($item->object->get_current_path());
-        $player_markup = new markup('audio', ['src' => '/'.$file->path_get_relative(), 'controls' => $this->player_controls, 'preload' => $this->player_preload, 'data-player-name' => $this->player_name, 'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
+        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->player_controls, 'preload' => $this->player_preload, 'data-player-name' => $this->player_name, 'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
         $widget->child_insert($player_markup, 'player');
       }
     }
@@ -79,12 +78,11 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        $c_file = new file($c_item->object->get_current_path());
         if ($c_item->object->type === 'mp3') {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'audio'  ],
             'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('audio', ['src' => '/'.$c_file->path_get_relative(), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'])]
+            'children' => ['value' => new markup('audio', ['src' => '/'.$c_item->object->get_current_path(true), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'])]
           ];
         }
       }

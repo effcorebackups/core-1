@@ -18,7 +18,7 @@ namespace effcore {
   public $size;
 
   function get_current_path($relative = false) {
-    if     (!empty($this->tmp_path)) return $this->tmp_path;
+    if     (!empty($this->tmp_path)) return                                                                $this->tmp_path;
     elseif (!empty($this->pre_path)) return $relative ? (new file($this->pre_path))->path_get_relative() : $this->pre_path;
     elseif (!empty($this->fin_path)) return $relative ? (new file($this->fin_path))->path_get_relative() : $this->fin_path;
   }

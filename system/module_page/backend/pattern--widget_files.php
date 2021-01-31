@@ -190,11 +190,10 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        $c_file = new file($c_item->object->get_current_path());
         $decorator->data[$c_row_id] = [
-          'path' => ['title' => 'Path', 'value' => $c_file->path_get_relative()],
-          'type' => ['title' => 'Type', 'value' => $c_item->object->mime       ],
-          'size' => ['title' => 'Size', 'value' => $c_item->object->size       ]
+          'path' => ['title' => 'Path', 'value' => $c_item->object->get_current_path(true)],
+          'type' => ['title' => 'Type', 'value' => $c_item->object->mime],
+          'size' => ['title' => 'Size', 'value' => $c_item->object->size]
         ];
       }
     }

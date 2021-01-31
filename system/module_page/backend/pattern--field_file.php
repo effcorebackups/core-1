@@ -148,7 +148,7 @@ namespace effcore {
     $this->on_values_pre_move_to_fin();       if ($this->has_error()) return;
     $this->result = [];
     foreach ($this->items_get('fin') as $c_item)
-      $this->result[] = (new file($c_item->get_current_path()))->path_get_relative();
+      $this->result[] = $c_item->get_current_path(true);
     $this->on_values_fin_update($this->result); # update indexes
     $this->pool_manager_rebuild();
     return true;

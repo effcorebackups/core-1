@@ -28,8 +28,7 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if ($this->thumbnails_is_visible) {
       if (in_array($item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
-        $file = new file($item->object->get_current_path());
-        $thumbnail_markup = new markup_simple('img', ['src' => '/'.$file->path_get_relative().'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+        $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($thumbnail_markup, 'thumbnail');
       }
     }
@@ -111,12 +110,11 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        $c_file = new file($c_item->object->get_current_path());
         if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'picture'],
             'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_file->path_get_relative().'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_file->path_get_relative().'?thumb=middle', 'alt' => new text('thumbnail')]))]
+            'children' => ['value' => new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_item->object->get_current_path(true).'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_item->object->get_current_path(true).'?thumb=middle', 'alt' => new text('thumbnail')]))]
           ];
         }
       }
