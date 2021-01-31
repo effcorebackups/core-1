@@ -70,24 +70,26 @@ namespace effcore {
     if (count($this->thumbnails_allowed)) {
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
         foreach ($items as $c_id => $c_item) {
-          if (media::is_type_for_picture_thumbnail_create($c_item->object->type)) {
-            $c_file_src = new file($c_item->object->get_current_path());
-            $c_file_dst = new file($c_file_src->dirs_get().
-                                   $c_file_src->name_get().'.picture');
-            $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
-              'thumbnails_allowed' => $this->thumbnails_allowed,
-              'original' => [
-                'type' => $c_item->object->type,
-                'mime' => $c_item->object->mime,
-                'size' => $c_item->object->size
-            ]]);
-            if ($result) {
-              @unlink($c_file_src->path_get());
-              $items[$c_id]->object->type     = 'picture';
-              $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
-              $items[$c_id]->object->mime     = $c_file_dst->mime_get();
-              $items[$c_id]->object->pre_path = $c_file_dst->path_get();
-              $items[$c_id]->object->size     = $c_file_dst->size_get();
+          if ($c_item->object->get_current_state() === 'pre') {
+            if (media::is_type_for_picture_thumbnail_create($c_item->object->type)) {
+              $c_file_src = new file($c_item->object->get_current_path());
+              $c_file_dst = new file($c_file_src->dirs_get().
+                                     $c_file_src->name_get().'.picture');
+              $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
+                'thumbnails_allowed' => $this->thumbnails_allowed,
+                'original' => [
+                  'type' => $c_item->object->type,
+                  'mime' => $c_item->object->mime,
+                  'size' => $c_item->object->size
+              ]]);
+              if ($result) {
+                @unlink($c_file_src->path_get());
+                $items[$c_id]->object->type     = 'picture';
+                $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
+                $items[$c_id]->object->mime     = $c_file_dst->mime_get();
+                $items[$c_id]->object->pre_path = $c_file_dst->path_get();
+                $items[$c_id]->object->size     = $c_file_dst->size_get();
+              }
             }
           }
         }
