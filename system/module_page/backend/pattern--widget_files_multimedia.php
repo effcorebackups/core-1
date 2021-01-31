@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_files_multimedia extends widget_files {
+          class widget_files_multimedia extends widget_files_pictures {
 
   public $title = 'Multimedia';
   public $item_title = 'File';
@@ -23,6 +23,7 @@ namespace effcore {
     'jpeg' => 'jpeg'];
   public $thumbnails_is_visible = true;
   public $thumbnails_allowed = [];
+# ─────────────────────────────────────────────────────────────────────
   public $player_audio_is_visible = true;
   public $player_audio_controls = true;
   public $player_audio_preload = 'metadata';
@@ -44,6 +45,35 @@ namespace effcore {
         $widget->child_insert($player_markup, 'player');
       }
     }
+    return $widget;
+  }
+
+  function widget_insert_get() {
+    $widget = new markup('x-widget', [
+      'data-type' => 'insert']);
+  # control for upload new file
+    $field_file = new field_file;
+    $field_file->title = 'File';
+    $field_file->max_file_size    = $this->max_file_size;
+    $field_file->types_allowed    = $this->types_allowed;
+    $field_file->cform            = $this->cform;
+    $field_file->min_files_number = null;
+    $field_file->max_files_number = null;
+    $field_file->has_on_validate  = false;
+    $field_file->build();
+    $field_file->multiple_set();
+    $field_file->name_set($this->name_get_complex().'__file[]');
+    $this->controls['#file'] = $field_file;
+  # button for insertion of the new item
+    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->build();
+    $button->value_set($this->name_get_complex().'__insert');
+    $button->_type = 'insert';
+    $this->controls['~insert'] = $button;
+  # grouping of previous elements in widget 'insert'
+    $widget->child_insert($field_file, 'file');
+    $widget->child_insert($button, 'button');
     return $widget;
   }
 
