@@ -20,9 +20,22 @@ namespace effcore {
     'txt' => 'txt'
   ];
 
-  function value_get_complex() {
+  function value_get_complex($is_relative = true) {
     $this->on_values_save();
-    return $this->items_get();
+    $items = $this->items_get();
+    if ($is_relative)
+      foreach ($items as $c_item)
+        if (!empty($c_item->object->fin_path))
+          $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+    return $items;
+  }
+
+  function value_set_complex($value, $once = false, $is_absolute = true) {
+    if ($is_absolute)
+      foreach ($value as $c_item)
+        if (!empty($c_item->object->fin_path))
+          $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_absolute();
+    $this->items_set($value, $once);
   }
 
   # ─────────────────────────────────────────────────────────────────────

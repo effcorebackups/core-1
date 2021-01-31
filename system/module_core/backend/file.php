@@ -67,7 +67,7 @@ namespace effcore {
   # note:
   # ══════════════════════════════════════════════════════════════════════════════════════════
   # 1. only files with extension are available in the URL!
-  # 2. if the first character in the path is '/' - it is a full path, otherwise - relative path
+  # 2. if the first character in the path is '/' - it is a absolute path, otherwise - relative path
   # 3. if the last  character in the path is '/' - it is a directory, otherwise - file
   # 4. path components like  '~/' should be ignored or use function 'realpath' to resolve the path
   # 5. path components like  './' should be ignored or use function 'realpath' to resolve the path
@@ -104,6 +104,7 @@ namespace effcore {
 
   function dirs_get()          {return $this->dirs;}
   function dirs_get_parts()    {return explode('/', trim($this->dirs, '/'));}
+  function dirs_get_absolute() {return $this->is_path_absolute() ?        $this->dirs :       dir_root.    $this->dirs;}
   function dirs_get_relative() {return $this->is_path_absolute() ? substr($this->dirs, strlen(dir_root)) : $this->dirs;}
 
   function dirs_set($dirs) {
@@ -134,6 +135,13 @@ namespace effcore {
     return (strlen($this->protocol) ?
                    $this->protocol.'://' : '').
                    $this->dirs.
+                   $this->file_get();
+  }
+
+  function path_get_absolute() {
+    return (strlen($this->protocol) ?
+                   $this->protocol.'://' : '').
+                   $this->dirs_get_absolute().
                    $this->file_get();
   }
 
