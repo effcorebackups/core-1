@@ -23,17 +23,18 @@ namespace effcore {
   function value_get_complex($is_relative = true) {
     $this->on_values_save();
     $items = $this->items_get();
-    if ($is_relative)
-      foreach ($items as $c_item)
-        if (!empty($c_item->object->fin_path))
-          $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+    foreach ($items as $c_item) {
+      if (empty($c_item->object->tmp_path) === true)           unset($c_item->object->tmp_path);
+      if (empty($c_item->object->pre_path) === true)           unset($c_item->object->pre_path);
+      if (empty($c_item->object->fin_path) !== true && $is_relative) $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+    }
     return $items;
   }
 
   function value_set_complex($value, $once = false, $is_absolute = true) {
-    if ($is_absolute)
+    if (is_array($value))
       foreach ($value as $c_item)
-        if (!empty($c_item->object->fin_path))
+        if (empty($c_item->object->fin_path) !== true && $is_absolute)
           $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_absolute();
     $this->items_set($value, $once);
   }
