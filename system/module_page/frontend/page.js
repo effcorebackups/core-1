@@ -97,17 +97,15 @@ document.addEventListener('DOMContentLoaded', function(){
     c_gallery.prepend(c_player);
  /* process each gallery item */
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
-      var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {
-          'data-type' : c_item.getAttribute('data-type'),
-          'data-num'  : c_item.getAttribute('data-num')});
+      var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
           var c_image = c_item.getElementsByTagName('img')[0];
           var c_thumbnail_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
-          var c_preview_image_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
+          var c_preview_a_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
-          var c_preview_image = document.createElement__withAttributes('img', {'src' : c_preview_image_src});
-          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_preview_image.outerHTML).replace(/^"/, '').replace(/"$/, ''));
+          var c_preview_a_img = document.createElement__withAttributes('img', {'src' : c_preview_a_img_src});
+          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_preview_a_img.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
           break;
@@ -136,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function(){
         c_player_viewing_area.innerHTML = '';
         if (c_thumbnail.getAttribute('data-preview-area-content')) {
           c_player_viewing_area.innerHTML = '<x-centrator-wrapper><x-centrator>' + JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"') + '<x-centrator><x-centrator-wrapper>';
+          if (c_thumbnail.getAttribute('data-type') === 'audio') {
+            c_player_viewing_area.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_player_viewing_area_audio){
+              c_player_viewing_area_audio.process__defaultAudioPlayer();
+            });
+          }
         }
         on_setButtonLState();
         on_setButtonRState();

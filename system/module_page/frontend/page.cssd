@@ -334,6 +334,7 @@
   x-gallery-player x-viewing-area x-centrator-wrapper {display: table; width: 100%; height: 100%}
   x-gallery-player x-viewing-area x-centrator-wrapper x-centrator {display: table-cell; text-align: center; vertical-align: middle}
   x-gallery-player x-viewing-area x-centrator-wrapper x-centrator img {max-width: %%_thumbnail_big_width{null}px}
+  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator x-audio-player {margin: 0 30px}
 
   [data-is-active-gallery-player] {
     overflow: hidden; /* disable scroll on body */
