@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function(){
   /* audio player                                                          */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
+  Element.prototype.process__defaultAudioPlayer = function(){
+    var c_audio        = this;
     var c_player       = document.createElement('x-audio-player');
     var c_button_play  = document.createElement__withAttributes('button', {'type' : 'button'});
     var c_timeline     = document.createElement('x-timeline');
@@ -69,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function(){
         c_player.removeAttribute('data-is-progressing');
       }, 1000);
     });
+  };
+
+  document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
+    c_audio.process__defaultAudioPlayer();
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
