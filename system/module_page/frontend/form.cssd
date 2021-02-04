@@ -200,9 +200,9 @@
     padding: 0;
     width: 40px;
     background-repeat: no-repeat}
-  button[data-style^='narrow-update'] {background-image: url('pictures/icons-form_button.svgd'); background-position: 50%   0  }
-  button[data-style^='narrow-insert'] {background-image: url('pictures/icons-form_button.svgd'); background-position: 50% -40px}
-  button[data-style^='narrow-delete'] {background-image: url('pictures/icons-form_button.svgd'); background-position: 50% -80px}
+  button[data-style^='narrow-update'] {background-image: url('pictures/icons-form-button.svgd'); background-position: 50%   0  }
+  button[data-style^='narrow-insert'] {background-image: url('pictures/icons-form-button.svgd'); background-position: 50% -40px}
+  button[data-style^='narrow-delete'] {background-image: url('pictures/icons-form-button.svgd'); background-position: 50% -80px}
 
   /* disabled elements */
 

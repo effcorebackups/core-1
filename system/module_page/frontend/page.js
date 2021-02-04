@@ -103,14 +103,19 @@ document.addEventListener('DOMContentLoaded', function(){
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
           var c_img = c_item.getElementsByTagName('img')[0];
-          var c_src_small = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
-          var c_src_big   = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
-          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_src_small});
+          var c_src_big           = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
+          var c_thumbnail_img_src = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
+          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
           break;
         case 'audio':
+          var c_audio = c_item.getElementsByTagName('audio')[0];
+          var c_thumbnail_img_src = '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
+          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src, 'data-preview-area-content' : JSON.stringify(c_audio.outerHTML)});
+          c_thumbnail.append(c_thumbnail_img);
+          c_player_thumbnails.append(c_thumbnail);
           break;
       }
    /* when click on item in gallery */
