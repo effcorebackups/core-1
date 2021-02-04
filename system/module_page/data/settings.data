@@ -31,7 +31,7 @@ settings
   color_button_text_id: white
   console_visibility: 0
   page_min_width: 200
-  page_max_width: 950
+  page_max_width: 990
   page_meta_viewport: width=300, initial-scale=1
   show_warning_if_not_https: false
   thumbnail_jpeg_quality: 90

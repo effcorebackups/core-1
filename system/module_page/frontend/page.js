@@ -87,14 +87,14 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_r     = document.createElement('x-button-r');
     var c_player_button_c     = document.createElement('x-button-c');
     var c_player_viewing_area = document.createElement('x-viewing-area');
-    c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
-    c_gallery.prepend(c_player);
-    var on_setButtonLState =                    function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', 'true'); })}
-    var on_setButtonRState =                    function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', 'true'); })}
+    var on_setButtonLState    =                 function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', 'true'); })}
+    var on_setButtonRState    =                 function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', 'true'); })}
     c_player_button_l.addEventListener('click', function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); c_player_thumbnails.scrollLeft = c_selected.previousSibling.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.previousSibling.clientWidth / 2) + 3; on_setButtonLState(); on_setButtonRState();} })});
     c_player_button_r.addEventListener('click', function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); c_player_thumbnails.scrollLeft = c_selected.nextSibling    .offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.nextSibling    .clientWidth / 2) + 3; on_setButtonLState(); on_setButtonRState();} })});
     c_player_button_c.addEventListener('click', function(){                          c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     document.addEventListener('keypress', function(event){if (event.charCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
+    c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
+    c_gallery.prepend(c_player);
  /* process each gallery item */
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
       var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {
@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function(){
           c_thumbnail.setAttribute('data-src-big', c_src_big);
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
+          break;
+        case 'audio':
           break;
       }
    /* when click on item in gallery */

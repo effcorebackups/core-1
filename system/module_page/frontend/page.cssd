@@ -302,7 +302,7 @@
 
   x-gallery {display: block; margin: 10px 0}
   x-gallery::after {content: ''; clear: both; display: block}
-  x-gallery x-item {float: left; margin: 0 10px 10px 0}
+  x-gallery x-item {float: left; width: %%_thumbnail_middle_width{null}px; margin: 0 10px 10px 0}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_middle_width{null}px}
   x-gallery x-item[data-type='audio'] audio,
