@@ -102,18 +102,20 @@ document.addEventListener('DOMContentLoaded', function(){
           'data-num'  : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
         case 'picture':
-          var c_img = c_item.getElementsByTagName('img')[0];
-          var c_src_big           = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
-          var c_thumbnail_img_src = (new EffURL(c_img.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
+          var c_image = c_item.getElementsByTagName('img')[0];
+          var c_thumbnail_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
+          var c_preview_image_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
-          c_thumbnail.setAttribute('data-src-big', c_src_big);
+          var c_preview_image = document.createElement__withAttributes('img', {'src' : c_preview_image_src});
+          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_preview_image.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
           break;
         case 'audio':
           var c_audio = c_item.getElementsByTagName('audio')[0];
           var c_thumbnail_img_src = '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
-          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src, 'data-preview-area-content' : JSON.stringify(c_audio.outerHTML)});
+          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
+          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_audio.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
           break;
@@ -132,15 +134,8 @@ document.addEventListener('DOMContentLoaded', function(){
         c_player_thumbnails.querySelectorAll__notNull('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
         c_thumbnail.setAttribute('aria-selected', 'true');
         c_player_viewing_area.innerHTML = '';
-        switch (this.getAttribute('data-type')) {
-          case 'picture':
-            var centrator_wrapper = document.createElement('x-centrator-wrapper');
-            var centrator         = document.createElement('x-centrator');
-            var big_img           = document.createElement__withAttributes('img', {'src' : this.getAttribute('data-src-big')});
-            centrator_wrapper    .append(centrator);
-            centrator            .append(big_img);
-            c_player_viewing_area.append(centrator_wrapper);
-            break;
+        if (c_thumbnail.getAttribute('data-preview-area-content')) {
+          c_player_viewing_area.innerHTML = '<x-centrator-wrapper><x-centrator>' + JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"') + '<x-centrator><x-centrator-wrapper>';
         }
         on_setButtonLState();
         on_setButtonRState();
