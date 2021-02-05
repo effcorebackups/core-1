@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
           c_is_init = true;
           c_player.setAttribute('data-is-loadedmetadata', '');
           c_timeline.addEventListener('click', function(event){
-            var timelineX = event.clientX + document.documentElement.scrollLeft - c_timeline.offsetLeft;
-            c_audio.currentTime = c_audio.duration * (timelineX / c_timeline.clientWidth);
+            c_audio.currentTime = c_audio.duration * (event.offsetX / c_timeline.clientWidth);
           });
         }
       }
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', '');});
     c_audio.addEventListener('pause',       function(){c_player.removeAttribute('data-is-playing');});
     c_audio.addEventListener('ended',       function(){c_player.removeAttribute('data-is-playing'); /* IE fix → */ c_audio.pause();});
-    c_player     .addEventListener('click', function(){event.preventDefault(); event.stopPropagation();}); /* for 'label' and 'gallery-player' */
+    c_player     .addEventListener('click', function(event){event.preventDefault(); event.stopPropagation();}); /* for 'label' and 'gallery-player' */
     c_button_play.addEventListener('click', function(){
       if (c_audio.paused) c_audio.play ();
       else                c_audio.pause();
