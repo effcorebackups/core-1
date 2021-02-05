@@ -14,6 +14,8 @@ forms
             - value: send
       # field 'File'
         - file_text|field_file
+            title: Text
+            item_title: Text
             upload_dir: demo/
             description|text
               text: Field "%%_title".
@@ -58,9 +60,10 @@ forms
             element_attributes
             - name: file_video[]
       # widget 'Files'
-        - files|widget_files
-            title: Files
-            name_complex: files
+        - files_texts|widget_files
+            title: Texts
+            item_title: Text
+            name_complex: files_texts
             upload_dir: demo/
             types_allowed
             - =: txt
