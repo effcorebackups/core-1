@@ -60,15 +60,15 @@ forms
       # widget 'Files'
         - files|widget_files
             title: Files
-            upload_dir: demo/
             name_complex: files
+            upload_dir: demo/
             types_allowed
             - =: txt
       # widget 'Pictures'
         - files_pictures|widget_files_pictures
             title: Pictures
-            upload_dir: demo/
             name_complex: files_pictures
+            upload_dir: demo/
             types_allowed
             - =: jpg
             - =: jpeg
@@ -80,11 +80,18 @@ forms
       # widget 'Audios'
         - files_audios|widget_files_audios
             title: Audios
-            upload_dir: demo/
             name_complex: files_audios
+            upload_dir: demo/
             player_timeline_is_visible|_string_false
             types_allowed
             - =: mp3
+      # widget 'Videos'
+        - files_videos|widget_files_videos
+            title: Videos
+            name_complex: files_videos
+            upload_dir: demo/
+            types_allowed
+            - =: mp4
       # field 'Text'
         - text|field_text
             title: Text
