@@ -83,7 +83,7 @@ namespace effcore {
 
   static function complex_value_to_markup($complex) {  
     $decorator = new decorator;
-    $decorator->id = 'widget_files-pictures-items';
+    $decorator->id = 'widget_files-multimedia-items';
     $decorator->view_type = 'template';
     $decorator->template = 'content';
     $decorator->template_row = 'gallery_row';
