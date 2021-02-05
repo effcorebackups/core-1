@@ -105,6 +105,13 @@ namespace effcore {
             'children' => ['value' => new markup('audio', ['src' => '/'.$c_item->object->get_current_path(true), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'])]
           ];
         }
+        if ($c_item->object->type === 'mp4') {
+          $decorator->data[$c_row_id] = [
+            'type'     => ['value' => 'video'  ],
+            'num'      => ['value' => $c_row_id],
+            'children' => ['value' => new markup_simple('video', ['src' => '/'.$c_item->object->get_current_path(true)])]
+          ];
+        }
       }
     }
     return $decorator;
