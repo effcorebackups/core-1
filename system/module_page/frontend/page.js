@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_timeline.append(c_trackpos);
     c_time.append(c_time_elpsd, c_time_total);
     c_audio.parentNode.insertBefore(c_player, c_audio.nextSibling);
+    c_audio.setAttribute('data-player-audio-default-is-processed', true);
     c_audio.controls = false;
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   };
 
-  document.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_audio){
+  document.querySelectorAll__notNull('audio[data-player-name="default"]:not([data-player-audio-default-is-processed])').forEach(function(c_audio){
     c_audio.process__defaultAudioPlayer();
   });
 
