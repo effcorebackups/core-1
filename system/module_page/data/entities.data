@@ -294,17 +294,19 @@ entities
         filter_update: \effcore\core::data_serialize
         managing_on_select_is_enabled: true
         managing_on_update_is_enabled: true
-        managing_control_class: \effcore\widget_files_pictures
+        managing_control_class: \effcore\widget_files_multimedia
         managing_control_properties
-        - max_file_size: 1M
+        - max_file_size: 50M
         - upload_dir: galleries/
         - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
         - name_complex: items
         - types_allowed
-          - =: jpg
-          - =: jpeg
+          - =: mp3
+          - =: mp4
           - =: png
           - =: gif
+          - =: jpg
+          - =: jpeg
           - =: svg
         - thumbnails_allowed
           - =: small
@@ -312,7 +314,7 @@ entities
           - =: big
         - weight: +340
         selection_params_default
-        - filter: \effcore\widget_files_pictures::complex_value_to_markup
+        - filter: \effcore\widget_files_multimedia::complex_value_to_markup
         - weight: +340
     constraints
     - primary_id

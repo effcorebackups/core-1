@@ -17,6 +17,7 @@ namespace effcore {
   public $max_file_size = '10M';
   public $types_allowed = [
     'mp3'  => 'mp3',
+    'mp4'  => 'mp4',
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
