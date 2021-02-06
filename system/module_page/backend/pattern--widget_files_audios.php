@@ -78,7 +78,7 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        if ($c_item->object->type === 'mp3') {
+        if (media::media_class_get($c_item->object->type) === 'audio') {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'audio'  ],
             'num'      => ['value' => $c_row_id],

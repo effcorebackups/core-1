@@ -31,7 +31,20 @@ namespace effcore {
     }
   }
 
-  static function is_type_for_picture_thumbnail_create($type) {
+  static function media_class_get($type) {
+    switch ($type) {
+      case 'mp3'    : return 'audio';
+      case 'mp4'    : return 'video';
+      case 'picture': return 'picture';
+      case 'png'    : return 'picture';
+      case 'gif'    : return 'picture';
+      case 'jpg'    : return 'picture';
+      case 'jpeg'   : return 'picture';
+      case 'svg'    : return 'picture';
+    }
+  }
+
+  static function is_type_for_picture_thumbnail($type) {
     if ($type === 'jpg' ) return true;
     if ($type === 'jpeg') return true;
     if ($type === 'png' ) return true;

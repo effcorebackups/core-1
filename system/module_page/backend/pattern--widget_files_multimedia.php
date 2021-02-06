@@ -92,12 +92,22 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) $decorator->data[$c_row_id] = ['type' => ['value' => 'picture'], 'num' => ['value' => $c_row_id], 'children' => ['value' => widget_files_pictures::item_markup_get($c_item, $c_row_id)]];
-        if ($c_item->object->type === 'mp3'                                          ) $decorator->data[$c_row_id] = ['type' => ['value' => 'audio'  ], 'num' => ['value' => $c_row_id], 'children' => ['value' =>   widget_files_audios::item_markup_get($c_item, $c_row_id)]];
-        if ($c_item->object->type === 'mp4'                                          ) $decorator->data[$c_row_id] = ['type' => ['value' => 'video'  ], 'num' => ['value' => $c_row_id], 'children' => ['value' =>   widget_files_videos::item_markup_get($c_item, $c_row_id)]];
+        if (in_array(media::media_class_get($c_item->object->type), ['picture', 'audio', 'video'])) {
+          $decorator->data[$c_row_id] = [
+            'type'     => ['value' => media::media_class_get($c_item->object->type)],
+            'num'      => ['value' => $c_row_id],
+            'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
+          ];
+        }
       }
     }
     return $decorator;
+  }
+
+  static function item_markup_get(...$params) {
+    if (media::media_class_get($params[0]->object->type) === 'picture') return widget_files_pictures::item_markup_get($params[0], $params[1]);
+    if (media::media_class_get($params[0]->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($params[0], $params[1]);
+    if (media::media_class_get($params[0]->object->type) === 'video'  ) return widget_files_videos  ::item_markup_get($params[0], $params[1]);
   }
 
 }}

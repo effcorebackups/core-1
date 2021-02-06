@@ -62,7 +62,7 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        if ($c_item->object->type === 'mp4') {
+        if (media::media_class_get($c_item->object->type) === 'video') {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'video'  ],
             'num'      => ['value' => $c_row_id],

@@ -71,7 +71,7 @@ namespace effcore {
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
         foreach ($items as $c_id => $c_item) {
           if ($c_item->object->get_current_state() === 'pre') {
-            if (media::is_type_for_picture_thumbnail_create($c_item->object->type)) {
+            if (media::is_type_for_picture_thumbnail($c_item->object->type)) {
               $c_file_src = new file($c_item->object->get_current_path());
               $c_file_dst = new file($c_file_src->dirs_get().
                                      $c_file_src->name_get().'.picture');
@@ -112,7 +112,7 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
+        if (media::media_class_get($c_item->object->type) === 'picture') {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'picture'],
             'num'      => ['value' => $c_row_id],
