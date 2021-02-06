@@ -81,7 +81,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {  
+  static function complex_value_to_markup($complex) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-multimedia-items';
     $decorator->view_type = 'template';
@@ -91,27 +91,9 @@ namespace effcore {
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {
-        if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
-          $decorator->data[$c_row_id] = [
-            'type'     => ['value' => 'picture'],
-            'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_item->object->get_current_path(true).'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_item->object->get_current_path(true).'?thumb=middle', 'alt' => new text('thumbnail')]))]
-          ];
-        }
-        if ($c_item->object->type === 'mp3') {
-          $decorator->data[$c_row_id] = [
-            'type'     => ['value' => 'audio'  ],
-            'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('audio', ['src' => '/'.$c_item->object->get_current_path(true), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'])]
-          ];
-        }
-        if ($c_item->object->type === 'mp4') {
-          $decorator->data[$c_row_id] = [
-            'type'     => ['value' => 'video'  ],
-            'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup_simple('video', ['src' => '/'.$c_item->object->get_current_path(true)])]
-          ];
-        }
+        if (in_array($c_item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) $decorator->data[$c_row_id] = ['type' => ['value' => 'picture'], 'num' => ['value' => $c_row_id], 'children' => ['value' => widget_files_pictures::item_markup_get($c_item, $c_row_id)]];
+        if ($c_item->object->type === 'mp3'                                          ) $decorator->data[$c_row_id] = ['type' => ['value' => 'audio'  ], 'num' => ['value' => $c_row_id], 'children' => ['value' =>   widget_files_audios::item_markup_get($c_item, $c_row_id)]];
+        if ($c_item->object->type === 'mp4'                                          ) $decorator->data[$c_row_id] = ['type' => ['value' => 'video'  ], 'num' => ['value' => $c_row_id], 'children' => ['value' =>   widget_files_videos::item_markup_get($c_item, $c_row_id)]];
       }
     }
     return $decorator;

@@ -68,7 +68,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {  
+  static function complex_value_to_markup($complex) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-audios-items';
     $decorator->view_type = 'template';
@@ -82,12 +82,16 @@ namespace effcore {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'audio'  ],
             'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('audio', ['src' => '/'.$c_item->object->get_current_path(true), 'controls' => true, 'preload' => 'metadata', 'data-player-name' => 'default', 'data-player-timeline-is-visible' => 'true'])]
+            'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
           ];
         }
       }
     }
     return $decorator;
+  }
+
+  static function item_markup_get($item, $row_id, $preload = 'metadata', $player_name = 'default', $timeline_is_visible = true) {
+    return new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => true, 'preload' => $preload, 'data-player-name' => $player_name, 'data-player-timeline-is-visible' => $timeline_is_visible]);
   }
 
 }}

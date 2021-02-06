@@ -102,7 +102,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {  
+  static function complex_value_to_markup($complex) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-pictures-items';
     $decorator->view_type = 'template';
@@ -116,12 +116,18 @@ namespace effcore {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'picture'],
             'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text('click to open in new window'), 'target' => 'widget_files-pictures-items', 'href' => '/'.$c_item->object->get_current_path(true).'?thumb=big'], new markup_simple('img', ['src' => '/'.$c_item->object->get_current_path(true).'?thumb=middle', 'alt' => new text('thumbnail')]))]
+            'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
           ];
         }
       }
     }
     return $decorator;
+  }
+
+  static function item_markup_get($item, $row_id, $title = 'click to open in new window', $target = 'widget_files-pictures-items', $alt = 'thumbnail') {
+    return new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text($title), 'target' => $target, 'href' => '/'.$item->object->get_current_path(true).'?thumb=big'],
+      new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=middle', 'alt' => new text($alt)])
+    );
   }
 
 }}

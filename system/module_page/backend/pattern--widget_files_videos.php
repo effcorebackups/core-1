@@ -52,7 +52,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {  
+  static function complex_value_to_markup($complex) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-videos-items';
     $decorator->view_type = 'template';
@@ -66,12 +66,16 @@ namespace effcore {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'video'  ],
             'num'      => ['value' => $c_row_id],
-            'children' => ['value' => new markup_simple('video', ['src' => '/'.$c_item->object->get_current_path(true)])]
+            'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
           ];
         }
       }
     }
     return $decorator;
+  }
+
+  static function item_markup_get($item, $row_id) {
+    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true)]);
   }
 
 }}
