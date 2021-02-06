@@ -305,6 +305,7 @@
   x-gallery x-item {float: left; width: %%_thumbnail_middle_width{null}px; margin: 5px}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_middle_width{null}px}
+  x-gallery x-item[data-type='video'] video,
   x-gallery x-item[data-type='audio'] audio,
   x-gallery x-item[data-type='audio'] x-audio-player {margin: 0}
 

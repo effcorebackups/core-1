@@ -74,8 +74,8 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id) {
-    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true)]);
+  static function item_markup_get($item, $row_id, $controls = true, $preload = 'metadata') {
+    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $controls, 'preload' => $preload]);
   }
 
 }}
