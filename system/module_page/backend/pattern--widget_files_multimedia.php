@@ -34,14 +34,8 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    if ($this->thumbnails_is_visible) {
-      if (in_array($item->object->type, ['picture', 'png', 'gif', 'jpg', 'jpeg'])) {
-        $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-        $widget->child_insert($thumbnail_markup, 'thumbnail');
-      }
-    }
-    if ($this->player_audio_is_visible) {
-      if ($item->object->type === 'mp3') {
+    if (media::media_class_get($item->object->type) === 'audio') {
+      if ($this->player_audio_is_visible) {
         $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->player_audio_controls, 'preload' => $this->player_audio_preload, 'data-player-name' => $this->player_audio_name, 'data-player-timeline-is-visible' => $this->player_audio_timeline_is_visible], [], +450);
         $widget->child_insert($player_markup, 'player');
       }
