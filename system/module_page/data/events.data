@@ -23,10 +23,18 @@ events
       for: not_found
       weight: +500
       handler: \effcore\modules\page\events_file::on_load_not_found
+  - static_audio|event
+      for: static
+      weight: +500
+      handler: \effcore\modules\page\events_file::on_load_static_audio
   - static_picture|event
       for: static
       weight: +500
       handler: \effcore\modules\page\events_file::on_load_static_picture
+  - static_video|event
+      for: static
+      weight: +500
+      handler: \effcore\modules\page\events_file::on_load_static_video
 # ─────────────────────────────────────────────────────────────────────
   on_form_init
   - colors|event

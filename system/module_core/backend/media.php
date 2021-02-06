@@ -33,7 +33,9 @@ namespace effcore {
 
   static function media_class_get($type) {
     switch ($type) {
+      case 'audio'  : return 'audio';
       case 'mp3'    : return 'audio';
+      case 'video'  : return 'video';
       case 'mp4'    : return 'video';
       case 'picture': return 'picture';
       case 'png'    : return 'picture';

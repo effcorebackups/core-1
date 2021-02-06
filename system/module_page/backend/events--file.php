@@ -45,11 +45,34 @@ namespace effcore\modules\page {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # meta                      → phar://test.picture/meta
-  # test.picture              → phar://test.picture/original
-  # test.picture?thumb=small  → phar://test.picture/small
-  # test.picture?thumb=middle → phar://test.picture/middle
-  # test.picture?thumb=big    → phar://test.picture/big
+  # audio
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_load_static_audio($event, &$type_info, &$file) {
+    if ($type_info->type === 'audio') {
+      core::send_header_and_exit('unsupported_media_type');
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # video
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_load_static_video($event, &$type_info, &$file) {
+    if ($type_info->type === 'video') {
+      core::send_header_and_exit('unsupported_media_type');
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # picture
+  # ─────────────────────────────────────────────────────────────────────
+  # test.picture               → phar://test.picture/original
+  # test.picture?thumb=        → phar://test.picture/original
+  # test.picture?thumb=unknown → phar://test.picture/original
+  # test.picture?thumb=small   → phar://test.picture/small
+  # test.picture?thumb=middle  → phar://test.picture/middle
+  # test.picture?thumb=big     → phar://test.picture/big
   # ─────────────────────────────────────────────────────────────────────
 
   const prepath_thumbnail_error = dir_system.'module_core/frontend/pictures/thumbnail-error';
