@@ -115,7 +115,7 @@ namespace effcore\modules\page {
             if ($size === 'middle') $width = $settings->thumbnail_middle_width;
             if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
             $path_thumbnail_tmp = $path.'.'.$size.'.'.$meta['original']['type'];
-            $result = media::picture_thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+            $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
             if ($result && file_exists($path_thumbnail_tmp)) {
               if (media::container_picture_thumbnail_insert($path_container, $path_thumbnail_tmp, $size)) {
                 @unlink($path_thumbnail_tmp);

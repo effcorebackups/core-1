@@ -27,7 +27,7 @@ namespace effcore {
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_values_pre_insert') {
         foreach ($items as $c_id => $c_item) {
           if ($c_item->get_current_state() === 'pre') {
-            if (media::is_type_for_picture_thumbnail($c_item->type)) {
+            if (media::is_type_for_thumbnail($c_item->type)) {
               $c_file_src = new file($c_item->get_current_path());
               $c_file_dst = new file($c_file_src->dirs_get().
                                      $c_file_src->name_get().'.picture');
