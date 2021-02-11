@@ -70,64 +70,71 @@ namespace effcore\modules\page {
   # test.picture               → phar://test.picture/original
   # test.picture?thumb=        → phar://test.picture/original
   # test.picture?thumb=unknown → phar://test.picture/original
-  # test.picture?thumb=small   → phar://test.picture/small
-  # test.picture?thumb=middle  → phar://test.picture/middle
-  # test.picture?thumb=big     → phar://test.picture/big
+  # test.picture?thumb=small   → phar://test.picture/thumbnail-small
+  # test.picture?thumb=middle  → phar://test.picture/thumbnail-middle
+  # test.picture?thumb=big     → phar://test.picture/thumbnail-big
   # ─────────────────────────────────────────────────────────────────────
 
-  const prepath_thumbnail_error = dir_system.'module_core/frontend/pictures/thumbnail-error';
+  const prepath_file_outside_of_dynamic_directory = dir_system.'module_core/frontend/pictures/file-outside-of-dynamic-directory';
+  const prepath_thumbnail_not_allowed             = dir_system.'module_core/frontend/pictures/thumbnail-not-allowed';
+  const prepath_thumbnail_creation_error          = dir_system.'module_core/frontend/pictures/thumbnail-creation-error';
 
   static function on_load_static_picture($event, &$type_info, &$file) {
     if ($type_info->type === 'picture') {
       $path = $file->path_get();
-      $path_container    = 'phar://'.$path;
-      $path_meta         = 'phar://'.$path.'/meta';
-      $path_original     = 'phar://'.$path.'/original';
-      $path_thumb_small  = 'phar://'.$path.'/small';
-      $path_thumb_middle = 'phar://'.$path.'/middle';
-      $path_thumb_big    = 'phar://'.$path.'/big';
+      $path_container        = 'phar://'.$path;
+      $path_meta             = 'phar://'.$path.'/meta';
+      $path_original         = 'phar://'.$path.'/original';
+      $path_thumbnail_small  = 'phar://'.$path.'/thumbnail-small';
+      $path_thumbnail_middle = 'phar://'.$path.'/thumbnail-middle';
+      $path_thumbnail_big    = 'phar://'.$path.'/thumbnail-big';
       if (file_exists($path_meta) &&
           file_exists($path_original)) {
         $meta = unserialize(file_get_contents($path_meta));
-        $type_info = file::types_get()[$meta['original']['type']];
-        switch (url::get_current()->query_arg_select('thumb')) {
-          case 'small' : $size = 'small';  break;
-          case 'middle': $size = 'middle'; break;
-          case 'big'   : $size = 'big';    break;
-          default      : $size = 'original';
-        }
-        if ($size === 'original') {
-          $file = new file($path_original);
-          return true;
-        }
-        if ($size === 'small' ) $path_thumbnail = $path_thumb_small;
-        if ($size === 'middle') $path_thumbnail = $path_thumb_middle;
-        if ($size === 'big'   ) $path_thumbnail = $path_thumb_big;
-        if (file_exists($path_thumbnail)) {
-          $file = new file($path_thumbnail);
-          return true;
-        }
-      # generate thumbnail and insert it into container
-        if (strpos($path, dir_dynamic) === 0) {
-          if (in_array($size, $meta['thumbnails_allowed'])) {
-            $settings = module::settings_get('page');
-            if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-            if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-            if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
-            $path_thumbnail_tmp = $path.'.'.$size.'.'.$meta['original']['type'];
-            $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
-            if ($result && file_exists($path_thumbnail_tmp)) {
-              if (media::container_picture_thumbnail_insert($path_container, $path_thumbnail_tmp, $size)) {
-                @unlink($path_thumbnail_tmp);
-                $file = new file($path_thumbnail);
-                return true;
-              }
+        $file_types = file::types_get();
+        if (isset($file_types[$meta['original']['type']])) {
+          $type_info = $file_types[$meta['original']['type']];
+          if (media::is_type_for_thumbnail($type_info->type)) {
+            switch (url::get_current()->query_arg_select('thumb')) {
+              case 'small' : $size = 'small';  break;
+              case 'middle': $size = 'middle'; break;
+              case 'big'   : $size = 'big';    break;
+              default      : $size = 'original';
             }
-          # show dummy if an error
-            $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
-          } $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
-        }   $file = new file(static::prepath_thumbnail_error.'.'.$meta['original']['type']);
-      } else core::send_header_and_exit('unsupported_media_type');
+            if ($size === 'original') {
+              $file = new file($path_original);
+              return true;
+            }
+            if ($size === 'small' ) $path_thumbnail = $path_thumbnail_small;
+            if ($size === 'middle') $path_thumbnail = $path_thumbnail_middle;
+            if ($size === 'big'   ) $path_thumbnail = $path_thumbnail_big;
+            if (file_exists($path_thumbnail)) {
+              $file = new file($path_thumbnail);
+              return true;
+            }
+          # generate thumbnail and insert it into container
+            if (strpos($path, dir_dynamic) === 0) {
+              if (in_array($size, $meta['thumbnails_allowed'])) {
+                $settings = module::settings_get('page');
+                if ($size === 'small' ) $width = $settings->thumbnail_small_width;
+                if ($size === 'middle') $width = $settings->thumbnail_middle_width;
+                if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
+                $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                if ($result && file_exists($path_thumbnail_tmp)) {
+                  if (media::container_picture_thumbnail_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
+                    @unlink($path_thumbnail_tmp);
+                    $file = new file($path_thumbnail);
+                    return true;
+                  }
+                }
+                   # show dummy if an error
+                     $file = new file(static::prepath_thumbnail_creation_error         .'.'.$meta['original']['type']);
+              } else $file = new file(static::prepath_thumbnail_not_allowed            .'.'.$meta['original']['type']);
+            }   else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['original']['type']);
+          }     else core::send_header_and_exit('unsupported_media_type');
+        }       else core::send_header_and_exit('unsupported_media_type');
+      }         else core::send_header_and_exit('unsupported_media_type');
     }
   }
 
