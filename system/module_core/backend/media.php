@@ -30,7 +30,7 @@ namespace effcore {
       $meta[$thumbnail_path_local]['type'] = $file->type_get();
       $meta[$thumbnail_path_local]['mime'] = $file->mime_get();
       $meta[$thumbnail_path_local]['size'] = $file->size_get();
-      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space to overwrite the file in concurrent access (Phar bug)
+      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
       $container->addFile($thumbnail_path, $thumbnail_path_local);
       $container->stopBuffering();
       return $container;
