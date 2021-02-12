@@ -12,7 +12,7 @@ namespace effcore {
       @unlink($dst_path);
       $container = new \PharData($dst_path, 0, null, \Phar::TAR);
       $container->startBuffering();
-      $container['meta'] = serialize($meta);
+      $container->addFromString('meta', serialize($meta));
       $container->addFile($src_path, 'original');
       $container->stopBuffering();
       return $container;
@@ -24,7 +24,15 @@ namespace effcore {
   static function container_picture_thumbnail_insert($container_path, $thumbnail_path, $thumbnail_path_local) {
     try {
       $container = new \PharData($container_path, 0, null, \Phar::TAR);
+      $container->startBuffering();
+      $meta = unserialize($container['meta']->getContent());
+      $file = new file($thumbnail_path);
+      $meta[$thumbnail_path_local]['type'] = $file->type_get();
+      $meta[$thumbnail_path_local]['mime'] = $file->mime_get();
+      $meta[$thumbnail_path_local]['size'] = $file->size_get();
+      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space to overwrite the file in concurrent access (Phar bug)
       $container->addFile($thumbnail_path, $thumbnail_path_local);
+      $container->stopBuffering();
       return $container;
     } catch (Exception $e) {
       return;

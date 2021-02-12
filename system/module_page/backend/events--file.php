@@ -92,7 +92,7 @@ namespace effcore\modules\page {
           file_exists($path_original)) {
         $meta = unserialize(file_get_contents($path_meta));
         $file_types = file::types_get();
-        if (isset($file_types[$meta['original']['type']])) {
+        if (isset($meta['original']['type']) && isset($file_types[$meta['original']['type']])) {
           $type_info = $file_types[$meta['original']['type']];
           if (media::is_type_for_thumbnail($type_info->type)) {
             switch (url::get_current()->query_arg_select('thumb')) {
