@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_files_multimedia extends widget_files_pictures {
+          class widget_files_multimedia extends widget_files {
 
   public $title = 'Multimedia';
   public $item_title = 'File';
@@ -34,6 +34,12 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+    if (media::media_class_get($item->object->type) === 'picture') {
+      if ($this->thumbnails_is_visible) {
+        $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+        $widget->child_insert($thumbnail_markup, 'thumbnail');
+      }
+    }
     if (media::media_class_get($item->object->type) === 'audio') {
       if ($this->player_audio_is_visible) {
         $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->player_audio_controls, 'preload' => $this->player_audio_preload, 'data-player-name' => $this->player_audio_name, 'data-player-timeline-is-visible' => $this->player_audio_timeline_is_visible], [], +450);
@@ -72,6 +78,40 @@ namespace effcore {
     return $widget;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  function items_set($items, $once = false) {
+    if (count($this->thumbnails_allowed)) {
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
+        foreach ($items as $c_id => $c_item) {
+          if ($c_item->object->get_current_state() === 'pre') {
+            if (media::is_type_for_thumbnail($c_item->object->type)) {
+              $c_file_src = new file($c_item->object->get_current_path());
+              $c_file_dst = new file($c_file_src->dirs_get().
+                                     $c_file_src->name_get().'.picture');
+              $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
+                'thumbnails_allowed' => $this->thumbnails_allowed,
+                'original' => [
+                  'type' => $c_item->object->type,
+                  'mime' => $c_item->object->mime,
+                  'size' => $c_item->object->size
+              ]]);
+              if ($result) {
+                @unlink($c_file_src->path_get());
+                $items[$c_id]->object->type     = 'picture';
+                $items[$c_id]->object->file     = $items[$c_id]->object->name.'.picture';
+                $items[$c_id]->object->mime     = $c_file_dst->mime_get();
+                $items[$c_id]->object->pre_path = $c_file_dst->path_get();
+                $items[$c_id]->object->size     = $c_file_dst->size_get();
+              }
+            }
+          }
+        }
+      }
+    }
+    parent::items_set($items, $once);
+  }
+
   ###########################
   ### static declarations ###
   ###########################
@@ -98,10 +138,10 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get(...$params) {
-    if (media::media_class_get($params[0]->object->type) === 'picture') return widget_files_pictures::item_markup_get($params[0], $params[1]);
-    if (media::media_class_get($params[0]->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($params[0], $params[1]);
-    if (media::media_class_get($params[0]->object->type) === 'video'  ) return widget_files_videos  ::item_markup_get($params[0], $params[1]);
+  static function item_markup_get($item, $row_id) {
+    if (media::media_class_get($item->object->type) === 'picture') return widget_files_pictures::item_markup_get($item, $row_id);
+    if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($item, $row_id);
+    if (media::media_class_get($item->object->type) === 'video'  ) return widget_files_videos  ::item_markup_get($item, $row_id);
   }
 
 }}
