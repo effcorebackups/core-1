@@ -28,24 +28,7 @@ namespace effcore {
         foreach ($items as $c_id => $c_item) {
           if ($c_item->get_current_state() === 'pre') {
             if (media::is_type_for_thumbnail($c_item->type)) {
-              $c_file_src = new file($c_item->get_current_path());
-              $c_file_dst = new file($c_file_src->dirs_get().
-                                     $c_file_src->name_get().'.picture');
-              $result = media::container_picture_make($c_file_src->path_get(), $c_file_dst->path_get(), [
-                'thumbnails_allowed' => $this->thumbnails_allowed,
-                'original' => [
-                  'type' => $c_item->type,
-                  'mime' => $c_item->mime,
-                  'size' => $c_item->size
-              ]]);
-              if ($result) {
-                @unlink($c_file_src->path_get());
-                $items[$c_id]->type     = 'picture';
-                $items[$c_id]->file     = $items[$c_id]->name.'.picture';
-                $items[$c_id]->mime     = $c_file_dst->mime_get();
-                $items[$c_id]->pre_path = $c_file_dst->path_get();
-                $items[$c_id]->size     = $c_file_dst->size_get();
-              }
+              $items[$c_id] = static::container_picture_make($c_item, $this->thumbnails_allowed);
             }
           }
         }
@@ -59,6 +42,32 @@ namespace effcore {
       $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
            return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
     } else return new node([], [                   new text('delete picture "%%_picture"', ['picture' => $item->file])]);
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function container_picture_make($file_history, $thumbnails_allowed) {
+    $file_src = new file($file_history->get_current_path());
+    $file_dst = new file($file_src->dirs_get().
+                         $file_src->name_get().'.picture');
+    $result = media::container_picture_make($file_src->path_get(), $file_dst->path_get(), [
+      'thumbnails_allowed' => $thumbnails_allowed,
+      'original' => [
+        'type' => $file_history->type,
+        'mime' => $file_history->mime,
+        'size' => $file_history->size
+    ]]);
+    if ($result) {
+      @unlink($file_src->path_get());
+      $file_history->type     = 'picture';
+      $file_history->file     = $file_history->name.'.picture';
+      $file_history->mime     = $file_dst->mime_get();
+      $file_history->pre_path = $file_dst->path_get();
+      $file_history->size     = $file_dst->size_get();
+      return $file_history;
+    }
   }
 
 }}
