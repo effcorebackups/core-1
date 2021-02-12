@@ -86,7 +86,7 @@ namespace effcore {
         foreach ($items as $c_id => $c_item) {
           if ($c_item->object->get_current_state() === 'pre') {
             if (media::is_type_for_thumbnail($c_item->object->type)) {
-              $items[$c_id]->object = widget_files_pictures::container_picture_make($c_item->object, $this->thumbnails_allowed);
+              $items[$c_id]->object = field_file_picture::container_picture_make($c_item->object, $this->thumbnails_allowed);
             }
           }
         }

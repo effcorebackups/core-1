@@ -72,7 +72,7 @@ namespace effcore {
         foreach ($items as $c_id => $c_item) {
           if ($c_item->object->get_current_state() === 'pre') {
             if (media::is_type_for_thumbnail($c_item->object->type)) {
-              $items[$c_id]->object = static::container_picture_make($c_item->object, $this->thumbnails_allowed);
+              $items[$c_id]->object = field_file_picture::container_picture_make($c_item->object, $this->thumbnails_allowed);
             }
           }
         }
@@ -84,28 +84,6 @@ namespace effcore {
   ###########################
   ### static declarations ###
   ###########################
-
-  static function container_picture_make($file_history, $thumbnails_allowed) {
-    $file_src = new file($file_history->get_current_path());
-    $file_dst = new file($file_src->dirs_get().
-                         $file_src->name_get().'.picture');
-    $result = media::container_picture_make($file_src->path_get(), $file_dst->path_get(), [
-      'thumbnails_allowed' => $thumbnails_allowed,
-      'original' => [
-        'type' => $file_history->type,
-        'mime' => $file_history->mime,
-        'size' => $file_history->size
-    ]]);
-    if ($result) {
-      @unlink($file_src->path_get());
-      $file_history->type     = 'picture';
-      $file_history->file     = $file_history->name.'.picture';
-      $file_history->mime     = $file_dst->mime_get();
-      $file_history->pre_path = $file_dst->path_get();
-      $file_history->size     = $file_dst->size_get();
-      return $file_history;
-    }
-  }
 
   static function complex_value_to_markup($complex) {
     $decorator = new decorator;
