@@ -231,10 +231,11 @@
     margin: 2px 5px 2px 0;
     padding: 5px 10px;
     border: 1px solid %%_color_main;
-    border-radius: 10px}
-  nav[aria-label='breadcrumb'] a:not([href]) {opacity: .5}
-  nav[aria-label='breadcrumb'] a[data-selected-trail='true'] {color: %%_color_link}
-  nav[aria-label='breadcrumb'] a[aria-current='true'       ] {color: %%_color_link}
+    border-radius: 10px;
+    color: %%_color_link}
+  nav[aria-label='breadcrumb'] a:hover {color: %%_color_link_active}
+  nav[aria-label='breadcrumb'] a:not([href]) {opacity: .5; cursor: default}
+  nav[aria-label='breadcrumb'] a:not([href]):hover {color: %%_color_link}
 
   /* pager */
 
