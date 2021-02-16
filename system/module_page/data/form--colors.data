@@ -188,5 +188,6 @@ forms
         - value: save
     - button_reset|button
         title: reset
+        break_on_validate: true
         attributes
         - value: reset
