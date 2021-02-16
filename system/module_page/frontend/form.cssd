@@ -213,8 +213,10 @@
 
   /* checkbox color */
 
-  x-field[data-type='checkbox-color'] input {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
-  x-field[data-type='checkbox-color'] input[data-value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
+  x-field[data-type='checkbox-color'] input[type='checkbox'] {border-width: 1px; border-radius: 5px}
+  x-field[data-type='checkbox-color'] input[type='checkbox']:checked {background-position: -58px 2px}
+  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent'] {background-color: white !important}
+  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent'] {background-position: -18px 2px} 
 
   /* group 'palette' */
 

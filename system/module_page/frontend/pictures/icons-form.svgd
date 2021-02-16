@@ -21,13 +21,12 @@
   </metadata>
 
   <g id="icon_checkbox">
-    <line id="ico_chk-cross_part_1" x1="4.5"  y1="15.5" x2="15.5" y2="4.5" style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
-    <line id="ico_chk-cross_part_2" x1="15.5" y1="15.5" x2="4.5"  y2="4.5" style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
-  </g>
-
-  <g id="icon_transparent">
+    <line id="ico_chk-cross_part_1" x1="4.5"  y1="15.5" x2="15.5" y2="4.5"  style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
+    <line id="ico_chk-cross_part_2" x1="15.5" y1="15.5" x2="4.5"  y2="4.5"  style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
     <line id="ico_trs-cross_part_1" x1="24.5" y1="15.5" x2="35.5" y2="4.5"  style="stroke: %%_color_main; stroke-linecap: round"/>
     <line id="ico_trs-cross_part_2" x1="24.5" y1="4.5"  x2="35.5" y2="15.5" style="stroke: %%_color_main; stroke-linecap: round"/>
+    <rect id="ico_chk-square-1" x="44" y="4" width="12" height="12" style="stroke: %%_color_main; stroke-width: 2px; stroke-linejoin: round; fill: none"/>
+    <rect id="ico_chk-square-2" x="64" y="4" width="12" height="12" style="stroke: %%_color_main; stroke-width: 1px; stroke-linejoin: round; fill: none"/>
   </g>
 
   <g id="icon_radiobutton">
@@ -39,11 +38,8 @@
     <circle id="ico_swc-circle-on"  cx="70" cy="50" r="7" style="fill: %%_color_main; stroke: none"/>
   </g>
 
-  <g id="icon_opened">
+  <g id="icon_opener">
     <path id="ico_opn-arrow" style="fill: none; stroke: white; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round" d="M 4 68 L 10 74 L 16 68"/>
-  </g>
-
-  <g id="icon_closed">
     <path id="ico_cls-arrow" style="fill: none; stroke: white; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round" d="M 28 76 L 34 70 L 28 64"/>
   </g>
 

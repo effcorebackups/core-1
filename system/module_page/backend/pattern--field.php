@@ -101,6 +101,12 @@ namespace effcore {
     }
   }
 
+  function autofocus_set($is_focused = true) {
+    $element = $this->child_select('element');
+    if ($is_focused) $element->attribute_insert('autofocus', true);
+    else             $element->attribute_delete('autofocus');
+  }
+
   function checked_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('checked') === true;
@@ -132,6 +138,12 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($id !== null) $element->attribute_insert('id', $id);
     else              $element->attribute_delete('id');
+  }
+
+  function invalid_set($is_invalid = true) {
+    $element = $this->child_select('element');
+    if ($is_invalid) $element->attribute_insert('aria-invalid', 'true');
+    else             $element->attribute_delete('aria-invalid');
   }
 
   function min_get() {
@@ -282,10 +294,9 @@ namespace effcore {
       form::$errors[] = $new_error;
       if (!$this->has_error) {
            $this->has_error = true;
-        $element = $this->child_select('element');
-        $element->attribute_insert('aria-invalid', 'true');
-        if (++static::$error_tabindex == 1) {
-          $element->attribute_insert('autofocus', true);
+        $this->invalid_set(true);
+        if (++static::$error_tabindex === 1) {
+          $this->autofocus_set(true);
         }
       }
     }

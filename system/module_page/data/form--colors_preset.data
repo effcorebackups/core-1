@@ -14,110 +14,137 @@ forms
             title: Page
             element_attributes
             - name: color_page_id
+            - checked: true
         - color_text_id|field_checkbox_color
             title: Text
             element_attributes
             - name: color_text_id
+            - checked: true
         - color_main_id|field_checkbox_color
             title: Main color
             element_attributes
             - name: color_main_id
+            - checked: true
         - color_link_id|field_checkbox_color
             title: Link
             element_attributes
             - name: color_link_id
+            - checked: true
         - color_link_active_id|field_checkbox_color
             title: Link active
             element_attributes
             - name: color_link_active_id
+            - checked: true
         - color_table_row_odd_id|field_checkbox_color
             title: Table: row odd
             element_attributes
             - name: color_table_row_odd_id
+            - checked: true
         - color_table_row_even_id|field_checkbox_color
             title: Table: row even
             element_attributes
             - name: color_table_row_even_id
+            - checked: true
         - color_relation_id|field_checkbox_color
             title: Relation
             element_attributes
             - name: color_relation_id
+            - checked: true
         - color_menu_id|field_checkbox_color
             title: Menu
             element_attributes
             - name: color_menu_id
+            - checked: true
         - color_menu_active_id|field_checkbox_color
             title: Menu active
             element_attributes
             - name: color_menu_active_id
+            - checked: true
         - color_menu_text_id|field_checkbox_color
             title: Menu: text
             element_attributes
             - name: color_menu_text_id
+            - checked: true
         - color_menu_link_id|field_checkbox_color
             title: Menu: link
             element_attributes
             - name: color_menu_link_id
+            - checked: true
         - color_menu_link_active_id|field_checkbox_color
             title: Menu: link active
             element_attributes
             - name: color_menu_link_active_id
+            - checked: true
         - color_tabs_id|field_checkbox_color
             title: Tabs
             element_attributes
             - name: color_tabs_id
+            - checked: true
         - color_tabs_link_id|field_checkbox_color
             title: Tabs: link
             element_attributes
             - name: color_tabs_link_id
+            - checked: true
         - color_tabs_link_active_id|field_checkbox_color
             title: Tabs: link active
             element_attributes
             - name: color_tabs_link_active_id
+            - checked: true
         - color_tabs_link_active_no_bg_id|field_checkbox_color
             title: Tabs: link active (no background)
             element_attributes
             - name: color_tabs_link_active_no_bg_id
+            - checked: true
         - color_ok_id|field_checkbox_color
             title: Okay
             element_attributes
             - name: color_ok_id
+            - checked: true
         - color_warning_id|field_checkbox_color
             title: Warning
             element_attributes
             - name: color_warning_id
+            - checked: true
         - color_error_id|field_checkbox_color
             title: Error
             element_attributes
             - name: color_error_id
+            - checked: true
         - color_fieldset_id|field_checkbox_color
             title: Fieldset
             element_attributes
             - name: color_fieldset_id
+            - checked: true
         - color_fieldset_nested_id|field_checkbox_color
             title: Fieldset nested
             element_attributes
             - name: color_fieldset_nested_id
+            - checked: true
         - color_field_id|field_checkbox_color
             title: Field
             element_attributes
             - name: color_field_id
+            - checked: true
         - color_field_text_id|field_checkbox_color
             title: Field: text
             element_attributes
             - name: color_field_text_id
+            - checked: true
         - color_button_id|field_checkbox_color
             title: Button
             element_attributes
             - name: color_button_id
+            - checked: true
         - color_button_active_id|field_checkbox_color
             title: Button active
             element_attributes
             - name: color_button_active_id
+            - checked: true
         - color_button_text_id|field_checkbox_color
             title: Button: text
             element_attributes
             - name: color_button_text_id
+            - checked: true
     - button_apply|button
         title: apply
         attributes
