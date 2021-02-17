@@ -43,6 +43,40 @@ namespace effcore {
     return static::$cache;
   }
 
+  static function is_all_colors_available() {
+    $result = true;
+    $colors = color::get_all();
+    $settings = module::settings_get('page');
+    $result&= !empty($colors[$settings->color_page_id                  ]);
+    $result&= !empty($colors[$settings->color_text_id                  ]);
+    $result&= !empty($colors[$settings->color_main_id                  ]);
+    $result&= !empty($colors[$settings->color_link_id                  ]);
+    $result&= !empty($colors[$settings->color_link_active_id           ]);
+    $result&= !empty($colors[$settings->color_table_row_odd_id         ]);
+    $result&= !empty($colors[$settings->color_table_row_even_id        ]);
+    $result&= !empty($colors[$settings->color_relation_id              ]);
+    $result&= !empty($colors[$settings->color_menu_id                  ]);
+    $result&= !empty($colors[$settings->color_menu_active_id           ]);
+    $result&= !empty($colors[$settings->color_menu_text_id             ]);
+    $result&= !empty($colors[$settings->color_menu_link_id             ]);
+    $result&= !empty($colors[$settings->color_menu_link_active_id      ]);
+    $result&= !empty($colors[$settings->color_tabs_id                  ]);
+    $result&= !empty($colors[$settings->color_tabs_link_id             ]);
+    $result&= !empty($colors[$settings->color_tabs_link_active_id      ]);
+    $result&= !empty($colors[$settings->color_tabs_link_active_no_bg_id]);
+    $result&= !empty($colors[$settings->color_ok_id                    ]);
+    $result&= !empty($colors[$settings->color_warning_id               ]);
+    $result&= !empty($colors[$settings->color_error_id                 ]);
+    $result&= !empty($colors[$settings->color_fieldset_id              ]);
+    $result&= !empty($colors[$settings->color_fieldset_nested_id       ]);
+    $result&= !empty($colors[$settings->color_field_id                 ]);
+    $result&= !empty($colors[$settings->color_field_text_id            ]);
+    $result&= !empty($colors[$settings->color_button_id                ]);
+    $result&= !empty($colors[$settings->color_button_active_id         ]);
+    $result&= !empty($colors[$settings->color_button_text_id           ]);
+    return $result;
+  }
+
   static function apply($id) {
     $preset = static::get($id);
     if ($preset) {

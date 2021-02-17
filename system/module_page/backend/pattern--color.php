@@ -7,9 +7,9 @@
 namespace effcore {
           class color {
 
-  const return_hex = 0b00;
-  const return_rgb = 0b01;
-  const return_rga = 0b10;
+  const return_hex  = 0b00;
+  const return_rgb  = 0b01;
+  const return_rgba = 0b10;
 
   public $id;
   public $value;
@@ -43,11 +43,11 @@ namespace effcore {
       $new_g = max(min($rgb['g'] + (int)$g_offset, 255), 0);
       $new_b = max(min($rgb['b'] + (int)$b_offset, 255), 0);
       switch ($return_mode) {
-        case static::return_rgb: return  'rgb('.$new_r.','.$new_g.','.$new_b.             ')';
-        case static::return_rga: return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$opacity.')';
-        case static::return_hex: return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
-                                            str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).
-                                            str_pad(dechex($new_b), 2, '0', STR_PAD_LEFT);
+        case static::return_rgb:  return  'rgb('.$new_r.','.$new_g.','.$new_b.             ')';
+        case static::return_rgba: return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$opacity.')';
+        case static::return_hex:  return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
+                                             str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).
+                                             str_pad(dechex($new_b), 2, '0', STR_PAD_LEFT);
       }
     }
   }
