@@ -340,7 +340,9 @@ in CSS and JS files. Such variables begin with "%%_", and the files
 containing them have extensions "cssd" and "jsd".
 
 The project does not implement and considers the CSS and JS streaming
-compression technology obsolete due to the following reasons:
+compression technology to be obsolete.
+It should be noted that the developers of "Google PageSpeed Insights" think differently.
+Disadvantages of streaming compression:
 - 1 to 10 KiB text files are compressed, that with modern data
   transfer rate is not significant, at the same time, compression
   takes web server resources, and for unpacking — the client (which
@@ -387,7 +389,7 @@ Decoration
 To decorate the site/portal in the system exists the section "View".
 In this section, the administrator can change the color scheme of the page elements.
 The number of colors is limited by the full set of named CSS colors (for example, "black",
-"white" and so on). Also in this section there are a color presets and in one click the
+"white" and so on). Also in this section there are a color presets and "in one click" the
 administrator can change the design of all available elements (for example,
 activate the light design theme). There is also a list of the layouts which
 available in the system.
@@ -428,7 +430,7 @@ The "Changes" mechanism modifies the global NoSQL tree, which, after clearing
 the cache, will be converted by the system into PHP code.
 
 After creating own module with the necessary settings the deployment process
-will look extremely simple — just install the system and enable own module.
+will look extremely simple — just install the system and enable this module.
 
 
 Localization

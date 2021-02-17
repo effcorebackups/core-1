@@ -145,12 +145,15 @@ Incompatibility with third-party software
 =====================================================================
 
 The following software is incompatible:
-- Kaspersky Internet Security browser plugin can insert to page
-  some CSS with strings like "appearance: checkbox" and etc.
+- Kaspersky Internet Security plugin for browser can insert to page
+  some CSS with strings like "appearance: checkbox".
   This string can break your own styles of form elements like
-  checkboxes, radios and other. Developers cannot do anything
-  against violating web standards from third side.
-  Just ignore Kaspersky Internet Security.
+  checkboxes, radios and other.
+  This line has the next form: "input[type="checkbox"]
+  {-webkit-appearance: checkbox !important}".
+  This line is contained in the file "/Applications/Kaspersky Anti-Virus For Mac.app/
+  Contents/PlugIns/KasperskySecurity.appex/Contents/Resources/Keyboard.css".
+  The only thing you can do is remove this line from this file on your side.
 
 
 Applications with subscription
