@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\page {
-          use \effcore\color;
+          use \effcore\color_preset;
           use \effcore\message;
           use \effcore\page;
           use \effcore\storage;
@@ -14,7 +14,7 @@ namespace effcore\modules\page {
 
   static function on_init($event, $form, $items) {
     $id = page::get_current()->args_get('id');
-    $preset = color::preset_get($id);
+    $preset = color_preset::get($id);
     if ($preset) {
       $items['#color_page_id'                  ]->color_set($preset->colors->color_page_id                  );
       $items['#color_text_id'                  ]->color_set($preset->colors->color_text_id                  );
@@ -50,7 +50,7 @@ namespace effcore\modules\page {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
         $id = page::get_current()->args_get('id');
-        $preset = color::preset_get($id);
+        $preset = color_preset::get($id);
         if ($preset) {
           $result = true;
           $has_selection = false;
@@ -87,8 +87,8 @@ namespace effcore\modules\page {
             if ($result) message::insert('Colors was applied.'             );
             else         message::insert('Colors was not applied!', 'error');
             storage_nosql_files::cache_update();
+            static::on_init(null, $form, $items);
           }
-          static::on_init(null, $form, $items);
         }
         break;
     }

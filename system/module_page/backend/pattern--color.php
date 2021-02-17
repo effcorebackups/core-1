@@ -66,11 +66,9 @@ namespace effcore {
   ###########################
 
   static protected $cache;
-  static protected $cache_presets;
 
   static function cache_cleaning() {
-    static::$cache         = null;
-    static::$cache_presets = null;
+    static::$cache = null;
   }
 
   static function init() {
@@ -85,18 +83,6 @@ namespace effcore {
     }
   }
 
-  static function init_presets() {
-    if (static::$cache_presets === null) {
-      foreach (storage::get('files')->select('colors_presets') as $c_module_id => $c_presets) {
-        foreach ($c_presets as $c_row_id => $c_preset) {
-          if (isset(static::$cache[$c_preset->id])) console::report_about_duplicate('colors_presets', $c_preset->id, $c_module_id);
-          static::$cache_presets[$c_preset->id] = $c_preset;
-          static::$cache_presets[$c_preset->id]->module_id = $c_module_id;
-        }
-      }
-    }
-  }
-
   static function get($id) {
     static::init();
     return static::$cache[$id] ?? null;
@@ -105,16 +91,6 @@ namespace effcore {
   static function get_all() {
     static::init();
     return static::$cache;
-  }
-
-  static function preset_get($id) {
-    static::init_presets();
-    return static::$cache_presets[$id] ?? null;
-  }
-
-  static function preset_get_all() {
-    static::init_presets();
-    return static::$cache_presets;
   }
 
 }}
