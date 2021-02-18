@@ -127,46 +127,46 @@
   form#palette x-color {display: inline-block; width: 30px; height: 30px}
   form#palette x-color:nth-child(11) {background: %%_test_color; border: 1px solid red; margin: -1px; position: relative; opacity: 1}
 
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 1) {background: %%_test_color{-50,-50,-50}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 2) {background: %%_test_color{-45,-45,-45}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 3) {background: %%_test_color{-40,-40,-40}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 4) {background: %%_test_color{-35,-35,-35}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 5) {background: %%_test_color{-30,-30,-30}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 6) {background: %%_test_color{-25,-25,-25}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 7) {background: %%_test_color{-20,-20,-20}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 8) {background: %%_test_color{-15,-15,-15}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child( 9) {background: %%_test_color{-10,-10,-10}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(10) {background: %%_test_color{-05,-05,-05}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(12) {background: %%_test_color{05,05,05}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(13) {background: %%_test_color{10,10,10}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(14) {background: %%_test_color{15,15,15}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(15) {background: %%_test_color{20,20,20}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(16) {background: %%_test_color{25,25,25}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(17) {background: %%_test_color{30,30,30}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(18) {background: %%_test_color{35,35,35}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(19) {background: %%_test_color{40,40,40}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(20) {background: %%_test_color{45,45,45}}
-  form#palette x-colors-group[via-parametric-tokens] x-color:nth-child(21) {background: %%_test_color{50,50,50}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 1) {background: %%_test_color{-50,-50,-50}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 2) {background: %%_test_color{-45,-45,-45}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 3) {background: %%_test_color{-40,-40,-40}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 4) {background: %%_test_color{-35,-35,-35}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 5) {background: %%_test_color{-30,-30,-30}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 6) {background: %%_test_color{-25,-25,-25}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 7) {background: %%_test_color{-20,-20,-20}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 8) {background: %%_test_color{-15,-15,-15}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child( 9) {background: %%_test_color{-10,-10,-10}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(10) {background: %%_test_color{-05,-05,-05}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(12) {background: %%_test_color{05,05,05}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(13) {background: %%_test_color{10,10,10}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(14) {background: %%_test_color{15,15,15}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(15) {background: %%_test_color{20,20,20}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(16) {background: %%_test_color{25,25,25}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(17) {background: %%_test_color{30,30,30}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(18) {background: %%_test_color{35,35,35}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(19) {background: %%_test_color{40,40,40}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(20) {background: %%_test_color{45,45,45}}
+  form#palette x-colors-group[data-parametric-tokens] x-color:nth-child(21) {background: %%_test_color{50,50,50}}
 
-  form#palette x-colors-group[via-overlays] x-color {background: %%_test_color}
-  form#palette x-colors-group[via-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
-  form#palette x-colors-group[via-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
-  form#palette x-colors-group[via-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}
+  form#palette x-colors-group[data-overlays] x-color {background: %%_test_color}
+  form#palette x-colors-group[data-overlays] x-color-overlay {display: inline-block; width: 30px; height: 30px}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 1) x-color-overlay {background: black; opacity: .50}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 2) x-color-overlay {background: black; opacity: .45}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 3) x-color-overlay {background: black; opacity: .40}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 4) x-color-overlay {background: black; opacity: .35}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 5) x-color-overlay {background: black; opacity: .30}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 6) x-color-overlay {background: black; opacity: .25}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 7) x-color-overlay {background: black; opacity: .20}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 8) x-color-overlay {background: black; opacity: .15}
+  form#palette x-colors-group[data-overlays] x-color:nth-child( 9) x-color-overlay {background: black; opacity: .10}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(10) x-color-overlay {background: black; opacity: .05}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(12) x-color-overlay {background: white; opacity: .05}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(13) x-color-overlay {background: white; opacity: .10}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(14) x-color-overlay {background: white; opacity: .15}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(15) x-color-overlay {background: white; opacity: .20}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(16) x-color-overlay {background: white; opacity: .25}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(17) x-color-overlay {background: white; opacity: .30}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(18) x-color-overlay {background: white; opacity: .35}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(19) x-color-overlay {background: white; opacity: .40}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(20) x-color-overlay {background: white; opacity: .45}
+  form#palette x-colors-group[data-overlays] x-color:nth-child(21) x-color-overlay {background: white; opacity: .50}
