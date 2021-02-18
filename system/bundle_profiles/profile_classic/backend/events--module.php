@@ -5,6 +5,7 @@
   ######################################################################
 
 namespace effcore\modules\profile_classic {
+          use \effcore\color_preset;
           use \effcore\field;
           use \effcore\message;
           use \effcore\module;
@@ -27,6 +28,7 @@ namespace effcore\modules\profile_classic {
       if (page::get('recovery'    )) $page_ids[] = 'recovery';
       if (page::get('registration')) $page_ids[] = 'registration';
       if (!count($page_ids)) {
+        color_preset::apply('original_classic');
         $module->install();
       } else {
         static::$is_failed_installation = true;
@@ -39,6 +41,7 @@ namespace effcore\modules\profile_classic {
   }
 
   static function on_uninstall($event) {
+    color_preset::reset();
     $module = module::get('profile_classic');
     $module->uninstall();
   }
