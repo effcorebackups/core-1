@@ -4,106 +4,106 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - classic_01|color
     id: classic_01
-    value: #053172
-    value_hex: #053172
-    group: classic
+    value: #052108
+    value_hex: #052108
+    group: profile_classic
 - classic_02|color
     id: classic_02
-    value: #0a3677
-    value_hex: #0a3677
-    group: classic
+    value: #06260a
+    value_hex: #06260a
+    group: profile_classic
 - classic_03|color
     id: classic_03
-    value: #103b7c
-    value_hex: #103b7c
-    group: classic
+    value: #072b0e
+    value_hex: #072b0e
+    group: profile_classic
 - classic_04|color
     id: classic_04
-    value: #144081
-    value_hex: #144081
-    group: classic
+    value: #07340f
+    value_hex: #07340f
+    group: profile_classic
 - classic_05|color
     id: classic_05
-    value: #194586
-    value_hex: #194586
-    group: classic
+    value: #093c13
+    value_hex: #093c13
+    group: profile_classic
 - classic_06|color
     id: classic_06
-    value: #1e4a8b
-    value_hex: #1e4a8b
-    group: classic
+    value: #0c4515
+    value_hex: #0c4515
+    group: profile_classic
 - classic_07|color
     id: classic_07
-    value: #234f90
-    value_hex: #234f90
-    group: classic
+    value: #0b4f1a
+    value_hex: #0b4f1a
+    group: profile_classic
 - classic_08|color
     id: classic_08
-    value: #295495
-    value_hex: #295495
-    group: classic
+    value: #0d581d
+    value_hex: #0d581d
+    group: profile_classic
 - classic_09|color
     id: classic_09
-    value: #2d599a
-    value_hex: #2d599a
-    group: classic
+    value: #0e5f21
+    value_hex: #0e5f21
+    group: profile_classic
 - classic_10|color
     id: classic_10
-    value: #325f9f
-    value_hex: #325f9f
-    group: classic
+    value: #106725
+    value_hex: #106725
+    group: profile_classic
 - classic_11|color
     id: classic_11
-    value: #3763a4
-    value_hex: #3763a4
-    group: classic
+    value: #106b25
+    value_hex: #106b25
+    group: profile_classic
 - classic_12|color
     id: classic_12
-    value: #3c68a9
-    value_hex: #3c68a9
-    group: classic
+    value: #127027
+    value_hex: #127027
+    group: profile_classic
 - classic_13|color
     id: classic_13
-    value: #416dae
-    value_hex: #416dae
-    group: classic
+    value: #15762a
+    value_hex: #15762a
+    group: profile_classic
 - classic_14|color
     id: classic_14
-    value: #4672b3
-    value_hex: #4672b3
-    group: classic
+    value: #197d2e
+    value_hex: #197d2e
+    group: profile_classic
 - classic_15|color
     id: classic_15
-    value: #4b77b8
-    value_hex: #4b77b8
-    group: classic
+    value: #1c8532
+    value_hex: #1c8532
+    group: profile_classic
 - classic_16|color
     id: classic_16
-    value: #507cbd
-    value_hex: #507cbd
-    group: classic
+    value: #228e36
+    value_hex: #228e36
+    group: profile_classic
 - classic_17|color
     id: classic_17
-    value: #5581c2
-    value_hex: #5581c2
-    group: classic
+    value: #25953b
+    value_hex: #25953b
+    group: profile_classic
 - classic_18|color
     id: classic_18
-    value: #5a86c7
-    value_hex: #5a86c7
-    group: classic
+    value: #2a9e40
+    value_hex: #2a9e40
+    group: profile_classic
 - classic_19|color
     id: classic_19
-    value: #5f8bcc
-    value_hex: #5f8bcc
-    group: classic
+    value: #2ea644
+    value_hex: #2ea644
+    group: profile_classic
 - classic_20|color
     id: classic_20
-    value: #6490d1
-    value_hex: #6490d1
-    group: classic
+    value: #31ac47
+    value_hex: #31ac47
+    group: profile_classic
 - classic_21|color
     id: classic_21
-    value: #6995d6
-    value_hex: #6995d6
-    group: classic
+    value: #33b349
+    value_hex: #33b349
+    group: profile_classic
