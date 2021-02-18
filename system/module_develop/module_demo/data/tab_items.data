@@ -143,9 +143,3 @@ tab_items
     id_tab: demo
     action_name: embedded/diagrams
     title: Diagrams
-- demo_colors|tab_item
-    id: demo_colors
-    id_parent: demo_embedded
-    id_tab: demo
-    action_name: embedded/colors
-    title: Colors

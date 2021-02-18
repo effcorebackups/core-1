@@ -275,6 +275,8 @@ translations
     - Gallery\: insert: Галерея: вставить
     - Gallery\: select: Галерея: выбрать
     - Gallery\: update: Галерея: обновить
+    - generate: генерировать
+    - Generation done.: Генерация выполнена.
     - GiB: ГиБ
     - Global CSS: Глобальный CSS
     - Glyphs: Глифы
@@ -469,6 +471,7 @@ translations
     - Page\: select: Страница: выбрать
     - Page\: update: Страница: обновить
     - Pages: Страницы
+    - Palette: Палитра
     - Parameter: Параметр
     - Parameters: Параметры
     - Parent ID: ID родителя

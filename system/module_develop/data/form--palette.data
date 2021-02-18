@@ -1,0 +1,18 @@
+forms
+- palette|form
+    attributes
+    - id: palette
+    - method: post
+    - novalidate: true
+    children
+    - palette|fieldset
+        children
+        - color|field_color
+            title: Color for generation
+            element_attributes
+            - name: color
+        - result|fieldset
+    - button_generate|button
+        title: generate
+        attributes
+        - value: generate

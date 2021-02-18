@@ -41,6 +41,7 @@ translations
     - checking on "%%_name" = "%%_value": праверка на "%%_name" = "%%_value"
     - Classes: Класы
     - Collations: Параўнанні
+    - Color for generation: Колер для генерацыі
     - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES): КАМБІНАТОРЫКА: МАГЧЫМЫЯ ПЕРАСТАНОЎКІ '.' + '/' + '0' У ШЛЯХУ ФАЙЛА З URL (ВЫКЛЮЧАЮЧЫ ДУБЛІКАТЫ)
     - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КАМБІНАТОРЫКА: МАГЧЫМЫЯ ПЕРАСТАНОЎКІ '.|..|...' + '0' + '1' У ШЛЯХУ ФАЙЛА З URL
     - Console: Кансоль

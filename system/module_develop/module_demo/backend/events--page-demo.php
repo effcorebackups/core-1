@@ -313,20 +313,4 @@ namespace effcore\modules\demo {
     return $diagram;
   }
 
-  ##############
-  ### colors ###
-  ##############
-
-  static function block_markup__demo_colors($page, $args = []) {
-    $colors_via_parametric_tokens = [];
-    $colors_via_overlays          = [];
-    for ($i = 0; $i < 21; $i++) {
-      $colors_via_parametric_tokens[] = new markup('x-color', []                               );
-      $colors_via_overlays         [] = new markup('x-color', [], new markup('x-color-overlay')); }
-    return new node([], [
-      new markup('x-colors-group', ['via-parametric-tokens' => true], $colors_via_parametric_tokens),
-      new markup('x-colors-group', ['via-overlays'          => true], $colors_via_overlays)
-    ]);
-  }
-
 }}
