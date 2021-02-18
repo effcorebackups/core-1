@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   width="10"
+   height="10"
+   viewBox="0 0 10 10"
+   style="shape-rendering: auto">
+
+  <circle style="stroke-width: 1px; stroke: white; stroke-opacity: 0.02; fill: none" cx="5" cy="5" r="4"/>
+
+</svg>
