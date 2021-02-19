@@ -247,19 +247,20 @@ namespace effcore {
     return $result;
   }
 
-  static function data_to_text($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
+  static function data_to_text($data, $entity_name = '', $entity_prefix = '', $depth = 0) {
     $result = [];
-    if ($entity_name && $depth === 0) $result[] = $entity_name;
-    if ($entity_name && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).($depth ? $entity_prefix : '').$entity_name;
+    if ($entity_name && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
+    if ($entity_name && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
     foreach ($data as $c_key => $c_value) {
-      if (is_array ($c_value) && !count($c_value))           continue;
-      if (is_object($c_value) && !get_object_vars($c_value)) continue;
-      if (is_array ($c_value))     $result[] = static::data_to_text($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_object($c_value)) $result[] = static::data_to_text($c_value, $c_key, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif ($c_value === null)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
-      elseif ($c_value === false)  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
-      elseif ($c_value === true)   $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
-      else                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.$c_value;
+      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(substr(get_class($c_value), 0, 8) === 'effcore\\' ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                               is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_empty_array';
+      elseif ($c_value === 'true')                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_true';
+      elseif ($c_value === 'false')                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_false';
+      elseif ($c_value === true)                            $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
+      elseif ($c_value === false)                           $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': false';
+      elseif ($c_value === null)                            $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': null';
+      else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.$c_value;
     }
     return implode(nl, $result);
   }
