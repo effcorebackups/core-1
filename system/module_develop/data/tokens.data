@@ -1,5 +1,0 @@
-tokens
-- test_color
-    match: %%_test_color
-    type: code
-    handler: \effcore\modules\develop\events_token::on_apply

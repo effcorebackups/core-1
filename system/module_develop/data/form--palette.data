@@ -9,7 +9,20 @@ forms
         children
         - color|field_color
             title: Color for generation
-        - result|fieldset
+            element_attributes
+            - value: #f7f7f7
+        - prefix|field_id_text
+            title: Prefix
+            element_attributes
+            - name: prefix
+            - value: custom_
+        - group|field_id_text
+            title: Group
+            element_attributes
+            - name: group
+            - value: custom
+        - report|fieldset
+            title: Report
             children
             - palette|node
             - data|markup
