@@ -20,13 +20,13 @@ colors_presets
       color_tabs_link_id: white
       color_tabs_link_active_id: white
       color_tabs_link_active_no_bg_id: gold
-      color_ok_id: embedded_state_ok
-      color_warning_id: embedded_state_warning
-      color_error_id: embedded_state_error
+      color_ok_id: state_ok
+      color_warning_id: state_warning
+      color_error_id: state_error
       color_fieldset_id: classic_10
       color_fieldset_nested_id: classic_12
       color_field_id: classic_08
       color_field_text_id: white
       color_button_id: classic_18
-      color_button_active_id: embedded_state_ok
+      color_button_active_id: state_ok
       color_button_text_id: white

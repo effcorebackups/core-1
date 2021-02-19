@@ -1121,18 +1121,18 @@ colors
     value: #81a5eb
     value_hex: #81a5eb
     group: default
-- embedded_state_ok|color
-    id: embedded_state_ok
+- state_ok|color
+    id: state_ok
     value: #48be38
     value_hex: #48be38
     group: default
-- embedded_state_warning|color
-    id: embedded_state_warning
+- state_warning|color
+    id: state_warning
     value: #fd9a1e
     value_hex: #fd9a1e
     group: default
-- embedded_state_error|color
-    id: embedded_state_error
+- state_error|color
+    id: state_error
     value: #fc5740
     value_hex: #fc5740
     group: default
