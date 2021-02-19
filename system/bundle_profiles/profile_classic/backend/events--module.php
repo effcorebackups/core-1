@@ -17,7 +17,10 @@ namespace effcore\modules\profile_classic {
 
   static function on_install($event) {
     $module = module::get('profile_classic');
-    if (page::get_current()->id === 'install') $module->install();
+    if (page::get_current()->id === 'install') {
+      color_preset::apply('original_classic');
+      $module->install();
+    }
     if (page::get_current()->id !== 'install') {
       $page_ids = [];
       if (page::get('about'       )) $page_ids[] = 'about';
