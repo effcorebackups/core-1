@@ -408,7 +408,7 @@
   x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}
   x-document h2 {margin: 2em 0 1em 0; font-size: 1.3em}
 
-  x-document[data-type='report'] {max-height: 400px; font-family: monospace; font-size: 13px}
+  x-document[data-type='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px}
   x-document[data-type='report'] p:first-child {margin-top:    0}
   x-document[data-type='report'] p:last-child  {margin-bottom: 0}
 

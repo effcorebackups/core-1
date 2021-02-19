@@ -249,9 +249,8 @@ namespace effcore {
 
   static function data_to_text($data, $entity_name = '', $entity_prefix = '  ', $depth = 0) {
     $result = [];
-    if ($entity_name) {
-      $result[] = str_repeat('  ', $depth-1).($depth ? $entity_prefix : '').$entity_name;
-    }
+    if ($entity_name && $depth === 0) $result[] = $entity_name;
+    if ($entity_name && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).($depth ? $entity_prefix : '').$entity_name;
     foreach ($data as $c_key => $c_value) {
       if (is_array ($c_value) && !count($c_value))           continue;
       if (is_object($c_value) && !get_object_vars($c_value)) continue;
