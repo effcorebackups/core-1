@@ -27,7 +27,7 @@ settings
   color_field_id: embedded_dark_1
   color_field_text_id: white
   color_button_id: embedded_main
-  color_button_active_id: dodgerblue
+  color_button_active_id: royalblue
   color_button_text_id: white
   console_visibility: 0
   page_min_width: 200
