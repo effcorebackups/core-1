@@ -16,23 +16,30 @@ namespace effcore {
   public $value_hex;
   public $group;
 
+  function __construct($id = null, $value = null, $value_hex = null, $group = null) {
+    if ($id       ) $this->id        = $id;
+    if ($value    ) $this->value     = $value;
+    if ($value_hex) $this->value_hex = $value_hex;
+    if ($group    ) $this->group     = $group;
+  }
+
   function rgb_get($is_int = true) {
     if (!empty($this->value_hex)) {
       $value = ltrim($this->value_hex, '#');
-      $value_parts = [];
+      $parts = [];
       if (strlen($value) === 3) {
-        $value_parts['r'] = $value[0].$value[0];
-        $value_parts['g'] = $value[1].$value[1];
-        $value_parts['b'] = $value[2].$value[2];}
+        $parts['r'] = $value[0].$value[0];
+        $parts['g'] = $value[1].$value[1];
+        $parts['b'] = $value[2].$value[2]; }
       if (strlen($value) === 6) {
-        $value_parts['r'] = $value[0].$value[1];
-        $value_parts['g'] = $value[2].$value[3];
-        $value_parts['b'] = $value[4].$value[5];}
-      if ($value_parts && $is_int) {
-        $value_parts['r'] = (int)hexdec($value_parts['r']);
-        $value_parts['g'] = (int)hexdec($value_parts['g']);
-        $value_parts['b'] = (int)hexdec($value_parts['b']);}
-      return $value_parts ?: null;
+        $parts['r'] = $value[0].$value[1];
+        $parts['g'] = $value[2].$value[3];
+        $parts['b'] = $value[4].$value[5]; }
+      if (count($parts) && $is_int === true) {
+        $parts['r'] = (int)hexdec($parts['r']);
+        $parts['g'] = (int)hexdec($parts['g']);
+        $parts['b'] = (int)hexdec($parts['b']); }
+      return $parts ?: null;
     }
   }
 
