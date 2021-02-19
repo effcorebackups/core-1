@@ -9,9 +9,13 @@ forms
         children
         - color|field_color
             title: Color for generation
-            element_attributes
-            - name: color
         - result|fieldset
+            children
+            - palette|node
+            - data|markup
+                tag_name: x-document
+                attributes
+                - data-type: report
     - button_generate|button
         title: generate
         attributes
