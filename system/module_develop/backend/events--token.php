@@ -14,7 +14,7 @@ namespace effcore\modules\develop {
       $settings = module::settings_get('develop');
       $color = new color(null, $settings->test_color, $settings->test_color);
       if (count($args) === 0) return $settings->test_color;
-      if (count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2]);
+      if (count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2], 1, color::return_hex);
       if (count($args) === 4) return $color->filter_shift($args[0], $args[1], $args[2], $args[3]);
     }
   }
