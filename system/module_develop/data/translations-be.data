@@ -46,9 +46,6 @@ translations
     - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КАМБІНАТОРЫКА: МАГЧЫМЫЯ ПЕРАСТАНОЎКІ '.|..|...' + '0' + '1' У ШЛЯХУ ФАЙЛА З URL
     - Console: Кансоль
     - Constraints: Абмежаванні
-    - Current language: Бягучая мова
-    - Data hash: Хэш дадзеных
-    - Data ID: ID дадзеных
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
     - default text: тэкст па змаўчанні
@@ -92,7 +89,6 @@ translations
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знойдзены ID карыстальніка = "%%_id_user" па псеўданіме = "%%_nickname"
     - Full report: Поўная справаздача
-    - Gradient of main color: Градыент асноўнага колеру
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
@@ -115,7 +111,6 @@ translations
     - item #3: пункт №3
     - Join: Злучэнне
     - Joins: Злучэння
-    - Kind: Від
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
@@ -166,13 +161,11 @@ translations
     - return = "%%_return": вяртанне = "%%_return"
     - roles after insertion\: %%_roles: ролі пасля ўстаўкі: %%_roles
     - roles before insertion\: %%_roles: ролі перад устаўкай: %%_roles
-    - Row ID: ID радка
     - row with auto id value = 1: радок з аўтаматычным значэннем id = 1
     - row with auto id value = 2: радок з аўтаматычным значэннем id = 2
     - row with auto id value = 3: радок з аўтаматычным значэннем id = 3
     - row with default values: радок са значэннямі па змаўчанні
     - row with non-default values: радок са значэннямі ня па змаўчанні
-    - sec.: сек.
     - Selection list (multiple select): Спіс выбару (множны выбар)
     - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)
     - Selection of "demo_data" entities + join (ID\: 200+): Выбарка сутнасцяў "demo_data" + join (ID: 200+)

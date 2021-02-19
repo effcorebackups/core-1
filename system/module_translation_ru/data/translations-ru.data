@@ -105,10 +105,13 @@ translations
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - Cron last run: Последний запуск Cron
+    - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
     - Current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - Current: Текущие
+    - Data hash: Хэш данных
+    - Data ID: ID данных
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление данных №%%_number для модуля "%%_title" (%%_id) не было применено!
     - Data update is required: Требуется обновление данных
@@ -343,6 +346,7 @@ translations
     - Its contents are not filtered and presented as is.: Его содержание не фильтруется и представляется как есть.
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
     - KiB: КиБ
+    - Kind: Вид
     - Language code: Код языка
     - Language: Язык
     - Languages: Языки
@@ -432,6 +436,7 @@ translations
     - More info in "%%_info".: Больше информации в "%%_info".
     - Multimedia: Мультимедиа
     - Multiple choice: Множественный выбор
+    - Multiplier: Множитель
     - name: имя
     - Name: Имя
     - New field: Новое поле
@@ -572,11 +577,13 @@ translations
     - Role\: update: Роль: обновить
     - roles: роли
     - Roles: Роли
+    - Row ID: ID строки
     - Running the test: Запуск теста
     - Russian: Русский
     - save: сохранить
     - Search: Поиск
     - search: поиск
+    - sec.: сек.
     - Section "%%_title": Раздел "%%_title"
     - Security: Безопасность
     - Security\: manage: Безопасность: управлять

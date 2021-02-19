@@ -25,11 +25,10 @@ namespace effcore\modules\develop {
         $palette_markup = [];
         $palette_colors = [];
         for ($i = 0; $i < 21; $i++) {
-          $c_offset = ($i - 10) * 5;
-          $c_color_id = $items['#prefix']->value_get().($c_offset < 0 ? 'm' : 'p').str_pad(abs($c_offset), 2, '0', STR_PAD_LEFT);
+          $c_offset = ($i - 10) * $items['#multiplier']->value_get();
+          $c_color_id = $items['#prefix']->value_get().($c_offset < 0 ? 'm' : 'p').abs($c_offset);
           $c_color_value_hex = $base_color->filter_shift($c_offset, $c_offset, $c_offset, 1, color::return_hex);
-          $c_color_value = isset(color::named_colors_hex_to_val[$c_color_value_hex]) ?
-                                 color::named_colors_hex_to_val[$c_color_value_hex]['value'] : $c_color_value_hex;
+          $c_color_value = isset(color::named_colors_hex_to_val[$c_color_value_hex]) ? color::named_colors_hex_to_val[$c_color_value_hex]['value'] : $c_color_value_hex;
           $palette_colors[$c_color_id] = new color($c_color_id, $c_color_value, $c_color_value_hex, $items['#group']->value_get());
           $palette_markup[$c_color_id] = new markup('x-color', ['style' => 'background-color: '.$c_color_value]); }
         $items['palette/report']->child_select('palette')->child_insert(new markup('x-palette', [], $palette_markup), 'palette');

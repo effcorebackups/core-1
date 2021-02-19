@@ -105,10 +105,13 @@ translations
     - Credentials for storage "%%_name" was not set!: Уліковыя дадзеныя для сховішча "%%_name" не былі зададзены!
     - Credentials: Уліковыя дадзеныя
     - Cron last run: Апошні запуск Cron
+    - Current language: Бягучая мова
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
     - Current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - Current: Бягучыя
+    - Data hash: Хэш дадзеных
+    - Data ID: ID дадзеных
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
     - Data update is required: Патрабуецца абнаўленне дадзеных
@@ -343,6 +346,7 @@ translations
     - Its contents are not filtered and presented as is.: Яго змест не фільтруецца і ўяўляецца як ёсць.
     - Key "%%_key" does not exist!: Ключ "%%_key" не існуе!
     - KiB: КіБ
+    - Kind: Від
     - Language code: Код мовы
     - Language: Мова
     - Languages: Мовы
@@ -432,6 +436,7 @@ translations
     - More info in "%%_info".: Больш інфармацыі ў "%%_info".
     - Multimedia: Мультымедыя
     - Multiple choice: Множны выбар
+    - Multiplier: Множнік
     - name: імя
     - Name: Імя
     - New field: Новае поле
@@ -572,11 +577,13 @@ translations
     - Role\: update: Роля: абнавіць
     - roles: ролі
     - Roles: Ролі
+    - Row ID: ID радка
     - Running the test: Запуск тэсту
     - Russian: Рускі
     - save: захаваць
     - Search: Пошук
     - search: пошук
+    - sec.: сек.
     - Section "%%_title": Падзел "%%_title"
     - Security: Бяспека
     - Security\: manage: Бяспека: кіраваць
