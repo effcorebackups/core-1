@@ -14,13 +14,11 @@ namespace effcore\modules\develop {
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('develop');
     $items['#color']->value_set($settings->test_color);
-    $colors__parametric_tokens = [];
-    $colors__overlays          = [];
-    for ($i = 0; $i < 21; $i++) {
-      $colors__parametric_tokens[] = new markup('x-color', []);
-      $colors__overlays         [] = new markup('x-color', [], new markup('x-color-overlay')); }
-    $items['palette/result']->child_insert(new markup('x-colors-group', ['data-parametric-tokens' => true], $colors__parametric_tokens), 'colors__parametric_tokens');
-    $items['palette/result']->child_insert(new markup('x-colors-group', ['data-overlays'          => true], $colors__overlays         ), 'colors__overlays');
+    $colors_markup = [];
+    for ($i = 0; $i < 21; $i++) $colors_markup[] = new markup('x-color');
+    $items['palette/result']->child_insert(
+      new markup('x-colors-group', [], $colors_markup), 'colors'
+    );
   }
 
   static function on_submit($event, $form, $items) {
