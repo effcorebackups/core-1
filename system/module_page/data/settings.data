@@ -2,16 +2,16 @@ settings
   apply_tokens_for_meta: false
   apply_tokens_for_sitemap: false
   apply_tokens_for_robots: false
-  color_page_id: embedded_dark_1
+  color_page_id: default_3
   color_text_id: white
   color_main_id: royalblue
   color_link_id: white
   color_link_active_id: gold
-  color_table_row_odd_id: embedded_dark_2
-  color_table_row_even_id: embedded_dark_3
+  color_table_row_odd_id: default_2
+  color_table_row_even_id: default_1
   color_relation_id: white
-  color_menu_id: embedded_dark_2
-  color_menu_active_id: embedded_dark_3
+  color_menu_id: default_2
+  color_menu_active_id: default_1
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: gold
@@ -22,11 +22,11 @@ settings
   color_ok_id: state_ok
   color_warning_id: state_warning
   color_error_id: state_error
-  color_fieldset_id: embedded_dark_2
-  color_fieldset_nested_id: embedded_dark_1
-  color_field_id: embedded_dark_1
+  color_fieldset_id: default_2
+  color_fieldset_nested_id: default_3
+  color_field_id: default_3
   color_field_text_id: white
-  color_button_id: embedded_main
+  color_button_id: default_main
   color_button_active_id: royalblue
   color_button_text_id: white
   console_visibility: 0

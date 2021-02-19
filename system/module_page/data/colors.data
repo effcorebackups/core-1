@@ -1094,32 +1094,32 @@ colors
     value_hex: #ffffff
     group: violet
 # ─────────────────────────────────────────────────────────────────────
-# embeded custom colors
+# default system colors
 # ─────────────────────────────────────────────────────────────────────
-- embedded_dark_3|color
-    id: embedded_dark_3
+- default_1|color
+    id: default_1
     value: #3b4157
     value_hex: #3b4157
     group: default
-- embedded_dark_2|color
-    id: embedded_dark_2
+- default_2|color
+    id: default_2
     value: #313852
     value_hex: #313852
     group: default
-- embedded_dark_1|color
-    id: embedded_dark_1
+- default_3|color
+    id: default_3
     value: #2a304a
     value_hex: #2a304a
     group: default
-- embedded_main|color
-    id: embedded_main
-    value: #216ce4
-    value_hex: #216ce4
-    group: default
-- embedded_light_1|color
-    id: embedded_light_1
+- default_4|color
+    id: default_4
     value: #81a5eb
     value_hex: #81a5eb
+    group: default
+- default_main|color
+    id: default_main
+    value: #216ce4
+    value_hex: #216ce4
     group: default
 - state_ok|color
     id: state_ok
