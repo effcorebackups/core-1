@@ -1116,6 +1116,21 @@ colors
     value: #81a5eb
     value_hex: #81a5eb
     group: default
+- default_5|color
+    id: default_5
+    value: royalblue
+    value_hex: #4169e1
+    group: default
+- default_6|color
+    id: default_6
+    value: gold
+    value_hex: #ffd700
+    group: default
+- default_7|color
+    id: default_7
+    value: dodgerblue
+    value_hex: #1e90ff
+    group: default
 - default_main|color
     id: default_main
     value: #216ce4
