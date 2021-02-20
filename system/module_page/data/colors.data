@@ -1136,6 +1136,11 @@ colors
     value: gold
     value_hex: #ffd700
     group: default
+- default_8|color
+    id: default_8
+    value: whitesmoke
+    value_hex: #f5f5f5
+    group: mono
 - state_ok|color
     id: state_ok
     value: #48be38
