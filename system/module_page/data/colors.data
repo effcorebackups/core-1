@@ -124,434 +124,434 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
-- red_m210|color
-    id: red_m210
-    value: #2d0000
-    value_hex: #2d0000
+- red_l_10x22|color
+    id: red_l_10x22
+    value: #230000
+    value_hex: #230000
     group: red
-- red_m189|color
-    id: red_m189
-    value: #420000
-    value_hex: #420000
+- red_l_9x22|color
+    id: red_l_9x22
+    value: #390000
+    value_hex: #390000
     group: red
-- red_m168|color
-    id: red_m168
-    value: #570000
-    value_hex: #570000
+- red_l_8x22|color
+    id: red_l_8x22
+    value: #4f0000
+    value_hex: #4f0000
     group: red
-- red_m147|color
-    id: red_m147
-    value: #6c0000
-    value_hex: #6c0000
+- red_l_7x22|color
+    id: red_l_7x22
+    value: #650000
+    value_hex: #650000
     group: red
-- red_m126|color
-    id: red_m126
-    value: #810000
-    value_hex: #810000
+- red_l_6x22|color
+    id: red_l_6x22
+    value: #7b0000
+    value_hex: #7b0000
     group: red
-- red_m105|color
-    id: red_m105
-    value: #960000
-    value_hex: #960000
+- red_l_5x22|color
+    id: red_l_5x22
+    value: #910000
+    value_hex: #910000
     group: red
-- red_m84|color
-    id: red_m84
-    value: #ab0000
-    value_hex: #ab0000
+- red_l_4x22|color
+    id: red_l_4x22
+    value: #a70000
+    value_hex: #a70000
     group: red
-- red_m63|color
-    id: red_m63
-    value: #c00000
-    value_hex: #c00000
+- red_l_3x22|color
+    id: red_l_3x22
+    value: #bd0000
+    value_hex: #bd0000
     group: red
-- red_m42|color
-    id: red_m42
-    value: #d50000
-    value_hex: #d50000
+- red_l_2x22|color
+    id: red_l_2x22
+    value: #d30000
+    value_hex: #d30000
     group: red
-- red_m21|color
-    id: red_m21
-    value: #ea0000
-    value_hex: #ea0000
+- red_l_1x22|color
+    id: red_l_1x22
+    value: #e91000
+    value_hex: #e91000
     group: red
 - red|color
     id: red
-    value: red
-    value_hex: #ff0000
+    value: #ff2600
+    value_hex: #ff2600
     group: red
-- red_p21|color
-    id: red_p21
-    value: #ff1515
-    value_hex: #ff1515
+- red_r_1x22|color
+    id: red_r_1x22
+    value: #ff3c16
+    value_hex: #ff3c16
     group: red
-- red_p42|color
-    id: red_p42
-    value: #ff2a2a
-    value_hex: #ff2a2a
+- red_r_2x22|color
+    id: red_r_2x22
+    value: #ff522c
+    value_hex: #ff522c
     group: red
-- red_p63|color
-    id: red_p63
-    value: #ff3f3f
-    value_hex: #ff3f3f
+- red_r_3x22|color
+    id: red_r_3x22
+    value: #ff6842
+    value_hex: #ff6842
     group: red
-- red_p84|color
-    id: red_p84
-    value: #ff5454
-    value_hex: #ff5454
+- red_r_4x22|color
+    id: red_r_4x22
+    value: #ff7e58
+    value_hex: #ff7e58
     group: red
-- red_p105|color
-    id: red_p105
-    value: #ff6969
-    value_hex: #ff6969
+- red_r_5x22|color
+    id: red_r_5x22
+    value: #ff946e
+    value_hex: #ff946e
     group: red
-- red_p126|color
-    id: red_p126
-    value: #ff7e7e
-    value_hex: #ff7e7e
+- red_r_6x22|color
+    id: red_r_6x22
+    value: #ffaa84
+    value_hex: #ffaa84
     group: red
-- red_p147|color
-    id: red_p147
-    value: #ff9393
-    value_hex: #ff9393
+- red_r_7x22|color
+    id: red_r_7x22
+    value: #ffc09a
+    value_hex: #ffc09a
     group: red
-- red_p168|color
-    id: red_p168
-    value: #ffa8a8
-    value_hex: #ffa8a8
+- red_r_8x22|color
+    id: red_r_8x22
+    value: #ffd6b0
+    value_hex: #ffd6b0
     group: red
-- red_p189|color
-    id: red_p189
-    value: #ffbdbd
-    value_hex: #ffbdbd
+- red_r_9x22|color
+    id: red_r_9x22
+    value: #ffecc6
+    value_hex: #ffecc6
     group: red
-- red_p210|color
-    id: red_p210
-    value: #ffd2d2
-    value_hex: #ffd2d2
+- red_r_10x22|color
+    id: red_r_10x22
+    value: #ffffdc
+    value_hex: #ffffdc
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
-- orange_m210|color
-    id: orange_m210
-    value: #2d0000
-    value_hex: #2d0000
+- orange_l_10x22|color
+    id: orange_l_10x22
+    value: #230000
+    value_hex: #230000
     group: orange
-- orange_m189|color
-    id: orange_m189
-    value: #420000
-    value_hex: #420000
+- orange_l_9x22|color
+    id: orange_l_9x22
+    value: #390000
+    value_hex: #390000
     group: orange
-- orange_m168|color
-    id: orange_m168
-    value: #570000
-    value_hex: #570000
+- orange_l_8x22|color
+    id: orange_l_8x22
+    value: #4f0000
+    value_hex: #4f0000
     group: orange
-- orange_m147|color
-    id: orange_m147
-    value: #6c1200
-    value_hex: #6c1200
+- orange_l_7x22|color
+    id: orange_l_7x22
+    value: #650000
+    value_hex: #650000
     group: orange
-- orange_m126|color
-    id: orange_m126
-    value: #812700
-    value_hex: #812700
+- orange_l_6x22|color
+    id: orange_l_6x22
+    value: #7b0f00
+    value_hex: #7b0f00
     group: orange
-- orange_m105|color
-    id: orange_m105
-    value: #963c00
-    value_hex: #963c00
+- orange_l_5x22|color
+    id: orange_l_5x22
+    value: #912500
+    value_hex: #912500
     group: orange
-- orange_m84|color
-    id: orange_m84
-    value: #ab5100
-    value_hex: #ab5100
+- orange_l_4x22|color
+    id: orange_l_4x22
+    value: #a73b00
+    value_hex: #a73b00
     group: orange
-- orange_m63|color
-    id: orange_m63
-    value: #c06600
-    value_hex: #c06600
+- orange_l_3x22|color
+    id: orange_l_3x22
+    value: #bd5100
+    value_hex: #bd5100
     group: orange
-- orange_m42|color
-    id: orange_m42
-    value: #d57b00
-    value_hex: #d57b00
+- orange_l_2x22|color
+    id: orange_l_2x22
+    value: #d36700
+    value_hex: #d36700
     group: orange
-- orange_m21|color
-    id: orange_m21
-    value: #ea9000
-    value_hex: #ea9000
+- orange_l_1x22|color
+    id: orange_l_1x22
+    value: #e97d00
+    value_hex: #e97d00
     group: orange
 - orange|color
     id: orange
-    value: orange
-    value_hex: #ffa500
+    value: #ff9300
+    value_hex: #ff9300
     group: orange
-- orange_p21|color
-    id: orange_p21
-    value: #ffba15
-    value_hex: #ffba15
+- orange_r_1x18|color
+    id: orange_r_1x18
+    value: #ffa512
+    value_hex: #ffa512
     group: orange
-- orange_p42|color
-    id: orange_p42
-    value: #ffcf2a
-    value_hex: #ffcf2a
+- orange_r_2x18|color
+    id: orange_r_2x18
+    value: #ffb724
+    value_hex: #ffb724
     group: orange
-- orange_p63|color
-    id: orange_p63
-    value: #ffe43f
-    value_hex: #ffe43f
+- orange_r_3x18|color
+    id: orange_r_3x18
+    value: #ffc936
+    value_hex: #ffc936
     group: orange
-- orange_p84|color
-    id: orange_p84
-    value: #fff954
-    value_hex: #fff954
+- orange_r_4x18|color
+    id: orange_r_4x18
+    value: #ffdb48
+    value_hex: #ffdb48
     group: orange
-- orange_p105|color
-    id: orange_p105
-    value: #ffff69
-    value_hex: #ffff69
+- orange_r_5x18|color
+    id: orange_r_5x18
+    value: #ffed5a
+    value_hex: #ffed5a
     group: orange
-- orange_p126|color
-    id: orange_p126
+- orange_r_6x18|color
+    id: orange_r_6x18
+    value: #ffff6c
+    value_hex: #ffff6c
+    group: orange
+- orange_r_7x18|color
+    id: orange_r_7x18
     value: #ffff7e
     value_hex: #ffff7e
     group: orange
-- orange_p147|color
-    id: orange_p147
-    value: #ffff93
-    value_hex: #ffff93
+- orange_r_8x18|color
+    id: orange_r_8x18
+    value: #ffff90
+    value_hex: #ffff90
     group: orange
-- orange_p168|color
-    id: orange_p168
-    value: #ffffa8
-    value_hex: #ffffa8
+- orange_r_9x18|color
+    id: orange_r_9x18
+    value: #ffffa2
+    value_hex: #ffffa2
     group: orange
-- orange_p189|color
-    id: orange_p189
-    value: #ffffbd
-    value_hex: #ffffbd
-    group: orange
-- orange_p210|color
-    id: orange_p210
-    value: #ffffd2
-    value_hex: #ffffd2
+- orange_r_10x18|color
+    id: orange_r_10x18
+    value: #ffffb4
+    value_hex: #ffffb4
     group: orange
 # ─────────────────────────────────────────────────────────────────────
 # gold group
 # ─────────────────────────────────────────────────────────────────────
-- gold_m210|color
-    id: gold_m210
-    value: #2d0500
-    value_hex: #2d0500
+- gold_l_10x22|color
+    id: gold_l_10x22
+    value: #230000
+    value_hex: #230000
     group: gold
-- gold_m189|color
-    id: gold_m189
-    value: #421a00
-    value_hex: #421a00
+- gold_l_9x22|color
+    id: gold_l_9x22
+    value: #391100
+    value_hex: #391100
     group: gold
-- gold_m168|color
-    id: gold_m168
-    value: #572f00
-    value_hex: #572f00
+- gold_l_8x22|color
+    id: gold_l_8x22
+    value: #4f2700
+    value_hex: #4f2700
     group: gold
-- gold_m147|color
-    id: gold_m147
-    value: #6c4400
-    value_hex: #6c4400
+- gold_l_7x22|color
+    id: gold_l_7x22
+    value: #653d00
+    value_hex: #653d00
     group: gold
-- gold_m126|color
-    id: gold_m126
-    value: #815900
-    value_hex: #815900
+- gold_l_6x22|color
+    id: gold_l_6x22
+    value: #7b5300
+    value_hex: #7b5300
     group: gold
-- gold_m105|color
-    id: gold_m105
-    value: #966e00
-    value_hex: #966e00
+- gold_l_5x22|color
+    id: gold_l_5x22
+    value: #916900
+    value_hex: #916900
     group: gold
-- gold_m84|color
-    id: gold_m84
-    value: #ab8300
-    value_hex: #ab8300
+- gold_l_4x22|color
+    id: gold_l_4x22
+    value: #a77f00
+    value_hex: #a77f00
     group: gold
-- gold_m63|color
-    id: gold_m63
-    value: #c09800
-    value_hex: #c09800
+- gold_l_3x22|color
+    id: gold_l_3x22
+    value: #bd9500
+    value_hex: #bd9500
     group: gold
-- gold_m42|color
-    id: gold_m42
-    value: #d5ad00
-    value_hex: #d5ad00
+- gold_l_2x22|color
+    id: gold_l_2x22
+    value: #d3ab00
+    value_hex: #d3ab00
     group: gold
-- gold_m21|color
-    id: gold_m21
-    value: #eac200
-    value_hex: #eac200
+- gold_l_1x22|color
+    id: gold_l_1x22
+    value: #e9c100
+    value_hex: #e9c100
     group: gold
 - gold|color
     id: gold
     value: gold
     value_hex: #ffd700
     group: gold
-- gold_p21|color
-    id: gold_p21
-    value: #ffec15
-    value_hex: #ffec15
+- gold_r_1x20|color
+    id: gold_r_1x20
+    value: #ffeb14
+    value_hex: #ffeb14
     group: gold
-- gold_p42|color
-    id: gold_p42
-    value: #ffff2a
-    value_hex: #ffff2a
+- gold_r_2x20|color
+    id: gold_r_2x20
+    value: #ffff28
+    value_hex: #ffff28
     group: gold
-- gold_p63|color
-    id: gold_p63
-    value: #ffff3f
-    value_hex: #ffff3f
+- gold_r_3x20|color
+    id: gold_r_3x20
+    value: #ffff3c
+    value_hex: #ffff3c
     group: gold
-- gold_p84|color
-    id: gold_p84
-    value: #ffff54
-    value_hex: #ffff54
+- gold_r_4x20|color
+    id: gold_r_4x20
+    value: #ffff50
+    value_hex: #ffff50
     group: gold
-- gold_p105|color
-    id: gold_p105
-    value: #ffff69
-    value_hex: #ffff69
+- gold_r_5x20|color
+    id: gold_r_5x20
+    value: #ffff64
+    value_hex: #ffff64
     group: gold
-- gold_p126|color
-    id: gold_p126
-    value: #ffff7e
-    value_hex: #ffff7e
+- gold_r_6x20|color
+    id: gold_r_6x20
+    value: #ffff78
+    value_hex: #ffff78
     group: gold
-- gold_p147|color
-    id: gold_p147
-    value: #ffff93
-    value_hex: #ffff93
+- gold_r_7x20|color
+    id: gold_r_7x20
+    value: #ffff8c
+    value_hex: #ffff8c
     group: gold
-- gold_p168|color
-    id: gold_p168
-    value: #ffffa8
-    value_hex: #ffffa8
+- gold_r_8x20|color
+    id: gold_r_8x20
+    value: #ffffa0
+    value_hex: #ffffa0
     group: gold
-- gold_p189|color
-    id: gold_p189
-    value: #ffffbd
-    value_hex: #ffffbd
+- gold_r_9x20|color
+    id: gold_r_9x20
+    value: #ffffb4
+    value_hex: #ffffb4
     group: gold
-- gold_p210|color
-    id: gold_p210
-    value: #ffffd2
-    value_hex: #ffffd2
+- gold_r_10x20|color
+    id: gold_r_10x20
+    value: #ffffc8
+    value_hex: #ffffc8
     group: gold
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
-- yellow_m210|color
-    id: yellow_m210
-    value: #2d2d00
-    value_hex: #2d2d00
+- yellow_l_10x23|color
+    id: yellow_l_10x23
+    value: #191500
+    value_hex: #191500
     group: yellow
-- yellow_m189|color
-    id: yellow_m189
-    value: #424200
-    value_hex: #424200
+- yellow_l_9x23|color
+    id: yellow_l_9x23
+    value: #302c00
+    value_hex: #302c00
     group: yellow
-- yellow_m168|color
-    id: yellow_m168
-    value: #575700
-    value_hex: #575700
+- yellow_l_8x23|color
+    id: yellow_l_8x23
+    value: #474300
+    value_hex: #474300
     group: yellow
-- yellow_m147|color
-    id: yellow_m147
-    value: #6c6c00
-    value_hex: #6c6c00
+- yellow_l_7x23|color
+    id: yellow_l_7x23
+    value: #5e5a00
+    value_hex: #5e5a00
     group: yellow
-- yellow_m126|color
-    id: yellow_m126
-    value: #818100
-    value_hex: #818100
+- yellow_l_6x23|color
+    id: yellow_l_6x23
+    value: #757100
+    value_hex: #757100
     group: yellow
-- yellow_m105|color
-    id: yellow_m105
-    value: #969600
-    value_hex: #969600
+- yellow_l_5x23|color
+    id: yellow_l_5x23
+    value: #8c8800
+    value_hex: #8c8800
     group: yellow
-- yellow_m84|color
-    id: yellow_m84
-    value: #abab00
-    value_hex: #abab00
+- yellow_l_4x23|color
+    id: yellow_l_4x23
+    value: #a39f00
+    value_hex: #a39f00
     group: yellow
-- yellow_m63|color
-    id: yellow_m63
-    value: #c0c000
-    value_hex: #c0c000
+- yellow_l_3x23|color
+    id: yellow_l_3x23
+    value: #bab600
+    value_hex: #bab600
     group: yellow
-- yellow_m42|color
-    id: yellow_m42
-    value: #d5d500
-    value_hex: #d5d500
+- yellow_l_2x23|color
+    id: yellow_l_2x23
+    value: #d1cd00
+    value_hex: #d1cd00
     group: yellow
-- yellow_m21|color
-    id: yellow_m21
-    value: #eaea00
-    value_hex: #eaea00
+- yellow_l_1x23|color
+    id: yellow_l_1x23
+    value: #e8e400
+    value_hex: #e8e400
     group: yellow
 - yellow|color
     id: yellow
-    value: yellow
-    value_hex: #ffff00
+    value: #fffb00
+    value_hex: #fffb00
     group: yellow
-- yellow_p21|color
-    id: yellow_p21
-    value: #ffff15
-    value_hex: #ffff15
+- yellow_r_1x22|color
+    id: yellow_r_1x22
+    value: #ffff16
+    value_hex: #ffff16
     group: yellow
-- yellow_p42|color
-    id: yellow_p42
-    value: #ffff2a
-    value_hex: #ffff2a
+- yellow_r_2x22|color
+    id: yellow_r_2x22
+    value: #ffff2c
+    value_hex: #ffff2c
     group: yellow
-- yellow_p63|color
-    id: yellow_p63
-    value: #ffff3f
-    value_hex: #ffff3f
+- yellow_r_3x22|color
+    id: yellow_r_3x22
+    value: #ffff42
+    value_hex: #ffff42
     group: yellow
-- yellow_p84|color
-    id: yellow_p84
-    value: #ffff54
-    value_hex: #ffff54
+- yellow_r_4x22|color
+    id: yellow_r_4x22
+    value: #ffff58
+    value_hex: #ffff58
     group: yellow
-- yellow_p105|color
-    id: yellow_p105
-    value: #ffff69
-    value_hex: #ffff69
+- yellow_r_5x22|color
+    id: yellow_r_5x22
+    value: #ffff6e
+    value_hex: #ffff6e
     group: yellow
-- yellow_p126|color
-    id: yellow_p126
-    value: #ffff7e
-    value_hex: #ffff7e
+- yellow_r_6x22|color
+    id: yellow_r_6x22
+    value: #ffff84
+    value_hex: #ffff84
     group: yellow
-- yellow_p147|color
-    id: yellow_p147
-    value: #ffff93
-    value_hex: #ffff93
+- yellow_r_7x22|color
+    id: yellow_r_7x22
+    value: #ffff9a
+    value_hex: #ffff9a
     group: yellow
-- yellow_p168|color
-    id: yellow_p168
-    value: #ffffa8
-    value_hex: #ffffa8
+- yellow_r_8x22|color
+    id: yellow_r_8x22
+    value: #ffffb0
+    value_hex: #ffffb0
     group: yellow
-- yellow_p189|color
-    id: yellow_p189
-    value: #ffffbd
-    value_hex: #ffffbd
+- yellow_r_9x22|color
+    id: yellow_r_9x22
+    value: #ffffc6
+    value_hex: #ffffc6
     group: yellow
-- yellow_p210|color
-    id: yellow_p210
-    value: #ffffd2
-    value_hex: #ffffd2
+- yellow_r_10x22|color
+    id: yellow_r_10x22
+    value: #ffffdc
+    value_hex: #ffffdc
     group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # green group
