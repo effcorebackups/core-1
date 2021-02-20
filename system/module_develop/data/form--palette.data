@@ -21,10 +21,18 @@ forms
             element_attributes
             - name: group
             - value: custom
-        - multiplier|field_number
-            title: Multiplier
+        - multiplier_l|field_number
+            title: Multiplier (left)
             element_attributes
-            - name: multiplier
+            - name: multiplier_l
+            - min: +1
+            - max: +26
+            - step: 1
+            - value: 21
+        - multiplier_r|field_number
+            title: Multiplier (right)
+            element_attributes
+            - name: multiplier_r
             - min: +1
             - max: +26
             - step: 1
@@ -37,6 +45,9 @@ forms
                 tag_name: x-document
                 attributes
                 - data-type: report
+                children
+                - data|text
+                    text: The report will be created after submitting the form.
     - button_generate|button
         title: generate
         attributes

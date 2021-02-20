@@ -17,9 +17,6 @@ events
   - console|event
       for: console
       handler: \effcore\modules\develop\events_form_console::on_init
-  - palette|event
-      for: palette
-      handler: \effcore\modules\develop\events_form_palette::on_init
   on_form_submit
   - console|event
       for: console

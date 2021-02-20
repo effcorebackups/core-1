@@ -118,6 +118,8 @@ translations
     - method protected: метод защищённый
     - method public: метод публичный
     - Module dependencies from PHP extensions: Зависимости модулей от PHP-расширений
+    - Multiplier (left): Множитель (левый)
+    - Multiplier (right): Множитель (правый)
     - namespace: пространство имён
     - NoSQL data: NoSQL данные
     - Notice message #%%_number.: Уведомление №%%_number.
