@@ -10,17 +10,17 @@ forms
         - color|field_color
             title: Color for generation
             element_attributes
-            - value: #00ff00
+            - value: #7f7f7f
         - prefix|field_id_text
             title: Prefix
             element_attributes
             - name: prefix
-            - value: custom_
+            - value: custom_gray_
         - group|field_id_text
             title: Group
             element_attributes
             - name: group
-            - value: custom
+            - value: custom_gray
         - multiplier_l|field_number
             title: Multiplier (left)
             element_attributes
@@ -28,7 +28,7 @@ forms
             - min: +1
             - max: +26
             - step: 1
-            - value: 21
+            - value: 11
         - multiplier_r|field_number
             title: Multiplier (right)
             element_attributes
@@ -36,7 +36,7 @@ forms
             - min: +1
             - max: +26
             - step: 1
-            - value: 21
+            - value: 11
         - report|fieldset
             title: Report
             children

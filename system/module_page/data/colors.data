@@ -16,110 +16,110 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # gray group
 # ─────────────────────────────────────────────────────────────────────
-- gray_m100|color
-    id: gray_m100
-    value: #1b1b1b
-    value_hex: #1b1b1b
+- gray_l_10x11|color
+    id: gray_l_10x11
+    value: #111111
+    value_hex: #111111
     group: gray
-- gray_m90|color
-    id: gray_m90
-    value: #252525
-    value_hex: #252525
+- gray_l_9x11|color
+    id: gray_l_9x11
+    value: #1c1c1c
+    value_hex: #1c1c1c
     group: gray
-- gray_m80|color
-    id: gray_m80
-    value: #2f2f2f
-    value_hex: #2f2f2f
+- gray_l_8x11|color
+    id: gray_l_8x11
+    value: #272727
+    value_hex: #272727
     group: gray
-- gray_m70|color
-    id: gray_m70
-    value: #393939
-    value_hex: #393939
+- gray_l_7x11|color
+    id: gray_l_7x11
+    value: #323232
+    value_hex: #323232
     group: gray
-- gray_m60|color
-    id: gray_m60
-    value: #434343
-    value_hex: #434343
+- gray_l_6x11|color
+    id: gray_l_6x11
+    value: #3d3d3d
+    value_hex: #3d3d3d
     group: gray
-- gray_m50|color
-    id: gray_m50
-    value: #4d4d4d
-    value_hex: #4d4d4d
+- gray_l_5x11|color
+    id: gray_l_5x11
+    value: #484848
+    value_hex: #484848
     group: gray
-- gray_m40|color
-    id: gray_m40
-    value: #575757
-    value_hex: #575757
+- gray_l_4x11|color
+    id: gray_l_4x11
+    value: #535353
+    value_hex: #535353
     group: gray
-- gray_m30|color
-    id: gray_m30
-    value: #616161
-    value_hex: #616161
+- gray_l_3x11|color
+    id: gray_l_3x11
+    value: #5e5e5e
+    value_hex: #5e5e5e
     group: gray
-- gray_m20|color
-    id: gray_m20
-    value: #6b6b6b
-    value_hex: #6b6b6b
+- gray_l_2x11|color
+    id: gray_l_2x11
+    value: dimgray
+    value_hex: #696969
     group: gray
-- gray_m10|color
-    id: gray_m10
-    value: #757575
-    value_hex: #757575
+- gray_l_1x11|color
+    id: gray_l_1x11
+    value: #747474
+    value_hex: #747474
     group: gray
 - gray|color
     id: gray
     value: #7f7f7f
     value_hex: #7f7f7f
     group: gray
-- gray_p10|color
-    id: gray_p10
-    value: #898989
-    value_hex: #898989
+- gray_r_1x11|color
+    id: gray_r_1x11
+    value: #8a8a8a
+    value_hex: #8a8a8a
     group: gray
-- gray_p20|color
-    id: gray_p20
-    value: #939393
-    value_hex: #939393
+- gray_r_2x11|color
+    id: gray_r_2x11
+    value: #959595
+    value_hex: #959595
     group: gray
-- gray_p30|color
-    id: gray_p30
-    value: #9d9d9d
-    value_hex: #9d9d9d
+- gray_r_3x11|color
+    id: gray_r_3x11
+    value: #a0a0a0
+    value_hex: #a0a0a0
     group: gray
-- gray_p40|color
-    id: gray_p40
-    value: #a7a7a7
-    value_hex: #a7a7a7
+- gray_r_4x11|color
+    id: gray_r_4x11
+    value: #ababab
+    value_hex: #ababab
     group: gray
-- gray_p50|color
-    id: gray_p50
-    value: #b1b1b1
-    value_hex: #b1b1b1
+- gray_r_5x11|color
+    id: gray_r_5x11
+    value: #b6b6b6
+    value_hex: #b6b6b6
     group: gray
-- gray_p60|color
-    id: gray_p60
-    value: #bbbbbb
-    value_hex: #bbbbbb
+- gray_r_6x11|color
+    id: gray_r_6x11
+    value: #c1c1c1
+    value_hex: #c1c1c1
     group: gray
-- gray_p70|color
-    id: gray_p70
-    value: #c5c5c5
-    value_hex: #c5c5c5
+- gray_r_7x11|color
+    id: gray_r_7x11
+    value: #cccccc
+    value_hex: #cccccc
     group: gray
-- gray_p80|color
-    id: gray_p80
-    value: #cfcfcf
-    value_hex: #cfcfcf
+- gray_r_8x11|color
+    id: gray_r_8x11
+    value: #d7d7d7
+    value_hex: #d7d7d7
     group: gray
-- gray_p90|color
-    id: gray_p90
-    value: #d9d9d9
-    value_hex: #d9d9d9
+- gray_r_9x11|color
+    id: gray_r_9x11
+    value: #e2e2e2
+    value_hex: #e2e2e2
     group: gray
-- gray_p100|color
-    id: gray_p100
-    value: #e3e3e3
-    value_hex: #e3e3e3
+- gray_r_10x11|color
+    id: gray_r_10x11
+    value: #ededed
+    value_hex: #ededed
     group: gray
 # ─────────────────────────────────────────────────────────────────────
 # red group
