@@ -1123,11 +1123,6 @@ colors
     group: default
 - default_6|color
     id: default_6
-    value: gold
-    value_hex: #ffd700
-    group: default
-- default_7|color
-    id: default_7
     value: dodgerblue
     value_hex: #1e90ff
     group: default
@@ -1135,6 +1130,11 @@ colors
     id: default_main
     value: #216ce4
     value_hex: #216ce4
+    group: default
+- default_7|color
+    id: default_7
+    value: gold
+    value_hex: #ffd700
     group: default
 - state_ok|color
     id: state_ok
