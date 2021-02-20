@@ -213,14 +213,14 @@
 
   /* checkbox color */
 
-  x-field[data-type='checkbox-color'] input[type='checkbox'] {margin: 0 10px 0 0; border-width: 1px; border-radius: 5px}
+  x-field[data-type='checkbox-color'] input[type='checkbox'] {margin: 0 10px 0 0; border-width: 1px}
   x-field[data-type='checkbox-color'] input[type='checkbox']:checked {background-position: -58px 2px}
-  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']         {background-image: url('pictures/icons-form.svgd');                                  background-position: -18px 2px; background-color: white !important}
-  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']:checked {background-image: url('pictures/icons-form.svgd'), url('pictures/icons-form.svgd'); background-position: -18px 2px, -58px 2px}
+  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']         {background-image: url('pictures/icons-form.svgd');                                  background-position:            -18px 2px; background-color: white !important}
+  x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']:checked {background-image: url('pictures/icons-form.svgd'), url('pictures/icons-form.svgd'); background-position: -58px 2px, -18px 2px}
 
   /* group 'palette' */
 
-  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-radius: 5px; border-width: 1px}
+  x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-width: 1px}
   x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
   x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
 
@@ -234,18 +234,15 @@
 
   x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
-  x-group[data-type='palette'] x-field input {margin: 1px 3px 1px 0; border-color: white}
-  x-group[data-type='palette'] x-field input:checked                {border-color: black}
-  x-group[data-type='palette'] x-field input[value='transparent']   {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3); background: white url('pictures/icons-form.svgd') -20px 0 !important}
-  x-group[data-type='palette'] x-field input[value='white']         {box-shadow: inset 0 0 0 2px rgba(  0,   0,   0, .3)}
-  x-group[data-type='palette'] x-field input[value='black']:checked {box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8)}
+  x-group[data-type='palette'] x-field input {margin: 0; border: none; border-radius: 0}
+  x-group[data-type='palette'] x-field input:checked {background-position: -57px 3px}
+  x-group[data-type='palette'] x-field input[value='transparent']         {background-image: url('pictures/icons-form.svgd');                                  background-position:            -17px 3px; background-color: white !important}
+  x-group[data-type='palette'] x-field input[value='transparent']:checked {background-image: url('pictures/icons-form.svgd'), url('pictures/icons-form.svgd'); background-position: -57px 3px, -17px 3px}
 
   x-group[data-type='palette'] hr {
     width: 50%;
-    margin: 2px 0;
-    border: 0;
-    opacity: .3;
-    border-top: 1px dotted %%_color_main}
+    margin: 0;
+    border: 0}
 
   /* rearrangeable */
 

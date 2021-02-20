@@ -27,7 +27,7 @@ namespace effcore {
           $c_info = (object)[
             'title'              => null,
             'description'        => null,
-            'element_attributes' => ['value' => $c_color->id, 'title' => $c_title, 'style' => ['background: '.$c_color->value]],
+            'element_attributes' => ['value' => $c_color->id, 'title' => $c_title, 'style' => ['background-color: '.$c_color->value]],
             'weight'             => 0];
           $c_field                     = new $this->field_class;
           $c_field->tag_name           = $this->field_tag_name;

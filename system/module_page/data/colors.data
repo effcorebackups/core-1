@@ -1,4 +1,18 @@
 colors
+- transparent|color
+    id: transparent
+    value: transparent
+    group: base
+- black|color
+    id: black
+    value: black
+    value_hex: #000000
+    group: base
+- white|color
+    id: white
+    value: white
+    value_hex: #ffffff
+    group: base
 # ─────────────────────────────────────────────────────────────────────
 # gray group
 # ─────────────────────────────────────────────────────────────────────
@@ -106,20 +120,6 @@ colors
     id: gray_p100
     value: #e3e3e3
     value_hex: #e3e3e3
-    group: gray
-- black|color
-    id: black
-    value: black
-    value_hex: #000000
-    group: gray
-- white|color
-    id: white
-    value: white
-    value_hex: #ffffff
-    group: gray
-- transparent|color
-    id: transparent
-    value: transparent
     group: gray
 # ─────────────────────────────────────────────────────────────────────
 # red group
