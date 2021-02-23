@@ -3,15 +3,15 @@ colors
     id: transparent
     value: transparent
     group: base
-- black|color
-    id: black
-    value: black
-    value_hex: #000000
-    group: base
 - white|color
     id: white
     value: white
     value_hex: #ffffff
+    group: base
+- black|color
+    id: black
+    value: black
+    value_hex: #000000
     group: base
 # ─────────────────────────────────────────────────────────────────────
 # gray group
