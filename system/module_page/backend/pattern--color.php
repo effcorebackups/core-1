@@ -245,9 +245,9 @@ namespace effcore {
   }
 
   static function get_color_name_by_value_hex($value_hex) {
-    foreach (static::named_colors as $c_value => $c_info) {
+    foreach (static::named_colors as $c_name => $c_info) {
       if ($c_info['value_hex'] === $value_hex) {
-        return $c_value;
+        return $c_name;
       }
     }
   }

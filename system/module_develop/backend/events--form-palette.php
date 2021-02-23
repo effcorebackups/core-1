@@ -21,7 +21,7 @@ namespace effcore\modules\develop {
         for ($i = 0; $i < 21; $i++) {
           $c_multiplier = $items['#multiplier_'.($i < 11 ? 'l' : 'r')]->value_get();
           $c_offset = ($i - 10) * $c_multiplier;
-          if ($c_offset !== 0) $c_color_id = $items['#prefix']->value_get().($c_offset < 0 ? 'l' : 'r').'_'.abs($i - 10).'x'.$c_multiplier;
+          if ($c_offset !== 0) $c_color_id = $items['#prefix']->value_get().($c_offset < 0 ? 'l' : 'r').abs($i - 10);
           else                 $c_color_id = $items['#prefix']->value_get().'base';
           $c_color_value_hex = $base_color->filter_shift($c_offset, $c_offset, $c_offset, 1, color::return_hex);
           $c_color_value = color::get_color_name_by_value_hex($c_color_value_hex) ?? $c_color_value_hex;
