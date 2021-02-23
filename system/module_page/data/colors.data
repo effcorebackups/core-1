@@ -1096,53 +1096,53 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
-- violet_l_10x9|color
-    id: violet_l_10x9
+- violet_l10|color
+    id: violet_l10
     value: #160016
     value_hex: #160016
     group: violet
-- violet_l_9x9|color
-    id: violet_l_9x9
+- violet_l9|color
+    id: violet_l9
     value: #1f001f
     value_hex: #1f001f
     group: violet
-- violet_l_8x9|color
-    id: violet_l_8x9
+- violet_l8|color
+    id: violet_l8
     value: #280028
     value_hex: #280028
     group: violet
-- violet_l_7x9|color
-    id: violet_l_7x9
+- violet_l7|color
+    id: violet_l7
     value: #310031
     value_hex: #310031
     group: violet
-- violet_l_6x9|color
-    id: violet_l_6x9
+- violet_l6|color
+    id: violet_l6
     value: #3a003a
     value_hex: #3a003a
     group: violet
-- violet_l_5x9|color
-    id: violet_l_5x9
+- violet_l5|color
+    id: violet_l5
     value: #430043
     value_hex: #430043
     group: violet
-- violet_l_4x9|color
-    id: violet_l_4x9
+- violet_l4|color
+    id: violet_l4
     value: #4c004c
     value_hex: #4c004c
     group: violet
-- violet_l_3x9|color
-    id: violet_l_3x9
+- violet_l3|color
+    id: violet_l3
     value: #550055
     value_hex: #550055
     group: violet
-- violet_l_2x9|color
-    id: violet_l_2x9
+- violet_l2|color
+    id: violet_l2
     value: #5e005e
     value_hex: #5e005e
     group: violet
-- violet_l_1x9|color
-    id: violet_l_1x9
+- violet_l1|color
+    id: violet_l1
     value: #670067
     value_hex: #670067
     group: violet
@@ -1151,53 +1151,53 @@ colors
     value: #700470
     value_hex: #700470
     group: violet
-- violet_r_1x20|color
-    id: violet_r_1x20
+- violet_r1|color
+    id: violet_r1
     value: #841884
     value_hex: #841884
     group: violet
-- violet_r_2x20|color
-    id: violet_r_2x20
+- violet_r2|color
+    id: violet_r2
     value: #982c98
     value_hex: #982c98
     group: violet
-- violet_r_3x20|color
-    id: violet_r_3x20
+- violet_r3|color
+    id: violet_r3
     value: #ac40ac
     value_hex: #ac40ac
     group: violet
-- violet_r_4x20|color
-    id: violet_r_4x20
+- violet_r4|color
+    id: violet_r4
     value: #c054c0
     value_hex: #c054c0
     group: violet
-- violet_r_5x20|color
-    id: violet_r_5x20
+- violet_r5|color
+    id: violet_r5
     value: #d468d4
     value_hex: #d468d4
     group: violet
-- violet_r_6x20|color
-    id: violet_r_6x20
+- violet_r6|color
+    id: violet_r6
     value: #e87ce8
     value_hex: #e87ce8
     group: violet
-- violet_r_7x20|color
-    id: violet_r_7x20
+- violet_r7|color
+    id: violet_r7
     value: #fc90fc
     value_hex: #fc90fc
     group: violet
-- violet_r_8x20|color
-    id: violet_r_8x20
+- violet_r8|color
+    id: violet_r8
     value: #ffa4ff
     value_hex: #ffa4ff
     group: violet
-- violet_r_9x20|color
-    id: violet_r_9x20
+- violet_r9|color
+    id: violet_r9
     value: #ffb8ff
     value_hex: #ffb8ff
     group: violet
-- violet_r_10x20|color
-    id: violet_r_10x20
+- violet_r10|color
+    id: violet_r10
     value: #ffccff
     value_hex: #ffccff
     group: violet
