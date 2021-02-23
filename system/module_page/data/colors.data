@@ -232,53 +232,53 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
-- orange_l_10x22|color
-    id: orange_l_10x22
+- orange_l10|color
+    id: orange_l10
     value: #230000
     value_hex: #230000
     group: orange
-- orange_l_9x22|color
-    id: orange_l_9x22
+- orange_l9|color
+    id: orange_l9
     value: #390000
     value_hex: #390000
     group: orange
-- orange_l_8x22|color
-    id: orange_l_8x22
+- orange_l8|color
+    id: orange_l8
     value: #4f0000
     value_hex: #4f0000
     group: orange
-- orange_l_7x22|color
-    id: orange_l_7x22
+- orange_l7|color
+    id: orange_l7
     value: #650000
     value_hex: #650000
     group: orange
-- orange_l_6x22|color
-    id: orange_l_6x22
+- orange_l6|color
+    id: orange_l6
     value: #7b0f00
     value_hex: #7b0f00
     group: orange
-- orange_l_5x22|color
-    id: orange_l_5x22
+- orange_l5|color
+    id: orange_l5
     value: #912500
     value_hex: #912500
     group: orange
-- orange_l_4x22|color
-    id: orange_l_4x22
+- orange_l4|color
+    id: orange_l4
     value: #a73b00
     value_hex: #a73b00
     group: orange
-- orange_l_3x22|color
-    id: orange_l_3x22
+- orange_l3|color
+    id: orange_l3
     value: #bd5100
     value_hex: #bd5100
     group: orange
-- orange_l_2x22|color
-    id: orange_l_2x22
+- orange_l2|color
+    id: orange_l2
     value: #d36700
     value_hex: #d36700
     group: orange
-- orange_l_1x22|color
-    id: orange_l_1x22
+- orange_l1|color
+    id: orange_l1
     value: #e97d00
     value_hex: #e97d00
     group: orange
@@ -287,106 +287,106 @@ colors
     value: #ff9300
     value_hex: #ff9300
     group: orange
-- orange_r_1x18|color
-    id: orange_r_1x18
+- orange_r1|color
+    id: orange_r1
     value: #ffa512
     value_hex: #ffa512
     group: orange
-- orange_r_2x18|color
-    id: orange_r_2x18
+- orange_r2|color
+    id: orange_r2
     value: #ffb724
     value_hex: #ffb724
     group: orange
-- orange_r_3x18|color
-    id: orange_r_3x18
+- orange_r3|color
+    id: orange_r3
     value: #ffc936
     value_hex: #ffc936
     group: orange
-- orange_r_4x18|color
-    id: orange_r_4x18
+- orange_r4|color
+    id: orange_r4
     value: #ffdb48
     value_hex: #ffdb48
     group: orange
-- orange_r_5x18|color
-    id: orange_r_5x18
+- orange_r5|color
+    id: orange_r5
     value: #ffed5a
     value_hex: #ffed5a
     group: orange
-- orange_r_6x18|color
-    id: orange_r_6x18
+- orange_r6|color
+    id: orange_r6
     value: #ffff6c
     value_hex: #ffff6c
     group: orange
-- orange_r_7x18|color
-    id: orange_r_7x18
+- orange_r7|color
+    id: orange_r7
     value: #ffff7e
     value_hex: #ffff7e
     group: orange
-- orange_r_8x18|color
-    id: orange_r_8x18
+- orange_r8|color
+    id: orange_r8
     value: #ffff90
     value_hex: #ffff90
     group: orange
-- orange_r_9x18|color
-    id: orange_r_9x18
+- orange_r9|color
+    id: orange_r9
     value: #ffffa2
     value_hex: #ffffa2
     group: orange
-- orange_r_10x18|color
-    id: orange_r_10x18
+- orange_r10|color
+    id: orange_r10
     value: #ffffb4
     value_hex: #ffffb4
     group: orange
 # ─────────────────────────────────────────────────────────────────────
 # gold group
 # ─────────────────────────────────────────────────────────────────────
-- gold_l_10x20|color
-    id: gold_l_10x20
+- gold_l10|color
+    id: gold_l10
     value: #210000
     value_hex: #210000
     group: gold
-- gold_l_9x20|color
-    id: gold_l_9x20
+- gold_l9|color
+    id: gold_l9
     value: #350d00
     value_hex: #350d00
     group: gold
-- gold_l_8x20|color
-    id: gold_l_8x20
+- gold_l8|color
+    id: gold_l8
     value: #492100
     value_hex: #492100
     group: gold
-- gold_l_7x20|color
-    id: gold_l_7x20
+- gold_l7|color
+    id: gold_l7
     value: #5d3500
     value_hex: #5d3500
     group: gold
-- gold_l_6x20|color
-    id: gold_l_6x20
+- gold_l6|color
+    id: gold_l6
     value: #714900
     value_hex: #714900
     group: gold
-- gold_l_5x20|color
-    id: gold_l_5x20
+- gold_l5|color
+    id: gold_l5
     value: #855d00
     value_hex: #855d00
     group: gold
-- gold_l_4x20|color
-    id: gold_l_4x20
+- gold_l4|color
+    id: gold_l4
     value: #997100
     value_hex: #997100
     group: gold
-- gold_l_3x20|color
-    id: gold_l_3x20
+- gold_l3|color
+    id: gold_l3
     value: #ad8500
     value_hex: #ad8500
     group: gold
-- gold_l_2x20|color
-    id: gold_l_2x20
+- gold_l2|color
+    id: gold_l2
     value: #c19900
     value_hex: #c19900
     group: gold
-- gold_l_1x20|color
-    id: gold_l_1x20
+- gold_l1|color
+    id: gold_l1
     value: #d5ad00
     value_hex: #d5ad00
     group: gold
@@ -395,106 +395,106 @@ colors
     value: #e9c100
     value_hex: #e9c100
     group: gold
-- gold_r_1x22|color
-    id: gold_r_1x22
+- gold_r1|color
+    id: gold_r1
     value: #ffd716
     value_hex: #ffd716
     group: gold
-- gold_r_2x22|color
-    id: gold_r_2x22
+- gold_r2|color
+    id: gold_r2
     value: #ffed2c
     value_hex: #ffed2c
     group: gold
-- gold_r_3x22|color
-    id: gold_r_3x22
+- gold_r3|color
+    id: gold_r3
     value: #ffff42
     value_hex: #ffff42
     group: gold
-- gold_r_4x22|color
-    id: gold_r_4x22
+- gold_r4|color
+    id: gold_r4
     value: #ffff58
     value_hex: #ffff58
     group: gold
-- gold_r_5x22|color
-    id: gold_r_5x22
+- gold_r5|color
+    id: gold_r5
     value: #ffff6e
     value_hex: #ffff6e
     group: gold
-- gold_r_6x22|color
-    id: gold_r_6x22
+- gold_r6|color
+    id: gold_r6
     value: #ffff84
     value_hex: #ffff84
     group: gold
-- gold_r_7x22|color
-    id: gold_r_7x22
+- gold_r7|color
+    id: gold_r7
     value: #ffff9a
     value_hex: #ffff9a
     group: gold
-- gold_r_8x22|color
-    id: gold_r_8x22
+- gold_r8|color
+    id: gold_r8
     value: #ffffb0
     value_hex: #ffffb0
     group: gold
-- gold_r_9x22|color
-    id: gold_r_9x22
+- gold_r9|color
+    id: gold_r9
     value: #ffffc6
     value_hex: #ffffc6
     group: gold
-- gold_r_10x22|color
-    id: gold_r_10x22
+- gold_r10|color
+    id: gold_r10
     value: #ffffdc
     value_hex: #ffffdc
     group: gold
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
-- yellow_l_10x20|color
-    id: yellow_l_10x20
+- yellow_l10|color
+    id: yellow_l10
     value: #201c00
     value_hex: #201c00
     group: yellow
-- yellow_l_9x20|color
-    id: yellow_l_9x20
+- yellow_l9|color
+    id: yellow_l9
     value: #343000
     value_hex: #343000
     group: yellow
-- yellow_l_8x20|color
-    id: yellow_l_8x20
+- yellow_l8|color
+    id: yellow_l8
     value: #484400
     value_hex: #484400
     group: yellow
-- yellow_l_7x20|color
-    id: yellow_l_7x20
+- yellow_l7|color
+    id: yellow_l7
     value: #5c5800
     value_hex: #5c5800
     group: yellow
-- yellow_l_6x20|color
-    id: yellow_l_6x20
+- yellow_l6|color
+    id: yellow_l6
     value: #706c00
     value_hex: #706c00
     group: yellow
-- yellow_l_5x20|color
-    id: yellow_l_5x20
+- yellow_l5|color
+    id: yellow_l5
     value: #848000
     value_hex: #848000
     group: yellow
-- yellow_l_4x20|color
-    id: yellow_l_4x20
+- yellow_l4|color
+    id: yellow_l4
     value: #989400
     value_hex: #989400
     group: yellow
-- yellow_l_3x20|color
-    id: yellow_l_3x20
+- yellow_l3|color
+    id: yellow_l3
     value: #aca800
     value_hex: #aca800
     group: yellow
-- yellow_l_2x20|color
-    id: yellow_l_2x20
+- yellow_l2|color
+    id: yellow_l2
     value: #c0bc00
     value_hex: #c0bc00
     group: yellow
-- yellow_l_1x20|color
-    id: yellow_l_1x20
+- yellow_l1|color
+    id: yellow_l1
     value: #d4d000
     value_hex: #d4d000
     group: yellow
@@ -503,53 +503,53 @@ colors
     value: #e8e400
     value_hex: #e8e400
     group: yellow
-- yellow_r_1x22|color
-    id: yellow_r_1x22
+- yellow_r1|color
+    id: yellow_r1
     value: #fefa16
     value_hex: #fefa16
     group: yellow
-- yellow_r_2x22|color
-    id: yellow_r_2x22
+- yellow_r2|color
+    id: yellow_r2
     value: #ffff2c
     value_hex: #ffff2c
     group: yellow
-- yellow_r_3x22|color
-    id: yellow_r_3x22
+- yellow_r3|color
+    id: yellow_r3
     value: #ffff42
     value_hex: #ffff42
     group: yellow
-- yellow_r_4x22|color
-    id: yellow_r_4x22
+- yellow_r4|color
+    id: yellow_r4
     value: #ffff58
     value_hex: #ffff58
     group: yellow
-- yellow_r_5x22|color
-    id: yellow_r_5x22
+- yellow_r5|color
+    id: yellow_r5
     value: #ffff6e
     value_hex: #ffff6e
     group: yellow
-- yellow_r_6x22|color
-    id: yellow_r_6x22
+- yellow_r6|color
+    id: yellow_r6
     value: #ffff84
     value_hex: #ffff84
     group: yellow
-- yellow_r_7x22|color
-    id: yellow_r_7x22
+- yellow_r7|color
+    id: yellow_r7
     value: #ffff9a
     value_hex: #ffff9a
     group: yellow
-- yellow_r_8x22|color
-    id: yellow_r_8x22
+- yellow_r8|color
+    id: yellow_r8
     value: #ffffb0
     value_hex: #ffffb0
     group: yellow
-- yellow_r_9x22|color
-    id: yellow_r_9x22
+- yellow_r9|color
+    id: yellow_r9
     value: #ffffc6
     value_hex: #ffffc6
     group: yellow
-- yellow_r_10x22|color
-    id: yellow_r_10x22
+- yellow_r10|color
+    id: yellow_r10
     value: #ffffdc
     value_hex: #ffffdc
     group: yellow
