@@ -14,6 +14,9 @@ forms
             tag_name: x-document
             attributes
             - data-type: report
+            children
+            - data|text
+                text: The report will be created after submitting the form.
     - button_launch|button
         title: launch
         attributes
