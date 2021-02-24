@@ -77,38 +77,39 @@ namespace effcore {
     return $result;
   }
 
-  static function apply($id) {
+  static function apply($id, $selected = null, $reset = false) {
     $preset = static::get($id);
     if ($preset) {
       $result = true;
       $storage = storage::get('files');
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_page_id',                   $preset->colors->color_page_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_text_id',                   $preset->colors->color_text_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_main_id',                   $preset->colors->color_main_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_link_id',                   $preset->colors->color_link_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_link_active_id',            $preset->colors->color_link_active_id,            false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_table_row_odd_id',          $preset->colors->color_table_row_odd_id,          false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_table_row_even_id',         $preset->colors->color_table_row_even_id,         false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_relation_id',               $preset->colors->color_relation_id,               false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_id',                   $preset->colors->color_menu_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_active_id',            $preset->colors->color_menu_active_id,            false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_text_id',              $preset->colors->color_menu_text_id,              false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_link_id',              $preset->colors->color_menu_link_id,              false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id',       $preset->colors->color_menu_link_active_id,       false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_id',                   $preset->colors->color_tabs_id,                   false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_id',              $preset->colors->color_tabs_link_id,              false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_id',       $preset->colors->color_tabs_link_active_id,       false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_no_bg_id', $preset->colors->color_tabs_link_active_no_bg_id, false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_ok_id',                     $preset->colors->color_ok_id,                     false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_warning_id',                $preset->colors->color_warning_id,                false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_error_id',                  $preset->colors->color_error_id,                  false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_fieldset_id',               $preset->colors->color_fieldset_id,               false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',        $preset->colors->color_fieldset_nested_id,        false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_field_id',                  $preset->colors->color_field_id,                  false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_field_text_id',             $preset->colors->color_field_text_id,             false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_id',                 $preset->colors->color_button_id,                 false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_active_id',          $preset->colors->color_button_active_id,          false);
-      $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_text_id',            $preset->colors->color_button_text_id                  );
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_page_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_page_id',                   $preset->colors->color_page_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_text_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_text_id',                   $preset->colors->color_text_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_main_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_main_id',                   $preset->colors->color_main_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_link_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_link_id',                   $preset->colors->color_link_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_link_active_id'           ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_link_active_id',            $preset->colors->color_link_active_id,            false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_table_row_odd_id'         ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_table_row_odd_id',          $preset->colors->color_table_row_odd_id,          false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_table_row_even_id'        ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_table_row_even_id',         $preset->colors->color_table_row_even_id,         false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_relation_id'              ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_relation_id',               $preset->colors->color_relation_id,               false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_menu_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_id',                   $preset->colors->color_menu_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_menu_active_id'           ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_active_id',            $preset->colors->color_menu_active_id,            false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_menu_text_id'             ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_text_id',              $preset->colors->color_menu_text_id,              false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_menu_link_id'             ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_link_id',              $preset->colors->color_menu_link_id,              false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_menu_link_active_id'      ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_menu_link_active_id',       $preset->colors->color_menu_link_active_id,       false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_tabs_id'                  ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_id',                   $preset->colors->color_tabs_id,                   false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_tabs_link_id'             ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_id',              $preset->colors->color_tabs_link_id,              false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_tabs_link_active_id'      ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_id',       $preset->colors->color_tabs_link_active_id,       false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_tabs_link_active_no_bg_id']))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_tabs_link_active_no_bg_id', $preset->colors->color_tabs_link_active_no_bg_id, false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_ok_id'                    ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_ok_id',                     $preset->colors->color_ok_id,                     false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_warning_id'               ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_warning_id',                $preset->colors->color_warning_id,                false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_error_id'                 ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_error_id',                  $preset->colors->color_error_id,                  false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_fieldset_id'              ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_fieldset_id',               $preset->colors->color_fieldset_id,               false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_fieldset_nested_id'       ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_fieldset_nested_id',        $preset->colors->color_fieldset_nested_id,        false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_field_id'                 ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_field_id',                  $preset->colors->color_field_id,                  false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_field_text_id'            ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_field_text_id',             $preset->colors->color_field_text_id,             false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_button_id'                ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_id',                 $preset->colors->color_button_id,                 false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_button_active_id'         ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_active_id',          $preset->colors->color_button_active_id,          false);
+      if (is_null($selected) || (is_array($selected) && isset($selected['color_button_text_id'           ]))) $result&= $storage->changes_insert('page', 'update', 'settings/page/color_button_text_id',            $preset->colors->color_button_text_id,            false);
+      if ($reset) storage_nosql_files::cache_update();
       return $result;
     }
   }
