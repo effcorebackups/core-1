@@ -114,6 +114,15 @@ namespace effcore {
     }
   }
 
+  static function apply_with_custom_ids($selected = [], $reset = false) {
+    $result = true;
+    $storage = storage::get('files');
+    foreach ($selected as $c_id_setting => $c_id_color)
+      $result&= $storage->changes_insert('page', 'update', 'settings/page/'.$c_id_setting, $c_id_color, false);
+    if ($reset) storage_nosql_files::cache_update();
+    return $result;
+  }
+
   static function reset() {
     $result = true;
     $storage = storage::get('files');
