@@ -234,53 +234,53 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - orange_l10|color
     id: orange_l10
-    value: #230000
-    value_hex: #230000
+    value: #1f1200
+    value_hex: #1f1200
     group: orange
 - orange_l9|color
     id: orange_l9
-    value: #390000
-    value_hex: #390000
+    value: #321d00
+    value_hex: #321d00
     group: orange
 - orange_l8|color
     id: orange_l8
-    value: #4f0000
-    value_hex: #4f0000
+    value: #462800
+    value_hex: #462800
     group: orange
 - orange_l7|color
     id: orange_l7
-    value: #650000
-    value_hex: #650000
+    value: #5b3400
+    value_hex: #5b3400
     group: orange
 - orange_l6|color
     id: orange_l6
-    value: #7b0f00
-    value_hex: #7b0f00
+    value: #704100
+    value_hex: #704100
     group: orange
 - orange_l5|color
     id: orange_l5
-    value: #912500
-    value_hex: #912500
+    value: #864e00
+    value_hex: #864e00
     group: orange
 - orange_l4|color
     id: orange_l4
-    value: #a73b00
-    value_hex: #a73b00
+    value: #9d5b00
+    value_hex: #9d5b00
     group: orange
 - orange_l3|color
     id: orange_l3
-    value: #bd5100
-    value_hex: #bd5100
+    value: #b56800
+    value_hex: #b56800
     group: orange
 - orange_l2|color
     id: orange_l2
-    value: #d36700
-    value_hex: #d36700
+    value: #cd7600
+    value_hex: #cd7600
     group: orange
 - orange_l1|color
     id: orange_l1
-    value: #e97d00
-    value_hex: #e97d00
+    value: #e68400
+    value_hex: #e68400
     group: orange
 - orange|color
     id: orange
@@ -289,53 +289,53 @@ colors
     group: orange
 - orange_r1|color
     id: orange_r1
-    value: #ffa512
-    value_hex: #ffa512
+    value: #ff9f1c
+    value_hex: #ff9f1c
     group: orange
 - orange_r2|color
     id: orange_r2
-    value: #ffb724
-    value_hex: #ffb724
+    value: #ffaa36
+    value_hex: #ffaa36
     group: orange
 - orange_r3|color
     id: orange_r3
-    value: #ffc936
-    value_hex: #ffc936
+    value: #ffb54f
+    value_hex: #ffb54f
     group: orange
 - orange_r4|color
     id: orange_r4
-    value: #ffdb48
-    value_hex: #ffdb48
+    value: #ffbf67
+    value_hex: #ffbf67
     group: orange
 - orange_r5|color
     id: orange_r5
-    value: #ffed5a
-    value_hex: #ffed5a
+    value: #ffc97f
+    value_hex: #ffc97f
     group: orange
 - orange_r6|color
     id: orange_r6
-    value: #ffff6c
-    value_hex: #ffff6c
+    value: #ffd295
+    value_hex: #ffd295
     group: orange
 - orange_r7|color
     id: orange_r7
-    value: #ffff7e
-    value_hex: #ffff7e
+    value: #ffdbab
+    value_hex: #ffdbab
     group: orange
 - orange_r8|color
     id: orange_r8
-    value: #ffff90
-    value_hex: #ffff90
+    value: #ffe5c1
+    value_hex: #ffe5c1
     group: orange
 - orange_r9|color
     id: orange_r9
-    value: #ffffa2
-    value_hex: #ffffa2
+    value: #ffeed6
+    value_hex: #ffeed6
     group: orange
 - orange_r10|color
     id: orange_r10
-    value: #ffffb4
-    value_hex: #ffffb4
+    value: #fff6eb
+    value_hex: #fff6eb
     group: orange
 # ─────────────────────────────────────────────────────────────────────
 # gold group
