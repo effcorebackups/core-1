@@ -1206,8 +1206,8 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - default_1|color
     id: default_1
-    value: #3b4157
-    value_hex: #3b4157
+    value: #2a304a
+    value_hex: #2a304a
     group: default
 - default_2|color
     id: default_2
@@ -1216,8 +1216,8 @@ colors
     group: default
 - default_3|color
     id: default_3
-    value: #2a304a
-    value_hex: #2a304a
+    value: #3b4157
+    value_hex: #3b4157
     group: default
 - default_4|color
     id: default_4
