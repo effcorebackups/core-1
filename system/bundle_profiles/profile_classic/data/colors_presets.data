@@ -7,7 +7,7 @@ colors_presets
       color_text_id: white
       color_main_id: classic_r7
       color_link_id: white
-      color_link_active_id: default_7
+      color_link_active_id: gold_r1
       color_table_row_odd_id: classic_base
       color_table_row_even_id: classic_l1
       color_relation_id: white
@@ -15,11 +15,11 @@ colors_presets
       color_menu_active_id: classic_r4
       color_menu_text_id: white
       color_menu_link_id: white
-      color_menu_link_active_id: default_7
+      color_menu_link_active_id: gold_r1
       color_tabs_id: classic_r7
       color_tabs_link_id: white
       color_tabs_link_active_id: white
-      color_tabs_link_active_no_bg_id: default_7
+      color_tabs_link_active_no_bg_id: gold_r1
       color_ok_id: state_ok
       color_warning_id: state_warning
       color_error_id: state_error
