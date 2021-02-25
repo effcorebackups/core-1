@@ -1234,11 +1234,6 @@ colors
     value: dodgerblue
     value_hex: #1e90ff
     group: default
-- default_main|color
-    id: default_main
-    value: #216ce4
-    value_hex: #216ce4
-    group: default
 - default_7|color
     id: default_7
     value: gold
@@ -1248,6 +1243,11 @@ colors
     id: default_8
     value: whitesmoke
     value_hex: #f5f5f5
+    group: default
+- default_9|color
+    id: default_9
+    value: #216ce4
+    value_hex: #216ce4
     group: default
 - state_ok|color
     id: state_ok
