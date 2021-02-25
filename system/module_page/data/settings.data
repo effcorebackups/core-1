@@ -4,7 +4,7 @@ settings
   apply_tokens_for_robots: false
   color_page_id: default_1
   color_text_id: white
-  color_main_id: default_5
+  color_main_id: default_4
   color_link_id: white
   color_link_active_id: gold_r1
   color_table_row_odd_id: default_2
@@ -15,7 +15,7 @@ settings
   color_menu_text_id: white
   color_menu_link_id: white
   color_menu_link_active_id: gold_r1
-  color_tabs_id: default_5
+  color_tabs_id: default_4
   color_tabs_link_id: white
   color_tabs_link_active_id: white
   color_tabs_link_active_no_bg_id: gold_r1
@@ -26,7 +26,7 @@ settings
   color_fieldset_nested_id: default_1
   color_field_id: default_1
   color_field_text_id: white
-  color_button_id: default_9
+  color_button_id: default_5
   color_button_active_id: default_6
   color_button_text_id: white
   console_visibility: 0
