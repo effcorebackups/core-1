@@ -990,108 +990,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - blueviolet_l10|color
     id: blueviolet_l10
-    value: #000033
-    value_hex: #000033
+    value: #0d071f
+    value_hex: #0d071f
     group: blueviolet
 - blueviolet_l9|color
     id: blueviolet_l9
-    value: #000040
-    value_hex: #000040
+    value: #160c34
+    value_hex: #160c34
     group: blueviolet
 - blueviolet_l8|color
     id: blueviolet_l8
-    value: #00004d
-    value_hex: #00004d
+    value: #1d1044
+    value_hex: #1d1044
     group: blueviolet
 - blueviolet_l7|color
     id: blueviolet_l7
-    value: #00005a
-    value_hex: #00005a
+    value: #241454
+    value_hex: #241454
     group: blueviolet
 - blueviolet_l6|color
     id: blueviolet_l6
-    value: #000067
-    value_hex: #000067
+    value: #2a1864
+    value_hex: #2a1864
     group: blueviolet
 - blueviolet_l5|color
     id: blueviolet_l5
-    value: #000074
-    value_hex: #000074
+    value: #311c74
+    value_hex: #311c74
     group: blueviolet
 - blueviolet_l4|color
     id: blueviolet_l4
-    value: #0d0081
-    value_hex: #0d0081
+    value: #382085
+    value_hex: #382085
     group: blueviolet
 - blueviolet_l3|color
     id: blueviolet_l3
-    value: #1a008e
-    value_hex: #1a008e
+    value: #402495
+    value_hex: #402495
     group: blueviolet
 - blueviolet_l2|color
     id: blueviolet_l2
-    value: #27019b
-    value_hex: #27019b
+    value: #4728a7
+    value_hex: #4728a7
     group: blueviolet
 - blueviolet_l1|color
     id: blueviolet_l1
-    value: #340ea8
-    value_hex: #340ea8
+    value: #4e2cb8
+    value_hex: #4e2cb8
     group: blueviolet
 - blueviolet|color
     id: blueviolet
-    value: #411bb5
-    value_hex: #411bb5
-    group: blueviolet
-- blueviolet_r1|color
-    id: blueviolet_r1
     value: #5630ca
     value_hex: #5630ca
     group: blueviolet
+- blueviolet_r1|color
+    id: blueviolet_r1
+    value: #6745cf
+    value_hex: #6745cf
+    group: blueviolet
 - blueviolet_r2|color
     id: blueviolet_r2
-    value: #6b45df
-    value_hex: #6b45df
+    value: #7758d4
+    value_hex: #7758d4
     group: blueviolet
 - blueviolet_r3|color
     id: blueviolet_r3
-    value: #805af4
-    value_hex: #805af4
+    value: #866bd9
+    value_hex: #866bd9
     group: blueviolet
 - blueviolet_r4|color
     id: blueviolet_r4
-    value: #956fff
-    value_hex: #956fff
+    value: #957dde
+    value_hex: #957dde
     group: blueviolet
 - blueviolet_r5|color
     id: blueviolet_r5
-    value: #aa84ff
-    value_hex: #aa84ff
+    value: #a490e3
+    value_hex: #a490e3
     group: blueviolet
 - blueviolet_r6|color
     id: blueviolet_r6
-    value: #bf99ff
-    value_hex: #bf99ff
+    value: #b3a2e7
+    value_hex: #b3a2e7
     group: blueviolet
 - blueviolet_r7|color
     id: blueviolet_r7
-    value: #d4aeff
-    value_hex: #d4aeff
+    value: #c2b4ec
+    value_hex: #c2b4ec
     group: blueviolet
 - blueviolet_r8|color
     id: blueviolet_r8
-    value: #e9c3ff
-    value_hex: #e9c3ff
+    value: #d1c7f1
+    value_hex: #d1c7f1
     group: blueviolet
 - blueviolet_r9|color
     id: blueviolet_r9
-    value: #fed8ff
-    value_hex: #fed8ff
+    value: #e0d9f5
+    value_hex: #e0d9f5
     group: blueviolet
 - blueviolet_r10|color
     id: blueviolet_r10
-    value: #ffedff
-    value_hex: #ffedff
+    value: #f0ecfa
+    value_hex: #f0ecfa
     group: blueviolet
 # ─────────────────────────────────────────────────────────────────────
 # violet group
