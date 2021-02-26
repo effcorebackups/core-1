@@ -388,8 +388,9 @@ Decoration
 
 To decorate the site/portal in the system exists the section "View".
 In this section, the administrator can change the color scheme of the page elements.
-The number of colors is limited by the full set of named CSS colors (for example, "black",
-"white" and so on). Also in this section there are a color presets and "in one click" the
+The number of colors is limited by the built-in palette.
+Additional colors can be added by creating a new profile.
+Also in this section there are a color presets and "in one click" the
 administrator can change the design of all available elements (for example,
 activate the light design theme). There is also a list of the layouts which
 available in the system.
