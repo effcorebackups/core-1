@@ -558,108 +558,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - yellowgreen_l10|color
     id: yellowgreen_l10
-    value: #001d00
-    value_hex: #001d00
+    value: #121806
+    value_hex: #121806
     group: yellowgreen
 - yellowgreen_l9|color
     id: yellowgreen_l9
-    value: #002d00
-    value_hex: #002d00
+    value: #1d270a
+    value_hex: #1d270a
     group: yellowgreen
 - yellowgreen_l8|color
     id: yellowgreen_l8
-    value: #093d00
-    value_hex: #093d00
+    value: #29370f
+    value_hex: #29370f
     group: yellowgreen
 - yellowgreen_l7|color
     id: yellowgreen_l7
-    value: #194d00
-    value_hex: #194d00
+    value: #364813
+    value_hex: #364813
     group: yellowgreen
 - yellowgreen_l6|color
     id: yellowgreen_l6
-    value: #295d00
-    value_hex: #295d00
+    value: #435a18
+    value_hex: #435a18
     group: yellowgreen
 - yellowgreen_l5|color
     id: yellowgreen_l5
-    value: #396d00
-    value_hex: #396d00
+    value: #516c1d
+    value_hex: #516c1d
     group: yellowgreen
 - yellowgreen_l4|color
     id: yellowgreen_l4
-    value: #497d00
-    value_hex: #497d00
+    value: #5f7f22
+    value_hex: #5f7f22
     group: yellowgreen
 - yellowgreen_l3|color
     id: yellowgreen_l3
-    value: #598d00
-    value_hex: #598d00
+    value: #6e9227
+    value_hex: #6e9227
     group: yellowgreen
 - yellowgreen_l2|color
     id: yellowgreen_l2
-    value: #699d05
-    value_hex: #699d05
+    value: #7ca62c
+    value_hex: #7ca62c
     group: yellowgreen
 - yellowgreen_l1|color
     id: yellowgreen_l1
-    value: #79ad15
-    value_hex: #79ad15
+    value: #8cba32
+    value_hex: #8cba32
     group: yellowgreen
 - yellowgreen|color
     id: yellowgreen
-    value: #89bd25
-    value_hex: #89bd25
-    group: yellowgreen
-- yellowgreen_r1|color
-    id: yellowgreen_r1
     value: #9bcf37
     value_hex: #9bcf37
     group: yellowgreen
+- yellowgreen_r1|color
+    id: yellowgreen_r1
+    value: #a5d44b
+    value_hex: #a5d44b
+    group: yellowgreen
 - yellowgreen_r2|color
     id: yellowgreen_r2
-    value: #ade149
-    value_hex: #ade149
+    value: #aed85e
+    value_hex: #aed85e
     group: yellowgreen
 - yellowgreen_r3|color
     id: yellowgreen_r3
-    value: #bff35b
-    value_hex: #bff35b
+    value: #b8dd71
+    value_hex: #b8dd71
     group: yellowgreen
 - yellowgreen_r4|color
     id: yellowgreen_r4
-    value: #d1ff6d
-    value_hex: #d1ff6d
+    value: #c1e183
+    value_hex: #c1e183
     group: yellowgreen
 - yellowgreen_r5|color
     id: yellowgreen_r5
-    value: #e3ff7f
-    value_hex: #e3ff7f
+    value: #cae695
+    value_hex: #cae695
     group: yellowgreen
 - yellowgreen_r6|color
     id: yellowgreen_r6
-    value: #f5ff91
-    value_hex: #f5ff91
+    value: #d3eaa7
+    value_hex: #d3eaa7
     group: yellowgreen
 - yellowgreen_r7|color
     id: yellowgreen_r7
-    value: #ffffa3
-    value_hex: #ffffa3
+    value: #dceeb9
+    value_hex: #dceeb9
     group: yellowgreen
 - yellowgreen_r8|color
     id: yellowgreen_r8
-    value: #ffffb5
-    value_hex: #ffffb5
+    value: #e5f3cb
+    value_hex: #e5f3cb
     group: yellowgreen
 - yellowgreen_r9|color
     id: yellowgreen_r9
-    value: #ffffc7
-    value_hex: #ffffc7
+    value: #eef7dc
+    value_hex: #eef7dc
     group: yellowgreen
 - yellowgreen_r10|color
     id: yellowgreen_r10
-    value: #ffffd9
-    value_hex: #ffffd9
+    value: #f6fbee
+    value_hex: #f6fbee
     group: yellowgreen
 # ─────────────────────────────────────────────────────────────────────
 # green group
