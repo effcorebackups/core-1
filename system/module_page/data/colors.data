@@ -342,108 +342,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - gold_l10|color
     id: gold_l10
-    value: #210000
-    value_hex: #210000
+    value: #1c1702
+    value_hex: #1c1702
     group: gold
 - gold_l9|color
     id: gold_l9
-    value: #350d00
-    value_hex: #350d00
+    value: #2e2704
+    value_hex: #2e2704
     group: gold
 - gold_l8|color
     id: gold_l8
-    value: #492100
-    value_hex: #492100
+    value: #423806
+    value_hex: #423806
     group: gold
 - gold_l7|color
     id: gold_l7
-    value: #5d3500
-    value_hex: #5d3500
+    value: #574a08
+    value_hex: #574a08
     group: gold
 - gold_l6|color
     id: gold_l6
-    value: #714900
-    value_hex: #714900
+    value: #6d5c09
+    value_hex: #6d5c09
     group: gold
 - gold_l5|color
     id: gold_l5
-    value: #855d00
-    value_hex: #855d00
+    value: #846f0b
+    value_hex: #846f0b
     group: gold
 - gold_l4|color
     id: gold_l4
-    value: #997100
-    value_hex: #997100
+    value: #9b830d
+    value_hex: #9b830d
     group: gold
 - gold_l3|color
     id: gold_l3
-    value: #ad8500
-    value_hex: #ad8500
+    value: #b3970f
+    value_hex: #b3970f
     group: gold
 - gold_l2|color
     id: gold_l2
-    value: #c19900
-    value_hex: #c19900
+    value: #ccac12
+    value_hex: #ccac12
     group: gold
 - gold_l1|color
     id: gold_l1
-    value: #d5ad00
-    value_hex: #d5ad00
+    value: #e5c114
+    value_hex: #e5c114
     group: gold
 - gold|color
     id: gold
-    value: #e9c100
-    value_hex: #e9c100
-    group: gold
-- gold_r1|color
-    id: gold_r1
     value: #ffd716
     value_hex: #ffd716
     group: gold
+- gold_r1|color
+    id: gold_r1
+    value: #ffdb30
+    value_hex: #ffdb30
+    group: gold
 - gold_r2|color
     id: gold_r2
-    value: #ffed2c
-    value_hex: #ffed2c
+    value: #ffe049
+    value_hex: #ffe049
     group: gold
 - gold_r3|color
     id: gold_r3
-    value: #ffff42
-    value_hex: #ffff42
+    value: #ffe460
+    value_hex: #ffe460
     group: gold
 - gold_r4|color
     id: gold_r4
-    value: #ffff58
-    value_hex: #ffff58
+    value: #ffe876
+    value_hex: #ffe876
     group: gold
 - gold_r5|color
     id: gold_r5
-    value: #ffff6e
-    value_hex: #ffff6e
+    value: #ffeb8c
+    value_hex: #ffeb8c
     group: gold
 - gold_r6|color
     id: gold_r6
-    value: #ffff84
-    value_hex: #ffff84
+    value: #ffefa1
+    value_hex: #ffefa1
     group: gold
 - gold_r7|color
     id: gold_r7
-    value: #ffff9a
-    value_hex: #ffff9a
+    value: #fff2b5
+    value_hex: #fff2b5
     group: gold
 - gold_r8|color
     id: gold_r8
-    value: #ffffb0
-    value_hex: #ffffb0
+    value: #fff6c8
+    value_hex: #fff6c8
     group: gold
 - gold_r9|color
     id: gold_r9
-    value: #ffffc6
-    value_hex: #ffffc6
+    value: #fff9db
+    value_hex: #fff9db
     group: gold
 - gold_r10|color
     id: gold_r10
-    value: #ffffdc
-    value_hex: #ffffdc
+    value: #fffced
+    value_hex: #fffced
     group: gold
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
