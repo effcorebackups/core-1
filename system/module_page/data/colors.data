@@ -126,53 +126,53 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - red_l10|color
     id: red_l10
-    value: #230000
-    value_hex: #230000
+    value: #270600
+    value_hex: #270600
     group: red
 - red_l9|color
     id: red_l9
-    value: #390000
-    value_hex: #390000
+    value: #3b0900
+    value_hex: #3b0900
     group: red
 - red_l8|color
     id: red_l8
-    value: #4f0000
-    value_hex: #4f0000
+    value: #4e0c00
+    value_hex: #4e0c00
     group: red
 - red_l7|color
     id: red_l7
-    value: #650000
-    value_hex: #650000
+    value: #630f00
+    value_hex: #630f00
     group: red
 - red_l6|color
     id: red_l6
-    value: #7b0000
-    value_hex: #7b0000
+    value: #771200
+    value_hex: #771200
     group: red
 - red_l5|color
     id: red_l5
-    value: #910000
-    value_hex: #910000
+    value: #8d1500
+    value_hex: #8d1500
     group: red
 - red_l4|color
     id: red_l4
-    value: #a70000
-    value_hex: #a70000
+    value: #a31800
+    value_hex: #a31800
     group: red
 - red_l3|color
     id: red_l3
-    value: #bd0000
-    value_hex: #bd0000
+    value: #b91c00
+    value_hex: #b91c00
     group: red
 - red_l2|color
     id: red_l2
-    value: #d30000
-    value_hex: #d30000
+    value: #d01f00
+    value_hex: #d01f00
     group: red
 - red_l1|color
     id: red_l1
-    value: #e91000
-    value_hex: #e91000
+    value: #e72200
+    value_hex: #e72200
     group: red
 - red|color
     id: red
@@ -181,53 +181,53 @@ colors
     group: red
 - red_r1|color
     id: red_r1
-    value: #ff3c16
-    value_hex: #ff3c16
+    value: #ff4d2e
+    value_hex: #ff4d2e
     group: red
 - red_r2|color
     id: red_r2
-    value: #ff522c
-    value_hex: #ff522c
+    value: #ff674d
+    value_hex: #ff674d
     group: red
 - red_r3|color
     id: red_r3
-    value: #ff6842
-    value_hex: #ff6842
+    value: #ff7c65
+    value_hex: #ff7c65
     group: red
 - red_r4|color
     id: red_r4
-    value: #ff7e58
-    value_hex: #ff7e58
+    value: #ff8f7c
+    value_hex: #ff8f7c
     group: red
 - red_r5|color
     id: red_r5
-    value: #ff946e
-    value_hex: #ff946e
+    value: #ffa190
+    value_hex: #ffa190
     group: red
 - red_r6|color
     id: red_r6
-    value: #ffaa84
-    value_hex: #ffaa84
+    value: #ffb2a4
+    value_hex: #ffb2a4
     group: red
 - red_r7|color
     id: red_r7
-    value: #ffc09a
-    value_hex: #ffc09a
+    value: #ffc2b7
+    value_hex: #ffc2b7
     group: red
 - red_r8|color
     id: red_r8
-    value: #ffd6b0
-    value_hex: #ffd6b0
+    value: #ffd1c9
+    value_hex: #ffd1c9
     group: red
 - red_r9|color
     id: red_r9
-    value: #ffecc6
-    value_hex: #ffecc6
+    value: #ffe1dc
+    value_hex: #ffe1dc
     group: red
 - red_r10|color
     id: red_r10
-    value: #ffffdc
-    value_hex: #ffffdc
+    value: #fff0ed
+    value_hex: #fff0ed
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # orange group
