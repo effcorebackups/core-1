@@ -450,108 +450,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - yellow_l10|color
     id: yellow_l10
-    value: #201c00
-    value_hex: #201c00
+    value: #1a1a02
+    value_hex: #1a1a02
     group: yellow
 - yellow_l9|color
     id: yellow_l9
-    value: #343000
-    value_hex: #343000
+    value: #2d2c04
+    value_hex: #2d2c04
     group: yellow
 - yellow_l8|color
     id: yellow_l8
-    value: #484400
-    value_hex: #484400
+    value: #414006
+    value_hex: #414006
     group: yellow
 - yellow_l7|color
     id: yellow_l7
-    value: #5c5800
-    value_hex: #5c5800
+    value: #565507
+    value_hex: #565507
     group: yellow
 - yellow_l6|color
     id: yellow_l6
-    value: #706c00
-    value_hex: #706c00
+    value: #6c6a09
+    value_hex: #6c6a09
     group: yellow
 - yellow_l5|color
     id: yellow_l5
-    value: #848000
-    value_hex: #848000
+    value: #82800b
+    value_hex: #82800b
     group: yellow
 - yellow_l4|color
     id: yellow_l4
-    value: #989400
-    value_hex: #989400
+    value: #9a980d
+    value_hex: #9a980d
     group: yellow
 - yellow_l3|color
     id: yellow_l3
-    value: #aca800
-    value_hex: #aca800
+    value: #b2af0f
+    value_hex: #b2af0f
     group: yellow
 - yellow_l2|color
     id: yellow_l2
-    value: #c0bc00
-    value_hex: #c0bc00
+    value: #cbc812
+    value_hex: #cbc812
     group: yellow
 - yellow_l1|color
     id: yellow_l1
-    value: #d4d000
-    value_hex: #d4d000
+    value: #e4e114
+    value_hex: #e4e114
     group: yellow
 - yellow|color
     id: yellow
-    value: #e8e400
-    value_hex: #e8e400
-    group: yellow
-- yellow_r1|color
-    id: yellow_r1
     value: #fefa16
     value_hex: #fefa16
     group: yellow
+- yellow_r1|color
+    id: yellow_r1
+    value: #fefb41
+    value_hex: #fefb41
+    group: yellow
 - yellow_r2|color
     id: yellow_r2
-    value: #ffff2c
-    value_hex: #ffff2c
+    value: #fefc61
+    value_hex: #fefc61
     group: yellow
 - yellow_r3|color
     id: yellow_r3
-    value: #ffff42
-    value_hex: #ffff42
+    value: #fefc7b
+    value_hex: #fefc7b
     group: yellow
 - yellow_r4|color
     id: yellow_r4
-    value: #ffff58
-    value_hex: #ffff58
+    value: #fffd91
+    value_hex: #fffd91
     group: yellow
 - yellow_r5|color
     id: yellow_r5
-    value: #ffff6e
-    value_hex: #ffff6e
+    value: #fffda5
+    value_hex: #fffda5
     group: yellow
 - yellow_r6|color
     id: yellow_r6
-    value: #ffff84
-    value_hex: #ffff84
+    value: #fffdb6
+    value_hex: #fffdb6
     group: yellow
 - yellow_r7|color
     id: yellow_r7
-    value: #ffff9a
-    value_hex: #ffff9a
+    value: #fffec7
+    value_hex: #fffec7
     group: yellow
 - yellow_r8|color
     id: yellow_r8
-    value: #ffffb0
-    value_hex: #ffffb0
+    value: #fffed6
+    value_hex: #fffed6
     group: yellow
 - yellow_r9|color
     id: yellow_r9
-    value: #ffffc6
-    value_hex: #ffffc6
+    value: #fffee5
+    value_hex: #fffee5
     group: yellow
 - yellow_r10|color
     id: yellow_r10
-    value: #ffffdc
-    value_hex: #ffffdc
+    value: #fffff2
+    value_hex: #fffff2
     group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # yellowgreen group
