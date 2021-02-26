@@ -882,108 +882,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - lightblue_l10|color
     id: lightblue_l10
-    value: #000035
-    value_hex: #000035
+    value: #071121
+    value_hex: #071121
     group: lightblue
 - lightblue_l9|color
     id: lightblue_l9
-    value: #000047
-    value_hex: #000047
+    value: #0c1c35
+    value_hex: #0c1c35
     group: lightblue
 - lightblue_l8|color
     id: lightblue_l8
-    value: #000059
-    value_hex: #000059
+    value: #102648
+    value_hex: #102648
     group: lightblue
 - lightblue_l7|color
     id: lightblue_l7
-    value: #00006b
-    value_hex: #00006b
+    value: #14315d
+    value_hex: #14315d
     group: lightblue
 - lightblue_l6|color
     id: lightblue_l6
-    value: #00077d
-    value_hex: #00077d
+    value: #193c72
+    value_hex: #193c72
     group: lightblue
 - lightblue_l5|color
     id: lightblue_l5
-    value: #00198f
-    value_hex: #00198f
+    value: #1e4887
+    value_hex: #1e4887
     group: lightblue
 - lightblue_l4|color
     id: lightblue_l4
-    value: #002ba1
-    value_hex: #002ba1
+    value: #22539d
+    value_hex: #22539d
     group: lightblue
 - lightblue_l3|color
     id: lightblue_l3
-    value: #003db3
-    value_hex: #003db3
+    value: #275fb4
+    value_hex: #275fb4
     group: lightblue
 - lightblue_l2|color
     id: lightblue_l2
-    value: #014fc5
-    value_hex: #014fc5
+    value: #2d6ccb
+    value_hex: #2d6ccb
     group: lightblue
 - lightblue_l1|color
     id: lightblue_l1
-    value: #1361d7
-    value_hex: #1361d7
+    value: #3278e3
+    value_hex: #3278e3
     group: lightblue
 - lightblue|color
     id: lightblue
-    value: #2573e9
-    value_hex: #2573e9
-    group: lightblue
-- lightblue_r1|color
-    id: lightblue_r1
     value: #3785fb
     value_hex: #3785fb
     group: lightblue
+- lightblue_r1|color
+    id: lightblue_r1
+    value: #4b91fb
+    value_hex: #4b91fb
+    group: lightblue
 - lightblue_r2|color
     id: lightblue_r2
-    value: #4997ff
-    value_hex: #4997ff
+    value: #5e9dfc
+    value_hex: #5e9dfc
     group: lightblue
 - lightblue_r3|color
     id: lightblue_r3
-    value: #5ba9ff
-    value_hex: #5ba9ff
+    value: #71a8fc
+    value_hex: #71a8fc
     group: lightblue
 - lightblue_r4|color
     id: lightblue_r4
-    value: #6dbbff
-    value_hex: #6dbbff
+    value: #83b3fd
+    value_hex: #83b3fd
     group: lightblue
 - lightblue_r5|color
     id: lightblue_r5
-    value: #7fcdff
-    value_hex: #7fcdff
+    value: #95befd
+    value_hex: #95befd
     group: lightblue
 - lightblue_r6|color
     id: lightblue_r6
-    value: #91dfff
-    value_hex: #91dfff
+    value: #a7c9fd
+    value_hex: #a7c9fd
     group: lightblue
 - lightblue_r7|color
     id: lightblue_r7
-    value: #a3f1ff
-    value_hex: #a3f1ff
+    value: #b9d4fe
+    value_hex: #b9d4fe
     group: lightblue
 - lightblue_r8|color
     id: lightblue_r8
-    value: #b5ffff
-    value_hex: #b5ffff
+    value: #cadffe
+    value_hex: #cadffe
     group: lightblue
 - lightblue_r9|color
     id: lightblue_r9
-    value: #c7ffff
-    value_hex: #c7ffff
+    value: #dceafe
+    value_hex: #dceafe
     group: lightblue
 - lightblue_r10|color
     id: lightblue_r10
-    value: #d9ffff
-    value_hex: #d9ffff
+    value: #edf4ff
+    value_hex: #edf4ff
     group: lightblue
 # ─────────────────────────────────────────────────────────────────────
 # blueviolet group
