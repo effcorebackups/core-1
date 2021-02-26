@@ -774,108 +774,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - greenlightblue_l10|color
     id: greenlightblue_l10
-    value: #001800
-    value_hex: #001800
+    value: #041811
+    value_hex: #041811
     group: greenlightblue
 - greenlightblue_l9|color
     id: greenlightblue_l9
-    value: #002700
-    value_hex: #002700
+    value: #06261c
+    value_hex: #06261c
     group: greenlightblue
 - greenlightblue_l8|color
     id: greenlightblue_l8
-    value: #003601
-    value_hex: #003601
+    value: #093527
+    value_hex: #093527
     group: greenlightblue
 - greenlightblue_l7|color
     id: greenlightblue_l7
-    value: #004510
-    value_hex: #004510
+    value: #0c4532
+    value_hex: #0c4532
     group: greenlightblue
 - greenlightblue_l6|color
     id: greenlightblue_l6
-    value: #00541f
-    value_hex: #00541f
+    value: #0f553e
+    value_hex: #0f553e
     group: greenlightblue
 - greenlightblue_l5|color
     id: greenlightblue_l5
-    value: #00632e
-    value_hex: #00632e
+    value: #11664a
+    value_hex: #11664a
     group: greenlightblue
 - greenlightblue_l4|color
     id: greenlightblue_l4
-    value: #00723d
-    value_hex: #00723d
+    value: #147857
+    value_hex: #147857
     group: greenlightblue
 - greenlightblue_l3|color
     id: greenlightblue_l3
-    value: #00814c
-    value_hex: #00814c
+    value: #178a64
+    value_hex: #178a64
     group: greenlightblue
 - greenlightblue_l2|color
     id: greenlightblue_l2
-    value: #00905b
-    value_hex: #00905b
+    value: #1b9c71
+    value_hex: #1b9c71
     group: greenlightblue
 - greenlightblue_l1|color
     id: greenlightblue_l1
-    value: #009f6a
-    value_hex: #009f6a
+    value: #1eaf7f
+    value_hex: #1eaf7f
     group: greenlightblue
 - greenlightblue|color
     id: greenlightblue
-    value: #0dae79
-    value_hex: #0dae79
-    group: greenlightblue
-- greenlightblue_r1|color
-    id: greenlightblue_r1
     value: #21c28d
     value_hex: #21c28d
     group: greenlightblue
+- greenlightblue_r1|color
+    id: greenlightblue_r1
+    value: #39c999
+    value_hex: #39c999
+    group: greenlightblue
 - greenlightblue_r2|color
     id: greenlightblue_r2
-    value: #35d6a1
-    value_hex: #35d6a1
+    value: #50cfa5
+    value_hex: #50cfa5
     group: greenlightblue
 - greenlightblue_r3|color
     id: greenlightblue_r3
-    value: #49eab5
-    value_hex: #49eab5
+    value: #66d5b1
+    value_hex: #66d5b1
     group: greenlightblue
 - greenlightblue_r4|color
     id: greenlightblue_r4
-    value: #5dfec9
-    value_hex: #5dfec9
+    value: #7bdbbb
+    value_hex: #7bdbbb
     group: greenlightblue
 - greenlightblue_r5|color
     id: greenlightblue_r5
-    value: #71ffdd
-    value_hex: #71ffdd
+    value: #8fe0c6
+    value_hex: #8fe0c6
     group: greenlightblue
 - greenlightblue_r6|color
     id: greenlightblue_r6
-    value: #85fff1
-    value_hex: #85fff1
+    value: #a3e6d0
+    value_hex: #a3e6d0
     group: greenlightblue
 - greenlightblue_r7|color
     id: greenlightblue_r7
-    value: #99ffff
-    value_hex: #99ffff
+    value: #b6ebda
+    value_hex: #b6ebda
     group: greenlightblue
 - greenlightblue_r8|color
     id: greenlightblue_r8
-    value: #adffff
-    value_hex: #adffff
+    value: #c9f0e3
+    value_hex: #c9f0e3
     group: greenlightblue
 - greenlightblue_r9|color
     id: greenlightblue_r9
-    value: #c1ffff
-    value_hex: #c1ffff
+    value: #dbf5ed
+    value_hex: #dbf5ed
     group: greenlightblue
 - greenlightblue_r10|color
     id: greenlightblue_r10
-    value: #d5ffff
-    value_hex: #d5ffff
+    value: #edfaf6
+    value_hex: #edfaf6
     group: greenlightblue
 # ─────────────────────────────────────────────────────────────────────
 # lightblue group
