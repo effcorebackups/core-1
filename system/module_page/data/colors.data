@@ -1098,108 +1098,108 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - violet_l10|color
     id: violet_l10
-    value: #160016
-    value_hex: #160016
+    value: #170417
+    value_hex: #170417
     group: violet
 - violet_l9|color
     id: violet_l9
-    value: #1f001f
-    value_hex: #1f001f
+    value: #240724
+    value_hex: #240724
     group: violet
 - violet_l8|color
     id: violet_l8
-    value: #280028
-    value_hex: #280028
+    value: #2f082f
+    value_hex: #2f082f
     group: violet
 - violet_l7|color
     id: violet_l7
-    value: #310031
-    value_hex: #310031
+    value: #390a39
+    value_hex: #390a39
     group: violet
 - violet_l6|color
     id: violet_l6
-    value: #3a003a
-    value_hex: #3a003a
+    value: #430c43
+    value_hex: #430c43
     group: violet
 - violet_l5|color
     id: violet_l5
-    value: #430043
-    value_hex: #430043
+    value: #4d0e4d
+    value_hex: #4d0e4d
     group: violet
 - violet_l4|color
     id: violet_l4
-    value: #4c004c
-    value_hex: #4c004c
+    value: #581058
+    value_hex: #581058
     group: violet
 - violet_l3|color
     id: violet_l3
-    value: #550055
-    value_hex: #550055
+    value: #631263
+    value_hex: #631263
     group: violet
 - violet_l2|color
     id: violet_l2
-    value: #5e005e
-    value_hex: #5e005e
+    value: #6e146e
+    value_hex: #6e146e
     group: violet
 - violet_l1|color
     id: violet_l1
-    value: #670067
-    value_hex: #670067
+    value: #791679
+    value_hex: #791679
     group: violet
 - violet|color
     id: violet
-    value: #700470
-    value_hex: #700470
-    group: violet
-- violet_r1|color
-    id: violet_r1
     value: #841884
     value_hex: #841884
     group: violet
+- violet_r1|color
+    id: violet_r1
+    value: #923192
+    value_hex: #923192
+    group: violet
 - violet_r2|color
     id: violet_r2
-    value: #982c98
-    value_hex: #982c98
+    value: #9d489d
+    value_hex: #9d489d
     group: violet
 - violet_r3|color
     id: violet_r3
-    value: #ac40ac
-    value_hex: #ac40ac
+    value: #a95da9
+    value_hex: #a95da9
     group: violet
 - violet_r4|color
     id: violet_r4
-    value: #c054c0
-    value_hex: #c054c0
+    value: #b471b4
+    value_hex: #b471b4
     group: violet
 - violet_r5|color
     id: violet_r5
-    value: #d468d4
-    value_hex: #d468d4
+    value: #be86be
+    value_hex: #be86be
     group: violet
 - violet_r6|color
     id: violet_r6
-    value: #e87ce8
-    value_hex: #e87ce8
+    value: #c99ac9
+    value_hex: #c99ac9
     group: violet
 - violet_r7|color
     id: violet_r7
-    value: #fc90fc
-    value_hex: #fc90fc
+    value: #d4aed4
+    value_hex: #d4aed4
     group: violet
 - violet_r8|color
     id: violet_r8
-    value: #ffa4ff
-    value_hex: #ffa4ff
+    value: #dec2de
+    value_hex: #dec2de
     group: violet
 - violet_r9|color
     id: violet_r9
-    value: #ffb8ff
-    value_hex: #ffb8ff
+    value: #e9d6e9
+    value_hex: #e9d6e9
     group: violet
 - violet_r10|color
     id: violet_r10
-    value: #ffccff
-    value_hex: #ffccff
+    value: #f4eaf4
+    value_hex: #f4eaf4
     group: violet
 # ─────────────────────────────────────────────────────────────────────
 # default system colors
