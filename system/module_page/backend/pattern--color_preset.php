@@ -47,33 +47,9 @@ namespace effcore {
     $result = true;
     $colors = color::get_all();
     $settings = module::settings_get('page');
-    $result&= !empty($colors[$settings->color__page_id                  ]);
-    $result&= !empty($colors[$settings->color__text_id                  ]);
-    $result&= !empty($colors[$settings->color__main_id                  ]);
-    $result&= !empty($colors[$settings->color__link_id                  ]);
-    $result&= !empty($colors[$settings->color__link_active_id           ]);
-    $result&= !empty($colors[$settings->color__table_row_odd_id         ]);
-    $result&= !empty($colors[$settings->color__table_row_even_id        ]);
-    $result&= !empty($colors[$settings->color__relation_id              ]);
-    $result&= !empty($colors[$settings->color__menu_id                  ]);
-    $result&= !empty($colors[$settings->color__menu_active_id           ]);
-    $result&= !empty($colors[$settings->color__menu_text_id             ]);
-    $result&= !empty($colors[$settings->color__menu_link_id             ]);
-    $result&= !empty($colors[$settings->color__menu_link_active_id      ]);
-    $result&= !empty($colors[$settings->color__tabs_id                  ]);
-    $result&= !empty($colors[$settings->color__tabs_link_id             ]);
-    $result&= !empty($colors[$settings->color__tabs_link_active_id      ]);
-    $result&= !empty($colors[$settings->color__tabs_link_active_no_bg_id]);
-    $result&= !empty($colors[$settings->color__ok_id                    ]);
-    $result&= !empty($colors[$settings->color__warning_id               ]);
-    $result&= !empty($colors[$settings->color__error_id                 ]);
-    $result&= !empty($colors[$settings->color__fieldset_id              ]);
-    $result&= !empty($colors[$settings->color__fieldset_nested_id       ]);
-    $result&= !empty($colors[$settings->color__field_id                 ]);
-    $result&= !empty($colors[$settings->color__field_text_id            ]);
-    $result&= !empty($colors[$settings->color__button_id                ]);
-    $result&= !empty($colors[$settings->color__button_active_id         ]);
-    $result&= !empty($colors[$settings->color__button_text_id           ]);
+    foreach ($settings as $c_color_type => $c_color_id)
+      if (substr($c_color_type, 0, 7) === 'color__')
+        $result&= !empty($colors[$c_color_id]);
     return $result;
   }
 
