@@ -15,7 +15,7 @@ namespace effcore\modules\page {
     $id = page::get_current()->args_get('id');
     $preset = color_preset::get($id);
     if ($preset) {
-      foreach ($items as $c_npath => $c_item) {
+      foreach ($items as $c_item) {
         if ($c_item instanceof field_checkbox_color) {
           if (substr($c_item->name_get(), 0, 7) === 'color__') {
             $c_item->color_set(
@@ -34,7 +34,7 @@ namespace effcore\modules\page {
         $id = page::get_current()->args_get('id');
         $preset = color_preset::get($id);
         if ($preset) {
-          foreach ($items as $c_npath => $c_item) {
+          foreach ($items as $c_item) {
             if ($c_item instanceof field_checkbox_color) {
               if (substr($c_item->name_get(), 0, 7) === 'color__') {
                 if ($c_item->checked_get()) {
