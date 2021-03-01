@@ -1,37 +1,28 @@
 tokens
 - test_email_random
-    match: %%_test_email_random
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_nickname_random
-    match: %%_test_nickname_random
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_password_random
-    match: %%_test_password_random
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_captcha
-    match: %%_test_captcha
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_form_validation_id
-    match: %%_test_form_validation_id
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_cookies
-    match: %%_test_cookies
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_response_http_code
-    match: %%_test_response_http_code
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_response_submit_error
-    match: %%_test_response_submit_error
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_response_time_total
-    match: %%_test_response_time_total
     type: code
     handler: \effcore\modules\test\events_token::on_apply

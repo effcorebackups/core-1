@@ -18,8 +18,7 @@ namespace effcore {
     for ($i = 1; $i <= $quantity; $i++) {
       $c_results['reports'][$dpath] = new text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
       foreach ($this->actions as $c_rowid => $c_step) {
-        if ($this->id) token::insert('test_step_repeat_i_'.$this->id,
-                                  '%%_test_step_repeat_i_'.$this->id, 'text', $i, null, 'test');
+        if ($this->id) token::insert('test_step_repeat_i_'.$this->id, 'text', $i, null, 'test');
         $c_step->run($test, $dpath.'/'.$i.'/'.$c_rowid, $c_results);
         if (array_key_exists('return', $c_results)) {
           return;

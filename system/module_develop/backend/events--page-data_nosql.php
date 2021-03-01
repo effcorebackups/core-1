@@ -173,7 +173,6 @@ namespace effcore\modules\develop {
     foreach ($tokens as $c_row_id => $c_token) {
       $decorator->data[] = [
         'rowid'     => ['value' => new text_simple($c_row_id          ), 'title' => 'Row ID'   ],
-        'match'     => ['value' => new text_simple($c_token->match    ), 'title' => 'Match'    ],
         'type'      => ['value' => new text_simple($c_token->type     ), 'title' => 'Type'     ],
         'module_id' => ['value' => new text_simple($c_token->module_id), 'title' => 'Module ID']
       ];

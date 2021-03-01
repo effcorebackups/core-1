@@ -35,10 +35,9 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function insert($row_id, $match, $type, $value = null, $handler = null, $module_id = null) {
+  static function insert($row_id, $type, $value = null, $handler = null, $module_id = null) {
     static::init();
     $new_token = new \stdClass;
-    if (true      ) $new_token->match     = $match;
     if (true      ) $new_token->type      = $type;
     if (true      ) $new_token->value     = $value;
     if ($handler  ) $new_token->handler   = $handler;

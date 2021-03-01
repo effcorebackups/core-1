@@ -23,8 +23,7 @@ namespace effcore {
       for ($j = $actions_count - 1; $j >= 0; $j--) {
         $c_rowid = $rowids[$actions_count - 1 - $j];
         $c_state = $i >> $j & 1;
-        token::insert('test_step_transpositions_is_active_'.$c_rowid,
-                   '%%_test_step_transpositions_is_active_'.$c_rowid, 'text', $c_state, null, 'test');
+        token::insert('test_step_transpositions_is_active_'.$c_rowid, 'text', $c_state, null, 'test');
       }
       if ($this->action_before) {
         $c_results['reports'][$dpath.'/'.$i.'/action_before_title'] = new text('action "%%_name" will be started', ['name' => 'action_before']);
