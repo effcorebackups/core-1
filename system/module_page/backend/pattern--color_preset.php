@@ -75,36 +75,14 @@ namespace effcore {
     return $result;
   }
 
-  static function reset() {
+  static function reset($reset = true) {
     $result = true;
     $storage = storage::get('files');
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__page_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__text_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__main_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__link_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__link_active_id',            false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__table_row_odd_id',          false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__table_row_even_id',         false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__relation_id',               false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__menu_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__menu_active_id',            false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__menu_text_id',              false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__menu_link_id',              false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__menu_link_active_id',       false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__tabs_id',                   false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__tabs_link_id',              false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__tabs_link_active_id',       false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__tabs_link_active_no_bg_id', false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__ok_id',                     false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__warning_id',                false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__error_id',                  false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__fieldset_id',               false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__fieldset_nested_id',        false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__field_id',                  false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__field_text_id',             false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__button_id',                 false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__button_active_id',          false);
-    $result&= $storage->changes_delete('page', 'update', 'settings/page/color__button_text_id'                  );
+    $settings = module::settings_get('page');
+    foreach ($settings as $c_color_type => $c_color_id)
+      if (substr($c_color_type, 0, 7) === 'color__')
+        $result&= $storage->changes_delete('page', 'update', 'settings/page/'.$c_color_type, false);
+    if ($reset) storage_nosql_files::cache_update();
     return $result;
   }
 
