@@ -8,180 +8,180 @@ forms
     - colors_main|fieldset
         title: Main colors
         children
-        - color_page_id|group_palette
+        - color__page_id|group_palette
             title: Page
             attributes
             - required: true
             element_attributes
-            - name: color_page_id
-        - color_text_id|group_palette
+            - name: color__page_id
+        - color__text_id|group_palette
             title: Text
             attributes
             - required: true
             element_attributes
-            - name: color_text_id
-        - color_main_id|group_palette
+            - name: color__text_id
+        - color__main_id|group_palette
             title: Main color
             attributes
             - required: true
             element_attributes
-            - name: color_main_id
-        - color_link_id|group_palette
+            - name: color__main_id
+        - color__link_id|group_palette
             title: Link
             attributes
             - required: true
             element_attributes
-            - name: color_link_id
-        - color_link_active_id|group_palette
+            - name: color__link_id
+        - color__link_active_id|group_palette
             title: Link active
             attributes
             - required: true
             element_attributes
-            - name: color_link_active_id
-        - color_table_row_odd_id|group_palette
+            - name: color__link_active_id
+        - color__table_row_odd_id|group_palette
             title: Table: row odd
             attributes
             - required: true
             element_attributes
-            - name: color_table_row_odd_id
-        - color_table_row_even_id|group_palette
+            - name: color__table_row_odd_id
+        - color__table_row_even_id|group_palette
             title: Table: row even
             attributes
             - required: true
             element_attributes
-            - name: color_table_row_even_id
-        - color_relation_id|group_palette
+            - name: color__table_row_even_id
+        - color__relation_id|group_palette
             title: Relation
             attributes
             - required: true
             element_attributes
-            - name: color_relation_id
+            - name: color__relation_id
     - colors_menu|fieldset
         title: Menu
         children
-        - color_menu_id|group_palette
+        - color__menu_id|group_palette
             title: Menu
             attributes
             - required: true
             element_attributes
-            - name: color_menu_id
-        - color_menu_active_id|group_palette
+            - name: color__menu_id
+        - color__menu_active_id|group_palette
             title: Menu active
             attributes
             - required: true
             element_attributes
-            - name: color_menu_active_id
-        - color_menu_text_id|group_palette
+            - name: color__menu_active_id
+        - color__menu_text_id|group_palette
             title: Menu: text
             attributes
             - required: true
             element_attributes
-            - name: color_menu_text_id
-        - color_menu_link_id|group_palette
+            - name: color__menu_text_id
+        - color__menu_link_id|group_palette
             title: Menu: link
             attributes
             - required: true
             element_attributes
-            - name: color_menu_link_id
-        - color_menu_link_active_id|group_palette
+            - name: color__menu_link_id
+        - color__menu_link_active_id|group_palette
             title: Menu: link active
             attributes
             - required: true
             element_attributes
-            - name: color_menu_link_active_id
+            - name: color__menu_link_active_id
     - colors_tabs|fieldset
         title: Tabs
         children
-        - color_tabs_id|group_palette
+        - color__tabs_id|group_palette
             title: Tabs
             attributes
             - required: true
             element_attributes
-            - name: color_tabs_id
-        - color_tabs_link_id|group_palette
+            - name: color__tabs_id
+        - color__tabs_link_id|group_palette
             title: Tabs: link
             attributes
             - required: true
             element_attributes
-            - name: color_tabs_link_id
-        - color_tabs_link_active_id|group_palette
+            - name: color__tabs_link_id
+        - color__tabs_link_active_id|group_palette
             title: Tabs: link active
             attributes
             - required: true
             element_attributes
-            - name: color_tabs_link_active_id
-        - color_tabs_link_active_no_bg_id|group_palette
+            - name: color__tabs_link_active_id
+        - color__tabs_link_active_no_bg_id|group_palette
             title: Tabs: link active (no background)
             attributes
             - required: true
             element_attributes
-            - name: color_tabs_link_active_no_bg_id
+            - name: color__tabs_link_active_no_bg_id
     - colors_state|fieldset
         title: State
         children
-        - color_ok_id|group_palette
+        - color__ok_id|group_palette
             title: Okay
             attributes
             - required: true
             element_attributes
-            - name: color_ok_id
-        - color_warning_id|group_palette
+            - name: color__ok_id
+        - color__warning_id|group_palette
             title: Warning
             attributes
             - required: true
             element_attributes
-            - name: color_warning_id
-        - color_error_id|group_palette
+            - name: color__warning_id
+        - color__error_id|group_palette
             title: Error
             attributes
             - required: true
             element_attributes
-            - name: color_error_id
+            - name: color__error_id
     - colors_fieldset|fieldset
         title: Form elements
         children
-        - color_fieldset_id|group_palette
+        - color__fieldset_id|group_palette
             title: Fieldset
             attributes
             - required: true
             element_attributes
-            - name: color_fieldset_id
-        - color_fieldset_nested_id|group_palette
+            - name: color__fieldset_id
+        - color__fieldset_nested_id|group_palette
             title: Fieldset nested
             attributes
             - required: true
             element_attributes
-            - name: color_fieldset_nested_id
-        - color_field_id|group_palette
+            - name: color__fieldset_nested_id
+        - color__field_id|group_palette
             title: Field
             attributes
             - required: true
             element_attributes
-            - name: color_field_id
-        - color_field_text_id|group_palette
+            - name: color__field_id
+        - color__field_text_id|group_palette
             title: Field: text
             attributes
             - required: true
             element_attributes
-            - name: color_field_text_id
-        - color_button_id|group_palette
+            - name: color__field_text_id
+        - color__button_id|group_palette
             title: Button
             attributes
             - required: true
             element_attributes
-            - name: color_button_id
-        - color_button_active_id|group_palette
+            - name: color__button_id
+        - color__button_active_id|group_palette
             title: Button active
             attributes
             - required: true
             element_attributes
-            - name: color_button_active_id
-        - color_button_text_id|group_palette
+            - name: color__button_active_id
+        - color__button_text_id|group_palette
             title: Button: text
             attributes
             - required: true
             element_attributes
-            - name: color_button_text_id
+            - name: color__button_text_id
     - button_save|button
         title: save
         attributes

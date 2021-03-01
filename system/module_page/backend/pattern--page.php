@@ -98,7 +98,7 @@ namespace effcore {
 
   # page palette is dark or light
     $colors = color::get_all();
-    $color_page = $colors[$settings->color_page_id] ?? null;
+    $color_page = $colors[$settings->color__page_id] ?? null;
     $is_dark_palette = $color_page ? $color_page->is_dark() : false;
 
   # render page

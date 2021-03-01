@@ -2,33 +2,33 @@ settings
   apply_tokens_for_meta: false
   apply_tokens_for_sitemap: false
   apply_tokens_for_robots: false
-  color_page_id: default_1
-  color_text_id: white
-  color_main_id: default_4
-  color_link_id: white
-  color_link_active_id: gold_r1
-  color_table_row_odd_id: default_2
-  color_table_row_even_id: default_3
-  color_relation_id: white
-  color_menu_id: default_2
-  color_menu_active_id: default_3
-  color_menu_text_id: white
-  color_menu_link_id: white
-  color_menu_link_active_id: gold_r1
-  color_tabs_id: default_4
-  color_tabs_link_id: white
-  color_tabs_link_active_id: white
-  color_tabs_link_active_no_bg_id: gold_r1
-  color_ok_id: state_ok
-  color_warning_id: state_warning
-  color_error_id: state_error
-  color_fieldset_id: default_2
-  color_fieldset_nested_id: default_1
-  color_field_id: default_1
-  color_field_text_id: white
-  color_button_id: default_5
-  color_button_active_id: default_6
-  color_button_text_id: white
+  color__page_id: default_1
+  color__text_id: white
+  color__main_id: default_4
+  color__link_id: white
+  color__link_active_id: gold_r1
+  color__table_row_odd_id: default_2
+  color__table_row_even_id: default_3
+  color__relation_id: white
+  color__menu_id: default_2
+  color__menu_active_id: default_3
+  color__menu_text_id: white
+  color__menu_link_id: white
+  color__menu_link_active_id: gold_r1
+  color__tabs_id: default_4
+  color__tabs_link_id: white
+  color__tabs_link_active_id: white
+  color__tabs_link_active_no_bg_id: gold_r1
+  color__ok_id: state_ok
+  color__warning_id: state_warning
+  color__error_id: state_error
+  color__fieldset_id: default_2
+  color__fieldset_nested_id: default_1
+  color__field_id: default_1
+  color__field_text_id: white
+  color__button_id: default_5
+  color__button_active_id: default_6
+  color__button_text_id: white
   console_visibility: 0
   page_min_width: 200
   page_max_width: 990
