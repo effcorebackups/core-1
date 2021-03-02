@@ -9,7 +9,7 @@ namespace effcore\modules\user {
           use \effcore\message;
           use \effcore\modules\storage\events_form_instance_insert as storage_events_form_instance_insert;
           use \effcore\page;
-          use \effcore\pluggable_class;
+          use \effcore\form_plugin;
           use \effcore\text_multiline;
           use \effcore\text;
           abstract class events_form_instance_insert {
@@ -27,9 +27,9 @@ namespace effcore\modules\user {
     # feedback
       if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
       # field 'CAPTCHA'
-        $class_captcha = new pluggable_class('field_captcha');
-        if ($class_captcha->is_exists_class()) {
-          $field_captcha = $class_captcha->object_get();
+        $captcha_plugin = new form_plugin('field_captcha');
+        if ($captcha_plugin->is_available()) {
+          $field_captcha = $captcha_plugin->object_get();
           $field_captcha->cform = $form;
           $field_captcha->build();
           $field_captcha->weight = -500;

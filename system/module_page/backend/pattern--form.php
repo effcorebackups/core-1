@@ -46,13 +46,13 @@ namespace effcore {
         header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
       }
 
-    # plug external classes
+    # resolve form plugins
       foreach ($this->children_select_recursive() as $c_npath => $c_child) {
-        if ($c_child instanceof pluggable_class) {
+        if ($c_child instanceof form_plugin) {
           $c_npath_parts = explode('/', $c_npath);
           $c_npath_last_part = end($c_npath_parts);
           $c_pointers = core::npath_get_pointers($this, $c_npath);
-          if ($c_child->is_exists_class())
+          if ($c_child->is_available())
                      $c_pointers[$c_npath_last_part] = $c_child->object_get();
           else unset($c_pointers[$c_npath_last_part]);
         }

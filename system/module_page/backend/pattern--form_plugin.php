@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class pluggable_class {
+          class form_plugin {
 
   public $name;
   public $args = [];
@@ -22,7 +22,7 @@ namespace effcore {
     '\\effcore\\'.$this->name;
   }
 
-  function is_exists_class() {
+  function is_available() {
     return core::structure_is_exists($this->name_get());
   }
 

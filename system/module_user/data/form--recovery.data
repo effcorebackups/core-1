@@ -8,7 +8,7 @@ forms
     - credentials|fieldset
         children
         - email|field_email
-        - captcha|pluggable_class
+        - captcha|form_plugin
             name: field_captcha
     - button_recovery|button
         title: recovery

@@ -28,7 +28,7 @@ forms
             checked
             - =: is_remember
             - =: is_fixed_ip
-        - captcha|pluggable_class
+        - captcha|form_plugin
             name: field_captcha
     - button_register|button
         title: register
