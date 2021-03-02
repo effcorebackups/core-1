@@ -58,29 +58,15 @@ namespace effcore {
         }
       }
 
-    # relate each item with it is form
-      foreach ($this->children_select_recursive() as $c_child) {
-        if ($c_child instanceof control)
-            $c_child->cform = $this;
-      }
-
-    # build all form elements
-      foreach ($this->children_select_recursive() as $c_child) {
-        if (is_object($c_child) && method_exists($c_child, 'build')) {
-          $c_child->build();
-        }
-      }
-
-    # relate each item with it is form (for new elements that appeared after build)
-      foreach ($this->children_select_recursive() as $c_child) {
-        if ($c_child instanceof control)
-            $c_child->cform = $this;
-      }
+    # set cform → build → set cform
+      foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof control                  ) $c_child->cform = $this;
+      foreach ($this->children_select_recursive() as $c_child) if (is_object($c_child) && method_exists($c_child, 'build')) $c_child->build();
+      foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof control                  ) $c_child->cform = $this;
 
     # call init handlers
       $this->form_items_update();
-      event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], null,
-        function ($event, $form, $items) { # === $on_after_step
+      event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], /* on_before_step */ null,
+        function ($event, $form, $items) { /* on_after_step */
           $form->form_items_update();
         }
       );
