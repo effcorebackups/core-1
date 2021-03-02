@@ -2,7 +2,7 @@
   /* form */
 
   form {}
-  form [aria-invalid='true'] {border-color: %%_color_error !important}
+  form [aria-invalid='true'] {border-color: %%_color__error !important}
 
   form [data-form-title] {}
   form [data-form-title] + fieldset {margin-top: 1em}
@@ -16,7 +16,7 @@
     font-size: 1.1em;
     line-height: 1.4em;
     text-align: center;
-    border: 1px dotted %%_color_main}
+    border: 1px dotted %%_color__main}
 
   /* fieldset */
 
@@ -32,19 +32,19 @@
 
   fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
   fieldset input[data-opener-type='title']:checked ~ x-fieldset-content {display: none}
-  fieldset input[data-opener-type='title']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
-  fieldset input[data-opener-type='title']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
+  fieldset input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
+  fieldset input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
   x-fieldset-content {
     display: block;
     padding: 10px 16px;
-    border-top: 5px solid %%_color_main}
+    border-top: 5px solid %%_color__main}
   x-fieldset-content::after {content: ''; clear: both; display: block}
 
   x-fieldset-content,
-  x-fieldset-content x-fieldset-content                    x-fieldset-content {background: %%_color_fieldset}
+  x-fieldset-content x-fieldset-content                    x-fieldset-content {background: %%_color__fieldset}
   x-fieldset-content                                       x-fieldset-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {background: %%_color_fieldset_nested}
+  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {background: %%_color__fieldset_nested}
 
   /* field */
 
@@ -52,8 +52,8 @@
   x-field [data-field-title] {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
-  x-field[data-type^='file'][data-debug] x-group[data-scope='fin'] {border: 1px dashed %%_color_ok}
-  x-field[data-type^='file'][data-debug] x-group[data-scope='pre'] {border: 1px dashed %%_color_error}
+  x-field[data-type^='file'][data-debug] x-group[data-scope='fin'] {border: 1px dashed %%_color__ok}
+  x-field[data-type^='file'][data-debug] x-group[data-scope='pre'] {border: 1px dashed %%_color__error}
   x-field[data-type^='file'] x-group[data-scope='fin'],
   x-field[data-type^='file'] x-group[data-scope='pre'] {margin: 0}
   x-field[data-type^='file'] x-group label img[data-type='thumbnail'] {
@@ -79,7 +79,7 @@
     margin-left: .2em;
     border-radius: 3px;
     vertical-align: top;
-    background: %%_color_error}
+    background: %%_color__error}
 
   /* helper classes */
 
@@ -95,15 +95,15 @@
     appearance: none; -webkit-appearance: none; -moz-appearance: none;
     margin: 5px 0;
     padding: 10px;
-    border: 1px solid %%_color_main;
+    border: 1px solid %%_color__main;
     border-radius: 0;
     font-family: 'Arial';
     font-size: 16px;
     vertical-align: middle;
-    color: %%_color_field_text;
-    background-color: %%_color_field}
+    color: %%_color__field_text;
+    background-color: %%_color__field}
   select {cursor: pointer}
-  select option {color: %%_color_field_text}
+  select option {color: %%_color__field_text}
   textarea {display: block; box-sizing: border-box; width: 100%; min-width: 100px}
   input[type='range'] {border-radius: 20px}
   input[type='email'] {text-transform: lowercase}
@@ -119,21 +119,21 @@
     height: 26px;
     margin: 2px 7px 2px 0;
     padding: 0;
-    border: 3px solid %%_color_main;
+    border: 3px solid %%_color__main;
     vertical-align: middle;
     cursor: pointer}
   input[type='radio'   ] {border-radius: 13px}
   input[type='checkbox'][data-type='switcher'] {border-radius: 15px; width: 40px}
 
-  input[type='radio'   ]                               {background: %%_color_field}
-  input[type='checkbox']                               {background: %%_color_field}
-  input[type='checkbox'][data-type='switcher']         {background: %%_color_field url('pictures/icons-form.svgd')   0   -40px}
-  input[type='radio'   ]:checked                       {background: %%_color_field url('pictures/icons-form.svgd')   0   -20px}
-  input[type='checkbox']:checked                       {background: %%_color_field url('pictures/icons-form.svgd')   0     0  }
-  input[type='checkbox'][data-type='switcher']:checked {background: %%_color_field url('pictures/icons-form.svgd') -46px -40px}
+  input[type='radio'   ]                               {background: %%_color__field}
+  input[type='checkbox']                               {background: %%_color__field}
+  input[type='checkbox'][data-type='switcher']         {background: %%_color__field url('pictures/icons-form.svgd')   0   -40px}
+  input[type='radio'   ]:checked                       {background: %%_color__field url('pictures/icons-form.svgd')   0   -20px}
+  input[type='checkbox']:checked                       {background: %%_color__field url('pictures/icons-form.svgd')   0     0  }
+  input[type='checkbox'][data-type='switcher']:checked {background: %%_color__field url('pictures/icons-form.svgd') -46px -40px}
 
   input[data-state-default='not_checked']:checked,
-  input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color_warning}
+  input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color__warning}
 
   input[type='checkbox'] ~ label[for],
   input[type='radio'   ] ~ label[for] {
@@ -180,12 +180,12 @@
     font-family: 'Arial';
     font-size: 16px;
     vertical-align: middle;
-    color: %%_color_button_text;
-    background: %%_color_button}
-  button:enabled:hover                 {background-color: %%_color_button_active}
-  button:enabled:active                {background-color: %%_color_button_active; box-shadow:  inset 0 1px 2px 0 rgba(0, 0, 0, .3)}
-  button:enabled[value='delete']       {background-color: %%_color_warning}
-  button:enabled[value='delete']:hover {background-color: %%_color_button_active}
+    color: %%_color__button_text;
+    background: %%_color__button}
+  button:enabled:hover                 {background-color: %%_color__button_active}
+  button:enabled:active                {background-color: %%_color__button_active; box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .3)}
+  button:enabled[value='delete']       {background-color: %%_color__warning}
+  button:enabled[value='delete']:hover {background-color: %%_color__button_active}
 
   button[data-type='default'] {
     position: absolute;
@@ -209,7 +209,7 @@
   x-field[aria-disabled='true']   {opacity: .3}
   x-field[aria-disabled='true'] * {cursor: default !important}
   button:disabled {cursor: default; opacity: .3}
-  select option:disabled {color: %%_color_field_text{0,0,0,.5}}
+  select option:disabled {color: %%_color__field_text{0,0,0,.5}}
 
   /* checkbox color */
 
@@ -232,7 +232,7 @@
     cursor: pointer;
     font-size: 1.2em}
 
-  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color_main}
+  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color__main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 0; border: none; border-radius: 0}
   x-group[data-type='palette'] x-field input:checked {background-position: -57px 3px}
@@ -256,16 +256,16 @@
     vertical-align: middle;
     cursor: move;
     border-radius: 5px;
-    background: %%_color_main url('pictures/icons-drag_and_drop.svgd') 50% 50%}
+    background: %%_color__main url('pictures/icons-drag_and_drop.svgd') 50% 50%}
 
   [data-has-rearrangeable] x-droppable-area {
     display: block;
     position: relative;
     height: 7px;
     margin-bottom: -7px}
-  [data-has-rearrangeable] x-droppable-area[data-position='before']   {background: %%_color_warning; top: -14px}
-  [data-has-rearrangeable] x-droppable-area[data-position='after' ]   {background: %%_color_warning; top:   7px}
-  [data-has-rearrangeable] x-droppable-area[data-droppable-is-active] {background: %%_color_ok}
+  [data-has-rearrangeable] x-droppable-area[data-position='before']   {background: %%_color__warning; top: -14px}
+  [data-has-rearrangeable] x-droppable-area[data-position='after' ]   {background: %%_color__warning; top:   7px}
+  [data-has-rearrangeable] x-droppable-area[data-droppable-is-active] {background: %%_color__ok}
 
                                      [data-rearrangeable]                                                      x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active] [data-rearrangeable]                                                      x-droppable-area                         {visibility: visible}
@@ -283,8 +283,8 @@
 
   x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
   x-widget input[data-opener-type='title']:checked ~ x-widget-content {display: none}
-  x-widget input[data-opener-type='title']         {background: %%_color_main url('pictures/icons-form.svgd')   0   -60px}
-  x-widget input[data-opener-type='title']:checked {background: %%_color_main url('pictures/icons-form.svgd') -20px -60px}
+  x-widget input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
+  x-widget input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
   x-widgets-group {display: block}
   x-widget {display: block}
@@ -309,15 +309,15 @@
   x-widget[data-type^='items']                     > x-widget-content {
     display: block;
     padding: 10px 16px 16px 16px;
-    border-top: 5px solid %%_color_main}
+    border-top: 5px solid %%_color__main}
 
   x-fieldset-content                                                          x-widget-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content                    x-widget-content {background: %%_color_fieldset_nested}
+  x-fieldset-content x-fieldset-content x-fieldset-content                    x-widget-content {background: %%_color__fieldset_nested}
   x-fieldset-content x-fieldset-content                                       x-widget-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color_fieldset}
+  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color__fieldset}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color_main{0,0,0,.5}}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0,0,0,.5}}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
@@ -327,7 +327,7 @@
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-no-items {
     padding: 10px 20px 20px 20px;
-    border-bottom: 1px dotted %%_color_main;
+    border-bottom: 1px dotted %%_color__main;
     opacity: .5}
 
   x-widget[data-type^='items'] x-widget[data-type='insert'] {display: block; margin-top: 3px}

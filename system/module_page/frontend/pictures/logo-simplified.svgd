@@ -23,10 +23,10 @@
 
   <defs>
     <linearGradient id="color-main">
-      <stop style="stop-color: %%_color_text"/>
+      <stop style="stop-color: %%_color__text"/>
     </linearGradient>
     <linearGradient id="color-fire">
-      <stop style="stop-color: %%_color_text"/>
+      <stop style="stop-color: %%_color__text"/>
     </linearGradient>
   </defs>
 

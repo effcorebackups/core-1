@@ -21,21 +21,21 @@
   </metadata>
 
   <g id="icon_checkbox">
-    <line id="ico_chk-cross_part_1" x1="4.5"  y1="15.5" x2="15.5" y2="4.5" style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
-    <line id="ico_chk-cross_part_2" x1="15.5" y1="15.5" x2="4.5"  y2="4.5" style="stroke: %%_color_main; stroke-width: 3px; stroke-linecap: round"/>
-    <line id="ico_trs-cross_part_1" x1="23"   y1="17"   x2="37"   y2="3"   style="stroke: %%_color_main; stroke-linecap: round"/>
-    <line id="ico_trs-cross_part_2" x1="23"   y1="3"    x2="37"   y2="17"  style="stroke: %%_color_main; stroke-linecap: round"/>
+    <line id="ico_chk-cross_part_1" x1="4.5"  y1="15.5" x2="15.5" y2="4.5" style="stroke: %%_color__main; stroke-width: 3px; stroke-linecap: round"/>
+    <line id="ico_chk-cross_part_2" x1="15.5" y1="15.5" x2="4.5"  y2="4.5" style="stroke: %%_color__main; stroke-width: 3px; stroke-linecap: round"/>
+    <line id="ico_trs-cross_part_1" x1="23"   y1="17"   x2="37"   y2="3"   style="stroke: %%_color__main; stroke-linecap: round"/>
+    <line id="ico_trs-cross_part_2" x1="23"   y1="3"    x2="37"   y2="17"  style="stroke: %%_color__main; stroke-linecap: round"/>
     <path id="ico_clr-cross_part_1" style="fill: black" d="M 78.5 1.5 L 78.5 18.5 L 61.5 18.5 L 61.5 1.5 Z M 64.5 15.5 L 75.5 15.5 L 75.5 4.5 L 64.5 4.5 Z"/>
     <path id="ico_clr-cross_part_2" style="fill: white" d="M 76 7 L 78 7 L 78 13 L 76 13 Z M 62 7 L 64 7 L 64 13 L 62 13 Z M 73 16 L 73 18 L 67 18 L 67 16 Z M 73 2 L 73 4 L 67 4 L 67 2 Z"/>
   </g>
 
   <g id="icon_radiobutton">
-    <circle id="ico_rbn-circle" cx="10" cy="30" r="6" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_rbn-circle" cx="10" cy="30" r="6" style="fill: %%_color__main; stroke: none"/>
   </g>
 
   <g id="icon_switcher">
-    <circle id="ico_swc-circle-off" cx="10" cy="50" r="6" style="fill: none; stroke: %%_color_main; stroke-width: 2px"/>
-    <circle id="ico_swc-circle-on"  cx="70" cy="50" r="7" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_swc-circle-off" cx="10" cy="50" r="6" style="fill: none; stroke: %%_color__main; stroke-width: 2px"/>
+    <circle id="ico_swc-circle-on"  cx="70" cy="50" r="7" style="fill: %%_color__main; stroke: none"/>
   </g>
 
   <g id="icon_opener">
@@ -44,9 +44,9 @@
   </g>
 
   <g id="icon_show_description">
-    <circle id="ico_shd-dot-1" cx="6"  cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
-    <circle id="ico_shd-dot-2" cx="10" cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
-    <circle id="ico_shd-dot-3" cx="14" cy="90" r="1" style="fill: %%_color_main; stroke: none"/>
+    <circle id="ico_shd-dot-1" cx="6"  cy="90" r="1" style="fill: %%_color__main; stroke: none"/>
+    <circle id="ico_shd-dot-2" cx="10" cy="90" r="1" style="fill: %%_color__main; stroke: none"/>
+    <circle id="ico_shd-dot-3" cx="14" cy="90" r="1" style="fill: %%_color__main; stroke: none"/>
   </g>
 
 </svg>

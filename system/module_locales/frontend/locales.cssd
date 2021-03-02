@@ -9,10 +9,10 @@
   nav[aria-label='languages'] li:not(:last-child) {
     margin-right: 10px;
     padding-right: 10px;
-    border-right: 1px dotted %%_color_main}
+    border-right: 1px dotted %%_color__main}
 
   nav[aria-label='languages'] li[data-code='en'] {
     background: url('pictures/flag-uk-mini.svg') no-repeat 0 2px}
 
   nav[aria-label='languages'] [aria-current='true'] {
-    color: %%_color_link_active}
+    color: %%_color__link_active}

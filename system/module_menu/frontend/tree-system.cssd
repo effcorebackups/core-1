@@ -1,6 +1,6 @@
 
   /* menu 'System': icons */
 
-  [role='tree'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color_menu_link !important}
+  [role='tree'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color__menu_link !important}
   [role='tree'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
   [role='tree'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}

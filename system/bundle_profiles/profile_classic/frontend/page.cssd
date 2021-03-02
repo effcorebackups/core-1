@@ -14,7 +14,7 @@
 
   body[data-layout-id='original_classic'] [data-page-part-id] {display: block; padding: 0 20px; box-sizing: border-box}
   body[data-layout-id='original_classic'] [data-page-part-id='head'] {padding-top:  0  ; padding-bottom:  0  ; color: black; background: white}
-  body[data-layout-id='original_classic'] [data-page-part-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color_page url('pictures/page-bg.svg') 50% 0}
+  body[data-layout-id='original_classic'] [data-page-part-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color__page url('pictures/page-bg.svg') 50% 0}
   body[data-layout-id='original_classic'] [data-page-part-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: white; font-size: .6em}
 
   body[data-layout-id='original_classic'] [data-page-part-wrapper]::after {content: ''; clear: both; display: block}
@@ -36,8 +36,8 @@
   body[data-layout-id='original_classic'] a[data-id='picture-logotype_classic'] img {display: block}
   body[data-layout-id='original_classic'] a[data-id='picture-logotype_classic'] img[src=''] {
     padding: 10px;
-    border: 1px dotted %%_color_main;
-    color: %%_color_main;
+    border: 1px dotted %%_color__main;
+    color: %%_color__main;
     font-size: 1.5em}
 
   /* breadcrumbs */
@@ -74,25 +74,25 @@
 
   /* menu in area 'menu': colors */
 
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       {background-color: %%_color_menu}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {background-color: %%_color_menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {background-color: transparent;                    box-shadow: none}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       {background-color: %%_color__menu}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {background-color: transparent;                     box-shadow: none}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:not(:last-child) > a {border-right: 1px dotted white}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:not(:last-child) > a {border-right: none}
 
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a[aria-selected      ='true'],
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a[data-selected-trail='true'] {color: %%_color_menu_link_active}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a:not([href])                 {color: %%_color_menu_text !important}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a                             {color: %%_color_menu_link}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li    a:hover                       {color: %%_color_menu_link_active; background-color: %%_color_menu_active}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li li a:hover                       {color: %%_color_menu_link_active; background-color: transparent}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:hover                            {                                  background-color: %%_color_menu_active}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:hover                            {                                  background-color: transparent}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a[data-selected-trail='true'] {color: %%_color__menu_link_active}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a:not([href])                 {color: %%_color__menu_text !important}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a                             {color: %%_color__menu_link}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li    a:hover                       {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li li a:hover                       {color: %%_color__menu_link_active; background-color: transparent}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:hover                            {                                   background-color: %%_color__menu_active}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:hover                            {                                   background-color: transparent}
 
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[aria-selected      ='true'],
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color_menu_active{5,5,5}}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5,5,5}}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[aria-selected      ='true'],
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color_menu_link_active}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
 
   /* menu in area 'menu': adaptivity */
 

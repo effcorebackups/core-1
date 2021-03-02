@@ -7,7 +7,7 @@
 
   /* console */
 
-  [data-page-part-id='console'] {display: block; background: %%_color_page}
+  [data-page-part-id='console'] {display: block; background: %%_color__page}
   [data-page-part-id='console'] x-console {
     display: block;
     margin: 300px auto 0 auto;
@@ -17,7 +17,7 @@
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
-    color: %%_color_text}
+    color: %%_color__text}
 
   /* block__logs */
 
@@ -30,13 +30,13 @@
   [data-block][data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
   [data-block][data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
   [data-block][data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
-  [data-block][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color_error   !important}
-  [data-block][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color_warning !important}
+  [data-block][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color__error   !important}
+  [data-block][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color__warning !important}
 
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color_warning}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color_error}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color_error}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color_error}
+  [data-block][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color__warning}
+  [data-block][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color__error}
+  [data-block][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color__error}
+  [data-block][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color__error}
 
   [data-block][data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
     display: block;

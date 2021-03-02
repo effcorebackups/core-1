@@ -7,16 +7,16 @@
         padding: 100px 30px;
         font: normal 16px Arial;
         text-align: center;
-        color: %%_color_text;
-        background: %%_color_page}
+        color: %%_color__text;
+        background: %%_color__page}
       pre {
         display: inline-block;
         max-width: 40em;
         overflow: scroll;
         margin: 100px auto;
         text-align: left}
-      a       {color: %%_color_link}
-      a:hover {color: %%_color_link_active}
+      a       {color: %%_color__link}
+      a:hover {color: %%_color__link_active}
       h1 {font-size: 1.75em}
       svg#icon {margin: 50px 0}
     </style>

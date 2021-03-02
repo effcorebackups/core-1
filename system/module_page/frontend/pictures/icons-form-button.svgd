@@ -21,25 +21,25 @@
   </metadata>
 
   <g id="icon_update">
-    <path style="fill: none; stroke: %%_color_button_text; stroke-width: 4px; stroke-linecap: round" d="M 10 20 C 10 14.477 14.477 10 20 10 C 25.523 10 30 14.477 30 20 C 30 25.523 25.523 30 20 30"/>
-    <path style="fill: %%_color_button_text; stroke: none" d="M 11 30.077 L 19.794 25 L 19.794 35.155 Z"/>
+    <path style="fill: none; stroke: %%_color__button_text; stroke-width: 4px; stroke-linecap: round" d="M 10 20 C 10 14.477 14.477 10 20 10 C 25.523 10 30 14.477 30 20 C 30 25.523 25.523 30 20 30"/>
+    <path style="fill: %%_color__button_text; stroke: none" d="M 11 30.077 L 19.794 25 L 19.794 35.155 Z"/>
   </g>
 
   <g id="icon_insert">
-    <line style="stroke: %%_color_button_text; stroke-width: 4px; stroke-linecap: round" x1="10" y1="60" x2="30" y2="60"/>
-    <line style="stroke: %%_color_button_text; stroke-width: 4px; stroke-linecap: round" x1="20" y1="49" x2="20" y2="71"/>
+    <line style="stroke: %%_color__button_text; stroke-width: 4px; stroke-linecap: round" x1="10" y1="60" x2="30" y2="60"/>
+    <line style="stroke: %%_color__button_text; stroke-width: 4px; stroke-linecap: round" x1="20" y1="49" x2="20" y2="71"/>
   </g>
 
   <g id="icon_delete">
-    <line style="stroke: %%_color_button_text; stroke-width: 4px; stroke-linecap: round" x1="10" y1="100" x2="30" y2="100"/>
+    <line style="stroke: %%_color__button_text; stroke-width: 4px; stroke-linecap: round" x1="10" y1="100" x2="30" y2="100"/>
   </g>
 
   <g id="icon_play">
-    <path style="fill: %%_color_button_text; stroke: none" d="M 12 152 L 28 140 L 12 128 Z"/>
+    <path style="fill: %%_color__button_text; stroke: none" d="M 12 152 L 28 140 L 12 128 Z"/>
   </g>
 
   <g id="icon_pause">
-    <path style="fill: %%_color_button_text; stroke: none" d="M 22 190 L 28 190 L 28 170 L 22 170 Z M 12 190 L 18 190 L 18 170 L 12 170 Z"/>
+    <path style="fill: %%_color__button_text; stroke: none" d="M 22 190 L 28 190 L 28 170 L 22 170 Z M 12 190 L 18 190 L 18 170 L 12 170 Z"/>
   </g>
 
 </svg>
