@@ -186,8 +186,10 @@ forms
         title: save
         attributes
         - value: save
+        weight: -500
     - button_reset|button
         title: reset
         break_on_validate: true
         attributes
         - value: reset
+        weight: -520

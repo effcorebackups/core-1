@@ -1,0 +1,16 @@
+form_parts
+- form_colors__profile_classic|fieldset
+    title: Profile "Classic"
+    children
+    - color_custom__head_id|group_palette
+        title: Page part "head"
+        attributes
+        - required: true
+        element_attributes
+        - name: color_custom__head_id
+    - color_custom__foot_id|group_palette
+        title: Page part "foot"
+        attributes
+        - required: true
+        element_attributes
+        - name: color_custom__foot_id

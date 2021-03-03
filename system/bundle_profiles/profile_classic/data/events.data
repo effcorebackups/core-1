@@ -15,3 +15,16 @@ events
   - profile_classic|event
       for: profile_classic
       handler: \effcore\modules\profile_classic\events_module::on_disable
+# ─────────────────────────────────────────────────────────────────────
+  on_form_build
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_build
+  on_form_init
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_init
+  on_form_submit
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_submit
