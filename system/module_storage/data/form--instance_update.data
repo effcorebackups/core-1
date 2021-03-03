@@ -21,9 +21,11 @@ forms
         title: update
         attributes
         - value: update
+        weight: -500
     - button_cancel|button
         title: cancel
         break_on_request_value_set: true
         break_on_validate: true
         attributes
         - value: cancel
+        weight: -520

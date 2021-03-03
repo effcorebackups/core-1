@@ -24,3 +24,4 @@ forms
         title: login
         attributes
         - value: login
+        weight: -500

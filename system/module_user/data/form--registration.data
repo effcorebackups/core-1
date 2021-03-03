@@ -34,3 +34,4 @@ forms
         title: register
         attributes
         - value: register
+        weight: -500

@@ -14,3 +14,4 @@ forms
         title: recovery
         attributes
         - value: recovery
+        weight: -500

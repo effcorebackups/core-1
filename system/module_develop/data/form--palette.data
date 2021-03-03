@@ -52,3 +52,4 @@ forms
         title: generate
         attributes
         - value: generate
+        weight: -500

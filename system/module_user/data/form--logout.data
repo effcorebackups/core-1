@@ -10,3 +10,4 @@ forms
         title: logout
         attributes
         - value: logout
+        weight: -500

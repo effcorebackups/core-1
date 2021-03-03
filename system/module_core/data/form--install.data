@@ -127,3 +127,4 @@ forms
         title: install
         attributes
         - value: install
+        weight: -500
