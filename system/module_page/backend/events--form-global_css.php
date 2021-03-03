@@ -25,25 +25,16 @@ namespace effcore\modules\page {
       case 'save':
         $file = new file(data::directory.'global.css');
         $new_value = $items['#content']->value_get();
-        if (strlen($new_value)) {
+        if (strlen($new_value) !== 0) {
           $file->data_set($new_value);
           if ($file->save())
-               message::insert('Changes was saved.');
-          else message::insert(new text_multiline([
-            'Changes was not saved!',
-            'File "%%_file" was not written to disc!',
-            'File permissions (if the file exists) and directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-          );
-        } else {
+               message::insert(new text_multiline(['File "%%_file" was written to disc.'                                                                                          ], ['file' => $file->path_get_relative()])         );
+          else message::insert(new text_multiline(['File "%%_file" was not written to disc!', 'File permissions (if the file exists) and directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
+        }
+        if (strlen($new_value) === 0 && $file->is_exists()) {
           if (@unlink($file->path_get()))
-               message::insert('Changes was saved.');
-          else message::insert(new text_multiline([
-            'Changes was not saved!',
-            'File "%%_file" was not deleted!',
-            'Directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-          );
+               message::insert(new text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
+          else message::insert(new text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
         }
         break;
     }
