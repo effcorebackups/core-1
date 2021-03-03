@@ -46,24 +46,26 @@ namespace effcore {
         header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
       }
 
+    # call "build" handlers
+      event::start('on_form_build', $id, ['form' => &$this]);
+
     # resolve form plugins
       foreach ($this->children_select_recursive() as $c_npath => $c_child) {
         if ($c_child instanceof form_plugin) {
           $c_npath_parts = explode('/', $c_npath);
           $c_npath_last_part = end($c_npath_parts);
           $c_pointers = core::npath_get_pointers($this, $c_npath);
-          if ($c_child->is_available())
-                     $c_pointers[$c_npath_last_part] = $c_child->object_get();
-          else unset($c_pointers[$c_npath_last_part]);
+          if ($c_child->is_available()) $c_pointers[$c_npath_last_part] = $c_child->object_get();
+          else                    unset($c_pointers[$c_npath_last_part]);
         }
       }
 
-    # set cform → build → set cform
+    # set cform → build → set cform (note: for new items after build)
       foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof control                  ) $c_child->cform = $this;
       foreach ($this->children_select_recursive() as $c_child) if (is_object($c_child) && method_exists($c_child, 'build')) $c_child->build();
       foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof control                  ) $c_child->cform = $this;
 
-    # call init handlers
+    # call "init" handlers
       $this->form_items_update();
       event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], /* on_before_step */ null,
         function ($event, $form, $items) { /* on_after_step */
@@ -76,7 +78,7 @@ namespace effcore {
         $this->clicked_button = $this->clicked_button_get();
         if ($this->clicked_button) {
 
-        # call on_request_value_set method
+        # call "on_request_value_set" method
           if (empty($this->clicked_button->break_on_request_value_set)) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
               if (is_object($c_child) && method_exists($c_child, 'on_request_value_set')) {
@@ -86,7 +88,7 @@ namespace effcore {
             }
           }
 
-        # call on_validate methods (parent should be at the end)
+        # call "on_validate" handlers (parent should be at the end)
           if (empty($this->clicked_button->break_on_validate)) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = $c_child::on_validate        ($c_child, $this, $c_npath); console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = $c_child::on_validate_phase_2($c_child, $this, $c_npath); console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
@@ -102,11 +104,11 @@ namespace effcore {
         # show errors before submit (before a possible redirect after submit)
           $this->errors_show();
 
-        # call on_submit methods (if no errors)
+        # call "on_submit" handlers (if no errors)
           if (!$this->has_error()) {
             foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_submit')) {$c_child::on_submit($c_child, $this, $c_npath); console::log_insert('form', 'submission', $c_npath);}
             event::start('on_form_submit', $id, ['form' => &$this, 'items' => &$this->items]);
-          # show errors after submit for buttons with 'break_on_validate' (will not be shown if a redirect has occurred)
+          # show errors after call "on_submit" handlers for buttons with 'break_on_validate' (will not be shown if a redirect has occurred)
             $this->errors_show();
           }
 
