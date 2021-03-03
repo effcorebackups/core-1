@@ -9,7 +9,7 @@ instances
     - title: Front
     - url: /
     - is_https: 0
-    - is_embedded: 1
+    - is_embedded: 0
     - module_id: profile_default
     - blocks
       - system
@@ -48,7 +48,7 @@ instances
     - title: Login
     - url: /login
     - is_https: 1
-    - is_embedded: 1
+    - is_embedded: 0
     - module_id: profile_default
     - access
         roles
@@ -83,7 +83,7 @@ instances
     - title: Logout
     - url: /logout
     - is_https: 1
-    - is_embedded: 1
+    - is_embedded: 0
     - module_id: profile_default
     - access
         roles
@@ -120,7 +120,7 @@ instances
     - title: Access recovery
     - url: /recovery
     - is_https: 1
-    - is_embedded: 1
+    - is_embedded: 0
     - module_id: profile_default
     - access
         roles
@@ -155,7 +155,7 @@ instances
     - title: New User Registration
     - url: /registration
     - is_https: 1
-    - is_embedded: 1
+    - is_embedded: 0
     - module_id: profile_default
     - access
         roles
