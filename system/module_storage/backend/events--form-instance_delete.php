@@ -15,11 +15,14 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_delete {
 
-  static function on_init($event, $form, $items) {
-    $items['~delete']->disabled_set();
+  static function on_build($event, $form) {
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     if (!$form->instance_id      ) $form->instance_id       = page::get_current()->args_get('instance_id');
+  }
+
+  static function on_init($event, $form, $items) {
+    $items['~delete']->disabled_set();
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {

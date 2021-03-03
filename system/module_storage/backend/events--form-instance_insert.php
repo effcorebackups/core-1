@@ -17,12 +17,15 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_insert {
 
+  static function on_build($event, $form) {
+    if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
+    if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
+  }
+
   static function on_init($event, $form, $items) {
     $items['~insert']->disabled_set();
     if (isset($items['~insert_and_update']))
               $items['~insert_and_update']->disabled_set();
-    if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
-    if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {

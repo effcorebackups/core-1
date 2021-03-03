@@ -17,10 +17,13 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_form_instance_select_multiple {
 
-  static function on_init($event, $form, $items) {
+  static function on_build($event, $form) {
     page::get_current()->args_set('action_name', 'select_multiple');
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
+  }
+
+  static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
       $form->_has_access_select = access::check($entity->access_select);

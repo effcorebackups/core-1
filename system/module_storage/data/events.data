@@ -18,6 +18,23 @@ events
       weight: +300
       handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_after_apply_back_return
 # ─────────────────────────────────────────────────────────────────────
+  on_form_build
+  - instance_select_multiple|event
+      for: instance_select_multiple
+      weight: +600
+      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_build
+  - instance_insert|event
+      for: instance_insert
+      weight: +600
+      handler: \effcore\modules\storage\events_form_instance_insert::on_build
+  - instance_update|event
+      for: instance_update
+      weight: +600
+      handler: \effcore\modules\storage\events_form_instance_update::on_build
+  - instance_delete|event
+      for: instance_delete
+      weight: +600
+      handler: \effcore\modules\storage\events_form_instance_delete::on_build
   on_form_init
   - instance_select_multiple|event
       for: instance_select_multiple
