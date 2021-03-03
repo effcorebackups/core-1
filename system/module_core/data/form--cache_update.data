@@ -12,3 +12,4 @@ forms
         - title|text
             text: Update
         - value: update
+        weight: -500
