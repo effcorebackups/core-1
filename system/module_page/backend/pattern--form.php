@@ -348,7 +348,7 @@ namespace effcore {
       $hex_uagent_hash_8 = static::validation_id_extract_hex_uagent_hash_8($id);
       $hex_signature     = static::validation_id_extract_hex_signature    ($id);
       if ($created <= time()                                                   &&
-          $created >= time() - core::date_period_h                             &&
+          $created >= time() - core::date_period_d                             &&
           $form->number      === $number                                       &&
           $hex_ip            === static::validation_id_get_hex_ip           () &&
           $hex_uagent_hash_8 === static::validation_id_get_hex_uagent_hash_8() &&
