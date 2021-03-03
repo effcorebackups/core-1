@@ -1216,8 +1216,8 @@ colors
     group: default
 - state_error|color
     id: state_error
-    value: #fc5740
-    value_hex: #fc5740
+    value: #fa4c31
+    value_hex: #fa4c31
     group: default
 - default_1|color
     id: default_1
