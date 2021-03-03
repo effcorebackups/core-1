@@ -234,8 +234,9 @@
 
   x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color__main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
-  x-group[data-type='palette'] x-field input {margin: 0; border: none; border-radius: 0}
+  x-group[data-type='palette'] x-field input {margin: 0; border: none; border-radius: 0; outline: none}
   x-group[data-type='palette'] x-field input:checked {background-position: -57px 3px}
+  x-group[data-type='palette'] x-field input[value='white'] {box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, .1)}
   x-group[data-type='palette'] x-field input[value='transparent']         {background-image: url('pictures/icons-form.svgd');                                  background-position:            -17px 3px; background-color: white !important}
   x-group[data-type='palette'] x-field input[value='transparent']:checked {background-image: url('pictures/icons-form.svgd'), url('pictures/icons-form.svgd'); background-position: -57px 3px, -17px 3px}
 
