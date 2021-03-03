@@ -14,6 +14,18 @@ namespace effcore\modules\user {
           use \effcore\text;
           abstract class events_form_instance_insert {
 
+  static function on_build($event, $form) {
+    $entity = entity::get($form->entity_name);
+    if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
+      $captcha = new form_plugin('field_captcha', [], [], -500);
+      $form->child_select('fields')->child_insert($captcha, 'captcha');
+      $form->child_delete('button_cancel');
+      $form->child_select('button_insert')->title = 'send';
+      $form->is_show_result_message = false;
+      $form->is_redirect_enabled    = false;
+    }
+  }
+
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
@@ -23,26 +35,6 @@ namespace effcore\modules\user {
         $items['#id_role']->disabled['anonymous' ] = 'anonymous';
         $items['#id_role']->disabled['registered'] = 'registered';
         $items['#id_role']->build();
-      }
-    # feedback
-      if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
-      # field 'CAPTCHA'
-        $captcha_plugin = new form_plugin('field_captcha');
-        if ($captcha_plugin->is_available()) {
-          $field_captcha = $captcha_plugin->object_get();
-          $field_captcha->cform = $form;
-          $field_captcha->build();
-          $field_captcha->weight = -500;
-          $items['fields']->child_insert($field_captcha, 'captcha');
-        }
-      # button 'cancel'
-        $form->child_delete('button_cancel');
-        $items['~insert']->is_builded = false;
-        $items['~insert']->title = 'send';
-        $items['~insert']->build();
-      # disable default message
-        $form->is_show_result_message = false;
-        $form->is_redirect_enabled    = false;
       }
     }
   }
@@ -98,7 +90,8 @@ namespace effcore\modules\user {
           if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
             message::insert(new text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
             storage_events_form_instance_insert::on_init(null, $form, $items);
-            static                             ::on_init(null, $form, $items);
+            static::on_build                            (null, $form);
+            static::on_init                             (null, $form, $items);
           }
           break;
       }

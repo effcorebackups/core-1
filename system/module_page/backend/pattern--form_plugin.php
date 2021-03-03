@@ -12,8 +12,11 @@ namespace effcore {
   public $properties = [];
   public $weight = 0;
 
-  function __construct($name = null) {
-    if ($name) $this->name = $name;
+  function __construct($name = null, $args = [], $properties = [], $weight = 0) {
+    if ($name      ) $this->name       = $name;
+    if ($args      ) $this->args       = $args;
+    if ($properties) $this->properties = $properties;
+    if ($weight    ) $this->weight     = $weight;
   }
 
   function name_get() {
@@ -28,6 +31,7 @@ namespace effcore {
 
   function object_get() {
     $object = core::class_get_new_instance($this->name_get(), $this->args, true);
+    if ($this->weight) $object->weight = $this->weight;
     foreach ($this->properties as $c_key => $c_value)
                         $object->{$c_key} = $c_value;
     return $object;
