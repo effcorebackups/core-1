@@ -21,16 +21,26 @@ namespace effcore\modules\storage {
     page::get_current()->args_set('action_name', 'select_multiple');
     if (!$form->managing_group_id) $form->managing_group_id = page::get_current()->args_get('managing_group_id');
     if (!$form->entity_name      ) $form->entity_name       = page::get_current()->args_get('entity_name');
+    $entity = entity::get($form->entity_name);
+    if ($entity) {
+      $form->attribute_insert('data-entity_name', $form->entity_name);
+      $form->_has_access_select = access::check($entity->access_select);
+      $form->_has_access_insert = access::check($entity->access_insert);
+      $form->_has_access_update = access::check($entity->access_update);
+      $form->_has_access_delete = access::check($entity->access_delete);
+    # disable controls if no access rights
+      if (!$form->_has_access_insert) {
+        $form->child_select('button_insert')->disabled_set();
+      }
+      if (!$form->_has_access_delete) {
+        $form->child_select('actions')->disabled = ['delete' => 'delete'];
+      }
+    }
   }
 
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      $form->_has_access_select = access::check($entity->access_select);
-      $form->_has_access_insert = access::check($entity->access_insert);
-      $form->_has_access_update = access::check($entity->access_update);
-      $form->_has_access_delete = access::check($entity->access_delete);
-      $form->attribute_insert('data-entity_name', $form->entity_name);
       $selection = new selection;
       $selection->id = 'instance_select_multiple-'.$entity->name;
       $selection->pager_is_enabled = true;
@@ -63,15 +73,6 @@ namespace effcore\modules\storage {
         }, ['weight' => -500]);
         $selection->build();
         $form->child_select('data')->child_insert($selection, 'selection');
-      }
-    # disable controls if no access rights
-      if (!$form->_has_access_insert) {
-        $items['~insert']->disabled_set();
-      }
-      if (!$form->_has_access_delete) {
-        $items['#actions']->is_builded = false;
-        $items['#actions']->disabled = ['delete' => 'delete'];
-        $items['#actions']->build();
       }
     # disable controls if no items
       if (!count($selection->_instances)) {
