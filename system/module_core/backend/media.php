@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class media {
 
-  static function container_picture_make($src_path, $dst_path, $meta = []) {
+  static function container_make($src_path, $dst_path, $meta = []) {
     try {
       @unlink($dst_path);
       $container = new \PharData($dst_path, 0, null, \Phar::TAR);

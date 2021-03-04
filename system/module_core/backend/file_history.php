@@ -150,7 +150,7 @@ namespace effcore {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.picture');
-    $result = media::container_picture_make($file_src->path_get(), $file_dst->path_get(), [
+    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
       'thumbnails_allowed' => $thumbnails_allowed,
       'original' => [
         'type' => $this->type,
@@ -169,6 +169,45 @@ namespace effcore {
   }
 
   function container_video_make() {
+    $file_src = new file($this->get_current_path());
+    $file_dst = new file($file_src->dirs_get().
+                         $file_src->name_get().'.video');
+    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+      'original' => [
+        'type' => $this->type,
+        'mime' => $this->mime,
+        'size' => $this->size
+    ]]);
+    if ($result) {
+      @unlink($file_src->path_get());
+      $this->type     = 'video';
+      $this->file     = $this->name.'.video';
+      $this->mime     = $file_dst->mime_get();
+      $this->pre_path = $file_dst->path_get();
+      $this->size     = $file_dst->size_get();
+      return true;
+    }
+  }
+
+  function container_audio_make() {
+    $file_src = new file($this->get_current_path());
+    $file_dst = new file($file_src->dirs_get().
+                         $file_src->name_get().'.audio');
+    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+      'original' => [
+        'type' => $this->type,
+        'mime' => $this->mime,
+        'size' => $this->size
+    ]]);
+    if ($result) {
+      @unlink($file_src->path_get());
+      $this->type     = 'audio';
+      $this->file     = $this->name.'.audio';
+      $this->mime     = $file_dst->mime_get();
+      $this->pre_path = $file_dst->path_get();
+      $this->size     = $file_dst->size_get();
+      return true;
+    }
   }
 
 }}
