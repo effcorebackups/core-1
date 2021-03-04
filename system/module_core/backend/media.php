@@ -21,17 +21,17 @@ namespace effcore {
     }
   }
 
-  static function container_picture_thumbnail_insert($container_path, $thumbnail_path, $thumbnail_path_local) {
+  static function container_file_insert($container_path, $file_path, $path_local) {
     try {
       $container = new \PharData($container_path, 0, null, \Phar::TAR);
       $container->startBuffering();
       $meta = unserialize($container['meta']->getContent());
-      $file = new file($thumbnail_path);
-      $meta[$thumbnail_path_local]['type'] = $file->type_get();
-      $meta[$thumbnail_path_local]['mime'] = $file->mime_get();
-      $meta[$thumbnail_path_local]['size'] = $file->size_get();
+      $file = new file($file_path);
+      $meta[$path_local]['type'] = $file->type_get();
+      $meta[$path_local]['mime'] = $file->mime_get();
+      $meta[$path_local]['size'] = $file->size_get();
       $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
-      $container->addFile($thumbnail_path, $thumbnail_path_local);
+      $container->addFile($file_path, $path_local);
       $container->stopBuffering();
       return $container;
     } catch (Exception $e) {

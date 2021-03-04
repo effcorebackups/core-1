@@ -122,7 +122,7 @@ namespace effcore\modules\page {
                 $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
                 $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
                 if ($result && file_exists($path_thumbnail_tmp)) {
-                  if (media::container_picture_thumbnail_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
+                  if (media::container_file_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
                     @unlink($path_thumbnail_tmp);
                     $file = new file($path_thumbnail);
                     return true;
