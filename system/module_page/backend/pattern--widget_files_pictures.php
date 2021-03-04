@@ -69,10 +69,10 @@ namespace effcore {
   function items_set($items, $once = false) {
     if (count($this->thumbnails_allowed)) {
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
-        foreach ($items as $c_id => $c_item) {
+        foreach ($items as $c_item) {
           if ($c_item->object->get_current_state() === 'pre') {
             if (media::is_type_for_thumbnail($c_item->object->type)) {
-              $items[$c_id]->object = field_file_picture::container_picture_make($c_item->object, $this->thumbnails_allowed);
+              $c_item->object->container_picture_make($this->thumbnails_allowed);
             }
           }
         }
