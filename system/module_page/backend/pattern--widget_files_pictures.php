@@ -67,17 +67,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_set($items, $once = false) {
-    if (count($this->thumbnails_allowed)) {
-      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert') {
-        foreach ($items as $c_item) {
-          if ($c_item->object->get_current_state() === 'pre') {
-            if (media::is_type_for_thumbnail($c_item->object->type)) {
-              $c_item->object->container_picture_make($this->thumbnails_allowed);
-            }
-          }
-        }
-      }
-    }
+    if (count($this->thumbnails_allowed))
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
+        foreach ($items as $c_item)
+          if (media::media_class_get($c_item->object->type) === 'picture')
+            if (media::is_type_for_thumbnail($c_item->object->type))
+              if ($c_item->object->get_current_state() === 'pre')
+                  $c_item->object->container_picture_make($this->thumbnails_allowed);
     parent::items_set($items, $once);
   }
 

@@ -16,8 +16,8 @@ namespace effcore {
   public $fixed_name = 'video-multiple-%%_item_id_context';
   public $max_file_size = '50M';
   public $types_allowed = [
-    'mp4' => 'mp4'
-  ];
+    'mp4' => 'mp4'];
+  public $is_convert_to_container = true;
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -46,6 +46,18 @@ namespace effcore {
     $widget->child_insert($field_file_video, 'file');
     $widget->child_insert($button, 'button');
     return $widget;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function items_set($items, $once = false) {
+    if ($this->is_convert_to_container)
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
+        foreach ($items as $c_item)
+          if (media::media_class_get($c_item->object->type) === 'video')
+            if ($c_item->object->get_current_state() === 'pre')
+                $c_item->object->container_video_make();
+    parent::items_set($items, $once);
   }
 
   ###########################

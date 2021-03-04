@@ -23,17 +23,13 @@ namespace effcore {
   public $thumbnails_allowed = [];
 
   protected function items_set($id, $items) {
-    if (count($this->thumbnails_allowed)) {
-      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_values_pre_insert') {
-        foreach ($items as $c_item) {
-          if ($c_item->get_current_state() === 'pre') {
-            if (media::is_type_for_thumbnail($c_item->type)) {
-              $c_item->container_picture_make($this->thumbnails_allowed);
-            }
-          }
-        }
-      }
-    }
+    if (count($this->thumbnails_allowed))
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_values_pre_insert')
+        foreach ($items as $c_item)
+          if (media::media_class_get($c_item->type) === 'picture')
+            if (media::is_type_for_thumbnail($c_item->type))
+              if ($c_item->get_current_state() === 'pre')
+                  $c_item->container_picture_make($this->thumbnails_allowed);
     parent::items_set($id, $items);
   }
 

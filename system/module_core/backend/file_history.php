@@ -168,4 +168,7 @@ namespace effcore {
     }
   }
 
+  function container_video_make() {
+  }
+
 }}
