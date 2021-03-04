@@ -21,6 +21,14 @@ namespace effcore\modules\core {
           use \effcore\url;
           abstract class events_form_install {
 
+  static function on_build($event, $form) {
+    $profile_options = module::get_profiles('title');
+    core::array_sort_text($profile_options);
+    $field_profile = $form->child_select('profile')->child_select('profile');
+    $field_profile->values += $profile_options;
+    $field_profile->selected = ['profile_default' => 'profile_default'];
+  }
+
   static function on_init($event, $form, $items) {
     if (!storage::get('sql')->is_installed()) {
       $items['#password']->value_set(core::password_generate());
@@ -65,13 +73,6 @@ namespace effcore\modules\core {
         if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'warning');}
         if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'warning');}
       }
-    # collect profile information
-      $profile_options = module::get_profiles('title');
-      core::array_sort_text($profile_options);
-      $items['#profile']->values += $profile_options;
-      $items['#profile']->selected = ['profile_default' => 'profile_default'];
-      $items['#profile']->is_builded = false;
-      $items['#profile']->build();
     } else {
       $form->children_delete();
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
