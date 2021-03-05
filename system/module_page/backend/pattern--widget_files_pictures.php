@@ -38,9 +38,9 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # control for upload new file
+  # control for upload new picture
     $field_file_picture = new field_file_picture;
-    $field_file_picture->title = 'File';
+    $field_file_picture->title            = 'Picture';
     $field_file_picture->max_file_size    = $this->max_file_size;
     $field_file_picture->types_allowed    = $this->types_allowed;
     $field_file_picture->cform            = $this->cform;

@@ -38,9 +38,9 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # control for upload new file
+  # control for upload new audio
     $field_file_audio = new field_file_audio;
-    $field_file_audio->title = 'File';
+    $field_file_audio->title            = 'Audio';
     $field_file_audio->max_file_size    = $this->max_file_size;
     $field_file_audio->types_allowed    = $this->types_allowed;
     $field_file_audio->cform            = $this->cform;

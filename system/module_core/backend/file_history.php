@@ -168,11 +168,12 @@ namespace effcore {
     }
   }
 
-  function container_video_make() {
+  function container_video_make($posters_allowed, $poster_path = null) {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.video');
     $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+      'posters_allowed' => $posters_allowed,
       'original' => [
         'type' => $this->type,
         'mime' => $this->mime,
@@ -185,6 +186,8 @@ namespace effcore {
       $this->mime     = $file_dst->mime_get();
       $this->pre_path = $file_dst->path_get();
       $this->size     = $file_dst->size_get();
+      if ($poster_path)
+        media::container_file_insert($file_dst->path_get(), $poster_path, 'poster');
       return true;
     }
   }

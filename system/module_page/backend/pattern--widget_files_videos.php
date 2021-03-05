@@ -22,9 +22,9 @@ namespace effcore {
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
-  # control for upload new file
+  # control for upload new video
     $field_file_video = new field_file_video;
-    $field_file_video->title = 'File';
+    $field_file_video->title            = 'Video';
     $field_file_video->max_file_size    = $this->max_file_size;
     $field_file_video->types_allowed    = $this->types_allowed;
     $field_file_video->cform            = $this->cform;

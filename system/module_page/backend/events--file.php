@@ -17,6 +17,10 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_file {
 
+  const prepath_file_outside_of_dynamic_directory = dir_system.'module_core/frontend/pictures/file-outside-of-dynamic-directory';
+  const prepath_thumbnail_not_allowed             = dir_system.'module_core/frontend/pictures/thumbnail-not-allowed';
+  const prepath_thumbnail_creation_error          = dir_system.'module_core/frontend/pictures/thumbnail-creation-error';
+
   static function on_load_not_found($event, &$type_info, &$file, $real_path, $phase) {
     switch ($file->path_get()) {
       case dir_root.'sitemap.xml':
@@ -57,6 +61,13 @@ namespace effcore\modules\page {
   # ─────────────────────────────────────────────────────────────────────
   # video
   # ─────────────────────────────────────────────────────────────────────
+  # test.video                → phar://test.video/original
+  # test.video?poster=        → phar://test.video/poster
+  # test.video?poster=unknown → phar://test.video/poster
+  # test.video?poster=small   → phar://test.video/poster-small
+  # test.video?poster=middle  → phar://test.video/poster-middle
+  # test.video?poster=big     → phar://test.video/poster-big
+  # ─────────────────────────────────────────────────────────────────────
 
   static function on_load_static_video($event, &$type_info, &$file) {
     if ($type_info->type === 'video') {
@@ -75,10 +86,6 @@ namespace effcore\modules\page {
   # test.picture?thumb=big     → phar://test.picture/thumbnail-big
   # ─────────────────────────────────────────────────────────────────────
 
-  const prepath_file_outside_of_dynamic_directory = dir_system.'module_core/frontend/pictures/file-outside-of-dynamic-directory';
-  const prepath_thumbnail_not_allowed             = dir_system.'module_core/frontend/pictures/thumbnail-not-allowed';
-  const prepath_thumbnail_creation_error          = dir_system.'module_core/frontend/pictures/thumbnail-creation-error';
-
   static function on_load_static_picture($event, &$type_info, &$file) {
     if ($type_info->type === 'picture') {
       $path = $file->path_get();
@@ -90,9 +97,10 @@ namespace effcore\modules\page {
       $path_thumbnail_big    = 'phar://'.$path.'/thumbnail-big';
       if (file_exists($path_meta) &&
           file_exists($path_original)) {
-        $meta = unserialize(file_get_contents($path_meta));
+        $meta = @unserialize(file_get_contents($path_meta));
         $file_types = file::types_get();
-        if (isset($meta['original']['type']) && isset($file_types[$meta['original']['type']])) {
+        if (isset(             $meta['original']['type'] ) &&
+            isset($file_types[ $meta['original']['type'] ])) {
           $type_info = $file_types[$meta['original']['type']];
           if (media::is_type_for_thumbnail($type_info->type)) {
             switch (url::get_current()->query_arg_select('thumb')) {
@@ -101,10 +109,12 @@ namespace effcore\modules\page {
               case 'big'   : $size = 'big';    break;
               default      : $size = 'original';
             }
+          # case for picture (file "original")
             if ($size === 'original') {
               $file = new file($path_original);
               return true;
             }
+          # case for thumbnails
             if ($size === 'small' ) $path_thumbnail = $path_thumbnail_small;
             if ($size === 'middle') $path_thumbnail = $path_thumbnail_middle;
             if ($size === 'big'   ) $path_thumbnail = $path_thumbnail_big;

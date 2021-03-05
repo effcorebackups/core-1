@@ -54,7 +54,7 @@ namespace effcore {
       'data-type' => 'insert']);
   # control for upload new file
     $field_file = new field_file;
-    $field_file->title = 'File';
+    $field_file->title            = 'File';
     $field_file->max_file_size    = $this->max_file_size;
     $field_file->types_allowed    = $this->types_allowed;
     $field_file->cform            = $this->cform;
