@@ -71,7 +71,58 @@ namespace effcore\modules\page {
 
   static function on_load_static_video($event, &$type_info, &$file) {
     if ($type_info->type === 'video') {
-      core::send_header_and_exit('unsupported_media_type');
+      $path = $file->path_get();
+      $path_container     = 'phar://'.$path;
+      $path_meta          = 'phar://'.$path.'/meta';
+      $path_original      = 'phar://'.$path.'/original';
+      $path_poster        = 'phar://'.$path.'/poster';
+      $path_poster_small  = 'phar://'.$path.'/poster-small';
+      $path_poster_middle = 'phar://'.$path.'/poster-middle';
+      $path_poster_big    = 'phar://'.$path.'/poster-big';
+      if (file_exists($path_meta) &&
+          file_exists($path_original)) {
+        $meta = @unserialize(file_get_contents($path_meta));
+        $file_types = file::types_get();
+        $arg = url::get_current()->query_arg_select('poster');
+        if ($arg === null                     ) $target = 'original';
+        if ($arg !== null                     ) $target = 'poster';
+        if ($arg !== null && $arg === 'small' ) $target = 'poster_small';
+        if ($arg !== null && $arg === 'middle') $target = 'poster_middle';
+        if ($arg !== null && $arg === 'big'   ) $target = 'poster_big';
+      # case for video (file "original")
+        if ($target === 'original') {
+          if (isset(             $meta['original']['type'] ) &&
+              isset($file_types[ $meta['original']['type'] ])) {
+            $type_info = $file_types[$meta['original']['type']];
+            $file = new file($path_original);
+            return true;
+          } else core::send_header_and_exit('unsupported_media_type');
+        }
+      # case for poster or its thumbnails
+        if ($target !== 'original') {
+          if (isset(             $meta['poster']['type'] ) &&
+              isset($file_types[ $meta['poster']['type'] ])) {
+            $type_info = $file_types[$meta['poster']['type']];
+            if ($target === 'poster'       ) $target_path = $path_poster;
+            if ($target === 'poster_small' ) $target_path = $path_poster_small;
+            if ($target === 'poster_middle') $target_path = $path_poster_middle;
+            if ($target === 'poster_big'   ) $target_path = $path_poster_big;
+            if (file_exists($target_path)) {
+              $file = new file($target_path);
+              return true;
+            }
+            if (file_exists($path_poster) === false) {
+              core::send_header_and_exit('file_not_found');
+            }
+          # generate thumbnail and insert it into container
+            if (strpos($path, dir_dynamic) === 0) {
+              if (!empty($meta['poster_thumbnails'])) {
+                # todo: make functionality
+              } else $file = new file(static::prepath_thumbnail_not_allowed            .'.'.$meta['poster']['type']);
+            }   else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['poster']['type']);
+          } else core::send_header_and_exit('unsupported_media_type');
+        }
+      } else core::send_header_and_exit('unsupported_media_type');
     }
   }
 

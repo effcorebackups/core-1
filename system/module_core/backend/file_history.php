@@ -168,12 +168,12 @@ namespace effcore {
     }
   }
 
-  function container_video_make($posters_allowed, $poster_path = null) {
+  function container_video_make($poster_thumbnails, $poster_path = null) {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.video');
     $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
-      'posters_allowed' => $posters_allowed,
+      'poster_thumbnails' => $poster_thumbnails,
       'original' => [
         'type' => $this->type,
         'mime' => $this->mime,

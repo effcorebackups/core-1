@@ -17,8 +17,8 @@ namespace effcore {
   public $max_file_size = '50M';
   public $types_allowed = [
     'mp4' => 'mp4'];
-  public $is_convert_to_container = true;
-  public $posters_allowed = [];
+  public $poster_is_allowed = true;
+  public $poster_thumbnails = [];
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -33,8 +33,18 @@ namespace effcore {
     $field_file_video->max_files_number = null;
     $field_file_video->has_on_validate  = false;
     $field_file_video->build();
-    $field_file_video->multiple_set();
-    $field_file_video->name_set($this->name_get_complex().'__file[]');
+    $field_file_video->name_set($this->name_get_complex().'__file');
+  # control for upload new poster
+    $field_file_poster = new field_file_picture;
+    $field_file_poster->title            = 'Poster';
+    $field_file_poster->max_file_size    = '1M';
+    $field_file_poster->cform            = $this->cform;
+    $field_file_poster->min_files_number = null;
+    $field_file_poster->max_files_number = null;
+    $field_file_poster->has_on_validate  = false;
+    $field_file_poster->build();
+    $field_file_poster->disabled_set(true);
+    $field_file_poster->name_set($this->name_get_complex().'__poster'); 
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -43,8 +53,12 @@ namespace effcore {
     $button->_type = 'insert';
   # relate new controls with the widget
     $this->controls['#file'  ] = $field_file_video;
+    if ($this->poster_is_allowed)
+    $this->controls['#poster'] = $field_file_poster;
     $this->controls['~insert'] = $button;
     $widget->child_insert($field_file_video, 'file');
+    if ($this->poster_is_allowed)
+    $widget->child_insert($field_file_poster, 'poster');
     $widget->child_insert($button, 'button');
     return $widget;
   }
@@ -52,12 +66,12 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_set($items, $once = false) {
-    if ($this->is_convert_to_container)
+    if ($this->poster_is_allowed)
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->object->type) === 'video')
             if ($c_item->object->get_current_state() === 'pre')
-                $c_item->object->container_video_make($this->posters_allowed, null);
+                $c_item->object->container_video_make($this->poster_thumbnails, null);
     parent::items_set($items, $once);
   }
 
