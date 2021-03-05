@@ -18,6 +18,7 @@ namespace effcore {
   public $types_allowed = [
     'mp4' => 'mp4'];
   public $is_convert_to_container = true;
+  public $posters_allowed = [];
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -56,7 +57,7 @@ namespace effcore {
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->object->type) === 'video')
             if ($c_item->object->get_current_state() === 'pre')
-                $c_item->object->container_video_make();
+                $c_item->object->container_video_make($this->posters_allowed, null);
     parent::items_set($items, $once);
   }
 
