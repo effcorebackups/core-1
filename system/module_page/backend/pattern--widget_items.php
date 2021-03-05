@@ -110,7 +110,6 @@ namespace effcore {
     $field_weight->name_set($this->name_get_complex().'__weight__'.$c_row_id);
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
-    $this->controls['#weight__'.$c_row_id] = $field_weight;
   # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
     $button_delete->break_on_validate = true;
@@ -118,8 +117,9 @@ namespace effcore {
     $button_delete->value_set($this->name_get_complex().'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
     $button_delete->_id = $c_row_id;
+  # relate new controls with the widget
+    $this->controls['#weight__'.$c_row_id] = $field_weight;
     $this->controls['~delete__'.$c_row_id] = $button_delete;
-  # grouping of previous elements in widget 'manage'
     $widget->child_insert($field_weight, 'weight');
     $widget->child_insert($button_delete, 'button_delete');
     return $widget;
@@ -134,8 +134,8 @@ namespace effcore {
     $button->build();
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
+  # relate new controls with the widget
     $this->controls['~insert'] = $button;
-  # grouping of previous elements in widget 'insert'
     $widget->child_insert($button, 'button');
     return $widget;
   }

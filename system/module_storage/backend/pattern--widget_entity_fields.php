@@ -54,15 +54,15 @@ namespace effcore {
     $select->build();
     $select->name_set($this->name_get_complex().'__insert');
     $select->required_set(false);
-    $this->controls['#insert'] = $select;
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
+  # relate new controls with the widget
+    $this->controls['#insert'] = $select;
     $this->controls['~insert'] = $button;
-  # grouping of previous elements in widget 'insert'
     $widget->child_insert($select, 'select');
     $widget->child_insert($button, 'button');
     return $widget;

@@ -21,7 +21,6 @@ namespace effcore {
     $field_name->build();
     $field_name->name_set($this->name_get_complex().'__name__'.$c_row_id);
     $field_name->value_set($item->name);
-    $this->controls['#name__'.$c_row_id] = $field_name;
   # control for attribute value
     $field_value = new field_text('Val.', null, [], +380);
     $field_value->description_state = 'hidden';
@@ -30,24 +29,25 @@ namespace effcore {
     $field_value->value_set($item->value);
     $field_value->required_set(false);
     $field_value->maxlength_set(2048);
-    $this->controls['#value__'.$c_row_id] = $field_value;
   # control for translation status
     $field_is_apply_translation = new field_checkbox('Tr.', null, [], +360);
     $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
     $field_is_apply_translation->build();
     $field_is_apply_translation->name_set($this->name_get_complex().'__is_apply_translation__'.$c_row_id);
     $field_is_apply_translation->checked_set(!empty($item->is_apply_translation));
-    $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
   # control for tokens status
     $field_is_apply_tokens = new field_checkbox('To.', null, [], +340);
     $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
     $field_is_apply_tokens->build();
     $field_is_apply_tokens->name_set($this->name_get_complex().'__is_apply_tokens__'.$c_row_id);
     $field_is_apply_tokens->checked_set(!empty($item->is_apply_tokens));
-    $this->controls['#is_apply_tokens__'.$c_row_id] = $field_is_apply_tokens;
-  # grouping of previous elements in widget 'manage'
-    $widget->child_insert($field_name, 'name');
-    $widget->child_insert($field_value, 'value');
+  # relate new controls with the widget
+    $this->controls['#name__'.                $c_row_id] = $field_name;
+    $this->controls['#value__'.               $c_row_id] = $field_value;
+    $this->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
+    $this->controls['#is_apply_tokens__'.     $c_row_id] = $field_is_apply_tokens;
+    $widget->child_insert($field_name,                 'name');
+    $widget->child_insert($field_value,                'value');
     $widget->child_insert($field_is_apply_translation, 'is_apply_translation');
     $widget->child_insert($field_is_apply_tokens,      'is_apply_tokens');
     return $widget;
