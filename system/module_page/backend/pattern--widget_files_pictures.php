@@ -20,14 +20,14 @@ namespace effcore {
     'gif'  => 'gif',
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg'];
-  public $thumbnails_is_visible = true;
-  public $thumbnails_allowed = [];
+  public $thumbnails_is_allowed = true;
+  public $thumbnails = [];
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'picture') {
-      if ($this->thumbnails_is_visible) {
+      if ($this->thumbnails_is_allowed) {
         $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($thumbnail_markup, 'thumbnail');
       }
@@ -67,13 +67,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_set($items, $once = false) {
-    if (count($this->thumbnails_allowed))
+    if (count($this->thumbnails))
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->object->type) === 'picture')
             if (media::is_type_for_thumbnail($c_item->object->type))
               if ($c_item->object->get_current_state() === 'pre')
-                  $c_item->object->container_picture_make($this->thumbnails_allowed);
+                  $c_item->object->container_picture_make($this->thumbnails);
     parent::items_set($items, $once);
   }
 

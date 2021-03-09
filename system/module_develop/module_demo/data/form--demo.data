@@ -36,7 +36,7 @@ forms
             element_attributes
             - name: file_picture[]
             - multiple: true
-            thumbnails_allowed
+            thumbnails
             - =: small
       # field 'Audio'
         - file_audio|field_file_audio
@@ -78,7 +78,7 @@ forms
             - =: png
             - =: gif
             - =: svg
-            thumbnails_allowed
+            thumbnails
             - =: small
       # widget 'Audios'
         - files_audios|widget_files_audios

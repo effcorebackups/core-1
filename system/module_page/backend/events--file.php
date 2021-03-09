@@ -188,7 +188,7 @@ namespace effcore\modules\page {
             }
           # generate thumbnail and insert it into container
             if (strpos($path, dir_dynamic) === 0) {
-              if (in_array($size, $meta['thumbnails_allowed'])) {
+              if (in_array($size, $meta['thumbnails'])) {
                 $settings = module::settings_get('page');
                 if ($size === 'small' ) $width = $settings->thumbnail_small_width;
                 if ($size === 'middle') $width = $settings->thumbnail_middle_width;

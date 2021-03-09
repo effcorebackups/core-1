@@ -146,12 +146,12 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function container_picture_make($thumbnails_allowed) {
+  function container_picture_make($thumbnails) {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.picture');
     $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
-      'thumbnails_allowed' => $thumbnails_allowed,
+      'thumbnails' => $thumbnails,
       'original' => [
         'type' => $this->type,
         'mime' => $this->mime,
