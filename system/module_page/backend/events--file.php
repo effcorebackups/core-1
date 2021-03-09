@@ -187,28 +187,28 @@ namespace effcore\modules\page {
               return true;
             }
           # generate thumbnail and insert it into container
-            if (strpos($path, dir_dynamic) === 0) {
-              if (in_array($size, $meta['thumbnails'])) {
-                $settings = module::settings_get('page');
-                if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-                if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-                if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
-                $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
-                $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
-                if ($result && file_exists($path_thumbnail_tmp)) {
-                  if (media::container_file_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
-                    @unlink($path_thumbnail_tmp);
-                    $file = new file($path_thumbnail);
-                    return true;
-                  }
-                }
-                   # show dummy if an error
-                     $file = new file(static::prepath_thumbnail_creation_error         .'.'.$meta['original']['type']);
-              } else $file = new file(static::prepath_thumbnail_not_allowed            .'.'.$meta['original']['type']);
-            }   else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['original']['type']);
-          }     else core::send_header_and_exit('unsupported_media_type');
-        }       else core::send_header_and_exit('unsupported_media_type');
-      }         else core::send_header_and_exit('unsupported_media_type');
+            if (isset($meta['thumbnails']) && is_array($meta['thumbnails'])) {
+              if (strpos($path, dir_dynamic) === 0) {
+                if (isset($meta['thumbnails'][$size])) {
+                  $settings = module::settings_get('page');
+                  if ($size === 'small' ) $width = $settings->thumbnail_small_width;
+                  if ($size === 'middle') $width = $settings->thumbnail_middle_width;
+                  if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                  $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
+                  $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                  if ($result && file_exists($path_thumbnail_tmp)) {
+                    if (media::container_file_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
+                      @unlink($path_thumbnail_tmp);
+                      $file = new file($path_thumbnail);
+                      return true;
+                    } else $file = new file(static::prepath_thumbnail_embedding_error        .'.'.$meta['original']['type']);
+                  }   else $file = new file(static::prepath_thumbnail_creation_error         .'.'.$meta['original']['type']);
+                }     else $file = new file(static::prepath_thumbnail_not_allowed            .'.'.$meta['original']['type']);
+              }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['original']['type']);
+            }         else core::send_header_and_exit('unsupported_media_type');
+          }           else core::send_header_and_exit('unsupported_media_type');
+        }             else core::send_header_and_exit('unsupported_media_type');
+      }               else core::send_header_and_exit('unsupported_media_type');
     }
   }
 
