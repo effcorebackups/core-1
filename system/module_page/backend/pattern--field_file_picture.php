@@ -23,7 +23,7 @@ namespace effcore {
   public $thumbnails = [];
 
   protected function items_set($id, $items) {
-    if (count($this->thumbnails))
+    if ($this->thumbnails_is_allowed)
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_values_pre_insert')
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->type) === 'picture')

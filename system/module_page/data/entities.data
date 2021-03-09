@@ -308,7 +308,7 @@ entities
           - =: jpg
           - =: jpeg
           - =: svg
-        - thumbnails_allowed
+        - thumbnails
           - =: small
           - =: middle
           - =: big

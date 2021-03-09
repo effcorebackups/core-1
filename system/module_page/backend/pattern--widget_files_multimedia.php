@@ -81,7 +81,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function items_set($items, $once = false) {
-    if (count($this->thumbnails))
+    if ($this->thumbnails_is_allowed)
       if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->object->type) === 'picture')
