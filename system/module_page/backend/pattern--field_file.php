@@ -178,8 +178,8 @@ namespace effcore {
     $items_pre = $this->items_get('pre');
     foreach ($values as $c_new_item) {
       $items_pre[] = $c_new_item;
-      $c_new_item_id = core::array_key_last($items_pre);
-      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_item_id.'.'.$c_new_item->type)) {
+      $c_new_row_id = core::array_key_last($items_pre);
+      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
         $this->items_set('pre', $items_pre);
         message::insert(new text(
           'Item of type "%%_type" with ID = "%%_id" was inserted.', [
