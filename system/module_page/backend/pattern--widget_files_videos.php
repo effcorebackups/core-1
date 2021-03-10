@@ -24,7 +24,20 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'];
+    'jpeg' => 'jpeg'
+  ];
+
+  function items_set($items, $once = false) {
+    if ($this->poster_is_allowed)
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
+        foreach ($items as $c_item)
+          if (media::media_class_get($c_item->object->type) === 'video')
+            if ($c_item->object->get_current_state() === 'pre')
+                $c_item->object->container_video_make($this->poster_thumbnails, null);
+    parent::items_set($items, $once);
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -67,18 +80,6 @@ namespace effcore {
     $widget->child_insert($field_file_poster, 'poster');
     $widget->child_insert($button, 'button');
     return $widget;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function items_set($items, $once = false) {
-    if ($this->poster_is_allowed)
-      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
-        foreach ($items as $c_item)
-          if (media::media_class_get($c_item->object->type) === 'video')
-            if ($c_item->object->get_current_state() === 'pre')
-                $c_item->object->container_video_make($this->poster_thumbnails, null);
-    parent::items_set($items, $once);
   }
 
   ###########################
