@@ -18,7 +18,9 @@ namespace effcore {
   public $types_allowed = [
     'mp4' => 'mp4'];
   public $poster_is_allowed = true;
-  public $poster_thumbnails = [];
+  public $poster_thumbnails = [
+    'small'  => 'small',
+    'middle' => 'middle'];
   public $poster_max_file_size = '1M';
   public $poster_types_allowed = [
     'png'  => 'png',
