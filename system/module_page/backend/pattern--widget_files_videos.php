@@ -93,11 +93,19 @@ namespace effcore {
         $c_new_item->object = $c_value;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
-        if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type)) {
-          if ($this->poster_is_allowed)
-            if (media::media_class_get($c_new_item->object->type) === 'video')
-              if ($c_new_item->object->get_current_state() === 'pre')
-                  $c_new_item->object->container_video_make($this->poster_thumbnails, reset($values['poster']) instanceof file_history ? reset($values['poster'])->get_current_path() : null);
+        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id;
+        if ($c_value->move_tmp_to_pre($c_pre_path)) {
+          if ($this->poster_is_allowed) {
+            if (media::media_class_get($c_new_item->object->type) === 'video') {
+              if ($c_new_item->object->get_current_state() === 'pre') {
+                $c_poster = reset($values['poster']);
+                if ($c_poster instanceof file_history) {
+                    $c_poster->move_tmp_to_pre($c_pre_path.'.'.$c_poster->type);
+                       $c_new_item->object->container_video_make($this->poster_thumbnails, $c_poster->get_current_path()); @unlink($c_pre_path.'.'.$c_poster->type);
+                } else $c_new_item->object->container_video_make($this->poster_thumbnails, null);
+              }
+            }
+          }
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
@@ -144,7 +152,7 @@ namespace effcore {
   }
 
   static function item_markup_get($item, $row_id, $controls = true, $preload = 'metadata') {
-    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $controls, 'preload' => $preload]);
+    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true), 'poster' => '/'.$item->object->get_current_path(true).'?poster=big', 'controls' => $controls, 'preload' => $preload]);
   }
 
 }}
