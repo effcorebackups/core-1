@@ -117,6 +117,11 @@ namespace effcore\modules\page {
                 $file = new file($path_target);
                 return true;
               }
+            # if poster does not exist
+              if (!file_exists($path_poster)) {
+                $file = new file(static::prepath_poster_not_found.'.'.$meta['poster']['type']);
+                return;
+              }
             # generate thumbnail and insert it into container
               if (in_array($target, ['poster-small', 'poster-middle', 'poster-big'])) {
                 if ($target === 'poster-small' ) $size = 'small';
@@ -124,30 +129,28 @@ namespace effcore\modules\page {
                 if ($target === 'poster-big'   ) $size = 'big';
                 if (media::is_type_for_thumbnail($type_info->type)) {
                   if (isset($meta['poster_thumbnails']) && is_array($meta['poster_thumbnails'])) {
-                    if (file_exists($path_poster)) {
-                      if (strpos($path, dir_dynamic) === 0) {
-                        if (isset($size) && isset($meta['poster_thumbnails'][$size])) {
-                          $settings = module::settings_get('page');
-                          if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-                          if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-                          if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
-                          $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['poster']['type'];
-                          $result = media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
-                          if ($result && file_exists($path_thumbnail_tmp)) {
-                            if (media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
-                              @unlink($path_thumbnail_tmp);
-                              $file = new file($path_target);
-                              return true;
-                            } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['poster']['type']);
-                          }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['poster']['type']);
-                        }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['poster']['type']);
-                      }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['poster']['type']);
-                    }         else $file = new file(static::prepath_poster_not_found.                 '.'.$meta['poster']['type']);
-                  }           else core::send_header_and_exit('unsupported_media_type');
-                }             else core::send_header_and_exit('unsupported_media_type');
-              }               else core::send_header_and_exit('unsupported_media_type');
-            }                 else core::send_header_and_exit('unsupported_media_type');
-          }                   else core::send_header_and_exit('unsupported_media_type');
+                    if (strpos($path, dir_dynamic) === 0) {
+                      if (isset($size) && isset($meta['poster_thumbnails'][$size])) {
+                        $settings = module::settings_get('page');
+                        if ($size === 'small' ) $width = $settings->thumbnail_small_width;
+                        if ($size === 'middle') $width = $settings->thumbnail_middle_width;
+                        if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                        $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['poster']['type'];
+                        $result = media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                        if ($result && file_exists($path_thumbnail_tmp)) {
+                          if (media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
+                            @unlink($path_thumbnail_tmp);
+                            $file = new file($path_target);
+                            return true;
+                          } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['poster']['type']);
+                        }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['poster']['type']);
+                      }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['poster']['type']);
+                    }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['poster']['type']);
+                  }         else core::send_header_and_exit('unsupported_media_type');
+                }           else core::send_header_and_exit('unsupported_media_type');
+              }             else core::send_header_and_exit('unsupported_media_type');
+            }               else core::send_header_and_exit('unsupported_media_type');
+          }                 else core::send_header_and_exit('unsupported_media_type');
         }
       } else core::send_header_and_exit('unsupported_media_type');
     }
