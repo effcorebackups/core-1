@@ -27,18 +27,6 @@ namespace effcore {
     'jpeg' => 'jpeg'
   ];
 
-  function items_set($items, $once = false) {
-    if ($this->poster_is_allowed)
-      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
-        foreach ($items as $c_item)
-          if (media::media_class_get($c_item->object->type) === 'video')
-            if ($c_item->object->get_current_state() === 'pre')
-                $c_item->object->container_video_make($this->poster_thumbnails, null);
-    parent::items_set($items, $once);
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
@@ -86,8 +74,8 @@ namespace effcore {
 
   function on_values_validate($form, $npath, $button) {
     $result = [];
-    $result['file'  ] = field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath);
-    $result['poster'] = field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
+    $result['file'  ] =                            field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath);
+    $result['poster'] = $this->poster_is_allowed ? field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath) : [];
     return $result;
   }
 
@@ -106,6 +94,10 @@ namespace effcore {
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
         if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type)) {
+          if ($this->poster_is_allowed)
+            if (media::media_class_get($c_new_item->object->type) === 'video')
+              if ($c_new_item->object->get_current_state() === 'pre')
+                  $c_new_item->object->container_video_make($this->poster_thumbnails, null);
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
