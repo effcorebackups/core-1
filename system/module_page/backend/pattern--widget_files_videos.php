@@ -19,6 +19,12 @@ namespace effcore {
     'mp4' => 'mp4'];
   public $poster_is_allowed = true;
   public $poster_thumbnails = [];
+  public $poster_max_file_size = '1M';
+  public $poster_types_allowed = [
+    'png'  => 'png',
+    'gif'  => 'gif',
+    'jpg'  => 'jpg',
+    'jpeg' => 'jpeg'];
 
   function widget_insert_get() {
     $widget = new markup('x-widget', [
@@ -37,13 +43,13 @@ namespace effcore {
   # control for upload new poster
     $field_file_poster = new field_file_picture;
     $field_file_poster->title            = 'Poster';
-    $field_file_poster->max_file_size    = '1M';
+    $field_file_poster->max_file_size    = $this->poster_max_file_size;
+    $field_file_poster->types_allowed    = $this->poster_types_allowed;
     $field_file_poster->cform            = $this->cform;
     $field_file_poster->min_files_number = null;
     $field_file_poster->max_files_number = null;
     $field_file_poster->has_on_validate  = false;
     $field_file_poster->build();
-    $field_file_poster->disabled_set(true);
     $field_file_poster->name_set($this->name_get_complex().'__poster'); 
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
