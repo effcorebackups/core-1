@@ -97,7 +97,7 @@ namespace effcore {
           if ($this->poster_is_allowed)
             if (media::media_class_get($c_new_item->object->type) === 'video')
               if ($c_new_item->object->get_current_state() === 'pre')
-                  $c_new_item->object->container_video_make($this->poster_thumbnails, null);
+                  $c_new_item->object->container_video_make($this->poster_thumbnails, reset($values['poster']) instanceof file_history ? reset($values['poster'])->get_current_path() : null);
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
