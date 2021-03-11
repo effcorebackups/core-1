@@ -66,7 +66,7 @@ namespace effcore {
     $field_file_poster->max_files_number = null;
     $field_file_poster->has_on_validate  = false;
     $field_file_poster->build();
-    $field_file_poster->name_set($this->name_get_complex().'__poster'); 
+    $field_file_poster->name_set($this->name_get_complex().'__poster');
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -74,14 +74,12 @@ namespace effcore {
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
   # relate new controls with the widget
-    $this->controls['#file'  ] = $field_file_video;
-    if ($this->poster_is_allowed)
-    $this->controls['#poster'] = $field_file_poster;
-    $this->controls['~insert'] = $button;
-    $widget->child_insert($field_file_video, 'file');
-    if ($this->poster_is_allowed)
-    $widget->child_insert($field_file_poster, 'poster');
-    $widget->child_insert($button, 'button');
+    if (true                    ) $this->controls['#file'  ] = $field_file_video;
+    if ($this->poster_is_allowed) $this->controls['#poster'] = $field_file_poster;
+    if (true                    ) $this->controls['~insert'] = $button;
+    if (true                    ) $widget->child_insert($field_file_video, 'file');
+    if ($this->poster_is_allowed) $widget->child_insert($field_file_poster, 'poster');
+    if (true                    ) $widget->child_insert($button, 'button');
     return $widget;
   }
 

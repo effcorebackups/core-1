@@ -104,7 +104,7 @@ namespace effcore {
     'mediumvioletred'      => ['value_hex' => '#c71585', 'r' => 199, 'g' =>  21, 'b' => 133],
     'midnightblue'         => ['value_hex' => '#191970', 'r' =>  25, 'g' =>  25, 'b' => 112],
     'mintcream'            => ['value_hex' => '#f5fffa', 'r' => 245, 'g' => 255, 'b' => 250],
-    'mistyrose'            => ['value_hex' => '#ffe4e1', 'r' => 255, 'g' => 228, 'b' => 225], 
+    'mistyrose'            => ['value_hex' => '#ffe4e1', 'r' => 255, 'g' => 228, 'b' => 225],
     'moccasin'             => ['value_hex' => '#ffe4b5', 'r' => 255, 'g' => 228, 'b' => 181],
     'navajowhite'          => ['value_hex' => '#ffdead', 'r' => 255, 'g' => 222, 'b' => 173],
     'navy'                 => ['value_hex' => '#000080', 'r' =>   0, 'g' =>   0, 'b' => 128],

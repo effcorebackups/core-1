@@ -20,6 +20,7 @@ namespace effcore {
     'gif'  => 'gif',
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
   public $thumbnails_is_allowed = true;
   public $thumbnails = [];
 

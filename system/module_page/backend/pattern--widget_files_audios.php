@@ -18,17 +18,22 @@ namespace effcore {
   public $types_allowed = [
     'mp3' => 'mp3'];
 # ─────────────────────────────────────────────────────────────────────
+  public $audio_player_is_visible = true;
+  public $audio_player_controls = true;
+  public $audio_player_preload = 'metadata';
+  public $audio_player_name = 'default';
+  public $audio_player_timeline_is_visible = 'false';
+# ─────────────────────────────────────────────────────────────────────
+  public $cover_is_allowed = true;
+  public $cover_thumbnails = [
+    'small'  => 'small',
+    'middle' => 'middle'];
   public $cover_max_file_size = '1M';
   public $cover_types_allowed = [
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg'];
-  public $audio_player_is_visible = true;
-  public $audio_player_controls = true;
-  public $audio_player_preload = 'metadata';
-  public $audio_player_name = 'default';
-  public $audio_player_timeline_is_visible = 'false';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
@@ -57,6 +62,17 @@ namespace effcore {
     $field_file_audio->build();
     $field_file_audio->multiple_set();
     $field_file_audio->name_set($this->name_get_complex().'__file[]');
+  # control for upload new cover
+    $field_file_cover = new field_file_picture;
+    $field_file_cover->title            = 'Cover';
+    $field_file_cover->max_file_size    = $this->cover_max_file_size;
+    $field_file_cover->types_allowed    = $this->cover_types_allowed;
+    $field_file_cover->cform            = $this->cform;
+    $field_file_cover->min_files_number = null;
+    $field_file_cover->max_files_number = null;
+    $field_file_cover->has_on_validate  = false;
+    $field_file_cover->build();
+    $field_file_cover->name_set($this->name_get_complex().'__cover');
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
@@ -64,10 +80,12 @@ namespace effcore {
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
   # relate new controls with the widget
-    $this->controls['#file'  ] = $field_file_audio;
-    $this->controls['~insert'] = $button;
-    $widget->child_insert($field_file_audio, 'file');
-    $widget->child_insert($button, 'button');
+    if (true                   ) $this->controls['#file'  ] = $field_file_audio;
+    if ($this->cover_is_allowed) $this->controls['#cover' ] = $field_file_cover;
+    if (true                   ) $this->controls['~insert'] = $button;
+    if (true                   ) $widget->child_insert($field_file_audio, 'file');
+    if ($this->cover_is_allowed) $widget->child_insert($field_file_cover, 'cover');
+    if (true                   ) $widget->child_insert($button, 'button');
     return $widget;
   }
 
