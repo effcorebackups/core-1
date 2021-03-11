@@ -54,10 +54,50 @@ namespace effcore\modules\page {
   # ─────────────────────────────────────────────────────────────────────
   # audio
   # ─────────────────────────────────────────────────────────────────────
+  # test.audio               → phar://test.audio/original
+  # test.audio?cover=        → phar://test.audio/cover
+  # test.audio?cover=unknown → phar://test.audio/cover
+  # test.audio?cover=small   → phar://test.audio/cover-small
+  # test.audio?cover=middle  → phar://test.audio/cover-middle
+  # test.audio?cover=big     → phar://test.audio/cover-big
+  # ─────────────────────────────────────────────────────────────────────
 
   static function on_load_static_audio($event, &$type_info, &$file) {
     if ($type_info->type === 'audio') {
-      core::send_header_and_exit('unsupported_media_type');
+      $path = $file->path_get();
+      $path_container    = 'phar://'.$path;
+      $path_meta         = 'phar://'.$path.'/meta';
+      $path_original     = 'phar://'.$path.'/original';
+      $path_cover        = 'phar://'.$path.'/cover';
+      $path_cover_small  = 'phar://'.$path.'/cover-small';
+      $path_cover_middle = 'phar://'.$path.'/cover-middle';
+      $path_cover_big    = 'phar://'.$path.'/cover-big';
+      if (file_exists($path_meta) &&
+          file_exists($path_original)) {
+        $meta = @unserialize(file_get_contents($path_meta));
+        $file_types = file::types_get();
+        $arg = url::get_current()->query_arg_select('cover');
+        if ($arg === null                     ) $target = 'original';
+        if ($arg !== null                     ) $target = 'cover';
+        if ($arg !== null && $arg === 'small' ) $target = 'cover-small';
+        if ($arg !== null && $arg === 'middle') $target = 'cover-middle';
+        if ($arg !== null && $arg === 'big'   ) $target = 'cover-big';
+      # case for audio (file "original")
+        if ($target === 'original') {
+          if (isset(             $meta['original']['type'] ) &&
+              isset($file_types[ $meta['original']['type'] ])) {
+            if (media::media_class_get($meta['original']['type']) === 'audio') {
+              $type_info = $file_types[$meta['original']['type']];
+              $file = new file($path_original);
+              return true;
+            } else core::send_header_and_exit('unsupported_media_type');
+          }   else core::send_header_and_exit('unsupported_media_type');
+        }
+      # case for cover or its thumbnails
+        if ($target !== 'original') {
+          # @todo: make functionality
+        }
+      } else core::send_header_and_exit('unsupported_media_type');
     }
   }
 
