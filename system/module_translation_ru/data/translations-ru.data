@@ -101,6 +101,7 @@ translations
     - Copyright: Авторские права
     - copyright: авторские права
     - Core: Ядро
+    - Cover: Обложка
     - Created: Создано
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
