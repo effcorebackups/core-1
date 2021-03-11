@@ -95,7 +95,52 @@ namespace effcore\modules\page {
         }
       # case for cover or its thumbnails
         if ($target !== 'original') {
-          # @todo: make functionality
+          if (isset(             $meta['cover']['type'] ) &&
+              isset($file_types[ $meta['cover']['type'] ])) {
+            if (media::media_class_get($meta['cover']['type']) === 'picture') {
+              $type_info = $file_types[$meta['cover']['type']];
+              if ($target === 'cover'       ) $path_target = $path_cover;
+              if ($target === 'cover-small' ) $path_target = $path_cover_small;
+              if ($target === 'cover-middle') $path_target = $path_cover_middle;
+              if ($target === 'cover-big'   ) $path_target = $path_cover_big;
+              if (file_exists($path_target)) {
+                $file = new file($path_target);
+                return true;
+              }
+            # if cover does not exist
+              if (!file_exists($path_cover)) {
+                $file = new file(static::prepath_cover_not_found.'.'.$meta['cover']['type']);
+                return;
+              }
+            # generate thumbnail and insert it into container
+              if (in_array($target, ['cover-small', 'cover-middle', 'cover-big'])) {
+                if ($target === 'cover-small' ) $size = 'small';
+                if ($target === 'cover-middle') $size = 'middle';
+                if ($target === 'cover-big'   ) $size = 'big';
+                if (media::is_type_for_thumbnail($type_info->type)) {
+                  if (isset($meta['cover_thumbnails']) && is_array($meta['cover_thumbnails'])) {
+                    if (strpos($path, dir_dynamic) === 0) {
+                      if (isset($size) && isset($meta['cover_thumbnails'][$size])) {
+                        $settings = module::settings_get('page');
+                        if ($size === 'small' ) $width = $settings->thumbnail_small_width;
+                        if ($size === 'middle') $width = $settings->thumbnail_middle_width;
+                        if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                        $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['cover']['type'];
+                        $result = media::thumbnail_create($path_cover, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                        if ($result && file_exists($path_thumbnail_tmp)) {
+                          if (media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
+                            @unlink($path_thumbnail_tmp);
+                            $file = new file($path_target);
+                            return true;
+                          } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['cover']['type']);
+                        }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['cover']['type']);
+                      }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['cover']['type']);
+                    }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['cover']['type']);
+                  }         else core::send_header_and_exit('unsupported_media_type');
+                }           else core::send_header_and_exit('unsupported_media_type');
+              }             else core::send_header_and_exit('unsupported_media_type');
+            }               else core::send_header_and_exit('unsupported_media_type');
+          }                 else core::send_header_and_exit('unsupported_media_type');
         }
       } else core::send_header_and_exit('unsupported_media_type');
     }
