@@ -316,6 +316,10 @@ entities
           - =: small
           - =: middle
           - =: big
+        - cover_thumbnails
+          - =: small
+          - =: middle
+          - =: big
         - weight: +340
         selection_params_default
         - filter: \effcore\widget_files_multimedia::complex_value_to_markup
