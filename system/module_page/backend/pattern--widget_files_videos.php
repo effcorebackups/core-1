@@ -17,6 +17,7 @@ namespace effcore {
   public $max_file_size = '50M';
   public $types_allowed = [
     'mp4' => 'mp4'];
+# ─────────────────────────────────────────────────────────────────────
   public $poster_is_allowed = true;
   public $poster_thumbnails = [
     'small'  => 'small',
