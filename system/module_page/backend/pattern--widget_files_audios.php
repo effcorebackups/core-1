@@ -17,18 +17,24 @@ namespace effcore {
   public $max_file_size = '10M';
   public $types_allowed = [
     'mp3' => 'mp3'];
-  public $player_is_visible = true;
-  public $player_controls = true;
-  public $player_preload = 'metadata';
-  public $player_name = 'default';
-  public $player_timeline_is_visible = 'false';
+  public $cover_max_file_size = '1M';
+  public $cover_types_allowed = [
+    'png'  => 'png',
+    'gif'  => 'gif',
+    'jpg'  => 'jpg',
+    'jpeg' => 'jpeg'];
+  public $audio_player_is_visible = true;
+  public $audio_player_controls = true;
+  public $audio_player_preload = 'metadata';
+  public $audio_player_name = 'default';
+  public $audio_player_timeline_is_visible = 'false';
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'audio') {
-      if ($this->player_is_visible) {
-        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->player_controls, 'preload' => $this->player_preload, 'data-player-name' => $this->player_name, 'data-player-timeline-is-visible' => $this->player_timeline_is_visible], [], +450);
+      if ($this->audio_player_is_visible) {
+        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->audio_player_controls, 'preload' => $this->audio_player_preload, 'data-player-name' => $this->audio_player_name, 'data-player-timeline-is-visible' => $this->audio_player_timeline_is_visible], [], +450);
         $widget->child_insert($player_markup, 'player');
       }
     }

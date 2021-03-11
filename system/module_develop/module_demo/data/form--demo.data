@@ -42,7 +42,7 @@ forms
         - file_audio|field_file_audio
             title: Audio
             upload_dir: demo/
-            player_timeline_is_visible|_string_true
+            audio_player_timeline_is_visible|_string_true
             description|text
               text: Field "%%_title".
               args
@@ -85,7 +85,7 @@ forms
             title: Audios
             name_complex: files_audios
             upload_dir: demo/
-            player_timeline_is_visible|_string_false
+            audio_player_timeline_is_visible|_string_false
             types_allowed
             - =: mp3
       # widget 'Videos'
