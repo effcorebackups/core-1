@@ -60,8 +60,7 @@ namespace effcore {
     $field_file_audio->max_files_number = null;
     $field_file_audio->has_on_validate  = false;
     $field_file_audio->build();
-    $field_file_audio->multiple_set();
-    $field_file_audio->name_set($this->name_get_complex().'__file[]');
+    $field_file_audio->name_set($this->name_get_complex().'__file');
   # control for upload new cover
     $field_file_cover = new field_file_picture;
     $field_file_cover->title            = 'Cover';
@@ -87,6 +86,25 @@ namespace effcore {
     if ($this->cover_is_allowed) $widget->child_insert($field_file_cover, 'cover');
     if (true                   ) $widget->child_insert($button, 'button');
     return $widget;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  function on_values_validate($form, $npath, $button) {
+    $result =             ['cover' => [], 'file' => field_file::on_manual_validate_and_return_value($this->controls['#file' ], $form, $npath)];
+    if ($this->cover_is_allowed) $result['cover'] = field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);
+    return $result;
+  }
+
+  function on_button_click_insert($form, $npath, $button) {
+    $values = $this->on_values_validate($form, $npath, $button);
+    if (count($values['file'])) {
+      # todo: make functionality
+    } elseif (!$this->controls['#file']->has_error()) {
+      $this->controls['#file']->error_set(
+        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]
+      );
+    }
   }
 
   ###########################

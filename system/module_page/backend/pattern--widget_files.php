@@ -162,7 +162,7 @@ namespace effcore {
       return true;
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
-        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render()  ]
+        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]
       );
     }
   }

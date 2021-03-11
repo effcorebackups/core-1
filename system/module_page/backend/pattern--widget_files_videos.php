@@ -86,9 +86,8 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_validate($form, $npath, $button) {
-    $result = [];
-    $result['file'  ] =                            field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath);
-    $result['poster'] = $this->poster_is_allowed ? field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath) : [];
+    $result =              ['poster' => [], 'file' => field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath)];
+    if ($this->poster_is_allowed) $result['poster'] = field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
     return $result;
   }
 
@@ -133,7 +132,7 @@ namespace effcore {
       return true;
     } elseif (!$this->controls['#file']->has_error()) {
       $this->controls['#file']->error_set(
-        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render()  ]
+        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]
       );
     }
   }
