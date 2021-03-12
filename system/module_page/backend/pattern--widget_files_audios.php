@@ -47,7 +47,7 @@ namespace effcore {
           'data-player-timeline-is-visible' => $this->audio_player_timeline_is_visible], [], +500);
         $widget->child_insert($player_markup, 'player');
       }
-      if ($item->settings['cover_is_allowed']) {
+      if ($item->settings['cover_is_embedded']) {
         $cover_thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($cover_thumbnail_markup, 'thumbnail');
       }
@@ -121,7 +121,7 @@ namespace effcore {
         $c_new_item->settings['audio_player_preload'            ] = $this->audio_player_preload;
         $c_new_item->settings['audio_player_name'               ] = $this->audio_player_name;
         $c_new_item->settings['audio_player_timeline_is_visible'] = $this->audio_player_timeline_is_visible;
-        $c_new_item->settings['cover_is_allowed'                ] = false;
+        $c_new_item->settings['cover_is_embedded'               ] = false;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
         $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id;
@@ -132,7 +132,7 @@ namespace effcore {
                 $c_cover = reset($values['cover']);
                 if ($c_cover instanceof file_history) {
                     $c_cover->move_tmp_to_pre($c_pre_path.'.'.$c_cover->type);
-                       $c_new_item->settings['cover_is_allowed'] = true;
+                       $c_new_item->settings['cover_is_embedded'] = true;
                        $c_new_item->object->container_audio_make($this->cover_thumbnails, $c_cover->get_current_path()); @unlink($c_pre_path.'.'.$c_cover->type);
                 } else $c_new_item->object->container_audio_make($this->cover_thumbnails, null);
               }
