@@ -173,8 +173,13 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id, $controls = true, $preload = 'metadata', $player_name = 'default', $timeline_is_visible = true) {
-    return new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $controls, 'preload' => $preload, 'data-player-name' => $player_name, 'data-player-timeline-is-visible' => $timeline_is_visible]);
+  static function item_markup_get($item, $row_id, $controls = null, $preload = null, $player_name = null, $timeline_is_visible = true) {
+    return new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
+      'controls'                        => $controls    !== null ? $controls    : $item->settings['audio_player_controls'],
+      'preload'                         => $preload     !== null ? $preload     : $item->settings['audio_player_preload' ],
+      'data-player-name'                => $player_name !== null ? $player_name : $item->settings['audio_player_name'    ],
+      'data-player-timeline-is-visible' => $timeline_is_visible
+    ]);
   }
 
 }}
