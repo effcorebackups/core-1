@@ -41,10 +41,10 @@ namespace effcore {
     if (media::media_class_get($item->object->type) === 'audio') {
       if ($item->settings['audio_player_is_visible']) {
         $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
-          'controls'                        => $this->audio_player_controls,
-          'preload'                         => $this->audio_player_preload,
-          'data-player-name'                => $this->audio_player_name,
-          'data-player-timeline-is-visible' => $this->audio_player_timeline_is_visible], [], +500);
+          'controls'                        => $item->settings['audio_player_controls'],
+          'preload'                         => $item->settings['audio_player_preload'],
+          'data-player-name'                => $item->settings['audio_player_name'],
+          'data-player-timeline-is-visible' => $item->settings['audio_player_timeline_is_visible']], [], +500);
         $widget->child_insert($player_markup, 'player');
       }
       if ($item->settings['cover_is_embedded']) {
