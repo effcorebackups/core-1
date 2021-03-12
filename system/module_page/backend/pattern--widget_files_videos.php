@@ -21,8 +21,8 @@ namespace effcore {
   public $video_player_autoplay = false;
   public $video_player_controls = true;
   public $video_player_loop = false;
-  public $video_player_name = 'default';
   public $video_player_preload = 'metadata';
+  public $video_player_name = 'default';
 # ─────────────────────────────────────────────────────────────────────
   public $poster_is_allowed = true;
   public $poster_thumbnails = [
@@ -112,8 +112,8 @@ namespace effcore {
         $c_new_item->settings['video_player_autoplay'] = $this->video_player_autoplay;
         $c_new_item->settings['video_player_controls'] = $this->video_player_controls;
         $c_new_item->settings['video_player_loop'    ] = $this->video_player_loop;
-        $c_new_item->settings['video_player_name'    ] = $this->video_player_name;
         $c_new_item->settings['video_player_preload' ] = $this->video_player_preload;
+        $c_new_item->settings['video_player_name'    ] = $this->video_player_name;
         $c_new_item->settings['poster_is_embedded'   ] = false;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
@@ -176,14 +176,14 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id, $autoplay = null, $controls = null, $player_name = null, $loop = null, $preload = null) {
+  static function item_markup_get($item, $row_id, $autoplay = null, $controls = null, $loop = null, $preload = null, $player_name = null) {
     return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true),
       'poster'           => '/'.$item->object->get_current_path(true).'?poster=big',
       'autoplay'         => $autoplay    !== null ? $autoplay    : $item->settings['video_player_autoplay'],
       'controls'         => $controls    !== null ? $controls    : $item->settings['video_player_controls'],
-      'data-player-name' => $player_name !== null ? $player_name : $item->settings['video_player_name'    ],
       'loop'             => $loop        !== null ? $loop        : $item->settings['video_player_loop'    ],
-      'preload'          => $preload     !== null ? $preload     : $item->settings['video_player_preload' ]
+      'preload'          => $preload     !== null ? $preload     : $item->settings['video_player_preload' ],
+      'data-player-name' => $player_name !== null ? $player_name : $item->settings['video_player_name'    ]
     ]);
   }
 

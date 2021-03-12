@@ -19,7 +19,9 @@ namespace effcore {
     'mp3' => 'mp3'];
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_is_visible = true;
+  public $audio_player_autoplay = false;
   public $audio_player_controls = true;
+  public $audio_player_loop = false;
   public $audio_player_preload = 'metadata';
   public $audio_player_name = 'default';
   public $audio_player_timeline_is_visible = 'false';
@@ -117,7 +119,9 @@ namespace effcore {
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
         $c_new_item->settings['audio_player_is_visible'         ] = $this->audio_player_is_visible;
+        $c_new_item->settings['audio_player_autoplay'           ] = $this->audio_player_autoplay;
         $c_new_item->settings['audio_player_controls'           ] = $this->audio_player_controls;
+        $c_new_item->settings['audio_player_loop'               ] = $this->audio_player_loop;
         $c_new_item->settings['audio_player_preload'            ] = $this->audio_player_preload;
         $c_new_item->settings['audio_player_name'               ] = $this->audio_player_name;
         $c_new_item->settings['audio_player_timeline_is_visible'] = $this->audio_player_timeline_is_visible;
@@ -183,9 +187,11 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id, $controls = null, $preload = null, $player_name = null, $timeline_is_visible = true) {
+  static function item_markup_get($item, $row_id, $autoplay = null, $controls = null, $loop = null, $preload = null, $player_name = null, $timeline_is_visible = true) {
     return new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
+      'autoplay'                        => $autoplay    !== null ? $autoplay    : $item->settings['audio_player_autoplay'],
       'controls'                        => $controls    !== null ? $controls    : $item->settings['audio_player_controls'],
+      'loop'                            => $loop        !== null ? $loop        : $item->settings['audio_player_loop'    ],
       'preload'                         => $preload     !== null ? $preload     : $item->settings['audio_player_preload' ],
       'data-player-name'                => $player_name !== null ? $player_name : $item->settings['audio_player_name'    ],
       'data-player-timeline-is-visible' => $timeline_is_visible
