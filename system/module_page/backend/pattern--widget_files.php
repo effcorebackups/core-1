@@ -147,7 +147,8 @@ namespace effcore {
         $c_new_item->object = $c_value;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
-        if ($c_value->move_tmp_to_pre(temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type)) {
+        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
+        if ($c_value->move_tmp_to_pre($c_pre_path)) {
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [

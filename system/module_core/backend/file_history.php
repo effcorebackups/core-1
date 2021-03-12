@@ -192,11 +192,12 @@ namespace effcore {
     }
   }
 
-  function container_audio_make() {
+  function container_audio_make($cover_thumbnails, $cover_path = null) {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.audio');
     $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+      'cover_thumbnails' => $cover_thumbnails,
       'original' => [
         'type' => $this->type,
         'mime' => $this->mime,
@@ -209,6 +210,8 @@ namespace effcore {
       $this->mime     = $file_dst->mime_get();
       $this->pre_path = $file_dst->path_get();
       $this->size     = $file_dst->size_get();
+      if ($cover_path)
+        media::container_file_insert($file_dst->path_get(), $cover_path, 'cover');
       return true;
     }
   }
