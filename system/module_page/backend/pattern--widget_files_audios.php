@@ -18,7 +18,7 @@ namespace effcore {
   public $types_allowed = [
     'mp3' => 'mp3'];
 # ─────────────────────────────────────────────────────────────────────
-  public $audio_player_is_visible = true;
+  public $audio_player_on_manage_is_visible = true;
   public $audio_player_autoplay = false;
   public $audio_player_controls = true;
   public $audio_player_loop = false;
@@ -41,7 +41,7 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'audio') {
-      if ($item->settings['audio_player_is_visible']) {
+      if ($this->audio_player_on_manage_is_visible) {
         $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
           'controls'                        => $item->settings['audio_player_controls'],
           'preload'                         => $item->settings['audio_player_preload'],
@@ -118,7 +118,6 @@ namespace effcore {
         $c_new_item->is_deleted = false;
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
-        $c_new_item->settings['audio_player_is_visible'         ] = $this->audio_player_is_visible;
         $c_new_item->settings['audio_player_autoplay'           ] = $this->audio_player_autoplay;
         $c_new_item->settings['audio_player_controls'           ] = $this->audio_player_controls;
         $c_new_item->settings['audio_player_loop'               ] = $this->audio_player_loop;
