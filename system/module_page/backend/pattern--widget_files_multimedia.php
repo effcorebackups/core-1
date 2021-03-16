@@ -26,10 +26,10 @@ namespace effcore {
   public $thumbnails = [];
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_on_manage_is_visible = true;
+  public $audio_player_on_manage_is_visible_timeline = 'false';
   public $audio_player_controls = true;
   public $audio_player_preload = 'metadata';
   public $audio_player_name = 'default';
-  public $audio_player_timeline_is_visible = 'false';
 
   function items_set($items, $once = false) {
     if ($this->thumbnails_is_allowed)
@@ -55,7 +55,7 @@ namespace effcore {
     }
     if (media::media_class_get($item->object->type) === 'audio') {
       if ($this->audio_player_on_manage_is_visible) {
-        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->audio_player_controls, 'preload' => $this->audio_player_preload, 'data-player-name' => $this->audio_player_name, 'data-player-timeline-is-visible' => $this->audio_player_timeline_is_visible], [], +450);
+        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true), 'controls' => $this->audio_player_controls, 'preload' => $this->audio_player_preload, 'data-player-name' => $this->audio_player_name, 'data-player-timeline-is-visible' => $this->audio_player_on_manage_is_visible_timeline], [], +450);
         $widget->child_insert($player_markup, 'player');
       }
     }

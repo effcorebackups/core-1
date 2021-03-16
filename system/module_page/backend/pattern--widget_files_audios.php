@@ -19,12 +19,12 @@ namespace effcore {
     'mp3' => 'mp3'];
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_on_manage_is_visible = true;
+  public $audio_player_on_manage_is_visible_timeline = 'false';
   public $audio_player_autoplay = false;
   public $audio_player_controls = true;
   public $audio_player_loop = false;
   public $audio_player_preload = 'metadata';
   public $audio_player_name = 'default';
-  public $audio_player_timeline_is_visible = 'false';
 # ─────────────────────────────────────────────────────────────────────
   public $cover_is_allowed = true;
   public $cover_thumbnails = [
@@ -46,7 +46,7 @@ namespace effcore {
           'controls'                        => $item->settings['audio_player_controls'],
           'preload'                         => $item->settings['audio_player_preload'],
           'data-player-name'                => $item->settings['audio_player_name'],
-          'data-player-timeline-is-visible' => $item->settings['audio_player_timeline_is_visible']], [], +500);
+          'data-player-timeline-is-visible' => $this->audio_player_on_manage_is_visible_timeline], [], +500);
         $widget->child_insert($player_markup, 'player');
       }
       if ($item->settings['cover_is_embedded']) {
@@ -118,13 +118,12 @@ namespace effcore {
         $c_new_item->is_deleted = false;
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
-        $c_new_item->settings['audio_player_autoplay'           ] = $this->audio_player_autoplay;
-        $c_new_item->settings['audio_player_controls'           ] = $this->audio_player_controls;
-        $c_new_item->settings['audio_player_loop'               ] = $this->audio_player_loop;
-        $c_new_item->settings['audio_player_preload'            ] = $this->audio_player_preload;
-        $c_new_item->settings['audio_player_name'               ] = $this->audio_player_name;
-        $c_new_item->settings['audio_player_timeline_is_visible'] = $this->audio_player_timeline_is_visible;
-        $c_new_item->settings['cover_is_embedded'               ] = false;
+        $c_new_item->settings['audio_player_autoplay'] = $this->audio_player_autoplay;
+        $c_new_item->settings['audio_player_controls'] = $this->audio_player_controls;
+        $c_new_item->settings['audio_player_loop'    ] = $this->audio_player_loop;
+        $c_new_item->settings['audio_player_preload' ] = $this->audio_player_preload;
+        $c_new_item->settings['audio_player_name'    ] = $this->audio_player_name;
+        $c_new_item->settings['cover_is_embedded'    ] = false;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
         $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id;
