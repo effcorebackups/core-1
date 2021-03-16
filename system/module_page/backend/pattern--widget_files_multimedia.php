@@ -27,6 +27,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_on_manage_is_visible = true;
   public $audio_player_on_manage_is_visible_timeline = 'false';
+# ─────────────────────────────────────────────────────────────────────
   public $audio_player_controls = true;
   public $audio_player_preload = 'metadata';
   public $audio_player_name = 'default';

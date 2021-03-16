@@ -19,12 +19,24 @@ namespace effcore {
     'mp3' => 'mp3'];
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_on_manage_is_visible = true;
-  public $audio_player_on_manage_is_visible_timeline = 'false';
-  public $audio_player_autoplay = false;
-  public $audio_player_controls = true;
-  public $audio_player_loop = false;
-  public $audio_player_preload = 'metadata';
-  public $audio_player_name = 'default';
+  public $audio_player_on_manage_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'false'];
+  public $audio_player_default_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'true'];
 # ─────────────────────────────────────────────────────────────────────
   public $cover_is_allowed = true;
   public $cover_thumbnails = [
@@ -42,14 +54,10 @@ namespace effcore {
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'audio') {
       if ($this->audio_player_on_manage_is_visible) {
-        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
-          'controls'                        => $item->settings['audio_player_controls'],
-          'preload'                         => $item->settings['audio_player_preload'],
-          'data-player-name'                => $item->settings['audio_player_name'],
-          'data-player-timeline-is-visible' => $this->audio_player_on_manage_is_visible_timeline], [], +500);
+        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +500);
         $widget->child_insert($player_markup, 'player');
       }
-      if ($item->settings['cover_is_embedded']) {
+      if ($item->settings['data-cover-is-embedded']) {
         $cover_thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($cover_thumbnail_markup, 'thumbnail');
       }
@@ -118,15 +126,11 @@ namespace effcore {
         $c_new_item->is_deleted = false;
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
-        $c_new_item->settings['audio_player_autoplay'] = $this->audio_player_autoplay;
-        $c_new_item->settings['audio_player_controls'] = $this->audio_player_controls;
-        $c_new_item->settings['audio_player_loop'    ] = $this->audio_player_loop;
-        $c_new_item->settings['audio_player_preload' ] = $this->audio_player_preload;
-        $c_new_item->settings['audio_player_name'    ] = $this->audio_player_name;
-        $c_new_item->settings['cover_is_embedded'    ] = false;
+        $c_new_item->settings = $this->audio_player_default_settings;
+        $c_new_item->settings['data-cover-is-embedded'] = false;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
-        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id;
+        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
         if ($c_value->move_tmp_to_pre($c_pre_path)) {
           if ($this->cover_is_allowed) {
             if (media::media_class_get($c_new_item->object->type) === 'audio') {
@@ -134,7 +138,7 @@ namespace effcore {
                 $c_cover = reset($values['cover']);
                 if ($c_cover instanceof file_history) {
                     $c_cover->move_tmp_to_pre($c_pre_path.'.'.$c_cover->type);
-                       $c_new_item->settings['cover_is_embedded'] = true;
+                       $c_new_item->settings['data-cover-is-embedded'] = true;
                        $c_new_item->object->container_audio_make($this->cover_thumbnails, $c_cover->get_current_path()); @unlink($c_pre_path.'.'.$c_cover->type);
                 } else $c_new_item->object->container_audio_make($this->cover_thumbnails, null);
               }
@@ -185,15 +189,8 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id, $autoplay = null, $controls = null, $loop = null, $preload = null, $player_name = null, $timeline_is_visible = true) {
-    return new markup('audio', ['src' => '/'.$item->object->get_current_path(true),
-      'autoplay'                        => $autoplay    !== null ? $autoplay    : $item->settings['audio_player_autoplay'],
-      'controls'                        => $controls    !== null ? $controls    : $item->settings['audio_player_controls'],
-      'loop'                            => $loop        !== null ? $loop        : $item->settings['audio_player_loop'    ],
-      'preload'                         => $preload     !== null ? $preload     : $item->settings['audio_player_preload' ],
-      'data-player-name'                => $player_name !== null ? $player_name : $item->settings['audio_player_name'    ],
-      'data-player-timeline-is-visible' => $timeline_is_visible
-    ]);
+  static function item_markup_get($item, $row_id) {
+    return new markup('audio', ['src' => '/'.$item->object->get_current_path(true)] + $item->settings);
   }
 
 }}

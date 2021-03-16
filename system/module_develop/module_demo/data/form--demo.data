@@ -87,7 +87,7 @@ forms
             name_complex: files_audios
             upload_dir: demo/
             audio_player_on_manage_is_visible: true
-            audio_player_on_manage_is_visible_timeline|_string_false
+            cover_is_allowed: true
             types_allowed
             - =: mp3
       # widget 'Videos'
