@@ -43,7 +43,6 @@ forms
             title: Audio
             upload_dir: demo/
             audio_player_on_manage_is_visible: true
-            audio_player_on_manage_is_visible_timeline|_string_true
             description|text
               text: Field "%%_title".
               args

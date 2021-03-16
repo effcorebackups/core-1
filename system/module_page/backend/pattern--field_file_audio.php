@@ -16,14 +16,20 @@ namespace effcore {
   public $types_allowed = [
     'mp3' => 'mp3'];
   public $audio_player_on_manage_is_visible = true;
-  public $audio_player_on_manage_is_visible_timeline = 'true';
-  public $audio_player_controls = true;
-  public $audio_player_preload = 'metadata';
-  public $audio_player_name = 'default';
+  public $audio_player_on_manage_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'true'
+  ];
 
   protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
     if ($this->audio_player_on_manage_is_visible) {
-      $player_markup = new markup('audio', ['src' => '/'.$item->get_current_path(true), 'controls' => $this->audio_player_controls, 'preload' => $this->audio_player_preload, 'data-player-name' => $this->audio_player_name, 'data-player-timeline-is-visible' => $this->audio_player_on_manage_is_visible_timeline], [], +450);
+      $player_markup = new markup('audio', ['src' => '/'.$item->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +450);
            return new node([], [$player_markup, new text('delete audio "%%_audio"', ['audio' => $item->file])]);
     } else return new node([], [                new text('delete audio "%%_audio"', ['audio' => $item->file])]);
   }
