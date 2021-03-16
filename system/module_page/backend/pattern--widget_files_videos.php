@@ -18,11 +18,15 @@ namespace effcore {
   public $types_allowed = [
     'mp4' => 'mp4'];
 # ─────────────────────────────────────────────────────────────────────
-  public $video_player_autoplay = false;
-  public $video_player_controls = true;
-  public $video_player_loop = false;
-  public $video_player_preload = 'metadata';
-  public $video_player_name = 'default';
+  public $video_player_default_settings = [
+    'autoplay'    => false,
+    'buffered'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => false,
+    'muted'       => false,
+    'played'      => null,
+    'preload'     => 'metadata'];
 # ─────────────────────────────────────────────────────────────────────
   public $poster_is_allowed = true;
   public $poster_thumbnails = [
@@ -40,7 +44,7 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'video') {
-      if ($item->settings['poster_is_embedded']) {
+      if ($item->settings['data-poster-is-embedded']) {
         $poster_thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($poster_thumbnail_markup, 'thumbnail');
       }
@@ -109,15 +113,11 @@ namespace effcore {
         $c_new_item->is_deleted = false;
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
-        $c_new_item->settings['video_player_autoplay'] = $this->video_player_autoplay;
-        $c_new_item->settings['video_player_controls'] = $this->video_player_controls;
-        $c_new_item->settings['video_player_loop'    ] = $this->video_player_loop;
-        $c_new_item->settings['video_player_preload' ] = $this->video_player_preload;
-        $c_new_item->settings['video_player_name'    ] = $this->video_player_name;
-        $c_new_item->settings['poster_is_embedded'   ] = false;
+        $c_new_item->settings = $this->video_player_default_settings;
+        $c_new_item->settings['data-poster-is-embedded'] = false;
         $items[] = $c_new_item;
         $c_new_row_id = core::array_key_last($items);
-        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id;
+        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
         if ($c_value->move_tmp_to_pre($c_pre_path)) {
           if ($this->poster_is_allowed) {
             if (media::media_class_get($c_new_item->object->type) === 'video') {
@@ -125,7 +125,7 @@ namespace effcore {
                 $c_poster = reset($values['poster']);
                 if ($c_poster instanceof file_history) {
                     $c_poster->move_tmp_to_pre($c_pre_path.'.'.$c_poster->type);
-                       $c_new_item->settings['poster_is_embedded'] = true;
+                       $c_new_item->settings['data-poster-is-embedded'] = true;
                        $c_new_item->object->container_video_make($this->poster_thumbnails, $c_poster->get_current_path()); @unlink($c_pre_path.'.'.$c_poster->type);
                 } else $c_new_item->object->container_video_make($this->poster_thumbnails, null);
               }
@@ -176,15 +176,10 @@ namespace effcore {
     return $decorator;
   }
 
-  static function item_markup_get($item, $row_id, $autoplay = null, $controls = null, $loop = null, $preload = null, $player_name = null) {
-    return new markup_simple('video', ['src' => '/'.$item->object->get_current_path(true),
-      'poster'           => '/'.$item->object->get_current_path(true).'?poster=big',
-      'autoplay'         => $autoplay    !== null ? $autoplay    : $item->settings['video_player_autoplay'],
-      'controls'         => $controls    !== null ? $controls    : $item->settings['video_player_controls'],
-      'loop'             => $loop        !== null ? $loop        : $item->settings['video_player_loop'    ],
-      'preload'          => $preload     !== null ? $preload     : $item->settings['video_player_preload' ],
-      'data-player-name' => $player_name !== null ? $player_name : $item->settings['video_player_name'    ]
-    ]);
+  static function item_markup_get($item, $row_id) {
+    if ($item->settings['data-poster-is-embedded'])
+         return new markup('video', ['src' => '/'.$item->object->get_current_path(true), 'poster' => '/'.$item->object->get_current_path(true).'?poster=big'] + $item->settings);
+    else return new markup('video', ['src' => '/'.$item->object->get_current_path(true)                                                                     ] + $item->settings);
   }
 
 }}

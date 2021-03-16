@@ -47,7 +47,8 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'];
+    'jpeg' => 'jpeg'
+  ];
 
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);

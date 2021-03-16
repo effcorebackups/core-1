@@ -94,6 +94,7 @@ forms
             title: Videos
             name_complex: files_videos
             upload_dir: demo/
+            poster_is_allowed: true
             types_allowed
             - =: mp4
       # field 'Text'
