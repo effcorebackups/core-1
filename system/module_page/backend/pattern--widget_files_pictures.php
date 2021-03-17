@@ -22,7 +22,9 @@ namespace effcore {
     'jpeg' => 'jpeg'];
 # ─────────────────────────────────────────────────────────────────────
   public $thumbnails_is_allowed = true;
-  public $thumbnails = [];
+  public $thumbnails = [
+    'small'  => 'small',
+    'middle' => 'middle'];
   public $picture_default_settings = [
     'title'  => 'click to open in new window',
     'alt'    => 'thumbnail',

@@ -80,7 +80,7 @@ namespace effcore {
     $field_file_audio->has_on_validate  = false;
     $field_file_audio->build();
     $field_file_audio->name_set($this->name_get_complex().'__file');
-  # control for upload new cover
+  # control for upload new audio cover
     $field_file_cover = new field_file_picture;
     $field_file_cover->title            = 'Cover';
     $field_file_cover->max_file_size    = $this->cover_max_file_size;
@@ -110,7 +110,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_validate($form, $npath, $button) {
-    $result =             ['cover' => [], 'file' => field_file::on_manual_validate_and_return_value($this->controls['#file' ], $form, $npath)];
+    $result = ['cover' => [],             'file' => field_file::on_manual_validate_and_return_value($this->controls['#file' ], $form, $npath)];
     if ($this->cover_is_allowed) $result['cover'] = field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);
     return $result;
   }

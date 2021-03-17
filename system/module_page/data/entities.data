@@ -296,18 +296,9 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\widget_files_multimedia
         managing_control_properties
-        - max_file_size: 50M
         - upload_dir: galleries/
         - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
         - name_complex: items
-        - types_allowed
-          - =: mp3
-          - =: mp4
-          - =: png
-          - =: gif
-          - =: jpg
-          - =: jpeg
-          - =: svg
         - thumbnails
           - =: small
           - =: middle

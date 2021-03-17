@@ -66,7 +66,7 @@ namespace effcore {
     $field_file_video->has_on_validate  = false;
     $field_file_video->build();
     $field_file_video->name_set($this->name_get_complex().'__file');
-  # control for upload new poster
+  # control for upload new video poster
     $field_file_poster = new field_file_picture;
     $field_file_poster->title            = 'Poster';
     $field_file_poster->max_file_size    = $this->poster_max_file_size;
@@ -96,7 +96,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_validate($form, $npath, $button) {
-    $result =              ['poster' => [], 'file' => field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath)];
+    $result = ['poster' => [],              'file' => field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath)];
     if ($this->poster_is_allowed) $result['poster'] = field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
     return $result;
   }
