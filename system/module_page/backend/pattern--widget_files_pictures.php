@@ -14,6 +14,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'pictures/';
   public $fixed_name = 'picture-multiple-%%_item_id_context';
+# ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '1M';
   public $types_allowed = [
     'png'  => 'png',
@@ -25,6 +26,7 @@ namespace effcore {
   public $thumbnails = [
     'small'  => 'small',
     'middle' => 'middle'];
+# ─────────────────────────────────────────────────────────────────────
   public $picture_default_settings = [
     'title'  => 'click to open in new window',
     'alt'    => 'thumbnail',

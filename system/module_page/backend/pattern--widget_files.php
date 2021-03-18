@@ -100,7 +100,7 @@ namespace effcore {
           if ($c_result) {
             message::insert(new text(
               'Item of type "%%_type" with ID = "%%_id" has been saved.', [
-              'type' => (new text('Picture'))->render(),
+              'type' => (new text($this->item_title))->render(),
               'id'   => $c_item->object->file
             ]));
           }

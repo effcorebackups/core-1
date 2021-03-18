@@ -150,13 +150,13 @@ namespace effcore {
     $button_insert_audio->_kind = 'audio';
   # relate new controls with the widget
     $this->controls['#file_picture'] = $field_file_picture;
+    $this->controls['#file_video'  ] = $field_file_video;
+    $this->controls['#file_audio'  ] = $field_file_audio;
+    $this->controls['#poster'      ] = $field_file_poster;
+    $this->controls['#cover'       ] = $field_file_cover;
     $this->controls['~insert_picture'] = $button_insert_picture;
-    $this->controls['#file_video'] = $field_file_video;
-    $this->controls['#poster'] = $field_file_poster;
-    $this->controls['~insert_video'] = $button_insert_video;
-    $this->controls['#file_audio'] = $field_file_audio;
-    $this->controls['#cover'] = $field_file_cover;
-    $this->controls['~insert_audio'] = $button_insert_audio;
+    $this->controls['~insert_video'  ] = $button_insert_video;
+    $this->controls['~insert_audio'  ] = $button_insert_audio;
     $this->controls['*fieldset_pictures'] = $fieldset_pictures;
     $this->controls['*fieldset_video']    = $fieldset_video;
     $this->controls['*fieldset_audio']    = $fieldset_audio;
@@ -187,9 +187,13 @@ namespace effcore {
     if ($button->_kind === 'picture' && !$this->controls['#file_picture']->has_error() && count($values['file']) === 0) {$this->controls['#file_picture']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_picture']->title))->render() ]); return;}
     if ($button->_kind === 'video'   && !$this->controls['#file_video'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_video'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_video'  ]->title))->render() ]); return;}
     if ($button->_kind === 'audio'   && !$this->controls['#file_audio'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_audio'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_audio'  ]->title))->render() ]); return;}
-    if ($button->_kind === 'picture' && !$this->controls['*fieldset_pictures']->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_pictures';}
-    if ($button->_kind === 'video'   && !$this->controls['*fieldset_video'   ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_video';}
-    if ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'   ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_audio';}
+    if ( ($button->_kind === 'picture' && !$this->controls['*fieldset_pictures']->has_error_in_container()) ||
+         ($button->_kind === 'video'   && !$this->controls['*fieldset_video'   ]->has_error_in_container()) ||
+         ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'   ]->has_error_in_container()) ) {
+      if (count($values['file']) !== 0) {
+        
+      }
+    }
   }
 
   ###########################

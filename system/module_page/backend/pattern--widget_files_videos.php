@@ -14,19 +14,10 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $upload_dir = 'videos/';
   public $fixed_name = 'video-multiple-%%_item_id_context';
+# ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '50M';
   public $types_allowed = [
     'mp4' => 'mp4'];
-# ─────────────────────────────────────────────────────────────────────
-  public $video_player_default_settings = [
-    'autoplay'    => false,
-    'buffered'    => null,
-    'controls'    => true,
-    'crossorigin' => null,
-    'loop'        => false,
-    'muted'       => false,
-    'played'      => null,
-    'preload'     => 'metadata'];
 # ─────────────────────────────────────────────────────────────────────
   public $poster_is_allowed = true;
   public $poster_thumbnails = [
@@ -37,7 +28,17 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'
+    'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
+  public $video_player_default_settings = [
+    'autoplay'    => false,
+    'buffered'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => false,
+    'muted'       => false,
+    'played'      => null,
+    'preload'     => 'metadata'
   ];
 
   function widget_manage_get($item, $c_row_id) {
