@@ -135,7 +135,8 @@ namespace effcore {
 
   function on_button_click_insert($form, $npath, $button) {
     $values = $this->on_values_validate($form, $npath, $button);
-    if (count($values)) {
+    if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
+    if (!$this->controls['#file']->has_error() && count($values) !== 0) {
       $items = $this->items_get();
       foreach ($values as $c_value) {
         $min_weight = 0;
@@ -161,10 +162,6 @@ namespace effcore {
       }
       message::insert('Do not forget to save the changes!');
       return true;
-    } elseif (!$this->controls['#file']->has_error()) {
-      $this->controls['#file']->error_set(
-        'Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]
-      );
     }
   }
 

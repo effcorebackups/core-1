@@ -70,9 +70,9 @@ namespace effcore {
     $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
     $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);
     $fieldset_audio    = new fieldset('Audio',    null, ['data-type' => 'audio'   ]);
-    $fieldset_pictures->state = 'opened';
-    $fieldset_video   ->state = 'opened';
-    $fieldset_audio   ->state = 'opened';
+    $fieldset_pictures->state = 'closed';
+    $fieldset_video   ->state = 'closed';
+    $fieldset_audio   ->state = 'closed';
   # control for upload new picture
     $field_file_picture = new field_file_picture;
     $field_file_picture->title            = 'Picture';
@@ -184,12 +184,12 @@ namespace effcore {
 
   function on_button_click_insert($form, $npath, $button) {
     $values = $this->on_values_validate($form, $npath, $button);
-    if ($button->_kind === 'picture' && !$this->controls['#file_picture']->has_error() && count($values['file']) === 0) {$this->controls['#file_picture']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_picture']->title))->render() ]); return false;}
-    if ($button->_kind === 'video'   && !$this->controls['#file_video'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_video'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_video'  ]->title))->render() ]); return false;}
-    if ($button->_kind === 'audio'   && !$this->controls['#file_audio'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_audio'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_audio'  ]->title))->render() ]); return false;}
-    if ($button->_kind === 'picture' && !$this->controls['*fieldset_picture']->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_picture';}
-    if ($button->_kind === 'video'   && !$this->controls['*fieldset_video'  ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_video';}
-    if ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'  ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_audio';}
+    if ($button->_kind === 'picture' && !$this->controls['#file_picture']->has_error() && count($values['file']) === 0) {$this->controls['#file_picture']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_picture']->title))->render() ]); return;}
+    if ($button->_kind === 'video'   && !$this->controls['#file_video'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_video'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_video'  ]->title))->render() ]); return;}
+    if ($button->_kind === 'audio'   && !$this->controls['#file_audio'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_audio'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_audio'  ]->title))->render() ]); return;}
+    if ($button->_kind === 'picture' && !$this->controls['*fieldset_pictures']->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_pictures';}
+    if ($button->_kind === 'video'   && !$this->controls['*fieldset_video'   ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_video';}
+    if ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'   ]->has_error_in_container() && count($values['file']) !== 0) {print 'fieldset_audio';}
   }
 
   ###########################
