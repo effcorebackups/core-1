@@ -110,10 +110,16 @@ namespace effcore {
           $values = $this->on_values_validate_poster($form, $npath, $button);
           $poster = reset($values);
           if ($poster instanceof file_history) {
-            $poster->move_tmp_to_pre($pre_path.'.'.$poster->type);
-            $new_item->settings['data-poster-is-embedded'] = true;
-            $new_item->object->container_video_make($this->poster_thumbnails, $poster->get_current_path());
-            @unlink($pre_path.'.'.$poster->type);
+            if (media::media_class_get($poster->type) === 'picture') {
+              if (media::is_type_for_thumbnail($poster->type)) {
+                if ($poster->move_tmp_to_pre($pre_path.'.'.$poster->type)) {
+                  if ($new_item->object->container_video_make($this->poster_thumbnails, $poster->get_current_path())) {
+                    $new_item->settings['data-poster-is-embedded'] = true;
+                    @unlink($pre_path.'.'.$poster->type);
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -84,8 +84,9 @@ namespace effcore {
       if ($this->thumbnails_is_allowed) {
         if (media::media_class_get($new_item->object->type) === 'picture') {
           if (media::is_type_for_thumbnail($new_item->object->type)) {
-            if ($new_item->object->container_picture_make($this->thumbnails))
-                $new_item->settings['data-thumbnails-is-embedded'] = true;
+            if ($new_item->object->container_picture_make($this->thumbnails)) {
+              $new_item->settings['data-thumbnails-is-embedded'] = true;
+            }
           }
         }
       }
