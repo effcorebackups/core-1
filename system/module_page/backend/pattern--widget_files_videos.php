@@ -96,55 +96,37 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_validate($form, $npath, $button) {
-    $result = ['poster' => [],              'file' => field_file::on_manual_validate_and_return_value($this->controls['#file'  ], $form, $npath)];
-    if ($this->poster_is_allowed) $result['poster'] = field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
-    return $result;
+  function on_values_validate_poster($form, $npath, $button) {
+    return field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
+  }
+
+  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    if ($new_item->object->move_tmp_to_pre($pre_path)) {
+      $new_item->settings = $this->video_player_default_settings;
+      $new_item->settings['data-poster-is-embedded'] = false;
+      if ($this->poster_is_allowed) {
+        if (media::media_class_get($new_item->object->type) === 'video') {
+          $values = $this->on_values_validate_poster($form, $npath, $button);
+          $poster = reset($values);
+          if ($poster instanceof file_history) {
+            $poster->move_tmp_to_pre($pre_path.'.'.$poster->type);
+            $new_item->settings['data-poster-is-embedded'] = true;
+            $new_item->object->container_video_make($this->poster_thumbnails, $poster->get_current_path());
+            @unlink($pre_path.'.'.$poster->type);
+          }
+        }
+      }
+      return true;
+    }
   }
 
   function on_button_click_insert($form, $npath, $button) {
-    $values = $this->on_values_validate($form, $npath, $button);
-    if (!$this->controls['#file']->has_error() &&                                             count($values['file']) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
-    if (!$this->controls['#file']->has_error() && !$this->controls['#poster']->has_error() && count($values['file']) !== 0) {
-      $items = $this->items_get();
-      foreach ($values['file'] as $c_value) {
-        $min_weight = 0;
-        foreach ($items as $c_row_id => $c_item)
-          $min_weight = min($min_weight, $c_item->weight);
-        $c_new_item = new \stdClass;
-        $c_new_item->is_deleted = false;
-        $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
-        $c_new_item->object = $c_value;
-        $c_new_item->settings = $this->video_player_default_settings;
-        $c_new_item->settings['data-poster-is-embedded'] = false;
-        $items[] = $c_new_item;
-        $c_new_row_id = core::array_key_last($items);
-        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
-        if ($c_value->move_tmp_to_pre($c_pre_path)) {
-          if ($this->poster_is_allowed) {
-            if (media::media_class_get($c_new_item->object->type) === 'video') {
-              if ($c_new_item->object->get_current_state() === 'pre') {
-                $c_poster = reset($values['poster']);
-                if ($c_poster instanceof file_history) {
-                    $c_poster->move_tmp_to_pre($c_pre_path.'.'.$c_poster->type);
-                       $c_new_item->settings['data-poster-is-embedded'] = true;
-                       $c_new_item->object->container_video_make($this->poster_thumbnails, $c_poster->get_current_path()); @unlink($c_pre_path.'.'.$c_poster->type);
-                } else $c_new_item->object->container_video_make($this->poster_thumbnails, null);
-              }
-            }
-          }
-          $this->items_set($items);
-          message::insert(new text(
-            'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-            'type' => (new text($this->item_title))->render(),
-            'id'   => $c_new_item->object->file]));
-        } else {
-          $form->error_set();
-          return;
-        }
-      }
-      message::insert('Do not forget to save the changes!');
-      return true;
+    $values        = $this->on_values_validate       ($form, $npath, $button);
+    $values_poster = $this->on_values_validate_poster($form, $npath, $button);
+    if (!$this->controls['#file']->has_error() &&                                             count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
+    if (!$this->controls['#file']->has_error() && !$this->controls['#poster']->has_error() && count($values) !== 0) {
+      return parent::on_button_click_insert($form, $npath, $button);
     }
   }
 
