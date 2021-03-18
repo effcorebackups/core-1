@@ -191,7 +191,19 @@ namespace effcore {
          ($button->_kind === 'video'   && !$this->controls['*fieldset_video'   ]->has_error_in_container()) ||
          ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'   ]->has_error_in_container()) ) {
       if (count($values['file']) !== 0) {
-        
+        $items = $this->items_get();
+        foreach ($values['file'] as $c_value) {
+          $min_weight = 0;
+          foreach ($items as $c_row_id => $c_item)
+            $min_weight = min($min_weight, $c_item->weight);
+          $c_new_item = new \stdClass;
+          $c_new_item->is_deleted = false;
+          $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
+          $c_new_item->object = $c_value;
+        # todo: make functionality
+        }
+        message::insert('Do not forget to save the changes!');
+        return true;
       }
     }
   }

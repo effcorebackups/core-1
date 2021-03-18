@@ -133,6 +133,11 @@ namespace effcore {
     return field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);
   }
 
+  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    return $new_item->object->move_tmp_to_pre($pre_path);
+  }
+
   function on_button_click_insert($form, $npath, $button) {
     $values = $this->on_values_validate($form, $npath, $button);
     if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
@@ -147,9 +152,7 @@ namespace effcore {
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
         $items[] = $c_new_item;
-        $c_new_row_id = core::array_key_last($items);
-        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
-        if ($c_value->move_tmp_to_pre($c_pre_path)) {
+        if ($this->on_file_prepare($form, $npath, $button, $items, $c_new_item)) {
           $this->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with ID = "%%_id" was inserted.', [
