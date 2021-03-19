@@ -51,7 +51,7 @@ namespace effcore {
       if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
       if (!$this->controls['#file']->has_error() && count($values) !== 0) {
         return parent::on_button_click_insert($form, $npath, $button);
-      }      
+      }
     }
   }
 

@@ -23,6 +23,6 @@ namespace effcore {
       }
       return true;
     }
-  }  
+  }
 
 }}

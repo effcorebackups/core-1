@@ -43,7 +43,17 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'
+    'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
+  public $video_player_default_settings = [
+    'autoplay'    => false,
+    'buffered'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => false,
+    'muted'       => false,
+    'played'      => null,
+    'preload'     => 'metadata'
   ];
 
 # ── audio ────────────────────────────────────────────────────────────
@@ -60,7 +70,27 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'
+    'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
+  public $audio_player_on_manage_is_visible = true;
+  public $audio_player_on_manage_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'false'];
+  public $audio_player_default_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'true'
   ];
 
   function widget_insert_get() {
@@ -174,38 +204,28 @@ namespace effcore {
     return $widget;
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
+  use widget_files_pictures_methods;
+  use widget_files_videos_methods;
+  use widget_files_audios_methods;
+
   function on_values_validate($form, $npath, $button) {
-    $result = ['file' => [], 'poster' => [], 'cover' => []];
-    if ($button->_kind === 'picture') {$result['file'] = field_file::on_manual_validate_and_return_value($this->controls['#file_picture'], $form, $npath);}
-    if ($button->_kind === 'video'  ) {$result['file'] = field_file::on_manual_validate_and_return_value($this->controls['#file_video'  ], $form, $npath); if ($this->poster_is_allowed) $result['poster'] = field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);}
-    if ($button->_kind === 'audio'  ) {$result['file'] = field_file::on_manual_validate_and_return_value($this->controls['#file_audio'  ], $form, $npath); if ($this->cover_is_allowed ) $result['cover' ] = field_file::on_manual_validate_and_return_value($this->controls['#cover' ], $form, $npath);}
-    return $result;
+    if ($button->_kind === 'picture') return field_file::on_manual_validate_and_return_value($this->controls['#file'      ], $form, $npath);
+    if ($button->_kind === 'video'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_video'], $form, $npath);
+    if ($button->_kind === 'audio'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_audio'], $form, $npath);
+  }
+
+  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
+ // if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file'      ]; return $this->on_file_prepare_picture($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video']; return $this->on_file_prepare_video  ($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio']; return $this->on_file_prepare_audio  ($form, $npath, $button, $items, $new_item);}
   }
 
   function on_button_click_insert($form, $npath, $button) {
-    $values = $this->on_values_validate($form, $npath, $button);
-    if ($button->_kind === 'picture' && !$this->controls['#file_picture']->has_error() && count($values['file']) === 0) {$this->controls['#file_picture']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_picture']->title))->render() ]); return;}
-    if ($button->_kind === 'video'   && !$this->controls['#file_video'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_video'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_video'  ]->title))->render() ]); return;}
-    if ($button->_kind === 'audio'   && !$this->controls['#file_audio'  ]->has_error() && count($values['file']) === 0) {$this->controls['#file_audio'  ]->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file_audio'  ]->title))->render() ]); return;}
-    if ( ($button->_kind === 'picture' && !$this->controls['*fieldset_pictures']->has_error_in_container()) ||
-         ($button->_kind === 'video'   && !$this->controls['*fieldset_video'   ]->has_error_in_container()) ||
-         ($button->_kind === 'audio'   && !$this->controls['*fieldset_audio'   ]->has_error_in_container()) ) {
-      if (count($values['file']) !== 0) {
-        $items = $this->items_get();
-        foreach ($values['file'] as $c_value) {
-          $min_weight = 0;
-          foreach ($items as $c_row_id => $c_item)
-            $min_weight = min($min_weight, $c_item->weight);
-          $c_new_item = new \stdClass;
-          $c_new_item->is_deleted = false;
-          $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
-          $c_new_item->object = $c_value;
-        # todo: make functionality
-        }
-        message::insert('Do not forget to save the changes!');
-        return true;
-      }
-    }
+ // if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file'      ]; return $this->on_button_click_insert      ($form, $npath, $button);}
+    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video']; return $this->on_button_click_insert_video($form, $npath, $button);}
+    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio']; return $this->on_button_click_insert_audio($form, $npath, $button);}
   }
 
   ###########################
