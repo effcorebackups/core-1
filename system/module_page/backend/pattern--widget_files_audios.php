@@ -110,55 +110,51 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_values_validate($form, $npath, $button) {
-    $result = ['cover' => [],             'file' => field_file::on_manual_validate_and_return_value($this->controls['#file' ], $form, $npath)];
-    if ($this->cover_is_allowed) $result['cover'] = field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);
-    return $result;
+  function on_values_validate_cover($form, $npath, $button) {
+    return field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);
   }
 
-  function on_button_click_insert($form, $npath, $button) {
-    $values = $this->on_values_validate($form, $npath, $button);
-    if (!$this->controls['#file']->has_error() &&                                            count($values['file']) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
-    if (!$this->controls['#file']->has_error() && !$this->controls['#cover']->has_error() && count($values['file']) !== 0) {
-      $items = $this->items_get();
-      foreach ($values['file'] as $c_value) {
-        $min_weight = 0;
-        foreach ($items as $c_row_id => $c_item)
-          $min_weight = min($min_weight, $c_item->weight);
-        $c_new_item = new \stdClass;
-        $c_new_item->is_deleted = false;
-        $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
-        $c_new_item->object = $c_value;
-        $c_new_item->settings = $this->audio_player_default_settings;
-        $c_new_item->settings['data-cover-is-embedded'] = false;
-        $items[] = $c_new_item;
-        $c_new_row_id = core::array_key_last($items);
-        $c_pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.$c_new_row_id.'.'.$c_value->type;
-        if ($c_value->move_tmp_to_pre($c_pre_path)) {
-          if ($this->cover_is_allowed) {
-            if (media::media_class_get($c_new_item->object->type) === 'audio') {
-              if ($c_new_item->object->get_current_state() === 'pre') {
-                $c_cover = reset($values['cover']);
-                if ($c_cover instanceof file_history) {
-                    $c_cover->move_tmp_to_pre($c_pre_path.'.'.$c_cover->type);
-                       $c_new_item->settings['data-cover-is-embedded'] = true;
-                       $c_new_item->object->container_audio_make($this->cover_thumbnails, $c_cover->get_current_path()); @unlink($c_pre_path.'.'.$c_cover->type);
-                } else $c_new_item->object->container_audio_make($this->cover_thumbnails, null);
+  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    if ($new_item->object->move_tmp_to_pre($pre_path)) {
+      $new_item->settings = $this->audio_player_default_settings;
+      $new_item->settings['data-cover-is-embedded'] = false;
+      if ($this->cover_is_allowed) {
+        if (media::media_class_get($new_item->object->type) === 'audio') {
+          $values = $this->on_values_validate_cover($form, $npath, $button);
+          $cover = reset($values);
+          if ($cover instanceof file_history) {
+            if (media::media_class_get($cover->type) === 'picture') {
+              if (media::is_type_for_thumbnail($cover->type)) {
+                if ($cover->move_tmp_to_pre($pre_path.'.'.$cover->type)) {
+                  if ($new_item->object->container_audio_make($this->cover_thumbnails, $cover->get_current_path())) {
+                    $new_item->settings['data-cover-is-embedded'] = true;
+                    @unlink($pre_path.'.'.$cover->type);
+                  }
+                }
               }
             }
           }
-          $this->items_set($items);
-          message::insert(new text(
-            'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-            'type' => (new text($this->item_title))->render(),
-            'id'   => $c_new_item->object->file]));
-        } else {
-          $form->error_set();
-          return;
         }
       }
-      message::insert('Do not forget to save the changes!');
       return true;
+    }
+  }
+
+  function on_button_click_insert($form, $npath, $button) {
+    if ($this->cover_is_allowed) {
+      $values       = $this->on_values_validate      ($form, $npath, $button);
+      $values_cover = $this->on_values_validate_cover($form, $npath, $button);
+      if (!$this->controls['#file']->has_error() &&                                            count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
+      if (!$this->controls['#file']->has_error() && !$this->controls['#cover']->has_error() && count($values) !== 0) {
+        return parent::on_button_click_insert($form, $npath, $button);
+      }
+    } else {
+      $values = $this->on_values_validate($form, $npath, $button);
+      if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
+      if (!$this->controls['#file']->has_error() && count($values) !== 0) {
+        return parent::on_button_click_insert($form, $npath, $button);
+      }      
     }
   }
 
