@@ -7,6 +7,28 @@
 namespace effcore {
           trait widget_files_videos__shared {
 
+  public $poster_is_allowed = true;
+  public $poster_thumbnails = [
+    'small'  => 'small',
+    'middle' => 'middle'];
+  public $poster_max_file_size = '1M';
+  public $poster_types_allowed = [
+    'png'  => 'png',
+    'gif'  => 'gif',
+    'jpg'  => 'jpg',
+    'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
+  public $video_player_default_settings = [
+    'autoplay'    => false,
+    'buffered'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => false,
+    'muted'       => false,
+    'played'      => null,
+    'preload'     => 'metadata'
+  ];
+
   function on_values_validate_poster($form, $npath, $button) {
     return field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
   }

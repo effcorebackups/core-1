@@ -19,28 +19,7 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $max_file_size = '50M';
   public $types_allowed = [
-    'mp4' => 'mp4'];
-# ─────────────────────────────────────────────────────────────────────
-  public $poster_is_allowed = true;
-  public $poster_thumbnails = [
-    'small'  => 'small',
-    'middle' => 'middle'];
-  public $poster_max_file_size = '1M';
-  public $poster_types_allowed = [
-    'png'  => 'png',
-    'gif'  => 'gif',
-    'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'];
-# ─────────────────────────────────────────────────────────────────────
-  public $video_player_default_settings = [
-    'autoplay'    => false,
-    'buffered'    => null,
-    'controls'    => true,
-    'crossorigin' => null,
-    'loop'        => false,
-    'muted'       => false,
-    'played'      => null,
-    'preload'     => 'metadata'
+    'mp4' => 'mp4'
   ];
 
   function widget_manage_get($item, $c_row_id) {
