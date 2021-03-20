@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          trait field_validate_min_max {
+          trait field__shared {
 
   static function validate_min($field, $form, $element, &$new_value) {
     $min = $field->min_get();

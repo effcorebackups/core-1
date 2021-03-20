@@ -7,7 +7,7 @@
 namespace effcore {
           class field_date extends field_text {
 
-  use field_validate_min_max;
+  use field__shared;
 
   const input_min_date = '0001-01-01';
   const input_max_date = '9999-12-31';
