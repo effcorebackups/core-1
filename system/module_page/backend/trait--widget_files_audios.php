@@ -7,6 +7,38 @@
 namespace effcore {
           trait widget_files_audios__shared {
 
+  public $cover_is_allowed = true;
+  public $cover_thumbnails = [
+    'small'  => 'small',
+    'middle' => 'middle'];
+  public $cover_max_file_size = '1M';
+  public $cover_types_allowed = [
+    'png'  => 'png',
+    'gif'  => 'gif',
+    'jpg'  => 'jpg',
+    'jpeg' => 'jpeg'];
+# ─────────────────────────────────────────────────────────────────────
+  public $audio_player_on_manage_is_visible = true;
+  public $audio_player_on_manage_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'false'];
+  public $audio_player_default_settings = [
+    'autoplay'                        => false,
+    'controls'                        => true,
+    'crossorigin'                     => null,
+    'loop'                            => false,
+    'muted'                           => false,
+    'preload'                         => 'metadata',
+    'data-player-name'                => 'default',
+    'data-player-timeline-is-visible' => 'true'
+  ];
+
   function on_values_validate_cover($form, $npath, $button) {
     return field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);
   }
