@@ -7,6 +7,10 @@
 namespace effcore {
           class widget_files_multimedia extends widget_files {
 
+  use widget_files_pictures__shared;
+  use widget_files_videos__shared;
+  use widget_files_audios__shared;
+
   public $title = 'Multimedia';
   public $item_title = 'File';
   public $attributes = ['data-type' => 'items-files-multimedia'];
@@ -205,10 +209,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  use widget_files_pictures_methods;
-  use widget_files_videos_methods;
-  use widget_files_audios_methods;
 
   function on_values_validate($form, $npath, $button) {
     if ($button->_kind === 'picture') return field_file::on_manual_validate_and_return_value($this->controls['#file'      ], $form, $npath);

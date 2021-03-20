@@ -7,6 +7,8 @@
 namespace effcore {
           class widget_files_audios extends widget_files {
 
+  use widget_files_audios__shared;
+
   public $title = 'Audios';
   public $item_title = 'Audio';
   public $attributes = ['data-type' => 'items-files-audios'];
@@ -109,8 +111,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  use widget_files_audios_methods;
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
     return $this->on_file_prepare_audio($form, $npath, $button, $items, $new_item);

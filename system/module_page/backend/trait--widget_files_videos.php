@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          trait widget_files_videos_methods {
+          trait widget_files_videos__shared {
 
   function on_values_validate_poster($form, $npath, $button) {
     return field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);

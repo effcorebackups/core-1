@@ -7,6 +7,8 @@
 namespace effcore {
           class widget_files_videos extends widget_files {
 
+  use widget_files_videos__shared;
+
   public $title = 'Videos';
   public $item_title = 'Video';
   public $attributes = ['data-type' => 'items-files-videos'];
@@ -95,8 +97,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  use widget_files_videos_methods;
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
     return $this->on_file_prepare_video($form, $npath, $button, $items, $new_item);

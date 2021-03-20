@@ -7,6 +7,8 @@
 namespace effcore {
           class widget_files_pictures extends widget_files {
 
+  use widget_files_pictures__shared;
+
   public $title = 'Pictures';
   public $item_title = 'Picture';
   public $attributes = ['data-type' => 'items-files-pictures'];
@@ -75,8 +77,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  use widget_files_pictures_methods;
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
     return $this->on_file_prepare_picture($form, $npath, $button, $items, $new_item);
