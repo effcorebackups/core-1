@@ -211,21 +211,21 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function on_values_validate($form, $npath, $button) {
-    if ($button->_kind === 'picture') return field_file::on_manual_validate_and_return_value($this->controls['#file'      ], $form, $npath);
-    if ($button->_kind === 'video'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_video'], $form, $npath);
-    if ($button->_kind === 'audio'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_audio'], $form, $npath);
+    if ($button->_kind === 'picture') return field_file::on_manual_validate_and_return_value($this->controls['#file_picture'], $form, $npath);
+    if ($button->_kind === 'video'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_video'  ], $form, $npath);
+    if ($button->_kind === 'audio'  ) return field_file::on_manual_validate_and_return_value($this->controls['#file_audio'  ], $form, $npath);
   }
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
- // if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file'      ]; return $this->on_file_prepare_picture($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video']; return $this->on_file_prepare_video  ($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio']; return $this->on_file_prepare_audio  ($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_file_prepare      ($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return  $this->on_file_prepare_video($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return  $this->on_file_prepare_audio($form, $npath, $button, $items, $new_item);}
   }
 
   function on_button_click_insert($form, $npath, $button) {
- // if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file'      ]; return $this->on_button_click_insert      ($form, $npath, $button);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video']; return $this->on_button_click_insert_video($form, $npath, $button);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio']; return $this->on_button_click_insert_audio($form, $npath, $button);}
+    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_button_click_insert      ($form, $npath, $button);}
+    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return  $this->on_button_click_insert_video($form, $npath, $button);}
+    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return  $this->on_button_click_insert_audio($form, $npath, $button);}
   }
 
   ###########################
