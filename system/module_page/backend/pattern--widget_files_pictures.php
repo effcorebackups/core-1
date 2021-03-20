@@ -22,17 +22,7 @@ namespace effcore {
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
-    'jpeg' => 'jpeg'];
-# ─────────────────────────────────────────────────────────────────────
-  public $thumbnails_is_allowed = true;
-  public $thumbnails = [
-    'small'  => 'small',
-    'middle' => 'middle'];
-# ─────────────────────────────────────────────────────────────────────
-  public $picture_default_settings = [
-    'title'  => 'click to open in new window',
-    'alt'    => 'thumbnail',
-    'target' => 'widget_files-pictures-items'
+    'jpeg' => 'jpeg'
   ];
 
   function widget_manage_get($item, $c_row_id) {

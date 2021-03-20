@@ -19,26 +19,15 @@ namespace effcore {
   public $upload_dir = 'multimedia/';
   public $fixed_name = 'multimedia-multiple-%%_item_id_context';
 
-# ── picture ──────────────────────────────────────────────────────────
   public $picture_max_file_size = '1M';
   public $picture_types_allowed = [
     'png'  => 'png',
     'gif'  => 'gif',
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg'];
-# ─────────────────────────────────────────────────────────────────────
-  public $thumbnails_is_allowed = true;
-  public $thumbnails = [
-    'small'  => 'small',
-    'middle' => 'middle'
-  ];
-
-# ── video ────────────────────────────────────────────────────────────
   public $video_max_file_size = '50M';
   public $video_types_allowed = [
     'mp4' => 'mp4'];
-
-# ── audio ────────────────────────────────────────────────────────────
   public $audio_max_file_size = '10M';
   public $audio_types_allowed = [
     'mp3' => 'mp3'
