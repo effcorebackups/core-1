@@ -65,6 +65,24 @@ namespace effcore {
     $_FILES   = [];
   }
 
+  static function values_sanitize($source = '_POST', $is_files = false) {
+    global ${$source};
+    if (is_array(${$source})) {
+      foreach (${$source} as $c_1st_key => $c_1st_value) {
+      # first level for $_POST, $_GET, $_REQUEST, $_FILES
+        if (!(is_string($c_1st_value) || is_int($c_1st_value) || is_array($c_1st_value))) {
+          unset(${$source}[$c_1st_key]);
+          continue;
+        }
+      # second level for $_POST, $_GET, $_REQUEST + second level for $_FILES + third level for $_FILES
+        if (is_array($c_1st_value) && $is_files !== true) {foreach ($c_1st_value as $c_2nd_value) {if (!(is_string($c_2nd_value) || is_int($c_2nd_value)                          )) {unset(${$source}[$c_1st_key]); continue 2;}}}
+        if (is_array($c_1st_value) && $is_files === true) {foreach ($c_1st_value as $c_2nd_value) {if (!(is_string($c_2nd_value) || is_int($c_2nd_value) || is_array($c_2nd_value))) {unset(${$source}[$c_1st_key]); continue 2;}
+                              if (is_array($c_2nd_value)) {foreach ($c_2nd_value as $c_3rd_value) {if (!(is_string($c_3rd_value) || is_int($c_3rd_value)                          )) {unset(${$source}[$c_1st_key]); continue 3;}}}}
+        }
+      }
+    }
+  }
+
   # conversion matrix:
   # ┌──────────────────────────────────────────────────────────╥───────────────────────────────────────────────────────────────────────┐
   # │ input value (undefined | array)                          ║ result value                                                          │

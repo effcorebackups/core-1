@@ -27,10 +27,11 @@ namespace effcore {
   #############################
 
   require_once('module_core/backend/core.php');
-  core::request_values_sanitize('_POST');
-  core::request_values_sanitize('_GET');
-  core::request_values_sanitize('_REQUEST');
-  core::request_values_sanitize('_FILES', true);
+  require_once('module_core/backend/request.php');
+  request::values_sanitize('_POST');
+  request::values_sanitize('_GET');
+  request::values_sanitize('_REQUEST');
+  request::values_sanitize('_FILES', true);
 
   require_once('module_storage/backend/markers.php');
   require_once('module_core/backend/console.php');
