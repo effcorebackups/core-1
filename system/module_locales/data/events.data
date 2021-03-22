@@ -12,3 +12,8 @@ events
   - locales|event
       for: locales
       handler: \effcore\modules\locales\events_form_locales::on_submit
+# ─────────────────────────────────────────────────────────────────────
+  on_page_build_before
+  - all|event
+      weight: +700
+      handler: \effcore\modules\locales\events_page::on_page_language_apply

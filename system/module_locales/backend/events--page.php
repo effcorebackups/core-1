@@ -13,6 +13,12 @@ namespace effcore\modules\locales {
           use \effcore\url;
           abstract class events_page {
 
+  static function on_page_language_apply($event, $page) {
+    if ($page->lang_code !== null) {
+      language::code_set_current($page->lang_code);
+    }
+  }
+
   static function block_markup__menu_languages($page, $args = []) {
     $languages = language::get_all();
     core::array_sort_by_text_property($languages, 'title_en', 'd', false);

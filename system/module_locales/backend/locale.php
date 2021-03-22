@@ -39,7 +39,7 @@ namespace effcore {
     if ($count === 0) $translation = str_replace('GiB', ' '.translation::apply('GiB'), $translation, $count);
     if ($count === 0) $translation = str_replace('MiB', ' '.translation::apply('MiB'), $translation, $count);
     if ($count === 0) $translation = str_replace('KiB', ' '.translation::apply('KiB'), $translation, $count);
-    if ($count === 0) $translation = str_replace('B',   ' '.translation::apply('B'  ), $translation);
+    if ($count === 0) $translation = str_replace(  'B', ' '.translation::apply(  'B'), $translation);
     return $translation;
   }
 
