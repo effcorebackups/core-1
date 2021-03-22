@@ -318,8 +318,8 @@ namespace effcore {
   protected function pool_manager_get_deleted_items($type) {
     if ($this->disabled_get() === false) {
       $name = $this->name_get();
-      if ($type === 'fin') return core::array_kmap(static::request_values_get($name.'_delete_fin'));
-      if ($type === 'pre') return core::array_kmap(static::request_values_get($name.'_delete_pre'));
+      if ($type === 'fin') return core::array_kmap(request::values_get($name.'_delete_fin'));
+      if ($type === 'pre') return core::array_kmap(request::values_get($name.'_delete_pre'));
     }
   }
 
@@ -343,7 +343,7 @@ namespace effcore {
     $type = $field->type_get();
     if ($name && $type) {
       if ($field->disabled_get()) return [];
-      $new_values = static::request_files_get($name);
+      $new_values = request::files_get($name);
       static::sanitize($field, $form, $element, $new_values);
       $result = static::validate_multiple($field, $form, $element, $new_values) &&
                 static::validate_upload  ($field, $form, $element, $new_values);
@@ -359,7 +359,7 @@ namespace effcore {
       $type = $field->type_get();
       if ($name && $type) {
         if ($field->disabled_get()) return true;
-        $new_values = static::request_files_get($name);
+        $new_values = request::files_get($name);
         static::sanitize($field, $form, $element, $new_values);
         $field->on_values_pre_delete_physically();
         $field->on_values_fin_delete();

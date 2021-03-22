@@ -32,7 +32,7 @@ namespace effcore {
     $type = $field->type_get();
     if ($name && $type) {
       if ($field->disabled_get()) return true;
-      $new_values = static::request_values_get($name, $form->source_get());
+      $new_values = request::values_get($name, $form->source_get());
       $field->checked_set(core::in_array_string_compare($field->value_get(), $new_values));
     }
   }
@@ -43,7 +43,7 @@ namespace effcore {
     $type = $field->type_get();
     if ($name && $type) {
       if ($field->disabled_get()) return true;
-      $new_values = static::request_values_get($name, $form->source_get());
+      $new_values = request::values_get($name, $form->source_get());
       $result = static::validate_required($field, $form, $element, $new_values);
       $field->checked_set(core::in_array_string_compare($field->value_get(), $new_values));
       return $result;

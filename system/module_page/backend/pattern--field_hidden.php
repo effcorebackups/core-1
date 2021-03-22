@@ -37,7 +37,7 @@ namespace effcore {
   }
 
   function value_request_get($number = 0, $source = '_POST') {
-    return field::request_value_get($this->name_get(), $number, $source);
+    return request::value_get($this->name_get(), $number, $source);
   }
 
   function value_get() {

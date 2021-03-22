@@ -11,7 +11,7 @@ namespace effcore {
 
   function get() {
     if ($this->name) {
-      return field::request_value_get($this->name);
+      return request::value_get($this->name);
     }
   }
 

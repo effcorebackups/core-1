@@ -25,7 +25,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
-      $new_value = static::request_value_get($name, static::current_number_generate($name), $form->source_get());
+      $new_value = request::value_get($name, static::current_number_generate($name), $form->source_get());
       $field->value_set($new_value);
     }
   }
@@ -37,7 +37,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
-      $new_value = static::request_value_get($name, static::current_number_generate($name), $form->source_get());
+      $new_value = request::value_get($name, static::current_number_generate($name), $form->source_get());
       $old_value = $field->value_get_initial();
       $result = static::validate_required  ($field, $form, $element, $new_value) &&
                 static::validate_minlength ($field, $form, $element, $new_value) &&
@@ -106,8 +106,8 @@ namespace effcore {
 
   static function validate_uniqueness($field, $new_value, $old_value = null) {
     $result = $field->value_is_unique_in_storage_sql($new_value);
-    if ((strlen($old_value) == 0 && $result instanceof instance                                                      ) || # insert new value
-        (strlen($old_value) != 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
+    if ((strlen($old_value) === 0 && $result instanceof instance                                                      ) || # insert new value
+        (strlen($old_value) !== 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old value
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
         'Previously used value was specified.',

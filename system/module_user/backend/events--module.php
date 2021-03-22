@@ -7,9 +7,9 @@
 namespace effcore\modules\user {
           use \effcore\access;
           use \effcore\core;
-          use \effcore\field;
           use \effcore\instance;
           use \effcore\module;
+          use \effcore\request;
           use \effcore\session;
           use \effcore\storage;
           use \effcore\tree_item;
@@ -22,9 +22,9 @@ namespace effcore\modules\user {
     if (count(storage::get('sql')->errors) === 0) {
       $admin = new instance('user', ['nickname' => 'Admin']);
       if ($admin->select()) {
-        $admin->password_hash = core::password_get_hash(field::request_value_get('password'));
-        $admin->email    = field::request_value_get('email'   );
-        $admin->timezone = field::request_value_get('timezone');
+        $admin->password_hash = core::password_get_hash(request::value_get('password'));
+        $admin->email    = request::value_get('email'   );
+        $admin->timezone = request::value_get('timezone');
         $admin->update();
       }
     }

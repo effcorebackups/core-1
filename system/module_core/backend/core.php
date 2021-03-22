@@ -974,6 +974,13 @@ namespace effcore {
   ### shared functions ###
   ########################
 
+  static function strtolower_en($value) {
+    return preg_replace_callback('%(?<char>.)%uS', function ($c_match) {
+      if (strlen($c_match['char']) === 1) return strtolower($c_match['char']);
+      if (strlen($c_match['char']) !== 1) return            $c_match['char'];
+    }, $value);
+  }
+
   static function return_rendered($value) {
     return is_object($value) &&
        method_exists($value, 'render') ?

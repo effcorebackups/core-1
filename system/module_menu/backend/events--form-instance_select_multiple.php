@@ -8,10 +8,10 @@ namespace effcore\modules\menu {
           use \effcore\actions_list;
           use \effcore\entity;
           use \effcore\field_hidden;
-          use \effcore\field;
           use \effcore\message;
           use \effcore\node;
           use \effcore\page;
+          use \effcore\request;
           use \effcore\text;
           use \effcore\translation;
           use \effcore\url;
@@ -68,8 +68,8 @@ namespace effcore\modules\menu {
               'operator'   => '=',
               'id_tree_!v' => $form->category_id]], 'id');
             foreach ($tree_items as $c_item) {
-              $c_new_parent = field::request_value_get('parent-'.$c_item->id) ?: null;
-              $c_new_weight = field::request_value_get('weight-'.$c_item->id) ?: '0';
+              $c_new_parent = request::value_get('parent-'.$c_item->id) ?: null;
+              $c_new_weight = request::value_get('weight-'.$c_item->id) ?: '0';
               if ( ($c_new_parent === null || isset($tree_items[$c_new_parent])) &&
                    ($c_new_weight ===              (string)(int)$c_new_weight) ) {
                 if ($c_item->id_parent != $c_new_parent ||

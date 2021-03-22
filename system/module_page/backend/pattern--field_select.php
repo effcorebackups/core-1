@@ -129,7 +129,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       $values_allowed = $field->values_get_allowed();
-      $new_values = static::request_values_get($name, $form->source_get());
+      $new_values = request::values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $field->values_set($new_values);
     }
@@ -142,7 +142,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       $values_allowed = $field->values_get_allowed();
-      $new_values = static::request_values_get($name, $form->source_get());
+      $new_values = request::values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $result = static::validate_required($field, $form, $element, $new_values) &&
                 static::validate_multiple($field, $form, $element, $new_values);

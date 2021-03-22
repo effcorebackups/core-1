@@ -49,7 +49,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       if ($field->readonly_get()) return true;
-      $new_value = static::request_value_get($name, static::current_number_generate($name), $form->source_get());
+      $new_value = request::value_get($name, static::current_number_generate($name), $form->source_get());
       $new_value = $new_value !== '/' ? rtrim($new_value, '/' ) : $new_value;
       $new_value =                      rtrim($new_value, '?#');
       $old_value = $field->value_get_initial();

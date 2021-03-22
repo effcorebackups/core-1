@@ -9,13 +9,14 @@ namespace effcore\modules\demo {
           use \effcore\data;
           use \effcore\field;
           use \effcore\message;
+          use \effcore\request;
           use \effcore\text;
           abstract class events_form_demo {
 
   static function on_init($event, $form, $items) {
     if ($form->clicked_button &&
         $form->clicked_button->value_get() === 'reset') {
-      field::request_values_reset();
+      request::values_reset();
     }
     $items['#select'         ]->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => true], 'group_1');
     $items['#select_multiple']->option_insert('Option 5 (inserted + disabled from code)', 'option_5', ['disabled' => true], 'group_1');
