@@ -27,18 +27,18 @@ namespace effcore {
   #############################
 
   require_once('module_core/backend/core.php');
-  require_once('module_core/backend/request.php');
+  require_once('module_storage/backend/markers.php');
+  spl_autoload_register('\\effcore\\core::structure_autoload');
+
   request::values_sanitize('_POST');
   request::values_sanitize('_GET');
   request::values_sanitize('_REQUEST');
   request::values_sanitize('_FILES', true);
 
-  require_once('module_storage/backend/markers.php');
-  require_once('module_core/backend/console.php');
-  spl_autoload_register('\\effcore\\core::structure_autoload');
   console::log_insert('file', 'insertion', 'system/boot.php',                           'ok');
+  console::log_insert('file', 'insertion', 'system/module_core/backend/core.php',       'ok');
   console::log_insert('file', 'insertion', 'system/module_storage/backend/markers.php', 'ok');
-  console::log_insert('file', 'insertion', 'system/module_core/backend/console.php',    'ok');
+
   timer::tap('total');
 
   # ─────────────────────────────────────────────────────────────────────
