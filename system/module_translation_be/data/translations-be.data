@@ -3,6 +3,7 @@ translations
     code: be
     data
     - - select -: - абраць -
+    - - system value -: - сістэмнае значэнне -
     - %%_entity_title_context\: delete: %%_entity_title_context: выдаліць
     - %%_entity_title_context\: insert: %%_entity_title_context: уставіць
     - %%_entity_title_context\: update: %%_entity_title_context: абнавіць
