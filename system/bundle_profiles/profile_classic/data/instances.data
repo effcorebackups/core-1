@@ -608,8 +608,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - messages
         - block__messages|block_preset_link
@@ -666,8 +666,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - messages
         - block__messages|block_preset_link
@@ -726,8 +726,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - messages
         - block__messages|block_preset_link
@@ -780,8 +780,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
@@ -836,8 +836,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
@@ -890,8 +890,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
@@ -944,8 +944,8 @@ instances
             id: block__picture_sql__logotype_classic
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
-            id: block__tree_sql__main
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
             title: Main menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
@@ -1002,23 +1002,32 @@ instances
 >>>>>>>>>>> including special offers.
     - module_id: profile_classic
 # ─────────────────────────────────────────────────────────────────────
+# trees
+# ─────────────────────────────────────────────────────────────────────
+- tree_main_classic|instance
+    entity_name: tree
+    values
+    - id: main_classic
+    - title: Main menu
+    - title_is_visible: 0
+# ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
-- about_classic|instance
+- tree_item_about_classic|instance
     entity_name: tree_item
     values
     - id: about_classic
     - id_parent: null
-    - id_tree: main
+    - id_tree: main_classic
     - title: About Us
     - url: /about
     - module_id: profile_classic
-- contact_classic|instance
+- tree_item_contact_classic|instance
     entity_name: tree_item
     values
     - id: contact_classic
     - id_parent: null
-    - id_tree: main
+    - id_tree: main_classic
     - title: Contact Us
     - url: /contact
     - module_id: profile_classic
