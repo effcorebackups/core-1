@@ -9,7 +9,7 @@ templates
 - audio
     name: audio
     type: text
-    data: <audio data-id="%%_id" src="%%_src" %%_attributes></audio>
+    data: <audio data-id="%%_id" src="/%%_src" %%_attributes></audio>
 - block
     name: block
     type: text
@@ -37,7 +37,7 @@ templates
 - picture
     name: picture
     type: text
-    data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes><img data-id="%%_id" src="%%_src" %%_attributes/></a>
+    data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes><img data-id="%%_id" src="/%%_src" %%_attributes/></a>
 - markup_html
     name: markup_html
     type: text
@@ -61,7 +61,7 @@ templates
 - video
     name: video
     type: text
-    data: <video data-id="%%_id" src="%%_src" poster="%%_poster" %%_attributes></video>
+    data: <video data-id="%%_id" src="/%%_src" poster="%%_poster" %%_attributes></video>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────
