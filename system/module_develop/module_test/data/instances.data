@@ -8,7 +8,6 @@ instances
     - id: test
     - description: text for perform the tests
     - text: some text
-    - is_embedded: 0
     - module_id: test
 - role_test|instance
     entity_name: role
