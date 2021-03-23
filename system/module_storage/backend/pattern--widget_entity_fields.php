@@ -8,6 +8,7 @@ namespace effcore {
           class widget_entity_fields extends widget_items {
 
   public $title = 'Fields';
+  public $title__not_selected__widget_insert = '- select -';
   public $item_title = 'Field';
   public $attributes = ['data-type' => 'items-entity_fields'];
   public $name_complex = 'widget_entity_fields';
@@ -34,7 +35,7 @@ namespace effcore {
   # control with type of new item
     $entities = entity::get_all();
     core::array_sort_by_text_property($entities);
-    $options = ['not_selected' => '- select -'];
+    $options = ['not_selected' => $this->title__not_selected__widget_insert];
     foreach ($entities as $c_entity) {
       if (!empty($c_entity->managing_is_enabled)) {
         foreach ($c_entity->fields as $c_field_name => $c_field_info) {

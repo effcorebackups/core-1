@@ -8,7 +8,7 @@ namespace effcore {
           class field_language extends field_select {
 
   public $title = 'Language';
-  public $title_not_selected = '- select -';
+  public $title__not_selected = '- select -';
   public $attributes = ['data-type' => 'language'];
   public $element_attributes = [
     'name'     => 'lang_code',
@@ -21,7 +21,7 @@ namespace effcore {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       $languages = ['en' => $languages['en']] + $languages;
-      $this->option_insert($this->title_not_selected, 'not_selected');
+      $this->option_insert($this->title__not_selected, 'not_selected');
       foreach ($languages as $c_code => $c_info) {
         $this->option_insert(new text_simple(
           $c_code !== 'en' ? $c_info->title_en.' / '.$c_info->title_native.' ('.$c_code.')' :

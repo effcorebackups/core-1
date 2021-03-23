@@ -461,7 +461,7 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_language
         managing_control_properties
-        - title_not_selected: - system value -
+        - title__not_selected: - system value -
         - weight: +300
         managing_control_element_attributes
         - required: null

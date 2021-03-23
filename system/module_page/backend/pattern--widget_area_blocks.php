@@ -8,6 +8,7 @@ namespace effcore {
           class widget_area_blocks extends widget_items {
 
   public $title;
+  public $title__not_selected__widget_insert = '- select -';
   public $item_title = 'Block';
   public $content_tag_name = null;
   public $attributes = ['data-type' => 'items-area_blocks'];
@@ -38,7 +39,7 @@ namespace effcore {
   # control with type of new item
     $presets = block_preset::select_all($this->id_area);
     core::array_sort_by_text_property($presets, 'managing_group');
-    $options = ['not_selected' => '- select -'];
+    $options = ['not_selected' => $this->title__not_selected__widget_insert];
     foreach ($presets as $c_preset) {
       $c_group_id = core::sanitize_id($c_preset->managing_group);
       if (!isset($options[$c_group_id])) {

@@ -8,6 +8,7 @@ namespace effcore {
           class field_layout extends field_select {
 
   public $title = 'Layout';
+  public $title__not_selected = '- select -';
   public $attributes = ['data-type' => 'layout'];
   public $element_attributes = [
     'name'     => 'layout',
@@ -17,7 +18,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $this->option_insert('- select -', 'not_selected');
+      $this->option_insert($this->title__not_selected, 'not_selected');
       foreach (layout::select_all() as $c_layout)
         $this->option_insert(
           (new text($c_layout->title))->render().' ('.$c_layout->id.')',

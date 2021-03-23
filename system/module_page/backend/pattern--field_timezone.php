@@ -8,6 +8,7 @@ namespace effcore {
           class field_timezone extends field_select {
 
   public $title = 'Time zone';
+  public $title__not_selected = '- select -';
   public $sort = 'by_zones'; # by_zones | by_names
   public $attributes = ['data-type' => 'timezone'];
   public $element_attributes = [
@@ -18,7 +19,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $this->option_insert('- select -', 'not_selected');
+      $this->option_insert($this->title__not_selected, 'not_selected');
       if ($this->sort === 'by_zones') $list = static::list_get_by_zones();
       if ($this->sort === 'by_names') $list = static::list_get_by_names();
       foreach ($list as $c_name => $c_title)
