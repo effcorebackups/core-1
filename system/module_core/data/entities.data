@@ -33,3 +33,23 @@ entities
         type: index
         fields
         - =: expired
+- update|entity
+    name: update
+    title: Update
+    title_plural: Updates
+    catalog_name: updates
+    ws_module_id: true
+    fields
+    - version_cur
+        title: Current Version
+        type: integer
+        default: null
+    - version_min
+        title: Minimum Version
+        type: integer
+        default: null
+    constraints
+    - primary_module_id
+        type: primary
+        fields
+        - =: module_id

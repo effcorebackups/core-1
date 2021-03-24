@@ -17,9 +17,15 @@ namespace effcore {
     return $updates;
   }
 
+  static function insert_last_number($module_id, $last_number) {
+    $info = new instance('update', ['module_id' => $module_id]);
+    if ($info->select()) return (new instance('update', ['module_id' => $module_id, 'version_cur' => $last_number]))->update();
+    else                 return (new instance('update', ['module_id' => $module_id, 'version_cur' => $last_number]))->insert();
+  }
+
   static function select_last_number($module_id) {
-    $settings = module::settings_get($module_id);
-    return $settings->update_data_last_number ?? 0;
+    $info = new instance('update', ['module_id' => $module_id]);
+    return $info->select() ? (int)$info->version_cur : 0;
   }
 
   static function is_required() {
