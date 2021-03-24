@@ -15,6 +15,7 @@ namespace effcore\modules\core {
           use \effcore\node;
           use \effcore\storage;
           use \effcore\text;
+          use \effcore\update;
           abstract class events_page_info {
 
   static function block_markup__system_info($page, $args = []) {
@@ -32,7 +33,7 @@ namespace effcore\modules\core {
 
   static function block_markup__service_info($page, $args = []) {
     $settings           = module::settings_get('core');
-    $is_required_update = module::is_required_update_data();
+    $is_required_update = update::is_required();
     $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
     $is_required_update_sticker = new markup('x-sticker', ['data-state' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? 'yes' : 'no');
     $cron_last_run_sticker      = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');

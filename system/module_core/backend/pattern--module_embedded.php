@@ -217,31 +217,6 @@ namespace effcore {
     return isset($installed[$module_id]);
   }
 
-  static function is_required_update_data() {
-    foreach (static::get_all() as $c_module) {
-      $c_updates            = static::update_data_get_all        ($c_module->id);
-      $c_update_last_number = static::update_data_get_last_number($c_module->id);
-      foreach ($c_updates as $c_update) {
-        if ($c_update->number > $c_update_last_number) return true;
-      }
-    }
-  }
-
-  static function update_data_get_last_number($module_id) {
-    $settings = static::settings_get($module_id);
-    return $settings->update_data_last_number ?? 0;
-  }
-
-  static function update_data_get_all($module_id, $from_number = 0) {
-    $updates = [];
-    foreach (storage::get('files')->select('modules_update_data', false, false) ?? [] as $c_module_id => $c_updates)
-      if ($c_module_id === $module_id)
-        foreach ($c_updates as $c_row_id => $c_update)
-          if ($c_update->number >= $from_number)
-            $updates[$c_row_id] = $c_update;
-    return $updates;
-  }
-
   static function settings_get($module_id) {
     $settings = storage::get('files')->select('settings');
     return $settings[$module_id] ?? [];

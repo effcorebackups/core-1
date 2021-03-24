@@ -14,6 +14,7 @@ namespace effcore\modules\core {
           use \effcore\module;
           use \effcore\storage;
           use \effcore\text;
+          use \effcore\update;
           abstract class events_form_modules_update_data {
 
   static function on_init($event, $form, $items) {
@@ -23,8 +24,8 @@ namespace effcore\modules\core {
     $modules = module::get_all();
     core::array_sort_by_text_property($modules);
     foreach ($modules as $c_module) {
-      $c_updates            = module::update_data_get_all        ($c_module->id);
-      $c_update_last_number = module::update_data_get_last_number($c_module->id);
+      $c_updates            = update::select_all        ($c_module->id);
+      $c_update_last_number = update::select_last_number($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
         $c_fieldset->state = 'closed';
@@ -61,8 +62,8 @@ namespace effcore\modules\core {
         $modules = module::get_all();
         core::array_sort_by_text_property($modules);
         foreach ($modules as $c_module) {
-          $c_updates            = module::update_data_get_all        ($c_module->id);
-          $c_update_last_number = module::update_data_get_last_number($c_module->id);
+          $c_updates            = update::select_all        ($c_module->id);
+          $c_update_last_number = update::select_last_number($c_module->id);
           if (count($c_updates)) {
             core::array_sort_by_property($c_updates, 'number', 'd');
             foreach ($c_updates as $c_update) {
