@@ -19,11 +19,11 @@ namespace effcore\modules\profile_default {
     if (page::get_current()->id === 'install') $module->install();
     if (page::get_current()->id !== 'install') {
       $page_ids = [];
-      if (page::get('front'       )) $page_ids[] = 'front';
-      if (page::get('login'       )) $page_ids[] = 'login';
-      if (page::get('logout'      )) $page_ids[] = 'logout';
-      if (page::get('recovery'    )) $page_ids[] = 'recovery';
-      if (page::get('registration')) $page_ids[] = 'registration';
+      if (page::get_by_id('front'       )) $page_ids[] = 'front';
+      if (page::get_by_id('login'       )) $page_ids[] = 'login';
+      if (page::get_by_id('logout'      )) $page_ids[] = 'logout';
+      if (page::get_by_id('recovery'    )) $page_ids[] = 'recovery';
+      if (page::get_by_id('registration')) $page_ids[] = 'registration';
       if (!count($page_ids)) {
         $module->install();
       } else {

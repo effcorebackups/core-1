@@ -266,7 +266,7 @@ namespace effcore {
     return static::$current;
   }
 
-  static function get($id, $load = true) {
+  static function get_by_id($id, $load = true) {
     static::init();
     if (isset(static::$cache[$id]) === false) static::init_sql_by_id($id);
     if (isset(static::$cache[$id]) === false) return;
