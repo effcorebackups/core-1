@@ -40,12 +40,8 @@ entities
     catalog_name: updates
     ws_module_id: true
     fields
-    - version_cur
-        title: Current Version
-        type: integer
-        default: null
-    - version_min
-        title: Minimum Version
+    - last_number
+        title: Last number
         type: integer
         default: null
     constraints

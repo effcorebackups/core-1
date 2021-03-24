@@ -31,13 +31,13 @@ namespace effcore {
 
   static function select_last_number($module_id) {
     $info = new instance('update', ['module_id' => $module_id]);
-    return $info->select() ? (int)$info->version_cur : 0;
+    return $info->select() ? (int)$info->last_number : 0;
   }
 
   static function insert_last_number($module_id, $last_number) {
     $info = new instance('update', ['module_id' => $module_id]);
-    if ($info->select()) return (new instance('update', ['module_id' => $module_id, 'version_cur' => $last_number]))->update();
-    else                 return (new instance('update', ['module_id' => $module_id, 'version_cur' => $last_number]))->insert();
+    if ($info->select()) return (new instance('update', ['module_id' => $module_id, 'last_number' => $last_number]))->update();
+    else                 return (new instance('update', ['module_id' => $module_id, 'last_number' => $last_number]))->insert();
   }
 
 }}

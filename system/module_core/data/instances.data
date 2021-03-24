@@ -3,4 +3,4 @@ instances
     entity_name: update
     values
     - module_id: core
-    - version_cur: 1000
+    - last_number: 1000
