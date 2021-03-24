@@ -266,7 +266,7 @@ namespace effcore {
     return static::$current;
   }
 
-  static function get_by_id($id, $load = true) {
+  static function get_by_id($id, $load = false) {
     static::init();
     if (isset(static::$cache[$id]) === false) static::init_sql_by_id($id);
     if (isset(static::$cache[$id]) === false) return;
@@ -290,9 +290,9 @@ namespace effcore {
   }
 
   static function get_all($origin = 'nosql', $load = true) {
-    if ($origin === 'nosql') {static::init    ();                    }
-    if ($origin ===   'sql') {static::init_sql();                    }
-    if ($origin ===    null) {static::init    (); static::init_sql();}
+    if ($origin === 'nosql') {static::init();                    }
+    if ($origin ===   'sql') {                static::init_sql();}
+    if ($origin ===    null) {static::init(); static::init_sql();}
     if ($load && ($origin === 'nosql' || $origin === null))
       foreach (static::$cache as $c_id => $c_item)
            if (static::$cache[$c_id] instanceof external_cache)
