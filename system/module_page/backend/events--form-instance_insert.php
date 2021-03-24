@@ -81,7 +81,7 @@ namespace effcore\modules\page {
         # field 'url'
           if ($entity->name === 'page') {
             if ($items['#url']->value_get()) { # check the uniqueness of SQL + NoSQL data
-              if (page::get_by_url($items['#url']->value_get(), false)) {
+              if (page::get_by_url($items['#url']->value_get())) {
                 $items['#url']->error_set(new text_multiline([
                   'Field "%%_title" contains an error!',
                   'Previously used value was specified.',

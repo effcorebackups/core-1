@@ -249,7 +249,7 @@ namespace effcore {
 
   static function init_current() {
     $path_current = url::get_current()->path;
-    $page = static::get_by_url($path_current);
+    $page = static::get_by_url($path_current, true);
     if ($page) {
       if (access::check($page->access)) {
         if ($page->_match_args == [])
@@ -276,16 +276,18 @@ namespace effcore {
     return static::$cache[$id];
   }
 
-  static function get_by_url($url, $load = true) {
+  static function get_by_url($url, $load = false) {
+    static::init();
     $result = null;
     $result_args = [];
-    static::init();
     foreach (static::$cache as $c_item) {
-      if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
-      if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
-    if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
-    if ($result == null)                            $result = static::init_sql_by_url($url);
-    if ($result != null)                            $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
+      if ($c_item->url[0] !== '%' &&            $c_item->url === $url               ) {$result = $c_item; break;}
+      if ($c_item->url[0] === '%' && preg_match($c_item->url,    $url, $result_args)) {$result = $c_item; break;} }
+    if ($result === null) $result = static::init_sql_by_url($url);
+    if ($result === null) return;
+    if ($result instanceof external_cache && $load)
+        $result = $result->external_cache_load();
+    $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
     return $result;
   }
 
