@@ -78,19 +78,18 @@ namespace effcore {
     $user_agent = core::server_get_user_agent_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
-    if ($user_agent->name == 'msie' &&
-        $user_agent->name_version == 11) {
+    if ($user_agent->name === 'msie' &&
+        $user_agent->name_version === '11') {
       header('X-UA-Compatible: IE=10');
     }
 
   # show important messages
-    if ($settings->show_warning_if_not_https && !empty($this->is_https) && url::get_current()->protocol != 'https') {
+    if ($settings->show_warning_if_not_https && !empty($this->is_https) && url::get_current()->protocol !== 'https') {
       message::insert(
         'This page should be use HTTPS protocol!', 'warning'
       );
     }
-    if ($user_agent->name == 'msie' &&
-        $user_agent->name_version < 9) {
+    if ($user_agent->name === 'msie' && (int)$user_agent->name_version < 9) {
       message::insert(new text(
         'Internet Explorer below version %%_number no longer supported!', ['number' => 9]), 'warning'
       );
@@ -252,12 +251,12 @@ namespace effcore {
     $page = static::get_by_url($path_current, true);
     if ($page) {
       if (access::check($page->access)) {
-        if ($page->_match_args == [])
+        if ($page->_match_args === [])
             $page->_match_args['base'] = $path_current;
         foreach ($page->_match_args as $c_key => $c_value)
           $page->args_set             ($c_key,   $c_value);
                static::$current = $page;
-        return static::$current->render();
+        return static::$current;
       } else core::send_header_and_exit('access_forbidden');
     }   else core::send_header_and_exit('page_not_found');
   }
@@ -291,19 +290,18 @@ namespace effcore {
     return $result;
   }
 
-  static function get_all($origin = 'nosql', $load = true) {
+  static function get_all($origin = null, $load = false) {
     if ($origin === 'nosql') {static::init();                    }
-    if ($origin ===   'sql') {                static::init_sql();}
-    if ($origin ===    null) {static::init(); static::init_sql();}
-    if ($load && ($origin === 'nosql' || $origin === null))
-      foreach (static::$cache as $c_id => $c_item)
-           if (static::$cache[$c_id] instanceof external_cache)
-               static::$cache[$c_id] =
-               static::$cache[$c_id]->external_cache_load();
+    if ($origin === 'sql'  ) {                static::init_sql();}
+    if ($origin ===  null  ) {static::init(); static::init_sql();}
+    if ($load) foreach (static::$cache as $c_id => $c_item)
+      if (static::$cache[$c_id] instanceof external_cache)
+          static::$cache[$c_id] =
+          static::$cache[$c_id]->external_cache_load();
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->origin != $origin)
+        if ($c_item->origin !== $origin)
           unset($result[$c_id]);
     return $result;
   }
