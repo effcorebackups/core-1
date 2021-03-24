@@ -12,18 +12,18 @@ namespace effcore {
   public $id;
   public $id_layout = 'simple';
   public $title;
-  public $is_https;
   public $url;
-  public $charset = 'utf-8';
+  public $is_https;
   public $lang_code;
   public $text_direction = 'ltr';
+  public $charset = 'utf-8';
   public $meta;
   public $is_use_global_meta = 1;
-  public $data;
-  public $origin = 'nosql'; # nosql | sql
   public $is_embedded = 1;
   public $access;
   public $blocks;
+  public $data;
+  public $origin = 'nosql'; # nosql | sql
   public $_markup;
   public $_areas_pointers = [];
   protected $args         = [];
@@ -276,6 +276,19 @@ namespace effcore {
     return static::$cache[$id];
   }
 
+  static function get_by_url($url, $load = true) {
+    $result = null;
+    $result_args = [];
+    static::init();
+    foreach (static::$cache as $c_item) {
+      if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
+      if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
+    if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
+    if ($result == null)                            $result = static::init_sql_by_url($url);
+    if ($result != null)                            $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
+    return $result;
+  }
+
   static function get_all($origin = 'nosql', $load = true) {
     if ($origin === 'nosql') {static::init    ();                    }
     if ($origin ===   'sql') {static::init_sql();                    }
@@ -290,19 +303,6 @@ namespace effcore {
       foreach ($result as $c_id => $c_item)
         if ($c_item->origin != $origin)
           unset($result[$c_id]);
-    return $result;
-  }
-
-  static function get_by_url($url, $load = true) {
-    $result = null;
-    $result_args = [];
-    static::init();
-    foreach (static::$cache as $c_item) {
-      if ($c_item->url[0] != '%' &&            $c_item->url == $url               ) {$result = $c_item; break;}
-      if ($c_item->url[0] == '%' && preg_match($c_item->url,   $url, $result_args)) {$result = $c_item; break;}}
-    if ($result instanceof external_cache && $load) $result = $result->external_cache_load();
-    if ($result == null)                            $result = static::init_sql_by_url($url);
-    if ($result != null)                            $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
     return $result;
   }
 
