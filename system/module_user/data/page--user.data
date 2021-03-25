@@ -2,8 +2,8 @@ pages
 - user|page
     id: user
     title: User %%_nickname_page_context{nickname}
-    is_https: true
     url: %^/user/(?<nickname>[a-zA-Z0-9_\-]{4,32})$%
+    is_https: true
     access
       roles
       - =: admins

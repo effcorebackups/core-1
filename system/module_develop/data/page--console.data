@@ -2,8 +2,8 @@ pages
 - console|page
     id: console
     title: Console
-    is_https: true
     url: /develop/console
+    is_https: true
     access
       roles
       - =: admins

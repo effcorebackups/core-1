@@ -2,7 +2,6 @@ pages
 - data_nosql|page
     id: data_nosql
     title: NoSQL data
-    is_https: true
     url: %^(?<base>/develop/data_nosql)(/
 >>>>>>>>>>>(?<type>trees|
 >>>>>>>>>>>>>>>>>>>selections|
@@ -12,6 +11,7 @@ pages
 >>>>>>>>>>>>>>>>>>>tokens|
 >>>>>>>>>>>>>>>>>>>translations)(/
 >>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
+    is_https: true
     access
       roles
       - =: admins

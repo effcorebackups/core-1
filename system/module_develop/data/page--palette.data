@@ -2,8 +2,8 @@ pages
 - palette|page
     id: palette
     title: Palette
-    is_https: true
     url: /develop/palette
+    is_https: true
     access
       roles
       - =: admins

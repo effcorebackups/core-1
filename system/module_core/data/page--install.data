@@ -1,11 +1,11 @@
 pages
 - install|page
     id: install
-    title: Installation
-    is_https: true
     id_layout: installation
+    title: Installation
     url: %^(?<base>/install)(/
 >>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
+    is_https: true
     blocks
     - header
       - block__menu_languages|block

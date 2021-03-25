@@ -2,8 +2,8 @@ pages
 - locales|page
     id: locales
     title: Locales
-    is_https: true
     url: /manage/locales
+    is_https: true
     access
       roles
       - =: admins

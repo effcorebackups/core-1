@@ -2,11 +2,11 @@ pages
 - seo|page
     id: seo
     title: SEO
-    is_https: true
     url: %^(?<base>/manage/seo)(/
 >>>>>>>>>>>(?<type>meta|
 >>>>>>>>>>>>>>>>>>>sitemap|
 >>>>>>>>>>>>>>>>>>>robots)|)$%
+    is_https: true
     access
       roles
       - =: admins

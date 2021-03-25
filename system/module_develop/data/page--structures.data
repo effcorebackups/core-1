@@ -2,7 +2,6 @@ pages
 - structures|page
     id: structures
     title: Structures
-    is_https: true
     url: %^(?<base>/develop/structures)(/
 >>>>>>>>>>>(?<type>class|
 >>>>>>>>>>>>>>>>>>>interface|
@@ -10,6 +9,7 @@ pages
 >>>>>>>>>>>(?<view>list|
 >>>>>>>>>>>>>>>>>>>diagram|
 >>>>>>>>>>>>>>>>>>>export)|)|)$%
+    is_https: true
     access
       roles
       - =: admins

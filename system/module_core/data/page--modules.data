@@ -2,12 +2,12 @@ pages
 - modules|page
     id: modules
     title: Modules
-    is_https: true
     url: %^(?<base>/manage/modules)(/
 >>>>>>>>>>>(?<action>install|
 >>>>>>>>>>>>>>>>>>>>>uninstall|
 >>>>>>>>>>>>>>>>>>>>>update/data|
 >>>>>>>>>>>>>>>>>>>>>update/files)|)$%
+    is_https: true
     access
       roles
       - =: admins

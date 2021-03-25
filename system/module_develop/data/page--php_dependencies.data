@@ -2,8 +2,8 @@ pages
 - php_dependencies|page
     id: php_dependencies
     title: PHP dependencies
-    is_https: true
     url: /develop/php_dependencies
+    is_https: true
     access
       roles
       - =: admins

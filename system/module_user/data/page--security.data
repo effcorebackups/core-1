@@ -2,9 +2,9 @@ pages
 - security|page
     id: security
     title: Security
-    is_https: true
     url: %^(?<base>/manage/security)(/
 >>>>>>>>>>>(?<type>settings)|)$%
+    is_https: true
     access
       roles
       - =: admins

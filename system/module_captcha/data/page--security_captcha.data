@@ -2,9 +2,9 @@ pages
 - security_captcha|page
     id: security_captcha
     title: Security
-    is_https: true
     url: %^(?<base>/manage/security)/
 >>>>>>>>>>>(?<type>settings_captcha)$%
+    is_https: true
     access
       roles
       - =: admins

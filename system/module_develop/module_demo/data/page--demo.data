@@ -2,7 +2,6 @@ pages
 - demo|page
     id: demo
     title: Demo
-    is_https: true
     url: %^(?<base>/develop/demo)
 >>>>>>>>((/(?<type>embedded/form_elements|
 >>>>>>>>>>>>>>>>>>>embedded/markup_static|
@@ -14,6 +13,7 @@ pages
 >>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>embedded/canvas|
 >>>>>>>>>>>>>>>>>>>embedded/diagrams))|)$%
+    is_https: true
     access
       roles
       - =: admins
