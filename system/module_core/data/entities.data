@@ -38,8 +38,14 @@ entities
     title: Update
     title_plural: Updates
     catalog_name: updates
-    ws_module_id: true
     fields
+    - module_id
+        title: Module ID
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        check: (id <> '')
     - last_number
         title: Last number
         type: integer
@@ -47,5 +53,10 @@ entities
     constraints
     - primary_module_id
         type: primary
+        fields
+        - =: module_id
+    indexes
+    - index_module_id
+        type: index
         fields
         - =: module_id
