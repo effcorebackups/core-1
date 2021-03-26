@@ -12,7 +12,7 @@
 
   /* page layout */
 
-  body[data-layout-id='original_classic'] [data-page-part-id] {display: block; padding: 0 20px; box-sizing: border-box}
+  body[data-layout-id='original_classic'] [data-page-part-id] {display: block; padding: 0 30px; box-sizing: border-box}
   body[data-layout-id='original_classic'] [data-page-part-id='head'] {padding-top:  0  ; padding-bottom:  0  ; color: black; background: %%_color_custom__head}
   body[data-layout-id='original_classic'] [data-page-part-id='body'] {padding-top: 10px; padding-bottom: 40px; color: white; background: %%_color__page url('pictures/page-bg.svg') 50% 0}
   body[data-layout-id='original_classic'] [data-page-part-id='foot'] {padding-top: 10px; padding-bottom: 10px; color: black; background: %%_color_custom__foot; font-size: .6em}
@@ -22,8 +22,8 @@
     display: block;
     margin: 0 auto;
     box-sizing: border-box;
-    min-width: %%_page_min_width{null}px; %%_css_page_min_width_context;
-    max-width: %%_page_max_width{null}px; %%_css_page_max_width_context}
+    min-width: %%_css_page_min_width_context{null}px;
+    max-width: %%_css_page_max_width_context{null}px}
 
   body[data-layout-id='original_classic'] [data-area-id='header'] {float: left}
   body[data-layout-id='original_classic'] [data-area-id='header']::after {content: none}
