@@ -20,6 +20,7 @@ namespace effcore {
 
   public $ws_is_embedded = false;
   public $ws_module_id   = false;
+  public $ws_origin      = false;
   public $ws_data        = false;
 
   public $title;
@@ -66,6 +67,19 @@ namespace effcore {
       $this->indexes['index_module_id'] = new \stdClass;
       $this->indexes['index_module_id']->type = 'index';
       $this->indexes['index_module_id']->fields = ['module_id' => 'module_id'];
+    }
+  # insert field 'origin' and index for it
+    if ($this->ws_origin) {
+      $this->fields['origin'] = new \stdClass;
+      $this->fields['origin']->title = 'Origin';
+      $this->fields['origin']->type = 'varchar';
+      $this->fields['origin']->size = 16;
+      $this->fields['origin']->collate = 'nocase';
+      $this->fields['origin']->default = 'sql';
+      $this->fields['origin']->check = '(origin <> \'\')';
+      $this->indexes['index_origin'] = new \stdClass;
+      $this->indexes['index_origin']->type = 'index';
+      $this->indexes['index_origin']->fields = ['origin' => 'origin'];
     }
   # insert field 'data'
     if ($this->ws_data) {

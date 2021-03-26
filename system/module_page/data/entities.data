@@ -331,6 +331,7 @@ entities
     has_parallel_checking: true
     ws_is_embedded: true
     ws_module_id: true
+    ws_origin: true
     ws_data: true
     access_select
       roles

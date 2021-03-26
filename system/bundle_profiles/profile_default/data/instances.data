@@ -188,12 +188,15 @@ instances
     - is_https: 1
     - is_embedded: 1
     - module_id: profile_default
+    - origin: hybrid
     - access
         roles
         - =: admins
         - =: registered
     - blocks
       - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
         - block__tree_sql__user_registered|block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
@@ -224,12 +227,15 @@ instances
     - is_https: 1
     - is_embedded: 1
     - module_id: profile_default
+    - origin: hybrid
     - access
         roles
         - =: admins
         - =: registered
     - blocks
       - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
         - block__tree_sql__user_registered|block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu

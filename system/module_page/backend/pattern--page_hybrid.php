@@ -11,6 +11,7 @@ namespace effcore {
   const is_loading_was_not_successful = 0b01;
   const is_loading_was_____successful = 0b10;
 
+  public $origin = 'hybrid';
   public $is_loaded = self::is_loading_was_not;
 
   function load_from___sql_storage() {

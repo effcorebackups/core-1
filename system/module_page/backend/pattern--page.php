@@ -24,6 +24,7 @@ namespace effcore {
   public $blocks;
   public $data;
   public $origin = 'nosql'; # nosql | sql
+  public $module_id;
   public $_markup;
   public $_areas_pointers = [];
   protected $args         = [];
@@ -176,7 +177,8 @@ namespace effcore {
     return [
       'id'     => 'id',
       'url'    => 'url',
-      'access' => 'access'
+      'access' => 'access',
+      'origin' => 'origin'
     ];
   }
 
@@ -194,7 +196,6 @@ namespace effcore {
           if (isset(static::$cache[$c_id])) console::report_about_duplicate('page', $c_id, $c_module_id);
                     static::$cache[$c_id] = $c_page;
                     static::$cache[$c_id]->module_id = $c_module_id;
-                    static::$cache[$c_id]->origin = 'nosql';
         }
       }
     }
@@ -209,7 +210,6 @@ namespace effcore {
           $c_page->                          {$c_key} = $c_value;
         static::$cache[$c_page->id] = $c_page;
         static::$cache[$c_page->id]->module_id = 'page';
-        static::$cache[$c_page->id]->origin = 'sql';
       }
     }
   }
@@ -225,7 +225,6 @@ namespace effcore {
         $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
-             static::$cache[$page->id]->origin = 'sql';
       return static::$cache[$page->id];
     }
   }
@@ -241,7 +240,6 @@ namespace effcore {
         $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
              static::$cache[$page->id]->module_id = 'page';
-             static::$cache[$page->id]->origin = 'sql';
       return static::$cache[$page->id];
     }
   }
@@ -290,9 +288,10 @@ namespace effcore {
   }
 
   static function get_all($origin = null, $load = false) {
-    if ($origin === 'nosql') {static::init();                    }
-    if ($origin === 'sql'  ) {                static::init_sql();}
-    if ($origin ===  null  ) {static::init(); static::init_sql();}
+    if ($origin === 'nosql' ) {static::init();                    }
+    if ($origin === 'hybrid') {static::init();                    }
+    if ($origin === 'sql'   ) {                static::init_sql();}
+    if ($origin ===  null   ) {static::init(); static::init_sql();}
     if ($load) foreach (static::$cache as $c_id => $c_item) {
       if (static::$cache[$c_id] instanceof external_cache) static::$cache[$c_id] = static::$cache[$c_id]->load_from_nosql_storage();
       if (static::$cache[$c_id] instanceof page_hybrid   ) static::$cache[$c_id] = static::$cache[$c_id]->load_from___sql_storage(); }
