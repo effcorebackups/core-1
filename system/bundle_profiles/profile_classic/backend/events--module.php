@@ -30,6 +30,8 @@ namespace effcore\modules\profile_classic {
       if (page::get_by_id('logout'      )) $page_ids[] = 'logout';
       if (page::get_by_id('recovery'    )) $page_ids[] = 'recovery';
       if (page::get_by_id('registration')) $page_ids[] = 'registration';
+      if (page::get_by_id('user_edit'   )) $page_ids[] = 'user_edit';
+      if (page::get_by_id('user'        )) $page_ids[] = 'user';
       if (!count($page_ids)) {
         color_preset::apply('original_classic');
         $module->install();

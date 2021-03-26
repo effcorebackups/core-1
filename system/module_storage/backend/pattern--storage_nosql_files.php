@@ -19,7 +19,7 @@ namespace effcore {
         $c_pointer = &core::arrobj_select_value($c_pointer, $c_part);
         if ($expand_cache && $c_pointer instanceof external_cache) {
           $c_pointer =
-          $c_pointer->external_cache_load();
+          $c_pointer->load_from_nosql_storage();
         }
       }
       return $c_pointer;

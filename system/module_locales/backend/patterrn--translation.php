@@ -34,7 +34,7 @@ namespace effcore {
           if ($c_translation->code == $code) {
             if ($c_translation instanceof external_cache)
                 $c_translation =
-                $c_translation->external_cache_load();
+                $c_translation->load_from_nosql_storage();
             if (!isset(static::$cache[$c_translation->code]))
                        static::$cache[$c_translation->code] = [];
             static::$cache[$c_translation->code] += $c_translation->data;

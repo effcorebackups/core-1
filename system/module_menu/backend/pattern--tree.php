@@ -99,9 +99,9 @@ namespace effcore {
   }
 
   static function select_all($origin = null) {
-    if ($origin === 'nosql') {static::init    ();                    }
-    if ($origin ===   'sql') {static::init_sql();                    }
-    if ($origin ===    null) {static::init    (); static::init_sql();}
+    if ($origin === 'nosql') {static::init();                    }
+    if ($origin === 'sql'  ) {                static::init_sql();}
+    if ($origin ===  null  ) {static::init(); static::init_sql();}
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)

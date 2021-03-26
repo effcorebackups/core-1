@@ -48,7 +48,7 @@ namespace effcore {
       foreach (static::$cache as $id => $c_item)
            if (static::$cache[$id] instanceof external_cache)
                static::$cache[$id] =
-               static::$cache[$id]->external_cache_load();
+               static::$cache[$id]->load_from_nosql_storage();
     return static::$cache;
   }
 
@@ -57,7 +57,7 @@ namespace effcore {
     if (isset(static::$cache[$id]) === false) return;
     if (static::$cache[$id] instanceof external_cache && $load)
         static::$cache[$id] =
-        static::$cache[$id]->external_cache_load();
+        static::$cache[$id]->load_from_nosql_storage();
     return static::$cache[$id];
   }
 

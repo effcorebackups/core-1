@@ -13,13 +13,13 @@ namespace effcore {
   public $id_layout = 'simple';
   public $title;
   public $url;
-  public $is_https;
   public $lang_code;
   public $text_direction = 'ltr';
   public $charset = 'utf-8';
-  public $meta;
+  public $is_https;
   public $is_use_global_meta = 1;
   public $is_embedded = 1;
+  public $meta;
   public $access;
   public $blocks;
   public $data;
@@ -269,9 +269,8 @@ namespace effcore {
     static::init();
     if (isset(static::$cache[$id]) === false) static::init_sql_by_id($id);
     if (isset(static::$cache[$id]) === false) return;
-    if (static::$cache[$id] instanceof external_cache && $load)
-        static::$cache[$id] =
-        static::$cache[$id]->external_cache_load();
+    if (static::$cache[$id] instanceof external_cache && $load) static::$cache[$id] = static::$cache[$id]->load_from_nosql_storage();
+    if (static::$cache[$id] instanceof page_hybrid    && $load) static::$cache[$id] = static::$cache[$id]->load_from___sql_storage();
     return static::$cache[$id];
   }
 
@@ -284,8 +283,8 @@ namespace effcore {
       if ($c_item->url[0] === '%' && preg_match($c_item->url,    $url, $result_args)) {$result = $c_item; break;} }
     if ($result === null) $result = static::init_sql_by_url($url);
     if ($result === null) return;
-    if ($result instanceof external_cache && $load)
-        $result = $result->external_cache_load();
+    if ($result instanceof external_cache && $load) $result = $result->load_from_nosql_storage();
+    if ($result instanceof page_hybrid    && $load) $result = $result->load_from___sql_storage();
     $result->_match_args = array_filter($result_args, 'is_string', ARRAY_FILTER_USE_KEY);
     return $result;
   }
@@ -294,10 +293,9 @@ namespace effcore {
     if ($origin === 'nosql') {static::init();                    }
     if ($origin === 'sql'  ) {                static::init_sql();}
     if ($origin ===  null  ) {static::init(); static::init_sql();}
-    if ($load) foreach (static::$cache as $c_id => $c_item)
-      if (static::$cache[$c_id] instanceof external_cache)
-          static::$cache[$c_id] =
-          static::$cache[$c_id]->external_cache_load();
+    if ($load) foreach (static::$cache as $c_id => $c_item) {
+      if (static::$cache[$c_id] instanceof external_cache) static::$cache[$c_id] = static::$cache[$c_id]->load_from_nosql_storage();
+      if (static::$cache[$c_id] instanceof page_hybrid   ) static::$cache[$c_id] = static::$cache[$c_id]->load_from___sql_storage(); }
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)

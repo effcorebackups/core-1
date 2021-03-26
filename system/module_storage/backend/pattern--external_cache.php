@@ -16,7 +16,7 @@ namespace effcore {
     }
   }
 
-  function external_cache_load($with_restore = true) {
+  function load_from_nosql_storage($with_restore = true) {
     if (!cache::is_exists($this->cache_name) && $with_restore)
       storage_nosql_files::cache_update();
     $result = cache::select($this->cache_name);

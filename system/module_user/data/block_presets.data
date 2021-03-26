@@ -66,6 +66,23 @@ block_presets
     - data-id: block__form__registration
     type: copy
     source: forms/user/registration
+- block__form__instance_update__user|block_preset
+    id: block__form__instance_update__user
+    managing_group: Forms
+    managing_title: User update
+    in_areas
+    - =: content
+    title|text
+      text: Edit user %%_nickname_page_context{nickname}
+      is_apply_tokens: true
+    title_is_visible: false
+    attributes
+    - data-block: true
+    - data-id: block__form__instance_update__user
+    type: link
+    source: forms/storage/instance_update
+    properties
+    - entity_name: user
 # ─────────────────────────────────────────────────────────────────────
 - block__selection__user|block_preset
     id: block__selection__user

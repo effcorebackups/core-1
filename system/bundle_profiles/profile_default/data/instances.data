@@ -179,6 +179,79 @@ instances
         - block__form__registration|block_preset_link
             id: block__form__registration
 # ─────────────────────────────────────────────────────────────────────
+- page_user|instance
+    entity_name: page
+    values
+    - id: user
+    - title: User %%_nickname_page_context{nickname}
+    - url: /user/%%_nickname
+    - is_https: 1
+    - is_embedded: 1
+    - module_id: profile_default
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__selection__user|block_preset_link
+            id: block__selection__user
+- page_user_edit|instance
+    entity_name: page
+    values
+    - id: user_edit
+    - title: Edit user %%_nickname_page_context{nickname}
+    - url: /user/%%_nickname/edit
+    - is_https: 1
+    - is_embedded: 1
+    - module_id: profile_default
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__instance_update__user|block_preset_link
+            id: block__form__instance_update__user
+# ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
 - text_front_default|instance

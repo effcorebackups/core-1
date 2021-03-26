@@ -575,10 +575,10 @@ instances
     entity_name: page
     values
     - id: about
+    - id_layout: original_classic
     - title: About Us
     - url: /about
     - is_https: 0
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -632,10 +632,10 @@ instances
     entity_name: page
     values
     - id: contact
+    - id_layout: original_classic
     - title: Contact Us
     - url: /contact
     - is_https: 0
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -691,10 +691,10 @@ instances
     entity_name: page
     values
     - id: front
+    - id_layout: original_classic
     - title: Front
     - url: /
     - is_https: 0
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -750,10 +750,10 @@ instances
     entity_name: page
     values
     - id: login
+    - id_layout: original_classic
     - title: Login
     - url: /login
     - is_https: 1
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -803,10 +803,10 @@ instances
     entity_name: page
     values
     - id: logout
+    - id_layout: original_classic
     - title: Logout
     - url: /logout
     - is_https: 1
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -858,10 +858,10 @@ instances
     entity_name: page
     values
     - id: recovery
+    - id_layout: original_classic
     - title: Access recovery
     - url: /recovery
     - is_https: 1
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -911,10 +911,10 @@ instances
     entity_name: page
     values
     - id: registration
+    - id_layout: original_classic
     - title: New User Registration
     - url: /registration
     - is_https: 1
-    - id_layout: original_classic
     - module_id: profile_classic
     - meta: <meta name="description" content="">
 ////////////<meta name="keywords" content="">
@@ -952,6 +952,113 @@ instances
       - content
         - block__form__registration|block_preset_link
             id: block__form__registration
+      - footer
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
+            title: Copyright
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
+# ─────────────────────────────────────────────────────────────────────
+- page_user|instance
+    entity_name: page
+    values
+    - id: user
+    - id_layout: original_classic
+    - title: User %%_nickname_page_context{nickname}
+    - url: /user/%%_nickname
+    - is_https: 1
+    - is_embedded: 1
+    - module_id: profile_classic
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
+            title: Logotype
+      - menu
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__selection__user|block_preset_link
+            id: block__selection__user
+      - footer
+        - block__text_sql__copyright_classic|block_preset_link
+            id: block__text_sql__copyright_classic
+            title: Copyright
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright_classic
+            - data-at-left: true
+- page_user_edit|instance
+    entity_name: page
+    values
+    - id: user_edit
+    - id_layout: original_classic
+    - title: Edit user %%_nickname_page_context{nickname}
+    - url: /user/%%_nickname/edit
+    - is_https: 1
+    - is_embedded: 1
+    - module_id: profile_classic
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype_classic|block_preset_link
+            id: block__picture_sql__logotype_classic
+            title: Logotype
+      - menu
+        - block__tree_sql__main_classic|block_preset_link
+            id: block__tree_sql__main_classic
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__instance_update__user|block_preset_link
+            id: block__form__instance_update__user
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic
