@@ -191,7 +191,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select('pages') as $c_module_id => $c_pages) {
+      foreach (storage::get('files')->select('pages') ?? [] as $c_module_id => $c_pages) {
         foreach ($c_pages as $c_id => $c_page) {
           if (isset(static::$cache[$c_id])) console::report_about_duplicate('page', $c_id, $c_module_id);
                     static::$cache[$c_id] = $c_page;

@@ -15,7 +15,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      foreach (storage::get('files')->select('tokens') as $c_module_id => $c_tokens) {
+      foreach (storage::get('files')->select('tokens') ?? [] as $c_module_id => $c_tokens) {
         foreach ($c_tokens as $c_row_id => $c_token) {
           if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('token', $c_row_id, $c_module_id);
                     static::$cache[$c_row_id] = $c_token;
