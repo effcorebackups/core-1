@@ -645,8 +645,8 @@ instances
         - block__text_sql__contact_classic|block_preset_link
             id: block__text_sql__contact_classic
             title: The main text of the page
-        - block__form__feedback|block_preset_link
-            id: block__form__feedback
+        - block__form__instance_insert__feedback|block_preset_link
+            id: block__form__instance_insert__feedback
       - footer
         - block__text_sql__copyright_classic|block_preset_link
             id: block__text_sql__copyright_classic

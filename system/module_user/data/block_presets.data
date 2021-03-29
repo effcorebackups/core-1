@@ -1,19 +1,4 @@
 block_presets
-- block__form__feedback|block_preset
-    id: block__form__feedback
-    managing_group: Forms
-    managing_title: Feedback form
-    in_areas
-    - =: content
-    title: Feedback form
-    title_is_visible: true
-    attributes
-    - data-block: true
-    - data-id: block__form__feedback
-    type: copy
-    source: forms/storage/instance_insert
-    properties
-    - entity_name: feedback
 - block__form__login|block_preset
     id: block__form__login
     managing_group: Forms
@@ -66,6 +51,21 @@ block_presets
     - data-id: block__form__registration
     type: copy
     source: forms/user/registration
+- block__form__instance_insert__feedback|block_preset
+    id: block__form__instance_insert__feedback
+    managing_group: Forms
+    managing_title: Feedback form
+    in_areas
+    - =: content
+    title: Feedback form
+    title_is_visible: true
+    attributes
+    - data-block: true
+    - data-id: block__form__instance_insert__feedback
+    type: copy
+    source: forms/storage/instance_insert
+    properties
+    - entity_name: feedback
 - block__form__instance_update__user|block_preset
     id: block__form__instance_update__user
     managing_group: Forms
@@ -79,7 +79,7 @@ block_presets
     attributes
     - data-block: true
     - data-id: block__form__instance_update__user
-    type: link
+    type: copy
     source: forms/storage/instance_update
     properties
     - entity_name: user
