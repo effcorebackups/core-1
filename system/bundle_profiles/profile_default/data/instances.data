@@ -81,7 +81,6 @@ instances
     - title: Logout
     - url: /logout
     - is_https: 1
-    - module_id: profile_default
     - access
         roles
         - =: registered
@@ -117,7 +116,6 @@ instances
     - title: Access recovery
     - url: /recovery
     - is_https: 1
-    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -151,7 +149,6 @@ instances
     - title: New User Registration
     - url: /registration
     - is_https: 1
-    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -187,7 +184,6 @@ instances
     - url: /user/%%_nickname
     - is_https: 1
     - is_embedded: 1
-    - module_id: profile_default
     - origin: hybrid
     - access
         roles
@@ -226,7 +222,6 @@ instances
     - url: /user/%%_nickname/edit
     - is_https: 1
     - is_embedded: 1
-    - module_id: profile_default
     - origin: hybrid
     - access
         roles
@@ -266,4 +261,3 @@ instances
     - id: front_default
     - description: Text Front
     - text: Welcome to our site!
-    - module_id: profile_default

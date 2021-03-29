@@ -332,29 +332,27 @@ namespace effcore {
 
   static function init_sql($id = null) {
     if ($id && isset(static::$cache[$id])) return;
-    if ($id != null) {
+    if ($id !== null) {
       $instance = (new instance('selection', [
         'id' => $id
       ]))->select();
       if ($instance) {
         $selection = new static;
         foreach ($instance->values_get() as $c_key => $c_value)
-          if ($c_key == 'attributes') $selection->{$c_key} = widget_attributes::complex_value_to_attributes($c_value) ?? [];
-          else                        $selection->{$c_key} =                                                $c_value;
+          if ($c_key === 'attributes') $selection->{$c_key} = widget_attributes::complex_value_to_attributes($c_value) ?? [];
+          else                         $selection->{$c_key} =                                                $c_value;
         static::$cache[$selection->id] = $selection;
-        static::$cache[$selection->id]->module_id = 'storage';
         static::$cache[$selection->id]->origin = 'sql';
       }
     }
-    if (!static::$is_init___sql && $id == null) {
-         static::$is_init___sql = true;
+    if ($id === null && !static::$is_init___sql) {
+      static::$is_init___sql = true;
       foreach (entity::get('selection')->instances_select() as $c_instance) {
         $c_selection = new static;
         foreach ($c_instance->values_get() as $c_key => $c_value)
-          if ($c_key == 'attributes') $c_selection->{$c_key} = widget_attributes::complex_value_to_attributes($c_value) ?? [];
-          else                        $c_selection->{$c_key} =                                                $c_value;
+          if ($c_key === 'attributes') $c_selection->{$c_key} = widget_attributes::complex_value_to_attributes($c_value) ?? [];
+          else                         $c_selection->{$c_key} =                                                $c_value;
         static::$cache[$c_selection->id] = $c_selection;
-        static::$cache[$c_selection->id]->module_id = 'storage';
         static::$cache[$c_selection->id]->origin = 'sql';
       }
     }

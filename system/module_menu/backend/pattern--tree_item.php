@@ -37,7 +37,7 @@ namespace effcore {
     if (!$this->is_builded) {
       $this->attribute_insert('data-id', $this->id, 'attributes', true);
       foreach (static::select_all_by_id_tree($this->id_tree) as $c_item) {
-        if ($c_item->id_parent == $this->id) {
+        if ($c_item->id_parent === $this->id) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build();}}
       $this->is_builded = true;
@@ -65,7 +65,7 @@ namespace effcore {
     $visualization_mode = tree::select($this->id_tree)->visualization_mode;
     if (access::check($this->access)) {
       $rendered_self     = $visualization_mode ? $this->render_self_managed() : $this->render_self();
-      $rendered_children = $visualization_mode == 'decorated-rearrangeable' || $this->children_select_count() ? (template::make_new($this->template_children, [
+      $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select(true))]
       ))->render() : '';
       return (template::make_new($this->template, [
@@ -110,7 +110,7 @@ namespace effcore {
   }
 
   static function init() {
-    if (static::$is_init_nosql_by_tree == []) {
+    if (static::$is_init_nosql_by_tree === []) {
       foreach (storage::get('files')->select('tree_items') as $c_module_id => $c_tree_items) {
         foreach ($c_tree_items as $c_row_id => $c_tree_item) {
           if (isset(static::$cache[$c_tree_item->id])) console::report_about_duplicate('tree_item', $c_tree_item->id, $c_module_id);
@@ -127,7 +127,7 @@ namespace effcore {
     if (isset(static::$is_init_nosql_by_tree[$id_tree])) return;
     if (isset(static::$is_init___sql_by_tree[$id_tree])) return;
     if (tree::select($id_tree)         &&
-        tree::select($id_tree)->origin == 'sql') {
+        tree::select($id_tree)->origin === 'sql') {
       static::$is_init___sql_by_tree[$id_tree] = true;
       $instances = entity::get('tree_item')->instances_select(['conditions' => [
         'id_tree_!f' => 'id_tree',
@@ -145,7 +145,7 @@ namespace effcore {
           widget_attributes::complex_value_to_attributes($c_instance->link_attributes) ?? [],
           $c_instance->weight);
         static::$cache[$c_tree_item->id] = $c_tree_item;
-        static::$cache[$c_tree_item->id]->module_id = 'menu';
+        static::$cache[$c_tree_item->id]->module_id = $c_instance->module_id;
         static::$cache[$c_tree_item->id]->origin = 'sql';
       }
     }
@@ -156,7 +156,7 @@ namespace effcore {
     static::init_sql($id_tree);
     $result = [];
     foreach (static::$cache ?? [] as $c_item)
-      if ($c_item->id_tree == $id_tree)
+      if ($c_item->id_tree === $id_tree)
         $result[$c_item->id] = $c_item;
     return $result;
   }

@@ -32,7 +32,6 @@ namespace effcore {
         foreach ($c_instance->values_get() as $c_key => $c_value)
           $c_role->                          {$c_key} = $c_value;
         static::$cache[$c_role->id] = $c_role;
-        static::$cache[$c_role->id]->module_id = 'user';
         static::$cache[$c_role->id]->origin = 'sql';
       }
     }
@@ -72,7 +71,7 @@ namespace effcore {
     foreach ($permissions as $c_id_permission) {
       (new instance('relation_role_ws_permission', [
         'id_permission' => $c_id_permission,
-        'id_role'       =>   $id_role,
+        'id_role'       => $id_role,
         'module_id'     => $module_id
       ]))->insert();
     }

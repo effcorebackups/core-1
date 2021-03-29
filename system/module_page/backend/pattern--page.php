@@ -209,7 +209,6 @@ namespace effcore {
         foreach ($c_instance->values_get() as $c_key => $c_value)
           $c_page->                          {$c_key} = $c_value;
         static::$cache[$c_page->id] = $c_page;
-        static::$cache[$c_page->id]->module_id = 'page';
       }
     }
   }
@@ -224,7 +223,6 @@ namespace effcore {
       foreach ($instance->values_get() as $c_key => $c_value)
         $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
-             static::$cache[$page->id]->module_id = 'page';
       return static::$cache[$page->id];
     }
   }
@@ -239,7 +237,6 @@ namespace effcore {
       foreach ($instance->values_get() as $c_key => $c_value)
         $page->                          {$c_key} = $c_value;
              static::$cache[$page->id] = $page;
-             static::$cache[$page->id]->module_id = 'page';
       return static::$cache[$page->id];
     }
   }

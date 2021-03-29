@@ -9,7 +9,6 @@ namespace effcore {
 
   public $entity_name;
   public $values;
-  public $module_id;
   public $_id_fields_original;
 
   function __construct($entity_name = '', $values = []) {

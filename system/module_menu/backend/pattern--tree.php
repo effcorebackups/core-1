@@ -30,8 +30,8 @@ namespace effcore {
       $this->attribute_insert('data-id',                 $this->id,                 'attributes', true);
       $this->attribute_insert('data-visualization-mode', $this->visualization_mode, 'attributes', true);
       foreach (tree_item::select_all_by_id_tree($this->id) as $c_item) {
-        if ($c_item->id_tree   == $this->id &&
-            $c_item->id_parent == null) {
+        if ($c_item->id_tree   === $this->id &&
+            $c_item->id_parent === null) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build();}}
       event::start('on_tree_build_after', $this->id, ['tree' => &$this]);
@@ -91,8 +91,8 @@ namespace effcore {
           $c_instance->access,
           widget_attributes::complex_value_to_attributes($c_instance->attributes) ?? [], 0);
         static::$cache[$c_tree->id] = $c_tree;
-        static::$cache[$c_tree->id]->module_id = 'menu';
         static::$cache[$c_tree->id]->origin = 'sql';
+        static::$cache[$c_tree->id]->module_id = $c_instance->module_id;
         static::$cache[$c_tree->id]->title_is_visible = $c_instance->title_is_visible;
       }
     }
@@ -105,7 +105,7 @@ namespace effcore {
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->origin != $origin)
+        if ($c_item->origin !== $origin)
           unset($result[$c_id]);
     return $result;
   }
