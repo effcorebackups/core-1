@@ -656,7 +656,6 @@ translations
     - Text Copyright: Тэкст аўтарскіх правоў
     - Text direction code: Код кірунку тэксту
     - Text direction: Напрамак тэксту
-    - Text Front: Тэкст Галоўнай
     - Text: Тэкст
     - Text\: delete: Тэкст: выдаліць
     - Text\: insert: Тэкст: уставіць
@@ -764,7 +763,6 @@ translations
     - warning: папярэджанне
     - Web server: Вэб-сервер
     - Weight: Вага
-    - Welcome to our site!: Сардэчна запрашаем на наш сайт!
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!
     - Widget "%%_title".: Віджэт "%%_title".
