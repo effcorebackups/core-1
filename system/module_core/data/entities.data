@@ -45,7 +45,7 @@ entities
         size: 64
         collate: nocase
         not_null: true
-        check: (id <> '')
+        check: (module_id <> '')
     - last_number
         title: Last number
         type: integer
