@@ -14,31 +14,33 @@ namespace effcore\modules\polls {
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-      if ($entity->name === 'poll') {
-        $form->is_redirect_enabled = false;
-        $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
-          'id_poll_!f'       => 'id_poll',
-          'id_poll_operator' => '=',
-          'id_poll_!v'       => $form->_instance->id]], 'id');
-        $widget_items = [];
-        foreach ($form->_answers_rows as $c_row) {
-          $widget_items[] = (object)[
-            'id'     => $c_row->id,
-            'weight' => $c_row->weight,
-            'text'   => $c_row->answer
-          ];
+    if ($form->has_error_on_init === false) {
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+        if ($entity->name === 'poll') {
+          $form->is_redirect_enabled = false;
+          $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
+            'id_poll_!f'       => 'id_poll',
+            'id_poll_operator' => '=',
+            'id_poll_!v'       => $form->_instance->id]], 'id');
+          $widget_items = [];
+          foreach ($form->_answers_rows as $c_row) {
+            $widget_items[] = (object)[
+              'id'     => $c_row->id,
+              'weight' => $c_row->weight,
+              'text'   => $c_row->answer
+            ];
+          }
+          $widget_answers = new widget_texts;
+          $widget_answers->title = 'Answers';
+          $widget_answers->item_title = 'Answer';
+          $widget_answers->name_complex = 'widget_answers';
+          $widget_answers->cform = $form;
+          $widget_answers->weight = 140;
+          $widget_answers->build();
+          $widget_answers->value_set_complex($widget_items, true);
+          $form->child_select('fields')->child_insert($widget_answers, 'answers');
         }
-        $widget_answers = new widget_texts;
-        $widget_answers->title = 'Answers';
-        $widget_answers->item_title = 'Answer';
-        $widget_answers->name_complex = 'widget_answers';
-        $widget_answers->cform = $form;
-        $widget_answers->weight = 140;
-        $widget_answers->build();
-        $widget_answers->value_set_complex($widget_items, true);
-        $form->child_select('fields')->child_insert($widget_answers, 'answers');
       }
     }
   }

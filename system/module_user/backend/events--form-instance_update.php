@@ -14,32 +14,34 @@ namespace effcore\modules\user {
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-    # field 'role'
-      if ($entity->name === 'relation_role_ws_user' && !empty($form->_instance)) {
-        $items['#id_role']->is_builded = false;
-        $items['#id_role']->disabled['anonymous' ] = 'anonymous';
-        $items['#id_role']->disabled['registered'] = 'registered';
-        $items['#id_role']->build();
-        $items['#id_role']->value_set($form->_instance->id_role);
-        $items['#id_role']->disabled_set(
-          $form->_instance->id_user === '1' &&
-          $form->_instance->id_role === 'admins'
-        );
-      }
-    # field 'password'
-      if ($entity->name === 'user') {
-        $field_password_hash_current = new field_password('Current password', null, [], -500);
-        $field_password_hash_current->build();
-        $field_password_hash_current->name_set('password_hash_current');
-        $form->child_select('fields')->child_insert(
-          $field_password_hash_current, 'password_hash_current'
-        );
-      }
-    # field 'avatar'
-      if ($entity->name === 'user' && !empty($form->_instance)) {
-        $items['#avatar_path']->fixed_name = 'avatar-'.$form->_instance->id;
+    if ($form->has_error_on_init === false) {
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+      # field 'role'
+        if ($entity->name === 'relation_role_ws_user' && !empty($form->_instance)) {
+          $items['#id_role']->is_builded = false;
+          $items['#id_role']->disabled['anonymous' ] = 'anonymous';
+          $items['#id_role']->disabled['registered'] = 'registered';
+          $items['#id_role']->build();
+          $items['#id_role']->value_set($form->_instance->id_role);
+          $items['#id_role']->disabled_set(
+            $form->_instance->id_user === '1' &&
+            $form->_instance->id_role === 'admins'
+          );
+        }
+      # field 'password'
+        if ($entity->name === 'user') {
+          $field_password_hash_current = new field_password('Current password', null, [], -500);
+          $field_password_hash_current->build();
+          $field_password_hash_current->name_set('password_hash_current');
+          $form->child_select('fields')->child_insert(
+            $field_password_hash_current, 'password_hash_current'
+          );
+        }
+      # field 'avatar'
+        if ($entity->name === 'user' && !empty($form->_instance)) {
+          $items['#avatar_path']->fixed_name = 'avatar-'.$form->_instance->id;
+        }
       }
     }
   }

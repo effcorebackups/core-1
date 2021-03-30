@@ -31,7 +31,8 @@ namespace effcore\modules\user {
     $roles_by_user = user::related_roles_select($c_instance->id);
     foreach ($roles_by_user as $c_id_user_role)
       $roles_with_title[$c_id_user_role] =
-                 $roles[$c_id_user_role]->title ?? $c_id_user_role;
+                 $roles[$c_id_user_role]->title ??
+                        $c_id_user_role;
     return new text_multiline(
       $roles_with_title, [], ', '
     );

@@ -26,7 +26,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_init($event, $form, $items) {
-    $items['~update']->disabled_set();
+    $items['~update']->disabled_set(true);
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
@@ -34,14 +34,13 @@ namespace effcore\modules\storage {
         if ($entity->managing_is_enabled) {
           $id_keys   = $entity->id_get_real();
           $id_values = explode('+', $form->instance_id);
-          if (count($id_keys) ==
+          if (count($id_keys) ===
               count($id_values)) {
             $conditions = array_combine($id_keys, $id_values);
             $form->_instance = new instance($form->entity_name, $conditions);
             if ($form->_instance->select()) {
               $form->attribute_insert('data-entity_name', $form->entity_name);
               $form->attribute_insert('data-instance_id', $form->instance_id);
-              $items['~update']->disabled_set(false);
             # fixation of 'updated' value for prevent parallel update (not secure: only for organizational methods)
               if ($entity->has_parallel_checking && $entity->field_get('updated')) {
                 $hidden_old_updated = new field_hidden('old_updated');
@@ -49,7 +48,6 @@ namespace effcore\modules\storage {
                 $form->child_insert($hidden_old_updated, 'hidden_old_updated');
               }
             # make controls for managing
-              $has_controls = false;
               foreach ($entity->fields as $c_name => $c_field) {
                 if (!empty($c_field->managing_on_update_is_enabled) &&
                      isset($c_field->managing_control_class)) {
@@ -69,22 +67,20 @@ namespace effcore\modules\storage {
                   elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox !== true) $c_control->value_set        ($form->_instance->{$c_name});
                   elseif (empty($c_field->managing_control_value_manual_set) && $c_control instanceof field_checkbox === true) $c_control->checked_set      ($form->_instance->{$c_name});
                   $items['fields']->child_insert($c_control, $c_name);
-                  if ($c_control->disabled_get() === false) {
-                    $has_controls = true;
-                  }
+                  if ($items['~update']->disabled_get() === true)
+                      $items['~update']->disabled_set(false);
                 }
               }
-              if ($items['fields']->children_select_count() === 0 || $has_controls === false) $items['~update']->disabled_set();
               if ($items['fields']->children_select_count() === 0) {
                 $form->child_update(
                   'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
                 );
               }
-            } else $items['fields']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message');
-          }   else $items['fields']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message');
-        }     else $items['fields']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message');
-      }       else $items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message');
-    }         else $items['fields']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message');
+            } else {$items['fields']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message'); $form->has_error_on_init = true;}
+          }   else {$items['fields']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message'); $form->has_error_on_init = true;}
+        }     else {$items['fields']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message'); $form->has_error_on_init = true;}
+      }       else {$items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message'); $form->has_error_on_init = true;}
+    }         else {$items['fields']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message'); $form->has_error_on_init = true;}
   }
 
   static function on_validate($event, $form, $items) {

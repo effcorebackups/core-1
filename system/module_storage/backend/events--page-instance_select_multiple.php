@@ -34,7 +34,7 @@ namespace effcore\modules\storage {
       if ($c_entity->managing_is_enabled) {
         if (access::check($c_entity->access_select)) {
           $entities_by_groups[$c_entity->managing_group_id]
-                             [$c_entity->name             ] = $c_entity->title_plural;
+                             [$c_entity->name] = $c_entity->title_plural;
         }
       }
     }

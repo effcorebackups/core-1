@@ -22,6 +22,7 @@ namespace effcore {
   public $validation_cache;
   public $validation_cache_hash;
   public $validation_cache_is_persistent = false;
+  public $has_error_on_init = false;
   protected $items = [];
 
   function build() {
