@@ -9,7 +9,7 @@ namespace effcore\modules\storage {
           use \effcore\field_number;
           use \effcore\fieldset;
           use \effcore\text;
-          abstract class events_form_instance_update_selection {
+          abstract class events_form_instance_update__selection {
 
   static function on_init($event, $form, $items) {
     if ($form->has_error_on_init === false) {
