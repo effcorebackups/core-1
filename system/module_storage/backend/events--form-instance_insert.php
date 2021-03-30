@@ -23,9 +23,8 @@ namespace effcore\modules\storage {
   }
 
   static function on_init($event, $form, $items) {
-    $items['~insert']->disabled_set();
-    if (isset($items['~insert_and_update']))
-              $items['~insert_and_update']->disabled_set();
+    $items['~insert'           ]->disabled_set(true);
+    $items['~insert_and_update']->disabled_set(true);
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
@@ -33,10 +32,6 @@ namespace effcore\modules\storage {
         if ($entity->managing_is_enabled) {
           $form->attribute_insert('data-entity_name', $form->entity_name);
           $form->_instance = new instance($entity->name);
-          $items['~insert']->disabled_set(false);
-          if (isset($items['~insert_and_update']))
-                    $items['~insert_and_update']->disabled_set(false);
-          $has_controls = false;
           foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing_on_insert_is_enabled) &&
                  isset($c_field->managing_control_class)) {
@@ -53,12 +48,10 @@ namespace effcore\modules\storage {
               $c_control->build();
               $c_control->value_set_initial('', true);
               $items['fields']->child_insert($c_control, $c_name);
-              if ($c_control->disabled_get() === false) {
-                $has_controls = true;
-              }
+              if ($items['~insert'           ]->disabled_get() === true) $items['~insert'           ]->disabled_set(false);
+              if ($items['~insert_and_update']->disabled_get() === true) $items['~insert_and_update']->disabled_set(false);
             }
           }
-          if ($items['fields']->children_select_count() === 0 || $has_controls === false) {$items['~insert']->disabled_set(); if (isset($items['~insert_and_update'])) $items['~insert_and_update']->disabled_set();}
           if ($items['fields']->children_select_count() === 0) {
             $form->child_update(
               'fields', new markup('x-no-items', ['data-style' => 'table'], 'no fields')
