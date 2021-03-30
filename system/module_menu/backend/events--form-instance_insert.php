@@ -14,15 +14,17 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
-    if (!$form->category_id) $form->category_id = page::get_current()->args_get('category_id');
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-    # field 'id_tree'
-      if ($entity->name === 'tree_item') {
-        $items['#id_tree']->value_set($form->category_id);
-        $items['#id_parent']->is_builded = false;
-        $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
-        $items['#id_parent']->build();
+    if ($form->has_error_on_init === false) {
+      if (!$form->category_id) $form->category_id = page::get_current()->args_get('category_id');
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+      # field 'id_tree'
+        if ($entity->name === 'tree_item') {
+          $items['#id_tree']->value_set($form->category_id);
+          $items['#id_parent']->is_builded = false;
+          $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
+          $items['#id_parent']->build();
+        }
       }
     }
   }

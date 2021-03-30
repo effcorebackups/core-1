@@ -27,14 +27,16 @@ namespace effcore\modules\user {
   }
 
   static function on_init($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-    # field 'role'
-      if ($entity->name === 'relation_role_ws_user') {
-        $items['#id_role']->is_builded = false;
-        $items['#id_role']->disabled['anonymous' ] = 'anonymous';
-        $items['#id_role']->disabled['registered'] = 'registered';
-        $items['#id_role']->build();
+    if ($form->has_error_on_init === false) {
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+      # field 'role'
+        if ($entity->name === 'relation_role_ws_user') {
+          $items['#id_role']->is_builded = false;
+          $items['#id_role']->disabled['anonymous' ] = 'anonymous';
+          $items['#id_role']->disabled['registered'] = 'registered';
+          $items['#id_role']->build();
+        }
       }
     }
   }

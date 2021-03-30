@@ -67,9 +67,9 @@ namespace effcore\modules\storage {
               ], -500), 'form_message'
             );
           }
-        } else $items['fields']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message');
-      }   else $items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message');
-    }     else $items['fields']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message');
+        } else {$items['fields']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message'); $form->has_error_on_init = true;}
+      }   else {$items['fields']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message'); $form->has_error_on_init = true;}
+    }     else {$items['fields']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message'); $form->has_error_on_init = true;}
   }
 
   static function on_validate($event, $form, $items) {

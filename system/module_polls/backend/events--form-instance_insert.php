@@ -15,22 +15,24 @@ namespace effcore\modules\polls {
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-      if ($entity->name === 'poll') {
-        $form->is_redirect_enabled = false;
-        $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
-        $widget_answers = new widget_texts;
-        $widget_answers->title = 'Answers';
-        $widget_answers->item_title = 'Answer';
-        $widget_answers->name_complex = 'widget_answers';
-        $widget_answers->cform = $form;
-        $widget_answers->weight = -500;
-        $widget_answers->build();
-        $widget_answers->value_set_complex([
-          (object)['weight' =>  0, 'id' => 0, 'text' => 'Answer 1'],
-          (object)['weight' => -5, 'id' => 0, 'text' => 'Answer 2']], true);
-        $form->child_select('fields')->child_insert($widget_answers, 'answers');
+    if ($form->has_error_on_init === false) {
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+        if ($entity->name === 'poll') {
+          $form->is_redirect_enabled = false;
+          $items['#expired']->value_set(core::datetime_get('+'.core::date_period_w.' second'));
+          $widget_answers = new widget_texts;
+          $widget_answers->title = 'Answers';
+          $widget_answers->item_title = 'Answer';
+          $widget_answers->name_complex = 'widget_answers';
+          $widget_answers->cform = $form;
+          $widget_answers->weight = -500;
+          $widget_answers->build();
+          $widget_answers->value_set_complex([
+            (object)['weight' =>  0, 'id' => 0, 'text' => 'Answer 1'],
+            (object)['weight' => -5, 'id' => 0, 'text' => 'Answer 2']], true);
+          $form->child_select('fields')->child_insert($widget_answers, 'answers');
+        }
       }
     }
   }
