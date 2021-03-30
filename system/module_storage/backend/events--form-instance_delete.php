@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
   }
 
   static function on_init($event, $form, $items) {
-    $items['~delete']->disabled_set();
+    $items['~delete']->disabled_set(true);
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
@@ -41,12 +41,12 @@ namespace effcore\modules\storage {
                 $question = new markup('p', [], new text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new text($entity->title))->render(), 'id' => $form->instance_id]));
                 $items['info']->child_insert($question, 'question');
                 $items['~delete']->disabled_set(false);
-              } else $items['info']->child_insert(new markup('p', [], new text('entity is embedded'                         )), 'error_message');
-            }   else $items['info']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message');
-          }     else $items['info']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message');
-        }       else $items['info']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message');
-      }         else $items['info']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message');
-    }           else $items['info']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message');
+              } else {$items['info']->child_insert(new markup('p', [], new text('entity is embedded'                         )), 'error_message'); $form->has_error_on_init = true;}
+            }   else {$items['info']->child_insert(new markup('p', [], new text('wrong instance key'                         )), 'error_message'); $form->has_error_on_init = true;}
+          }     else {$items['info']->child_insert(new markup('p', [], new text('wrong instance keys'                        )), 'error_message'); $form->has_error_on_init = true;}
+        }       else {$items['info']->child_insert(new markup('p', [], new text('management for this entity is not available')), 'error_message'); $form->has_error_on_init = true;}
+      }         else {$items['info']->child_insert(new markup('p', [], new text('wrong entity name'                          )), 'error_message'); $form->has_error_on_init = true;}
+    }           else {$items['info']->child_insert(new markup('p', [], new text('wrong management group'                     )), 'error_message'); $form->has_error_on_init = true;}
   }
 
   static function on_validate($event, $form, $items) {

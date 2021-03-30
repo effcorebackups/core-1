@@ -16,22 +16,24 @@ namespace effcore\modules\menu {
           abstract class events_form_instance_delete {
 
   static function on_init($event, $form, $items) {
-    $entity = entity::get($form->entity_name);
-    if ($entity) {
-      if ($entity->name === 'tree_item' && !empty($form->_instance)) {
-        $tree_item = tree_item::select(
-          $form->_instance->id,
-          $form->_instance->id_tree);
-        $tree_item->url = '';
-        $tree_item->build();
-        $tree_item_children = $tree_item->children_select_recursive();
-        if ($tree_item_children) {
-          $children = new markup('ul');
-          $question = new markup('p', [], ['question' => new text('The following related items will also be deleted:'), 'children' => $children]);
-          foreach ($tree_item_children as $c_child) {
-            $children->child_insert(new markup('li', [], $c_child->id));
-            $form->_related[] = $c_child->id;}
-          $items['info']->child_insert($question, 'question_for_related');
+    if ($form->has_error_on_init === false) {
+      $entity = entity::get($form->entity_name);
+      if ($entity) {
+        if ($entity->name === 'tree_item' && !empty($form->_instance)) {
+          $tree_item = tree_item::select(
+            $form->_instance->id,
+            $form->_instance->id_tree);
+          $tree_item->url = '';
+          $tree_item->build();
+          $tree_item_children = $tree_item->children_select_recursive();
+          if ($tree_item_children) {
+            $children = new markup('ul');
+            $question = new markup('p', [], ['question' => new text('The following related items will also be deleted:'), 'children' => $children]);
+            foreach ($tree_item_children as $c_child) {
+              $children->child_insert(new markup('li', [], $c_child->id));
+              $form->_related[] = $c_child->id;}
+            $items['info']->child_insert($question, 'question_for_related');
+          }
         }
       }
     }
