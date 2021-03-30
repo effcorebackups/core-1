@@ -394,7 +394,6 @@ translations
     - LOST LAYOUT\: %%_id: ПОТЕРЯННЫЙ МАКЕТ: %%_id
     - Main color: Основной цвет
     - Main colors: Основные цвета
-    - Main menu: Главное меню
     - management for this entity is not available: управление для этой сущности недоступно
     - Management: Управление
     - Managers: Управляющие
@@ -653,7 +652,6 @@ translations
     - Test: Тест
     - Tests: Тесты
     - Text area: Текстовая область
-    - Text Copyright: Текст Авторских прав
     - Text direction code: Код направления текста
     - Text direction: Направление текста
     - Text: Текст
