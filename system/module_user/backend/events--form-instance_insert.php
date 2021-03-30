@@ -16,13 +16,15 @@ namespace effcore\modules\user {
 
   static function on_build($event, $form) {
     $entity = entity::get($form->entity_name);
-    if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
-      $captcha = new form_plugin('field_captcha', [], [], -500);
-      $form->child_select('fields')->child_insert($captcha, 'captcha');
-      $form->child_delete('button_cancel');
-      $form->child_select('button_insert')->title = 'send';
-      $form->is_show_result_message = false;
-      $form->is_redirect_enabled    = false;
+    if ($entity) {
+      if ($entity->name === 'feedback' && page::get_current()->id !== 'instance_insert') {
+        $captcha = new form_plugin('field_captcha', [], [], -500);
+        $form->child_select('fields')->child_insert($captcha, 'captcha');
+        $form->child_delete('button_cancel');
+        $form->child_select('button_insert')->title = 'send';
+        $form->is_show_result_message = false;
+        $form->is_redirect_enabled    = false;
+      }
     }
   }
 

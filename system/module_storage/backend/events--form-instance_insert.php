@@ -23,8 +23,9 @@ namespace effcore\modules\storage {
   }
 
   static function on_init($event, $form, $items) {
-    $items['~insert'           ]->disabled_set(true);
-    $items['~insert_and_update']->disabled_set(true);
+    if (isset($items['~insert_and_update']))
+              $items['~insert_and_update']->disabled_set(true);
+              $items['~insert'           ]->disabled_set(true);
     $entity = entity::get($form->entity_name);
     $groups = entity::get_managing_group_ids();
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
@@ -48,8 +49,8 @@ namespace effcore\modules\storage {
               $c_control->build();
               $c_control->value_set_initial('', true);
               $items['fields']->child_insert($c_control, $c_name);
-              if ($items['~insert'           ]->disabled_get() === true) $items['~insert'           ]->disabled_set(false);
-              if ($items['~insert_and_update']->disabled_get() === true) $items['~insert_and_update']->disabled_set(false);
+              if (isset($items['~insert_and_update']) && $items['~insert_and_update']->disabled_get() === true) $items['~insert_and_update']->disabled_set(false);
+              if (isset($items['~insert'           ]) && $items['~insert'           ]->disabled_get() === true) $items['~insert'           ]->disabled_set(false);
             }
           }
           if ($items['fields']->children_select_count() === 0) {
