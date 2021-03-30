@@ -10,12 +10,24 @@ namespace effcore\modules\page {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\field_number;
+          use \effcore\form_part;
           use \effcore\layout;
           use \effcore\markup;
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\widget_area_blocks;
           abstract class events_form_instance_update {
+
+  static function on_build($event, $form) {
+    $entity = entity::get($form->entity_name);
+    if ($entity) {
+      if ($entity->name === 'page') {
+        $form->child_select('fields')->child_insert(
+          form_part::get('form_instance_update__page_width'), 'page_width'
+        );
+      }
+    }
+  }
 
   static function on_init($event, $form, $items) {
     if ($form->has_error_on_init === false) {
@@ -27,20 +39,8 @@ namespace effcore\modules\page {
             $items['#url']->disabled_set(true);
           }
         # field 'min width' + field 'max width'
-          $width_min = new field_number('Minimum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], +140);
-          $width_max = new field_number('Maximum width', new text_multiline(['Value in pixels.', 'Leave 0 if you want to use global page size settings.']), [], +140);
-          $width_min->build();
-          $width_max->build();
-          $width_min->name_set('width_min');
-          $width_max->name_set('width_max');
-          $width_min->value_set($form->_instance->data['width_min'] ?? 0);
-          $width_max->value_set($form->_instance->data['width_max'] ?? 0);
-          $width_min->min_set(0    );
-          $width_max->min_set(0    );
-          $width_min->max_set(10000);
-          $width_max->max_set(10000);
-          $form->child_select('fields')->child_insert($width_min, 'width_min');
-          $form->child_select('fields')->child_insert($width_max, 'width_max');
+          $items['#width_min']->value_set($form->_instance->data['width_min'] ?? 0);
+          $items['#width_max']->value_set($form->_instance->data['width_max'] ?? 0);
         # meta
           if (!access::check((object)['roles'       => ['admins'      => 'admins'     ],
                                       'permissions' => ['manage__seo' => 'manage__seo']])) {

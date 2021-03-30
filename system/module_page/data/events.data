@@ -36,6 +36,11 @@ events
       weight: +500
       handler: \effcore\modules\page\events_file::on_load_static_video
 # ─────────────────────────────────────────────────────────────────────
+  on_form_build
+  - instance_update_page|event
+      for: instance_update
+      weight: +500
+      handler: \effcore\modules\page\events_form_instance_update::on_build
   on_form_init
   - colors|event
       for: colors

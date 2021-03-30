@@ -32,8 +32,8 @@ namespace effcore\modules\storage {
               count($id_values)) {
             $conditions = array_combine($id_keys, $id_values);
             $instance = new instance($entity_name, $conditions);
-            if ($instance->select() == null && url::back_url_get() != '') url::go(url::back_url_get()); # after deletion
-            if ($instance->select() == null && url::back_url_get() == '')
+            if ($instance->select() === null && url::back_url_get() !== '') url::go(url::back_url_get()); # after deletion
+            if ($instance->select() === null && url::back_url_get() === '')
                  core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], br.br));
           } else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',                         'go to <a href="/">front page</a>'], [], br.br));
         }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], br.br));
