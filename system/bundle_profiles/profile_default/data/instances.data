@@ -9,7 +9,6 @@ instances
     - title: Front
     - url: /
     - is_https: 0
-    - module_id: profile_default
     - blocks
       - system
         - block__page_actions|block_preset_link
@@ -37,8 +36,8 @@ instances
         - block__title|block_preset_link
             id: block__title
       - content
-        - block__text_sql__front_default|block_preset_link
-            id: block__text_sql__front_default
+        - block__text_sql__front|block_preset_link
+            id: block__text_sql__front
             title: The main text of the page
 - page_login|instance
     entity_name: page
@@ -47,7 +46,6 @@ instances
     - title: Login
     - url: /login
     - is_https: 1
-    - module_id: profile_default
     - access
         roles
         - =: anonymous
@@ -255,9 +253,9 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_front_default|instance
+- text_front|instance
     entity_name: text
     values
-    - id: front_default
+    - id: front
     - description: Text Front
     - text: Welcome to our site!

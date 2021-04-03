@@ -2,13 +2,19 @@ translations
 - ru|translation
     code: ru
     data
+    - Access recovery: Восстановление доступа
+    - Anonymous user's menu: Меню анонимного пользователя
+    - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - Grid 2x5 \| profile "Default": Сетка 2x5 | профиль "По умолчанию"
     - Grid 3x5 \| profile "Default": Сетка 3x5 | профиль "По умолчанию"
     - Grid 4x5 \| profile "Default": Сетка 4x5 | профиль "По умолчанию"
     - Grid 5x5 \| profile "Default": Сетка 5x5 | профиль "По умолчанию"
     - Module for profile "Default".: Модуль для профиля "По умолчанию".
+    - New User Registration: Регистрация нового пользователя
     - Profile "Default": Профиль "По умолчанию"
+    - Registered user's menu: Меню зарегистрированного пользователя
     - Text Front: Текст Главной
     - The main text of the page: Основной текст страницы
     - Universal layout \| profile "Default": Универсальный макет | профиль "По умолчанию"
+    - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - Welcome to our site!: Добро пожаловать на наш сайт!

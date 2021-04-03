@@ -14,7 +14,7 @@ block_presets
     id: block__title
     managing_group: Other
     managing_title: Page title
-    title: Title
+    title: Page title
     title_is_visible: false
     attributes
     - data-block: true
@@ -25,7 +25,7 @@ block_presets
     id: block__page_actions
     managing_group: Other
     managing_title: Page actions
-    title: Actions
+    title: Page actions
     title_is_visible: false
     attributes
     - data-block: true

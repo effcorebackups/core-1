@@ -41,7 +41,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__security_settings|block
-          title: Settings
+          title: Security settings form
           title_is_visible: false
           attributes
           - data-id: block__form__security_settings

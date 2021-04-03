@@ -143,12 +143,8 @@ namespace effcore\modules\storage {
           }
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
-        # going back
           if ($form->is_redirect_enabled) {
-            $back_update_0 = page::get_current()->args_get('back_update_0');
-            $back_update_n = page::get_current()->args_get('back_update_n');
-            url::go($back_update_0 ?: (url::back_url_get() ?: (
-                    $back_update_n ?: $entity->make_url_for_select_multiple() )));
+            url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
           }
           break;
       }

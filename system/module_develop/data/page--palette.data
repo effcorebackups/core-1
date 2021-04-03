@@ -30,7 +30,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__palette|block
-          title: Palette
+          title: Palette generation form
           title_is_visible: false
           attributes
           - data-id: block__form__palette

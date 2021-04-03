@@ -33,7 +33,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__instance_select|block
-          title: Instance
+          title: Information about the selected entry
           title_is_visible: false
           attributes
           - data-id: block__instance_select

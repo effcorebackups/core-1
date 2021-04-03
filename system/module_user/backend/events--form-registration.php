@@ -34,7 +34,7 @@ namespace effcore\modules\user {
           message::insert(
             new text('Welcome, %%_nickname!', ['nickname' => $user->nickname])
           );
-          url::go('/user/'.$user->nickname);
+          url::go(url::back_url_get() ?: '/user/'.$user->nickname);
         } else {
           message::insert(
             'User was not registered!', 'error'

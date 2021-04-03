@@ -50,10 +50,10 @@ translations
     - Decorators static: Декораторы статические
     - default text: текст по умолчанию
     - Default type.: Тип по умолчанию.
-    - Demo form: Демонстрационная форма
-    - Demo NoSQL: Демонстрационное NoSQL
-    - Demo SQL: Демонстрационное SQL
-    - Demo via decorator: Демонстрационное через декоратор
+    - Demonstration form: Демонстрационная форма
+    - Demonstration menu NoSQL: Меню демонстрационное NoSQL
+    - Demonstration menu SQL: Меню демонстрационное SQL
+    - Demonstration menu via decorator: Меню демонстрационное через декоратор
     - Description for messages: Описание для сообщений
     - DL table: DL таблица
     - Embedded elements: Встроенные элементы
@@ -182,6 +182,7 @@ translations
     - Switcher 2 (checked): Выключатель 2 (отмечен)
     - Switcher 3 (disabled): Выключатель 3 (отключён)
     - Switcher 4 (disabled + checked): Выключатель 4 (отключён + отмечен)
+    - Text for perform the tests: Текст для выполнения тестов
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!

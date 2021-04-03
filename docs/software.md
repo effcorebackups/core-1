@@ -139,21 +139,7 @@ It is recommended to use the next software:
 - VMWare Fusion Pro (mac) for working with virtual machines;
 - Find Any Files (mac) for searching in the code;
 - VisualGrep (mac) for searching in the code.
-
-
-Incompatibility with third-party software
-=====================================================================
-
-The following software is incompatible:
-- Kaspersky Internet Security plugin for browser can insert to page
-  some CSS with strings like "appearance: checkbox".
-  This string can break your own styles of form elements like
-  checkboxes, radios and other.
-  This line has the next form: "input[type="checkbox"]
-  {-webkit-appearance: checkbox !important}".
-  This line is contained in the file "/Applications/Kaspersky Anti-Virus For Mac.app/
-  Contents/PlugIns/KasperskySecurity.appex/Contents/Resources/Keyboard.css".
-  The only thing you can do is remove this line from this file on your side.
+- Paletter (mac) for generating a color palette.
 
 
 Applications with subscription
@@ -186,6 +172,7 @@ Trademarks
 - Neor Profile SQL is registered trademarks or trademarks of Neor LLC.
 - NGINX® is registered trademarks of Nginx Software Inc.
 - Opera® is registered trademarks or trademarks of Opera Software AS.
+- Paletter is registered trademarks or trademarks of Toys, Inc.
 - PHP is registered trademarks or trademarks of PHP Group.
 - Proxie is registered trademarks or trademarks of Proxie Team.
 - RegExRX is registered trademarks or trademarks of MacTechnologies Consulting.

@@ -32,7 +32,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__locales|block
-          title: Locale settings
+          title: Locale settings form
           title_is_visible: false
           attributes
           - data-id: block__form__locales

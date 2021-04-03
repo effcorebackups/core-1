@@ -1,6 +1,6 @@
 selections
-- social_networks_classic|selection
-    id: social_networks_classic
+- social_networks|selection
+    id: social_networks
     title: Social networks
     template: content
     decorator_params
@@ -17,9 +17,9 @@ selections
       - id_!f: ~picture.id
       - id_in_begin: in (
       - id_in_!,
-        - 0_!v: logotype_twitter_classic
-        - 1_!v: logotype_facebook_classic
-        - 2_!v: logotype_instagram_classic
+        - 0_!v: logotype_twitter
+        - 1_!v: logotype_facebook
+        - 2_!v: logotype_instagram
       - id_in_end: )
     fields
     - picture.id

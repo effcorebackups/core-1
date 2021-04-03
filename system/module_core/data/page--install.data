@@ -31,7 +31,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__install|block
-          title: System Installation Parameters
+          title: System installation parameters form
           title_is_visible: false
           attributes
           - data-id: block__form__install

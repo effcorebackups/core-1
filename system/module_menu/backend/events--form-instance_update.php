@@ -6,8 +6,8 @@
 
 namespace effcore\modules\menu {
           use \effcore\entity;
-          use \effcore\page;
           use \effcore\tree_item;
+          use \effcore\url;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -23,6 +23,7 @@ namespace effcore\modules\menu {
           foreach ($tree_item->children_select_recursive() as $c_child) $items['#id_parent']->disabled[$c_child->id] = $c_child->id;
           $items['#id_parent']->disabled[$form->_instance->id] = $form->_instance->id;
           $items['#id_parent']->is_builded = false;
+          $items['#id_parent']->title__not_selected = '- root -';
           $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->_instance->id_tree];
           $items['#id_parent']->build();
           $items['#id_parent']->value_set(
@@ -40,7 +41,10 @@ namespace effcore\modules\menu {
         case 'update':
         case 'cancel':
           if ($entity->name === 'tree_item' && !empty($form->_instance)) {
-            page::get_current()->args_set('back_update_0', $entity->make_url_for_select_multiple().'///'.$form->_instance->id_tree);
+            if (!url::back_url_get()) {
+              $id_tree = $form->_instance->id_tree;
+              url::get_current()->query_arg_insert('back', $entity->make_url_for_select_multiple().'///'.$id_tree);
+            }
           }
           break;
       }

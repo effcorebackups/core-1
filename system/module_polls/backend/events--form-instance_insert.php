@@ -8,7 +8,6 @@ namespace effcore\modules\polls {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
-          use \effcore\page;
           use \effcore\text;
           use \effcore\url;
           use \effcore\widget_texts;
@@ -72,11 +71,7 @@ namespace effcore\modules\polls {
             static::on_init(null, $form, $items);
           # ↓↓↓ no break ↓↓↓
           case 'cancel':
-          # going back
-            $back_insert_0 = page::get_current()->args_get('back_insert_0');
-            $back_insert_n = page::get_current()->args_get('back_insert_n');
-            url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                    $back_insert_n ?: $entity->make_url_for_select_multiple() )));
+            url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
             break;
         }
       }

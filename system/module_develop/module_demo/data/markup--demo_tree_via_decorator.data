@@ -1,7 +1,7 @@
 markup
 - demo_tree_via_decorator|decorator
     view_type: tree
-    title: Demo via decorator
+    title: Demonstration menu via decorator
     id: demo_tree
     data
     - rowid-1

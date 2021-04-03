@@ -693,6 +693,7 @@ instances
     - id: user_registered
     - title: Registered user's menu
     - title_is_visible: 0
+    - is_embedded: 1
     - access
         roles
         - =: registered
@@ -702,6 +703,7 @@ instances
     - id: user_anonymous
     - title: Anonymous user's menu
     - title_is_visible: 0
+    - is_embedded: 1
     - access
         roles
         - =: anonymous

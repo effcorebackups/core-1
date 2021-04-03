@@ -6,7 +6,6 @@ forms
     - novalidate: true
     children
     - settings|fieldset
-        title: Settings
         children
         - content|field_textarea
             title: Content of the "global.css" file

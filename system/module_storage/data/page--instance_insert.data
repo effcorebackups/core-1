@@ -34,7 +34,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__instance_insert|block
-          title: Insert instance
+          title: Data insertion form
           title_is_visible: false
           attributes
           - data-id: block__form__instance_insert

@@ -11,6 +11,7 @@ namespace effcore\modules\menu {
           use \effcore\text;
           use \effcore\tree_item;
           use \effcore\tree;
+          use \effcore\url;
           abstract class events_form_instance_insert {
 
   static function on_init($event, $form, $items) {
@@ -22,6 +23,7 @@ namespace effcore\modules\menu {
         if ($entity->name === 'tree_item') {
           $items['#id_tree']->value_set($form->category_id);
           $items['#id_parent']->is_builded = false;
+          $items['#id_parent']->title__not_selected = '- root -';
           $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
           $items['#id_parent']->build();
         }
@@ -72,8 +74,10 @@ namespace effcore\modules\menu {
         case 'insert_and_update':
         case 'cancel':
           if ($entity->name === 'tree_item') {
-            $id_tree = $items['#id_tree']->value_get();
-            page::get_current()->args_set('back_insert_0', $entity->make_url_for_select_multiple().'///'.$id_tree);
+            if (!url::back_url_get()) {
+              $id_tree = $items['#id_tree']->value_get();
+              url::get_current()->query_arg_insert('back', $entity->make_url_for_select_multiple().'///'.$id_tree);
+            }
           }
           break;
       }

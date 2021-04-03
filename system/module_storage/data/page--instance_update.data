@@ -34,7 +34,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__instance_update|block
-          title: Update instance
+          title: Data update form
           title_is_visible: false
           attributes
           - data-id: block__form__instance_update

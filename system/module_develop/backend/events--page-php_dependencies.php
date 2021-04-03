@@ -5,7 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\develop {
-          use const \effcore\dir_root;
+          use const \effcore\dir_modules;
+          use const \effcore\dir_system;
           use \effcore\core;
           use \effcore\decorator;
           use \effcore\file;
@@ -103,7 +104,8 @@ namespace effcore\modules\develop {
       }
     }
   # scan each php file on used functions
-    foreach (file::select_recursive(dir_root, '%^.*\\.php$%') as $c_path => $c_file) {
+    foreach (file::select_recursive(dir_system,  '%^.*\\.php$%') +
+             file::select_recursive(dir_modules, '%^.*\\.php$%') as $c_path => $c_file) {
       $c_matches = [];
       $c_path_relative = $c_file->path_get_relative();
       $c_module_id = key(core::in_array_inclusions_find($c_path_relative, $modules_path));

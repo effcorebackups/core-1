@@ -39,7 +39,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__test|block
-          title: Running the test
+          title: Test execution form
           title_is_visible: false
           attributes
           - data-id: block__form__test

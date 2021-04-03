@@ -2,6 +2,8 @@ translations
 - ru|translation
     code: ru
     data
+    - - no -: - нет -
+    - - root -: - корень -
     - - select -: - выбрать -
     - - system value -: - системное значение -
     - %%_entity_title_context\: delete: %%_entity_title_context: удалить
@@ -13,7 +15,7 @@ translations
     - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
     - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
     - Access forbidden: Доступ запрещён
-    - Access recovery: Восстановление доступа
+    - Access recovery form: Форма восстановления доступа
     - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
     - Access: Доступ
     - access: доступ
@@ -26,12 +28,10 @@ translations
     - All caches was reset.: Все кэши были сброшены.
     - All colors: Все цвета
     - All users: Все пользователи
-    - Alternative text: Альтернативный текст
-    - An error occurred during installation!: При установке произошла ошибка!
+    - An error occurred during installation!: Произошла ошибка при установке!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Примером такого содержания могут служить: мета-описание, ключевые мета-слова, пользовательские мета-поля (например, google-site-verification), пользовательские блоки CSS, пользовательские блоки JS (например, Google Analytics).
     - Anonymous user: Анонимный пользователь
     - Anonymous user's breadcrumbs: Хлебные крошки анонимного пользователя
-    - Anonymous user's menu: Меню анонимного пользователя
     - Anonymous users: Анонимные пользователи
     - Anonymous: Аноним
     - Answer: Ответ
@@ -67,6 +67,7 @@ translations
     - Button: Кнопка
     - button: кнопка
     - Button\: text: Кнопка: текст
+    - Cache update form: Форма обновления кэша
     - cache: кэш
     - cancel: отменить
     - Canvas: Холст
@@ -82,14 +83,16 @@ translations
     - click to open in new window: нажмите, чтобы открыть в новом окне
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
+    - Color assignment form: Форма присвоения цвета
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
+    - Color preset apply form: Форма применения цветовых предустановок
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - Color: Цвет
-    - Colors presets: Цветовые предустановки
     - Colors was applied.: Цвета были применены.
     - Colors was not applied!: Цвета не были применены!
     - Colors: Цвета
     - Conditions: Условия
+    - Console settings form: Форма настроек консоли
     - Console settings: Настройки консоли
     - Content in the &lt;head&gt;: Содержимое в &lt;head&gt;
     - Content of the "global.css" file: Содержимое файла "global.css"
@@ -112,10 +115,14 @@ translations
     - Current password: Текущий пароль
     - Current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - Current: Текущие
+    - Data deletion form: Форма удаления данных
     - Data hash: Хэш данных
     - Data ID: ID данных
+    - Data insertion form: Форма вставки данных
+    - Data management form: Форма управления данными
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление данных №%%_number для модуля "%%_title" (%%_id) не было применено!
+    - Data update form: Форма обновления данных
     - Data update is required: Требуется обновление данных
     - Data: Данные
     - Database name: Имя базы данных
@@ -128,9 +135,7 @@ translations
     - Definition list: Список определений
     - delete audio "%%_audio": удалить аудио "%%_audio"
     - delete file "%%_file": удалить файл "%%_file"
-    - Delete instance: Удалить экземпляр
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
-    - Delete modules data: Удалить данные модулей
     - delete picture "%%_picture": удалить изображение "%%_picture"
     - delete video "%%_video": удалить видео "%%_video"
     - Delete: Удалить
@@ -155,11 +160,9 @@ translations
     - Driver is not selected!: Драйвер не выбран!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: был найден дубликат типа "%%_type" с ID = "%%_id"
-    - Edit user %%_nickname_page_context{nickname}: Редактировать пользователя %%_nickname_page_context{nickname}
     - edit: редактировать
     - Edit: Редактировать
     - EMail: Адрес электронной почты
-    - Empty module: Пустой модуль
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - English: Английский
     - enter edit mode: войти в режим редактирования
@@ -283,6 +286,7 @@ translations
     - generate: генерировать
     - Generation done.: Генерация выполнена.
     - GiB: ГиБ
+    - Global CSS editing form: Форма редактирования глобального CSS
     - Global CSS: Глобальный CSS
     - Glyphs: Глифы
     - go to %%_language language: перейти на %%_language язык
@@ -302,11 +306,11 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Info\: manage: Информация: управлять
+    - Information about the selected entry: Информация о выбранной записи
     - Information: Информация
     - Insert a new item of type "%%_entity_title_context" on new page.: Вставить новый элемент типа "%%_entity_title_context" на новой странице.
     - insert and update: вставить и обновить
     - Insert block: Вставить блок
-    - Insert instance: Вставить экземпляр
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
@@ -353,11 +357,11 @@ translations
     - Language: Язык
     - Languages: Языки
     - launch: запуск
+    - Layout editing form: Форма редактирования макета
     - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Оставьте 0, если Вы хотите использовать глобальные настройки размера страницы.
-    - Leave a vote: Оставить свой голос
     - leave edit mode: выйти из режима редактирования
     - Leave the field blank if you do not want to change its value.: Оставьте поле пустым, если Вы не желаете изменять его значение.
     - left to right (ltr): слева направо (ltr)
@@ -378,16 +382,18 @@ translations
     - Local Date: Локальная Дата
     - Local Date/Time: Локальная Дата/Время
     - Local Time: Локальное Время
-    - Locale settings: Настройки локализации
+    - Locale settings form: Форма настройки локализации
     - Locales: Локализации
     - Locales\: manage: Локализации: управлять
     - Logic: Логика
+    - Login form: Форма входа
     - login: вход
     - Login: Вход
     - Logotype: Логотип
     - logotype: логотип
     - Logotypes: Логотипы
     - logotypes: логотипы
+    - Logout form: Форма выхода
     - logout: выход
     - Logout: Выход
     - LOST FIELD: ПОТЕРЯННОЕ ПОЛЕ
@@ -409,6 +415,7 @@ translations
     - Message from storage\: %%_message: Сообщение от хранилища: %%_message
     - Message: Сообщение
     - Messages: Сообщения
+    - META editing form: Форма редактирования META
     - META: МЕТА
     - MiB: МиБ
     - Minimum width: Минимальная ширина
@@ -431,7 +438,11 @@ translations
     - Module for working with polls.: Модуль для работы с опросами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Module ID: ID модуля
+    - Module installation form: Форма установки модулей
     - Module: Модуль
+    - Modules data deletion form: Форма удаления данных модулей
+    - Modules data update form: Форма обновления данных модулей
+    - Modules files update form: Форма обновления файлов модулей
     - Modules: Модули
     - Modules\: manage: Модули: управлять
     - More info in "%%_info".: Больше информации в "%%_info".
@@ -444,7 +455,6 @@ translations
     - new item: новый элемент
     - New password should be different from the current password!: Новый пароль должен отличаться от текущего!
     - New password: Новый пароль
-    - New User Registration: Регистрация нового пользователя
     - nickname: псевдоним
     - Nickname: Псевдоним
     - No additional parameters.: Нет дополнительных параметров.
@@ -478,6 +488,7 @@ translations
     - Page\: select: Страница: выбрать
     - Page\: update: Страница: обновить
     - Pages: Страницы
+    - Palette generation form: Форма генерирования палитры
     - Palette: Палитра
     - Parameter: Параметр
     - Parameters: Параметры
@@ -535,17 +546,14 @@ translations
     - Read access: Доступ на чтение
     - recovery: восстановление
     - Recovery: Восстановление
-    - Register user: Зарегистрировать пользователя
     - register: зарегистрировать
     - Registered user: Зарегистрированный пользователь
     - Registered user's breadcrumbs: Хлебные крошки зарегистрированного пользователя
-    - Registered user's menu: Меню зарегистрированного пользователя
     - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
+    - Registration form: Форма регистрации
     - registration: регистрация
     - Registration: Регистрация
-    - Related items of type "%%_type" with ID = "%%_id" was deleted.: Связанные элементы типа "%%_type" с ID = "%%_id" были удалены.
-    - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Связанные элементы типа "%%_type" с ID = "%%_id" не были удалены.
     - Relation: Связь
     - Relation\: Role ↔ Permission: Связь: Роль ↔ Разрешение
     - Relation\: Role ↔ Permission\: delete: Связь: Роль ↔ Разрешение: удалить
@@ -569,6 +577,7 @@ translations
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
     - right to left (rtl): справа налево (rtl)
     - right to left: справа налево
+    - robots.txt editing form: Форма редактирования robots.txt
     - Role ID: ID роли
     - role: роль
     - Role: Роль
@@ -579,13 +588,13 @@ translations
     - roles: роли
     - Roles: Роли
     - Row ID: ID строки
-    - Running the test: Запуск теста
     - Russian: Русский
     - save: сохранить
     - Search: Поиск
     - search: поиск
     - sec.: сек.
     - Section "%%_title": Раздел "%%_title"
+    - Security settings form: Форма настроек безопасности
     - Security: Безопасность
     - Security\: manage: Безопасность: управлять
     - select all rows: выбрать все строки
@@ -613,6 +622,7 @@ translations
     - Settings: Настройки
     - Shared parameters: Общие параметры
     - Simple layout: Простой макет
+    - Sitemap editing form: Форма редактирования Sitemap
     - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается).
     - size: размер
@@ -632,7 +642,7 @@ translations
     - Switchers: Выключатели
     - System breadcrumbs: Системные хлебные крошки
     - System information: Информация о системе
-    - System Installation Parameters: Параметры установки системы
+    - System installation parameters form: Форма параметров установки системы
     - system logotype: логотип системы
     - System menu: Системное меню
     - System was installed.: Система была установлена.
@@ -646,9 +656,9 @@ translations
     - Tabs\: link active (no background): Вкладки: ссылка активная (нет фона)
     - Tabs\: link active: Вкладки: ссылка активная
     - Tabs\: link: Вкладки: ссылка
-    - Target: Цель
     - Telephone number: Номер телефона
     - Templates: Шаблоны
+    - Test execution form: Форма выполнения теста
     - Test: Тест
     - Tests: Тесты
     - Text area: Текстовая область
@@ -697,7 +707,6 @@ translations
     - Tree\: update: Дерево: обновить
     - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
-    - Turn on/off modules: Включить/выключить модули
     - Type: Тип
     - type: тип
     - Types: Типы
@@ -706,23 +715,20 @@ translations
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update Cache: Обновить кэш
-    - Update instance: Обновить экземпляр
-    - Update modules data: Обновить данные модулей
-    - Update modules files: Обновить файлы модулей
     - Update: Обновить
     - update: обновить
     - updated: обновлено
     - Updated: Обновлено
     - Use global META: Использовать глобальный МЕТА
     - used by modules: используется модулями
-    - User %%_nickname_page_context{nickname}: Пользователь %%_nickname_page_context{nickname}
     - User agent: Агент пользователя
     - User ID: ID пользователя
+    - User information: Информация о пользователе
     - User name: Имя пользователя
     - User permissions: Разрешения пользователя
     - User roles: Роли пользователя
     - User type: Тип пользователя
+    - User update form: Форма обновления пользователя
     - User update: Обновление пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
@@ -749,13 +755,14 @@ translations
     - Video\: select: Видео: выбрать
     - Video\: update: Видео: обновить
     - Videos: Видео
+    - View customization form: Форма настройки вида
     - View more: Смотреть больше
-    - View settings: Настройки вида
     - View: Вид
     - View\: manage: Вид: управлять
     - Visibility: Видимость
     - Vote can be canceled: Голос может быть отменён
     - vote: голосовать
+    - Voting form: Форма голосования
     - Warning: Предупреждение
     - warning: предупреждение
     - Web server: Веб-сервер

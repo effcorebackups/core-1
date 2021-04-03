@@ -29,7 +29,7 @@ namespace effcore\modules\locales {
         $c_language->title_en.' / '.$c_language->title_native :
         $c_language->title_en;
       $c_href = $page->args_get('base').'/'.$c_language->code;
-      if (url::is_active($c_href))
+      if (url::is_active($c_href, 'path'))
            $c_link = new markup('a', ['href' => $c_href, 'title' => new text('go to %%_language language', ['language' => $c_language->title_en], false), 'aria-current' => 'true'], new text_simple($c_title));
       else $c_link = new markup('a', ['href' => $c_href, 'title' => new text('go to %%_language language', ['language' => $c_language->title_en], false)                          ], new text_simple($c_title));
       $menu->child_select('container')->child_insert(

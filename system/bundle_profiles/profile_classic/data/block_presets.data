@@ -1,13 +1,13 @@
 block_presets
-- block__selection__social_networks_classic|block_preset
-    id: block__selection__social_networks_classic
+- block__selection__social_networks|block_preset
+    id: block__selection__social_networks
     managing_group: Selections
     managing_title: Social networks
     title: Social networks
     title_is_visible: false
     attributes
     - data-block: true
-    - data-id: block__selection__social_networks_classic
+    - data-id: block__selection__social_networks
     - data-at-right: true
     type: link
-    source: selections/profile_classic/social_networks_classic
+    source: selections/profile_classic/social_networks

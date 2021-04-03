@@ -2,6 +2,8 @@ translations
 - be|translation
     code: be
     data
+    - - no -: - няма -
+    - - root -: - корань -
     - - select -: - абраць -
     - - system value -: - сістэмнае значэнне -
     - %%_entity_title_context\: delete: %%_entity_title_context: выдаліць
@@ -13,7 +15,7 @@ translations
     - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
     - access allowed by user ID "%%_user": доступ дазволены па ID карыстальніка "%%_user"
     - Access forbidden: Доступ забаронены
-    - Access recovery: Аднаўленне доступу
+    - Access recovery form: Форма аднаўлення доступу
     - Access settings are not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
     - Access: Доступ
     - access: доступ
@@ -26,12 +28,10 @@ translations
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
     - All users: Усе карыстальнікі
-    - Alternative text: Альтэрнатыўны тэкст
-    - An error occurred during installation!: Пры інсталяцыі адбылася памылка!
+    - An error occurred during installation!: Адбылася памылка пры ўсталёўцы!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Прыкладам яго змесціва могуць служыць: мета-апісанне, ключавыя мета-словы, карыстальніцкія мета-поля (напрыклад, google-site-verification), карыстальніцкія блокі CSS, карыстальніцкія блокі JS (напрыклад, Google Analytics).
     - Anonymous user: Ананімны карыстальнік
     - Anonymous user's breadcrumbs: Хлебныя крошкі ананімнага карыстальніка
-    - Anonymous user's menu: Меню ананімнага карыстальніка
     - Anonymous users: Ананімныя карыстальнікі
     - Anonymous: Ананім
     - Answer: Адказ
@@ -67,6 +67,7 @@ translations
     - Button: Кнопка
     - button: кнопка
     - Button\: text: Кнопка: тэкст
+    - Cache update form: Форма абнаўлення кэша
     - cache: кэш
     - cancel: адмяніць
     - Canvas: Палатно
@@ -82,14 +83,16 @@ translations
     - click to open in new window: націсніце, каб адкрыць у новым акне
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
+    - Color assignment form: Форма прысваення колеру
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
+    - Color preset apply form: Форма прымянення каляровых перадусталёвак
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
     - Color: Колер
-    - Colors presets: Каляровыя перадусталёўкі
     - Colors was applied.: Колеры былі ўжыты.
     - Colors was not applied!: Колеры не былі ўжыты!
     - Colors: Колеры
     - Conditions: Умовы
+    - Console settings form: Форма налад кансолі
     - Console settings: Налады кансолі
     - Content in the &lt;head&gt;: Змесціва ў &lt;head&gt;
     - Content of the "global.css" file: Змесціва файла "global.css"
@@ -112,10 +115,14 @@ translations
     - Current password: Бягучы пароль
     - Current version number is %%_number_current.: Нумар бягучай версіі — %%_number_current.
     - Current: Бягучыя
+    - Data deletion form: Форма выдалення дадзеных
     - Data hash: Хэш дадзеных
     - Data ID: ID дадзеных
+    - Data insertion form: Форма ўстаўкі дадзеных
+    - Data management form: Форма кіравання дадзенымі
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
+    - Data update form: Форма абнаўлення дадзеных
     - Data update is required: Патрабуецца абнаўленне дадзеных
     - Data: Дадзеныя
     - Database name: Імя базы дадзеных
@@ -128,9 +135,7 @@ translations
     - Definition list: Спіс азначэнняў
     - delete audio "%%_audio": выдаліць аўдыё "%%_audio"
     - delete file "%%_file": выдаліць файл "%%_file"
-    - Delete instance: Выдаліць асобнік
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
-    - Delete modules data: Выдаліць дадзеныя модуляў
     - delete picture "%%_picture": выдаліць малюнак "%%_picture"
     - delete video "%%_video": выдаліць відэа "%%_video"
     - Delete: Выдаліць
@@ -155,16 +160,14 @@ translations
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
-    - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - edit: рэдагаваць
     - Edit: Рэдагаваць
     - EMail: Адрас электроннай пошты
-    - Empty module: Пусты модуль
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - English: Англійская
     - enter edit mode: увайсці ў рэжым рэдагавання
-    - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была інсталявана.
-    - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была інсталявана!
+    - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была ўсталявана.
+    - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была ўсталявана!
     - Entity "%%_entity" was not uninstalled!: Сутнасць "%%_entity" не была выдалена!
     - Entity "%%_entity" was uninstalled.: Сутнасць "%%_entity" была выдалена.
     - entity is embedded: сутнасць з'яўляецца убудаванай
@@ -283,6 +286,7 @@ translations
     - generate: генераваць
     - Generation done.: Генерацыя выканана.
     - GiB: ГіБ
+    - Global CSS editing form: Форма рэдагавання глабальнага CSS
     - Global CSS: Глабальны CSS
     - Glyphs: Гліфы
     - go to %%_language language: перайсці на %%_language мову
@@ -302,19 +306,19 @@ translations
     - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Info\: manage: Інфармацыя: кіраваць
+    - Information about the selected entry: Інфармацыя пра абраны запіс
     - Information: Інфармацыя
     - Insert a new item of type "%%_entity_title_context" on new page.: Уставіць новы элемент тыпу "%%_entity_title_context" на новай старонцы.
     - insert and update: уставіць і абнавіць
     - Insert block: Уставіць блок
-    - Insert instance: Уставіць асобнік
     - insert: уставіць
     - Insert: Уставіць
     - insertion: устаўка
-    - Install: Інсталяваць
-    - install: Інсталяваць
-    - Installation is not available because storage credentials was set!: Інсталяцыя недаступная, таму што уліковыя дадзеныя сховішча ўжо былі ўсталяваны.
-    - Installation: Інсталяванне
-    - installation: інсталяванне
+    - Install: Усталяваць
+    - install: усталяваць
+    - Installation is not available because storage credentials was set!: Усталёўка недаступная, таму што уліковыя дадзеныя сховішча ўжо былі ўсталяваны.
+    - Installation: Усталёўка
+    - installation: усталёўка
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
     - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў даданы!
     - Instance: Асобнік
@@ -353,11 +357,11 @@ translations
     - Language: Мова
     - Languages: Мовы
     - launch: запуск
+    - Layout editing form: Форма рэдагавання макета
     - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.
-    - Leave a vote: Пакінуць свой голас
     - leave edit mode: пакінуць рэжым рэдагавання
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
     - left to right (ltr): злева направа (ltr)
@@ -378,16 +382,18 @@ translations
     - Local Date: Лакальная Дата
     - Local Date/Time: Лакальная Дата/Час
     - Local Time: Лакальны Час
-    - Locale settings: Налады лакалізацыі
+    - Locale settings form: Форма налад лакалізацыі
     - Locales: Лакалізацыі
     - Locales\: manage: Лакалізацыі: кіраваць
     - Logic: Логіка
+    - Login form: Форма ўваходу
     - login: уваход
     - Login: Уваход
     - Logotype: Лагатып
     - logotype: лагатып
     - Logotypes: Лагатыпы
     - logotypes: лагатыпы
+    - Logout form: Форма выхаду
     - logout: выхад
     - Logout: Выхад
     - LOST FIELD: СТРАЧАНАЕ ПОЛЕ
@@ -409,14 +415,15 @@ translations
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
     - Message: Паведамленне
     - Messages: Паведамленні
+    - META editing form: Форма рэдагавання META
     - META: МЕТА
     - MiB: МіБ
     - Minimum width: Мінімальная шырыня
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не можа быць уключаны, калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
-    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў інсталяваны.
-    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў інсталяваны!
+    - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў усталяваны.
+    - Module "%%_title" (%%_id) was not installed!: Модуль "%%_title" (%%_id) не быў усталяваны!
     - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
@@ -431,7 +438,11 @@ translations
     - Module for working with polls.: Модуль для працы з апытаннямі.
     - Module for working with user accounts and permissions.: Модуль для працы з акаўнтамі і дазваленнямі карыстальнікаў.
     - Module ID: ID модуля
+    - Module installation form: Форма усталёўкі модуляў
     - Module: Модуль
+    - Modules data deletion form: Форма выдалення дадзеных модуляў
+    - Modules data update form: Форма абнаўлення дадзеных модуляў
+    - Modules files update form: Форма абнаўлення файлаў модуляў
     - Modules: Модулі
     - Modules\: manage: Модулі: кіраваць
     - More info in "%%_info".: Больш інфармацыі ў "%%_info".
@@ -444,7 +455,6 @@ translations
     - new item: новы элемент
     - New password should be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
     - New password: Новы пароль
-    - New User Registration: Рэгістрацыя новага карыстальніка
     - nickname: псеўданім
     - Nickname: Псеўданім
     - No additional parameters.: Няма дадатковых параметраў.
@@ -478,6 +488,7 @@ translations
     - Page\: select: Старонка: абраць
     - Page\: update: Старонка: абнавіць
     - Pages: Старонкі
+    - Palette generation form: Форма генеравання палітры
     - Palette: Палітра
     - Parameter: Параметр
     - Parameters: Параметры
@@ -535,17 +546,14 @@ translations
     - Read access: Доступ на чытанне
     - recovery: аднаўленне
     - Recovery: Аднаўленне
-    - Register user: Зарэгістраваць карыстальніка
     - register: зарэгістраваць
     - Registered user: Зарэгістраваны карыстальнік
     - Registered user's breadcrumbs: Хлебныя крошкі зарэгістраванага карыстальніка
-    - Registered user's menu: Меню зарэгістраванага карыстальніка
     - Registered users: Зарэгістраваныя карыстальнікі
     - Registered: Зарэгістраваны
+    - Registration form: Форма рэгістрацыі
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
-    - Related items of type "%%_type" with ID = "%%_id" was deleted.: Звязаныя элементы тыпу "%%_type" з ID = "%%_id" былі выдалены.
-    - Related items of type "%%_type" with ID = "%%_id" was not deleted!: Звязаныя элементы тыпу "%%_type" з ID = "%%_id" не былі выдалены.
     - Relation: Сувязь
     - Relation\: Role ↔ Permission: Сувязь: Роля ↔ Дазваленне
     - Relation\: Role ↔ Permission\: delete: Сувязь: Роля ↔ Дазваленне: выдаліць
@@ -566,9 +574,10 @@ translations
     - Required version number is %%_number_required.: Нумар патрабаванай версіі — %%_number_required.
     - reset: скінуць
     - restore repository: аднавіць рэпазітар
-    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя дадзеныя сховішча ў "%%_file" альбо зноў інсталюйце гэтую сістэму на старонцы: %%_link
+    - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Аднавіце ўліковыя дадзеныя сховішча ў "%%_file" альбо зноў усталюйце гэтую сістэму на старонцы: %%_link
     - right to left (rtl): справа налева (rtl)
     - right to left: справа налева
+    - robots.txt editing form: Форма рэдагавання robots.txt
     - Role ID: ID ролі
     - role: роля
     - Role: Роля
@@ -579,13 +588,13 @@ translations
     - roles: ролі
     - Roles: Ролі
     - Row ID: ID радка
-    - Running the test: Запуск тэсту
     - Russian: Рускі
     - save: захаваць
     - Search: Пошук
     - search: пошук
     - sec.: сек.
     - Section "%%_title": Падзел "%%_title"
+    - Security settings form: Форма налад бяспекі
     - Security: Бяспека
     - Security\: manage: Бяспека: кіраваць
     - select all rows: абраць усе радкі
@@ -613,6 +622,7 @@ translations
     - Settings: Налады
     - Shared parameters: Агульныя параметры
     - Simple layout: Просты макет
+    - Sitemap editing form: Форма рэдагавання Sitemap
     - Size of uploaded file greater than %%_size.: Памер загружанага файла больш чым %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца).
     - size: памер
@@ -632,11 +642,11 @@ translations
     - Switchers: Выключальнікі
     - System breadcrumbs: Сістэмныя хлебныя крошкі
     - System information: Інфармацыя аб сістэме
-    - System Installation Parameters: Параметры ўстаноўкі сістэмы
+    - System installation parameters form: Форма параметраў усталёўкі сістэмы
     - system logotype: лагатып сістэмы
     - System menu: Сістэмнае меню
-    - System was installed.: Сістэма была інсталявана.
-    - System was not installed!: Сістэма не была інсталявана.
+    - System was installed.: Сістэма была ўсталявана.
+    - System was not installed!: Сістэма не была ўсталявана.
     - System: Сістэма
     - Table prefix: Прэфікс табліц
     - Table: Табліца
@@ -646,9 +656,9 @@ translations
     - Tabs\: link active (no background): Укладкі: спасылка актыўная (няма фону)
     - Tabs\: link active: Укладкі: спасылка актыўная
     - Tabs\: link: Укладкі: спасылка
-    - Target: Мэта
     - Telephone number: Нумар тэлефона
     - Templates: Шаблоны
+    - Test execution form: Форма выканання тэсту
     - Test: Тэст
     - Tests: Тэсты
     - Text area: Тэкставая вобласць
@@ -697,32 +707,28 @@ translations
     - Tree\: update: Дрэва: абнавіць
     - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
-    - Turn on/off modules: Уключыць/выключыць модулі
     - Type: Тып
     - type: тып
     - Types: Типы
-    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма інсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
+    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма ўсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
     - Uninstall the existing profile first.: Спачатку выдаліце існуючы профіль.
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваны спіс
-    - Update Cache: Абнавіць кэш
-    - Update instance: Абнавіць асобнік
-    - Update modules data: Абнавіць дадзеныя модуляў
-    - Update modules files: Абнавіць файлы модуляў
     - Update: Абнавіць
     - update: абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
     - Use global META: Выкарыстоўваць глабальны МЕТА
     - used by modules: выкарыстоўваецца модулямі
-    - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
     - User agent: Агент карыстальніка
     - User ID: ID карыстальніка
+    - User information: Інфармацыя аб карыстальніку
     - User name: Імя карыстальніка
     - User permissions: Дазвалення карыстальніка
     - User roles: Ролі карыстальніка
     - User type: Тып карыстальніка
+    - User update form: Форма абнаўлення карыстальніка
     - User update: Абнаўленне карыстальніка
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
@@ -749,13 +755,14 @@ translations
     - Video\: select: Відэа: абраць
     - Video\: update: Відэа: абнавіць
     - Videos: Відэа
+    - View customization form: Форма налады выгляду
     - View more: Глядзець больш
-    - View settings: Налады выгляду
     - View: Выгляд
     - View\: manage: Выгляд: кіраваць
     - Visibility: Бачнасць
     - Vote can be canceled: Голас можа быць адменены
     - vote: галасаваць
+    - Voting form: Форма галасавання
     - Warning: Папярэджанне
     - warning: папярэджанне
     - Web server: Вэб-сервер

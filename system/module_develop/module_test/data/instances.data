@@ -6,7 +6,7 @@ instances
     entity_name: text
     values
     - id: test
-    - description: text for perform the tests
+    - description: Text for perform the tests
     - text: some text
 - role_test|instance
     entity_name: role

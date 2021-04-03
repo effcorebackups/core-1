@@ -48,7 +48,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__demo|block
-          title: Demo form
+          title: Demonstration form
           title_is_visible: false
           attributes
           - data-id: block__form__demo
@@ -112,7 +112,7 @@ pages
       # trees
       # ─────────────────────────────────────────────────────────────────────
       - block__demo_tree_via_decorator|block
-          title: Demo via decorator
+          title: Demonstration menu via decorator
           title_is_visible: false
           attributes
           - data-id: block__demo_tree_via_decorator
@@ -123,7 +123,7 @@ pages
           type: link
           source: markup/demo/demo_tree_via_decorator
       - block__demo_tree_sql|block
-          title: Demo SQL
+          title: Demonstration menu SQL
           title_is_visible: false
           attributes
           - data-id: block__demo_tree_sql
@@ -136,7 +136,7 @@ pages
           args
           - instance_id: demo_sql
       - block__demo_tree_nosql|block
-          title: Demo NoSQL
+          title: Demonstration menu NoSQL
           title_is_visible: false
           attributes
           - data-id: block__demo_tree_nosql

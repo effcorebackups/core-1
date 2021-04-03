@@ -189,20 +189,20 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function back_url_get() {
-    $query_arg = static::get_current()->query_arg_select('back');
+  static function back_url_get($arg_name = 'back') {
+    $query_arg = static::get_current()->query_arg_select($arg_name);
     $url = new static(is_string($query_arg) ? $query_arg : null);
     return $url->has_error ? '' :
            $url->full_get();
   }
 
-  static function back_part_make_custom($url) {
-    return 'back='.urlencode($url);
+  static function back_part_make__custom($url, $arg_name = 'back') {
+    return $arg_name.'='.urlencode($url);
   }
 
-  static function back_part_make($full = false) {
-    if ($full) return static::back_part_make_custom(static::get_current()->full_get());
-    else       return static::back_part_make_custom(static::get_current()->tiny_get());
+  static function back_part_make($full = false, $arg_name = 'back') {
+    if ($full) return static::back_part_make__custom(static::get_current()->full_get(), $arg_name);
+    else       return static::back_part_make__custom(static::get_current()->tiny_get(), $arg_name);
   }
 
   static function is_local($url, $decode = false) {

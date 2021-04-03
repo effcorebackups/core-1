@@ -55,13 +55,12 @@ namespace effcore\modules\user {
           }
         }
         if ($has_selection) {
-          if (!session::select()) url::go('/'); else {
-            static::on_init(null, $form, $items);
+          if (session::select()) {
             foreach ($messages as $c_type => $c_messages_by_type)
               foreach ($c_messages_by_type as $c_message)
                 message::insert($c_message, $c_type);
-            url::go(url::back_url_get() ?: '/user/'.user::get_current()->nickname);
-          }
+            static::on_init(null, $form, $items);
+          } else url::go(url::back_url_get() ?: '/');
         } else {
           message::insert('No one item was selected!', 'warning');
           foreach ($sessions as $c_session) {

@@ -6,7 +6,6 @@
 
 namespace effcore\modules\storage {
           use \effcore\complex_control;
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\field_checkbox;
           use \effcore\instance;
@@ -111,17 +110,14 @@ namespace effcore\modules\storage {
           if ($form->is_show_result_message && $form->_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
-        # going back
           if ($form->is_redirect_enabled) {
-            $back_insert_0 = page::get_current()->args_get('back_insert_0');
-            $back_insert_n = page::get_current()->args_get('back_insert_n');
-            if (!empty($entity->has_button_insert_and_update)) # when click 'insert and update'
-              if ($form->clicked_button->value_get() == 'insert_and_update')
-                if ($form->_result instanceof instance)
-                  url::go($back_insert_0 ?:
-                         ($back_insert_n ?: $form->_result->make_url_for_update().(url::back_url_get() ? '?'.url::back_part_make_custom(url::back_url_get()) : '') ));
-            url::go($back_insert_0 ?: (url::back_url_get() ?: (
-                    $back_insert_n ?: $entity->make_url_for_select_multiple() )));
+            if ($form->clicked_button->value_get() === 'insert') url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
+            if ($form->clicked_button->value_get() === 'cancel') url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
+            if ($form->clicked_button->value_get() === 'insert_and_update') {
+              if ($form->_result instanceof instance) {
+                url::go($form->_result->make_url_for_update().'?'.url::back_part_make__custom($entity->make_url_for_select_multiple()));
+              }
+            }
           }
           break;
       }

@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\storage {
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
           use \effcore\markup;
@@ -73,12 +72,8 @@ namespace effcore\modules\storage {
           }
         # ↓↓↓ no break ↓↓↓
         case 'cancel':
-        # going back
           if (empty(page::get_current()->args_get('back_delete_is_canceled'))) {
-            $back_delete_0 = page::get_current()->args_get('back_delete_0');
-            $back_delete_n = page::get_current()->args_get('back_delete_n');
-            url::go($back_delete_0 ?: (url::back_url_get() ?: (
-                    $back_delete_n ?: $entity->make_url_for_select_multiple() )));
+            url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
           }
           break;
       }

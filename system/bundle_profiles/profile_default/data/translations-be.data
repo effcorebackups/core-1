@@ -2,13 +2,19 @@ translations
 - be|translation
     code: be
     data
+    - Access recovery: Аднаўленне доступу
+    - Anonymous user's menu: Меню ананімнага карыстальніка
+    - Edit user %%_nickname_page_context{nickname}: Рэдагаваць карыстальніка %%_nickname_page_context{nickname}
     - Grid 2x5 \| profile "Default": Сетка 2x5 | профіль "Па змаўчанні"
     - Grid 3x5 \| profile "Default": Сетка 3x5 | профіль "Па змаўчанні"
     - Grid 4x5 \| profile "Default": Сетка 4x5 | профіль "Па змаўчанні"
     - Grid 5x5 \| profile "Default": Сетка 5x5 | профіль "Па змаўчанні"
     - Module for profile "Default".: Модуль для профілю "Па змаўчанні".
+    - New User Registration: Рэгістрацыя новага карыстальніка
     - Profile "Default": Профіль "Па змаўчанні"
+    - Registered user's menu: Меню зарэгістраванага карыстальніка
     - Text Front: Тэкст Галоўнай
     - The main text of the page: Асноўны тэкст старонкі
     - Universal layout \| profile "Default": Універсальны макет | профіль "Па змаўчанні"
+    - User %%_nickname_page_context{nickname}: Карыстальнік %%_nickname_page_context{nickname}
     - Welcome to our site!: Сардэчна запрашаем на наш сайт!

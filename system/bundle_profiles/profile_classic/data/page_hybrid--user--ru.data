@@ -1,0 +1,4 @@
+pages
+- user_ru|page_hybrid
+    id: user_ru
+    url: %^/ru/user/(?<nickname>[a-zA-Z0-9_\-]{4,32})$%

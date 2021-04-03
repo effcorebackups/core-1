@@ -10,7 +10,7 @@ namespace effcore\modules\user {
           use \effcore\page;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\user;
+          use \effcore\url;
           abstract class events_form_instance_update {
 
   static function on_init($event, $form, $items) {
@@ -114,9 +114,10 @@ namespace effcore\modules\user {
       switch ($form->clicked_button->value_get()) {
         case 'update':
         case 'cancel':
-        # back_update
-          if ($entity->name === 'user') {
-            page::get_current()->args_set('back_update_n', '/user/'.$items['#nickname']->value_get());
+          if ($entity->name === 'user' && page::get_current()->id === 'user_edit') {
+            if (!url::back_url_get()) {
+              url::get_current()->query_arg_insert('back', '/user/'.$items['#nickname']->value_get());
+            }
           }
           break;
       }

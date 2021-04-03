@@ -43,7 +43,7 @@ pages
     # ─────────────────────────────────────────────────────────────────────
     - content
       - block__form__seo_meta|block
-          title: META
+          title: META editing form
           title_is_visible: false
           attributes
           - data-id: block__form__seo_meta
@@ -54,7 +54,7 @@ pages
           type: link
           source: forms/page/seo_meta
       - block__form__seo_sitemap|block
-          title: Sitemap
+          title: Sitemap editing form
           title_is_visible: false
           attributes
           - data-id: block__form__seo_sitemap
@@ -65,7 +65,7 @@ pages
           type: link
           source: forms/page/seo_sitemap
       - block__form__seo_robots|block
-          title: Robots
+          title: robots.txt editing form
           title_is_visible: false
           attributes
           - data-id: block__form__seo_robots
