@@ -7,5 +7,5 @@ bundle
   repo_can_restore: true
   repo_directory: .
   repo_type: git
-  repo_url: git@bitbucket.org:rysmax/effcore-examples.git
+  repo_origin: git@bitbucket.org:rysmax/effcore-examples.git
   repo_branch: master

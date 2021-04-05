@@ -7,5 +7,5 @@ bundle
   repo_can_restore: true
   repo_directory: ..
   repo_type: git
-  repo_url: https://github.com/effectivecore/core.git
+  repo_origin: https://github.com/effectivecore/core.git
   repo_branch: main
