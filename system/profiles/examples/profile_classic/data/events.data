@@ -16,6 +16,15 @@ events
       for: profile_classic
       handler: \effcore\modules\profile_classic\events_module::on_disable
 # ─────────────────────────────────────────────────────────────────────
+  on_update_files
+  - examples|event
+      for: examples
+      handler: \effcore\modules\profile_classic\events_module_update::on_update_files
+  on_repo_restore
+  - examples|event
+      for: examples
+      handler: \effcore\modules\profile_classic\events_module_update::on_repo_restore
+# ─────────────────────────────────────────────────────────────────────
   on_form_build
   - colors|event
       for: colors

@@ -3,3 +3,9 @@ bundle
   title: Examples
   description: Bundle for examples of custom profiles.
   build: 1000
+  repo_update_handler_in_module: profile_classic
+  repo_can_restore: true
+  repo_directory: .
+  repo_type: git
+  repo_url: git@bitbucket.org:rysmax/effcore-examples.git
+  repo_branch: master
