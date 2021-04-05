@@ -6,6 +6,7 @@
 
 namespace effcore\modules\core {
           use const \effcore\br;
+          use const \effcore\dir_root;
           use \effcore\button;
           use \effcore\core;
           use \effcore\event;
@@ -24,9 +25,14 @@ namespace effcore\modules\core {
     foreach ($bundles as $c_bundle) {
       if (isset($c_bundle->repo_update_handler_in_module) && module::is_enabled(
                 $c_bundle->repo_update_handler_in_module)) {
+        $c_repo_settings_path = core::validate_realpath(dir_root.
+          $c_bundle->path.
+          $c_bundle->repo_directory.'/.'.
+          $c_bundle->repo_type);
         $c_button_update = new button('update', ['title' => new text('update')]);
         $c_button_update->build();
         $c_button_update->value_set('update_'.$c_bundle->id);
+        $c_button_update->disabled_set($c_repo_settings_path === false);
         $c_button_update->_type = 'update';
         $c_button_update->_id = $c_bundle->id;
         $c_button_repo_restore = new button('restore repository', ['title' => new text('restore repository')]);
