@@ -18,20 +18,20 @@ tab_items
     id_parent: null
     id_tab: modules
     action_name: update
-    action_name_default: update/data
+    action_name_default: update/files
     title: Update
     weight: +460
+- modules_update_files|tab_item
+    id: modules_update_files
+    id_parent: modules_update
+    id_tab: modules
+    action_name: update/files
+    title: Files from repository
+    weight: +500
 - modules_update_data|tab_item
     id: modules_update_data
     id_parent: modules_update
     id_tab: modules
     action_name: update/data
     title: Data
-    weight: +500
-- modules_update_files|tab_item
-    id: modules_update_files
-    id_parent: modules_update
-    id_tab: modules
-    action_name: update/files
-    title: Files
     weight: +480
