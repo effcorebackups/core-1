@@ -245,6 +245,7 @@ entities
         - related_entity_field_id_name: id
         - related_entity_field_id_parent_name: id_parent
         - related_entity_field_title_name: title
+        - title__not_selected: - root -
         - weight: +360
         managing_control_element_attributes
         - required: null
