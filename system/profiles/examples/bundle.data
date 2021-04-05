@@ -1,0 +1,5 @@
+bundle
+  id: examples
+  title: Examples
+  description: Bundle for examples of custom profiles.
+  build: 1000

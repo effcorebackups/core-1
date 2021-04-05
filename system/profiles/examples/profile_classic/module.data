@@ -1,9 +1,9 @@
 module|module_as_profile
   id: profile_classic
-  id_bundle: profiles
+  id_bundle: examples
   title: Profile "Classic"
   group: Profiles
-  description: Module for profile example "Classic".
+  description: Module for example of profile "Classic".
   copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
   enabled: yes
   version: 1.000

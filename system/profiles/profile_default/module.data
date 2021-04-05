@@ -1,6 +1,6 @@
 module|module_as_profile
   id: profile_default
-  id_bundle: profiles
+  id_bundle: system
   title: Profile "Default"
   description: Module for profile "Default".
   copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.

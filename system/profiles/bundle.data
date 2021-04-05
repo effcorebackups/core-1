@@ -1,5 +1,0 @@
-bundle
-  id: profiles
-  title: Profiles
-  description: Bundle with profiles.
-  build: 1000

@@ -59,9 +59,9 @@ translations
     - Build number: Номер сборки
     - bundle build number: номер сборки пакета
     - bundle description: описание пакета
+    - Bundle for examples of custom profiles.: Пакет примеров пользовательских профилей.
     - bundle id: id пакета
     - bundle title: заголовок пакета
-    - Bundle with profiles.: Пакет с профилями.
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
     - Button: Кнопка
@@ -177,6 +177,7 @@ translations
     - Event: Событие
     - Events: События
     - events: события
+    - Examples: Примеры
     - Examples\: %%_examples: Примеры: %%_examples
     - Execution: Выполнение
     - expand: развернуть
