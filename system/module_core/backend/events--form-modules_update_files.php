@@ -57,6 +57,7 @@ namespace effcore\modules\core {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->_type) {
       case 'update':
+        static::on_init(null, $form, $items);
         $bundle_id = $form->clicked_button->_id;
         $result = event::start('on_update_files', $bundle_id, ['bundle_id' => $bundle_id]);
         $report = $items['info']->child_select($bundle_id)->child_select('report');
@@ -70,6 +71,7 @@ namespace effcore\modules\core {
         }
         break;
       case 'repo_restore':
+        static::on_init(null, $form, $items);
         $bundle_id = $form->clicked_button->_id;
         $result = event::start('on_repo_restore', $bundle_id, ['bundle_id' => $bundle_id]);
         $report = $items['info']->child_select($bundle_id)->child_select('report');
