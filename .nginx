@@ -11,7 +11,11 @@
 server {
   listen 127.0.0.1:80;
   server_name 127.0.0.1;
-
+  location ^~ /dynamic/cache/ {deny all;}
+  location ^~ /dynamic/data/  {deny all;}
+  location ^~ /dynamic/logs/  {deny all;}
+  location ~ /web.config$ {deny all;}
+  location ~ /\. {deny all;}
   location / {
     root %%_root;
     fastcgi_index index.php;
@@ -27,7 +31,11 @@ server {
   server_name 127.0.0.1;
   ssl_certificate     %%_domain_crt;
   ssl_certificate_key %%_domain_private_key;
-
+  location ^~ /dynamic/cache/ {deny all;}
+  location ^~ /dynamic/data/  {deny all;}
+  location ^~ /dynamic/logs/  {deny all;}
+  location ~ /web.config$ {deny all;}
+  location ~ /\. {deny all;}
   location / {
     root %%_root;
     fastcgi_index index.php;
