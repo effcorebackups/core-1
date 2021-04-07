@@ -33,6 +33,7 @@ namespace effcore\modules\core {
       if ($repo_path !== false) {
         $result = [];
         $commands = [
+          'hostname '                             .$stderr_to_stdout,
           'whoami '                               .$stderr_to_stdout,
           'git --version '                        .$stderr_to_stdout,
           'cd '.$repo_path.' && git clean  -f -d '.$stderr_to_stdout,
