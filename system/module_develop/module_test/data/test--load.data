@@ -518,13 +518,8 @@ tests
             where: %%_test_response_http_code
             match: 404
             on_failure
-            - response_check---.-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: ///
         - request_url----|step_request
             url: ///
@@ -599,13 +594,8 @@ tests
             where: %%_test_response_http_code
             match: 404
             on_failure
-            - response_check--.-.-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /.//
         - request_url--.--|step_request
             url: /.//
@@ -644,15 +634,10 @@ tests
         - response_check--.0-|step_check
             check: token
             where: %%_test_response_http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check--.0--403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: //..
         - request_url---..|step_request
             url: //..
@@ -665,20 +650,14 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: nginx
-            - response_check---..-404|step_check
+            # case for: iis
+            - response_check---..-403|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 403
                 on_failure
-                # case for: iis
-                - response_check---..-403|step_check
-                    check: token
-                    where: %%_test_response_http_code
-                    match: 403
-                    on_failure
-                    - return_result|step_return
-                        value: 0
+                - return_result|step_return
+                    value: 0
         # url: //./
         - request_url---.-|step_request
             url: //./
@@ -719,13 +698,8 @@ tests
             where: %%_test_response_http_code
             match: 404
             on_failure
-            - response_check----.-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: ////
         - request_url-----|step_request
             url: ////
@@ -1490,15 +1464,10 @@ tests
         - response_check--.editorconfig-|step_check
             check: token
             where: %%_test_response_http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check--.editorconfig--403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /.gitattributes/
         - request_url--.gitattributes-|step_request
             url: /.gitattributes/
@@ -1509,15 +1478,10 @@ tests
         - response_check--.gitattributes-|step_check
             check: token
             where: %%_test_response_http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check--.gitattributes--403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /.gitignore/
         - request_url--.gitignore-|step_request
             url: /.gitignore/
@@ -1528,15 +1492,10 @@ tests
         - response_check--.gitignore-|step_check
             check: token
             where: %%_test_response_http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check--.gitignore--403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /.htaccess/
         - request_url--.htaccess-|step_request
             url: /.htaccess/
@@ -1549,14 +1508,8 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: nginx
-            - response_check--.htaccess--302|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 302
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /.nginx/
         - request_url--.nginx-|step_request
             url: /.nginx/
@@ -1567,15 +1520,10 @@ tests
         - response_check--.nginx-|step_check
             check: token
             where: %%_test_response_http_code
-            match: 302
+            match: 403
             on_failure
-            - response_check--.nginx--403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /web.config/
         - request_url--web.config-|step_request
             url: /web.config/
