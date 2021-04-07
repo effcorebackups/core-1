@@ -62,6 +62,12 @@ translations
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: стан памылкі = %%_state<br>код памылкі = %%_code<br>тэкст памылкі = %%_text<br>запыт = "%%_query"<br>аргументы = [%%_args]
     - event system was initialized: сістэма падзей была ініцыялізавана
+    - Example of update 1: Прыклад абнаўлення 1
+    - Example of update 2 (outstripping): Прыклад абнаўлення 2 (апераджальнае)
+    - Example of update 3 (outstripping): Прыклад абнаўлення 3 (апераджальнае)
+    - Example of update description 1.: Прыклад апісання абнаўлення 1.
+    - Example of update description 2.: Прыклад апісання абнаўлення 2.
+    - Example of update description 3.: Прыклад апісання абнаўлення 3.
     - Execution plan: План выканання
     - EXISTING DIRECTORIES + REDIRECT: ІСНУЮЧЫЯ ДЫРЭКТОРЫІ + ПЕРАНАКІРАВАННЕ
     - EXISTING DIRECTORIES: ІСНУЮЧЫЯ ДЫРЭКТОРЫІ
@@ -200,12 +206,6 @@ translations
     - Traits: Трэйты
     - transposition %%_cur from %%_max (%%_state): перастаноўка %%_cur з %%_max (%%_state)
     - UML Diagram: UML-дыяграма
-    - Update Description 1.: Апісанне абнаўлення 1.
-    - Update Description 2.: Апісанне абнаўлення 2.
-    - Update Description 3.: Апісанне абнаўлення 3.
-    - Update Title 1: Загаловак абнаўлення 1
-    - Update Title 2: Загаловак абнаўлення 2
-    - Update Title 3: Загаловак абнаўлення 3
     - Usage frequency: Частата выкарыстоўвання
     - validation_1: валідацыя_1
     - validation_2: валідацыя_2

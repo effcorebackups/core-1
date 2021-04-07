@@ -62,6 +62,12 @@ translations
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"
     - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: состояние ошибки = %%_state<br>код ошибки = %%_code<br>текст ошибки = %%_text<br>запрос = "%%_query"<br>аргументы = [%%_args]
     - event system was initialized: система событий была инициализирована
+    - Example of update 1: Пример обновления 1
+    - Example of update 2 (outstripping): Пример обновления 2 (опережающее)
+    - Example of update 3 (outstripping): Пример обновления 3 (опережающее)
+    - Example of update description 1.: Пример описания обновления 1.
+    - Example of update description 2.: Пример описания обновления 2.
+    - Example of update description 3.: Пример описания обновления 3.
     - Execution plan: План выполнения
     - EXISTING DIRECTORIES + REDIRECT: СУЩЕСТВУЮЩИЕ ДИРЕКТОРИИ + ПЕРЕНАПРАВЛЕНИЕ
     - EXISTING DIRECTORIES: СУЩЕСТВУЮЩИЕ ДИРЕКТОРИИ
@@ -200,12 +206,6 @@ translations
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - UML Diagram: UML-диаграмма
-    - Update Description 1.: Описание обновления 1.
-    - Update Description 2.: Описание обновления 2.
-    - Update Description 3.: Описание обновления 3.
-    - Update Title 1: Заголовок обновления 1
-    - Update Title 2: Заголовок обновления 2
-    - Update Title 3: Заголовок обновления 3
     - Usage frequency: Частота использования
     - validation_1: валидация_1
     - validation_2: валидация_2
