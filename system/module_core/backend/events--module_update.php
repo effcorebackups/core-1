@@ -57,7 +57,7 @@ namespace effcore\modules\core {
       $stderr_to_stdout        = '2>&1';
       $stderr_to_stdout_to_nul = '2>&1 > nul & exit 0';
       $repo_path_cur = realpath(dir_root.$bundle->path.$bundle->repo_directory);
-      $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'repo_'.$bundle_id;
+      $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'.git_restore-'.$bundle_id;
       if ($repo_path_cur !== false) {
         $result = [];
         if (core::server_os_is_windows()) {
