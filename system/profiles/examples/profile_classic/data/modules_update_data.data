@@ -1,0 +1,6 @@
+modules_update_data
+- profile_classic_1000
+    number: 1000
+    title: Example of update
+    description: Example of update description.
+    handler: \effcore\modules\profile_classic\events_module_update::on_update_data_1000

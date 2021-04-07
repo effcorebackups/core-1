@@ -2,6 +2,8 @@ translations
 - ru|translation
     code: ru
     data
+    - Example of update description.: Пример описания обновления.
+    - Example of update: Пример обновления
     - Logotype Behance: Логотип Behance
     - Logotype Bitbucket: Логотип Bitbucket
     - Logotype Blogger: Логотип Blogger

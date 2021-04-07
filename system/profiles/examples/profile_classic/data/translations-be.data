@@ -2,6 +2,8 @@ translations
 - be|translation
     code: be
     data
+    - Example of update description.: Прыклад апісання абнаўлення.
+    - Example of update: Прыклад абнаўлення
     - Logotype Behance: Лагатып Behance
     - Logotype Bitbucket: Лагатып Bitbucket
     - Logotype Blogger: Лагатып Blogger
