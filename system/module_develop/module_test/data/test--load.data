@@ -341,12 +341,13 @@ tests
         - response_check--..0..|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..0..-403|step_check
+            # case for: iis
+            - response_check--..0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -360,12 +361,13 @@ tests
         - response_check--.0.1.|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--.0.1.-403|step_check
+            # case for: iis
+            - response_check--.0.1.-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -379,12 +381,13 @@ tests
         - response_check--..0.1..|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..0.1..-403|step_check
+            # case for: iis
+            - response_check--..0.1..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -398,12 +401,13 @@ tests
         - response_check--..0..1..|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..0..1..-403|step_check
+            # case for: iis
+            - response_check--..0..1..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -417,12 +421,13 @@ tests
         - response_check--.1.0.|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--.1.0.-403|step_check
+            # case for: iis
+            - response_check--.1.0.-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -436,12 +441,13 @@ tests
         - response_check--..1.0..|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..1.0..-403|step_check
+            # case for: iis
+            - response_check--..1.0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -455,12 +461,13 @@ tests
         - response_check--..1..0..|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..1..0..-403|step_check
+            # case for: iis
+            - response_check--..1..0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
