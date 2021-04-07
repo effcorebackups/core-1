@@ -70,9 +70,9 @@ namespace effcore\modules\core {
               if ($c_update->number > $c_update_last_number) {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
                   $has_selection = true;
-                  event::start('on_module_update_data_before', null, ['update' => $c_update]);
+                  event::start('on_module_update_data_before', $c_module->id, ['update' => $c_update]);
                   $c_result = call_user_func($c_update->handler, $c_update);
-                  event::start('on_module_update_data_after', null, ['update' => $c_update]);
+                  event::start('on_module_update_data_after', $c_module->id, ['update' => $c_update]);
                   if ($c_result) {
                     update::insert_last_number($c_module->id, $c_update->number);
                            message::insert(new text('Data update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => (new text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );

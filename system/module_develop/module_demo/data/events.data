@@ -42,9 +42,11 @@ events
 # ─────────────────────────────────────────────────────────────────────
   on_module_update_data_before
   - demo|event
+      for: demo
       handler: \effcore\modules\demo\events_module_update::on_update_data_before
   on_module_update_data_after
   - demo|event
+      for: demo
       handler: \effcore\modules\demo\events_module_update::on_update_data_after
 # ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
