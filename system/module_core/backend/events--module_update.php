@@ -62,6 +62,7 @@ namespace effcore\modules\core {
         $result = [];
         if (core::server_os_is_windows()) {
           $commands = [
+            'hostname '                                                                               .$stderr_to_stdout,
             'whoami '                                                                                 .$stderr_to_stdout,
             'git --version '                                                                          .$stderr_to_stdout,
             'del /f /s /q '.$repo_path_tmp.                                                        ' '.$stderr_to_stdout_to_nul,
@@ -75,6 +76,7 @@ namespace effcore\modules\core {
           ];
         } else {
           $commands = [
+            'hostname '                                                                               .$stderr_to_stdout,
             'whoami '                                                                                 .$stderr_to_stdout,
             'git --version '                                                                          .$stderr_to_stdout,
             'rm -rf '.$repo_path_tmp.                                                              ' '.$stderr_to_stdout,
