@@ -59,13 +59,8 @@ tests
             where: %%_test_response_http_code
             match: 404
             on_failure
-            - response_check--.-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /..
         - request_url--..|step_request
             url: /..
@@ -78,20 +73,14 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: nginx
-            - response_check--..-404|step_check
+            # case for: iis
+            - response_check--..-403|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 403
                 on_failure
-                # case for: iis
-                - response_check--..-403|step_check
-                    check: token
-                    where: %%_test_response_http_code
-                    match: 403
-                    on_failure
-                    - return_result|step_return
-                        value: 0
+                - return_result|step_return
+                    value: 0
         # url: /...
         - request_url--...|step_request
             url: /...
@@ -102,13 +91,13 @@ tests
         - response_check--...|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            # case for: apache + win
-            - response_check--..-403|step_check
+            # case for: iis
+            - response_check--..-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -192,15 +181,10 @@ tests
         - response_check--..0|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--..0-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /...0
         - request_url--...0|step_request
             url: /...0
@@ -211,15 +195,10 @@ tests
         - response_check--...0|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--...0-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
+            - return_result|step_return
+                value: 0
         # url: /01
         - request_url--01|step_request
             url: /01
@@ -342,12 +321,13 @@ tests
         - response_check--.0.|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
-            - response_check--.0.-403|step_check
+            # case for: iis
+            - response_check--.0.-404|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 403
+                match: 404
                 on_failure
                 - return_result|step_return
                     value: 0
