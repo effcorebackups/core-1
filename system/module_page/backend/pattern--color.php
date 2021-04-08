@@ -232,6 +232,17 @@ namespace effcore {
         }
       }
     }
+    $custom_colors = [];
+    foreach (static::$cache as $id => $c_color) {
+      if ($c_color->module_id !== 'page') {
+        $custom_colors[$id] = $c_color;
+        unset(static::$cache[$id]);
+      }
+    }
+    if (count($custom_colors)) {
+      static::$cache =
+      static::$cache + $custom_colors;
+    }
   }
 
   static function get($id) {
