@@ -3,13 +3,13 @@ colors_presets
     id: original_classic
     title: Original | profile "Classic"
     colors
-      color__page_id: classic_l4
+      color__page_id: classic_l3
       color__text_id: white
-      color__main_id: classic_r2
+      color__main_id: classic_r4
       color__link_id: white
       color__link_active_id: gold_r1
-      color__table_row_odd_id: classic_base
-      color__table_row_even_id: classic_l1
+      color__table_row_odd_id: classic_l1
+      color__table_row_even_id: classic_l2
       color__relation_id: white
       color__menu_id: classic_l2
       color__menu_active_id: classic_l1
@@ -23,7 +23,7 @@ colors_presets
       color__ok_id: state_ok
       color__warning_id: state_warning
       color__error_id: state_error
-      color__fieldset_id: classic_l3
+      color__fieldset_id: classic_l2
       color__fieldset_nested_id: classic_l2
       color__field_id: classic_l3
       color__field_text_id: white
