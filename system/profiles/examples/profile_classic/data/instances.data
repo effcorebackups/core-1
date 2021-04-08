@@ -1,4 +1,7 @@
 instances
+# ─────────────────────────────────────────────────────────────────────
+# updates
+# ─────────────────────────────────────────────────────────────────────
 - profile_classic_update_1000|instance
     entity_name: update
     values
@@ -1792,14 +1795,6 @@ instances
     - id_tree: main
     - title: About Us
     - url: /about
-- tree_item_about_ru|instance
-    entity_name: tree_item
-    values
-    - id: about_ru
-    - id_parent: null
-    - id_tree: main_ru
-    - title: О нас
-    - url: /ru/about
 - tree_item_contact|instance
     entity_name: tree_item
     values
@@ -1808,14 +1803,6 @@ instances
     - id_tree: main
     - title: Contact Us
     - url: /contact
-- tree_item_contact_ru|instance
-    entity_name: tree_item
-    values
-    - id: contact_ru
-    - id_parent: null
-    - id_tree: main_ru
-    - title: Связь
-    - url: /ru/contact
 - tree_item_language_en|instance
     entity_name: tree_item
     values
@@ -1824,6 +1811,22 @@ instances
     - id_tree: main_ru
     - title: EN
     - url: /
+- tree_item_about_ru|instance
+    entity_name: tree_item
+    values
+    - id: about_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: О нас
+    - url: /ru/about
+- tree_item_contact_ru|instance
+    entity_name: tree_item
+    values
+    - id: contact_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: Связь
+    - url: /ru/contact
 - tree_item_language_ru|instance
     entity_name: tree_item
     values
