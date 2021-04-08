@@ -73,7 +73,7 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..-403|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -93,7 +93,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -323,7 +323,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--.0.-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -343,7 +343,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -363,7 +363,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--.0.1.-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -383,7 +383,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..0.1..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -403,7 +403,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..0..1..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -423,7 +423,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--.1.0.-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -443,7 +443,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..1.0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -463,7 +463,7 @@ tests
             where: %%_test_response_http_code
             match: 403
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..1..0..-404|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -574,7 +574,7 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..--403|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -650,7 +650,7 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check---..-403|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -859,7 +859,7 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..-..-..-..-..-..-etc-passwd-403|step_check
                 check: token
                 where: %%_test_response_http_code
@@ -1446,7 +1446,7 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: iis
+            # case for: IIS
             - response_check--..-..-..-..-..-..-etc-passwd--403|step_check
                 check: token
                 where: %%_test_response_http_code
