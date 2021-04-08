@@ -100,7 +100,7 @@ entities
         selection_params_default
         - weight: +300
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: integer
+    # MySQL: int | SQLite: integer
     # ─────────────────────────────────────────────────────────────────────
     - f_integer
         title: Field integer
@@ -116,7 +116,7 @@ entities
         selection_params_default
         - weight: +280
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: real
+    # MySQL: double | SQLite: real
     # ─────────────────────────────────────────────────────────────────────
     - f_real
         title: Field real
@@ -136,7 +136,7 @@ entities
         selection_params_default
         - weight: +260
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: text
+    # MySQL: varchar | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_varchar
         title: Field varchar
@@ -160,7 +160,7 @@ entities
         - filter: \effcore\translation::apply
         - weight: +240
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: text
+    # MySQL: time | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_time
         title: Field time
@@ -176,7 +176,7 @@ entities
         selection_params_default
         - weight: +220
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: text
+    # MySQL: date | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_date
         title: Field date
@@ -192,7 +192,7 @@ entities
         selection_params_default
         - weight: +200
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: text
+    # MySQL: datetime | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_datetime
         title: Field datetime
@@ -208,7 +208,7 @@ entities
         selection_params_default
         - weight: +180
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: integer | mysql equivalent: tinyint
+    # MySQL: tinyint | SQLite: integer
     # ─────────────────────────────────────────────────────────────────────
     - f_boolean
         title: Field boolean
@@ -228,7 +228,7 @@ entities
         - filter: \effcore\translation::apply
         - weight: +160
     # ─────────────────────────────────────────────────────────────────────
-    # sqlite implicit storage class: blob
+    # MySQL: blob | SQLite: blob
     # ─────────────────────────────────────────────────────────────────────
     - f_blob
         title: Field blob
@@ -321,8 +321,8 @@ entities
         - weight: +380
     constraints
     # ─────────────────────────────────────────────────────────────────────
-    # mysql : field_1 integer … primary key auto_increment
-    # sqlite: field_1 integer … primary key autoincrement
+    # MySQL : field_1 integer … primary key auto_increment
+    # SQLite: field_1 integer … primary key autoincrement
     # ─────────────────────────────────────────────────────────────────────
     - primary_id
         type: primary
