@@ -1803,14 +1803,15 @@ instances
     - id_tree: main
     - title: Contact Us
     - url: /contact
-- tree_item_language_en|instance
+- tree_item_language_ru|instance
     entity_name: tree_item
     values
-    - id: language_en
+    - id: language_ru
     - id_parent: null
-    - id_tree: main_ru
-    - title: EN
-    - url: /
+    - id_tree: main
+    - title: RU
+    - url: /ru
+# ─────────────────────────────────────────────────────────────────────
 - tree_item_about_ru|instance
     entity_name: tree_item
     values
@@ -1827,11 +1828,11 @@ instances
     - id_tree: main_ru
     - title: Связь
     - url: /ru/contact
-- tree_item_language_ru|instance
+- tree_item_language_en|instance
     entity_name: tree_item
     values
-    - id: language_ru
+    - id: language_en
     - id_parent: null
-    - id_tree: main
-    - title: RU
-    - url: /ru
+    - id_tree: main_ru
+    - title: EN
+    - url: /
