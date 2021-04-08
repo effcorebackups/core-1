@@ -1614,18 +1614,6 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_copyright|instance
-    entity_name: text
-    values
-    - id: copyright
-    - description: Text Copyright
-    - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
-- text_copyright_ru|instance
-    entity_name: text
-    values
-    - id: copyright_ru
-    - description: Текст Авторских прав
-    - text: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
 - text_about|instance
     entity_name: text
     values
@@ -1633,28 +1621,19 @@ instances
     - description: Text About Us
     - text: Here you can describe your story in detail,
 >>>>>>>>>>> tell about your achievements.
-- text_about_ru|instance
+- text_copyright|instance
     entity_name: text
     values
-    - id: about_ru
-    - description: Текст О нас
-    - text: Здесь Вы можете подробно описать
->>>>>>>>>>> свою историю, рассказать о своих достижениях.
+    - id: copyright
+    - description: Text Copyright
+    - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
 - text_contact|instance
     entity_name: text
     values
     - id: contact
     - description: Text Contact Us
     - text: Here you can place: names of contact persons, addresses of branches,
->>>>>>>>>>> e-mail addresses, phone numbers, links to social networks, location map.
-- text_contact_ru|instance
-    entity_name: text
-    values
-    - id: contact_ru
-    - description: Текст Связь
-    - text: Здесь Вы можете разместить: имена контактных лиц, адреса филиалов,
->>>>>>>>>>> адреса электронной почты, номера телефонов, ссылки на социальные сети,
->>>>>>>>>>> схему проезда, форму обратной связи.
+>>>>>>>>>>> e-mail addresses, phone numbers, location map.
 - text_front|instance
     entity_name: text
     values
@@ -1662,6 +1641,28 @@ instances
     - description: Text Front
     - text: Here you can place the most important information about your project,
 >>>>>>>>>>> including special offers.
+# ─────────────────────────────────────────────────────────────────────
+- text_about_ru|instance
+    entity_name: text
+    values
+    - id: about_ru
+    - description: Текст О нас
+    - text: Здесь Вы можете подробно описать
+>>>>>>>>>>> свою историю, рассказать о своих достижениях.
+- text_copyright_ru|instance
+    entity_name: text
+    values
+    - id: copyright_ru
+    - description: Текст Авторских прав
+    - text: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
+- text_contact_ru|instance
+    entity_name: text
+    values
+    - id: contact_ru
+    - description: Текст Связь
+    - text: Здесь Вы можете разместить: имена контактных лиц, адреса филиалов,
+>>>>>>>>>>> адреса электронной почты, номера телефонов,
+>>>>>>>>>>> схему проезда, форму обратной связи.
 - text_front_ru|instance
     entity_name: text
     values
