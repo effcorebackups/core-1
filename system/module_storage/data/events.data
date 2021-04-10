@@ -48,7 +48,7 @@ events
       for: instance_update
       weight: +600
       handler: \effcore\modules\storage\events_form_instance_update::on_init
-  - instance_update_selection|event
+  - instance_update__selection|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\storage\events_form_instance_update__selection::on_init
@@ -69,7 +69,7 @@ events
       for: instance_update
       weight: +600
       handler: \effcore\modules\storage\events_form_instance_update::on_validate
-  - instance_update_selection|event
+  - instance_update__selection|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\storage\events_form_instance_update__selection::on_validate
@@ -94,7 +94,7 @@ events
       for: instance_delete
       weight: +500
       handler: \effcore\modules\storage\events_form_instance_delete::on_submit
-  - instance_update_selection|event
+  - instance_update__selection|event
       for: instance_update
       weight: +600
       handler: \effcore\modules\storage\events_form_instance_update__selection::on_submit

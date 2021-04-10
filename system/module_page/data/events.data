@@ -37,7 +37,7 @@ events
       handler: \effcore\modules\page\events_file::on_load_static_video
 # ─────────────────────────────────────────────────────────────────────
   on_form_build
-  - instance_update_page|event
+  - instance_update__page|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\page\events_form_instance_update::on_build
@@ -66,11 +66,11 @@ events
   - seo_robots|event
       for: seo_robots
       handler: \effcore\modules\page\events_form_seo_robots::on_init
-  - instance_insert_page|event
+  - instance_insert__page|event
       for: instance_insert
       weight: +500
       handler: \effcore\modules\page\events_form_instance_insert::on_init
-  - instance_update_page|event
+  - instance_update__page|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\page\events_form_instance_update::on_init
@@ -78,7 +78,7 @@ events
   - view_settings|event
       for: view_settings
       handler: \effcore\modules\page\events_form_view_settings::on_validate
-  - instance_insert_page|event
+  - instance_insert__page|event
       for: instance_insert
       weight: +500
       handler: \effcore\modules\page\events_form_instance_insert::on_validate
@@ -107,7 +107,7 @@ events
   - seo_robots|event
       for: seo_robots
       handler: \effcore\modules\page\events_form_seo_robots::on_submit
-  - instance_update_page|event
+  - instance_update__page|event
       for: instance_update
       weight: +600
       handler: \effcore\modules\page\events_form_instance_update::on_submit
