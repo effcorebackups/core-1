@@ -37,7 +37,7 @@ events
   - colors|event
       for: colors
       handler: \effcore\modules\profile_classic\events_form_colors::on_submit
-  - instance_update_user|event
+  - instance_update__user|event
       for: instance_update
       weight: +600
       handler: \effcore\modules\profile_classic\events_form_instance_update::on_submit

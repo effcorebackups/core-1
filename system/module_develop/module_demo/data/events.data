@@ -100,11 +100,11 @@ events
   - demo|event
       for: demo
       handler: \effcore\modules\demo\events_form_demo::on_validate
-  - instance_insert_demo|event
+  - instance_insert__demo|event
       for: instance_insert
       weight: +500
       handler: \effcore\modules\demo\events_form_instance_insert::on_validate
-  - instance_update_demo|event
+  - instance_update__demo|event
       for: instance_update
       weight: +500
       handler: \effcore\modules\demo\events_form_instance_update::on_validate
