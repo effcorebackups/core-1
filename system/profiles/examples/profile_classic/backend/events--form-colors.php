@@ -1,8 +1,8 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+  ######################################################################
+  ### Copyright © 20NN—20NN Author/Rightholder. All rights reserved. ###
+  ######################################################################
 
 namespace effcore\modules\profile_classic {
           use \effcore\form_part;
