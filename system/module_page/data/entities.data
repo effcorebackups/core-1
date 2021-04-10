@@ -1,4 +1,43 @@
 entities
+- cache_validation|entity
+    name: cache_validation
+    title: Cache for validation process
+    title_plural: Caches for validation process
+    catalog_name: cache_validation
+    ws_data: true
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
+# ─────────────────────────────────────────────────────────────────────
 - audio|entity
     name: audio
     title: Audio
@@ -120,6 +159,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -131,50 +171,13 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
         - weight: +300
         selection_params_default
         - weight: +300
-    constraints
-    - primary_id
-        type: primary
-        fields
-        - =: id
-    indexes
-    - index_created
-        type: index
-        fields
-        - =: created
-    - index_updated
-        type: index
-        fields
-        - =: updated
-- cache_validation|entity
-    name: cache_validation
-    title: Cache for validation process
-    title_plural: Caches for validation process
-    catalog_name: cache_validation
-    ws_data: true
-    fields
-    - id
-        title: ID
-        type: varchar
-        size: 255
-        collate: nocase
-        not_null: true
-        check: (id <> '')
-    - created
-        title: Created
-        type: datetime
-        default: null
-        check: (created <> '')
-    - updated
-        title: Updated
-        type: datetime
-        default: null
-        check: (updated <> '')
     constraints
     - primary_id
         type: primary
@@ -315,11 +318,44 @@ entities
         selection_params_default
         - filter: \effcore\widget_files_multimedia::complex_value_to_markup
         - weight: +340
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +320
+        selection_params_default
+        - weight: +320
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +300
+        selection_params_default
+        - weight: +300
     constraints
     - primary_id
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - page|entity
     name: page
     title: Page
@@ -457,6 +493,7 @@ entities
         check: (lang_code <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -760,6 +797,7 @@ entities
         size: 255
         collate: nocase
         default: null
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -776,6 +814,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -787,6 +826,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -926,6 +966,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -937,6 +978,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -1102,6 +1144,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -1113,6 +1156,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
