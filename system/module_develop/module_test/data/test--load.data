@@ -94,10 +94,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..-404|step_check
+            - response_check--..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -324,10 +324,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--.0.-404|step_check
+            - response_check--.0.-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -344,10 +344,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..0..-404|step_check
+            - response_check--..0..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -364,10 +364,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--.0.1.-404|step_check
+            - response_check--.0.1.-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -384,10 +384,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..0.1..-404|step_check
+            - response_check--..0.1..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -404,10 +404,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..0..1..-404|step_check
+            - response_check--..0..1..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -424,10 +424,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--.1.0.-404|step_check
+            - response_check--.1.0.-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -444,10 +444,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..1.0..-404|step_check
+            - response_check--..1.0..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
@@ -464,10 +464,10 @@ tests
             match: 403
             on_failure
             # case for: IIS
-            - response_check--..1..0..-404|step_check
+            - response_check--..1..0..-0|step_check
                 check: token
                 where: %%_test_response_http_code
-                match: 404
+                match: 0
                 on_failure
                 - return_result|step_return
                     value: 0
