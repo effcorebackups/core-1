@@ -175,6 +175,7 @@ namespace effcore {
     ));
   }
   header('Cache-Control: private, no-cache');
+  header('Content-Length: '.strlen($result));
   print $result;
   exit();
 
