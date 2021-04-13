@@ -1,20 +1,21 @@
 
 
-About the project
-=====================================================================
+General information
+---------------------------------------------------------------------
 
-Type            : content management system/framework
-Author          : Maxim Rysevets
-Developer       : Maxim Rysevets
-Initial release : 2021-01-01
-Written in      : PHP
-Operating system: UNIX (Apple macOS, FreeBSD), Linux, Microsoft Windows
-License         : proprietary software
-Website         : http://effcore.com
+- Type: content management system/framework
+- Author: Maxim Rysevets
+- Developer: Maxim Rysevets
+- Start of development: end of 2016
+- Initial release: 2021-06-01
+- Written in: PHP
+- Operating system: UNIX, Linux, Microsoft Windows
+- Is open source project: yes
+- License: proprietary software
+- Website: http://effcore.com
 
-EFFCORE is a next-generation mini CMS (Content Management System)
-and mini CMF (Content Management Framework) developed by between 2017 and 2021.
-Incorporated the new features of Web 2.0/3.0.
+EFFCORE — the next-generation mini CMS (Content Management System)
+and mini CMF (Content Management Framework) developed by between 2016 and 2021.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, PSR-0.
 
@@ -23,9 +24,9 @@ as a tool for the development of sites, portals and services by
 professional web developers.
 
 The name of the system is an acronym and comes from the phrase "effective core".
-The system was made from scratch. Its main principle is the complete absence of
-third-party code (to exclude legal claims and any other restrictions which
-related with borrowing), and third-party ideas (to search for new innovative
+The system was made from a scratch. Its main principle — complete absence of
+third-party code (for excluding legal claims and any other restrictions associated
+with borrowing), and complete absence of third-party ideas (for search innovative
 solutions).
 
 The impetus for the creation of the system was a massive degradation in the
