@@ -67,30 +67,6 @@ a certain number of regions. Blocks with text, menus, forms (only in the
 have an individual layout. Thus, the markup of any page can be unique.
 
 
-File organization
----------------------------------------------------------------------
-
-The correct location of files in the system allows you to determine their purpose without
-resorting to documentation.
-
-The directories like "module_*/frontend" contain everything you need for frontend development.
-The directories like "module_*/backend" contain everything you need for backend development.
-The directories like "module_*/data" contain NoSQL-data.
-
-In fact, the work of files does not depend on their location and if necessary,
-they will still be found and processed. Location of files in specific directories — it is
-only an organizational measure designed to facilitate the work with the system.
-
-Additional modules/libraries should be placed in the "modules" directory so that
-after updating the system via the administrator interface they are not cleared by
-the Git system.
-
-The system has a built-in parser and class loader PSR-0.
-To add a new library (set of classes), just put its files on the
-web server and reset the cache, after that they become available
-from anywhere in the system.
-
-
 Updates
 ---------------------------------------------------------------------
 
@@ -173,6 +149,30 @@ on the entire set of combinatorial permutations.
 The system includes a page with a UML diagram of all classes
 and a link to download a JSON file with class descriptions in the
 StarUML program format.
+
+
+File organization
+---------------------------------------------------------------------
+
+The correct location of files in the system allows you to determine their purpose without
+resorting to documentation.
+
+The directories like "module_*/frontend" contain everything you need for frontend development.
+The directories like "module_*/backend" contain everything you need for backend development.
+The directories like "module_*/data" contain NoSQL-data.
+
+In fact, the work of files does not depend on their location and if necessary,
+they will still be found and processed. Location of files in specific directories — it is
+only an organizational measure designed to facilitate the work with the system.
+
+Additional modules/libraries should be placed in the "modules" directory so that
+after updating the system via the administrator interface they are not cleared by
+the Git system.
+
+The system has a built-in parser and class loader PSR-0.
+To add a new library (set of classes), just put its files on the
+web server and reset the cache, after that they become available
+from anywhere in the system.
 
 
 Core: NoSQL
