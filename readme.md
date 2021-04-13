@@ -30,30 +30,32 @@ with borrowing), and complete absence of third-party ideas (for search innovativ
 solutions).
 
 The impetus for the creation of the system was a massive degradation in the
-development of Open Source projects. If consider this situation,
-it is can see that the developers of such projects are people with the
-different skill levels and which located in different parts of the planet.
-Incoordination in their actions and different views on solutions
-in the project is only part of the problem.
-Second significant flaw — this is an extensive way to develop code in such
-projects as opposed to intensive, i.e. instead of creating own code,
-they usually take another library which it is written not clear by whom
-and it is not clear by where and try to combine it with a group of the
-same libraries, not coordinated among themselves and having redundant
-and not fully tested functionality.
-As a result, we get a set of obscure and inconsistent libraries with poorly
-tested redundant functionality which is constantly growing in volume.
+development of Open Source projects. If we consider this situation,
+then we can see that the developers of such projects are people with the
+different skill levels and located in different parts of the planet.
+Inconsistency in their actions and also different views on the solutions
+in the project are only part of the problem. The second significant
+drawback — this is an extensive way of developing the code of such
+projects as opposed to the intensive, i.e. instead of creating their
+own code, they usually take an another library which was written by
+someone unknown and it is not clear by where and it is not clear for
+what and they try to combine this library with a group of the same
+libraries which are not consistent with each other and have redundant
+and not fully tested functionality. As the result we get a set of
+incomprehensible and inconsistent libraries with redundant and
+poorly tested functionality, which is constantly growing in volume.
 Unfortunately, many developers are bogged down in such code and
 are trying to deny the obvious.
 
-The main emphasis in the system is on to get maximum performance.
-As evaluation criteria, a simple and understandable condition was applied:
-a system which installed on a web hosting with the cheapest tariff plan (from
-~3-5$ per month), which compliant with the minimum installation requirements,
-should generate a homepage in 0.005 seconds (when OPCache is enabled),
-or 0.05 seconds (when OPCache is disabled), which in the first case
-allows serving up to ~200 clients per second, and in the second
-to ~20 (excluding parallel loading of connected files).
+The main focus of the system is on getting maximum performance.
+The evaluation criterion is a simple and understandable condition:
+the system which was installed on hosting with the cheapest tariff plan
+which compliant with the minimum installation requirements (from
+~3-5$ per month), should generate the front page in 0.005 seconds
+if OPCache is enabled or 0.05 seconds if OPCache is disabled, which
+in the first case allows serving up to ~ 200 clients per second and
+in the second case allows serving up to ~20 clients per second
+(excluding concurrent file downloads).
 
 
 Content management
