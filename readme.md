@@ -61,56 +61,64 @@ in the second case allows serving up to ~20 clients per second
 Content management
 ---------------------------------------------------------------------
 
-Content management in the system is focused on the inline insertion
-of any available block (menu, text, forms, breadcrumbs and others)
-directly to the layout of the edited page. When creating a new page,
-the user is given a choice of layout and each new page can have its
-own unique blocks arrangement.
+A set of layouts is available to the user in the system. Each layout has
+a certain number of regions. Blocks with text, menus, forms (only in the
+"content" region) and others can be placed in each region. Each page can
+have an individual layout. Thus, the markup of any page can be unique.
 
 
 File organization
 ---------------------------------------------------------------------
 
-In each module everything necessary for frontend development
-is stored in the "module_*/frontend" directory,
-and for backend development — in the "module_*/backend" directory.
-All NoSQL data is located in a directory "module_*/data".
+The directories like "module_*/frontend" contain everything you need for frontend development.
+The directories like "module_*/backend" contain everything you need for backend development.
+The directories like "module_*/data" contain NoSQL-data.
 
-In fact, the operation of the files does not depend on their location
-and if necessary they will still be found and processed, and their
-location in certain directories — it is only an organizational measure
-designed to facilitate the work with the system.
+In fact, the work of files does not depend on their location and if necessary,
+they will still be found and processed. Location of files in specific directories — it is
+only an organizational measure designed to facilitate the work with the system.
 
 
 Architecture
 ---------------------------------------------------------------------
 
-The architecture is made according to the classical MVC scheme.
-It is a hybrid system of NoSQL and SQL storages.
-In turn, the NoSQL subsystem implements a hybrid document-oriented
-and object-oriented model based on a set of class-patterns.
+The architecture is made according to the classic MVC scheme.
+It is a hybrid system based on NoSQL and SQL storages.
+NoSQL storage has a unique implementation and is a hybrid of document-oriented,
+object-oriented and hierarchical models.
 
 The system code is adapted for reuse.
-The system consists of many small classes/class-patterns,
-containing on average from 3 to 15 methods,
-consisting on average of 3-7 lines of code.
+The system consists of many small classes/class-patterns, which contain on average
+from 3 to 15 methods which, in turn, consist of 3-15 lines of code.
 
-Thanks to the "matrix" style of code layout, its perception is
-greatly facilitated (reminds Python syntax in some places), and
-proper location of files in the system give ability to determine
-their purpose without resorting to any documentation.
-Also, everything that seems complicated was rejected or remade.
-Each function iteratively improved from 3 to 10 times.
-Functional testing was performed on the whole set of
-combinatorial transpositions.
+The perception of the code is greatly facilitated by the "matrix" layout style
+(in some places resembles the syntax of Python). The correct location of files
+in the system allows you to determine their purpose without resorting to documentation.
+Anything that seemed difficult was rejected or redone.
+Each function was iteratively improved from 3 to 10 times.
+Functional testing was performed on the entire set of
+combinatorial permutations.
 
-Has a built-in parser and class loader PSR-0, thanks to which, to add
-a new library (a set of classes), it is enough to place the files
-containing them on a web server and reset the cache, after which they
-become available from anywhere in the system.
-The system includes a page with a UML diagram of all classes and a link
-to download a JSON file with a description of the classes in StarUML
-program format.
+The system has a built-in parser and class loader PSR-0.
+To add a new library (set of classes), just put its files on the
+web server and reset the cache, after that they become available
+from anywhere in the system.
+
+The system includes a page with a UML diagram of all classes
+and a link to download a JSON file with class descriptions in the
+StarUML program format.
+
+
+Updates
+---------------------------------------------------------------------
+
+Additional modules/libraries should be placed in the "modules" directory so that
+after updating the system via the administrator interface they are not cleared
+by the Git system.
+
+When manually copying files of a new distribution kit to the web server, make sure
+that the new empty directories "dynamic" and "modules" from the distribution kit
+do not replace the old ones on the web server!
 
 
 Security
