@@ -70,6 +70,9 @@ have an individual layout. Thus, the markup of any page can be unique.
 File organization
 ---------------------------------------------------------------------
 
+The correct location of files in the system allows you to determine their purpose without
+resorting to documentation.
+
 The directories like "module_*/frontend" contain everything you need for frontend development.
 The directories like "module_*/backend" contain everything you need for backend development.
 The directories like "module_*/data" contain NoSQL-data.
@@ -78,35 +81,10 @@ In fact, the work of files does not depend on their location and if necessary,
 they will still be found and processed. Location of files in specific directories — it is
 only an organizational measure designed to facilitate the work with the system.
 
-
-Architecture
----------------------------------------------------------------------
-
-The architecture is made according to the classic MVC scheme.
-It is a hybrid system based on NoSQL and SQL storages.
-NoSQL storage has a unique implementation and is a hybrid of document-oriented,
-object-oriented and hierarchical models.
-
-The system code is adapted for reuse.
-The system consists of many small classes/class-patterns, which contain on average
-from 3 to 15 methods which, in turn, consist of 3-15 lines of code.
-
-The perception of the code is greatly facilitated by the "matrix" layout style
-(in some places resembles the syntax of Python). The correct location of files
-in the system allows you to determine their purpose without resorting to documentation.
-Anything that seemed difficult was rejected or redone.
-Each function was iteratively improved from 3 to 10 times.
-Functional testing was performed on the entire set of
-combinatorial permutations.
-
 The system has a built-in parser and class loader PSR-0.
 To add a new library (set of classes), just put its files on the
 web server and reset the cache, after that they become available
 from anywhere in the system.
-
-The system includes a page with a UML diagram of all classes
-and a link to download a JSON file with class descriptions in the
-StarUML program format.
 
 
 Updates
@@ -144,6 +122,27 @@ With the same input parameters, the same result should be reproduced
 regardless of platform and as result — complete rejection of
 functions which work depends on the environment (for example "setlocale"
 and others).
+
+
+Architecture
+---------------------------------------------------------------------
+
+The architecture is made according to the classic MVC scheme.
+It is a hybrid system based on NoSQL and SQL storages.
+NoSQL storage has a unique implementation and is a hybrid of document-oriented,
+object-oriented and hierarchical models.
+
+The system code is adapted for reuse.
+The system consists of many small classes/class-patterns, which contain on average
+from 3 to 15 methods which, in turn, consist of 3-15 lines of code. The perception
+of the code is greatly facilitated by the "matrix" layout style (in some places resembles
+the syntax of Python). Anything that seemed difficult was rejected or redone. Each
+function was iteratively improved from 3 to 10 times. Functional testing was performed
+on the entire set of combinatorial permutations.
+
+The system includes a page with a UML diagram of all classes
+and a link to download a JSON file with class descriptions in the
+StarUML program format.
 
 
 Core: NoSQL
