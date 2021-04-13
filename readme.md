@@ -81,6 +81,10 @@ In fact, the work of files does not depend on their location and if necessary,
 they will still be found and processed. Location of files in specific directories — it is
 only an organizational measure designed to facilitate the work with the system.
 
+Additional modules/libraries should be placed in the "modules" directory so that
+after updating the system via the administrator interface they are not cleared by
+the Git system.
+
 The system has a built-in parser and class loader PSR-0.
 To add a new library (set of classes), just put its files on the
 web server and reset the cache, after that they become available
@@ -90,13 +94,39 @@ from anywhere in the system.
 Updates
 ---------------------------------------------------------------------
 
-Additional modules/libraries should be placed in the "modules" directory so that
-after updating the system via the administrator interface they are not cleared
-by the Git system.
+Timely system update provides:
 
-When manually copying files of a new distribution kit to the web server, make sure
-that the new empty directories "dynamic" and "modules" from the distribution kit
-do not replace the old ones on the web server!
+-	new functionality;
+-	bug fixes;
+-	performance improvement;
+-	security improvement.
+
+To update the system in manual mode, you need to go to its official website
+effcore.com and download the latest distribution kit in the form of an archive.
+Next, you should unpack the downloaded archive locally.
+Important: among the unpacked files you will find half-empty directories "modules"
+and "dynamic" which must be removed before copying to the web server!
+They need to be deleted because in some operating systems, when copying directories,
+the old directories are completely replaced with new ones, and not merged,
+which will lead to the loss of data on the web server.
+Next, you should copy the remaining files to the web server so that the new
+files from the distributions replace the old files on the web server.
+After that, in the administrative interface of the system, visit the section
+"Management → Modules → Update → Data" and perform an update for each module
+if required.
+
+To update the system through the Git repository, go to the section
+"Management → Modules → Update → Files from repository" in the administrative interface
+of the system and perform the update in one click with the "update" button.
+If the "update" button is not available, but the "restore repository" button is available,
+then you must first perform the procedure for restoring the repository.
+If the "update" and "restore repository" buttons are unavailable, then the specified
+module does not have its own repository and its update via Git is not possible.
+
+The update process via the Git repository can also be performed from the
+terminal/console/shell by logging into the web server via SSH connection and
+navigating to the "shell" directory and then running the "./update.sh" script.
+This update is only possible if there is a ".git" directory in the web root.
 
 
 Security
