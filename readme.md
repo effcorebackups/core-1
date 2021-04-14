@@ -125,8 +125,8 @@ The following attack vectors were reviewed:
   new user registration form "form_registration", password recovery form "form_recovery")
   in order to brute force email addresses and/or username and/or password
   or bypassing the CAPTCHA.
-- An attacker can spoof the session ID.
 - An attacker can enter data for SQL injection into form fields.
+- An attacker can spoof the session ID.
 - An attacker can unblock blocked fields in a form using a browser.
 - An attacker can send a larger field value than allowed by the
   attributes "maxlength", "max", "step", "min", "max" and others.
@@ -161,6 +161,24 @@ File vector:
   set as "protected" ("kind: protected").
 - At the PHP level, the system can organize additional restrictions on access to any type
   of file (at the request of the developer through the "on_load" event handler).
+
+Vector DB:
+
+- Before executing any SQL query, it is prepared, which excludes
+  the possibility of SQL injection.
+
+Session vector:
+
+- The session identifier "session_id" is signed with the "settings/core/keys/session" key
+  located on the web server side, which makes it impossible to forge.
+- The session identifier can contain the name of the user agent and its IP address (during
+  authentication, the user himself determines whether to bind his session to his IP address)
+  which makes hijacking the session identifier a meaningless procedure — the attacker's
+  request from a different IP address will be ignored.
+- The session identifier may have a short-term validity (during authentication, the user
+  himself determines whether his session is short-lived or not).
+- The session identifier is not cross-domain by default, i.e. not transferred
+  to third party domains.
 
 
 Architecture
