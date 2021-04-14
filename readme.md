@@ -53,7 +53,7 @@ the system which was installed on hosting with the cheapest tariff plan
 which compliant with the minimum installation requirements (from
 ~3-5$ per month), should generate the front page in 0.005 seconds
 if OPCache is enabled or 0.05 seconds if OPCache is disabled, which
-in the first case allows serving up to ~ 200 clients per second and
+in the first case allows serving up to ~200 clients per second and
 in the second case allows serving up to ~20 clients per second
 (excluding concurrent file downloads).
 
@@ -108,26 +108,59 @@ This update is only possible if there is a ".git" directory in the web root.
 Security
 ---------------------------------------------------------------------
 
-Also an important factor in the system is security.
-As solutions to increase the level of security were used:
-- the ability to work without JS;
-- key-signed user sessions;
-- key-signed form validation identifiers;
-- the use of prepared SQL queries;
-- filtering of user input in form fields;
-- filtering of URL argument;
-- single entry point of any HTTP request,
-  as a result — no negative effects when the web server
-  is configured incorrectly (".htaccess", "web.config");
-- the ability to create a new file type with full access control;
-- the ability to get a page assembly hash in the system console;
-- CAPTCHA base module.
+Security is an important factor in the system.
 
-Determinism in the system work — another important factor.
-With the same input parameters, the same result should be reproduced
-regardless of platform and as result — complete rejection of
-functions which work depends on the environment (for example "setlocale"
-and others).
+The following attack vectors were reviewed:
+
+- An attacker can try to get access to SQLite data, system keys.
+- An attacker can try to get access to files such as ".htaccess", ".nginx", "web.config",
+  directories "/.git/", "/dynamic/tmp/.git_restore-system/" and others.
+- An attacker can try to find a weak point in the directives in the web server
+  settings file (".htaccess", ".nginx", "web.config") if there are many directives and/or
+  they are written incorrectly and/or they do not predict all possible situations and/or
+  after a software update the rules for formatting directives in such files have changed.
+- An attacker can try to access files outside the web root directory by manipulating such
+  combinations as "./", "../", "~/", "//" and others.
+- An attacker can submit a pre-filled form multiple times (authentication form "form_login",
+  new user registration form "form_registration", password recovery form "form_recovery")
+  in order to brute force email addresses and/or username and/or password
+  or bypassing the CAPTCHA.
+- An attacker can spoof the session ID.
+- An attacker can enter data for SQL injection into form fields.
+- An attacker can unblock blocked fields in a form using a browser.
+- An attacker can send a larger field value than allowed by the
+  attributes "maxlength", "max", "step", "min", "max" and others.
+
+
+Security solutions
+---------------------------------------------------------------------
+
+File vector:
+
+- Web server settings files (".htaccess", ".nginx", "web.config") contain directives
+  that prohibit user agent access to directories "/dynamic/cache/", "/dynamic/data/",
+  "/dynamic/logs/". An attacker will not be able to access SQLite data, system keys.
+- Web server configuration files (".htaccess", ".nginx", "web.config") contain a directive
+  that prohibits user agent access to any files or directories whose name begins with
+  the "." at any nesting level. An attacker will not be able to access such files as ".htaccess",
+  ".nginx", directories "/.git/", "/dynamic/tmp/.git_restore-system/" and others.
+- Web server configuration files (".htaccess", ".nginx", "web.config") contain a directive
+  that prohibits user agent access to the "web.config". An attacker would be unable
+  to access the "web.config" file.
+- Web server configuration files (".htaccess", ".nginx", "web.config") contain a directive
+  that provides a single entry point to the "index.php" file, which guarantees a single and
+  consistent approach to protecting any file on the system.
+- Additionally, at the PHP level, the system provides restriction of user agent access
+  to the web server file system outside the web root directory.
+- Additionally, at the PHP level, the system provides filtering in URL requests that
+  contain such combinations as "./", "../", "~/", "//".
+- Additionally, at the PHP level, the system provides user agent access only to the
+  actually existing file (except for the "kind: virtual" type).
+  In this case, the PHP script must have the right to read the requested file.
+- At the PHP level, the system restricts access to files whose type is
+  set as "protected" ("kind: protected").
+- At the PHP level, the system can organize additional restrictions on access to any type
+  of file (at the request of the developer through the "on_load" event handler).
 
 
 Architecture
