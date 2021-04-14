@@ -247,6 +247,20 @@ Functional vector:
   relationship: foreach ($array as $key => &$value) if ($some) unset($value);
 
 
+Performance improvement
+---------------------------------------------------------------------
+
+To improve performance, you should:
+
+-	enable PHP OPCache;
+-	switch to using PHP v.8+;
+-	switch to Solid-State Drive (SSD);
+-	transfer directories "dynamic/cache" and "dynamic/tmp" to RAM, at the same time,
+  to increase the level of reliability of the web server, such RAM must support
+  error-correcting code (ECC), and the server itself use an
+  Uninterruptible Power Supply (UPS).
+
+
 Licensing
 ---------------------------------------------------------------------
 
@@ -627,15 +641,4 @@ The system uses the more perfect "Plural" system.
 Using regular expressions, it is possible to describe almost any
 dependence of a part of a word on the numeric and non-numeric arguments
 which present in the phrase.
-
-
-Performance improvement
----------------------------------------------------------------------
-
-It is recommended to enable the PHP OPCache.
-It is recommended to use the SSD (Solid State Drives).
-In many cases, the "dynamic/cache" directory can be organized in RAM.
-To increase the reliability level of the server, such RAM should
-support ECC (error-correcting code), and the server itself should
-work together with an UPS (uninterruptible power supply).
 
