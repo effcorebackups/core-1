@@ -126,11 +126,17 @@ The following attack vectors were reviewed:
 - An attacker can try to spoof the form validation identifier.
 - An attacker can try to submit a pre-filled form multiple times (authentication form
   "form_login", new user registration form "form_registration", password recovery
-  form "form_recovery") in order to brute force email addresses and/or username and/or
-  password or bypassing the CAPTCHA.
+  form "form_recovery") in order to brute-force the email address and/or username
+  and/or password or bypassing the CAPTCHA.
 - An attacker can try to unblock blocked fields on a form using a browser.
 - An attacker can try to send a larger field value than allowed by the
   attributes "maxlength", "max", "step", "min", "max" and others.
+- An attacker can try to make GET/POST requests with characters that are not
+  allowed by RFC standards.
+- An attacker can try to make GET/POST requests in which the dimensions of the
+  transmitted arrays or their indices may not correspond to the acceptable ones.
+- An attacker can try to substitute invalid arguments in the
+  URL request (http://domain/path?QUERY).
 
 
 Security solutions
@@ -190,9 +196,19 @@ HTTP request vector:
   which makes intercepting the identifier a meaningless procedure — an attacker's request
   from a different IP address will be ignored.
   The lifetime of the validation identifier is limited in time.
-- The data validation process is carried out exclusively on the web server side and
-  trying to fake them on the client side is pointless (for example,
-  trying to unlock locked fields on a form, or trying to fill in invalid data).
+- The data validation process is performed on the web server side and an attempt to forge
+  them on the client side is pointless (for example, trying to unlock locked fields
+  on a form, or trying to fill in invalid data).
+- The data of the GET/POST request is checked for compliance with RFC standards and an attempt to
+  call a URL with invalid characters will be processed correctly.
+- The data of the GET/POST request is checked for the correspondence of the dimensions
+  of the arrays and their indices.
+- URL query arguments (http://domain/path?QUERY) are filtered.
+- The basic module CAPTCHA minimizes the possibility of brute-force email address and password
+  in the authentication form "form_login", brute-force email and/or username in the
+  new user registration form "form_registration", brute-force email address in the access
+  recovery form "form_recovery" and registration of spam robots in the new user registration
+  form "form_registration".
 
 
 Architecture
