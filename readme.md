@@ -121,14 +121,15 @@ The following attack vectors were reviewed:
   after a software update the rules for formatting directives in such files have changed.
 - An attacker can try to access files outside the web root directory by manipulating such
   combinations as "./", "../", "~/", "//" and others.
-- An attacker can submit a pre-filled form multiple times (authentication form "form_login",
-  new user registration form "form_registration", password recovery form "form_recovery")
-  in order to brute force email addresses and/or username and/or password
-  or bypassing the CAPTCHA.
-- An attacker can enter data for SQL injection into form fields.
-- An attacker can spoof the session ID.
-- An attacker can unblock blocked fields in a form using a browser.
-- An attacker can send a larger field value than allowed by the
+- An attacker can try to enter data for SQL injection into form fields.
+- An attacker can try to spoof the session identifier.
+- An attacker can try to spoof the form validation identifier.
+- An attacker can try to submit a pre-filled form multiple times (authentication form
+  "form_login", new user registration form "form_registration", password recovery
+  form "form_recovery") in order to brute force email addresses and/or username and/or
+  password or bypassing the CAPTCHA.
+- An attacker can try to unblock blocked fields on a form using a browser.
+- An attacker can try to send a larger field value than allowed by the
   attributes "maxlength", "max", "step", "min", "max" and others.
 
 
@@ -179,6 +180,19 @@ Session vector:
   himself determines whether his session is short-lived or not).
 - The session identifier is not cross-domain by default, i.e. not transferred
   to third party domains.
+
+HTTP request vector:
+
+- The form validation identifier "validation_id" is signed with
+  the "settings/core/keys/form_validation" key located on the web server side, which makes
+  it impossible to forge.
+- The validation identifier of the form contains the name of the user agent and its IP address,
+  which makes intercepting the identifier a meaningless procedure — an attacker's request
+  from a different IP address will be ignored.
+  The lifetime of the validation identifier is limited in time.
+- The data validation process is carried out exclusively on the web server side and
+  trying to fake them on the client side is pointless (for example,
+  trying to unlock locked fields on a form, or trying to fill in invalid data).
 
 
 Architecture
