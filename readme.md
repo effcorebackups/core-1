@@ -137,6 +137,8 @@ The following attack vectors were reviewed:
   transmitted arrays or their indices may not correspond to the acceptable ones.
 - An attacker can try to substitute invalid arguments in the
   URL request (http://domain/path?QUERY).
+- An attacker can try to gain access to a user profile with temporary access
+  to his workplace.
 
 
 Security solutions
@@ -209,6 +211,20 @@ HTTP request vector:
   new user registration form "form_registration", brute-force email address in the access
   recovery form "form_recovery" and registration of spam robots in the new user registration
   form "form_registration".
+
+Organizational vector:
+
+- The system of permissions and roles provides the issuance of extended rights
+  only to authorized persons.
+- Only administrators have access to the profiles of other users (for example,
+  users with the "Administrators" role).
+- All email addresses of users are hidden from other system participants and it is
+  not possible to calculate the correspondence between the user's name and his
+  email address. Thus, it will be impossible to remotely reset the password of
+  another user or try to guess the password for his account.
+- It is possible to make changes to the user's registration data only if the
+  password from his account is known — this minimizes the intra-system
+  threat (security threat from personnel side).
 
 
 Architecture
