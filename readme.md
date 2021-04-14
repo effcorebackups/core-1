@@ -247,6 +247,36 @@ Functional vector:
   relationship: foreach ($array as $key => &$value) if ($some) unset($value);
 
 
+Localization
+---------------------------------------------------------------------
+
+The system already has translations of its interface into Belarusian and Russian languages.
+In the administrative interface of the system in the section "Management → Locales"
+you can set the main language of the system interface and in the section
+"Management → Data → Content → Pages" for each page, you can set its own
+language.
+
+There are two ways to organize a multilingual website/web portal:
+
+1) within one domain, organize as many copies of pages, menus, text blocks and etc.
+   as many languages are required to support;
+2) organize its own language copy of the system for each language domain.
+
+Both the first and second versions assume the presence of duplicate pages, menus,
+text blocks and other content in different languages. This approach is justified
+because almost always, different language versions differ not only in content,
+but also in structure. For example, the main menu in one language version may have
+some menu items, and in another — completely different, while the names of the
+items themselves and their addresses and the number of these items will differ.
+
+In the module called "Profile "Classic" you can see an example of multilingualism
+implementation according to method #1.
+
+The system uses the more advanced "Plural" system. With the help of regular
+expressions, you can describe almost any dependence of a part of a word on the
+numeric and non-numeric arguments present in the phrase.
+
+
 Performance improvement
 ---------------------------------------------------------------------
 
@@ -616,29 +646,4 @@ the cache, will be converted by the system into PHP code.
 
 After creating own module with the necessary settings the deployment process
 will look extremely simple — just install the system and enable this module.
-
-
-Localization
----------------------------------------------------------------------
-
-The system already has translations of its interface into
-Belarusian and Russian languages.
-It is assumed that for each language version of the site/portal,
-the administrator organizes his own subdomain.
-In many cases, different language versions of a site/portal differ
-not only in content, but also in a structure. For example, the main menu in one
-language version may have one set of menu items, and on another — completely different,
-in this case, the names of the menu items and their addresses and count will differ.
-That is why it was decided not to complicate the system and not to introduce
-in many aspects useless functionality.
-
-If any page has a language different from the whole site, then this language
-can be specified when creating/editing such a page.
-In this case, the administrator should control the language of the content
-that appears on this page.
-
-The system uses the more perfect "Plural" system.
-Using regular expressions, it is possible to describe almost any
-dependence of a part of a word on the numeric and non-numeric arguments
-which present in the phrase.
 
