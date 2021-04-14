@@ -247,6 +247,19 @@ Functional vector:
   relationship: foreach ($array as $key => &$value) if ($some) unset($value);
 
 
+Licensing
+---------------------------------------------------------------------
+
+The system is open and free.
+The system is not in the public domain.
+Any individual or organization can create a website/web portal/web service
+on the basis of this system for himself or for a third party.
+However, it is forbidden to distribute the files of this system in their
+original or modified form, or in conjunction with anything else.
+This limitation does not apply to modules of other developers,
+the authors of which determine their own licensing policy.
+
+
 Architecture
 ---------------------------------------------------------------------
 
@@ -625,17 +638,4 @@ In many cases, the "dynamic/cache" directory can be organized in RAM.
 To increase the reliability level of the server, such RAM should
 support ECC (error-correcting code), and the server itself should
 work together with an UPS (uninterruptible power supply).
-
-
-Licensing
----------------------------------------------------------------------
-
-The system is open and free.
-The system is not in the public domain.
-Anyone can create a website, portal or service on the basis of it,
-both personally and for any customer.
-However, not allowed to distribute system files in their original or
-modified form or in conjunction with anything else.
-This restriction does not apply to third-party modules
-whose authors themselves determine the licensing policy.
 
