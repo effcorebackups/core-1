@@ -226,6 +226,20 @@ Organizational vector:
   password from his account is known — this minimizes the intra-system
   threat (security threat from personnel side).
 
+Functional vector:
+
+- Implemented the ability to work without JavaScript.
+- Implemented the ability to get the "Sequence hash" and "Data hash" in the system console.
+- Determinism in the system work — with the same input parameters, the same result is
+  returned regardless of the platform and as a result — complete rejection of functions
+  that depend on the environment (for example, "setlocale" and others).
+- Using in code the identity operator '===' instead of simple equality '==', as a result,
+  is excluded a dangerous situation such as: $var = 0; ($var == 'some_text') === true;
+- In the code in the "foreach" loops, the exclusion of references to the "key" and/or "value"
+  variables with the subsequent modification of the array structure using these variables,
+  which could lead to a skew of the array structure and destruction of the "key + value"
+  relationship: foreach ($array as $key => &$value) if ($some) unset($value);
+
 
 Architecture
 ---------------------------------------------------------------------
