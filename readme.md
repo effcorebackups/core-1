@@ -137,6 +137,8 @@ The following attack vectors were reviewed:
   transmitted arrays or their indices may not correspond to the acceptable ones.
 - An attacker can try to substitute invalid arguments in the
   URL request (http://domain/path?QUERY).
+- An attacker can try to insert malicious code (JavaScript) into the form fields.
+- An attacker can try to upload an image with malicious content.
 - An attacker can try to gain access to a user profile with temporary access
   to his workplace.
 
@@ -211,6 +213,10 @@ HTTP request vector:
   new user registration form "form_registration", brute-force email address in the access
   recovery form "form_recovery" and registration of spam robots in the new user registration
   form "form_registration".
+- Input filtering prevents malicious code (JavaScript) from entering to the system.
+- Output filtering prevents malicious code (JavaScript) from being displayed.
+- Image filtering eliminates the possibility of displaying images with malicious
+  content to users.
 
 Organizational vector:
 
