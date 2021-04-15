@@ -69,44 +69,6 @@ a certain number of regions. Blocks with text, menus, forms (only in the
 have an individual layout. Thus, the markup of any page can be unique.
 
 
-Updates
----------------------------------------------------------------------
-
-Timely system update provides:
-
-- new functionality;
-- bug fixes;
-- performance improvement;
-- security improvement.
-
-To update the system in manual mode, you need to go to its official website
-effcore.com and download the latest distribution kit in the form of an archive.
-Next, you should unpack the downloaded archive locally.
-Important: among the unpacked files you will find half-empty directories "modules"
-and "dynamic" which must be removed before copying to the web server!
-They need to be deleted because in some operating systems, when copying directories,
-the old directories are completely replaced with new ones, and not merged,
-which will lead to the loss of data on the web server.
-Next, you should copy the remaining files to the web server so that the new
-files from the distributions replace the old files on the web server.
-After that, in the administrative interface of the system, visit the section
-"Management → Modules → Update → Data" and perform an update for each module
-if required.
-
-To update the system through the Git repository, go to the section
-"Management → Modules → Update → Files from repository" in the administrative interface
-of the system and perform the update in one click with the "update" button.
-If the "update" button is not available, but the "restore repository" button is available,
-then you must first perform the procedure for restoring the repository.
-If the "update" and "restore repository" buttons are unavailable, then the specified
-module does not have its own repository and its update via Git is not possible.
-
-The update process via the Git repository can also be performed from the
-terminal/console/shell by logging into the web server via SSH connection and
-navigating to the "shell" directory and then running the "./update.sh" script.
-This update is only possible if there is a ".git" directory in the web root.
-
-
 Localization
 ---------------------------------------------------------------------
 
@@ -195,6 +157,44 @@ modules to appear here — in the list of available modules.
 To embed any third-party library based on PHP or JS, you need to place its files in the
 wrapper of an empty module and enable this module, after which all library files will
 become available.
+
+
+Updates
+---------------------------------------------------------------------
+
+Timely system update provides:
+
+- new functionality;
+- bug fixes;
+- performance improvement;
+- security improvement.
+
+To update the system in manual mode, you need to go to its official website
+effcore.com and download the latest distribution kit in the form of an archive.
+Next, you should unpack the downloaded archive locally.
+Important: among the unpacked files you will find half-empty directories "modules"
+and "dynamic" which must be removed before copying to the web server!
+They need to be deleted because in some operating systems, when copying directories,
+the old directories are completely replaced with new ones, and not merged,
+which will lead to the loss of data on the web server.
+Next, you should copy the remaining files to the web server so that the new
+files from the distributions replace the old files on the web server.
+After that, in the administrative interface of the system, visit the section
+"Management → Modules → Update → Data" and perform an update for each module
+if required.
+
+To update the system through the Git repository, go to the section
+"Management → Modules → Update → Files from repository" in the administrative interface
+of the system and perform the update in one click with the "update" button.
+If the "update" button is not available, but the "restore repository" button is available,
+then you must first perform the procedure for restoring the repository.
+If the "update" and "restore repository" buttons are unavailable, then the specified
+module does not have its own repository and its update via Git is not possible.
+
+The update process via the Git repository can also be performed from the
+terminal/console/shell by logging into the web server via SSH connection and
+navigating to the "shell" directory and then running the "./update.sh" script.
+This update is only possible if there is a ".git" directory in the web root.
 
 
 Performance improvement
