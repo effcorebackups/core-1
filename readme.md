@@ -9,7 +9,9 @@ General information
 - Start of development: end of 2016
 - Initial release: 2021-06-01
 - Written in: PHP
-- Operating system: UNIX, Linux, Microsoft Windows
+- Supported OS: UNIX, Linux, Microsoft Windows
+- Supported web servers: NGINX, Apache, IIS
+- Supported databases: SQLite, MySQL
 - Is open source project: yes
 - License: proprietary software
 - Website: http://effcore.com
@@ -580,13 +582,6 @@ specify its weight and handler in PHP code, flush the cache and
 the event will begin to be processed. On the "NoSQL Data → Events" page,
 can view all events registered in the system (this section will be
 available after enable the module "Develop").
-
-
-Web server
----------------------------------------------------------------------
-
-As a web server, Apache, NGINX, IIS are supported.
-The required versions can be found in the "readme/software.md" file.
 
 
 Caching
