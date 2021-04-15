@@ -210,6 +210,32 @@ To improve performance, you should:
   error-correcting code (ECC), and the server itself use an
   Uninterruptible Power Supply (UPS).
 
+The best way to increase performance is to cascade styles wisely.
+This approach makes it possible to do without such technologies as SAS and LESS,
+the main task of which is multiple copying of existing styles to new elements,
+as a result of which the volume of CSS files grows to indecent sizes, although
+it could remain within 10-20KiB.
+
+A good way to increase performance is to minify JS files by reducing code refactoring
+with third-party programs or services.
+
+The worst way to improve performance is to enable GZIP streaming compression technology.
+This can be done using the web server NGINX, Apache, IIS. The main disadvantage of this
+technology is that the process of unpacking a compressed stream is a resource-intensive
+procedure for the processor. The first consequence of this drawback is that the mobile
+client spends not only processor time working with it, but also the battery resource.
+The second consequence of this drawback is that the rendering of the page by the browser
+of any client takes place with a slight delay and is a multiple of the number of such files.
+At the same time, the traffic transfer rates have grown so much that a 10-20KiB file is
+transferred almost instantly.
+
+It was noticed that in the case of using files, the size of which did not exceed
+10-20KiB, together with the rejection of streaming compression and a good
+communication channel, it led to such a fast loading of the page that was ahead
+of the process of their rendering by the browser.
+And although Google Page Speed recommends otherwise, in this case the test produced an
+incredible 100PSI without any manipulation.
+
 
 Caching
 ---------------------------------------------------------------------
