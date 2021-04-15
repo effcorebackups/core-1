@@ -137,7 +137,28 @@ expressions, you can describe almost any dependence of a part of a word on the
 numeric and non-numeric arguments present in the phrase.
 
 
-Appearance/Profiles
+Appearance
+---------------------------------------------------------------------
+
+In the administrative interface of the system, there is a section "Management → View"
+which is responsible for the design of the pages.
+
+In the subsection "Colors → Presets" you can select and apply a ready-made color scheme
+for all elements of the page and in the subsection "Colors → Current" change the color
+of a specific element. The number of colors is limited by the built-in palette (additional
+colors can be obtained by installing or creating your own profile).
+
+In the "Layouts" subsection, you can view the page layouts available in the system (additional
+layouts can be obtained by installing or creating your own profile).
+
+In the subsection "Global CSS" you can describe your own CSS-directives and thus make
+changes to the design of pages.
+
+In the "Settings" subsection, you can set the minimum and maximum page width, while
+in the settings of the pages themselves, these parameters can be overridden.
+
+
+Profiles
 ---------------------------------------------------------------------
 
 The system does not have the themes we are used to. To create your own unique look,
@@ -626,17 +647,4 @@ Caching
 Due to its architecture, mid-level projects do not require caching.
 For large projects, caching is usually done by third-party web server tools,
 what is originally supposed by the author.
-
-
-Decoration
----------------------------------------------------------------------
-
-To decorate the site/portal in the system exists the section "View".
-In this section, the administrator can change the color scheme of the page elements.
-The number of colors is limited by the built-in palette.
-Additional colors can be added by creating a new profile.
-Also in this section there are a color presets and "in one click" the
-administrator can change the design of all available elements (for example,
-activate the light design theme). There is also a list of the layouts which
-available in the system.
 
