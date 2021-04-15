@@ -216,8 +216,10 @@ the main task of which is multiple copying of existing styles to new elements,
 as a result of which the volume of CSS files grows to indecent sizes, although
 it could remain within 10-20KiB.
 
-A good way to increase performance is to minify JS files by reducing code refactoring
-with third-party programs or services.
+A good way to increase performance is to minify JS files by reducing
+code refactoring with third-party programs or services.
+Also a good decision is to abandon "heavy" libraries like jQuery and switch to CSS3 animation,
+SMIL animation, modern JavaScript and HTML5 capabilities.
 
 The worst way to improve performance is to enable GZIP streaming compression technology.
 This can be done using the web server NGINX, Apache, IIS. The main disadvantage of this
