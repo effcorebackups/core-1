@@ -107,6 +107,82 @@ navigating to the "shell" directory and then running the "./update.sh" script.
 This update is only possible if there is a ".git" directory in the web root.
 
 
+Localization
+---------------------------------------------------------------------
+
+The system already has translations of its interface into Belarusian and Russian languages.
+In the administrative interface of the system in the section "Management → Locales"
+you can set the main language of the system interface and in the section
+"Management → Data → Content → Pages" for each page, you can set its own
+language.
+
+There are two ways to organize a multilingual website/web portal:
+
+1) within one domain, organize as many copies of pages, menus, text blocks and etc.
+   as many languages are required to support;
+2) organize its own language copy of the system for each language domain.
+
+Both the first and second versions assume the presence of duplicate pages, menus,
+text blocks and other content in different languages. This approach is justified
+because almost always, different language versions differ not only in content,
+but also in structure. For example, the main menu in one language version may have
+some menu items, and in another — completely different, while the names of the
+items themselves and their addresses and the number of these items will differ.
+
+In the module called "Profile "Classic" you can see an example of multilingualism
+implementation according to method #1.
+
+The system uses the more advanced "Plural" system. With the help of regular
+expressions, you can describe almost any dependence of a part of a word on the
+numeric and non-numeric arguments present in the phrase.
+
+
+Profiles/Deployment
+---------------------------------------------------------------------
+
+The system does not have the themes we are used to. To create your own unique look,
+there is such a module type as "Profile" ("module_as_profile").
+The profile can describe: pages, menus, any kind of blocks (for example, containing text,
+audio, video, galleries, selections, polls), colors and their sets, styles as
+files "*.css"/"*.cssd", scripts as files "*.js"/"*.jsd", page layouts, element templates,
+any kind of files that need to be copied to the system when deploying a profile (images,
+audio, video, "robots.txt", "sitemap.xml" and others) and everything that any typical
+module can implement.
+
+All modules and profiles must be placed in the "modules" directory, otherwise they
+will be lost during the upgrade — the Git system will clear all directories to the state
+of the master copy. For the same reason, you cannot make changes to modules and profiles
+that are located in the "system" directory. The directory "profiles/examples" contains
+examples of profiles that you can copy to the directory "modules" and perform any actions
+with them without fear of data loss (it is recommended to rename all names inside the
+profile to your own). When copying modules in the administrative interface of the system
+in the section "Management → Modules → Install", you should reset the cache (button "↺")
+in order for new modules to appear here — in the list of available modules.
+
+To embed any third-party library based on PHP or JS, you need to place its files in the
+wrapper of an empty module and enable this module, after which all library files will
+become available.
+
+Having created a profile, you can deploy the system with your own settings very
+easily — it will be enough to enable this profile in the installed system (like any other
+module), or, on the system installation page (if the installation is made from scratch),
+simply select your profile from the list of available ones.
+
+
+Performance improvement
+---------------------------------------------------------------------
+
+To improve performance, you should:
+
+- enable PHP OPCache;
+- switch to using PHP v.8+;
+- switch to Solid-State Drive (SSD);
+- transfer directories "dynamic/cache" and "dynamic/tmp" to RAM, at the same time,
+  to increase the level of reliability of the web server, such RAM must support
+  error-correcting code (ECC), and the server itself use an
+  Uninterruptible Power Supply (UPS).
+
+
 Security
 ---------------------------------------------------------------------
 
@@ -247,82 +323,6 @@ Functional vector:
   variables with the subsequent modification of the array structure using these variables,
   which could lead to a skew of the array structure and destruction of the "key + value"
   relationship: foreach ($array as $key => &$value) if ($some) unset($value);
-
-
-Localization
----------------------------------------------------------------------
-
-The system already has translations of its interface into Belarusian and Russian languages.
-In the administrative interface of the system in the section "Management → Locales"
-you can set the main language of the system interface and in the section
-"Management → Data → Content → Pages" for each page, you can set its own
-language.
-
-There are two ways to organize a multilingual website/web portal:
-
-1) within one domain, organize as many copies of pages, menus, text blocks and etc.
-   as many languages are required to support;
-2) organize its own language copy of the system for each language domain.
-
-Both the first and second versions assume the presence of duplicate pages, menus,
-text blocks and other content in different languages. This approach is justified
-because almost always, different language versions differ not only in content,
-but also in structure. For example, the main menu in one language version may have
-some menu items, and in another — completely different, while the names of the
-items themselves and their addresses and the number of these items will differ.
-
-In the module called "Profile "Classic" you can see an example of multilingualism
-implementation according to method #1.
-
-The system uses the more advanced "Plural" system. With the help of regular
-expressions, you can describe almost any dependence of a part of a word on the
-numeric and non-numeric arguments present in the phrase.
-
-
-Profiles/Deployment
----------------------------------------------------------------------
-
-The system does not have the themes we are used to. To create your own unique look,
-there is such a module type as "Profile" ("module_as_profile").
-The profile can describe: pages, menus, any kind of blocks (for example, containing text,
-audio, video, galleries, selections, polls), colors and their sets, styles as
-files "*.css"/"*.cssd", scripts as files "*.js"/"*.jsd", page layouts, element templates,
-any kind of files that need to be copied to the system when deploying a profile (images,
-audio, video, "robots.txt", "sitemap.xml" and others) and everything that any typical
-module can implement.
-
-All modules and profiles must be placed in the "modules" directory, otherwise they
-will be lost during the upgrade — the Git system will clear all directories to the state
-of the master copy. For the same reason, you cannot make changes to modules and profiles
-that are located in the "system" directory. The directory "profiles/examples" contains
-examples of profiles that you can copy to the directory "modules" and perform any actions
-with them without fear of data loss (it is recommended to rename all names inside the
-profile to your own). When copying modules in the administrative interface of the system
-in the section "Management → Modules → Install", you should reset the cache (button "↺")
-in order for new modules to appear here — in the list of available modules.
-
-To embed any third-party library based on PHP or JS, you need to place its files in the
-wrapper of an empty module and enable this module, after which all library files will
-become available.
-
-Having created a profile, you can deploy the system with your own settings very
-easily — it will be enough to enable this profile in the installed system (like any other
-module), or, on the system installation page (if the installation is made from scratch),
-simply select your profile from the list of available ones.
-
-
-Performance improvement
----------------------------------------------------------------------
-
-To improve performance, you should:
-
-- enable PHP OPCache;
-- switch to using PHP v.8+;
-- switch to Solid-State Drive (SSD);
-- transfer directories "dynamic/cache" and "dynamic/tmp" to RAM, at the same time,
-  to increase the level of reliability of the web server, such RAM must support
-  error-correcting code (ECC), and the server itself use an
-  Uninterruptible Power Supply (UPS).
 
 
 Licensing
