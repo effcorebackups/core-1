@@ -356,8 +356,6 @@ Core: NoSQL
 
 All data is stored as PHP code.
 Perhaps the fastest storage after "storage in RAM".
-After organizing the disk in RAM, it is possible to increase performance
-by 3-5 times (more details in the section "Performance improvement").
 Each storage subdirectory will be initialized only on demand.
 
 Any instance of the class and other NoSQL data can be described
@@ -432,6 +430,12 @@ Field types are supported:
 - array;
 - object|class_name;
 - null.
+
+The system implements the "Changes" mechanism. This mechanism provides the
+ability to make changes to the global NoSQL tree on the basis of which the
+entire system operates. An example of making changes is shown in the
+"demo--data--changes.data" file of the "Demo" module. After applying the
+mechanism and clearing the cache, the entire tree will be rebuilt.
 
 
 Core: SQL
@@ -603,42 +607,4 @@ Also in this section there are a color presets and "in one click" the
 administrator can change the design of all available elements (for example,
 activate the light design theme). There is also a list of the layouts which
 available in the system.
-
-The system operates with only one type of file collection — these are modules.
-There are no a themes which familiar to many people.
-To create a profile of decoration, see the "Deployment" section.
-
-
-Deployment
----------------------------------------------------------------------
-
-Making changes in system files is a bad idea, because all of them
-will be lost after updating the system.
-
-A good solution is to create a new module in the "modules" directory
-with a profile of your own settings. An example of such a module can be borrowed
-from the "Profiles" section. (just copy one of the profiles and place it
-in the "modules" directory, then make your changes and reset the cache).
-
-In this module you can set your own:
-- colors;
-- color presets;
-- static cascading style files "*.css";
-- static JavaScript files "*.js";
-- dynamic cascading style files "*.cssd";
-- dynamic JavaScript files "*.jsd";
-- templates;
-- layouts;
-- pictures;
-- favicons;
-and more.
-
-Also in the own module, it will be possible to apply the "Changes" mechanism.
-This mechanism give ability to make changes in the system.
-Its example is shown in the file "demo--data--changes.data" of the module "Demo".
-The "Changes" mechanism modifies the global NoSQL tree, which, after clearing
-the cache, will be converted by the system into PHP code.
-
-After creating own module with the necessary settings the deployment process
-will look extremely simple — just install the system and enable this module.
 
