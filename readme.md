@@ -614,30 +614,12 @@ Core: scheme
     ╚═════════════════════════════════════════════╝
 
 
-CSS, JS, SASS, LESS
+CSSD, JSD
 ---------------------------------------------------------------------
 
-A single entry point allows the system to control the process of issuing
-the contents of any file, making it possible to use external variables
-in CSS and JS files. Such variables begin with "%%_", and the files
-containing them have extensions "cssd" and "jsd".
-
-The project does not implement and considers the CSS and JS streaming
-compression technology to be obsolete.
-It should be noted that the developers of "Google PageSpeed Insights" think differently.
-Disadvantages of streaming compression:
-- 1 to 10 KiB text files are compressed, that with modern data
-  transfer rate is not significant, at the same time, compression
-  takes web server resources, and for unpacking — the client (which
-  ultimately affects the battery charge of mobile clients).
-- for CSS, a file size above 10 KiB is considered to be the result
-  of improper cascading of styles and/or usage of disastrous
-  technology such as SASS or LESS, which condoning "badcoding".
-- JS files can be initially compressed and obfuscated by
-  reducing-reorganization of JS code by third-party
-  programs or services.
-However, no one bothers to use the streaming compression capabilities
-of the web server directly.
+A single entry point provides the system with the ability to control
+the process of issuing the contents of any file, making it possible
+to use variables in "*.cssd" and "*.jsd" files.
 
 
 Event model
