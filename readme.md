@@ -211,6 +211,16 @@ To improve performance, you should:
   Uninterruptible Power Supply (UPS).
 
 
+Caching
+---------------------------------------------------------------------
+
+The architecture of the core of the system is designed in such a way that the system
+itself works as quickly as possible and does not require caching. Mid-range websites
+based on this system will run as fast as other cache-enabled systems.
+For heavily loaded web portals, caching may be required and can be enabled using the
+web server NGINX, Apache, IIS (no additional actions from the system are required).
+
+
 Security
 ---------------------------------------------------------------------
 
@@ -639,12 +649,4 @@ specify its weight and handler in PHP code, flush the cache and
 the event will begin to be processed. On the "NoSQL Data → Events" page,
 can view all events registered in the system (this section will be
 available after enable the module "Develop").
-
-
-Caching
----------------------------------------------------------------------
-
-Due to its architecture, mid-level projects do not require caching.
-For large projects, caching is usually done by third-party web server tools,
-what is originally supposed by the author.
 
