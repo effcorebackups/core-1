@@ -113,7 +113,7 @@ colors can be obtained by installing or creating your own profile).
 In the "Layouts" subsection, you can view the page layouts available in the system (additional
 layouts can be obtained by installing or creating your own profile).
 
-In the subsection "Global CSS" you can describe your own CSS-directives and thus make
+In the subsection "Global CSS" you can describe your own CSS directives and thus make
 changes to the design of pages.
 
 In the "Settings" subsection, you can set the minimum and maximum page width, while
@@ -433,7 +433,7 @@ resorting to documentation.
 
 The directories like "module_*/frontend" contain everything you need for frontend development.
 The directories like "module_*/backend" contain everything you need for backend development.
-The directories like "module_*/data" contain NoSQL-data.
+The directories like "module_*/data" contain NoSQL data.
 
 In fact, the work of files does not depend on their location and if necessary,
 they will still be found and processed. Location of files in specific directories — it is
@@ -542,7 +542,7 @@ and login will be disconnected, and on the pages with election
 
 The following are supported:
 - checks;
-- prepared queries (no chance for SQL-injections);
+- prepared queries (no chance for SQL injections);
 - transactions (begin, roll_back, commit);
 - collations (nocase, binary);
 - constraints (primary, unique, foreign with cascade action);
@@ -653,10 +653,12 @@ to use variables in "*.cssd" and "*.jsd" files.
 Event model
 ---------------------------------------------------------------------
 
-The event model is built fairly transparent and predictable.
-It is enough to register a new event in the "events.data" of own module,
-specify its weight and handler in PHP code, flush the cache and
-the event will begin to be processed. On the "NoSQL Data → Events" page,
-can view all events registered in the system (this section will be
-available after enable the module "Develop").
+The system has a transparent and predictable event model.
+It is enough to register a new event in "events.data" of your module,
+specify its weight and handler in PHP code, reset the cache,
+and the event will start being processed.
+In the administrative interface of the system in the section
+"Develop → NoSQL data → Events" you can view all events
+registered in the system (the "Development" section will become available
+after enabling the "Development" module).
 
