@@ -442,23 +442,17 @@ only an organizational measure designed to facilitate the work with the system.
 The system has a built-in parser and class loader PSR-0.
 
 
-Core: NoSQL
+NoSQL
 ---------------------------------------------------------------------
 
-All data is stored as PHP code.
-Perhaps the fastest storage after "storage in RAM".
-Each storage subdirectory will be initialized only on demand.
+All NoSQL data is stored in "*.data" files that are located in each module.
+Each such file can describe one or many instances of any kind of entity
+with any level of nesting into each other (tree structure).
+Each line of such a file describes a single entity attribute and can take
+the form: "name", "name|class_name", "property: value", "- key: value".
+An example of such a structure is shown below.
 
-Any instance of the class and other NoSQL data can be described
-in text format in a file of type ".data", like YAML, but has a more
-stringent rules such as "each string can contain the only one
-phrase in the form "key: value".
-
-It is comfortable for controlling changes in the code — any change
-of one key or value will be highlighted in "git diff" with just one line.
-Also, this format significantly speeds up parsing the files.
-
-Below is given an example of "*.data" file.
+Example of "*.data" file:
 
     demo
       object_1|class_name
@@ -466,25 +460,15 @@ Below is given an example of "*.data" file.
         property_2: value 2 …
         property_N: value N
       array_1
-      - item_1: value 1
-      - item_2: value 2 …
-      - item_N: value N
+      - key_1: value 1
+      - key_2: value 2 …
+      - key_N: value N
 
-At the same time, both objects (instances of class-patterns) and arrays
-can have any nesting levels and contain inside any other objects or
-arrays.
-
-After parsing "*.data" files, the result is converted to PHP code (single
-tree of objects — instances of class-patterns), after which it is
-saved to files "dynamic/cache/cache-*.php" separately for each kind of
-entity, as shown in the example below:
-- dynamic/cache/data--blocks.php
-- dynamic/cache/data--breadcrumbs.php
-- dynamic/cache/data--file_types.php
-and so on.
-
-The example described above will be converted to a PHP
-file of the following form:
+After clearing the cache, a special mechanism finds each such file in the "modules" and
+"system" directories, parses it, converts to PHP code and distributes to files in
+the "dynamic/cache" directory. The whole procedure takes a few seconds and is executed
+only if changes are made to the global NoSQL tree (usually when saving system settings
+via the administrative interface). An example of such a PHP file is shown below.
 
     namespace effcore {
       cache::$data['demo'] = new \stdClass;
@@ -492,44 +476,59 @@ file of the following form:
       cache::$data['demo']->object_1->property_1 = 'value 1';
       cache::$data['demo']->object_1->property_2 = 'value 2';
       cache::$data['demo']->object_1->property_N = 'value N';
-      cache::$data['demo']->array_1['item_1'] = 'value 1';
-      cache::$data['demo']->array_1['item_2'] = 'value 2';
-      cache::$data['demo']->array_1['item_N'] = 'value N';
+      cache::$data['demo']->array_1['key_1'] = 'value 1';
+      cache::$data['demo']->array_1['key_2'] = 'value 2';
+      cache::$data['demo']->array_1['key_N'] = 'value N';
     }
 
-This architecture give ability to access NoSQL data as quickly as possible.
-When using the PHP module OPCache, the access speed can increase
-from 2 to 3 times. In fact, to access NoSQL data, it is enough to
-load a PHP file of a certain entity and data will be available
-immediately after loading.
+Data storage in the "dynamic/cache" directory is performed separately for each
+type of entity, as shown in the example below.
 
-Thus, the core of the system is the aforementioned set of class-patterns
-and NoSQL storage, which cache is represented as PHP code, containing
-instances of these classes in tree form with any level of nesting
-and unlimited by structure.
+An example of separate storage of entities:
 
-Changing the structure of NoSQL data is possible only through a special mechanism.
-For example, the system menu is located in NoSQL storage and nobody cannot
-disrupt its work. The anonymous user menu is stored in SQL storage and
-the administrator can edit this menu through the system interface.
+- dynamic/cache/data--blocks.php
+- dynamic/cache/data--breadcrumbs.php
+- dynamic/cache/data--file_types.php
 
-Field types are supported:
+Then, when an attempt is made to call a certain part of the NoSQL tree, the required
+PHP file is connected and the requested data becomes instantly available.
+When using OPCache, all data is already in bytecode and probably in RAM in PHP cache,
+which makes access to them as fast as possible.
+
+That file structure is very convenient for development because any change to any
+attribute will be shown through "git diff" as a 1 line change at a specific location
+in a specific file.
+
+You can change the structure of the NoSQL tree through the special "Changes" mechanism.
+This mechanism provides the ability to make changes to the global NoSQL tree on the
+basis of which the entire system works. An example of making changes is shown in the
+file "demo--data--changes.data" in module "Demo". After applying the mechanism and
+clearing the cache, the entire tree will be rebuilt.
+
+Thus, the core of the system is a set of pattern classes and a NoSQL tree in the form
+of PHP code, which containing instances of these classes (entities) in a tree-like form
+with any nesting level and unlimited in its structure.
+
+NoSQL storage supports the following data types:
+
 - integer;
 - float;
 - boolean;
 - string;
+- string|_string_true;
+- string|_string_false;
 - array;
+- array|_empty_array
 - object|class_name;
 - null.
 
-The system implements the "Changes" mechanism. This mechanism provides the
-ability to make changes to the global NoSQL tree on the basis of which the
-entire system operates. An example of making changes is shown in the
-"demo--data--changes.data" file of the "Demo" module. After applying the
-mechanism and clearing the cache, the entire tree will be rebuilt.
+Note: the system menu is located in the NoSQL storage and no one can
+disrupt its work using the administrative interface of the system.
+The anonymous user menu is stored in the SQL storage, and its editing
+is available through the administrative interface of the system.
 
 
-Core: SQL
+SQL
 ---------------------------------------------------------------------
 
 MySQL and SQLite can be used as SQL storages.
