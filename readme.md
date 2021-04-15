@@ -137,7 +137,7 @@ expressions, you can describe almost any dependence of a part of a word on the
 numeric and non-numeric arguments present in the phrase.
 
 
-Profiles/Deployment
+Appearance/Profiles
 ---------------------------------------------------------------------
 
 The system does not have the themes we are used to. To create your own unique look,
@@ -149,24 +149,31 @@ any kind of files that need to be copied to the system when deploying a profile 
 audio, video, "robots.txt", "sitemap.xml" and others) and everything that any typical
 module can implement.
 
-All modules and profiles must be placed in the "modules" directory, otherwise they
-will be lost during the upgrade — the Git system will clear all directories to the state
-of the master copy. For the same reason, you cannot make changes to modules and profiles
-that are located in the "system" directory. The directory "profiles/examples" contains
-examples of profiles that you can copy to the directory "modules" and perform any actions
-with them without fear of data loss (it is recommended to rename all names inside the
-profile to your own). When copying modules in the administrative interface of the system
-in the section "Management → Modules → Install", you should reset the cache (button "↺")
-in order for new modules to appear here — in the list of available modules.
-
-To embed any third-party library based on PHP or JS, you need to place its files in the
-wrapper of an empty module and enable this module, after which all library files will
-become available.
+The directory "profiles/examples" contains examples of profiles that you can copy to the
+directory "modules" and perform any actions with them without fear of data loss (it is
+recommended to rename all names inside the profile to your own).
 
 Having created a profile, you can deploy the system with your own settings very
 easily — it will be enough to enable this profile in the installed system (like any other
 module), or, on the system installation page (if the installation is made from scratch),
 simply select your profile from the list of available ones.
+
+
+Modules/Profiles/Libraries
+---------------------------------------------------------------------
+
+All modules/profiles/libraries must be placed in the "modules" directory, otherwise they
+will be lost during the upgrade — the Git system will clear all directories to the state
+of the master copy. For the same reason, you cannot make changes to modules/profiles that
+are located in the "system" directory.
+
+When copying modules in the administrative interface of the system in the section
+"Management → Modules → Install", you should reset the cache (button "↺") in order for new
+modules to appear here — in the list of available modules.
+
+To embed any third-party library based on PHP or JS, you need to place its files in the
+wrapper of an empty module and enable this module, after which all library files will
+become available.
 
 
 Performance improvement
@@ -373,14 +380,7 @@ In fact, the work of files does not depend on their location and if necessary,
 they will still be found and processed. Location of files in specific directories — it is
 only an organizational measure designed to facilitate the work with the system.
 
-Additional modules/libraries should be placed in the "modules" directory so that
-after updating the system via the administrator interface they are not cleared by
-the Git system.
-
 The system has a built-in parser and class loader PSR-0.
-To add a new library (set of classes), just put its files on the
-web server and reset the cache, after that they become available
-from anywhere in the system.
 
 
 Core: NoSQL
