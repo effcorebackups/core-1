@@ -411,6 +411,9 @@ The architecture is made according to the classic MVC scheme.
 It is a hybrid system based on NoSQL and SQL storages.
 NoSQL storage has a unique implementation and is a hybrid of document-oriented,
 object-oriented and hierarchical models.
+The core of the system is a set of pattern classes and a NoSQL tree in the form
+of PHP code, which containing instances of these classes (entities) in a tree-like form
+with any nesting level and unlimited in its structure.
 
 The system code is adapted for reuse.
 The system consists of many small classes/class-patterns, which contain on average
@@ -504,10 +507,6 @@ This mechanism provides the ability to make changes to the global NoSQL tree on 
 basis of which the entire system works. An example of making changes is shown in the
 file "demo--data--changes.data" in module "Demo". After applying the mechanism and
 clearing the cache, the entire tree will be rebuilt.
-
-Thus, the core of the system is a set of pattern classes and a NoSQL tree in the form
-of PHP code, which containing instances of these classes (entities) in a tree-like form
-with any nesting level and unlimited in its structure.
 
 NoSQL storage supports the following data types:
 
