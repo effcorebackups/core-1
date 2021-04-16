@@ -132,9 +132,9 @@ namespace effcore {
     }
   }
 
-  function transaction_begin    () {if ($this->init()) return $this->connection->beginTransaction();}
-  function transaction_roll_back() {if ($this->init()) return $this->connection->rollBack();        }
-  function transaction_commit   () {if ($this->init()) return $this->connection->commit();          }
+  function transaction_begin   () {if ($this->init()) return $this->connection->beginTransaction();}
+  function transaction_rollback() {if ($this->init()) return $this->connection->rollBack();        }
+  function transaction_commit  () {if ($this->init()) return $this->connection->commit();          }
 
   function query(...$query) {
     if (is_array($query[0]))
