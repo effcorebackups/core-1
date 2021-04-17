@@ -97,8 +97,8 @@ namespace effcore {
     foreach ($strings as $c_number => $c_string) {
       $c_string          = str_replace(tb, '    ', $c_string);
       $c_indent          = strspn($c_string, ' ');
-      $c_ul_ol_depth     = (int)floor(($c_indent - 1) / 4) + 2 ?: 1;
-      $c_paragraph_depth = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
+      $c_ul_ol_depth     = floor(($c_indent - 1) / 4) + 2 ?: 1;
+      $c_paragraph_depth = floor(($c_indent - 1) / 4) + 1 ?: 1;
       $c_last_item = $pool->child_select_last();
       $c_last_type = static::_node_universal_type_get($c_last_item);
       $c_matches = [];
@@ -157,12 +157,17 @@ namespace effcore {
         if ($c_last_type == 'pre')        {$pool->child_insert(     new text(htmlspecialchars($c_string))); continue;}
       # create new list container (ol|ul)
         if ($c_last_type != 'list' && $c_indent < 4) {
-          $c_ul_ol_depth = 1;
           $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
           $c_last_item->_ul_ol_pointers[1] = $c_last_item;
+          $c_last_item->_ul_ol_pointers[1]->_start_indent = $c_indent;
           $c_last_type = 'list';
+          $c_ul_ol_depth = 1;
           $pool->child_insert($c_last_item);
         }
+      # indent correction for original behavior
+        if ($c_indent === 0) $c_ul_ol_depth = 1;
+        if ($c_indent >= 1 && $c_indent <= 4 && $c_indent === $c_last_item->_ul_ol_pointers[1]->_start_indent) $c_ul_ol_depth = 1;
+        if ($c_indent >= 1 && $c_indent <= 4 && $c_indent  >  $c_last_item->_ul_ol_pointers[1]->_start_indent) $c_ul_ol_depth = 2;
       # create new list sub container (ol|ul)
         if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 0]) &&
            !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
@@ -183,7 +188,9 @@ namespace effcore {
          $new_li->child_insert(new node, 'wrapper_data0');
          $new_li->child_insert(new node, 'wrapper_container');
          $new_li->child_insert(new node, 'wrapper_data1');
-         $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
+         if (!empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth]))
+                    $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
+         else   end($c_last_item->_ul_ol_pointers)               ->child_insert($new_li);
          static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
          continue;
       }
