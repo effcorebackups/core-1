@@ -28,14 +28,14 @@ namespace effcore {
     switch ($list->_wrapper_name) {
       case 'wrapper_data0':
       # insert data to the list
-        $wrapper_data0_level = count($list->_p_list);
-        $acceptor = empty($list->_p_list[$wrapper_data0_level]) ? null :
-                          $list->_p_list[$wrapper_data0_level];    # get list container
-        if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
-        if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data0');
-        if ($acceptor) {
-          $acceptor->child_insert(
-            is_string($data) ? new text(nl.$data) : $data
+        $wrapper_data0_level = count($list->_ul_ol_pointers);
+        $container = empty($list->_ul_ol_pointers[$wrapper_data0_level]) ? null :
+                           $list->_ul_ol_pointers[$wrapper_data0_level];
+        if ($container) $container = $container->child_select_last(); # get last li
+        if ($container) $container = $container->child_select('wrapper_data0');
+        if ($container) {
+          $container->child_insert(
+            is_string($data) ? new text($data) : $data
           );
           return true;
         }
@@ -48,33 +48,33 @@ namespace effcore {
         }
       # insert new paragraph to the list
         if (empty($list->_c_paragraph) && $c_indent > 0) {
-          $wrapper_data1_level = min($level, count($list->_p_list));
-          $acceptor = empty($list->_p_list[$wrapper_data1_level]) ? null :
-                            $list->_p_list[$wrapper_data1_level];    # get list container
-          if ($acceptor) $acceptor = $acceptor->child_select_last(); # get last li
-          if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data1');
-          if ($acceptor) {
+          $wrapper_data1_level = min($level, count($list->_ul_ol_pointers));
+          $container = empty($list->_ul_ol_pointers[$wrapper_data1_level]) ? null :
+                             $list->_ul_ol_pointers[$wrapper_data1_level];
+          if ($container) $container = $container->child_select_last(); # get last li
+          if ($container) $container = $container->child_select('wrapper_data1');
+          if ($container) {
             $list->_c_paragraph = new markup('p');
-            $acceptor->child_insert(
+            $container->child_insert(
               $list->_c_paragraph
             );
           }
         # convert text in previous lists to paragraphs
-          foreach ($list->_p_list as $c_level => $c_pointer) {
+          foreach ($list->_ul_ol_pointers as $c_level => $c_pointer) {
             if ($c_level <= $level) {
-              $acceptor = $list->_p_list[$c_level];
-              if ($acceptor) $acceptor = $acceptor->child_select_last();
-              if ($acceptor) $acceptor = $acceptor->child_select('wrapper_data0');
-              if ($acceptor) {
+              $container = $list->_ul_ol_pointers[$c_level];
+              if ($container) $container = $container->child_select_last();
+              if ($container) $container = $container->child_select('wrapper_data0');
+              if ($container) {
                 $new_p = new markup('p');
-                foreach ($acceptor->children_select() as $id => $c_child) {
+                foreach ($container->children_select() as $id => $c_child) {
                   if ($c_child instanceof text) {
                     $new_p->child_insert($c_child);
-                    $acceptor->child_delete($id);
+                    $container->child_delete($id);
                   }
                 }
                 if ($new_p->children_select_count()) {
-                  $acceptor->child_insert($new_p);
+                  $container->child_insert($new_p);
                 }
               }
             }
@@ -83,7 +83,7 @@ namespace effcore {
       # insert data to current paragraph
         if (empty($list->_c_paragraph) == false) {
           $list->_c_paragraph->child_insert(
-            is_string($data) ? new text(nl.$data) : $data
+            is_string($data) ? new text($data) : $data
           );
           return true;
         }
@@ -91,16 +91,42 @@ namespace effcore {
     }
   }
 
+  # level | min list indent          | max list indent
+  # ─────────────────────────────────────────────────────────────────────
+  #     1 | 4 * (level - 2) + 1 = -3 | min + 6 =  3
+  #     2 | 4 * (level - 2) + 1 =  1 | min + 6 =  7
+  #     3 | 4 * (level - 2) + 1 =  5 | min + 6 = 11
+  #     4 | 4 * (level - 2) + 1 =  9 | min + 6 = 15
+  #     5 | 4 * (level - 2) + 1 = 13 | min + 6 = 19
+  #     6 | 4 * (level - 2) + 1 = 17 | min + 6 = 23
+  #     7 | 4 * (level - 2) + 1 = 21 | min + 6 = 27
+  #     8 | 4 * (level - 2) + 1 = 25 | min + 6 = 31
+  #     9 | 4 * (level - 2) + 1 = 29 | min + 6 = 35
+  # ─────────────────────────────────────────────────────────────────────
+
+  # level | min paragraph indent     | max paragraph indent
+  # ─────────────────────────────────────────────────────────────────────
+  #     1 | 4 * (level - 1) + 1 =  1 | min + 3 =  4
+  #     2 | 4 * (level - 1) + 1 =  5 | min + 3 =  8
+  #     3 | 4 * (level - 1) + 1 =  9 | min + 3 = 12
+  #     4 | 4 * (level - 1) + 1 = 13 | min + 3 = 16
+  #     5 | 4 * (level - 1) + 1 = 17 | min + 3 = 20
+  #     6 | 4 * (level - 1) + 1 = 21 | min + 3 = 24
+  #     7 | 4 * (level - 1) + 1 = 25 | min + 3 = 28
+  #     8 | 4 * (level - 1) + 1 = 29 | min + 3 = 32
+  #     9 | 4 * (level - 1) + 1 = 33 | min + 3 = 36
+  # ─────────────────────────────────────────────────────────────────────
+
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
     foreach ($strings as $c_number => $c_string) {
-      $c_string = str_replace(tb, '    ', $c_string);
-      $c_indent = strspn($c_string, ' ');
-      $l_level = (int)floor((($c_indent - 0) / 4) + 1) ?: 1;
-      $p_level = (int)floor((($c_indent - 1) / 4) + 1) ?: 1;
-      $last_item = $pool->child_select_last();
-      $last_type = static::_node_universal_type_get($last_item);
+      $c_string          = str_replace(tb, '    ', $c_string);
+      $c_indent          = strspn($c_string, ' ');
+      $c_list_level      = (int)floor(($c_indent - 1) / 4) + 2 ?: 1;
+      $c_paragraph_level = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
+      $c_last_item = $pool->child_select_last();
+      $c_last_type = static::_node_universal_type_get($c_last_item);
       $c_matches = [];
 
     # ─────────────────────────────────────────────────────────────────────
@@ -109,12 +135,12 @@ namespace effcore {
       $n_header = null;
       $c_matches = [];
       if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
-        if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_number-1]);
-        if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_number-1]);
+        if ($c_matches['marker'][0] == '=') $n_header = new markup('h1', [], $strings[$c_number - 1]);
+        if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_number - 1]);
       # delete previous insertion
-        if ($last_type == 'p' && $last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
-        if ($last_type == 'header'                                               ) $pool->child_delete($pool->child_select_last_id());
-        if ($last_type == 'hr'                                                   ) $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type == 'p' && $c_last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type == 'header'                                                 ) $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type == 'hr'                                                     ) $pool->child_delete($pool->child_select_last_id());
       }
       $c_matches = [];
       if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
@@ -122,8 +148,8 @@ namespace effcore {
       }
       if ($n_header) {
       # special case: list|header
-        if ($last_type == 'list') {
-          static::_list_data_insert($last_item, $n_header, $c_indent);
+        if ($c_last_type == 'list') {
+          static::_list_data_insert($c_last_item, $n_header, $c_indent);
           continue;
         }
       # default case
@@ -152,40 +178,39 @@ namespace effcore {
                        '(?<noises>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # special cases: p|list, blockquote|list, code|list
-        if ($last_type == 'p')          {$last_item->child_insert(            new text(nl.$c_string));  continue;}
-        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string);   continue;}
-        if ($last_type == 'pre')        {$pool->child_insert(   new text(htmlspecialchars($c_string))); continue;}
+        if ($c_last_type == 'p')          {$c_last_item->child_insert(            new text(nl.$c_string));  continue;}
+        if ($c_last_type == 'blockquote') {$c_last_item->child_select('text')->text_append(nl.$c_string);   continue;}
+        if ($c_last_type == 'pre')        {$pool->child_insert(     new text(htmlspecialchars($c_string))); continue;}
       # create new list container
-        if ($last_type != 'list' && $c_indent < 4) {
-          $last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
-          $last_item->_p_list[1] = $last_item;
-          $last_type = 'list';
-          $pool->child_insert($last_item);
+        if ($c_last_type != 'list' && $c_indent < 4) {
+          $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
+          $c_last_item->_ul_ol_pointers[1] = $c_last_item;
+          $c_last_type = 'list';
+          $pool->child_insert($c_last_item);
         }
-        if ($last_type == 'list') {
+        if ($c_last_type == 'list') {
         # create new list sub container (ol|ul)
-          if (empty($last_item->_p_list[$l_level-0]) &&
-              empty($last_item->_p_list[$l_level-1]) == false) {
+          if (empty($c_last_item->_ul_ol_pointers[$c_list_level - 0]) &&
+             !empty($c_last_item->_ul_ol_pointers[$c_list_level - 1])) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-                         $last_item->_p_list[$l_level-0] = $new_container;
-            $parent_li = $last_item->_p_list[$l_level-1]->child_select_last();
-            if ($parent_li) $parent_li->child_select('wrapper_container')
-                                      ->child_insert($new_container);
+                         $c_last_item->_ul_ol_pointers[$c_list_level - 0] = $new_container;
+            $parent_li = $c_last_item->_ul_ol_pointers[$c_list_level - 1]->child_select_last();
+            if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
           }
         # delete old pointers to list containers (ol/ul)
-          foreach ($last_item->_p_list as $c_level => $c_pointer) {
-            if ($c_level > $l_level) {
-              unset($last_item->_p_list[$c_level]);
+          foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
+            if ($c_level > $c_list_level) {
+              unset($c_last_item->_ul_ol_pointers[$c_level]);
             }
           }
         # insert new list item (li)
-          unset($last_item->_wrapper_name);
+          unset($c_last_item->_wrapper_name);
           $new_li = new markup('li');
           $new_li->child_insert(new node, 'wrapper_data0');
           $new_li->child_insert(new node, 'wrapper_container');
           $new_li->child_insert(new node, 'wrapper_data1');
-          $last_item->_p_list[$l_level]->child_insert($new_li);
-          static::_list_data_insert($last_item, $c_matches['return'], $c_indent);
+          $c_last_item->_ul_ol_pointers[$c_list_level]->child_insert($new_li);
+          static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
           continue;
         }
       }
@@ -198,13 +223,13 @@ namespace effcore {
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # create new blockquote container
-        if ($last_type != 'blockquote') {
-          $last_item = new markup('blockquote');
-          $last_item->child_insert(new text(''), 'text');
-          $pool->child_insert($last_item);
+        if ($c_last_type != 'blockquote') {
+          $c_last_item = new markup('blockquote');
+          $c_last_item->child_insert(new text(''), 'text');
+          $pool->child_insert($c_last_item);
         }
       # insert new blockquote string
-        $last_item->child_select('text')->text_append(
+        $c_last_item->child_select('text')->text_append(
           nl.$c_matches['return']
         );
         continue;
@@ -214,18 +239,18 @@ namespace effcore {
     # paragraphs
     # ─────────────────────────────────────────────────────────────────────
     # special cases: list|text, list|nl
-      if ($last_type == 'list') {
-        if (static::_list_data_insert($last_item, $c_string, $c_indent, $p_level)) {
+      if ($c_last_type == 'list') {
+        if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_level)) {
           continue;
         }
       }
       if (trim($c_string) == '') {
-        if ($last_type == 'text') {$last_item->text_append(nl); continue;}
-        if ($last_type != 'text') {$pool->child_insert(new text(nl)); continue;}
+        if ($c_last_type == 'text') {$c_last_item->text_append(nl);     continue;}
+        if ($c_last_type != 'text') {$pool->child_insert(new text(nl)); continue;}
       } else {
       # special cases: blockquote|text, p|text
-        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string);  continue;}
-        if ($last_type == 'p'         ) {$last_item->child_insert(            new text(nl.$c_string)); continue;}
+        if ($c_last_type == 'blockquote') {$c_last_item->child_select('text')->text_append(nl.$c_string);  continue;}
+        if ($c_last_type == 'p'         ) {$c_last_item->child_insert(            new text(nl.$c_string)); continue;}
       # special cases: |text, header|text, hr|text
         if ($c_indent < 4) {
           $pool->child_insert(new markup('p', [], $c_string));
@@ -241,15 +266,15 @@ namespace effcore {
                        '(?<noises>[ ]{0,})'.
                        '(?<return>.*)$%S', $c_string, $c_matches)) {
       # create new code container
-        if ($last_type != 'pre') {
-          $last_item = new markup('pre');
-          $last_item->child_insert(new markup('code'), 'code');
-          $pool->child_insert($last_item);
+        if ($c_last_type != 'pre') {
+          $c_last_item = new markup('pre');
+          $c_last_item->child_insert(new markup('code'), 'code');
+          $pool->child_insert($c_last_item);
         }
       # insert new code string
-        if ( $last_item->child_select('code')->children_select_count() )
-             $last_item->child_select('code')->child_insert(new text(nl.htmlspecialchars($c_matches['return'])));
-        else $last_item->child_select('code')->child_insert(new text(   htmlspecialchars($c_matches['return'])));
+        if ( $c_last_item->child_select('code')->children_select_count() )
+             $c_last_item->child_select('code')->child_insert(new text(nl.htmlspecialchars($c_matches['return'])));
+        else $c_last_item->child_select('code')->child_insert(new text(   htmlspecialchars($c_matches['return'])));
         continue;
       }
 
