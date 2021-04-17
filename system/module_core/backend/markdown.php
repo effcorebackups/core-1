@@ -113,12 +113,12 @@ namespace effcore {
         if ($c_matches['marker'][0] == '-') $n_header = new markup('h2', [], $strings[$c_number-1]);
       # delete previous insertion
         if ($last_type == 'p' && $last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
-        if ($last_type == 'header')   $pool->child_delete($pool->child_select_last_id());
-        if ($last_type == 'hr')       $pool->child_delete($pool->child_select_last_id());
+        if ($last_type == 'header'                                               ) $pool->child_delete($pool->child_select_last_id());
+        if ($last_type == 'hr'                                                   ) $pool->child_delete($pool->child_select_last_id());
       }
       $c_matches = [];
       if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
-        $n_header = new markup('h'.strlen($c_matches['marker']), [], $c_matches['return']);
+        $n_header = new markup('h'.strlen($c_matches['marker']), [], trim($c_matches['return']));
       }
       if ($n_header) {
       # special case: list|header
@@ -152,9 +152,9 @@ namespace effcore {
                        '(?<noises>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # special cases: p|list, blockquote|list, code|list
-        if ($last_type == 'p')          {$last_item->child_insert(new text(nl.$c_string)); continue;}
-        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string); continue;}
-        if ($last_type == 'pre')        {$pool->child_insert(new text(htmlspecialchars($c_string))); continue;}
+        if ($last_type == 'p')          {$last_item->child_insert(            new text(nl.$c_string));  continue;}
+        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string);   continue;}
+        if ($last_type == 'pre')        {$pool->child_insert(   new text(htmlspecialchars($c_string))); continue;}
       # create new list container
         if ($last_type != 'list' && $c_indent < 4) {
           $last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
@@ -224,8 +224,8 @@ namespace effcore {
         if ($last_type != 'text') {$pool->child_insert(new text(nl)); continue;}
       } else {
       # special cases: blockquote|text, p|text
-        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string); continue;}
-        if ($last_type == 'p')          {$last_item->child_insert(new text(nl.$c_string)); continue;}
+        if ($last_type == 'blockquote') {$last_item->child_select('text')->text_append(nl.$c_string);  continue;}
+        if ($last_type == 'p'         ) {$last_item->child_insert(            new text(nl.$c_string)); continue;}
       # special cases: |text, header|text, hr|text
         if ($c_indent < 4) {
           $pool->child_insert(new markup('p', [], $c_string));
@@ -247,9 +247,9 @@ namespace effcore {
           $pool->child_insert($last_item);
         }
       # insert new code string
-        $last_item->child_select('code')->child_insert(
-          new text(nl.htmlspecialchars($c_matches['return']))
-        );
+        if ( $last_item->child_select('code')->children_select_count() )
+             $last_item->child_select('code')->child_insert(new text(nl.htmlspecialchars($c_matches['return'])));
+        else $last_item->child_select('code')->child_insert(new text(   htmlspecialchars($c_matches['return'])));
         continue;
       }
 
