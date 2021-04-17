@@ -91,40 +91,14 @@ namespace effcore {
     }
   }
 
-  # level | min list indent          | max list indent
-  # ─────────────────────────────────────────────────────────────────────
-  #     1 | 4 * (level - 2) + 1 = -3 | min + 6 =  3
-  #     2 | 4 * (level - 2) + 1 =  1 | min + 6 =  7
-  #     3 | 4 * (level - 2) + 1 =  5 | min + 6 = 11
-  #     4 | 4 * (level - 2) + 1 =  9 | min + 6 = 15
-  #     5 | 4 * (level - 2) + 1 = 13 | min + 6 = 19
-  #     6 | 4 * (level - 2) + 1 = 17 | min + 6 = 23
-  #     7 | 4 * (level - 2) + 1 = 21 | min + 6 = 27
-  #     8 | 4 * (level - 2) + 1 = 25 | min + 6 = 31
-  #     9 | 4 * (level - 2) + 1 = 29 | min + 6 = 35
-  # ─────────────────────────────────────────────────────────────────────
-
-  # level | min paragraph indent     | max paragraph indent
-  # ─────────────────────────────────────────────────────────────────────
-  #     1 | 4 * (level - 1) + 1 =  1 | min + 3 =  4
-  #     2 | 4 * (level - 1) + 1 =  5 | min + 3 =  8
-  #     3 | 4 * (level - 1) + 1 =  9 | min + 3 = 12
-  #     4 | 4 * (level - 1) + 1 = 13 | min + 3 = 16
-  #     5 | 4 * (level - 1) + 1 = 17 | min + 3 = 20
-  #     6 | 4 * (level - 1) + 1 = 21 | min + 3 = 24
-  #     7 | 4 * (level - 1) + 1 = 25 | min + 3 = 28
-  #     8 | 4 * (level - 1) + 1 = 29 | min + 3 = 32
-  #     9 | 4 * (level - 1) + 1 = 33 | min + 3 = 36
-  # ─────────────────────────────────────────────────────────────────────
-
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
     foreach ($strings as $c_number => $c_string) {
       $c_string          = str_replace(tb, '    ', $c_string);
       $c_indent          = strspn($c_string, ' ');
-      $c_list_level      = (int)floor(($c_indent - 1) / 4) + 2 ?: 1;
-      $c_paragraph_level = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
+      $c_ul_ol_depth     = (int)floor(($c_indent - 1) / 4) + 2 ?: 1;
+      $c_paragraph_depth = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
       $c_last_item = $pool->child_select_last();
       $c_last_type = static::_node_universal_type_get($c_last_item);
       $c_matches = [];
@@ -183,24 +157,23 @@ namespace effcore {
         if ($c_last_type == 'pre')        {$pool->child_insert(     new text(htmlspecialchars($c_string))); continue;}
       # create new list container (ol|ul)
         if ($c_last_type != 'list' && $c_indent < 4) {
-          if ($c_list_level > 1)
-              $c_list_level = 1;
+          $c_ul_ol_depth = 1;
           $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
           $c_last_item->_ul_ol_pointers[1] = $c_last_item;
           $c_last_type = 'list';
           $pool->child_insert($c_last_item);
         }
       # create new list sub container (ol|ul)
-        if (empty($c_last_item->_ul_ol_pointers[$c_list_level - 0]) &&
-           !empty($c_last_item->_ul_ol_pointers[$c_list_level - 1])) {
+        if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 0]) &&
+           !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
           $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-                       $c_last_item->_ul_ol_pointers[$c_list_level - 0] = $new_container;
-          $parent_li = $c_last_item->_ul_ol_pointers[$c_list_level - 1]->child_select_last();
+                       $c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 0] = $new_container;
+          $parent_li = $c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]->child_select_last();
           if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
         }
        # delete old pointers to list containers (ol|ul)
          foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
-           if ($c_level > $c_list_level) {
+           if ($c_level > $c_ul_ol_depth) {
              unset($c_last_item->_ul_ol_pointers[$c_level]);
            }
          }
@@ -210,7 +183,7 @@ namespace effcore {
          $new_li->child_insert(new node, 'wrapper_data0');
          $new_li->child_insert(new node, 'wrapper_container');
          $new_li->child_insert(new node, 'wrapper_data1');
-         $c_last_item->_ul_ol_pointers[$c_list_level]->child_insert($new_li);
+         $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
          static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
          continue;
       }
@@ -240,7 +213,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # special cases: list|text, list|nl
       if ($c_last_type == 'list') {
-        if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_level)) {
+        if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
           continue;
         }
       }
