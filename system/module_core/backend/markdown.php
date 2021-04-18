@@ -180,9 +180,11 @@ namespace effcore {
           if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
         }
       # delete old pointers to list containers (ol|ul)
-        foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
-          if ($c_level > $c_ul_ol_depth) {
-            unset($c_last_item->_ul_ol_pointers[$c_level]);
+        if (!empty($c_last_item->_ul_ol_pointers)) {
+          foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
+            if ($c_level > $c_ul_ol_depth) {
+              unset($c_last_item->_ul_ol_pointers[$c_level]);
+            }
           }
         }
       # insert new list item (li)
