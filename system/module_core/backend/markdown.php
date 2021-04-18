@@ -253,8 +253,8 @@ namespace effcore {
         }
       # insert new code string
         if ( $c_last_item->child_select('code')->children_select_count() )
-             $c_last_item->child_select('code')->child_insert(new text(nl.htmlspecialchars($c_matches['return'])));
-        else $c_last_item->child_select('code')->child_insert(new text(   htmlspecialchars($c_matches['return'])));
+             $c_last_item->child_select('code')->child_insert(new text(nl.$c_matches['noises'].htmlspecialchars($c_matches['return'])));
+        else $c_last_item->child_select('code')->child_insert(new text(   $c_matches['noises'].htmlspecialchars($c_matches['return'])));
         continue;
       }
 
