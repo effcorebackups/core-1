@@ -164,37 +164,37 @@ namespace effcore {
           $c_ul_ol_depth = 1;
           $pool->child_insert($c_last_item);
         }
-      # indent correction for original behavior
-        if ($c_indent === 0) $c_ul_ol_depth = 1;
-        if ($c_indent >= 1 && $c_indent <= 4 && !empty($c_last_item->_ul_ol_start_indent) && $c_indent === $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 1;
-        if ($c_indent >= 1 && $c_indent <= 4 && !empty($c_last_item->_ul_ol_start_indent) && $c_indent  >  $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 2;
-        while ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]))
-               $c_ul_ol_depth--;
-      # create new list sub container (ol|ul)
-        if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth]) &&
-           !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
-          $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-                       $c_last_item->_ul_ol_pointers[$c_ul_ol_depth] = $new_container;
-          $parent_li = $c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]->child_select_last();
-          if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
-        }
-      # delete old pointers to list containers (ol|ul)
-        if (!empty($c_last_item->_ul_ol_pointers)) {
+        if ($c_last_type === 'list') {
+        # indent correction for original behavior
+          if ($c_indent === 0) $c_ul_ol_depth = 1;
+          if ($c_indent >= 1 && $c_indent <= 4 && $c_indent === $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 1;
+          if ($c_indent >= 1 && $c_indent <= 4 && $c_indent  >  $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 2;
+          while ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]))
+                 $c_ul_ol_depth--;
+        # create new list sub container (ol|ul)
+          if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth]) &&
+             !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
+            $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
+                         $c_last_item->_ul_ol_pointers[$c_ul_ol_depth] = $new_container;
+            $parent_li = $c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]->child_select_last();
+            if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
+          }
+        # delete old pointers to list containers (ol|ul)
           foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
             if ($c_level > $c_ul_ol_depth) {
               unset($c_last_item->_ul_ol_pointers[$c_level]);
             }
           }
-        }
-      # insert new list item (li)
-        if (!empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth])) {
-          unset($c_last_item->_wrapper_name);
-          $new_li = new markup('li');
-          $new_li->child_insert(new node, 'wrapper_data0');
-          $new_li->child_insert(new node, 'wrapper_container');
-          $new_li->child_insert(new node, 'wrapper_data1');
-          $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
-          static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
+        # insert new list item (li)
+          if (!empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth])) {
+            unset($c_last_item->_wrapper_name);
+            $new_li = new markup('li');
+            $new_li->child_insert(new node, 'wrapper_data0');
+            $new_li->child_insert(new node, 'wrapper_container');
+            $new_li->child_insert(new node, 'wrapper_data1');
+            $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
+            static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
+          }
         }
         continue;
       }
