@@ -168,9 +168,8 @@ namespace effcore {
         if ($c_indent === 0) $c_ul_ol_depth = 1;
         if ($c_indent >= 1 && $c_indent <= 4 && !empty($c_last_item->_ul_ol_start_indent) && $c_indent === $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 1;
         if ($c_indent >= 1 && $c_indent <= 4 && !empty($c_last_item->_ul_ol_start_indent) && $c_indent  >  $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 2;
-        if ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) $c_ul_ol_depth--;
-        if ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) $c_ul_ol_depth--;
-        if ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) $c_ul_ol_depth--;
+        while ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]))
+               $c_ul_ol_depth--;
       # create new list sub container (ol|ul)
         if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth]) &&
            !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
