@@ -97,8 +97,7 @@ namespace effcore {
     foreach ($strings as $c_number => $c_string) {
       $c_string          = str_replace(tb, '    ', $c_string);
       $c_indent          = strspn($c_string, ' ');
-      $c_ul_ol_depth     = floor(($c_indent - 1) / 4) + 2 ?: 1;
-      $c_paragraph_depth = floor(($c_indent - 1) / 4) + 1 ?: 1;
+      $c_paragraph_depth = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
       $c_last_item = $pool->child_select_last();
       $c_last_type = static::_node_universal_type_get($c_last_item);
       $c_matches = [];
@@ -161,14 +160,12 @@ namespace effcore {
           $c_last_item->_ul_ol_pointers[1] = $c_last_item;
           $c_last_item->_ul_ol_start_indent = $c_indent;
           $c_last_type = 'list';
-          $c_ul_ol_depth = 1;
           $pool->child_insert($c_last_item);
         }
         if ($c_last_type === 'list') {
-        # indent correction for original behavior
-          if ($c_indent === 0) $c_ul_ol_depth = 1;
-          if ($c_indent >= 1 && $c_indent <= 4 && $c_indent === $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 1;
-          if ($c_indent >= 1 && $c_indent <= 4 && $c_indent  >  $c_last_item->_ul_ol_start_indent) $c_ul_ol_depth = 2;
+        # calculate depth
+          $c_ul_ol_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          if ($c_ul_ol_depth < 1) $c_ul_ol_depth = 1;
           while ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]))
                  $c_ul_ol_depth--;
         # create new list sub container (ol|ul)
