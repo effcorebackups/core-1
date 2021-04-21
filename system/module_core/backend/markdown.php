@@ -59,7 +59,7 @@ namespace effcore {
               $list->_c_paragraph
             );
           }
-        # convert text in previous lists to paragraphs
+        # convert text in previous lists to paragraph
           foreach ($list->_ul_ol_pointers as $c_level => $c_pointer) {
             if ($c_level <= $level) {
               $container = $list->_ul_ol_pointers[$c_level];
@@ -219,26 +219,37 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # paragraphs
+    # paragraph
     # ─────────────────────────────────────────────────────────────────────
+    # empty string
+      if (trim($c_string) === '' && $c_last_type !== 'text') {
+        $pool->child_insert(new text(nl));
+        continue;
+      }
+      if (trim($c_string) === '' && $c_last_type === 'text') {
+        $c_last_item->text_append(nl);
+        continue;
+      }
     # special cases: list|text, list|nl
       if ($c_last_type === 'list') {
         if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
           continue;
         }
       }
-      if (trim($c_string) === '') {
-        if ($c_last_type === 'text') {$c_last_item->text_append(nl);     continue;}
-        if ($c_last_type !== 'text') {$pool->child_insert(new text(nl)); continue;}
-      } else {
-      # special cases: blockquote|text, p|text
-        if ($c_last_type === 'blockquote') {$c_last_item->child_select('text')->text_append(nl.$c_string);  continue;}
-        if ($c_last_type === 'p'         ) {$c_last_item->child_insert(            new text(nl.$c_string)); continue;}
-      # special cases: |text, header|text, hr|text
-        if ($c_indent < 4) {
-          $pool->child_insert(new markup('p', [], $c_string));
-          continue;
-        }
+    # special case: blockquote|text
+      if ($c_last_type === 'blockquote') {
+        $c_last_item->child_select('text')->text_append(nl.$c_string);
+        continue;
+      }
+    # special case: p|text
+      if ($c_last_type === 'p') {
+        $c_last_item->child_insert(new text(nl.$c_string));
+        continue;
+      }
+    # special cases: |text, header|text, hr|text
+      if ($c_indent < 4) {
+        $pool->child_insert(new markup('p', [], ltrim($c_string, ' ')));
+        continue;
       }
 
     # ─────────────────────────────────────────────────────────────────────
