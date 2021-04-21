@@ -122,7 +122,7 @@ namespace effcore {
         $n_header = new markup('h'.strlen($c_matches['marker']), [], trim($c_matches['return'], ' #'));
       }
       if ($n_header) {
-      # special case: list|header
+      # case: list|header
         if ($c_last_type === 'list') {
           static::_list_data_insert($c_last_item, $n_header, $c_indent);
           continue;
@@ -152,7 +152,7 @@ namespace effcore {
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<noises>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
-      # special cases: p|list, blockquote|list, code|list
+      # cases: p|list, blockquote|list, code|list
         if ($c_last_type === 'p')          {$c_last_item->child_insert(            new text(nl.$c_string));  continue;}
         if ($c_last_type === 'blockquote') {$c_last_item->child_select('text')->text_append(nl.$c_string);   continue;}
         if ($c_last_type === 'pre')        {$pool->child_insert(     new text(htmlspecialchars($c_string))); continue;}
@@ -199,22 +199,23 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # blockquotes
+    # blockquote
     # ─────────────────────────────────────────────────────────────────────
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
-      # create new blockquote container
+      # case: !blockquote|text
         if ($c_last_type !== 'blockquote') {
           $c_last_item = new markup('blockquote');
           $c_last_item->child_insert(new text(''), 'text');
+          $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
         }
-      # insert new blockquote string
-        $c_last_item->child_select('text')->text_append(
-          nl.$c_matches['return']
-        );
+      # case: blockquote|text
+        if ($c_last_type === 'blockquote') {
+          $c_last_item->child_select('text')->text_append(nl.$c_matches['return']);
+        }
         continue;
       }
 
@@ -230,23 +231,23 @@ namespace effcore {
         $c_last_item->text_append(nl);
         continue;
       }
-    # special cases: list|text, list|nl
+    # cases: list|text, list|nl
       if ($c_last_type === 'list') {
         if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
           continue;
         }
       }
-    # special case: blockquote|text
+    # case: blockquote|text
       if ($c_last_type === 'blockquote') {
         $c_last_item->child_select('text')->text_append(nl.$c_string);
         continue;
       }
-    # special case: p|text
+    # case: p|text
       if ($c_last_type === 'p') {
         $c_last_item->child_insert(new text(nl.$c_string));
         continue;
       }
-    # special cases: |text, header|text, hr|text
+    # cases: |text, header|text, hr|text
       if ($c_indent < 4) {
         $pool->child_insert(new markup('p', [], ltrim($c_string, ' ')));
         continue;
@@ -263,6 +264,7 @@ namespace effcore {
         if ($c_last_type !== 'pre') {
           $c_last_item = new markup('pre');
           $c_last_item->child_insert(new markup('code'), 'code');
+          $c_last_type = 'code';
           $pool->child_insert($c_last_item);
         }
       # insert new code string
