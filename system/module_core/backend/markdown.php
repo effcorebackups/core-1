@@ -106,6 +106,7 @@ namespace effcore {
     # headers
     # ─────────────────────────────────────────────────────────────────────
       $n_header = null;
+    # setext-style
       $c_matches = [];
       if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
         if ($c_matches['marker'][0] === '=') $n_header = new markup('h1', [], $strings[$c_number - 1]);
@@ -115,9 +116,10 @@ namespace effcore {
         if ($c_last_type === 'header'                                                 ) $pool->child_delete($pool->child_select_last_id());
         if ($c_last_type === 'hr'                                                     ) $pool->child_delete($pool->child_select_last_id());
       }
+    # atx-style
       $c_matches = [];
       if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
-        $n_header = new markup('h'.strlen($c_matches['marker']), [], trim($c_matches['return']));
+        $n_header = new markup('h'.strlen($c_matches['marker']), [], trim($c_matches['return'], ' #'));
       }
       if ($n_header) {
       # special case: list|header
