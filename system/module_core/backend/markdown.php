@@ -152,10 +152,21 @@ namespace effcore {
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<noises>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
-      # cases: p|list, blockquote|list, code|list
-        if ($c_last_type === 'p')          {$c_last_item->child_insert(            new text(nl.$c_string));  continue;}
-        if ($c_last_type === 'blockquote') {$c_last_item->child_select('text')->text_append(nl.$c_string);   continue;}
-        if ($c_last_type === 'pre')        {$pool->child_insert(     new text(htmlspecialchars($c_string))); continue;}
+      # case: p|list
+        if ($c_last_type === 'p') {
+          $c_last_item->child_insert(new text(nl.$c_string));
+          continue;
+        }
+      # case: blockquote|list
+        if ($c_last_type === 'blockquote') {
+          $c_last_item->child_select('text')->text_append(nl.$c_string);
+          continue;
+        }
+      # case: code|list
+        if ($c_last_type === 'pre') {
+          $pool->child_insert(new text(htmlspecialchars($c_string)));
+          continue;
+        }
       # create new list container (ol|ul)
         if ($c_last_type !== 'list' && $c_indent < 4) {
           $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
@@ -264,7 +275,7 @@ namespace effcore {
         if ($c_last_type !== 'pre') {
           $c_last_item = new markup('pre');
           $c_last_item->child_insert(new markup('code'), 'code');
-          $c_last_type = 'code';
+          $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
         }
       # insert new code string
