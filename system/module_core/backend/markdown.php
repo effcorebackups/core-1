@@ -245,17 +245,17 @@ namespace effcore {
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
 
-      # case: blockquote|blockquote
-        if ($c_last_type === 'blockquote') {
-          static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_matches['return']);
-          continue;
-        }
-
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote') {
           $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
+          continue;
+        }
+
+      # case: blockquote|blockquote
+        if ($c_last_type === 'blockquote') {
+          static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_matches['return']);
           continue;
         }
 
@@ -265,34 +265,49 @@ namespace effcore {
     # paragraph
     # ─────────────────────────────────────────────────────────────────────
 
-    # empty string
-      if (trim($c_string) === '' && $c_last_type !== 'text') {
-        $c_last_item = new text(nl);
-        $c_last_type = 'text';
-        $pool->child_insert($c_last_item);
-        continue;
-      }
-      if (trim($c_string) === '' && $c_last_type === 'text') {
-        $c_last_item->text_append(nl);
-        continue;
+    # cases: list|nl
+      if ($c_last_type === 'list' && trim($c_string) === '') {
+        if (static::_list_data_insert($c_last_item, nl, $c_indent, $c_paragraph_depth)) {
+          continue;
+        }
       }
 
-    # cases: list|text, list|nl
-      if ($c_last_type === 'list') {
+    # cases: list|text
+      if ($c_last_type === 'list' && trim($c_string) !== '') {
         if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
           continue;
         }
       }
 
+    # case: blockquote|nl
+      if ($c_last_type === 'blockquote' && trim($c_string) === '') {
+        $c_last_item->child_select('text')->text_append(nl);
+        continue;
+      }
+
     # case: blockquote|text
-      if ($c_last_type === 'blockquote') {
+      if ($c_last_type === 'blockquote' && trim($c_string) !== '') {
         $c_last_item->child_select('text')->text_append(nl.$c_string);
         continue;
       }
 
     # case: p|text
-      if ($c_last_type === 'p') {
+      if ($c_last_type === 'p' && trim($c_string) !== '') {
         static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_string);
+        continue;
+      }
+
+    # case: text|nl
+      if ($c_last_type === 'text' && trim($c_string) === '') {
+        $c_last_item->text_append(nl);
+        continue;
+      }
+
+    # case: !text|nl
+      if ($c_last_type !== 'text' && trim($c_string) === '') {
+        $c_last_item = new text(nl);
+        $c_last_type = 'text';
+        $pool->child_insert($c_last_item);
         continue;
       }
 
@@ -312,17 +327,20 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<noises>[ ]{0,})'.
                        '(?<return>.*)$%S', $c_string, $c_matches)) {
-      # create new code container
+
+      # case: !code|code
         if ($c_last_type !== 'pre') {
-          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text('')])]);
+          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['noises'].htmlspecialchars($c_matches['return']))])]);
           $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
+          continue;
         }
-      # insert new code string
-        if ( $c_last_item->child_select('code')->child_select('text')->text_length() )
-             $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['noises'].htmlspecialchars($c_matches['return']));
-        else $c_last_item->child_select('code')->child_select('text')->text_append(   $c_matches['noises'].htmlspecialchars($c_matches['return']));
-        continue;
+
+      # case: code|code
+        if ($c_last_type === 'pre') {
+          $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['noises'].htmlspecialchars($c_matches['return']));
+          continue;
+        }
       }
 
     }
