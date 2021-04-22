@@ -22,6 +22,13 @@ namespace effcore {
     return $type;
   }
 
+  static function _text_append_with_br($text_object, $new_text) {
+    $text = $text_object->text_select();
+    if (substr($text, -2) === '  ')
+               $text = rtrim($text, ' ').' '.((new markup_simple('br'))->render());
+    $text_object->text_update($text.$new_text);
+  }
+
   static function _list_data_insert($list, $data, $c_indent, $level = null) {
     if (empty($list->_wrapper_name))            $list->_wrapper_name = 'wrapper_data0';
     if (is_string($data) && trim($data) === '') $list->_wrapper_name = 'wrapper_data1';
@@ -225,10 +232,7 @@ namespace effcore {
         }
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
-          $c_text = $c_last_item->child_select('text')->text_select();
-          if (substr($c_text, -2) === '  ') $c_text = substr($c_text, 0, -2).((new markup_simple('br'))->render());
-          $c_text.= nl.$c_matches['return'];
-          $c_last_item->child_select('text')->text_update($c_text);
+          static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_matches['return']);
         }
         continue;
       }
@@ -258,12 +262,16 @@ namespace effcore {
       }
     # case: p|text
       if ($c_last_type === 'p') {
-        $c_last_item->child_insert(new text(nl.$c_string));
+        static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_string);
         continue;
       }
     # cases: |text, header|text, hr|text
       if ($c_indent < 4) {
-        $pool->child_insert(new markup('p', [], ltrim($c_string, ' ')));
+        $pool->child_insert(
+          new markup('p', [], [
+            'text' => new text(ltrim($c_string, ' '))
+          ])
+        );
         continue;
       }
 
