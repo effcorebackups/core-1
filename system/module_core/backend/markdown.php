@@ -174,7 +174,7 @@ namespace effcore {
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # case: p|list
         if ($c_last_type === 'p') {
-          $c_last_item->child_insert(new text(nl.$c_string));
+          $c_last_item->child_select('text')->text_append(nl.$c_string);
           continue;
         }
 
@@ -186,8 +186,8 @@ namespace effcore {
 
       # case: code|list
         if ($c_last_type === 'pre') {
-          $c_last_item = new text(htmlspecialchars($c_string));
-          $c_last_type = 'text';
+          $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
+          $c_last_type = 'p';
           $pool->child_insert($c_last_item);
           continue;
         }
