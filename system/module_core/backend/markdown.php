@@ -112,48 +112,61 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # headers
     # ─────────────────────────────────────────────────────────────────────
-      $n_header = null;
+
     # setext-style
       $c_matches = [];
       if (preg_match('%^(?<marker>[-]+[ ]*|[=]+[ ]*)$%S', $c_string, $c_matches)) {
-        if ($c_matches['marker'][0] === '=') $n_header = new markup('h1', [], trim($strings[$c_number - 1]));
-        if ($c_matches['marker'][0] === '-') $n_header = new markup('h2', [], trim($strings[$c_number - 1]));
       # delete previous insertion
         if ($c_last_type === 'p' && $c_last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
         if ($c_last_type === 'header'                                                 ) $pool->child_delete($pool->child_select_last_id());
         if ($c_last_type === 'hr'                                                     ) $pool->child_delete($pool->child_select_last_id());
+
+      # make new header
+        if ($c_matches['marker'][0] === '=') $c_size = 1;
+        if ($c_matches['marker'][0] === '-') $c_size = 2;
+        $c_last_item = new markup('h'.$c_size, [], trim($strings[$c_number - 1]));
+        $c_last_type = 'header';
+        $pool->child_insert($c_last_item);
+        continue;
       }
+
     # atx-style
       $c_matches = [];
       if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
-        $n_header = new markup('h'.strlen($c_matches['marker']), [], trim($c_matches['return'], ' #'));
-      }
-      if ($n_header) {
+        $c_size = strlen($c_matches['marker']);
+
       # case: list|header
         if ($c_last_type === 'list') {
-          static::_list_data_insert($c_last_item, $n_header, $c_indent);
+          static::_list_data_insert($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent);
           continue;
         }
-      # default case
-        $pool->child_insert($n_header);
+
+      # make new header
+        $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
+        $c_last_type = 'header';
+        $pool->child_insert($c_last_item);
         continue;
       }
 
     # ─────────────────────────────────────────────────────────────────────
     # horizontal rules
     # ─────────────────────────────────────────────────────────────────────
+
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>([*][ ]{0,2}){3,}|'.
                                  '([-][ ]{0,2}){3,}|'.
                                  '([_][ ]{0,2}){3,})'.
                        '(?<noises>[ ]{0,})$%S', $c_string)) {
-        $pool->child_insert(new markup_simple('hr'));
+        $c_last_item = new markup_simple('hr');
+        $c_last_type = 'hr';
+        $pool->child_insert($c_last_item);
         continue;
       }
 
     # ─────────────────────────────────────────────────────────────────────
     # lists
     # ─────────────────────────────────────────────────────────────────────
+
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
@@ -164,16 +177,21 @@ namespace effcore {
           $c_last_item->child_insert(new text(nl.$c_string));
           continue;
         }
+
       # case: blockquote|list
         if ($c_last_type === 'blockquote') {
           $c_last_item->child_select('text')->text_append(nl.$c_string);
           continue;
         }
+
       # case: code|list
         if ($c_last_type === 'pre') {
-          $pool->child_insert(new text(htmlspecialchars($c_string)));
+          $c_last_item = new text(htmlspecialchars($c_string));
+          $c_last_type = 'text';
+          $pool->child_insert($c_last_item);
           continue;
         }
+
       # create new list container (ol|ul)
         if ($c_last_type !== 'list' && $c_indent < 4) {
           $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
@@ -219,6 +237,7 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # blockquote
     # ─────────────────────────────────────────────────────────────────────
+
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
@@ -239,42 +258,50 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # paragraph
     # ─────────────────────────────────────────────────────────────────────
+
     # empty string
       if (trim($c_string) === '' && $c_last_type !== 'text') {
-        $pool->child_insert(new text(nl));
+        $c_last_item = new text(nl);
+        $c_last_type = 'text';
+        $pool->child_insert($c_last_item);
         continue;
       }
       if (trim($c_string) === '' && $c_last_type === 'text') {
         $c_last_item->text_append(nl);
         continue;
       }
+
     # cases: list|text, list|nl
       if ($c_last_type === 'list') {
         if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
           continue;
         }
       }
+
     # case: blockquote|text
       if ($c_last_type === 'blockquote') {
         $c_last_item->child_select('text')->text_append(nl.$c_string);
         continue;
       }
+
     # case: p|text
       if ($c_last_type === 'p') {
         static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_string);
         continue;
       }
+
     # cases: |text, header|text, hr|text
       if ($c_indent < 4) {
-        $pool->child_insert(
-          new markup('p', [], ['text' => new text(ltrim($c_string, ' '))])
-        );
+        $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
+        $c_last_type = 'p';
+        $pool->child_insert($c_last_item);
         continue;
       }
 
     # ─────────────────────────────────────────────────────────────────────
     # code (last prioruty)
     # ─────────────────────────────────────────────────────────────────────
+
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<noises>[ ]{0,})'.
@@ -297,6 +324,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # postprocess for blockquote
   # ─────────────────────────────────────────────────────────────────────
+
     foreach ($pool->children_select_recursive() as $c_item) {
       if ($c_item instanceof markup &&
           $c_item->tag_name === 'blockquote') {
