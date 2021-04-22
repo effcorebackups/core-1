@@ -27,6 +27,7 @@ namespace effcore {
     if (substr($text, -2) === '  ')
                $text = rtrim($text, ' ').' '.((new markup_simple('br'))->render());
     $text_object->text_update($text.$new_text);
+    return $text_object;
   }
 
   static function _list_data_insert($list, $data, $c_indent, $level = null) {
@@ -200,6 +201,7 @@ namespace effcore {
           $c_last_type = 'list';
           $pool->child_insert($c_last_item);
         }
+
         if ($c_last_type === 'list') {
         # calculate depth
           $c_ul_ol_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
@@ -242,17 +244,21 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
-      # case: !blockquote|blockquote
-        if ($c_last_type !== 'blockquote') {
-          $c_last_item = new markup('blockquote', [], ['text' => new text('')]);
-          $c_last_type = 'blockquote';
-          $pool->child_insert($c_last_item);
-        }
+
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
           static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_matches['return']);
+          continue;
         }
-        continue;
+
+      # case: !blockquote|blockquote
+        if ($c_last_type !== 'blockquote') {
+          $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
+          $c_last_type = 'blockquote';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
+
       }
 
     # ─────────────────────────────────────────────────────────────────────
