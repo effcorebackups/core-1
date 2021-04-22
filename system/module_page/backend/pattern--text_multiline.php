@@ -24,6 +24,7 @@ namespace effcore {
   function text_line_update($line, $new_text) {$this->text[$line] = $new_text;}
   function text_line_append($line, $new_text) {$this->text[$line].= $new_text;}
 
+  function text_length()   {return strlen($this->render());}
   function text_select()   {return $this->text;}
   function text_update($new_text) {$this->text   = $new_text;}
   function text_append($new_line) {$this->text[] = $new_line; return count($this->text);}

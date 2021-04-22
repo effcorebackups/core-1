@@ -225,8 +225,7 @@ namespace effcore {
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote') {
-          $c_last_item = new markup('blockquote');
-          $c_last_item->child_insert(new text(''), 'text');
+          $c_last_item = new markup('blockquote', [], ['text' => new text('')]);
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
         }
@@ -268,9 +267,7 @@ namespace effcore {
     # cases: |text, header|text, hr|text
       if ($c_indent < 4) {
         $pool->child_insert(
-          new markup('p', [], [
-            'text' => new text(ltrim($c_string, ' '))
-          ])
+          new markup('p', [], ['text' => new text(ltrim($c_string, ' '))])
         );
         continue;
       }
@@ -284,15 +281,14 @@ namespace effcore {
                        '(?<return>.*)$%S', $c_string, $c_matches)) {
       # create new code container
         if ($c_last_type !== 'pre') {
-          $c_last_item = new markup('pre');
-          $c_last_item->child_insert(new markup('code'), 'code');
+          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text('')])]);
           $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
         }
       # insert new code string
-        if ( $c_last_item->child_select('code')->children_select_count() )
-             $c_last_item->child_select('code')->child_insert(new text(nl.$c_matches['noises'].htmlspecialchars($c_matches['return'])));
-        else $c_last_item->child_select('code')->child_insert(new text(   $c_matches['noises'].htmlspecialchars($c_matches['return'])));
+        if ( $c_last_item->child_select('code')->child_select('text')->text_length() )
+             $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['noises'].htmlspecialchars($c_matches['return']));
+        else $c_last_item->child_select('code')->child_select('text')->text_append(   $c_matches['noises'].htmlspecialchars($c_matches['return']));
         continue;
       }
 

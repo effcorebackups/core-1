@@ -15,6 +15,7 @@ namespace effcore {
     $this->weight = $weight;
   }
 
+  function text_length() {return strlen($this->render());}
   function text_select() {return $this->text;}
   function text_update($new_text) {$this->text = $new_text;}
   function text_append($new_text) {$this->text.= $new_text;}
