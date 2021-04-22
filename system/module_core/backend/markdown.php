@@ -108,9 +108,9 @@ namespace effcore {
       $n_header = null;
     # setext-style
       $c_matches = [];
-      if (preg_match('%^(?<marker>[-=]+)[ ]*$%S', $c_string, $c_matches)) {
-        if ($c_matches['marker'][0] === '=') $n_header = new markup('h1', [], $strings[$c_number - 1]);
-        if ($c_matches['marker'][0] === '-') $n_header = new markup('h2', [], $strings[$c_number - 1]);
+      if (preg_match('%^(?<marker>[-]+[ ]*|[=]+[ ]*)$%S', $c_string, $c_matches)) {
+        if ($c_matches['marker'][0] === '=') $n_header = new markup('h1', [], trim($strings[$c_number - 1]));
+        if ($c_matches['marker'][0] === '-') $n_header = new markup('h2', [], trim($strings[$c_number - 1]));
       # delete previous insertion
         if ($c_last_type === 'p' && $c_last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
         if ($c_last_type === 'header'                                                 ) $pool->child_delete($pool->child_select_last_id());
@@ -216,14 +216,14 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
-      # case: !blockquote|text
+      # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote') {
           $c_last_item = new markup('blockquote');
           $c_last_item->child_insert(new text(''), 'text');
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
         }
-      # case: blockquote|text
+      # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
           $c_last_item->child_select('text')->text_append(nl.$c_matches['return']);
         }
