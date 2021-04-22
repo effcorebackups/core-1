@@ -225,7 +225,10 @@ namespace effcore {
         }
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
-          $c_last_item->child_select('text')->text_append(nl.$c_matches['return']);
+          $c_text = $c_last_item->child_select('text')->text_select();
+          if (substr($c_text, -2) === '  ') $c_text = substr($c_text, 0, -2).((new markup_simple('br'))->render());
+          $c_text.= nl.$c_matches['return'];
+          $c_last_item->child_select('text')->text_update($c_text);
         }
         continue;
       }
@@ -295,7 +298,7 @@ namespace effcore {
           $c_item->tag_name === 'blockquote') {
         $c_child = $c_item->child_select('text');
         if ($c_child) {
-          $c_markup = trim($c_child->text_select());
+          $c_markup = ltrim($c_child->text_select(), nl);
           if ($c_markup) {
             $c_item->child_delete('text');
             foreach (static::markdown_to_markup($c_markup)->children_select() as $c_new_child) {
