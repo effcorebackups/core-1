@@ -297,17 +297,19 @@ namespace effcore {
         continue;
       }
 
-    # case: text|nl
-      if ($c_last_type === 'text' && trim($c_string) === '') {
-        $c_last_item->text_append(nl);
-        continue;
-      }
-
     # case: !text|nl
-      if ($c_last_type !== 'text' && trim($c_string) === '') {
+      if (trim($c_string) === '' && $c_last_type === 'header') continue;
+      if (trim($c_string) === '' && $c_last_type === 'hr'    ) continue;
+      if (trim($c_string) === '' && $c_last_type !== 'text') {
         $c_last_item = new text(nl);
         $c_last_type = 'text';
         $pool->child_insert($c_last_item);
+        continue;
+      }
+
+    # case: text|nl
+      if (trim($c_string) === '' && $c_last_type === 'text') {
+        $c_last_item->text_append(nl);
         continue;
       }
 
