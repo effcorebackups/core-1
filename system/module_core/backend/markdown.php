@@ -19,7 +19,7 @@ namespace effcore {
     if ($type === 'h4') return 'header';
     if ($type === 'h5') return 'header';
     if ($type === 'h6') return 'header';
-    return $type;
+    return $type; # header|p|list|code|blockquote|hr|text|null
   }
 
   static function _text_append_with_br($text_object, $new_text) {
@@ -313,7 +313,7 @@ namespace effcore {
         continue;
       }
 
-    # cases: |text, header|text, hr|text
+    # cases: header|text, text|text, code|text, hr|text, null|text
       if ($c_indent < 4) {
         $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
         $c_last_type = 'p';
