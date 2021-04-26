@@ -9,8 +9,7 @@ namespace effcore {
 
   static function _node_universal_type_get($node) {
     $type = $node instanceof markup ||
-            $node instanceof markup_simple ? $node->tag_name : (
-            $node instanceof text ? 'text' : null);
+            $node instanceof markup_simple ? $node->tag_name : null;
     if ($type === 'ul') return 'list';
     if ($type === 'ol') return 'list';
     if ($type === 'h1') return 'header';
@@ -19,7 +18,7 @@ namespace effcore {
     if ($type === 'h4') return 'header';
     if ($type === 'h5') return 'header';
     if ($type === 'h6') return 'header';
-    return $type; # header|p|list|pre|blockquote|hr|text|null
+    return $type; # header|p|list|pre|blockquote|hr|null
   }
 
   static function _text_append_with_br($text_object, $new_text) {
@@ -292,16 +291,10 @@ namespace effcore {
 
       # case: p|nl
         if ($c_last_type === 'p') {
-          $c_last_item = new text(nl);
-          $c_last_type = 'text';
+          $c_last_item = new node();
+          $c_last_type = null;
           $pool->child_insert($c_last_item);
           continue;
-        }
-
-      # case: text|nl
-        if ($c_last_type === 'text') {
-          if ($c_last_item->text_select() === nl)                                continue;
-          if ($c_last_item->text_select() !== nl) $c_last_item->text_append(nl); continue;
         }
 
       }
@@ -327,7 +320,7 @@ namespace effcore {
           continue;
         }
 
-      # cases: header|text, text|text, pre|text, hr|text, null|text
+      # cases: header|text, pre|text, hr|text, null|text
         if ($c_indent < 4) {
           $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
           $c_last_type = 'p';
