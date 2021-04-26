@@ -21,11 +21,19 @@ namespace effcore {
     return $type; # header|p|list|pre|blockquote|hr|null
   }
 
-  static function _text_append_with_br($text_object, $new_text) {
+  static function _text_process__insert_br($text_object, $new_text) {
     $text = $text_object->text_select();
     if (substr($text, -2) === '  ')
                $text = rtrim($text, ' ').' '.((new markup_simple('br'))->render());
     $text_object->text_update($text.$new_text);
+    return $text_object;
+  }
+
+  static function _text_process__delete_last_line($text_object) {
+    $text = $text_object->text_select();
+    $last_nl_pos = strrpos($text, nl);
+    $text = substr($text, 0, $last_nl_pos !== false ? $last_nl_pos : null);
+    $text_object->text_update($text);
     return $text_object;
   }
 
@@ -117,9 +125,14 @@ namespace effcore {
       $c_matches = [];
       if (preg_match('%^(?<marker>[-]+[ ]*|[=]+[ ]*)$%S', $c_string, $c_matches)) {
       # delete previous insertion
-        if ($c_last_type === 'p' && $c_last_item->child_select_first() instanceof text) $pool->child_delete($pool->child_select_last_id());
-        if ($c_last_type === 'header'                                                 ) $pool->child_delete($pool->child_select_last_id());
-        if ($c_last_type === 'hr'                                                     ) $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type === 'header') $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type === 'hr'    ) $pool->child_delete($pool->child_select_last_id());
+        if ($c_last_type === 'p'     ) {
+          static::_text_process__delete_last_line($c_last_item->child_select('text'));
+          if ($c_last_item->child_select('text')->text_select() === '') {
+            $pool->child_delete($pool->child_select_last_id());
+          }
+        }
 
       # make new header
         if ($c_matches['marker'][0] === '=') $c_size = 1;
@@ -254,7 +267,7 @@ namespace effcore {
 
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
-          static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_matches['return']);
+          static::_text_process__insert_br($c_last_item->child_select('text'), nl.$c_matches['return']);
           continue;
         }
 
@@ -316,7 +329,7 @@ namespace effcore {
 
       # case: p|text
         if ($c_last_type === 'p') {
-          static::_text_append_with_br($c_last_item->child_select('text'), nl.$c_string);
+          static::_text_process__insert_br($c_last_item->child_select('text'), nl.$c_string);
           continue;
         }
 
