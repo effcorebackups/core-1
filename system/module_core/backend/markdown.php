@@ -124,9 +124,8 @@ namespace effcore {
     $pool = new node;
     $strings = explode(nl, $markdown);
     foreach ($strings as $c_number => $c_string) {
-      $c_string          = str_replace(tb, '    ', $c_string);
-      $c_indent          = strspn($c_string, ' ');
-      $c_paragraph_depth = (int)floor(($c_indent - 1) / 4) + 1 ?: 1;
+      $c_string    = str_replace(tb, '    ', $c_string);
+      $c_indent    = strspn($c_string, ' ');
       $c_last_item = $pool->child_select_last();
       $c_last_type = static::_node_universal_type_get($c_last_item);
       $c_matches = [];
@@ -167,7 +166,8 @@ namespace effcore {
 
       # case: list|header
         if ($c_last_type === 'list') {
-          static::_list_data_insert($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent);
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          static::_list_data_insert($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
           continue;
         }
 
@@ -235,32 +235,32 @@ namespace effcore {
 
         if ($c_last_type === 'list') {
         # calculate depth
-          $c_ul_ol_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          if ($c_ul_ol_depth < 1) $c_ul_ol_depth = 1;
-          while ($c_ul_ol_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]))
-                 $c_ul_ol_depth--;
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          if ($c_list_depth < 1) $c_list_depth = 1;
+          while ($c_list_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_list_depth - 1]))
+                 $c_list_depth--;
         # create new list sub container (ol|ul)
-          if (empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth]) &&
-             !empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1])) {
+          if (empty($c_last_item->_ul_ol_pointers[$c_list_depth]) &&
+             !empty($c_last_item->_ul_ol_pointers[$c_list_depth - 1])) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-                         $c_last_item->_ul_ol_pointers[$c_ul_ol_depth] = $new_container;
-            $parent_li = $c_last_item->_ul_ol_pointers[$c_ul_ol_depth - 1]->child_select_last();
+                         $c_last_item->_ul_ol_pointers[$c_list_depth] = $new_container;
+            $parent_li = $c_last_item->_ul_ol_pointers[$c_list_depth - 1]->child_select_last();
             if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
           }
         # delete old pointers to list containers (ol|ul)
           foreach ($c_last_item->_ul_ol_pointers as $c_depth => $c_pointer) {
-            if ($c_depth > $c_ul_ol_depth) {
+            if ($c_depth > $c_list_depth) {
               unset($c_last_item->_ul_ol_pointers[$c_depth]);
             }
           }
         # insert new list item (li)
-          if (!empty($c_last_item->_ul_ol_pointers[$c_ul_ol_depth])) {
+          if (!empty($c_last_item->_ul_ol_pointers[$c_list_depth])) {
             unset($c_last_item->_wrapper_name);
             $new_li = new markup('li');
             $new_li->child_insert(new node, 'wrapper_data0');
             $new_li->child_insert(new node, 'wrapper_container');
             $new_li->child_insert(new node, 'wrapper_data1');
-            $c_last_item->_ul_ol_pointers[$c_ul_ol_depth]->child_insert($new_li);
+            $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert($new_li);
             static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
           }
         }
@@ -304,7 +304,8 @@ namespace effcore {
 
       # case: list|nl
         if ($c_last_type === 'list') {
-          if (static::_list_data_insert($c_last_item, nl, $c_indent, $c_paragraph_depth)) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          if (static::_list_data_insert($c_last_item, nl, $c_indent, $c_list_depth)) {
             continue;
           }
         }
@@ -335,7 +336,8 @@ namespace effcore {
 
       # case: list|text
         if ($c_last_type === 'list') {
-          if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_paragraph_depth)) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_list_depth)) {
             continue;
           }
         }
