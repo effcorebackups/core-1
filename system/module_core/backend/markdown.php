@@ -57,9 +57,10 @@ namespace effcore {
                        $list->_ul_ol_pointers[$max_depth];
     if ($container) $last_list = $container->child_select_last();
     if ($last_list) {
-        $last_list->child_insert(
-          is_string($data) ? new text($data) : $data
-        );
+      $last_element = $last_list->child_select_last();
+      if (is_string($data) && $last_element instanceof text === true && $last_element->text_select() === '') $last_element->text_insert(   $data);
+      if (is_string($data) && $last_element instanceof text === true && $last_element->text_select() !== '') $last_element->text_append(nl.$data);
+      if (is_string($data) && $last_element instanceof text !== true) $last_list->child_insert(new text($data));
     }
   }
 
