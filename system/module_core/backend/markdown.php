@@ -7,6 +7,20 @@
 namespace effcore {
           abstract class markdown {
 
+  ###################
+  ### separations ###
+  ###################
+
+  # ┌────────────╥────────┬───────────┬────────────┬──────────────┬──────────────┐
+  # │ min breaks ║ header │ paragraph │ blockquote │ list         │ code         │
+  # ╞════════════╬════════╪═══════════╪════════════╪══════════════╪══════════════╡
+  # │     header ║ ''     │ ''        │ ''         │ ''           │ ''           │
+  # │  paragraph ║ ''     │ nl        │ ''         │ nl           │ nl           │
+  # │ blockquote ║ nl     │ nl        │ nl.'text'  │ nl           │ nl           │
+  # │       list ║ nl     │ nl        │ nl         │ nl.'text'.nl │ nl.'text'.nl │
+  # │       code ║ ''     │ ''        │ ''         │ nl           │    'text'.nl │
+  # └────────────╨────────┴───────────┴────────────┴──────────────┴──────────────┘
+
   static function _node_universal_type_get($node) {
     $type = $node instanceof markup ||
             $node instanceof markup_simple ? $node->tag_name : null;
@@ -370,7 +384,7 @@ namespace effcore {
     }
 
   # ─────────────────────────────────────────────────────────────────────
-  # postprocess for blockquote
+  # recursive post process for blockquote
   # ─────────────────────────────────────────────────────────────────────
 
     foreach ($pool->children_select_recursive() as $c_item) {
