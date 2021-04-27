@@ -51,15 +51,15 @@ namespace effcore {
     return $text_object;
   }
 
-  static function _list_data_insert($list, $data, $c_indent, $level = null) {
+  static function _list_data_insert($list, $data, $c_indent, $depth = null) {
     if (empty($list->_wrapper_name))            $list->_wrapper_name = 'wrapper_data0';
     if (is_string($data) && trim($data) === '') $list->_wrapper_name = 'wrapper_data1';
     switch ($list->_wrapper_name) {
       case 'wrapper_data0':
       # insert data to the list
-        $wrapper_data0_level = count($list->_ul_ol_pointers);
-        $container = empty($list->_ul_ol_pointers[$wrapper_data0_level]) ? null :
-                           $list->_ul_ol_pointers[$wrapper_data0_level];
+        $wrapper_data0_depth = count($list->_ul_ol_pointers);
+        $container = empty($list->_ul_ol_pointers[$wrapper_data0_depth]) ? null :
+                           $list->_ul_ol_pointers[$wrapper_data0_depth];
         if ($container) $container = $container->child_select_last(); # get last li
         if ($container) $container = $container->child_select('wrapper_data0');
         if ($container) {
@@ -77,9 +77,9 @@ namespace effcore {
         }
       # insert new paragraph to the list
         if (empty($list->_c_paragraph) && $c_indent > 0) {
-          $wrapper_data1_level = min($level, count($list->_ul_ol_pointers));
-          $container = empty($list->_ul_ol_pointers[$wrapper_data1_level]) ? null :
-                             $list->_ul_ol_pointers[$wrapper_data1_level];
+          $wrapper_data1_depth = min($depth, count($list->_ul_ol_pointers));
+          $container = empty($list->_ul_ol_pointers[$wrapper_data1_depth]) ? null :
+                             $list->_ul_ol_pointers[$wrapper_data1_depth];
           if ($container) $container = $container->child_select_last(); # get last li
           if ($container) $container = $container->child_select('wrapper_data1');
           if ($container) {
@@ -89,9 +89,9 @@ namespace effcore {
             );
           }
         # convert text in previous lists to paragraph
-          foreach ($list->_ul_ol_pointers as $c_level => $c_pointer) {
-            if ($c_level <= $level) {
-              $container = $list->_ul_ol_pointers[$c_level];
+          foreach ($list->_ul_ol_pointers as $c_depth => $c_pointer) {
+            if ($c_depth <= $depth) {
+              $container = $list->_ul_ol_pointers[$c_depth];
               if ($container) $container = $container->child_select_last();
               if ($container) $container = $container->child_select('wrapper_data0');
               if ($container) {
@@ -159,7 +159,7 @@ namespace effcore {
 
     # atx-style
       $c_matches = [];
-      if (preg_match('%^(?<indent>[ ]{0,3})'.
+      if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[#]{1,6})'.
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
@@ -172,10 +172,12 @@ namespace effcore {
         }
 
       # make new header
-        $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
-        $c_last_type = 'header';
-        $pool->child_insert($c_last_item);
-        continue;
+        if ($c_indent < 4) {
+          $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
+          $c_last_type = 'header';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -246,9 +248,9 @@ namespace effcore {
             if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
           }
         # delete old pointers to list containers (ol|ul)
-          foreach ($c_last_item->_ul_ol_pointers as $c_level => $c_pointer) {
-            if ($c_level > $c_ul_ol_depth) {
-              unset($c_last_item->_ul_ol_pointers[$c_level]);
+          foreach ($c_last_item->_ul_ol_pointers as $c_depth => $c_pointer) {
+            if ($c_depth > $c_ul_ol_depth) {
+              unset($c_last_item->_ul_ol_pointers[$c_depth]);
             }
           }
         # insert new list item (li)
