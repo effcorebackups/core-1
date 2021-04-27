@@ -190,8 +190,8 @@ namespace effcore {
              !empty($c_last_item->_ul_ol_pointers[$c_list_depth - 1])) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
                          $c_last_item->_ul_ol_pointers[$c_list_depth] = $new_container;
-            $parent_li = $c_last_item->_ul_ol_pointers[$c_list_depth - 1]->child_select_last();
-            if ($parent_li) $parent_li->child_insert($new_container);
+            $last_list = $c_last_item->_ul_ol_pointers[$c_list_depth - 1]->child_select_last();
+            if ($last_list) $last_list->child_insert($new_container);
           }
         # delete old pointers to list containers (ol|ul)
           foreach ($c_last_item->_ul_ol_pointers as $c_depth => $c_pointer) {
@@ -201,8 +201,7 @@ namespace effcore {
           }
         # insert new list item (li)
           if (!empty($c_last_item->_ul_ol_pointers[$c_list_depth])) {
-            $new_li = new markup('li');
-            $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert($new_li);
+            $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert(new markup('li'));
             static::_list_process__insert_data($c_last_item, $c_matches['return']);
           }
         }
