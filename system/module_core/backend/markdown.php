@@ -165,10 +165,12 @@ namespace effcore {
         $c_size = strlen($c_matches['marker']);
 
       # case: list|header
-        if ($c_last_type === 'list') {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
-          continue;
+        if ($c_indent > 1) {
+          if ($c_last_type === 'list') {
+            $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+            static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
+            continue;
+          }
         }
 
       # make new header
@@ -293,7 +295,7 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # text, paragraph
+    # nl
     # ─────────────────────────────────────────────────────────────────────
 
       if (trim($c_string) === '') {
@@ -331,6 +333,10 @@ namespace effcore {
         }
 
       }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # text
+    # ─────────────────────────────────────────────────────────────────────
 
       if (trim($c_string) !== '') {
 
