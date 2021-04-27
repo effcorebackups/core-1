@@ -51,72 +51,15 @@ namespace effcore {
     return $text_object;
   }
 
-  static function _list_process__insert_data($list, $data, $c_indent, $depth = null) {
-    if (empty($list->_wrapper_name))            $list->_wrapper_name = 'wrapper_data0';
-    if (is_string($data) && trim($data) === '') $list->_wrapper_name = 'wrapper_data1';
-    switch ($list->_wrapper_name) {
-      case 'wrapper_data0':
-      # insert data to the list
-        $wrapper_data0_depth = count($list->_ul_ol_pointers);
-        $container = empty($list->_ul_ol_pointers[$wrapper_data0_depth]) ? null :
-                           $list->_ul_ol_pointers[$wrapper_data0_depth];
-        if ($container) $container = $container->child_select_last(); # get last li
-        if ($container) $container = $container->child_select('wrapper_data0');
-        if ($container) {
-          $container->child_insert(
-            is_string($data) ? new text($data) : $data
-          );
-          return true;
-        }
-        break;
-      case 'wrapper_data1':
-      # delete old pointer to the current paragraph
-        if (is_string($data) && trim($data) === '') {
-          $list->_c_paragraph = null;
-          return true;
-        }
-      # insert new paragraph to the list
-        if (empty($list->_c_paragraph) && $c_indent > 0) {
-          $wrapper_data1_depth = min($depth, count($list->_ul_ol_pointers));
-          $container = empty($list->_ul_ol_pointers[$wrapper_data1_depth]) ? null :
-                             $list->_ul_ol_pointers[$wrapper_data1_depth];
-          if ($container) $container = $container->child_select_last(); # get last li
-          if ($container) $container = $container->child_select('wrapper_data1');
-          if ($container) {
-            $list->_c_paragraph = new markup('p');
-            $container->child_insert(
-              $list->_c_paragraph
-            );
-          }
-        # convert text in previous lists to paragraph
-          foreach ($list->_ul_ol_pointers as $c_depth => $c_pointer) {
-            if ($c_depth <= $depth) {
-              $container = $list->_ul_ol_pointers[$c_depth];
-              if ($container) $container = $container->child_select_last();
-              if ($container) $container = $container->child_select('wrapper_data0');
-              if ($container) {
-                $new_p = new markup('p');
-                foreach ($container->children_select() as $id => $c_child) {
-                  if ($c_child instanceof text) {
-                    $new_p->child_insert($c_child);
-                    $container->child_delete($id);
-                  }
-                }
-                if ($new_p->children_select_count()) {
-                  $container->child_insert($new_p);
-                }
-              }
-            }
-          }
-        }
-      # insert data to current paragraph
-        if (empty($list->_c_paragraph) === false) {
-          $list->_c_paragraph->child_insert(
-            is_string($data) ? new text($data) : $data
-          );
-          return true;
-        }
-        break;
+  static function _list_process__insert_data($list, $data, $depth = null) {
+    $max_depth = count($list->_ul_ol_pointers);
+    $container = empty($list->_ul_ol_pointers[$max_depth]) ? null :
+                       $list->_ul_ol_pointers[$max_depth];
+    if ($container) $last_list = $container->child_select_last();
+    if ($last_list) {
+        $last_list->child_insert(
+          is_string($data) ? new text($data) : $data
+        );
     }
   }
 
@@ -168,7 +111,7 @@ namespace effcore {
         if ($c_indent > 1) {
           if ($c_last_type === 'list') {
             $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-            static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
+            static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_list_depth);
             continue;
           }
         }
@@ -247,7 +190,7 @@ namespace effcore {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
                          $c_last_item->_ul_ol_pointers[$c_list_depth] = $new_container;
             $parent_li = $c_last_item->_ul_ol_pointers[$c_list_depth - 1]->child_select_last();
-            if ($parent_li) $parent_li->child_select('wrapper_container')->child_insert($new_container);
+            if ($parent_li) $parent_li->child_insert($new_container);
           }
         # delete old pointers to list containers (ol|ul)
           foreach ($c_last_item->_ul_ol_pointers as $c_depth => $c_pointer) {
@@ -257,13 +200,9 @@ namespace effcore {
           }
         # insert new list item (li)
           if (!empty($c_last_item->_ul_ol_pointers[$c_list_depth])) {
-            unset($c_last_item->_wrapper_name);
             $new_li = new markup('li');
-            $new_li->child_insert(new node, 'wrapper_data0');
-            $new_li->child_insert(new node, 'wrapper_container');
-            $new_li->child_insert(new node, 'wrapper_data1');
             $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert($new_li);
-            static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_indent);
+            static::_list_process__insert_data($c_last_item, $c_matches['return']);
           }
         }
         continue;
@@ -307,7 +246,7 @@ namespace effcore {
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          if (static::_list_process__insert_data($c_last_item, nl, $c_indent, $c_list_depth)) {
+          if (static::_list_process__insert_data($c_last_item, nl, $c_list_depth)) {
             continue;
           }
         }
@@ -343,7 +282,7 @@ namespace effcore {
       # case: list|text
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          if (static::_list_process__insert_data($c_last_item, $c_string, $c_indent, $c_list_depth)) {
+          if (static::_list_process__insert_data($c_last_item, $c_string, $c_list_depth)) {
             continue;
           }
         }
