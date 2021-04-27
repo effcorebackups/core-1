@@ -159,7 +159,10 @@ namespace effcore {
 
     # atx-style
       $c_matches = [];
-      if (preg_match('%^(?<marker>[#]{1,6})(?<return>.+)$%S', $c_string, $c_matches)) {
+      if (preg_match('%^(?<indent>[ ]{0,3})'.
+                       '(?<marker>[#]{1,6})'.
+                       '(?<spaces>[ ]{1,})'.
+                       '(?<return>.+)$%S', $c_string, $c_matches)) {
         $c_size = strlen($c_matches['marker']);
 
       # case: list|header
@@ -183,7 +186,7 @@ namespace effcore {
                        '(?<marker>([*][ ]{0,2}){3,}|'.
                                  '([-][ ]{0,2}){3,}|'.
                                  '([_][ ]{0,2}){3,})'.
-                       '(?<noises>[ ]{0,})$%S', $c_string)) {
+                       '(?<spaces>[ ]{0,})$%S', $c_string)) {
         $c_last_item = new markup_simple('hr');
         $c_last_type = 'hr';
         $pool->child_insert($c_last_item);
@@ -197,7 +200,7 @@ namespace effcore {
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
-                       '(?<noises>[ ]{1,})'.
+                       '(?<spaces>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
       # case: p|list
         if ($c_last_type === 'p') {
@@ -363,12 +366,12 @@ namespace effcore {
 
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
-                       '(?<noises>[ ]{0,})'.
+                       '(?<spaces>[ ]{0,})'.
                        '(?<return>.*)$%S', $c_string, $c_matches)) {
 
       # case: !pre|pre
         if ($c_last_type !== 'pre') {
-          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['noises'].htmlspecialchars($c_matches['return']))])]);
+          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['spaces'].htmlspecialchars($c_matches['return']))])]);
           $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
           continue;
@@ -376,7 +379,7 @@ namespace effcore {
 
       # case: pre|pre
         if ($c_last_type === 'pre') {
-          $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['noises'].htmlspecialchars($c_matches['return']));
+          $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['spaces'].htmlspecialchars($c_matches['return']));
           continue;
         }
       }
