@@ -51,7 +51,7 @@ namespace effcore {
     return $text_object;
   }
 
-  static function _list_data_insert($list, $data, $c_indent, $depth = null) {
+  static function _list_process__insert_data($list, $data, $c_indent, $depth = null) {
     if (empty($list->_wrapper_name))            $list->_wrapper_name = 'wrapper_data0';
     if (is_string($data) && trim($data) === '') $list->_wrapper_name = 'wrapper_data1';
     switch ($list->_wrapper_name) {
@@ -167,7 +167,7 @@ namespace effcore {
       # case: list|header
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          static::_list_data_insert($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
+          static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_indent, $c_list_depth);
           continue;
         }
 
@@ -261,7 +261,7 @@ namespace effcore {
             $new_li->child_insert(new node, 'wrapper_container');
             $new_li->child_insert(new node, 'wrapper_data1');
             $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert($new_li);
-            static::_list_data_insert($c_last_item, $c_matches['return'], $c_indent);
+            static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_indent);
           }
         }
         continue;
@@ -305,7 +305,7 @@ namespace effcore {
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          if (static::_list_data_insert($c_last_item, nl, $c_indent, $c_list_depth)) {
+          if (static::_list_process__insert_data($c_last_item, nl, $c_indent, $c_list_depth)) {
             continue;
           }
         }
@@ -337,7 +337,7 @@ namespace effcore {
       # case: list|text
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-          if (static::_list_data_insert($c_last_item, $c_string, $c_indent, $c_list_depth)) {
+          if (static::_list_process__insert_data($c_last_item, $c_string, $c_indent, $c_list_depth)) {
             continue;
           }
         }
