@@ -16,7 +16,7 @@ namespace effcore {
   # ╞════════════╬════════╪════════╪══════════════╪════════════╪═══════════╪══════════════╡
   # │     header ║ ''     │        │ ''           │ ''         │ ''        │ ''           │
   # │         hr ║        │        │              │            │           │              │
-  # │       list ║ ''     │        │ nl.'text'.nl │ nl         │ nl        │ nl.'text'.nl │
+  # │       list ║ ''     │ ''     │ nl.'text'.nl │ nl         │ nl        │ nl.'text'.nl │
   # │ blockquote ║ nl     │        │ nl           │ nl.'text'  │ nl        │ nl           │
   # │  paragraph ║ ''     │        │ nl           │ ''         │ nl        │ nl           │
   # │       code ║ ''     │        │ nl           │ ''         │ ''        │    'text'.nl │
@@ -144,16 +144,27 @@ namespace effcore {
     # hr
     # ─────────────────────────────────────────────────────────────────────
 
-      if (preg_match('%^(?<indent>[ ]{0,3})'.
+      if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>([*][ ]{0,}){3,}|'.
                                  '([-][ ]{0,}){3,}|'.
                                  '([_][ ]{0,}){3,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string)) {
 
-        $c_last_item = new markup_simple('hr');
-        $c_last_type = 'hr';
-        $pool->child_insert($c_last_item);
-        continue;
+      # case: list|hr
+        if ($c_last_type === 'list' && $c_indent > 1) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
+          continue;
+        }
+
+      # case: !list|hr
+        if ($c_indent < 4) {
+          $c_last_item = new markup_simple('hr');
+          $c_last_type = 'hr';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
 
       }
 
