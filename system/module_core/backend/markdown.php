@@ -75,7 +75,7 @@ namespace effcore {
       $c_matches = [];
 
     # ─────────────────────────────────────────────────────────────────────
-    # headers
+    # header
     # ─────────────────────────────────────────────────────────────────────
 
     # setext-style
@@ -127,7 +127,7 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # horizontal rules
+    # hr
     # ─────────────────────────────────────────────────────────────────────
 
       if (preg_match('%^(?<indent>[ ]{0,3})'.
@@ -142,7 +142,7 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # lists
+    # ul/ol
     # ─────────────────────────────────────────────────────────────────────
 
       $c_matches = [];
@@ -180,11 +180,13 @@ namespace effcore {
         }
 
         if ($c_last_type === 'list') {
+
         # calculate depth
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
           if ($c_list_depth < 1) $c_list_depth = 1;
           while ($c_list_depth > 1 && empty($c_last_item->_ul_ol_pointers[$c_list_depth - 1]))
                  $c_list_depth--;
+
         # create new list sub container (ol|ul)
           if (empty($c_last_item->_ul_ol_pointers[$c_list_depth]) &&
              !empty($c_last_item->_ul_ol_pointers[$c_list_depth - 1])) {
@@ -196,17 +198,20 @@ namespace effcore {
               $c_last_item->_ul_ol_pointers[$c_list_depth] = $new_container;
             }
           }
+
         # delete old pointers to list containers (ol|ul)
           foreach ($c_last_item->_ul_ol_pointers as $c_depth => $c_pointer) {
             if ($c_depth > $c_list_depth) {
               unset($c_last_item->_ul_ol_pointers[$c_depth]);
             }
           }
+
         # insert new list item (li)
           if (!empty($c_last_item->_ul_ol_pointers[$c_list_depth])) {
             $c_last_item->_ul_ol_pointers[$c_list_depth]->child_insert(new markup('li'));
             static::_list_process__insert_data($c_last_item, $c_matches['return']);
           }
+
         }
         continue;
       }
@@ -339,7 +344,7 @@ namespace effcore {
     }
 
   # ─────────────────────────────────────────────────────────────────────
-  # recursive post process for blockquote
+  # recursive post process
   # ─────────────────────────────────────────────────────────────────────
 
     foreach ($pool->children_select_recursive() as $c_item) {
