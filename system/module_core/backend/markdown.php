@@ -16,7 +16,7 @@ namespace effcore {
   # ╞════════════╬════════╪════════╪══════════════╪════════════╪═══════════╪══════════════╡
   # │     header ║ ''     │        │ ''           │ ''         │ ''        │ ''           │
   # │         hr ║        │        │              │            │           │              │
-  # │       list ║ ''     │ ''     │ nl.'text'.nl │ nl         │ nl        │ nl.'text'.nl │
+  # │       list ║ ''     │ ''     │ nl.'text'.nl │ ''         │ nl        │ nl.'text'.nl │
   # │ blockquote ║ nl     │        │ nl           │ nl.'text'  │ nl        │ nl           │
   # │  paragraph ║ ''     │        │ nl           │ ''         │ nl        │ nl           │
   # │       code ║ ''     │        │ nl           │ ''         │ ''        │    'text'.nl │
@@ -252,6 +252,14 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
+
+      # case: list|blockquote
+        if ($c_last_type === 'list' && $c_indent > 1) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, trim($c_string), $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
+          continue;
+        }
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
