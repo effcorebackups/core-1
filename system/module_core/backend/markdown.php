@@ -17,7 +17,7 @@ namespace effcore {
   # │     header ║ ''     │ ''        │ ''         │ ''           │ ''           │
   # │  paragraph ║ ''     │ nl        │ ''         │ nl           │ nl           │
   # │ blockquote ║ nl     │ nl        │ nl.'text'  │ nl           │ nl           │
-  # │       list ║ nl     │ nl        │ nl         │ nl.'text'.nl │ nl.'text'.nl │
+  # │       list ║ ''     │ nl        │ nl         │ nl.'text'.nl │ nl.'text'.nl │
   # │       code ║ ''     │ ''        │ ''         │ nl           │    'text'.nl │
   # └────────────╨────────┴───────────┴────────────┴──────────────┴──────────────┘
 
@@ -102,28 +102,24 @@ namespace effcore {
 
     # atx-style
       $c_matches = [];
-      if (preg_match('%^(?<indent>[ ]{0,})'.
+      if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[#]{1,6})'.
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.+)$%S', $c_string, $c_matches)) {
         $c_size = strlen($c_matches['marker']);
 
       # case: list|header
-        if ($c_indent > 1) {
-          if ($c_last_type === 'list') {
-            $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
-            static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_list_depth);
-            continue;
-          }
+        if ($c_last_type === 'list' && $c_indent > 1) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_ul_ol_start_indent) / 2) + 1;
+          static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_list_depth);
+          continue;
         }
 
       # make new header
-        if ($c_indent < 4) {
-          $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
-          $c_last_type = 'header';
-          $pool->child_insert($c_last_item);
-          continue;
-        }
+        $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
+        $c_last_type = 'header';
+        $pool->child_insert($c_last_item);
+        continue;
       }
 
     # ─────────────────────────────────────────────────────────────────────
