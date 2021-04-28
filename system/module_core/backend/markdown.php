@@ -249,12 +249,12 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       $c_matches = [];
-      if (preg_match('%^(?<indent>[ ]{0,3})'.
+      if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
       # case: !blockquote|blockquote
-        if ($c_last_type !== 'blockquote') {
+        if ($c_last_type !== 'blockquote' && $c_indent < 4) {
           $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
