@@ -105,12 +105,14 @@ namespace effcore {
         }
 
       # make new header
-        if ($c_matches['marker'][0] === '=') $c_size = 1;
-        if ($c_matches['marker'][0] === '-') $c_size = 2;
-        $c_last_item = new markup('h'.$c_size, [], trim($strings[$c_number - 1]));
-        $c_last_type = 'header';
-        $pool->child_insert($c_last_item);
-        continue;
+        if (!empty($strings[$c_number - 1])) {
+          if ($c_matches['marker'][0] === '=') $c_size = 1;
+          if ($c_matches['marker'][0] === '-') $c_size = 2;
+          $c_last_item = new markup('h'.$c_size, [], trim($strings[$c_number - 1]));
+          $c_last_type = 'header';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
 
       }
 
