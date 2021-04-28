@@ -84,10 +84,19 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[=]{1,}|[-]{1,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
-      # delete previous insertion
-        if ($c_last_type === 'header') $pool->child_delete($pool->child_select_last_id());
-        if ($c_last_type === 'hr'    ) $pool->child_delete($pool->child_select_last_id());
-        if ($c_last_type === 'p'     ) {
+
+      # case: header|header
+        if ($c_last_type === 'header') {
+          $pool->child_delete($pool->child_select_last_id());
+        }
+
+      # case: hr|header
+        if ($c_last_type === 'hr') {
+          $pool->child_delete($pool->child_select_last_id());
+        }
+
+      # case: p|header
+        if ($c_last_type === 'p') {
           static::_text_process__delete_last_line($c_last_item->child_select('text'));
           if ($c_last_item->child_select('text')->text_select() === '') {
             $pool->child_delete($pool->child_select_last_id());
@@ -101,6 +110,7 @@ namespace effcore {
         $c_last_type = 'header';
         $pool->child_insert($c_last_item);
         continue;
+
       }
 
     # atx-style
@@ -126,6 +136,7 @@ namespace effcore {
           $pool->child_insert($c_last_item);
           continue;
         }
+
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -137,10 +148,12 @@ namespace effcore {
                                  '([-][ ]{0,2}){3,}|'.
                                  '([_][ ]{0,2}){3,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string)) {
+
         $c_last_item = new markup_simple('hr');
         $c_last_type = 'hr';
         $pool->child_insert($c_last_item);
         continue;
+
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -340,6 +353,7 @@ namespace effcore {
           $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['spaces'].htmlspecialchars($c_matches['return']));
           continue;
         }
+
       }
 
     }
