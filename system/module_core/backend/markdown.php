@@ -11,15 +11,16 @@ namespace effcore {
   ### separations ###
   ###################
 
-  # ┌────────────╥────────┬───────────┬────────────┬──────────────┬──────────────┐
-  # │ min breaks ║ header │ paragraph │ blockquote │ list         │ code         │
-  # ╞════════════╬════════╪═══════════╪════════════╪══════════════╪══════════════╡
-  # │     header ║ ''     │ ''        │ ''         │ ''           │ ''           │
-  # │  paragraph ║ ''     │ nl        │ ''         │ nl           │ nl           │
-  # │ blockquote ║ nl     │ nl        │ nl.'text'  │ nl           │ nl           │
-  # │       list ║ ''     │ nl        │ nl         │ nl.'text'.nl │ nl.'text'.nl │
-  # │       code ║ ''     │ ''        │ ''         │ nl           │    'text'.nl │
-  # └────────────╨────────┴───────────┴────────────┴──────────────┴──────────────┘
+  # ┌────────────╥────────┬────────┬──────────────┬────────────┬───────────┬──────────────┐
+  # │ min breaks ║ header │ hr     │ list         │ blockquote │ paragraph │ code         │
+  # ╞════════════╬════════╪════════╪══════════════╪════════════╪═══════════╪══════════════╡
+  # │     header ║ ''     │        │ ''           │ ''         │ ''        │ ''           │
+  # │         hr ║        │        │              │            │           │              │
+  # │       list ║ ''     │        │ nl.'text'.nl │ nl         │ nl        │ nl.'text'.nl │
+  # │ blockquote ║ nl     │        │ nl           │ nl.'text'  │ nl        │ nl           │
+  # │  paragraph ║ ''     │        │ nl           │ ''         │ nl        │ nl           │
+  # │       code ║ ''     │        │ nl           │ ''         │ ''        │    'text'.nl │
+  # └────────────╨────────┴────────┴──────────────┴────────────┴───────────┴──────────────┘
 
   static function _node_universal_type_get($node) {
     $type = $node instanceof markup ||
@@ -144,9 +145,9 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       if (preg_match('%^(?<indent>[ ]{0,3})'.
-                       '(?<marker>([*][ ]{0,2}){3,}|'.
-                                 '([-][ ]{0,2}){3,}|'.
-                                 '([_][ ]{0,2}){3,})'.
+                       '(?<marker>([*][ ]{0,}){3,}|'.
+                                 '([-][ ]{0,}){3,}|'.
+                                 '([_][ ]{0,}){3,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string)) {
 
         $c_last_item = new markup_simple('hr');
@@ -157,14 +158,14 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # ul/ol
+    # list
     # ─────────────────────────────────────────────────────────────────────
 
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<spaces>[ ]{1,})'.
-                       '(?<return>.+)$%S', $c_string, $c_matches)) {
+                       '(?<return>.{0,})$%S', $c_string, $c_matches)) {
       # case: p|list
         if ($c_last_type === 'p') {
           $c_last_item->child_select('text')->text_append(nl.$c_string);
@@ -237,7 +238,7 @@ namespace effcore {
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[>][ ]{0,1})'.
-                       '(?<return>.+)$%S', $c_string, $c_matches)) {
+                       '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote') {
@@ -338,7 +339,7 @@ namespace effcore {
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<spaces>[ ]{0,})'.
-                       '(?<return>.*)$%S', $c_string, $c_matches)) {
+                       '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
       # case: !pre|pre
         if ($c_last_type !== 'pre') {
