@@ -183,13 +183,12 @@ namespace effcore {
 
         # calculate depth
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_list_depth < 1) $c_list_depth = 1;
-          while ($c_list_depth > 1 && empty($c_last_item->_pointers[$c_list_depth - 1]))
-                 $c_list_depth--;
+          if ($c_list_depth < 1                                                     ) $c_list_depth = 1;
+          if ($c_list_depth > 1 && empty($c_last_item->_pointers[$c_list_depth - 1])) $c_list_depth = count($c_last_item->_pointers) + 1;
 
         # create new list sub container (ol|ul)
-          if (empty($c_last_item->_pointers[$c_list_depth]) &&
-             !empty($c_last_item->_pointers[$c_list_depth - 1])) {
+          if (empty($c_last_item->_pointers[$c_list_depth    ]) === true &&
+              empty($c_last_item->_pointers[$c_list_depth - 1]) !== true) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
             $parent_container = $c_last_item->_pointers[$c_list_depth - 1];
             $parent_last_list = $parent_container->child_select_last();
