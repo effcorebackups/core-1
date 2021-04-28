@@ -81,7 +81,9 @@ namespace effcore {
 
     # setext-style
       $c_matches = [];
-      if (preg_match('%^(?<marker>[-]+[ ]*|[=]+[ ]*)$%S', $c_string, $c_matches)) {
+      if (preg_match('%^(?<indent>[ ]{0,3})'.
+                       '(?<marker>[=]{1,}|[-]{1,})'.
+                       '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
       # delete previous insertion
         if ($c_last_type === 'header') $pool->child_delete($pool->child_select_last_id());
         if ($c_last_type === 'hr'    ) $pool->child_delete($pool->child_select_last_id());
@@ -106,7 +108,7 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[#]{1,6})'.
                        '(?<spaces>[ ]{1,})'.
-                       '(?<return>.+)$%S', $c_string, $c_matches)) {
+                       '(?<return>.{1,})$%S', $c_string, $c_matches)) {
         $c_size = strlen($c_matches['marker']);
 
       # case: list|header
