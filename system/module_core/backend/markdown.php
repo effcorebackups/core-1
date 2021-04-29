@@ -259,7 +259,8 @@ namespace effcore {
       # case: list|text
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          static::_list_process__insert_data($c_last_item, $c_string, $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, trim($c_string), $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
           continue;
         }
 
@@ -295,7 +296,8 @@ namespace effcore {
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, nl);
           continue;
         }
 
