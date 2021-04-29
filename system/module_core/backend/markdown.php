@@ -112,6 +112,7 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[=]{1,}|[-]{1,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
+
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
@@ -137,6 +138,7 @@ namespace effcore {
                        '(?<marker>[#]{1,6})'.
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{1,})$%S', $c_string, $c_matches)) {
+
         $c_size = strlen($c_matches['marker']);
 
       # case: list|header
