@@ -115,11 +115,6 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: hr|header
-        if ($c_last_type === 'hr') {
-          $pool->child_delete($pool->child_select_last_id());
-        }
-
       # case: p|header
         if ($c_last_type === 'p') {
           $text = $c_last_item->child_select('text')->text_select();
