@@ -254,10 +254,6 @@ namespace effcore {
       element_nl:
       if (trim($c_string) === '') {
 
-      # cases: header|nl, hr|hl
-        if ($c_last_type === 'header') continue;
-        if ($c_last_type === 'hr'    ) continue;
-
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
