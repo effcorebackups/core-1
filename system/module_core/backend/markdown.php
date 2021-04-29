@@ -250,42 +250,6 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # nl
-    # ─────────────────────────────────────────────────────────────────────
-
-      element_nl:
-      if (trim($c_string) === '') {
-
-      # case: list|nl
-        if ($c_last_type === 'list') {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
-          continue;
-        }
-
-      # case: blockquote|nl
-        if ($c_last_type === 'blockquote') {
-          $c_last_item->child_select('text')->text_append(nl);
-          continue;
-        }
-
-      # case: pre|nl
-        if ($c_last_type === 'pre') {
-          $c_last_item->child_select('code')->child_select('text')->text_append(nl);
-          continue;
-        }
-
-      # case: p|nl
-        if ($c_last_type === 'p') {
-          $c_last_item = new node();
-          $c_last_type = null;
-          $pool->child_insert($c_last_item);
-          continue;
-        }
-
-      }
-
-    # ─────────────────────────────────────────────────────────────────────
     # text
     # ─────────────────────────────────────────────────────────────────────
 
@@ -315,6 +279,42 @@ namespace effcore {
         if ($c_indent < 4) {
           $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
           $c_last_type = 'p';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
+
+      }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # nl
+    # ─────────────────────────────────────────────────────────────────────
+
+      element_nl:
+      if (trim($c_string) === '') {
+
+      # case: list|nl
+        if ($c_last_type === 'list') {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
+          static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
+          continue;
+        }
+
+      # case: blockquote|nl
+        if ($c_last_type === 'blockquote') {
+          $c_last_item->child_select('text')->text_append(nl);
+          continue;
+        }
+
+      # case: pre|nl
+        if ($c_last_type === 'pre') {
+          $c_last_item->child_select('code')->child_select('text')->text_append(nl);
+          continue;
+        }
+
+      # case: p|nl
+        if ($c_last_type === 'p') {
+          $c_last_item = new node();
+          $c_last_type = null;
           $pool->child_insert($c_last_item);
           continue;
         }
