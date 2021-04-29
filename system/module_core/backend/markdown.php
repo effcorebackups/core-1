@@ -190,10 +190,10 @@ namespace effcore {
           if (empty($c_last_item->_pointers[$c_list_depth    ]) === true &&
               empty($c_last_item->_pointers[$c_list_depth - 1]) !== true) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-            $parent_container = $c_last_item->_pointers[$c_list_depth - 1];
-            $parent_last_list = $parent_container->child_select_last();
-            if ($parent_last_list) {
-              $parent_last_list->child_insert($new_container);
+            $prn_container = $c_last_item->_pointers[$c_list_depth - 1];
+            $prn_last_list = $prn_container->child_select_last();
+            if ($prn_last_list) {
+              $prn_last_list->child_insert($new_container);
               $c_last_item->_pointers[$c_list_depth] = $new_container;
             }
           }
@@ -258,10 +258,18 @@ namespace effcore {
 
       # case: list|text
         if ($c_last_type === 'list') {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, trim($c_string), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
-          continue;
+          $c_last_container = $c_last_item->_pointers[count($c_last_item->_pointers)];
+          $c_last_list      = $c_last_container->child_select_last();
+          $c_last_element   = $c_last_list     ->child_select_last();
+          if (get_class($c_last_element) === 'effcore\\node' && $c_indent > 1) {
+            $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+            if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_list_depth);
+            if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));
+            continue;
+          } else {
+            static::_list_process__insert_data($c_last_item, trim($c_string));
+            continue;
+          }
         }
 
       # case: blockquote|text
@@ -305,9 +313,7 @@ namespace effcore {
 
       # case: list|nl
         if ($c_last_type === 'list') {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, nl);
+          static::_list_process__insert_data($c_last_item, new node());
           continue;
         }
 
