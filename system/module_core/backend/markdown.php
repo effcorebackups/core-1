@@ -167,25 +167,6 @@ namespace effcore {
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
-      # case: p|list
-        if ($c_last_type === 'p') {
-          $c_last_item->child_select('text')->text_append(nl.$c_string);
-          continue;
-        }
-
-      # case: blockquote|list
-        if ($c_last_type === 'blockquote') {
-          $c_last_item->child_select('text')->text_append(nl.$c_string);
-          continue;
-        }
-
-      # case: pre|list
-        if ($c_last_type === 'pre') {
-          $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
-          $c_last_type = 'p';
-          $pool->child_insert($c_last_item);
-          continue;
-        }
 
       # create new list container (ol|ul)
         if ($c_last_type !== 'list' && $c_indent < 4) {
