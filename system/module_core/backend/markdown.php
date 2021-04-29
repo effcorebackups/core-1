@@ -11,16 +11,16 @@ namespace effcore {
   ### separations ###
   ###################
 
-  # ┌────────────╥────────┬─────┬─────────┬────────────┬───────────┬─────────┐
-  # │ separators ║ header │ hr  │ list    │ blockquote │ paragraph │ code    │
-  # ╞════════════╬════════╪═════╪═════════╪════════════╪═══════════╪═════════╡
-  # │     header ║ -      │ -   │ -       │ -          │ -         │ -       │
-  # │         hr ║ -      │ -   │ -       │ -          │ -         │ -       │
-  # │       list ║ -      │ -   │ element │ -          │ nl        │ element │
-  # │ blockquote ║ -      │ -   │ -       │ nl         │ nl        │ nl      │
-  # │  paragraph ║ -      │ nl  │ -       │ -          │ nl        │ nl      │
-  # │       code ║ -      │ -   │ -       │ -          │ -         │ element │
-  # └────────────╨────────┴─────┴─────────┴────────────┴───────────┴─────────┘
+  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
+  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │
+  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╡
+  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │
+  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │
+  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │
+  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │
+  # │  paragraph ║ -      │ nl │ -       │ -          │ nl        │ nl      │
+  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
+  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
 
   static function _node_universal_type_get($node) {
     $type = $node instanceof markup ||
