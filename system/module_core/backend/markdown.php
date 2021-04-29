@@ -293,6 +293,16 @@ namespace effcore {
       element_nl:
       if (trim($c_string) === '') {
 
+      # case: header|nl
+        if ($c_last_type === 'header') {
+          continue;
+        }
+
+      # case: hr|nl
+        if ($c_last_type === 'hr') {
+          continue;
+        }
+
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
@@ -303,7 +313,9 @@ namespace effcore {
 
       # case: blockquote|nl
         if ($c_last_type === 'blockquote') {
-          $c_last_item->child_select('text')->text_append(nl);
+          $c_last_item = new node();
+          $c_last_type = null;
+          $pool->child_insert($c_last_item);
           continue;
         }
 
