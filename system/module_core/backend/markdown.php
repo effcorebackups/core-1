@@ -259,9 +259,8 @@ namespace effcore {
       # case: list|nl
         if ($c_last_type === 'list') {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if (static::_list_process__insert_data($c_last_item, nl, $c_list_depth)) {
-            continue;
-          }
+          static::_list_process__insert_data($c_last_item, nl, $c_list_depth);
+          continue;
         }
 
       # case: blockquote|nl
