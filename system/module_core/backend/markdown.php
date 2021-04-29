@@ -11,16 +11,16 @@ namespace effcore {
   ### separations ###
   ###################
 
-  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
-  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │
-  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╡
-  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │
-  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │
-  # │  paragraph ║ -      │ -  │ -       │ -          │ nl        │ nl      │
-  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
-  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
+  # ┌────────────╥────────┬─────┬─────────┬────────────┬───────────┬─────────┐
+  # │ separators ║ header │ hr  │ list    │ blockquote │ paragraph │ code    │
+  # ╞════════════╬════════╪═════╪═════════╪════════════╪═══════════╪═════════╡
+  # │     header ║ -      │ -   │ -       │ -          │ -         │ -       │
+  # │         hr ║ -      │ -   │ -       │ -          │ -         │ -       │
+  # │       list ║ -      │ -   │ element │ -          │ nl        │ element │
+  # │ blockquote ║ -      │ -   │ -       │ nl         │ nl        │ nl      │
+  # │  paragraph ║ -      │ nl  │ -       │ -          │ nl        │ nl      │
+  # │       code ║ -      │ -   │ -       │ -          │ -         │ element │
+  # └────────────╨────────┴─────┴─────────┴────────────┴───────────┴─────────┘
 
   static function _node_universal_type_get($node) {
     $type = $node instanceof markup ||
@@ -34,14 +34,6 @@ namespace effcore {
     if ($type === 'h5') return 'header';
     if ($type === 'h6') return 'header';
     return $type; # header|p|list|pre|blockquote|hr|null
-  }
-
-  static function _text_process__delete_line__last($text_object) {
-    $text = $text_object->text_select();
-    $last_nl_pos = strrpos($text, nl);
-    $text = substr($text, 0, $last_nl_pos !== false ? $last_nl_pos : null);
-    $text_object->text_update($text);
-    return $text_object;
   }
 
   static function _text_process__insert_line__ws_br($text_object, $new_text) {
@@ -77,19 +69,51 @@ namespace effcore {
       $c_matches = [];
 
     # ─────────────────────────────────────────────────────────────────────
-    # header
+    # hr
     # ─────────────────────────────────────────────────────────────────────
 
-    # setext-style
+      element_hr:
+      $c_matches = [];
+      if (preg_match('%^(?<indent>[ ]{0,})'.
+                       '(?<marker>([*][ ]{0,}){3,}|'.
+                                 '([-][ ]{0,}){3,}|'.
+                                 '([_][ ]{0,}){3,})'.
+                       '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
+
+      # case: p|'---'
+        if ($c_last_type === 'p' && $c_matches['marker'][0] === '-') {
+          goto element_header_setext;
+        }
+
+      # case: list|hr
+        if ($c_last_type === 'list' && $c_indent > 1) {
+          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_list_depth);
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
+          continue;
+        }
+
+      # case: !list|hr
+        if ($c_indent < 4) {
+          $c_last_item = new markup_simple('hr');
+          $c_last_type = 'hr';
+          $pool->child_insert($c_last_item);
+          continue;
+        }
+
+      }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # header (setext-style)
+    # ─────────────────────────────────────────────────────────────────────
+
+      element_header_setext:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,3})'.
                        '(?<marker>[=]{1,}|[-]{1,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
-
-      # case: header|header
-        if ($c_last_type === 'header') {
-          $pool->child_delete($pool->child_select_last_id());
-        }
+        if ($c_matches['marker'][0] === '=') $c_size = 1;
+        if ($c_matches['marker'][0] === '-') $c_size = 2;
 
       # case: hr|header
         if ($c_last_type === 'hr') {
@@ -98,17 +122,9 @@ namespace effcore {
 
       # case: p|header
         if ($c_last_type === 'p') {
-          static::_text_process__delete_line__last($c_last_item->child_select('text'));
-          if ($c_last_item->child_select('text')->text_select() === '') {
-            $pool->child_delete($pool->child_select_last_id());
-          }
-        }
-
-      # make new header
-        if (!empty($strings[$c_number - 1])) {
-          if ($c_matches['marker'][0] === '=') $c_size = 1;
-          if ($c_matches['marker'][0] === '-') $c_size = 2;
-          $c_last_item = new markup('h'.$c_size, [], trim($strings[$c_number - 1]));
+          $text = $c_last_item->child_select('text')->text_select();
+          $pool->child_delete($pool->child_select_last_id());
+          $c_last_item = new markup('h'.$c_size, [], trim($text));
           $c_last_type = 'header';
           $pool->child_insert($c_last_item);
           continue;
@@ -116,7 +132,11 @@ namespace effcore {
 
       }
 
-    # atx-style
+    # ─────────────────────────────────────────────────────────────────────
+    # header (atx-style)
+    # ─────────────────────────────────────────────────────────────────────
+
+      element_header_atx:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[#]{1,6})'.
@@ -143,37 +163,10 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # hr
-    # ─────────────────────────────────────────────────────────────────────
-
-      if (preg_match('%^(?<indent>[ ]{0,})'.
-                       '(?<marker>([*][ ]{0,}){3,}|'.
-                                 '([-][ ]{0,}){3,}|'.
-                                 '([_][ ]{0,}){3,})'.
-                       '(?<spaces>[ ]{0,})$%S', $c_string)) {
-
-      # case: list|hr
-        if ($c_last_type === 'list' && $c_indent > 1) {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
-          continue;
-        }
-
-      # case: !list|hr
-        if ($c_indent < 4) {
-          $c_last_item = new markup_simple('hr');
-          $c_last_type = 'hr';
-          $pool->child_insert($c_last_item);
-          continue;
-        }
-
-      }
-
-    # ─────────────────────────────────────────────────────────────────────
     # list
     # ─────────────────────────────────────────────────────────────────────
 
+      element_list:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
@@ -248,6 +241,7 @@ namespace effcore {
     # blockquote
     # ─────────────────────────────────────────────────────────────────────
 
+      element_blockquote:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[>][ ]{0,1})'.
@@ -281,6 +275,7 @@ namespace effcore {
     # nl
     # ─────────────────────────────────────────────────────────────────────
 
+      element_nl:
       if (trim($c_string) === '') {
 
       # cases: header|nl, hr|hl
@@ -321,6 +316,7 @@ namespace effcore {
     # text
     # ─────────────────────────────────────────────────────────────────────
 
+      element_text:
       if (trim($c_string) !== '') {
 
       # case: list|text
@@ -354,9 +350,10 @@ namespace effcore {
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # code (last prioruty)
+    # code
     # ─────────────────────────────────────────────────────────────────────
 
+      element_code:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<spaces>[ ]{0,})'.
