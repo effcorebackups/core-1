@@ -115,6 +115,7 @@ namespace effcore {
 
       # case: !list|hr
         if ($c_indent < 4) {
+          element_hr_insert:
           $c_last_item = new markup_simple('hr');
           $c_last_type = 'hr';
           $pool->child_insert($c_last_item);
@@ -176,6 +177,7 @@ namespace effcore {
 
       # case: !list|header
         if ($c_indent < 4) {
+          element_header_atx_insert:
           $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
           $c_last_type = 'header';
           $pool->child_insert($c_last_item);
@@ -261,6 +263,7 @@ namespace effcore {
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
+          element_blockquote_insert:
           $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
@@ -285,13 +288,14 @@ namespace effcore {
       # case: list|text
         if ($c_last_type === 'list') {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
-          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-          if (get_class($c_last_list_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_indent > 1) {
-            if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_cur_depth); static::_list_process__delete_pointers($c_last_item, $c_cur_depth);}
-            if (empty($c_last_item->_pointers[$c_cur_depth]) === true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));}
-            continue;
-          }
+          $c_max_depth = count($c_last_item->_pointers);
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
+          if (get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item, trim($c_string));
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth < 2) goto element_p_insert;
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, new markup('p',   [],                                   ['text' => new text(                                                                     ltrim($c_string, ' '))]), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, new markup('p',   [],                                   ['text' => new text(                                                                     ltrim($c_string, ' '))]));}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, new markup('pre', [], ['code' => new markup('code', [], ['text' => new text(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).htmlspecialchars(ltrim($c_string, ' ')))])]));}
+          continue;
         }
 
       # case: blockquote|text
@@ -308,6 +312,7 @@ namespace effcore {
 
       # cases: header|text, pre|text, hr|text, null|text
         if ($c_indent < 4) {
+          element_p_insert:
           $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
           $c_last_type = 'p';
           $pool->child_insert($c_last_item);
@@ -355,6 +360,7 @@ namespace effcore {
 
       # case: p|nl
         if ($c_last_type === 'p') {
+          element_nl_insert:
           $c_last_item = new node();
           $c_last_type = null;
           $pool->child_insert($c_last_item);
@@ -375,6 +381,7 @@ namespace effcore {
 
       # case: !pre|pre
         if ($c_last_type !== 'pre') {
+          element_code_insert:
           $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['spaces'].htmlspecialchars($c_matches['return']))])]);
           $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
