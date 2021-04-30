@@ -97,7 +97,7 @@ namespace effcore {
         if ($c_last_type === 'list' && $c_indent > 1) {
           $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
           if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
+          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
           continue;
         }
 
