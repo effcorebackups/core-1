@@ -261,13 +261,11 @@ namespace effcore {
           $c_last_container = $c_last_item->_pointers[count($c_last_item->_pointers)];
           $c_last_list      = $c_last_container->child_select_last();
           $c_last_element   = $c_last_list     ->child_select_last();
+          if (get_class($c_last_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
           if (get_class($c_last_element) === 'effcore\\node' && $c_indent > 1) {
             $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
             if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_list_depth);
             if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));
-            continue;
-          } else {
-            static::_list_process__insert_data($c_last_item, trim($c_string));
             continue;
           }
         }
