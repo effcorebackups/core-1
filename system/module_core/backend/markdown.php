@@ -58,6 +58,13 @@ namespace effcore {
     }
   }
 
+  static function _list_process__select_last_element($list) {
+    $last_container = $list->_pointers[count($list->_pointers)];
+    $last_list      = $last_container->child_select_last();
+    $last_element   = $last_list     ->child_select_last();
+    return $last_element;
+  }
+
   static function _list_process__delete_pointers($list, $from) {
     foreach ($list->_pointers as $c_depth => $c_pointer) {
       if ($c_depth > $from) {
@@ -262,12 +269,10 @@ namespace effcore {
 
       # case: list|text
         if ($c_last_type === 'list') {
-          $c_last_container = $c_last_item->_pointers[count($c_last_item->_pointers)];
-          $c_last_list      = $c_last_container->child_select_last();
-          $c_last_element   = $c_last_list     ->child_select_last();
-          if (get_class($c_last_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
-          if (get_class($c_last_element) === 'effcore\\node' && $c_indent > 1) {
-            $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          $c_last_list_element = static::_list_process__select_last_element($c_last_item);
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (get_class($c_last_list_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_indent > 1) {
             if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_cur_depth); static::_list_process__delete_pointers($c_last_item, $c_cur_depth);}
             if (empty($c_last_item->_pointers[$c_cur_depth]) === true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));}
             continue;
