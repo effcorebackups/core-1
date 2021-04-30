@@ -95,9 +95,9 @@ namespace effcore {
 
       # case: list|hr
         if ($c_last_type === 'list' && $c_indent > 1) {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_cur_depth);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
           continue;
         }
 
@@ -151,9 +151,9 @@ namespace effcore {
 
       # case: list|header
         if ($c_last_type === 'list' && $c_indent > 1) {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_cur_depth);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
           continue;
         }
 
@@ -190,29 +190,29 @@ namespace effcore {
         if ($c_last_type === 'list') {
 
         # calculate depth
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_list_depth < 1                                                     ) $c_list_depth = 1;
-          if ($c_list_depth > 1 && empty($c_last_item->_pointers[$c_list_depth - 1])) $c_list_depth = count($c_last_item->_pointers) + 1;
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
+          if ($c_cur_depth < 1                                                    ) $c_cur_depth = 1;
+          if ($c_cur_depth > 1 && empty($c_last_item->_pointers[$c_cur_depth - 1])) $c_cur_depth = count($c_last_item->_pointers) + 1;
 
         # create new list sub container (ol|ul)
-          if (empty($c_last_item->_pointers[$c_list_depth    ]) === true &&
-              empty($c_last_item->_pointers[$c_list_depth - 1]) !== true) {
+          if (empty($c_last_item->_pointers[$c_cur_depth - 0]) === true &&
+              empty($c_last_item->_pointers[$c_cur_depth - 1]) !== true) {
             $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
-            $prn_container = $c_last_item->_pointers[$c_list_depth - 1];
+            $prn_container = $c_last_item->_pointers[$c_cur_depth - 1];
             $prn_last_list = $prn_container->child_select_last();
             if ($prn_last_list) {
               $prn_last_list->child_insert($new_container);
-              $c_last_item->_pointers[$c_list_depth] = $new_container;
+              $c_last_item->_pointers[$c_cur_depth] = $new_container;
             }
           }
 
         # delete old pointers to list containers (ol|ul)
-          static::_list_process__delete_pointers($c_last_item, $c_list_depth);
+          static::_list_process__delete_pointers($c_last_item, $c_cur_depth);
 
         # insert new list item (li)
-          if (!empty($c_last_item->_pointers[$c_list_depth])) {
-            $c_last_item->_pointers[$c_list_depth]->child_insert(new markup('li'));
-            static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_list_depth);
+          if (!empty($c_last_item->_pointers[$c_cur_depth])) {
+            $c_last_item->_pointers[$c_cur_depth]->child_insert(new markup('li'));
+            static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_cur_depth);
           }
 
         }
@@ -231,9 +231,9 @@ namespace effcore {
 
       # case: list|blockquote
         if ($c_last_type === 'list' && $c_indent > 1) {
-          $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-          if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]), $c_list_depth);
-          if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]), $c_cur_depth);
+          if (empty($c_last_item->_pointers[$c_cur_depth]) === true) static::_list_process__insert_data($c_last_item, trim($c_string));
           continue;
         }
 
@@ -267,9 +267,9 @@ namespace effcore {
           $c_last_element   = $c_last_list     ->child_select_last();
           if (get_class($c_last_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
           if (get_class($c_last_element) === 'effcore\\node' && $c_indent > 1) {
-            $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-            if (empty($c_last_item->_pointers[$c_list_depth]) !== true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_list_depth); static::_list_process__delete_pointers($c_last_item, $c_list_depth);}
-            if (empty($c_last_item->_pointers[$c_list_depth]) === true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));}
+            $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
+            if (empty($c_last_item->_pointers[$c_cur_depth]) !== true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_cur_depth); static::_list_process__delete_pointers($c_last_item, $c_cur_depth);}
+            if (empty($c_last_item->_pointers[$c_cur_depth]) === true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));}
             continue;
           }
         }
