@@ -58,6 +58,14 @@ namespace effcore {
     }
   }
 
+  static function _list_process__delete_pointers($list, $from) {
+    foreach ($list->_pointers as $c_depth => $c_pointer) {
+      if ($c_depth > $from) {
+        unset($list->_pointers[$c_depth]);
+      }
+    }
+  }
+
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
@@ -199,16 +207,12 @@ namespace effcore {
           }
 
         # delete old pointers to list containers (ol|ul)
-          foreach ($c_last_item->_pointers as $c_depth => $c_pointer) {
-            if ($c_depth > $c_list_depth) {
-              unset($c_last_item->_pointers[$c_depth]);
-            }
-          }
+          static::_list_process__delete_pointers($c_last_item, $c_list_depth);
 
         # insert new list item (li)
           if (!empty($c_last_item->_pointers[$c_list_depth])) {
             $c_last_item->_pointers[$c_list_depth]->child_insert(new markup('li'));
-            static::_list_process__insert_data($c_last_item, $c_matches['return']);
+            static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_list_depth);
           }
 
         }
@@ -264,8 +268,8 @@ namespace effcore {
           if (get_class($c_last_element) !== 'effcore\\node') {static::_list_process__insert_data($c_last_item, trim($c_string)); continue;}
           if (get_class($c_last_element) === 'effcore\\node' && $c_indent > 1) {
             $c_list_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2);
-            if (empty($c_last_item->_pointers[$c_list_depth]) !== true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_list_depth);
-            if (empty($c_last_item->_pointers[$c_list_depth]) === true) static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));
+            if (empty($c_last_item->_pointers[$c_list_depth]) !== true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]), $c_list_depth); static::_list_process__delete_pointers($c_last_item, $c_list_depth);}
+            if (empty($c_last_item->_pointers[$c_list_depth]) === true) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]));}
             continue;
           }
         }
