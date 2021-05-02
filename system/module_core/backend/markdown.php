@@ -87,7 +87,6 @@ namespace effcore {
     # hr
     # ─────────────────────────────────────────────────────────────────────
 
-      element_hr:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>([*][ ]{0,}){3,}|'.
@@ -115,7 +114,6 @@ namespace effcore {
 
       # case: !list|hr
         if ($c_indent < 4) {
-          element_hr_insert:
           $c_last_item = new markup_simple('hr');
           $c_last_type = 'hr';
           $pool->child_insert($c_last_item);
@@ -153,7 +151,6 @@ namespace effcore {
     # header (atx-style)
     # ─────────────────────────────────────────────────────────────────────
 
-      element_header_atx:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[#]{1,6})'.
@@ -177,7 +174,6 @@ namespace effcore {
 
       # case: !list|header
         if ($c_indent < 4) {
-          element_header_atx_insert:
           $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
           $c_last_type = 'header';
           $pool->child_insert($c_last_item);
@@ -190,7 +186,6 @@ namespace effcore {
     # list
     # ─────────────────────────────────────────────────────────────────────
 
-      element_list:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
@@ -242,7 +237,6 @@ namespace effcore {
     # blockquote
     # ─────────────────────────────────────────────────────────────────────
 
-      element_blockquote:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[>][ ]{0,1})'.
@@ -263,7 +257,6 @@ namespace effcore {
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
-          element_blockquote_insert:
           $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
           $c_last_type = 'blockquote';
           $pool->child_insert($c_last_item);
@@ -282,7 +275,6 @@ namespace effcore {
     # text
     # ─────────────────────────────────────────────────────────────────────
 
-      element_text:
       if (trim($c_string) !== '') {
 
       # case: list|text
@@ -325,7 +317,6 @@ namespace effcore {
     # nl
     # ─────────────────────────────────────────────────────────────────────
 
-      element_nl:
       if (trim($c_string) === '') {
 
       # case: header|nl
@@ -372,7 +363,6 @@ namespace effcore {
     # code
     # ─────────────────────────────────────────────────────────────────────
 
-      element_code:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<spaces>[ ]{0,})'.
@@ -380,7 +370,6 @@ namespace effcore {
 
       # case: !pre|pre
         if ($c_last_type !== 'pre') {
-          element_code_insert:
           $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['spaces'].htmlspecialchars($c_matches['return']))])]);
           $c_last_type = 'pre';
           $pool->child_insert($c_last_item);
