@@ -137,9 +137,9 @@ namespace effcore {
 
       # case: p|header
         if ($c_last_type === 'p') {
-          $text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
-          $c_last_item = new markup('h'.$c_size, [], trim($text));
+          $c_text = $c_last_item->child_select('text')->text_select();
+          $c_last_item = new markup('h'.$c_size, [], trim($c_text));
           $c_last_type = 'header';
           $pool->child_insert($c_last_item);
           continue;
@@ -391,18 +391,29 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
     foreach ($pool->children_select_recursive() as $c_item) {
-      if ($c_item instanceof markup &&
-          $c_item->tag_name === 'blockquote') {
-        $c_child = $c_item->child_select('text');
-        if ($c_child) {
-          $c_markup = ltrim($c_child->text_select(), nl);
-          if ($c_markup) {
-            $c_item->child_delete('text');
-            foreach (static::markdown_to_markup($c_markup)->children_select() as $c_new_child) {
-              $c_item->child_insert($c_new_child);
+      if ($c_item instanceof markup) {
+        switch ($c_item->tag_name) {
+          case 'pre':
+            $c_text_object = $c_item->child_select('code')->child_select('text');
+            if ($c_text_object) {
+              $c_text_object->text_update(
+                trim($c_text_object->text_select(), nl)
+              );
             }
-          }
-        }
+            break;
+          case 'blockquote':
+            $c_text_object = $c_item->child_select('text');
+            if ($c_text_object) {
+              $c_text = ltrim($c_text_object->text_select(), nl);
+              if ($c_text) {
+                $c_item->child_delete('text');
+                foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
+                  $c_item->child_insert($c_new_child);
+                }
+              }
+            }
+            break;
+        } 
       }
     }
 
