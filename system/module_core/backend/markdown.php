@@ -396,15 +396,18 @@ namespace effcore {
           case 'pre':
             $c_text_object = $c_item->child_select('code')->child_select('text');
             if ($c_text_object) {
+              $c_text = $c_text_object->text_select();
+              $c_text = trim($c_text, nl);
               $c_text_object->text_update(
-                trim($c_text_object->text_select(), nl)
+                $c_text
               );
             }
             break;
           case 'blockquote':
             $c_text_object = $c_item->child_select('text');
             if ($c_text_object) {
-              $c_text = ltrim($c_text_object->text_select(), nl);
+              $c_text = $c_text_object->text_select();
+              $c_text = rtrim(trim($c_text, nl), ' ');
               if ($c_text) {
                 $c_item->child_delete('text');
                 foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
