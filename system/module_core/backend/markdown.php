@@ -22,18 +22,20 @@ namespace effcore {
   # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
   # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
 
-  static function _node_universal_type_get($node) {
-    $type = $node instanceof markup ||
-            $node instanceof markup_simple ? $node->tag_name : null;
-    if ($type === 'ul') return 'list';
-    if ($type === 'ol') return 'list';
-    if ($type === 'h1') return 'header';
-    if ($type === 'h2') return 'header';
-    if ($type === 'h3') return 'header';
-    if ($type === 'h4') return 'header';
-    if ($type === 'h5') return 'header';
-    if ($type === 'h6') return 'header';
-    return $type; # header|p|list|pre|blockquote|hr|null
+  static function _node_type_get($node) {
+    $type = null;
+    if ($node instanceof text         ) $type = 'text';
+    if ($node instanceof markup       ) $type = $node->tag_name;
+    if ($node instanceof markup_simple) $type = $node->tag_name;
+    if ($type === 'ul') $type = 'list';
+    if ($type === 'ol') $type = 'list';
+    if ($type === 'h1') $type = 'header';
+    if ($type === 'h2') $type = 'header';
+    if ($type === 'h3') $type = 'header';
+    if ($type === 'h4') $type = 'header';
+    if ($type === 'h5') $type = 'header';
+    if ($type === 'h6') $type = 'header';
+    return $type; # text|header|p|list|pre|blockquote|hr|null
   }
 
   static function _text_process__insert_line__ws_br($text_object, $new_text) {
@@ -51,9 +53,9 @@ namespace effcore {
     if (isset($container)) $last_list = $container->child_select_last();
     if (isset($last_list)) {
       $last_element = $last_list->child_select_last();
-      if (is_string($data) === true && $last_element instanceof text === true && $last_element->text_select() === '') $last_element->text_insert(   $data);
-      if (is_string($data) === true && $last_element instanceof text === true && $last_element->text_select() !== '') $last_element->text_append(nl.$data);
-      if (is_string($data) === true && $last_element instanceof text !== true) $last_list->child_insert(new text($data));
+      if (is_string($data) === true && static::_node_type_get($last_element) === 'text' && $last_element->text_select() === '') $last_element->text_insert(   $data);
+      if (is_string($data) === true && static::_node_type_get($last_element) === 'text' && $last_element->text_select() !== '') $last_element->text_append(nl.$data);
+      if (is_string($data) === true && static::_node_type_get($last_element) !== 'text') $last_list->child_insert(new text($data));
       if (is_string($data) !== true) $last_list->child_insert($data);
     }
   }
@@ -80,7 +82,7 @@ namespace effcore {
       $c_string    = str_replace(tb, '    ', $c_string);
       $c_indent    = strspn($c_string, ' ');
       $c_last_item = $pool->child_select_last();
-      $c_last_type = static::_node_universal_type_get($c_last_item);
+      $c_last_type = static::_node_type_get($c_last_item);
       $c_matches = [];
 
     # ─────────────────────────────────────────────────────────────────────
@@ -391,32 +393,30 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
     foreach ($pool->children_select_recursive() as $c_item) {
-      if ($c_item instanceof markup) {
-        switch ($c_item->tag_name) {
-          case 'pre':
-            $c_text_object = $c_item->child_select('code')->child_select('text');
-            if ($c_text_object) {
-              $c_text = $c_text_object->text_select();
-              $c_text = trim($c_text, nl);
-              $c_text_object->text_update(
-                $c_text
-              );
-            }
-            break;
-          case 'blockquote':
-            $c_text_object = $c_item->child_select('text');
-            if ($c_text_object) {
-              $c_text = $c_text_object->text_select();
-              $c_text = rtrim(trim($c_text, nl), ' ');
-              if ($c_text) {
-                $c_item->child_delete('text');
-                foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
-                  $c_item->child_insert($c_new_child);
-                }
+      switch (static::_node_type_get($c_item)) {
+        case 'pre':
+          $c_text_object = $c_item->child_select('code')->child_select('text');
+          if ($c_text_object) {
+            $c_text = $c_text_object->text_select();
+            $c_text = trim($c_text, nl);
+            $c_text_object->text_update(
+              $c_text
+            );
+          }
+          break;
+        case 'blockquote':
+          $c_text_object = $c_item->child_select('text');
+          if ($c_text_object) {
+            $c_text = $c_text_object->text_select();
+            $c_text = rtrim(trim($c_text, nl), ' ');
+            if ($c_text) {
+              $c_item->child_delete('text');
+              foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
+                $c_item->child_insert($c_new_child);
               }
             }
-            break;
-        } 
+          }
+          break;
       }
     }
 
