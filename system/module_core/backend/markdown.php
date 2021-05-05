@@ -78,6 +78,22 @@ namespace effcore {
     }
   }
 
+  static function _get_markup_hr() {
+    return new markup_simple('hr');
+  }
+
+  static function _get_markup_header($data, $size = 1) {
+    return new markup('h'.$size, [], trim($data, ' #'));
+  }
+
+  static function _get_markup_code($data) {
+    return new markup('pre', [], [
+      'code' => new markup('code', [], [
+        'text' => new text(htmlspecialchars($data))
+      ])]
+    );
+  }
+
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
@@ -109,19 +125,17 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, new markup_simple('hr'), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
-          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, new markup_simple('hr'));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                                                                                                  trim($c_string));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, new markup('pre', [], ['code' => new markup('code', [], ['text' => new text(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).htmlspecialchars(trim($c_string)))])]));
+          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr(), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
+          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                              trim($c_string));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
           continue;
         }
 
       # case: !list|hr
         if ($c_indent < 4) {
-          $c_last_item = new markup_simple('hr');
-          $c_last_type = 'hr';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_hr());
           continue;
         }
 
@@ -144,9 +158,7 @@ namespace effcore {
         if ($c_last_type === 'p') {
           $pool->child_delete($pool->child_select_last_id());
           $c_text = $c_last_item->child_select('text')->text_select();
-          $c_last_item = new markup('h'.$c_size, [], trim($c_text));
-          $c_last_type = 'header';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_header($c_text, $c_size));
           continue;
         }
 
@@ -169,19 +181,17 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')));
-          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, new markup('h'.$c_size, [], trim($c_matches['return'], ' #')));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                                                                                                  trim($c_string));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, new markup('pre', [], ['code' => new markup('code', [], ['text' => new text(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).htmlspecialchars(trim($c_string)))])]));
+          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
+          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                              trim($c_string));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
           continue;
         }
 
       # case: !list|header
         if ($c_indent < 4) {
-          $c_last_item = new markup('h'.$c_size, [], trim($c_matches['return'], ' #'));
-          $c_last_type = 'header';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_header($c_matches['return'], $c_size));
           continue;
         }
 
@@ -256,7 +266,7 @@ namespace effcore {
           if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]));
           if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]));
           if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                  $c_matches['return']);
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, new markup('pre', [], ['code' => new markup('code', [], ['text' => new text(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).htmlspecialchars($c_matches['return']))])]));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['return']));
           continue;
         }
 
@@ -288,10 +298,10 @@ namespace effcore {
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
           if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth < 2) goto element_p_insert;
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, new markup('p',   [],                                   ['text' => new text(                                                                     ltrim($c_string, ' '))]), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, new markup('p',   [],                                   ['text' => new text(                                                                     ltrim($c_string, ' '))]));}
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, new markup('pre', [], ['code' => new markup('code', [], ['text' => new text(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).htmlspecialchars(ltrim($c_string, ' ')))])]));}
-          if (get_class($c_last_list_element) !== 'effcore\\node'                                                         ) {static::_list_process__insert_data($c_last_item,                                                                                                                                                  ltrim($c_string, ' '));}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(                                     ltrim($c_string, ' '))]), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(                                     ltrim($c_string, ' '))]));}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' ')));}
+          if (get_class($c_last_list_element) !== 'effcore\\node'                                                         ) {static::_list_process__insert_data($c_last_item,                                                                              ltrim($c_string, ' '));}
           continue;
         }
 
@@ -375,9 +385,7 @@ namespace effcore {
 
       # case: !pre|pre
         if ($c_last_type !== 'pre') {
-          $c_last_item = new markup('pre', [], ['code' => new markup('code', [], ['text' => new text($c_matches['spaces'].htmlspecialchars($c_matches['return']))])]);
-          $c_last_type = 'pre';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_code($c_matches['spaces'].$c_matches['return']));
           continue;
         }
 
