@@ -43,7 +43,7 @@ namespace effcore {
     if ($encode     ) $text = htmlspecialchars($text);
     if ($text === '') $text =          $new_text;
     if ($text !== '') $text = $text.nl.$new_text;
-    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', ' '.((new markup_simple('br'))->render()).nl, $text);
+    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', ((new markup_simple('br'))->render()).nl, $text);
     $text_object->text_update($text);
     return $text_object;
   }
