@@ -7,21 +7,6 @@
 namespace effcore {
           abstract class markdown {
 
-  ###################
-  ### separations ###
-  ###################
-
-  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
-  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │
-  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╡
-  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │
-  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │
-  # │  paragraph ║ -      │ nl │ -       │ -          │ nl        │ nl      │
-  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
-  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
-
   static function _node_type_get($node) {
     $type = null;
     if ($node instanceof text         ) $type = 'text';
@@ -122,6 +107,17 @@ namespace effcore {
   static function _get_delimiter() {
     return new node();
   }
+
+  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
+  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │
+  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╡
+  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │
+  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │
+  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │
+  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │
+  # │  paragraph ║ -      │ nl │ -       │ -          │ nl        │ nl      │
+  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
+  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
 
   static function markdown_to_markup($markdown) {
     $pool = new node;
