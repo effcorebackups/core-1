@@ -43,7 +43,7 @@ namespace effcore {
     if ($encode     ) $new_text = htmlspecialchars($new_text);
     if ($text === '') $text =          $new_text;
     if ($text !== '') $text = $text.nl.$new_text;
-    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', ((new markup_simple('br'))->render()).nl, $text);
+    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::_get_markup_br()->render().nl, $text);
     $text_object->text_update($text);
     return $text_object;
   }
@@ -82,8 +82,21 @@ namespace effcore {
     return new markup_simple('hr');
   }
 
+  static function _get_markup_br() {
+    return new markup_simple('br');
+  }
+
   static function _get_markup_header($data, $size = 1) {
     return new markup('h'.$size, [], trim($data, ' #'));
+  }
+
+  static function _get_markup_list_container($is_numbered = false) {
+    if ($is_numbered) return new markup('ol');
+    else              return new markup('ul');
+  }
+
+  static function _get_markup_list() {
+    return new markup('li');
   }
 
   static function _get_markup_code($data) {
@@ -96,6 +109,12 @@ namespace effcore {
 
   static function _get_markup_blockquote($data) {
     return new markup('blockquote', [], [
+      'text' => new text($data)
+    ]);
+  }
+
+  static function _get_markup_paragraph($data) {
+    return new markup('p', [], [
       'text' => new text($data)
     ]);
   }
@@ -215,7 +234,7 @@ namespace effcore {
 
       # create new list container (ol|ul)
         if ($c_last_type !== 'list' && $c_indent < 4) {
-          $c_last_item = new markup($c_matches['dot'] ? 'ol' : 'ul');
+          $c_last_item = static::_get_markup_list_container($c_matches['dot']);
           $c_last_item->_pointers[1] = $c_last_item;
           $c_last_item->_indent = $c_indent;
           $c_last_type = 'list';
@@ -232,7 +251,7 @@ namespace effcore {
         # create new list sub container (ol|ul)
           if (empty($c_last_item->_pointers[$c_cur_depth - 0]) === true &&
               empty($c_last_item->_pointers[$c_cur_depth - 1]) !== true) {
-            $new_container = new markup($c_matches['dot'] ? 'ol' : 'ul');
+            $new_container = static::_get_markup_list_container($c_matches['dot']);
             $prn_container = $c_last_item->_pointers[$c_cur_depth - 1];
             $prn_last_list = $prn_container->child_select_last();
             if ($prn_last_list) {
@@ -246,7 +265,7 @@ namespace effcore {
 
         # insert new list item (li)
           if (!empty($c_last_item->_pointers[$c_cur_depth])) {
-            $c_last_item->_pointers[$c_cur_depth]->child_insert(new markup('li'));
+            $c_last_item->_pointers[$c_cur_depth]->child_insert(static::_get_markup_list());
             static::_list_process__insert_data($c_last_item, $c_matches['return'], $c_cur_depth);
           }
 
@@ -302,8 +321,8 @@ namespace effcore {
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
           if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth < 2) goto element_p_insert;
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(                                     ltrim($c_string, ' '))]), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
-          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, new markup('p', [], ['text' => new text(                                     ltrim($c_string, ' '))]));}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
+          if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')));}
           if (get_class($c_last_list_element) === 'effcore\\node' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' ')));}
           if (get_class($c_last_list_element) !== 'effcore\\node'                                                         ) {static::_list_process__insert_data($c_last_item,                                                                              ltrim($c_string, ' '));}
           continue;
@@ -324,9 +343,7 @@ namespace effcore {
       # cases: header|text, pre|text, hr|text, null|text
         if ($c_indent < 4) {
           element_p_insert:
-          $c_last_item = new markup('p', [], ['text' => new text(ltrim($c_string, ' '))]);
-          $c_last_type = 'p';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_paragraph(ltrim($c_string, ' ')));
           continue;
         }
 
