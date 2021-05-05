@@ -9,9 +9,10 @@ namespace effcore {
 
   static function _node_type_get($node) {
     $type = null;
-    if ($node instanceof text         ) $type = 'text';
-    if ($node instanceof markup       ) $type = $node->tag_name;
+    if ($node instanceof text         ) $type = '_text';
+    if ($node instanceof node         ) $type = '_delimiter';
     if ($node instanceof markup_simple) $type = $node->tag_name;
+    if ($node instanceof markup       ) $type = $node->tag_name;
     if ($type === 'ul') $type = 'list';
     if ($type === 'ol') $type = 'list';
     if ($type === 'h1') $type = 'header';
@@ -40,11 +41,11 @@ namespace effcore {
     if (isset($container)) $last_list = $container->child_select_last();
     if (isset($last_list)) {
       $last_element = $last_list->child_select_last();
-      if (is_string($data) === true && static::_node_type_get($last_element) === 'text') return static::_text_process__insert_line($last_element, $data);
-      if (is_string($data) === true && static::_node_type_get($last_element) === 'p'   ) return static::_text_process__insert_line($last_element->child_select('text'), $data);
-      if (is_string($data) === true && static::_node_type_get($last_element) === 'pre' ) return static::_text_process__insert_line($last_element->child_select('code')->child_select('text'), $data, false, true);
-      if (is_string($data) === true && static::_node_type_get($last_element) !== 'text') return $last_list->child_insert(new text($data));
-      if (is_string($data) !== true                                                    ) return $last_list->child_insert($data);
+      if (is_string($data) === true && static::_node_type_get($last_element) === '_text') return static::_text_process__insert_line($last_element, $data);
+      if (is_string($data) === true && static::_node_type_get($last_element) === 'p'    ) return static::_text_process__insert_line($last_element->child_select('text'), $data);
+      if (is_string($data) === true && static::_node_type_get($last_element) === 'pre'  ) return static::_text_process__insert_line($last_element->child_select('code')->child_select('text'), $data, false, true);
+      if (is_string($data) === true && static::_node_type_get($last_element) !== '_text') return $last_list->child_insert(new text($data));
+      if (is_string($data) !== true                                                     ) return $last_list->child_insert($data);
     }
   }
 
@@ -150,11 +151,11 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr(), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
-          if ($c_cur_depth - $c_max_depth === 2                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === null) static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== null) static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
+          if ($c_cur_depth - $c_max_depth  <  1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr(), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
+          if ($c_cur_depth - $c_max_depth === 2                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === '_delimiter') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== '_delimiter') static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
           continue;
         }
 
@@ -206,11 +207,11 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
-          if ($c_cur_depth - $c_max_depth === 2                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === null) static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== null) static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
+          if ($c_cur_depth - $c_max_depth  <  1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
+          if ($c_cur_depth - $c_max_depth === 2                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === '_delimiter') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== '_delimiter') static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
           continue;
         }
 
@@ -287,11 +288,11 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
-          if ($c_cur_depth - $c_max_depth === 2                                                         ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === null) static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return']));
-          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== null) static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return']);
+          if ($c_cur_depth - $c_max_depth  <  1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
+          if ($c_cur_depth - $c_max_depth === 2                                                                 ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === '_delimiter') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return']));
+          if ($c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) !== '_delimiter') static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return']);
           continue;
         }
 
@@ -320,11 +321,11 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if (static::_node_type_get($c_last_list_element) === null && $c_cur_depth < 2) goto element_p_insert;
-          if (static::_node_type_get($c_last_list_element) === null && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
-          if (static::_node_type_get($c_last_list_element) === null && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')));}
-          if (static::_node_type_get($c_last_list_element) === null && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' ')));}
-          if (static::_node_type_get($c_last_list_element) !== null                                                         ) {static::_list_process__insert_data($c_last_item,                                                                              ltrim($c_string, ' '));}
+          if (static::_node_type_get($c_last_list_element) === '_delimiter' && $c_cur_depth < 2) goto element_p_insert;
+          if (static::_node_type_get($c_last_list_element) === '_delimiter' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  <  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')), $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1);}
+          if (static::_node_type_get($c_last_list_element) === '_delimiter' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth === 2) {static::_list_process__insert_data($c_last_item, static::_get_markup_paragraph(                                               ltrim($c_string, ' ')));}
+          if (static::_node_type_get($c_last_list_element) === '_delimiter' && $c_cur_depth > 1 && $c_cur_depth - $c_max_depth  >  2) {static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' ')));}
+          if (static::_node_type_get($c_last_list_element) !== '_delimiter'                                                         ) {static::_list_process__insert_data($c_last_item,                                                                              ltrim($c_string, ' '));}
           continue;
         }
 
