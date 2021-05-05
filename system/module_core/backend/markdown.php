@@ -119,6 +119,10 @@ namespace effcore {
     ]);
   }
 
+  static function _get_node() {
+    return new node();
+  }
+
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
@@ -373,9 +377,7 @@ namespace effcore {
 
       # case: blockquote|nl
         if ($c_last_type === 'blockquote') {
-          $c_last_item = new node();
-          $c_last_type = null;
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_node());
           continue;
         }
 
@@ -387,9 +389,7 @@ namespace effcore {
 
       # case: p|nl
         if ($c_last_type === 'p') {
-          $c_last_item = new node();
-          $c_last_type = null;
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_node());
           continue;
         }
 
