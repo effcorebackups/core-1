@@ -94,6 +94,12 @@ namespace effcore {
     );
   }
 
+  static function _get_markup_blockquote($data) {
+    return new markup('blockquote', [], [
+      'text' => new text($data)
+    ]);
+  }
+
   static function markdown_to_markup($markdown) {
     $pool = new node;
     $strings = explode(nl, $markdown);
@@ -262,19 +268,17 @@ namespace effcore {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]), $c_cur_depth - 1);
-          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]));
-          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, new markup('blockquote', [], ['text' => new text($c_matches['return'])]));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                  $c_matches['return']);
+          if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']), $c_cur_depth - 1);
+          if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
+          if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_blockquote($c_matches['return']));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                $c_matches['return']);
           if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['return']));
           continue;
         }
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
-          $c_last_item = new markup('blockquote', [], ['text' => new text($c_matches['return'])]);
-          $c_last_type = 'blockquote';
-          $pool->child_insert($c_last_item);
+          $pool->child_insert(static::_get_markup_blockquote($c_matches['return']));
           continue;
         }
 
