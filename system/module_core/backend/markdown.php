@@ -40,7 +40,7 @@ namespace effcore {
 
   static function _text_process__insert_line($text_object, $new_text, $with_br = true, $encode = false) {
     $text = $text_object->text_select();
-    if ($encode     ) $text = htmlspecialchars($text);
+    if ($encode     ) $new_text = htmlspecialchars($new_text);
     if ($text === '') $text =          $new_text;
     if ($text !== '') $text = $text.nl.$new_text;
     if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', ((new markup_simple('br'))->render()).nl, $text);
@@ -383,7 +383,7 @@ namespace effcore {
 
       # case: pre|pre
         if ($c_last_type === 'pre') {
-          $c_last_item->child_select('code')->child_select('text')->text_append(nl.$c_matches['spaces'].htmlspecialchars($c_matches['return']));
+          static::_text_process__insert_line($c_last_item->child_select('code')->child_select('text'), $c_matches['spaces'].$c_matches['return'], false, true);
           continue;
         }
 
