@@ -38,11 +38,12 @@ namespace effcore {
     return $type; # text|header|p|list|pre|blockquote|hr|null
   }
 
-  static function _text_process__insert_line($text_object, $new_text, $ws_br = true) {
+  static function _text_process__insert_line($text_object, $new_text, $with_br = true, $encode = false) {
     $text = $text_object->text_select();
+    if ($encode     ) $text = htmlspecialchars($text);
     if ($text === '') $text =          $new_text;
     if ($text !== '') $text = $text.nl.$new_text;
-    if ($ws_br      ) $text = preg_replace('%[ ]+'.nl.'%', ' '.((new markup_simple('br'))->render()).nl, $text);
+    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', ' '.((new markup_simple('br'))->render()).nl, $text);
     $text_object->text_update($text);
     return $text_object;
   }
@@ -56,6 +57,7 @@ namespace effcore {
       $last_element = $last_list->child_select_last();
       if (is_string($data) === true && static::_node_type_get($last_element) === 'text') return static::_text_process__insert_line($last_element, $data);
       if (is_string($data) === true && static::_node_type_get($last_element) === 'p'   ) return static::_text_process__insert_line($last_element->child_select('text'), $data);
+      if (is_string($data) === true && static::_node_type_get($last_element) === 'pre' ) return static::_text_process__insert_line($last_element->child_select('code')->child_select('text'), $data, false, true);
       if (is_string($data) === true && static::_node_type_get($last_element) !== 'text') return $last_list->child_insert(new text($data));
       if (is_string($data) !== true                                                    ) return $last_list->child_insert($data);
     }
