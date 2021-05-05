@@ -153,8 +153,8 @@ namespace effcore {
           if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr(), $c_cur_depth - 1);
           if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
           if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_hr());
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                              trim($c_string));
           if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
           continue;
         }
 
@@ -209,8 +209,8 @@ namespace effcore {
           if ($c_cur_depth - $c_max_depth  <  1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size), $c_cur_depth - 1);
           if ($c_cur_depth - $c_max_depth === 1                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
           if ($c_cur_depth - $c_max_depth === 2                                                       ) static::_list_process__insert_data($c_last_item, static::_get_markup_header($c_matches['return'], $c_size));
-          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                                                                              trim($c_string));
           if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) === 'effcore\\node') static::_list_process__insert_data($c_last_item, static::_get_markup_code(str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string)));
+          if ($c_cur_depth - $c_max_depth  >  2 && get_class($c_last_list_element) !== 'effcore\\node') static::_list_process__insert_data($c_last_item,                          str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string));
           continue;
         }
 
