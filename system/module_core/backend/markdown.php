@@ -297,7 +297,7 @@ namespace effcore {
 
       # case: blockquote|text
         if ($c_last_type === 'blockquote') {
-          $c_last_item->child_select('text')->text_append(nl.$c_string);
+          static::_text_process__insert_line($c_last_item->child_select('text'), $c_string);
           continue;
         }
 
