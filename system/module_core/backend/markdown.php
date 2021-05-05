@@ -119,7 +119,7 @@ namespace effcore {
     ]);
   }
 
-  static function _get_node() {
+  static function _get_delimiter() {
     return new node();
   }
 
@@ -185,8 +185,8 @@ namespace effcore {
 
       # case: p|header
         if ($c_last_type === 'p') {
-          $pool->child_delete($pool->child_select_last_id());
           $c_text = $c_last_item->child_select('text')->text_select();
+          $pool->child_delete($pool->child_select_last_id());
           $pool->child_insert(static::_get_markup_header($c_text, $c_size));
           continue;
         }
@@ -371,13 +371,13 @@ namespace effcore {
 
       # case: list|nl
         if ($c_last_type === 'list') {
-          static::_list_process__insert_data($c_last_item, new node());
+          static::_list_process__insert_data($c_last_item, static::_get_delimiter());
           continue;
         }
 
       # case: blockquote|nl
         if ($c_last_type === 'blockquote') {
-          $pool->child_insert(static::_get_node());
+          $pool->child_insert(static::_get_delimiter());
           continue;
         }
 
@@ -389,7 +389,7 @@ namespace effcore {
 
       # case: p|nl
         if ($c_last_type === 'p') {
-          $pool->child_insert(static::_get_node());
+          $pool->child_insert(static::_get_delimiter());
           continue;
         }
 
