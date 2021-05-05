@@ -350,7 +350,7 @@ namespace effcore {
 
       # case: pre|nl
         if ($c_last_type === 'pre') {
-          $c_last_item->child_select('code')->child_select('text')->text_append(nl);
+          static::_text_process__insert_line($c_last_item->child_select('code')->child_select('text'), '', false);
           continue;
         }
 
