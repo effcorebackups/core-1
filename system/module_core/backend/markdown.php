@@ -372,7 +372,7 @@ namespace effcore {
           if ($c_indent > 1 && $c_cur_depth - $c_max_depth  <  2 && static::_node_type_get($c_last_list_element) === '_delimiter'                                                            ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p', $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1); continue;}
           if ($c_indent > 1 && $c_cur_depth - $c_max_depth === 2 && static::_node_type_get($c_last_list_element) === '_delimiter'                                                            ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p'    ); continue;}
           if ($c_indent > 1 && $c_cur_depth - $c_max_depth  >  2 && static::_node_type_get($c_last_list_element) === '_delimiter'                                                            ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' '), '_code'); continue;}
-          if ($c_indent < 2                                      && static::_node_type_get($c_last_list_element) === '_delimiter'                                                            ) {goto element_p_insert;}
+          if ($c_indent < 2                                      && static::_node_type_get($c_last_list_element) === '_delimiter'                                                            ) {$pool->child_insert(static::_get_markup_paragraph(ltrim($c_string, ' '))); continue;}
         }
 
       # case: blockquote|text
@@ -389,7 +389,6 @@ namespace effcore {
 
       # cases: header|text, pre|text, hr|text, null|text
         if ($c_indent < 4) {
-          element_p_insert:
           $pool->child_insert(static::_get_markup_paragraph(ltrim($c_string, ' ')));
           continue;
         }
