@@ -145,6 +145,29 @@ namespace effcore {
       $c_matches = [];
 
     # ─────────────────────────────────────────────────────────────────────
+    # markup
+    # ─────────────────────────────────────────────────────────────────────
+
+      $c_matches = [];
+      if (preg_match('%^(?<indent>[ ]{0,})'.
+                       '(?<return>[<][/]{0,1}[a-z0-9\\-]{1,}[>].*)$%S', $c_string, $c_matches)) {
+
+      # case: !markup|markup
+        if ($c_last_type !== '_text') {
+          $pool->child_insert(new text($c_string));
+          continue;
+        }
+
+      # case: markup|markup
+        if ($c_last_type === '_text') {
+          static::_text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
+
+        continue;
+      }
+
+    # ─────────────────────────────────────────────────────────────────────
     # hr
     # ─────────────────────────────────────────────────────────────────────
 
@@ -327,6 +350,12 @@ namespace effcore {
 
       if (trim($c_string) !== '') {
 
+      # case: markup|text
+        if ($c_last_type === '_text') {
+          static::_text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
+
       # case: list|text
         if ($c_last_type === '_list') {
           $c_last_list_element = static::_list_process__select_last_element($c_last_item);
@@ -367,6 +396,12 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       if (trim($c_string) === '') {
+
+      # case: markup|nl
+        if ($c_last_type === '_text') {
+          static::_text_process__insert_line($c_last_item, '');
+          continue;
+        }
 
       # case: header|nl
         if ($c_last_type === '_header') {
