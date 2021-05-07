@@ -201,6 +201,11 @@ namespace effcore {
           continue;
         }
 
+      # case: hr in code
+        if ($c_indent > 3) {
+          goto element_code;
+        }
+
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -443,6 +448,7 @@ namespace effcore {
     # code
     # ─────────────────────────────────────────────────────────────────────
 
+      element_code:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{4})'.
                        '(?<spaces>[ ]{0,})'.
