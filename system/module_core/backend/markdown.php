@@ -273,6 +273,11 @@ namespace effcore {
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
+      # case: !list|code
+        if ($c_last_type !== '_list' && $c_indent > 3) {
+          goto element_code;
+        }
+
       # create new list container (ol|ul)
         if ($c_last_type !== '_list' && $c_indent < 4) {
           $c_last_item = static::_get_markup_list_container($c_matches['dot']);
