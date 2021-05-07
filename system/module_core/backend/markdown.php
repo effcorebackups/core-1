@@ -25,14 +25,21 @@ namespace effcore {
     return $type; # _text|_delimiter|_code|_list|_header|p|blockquote|hr|null
   }
 
-  static function _text_process__insert_line($text_object, $new_text, $with_br = true, $encode = false) {
-    $text = $text_object->text_select();
-    if ($encode     ) $new_text = htmlspecialchars($new_text);
-    if ($text === '') $text =          $new_text;
-    if ($text !== '') $text = $text.nl.$new_text;
-    if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::_get_markup_br()->render().nl, $text);
-    $text_object->text_update($text);
-    return $text_object;
+  static function _text_process__insert_line($element, $new_text, $with_br = true, $encode = false) {
+    $text_object = null;
+    if (static::_node_type_get($element) === '_code'     ) $text_object = $element->child_select('code')->child_select('text');
+    if (static::_node_type_get($element) === 'blockquote') $text_object = $element->child_select('text');
+    if (static::_node_type_get($element) === 'p'         ) $text_object = $element->child_select('text');
+    if (static::_node_type_get($element) === '_text'     ) $text_object = $element;
+    if ($text_object) {
+      $text = $text_object->text_select();
+      if ($encode     ) $new_text = htmlspecialchars($new_text);
+      if ($text === '') $text =          $new_text;
+      if ($text !== '') $text = $text.nl.$new_text;
+      if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::_get_markup_br()->render().nl, $text);
+      $text_object->text_update($text);
+      return $text_object;
+    }
   }
 
   static function _list_process__insert_data($list, $data, $type = null, $cur_depth = null, $p1 = null) {
@@ -49,9 +56,9 @@ namespace effcore {
       if ($type === 'blockquote' && static::_node_type_get($last_element) !== 'blockquote') return $last_list->child_insert(static::_get_markup_blockquote($data));
       if ($type === 'p'          && static::_node_type_get($last_element) !== 'p'         ) return $last_list->child_insert(static::_get_markup_paragraph($data));
       if ($type === '_text'      && static::_node_type_get($last_element) !== '_text'     ) return $last_list->child_insert(new text($data));
-      if (                          static::_node_type_get($last_element) === '_code'     ) return static::_text_process__insert_line($last_element->child_select('code')->child_select('text'), $data, false, true);
-      if (                          static::_node_type_get($last_element) === 'blockquote') return static::_text_process__insert_line($last_element->child_select('text'), $data);
-      if (                          static::_node_type_get($last_element) === 'p'         ) return static::_text_process__insert_line($last_element->child_select('text'), $data);
+      if (                          static::_node_type_get($last_element) === '_code'     ) return static::_text_process__insert_line($last_element, $data, false, true);
+      if (                          static::_node_type_get($last_element) === 'blockquote') return static::_text_process__insert_line($last_element, $data);
+      if (                          static::_node_type_get($last_element) === 'p'         ) return static::_text_process__insert_line($last_element, $data);
       if (                          static::_node_type_get($last_element) === '_text'     ) return static::_text_process__insert_line($last_element, $data);
     }
   }
@@ -308,7 +315,7 @@ namespace effcore {
 
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
-          static::_text_process__insert_line($c_last_item->child_select('text'), $c_matches['return']);
+          static::_text_process__insert_line($c_last_item, $c_matches['return']);
           continue;
         }
 
@@ -336,13 +343,13 @@ namespace effcore {
 
       # case: blockquote|text
         if ($c_last_type === 'blockquote') {
-          static::_text_process__insert_line($c_last_item->child_select('text'), $c_string);
+          static::_text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
       # case: p|text
         if ($c_last_type === 'p') {
-          static::_text_process__insert_line($c_last_item->child_select('text'), $c_string);
+          static::_text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
@@ -385,7 +392,7 @@ namespace effcore {
 
       # case: pre|nl
         if ($c_last_type === '_code') {
-          static::_text_process__insert_line($c_last_item->child_select('code')->child_select('text'), '', false);
+          static::_text_process__insert_line($c_last_item, '', false);
           continue;
         }
 
@@ -414,7 +421,7 @@ namespace effcore {
 
       # case: pre|pre
         if ($c_last_type === '_code') {
-          static::_text_process__insert_line($c_last_item->child_select('code')->child_select('text'), $c_matches['spaces'].$c_matches['return'], false, true);
+          static::_text_process__insert_line($c_last_item, $c_matches['spaces'].$c_matches['return'], false, true);
           continue;
         }
 
