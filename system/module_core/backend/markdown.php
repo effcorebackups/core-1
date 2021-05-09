@@ -25,7 +25,7 @@ namespace effcore {
     return $type; # _text|_delimiter|_code|_list|_header|p|blockquote|hr|null
   }
 
-  static function _text_process__insert_line($element, $new_text, $with_br = true, $encode = false) {
+  static function text_process__insert_line($element, $new_text, $with_br = true, $encode = false) {
     $text_object = null;
     if (static::node_type_get($element) === '_code'     ) $text_object = $element->child_select('code')->child_select('text');
     if (static::node_type_get($element) === 'blockquote') $text_object = $element->child_select('text');
@@ -36,41 +36,41 @@ namespace effcore {
       if ($encode     ) $new_text = htmlspecialchars($new_text);
       if ($text === '') $text =          $new_text;
       if ($text !== '') $text = $text.nl.$new_text;
-      if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::_get_markup_br()->render().nl, $text);
+      if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::markup_br_get()->render().nl, $text);
       $text_object->text_update($text);
       return $text_object;
     }
   }
 
-  static function _list_process__insert_data($list, $data, $type = null, $cur_depth = null, $p1 = null) {
+  static function list_process__insert_data($list, $data, $type = null, $cur_depth = null, $p1 = null) {
     $max_depth = count($list->_pointers);
     if ($cur_depth !== null && !empty($list->_pointers[$cur_depth])) $container = $list->_pointers[$cur_depth];
     if ($cur_depth === null && !empty($list->_pointers[$max_depth])) $container = $list->_pointers[$max_depth];
     if (isset($container)) $last_list = $container->child_select_last();
     if (isset($last_list)) {
       $last_element = $last_list->child_select_last();
-      if ($type === 'hr'                                                                 ) return $last_list->child_insert(static::_get_markup_hr());
-      if ($type === '_delimiter'                                                         ) return $last_list->child_insert(static::_get_delimiter());
-      if ($type === '_header'                                                            ) return $last_list->child_insert(static::_get_markup_header($data, $p1));
-      if ($type === '_code'      && static::node_type_get($last_element) !== '_code'     ) return $last_list->child_insert(static::_get_markup_code($data));
-      if ($type === 'blockquote' && static::node_type_get($last_element) !== 'blockquote') return $last_list->child_insert(static::_get_markup_blockquote($data));
-      if ($type === 'p'          && static::node_type_get($last_element) !== 'p'         ) return $last_list->child_insert(static::_get_markup_paragraph($data));
+      if ($type === 'hr'                                                                 ) return $last_list->child_insert(static::markup_hr_get());
+      if ($type === '_delimiter'                                                         ) return $last_list->child_insert(static::delimiter_get());
+      if ($type === '_header'                                                            ) return $last_list->child_insert(static::markup_header_get($data, $p1));
+      if ($type === '_code'      && static::node_type_get($last_element) !== '_code'     ) return $last_list->child_insert(static::markup_code_get($data));
+      if ($type === 'blockquote' && static::node_type_get($last_element) !== 'blockquote') return $last_list->child_insert(static::markup_blockquote_get($data));
+      if ($type === 'p'          && static::node_type_get($last_element) !== 'p'         ) return $last_list->child_insert(static::markup_paragraph_get($data));
       if ($type === '_text'      && static::node_type_get($last_element) !== '_text'     ) return $last_list->child_insert(new text($data));
-      if (                          static::node_type_get($last_element) === '_code'     ) return static::_text_process__insert_line($last_element, $data, false, true);
-      if (                          static::node_type_get($last_element) === 'blockquote') return static::_text_process__insert_line($last_element, $data);
-      if (                          static::node_type_get($last_element) === 'p'         ) return static::_text_process__insert_line($last_element, $data);
-      if (                          static::node_type_get($last_element) === '_text'     ) return static::_text_process__insert_line($last_element, $data);
+      if (                          static::node_type_get($last_element) === '_code'     ) return static::text_process__insert_line($last_element, $data, false, true);
+      if (                          static::node_type_get($last_element) === 'blockquote') return static::text_process__insert_line($last_element, $data);
+      if (                          static::node_type_get($last_element) === 'p'         ) return static::text_process__insert_line($last_element, $data);
+      if (                          static::node_type_get($last_element) === '_text'     ) return static::text_process__insert_line($last_element, $data);
     }
   }
 
-  static function _list_process__select_last_element($list) {
+  static function list_process__select_last_element($list) {
     $last_container = $list->_pointers[count($list->_pointers)];
     $last_list      = $last_container->child_select_last();
     $last_element   = $last_list     ->child_select_last();
     return $last_element;
   }
 
-  static function _list_process__delete_pointers($list, $from) {
+  static function list_process__delete_pointers($list, $from) {
     foreach ($list->_pointers as $c_depth => $c_pointer) {
       if ($c_depth > $from) {
         unset($list->_pointers[$c_depth]);
@@ -78,28 +78,28 @@ namespace effcore {
     }
   }
 
-  static function _get_markup_hr() {
+  static function markup_hr_get() {
     return new markup_simple('hr');
   }
 
-  static function _get_markup_br() {
+  static function markup_br_get() {
     return new markup_simple('br');
   }
 
-  static function _get_markup_header($data, $size = 1) {
+  static function markup_header_get($data, $size = 1) {
     return new markup('h'.$size, [], trim($data, ' #'));
   }
 
-  static function _get_markup_list_container($is_numbered = false) {
+  static function markup_list_container_get($is_numbered = false) {
     if ($is_numbered) return new markup('ol');
     else              return new markup('ul');
   }
 
-  static function _get_markup_list() {
+  static function markup_list_get() {
     return new markup('li');
   }
 
-  static function _get_markup_code($data) {
+  static function markup_code_get($data) {
     return new markup('pre', [], [
       'code' => new markup('code', [], [
         'text' => new text(htmlspecialchars($data))
@@ -107,19 +107,19 @@ namespace effcore {
     );
   }
 
-  static function _get_markup_blockquote($data) {
+  static function markup_blockquote_get($data) {
     return new markup('blockquote', [], [
       'text' => new text($data)
     ]);
   }
 
-  static function _get_markup_paragraph($data) {
+  static function markup_paragraph_get($data) {
     return new markup('p', [], [
       'text' => new text($data)
     ]);
   }
 
-  static function _get_delimiter() {
+  static function delimiter_get() {
     return new node();
   }
 
@@ -160,7 +160,7 @@ namespace effcore {
 
       # case: markup|markup
         if ($c_last_type === '_text') {
-          static::_text_process__insert_line($c_last_item, $c_string);
+          static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
@@ -185,19 +185,19 @@ namespace effcore {
 
       # case: list|hr
         if ($c_last_type === '_list' && $c_indent > 1) {
-          $c_last_list_element = static::_list_process__select_last_element($c_last_item);
+          $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::_list_process__insert_data($c_last_item,                                                     trim($c_string), 'hr', $c_cur_depth - 1); continue;}
-          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::_list_process__insert_data($c_last_item,                                                     trim($c_string), 'hr'  );                 continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code');                continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code');                continue;}
-          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text');                continue;}
+          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item,                                                     trim($c_string), 'hr', $c_cur_depth - 1); continue;}
+          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item,                                                     trim($c_string), 'hr'  );                 continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code');                continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code');                continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text');                continue;}
         }
 
       # case: !list|hr
         if ($c_indent < 4) {
-          $pool->child_insert(static::_get_markup_hr());
+          $pool->child_insert(static::markup_hr_get());
           continue;
         }
 
@@ -225,7 +225,7 @@ namespace effcore {
         if ($c_last_type === 'p') {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
-          $pool->child_insert(static::_get_markup_header($c_text, $c_size));
+          $pool->child_insert(static::markup_header_get($c_text, $c_size));
           continue;
         }
 
@@ -245,19 +245,19 @@ namespace effcore {
 
       # case: list|header
         if ($c_last_type === '_list' && $c_indent > 1) {
-          $c_last_list_element = static::_list_process__select_last_element($c_last_item);
+          $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::_list_process__insert_data($c_last_item, $c_matches['return'], '_header', $c_cur_depth - 1, $c_size);                   continue;}
-          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::_list_process__insert_data($c_last_item, $c_matches['return'], '_header', null,             $c_size);                   continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
-          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text'); continue;}
+          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', $c_cur_depth - 1, $c_size);                   continue;}
+          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', null,             $c_size);                   continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text'); continue;}
         }
 
       # case: !list|header
         if ($c_indent < 4) {
-          $pool->child_insert(static::_get_markup_header($c_matches['return'], $c_size));
+          $pool->child_insert(static::markup_header_get($c_matches['return'], $c_size));
           continue;
         }
 
@@ -280,7 +280,7 @@ namespace effcore {
 
       # create new list container (ol|ul)
         if ($c_last_type !== '_list' && $c_indent < 4) {
-          $c_last_item = static::_get_markup_list_container($c_matches['dot']);
+          $c_last_item = static::markup_list_container_get($c_matches['dot']);
           $c_last_item->_pointers[1] = $c_last_item;
           $c_last_item->_indent = $c_indent;
           $c_last_type = '_list';
@@ -297,7 +297,7 @@ namespace effcore {
         # create new list sub container (ol|ul)
           if (empty($c_last_item->_pointers[$c_cur_depth - 0]) === true &&
               empty($c_last_item->_pointers[$c_cur_depth - 1]) !== true) {
-            $new_container = static::_get_markup_list_container($c_matches['dot']);
+            $new_container = static::markup_list_container_get($c_matches['dot']);
             $prn_container = $c_last_item->_pointers[$c_cur_depth - 1];
             $prn_last_list = $prn_container->child_select_last();
             if ($prn_last_list) {
@@ -307,12 +307,12 @@ namespace effcore {
           }
 
         # delete old pointers to list containers (ol|ul)
-          static::_list_process__delete_pointers($c_last_item, $c_cur_depth);
+          static::list_process__delete_pointers($c_last_item, $c_cur_depth);
 
         # insert new list item (li)
           if (!empty($c_last_item->_pointers[$c_cur_depth])) {
-            $c_last_item->_pointers[$c_cur_depth]->child_insert(static::_get_markup_list());
-            static::_list_process__insert_data($c_last_item, $c_matches['return'], '_text', $c_cur_depth);
+            $c_last_item->_pointers[$c_cur_depth]->child_insert(static::markup_list_get());
+            static::list_process__insert_data($c_last_item, $c_matches['return'], '_text', $c_cur_depth);
           }
 
         }
@@ -330,25 +330,25 @@ namespace effcore {
 
       # case: list|blockquote
         if ($c_last_type === '_list' && $c_indent > 1) {
-          $c_last_list_element = static::_list_process__select_last_element($c_last_item);
+          $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::_list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote', $c_cur_depth - 1); continue;}
-          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::_list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote');                   continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
-          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_text'      );                  continue;}
+          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote', $c_cur_depth - 1); continue;}
+          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote');                   continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_text'      );                  continue;}
         }
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
-          $pool->child_insert(static::_get_markup_blockquote($c_matches['return']));
+          $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
           continue;
         }
 
       # case: blockquote|blockquote
         if ($c_last_type === 'blockquote') {
-          static::_text_process__insert_line($c_last_item, $c_matches['return']);
+          static::text_process__insert_line($c_last_item, $c_matches['return']);
           continue;
         }
 
@@ -362,39 +362,39 @@ namespace effcore {
 
       # case: markup|text
         if ($c_last_type === '_text') {
-          static::_text_process__insert_line($c_last_item, $c_string);
+          static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
       # case: list|text
         if ($c_last_type === '_list') {
-          $c_last_list_element = static::_list_process__select_last_element($c_last_item);
+          $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) === 'p'    ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p'    ); continue;}
-          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) === '_code') {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' '), '_code'); continue;}
-          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) !== 'p'    ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), '_text'); continue;}
-          if ($c_indent > 1 && $c_cur_depth - $c_max_depth  <  2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p', $c_cur_depth - 1); static::_list_process__delete_pointers($c_last_item, $c_cur_depth - 1); continue;}
-          if ($c_indent > 1 && $c_cur_depth - $c_max_depth === 2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::_list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p'    ); continue;}
-          if ($c_indent > 1 && $c_cur_depth - $c_max_depth  >  2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::_list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' '), '_code'); continue;}
-          if ($c_indent < 2                                      && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {$pool->child_insert(static::_get_markup_paragraph(ltrim($c_string, ' '))); continue;}
+          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) === 'p'    ) {static::list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p'    ); continue;}
+          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) === '_code') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' '), '_code'); continue;}
+          if (                                                      static::node_type_get($c_last_list_element) !== '_delimiter' && static::node_type_get($c_last_list_element) !== 'p'    ) {static::list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), '_text'); continue;}
+          if ($c_indent > 1 && $c_cur_depth - $c_max_depth  <  2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p', $c_cur_depth - 1); static::list_process__delete_pointers($c_last_item, $c_cur_depth - 1); continue;}
+          if ($c_indent > 1 && $c_cur_depth - $c_max_depth === 2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::list_process__insert_data($c_last_item,                                                     ltrim($c_string, ' '), 'p'    ); continue;}
+          if ($c_indent > 1 && $c_cur_depth - $c_max_depth  >  2 && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).ltrim($c_string, ' '), '_code'); continue;}
+          if ($c_indent < 2                                      && static::node_type_get($c_last_list_element) === '_delimiter'                                                           ) {$pool->child_insert(static::markup_paragraph_get(ltrim($c_string, ' '))); continue;}
         }
 
       # case: blockquote|text
         if ($c_last_type === 'blockquote') {
-          static::_text_process__insert_line($c_last_item, $c_string);
+          static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
       # case: p|text
         if ($c_last_type === 'p') {
-          static::_text_process__insert_line($c_last_item, $c_string);
+          static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
 
       # cases: header|text, pre|text, hr|text, null|text
         if ($c_indent < 4) {
-          $pool->child_insert(static::_get_markup_paragraph(ltrim($c_string, ' ')));
+          $pool->child_insert(static::markup_paragraph_get(ltrim($c_string, ' ')));
           continue;
         }
 
@@ -408,7 +408,7 @@ namespace effcore {
 
       # case: markup|nl
         if ($c_last_type === '_text') {
-          static::_text_process__insert_line($c_last_item, '');
+          static::text_process__insert_line($c_last_item, '');
           continue;
         }
 
@@ -424,25 +424,25 @@ namespace effcore {
 
       # case: list|nl
         if ($c_last_type === '_list') {
-          static::_list_process__insert_data($c_last_item, null, '_delimiter');
+          static::list_process__insert_data($c_last_item, null, '_delimiter');
           continue;
         }
 
       # case: blockquote|nl
         if ($c_last_type === 'blockquote') {
-          $pool->child_insert(static::_get_delimiter());
+          $pool->child_insert(static::delimiter_get());
           continue;
         }
 
       # case: pre|nl
         if ($c_last_type === '_code') {
-          static::_text_process__insert_line($c_last_item, '', false);
+          static::text_process__insert_line($c_last_item, '', false);
           continue;
         }
 
       # case: p|nl
         if ($c_last_type === 'p') {
-          $pool->child_insert(static::_get_delimiter());
+          $pool->child_insert(static::delimiter_get());
           continue;
         }
 
@@ -460,13 +460,13 @@ namespace effcore {
 
       # case: !pre|pre
         if ($c_last_type !== '_code') {
-          $pool->child_insert(static::_get_markup_code($c_matches['spaces'].$c_matches['return']));
+          $pool->child_insert(static::markup_code_get($c_matches['spaces'].$c_matches['return']));
           continue;
         }
 
       # case: pre|pre
         if ($c_last_type === '_code') {
-          static::_text_process__insert_line($c_last_item, $c_matches['spaces'].$c_matches['return'], false, true);
+          static::text_process__insert_line($c_last_item, $c_matches['spaces'].$c_matches['return'], false, true);
           continue;
         }
 
