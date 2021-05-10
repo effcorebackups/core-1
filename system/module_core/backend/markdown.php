@@ -187,7 +187,7 @@ namespace effcore {
           }
         }
 
-      # case: hr|text
+      # case: markup|hr
         if ($c_last_type === '_text') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
@@ -261,6 +261,12 @@ namespace effcore {
 
         $c_size = strlen($c_matches['marker']);
 
+      # case: markup|header
+        if ($c_last_type === '_text') {
+          static::text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
+
       # case: list|header
         if ($c_last_type === '_list' && $c_indent > 1) {
           $c_last_list_element = static::list_process__select_last_element($c_last_item);
@@ -290,6 +296,12 @@ namespace effcore {
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
+
+      # case: markup|list
+        if ($c_last_type === '_text') {
+          static::text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
 
       # case: !list|code
         if ($c_last_type !== '_list' && $c_indent > 3) {
