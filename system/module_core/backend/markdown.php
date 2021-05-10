@@ -134,9 +134,9 @@ namespace effcore {
   # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
   # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
 
-  static function markdown_to_markup($markdown) {
+  static function markdown_to_markup($data) {
     $pool = new node;
-    $strings = explode(nl, $markdown);
+    $strings = explode(nl, $data);
     foreach ($strings as $c_number => $c_string) {
       $c_string    = str_replace(tb, '    ', $c_string);
       $c_indent    = strspn($c_string, ' ');

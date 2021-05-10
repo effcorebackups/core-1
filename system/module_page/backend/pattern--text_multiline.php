@@ -20,14 +20,16 @@ namespace effcore {
     $this->weight               = $weight;
   }
 
-  function text_line_select($line)     {return $this->text[$line];}
-  function text_line_update($line, $new_text) {$this->text[$line] = $new_text;}
-  function text_line_append($line, $new_text) {$this->text[$line].= $new_text;}
+  function text_line_select($key)            {if (array_key_exists($key, $this->text)) return $this->text[$key];             else return null;}
+  function text_line_append($key, $new_text) {if (array_key_exists($key, $this->text))        $this->text[$key].= $new_text; else $this->text[$key] = $new_text;}
+  function text_line_update($key, $new_text) {$this->text[$key] = $new_text;}
+  function text_line_delete($key)            {unset($this->text[$key]);}
 
   function text_length()   {return strlen($this->render());}
   function text_select()   {return $this->text;}
   function text_update($new_text) {$this->text   = $new_text;}
   function text_append($new_line) {$this->text[] = $new_line; return count($this->text);}
+  function text_delete()          {$this->text   = [];}
 
   function render() {
     $result = [];
