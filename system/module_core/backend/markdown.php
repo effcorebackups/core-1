@@ -187,6 +187,12 @@ namespace effcore {
           }
         }
 
+      # case: hr|text
+        if ($c_last_type === '_text') {
+          static::text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
+
       # case: list|hr
         if ($c_last_type === '_list' && $c_indent > 1) {
           $c_last_list_element = static::list_process__select_last_element($c_last_item);
