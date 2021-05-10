@@ -25,8 +25,8 @@ namespace effcore {
   function text_line_update($key, $new_text) {$this->text[$key] = $new_text;}
   function text_line_delete($key)            {unset($this->text[$key]);}
 
-  function text_length()   {return strlen($this->render());}
-  function text_select()   {return $this->text;}
+  function text_length()          {return strlen($this->render());}
+  function text_select()          {return $this->text;}
   function text_update($new_text) {$this->text   = $new_text;}
   function text_append($new_line) {$this->text[] = $new_line; return count($this->text);}
   function text_delete()          {$this->text   = [];}
