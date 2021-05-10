@@ -229,6 +229,14 @@ namespace effcore {
           continue;
         }
 
+      # case: markup|header
+        if ($c_last_type === '_text') {
+          $c_last_line = $c_last_item->text_line_select($c_last_item->text_lines_count() - 1);
+                         $c_last_item->text_line_delete($c_last_item->text_lines_count() - 1);
+          $pool->child_insert(static::markup_header_get($c_last_line, $c_size));
+          continue;
+        }
+
       }
 
     # ─────────────────────────────────────────────────────────────────────

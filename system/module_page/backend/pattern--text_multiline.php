@@ -20,6 +20,7 @@ namespace effcore {
     $this->weight               = $weight;
   }
 
+  function text_lines_count()                {return count($this->text);}
   function text_line_select($key)            {if (array_key_exists($key, $this->text)) return $this->text[$key];             else return null;}
   function text_line_append($key, $new_text) {if (array_key_exists($key, $this->text))        $this->text[$key].= $new_text; else $this->text[$key] = $new_text;}
   function text_line_update($key, $new_text) {$this->text[$key] = $new_text;}
