@@ -352,6 +352,12 @@ namespace effcore {
           if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_text'      );                  continue;}
         }
 
+      # case: markup|blockquote
+        if ($c_last_type === '_text') {
+          static::text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
+
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
           $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
@@ -404,7 +410,7 @@ namespace effcore {
           continue;
         }
 
-      # cases: header|text, pre|text, hr|text, null|text
+      # default:
         if ($c_indent < 4) {
           $pool->child_insert(static::markup_paragraph_get(ltrim($c_string, ' ')));
           continue;
@@ -424,13 +430,27 @@ namespace effcore {
           continue;
         }
 
+      # case: blockquote|nl
+        if ($c_last_type === 'blockquote') {
+          $pool->child_insert(static::delimiter_get());
+          continue;
+        }
+
+      # case: p|nl
+        if ($c_last_type === 'p') {
+          $pool->child_insert(static::delimiter_get());
+          continue;
+        }
+
       # case: header|nl
         if ($c_last_type === '_header') {
+          $pool->child_insert(static::delimiter_get());
           continue;
         }
 
       # case: hr|nl
         if ($c_last_type === 'hr') {
+          $pool->child_insert(static::delimiter_get());
           continue;
         }
 
@@ -440,21 +460,9 @@ namespace effcore {
           continue;
         }
 
-      # case: blockquote|nl
-        if ($c_last_type === 'blockquote') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
       # case: pre|nl
         if ($c_last_type === '_code') {
           static::text_process__insert_line($c_last_item, '', false);
-          continue;
-        }
-
-      # case: p|nl
-        if ($c_last_type === 'p') {
-          $pool->child_insert(static::delimiter_get());
           continue;
         }
 
