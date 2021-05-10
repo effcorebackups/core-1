@@ -179,7 +179,7 @@ namespace effcore {
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
 
       # case: p|'---'
-        if ($c_last_type === 'p' && $c_matches['marker'][0] === '-') {
+        if ($c_last_type === 'p' && $c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
           goto element_header_setext;
         }
 
