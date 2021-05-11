@@ -133,6 +133,10 @@ namespace effcore {
     return $node;
   }
 
+  static function blockquote_hr_decode($data) {
+    return str_replace(['*', '-', '=', '_'], ['&#42;', '&#45;', '&#61', '&#95;'], $data);
+  }
+
   # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┬────────┐
   # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │ markup │
   # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╪════════╡
@@ -171,8 +175,7 @@ namespace effcore {
 
       # case: markup|markup
         if ($c_last_type === '_markup') {
-          static::text_process__insert_line($c_last_item, $c_string);
-          continue;
+          goto element_text;
         }
 
         continue;
@@ -197,19 +200,13 @@ namespace effcore {
           }
         }
 
-      # case: header|hr, hr|hr, code|hr, blockquote|hr, p|hr
-        if ($c_indent > 3) {
-          if ($c_last_type === '_header'   ) goto element_code;
-          if ($c_last_type === 'hr'        ) goto element_code;
-          if ($c_last_type === '_code'     ) goto element_code;
-          if ($c_last_type === 'blockquote') goto element_text;
-          if ($c_last_type === 'p'         ) goto element_text;
-        }
-
-      # case: markup|hr
-        if ($c_last_type === '_markup') {
-          goto element_text;
-        }
+      # case: markup|hr, header|hr, hr|hr, code|hr, blockquote|hr, p|hr
+        if ($c_last_type === '_markup'                    ) goto element_text;
+        if ($c_last_type === 'blockquote' && $c_indent > 3) goto element_text;
+        if ($c_last_type === '_header'    && $c_indent > 3) goto element_code;
+        if ($c_last_type === 'hr'         && $c_indent > 3) goto element_code;
+        if ($c_last_type === '_code'      && $c_indent > 3) goto element_code;
+        if ($c_last_type === 'p'          && $c_indent > 3) goto element_text;
 
       # case: list|hr
         if ($c_last_type === '_list' && $c_indent > 1) {
@@ -245,13 +242,14 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: blockquote|'---'
-        if ($c_last_type === 'blockquote') {
-          goto element_text;
-        }
-
-      # default:
-        if ($c_last_type === 'p' && $c_indent < 4) {
+        if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
+        if ($c_last_type === '_markup'                 ) {goto element_text;}
+        if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
+        if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
+        if ($c_last_type === 'p'       && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'p'       && $c_indent < 4) {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
           $pool->child_insert(static::markup_header_get($c_text, $c_size));
