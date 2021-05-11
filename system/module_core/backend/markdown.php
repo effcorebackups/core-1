@@ -208,8 +208,7 @@ namespace effcore {
 
       # case: markup|hr
         if ($c_last_type === '_markup') {
-          static::text_process__insert_line($c_last_item, $c_string);
-          continue;
+          goto element_text;
         }
 
       # case: list|hr
@@ -248,8 +247,7 @@ namespace effcore {
 
       # case: blockquote|'---'
         if ($c_last_type === 'blockquote') {
-          static::text_process__insert_line($c_last_item, trim($c_string));
-          continue;
+          goto element_text;
         }
 
       # default:
