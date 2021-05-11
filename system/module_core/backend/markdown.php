@@ -200,7 +200,7 @@ namespace effcore {
           }
         }
 
-      # case: markup|hr, header|hr, hr|hr, code|hr, blockquote|hr, p|hr
+      # case: markup|hr, blockquote|hr, header|hr, hr|hr, code|hr, p|hr
         if ($c_last_type === '_markup'                    ) goto element_text;
         if ($c_last_type === 'blockquote' && $c_indent > 3) goto element_text;
         if ($c_last_type === '_header'    && $c_indent > 3) goto element_code;
@@ -242,6 +242,7 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
+      # case: blockquote|header, markup|header, header|header, hr|header, p|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
         if ($c_last_type === '_markup'                 ) {goto element_text;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
@@ -272,8 +273,7 @@ namespace effcore {
 
       # case: markup|header
         if ($c_last_type === '_markup') {
-          static::text_process__insert_line($c_last_item, $c_string);
-          continue;
+          goto element_text;
         }
 
       # case: list|header
@@ -306,16 +306,9 @@ namespace effcore {
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: markup|list
-        if ($c_last_type === '_markup') {
-          static::text_process__insert_line($c_last_item, $c_string);
-          continue;
-        }
-
-      # case: !list|code
-        if ($c_last_type !== '_list' && $c_indent > 3) {
-          goto element_code;
-        }
+      # case: markup|list, !list|code
+        if ($c_last_type === '_markup'               ) goto element_text;
+        if ($c_last_type !== '_list' && $c_indent > 3) goto element_code;
 
       # create new list container (ol|ul)
         if ($c_last_type !== '_list' && $c_indent < 4) {
@@ -381,19 +374,18 @@ namespace effcore {
 
       # case: markup|blockquote
         if ($c_last_type === '_markup') {
-          static::text_process__insert_line($c_last_item, $c_string);
+          goto element_text;
+        }
+
+      # case: blockquote|blockquote
+        if ($c_last_type === 'blockquote') {
+          static::text_process__insert_line($c_last_item, $c_matches['return']);
           continue;
         }
 
       # case: !blockquote|blockquote
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
           $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
-          continue;
-        }
-
-      # case: blockquote|blockquote
-        if ($c_last_type === 'blockquote') {
-          static::text_process__insert_line($c_last_item, $c_matches['return']);
           continue;
         }
 
@@ -452,47 +444,14 @@ namespace effcore {
 
       if (trim($c_string) === '') {
 
-      # case: markup|nl
-        if ($c_last_type === '_markup') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
-      # case: blockquote|nl
-        if ($c_last_type === 'blockquote') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
-      # case: p|nl
-        if ($c_last_type === 'p') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
-      # case: header|nl
-        if ($c_last_type === '_header') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
-      # case: hr|nl
-        if ($c_last_type === 'hr') {
-          $pool->child_insert(static::delimiter_get());
-          continue;
-        }
-
-      # case: list|nl
-        if ($c_last_type === '_list') {
-          static::list_process__insert_data($c_last_item, null, '_delimiter');
-          continue;
-        }
-
-      # case: pre|nl
-        if ($c_last_type === '_code') {
-          static::text_process__insert_line($c_last_item, '', false);
-          continue;
-        }
+      # case: markup|nl, blockquote|nl, p|nl, header|nl, hr|nl, list|nl, code|nl
+        if ($c_last_type === '_markup'   ) {$pool->child_insert(static::delimiter_get()); continue;}
+        if ($c_last_type === 'blockquote') {$pool->child_insert(static::delimiter_get()); continue;}
+        if ($c_last_type === 'p'         ) {$pool->child_insert(static::delimiter_get()); continue;}
+        if ($c_last_type === '_header'   ) {$pool->child_insert(static::delimiter_get()); continue;}
+        if ($c_last_type === 'hr'        ) {$pool->child_insert(static::delimiter_get()); continue;}
+        if ($c_last_type === '_list'     ) {static::list_process__insert_data($c_last_item, '', '_delimiter'); continue;}
+        if ($c_last_type === '_code'     ) {static::text_process__insert_line($c_last_item, '', false);        continue;}
 
       }
 
@@ -506,13 +465,13 @@ namespace effcore {
                        '(?<spaces>[ ]{0,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: !pre|pre
+      # case: !code|code
         if ($c_last_type !== '_code') {
           $pool->child_insert(static::markup_code_get($c_matches['spaces'].$c_matches['return']));
           continue;
         }
 
-      # case: pre|pre
+      # case: code|code
         if ($c_last_type === '_code') {
           static::text_process__insert_line($c_last_item, $c_matches['spaces'].$c_matches['return'], false, true);
           continue;
