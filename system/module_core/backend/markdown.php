@@ -198,6 +198,33 @@ namespace effcore {
           }
         }
 
+      # case: header|hr
+        if ($c_last_type === '_header' && $c_indent > 3) {
+          goto element_code;
+        }
+
+      # case: hr|hr
+        if ($c_last_type === 'hr' && $c_indent > 3) {
+          goto element_code;
+        }
+
+      # case: code|hr
+        if ($c_last_type === '_code' && $c_indent > 3) {
+          goto element_code;
+        }
+
+      # case: blockquote|hr
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {
+          static::text_process__insert_line($c_last_item, trim($c_string)); 
+          continue;
+        }
+
+      # case: p|hr
+        if ($c_last_type === 'p' && $c_indent > 3) {
+          static::text_process__insert_line($c_last_item, trim($c_string)); 
+          continue;
+        }
+
       # case: markup|hr
         if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
@@ -216,15 +243,10 @@ namespace effcore {
           if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text');                continue;}
         }
 
-      # case: !list|hr
+      # default:
         if ($c_indent < 4) {
           $pool->child_insert(static::markup_hr_get());
           continue;
-        }
-
-      # case: hr in code
-        if ($c_indent > 3) {
-          goto element_code;
         }
 
       }
