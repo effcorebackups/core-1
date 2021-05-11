@@ -211,10 +211,8 @@ namespace effcore {
         }
 
       # case: p|'---'
-        if ($c_last_type === 'p' && $c_indent < 4) {
-          if ($c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
-            goto element_header_setext;
-          }
+        if ($c_last_type === 'p' && $c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
+          goto element_header_setext;
         }
 
       # case: p|hr
@@ -255,7 +253,7 @@ namespace effcore {
 
       element_header_setext:
       $c_matches = [];
-      if (preg_match('%^(?<indent>[ ]{0,3})'.
+      if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[=]{1,}|'.
                                  '[-]{1,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
@@ -263,8 +261,19 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: p|header
-        if ($c_last_type === 'p') {
+      # case: blockquote|header
+        if ($c_last_type === 'blockquote') {
+          static::text_process__insert_line($c_last_item, trim($c_string));
+          continue;
+        }
+
+      # case: p|'---'
+        if ($c_last_type === 'p' && $c_indent > 3) {;
+          goto element_text;
+        }
+
+      # default:
+        if ($c_last_type === 'p' && $c_indent < 4) {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
           $pool->child_insert(static::markup_header_get($c_text, $c_size));
@@ -418,6 +427,7 @@ namespace effcore {
     # text
     # ─────────────────────────────────────────────────────────────────────
 
+      element_text:
       if (trim($c_string) !== '') {
 
       # case: markup|text
