@@ -199,11 +199,11 @@ namespace effcore {
 
       # case: header|hr, hr|hr, code|hr, blockquote|hr, p|hr
         if ($c_indent > 3) {
-          if ($c_last_type === '_header'   ) {goto element_code;}
-          if ($c_last_type === 'hr'        ) {goto element_code;}
-          if ($c_last_type === '_code'     ) {goto element_code;}
-          if ($c_last_type === 'blockquote') {static::text_process__insert_line($c_last_item, trim($c_string)); continue;}
-          if ($c_last_type === 'p'         ) {static::text_process__insert_line($c_last_item, trim($c_string)); continue;}
+          if ($c_last_type === '_header'   ) goto element_code;
+          if ($c_last_type === 'hr'        ) goto element_code;
+          if ($c_last_type === '_code'     ) goto element_code;
+          if ($c_last_type === 'blockquote') goto element_text;
+          if ($c_last_type === 'p'         ) goto element_text;
         }
 
       # case: markup|hr
