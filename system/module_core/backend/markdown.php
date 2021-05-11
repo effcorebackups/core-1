@@ -7,21 +7,21 @@
 namespace effcore {
           abstract class markdown {
 
-  static function node_type_get($node) {
+  static function node_type_get($element) {
     $type = null;
-    if ($node instanceof text         ) $type = '_text';
-    if ($node instanceof node         ) $type = '_delimiter';
-    if ($node instanceof markup_simple) $type = $node->tag_name;
-    if ($node instanceof markup       ) $type = $node->tag_name;
+    if ($element instanceof text                                  ) $type = '_text';
+    if ($element instanceof node && isset($element->markdown_type)) $type = $element->markdown_type;
+    if ($element instanceof markup_simple                         ) $type = $element->tag_name;
+    if ($element instanceof markup                                ) $type = $element->tag_name;
     if ($type === 'pre') $type = '_code';
-    if ($type === 'ul') $type = '_list';
-    if ($type === 'ol') $type = '_list';
-    if ($type === 'h1') $type = '_header';
-    if ($type === 'h2') $type = '_header';
-    if ($type === 'h3') $type = '_header';
-    if ($type === 'h4') $type = '_header';
-    if ($type === 'h5') $type = '_header';
-    if ($type === 'h6') $type = '_header';
+    if ($type === 'ul' ) $type = '_list';
+    if ($type === 'ol' ) $type = '_list';
+    if ($type === 'h1' ) $type = '_header';
+    if ($type === 'h2' ) $type = '_header';
+    if ($type === 'h3' ) $type = '_header';
+    if ($type === 'h4' ) $type = '_header';
+    if ($type === 'h5' ) $type = '_header';
+    if ($type === 'h6' ) $type = '_header';
     return $type; # _text|_delimiter|_code|_list|_header|p|blockquote|hr|null
   }
 
@@ -119,8 +119,16 @@ namespace effcore {
     ]);
   }
 
+  static function markup_markup_get($data) {
+    $text = new text($data);
+    $text->markdown_type = '_markup';
+    return $text;
+  }
+
   static function delimiter_get() {
-    return new node();
+    $node = new node;
+    $node->markdown_type = '_delimiter';
+    return $node;
   }
 
   # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
@@ -154,7 +162,7 @@ namespace effcore {
 
       # case: !markup|markup
         if ($c_last_type !== '_text') {
-          $pool->child_insert(new text($c_string));
+          $pool->child_insert(static::markup_markup_get($c_string));
           continue;
         }
 
