@@ -189,13 +189,6 @@ namespace effcore {
                                  '(?:[_][ ]{0,}){3,})'.
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
 
-      # case: header|hr, hr|hr, code|hr
-        if ($c_indent > 3) {
-          if ($c_last_type === '_header') goto element_code;
-          if ($c_last_type === 'hr'     ) goto element_code;
-          if ($c_last_type === '_code'  ) goto element_code;
-        }
-
       # case: p|'---'
         if ($c_last_type === 'p' && $c_indent < 4) {
           if ($c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
@@ -203,16 +196,13 @@ namespace effcore {
           }
         }
 
-      # case: blockquote|hr
-        if ($c_last_type === 'blockquote' && $c_indent > 3) {
-          static::text_process__insert_line($c_last_item, trim($c_string)); 
-          continue;
-        }
-
-      # case: p|hr
-        if ($c_last_type === 'p' && $c_indent > 3) {
-          static::text_process__insert_line($c_last_item, trim($c_string)); 
-          continue;
+      # case: header|hr, hr|hr, code|hr, blockquote|hr, p|hr
+        if ($c_indent > 3) {
+          if ($c_last_type === '_header'   ) {goto element_code;}
+          if ($c_last_type === 'hr'        ) {goto element_code;}
+          if ($c_last_type === '_code'     ) {goto element_code;}
+          if ($c_last_type === 'blockquote') {static::text_process__insert_line($c_last_item, trim($c_string)); continue;}
+          if ($c_last_type === 'p'         ) {static::text_process__insert_line($c_last_item, trim($c_string)); continue;}
         }
 
       # case: markup|hr
