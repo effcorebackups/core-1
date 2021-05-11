@@ -190,9 +190,10 @@ namespace effcore {
                        '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
 
       # case: p|'---'
-        if ($c_last_type === 'p' && $c_indent < 4) {
+        if ($c_last_type === 'p') {
           if ($c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
-            goto element_header_setext;
+            if ($c_indent < 4) goto element_header_setext;
+            if ($c_indent > 3) goto element_text;
           }
         }
 
@@ -249,11 +250,6 @@ namespace effcore {
         if ($c_last_type === 'blockquote') {
           static::text_process__insert_line($c_last_item, trim($c_string));
           continue;
-        }
-
-      # case: p|'---'
-        if ($c_last_type === 'p' && $c_indent > 3) {;
-          goto element_text;
         }
 
       # default:
