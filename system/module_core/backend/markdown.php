@@ -10,6 +10,7 @@ namespace effcore {
   static function node_type_get($element) {
     $type = null;
     if ($element instanceof text                                  ) $type = '_text';
+    if ($element instanceof text && isset($element->markdown_type)) $type = $element->markdown_type;
     if ($element instanceof node && isset($element->markdown_type)) $type = $element->markdown_type;
     if ($element instanceof markup_simple                         ) $type = $element->tag_name;
     if ($element instanceof markup                                ) $type = $element->tag_name;
@@ -31,6 +32,7 @@ namespace effcore {
     if (static::node_type_get($element) === 'blockquote') $text_object = $element->child_select('text');
     if (static::node_type_get($element) === 'p'         ) $text_object = $element->child_select('text');
     if (static::node_type_get($element) === '_text'     ) $text_object = $element;
+    if (static::node_type_get($element) === '_markup'   ) $text_object = $element;
     if ($text_object) {
       $text = $text_object->text_select();
       if ($encode     ) $new_text = htmlspecialchars($new_text);
@@ -162,13 +164,13 @@ namespace effcore {
                        '(?<return>[<][/]{0,1}[a-z0-9\\-]{1,}[>].*)$%S', $c_string, $c_matches)) {
 
       # case: !markup|markup
-        if ($c_last_type !== '_text') {
+        if ($c_last_type !== '_markup') {
           $pool->child_insert(static::markup_markup_get($c_string));
           continue;
         }
 
       # case: markup|markup
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -197,7 +199,7 @@ namespace effcore {
         }
 
       # case: markup|hr
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -240,12 +242,6 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: markup|header
-        if ($c_last_type === '_text') {
-          static::text_process__insert_line($c_last_item, $c_string);
-          continue;
-        }
-
       # case: p|header
         if ($c_last_type === 'p') {
           $c_text = $c_last_item->child_select('text')->text_select();
@@ -269,7 +265,7 @@ namespace effcore {
         $c_size = strlen($c_matches['marker']);
 
       # case: markup|header
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -305,7 +301,7 @@ namespace effcore {
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
       # case: markup|list
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -378,7 +374,7 @@ namespace effcore {
         }
 
       # case: markup|blockquote
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -404,7 +400,7 @@ namespace effcore {
       if (trim($c_string) !== '') {
 
       # case: markup|text
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           static::text_process__insert_line($c_last_item, $c_string);
           continue;
         }
@@ -450,7 +446,7 @@ namespace effcore {
       if (trim($c_string) === '') {
 
       # case: markup|nl
-        if ($c_last_type === '_text') {
+        if ($c_last_type === '_markup') {
           $pool->child_insert(static::delimiter_get());
           continue;
         }
