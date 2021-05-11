@@ -131,16 +131,17 @@ namespace effcore {
     return $node;
   }
 
-  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┐
-  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │
-  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╡
-  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │
-  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │
-  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │
-  # │  paragraph ║ -      │ nl │ -       │ -          │ nl        │ nl      │
-  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │
-  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┘
+  # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┬────────┐
+  # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │ markup │
+  # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╪════════╡
+  # │     header ║ -      │ -  │ -       │ -          │ -         │ -       │ -      │
+  # │         hr ║ -      │ -  │ -       │ -          │ -         │ -       │ -      │
+  # │       list ║ -      │ -  │ element │ -          │ nl        │ element │ -      │
+  # │ blockquote ║ -      │ -  │ -       │ nl         │ nl        │ nl      │ -      │
+  # │  paragraph ║ -      │ nl │ -       │ -          │ nl        │ nl      │ -      │
+  # │       code ║ -      │ -  │ -       │ -          │ -         │ element │ -      │
+  # │     markup ║ nl     │ nl │ nl      │ nl         │ nl        │ nl      │ -      │
+  # └────────────╨────────┴────┴─────────┴────────────┴───────────┴─────────┴────────┘
 
   static function markdown_to_markup($data) {
     $pool = new node;
@@ -238,6 +239,12 @@ namespace effcore {
 
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
+
+      # case: markup|header
+        if ($c_last_type === '_text') {
+          static::text_process__insert_line($c_last_item, $c_string);
+          continue;
+        }
 
       # case: p|header
         if ($c_last_type === 'p') {
