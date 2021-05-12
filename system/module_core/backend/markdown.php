@@ -200,12 +200,12 @@ namespace effcore {
         }
 
       # case: markup|hr, blockquote|hr, header|hr, hr|hr, code|hr, p|hr
-        if ($c_last_type === '_markup'                    ) goto element_text;
-        if ($c_last_type === 'blockquote' && $c_indent > 3) goto element_text;
-        if ($c_last_type === '_header'    && $c_indent > 3) goto element_code;
-        if ($c_last_type === 'hr'         && $c_indent > 3) goto element_code;
-        if ($c_last_type === '_code'      && $c_indent > 3) goto element_code;
-        if ($c_last_type === 'p'          && $c_indent > 3) goto element_text;
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
+        if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
 
       # case: list|hr
         if ($c_last_type === '_list' && $c_indent > 1) {
