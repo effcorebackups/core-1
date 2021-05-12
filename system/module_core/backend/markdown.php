@@ -373,30 +373,28 @@ namespace effcore {
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: markup|blockquote
-        if ($c_last_type === '_markup') {
-          goto element_text;
-        }
-
-      # case: blockquote|blockquote
-        if ($c_last_type === 'blockquote') {
-          static::text_process__insert_line($c_last_item, $c_matches['return']);
-          continue;
-        }
+      # case: markup|blockquote, p|blockquote, hr|blockquote, header|blockquote, code|blockquote
+        if ($c_last_type === '_markup'                 ) {$c_string = static::blockquote_meta_encode($c_string); goto element_text;}
+        if ($c_last_type === 'p'       && $c_indent > 3) {$c_string = static::blockquote_meta_encode($c_string); goto element_text;}
+        if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
 
       # case: list|blockquote
         if ($c_last_type === '_list' && $c_indent > 1) {
           $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote', $c_cur_depth - 1); continue;}
-          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item,                                                     $c_matches['return'],                      'blockquote');                   continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_code'      );                  continue;}
-          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).$c_matches['marker'].$c_matches['return'], '_text'      );                  continue;}
+          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item,                                                                                    $c_matches['return'],                       'blockquote', $c_cur_depth - 1); continue;}
+          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item,                                                                                    $c_matches['return'],                       'blockquote');                   continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                               $c_matches['marker'] .$c_matches['return'], '_code'     );                   continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                               $c_matches['marker'] .$c_matches['return'], '_code'     );                   continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).static::blockquote_meta_encode($c_matches['marker']).$c_matches['return'], '_text'     );                   continue;}
         }
 
       # default:
+        if ($c_indent > 3) {goto element_code;}
+        if ($c_last_type === 'blockquote' && $c_indent < 4) {$c_string = $c_matches['return']; goto element_text;}
         if ($c_last_type !== 'blockquote' && $c_indent < 4) {
           $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
           continue;
