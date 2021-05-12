@@ -201,7 +201,7 @@ namespace effcore {
           }
         }
 
-      # case: markup|hr, blockquote|hr, header|hr, hr|hr, code|hr, p|hr
+      # case: blockquote|hr, p|hr, header|hr, hr|hr, code|hr, markup|hr
         if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
         if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
@@ -244,17 +244,19 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: blockquote|header, markup|header, code|header, header|header, hr|header, p|header
+      # case: blockquote|header, markup|header, code|header, header|header, hr|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
         if ($c_last_type === '_markup'                 ) {goto element_text;}
         if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === 'p'       && $c_indent > 3) {goto element_text;}
         if ($c_last_type === '_code'   && $c_indent < 4) {goto element_text;}
         if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
         if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
-        if ($c_last_type === 'p'       && $c_indent < 4) {
+
+      # default:
+        if ($c_last_type === 'p' && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'p' && $c_indent < 4) {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
           $pool->child_insert(static::markup_header_get($c_text, $c_size));
