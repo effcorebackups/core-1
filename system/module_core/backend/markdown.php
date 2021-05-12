@@ -168,12 +168,8 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<return>[<][/]{0,1}[a-z0-9\\-]{1,}[>].*)$%S', $c_string, $c_matches)) {
 
-      # case: markup|markup
-        if ($c_last_type === '_markup') {
-          goto element_text;
-        }
-
       # default:
+        if ($c_last_type === '_markup') {goto element_text;}
         if ($c_last_type !== '_markup') {
           $pool->child_insert(static::markup_markup_get($c_string));
           continue;
@@ -247,6 +243,7 @@ namespace effcore {
       # case: blockquote|header, markup|header, code|header, header|header, hr|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_meta_encode($c_string); goto element_text;}
         if ($c_last_type === '_markup'                 ) {goto element_text;}
+        if ($c_last_type === 'p'       && $c_indent > 3) {goto element_text;}
         if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
@@ -255,8 +252,8 @@ namespace effcore {
         if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
 
       # default:
-        if ($c_last_type === 'p' && $c_indent > 3) {goto element_text;}
-        if ($c_last_type === 'p' && $c_indent < 4) {
+        if ($c_indent > 3) {goto element_code;}
+        if ($c_indent < 4 && $c_last_type === 'p') {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
           $pool->child_insert(static::markup_header_get($c_text, $c_size));
@@ -394,8 +391,8 @@ namespace effcore {
 
       # default:
         if ($c_indent > 3) {goto element_code;}
-        if ($c_last_type === 'blockquote' && $c_indent < 4) {$c_string = $c_matches['return']; goto element_text;}
-        if ($c_last_type !== 'blockquote' && $c_indent < 4) {
+        if ($c_indent < 4 && $c_last_type === 'blockquote') {$c_string = $c_matches['return']; goto element_text;}
+        if ($c_indent < 4 && $c_last_type !== 'blockquote') {
           $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
           continue;
         }
