@@ -406,10 +406,13 @@ namespace effcore {
       element_text:
       if (trim($c_string) !== '') {
 
-      # case: markup|text, blockquote|text, p|text
-        if ($c_last_type === '_markup'   ) {static::text_process__insert_line($c_last_item, $c_string); continue;}
-        if ($c_last_type === 'blockquote') {static::text_process__insert_line($c_last_item, $c_string); continue;}
-        if ($c_last_type === 'p'         ) {static::text_process__insert_line($c_last_item, $c_string); continue;}
+      # case: markup|text, blockquote|text, p|text, hr|text, header|text, code|text
+        if ($c_last_type === '_markup'                 ) {static::text_process__insert_line($c_last_item, $c_string); continue;}
+        if ($c_last_type === 'blockquote'              ) {static::text_process__insert_line($c_last_item, $c_string); continue;}
+        if ($c_last_type === 'p'                       ) {static::text_process__insert_line($c_last_item, $c_string); continue;}
+        if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
 
       # case: list|text
         if ($c_last_type === '_list') {
@@ -426,6 +429,7 @@ namespace effcore {
         }
 
       # default:
+        if ($c_indent > 3) {goto element_code;}
         if ($c_indent < 4) {
           $pool->child_insert(static::markup_paragraph_get(ltrim($c_string, ' ')));
           continue;
