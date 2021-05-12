@@ -244,16 +244,16 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: blockquote|header, markup|header, header|header, hr|header, p|header
+      # case: blockquote|header, markup|header, code|header, header|header, hr|header, p|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
         if ($c_last_type === '_markup'                 ) {goto element_text;}
         if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === '_code'   && $c_indent < 4) {goto element_text;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
         if ($c_last_type === 'p'       && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === '_code'   && $c_indent < 4) {goto element_text;}
+        if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
+        if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
         if ($c_last_type === 'p'       && $c_indent < 4) {
           $c_text = $c_last_item->child_select('text')->text_select();
           $pool->child_delete($pool->child_select_last_id());
@@ -276,10 +276,13 @@ namespace effcore {
 
         $c_size = strlen($c_matches['marker']);
 
-      # case: markup|header
-        if ($c_last_type === '_markup') {
-          goto element_text;
-        }
+      # case: markup|header, p|header, blockquote|header, hr|header, header|header, code|header
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
+        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
 
       # case: list|header
         if ($c_last_type === '_list' && $c_indent > 1) {
@@ -294,6 +297,7 @@ namespace effcore {
         }
 
       # default:
+        if ($c_indent > 3) {goto element_code;}
         if ($c_indent < 4) {
           $pool->child_insert(static::markup_header_get($c_matches['return'], $c_size));
           continue;
