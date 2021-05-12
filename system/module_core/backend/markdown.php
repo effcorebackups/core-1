@@ -166,7 +166,7 @@ namespace effcore {
       element_markup:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
-                       '(?<return>[<][/]{0,1}[a-z0-9\\-]{1,}[>].*)$%S', $c_string, $c_matches)) {
+                       '(?<return>[<][^>]{1,}[>].*)$%S', $c_string, $c_matches)) {
 
       # default:
         if ($c_last_type === '_markup') {goto element_text;}
