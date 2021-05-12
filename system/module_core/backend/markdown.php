@@ -194,18 +194,18 @@ namespace effcore {
       # case: p|'---'
         if ($c_last_type === 'p') {
           if ($c_matches['marker'][0] === '-' && strpbrk($c_matches['marker'], ' ') === false) {
-            if ($c_indent < 4) goto element_header_setext;
             if ($c_indent > 3) goto element_text;
+            if ($c_indent < 4) goto element_header_setext;
           }
         }
 
       # case: markup|hr, blockquote|hr, header|hr, hr|hr, code|hr, p|hr
         if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
-        if ($c_last_type === '_markup'                    ) {goto element_text;}
+        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
         if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
 
       # case: list|hr
         if ($c_last_type === '_list' && $c_indent > 1) {
@@ -220,6 +220,7 @@ namespace effcore {
         }
 
       # default:
+        if ($c_indent > 3) {goto element_code;}
         if ($c_indent < 4) {
           $pool->child_insert(static::markup_hr_get());
           continue;
@@ -354,6 +355,7 @@ namespace effcore {
     # blockquote
     # ─────────────────────────────────────────────────────────────────────
 
+      element_blockquote:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[>][ ]{0,1})'.
