@@ -163,6 +163,7 @@ namespace effcore {
     # markup
     # ─────────────────────────────────────────────────────────────────────
 
+      element_markup:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<return>[<][/]{0,1}[a-z0-9\\-]{1,}[>].*)$%S', $c_string, $c_matches)) {
@@ -184,6 +185,7 @@ namespace effcore {
     # hr
     # ─────────────────────────────────────────────────────────────────────
 
+      element_hr:
       $c_matches = [];
       if (preg_match('%^(?<indent>'.'[ ]{0,})'.
                        '(?<marker>(?:[*][ ]{0,}){3,}|'.
@@ -245,6 +247,8 @@ namespace effcore {
       # case: blockquote|header, markup|header, header|header, hr|header, p|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::blockquote_hr_decode($c_string); goto element_text;}
         if ($c_last_type === '_markup'                 ) {goto element_text;}
+        if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'   && $c_indent < 4) {goto element_text;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
@@ -263,6 +267,7 @@ namespace effcore {
     # header (atx-style)
     # ─────────────────────────────────────────────────────────────────────
 
+      element_header_atx:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[#]{1,6})'.
@@ -300,6 +305,7 @@ namespace effcore {
     # list
     # ─────────────────────────────────────────────────────────────────────
 
+      element_list:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<marker>[*+-]|[0-9]+(?<dot>[.]))'.
@@ -430,6 +436,7 @@ namespace effcore {
     # nl
     # ─────────────────────────────────────────────────────────────────────
 
+      element_nl:
       if (trim($c_string) === '') {
 
       # case: markup|nl, blockquote|nl, p|nl, header|nl, hr|nl, list|nl, code|nl
