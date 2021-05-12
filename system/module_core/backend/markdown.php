@@ -318,11 +318,16 @@ namespace effcore {
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: markup|list, !list|code
-        if ($c_last_type === '_markup'               ) goto element_text;
-        if ($c_last_type !== '_list' && $c_indent > 3) goto element_code;
+      # case: markup|list, blockquote|list, p|list, hr|list, header|list, code|list
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
 
-      # create new list container (ol|ul)
+      # default:
+        if ($c_last_type !== '_list' && $c_indent > 3) {goto element_code;}
         if ($c_last_type !== '_list' && $c_indent < 4) {
           $c_last_item = static::markup_list_container_get($c_matches['dot']);
           $c_last_item->_pointers[1] = $c_last_item;
@@ -332,12 +337,10 @@ namespace effcore {
         }
 
         if ($c_last_type === '_list') {
-
         # calculate depth
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
           if ($c_cur_depth < 1                                                    ) $c_cur_depth = 1;
           if ($c_cur_depth > 1 && empty($c_last_item->_pointers[$c_cur_depth - 1])) $c_cur_depth = count($c_last_item->_pointers) + 1;
-
         # create new list sub container (ol|ul)
           if (empty($c_last_item->_pointers[$c_cur_depth - 0]) === true &&
               empty($c_last_item->_pointers[$c_cur_depth - 1]) !== true) {
@@ -349,16 +352,13 @@ namespace effcore {
               $c_last_item->_pointers[$c_cur_depth] = $new_container;
             }
           }
-
         # delete old pointers to list containers (ol|ul)
           static::list_process__delete_pointers($c_last_item, $c_cur_depth);
-
         # insert new list item (li)
           if (!empty($c_last_item->_pointers[$c_cur_depth])) {
             $c_last_item->_pointers[$c_cur_depth]->child_insert(static::markup_list_get());
             static::list_process__insert_data($c_last_item, $c_matches['return'], '_text', $c_cur_depth);
           }
-
         }
         continue;
       }
