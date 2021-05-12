@@ -23,7 +23,7 @@ namespace effcore {
     if ($type === 'h4' ) $type = '_header';
     if ($type === 'h5' ) $type = '_header';
     if ($type === 'h6' ) $type = '_header';
-    return $type; # _text|_delimiter|_code|_list|_header|p|blockquote|hr|null
+    return $type; # blockquote, p, hr, _header, _list, _code, _markup, _text, _delimiter, null …
   }
 
   static function text_process__insert_line($element, $new_text, $with_br = true, $encode = false) {
@@ -185,11 +185,11 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
 
       $c_matches = [];
-      if (preg_match('%^(?<indent>[ ]{0,})'.
+      if (preg_match('%^(?<indent>'.'[ ]{0,})'.
                        '(?<marker>(?:[*][ ]{0,}){3,}|'.
                                  '(?:[-][ ]{0,}){3,}|'.
                                  '(?:[_][ ]{0,}){3,})'.
-                       '(?<spaces>[ ]{0,})$%S', $c_string, $c_matches)) {
+                       '(?<spaces>'.'[ ]{0,})$%S', $c_string, $c_matches)) {
 
       # case: p|'---'
         if ($c_last_type === 'p') {
