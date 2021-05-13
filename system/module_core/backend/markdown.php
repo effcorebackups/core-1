@@ -185,7 +185,7 @@ namespace effcore {
       element_markup:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
-                       '(?<return>[<](?<tag>[a-z0-9\\-]{1,})[^>]{0,}[>].*)$%S', $c_string, $c_matches)) {
+                       '(?<return>[<][/]{0,1}(?<tag>[a-z0-9\\-]{1,})[^>]{0,}[>].*)$%S', $c_string, $c_matches)) {
 
         if (substr($c_matches['tag'], 0, 2) === 'x-')
              $is_inline_tag = true;
@@ -519,16 +519,6 @@ namespace effcore {
 
     foreach ($pool->children_select_recursive() as $c_item) {
       switch (static::node_type_get($c_item)) {
-        case '_code':
-          $c_text_object = $c_item->child_select('code')->child_select('text');
-          if ($c_text_object) {
-            $c_text = $c_text_object->text_select();
-            $c_text = trim($c_text, nl);
-            $c_text_object->text_update(
-              $c_text
-            );
-          }
-          break;
         case 'blockquote':
           $c_text_object = $c_item->child_select('text');
           if ($c_text_object) {
@@ -540,6 +530,21 @@ namespace effcore {
                 $c_item->child_insert($c_new_child);
               }
             }
+          }
+          break;
+      }
+    }
+
+    foreach ($pool->children_select_recursive() as $c_item) {
+      switch (static::node_type_get($c_item)) {
+        case '_code':
+          $c_text_object = $c_item->child_select('code')->child_select('text');
+          if ($c_text_object) {
+            $c_text = $c_text_object->text_select();
+            $c_text = trim($c_text, nl);
+            $c_text_object->text_update(
+              $c_text
+            );
           }
           break;
       }
