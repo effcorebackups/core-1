@@ -191,6 +191,11 @@ namespace effcore {
              $is_inline_tag = true;
         else $is_inline_tag = isset($inline_tags[$c_matches['tag']]);
 
+        if ($c_last_type === '_code' && $c_indent > 3) {
+          goto element_code;
+        }
+
+      # *|markup
         if ($is_inline_tag) {
           goto element_text;
         }
@@ -509,7 +514,7 @@ namespace effcore {
     }
 
   # ─────────────────────────────────────────────────────────────────────
-  # recursive post process
+  # recursive post-process
   # ─────────────────────────────────────────────────────────────────────
 
     foreach ($pool->children_select_recursive() as $c_item) {
