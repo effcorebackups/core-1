@@ -664,7 +664,7 @@ namespace effcore {
   }
 
   static function sanitize_id($value, $corrector = '-') {
-    return preg_replace('%[^a-z0-9_\\-]%', $corrector, strtolower($value));
+    return preg_replace('%[^a-z0-9_\\-]%S', $corrector, strtolower($value));
   }
 
   static function sanitize_url($value) {

@@ -130,7 +130,7 @@ namespace effcore\modules\develop {
                         '(?:function)\\s'.
                         '(?<name>'.$c_refl_method->name.')\\s*\\('.
                         '(?<params>.*?|)\\)%s', $c_file->load(), $c_matches);
-            $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('%(\\$)([a-zA-Z_])%', '$2',
+            $c_defaults = isset($c_matches['params']) ? str_replace(' => ', ' = ', preg_replace('%(\\$)([a-zA-Z_])%S', '$2',
                                 $c_matches['params'])) : null;
             $c_name = ($c_defaults !== null) ?
               new text_simple($c_refl_method->name.' ('.$c_defaults.')') :
