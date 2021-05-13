@@ -80,6 +80,12 @@ namespace effcore {
     }
   }
 
+  static function delimiter_get() {
+    $node = new node;
+    $node->markdown_type = '_delimiter';
+    return $node;
+  }
+
   static function markup_hr_get() {
     return new markup_simple('hr');
   }
@@ -127,10 +133,22 @@ namespace effcore {
     return $text;
   }
 
-  static function delimiter_get() {
-    $node = new node;
-    $node->markdown_type = '_delimiter';
-    return $node;
+  static function markup_inline_tags_get() {
+    return [
+      'a', 'br', 'bdi', 'abbr', 'audio', 'applet', 'acronym', 'noscript',
+      'b', 'em', 'bdo', 'area', 'embed', 'button', 'command', 'progress',
+      'i', 'rp', 'big', 'cite', 'input', 'canvas', 'marquee', 'textarea',
+      'q', 'rt', 'del', 'code', 'label', 'keygen', 'noembed',
+      's', 'tt', 'dfn', 'font', 'meter', 'object',
+      'u',       'img', 'list', 'param', 'option',
+                 'ins', 'mark', 'small', 'output',
+                 'kbd', 'nobr', 'track', 'select',
+                 'map', 'ruby', 'video', 'source',
+                 'sub', 'samp',          'strike',
+                 'sup', 'span',          'strong',
+                 'var', 'time',
+                 'wbr',
+    ];
   }
 
   static function blockquote_meta_encode($data) {
@@ -152,6 +170,7 @@ namespace effcore {
   static function markdown_to_markup($data) {
     $pool = new node;
     $strings = explode(nl, $data);
+    $inline_tags = core::array_kmap(static::markup_inline_tags_get());
     foreach ($strings as $c_number => $c_string) {
       $c_string    = str_replace(tb, '    ', $c_string);
       $c_indent    = strspn($c_string, ' ');
@@ -166,7 +185,15 @@ namespace effcore {
       element_markup:
       $c_matches = [];
       if (preg_match('%^(?<indent>[ ]{0,})'.
-                       '(?<return>[<][^>]{1,}[>].*)$%S', $c_string, $c_matches)) {
+                       '(?<return>[<](?<tag>[a-z0-9\\-]{1,})[^>]{0,}[>].*)$%S', $c_string, $c_matches)) {
+
+        if (substr($c_matches['tag'], 0, 2) === 'x-')
+             $is_inline_tag = true;
+        else $is_inline_tag = isset($inline_tags[$c_matches['tag']]);
+
+        if ($is_inline_tag) {
+          goto element_text;
+        }
 
       # default:
         if ($c_last_type === '_markup') {goto element_text;}
