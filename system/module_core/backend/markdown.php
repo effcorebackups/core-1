@@ -38,7 +38,7 @@ namespace effcore {
       if ($encode     ) $new_text = htmlspecialchars($new_text);
       if ($text === '') $text =          $new_text;
       if ($text !== '') $text = $text.nl.$new_text;
-      if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%', static::markup_br_get()->render().nl, $text);
+      if ($with_br    ) $text = preg_replace('%[ ]+'.nl.'%S', static::markup_br_get()->render().nl, $text);
       $text_object->text_update($text);
       return $text_object;
     }
@@ -536,7 +536,8 @@ namespace effcore {
     }
 
     foreach ($pool->children_select_recursive() as $c_item) {
-      switch (static::node_type_get($c_item)) {
+      $c_item_type = static::node_type_get($c_item);
+      switch ($c_item_type) {
         case '_code':
           $c_text_object = $c_item->child_select('code')->child_select('text');
           if ($c_text_object) {
@@ -547,7 +548,22 @@ namespace effcore {
             );
           }
           break;
+        case '_text':
+          if ($c_prev_item_type === 'p'          ||
+              $c_prev_item_type === '_header'    ||
+              $c_prev_item_type === '_list'      ||
+              $c_prev_item_type === 'blockquote') {
+            $text = $c_item->text_select();
+            $text = preg_replace('%[*][*](?<phrase>.+?)[*][*]%S', (new markup('strong', [], '$1'))->render(), $text);
+            $text = preg_replace('%[_][_](?<phrase>.+?)[_][_]%S', (new markup('strong', [], '$1'))->render(), $text);
+            $text = preg_replace(   '%[*](?<phrase>.+?)[*]%S',    (new markup('em',     [], '$1'))->render(), $text);
+            $text = preg_replace(   '%[_](?<phrase>.+?)[_]%S',    (new markup('em',     [], '$1'))->render(), $text);
+            $c_item->text_update($text);
+          }
+          break;
       }
+      $c_prev_item      = $c_item;
+      $c_prev_item_type = $c_item_type;
     }
 
     return $pool;
