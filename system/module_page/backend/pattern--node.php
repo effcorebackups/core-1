@@ -42,9 +42,9 @@ namespace effcore {
   function children_select_recursive($children = null, $npath = '', $is_parent_at_last = false, $sort = false) {
     $result = [];
     foreach ($children ?: $this->children_select($sort) as $c_id => $c_child) {
-      $c_npath = $npath ? $npath.'/'.$c_id : $c_id;
+      $c_npath = $npath !== '' ? $npath.'/'.$c_id : $c_id;
       if ($is_parent_at_last === false) $result[$c_npath] = $c_child;
-      if (!empty($c_child->children))   $result          += $this->children_select_recursive($c_child->children_select($sort), $c_npath, $is_parent_at_last, $sort);
+      if ( !empty($c_child->children) ) $result          += $this->children_select_recursive($c_child->children_select($sort), $c_npath, $is_parent_at_last, $sort);
       if ($is_parent_at_last !== false) $result[$c_npath] = $c_child;
     }
     return $result;
