@@ -95,10 +95,6 @@ namespace effcore {
     return new markup_simple('br');
   }
 
-  static function markup_header_get($data, $size = 1) {
-    return new markup('h'.$size, [], trim($data, ' #'));
-  }
-
   static function markup_list_container_get($is_numbered = false) {
     if ($is_numbered) return new markup('ol');
     else              return new markup('ul');
@@ -106,6 +102,12 @@ namespace effcore {
 
   static function markup_list_get() {
     return new markup('li');
+  }
+
+  static function markup_header_get($data, $size = 1) {
+    return new markup('h'.$size, [], [
+      'text' => new text(trim($data, ' #'))
+    ]);
   }
 
   static function markup_code_get($data) {
