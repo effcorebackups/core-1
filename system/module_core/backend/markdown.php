@@ -549,15 +549,14 @@ namespace effcore {
           }
           break;
         case '_text':
-          if ($c_prev_item_type === 'p'          ||
-              $c_prev_item_type === '_header'    ||
-              $c_prev_item_type === '_list'      ||
+          if ($c_prev_item_type === 'p'       ||
+              $c_prev_item_type === '_header' ||
+              $c_prev_item_type === '_list'   ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
-            $text = preg_replace('%[*][*](?<phrase>.+?)[*][*]%S', (new markup('strong', [], '$1'))->render(), $text);
-            $text = preg_replace('%[_][_](?<phrase>.+?)[_][_]%S', (new markup('strong', [], '$1'))->render(), $text);
-            $text = preg_replace(   '%[*](?<phrase>.+?)[*]%S',    (new markup('em',     [], '$1'))->render(), $text);
-            $text = preg_replace(   '%[_](?<phrase>.+?)[_]%S',    (new markup('em',     [], '$1'))->render(), $text);
+          # note: "greedy mode" (?<phrase>.+?) is faster but "negation in the back-reference" (?<phrase>(?:(?!\\1).){1,}) can process strings like "***text***"
+            $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
+            $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
             $c_item->text_update($text);
           }
           break;
