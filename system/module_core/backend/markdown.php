@@ -158,6 +158,10 @@ namespace effcore {
     return str_replace(['*', '-', '=', '_', '>'], ['&#42;', '&#45;', '&#61', '&#95;', '&gt;'], $data);
   }
 
+  static function string_prepare($data) {
+    return str_replace([tb, '\\\\', '\\`', '\\*', '\\_', '\\{', '\\}', '\\[', '\\]', '\\(', '\\)', '\\#', '\\+', '\\-', '\\.', '\\!'], ['    ', '&#92;', '&#96;', '&#42;', '&#95', '&#123;', '&#125;', '&#91;', '&#93;', '&#40;', '&#41;', '&#35;', '&#43;', '&#45;', '&#46;', '&#33;'], $data);
+  }
+
   # ┌────────────╥────────┬────┬─────────┬────────────┬───────────┬─────────┬────────┐
   # │ separators ║ header │ hr │ list    │ blockquote │ paragraph │ code    │ markup │
   # ╞════════════╬════════╪════╪═════════╪════════════╪═══════════╪═════════╪════════╡
@@ -175,7 +179,7 @@ namespace effcore {
     $strings = explode(nl, $data);
     $inline_tags = core::array_kmap(static::markup_inline_tags_get());
     foreach ($strings as $c_number => $c_string) {
-      $c_string    = str_replace(tb, '    ', $c_string);
+      $c_string    = static::string_prepare($c_string);
       $c_indent    = strspn($c_string, ' ');
       $c_last_item = $pool->child_select_last();
       $c_last_type = static::node_type_get($c_last_item);
