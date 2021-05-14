@@ -554,9 +554,9 @@ namespace effcore {
               $c_prev_item_type === '_list'   ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
-          # note: "greedy mode" (?<phrase>.+?) is faster but "negation in the back-reference" (?<phrase>(?:(?!\\1).){1,}) can process strings like "***text***"
             $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
             $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
+            $text = preg_replace('%'.'(`)'      .'(?<phrase>[^`]{1,})'        .'`'     .'%sS', (new markup('code',   [], '$2'))->render(), $text);
             $c_item->text_update($text);
           }
           break;
