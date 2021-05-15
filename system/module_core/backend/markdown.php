@@ -430,7 +430,8 @@ namespace effcore {
 
       # default:
         if ($c_indent > 3) {goto element_code;}
-        if ($c_indent < 4 && $c_last_type === 'blockquote') {$c_string = $c_matches['return']; goto element_text;}
+        if ($c_indent < 4 && $c_last_type === 'blockquote' && trim($c_matches['return']) === '') {$c_last_item->child_select('text')->text_append(nl); continue;}
+        if ($c_indent < 4 && $c_last_type === 'blockquote' && trim($c_matches['return']) !== '') {$c_string = $c_matches['return']; goto element_text;}
         if ($c_indent < 4 && $c_last_type !== 'blockquote') {
           $pool->child_insert(static::markup_blockquote_get($c_matches['return']));
           continue;
