@@ -155,7 +155,7 @@ namespace effcore {
   }
 
   static function meta_encode($data) {
-    return str_replace(['*', '-', '=', '_', '>'], ['&#42;', '&#45;', '&#61', '&#95;', '&gt;'], $data);
+    return str_replace(['#', '*', '-', '=', '_', '>'], ['&#35;', '&#42;', '&#45;', '&#61', '&#95;', '&gt;'], $data);
   }
 
   static function string_prepare($data) {
@@ -236,9 +236,9 @@ namespace effcore {
           }
         }
 
-      # case: blockquote|hr, p|hr, header|hr, hr|hr, code|hr, markup|hr
-        if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
-        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+      # case: p|hr, blockquote|hr, header|hr, hr|hr, code|hr, markup|hr
+        if ($c_last_type === 'p'          && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {goto element_text;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
         if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
@@ -279,16 +279,16 @@ namespace effcore {
         if ($c_matches['marker'][0] === '=') $c_size = 1;
         if ($c_matches['marker'][0] === '-') $c_size = 2;
 
-      # case: blockquote|header, markup|header, code|header, header|header, hr|header
+      # case: blockquote|header, p|header, code|header, header|header, hr|header, markup|header
         if ($c_last_type === 'blockquote'              ) {$c_string = static::meta_encode($c_string); goto element_text;}
-        if ($c_last_type === '_markup'                 ) {goto element_text;}
-        if ($c_last_type === 'p'       && $c_indent > 3) {goto element_text;}
+        if ($c_last_type === 'p'       && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
+        if ($c_last_type === '_code'   && $c_indent < 4) {$c_string = static::meta_encode($c_string); goto element_text;}
+        if ($c_last_type === '_header' && $c_indent < 4) {$c_string = static::meta_encode($c_string); goto element_text;}
+        if ($c_last_type === 'hr'      && $c_indent < 4) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
-        if ($c_last_type === '_code'   && $c_indent < 4) {goto element_text;}
-        if ($c_last_type === '_header' && $c_indent < 4) {goto element_text;}
-        if ($c_last_type === 'hr'      && $c_indent < 4) {goto element_text;}
+        if ($c_last_type === '_markup'                 ) {goto element_text;}
 
       # default:
         if ($c_indent > 3) {goto element_code;}
@@ -314,24 +314,24 @@ namespace effcore {
 
         $c_size = strlen($c_matches['marker']);
 
-      # case: markup|header, p|header, blockquote|header, hr|header, header|header, code|header
-        if ($c_last_type === '_markup'                    ) {goto element_text;}
-        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+      # case: p|header, blockquote|header, hr|header, header|header, code|header, markup|header
+        if ($c_last_type === 'p'          && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === 'blockquote' && $c_indent > 3) {goto element_text;}
         if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
 
       # case: list|header
         if ($c_last_type === '_list' && $c_indent > 1) {
           $c_last_list_element = static::list_process__select_last_element($c_last_item);
           $c_max_depth = count($c_last_item->_pointers);
           $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
-          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', $c_cur_depth - 1, $c_size);                   continue;}
-          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', null,             $c_size);                   continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
-          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_code'); continue;}
-          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).trim($c_string), '_text'); continue;}
+          if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', $c_cur_depth - 1, $c_size);                                        continue;}
+          if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', null,             $c_size);                                        continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string),  '_code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string), ' _code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).static::meta_encode(trim($c_string)), '_text'); continue;}
         }
 
       # default:
@@ -354,13 +354,13 @@ namespace effcore {
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: markup|list, blockquote|list, p|list, hr|list, header|list, code|list
-        if ($c_last_type === '_markup'                    ) {goto element_text;}
-        if ($c_last_type === 'blockquote' && $c_indent > 3) {goto element_text;}
-        if ($c_last_type === 'p'          && $c_indent > 3) {goto element_text;}
+      # case: blockquote|list, p|list, hr|list, header|list, code|list, markup|list
+        if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
+        if ($c_last_type === 'p'          && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_markup'                    ) {goto element_text;}
 
       # default:
         if ($c_last_type !== '_list' && $c_indent > 3) {goto element_code;}
@@ -409,12 +409,12 @@ namespace effcore {
                        '(?<marker>[>][ ]{0,1})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: markup|blockquote, p|blockquote, hr|blockquote, header|blockquote, code|blockquote
-        if ($c_last_type === '_markup'                 ) {$c_string = static::meta_encode($c_string); goto element_text;}
+      # case: p|blockquote, hr|blockquote, header|blockquote, code|blockquote, markup|blockquote
         if ($c_last_type === 'p'       && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === 'hr'      && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header' && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'   && $c_indent > 3) {goto element_code;}
+        if ($c_last_type === '_markup'                 ) {goto element_text;}
 
       # case: list|blockquote
         if ($c_last_type === '_list' && $c_indent > 1) {
