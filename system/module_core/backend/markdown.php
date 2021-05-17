@@ -7,6 +7,9 @@
 namespace effcore {
           abstract class markdown {
 
+  const blockquote_max_depth = 25;
+  static protected $blockquote_cur_depth = 0;
+
   static function node_type_get($element) {
     $type = null;
     if ($element instanceof text                                  ) $type = '_text';
@@ -533,10 +536,12 @@ namespace effcore {
             $c_text = $c_text_object->text_select();
             $c_text = rtrim(trim($c_text, nl), ' ');
             if ($c_text) {
-              $c_item->child_delete('text');
-              foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
-                $c_item->child_insert($c_new_child);
-              }
+              static::$blockquote_cur_depth++;
+              if (static::$blockquote_cur_depth < static::blockquote_max_depth) {
+                $c_item->child_delete('text');
+                foreach (static::markdown_to_markup($c_text)->children_select() as $c_new_child) {
+                  $c_item->child_insert($c_new_child); }}
+              static::$blockquote_cur_depth--;
             }
           }
           break;
