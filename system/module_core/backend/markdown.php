@@ -597,11 +597,11 @@ namespace effcore {
               $c_prev_item_type === '_list_item' ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
-            $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
-            $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
-            $text = preg_replace('%'.'(`)'      .'(?<phrase>[^`]{1,})'        .'`'     .'%sS', (new markup('code',   [], '$2'))->render(), $text);
-            $text = preg_replace('%\\!\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?<url>[^ \\)"]{1,1024}|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
-            $text = preg_replace('%'.'\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?<url>[^ \\)"]{1,1024}|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
+            $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
+            $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
+            $text = preg_replace('%'.'(`)'      .'(?<phrase>[^`]'.     '{1,2048})'.'`'     .'%sS', (new markup('code',   [], '$2'))->render(), $text);
+            $text = preg_replace('%\\!\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
+            $text = preg_replace('%'.'\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
             $c_item->text_update($text);
           }
           break;
