@@ -565,6 +565,7 @@ namespace effcore {
             $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
             $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
             $text = preg_replace('%'.'(`)'      .'(?<phrase>[^`]{1,})'        .'`'     .'%sS', (new markup('code',   [], '$2'))->render(), $text);
+            $text = preg_replace('%\\['.'(?<text>[^\\]]{1,}|)'.'\\]'.'\\('.'(?<href>[^ \\)"]{1,}|)'.'(?:[ ]{0,}["](?<title>[^\\)]{1,})["]|)'.'\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))->render(), $text);
             $c_item->text_update($text);
           }
           break;
