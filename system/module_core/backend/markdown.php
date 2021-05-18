@@ -7,7 +7,7 @@
 namespace effcore {
           abstract class markdown {
 
-  const blockquote_max_depth = 25;
+  const blockquote_max_depth = 15;
   static protected $blockquote_cur_depth = 0;
   static protected $references = [];
 
@@ -597,12 +597,17 @@ namespace effcore {
               $c_prev_item_type === '_list_item' ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
-          # image|link
+          # image|link|email
             $text = preg_replace('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['title' => '$3', 'src'  => '$2',  'alt' => '$1']))->render(), $text);
             $text = preg_replace('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup       ('a',   ['title' => '$3', 'href' => '$2'], new text('$1')))->render(), $text);
             $text = preg_replace_callback('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,128})'.'\\]%S', function ($c_match) {$c_id = md5(strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new markup_simple('img', ['title' => static::$references[$c_id]->title, 'src'  => static::$references[$c_id]->url,  'alt' => $c_match['text']]))->render(); else return $c_match[0];}, $text);
             $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024})'. '\\]'.'\\['.                          '\\]%S', function ($c_match) {$c_id = md5(strtolower($c_match['text'])); if (isset(static::$references[$c_id])) return (new markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new text($c_match['text'])))->render(); else return $c_match[0];}, $text);
             $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,128})'.'\\]%S', function ($c_match) {$c_id = md5(strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new text($c_match['text'])))->render(); else return $c_match[0];}, $text);
+            $text = preg_replace_callback('%'.'\\<'.'(?<text>[^\\>\\n]{5,512})'.'\\>'.'%S', function ($c_match) {
+              if (core::validate_email($c_match['text'])) return (new markup('a', ['href' => 'mailto:'.$c_match['text']], new text($c_match['text'])))->render();
+              if (core::validate_url  ($c_match['text'])) return (new markup('a', ['href' =>           $c_match['text']], new text($c_match['text'])))->render();
+              return $c_match[0];
+            }, $text);
           # strong|em|code
             $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
             $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
