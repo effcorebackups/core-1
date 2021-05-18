@@ -560,10 +560,10 @@ namespace effcore {
               $c_prev_item_type === '_list_item' ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
-            $text = preg_replace_callback('%\\['.'(?<id>[^\\]]{1,128})'.'\\]'.'\\:'.
-                            '(?:[ ]{0,64}'.      '(?<url>[^ "]{1,1024})'.   '|)'.
-                            '(?:[ ]{0,64}'.'["]'.'(?<title>[^"]{1,512})'.'["]|)%S', function ($c_match) {
-              static::$references[$c_match['id']] = (object)[
+            $text = preg_replace_callback('%\\['.'(?<id>[^\\]\\n]{1,128})'.'\\]'.'\\:'.
+                            '(?:[ ]{0,64}'.      '(?<url>[^ "\\n]{1,1024})'.   '|)'.
+                            '(?:[ ]{0,64}'.'["]'.'(?<title>[^"\\n]{1,512})'.'["]|)%S', function ($c_match) {
+              static::$references[md5(strtolower($c_match['id']))] = (object)[
                 'url'   => array_key_exists('url',   $c_match) ? trim($c_match['url'  ]) : '',
                 'title' => array_key_exists('title', $c_match) ? trim($c_match['title']) : '',
               ];
@@ -597,11 +597,21 @@ namespace effcore {
               $c_prev_item_type === '_list_item' ||
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
+          # link|image
+            $text = preg_replace('%\\!\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
+            $text = preg_replace('%'.'\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
+            $text = preg_replace_callback('%\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]]{1,128})'.'\\]%S', function ($c_match) {
+              $c_id = md5(strtolower($c_match['id']));
+              if (isset(static::$references[$c_id]))
+                return (new markup('a', ['href' =>
+                  static::$references[$c_id]->url, 'title' =>
+                  static::$references[$c_id]->title], new text($c_match['text'])))->render();
+              else return $c_match[0];
+            }, $text);
+          # strong|em|code
             $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1\\1'.'%sS', (new markup('strong', [], '$2'))->render(), $text);
             $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1'   .'%sS', (new markup('em',     [], '$2'))->render(), $text);
             $text = preg_replace('%'.'(`)'      .'(?<phrase>[^`]'.     '{1,2048})'.'`'     .'%sS', (new markup('code',   [], '$2'))->render(), $text);
-            $text = preg_replace('%\\!\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
-            $text = preg_replace('%'.'\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
             $c_item->text_update($text);
           }
           break;
