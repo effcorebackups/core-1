@@ -60,6 +60,10 @@
   dl dd {margin: 0 0 0 210px; padding: 3px 0 3px 3px}
   dl dd:empty::after {content: 'x'; opacity: .3}
 
+  /* pre */
+
+  pre {margin: 20px}
+
   /* table */
 
   h1 + table {margin-top: 60px}
