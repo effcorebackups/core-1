@@ -598,9 +598,9 @@ namespace effcore {
               $c_prev_item_type === 'blockquote') {
             $text = $c_item->text_select();
           # link|image
-            $text = preg_replace('%\\!\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
-            $text = preg_replace('%'.'\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
-            $text = preg_replace_callback('%\\['.'(?<text>[^\\]]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]]{1,128})'.'\\]%S', function ($c_match) {
+            $text = preg_replace('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup_simple('img', ['alt' => '$1', 'src' => '$2', 'title' => '$3']))->render(), $text);
+            $text = preg_replace('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new markup('a', ['href' => '$2', 'title' => '$3'], new text('$1')))       ->render(), $text);
+            $text = preg_replace_callback('%\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,128})'.'\\]%S', function ($c_match) {
               $c_id = md5(strtolower($c_match['id']));
               if (isset(static::$references[$c_id]))
                 return (new markup('a', ['href' =>
