@@ -22,8 +22,8 @@
     display: block;
     margin: 0 auto;
     box-sizing: border-box;
-    min-width: %%_css_page_min_width_context{null}px;
-    max-width: %%_css_page_max_width_context{null}px}
+    min-width: %%_page_min_width_css_context{null}px;
+    max-width: %%_page_max_width_css_context{null}px}
 
   body[data-layout-id='original_classic'] [data-area-id='header'] {float: left}
   body[data-layout-id='original_classic'] [data-area-id='header']::after {content: none}
