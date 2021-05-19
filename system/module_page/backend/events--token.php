@@ -30,6 +30,19 @@ namespace effcore\modules\page {
         break;
     }
   # colors
+    if ($name === 'return_if_element_is_dark') {
+      if (count($args) === 3) {
+        $element_color_id = 'color__'.$args[0].'_id';
+        if (isset($settings->{$element_color_id})) {
+          $element_color = color::get($settings->{$element_color_id});
+          if ($element_color) {
+            if ($element_color->is_dark())
+                 return $args[1];
+            else return $args[2];
+          }
+        }
+      }
+    }
     if (substr($name, 0, 7) === 'color__') {
       $colors = color::get_all();
       $is_all_colors_available = color_preset::is_all_colors_available();

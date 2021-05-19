@@ -62,7 +62,7 @@
 
   /* pre */
 
-  pre {margin: 20px}
+  pre {padding: 20px}
 
   /* table */
 
