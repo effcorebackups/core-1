@@ -358,13 +358,21 @@ namespace effcore {
                        '(?<spaces>[ ]{1,})'.
                        '(?<return>.{0,})$%S', $c_string, $c_matches)) {
 
-      # case: blockquote|list, p|list, hr|list, header|list, code|list, markup|list
+      # case: blockquote|list, p|list, hr|list, header|list, code|list, markup|list, list|list
         if ($c_last_type === 'blockquote' && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === 'p'          && $c_indent > 3) {$c_string = static::meta_encode($c_string); goto element_text;}
         if ($c_last_type === 'hr'         && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_header'    && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_code'      && $c_indent > 3) {goto element_code;}
         if ($c_last_type === '_markup'                    ) {goto element_text;}
+        if ($c_last_type === '_list' && $c_indent > 1) {
+          $c_last_list_element = static::list_process__select_last_element($c_last_item);
+          $c_max_depth = count($c_last_item->_pointers);
+          $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string),  '_code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string),  '_code'); continue;}
+          if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).static::meta_encode(trim($c_string)), '_text'); continue;}
+        }
 
       # default:
         if ($c_last_type !== '_list' && $c_indent > 3) {goto element_code;}
