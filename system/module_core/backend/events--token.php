@@ -24,7 +24,6 @@ namespace effcore\modules\core {
         }
         break;
     }
-    return '';
   }
 
 }}
