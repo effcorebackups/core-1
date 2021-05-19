@@ -15,6 +15,7 @@ namespace effcore\modules\page {
   static function on_apply($name, $args = []) {
     $settings = module::settings_get('page');
     switch ($name) {
+      case 'page_id_context':        return page::get_current()->id;
       case 'thumbnail_small_width':  return $settings->thumbnail_small_width;
       case 'thumbnail_middle_width': return $settings->thumbnail_middle_width;
       case 'thumbnail_big_width':    return $settings->thumbnail_big_width;

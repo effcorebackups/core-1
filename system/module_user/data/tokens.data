@@ -17,9 +17,6 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
-- page_id_context
-    type: code
-    handler: \effcore\modules\user\events_token::on_apply
 - nickname_page_context
     type: code
     handler: \effcore\modules\user\events_token::on_apply
