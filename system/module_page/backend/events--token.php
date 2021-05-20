@@ -31,13 +31,15 @@ namespace effcore\modules\page {
         break;
     }
   # colors
-    if ($name === 'return_if_hex_color_in_token_is_dark') {
+    if ($name === 'return_if_token_color_is_dark') {
       if (count($args) === 3) {
         if (strpos($args[0], 'color__')        === 0 ||
             strpos($args[0], 'color_custom__') === 0) {
-          $hex_value = token::apply('%%_'.$args[0]);
-          if ($hex_value) {
-            $is_dark = (new color(null, null, $hex_value))->is_dark();
+          $value = token::apply('%%_'.$args[0]);
+          if ($value) {
+            if ( isset(color::named_colors[$value]) )
+              $value = color::named_colors[$value]['value_hex'];
+            $is_dark = (new color(null, null, $value))->is_dark();
             if ($is_dark !== null) {
               return $is_dark ? $args[1] :
                                 $args[2];

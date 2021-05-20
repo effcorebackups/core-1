@@ -29,7 +29,7 @@ tokens
 - page_max_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- return_if_hex_color_in_token_is_dark
+- return_if_token_color_is_dark
     type: code
     handler: \effcore\modules\page\events_token::on_apply
 # ─────────────────────────────────────────────────────────────────────

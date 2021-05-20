@@ -1,8 +1,10 @@
 
-  /* demo return_if_url_arg */
+  /* demo tokens */
 
   x-some-tag {
-    z-index: %%_return_if_url_arg{page_id|front|1|2};
+    %%_return_if_token_color_is_dark{color__page|/* 1 */|/* 2 */}
+    %%_return_if_token{color__page|transparent|/* 3 */|/* 4 */}
+    %%_return_if_url_arg{page_id|front|/* 5 */|/* 6 */}
   }
 
   /* console */
