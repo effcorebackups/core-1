@@ -53,7 +53,7 @@
   /* pre */
 
   body[data-layout-id='original_classic'] pre {
-    background-color: %%_return_if_element_is_dark{page|rgba(255,255,255,.1)|rgba(0,0,0,.1)}}
+    background-color: %%_return_if_hex_color_in_token_is_dark{color__page|rgba(255,255,255,.1)|rgba(0,0,0,.1)}}
 
   /* menu in area 'menu': orientation and dynamics */
 

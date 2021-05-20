@@ -9,6 +9,7 @@ namespace effcore\modules\page {
           use \effcore\color_preset;
           use \effcore\module;
           use \effcore\page;
+          use \effcore\token;
           use \effcore\url;
           abstract class events_token {
 
@@ -30,15 +31,17 @@ namespace effcore\modules\page {
         break;
     }
   # colors
-    if ($name === 'return_if_element_is_dark') {
+    if ($name === 'return_if_hex_color_in_token_is_dark') {
       if (count($args) === 3) {
-        $element_color_id = 'color__'.$args[0].'_id';
-        if (isset($settings->{$element_color_id})) {
-          $element_color = color::get($settings->{$element_color_id});
-          if ($element_color) {
-            if ($element_color->is_dark())
-                 return $args[1];
-            else return $args[2];
+        if (strpos($args[0], 'color__')        === 0 ||
+            strpos($args[0], 'color_custom__') === 0) {
+          $hex_value = token::apply('%%_'.$args[0]);
+          if ($hex_value) {
+            $is_dark = (new color(null, null, $hex_value))->is_dark();
+            if ($is_dark !== null) {
+              return $is_dark ? $args[1] :
+                                $args[2];
+            }
           }
         }
       }

@@ -169,17 +169,11 @@ namespace effcore {
 
   function rgb_get($is_int = true) {
     if (!empty($this->value_hex)) {
-      $value = ltrim($this->value_hex, '#');
       $parts = [];
-      if (strlen($value) === 3) {
-        $parts['r'] = $value[0].$value[0];
-        $parts['g'] = $value[1].$value[1];
-        $parts['b'] = $value[2].$value[2]; }
-      if (strlen($value) === 6) {
-        $parts['r'] = $value[0].$value[1];
-        $parts['g'] = $value[2].$value[3];
-        $parts['b'] = $value[4].$value[5]; }
-      if (count($parts) && $is_int === true) {
+      $value = ltrim($this->value_hex, '#');
+      if (strlen($value) === 3) {$parts['r'] = $value[0].$value[0]; $parts['g'] = $value[1].$value[1]; $parts['b'] = $value[2].$value[2];}
+      if (strlen($value) === 6) {$parts['r'] = $value[0].$value[1]; $parts['g'] = $value[2].$value[3]; $parts['b'] = $value[4].$value[5];}
+      if ($is_int && $parts) {
         $parts['r'] = (int)hexdec($parts['r']);
         $parts['g'] = (int)hexdec($parts['g']);
         $parts['b'] = (int)hexdec($parts['b']); }
