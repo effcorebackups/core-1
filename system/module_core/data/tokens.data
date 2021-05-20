@@ -2,6 +2,9 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
+- return_if_token
+    type: code
+    handler: \effcore\modules\core\events_token::on_apply
 - return_if_url_arg
     type: code
     handler: \effcore\modules\core\events_token::on_apply
