@@ -14,17 +14,14 @@ namespace effcore\modules\user {
     user::init(false);
     if (access::check((object)['roles' => ['registered' => 'registered']])) {
       switch ($name) {
-        case 'user_id'   : return     user::get_current()->id;
-        case 'nickname'  : return     user::get_current()->nickname;
-        case 'email'     : return     user::get_current()->email;
-        case 'avatar_url': return '/'.user::get_current()->avatar_path.'?thumb=small';
-        case 'nickname_page_context':
-          if (!empty($args[0])) {
-            return page::get_current()->args_get($args[0]);
-          }
+        case 'user_id'              : return user::get_current()->id;
+        case 'nickname'             : return user::get_current()->nickname;
+        case 'email'                : return user::get_current()->email;
+        case 'avatar_path'          : return user::get_current()->avatar_path;
+        case 'nickname_page_context': return page::get_current() && !empty($args[0]) ?
+                                             page::get_current()->args_get($args[0]) : null;
       }
     }
-    return '';
   }
 
 }}

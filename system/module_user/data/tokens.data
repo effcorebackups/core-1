@@ -11,7 +11,7 @@ tokens
 - nickname
     type: code
     handler: \effcore\modules\user\events_token::on_apply
-- avatar_url
+- avatar_path
     type: code
     handler: \effcore\modules\user\events_token::on_apply
 # ─────────────────────────────────────────────────────────────────────
