@@ -5,6 +5,7 @@
     %%_return_if_token{color__page|transparent|3|4}
     %%_return_if_url_arg{page_id|front|5|6}
     %%_return_translation{no items}
+    %%_return_translation{color ID = "\%\%_id" and value = "\%\%_value"|id=state_ok|value=#48be38}
     ───────────────────────────────────────────────────────────────────── */
 
   /* console */

@@ -11,8 +11,17 @@ namespace effcore\modules\locales {
   static function on_apply($name, $args = []) {
     switch ($name) {
       case 'return_translation':
-        if (count($args) > 0)
-          return translation::apply($args[0]);
+        if (count($args) === 1) return translation::apply($args[0]);
+        if (count($args)  >  1) {
+          $text = str_replace('\\%', '%', $args[0]);
+          $real_args = [];
+          for ($i = 1; $i < count($args); $i++) {
+            $c_result = explode('=', $args[$i]);
+            if (count($c_result) === 2)
+              $real_args[$c_result[0]] =
+                         $c_result[1]; }
+          return translation::apply($text, $real_args);
+        }
         break;
     }
   }
