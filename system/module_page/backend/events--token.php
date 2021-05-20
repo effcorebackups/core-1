@@ -48,7 +48,7 @@ namespace effcore\modules\page {
         }
       }
     }
-    if (substr($name, 0, 7) === 'color__') {
+    if (strpos($name, 'color__') === 0) {
       $colors = color::get_all();
       $is_all_colors_available = color_preset::is_all_colors_available();
       if ($name === 'color__page'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__page_id                   : 'default_1'    ];

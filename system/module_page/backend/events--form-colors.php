@@ -16,7 +16,7 @@ namespace effcore\modules\page {
     $settings = module::settings_get('page');
     foreach ($items as $c_item) {
       if ($c_item instanceof group_palette) {
-        if (substr($c_item->name_get_complex(), 0, 7) === 'color__') {
+        if (strpos($c_item->name_get_complex(), 'color__') === 0) {
           $c_item->value_set(
             $settings->{$c_item->name_get_complex()}
           );
@@ -31,7 +31,7 @@ namespace effcore\modules\page {
         $selected = [];
         foreach ($items as $c_item) {
           if ($c_item instanceof group_palette) {
-            if ( substr($c_item->name_get_complex(), 0, 7) === 'color__' ) {
+            if ( strpos($c_item->name_get_complex(), 'color__') === 0 ) {
               $selected[$c_item->name_get_complex()] = $c_item->value_get();
             }
           }

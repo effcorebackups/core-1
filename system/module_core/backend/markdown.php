@@ -198,7 +198,7 @@ namespace effcore {
       if (preg_match('%^(?<indent>[ ]{0,})'.
                        '(?<return>[<][/]{0,1}(?<tag>[a-z0-9\\-]{1,})[^>]{0,}[>].*)$%S', $c_string, $c_matches)) {
 
-        if (substr($c_matches['tag'], 0, 2) === 'x-')
+        if (strpos($c_matches['tag'], 'x-') === 0)
              $is_inline_tag = true;
         else $is_inline_tag = isset($inline_tags[$c_matches['tag']]);
 

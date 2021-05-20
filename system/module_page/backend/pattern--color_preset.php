@@ -48,7 +48,7 @@ namespace effcore {
     $colors = color::get_all();
     $settings = module::settings_get('page');
     foreach ($settings as $c_color_type => $c_color_id)
-      if (substr($c_color_type, 0, 7) === 'color__')
+      if (strpos($c_color_type, 'color__') === 0)
         $result&= !empty($colors[$c_color_id]);
     return $result;
   }
@@ -80,7 +80,7 @@ namespace effcore {
     $storage = storage::get('files');
     $settings = module::settings_get('page');
     foreach ($settings as $c_color_type => $c_color_id)
-      if (substr($c_color_type, 0, 7) === 'color__')
+      if (strpos($c_color_type, 'color__') === 0)
         $result&= $storage->changes_delete('page', 'update', 'settings/page/'.$c_color_type, false);
     if ($reset) storage_nosql_files::cache_update();
     return $result;

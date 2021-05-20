@@ -252,8 +252,8 @@ namespace effcore {
     if ($entity_name && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
     if ($entity_name && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
     foreach ($data as $c_key => $c_value) {
-      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(substr(get_class($c_value), 0, 8) === 'effcore\\' ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                               is_array($data) ? '- ' : '  ', $depth + 1);
+      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                            is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_empty_array';
       elseif ($c_value === 'true')                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_true';
       elseif ($c_value === 'false')                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_false';
@@ -293,7 +293,7 @@ namespace effcore {
     $data_lines = preg_split('%'.cr.nl.'|'.cr.'|'.nl.'%S', $data);
     foreach ($data_lines as $c_line) {
       $line_number++;
-      if (substr(ltrim($c_line, ' '), 0, 1) === '#') continue; # skip comments
+      if (strpos(ltrim($c_line, ' '), '#') === 0) continue; # skip comments
       $c_line = str_replace(a0, nl, $c_line); # convert 'text'.'\0'.'text' to 'text'.'\n'.'text'
       $matches = [];
       preg_match('%^(?<indent>[ ]*)'.

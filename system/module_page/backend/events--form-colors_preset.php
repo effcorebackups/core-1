@@ -17,7 +17,7 @@ namespace effcore\modules\page {
     if ($preset) {
       foreach ($items as $c_item) {
         if ($c_item instanceof field_checkbox_color) {
-          if (substr($c_item->name_get(), 0, 7) === 'color__') {
+          if (strpos($c_item->name_get(), 'color__') === 0) {
             $c_item->color_set(
               $preset->colors->{$c_item->name_get()}
             );
@@ -36,7 +36,7 @@ namespace effcore\modules\page {
         if ($preset) {
           foreach ($items as $c_item) {
             if ($c_item instanceof field_checkbox_color) {
-              if (substr($c_item->name_get(), 0, 7) === 'color__') {
+              if (strpos($c_item->name_get(), 'color__') === 0) {
                 if ($c_item->checked_get()) {
                   $changes[$c_item->name_get()] = true;
                 }
