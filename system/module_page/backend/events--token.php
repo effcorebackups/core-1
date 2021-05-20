@@ -21,12 +21,12 @@ namespace effcore\modules\page {
       case 'thumbnail_big_width':    return $settings->thumbnail_big_width;
       case 'page_min_width':         return $settings->page_min_width;
       case 'page_max_width':         return $settings->page_max_width;
-      case 'page_min_width_css_context':
-      case 'page_max_width_css_context':
+      case 'page_min_width_context':
+      case 'page_max_width_context':
         $page_id = url::get_current()->query_arg_select('page_id');
         $page = is_string($page_id) ? page::get_by_id($page_id, true) : null;
-        if ($name === 'page_min_width_css_context') return !empty($page->data['width_min']) ? $page->data['width_min'] : $settings->page_min_width;
-        if ($name === 'page_max_width_css_context') return !empty($page->data['width_max']) ? $page->data['width_max'] : $settings->page_max_width;
+        if ($name === 'page_min_width_context') return !empty($page->data['width_min']) ? $page->data['width_min'] : $settings->page_min_width;
+        if ($name === 'page_max_width_context') return !empty($page->data['width_max']) ? $page->data['width_max'] : $settings->page_max_width;
         break;
     }
   # colors

@@ -23,10 +23,10 @@ tokens
 - page_id_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- page_min_width_css_context
+- page_min_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- page_max_width_css_context
+- page_max_width_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
 - return_if_element_is_dark
