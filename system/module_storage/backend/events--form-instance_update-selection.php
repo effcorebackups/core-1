@@ -45,7 +45,7 @@ namespace effcore\modules\storage {
         case 'update':
           if ($entity->name === 'selection') {
             if (count($items['*fields']->value_get_complex()) < 1) {
-              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!', ['title' => (new text($items['*fields']->title))->render(), 'number' => 1]);
+              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number|s}!', ['title' => (new text($items['*fields']->title))->render(), 'number' => 1]);
             }
           }
           break;

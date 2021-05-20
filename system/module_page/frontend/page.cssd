@@ -285,11 +285,11 @@
   x-audio-player {display: block; margin: 10px 0; cursor: default; color: white; background: %%_color__main}
   x-audio-player::after {content: ''; clear: both; display: block}
   x-audio-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-  x-audio-player button[value='play'] {float: left !important; width: 44px; height: 44px; margin: 0 10px 0 0; padding: 0; cursor: pointer; border: none; border-radius: 0; background: %%_color__main{20,20,20} url('pictures/icons-form-button.svgd') 4px -118px}
-  x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main{30,30,30}}
-  x-audio-player button[value='play']:enabled:active {background-color: %%_color__main{40,40,40}; box-shadow: none}
-  x-audio-player x-timeline {float: left; width: calc(100% - 146px); min-width: 50px; height: 10px; margin: 17px 10px; overflow: hidden; cursor: not-allowed; background: %%_color__main{10,10,10}}
-  x-audio-player x-timeline x-track-position {display: block; width: 0; height: 5px; margin-top: 5px; cursor: pointer; background: %%_color__main{30,30,30}}
+  x-audio-player button[value='play'] {float: left !important; width: 44px; height: 44px; margin: 0 10px 0 0; padding: 0; cursor: pointer; border: none; border-radius: 0; background: %%_color__main{20|20|20} url('pictures/icons-form-button.svgd') 4px -118px}
+  x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main{30|30|30}}
+  x-audio-player button[value='play']:enabled:active {background-color: %%_color__main{40|40|40}; box-shadow: none}
+  x-audio-player x-timeline {float: left; width: calc(100% - 146px); min-width: 50px; height: 10px; margin: 17px 10px; overflow: hidden; cursor: not-allowed; background: %%_color__main{10|10|10}}
+  x-audio-player x-timeline x-track-position {display: block; width: 0; height: 5px; margin-top: 5px; cursor: pointer; background: %%_color__main{30|30|30}}
   x-audio-player x-time {float: right; width: 60px; margin: 9px 12px 9px 0; font-family: monospace; font-size: 11px; line-height: 10px; text-align: right}
   x-audio-player x-time x-time-elapsed {display: block; height: 10px; margin-top: 1px}
   x-audio-player x-time x-time-total   {display: block; height: 10px; margin-top: 5px; opacity: .6}
@@ -406,7 +406,7 @@
     max-width: 100%;
     box-sizing: border-box;
     overflow: auto;
-    border: 1px solid %%_color__main{0,0,0,.5};
+    border: 1px solid %%_color__main{0|0|0|.5};
     color: %%_color__field_text;
     background-color: %%_color__field}
   x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}

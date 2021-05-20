@@ -50,6 +50,11 @@
   body[data-layout-id='original_classic'] h2 {margin: 3em 0 2em 0}
   body[data-layout-id='original_classic'] h3 {margin: 2em 0 1em 0}
 
+  /* pre */
+
+  body[data-layout-id='original_classic'] pre {
+    background-color: %%_return_if_element_is_dark{page|rgba(255,255,255,.1)|rgba(0,0,0,.1)}}
+
   /* menu in area 'menu': orientation and dynamics */
 
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    {display: inline-block}
@@ -75,7 +80,7 @@
   /* menu in area 'menu': colors */
 
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       {background-color: %%_color__menu}
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {background-color: transparent;                     box-shadow: none}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:not(:last-child) > a {border-right: 1px dotted white}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:not(:last-child) > a {border-right: none}
@@ -90,7 +95,7 @@
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:hover                            {                                   background-color: transparent}
 
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[aria-selected      ='true'],
-  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5,5,5}}
+  body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[aria-selected      ='true'],
   body[data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
 

@@ -32,7 +32,7 @@
   /* menu in area 'system': colors */
 
   [data-area-id='system'] [role='tree'] ul       {background-color: %%_color__menu}
-  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10,10,10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
   [data-area-id='system'] [role='tree'] ul ul ul {background-color: transparent;                     box-shadow: none}
 
   [data-area-id='system'] [role='tree']             a[aria-selected      ='true'],
@@ -45,7 +45,7 @@
   [data-area-id='system'] [role='tree'] ul ul li:hover                            {                                   background-color: transparent}
 
   [data-area-id='system'] [role='tree'] li    a[aria-selected      ='true'],
-  [data-area-id='system'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5,5,5}}
+  [data-area-id='system'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
   [data-area-id='system'] [role='tree'] li li a[aria-selected      ='true'],
   [data-area-id='system'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
 

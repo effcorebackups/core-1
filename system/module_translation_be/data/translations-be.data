@@ -9,7 +9,7 @@ translations
     - %%_entity_title_context\: delete: %%_entity_title_context: выдаліць
     - %%_entity_title_context\: insert: %%_entity_title_context: уставіць
     - %%_entity_title_context\: update: %%_entity_title_context: абнавіць
-    - %%_number second%%_plural{number,s}: %%_number секунд%%_plural{number,a-ji}
+    - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-ji}
     - A new password was sent to the selected EMail.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - access allowed by permission "%%_permission": доступ дазволены па дазваленні "%%_permission"
     - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
@@ -207,13 +207,13 @@ translations
     - Field "%%_title" should be enabled!: Поле "%%_title" павінна быць уключана!
     - Field "%%_title" should be selected!: Поле "%%_title" павінна быць абрана!
     - Field "%%_title".: Поле "%%_title".
-    - Field can contain a maximum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number,au-a}.
-    - Field can contain a minimum of %%_number file%%_plural{number,s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number,au-a}.
-    - Field can contain only %%_number file%%_plural{number,s}.: Поле можа змяшчаць толькі %%_number файл%%_plural{number,au-a}.
+    - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number|au-a}.
+    - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number|au-a}.
+    - Field can contain only %%_number file%%_plural{number\|s}.: Поле можа змяшчаць толькі %%_number файл%%_plural{number|au-a}.
     - Field value at the current moment\: %%_value: Значэнне поля ў бягучы момант: %%_value
-    - Field value can contain a maximum of %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural{number,au-a}.
-    - Field value can contain a minimum of %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number,au-a}.
-    - Field value can contain only %%_number character%%_plural{number,s}.: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural{number,au-a}.
+    - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural{number|au-a}.
+    - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number|au-a}.
+    - Field value can contain only %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural{number|au-a}.
     - Field value can contain only the next characters\: %%_characters: Значэнне поля можа змяшчаць толькі наступныя сімвалы: %%_characters
     - Field value can contain Unicode.: Значэнне поля можа змяшчаць Юнікод.
     - Field value cannot be greater than\: %%_value: Значэнне поля не можа быць больш чым: %%_value
@@ -297,7 +297,7 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Group "%%_title" should contain a minimum %%_number item%%_plural{number,s}!: Група "%%_title" павінна змяшчаць як мінімум %%_number элемент%%_plural{number,au-a}!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Група "%%_title" павінна змяшчаць як мінімум %%_number элемент%%_plural{number|au-a}!
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна змяшчаць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Group: Група
@@ -785,7 +785,7 @@ translations
     - yes: так
     - You are trying to upload too few files!: Вы спрабуеце загрузіць занадта мала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
-    - You have already uploaded %%_current_number file%%_plural{current_number,s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number,au-a}.
+    - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number|au-a}.
     - You have not made any changes before!: Вы не рабілі ніякіх змяненняў раней!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы атрымалі гэтае паведамленне, таму што хтосьці спрабаваў аднавіць пароль ад Вашага акаўнту на %%_domain.
     - Your answer was accepted.: Ваш адказ быў прыняты.

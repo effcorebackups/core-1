@@ -65,7 +65,7 @@ namespace effcore {
     if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
-        'Field value can contain a minimum of %%_number character%%_plural{number,s}.'], ['title' => (new text($field->title))->render(), 'number' => $minlength]
+        'Field value can contain a minimum of %%_number character%%_plural{number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $minlength]
       ));
     } else {
       return true;
@@ -78,7 +78,7 @@ namespace effcore {
       $new_value = substr($new_value, 0, $maxlength);
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
-        'Field value can contain a maximum of %%_number character%%_plural{number,s}.',
+        'Field value can contain a maximum of %%_number character%%_plural{number|s}.',
         'Value was trimmed to the required length!',
         'Check field again before submit.'], ['title' => (new text($field->title))->render(), 'number' => $maxlength]
       ));

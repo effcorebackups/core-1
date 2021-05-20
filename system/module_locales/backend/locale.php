@@ -44,7 +44,7 @@ namespace effcore {
   }
 
   static function format_seconds($seconds) {
-    return translation::apply('%%_number second%%_plural{number,s}', ['number' => $seconds]);
+    return translation::apply('%%_number second%%_plural{number|s}', ['number' => $seconds]);
   }
 
   static function format_logic($value) {

@@ -209,7 +209,7 @@
   x-field[aria-disabled='true']   {opacity: .3}
   x-field[aria-disabled='true'] * {cursor: default !important}
   button:disabled {cursor: default; opacity: .3}
-  select option:disabled {color: %%_color__field_text{0,0,0,.5}}
+  select option:disabled {color: %%_color__field_text{0|0|0|.5}}
 
   /* checkbox color */
 
@@ -318,7 +318,7 @@
   x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color__fieldset}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
-  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0,0,0,.5}}
+  x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0|0|0|.5}}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget::after {content: ''; clear: both; display: block}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-info {display: inline-block; vertical-align: middle}
