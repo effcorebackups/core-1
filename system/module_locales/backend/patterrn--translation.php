@@ -56,7 +56,8 @@ namespace effcore {
     return preg_replace_callback('%\\%\\%_'.'(?<name>[a-z0-9_]{1,64})'.
                                    '(?:\\{'.'(?<args>[^\\}\\n]{1,1024})'.'\\}|)%S', function ($c_match) use ($c_code, $args) {
       $c_name =       $c_match['name'];
-      $c_args = isset($c_match['args']) ? explode('|', $c_match['args']) : [];
+      $c_args = isset($c_match['args']) ?
+         explode('|', $c_match['args']) : [];
     # plurals functionality
       if ($c_name == 'plural') {
         if (isset($c_args[0]) &&

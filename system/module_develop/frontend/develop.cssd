@@ -5,8 +5,8 @@
     %%_return_if_token{color__page|transparent|3|4}
     %%_return_if_url_arg{page_id|front|5|6}
     %%_return_translation{simple string}
-    %%_return_translation{string with parameter = \%\%_n|n=1}
-    %%_return_translation{string with plural value = \%\%_number second\%\%_plural{number|s}|number=1}
+    %%_return_translation{string with parameter = %%_n|n=1}
+    %%_return_translation{string with plural value = %%_number second%%_plural{number|s\}|number=1}
     ───────────────────────────────────────────────────────────────────── */
 
   /* console */
