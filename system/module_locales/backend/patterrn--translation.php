@@ -65,7 +65,7 @@ namespace effcore {
           $p_plural_type = $c_args[1];
           $p_plurals     = language::plurals_get($c_code);
           if (isset($p_plurals[$p_plural_type]) &&
-                   isset($args[$p_number_name])) {
+              isset($args     [$p_number_name])) {
             $p_plural_info = $p_plurals[$p_plural_type];
             $p_matches     = [];
             if (preg_match($p_plural_info->formula, (string)$args[$p_number_name], $p_matches)) {
