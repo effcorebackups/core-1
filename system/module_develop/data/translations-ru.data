@@ -182,7 +182,10 @@ translations
     - Sequence hash: Хэш последовательности
     - show for admin: показывать администратору
     - show for everyone: показывать всем
+    - simple string: простая строка
     - storage "%%_name" was initialized: хранилище "%%_name" было инициализировано
+    - string with parameter = %%_n: строка с параметром = %%_n
+    - string with plural value = %%_number second%%_plural{number\|s}: строка с множественным числом = %%_number second%%_plural{number|s}
     - submission: передача
     - Switcher 1: Выключатель 1
     - Switcher 2 (checked): Выключатель 2 (отмечен)

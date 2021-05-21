@@ -182,7 +182,10 @@ translations
     - Sequence hash: Хэш паслядоўнасці
     - show for admin: паказваць адміністратару
     - show for everyone: паказваць усім
+    - simple string: просты радок
     - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
+    - string with parameter = %%_n: радок з параметрам = %%_n
+    - string with plural value = %%_number second%%_plural{number\|s}: радок з множным лікам = %%_number second%%_plural{number|s}
     - submission: перадача
     - Switcher 1: Выключальнік 1
     - Switcher 2 (checked): Выключальнік 2 (адзначаны)
