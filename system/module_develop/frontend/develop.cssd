@@ -5,9 +5,9 @@
     %%_return_if_token{return_if_token|value|1|0}
     %%_return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}
     %%_return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}
-    %%_return_if_token{color__page|white|1}
-    %%_return_if_token{color__page|white|1|0}
-    %%_return_if_token{color__page\{10\|10\|10\}|some_value|1|0}
+    %%_return_if_token{color__page|#ffffff|1|0}
+    %%_return_if_token{color__page|transparent|1|0}
+    %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}
     %%_return_if_token_color_is_dark{color__page|1|0}
     %%_return_if_url_arg{page_id|front|1|0}
     %%_return_translation{simple string}

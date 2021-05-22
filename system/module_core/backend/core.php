@@ -1023,10 +1023,10 @@ namespace effcore {
         'lang'              => language::code_get_current()]),
         'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(),
         'title'             => is_object($title  ) && method_exists($title,   'render') ? $title  ->render() : (new text($title  ))->render(),
-        'color_page'        => isset($colors[$settings->color__page_id       ]) ? $colors[$settings->color__page_id       ]->value : '',
-        'color_text'        => isset($colors[$settings->color__text_id       ]) ? $colors[$settings->color__text_id       ]->value : '',
-        'color_link'        => isset($colors[$settings->color__link_id       ]) ? $colors[$settings->color__link_id       ]->value : '',
-        'color_link_active' => isset($colors[$settings->color__link_active_id]) ? $colors[$settings->color__link_active_id]->value : '',
+        'color_page'        => isset($colors[$settings->color__page_id       ]) ? $colors[$settings->color__page_id       ]->value_hex : '',
+        'color_text'        => isset($colors[$settings->color__text_id       ]) ? $colors[$settings->color__text_id       ]->value_hex : '',
+        'color_link'        => isset($colors[$settings->color__link_id       ]) ? $colors[$settings->color__link_id       ]->value_hex : '',
+        'color_link_active' => isset($colors[$settings->color__link_active_id]) ? $colors[$settings->color__link_active_id]->value_hex : '',
         'console'           => console::visible_mode_get() === console::is_visible_for_everyone ? (new markup('pre', [], console::text_get()))->render() : ''
       ]))->render();
       header('Content-Length: '.strlen($content));

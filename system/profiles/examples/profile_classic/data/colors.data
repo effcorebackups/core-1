@@ -4,106 +4,85 @@ colors
 # ─────────────────────────────────────────────────────────────────────
 - classic_l10|color
     id: classic_l10
-    value: black
     value_hex: #000000
     group: profile_classic
 - classic_l9|color
     id: classic_l9
-    value: #00000b
     value_hex: #00000b
     group: profile_classic
 - classic_l8|color
     id: classic_l8
-    value: #000016
     value_hex: #000016
     group: profile_classic
 - classic_l7|color
     id: classic_l7
-    value: #040021
     value_hex: #040021
     group: profile_classic
 - classic_l6|color
     id: classic_l6
-    value: #0f002c
     value_hex: #0f002c
     group: profile_classic
 - classic_l5|color
     id: classic_l5
-    value: #1a0237
     value_hex: #1a0237
     group: profile_classic
 - classic_l4|color
     id: classic_l4
-    value: #250d42
     value_hex: #250d42
     group: profile_classic
 - classic_l3|color
     id: classic_l3
-    value: #30184d
     value_hex: #30184d
     group: profile_classic
 - classic_l2|color
     id: classic_l2
-    value: #3b2358
     value_hex: #3b2358
     group: profile_classic
 - classic_l1|color
     id: classic_l1
-    value: #462e63
     value_hex: #462e63
     group: profile_classic
 - classic_base|color
     id: classic_base
-    value: #51396e
     value_hex: #51396e
     group: profile_classic
 - classic_r1|color
     id: classic_r1
-    value: #5c4479
     value_hex: #5c4479
     group: profile_classic
 - classic_r2|color
     id: classic_r2
-    value: #674f84
     value_hex: #674f84
     group: profile_classic
 - classic_r3|color
     id: classic_r3
-    value: #725a8f
     value_hex: #725a8f
     group: profile_classic
 - classic_r4|color
     id: classic_r4
-    value: #7d659a
     value_hex: #7d659a
     group: profile_classic
 - classic_r5|color
     id: classic_r5
-    value: #8870a5
     value_hex: #8870a5
     group: profile_classic
 - classic_r6|color
     id: classic_r6
-    value: #937bb0
     value_hex: #937bb0
     group: profile_classic
 - classic_r7|color
     id: classic_r7
-    value: #9e86bb
     value_hex: #9e86bb
     group: profile_classic
 - classic_r8|color
     id: classic_r8
-    value: #a991c6
     value_hex: #a991c6
     group: profile_classic
 - classic_r9|color
     id: classic_r9
-    value: #b49cd1
     value_hex: #b49cd1
     group: profile_classic
 - classic_r10|color
     id: classic_r10
-    value: #bfa7dc
     value_hex: #bfa7dc
     group: profile_classic

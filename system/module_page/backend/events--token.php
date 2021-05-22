@@ -37,9 +37,7 @@ namespace effcore\modules\page {
             strpos($args[0], 'color_custom__') === 0) {
           $value = token::apply('%%_'.$args[0]);
           if ($value) {
-            if ( isset(color::named_colors[$value]) )
-              $value = color::named_colors[$value]['value_hex'];
-            $is_dark = (new color(null, null, $value))->is_dark();
+            $is_dark = (new color(null, $value))->is_dark();
             if ($is_dark !== null) {
               return $is_dark ? $args[1] :
                                 $args[2];
@@ -78,9 +76,10 @@ namespace effcore\modules\page {
       if ($name === 'color__button'                ) $color = $colors[ $is_all_colors_available ? $settings->color__button_id                 : 'default_5'    ];
       if ($name === 'color__button_active'         ) $color = $colors[ $is_all_colors_available ? $settings->color__button_active_id          : 'default_6'    ];
       if ($name === 'color__button_text'           ) $color = $colors[ $is_all_colors_available ? $settings->color__button_text_id            : 'white'        ];
-      if (!empty($color->value) && count($args) === 0) return $color->value;
-      if (!empty($color->value) && count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2], 1, color::return_hex);
-      if (!empty($color->value) && count($args) === 4) return $color->filter_shift($args[0], $args[1], $args[2], $args[3], color::return_rgba);
+      if (empty($color->value_hex) === true) return 'transparent';
+      if (empty($color->value_hex) !== true && count($args) === 0) return $color->value_hex;
+      if (empty($color->value_hex) !== true && count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2], 1, color::return_hex);
+      if (empty($color->value_hex) !== true && count($args) === 4) return $color->filter_shift($args[0], $args[1], $args[2], $args[3], color::return_rgba);
     }
   }
 

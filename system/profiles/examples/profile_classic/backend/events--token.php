@@ -15,9 +15,10 @@ namespace effcore\modules\profile_classic {
     if ($name === 'color_custom__head' || $name === 'color_custom__foot') {
       if ($name === 'color_custom__head') $color = $colors[$settings->color_custom__head_id] ?? $colors['white'];
       if ($name === 'color_custom__foot') $color = $colors[$settings->color_custom__foot_id] ?? $colors['white'];
-      if (!empty($color->value) && count($args) === 0) return $color->value;
-      if (!empty($color->value) && count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2], 1, color::return_hex);
-      if (!empty($color->value) && count($args) === 4) return $color->filter_shift($args[0], $args[1], $args[2], $args[3], color::return_rgba);
+      if (empty($color->value_hex) === true) return 'transparent';
+      if (empty($color->value_hex) !== true && count($args) === 0) return $color->value_hex;
+      if (empty($color->value_hex) !== true && count($args) === 3) return $color->filter_shift($args[0], $args[1], $args[2], 1, color::return_hex);
+      if (empty($color->value_hex) !== true && count($args) === 4) return $color->filter_shift($args[0], $args[1], $args[2], $args[3], color::return_rgba);
     }
   }
 
