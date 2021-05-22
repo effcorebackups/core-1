@@ -13,6 +13,10 @@ namespace effcore {
     static::$cache = null;
   }
 
+  static function text_decode($text) {
+    return str_replace(['\\{', '\\}', '\\|'], ['{', '}', '|'], $text);
+  }
+
   static function init() {
     if (static::$cache === null) {
       foreach (storage::get('files')->select('tokens') ?? [] as $c_module_id => $c_tokens) {
@@ -48,10 +52,10 @@ namespace effcore {
 
   static function apply($string) {
     return preg_replace_callback('%\\%\\%_'.'(?<name>[a-z0-9_]{1,64})'.
-                                   '(?:\\{'.'(?<args>[^\\}\\n]{1,1024})'.'\\}|)%S', function ($c_match) {
+                                '(?:'.'\\{'.'(?<args>.{1,1024}?)'.'(?<!\\\\)'.'\\}|)%S', function ($c_match) {
       $c_name =       $c_match['name'];
-      $c_args = isset($c_match['args']) ?
-         explode('|', $c_match['args']) : [];
+      $c_args = isset($c_match['args']) ? preg_split('%(?<!\\\\)\\|%S',
+                      $c_match['args']) : [];
       $c_info = static::select($c_name);
       if ($c_info) {
         switch ($c_info->type) {
