@@ -33,6 +33,13 @@ namespace effcore {
     'mp3' => 'mp3'
   ];
 
+  function widget_manage_get($item, $c_row_id) {
+    $widget = parent::widget_manage_get($item, $c_row_id);
+    $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+    static::widget_manage_picture_item_make($widget, $item, $c_row_id);
+    return $widget;
+  }
+
   function widget_insert_get() {
     $widget = new markup('x-widget', [
       'data-type' => 'insert']);
