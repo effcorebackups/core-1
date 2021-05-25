@@ -37,6 +37,7 @@ namespace effcore {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     static::widget_manage_picture_item_make($widget, $item, $c_row_id);
+    static::widget_manage_video_item_make  ($widget, $item, $c_row_id);
     return $widget;
   }
 
