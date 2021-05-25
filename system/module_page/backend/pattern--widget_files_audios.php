@@ -30,7 +30,7 @@ namespace effcore {
         $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +500);
         $widget->child_insert($player_markup, 'player');
       }
-      if ($item->settings['data-cover-is-embedded']) {
+      if (!empty($item->settings['data-cover-is-embedded'])) {
         $cover_thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
         $widget->child_insert($cover_thumbnail_markup, 'thumbnail');
       }
