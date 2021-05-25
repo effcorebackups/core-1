@@ -30,8 +30,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new video
     $field_file_video = new field_file_video;
     $field_file_video->title            = 'Video';
@@ -60,6 +59,7 @@ namespace effcore {
     $button->build();
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
+    $button->_kind = 'video';
   # relate new controls with the widget
     if (true                    ) $this->controls['#file'  ] = $field_file_video;
     if ($this->poster_is_allowed) $this->controls['#poster'] = $field_file_poster;

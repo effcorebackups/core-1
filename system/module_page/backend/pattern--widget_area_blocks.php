@@ -34,8 +34,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
     $presets = block_preset::select_all($this->id_area);
     core::array_sort_by_text_property($presets, 'managing_group');

@@ -57,8 +57,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new file
     $field_file = new field_file;
     $field_file->title = 'File';

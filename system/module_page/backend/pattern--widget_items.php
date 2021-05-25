@@ -126,8 +126,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # button for insertion of the new item
     $button = new button('insert', ['title' => new text('insert')]);
     $button->break_on_validate = true;

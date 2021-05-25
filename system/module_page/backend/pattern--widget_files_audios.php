@@ -30,8 +30,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new audio
     $field_file_audio = new field_file_audio;
     $field_file_audio->title            = 'Audio';
@@ -60,6 +59,7 @@ namespace effcore {
     $button->build();
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
+    $button->_kind = 'audio';
   # relate new controls with the widget
     if (true                   ) $this->controls['#file'  ] = $field_file_audio;
     if ($this->cover_is_allowed) $this->controls['#cover' ] = $field_file_cover;

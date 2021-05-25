@@ -30,8 +30,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
     $entities = entity::get_all();
     core::array_sort_by_text_property($entities);

@@ -43,8 +43,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # fieldsets
     $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
     $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);

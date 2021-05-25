@@ -33,8 +33,7 @@ namespace effcore {
   }
 
   function widget_insert_get() {
-    $widget = new markup('x-widget', [
-      'data-type' => 'insert']);
+    $widget = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new picture
     $field_file_picture = new field_file_picture;
     $field_file_picture->title            = 'Picture';
@@ -53,6 +52,7 @@ namespace effcore {
     $button->build();
     $button->value_set($this->name_get_complex().'__insert');
     $button->_type = 'insert';
+    $button->_kind = 'picture';
   # relate new controls with the widget
     $this->controls['#file'  ] = $field_file_picture;
     $this->controls['~insert'] = $button;
