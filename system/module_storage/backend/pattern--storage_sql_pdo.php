@@ -472,7 +472,7 @@ namespace effcore {
           if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
                $instance->{$c_name} =    ($entity->fields[$c_name]->filter_select)($c_value);
           else $instance->{$c_name} =                                              $c_value;
-          $instance->_id_fields_original = $id_fields;}
+          $instance->_id_fields_original = $id_fields; }
         return $instance;
       }
     }

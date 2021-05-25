@@ -35,7 +35,7 @@ namespace effcore {
       $captcha = $this->captcha_select();
       if (!$captcha) {
            $captcha = $this->captcha_generate();
-           $captcha->insert();}
+           $captcha->insert(); }
       $this->child_insert_first($captcha->canvas, 'canvas');
       $element = $this->child_select('element');
       $element->attribute_insert('size',      $captcha->length);

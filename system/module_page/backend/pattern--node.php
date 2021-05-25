@@ -91,7 +91,7 @@ namespace effcore {
     $new_children = [];
     foreach ($this->children as $c_id => $c_child) {
       if ($c_id === $before_id) $new_children[  $id] =   $child;
-                                $new_children[$c_id] = $c_child;}
+                                $new_children[$c_id] = $c_child; }
     $this->children = $new_children;
     return $id;
   }
@@ -102,7 +102,7 @@ namespace effcore {
     $new_children = [];
     foreach ($this->children as $c_id => $c_child) {
                                $new_children[$c_id] = $c_child;
-      if ($c_id === $after_id) $new_children[  $id] =   $child;}
+      if ($c_id === $after_id) $new_children[  $id] =   $child; }
     $this->children = $new_children;
     return $id;
   }

@@ -31,7 +31,7 @@ namespace effcore {
                $this->optgroup_insert($c_id, $c_data->title);
           foreach ($c_data->values as $g_id => $g_data)
                $this->option_insert($g_data, $g_id, [], $c_id);
-        } else $this->option_insert($c_data,            $c_id);}
+        } else $this->option_insert($c_data,            $c_id); }
       $this->is_builded = true;
     }
   }

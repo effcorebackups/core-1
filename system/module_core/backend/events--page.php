@@ -34,7 +34,7 @@ namespace effcore\modules\core {
         $c_parent_id = end($c_branch)->id_parent;
         if ($c_parent_id) {
             $c_parent = tree_item::select($c_parent_id, $breadcrumbs->id);
-            $branches[$c_id][$c_parent->id] = $c_parent;}
+            $branches[$c_id][$c_parent->id] = $c_parent; }
         else break;
       }
     }
@@ -88,7 +88,7 @@ namespace effcore\modules\core {
         $c_parent_id = end($c_branch)->id_parent;
         if ($c_parent_id) {
             $c_parent = tab_item::select($c_parent_id);
-            $branches[$c_id][$c_parent->id] = $c_parent;}
+            $branches[$c_id][$c_parent->id] = $c_parent; }
         else break;
       }
     }

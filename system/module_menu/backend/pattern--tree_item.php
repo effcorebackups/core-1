@@ -39,7 +39,7 @@ namespace effcore {
       foreach (static::select_all_by_id_tree($this->id_tree) as $c_item) {
         if ($c_item->id_parent === $this->id) {
           $this->child_insert($c_item, $c_item->id);
-          $c_item->build();}}
+          $c_item->build(); }}
       $this->is_builded = true;
     }
   }
@@ -168,7 +168,7 @@ namespace effcore {
         'id' => $id
       ]))->select();
       if (!empty($instance->id_tree)) $id_tree =
-                 $instance->id_tree;}
+                 $instance->id_tree; }
     static::init_sql($id_tree);
     return static::$cache[$id] ?? null;
   }

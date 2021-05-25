@@ -43,7 +43,7 @@ namespace effcore {
       $c_group_id = core::sanitize_id($c_preset->managing_group);
       if (!isset($options[$c_group_id])) {
                  $options[$c_group_id] = new \stdClass;
-                 $options[$c_group_id]->title = $c_preset->managing_group;}
+                 $options[$c_group_id]->title = $c_preset->managing_group; }
       $options[$c_group_id]->values[$c_preset->id] = (new text($c_preset->managing_title))->render().' ('.$c_preset->id.')';
     }
     foreach ($options as $c_group) {

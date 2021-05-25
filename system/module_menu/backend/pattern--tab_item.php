@@ -39,7 +39,7 @@ namespace effcore {
       foreach (static::select_all() as $c_item) {
         if ($c_item->id_parent == $this->id) {
           $this->child_insert($c_item, $c_item->id);
-          $c_item->build();}}
+          $c_item->build(); }}
       $this->is_builded = true;
     }
   }

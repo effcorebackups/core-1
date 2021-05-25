@@ -115,7 +115,7 @@ namespace effcore {
         if (!isset($statistics[$c_log->object]))
                    $statistics[$c_log->object] = 0;
         $statistics[$c_log->object] += floatval($c_log->time);
-        $total += floatval($c_log->time);}}
+        $total += floatval($c_log->time); }}
     $diagram = new diagram(null, 'radial');
     $colors = core::diagram_colors;
     foreach ($statistics as  $c_key => $c_value)
@@ -151,7 +151,7 @@ namespace effcore {
         'object'      => ['title' => 'Object',      'value' =>             new text($c_log->object,      $c_log->args)],
         'action'      => ['title' => 'Action',      'value' =>             new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => !$c_stack ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, $c_stack_opener, $c_stack], $c_log->args, '')],
-        'value'       => ['title' => 'Val.',        'value' =>             new text($c_log->value                    )] ];}
+        'value'       => ['title' => 'Val.',        'value' =>             new text($c_log->value                    )] ]; }
     return new block('Execution plan', ['data-id' => 'block__logs', 'data-title-is-styled' => 'false'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
@@ -176,7 +176,7 @@ namespace effcore {
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_key => $c_value) {
       $result.= '  '.str_pad($c_key, 38, ' ', STR_PAD_LEFT).' : ';
-      $result.=      $c_value.nl;}
+      $result.=      $c_value.nl; }
     return nl.$result.nl;
   }
 
@@ -188,14 +188,14 @@ namespace effcore {
         if (!isset($statistics[$c_log->object]))
                    $statistics[$c_log->object] = 0;
         $statistics[$c_log->object] += floatval($c_log->time);
-        $total += floatval($c_log->time);}}
+        $total += floatval($c_log->time); }}
     $result = '  TOTAL LOAD'.nl.nl;
     foreach ($statistics as $c_key => $c_value) {
       $c_percent = $c_value / $total * 100;
       $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                           ' | ';
       $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
       $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
-      $result.=      locale::format_msecond($c_value).' sec.'.nl;}
+      $result.=      locale::format_msecond($c_value).' sec.'.nl; }
     return nl.$result.nl;
   }
 
@@ -216,7 +216,7 @@ namespace effcore {
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
       $result.=      str_pad($c_log->value,   5).                     ' | ';
-      $result.=    (new text($c_log->description.(isset($c_log->stack) ? '   …   '.$c_log->stack : ''), $c_log->args, false))->render().nl;}
+      $result.=    (new text($c_log->description.(isset($c_log->stack) ? '   …   '.$c_log->stack : ''), $c_log->args, false))->render().nl; }
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
     $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;
