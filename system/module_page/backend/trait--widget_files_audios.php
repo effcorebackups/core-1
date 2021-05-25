@@ -20,24 +20,31 @@ namespace effcore {
 # ─────────────────────────────────────────────────────────────────────
   public $audio_player_on_manage_is_visible = true;
   public $audio_player_on_manage_settings = [
-    'autoplay'                        => false,
-    'controls'                        => true,
-    'crossorigin'                     => null,
-    'loop'                            => false,
-    'muted'                           => false,
-    'preload'                         => 'metadata',
     'data-player-name'                => 'default',
-    'data-player-timeline-is-visible' => 'false'];
+    'data-player-timeline-is-visible' => 'false',
+    'autoplay'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => null,
+    'muted'       => null,
+    'preload'     => 'metadata'];
   public $audio_player_default_settings = [
-    'autoplay'                        => false,
-    'controls'                        => true,
-    'crossorigin'                     => null,
-    'loop'                            => false,
-    'muted'                           => false,
-    'preload'                         => 'metadata',
     'data-player-name'                => 'default',
-    'data-player-timeline-is-visible' => 'true'
+    'data-player-timeline-is-visible' => 'true',
+    'autoplay'    => null,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => null,
+    'muted'       => null,
+    'preload'     => 'metadata'
   ];
+
+  function widget_manage_audio_item_make(&$widget, &$item, $c_row_id) {
+    if (media::media_class_get($item->object->type) === 'audio') {
+      if ($this->audio_player_on_manage_is_visible)          $widget->child_insert(new markup('audio',      ['src' => '/'.$item->object->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +500), 'player');
+      if (!empty($item->settings['data-cover-is-embedded'])) $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+    }
+  }
 
   function on_values_validate_cover($form, $npath, $button) {
     return field_file::on_manual_validate_and_return_value($this->controls['#cover'], $form, $npath);

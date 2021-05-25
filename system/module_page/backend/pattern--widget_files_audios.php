@@ -25,16 +25,7 @@ namespace effcore {
   function widget_manage_get($item, $c_row_id) {
     $widget = parent::widget_manage_get($item, $c_row_id);
     $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    if (media::media_class_get($item->object->type) === 'audio') {
-      if ($this->audio_player_on_manage_is_visible) {
-        $player_markup = new markup('audio', ['src' => '/'.$item->object->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +500);
-        $widget->child_insert($player_markup, 'player');
-      }
-      if (!empty($item->settings['data-cover-is-embedded'])) {
-        $cover_thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-        $widget->child_insert($cover_thumbnail_markup, 'thumbnail');
-      }
-    }
+    static::widget_manage_audio_item_make($widget, $item, $c_row_id);
     return $widget;
   }
 
