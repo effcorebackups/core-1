@@ -91,13 +91,6 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function on_cache_update($form, $npath) {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item)
-      if (isset($this->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
-    $this->items_set($items);
-  }
-
   function on_button_click_insert($form, $npath, $button) {
     $min_weight = 0;
     $items = $this->items_get();
@@ -216,8 +209,16 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  static function on_cache_update(&$widget, $form, $npath) {
+    $items = $widget->items_get();
+    foreach ($items as $c_row_id => $c_item)
+      if (isset($widget->controls['#weight__'.$c_row_id]))
+        $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
+    $widget->items_set($items);
+  }
+
   static function on_request_value_set(&$widget, $form, $npath) {
-    $widget->on_cache_update($form, $npath);
+    event::start_local('on_cache_update', $widget, ['form' => $form, 'npath' => $npath]);
   }
 
   static function on_submit(&$widget, $form, $npath) {

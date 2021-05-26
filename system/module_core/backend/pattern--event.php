@@ -99,4 +99,8 @@ namespace effcore {
     return $result;
   }
 
+  static function start_local($handler, &$object, $args = []) {
+    return call_user_func_array(get_class($object).'::'.$handler, ['object' => &$object] + $args);
+  }
+
 }}

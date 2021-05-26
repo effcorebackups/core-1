@@ -10,14 +10,6 @@ namespace effcore {
   public $attributes = ['data-type' => 'items'];
   public $name_complex = 'widget_texts';
 
-  function on_cache_update($form, $npath) {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      if (isset($this->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$this->controls['#weight__'.$c_row_id]->value_get();
-      if (isset($this->controls['#text__'.  $c_row_id])) $c_item->text   =      $this->controls['#text__'.  $c_row_id]->value_get();}
-    $this->items_set($items);
-  }
-
   function on_button_click_insert($form, $npath, $button) {
     $min_weight = 0;
     $items = $this->items_get();
@@ -53,6 +45,16 @@ namespace effcore {
     $widget->controls['#text__'.$c_row_id] = $field_text;
     $result->child_insert($field_text, 'text');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_cache_update(&$widget, $form, $npath) {
+    $items = $widget->items_get();
+    foreach ($items as $c_row_id => $c_item) {
+      if (isset($widget->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
+      if (isset($widget->controls['#text__'.  $c_row_id])) $c_item->text   =      $widget->controls['#text__'.  $c_row_id]->value_get(); }
+    $widget->items_set($items);
   }
 
 }}
