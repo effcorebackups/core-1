@@ -29,7 +29,7 @@ namespace effcore {
     'preload'     => 'metadata'
   ];
 
-  function widget_manage_video_item_make(&$widget, &$item, $c_row_id) {
+  static function widget_manage_video_item_make(&$widget, &$item, $c_row_id, &$root) {
     if (media::media_class_get($item->object->type) === 'video') {
       if (!empty($item->settings['data-poster-is-embedded'])) {
         $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');

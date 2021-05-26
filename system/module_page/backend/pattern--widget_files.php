@@ -41,51 +41,6 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  function widget_manage_get($item, $c_row_id) {
-    $widget = parent::widget_manage_get($item, $c_row_id);
-  # info markup
-    $file = new file($item->object->get_current_path());
-    $id_markup = $item->object->get_current_state() === 'pre' ?
-      new text_multiline(['new item', '…'], [], '') :
-      new text($file->file_get());
-    $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], $item->object->file),
-        'id'    => new markup('x-id',    [], $id_markup )]);
-  # grouping of previous elements in widget 'manage'
-    $widget->child_insert($info_markup, 'info');
-    return $widget;
-  }
-
-  function widget_insert_get() {
-    $widget = new markup('x-widget', ['data-type' => 'insert']);
-  # control for upload new file
-    $field_file = new field_file;
-    $field_file->title = 'File';
-    $field_file->max_file_size    = $this->max_file_size;
-    $field_file->types_allowed    = $this->types_allowed;
-    $field_file->cform            = $this->cform;
-    $field_file->min_files_number = null;
-    $field_file->max_files_number = null;
-    $field_file->has_on_validate  = false;
-    $field_file->build();
-    $field_file->multiple_set();
-    $field_file->name_set($this->name_get_complex().'__file[]');
-  # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($this->name_get_complex().'__insert');
-    $button->_type = 'insert';
-  # relate new controls with the widget
-    $this->controls['#file'  ] = $field_file;
-    $this->controls['~insert'] = $button;
-    $widget->child_insert($field_file, 'file');
-    $widget->child_insert($button, 'button');
-    return $widget;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_values_save() {
     $items = $this->items_get();
     foreach ($items as $c_row_id => $c_item) {
@@ -212,6 +167,52 @@ namespace effcore {
       }
     }
     return $decorator;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function widget_manage_get(&$widget, $item, $c_row_id) {
+    $result = parent::widget_manage_get($widget, $item, $c_row_id);
+  # info markup
+    $file = new file($item->object->get_current_path());
+    $id_markup = $item->object->get_current_state() === 'pre' ?
+      new text_multiline(['new item', '…'], [], '') :
+      new text($file->file_get());
+    $info_markup = new markup('x-info',  [], [
+        'title' => new markup('x-title', [], $item->object->file),
+        'id'    => new markup('x-id',    [], $id_markup)]);
+  # grouping of previous elements in widget 'manage'
+    $result->child_insert($info_markup, 'info');
+    return $result;
+  }
+
+  static function widget_insert_get(&$widget) {
+    $result = new markup('x-widget', ['data-type' => 'insert']);
+  # control for upload new file
+    $field_file = new field_file;
+    $field_file->title = 'File';
+    $field_file->max_file_size    = $widget->max_file_size;
+    $field_file->types_allowed    = $widget->types_allowed;
+    $field_file->cform            = $widget->cform;
+    $field_file->min_files_number = null;
+    $field_file->max_files_number = null;
+    $field_file->has_on_validate  = false;
+    $field_file->build();
+    $field_file->multiple_set();
+    $field_file->name_set($widget->name_get_complex().'__file[]');
+  # button for insertion of the new item
+    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->cform = $widget->cform;
+    $button->build();
+    $button->value_set($widget->name_get_complex().'__insert');
+    $button->_type = 'insert';
+  # relate new controls with the widget
+    $widget->controls['#file'  ] = $field_file;
+    $widget->controls['~insert'] = $button;
+    $result->child_insert($field_file, 'file');
+    $result->child_insert($button, 'button');
+    return $result;
   }
 
 }}

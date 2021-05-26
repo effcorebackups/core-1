@@ -19,10 +19,14 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $this->option_insert($this->title__not_selected, 'not_selected');
+      $options = [];
       foreach (layout::select_all() as $c_layout)
-        $this->option_insert(
-          (new text($c_layout->title))->render().' ('.$c_layout->id.')',
-                    $c_layout->id);
+        $options[$c_layout->id] = (new text_multiline([
+          'title' => $c_layout->title, 'id' => '('.$c_layout->id.')'], [], ' '
+        ))->render();
+      core::array_sort_text($options);
+      foreach ($options as $c_id => $c_title)
+        $this->option_insert($c_title, $c_id);
       $this->is_builded = true;
     }
   }

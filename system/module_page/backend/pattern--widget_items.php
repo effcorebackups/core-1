@@ -27,8 +27,8 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $this->child_insert($this->widget_manage_group_get(), 'manage');
-      $this->child_insert($this->widget_insert_get      (), 'insert');
+      $this->child_insert(static::widget_manage_group_get($this), 'manage');
+      $this->child_insert(static::widget_insert_get      ($this), 'insert');
       $this->widgets_manage_group_build();
       if ($this->number === null)
           $this->number = static::current_number_generate();
@@ -74,8 +74,8 @@ namespace effcore {
     $items = $this->items_get();
   # insert new and update existing widgets
     foreach ($this->items_get() as $c_row_id => $c_item) {
-      if ($group->child_select($c_row_id) === null) {$c_widget = $this->widget_manage_get($c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
-      if ($group->child_select($c_row_id) !== null) {$c_widget =                                               $group->child_select(           $c_row_id);}
+      if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
+      if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
       $c_widget->weight = $c_widget->child_select('weight')->value_get();
     }
   # delete old widgets
@@ -87,56 +87,6 @@ namespace effcore {
   # message 'no items'
     if ($group->children_select_count() !== 0) $group->child_delete(                                          'no_items');
     if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function widget_manage_group_get() {
-    return new markup('x-widgets-group', [
-      'data-type' => 'manage',
-      'data-has-rearrangeable' => true
-    ]);
-  }
-
-  function widget_manage_get($item, $c_row_id) {
-    $widget = new markup('x-widget', [
-      'data-rowid'                   => $c_row_id,
-      'data-rearrangeable'           => true,
-      'data-controls-is-inline-full' => true], [], $item->weight);
-  # control for weight
-    $field_weight = new field_weight(null, null, [], +500);
-    $field_weight->description_state = 'hidden';
-    $field_weight->build();
-    $field_weight->name_set($this->name_get_complex().'__weight__'.$c_row_id);
-    $field_weight->required_set(false);
-    $field_weight->value_set($item->weight);
-  # button for deletion of the old item
-    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
-    $button_delete->break_on_validate = true;
-    $button_delete->build();
-    $button_delete->value_set($this->name_get_complex().'__delete__'.$c_row_id);
-    $button_delete->_type = 'delete';
-    $button_delete->_id = $c_row_id;
-  # relate new controls with the widget
-    $this->controls['#weight__'.$c_row_id] = $field_weight;
-    $this->controls['~delete__'.$c_row_id] = $button_delete;
-    $widget->child_insert($field_weight, 'weight');
-    $widget->child_insert($button_delete, 'button_delete');
-    return $widget;
-  }
-
-  function widget_insert_get() {
-    $widget = new markup('x-widget', ['data-type' => 'insert']);
-  # button for insertion of the new item
-    $button = new button('insert', ['title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($this->name_get_complex().'__insert');
-    $button->_type = 'insert';
-  # relate new controls with the widget
-    $this->controls['~insert'] = $button;
-    $widget->child_insert($button, 'button');
-    return $widget;
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -210,6 +160,61 @@ namespace effcore {
   static function current_number_generate() {
     return static::$c_number++;
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function widget_manage_group_get(&$widget) {
+    return new markup('x-widgets-group', [
+      'data-type' => 'manage',
+      'data-has-rearrangeable' => true
+    ]);
+  }
+
+  static function widget_manage_get(&$widget, $item, $c_row_id) {
+    $result = new markup('x-widget', [
+      'data-rowid'                   => $c_row_id,
+      'data-rearrangeable'           => true,
+      'data-controls-is-inline-full' => true], [], $item->weight);
+  # control for weight
+    $field_weight = new field_weight(null, null, [], +500);
+    $field_weight->description_state = 'hidden';
+    $field_weight->cform = $widget->cform;
+    $field_weight->build();
+    $field_weight->name_set($widget->name_get_complex().'__weight__'.$c_row_id);
+    $field_weight->required_set(false);
+    $field_weight->value_set($item->weight);
+  # button for deletion of the old item
+    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
+    $button_delete->break_on_validate = true;
+    $button_delete->cform = $widget->cform;
+    $button_delete->build();
+    $button_delete->value_set($widget->name_get_complex().'__delete__'.$c_row_id);
+    $button_delete->_type = 'delete';
+    $button_delete->_id = $c_row_id;
+  # relate new controls with the widget
+    $widget->controls['#weight__'.$c_row_id] = $field_weight;
+    $widget->controls['~delete__'.$c_row_id] = $button_delete;
+    $result->child_insert($field_weight, 'weight');
+    $result->child_insert($button_delete, 'button_delete');
+    return $result;
+  }
+
+  static function widget_insert_get(&$widget) {
+    $result = new markup('x-widget', ['data-type' => 'insert']);
+  # button for insertion of the new item
+    $button = new button('insert', ['title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->cform = $widget->cform;
+    $button->build();
+    $button->value_set($widget->name_get_complex().'__insert');
+    $button->_type = 'insert';
+  # relate new controls with the widget
+    $widget->controls['~insert'] = $button;
+    $result->child_insert($button, 'button');
+    return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   static function on_request_value_set(&$widget, $form, $npath) {
     $widget->on_cache_update($form, $npath);

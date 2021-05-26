@@ -22,56 +22,6 @@ namespace effcore {
     'mp3' => 'mp3'
   ];
 
-  function widget_manage_get($item, $c_row_id) {
-    $widget = parent::widget_manage_get($item, $c_row_id);
-    $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    static::widget_manage_audio_item_make($widget, $item, $c_row_id);
-    return $widget;
-  }
-
-  function widget_insert_get() {
-    $widget = new markup('x-widget', ['data-type' => 'insert']);
-  # control for upload new audio
-    $field_file_audio = new field_file_audio;
-    $field_file_audio->title            = 'Audio';
-    $field_file_audio->max_file_size    = $this->max_file_size;
-    $field_file_audio->types_allowed    = $this->types_allowed;
-    $field_file_audio->cform            = $this->cform;
-    $field_file_audio->min_files_number = null;
-    $field_file_audio->max_files_number = null;
-    $field_file_audio->has_on_validate  = false;
-    $field_file_audio->build();
-    $field_file_audio->name_set($this->name_get_complex().'__file');
-  # control for upload new audio cover
-    $field_file_cover = new field_file_picture;
-    $field_file_cover->title            = 'Cover';
-    $field_file_cover->max_file_size    = $this->cover_max_file_size;
-    $field_file_cover->types_allowed    = $this->cover_types_allowed;
-    $field_file_cover->cform            = $this->cform;
-    $field_file_cover->min_files_number = null;
-    $field_file_cover->max_files_number = null;
-    $field_file_cover->has_on_validate  = false;
-    $field_file_cover->build();
-    $field_file_cover->name_set($this->name_get_complex().'__cover');
-  # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($this->name_get_complex().'__insert');
-    $button->_type = 'insert';
-    $button->_kind = 'audio';
-  # relate new controls with the widget
-    if (true                   ) $this->controls['#file'  ] = $field_file_audio;
-    if ($this->cover_is_allowed) $this->controls['#cover' ] = $field_file_cover;
-    if (true                   ) $this->controls['~insert'] = $button;
-    if (true                   ) $widget->child_insert($field_file_audio, 'file');
-    if ($this->cover_is_allowed) $widget->child_insert($field_file_cover, 'cover');
-    if (true                   ) $widget->child_insert($button, 'button');
-    return $widget;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
     return $this->on_file_prepare_audio($form, $npath, $button, $items, $new_item);
   }
@@ -108,6 +58,57 @@ namespace effcore {
 
   static function item_markup_get($item, $row_id) {
     return new markup('audio', ['src' => '/'.$item->object->get_current_path(true)] + $item->settings);
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function widget_manage_get(&$widget, $item, $c_row_id) {
+    $result = parent::widget_manage_get($widget, $item, $c_row_id);
+    $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+    static::widget_manage_audio_item_make($result, $item, $c_row_id, $widget);
+    return $result;
+  }
+
+  static function widget_insert_get(&$widget, $group = '') {
+    $result = new markup('x-widget', ['data-type' => 'insert']);
+  # control for upload new audio
+    $field_file_audio = new field_file_audio;
+    $field_file_audio->title            = 'Audio';
+    $field_file_audio->max_file_size    = $widget->{($group ? $group.'_' : '').'max_file_size'};
+    $field_file_audio->types_allowed    = $widget->{($group ? $group.'_' : '').'types_allowed'};
+    $field_file_audio->cform            = $widget->cform;
+    $field_file_audio->min_files_number = null;
+    $field_file_audio->max_files_number = null;
+    $field_file_audio->has_on_validate  = false;
+    $field_file_audio->build();
+    $field_file_audio->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
+  # control for upload new audio cover
+    $field_file_cover = new field_file_picture;
+    $field_file_cover->title            = 'Cover';
+    $field_file_cover->max_file_size    = $widget->cover_max_file_size;
+    $field_file_cover->types_allowed    = $widget->cover_types_allowed;
+    $field_file_cover->cform            = $widget->cform;
+    $field_file_cover->min_files_number = null;
+    $field_file_cover->max_files_number = null;
+    $field_file_cover->has_on_validate  = false;
+    $field_file_cover->build();
+    $field_file_cover->name_set($widget->name_get_complex().'__cover');
+  # button for insertion of the new item
+    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->cform = $widget->cform;
+    $button->build();
+    $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
+    $button->_type = 'insert';
+    $button->_kind = 'audio';
+  # relate new controls with the widget
+    if (true                     ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_audio;
+    if ($widget->cover_is_allowed) $widget->controls['#cover'                            ] = $field_file_cover;
+    if (true                     ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button;
+    if (true                     ) $result->child_insert($field_file_audio, 'file');
+    if ($widget->cover_is_allowed) $result->child_insert($field_file_cover, 'cover');
+    if (true                     ) $result->child_insert($button, 'button');
+    return $result;
   }
 
 }}

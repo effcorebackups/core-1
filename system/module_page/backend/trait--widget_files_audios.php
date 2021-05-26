@@ -39,9 +39,9 @@ namespace effcore {
     'preload'     => 'metadata'
   ];
 
-  function widget_manage_audio_item_make(&$widget, &$item, $c_row_id) {
+  static function widget_manage_audio_item_make(&$widget, &$item, $c_row_id, &$root) {
     if (media::media_class_get($item->object->type) === 'audio') {
-      if ($this->audio_player_on_manage_is_visible)          $widget->child_insert(new markup('audio',      ['src' => '/'.$item->object->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +500), 'player');
+      if (!empty($root->audio_player_on_manage_is_visible))  $widget->child_insert(new markup('audio',      ['src' => '/'.$item->object->get_current_path(true)] + $root->audio_player_on_manage_settings, [], +500), 'player');
       if (!empty($item->settings['data-cover-is-embedded'])) $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
     }
   }

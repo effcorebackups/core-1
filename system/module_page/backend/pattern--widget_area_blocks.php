@@ -20,56 +20,6 @@ namespace effcore {
     parent::__construct($attributes, $weight);
   }
 
-  function widget_manage_get($item, $c_row_id) {
-    $widget = parent::widget_manage_get($item, $c_row_id);
-  # info markup
-    $presets = block_preset::select_all($this->id_area);
-    $title_markup = isset($presets[$item->id]) ? [$presets[$item->id]->managing_group, ': ', $presets[$item->id]->managing_title] : 'ORPHANED BLOCK';
-    $info_markup = new markup('x-info',  [], [
-        'title' => new markup('x-title', [], $title_markup),
-        'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
-  # grouping of previous elements in widget 'manage'
-    $widget->child_insert($info_markup, 'info');
-    return $widget;
-  }
-
-  function widget_insert_get() {
-    $widget = new markup('x-widget', ['data-type' => 'insert']);
-  # control with type of new item
-    $presets = block_preset::select_all($this->id_area);
-    core::array_sort_by_text_property($presets, 'managing_group');
-    $options = ['not_selected' => $this->title__not_selected__widget_insert];
-    foreach ($presets as $c_preset) {
-      $c_group_id = core::sanitize_id($c_preset->managing_group);
-      if (!isset($options[$c_group_id])) {
-                 $options[$c_group_id] = new \stdClass;
-                 $options[$c_group_id]->title = $c_preset->managing_group; }
-      $options[$c_group_id]->values[$c_preset->id] = (new text($c_preset->managing_title))->render().' ('.$c_preset->id.')';
-    }
-    foreach ($options as $c_group) {
-      if ($c_group instanceof \stdClass) {
-        core::array_sort_text($c_group->values);
-      }
-    }
-    $select = new field_select('Insert block');
-    $select->values = $options;
-    $select->build();
-    $select->name_set($this->name_get_complex().'__insert');
-    $select->required_set(false);
-  # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($this->name_get_complex().'__insert');
-    $button->_type = 'insert';
-  # relate new controls with the widget
-    $this->controls['#insert'] = $select;
-    $this->controls['~insert'] = $button;
-    $widget->child_insert($select, 'select');
-    $widget->child_insert($button, 'button');
-    return $widget;
-  }
-
   # ─────────────────────────────────────────────────────────────────────
 
   function on_button_click_insert($form, $npath, $button) {
@@ -91,6 +41,66 @@ namespace effcore {
         'type' => (new text($this->item_title))->render() ]));
       return true;
     }
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_get(&$widget, $item, $c_row_id) {
+    $result = parent::widget_manage_get($widget, $item, $c_row_id);
+  # info markup
+    $presets = block_preset::select_all($widget->id_area);
+    $title_markup = isset($presets[$item->id]) ?
+                         [$presets[$item->id]->managing_group, ': ',
+                          $presets[$item->id]->managing_title] : 'ORPHANED BLOCK';
+    $info_markup = new markup('x-info',  [], [
+        'title' => new markup('x-title', [], $title_markup),
+        'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
+  # grouping of previous elements in widget 'manage'
+    $result->child_insert($info_markup, 'info');
+    return $result;
+  }
+
+  static function widget_insert_get(&$widget) {
+    $result = new markup('x-widget', ['data-type' => 'insert']);
+  # control with type of new item
+    $presets = block_preset::select_all($widget->id_area);
+    core::array_sort_by_text_property($presets, 'managing_group');
+    $options = ['not_selected' => $widget->title__not_selected__widget_insert];
+    foreach ($presets as $c_preset) {
+      $c_group_id = core::sanitize_id($c_preset->managing_group);
+      if (!isset($options[$c_group_id])) {
+                 $options[$c_group_id] = new \stdClass;
+                 $options[$c_group_id]->title = $c_preset->managing_group; }
+      $options[$c_group_id]->values[$c_preset->id] = (new text_multiline([
+        'title' => $c_preset->managing_title, 'id' => '('.$c_preset->id.')'], [], ' '
+      ))->render();
+    }
+    foreach ($options as $c_group) {
+      if ($c_group instanceof \stdClass) {
+        core::array_sort_text($c_group->values);
+      }
+    }
+    $select = new field_select('Insert block');
+    $select->values = $options;
+    $select->cform = $widget->cform;
+    $select->build();
+    $select->name_set($widget->name_get_complex().'__insert');
+    $select->required_set(false);
+  # button for insertion of the new item
+    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->cform = $widget->cform;
+    $button->build();
+    $button->value_set($widget->name_get_complex().'__insert');
+    $button->_type = 'insert';
+  # relate new controls with the widget
+    $widget->controls['#insert'] = $select;
+    $widget->controls['~insert'] = $button;
+    $result->child_insert($select, 'select');
+    $result->child_insert($button, 'button');
+    return $result;
   }
 
 }}

@@ -33,127 +33,6 @@ namespace effcore {
     'mp3' => 'mp3'
   ];
 
-  function widget_manage_get($item, $c_row_id) {
-    $widget = parent::widget_manage_get($item, $c_row_id);
-    $widget->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    static::widget_manage_picture_item_make($widget, $item, $c_row_id);
-    static::widget_manage_video_item_make  ($widget, $item, $c_row_id);
-    static::widget_manage_audio_item_make  ($widget, $item, $c_row_id);
-    return $widget;
-  }
-
-  function widget_insert_get() {
-    $widget = new markup('x-widget', ['data-type' => 'insert']);
-  # fieldsets
-    $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
-    $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);
-    $fieldset_audio    = new fieldset('Audio',    null, ['data-type' => 'audio'   ]);
-    $fieldset_pictures->state = 'closed';
-    $fieldset_video   ->state = 'closed';
-    $fieldset_audio   ->state = 'closed';
-  # control for upload new picture
-    $field_file_picture = new field_file_picture;
-    $field_file_picture->title            = 'Picture';
-    $field_file_picture->max_file_size    = $this->picture_max_file_size;
-    $field_file_picture->types_allowed    = $this->picture_types_allowed;
-    $field_file_picture->cform            = $this->cform;
-    $field_file_picture->min_files_number = null;
-    $field_file_picture->max_files_number = null;
-    $field_file_picture->has_on_validate  = false;
-    $field_file_picture->build();
-    $field_file_picture->multiple_set();
-    $field_file_picture->name_set($this->name_get_complex().'__file[]');
-  # control for upload new video
-    $field_file_video = new field_file_video;
-    $field_file_video->title            = 'Video';
-    $field_file_video->max_file_size    = $this->video_max_file_size;
-    $field_file_video->types_allowed    = $this->video_types_allowed;
-    $field_file_video->cform            = $this->cform;
-    $field_file_video->min_files_number = null;
-    $field_file_video->max_files_number = null;
-    $field_file_video->has_on_validate  = false;
-    $field_file_video->build();
-    $field_file_video->name_set($this->name_get_complex().'__file_video');
-  # control for upload new video poster
-    $field_file_poster = new field_file_picture;
-    $field_file_poster->title            = 'Poster';
-    $field_file_poster->max_file_size    = $this->poster_max_file_size;
-    $field_file_poster->types_allowed    = $this->poster_types_allowed;
-    $field_file_poster->cform            = $this->cform;
-    $field_file_poster->min_files_number = null;
-    $field_file_poster->max_files_number = null;
-    $field_file_poster->has_on_validate  = false;
-    $field_file_poster->build();
-    $field_file_poster->name_set($this->name_get_complex().'__poster');
-  # control for upload new audio
-    $field_file_audio = new field_file_audio;
-    $field_file_audio->title            = 'Audio';
-    $field_file_audio->max_file_size    = $this->audio_max_file_size;
-    $field_file_audio->types_allowed    = $this->audio_types_allowed;
-    $field_file_audio->cform            = $this->cform;
-    $field_file_audio->min_files_number = null;
-    $field_file_audio->max_files_number = null;
-    $field_file_audio->has_on_validate  = false;
-    $field_file_audio->build();
-    $field_file_audio->name_set($this->name_get_complex().'__file_audio');
-  # control for upload new audio cover
-    $field_file_cover = new field_file_picture;
-    $field_file_cover->title            = 'Cover';
-    $field_file_cover->max_file_size    = $this->cover_max_file_size;
-    $field_file_cover->types_allowed    = $this->cover_types_allowed;
-    $field_file_cover->cform            = $this->cform;
-    $field_file_cover->min_files_number = null;
-    $field_file_cover->max_files_number = null;
-    $field_file_cover->has_on_validate  = false;
-    $field_file_cover->build();
-    $field_file_cover->name_set($this->name_get_complex().'__cover');
-  # button for insertion of the new item
-    $button_insert_picture = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button_insert_picture->break_on_validate = true;
-    $button_insert_picture->build();
-    $button_insert_picture->value_set($this->name_get_complex().'__insert_picture');
-    $button_insert_picture->_type = 'insert';
-    $button_insert_picture->_kind = 'picture';
-    $button_insert_video = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button_insert_video->break_on_validate = true;
-    $button_insert_video->build();
-    $button_insert_video->value_set($this->name_get_complex().'__insert_video');
-    $button_insert_video->_type = 'insert';
-    $button_insert_video->_kind = 'video';
-    $button_insert_audio = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
-    $button_insert_audio->break_on_validate = true;
-    $button_insert_audio->build();
-    $button_insert_audio->value_set($this->name_get_complex().'__insert_audio');
-    $button_insert_audio->_type = 'insert';
-    $button_insert_audio->_kind = 'audio';
-  # relate new controls with the widget
-    $this->controls['#file_picture'] = $field_file_picture;
-    $this->controls['#file_video'  ] = $field_file_video;
-    $this->controls['#file_audio'  ] = $field_file_audio;
-    $this->controls['#poster'      ] = $field_file_poster;
-    $this->controls['#cover'       ] = $field_file_cover;
-    $this->controls['~insert_picture'] = $button_insert_picture;
-    $this->controls['~insert_video'  ] = $button_insert_video;
-    $this->controls['~insert_audio'  ] = $button_insert_audio;
-    $this->controls['*fieldset_pictures'] = $fieldset_pictures;
-    $this->controls['*fieldset_video'   ] = $fieldset_video;
-    $this->controls['*fieldset_audio'   ] = $fieldset_audio;
-    $fieldset_pictures->child_insert($field_file_picture, 'file');
-    $fieldset_pictures->child_insert($button_insert_picture, 'button');
-    $fieldset_video   ->child_insert($field_file_video, 'file');
-    $fieldset_video   ->child_insert($field_file_poster, 'poster');
-    $fieldset_video   ->child_insert($button_insert_video, 'button');
-    $fieldset_audio   ->child_insert($field_file_audio, 'file');
-    $fieldset_audio   ->child_insert($field_file_cover, 'cover');
-    $fieldset_audio   ->child_insert($button_insert_audio, 'button');
-    $widget->child_insert($fieldset_pictures, 'pictures');
-    $widget->child_insert($fieldset_video, 'video');
-    $widget->child_insert($fieldset_audio, 'audio');
-    return $widget;
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_values_validate($form, $npath, $button) {
     if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_values_validate($form, $npath, $button);}
     if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return parent::on_values_validate($form, $npath, $button);}
@@ -161,9 +40,9 @@ namespace effcore {
   }
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
-    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_file_prepare      ($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return $this ->on_file_prepare_video($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return $this ->on_file_prepare_audio($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return $this ->on_file_prepare_picture($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return $this ->on_file_prepare_video  ($form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return $this ->on_file_prepare_audio  ($form, $npath, $button, $items, $new_item);}
   }
 
   function on_button_click_insert($form, $npath, $button) {
@@ -202,6 +81,37 @@ namespace effcore {
     if (media::media_class_get($item->object->type) === 'picture') return widget_files_pictures::item_markup_get($item, $row_id);
     if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($item, $row_id);
     if (media::media_class_get($item->object->type) === 'video'  ) return widget_files_videos  ::item_markup_get($item, $row_id);
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function widget_manage_get(&$widget, $item, $c_row_id) {
+    $result = parent::widget_manage_get($widget, $item, $c_row_id);
+    $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
+    static::widget_manage_picture_item_make($result, $item, $c_row_id, $widget);
+    static::widget_manage_video_item_make  ($result, $item, $c_row_id, $widget);
+    static::widget_manage_audio_item_make  ($result, $item, $c_row_id, $widget);
+    return $result;
+  }
+
+  static function widget_insert_get(&$widget) {
+    $result = new markup('x-widget', ['data-type' => 'insert']);
+    $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
+    $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);
+    $fieldset_audio    = new fieldset('Audio',    null, ['data-type' => 'audio'   ]);
+    $fieldset_pictures->state = 'closed';
+    $fieldset_video   ->state = 'closed';
+    $fieldset_audio   ->state = 'closed';
+    $fieldset_pictures->children_update(widget_files_pictures::widget_insert_get($widget, 'picture')->children_select());
+    $fieldset_video   ->children_update(widget_files_videos  ::widget_insert_get($widget, 'video'  )->children_select());
+    $fieldset_audio   ->children_update(widget_files_audios  ::widget_insert_get($widget, 'audio'  )->children_select());
+    $widget->controls['*fieldset_pictures'] = $fieldset_pictures;
+    $widget->controls['*fieldset_video'   ] = $fieldset_video;
+    $widget->controls['*fieldset_audio'   ] = $fieldset_audio;
+    $result->child_insert($fieldset_pictures, 'pictures');
+    $result->child_insert($fieldset_video, 'video');
+    $result->child_insert($fieldset_audio, 'audio');
+    return $result;
   }
 
 }}
