@@ -113,7 +113,7 @@ namespace effcore {
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     if ($button->_kind === 'picture') {$widget->controls['#file'] = $widget->controls['#file_picture']; return widget_files_pictures::on_button_click_insert($widget, $form, $npath, $button);}
     if ($button->_kind === 'video'  ) {$widget->controls['#file'] = $widget->controls['#file_video'  ]; return widget_files_videos  ::on_button_click_insert($widget, $form, $npath, $button);}
-    if ($button->_kind === 'audio'  ) {$widget->controls['#file'] = $widget->controls['#file_audio'  ]; return widget_files_audios  ::on_button_click_insert_audio($widget, $form, $npath, $button);}
+    if ($button->_kind === 'audio'  ) {$widget->controls['#file'] = $widget->controls['#file_audio'  ]; return widget_files_audios  ::on_button_click_insert($widget, $form, $npath, $button);}
   }
 
 }}

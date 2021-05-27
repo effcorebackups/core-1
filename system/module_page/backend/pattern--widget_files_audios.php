@@ -109,7 +109,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
-    return event::start_local('on_button_click_insert_audio', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button]);
+    if ($widget->cover_is_allowed) {
+      $values       = $widget->on_values_validate      ($form, $npath, $button);
+      $values_cover = $widget->on_values_validate_cover($form, $npath, $button);
+      if (!$widget->controls['#file']->has_error() &&                                              count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
+      if (!$widget->controls['#file']->has_error() && !$widget->controls['#cover']->has_error() && count($values) !== 0)
+           return widget_files::on_button_click_insert($widget, $form, $npath, $button);
+    } else return widget_files::on_button_click_insert($widget, $form, $npath, $button);
   }
 
 }}
