@@ -29,11 +29,31 @@ namespace effcore {
     if (!$this->is_builded) {
       $this->child_insert(static::widget_manage_group_get($this), 'manage');
       $this->child_insert(static::widget_insert_get      ($this), 'insert');
-      $this->widgets_manage_group_build();
+      $this->build_widget_manage_group();
       if ($this->number === null)
           $this->number = static::current_number_generate();
       $this->is_builded = true;
     }
+  }
+
+  function build_widget_manage_group() {
+    $group = $this->child_select('manage');
+    $items = $this->items_get();
+  # insert new and update existing widgets
+    foreach ($this->items_get() as $c_row_id => $c_item) {
+      if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
+      if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
+      $c_widget->weight = $c_widget->child_select('weight')->value_get();
+    }
+  # delete old widgets
+    foreach ($group->children_select() as $c_row_id => $c_widget) {
+      if (!isset($items[$c_row_id]) || !empty($items[$c_row_id]->is_deleted)) {
+        $group->child_delete($c_row_id);
+      }
+    }
+  # message 'no items'
+    if ($group->children_select_count() !== 0) $group->child_delete(                                          'no_items');
+    if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -59,47 +79,12 @@ namespace effcore {
     if ($once && $this->cform->validation_cache_get($this->name_get_complex().'__items') !== null) return;
     $this->cform->validation_cache_is_persistent = true;
     $this->cform->validation_cache_set($this->name_get_complex().'__items', $items ?: []);
-    $this->widgets_manage_group_build();
+    $this->build_widget_manage_group();
   }
 
   function items_reset() {
     $this->cform->validation_cache_is_persistent = false;
     $this->cform->validation_cache_set($this->name_get_complex().'__items', null);
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function widgets_manage_group_build() {
-    $group = $this->child_select('manage');
-    $items = $this->items_get();
-  # insert new and update existing widgets
-    foreach ($this->items_get() as $c_row_id => $c_item) {
-      if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
-      if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
-      $c_widget->weight = $c_widget->child_select('weight')->value_get();
-    }
-  # delete old widgets
-    foreach ($group->children_select() as $c_row_id => $c_widget) {
-      if (!isset($items[$c_row_id]) || !empty($items[$c_row_id]->is_deleted)) {
-        $group->child_delete($c_row_id);
-      }
-    }
-  # message 'no items'
-    if ($group->children_select_count() !== 0) $group->child_delete(                                          'no_items');
-    if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
-  function on_button_click_delete($form, $npath, $button) {
-    $items = $this->items_get();
-    unset($items[$button->_id]);
-    $this->items_set($items);
-    message::insert(new text_multiline([
-      'Item of type "%%_type" was deleted.',
-      'Do not forget to save the changes!'], [
-      'type' => (new text($this->item_title))->render() ]));
-    return true;
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -162,7 +147,6 @@ namespace effcore {
   # button for deletion of the old item
     $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
     $button_delete->break_on_validate = true;
-    $button_delete->cform = $widget->cform;
     $button_delete->build();
     $button_delete->value_set($widget->name_get_complex().'__delete__'.$c_row_id);
     $button_delete->_type = 'delete';
@@ -208,6 +192,17 @@ namespace effcore {
     return true;
   }
 
+  static function on_button_click_delete(&$widget, $form, $npath, $button) {
+    $items = $widget->items_get();
+    unset($items[$button->_id]);
+    $widget->items_set($items);
+    message::insert(new text_multiline([
+      'Item of type "%%_type" was deleted.',
+      'Do not forget to save the changes!'], [
+      'type' => (new text($widget->item_title))->render() ]));
+    return true;
+  }
+
   static function on_cache_update(&$widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item)
@@ -224,7 +219,7 @@ namespace effcore {
     foreach ($widget->controls as $c_button) {
       if ($c_button instanceof button && $c_button->is_clicked()) {
         if (isset($c_button->_type) && $c_button->_type === 'insert') event::start_local('on_button_click_insert', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
-        if (isset($c_button->_type) && $c_button->_type === 'delete') return $widget->on_button_click_delete($form, $npath, $c_button);
+        if (isset($c_button->_type) && $c_button->_type === 'delete') event::start_local('on_button_click_delete', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
         return;
       }
     }

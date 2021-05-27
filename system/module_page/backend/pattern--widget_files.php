@@ -92,33 +92,6 @@ namespace effcore {
     return $new_item->object->move_tmp_to_pre($pre_path);
   }
 
-  function on_button_click_delete($form, $npath, $button) {
-    $items = $this->items_get();
-    $id_for_message = $items[$button->_id]->object->file;
-    switch ($items[$button->_id]->object->get_current_state()) {
-      case 'pre':
-        if ($items[$button->_id]->object->delete_pre()) {
-          unset($items[$button->_id]);
-          $this->items_set($items);
-          message::insert(new text_multiline([
-            'Item of type "%%_type" with title = "%%_title" was deleted physically.',
-            'Do not forget to save the changes!'], [
-            'type'  => (new text($this->item_title))->render(),
-            'title' => $id_for_message ]));
-          return true;
-        } return;
-      case 'fin':
-        $items[$button->_id]->is_deleted = true;
-        $this->items_set($items);
-        message::insert(new text_multiline([
-          'Item of type "%%_type" with title = "%%_title" was deleted.',
-          'Do not forget to save the changes!'], [
-          'type'  => (new text($this->item_title))->render(),
-          'title' => $id_for_message ]));
-        return true;
-    }
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -213,6 +186,33 @@ namespace effcore {
       }
       message::insert('Do not forget to save the changes!');
       return true;
+    }
+  }
+
+  static function on_button_click_delete(&$widget, $form, $npath, $button) {
+    $items = $widget->items_get();
+    $title_for_message = $items[$button->_id]->object->file;
+    switch ($items[$button->_id]->object->get_current_state()) {
+      case 'pre':
+        if ($items[$button->_id]->object->delete_pre()) {
+          unset($items[$button->_id]);
+          $widget->items_set($items);
+          message::insert(new text_multiline([
+            'Item of type "%%_type" with title = "%%_title" was deleted physically.',
+            'Do not forget to save the changes!'], [
+            'type'  => (new text($widget->item_title))->render(),
+            'title' => $title_for_message ]));
+          return true;
+        } return;
+      case 'fin':
+        $items[$button->_id]->is_deleted = true;
+        $widget->items_set($items);
+        message::insert(new text_multiline([
+          'Item of type "%%_type" with title = "%%_title" was deleted.',
+          'Do not forget to save the changes!'], [
+          'type'  => (new text($widget->item_title))->render(),
+          'title' => $title_for_message ]));
+        return true;
     }
   }
 
