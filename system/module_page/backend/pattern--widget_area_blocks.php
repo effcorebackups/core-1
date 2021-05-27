@@ -20,29 +20,6 @@ namespace effcore {
     parent::__construct($attributes, $weight);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-
-  function on_button_click_insert($form, $npath, $button) {
-    $this->controls['#insert']->required_set(true);
-    if (field_select::on_validate($this->controls['#insert'], $form, $npath)) {
-      $this->controls['#insert']->required_set(false);
-      $min_weight = 0;
-      $items = $this->items_get();
-      foreach ($items as $c_row_id => $c_item)
-        $min_weight = min($min_weight, $c_item->weight);
-      $new_item = new block_preset_link($this->controls['#insert']->value_get());
-      $new_item->weight = count($items) ? $min_weight - 5 : 0;
-      $items[] = $new_item;
-      $this->items_set($items);
-      $this->controls['#insert']->value_set('');
-      message::insert(new text_multiline([
-        'Item of type "%%_type" was inserted.',
-        'Do not forget to save the changes!'], [
-        'type' => (new text($this->item_title))->render() ]));
-      return true;
-    }
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -91,7 +68,6 @@ namespace effcore {
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
-    $button->cform = $widget->cform;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');
     $button->_type = 'insert';
@@ -101,6 +77,30 @@ namespace effcore {
     $result->child_insert($select, 'select');
     $result->child_insert($button, 'button');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+    $widget->controls['#insert']->required_set(true);
+    $result_validation = field_select::on_validate($widget->controls['#insert'], $form, $npath);
+    $widget->controls['#insert']->required_set(false);
+    if ($result_validation) {
+      $min_weight = 0;
+      $items = $widget->items_get();
+      foreach ($items as $c_row_id => $c_item)
+        $min_weight = min($min_weight, $c_item->weight);
+      $new_item = new block_preset_link($widget->controls['#insert']->value_get());
+      $new_item->weight = count($items) ? $min_weight - 5 : 0;
+      $items[] = $new_item;
+      $widget->items_set($items);
+      $widget->controls['#insert']->value_set('');
+      message::insert(new text_multiline([
+        'Item of type "%%_type" was inserted.',
+        'Do not forget to save the changes!'], [
+       'type' => (new text($widget->item_title))->render() ]));
+      return true;
+    }
   }
 
 }}

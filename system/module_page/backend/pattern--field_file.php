@@ -164,9 +164,9 @@ namespace effcore {
         $this->items_set('pre', $items_pre);
         $this->items_set('fin', $items_fin);
         message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" has been saved.', [
-          'type' => (new text($this->item_title))->render(),
-          'id'   => $c_item->file]));
+          'Item of type "%%_type" with title = "%%_title" has been saved.', [
+          'type'  => (new text($this->item_title))->render(),
+          'title' => $c_item->file]));
       } else {
         $this->error_set();
         return;
@@ -182,9 +182,9 @@ namespace effcore {
       if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
         $this->items_set('pre', $items_pre);
         message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-          'type' => (new text($this->item_title))->render(),
-          'id'   => $c_new_item->file]));
+          'Item of type "%%_type" with title = "%%_title" was inserted.', [
+          'type'  => (new text($this->item_title))->render(),
+          'title' => $c_new_item->file]));
       } else {
         $this->error_set();
         return;
@@ -201,9 +201,9 @@ namespace effcore {
           unset($items_pre[$c_id]);
           $this->items_set('pre', $items_pre);
           message::insert(new text(
-            'Item of type "%%_type" with ID = "%%_id" was deleted physically.', [
-            'type' => (new text($this->item_title))->render(),
-            'id'   => $c_item->file]));
+            'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+            'type'  => (new text($this->item_title))->render(),
+            'title' => $c_item->file]));
         } else {
           $this->error_set();
           return;
@@ -237,9 +237,9 @@ namespace effcore {
         $this->items_set('fin_to_delete', $deleted_cache);
         $this->items_set('fin', $items_fin);
         message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" was deleted.', [
-          'type' => (new text($this->item_title))->render(),
-          'id'   => $c_item->file
+          'Item of type "%%_type" with title = "%%_title" was deleted.', [
+          'type'  => (new text($this->item_title))->render(),
+          'title' => $c_item->file
         ]));
       }
     }
@@ -252,9 +252,9 @@ namespace effcore {
         unset($deleted_cache[$c_id]);
         $this->items_set('fin_to_delete', $deleted_cache);
         message::insert(new text(
-          'Item of type "%%_type" with ID = "%%_id" was deleted physically.', [
-          'type' => (new text($this->item_title))->render(),
-          'id'   => $c_item->file]));
+          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+          'type'  => (new text($this->item_title))->render(),
+          'title' => $c_item->file]));
       } else {
         $this->error_set();
         return;
@@ -337,7 +337,7 @@ namespace effcore {
     }
   }
 
-  static function on_manual_validate_and_return_value($field, $form, $npath) {
+  static function on_validate_manual($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
     $type = $field->type_get();

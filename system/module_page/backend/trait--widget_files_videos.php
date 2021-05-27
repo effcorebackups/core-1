@@ -37,8 +37,10 @@ namespace effcore {
     }
   }
 
+  # ─────────────────────────────────────────────────────────────────────
+
   function on_values_validate_poster($form, $npath, $button) {
-    return field_file::on_manual_validate_and_return_value($this->controls['#poster'], $form, $npath);
+    return field_file::on_validate_manual($this->controls['#poster'], $form, $npath);
   }
 
   function on_file_prepare_video($form, $npath, $button, &$items, &$new_item) {
@@ -68,21 +70,14 @@ namespace effcore {
     }
   }
 
-  function on_button_click_insert_video($form, $npath, $button) {
-    if ($this->poster_is_allowed) {
-      $values        = $this->on_values_validate       ($form, $npath, $button);
-      $values_poster = $this->on_values_validate_poster($form, $npath, $button);
-      if (!$this->controls['#file']->has_error() &&                                             count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
-      if (!$this->controls['#file']->has_error() && !$this->controls['#poster']->has_error() && count($values) !== 0) {
-        return parent::on_button_click_insert($form, $npath, $button);
-      }
-    } else {
-      $values = $this->on_values_validate($form, $npath, $button);
-      if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
-      if (!$this->controls['#file']->has_error() && count($values) !== 0) {
-        return parent::on_button_click_insert($form, $npath, $button);
-      }
-    }
+  static function on_button_click_insert_video(&$widget, $form, $npath, $button) {
+    if ($widget->poster_is_allowed) {
+      $values        = $widget->on_values_validate       ($form, $npath, $button);
+      $values_poster = $widget->on_values_validate_poster($form, $npath, $button);
+      if (!$widget->controls['#file']->has_error() &&                                               count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
+      if (!$widget->controls['#file']->has_error() && !$widget->controls['#poster']->has_error() && count($values) !== 0)
+           return widget_files::on_button_click_insert($widget, $form, $npath, $button);
+    } else return widget_files::on_button_click_insert($widget, $form, $npath, $button);
   }
 
 }}

@@ -87,7 +87,6 @@ namespace effcore {
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
-    $button->cform = $widget->cform;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
     $button->_type = 'insert';

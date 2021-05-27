@@ -45,12 +45,6 @@ namespace effcore {
     if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return $this ->on_file_prepare_audio  ($form, $npath, $button, $items, $new_item);}
   }
 
-  function on_button_click_insert($form, $npath, $button) {
-    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_button_click_insert      ($form, $npath, $button);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return $this ->on_button_click_insert_video($form, $npath, $button);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return $this ->on_button_click_insert_audio($form, $npath, $button);}
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -79,8 +73,8 @@ namespace effcore {
 
   static function item_markup_get($item, $row_id) {
     if (media::media_class_get($item->object->type) === 'picture') return widget_files_pictures::item_markup_get($item, $row_id);
-    if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($item, $row_id);
     if (media::media_class_get($item->object->type) === 'video'  ) return widget_files_videos  ::item_markup_get($item, $row_id);
+    if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($item, $row_id);
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -112,6 +106,14 @@ namespace effcore {
     $result->child_insert($fieldset_video, 'video');
     $result->child_insert($fieldset_audio, 'audio');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+    if ($button->_kind === 'picture') {$widget->controls['#file'] = $widget->controls['#file_picture']; return widget_files_pictures::on_button_click_insert      ($widget, $form, $npath, $button);}
+    if ($button->_kind === 'video'  ) {$widget->controls['#file'] = $widget->controls['#file_video'  ]; return widget_files_videos  ::on_button_click_insert_video($widget, $form, $npath, $button);}
+    if ($button->_kind === 'audio'  ) {$widget->controls['#file'] = $widget->controls['#file_audio'  ]; return widget_files_audios  ::on_button_click_insert_audio($widget, $form, $npath, $button);}
   }
 
 }}

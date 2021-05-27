@@ -53,9 +53,9 @@ namespace effcore {
             $this->fixed_type, true);
           if ($c_result) {
             message::insert(new text(
-              'Item of type "%%_type" with ID = "%%_id" has been saved.', [
-              'type' => (new text($this->item_title))->render(),
-              'id'   => $c_item->object->file
+              'Item of type "%%_type" with title = "%%_title" has been saved.', [
+              'type'  => (new text($this->item_title))->render(),
+              'title' => $c_item->object->file
             ]));
           }
           break;
@@ -66,9 +66,9 @@ namespace effcore {
             unset($items[$c_row_id]);
             if ($c_result) {
               message::insert(new text_multiline([
-                'Item of type "%%_type" with ID = "%%_id" was deleted physically.'], [
-                'type' => (new text($this->item_title))->render(),
-                'id'   => $c_id_for_message
+                'Item of type "%%_type" with title = "%%_title" was deleted physically.'], [
+                'type'  => (new text($this->item_title))->render(),
+                'title' => $c_id_for_message
               ]));
             }
           }
@@ -84,42 +84,12 @@ namespace effcore {
   }
 
   function on_values_validate($form, $npath, $button) {
-    return field_file::on_manual_validate_and_return_value($this->controls['#file'], $form, $npath);
+    return field_file::on_validate_manual($this->controls['#file'], $form, $npath);
   }
 
   function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
     $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
     return $new_item->object->move_tmp_to_pre($pre_path);
-  }
-
-  function on_button_click_insert($form, $npath, $button) {
-    $values = $this->on_values_validate($form, $npath, $button);
-    if (!$this->controls['#file']->has_error() && count($values) === 0) {$this->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($this->controls['#file']->title))->render() ]); return;}
-    if (!$this->controls['#file']->has_error() && count($values) !== 0) {
-      $items = $this->items_get();
-      foreach ($values as $c_value) {
-        $min_weight = 0;
-        foreach ($items as $c_row_id => $c_item)
-          $min_weight = min($min_weight, $c_item->weight);
-        $c_new_item = new \stdClass;
-        $c_new_item->is_deleted = false;
-        $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
-        $c_new_item->object = $c_value;
-        $items[] = $c_new_item;
-        if ($this->on_file_prepare($form, $npath, $button, $items, $c_new_item)) {
-          $this->items_set($items);
-          message::insert(new text(
-            'Item of type "%%_type" with ID = "%%_id" was inserted.', [
-            'type' => (new text($this->item_title))->render(),
-            'id'   => $c_new_item->object->file]));
-        } else {
-          $form->error_set();
-          return;
-        }
-      }
-      message::insert('Do not forget to save the changes!');
-      return true;
-    }
   }
 
   function on_button_click_delete($form, $npath, $button) {
@@ -131,20 +101,20 @@ namespace effcore {
           unset($items[$button->_id]);
           $this->items_set($items);
           message::insert(new text_multiline([
-            'Item of type "%%_type" with ID = "%%_id" was deleted physically.',
+            'Item of type "%%_type" with title = "%%_title" was deleted physically.',
             'Do not forget to save the changes!'], [
-            'type' => (new text($this->item_title))->render(),
-            'id'   => $id_for_message ]));
+            'type'  => (new text($this->item_title))->render(),
+            'title' => $id_for_message ]));
           return true;
         } return;
       case 'fin':
         $items[$button->_id]->is_deleted = true;
         $this->items_set($items);
         message::insert(new text_multiline([
-          'Item of type "%%_type" with ID = "%%_id" was deleted.',
+          'Item of type "%%_type" with title = "%%_title" was deleted.',
           'Do not forget to save the changes!'], [
-          'type' => (new text($this->item_title))->render(),
-          'id'   => $id_for_message ]));
+          'type'  => (new text($this->item_title))->render(),
+          'title' => $id_for_message ]));
         return true;
     }
   }
@@ -203,7 +173,6 @@ namespace effcore {
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
-    $button->cform = $widget->cform;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');
     $button->_type = 'insert';
@@ -213,6 +182,38 @@ namespace effcore {
     $result->child_insert($field_file, 'file');
     $result->child_insert($button, 'button');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+    $values = $widget->on_values_validate($form, $npath, $button);
+    if (!$widget->controls['#file']->has_error() && count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
+    if (!$widget->controls['#file']->has_error() && count($values) !== 0) {
+      $items = $widget->items_get();
+      foreach ($values as $c_value) {
+        $min_weight = 0;
+        foreach ($items as $c_row_id => $c_item)
+          $min_weight = min($min_weight, $c_item->weight);
+        $c_new_item = new \stdClass;
+        $c_new_item->is_deleted = false;
+        $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
+        $c_new_item->object = $c_value;
+        $items[] = $c_new_item;
+        if ($widget->on_file_prepare($form, $npath, $button, $items, $c_new_item)) {
+          $widget->items_set($items);
+          message::insert(new text(
+            'Item of type "%%_type" with title = "%%_title" was inserted.', [
+            'type'  => (new text($widget->item_title))->render(),
+            'title' => $c_new_item->object->file]));
+        } else {
+          $form->error_set();
+          return;
+        }
+      }
+      message::insert('Do not forget to save the changes!');
+      return true;
+    }
   }
 
 }}

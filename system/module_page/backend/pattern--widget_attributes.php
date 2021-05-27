@@ -13,26 +13,6 @@ namespace effcore {
   public $name_complex = 'widget_attributes';
   public $state = 'closed';
 
-  function on_button_click_insert($form, $npath, $button) {
-    $min_weight = 0;
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item)
-      $min_weight = min($min_weight, $c_item->weight);
-    $new_item = new \stdClass;
-    $new_item->weight               = count($items) ? $min_weight - 5 : 0;
-    $new_item->name                 = '';
-    $new_item->value                = '';
-    $new_item->is_apply_translation = false;
-    $new_item->is_apply_tokens      = false;
-    $items[] = $new_item;
-    $this->items_set($items);
-    message::insert(new text_multiline([
-      'Item of type "%%_type" was inserted.',
-      'Do not forget to save the changes!'], [
-      'type' => (new text($this->item_title))->render() ]));
-    return true;
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -105,6 +85,26 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+
+  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+    $min_weight = 0;
+    $items = $widget->items_get();
+    foreach ($items as $c_row_id => $c_item)
+      $min_weight = min($min_weight, $c_item->weight);
+    $new_item = new \stdClass;
+    $new_item->weight               = count($items) ? $min_weight - 5 : 0;
+    $new_item->name                 = '';
+    $new_item->value                = '';
+    $new_item->is_apply_translation = false;
+    $new_item->is_apply_tokens      = false;
+    $items[] = $new_item;
+    $widget->items_set($items);
+    message::insert(new text_multiline([
+      'Item of type "%%_type" was inserted.',
+      'Do not forget to save the changes!'], [
+      'type' => (new text($widget->item_title))->render() ]));
+    return true;
+  }
 
   static function on_cache_update(&$widget, $form, $npath) {
     $items = $widget->items_get();

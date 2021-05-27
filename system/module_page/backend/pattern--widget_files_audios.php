@@ -26,10 +26,6 @@ namespace effcore {
     return $this->on_file_prepare_audio($form, $npath, $button, $items, $new_item);
   }
 
-  function on_button_click_insert($form, $npath, $button) {
-    return $this->on_button_click_insert_audio($form, $npath, $button);
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -96,7 +92,6 @@ namespace effcore {
   # button for insertion of the new item
     $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
-    $button->cform = $widget->cform;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
     $button->_type = 'insert';
@@ -109,6 +104,12 @@ namespace effcore {
     if ($widget->cover_is_allowed) $result->child_insert($field_file_cover, 'cover');
     if (true                     ) $result->child_insert($button, 'button');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+    return event::start_local('on_button_click_insert_audio', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button]);
   }
 
 }}
