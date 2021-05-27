@@ -21,7 +21,7 @@ namespace effcore {
   ];
 
   function value_get_complex($is_relative = true) {
-    $this->on_values_save();
+    event::start_local('on_values_save', $this);
     $items = $this->items_get();
     foreach ($items as $c_item) {
       if (empty($c_item->object->tmp_path) === true)           unset($c_item->object->tmp_path);
@@ -40,48 +40,6 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-
-  function on_values_save() {
-    $items = $this->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      switch ($c_item->object->get_current_state()) {
-        case 'pre': # moving of 'pre' items into the directory 'files'
-          token::insert('item_id_context', 'text', $c_row_id);
-          $c_result = $c_item->object->move_pre_to_fin(dynamic::dir_files.
-            $this->upload_dir.$c_item->object->file,
-            $this->fixed_name,
-            $this->fixed_type, true);
-          if ($c_result) {
-            message::insert(new text(
-              'Item of type "%%_type" with title = "%%_title" has been saved.', [
-              'type'  => (new text($this->item_title))->render(),
-              'title' => $c_item->object->file
-            ]));
-          }
-          break;
-        case 'fin': # deletion of 'fin' items which marked as 'deleted'
-          if (!empty($c_item->is_deleted)) {
-            $c_id_for_message = $c_item->object->file;
-            $c_result = $c_item->object->delete_fin();
-            unset($items[$c_row_id]);
-            if ($c_result) {
-              message::insert(new text_multiline([
-                'Item of type "%%_type" with title = "%%_title" was deleted physically.'], [
-                'type'  => (new text($this->item_title))->render(),
-                'title' => $c_id_for_message
-              ]));
-            }
-          }
-          break;
-        case null: # cache cleaning for lost files
-          unset($items[$c_row_id]);
-          break;
-      }
-    }
-    $this->items_set($items);
-    $this->is_builded = false;
-    $this->build();
-  }
 
   function on_values_validate($form, $npath, $button) {
     return field_file::on_validate_manual($this->controls['#file'], $form, $npath);
@@ -158,6 +116,48 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+
+  static function on_values_save(&$widget) {
+    $items = $widget->items_get();
+    foreach ($items as $c_row_id => $c_item) {
+      switch ($c_item->object->get_current_state()) {
+        case 'pre': # moving of 'pre' items into the directory 'files'
+          token::insert('item_id_context', 'text', $c_row_id);
+          $c_result = $c_item->object->move_pre_to_fin(dynamic::dir_files.
+            $widget->upload_dir.$c_item->object->file,
+            $widget->fixed_name,
+            $widget->fixed_type, true);
+          if ($c_result) {
+            message::insert(new text(
+              'Item of type "%%_type" with title = "%%_title" has been saved.', [
+              'type'  => (new text($widget->item_title))->render(),
+              'title' => $c_item->object->file
+            ]));
+          }
+          break;
+        case 'fin': # deletion of 'fin' items which marked as 'deleted'
+          if (!empty($c_item->is_deleted)) {
+            $c_title_for_message = $c_item->object->file;
+            $c_result = $c_item->object->delete_fin();
+            unset($items[$c_row_id]);
+            if ($c_result) {
+              message::insert(new text_multiline([
+                'Item of type "%%_type" with title = "%%_title" was deleted physically.'], [
+                'type'  => (new text($widget->item_title))->render(),
+                'title' => $c_title_for_message
+              ]));
+            }
+          }
+          break;
+        case null: # cache cleaning for lost files
+          unset($items[$c_row_id]);
+          break;
+      }
+    }
+    $widget->items_set($items);
+    $widget->is_builded = false;
+    $widget->build();
+  }
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     $values = $widget->on_values_validate($form, $npath, $button);
