@@ -25,10 +25,6 @@ namespace effcore {
     'jpeg' => 'jpeg'
   ];
 
-  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
-    return $this->on_file_prepare_picture($form, $npath, $button, $items, $new_item);
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -97,6 +93,26 @@ namespace effcore {
     $result->child_insert($field_file_picture, 'file');
     $result->child_insert($button, 'button');
     return $result;
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+
+  static function on_file_prepare(&$widget, $form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    if ($new_item->object->move_tmp_to_pre($pre_path)) {
+      $new_item->settings = $widget->picture_default_settings;
+      $new_item->settings['data-thumbnails-is-embedded'] = false;
+      if ($widget->thumbnails_is_allowed) {
+        if (media::media_class_get($new_item->object->type) === 'picture') {
+          if (media::is_type_for_thumbnail($new_item->object->type)) {
+            if ($new_item->object->container_picture_make($widget->thumbnails)) {
+              $new_item->settings['data-thumbnails-is-embedded'] = true;
+            }
+          }
+        }
+      }
+      return true;
+    }
   }
 
 }}

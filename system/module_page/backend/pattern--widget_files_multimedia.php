@@ -39,12 +39,6 @@ namespace effcore {
     if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return parent::on_values_validate($form, $npath, $button);}
   }
 
-  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
-    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return $this ->on_file_prepare_picture($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return $this ->on_file_prepare_video  ($form, $npath, $button, $items, $new_item);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return $this ->on_file_prepare_audio  ($form, $npath, $button, $items, $new_item);}
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -109,6 +103,12 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+
+  static function on_file_prepare(&$widget, $form, $npath, $button, &$items, &$new_item) {
+    if ($button->_kind === 'picture') {$widget->controls['#file'] = $widget->controls['#file_picture']; return widget_files_pictures::on_file_prepare($widget, $form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'video'  ) {$widget->controls['#file'] = $widget->controls['#file_video'  ]; return widget_files_videos  ::on_file_prepare($widget, $form, $npath, $button, $items, $new_item);}
+    if ($button->_kind === 'audio'  ) {$widget->controls['#file'] = $widget->controls['#file_audio'  ]; return widget_files_audios  ::on_file_prepare($widget, $form, $npath, $button, $items, $new_item);}
+  }
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     if ($button->_kind === 'picture') {$widget->controls['#file'] = $widget->controls['#file_picture']; return widget_files_pictures::on_button_click_insert($widget, $form, $npath, $button);}

@@ -45,11 +45,6 @@ namespace effcore {
     return field_file::on_validate_manual($this->controls['#file'], $form, $npath);
   }
 
-  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
-    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
-    return $new_item->object->move_tmp_to_pre($pre_path);
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -117,6 +112,11 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  static function on_file_prepare(&$widget, $form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    return $new_item->object->move_tmp_to_pre($pre_path);
+  }
+
   static function on_values_save(&$widget) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
@@ -173,7 +173,7 @@ namespace effcore {
         $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
         $c_new_item->object = $c_value;
         $items[] = $c_new_item;
-        if ($widget->on_file_prepare($form, $npath, $button, $items, $c_new_item)) {
+        if (event::start_local('on_file_prepare', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'items' => &$items, 'new_item' => &$c_new_item])) {
           $widget->items_set($items);
           message::insert(new text(
             'Item of type "%%_type" with title = "%%_title" was inserted.', [

@@ -22,10 +22,6 @@ namespace effcore {
     'mp4' => 'mp4'
   ];
 
-  function on_file_prepare($form, $npath, $button, &$items, &$new_item) {
-    return $this->on_file_prepare_video($form, $npath, $button, $items, $new_item);
-  }
-
   ###########################
   ### static declarations ###
   ###########################
@@ -109,6 +105,33 @@ namespace effcore {
   }
 
   # ─────────────────────────────────────────────────────────────────────
+
+  static function on_file_prepare(&$widget, $form, $npath, $button, &$items, &$new_item) {
+    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
+    if ($new_item->object->move_tmp_to_pre($pre_path)) {
+      $new_item->settings = $widget->video_player_default_settings;
+      $new_item->settings['data-poster-is-embedded'] = false;
+      if ($widget->poster_is_allowed) {
+        if (media::media_class_get($new_item->object->type) === 'video') {
+          $values = $widget->on_values_validate_poster($form, $npath, $button);
+          $poster = reset($values);
+          if ($poster instanceof file_history) {
+            if (media::media_class_get($poster->type) === 'picture') {
+              if (media::is_type_for_thumbnail($poster->type)) {
+                if ($poster->move_tmp_to_pre($pre_path.'.'.$poster->type)) {
+                  if ($new_item->object->container_video_make($widget->poster_thumbnails, $poster->get_current_path())) {
+                    $new_item->settings['data-poster-is-embedded'] = true;
+                    @unlink($pre_path.'.'.$poster->type);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return true;
+    }
+  }
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     if ($widget->poster_is_allowed) {

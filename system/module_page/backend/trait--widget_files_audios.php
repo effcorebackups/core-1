@@ -43,33 +43,6 @@ namespace effcore {
     return field_file::on_validate_manual($this->controls['#cover'], $form, $npath);
   }
 
-  function on_file_prepare_audio($form, $npath, $button, &$items, &$new_item) {
-    $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
-    if ($new_item->object->move_tmp_to_pre($pre_path)) {
-      $new_item->settings = $this->audio_player_default_settings;
-      $new_item->settings['data-cover-is-embedded'] = false;
-      if ($this->cover_is_allowed) {
-        if (media::media_class_get($new_item->object->type) === 'audio') {
-          $values = $this->on_values_validate_cover($form, $npath, $button);
-          $cover = reset($values);
-          if ($cover instanceof file_history) {
-            if (media::media_class_get($cover->type) === 'picture') {
-              if (media::is_type_for_thumbnail($cover->type)) {
-                if ($cover->move_tmp_to_pre($pre_path.'.'.$cover->type)) {
-                  if ($new_item->object->container_audio_make($this->cover_thumbnails, $cover->get_current_path())) {
-                    $new_item->settings['data-cover-is-embedded'] = true;
-                    @unlink($pre_path.'.'.$cover->type);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      return true;
-    }
-  }
-
   ###########################
   ### static declarations ###
   ###########################
