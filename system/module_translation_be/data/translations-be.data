@@ -17,8 +17,8 @@ translations
     - Access forbidden: Доступ забаронены
     - Access recovery form: Форма аднаўлення доступу
     - Access settings are not applicable if no one role is active!: Налады доступу не ўжываюцца, калі ні адна роля не актыўнa!
-    - Access: Доступ
     - access: доступ
+    - Access: Доступ
     - action: дзеянне
     - Action: Дзеянне
     - actions: дзеянні
@@ -36,21 +36,21 @@ translations
     - Anonymous: Ананім
     - Answer: Адказ
     - Answers: Адказы
-    - Apply tokens: Прымяніць токены
     - apply tokens: прымяніць токены
+    - Apply tokens: Прымяніць токены
     - apply translation: прымяніць пераклад
     - apply: прымяніць
     - Architecture: Архітэктура
     - Attribute: Атрыбут
     - Attributes: Атрыбуты
-    - Audio: Аўдыё
     - audio: аўдыё
+    - Audio: Аўдыё
     - Audio\: delete: Аўдыё: выдаліць
     - Audio\: insert: Аўдыё: уставіць
     - Audio\: select: Аўдыё: абраць
     - Audio\: update: Аўдыё: абнавіць
-    - Audios: Аўдыё
     - audios: аўдыё
+    - Audios: Аўдыё
     - Avatar: Аватар
     - B: Б
     - Belarusian: Беларускі
@@ -64,8 +64,8 @@ translations
     - bundle title: загаловак пакету
     - Bundle with system.: Пакет з сістэмай.
     - Button active: Кнопка актыўная
-    - Button: Кнопка
     - button: кнопка
+    - Button: Кнопка
     - Button\: text: Кнопка: тэкст
     - Cache update form: Форма абнаўлення кэша
     - cache: кэш
@@ -100,10 +100,10 @@ translations
     - Content of the "sitemap.xml" file: Змесціва файла "sitemap.xml"
     - Content: Змесціва
     - Cookies are disabled. You cannot log in!: Cookies адключаны. Вы не можаце ўвайсці ў сістэму!
-    - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Аўтар/Праваўладальнік. Усе правы абаронены.
-    - Copyright: Аўтарскія правы
+    - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
     - copyright: аўтарскія правы
+    - Copyright: Аўтарскія правы
     - Core: Ядро
     - Cover: Вокладка
     - Created: Створана
@@ -138,13 +138,13 @@ translations
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
     - delete picture "%%_picture": выдаліць малюнак "%%_picture"
     - delete video "%%_video": выдаліць відэа "%%_video"
-    - Delete: Выдаліць
     - delete: выдаліць
+    - Delete: Выдаліць
     - Demo: Дэма
     - depend from modules: залежыць ад модуляў
     - depend from PHP extensions: залежыць ад PHP-пашырэнняў
-    - Description: Апісанне
     - description: апісанне
+    - Description: Апісанне
     - Develop: Распрацоўка
     - Diagram type: Тып дыяграмы
     - Diagram: Дыяграма
@@ -175,8 +175,8 @@ translations
     - Error\: %%_error: Памылка: %%_error
     - event: падзея
     - Event: Падзея
-    - Events: Падзеі
     - events: падзеі
+    - Events: Падзеі
     - Examples: Прыклады
     - Examples\: %%_examples: Прыклады: %%_examples
     - Execution: Выкананне
@@ -265,17 +265,17 @@ translations
     - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
     - File was not written to disc!: Файл не быў запісаны на дыск!
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
-    - File: Файл
     - file: файл
+    - File: Файл
     - Files from repository: Файлы з рэпазітара
-    - Files: Файлы
     - files: файлы
+    - Files: Файлы
     - fix: выправіць
     - Form elements: Элементы формы
-    - Form: Форма
     - form: форма
-    - Forms: Формы
+    - Form: Форма
     - forms: формы
+    - Forms: Формы
     - Fraction part is too long.: Дробавая частка надта доўгая.
     - Front: Галоўная
     - Function: Функцыя
@@ -316,24 +316,24 @@ translations
     - insert: уставіць
     - Insert: Уставіць
     - insertion: устаўка
-    - Install: Усталяваць
     - install: усталяваць
+    - Install: Усталяваць
     - Installation is not available because storage credentials was set!: Усталёўка недаступная, таму што уліковыя дадзеныя сховішча ўжо былі ўсталяваны.
-    - Installation: Усталёўка
     - installation: усталёўка
+    - Installation: Усталёўка
     - Instance with Row ID = "%%_row_id" was inserted.: Асобнік з Row ID = "%%_row_id" быў даданы.
     - Instance with Row ID = "%%_row_id" was not inserted!: Асобнік з Row ID = "%%_row_id" не быў даданы!
     - Instance: Асобнік
     - Instances: Асобнікі
     - interface: інтэрфейс
     - Interface: Інтэрфейс
-    - Interfaces: Інтэрфейсы
     - interfaces: інтэрфейсы
+    - Interfaces: Інтэрфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ніжэй версіі %%_number больш не падтрымліваецца!
     - Invalid session was deleted!: Несапраўдны сеанс быў выдалены!
     - Is active: Актыўная
-    - Is embedded: Убудаваны
     - is embedded: убудаваны
+    - Is embedded: Убудаваны
     - Item of type "%%_type" was deleted.: Элемент тыпу "%%_type" быў выдалены.
     - Item of type "%%_type" was inserted.: Элемент тыпу "%%_type" быў даданы.
     - Item of type "%%_type" was not deleted!: Элемент тыпу "%%_type" не быў выдалены!
@@ -388,8 +388,8 @@ translations
     - Link: Спасылка
     - List: Спіс
     - Lists: Спісы
-    - Load: Загрузка
     - load: загрузка
+    - Load: Загрузка
     - Local Date: Лакальная Дата
     - Local Date/Time: Лакальная Дата/Час
     - Local Time: Лакальны Час
@@ -400,10 +400,10 @@ translations
     - Login form: Форма ўваходу
     - login: уваход
     - Login: Уваход
-    - Logotype: Лагатып
     - logotype: лагатып
-    - Logotypes: Лагатыпы
+    - Logotype: Лагатып
     - logotypes: лагатыпы
+    - Logotypes: Лагатыпы
     - Logout form: Форма выхаду
     - logout: выхад
     - Logout: Выхад
@@ -477,8 +477,8 @@ translations
     - NO TITLE: НЯМА ЗАГАЛОЎКУ
     - no updates: няма абнаўленняў
     - no url: няма url
-    - No: Не
     - no: не
+    - No: Не
     - Number: Нумар
     - Object: Аб'ект
     - ok: ок
@@ -506,8 +506,8 @@ translations
     - Parent ID: ID бацькі
     - Password recovery on %%_domain: Аднаўленне пароля на %%_domain
     - Password: Пароль
-    - Path: Шлях
     - path: шлях
+    - Path: Шлях
     - Permission ID: ID дазвалення
     - Permission: Дазваленне
     - Permission\: select: Дазваленне: абраць
@@ -601,25 +601,25 @@ translations
     - Row ID: ID радка
     - Russian: Рускі
     - save: захаваць
-    - Search: Пошук
     - search: пошук
+    - Search: Пошук
     - sec.: сек.
     - Section "%%_title": Падзел "%%_title"
     - Security settings form: Форма налад бяспекі
     - Security: Бяспека
     - Security\: manage: Бяспека: кіраваць
     - select all rows: абраць усе радкі
-    - Select: Абраць
     - select: абраць
+    - Select: Абраць
     - Selection list: Спіс выбару
-    - Selection: Выбарка
     - selection: выбарка
+    - Selection: Выбарка
     - Selection\: delete: Выбарка: выдаліць
     - Selection\: insert: Выбарка: уставіць
     - Selection\: select: Выбарка: абраць
     - Selection\: update: Выбарка: абнавіць
-    - Selections: Выбаркі
     - selections: выбаркі
+    - Selections: Выбаркі
     - send: адправіць
     - Sequence: Паслядоўнасць
     - Server time zone: Гадзінны пояс сервера
@@ -718,16 +718,16 @@ translations
     - Tree\: update: Дрэва: абнавіць
     - Trees: Дрэвы
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
-    - Type: Тып
     - type: тып
+    - Type: Тып
     - Types: Типы
     - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма ўсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
     - Uninstall the existing profile first.: Спачатку выдаліце існуючы профіль.
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваны спіс
-    - Update: Абнавіць
     - update: абнавіць
+    - Update: Абнавіць
     - updated: абноўлена
     - Updated: Абноўлена
     - Use global META: Выкарыстоўваць глабальны МЕТА
@@ -758,8 +758,8 @@ translations
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
     - Value: Значэнне
     - Values: Значэнні
-    - Version: Версія
     - version: версія
+    - Version: Версія
     - Video: Відэа
     - Video\: delete: Відэа: выдаліць
     - Video\: insert: Відэа: уставіць
@@ -774,8 +774,8 @@ translations
     - Vote can be canceled: Голас можа быць адменены
     - vote: галасаваць
     - Voting form: Форма галасавання
-    - Warning: Папярэджанне
     - warning: папярэджанне
+    - Warning: Папярэджанне
     - Web server: Вэб-сервер
     - Weight: Вага
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
@@ -790,8 +790,8 @@ translations
     - wrong management group: няправільная група кіравання
     - wrong pager value: няправільнае значэнне пэйджара
     - wrong user nickname: няправільны псеўданім карыстальніка
-    - Yes: Так
     - yes: так
+    - Yes: Так
     - You are trying to upload too few files!: Вы спрабуеце загрузіць занадта мала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
     - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number|au-a}.

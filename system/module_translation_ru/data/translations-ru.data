@@ -17,8 +17,8 @@ translations
     - Access forbidden: Доступ запрещён
     - Access recovery form: Форма восстановления доступа
     - Access settings are not applicable if no one role is active!: Настройки доступа не применяются, если ни одна роль не активна!
-    - Access: Доступ
     - access: доступ
+    - Access: Доступ
     - action: действие
     - Action: Действие
     - actions: действия
@@ -36,21 +36,21 @@ translations
     - Anonymous: Аноним
     - Answer: Ответ
     - Answers: Ответы
-    - Apply tokens: Применить токены
     - apply tokens: применить токены
+    - Apply tokens: Применить токены
     - apply translation: применить перевод
     - apply: применить
     - Architecture: Архитектура
     - Attribute: Атрибут
     - Attributes: Атрибуты
-    - Audio: Аудио
     - audio: аудио
+    - Audio: Аудио
     - Audio\: delete: Аудио: удалить
     - Audio\: insert: Аудио: вставить
     - Audio\: select: Аудио: выбрать
     - Audio\: update: Аудио: обновить
-    - Audios: Аудио
     - audios: аудио
+    - Audios: Аудио
     - Avatar: Аватар
     - B: Б
     - Belarusian: Белорусский
@@ -64,8 +64,8 @@ translations
     - bundle title: заголовок пакета
     - Bundle with system.: Пакет с системой.
     - Button active: Кнопка активная
-    - Button: Кнопка
     - button: кнопка
+    - Button: Кнопка
     - Button\: text: Кнопка: текст
     - Cache update form: Форма обновления кэша
     - cache: кэш
@@ -100,10 +100,10 @@ translations
     - Content of the "sitemap.xml" file: Содержимое файла "sitemap.xml"
     - Content: Содержимое
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
-    - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максим Владимирович. Все права защищены.
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
-    - Copyright: Авторские права
+    - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максим Владимирович. Все права защищены.
     - copyright: авторские права
+    - Copyright: Авторские права
     - Core: Ядро
     - Cover: Обложка
     - Created: Создано
@@ -138,13 +138,13 @@ translations
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - delete picture "%%_picture": удалить изображение "%%_picture"
     - delete video "%%_video": удалить видео "%%_video"
-    - Delete: Удалить
     - delete: удалить
+    - Delete: Удалить
     - Demo: Демо
     - depend from modules: зависит от модулей
     - depend from PHP extensions: зависит от PHP-расширений
-    - Description: Описание
     - description: описание
+    - Description: Описание
     - Develop: Разработка
     - Diagram type: Тип диаграммы
     - Diagram: Диаграмма
@@ -175,8 +175,8 @@ translations
     - Error\: %%_error: Ошибка: %%_error
     - event: событие
     - Event: Событие
-    - Events: События
     - events: события
+    - Events: События
     - Examples: Примеры
     - Examples\: %%_examples: Примеры: %%_examples
     - Execution: Выполнение
@@ -265,17 +265,17 @@ translations
     - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!
     - File was not written to disc!: Файл не был записан на диск!
     - File was only partially uploaded.: Файл был загружен только частично.
-    - File: Файл
     - file: файл
+    - File: Файл
     - Files from repository: Файлы из репозитория
-    - Files: Файлы
     - files: файлы
+    - Files: Файлы
     - fix: исправить
     - Form elements: Элементы формы
-    - Form: Форма
     - form: форма
-    - Forms: Формы
+    - Form: Форма
     - forms: формы
+    - Forms: Формы
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front: Главная
     - Function: Функция
@@ -316,24 +316,24 @@ translations
     - insert: вставить
     - Insert: Вставить
     - insertion: вставка
-    - Install: Установить
     - install: установить
+    - Install: Установить
     - Installation is not available because storage credentials was set!: Установка недоступна, потому что учётные данные хранилища уже были заданы.
-    - Installation: Установка
     - installation: установка
+    - Installation: Установка
     - Instance with Row ID = "%%_row_id" was inserted.: Экземпляр с Row ID = "%%_row_id" был добавлен.
     - Instance with Row ID = "%%_row_id" was not inserted!: Экземпляр с Row ID = "%%_row_id" не был добавлен!
     - Instance: Экземпляр
     - Instances: Экземпляры
     - interface: интерфейс
     - Interface: Интерфейс
-    - Interfaces: Интерфейсы
     - interfaces: интерфейсы
+    - Interfaces: Интерфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ниже версии %%_number больше не поддерживается!
     - Invalid session was deleted!: Недействительный сеанс был удалён!
     - Is active: Активная
-    - Is embedded: Встроенный
     - is embedded: встроенный
+    - Is embedded: Встроенный
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
     - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!
@@ -388,8 +388,8 @@ translations
     - Link: Ссылка
     - List: Список
     - Lists: Списки
-    - Load: Загрузка
     - load: загрузка
+    - Load: Загрузка
     - Local Date: Локальная Дата
     - Local Date/Time: Локальная Дата/Время
     - Local Time: Локальное Время
@@ -400,10 +400,10 @@ translations
     - Login form: Форма входа
     - login: вход
     - Login: Вход
-    - Logotype: Логотип
     - logotype: логотип
-    - Logotypes: Логотипы
+    - Logotype: Логотип
     - logotypes: логотипы
+    - Logotypes: Логотипы
     - Logout form: Форма выхода
     - logout: выход
     - Logout: Выход
@@ -477,8 +477,8 @@ translations
     - NO TITLE: НЕТ ЗАГОЛОВКА
     - no updates: нет обновлений
     - no url: нет url
-    - No: Нет
     - no: нет
+    - No: Нет
     - Number: Номер
     - Object: Объект
     - ok: ок
@@ -506,8 +506,8 @@ translations
     - Parent ID: ID родителя
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
-    - Path: Путь
     - path: путь
+    - Path: Путь
     - Permission ID: ID разрешения
     - Permission: Разрешение
     - Permission\: select: Разрешение: выбрать
@@ -601,25 +601,25 @@ translations
     - Row ID: ID строки
     - Russian: Русский
     - save: сохранить
-    - Search: Поиск
     - search: поиск
+    - Search: Поиск
     - sec.: сек.
     - Section "%%_title": Раздел "%%_title"
     - Security settings form: Форма настроек безопасности
     - Security: Безопасность
     - Security\: manage: Безопасность: управлять
     - select all rows: выбрать все строки
-    - Select: Выбрать
     - select: выбрать
+    - Select: Выбрать
     - Selection list: Список выбора
-    - Selection: Выборка
     - selection: выборка
+    - Selection: Выборка
     - Selection\: delete: Выборка: удалить
     - Selection\: insert: Выборка: вставить
     - Selection\: select: Выборка: выбрать
     - Selection\: update: Выборка: обновить
-    - Selections: Выборки
     - selections: выборки
+    - Selections: Выборки
     - send: отправить
     - Sequence: Последовательность
     - Server time zone: Часовой пояс сервера
@@ -718,16 +718,16 @@ translations
     - Tree\: update: Дерево: обновить
     - Trees: Деревья
     - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Попробуйте ввести значение "127.0.0.1" или "localhost", если Вы получаете сообщение об ошибке вида "unknown mysql server host [::1]".
-    - Type: Тип
     - type: тип
+    - Type: Тип
     - Types: Типы
     - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Невозможно установить профиль "%%_profile" потому что в системе уже имеются Страницы со следующими ID: %%_ids
     - Uninstall the existing profile first.: Сначала удалите существующий профиль.
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список
-    - Update: Обновить
     - update: обновить
+    - Update: Обновить
     - updated: обновлено
     - Updated: Обновлено
     - Use global META: Использовать глобальный МЕТА
@@ -758,8 +758,8 @@ translations
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длины!
     - Value: Значение
     - Values: Значения
-    - Version: Версия
     - version: версия
+    - Version: Версия
     - Video: Видео
     - Video\: delete: Видео: удалить
     - Video\: insert: Видео: вставить
@@ -774,8 +774,8 @@ translations
     - Vote can be canceled: Голос может быть отменён
     - vote: голосовать
     - Voting form: Форма голосования
-    - Warning: Предупреждение
     - warning: предупреждение
+    - Warning: Предупреждение
     - Web server: Веб-сервер
     - Weight: Вес
     - Welcome, %%_nickname!: Добро пожаловать, %%_nickname!
@@ -790,8 +790,8 @@ translations
     - wrong management group: неправильная группа управления
     - wrong pager value: неправильное значение пейджера
     - wrong user nickname: неправильный псевдоним пользователя
-    - Yes: Да
     - yes: да
+    - Yes: Да
     - You are trying to upload too few files!: Вы пытаетесь загрузить слишком мало файлов!
     - You are trying to upload too much files!: Вы пытаетесь загрузить слишком много файлов!
     - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number|ov-a}.
