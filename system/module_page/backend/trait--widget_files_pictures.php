@@ -18,16 +18,6 @@ namespace effcore {
     'target' => 'widget_files-pictures-items'
   ];
 
-  static function widget_manage_picture_item_make(&$widget, &$item, $c_row_id, &$root) {
-    if (media::media_class_get($item->object->type) === 'picture') {
-      if (!empty($item->settings['data-thumbnails-is-embedded'])) {
-        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
-      }
-    }
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_file_prepare_picture($form, $npath, $button, &$items, &$new_item) {
     $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$this->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
     if ($new_item->object->move_tmp_to_pre($pre_path)) {
@@ -43,6 +33,18 @@ namespace effcore {
         }
       }
       return true;
+    }
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_picture_item_make(&$widget, &$item, $c_row_id, &$root) {
+    if (media::media_class_get($item->object->type) === 'picture') {
+      if (!empty($item->settings['data-thumbnails-is-embedded'])) {
+        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+      }
     }
   }
 

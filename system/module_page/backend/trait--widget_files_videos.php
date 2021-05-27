@@ -29,16 +29,6 @@ namespace effcore {
     'preload'     => 'metadata'
   ];
 
-  static function widget_manage_video_item_make(&$widget, &$item, $c_row_id, &$root) {
-    if (media::media_class_get($item->object->type) === 'video') {
-      if (!empty($item->settings['data-poster-is-embedded'])) {
-        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
-      }
-    }
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-
   function on_values_validate_poster($form, $npath, $button) {
     return field_file::on_validate_manual($this->controls['#poster'], $form, $npath);
   }
@@ -69,6 +59,20 @@ namespace effcore {
       return true;
     }
   }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_video_item_make(&$widget, &$item, $c_row_id, &$root) {
+    if (media::media_class_get($item->object->type) === 'video') {
+      if (!empty($item->settings['data-poster-is-embedded'])) {
+        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+      }
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   static function on_button_click_insert_video(&$widget, $form, $npath, $button) {
     if ($widget->poster_is_allowed) {
