@@ -72,16 +72,4 @@ namespace effcore {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-
-  static function on_button_click_insert_video(&$widget, $form, $npath, $button) {
-    if ($widget->poster_is_allowed) {
-      $values        = $widget->on_values_validate       ($form, $npath, $button);
-      $values_poster = $widget->on_values_validate_poster($form, $npath, $button);
-      if (!$widget->controls['#file']->has_error() &&                                               count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
-      if (!$widget->controls['#file']->has_error() && !$widget->controls['#poster']->has_error() && count($values) !== 0)
-           return widget_files::on_button_click_insert($widget, $form, $npath, $button);
-    } else return widget_files::on_button_click_insert($widget, $form, $npath, $button);
-  }
-
 }}
