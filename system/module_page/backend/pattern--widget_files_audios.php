@@ -118,7 +118,7 @@ namespace effcore {
       $new_item->settings['data-cover-is-embedded'] = false;
       if ($widget->cover_is_allowed) {
         if (media::media_class_get($new_item->object->type) === 'audio') {
-          $values = $widget->on_values_validate_cover($form, $npath, $button);
+          $values = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#cover']);
           $cover = reset($values);
           if ($cover instanceof file_history) {
             if (media::media_class_get($cover->type) === 'picture') {
@@ -140,8 +140,8 @@ namespace effcore {
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     if ($widget->cover_is_allowed) {
-      $values       = $widget->on_values_validate      ($form, $npath, $button);
-      $values_cover = $widget->on_values_validate_cover($form, $npath, $button);
+      $values       = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#file' ]);
+      $values_cover = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#cover']);
       if (!$widget->controls['#file']->has_error() &&                                              count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
       if (!$widget->controls['#file']->has_error() && !$widget->controls['#cover']->has_error() && count($values) !== 0)
            return widget_files::on_button_click_insert($widget, $form, $npath, $button);

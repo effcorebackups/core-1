@@ -33,12 +33,6 @@ namespace effcore {
     'mp3' => 'mp3'
   ];
 
-  function on_values_validate($form, $npath, $button) {
-    if ($button->_kind === 'picture') {$this->controls['#file'] = $this->controls['#file_picture']; return parent::on_values_validate($form, $npath, $button);}
-    if ($button->_kind === 'video'  ) {$this->controls['#file'] = $this->controls['#file_video'  ]; return parent::on_values_validate($form, $npath, $button);}
-    if ($button->_kind === 'audio'  ) {$this->controls['#file'] = $this->controls['#file_audio'  ]; return parent::on_values_validate($form, $npath, $button);}
-  }
-
   ###########################
   ### static declarations ###
   ###########################

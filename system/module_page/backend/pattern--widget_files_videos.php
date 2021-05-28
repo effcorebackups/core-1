@@ -121,7 +121,7 @@ namespace effcore {
       $new_item->settings['data-poster-is-embedded'] = false;
       if ($widget->poster_is_allowed) {
         if (media::media_class_get($new_item->object->type) === 'video') {
-          $values = $widget->on_values_validate_poster($form, $npath, $button);
+          $values = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#poster']);
           $poster = reset($values);
           if ($poster instanceof file_history) {
             if (media::media_class_get($poster->type) === 'picture') {
@@ -143,8 +143,8 @@ namespace effcore {
 
   static function on_button_click_insert(&$widget, $form, $npath, $button) {
     if ($widget->poster_is_allowed) {
-      $values        = $widget->on_values_validate       ($form, $npath, $button);
-      $values_poster = $widget->on_values_validate_poster($form, $npath, $button);
+      $values        = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#file'  ]);
+      $values_poster = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#poster']);
       if (!$widget->controls['#file']->has_error() &&                                               count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
       if (!$widget->controls['#file']->has_error() && !$widget->controls['#poster']->has_error() && count($values) !== 0)
            return widget_files::on_button_click_insert($widget, $form, $npath, $button);

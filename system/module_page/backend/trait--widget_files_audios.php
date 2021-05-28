@@ -39,8 +39,4 @@ namespace effcore {
     'preload'     => 'metadata'
   ];
 
-  function on_values_validate_cover($form, $npath, $button) {
-    return field_file::on_validate_manual($this->controls['#cover'], $form, $npath);
-  }
-
 }}
