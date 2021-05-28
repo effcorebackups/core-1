@@ -31,7 +31,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+  static function on_button_click_insert($widget, $form, $npath, $button) {
     $min_weight = 0;
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item)
@@ -49,7 +49,7 @@ namespace effcore {
     return true;
   }
 
-  static function on_request_value_set(&$widget, $form, $npath) {
+  static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
       if (isset($widget->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();

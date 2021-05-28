@@ -77,7 +77,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+  static function on_button_click_insert($widget, $form, $npath, $button) {
     $widget->controls['#insert']->required_set(true);
     $result_validation = field_select::on_validate($widget->controls['#insert'], $form, $npath);
     $widget->controls['#insert']->required_set(false);

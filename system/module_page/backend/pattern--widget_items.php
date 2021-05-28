@@ -175,7 +175,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+  static function on_button_click_insert($widget, $form, $npath, $button) {
     $min_weight = 0;
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item)
@@ -192,7 +192,7 @@ namespace effcore {
     return true;
   }
 
-  static function on_button_click_delete(&$widget, $form, $npath, $button) {
+  static function on_button_click_delete($widget, $form, $npath, $button) {
     $items = $widget->items_get();
     unset($items[$button->_id]);
     $widget->items_set($items);
@@ -203,7 +203,7 @@ namespace effcore {
     return true;
   }
 
-  static function on_request_value_set(&$widget, $form, $npath) {
+  static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item)
       if (isset($widget->controls['#weight__'.$c_row_id]))
@@ -211,7 +211,7 @@ namespace effcore {
     $widget->items_set($items);
   }
 
-  static function on_submit(&$widget, $form, $npath) {
+  static function on_submit($widget, $form, $npath) {
     foreach ($widget->controls as $c_button) {
       if ($c_button instanceof button && $c_button->is_clicked()) {
         if (isset($c_button->_type) && $c_button->_type === 'insert') event::start_local('on_button_click_insert', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);

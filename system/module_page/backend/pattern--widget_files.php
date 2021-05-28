@@ -106,16 +106,16 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function on_values_validate(&$widget, $form, $npath, $button, $name) {
+  static function on_values_validate($widget, $form, $npath, $button, $name) {
     return field_file::on_validate_manual($widget->controls[$name], $form, $npath);
   }
 
-  static function on_file_prepare(&$widget, $form, $npath, $button, &$items, &$new_item) {
+  static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
     $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;
     return $new_item->object->move_tmp_to_pre($pre_path);
   }
 
-  static function on_values_save(&$widget) {
+  static function on_values_save($widget) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
       switch ($c_item->object->get_current_state()) {
@@ -157,7 +157,7 @@ namespace effcore {
     $widget->build();
   }
 
-  static function on_button_click_insert(&$widget, $form, $npath, $button) {
+  static function on_button_click_insert($widget, $form, $npath, $button) {
     $values = event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#file']);
     if (!$widget->controls['#file']->has_error() && count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new text($widget->controls['#file']->title))->render() ]); return;}
     if (!$widget->controls['#file']->has_error() && count($values) !== 0) {
@@ -187,7 +187,7 @@ namespace effcore {
     }
   }
 
-  static function on_button_click_delete(&$widget, $form, $npath, $button) {
+  static function on_button_click_delete($widget, $form, $npath, $button) {
     $items = $widget->items_get();
     $title_for_message = $items[$button->_id]->object->file;
     switch ($items[$button->_id]->object->get_current_state()) {
