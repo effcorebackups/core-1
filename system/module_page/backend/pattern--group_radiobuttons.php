@@ -120,11 +120,11 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function on_validate(&$group, $form, $npath) {
+  static function on_validate($group, $form, $npath) {
     return static::validate_required_any($group, $form, $npath);
   }
 
-  static function validate_required_any(&$group, $form, $npath) {
+  static function validate_required_any($group, $form, $npath) {
     if ($group->required_any && $group->value_get() == null) {
       $group->error_set_in_container();
       $form->error_set(
