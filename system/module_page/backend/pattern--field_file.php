@@ -89,7 +89,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    $this->on_values_fin_update($value ? [$value] : []);
+    event::start_local('on_values_fin_update', $this, ['value' => $value ? [$value] : []]);
     $this->pool_manager_rebuild();
     if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
   }
@@ -99,7 +99,7 @@ namespace effcore {
   }
 
   function values_set($values) {
-    $this->on_values_fin_update($values ?: []);
+    event::start_local('on_values_fin_update', $this, ['value' => $values ?: []]);
     $this->pool_manager_rebuild();
     if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
   }
@@ -138,129 +138,6 @@ namespace effcore {
   function render_description_file_mid_number                        () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number|s}.',          ['number'     =>               $this->min_files_number                  ]));}
   function render_description_file_types_allowed                     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->types_allowed                    )]));}
   function render_description_file_characters_allowed_for_decsription() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->characters_allowed_for_decsription]));}
-
-  ############
-  ### pool ###
-  ############
-
-  function on_values_save() {
-    $this->on_values_fin_delete_physically(); if ($this->has_error()) return;
-    $this->on_values_pre_move_to_fin();       if ($this->has_error()) return;
-    $this->result = [];
-    foreach ($this->items_get('fin') as $c_item)
-      $this->result[] = $c_item->get_current_path(true);
-    $this->on_values_fin_update($this->result); # update indexes
-    $this->pool_manager_rebuild();
-    return true;
-  }
-
-  function on_values_pre_move_to_fin() {
-    $items_pre = $this->items_get('pre');
-    $items_fin = $this->items_get('fin');
-    foreach ($items_pre as $c_id => $c_item) {
-      if ($c_item->move_pre_to_fin(dynamic::dir_files.$this->upload_dir.$c_item->file, $this->fixed_name, $this->fixed_type)) {
-              $items_fin[] = $c_item;
-        unset($items_pre[$c_id]);
-        $this->items_set('pre', $items_pre);
-        $this->items_set('fin', $items_fin);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" has been saved.', [
-          'type'  => (new text($this->item_title))->render(),
-          'title' => $c_item->file]));
-      } else {
-        $this->error_set();
-        return;
-      }
-    }
-  }
-
-  function on_values_pre_insert($values = []) {
-    $items_pre = $this->items_get('pre');
-    foreach ($values as $c_new_item) {
-      $items_pre[] = $c_new_item;
-      $c_new_row_id = core::array_key_last($items_pre);
-      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$this->cform->validation_cache_date_get().'/'.$this->cform->validation_id.'-'.$this->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
-        $this->items_set('pre', $items_pre);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was inserted.', [
-          'type'  => (new text($this->item_title))->render(),
-          'title' => $c_new_item->file]));
-      } else {
-        $this->error_set();
-        return;
-      }
-    }
-  }
-
-  function on_values_pre_delete_physically() {
-    $deleted_ids = $this->pool_manager_get_deleted_items('pre');
-    $items_pre = $this->items_get('pre');
-    foreach ($items_pre as $c_id => $c_item) {
-      if (isset($deleted_ids[$c_id])) {
-        if ($c_item->delete_pre()) {
-          unset($items_pre[$c_id]);
-          $this->items_set('pre', $items_pre);
-          message::insert(new text(
-            'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
-            'type'  => (new text($this->item_title))->render(),
-            'title' => $c_item->file]));
-        } else {
-          $this->error_set();
-          return;
-        }
-      }
-    }
-  }
-
-  function on_values_fin_update($values = []) {
-    $fin_items = [];
-    $deleted_cache = $this->items_get('fin_to_delete');
-    foreach ($values as $c_id => $c_path_relative) {
-      if (!isset($deleted_cache[$c_id])) {
-        $c_item = new file_history;
-        if ($c_item->init_from_fin($c_path_relative)) {
-          $fin_items[$c_id] = $c_item;
-          $this->items_set('fin', $fin_items);
-        }
-      }
-    }
-  }
-
-  function on_values_fin_delete() {
-    $deleted_ids_cform = $this->pool_manager_get_deleted_items('fin');
-    $deleted_cache = $this->items_get('fin_to_delete');
-    $items_fin = $this->items_get('fin');
-    foreach ($items_fin as $c_id => $c_item) {
-      if (isset($deleted_ids_cform[$c_id])) {
-        $deleted_cache[$c_id] = $c_item;
-        unset($items_fin[$c_id]);
-        $this->items_set('fin_to_delete', $deleted_cache);
-        $this->items_set('fin', $items_fin);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was deleted.', [
-          'type'  => (new text($this->item_title))->render(),
-          'title' => $c_item->file
-        ]));
-      }
-    }
-  }
-
-  function on_values_fin_delete_physically() {
-    $deleted_cache = $this->items_get('fin_to_delete');
-    foreach ($deleted_cache as $c_id => $c_item) {
-      if ($c_item->delete_fin()) {
-        unset($deleted_cache[$c_id]);
-        $this->items_set('fin_to_delete', $deleted_cache);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
-          'type'  => (new text($this->item_title))->render(),
-          'title' => $c_item->file]));
-      } else {
-        $this->error_set();
-        return;
-      }
-    }
-  }
 
   # ─────────────────────────────────────────────────────────────────────
   # pool cache
@@ -337,6 +214,125 @@ namespace effcore {
     }
   }
 
+  static function on_values_save($field, $form, $npath) {
+    event::start_local('on_values_fin_delete_physically', $field, ['form' => $form, 'npath' => $npath]); if ($field->has_error()) return;
+    event::start_local('on_values_pre_move_to_fin',       $field, ['form' => $form, 'npath' => $npath]); if ($field->has_error()) return;
+    $field->result = [];
+    foreach ($field->items_get('fin') as $c_item)
+      $field->result[] = $c_item->get_current_path(true);
+    event::start_local('on_values_fin_update', $field, ['value' => $field->result]); # update indexes
+    $field->pool_manager_rebuild();
+    return true;
+  }
+
+  static function on_values_pre_move_to_fin($field, $form, $npath) {
+    $items_pre = $field->items_get('pre');
+    $items_fin = $field->items_get('fin');
+    foreach ($items_pre as $c_id => $c_item) {
+      if ($c_item->move_pre_to_fin(dynamic::dir_files.$field->upload_dir.$c_item->file, $field->fixed_name, $field->fixed_type)) {
+              $items_fin[] = $c_item;
+        unset($items_pre[$c_id]);
+        $field->items_set('pre', $items_pre);
+        $field->items_set('fin', $items_fin);
+        message::insert(new text(
+          'Item of type "%%_type" with title = "%%_title" has been saved.', [
+          'type'  => (new text($field->item_title))->render(),
+          'title' => $c_item->file]));
+      } else {
+        $field->error_set();
+        return;
+      }
+    }
+  }
+
+  static function on_values_pre_insert($field, $form, $npath, $values = []) {
+    $items_pre = $field->items_get('pre');
+    foreach ($values as $c_new_item) {
+      $items_pre[] = $c_new_item;
+      $c_new_row_id = core::array_key_last($items_pre);
+      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$field->cform->validation_cache_date_get().'/'.$field->cform->validation_id.'-'.$field->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
+        $field->items_set('pre', $items_pre);
+        message::insert(new text(
+          'Item of type "%%_type" with title = "%%_title" was inserted.', [
+          'type'  => (new text($field->item_title))->render(),
+          'title' => $c_new_item->file]));
+      } else {
+        $field->error_set();
+        return;
+      }
+    }
+  }
+
+  static function on_values_pre_delete_physically($field, $form, $npath) {
+    $deleted_ids = $field->pool_manager_get_deleted_items('pre');
+    $items_pre = $field->items_get('pre');
+    foreach ($items_pre as $c_id => $c_item) {
+      if (isset($deleted_ids[$c_id])) {
+        if ($c_item->delete_pre()) {
+          unset($items_pre[$c_id]);
+          $field->items_set('pre', $items_pre);
+          message::insert(new text(
+            'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+            'type'  => (new text($field->item_title))->render(),
+            'title' => $c_item->file]));
+        } else {
+          $field->error_set();
+          return;
+        }
+      }
+    }
+  }
+
+  static function on_values_fin_update($field, $values = []) {
+    $fin_items = [];
+    $deleted_cache = $field->items_get('fin_to_delete');
+    foreach ($values as $c_id => $c_path_relative) {
+      if (!isset($deleted_cache[$c_id])) {
+        $c_item = new file_history;
+        if ($c_item->init_from_fin($c_path_relative)) {
+          $fin_items[$c_id] = $c_item;
+          $field->items_set('fin', $fin_items);
+        }
+      }
+    }
+  }
+
+  static function on_values_fin_delete($field, $form, $npath) {
+    $deleted_ids_cform = $field->pool_manager_get_deleted_items('fin');
+    $deleted_cache = $field->items_get('fin_to_delete');
+    $items_fin = $field->items_get('fin');
+    foreach ($items_fin as $c_id => $c_item) {
+      if (isset($deleted_ids_cform[$c_id])) {
+        $deleted_cache[$c_id] = $c_item;
+        unset($items_fin[$c_id]);
+        $field->items_set('fin_to_delete', $deleted_cache);
+        $field->items_set('fin', $items_fin);
+        message::insert(new text(
+          'Item of type "%%_type" with title = "%%_title" was deleted.', [
+          'type'  => (new text($field->item_title))->render(),
+          'title' => $c_item->file
+        ]));
+      }
+    }
+  }
+
+  static function on_values_fin_delete_physically($field, $form, $npath) {
+    $deleted_cache = $field->items_get('fin_to_delete');
+    foreach ($deleted_cache as $c_id => $c_item) {
+      if ($c_item->delete_fin()) {
+        unset($deleted_cache[$c_id]);
+        $field->items_set('fin_to_delete', $deleted_cache);
+        message::insert(new text(
+          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+          'type'  => (new text($field->item_title))->render(),
+          'title' => $c_item->file]));
+      } else {
+        $field->error_set();
+        return;
+      }
+    }
+  }
+
   static function on_validate_manual($field, $form, $npath) {
     $element = $field->child_select('element');
     $name = $field->name_get();
@@ -361,11 +357,11 @@ namespace effcore {
         if ($field->disabled_get()) return true;
         $new_values = request::files_get($name);
         static::sanitize($field, $form, $element, $new_values);
-        $field->on_values_pre_delete_physically();
-        $field->on_values_fin_delete();
+        event::start_local('on_values_pre_delete_physically', $field, ['form' => $form, 'npath' => $npath]);
+        event::start_local('on_values_fin_delete',            $field, ['form' => $form, 'npath' => $npath]);
         $result = static::validate_multiple($field, $form, $element, $new_values) &&
                   static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) $field->on_values_pre_insert($new_values);
+        if ($result) event::start_local('on_values_pre_insert', $field, ['form' => $form, 'npath' => $npath, 'values' => $new_values]);
         $field->pool_manager_rebuild();
         if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE');
         return $result;
@@ -376,7 +372,7 @@ namespace effcore {
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
-      $result = $field->on_values_save();
+      $result = event::start_local('on_values_save', $field, ['form' => $form, 'npath' => $npath]);
       if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE PHASE 3');
       if (!$result) {
         $field->error_set();
