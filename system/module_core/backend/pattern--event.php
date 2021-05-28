@@ -100,7 +100,10 @@ namespace effcore {
   }
 
   static function start_local($handler, &$object, $args = []) {
-    return call_user_func_array(get_class($object).'::'.$handler, ['object' => &$object] + $args);
+    static::start('on_event_start_local_before', null, ['handler' => $handler, 'object' => &$object, 'args' => $args]);
+    $result = call_user_func_array(get_class($object).'::'.$handler, ['object' => &$object] + $args);
+    static::start('on_event_start_local_after',  null, ['handler' => $handler, 'object' => &$object, 'args' => $args]);
+    return $result;
   }
 
 }}
