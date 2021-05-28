@@ -61,7 +61,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # info markup
     $file = new file($item->object->get_current_path());
@@ -76,7 +76,7 @@ namespace effcore {
     return $result;
   }
 
-  static function widget_insert_get(&$widget) {
+  static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new file
     $field_file = new field_file;

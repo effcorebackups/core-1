@@ -24,7 +24,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # info markup
     $presets = block_preset::select_all($widget->id_area);
@@ -39,7 +39,7 @@ namespace effcore {
     return $result;
   }
 
-  static function widget_insert_get(&$widget) {
+  static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
     $presets = block_preset::select_all($widget->id_area);

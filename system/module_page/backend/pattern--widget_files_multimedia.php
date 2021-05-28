@@ -67,13 +67,13 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     if (media::media_class_get($item->object->type) === 'picture') return widget_files_pictures::widget_manage_get($widget, $item, $c_row_id);
     if (media::media_class_get($item->object->type) === 'video'  ) return widget_files_videos  ::widget_manage_get($widget, $item, $c_row_id);
     if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::widget_manage_get($widget, $item, $c_row_id);
   }
 
-  static function widget_insert_get(&$widget) {
+  static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
     $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
     $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);

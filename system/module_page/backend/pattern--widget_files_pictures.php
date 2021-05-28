@@ -59,7 +59,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
     $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
     if (media::media_class_get($item->object->type) === 'picture') {
@@ -70,7 +70,7 @@ namespace effcore {
     return $result;
   }
 
-  static function widget_insert_get(&$widget, $group = '') {
+  static function widget_insert_get($widget, $group = '') {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new picture
     $field_file_picture = new field_file_picture;

@@ -40,7 +40,7 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for attribute name
     $field_name = new field_text('Name', null, [], +400);

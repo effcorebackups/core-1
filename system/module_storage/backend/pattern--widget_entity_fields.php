@@ -17,7 +17,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # info markup
     $entity = entity::get($item->entity_name);
@@ -35,7 +35,7 @@ namespace effcore {
     return $result;
   }
 
-  static function widget_insert_get(&$widget) {
+  static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
     $entities = entity::get_all();

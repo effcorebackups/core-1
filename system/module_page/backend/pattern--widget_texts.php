@@ -14,7 +14,7 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for text
     $field_text = new field_text;

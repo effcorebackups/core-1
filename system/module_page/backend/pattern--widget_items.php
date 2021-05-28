@@ -124,14 +124,14 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
-  static function widget_manage_group_get(&$widget) {
+  static function widget_manage_group_get($widget) {
     return new markup('x-widgets-group', [
       'data-type' => 'manage',
       'data-has-rearrangeable' => true
     ]);
   }
 
-  static function widget_manage_get(&$widget, $item, $c_row_id) {
+  static function widget_manage_get($widget, $item, $c_row_id) {
     $result = new markup('x-widget', [
       'data-rowid'                   => $c_row_id,
       'data-rearrangeable'           => true,
@@ -159,7 +159,7 @@ namespace effcore {
     return $result;
   }
 
-  static function widget_insert_get(&$widget) {
+  static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # button for insertion of the new item
     $button = new button('insert', ['title' => new text('insert')]);
