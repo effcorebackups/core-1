@@ -59,8 +59,16 @@ namespace effcore {
   static function widget_manage_get(&$widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
     $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    static::widget_manage_video_item_make($result, $item, $c_row_id, $widget);
+    static::widget_manage_item_make($result, $item, $c_row_id, $widget);
     return $result;
+  }
+
+  static function widget_manage_item_make(&$widget, &$item, $c_row_id, &$root) {
+    if (media::media_class_get($item->object->type) === 'video') {
+      if (!empty($item->settings['data-poster-is-embedded'])) {
+        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+      }
+    }
   }
 
   static function widget_insert_get(&$widget, $group = '') {

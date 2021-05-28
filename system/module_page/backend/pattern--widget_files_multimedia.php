@@ -76,9 +76,9 @@ namespace effcore {
   static function widget_manage_get(&$widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
     $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
-    static::widget_manage_picture_item_make($result, $item, $c_row_id, $widget);
-    static::widget_manage_video_item_make  ($result, $item, $c_row_id, $widget);
-    static::widget_manage_audio_item_make  ($result, $item, $c_row_id, $widget);
+    widget_files_pictures::widget_manage_item_make($result, $item, $c_row_id, $widget);
+    widget_files_videos  ::widget_manage_item_make($result, $item, $c_row_id, $widget);
+    widget_files_audios  ::widget_manage_item_make($result, $item, $c_row_id, $widget);
     return $result;
   }
 

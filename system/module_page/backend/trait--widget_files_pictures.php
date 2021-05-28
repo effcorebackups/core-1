@@ -18,16 +18,4 @@ namespace effcore {
     'target' => 'widget_files-pictures-items'
   ];
 
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static function widget_manage_picture_item_make(&$widget, &$item, $c_row_id, &$root) {
-    if (media::media_class_get($item->object->type) === 'picture') {
-      if (!empty($item->settings['data-thumbnails-is-embedded'])) {
-        $widget->child_insert(new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
-      }
-    }
-  }
-
 }}
