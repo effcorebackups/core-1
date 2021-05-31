@@ -68,28 +68,32 @@ namespace effcore {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new audio
     $field_file_audio = new field_file_audio;
-    $field_file_audio->title            = 'Audio';
-    $field_file_audio->max_file_size    = $widget->{($group ? $group.'_' : '').'max_file_size'};
-    $field_file_audio->types_allowed    = $widget->{($group ? $group.'_' : '').'types_allowed'};
-    $field_file_audio->cform            = $widget->cform;
-    $field_file_audio->min_files_number = null;
-    $field_file_audio->max_files_number = null;
-    $field_file_audio->has_on_validate  = false;
+    $field_file_audio->title             = 'Audio';
+    $field_file_audio->max_file_size     = $widget->{($group ? $group.'_' : '').'max_file_size'};
+    $field_file_audio->types_allowed     = $widget->{($group ? $group.'_' : '').'types_allowed'};
+    $field_file_audio->cform             = $widget->cform;
+    $field_file_audio->min_files_number  = null;
+    $field_file_audio->max_files_number  = null;
+    $field_file_audio->has_widget_insert = false;
+    $field_file_audio->has_widget_manage = false;
+    $field_file_audio->has_on_validate   = false;
     $field_file_audio->build();
     $field_file_audio->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new audio cover
     $field_file_cover = new field_file_picture;
-    $field_file_cover->title            = 'Cover';
-    $field_file_cover->max_file_size    = $widget->cover_max_file_size;
-    $field_file_cover->types_allowed    = $widget->cover_types_allowed;
-    $field_file_cover->cform            = $widget->cform;
-    $field_file_cover->min_files_number = null;
-    $field_file_cover->max_files_number = null;
-    $field_file_cover->has_on_validate  = false;
+    $field_file_cover->title             = 'Cover';
+    $field_file_cover->max_file_size     = $widget->cover_max_file_size;
+    $field_file_cover->types_allowed     = $widget->cover_types_allowed;
+    $field_file_cover->cform             = $widget->cform;
+    $field_file_cover->min_files_number  = null;
+    $field_file_cover->max_files_number  = null;
+    $field_file_cover->has_widget_insert = false;
+    $field_file_cover->has_widget_manage = false;
+    $field_file_cover->has_on_validate   = false;
     $field_file_cover->build();
     $field_file_cover->name_set($widget->name_get_complex().'__cover');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));

@@ -145,7 +145,7 @@ namespace effcore {
     $field_weight->required_set(false);
     $field_weight->value_set($item->weight);
   # button for deletion of the old item
-    $button_delete = new button(null, ['data-style' => 'narrow-delete-zoomed', 'title' => new text('delete')], -500);
+    $button_delete = new button(null, ['data-style' => 'delete narrow zoomed', 'title' => new text('delete')], -500);
     $button_delete->break_on_validate = true;
     $button_delete->build();
     $button_delete->value_set($widget->name_get_complex().'__delete__'.$c_row_id);
@@ -214,9 +214,8 @@ namespace effcore {
   static function on_submit($widget, $form, $npath) {
     foreach ($widget->controls as $c_button) {
       if ($c_button instanceof button && $c_button->is_clicked()) {
-        if (isset($c_button->_type) && $c_button->_type === 'insert') event::start_local('on_button_click_insert', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
-        if (isset($c_button->_type) && $c_button->_type === 'delete') event::start_local('on_button_click_delete', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
-        return;
+        if (isset($c_button->_type) && $c_button->_type === 'insert') return event::start_local('on_button_click_insert', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
+        if (isset($c_button->_type) && $c_button->_type === 'delete') return event::start_local('on_button_click_delete', $widget, ['form' => $form, 'npath' => $npath, 'button' => $c_button]);
       }
     }
   }

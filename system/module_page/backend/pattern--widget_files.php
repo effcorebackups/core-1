@@ -81,17 +81,19 @@ namespace effcore {
   # control for upload new file
     $field_file = new field_file;
     $field_file->title = 'File';
-    $field_file->max_file_size    = $widget->max_file_size;
-    $field_file->types_allowed    = $widget->types_allowed;
-    $field_file->cform            = $widget->cform;
-    $field_file->min_files_number = null;
-    $field_file->max_files_number = null;
-    $field_file->has_on_validate  = false;
+    $field_file->max_file_size     = $widget->max_file_size;
+    $field_file->types_allowed     = $widget->types_allowed;
+    $field_file->cform             = $widget->cform;
+    $field_file->min_files_number  = null;
+    $field_file->max_files_number  = null;
+    $field_file->has_widget_insert = false;
+    $field_file->has_widget_manage = false;
+    $field_file->has_on_validate   = false;
     $field_file->build();
     $field_file->multiple_set();
     $field_file->name_set($widget->name_get_complex().'__file[]');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');

@@ -22,9 +22,9 @@ namespace effcore {
   public $thumbnails_is_allowed = true;
   public $thumbnails = [];
 
-  protected function items_set($id, $items) {
+  function items_set($id, $items) {
     if ($this->thumbnails_is_allowed)
-      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_values_pre_insert')
+      if (debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[1]['function'] === 'on_button_click_insert')
         foreach ($items as $c_item)
           if (media::media_class_get($c_item->type) === 'picture')
             if (media::is_type_for_thumbnail($c_item->type))
@@ -33,8 +33,12 @@ namespace effcore {
     parent::items_set($id, $items);
   }
 
-  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
-    if ($this->thumbnails_is_allowed) {
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_action_text_get($field, $item, $id, $scope) {
+    if ($field->thumbnails_is_allowed) {
       $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
            return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
     } else return new node([], [                   new text('delete picture "%%_picture"', ['picture' => $item->file])]);

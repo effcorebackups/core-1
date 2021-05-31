@@ -66,7 +66,7 @@ namespace effcore {
     $select->name_set($widget->name_get_complex().'__insert');
     $select->required_set(false);
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');

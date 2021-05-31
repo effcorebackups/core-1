@@ -71,28 +71,32 @@ namespace effcore {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new video
     $field_file_video = new field_file_video;
-    $field_file_video->title            = 'Video';
-    $field_file_video->max_file_size    = $widget->{($group ? $group.'_' : '').'max_file_size'};
-    $field_file_video->types_allowed    = $widget->{($group ? $group.'_' : '').'types_allowed'};
-    $field_file_video->cform            = $widget->cform;
-    $field_file_video->min_files_number = null;
-    $field_file_video->max_files_number = null;
-    $field_file_video->has_on_validate  = false;
+    $field_file_video->title             = 'Video';
+    $field_file_video->max_file_size     = $widget->{($group ? $group.'_' : '').'max_file_size'};
+    $field_file_video->types_allowed     = $widget->{($group ? $group.'_' : '').'types_allowed'};
+    $field_file_video->cform             = $widget->cform;
+    $field_file_video->min_files_number  = null;
+    $field_file_video->max_files_number  = null;
+    $field_file_video->has_widget_insert = false;
+    $field_file_video->has_widget_manage = false;
+    $field_file_video->has_on_validate   = false;
     $field_file_video->build();
     $field_file_video->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new video poster
     $field_file_poster = new field_file_picture;
-    $field_file_poster->title            = 'Poster';
-    $field_file_poster->max_file_size    = $widget->poster_max_file_size;
-    $field_file_poster->types_allowed    = $widget->poster_types_allowed;
-    $field_file_poster->cform            = $widget->cform;
-    $field_file_poster->min_files_number = null;
-    $field_file_poster->max_files_number = null;
-    $field_file_poster->has_on_validate  = false;
+    $field_file_poster->title             = 'Poster';
+    $field_file_poster->max_file_size     = $widget->poster_max_file_size;
+    $field_file_poster->types_allowed     = $widget->poster_types_allowed;
+    $field_file_poster->cform             = $widget->cform;
+    $field_file_poster->min_files_number  = null;
+    $field_file_poster->max_files_number  = null;
+    $field_file_poster->has_widget_insert = false;
+    $field_file_poster->has_widget_manage = false;
+    $field_file_poster->has_on_validate   = false;
     $field_file_poster->build();
     $field_file_poster->name_set($widget->name_get_complex().'__poster');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));

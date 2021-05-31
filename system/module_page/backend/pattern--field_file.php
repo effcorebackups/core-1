@@ -66,21 +66,27 @@ namespace effcore {
   public $characters_allowed_for_decsription = '"a-z", "A-Z", "0-9", "_", "-", "."';
   public $types_allowed = ['txt' => 'txt'];
   public $has_on_validate = true;
+  public $has_widget_insert = true;
+  public $has_widget_manage = true;
   public $result;
   public $is_debug_mode = false;
 
   function build() {
-    parent::build();
-    if ($this->child_select('element')) {
+    if (!$this->is_builded) {
+      parent::build();
+      if ($this->is_debug_mode)
+          $this->attribute_insert('data-debug', true);
+      if ($this->has_widget_insert)
+          $this->child_insert(static::widget_insert_get($this), 'insert');
+      if ($this->has_widget_manage)
+          static::widget_manage_rebuild($this);
       $accept_types = [];
-      foreach ($this->types_allowed as $c_type)
-                 $accept_types[] = '.'.$c_type;
-      $this->child_select('element')->attribute_insert('accept', implode(',', $accept_types));
-      if ($this->is_debug_mode) {
-        $this->attribute_insert('data-debug', true);
-      }
+      foreach ($this->types_allowed as $c_type) $accept_types[] = '.'.$c_type;
+      $this->accept_set(implode(',', $accept_types));
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function value_get() {
     $values = $this->values_get();
@@ -89,9 +95,8 @@ namespace effcore {
   }
 
   function value_set($value) {
-    event::start_local('on_values_fin_update', $this, ['value' => $value ? [$value] : []]);
-    $this->pool_manager_rebuild();
-    if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
+    event::start_local('on_values_init', $this, ['value' => $value ? [$value] : []]);
+    static::widget_manage_rebuild($this);
   }
 
   function values_get() {
@@ -99,10 +104,14 @@ namespace effcore {
   }
 
   function values_set($values) {
-    event::start_local('on_values_fin_update', $this, ['value' => $values ?: []]);
-    $this->pool_manager_rebuild();
-    if ($this->is_debug_mode) print static::debug_info_pool_state_get($this, 'VALUE SET');
+    event::start_local('on_values_init', $this, ['value' => $values ?: []]);
+    static::widget_manage_rebuild($this);
   }
+
+  function items_get($id)  {return $this->cform->validation_cache_get($this->name_get().'_files_pool_'.$id        ) ?: [];}
+  function items_set($id, $items) {$this->cform->validation_cache_set($this->name_get().'_files_pool_'.$id, $items);      }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function file_size_max_get() {
     $system = core::is_abbreviated_bytes($this->max_file_size) ?
@@ -120,6 +129,8 @@ namespace effcore {
     return $system > $php__1 ||
            $system > $php__2;
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   function render_description() {
     $this->render_prepare_description();
@@ -139,70 +150,51 @@ namespace effcore {
   function render_description_file_types_allowed                     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->types_allowed                    )]));}
   function render_description_file_characters_allowed_for_decsription() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->characters_allowed_for_decsription]));}
 
-  # ─────────────────────────────────────────────────────────────────────
-  # pool cache
-  # ─────────────────────────────────────────────────────────────────────
-
-  protected function items_get($id) {
-    return $this->cform->validation_cache_get(
-      $this->name_get().'_files_pool_'.$id
-    ) ?: [];
-  }
-
-  protected function items_set($id, $items) {
-    $this->cform->validation_cache_set(
-      $this->name_get().'_files_pool_'.$id, $items
-    );
-  }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # pool manager
-  # ─────────────────────────────────────────────────────────────────────
-
-  protected function pool_manager_rebuild() {
-    $name = $this->name_get();
-    $this->child_delete('manager_fin');
-    $this->child_delete('manager_pre');
-    $pool_manager_fin = new group_checkboxes;
-    $pool_manager_pre = new group_checkboxes;
-    $pool_manager_fin->attributes['data-scope'] = 'fin';
-    $pool_manager_pre->attributes['data-scope'] = 'pre';
-    $pool_manager_fin->element_attributes['name'] = $name.'_delete_fin[]';
-    $pool_manager_pre->element_attributes['name'] = $name.'_delete_pre[]';
-    $pool_manager_fin->build();
-    $pool_manager_pre->build();
-    $this->child_insert($pool_manager_fin, 'manager_fin');
-    $this->child_insert($pool_manager_pre, 'manager_pre');
-  # insert 'delete' checkboxes for the 'fin' and the 'pre' items
-    foreach ($this->items_get('fin') as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'fin');
-    foreach ($this->items_get('pre') as $c_id => $c_item) $this->pool_manager_action_insert($c_item, $c_id, 'pre');
-  }
-
-  protected function pool_manager_action_insert($item, $id, $type) {
-    $name = $this->name_get();
-    $pool_manager_fin = $this->child_select('manager_fin');
-    $pool_manager_pre = $this->child_select('manager_pre');
-    if ($this->disabled_get() && $type === 'fin') $pool_manager_fin->disabled[$id] = $id;
-    if ($this->disabled_get() && $type === 'pre') $pool_manager_pre->disabled[$id] = $id;
-    if ($type === 'fin') $pool_manager_fin->field_insert($this->pool_manager_action_insert_get_field_text($item, $id, $type), null, $id);
-    if ($type === 'pre') $pool_manager_pre->field_insert($this->pool_manager_action_insert_get_field_text($item, $id, $type), null, $id);
-  }
-
-  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
-    return new text('delete file "%%_file"', ['file' => $item->file]);
-  }
-
-  protected function pool_manager_get_deleted_items($type) {
-    if ($this->disabled_get() === false) {
-      $name = $this->name_get();
-      if ($type === 'fin') return core::array_kmap(request::values_get($name.'_delete_fin'));
-      if ($type === 'pre') return core::array_kmap(request::values_get($name.'_delete_pre'));
-    }
-  }
-
   ###########################
   ### static declarations ###
   ###########################
+
+  static function widget_insert_get($field) {
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button->break_on_validate = true;
+    $button->build();
+    $button->disabled_set($field->disabled_get());
+    $button->value_set($field->name_get().'__insert');
+    $button->_type = 'insert';
+    $field->controls['~insert'] = $button;
+    return $button;
+  }
+
+  static function widget_manage_rebuild($field) {
+    $field->child_delete('manager_fin');
+    $field->child_delete('manager_pre');
+    $field->controls['*manager_fin'] = new markup('x-widget', ['data-type' => 'delete+fin']);
+    $field->controls['*manager_pre'] = new markup('x-widget', ['data-type' => 'delete+pre']);
+    $field->child_insert($field->controls['*manager_fin'], 'manager_fin');
+    $field->child_insert($field->controls['*manager_pre'], 'manager_pre');
+    foreach ($field->items_get('fin') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'fin');
+    foreach ($field->items_get('pre') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'pre');
+  }
+
+  static function widget_manage_action_insert($field, $item, $id, $scope) {
+    $button_delete = new button(null, ['data-style' => 'delete narrow zoomed', 'title' => new text('delete')], +500);
+    $button_delete->break_on_validate = true;
+    $button_delete->build();
+    $button_delete->disabled_set($field->disabled_get());
+    $button_delete->value_set($field->name_get().'__delete__'.$scope.'__'.$id);
+    $button_delete->_type = 'delete';
+    $button_delete->_scope = $scope;
+    $button_delete->_id = $id;
+    $field->controls['~delete_'.$scope.'_'.$id] = $button_delete;
+    if ($scope === 'fin') $field->controls['*manager_fin']->child_insert(new markup('x-item', ['data-id' => $id], [$button_delete, static::widget_manage_action_text_get($field, $item, $id, $scope)]), $id);
+    if ($scope === 'pre') $field->controls['*manager_pre']->child_insert(new markup('x-item', ['data-id' => $id], [$button_delete, static::widget_manage_action_text_get($field, $item, $id, $scope)]), $id);
+  }
+
+  static function widget_manage_action_text_get($field, $item, $id, $scope) {
+    return new markup('x-title', [], new text('delete file "%%_file"', ['file' => $item->file]));
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
@@ -214,80 +206,11 @@ namespace effcore {
     }
   }
 
-  static function on_values_save($field, $form, $npath) {
-    event::start_local('on_values_fin_delete_physically', $field, ['form' => $form, 'npath' => $npath]); if ($field->has_error()) return;
-    event::start_local('on_values_pre_move_to_fin',       $field, ['form' => $form, 'npath' => $npath]); if ($field->has_error()) return;
-    $field->result = [];
-    foreach ($field->items_get('fin') as $c_item)
-      $field->result[] = $c_item->get_current_path(true);
-    event::start_local('on_values_fin_update', $field, ['value' => $field->result]); # update indexes
-    $field->pool_manager_rebuild();
-    return true;
-  }
-
-  static function on_values_pre_move_to_fin($field, $form, $npath) {
-    $items_pre = $field->items_get('pre');
-    $items_fin = $field->items_get('fin');
-    foreach ($items_pre as $c_id => $c_item) {
-      if ($c_item->move_pre_to_fin(dynamic::dir_files.$field->upload_dir.$c_item->file, $field->fixed_name, $field->fixed_type)) {
-              $items_fin[] = $c_item;
-        unset($items_pre[$c_id]);
-        $field->items_set('pre', $items_pre);
-        $field->items_set('fin', $items_fin);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" has been saved.', [
-          'type'  => (new text($field->item_title))->render(),
-          'title' => $c_item->file]));
-      } else {
-        $field->error_set();
-        return;
-      }
-    }
-  }
-
-  static function on_values_pre_insert($field, $form, $npath, $values = []) {
-    $items_pre = $field->items_get('pre');
-    foreach ($values as $c_new_item) {
-      $items_pre[] = $c_new_item;
-      $c_new_row_id = core::array_key_last($items_pre);
-      if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$field->cform->validation_cache_date_get().'/'.$field->cform->validation_id.'-'.$field->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
-        $field->items_set('pre', $items_pre);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was inserted.', [
-          'type'  => (new text($field->item_title))->render(),
-          'title' => $c_new_item->file]));
-      } else {
-        $field->error_set();
-        return;
-      }
-    }
-  }
-
-  static function on_values_pre_delete_physically($field, $form, $npath) {
-    $deleted_ids = $field->pool_manager_get_deleted_items('pre');
-    $items_pre = $field->items_get('pre');
-    foreach ($items_pre as $c_id => $c_item) {
-      if (isset($deleted_ids[$c_id])) {
-        if ($c_item->delete_pre()) {
-          unset($items_pre[$c_id]);
-          $field->items_set('pre', $items_pre);
-          message::insert(new text(
-            'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
-            'type'  => (new text($field->item_title))->render(),
-            'title' => $c_item->file]));
-        } else {
-          $field->error_set();
-          return;
-        }
-      }
-    }
-  }
-
-  static function on_values_fin_update($field, $values = []) {
+  static function on_values_init($field, $values = []) {
     $fin_items = [];
-    $deleted_cache = $field->items_get('fin_to_delete');
+    $fin_to_delete = $field->items_get('fin_to_delete');
     foreach ($values as $c_id => $c_path_relative) {
-      if (!isset($deleted_cache[$c_id])) {
+      if (!isset($fin_to_delete[$c_id])) {
         $c_item = new file_history;
         if ($c_item->init_from_fin($c_path_relative)) {
           $fin_items[$c_id] = $c_item;
@@ -297,38 +220,118 @@ namespace effcore {
     }
   }
 
-  static function on_values_fin_delete($field, $form, $npath) {
-    $deleted_ids_cform = $field->pool_manager_get_deleted_items('fin');
-    $deleted_cache = $field->items_get('fin_to_delete');
+  static function on_values_save($field, $form, $npath) {
+    $fin_to_delete = $field->items_get('fin_to_delete');
+    foreach ($fin_to_delete as $c_id => $c_item) {
+      if ($c_item->delete_fin()) {
+        $title_for_message = $c_item->file;
+        unset($fin_to_delete[$c_id]);
+        $field->items_set('fin_to_delete', $fin_to_delete);
+        message::insert(new text(
+          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+          'type'  => (new text($field->item_title))->render(),
+          'title' => $title_for_message
+        ]));
+      } else {
+        $field->error_set();
+        return;
+      }
+    }
+    $items_pre = $field->items_get('pre');
     $items_fin = $field->items_get('fin');
-    foreach ($items_fin as $c_id => $c_item) {
-      if (isset($deleted_ids_cform[$c_id])) {
-        $deleted_cache[$c_id] = $c_item;
-        unset($items_fin[$c_id]);
-        $field->items_set('fin_to_delete', $deleted_cache);
+    foreach ($items_pre as $c_id => $c_item) {
+      if ($c_item->move_pre_to_fin(dynamic::dir_files.$field->upload_dir.$c_item->file, $field->fixed_name, $field->fixed_type)) {
+        $items_fin[] = $c_item;
+        unset($items_pre[$c_id]);
+        $field->items_set('pre', $items_pre);
         $field->items_set('fin', $items_fin);
         message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was deleted.', [
+          'Item of type "%%_type" with title = "%%_title" has been saved.', [
           'type'  => (new text($field->item_title))->render(),
           'title' => $c_item->file
         ]));
+      } else {
+        $field->error_set();
+        return;
+      }
+    }
+    $field->result = [];
+    foreach ($field->items_get('fin') as $c_item)
+      $field->result[] = $c_item->get_current_path(true);
+    event::start_local('on_values_init', $field, ['value' => $field->result]); # update indexes
+    static::widget_manage_rebuild($field);
+    static::debug_info_show($field, 'on_values_save');
+    return true;
+  }
+
+  static function on_button_click_insert($field, $form, $npath, $button) {
+    $values = static::on_validate_manual($field, $form, $npath);
+    if (!$field->has_error() && static::validate_required($field, $form, $field->child_select('element'), $values)) {
+      $items_pre = $field->items_get('pre');
+      foreach ($values as $c_new_item) {
+        $items_pre[] = $c_new_item;
+        $c_new_row_id = core::array_key_last($items_pre);
+        if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$field->cform->validation_cache_date_get().'/'.$field->cform->validation_id.'-'.$field->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
+          $field->items_set('pre', $items_pre);
+          message::insert(new text(
+            'Item of type "%%_type" with title = "%%_title" was inserted.', [
+            'type'  => (new text($field->item_title))->render(),
+            'title' => $c_new_item->file
+          ]));
+        } else {
+          $field->error_set();
+          return;
+        }
       }
     }
   }
 
-  static function on_values_fin_delete_physically($field, $form, $npath) {
-    $deleted_cache = $field->items_get('fin_to_delete');
-    foreach ($deleted_cache as $c_id => $c_item) {
-      if ($c_item->delete_fin()) {
-        unset($deleted_cache[$c_id]);
-        $field->items_set('fin_to_delete', $deleted_cache);
-        message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
-          'type'  => (new text($field->item_title))->render(),
-          'title' => $c_item->file]));
-      } else {
-        $field->error_set();
-        return;
+  static function on_button_click_delete($field, $form, $npath, $button) {
+    switch ($button->_scope) {
+      case 'pre':
+        $items_pre = $field->items_get('pre');
+        if (isset($items_pre[$button->_id])) {
+          if ($items_pre[$button->_id]->delete_pre()) {
+            $title_for_message = $items_pre[$button->_id]->file;
+            unset($items_pre[$button->_id]);
+            $field->items_set('pre', $items_pre);
+            message::insert(new text(
+              'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+              'type'  => (new text($field->item_title))->render(),
+              'title' => $title_for_message
+            ]));
+          } else {
+            $field->error_set();
+            return;
+          }
+        }
+        break;
+      case 'fin':
+        $items_fin = $field->items_get('fin');
+        if (isset($items_fin[$button->_id])) {
+          $title_for_message = $items_fin[$button->_id]->file;
+          $fin_to_delete = $field->items_get('fin_to_delete');
+          $fin_to_delete[$button->_id] = $items_fin[$button->_id];
+          unset($items_fin[$button->_id]);
+          $field->items_set('fin_to_delete', $fin_to_delete);
+          $field->items_set('fin', $items_fin);
+          message::insert(new text(
+            'Item of type "%%_type" with title = "%%_title" was deleted.', [
+            'type'  => (new text($field->item_title))->render(),
+            'title' => $title_for_message
+          ]));
+        }
+        break;
+    }
+  }
+
+  static function on_submit($field, $form, $npath) {
+    if (!empty($field->controls)) {
+      foreach ($field->controls as $c_button) {
+        if ($c_button instanceof button && $c_button->is_clicked()) {
+          if (isset($c_button->_type) && $c_button->_type === 'insert') {static::debug_info_show($field, 'on_button_click_insert'); $result = event::start_local('on_button_click_insert', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_rebuild($field); static::debug_info_show($field, 'on_button_click_insert'); return $result;}
+          if (isset($c_button->_type) && $c_button->_type === 'delete') {static::debug_info_show($field, 'on_button_click_delete'); $result = event::start_local('on_button_click_delete', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_rebuild($field); static::debug_info_show($field, 'on_button_click_delete'); return $result;}
+        }
       }
     }
   }
@@ -348,32 +351,10 @@ namespace effcore {
     }
   }
 
-  static function on_validate($field, $form, $npath) {
-    if ($field->has_on_validate) {
-      $element = $field->child_select('element');
-      $name = $field->name_get();
-      $type = $field->type_get();
-      if ($name && $type) {
-        if ($field->disabled_get()) return true;
-        $new_values = request::files_get($name);
-        static::sanitize($field, $form, $element, $new_values);
-        event::start_local('on_values_pre_delete_physically', $field, ['form' => $form, 'npath' => $npath]);
-        event::start_local('on_values_fin_delete',            $field, ['form' => $form, 'npath' => $npath]);
-        $result = static::validate_multiple($field, $form, $element, $new_values) &&
-                  static::validate_upload  ($field, $form, $element, $new_values);
-        if ($result) event::start_local('on_values_pre_insert', $field, ['form' => $form, 'npath' => $npath, 'values' => $new_values]);
-        $field->pool_manager_rebuild();
-        if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE');
-        return $result;
-      }
-    }
-  }
-
   static function on_validate_phase_3($field, $form, $npath) {
   # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
       $result = event::start_local('on_values_save', $field, ['form' => $form, 'npath' => $npath]);
-      if ($field->is_debug_mode) print static::debug_info_pool_state_get($field, 'ON_VALIDATE PHASE 3');
       if (!$result) {
         $field->error_set();
         return;
@@ -383,10 +364,12 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
-    if ($field->min_files_number !== null && $field->min_files_number !== $field->max_files_number && $field->min_files_number > count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain a minimum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => count($field->items_get('fin')) + count($field->items_get('pre'))] )); return;}
-    if ($field->max_files_number !== null && $field->min_files_number !== $field->max_files_number && $field->max_files_number < count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too much files!', 'Field can contain a maximum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->max_files_number, 'current_number' => count($field->items_get('fin')) + count($field->items_get('pre'))] )); return;}
-    if ($field->min_files_number !== null && $field->min_files_number === $field->max_files_number && $field->min_files_number > count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain only %%_number file%%_plural{number|s}.',         'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => count($field->items_get('fin')) + count($field->items_get('pre'))] )); return;}
-    if ($field->max_files_number !== null && $field->min_files_number === $field->max_files_number && $field->max_files_number < count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values)) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too much files!', 'Field can contain only %%_number file%%_plural{number|s}.',         'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->max_files_number, 'current_number' => count($field->items_get('fin')) + count($field->items_get('pre'))] )); return;}
+    $count_all = count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values);
+    $count_cur = count($field->items_get('fin')) + count($field->items_get('pre'));
+    if ($field->min_files_number !== null && $field->min_files_number !== $field->max_files_number && $count_all < $field->min_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain a minimum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => $count_cur] )); return;}
+    if ($field->max_files_number !== null && $field->min_files_number !== $field->max_files_number && $count_all > $field->max_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too much files!', 'Field can contain a maximum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->max_files_number, 'current_number' => $count_cur] )); return;}
+    if ($field->min_files_number !== null && $field->min_files_number === $field->max_files_number && $count_all < $field->min_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain only %%_number file%%_plural{number|s}.',         'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => $count_cur] )); return;}
+    if ($field->max_files_number !== null && $field->min_files_number === $field->max_files_number && $count_all > $field->max_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too much files!', 'Field can contain only %%_number file%%_plural{number|s}.',         'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->max_files_number, 'current_number' => $count_cur] )); return;}
   # validate each item
     $max_size = $field->file_size_max_get();
     foreach ($new_values as $c_new_value) {
@@ -422,12 +405,25 @@ namespace effcore {
     }
   }
 
-  static function debug_info_pool_state_get($field, $phase = '') {
-    $result = br.'########### '.$phase.' ###########'.br.br;
-    $result.= 'pool fin_to_delete:'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-    return $result;
+  static function validate_required($field, $form, $element, &$new_value) {
+    if (count($new_value) === 0) {
+      $field->error_set(
+        'Field "%%_title" cannot be blank!', ['title' => (new text($field->title))->render() ]
+      );
+    } else {
+      return true;
+    }
+  }
+
+  static function debug_info_show($field, $source = '') {
+    if ($field->is_debug_mode) {
+      if ($source) $result = 'DEBUG INFO POOL STATE for "'.$field->title.'" ('.$source.')'.br;
+      else         $result = 'DEBUG INFO POOL STATE for "'.$field->title.'"'.br;
+      $result.= 'pool fin_to_delete:'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+      $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+      $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
+      message::insert($result);
+    }
   }
 
 }}

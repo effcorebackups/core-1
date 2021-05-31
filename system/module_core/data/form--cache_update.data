@@ -8,7 +8,7 @@ forms
     - button_update|button
         title: null
         attributes
-        - data-style: narrow-update
+        - data-style: update narrow
         - title|text
             text: Update
         - value: update

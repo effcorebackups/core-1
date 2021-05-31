@@ -130,13 +130,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   function sanitize_tmp($characters_allowed = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
+  # note: if the type "unknown" is not present in the "types_allowed" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
     $this->name = core::sanitize_file_part($this->name, $characters_allowed, $max_length_name);
     $this->type = core::sanitize_file_part($this->type, $characters_allowed, $max_length_type);
     if (!strlen($this->name)) $this->name = core::random_part_get();
     if (!strlen($this->type)) $this->type = 'unknown';
     $this->file = $this->name.'.'.$this->type;
   # special case for IIS, Apache, NGINX
-  # note: if the type "unknown" is not present in the "types_allowed" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
     if ($this->file === 'web.config' || $this->type === 'htaccess' || $this->type === 'nginx') {
       $this->name = core::random_part_get();
       $this->type = 'unknown';

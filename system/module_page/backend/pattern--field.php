@@ -68,7 +68,8 @@ namespace effcore {
   }
 
   function build() {
-    if (!$this->child_select('element')) {
+    if (!$this->is_builded) {
+         $this->is_builded = true;
       $element = new $this->element_class($this->element_tag_name);
       $this->child_insert($element, 'element');
       foreach ($this->attributes_select('element_attributes') as $c_key => $c_value) {
@@ -99,6 +100,17 @@ namespace effcore {
         $this->auto_id_generate()
       );
     }
+  }
+
+  function accept_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('accept');
+  }
+
+  function accept_set($accept = null) {
+    $element = $this->child_select('element');
+    if ($accept !== null) $element->attribute_insert('accept', $accept);
+    else                  $element->attribute_delete('accept');
   }
 
   function autofocus_set($is_focused = true) {

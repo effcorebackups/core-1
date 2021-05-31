@@ -27,9 +27,13 @@ namespace effcore {
     'data-player-timeline-is-visible' => 'true'
   ];
 
-  protected function pool_manager_action_insert_get_field_text($item, $id, $type) {
-    if ($this->audio_player_on_manage_is_visible) {
-      $player_markup = new markup('audio', ['src' => '/'.$item->get_current_path(true)] + $this->audio_player_on_manage_settings, [], +450);
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_action_text_get($field, $item, $id, $scope) {
+    if ($field->audio_player_on_manage_is_visible) {
+      $player_markup = new markup('audio', ['src' => '/'.$item->get_current_path(true)] + $field->audio_player_on_manage_settings, [], +450);
            return new node([], [$player_markup, new text('delete audio "%%_audio"', ['audio' => $item->file])]);
     } else return new node([], [                new text('delete audio "%%_audio"', ['audio' => $item->file])]);
   }

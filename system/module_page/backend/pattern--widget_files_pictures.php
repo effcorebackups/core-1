@@ -74,18 +74,20 @@ namespace effcore {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control for upload new picture
     $field_file_picture = new field_file_picture;
-    $field_file_picture->title            = 'Picture';
-    $field_file_picture->max_file_size    = $widget->{($group ? $group.'_' : '').'max_file_size'};
-    $field_file_picture->types_allowed    = $widget->{($group ? $group.'_' : '').'types_allowed'};
-    $field_file_picture->cform            = $widget->cform;
-    $field_file_picture->min_files_number = null;
-    $field_file_picture->max_files_number = null;
-    $field_file_picture->has_on_validate  = false;
+    $field_file_picture->title             = 'Picture';
+    $field_file_picture->max_file_size     = $widget->{($group ? $group.'_' : '').'max_file_size'};
+    $field_file_picture->types_allowed     = $widget->{($group ? $group.'_' : '').'types_allowed'};
+    $field_file_picture->cform             = $widget->cform;
+    $field_file_picture->min_files_number  = null;
+    $field_file_picture->max_files_number  = null;
+    $field_file_picture->has_widget_insert = false;
+    $field_file_picture->has_widget_manage = false;
+    $field_file_picture->has_on_validate   = false;
     $field_file_picture->build();
     $field_file_picture->multiple_set();
     $field_file_picture->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : '').'[]');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'narrow-insert', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
