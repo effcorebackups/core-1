@@ -72,9 +72,7 @@ namespace effcore {
           $this->child_insert(static::widget_insert_get($this), 'insert');
       if ($this->has_widget_manage)
           static::widget_manage_build($this);
-      $accept_types = [];
-      foreach ($this->types_allowed as $c_type) $accept_types[] = '.'.$c_type;
-      $this->accept_set(implode(',', $accept_types));
+      $this->accept_set($this->render_attribut_accept());
     }
   }
 
@@ -124,6 +122,12 @@ namespace effcore {
 
   # ─────────────────────────────────────────────────────────────────────
 
+  function render_attribut_accept() {
+    $accept_types = [];
+    foreach ($this->types_allowed as $c_type) $accept_types[] = '.'.$c_type;
+    return implode(',', $accept_types);
+  }
+
   function render_description() {
     $this->render_prepare_description();
     if ($this->min_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description[] = $this->render_description_file_min_number();
@@ -136,11 +140,11 @@ namespace effcore {
   }
 
   function render_description_file_size_max                          () {return new markup('p', ['data-id' => 'file-size-max'          ], new text($this->file_size_max_has_php_restriction() ? 'File can have a maximum size: %%_value (PHP restriction)' : 'File can have a maximum size: %%_value', ['value' => locale::format_bytes($this->file_size_max_get())]));}
-  function render_description_file_min_number                        () {return new markup('p', ['data-id' => 'file-min-number'        ], new text('Field can contain a minimum of %%_number file%%_plural{number|s}.',  ['number'     =>               $this->min_files_number                  ]));}
-  function render_description_file_max_number                        () {return new markup('p', ['data-id' => 'file-max-number'        ], new text('Field can contain a maximum of %%_number file%%_plural{number|s}.',  ['number'     =>               $this->max_files_number                  ]));}
-  function render_description_file_mid_number                        () {return new markup('p', ['data-id' => 'file-mid-number'        ], new text('Field can contain only %%_number file%%_plural{number|s}.',          ['number'     =>               $this->min_files_number                  ]));}
-  function render_description_file_types_allowed                     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => implode(', ', $this->types_allowed                    )]));}
-  function render_description_file_characters_allowed_for_decsription() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' =>               $this->characters_allowed_for_decsription]));}
+  function render_description_file_min_number                        () {return new markup('p', ['data-id' => 'file-number-min'        ], new text('Field can contain a minimum of %%_number file%%_plural{number|s}.',  ['number'     => $this->min_files_number                  ]));}
+  function render_description_file_max_number                        () {return new markup('p', ['data-id' => 'file-number-max'        ], new text('Field can contain a maximum of %%_number file%%_plural{number|s}.',  ['number'     => $this->max_files_number                  ]));}
+  function render_description_file_mid_number                        () {return new markup('p', ['data-id' => 'file-number-mid'        ], new text('Field can contain only %%_number file%%_plural{number|s}.',          ['number'     => $this->min_files_number                  ]));}
+  function render_description_file_types_allowed                     () {return new markup('p', ['data-id' => 'file-allowed-types'     ], new text('File can only be of the next types: %%_types',                       ['types'      => $this->render_attribut_accept()          ]));}
+  function render_description_file_characters_allowed_for_decsription() {return new markup('p', ['data-id' => 'file-allowed-characters'], new text('File name can contain only the next characters: %%_characters',      ['characters' => $this->characters_allowed_for_decsription]));}
 
   ###########################
   ### static declarations ###
@@ -271,7 +275,6 @@ namespace effcore {
             'title' => $c_new_item->file
           ]));
         } else {
-        # note: if one file from new uploaded set of files has an error, all set will be rejected
           $field->error_set();
           return;
         }
@@ -345,7 +348,6 @@ namespace effcore {
   }
 
   static function on_validate_phase_3($field, $form, $npath) {
-  # try to copy the files and raise an error if it fails (e.g. directory permissions)
     if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
       $result = event::start_local('on_values_save', $field, ['form' => $form, 'npath' => $npath]);
       if (!$result) {
