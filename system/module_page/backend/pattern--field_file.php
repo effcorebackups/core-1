@@ -170,10 +170,11 @@ namespace effcore {
     foreach ($field->items_get('pre') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'pre');
   # widget_insert reaction
     if ($field->disabled_get() === false) {
-      $field->controls['~insert']->disabled_set(
-        count($field->items_get('fin')) +
-        count($field->items_get('pre')) >= $field->max_files_number
-      );
+      $is_over = count($field->items_get('fin')) +
+                 count($field->items_get('pre')) >= $field->max_files_number;
+      if ($field->is_debug_mode !== true                     ) $field->controls['~insert']->disabled_set($is_over);
+      if ($field->is_debug_mode === true && $is_over === true) $field->controls['~insert']->attribute_insert('data-is-over', true);
+      if ($field->is_debug_mode === true && $is_over !== true) $field->controls['~insert']->attribute_delete('data-is-over');
     }
   }
 
