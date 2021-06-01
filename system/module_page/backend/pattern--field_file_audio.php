@@ -17,14 +17,14 @@ namespace effcore {
     'mp3' => 'mp3'];
   public $audio_player_on_manage_is_visible = true;
   public $audio_player_on_manage_settings = [
-    'autoplay'                        => false,
-    'controls'                        => true,
-    'crossorigin'                     => null,
-    'loop'                            => false,
-    'muted'                           => false,
-    'preload'                         => 'metadata',
     'data-player-name'                => 'default',
-    'data-player-timeline-is-visible' => 'true'
+    'data-player-timeline-is-visible' => 'true',
+    'autoplay'    => false,
+    'controls'    => true,
+    'crossorigin' => null,
+    'loop'        => false,
+    'muted'       => false,
+    'preload'     => 'metadata'
   ];
 
   ###########################

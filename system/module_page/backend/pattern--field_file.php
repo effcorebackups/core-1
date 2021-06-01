@@ -86,7 +86,6 @@ namespace effcore {
 
   function value_set($value) {
     event::start_local('on_values_init', $this, ['value' => $value ? [$value] : []]);
-    static::widget_manage_build($this);
   }
 
   function values_get() {
@@ -95,7 +94,6 @@ namespace effcore {
 
   function values_set($values) {
     event::start_local('on_values_init', $this, ['value' => $values ?: []]);
-    static::widget_manage_build($this);
   }
 
   function items_get($id)  {return $this->cform->validation_cache_get($this->name_get().'_files_pool_'.$id        ) ?: [];}
@@ -170,6 +168,13 @@ namespace effcore {
     $field->child_insert($field->controls['*manager_pre'], 'manager_pre');
     foreach ($field->items_get('fin') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'fin');
     foreach ($field->items_get('pre') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'pre');
+  # widget_insert reaction
+    if ($field->disabled_get() === false) {
+      $field->controls['~insert']->disabled_set(
+        count($field->items_get('fin')) +
+        count($field->items_get('pre')) >= $field->max_files_number
+      );
+    }
   }
 
   static function widget_manage_action_insert($field, $item, $id, $scope) {
@@ -210,10 +215,8 @@ namespace effcore {
         $c_item = new file_history;
         if ($c_item->init_from_fin($c_path_relative)) {
           $fin_items[$c_id] = $c_item;
-          $field->items_set('fin', $fin_items);
-        }
-      }
-    }
+          $field->items_set('fin', $fin_items); }}}
+    static::widget_manage_build($field);
   }
 
   static function on_values_save($field, $form, $npath) {
@@ -255,7 +258,6 @@ namespace effcore {
     foreach ($field->items_get('fin') as $c_item)
       $field->result[] = $c_item->get_current_path(true);
     event::start_local('on_values_init', $field, ['value' => $field->result]); # update indexes
-    static::widget_manage_build($field);
     static::debug_info_show($field, 'on_values_save');
     return true;
   }
