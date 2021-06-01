@@ -79,7 +79,7 @@ namespace effcore {
       if ($this->has_widget_insert)
           $this->child_insert(static::widget_insert_get($this), 'insert');
       if ($this->has_widget_manage)
-          static::widget_manage_rebuild($this);
+          static::widget_manage_build($this);
       $accept_types = [];
       foreach ($this->types_allowed as $c_type) $accept_types[] = '.'.$c_type;
       $this->accept_set(implode(',', $accept_types));
@@ -96,7 +96,7 @@ namespace effcore {
 
   function value_set($value) {
     event::start_local('on_values_init', $this, ['value' => $value ? [$value] : []]);
-    static::widget_manage_rebuild($this);
+    static::widget_manage_build($this);
   }
 
   function values_get() {
@@ -105,7 +105,7 @@ namespace effcore {
 
   function values_set($values) {
     event::start_local('on_values_init', $this, ['value' => $values ?: []]);
-    static::widget_manage_rebuild($this);
+    static::widget_manage_build($this);
   }
 
   function items_get($id)  {return $this->cform->validation_cache_get($this->name_get().'_files_pool_'.$id        ) ?: [];}
@@ -165,7 +165,7 @@ namespace effcore {
     return $button;
   }
 
-  static function widget_manage_rebuild($field) {
+  static function widget_manage_build($field) {
     $field->child_delete('manager_fin');
     $field->child_delete('manager_pre');
     $field->controls['*manager_fin'] = new markup('x-widget', ['data-type' => 'delete+fin']);
@@ -259,7 +259,7 @@ namespace effcore {
     foreach ($field->items_get('fin') as $c_item)
       $field->result[] = $c_item->get_current_path(true);
     event::start_local('on_values_init', $field, ['value' => $field->result]); # update indexes
-    static::widget_manage_rebuild($field);
+    static::widget_manage_build($field);
     static::debug_info_show($field, 'on_values_save');
     return true;
   }
@@ -329,8 +329,8 @@ namespace effcore {
     if (!empty($field->controls)) {
       foreach ($field->controls as $c_button) {
         if ($c_button instanceof button && $c_button->is_clicked()) {
-          if (isset($c_button->_type) && $c_button->_type === 'insert') {static::debug_info_show($field, 'on_button_click_insert'); $result = event::start_local('on_button_click_insert', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_rebuild($field); static::debug_info_show($field, 'on_button_click_insert'); return $result;}
-          if (isset($c_button->_type) && $c_button->_type === 'delete') {static::debug_info_show($field, 'on_button_click_delete'); $result = event::start_local('on_button_click_delete', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_rebuild($field); static::debug_info_show($field, 'on_button_click_delete'); return $result;}
+          if (isset($c_button->_type) && $c_button->_type === 'insert') {static::debug_info_show($field, 'on_button_click_insert'); $result = event::start_local('on_button_click_insert', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_build($field); static::debug_info_show($field, 'on_button_click_insert'); return $result;}
+          if (isset($c_button->_type) && $c_button->_type === 'delete') {static::debug_info_show($field, 'on_button_click_delete'); $result = event::start_local('on_button_click_delete', $field, ['form' => $form, 'npath' => $npath, 'button' => $c_button]); static::widget_manage_build($field); static::debug_info_show($field, 'on_button_click_delete'); return $result;}
         }
       }
     }
