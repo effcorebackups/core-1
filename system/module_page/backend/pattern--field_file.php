@@ -166,12 +166,14 @@ namespace effcore {
     $field->controls['*manager_pre'] = new markup('x-widget', ['data-type' => 'delete+pre']);
     $field->child_insert($field->controls['*manager_fin'], 'manager_fin');
     $field->child_insert($field->controls['*manager_pre'], 'manager_pre');
-    foreach ($field->items_get('fin') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'fin');
-    foreach ($field->items_get('pre') as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'pre');
+    $items_fin = $field->items_get('fin');
+    $items_pre = $field->items_get('pre');
+    foreach ($items_fin as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'fin');
+    foreach ($items_pre as $c_id => $c_item) static::widget_manage_action_insert($field, $c_item, $c_id, 'pre');
   # widget_insert reaction
     if ($field->disabled_get() === false) {
-      $is_over = count($field->items_get('fin')) +
-                 count($field->items_get('pre')) >= $field->max_files_number;
+      $is_over = count($items_fin) +
+                 count($items_pre) >= $field->max_files_number;
       if ($field->is_debug_mode !== true                     ) $field->controls['~insert']->disabled_set($is_over);
       if ($field->is_debug_mode === true && $is_over === true) $field->controls['~insert']->attribute_insert('data-is-over', true);
       if ($field->is_debug_mode === true && $is_over !== true) $field->controls['~insert']->attribute_delete('data-is-over');
@@ -362,8 +364,10 @@ namespace effcore {
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {
-    $count_all = count($field->items_get('fin')) + count($field->items_get('pre')) + count($new_values);
-    $count_cur = count($field->items_get('fin')) + count($field->items_get('pre'));
+    $items_fin = $field->items_get('fin');
+    $items_pre = $field->items_get('pre');
+    $count_all = count($items_fin) + count($items_pre) + count($new_values);
+    $count_cur = count($items_fin) + count($items_pre);
     if ($field->min_files_number !== null && $field->min_files_number !== $field->max_files_number && $count_all < $field->min_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain a minimum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => $count_cur] )); return;}
     if ($field->max_files_number !== null && $field->min_files_number !== $field->max_files_number && $count_all > $field->max_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too much files!', 'Field can contain a maximum of %%_number file%%_plural{number|s}.', 'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->max_files_number, 'current_number' => $count_cur] )); return;}
     if ($field->min_files_number !== null && $field->min_files_number === $field->max_files_number && $count_all < $field->min_files_number) {$field->error_set(new text_multiline(['Field "%%_title" contains an error!', 'You are trying to upload too few files!',  'Field can contain only %%_number file%%_plural{number|s}.',         'You have already uploaded %%_current_number file%%_plural{current_number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $field->min_files_number, 'current_number' => $count_cur] )); return;}
