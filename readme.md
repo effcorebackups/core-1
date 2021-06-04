@@ -16,8 +16,8 @@ General information
 - License: proprietary software
 - Website: http://effcore.com
 
-EFFCORE — the next-generation mini CMS (Content Management System)
-and mini CMF (Content Management Framework) developed by between 2016 and 2021.
+EFFCORE — the next-generation mini-CMS (Content Management System)
+and mini-CMF (Content Management Framework) developed by between 2016 and 2021.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, PSR-0.
 
