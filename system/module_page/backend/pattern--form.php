@@ -116,9 +116,9 @@ namespace effcore {
           }
 
         # update or delete validation cache (will not be deleted if redirection has occurred)
-          if ($this->validation_cache !== null && $this->validation_cache_is_persistent != false &&                                core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() === true && core::hash_get_data($this->validation_cache) != $this->validation_cache_hash) $this->validation_cache_storage_update();
-          if ($this->validation_cache !== null && $this->validation_cache_is_persistent == false && $this->has_error() !== true                                                                                ) $this->validation_cache_storage_delete();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent !== false &&                                core::hash_get_data($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() === true && core::hash_get_data($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
+          if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() !== true                                                                                 ) $this->validation_cache_storage_delete();
 
         }
       }

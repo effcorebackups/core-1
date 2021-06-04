@@ -96,8 +96,14 @@ namespace effcore {
     event::start_local('on_values_init', $this, ['value' => $values ?: []]);
   }
 
-  function items_get($id)  {return $this->cform->validation_cache_get($this->name_get().'_files_pool_'.$id        ) ?: [];}
-  function items_set($id, $items) {$this->cform->validation_cache_set($this->name_get().'_files_pool_'.$id, $items);      }
+  function items_get($scope)  {
+    return $this->cform->validation_cache_get($this->name_get().'__items__'.$scope) ?: [];
+  }
+
+  function items_set($scope, $items) {
+    $this->cform->validation_cache_is_persistent = true;
+    $this->cform->validation_cache_set($this->name_get().'__items__'.$scope, $items);
+  }
 
   # ─────────────────────────────────────────────────────────────────────
 
