@@ -497,7 +497,12 @@ forms
                 - switcher_1: Switcher 1
                 - switcher_2: Switcher 2 (checked)
                 - switcher_3: Switcher 3 (disabled)
-                - switcher_4: Switcher 4 (disabled + checked)
+                - switcher_4
+                    title: Switcher 4 (disabled + checked)
+                    description: some description
+                    element_attributes
+                    - data-item-type: custom
+                    weight: -5
                 disabled
                 - =: switcher_3
                 - =: switcher_4
@@ -544,7 +549,12 @@ forms
                 values
                 - radiobutton_1: Radiobutton 1
                 - radiobutton_2: Radiobutton 2 (checked)
-                - radiobutton_3: Radiobutton 3 (disabled)
+                - radiobutton_3
+                    title: Radiobutton 3 (disabled)
+                    description: some description
+                    element_attributes
+                    - data-item-type: custom
+                    weight: -5
                 disabled
                 - =: radiobutton_3
                 checked
