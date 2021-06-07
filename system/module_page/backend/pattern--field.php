@@ -320,9 +320,9 @@ namespace effcore {
 
   function render() {
     $element = $this->child_select('element');
-    if ($this->set_auto_id) $this->auto_id_set();
-    if ($element instanceof node_simple && $element->attribute_select('disabled')) $this->attribute_insert('aria-disabled', 'true');
-    if ($element instanceof node_simple && $element->attribute_select('required')) $this->attribute_insert('aria-required', 'true');
+    if ($this->set_auto_id   ) $this->auto_id_set();
+    if ($this->disabled_get()) $this->attribute_insert('aria-disabled', 'true');
+    if ($this->required_get()) $this->attribute_insert('aria-required', 'true');
     return parent::render();
   }
 
@@ -343,7 +343,7 @@ namespace effcore {
       if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description[] = $this->render_description_pattern  ($element);
       if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description[] = $this->render_description_max      ($element);
       if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description[] = $this->render_description_min      ($element);
-      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     )  == 'range'                                ) $this->description[] = $this->render_description_cur      ($element);
+      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     ) === 'range'                                ) $this->description[] = $this->render_description_cur      ($element);
       if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_maxlength($element);
       if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_minlength($element);
       if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description[] = $this->render_description_midlength($element);

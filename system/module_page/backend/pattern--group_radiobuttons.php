@@ -39,9 +39,9 @@ namespace effcore {
         if (!$this->child_select($c_value)) {
           if (is_string($c_info)) $c_info = (object)['title' => $c_info, 'description' => null, 'element_attributes' => ['value' => $c_value], 'weight' => 0];
           $c_field                     = new $this->field_class;
-          $c_field->tag_name           = $this->field_tag_name;
-          $c_field->title_tag_name     = $this->field_title_tag_name;
-          $c_field->title_position     = $this->field_title_position;
+          $c_field->tag_name           =     $this->field_tag_name;
+          $c_field->title_tag_name     =     $this->field_title_tag_name;
+          $c_field->title_position     =     $this->field_title_position;
           $c_field->title              = $c_info->title;
           $c_field->description        = $c_info->description;
           $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
@@ -51,8 +51,7 @@ namespace effcore {
         } else $c_field = $this->child_select($c_value);
         $c_field->required_set(isset($this->required[$c_value]));
         $c_field-> checked_set(isset($this->checked [$c_value]));
-        $c_field->disabled_set(isset($this->disabled[$c_value]));
-      }
+        $c_field->disabled_set(isset($this->disabled[$c_value])); }
       $this->is_builded = true;
     }
   }
