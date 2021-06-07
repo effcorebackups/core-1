@@ -553,6 +553,18 @@ forms
                   - title: group_palette
                 element_attributes
                 - name: palette_color
+      # micro_tabs
+        - micro_tabs|micro_tabs
+            values
+            - item_1: Item 1
+            - item_2: Item 2
+            - item_3_extended
+                title: Item 3
+                element_attributes
+                - value: item_3
+                weight: -5
+            checked
+            - =: item_1
     - hidden|field_hidden
         attributes
         - name: hidden_name
