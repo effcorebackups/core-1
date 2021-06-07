@@ -21,13 +21,17 @@ namespace effcore {
     if (!$this->is_builded) {
       foreach ($this->values as $c_value => $c_info) {
         if (!$this->child_select($c_value)) {
-          if (is_string($c_info)) $c_info = (object)['title' => $c_info, 'element_attributes' => ['value' => $c_value], 'weight' => 0];
+          if (is_string($c_info)) $c_info = (object)['title' => $c_info];
+          if (!isset($c_info->title                      )) $c_info->title  = $c_value;
+          if (!isset($c_info->weight                     )) $c_info->weight = 0;
+          if (!isset($c_info->element_attributes         )) $c_info->element_attributes = [];
+          if (!isset($c_info->element_attributes['value'])) $c_info->element_attributes['value'] = $c_value;
           $c_field                     = new field_radiobutton;
           $c_field->tag_name           = null;
           $c_field->template           = 'container_content';
           $c_field->title              = $c_info->title;
-          $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
           $c_field->weight             = $c_info->weight;
+          $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
           $c_field->build();
                           $this->child_insert($c_field, $c_value);
         } else $c_field = $this->child_select($c_value);

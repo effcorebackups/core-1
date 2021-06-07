@@ -461,7 +461,12 @@ forms
                 - checkbox_1: Checkbox 1
                 - checkbox_2: Checkbox 2 (checked)
                 - checkbox_3: Checkbox 3 (disabled)
-                - checkbox_4: Checkbox 4 (disabled + checked)
+                - checkbox_4
+                    title: Checkbox 4 (disabled + checked)
+                    description: some description
+                    element_attributes
+                    - data-item-type: custom
+                    weight: -5
                 disabled
                 - =: checkbox_3
                 - =: checkbox_4
@@ -560,10 +565,10 @@ forms
             values
             - item_1: Item 1
             - item_2: Item 2
-            - item_3_extended
+            - item_3
                 title: Item 3
                 element_attributes
-                - value: item_3
+                - data-item-type: custom
                 weight: -5
             checked
             - =: item_1

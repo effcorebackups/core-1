@@ -183,6 +183,7 @@ translations
     - show for admin: паказваць адміністратару
     - show for everyone: паказваць усім
     - simple string: просты радок
+    - some description: нейкае апісанне
     - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
     - string with parameter = %%_n: радок з параметрам = %%_n
     - string with plural value = %%_number second%%_plural{number\|s}: радок з множным лікам = %%_number секунд%%_plural{number|a-ji}
