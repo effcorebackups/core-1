@@ -336,6 +336,13 @@ namespace effcore {
     }
   }
 
+  function render_prepare_description() {
+  # ready for: NULL, string, object|text, object|text_multiline… object+render()
+    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
+    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+  }
+
   function render_description() {
     $this->render_prepare_description();
     $element = $this->child_select('element');
@@ -355,13 +362,6 @@ namespace effcore {
       if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
       return '';
     }
-  }
-
-  function render_prepare_description() {
-  # ready for: NULL, string, object|text, object|text_multiline… object+render()
-    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
-    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
   }
 
   function render_opener() {
