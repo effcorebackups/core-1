@@ -24,7 +24,7 @@ namespace effcore {
           if (is_string($c_info)) $c_info = (object)['title' => $c_info, 'element_attributes' => ['value' => $c_value], 'weight' => 0];
           $c_field                     = new field_radiobutton;
           $c_field->tag_name           = null;
-          $c_field->template           = 'content';
+          $c_field->template           = 'container_content';
           $c_field->title              = $c_info->title;
           $c_field->element_attributes = $c_info->element_attributes + $this->attributes_select('element_attributes') + $c_field->attributes_select('element_attributes');
           $c_field->weight             = $c_info->weight;

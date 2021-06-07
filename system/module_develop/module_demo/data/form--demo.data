@@ -555,6 +555,8 @@ forms
                 - name: palette_color
       # micro_tabs
         - micro_tabs|micro_tabs
+            element_attributes
+            - name: micro_tabs
             values
             - item_1: Item 1
             - item_2: Item 2

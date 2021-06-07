@@ -87,9 +87,9 @@ namespace effcore {
     $name = $this->name_get();
     if ($name !== null) {
       static::$auto_ids[$name] = isset(static::$auto_ids[$name]) ? ++static::$auto_ids[$name] : 1;
-      $suffix = static::$auto_ids[$name] === 1 ? '' :
-            '-'.static::$auto_ids[$name];
-      return 'auto_id-'.$name.$suffix;
+      if (static::$auto_ids[$name] === 1)
+           return 'auto_id-'.$name;
+      else return 'auto_id-'.$name.'-'.static::$auto_ids[$name];
     }
   }
 
