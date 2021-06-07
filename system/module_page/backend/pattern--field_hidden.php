@@ -18,10 +18,6 @@ namespace effcore {
     parent::__construct(null, $attributes, $weight);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-  # element properties
-  # ─────────────────────────────────────────────────────────────────────
-
   function name_get($trim = true) {
     return $trim ? rtrim($this->attribute_select('name'), '[]') :
                          $this->attribute_select('name');

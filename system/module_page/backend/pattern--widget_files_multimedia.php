@@ -75,6 +75,12 @@ namespace effcore {
 
   static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
+    $media_type = new micro_tabs;
+    $media_type->element_attributes['name'] = 'media_type';
+    $media_type->checked['pictures'] = 'pictures';
+    $media_type->item_insert('Pictures', 'pictures');
+    $media_type->item_insert('Video', 'video');
+    $media_type->item_insert('Audio', 'audio');
     $fieldset_pictures = new fieldset('Pictures', null, ['data-type' => 'pictures']);
     $fieldset_video    = new fieldset('Video',    null, ['data-type' => 'video'   ]);
     $fieldset_audio    = new fieldset('Audio',    null, ['data-type' => 'audio'   ]);
@@ -87,6 +93,7 @@ namespace effcore {
     $widget->controls['*fieldset_pictures'] = $fieldset_pictures;
     $widget->controls['*fieldset_video'   ] = $fieldset_video;
     $widget->controls['*fieldset_audio'   ] = $fieldset_audio;
+    $result->child_insert($media_type, 'media_type');
     $result->child_insert($fieldset_pictures, 'pictures');
     $result->child_insert($fieldset_video, 'video');
     $result->child_insert($fieldset_audio, 'audio');

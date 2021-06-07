@@ -40,4 +40,15 @@ namespace effcore {
     }
   }
 
+  function item_insert($title = null, $value = '', $element_attributes = [], $weight = 0, $ws_rebuild = true) {
+    $this->values[$value] = (object)[
+      'title'              => $title,
+      'element_attributes' => $element_attributes,
+      'weight'             => $weight];
+    if ($ws_rebuild) {
+      $this->is_builded = false;
+      $this->build();
+    }
+  }
+
 }}
