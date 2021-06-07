@@ -18,6 +18,22 @@
     text-align: center;
     border: 1px dotted %%_color__main}
 
+  /* micro_tabs */
+
+  input[type='radio'][role='micro_tabs-item'] {display: none}
+  input[type='radio'][role='micro_tabs-item'] + [data-field-title] {
+    display: inline-block;
+    padding: 15px 15px 10px 15px;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.1em;
+    text-decoration: underline;
+    color: %%_color__tabs_link}
+  input[type='radio'][role='micro_tabs-item']         + [data-field-title]:hover {color: %%_color__tabs_link_active_no_bg}
+  input[type='radio'][role='micro_tabs-item']:checked + [data-field-title] {
+    text-decoration: none;
+    color: %%_color__tabs_link_active !important;
+    background: %%_color__tabs}
+
   /* fieldset */
 
   fieldset {margin: 50px 0; padding: 0; border: none}
@@ -31,7 +47,7 @@
   fieldset > x-description {margin-top: 20px}
 
   fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
-  fieldset input[data-opener-type='title']:checked ~ x-fieldset-content {display: none}
+  fieldset input[data-opener-type='title']:checked ~ x-fieldset-content:first-of-type {display: none}
   fieldset input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
   fieldset input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
@@ -135,8 +151,8 @@
   input[data-state-default='not_checked']:checked,
   input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color__warning}
 
-  input[type='checkbox'] ~ label[for],
-  input[type='radio'   ] ~ label[for] {
+  input[type='checkbox'] + label[for],
+  input[type='radio'   ] + label[for] {
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
     cursor: pointer}
 
@@ -222,7 +238,7 @@
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-width: 1px}
   x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
-  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content {display: none}
+  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content:first-of-type {display: none}
 
   x-group[data-type='palette'] [data-group-title] {
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
@@ -283,7 +299,7 @@
   /* widget */
 
   x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
-  x-widget input[data-opener-type='title']:checked ~ x-widget-content {display: none}
+  x-widget input[data-opener-type='title']:checked ~ x-widget-content:first-of-type {display: none}
   x-widget input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
   x-widget input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
