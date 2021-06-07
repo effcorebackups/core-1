@@ -61,15 +61,12 @@ namespace effcore\modules\polls {
         $control->title_is_visible = false;
         $control->element_attributes['name'] = 'answers[]';
         $control->required_any = true;
-        $control->build();
-        $items['fields']->child_insert($control, 'answers');
-        foreach ($answers_row as $c_answer) {
+        foreach ($answers_row as $c_answer)
           $control->field_insert(
             $c_answer->answer, null,
             $c_answer->id, [],
-            $c_answer->weight
-          );
-        }
+            $c_answer->weight);
+        $items['fields']->child_insert($control, 'answers');
     # ─────────────────────────────────────────────────────────────────────
     # voting report
     # ─────────────────────────────────────────────────────────────────────

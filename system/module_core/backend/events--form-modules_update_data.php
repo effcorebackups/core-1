@@ -31,7 +31,6 @@ namespace effcore\modules\core {
         $c_fieldset->state = 'closed';
         $c_checkboxes = new group_checkboxes;
         $c_checkboxes->element_attributes['name'] = 'update_'.$c_module->id.'[]';
-        $c_checkboxes->build();
         $c_fieldset->child_insert($c_checkboxes, 'checkboxes');
         $info->child_insert($c_fieldset, $c_module->id);
         core::array_sort_by_property($c_updates, 'number');

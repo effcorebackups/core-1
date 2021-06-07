@@ -65,7 +65,7 @@ namespace effcore {
     $this->values[$value] = (object)[
       'title'              => $title,
       'description'        => $description,
-      'element_attributes' => ['value' => $value] + $element_attributes,
+      'element_attributes' => $element_attributes,
       'weight'             => $weight];
     if ($ws_rebuild) {
       $this->is_builded = false;
