@@ -21,7 +21,7 @@ namespace effcore {
   static function select() {
     $session_id       = static::id_get();
     $session_hex_type = static::id_extract_hex_type($session_id);
-    if ($session_hex_type == 'f') {
+    if ($session_hex_type === 'f') {
       if (!static::$current)
            static::$current = (new instance('session', ['id' => $session_id]))->select();
       if (!static::$current) {
@@ -90,12 +90,12 @@ namespace effcore {
     $cookie_domain = storage::get('files')->select('settings/core/cookie_domain');
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    if ($hex_type == 'f' && $is_remember == false) $expired = time() + core::date_period_d;
-    if ($hex_type == 'f' && $is_remember)          $expired = time() + core::date_period_m;
-    if ($hex_type == 'a')                          $expired = 0;
-    if ($hex_type == 'f' && $is_fixed_ip == false) $ip = core::empty_ip;
-    if ($hex_type == 'f' && $is_fixed_ip)          $ip = core::server_get_addr_remote();
-    if ($hex_type == 'a')                          $ip = core::server_get_addr_remote();
+    if ($hex_type === 'f' && $is_remember === false) $expired = time() + core::date_period_d;
+    if ($hex_type === 'f' && $is_remember !== false) $expired = time() + core::date_period_m;
+    if ($hex_type === 'a'                          ) $expired = 0;
+    if ($hex_type === 'f' && $is_fixed_ip === false) $ip = core::empty_ip;
+    if ($hex_type === 'f' && $is_fixed_ip !== false) $ip = core::server_get_addr_remote();
+    if ($hex_type === 'a'                          ) $ip = core::server_get_addr_remote();
   # $hex_type: a - anonymous user | f - authenticated user
     $hex_expired       = static::id_get_hex_expired($expired);
     $hex_ip            = static::id_get_hex_ip($ip);

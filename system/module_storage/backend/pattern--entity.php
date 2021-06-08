@@ -115,23 +115,23 @@ namespace effcore {
 
   function auto_name_get() {
     foreach ($this->fields as $name => $info) {
-      if ($info->type == 'autoincrement') {
+      if ($info->type === 'autoincrement') {
         return $name;
       }
     }
   }
 
   function id_get_real() {
-    foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') return $c_constraint->fields;
-    foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) return $c_constraint->fields;
-    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') return $c_index     ->fields;
+    foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'primary'     ) return $c_constraint->fields;
+    foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'unique'      ) return $c_constraint->fields;
+    foreach ($this->indexes     as $c_index     ) if ($c_index     ->type === 'unique index') return $c_index     ->fields;
     return [];
   }
 
   function id_get_from_values($values) {
-    foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'primary') {$slice = []; foreach ($c_constraint->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_constraint->fields) == count($slice)) return $slice;}
-    foreach ($this->constraints as $c_constraint) if ($c_constraint->type == 'unique' ) {$slice = []; foreach ($c_constraint->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_constraint->fields) == count($slice)) return $slice;}
-    foreach ($this->indexes     as $c_index     ) if ($c_index->type == 'unique index') {$slice = []; foreach ($c_index     ->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_index     ->fields) == count($slice)) return $slice;}
+    foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'primary'     ) {$slice = []; foreach ($c_constraint->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_constraint->fields) === count($slice)) return $slice;}
+    foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'unique'      ) {$slice = []; foreach ($c_constraint->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_constraint->fields) === count($slice)) return $slice;}
+    foreach ($this->indexes     as $c_index     ) if ($c_index     ->type === 'unique index') {$slice = []; foreach ($c_index     ->fields as $c_id) if (isset($values[$c_id])) $slice[$c_id] = $values[$c_id]; if (count($c_index     ->fields) === count($slice)) return $slice;}
     return [];
   }
 
