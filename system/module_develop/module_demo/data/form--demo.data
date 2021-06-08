@@ -573,28 +573,34 @@ forms
             element_attributes
             - name: micro_tabs
             values
-            - item_1: Tab 1
-            - item_2: Tab 2
-            - item_3
+            - 1: Tab 1
+            - 2: Tab 2
+            - 3
                 title: Tab 3
                 element_attributes
                 - data-item-type: custom
                 weight: -5
             checked
-            - =: item_1
+            - =: 1
         - micro_tab_1_content|fieldset
+            attributes
+            - data-micro_tabs-content-id: 1
             children
             - content_main|text
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 1
         - micro_tab_2_content|fieldset
+            attributes
+            - data-micro_tabs-content-id: 2
             children
             - content_main|text
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 2
         - micro_tab_3_content|fieldset
+            attributes
+            - data-micro_tabs-content-id: 3
             children
             - content_main|text
                 text: Main content of Micro Tab #%%_num

@@ -34,6 +34,14 @@
     color: %%_color__tabs_link_active !important;
     background: %%_color__tabs}
 
+  [data-micro_tabs-content-id] {display: none; margin-top: 0}
+  [data-micro_tabs-content-id] x-fieldset-content {border-top-color: %%_color__tabs}
+  input[type='radio'][role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'] {display: block}
+  input[type='radio'][role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'] {display: block}
+  input[type='radio'][role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'] {display: block}
+  input[type='radio'][role='micro_tabs-item'][value='4']:checked ~ [data-micro_tabs-content-id='4'] {display: block}
+  input[type='radio'][role='micro_tabs-item'][value='5']:checked ~ [data-micro_tabs-content-id='5'] {display: block}
+
   /* fieldset */
 
   fieldset {margin: 50px 0; padding: 0; border: none}
