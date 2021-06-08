@@ -92,7 +92,7 @@ namespace effcore {
     foreach ($element->children_select_recursive() as $c_child) {
       if ($c_child instanceof node &&
           $c_child->tag_name === 'option') {
-        if (core::in_array_string_compare($c_child->attribute_select('value'), $values))
+        if (core::in_array_string($c_child->attribute_select('value'), $values))
                         $c_child->attribute_insert('selected', 'selected');
         elseif ($clear) $c_child->attribute_delete('selected');
       }

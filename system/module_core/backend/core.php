@@ -117,7 +117,7 @@ namespace effcore {
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path, '%^.*\\.php$%');
         foreach ($c_files as $c_path_relative => $c_file) {
-          $c_module_id = key(static::in_array_inclusions_find($c_path_relative, $modules_path));
+          $c_module_id = key(static::in_array_strpos($c_path_relative, $modules_path));
           if (isset($enabled[$c_module_id])) {
             $files[$c_path_relative] = $c_file;
           }
@@ -408,15 +408,15 @@ namespace effcore {
     return $result;
   }
 
-  static function in_array_string_compare($value, $array) {
-    foreach ($array as $c_item) {
-      if ((string)$c_item === (string)$value) {
+  static function in_array_string($value, $array) {
+    foreach ($array as $c_value) {
+      if ((string)$value === (string)$c_value) {
         return true;
       }
     }
   }
 
-  static function in_array_inclusions_find($value, $array) {
+  static function in_array_strpos($value, $array) {
     $result = [];
     foreach ($array as $c_key => $c_value) {
       if (strpos($value, (string)$c_value) === 0) {
