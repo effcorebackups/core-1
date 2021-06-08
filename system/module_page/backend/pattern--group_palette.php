@@ -57,13 +57,15 @@ namespace effcore {
   function render_opener() {
     $color_id        = $this->value_get() ?: 'white';
     $color_value_hex = color::get($color_id)->value_hex ?: '#ffffff';
+    $has_error       = $this->has_error_in_container();
     return (new markup_simple('input', [
       'type'             => 'checkbox',
       'role'             => 'button',
       'data-opener-type' => 'palette',
       'id'               => 'f_opener_'.$this->name_get_complex(),
       'title'            => new text('press to show or hide available colors'),
-      'checked'          => $this->has_error_in_container() ? false : true,
+      'checked'          => $has_error ? false : true,
+      'aria-invalid'     => $has_error ? 'true' : null,
       'value'            => $color_id,
       'style'            => ['background: '.$color_value_hex]
     ]))->render();

@@ -129,7 +129,7 @@ namespace effcore {
   }
 
   static function validate_required_any($group, $form, $npath) {
-    if ($group->required_any && $group->value_get() == null) {
+    if ($group->required_any && $group->value_get() === '') {
       $group->error_set_in_container();
       $form->error_set(
         'Group "%%_title" should contain at least one selected item!', ['title' => (new text($group->title))->render() ]
