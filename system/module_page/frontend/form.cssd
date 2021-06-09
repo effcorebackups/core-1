@@ -36,11 +36,15 @@
 
   [data-micro_tabs-content-id] {display: none; margin-top: 0}
   [data-micro_tabs-content-id] x-fieldset-content {padding-top: 30px; border-top-color: %%_color__tabs}
-  input[type='radio'][role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'] {display: block}
-  input[type='radio'][role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'] {display: block}
-  input[type='radio'][role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'] {display: block}
-  input[type='radio'][role='micro_tabs-item'][value='4']:checked ~ [data-micro_tabs-content-id='4'] {display: block}
-  input[type='radio'][role='micro_tabs-item'][value='5']:checked ~ [data-micro_tabs-content-id='5'] {display: block}
+  input[type='radio'][role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'],
+  input[type='radio'][role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'],
+  input[type='radio'][role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'],
+  input[type='radio'][role='micro_tabs-item'][value='4']:checked ~ [data-micro_tabs-content-id='4'],
+  input[type='radio'][role='micro_tabs-item'][value='5']:checked ~ [data-micro_tabs-content-id='5'],
+  input[type='radio'][role='micro_tabs-item'][value='6']:checked ~ [data-micro_tabs-content-id='6'],
+  input[type='radio'][role='micro_tabs-item'][value='7']:checked ~ [data-micro_tabs-content-id='7'],
+  input[type='radio'][role='micro_tabs-item'][value='8']:checked ~ [data-micro_tabs-content-id='8'],
+  input[type='radio'][role='micro_tabs-item'][value='9']:checked ~ [data-micro_tabs-content-id='9'] {display: block}
 
   /* fieldset */
 
