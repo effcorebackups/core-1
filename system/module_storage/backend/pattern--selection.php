@@ -62,12 +62,12 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # prepare the query and request data from the storage
     # ─────────────────────────────────────────────────────────────────────
-      if (count($used_storages) == 1) {
+      if (count($used_storages) === 1) {
         $this->attribute_insert('data-main-entity', $this->_main_entity->name, 'attributes', true);
 
       # prepare query params
         foreach ($this->fields as $c_row_id => $c_field) {
-          if ($c_field->type == 'join_field') {
+          if ($c_field->type === 'join_field') {
             $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
           }
         }
@@ -105,7 +105,7 @@ namespace effcore {
           $this->query_params
         );
 
-      } elseif (count($used_storages) == 0) {
+      } elseif (count($used_storages) === 0) {
         message::insert(new text(
           'No fields for select from storage! Selection ID = "%%_id".', ['id' => $this->id]), 'error'
         );
@@ -189,8 +189,8 @@ namespace effcore {
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
               $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
-              $c_row[$c_row_id]['value']->is_apply_translation = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] == '\\effcore\\translation::apply';
-              $c_row[$c_row_id]['value']->is_apply_tokens      = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] == '\\effcore\\token::apply';
+              $c_row[$c_row_id]['value']->is_apply_translation = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] === '\\effcore\\translation::apply';
+              $c_row[$c_row_id]['value']->is_apply_tokens      = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] === '\\effcore\\token::apply';
             }
           }
           $decorator->data[] = $c_row;

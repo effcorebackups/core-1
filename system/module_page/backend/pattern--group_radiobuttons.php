@@ -103,7 +103,7 @@ namespace effcore {
   function value_set($value) {
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) $c_child->checked_set(false);
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) {
-      if ($c_child->value_get() == $value) {
+      if ((string)$c_child->value_get() === (string)$value) {
         $c_child->checked_set(true);
         return true;
       }

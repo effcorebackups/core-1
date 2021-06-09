@@ -498,8 +498,8 @@ namespace effcore {
         'values_begin'   => 'VALUES (',
         'values_!,'      => $this->prepare_values($values),
         'values_end'     => ')']);
-      if ($new_id !== null && $auto_name == null) return $instance;
-      if ($new_id !== null && $auto_name != null) {
+      if ($new_id !== null && $auto_name === null) return $instance;
+      if ($new_id !== null && $auto_name !== null) {
         $instance->{$auto_name} = $new_id;
         return $instance;
       }
