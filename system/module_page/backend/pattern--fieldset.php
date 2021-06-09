@@ -11,6 +11,7 @@ namespace effcore {
   public $title_tag_name = 'label';
   public $title_attributes = ['data-fieldset-title' => true];
   public $content_tag_name = 'x-fieldset-content';
+  public $content_attributes = ['data-fieldset-content' => true];
 # ─────────────────────────────────────────────────────────────────────
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $state = ''; # '' | opened | closed[checked]

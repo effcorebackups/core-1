@@ -35,7 +35,7 @@
     background: %%_color__tabs}
 
   [data-micro_tabs-content-id] {display: none; margin-top: 0}
-  [data-micro_tabs-content-id] x-fieldset-content {padding-top: 30px; border-top-color: %%_color__tabs}
+  [data-micro_tabs-content-id] [data-fieldset-content] {padding-top: 15px; border-top-color: %%_color__tabs}
   input[type='radio'][role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'],
   input[type='radio'][role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'],
   input[type='radio'][role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'],
@@ -55,24 +55,24 @@
     margin-top: 10px}
 
   fieldset [data-fieldset-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
-  fieldset [data-fieldset-title] + x-fieldset-content {margin-top: 30px}
+  fieldset [data-fieldset-title] + [data-fieldset-content] {margin-top: 30px}
   fieldset > x-description {margin-top: 20px}
 
   fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
-  fieldset input[data-opener-type='title']:checked ~ x-fieldset-content:first-of-type {display: none}
+  fieldset input[data-opener-type='title']:checked ~ [data-fieldset-content]:first-of-type {display: none}
   fieldset input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
   fieldset input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
-  x-fieldset-content {
+  fieldset [data-fieldset-content] {
     display: block;
     padding: 10px 16px;
     border-top: 5px solid %%_color__main}
-  x-fieldset-content::after {content: ''; clear: both; display: block}
+  fieldset [data-fieldset-content]::after {content: ''; clear: both; display: block}
 
-  x-fieldset-content,
-  x-fieldset-content x-fieldset-content                    x-fieldset-content {background: %%_color__fieldset}
-  x-fieldset-content                                       x-fieldset-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content {background: %%_color__fieldset_nested}
+  [data-fieldset-content],
+  [data-fieldset-content] [data-fieldset-content]                         [data-fieldset-content] {background: %%_color__fieldset}
+  [data-fieldset-content]                                                 [data-fieldset-content],
+  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] {background: %%_color__fieldset_nested}
 
   /* field */
 
@@ -302,9 +302,6 @@
   [data-has-rearrangeable-is-active] [data-rearrangeable][data-rearrangeable-is-active]                        x-droppable-area                         {visibility: hidden}
   [data-has-rearrangeable-is-active] [data-rearrangeable][data-rearrangeable-is-active] + [data-rearrangeable] x-droppable-area[data-position='before'] {visibility: hidden}
 
-  [data-has-rearrangeable] > x-fieldset-content {
-    padding-top   : 20px;
-    padding-bottom: 20px}
   [data-has-rearrangeable][data-js-is-processed] x-field[data-type='weight'] {
     display: none}
 
@@ -340,10 +337,10 @@
     padding: 10px 16px 16px 16px;
     border-top: 5px solid %%_color__main}
 
-  x-fieldset-content                                                          x-widget-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content                    x-widget-content {background: %%_color__fieldset_nested}
-  x-fieldset-content x-fieldset-content                                       x-widget-content,
-  x-fieldset-content x-fieldset-content x-fieldset-content x-fieldset-content x-widget-content {background: %%_color__fieldset}
+  [data-fieldset-content]                                                                         x-widget-content,
+  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content]                         x-widget-content {background: %%_color__fieldset_nested}
+  [data-fieldset-content] [data-fieldset-content]                                                 x-widget-content,
+  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] x-widget-content {background: %%_color__fieldset}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0|0|0|.5}}

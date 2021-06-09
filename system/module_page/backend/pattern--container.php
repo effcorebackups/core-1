@@ -16,6 +16,7 @@ namespace effcore {
   public $title_attributes = [];
   public $title_is_visible = true;
   public $content_tag_name;
+  public $content_attributes = [];
   public $description;
   public $description_tag_name = 'x-description';
   public $description_position = 'bottom';
@@ -36,7 +37,7 @@ namespace effcore {
       'self_b'        => $is_bottom_title    ?      $this->render_self()        : '',
       'description_t' => $is_top_description ?      $this->render_description() : '',
       'description_b' => $is_top_description ? '' : $this->render_description(),
-      'children'      => $this->content_tag_name ? (new markup($this->content_tag_name, [],
+      'children'      => $this->content_tag_name ? (new markup($this->content_tag_name, $this->content_attributes,
                          $this->render_children($this->children_select(true)) ))->render() :
                          $this->render_children($this->children_select(true))
     ]))->render();
