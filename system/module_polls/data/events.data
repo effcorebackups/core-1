@@ -15,6 +15,10 @@ events
   - polls|event
       for: polls
       handler: \effcore\modules\polls\events_module::on_disable
+# ═════════════════════════════════════════════════════════════════════
+  on_block_presets_dynamic_build
+  - all|event
+      handler: \effcore\modules\polls\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_form_init
   - instance_insert__poll|event
@@ -49,7 +53,3 @@ events
   - poll|event
       for: poll
       handler: \effcore\modules\polls\events_form_poll::on_submit
-# ─────────────────────────────────────────────────────────────────────
-  on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\polls\events_page::on_block_presets_dynamic_build

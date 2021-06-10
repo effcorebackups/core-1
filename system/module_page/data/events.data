@@ -17,6 +17,15 @@ events
   - page|event
       for: page
       handler: \effcore\modules\page\events_module::on_cron_run
+# ═════════════════════════════════════════════════════════════════════
+  on_block_build_after
+  - all|event
+      weight: +300
+      handler: \effcore\modules\page\events_page::on_block_build_after
+# ─────────────────────────────────────────────────────────────────────
+  on_block_presets_dynamic_build
+  - all|event
+      handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_file_load
   - not_found|event
@@ -125,15 +134,6 @@ events
       for: seo
       weight: +600
       handler: \effcore\modules\page\events_page_seo::on_redirect
-# ─────────────────────────────────────────────────────────────────────
-  on_block_build_after
-  - all|event
-      weight: +300
-      handler: \effcore\modules\page\events_page::on_block_build_after
-# ─────────────────────────────────────────────────────────────────────
-  on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - view|event

@@ -7,6 +7,10 @@ events
   - storage|event
       for: storage
       handler: \effcore\modules\storage\events_module::on_enable
+# ═════════════════════════════════════════════════════════════════════
+  on_block_presets_dynamic_build
+  - all|event
+      handler: \effcore\modules\storage\events_page::on_block_presets_dynamic_build
 # ─────────────────────────────────────────────────────────────────────
   on_breadcrumbs_build_before
   - system|event
@@ -140,7 +144,3 @@ events
       for: instance_delete
       weight: +500
       handler: \effcore\modules\storage\events_page_instance_delete::on_check_access
-# ─────────────────────────────────────────────────────────────────────
-  on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\storage\events_page::on_block_presets_dynamic_build

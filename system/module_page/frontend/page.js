@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function(){
       if (!isNaN(c_audio.duration)) {
         var time_cur =     Math.floor(c_audio.currentTime);
         var time_ttl =     Math.floor(c_audio.duration);
-        var h_cur =        Math.floor(time_cur /    3600);
-        var h_ttl =        Math.floor(time_ttl /    3600);
+        var h_cur =        Math.floor(time_cur / 3600);
+        var h_ttl =        Math.floor(time_ttl / 3600);
         var m_cur = ('0' + Math.floor(time_cur / 60 % 60)).slice(-2);
         var m_ttl = ('0' + Math.floor(time_ttl / 60 % 60)).slice(-2);
         var s_cur = ('0' + Math.floor(time_cur      % 60)).slice(-2);

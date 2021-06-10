@@ -24,7 +24,7 @@ events
   - examples|event
       for: examples
       handler: \effcore\modules\profile_classic\events_module_update::on_repo_restore
-# ─────────────────────────────────────────────────────────────────────
+# ═════════════════════════════════════════════════════════════════════
   on_form_build
   - colors|event
       for: colors
