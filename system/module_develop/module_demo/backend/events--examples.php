@@ -7,6 +7,7 @@
 namespace effcore\modules\demo {
           abstract class events_examples {
 
+  static function on_block_presets_dynamic_build($event, $id = null) {}
   static function on_breadcrumbs_build_before   ($event, $breadcrumbs) {}
   static function on_breadcrumbs_build_after    ($event, $breadcrumbs) {}
   static function on_cron_run                   ($event) {}
@@ -34,12 +35,12 @@ namespace effcore\modules\demo {
   static function on_page_build_before          ($event, $page) {}
   static function on_page_build_after           ($event, $page) {}
   static function on_page_render_before         ($event, $page, $template) {}
-  static function on_block_presets_dynamic_build($event, $id = null) {}
   static function on_query_before               ($event, $storage, $query) {}                   # see: \effcore\modules\develop\events_storage::on_query_before
   static function on_query_after                ($event, $storage, $query, $result, $errors) {} # see: \effcore\modules\develop\events_storage::on_query_after
   static function on_repo_restore               ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_repo_restore
   static function on_selection_build_before     ($event, $selection) {}
   static function on_selection_build_after      ($event, $selection) {}
+  static function on_session_delete_before      ($event, $id_user, $id_session) {}
   static function on_storage_init_before        ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_before
   static function on_storage_init_after         ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_after
   static function on_tab_build_before           ($event, $tab) {}

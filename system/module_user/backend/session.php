@@ -50,6 +50,7 @@ namespace effcore {
   }
 
   static function delete($id_user, $id_session = null) {
+    event::start('on_session_delete_before', null, ['id_user' => $id_user, 'id_session' => $id_session ?: static::id_get()]);
     $result = (new instance('session', [
       'id'      => $id_session ?: static::id_get(),
       'id_user' => $id_user
