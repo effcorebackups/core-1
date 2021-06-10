@@ -52,8 +52,9 @@ namespace effcore {
   }
 
   static function item_markup_get($item, $row_id) {
-    return new markup('a', ['data-type' => 'picture-wrapper', 'title' => new text($item->settings['title']), 'target' => $item->settings['target'], 'href' => '/'.$item->object->get_current_path(true).'?thumb=big'],
-      new markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=middle', 'alt' => new text($item->settings['alt'])])
+    $src = '/'.$item->object->get_current_path(true);
+    return new markup('a', ['data-type' => 'picture-wrapper', 'href' => $src.'?thumb=big', 'title' => new text($item->settings['title']), 'target' => $item->settings['target']],
+      new markup_simple('img', ['src' => $src.'?thumb=middle', 'alt' => new text($item->settings['alt'])])
     );
   }
 
