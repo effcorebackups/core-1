@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function(){
           break;
         case 'video':
           var c_video = c_item.getElementsByTagName('video')[0];
-          var c_thumbnail_img_src = '/system/module_page/frontend/pictures/icons-gallery_player-video.svg';
+          var c_thumbnail_img_src = c_video.getAttribute('data-poster-thumbnail') ? c_video.getAttribute('data-poster-thumbnail') : '/system/module_page/frontend/pictures/icons-gallery_player-video.svg';
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
           c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_video.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
           break;
         case 'audio':
           var c_audio = c_item.getElementsByTagName('audio')[0];
-          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-src') ? c_audio.getAttribute('data-cover-src') : '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
+          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-thumbnail') ? c_audio.getAttribute('data-cover-thumbnail') : '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
           c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_audio.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
