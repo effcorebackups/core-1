@@ -99,14 +99,6 @@ document.addEventListener('DOMContentLoaded', function(){
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
       var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
       switch (c_item.getAttribute('data-type')) {
-        case 'audio':
-          var c_audio = c_item.getElementsByTagName('audio')[0];
-          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-src') ? c_audio.getAttribute('data-cover-src') : '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
-          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
-          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_audio.outerHTML).replace(/^"/, '').replace(/"$/, ''));
-          c_thumbnail.append(c_thumbnail_img);
-          c_player_thumbnails.append(c_thumbnail);
-          break;
         case 'picture':
           var c_image = c_item.getElementsByTagName('img')[0];
           var c_thumbnail_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
@@ -122,6 +114,14 @@ document.addEventListener('DOMContentLoaded', function(){
           var c_thumbnail_img_src = '/system/module_page/frontend/pictures/icons-gallery_player-video.svg';
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
           c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_video.outerHTML).replace(/^"/, '').replace(/"$/, ''));
+          c_thumbnail.append(c_thumbnail_img);
+          c_player_thumbnails.append(c_thumbnail);
+          break;
+        case 'audio':
+          var c_audio = c_item.getElementsByTagName('audio')[0];
+          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-src') ? c_audio.getAttribute('data-cover-src') : '/system/module_page/frontend/pictures/icons-gallery_player-audio.svg';
+          var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
+          c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_audio.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);
           c_player_thumbnails.append(c_thumbnail);
           break;
