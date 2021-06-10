@@ -12,6 +12,8 @@ namespace effcore {
     'data-type' => 'radiobuttons',
     'role'      => 'radiogroup'];
   public $title_attributes = ['data-group-title' => true];
+  public $content_tag_name = 'x-group-content';
+  public $content_attributes = ['data-group-content' => true];
   public $name_prefix = null; # unused inherited property
 # ─────────────────────────────────────────────────────────────────────
   public $field_class = '\\effcore\\field_radiobutton';

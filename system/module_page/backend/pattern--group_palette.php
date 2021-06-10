@@ -8,7 +8,6 @@ namespace effcore {
           class group_palette extends group_radiobuttons {
 
   public $title_tag_name = 'label';
-  public $content_tag_name = 'x-group-content';
   public $required_any = true;
   public $attributes = [
     'data-type' => 'palette',

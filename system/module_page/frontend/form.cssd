@@ -92,10 +92,13 @@
 
   x-group {display: block; margin: 20px 0}
   x-group:empty {display: none}
+
   x-group [data-group-title] {
     display: block;
     margin-bottom: 20px;
     font-size: 1.2em}
+  x-group [data-group-content] {
+    display: block}
 
   /* mark 'required' */
 
@@ -250,7 +253,7 @@
 
   x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-width: 1px}
   x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-form.svgd') -18px 2px !important}
-  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ x-group-content:first-of-type {display: none}
+  x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ [data-group-content]:first-of-type {display: none}
 
   x-group[data-type='palette'] [data-group-title] {
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
@@ -260,7 +263,7 @@
     cursor: pointer;
     font-size: 1.2em}
 
-  x-group[data-type='palette'] x-group-content {display: block; margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color__main}
+  x-group[data-type='palette'] [data-group-content] {margin-top: 10px; padding: 12px 0 12px 35px; border-top: 5px solid %%_color__main}
   x-group[data-type='palette'] x-field {display: inline-block; margin: 0}
   x-group[data-type='palette'] x-field input {margin: 0; border: none; border-radius: 0; outline: none}
   x-group[data-type='palette'] x-field input:checked {background-position: -57px 3px}
@@ -308,7 +311,7 @@
   /* widget */
 
   x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px}
-  x-widget input[data-opener-type='title']:checked ~ x-widget-content:first-of-type {display: none}
+  x-widget input[data-opener-type='title']:checked ~ [data-widget-content]:first-of-type {display: none}
   x-widget input[data-opener-type='title']         {background: %%_color__main url('pictures/icons-form.svgd')   0   -60px}
   x-widget input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-form.svgd') -20px -60px}
 
@@ -331,16 +334,16 @@
 
   x-widget[data-type^='items'] {margin: 30px 0}
   x-widget[data-type^='items'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
-  x-widget[data-type^='items'] [data-widget-title] + x-widget-content {margin-top: 30px}
-  x-widget[data-type^='items']                     > x-widget-content {
+  x-widget[data-type^='items'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
+  x-widget[data-type^='items']                     > [data-widget-content] {
     display: block;
     padding: 10px 16px 16px 16px;
     border-top: 5px solid %%_color__main}
 
-  [data-fieldset-content]                                                                         x-widget-content,
-  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content]                         x-widget-content {background: %%_color__fieldset_nested}
-  [data-fieldset-content] [data-fieldset-content]                                                 x-widget-content,
-  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] x-widget-content {background: %%_color__fieldset}
+  [data-fieldset-content]                                                                         [data-widget-content],
+  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content]                         [data-widget-content] {background: %%_color__fieldset_nested}
+  [data-fieldset-content] [data-fieldset-content]                                                 [data-widget-content],
+  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-widget-content] {background: %%_color__fieldset}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0|0|0|.5}}
