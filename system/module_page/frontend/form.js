@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('select[data-source="uagent-timezone"]').forEach(function(c_timezone){
-    if (c_timezone.value == '' && window.Intl)
+    if (c_timezone.value === '' && window.Intl)
         c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
   });
 
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function(){
           var drop     = this.parentNode;
           var drag     = window._effDataTransferNode.parentNode;
           var c_weight = 0;
-          if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
-          if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+          if (position === 'before') drop.parentNode.insertBefore(drag, drop            );
+          if (position === 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
           c_has_rearrangeable.querySelectorAll__notNull('x-field[data-type="weight"] input').forEach(function(c_input){
             c_input.value = c_weight;
             c_weight -= 5;

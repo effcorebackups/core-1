@@ -96,7 +96,7 @@ namespace effcore\modules\develop {
 
       # set abstract mark
         if (!empty($c_item_info->modifier) &&
-                   $c_item_info->modifier == 'abstract') {
+                   $c_item_info->modifier === 'abstract') {
           $x_class->attribute_insert('data-abstract', true);
         }
 
@@ -189,8 +189,8 @@ namespace effcore\modules\develop {
         $c_return->_id = 'CLASS-'.core::hash_get($c_item_full_name);
         $c_return->name = ucfirst($c_item_info->name);
         $c_return->visibility = 'public';
-        $c_return->isAbstract = !empty($c_item_info->modifier) && $c_item_info->modifier == 'abstract';
-        $c_return->isFinalSpecialization = !empty($c_item_info->modifier) && $c_item_info->modifier == 'final';
+        $c_return->isAbstract            = !empty($c_item_info->modifier) && $c_item_info->modifier === 'abstract';
+        $c_return->isFinalSpecialization = !empty($c_item_info->modifier) && $c_item_info->modifier === 'final';
         $c_return->attributes = [];
         $c_return->operations = [];
 
@@ -244,7 +244,7 @@ namespace effcore\modules\develop {
                   '_type' => 'UMLParameter',
                   'name' => $c_name,
                   'defaultValue' => $c_value,
-                  'direction' => $c_name[0] == '&' ? 'inout' : 'in',
+                  'direction' => $c_name[0] === '&' ? 'inout' : 'in',
                 ];
               }
             }

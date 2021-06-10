@@ -157,8 +157,7 @@ namespace effcore {
   }
 
   function source_get() {
-    return $this->attribute_select('method') == 'post' ? '_POST' :
-          ($this->attribute_select('method') == 'get'  ? '_GET'  : '_GET');
+    return $this->attribute_select('method') === 'post' ? '_POST' : '_GET';
   }
 
   function clicked_button_get() {

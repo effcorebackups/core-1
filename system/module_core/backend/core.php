@@ -145,7 +145,7 @@ namespace effcore {
             $c_item->type = $c_match['type'];
           # define parent class
             if (!empty($c_match['extends'])) {
-              if ($c_match['extends'][0] == '\\')
+              if ($c_match['extends'][0] === '\\')
                    $c_item->extends = ltrim($c_match['extends'], '\\');
               else $c_item->extends = ltrim($c_item->namespace.'\\'.$c_match['extends'], '\\');
             }
@@ -153,7 +153,7 @@ namespace effcore {
             if (!empty($c_match['implements'])) {
               foreach (explode(',', $c_match['implements']) as $c_implement) {
                 $c_implement = trim($c_implement);
-                if ($c_implement[0] == '\\')
+                if ($c_implement[0] === '\\')
                      $c_implement = ltrim($c_implement, '\\');
                 else $c_implement = ltrim($c_item->namespace.'\\'.$c_implement, '\\');
                 $c_item->implements[$c_implement] = $c_implement;
@@ -558,10 +558,10 @@ namespace effcore {
   static function datetime_get       ($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
   static function T_datetime_get     ($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new \DateTime('now', new \DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
-  static function validate_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d'        )) == strlen(field_date    ::input_max_date    );}
-  static function validate_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format(      'H:i:s'  )) == strlen(field_time    ::input_max_time    );}
-  static function validate_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d H:i:s'  )) == strlen(field_datetime::input_max_datetime);}
-  static function validate_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d\\TH:i:s')) == strlen(field_datetime::input_max_datetime);}
+  static function validate_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d'        )) === strlen(field_date    ::input_max_date    );}
+  static function validate_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format(      'H:i:s'  )) === strlen(field_time    ::input_max_time    );}
+  static function validate_datetime  ($value) {$result = \DateTime::createFromFormat('Y-m-d H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d H:i:s'  )) === strlen(field_datetime::input_max_datetime);}
+  static function validate_T_datetime($value) {$result = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime && strlen($result->format('Y-m-d\\TH:i:s')) === strlen(field_datetime::input_max_datetime);}
 
   static function sanitize_date      ($value) {$result = \DateTime::createFromFormat('Y-m-d',         $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format('Y-m-d'        ) : null;}
   static function sanitize_time      ($value) {$result = \DateTime::createFromFormat(      'H:i:s',   $value, new \DateTimeZone('UTC')); return $result instanceof \DateTime ? $result->format(      'H:i:s'  ) : null;}
@@ -790,10 +790,10 @@ namespace effcore {
   }
 
   static function bytes_to_abbreviated($bytes, $is_iec = false) {
-    if ($bytes && fmod($bytes, 1024 ** 4) == 0) return ($bytes / 1024 ** 4).($is_iec ? 'TiB' : 'T');
-    if ($bytes && fmod($bytes, 1024 ** 3) == 0) return ($bytes / 1024 ** 3).($is_iec ? 'GiB' : 'G');
-    if ($bytes && fmod($bytes, 1024 ** 2) == 0) return ($bytes / 1024 ** 2).($is_iec ? 'MiB' : 'M');
-    if ($bytes && fmod($bytes, 1024 ** 1) == 0) return ($bytes / 1024 ** 1).($is_iec ? 'KiB' : 'K');
+    if ($bytes && fmod($bytes, 1024 ** 4) === 0) return ($bytes / 1024 ** 4).($is_iec ? 'TiB' : 'T');
+    if ($bytes && fmod($bytes, 1024 ** 3) === 0) return ($bytes / 1024 ** 3).($is_iec ? 'GiB' : 'G');
+    if ($bytes && fmod($bytes, 1024 ** 2) === 0) return ($bytes / 1024 ** 2).($is_iec ? 'MiB' : 'M');
+    if ($bytes && fmod($bytes, 1024 ** 1) === 0) return ($bytes / 1024 ** 1).($is_iec ? 'KiB' : 'K');
     else return $bytes.'B';
   }
 
@@ -945,8 +945,8 @@ namespace effcore {
     $result->core = isset($matches['core']) ? strtolower($matches['core']) : '';
     $result->core_version = $matches['core_v'] ?? '';
     $result->name_version = $matches['name_v'] ?? '';
-    if ($result->name == '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
-    if ($result->core == '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
+    if ($result->name === '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
+    if ($result->core === '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
     return $result;
   }
 

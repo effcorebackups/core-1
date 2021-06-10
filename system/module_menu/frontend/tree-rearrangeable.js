@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function(){
           var drop     = this.parentNode;
           var drag     = window._effDataTransferNode.parentNode.parentNode;
           var c_weight = 0;
-          if (position == 'before') drop.parentNode.insertBefore(drag, drop            );
-          if (position == 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
-          if (position == 'in'    ) drop.querySelector('ul').append(drag);
+          if (position === 'before') drop.parentNode.insertBefore(drag, drop            );
+          if (position === 'after' ) drop.parentNode.insertBefore(drag, drop.nextSibling);
+          if (position === 'in'    ) drop.querySelector('ul').append(drag);
           drag.querySelector('input[data-type="parent"]').value    = drag.parentNode.parentNode.getAttribute('data-real-id');
           drag.parentNode.parentNode.querySelectorAll('[data-id="' + drag.parentNode.parentNode.getAttribute('data-id') + '"] > ul > li > x-item input[data-type="weight"]').forEach(function(c_input){
             c_input.value = c_weight--;

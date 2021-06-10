@@ -307,14 +307,14 @@ namespace effcore {
         $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
         $c_delimiter = $matches['delimiter'];
         $c_value     = $matches['value'];
-        if ($c_name == '=') $c_name = $c_value;
+        if ($c_name === '=') $c_name = $c_value;
       # define each value
-        if ($c_delimiter == ': ') {
+        if ($c_delimiter === ': ') {
           $c_value = core::string_to_data($c_value);
         } else {
-          if     ($c_value == '_empty_array' ) $c_value = [];
-          elseif ($c_value == '_string_true' ) $c_value = 'true';
-          elseif ($c_value == '_string_false') $c_value = 'false';
+          if     ($c_value === '_empty_array' ) $c_value = [];
+          elseif ($c_value === '_string_true' ) $c_value = 'true';
+          elseif ($c_value === '_string_false') $c_value = 'false';
           else {
             $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
             if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
@@ -350,7 +350,7 @@ namespace effcore {
         core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
         $p[$c_depth] = &$c_destination;
       # convert parent item to array
-        if ($c_prefix == '- ' && !is_array($p[$c_depth-1])) {
+        if ($c_prefix === '- ' && !is_array($p[$c_depth-1])) {
           $p[$c_depth-1] = (array)$p[$c_depth-1];
         }
       } else {

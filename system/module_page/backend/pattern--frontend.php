@@ -66,7 +66,7 @@ namespace effcore {
 
       # collect favicons
         foreach ($c_items->favicons as $c_item) {
-          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] === '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->icons->child_insert(new markup_simple('link', [
@@ -76,7 +76,7 @@ namespace effcore {
 
       # collect styles
         foreach ($c_items->styles as $c_item) {
-          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] === '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->styles->child_insert(new markup_simple('link', [
@@ -86,7 +86,7 @@ namespace effcore {
 
       # collect scripts
         foreach ($c_items->scripts as $c_item) {
-          $c_url        = new url($c_item->path[0] == '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
+          $c_url        = new url($c_item->path[0] === '/' ? $c_item->path : '/'.module::get($c_items->module_id)->path.$c_item->path);
           $c_attributes = $c_item->attributes ?? [];
           $c_weight     = $c_item->weight     ?? 0;
           $result->scripts->child_insert(new markup('script', [
@@ -100,8 +100,8 @@ namespace effcore {
   }
 
   static function is_visible_by_dpath($display, $used_dpaths) {
-    return ($display->check == 'block' &&
-            $display->where == 'dpath' && preg_match(
+    return ($display->check === 'block' &&
+            $display->where === 'dpath' && preg_match(
             $display->match.'m', implode(nl, $used_dpaths)));
   }
 
