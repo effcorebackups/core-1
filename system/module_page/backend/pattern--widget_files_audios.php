@@ -51,8 +51,8 @@ namespace effcore {
   static function item_markup_get($item, $row_id) {
     $src = '/'.$item->object->get_current_path(true);
     if ($item->settings['data-cover-is-embedded'])
-         return new markup('x-audio', ['data-has-cover' => $src.'?cover=middle'], ['cover' => new markup_simple('img', ['src' => $src.'?cover=middle', 'alt' => new text('cover'), 'width' => '300', 'height' => '300', 'data-type' => 'cover']), 'audio' => new markup('audio', ['src' => $src, 'data-cover-src' => $src.'?cover=middle'] + $item->settings)]);
-    else return new markup('x-audio', [                                        ], [                                                                                                                                                               'audio' => new markup('audio', ['src' => $src                                          ] + $item->settings)]);
+         return new node([], ['cover' => new markup_simple('img', ['src' => $src.'?cover=middle', 'alt' => new text('cover'), 'width' => '300', 'height' => '300', 'data-type' => 'cover']), 'audio' => new markup('audio', ['src' => $src, 'data-cover-src' => $src.'?cover=middle'] + $item->settings)]);
+    else return new node([], [                                                                                                                                                               'audio' => new markup('audio', ['src' => $src                                          ] + $item->settings)]);
   }
 
   # ─────────────────────────────────────────────────────────────────────
