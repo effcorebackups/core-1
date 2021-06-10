@@ -35,6 +35,7 @@ namespace effcore {
   }
 
   static function insert($id_user, $session_params = []) {
+    event::start('on_session_insert_before', null, ['id_user' => $id_user, 'params' => $session_params]);
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     $period = !$is_remember ? core::date_period_d : core::date_period_m;
@@ -47,16 +48,24 @@ namespace effcore {
       'expired'     => core::datetime_get('+'.$period.' second'),
       'data'        => (object)['user_agent' => core::server_get_user_agent(2048)]
     ]))->insert();
+    event::start('on_session_insert_after', null, [
+      'id_user'     => $id_user,
+      'id_session'  => static::id_get(),
+      'params'      => $session_params
+    ]);
   }
 
   static function delete($id_user, $id_session = null) {
-    event::start('on_session_delete_before', null, ['id_user' => $id_user, 'id_session' => $id_session ?: static::id_get()]);
+    event::start('on_session_delete_before', null, [
+      'id_user'    => $id_user,
+      'id_session' => $id_session]);
     $result = (new instance('session', [
       'id'      => $id_session ?: static::id_get(),
       'id_user' => $id_user
     ]))->delete();
-  # regenerate Session ID if session is current
-    if ($id_session === null) static::id_regenerate('a');
+  # regenerate Session ID for CURRENT session
+    if ($id_session === null)
+      static::id_regenerate('a');
     return $result;
   }
 
