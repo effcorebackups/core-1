@@ -7,20 +7,19 @@
 namespace effcore {
           class widget_items extends control implements complex_control {
 
+  public $tag_name = 'x-widget';
+  public $attributes = ['data-type' => 'items'];
+  public $item_title = 'Item';
   public $title;
   public $title_tag_name = 'label';
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $title_attributes = ['data-widget-title' => true];
-  public $state = 'opened'; # '' | opened | closed[checked]
-  public $number;
-
-  public $item_title = 'Item';
-  public $tag_name = 'x-widget';
   public $content_tag_name = 'x-widget-content';
   public $content_attributes = ['data-widget-content' => true];
-  public $attributes = ['data-type' => 'items'];
+  public $state = 'opened'; # '' | opened | closed[checked]
   public $name_complex = 'widget_items';
   public $controls = [];
+  public $number;
 
   function __construct($attributes = [], $weight = 0) {
     parent::__construct(null, null, null, $attributes, [], $weight);
