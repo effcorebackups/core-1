@@ -41,6 +41,6 @@ settings
   prepath__thumbnail_not_allowed: system/module_page/frontend/pictures/message--thumbnail-not-allowed
   show_warning_if_not_https: false
   thumbnail_jpeg_quality: 90
-  thumbnail_small_width: 100
-  thumbnail_middle_width: 300
-  thumbnail_big_width: 600
+  thumbnail_width_small: 100
+  thumbnail_width_middle: 300
+  thumbnail_width_big: 600

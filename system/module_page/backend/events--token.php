@@ -17,9 +17,9 @@ namespace effcore\modules\page {
     $settings = module::settings_get('page');
     switch ($name) {
       case 'page_id_context':        return page::get_current() ? page::get_current()->id : null;
-      case 'thumbnail_small_width':  return $settings->thumbnail_small_width;
-      case 'thumbnail_middle_width': return $settings->thumbnail_middle_width;
-      case 'thumbnail_big_width':    return $settings->thumbnail_big_width;
+      case 'thumbnail_width_small':  return $settings->thumbnail_width_small;
+      case 'thumbnail_width_middle': return $settings->thumbnail_width_middle;
+      case 'thumbnail_width_big':    return $settings->thumbnail_width_big;
       case 'page_min_width':         return $settings->page_min_width;
       case 'page_max_width':         return $settings->page_max_width;
       case 'page_min_width_context':

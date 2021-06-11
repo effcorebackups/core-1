@@ -307,9 +307,9 @@
 
   x-gallery {display: block; margin: 5px 0}
   x-gallery::after {content: ''; clear: both; display: block}
-  x-gallery x-item {float: left; width: %%_thumbnail_middle_width{null}px; margin: 5px}
+  x-gallery x-item {float: left; width: %%_thumbnail_width_middle{null}px; margin: 5px}
   x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
-  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_middle_width{null}px}
+  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_width_middle{null}px}
   x-gallery x-item[data-type='video'] video,
   x-gallery x-item[data-type='audio'] audio,
   x-gallery x-item[data-type='audio'] x-audio-player {margin: 0}
@@ -340,7 +340,7 @@
   x-gallery-player x-viewing-area {padding-bottom: 10px; overflow: auto}
   x-gallery-player x-viewing-area x-centrator-wrapper {display: table; width: 100%; height: 100%}
   x-gallery-player x-viewing-area x-centrator-wrapper x-centrator {display: table-cell; text-align: center; vertical-align: middle}
-  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator img {max-width: %%_thumbnail_big_width{null}px}
+  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator img {max-width: %%_thumbnail_width_big{null}px}
   x-gallery-player x-viewing-area x-centrator-wrapper x-centrator x-audio-player {margin: 0 30px}
 
   [data-is-active-gallery-player] {

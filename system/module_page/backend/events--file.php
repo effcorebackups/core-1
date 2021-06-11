@@ -130,9 +130,9 @@ namespace effcore\modules\page {
                     if (strpos($path, dir_dynamic) === 0) {
                       if (isset($size) && isset($meta['cover_thumbnails'][$size])) {
                         $settings = module::settings_get('page');
-                        if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-                        if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-                        if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                        if ($size === 'small' ) $width = $settings->thumbnail_width_small;
+                        if ($size === 'middle') $width = $settings->thumbnail_width_middle;
+                        if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                         $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['cover']['type'];
                         $result = media::thumbnail_create($path_cover, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
                         if ($result && file_exists($path_thumbnail_tmp)) {
@@ -225,9 +225,9 @@ namespace effcore\modules\page {
                     if (strpos($path, dir_dynamic) === 0) {
                       if (isset($size) && isset($meta['poster_thumbnails'][$size])) {
                         $settings = module::settings_get('page');
-                        if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-                        if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-                        if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                        if ($size === 'small' ) $width = $settings->thumbnail_width_small;
+                        if ($size === 'middle') $width = $settings->thumbnail_width_middle;
+                        if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                         $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['poster']['type'];
                         $result = media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
                         if ($result && file_exists($path_thumbnail_tmp)) {
@@ -302,9 +302,9 @@ namespace effcore\modules\page {
                 if (strpos($path, dir_dynamic) === 0) {
                   if (isset($meta['thumbnails'][$size])) {
                     $settings = module::settings_get('page');
-                    if ($size === 'small' ) $width = $settings->thumbnail_small_width;
-                    if ($size === 'middle') $width = $settings->thumbnail_middle_width;
-                    if ($size === 'big'   ) $width = $settings->thumbnail_big_width;
+                    if ($size === 'small' ) $width = $settings->thumbnail_width_small;
+                    if ($size === 'middle') $width = $settings->thumbnail_width_middle;
+                    if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                     $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
                     $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
                     if ($result && file_exists($path_thumbnail_tmp)) {
