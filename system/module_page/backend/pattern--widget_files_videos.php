@@ -51,8 +51,8 @@ namespace effcore {
   static function item_markup_get($item, $row_id) {
     $src = '/'.$item->object->get_current_path(true);
     if ($item->settings['data-poster-is-embedded'])
-         return new markup('video', ['src' => $src, 'poster' => $src.'?poster=big'                                                    ] + $item->settings);
-    else return new markup('video', ['src' => $src, 'poster' => '/system/module_page/frontend/pictures/icons-gallery_player-video.svg'] + $item->settings);
+         return new markup('video', ['src' => $src, 'poster' => $src.'?poster=big'                                                  ] + $item->settings);
+    else return new markup('video', ['src' => $src, 'poster' => '/system/module_page/frontend/pictures/thumbnail-poster-default.svg'] + $item->settings);
   }
 
   # ─────────────────────────────────────────────────────────────────────
