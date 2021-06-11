@@ -314,6 +314,7 @@
   x-gallery x-item[data-type='audio'] audio,
   x-gallery x-item[data-type='audio'] x-audio-player {margin: 0}
   x-gallery x-item[data-type='audio'] img[data-type='cover'] {display: block}
+  x-gallery[data-player-is-processed] x-item[data-type='audio'] img[data-type='cover'] {cursor: pointer}
 
   x-gallery-player {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 500; background: rgba(0, 0, 0, .9)}
   x-gallery-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}

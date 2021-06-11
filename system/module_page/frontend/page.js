@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('keydown', function(event){if (event.keyCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
     c_gallery.prepend(c_player);
+    c_gallery.setAttribute('data-player-is-processed', true);
  /* process each gallery item */
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
       var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
