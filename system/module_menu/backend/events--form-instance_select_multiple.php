@@ -72,10 +72,10 @@ namespace effcore\modules\menu {
               $c_new_weight = request::value_get('weight-'.$c_item->id) ?: '0';
               if ( ($c_new_parent === null || isset($tree_items[$c_new_parent])) &&
                    ($c_new_weight ===              (string)(int)$c_new_weight) ) {
-                if ($c_item->id_parent != $c_new_parent ||
-                    $c_item->weight    != $c_new_weight) {
-                    $c_item->id_parent  = $c_new_parent;
-                    $c_item->weight     = $c_new_weight;
+                if ($c_item->id_parent !== $c_new_parent ||
+                    $c_item->weight    !== $c_new_weight) {
+                    $c_item->id_parent  =  $c_new_parent;
+                    $c_item->weight     =  $c_new_weight;
                   $has_changes = true;
                   $c_result = $c_item->update();
                   if ($form->is_show_result_message && $c_result !== null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => translation::apply($entity->title), 'id' => $c_item->id])           );

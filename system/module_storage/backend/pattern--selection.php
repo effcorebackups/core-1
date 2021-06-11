@@ -183,9 +183,9 @@ namespace effcore {
                 break;
             }
           # apply filters/translation/tokens, if required
-            if (isset($c_row[$c_row_id]['filter'])                                   &&
-                      $c_row[$c_row_id]['filter'] != '\\effcore\\translation::apply' &&
-                      $c_row[$c_row_id]['filter'] != '\\effcore\\token::apply') $c_row[$c_row_id]['value'] = ($c_row[$c_row_id]['filter'])($c_row[$c_row_id]['value']);
+            if (isset($c_row[$c_row_id]['filter'])                                    &&
+                      $c_row[$c_row_id]['filter'] !== '\\effcore\\translation::apply' &&
+                      $c_row[$c_row_id]['filter'] !== '\\effcore\\token::apply') $c_row[$c_row_id]['value'] = ($c_row[$c_row_id]['filter'])($c_row[$c_row_id]['value']);
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
               $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
