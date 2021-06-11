@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* this code activate hover state on iOS devices                         */
   /* ───────────────────────────────────────────────────────────────────── */
 
-  document.addEventListener('touchstart', function(){}, false);
+  document.addEventListener('touchstart', function(){});
 
   /* ───────────────────────────────────────────────────────────────────── */
   /* audio player                                                          */
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function(){
     c_audio.addEventListener('play',        function(){c_player.   setAttribute('data-is-playing', '');});
     c_audio.addEventListener('pause',       function(){c_player.removeAttribute('data-is-playing');});
     c_audio.addEventListener('ended',       function(){c_player.removeAttribute('data-is-playing'); /* IE fix → */ c_audio.pause();});
-    c_player     .addEventListener('click', function(event){event.preventDefault(); event.stopPropagation();}); /* for 'label' and 'gallery-player' */
     c_button_play.addEventListener('click', function(){
       if (c_audio.paused) c_audio.play ();
       else                c_audio.pause();
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
-  /* gallery player                                                         */
+  /* gallery player                                                        */
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('x-gallery[data-player-name="default"]').forEach(function(c_gallery){
@@ -87,12 +86,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_r     = document.createElement('x-button-r');
     var c_player_button_c     = document.createElement('x-button-c');
     var c_player_viewing_area = document.createElement('x-viewing-area');
+    var clear_viewing_area    =                 function(){c_player_viewing_area.innerHTML = '';}
     var on_setButtonLState    =                 function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', 'true'); })}
     var on_setButtonRState    =                 function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', 'true'); })}
     c_player_button_l.addEventListener('click', function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); c_player_thumbnails.scrollLeft = c_selected.previousSibling.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.previousSibling.clientWidth / 2) + 3; on_setButtonLState(); on_setButtonRState();} })});
     c_player_button_r.addEventListener('click', function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); c_player_thumbnails.scrollLeft = c_selected.nextSibling    .offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.nextSibling    .clientWidth / 2) + 3; on_setButtonLState(); on_setButtonRState();} })});
-    c_player_button_c.addEventListener('click', function(){                        c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
-    document.addEventListener('keydown', function(event){if (event.keyCode === 27) c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
+    c_player_button_c.addEventListener('click', function(){                        clear_viewing_area(); c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
+    document.addEventListener('keydown', function(event){if (event.keyCode === 27) clear_viewing_area(); c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');});
     c_player.append(c_player_thumbnails, c_player_button_l, c_player_button_r, c_player_button_c, c_player_viewing_area);
     c_gallery.prepend(c_player);
     c_gallery.setAttribute('data-player-is-processed', true);
@@ -129,18 +129,19 @@ document.addEventListener('DOMContentLoaded', function(){
       }
    /* when click on item in gallery */
       c_item.addEventListener('click', function(event){
+        event.stopPropagation();
         event.preventDefault();
         c_player.removeAttribute('aria-hidden');
         document.body.setAttribute('data-is-active-gallery-player', 'true');
         c_player_thumbnails.querySelector__notNull('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]').forFirst__(function(c_selected){
           c_selected.click(); c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3;
         });
-      });
+      }, true);
     /* when click on thumbnail in player */
       c_thumbnail.addEventListener('click', function(){
         c_player_thumbnails.querySelectorAll__notNull('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
         c_thumbnail.setAttribute('aria-selected', 'true');
-        c_player_viewing_area.innerHTML = '';
+        clear_viewing_area();
         if (c_thumbnail.getAttribute('data-preview-area-content')) {
           c_player_viewing_area.innerHTML = '<x-centrator-wrapper><x-centrator>' + JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"') + '</x-centrator></x-centrator-wrapper>';
           if (c_thumbnail.getAttribute('data-type') === 'audio') {
