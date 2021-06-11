@@ -30,8 +30,8 @@ settings
   color__button_active_id: default_6
   color__button_text_id: white
   console_visibility: 0
-  page_min_width: 200
-  page_max_width: 990
+  page_width_min: 200
+  page_width_max: 990
   page_meta_viewport: width=300, initial-scale=1
   prepath__cover_not_found: system/module_page/frontend/pictures/message--cover-not-found
   prepath__file_outside_of_dynamic_directory: system/module_page/frontend/pictures/message--file-outside-of-dynamic-directory

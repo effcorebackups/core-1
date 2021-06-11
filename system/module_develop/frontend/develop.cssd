@@ -26,8 +26,8 @@
     display: block;
     margin: 300px auto 0 auto;
     padding: 30px 0;
-    min-width: %%_page_min_width_context{null}px;
-    max-width: %%_page_max_width_context{null}px;
+    min-width: %%_page_width_min_context{null}px;
+    max-width: %%_page_width_max_context{null}px;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;

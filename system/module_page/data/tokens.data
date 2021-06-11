@@ -2,10 +2,10 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # global tokens
 # ─────────────────────────────────────────────────────────────────────
-- page_min_width
+- page_width_min
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- page_max_width
+- page_width_max
     type: code
     handler: \effcore\modules\page\events_token::on_apply
 - thumbnail_width_small
@@ -23,10 +23,10 @@ tokens
 - page_id_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- page_min_width_context
+- page_width_min_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
-- page_max_width_context
+- page_width_max_context
     type: code
     handler: \effcore\modules\page\events_token::on_apply
 - return_if_token_color_is_dark

@@ -4,8 +4,8 @@
     margin: 0 auto;
     padding: 0 30px 100px 30px;
     box-sizing: border-box;
-    min-width: calc(%%_page_min_width_context{null}px + 60px);
-    max-width: calc(%%_page_max_width_context{null}px + 60px);
+    min-width: calc(%%_page_width_min_context{null}px + 60px);
+    max-width: calc(%%_page_width_max_context{null}px + 60px);
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;

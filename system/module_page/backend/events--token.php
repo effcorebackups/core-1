@@ -20,14 +20,14 @@ namespace effcore\modules\page {
       case 'thumbnail_width_small':  return $settings->thumbnail_width_small;
       case 'thumbnail_width_middle': return $settings->thumbnail_width_middle;
       case 'thumbnail_width_big':    return $settings->thumbnail_width_big;
-      case 'page_min_width':         return $settings->page_min_width;
-      case 'page_max_width':         return $settings->page_max_width;
-      case 'page_min_width_context':
-      case 'page_max_width_context':
+      case 'page_width_min':         return $settings->page_width_min;
+      case 'page_width_max':         return $settings->page_width_max;
+      case 'page_width_min_context':
+      case 'page_width_max_context':
         $page_id = url::get_current()->query_arg_select('page_id');
         $page = is_string($page_id) ? page::get_by_id($page_id, true) : null;
-        if ($name === 'page_min_width_context') return !empty($page->data['width_min']) ? $page->data['width_min'] : $settings->page_min_width;
-        if ($name === 'page_max_width_context') return !empty($page->data['width_max']) ? $page->data['width_max'] : $settings->page_max_width;
+        if ($name === 'page_width_min_context') return !empty($page->data['width_min']) ? $page->data['width_min'] : $settings->page_width_min;
+        if ($name === 'page_width_max_context') return !empty($page->data['width_max']) ? $page->data['width_max'] : $settings->page_width_max;
         break;
     }
   # colors
