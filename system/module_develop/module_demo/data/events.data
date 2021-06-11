@@ -199,18 +199,14 @@ events
       skip_console_log: true
       handler: \effcore\modules\demo\events_examples::on_selection_build_after
 # ─────────────────────────────────────────────────────────────────────
-  on_session_delete_before
-  - example|event
-      skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_session_delete_before
-  on_session_insert_before
-  - example|event
-      skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_session_insert_before
   on_session_insert_after
   - example|event
       skip_console_log: true
       handler: \effcore\modules\demo\events_examples::on_session_insert_after
+  on_session_delete_before
+  - example|event
+      skip_console_log: true
+      handler: \effcore\modules\demo\events_examples::on_session_delete_before
 # ─────────────────────────────────────────────────────────────────────
   on_tab_build_before
   - example|event

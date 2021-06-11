@@ -35,7 +35,6 @@ namespace effcore {
   }
 
   static function insert($id_user, $session_params = []) {
-    event::start('on_session_insert_before', null, ['id_user' => $id_user, 'params' => $session_params]);
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     $period = !$is_remember ? core::date_period_d : core::date_period_m;

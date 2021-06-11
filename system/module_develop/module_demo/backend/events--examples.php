@@ -40,9 +40,8 @@ namespace effcore\modules\demo {
   static function on_repo_restore               ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_repo_restore
   static function on_selection_build_before     ($event, $selection) {}
   static function on_selection_build_after      ($event, $selection) {}
-  static function on_session_delete_before      ($event, $id_user, $id_session) {}
-  static function on_session_insert_before      ($event, $id_user, $params) {}
   static function on_session_insert_after       ($event, $id_user, $id_session, $params) {}
+  static function on_session_delete_before      ($event, $id_user, $id_session) {}
   static function on_storage_init_before        ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_before
   static function on_storage_init_after         ($event, $storage) {} # see: \effcore\modules\develop\events_storage::on_init_after
   static function on_tab_build_before           ($event, $tab) {}
