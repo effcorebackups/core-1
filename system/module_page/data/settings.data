@@ -40,7 +40,7 @@ settings
   prepath__thumbnail_embedding_error: system/module_page/frontend/pictures/message--thumbnail-embedding-error
   prepath__thumbnail_not_allowed: system/module_page/frontend/pictures/message--thumbnail-not-allowed
   show_warning_if_not_https: false
-  thumbnail_jpeg_quality: 90
+  thumbnail_quality_jpeg: 90
   thumbnail_width_small: 100
   thumbnail_width_middle: 300
   thumbnail_width_big: 600

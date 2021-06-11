@@ -134,7 +134,7 @@ namespace effcore\modules\page {
                         if ($size === 'middle') $width = $settings->thumbnail_width_middle;
                         if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                         $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['cover']['type'];
-                        $result = media::thumbnail_create($path_cover, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                        $result = media::thumbnail_create($path_cover, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                         if ($result && file_exists($path_thumbnail_tmp)) {
                           if (media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
                             @unlink($path_thumbnail_tmp);
@@ -229,7 +229,7 @@ namespace effcore\modules\page {
                         if ($size === 'middle') $width = $settings->thumbnail_width_middle;
                         if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                         $path_thumbnail_tmp = $path.'.'.$target.'.'.$meta['poster']['type'];
-                        $result = media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                        $result = media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                         if ($result && file_exists($path_thumbnail_tmp)) {
                           if (media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
                             @unlink($path_thumbnail_tmp);
@@ -306,7 +306,7 @@ namespace effcore\modules\page {
                     if ($size === 'middle') $width = $settings->thumbnail_width_middle;
                     if ($size === 'big'   ) $width = $settings->thumbnail_width_big;
                     $path_thumbnail_tmp = $path.'.thumbnail-'.$size.'.'.$meta['original']['type'];
-                    $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_jpeg_quality);
+                    $result = media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                     if ($result && file_exists($path_thumbnail_tmp)) {
                       if (media::container_file_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
                         @unlink($path_thumbnail_tmp);
