@@ -7,7 +7,6 @@
 namespace effcore\modules\page {
           use const \effcore\dir_dynamic;
           use const \effcore\dir_root;
-          use const \effcore\dir_system;
           use \effcore\core;
           use \effcore\data;
           use \effcore\event;
@@ -17,12 +16,21 @@ namespace effcore\modules\page {
           use \effcore\url;
           abstract class events_file {
 
-  const prepath_file_outside_of_dynamic_directory = dir_system.'module_core/frontend/pictures/file-outside-of-dynamic-directory';
-  const prepath_thumbnail_not_allowed             = dir_system.'module_core/frontend/pictures/thumbnail-not-allowed';
-  const prepath_thumbnail_creation_error          = dir_system.'module_core/frontend/pictures/thumbnail-creation-error';
-  const prepath_thumbnail_embedding_error         = dir_system.'module_core/frontend/pictures/thumbnail-embedding-error';
-  const prepath_poster_not_found                  = dir_system.'module_core/frontend/pictures/poster-not-found';
-  const prepath_cover_not_found                   = dir_system.'module_core/frontend/pictures/cover-not-found';
+  static function prepath_get($type) {
+    $settings = module::settings_get('page');
+    switch ($type) {
+      case 'cover_not_found'                  : return dir_root.$settings->prepath__cover_not_found;
+      case 'file_outside_of_dynamic_directory': return dir_root.$settings->prepath__file_outside_of_dynamic_directory;
+      case 'poster_not_found'                 : return dir_root.$settings->prepath__poster_not_found;
+      case 'thumbnail_creation_error'         : return dir_root.$settings->prepath__thumbnail_creation_error;
+      case 'thumbnail_embedding_error'        : return dir_root.$settings->prepath__thumbnail_embedding_error;
+      case 'thumbnail_not_allowed'            : return dir_root.$settings->prepath__thumbnail_not_allowed;
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # not found
+  # ─────────────────────────────────────────────────────────────────────
 
   static function on_load_not_found($event, &$type_info, &$file, $real_path, $phase) {
     switch ($file->path_get()) {
@@ -109,7 +117,7 @@ namespace effcore\modules\page {
               }
             # if cover does not exist
               if (!file_exists($path_cover)) {
-                $file = new file(static::prepath_cover_not_found.'.'.$meta['cover']['type']);
+                $file = new file(static::prepath_get('cover_not_found').'.'.$meta['cover']['type']);
                 return;
               }
             # generate thumbnail and insert it into container
@@ -132,10 +140,10 @@ namespace effcore\modules\page {
                             @unlink($path_thumbnail_tmp);
                             $file = new file($path_target);
                             return true;
-                          } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['cover']['type']);
-                        }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['cover']['type']);
-                      }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['cover']['type']);
-                    }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['cover']['type']);
+                          } else $file = new file(static::prepath_get('thumbnail_embedding_error').        '.'.$meta['cover']['type']);
+                        }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$meta['cover']['type']);
+                      }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$meta['cover']['type']);
+                    }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$meta['cover']['type']);
                   }         else core::send_header_and_exit('unsupported_media_type');
                 }           else core::send_header_and_exit('unsupported_media_type');
               }             else core::send_header_and_exit('unsupported_media_type');
@@ -204,7 +212,7 @@ namespace effcore\modules\page {
               }
             # if poster does not exist
               if (!file_exists($path_poster)) {
-                $file = new file(static::prepath_poster_not_found.'.'.$meta['poster']['type']);
+                $file = new file(static::prepath_get('poster_not_found').'.'.$meta['poster']['type']);
                 return;
               }
             # generate thumbnail and insert it into container
@@ -227,10 +235,10 @@ namespace effcore\modules\page {
                             @unlink($path_thumbnail_tmp);
                             $file = new file($path_target);
                             return true;
-                          } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['poster']['type']);
-                        }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['poster']['type']);
-                      }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['poster']['type']);
-                    }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['poster']['type']);
+                          } else $file = new file(static::prepath_get('thumbnail_embedding_error').        '.'.$meta['poster']['type']);
+                        }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$meta['poster']['type']);
+                      }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$meta['poster']['type']);
+                    }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$meta['poster']['type']);
                   }         else core::send_header_and_exit('unsupported_media_type');
                 }           else core::send_header_and_exit('unsupported_media_type');
               }             else core::send_header_and_exit('unsupported_media_type');
@@ -304,10 +312,10 @@ namespace effcore\modules\page {
                         @unlink($path_thumbnail_tmp);
                         $file = new file($path_thumbnail);
                         return true;
-                      } else $file = new file(static::prepath_thumbnail_embedding_error.        '.'.$meta['original']['type']);
-                    }   else $file = new file(static::prepath_thumbnail_creation_error.         '.'.$meta['original']['type']);
-                  }     else $file = new file(static::prepath_thumbnail_not_allowed.            '.'.$meta['original']['type']);
-                }       else $file = new file(static::prepath_file_outside_of_dynamic_directory.'.'.$meta['original']['type']);
+                      } else $file = new file(static::prepath_get('thumbnail_embedding_error').        '.'.$meta['original']['type']);
+                    }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$meta['original']['type']);
+                  }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$meta['original']['type']);
+                }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$meta['original']['type']);
               }         else core::send_header_and_exit('unsupported_media_type');
             }           else core::send_header_and_exit('unsupported_media_type');
           }             else core::send_header_and_exit('unsupported_media_type');
