@@ -41,6 +41,8 @@ settings
   prepath__thumbnail_not_allowed: system/module_page/frontend/pictures/message--thumbnail-not-allowed
   show_warning_if_not_https: false
   thumbnail_quality_jpeg: 90
+  thumbnail_path_cover_default: system/module_page/frontend/pictures/thumbnail-cover-default.svg
+  thumbnail_path_poster_default: system/module_page/frontend/pictures/thumbnail-poster-default.svg
   thumbnail_width_small: 100
   thumbnail_width_middle: 300
   thumbnail_width_big: 600

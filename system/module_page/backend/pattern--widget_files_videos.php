@@ -49,10 +49,13 @@ namespace effcore {
   }
 
   static function item_markup_get($item, $row_id) {
+    $settings = module::settings_get('page');
     $src = '/'.$item->object->get_current_path(true);
+    $src_poster = $src.'?poster=big';
+    $src_poster_default = '/'.$settings->thumbnail_path_poster_default;
     if ($item->settings['data-poster-is-embedded'])
-         return new markup('video', ['src' => $src, 'poster' => $src.'?poster=big'                                                  ] + $item->settings);
-    else return new markup('video', ['src' => $src, 'poster' => '/system/module_page/frontend/pictures/thumbnail-poster-default.svg'] + $item->settings);
+         return new markup('video', ['src' => $src, 'poster' => $src_poster        ] + $item->settings);
+    else return new markup('video', ['src' => $src, 'poster' => $src_poster_default] + $item->settings);
   }
 
   # ─────────────────────────────────────────────────────────────────────

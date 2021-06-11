@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
           break;
         case 'audio':
           var c_audio = c_item.getElementsByTagName('audio')[0];
-          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-thumbnail') ? c_audio.getAttribute('data-cover-thumbnail') : '/system/module_page/frontend/pictures/thumbnail-cover-default.svg';
+          var c_thumbnail_img_src = c_audio.getAttribute('data-cover-thumbnail') ? c_audio.getAttribute('data-cover-thumbnail') : '/' + effcore.tokens['thumbnail_path_cover_default'];
           var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
           c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_audio.outerHTML).replace(/^"/, '').replace(/"$/, ''));
           c_thumbnail.append(c_thumbnail_img);

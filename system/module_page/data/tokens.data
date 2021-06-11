@@ -17,6 +17,12 @@ tokens
 - thumbnail_width_big
     type: code
     handler: \effcore\modules\page\events_token::on_apply
+- thumbnail_path_cover_default
+    type: code
+    handler: \effcore\modules\page\events_token::on_apply
+- thumbnail_path_poster_default
+    type: code
+    handler: \effcore\modules\page\events_token::on_apply
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────

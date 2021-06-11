@@ -16,12 +16,14 @@ namespace effcore\modules\page {
   static function on_apply($name, $args = []) {
     $settings = module::settings_get('page');
     switch ($name) {
-      case 'page_id_context':        return page::get_current() ? page::get_current()->id : null;
-      case 'thumbnail_width_small':  return $settings->thumbnail_width_small;
-      case 'thumbnail_width_middle': return $settings->thumbnail_width_middle;
-      case 'thumbnail_width_big':    return $settings->thumbnail_width_big;
-      case 'page_width_min':         return $settings->page_width_min;
-      case 'page_width_max':         return $settings->page_width_max;
+      case 'page_id_context'              : return page::get_current() ? page::get_current()->id : null;
+      case 'thumbnail_width_small'        : return $settings->thumbnail_width_small;
+      case 'thumbnail_width_middle'       : return $settings->thumbnail_width_middle;
+      case 'thumbnail_width_big'          : return $settings->thumbnail_width_big;
+      case 'thumbnail_path_cover_default' : return $settings->thumbnail_path_cover_default;
+      case 'thumbnail_path_poster_default': return $settings->thumbnail_path_poster_default;
+      case 'page_width_min'               : return $settings->page_width_min;
+      case 'page_width_max'               : return $settings->page_width_max;
       case 'page_width_min_context':
       case 'page_width_max_context':
         $page_id = url::get_current()->query_arg_select('page_id');
