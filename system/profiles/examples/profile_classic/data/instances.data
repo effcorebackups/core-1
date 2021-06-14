@@ -1706,88 +1706,6 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
-- tree_item_registered_ru|instance
-    entity_name: tree_item
-    values
-    - id: registered_ru
-    - id_parent: null
-    - id_tree: user_registered_ru
-    - title: %%_nickname
-    - url: /ru/user/%%_nickname
-    - access
-        roles
-        - =: registered
-- tree_item_user_edit_ru|instance
-    entity_name: tree_item
-    values
-    - id: user_edit_ru
-    - id_parent: registered_ru
-    - id_tree: user_registered_ru
-    - title: Редактировать
-    - url: /ru/user/%%_nickname/edit
-    - weight: +500
-    - access
-        roles
-        - =: registered
-- tree_item_logout_ru|instance
-    entity_name: tree_item
-    values
-    - id: logout_ru
-    - id_parent: registered_ru
-    - id_tree: user_registered_ru
-    - title: Выход
-    - url: /ru/logout?back=%2Fru
-    - weight: -500
-    - access
-        roles
-        - =: registered
-# ─────────────────────────────────────────────────────────────────────
-- tree_item_anonymous_ru|instance
-    entity_name: tree_item
-    values
-    - id: anonymous_ru
-    - id_parent: null
-    - id_tree: user_anonymous_ru
-    - title: Аноним
-    - access
-        roles
-        - =: anonymous
-- tree_item_login_ru|instance
-    entity_name: tree_item
-    values
-    - id: login_ru
-    - id_parent: anonymous_ru
-    - id_tree: user_anonymous_ru
-    - title: Вход
-    - url: /ru/login
-    - weight: +500
-    - access
-        roles
-        - =: anonymous
-- tree_item_registration_ru|instance
-    entity_name: tree_item
-    values
-    - id: registration_ru
-    - id_parent: anonymous_ru
-    - id_tree: user_anonymous_ru
-    - title: Регистрация
-    - url: /ru/registration
-    - access
-        roles
-        - =: anonymous
-- tree_item_recovery_ru|instance
-    entity_name: tree_item
-    values
-    - id: recovery_ru
-    - id_parent: anonymous_ru
-    - id_tree: user_anonymous_ru
-    - title: Восстановление
-    - url: /ru/recovery
-    - weight: -500
-    - access
-        roles
-        - =: anonymous
-# ─────────────────────────────────────────────────────────────────────
 - tree_item_about|instance
     entity_name: tree_item
     values
@@ -1804,7 +1722,7 @@ instances
     - id_tree: main
     - title: Contact Us
     - url: /contact
-- tree_item_language_ru|instance
+- tree_item_language_to_ru|instance
     entity_name: tree_item
     values
     - id: language_ru
@@ -1821,6 +1739,16 @@ instances
     - id_tree: main_ru
     - title: О нас
     - url: /ru/about
+- tree_item_anonymous_ru|instance
+    entity_name: tree_item
+    values
+    - id: anonymous_ru
+    - id_parent: null
+    - id_tree: user_anonymous_ru
+    - title: Аноним
+    - access
+        roles
+        - =: anonymous
 - tree_item_contact_ru|instance
     entity_name: tree_item
     values
@@ -1829,7 +1757,7 @@ instances
     - id_tree: main_ru
     - title: Связь
     - url: /ru/contact
-- tree_item_language_en|instance
+- tree_item_language_ru_to_en|instance
     entity_name: tree_item
     values
     - id: language_en
@@ -1837,3 +1765,73 @@ instances
     - id_tree: main_ru
     - title: EN
     - url: /
+- tree_item_login_ru|instance
+    entity_name: tree_item
+    values
+    - id: login_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Вход
+    - url: /ru/login
+    - weight: +500
+    - access
+        roles
+        - =: anonymous
+- tree_item_logout_ru|instance
+    entity_name: tree_item
+    values
+    - id: logout_ru
+    - id_parent: registered_ru
+    - id_tree: user_registered_ru
+    - title: Выход
+    - url: /ru/logout?back=%2Fru
+    - weight: -500
+    - access
+        roles
+        - =: registered
+- tree_item_recovery_ru|instance
+    entity_name: tree_item
+    values
+    - id: recovery_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Восстановление
+    - url: /ru/recovery
+    - weight: -500
+    - access
+        roles
+        - =: anonymous
+- tree_item_registered_ru|instance
+    entity_name: tree_item
+    values
+    - id: registered_ru
+    - id_parent: null
+    - id_tree: user_registered_ru
+    - title: %%_nickname
+    - url: /ru/user/%%_nickname
+    - access
+        roles
+        - =: registered
+- tree_item_registration_ru|instance
+    entity_name: tree_item
+    values
+    - id: registration_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Регистрация
+    - url: /ru/registration
+    - access
+        roles
+        - =: anonymous
+- tree_item_user_edit_ru|instance
+    entity_name: tree_item
+    values
+    - id: user_edit_ru
+    - id_parent: registered_ru
+    - id_tree: user_registered_ru
+    - title: Редактировать
+    - url: /ru/user/%%_nickname/edit
+    - weight: +500
+    - access
+        roles
+        - =: registered
