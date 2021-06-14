@@ -66,7 +66,7 @@ namespace effcore\modules\page {
               }
             }
             $form->child_select('fields')->child_insert(
-              new markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout], -500), 'layout_manager'
+              new markup('x-layout-manager', ['data-id' => $layout->id], ['manager' => $layout], -500), 'layout_manager'
             );
           } else {
             $form->child_select('fields')->child_insert(
