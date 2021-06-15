@@ -67,11 +67,16 @@ namespace effcore\modules\menu {
   }
 
   static function on_tree_build_after($event, $tree) {
-    if (!frontend::select('tree_all__menu'   )                          ) frontend::insert('tree_all__menu',    null, 'styles', ['path' => 'frontend/tree.cssd',        'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +400], 'tree_style', 'menu');
-    if (!frontend::select('tree_system__menu') && $tree->id === 'system') frontend::insert('tree_system__menu', null, 'styles', ['path' => 'frontend/tree-system.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -100], 'tree_style', 'menu');
-    if (!frontend::select('tree_rearrangeable__menu') && $tree->visualization_mode === 'decorated-rearrangeable') {
-         frontend::insert('tree_rearrangeable__menu', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js',   'attributes' => [            'defer' => true            ], 'weight' => +300], 'tree_script', 'menu');
-         frontend::insert('tree_rearrangeable__menu', null, 'styles',  ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +300], 'tree_style',  'menu');
+    if (!frontend::select('tree_all__menu'))
+         frontend::insert('tree_all__menu', null, 'styles', ['path' => 'frontend/tree.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +400], 'tree_style', 'menu');
+    if ($tree->id === 'system')
+      if (!frontend::select('tree_system__menu'))
+           frontend::insert('tree_system__menu', null, 'styles', ['path' => 'frontend/tree-system.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -100], 'tree_style', 'menu');
+    if ($tree->visualization_mode === 'decorated-rearrangeable') {
+      if (!frontend::select('tree_rearrangeable__menu')) {
+           frontend::insert('tree_rearrangeable__menu', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js',   'attributes' => [            'defer' => true            ], 'weight' => +300], 'tree_script', 'menu');
+           frontend::insert('tree_rearrangeable__menu', null, 'styles',  ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +300], 'tree_style',  'menu');
+      }
     }
   }
 
