@@ -131,6 +131,7 @@ namespace effcore {
 
     $html->attribute_insert('lang', $this->lang_code ?: language::code_get_current());
     $html->attribute_insert('dir',  $this->text_direction);
+    $html->attribute_insert('data-user-has-avatar', isset(user::get_current()->avatar_path) ? true : null);
     $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? true : null); # note: refreshed after page reload
     $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path, '/'))));
     if ($user_agent->name) $html->attribute_insert('data-uagent', core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
