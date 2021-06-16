@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_timeline.append(c_trackpos);
     c_time.append(c_time_elpsd, c_time_total);
     c_audio.parentNode.insertBefore(c_player, c_audio.nextSibling);
-    c_audio.setAttribute('data-player-audio-default-is-processed', true);
+    c_audio.setAttribute('data-player-audio-default-is-processed', '');
     c_audio.controls = false;
     c_time_elpsd.innerText = '‐ : ‐ ‐';
     c_time_total.innerText = '‐ : ‐ ‐';

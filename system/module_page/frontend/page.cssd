@@ -285,6 +285,8 @@
   audio {
     display: block;
     margin: 10px 0}
+  audio[data-player-audio-default-is-processed] {
+    display: none !important}
 
   video {
     display: block;
