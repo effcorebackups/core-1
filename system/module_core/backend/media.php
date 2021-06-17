@@ -27,13 +27,15 @@ namespace effcore {
       $container->startBuffering();
       $meta = unserialize($container['meta']->getContent());
       $file = new file($file_path);
-      $meta[$path_local]['type'] = $file->type_get();
-      $meta[$path_local]['mime'] = $file->mime_get();
-      $meta[$path_local]['size'] = $file->size_get();
-      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
-      $container->addFile($file_path, $path_local);
-      $container->stopBuffering();
-      return $container;
+      if ($meta) {
+        $meta[$path_local]['type'] = $file->type_get();
+        $meta[$path_local]['mime'] = $file->mime_get();
+        $meta[$path_local]['size'] = $file->size_get();
+        $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
+        $container->addFile($file_path, $path_local);
+        $container->stopBuffering();
+        return $container;
+      }
     } catch (Exception $e) {
       return;
     }
