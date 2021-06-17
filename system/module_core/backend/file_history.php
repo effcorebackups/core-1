@@ -14,7 +14,7 @@ namespace effcore {
   public $tmp_path; # file in PHP    'tmp'   directory
   public $pre_path; # file in system 'tmp'   directory (dynamic/tmp/*)
   public $fin_path; # file in system 'files' directory (dynamic/files/*)
-  public $error;
+  public $error = 0;
   public $size;
 
   function get_current_path($is_relative = false) {
