@@ -736,6 +736,62 @@ instances
             - data-block: true
             - data-id: block__text_sql__copyright
             - data-at-left: true
+- page_gallery|instance
+    entity_name: page
+    values
+    - id: gallery
+    - id_layout: original_classic
+    - title: Gallery
+    - url: /gallery
+    - lang_code: en
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__gallery_sql__main|block_preset_link
+            id: block__gallery_sql__main
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright
+            - data-at-left: true
 - page_login|instance
     entity_name: page
     values
@@ -1252,6 +1308,66 @@ instances
             - data-block: true
             - data-id: block__text_sql__copyright
             - data-at-left: true
+- page_gallery_ru|instance
+    entity_name: page
+    values
+    - id: gallery_ru
+    - id_layout: original_classic
+    - title: Галерея
+    - url: /ru/gallery
+    - lang_code: ru
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_registered
+            - data-at-right: true
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__user_anonymous
+            - data-at-right: true
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__gallery_sql__main|block_preset_link
+            id: block__gallery_sql__main
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-block: true
+            - data-id: block__text_sql__copyright
+            - data-at-left: true
 - page_login_ru|instance
     entity_name: page
     values
@@ -1714,6 +1830,7 @@ instances
     - id_tree: main
     - title: About Us
     - url: /about
+    - weight: 0
 - tree_item_contact|instance
     entity_name: tree_item
     values
@@ -1722,6 +1839,16 @@ instances
     - id_tree: main
     - title: Contact Us
     - url: /contact
+    - weight: -2
+- tree_item_gallery|instance
+    entity_name: tree_item
+    values
+    - id: gallery
+    - id_parent: null
+    - id_tree: main
+    - title: Gallery
+    - url: /gallery
+    - weight: -1
 - tree_item_language_to_ru|instance
     entity_name: tree_item
     values
@@ -1730,6 +1857,7 @@ instances
     - id_tree: main
     - title: RU
     - url: /ru
+    - weight: -3
 # ─────────────────────────────────────────────────────────────────────
 - tree_item_about_ru|instance
     entity_name: tree_item
@@ -1739,6 +1867,7 @@ instances
     - id_tree: main_ru
     - title: О нас
     - url: /ru/about
+    - weight: 0
 - tree_item_anonymous_ru|instance
     entity_name: tree_item
     values
@@ -1757,6 +1886,16 @@ instances
     - id_tree: main_ru
     - title: Связь
     - url: /ru/contact
+    - weight: -2
+- tree_item_gallery_ru|instance
+    entity_name: tree_item
+    values
+    - id: gallery_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: Галерея
+    - url: /ru/gallery
+    - weight: -1
 - tree_item_language_ru_to_en|instance
     entity_name: tree_item
     values
@@ -1765,6 +1904,7 @@ instances
     - id_tree: main_ru
     - title: EN
     - url: /
+    - weight: -3
 - tree_item_login_ru|instance
     entity_name: tree_item
     values
@@ -1835,3 +1975,179 @@ instances
     - access
         roles
         - =: registered
+# ─────────────────────────────────────────────────────────────────────
+# galleries
+# ─────────────────────────────────────────────────────────────────────
+- gallery_main|instance
+    entity_name: gallery
+    values
+    - id: main
+    - title: Main gallery
+    - attributes
+      - 0
+          weight: 0
+          name: data-player-name
+          value: default
+          is_apply_translation: false
+          is_apply_tokens: false
+    - items
+      - 0
+          weight: 0
+          object|file_history
+            name: 1000x1500-01
+            type: picture
+            file: 1000x1500-01.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-0.picture
+            size: 9216
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 1
+          weight: -5
+          object|file_history
+            name: 1000x1500-02
+            type: picture
+            file: 1000x1500-02.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-1.picture
+            size: 9216
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 2
+          weight: -10
+          object|file_history
+            name: 1000x1500-03
+            type: picture
+            file: 1000x1500-03.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-2.picture
+            size: 9216
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 3
+          weight: -15
+          object|file_history
+            name: 1500x1000-01
+            type: picture
+            file: 1500x1000-01.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-3.picture
+            size: 10240
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 4
+          weight: -20
+          object|file_history
+            name: 1500x1000-02
+            type: picture
+            file: 1500x1000-02.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-4.picture
+            size: 10240
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 5
+          weight: -25
+          object|file_history
+            name: 1500x1000-03
+            type: picture
+            file: 1500x1000-03.picture
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-5.picture
+            size: 10240
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 6
+          weight: -30
+          object|file_history
+            name: audio-01
+            type: audio
+            file: audio-01.audio
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-6.audio
+            size: 25088
+          settings
+          - data-player-name: default
+          - data-player-timeline-is-visible|_string_true
+          - autoplay: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - preload: metadata
+          - data-cover-is-embedded: true
+      - 7
+          weight: -35
+          object|file_history
+            name: video-01
+            type: video
+            file: video-01.video
+            mime: application/x-tar
+            fin_path: dynamic/files/galleries/gallery-main-7.video
+            size: 22528
+          settings
+          - autoplay: null
+          - buffered: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - played: null
+          - preload: metadata
+          - data-poster-is-embedded: true
+      - 8
+          weight: -40
+          object|file_history
+            name: video-02
+            type: mp4
+            file: video-02.mp4
+            mime: video/mp4
+            fin_path: dynamic/files/galleries/gallery-main-8.mp4
+            size: 19692
+          settings
+          - autoplay: null
+          - buffered: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - played: null
+          - preload: metadata
+          - data-poster-is-embedded: false
+      - 9
+          weight: -45
+          object|file_history
+            name: audio-02
+            type: mp3
+            file: audio-02.mp3
+            mime: audio/mpeg
+            fin_path: dynamic/files/galleries/gallery-main-9.mp3
+            size: 22241
+          settings
+          - data-player-name: default
+          - data-player-timeline-is-visible|_string_true
+          - autoplay: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - preload: metadata
+          - data-cover-is-embedded: false
