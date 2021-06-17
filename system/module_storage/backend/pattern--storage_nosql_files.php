@@ -249,8 +249,8 @@ namespace effcore {
 
   static function data_to_text($data, $entity_name = '', $entity_prefix = '', $depth = 0) {
     $result = [];
-    if ($entity_name && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
-    if ($entity_name && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
+    if (strlen($entity_name) && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
+    if (strlen($entity_name) && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
     foreach ($data as $c_key => $c_value) {
       if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                            is_array($data) ? '- ' : '  ', $depth + 1);
