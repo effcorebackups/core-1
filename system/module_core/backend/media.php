@@ -12,7 +12,7 @@ namespace effcore {
       @unlink($dst_path);
       $container = new \PharData($dst_path, 0, null, \Phar::TAR);
       $container->startBuffering();
-      $container->addFromString('meta', serialize($meta));
+      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
       $container->addFile($src_path, 'original');
       $container->stopBuffering();
       return $container;
