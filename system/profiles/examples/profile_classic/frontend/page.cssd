@@ -62,8 +62,7 @@
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    {display: inline-block}
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    {display: inline-block}
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li {display: block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul {display: block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       ul {display: none}
+  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li       ul {display: none}
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li:hover ul {display: block}
 
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {position: absolute}
@@ -100,6 +99,11 @@
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[aria-selected      ='true'],
   [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
+
+  /* menu in area 'menu': icons */
+
+  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li[data-id='language_en'] > a {color: transparent; background:        url('/system/module_locales/frontend/pictures/flag-uk-mini.svg') no-repeat 50% 50%}
+  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li[data-id='language_ru'] > a {color: transparent; background: url('/system/module_translation_ru/frontend/pictures/flag-ru-mini.svg') no-repeat 50% 50%}
 
   /* menu in area 'menu': adaptivity */
 
