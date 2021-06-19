@@ -337,8 +337,8 @@
   x-gallery-player x-button-c:hover {background-position: -290px   0}
   x-gallery-player x-button-l:hover {background-position:  -70px 50%}
   x-gallery-player x-button-r:hover {background-position: -140px 50%}
-  x-gallery-player x-button-l[data-is-blocked='true'],
-  x-gallery-player x-button-r[data-is-blocked='true'] {opacity: 0; cursor: default}
+  x-gallery-player x-button-l[data-is-blocked],
+  x-gallery-player x-button-r[data-is-blocked] {opacity: 0; cursor: default}
 
   x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
   x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px 0 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}

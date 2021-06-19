@@ -87,11 +87,11 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_c     = document.createElement('x-button-c');
     var c_player_viewing_area = document.createElement('x-viewing-area');
     var clear_viewing_area    = function(){c_player_viewing_area.innerHTML = '';}
-    var set_state_button_L    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', 'true'); })}
-    var set_state_button_R    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', 'true'); })}
+    var set_state_button_L    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
+    var set_state_button_R    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
     var move_L                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); c_player_thumbnails.scrollLeft = c_selected.previousSibling.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.previousSibling.clientWidth / 2) + 3; set_state_button_L(); set_state_button_R();} })}
     var move_R                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); c_player_thumbnails.scrollLeft = c_selected.nextSibling    .offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.nextSibling    .clientWidth / 2) + 3; set_state_button_L(); set_state_button_R();} })}
-    var close_player          = function(){clear_viewing_area(); c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player');}
+    var close_player          = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); clear_viewing_area();}
     c_gallery.prepend(c_player);
     c_gallery.setAttribute('data-player-is-processed', true);
     c_player.append(
@@ -99,15 +99,18 @@ document.addEventListener('DOMContentLoaded', function(){
       c_player_button_l,
       c_player_button_r,
       c_player_button_c,
-      c_player_viewing_area);
+      c_player_viewing_area
+    );
  /* bind events */
     c_player_button_l.addEventListener('click', function(){move_L();});
     c_player_button_r.addEventListener('click', function(){move_R();});
     c_player_button_c.addEventListener('click', function(){close_player();});
     document.addEventListener('keydown', function(event){
-      if (event.keyCode === 37) move_L();
-      if (event.keyCode === 39) move_R();
-      if (event.keyCode === 27) close_player();
+      if (c_player.getAttribute('aria-hidden') !== 'true') {
+        if (event.keyCode === 37) move_L();
+        if (event.keyCode === 39) move_R();
+        if (event.keyCode === 27) close_player();
+      }
     });
  /* process each gallery item */
     c_gallery.querySelectorAll__notNull('x-item').forEach(function(c_item){
