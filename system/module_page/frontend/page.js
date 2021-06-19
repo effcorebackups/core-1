@@ -87,11 +87,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_c     = document.createElement('x-button-c');
     var c_player_viewing_area = document.createElement('x-viewing-area');
     var clear_viewing_area    = function(){c_player_viewing_area.innerHTML = '';}
+    var close_player          = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); clear_viewing_area();}
     var set_state_button_L    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
     var set_state_button_R    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
-    var move_L                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); c_player_thumbnails.scrollLeft = c_selected.previousSibling.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.previousSibling.clientWidth / 2) + 3; set_state_button_L(); set_state_button_R();} })}
-    var move_R                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); c_player_thumbnails.scrollLeft = c_selected.nextSibling    .offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.nextSibling    .clientWidth / 2) + 3; set_state_button_L(); set_state_button_R();} })}
-    var close_player          = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); clear_viewing_area();}
+    var move_L                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); center(); set_state_button_L(); set_state_button_R();} })}
+    var move_R                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); center(); set_state_button_L(); set_state_button_R();} })}
+    var center                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3; })}
     c_gallery.prepend(c_player);
     c_gallery.setAttribute('data-player-is-processed', true);
     c_player.append(
@@ -150,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function(){
         c_player.removeAttribute('aria-hidden');
         document.body.setAttribute('data-is-active-gallery-player', 'true');
         c_player_thumbnails.querySelector__notNull('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]').forFirst__(function(c_selected){
-          c_selected.click(); c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3;
+          c_selected.click();
+          center();
         });
       }, true);
     /* when click on thumbnail in player */
