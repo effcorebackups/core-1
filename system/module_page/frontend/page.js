@@ -86,14 +86,14 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_r     = document.createElement('x-button-r');
     var c_player_button_c     = document.createElement('x-button-c');
     var c_player_viewing_area = document.createElement('x-viewing-area');
-    var show                  = function(){c_player.removeAttribute('aria-hidden');}
-    var hide                  = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); clear_viewing_area();}
-    var set_state_button_L    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
-    var set_state_button_R    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
-    var move_L                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); center(); set_state_button_L(); set_state_button_R();} })}
-    var move_R                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); center(); set_state_button_L(); set_state_button_R();} })}
-    var center                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3; })}
-    var clear_viewing_area    = function(){c_player_viewing_area.innerHTML = '';}
+    var player_show           = function(){c_player.removeAttribute('aria-hidden'); document.body.setAttribute('data-is-active-gallery-player', 'true');}
+    var player_hide           = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); viewing_area_clear();}
+    var button_L_set_state    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
+    var button_R_set_state    = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
+    var move_L                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.previousSibling) {c_selected.previousSibling.click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
+    var move_R                = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
+    var thumbnails_centration = function(){c_player_thumbnails.querySelector__notNull('x-thumbnail[aria-selected="true"]').forFirst__(function(c_selected){ c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3; })}
+    var viewing_area_clear    = function(){c_player_viewing_area.innerHTML = '';}
     c_gallery.prepend(c_player);
     c_gallery.setAttribute('data-player-is-processed', true);
     c_player.append(
@@ -106,12 +106,12 @@ document.addEventListener('DOMContentLoaded', function(){
  /* bind events */
     c_player_button_l.addEventListener('click', function(){move_L();});
     c_player_button_r.addEventListener('click', function(){move_R();});
-    c_player_button_c.addEventListener('click', function(){hide();});
+    c_player_button_c.addEventListener('click', function(){player_hide();});
     document.addEventListener('keydown', function(event){
       if (c_player.getAttribute('aria-hidden') !== 'true') {
         if (event.keyCode === 37) move_L();
         if (event.keyCode === 39) move_R();
-        if (event.keyCode === 27) hide();
+        if (event.keyCode === 27) player_hide();
       }
     });
  /* process each gallery item */
@@ -149,18 +149,17 @@ document.addEventListener('DOMContentLoaded', function(){
       c_item.addEventListener('click', function(event){
         event.stopPropagation();
         event.preventDefault();
-        show();
-        document.body.setAttribute('data-is-active-gallery-player', 'true');
+        player_show();
         c_player_thumbnails.querySelector__notNull('x-thumbnail[data-num="' + this.getAttribute('data-num') + '"]').forFirst__(function(c_selected){
           c_selected.click();
-          center();
+          thumbnails_centration();
         });
       }, true);
     /* when click on thumbnail in player */
       c_thumbnail.addEventListener('click', function(){
         c_player_thumbnails.querySelectorAll__notNull('[aria-selected="true"]').forEach(function(c_selected){c_selected.removeAttribute('aria-selected');});
         c_thumbnail.setAttribute('aria-selected', 'true');
-        clear_viewing_area();
+        viewing_area_clear();
         if (c_thumbnail.getAttribute('data-preview-area-content')) {
           c_player_viewing_area.innerHTML = '<x-centrator-wrapper><x-centrator>' + JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"') + '</x-centrator></x-centrator-wrapper>';
           if (c_thumbnail.getAttribute('data-type') === 'audio') {
@@ -169,8 +168,8 @@ document.addEventListener('DOMContentLoaded', function(){
             });
           }
         }
-        set_state_button_L();
-        set_state_button_R();
+        button_L_set_state();
+        button_R_set_state();
       });
     });
   });
