@@ -1915,15 +1915,6 @@ instances
     - title: About Us
     - url: /about
     - weight: 0
-- tree_item_contact|instance
-    entity_name: tree_item
-    values
-    - id: contact
-    - id_parent: null
-    - id_tree: main
-    - title: Contact Us
-    - url: /contact
-    - weight: -2
 - tree_item_gallery|instance
     entity_name: tree_item
     values
@@ -1933,6 +1924,15 @@ instances
     - title: Gallery
     - url: /gallery
     - weight: -1
+- tree_item_contact|instance
+    entity_name: tree_item
+    values
+    - id: contact
+    - id_parent: null
+    - id_tree: main
+    - title: Contact Us
+    - url: /contact
+    - weight: -2
 - tree_item_language_to_ru|instance
     entity_name: tree_item
     values
@@ -1952,15 +1952,6 @@ instances
     - title: О нас
     - url: /ru/about
     - weight: 0
-- tree_item_contact_ru|instance
-    entity_name: tree_item
-    values
-    - id: contact_ru
-    - id_parent: null
-    - id_tree: main_ru
-    - title: Связь
-    - url: /ru/contact
-    - weight: -2
 - tree_item_gallery_ru|instance
     entity_name: tree_item
     values
@@ -1970,6 +1961,15 @@ instances
     - title: Галерея
     - url: /ru/gallery
     - weight: -1
+- tree_item_contact_ru|instance
+    entity_name: tree_item
+    values
+    - id: contact_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: Связь
+    - url: /ru/contact
+    - weight: -2
 - tree_item_language_ru_to_en|instance
     entity_name: tree_item
     values
