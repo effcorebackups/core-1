@@ -224,13 +224,12 @@
     font-size: 13px;
     color: white;
     text-align: right;
+    word-spacing: .2em;
     background: %%_color__main url('pictures/lines.svg') -10px 0}
   x-admin-actions::after {content: ''; clear: both; display: block}
   x-admin-actions a [data-action-title] {display: none}
   x-admin-actions a {color: white}
   x-admin-actions a:not(:last-child) {padding-right: 10px; margin-right: 10px; border-right: 1px dotted white}
-  x-admin-actions a[data-id='manage-enter'],
-  x-admin-actions a[data-id='manage-leave'] {text-decoration: none}
   x-admin-actions a[data-id='update'] {padding-left: 16px; background: url('pictures/icons-actions_list-white.svgd') no-repeat 0 -41px}
 
   body[data-is-managed-layout] [data-area-id] [data-block] {
