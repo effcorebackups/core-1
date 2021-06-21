@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var c_player_button_l      = document.createElement('x-button-l');
     var c_player_button_r      = document.createElement('x-button-r');
     var c_player_button_c      = document.createElement('x-button-c');
+    var c_player_viewing_part  = document.createElement('x-viewing-part');
     var c_player_viewing_area  = document.createElement('x-viewing-area');
     var player_show            = function(){c_player.removeAttribute('aria-hidden'); document.body.setAttribute('data-is-active-gallery-player', 'true');}
     var player_hide            = function(){c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); viewing_area_clear();}
@@ -97,13 +98,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var viewing_area_clear     = function(){c_player_viewing_area.innerHTML = '';}
     c_gallery.prepend(c_player);
     c_gallery.setAttribute('data-player-is-processed', true);
-    c_player.append(
-      c_player_thumbnails,
-      c_player_button_l,
-      c_player_button_r,
-      c_player_button_c,
-      c_player_viewing_area
-    );
+    c_player_viewing_part.append(c_player_button_l, c_player_viewing_area, c_player_button_r);
+    c_player.append(c_player_thumbnails, c_player_button_c, c_player_viewing_part);
  /* bind events */
     c_player_button_l.addEventListener('click', function(){player_move_L();});
     c_player_button_r.addEventListener('click', function(){player_move_R();});
@@ -162,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function(){
         c_thumbnail.setAttribute('aria-selected', 'true');
         viewing_area_clear();
         if (c_thumbnail.getAttribute('data-preview-area-content')) {
-          c_player_viewing_area.innerHTML = '<x-centrator-wrapper><x-centrator>' + JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"') + '</x-centrator></x-centrator-wrapper>';
+          c_player_viewing_area.innerHTML = JSON.parse('"' + c_thumbnail.getAttribute('data-preview-area-content') + '"');
           if (c_thumbnail.getAttribute('data-type') === 'audio') {
             c_player_viewing_area.querySelectorAll__notNull('audio[data-player-name="default"]').forEach(function(c_player_viewing_area_audio){
               c_player_viewing_area_audio.process__defaultAudioPlayer();
