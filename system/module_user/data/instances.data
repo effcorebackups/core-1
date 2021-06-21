@@ -710,42 +710,8 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
-- tree_item_registered|instance
-    entity_name: tree_item
-    values
-    - id: registered
-    - id_parent: null
-    - id_tree: user_registered
-    - title: %%_nickname
-    - url: /user/%%_nickname
-    - access
-        roles
-        - =: registered
-- tree_item_user_edit|instance
-    entity_name: tree_item
-    values
-    - id: user_edit
-    - id_parent: registered
-    - id_tree: user_registered
-    - title: Edit
-    - url: /user/%%_nickname/edit
-    - weight: +500
-    - access
-        roles
-        - =: registered
-- tree_item_logout|instance
-    entity_name: tree_item
-    values
-    - id: logout
-    - id_parent: registered
-    - id_tree: user_registered
-    - title: Logout
-    - url: /logout
-    - weight: -500
-    - access
-        roles
-        - =: registered
-# ─────────────────────────────────────────────────────────────────────
+#
+# ── menu: user_anonymous ─────────────────────────────────────────────
 - tree_item_anonymous|instance
     entity_name: tree_item
     values
@@ -791,3 +757,39 @@ instances
     - access
         roles
         - =: anonymous
+# ── menu: user_registered ────────────────────────────────────────────
+- tree_item_registered|instance
+    entity_name: tree_item
+    values
+    - id: registered
+    - id_parent: null
+    - id_tree: user_registered
+    - title: %%_nickname
+    - url: /user/%%_nickname
+    - access
+        roles
+        - =: registered
+- tree_item_user_edit|instance
+    entity_name: tree_item
+    values
+    - id: user_edit
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Edit
+    - url: /user/%%_nickname/edit
+    - weight: +500
+    - access
+        roles
+        - =: registered
+- tree_item_logout|instance
+    entity_name: tree_item
+    values
+    - id: logout
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Logout
+    - url: /logout
+    - weight: -500
+    - access
+        roles
+        - =: registered
