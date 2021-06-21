@@ -487,13 +487,13 @@
 
   /* manage-data-content */
 
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item {display: inline-block; margin-left: 5px}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block-inline}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: 100px; height: auto}
+  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item {display: block; margin: 10px 0}
+  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block; max-width: 126px}
+  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: 126px; height: auto}
   [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] img[data-type='cover'] {display: block; max-width: 126px; height: auto}
   [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player {margin: 0; max-width: 126px}
   [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player x-timeline {display: none}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='video'] video {margin: 0; max-width: 100px; height: auto}
+  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='video'] video {margin: 0; max-width: 126px; height: auto}
 
   /* block 'system info' */
 
