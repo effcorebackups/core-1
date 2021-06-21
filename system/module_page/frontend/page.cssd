@@ -470,7 +470,7 @@
   x-gallery-player x-button-l[data-is-blocked],
   x-gallery-player x-button-r[data-is-blocked] {opacity: 0; cursor: default}
 
-  x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
+  x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto; text-align: center}
   x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px 0 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}
   x-gallery-player x-thumbnails x-thumbnail[aria-selected='true'] {border: 3px solid orange}
   x-gallery-player x-thumbnails x-thumbnail img {display: block; margin: 1px; max-height: 60px}
