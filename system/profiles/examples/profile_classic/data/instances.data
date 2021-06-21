@@ -1822,6 +1822,8 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
+#
+# ── menu: user_anonymous_ru ──────────────────────────────────────────
 - tree_item_anonymous_ru|instance
     entity_name: tree_item
     values
@@ -1844,18 +1846,17 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_logout_ru|instance
+- tree_item_registration_ru|instance
     entity_name: tree_item
     values
-    - id: logout_ru
-    - id_parent: registered_ru
-    - id_tree: user_registered_ru
-    - title: Выход
-    - url: /ru/logout?back=%2Fru
-    - weight: -500
+    - id: registration_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Регистрация
+    - url: /ru/registration
     - access
         roles
-        - =: registered
+        - =: anonymous
 - tree_item_recovery_ru|instance
     entity_name: tree_item
     values
@@ -1868,6 +1869,7 @@ instances
     - access
         roles
         - =: anonymous
+# ── menu: user_registered_ru ─────────────────────────────────────────
 - tree_item_registered_ru|instance
     entity_name: tree_item
     values
@@ -1879,17 +1881,6 @@ instances
     - access
         roles
         - =: registered
-- tree_item_registration_ru|instance
-    entity_name: tree_item
-    values
-    - id: registration_ru
-    - id_parent: anonymous_ru
-    - id_tree: user_anonymous_ru
-    - title: Регистрация
-    - url: /ru/registration
-    - access
-        roles
-        - =: anonymous
 - tree_item_user_edit_ru|instance
     entity_name: tree_item
     values
@@ -1899,6 +1890,18 @@ instances
     - title: Редактировать
     - url: /ru/user/%%_nickname/edit
     - weight: +500
+    - access
+        roles
+        - =: registered
+- tree_item_logout_ru|instance
+    entity_name: tree_item
+    values
+    - id: logout_ru
+    - id_parent: registered_ru
+    - id_tree: user_registered_ru
+    - title: Выход
+    - url: /ru/logout?back=%2Fru
+    - weight: -500
     - access
         roles
         - =: registered
