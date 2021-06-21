@@ -291,71 +291,6 @@
     font-size: 1.3em;
     text-align: center}
 
-  /* x-audio-player */
-
-  x-audio-player {display: block; margin: 10px 0; cursor: default; color: white; background: %%_color__main}
-  x-audio-player::after {content: ''; clear: both; display: block}
-  x-audio-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-  x-audio-player button[value='play'] {float: left !important; width: 44px; height: 44px; margin: 0 10px 0 0; padding: 0; cursor: pointer; border: none; border-radius: 0; background: %%_color__main{20|20|20} url('pictures/icons-form-button.svgd') 4px -118px}
-  x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main{30|30|30}}
-  x-audio-player button[value='play']:enabled:active {background-color: %%_color__main{40|40|40}; box-shadow: none}
-  x-audio-player x-timeline {float: left; width: calc(100% - 146px); min-width: 50px; height: 10px; margin: 17px 10px; overflow: hidden; cursor: not-allowed; background: %%_color__main{10|10|10}}
-  x-audio-player x-timeline x-track-position {display: block; width: 0; height: 5px; margin-top: 5px; cursor: pointer; background: %%_color__main{30|30|30}}
-  x-audio-player x-time {float: right; width: 60px; margin: 9px 12px 9px 0; font-family: monospace; font-size: 11px; line-height: 10px; text-align: right}
-  x-audio-player x-time x-time-elapsed {display: block; height: 10px; margin-top: 1px}
-  x-audio-player x-time x-time-total   {display: block; height: 10px; margin-top: 5px; opacity: .6}
-  x-audio-player[data-is-playing] button[value='play'] {background-position: 2px -158px}
-  x-audio-player[data-is-loadedmetadata] x-timeline {cursor: pointer}
-  x-audio-player[data-is-progressing] x-timeline {background-image: url('pictures/lines-animated.svg'); background-size: 20px 20px}
-  audio[data-player-timeline-is-visible='false'] + x-audio-player x-timeline {display: none}
-
-  /* x-gallery */
-
-  x-gallery {display: block; margin: 5px 0}
-  x-gallery::after {content: ''; clear: both; display: block}
-  x-gallery x-item {float: left; width: %%_thumbnail_width_middle{null}px; margin: 5px}
-  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
-  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_width_middle{null}px}
-  x-gallery x-item[data-type='video'] video,
-  x-gallery x-item[data-type='audio'] audio,
-  x-gallery x-item[data-type='audio'] x-audio-player {margin: 0; cursor: pointer}
-  x-gallery x-item[data-type='audio'] img[data-type='cover'] {display: block}
-  x-gallery[data-player-is-processed] x-item {cursor: pointer}
-
-  /* x-gallery-player */
-
-  x-gallery-player {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 500; background: rgba(0, 0, 0, .9)}
-  x-gallery-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
-  x-gallery-player x-thumbnails   {position: fixed; left:              70px; top:     0; width: calc(100% - 140px); height:              100px}
-  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:  14px; width:               50px; height:               50px}
-  x-gallery-player x-button-l     {position: fixed; left:                 0; top: 110px; width:               70px; height: calc(100% - 110px)}
-  x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 110px; width:               70px; height: calc(100% - 110px)}
-  x-gallery-player x-viewing-area {position: fixed; left:              70px; top: 110px; width: calc(100% - 140px); height: calc(100% - 110px)}
-
-  x-gallery-player x-button-c {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat  -290px 100%}
-  x-gallery-player x-button-l {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat       0  50%}
-  x-gallery-player x-button-r {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat  -210px  50%}
-  x-gallery-player x-button-c:hover {background-position: -290px   0}
-  x-gallery-player x-button-l:hover {background-position:  -70px 50%}
-  x-gallery-player x-button-r:hover {background-position: -140px 50%}
-  x-gallery-player x-button-l[data-is-blocked],
-  x-gallery-player x-button-r[data-is-blocked] {opacity: 0; cursor: default}
-
-  x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
-  x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px 0 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}
-  x-gallery-player x-thumbnails x-thumbnail[aria-selected='true'] {border: 3px solid orange}
-  x-gallery-player x-thumbnails x-thumbnail img {display: block; margin: 1px; max-height: 60px}
-
-  x-gallery-player x-viewing-area {padding-bottom: 10px; overflow: auto}
-  x-gallery-player x-viewing-area x-centrator-wrapper {display: table; width: 100%; height: 100%}
-  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator {display: table-cell; text-align: center; vertical-align: middle}
-  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator img {max-width: %%_thumbnail_width_big{null}px}
-  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator x-audio-player {margin: 0 30px}
-
-  [data-is-active-gallery-player] {
-    overflow: hidden; /* disable scroll on body */
-  }
-
   /* x-actions */
 
   x-actions a [data-action-title] {display: none}
@@ -484,6 +419,71 @@
   x-module-info x-param[data-type='title'] {margin-bottom: 20px; font-size: 1.5em}
   x-module-info x-param > x-title {opacity: .5}
   x-module-info x-param > x-title::after {content: ': '}
+
+  /* x-audio-player */
+
+  x-audio-player {display: block; margin: 10px 0; cursor: default; color: white; background: %%_color__main}
+  x-audio-player::after {content: ''; clear: both; display: block}
+  x-audio-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+  x-audio-player button[value='play'] {float: left !important; width: 44px; height: 44px; margin: 0 10px 0 0; padding: 0; cursor: pointer; border: none; border-radius: 0; background: %%_color__main{20|20|20} url('pictures/icons-form-button.svgd') 4px -118px}
+  x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main{30|30|30}}
+  x-audio-player button[value='play']:enabled:active {background-color: %%_color__main{40|40|40}; box-shadow: none}
+  x-audio-player x-timeline {float: left; width: calc(100% - 146px); min-width: 50px; height: 10px; margin: 17px 10px; overflow: hidden; cursor: not-allowed; background: %%_color__main{10|10|10}}
+  x-audio-player x-timeline x-track-position {display: block; width: 0; height: 5px; margin-top: 5px; cursor: pointer; background: %%_color__main{30|30|30}}
+  x-audio-player x-time {float: right; width: 60px; margin: 9px 12px 9px 0; font-family: monospace; font-size: 11px; line-height: 10px; text-align: right}
+  x-audio-player x-time x-time-elapsed {display: block; height: 10px; margin-top: 1px}
+  x-audio-player x-time x-time-total   {display: block; height: 10px; margin-top: 5px; opacity: .6}
+  x-audio-player[data-is-playing] button[value='play'] {background-position: 2px -158px}
+  x-audio-player[data-is-loadedmetadata] x-timeline {cursor: pointer}
+  x-audio-player[data-is-progressing] x-timeline {background-image: url('pictures/lines-animated.svg'); background-size: 20px 20px}
+  audio[data-player-timeline-is-visible='false'] + x-audio-player x-timeline {display: none}
+
+  /* x-gallery */
+
+  x-gallery {display: block; margin: 5px 0}
+  x-gallery::after {content: ''; clear: both; display: block}
+  x-gallery x-item {float: left; width: %%_thumbnail_width_middle{null}px; margin: 5px}
+  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper']     {display: block}
+  x-gallery x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: %%_thumbnail_width_middle{null}px}
+  x-gallery x-item[data-type='video'] video,
+  x-gallery x-item[data-type='audio'] audio,
+  x-gallery x-item[data-type='audio'] x-audio-player {margin: 0; cursor: pointer}
+  x-gallery x-item[data-type='audio'] img[data-type='cover'] {display: block}
+  x-gallery[data-player-is-processed] x-item {cursor: pointer}
+
+  /* x-gallery-player */
+
+  x-gallery-player {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 500; background: rgba(0, 0, 0, .9)}
+  x-gallery-player * {user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none}
+  x-gallery-player x-thumbnails   {position: fixed; left:              70px; top:     0; width: calc(100% - 140px); height:              100px}
+  x-gallery-player x-button-c     {position: fixed; left: calc(100% - 60px); top:  14px; width:               50px; height:               50px}
+  x-gallery-player x-button-l     {position: fixed; left:                 0; top: 110px; width:               70px; height: calc(100% - 110px)}
+  x-gallery-player x-button-r     {position: fixed; left: calc(100% - 70px); top: 110px; width:               70px; height: calc(100% - 110px)}
+  x-gallery-player x-viewing-area {position: fixed; left:              70px; top: 110px; width: calc(100% - 140px); height: calc(100% - 110px)}
+
+  x-gallery-player x-button-c {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat  -290px 100%}
+  x-gallery-player x-button-l {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat       0  50%}
+  x-gallery-player x-button-r {cursor: pointer; background: url('pictures/icons-gallery_player.svg') no-repeat  -210px  50%}
+  x-gallery-player x-button-c:hover {background-position: -290px   0}
+  x-gallery-player x-button-l:hover {background-position:  -70px 50%}
+  x-gallery-player x-button-r:hover {background-position: -140px 50%}
+  x-gallery-player x-button-l[data-is-blocked],
+  x-gallery-player x-button-r[data-is-blocked] {opacity: 0; cursor: default}
+
+  x-gallery-player x-thumbnails {white-space: nowrap; overflow: auto}
+  x-gallery-player x-thumbnails x-thumbnail {display: inline-block; margin: 5px 2px 0 2px; cursor: pointer; border: 3px solid transparent; border-radius: 3px}
+  x-gallery-player x-thumbnails x-thumbnail[aria-selected='true'] {border: 3px solid orange}
+  x-gallery-player x-thumbnails x-thumbnail img {display: block; margin: 1px; max-height: 60px}
+
+  x-gallery-player x-viewing-area {padding-bottom: 10px; overflow: auto}
+  x-gallery-player x-viewing-area x-centrator-wrapper {display: table; width: 100%; height: 100%}
+  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator {display: table-cell; text-align: center; vertical-align: middle}
+  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator img {max-width: %%_thumbnail_width_big{null}px}
+  x-gallery-player x-viewing-area x-centrator-wrapper x-centrator x-audio-player {margin: 0 30px}
+
+  [data-is-active-gallery-player] {
+    overflow: hidden; /* disable scroll on body */
+  }
 
   /* block 'system info' */
 
