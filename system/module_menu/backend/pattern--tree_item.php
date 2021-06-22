@@ -64,7 +64,7 @@ namespace effcore {
   function render() {
     $visualization_mode = tree::select($this->id_tree)->visualization_mode;
     if (access::check($this->access)) {
-      $rendered_self     = $visualization_mode ? $this->render_self_managed() : $this->render_self();
+      $rendered_self     = $visualization_mode ? $this->render_self__managed() : $this->render_self();
       $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ? (template::make_new($this->template_children, [
         'children' => $this->render_children($this->children_select(true))]
       ))->render() : '';
@@ -78,16 +78,17 @@ namespace effcore {
 
   function render_self() {
     $href = $this->href_get();
-    if ($href                   ) $this->attribute_insert('title', new text('click to open the menu item "%%_title"', ['title' => (new text($this->title, [], true, true))->render() ]), 'element_attributes', true);
-    if ($href                   ) $this->attribute_insert('href', $href,                 'element_attributes', true);
-    if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes', true);
-    if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes', true);
+    $has_title = $this->attribute_select('title', 'element_attributes') !== null;
+    if ($href && $has_title === false) $this->attribute_insert('title', new text('click to open the menu item "%%_title"', ['title' => (new text($this->title, [], true, true))->render() ]), 'element_attributes', true);
+    if ($href                        ) $this->attribute_insert('href', $href,                 'element_attributes', true);
+    if ($this->is_active      ()     ) $this->attribute_insert('aria-selected',       'true', 'element_attributes', true);
+    if ($this->is_active_trail()     ) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes', true);
     return (new markup('a', $this->attributes_select('element_attributes'),
       new text($this->title, [], true, true)
     ))->render();
   }
 
-  function render_self_managed() {
+  function render_self__managed() {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
       new markup('x-title', [], $this->title),
       new markup('x-extra', [], $this->extra),
