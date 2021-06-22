@@ -600,6 +600,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -657,6 +660,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -716,6 +722,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -775,6 +784,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -825,6 +837,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -880,6 +895,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -933,6 +951,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -986,6 +1007,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1042,6 +1066,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1098,6 +1125,9 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1160,6 +1190,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1221,6 +1254,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1285,6 +1321,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1349,6 +1388,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1402,6 +1444,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1463,6 +1508,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1521,6 +1569,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1579,6 +1630,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1641,6 +1695,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1703,6 +1760,9 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1819,6 +1879,12 @@ instances
     - access
         roles
         - =: anonymous
+- tree_languages|instance
+    entity_name: tree
+    values
+    - id: languages
+    - title: Language selection menu
+    - title_is_visible: 0
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
@@ -1933,15 +1999,6 @@ instances
     - title: Contact Us
     - url: /contact
     - weight: -2
-- tree_item_language_to_ru|instance
-    entity_name: tree_item
-    values
-    - id: language_ru
-    - id_parent: null
-    - id_tree: main
-    - title: RU
-    - url: /ru
-    - weight: -3
 # ── menu: main_ru ────────────────────────────────────────────────────
 - tree_item_about_ru|instance
     entity_name: tree_item
@@ -1970,15 +2027,53 @@ instances
     - title: Связь
     - url: /ru/contact
     - weight: -2
-- tree_item_language_ru_to_en|instance
+# ── menu: languages ──────────────────────────────────────────────────
+- tree_item_language_to_ru|instance
+    entity_name: tree_item
+    values
+    - id: language_ru
+    - id_parent: null
+    - id_tree: languages
+    - title: RU
+    - url: /ru
+    - weight: 0
+    - link_attributes
+      - 0
+          weight: 0
+          name: title
+          value: go to Russian language
+          is_apply_translation: false
+          is_apply_tokens: false
+    - attributes
+      - 0
+          weight: 0
+          name: data-code
+          value: ru
+          is_apply_translation: false
+          is_apply_tokens: false
+- tree_item_language_to_en|instance
     entity_name: tree_item
     values
     - id: language_en
     - id_parent: null
-    - id_tree: main_ru
+    - id_tree: languages
     - title: EN
     - url: /
-    - weight: -3
+    - weight: -1
+    - link_attributes
+      - 0
+          weight: 0
+          name: title
+          value: перейти на Английский язык
+          is_apply_translation: false
+          is_apply_tokens: false
+    - attributes
+      - 0
+          weight: 0
+          name: data-code
+          value: en
+          is_apply_translation: false
+          is_apply_tokens: false
 # ─────────────────────────────────────────────────────────────────────
 # galleries
 # ─────────────────────────────────────────────────────────────────────
