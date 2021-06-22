@@ -15,7 +15,7 @@ namespace effcore {
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $title_attributes = ['data-widget-title' => true];
   public $content_tag_name = 'x-widget-content';
-  public $content_attributes = ['data-widget-content' => true];
+  public $content_attributes = ['data-widget-content' => true, 'data-nested-content' => true];
   public $state = 'opened'; # '' | opened | closed[checked]
   public $name_complex = 'widget_items';
   public $controls = [];

@@ -26,7 +26,8 @@ namespace effcore\modules\locales {
     $menu = new markup('nav', ['aria-label' => 'languages'], ['container' => new markup('ul')]);
     foreach ($languages as $c_language) {
       $c_title = $c_language->code !== 'en' ?
-        $c_language->title_en.' / '.$c_language->title_native :
+        $c_language->title_en.' / '.
+        $c_language->title_native :
         $c_language->title_en;
       $c_href = $page->args_get('base').'/'.$c_language->code;
       if (url::is_active($c_href, 'path'))

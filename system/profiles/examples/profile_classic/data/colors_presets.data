@@ -24,7 +24,7 @@ colors_presets
       color__warning_id: state_warning
       color__error_id: state_error
       color__fieldset_id: classic_l2
-      color__fieldset_nested_id: classic_l2
+      color__fieldset_nested_id: classic_l3
       color__field_id: classic_l3
       color__field_text_id: white
       color__button_id: classic_r2

@@ -69,10 +69,12 @@
     border-top: 5px solid %%_color__main}
   fieldset [data-fieldset-content]::after {content: ''; clear: both; display: block}
 
-  [data-fieldset-content],
-  [data-fieldset-content] [data-fieldset-content]                         [data-fieldset-content] {background: %%_color__fieldset}
-  [data-fieldset-content]                                                 [data-fieldset-content],
-  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] {background: %%_color__fieldset_nested}
+  /* data-nested-content */
+
+  [data-nested-content],
+  [data-nested-content] [data-nested-content]                       [data-nested-content] {background: %%_color__fieldset}
+  [data-nested-content]                                             [data-nested-content],
+  [data-nested-content] [data-nested-content] [data-nested-content] [data-nested-content] {background: %%_color__fieldset_nested}
 
   /* field */
 
@@ -339,11 +341,6 @@
     display: block;
     padding: 10px 16px 16px 16px;
     border-top: 5px solid %%_color__main}
-
-  [data-fieldset-content]                                                                         [data-widget-content],
-  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content]                         [data-widget-content] {background: %%_color__fieldset_nested}
-  [data-fieldset-content] [data-fieldset-content]                                                 [data-widget-content],
-  [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-fieldset-content] [data-widget-content] {background: %%_color__fieldset}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0|0|0|.5}}
