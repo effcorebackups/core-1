@@ -194,8 +194,8 @@ namespace effcore {
     $relative = $this->path_get_relative();
     timer::tap('file load: '.$relative);
     if (!$reset && isset(static::$cache_data[$relative]))
-           $this->data = static::$cache_data[$relative];
-    else   $this->data = static::$cache_data[$relative] = @file_get_contents($this->path_get());
+         $this->data  =  static::$cache_data[$relative];
+    else $this->data  =  static::$cache_data[$relative] = @file_get_contents($this->path_get());
     timer::tap('file load: '.$relative);
     console::log_insert('file', 'load', $relative, 'ok',
       timer::period_get('file load: '.$relative, -1, -2)
@@ -272,28 +272,25 @@ namespace effcore {
   function lock_is_set($life_time = null) {
     if ($life_time === null)
         $life_time = static::lock_life_time;
-    $lf = new file($this->path_get_absolute().'.lock');
-    $lf_is_exists = $lf->is_exists();
-    if ($lf_is_exists === false) return static::lock_is_absent;
-    if ($lf_is_exists !== false) {
-      if (time() < (int)$lf->load() + $life_time)
+    $lock_path = $this->path_get_absolute().'.lock';
+    $lock_file_is_exists = file_exists($lock_path);
+    if ($lock_file_is_exists === false) return static::lock_is_absent;
+    if ($lock_file_is_exists !== false) {
+      if (time() < (int)@file_get_contents($lock_path) + $life_time)
            return static::lock_is_active;
       else return static::lock_was_expired;
     }
   }
 
   function lock_insert() {
-    if ($this->is_exists()) {
-      $lf = new file($this->path_get_absolute().'.lock');
-      $lf->data = time();
-      return $lf->save();
-    }
+    $lock_path = $this->path_get_absolute().'.lock';
+    return @file_put_contents($lock_path, time());
   }
 
   function lock_delete() {
-    $lf = new file($this->path_get_absolute().'.lock');
-    if ($lf->is_exists()) {
-      @unlink($lf->path_get_absolute());
+    $lock_path = $this->path_get_absolute().'.lock';
+    if (file_exists($lock_path)) {
+      @unlink($lock_path);
     }
   }  
 
