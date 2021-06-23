@@ -289,9 +289,8 @@ namespace effcore {
 
   function lock_delete() {
     $lock_path = $this->path_get_absolute().'.lock';
-    if (file_exists($lock_path)) {
-      @unlink($lock_path);
-    }
+    if (file_exists($lock_path))
+            @unlink($lock_path);
   }  
 
   ###########################

@@ -7,14 +7,25 @@
 namespace effcore {
           abstract class media {
 
-  static function container_make($src_path, $dst_path, $meta = []) {
+  const lock_life_time         = 3;
+  const lock_checks_sleep_time = 1;
+  const lock_checks_count      = 10;
+
+  static function container_make($file_path, $container_path, $meta = []) {
     try {
-      @unlink($dst_path);
-      $container = new \PharData($dst_path, 0, null, \Phar::TAR);
+      @unlink($container_path);
+      $fl = new file($container_path);
+      for ($i = 0; $i < static::lock_checks_count; $i++)
+        if ($fl->lock_is_set(static::lock_life_time) === file::lock_is_active)
+             sleep(static::lock_checks_sleep_time);
+        else break;
+      $fl->lock_insert();
+      $container = new \PharData($container_path, 0, null, \Phar::TAR);
       $container->startBuffering();
       $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
-      $container->addFile($src_path, 'original');
+      $container->addFile($file_path, 'original');
       $container->stopBuffering();
+      $fl->lock_delete();
       return $container;
     } catch (Exception $e) {
       return;
@@ -23,6 +34,12 @@ namespace effcore {
 
   static function container_file_insert($container_path, $file_path, $path_local) {
     try {
+      $fl = new file($container_path);
+      for ($i = 0; $i < static::lock_checks_count; $i++)
+        if ($fl->lock_is_set(static::lock_life_time) === file::lock_is_active)
+             sleep(static::lock_checks_sleep_time);
+        else break;
+      $fl->lock_insert();
       $container = new \PharData($container_path, 0, null, \Phar::TAR);
       $container->startBuffering();
       $meta = unserialize($container['meta']->getContent());
@@ -34,6 +51,7 @@ namespace effcore {
         $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
         $container->addFile($file_path, $path_local);
         $container->stopBuffering();
+        $fl->lock_delete();
         return $container;
       }
     } catch (Exception $e) {
