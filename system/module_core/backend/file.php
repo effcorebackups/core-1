@@ -78,6 +78,11 @@ namespace effcore {
   const scan_with_dir_at_first = ri_iterator::SELF_FIRST;
   const scan_with_dir_at_last  = ri_iterator::CHILD_FIRST;
 
+  const lock_is_absent   = 0b00;
+  const lock_is_active   = 0b01;
+  const lock_was_expired = 0b10;
+  const lock_life_time   = 3;
+
   public $protocol;
   public $dirs;
   public $name;
@@ -259,6 +264,38 @@ namespace effcore {
     );
     return $result;
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # lock
+  # ─────────────────────────────────────────────────────────────────────
+
+  function lock_is_set($life_time = null) {
+    if ($life_time === null)
+        $life_time = static::lock_life_time;
+    $lf = new file($this->path_get_absolute().'.lock');
+    $lf_is_exists = $lf->is_exists();
+    if ($lf_is_exists === false) return static::lock_is_absent;
+    if ($lf_is_exists !== false) {
+      if (time() < (int)$lf->load() + $life_time)
+           return static::lock_is_active;
+      else return static::lock_was_expired;
+    }
+  }
+
+  function lock_insert() {
+    if ($this->is_exists()) {
+      $lf = new file($this->path_get_absolute().'.lock');
+      $lf->data = time();
+      return $lf->save();
+    }
+  }
+
+  function lock_delete() {
+    $lf = new file($this->path_get_absolute().'.lock');
+    if ($lf->is_exists()) {
+      @unlink($lf->path_get_absolute());
+    }
+  }  
 
   ###########################
   ### static declarations ###
