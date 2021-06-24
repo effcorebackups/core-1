@@ -19,7 +19,7 @@ namespace effcore\modules\locales {
     }
   }
 
-  static function block_markup__menu_languages($page, $args = []) {
+  static function block_markup__tree_languages($page, $args = []) {
     $languages = language::get_all();
     core::array_sort_by_text_property($languages, 'title_en', 'd', false);
     $languages = ['en' => $languages['en']] + $languages;

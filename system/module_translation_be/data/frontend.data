@@ -1,9 +1,9 @@
 frontend
 - page_install__translation_be|frontend
     display
-      check: url
-      where: path
-      match: %^/install/[a-z]{2,2}$%
+      check: block
+      where: id
+      match: %^block__tree__languages$%
     styles
     - page_style
         path: frontend/locales.css
