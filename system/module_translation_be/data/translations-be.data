@@ -748,6 +748,7 @@ translations
     - User with this EMail was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
     - User with this EMail was not registered!: Карыстальнік з такім адрасам электроннай пошты не быў зарэгістраваны!
     - User with this nickname was already registered!: Карыстальнік з такім псеўданімам ужо быў зарэгістраваны!
+    - user: карыстальнік
     - User: Карыстальнік
     - User\: delete: Карыстальнік: выдаліць
     - User\: insert: Карыстальнік: уставіць

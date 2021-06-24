@@ -748,6 +748,7 @@ translations
     - User with this EMail was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
     - User with this EMail was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
     - User with this nickname was already registered!: Пользователь с таким псевдонимом уже был зарегистрирован!
+    - user: пользователь
     - User: Пользователь
     - User\: delete: Пользователь: удалить
     - User\: insert: Пользователь: вставить

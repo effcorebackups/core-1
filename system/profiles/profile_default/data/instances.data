@@ -259,3 +259,126 @@ instances
     - id: front
     - description: Text Front
     - text: Welcome to our site!
+# ─────────────────────────────────────────────────────────────────────
+# trees
+# ─────────────────────────────────────────────────────────────────────
+- tree_user_anonymous|instance
+    entity_name: tree
+    values
+    - id: user_anonymous
+    - title: Anonymous user's menu
+    - title_is_visible: 0
+    - is_embedded: 1
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: anonymous
+- tree_user_registered|instance
+    entity_name: tree
+    values
+    - id: user_registered
+    - title: Registered user's menu
+    - title_is_visible: 0
+    - is_embedded: 1
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: registered
+# ─────────────────────────────────────────────────────────────────────
+# tree items
+# ─────────────────────────────────────────────────────────────────────
+#
+# ── menu: user_anonymous ─────────────────────────────────────────────
+- tree_item_anonymous|instance
+    entity_name: tree_item
+    values
+    - id: anonymous
+    - id_parent: null
+    - id_tree: user_anonymous
+    - title: User
+    - access
+        roles
+        - =: anonymous
+- tree_item_login|instance
+    entity_name: tree_item
+    values
+    - id: login
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Login
+    - url: /login
+    - weight: +500
+    - access
+        roles
+        - =: anonymous
+- tree_item_registration|instance
+    entity_name: tree_item
+    values
+    - id: registration
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Registration
+    - url: /registration
+    - access
+        roles
+        - =: anonymous
+- tree_item_recovery|instance
+    entity_name: tree_item
+    values
+    - id: recovery
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Recovery
+    - url: /recovery
+    - weight: -500
+    - access
+        roles
+        - =: anonymous
+# ── menu: user_registered ────────────────────────────────────────────
+- tree_item_registered|instance
+    entity_name: tree_item
+    values
+    - id: registered
+    - id_parent: null
+    - id_tree: user_registered
+    - title: %%_nickname
+    - url: /user/%%_nickname
+    - access
+        roles
+        - =: registered
+- tree_item_user_edit|instance
+    entity_name: tree_item
+    values
+    - id: user_edit
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Edit
+    - url: /user/%%_nickname/edit
+    - weight: +500
+    - access
+        roles
+        - =: registered
+- tree_item_logout|instance
+    entity_name: tree_item
+    values
+    - id: logout
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Logout
+    - url: /logout
+    - weight: -500
+    - access
+        roles
+        - =: registered
