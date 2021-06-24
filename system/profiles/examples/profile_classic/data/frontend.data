@@ -1,4 +1,22 @@
 frontend
+- block_tree_sql_languages__profile_classic|frontend
+    display
+      check: block
+      where: id
+      match: %^block__tree_sql__languages$%
+    styles
+    - block_style__module_locales
+        path: /system/module_locales/frontend/locales.cssd
+        weight: -400
+        attributes
+        - rel: stylesheet
+        - media: all
+    - block_style__module_translation_ru
+        path: /system/module_translation_ru/frontend/locales.css
+        weight: -500
+        attributes
+        - rel: stylesheet
+        - media: all
 - page_all__profile_classic|frontend
     display
       check: url

@@ -74,8 +74,7 @@
 
   /* menu 'languages' */
 
-  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li[data-id='language_en'] > a {color: transparent; background:        url('/system/module_locales/frontend/pictures/flag-uk-mini.svg') no-repeat 50% 50%}
-  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li[data-id='language_ru'] > a {color: transparent; background: url('/system/module_translation_ru/frontend/pictures/flag-ru-mini.svg') no-repeat 50% 50%}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li a {color: black}
 
   /* social networks */
 

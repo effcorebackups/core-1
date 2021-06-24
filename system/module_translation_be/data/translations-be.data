@@ -293,8 +293,10 @@ translations
     - Glyphs: Гліфы
     - go to %%_language language: перайсці на %%_language мову
     - go to <a href="/">front page</a>: перайсці на <a href="/">галоўную старонку</a>
+    - go to English language: перайсці на Ангельску мову
     - go to page #%%_number: перайсці на старонку №%%_number
     - go to page %%_link: перайсці на старонку %%_link
+    - go to Russian language: перайсці на Рускую мову
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
     - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Група "%%_title" павінна змяшчаць як мінімум %%_number элемент%%_plural{number|au-a}!

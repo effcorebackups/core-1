@@ -1913,6 +1913,13 @@ instances
     - id: languages
     - title: Language selection menu
     - title_is_visible: 0
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: linear
+          is_apply_translation: false
+          is_apply_tokens: false
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────
@@ -2062,7 +2069,7 @@ instances
     - id: language_ru
     - id_parent: null
     - id_tree: languages
-    - title: RU
+    - title: Russian
     - url: /ru
     - weight: 0
     - link_attributes
@@ -2070,7 +2077,7 @@ instances
           weight: 0
           name: title
           value: go to Russian language
-          is_apply_translation: false
+          is_apply_translation: true
           is_apply_tokens: false
 - tree_item_language_to_en|instance
     entity_name: tree_item
@@ -2078,15 +2085,15 @@ instances
     - id: language_en
     - id_parent: null
     - id_tree: languages
-    - title: EN
+    - title: English
     - url: /
     - weight: -1
     - link_attributes
       - 0
           weight: 0
           name: title
-          value: перейти на Английский язык
-          is_apply_translation: false
+          value: go to English language
+          is_apply_translation: true
           is_apply_tokens: false
 # ─────────────────────────────────────────────────────────────────────
 # galleries
