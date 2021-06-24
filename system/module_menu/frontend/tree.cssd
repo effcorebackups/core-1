@@ -40,20 +40,15 @@
   [role='tree'][data-style~='dropdown'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
   [role='tree'][data-style~='dropdown'] ul ul ul {background-color: transparent;                     box-shadow: none}
 
-  [role='tree'][data-style~='dropdown']             a                             {color: %%_color__menu_link}
-  [role='tree'][data-style~='dropdown']             a[aria-selected      ='true'] {color: %%_color__menu_link_active}
-  [role='tree'][data-style~='dropdown']             a[data-selected-trail='true'] {color: %%_color__menu_link_active}
-  [role='tree'][data-style~='dropdown']             a:not([href])                 {color: %%_color__menu_text}
-  [role='tree'][data-style~='dropdown']             a:not([href]):hover           {color: %%_color__menu_text}
-  [role='tree'][data-style~='dropdown']       li    a:hover                       {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
-  [role='tree'][data-style~='dropdown']       li li a:hover                       {color: %%_color__menu_link_active; background-color: transparent}
-  [role='tree'][data-style~='dropdown'] ul    li:hover                            {                                   background-color: %%_color__menu_active}
-  [role='tree'][data-style~='dropdown'] ul ul li:hover                            {                                   background-color: transparent}
-
-  [role='tree'][data-style~='dropdown'] li    a[aria-selected      ='true'],
-  [role='tree'][data-style~='dropdown'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
-  [role='tree'][data-style~='dropdown'] li li a[aria-selected      ='true'],
-  [role='tree'][data-style~='dropdown'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
+  [role='tree'][data-style~='dropdown']    li a                             {color: %%_color__menu_link}
+  [role='tree'][data-style~='dropdown']    li a:not([href])                 {color: %%_color__menu_text !important}
+  [role='tree'][data-style~='dropdown']    li a:hover                       {color: %%_color__menu_link_active}
+  [role='tree'][data-style~='dropdown']    li a[aria-selected      ='true'] {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
+  [role='tree'][data-style~='dropdown']    li a[data-selected-trail='true'] {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
+  [role='tree'][data-style~='dropdown'] li li a[aria-selected      ='true'] {                                   background-color: transparent}
+  [role='tree'][data-style~='dropdown'] li li a[data-selected-trail='true'] {                                   background-color: transparent}
+  [role='tree'][data-style~='dropdown']    li:hover                         {                                   background-color: %%_color__menu_active}
+  [role='tree'][data-style~='dropdown'] li li:hover                         {                                   background-color: transparent}
 
   /* dropdown menu: adaptivity */
 
