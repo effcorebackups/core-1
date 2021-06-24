@@ -1,9 +1,9 @@
 frontend
-- tree_install__menu|frontend
+- block_tree_languages__menu|frontend
     display
-      check: url
-      where: path
-      match: %^/install/.*$%
+      check: block
+      where: cssid
+      match: %^block__tree__languages$%
     styles
     - page_style
         path: frontend/tree.cssd
