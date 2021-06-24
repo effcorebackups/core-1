@@ -1,5 +1,5 @@
 frontend
-- tree_install|frontend
+- tree_install__menu|frontend
     display
       check: url
       where: path

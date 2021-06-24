@@ -54,15 +54,16 @@ namespace effcore {
     else                 static::$cache[$row_id]->{$type}[               ] = (object)$element;
   }
 
-  static function markup_get($used_dpaths) {
+  static function markup_get($used_blocks_dpath, $used_blocks_id) {
     $result          = new \stdClass;
     $result->icons   = new node;
     $result->styles  = new node;
     $result->scripts = new node;
     foreach (static::select_all() as $c_row_id => $c_items) {
-      if (                            $c_items->display == null ||
-          static::is_visible_by_url  ($c_items->display)        ||
-          static::is_visible_by_dpath($c_items->display, $used_dpaths) ) {
+      if (                                  $c_items->display === null             ||
+          static::is_visible_by_url        ($c_items->display)                     ||
+          static::is_visible_by_block_dpath($c_items->display, $used_blocks_dpath) ||
+          static::is_visible_by_block_id   ($c_items->display, $used_blocks_id) ) {
 
       # collect favicons
         foreach ($c_items->favicons as $c_item) {
@@ -99,10 +100,16 @@ namespace effcore {
     return $result;
   }
 
-  static function is_visible_by_dpath($display, $used_dpaths) {
+  static function is_visible_by_block_dpath($display, $used_blocks_dpath) {
     return ($display->check === 'block' &&
             $display->where === 'dpath' && preg_match(
-            $display->match.'m', implode(nl, $used_dpaths)));
+            $display->match.'m', implode(nl, $used_blocks_dpath)));
+  }
+
+  static function is_visible_by_block_id($display, $used_blocks_id) {
+    return ($display->check === 'block' &&
+            $display->where === 'id'    && preg_match(
+            $display->match.'m', implode(nl, $used_blocks_id)));
   }
 
   static function is_visible_by_url($display) {
