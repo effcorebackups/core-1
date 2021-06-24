@@ -29,7 +29,7 @@ namespace effcore {
   public $_areas_pointers = [];
   protected $args              = [];
   protected $used_blocks_dpath = [];
-  protected $used_blocks_id    = [];
+  protected $used_blocks_cssid = [];
 
   function args_set($name, $value) {$this->args[$name] = $value;}
   function args_get($id = null) {
@@ -55,8 +55,8 @@ namespace effcore {
                   if ($c_area_blocks[$c_row_id]->children_select_count()) {
                     $c_area->child_insert($c_area_blocks[$c_row_id], $c_row_id);
                     if (isset($c_area_blocks[$c_row_id]->attributes['data-id']))
-                      $this->used_blocks_id[$c_area_blocks[$c_row_id]->attributes['data-id']] =
-                                            $c_area_blocks[$c_row_id]->attributes['data-id'];
+                      $this->used_blocks_cssid[$c_area_blocks[$c_row_id]->attributes['data-id']] =
+                                               $c_area_blocks[$c_row_id]->attributes['data-id'];
                     if ($c_area_blocks[$c_row_id]->type === 'link' ||
                         $c_area_blocks[$c_row_id]->type === 'copy') {
                       $this->used_blocks_dpath[] = $c_area_blocks[$c_row_id]->source;
@@ -127,7 +127,7 @@ namespace effcore {
       frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/data/global.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
     }
 
-    $frontend = frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_id);
+    $frontend = frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_cssid);
     $template->arg_set('charset',      $this    ->charset);
     $template->arg_set('head_icons',   $frontend->icons  );
     $template->arg_set('head_styles',  $frontend->styles );

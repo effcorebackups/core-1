@@ -2,7 +2,7 @@ frontend
 - block_tree_languages__translation_ru|frontend
     display
       check: block
-      where: id
+      where: cssid
       match: %^block__tree__languages$%
     styles
     - page_style

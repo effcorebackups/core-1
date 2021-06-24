@@ -54,7 +54,7 @@ namespace effcore {
     else                 static::$cache[$row_id]->{$type}[               ] = (object)$element;
   }
 
-  static function markup_get($used_blocks_dpath, $used_blocks_id) {
+  static function markup_get($used_blocks_dpath, $used_blocks_cssid) {
     $result          = new \stdClass;
     $result->icons   = new node;
     $result->styles  = new node;
@@ -63,7 +63,7 @@ namespace effcore {
       if (                                  $c_items->display === null             ||
           static::is_visible_by_url        ($c_items->display)                     ||
           static::is_visible_by_block_dpath($c_items->display, $used_blocks_dpath) ||
-          static::is_visible_by_block_id   ($c_items->display, $used_blocks_id) ) {
+          static::is_visible_by_block_cssid($c_items->display, $used_blocks_cssid) ) {
 
       # collect favicons
         foreach ($c_items->favicons as $c_item) {
@@ -106,10 +106,10 @@ namespace effcore {
             $display->match.'m', implode(nl, $used_blocks_dpath)));
   }
 
-  static function is_visible_by_block_id($display, $used_blocks_id) {
+  static function is_visible_by_block_cssid($display, $used_blocks_cssid) {
     return ($display->check === 'block' &&
-            $display->where === 'id'    && preg_match(
-            $display->match.'m', implode(nl, $used_blocks_id)));
+            $display->where === 'cssid' && preg_match(
+            $display->match.'m', implode(nl, $used_blocks_cssid)));
   }
 
   static function is_visible_by_url($display) {

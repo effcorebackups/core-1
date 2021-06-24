@@ -2,7 +2,7 @@ frontend
 - block_tree_sql_languages__profile_classic|frontend
     display
       check: block
-      where: id
+      where: cssid
       match: %^block__tree_sql__languages$%
     styles
     - block_style__module_locales
