@@ -1,5 +1,5 @@
 frontend
-- page_install__translation_ru|frontend
+- block_tree_languages__translation_ru|frontend
     display
       check: block
       where: id
