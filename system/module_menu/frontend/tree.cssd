@@ -5,58 +5,70 @@
   [role='tree'] a[aria-selected      ='true'],
   [role='tree'] a[data-selected-trail='true'] {color: %%_color__link_active}
 
-  /* menu in area 'system': orientation and dynamics */
+  /* dropdown menu: orientation and dynamics */
 
-  [data-area-id='system'] [role='tree'] {z-index: 300}
-  [data-area-id='system'] [role='tree']::after {content: ''; clear: both; display: block}
+  [role='tree'][data-style~='dropdown']       {z-index: 300}
+  [role='tree'][data-style~='dropdown']:hover {z-index: 500}
 
-  [data-area-id='system'] [role='tree'] ul    {float: left}
-  [data-area-id='system'] [role='tree'] li    {float: left}
-  [data-area-id='system'] [role='tree'] ul ul {float: none}
-  [data-area-id='system'] [role='tree'] li li {float: none}
-  [data-area-id='system'] [role='tree'] ul       ul {display: none}
-  [data-area-id='system'] [role='tree'] li:hover ul {display: block}
+  [role='tree'][data-style~='dropdown'] ul    {float: left}
+  [role='tree'][data-style~='dropdown'] ul ul {float: none}
+  [role='tree'][data-style~='dropdown'] li    {float: left}
+  [role='tree'][data-style~='dropdown'] li li {float: none}
+  [role='tree'][data-style~='dropdown']::after {
+    content: '';
+    clear: both;
+    display: block}
 
-  [data-area-id='system'] [role='tree'] ul ul    {position: absolute}
-  [data-area-id='system'] [role='tree'] ul ul ul {position: relative}
+  [role='tree'][data-style~='dropdown'] ul ul    {position: absolute}
+  [role='tree'][data-style~='dropdown'] ul ul ul {position: relative}
 
-  /* menu in area 'system': sizes */
+  [role='tree'][data-style~='dropdown'] ul       ul {display: none}
+  [role='tree'][data-style~='dropdown'] li:hover ul {display: block}
 
-  [data-area-id='system'] [role='tree'] ul       {padding: 0; margin: 0; list-style: none}
-  [data-area-id='system'] [role='tree'] ul ul    {padding: 20px}
-  [data-area-id='system'] [role='tree'] ul ul ul {padding: 0 0 0 21px}
-  [data-area-id='system'] [role='tree'] li       {padding: 0; margin: 0; cursor: default}
-  [data-area-id='system'] [role='tree'] li     a {padding: 21px; display: block}
-  [data-area-id='system'] [role='tree'] li li  a {padding: 0}
+  /* dropdown menu: sizes */
 
-  /* menu in area 'system': colors */
+  [role='tree'][data-style~='dropdown'] ul,
+  [role='tree'][data-style~='dropdown'] li {margin: 0; padding: 0; list-style: none; cursor: default}
+  [role='tree'][data-style~='dropdown'] ul ul    {padding: 20px}
+  [role='tree'][data-style~='dropdown'] ul ul ul {padding: 0 0 0 21px}
+  [role='tree'][data-style~='dropdown'] li     a {padding: 21px; display: block}
+  [role='tree'][data-style~='dropdown'] li li  a {padding: 0}
 
-  [data-area-id='system'] [role='tree'] ul       {background-color: %%_color__menu}
-  [data-area-id='system'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
-  [data-area-id='system'] [role='tree'] ul ul ul {background-color: transparent;                     box-shadow: none}
+  /* dropdown menu: colors */
 
-  [data-area-id='system'] [role='tree']             a[aria-selected      ='true'],
-  [data-area-id='system'] [role='tree']             a[data-selected-trail='true'] {color: %%_color__menu_link_active}
-  [data-area-id='system'] [role='tree']             a:not([href])                 {color: %%_color__menu_text !important}
-  [data-area-id='system'] [role='tree']             a                             {color: %%_color__menu_link}
-  [data-area-id='system'] [role='tree']       li    a:hover                       {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
-  [data-area-id='system'] [role='tree']       li li a:hover                       {color: %%_color__menu_link_active; background-color: transparent}
-  [data-area-id='system'] [role='tree'] ul    li:hover                            {                                   background-color: %%_color__menu_active}
-  [data-area-id='system'] [role='tree'] ul ul li:hover                            {                                   background-color: transparent}
+  [role='tree'][data-style~='dropdown'] ul       {background-color: %%_color__menu}
+  [role='tree'][data-style~='dropdown'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
+  [role='tree'][data-style~='dropdown'] ul ul ul {background-color: transparent;                     box-shadow: none}
 
-  [data-area-id='system'] [role='tree'] li    a[aria-selected      ='true'],
-  [data-area-id='system'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
-  [data-area-id='system'] [role='tree'] li li a[aria-selected      ='true'],
-  [data-area-id='system'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
+  [role='tree'][data-style~='dropdown']             a                             {color: %%_color__menu_link}
+  [role='tree'][data-style~='dropdown']             a[aria-selected      ='true'] {color: %%_color__menu_link_active}
+  [role='tree'][data-style~='dropdown']             a[data-selected-trail='true'] {color: %%_color__menu_link_active}
+  [role='tree'][data-style~='dropdown']             a:not([href])                 {color: %%_color__menu_text}
+  [role='tree'][data-style~='dropdown']             a:not([href]):hover           {color: %%_color__menu_text}
+  [role='tree'][data-style~='dropdown']       li    a:hover                       {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
+  [role='tree'][data-style~='dropdown']       li li a:hover                       {color: %%_color__menu_link_active; background-color: transparent}
+  [role='tree'][data-style~='dropdown'] ul    li:hover                            {                                   background-color: %%_color__menu_active}
+  [role='tree'][data-style~='dropdown'] ul ul li:hover                            {                                   background-color: transparent}
 
-  /* menu in area 'system': adaptivity */
+  [role='tree'][data-style~='dropdown'] li    a[aria-selected      ='true'],
+  [role='tree'][data-style~='dropdown'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
+  [role='tree'][data-style~='dropdown'] li li a[aria-selected      ='true'],
+  [role='tree'][data-style~='dropdown'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
+
+  /* dropdown menu: adaptivity */
 
   @media screen and (max-width: 600px) {
     [data-area-id='system'] [data-block][data-id^='block__tree_'] {float: none}
-    [data-area-id='system'] [role='tree'] ul    {float: none; display: block}
-    [data-area-id='system'] [role='tree'] li    {float: none; display: block}
-    [data-area-id='system'] [role='tree'] ul ul {position: relative}
+    [role='tree'][data-style~='dropdown'] ul {float: none; display: block}
+    [role='tree'][data-style~='dropdown'] li {float: none; display: block}
+    [role='tree'][data-style~='dropdown'] ul ul {position: relative}
   }
+
+  /* menu 'system': icons */
+
+  [role='tree'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color__menu_link !important}
+  [role='tree'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
+  [role='tree'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* menu visualization for management */
 

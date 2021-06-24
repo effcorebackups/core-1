@@ -1855,18 +1855,39 @@ instances
     - id: main
     - title: Main menu
     - title_is_visible: 0
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
 - tree_main_ru|instance
     entity_name: tree
     values
     - id: main_ru
     - title: Меню главное
     - title_is_visible: 0
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
 - tree_user_registered_ru|instance
     entity_name: tree
     values
     - id: user_registered_ru
     - title: Меню зарегистрированного пользователя
     - title_is_visible: 0
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
     - access
         roles
         - =: registered
@@ -1876,6 +1897,13 @@ instances
     - id: user_anonymous_ru
     - title: Меню анонимного пользователя
     - title_is_visible: 0
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
     - access
         roles
         - =: anonymous

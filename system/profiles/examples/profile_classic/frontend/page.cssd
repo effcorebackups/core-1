@@ -57,63 +57,25 @@
     %%_return_if_token{color__page|transparent|background-color: rgba(0,0,0,.1)|}
   }
 
-  /* menu in area 'menu': orientation and dynamics */
+  /* menu 'main' */
 
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    {display: inline-block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    {display: inline-block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li {display: block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li       ul {display: none}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li:hover ul {display: block}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='main'] {margin: 20px 0}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul    {border-radius: 30px; overflow: hidden}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul ul {margin-top: -10px; border-radius: 10px; overflow: hidden}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul    li:not(:last-child) > a {border-right: 1px dotted white}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul ul li:not(:last-child) > a {border-right: none}
 
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {position: absolute}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {position: relative}
-
-  /* menu in area 'menu': sizes */
-
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']          {margin: 20px 0}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       {padding: 0; margin: 0; list-style: none; border-radius: 30px; overflow: hidden}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {padding: 20px;        margin-top: -10px; border-radius: 10px; overflow: hidden}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {padding: 0 0 0 21px;  margin-top:   0  }
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li       {padding: 0; margin: 0; cursor: default}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li     a {padding: 21px; display: block}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li  a {padding: 0}
-
-  /* menu in area 'menu': colors */
-
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul       {background-color: %%_color__menu}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul    {background-color: %%_color__menu_active{10|10|10}; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .2)}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul ul {background-color: transparent;                     box-shadow: none}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:not(:last-child) > a {border-right: 1px dotted white}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:not(:last-child) > a {border-right: none}
-
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a[aria-selected      ='true'],
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a[data-selected-trail='true'] {color: %%_color__menu_link_active}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a:not([href])                 {color: %%_color__menu_text !important}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']             a                             {color: %%_color__menu_link}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li    a:hover                       {color: %%_color__menu_link_active; background-color: %%_color__menu_active}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree']       li li a:hover                       {color: %%_color__menu_link_active; background-color: transparent}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:hover                            {                                   background-color: %%_color__menu_active}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:hover                            {                                   background-color: transparent}
-
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[aria-selected      ='true'],
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li    a[data-selected-trail='true'] {background-color: %%_color__menu_active{5|5|5}}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[aria-selected      ='true'],
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li li a[data-selected-trail='true'] {background-color: transparent; color: %%_color__menu_link_active}
-
-  /* menu in area 'menu': icons */
-
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li[data-id='language_en'] > a {color: transparent; background:        url('/system/module_locales/frontend/pictures/flag-uk-mini.svg') no-repeat 50% 50%}
-  [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li[data-id='language_ru'] > a {color: transparent; background: url('/system/module_translation_ru/frontend/pictures/flag-ru-mini.svg') no-repeat 50% 50%}
-
-  /* menu in area 'menu': adaptivity */
+  /* menu 'main': adaptivity */
 
   @media screen and (max-width: 600px) {
-    [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul {display: block}
-    [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] li {display: block}
-    [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul {position: relative}
-    [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul    li:not(:last-child) > a {border-bottom: 1px dotted white; border-right: none}
-    [data-layout-id='original_classic'] [data-area-id='menu'] [role='tree'] ul ul li:not(:last-child) > a {border-bottom: none}
+    [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul    li:not(:last-child) > a {border-bottom: 1px dotted white; border-right: none}
+    [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul ul li:not(:last-child) > a {border-bottom: none}
   }
+
+  /* menu 'languages' */
+
+  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li[data-id='language_en'] > a {color: transparent; background:        url('/system/module_locales/frontend/pictures/flag-uk-mini.svg') no-repeat 50% 50%}
+  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li[data-id='language_ru'] > a {color: transparent; background: url('/system/module_translation_ru/frontend/pictures/flag-ru-mini.svg') no-repeat 50% 50%}
 
   /* social networks */
 

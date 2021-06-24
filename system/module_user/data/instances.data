@@ -694,6 +694,13 @@ instances
     - title: Registered user's menu
     - title_is_visible: 0
     - is_embedded: 1
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
     - access
         roles
         - =: registered
@@ -704,6 +711,13 @@ instances
     - title: Anonymous user's menu
     - title_is_visible: 0
     - is_embedded: 1
+    - attributes
+      - 0
+          weight: 0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
     - access
         roles
         - =: anonymous

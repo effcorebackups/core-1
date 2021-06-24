@@ -3,6 +3,8 @@ trees
     id: system
     title: System menu
     title_is_visible: 0
+    attributes
+    - data-style: dropdown
     access
       roles
       - =: registered
