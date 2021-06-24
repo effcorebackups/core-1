@@ -1,4 +1,3 @@
 
-  nav[aria-label='languages'] li[data-code='ru'] {
-    padding-left: 40px;
+  [role='tree'][data-id='languages'] li[data-id='language_ru'] {
     background: url('pictures/flag-ru-mini.svg') no-repeat 0 2px}

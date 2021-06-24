@@ -2072,13 +2072,6 @@ instances
           value: go to Russian language
           is_apply_translation: false
           is_apply_tokens: false
-    - attributes
-      - 0
-          weight: 0
-          name: data-code
-          value: ru
-          is_apply_translation: false
-          is_apply_tokens: false
 - tree_item_language_to_en|instance
     entity_name: tree_item
     values
@@ -2093,13 +2086,6 @@ instances
           weight: 0
           name: title
           value: перейти на Английский язык
-          is_apply_translation: false
-          is_apply_tokens: false
-    - attributes
-      - 0
-          weight: 0
-          name: data-code
-          value: en
           is_apply_translation: false
           is_apply_tokens: false
 # ─────────────────────────────────────────────────────────────────────

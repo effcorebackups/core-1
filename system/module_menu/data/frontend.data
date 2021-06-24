@@ -1,4 +1,16 @@
 frontend
+- tree_install|frontend
+    display
+      check: url
+      where: path
+      match: %^/install/.*$%
+    styles
+    - page_style
+        path: frontend/tree.cssd
+        weight: +400
+        attributes
+        - rel: stylesheet
+        - media: all
 - tabs_all__menu|frontend
     display
       check: block

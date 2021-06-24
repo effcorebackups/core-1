@@ -1,18 +1,7 @@
 
-  nav[aria-label='languages'] {display: block; margin: 15px 0}
-  nav[aria-label='languages'] ul {margin: 0; padding: 0; list-style: none}
-
-  nav[aria-label='languages'] li {
-    display: inline-block;
-    padding-left: 40px;
+  [role='tree'][data-id='languages'] li {
+    padding-left: 40px !important;
     background: url('pictures/flag-neutral-mini.svg') no-repeat 0 2px}
-  nav[aria-label='languages'] li:not(:last-child) {
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: 1px dotted %%_color__main}
 
-  nav[aria-label='languages'] li[data-code='en'] {
+  [role='tree'][data-id='languages'] li[data-id='language_en'] {
     background: url('pictures/flag-uk-mini.svg') no-repeat 0 2px}
-
-  nav[aria-label='languages'] [aria-current='true'] {
-    color: %%_color__link_active}
