@@ -2063,22 +2063,6 @@ instances
     - url: /ru/contact
     - weight: -2
 # ── menu: languages ──────────────────────────────────────────────────
-- tree_item_language_to_ru|instance
-    entity_name: tree_item
-    values
-    - id: language_ru
-    - id_parent: null
-    - id_tree: languages
-    - title: Russian
-    - url: /ru
-    - weight: 0
-    - link_attributes
-      - 0
-          weight: 0
-          name: title
-          value: go to Russian language
-          is_apply_translation: true
-          is_apply_tokens: false
 - tree_item_language_to_en|instance
     entity_name: tree_item
     values
@@ -2087,12 +2071,28 @@ instances
     - id_tree: languages
     - title: English
     - url: /
-    - weight: -1
+    - weight: 0
     - link_attributes
       - 0
           weight: 0
           name: title
           value: go to English language
+          is_apply_translation: true
+          is_apply_tokens: false
+- tree_item_language_to_ru|instance
+    entity_name: tree_item
+    values
+    - id: language_ru
+    - id_parent: null
+    - id_tree: languages
+    - title: Russian
+    - url: /ru
+    - weight: -1
+    - link_attributes
+      - 0
+          weight: 0
+          name: title
+          value: go to Russian language
           is_apply_translation: true
           is_apply_tokens: false
 # ─────────────────────────────────────────────────────────────────────
