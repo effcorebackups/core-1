@@ -104,7 +104,7 @@ namespace effcore {
       'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                              ],
       'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '-'],
       'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '-'] ]];
-    return new block('Current page information', ['data-id' => 'block__info', 'data-title-is-styled' => 'false'], [$decorator]);
+    return new block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
   }
 
   static function block_markup__diagram_load() {
@@ -152,7 +152,7 @@ namespace effcore {
         'action'      => ['title' => 'Action',      'value' =>             new text($c_log->action,      $c_log->args)],
         'description' => ['title' => 'Description', 'value' => !$c_stack ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, $c_stack_opener, $c_stack], $c_log->args, '')],
         'value'       => ['title' => 'Val.',        'value' =>             new text($c_log->value                    )] ]; }
-    return new block('Execution plan', ['data-id' => 'block__logs', 'data-title-is-styled' => 'false'], [$decorator, new markup('x-total', [], [
+    return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-param', ['data-id' => 'dhash'], [new markup('x-title', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])])

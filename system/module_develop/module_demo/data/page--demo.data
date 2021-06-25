@@ -90,7 +90,7 @@ pages
           title: Decorators static
           attributes
           - data-id: block__demo_decorators_static
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -101,7 +101,7 @@ pages
           title: Decorators dynamic
           attributes
           - data-id: block__demo_decorators_dynamic
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -153,7 +153,7 @@ pages
           title: Selection of "demo_data" entities + join (ID: 100+)
           attributes
           - data-id: block__demo_selection_demo_join_1
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -166,7 +166,7 @@ pages
           title: Selection of "demo_data" entities + join (ID: 200+)
           attributes
           - data-id: block__demo_selection_demo_join_2
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -196,7 +196,7 @@ pages
           title: Selection of "demo_types" entities
           attributes
           - data-id: block__demo_selection_demo_types
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: type

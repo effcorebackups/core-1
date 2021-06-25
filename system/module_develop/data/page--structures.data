@@ -65,7 +65,7 @@ pages
           title: UML Diagram
           attributes
           - data-id: block__structures_diagram
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           display
             check: page_args
             where: view

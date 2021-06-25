@@ -42,13 +42,13 @@ pages
           title: Service
           attributes
           - data-id: block__service_info
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           type: code
           source: \effcore\modules\core\events_page_info::block_markup__service_info
       - block__environment_info|block
           title: Server
           attributes
           - data-id: block__environment_info
-          - data-title-is-styled|_string_false
+          - data-style: title-is-simple
           type: code
           source: \effcore\modules\core\events_page_info::block_markup__environment_info
