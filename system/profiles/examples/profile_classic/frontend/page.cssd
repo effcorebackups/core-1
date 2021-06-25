@@ -74,7 +74,8 @@
 
   /* menu 'languages' */
 
-  [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li a {color: black}
+  [data-layout-id='original_classic'] [data-area-id='system'] [role='tree'][data-id^='languages'] {margin: 20px}
+  [data-layout-id='original_classic'] [data-area-id='system'] [role='tree'][data-id^='languages'] li a {color: black}
 
   /* social networks */
 
