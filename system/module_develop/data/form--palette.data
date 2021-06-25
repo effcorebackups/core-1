@@ -44,7 +44,7 @@ forms
             - data|markup
                 tag_name: x-document
                 attributes
-                - data-type: report
+                - data-style: report
                 children
                 - data|text
                     text: The report will be created after submitting the form.

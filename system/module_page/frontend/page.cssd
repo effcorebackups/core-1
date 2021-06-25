@@ -369,9 +369,22 @@
   x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}
   x-document h2 {margin: 2em 0 1em 0; font-size: 1.3em}
 
-  x-document[data-type='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px}
-  x-document[data-type='report'] p:first-child {margin-top:    0}
-  x-document[data-type='report'] p:last-child  {margin-bottom: 0}
+  /* note: CSS4 margin-left: calc(20px * attr(data-depth number, 0)) */
+
+  x-document[data-style~='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px}
+  x-document[data-style~='report'] p:first-child {margin-top:    0}
+  x-document[data-style~='report'] p:last-child  {margin-bottom: 0}
+  x-document[data-style~='report'] p[data-depth='1'] {margin-left:  15px}
+  x-document[data-style~='report'] p[data-depth='2'] {margin-left:  30px}
+  x-document[data-style~='report'] p[data-depth='3'] {margin-left:  45px}
+  x-document[data-style~='report'] p[data-depth='4'] {margin-left:  60px}
+  x-document[data-style~='report'] p[data-depth='5'] {margin-left:  75px}
+  x-document[data-style~='report'] p[data-depth='6'] {margin-left:  90px}
+  x-document[data-style~='report'] p[data-depth='7'] {margin-left: 105px}
+  x-document[data-style~='report'] p[data-depth='8'] {margin-left: 120px}
+  x-document[data-style~='report'] p[data-depth='9'] {margin-left: 135px}
+
+  x-document[data-style~='license'] {}
 
   /* x-file-path */
 

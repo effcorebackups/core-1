@@ -41,7 +41,7 @@ namespace effcore\modules\core {
         $c_button_repo_restore->value_set('repo_restore_'.$c_bundle->id);
         $c_button_repo_restore->_type = 'repo_restore';
         $c_button_repo_restore->_id = $c_bundle->id;
-        $c_report = new markup('x-document', ['data-type' => 'report'], new text('The report will be created after submitting the form.'));
+        $c_report = new markup('x-document', ['data-style' => 'report'], new text('The report will be created after submitting the form.'));
         $c_fieldset = new fieldset($c_bundle->title);
         $c_fieldset->child_insert($c_report, 'report');
         $c_fieldset->child_insert($c_button_update, 'button_update');

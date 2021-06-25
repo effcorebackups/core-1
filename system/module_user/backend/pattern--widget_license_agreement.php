@@ -21,7 +21,7 @@ namespace effcore {
     # text of license agreement
       $language = language::get(language::code_get_current());
       $license_file = new file($language->license_path ?: dir_root.'license.md');
-      $license_markup = new markup('x-document', ['data-type' => 'license'], markdown::markdown_to_markup($license_file->load()));
+      $license_markup = new markup('x-document', ['data-style' => 'license'], markdown::markdown_to_markup($license_file->load()));
       $wrapper->child_insert($license_markup, 'license');
     # switcher 'agree to license agreement'
       $switcher_agree = new field_switcher($this->text_agree);
