@@ -582,14 +582,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -620,7 +620,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_contact|instance
     entity_name: page
     values
@@ -642,14 +642,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -682,7 +682,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_front|instance
     entity_name: page
     values
@@ -704,14 +704,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -744,7 +744,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_gallery|instance
     entity_name: page
     values
@@ -766,14 +766,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -803,7 +803,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_login|instance
     entity_name: page
     values
@@ -826,7 +826,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -859,7 +859,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_logout|instance
     entity_name: page
     values
@@ -884,7 +884,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -917,7 +917,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_recovery|instance
     entity_name: page
     values
@@ -940,7 +940,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -973,7 +973,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_registration|instance
     entity_name: page
     values
@@ -996,7 +996,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1029,7 +1029,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_user|instance
     entity_name: page
     values
@@ -1055,7 +1055,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1088,7 +1088,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_user_edit|instance
     entity_name: page
     values
@@ -1114,7 +1114,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1147,7 +1147,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 # ─────────────────────────────────────────────────────────────────────
 - page_about_ru|instance
     entity_name: page
@@ -1171,14 +1171,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1212,7 +1212,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_contact_ru|instance
     entity_name: page
     values
@@ -1235,14 +1235,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1279,7 +1279,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_front_ru|instance
     entity_name: page
     values
@@ -1302,14 +1302,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1346,7 +1346,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_gallery_ru|instance
     entity_name: page
     values
@@ -1369,14 +1369,14 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1409,7 +1409,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_login_ru|instance
     entity_name: page
     values
@@ -1432,7 +1432,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1470,7 +1470,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_logout_ru|instance
     entity_name: page
     values
@@ -1496,7 +1496,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1534,7 +1534,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_recovery_ru|instance
     entity_name: page
     values
@@ -1557,7 +1557,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1595,7 +1595,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_registration_ru|instance
     entity_name: page
     values
@@ -1618,7 +1618,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1656,7 +1656,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_user_ru|instance
     entity_name: page
     values
@@ -1683,7 +1683,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1721,7 +1721,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 - page_user_edit_ru|instance
     entity_name: page
     values
@@ -1748,7 +1748,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__tree_sql__user_registered
-            - data-at-right: true
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1786,7 +1786,7 @@ instances
             attributes
             - data-block: true
             - data-id: block__text_sql__copyright
-            - data-at-left: true
+            - data-style: at-left
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────

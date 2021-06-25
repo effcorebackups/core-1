@@ -8,6 +8,6 @@ block_presets
     attributes
     - data-block: true
     - data-id: block__selection__social_networks
-    - data-at-right: true
+    - data-style: at-right
     type: link
     source: selections/profile_classic/social_networks

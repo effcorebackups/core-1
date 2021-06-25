@@ -174,11 +174,17 @@
     x-table[data-style~='compact'] x-cell:last-child  {padding-bottom: 14px}
   }
 
+  /* helper classes */
+
+  [data-style~='code-editor'] {font-family: monospace}
+  [data-style~='at-left'] {float: left}
+  [data-style~='at-right'] {float: right}
+
   /* block */
 
-  [data-block] {display: block; margin: 0}
-  [data-block][data-at-left] {float: left}
-  [data-block][data-at-right] {float: right}
+  [data-block] {
+    display: block;
+    margin: 0}
 
   [data-block-title] {
     display: block;

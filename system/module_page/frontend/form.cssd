@@ -114,12 +114,6 @@
     vertical-align: top;
     background: %%_color__error}
 
-  /* helper classes */
-
-  [data-style~='code-editor'] {
-    font-family: monospace;
-  }
-
   /* inputs */
 
   input,
