@@ -590,6 +590,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -600,9 +607,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -650,6 +654,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -660,9 +671,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -712,6 +720,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -722,9 +737,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -774,6 +786,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -784,9 +803,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -827,6 +843,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -837,9 +860,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -885,6 +905,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -895,9 +922,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -941,6 +965,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -951,9 +982,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -997,6 +1025,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1007,9 +1042,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1056,6 +1088,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1066,9 +1105,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1115,6 +1151,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
       - header
@@ -1125,9 +1168,6 @@ instances
         - block__tree_sql__main|block_preset_link
             id: block__tree_sql__main
             title: Main menu
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Language selection menu
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1179,6 +1219,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1190,9 +1237,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1243,6 +1287,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1254,9 +1305,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1310,6 +1358,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1321,9 +1376,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1377,6 +1429,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1388,9 +1447,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - messages
         - block__messages|block_preset_link
             id: block__messages
@@ -1433,6 +1489,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1444,9 +1507,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1497,6 +1557,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1508,9 +1575,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1558,6 +1622,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1569,9 +1640,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1619,6 +1687,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1630,9 +1705,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_anonymous|block_preset_link
             id: block__breadcrumbs__user_anonymous
@@ -1684,6 +1756,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1695,9 +1774,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -1749,6 +1825,13 @@ instances
             - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-block: true
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
         - block__tree__system|block_preset_link
             id: block__tree__system
             title: Системное меню
@@ -1760,9 +1843,6 @@ instances
         - block__tree_sql__main_ru|block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
-        - block__tree_sql__languages|block_preset_link
-            id: block__tree_sql__languages
-            title: Меню выбора языка
       - breadcrumbs
         - block__breadcrumbs__user_registered|block_preset_link
             id: block__breadcrumbs__user_registered
@@ -2011,7 +2091,7 @@ instances
     - id: anonymous_ru
     - id_parent: null
     - id_tree: user_anonymous_ru
-    - title: Аноним
+    - title: Пользователь
     - access
         roles
         - =: anonymous
