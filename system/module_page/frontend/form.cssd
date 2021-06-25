@@ -125,7 +125,6 @@
   input,
   textarea,
   select {
-    appearance: none; -webkit-appearance: none; -moz-appearance: none;
     margin: 5px 0;
     padding: 10px;
     border: 1px solid %%_color__main;
@@ -134,7 +133,8 @@
     font-size: 16px;
     vertical-align: middle;
     color: %%_color__field_text;
-    background-color: %%_color__field}
+    background-color: %%_color__field;
+    appearance: none; -webkit-appearance: none; -moz-appearance: none}
   select {cursor: pointer}
   select option {color: %%_color__field_text}
   textarea {display: block; box-sizing: border-box; width: 100%; min-width: 100px}
@@ -241,7 +241,7 @@
 
   x-field[aria-disabled='true']   {opacity: .3}
   x-field[aria-disabled='true'] * {cursor: default !important}
-  button:disabled {cursor: default; opacity: .3}
+         button:disabled {cursor: default; opacity: .3}
   select option:disabled {color: %%_color__field_text{0|0|0|.5}}
 
   /* checkbox color */
@@ -320,27 +320,19 @@
   x-widgets-group {display: block}
   x-widget {display: block}
 
-  x-widget[data-controls-is-inline] x-field {
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle}
-
-  x-widget[data-controls-is-inline-full] x-field                    {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full] x-field [data-field-title] {display: inline-block; margin: 2px 10px 2px 0; vertical-align: middle}
-  x-widget[data-controls-is-inline-full] x-field input {margin: 0}
-  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] {margin-right: 10px}
-  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
-  x-widget[data-controls-is-inline-full] x-field[data-type='checkbox'] input {margin-right: 5px}
+  x-widget[data-style~='inline'] x-field                    {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
+  x-widget[data-style~='inline'] x-field [data-field-title] {display: inline-block; margin: 2px 10px 2px 0; vertical-align: middle}
+  x-widget[data-style~='inline'] x-field input {margin: 0}
+  x-widget[data-style~='inline'] x-field[data-type='checkbox'] {margin-right: 10px}
+  x-widget[data-style~='inline'] x-field[data-type='checkbox'] [data-field-title] {margin: 0}
+  x-widget[data-style~='inline'] x-field[data-type='checkbox'] input {margin-right: 5px}
 
   /* widget 'items' */
 
   x-widget[data-type^='items'] {margin: 30px 0}
   x-widget[data-type^='items'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   x-widget[data-type^='items'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
-  x-widget[data-type^='items']                     > [data-widget-content] {
-    display: block;
-    padding: 10px 16px 16px 16px;
-    border-top: 5px solid %%_color__main}
+  x-widget[data-type^='items']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid %%_color__main}
 
   x-widget[data-type^='items'] x-widgets-group[data-type='manage']:not(:empty) {margin-bottom: 30px}
   x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget {padding: 10px 0; border-bottom: 1px dotted %%_color__main{0|0|0|.5}}
@@ -393,12 +385,19 @@
 
   /* form 'instance_select_multiple' */
 
-  form#instance_select_multiple button[value='insert'] {float: right; position: relative; z-index: 10; margin-top: 27px}
   form#instance_select_multiple x-selection {margin: 100px 0}
+  form#instance_select_multiple button[value='insert'] {
+    float: right;
+    position: relative;
+    z-index: 10;
+    margin-top: 27px}
 
   /* form 'modules_update_files' */
 
-  form#modules_update_files button[value^='repo_restore_'] {float: right; margin-right: 0; margin-left: 20px}
+  form#modules_update_files button[value^='repo_restore_'] {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px}
 
   /* form 'cache_update' */
 

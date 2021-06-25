@@ -133,9 +133,9 @@ namespace effcore {
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = new markup('x-widget', [
-      'data-rowid'                   => $c_row_id,
-      'data-rearrangeable'           => true,
-      'data-controls-is-inline-full' => true], [], $item->weight);
+      'data-rowid'         => $c_row_id,
+      'data-rearrangeable' => true,
+      'data-style'         => 'inline'], [], $item->weight);
   # control for weight
     $field_weight = new field_weight(null, null, [], +500);
     $field_weight->description_state = 'hidden';
