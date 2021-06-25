@@ -35,8 +35,8 @@ namespace effcore\modules\core {
     $settings           = module::settings_get('core');
     $is_required_update = update::is_required();
     $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
-    $is_required_update_sticker = new markup('x-sticker', ['data-state' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? 'yes' : 'no');
-    $cron_last_run_sticker      = new markup('x-sticker', ['data-state' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
+    $is_required_update_sticker = new markup('x-sticker', ['data-style' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? 'yes' : 'no');
+    $cron_last_run_sticker      = new markup('x-sticker', ['data-style' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/manage/cron/'.core::key_get('cron')], '/manage/cron/'.core::key_get('cron'));
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
@@ -53,7 +53,7 @@ namespace effcore\modules\core {
     $storage_sql = storage::get('sql');
     $php_version_curl = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
     $is_enabled_opcache = function_exists('opcache_get_status') && !empty(@opcache_get_status(false)['opcache_enabled']);
-    $is_enabled_opcache_sticker = new markup('x-sticker', ['data-state' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
+    $is_enabled_opcache_sticker = new markup('x-sticker', ['data-style' => $is_enabled_opcache ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[

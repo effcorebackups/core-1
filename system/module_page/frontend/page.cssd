@@ -314,9 +314,9 @@
     color: black;
     background-color: silver}
   x-sticker a {color: black}
-  x-sticker[data-state='ok'     ] {background: %%_color__ok}
-  x-sticker[data-state='warning'] {background: %%_color__warning}
-  x-sticker[data-state='error'  ] {background: %%_color__error}
+  x-sticker[data-style~='ok'     ] {background: %%_color__ok}
+  x-sticker[data-style~='warning'] {background: %%_color__warning}
+  x-sticker[data-style~='error'  ] {background: %%_color__error}
 
   x-module-info x-sticker {padding: 3px 7px 2px 7px; line-height: 1em; font-size: .8em}
   x-module-info x-sticker x-version::before {content: 'v'}
