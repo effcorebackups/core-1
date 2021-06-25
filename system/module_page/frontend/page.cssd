@@ -42,7 +42,7 @@
 
   a                             {color: %%_color__link}
   a[href]:hover                 {color: %%_color__link_active}
-  a[aria-selected='true']       {color: %%_color__link_active}
+  a[aria-selected      ='true'] {color: %%_color__link_active}
   a[data-selected-trail='true'] {color: %%_color__link_active}
 
   /* pictures */
@@ -103,12 +103,12 @@
   table thead [data-cellid='actions'] {width: 1%}
   table tbody [data-cellid='actions']:empty::after {content: ''}
 
-  table[data-compact] {font-size: .9em}
-  table[data-compact] thead th {padding: 12px 7px}
-  table[data-compact] thead th:first-child {padding-left:  17px}
-  table[data-compact]       td             {padding:    3px 7px}
-  table[data-compact]       td:first-child {padding-left:  17px}
-  table[data-compact]       td:last-child  {padding-right: 17px}
+  table[data-style~='compact'] {font-size: .9em}
+  table[data-style~='compact'] thead th {padding: 12px 7px}
+  table[data-style~='compact'] thead th:first-child {padding-left:  17px}
+  table[data-style~='compact']       td             {padding:    3px 7px}
+  table[data-style~='compact']       td:first-child {padding-left:  17px}
+  table[data-style~='compact']       td:last-child  {padding-right: 17px}
 
   /* x-table (adaptive table) */
 
@@ -138,11 +138,11 @@
   x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: 30%; background-color: %%_color__table_row_odd; border-right: 5px solid %%_color__main}
   x-table[data-view-type='table-dl'] x-cell[data-role='value'] {width: 70%; background-color: %%_color__table_row_even}
 
-  x-table[data-compact] {font-size: .9em}
-  x-table[data-compact] x-head x-cell {padding-top: 12px; padding-bottom: 12px}
-  x-table[data-compact]        x-cell {padding: 3px 7px}
-  x-table[data-compact]        x-cell:first-child {padding-left: 17px}
-  x-table[data-compact]        x-cell:last-child {padding-right: 17px}
+  x-table[data-style~='compact'] {font-size: .9em}
+  x-table[data-style~='compact'] x-head x-cell {padding-top: 12px; padding-bottom: 12px}
+  x-table[data-style~='compact']        x-cell {padding: 3px 7px}
+  x-table[data-style~='compact']        x-cell:first-child {padding-left: 17px}
+  x-table[data-style~='compact']        x-cell:last-child {padding-right: 17px}
 
   @media screen and (max-width: 600px) {
     x-table                      {display: block}
@@ -169,9 +169,9 @@
     x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell {background-color: %%_color__table_row_odd}
     x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell {background-color: %%_color__table_row_even}
 
-    x-table[data-compact] x-cell             {padding:    3px 15px}
-    x-table[data-compact] x-cell:first-child {padding-top:    14px}
-    x-table[data-compact] x-cell:last-child  {padding-bottom: 14px}
+    x-table[data-style~='compact'] x-cell             {padding:    3px 15px}
+    x-table[data-style~='compact'] x-cell:first-child {padding-top:    14px}
+    x-table[data-style~='compact'] x-cell:last-child  {padding-bottom: 14px}
   }
 
   /* block */

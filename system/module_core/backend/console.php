@@ -129,7 +129,7 @@ namespace effcore {
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->id = 'logs';
-    $decorator->result_attributes = ['data-compact' => true];
+    $decorator->result_attributes = ['data-style' => 'compact'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
       $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
