@@ -10,7 +10,7 @@ forms
         - content|field_textarea
             title: Content of the "global.css" file
             element_attributes
-            - data-is-code-editor: true
+            - data-style: code-editor
             - name: content
             - required: false
             - minlength: null

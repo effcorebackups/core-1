@@ -116,7 +116,7 @@
 
   /* helper classes */
 
-  [data-is-code-editor] {
+  [data-style~='code-editor'] {
     font-family: monospace;
   }
 
