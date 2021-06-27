@@ -11,8 +11,8 @@
   [role='tree'][data-style~='dropdown']:hover {z-index: 500}
 
   [role='tree'][data-style~='dropdown'] ul    {float: left}
-  [role='tree'][data-style~='dropdown'] ul ul {float: none}
   [role='tree'][data-style~='dropdown'] li    {float: left}
+  [role='tree'][data-style~='dropdown'] ul ul {float: none}
   [role='tree'][data-style~='dropdown'] li li {float: none}
   [role='tree'][data-style~='dropdown']::after {
     content: '';
@@ -22,7 +22,7 @@
   [role='tree'][data-style~='dropdown'] ul ul    {position: absolute}
   [role='tree'][data-style~='dropdown'] ul ul ul {position: relative}
 
-  [role='tree'][data-style~='dropdown'] ul       ul {display: none}
+  [role='tree'][data-style~='dropdown'] li       ul {display: none}
   [role='tree'][data-style~='dropdown'] li:hover ul {display: block}
 
   /* dropdown menu: sizes */
