@@ -59,6 +59,12 @@
     [role='tree'][data-style~='dropdown'] ul ul {position: relative}
   }
 
+  /* dropdown menu 'system': icons */
+
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color__menu_link !important}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0  -64px}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0 -128px}
+
   /* linear menu */
 
   [role='tree'][data-style~='linear'] {margin: 15px 0}
@@ -76,12 +82,6 @@
   [role='tree'][data-style~='linear'] li a:hover                       {color: %%_color__menu_link_active}
   [role='tree'][data-style~='linear'] li a[aria-selected      ='true'] {color: %%_color__menu_link_active}
   [role='tree'][data-style~='linear'] li a[data-selected-trail='true'] {color: %%_color__menu_link_active}
-
-  /* menu 'system': icons */
-
-  [role='tree'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color__menu_link !important}
-  [role='tree'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0  -64px}
-  [role='tree'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-repeat: no-repeat; background-position: 0 -128px}
 
   /* menu visualization for management */
 
