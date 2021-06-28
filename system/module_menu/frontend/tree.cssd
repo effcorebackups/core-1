@@ -61,9 +61,9 @@
 
   /* dropdown menu 'system': icons */
 
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0      0; background-color: transparent !important; color: %%_color__menu_link !important}
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0  -64px}
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu.svgd'); background-size: 64px 640px; background-repeat: no-repeat; background-position: 0 -128px}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu-home.svg');    background-size: 64px 64px; background-repeat: no-repeat; background-position: 0 0; background-color: transparent !important; color: %%_color__menu_link !important}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu-manage.svg');  background-size: 64px 64px; background-repeat: no-repeat; background-position: 0 0}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu-develop.svg'); background-size: 64px 64px; background-repeat: no-repeat; background-position: 0 0}
 
   /* linear menu */
 
