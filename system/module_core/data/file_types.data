@@ -55,6 +55,9 @@ file_types
 - template
     type: tpl
     kind: protected
+- tmp
+    type: tmp
+    kind: protected
 - tmpl
     type: tmpl
     kind: protected

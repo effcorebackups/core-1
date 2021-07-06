@@ -94,7 +94,6 @@ PHP
     | hash         | by default |                         |
     | mbstring     | no         |                         |
     | pcre         | always     |                         |
-    | Phar         | by default |                         |
     | SPL          | always     |                         |
     | standard     | always     |                         |
     | pdo_mysql    | no         | for working with MySQL  |

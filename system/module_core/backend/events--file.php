@@ -93,6 +93,8 @@ namespace effcore\modules\core {
   #
   # ─────────────────────────────────────────────────────────────────────
 
+  const read_block_size = 1024;
+
   static function on_load_static($event, &$type_info, &$file) {
     $last_modified = gmdate('D, d M Y H:i:s', filemtime($file->path_get())).' GMT';
 
@@ -103,8 +105,24 @@ namespace effcore\modules\core {
       exit();
     }
 
-  # ranges
+  # send headers
+    header('Accept-Ranges: bytes');
+    header('Cache-Control: private, no-cache');
+    header('Last-Modified: '.$last_modified);
+    if (!empty($type_info->headers)) {
+      foreach ($type_info->headers as $c_key => $c_value) {
+        header($c_key.': '.$c_value);
+      }
+    }
+
+  # preliminary check
     $length = filesize($file->path_get());
+    if ($length === 0) {
+      header('Content-Length: 0');
+      exit();
+    }
+
+  # ranges
     $ranges = core::server_get_http_range();
     if ($ranges->has_range) {
       $min = $ranges->min;
@@ -121,30 +139,18 @@ namespace effcore\modules\core {
       $max = $length - 1;
     }
 
-  # send headers
-    header('Content-Length: '.($max - $min + 1));
-    header('Accept-Ranges: bytes');
-    header('Cache-Control: private, no-cache');
-    header('Last-Modified: '.$last_modified);
-    if (!empty($type_info->headers)) {
-      foreach ($type_info->headers as $c_key => $c_value) {
-        header($c_key.': '.$c_value);
-      }
-    }
-
   # send result data
-    if ($resource = fopen($file->path_get(), 'rb')) {
-      $c_print_length = $min;
-      if (fseek($resource, $min) === 0) {
-        while (!feof($resource)) {
-          $c_data = fread($resource, 1024);
-          for ($i = 0; $i < strlen($c_data); $i++, $c_print_length++) {
-            if ($c_print_length > $max) break 2;
-            print $c_data[$i];
-          }
-        }
+    header('Content-Length: '.($max + 1 - $min));
+    $cur = $min;
+    if ($handle = fopen($file->path_get(), 'rb')) {
+      fseek($handle, $min, SEEK_SET);
+      while (strlen($c_data = fread($handle, static::read_block_size))) {
+        $cur += strlen($c_data);
+        if ($cur  <  $max + 1) {print        $c_data;                            }
+        if ($cur === $max + 1) {print        $c_data;                      break;}
+        if ($cur  >  $max + 1) {print substr($c_data, 0, $max + 1 - $cur); break;}
       }
-      fclose($resource);
+      fclose($handle);
     }
     exit();
   }

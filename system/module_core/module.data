@@ -10,6 +10,5 @@ module|module_embedded
     - fileinfo: 1.0
     - filter: 7.1.0
     - hash: 1.0
-    - phar: 1.0
     - exif: 1.0
     - gd: 1.0

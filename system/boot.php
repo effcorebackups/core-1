@@ -29,6 +29,7 @@ namespace effcore {
   require_once('module_core/backend/core.php');
   require_once('module_storage/backend/markers.php');
   spl_autoload_register('\\effcore\\core::structure_autoload');
+  file_container::stream_wrapper_register();
 
   request::values_sanitize('_POST');
   request::values_sanitize('_GET');

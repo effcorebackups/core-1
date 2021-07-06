@@ -7,55 +7,29 @@
 namespace effcore {
           abstract class media {
 
-  const lock_life_time         = 3;
-  const lock_checks_sleep_time = 1;
-  const lock_checks_count      = 10;
-
-  static function container_make($file_path, $container_path, $meta = []) {
-    try {
-      @unlink($container_path);
-      $fl = new file($container_path);
-      for ($i = 0; $i < static::lock_checks_count; $i++)
-        if ($fl->lock_is_set(static::lock_life_time) === file::lock_is_active)
-             sleep(static::lock_checks_sleep_time);
-        else break;
-      $fl->lock_insert();
-      $container = new \PharData($container_path, 0, null, \Phar::TAR);
-      $container->startBuffering();
-      $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
-      $container->addFile($file_path, 'original');
-      $container->stopBuffering();
-      $fl->lock_delete();
-      return $container;
-    } catch (Exception $e) {
-      return;
-    }
+  static function container_make($file_path, $container_path, $info = []) {
+    $result = true;
+    $result&= (bool)file_container::add_file       ($file_path,       $container_path.':original');
+    $result&= (bool)file_container::add_from_string(serialize($info), $container_path.':info');
+    return (bool)$result;
   }
 
   static function container_file_insert($container_path, $file_path, $path_local) {
-    try {
-      $fl = new file($container_path);
-      for ($i = 0; $i < static::lock_checks_count; $i++)
-        if ($fl->lock_is_set(static::lock_life_time) === file::lock_is_active)
-             sleep(static::lock_checks_sleep_time);
-        else break;
-      $fl->lock_insert();
-      $container = new \PharData($container_path, 0, null, \Phar::TAR);
-      $container->startBuffering();
-      $meta = unserialize($container['meta']->getContent());
-      $file = new file($file_path);
-      if ($meta) {
-        $meta[$path_local]['type'] = $file->type_get();
-        $meta[$path_local]['mime'] = $file->mime_get();
-        $meta[$path_local]['size'] = $file->size_get();
-        $container->addFromString('meta', str_pad(serialize($meta), 2048)); # str_pad reserves space for growing 'meta' file in parallel processes (Phar bug in caching its files)
-        $container->addFile($file_path, $path_local);
-        $container->stopBuffering();
-        $fl->lock_delete();
-        return $container;
+    $handle = fopen($container_path.':info', 'rb');
+    if ($handle) {
+      $info = fread($handle, 0xffff);
+      $info_parsed = @unserialize($info);
+      fclose($handle);
+      if ($info_parsed) {
+        $file = new file($file_path);
+        $info_parsed[$path_local]['type'] = $file->type_get();
+        $info_parsed[$path_local]['mime'] = $file->mime_get();
+        $info_parsed[$path_local]['size'] = $file->size_get();
+        $result = true;
+        $result&= (bool)file_container::add_file       ($file_path,              $container_path.':'.$path_local);
+        $result&= (bool)file_container::add_from_string(serialize($info_parsed), $container_path.':info');
+        return (bool)$result;
       }
-    } catch (Exception $e) {
-      return;
     }
   }
 

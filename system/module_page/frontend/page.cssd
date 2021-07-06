@@ -235,6 +235,7 @@
   x-admin-actions::after {content: ''; clear: both; display: block}
   x-admin-actions a [data-action-title] {display: none}
   x-admin-actions a {color: white}
+  x-admin-actions a[href]:hover {color: white; text-decoration: none}
   x-admin-actions a:not(:last-child) {padding-right: 10px; margin-right: 10px; border-right: 1px dotted white}
   x-admin-actions a[data-id='update'] {padding-left: 16px; background: url('pictures/icons-actions_list-white.svgd') no-repeat 0 -41px}
 

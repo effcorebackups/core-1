@@ -23,6 +23,12 @@ namespace effcore {
     elseif (!empty($this->fin_path)) return $is_relative ? (new file($this->fin_path))->path_get_relative() : $this->fin_path;
   }
 
+  function set_current_path($path) {
+    if     (!empty($this->tmp_path)) $this->tmp_path = $path;
+    elseif (!empty($this->pre_path)) $this->pre_path = $path;
+    elseif (!empty($this->fin_path)) $this->fin_path = $path;
+  }
+
   function get_current_state() {
     if     (!empty($this->tmp_path)) return 'tmp';
     elseif (!empty($this->pre_path)) return 'pre';
@@ -150,7 +156,7 @@ namespace effcore {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.picture');
-    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+    $result = media::container_make($file_src->path_get(), 'container://'.$file_dst->path_get(), [
       'thumbnails' => $thumbnails,
       'original' => [
         'type' => $this->type,
@@ -159,11 +165,11 @@ namespace effcore {
     ]]);
     if ($result) {
       @unlink($file_src->path_get());
-      $this->type     = 'picture';
-      $this->file     = $this->name.'.picture';
-      $this->mime     = $file_dst->mime_get();
-      $this->pre_path = $file_dst->path_get();
-      $this->size     = $file_dst->size_get();
+      $this->type = 'picture';
+      $this->file = $this->name.'.picture';
+      $this->mime = $file_dst->mime_get();
+      $this->size = $file_dst->size_get();
+      $this->set_current_path($file_dst->path_get());
       return true;
     }
   }
@@ -172,7 +178,7 @@ namespace effcore {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.video');
-    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+    $result = media::container_make($file_src->path_get(), 'container://'.$file_dst->path_get(), [
       'poster_thumbnails' => $poster_thumbnails,
       'original' => [
         'type' => $this->type,
@@ -181,13 +187,13 @@ namespace effcore {
     ]]);
     if ($result) {
       @unlink($file_src->path_get());
-      $this->type     = 'video';
-      $this->file     = $this->name.'.video';
-      $this->mime     = $file_dst->mime_get();
-      $this->pre_path = $file_dst->path_get();
-      $this->size     = $file_dst->size_get();
+      $this->type = 'video';
+      $this->file = $this->name.'.video';
+      $this->mime = $file_dst->mime_get();
+      $this->size = $file_dst->size_get();
+      $this->set_current_path($file_dst->path_get());
       if ($poster_path)
-        media::container_file_insert($file_dst->path_get(), $poster_path, 'poster');
+        media::container_file_insert('container://'.$file_dst->path_get(), $poster_path, 'poster');
       return true;
     }
   }
@@ -196,7 +202,7 @@ namespace effcore {
     $file_src = new file($this->get_current_path());
     $file_dst = new file($file_src->dirs_get().
                          $file_src->name_get().'.audio');
-    $result = media::container_make($file_src->path_get(), $file_dst->path_get(), [
+    $result = media::container_make($file_src->path_get(), 'container://'.$file_dst->path_get(), [
       'cover_thumbnails' => $cover_thumbnails,
       'original' => [
         'type' => $this->type,
@@ -205,13 +211,13 @@ namespace effcore {
     ]]);
     if ($result) {
       @unlink($file_src->path_get());
-      $this->type     = 'audio';
-      $this->file     = $this->name.'.audio';
-      $this->mime     = $file_dst->mime_get();
-      $this->pre_path = $file_dst->path_get();
-      $this->size     = $file_dst->size_get();
+      $this->type = 'audio';
+      $this->file = $this->name.'.audio';
+      $this->mime = $file_dst->mime_get();
+      $this->size = $file_dst->size_get();
+      $this->set_current_path($file_dst->path_get());
       if ($cover_path)
-        media::container_file_insert($file_dst->path_get(), $cover_path, 'cover');
+        media::container_file_insert('container://'.$file_dst->path_get(), $cover_path, 'cover');
       return true;
     }
   }

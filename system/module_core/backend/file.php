@@ -265,9 +265,19 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
-  # lock
-  # ─────────────────────────────────────────────────────────────────────
+  # lock usage example:
+  # ════════════════════════════════════════════════════════════════════════════
+  #     const lock_life_time         = 3;
+  #     const lock_checks_sleep_time = 1;
+  #     const lock_checks_count      = 10;
+  #     for ($i = 0; $i < static::lock_checks_count; $i++)
+  #       if ($lock->lock_is_set(static::lock_life_time) === file::lock_is_active)
+  #            sleep(static::lock_checks_sleep_time);
+  #       else break;
+  #     $lock->lock_insert();
+  #       # … code …
+  #     $lock->lock_delete();
+  # ────────────────────────────────────────────────────────────────────────────
 
   function lock_is_set($life_time = null) {
     if ($life_time === null)
@@ -291,7 +301,7 @@ namespace effcore {
     $lock_path = $this->path_get_absolute().'.lock';
     if (file_exists($lock_path))
             @unlink($lock_path);
-  }  
+  }
 
   ###########################
   ### static declarations ###

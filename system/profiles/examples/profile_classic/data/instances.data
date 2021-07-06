@@ -2313,9 +2313,9 @@ instances
             name: 1000x1500-01
             type: picture
             file: 1000x1500-01.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-0.picture
-            size: 10752
+            size: 6930
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2327,9 +2327,9 @@ instances
             name: 1000x1500-02
             type: picture
             file: 1000x1500-02.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-1.picture
-            size: 10752
+            size: 6970
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2341,9 +2341,9 @@ instances
             name: 1000x1500-03
             type: picture
             file: 1000x1500-03.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-2.picture
-            size: 10752
+            size: 6970
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2355,9 +2355,9 @@ instances
             name: 1500x1000-01
             type: picture
             file: 1500x1000-01.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-3.picture
-            size: 11776
+            size: 8054
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2369,9 +2369,9 @@ instances
             name: 1500x1000-02
             type: picture
             file: 1500x1000-02.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-4.picture
-            size: 11776
+            size: 8047
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2383,9 +2383,9 @@ instances
             name: 1500x1000-03
             type: picture
             file: 1500x1000-03.picture
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-5.picture
-            size: 11776
+            size: 8048
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2397,9 +2397,9 @@ instances
             name: audio-01
             type: audio
             file: audio-01.audio
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-6.audio
-            size: 26624
+            size: 22913
           settings
           - data-player-name: default
           - data-player-timeline-is-visible|_string_true
@@ -2416,9 +2416,9 @@ instances
             name: video-01
             type: video
             file: video-01.video
-            mime: application/x-tar
+            mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-7.video
-            size: 24064
+            size: 20363
           settings
           - autoplay: null
           - buffered: null
