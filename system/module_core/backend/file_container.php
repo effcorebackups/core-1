@@ -309,8 +309,4 @@ namespace effcore {
     }
   }
 
-  static function stream_wrapper_register() {
-    stream_wrapper_register(static::wrapper, __CLASS__);
-  }
-
 }}
