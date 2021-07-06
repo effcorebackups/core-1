@@ -15,12 +15,6 @@ namespace effcore {
   const message_file_mode_is_not_writing  = 'File mode does not support writing!';
   const message_file_mode_is_not_reading  = 'File mode does not support reading!';
   const message_file_path_is_invalid      = 'File path is invalid! Correct format: "'.self::wrapper.'://path_to_'.self::wrapper.':path_to_file';
-  const empty_stat = [
-    'dev' => null, 'nlink' => null, 'mode' => null, 'blocks' => null, 'blksize' => null,
-    'ino' => null, 'atime' => null, 'rdev' => null,
-    'uid' => null, 'mtime' => null, 'size' => null,
-    'gid' => null, 'ctime' => null
-  ];
 
   public $context;
 
