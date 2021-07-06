@@ -31,7 +31,15 @@
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
-    color: %%_color__text}
+    color: %%_return_if_token_color_is_dark{color__page|black|white}}
+
+  /* block__info */
+
+  [data-block][data-id='block__info'] x-cell {background-color: transparent !important}
+
+  /* block__diagram_load */
+
+  [data-block][data-id='block__diagram_load'] {}
 
   /* block__logs */
 
