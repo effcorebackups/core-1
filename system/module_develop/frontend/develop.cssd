@@ -31,7 +31,7 @@
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
-    color: %%_return_if_token_color_is_dark{color__page|black|white}}
+    color: %%_return_if_token_color_is_dark{color__page|white|black}}
 
   /* block__info */
 
