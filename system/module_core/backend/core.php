@@ -801,6 +801,13 @@ namespace effcore {
   ### ini_get ###
   ###############
 
+  static function memory_limit_bytes_get() {
+    $value = ini_get('memory_limit');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
   static function upload_max_filesize_bytes_get() {
     $value = ini_get('upload_max_filesize');
     if (static::is_abbreviated_bytes($value))

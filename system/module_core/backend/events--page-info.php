@@ -62,6 +62,7 @@ namespace effcore\modules\core {
       'php_version_curl'            => ['title' => 'PHP CURL version',        'value' => $php_version_curl                                          ],
       'php_version_pcre'            => ['title' => 'PHP PCRE version',        'value' => PCRE_VERSION                                               ],
       'php_state_opcache'           => ['title' => 'PHP OPCache is enabled',  'value' => $is_enabled_opcache_sticker                                ],
+      'php_ini_memory_limit'        => ['title' => 'PHP memory_limit',        'value' => locale::format_bytes(core::memory_limit_bytes_get())       ],
       'php_ini_max_file_uploads'    => ['title' => 'PHP max_file_uploads',    'value' => core::max_file_uploads_get()                               ],
       'php_ini_upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => locale::format_bytes(core::upload_max_filesize_bytes_get())],
       'php_ini_post_max_size'       => ['title' => 'PHP post_max_size',       'value' => locale::format_bytes(core::post_max_size_bytes_get())      ],
