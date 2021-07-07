@@ -115,16 +115,27 @@ namespace effcore\modules\core {
       }
     }
 
-  # preliminary check
+  # if the file is empty
     $length = filesize($file->path_get());
     if ($length === 0) {
       header('Content-Length: 0');
       exit();
     }
 
-  # ranges
+  # if no ranges are specified
     $ranges = core::server_get_http_range();
-    if ($ranges->has_range) {
+    if ($ranges->has_range !== true) {
+      header('Content-Length: '.$length);
+      if ($handle = fopen($file->path_get(), 'rb')) {
+        fseek($handle, 0, SEEK_SET);
+        fpassthru($handle);
+        fclose($handle);
+      }
+      exit();
+    }
+
+  # if ranges are specified
+    if ($ranges->has_range === true) {
       $min = $ranges->min;
       $max = $ranges->max;
       if ($min === null) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
@@ -134,25 +145,21 @@ namespace effcore\modules\core {
                          $max < $length)) {header('HTTP/1.1 416 Requested Range Not Satisfiable'); exit();}
       header('HTTP/1.1 206 Partial Content');
       header('Content-Range: bytes '.$min.'-'.$max.'/'.$length);
-    } else {
-      $min = 0;
-      $max = $length - 1;
+      header('Content-Length: '.($max + 1 - $min));
+      $cur = $min;
+      if ($handle = fopen($file->path_get(), 'rb')) {
+        fseek($handle, $min, SEEK_SET);
+        while (strlen($c_data = fread($handle, static::read_block_size))) {
+          $cur += strlen($c_data);
+          if ($cur  <  $max + 1) {print        $c_data;                            }
+          if ($cur === $max + 1) {print        $c_data;                      break;}
+          if ($cur  >  $max + 1) {print substr($c_data, 0, $max + 1 - $cur); break;}
+        }
+        fclose($handle);
+      }
+      exit();
     }
 
-  # send result data
-    header('Content-Length: '.($max + 1 - $min));
-    $cur = $min;
-    if ($handle = fopen($file->path_get(), 'rb')) {
-      fseek($handle, $min, SEEK_SET);
-      while (strlen($c_data = fread($handle, static::read_block_size))) {
-        $cur += strlen($c_data);
-        if ($cur  <  $max + 1) {print        $c_data;                            }
-        if ($cur === $max + 1) {print        $c_data;                      break;}
-        if ($cur  >  $max + 1) {print substr($c_data, 0, $max + 1 - $cur); break;}
-      }
-      fclose($handle);
-    }
-    exit();
   }
 
 }}
