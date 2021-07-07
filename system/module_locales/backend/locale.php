@@ -32,7 +32,7 @@ namespace effcore {
   static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
   static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
-  static function format_bytes($bytes, $is_iec = false) {
+  static function format_bytes($bytes, $is_iec = true) {
     if ($bytes && fmod($bytes, 1024 ** 4) === 0.0) return static::format_number($bytes / 1024 ** 4).' '.($is_iec ? translation::apply('TiB') : translation::apply('T'));
     if ($bytes && fmod($bytes, 1024 ** 3) === 0.0) return static::format_number($bytes / 1024 ** 3).' '.($is_iec ? translation::apply('GiB') : translation::apply('G'));
     if ($bytes && fmod($bytes, 1024 ** 2) === 0.0) return static::format_number($bytes / 1024 ** 2).' '.($is_iec ? translation::apply('MiB') : translation::apply('M'));

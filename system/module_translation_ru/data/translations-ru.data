@@ -279,6 +279,7 @@ translations
     - Fraction part is too long.: Дробная часть слишком длинная.
     - Front: Главная
     - Function: Функция
+    - G: Г
     - Galleries: Галереи
     - Gallery: Галерея
     - Gallery\: delete: Галерея: удалить
@@ -363,6 +364,7 @@ translations
     - items: элементы
     - Items: Элементы
     - Its contents are not filtered and presented as is.: Его содержание не фильтруется и представляется как есть.
+    - K: К
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
     - KiB: КиБ
     - Kind: Вид
@@ -412,6 +414,7 @@ translations
     - Logout: Выход
     - LOST FIELD: ПОТЕРЯННОЕ ПОЛЕ
     - LOST LAYOUT\: %%_id: ПОТЕРЯННЫЙ МАКЕТ: %%_id
+    - M: М
     - Main color: Основной цвет
     - Main colors: Основные цвета
     - management for this entity is not available: управление для этой сущности недоступно
@@ -662,6 +665,7 @@ translations
     - System was installed.: Система была установлена.
     - System was not installed!: Система не была установлена!
     - System: Система
+    - T: Т
     - Table prefix: Префикс таблиц
     - Table: Таблица
     - Table\: row even: Таблица: строка чётная

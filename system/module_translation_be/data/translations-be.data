@@ -279,6 +279,7 @@ translations
     - Fraction part is too long.: Дробавая частка надта доўгая.
     - Front: Галоўная
     - Function: Функцыя
+    - G: Г
     - Galleries: Галерэі
     - Gallery: Галерэя
     - Gallery\: delete: Галерэя: выдаліць
@@ -363,6 +364,7 @@ translations
     - items: элементы
     - Items: Элементы
     - Its contents are not filtered and presented as is.: Яго змест не фільтруецца і ўяўляецца як ёсць.
+    - K: К
     - Key "%%_key" does not exist!: Ключ "%%_key" не існуе!
     - KiB: КіБ
     - Kind: Від
@@ -412,6 +414,7 @@ translations
     - Logout: Выхад
     - LOST FIELD: СТРАЧАНАЕ ПОЛЕ
     - LOST LAYOUT\: %%_id: СТРАЧАНЫ МАКЕТ: %%_id
+    - M: М
     - Main color: Асноўны колер
     - Main colors: Асноўныя колеры
     - management for this entity is not available: кіраванне для гэтай сутнасьці недаступна
@@ -662,6 +665,7 @@ translations
     - System was installed.: Сістэма была ўсталявана.
     - System was not installed!: Сістэма не была ўсталявана.
     - System: Сістэма
+    - T: Т
     - Table prefix: Прэфікс табліц
     - Table: Табліца
     - Table\: row even: Табліца: радок цотны
