@@ -33,11 +33,11 @@ namespace effcore {
   static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
   static function format_bytes($bytes, $is_iec = false) {
-    if ($bytes && fmod($bytes, 1024 ** 4) === 0) return static::format_number($bytes / 1024 ** 4).' '.($is_iec ? translation::apply('TiB') : translation::apply('T'));
-    if ($bytes && fmod($bytes, 1024 ** 3) === 0) return static::format_number($bytes / 1024 ** 3).' '.($is_iec ? translation::apply('GiB') : translation::apply('G'));
-    if ($bytes && fmod($bytes, 1024 ** 2) === 0) return static::format_number($bytes / 1024 ** 2).' '.($is_iec ? translation::apply('MiB') : translation::apply('M'));
-    if ($bytes && fmod($bytes, 1024 ** 1) === 0) return static::format_number($bytes / 1024 ** 1).' '.($is_iec ? translation::apply('KiB') : translation::apply('K'));
-    else                                         return static::format_number($bytes            ).' '.(                                      translation::apply('B'));
+    if ($bytes && fmod($bytes, 1024 ** 4) === 0.0) return static::format_number($bytes / 1024 ** 4).' '.($is_iec ? translation::apply('TiB') : translation::apply('T'));
+    if ($bytes && fmod($bytes, 1024 ** 3) === 0.0) return static::format_number($bytes / 1024 ** 3).' '.($is_iec ? translation::apply('GiB') : translation::apply('G'));
+    if ($bytes && fmod($bytes, 1024 ** 2) === 0.0) return static::format_number($bytes / 1024 ** 2).' '.($is_iec ? translation::apply('MiB') : translation::apply('M'));
+    if ($bytes && fmod($bytes, 1024 ** 1) === 0.0) return static::format_number($bytes / 1024 ** 1).' '.($is_iec ? translation::apply('KiB') : translation::apply('K'));
+    else                                           return static::format_number($bytes            ).' '.(                                      translation::apply('B'));
   }
 
   static function format_seconds($seconds) {
