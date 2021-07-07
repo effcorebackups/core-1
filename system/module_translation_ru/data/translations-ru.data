@@ -562,6 +562,7 @@ translations
     - Radiobuttons: Переключатели
     - Range: Диапазон
     - Read access: Доступ на чтение
+    - Recommended minimum value\: %%_value: Рекомендуемое минимальное значение: %%_value
     - recovery: восстановление
     - Recovery: Восстановление
     - register: зарегистрировать

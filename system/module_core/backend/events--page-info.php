@@ -35,15 +35,15 @@ namespace effcore\modules\core {
     $settings           = module::settings_get('core');
     $is_required_update = update::is_required();
     $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
-    $is_required_update_sticker = new markup('x-sticker', ['data-style' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? 'yes' : 'no');
+    $is_required_update_sticker = new markup('x-sticker', ['data-style' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? ['yes', ' → ', $is_required_update_fixlink] : ['no']);
     $cron_last_run_sticker      = new markup('x-sticker', ['data-style' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
     $cron_link = new markup('a', ['target' => 'cron', 'href' => '/manage/cron/'.core::key_get('cron')], '/manage/cron/'.core::key_get('cron'));
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
     $decorator->data = [[
-      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                                                                                                                                     ],
-      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker                                                                                                                         ],
-      'upd_is_req'    => ['title' => 'Data update is required', 'value' => new node([], $is_required_update ? [$is_required_update_sticker, new text(' → '), $is_required_update_fixlink] : [$is_required_update_sticker])] ]];
+      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                  ],
+      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker      ],
+      'upd_is_req'    => ['title' => 'Data update is required', 'value' => $is_required_update_sticker ] ]];
     return new node([], [
       $decorator
     ]);
@@ -60,12 +60,12 @@ namespace effcore\modules\core {
     $php_max_input_time = core::max_input_time_get();
     $php_max_execution_time = core::max_execution_time_get();
     $is_enabled_opcache_sticker      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
-    $php_memory_limit_sticker        = new markup('x-sticker', ['data-style' => $php_memory_limit >= 0x8000000         ? 'ok' : 'warning'], locale::format_bytes($php_memory_limit));
-    $php_max_file_uploads_sticker    = new markup('x-sticker', ['data-style' => $php_max_file_uploads >= 20            ? 'ok' : 'warning'], locale::format_pieces($php_max_file_uploads));
-    $php_upload_max_filesize_sticker = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning'], locale::format_bytes($php_upload_max_filesize));
-    $php_post_max_size_sticker       = new markup('x-sticker', ['data-style' => $php_post_max_size >= 0x40000000       ? 'ok' : 'warning'], locale::format_bytes($php_post_max_size));
-    $php_max_input_time_sticker      = new markup('x-sticker', ['data-style' => $php_max_input_time >= 60              ? 'ok' : 'warning'], locale::format_seconds($php_max_input_time));
-    $php_max_execution_time_sticker  = new markup('x-sticker', ['data-style' => $php_max_execution_time >= 30          ? 'ok' : 'warning'], locale::format_seconds($php_max_execution_time));
+    $php_memory_limit_sticker        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x8000000  ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x8000000)])) ->render()], locale::format_bytes  ($php_memory_limit)       );
+    $php_max_file_uploads_sticker    = new markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_pieces (20)]))        ->render()], locale::format_pieces ($php_max_file_uploads)   );
+    $php_upload_max_filesize_sticker = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));
+    $php_post_max_size_sticker       = new markup('x-sticker', ['data-style' => $php_post_max_size       >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_post_max_size)      );
+    $php_max_input_time_sticker      = new markup('x-sticker', ['data-style' => $php_max_input_time      >= 60         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(60)]))        ->render()], locale::format_seconds($php_max_input_time)     );
+    $php_max_execution_time_sticker  = new markup('x-sticker', ['data-style' => $php_max_execution_time  >= 30         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(30)]))        ->render()], locale::format_seconds($php_max_execution_time) );
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
