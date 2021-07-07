@@ -61,7 +61,7 @@ namespace effcore\modules\core {
     $php_max_execution_time = core::max_execution_time_get();
     $is_enabled_opcache_sticker      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
     $php_memory_limit_sticker        = new markup('x-sticker', ['data-style' => $php_memory_limit >= 0x8000000         ? 'ok' : 'warning'], locale::format_bytes($php_memory_limit));
-    $php_max_file_uploads_sticker    = new markup('x-sticker', ['data-style' => $php_max_file_uploads >= 20            ? 'ok' : 'warning'], $php_max_file_uploads);
+    $php_max_file_uploads_sticker    = new markup('x-sticker', ['data-style' => $php_max_file_uploads >= 20            ? 'ok' : 'warning'], locale::format_pieces($php_max_file_uploads));
     $php_upload_max_filesize_sticker = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning'], locale::format_bytes($php_upload_max_filesize));
     $php_post_max_size_sticker       = new markup('x-sticker', ['data-style' => $php_post_max_size >= 0x40000000       ? 'ok' : 'warning'], locale::format_bytes($php_post_max_size));
     $php_max_input_time_sticker      = new markup('x-sticker', ['data-style' => $php_max_input_time >= 60              ? 'ok' : 'warning'], locale::format_seconds($php_max_input_time));

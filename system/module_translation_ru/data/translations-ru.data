@@ -514,6 +514,7 @@ translations
     - Password: Пароль
     - path: путь
     - Path: Путь
+    - pcs.: шт.
     - Permission ID: ID разрешения
     - Permission: Разрешение
     - Permission\: select: Разрешение: выбрать

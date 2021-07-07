@@ -40,6 +40,10 @@ namespace effcore {
     else                                          return static::format_number($bytes            ).' '.(                                      translation::apply('B'));
   }
 
+  static function format_pieces($number) {
+    return static::format_number($number).' '.translation::apply('pcs.');
+  }
+
   static function format_seconds($seconds) {
     return translation::apply('%%_number second%%_plural{number|s}', ['number' => $seconds]);
   }
