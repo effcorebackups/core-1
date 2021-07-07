@@ -34,16 +34,21 @@ namespace effcore\modules\core {
   static function block_markup__service_info($page, $args = []) {
     $settings           = module::settings_get('core');
     $is_required_update = update::is_required();
-    $is_required_update_fixlink = new markup('a', ['href' => '/manage/modules/update/data'], 'fix');
-    $is_required_update_sticker = new markup('x-sticker', ['data-style' => !$is_required_update ? 'ok' : 'warning'], $is_required_update ? ['yes', ' → ', $is_required_update_fixlink] : ['no']);
-    $cron_last_run_sticker      = new markup('x-sticker', ['data-style' => !empty($settings->cron_last_run_date) && $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second') ? 'ok' : 'warning'], locale::format_datetime($settings->cron_last_run_date) ?? 'no');
-    $cron_link = new markup('a', ['target' => 'cron', 'href' => '/manage/cron/'.core::key_get('cron')], '/manage/cron/'.core::key_get('cron'));
+    $is_cron_run = !empty($settings->cron_last_run_date) &&
+                          $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second');
+    $cron_url = core::server_get_request_scheme().'://'.
+                core::server_get_host(false).'/manage/cron/'.
+                core::key_get('cron');
+    $fix_link_for_cron   = new markup('a', ['href' => $cron_url,                     'target' => 'cron'  ], 'fix');
+    $fix_link_for_update = new markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');
+    $sticker_for_cron_last_run      = new markup('x-sticker', ['data-style' => $is_cron_run        ? 'ok' : 'warning'], $settings->cron_last_run_date ? locale::format_datetime($settings->cron_last_run_date) : ['no', ' → ', $fix_link_for_cron]);
+    $sticker_for_is_required_update = new markup('x-sticker', ['data-style' => $is_required_update ? 'warning' : 'ok'], $is_required_update ? ['yes', ' → ', $fix_link_for_update] : 'no');
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
     $decorator->data = [[
-      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_link                  ],
-      'cron_last_run' => ['title' => 'Cron last run',           'value' => $cron_last_run_sticker      ],
-      'upd_is_req'    => ['title' => 'Data update is required', 'value' => $is_required_update_sticker ] ]];
+      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_url                       ],
+      'cron_last_run' => ['title' => 'Cron last run',           'value' => $sticker_for_cron_last_run      ],
+      'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update ] ]];
     return new node([], [
       $decorator
     ]);
@@ -59,13 +64,13 @@ namespace effcore\modules\core {
     $php_post_max_size = core::post_max_size_bytes_get();
     $php_max_input_time = core::max_input_time_get();
     $php_max_execution_time = core::max_execution_time_get();
-    $is_enabled_opcache_sticker      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
-    $php_memory_limit_sticker        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x8000000  ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x8000000)])) ->render()], locale::format_bytes  ($php_memory_limit)       );
-    $php_max_file_uploads_sticker    = new markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_pieces (20)]))        ->render()], locale::format_pieces ($php_max_file_uploads)   );
-    $php_upload_max_filesize_sticker = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));
-    $php_post_max_size_sticker       = new markup('x-sticker', ['data-style' => $php_post_max_size       >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_post_max_size)      );
-    $php_max_input_time_sticker      = new markup('x-sticker', ['data-style' => $php_max_input_time      >= 60         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(60)]))        ->render()], locale::format_seconds($php_max_input_time)     );
-    $php_max_execution_time_sticker  = new markup('x-sticker', ['data-style' => $php_max_execution_time  >= 30         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(30)]))        ->render()], locale::format_seconds($php_max_execution_time) );
+    $sticker_for_is_enabled_opcache      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
+    $sticker_for_php_memory_limit        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x8000000  ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x8000000)])) ->render()], locale::format_bytes  ($php_memory_limit)       );
+    $sticker_for_php_max_file_uploads    = new markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_pieces (20)]))        ->render()], locale::format_pieces ($php_max_file_uploads)   );
+    $sticker_for_php_upload_max_filesize = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));
+    $sticker_for_php_post_max_size       = new markup('x-sticker', ['data-style' => $php_post_max_size       >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_post_max_size)      );
+    $sticker_for_php_max_input_time      = new markup('x-sticker', ['data-style' => $php_max_input_time      >= 60         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(60)]))        ->render()], locale::format_seconds($php_max_input_time)     );
+    $sticker_for_php_max_execution_time  = new markup('x-sticker', ['data-style' => $php_max_execution_time  >= 30         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(30)]))        ->render()], locale::format_seconds($php_max_execution_time) );
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
@@ -73,13 +78,13 @@ namespace effcore\modules\core {
       'php_version'             => ['title' => 'PHP version',             'value' => phpversion()                                              ],
       'php_version_curl'        => ['title' => 'PHP CURL version',        'value' => $php_version_curl                                         ],
       'php_version_pcre'        => ['title' => 'PHP PCRE version',        'value' => PCRE_VERSION                                              ],
-      'php_state_opcache'       => ['title' => 'PHP OPCache is enabled',  'value' => $is_enabled_opcache_sticker                               ],
-      'php_memory_limit'        => ['title' => 'PHP memory_limit',        'value' => $php_memory_limit_sticker                                 ],
-      'php_max_file_uploads'    => ['title' => 'PHP max_file_uploads',    'value' => $php_max_file_uploads_sticker                             ],
-      'php_upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => $php_upload_max_filesize_sticker                          ],
-      'php_post_max_size'       => ['title' => 'PHP post_max_size',       'value' => $php_post_max_size_sticker                                ],
-      'php_max_input_time'      => ['title' => 'PHP max_input_time',      'value' => $php_max_input_time_sticker                               ],
-      'php_max_execution_time'  => ['title' => 'PHP max_execution_time',  'value' => $php_max_execution_time_sticker                           ],
+      'php_state_opcache'       => ['title' => 'PHP OPCache is enabled',  'value' => $sticker_for_is_enabled_opcache                           ],
+      'php_memory_limit'        => ['title' => 'PHP memory_limit',        'value' => $sticker_for_php_memory_limit                             ],
+      'php_max_file_uploads'    => ['title' => 'PHP max_file_uploads',    'value' => $sticker_for_php_max_file_uploads                         ],
+      'php_upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => $sticker_for_php_upload_max_filesize                      ],
+      'php_post_max_size'       => ['title' => 'PHP post_max_size',       'value' => $sticker_for_php_post_max_size                            ],
+      'php_max_input_time'      => ['title' => 'PHP max_input_time',      'value' => $sticker_for_php_max_input_time                           ],
+      'php_max_execution_time'  => ['title' => 'PHP max_execution_time',  'value' => $sticker_for_php_max_execution_time                       ],
       'storage_sql'             => ['title' => 'SQL storage',             'value' => $storage_sql->title_get().' '.$storage_sql->version_get() ],
       'operating_system'        => ['title' => 'Operating System',        'value' => php_uname('s').' | '.php_uname('r').' | '.php_uname('v')  ],
       'architecture'            => ['title' => 'Architecture',            'value' => php_uname('m')                                            ],
