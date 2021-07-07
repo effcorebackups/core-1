@@ -21,27 +21,28 @@
 
   /* console */
 
-  [data-page-part-id='console'] {display: block; background: %%_color__page}
-  [data-page-part-id='console'] x-console {
+  [data-page-part-id='console'] {display: block}
+
+  x-console {
     display: block;
-    margin: 300px auto 0 auto;
-    padding: 30px 0;
+    margin: 300px auto 30px auto;
+    padding: 10px;
+    overflow: auto;
     min-width: %%_page_width_min_context{null}px;
     max-width: %%_page_width_max_context{null}px;
+    border-radius: 10px;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
-    color: %%_return_if_token_color_is_dark{color__page|white|black}}
+    color: white;
+    background: #313852 url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
+    background-size: 20px}
 
-  /* block__info */
+  [data-block]:first-of-type [data-block-title] {margin-top: 1em}
 
-  [data-block][data-id='block__info'] x-cell {background-color: transparent !important}
-
-  /* block__diagram_load */
+  [data-block][data-id='block__info'] x-cell {background-color: #313852 !important}
 
   [data-block][data-id='block__diagram_load'] {}
-
-  /* block__logs */
 
   [data-block][data-id='block__logs'] tbody    td {vertical-align: top; color: black}
   [data-block][data-id='block__logs'] tbody tr td                      {background-color: transparent}
