@@ -422,7 +422,7 @@ translations
     - Managers: Управляющие
     - Match: Соответствие
     - Maximum width: Максимальная ширина
-    - Memory for PHP (bytes): Память для PHP (байты)
+    - Memory for PHP: Память для PHP
     - Menu active: Меню активное
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
