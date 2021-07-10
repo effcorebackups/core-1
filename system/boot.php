@@ -36,10 +36,6 @@ namespace effcore {
   request::values_sanitize('_REQUEST');
   request::values_sanitize('_FILES', true);
 
-  console::log_insert('file', 'insertion', 'system/boot.php',                           'ok');
-  console::log_insert('file', 'insertion', 'system/module_core/backend/core.php',       'ok');
-  console::log_insert('file', 'insertion', 'system/module_storage/backend/markers.php', 'ok');
-
   timer::tap('total');
 
   # ─────────────────────────────────────────────────────────────────────

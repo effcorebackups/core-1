@@ -24,8 +24,13 @@ namespace effcore {
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
-        if ($settings->console_visibility === static::is_visible_for_everyone                                                           ) {static::$visible_mode = static::is_visible_for_everyone; return;}
-        if ($settings->console_visibility === static::is_visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) {static::$visible_mode = static::is_visible_for_admin;    return;}
+        if ($settings->console_visibility === static::is_visible_for_everyone                                                           ) static::$visible_mode = static::is_visible_for_everyone;
+        if ($settings->console_visibility === static::is_visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) static::$visible_mode = static::is_visible_for_admin;
+        static::$data = [
+          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => []],
+          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => []],
+          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => []],
+        ];
       }
     }
   }
