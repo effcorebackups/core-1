@@ -20,17 +20,15 @@ namespace effcore {
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => []];
       static::$file_log_err = new file(static::directory.core::date_get().'/error--'.core::date_get().'.log');
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
         if ($settings->console_visibility === static::is_visible_for_everyone                                                           ) static::$visible_mode = static::is_visible_for_everyone;
         if ($settings->console_visibility === static::is_visible_for_admin && access::check((object)['roles' => ['admins' => 'admins']])) static::$visible_mode = static::is_visible_for_admin;
-        static::$data = [
-          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => []],
-          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => []],
-          (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => []],
-        ];
       }
     }
   }
@@ -41,6 +39,7 @@ namespace effcore {
   }
 
   static function logs_select() {
+    static::init();
     return static::$data;
   }
 
