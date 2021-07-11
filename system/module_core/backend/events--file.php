@@ -35,6 +35,7 @@ namespace effcore\modules\core {
     $result = $data;
     timer::tap('total');
     if (module::is_enabled('test')) {
+      header('X-PHP-Memory-usage: '.memory_get_usage(true));
       header('X-Time-total: '.locale::format_msecond(
         timer::period_get('total', 0, 1)
       ));

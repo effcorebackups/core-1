@@ -167,6 +167,7 @@ namespace effcore {
     $result = str_replace('</body>', console::markup_get()->render().'</body>', $result);
   }
   if (module::is_enabled('test')) {
+    header('X-PHP-Memory-usage: '.memory_get_usage(true));
     header('X-Time-total: '.locale::format_msecond(
       timer::period_get('total', 0, 1)
     ));
