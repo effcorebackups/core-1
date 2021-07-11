@@ -104,7 +104,7 @@ namespace effcore {
     $decorator->id = 'page_information';
     $decorator->data = [[
       'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))  ],
-      'memory'      => ['title' => 'Memory for PHP',         'value' => locale::format_bytes(memory_get_usage(true))             ],
+      'memory'      => ['title' => 'Memory for PHP',         'value' => locale::format_bytes(memory_get_usage(true))              ],
       'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                              ],
       'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '-'],
       'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '-'] ]];
