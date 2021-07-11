@@ -41,7 +41,7 @@ namespace effcore\modules\core {
                 core::key_get('cron');
     $fix_link_for_cron   = new markup('a', ['href' => $cron_url,                     'target' => 'cron'  ], 'fix');
     $fix_link_for_update = new markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');
-    $sticker_for_cron_last_run      = new markup('x-sticker', ['data-style' => $is_cron_run        ? 'ok' : 'warning'], $settings->cron_last_run_date ? locale::format_datetime($settings->cron_last_run_date) : ['no', ' → ', $fix_link_for_cron]);
+    $sticker_for_cron_last_run      = new markup('x-sticker', ['data-style' => $is_cron_run        ? 'ok' : 'warning'], $is_cron_run ? $settings->cron_last_run_date : [$settings->cron_last_run_date ? $settings->cron_last_run_date : 'no', ' → ', $fix_link_for_cron]);
     $sticker_for_is_required_update = new markup('x-sticker', ['data-style' => $is_required_update ? 'warning' : 'ok'], $is_required_update ? ['yes', ' → ', $fix_link_for_update] : 'no');
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
