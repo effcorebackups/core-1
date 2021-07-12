@@ -88,12 +88,11 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   static function markup_get() {
-    return new markup('x-page-part', ['data-page-part-id' => 'console'],
-      new markup('x-console', [], [
-        static::block_markup__information (),
-        static::block_markup__diagram_load(),
-        static::block_markup__logs        ()
-    ]));
+    return new markup('x-console', [], [
+      static::block_markup__information (),
+      static::block_markup__diagram_load(),
+      static::block_markup__logs        ()
+    ]);
   }
 
   static function block_markup__information() {
@@ -106,8 +105,8 @@ namespace effcore {
       'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))  ],
       'memory'      => ['title' => 'Memory for PHP',         'value' => locale::format_bytes(memory_get_usage(true))              ],
       'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                              ],
-      'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '-'],
-      'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '-'] ]];
+      'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '—'],
+      'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '—'] ]];
     return new block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
   }
 

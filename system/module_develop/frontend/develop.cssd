@@ -21,59 +21,58 @@
 
   /* console */
 
-  [data-page-part-id='console'] {display: block}
-
   x-console {
-    display: block;
-    margin: 300px auto 30px auto;
-    padding: 10px;
-    overflow: auto;
-    min-width: %%_page_width_min_context{null}px;
-    max-width: %%_page_width_max_context{null}px;
-    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    width: calc(100% - 20px - 20px);
+    margin-top: 100px;
+    padding: 0 20px;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
     color: white;
     background: #313852 url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
     background-size: 20px}
+  x-console [data-block] {max-width: 900px; margin: 10px auto; overflow: auto}
+  x-console [data-block] [data-block-title] {margin: 1em 0}
 
-  [data-block]:first-of-type [data-block-title] {margin-top: 1em}
+  x-console [data-block][data-id='block__info'] x-cell {background-color: #313852 !important}
 
-  [data-block][data-id='block__info'] x-cell {background-color: #313852 !important}
+  x-console [data-block][data-id='block__diagram_load'] {}
 
-  [data-block][data-id='block__diagram_load'] {}
+  x-console [data-block][data-id='block__logs'] [data-block-title] {margin: 1em 0; padding: 0}
+  x-console [data-block][data-id='block__logs'] tbody    td {vertical-align: top; color: black}
+  x-console [data-block][data-id='block__logs'] tbody tr td                      {background-color: transparent}
+  x-console [data-block][data-id='block__logs'] tbody tr                         {background-color: white}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color__error   !important}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color__warning !important}
 
-  [data-block][data-id='block__logs'] tbody    td {vertical-align: top; color: black}
-  [data-block][data-id='block__logs'] tbody tr td                      {background-color: transparent}
-  [data-block][data-id='block__logs'] tbody tr                         {background-color: white}
-  [data-block][data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
-  [data-block][data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
-  [data-block][data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
-  [data-block][data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  [data-block][data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
-  [data-block][data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
-  [data-block][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color__error   !important}
-  [data-block][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color__warning !important}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color__warning}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color__error}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color__error}
+  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color__error}
 
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color__warning}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color__error}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color__error}
-  [data-block][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color__error}
-
-  [data-block][data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
+  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 6px 0 6px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
+  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
+  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
+  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
     display: block;
     margin: 5px 0 3px 0;
     padding-top: 3px;
     border-top: 1px dotted black}
-  [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 6px 0 6px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
-  [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
-  [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
 
-  [data-block][data-id='block__logs'] x-param {display: block; font-size: .9em}
-  [data-block][data-id='block__logs'] x-param x-title {width: 200px; display: inline-block}
-  [data-block][data-id='block__logs'] x-param x-title::after {content: ': '}
-  [data-block][data-id='block__logs'] x-param x-value {font-family: monospace}
+  x-console [data-block][data-id='block__logs'] x-param {display: block; font-size: .9em}
+  x-console [data-block][data-id='block__logs'] x-param x-title {width: 200px; display: inline-block}
+  x-console [data-block][data-id='block__logs'] x-param x-title::after {content: ': '}
+  x-console [data-block][data-id='block__logs'] x-param x-value {font-family: monospace}
+
+  x-console x-total {display: block; margin: 2em 0}
 
   /* PHP dependencies */
 

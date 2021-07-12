@@ -180,7 +180,7 @@ namespace effcore\modules\develop {
         foreach ($c_positions as $c_position_info) {
           $ext_decorator->data[] = [
             'extension' => ['value' => new text_simple($c_extension                   ), 'title' => 'PHP ext.'],
-            'module'    => ['value' => new text_simple($c_position_info->module ?: '-'), 'title' => 'Module'  ],
+            'module'    => ['value' => new text_simple($c_position_info->module ?: '—'), 'title' => 'Module'  ],
             'function'  => ['value' => new text_simple($c_function                    ), 'title' => 'Function'],
             'file'      => ['value' => new text_simple($c_position_info->file         ), 'title' => 'File'    ],
             'position'  => ['value' => new text_simple($c_position_info->position     ), 'title' => 'Pos.'    ]

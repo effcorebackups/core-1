@@ -14,7 +14,7 @@ namespace effcore\modules\core {
       case 'return_if_token':
         if (count($args) > 2) {
           $text = token::text_decode($args[0]);
-          if (strpos($text, 'return_if_token') === 0) return '/* "return_if_token" inside "return_if_token" is meaningless */';
+          if (strpos($text, 'return_if_token') === 0) return '!!! "return_if_token" inside "return_if_token" is meaningless !!!';
           if (count($args) === 3) return token::apply('%%_'.$text) === $args[1] ? $args[2] : '';
           if (count($args) === 4) return token::apply('%%_'.$text) === $args[1] ? $args[2] : $args[3];
         }
