@@ -85,6 +85,8 @@ in www root (section "rewrite").
 PHP
 ---------------------------------------------------------------------
 
+The following extensions are used:
+
     | name         | is enabled | description             |
     |-----------------------------------------------------|
     | Core         | always     |                         |
@@ -101,6 +103,14 @@ PHP
     | Zend OPCache | no         | for best performance    |
     | curl         | no         | for development         |
     | json         | always     | for development         |
+
+The following options are required for minimal configuration:
+- memory_limit: 256M
+- max_file_uploads: 20
+- upload_max_filesize: 1G
+- post_max_size: 1G
+- max_input_time: 60
+- max_execution_time: 30
 
 
 SQLite
