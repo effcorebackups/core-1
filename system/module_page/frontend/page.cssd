@@ -135,6 +135,7 @@
   x-table x-body [data-cellid='actions'] {text-align: right}
   x-table x-body [data-cellid='actions'] x-value:empty::after {content: ''}
 
+  x-table[data-view-type='table-dl'] x-cell {vertical-align: top}
   x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: 30%; border-right: 5px solid %%_color__main}
   x-table[data-view-type='table-dl'] x-cell[data-role='value'] {width: 70%}
   x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: %%_color__table_row_odd}
