@@ -531,10 +531,10 @@
 
   /* block 'system info' */
 
-  [data-block][data-id='block__system_info'] {margin: 150px 0 50px 0; text-align: center}
-  [data-block][data-id='block__system_info'] x-logo      {display: block; margin-bottom: 20px}
-  [data-block][data-id='block__system_info'] x-logo img  {width: 100%; max-width: 300px}
-  [data-block][data-id='block__system_info'] x-copyright {display: block; font-size: .8em}
-  [data-block][data-id='block__system_info'] x-build     {display: block}
-  [data-block][data-id='block__system_info'] x-build x-title::after {content: ': '}
-  [data-block][data-id='block__system_info'] x-build x-value {font-weight: bold}
+  [data-id='block__system_info'] {margin: 150px 0 50px 0; text-align: center}
+  [data-id='block__system_info'] x-logo      {display: block; margin-bottom: 20px}
+  [data-id='block__system_info'] x-logo img  {width: 100%; max-width: 300px}
+  [data-id='block__system_info'] x-copyright {display: block; font-size: .8em}
+  [data-id='block__system_info'] x-build     {display: block}
+  [data-id='block__system_info'] x-build x-title::after {content: ': '}
+  [data-id='block__system_info'] x-build x-value {font-weight: bold}

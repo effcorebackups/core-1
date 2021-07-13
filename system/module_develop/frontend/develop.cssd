@@ -31,46 +31,54 @@
     font-size: 15px;
     line-height: 1.5em;
     color: white;
-    background: #313852 url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
+    background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
     background-size: 20px}
   x-console [data-block] {max-width: 900px; margin: 10px auto; overflow: auto}
-  x-console [data-block] [data-block-title] {margin: 1em 0}
+  x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
 
-  x-console [data-block][data-id='block__info'] x-cell {background-color: #313852 !important}
+  x-console x-table {margin: 0}
+  x-console x-table[data-view-type='table-dl'] {border-top-color: #214d58}
+  x-console x-table[data-view-type='table-dl'] x-cell[data-role='title'] {border-right-color: #214d58}
+  x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .3)}
+  x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .2)}
+  x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .3)}
+  x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .2)}
+  x-console table {margin: 0}
+  x-console table tbody {
+    border-top-color: #214d58;
+    border-bottom-color: #214d58;
+    background-color: #214d58}
 
-  x-console [data-block][data-id='block__diagram_load'] {}
+  x-console [data-id='block__logs'] tbody    td {vertical-align: top; color: black}
+  x-console [data-id='block__logs'] tbody tr td                      {background-color: transparent}
+  x-console [data-id='block__logs'] tbody tr                         {background-color: white}
+  x-console [data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+  x-console [data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+  x-console [data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+  x-console [data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
+  x-console [data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
+  x-console [data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
+  x-console [data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color__error   !important}
+  x-console [data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color__warning !important}
 
-  x-console [data-block][data-id='block__logs'] [data-block-title] {margin: 1em 0; padding: 0}
-  x-console [data-block][data-id='block__logs'] tbody    td {vertical-align: top; color: black}
-  x-console [data-block][data-id='block__logs'] tbody tr td                      {background-color: transparent}
-  x-console [data-block][data-id='block__logs'] tbody tr                         {background-color: white}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-value='error'  ] td[data-cellid='value'] {background-color: %%_color__error   !important}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-value='warning'] td[data-cellid='value'] {background-color: %%_color__warning !important}
+  x-console [data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color__warning}
+  x-console [data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color__error}
+  x-console [data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color__error}
+  x-console [data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color__error}
 
-  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time'] {background-color: %%_color__warning}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time'] {background-color: %%_color__error}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time'] {background-color: %%_color__error}
-  x-console [data-block][data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time'] {background-color: %%_color__error}
-
-  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 6px 0 6px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
-  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
-  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
-  x-console [data-block][data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 6px 0 6px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']         + x-stack {display: none}
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='stack']:checked + x-stack {display: block}
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-stack {
     display: block;
     margin: 5px 0 3px 0;
     padding-top: 3px;
     border-top: 1px dotted black}
 
-  x-console [data-block][data-id='block__logs'] x-param {display: block; font-size: .9em}
-  x-console [data-block][data-id='block__logs'] x-param x-title {width: 200px; display: inline-block}
-  x-console [data-block][data-id='block__logs'] x-param x-title::after {content: ': '}
-  x-console [data-block][data-id='block__logs'] x-param x-value {font-family: monospace}
+  x-console [data-id='block__logs'] x-param {display: block; font-size: .9em}
+  x-console [data-id='block__logs'] x-param x-title {width: 200px; display: inline-block}
+  x-console [data-id='block__logs'] x-param x-title::after {content: ': '}
+  x-console [data-id='block__logs'] x-param x-value {font-family: monospace}
 
   x-console x-total {display: block; margin: 2em 0}
 
@@ -117,15 +125,15 @@
   x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
   x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 
-  [data-block][data-id='block__structures_diagram']                   x-diagram-uml x-attributes,
-  [data-block][data-id='block__structures_diagram']                   x-diagram-uml x-operations {display: none}
-  [data-block][data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
-  [data-block][data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
+  [data-id='block__structures_diagram']                   x-diagram-uml x-attributes,
+  [data-id='block__structures_diagram']                   x-diagram-uml x-operations {display: none}
+  [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
+  [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
   /* block__demo_canvas */
 
-  [data-block][data-id='block__demo_canvas'] [data-block-content] {text-align: center}
-  [data-block][data-id='block__demo_canvas'] [data-block-content] svg {
+  [data-id='block__demo_canvas'] [data-block-content] {text-align: center}
+  [data-id='block__demo_canvas'] [data-block-content] svg {
     width: 100%;
     max-width: 525px;
     height: auto}
