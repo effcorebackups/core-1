@@ -379,7 +379,7 @@
 
   /* form 'instance_select_multiple' */
 
-  form#instance_select_multiple x-selection {margin: 100px 0}
+  form#instance_select_multiple [data-selection] {margin: 100px 0; overflow: auto}
   form#instance_select_multiple button[value='insert'] {
     float: right;
     position: relative;

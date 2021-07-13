@@ -340,7 +340,7 @@
 
   /* x-selection */
 
-  x-selection {display: block}
+  [data-selection] {display: block}
 
   /* x-no-items */
 
@@ -514,8 +514,6 @@
   }
 
   /* manage-data-content */
-
-  [data-css-path^='manage-data-'] form#instance_select_multiple x-selection {overflow: auto}
 
   [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item {display: block; margin: 10px 0}
   [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block; max-width: 126px}

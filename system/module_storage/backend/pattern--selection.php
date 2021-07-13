@@ -8,6 +8,7 @@ namespace effcore {
           class selection extends markup implements has_external_cache {
 
   public $tag_name = 'x-selection';
+  public $attributes = ['data-selection' => true];
   public $template = 'container';
 # ─────────────────────────────────────────────────────────────────────
   public $title_tag_name = 'h2';
