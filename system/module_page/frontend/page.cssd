@@ -327,20 +327,15 @@
   x-module-info x-sticker x-version::before {content: 'v'}
   x-module-info x-sticker x-version {margin-left: .5em}
 
-  /* x-decorator 'sessions_logout' */
-
-  x-decorator[data-id='sessions_logout'] td[data-cellid='expired'] {width: 20%}
-
   /* x-decorator */
 
-  x-decorator {display: block}
-
-  x-decorator[data-view-type='ul'] ul {margin: 30px 0; padding: 0; list-style: none}
-  x-decorator[data-view-type='ul'] li {margin:      0; padding: 0}
-  x-decorator[data-view-type='ul'] x-title {opacity: .5}
-  x-decorator[data-view-type='ul'] x-title::after {content: ': '}
-  x-decorator[data-view-type='ul'] x-title:empty {display: none}
-  x-decorator[data-view-type='ul'] x-value:empty::after {content: 'x'; opacity: .3}
+  [data-decorator] {display: block}
+  [data-decorator][data-view-type='ul'] ul {margin: 30px 0; padding: 0; list-style: none}
+  [data-decorator][data-view-type='ul'] li {margin:      0; padding: 0}
+  [data-decorator][data-view-type='ul'] x-title {opacity: .5}
+  [data-decorator][data-view-type='ul'] x-title::after {content: ': '}
+  [data-decorator][data-view-type='ul'] x-title:empty {display: none}
+  [data-decorator][data-view-type='ul'] x-value:empty::after {content: 'x'; opacity: .3}
 
   /* x-selection */
 
@@ -521,13 +516,13 @@
 
   [data-css-path^='manage-data-'] form#instance_select_multiple x-selection {overflow: auto}
 
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item {display: block; margin: 10px 0}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block; max-width: 126px}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: 126px}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] img[data-type='cover'] {display: block; max-width: 126px; height: auto}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player {margin: 0; max-width: 126px}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player x-timeline {display: none}
-  [data-css-path^='manage-data-content-gallery-'] x-decorator[data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='video'] video {margin: 0; max-width: 126px}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item {display: block; margin: 10px 0}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block; max-width: 126px}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: 126px}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] img[data-type='cover'] {display: block; max-width: 126px; height: auto}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player {margin: 0; max-width: 126px}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='audio'] x-audio-player x-timeline {display: none}
+  [data-css-path^='manage-data-content-gallery-'] [data-decorator][data-main-entity='gallery'] [data-cellid='gallery.items'] x-item[data-type='video'] video {margin: 0; max-width: 126px}
 
   /* block 'system info' */
 
