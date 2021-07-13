@@ -119,7 +119,7 @@ namespace effcore {
                    $statistics[$c_log->object] = 0;
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time); }}
-    $diagram = new diagram(null, 'radial');
+    $diagram = new diagram(null, 'linear');
     $colors = core::diagram_colors;
     foreach ($statistics as  $c_key => $c_value)
       $diagram->slice_insert($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::apply('sec.'), array_shift($colors), ['data-id' => $c_key]);

@@ -26,14 +26,15 @@
     left: 0;
     width: calc(100% - 20px - 20px);
     margin-top: 100px;
-    padding: 0 20px;
+    padding: 50px 20px 0 20px;
     font-family: 'Arial';
     font-size: 15px;
     line-height: 1.5em;
+    border-top: 5px dashed #214d58;
     color: white;
     background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
     background-size: 20px}
-  x-console [data-block] {max-width: 900px; margin: 10px auto; overflow: auto}
+  x-console [data-block] {max-width: 900px; margin: 10px auto}
   x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
 
   x-console x-table {margin: 0}
@@ -49,6 +50,10 @@
     border-bottom-color: #214d58;
     background-color: #214d58}
 
+  x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale {border-color: #214d58}
+  x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale-fill {background-color: #214d58}
+
+  x-console [data-id='block__logs'] [data-decorator] {overflow: auto}
   x-console [data-id='block__logs'] tbody    td {vertical-align: top; color: black}
   x-console [data-id='block__logs'] tbody tr td                      {background-color: transparent}
   x-console [data-id='block__logs'] tbody tr                         {background-color: white}
