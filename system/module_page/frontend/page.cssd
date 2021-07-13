@@ -412,7 +412,7 @@
   x-diagram[data-type='linear'] x-param x-title {display: inline-block; width: 35%; padding-right: 7px; text-align: right; font-size: 1.1em}
   x-diagram[data-type='linear'] x-param x-title::after {content: ':'}
   x-diagram[data-type='linear'] x-param x-value {display: inline-block; width: 55%; padding-left: 7px; text-align: left}
-  x-diagram[data-type='linear'] x-param x-scale {display: block; height: 7px; border: 1px solid %%_color__main}
+  x-diagram[data-type='linear'] x-param x-scale {display: block; height: 7px; border: 1px solid %%_color__main; border-radius: 5px}
   x-diagram[data-type='linear'] x-param                       x-scale-fill {display: block; height: 7px; opacity: .5; background: %%_color__main}
   x-diagram[data-type='linear'] x-param[aria-selected='true'] x-scale-fill {background: %%_color__warning}
 
