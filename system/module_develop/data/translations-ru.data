@@ -55,6 +55,7 @@ translations
     - Demonstration menu SQL: Меню демонстрационное SQL
     - Demonstration menu via decorator: Меню демонстрационное через декоратор
     - Description for messages: Описание для сообщений
+    - Displaying the console will result in a %%_value increase in RAM consumption.: Отображение консоли приведёт к увеличению потребления ОЗУ на %%_value.
     - DL table: DL таблица
     - Embedded elements: Встроенные элементы
     - ending: окончание

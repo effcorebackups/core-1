@@ -55,6 +55,7 @@ translations
     - Demonstration menu SQL: Меню дэманстрацыйнае SQL
     - Demonstration menu via decorator: Меню дэманстрацыйнае праз дэкаратар
     - Description for messages: Апісанне для паведамленняў
+    - Displaying the console will result in a %%_value increase in RAM consumption.: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value.
     - DL table: DL табліца
     - Embedded elements: Убудаваныя элементы
     - ending: заканчэнне
