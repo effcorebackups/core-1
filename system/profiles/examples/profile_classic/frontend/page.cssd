@@ -92,6 +92,6 @@
 
   /* social networks */
 
-  [data-layout-id='original_classic'] x-decorator[data-id='social_networks'] {line-height: 0}
-  [data-layout-id='original_classic'] x-decorator[data-id='social_networks'] a[data-id^='picture-']     {display: inline-block; margin: 0 0 0 10px}
-  [data-layout-id='original_classic'] x-decorator[data-id='social_networks'] a[data-id^='picture-'] img {display: inline-block; width: 30px; height: 30px}
+  [data-layout-id='original_classic'] [data-decorator][data-id='social_networks'] {line-height: 0}
+  [data-layout-id='original_classic'] [data-decorator][data-id='social_networks'] a[data-id^='picture-']     {display: inline-block; margin: 0 0 0 10px}
+  [data-layout-id='original_classic'] [data-decorator][data-id='social_networks'] a[data-id^='picture-'] img {display: inline-block; width: 30px; height: 30px}

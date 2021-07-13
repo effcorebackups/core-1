@@ -9,6 +9,7 @@ namespace effcore {
 
   public $id;
   public $tag_name = 'x-decorator';
+  public $attributes = ['data-decorator' => true];
   public $view_type = 'table'; # table | table-adaptive | table-dl | ul | dl | tree | template
   public $template = 'markup_html';
   public $template_row;

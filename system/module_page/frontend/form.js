@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ───────────────────────────────────────────────────────────────────── */
 
   document.querySelectorAll__notNull('x-selection').forEach(function(c_selection){
-    c_selection.querySelector__notNull('x-decorator[data-view-type="table-adaptive"]').forFirst__(function(decorator){
+    c_selection.querySelector__notNull('[data-decorator][data-view-type="table-adaptive"]').forFirst__(function(decorator){
       var head_cell       = decorator.querySelector__notNull   ('x-head x-cell[data-cellid="checkbox"]'                       );
       var body_checkboxes = decorator.querySelectorAll__notNull('x-body x-cell[data-cellid="checkbox"] input[type="checkbox"]');
       if (head_cell.length == 1 && body_checkboxes.length) {

@@ -84,11 +84,12 @@
 
   /* PHP dependencies */
 
-  x-decorator[data-id='extensions_dependency'] {font-size: .9em}
+  [data-decorator][data-id='extensions_dependency'] {font-size: .9em}
 
   /* events */
 
-  x-decorator[data-id^='nosql_events_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
+  [data-decorator][data-id^='nosql_events_handlers'] {overflow: auto}
+  [data-decorator][data-id^='nosql_events_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
 
   /* x-structures-list */
 
