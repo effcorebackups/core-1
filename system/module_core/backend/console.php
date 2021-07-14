@@ -46,18 +46,20 @@ namespace effcore {
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
     static::init();
     $new_log = new \stdClass;
+    $new_log->object      = $object;
+    $new_log->action      = $action;
+    $new_log->description = $description;
+    $new_log->value       = $value;
+    $new_log->time        = $time;
+    $new_log->args        = $args;
     if (static::visible_mode_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
       if ($stack[0]['function'] === 'log_insert'            ) array_shift($stack);
       if ($stack[0]['function'] === 'report_about_duplicate') array_shift($stack);
-      $new_log->stack       = core::format_debug_backtrace($stack);
-    } $new_log->object      = $object;
-      $new_log->action      = $action;
-      $new_log->description = $description;
-      $new_log->value       = $value;
-      $new_log->time        = $time;
-      $new_log->args        = $args;
+      $new_log->stack = core::format_debug_backtrace($stack);
+    }
     static::$data[] = $new_log;
+
   # store errors to the static::$file_log_err
     if ($value === 'error') {
       $c_info = $new_log->description;
@@ -135,13 +137,14 @@ namespace effcore {
     $decorator->result_attributes = ['data-style' => 'compact'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
       $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
-      $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
+      $c_data_hash          = core::hash_get_data(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
-      $c_row_attributes  = ['data-hash'   => core::hash_get_mini($c_log->object.$c_log->action.$c_log->description)];
-      $c_row_attributes += ['data-object' => core::sanitize_id(trim($c_log->object, '.'))];
-      $c_row_attributes += ['data-action' => core::sanitize_id(trim($c_log->action, '.'))];
-      $c_row_attributes += ['data-value'  => core::sanitize_id(trim($c_log->value,  '.'))];
+      $c_row_attributes  = ['data-hash-sequence' => core::hash_get_mini($c_sequence_hash)];
+      $c_row_attributes += ['data-hash-data'     => core::hash_get_mini($c_data_hash    )];
+      $c_row_attributes += ['data-object'        => core::sanitize_id(trim($c_log->object, '.'))];
+      $c_row_attributes += ['data-action'        => core::sanitize_id(trim($c_log->action, '.'))];
+      $c_row_attributes += ['data-value'         => core::sanitize_id(trim($c_log->value,  '.'))];
       $c_stack_opener = isset($c_log->stack) ? (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'stack', 'title' => new text('press to show stack')]))->render() : '';
       $c_stack        = isset($c_log->stack) ? (new markup('x-stack', [], $c_log->stack))->render() : '';
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;

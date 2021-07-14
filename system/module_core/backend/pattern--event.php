@@ -78,9 +78,9 @@ namespace effcore {
     $result = [];
     if (!empty(static::get_all()[$type])) {
       foreach (static::get_all()[$type] as $c_event) {
-        if ($for == null          ||
-            $for == $c_event->for ||
-                    $c_event->for == null) {
+        if ($for === null          ||
+            $for === $c_event->for ||
+                     $c_event->for === null) {
           if ($c_event->skip_console_log === false) console::log_insert('event', 'beginning', ltrim($c_event->handler, '\\'), null, 0);
         # ─────────────────────────────────────────────────────────────────────
           timer::tap('event call: '.$type);
