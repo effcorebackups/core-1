@@ -20,9 +20,9 @@ namespace effcore {
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => []];
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => []];
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
       static::$file_log_err = new file(static::directory.core::date_get().'/error--'.core::date_get().'.log');
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
@@ -43,7 +43,7 @@ namespace effcore {
     return static::$data;
   }
 
-  static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = []) {
+  static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = [], $info = []) {
     static::init();
     $new_log = new \stdClass;
     $new_log->object      = $object;
@@ -52,11 +52,12 @@ namespace effcore {
     $new_log->value       = $value;
     $new_log->time        = $time;
     $new_log->args        = $args;
+    $new_log->info        = $info;
     if (static::visible_mode_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
       if ($stack[0]['function'] === 'log_insert'            ) array_shift($stack);
       if ($stack[0]['function'] === 'report_about_duplicate') array_shift($stack);
-      $new_log->stack = core::format_debug_backtrace($stack);
+      $new_log->info['stack'] = static::render_stack($stack);
     }
     static::$data[] = $new_log;
 
@@ -104,11 +105,11 @@ namespace effcore {
     $decorator = new decorator('table-dl');
     $decorator->id = 'page_information';
     $decorator->data = [[
-      'gen_time'    => ['title' => 'Total generation time',  'value' => locale::format_msecond(timer::period_get('total', 0, 1))  ],
-      'memory'      => ['title' => 'Memory for PHP',         'value' => locale::format_bytes(memory_get_usage(true))              ],
-      'language'    => ['title' => 'Current language',       'value' => language::code_get_current()                              ],
-      'roles'       => ['title' => 'User roles',             'value' => $user_roles       ? implode(', ', $user_roles      ) : '—'],
-      'permissions' => ['title' => 'User permissions',       'value' => $user_permissions ? implode(', ', $user_permissions) : '—'] ]];
+      'gen_time'    => ['title' => 'Total generation time', 'value' => locale::format_msecond(timer::period_get('total', 0, 1))  ],
+      'memory'      => ['title' => 'Memory for PHP',        'value' => locale::format_bytes(memory_get_usage(true))              ],
+      'language'    => ['title' => 'Current language',      'value' => language::code_get_current()                              ],
+      'roles'       => ['title' => 'User roles',            'value' => $user_roles       ? implode(', ', $user_roles      ) : '—'],
+      'permissions' => ['title' => 'User permissions',      'value' => $user_permissions ? implode(', ', $user_permissions) : '—'] ]];
     return new block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
   }
 
@@ -145,8 +146,7 @@ namespace effcore {
       $c_row_attributes += ['data-object'        => core::sanitize_id(trim($c_log->object, '.'))];
       $c_row_attributes += ['data-action'        => core::sanitize_id(trim($c_log->action, '.'))];
       $c_row_attributes += ['data-value'         => core::sanitize_id(trim($c_log->value,  '.'))];
-      $c_stack_opener = isset($c_log->stack) ? (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'stack', 'title' => new text('press to show stack')]))->render() : '';
-      $c_stack        = isset($c_log->stack) ? (new markup('x-stack', [], $c_log->stack))->render() : '';
+      $c_info = !empty($c_log->info) ? static::render_info_markup($c_log->info) : '';
       if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
       if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
       if ($c_log->time  >=   .0099) $c_row_attributes['data-loading-level'] = 3;
@@ -154,16 +154,37 @@ namespace effcore {
       if ($c_log->time  >=     .99) $c_row_attributes['data-loading-level'] = 5;
       $decorator->data[] = [
         'attributes'  => $c_row_attributes,
-        'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)                     ],
-        'object'      => ['title' => 'Object',      'value' =>               new text($c_log->object,      $c_log->args)],
-        'action'      => ['title' => 'Action',      'value' =>               new text($c_log->action,      $c_log->args)],
-        'description' => ['title' => 'Description', 'value' =>   !$c_stack ? new text($c_log->description, $c_log->args) : new text_multiline([$c_log->description, $c_stack_opener, $c_stack], $c_log->args, '')],
-        'value'       => ['title' => 'Val.',        'value' =>               new text($c_log->value                    )] ]; }
+        'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)                                   ],
+        'object'      => ['title' => 'Object',      'value' =>               new text($c_log->object,                $c_log->args    )],
+        'action'      => ['title' => 'Action',      'value' =>               new text($c_log->action,                $c_log->args    )],
+        'description' => ['title' => 'Description', 'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
+        'value'       => ['title' => 'Val.',        'value' =>               new text($c_log->value                                  )] ];}
     return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
       new markup('x-param', ['data-id' => 'dhash'], [new markup('x-title', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])])
     ]);
+  }
+
+  static function render_info_markup($data) {
+    $info_opener = new markup_simple('input', ['data-opener-type' => 'info', 'type' => 'checkbox', 'role' => 'button', 'title' => new text('press to show more information')]);
+    $info        = new markup('x-info');
+    foreach ($data as $c_title => $c_value)
+      $info->child_insert(
+        new markup('x-param', [], [
+        new markup('x-title', [], $c_title),
+        new markup('x-value', [], $c_value)]), $c_title);
+    return $info_opener->render().
+           $info       ->render();
+  }
+
+  static function render_stack($data) {
+    $result = [];
+    foreach ($data as $c_info)
+      $result[] = ($c_info['class'   ] ?? '').
+                  ($c_info['type'    ] ?? '').
+                   $c_info['function'];
+    return implode(' → ', array_reverse($result));
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -216,19 +237,29 @@ namespace effcore {
     $result.= '  ------------------------------------------------------------'.nl;
     foreach (static::logs_select() as $c_log) {
       $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
-      $c_data_hash          = core::hash_get_data(['time' => 0]               + (array)$c_log);
+      $c_data_hash          = core::hash_get_data(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
       $result.= '  '.str_pad(locale::format_msecond($c_log->time), 8).' | ';
       $result.=      str_pad($c_log->object, 10).                     ' | ';
       $result.=      str_pad($c_log->action, 10).                     ' | ';
       $result.=      str_pad($c_log->value,   5).                     ' | ';
-      $result.=    (new text($c_log->description.(isset($c_log->stack) ? '   …   '.$c_log->stack : ''), $c_log->args, false))->render().nl; }
+      if (!empty($c_log->info))
+           $result.= (new text($c_log->description.'   …   '.static::render_info_text($c_log->info), $c_log->args, false))->render().nl;
+      else $result.= (new text($c_log->description,                                   $c_log->args,                false))->render().nl;
+    }
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
     $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;
     $result.= nl.'  '.str_pad('Data hash: ',     16).$total_data_hash;
     return nl.$result.nl;
+  }
+
+  static function render_info_text($data) {
+    $result = new node;
+    foreach ($data as $c_title => $c_value)
+      $result->child_insert(new text($c_title.': '.$c_value.'; '), $c_title);
+    return $result->render();
   }
 
 }}

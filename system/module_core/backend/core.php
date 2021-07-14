@@ -82,7 +82,7 @@ namespace effcore {
     if (isset(static::structures_select()[$name])) {
       $c_item_info = static::structures_select()[$name];
       $c_file = new file($c_item_info->file);
-      $c_file->insert();
+      $c_file->require();
     }
   }
 
@@ -582,15 +582,6 @@ namespace effcore {
       $result = rtrim($result, $dec_point);
     }
     return $result;
-  }
-
-  static function format_debug_backtrace($stack) {
-    $result = [];
-    foreach ($stack as $c_info)
-      $result[] = ($c_info['class'   ] ?? '').
-                  ($c_info['type'    ] ?? '').
-                   $c_info['function'];
-    return implode(' → ', array_reverse($result));
   }
 
   ###############

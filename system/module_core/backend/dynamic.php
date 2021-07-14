@@ -29,7 +29,7 @@ namespace effcore {
     if (!isset(static::$data[$name])) {
       $file = static::get_file_by_name($name, $sub_dirs);
       if ($file->is_exists()) {
-        $file->insert();
+        $file->require();
       }
     }
     return static::$data[$name] ?? null;

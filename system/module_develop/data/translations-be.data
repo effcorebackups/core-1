@@ -122,6 +122,7 @@ translations
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
+    - memory consumption: спажыванне памяці
     - method private: метад прыватны
     - method protected: метад абаронены
     - method public: метад публічны
@@ -151,7 +152,7 @@ translations
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
-    - press to show stack: націсніце, каб паказаць стэк
+    - press to show more information: націсніце, каб паказаць дадатковую інфармацыю
     - property private: уласцівасць прыватная
     - property protected: уласцівасць абароненая
     - property public: уласцівасць публічная
@@ -186,6 +187,7 @@ translations
     - show for everyone: паказваць усім
     - simple string: просты радок
     - some description: нейкае апісанне
+    - stack: стэк
     - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
     - string with parameter = %%_n: радок з параметрам = %%_n
     - string with plural value = %%_number second%%_plural{number\|s}: радок з множным лікам = %%_number секунд%%_plural{number|a-ji}

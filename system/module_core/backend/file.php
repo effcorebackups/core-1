@@ -253,15 +253,16 @@ namespace effcore {
     }
   }
 
-  function insert($once = true) {
+  function require($once = true) {
     $relative = $this->path_get_relative();
     timer::tap('file insert: '.$relative);
     $result = $once ? require_once($this->path_get()) :
                            require($this->path_get());
     timer::tap('file insert: '.$relative);
-    console::log_insert('file', 'insertion', $relative, 'ok',
-      timer::period_get('file insert: '.$relative, -1, -2)
-    );
+    if (console::visible_mode_get()) {
+      $memory_consumption = static::cache_op_info_get($this->path_get_absolute())['memory_consumption'] ?? null;
+           console::log_insert('file', 'insertion', $relative, 'ok', timer::period_get('file insert: '.$relative, -1, -2), [], ['memory consumption' => $memory_consumption ?: '—']);
+    } else console::log_insert('file', 'insertion', $relative, 'ok', timer::period_get('file insert: '.$relative, -1, -2), []);
     return $result;
   }
 
@@ -309,10 +310,18 @@ namespace effcore {
 
   static protected $cache_data;
   static protected $cache_file_types;
+  static protected $cache_op;
 
   static function cache_cleaning() {
     static::$cache_data       = null;
     static::$cache_file_types = null;
+    static::$cache_op         = null;
+  }
+
+  static function cache_op_info_get($path_absolute) {
+    if (static::$cache_op === null)
+        static::$cache_op = opcache_get_status(true);
+    return static::$cache_op['scripts'][$path_absolute] ?? null;
   }
 
   static function init() {
