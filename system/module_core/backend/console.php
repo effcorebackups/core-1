@@ -20,9 +20,9 @@ namespace effcore {
   static function init($reset = false) {
     if (!static::$is_init || $reset) {
          static::$is_init = true;
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
-      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'args' => [], 'info' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
+      static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
       static::$file_log_err = new file(static::directory.core::date_get().'/error--'.core::date_get().'.log');
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
@@ -46,13 +46,14 @@ namespace effcore {
   static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = [], $info = []) {
     static::init();
     $new_log = new \stdClass;
-    $new_log->object      = $object;
-    $new_log->action      = $action;
-    $new_log->description = $description;
-    $new_log->value       = $value;
-    $new_log->time        = $time;
-    $new_log->args        = $args;
-    $new_log->info        = $info;
+    $new_log->object       = $object;
+    $new_log->action       = $action;
+    $new_log->description  = $description;
+    $new_log->value        = $value;
+    $new_log->time         = $time;
+    $new_log->args         = $args;
+    $new_log->info         = $info;
+    $new_log->ram_dynamics = memory_get_usage(true);
     if (static::visible_mode_get()) {
       $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
       if ($stack[0]['function'] === 'log_insert'            ) array_shift($stack);
@@ -153,12 +154,13 @@ namespace effcore {
       if ($c_log->time  >=    .099) $c_row_attributes['data-loading-level'] = 4;
       if ($c_log->time  >=     .99) $c_row_attributes['data-loading-level'] = 5;
       $decorator->data[] = [
-        'attributes'  => $c_row_attributes,
-        'time'        => ['title' => 'Time',        'value' => locale::format_msecond($c_log->time)                                   ],
-        'object'      => ['title' => 'Object',      'value' =>               new text($c_log->object,                $c_log->args    )],
-        'action'      => ['title' => 'Action',      'value' =>               new text($c_log->action,                $c_log->args    )],
-        'description' => ['title' => 'Description', 'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
-        'value'       => ['title' => 'Val.',        'value' =>               new text($c_log->value                                  )] ];}
+        'attributes'   => $c_row_attributes,
+        'time'         => ['title' => 'Time',         'value' => locale::format_msecond($c_log->time)                                   ],
+        'ram_dynamics' => ['title' => 'RAM dynamics', 'value' => locale::format_bytes  ($c_log->ram_dynamics)                           ],
+        'object'       => ['title' => 'Object',       'value' =>               new text($c_log->object,                $c_log->args    )],
+        'action'       => ['title' => 'Action',       'value' =>               new text($c_log->action,                $c_log->args    )],
+        'description'  => ['title' => 'Description',  'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
+        'value'        => ['title' => 'Val.',         'value' =>               new text($c_log->value                                  )] ];}
     return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),

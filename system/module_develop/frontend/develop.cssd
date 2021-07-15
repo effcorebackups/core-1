@@ -34,7 +34,7 @@
     color: white;
     background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svg') 0 -41px;
     background-size: 20px}
-  x-console [data-block] {max-width: 900px; margin: 10px auto}
+  x-console [data-block] {max-width: 990px; margin: 10px auto}
   x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
 
   x-console x-table {margin: 0}
