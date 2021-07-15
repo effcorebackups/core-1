@@ -47,6 +47,7 @@ translations
     - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КОМБИНАТОРИКА: ВОЗМОЖНЫЕ ПЕРЕСТАНОВКИ '.|..|...' + '0' + '1' В ПУТИ ФАЙЛА ИЗ URL
     - Console: Консоль
     - Constraints: Ограничения
+    - CPU load time: Время загрузки процессора
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - default text: текст по умолчанию
@@ -212,7 +213,6 @@ translations
     - This description is shown on top.: Это описание показано сверху.
     - To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.: Для повышения производительности консоль в файлах типа ".cssd" и ".jsd" будет отображаться только в режиме "показать всем".
     - Total generation time: Общее время генерации
-    - Total load: Общая загрузка
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)

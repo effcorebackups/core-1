@@ -127,7 +127,7 @@ namespace effcore {
     $colors = core::diagram_colors;
     foreach ($statistics as  $c_key => $c_value)
       $diagram->slice_insert($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::apply('sec.'), array_shift($colors), ['data-id' => $c_key]);
-    return new block('Total load', ['data-id' => 'block__diagram_load'], [$diagram]);
+    return new block('CPU load time', ['data-id' => 'block__diagram_load'], [$diagram]);
   }
 
   static function block_markup__logs() {
@@ -219,7 +219,7 @@ namespace effcore {
                    $statistics[$c_log->object] = 0;
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time); }}
-    $result = '  TOTAL LOAD'.nl.nl;
+    $result = '  CPU LOAD TIME'.nl.nl;
     foreach ($statistics as $c_key => $c_value) {
       $c_percent = $c_value / $total * 100;
       $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                           ' | ';
