@@ -164,7 +164,7 @@ translations
     - Radiobutton 1: Переключатель 1
     - Radiobutton 2 (checked): Переключатель 2 (отмечен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
-    - RAM dynamics: Динамика ОЗУ
+    - RAM load dynamics: Динамика загрузки ОЗУ
     - REGISTERED USER + ROLE: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ + РОЛЬ
     - REGISTERED USER: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
     - Relation (tree view): Связь (в виде дерева)
