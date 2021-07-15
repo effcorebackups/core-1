@@ -372,7 +372,7 @@
 
   /* note: CSS4 margin-left: calc(20px * attr(data-depth number, 0)) */
 
-  x-document[data-style~='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px; font-smooth: never; -webkit-font-smoothing : none}
+  x-document[data-style~='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px}
   x-document[data-style~='report'] p:first-child {margin-top:    0}
   x-document[data-style~='report'] p:last-child  {margin-bottom: 0}
   x-document[data-style~='report'] p[data-depth='1'] {margin-left:  15px}

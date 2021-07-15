@@ -39,15 +39,11 @@ namespace effcore\modules\develop {
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
       $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
-      $query_beautiful_args = '\''.implode('\', \'', $args_trimmed).'\'';
+      $query_beautiful_args = '[\''.implode('\', \'', $args_trimmed).'\']';
       $query_time = timer::period_get('storage query with hash: '.$query_hash, -1, -2);
-      console::log_insert('storage', 'query', count($storage->args) ?
-        'query = "%%_query"'.br.'arguments = [%%_args]' :
-        'query = "%%_query"',
-        'ok',      $query_time, [
-        'query' => $query_beautiful,
-        'args'  => $query_beautiful_args
-      ]);
+      if (count($storage->args))
+           console::log_insert('storage', 'query', $query_beautiful, 'ok', $query_time, [], ['arguments' => $query_beautiful_args]);
+      else console::log_insert('storage', 'query', $query_beautiful, 'ok', $query_time, []);
     }
   }
 

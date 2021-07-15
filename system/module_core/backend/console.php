@@ -246,7 +246,7 @@ namespace effcore {
       $result.=      str_pad($c_log->value,   5).                     ' | ';
       if (!empty($c_log->info))
            $result.= (new text($c_log->description.'   …   '.static::render_info_text($c_log->info), $c_log->args, false))->render().nl;
-      else $result.= (new text($c_log->description,                                   $c_log->args,                false))->render().nl;
+      else $result.= (new text($c_log->description,                                                  $c_log->args, false))->render().nl;
     }
     $result.= '  ------------------------------------------------------------'.nl;
     $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
