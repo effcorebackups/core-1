@@ -64,7 +64,7 @@
   [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'] {display: none}
 
                          [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li                          a,
-  [data-user-has-avatar] [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding: 5px 10px 5px 38px; background-size: 24px 24px; background-position: 4px 4px}
+  [data-user-has-avatar] [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding: 5px 10px 5px 42px; background-size: 32px; background-position: 0}
                          [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li li a {padding: 0}
 
   [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] {margin: 6px 20px}
