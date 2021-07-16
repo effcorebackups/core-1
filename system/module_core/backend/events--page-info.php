@@ -16,6 +16,7 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\text;
           use \effcore\update;
+          use \effcore\url;
           abstract class events_page_info {
 
   static function block_markup__system_info($page, $args = []) {
@@ -46,7 +47,7 @@ namespace effcore\modules\core {
     $decorator = new decorator('table-dl');
     $decorator->id = 'service_info';
     $decorator->data = [[
-      'cron_url'      => ['title' => 'Cron URL',                'value' => $cron_url                       ],
+      'cron_url'      => ['title' => 'Cron URL',                'value' => url::url_to_markup($cron_url)   ],
       'cron_last_run' => ['title' => 'Cron last run',           'value' => $sticker_for_cron_last_run      ],
       'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update ] ]];
     return new node([], [

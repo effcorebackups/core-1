@@ -45,6 +45,14 @@
   a[aria-selected      ='true'] {color: %%_color__link_active}
   a[data-selected-trail='true'] {color: %%_color__link_active}
 
+  x-url                {display: inline-block}
+  x-url x-protocol     {display: inline-block}
+  x-url x-domain       {display: inline-block}
+  x-url x-path         {display: inline-block}
+  x-url x-path x-slash {display: inline-block; padding: 0 2px}
+  x-url x-query        {display: inline-block}
+  x-url x-anchor       {display: inline-block}
+
   /* pictures */
 
   img {border: 0}

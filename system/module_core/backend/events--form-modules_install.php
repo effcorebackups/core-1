@@ -19,6 +19,7 @@ namespace effcore\modules\core {
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\translation;
+          use \effcore\url;
           abstract class events_form_modules_install {
 
   static function on_init($event, $form, $items) {
@@ -81,7 +82,7 @@ namespace effcore\modules\core {
           if (isset($enabled[$c_module->id])) {
             $c_info->child_insert(new markup('x-param', ['data-type' => 'url'], [
               new markup('x-title', [], $c_title),
-              new markup('x-value', [], new markup('a', ['href' => $c_url], $c_url))
+              new markup('x-value', [], new markup('a', ['href' => $c_url], url::url_to_markup($c_url)))
             ]), 'url_'.core::sanitize_id($c_title, '_')); }}
         $info->child_select($c_module->group_get_id())->child_insert($c_info, 'module_'.$c_module->id);
       }

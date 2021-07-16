@@ -139,9 +139,11 @@ namespace effcore {
 
   function full_get() {
     if (!$this->has_error) {
-      $result = $this->protocol.'://'.$this->domain.$this->path;
-      if ($this->query ) $result.= '?'.$this->query;
-      if ($this->anchor) $result.= '#'.$this->anchor;
+      $result = $this->path;
+      if ($this->domain  ) $result =     $this->domain.$result;
+      if ($this->protocol) $result =     $this->protocol.'://'.$result;
+      if ($this->query   ) $result.= '?'.$this->query;
+      if ($this->anchor  ) $result.= '#'.$this->anchor;
       return rtrim($result, '/');
     }
   }
@@ -244,6 +246,19 @@ namespace effcore {
     core::send_header_and_exit('redirect', null, null,
       (new static($url))->full_get()
     );
+  }
+
+  static function url_to_markup($url) {
+    $info = new static($url, ['completion' => false]);
+    if (!$info->has_error) {
+      return new markup('x-url', [], [
+        'protocol' => new markup('x-protocol', [], new text($info->protocol ? $info->protocol.'://' : '', [], false, false)),
+        'domain'   => new markup('x-domain',   [], new text($info->domain, [], false, false)),
+        'path'     => new markup('x-path',     [], new text(str_replace('/', (new markup('x-slash', [], '/'))->render(), $info->path), [], false, false)),
+        'query'    => new markup('x-query',    [], new text($info->query  ? '?'.$info->query  : '', [], false, false)),
+        'anchor'   => new markup('x-anchor',   [], new text($info->anchor ? '#'.$info->anchor : '', [], false, false))
+      ]);
+    } else return new text;
   }
 
 }}

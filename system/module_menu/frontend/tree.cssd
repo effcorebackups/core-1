@@ -92,7 +92,7 @@
   [role='tree'][data-visualization-mode] x-item x-title {display: inline-block; margin-right: 1em; font-size: 1.2em; color: %%_color__text}
   [role='tree'][data-visualization-mode] x-item x-extra {display: inline-block}
   [role='tree'][data-visualization-mode] x-item x-url   {display: block; line-height: 1.4em; color: %%_color__text; opacity: .5}
-  [role='tree'][data-visualization-mode] x-item x-url x-dirs-delimiter {padding: 0 2px; font-style: normal}
+  [role='tree'][data-visualization-mode] x-item x-url[data-no-url] {opacity: .2}
 
   [role='tree'][data-visualization-mode] li            {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') repeat-y         }
   [role='tree'][data-visualization-mode] li:last-child {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') no-repeat 0 -61px}
