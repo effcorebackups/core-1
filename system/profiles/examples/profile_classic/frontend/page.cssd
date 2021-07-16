@@ -59,17 +59,13 @@
 
   /* menus: 'system', 'user', 'languages' */
 
-  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li    a {padding: 5px 10px}
+  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li    a {padding: 5px 10px 5px 32px; background-size: 32px 32px}
   [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li li a {padding: 0}
-  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] {display: none}
-  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 32px; background-size: 32px 32px}
-  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 32px; background-size: 32px 32px}
+  [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'] {display: none}
 
-  [data-layout-id='original_classic']                        [role='tree'][data-style~='dropdown'][data-id^='user'] li    a {padding: 5px 10px}
-  [data-layout-id='original_classic']                        [role='tree'][data-style~='dropdown'][data-id^='user'] li li a {padding: 0}
-  [data-layout-id='original_classic']                        [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='anonymous' ] > a {padding-left: 38px; background-size: 24px 24px; background-position: 4px 4px}
-  [data-layout-id='original_classic']                        [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 38px; background-size: 24px 24px; background-position: 4px 4px}
-  [data-layout-id='original_classic'] [data-user-has-avatar] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 38px; background-size: 24px 24px; background-position: 4px 4px}
+                         [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li                          a,
+  [data-user-has-avatar] [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding: 5px 10px 5px 38px; background-size: 24px 24px; background-position: 4px 4px}
+                         [data-layout-id='original_classic'] [role='tree'][data-style~='dropdown'][data-id^='user'] li li a {padding: 0}
 
   [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] {margin: 6px 20px}
   [data-layout-id='original_classic'] [role='tree'][data-id^='languages'] li a {color: black}
