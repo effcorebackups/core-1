@@ -52,6 +52,7 @@
   x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale {border-color: #214d58}
   x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale-fill {background-color: #214d58}
 
+  x-console [data-id='block__info'] [data-decorator],
   x-console [data-id='block__logs'] [data-decorator] {overflow: auto}
 
   x-console [data-id='block__logs'] tbody tr                         {background-color: white}
