@@ -3,9 +3,9 @@ pages
     id: data_nosql
     title: NoSQL data
     url: %^(?<base>/develop/data_nosql)(/
->>>>>>>>>>>(?<type>trees|
+>>>>>>>>>>>(?<type>events|
 >>>>>>>>>>>>>>>>>>>selections|
->>>>>>>>>>>>>>>>>>>events|
+>>>>>>>>>>>>>>>>>>>trees|
 >>>>>>>>>>>>>>>>>>>file_types|
 >>>>>>>>>>>>>>>>>>>templates|
 >>>>>>>>>>>>>>>>>>>tokens|
@@ -52,6 +52,17 @@ pages
           - data-id: block__form__cache_update
           type: link
           source: forms/core/cache_update
+      - block__nosql_events|block
+          title: Events
+          title_is_visible: false
+          attributes
+          - data-id: block__nosql_events
+          display
+            check: page_args
+            where: type
+            match: %^events$%
+          type: code
+          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_events
       - block__nosql_trees|block
           title: Trees
           title_is_visible: false
@@ -74,17 +85,6 @@ pages
             match: %^selections$%
           type: code
           source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_selections
-      - block__nosql_events|block
-          title: Events
-          title_is_visible: false
-          attributes
-          - data-id: block__nosql_events
-          display
-            check: page_args
-            where: type
-            match: %^events$%
-          type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_events
       - block__nosql_file_types|block
           title: File types
           title_is_visible: false

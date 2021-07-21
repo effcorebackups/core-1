@@ -29,7 +29,7 @@ namespace effcore\modules\develop {
   static function on_redirect($event, $page) {
     $type = page::get_current()->args_get('type');
     $id   = page::get_current()->args_get('id');
-    if ($type === null) url::go($page->args_get('base').'/trees');
+    if ($type === null) url::go($page->args_get('base').'/events');
     if ($type === 'trees') {
       $trees = tree::select_all('nosql');
       core::array_sort_by_text_property($trees);
@@ -71,6 +71,33 @@ namespace effcore\modules\develop {
     }
   }
 
+  static function block_markup__nosql_events($page, $args = []) {
+    $targets = new markup('x-targets');
+    $report = new node;
+    $events = event::get_all();
+    ksort($events);
+    foreach ($events as $c_event_type => $c_events) {
+      $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type, 'title' => new text('go to section "%%_title"', ['title' => $c_event_type])], $c_event_type));
+      $c_decorator = new decorator('table-adaptive');
+      $c_decorator->id = 'nosql_events_handlers__'.$c_event_type;
+      $c_decorator->result_attributes = ['data-style' => 'compact'];
+      $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type, 'title' => new text('Section "%%_title"', ['title' => $c_event_type])], $c_event_type), $c_event_type.'_header'   );
+      $report->child_insert($c_decorator,                                                                                                                            $c_event_type.'_decorator');
+      foreach ($c_events as $c_event) {
+        $c_decorator->data[] = [
+          'module_id' => ['value' => new text_simple($c_event->module_id), 'title' => 'Module ID'],
+          'for_id'    => ['value' => new text_simple($c_event->for      ), 'title' => 'For ID'   ],
+          'handler'   => ['value' => new text_simple($c_event->handler  ), 'title' => 'Handler'  ],
+          'weight'    => ['value' => new text_simple($c_event->weight   ), 'title' => 'Weight'   ]
+        ];
+      }
+    }
+    return new node([], [
+      $targets,
+      $report
+    ]);
+  }
+
   static function block_markup__nosql_tree($page, $args = []) {
     $id = $page->args_get('id');
     $trees = tree::select_all('nosql');
@@ -105,33 +132,6 @@ namespace effcore\modules\develop {
       ];
     }
     return $decorator;
-  }
-
-  static function block_markup__nosql_events($page, $args = []) {
-    $targets = new markup('x-targets');
-    $report = new node;
-    $events = event::get_all();
-    ksort($events);
-    foreach ($events as $c_event_type => $c_events) {
-      $targets->child_insert(new markup('a', ['href' => '#type_'.$c_event_type, 'title' => new text('go to section "%%_title"', ['title' => $c_event_type])], $c_event_type));
-      $c_decorator = new decorator('table-adaptive');
-      $c_decorator->id = 'nosql_events_handlers__'.$c_event_type;
-      $c_decorator->result_attributes = ['data-style' => 'compact'];
-      $report->child_insert(new markup('h2', ['id' => 'type_'.$c_event_type, 'title' => new text('Section "%%_title"', ['title' => $c_event_type])], $c_event_type), $c_event_type.'_header'   );
-      $report->child_insert($c_decorator,                                                                                                                            $c_event_type.'_decorator');
-      foreach ($c_events as $c_event) {
-        $c_decorator->data[] = [
-          'module_id' => ['value' => new text_simple($c_event->module_id), 'title' => 'Module ID'],
-          'for_id'    => ['value' => new text_simple($c_event->for      ), 'title' => 'For ID'   ],
-          'handler'   => ['value' => new text_simple($c_event->handler  ), 'title' => 'Handler'  ],
-          'weight'    => ['value' => new text_simple($c_event->weight   ), 'title' => 'Weight'   ]
-        ];
-      }
-    }
-    return new node([], [
-      $targets,
-      $report
-    ]);
   }
 
   static function block_markup__nosql_file_types($page, $args = []) {

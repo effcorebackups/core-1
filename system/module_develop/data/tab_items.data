@@ -1,24 +1,24 @@
 tab_items
-- nosql_trees|tab_item
-    id: nosql_trees
-    id_parent: null
-    id_tab: data_nosql
-    action_name: trees
-    title: Trees
-    weight: +500
-- nosql_selections|tab_item
-    id: nosql_selections
-    id_parent: null
-    id_tab: data_nosql
-    action_name: selections
-    title: Selections
-    weight: +480
 - nosql_events|tab_item
     id: nosql_events
     id_parent: null
     id_tab: data_nosql
     action_name: events
     title: Events
+    weight: +500
+- nosql_trees|tab_item
+    id: nosql_trees
+    id_parent: null
+    id_tab: data_nosql
+    action_name: trees
+    title: Trees
+    weight: +480
+- nosql_selections|tab_item
+    id: nosql_selections
+    id_parent: null
+    id_tab: data_nosql
+    action_name: selections
+    title: Selections
     weight: +460
 - nosql_file_types|tab_item
     id: nosql_file_types
