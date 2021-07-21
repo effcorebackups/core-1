@@ -11,6 +11,7 @@
 server {
   listen 127.0.0.1:80;
   server_name 127.0.0.1;
+  client_max_body_size 100M;
   location ^~ /dynamic/cache/ {deny all; error_log off;}
   location ^~ /dynamic/data/  {deny all; error_log off;}
   location ^~ /dynamic/logs/  {deny all; error_log off;}
@@ -29,6 +30,7 @@ server {
 server {
   listen 127.0.0.1:443 ssl;
   server_name 127.0.0.1;
+  client_max_body_size 100M;
   ssl_certificate     %%_domain_crt;
   ssl_certificate_key %%_domain_private_key;
   location ^~ /dynamic/cache/ {deny all; error_log off;}
