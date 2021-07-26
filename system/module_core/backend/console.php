@@ -157,8 +157,8 @@ namespace effcore {
         'attributes'   => $c_row_attributes,
         'time'         => ['title' => 'Time',              'value' => locale::format_msecond($c_log->time)                                   ],
         'ram_dynamics' => ['title' => 'RAM load dynamics', 'value' => locale::format_bytes  ($c_log->ram_dynamics)                           ],
-        'object'       => ['title' => 'Object',            'value' =>               new text($c_log->object,                $c_log->args    )],
-        'action'       => ['title' => 'Action',            'value' =>               new text($c_log->action,                $c_log->args    )],
+        'object'       => ['title' => 'Object',            'value' =>               new text($c_log->object                                 )],
+        'action'       => ['title' => 'Action',            'value' =>               new text($c_log->action                                 )],
         'description'  => ['title' => 'Description',       'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
         'value'        => ['title' => 'Val.',              'value' =>               new text($c_log->value                                  )] ];}
     return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
