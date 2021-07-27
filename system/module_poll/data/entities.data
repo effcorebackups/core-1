@@ -112,8 +112,6 @@ entities
           - not_selected: - select -
           - 0: All users
           - 1: Registered users
-        - disabled
-          - 0: 0
         - selected
           - 1: 1
         - weight: +320

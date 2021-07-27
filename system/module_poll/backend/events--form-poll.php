@@ -36,8 +36,8 @@ namespace effcore\modules\poll {
         $form->_id_answers[$c_row->id] =
                            $c_row->id;
     # get votes by Answer ID and User ID
-      if ($form->_id_user) $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_user_!f'    => 'id_user',    'id_user_operator'       => '=', 'id_user_!v'       => $form->_id_user,    'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
-      else                 $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_session_!f' => 'id_session', 'id_id_session_operator' => '=', 'id_id_session_!v' => $form->_id_session, 'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
+      if ($form->_id_user) $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_user_!f'    => 'id_user',    'id_user_operator'    => '=', 'id_user_!v'    => $form->_id_user,    'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
+      else                 $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_session_!f' => 'id_session', 'id_session_operator' => '=', 'id_session_!v' => $form->_id_session, 'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
       $votes = [];
       foreach ($votes_row as $c_row)
         $votes[$c_row->id_answer] =
@@ -48,8 +48,8 @@ namespace effcore\modules\poll {
     # ─────────────────────────────────────────────────────────────────────
     # voting form
     # ─────────────────────────────────────────────────────────────────────
-      if ( ($poll->expired > core::datetime_get() && $votes === [] && (int)$poll->user_type === 0) ||
-           ($poll->expired > core::datetime_get() && $votes === [] && (int)$poll->user_type === 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
+      if ( ($votes === [] && $poll->expired > core::datetime_get() && (int)$poll->user_type === 0) ||
+           ($votes === [] && $poll->expired > core::datetime_get() && (int)$poll->user_type === 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
         $items['~vote']->disabled_set(false);
         $control = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
         $control->title = $poll->question;
@@ -97,10 +97,13 @@ namespace effcore\modules\poll {
           new markup('x-value', [], $total)]), 'total'
         );
       # cancellation
-        if ($poll->expired > core::datetime_get() &&
-            $poll->is_cancelable == 1 &&
-            $poll->user_type     == 1 && access::check((object)['roles' => ['registered' => 'registered']])) {
-          $items['~cancel']->disabled_set(false);
+        if ((int)$poll->is_cancelable === 1) {
+          if ($poll->expired > core::datetime_get()) {
+            if ( ((int)$poll->user_type === 0) ||
+                 ((int)$poll->user_type === 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
+              $items['~cancel']->disabled_set(false);
+            }
+          }
         }
       }
     } else {
@@ -123,15 +126,8 @@ namespace effcore\modules\poll {
         break;
       case 'cancel':
       # delete votes by Answer ID and User ID
-        $result = entity::get('poll_vote')->instances_delete(['conditions' => [
-          'id_user_!f'         => 'id_user',
-          'id_user_operator'   => '=',
-          'id_user_!v'         => $form->_id_user,
-          'conjunction'        => 'and',
-          'id_answer_!f'       => 'id_answer',
-          'id_answer_in_begin' => 'in (',
-          'id_answer_in_!a'    => $form->_id_answers,
-          'id_answer_in_end'   => ')']]);
+        if ($form->_id_user) $result = entity::get('poll_vote')->instances_delete(['conditions' => ['id_user_!f'    => 'id_user',    'id_user_operator'    => '=', 'id_user_!v'    => $form->_id_user,    'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
+        else                 $result = entity::get('poll_vote')->instances_delete(['conditions' => ['id_session_!f' => 'id_session', 'id_session_operator' => '=', 'id_session_!v' => $form->_id_session, 'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
         if ($result) message::insert('Your answer was canceled.'             );
         else         message::insert('Your answer was not canceled!', 'error');
         static::on_init(null, $form, $items);
