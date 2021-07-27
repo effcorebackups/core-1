@@ -157,10 +157,10 @@ namespace effcore {
         'attributes'   => $c_row_attributes,
         'time'         => ['title' => 'Time',              'value' => locale::format_msecond($c_log->time)                                   ],
         'ram_dynamics' => ['title' => 'RAM load dynamics', 'value' => locale::format_bytes  ($c_log->ram_dynamics)                           ],
-        'object'       => ['title' => 'Object',            'value' =>               new text($c_log->object                                 )],
-        'action'       => ['title' => 'Action',            'value' =>               new text($c_log->action                                 )],
+        'object'       => ['title' => 'Object',            'value' =>               new text($c_log->object)                                 ],
+        'action'       => ['title' => 'Action',            'value' =>               new text($c_log->action)                                 ],
         'description'  => ['title' => 'Description',       'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
-        'value'        => ['title' => 'Val.',              'value' =>               new text($c_log->value                                  )] ];}
+        'value'        => ['title' => 'Val.',              'value' =>               new text($c_log->value)                                  ] ];}
     return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
