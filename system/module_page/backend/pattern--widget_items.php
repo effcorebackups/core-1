@@ -183,7 +183,7 @@ namespace effcore {
     $new_item = new \stdClass;
     $new_item->weight = count($items) ? $min_weight - 5 : 0;
     $items[] = $new_item;
-    $new_item->id = core::array_key_last($items);
+    $new_item->id = 0;
     $widget->items_set($items);
     message::insert(new text_multiline([
       'Item of type "%%_type" was inserted.',

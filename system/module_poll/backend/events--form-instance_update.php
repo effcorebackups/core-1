@@ -69,7 +69,7 @@ namespace effcore\modules\poll {
             $used_ids = [];
             foreach ($items['*widget_answers']->value_get_complex() as $c_item) {
             # insert new answer
-              if ($c_item->id == 0) {
+              if ($c_item->id === 0) {
                 (new instance('poll_answer', [
                   'id_poll' => $form->_instance->id,
                   'answer'  => $c_item->text,
@@ -77,7 +77,7 @@ namespace effcore\modules\poll {
                 ]))->insert();
               }
             # update current answer
-              if ($c_item->id != 0) {
+              if ($c_item->id !== 0) {
                 $form->_answers_rows[$c_item->id]->answer = $c_item->text;
                 $form->_answers_rows[$c_item->id]->weight = $c_item->weight;
                 $form->_answers_rows[$c_item->id]->update();
