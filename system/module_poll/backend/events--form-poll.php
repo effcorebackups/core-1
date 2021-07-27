@@ -4,7 +4,7 @@
   ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\polls {
+namespace effcore\modules\poll {
           use \effcore\access;
           use \effcore\core;
           use \effcore\diagram;
