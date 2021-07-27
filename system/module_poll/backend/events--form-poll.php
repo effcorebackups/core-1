@@ -14,6 +14,7 @@ namespace effcore\modules\poll {
           use \effcore\instance;
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\session;
           use \effcore\user;
           abstract class events_form_poll {
 
@@ -53,8 +54,8 @@ namespace effcore\modules\poll {
     # ─────────────────────────────────────────────────────────────────────
     # voting form
     # ─────────────────────────────────────────────────────────────────────
-      if ( ($poll->expired > core::datetime_get() && $votes == [] && $poll->user_type == 0) ||
-           ($poll->expired > core::datetime_get() && $votes == [] && $poll->user_type == 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
+      if ( ($poll->expired > core::datetime_get() && $votes === [] && (int)$poll->user_type === 0) ||
+           ($poll->expired > core::datetime_get() && $votes === [] && (int)$poll->user_type === 1 && access::check((object)['roles' => ['registered' => 'registered']])) ) {
         $items['~vote']->disabled_set(false);
         $control = $poll->is_multiple ? new group_checkboxes : new group_radiobuttons;
         $control->title = $poll->question;
@@ -119,10 +120,9 @@ namespace effcore\modules\poll {
     switch ($form->clicked_button->value_get()) {
       case 'vote':
         foreach ($form->_poll->is_multiple ? $items['*answers']->values_get() : [$items['*answers']->value_get()] as $c_id_answer)
-          $result = (new instance('poll_vote', [
-            'id_user'   => $form->_id_user,
-            'id_answer' => $c_id_answer
-          ]))->insert();
+          if ($form->_id_user)
+               $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => $form->_id_user                        ]))->insert();
+          else $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => null, 'id_session' => session::id_get()]))->insert();
         if ($result) message::insert('Your answer was accepted.'             );
         else         message::insert('Your answer was not accepted!', 'error');
         static::on_init(null, $form, $items);

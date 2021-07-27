@@ -467,7 +467,7 @@ namespace effcore {
         'condition'       => $this->prepare_attributes($id_fields),
         'limit_begin'     => 'LIMIT',
         'limit'           => 1]);
-      if  (isset($result[0])) {
+      if ( isset($result[0]) ) {
         foreach ($result[0]->values as $c_name => $c_value) {
           if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
                $instance->{$c_name} =    ($entity->fields[$c_name]->filter_select)($c_value);
