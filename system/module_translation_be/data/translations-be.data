@@ -27,11 +27,11 @@ translations
     - Administrators: Адміністратары
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
-    - All users: Усе карыстальнікі
     - An error occurred during installation!: Адбылася памылка пры ўсталёўцы!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Прыкладам яго змесціва могуць служыць: мета-апісанне, ключавыя мета-словы, карыстальніцкія мета-поля (напрыклад, google-site-verification), карыстальніцкія блокі CSS, карыстальніцкія блокі JS (напрыклад, Google Analytics).
     - Anonymous user: Ананімны карыстальнік
     - Anonymous user's breadcrumbs: Хлебныя крошкі ананімнага карыстальніка
+    - Anonymous users + Registered users: Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі
     - Anonymous users: Ананімныя карыстальнікі
     - Anonymous: Ананім
     - Answer: Адказ
@@ -436,6 +436,7 @@ translations
     - META: МЕТА
     - MiB: МіБ
     - Minimum width: Мінімальная шырыня
+    - Mode "Anonymous users + Registered users" provides an opportunity for an attacker to overflow the database by sending a lot of false anonymous votes!: Рэжым "Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі" дае магчымасць зламысніку перапоўніць базу дадзеных, даслаўшы мноства ілжывых ананімных галасоў!
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не можа быць уключаны, калі Вы спрабуеце адключыць залежны модуль "%%_dependent_title" (%%_dependent_id)!
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.

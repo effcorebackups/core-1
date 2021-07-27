@@ -108,9 +108,11 @@ entities
         managing_on_update_is_enabled: true
         managing_control_class: \effcore\field_select
         managing_control_properties
+        - description|text
+            text: Mode "Anonymous users + Registered users" provides an opportunity for an attacker to overflow the database by sending a lot of false anonymous votes!
         - values
           - not_selected: - select -
-          - 0: All users
+          - 0: Anonymous users + Registered users
           - 1: Registered users
         - selected
           - 1: 1

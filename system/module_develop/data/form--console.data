@@ -12,7 +12,7 @@ forms
             description|text_multiline
               text
               - 0: To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.
-              - 1: Displaying the console will result in a %%_value increase in RAM consumption.
+              - 1: Displaying the console will result in a %%_value increase in RAM consumption!
               args
               - value: 150-300%
             description_state: opened

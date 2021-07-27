@@ -27,11 +27,11 @@ translations
     - Administrators: Администраторы
     - All caches was reset.: Все кэши были сброшены.
     - All colors: Все цвета
-    - All users: Все пользователи
     - An error occurred during installation!: Произошла ошибка при установке!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Примером такого содержания могут служить: мета-описание, ключевые мета-слова, пользовательские мета-поля (например, google-site-verification), пользовательские блоки CSS, пользовательские блоки JS (например, Google Analytics).
     - Anonymous user: Анонимный пользователь
     - Anonymous user's breadcrumbs: Хлебные крошки анонимного пользователя
+    - Anonymous users + Registered users: Анонимные пользователи + Зарегистрированные пользователи
     - Anonymous users: Анонимные пользователи
     - Anonymous: Аноним
     - Answer: Ответ
@@ -436,6 +436,7 @@ translations
     - META: МЕТА
     - MiB: МиБ
     - Minimum width: Минимальная ширина
+    - Mode "Anonymous users + Registered users" provides an opportunity for an attacker to overflow the database by sending a lot of false anonymous votes!: Режим "Анонимные пользователи + Зарегистрированные пользователи" дает возможность злоумышленнику переполнить базу данных, отправив множество ложных анонимных голосов!
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
