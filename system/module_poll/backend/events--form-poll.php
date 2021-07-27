@@ -25,6 +25,7 @@ namespace effcore\modules\poll {
     if ($poll->select()) {
       $form->_poll = $poll;
       $form->_id_user = user::get_current()->id;
+      $form->_id_session = session::id_get();
       $form->_id_answers = [];
     # get answers by Poll ID
       $answers_row = entity::get('poll_answer')->instances_select(['conditions' => [
@@ -35,15 +36,8 @@ namespace effcore\modules\poll {
         $form->_id_answers[$c_row->id] =
                            $c_row->id;
     # get votes by Answer ID and User ID
-      $votes_row = entity::get('poll_vote')->instances_select(['conditions' => [
-        'id_user_!f'         => 'id_user',
-        'id_user_operator'   => '=',
-        'id_user_!v'         => $form->_id_user,
-        'conjunction'        => 'and',
-        'id_answer_!f'       => 'id_answer',
-        'id_answer_in_begin' => 'in (',
-        'id_answer_in_!a'    => $form->_id_answers,
-        'id_answer_in_end'   => ')']]);
+      if ($form->_id_user) $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_user_!f'    => 'id_user',    'id_user_operator'       => '=', 'id_user_!v'       => $form->_id_user,    'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
+      else                 $votes_row = entity::get('poll_vote')->instances_select(['conditions' => ['id_session_!f' => 'id_session', 'id_id_session_operator' => '=', 'id_id_session_!v' => $form->_id_session, 'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $form->_id_answers, 'id_answer_in_end' => ')']]);
       $votes = [];
       foreach ($votes_row as $c_row)
         $votes[$c_row->id_answer] =
@@ -121,8 +115,8 @@ namespace effcore\modules\poll {
       case 'vote':
         foreach ($form->_poll->is_multiple ? $items['*answers']->values_get() : [$items['*answers']->value_get()] as $c_id_answer)
           if ($form->_id_user)
-               $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => $form->_id_user                        ]))->insert();
-          else $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => null, 'id_session' => session::id_get()]))->insert();
+               $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => $form->_id_user                         ]))->insert();
+          else $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => null, 'id_session' => $form->_id_session]))->insert();
         if ($result) message::insert('Your answer was accepted.'             );
         else         message::insert('Your answer was not accepted!', 'error');
         static::on_init(null, $form, $items);
