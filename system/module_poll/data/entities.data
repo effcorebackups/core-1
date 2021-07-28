@@ -112,8 +112,8 @@ entities
             text: Mode "Anonymous users + Registered users" provides an opportunity for an attacker to overflow the database by sending a lot of false anonymous votes!
         - values
           - not_selected: - select -
-          - 0: Anonymous users + Registered users
           - 1: Registered users
+          - 0: Anonymous users + Registered users
         - selected
           - 1: 1
         - weight: +320

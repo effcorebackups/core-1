@@ -1,7 +1,7 @@
 forms
-- poll|form
+- vote|form
     attributes
-    - id: poll
+    - id: vote
     - method: post
     - novalidate: true
     children

@@ -16,7 +16,7 @@ namespace effcore\modules\poll {
           use \effcore\message;
           use \effcore\session;
           use \effcore\user;
-          abstract class events_form_poll {
+          abstract class events_form_vote {
 
   static function on_init($event, $form, $items) {
     $items['~vote'  ]->disabled_set();
