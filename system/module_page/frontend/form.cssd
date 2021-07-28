@@ -400,9 +400,9 @@
 
   /* Polls */
 
-  form#poll x-diagram {margin-top: 1em}
-  form#poll x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
-  form#poll x-total x-title::after {content: ': '}
+  form#vote x-diagram {margin-top: 1em}
+  form#vote x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
+  form#vote x-total x-title::after {content: ': '}
 
   /* degrade for IE (not beautiful) */
 
