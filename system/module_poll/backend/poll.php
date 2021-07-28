@@ -22,6 +22,27 @@ namespace effcore {
     return $result;
   }
 
+  static function votes_total_select($id_answers) {
+    return entity::get('poll_vote')->instances_select_count(['conditions' => [
+      'id_answer_!f'       => 'id_answer',
+      'id_answer_in_begin' => 'in (',
+      'id_answer_in_!a'    => $id_answers,
+      'id_answer_in_end'   => ')'
+    ]]);
+  }
+
+  static function votes_id_total_by_answers_select($id_answers) {
+    $result = [];
+    $rows = entity::get('poll_vote')->instances_select([
+      'fields'     => ['id_answer_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
+      'conditions' => ['id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $id_answers, 'id_answer_in_end' => ')'],
+      'group'      => ['id_answer_!f' => 'id_answer']]);
+    foreach ($rows as $c_row)
+      $result[$c_row->id_answer] =
+              $c_row->total;
+    return $result;
+  }
+
   static function votes_id_by_user_id_select($id_user, $id_answers) {
     $result = [];
     $rows = entity::get('poll_vote')->instances_select(['conditions' => [
@@ -94,27 +115,6 @@ namespace effcore {
       'id_answer_in_!a'     => $id_answers,
       'id_answer_in_end'    => ')'
     ]]);
-  }
-
-  static function votes_total_select($id_answers) {
-    return entity::get('poll_vote')->instances_select_count(['conditions' => [
-      'id_answer_!f'       => 'id_answer',
-      'id_answer_in_begin' => 'in (',
-      'id_answer_in_!a'    => $id_answers,
-      'id_answer_in_end'   => ')'
-    ]]);
-  }
-
-  static function votes_id_total_by_answers_select($id_answers) {
-    $result = [];
-    $rows = entity::get('poll_vote')->instances_select([
-      'fields'     => ['id_answer_!f' => 'id_answer', 'count' => ['function_begin' => 'count(', 'function_field' => '*', 'function_end' => ')', 'alias_begin' => 'as', 'alias' => 'total']],
-      'conditions' => ['id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => $id_answers, 'id_answer_in_end' => ')'],
-      'group'      => ['id_answer_!f' => 'id_answer']]);
-    foreach ($rows as $c_row)
-      $result[$c_row->id_answer] =
-              $c_row->total;
-    return $result;
   }
 
 }}
