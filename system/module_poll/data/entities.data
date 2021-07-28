@@ -267,7 +267,7 @@ entities
         references_fields
         - =: id
     indexes
-    - index_id_user
+    - index_id_session
         type: index
         fields
-        - =: id_user
+        - =: id_session
