@@ -8,10 +8,8 @@ namespace effcore\modules\poll {
           use \effcore\access;
           use \effcore\core;
           use \effcore\diagram;
-          use \effcore\entity;
           use \effcore\group_checkboxes;
           use \effcore\group_radiobuttons;
-          use \effcore\instance;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\poll;
@@ -91,17 +89,16 @@ namespace effcore\modules\poll {
     switch ($form->clicked_button->value_get()) {
       case 'vote':
         foreach ($form->_poll->is_multiple ? $items['*answers']->values_get() : [$items['*answers']->value_get()] as $c_id_answer)
-          if ($form->_id_user)
-               $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => $form->_id_user                         ]))->insert();
-          else $result = (new instance('poll_vote', ['id_answer' => $c_id_answer, 'id_user' => null, 'id_session' => $form->_id_session]))->insert();
+          if ($form->_id_user) $result = poll::votes_by_user_id_insert   ($form->_id_user,    $c_id_answer);
+          else                 $result = poll::votes_by_session_id_insert($form->_id_session, $c_id_answer);
         if ($result) message::insert('Your answer was accepted.'             );
         else         message::insert('Your answer was not accepted!', 'error');
         static::on_init(null, $form, $items);
         break;
       case 'cancel':
       # delete votes by Answer ID and User ID
-        if ($form->_id_user) $result = entity::get('poll_vote')->instances_delete(['conditions' => ['id_user_!f'    => 'id_user',    'id_user_operator'    => '=', 'id_user_!v'    => $form->_id_user,    'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => array_keys($form->_answers), 'id_answer_in_end' => ')']]);
-        else                 $result = entity::get('poll_vote')->instances_delete(['conditions' => ['id_session_!f' => 'id_session', 'id_session_operator' => '=', 'id_session_!v' => $form->_id_session, 'conjunction' => 'and', 'id_answer_!f' => 'id_answer', 'id_answer_in_begin' => 'in (', 'id_answer_in_!a' => array_keys($form->_answers), 'id_answer_in_end' => ')']]);
+        if ($form->_id_user) $result = poll::votes_by_user_id_delete   ($form->_id_user,    array_keys($form->_answers));
+        else                 $result = poll::votes_by_session_id_delete($form->_id_session, array_keys($form->_answers));
         if ($result) message::insert('Your answer was canceled.'             );
         else         message::insert('Your answer was not canceled!', 'error');
         static::on_init(null, $form, $items);

@@ -56,6 +56,46 @@ namespace effcore {
     return $result;
   }
 
+  static function votes_by_user_id_insert($id_user, $id_answer) {
+    return (new instance('poll_vote', [
+      'id_user'   => $id_user,
+      'id_answer' => $id_answer
+    ]))->insert();
+  }
+
+  static function votes_by_session_id_insert($id_session, $id_answer) {
+    return (new instance('poll_vote', [
+      'id_session' => $id_session,
+      'id_answer'  => $id_answer
+    ]))->insert();
+  }
+
+  static function votes_by_user_id_delete($id_user, $id_answers) {
+    return entity::get('poll_vote')->instances_delete(['conditions' => [
+      'id_user_!f'         => 'id_user',
+      'id_user_operator'   => '=',
+      'id_user_!v'         => $id_user,
+      'conjunction'        => 'and',
+      'id_answer_!f'       => 'id_answer',
+      'id_answer_in_begin' => 'in (',
+      'id_answer_in_!a'    => $id_answers,
+      'id_answer_in_end'   => ')'
+    ]]);
+  }
+
+  static function votes_by_session_id_delete($id_session, $id_answers) {
+    return entity::get('poll_vote')->instances_delete(['conditions' => [
+      'id_session_!f'       => 'id_session',
+      'id_session_operator' => '=',
+      'id_session_!v'       => $id_session,
+      'conjunction'         => 'and',
+      'id_answer_!f'        => 'id_answer',
+      'id_answer_in_begin'  => 'in (',
+      'id_answer_in_!a'     => $id_answers,
+      'id_answer_in_end'    => ')'
+    ]]);
+  }
+
   static function votes_total_select($id_answers) {
     return entity::get('poll_vote')->instances_select_count(['conditions' => [
       'id_answer_!f'       => 'id_answer',
