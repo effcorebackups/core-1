@@ -12,7 +12,7 @@ frontend
         - rel: stylesheet
         - media: all
     - block_style__module_translation_ru
-        path: /system/module_translation_ru/frontend/locale.css
+        path: /system/module_locale/module_translation_ru/frontend/locale.css
         weight: -500
         attributes
         - rel: stylesheet
