@@ -30,7 +30,7 @@ namespace effcore {
     if (!isset(static::$cache[$code])) {
       foreach (storage::get('files')->select('translations') ?? [] as $c_module_id => $c_translations) {
         foreach ($c_translations as $c_row_id => $c_translation) {
-          if ($c_translation->code == $code) {
+          if ($c_translation->code === $code) {
             if ($c_translation instanceof external_cache)
                 $c_translation =
                 $c_translation->load_from_nosql_storage();
@@ -59,7 +59,7 @@ namespace effcore {
       $c_args = isset($c_match['args']) ?
          explode('|', $c_match['args']) : [];
     # plurals functionality
-      if ($c_name == 'plural') {
+      if ($c_name === 'plural') {
         if (isset($c_args[0]) &&
             isset($c_args[1])) {
           $p_number_name = $c_args[0];
