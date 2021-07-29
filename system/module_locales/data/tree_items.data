@@ -4,7 +4,7 @@ tree_items
     id_parent: manage
     id_tree: system
     title: Locale
-    url: /manage/locales
+    url: /manage/locale
     weight: +440
     access
       roles

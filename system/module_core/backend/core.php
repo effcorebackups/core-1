@@ -544,7 +544,7 @@ namespace effcore {
   # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
   #
   # note: each function 'locale::*_format' uses local date/time format settings
-  # which were setted on the page '/manage/locales'
+  # that have been set on the page '/manage/locale'
 
   static function timezone_get_client() {return user::get_current()->timezone ?? 'UTC';}
   static function timezone_get_offset_sec($name = 'UTC') {return (new \DateTimeZone($name))->getOffset(new \DateTime);}

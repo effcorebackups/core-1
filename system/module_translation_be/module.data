@@ -7,6 +7,6 @@ module|module
   copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-by-mini.svg
   urls
-  - settings page: /manage/locales
+  - settings page: /manage/locale
   enabled: yes
   version: 0.900

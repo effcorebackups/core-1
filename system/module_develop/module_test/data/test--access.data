@@ -86,8 +86,8 @@ tests
         - return_result|step_return
             value: 0
     # locales page
-    - request_url-locales|step_request
-        url: /manage/locales
+    - request_url-locale|step_request
+        url: /manage/locale
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
@@ -320,8 +320,8 @@ tests
         - return_result|step_return
             value: 0
     # locales page
-    - request_url-locales-registered|step_request
-        url: /manage/locales
+    - request_url-locale-registered|step_request
+        url: /manage/locale
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form
@@ -524,8 +524,8 @@ tests
         - return_result|step_return
             value: 0
     # locales page
-    - request_url-locales-registered-role|step_request
-        url: /manage/locales
+    - request_url-locale-registered-role|step_request
+        url: /manage/locale
         headers
         - cookie: Cookie: %%_test_cookies
         is_https|param_from_form

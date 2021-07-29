@@ -1,5 +1,5 @@
 frontend
-- block_tree_languages__locales|frontend
+- block_tree_languages__locale|frontend
     display
       check: block
       where: cssid
