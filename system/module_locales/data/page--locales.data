@@ -37,4 +37,4 @@ pages
           attributes
           - data-id: block__form__locales
           type: link
-          source: forms/locales/locales
+          source: forms/locales/locale

@@ -9,7 +9,7 @@ namespace effcore\modules\locales {
           use \effcore\message;
           use \effcore\module;
           use \effcore\storage;
-          abstract class events_form_locales {
+          abstract class events_form_locale {
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('locales');

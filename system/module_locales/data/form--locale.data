@@ -1,7 +1,7 @@
 forms
-- locales|form
+- locale|form
     attributes
-    - id: locales
+    - id: locale
     - method: post
     - novalidate: true
     children

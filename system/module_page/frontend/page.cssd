@@ -324,8 +324,8 @@
     cursor: default;
     border-radius: 8px;
     line-height: 1.1em;
-    color: black;
-    background-color: silver}
+    color: white;
+    background-color: gray}
   x-sticker a {color: black}
   x-sticker[data-style~='ok'     ] {background: %%_color__ok}
   x-sticker[data-style~='warning'] {background: %%_color__warning}
