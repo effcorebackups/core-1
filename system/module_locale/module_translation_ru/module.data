@@ -6,7 +6,10 @@ module|module
   description: Module for translation into Russian language.
   copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-ru-mini.svg
-  urls
-  - settings page: /manage/locale
   enabled: yes
   version: 0.900
+  dependencies
+    system
+    - locale: 0.900
+  urls
+  - settings page: /manage/locale
