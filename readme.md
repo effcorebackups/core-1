@@ -73,7 +73,7 @@ Localization
 ---------------------------------------------------------------------
 
 The system already has translations of its interface into Belarusian and Russian languages.
-In the administrative interface of the system in the section "Management → Locales"
+In the administrative interface of the system in the section "Management → Locale"
 you can set the main language of the system interface and in the section
 "Management → Data → Content → Pages" for each page, you can set its own
 language.

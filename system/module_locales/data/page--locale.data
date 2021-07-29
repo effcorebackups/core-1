@@ -1,7 +1,7 @@
 pages
-- locales|page
-    id: locales
-    title: Locales
+- locale|page
+    id: locale
+    title: Locale
     url: /manage/locales
     is_https: true
     access
@@ -31,10 +31,10 @@ pages
           id: block__title
     # ─────────────────────────────────────────────────────────────────────
     - content
-      - block__form__locales|block
+      - block__form__locale|block
           title: Locale settings form
           title_is_visible: false
           attributes
-          - data-id: block__form__locales
+          - data-id: block__form__locale
           type: link
           source: forms/locales/locale

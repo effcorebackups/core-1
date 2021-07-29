@@ -3,7 +3,7 @@ tree_items
     id: locales
     id_parent: manage
     id_tree: system
-    title: Locales
+    title: Locale
     url: /manage/locales
     weight: +440
     access
