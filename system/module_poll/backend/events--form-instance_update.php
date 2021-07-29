@@ -6,7 +6,7 @@
 
 namespace effcore\modules\poll {
           use \effcore\entity;
-          use \effcore\instance;
+          use \effcore\poll;
           use \effcore\text;
           use \effcore\url;
           use \effcore\widget_texts;
@@ -18,16 +18,13 @@ namespace effcore\modules\poll {
       if ($entity) {
         if ($entity->name === 'poll') {
           $form->is_redirect_enabled = false;
-          $form->_answers_rows = entity::get('poll_answer')->instances_select(['conditions' => [
-            'id_poll_!f'       => 'id_poll',
-            'id_poll_operator' => '=',
-            'id_poll_!v'       => $form->_instance->id]], 'id');
+          $form->_answers = poll::answers_by_poll_id_select($form->_instance->id);
           $widget_items = [];
-          foreach ($form->_answers_rows as $c_row) {
+          foreach ($form->_answers as $c_answer) {
             $widget_items[] = (object)[
-              'id'     => $c_row->id,
-              'weight' => $c_row->weight,
-              'text'   => $c_row->answer
+              'id'     => $c_answer->id,
+              'weight' => $c_answer->weight,
+              'text'   => $c_answer->answer
             ];
           }
           $widget_answers = new widget_texts;
@@ -68,30 +65,25 @@ namespace effcore\modules\poll {
             $used_ids = [];
             foreach ($items['*widget_answers']->value_get_complex() as $c_item) {
             # insert new answer
-              if ($c_item->id === 0) {
-                (new instance('poll_answer', [
-                  'id_poll' => $form->_instance->id,
-                  'answer'  => $c_item->text,
-                  'weight'  => $c_item->weight
-                ]))->insert();
-              }
+              if ($c_item->id === 0)
+                poll::answer_insert($form->_instance->id, $c_item->text, $c_item->weight);
             # update current answer
               if ($c_item->id !== 0) {
-                $form->_answers_rows[$c_item->id]->answer = $c_item->text;
-                $form->_answers_rows[$c_item->id]->weight = $c_item->weight;
-                $form->_answers_rows[$c_item->id]->update();
+                $form->_answers[$c_item->id]->answer = $c_item->text;
+                $form->_answers[$c_item->id]->weight = $c_item->weight;
+                $form->_answers[$c_item->id]->update();
                 $used_ids[$c_item->id] =
                           $c_item->id;
               }
             }
           # delete old answers
-            foreach ($form->_answers_rows as $c_row) {
-              if (!isset($used_ids[$c_row->id])) {
-                $c_row->delete();
+            foreach ($form->_answers as $c_answer) {
+              if (!isset($used_ids[$c_answer->id])) {
+                poll::answer_delete($c_answer->id);
               }
             }
           # reset not actual data (for load new IDs too)
-            $form->_answers_rows = null;
+            $form->_answers = null;
             $items['*widget_answers']->items_reset();
             static::on_init(null, $form, $items);
           # ↓↓↓ no break ↓↓↓

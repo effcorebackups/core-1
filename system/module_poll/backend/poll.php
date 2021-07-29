@@ -30,6 +30,12 @@ namespace effcore {
     ]))->insert();
   }
 
+  static function answer_delete($id_answer) {
+    return (new instance('poll_answer', [
+      'id' => $id_answer
+    ]))->delete();
+  }
+
   static function votes_total_select($id_answers) {
     return entity::get('poll_vote')->instances_select_count(['conditions' => [
       'id_answer_!f'       => 'id_answer',
