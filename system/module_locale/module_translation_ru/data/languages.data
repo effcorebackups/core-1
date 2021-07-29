@@ -3,4 +3,4 @@ languages
     code: ru
     title_en: Russian
     title_native: Русский
-    license_path: system/module_translation_ru/licenses/license-ru.md
+    license_path: system/module_locale/module_translation_ru/licenses/license-ru.md
