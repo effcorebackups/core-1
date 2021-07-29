@@ -8,6 +8,7 @@ namespace effcore\modules\poll {
           use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
+          use \effcore\poll;
           use \effcore\text;
           use \effcore\url;
           use \effcore\widget_texts;
@@ -59,13 +60,8 @@ namespace effcore\modules\poll {
         switch ($form->clicked_button->value_get()) {
           case 'insert':
           case 'insert_and_update':
-            foreach ($items['*widget_answers']->value_get_complex() as $c_item) {
-              (new instance('poll_answer', [
-                'id_poll' => $form->_instance->id,
-                'answer'  => $c_item->text,
-                'weight'  => $c_item->weight
-              ]))->insert();
-            }
+            foreach ($items['*widget_answers']->value_get_complex() as $c_item)
+              poll::answer_insert($form->_instance->id, $c_item->text, $c_item->weight);
           # reset not actual data
             $items['*widget_answers']->items_reset();
             static::on_init(null, $form, $items);

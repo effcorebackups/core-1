@@ -22,6 +22,14 @@ namespace effcore {
     return $result;
   }
 
+  static function answer_insert($id_poll, $answer, $weight = 0) {
+    return (new instance('poll_answer', [
+      'id_poll' => $id_poll,
+      'answer'  => $answer,
+      'weight'  => $weight
+    ]))->insert();
+  }
+
   static function votes_total_select($id_answers) {
     return entity::get('poll_vote')->instances_select_count(['conditions' => [
       'id_answer_!f'       => 'id_answer',

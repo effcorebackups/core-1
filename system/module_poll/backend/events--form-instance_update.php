@@ -7,7 +7,6 @@
 namespace effcore\modules\poll {
           use \effcore\entity;
           use \effcore\instance;
-          use \effcore\page;
           use \effcore\text;
           use \effcore\url;
           use \effcore\widget_texts;
