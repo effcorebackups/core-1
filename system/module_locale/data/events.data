@@ -1,19 +1,19 @@
 events
   on_module_enable
-  - locales|event
-      for: locales
-      handler: \effcore\modules\locales\events_module::on_enable
+  - locale|event
+      for: locale
+      handler: \effcore\modules\locale\events_module::on_enable
 # ═════════════════════════════════════════════════════════════════════
   on_form_init
   - locale|event
       for: locale
-      handler: \effcore\modules\locales\events_form_locale::on_init
+      handler: \effcore\modules\locale\events_form_locale::on_init
   on_form_submit
   - locale|event
       for: locale
-      handler: \effcore\modules\locales\events_form_locale::on_submit
+      handler: \effcore\modules\locale\events_form_locale::on_submit
 # ─────────────────────────────────────────────────────────────────────
   on_page_build_before
   - all|event
       weight: +700
-      handler: \effcore\modules\locales\events_page::on_page_language_apply
+      handler: \effcore\modules\locale\events_page::on_page_language_apply

@@ -59,7 +59,7 @@ namespace effcore {
 
   static function code_get_current() {
     if   (!static::$current)
-           static::$current = module::settings_get('locales')->lang_code;
+           static::$current = module::settings_get('locale')->lang_code;
     return static::$current;
   }
 

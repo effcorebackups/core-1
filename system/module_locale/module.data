@@ -1,5 +1,5 @@
 module|module_embedded
-  id: locales
+  id: locale
   id_bundle: system
   title: Locale
   description: Module for localization.

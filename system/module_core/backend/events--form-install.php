@@ -197,8 +197,8 @@ namespace effcore\modules\core {
           }
         # save the result if there are no errors
           if (count(storage::get('sql')->errors) === 0) {
-            storage::get('files')->changes_insert('core',    'insert', 'storages/storage/sql', $params, false);
-            storage::get('files')->changes_insert('locales', 'update', 'settings/locales/lang_code', page::get_current()->args_get('lang_code'));
+            storage::get('files')->changes_insert('core',   'insert', 'storages/storage/sql', $params, false);
+            storage::get('files')->changes_insert('locale', 'update', 'settings/locale/lang_code', page::get_current()->args_get('lang_code'));
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([

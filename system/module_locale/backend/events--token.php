@@ -4,7 +4,7 @@
   ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
-namespace effcore\modules\locales {
+namespace effcore\modules\locale {
           use \effcore\token;
           use \effcore\translation;
           abstract class events_token {

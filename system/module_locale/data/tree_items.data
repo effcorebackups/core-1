@@ -1,6 +1,6 @@
 tree_items
-- locales|tree_item
-    id: locales
+- locale|tree_item
+    id: locale
     id_parent: manage
     id_tree: system
     title: Locale

@@ -14,7 +14,7 @@ pages
           attributes
           - data-id: block__tree__languages
           type: code
-          source: \effcore\modules\locales\events_page::block_markup__tree_languages
+          source: \effcore\modules\locale\events_page::block_markup__tree_languages
       - block__system_info|block
           title: System information
           title_is_visible: false
