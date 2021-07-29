@@ -2399,56 +2399,56 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales
-        - request_url--system-module_locales|step_request
-            url: /system/module_locales
+        # url: /system/module_locale
+        - request_url--system-module_locale|step_request
+            url: /system/module_locale
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales|step_check
+        - response_check--system-module_locale|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/backend
-        - request_url--system-module_locales-backend|step_request
-            url: /system/module_locales/backend
+        # url: /system/module_locale/backend
+        - request_url--system-module_locale-backend|step_request
+            url: /system/module_locale/backend
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-backend|step_check
+        - response_check--system-module_locale-backend|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/frontend
-        - request_url--system-module_locales-frontend|step_request
-            url: /system/module_locales/frontend
+        # url: /system/module_locale/frontend
+        - request_url--system-module_locale-frontend|step_request
+            url: /system/module_locale/frontend
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-frontend|step_check
+        - response_check--system-module_locale-frontend|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/frontend/pictures
-        - request_url--system-module_locales-frontend-pictures|step_request
-            url: /system/module_locales/frontend/pictures
+        # url: /system/module_locale/frontend/pictures
+        - request_url--system-module_locale-frontend-pictures|step_request
+            url: /system/module_locale/frontend/pictures
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-frontend-pictures|step_check
+        - response_check--system-module_locale-frontend-pictures|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -3106,56 +3106,56 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/
-        - request_url--system-module_locales-|step_request
-            url: /system/module_locales/
+        # url: /system/module_locale/
+        - request_url--system-module_locale-|step_request
+            url: /system/module_locale/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-|step_check
+        - response_check--system-module_locale-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/backend/
-        - request_url--system-module_locales-backend-|step_request
-            url: /system/module_locales/backend/
+        # url: /system/module_locale/backend/
+        - request_url--system-module_locale-backend-|step_request
+            url: /system/module_locale/backend/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-backend-|step_check
+        - response_check--system-module_locale-backend-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/frontend/
-        - request_url--system-module_locales-frontend-|step_request
-            url: /system/module_locales/frontend/
+        # url: /system/module_locale/frontend/
+        - request_url--system-module_locale-frontend-|step_request
+            url: /system/module_locale/frontend/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-frontend-|step_check
+        - response_check--system-module_locale-frontend-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /system/module_locales/frontend/pictures/
-        - request_url--system-module_locales-frontend-pictures-|step_request
-            url: /system/module_locales/frontend/pictures/
+        # url: /system/module_locale/frontend/pictures/
+        - request_url--system-module_locale-frontend-pictures-|step_request
+            url: /system/module_locale/frontend/pictures/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_locales-frontend-pictures-|step_check
+        - response_check--system-module_locale-frontend-pictures-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302

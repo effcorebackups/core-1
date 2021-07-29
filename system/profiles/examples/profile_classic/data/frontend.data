@@ -5,8 +5,8 @@ frontend
       where: cssid
       match: %^block__tree_sql__languages$%
     styles
-    - block_style__module_locales
-        path: /system/module_locales/frontend/locale.cssd
+    - block_style__module_locale
+        path: /system/module_locale/frontend/locale.cssd
         weight: -400
         attributes
         - rel: stylesheet
