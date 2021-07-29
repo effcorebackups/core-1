@@ -6,7 +6,7 @@ frontend
       match: %^block__tree__languages$%
     styles
     - page_style
-        path: frontend/locales.css
+        path: frontend/locale.css
         weight: -500
         attributes
         - rel: stylesheet
