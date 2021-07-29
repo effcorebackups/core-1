@@ -30,11 +30,11 @@ instances
     - id: manage__seo
     - title: SEO: manage
     - is_embedded: 1
-- permission_manage_locales|instance
+- permission_manage_locale|instance
     entity_name: permission
     values
-    - id: manage__locales
-    - title: Locales: manage
+    - id: manage__locale
+    - title: Locale: manage
     - is_embedded: 1
 - permission_manage_modules|instance
     entity_name: permission

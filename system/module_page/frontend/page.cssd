@@ -324,7 +324,7 @@
     cursor: default;
     border-radius: 8px;
     line-height: 1.1em;
-    color: white;
+    color: black;
     background-color: gray}
   x-sticker a {color: black}
   x-sticker[data-style~='ok'     ] {background: %%_color__ok}

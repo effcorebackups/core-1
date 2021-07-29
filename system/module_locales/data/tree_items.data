@@ -10,4 +10,4 @@ tree_items
       roles
       - =: admins
       permissions
-      - =: manage__locales
+      - =: manage__locale

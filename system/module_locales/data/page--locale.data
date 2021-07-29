@@ -8,7 +8,7 @@ pages
       roles
       - =: admins
       permissions
-      - =: manage__locales
+      - =: manage__locale
     blocks
     - system
       - block__tree_sql__user_registered|block_preset_link
