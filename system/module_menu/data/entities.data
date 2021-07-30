@@ -296,8 +296,8 @@ entities
         managing_control_properties
         - weight: +300
         managing_control_element_attributes
-        - required: null
         - maxlength: 2047
+        - required: null
     - link_attributes
         title: Link attributes
         type: blob

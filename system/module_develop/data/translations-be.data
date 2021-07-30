@@ -101,6 +101,7 @@ translations
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
+    - Hash sum: Хэш-сума
     - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
     - Indexes: Індэксы
@@ -155,6 +156,9 @@ translations
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
     - press to show more information: націсніце, каб паказаць дадатковую інфармацыю
+    - Project ID: ID праекта
+    - Project: Праект
+    - Projects: Праекты
     - property private: уласцівасць прыватная
     - property protected: уласцівасць абароненая
     - property public: уласцівасць публічная
@@ -168,6 +172,8 @@ translations
     - REGISTERED USER + ROLE: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК + РОЛЯ
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
+    - Release: Выпуск
+    - Releases: Выпускі
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
     - return = "%%_return": вяртанне = "%%_return"

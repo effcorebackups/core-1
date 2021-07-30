@@ -241,9 +241,9 @@ entities
         managing_control_properties
         - weight: +140
         managing_control_element_attributes
-        - required: null
         - minlength: null
         - maxlength: null
+        - required: null
         selection_params_default
         - weight: +140
     constraints

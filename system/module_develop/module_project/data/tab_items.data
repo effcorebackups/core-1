@@ -1,0 +1,32 @@
+tab_items
+- data_project|tab_item
+    id: data_project
+    id_parent: null
+    id_tab: data
+    action_name: project
+    action_name_default: project/project
+    title: Project
+    weight: -500
+    access
+      roles
+      - =: admins
+- data_project_project|tab_item
+    id: data_project_project
+    id_parent: data_project
+    id_tab: data
+    action_name: project/project
+    title: Projects
+    weight: +500
+    access
+      roles
+      - =: admins
+- data_project_release|tab_item
+    id: data_project_release
+    id_parent: data_project
+    id_tab: data
+    action_name: project/release
+    title: Releases
+    weight: +480
+    access
+      roles
+      - =: admins

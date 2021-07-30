@@ -1,0 +1,256 @@
+entities
+- project|entity
+    name: project
+    title: Project
+    title_plural: Projects
+    catalog_name: projects
+    managing_is_enabled: true
+    managing_group_id: project
+    has_parallel_checking: true
+    ws_data: true
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
+    fields
+    - id
+        title: ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        check: (id <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_id_text
+        managing_control_properties
+        - is_validate_uniqueness: true
+        - weight: +400
+        managing_control_element_attributes_on_update
+        - disabled: true
+        selection_params_default
+        - weight: +400
+    - title
+        title: Title
+        type: varchar
+        size: 1024
+        collate: nocase
+        not_null: true
+        check: (title <> '')
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: +380
+        managing_control_element_attributes
+        - maxlength: 1024
+        selection_params_default
+        - filter: \effcore\translation::apply
+        - weight: +380
+    - description
+        title: Description
+        type: blob
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_textarea
+        managing_control_properties
+        - weight: +360
+        managing_control_element_attributes
+        - minlength: null
+        - maxlength: null
+        - required: null
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: +340
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: +320
+    constraints
+    - primary_id
+        type: primary
+        fields
+        - =: id
+- release|entity
+    name: release
+    title: Release
+    title_plural: Releases
+    catalog_name: releases
+    managing_is_enabled: true
+    managing_group_id: project
+    has_button_insert_and_update: true
+    has_parallel_checking: true
+    ws_data: true
+    access_select
+      roles
+      - =: admins
+    access_insert
+      roles
+      - =: admins
+    access_update
+      roles
+      - =: admins
+    access_delete
+      roles
+      - =: admins
+    fields
+    - id_project
+        title: Project ID
+        type: varchar
+        size: 255
+        collate: nocase
+        not_null: true
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_relation
+        managing_control_properties
+        - related_entity_name: project
+        - related_entity_field_id_name: id
+        - related_entity_field_title_name: title
+        - weight: +400
+        managing_control_element_attributes_on_update
+        - disabled: true
+        selection_params_default
+        - weight: +400
+    - build
+        title: Build number
+        type: integer
+        not_null: true
+        default: 1000
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_number
+        managing_control_properties
+        - weight: +380
+        managing_control_element_attributes
+        - min: 1
+        - max: 50000
+        managing_control_element_attributes_on_insert
+        - value: 1000
+        managing_control_element_attributes_on_update
+        - disabled: true
+        selection_params_default
+        - weight: +380
+    - description
+        title: Description
+        type: blob
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_textarea
+        managing_control_properties
+        - weight: +360
+        managing_control_element_attributes
+        - minlength: null
+        - maxlength: null
+        - required: null
+    - path
+        title: File
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_file
+        managing_control_properties
+        - max_file_size: 500M
+        - upload_dir: releases/
+        - types_allowed
+          - =: zip
+          - =: 7z
+        - weight: +340
+        managing_control_element_attributes_on_insert
+        - disabled: true
+        selection_params_default
+        - weight: +340
+    - hash_sum
+        title: Hash sum
+        type: varchar
+        size: 1024
+        collate: nocase
+        default: null
+        filter_insert: \effcore\core::return_htmlspecialchars_encoded
+        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        managing_on_select_is_enabled: true
+        managing_on_insert_is_enabled: true
+        managing_on_update_is_enabled: true
+        managing_control_class: \effcore\field_text
+        managing_control_properties
+        - weight: +320
+        managing_control_element_attributes
+        - maxlength: 1024
+        - required: null
+        selection_params_default
+        - filter: \effcore\translation::apply
+        - weight: +320
+    - created
+        title: Created
+        type: datetime
+        default: null
+        check: (created <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: +300
+    - updated
+        title: Updated
+        type: datetime
+        default: null
+        check: (updated <> '')
+        managing_on_select_multiple_is_enabled: true
+        managing_on_select_is_enabled: true
+        managing_control_class: \effcore\field_datetime_local
+        selection_params_default
+        - weight: +280
+    constraints
+    - primary_id_project
+        type: primary
+        fields
+        - =: id_project
+        - =: build
+    - foreign_id_project
+        type: foreign
+        fields
+        - =: id_project
+        references: projects
+        references_fields
+        - =: id

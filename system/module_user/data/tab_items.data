@@ -5,7 +5,7 @@ tab_items
     id_tab: data
     action_name: user
     action_name_default: user/user
-    title: Users
+    title: User
     weight: +460
     access
       roles

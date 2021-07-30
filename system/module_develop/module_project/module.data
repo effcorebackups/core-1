@@ -1,0 +1,11 @@
+module|module
+  id: project
+  id_bundle: system
+  title: Project
+  group: Develop
+  description: Module for publishing projects.
+  copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
+  version: 0.900
+  dependencies
+    system
+    - develop: 0.900

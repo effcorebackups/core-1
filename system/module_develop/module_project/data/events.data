@@ -1,0 +1,23 @@
+events
+  on_module_install
+  - project|event
+      for: project
+      handler: \effcore\modules\project\events_module::on_install
+  on_module_uninstall
+  - project|event
+      for: project
+      handler: \effcore\modules\project\events_module::on_uninstall
+  on_module_enable
+  - project|event
+      for: project
+      handler: \effcore\modules\project\events_module::on_enable
+  on_module_disable
+  - project|event
+      for: project
+      handler: \effcore\modules\project\events_module::on_disable
+# ═════════════════════════════════════════════════════════════════════
+  on_form_validate
+  - instance_insert__project|event
+      for: instance_insert
+      weight: +500
+      handler: \effcore\modules\project\events_form_instance_insert::on_validate

@@ -320,10 +320,13 @@
   x-sticker {
     display: inline-block;
     margin-right: 5px;
-    padding: 2px 7px;
+    padding: 3px 7px;
     cursor: default;
     border-radius: 8px;
     line-height: 1.1em;
+    color: white;
+    background-color: gray}
+  [data-page-palette-is-dark] x-sticker {
     color: black;
     background-color: silver}
   x-sticker a {color: black}
