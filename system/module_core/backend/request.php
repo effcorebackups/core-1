@@ -7,6 +7,51 @@
 namespace effcore {
           abstract class request {
 
+  # $is_files === false
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => (string)value
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (int)0 => (string)value,
+  #     (int)1 => (string)value …
+  #     (int)N => (string)value
+  #   ]
+
+  # $is_files !== false
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (string)key => (string)|(int)value
+  #   ]
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (string)key => [
+  #       (int)0 => (string)|(int)value,
+  #       (int)1 => (string)|(int)value …
+  #       (int)N => (string)|(int)value
+  #     ]
+  #   ]
+
+  static function sanitize($source = '_POST', $is_files = false) {
+    $result = [];
+    global ${$source};
+    if (is_array(${$source}) && count(${$source})) {
+      $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator(${$source}));
+      foreach ($iterator as $c_value) {
+        $c_depth = $iterator->getDepth();
+        $c_k0 = $iterator->getSubIterator(0) ? $iterator->getSubIterator(0)->key() : null;
+        $c_k1 = $iterator->getSubIterator(1) ? $iterator->getSubIterator(1)->key() : null;
+        $c_k2 = $iterator->getSubIterator(2) ? $iterator->getSubIterator(2)->key() : null;
+        if ($is_files !== true && $c_depth === 0 && is_string($c_k0) &&                                      is_string($c_value)) $result[$c_k0]          = $c_value;
+        if ($is_files !== true && $c_depth === 1 && is_string($c_k0) &&    is_int($c_k1) &&                  is_string($c_value)) $result[$c_k0][]        = $c_value;
+        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                  is_string($c_value)) $result[$c_k0][$c_k1]   = $c_value;
+        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                     is_int($c_value)) $result[$c_k0][$c_k1]   = $c_value;
+        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) &&    is_int($c_value)) $result[$c_k0][$c_k1][] = $c_value;
+        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) && is_string($c_value)) $result[$c_k0][$c_k1][] = $c_value;
+      }
+    }
+    return $result;
+  }
+
   # conversion matrix:
   # ┌──────────────────────────────────────────╥────────────────┐
   # │ input value (undefined | string | array) ║ result value   │
@@ -63,51 +108,6 @@ namespace effcore {
     $_GET     = [];
     $_REQUEST = [];
     $_FILES   = [];
-  }
-
-  # $is_files === false
-  # ─────────────────────────────────────────────────────────────────────
-  #   (string)key => (string)value
-  # ─────────────────────────────────────────────────────────────────────
-  #   (string)key => [
-  #     (int)0 => (string)value,
-  #     (int)1 => (string)value …
-  #     (int)N => (string)value
-  #   ]
-
-  # $is_files !== false
-  # ─────────────────────────────────────────────────────────────────────
-  #   (string)key => [
-  #     (string)key => (string)|(int)value
-  #   ]
-  # ─────────────────────────────────────────────────────────────────────
-  #   (string)key => [
-  #     (string)key => [
-  #       (int)0 => (string)|(int)value,
-  #       (int)1 => (string)|(int)value …
-  #       (int)N => (string)|(int)value
-  #     ]
-  #   ]
-
-  static function values_sanitize($source = '_POST', $is_files = false) {
-    $result = [];
-    global ${$source};
-    if (is_array(${$source}) && count(${$source})) {
-      $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator(${$source}));
-      foreach ($iterator as $c_value) {
-        $c_depth = $iterator->getDepth();
-        $c_k0 = $iterator->getSubIterator(0) ? $iterator->getSubIterator(0)->key() : null;
-        $c_k1 = $iterator->getSubIterator(1) ? $iterator->getSubIterator(1)->key() : null;
-        $c_k2 = $iterator->getSubIterator(2) ? $iterator->getSubIterator(2)->key() : null;
-        if ($is_files !== true && $c_depth === 0 && is_string($c_k0) &&                                      is_string($c_value)) $result[$c_k0]          = $c_value;
-        if ($is_files !== true && $c_depth === 1 && is_string($c_k0) &&    is_int($c_k1) &&                  is_string($c_value)) $result[$c_k0][]        = $c_value;
-        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                  is_string($c_value)) $result[$c_k0][$c_k1]   = $c_value;
-        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                     is_int($c_value)) $result[$c_k0][$c_k1]   = $c_value;
-        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) &&    is_int($c_value)) $result[$c_k0][$c_k1][] = $c_value;
-        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) && is_string($c_value)) $result[$c_k0][$c_k1][] = $c_value;
-      }
-    }
-    return $result;
   }
 
   # conversion matrix:

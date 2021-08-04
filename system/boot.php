@@ -31,10 +31,10 @@ namespace effcore {
   spl_autoload_register('\\effcore\\core::structure_autoload');
   stream_wrapper_register('container', '\\effcore\\file_container');
 
-  $_POST    = request::values_sanitize('_POST');
-  $_GET     = request::values_sanitize('_GET');
-  $_REQUEST = request::values_sanitize('_REQUEST');
-  $_FILES   = request::values_sanitize('_FILES', true);
+  $_POST    = request::sanitize('_POST');
+  $_GET     = request::sanitize('_GET');
+  $_REQUEST = request::sanitize('_REQUEST');
+  $_FILES   = request::sanitize('_FILES', true);
 
   timer::tap('total');
 
