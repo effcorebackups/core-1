@@ -27,7 +27,7 @@ namespace effcore\modules\storage {
     if ($form->managing_group_id === null || isset($groups[$form->managing_group_id])) {
       if ($entity) {
         if ($entity->managing_is_enabled) {
-          $id_keys   = $entity->id_get_real();
+          $id_keys   = $entity->id_get();
           $id_values = explode('+', $form->instance_id);
           if (count($id_keys) ==
               count($id_values)) {

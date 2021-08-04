@@ -22,7 +22,7 @@ namespace effcore\modules\storage {
     if ($managing_group_id === null || isset($groups[$managing_group_id])) {
       if ($entity) {
         if ($entity->managing_is_enabled) {
-          $id_keys   = $entity->id_get_real();
+          $id_keys   = $entity->id_get();
           $id_values = explode('+', $instance_id);
           if (count($id_keys) ==
               count($id_values)) {
@@ -44,7 +44,7 @@ namespace effcore\modules\storage {
     if (!access::check($entity->access_delete)) {
       core::send_header_and_exit('access_forbidden');
     }
-    $id_keys = $entity->id_get_real();
+    $id_keys = $entity->id_get();
     $id_values = explode('+', $instance_id);
     $conditions = array_combine($id_keys, $id_values);
     $instance = new instance($entity_name, $conditions);

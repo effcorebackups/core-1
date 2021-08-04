@@ -121,7 +121,7 @@ namespace effcore {
     }
   }
 
-  function id_get_real() {
+  function id_get() {
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'primary'     ) return $c_constraint->fields;
     foreach ($this->constraints as $c_constraint) if ($c_constraint->type === 'unique'      ) return $c_constraint->fields;
     foreach ($this->indexes     as $c_index     ) if ($c_index     ->type === 'unique index') return $c_index     ->fields;
