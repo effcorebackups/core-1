@@ -70,7 +70,7 @@ namespace effcore {
                 static::validate_min       ($field, $form, $element, $new_value) &&
                 static::validate_max       ($field, $form, $element, $new_value) &&
                 static::validate_pattern   ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
-                static::validate_uniqueness($field, $new_value,      $old_value) : true);
+                static::validate_uniqueness($field,                  $new_value, $old_value) : true);
       $field->value_set($new_value);
       return $result;
     }
