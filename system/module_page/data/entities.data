@@ -648,7 +648,6 @@ entities
     title_plural: Pictures
     catalog_name: pictures
     managing_is_enabled: true
-    has_button_insert_and_update: true
     has_parallel_checking: true
     ws_is_embedded: true
     ws_module_id: true
@@ -768,8 +767,6 @@ entities
           - =: middle
           - =: big
         - weight: +340
-        managing_control_element_attributes_on_insert
-        - disabled: true
         selection_params_default
         - weight: +340
     - link_attributes
