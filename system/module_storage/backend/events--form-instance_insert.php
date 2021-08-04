@@ -78,6 +78,18 @@ namespace effcore\modules\storage {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         case 'insert_and_update':
+        # preliminary definition of instance ID
+          if (!$form->has_error()) {
+            foreach ($entity->id_get() as $c_name) {
+              if (isset($items['#'.$c_name])) {
+                $c_value = $items['#'.$c_name]->value_get();
+                if ($c_value) {
+                  $form->_instance->{$c_name} = $c_value;
+                } else return;
+                } else return; }
+            $form->instance_id = implode('+', $form->_instance->values_id_get());
+            page::get_current()->args_set('instance_id', $form->instance_id);
+          }
           break;
       }
     }

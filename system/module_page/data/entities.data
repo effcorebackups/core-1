@@ -44,7 +44,6 @@ entities
     title_plural: Audios
     catalog_name: audios
     managing_is_enabled: true
-    has_button_insert_and_update: true
     has_parallel_checking: true
     ws_is_embedded: true
     ws_module_id: true
@@ -150,8 +149,6 @@ entities
         - upload_dir: audios/
         - fixed_name: audio-%%_instance_id_context
         - weight: +340
-        managing_control_element_attributes_on_insert
-        - disabled: true
         selection_params_default
         - weight: +340
     - created
