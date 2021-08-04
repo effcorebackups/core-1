@@ -44,7 +44,7 @@ namespace effcore\modules\storage {
             # fixation of 'updated' value for prevent parallel update (not secure: only for organizational methods)
               if ($entity->has_parallel_checking && $entity->field_get('updated')) {
                 $hidden_old_updated = new field_hidden('old_updated');
-                $hidden_old_updated->value_set(core::sanitize_datetime($hidden_old_updated->value_request_get()) ?: $form->_instance->updated);
+                $hidden_old_updated->value_set( core::sanitize_datetime($hidden_old_updated->value_request_get()) ?: $form->_instance->updated ); # form value ?: storage value
                 $form->child_insert($hidden_old_updated, 'hidden_old_updated');
               }
             # make controls for managing
@@ -91,11 +91,9 @@ namespace effcore\modules\storage {
           if (!empty($form->_instance)) {
           # prevent parallel update
             if ($entity->has_parallel_checking && $entity->field_get('updated')) {
-              $hidden_old_updated = $form->child_select('hidden_old_updated');
-              $hidden_old_updated->value_get();
-              $fresh_instance = core::deep_clone($form->_instance);
-              $fresh_instance->select();
-              if ($fresh_instance->updated != $hidden_old_updated->value_get()) {
+              $new_updated = core::deep_clone($form->_instance)->select()->updated; # storage value
+              $old_updated = $items['!old_updated']->value_get();                   # form    value
+              if ($new_updated !== $old_updated) {
                 $form->error_set(new text_multiline([
                   'While editing this form, someone made changes in parallel and saved them!',
                   'Reload this page and make changes again to prevent inconsistency.']));
@@ -136,7 +134,7 @@ namespace effcore\modules\storage {
             if ($form->is_show_result_message && $form->_result === null) message::insert(new text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => (new text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ]), 'warning');
           # update 'updated' value
             if ($form->_result && $entity->has_parallel_checking && $entity->field_get('updated')) {
-              $form->child_select('hidden_old_updated')->value_set(
+              $items['!old_updated']->value_set(
                 $form->_instance->updated
               );
             }

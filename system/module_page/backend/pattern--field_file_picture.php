@@ -40,8 +40,8 @@ namespace effcore {
   static function widget_manage_action_text_get($field, $item, $id, $scope) {
     if ($field->thumbnails_is_allowed) {
       $thumbnail_markup = new markup_simple('img', ['src' => '/'.$item->get_current_path(true).'?thumb=small', 'alt' => new text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
-           return new node([], [$thumbnail_markup, new text('delete picture "%%_picture"', ['picture' => $item->file])]);
-    } else return new node([], [                   new text('delete picture "%%_picture"', ['picture' => $item->file])]);
+           return new node([], [$thumbnail_markup, new text('picture "%%_picture"', ['picture' => $item->file])]);
+    } else return new node([], [                   new text('picture "%%_picture"', ['picture' => $item->file])]);
   }
 
 }}

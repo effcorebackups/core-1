@@ -34,8 +34,8 @@ namespace effcore {
   static function widget_manage_action_text_get($field, $item, $id, $scope) {
     if ($field->audio_player_on_manage_is_visible) {
       $player_markup = new markup('audio', ['src' => '/'.$item->get_current_path(true)] + $field->audio_player_on_manage_settings, [], +450);
-           return new node([], [$player_markup, new text('delete audio "%%_audio"', ['audio' => $item->file])]);
-    } else return new node([], [                new text('delete audio "%%_audio"', ['audio' => $item->file])]);
+           return new node([], [$player_markup, new text('audio "%%_audio"', ['audio' => $item->file])]);
+    } else return new node([], [                new text('audio "%%_audio"', ['audio' => $item->file])]);
   }
 
 }}

@@ -83,7 +83,6 @@ namespace effcore {
     $field_file_video->max_files_number  = null;
     $field_file_video->has_widget_insert = false;
     $field_file_video->has_widget_manage = false;
-    $field_file_video->has_on_validate   = false;
     $field_file_video->build();
     $field_file_video->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new video poster
@@ -96,7 +95,6 @@ namespace effcore {
     $field_file_poster->max_files_number  = null;
     $field_file_poster->has_widget_insert = false;
     $field_file_poster->has_widget_manage = false;
-    $field_file_poster->has_on_validate   = false;
     $field_file_poster->build();
     $field_file_poster->name_set($widget->name_get_complex().'__poster');
   # button for insertion of the new item

@@ -83,7 +83,6 @@ namespace effcore {
     $field_file_picture->max_files_number  = null;
     $field_file_picture->has_widget_insert = false;
     $field_file_picture->has_widget_manage = false;
-    $field_file_picture->has_on_validate   = false;
     $field_file_picture->build();
     $field_file_picture->multiple_set();
     $field_file_picture->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : '').'[]');

@@ -79,7 +79,6 @@ namespace effcore {
     $field_file_audio->max_files_number  = null;
     $field_file_audio->has_widget_insert = false;
     $field_file_audio->has_widget_manage = false;
-    $field_file_audio->has_on_validate   = false;
     $field_file_audio->build();
     $field_file_audio->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new audio cover
@@ -92,7 +91,6 @@ namespace effcore {
     $field_file_cover->max_files_number  = null;
     $field_file_cover->has_widget_insert = false;
     $field_file_cover->has_widget_manage = false;
-    $field_file_cover->has_on_validate   = false;
     $field_file_cover->build();
     $field_file_cover->name_set($widget->name_get_complex().'__cover');
   # button for insertion of the new item

@@ -57,7 +57,6 @@ namespace effcore {
   public $characters_allowed = 'a-zA-Z0-9_\\-\\.';
   public $characters_allowed_for_decsription = '"a-z", "A-Z", "0-9", "_", "-", "."';
   public $types_allowed = ['txt' => 'txt'];
-  public $has_on_validate = true;
   public $has_widget_insert = true;
   public $has_widget_manage = true;
   public $result;
@@ -89,6 +88,7 @@ namespace effcore {
   }
 
   function values_get() {
+    event::start_local('on_values_save', $this);
     return $this->result ?? [];
   }
 
@@ -201,7 +201,7 @@ namespace effcore {
   }
 
   static function widget_manage_action_text_get($field, $item, $id, $scope) {
-    return new markup('x-title', [], new text('delete file "%%_file"', ['file' => $item->file]));
+    return new markup('x-title', [], new text('file "%%_file"', ['file' => $item->file]));
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -228,7 +228,7 @@ namespace effcore {
     static::widget_manage_build($field);
   }
 
-  static function on_values_save($field, $form, $npath) {
+  static function on_values_save($field) {
     $fin_to_delete = $field->items_get('fin_to_delete');
     foreach ($fin_to_delete as $c_id => $c_item) {
       if ($c_item->delete_fin()) {
@@ -356,17 +356,6 @@ namespace effcore {
       if ($result) return $new_values;
       else         return [];
     }
-  }
-
-  static function on_validate_phase_3($field, $form, $npath) {
-    if ($field->has_on_validate && !$form->has_error() && $field->result === null) {
-      $result = event::start_local('on_values_save', $field, ['form' => $form, 'npath' => $npath]);
-      if (!$result) {
-        $field->error_set();
-        return;
-      }
-    }
-    return true;
   }
 
   static function validate_upload($field, $form, $element, &$new_values) {

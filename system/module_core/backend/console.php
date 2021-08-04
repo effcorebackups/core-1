@@ -66,7 +66,8 @@ namespace effcore {
     if ($value === 'error') {
       $c_info = $new_log->description;
       foreach ($new_log->args as $c_key => $c_value) $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
-      $c_line = core::time_get().' | '.$new_log->object.
+      $c_line = core::time_get().' | uid: '.(user::get_current()->id ?: 0).
+                                 ' | '.$new_log->object.
                                  ' | '.$new_log->action.
                                  ' | '.str_replace(br, ' | ', $c_info).nl;
       if (!static::$file_log_err->append_direct($c_line)) {

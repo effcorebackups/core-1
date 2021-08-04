@@ -43,6 +43,7 @@ translations
     - Architecture: Архітэктура
     - Attribute: Атрыбут
     - Attributes: Атрыбуты
+    - audio "%%_audio": аўдыё "%%_audio"
     - audio: аўдыё
     - Audio: Аўдыё
     - Audio\: delete: Аўдыё: выдаліць
@@ -133,11 +134,7 @@ translations
     - Decimal point: Дзесятковая кропка
     - Decorator parameters: Параметры афармлення
     - Definition list: Спіс азначэнняў
-    - delete audio "%%_audio": выдаліць аўдыё "%%_audio"
-    - delete file "%%_file": выдаліць файл "%%_file"
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
-    - delete picture "%%_picture": выдаліць малюнак "%%_picture"
-    - delete video "%%_video": выдаліць відэа "%%_video"
     - delete: выдаліць
     - Delete: Выдаліць
     - Demo: Дэма
@@ -248,6 +245,7 @@ translations
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
     - File "%%_file" was not written to disc!: Файл "%%_file" не быў запісаны на дыск!
     - File "%%_file" was written to disc.: Файл "%%_file" быў запісаны на дыск.
+    - file "%%_file": файл "%%_file"
     - File can have a maximum size\: %%_value (PHP restriction): Файл можа мець максімальны памер: %%_value (абмежаванне PHP)
     - File can have a maximum size\: %%_value: Файл можа мець максімальны памер: %%_value
     - File can only be of the next types\: %%_types: Файл можа быць толькі наступных тыпаў: %%_types
@@ -529,6 +527,7 @@ translations
     - PHP OPCache is enabled: PHP OPCache уключаны
     - PHP PCRE version: PHP PCRE версія
     - PHP version: PHP версія
+    - picture "%%_picture": малюнак "%%_picture"
     - Picture: Малюнак
     - Picture\: delete: Малюнак: выдаліць
     - Picture\: insert: Малюнак: уставіць
@@ -772,6 +771,7 @@ translations
     - Values: Значэнні
     - version: версія
     - Version: Версія
+    - video "%%_video": відэа "%%_video"
     - Video: Відэа
     - Video\: delete: Відэа: выдаліць
     - Video\: insert: Відэа: уставіць

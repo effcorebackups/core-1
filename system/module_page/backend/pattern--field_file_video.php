@@ -22,7 +22,7 @@ namespace effcore {
   ###########################
 
   static function widget_manage_action_text_get($field, $item, $id, $scope) {
-    return new text('delete video "%%_video"', ['video' => $item->file]);
+    return new text('video "%%_video"', ['video' => $item->file]);
   }
 
 }}

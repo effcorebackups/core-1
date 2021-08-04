@@ -65,22 +65,49 @@ namespace effcore {
     $_FILES   = [];
   }
 
+  # $is_files === false
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => (string)value
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (int)0 => (string)value,
+  #     (int)1 => (string)value …
+  #     (int)N => (string)value
+  #   ]
+
+  # $is_files !== false
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (string)key => (string)|(int)value
+  #   ]
+  # ─────────────────────────────────────────────────────────────────────
+  #   (string)key => [
+  #     (string)key => [
+  #       (int)0 => (string)|(int)value,
+  #       (int)1 => (string)|(int)value …
+  #       (int)N => (string)|(int)value
+  #     ]
+  #   ]
+
   static function values_sanitize($source = '_POST', $is_files = false) {
+    $result = [];
     global ${$source};
-    if (is_array(${$source})) {
-      foreach (${$source} as $c_1st_key => $c_1st_value) {
-      # first level for $_POST, $_GET, $_REQUEST, $_FILES
-        if (!(is_string($c_1st_value) || is_int($c_1st_value) || is_array($c_1st_value))) {
-          unset(${$source}[$c_1st_key]);
-          continue;
-        }
-      # second level for $_POST, $_GET, $_REQUEST + second level for $_FILES + third level for $_FILES
-        if (is_array($c_1st_value) && $is_files !== true) {foreach ($c_1st_value as $c_2nd_value) {if (!(is_string($c_2nd_value) || is_int($c_2nd_value)                          )) {unset(${$source}[$c_1st_key]); continue 2;}}}
-        if (is_array($c_1st_value) && $is_files === true) {foreach ($c_1st_value as $c_2nd_value) {if (!(is_string($c_2nd_value) || is_int($c_2nd_value) || is_array($c_2nd_value))) {unset(${$source}[$c_1st_key]); continue 2;}
-                              if (is_array($c_2nd_value)) {foreach ($c_2nd_value as $c_3rd_value) {if (!(is_string($c_3rd_value) || is_int($c_3rd_value)                          )) {unset(${$source}[$c_1st_key]); continue 3;}}}}
-        }
+    if (is_array(${$source}) && count(${$source})) {
+      $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator(${$source}));
+      foreach ($iterator as $c_value) {
+        $c_depth = $iterator->getDepth();
+        $c_k0 = $iterator->getSubIterator(0) ? $iterator->getSubIterator(0)->key() : null;
+        $c_k1 = $iterator->getSubIterator(1) ? $iterator->getSubIterator(1)->key() : null;
+        $c_k2 = $iterator->getSubIterator(2) ? $iterator->getSubIterator(2)->key() : null;
+        if ($is_files !== true && $c_depth === 0 && is_string($c_k0) &&                                      is_string($c_value)) $result[$c_k0]          = $c_value;
+        if ($is_files !== true && $c_depth === 1 && is_string($c_k0) &&    is_int($c_k1) &&                  is_string($c_value)) $result[$c_k0][]        = $c_value;
+        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                  is_string($c_value)) $result[$c_k0][$c_k1]   = $c_value;
+        if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                     is_int($c_value)) $result[$c_k0][$c_k1]   = $c_value;
+        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) &&    is_int($c_value)) $result[$c_k0][$c_k1][] = $c_value;
+        if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) && is_string($c_value)) $result[$c_k0][$c_k1][] = $c_value;
       }
     }
+    return $result;
   }
 
   # conversion matrix:
