@@ -19,7 +19,7 @@ namespace effcore\modules\demo {
           if ($entity->name === 'demo_join' && !$form->has_error()) {
             $id_data_new = $items['#id_data']->value_get        ();
             $id_data_old = $items['#id_data']->value_get_initial();
-            if ($id_data_new != $id_data_old) {
+            if ($id_data_new !== $id_data_old) {
               $result = $entity->instances_select(['conditions' => [
                 'id_data_!f'       => 'id_data',
                 'id_data_operator' => '=',

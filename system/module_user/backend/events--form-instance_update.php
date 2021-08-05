@@ -56,7 +56,7 @@ namespace effcore\modules\user {
             $id_user     = $items['#id_user']->value_get        ();
             $id_role_new = $items['#id_role']->value_get        ();
             $id_role_old = $items['#id_role']->value_get_initial();
-            if ($id_role_new != $id_role_old) {
+            if ($id_role_new !== $id_role_old) {
               $result = $entity->instances_select(['conditions' => [
                 'id_user_!f'       => 'id_user',
                 'id_user_operator' => '=',
@@ -78,7 +78,7 @@ namespace effcore\modules\user {
             $id_role           = $items['#id_role'      ]->value_get        ();
             $id_permission_new = $items['#id_permission']->value_get        ();
             $id_permission_old = $items['#id_permission']->value_get_initial();
-            if ($id_permission_new != $id_permission_old) {
+            if ($id_permission_new !== $id_permission_old) {
               $result = $entity->instances_select(['conditions' => [
                 'id_role_!f'             => 'id_role',
                 'id_role_operator'       => '=',
