@@ -15,7 +15,7 @@ selections
           on_entity_field_name: id
     - conditions
       - id_!f: ~demo_data.id
-      - operator: >=
+      - id_operator: >=
       - id_!v: 100
     - order
       - title_!f: ~demo_data.id

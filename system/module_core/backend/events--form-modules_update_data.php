@@ -57,7 +57,7 @@ namespace effcore\modules\core {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'apply':
-        $has_selection = false;
+        $has_choice = false;
         $modules = module::get_all();
         core::array_sort_by_text_property($modules);
         foreach ($modules as $c_module) {
@@ -68,7 +68,7 @@ namespace effcore\modules\core {
             foreach ($c_updates as $c_update) {
               if ($c_update->number > $c_update_last_number) {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
-                  $has_selection = true;
+                  $has_choice = true;
                   event::start('on_module_update_data_before', $c_module->id, ['update' => $c_update]);
                   $c_result = call_user_func($c_update->handler, $c_update);
                   event::start('on_module_update_data_after', $c_module->id, ['update' => $c_update]);
@@ -83,7 +83,7 @@ namespace effcore\modules\core {
             }
           }
         }
-        if (!$has_selection) {
+        if (!$has_choice) {
           message::insert(
             'No one item was selected!', 'warning'
           );

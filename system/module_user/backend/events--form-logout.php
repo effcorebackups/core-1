@@ -43,18 +43,18 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'logout':
         $messages       = [];
-        $has_selection  = false;
+        $has_choice     = false;
         $sessions       = session::select_all_by_id_user(user::get_current()->id);
         $session_active = session::select();
         foreach ($sessions as $c_session) {
           if ($items['#is_checked:'.$c_session->id]->checked_get()) {
-            $has_selection = true;
+            $has_choice = true;
             if (session::delete(user::get_current()->id, $session_active->id === $c_session->id ? null /* for regenerate */ : $c_session->id))
                  $messages['ok'     ][] = new text('Session with ID = "%%_id" was deleted.',     ['id' => $c_session->id]);
             else $messages['warning'][] = new text('Session with ID = "%%_id" was not deleted!', ['id' => $c_session->id]);
           }
         }
-        if ($has_selection) {
+        if ($has_choice) {
           if (session::select()) {
             foreach ($messages as $c_type => $c_messages_by_type)
               foreach ($c_messages_by_type as $c_message)

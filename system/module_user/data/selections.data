@@ -6,7 +6,7 @@ selections
     query_params
     - conditions
       - id_!f: ~user.nickname
-      - operator: =
+      - id_operator: =
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
