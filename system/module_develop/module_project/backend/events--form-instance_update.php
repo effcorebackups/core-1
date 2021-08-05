@@ -9,7 +9,7 @@ namespace effcore\modules\project {
           use \effcore\file;
           abstract class events_form_instance_update {
 
-  static function on_validate($event, $form, $items) {
+  static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
