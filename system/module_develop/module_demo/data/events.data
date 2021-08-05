@@ -107,11 +107,11 @@ events
       handler: \effcore\modules\demo\events_form_demo::on_validate
   - instance_insert__demo|event
       for: instance_insert
-      weight: +500
+      weight: +300
       handler: \effcore\modules\demo\events_form_instance_insert::on_validate
   - instance_update__demo|event
       for: instance_update
-      weight: +500
+      weight: +300
       handler: \effcore\modules\demo\events_form_instance_update::on_validate
   - example|event
       for: example
