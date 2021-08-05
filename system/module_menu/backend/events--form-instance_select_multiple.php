@@ -64,9 +64,9 @@ namespace effcore\modules\menu {
             $event->is_last = true;
             $has_changes = false;
             $tree_items = entity::get('tree_item')->instances_select(['conditions' => [
-              'id_tree_!f' => 'id_tree',
-              'operator'   => '=',
-              'id_tree_!v' => $form->category_id]], 'id');
+              'id_tree_!f'       => 'id_tree',
+              'id_tree_operator' => '=',
+              'id_tree_!v'       => $form->category_id]], 'id');
             foreach ($tree_items as $c_item) {
               $c_new_parent = request::value_get('parent-'.$c_item->id) ?: null;
               $c_new_weight = request::value_get('weight-'.$c_item->id) ?: '0';

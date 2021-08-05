@@ -45,9 +45,9 @@ namespace effcore {
   static function related_permissions_select($id_role) {
     $result = [];
     $items = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
-      'id_role_!f' => 'id_role',
-      'operator'   => '=',
-      'id_role_!v' => $id_role]]);
+      'id_role_!f'       => 'id_role',
+      'id_role_operator' => '=',
+      'id_role_!v'       => $id_role]]);
     foreach ($items as $c_item)
       $result[$c_item->id_permission] =
               $c_item->id_permission;

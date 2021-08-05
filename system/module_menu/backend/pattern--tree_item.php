@@ -131,9 +131,9 @@ namespace effcore {
         tree::select($id_tree)->origin === 'sql') {
       static::$is_init___sql_by_tree[$id_tree] = true;
       $instances = entity::get('tree_item')->instances_select(['conditions' => [
-        'id_tree_!f' => 'id_tree',
-        'operator'   => '=',
-        'id_tree_!v' => $id_tree]], 'id');
+        'id_tree_!f'       => 'id_tree',
+        'id_tree_operator' => '=',
+        'id_tree_!v'       => $id_tree]], 'id');
       foreach ($instances as $c_instance) {
         $c_tree_item = new static(
           $c_instance->title,

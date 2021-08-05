@@ -21,8 +21,13 @@ namespace effcore\modules\project {
             $id_project = $items['#id_project']->value_get();
             $build      = $items['#build'     ]->value_get();
             $result = $entity->instances_select(['conditions' => [
-              'id_project_!f' => 'id_project', 'id_project_operator' => '=', 'id_project_!v' => $id_project, 'conjunction' => 'and',
-              'build_!f'      => 'build',      'build_operator'      => '=', 'build!v'       => $build],     'limit'       => 1]);
+              'id_project_!f'       => 'id_project',
+              'id_project_operator' => '=',
+              'id_project_!v'       => $id_project,
+              'conjunction'         => 'and',
+              'build_!f'            => 'build',
+              'build_operator'      => '=',
+              'build!v'             => $build], 'limit' => 1]);
             if ($result) {
               $items['#id_project']->error_set();
               $items['#build']->error_set(new text_multiline([

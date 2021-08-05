@@ -79,9 +79,9 @@ namespace effcore {
   static function select_from_storage() {
     $result = [];
     $instances = entity::get('message')->instances_select(['conditions' => [
-      'id_!f'    => 'id_session',
-      'operator' => '=',
-      'id_!v'    => session::id_get()
+      'id_!f'       => 'id_session',
+      'id_operator' => '=',
+      'id_!v'       => session::id_get()
     ]]);
     if (count($instances)) {
       foreach ($instances as $c_instance)
