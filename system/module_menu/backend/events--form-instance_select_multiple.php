@@ -21,8 +21,8 @@ namespace effcore\modules\menu {
     if (!$form->category_id) $form->category_id = page::get_current()->args_get('category_id');
     $entity = entity::get($form->entity_name);
     if ($entity) {
-    # drag-and-drop functionality
       if ($entity->name === 'tree_item' && $form->category_id && !empty($form->_selection)) {
+      # drag-and-drop functionality
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
         $form->_selection->query_params['conditions'] = [

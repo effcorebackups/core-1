@@ -15,8 +15,8 @@ namespace effcore\modules\demo {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-        # field 'id_data'
           if ($entity->name === 'demo_join' && !$form->has_error()) {
+          # field 'id_data'
             $id_data_new = $items['#id_data']->value_get        ();
             $id_data_old = $items['#id_data']->value_get_initial();
             if ($id_data_new !== $id_data_old) {

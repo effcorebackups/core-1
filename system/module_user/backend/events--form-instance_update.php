@@ -17,8 +17,8 @@ namespace effcore\modules\user {
     if ($form->has_error_on_init === false) {
       $entity = entity::get($form->entity_name);
       if ($entity) {
-      # field 'role'
         if ($entity->name === 'relation_role_ws_user' && !empty($form->_instance)) {
+        # field 'role'
           $items['#id_role']->is_builded = false;
           $items['#id_role']->disabled['anonymous' ] = 'anonymous';
           $items['#id_role']->disabled['registered'] = 'registered';
@@ -29,8 +29,8 @@ namespace effcore\modules\user {
             $form->_instance->id_role === 'admins'
           );
         }
-      # field 'password'
         if ($entity->name === 'user') {
+        # field 'password'
           $field_password_hash_current = new field_password('Current password', null, [], -500);
           $field_password_hash_current->build();
           $field_password_hash_current->name_set('password_hash_current');
@@ -38,8 +38,8 @@ namespace effcore\modules\user {
             $field_password_hash_current, 'password_hash_current'
           );
         }
-      # field 'avatar'
         if ($entity->name === 'user' && !empty($form->_instance)) {
+        # field 'avatar'
           $items['#avatar_path']->fixed_name = 'avatar-'.$form->_instance->id;
         }
       }
@@ -51,8 +51,8 @@ namespace effcore\modules\user {
     if ($entity) {
       switch ($form->clicked_button->value_get()) {
         case 'update':
-        # field 'user' + field 'role'
           if ($entity->name === 'relation_role_ws_user' && !$form->has_error()) {
+          # field 'user' + field 'role'
             $id_user     = $items['#id_user']->value_get        ();
             $id_role_new = $items['#id_role']->value_get        ();
             $id_role_old = $items['#id_role']->value_get_initial();
@@ -73,8 +73,8 @@ namespace effcore\modules\user {
               }
             }
           }
-        # field 'role' + field 'permission'
           if ($entity->name === 'relation_role_ws_permission' && !$form->has_error()) {
+          # field 'role' + field 'permission'
             $id_role           = $items['#id_role'      ]->value_get        ();
             $id_permission_new = $items['#id_permission']->value_get        ();
             $id_permission_old = $items['#id_permission']->value_get_initial();
@@ -96,8 +96,8 @@ namespace effcore\modules\user {
               }
             }
           }
-        # field 'new password' + field 'current password'
           if ($entity->name === 'user' && !$form->has_error() && !empty($form->_instance)) {
+          # field 'new password' + field 'current password'
             if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
               $items['#password_hash_current']->error_set(
                 'Field "%%_title" contains an incorrect value!', ['title' => (new text($items['#password_hash_current']->title))->render() ]

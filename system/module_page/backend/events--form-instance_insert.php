@@ -68,9 +68,9 @@ namespace effcore\modules\page {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         case 'insert_and_update':
-        # field 'id'
           if ($entity->name === 'page') {
-            if ($items['#id']->value_get()) { # check the uniqueness of SQL + NoSQL data
+          # field 'id' (check the uniqueness of SQL + NoSQL data)
+            if ($items['#id']->value_get()) {
               if (page::get_by_id($items['#id']->value_get())) {
                 $items['#id']->error_set(new text_multiline([
                   'Field "%%_title" contains an error!',
@@ -79,10 +79,8 @@ namespace effcore\modules\page {
                 ));
               }
             }
-          }
-        # field 'url'
-          if ($entity->name === 'page') {
-            if ($items['#url']->value_get()) { # check the uniqueness of SQL + NoSQL data
+          # field 'url' (check the uniqueness of SQL + NoSQL data)
+            if ($items['#url']->value_get()) {
               if (page::get_by_url($items['#url']->value_get())) {
                 $items['#url']->error_set(new text_multiline([
                   'Field "%%_title" contains an error!',

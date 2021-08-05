@@ -14,8 +14,8 @@ namespace effcore\modules\menu {
     if ($form->has_error_on_init === false) {
       $entity = entity::get($form->entity_name);
       if ($entity) {
-      # field 'parent'
         if ($entity->name === 'tree_item' && !empty($form->_instance)) {
+        # field 'parent'
           $tree_item = tree_item::select(
             $form->_instance->id,
             $form->_instance->id_tree);

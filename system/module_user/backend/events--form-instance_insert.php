@@ -49,8 +49,8 @@ namespace effcore\modules\user {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         case 'insert_and_update':
-        # field 'user' + field 'role'
           if ($entity->name === 'relation_role_ws_user' && !$form->has_error()) {
+          # field 'user' + field 'role'
             $id_user = $items['#id_user']->value_get();
             $id_role = $items['#id_role']->value_get();
             $result = $entity->instances_select(['conditions' => [
@@ -69,8 +69,8 @@ namespace effcore\modules\user {
               ));
             }
           }
-        # field 'role' + field 'permission'
           if ($entity->name === 'relation_role_ws_permission' && !$form->has_error()) {
+          # field 'role' + field 'permission'
             $id_role       = $items['#id_role'      ]->value_get();
             $id_permission = $items['#id_permission']->value_get();
             $result = $entity->instances_select(['conditions' => [
