@@ -1,0 +1,37 @@
+selections
+- releases|selection
+    id: releases
+    title: Releases
+    template: content
+    decorator_params
+    - view_type: ul
+    fields
+    - release.id_project
+        type: field
+        entity_name: release
+        entity_field_name: id_project
+    - release.build
+        type: field
+        entity_name: release
+        entity_field_name: build
+    - release.path
+        type: field
+        entity_name: release
+        entity_field_name: path
+    - release.hash_sum
+        type: field
+        entity_name: release
+        entity_field_name: hash_sum
+    - release.created
+        type: field
+        entity_name: release
+        entity_field_name: created
+    - release.updated
+        type: field
+        entity_name: release
+        entity_field_name: updated
+    - release.description
+        type: field
+        entity_name: release
+        entity_field_name: description
+        filter: \effcore\translation::apply
