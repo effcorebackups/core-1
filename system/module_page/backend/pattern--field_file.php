@@ -232,13 +232,13 @@ namespace effcore {
     $fin_to_delete = $field->items_get('fin_to_delete');
     foreach ($fin_to_delete as $c_id => $c_item) {
       if ($c_item->delete_fin()) {
-        $title_for_message = $c_item->file;
+        $c_title_for_message = $c_item->file;
         unset($fin_to_delete[$c_id]);
         $field->items_set('fin_to_delete', $fin_to_delete);
         message::insert(new text(
           'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
           'type'  => (new text($field->item_title))->render(),
-          'title' => $title_for_message
+          'title' => $c_title_for_message
         ]));
       } else {
         $field->error_set();
