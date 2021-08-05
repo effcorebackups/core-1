@@ -28,5 +28,5 @@ events
       handler: \effcore\modules\project\events_form_instance_insert::on_submit
   - instance_update__project|event
       for: instance_update
-      weight: +500
+      weight: +600
       handler: \effcore\modules\project\events_form_instance_update::on_submit

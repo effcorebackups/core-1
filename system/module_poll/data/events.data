@@ -44,11 +44,11 @@ events
   on_form_submit
   - instance_insert__poll|event
       for: instance_insert
-      weight: +400
+      weight: -600
       handler: \effcore\modules\poll\events_form_instance_insert::on_submit
   - instance_update__poll|event
       for: instance_update
-      weight: +400
+      weight: -600
       handler: \effcore\modules\poll\events_form_instance_update::on_submit
   - vote|event
       for: vote
