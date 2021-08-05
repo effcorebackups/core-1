@@ -215,6 +215,7 @@ entities
         managing_control_element_attributes
         - maxlength: 1024
         - required: null
+        - disabled: true
         selection_params_default
         - filter: \effcore\translation::apply
         - weight: +320

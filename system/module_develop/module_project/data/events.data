@@ -21,3 +21,7 @@ events
       for: instance_insert
       weight: +500
       handler: \effcore\modules\project\events_form_instance_insert::on_validate
+  - instance_update__project|event
+      for: instance_update
+      weight: +500
+      handler: \effcore\modules\project\events_form_instance_update::on_validate

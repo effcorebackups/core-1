@@ -16,8 +16,8 @@ namespace effcore\modules\project {
       switch ($form->clicked_button->value_get()) {
         case 'insert':
         case 'insert_and_update':
-        # field 'id_project' + field 'build'
           if ($entity->name === 'release' && !$form->has_error()) {
+          # field 'id_project' + field 'build'
             $id_project = $items['#id_project']->value_get();
             $build      = $items['#build'     ]->value_get();
             $result = $entity->instances_select(['conditions' => [
