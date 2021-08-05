@@ -22,7 +22,7 @@ namespace effcore\modules\core {
 
   static function on_load_dynamic($event, &$type_info, &$file) {
     $data = token::apply($file->load());
-    $etag = core::hash_get_etag($data);
+    $etag = core::hash_get($data);
 
   # send header '304 Not Modified' if the data has no changes
     if (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&

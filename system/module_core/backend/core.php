@@ -752,10 +752,6 @@ namespace effcore {
     return md5($string);
   }
 
-  static function hash_get_etag($string) {
-    return md5($string);
-  }
-
   static function hash_get_mini($string, $length = 8) {
     return substr(md5($string), 0, $length);
   }
