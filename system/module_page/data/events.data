@@ -48,7 +48,7 @@ events
   on_form_build
   - instance_update__page|event
       for: instance_update
-      weight: +500
+      weight: +300
       handler: \effcore\modules\page\events_form_instance_update::on_build
   on_form_init
   - colors|event
@@ -77,11 +77,11 @@ events
       handler: \effcore\modules\page\events_form_seo_robots::on_init
   - instance_insert__page|event
       for: instance_insert
-      weight: +500
+      weight: +300
       handler: \effcore\modules\page\events_form_instance_insert::on_init
   - instance_update__page|event
       for: instance_update
-      weight: +500
+      weight: +300
       handler: \effcore\modules\page\events_form_instance_update::on_init
   on_form_validate
   - view_settings|event
