@@ -2,9 +2,16 @@ selections
 - releases|selection
     id: releases
     title: Releases
-    template: content
     decorator_params
     - view_type: ul
+    query_params
+    - conditions
+      - id_project_!f: ~release.id_project
+      - id_project_operator: =
+      - id_project_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_id_project_block_context
     fields
     - release.id_project
         type: field
