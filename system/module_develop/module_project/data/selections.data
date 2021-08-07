@@ -5,6 +5,7 @@ selections
       is_apply_translation: true
       is_apply_tokens: true
       text: Releases of the project "%%_id_project_context"
+    pager_is_enabled: true
     decorator_params
     - view_type: ul
     query_params

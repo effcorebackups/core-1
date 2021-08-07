@@ -2,9 +2,9 @@ selections
 - demo_join|selection
     id: demo_join
     title: Selection of "demo_data" entities + join
+    pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    pager_is_enabled: true
     query_params
     - join_script
       - with_demo_join
