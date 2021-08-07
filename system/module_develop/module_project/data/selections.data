@@ -1,7 +1,10 @@
 selections
 - releases|selection
     id: releases
-    title: Releases
+    title|text
+      is_apply_translation: true
+      is_apply_tokens: true
+      text: Releases of the project "%%_id_project_context"
     decorator_params
     - view_type: ul
     query_params
@@ -11,12 +14,8 @@ selections
       - id_project_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_id_project_block_context
+          text: %%_id_project_context
     fields
-    - release.id_project
-        type: field
-        entity_name: release
-        entity_field_name: id_project
     - release.build
         type: field
         entity_name: release

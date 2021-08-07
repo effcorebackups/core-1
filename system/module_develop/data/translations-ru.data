@@ -173,6 +173,7 @@ translations
     - REGISTERED USER: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
     - Relation (tree view): Связь (в виде дерева)
     - Release: Выпуск
+    - Releases of the project "%%_id_project_context": Выпуски проекта "%%_id_project_context"
     - Releases: Выпуски
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - result of checking is = "%%_result": результат проверки = "%%_result"

@@ -19,8 +19,9 @@ namespace effcore\modules\project {
 
   static function block_markup__selection_make($page, $args = []) {
     if (!empty($args['id_project'])) {
-      token::insert('id_project_block_context', 'text', $args['id_project']);
+      token::insert('id_project_context', 'text', $args['id_project']);
       $selection = core::deep_clone(selection::get('releases'));
+      $selection->title = $selection->title->render();
       $selection->build();
       return $selection;
     }

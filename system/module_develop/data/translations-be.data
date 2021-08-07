@@ -173,6 +173,7 @@ translations
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - Release: Выпуск
+    - Releases of the project "%%_id_project_context": Выпускі праекта "%%_id_project_context"
     - Releases: Выпускі
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
