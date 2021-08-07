@@ -6,6 +6,7 @@
 
 namespace effcore\modules\project {
           use \effcore\block_preset;
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\selection;
           use \effcore\token;
@@ -19,7 +20,7 @@ namespace effcore\modules\project {
   static function block_markup__selection_make($page, $args = []) {
     if (!empty($args['id_project'])) {
       token::insert('id_project_block_context', 'text', $args['id_project']);
-      $selection = selection::get('releases');
+      $selection = core::deep_clone(selection::get('releases'));
       $selection->build();
       return $selection;
     }
