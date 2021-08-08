@@ -62,6 +62,9 @@ selections
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_id_project_context
+    - order
+      - build_!f: ~release.build
+      - type: DESC
     fields
     - release.build
         type: field
