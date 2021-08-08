@@ -1,6 +1,6 @@
 selections
-- release_last|selection
-    id: release_last
+- release_current|selection
+    id: release_current
     title|text
       is_apply_translation: true
       is_apply_tokens: true
