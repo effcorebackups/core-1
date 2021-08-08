@@ -1,4 +1,50 @@
 selections
+- release_last|selection
+    id: release_last
+    title|text
+      is_apply_translation: true
+      is_apply_tokens: true
+      text: Last release of the project "%%_id_project_context"
+    decorator_params
+    - view_type: ul
+    query_params
+    - conditions
+      - id_project_!f: ~release.id_project
+      - id_project_operator: =
+      - id_project_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_id_project_context
+    - order
+      - build_!f: ~release.build
+      - type: DESC
+    - limit: 1
+    fields
+    - release.build
+        type: field
+        entity_name: release
+        entity_field_name: build
+    - release.path
+        type: field
+        entity_name: release
+        entity_field_name: path
+    - release.hash_sum
+        type: field
+        entity_name: release
+        entity_field_name: hash_sum
+    - release.created
+        type: field
+        entity_name: release
+        entity_field_name: created
+    - release.updated
+        type: field
+        entity_name: release
+        entity_field_name: updated
+    - release.description
+        type: field
+        entity_name: release
+        entity_field_name: description
+        filter: \effcore\translation::apply
 - releases|selection
     id: releases
     title|text

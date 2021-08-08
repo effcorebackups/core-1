@@ -1,0 +1,12 @@
+block_presets
+- block__selection__release_last|block_preset
+    id: block__selection__release_last
+    managing_group: Selections
+    managing_title: Last release of the project "%%_id_project_context"
+    title: Last release of the project "%%_id_project_context"
+    title_is_visible: false
+    attributes
+    - data-block: true
+    - data-id: block__selection__release_last
+    type: link
+    source: selections/project/release_last

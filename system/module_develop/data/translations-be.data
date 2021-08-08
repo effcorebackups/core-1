@@ -121,6 +121,7 @@ translations
     - item #3: пункт №3
     - Join: Злучэнне
     - Joins: Злучэння
+    - Last release of the project "%%_id_project_context": Апошні выпуск праекта "%%_id_project_context"
     - Main content of Micro Tab #%%_num: Асноўны змест мікра-ўкладкі №%%_num
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
