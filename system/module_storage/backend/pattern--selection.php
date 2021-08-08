@@ -7,6 +7,8 @@
 namespace effcore {
           class selection extends markup implements has_external_cache {
 
+  const default_limit = 50;
+
   public $tag_name = 'x-selection';
   public $attributes = ['data-selection' => true];
   public $template = 'container';
@@ -84,7 +86,7 @@ namespace effcore {
           }
         }
         if (empty($this->query_params['limit']))
-                  $this->query_params['limit'] = 50;
+                  $this->query_params['limit'] = static::default_limit;
 
       # prepare pager
         if ($this->pager_is_enabled) {
