@@ -170,7 +170,8 @@ Timely system update provides:
 - security improvement.
 
 To update the system in manual mode, you need to go to its official website
-effcore.com and download the latest distribution kit in the form of an archive.
+effcore.com and download the current version of the distribution kit in the
+form of an archive.
 Next, you should unpack the downloaded archive locally.
 Important: among the unpacked files you will find half-empty directories "modules"
 and "dynamic" which must be removed before copying to the web server!
