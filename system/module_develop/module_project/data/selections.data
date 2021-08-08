@@ -4,7 +4,7 @@ selections
     title|text
       is_apply_translation: true
       is_apply_tokens: true
-      text: Last release of the project "%%_id_project_context"
+      text: Current release of the project "%%_id_project_context"
     decorator_params
     - view_type: ul
     query_params
