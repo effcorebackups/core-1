@@ -124,3 +124,72 @@ selections
         entity_field_name: is_embedded
         filter: \effcore\translation::apply
         weight: 280
+- video|selection
+    id: video
+    template: content
+    query_params
+    - conditions
+      - id_!f: ~video.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: video
+    - template_row_mapping
+      - id: video.id
+      - description: video.description
+      - attributes: video.attributes
+      - path: video.path
+      - poster_path: video.poster_path
+      - attributes: video.attributes
+      - created: video.created
+      - updated: video.updated
+      - is_embedded: video.is_embedded
+    fields
+    - video.id
+        type: field
+        entity_name: video
+        entity_field_name: id
+        weight: 400
+    - video.description
+        type: field
+        entity_name: video
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - video.attributes
+        type: field
+        entity_name: video
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 360
+    - video.path
+        type: field
+        entity_name: video
+        entity_field_name: path
+        weight: 340
+    - video.poster_path
+        type: field
+        entity_name: video
+        entity_field_name: poster_path
+        weight: 320
+    - video.created
+        type: field
+        entity_name: video
+        entity_field_name: created
+        weight: 300
+    - video.updated
+        type: field
+        entity_name: video
+        entity_field_name: updated
+        weight: 280
+    - video.is_embedded
+        type: field
+        entity_name: video
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 260
