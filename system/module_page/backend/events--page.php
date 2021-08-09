@@ -83,20 +83,7 @@ namespace effcore\modules\page {
   static function block_markup__selection_make($page, $args = []) {
     if (!empty($args['instance_id']) &&
         !empty($args['entity_name'])) {
-      $entity = entity::get($args['entity_name']);
-      $selection = new selection;
-      $selection->id = $args['entity_name'].'_'.$args['instance_id'];
-      $selection->template = 'content';
-      foreach ($entity->selection_params_default ?? [] as $c_key => $c_value)
-        $selection                                     ->{$c_key} = $c_value;
-      $selection->query_params['conditions'] = ['id_!f' => '~'.$args['entity_name'].'.id', 'operator' => '=', 'id_!v' => $args['instance_id']];
-      foreach ($entity->fields as $c_name => $c_field) {
-        if (!empty($c_field->managing_on_select_is_enabled)) {
-          $selection->field_insert_entity(null,
-            $entity->name, $c_name, $c_field->selection_params_default ?? []
-          );
-        }
-      }
+      $selection = instance::selection_simple_make($args['entity_name'], $args['instance_id']);
       $selection->build();
       return $selection;
     }

@@ -106,4 +106,21 @@ namespace effcore {
     return static::$cache_orig[$name] ?? [];
   }
 
+  static function selection_simple_make($entity_name, $instance_id) {
+    $entity = entity::get($entity_name);
+    $selection = new selection;
+    $selection->id = $entity_name.'_'.$instance_id;
+    $selection->template = 'content';
+    foreach ($entity->selection_params_default ?? [] as $c_key => $c_value)
+      $selection                                     ->{$c_key} = $c_value;
+    $selection->query_params['conditions'] = [
+      'id_!f'       => '~'.$entity_name.'.id',
+      'id_operator' => '=',
+      'id_!v'       => $instance_id];
+    foreach ($entity->fields as $c_name => $c_field)
+      if (!empty($c_field->managing_on_select_is_enabled))
+        $selection->field_insert_entity(null, $entity->name, $c_name, $c_field->selection_params_default ?? []);
+    return $selection;
+  }
+
 }}
