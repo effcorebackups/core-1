@@ -2,14 +2,6 @@ selections
 - audio|selection
     id: audio
     template: content
-    query_params
-    - conditions
-      - id_!f: ~audio.id
-      - id_operator: =
-      - id_!v|text
-          is_apply_translation: false
-          is_apply_tokens: true
-          text: %%_instance_id_context
     decorator_params
     - view_type: template
     - template: content
@@ -22,6 +14,14 @@ selections
       - created: audio.created
       - updated: audio.updated
       - is_embedded: audio.is_embedded
+    query_params
+    - conditions
+      - id_!f: ~audio.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
     fields
     - audio.id
         type: field
@@ -61,17 +61,84 @@ selections
         entity_field_name: is_embedded
         filter: \effcore\translation::apply
         weight: 280
-- text|selection
-    id: text
+- picture|selection
+    id: picture
     template: content
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: picture
+    - template_row_mapping
+      - id: picture.id
+      - description: picture.description
+      - attributes: picture.attributes
+      - path: picture.path
+      - link_attributes: picture.link_attributes
+      - url: picture.url
+      - created: picture.created
+      - updated: picture.updated
+      - is_embedded: picture.is_embedded
     query_params
     - conditions
-      - id_!f: ~text.id
+      - id_!f: ~picture.id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_instance_id_context
+    fields
+    - picture.id
+        type: field
+        entity_name: picture
+        entity_field_name: id
+        weight: 400
+    - picture.description
+        type: field
+        entity_name: picture
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - picture.attributes
+        type: field
+        entity_name: picture
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 360
+    - picture.path
+        type: field
+        entity_name: picture
+        entity_field_name: path
+        weight: 340
+    - picture.link_attributes
+        type: field
+        entity_name: picture
+        entity_field_name: link_attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 320
+    - picture.url
+        type: field
+        entity_name: picture
+        entity_field_name: url
+        weight: 300
+    - picture.created
+        type: field
+        entity_name: picture
+        entity_field_name: created
+        weight: 280
+    - picture.updated
+        type: field
+        entity_name: picture
+        entity_field_name: updated
+        weight: 260
+    - picture.is_embedded
+        type: field
+        entity_name: picture
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 240
+- text|selection
+    id: text
+    template: content
     decorator_params
     - view_type: template
     - template: content
@@ -84,6 +151,14 @@ selections
       - created: text.created
       - updated: text.updated
       - is_embedded: text.is_embedded
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
     fields
     - text.id
         type: field
@@ -127,14 +202,6 @@ selections
 - video|selection
     id: video
     template: content
-    query_params
-    - conditions
-      - id_!f: ~video.id
-      - id_operator: =
-      - id_!v|text
-          is_apply_translation: false
-          is_apply_tokens: true
-          text: %%_instance_id_context
     decorator_params
     - view_type: template
     - template: content
@@ -149,6 +216,14 @@ selections
       - created: video.created
       - updated: video.updated
       - is_embedded: video.is_embedded
+    query_params
+    - conditions
+      - id_!f: ~video.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
     fields
     - video.id
         type: field
