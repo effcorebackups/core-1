@@ -6,7 +6,7 @@ selections
       is_apply_tokens: true
       text: Current release of the project "%%_id_project_context"
     decorator_params
-    - view_type: ul
+    - view_type: table-dl
     query_params
     - conditions
       - id_project_!f: ~release.id_project
@@ -53,7 +53,7 @@ selections
       text: Releases of the project "%%_id_project_context"
     pager_is_enabled: true
     decorator_params
-    - view_type: ul
+    - view_type: table-dl
     query_params
     - conditions
       - id_project_!f: ~release.id_project
