@@ -1,0 +1,38 @@
+selections
+- text|selection
+    id: text
+    template: content
+    query_params
+    - conditions
+      - id_!f: ~text.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: text
+    - template_row_mapping
+      - id: text.id
+      - text: text.text
+      - attributes: text.attributes
+    fields
+    - text.id
+        type: field
+        entity_name: text
+        entity_field_name: id
+        weight: 400
+    - text.attributes
+        type: field
+        entity_name: text
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 380
+    - text.text
+        type: field
+        entity_name: text
+        entity_field_name: text
+        filter: \effcore\translation::apply
+        weight: 360
