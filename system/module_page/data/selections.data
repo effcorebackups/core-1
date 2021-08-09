@@ -16,23 +16,49 @@ selections
     - template_row: text
     - template_row_mapping
       - id: text.id
-      - text: text.text
+      - description: text.description
       - attributes: text.attributes
+      - text: text.text
+      - created: text.created
+      - updated: text.updated
+      - is_embedded: text.is_embedded
     fields
     - text.id
         type: field
         entity_name: text
         entity_field_name: id
         weight: 400
+    - text.description
+        type: field
+        entity_name: text
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
     - text.attributes
         type: field
         entity_name: text
         entity_field_name: attributes
         filter: \effcore\widget_attributes::complex_value_to_markup
-        weight: 380
+        weight: 360
     - text.text
         type: field
         entity_name: text
         entity_field_name: text
         filter: \effcore\translation::apply
-        weight: 360
+        weight: 340
+    - text.created
+        type: field
+        entity_name: text
+        entity_field_name: created
+        weight: 320
+    - text.updated
+        type: field
+        entity_name: text
+        entity_field_name: updated
+        weight: 300
+    - text.is_embedded
+        type: field
+        entity_name: text
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 280
