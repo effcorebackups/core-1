@@ -65,7 +65,7 @@ templates
 - video
     name: video
     type: text
-    data: <video data-id="%%_id" src="/%%_path" poster="%%_poster_path" %%_attributes></video>
+    data: <video data-id="%%_id" src="/%%_path" poster="/%%_poster_path" %%_attributes></video>
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────
