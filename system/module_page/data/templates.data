@@ -9,7 +9,7 @@ templates
 - audio
     name: audio
     type: text
-    data: <audio data-id="%%_id" src="/%%_src" %%_attributes></audio>
+    data: <audio data-id="%%_id" src="/%%_path" %%_attributes></audio>
 - block
     name: block
     type: text

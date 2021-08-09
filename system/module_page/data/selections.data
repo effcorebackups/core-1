@@ -1,4 +1,66 @@
 selections
+- audio|selection
+    id: audio
+    template: content
+    query_params
+    - conditions
+      - id_!f: ~audio.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_instance_id_context
+    decorator_params
+    - view_type: template
+    - template: content
+    - template_row: audio
+    - template_row_mapping
+      - id: audio.id
+      - description: audio.description
+      - attributes: audio.attributes
+      - path: audio.path
+      - created: audio.created
+      - updated: audio.updated
+      - is_embedded: audio.is_embedded
+    fields
+    - audio.id
+        type: field
+        entity_name: audio
+        entity_field_name: id
+        weight: 400
+    - audio.description
+        type: field
+        entity_name: audio
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - audio.attributes
+        type: field
+        entity_name: audio
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 360
+    - audio.path
+        type: field
+        entity_name: audio
+        entity_field_name: path
+        weight: 340
+    - audio.created
+        type: field
+        entity_name: audio
+        entity_field_name: created
+        weight: 320
+    - audio.updated
+        type: field
+        entity_name: audio
+        entity_field_name: updated
+        weight: 300
+    - audio.is_embedded
+        type: field
+        entity_name: audio
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 280
 - text|selection
     id: text
     template: content
