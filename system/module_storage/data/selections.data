@@ -1,0 +1,28 @@
+selections
+- instance_select_multiple-selection|selection
+    id: instance_select_multiple-selection
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - selection.id
+        type: field
+        entity_name: selection
+        entity_field_name: id
+        weight: 400
+    - selection.title
+        type: field
+        entity_name: selection
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - selection.created
+        type: field
+        entity_name: selection
+        entity_field_name: created
+        weight: 360
+    - selection.updated
+        type: field
+        entity_name: selection
+        entity_field_name: updated
+        weight: 340

@@ -1,0 +1,28 @@
+selections
+- instance_select_multiple-poll|selection
+    id: instance_select_multiple-poll
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - poll.id
+        type: field
+        entity_name: poll
+        entity_field_name: id
+        weight: 400
+    - poll.question
+        type: field
+        entity_name: poll
+        entity_field_name: question
+        filter: \effcore\translation::apply
+        weight: 380
+    - poll.expired
+        type: field
+        entity_name: poll
+        entity_field_name: expired
+        weight: 360
+    - poll.created
+        type: field
+        entity_name: poll
+        entity_field_name: created
+        weight: 340

@@ -25,7 +25,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -45,7 +44,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -288,7 +286,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -308,7 +305,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -360,7 +356,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -380,7 +375,6 @@ entities
         check: (f_nocase <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -398,7 +392,6 @@ entities
         check: (f_binary <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -439,7 +432,6 @@ entities
         collate: nocase
         not_null: true
         check: (f_primary <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -460,7 +452,6 @@ entities
         check: (f_unique <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -474,7 +465,6 @@ entities
         title: Field foreign
         type: integer
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -540,7 +530,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -558,7 +547,6 @@ entities
         collate: nocase
         not_null: true
         check: (nickname <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -572,7 +560,6 @@ entities
         title: Is even
         type: boolean
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -586,7 +573,6 @@ entities
         title: Created
         type: datetime
         default: null
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -633,7 +619,6 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -653,7 +638,6 @@ entities
         check: (f_index_unique <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -672,7 +656,6 @@ entities
         check: (f_index <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -725,7 +708,6 @@ entities
         title: Data ID
         type: integer
         not_null: true
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -744,7 +726,6 @@ entities
         collate: nocase
         not_null: true
         check: (email <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true

@@ -1,4 +1,58 @@
 selections
+- instance_select_multiple-project|selection
+    id: instance_select_multiple-project
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - project.id
+        type: field
+        entity_name: project
+        entity_field_name: id
+        weight: 400
+    - project.title
+        type: field
+        entity_name: project
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - project.created
+        type: field
+        entity_name: project
+        entity_field_name: created
+        weight: 360
+    - project.updated
+        type: field
+        entity_name: project
+        entity_field_name: updated
+        weight: 340
+- instance_select_multiple-release|selection
+    id: instance_select_multiple-release
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - release.id_project
+        type: field
+        entity_name: release
+        entity_field_name: id_project
+        weight: 400
+    - release.build
+        type: field
+        entity_name: release
+        entity_field_name: build
+        weight: 380
+    - release.created
+        type: field
+        entity_name: release
+        entity_field_name: created
+        weight: 360
+    - release.updated
+        type: field
+        entity_name: release
+        entity_field_name: updated
+        weight: 340
+# ─────────────────────────────────────────────────────────────────────
 - release_current|selection
     id: release_current
     title|text

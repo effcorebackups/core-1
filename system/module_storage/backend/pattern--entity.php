@@ -28,9 +28,8 @@ namespace effcore {
   public $managing_is_enabled = false;
   public $managing_group_id = 'content';
 
-  public $selection_params_for_managing          = [];
-  public $selection_params_for_managing_multiple = [];
-  public $selection_params_default               = [];
+  public $selection_params_for_managing = [];
+  public $selection_params_default      = [];
 
   public $access_select;
   public $access_insert;

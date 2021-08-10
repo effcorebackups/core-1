@@ -85,7 +85,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -106,7 +105,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -156,7 +154,6 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -168,7 +165,6 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -235,7 +231,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -256,7 +251,6 @@ entities
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -319,7 +313,6 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -331,7 +324,6 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -393,7 +385,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -435,7 +426,6 @@ entities
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -454,7 +444,6 @@ entities
         collate: nocase
         not_null: true
         check: (url <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -489,7 +478,6 @@ entities
         check: (lang_code <> '')
         filter_insert: \effcore\core::return_null_if_empty
         filter_update: \effcore\core::return_null_if_empty
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -691,7 +679,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -712,7 +699,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -790,7 +776,6 @@ entities
         size: 255
         collate: nocase
         default: null
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -807,7 +792,6 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -819,7 +803,6 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -887,7 +870,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -908,7 +890,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -959,7 +940,6 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -971,7 +951,6 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -1040,7 +1019,6 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -1061,7 +1039,6 @@ entities
         check: (description <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_on_insert_is_enabled: true
         managing_on_update_is_enabled: true
@@ -1132,7 +1109,6 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
@@ -1144,7 +1120,6 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_multiple_is_enabled: true
         managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties

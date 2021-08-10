@@ -1,4 +1,145 @@
 selections
+- instance_select_multiple-audio|selection
+    id: instance_select_multiple-audio
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - audio.id
+        type: field
+        entity_name: audio
+        entity_field_name: id
+        weight: 400
+    - audio.description
+        type: field
+        entity_name: audio
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - audio.created
+        type: field
+        entity_name: audio
+        entity_field_name: created
+        weight: 360
+    - audio.updated
+        type: field
+        entity_name: audio
+        entity_field_name: updated
+        weight: 340
+- instance_select_multiple-gallery|selection
+    id: instance_select_multiple-gallery
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - gallery.id
+        type: field
+        entity_name: gallery
+        entity_field_name: id
+        weight: 400
+    - gallery.title
+        type: field
+        entity_name: gallery
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - gallery.created
+        type: field
+        entity_name: gallery
+        entity_field_name: created
+        weight: 360
+    - gallery.updated
+        type: field
+        entity_name: gallery
+        entity_field_name: updated
+        weight: 340
+- instance_select_multiple-picture|selection
+    id: instance_select_multiple-picture
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - picture.id
+        type: field
+        entity_name: picture
+        entity_field_name: id
+        weight: 400
+    - picture.description
+        type: field
+        entity_name: picture
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - picture.url
+        type: field
+        entity_name: picture
+        entity_field_name: url
+        weight: 360
+    - picture.created
+        type: field
+        entity_name: picture
+        entity_field_name: created
+        weight: 340
+    - picture.updated
+        type: field
+        entity_name: picture
+        entity_field_name: updated
+        weight: 320
+- instance_select_multiple-text|selection
+    id: instance_select_multiple-text
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - text.id
+        type: field
+        entity_name: text
+        entity_field_name: id
+        weight: 400
+    - text.description
+        type: field
+        entity_name: text
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - text.created
+        type: field
+        entity_name: text
+        entity_field_name: created
+        weight: 360
+    - text.updated
+        type: field
+        entity_name: text
+        entity_field_name: updated
+        weight: 340
+- instance_select_multiple-video|selection
+    id: instance_select_multiple-video
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - video.id
+        type: field
+        entity_name: video
+        entity_field_name: id
+        weight: 400
+    - video.description
+        type: field
+        entity_name: video
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - video.created
+        type: field
+        entity_name: video
+        entity_field_name: created
+        weight: 360
+    - video.updated
+        type: field
+        entity_name: video
+        entity_field_name: updated
+        weight: 340
+# ─────────────────────────────────────────────────────────────────────
 - audio|selection
     id: audio
     template: content

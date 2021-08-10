@@ -127,8 +127,8 @@ namespace effcore\modules\develop {
     $decorator->id = 'nosql_selections';
     foreach ($selection as $c_selection) {
       $decorator->data[] = [
-        'id'    => ['value' => new text_simple($c_selection->id   ), 'title' => 'ID'   ],
-        'title' => ['value' => new text       ($c_selection->title), 'title' => 'Title']
+        'id'    => ['value' =>                                                             new text_simple($c_selection->id   ), 'title' => 'ID'   ],
+        'title' => ['value' => $c_selection->title instanceof text ? $c_selection->title : new text       ($c_selection->title), 'title' => 'Title']
       ];
     }
     return $decorator;

@@ -7,6 +7,7 @@
 namespace effcore\modules\storage {
           use \effcore\access;
           use \effcore\actions_list;
+          use \effcore\core;
           use \effcore\entity;
           use \effcore\markup;
           use \effcore\message;
@@ -41,28 +42,9 @@ namespace effcore\modules\storage {
   static function on_init($event, $form, $items) {
     $entity = entity::get($form->entity_name);
     if ($entity) {
-      $selection = new selection;
-      $selection->id = 'instance_select_multiple-'.$entity->name;
-      $selection->pager_is_enabled = true;
-      foreach ($entity->selection_params_for_managing_multiple as $c_key => $c_value)
-        $selection->                                             {$c_key} = $c_value;
-      if (empty($selection->decorator_params['view_type']))
-                $selection->decorator_params['view_type'] = 'table-adaptive';
-      $form->_selection = $selection;
-      $has_visible_fields = false;
-      foreach ($entity->fields as $c_name => $c_field) {
-        if (!empty($c_field->managing_on_select_multiple_is_enabled)) {
-          $has_visible_fields = true;
-          $selection->field_insert_entity(null,
-            $entity->name, $c_name, $c_field->selection_params_default ?? []
-          );
-        }
-      }
-      if (!$has_visible_fields) {
-        $form->child_select('data')->child_insert(
-          new markup('x-no-items', ['data-style' => 'table'], 'no fields'), 'no_items'
-        );
-      } else {
+      $selection = selection::get('instance_select_multiple-'.$entity->name);
+      if ($selection) {
+        $selection = core::deep_clone($selection);
         $selection->field_insert_checkbox(null, null, ['weight' => 500]);
         $selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
           $c_actions_list = new actions_list;
@@ -72,12 +54,14 @@ namespace effcore\modules\storage {
           return $c_actions_list;
         }, ['weight' => -500]);
         $selection->build();
+        $form->_selection = $selection;
         $form->child_select('data')->child_insert($selection, 'selection');
-      }
-    # disable controls if no items
-      if (!count($selection->_instances)) {
-        $items['~apply'  ]->disabled_set();
-        $items['#actions']->disabled_set();
+        $items[ '~apply' ]->disabled_set(false);
+        $items['#actions']->disabled_set(false);
+      } else {
+        $form->child_select('data')->child_insert(
+          new markup('x-no-items', ['data-style' => 'table'], new text('no selection with ID = "%%_id"', ['id' => 'instance_select_multiple-'.$entity->name])), 'no_items'
+        );
       }
     }
   }
