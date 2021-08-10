@@ -53,6 +53,33 @@ selections
         entity_name: gallery
         entity_field_name: updated
         weight: 340
+- instance_select_multiple-page|selection
+    id: instance_select_multiple-page
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - page.id
+        type: field
+        entity_name: page
+        entity_field_name: id
+        weight: 400
+    - page.title
+        type: field
+        entity_name: page
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - page.url
+        type: field
+        entity_name: page
+        entity_field_name: url
+        weight: 360
+    - page.lang_code
+        type: field
+        entity_name: page
+        entity_field_name: lang_code
+        weight: 340
 - instance_select_multiple-picture|selection
     id: instance_select_multiple-picture
     pager_is_enabled: true
