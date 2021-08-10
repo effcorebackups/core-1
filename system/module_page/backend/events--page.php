@@ -7,10 +7,8 @@
 namespace effcore\modules\page {
           use \effcore\access;
           use \effcore\block_preset;
-          use \effcore\block;
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\instance;
           use \effcore\markup;
           use \effcore\message;
           use \effcore\selection;
@@ -90,10 +88,6 @@ namespace effcore\modules\page {
         token::insert('instance_id_context', 'text', $args['instance_id']);
         $selection = core::deep_clone($selection);
         $selection->id = $args['entity_name'].'_'.$args['instance_id'];
-        $selection->build();
-        return $selection;
-      } else {
-        $selection = instance::selection_simple_make($args['entity_name'], $args['instance_id']);
         $selection->build();
         return $selection;
       }
