@@ -288,6 +288,7 @@ selections
         type: handler
         title: Roles
         handler: \effcore\modules\user\events_page_user::on_show_user_roles
+        weight: 240
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
@@ -478,33 +479,41 @@ selections
         type: field
         entity_name: user
         entity_field_name: id
+        weight: 400
     - user.nickname
         type: field
         entity_name: user
         entity_field_name: nickname
+        weight: 380
     - user.avatar_path
         type: field
         entity_name: user
         entity_field_name: avatar_path
+        weight: 360
     - user.timezone
         type: field
         entity_name: user
         entity_field_name: timezone
         filter: \effcore\translation::apply
+        weight: 340
     - user.created
         type: field
         entity_name: user
         entity_field_name: created
+        weight: 320
     - user.updated
         type: field
         entity_name: user
         entity_field_name: updated
+        weight: 300
     - user.is_embedded
         type: field
         entity_name: user
         entity_field_name: is_embedded
         filter: \effcore\translation::apply
+        weight: 280
     - roles
         type: handler
         title: Roles
         handler: \effcore\modules\user\events_page_user::on_show_user_roles
+        weight: 260
