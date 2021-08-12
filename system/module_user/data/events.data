@@ -96,10 +96,6 @@ events
       weight: +500
       handler: \effcore\modules\user\events_page_user_edit::on_check_access_and_existence_and_set_page_args
 # ─────────────────────────────────────────────────────────────────────
-  on_selection_build_before
-  - instance_select_multiple|event
-      handler: \effcore\modules\user\events_selection::on_selection_build_before
-# ─────────────────────────────────────────────────────────────────────
   on_tree_build_after
   - all|event
       handler: \effcore\modules\user\events_page::on_tree_build_after

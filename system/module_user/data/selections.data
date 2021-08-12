@@ -284,6 +284,10 @@ selections
         entity_field_name: is_embedded
         filter: \effcore\translation::apply
         weight: 260
+    - roles
+        type: handler
+        title: Roles
+        handler: \effcore\modules\user\events_page_user::on_show_user_roles
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
@@ -460,7 +464,7 @@ selections
 - user|selection
     id: user
     decorator_params
-    - view_type: ul
+    - view_type: table-dl
     query_params
     - conditions
       - id_!f: ~user.nickname
