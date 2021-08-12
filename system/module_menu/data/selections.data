@@ -129,6 +129,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - tree.id
         type: field
@@ -154,6 +156,8 @@ selections
       - title: tree_item.title
       - url: tree_item.url
       - weight: tree_item.weight
+    query_params
+    - limit: 10000
     fields
     - tree_item.id
         type: field

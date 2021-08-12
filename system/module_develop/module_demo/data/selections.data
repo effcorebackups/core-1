@@ -252,6 +252,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_autoincrement.id
         type: field
@@ -269,6 +271,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_collations.id
         type: field
@@ -290,6 +294,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_constraints.f_primary
         type: field
@@ -311,6 +317,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_data.id
         type: field
@@ -338,6 +346,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_indexes.id
         type: field
@@ -359,6 +369,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_join.id_data
         type: field
@@ -375,6 +387,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - demo_types.id
         type: field

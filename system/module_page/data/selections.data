@@ -355,6 +355,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - audio.id
         type: field
@@ -382,6 +384,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - gallery.id
         type: field
@@ -409,6 +413,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - page.id
         type: field
@@ -436,6 +442,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - picture.id
         type: field
@@ -468,6 +476,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - text.id
         type: field
@@ -495,6 +505,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - video.id
         type: field

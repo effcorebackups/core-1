@@ -102,6 +102,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - project.id
         type: field
@@ -129,6 +131,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - release.id_project
         type: field
@@ -217,6 +221,7 @@ selections
     - order
       - build_!f: ~release.build
       - type: DESC
+    - limit: 50
     fields
     - release.build
         type: field

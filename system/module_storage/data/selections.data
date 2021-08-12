@@ -51,6 +51,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - selection.id
         type: field

@@ -295,6 +295,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - feedback.id
         type: field
@@ -326,6 +328,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - permission.id
         type: field
@@ -343,6 +347,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - relation_role_ws_permission.id_role
         type: field
@@ -377,6 +383,7 @@ selections
           entity_field_name: id
           on_entity_name: relation_role_ws_user
           on_entity_field_name: id_user
+    - limit: 50
     fields
     - relation_role_ws_user.id_user
         type: field
@@ -408,6 +415,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - role.id
         type: field
@@ -435,6 +444,8 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - limit: 50
     fields
     - user.id
         type: field
