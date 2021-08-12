@@ -79,7 +79,6 @@ selections
         type: field
         entity_name: release
         entity_field_name: path
-        title: Path
         weight: 340
     - release.hash_sum
         type: field
