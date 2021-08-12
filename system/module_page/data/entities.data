@@ -113,7 +113,7 @@ entities
         - name_complex: attributes
         - weight: +360
     - path
-        title: Audio
+        title: Path
         type: varchar
         size: 1024
         collate: nocase
@@ -122,6 +122,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file_audio
         managing_control_properties
+        - title: Audio
         - max_file_size: 30M
         - upload_dir: audios/
         - fixed_name: audio-%%_instance_id_context
@@ -605,7 +606,7 @@ entities
         - name_complex: attributes
         - weight: +360
     - path
-        title: Picture
+        title: Path
         type: varchar
         size: 1024
         collate: nocase
@@ -614,6 +615,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
+        - title: Picture
         - max_file_size: 1M
         - upload_dir: pictures/
         - fixed_name: picture-%%_instance_id_context
@@ -878,7 +880,7 @@ entities
         - name_complex: attributes
         - weight: +360
     - path
-        title: Video
+        title: Path
         type: varchar
         size: 1024
         collate: nocase
@@ -887,12 +889,13 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file_video
         managing_control_properties
+        - title: Video
         - max_file_size: 500M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context
         - weight: +340
     - poster_path
-        title: Poster
+        title: Poster path
         type: varchar
         size: 1024
         collate: nocase
@@ -901,6 +904,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
+        - title: Poster
         - max_file_size: 1M
         - upload_dir: videos/
         - fixed_name: video-%%_instance_id_context-poster

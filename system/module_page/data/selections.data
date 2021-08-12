@@ -33,7 +33,6 @@ selections
         type: field
         entity_name: audio
         entity_field_name: path
-        title: Path
         weight: 340
     - audio.created
         type: field
@@ -214,7 +213,6 @@ selections
         type: field
         entity_name: picture
         entity_field_name: path
-        title: Path
         weight: 340
     - picture.link_attributes
         type: field
@@ -329,13 +327,11 @@ selections
         type: field
         entity_name: video
         entity_field_name: path
-        title: Path
         weight: 340
     - video.poster_path
         type: field
         entity_name: video
         entity_field_name: poster_path
-        title: Poster path
         weight: 320
     - video.created
         type: field
