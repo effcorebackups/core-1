@@ -1,4 +1,129 @@
 selections
+- instance_select-tree|selection
+    id: instance_select-tree
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~tree.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__tree__id_context
+    fields
+    - tree.id
+        type: field
+        entity_name: tree
+        entity_field_name: id
+        weight: 400
+    - tree.title
+        type: field
+        entity_name: tree
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - tree.title_is_visible
+        type: field
+        entity_name: tree
+        entity_field_name: title_is_visible
+        filter: \effcore\translation::apply
+        weight: 360
+    - tree.attributes
+        type: field
+        entity_name: tree
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 340
+    - tree.created
+        type: field
+        entity_name: tree
+        entity_field_name: created
+        weight: 320
+    - tree.updated
+        type: field
+        entity_name: tree
+        entity_field_name: updated
+        weight: 300
+    - tree.is_embedded
+        type: field
+        entity_name: tree
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 280
+- instance_select-tree_item|selection
+    id: instance_select-tree_item
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~tree_item.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__tree_item__id_context
+    fields
+    - tree_item.id
+        type: field
+        entity_name: tree_item
+        entity_field_name: id
+        weight: 400
+    - tree_item.id_tree
+        type: field
+        entity_name: tree_item
+        entity_field_name: id_tree
+        weight: 380
+    - tree_item.id_parent
+        type: field
+        entity_name: tree_item
+        entity_field_name: id_parent
+        weight: 360
+    - tree_item.title
+        type: field
+        entity_name: tree_item
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 340
+    - tree_item.attributes
+        type: field
+        entity_name: tree_item
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 320
+    - tree_item.url
+        type: field
+        entity_name: tree_item
+        entity_field_name: url
+        weight: 300
+    - tree_item.link_attributes
+        type: field
+        entity_name: tree_item
+        entity_field_name: link_attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 280
+    - tree_item.weight
+        type: field
+        entity_name: tree_item
+        entity_field_name: weight
+        weight: 260
+    - tree_item.created
+        type: field
+        entity_name: tree_item
+        entity_field_name: created
+        weight: 240
+    - tree_item.updated
+        type: field
+        entity_name: tree_item
+        entity_field_name: updated
+        weight: 220
+    - tree_item.is_embedded
+        type: field
+        entity_name: tree_item
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 200
+# ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-tree|selection
     id: instance_select_multiple-tree
     pager_is_enabled: true

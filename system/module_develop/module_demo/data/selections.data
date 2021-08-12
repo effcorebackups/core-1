@@ -1,4 +1,252 @@
 selections
+- instance_select-demo_autoincrement|selection
+    id: instance_select-demo_autoincrement
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~demo_autoincrement.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_autoincrement__id_context
+    fields
+    - demo_autoincrement.id
+        type: field
+        entity_name: demo_autoincrement
+        entity_field_name: id
+        weight: 400
+    - demo_autoincrement.description
+        type: field
+        entity_name: demo_autoincrement
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+- instance_select-demo_collations|selection
+    id: instance_select-demo_collations
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~demo_collations.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_collations__id_context
+    fields
+    - demo_collations.id
+        type: field
+        entity_name: demo_collations
+        entity_field_name: id
+        weight: 400
+    - demo_collations.f_nocase
+        type: field
+        entity_name: demo_collations
+        entity_field_name: f_nocase
+        weight: 380
+    - demo_collations.f_binary
+        type: field
+        entity_name: demo_collations
+        entity_field_name: f_binary
+        weight: 360
+- instance_select-demo_constraints|selection
+    id: instance_select-demo_constraints
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - f_primary_!f: ~demo_constraints.f_primary
+      - f_primary_operator: =
+      - f_primary_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_constraints__f_primary_context
+    fields
+    - demo_constraints.f_primary
+        type: field
+        entity_name: demo_constraints
+        entity_field_name: f_primary
+        weight: 400
+    - demo_constraints.f_unique
+        type: field
+        entity_name: demo_constraints
+        entity_field_name: f_unique
+        weight: 380
+    - demo_constraints.f_foreign
+        type: field
+        entity_name: demo_constraints
+        entity_field_name: f_foreign
+        weight: 360
+- instance_select-demo_data|selection
+    id: instance_select-demo_data
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~demo_data.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_data__id_context
+    fields
+    - demo_data.id
+        type: field
+        entity_name: demo_data
+        entity_field_name: id
+        weight: 400
+    - demo_data.nickname
+        type: field
+        entity_name: demo_data
+        entity_field_name: nickname
+        weight: 380
+    - demo_data.is_even
+        type: field
+        entity_name: demo_data
+        entity_field_name: is_even
+        filter: \effcore\translation::apply
+        weight: 360
+    - demo_data.created
+        type: field
+        entity_name: demo_data
+        entity_field_name: created
+        weight: 340
+- instance_select-demo_indexes|selection
+    id: instance_select-demo_indexes
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~demo_indexes.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_indexes__id_context
+    fields
+    - demo_indexes.id
+        type: field
+        entity_name: demo_indexes
+        entity_field_name: id
+        weight: 400
+    - demo_indexes.f_index_unique
+        type: field
+        entity_name: demo_indexes
+        entity_field_name: f_index_unique
+        weight: 380
+    - demo_indexes.f_index
+        type: field
+        entity_name: demo_indexes
+        entity_field_name: f_index
+        weight: 360
+- instance_select-demo_join|selection
+    id: instance_select-demo_join
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_data_!f: ~demo_join.id_data
+      - id_data_operator: =
+      - id_data_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_join__id_data_context
+    fields
+    - demo_join.id_data
+        type: field
+        entity_name: demo_join
+        entity_field_name: id_data
+        weight: 400
+    - demo_join.email
+        type: field
+        entity_name: demo_join
+        entity_field_name: email
+        weight: 380
+- instance_select-demo_types|selection
+    id: instance_select-demo_types
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~demo_types.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__demo_types__id_context
+    fields
+    - demo_types.id
+        type: field
+        entity_name: demo_types
+        entity_field_name: id
+        weight: 400
+    - demo_types.description
+        type: field
+        entity_name: demo_types
+        entity_field_name: description
+        filter: \effcore\translation::apply
+        weight: 380
+    - demo_types.weight
+        type: field
+        entity_name: demo_types
+        entity_field_name: weight
+        weight: 360
+    - demo_types.created
+        type: field
+        entity_name: demo_types
+        entity_field_name: created
+        weight: 340
+    - demo_types.updated
+        type: field
+        entity_name: demo_types
+        entity_field_name: updated
+        weight: 320
+    - demo_types.f_integer
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_integer
+        weight: 300
+    - demo_types.f_real
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_real
+        weight: 280
+    - demo_types.f_varchar
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_varchar
+        filter: \effcore\translation::apply
+        weight: 260
+    - demo_types.f_time
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_time
+        weight: 240
+    - demo_types.f_date
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_date
+        weight: 220
+    - demo_types.f_datetime
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_datetime
+        weight: 200
+    - demo_types.f_boolean
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_boolean
+        filter: \effcore\translation::apply
+        weight: 180
+    - demo_types.is_embedded
+        type: field
+        entity_name: demo_types
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 160
+# ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-demo_autoincrement|selection
     id: instance_select_multiple-demo_autoincrement
     pager_is_enabled: true
@@ -85,22 +333,6 @@ selections
         entity_name: demo_data
         entity_field_name: created
         weight: 340
-- instance_select_multiple-demo_join|selection
-    id: instance_select_multiple-demo_join
-    pager_is_enabled: true
-    decorator_params
-    - view_type: table-adaptive
-    fields
-    - demo_join.id_data
-        type: field
-        entity_name: demo_join
-        entity_field_name: id_data
-        weight: 400
-    - demo_join.email
-        type: field
-        entity_name: demo_join
-        entity_field_name: email
-        weight: 380
 - instance_select_multiple-demo_indexes|selection
     id: instance_select_multiple-demo_indexes
     pager_is_enabled: true
@@ -122,6 +354,22 @@ selections
         entity_name: demo_indexes
         entity_field_name: f_index
         weight: 360
+- instance_select_multiple-demo_join|selection
+    id: instance_select_multiple-demo_join
+    pager_is_enabled: true
+    decorator_params
+    - view_type: table-adaptive
+    fields
+    - demo_join.id_data
+        type: field
+        entity_name: demo_join
+        entity_field_name: id_data
+        weight: 400
+    - demo_join.email
+        type: field
+        entity_name: demo_join
+        entity_field_name: email
+        weight: 380
 - instance_select_multiple-demo_types|selection
     id: instance_select_multiple-demo_types
     pager_is_enabled: true

@@ -45,8 +45,8 @@ namespace effcore {
 
   function insert() {
     event::start('on_instance_insert_before', $this->entity_name, ['instance' => &$this]);
-    if ($this->entity_get()->field_get('created') && empty($this->entity_get()->field_get('created')->managing_on_insert_is_enabled)) $this->created = core::datetime_get();
-    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_on_insert_is_enabled)) $this->updated = core::datetime_get();
+    if ($this->entity_get()->field_get('created') && empty($this->entity_get()->field_get('created')->managing_is_enabled_on_insert)) $this->created = core::datetime_get();
+    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_is_enabled_on_insert)) $this->updated = core::datetime_get();
     $result = $this->entity_get()->storage_get()->instance_insert($this);
     event::start('on_instance_insert_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
@@ -54,7 +54,7 @@ namespace effcore {
 
   function update() {
     event::start('on_instance_update_before', $this->entity_name, ['instance' => &$this]);
-    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_on_update_is_enabled)) $this->updated = core::datetime_get();
+    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_is_enabled_on_update)) $this->updated = core::datetime_get();
     $result = $this->entity_get()->storage_get()->instance_update($this);
     event::start('on_instance_update_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
@@ -106,20 +106,14 @@ namespace effcore {
     return static::$cache_orig[$name] ?? [];
   }
 
-  static function selection_simple_make($entity_name, $instance_id) {
+  static function selection_make($entity_name, $conditions, $params = []) {
     $entity = entity::get($entity_name);
     $selection = new selection;
-    $selection->id = $entity_name.'_'.$instance_id;
+    $selection->id = $entity_name.'-'.core::hash_get_data($conditions);
     $selection->template = 'content';
-    foreach ($entity->selection_params_default ?? [] as $c_key => $c_value)
-      $selection                                     ->{$c_key} = $c_value;
-    $selection->query_params['conditions'] = [
-      'id_!f'       => '~'.$entity_name.'.id',
-      'id_operator' => '=',
-      'id_!v'       => $instance_id];
+    $selection->query_params['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
     foreach ($entity->fields as $c_name => $c_field)
-      if (!empty($c_field->managing_on_select_is_enabled))
-        $selection->field_insert_entity(null, $entity->name, $c_name, $c_field->selection_params_default ?? []);
+      $selection->field_insert_entity(null, $entity->name, $c_name, $params[$c_name] ?? []);
     return $selection;
   }
 

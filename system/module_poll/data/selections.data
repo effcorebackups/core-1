@@ -1,4 +1,73 @@
 selections
+- instance_select-poll|selection
+    id: instance_select-poll
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~poll.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__poll__id_context
+    fields
+    - poll.id
+        type: field
+        entity_name: poll
+        entity_field_name: id
+        weight: 400
+    - poll.question
+        type: field
+        entity_name: poll
+        entity_field_name: question
+        filter: \effcore\translation::apply
+        weight: 380
+    - poll.expired
+        type: field
+        entity_name: poll
+        entity_field_name: expired
+        weight: 360
+    - poll.diagram_type
+        type: field
+        entity_name: poll
+        entity_field_name: diagram_type
+        filter: \effcore\translation::apply
+        weight: 340
+    - poll.user_type
+        type: field
+        entity_name: poll
+        entity_field_name: user_type
+        weight: 320
+    - poll.is_multiple
+        type: field
+        entity_name: poll
+        entity_field_name: is_multiple
+        filter: \effcore\translation::apply
+        weight: 300
+    - poll.is_cancelable
+        type: field
+        entity_name: poll
+        entity_field_name: is_cancelable
+        filter: \effcore\translation::apply
+        weight: 280
+    - poll.created
+        type: field
+        entity_name: poll
+        entity_field_name: created
+        weight: 260
+    - poll.updated
+        type: field
+        entity_name: poll
+        entity_field_name: updated
+        weight: 240
+    - poll.is_embedded
+        type: field
+        entity_name: poll
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 220
+# ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-poll|selection
     id: instance_select_multiple-poll
     pager_is_enabled: true

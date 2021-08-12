@@ -34,16 +34,13 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_id_number
         managing_control_properties
         - weight: +400
         managing_control_element_attributes
         - disabled: true
-        selection_params_default
-        - weight: +400
     - question
         title: Question
         type: varchar
@@ -53,27 +50,20 @@ entities
         check: (question <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
         - maxlength: 2048
-        selection_params_default
-        - filter: \effcore\translation::apply
-        - weight: +380
     - expired
         title: Expiration date
         type: datetime
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +360
-        selection_params_default
         - weight: +360
     - diagram_type
         title: Diagram type
@@ -82,9 +72,8 @@ entities
         collate: nocase
         not_null: true
         check: (diagram_type <> '')
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_select
         managing_control_properties
         - values
@@ -92,17 +81,13 @@ entities
           - linear: Linear diagram
           - radial: Radial diagram
         - weight: +340
-        selection_params_default
-        - filter: \effcore\translation::apply
-        - weight: +340
     - user_type
         title: User type
         type: integer
         not_null: true
         default: 1
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_select
         managing_control_properties
         - description|text
@@ -114,57 +99,41 @@ entities
         - selected
           - 1: 1
         - weight: +320
-        selection_params_default
-        - weight: +320
     - is_multiple
         title: Multiple choice
         type: boolean
         not_null: true
         default: 0
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_switcher
         managing_control_properties
-        - weight: +300
-        selection_params_default
-        - filter: \effcore\translation::apply
         - weight: +300
     - is_cancelable
         title: Vote can be canceled
         type: boolean
         not_null: true
         default: 0
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_switcher
         managing_control_properties
-        - weight: +280
-        selection_params_default
-        - filter: \effcore\translation::apply
         - weight: +280
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +260
-        selection_params_default
         - weight: +260
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +240
-        selection_params_default
         - weight: +240
     constraints
     - primary_id

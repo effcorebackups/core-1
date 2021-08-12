@@ -49,7 +49,7 @@ namespace effcore\modules\storage {
               }
             # make controls for managing
               foreach ($entity->fields as $c_name => $c_field) {
-                if (!empty($c_field->managing_on_update_is_enabled) &&
+                if (!empty($c_field->managing_is_enabled_on_update) &&
                      isset($c_field->managing_control_class)) {
                   $c_control = new $c_field->managing_control_class;
                   $c_control->title = $c_field->title;
@@ -114,7 +114,7 @@ namespace effcore\modules\storage {
           if (!empty($form->_instance)) {
           # transfer new values to instance
             foreach ($entity->fields as $c_name => $c_field) {
-              if (!empty($c_field->managing_on_update_is_enabled) &&
+              if (!empty($c_field->managing_is_enabled_on_update) &&
                    isset($c_field->managing_control_class)) {
                 $c_value = null;
                 $c_reflection = new \ReflectionClass($c_field->managing_control_class);

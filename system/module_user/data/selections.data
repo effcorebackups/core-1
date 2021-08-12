@@ -1,4 +1,278 @@
 selections
+- instance_select-feedback|selection
+    id: instance_select-feedback
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~feedback.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__feedback__id_context
+    fields
+    - feedback.id
+        type: field
+        entity_name: feedback
+        entity_field_name: id
+        weight: 400
+    - feedback.name
+        type: field
+        entity_name: feedback
+        entity_field_name: name
+        weight: 380
+    - feedback.email
+        type: field
+        entity_name: feedback
+        entity_field_name: email
+        weight: 360
+    - feedback.message
+        type: field
+        entity_name: feedback
+        entity_field_name: message
+        weight: 340
+    - feedback.created
+        type: field
+        entity_name: feedback
+        entity_field_name: created
+        weight: 320
+    - feedback.updated
+        type: field
+        entity_name: feedback
+        entity_field_name: updated
+        weight: 300
+- instance_select-permission|selection
+    id: instance_select-permission
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~permission.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__permission__id_context
+    fields
+    - permission.id
+        type: field
+        entity_name: permission
+        entity_field_name: id
+        weight: 400
+    - permission.title
+        type: field
+        entity_name: permission
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - permission.created
+        type: field
+        entity_name: permission
+        entity_field_name: created
+        weight: 360
+    - permission.updated
+        type: field
+        entity_name: permission
+        entity_field_name: updated
+        weight: 340
+    - permission.is_embedded
+        type: field
+        entity_name: permission
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 320
+- instance_select-relation_role_ws_permission|selection
+    id: instance_select-relation_role_ws_permission
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_role
+        - id_role_!f: ~relation_role_ws_permission.id_role
+        - id_role_operator: =
+        - id_role_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_selection__relation_role_ws_permission__id_role_context
+      - conjunction: and
+      - id_permission
+        - id_permission_!f: ~relation_role_ws_permission.id_permission
+        - id_permission_operator: =
+        - id_permission_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_selection__relation_role_ws_permission__id_permission_context
+    fields
+    - relation_role_ws_permission.id_role
+        type: field
+        entity_name: relation_role_ws_permission
+        entity_field_name: id_role
+        weight: 400
+    - relation_role_ws_permission.id_permission
+        type: field
+        entity_name: relation_role_ws_permission
+        entity_field_name: id_permission
+        weight: 380
+    - relation_role_ws_permission.created
+        type: field
+        entity_name: relation_role_ws_permission
+        entity_field_name: created
+        weight: 360
+    - relation_role_ws_permission.updated
+        type: field
+        entity_name: relation_role_ws_permission
+        entity_field_name: updated
+        weight: 340
+- instance_select-relation_role_ws_user|selection
+    id: instance_select-relation_role_ws_user
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_role
+        - id_role_!f: ~relation_role_ws_user.id_role
+        - id_role_operator: =
+        - id_role_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_selection__relation_role_ws_user__id_role_context
+      - conjunction: and
+      - id_user
+        - id_user_!f: ~relation_role_ws_user.id_user
+        - id_user_operator: =
+        - id_user_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_selection__relation_role_ws_user__id_user_context
+    fields
+    - relation_role_ws_user.id_user
+        type: field
+        entity_name: relation_role_ws_user
+        entity_field_name: id_user
+        weight: 400
+    - relation_role_ws_user.id_role
+        type: field
+        entity_name: relation_role_ws_user
+        entity_field_name: id_role
+        weight: 380
+    - relation_role_ws_user.created
+        type: field
+        entity_name: relation_role_ws_user
+        entity_field_name: created
+        weight: 360
+    - relation_role_ws_user.updated
+        type: field
+        entity_name: relation_role_ws_user
+        entity_field_name: updated
+        weight: 340
+    - relation_role_ws_user.is_embedded
+        type: field
+        entity_name: relation_role_ws_user
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 320
+- instance_select-role|selection
+    id: instance_select-role
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~role.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__role__id_context
+    fields
+    - role.id
+        type: field
+        entity_name: role
+        entity_field_name: id
+        weight: 400
+    - role.title
+        type: field
+        entity_name: role
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - role.weight
+        type: field
+        entity_name: role
+        entity_field_name: weight
+        weight: 360
+    - role.created
+        type: field
+        entity_name: role
+        entity_field_name: created
+        weight: 340
+    - role.updated
+        type: field
+        entity_name: role
+        entity_field_name: updated
+        weight: 320
+    - role.is_embedded
+        type: field
+        entity_name: role
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 300
+- instance_select-user|selection
+    id: instance_select-user
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~user.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__user__id_context
+    fields
+    - user.id
+        type: field
+        entity_name: user
+        entity_field_name: id
+        weight: 400
+    - user.nickname
+        type: field
+        entity_name: user
+        entity_field_name: nickname
+        weight: 380
+    - user.email
+        type: field
+        entity_name: user
+        entity_field_name: email
+        weight: 360
+    - user.avatar_path
+        type: field
+        entity_name: user
+        entity_field_name: avatar_path
+        weight: 340
+    - user.timezone
+        type: field
+        entity_name: user
+        entity_field_name: timezone
+        filter: \effcore\translation::apply
+        weight: 320
+    - user.created
+        type: field
+        entity_name: user
+        entity_field_name: created
+        weight: 300
+    - user.updated
+        type: field
+        entity_name: user
+        entity_field_name: updated
+        weight: 280
+    - user.is_embedded
+        type: field
+        entity_name: user
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 260
+# ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
     pager_is_enabled: true

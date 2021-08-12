@@ -1,4 +1,51 @@
 selections
+- instance_select-selection|selection
+    id: instance_select-selection
+    decorator_params
+    - view_type: table-dl
+    query_params
+    - conditions
+      - id_!f: ~selection.id
+      - id_operator: =
+      - id_!v|text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__selection__id_context
+    fields
+    - selection.id
+        type: field
+        entity_name: selection
+        entity_field_name: id
+        weight: 400
+    - selection.title
+        type: field
+        entity_name: selection
+        entity_field_name: title
+        filter: \effcore\translation::apply
+        weight: 380
+    - selection.attributes
+        type: field
+        entity_name: selection
+        entity_field_name: attributes
+        filter: \effcore\widget_attributes::complex_value_to_markup
+        weight: 360
+    - selection.created
+        type: field
+        entity_name: selection
+        entity_field_name: created
+        weight: 340
+    - selection.updated
+        type: field
+        entity_name: selection
+        entity_field_name: updated
+        weight: 320
+    - selection.is_embedded
+        type: field
+        entity_name: selection
+        entity_field_name: is_embedded
+        filter: \effcore\translation::apply
+        weight: 300
+# ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-selection|selection
     id: instance_select_multiple-selection
     pager_is_enabled: true

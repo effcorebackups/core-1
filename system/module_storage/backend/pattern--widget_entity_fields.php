@@ -44,14 +44,12 @@ namespace effcore {
     foreach ($entities as $c_entity) {
       if (!empty($c_entity->managing_is_enabled)) {
         foreach ($c_entity->fields as $c_field_name => $c_field_info) {
-          if (!empty($c_field_info->managing_on_select_is_enabled)) {
-            if (!isset($options[$c_entity->name])) {
-                       $options[$c_entity->name] = new \stdClass;
-                       $options[$c_entity->name]->title = $c_entity->title; }
-            $options[$c_entity->name]->values['field|'.$c_entity->name.'|'.$c_field_name] = new text_multiline([
-              'title' => $c_field_info->title, 'id' => '('.$c_entity->name.'.'.$c_field_name.')'], [], ' '
-            );
-          }
+          if (!isset($options[$c_entity->name])) {
+                     $options[$c_entity->name] = new \stdClass;
+                     $options[$c_entity->name]->title = $c_entity->title; }
+          $options[$c_entity->name]->values['field|'.$c_entity->name.'|'.$c_field_name] = new text_multiline([
+            'title' => $c_field_info->title, 'id' => '('.$c_entity->name.'.'.$c_field_name.')'], [], ' '
+          );
         }
       }
     }

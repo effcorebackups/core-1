@@ -39,17 +39,14 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
-        selection_params_default
-        - weight: +400
     - title
         title: Title
         type: varchar
@@ -59,32 +56,24 @@ entities
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params_default
-        - filter: \effcore\translation::apply
-        - weight: +380
     - attributes
         title: Attributes
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: +360
-        selection_params_default
-        - filter: \effcore\widget_attributes::complex_value_to_markup
         - weight: +360
     - fields
         title: Fields
@@ -92,12 +81,10 @@ entities
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
         filter_update: \effcore\core::data_serialize
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_entity_fields
         managing_control_properties
         - name_complex: fields
-        - weight: +340
-        selection_params_default
         - weight: +340
     - query_params
         title: Query parameters
@@ -109,8 +96,6 @@ entities
         managing_control_value_manual_set: true
         managing_control_properties
         - weight: +320
-        selection_params_default
-        - weight: +320
     - decorator_params
         title: Decorator parameters
         type: blob
@@ -121,29 +106,21 @@ entities
         managing_control_value_manual_set: true
         managing_control_properties
         - weight: +300
-        selection_params_default
-        - weight: +300
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +280
-        selection_params_default
         - weight: +280
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +260
-        selection_params_default
         - weight: +260
     constraints
     - primary_id

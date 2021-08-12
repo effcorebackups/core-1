@@ -365,7 +365,7 @@
     margin: 50px 0;
     padding: 20px;
     border-top: 5px solid %%_color__main;
-    background: %%_color__table_row_even}
+    background: %%_color__table_row_odd}
 
   /* x-document ('license agreement' and etc.) */
 

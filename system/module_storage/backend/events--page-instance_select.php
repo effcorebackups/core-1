@@ -14,6 +14,8 @@ namespace effcore\modules\storage {
           use \effcore\markup;
           use \effcore\selection;
           use \effcore\text_multiline;
+          use \effcore\text;
+          use \effcore\token;
           use \effcore\url;
           abstract class events_page_instance_select {
 
@@ -62,25 +64,11 @@ namespace effcore\modules\storage {
         $conditions = array_combine($id_keys, $id_values);
         $instance = new instance($entity_name, $conditions);
         if ($instance->select()) {
-          $selection = new selection;
-          $selection->id = 'instance_select-'.$entity->name;
-          foreach ($entity->selection_params_for_managing as $c_key => $c_value)
-            $selection                                    ->{$c_key} = $c_value;
-            $selection->query_params['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
-          if (empty($selection->decorator_params['view_type']))
-                    $selection->decorator_params['view_type'] = 'ul';
-          $has_visible_fields = false;
-          foreach ($entity->fields as $c_name => $c_field) {
-            if (!empty($c_field->managing_on_select_is_enabled)) {
-              $has_visible_fields = true;
-              $selection->field_insert_entity(null,
-                $entity->name, $c_name, $c_field->selection_params_default ?? []
-              );
-            }
-          }
-          if (!$has_visible_fields) {
-            return new markup('x-no-items', ['data-style' => 'table'], 'no fields');
-          } else {
+          $selection = selection::get('instance_select-'.$entity->name);
+          if ($selection) {
+            foreach ($conditions as $c_id_key => $c_id_value)
+              token::insert('selection__'.$entity_name.'__'.$c_id_key.'_context', 'text', $c_id_value);
+            $selection = core::deep_clone($selection);
             $has_access_update = access::check($entity->access_update);
             $has_access_delete = access::check($entity->access_delete);
             if ($has_access_update ||
@@ -94,6 +82,10 @@ namespace effcore\modules\storage {
             }
             $selection->build();
             return $selection;
+          } else {
+            return new markup('x-no-items', ['data-style' => 'table'], new text(
+              'no selection with ID = "%%_id"', ['id' => 'instance_select-'.$entity->name]
+            ));
           }
         }
       }

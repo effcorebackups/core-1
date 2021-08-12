@@ -28,17 +28,14 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_id_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
-        selection_params_default
-        - weight: +400
     - title
         title: Title
         type: varchar
@@ -48,25 +45,20 @@ entities
         check: (title <> '')
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
         - maxlength: 1024
-        selection_params_default
-        - filter: \effcore\translation::apply
-        - weight: +380
     - description
         title: Description
         type: blob
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
         managing_control_properties
         - weight: +360
@@ -79,19 +71,13 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-        selection_params_default
-        - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-        selection_params_default
-        - weight: +320
     constraints
     - primary_id
         type: primary
@@ -125,9 +111,8 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_relation
         managing_control_properties
         - related_entity_name: project
@@ -136,16 +121,13 @@ entities
         - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
-        selection_params_default
-        - weight: +400
     - build
         title: Build number
         type: integer
         not_null: true
         default: 1000
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_number
         managing_control_properties
         - weight: +380
@@ -156,16 +138,13 @@ entities
         - value: 1000
         managing_control_element_attributes_on_update
         - disabled: true
-        selection_params_default
-        - weight: +380
     - description
         title: Description
         type: blob
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
         managing_control_properties
         - weight: +360
@@ -179,9 +158,8 @@ entities
         size: 1024
         collate: nocase
         default: null
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file
         managing_control_properties
         - max_file_size: 500M
@@ -189,8 +167,6 @@ entities
         - types_allowed
           - =: zip
           - =: 7z
-        - weight: +340
-        selection_params_default
         - weight: +340
     - hash_sum
         title: Hash sum
@@ -200,9 +176,8 @@ entities
         default: null
         filter_insert: \effcore\core::return_htmlspecialchars_encoded
         filter_update: \effcore\core::return_htmlspecialchars_encoded
-        managing_on_select_is_enabled: true
-        managing_on_insert_is_enabled: true
-        managing_on_update_is_enabled: true
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +320
@@ -210,27 +185,18 @@ entities
         - maxlength: 1024
         - required: null
         - disabled: true
-        selection_params_default
-        - filter: \effcore\translation::apply
-        - weight: +320
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-        selection_params_default
-        - weight: +300
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_on_select_is_enabled: true
         managing_control_class: \effcore\field_datetime_local
-        selection_params_default
-        - weight: +280
     constraints
     - primary_id_project
         type: primary

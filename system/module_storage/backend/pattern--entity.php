@@ -28,9 +28,6 @@ namespace effcore {
   public $managing_is_enabled = false;
   public $managing_group_id = 'content';
 
-  public $selection_params_for_managing = [];
-  public $selection_params_default      = [];
-
   public $access_select;
   public $access_insert;
   public $access_update;
@@ -48,11 +45,9 @@ namespace effcore {
       $this->fields['is_embedded']->type = 'boolean';
       $this->fields['is_embedded']->not_null = true;
       $this->fields['is_embedded']->default = 0;
-      $this->fields['is_embedded']->managing_on_select_is_enabled = true;
       $this->fields['is_embedded']->managing_control_class = '\\effcore\\field_switcher';
       $this->fields['is_embedded']->managing_control_properties['weight'] = 390;
       $this->fields['is_embedded']->managing_control_element_attributes['disabled'] = true;
-      $this->fields['is_embedded']->selection_params_default['filter'] = '\\effcore\\translation::apply';
     }
   # insert field 'module_id' and index for it
     if ($this->ws_module_id) {
