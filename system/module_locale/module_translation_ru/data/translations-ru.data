@@ -52,6 +52,7 @@ translations
     - Audio\: update: Аудио: обновить
     - audios: аудио
     - Audios: Аудио
+    - Avatar path: Путь аватара
     - Avatar: Аватар
     - B: Б
     - Belarusian: Белорусский
@@ -545,6 +546,7 @@ translations
     - Polls: Опросы
     - Port: Порт
     - Possible options can be seen on page\: %%_page: Возможные варианты можно увидеть на странице: %%_page
+    - Poster path: Путь плаката
     - Poster: Плакат
     - Prefix: Префикс
     - Presets: Предустановки

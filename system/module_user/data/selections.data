@@ -129,6 +129,13 @@ selections
     decorator_params
     - view_type: table-dl
     query_params
+    - join_script
+      - with_user
+          type: left outer join
+          entity_name: user
+          entity_field_name: id
+          on_entity_name: relation_role_ws_user
+          on_entity_field_name: id_user
     - conditions
       - id_role
         - id_role_!f: ~relation_role_ws_user.id_role
@@ -151,27 +158,32 @@ selections
         entity_name: relation_role_ws_user
         entity_field_name: id_user
         weight: 400
+    - user.nickname
+        type: join_field
+        entity_name: user
+        entity_field_name: nickname
+        weight: 380
     - relation_role_ws_user.id_role
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: id_role
-        weight: 380
+        weight: 360
     - relation_role_ws_user.created
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: created
-        weight: 360
+        weight: 340
     - relation_role_ws_user.updated
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: updated
-        weight: 340
+        weight: 320
     - relation_role_ws_user.is_embedded
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: is_embedded
         filter: \effcore\translation::apply
-        weight: 320
+        weight: 300
 - instance_select-role|selection
     id: instance_select-role
     decorator_params
@@ -249,6 +261,7 @@ selections
         type: field
         entity_name: user
         entity_field_name: avatar_path
+        title: Avatar path
         weight: 340
     - user.timezone
         type: field
@@ -352,27 +365,40 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
+    query_params
+    - join_script
+      - with_user
+          type: left outer join
+          entity_name: user
+          entity_field_name: id
+          on_entity_name: relation_role_ws_user
+          on_entity_field_name: id_user
     fields
     - relation_role_ws_user.id_user
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: id_user
         weight: 400
+    - user.nickname
+        type: join_field
+        entity_name: user
+        entity_field_name: nickname
+        weight: 380
     - relation_role_ws_user.id_role
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: id_role
-        weight: 380
+        weight: 360
     - relation_role_ws_user.created
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: created
-        weight: 360
+        weight: 340
     - relation_role_ws_user.updated
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: updated
-        weight: 340
+        weight: 320
 - instance_select_multiple-role|selection
     id: instance_select_multiple-role
     pager_is_enabled: true
