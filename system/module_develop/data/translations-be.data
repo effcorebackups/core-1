@@ -151,6 +151,7 @@ translations
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
+    - Password hash sum: Хэш-сума пароля
     - permissions after insertion\: %%_permissions: дазваленні пасля ўстаўкі: %%_permissions
     - permissions before insertion\: %%_permissions: дазваленні перад устаўкай: %%_permissions
     - PHP ext.: PHP-паш.

@@ -261,7 +261,6 @@ selections
         type: field
         entity_name: user
         entity_field_name: avatar_path
-        title: Avatar path
         weight: 340
     - user.timezone
         type: field

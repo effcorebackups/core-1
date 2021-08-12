@@ -641,7 +641,7 @@ entities
         - is_validate_uniqueness: true
         - weight: +360
     - avatar_path
-        title: Avatar
+        title: Avatar path
         type: varchar
         size: 1024
         collate: nocase
@@ -650,6 +650,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_file_picture
         managing_control_properties
+        - title: Avatar
         - max_file_size: 30K
         - upload_dir: avatars/
         - fixed_name: avatar-%%_user_id
@@ -672,7 +673,7 @@ entities
         managing_control_element_attributes
         - data-source: uagent-timezone
     - password_hash
-        title: New password
+        title: Password hash sum
         type: varchar
         size: 255
         collate: binary
@@ -683,6 +684,7 @@ entities
         managing_control_value_manual_set: true
         managing_control_value_manual_get_if_empty: true
         managing_control_properties
+        - title: New password
         - weight: +300
         managing_control_properties_on_update
         - description: Leave the field blank if you do not want to change its value.
