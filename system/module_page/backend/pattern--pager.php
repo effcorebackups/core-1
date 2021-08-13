@@ -59,14 +59,14 @@ namespace effcore {
                             $this->name;
   }
 
-  function last_page_url_get() {
+  function url_page_max_get() {
     $this->init();
     $pager_name               = $this->name_get();
     $pager_name_not_optimized = $this->name_get(false);
     $url = clone url::get_current();
     $url->query_arg_delete($pager_name);
     $url->query_arg_delete($pager_name_not_optimized);
-    $url->query_arg_insert($pager_name, $this->max);
+    if ($this->max > 1) $url->query_arg_insert($pager_name, $this->max);
     return $url;
   }
 

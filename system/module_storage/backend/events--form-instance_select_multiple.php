@@ -56,8 +56,10 @@ namespace effcore\modules\storage {
         $selection->build();
         $form->_selection = $selection;
         $form->child_select('data')->child_insert($selection, 'selection');
-        $items[ '~apply' ]->disabled_set(false);
-        $items['#actions']->disabled_set(false);
+        if (count($selection->_instances)) {
+          $items[ '~apply' ]->disabled_set(false);
+          $items['#actions']->disabled_set(false);
+        }
       } else {
         $form->child_select('data')->child_insert(
           new markup('x-no-items', ['data-style' => 'table'], new text('no selection with ID = "%%_id"', ['id' => 'instance_select_multiple-'.$entity->name])), 'no_items'

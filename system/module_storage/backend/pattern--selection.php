@@ -68,7 +68,7 @@ namespace effcore {
       if (count($used_storages) === 1) {
         $this->attribute_insert('data-main-entity', $this->_main_entity->name, 'attributes', true);
 
-      # prepare query params
+      # prepare join
         foreach ($this->fields as $c_row_id => $c_field) {
           if ($c_field->type === 'join_field') {
             $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
@@ -85,6 +85,8 @@ namespace effcore {
             ];
           }
         }
+
+      # prepare limit
         if (empty($this->query_params['limit']))
                   $this->query_params['limit'] = static::default_limit;
 
@@ -92,10 +94,13 @@ namespace effcore {
         if ($this->pager_is_enabled) {
           $instances_count = $this->_main_entity->instances_select_count($this->query_params);
           $page_max_number = ceil($instances_count / $this->query_params['limit']);
+          if ($page_max_number < 1)
+              $page_max_number = 1;
+          $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -200);
+          $pager_error_code = $pager->error_code_get();
+          if ($pager_error_code === pager::ERR_CODE_CUR_GT_MAX) url::go($pager->url_page_max_get()->tiny_get());
+          if ($pager_error_code !== pager::ERR_CODE_OK) core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], br.br));
           if ($page_max_number > 1) {
-            $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -20);
-            if ($pager->error_code_get() != pager::ERR_CODE_OK && $pager->error_code_get() != pager::ERR_CODE_CUR_GT_MAX) core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], br.br));
-            if ($pager->error_code_get() != pager::ERR_CODE_OK && $pager->error_code_get() == pager::ERR_CODE_CUR_GT_MAX) url::go($pager->last_page_url_get()->tiny_get());
             $this->query_params['offset'] = ($pager->cur - 1) * $this->query_params['limit'];
             $this->child_insert(
               $pager, 'pager'
@@ -145,11 +150,11 @@ namespace effcore {
                 $c_value_type =                    $c_entity->fields[$c_field->entity_field_name]->type;
                 $c_value      =                    $c_instance->    {$c_field->entity_field_name};
                 if ($c_value !== null && $c_value_type === 'real'    ) $c_value = locale::format_number  ($c_value, 10);
-                if ($c_value !== null && $c_value_type === 'integer' ) $c_value = locale::format_number  ($c_value    );
-                if ($c_value !== null && $c_value_type === 'date'    ) $c_value = locale::format_date    ($c_value    );
-                if ($c_value !== null && $c_value_type === 'time'    ) $c_value = locale::format_time    ($c_value    );
-                if ($c_value !== null && $c_value_type === 'datetime') $c_value = locale::format_datetime($c_value    );
-                if ($c_value !== null && $c_value_type === 'boolean' ) $c_value = locale::format_logic   ($c_value    );
+                if ($c_value !== null && $c_value_type === 'integer' ) $c_value = locale::format_number  ($c_value);
+                if ($c_value !== null && $c_value_type === 'date'    ) $c_value = locale::format_date    ($c_value);
+                if ($c_value !== null && $c_value_type === 'time'    ) $c_value = locale::format_time    ($c_value);
+                if ($c_value !== null && $c_value_type === 'datetime') $c_value = locale::format_datetime($c_value);
+                if ($c_value !== null && $c_value_type === 'boolean' ) $c_value = locale::format_logic   ($c_value);
                 $c_row[$c_row_id] = [
                   'title'  => $c_title,
                   'value'  => $c_value,
