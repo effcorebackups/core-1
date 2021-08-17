@@ -388,7 +388,7 @@ namespace effcore {
     $result = static::$cache ?? [];
     if ($origin)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->origin != $origin)
+        if ($c_item->origin !== $origin)
           unset($result[$c_id]);
     return $result;
   }
