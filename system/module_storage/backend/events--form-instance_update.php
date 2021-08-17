@@ -122,7 +122,7 @@ namespace effcore\modules\storage {
                 if     ($items[$c_prefix.$c_name] instanceof complex_control        ) $c_value = $items[$c_prefix.$c_name]->value_get_complex();
                 elseif ($items[$c_prefix.$c_name] instanceof field_checkbox !== true) $c_value = $items[$c_prefix.$c_name]->value_get        ();
                 elseif ($items[$c_prefix.$c_name] instanceof field_checkbox === true) $c_value = $items[$c_prefix.$c_name]->checked_get      () ? 1 : 0;
-                if (!empty($c_field->managing_control_value_manual_get_if_empty) && $c_value === '') continue;
+                if (!empty($c_field->managing_control_value_manual_get_if_empty) && empty($c_value)) continue;
                 if (!empty($c_field->managing_control_value_manual_get         )                   ) continue;
                 $form->_instance->{$c_name} = $c_value;
               }
