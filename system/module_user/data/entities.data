@@ -681,8 +681,8 @@ entities
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_password
-        managing_control_value_manual_set: true
         managing_control_value_manual_get_if_empty: true
+        managing_control_value_manual_set: true
         managing_control_properties
         - title: New password
         - weight: +300
