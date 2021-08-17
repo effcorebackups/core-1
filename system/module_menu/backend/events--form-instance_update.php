@@ -23,7 +23,10 @@ namespace effcore\modules\menu {
           foreach ($tree_item->children_select_recursive() as $c_child) $items['#id_parent']->disabled[$c_child->id] = $c_child->id;
           $items['#id_parent']->disabled[$form->_instance->id] = $form->_instance->id;
           $items['#id_parent']->is_builded = false;
-          $items['#id_parent']->query_settings['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->_instance->id_tree];
+          $items['#id_parent']->query_settings['conditions'] = [
+            'id_tree_!f'       => 'id_tree',
+            'id_tree_operator' => '=',
+            'id_tree_!v'       => $form->_instance->id_tree];
           $items['#id_parent']->build();
           $items['#id_parent']->value_set(
             $form->_instance->id_parent
