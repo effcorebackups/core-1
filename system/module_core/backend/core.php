@@ -754,8 +754,8 @@ namespace effcore {
     else return md5(serialize($data));
   }
 
-  static function hash_get_mini($string, $length = 8) {
-    return substr(md5($string), 0, $length);
+  static function hash_get_mini($data, $length = 8) {
+    return substr(static::hash_get($data), 0, $length);
   }
 
   ########################
