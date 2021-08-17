@@ -1,7 +1,7 @@
 selections
 - instance_select-selection|selection
     id: instance_select-selection
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -49,7 +49,7 @@ selections
 - instance_select_multiple-selection|selection
     id: instance_select_multiple-selection
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50

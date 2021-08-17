@@ -3,7 +3,7 @@ selections
     id: social_networks
     title: Social networks
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template_row: picture
     - template_row_mapping

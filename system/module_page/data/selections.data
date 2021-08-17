@@ -1,7 +1,7 @@
 selections
 - instance_select-audio|selection
     id: instance_select-audio
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -52,7 +52,7 @@ selections
         weight: 280
 - instance_select-gallery|selection
     id: instance_select-gallery
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -104,7 +104,7 @@ selections
         weight: 280
 - instance_select-page|selection
     id: instance_select-page
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -181,7 +181,7 @@ selections
         weight: 160
 - instance_select-picture|selection
     id: instance_select-picture
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -243,7 +243,7 @@ selections
         weight: 240
 - instance_select-text|selection
     id: instance_select-text
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -295,7 +295,7 @@ selections
         weight: 280
 - instance_select-video|selection
     id: instance_select-video
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -353,7 +353,7 @@ selections
 - instance_select_multiple-audio|selection
     id: instance_select_multiple-audio
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -382,7 +382,7 @@ selections
 - instance_select_multiple-gallery|selection
     id: instance_select_multiple-gallery
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -411,7 +411,7 @@ selections
 - instance_select_multiple-page|selection
     id: instance_select_multiple-page
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -440,7 +440,7 @@ selections
 - instance_select_multiple-picture|selection
     id: instance_select_multiple-picture
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -474,7 +474,7 @@ selections
 - instance_select_multiple-text|selection
     id: instance_select_multiple-text
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -503,7 +503,7 @@ selections
 - instance_select_multiple-video|selection
     id: instance_select_multiple-video
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -533,7 +533,7 @@ selections
 - audio|selection
     id: audio
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template: content
     - template_row: audio
@@ -595,7 +595,7 @@ selections
 - gallery|selection
     id: gallery
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template: content
     - template_row: gallery
@@ -659,7 +659,7 @@ selections
 - picture|selection
     id: picture
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template: content
     - template_row: picture
@@ -734,7 +734,7 @@ selections
 - text|selection
     id: text
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template: content
     - template_row: text
@@ -797,7 +797,7 @@ selections
 - video|selection
     id: video
     template: content
-    decorator_params
+    decorator_settings
     - view_type: template
     - template: content
     - template_row: video

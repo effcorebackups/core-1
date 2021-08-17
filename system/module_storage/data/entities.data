@@ -96,8 +96,8 @@ entities
         managing_control_value_manual_set: true
         managing_control_properties
         - weight: +320
-    - decorator_params
-        title: Decorator parameters
+    - decorator_settings
+        title: Decorator settings
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize

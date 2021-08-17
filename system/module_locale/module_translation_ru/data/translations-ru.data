@@ -134,7 +134,7 @@ translations
     - Date/time format: Формат даты/времени
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
-    - Decorator parameters: Параметры оформления
+    - Decorator settings: Настройки оформления
     - Definition list: Список определений
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - delete: удалить

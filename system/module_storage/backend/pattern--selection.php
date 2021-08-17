@@ -19,7 +19,7 @@ namespace effcore {
   public $title;
   public $fields = [];
   public $query_settings = [];
-  public $decorator_params = [];
+  public $decorator_settings = [];
   public $pager_is_enabled = false;
   public $pager_name = 'page';
   public $pager_id = 0;
@@ -148,8 +148,8 @@ namespace effcore {
         $decorator->id = $this->id;
         $decorator->_main_entity = $this->_main_entity;
         $decorator->attribute_insert('data-main-entity', $this->_main_entity->name);
-        foreach ($this->decorator_params ?? [] as $c_key => $c_value)
-          $decorator->                           {$c_key} = $c_value;
+        foreach ($this->decorator_settings ?? [] as $c_key => $c_value)
+          $decorator->                             {$c_key} = $c_value;
 
         foreach ($this->_instances as $c_instance) {
           $c_row = [];

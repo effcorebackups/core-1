@@ -1,7 +1,7 @@
 selections
 - instance_select-feedback|selection
     id: instance_select-feedback
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -44,7 +44,7 @@ selections
         weight: 300
 - instance_select-permission|selection
     id: instance_select-permission
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -84,7 +84,7 @@ selections
         weight: 320
 - instance_select-relation_role_ws_permission|selection
     id: instance_select-relation_role_ws_permission
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -126,7 +126,7 @@ selections
         weight: 340
 - instance_select-relation_role_ws_user|selection
     id: instance_select-relation_role_ws_user
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - join_script
@@ -186,7 +186,7 @@ selections
         weight: 300
 - instance_select-role|selection
     id: instance_select-role
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -231,7 +231,7 @@ selections
         weight: 300
 - instance_select-user|selection
     id: instance_select-user
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -293,7 +293,7 @@ selections
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -326,7 +326,7 @@ selections
 - instance_select_multiple-permission|selection
     id: instance_select_multiple-permission
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -345,7 +345,7 @@ selections
 - instance_select_multiple-relation_role_ws_permission|selection
     id: instance_select_multiple-relation_role_ws_permission
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -373,7 +373,7 @@ selections
 - instance_select_multiple-relation_role_ws_user|selection
     id: instance_select_multiple-relation_role_ws_user
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - join_script
@@ -413,7 +413,7 @@ selections
 - instance_select_multiple-role|selection
     id: instance_select_multiple-role
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -442,7 +442,7 @@ selections
 - instance_select_multiple-user|selection
     id: instance_select_multiple-user
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -475,7 +475,7 @@ selections
 # ─────────────────────────────────────────────────────────────────────
 - user|selection
     id: user
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions

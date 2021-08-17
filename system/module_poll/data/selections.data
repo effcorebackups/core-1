@@ -1,7 +1,7 @@
 selections
 - instance_select-poll|selection
     id: instance_select-poll
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -71,7 +71,7 @@ selections
 - instance_select_multiple-poll|selection
     id: instance_select_multiple-poll
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50

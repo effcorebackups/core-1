@@ -1,7 +1,7 @@
 selections
 - instance_select-project|selection
     id: instance_select-project
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -40,7 +40,7 @@ selections
         weight: 320
 - instance_select-release|selection
     id: instance_select-release
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -100,7 +100,7 @@ selections
 - instance_select_multiple-project|selection
     id: instance_select_multiple-project
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -129,7 +129,7 @@ selections
 - instance_select_multiple-release|selection
     id: instance_select_multiple-release
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
@@ -161,7 +161,7 @@ selections
       is_apply_translation: true
       is_apply_tokens: true
       text: Current release of the project "%%_id_project_context"
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
@@ -208,7 +208,7 @@ selections
       is_apply_tokens: true
       text: Releases of the project "%%_id_project_context"
     pager_is_enabled: true
-    decorator_params
+    decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
