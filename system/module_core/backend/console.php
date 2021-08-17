@@ -139,8 +139,8 @@ namespace effcore {
     $decorator->id = 'logs';
     $decorator->result_attributes = ['data-style' => 'compact'];
     foreach (static::logs_select() as $c_row_id => $c_log) {
-      $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
-      $c_data_hash          = core::hash_get_data(['time' => 0              ] + (array)$c_log);
+      $c_sequence_hash      = core::hash_get(['time' => 0, 'args' => []] + (array)$c_log);
+      $c_data_hash          = core::hash_get(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
       $c_row_attributes  = ['data-hash-sequence' => core::hash_get_mini($c_sequence_hash)];
@@ -239,8 +239,8 @@ namespace effcore {
     $result.= '  Time     | Object     | Action     | Value | Description    '.nl;
     $result.= '  ------------------------------------------------------------'.nl;
     foreach (static::logs_select() as $c_log) {
-      $c_sequence_hash      = core::hash_get_data(['time' => 0, 'args' => []] + (array)$c_log);
-      $c_data_hash          = core::hash_get_data(['time' => 0              ] + (array)$c_log);
+      $c_sequence_hash      = core::hash_get(['time' => 0, 'args' => []] + (array)$c_log);
+      $c_data_hash          = core::hash_get(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
       $result.= '  '.str_pad(locale::format_msecond($c_log->time), 8).' | ';

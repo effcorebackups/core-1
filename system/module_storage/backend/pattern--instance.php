@@ -109,7 +109,7 @@ namespace effcore {
   static function selection_make($entity_name, $conditions, $params = []) {
     $entity = entity::get($entity_name);
     $selection = new selection;
-    $selection->id = $entity_name.'-'.core::hash_get_data($conditions);
+    $selection->id = $entity_name.'-'.core::hash_get($conditions);
     $selection->template = 'content';
     $selection->query_params['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
     foreach ($entity->fields as $c_name => $c_field)

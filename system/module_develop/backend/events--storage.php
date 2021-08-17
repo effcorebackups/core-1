@@ -23,13 +23,13 @@ namespace effcore\modules\develop {
   }
 
   static function on_query_before($event, $storage, $query) {
-    $query_hash = core::hash_get_data($query);
+    $query_hash = core::hash_get($query);
     timer::tap('storage query with hash: '.$query_hash);
   }
 
   static function on_query_after($event, $storage, $query, $result, $errors) {
     if ($errors[0] === '00000') {
-      $query_hash = core::hash_get_data($query);
+      $query_hash = core::hash_get($query);
       timer::tap('storage query with hash: '.$query_hash);
       $args_trimmed = [];
       foreach ($storage->args as $c_arg)
