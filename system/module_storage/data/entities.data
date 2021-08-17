@@ -106,6 +106,16 @@ entities
         managing_control_value_manual_set: true
         managing_control_properties
         - weight: +300
+    - pager_settings
+        title: Pager settings
+        type: blob
+        filter_select: unserialize
+        filter_insert: \effcore\core::data_serialize
+        filter_update: \effcore\core::data_serialize
+        managing_control_value_manual_get: true
+        managing_control_value_manual_set: true
+        managing_control_properties
+        - weight: +280
     - created
         title: Created
         type: datetime
@@ -113,7 +123,7 @@ entities
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +280
+        - weight: +260
     - updated
         title: Updated
         type: datetime
@@ -121,7 +131,7 @@ entities
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +260
+        - weight: +240
     constraints
     - primary_id
         type: primary
