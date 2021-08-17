@@ -362,7 +362,7 @@ forms
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_title_name: title
-            query_params
+            query_settings
             - conditions
               - id_tree_!f: id_tree
               - operator: =
@@ -385,7 +385,7 @@ forms
             related_entity_field_id_name: id
             related_entity_field_id_parent_name: id_parent
             related_entity_field_title_name: title
-            query_params
+            query_settings
             - conditions
               - id_tree_!f: id_tree
               - operator: =

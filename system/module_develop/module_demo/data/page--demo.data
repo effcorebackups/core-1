@@ -176,7 +176,7 @@ pages
           properties
           - title: null
           - pager_id: 2
-          - query_params
+          - query_settings
             - join_script
               - with_demo_join
                   type: left outer join

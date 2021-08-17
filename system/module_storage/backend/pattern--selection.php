@@ -18,13 +18,26 @@ namespace effcore {
   public $id;
   public $title;
   public $fields = [];
-  public $query_params = [];
+  public $query_settings = [];
   public $decorator_params = [];
   public $pager_is_enabled = false;
   public $pager_name = 'page';
   public $pager_id = 0;
   public $origin = 'nosql'; # nosql | sql
   public $_instances;
+
+  # ─────────────────────────────────────────────────────────────────────
+  # $fields format:
+  # ─────────────────────────────────────────────────────────────────────
+  #   type: field|join_field|checkbox|markup|code|handler
+  #   entity_name: %%_entity_name
+  #   entity_field_name: %%_entity_field_name
+  #   weight: %%_weight
+  #   settings
+  #   - title: %%_title
+  #   - filters|_empty_array
+  #   - is_raw: true|false
+  # ─────────────────────────────────────────────────────────────────────
 
   function __construct($title = null, $weight = 0) {
     if ($title) $this->title = $title;
@@ -71,13 +84,13 @@ namespace effcore {
       # prepare join
         foreach ($this->fields as $c_row_id => $c_field) {
           if ($c_field->type === 'join_field') {
-            $this->query_params['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
+            $this->query_settings['join_fields'][$c_row_id.'_!f'] = '~'.$c_field->entity_name.'.'.$c_field->entity_field_name;
           }
         }
-        if (!isset($this->query_params['join']) &&
-             isset($this->query_params['join_script'])) {
-          foreach ($this->query_params['join_script'] as $c_id => $c_join) {
-            $this->query_params['join'][$c_id] = [
+        if (!isset($this->query_settings['join']) &&
+             isset($this->query_settings['join_script'])) {
+          foreach ($this->query_settings['join_script'] as $c_id => $c_join) {
+            $this->query_settings['join'][$c_id] = [
                 'type'    =>     $c_join->type,
               'target_!t' => '~'.$c_join->   entity_name,                                   'on'       => 'ON',
                 'left_!f' => '~'.$c_join->   entity_name.'.'.$c_join->   entity_field_name, 'operator' => '=',
@@ -87,13 +100,13 @@ namespace effcore {
         }
 
       # prepare limit
-        if (empty($this->query_params['limit']))
-                  $this->query_params['limit'] = static::default_limit;
+        if (empty($this->query_settings['limit']))
+                  $this->query_settings['limit'] = static::default_limit;
 
       # prepare pager
         if ($this->pager_is_enabled) {
-          $instances_count = $this->_main_entity->instances_select_count($this->query_params);
-          $page_max_number = ceil($instances_count / $this->query_params['limit']);
+          $instances_count = $this->_main_entity->instances_select_count($this->query_settings);
+          $page_max_number = ceil($instances_count / $this->query_settings['limit']);
           if ($page_max_number < 1)
               $page_max_number = 1;
           $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -200);
@@ -101,7 +114,7 @@ namespace effcore {
           if ($pager_error_code === pager::ERR_CODE_CUR_GT_MAX) url::go($pager->url_page_max_get()->tiny_get());
           if ($pager_error_code !== pager::ERR_CODE_OK) core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], br.br));
           if ($page_max_number > 1) {
-            $this->query_params['offset'] = ($pager->cur - 1) * $this->query_params['limit'];
+            $this->query_settings['offset'] = ($pager->cur - 1) * $this->query_settings['limit'];
             $this->child_insert(
               $pager, 'pager'
             );
@@ -110,7 +123,7 @@ namespace effcore {
 
       # select instances
         $this->_instances = $this->_main_entity->instances_select(
-          $this->query_params
+          $this->query_settings
         );
 
       } elseif (count($used_storages) === 0) {

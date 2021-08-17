@@ -557,9 +557,11 @@ translations
     - Previously used value was specified.: Было указано ранее использованное значение.
     - Profile: Профиль
     - Profiles: Профили
+    - Project: Проект
+    - Projects: Проекты
     - Query error!: Ошибка запроса!
-    - Query parameters: Параметры запроса
     - query preparation process return the false: процесс подготовки запроса вернул false
+    - Query settings: Настройки запроса
     - query: запрос
     - Question: Вопрос
     - Radial diagram: Круговая диаграмма

@@ -19,7 +19,7 @@ namespace effcore {
   public $related_entity_field_id_name;
   public $related_entity_field_id_parent_name;
   public $related_entity_field_title_name;
-  public $query_params = [];
+  public $query_settings = [];
 
   function build() {
     if (!$this->is_builded) {
@@ -27,7 +27,7 @@ namespace effcore {
       $this->child_select('element')->children_delete();
       $this->option_insert($this->title__not_selected, 'not_selected');
       $entity = entity::get($this->related_entity_name);
-      $instances = $entity->instances_select($this->query_params);
+      $instances = $entity->instances_select($this->query_settings);
       if ($this->related_entity_field_id_parent_name) {
         $tree_id = 'field_relation-'.$this->name_get();
                 tree::delete(      $tree_id);

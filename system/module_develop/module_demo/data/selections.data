@@ -3,7 +3,7 @@ selections
     id: instance_select-demo_autoincrement
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~demo_autoincrement.id
       - id_operator: =
@@ -27,7 +27,7 @@ selections
     id: instance_select-demo_collations
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~demo_collations.id
       - id_operator: =
@@ -55,7 +55,7 @@ selections
     id: instance_select-demo_constraints
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - f_primary_!f: ~demo_constraints.f_primary
       - f_primary_operator: =
@@ -83,7 +83,7 @@ selections
     id: instance_select-demo_data
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~demo_data.id
       - id_operator: =
@@ -117,7 +117,7 @@ selections
     id: instance_select-demo_indexes
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~demo_indexes.id
       - id_operator: =
@@ -145,7 +145,7 @@ selections
     id: instance_select-demo_join
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_data_!f: ~demo_join.id_data
       - id_data_operator: =
@@ -168,7 +168,7 @@ selections
     id: instance_select-demo_types
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~demo_types.id
       - id_operator: =
@@ -252,7 +252,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_autoincrement.id
@@ -271,7 +271,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_collations.id
@@ -294,7 +294,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_constraints.f_primary
@@ -317,7 +317,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_data.id
@@ -346,7 +346,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_indexes.id
@@ -369,7 +369,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_join.id_data
@@ -387,7 +387,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - demo_types.id
@@ -408,7 +408,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - join_script
       - with_demo_join
           type: left outer join
@@ -451,7 +451,7 @@ selections
     title: Selection of "demo_types" entities
     decorator_params
     - view_type: ul
-    query_params
+    query_settings
     - limit: 10
     fields
     - id

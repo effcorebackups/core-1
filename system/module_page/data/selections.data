@@ -3,7 +3,7 @@ selections
     id: instance_select-audio
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~audio.id
       - id_operator: =
@@ -54,7 +54,7 @@ selections
     id: instance_select-gallery
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~gallery.id
       - id_operator: =
@@ -106,7 +106,7 @@ selections
     id: instance_select-page
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~page.id
       - id_operator: =
@@ -183,7 +183,7 @@ selections
     id: instance_select-picture
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~picture.id
       - id_operator: =
@@ -245,7 +245,7 @@ selections
     id: instance_select-text
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~text.id
       - id_operator: =
@@ -297,7 +297,7 @@ selections
     id: instance_select-video
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~video.id
       - id_operator: =
@@ -355,7 +355,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - audio.id
@@ -384,7 +384,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - gallery.id
@@ -413,7 +413,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - page.id
@@ -442,7 +442,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - picture.id
@@ -476,7 +476,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - text.id
@@ -505,7 +505,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - video.id
@@ -545,7 +545,7 @@ selections
       - created: audio.created
       - updated: audio.updated
       - is_embedded: audio.is_embedded
-    query_params
+    query_settings
     - conditions
       - id_!f: ~audio.id
       - id_operator: =
@@ -608,7 +608,7 @@ selections
       - created: gallery.created
       - updated: gallery.updated
       - is_embedded: gallery.is_embedded
-    query_params
+    query_settings
     - conditions
       - id_!f: ~gallery.id
       - id_operator: =
@@ -673,7 +673,7 @@ selections
       - created: picture.created
       - updated: picture.updated
       - is_embedded: picture.is_embedded
-    query_params
+    query_settings
     - conditions
       - id_!f: ~picture.id
       - id_operator: =
@@ -746,7 +746,7 @@ selections
       - created: text.created
       - updated: text.updated
       - is_embedded: text.is_embedded
-    query_params
+    query_settings
     - conditions
       - id_!f: ~text.id
       - id_operator: =
@@ -811,7 +811,7 @@ selections
       - created: video.created
       - updated: video.updated
       - is_embedded: video.is_embedded
-    query_params
+    query_settings
     - conditions
       - id_!f: ~video.id
       - id_operator: =

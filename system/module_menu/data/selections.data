@@ -3,7 +3,7 @@ selections
     id: instance_select-tree
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~tree.id
       - id_operator: =
@@ -55,7 +55,7 @@ selections
     id: instance_select-tree_item
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~tree_item.id
       - id_operator: =
@@ -129,7 +129,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - tree.id
@@ -156,7 +156,7 @@ selections
       - title: tree_item.title
       - url: tree_item.url
       - weight: tree_item.weight
-    query_params
+    query_settings
     - limit: 10000
     fields
     - tree_item.id

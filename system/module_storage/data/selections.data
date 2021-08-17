@@ -3,7 +3,7 @@ selections
     id: instance_select-selection
     decorator_params
     - view_type: table-dl
-    query_params
+    query_settings
     - conditions
       - id_!f: ~selection.id
       - id_operator: =
@@ -51,7 +51,7 @@ selections
     pager_is_enabled: true
     decorator_params
     - view_type: table-adaptive
-    query_params
+    query_settings
     - limit: 50
     fields
     - selection.id

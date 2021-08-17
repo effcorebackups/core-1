@@ -557,9 +557,11 @@ translations
     - Previously used value was specified.: Было ўжыто раней выкарыстанае значэнне.
     - Profile: Профіль
     - Profiles: Профілі
+    - Project: Праект
+    - Projects: Праекты
     - Query error!: Памылка запыту!
-    - Query parameters: Параметры запыту
     - query preparation process return the false: працэс падрыхтоўкі запыту вярнуў false
+    - Query settings: Налады запыту
     - query: запыт
     - Question: Пытанне
     - Radial diagram: Кругавая дыяграма

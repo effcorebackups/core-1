@@ -25,7 +25,7 @@ namespace effcore\modules\menu {
       # drag-and-drop functionality
         $items['#actions']->disabled_set();
         $form->_selection->is_builded = false;
-        $form->_selection->query_params['conditions'] = [
+        $form->_selection->query_settings['conditions'] = [
           'id_tree_!f' => 'id_tree',
           'operator'   => '=',
           'id_tree_!v' => $form->category_id];

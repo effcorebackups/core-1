@@ -23,7 +23,7 @@ namespace effcore\modules\menu {
         if ($entity->name === 'tree_item') {
           $items['#id_tree']->value_set($form->category_id);
           $items['#id_parent']->is_builded = false;
-          $items['#id_parent']->query_params['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
+          $items['#id_parent']->query_settings['conditions'] = ['id_tree_!f' => 'id_tree', 'operator' => '=', 'id_tree_!v' => $form->category_id];
           $items['#id_parent']->build();
         }
       }

@@ -12,7 +12,7 @@ selections
       - url: picture.url
       - attributes: picture.attributes
       - link_attributes: picture.link_attributes
-    query_params
+    query_settings
     - conditions
       - id_!f: ~picture.id
       - id_in_begin: in (

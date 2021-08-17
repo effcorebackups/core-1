@@ -111,7 +111,7 @@ namespace effcore {
     $selection = new selection;
     $selection->id = $entity_name.'-'.core::hash_get($conditions);
     $selection->template = 'content';
-    $selection->query_params['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
+    $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
     foreach ($entity->fields as $c_name => $c_field)
       $selection->field_insert_entity(null, $entity->name, $c_name, $params[$c_name] ?? []);
     return $selection;

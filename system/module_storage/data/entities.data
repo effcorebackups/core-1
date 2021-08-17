@@ -86,8 +86,8 @@ entities
         managing_control_properties
         - name_complex: fields
         - weight: +340
-    - query_params
-        title: Query parameters
+    - query_settings
+        title: Query settings
         type: blob
         filter_select: unserialize
         filter_insert: \effcore\core::data_serialize
