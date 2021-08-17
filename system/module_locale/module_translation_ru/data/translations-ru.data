@@ -508,6 +508,7 @@ translations
     - Page\: insert: Страница: вставить
     - Page\: select: Страница: выбрать
     - Page\: update: Страница: обновить
+    - Pager settings: Настройки пейджера
     - Pages: Страницы
     - Palette generation form: Форма генерирования палитры
     - Palette: Палитра
