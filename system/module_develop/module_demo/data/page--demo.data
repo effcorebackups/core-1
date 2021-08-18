@@ -150,7 +150,7 @@ pages
       # selections
       # ─────────────────────────────────────────────────────────────────────
       - block__selection__demo_field_types|block
-          title: Demonstration of the types of Selection fields
+          title: Demonstration of field types for Selection
           attributes
           - data-id: block__selection__demo_field_types
           - data-style: title-is-simple
@@ -189,7 +189,7 @@ pages
           properties
           - title: null
       - block__selection__demo_data_join__with_params|block
-          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100)
+          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100
           attributes
           - data-id: block__selection__demo_data_join__with_params
           - data-style: title-is-simple

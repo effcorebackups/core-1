@@ -404,7 +404,7 @@ selections
 # ─────────────────────────────────────────────────────────────────────
 - demo_selection_field_types|selection
     id: demo_selection_field_types
-    title: Demonstration of the types of Selection fields
+    title: Demonstration of field types for Selection
     decorator_settings
     - view_type: ul
     query_settings

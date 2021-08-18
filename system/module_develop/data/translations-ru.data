@@ -58,10 +58,10 @@ translations
     - Demonstration menu NoSQL: Меню демонстрационное NoSQL
     - Demonstration menu SQL: Меню демонстрационное SQL
     - Demonstration menu via decorator: Меню демонстрационное через декоратор
-    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100): Демонстрация выборки сущностей "demo_data" с объединением с сущностями "demo_join" (ID >= 100)
+    - Demonstration of field types for Selection: Демонстрация типов полей у выборки
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100: Демонстрация выборки сущностей "demo_data" с объединением с сущностями "demo_join" где ID >= 100
     - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Демонстрация выборки сущностей "demo_data" с объединением с сущностями "demo_join"
     - Demonstration of selection of entities "demo_types": Демонстрация выборки сущностей "demo_types"
-    - Demonstration of the types of Selection fields: Демонстрация типов полей выборки
     - Description for messages: Описание для сообщений
     - Displaying the console will result in a %%_value increase in RAM consumption!: Отображение консоли приведёт к увеличению потребления ОЗУ на %%_value!
     - DL table: DL таблица
@@ -226,8 +226,8 @@ translations
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
-    - Type "field": Тип "field"
     - Type "field" from code: Тип "field" из кода
+    - Type "field": Тип "field"
     - UML Diagram: UML-диаграмма
     - Usage frequency: Частота использования
     - validation_1: валидация_1

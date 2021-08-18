@@ -58,10 +58,10 @@ translations
     - Demonstration menu NoSQL: Меню дэманстрацыйнае NoSQL
     - Demonstration menu SQL: Меню дэманстрацыйнае SQL
     - Demonstration menu via decorator: Меню дэманстрацыйнае праз дэкаратар
-    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100): Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join" (ID >= 100)
+    - Demonstration of field types for Selection: Дэманстрацыя тыпаў палёў у выбаркі
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100: Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join" дзе ID >= 100
     - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join"
     - Demonstration of selection of entities "demo_types": Дэманстрацыя выбаркі сутнасцяў "demo_types"
-    - Demonstration of the types of Selection fields: Дэманстрацыя тыпаў палёў выбаркі
     - Description for messages: Апісанне для паведамленняў
     - Displaying the console will result in a %%_value increase in RAM consumption!: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value!
     - DL table: DL табліца
