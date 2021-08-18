@@ -62,7 +62,7 @@ namespace effcore\modules\storage {
         }
       } else {
         $form->child_select('data')->child_insert(
-          new markup('x-no-items', ['data-style' => 'table'], new text('no selection with ID = "%%_id"', ['id' => 'instance_select_multiple-'.$entity->name])), 'no_items'
+          new markup('x-no-items', ['data-style' => 'table'], new text('no Selection with ID = "%%_id"', ['id' => 'instance_select_multiple-'.$entity->name])), 'no_items'
         );
       }
     }

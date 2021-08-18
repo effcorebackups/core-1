@@ -84,7 +84,7 @@ namespace effcore\modules\storage {
             return $selection;
           } else {
             return new markup('x-no-items', ['data-style' => 'table'], new text(
-              'no selection with ID = "%%_id"', ['id' => 'instance_select-'.$entity->name]
+              'no Selection with ID = "%%_id"', ['id' => 'instance_select-'.$entity->name]
             ));
           }
         }
