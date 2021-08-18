@@ -149,6 +149,19 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # selections
       # ─────────────────────────────────────────────────────────────────────
+      - block__demo_selection_demo_types|block
+          title: Selection of "demo_types" entities
+          attributes
+          - data-id: block__demo_selection_demo_types
+          - data-style: title-is-simple
+          display
+            check: page_args
+            where: type
+            match: %^embedded/selections$%
+          type: link
+          source: selections/demo/demo_types
+          properties
+          - title: null
       - block__demo_selection_demo_join_1|block
           title: Selection of "demo_data" entities + join (ID: 100+)
           attributes
@@ -192,19 +205,6 @@ pages
               - title_!f: ~demo_data.id
               - type: ASC
             - limit: 5
-      - block__demo_selection_demo_types|block
-          title: Selection of "demo_types" entities
-          attributes
-          - data-id: block__demo_selection_demo_types
-          - data-style: title-is-simple
-          display
-            check: page_args
-            where: type
-            match: %^embedded/selections$%
-          type: link
-          source: selections/demo/demo_types
-          properties
-          - title: null
       # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
