@@ -405,6 +405,8 @@ selections
 - demo_selection_field_types|selection
     id: demo_selection_field_types
     title: Demonstration of the types of Selection fields
+    decorator_settings
+    - view_type: ul
     query_settings
     - limit: 1
     fields

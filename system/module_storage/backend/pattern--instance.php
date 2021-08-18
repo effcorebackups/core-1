@@ -107,13 +107,14 @@ namespace effcore {
   }
 
   static function selection_make($entity_name, $conditions, $settings = []) {
+    $c_weight = 420;
     $entity = entity::get($entity_name);
     $selection = new selection;
     $selection->id = $entity_name.'-'.core::hash_get($conditions);
     $selection->template = 'content';
     $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
     foreach ($entity->fields as $c_name => $c_field)
-      $selection->field_insert_entity(null, $entity->name, $c_name, $settings[$c_name] ?? []);
+      $selection->field_insert_entity(null, $entity->name, $c_name, $c_field->title ?? null, $settings[$c_name] ?? [], ($c_weight = $c_weight - 20));
     return $selection;
   }
 

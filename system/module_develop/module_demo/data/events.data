@@ -189,6 +189,9 @@ events
       handler: \effcore\modules\demo\events_examples::on_page_render_before
 # ─────────────────────────────────────────────────────────────────────
   on_selection_build_before
+  - demo_selection_field_types|event
+      for: demo_selection_field_types
+      handler: \effcore\modules\demo\events_selection::on_selection_build_before_demo_selection_field_types
   - example|event
       for: example
       skip_console_log: true

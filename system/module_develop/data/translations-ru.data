@@ -227,6 +227,7 @@ translations
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - Type "field": Тип "field"
+    - Type "field" from code: Тип "field" из кода
     - UML Diagram: UML-диаграмма
     - Usage frequency: Частота использования
     - validation_1: валидация_1
