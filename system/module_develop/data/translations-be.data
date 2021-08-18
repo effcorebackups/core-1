@@ -61,6 +61,7 @@ translations
     - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100): Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join" (ID >= 100)
     - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join"
     - Demonstration of selection of entities "demo_types": Дэманстрацыя выбаркі сутнасцяў "demo_types"
+    - Demonstration of the types of Selection fields: Дэманстрацыя тыпаў палёў выбаркі
     - Description for messages: Апісанне для паведамленняў
     - Displaying the console will result in a %%_value increase in RAM consumption!: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value!
     - DL table: DL табліца
@@ -225,6 +226,7 @@ translations
     - Total run time\: %%_time sec.: Агульны час выканання: %%_time сек.
     - Traits: Трэйты
     - transposition %%_cur from %%_max (%%_state): перастаноўка %%_cur з %%_max (%%_state)
+    - Type "field": Тып "field"
     - UML Diagram: UML-дыяграма
     - Usage frequency: Частата выкарыстоўвання
     - validation_1: валідацыя_1

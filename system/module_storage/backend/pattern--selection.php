@@ -26,19 +26,6 @@ namespace effcore {
   public $origin = 'nosql'; # nosql | sql
   public $_instances;
 
-  # ─────────────────────────────────────────────────────────────────────
-  # $fields format:
-  # ─────────────────────────────────────────────────────────────────────
-  #   type: field|join_field|checkbox|markup|code|handler
-  #   entity_name: %%_entity_name
-  #   entity_field_name: %%_entity_field_name
-  #   weight: %%_weight
-  #   settings
-  #   - title: %%_title
-  #   - filters|_empty_array
-  #   - is_raw: true|false
-  # ─────────────────────────────────────────────────────────────────────
-
   function __construct($title = null, $weight = 0) {
     if ($title) $this->title = $title;
     parent::__construct(null, [], [], $weight);

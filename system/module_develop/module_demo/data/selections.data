@@ -402,6 +402,19 @@ selections
         filter: \effcore\translation::apply
         weight: 380
 # ─────────────────────────────────────────────────────────────────────
+- demo_selection_field_types|selection
+    id: demo_selection_field_types
+    title: Demonstration of the types of Selection fields
+    query_settings
+    - limit: 1
+    fields
+    - type_field
+        type: field
+        entity_name: demo_data
+        entity_field_name: id
+        title: Type "field"
+        settings|_empty_array
+        weight: 400
 - demo_data_join|selection
     id: demo_data_join
     title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
