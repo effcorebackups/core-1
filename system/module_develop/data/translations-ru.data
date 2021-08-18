@@ -58,6 +58,9 @@ translations
     - Demonstration menu NoSQL: Меню демонстрационное NoSQL
     - Demonstration menu SQL: Меню демонстрационное SQL
     - Demonstration menu via decorator: Меню демонстрационное через декоратор
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100): Демонстрация выборки сущностей "demo_data" с объединением с сущностями "demo_join" (ID >= 100)
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Демонстрация выборки сущностей "demo_data" с объединением с сущностями "demo_join"
+    - Demonstration of selection of entities "demo_types": Демонстрация выборки сущностей "demo_types"
     - Description for messages: Описание для сообщений
     - Displaying the console will result in a %%_value increase in RAM consumption!: Отображение консоли приведёт к увеличению потребления ОЗУ на %%_value!
     - DL table: DL таблица
@@ -188,10 +191,7 @@ translations
     - row with default values: строка со значениями по умолчанию
     - row with non-default values: строка со значениями не по умолчанию
     - Selection list (multiple select): Список выбора (множественный выбор)
-    - Selection of "demo_data" entities + join (ID\: 100+): Выборка сущностей "demo_data" + join (ID: 100+)
-    - Selection of "demo_data" entities + join (ID\: 200+): Выборка сущностей "demo_data" + join (ID: 200+)
     - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
-    - Selection of "demo_types" entities: Выборка сущностей "demo_types"
     - Sequence hash: Хэш последовательности
     - show for admin: показывать администратору
     - show for everyone: показывать всем

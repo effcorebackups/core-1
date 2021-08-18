@@ -58,6 +58,9 @@ translations
     - Demonstration menu NoSQL: Меню дэманстрацыйнае NoSQL
     - Demonstration menu SQL: Меню дэманстрацыйнае SQL
     - Demonstration menu via decorator: Меню дэманстрацыйнае праз дэкаратар
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100): Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join" (ID >= 100)
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Дэманстрацыя выбаркі сутнасцяў "demo_data" з аб'яднаннем з сутнасцямі "demo_join"
+    - Demonstration of selection of entities "demo_types": Дэманстрацыя выбаркі сутнасцяў "demo_types"
     - Description for messages: Апісанне для паведамленняў
     - Displaying the console will result in a %%_value increase in RAM consumption!: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value!
     - DL table: DL табліца
@@ -188,10 +191,7 @@ translations
     - row with default values: радок са значэннямі па змаўчанні
     - row with non-default values: радок са значэннямі ня па змаўчанні
     - Selection list (multiple select): Спіс выбару (множны выбар)
-    - Selection of "demo_data" entities + join (ID\: 100+): Выбарка сутнасцяў "demo_data" + join (ID: 100+)
-    - Selection of "demo_data" entities + join (ID\: 200+): Выбарка сутнасцяў "demo_data" + join (ID: 200+)
     - Selection of "demo_data" entities + join: Выбарка сутнасцяў "demo_data" + join
-    - Selection of "demo_types" entities: Выбарка сутнасцяў "demo_types"
     - Sequence hash: Хэш паслядоўнасці
     - show for admin: паказваць адміністратару
     - show for everyone: паказваць усім

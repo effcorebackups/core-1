@@ -149,43 +149,43 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # selections
       # ─────────────────────────────────────────────────────────────────────
-      - block__demo_selection_demo_types|block
-          title: Selection of "demo_types" entities
+      - block__selection__demo_data_types|block
+          title: Demonstration of selection of entities "demo_types"
           attributes
-          - data-id: block__demo_selection_demo_types
+          - data-id: block__selection__demo_data_types
           - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: link
-          source: selections/demo/demo_types
+          source: selections/demo/demo_data_types
           properties
           - title: null
-      - block__demo_selection_demo_join_1|block
-          title: Selection of "demo_data" entities + join (ID: 100+)
+      - block__selection__demo_data_join|block
+          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
           attributes
-          - data-id: block__demo_selection_demo_join_1
+          - data-id: block__selection__demo_data_join
           - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: copy
-          source: selections/demo/demo_join
+          source: selections/demo/demo_data_join
           properties
           - title: null
-      - block__demo_selection_demo_join_2|block
-          title: Selection of "demo_data" entities + join (ID: 200+)
+      - block__selection__demo_data_join__with_params|block
+          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities (ID >= 100)
           attributes
-          - data-id: block__demo_selection_demo_join_2
+          - data-id: block__selection__demo_data_join__with_params
           - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: copy
-          source: selections/demo/demo_join
+          source: selections/demo/demo_data_join
           properties
           - title: null
           - pager_id: 2
@@ -200,7 +200,7 @@ pages
             - conditions
               - id_!f: ~demo_data.id
               - operator: >=
-              - id_!v: 200
+              - id_!v: 100
             - order
               - title_!f: ~demo_data.id
               - type: ASC

@@ -402,9 +402,9 @@ selections
         filter: \effcore\translation::apply
         weight: 380
 # ─────────────────────────────────────────────────────────────────────
-- demo_join|selection
-    id: demo_join
-    title: Selection of "demo_data" entities + join
+- demo_data_join|selection
+    id: demo_data_join
+    title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
@@ -419,7 +419,7 @@ selections
     - conditions
       - id_!f: ~demo_data.id
       - id_operator: >=
-      - id_!v: 100
+      - id_!v: 1
     - order
       - title_!f: ~demo_data.id
       - type: ASC
@@ -446,9 +446,9 @@ selections
         type: join_field
         entity_name: demo_join
         entity_field_name: email
-- demo_types|selection
-    id: demo_types
-    title: Selection of "demo_types" entities
+- demo_data_types|selection
+    id: demo_data_types
+    title: Demonstration of selection of entities "demo_types"
     decorator_settings
     - view_type: ul
     query_settings
