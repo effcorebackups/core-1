@@ -226,8 +226,8 @@ translations
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
-    - Type "field" from code: Тип "field" из кода
-    - Type "field": Тип "field"
+    - Type "%%_type" from code: Тип "%%_type" из кода
+    - Type "%%_type": Тип "%%_type"
     - UML Diagram: UML-диаграмма
     - Usage frequency: Частота использования
     - validation_1: валидация_1

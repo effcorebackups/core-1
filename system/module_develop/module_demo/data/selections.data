@@ -432,12 +432,24 @@ selections
         type: field
         entity_name: demo_data
         entity_field_name: id
-        title: Type "field"
+        title|text
+          text: Type "%%_type"
+          args
+          - type: field
+        weight: 400
+    - type_text
+        type: text
+        title|text
+          text: Type "%%_type"
+          args
+          - type: text
+        text:    item #%%_number
         settings
         - filters
+          - 500: trim
           - 400: translate
           - 300: tokenized
-        weight: 400
+        weight: 380
 - demo_data_join|selection
     id: demo_data_join
     title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
