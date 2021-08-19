@@ -23,7 +23,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
 - instance_select-demo_collations|selection
     id: instance_select-demo_collations
@@ -110,7 +110,7 @@ selections
         entity_field_name: is_even
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 360
     - demo_data.created
         type: field
@@ -192,7 +192,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - demo_types.weight
         type: field
@@ -225,7 +225,7 @@ selections
         entity_field_name: f_varchar
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 260
     - demo_types.f_time
         type: field
@@ -248,7 +248,7 @@ selections
         entity_field_name: f_boolean
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 180
     - demo_types.is_embedded
         type: field
@@ -256,7 +256,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 160
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-demo_autoincrement|selection
@@ -278,7 +278,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
 - instance_select_multiple-demo_collations|selection
     id: instance_select_multiple-demo_collations
@@ -350,7 +350,7 @@ selections
         entity_field_name: is_even
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 360
     - demo_data.created
         type: field
@@ -417,7 +417,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
 # ─────────────────────────────────────────────────────────────────────
 - demo_selection_field_types|selection
@@ -435,8 +435,8 @@ selections
         title: Type "field"
         settings
         - filters
-          - =: translate
-          - =: tokenized
+          - 400: translate
+          - 300: tokenized
         weight: 400
 - demo_data_join|selection
     id: demo_data_join
@@ -479,7 +479,7 @@ selections
         entity_field_name: is_even
         settings
         - filters
-          - =: translate
+          - 400: translate
     - demo_join.email
         type: join_field
         entity_name: demo_join
@@ -502,7 +502,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
     - f_integer
         type: field
         entity_name: demo_types
@@ -533,7 +533,7 @@ selections
         entity_field_name: f_boolean
         settings
         - filters
-          - =: translate
+          - 400: translate
     - f_blob
         type: field
         entity_name: demo_types

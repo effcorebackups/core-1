@@ -23,7 +23,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - tree.title_is_visible
         type: field
@@ -31,7 +31,7 @@ selections
         entity_field_name: title_is_visible
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 360
     - tree.attributes
         type: field
@@ -55,7 +55,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - instance_select-tree_item|selection
     id: instance_select-tree_item
@@ -91,7 +91,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 340
     - tree_item.attributes
         type: field
@@ -131,7 +131,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 200
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-tree|selection
@@ -153,7 +153,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
 - instance_select_multiple-tree_item|selection
     id: instance_select_multiple-tree_item
@@ -189,7 +189,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
     - tree_item.url
         type: field
         entity_name: tree_item

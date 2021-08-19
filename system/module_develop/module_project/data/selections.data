@@ -23,7 +23,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - project.description
         type: field
@@ -117,7 +117,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - project.created
         type: field
@@ -205,7 +205,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
 - releases|selection
     id: releases
     title|text
@@ -254,4 +254,4 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate

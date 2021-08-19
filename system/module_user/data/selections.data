@@ -66,7 +66,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - permission.created
         type: field
@@ -84,7 +84,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 320
 - instance_select-relation_role_ws_permission|selection
     id: instance_select-relation_role_ws_permission
@@ -188,7 +188,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 300
 - instance_select-role|selection
     id: instance_select-role
@@ -214,7 +214,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - role.weight
         type: field
@@ -237,7 +237,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 300
 - instance_select-user|selection
     id: instance_select-user
@@ -278,7 +278,7 @@ selections
         entity_field_name: timezone
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 320
     - user.created
         type: field
@@ -296,7 +296,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 260
     - roles
         type: handler
@@ -356,7 +356,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
 - instance_select_multiple-relation_role_ws_permission|selection
     id: instance_select_multiple-relation_role_ws_permission
@@ -445,7 +445,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - role.created
         type: field
@@ -525,7 +525,7 @@ selections
         entity_field_name: timezone
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 340
     - user.created
         type: field
@@ -543,7 +543,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
     - roles
         type: handler

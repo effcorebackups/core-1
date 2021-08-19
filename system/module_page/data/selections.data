@@ -23,7 +23,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - audio.attributes
         type: field
@@ -52,7 +52,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - instance_select-gallery|selection
     id: instance_select-gallery
@@ -78,7 +78,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - gallery.attributes
         type: field
@@ -108,7 +108,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - instance_select-page|selection
     id: instance_select-page
@@ -139,7 +139,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 360
     - page.url
         type: field
@@ -152,7 +152,7 @@ selections
         entity_field_name: is_https
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 320
     - page.lang_code
         type: field
@@ -175,7 +175,7 @@ selections
         entity_field_name: is_use_global_meta
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 220
     - page.created
         type: field
@@ -193,7 +193,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 160
 - instance_select-picture|selection
     id: instance_select-picture
@@ -219,7 +219,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - picture.attributes
         type: field
@@ -259,7 +259,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 240
 - instance_select-text|selection
     id: instance_select-text
@@ -285,7 +285,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - text.attributes
         type: field
@@ -299,7 +299,7 @@ selections
         entity_field_name: text
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 340
     - text.created
         type: field
@@ -317,7 +317,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - instance_select-video|selection
     id: instance_select-video
@@ -343,7 +343,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - video.attributes
         type: field
@@ -377,7 +377,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 260
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-audio|selection
@@ -399,7 +399,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - audio.created
         type: field
@@ -430,7 +430,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - gallery.created
         type: field
@@ -461,7 +461,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - page.url
         type: field
@@ -492,7 +492,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - picture.url
         type: field
@@ -528,7 +528,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - text.created
         type: field
@@ -559,7 +559,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - video.created
         type: field
@@ -607,7 +607,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - audio.attributes
         type: field
@@ -636,7 +636,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - gallery|selection
     id: gallery
@@ -674,7 +674,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - gallery.attributes
         type: field
@@ -704,7 +704,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - picture|selection
     id: picture
@@ -743,7 +743,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - picture.attributes
         type: field
@@ -783,7 +783,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 240
 - text|selection
     id: text
@@ -820,7 +820,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - text.attributes
         type: field
@@ -834,7 +834,7 @@ selections
         entity_field_name: text
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 340
     - text.created
         type: field
@@ -852,7 +852,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
 - video|selection
     id: video
@@ -891,7 +891,7 @@ selections
         entity_field_name: description
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - video.attributes
         type: field
@@ -925,5 +925,5 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 260

@@ -23,7 +23,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - selection.attributes
         type: field
@@ -47,7 +47,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 300
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-selection|selection
@@ -69,7 +69,7 @@ selections
         entity_field_name: title
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - selection.created
         type: field

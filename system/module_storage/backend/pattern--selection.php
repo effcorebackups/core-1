@@ -195,6 +195,7 @@ namespace effcore {
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
               $c_filters = $c_field->settings['filters'] ?? [];
+              krsort($c_filters, SORT_NUMERIC);
               $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
               $c_row[$c_row_id]['value']->is_apply_translation = in_array('translate', $c_filters);
               $c_row[$c_row_id]['value']->is_apply_tokens      = in_array('tokenized', $c_filters);

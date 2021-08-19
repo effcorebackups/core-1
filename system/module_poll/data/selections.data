@@ -23,7 +23,7 @@ selections
         entity_field_name: question
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - poll.expired
         type: field
@@ -36,7 +36,7 @@ selections
         entity_field_name: diagram_type
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 340
     - poll.user_type
         type: field
@@ -49,7 +49,7 @@ selections
         entity_field_name: is_multiple
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 300
     - poll.is_cancelable
         type: field
@@ -57,7 +57,7 @@ selections
         entity_field_name: is_cancelable
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 280
     - poll.created
         type: field
@@ -75,7 +75,7 @@ selections
         entity_field_name: is_embedded
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 220
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-poll|selection
@@ -97,7 +97,7 @@ selections
         entity_field_name: question
         settings
         - filters
-          - =: translate
+          - 400: translate
         weight: 380
     - poll.expired
         type: field
