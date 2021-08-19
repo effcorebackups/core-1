@@ -188,10 +188,10 @@ pages
           source: selections/demo/demo_data_join
           properties
           - title: null
-      - block__selection__demo_data_join__with_params|block
+      - block__selection__demo_data_join__with_properties|block
           title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100
           attributes
-          - data-id: block__selection__demo_data_join__with_params
+          - data-id: block__selection__demo_data_join__with_properties
           - data-style: title-is-simple
           display
             check: page_args

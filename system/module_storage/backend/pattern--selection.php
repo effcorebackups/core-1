@@ -235,45 +235,45 @@ namespace effcore {
     $this->fields[$row_id]->weight            = $weight;
   }
 
-  function field_insert_checkbox($row_id = null, $title = null, $params = []) {
+  function field_insert_checkbox($row_id = null, $title = null, $settings = []) {
     $row_id = $row_id ?: 'checkbox';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type  = 'checkbox';
     $this->fields[$row_id]->title = $title;
-    foreach ($params as $c_key => $c_value) {
+    foreach ($settings as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
   }
 
-  function field_insert_markup($row_id = null, $title = null, $markup = null, $params = []) {
+  function field_insert_markup($row_id = null, $title = null, $markup = null, $settings = []) {
     $row_id = $row_id ?: 'markup';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type   = 'markup';
     $this->fields[$row_id]->title  = $title;
     $this->fields[$row_id]->markup = $markup;
-    foreach ($params as $c_key => $c_value) {
+    foreach ($settings as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
   }
 
-  function field_insert_code($row_id = null, $title = null, $code = null, $params = []) {
+  function field_insert_code($row_id = null, $title = null, $code = null, $settings = []) {
     $row_id = $row_id ?: 'code';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type  = 'code';
     $this->fields[$row_id]->title = $title;
     $this->fields[$row_id]->code  = $code;
-    foreach ($params as $c_key => $c_value) {
+    foreach ($settings as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
   }
 
-  function field_insert_handler($row_id = null, $title = null, $handler = '', $params = []) {
+  function field_insert_handler($row_id = null, $title = null, $handler = '', $settings = []) {
     $row_id = $row_id ?: 'handler';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type    = 'handler';
     $this->fields[$row_id]->title   = $title;
     $this->fields[$row_id]->handler = $handler;
-    foreach ($params as $c_key => $c_value) {
+    foreach ($settings as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
   }
