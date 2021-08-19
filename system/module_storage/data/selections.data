@@ -21,7 +21,9 @@ selections
         type: field
         entity_name: selection
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - selection.attributes
         type: field
@@ -43,7 +45,9 @@ selections
         type: field
         entity_name: selection
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 300
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-selection|selection
@@ -63,7 +67,9 @@ selections
         type: field
         entity_name: selection
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - selection.created
         type: field

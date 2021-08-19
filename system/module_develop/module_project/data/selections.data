@@ -21,7 +21,9 @@ selections
         type: field
         entity_name: project
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - project.description
         type: field
@@ -84,7 +86,6 @@ selections
         type: field
         entity_name: release
         entity_field_name: hash_sum
-        filter: \effcore\translation::apply
         weight: 320
     - release.created
         type: field
@@ -114,7 +115,9 @@ selections
         type: field
         entity_name: project
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - project.created
         type: field
@@ -200,7 +203,9 @@ selections
         type: field
         entity_name: release
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
 - releases|selection
     id: releases
     title|text
@@ -247,4 +252,6 @@ selections
         type: field
         entity_name: release
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate

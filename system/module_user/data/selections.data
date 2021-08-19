@@ -64,7 +64,9 @@ selections
         type: field
         entity_name: permission
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - permission.created
         type: field
@@ -80,7 +82,9 @@ selections
         type: field
         entity_name: permission
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 320
 - instance_select-relation_role_ws_permission|selection
     id: instance_select-relation_role_ws_permission
@@ -182,7 +186,9 @@ selections
         type: field
         entity_name: relation_role_ws_user
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 300
 - instance_select-role|selection
     id: instance_select-role
@@ -206,7 +212,9 @@ selections
         type: field
         entity_name: role
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - role.weight
         type: field
@@ -227,7 +235,9 @@ selections
         type: field
         entity_name: role
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 300
 - instance_select-user|selection
     id: instance_select-user
@@ -266,7 +276,9 @@ selections
         type: field
         entity_name: user
         entity_field_name: timezone
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 320
     - user.created
         type: field
@@ -282,7 +294,9 @@ selections
         type: field
         entity_name: user
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 260
     - roles
         type: handler
@@ -340,7 +354,9 @@ selections
         type: field
         entity_name: permission
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
 - instance_select_multiple-relation_role_ws_permission|selection
     id: instance_select_multiple-relation_role_ws_permission
@@ -427,7 +443,9 @@ selections
         type: field
         entity_name: role
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - role.created
         type: field
@@ -505,7 +523,9 @@ selections
         type: field
         entity_name: user
         entity_field_name: timezone
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 340
     - user.created
         type: field
@@ -521,7 +541,9 @@ selections
         type: field
         entity_name: user
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
     - roles
         type: handler

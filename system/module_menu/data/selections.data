@@ -21,13 +21,17 @@ selections
         type: field
         entity_name: tree
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - tree.title_is_visible
         type: field
         entity_name: tree
         entity_field_name: title_is_visible
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 360
     - tree.attributes
         type: field
@@ -49,7 +53,9 @@ selections
         type: field
         entity_name: tree
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - instance_select-tree_item|selection
     id: instance_select-tree_item
@@ -83,7 +89,9 @@ selections
         type: field
         entity_name: tree_item
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 340
     - tree_item.attributes
         type: field
@@ -121,7 +129,9 @@ selections
         type: field
         entity_name: tree_item
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 200
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-tree|selection
@@ -141,7 +151,9 @@ selections
         type: field
         entity_name: tree
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
 - instance_select_multiple-tree_item|selection
     id: instance_select_multiple-tree_item
@@ -175,7 +187,9 @@ selections
         type: field
         entity_name: tree_item
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
     - tree_item.url
         type: field
         entity_name: tree_item

@@ -21,7 +21,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - audio.attributes
         type: field
@@ -48,7 +50,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - instance_select-gallery|selection
     id: instance_select-gallery
@@ -72,7 +76,9 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - gallery.attributes
         type: field
@@ -100,7 +106,9 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - instance_select-page|selection
     id: instance_select-page
@@ -129,7 +137,9 @@ selections
         type: field
         entity_name: page
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 360
     - page.url
         type: field
@@ -140,7 +150,9 @@ selections
         type: field
         entity_name: page
         entity_field_name: is_https
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 320
     - page.lang_code
         type: field
@@ -161,7 +173,9 @@ selections
         type: field
         entity_name: page
         entity_field_name: is_use_global_meta
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 220
     - page.created
         type: field
@@ -177,7 +191,9 @@ selections
         type: field
         entity_name: page
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 160
 - instance_select-picture|selection
     id: instance_select-picture
@@ -201,7 +217,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - picture.attributes
         type: field
@@ -239,7 +257,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 240
 - instance_select-text|selection
     id: instance_select-text
@@ -263,7 +283,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - text.attributes
         type: field
@@ -275,7 +297,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: text
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 340
     - text.created
         type: field
@@ -291,7 +315,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - instance_select-video|selection
     id: instance_select-video
@@ -315,7 +341,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - video.attributes
         type: field
@@ -347,7 +375,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 260
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-audio|selection
@@ -367,7 +397,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - audio.created
         type: field
@@ -396,7 +428,9 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - gallery.created
         type: field
@@ -425,7 +459,9 @@ selections
         type: field
         entity_name: page
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - page.url
         type: field
@@ -454,7 +490,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - picture.url
         type: field
@@ -488,7 +526,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - text.created
         type: field
@@ -517,7 +557,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - video.created
         type: field
@@ -563,7 +605,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - audio.attributes
         type: field
@@ -590,7 +634,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - gallery|selection
     id: gallery
@@ -626,7 +672,9 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: title
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - gallery.attributes
         type: field
@@ -654,7 +702,9 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - picture|selection
     id: picture
@@ -691,7 +741,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - picture.attributes
         type: field
@@ -729,7 +781,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 240
 - text|selection
     id: text
@@ -764,7 +818,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - text.attributes
         type: field
@@ -776,7 +832,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: text
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 340
     - text.created
         type: field
@@ -792,7 +850,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
 - video|selection
     id: video
@@ -829,7 +889,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - video.attributes
         type: field
@@ -861,5 +923,7 @@ selections
         type: field
         entity_name: video
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 260

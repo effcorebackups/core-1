@@ -21,7 +21,9 @@ selections
         type: field
         entity_name: poll
         entity_field_name: question
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - poll.expired
         type: field
@@ -32,7 +34,9 @@ selections
         type: field
         entity_name: poll
         entity_field_name: diagram_type
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 340
     - poll.user_type
         type: field
@@ -43,13 +47,17 @@ selections
         type: field
         entity_name: poll
         entity_field_name: is_multiple
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 300
     - poll.is_cancelable
         type: field
         entity_name: poll
         entity_field_name: is_cancelable
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 280
     - poll.created
         type: field
@@ -65,7 +73,9 @@ selections
         type: field
         entity_name: poll
         entity_field_name: is_embedded
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 220
 # ─────────────────────────────────────────────────────────────────────
 - instance_select_multiple-poll|selection
@@ -85,7 +95,9 @@ selections
         type: field
         entity_name: poll
         entity_field_name: question
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - poll.expired
         type: field

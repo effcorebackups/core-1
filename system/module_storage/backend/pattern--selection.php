@@ -157,8 +157,7 @@ namespace effcore {
                 if ($c_value !== null && $c_value_type === 'boolean' ) $c_value = locale::format_logic   ($c_value);
                 $c_row[$c_row_id] = [
                   'title'  => $c_title,
-                  'value'  => $c_value,
-                  'filter' => $c_field->filter ?? null
+                  'value'  => $c_value
                 ];
                 break;
               case 'checkbox':
@@ -190,15 +189,15 @@ namespace effcore {
                 ];
                 break;
             }
-          # apply filters/translation/tokens, if required
-            if (isset($c_row[$c_row_id]['filter'])                                    &&
-                      $c_row[$c_row_id]['filter'] !== '\\effcore\\translation::apply' &&
-                      $c_row[$c_row_id]['filter'] !== '\\effcore\\token::apply') $c_row[$c_row_id]['value'] = ($c_row[$c_row_id]['filter'])($c_row[$c_row_id]['value']);
+          # apply filters
+            if (isset($c_field->filter))
+              $c_row[$c_row_id]['value'] = ($c_field->filter)($c_row[$c_row_id]['value']);
             if (is_string($c_row[$c_row_id]['value']) &&
                    strlen($c_row[$c_row_id]['value'])) {
+              $c_filters = $c_field->settings['filters'] ?? [];
               $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
-              $c_row[$c_row_id]['value']->is_apply_translation = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] === '\\effcore\\translation::apply';
-              $c_row[$c_row_id]['value']->is_apply_tokens      = isset($c_row[$c_row_id]['filter']) && $c_row[$c_row_id]['filter'] === '\\effcore\\token::apply';
+              $c_row[$c_row_id]['value']->is_apply_translation = in_array('translate', $c_filters);
+              $c_row[$c_row_id]['value']->is_apply_tokens      = in_array('tokenized', $c_filters);
             }
           }
           $decorator->data[] = $c_row;

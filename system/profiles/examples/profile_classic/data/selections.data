@@ -31,7 +31,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: description
-        filter: \effcore\translation::apply
+        settings
+        - filters
+          - =: translate
         weight: 380
     - picture.path
         type: field
