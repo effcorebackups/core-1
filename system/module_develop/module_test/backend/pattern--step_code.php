@@ -20,7 +20,7 @@ namespace effcore {
     $c_results['reports'][$dpath] = new text('call "%%_call"', ['call' => $this->handler]);
     call_user_func_array($this->handler, [
       'test'    => &$test,
-      'dpath'   => $dpath.'::'.core::structure_get_part_handler($this->handler, 'method'),
+      'dpath'   => $dpath.'::'.core::handler_get_method($this->handler),
       'results' => &$c_results
     ] + $args);
   }

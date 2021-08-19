@@ -29,7 +29,9 @@ selections
         type: field
         entity_name: selection
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - selection.created
         type: field

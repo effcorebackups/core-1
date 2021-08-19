@@ -195,16 +195,28 @@ namespace effcore {
     return end($parts);
   }
 
-  static function structure_get_part_handler($handler, $partname) {
-    $parts = explode('::', $handler);
-    if ($partname === 'classname') return !empty($parts[0]) ? $parts[0] : null;
-    if ($partname === 'method'   ) return !empty($parts[1]) ? $parts[1] : null;
-  }
-
   static function class_get_new_instance($name, $args = [], $use_constructor = false) {
     $reflection = new \ReflectionClass($name);
     return $use_constructor ? $reflection->newInstanceArgs($args) :
                               $reflection->newInstanceWithoutConstructor();
+  }
+
+  static function is_handler($string) {
+    return strpos($string, '::') !== false;
+  }
+
+  static function handler_exists($handler) {
+    return method_exists(static::handler_get_class($handler), static::handler_get_method($handler));
+  }
+
+  static function handler_get_class($handler) {
+    $parts = explode('::', $handler);
+    return $parts[0] ?? null;
+  }
+
+  static function handler_get_method($handler) {
+    $parts = explode('::', $handler);
+    return $parts[1] ?? null;
   }
 
   ##############################

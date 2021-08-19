@@ -37,7 +37,9 @@ selections
         type: field
         entity_name: tree
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 340
     - tree.created
         type: field
@@ -97,7 +99,9 @@ selections
         type: field
         entity_name: tree_item
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 320
     - tree_item.url
         type: field
@@ -108,7 +112,9 @@ selections
         type: field
         entity_name: tree_item
         entity_field_name: link_attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 280
     - tree_item.weight
         type: field

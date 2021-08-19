@@ -189,16 +189,16 @@ namespace effcore {
                 ];
                 break;
             }
-          # apply filters
-            if (isset($c_field->filter))
-              $c_row[$c_row_id]['value'] = ($c_field->filter)($c_row[$c_row_id]['value']);
-            if (is_string($c_row[$c_row_id]['value']) &&
-                   strlen($c_row[$c_row_id]['value'])) {
-              $c_filters = $c_field->settings['filters'] ?? [];
+          # prepare the final value
+            $c_filters = $c_field->settings['filters'] ?? [];
+            if (count($c_filters)) {
               krsort($c_filters, SORT_NUMERIC);
-              $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']);
-              $c_row[$c_row_id]['value']->is_apply_translation = in_array('translate', $c_filters);
-              $c_row[$c_row_id]['value']->is_apply_tokens      = in_array('tokenized', $c_filters);
+              foreach ($c_filters as $c_filter) {
+                if ($c_filter === 'translate') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_translation = true; continue;}
+                if ($c_filter === 'tokenized') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_tokens      = true; continue;}
+                if (core::is_handler($c_filter) !== true &&      function_exists($c_filter)) $c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']);
+                if (core::is_handler($c_filter) === true && core::handler_exists($c_filter)) $c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']);
+              }
             }
           }
           $decorator->data[] = $c_row;

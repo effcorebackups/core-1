@@ -29,7 +29,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - audio.path
         type: field
@@ -84,13 +86,17 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - gallery.items
         type: field
         entity_name: gallery
         entity_field_name: items
-        filter: \effcore\widget_files_multimedia::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_files_multimedia::complex_value_to_markup
         weight: 340
     - gallery.created
         type: field
@@ -225,7 +231,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - picture.path
         type: field
@@ -236,7 +244,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: link_attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 320
     - picture.url
         type: field
@@ -291,7 +301,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - text.text
         type: field
@@ -349,7 +361,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - video.path
         type: field
@@ -613,7 +627,9 @@ selections
         type: field
         entity_name: audio
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - audio.path
         type: field
@@ -680,13 +696,17 @@ selections
         type: field
         entity_name: gallery
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - gallery.items
         type: field
         entity_name: gallery
         entity_field_name: items
-        filter: \effcore\widget_files_multimedia::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_files_multimedia::complex_value_to_markup
         weight: 340
     - gallery.created
         type: field
@@ -749,7 +769,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - picture.path
         type: field
@@ -760,7 +782,9 @@ selections
         type: field
         entity_name: picture
         entity_field_name: link_attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 320
     - picture.url
         type: field
@@ -826,7 +850,9 @@ selections
         type: field
         entity_name: text
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - text.text
         type: field
@@ -897,7 +923,9 @@ selections
         type: field
         entity_name: video
         entity_field_name: attributes
-        filter: \effcore\widget_attributes::complex_value_to_markup
+        settings
+        - filters
+          - 600: \effcore\widget_attributes::complex_value_to_markup
         weight: 360
     - video.path
         type: field
