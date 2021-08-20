@@ -206,11 +206,12 @@ namespace effcore {
                 if (core::is_handler($c_filter) === true && core::handler_exists($c_filter)) {$c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']); continue;}
               }
             }
-            if (is_string($c_row[$c_row_id]['value'])) {
-              $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value'], false, false);
+            if (is_string($c_row[$c_row_id]['value']) ||
+                   is_int($c_row[$c_row_id]['value'])) {
+              $c_row[$c_row_id]['value'] = new text((string)$c_row[$c_row_id]['value'], false, false);
             }
           }
-          $decorator->data[] = $c_row;
+          $decorator->data[] = $c_row; # null | markup | text
         }
 
         $this->child_insert($decorator, 'result');
