@@ -131,9 +131,9 @@ namespace effcore\modules\demo {
 
   static function block_markup__demo_decorators_dynamic($page, $args = []) {
   # ─────────────────────────────────────────────────────────────────────
-  # table
+  # view_type = table
   # ─────────────────────────────────────────────────────────────────────
-    $decorator_table_title = new markup('h3', [], 'Table');
+    $decorator_table_title = new markup('h3', [], 'view_type = table');
     $decorator_table = new decorator('table');
     $decorator_table->id = 'demo_table';
     $decorator_table->visibility_rowid  = 'visible'; # visible | not_int | hidden
@@ -152,9 +152,9 @@ namespace effcore\modules\demo {
                     'cell-2' => ['value' => 'value 3.2'],
                     'cell-3' => ['value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
-  # table-adaptive
+  # view_type = table-adaptive
   # ─────────────────────────────────────────────────────────────────────
-    $decorator_table_adaptive_title = new markup('h3', [], 'Adaptive table');
+    $decorator_table_adaptive_title = new markup('h3', [], 'view_type = table-adaptive');
     $decorator_table_adaptive = new decorator('table-adaptive');
     $decorator_table_adaptive->id = 'demo_table_adaptive';
     $decorator_table_adaptive->visibility_rowid  = 'visible'; # visible | not_int | hidden
@@ -173,9 +173,9 @@ namespace effcore\modules\demo {
                     'cell-2' => ['value' => 'value 3.2'],
                     'cell-3' => ['value' => ''         ]] ];
   # ─────────────────────────────────────────────────────────────────────
-  # table-dl
+  # view_type = table-dl
   # ─────────────────────────────────────────────────────────────────────
-    $decorator_table_dl_title = new markup('h3', [], 'DL table');
+    $decorator_table_dl_title = new markup('h3', [], 'view_type = table-dl');
     $decorator_table_dl = new decorator('table-dl');
     $decorator_table_dl->id = 'demo_table_dl';
     $decorator_table_dl->visibility_rowid  = 'visible'; # visible | not_int | hidden
@@ -194,9 +194,9 @@ namespace effcore\modules\demo {
                     'cell-2' => ['value' => 'value 3.2'],
                     'cell-3' => ['value' => ''         ]]];
   # ─────────────────────────────────────────────────────────────────────
-  # ul (unordered list)
+  # view_type = ul
   # ─────────────────────────────────────────────────────────────────────
-    $decorator_ul_title = new markup('h3', [], 'Unordered list');
+    $decorator_ul_title = new markup('h3', [], 'view_type = ul');
     $decorator_ul = new decorator('ul');
     $decorator_ul->id = 'demo_ul';
     $decorator_ul->visibility_rowid  = 'visible'; # visible | not_int | hidden
@@ -215,9 +215,9 @@ namespace effcore\modules\demo {
                     'field-2' => ['value' => 'value 3.2'],
                     'field-3' => ['value' => ''         ]] ];
   # ─────────────────────────────────────────────────────────────────────
-  # dl (definition list)
+  # view_type = dl
   # ─────────────────────────────────────────────────────────────────────
-    $decorator_dl_title = new markup('h3', [], 'Definition list');
+    $decorator_dl_title = new markup('h3', [], 'view_type = dl');
     $decorator_dl = new decorator('dl');
     $decorator_dl->id = 'demo_dl';
     $decorator_dl->visibility_rowid  = 'visible'; # visible | not_int | hidden

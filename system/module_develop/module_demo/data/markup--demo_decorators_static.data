@@ -2,13 +2,13 @@ markup
 - demo_decorators_static|node
     children
   # ─────────────────────────────────────────────────────────────────────
-  # table
+  # view_type = table
   # ─────────────────────────────────────────────────────────────────────
     - table_title|markup
         tag_name: h3
         children
         - content|text
-            text: Table
+            text: view_type = table
     - table|decorator
         view_type: table
         id: demo_table
@@ -54,13 +54,13 @@ markup
           - cell-3
             - value: 
   # ─────────────────────────────────────────────────────────────────────
-  # table-adaptive
+  # view_type = table-adaptive
   # ─────────────────────────────────────────────────────────────────────
     - table_adaptive_title|markup
         tag_name: h3
         children
         - content|text
-            text: Adaptive table
+            text: view_type = table-adaptive
     - table_adaptive|decorator
         view_type: table-adaptive
         id: demo_table_adaptive
@@ -106,13 +106,13 @@ markup
           - field-3
             - value: 
   # ─────────────────────────────────────────────────────────────────────
-  # table-dl
+  # view_type = table-dl
   # ─────────────────────────────────────────────────────────────────────
     - table_dl_title|markup
         tag_name: h3
         children
         - content|text
-            text: DL table
+            text: view_type = table-dl
     - table_dl|decorator
         view_type: table-dl
         id: demo_table_dl
@@ -164,13 +164,13 @@ markup
             - title: Field #3
             - value: 
   # ─────────────────────────────────────────────────────────────────────
-  # ul (unordered list)
+  # view_type = ul
   # ─────────────────────────────────────────────────────────────────────
     - ul_title|markup
         tag_name: h3
         children
         - content|text
-            text: Unordered list
+            text: view_type = ul
     - ul|decorator
         view_type: ul
         id: demo_ul
@@ -222,13 +222,13 @@ markup
             - title: Field #3
             - value: 
   # ─────────────────────────────────────────────────────────────────────
-  # dl (definition list)
+  # view_type = dl
   # ─────────────────────────────────────────────────────────────────────
     - dl_title|markup
         tag_name: h3
         children
         - content|text
-            text: Definition list
+            text: view_type = dl
     - dl|decorator
         view_type: dl
         id: demo_dl

@@ -118,7 +118,7 @@
   table[data-style~='compact']       td:first-child {padding-left:  17px}
   table[data-style~='compact']       td:last-child  {padding-right: 17px}
 
-  /* x-table (adaptive table) */
+  /* x-table (decorator 'view_type' = 'table-adaptive') */
 
   x-table                {display: table}
   x-table x-head         {display: table-header-group}

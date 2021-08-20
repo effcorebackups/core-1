@@ -19,7 +19,6 @@ translations
     - − the extension is not enabled by default: − пашырэнне ня ўключана па змаўчанні
     - action "%%_name" will be started: дзеянне "%%_name" будзе запушчана
     - action with rowid = "%%_rowid" will be started: дзеянне з rowid = "%%_rowid" будзе запушчана
-    - Adaptive table: Адаптыўная табліца
     - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: Пасля кожных 3-х рэгістрацый Вы будзеце атрымліваць паведамленне "Тэст не атрымаўся!" таму, што пасля кожнай 3-яй спробы ахоўны код (CAPTCHA) будзе зменены.
     - All releases: Усе выпускі
     - All types of messages you can see above.: Усе тыпы паведамленняў Вы можаце ўбачыць вышэй.
@@ -64,7 +63,6 @@ translations
     - Demonstration of selection of entities "demo_types": Дэманстрацыя выбаркі сутнасцяў "demo_types"
     - Description for messages: Апісанне для паведамленняў
     - Displaying the console will result in a %%_value increase in RAM consumption!: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value!
-    - DL table: DL табліца
     - Embedded elements: Убудаваныя элементы
     - ending: заканчэнне
     - Error message #%%_number.: Паведамленне пра памылку №%%_number.

@@ -135,7 +135,6 @@ translations
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decorator settings: Настройки оформления
-    - Definition list: Список определений
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - delete: удалить
     - Delete: Удалить
