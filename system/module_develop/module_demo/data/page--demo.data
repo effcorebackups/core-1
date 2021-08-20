@@ -8,8 +8,8 @@ pages
 >>>>>>>>>>>>>>>>>>>embedded/markup_dynamic|
 >>>>>>>>>>>>>>>>>>>embedded/decorators_static|
 >>>>>>>>>>>>>>>>>>>embedded/decorators_dynamic|
->>>>>>>>>>>>>>>>>>>embedded/trees(/.*|)|
 >>>>>>>>>>>>>>>>>>>embedded/selections|
+>>>>>>>>>>>>>>>>>>>embedded/trees(/.*|)|
 >>>>>>>>>>>>>>>>>>>embedded/messages|
 >>>>>>>>>>>>>>>>>>>embedded/canvas|
 >>>>>>>>>>>>>>>>>>>embedded/diagrams))|)$%
@@ -61,22 +61,22 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # markup
       # ─────────────────────────────────────────────────────────────────────
-      - block__demo_markup_static|block
+      - block__markup__demo_static|block
           title: Markup static
           title_is_visible: false
           attributes
-          - data-id: block__demo_markup_static
+          - data-id: block__markup__demo_static
           display
             check: page_args
             where: type
             match: %^embedded/markup_static$%
           type: link
           source: markup/demo/demo_markup_static
-      - block__demo_markup_dynamic|block
+      - block__markup__demo_dynamic|block
           title: Markup dynamic
           title_is_visible: false
           attributes
-          - data-id: block__demo_markup_dynamic
+          - data-id: block__markup__demo_dynamic
           display
             check: page_args
             where: type
@@ -86,10 +86,10 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # decorators
       # ─────────────────────────────────────────────────────────────────────
-      - block__demo_decorators_static|block
+      - block__markup__demo_decorator_static|block
           title: Decorators static
           attributes
-          - data-id: block__demo_decorators_static
+          - data-id: block__markup__demo_decorator_static
           - data-style: title-is-simple
           display
             check: page_args
@@ -97,10 +97,10 @@ pages
             match: %^embedded/decorators_static$%
           type: link
           source: markup/demo/demo_decorators_static
-      - block__demo_decorators_dynamic|block
+      - block__markup__demo_decorator_dynamic|block
           title: Decorators dynamic
           attributes
-          - data-id: block__demo_decorators_dynamic
+          - data-id: block__markup__demo_decorator_dynamic
           - data-style: title-is-simple
           display
             check: page_args
@@ -108,44 +108,6 @@ pages
             match: %^embedded/decorators_dynamic$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_decorators_dynamic
-      # ─────────────────────────────────────────────────────────────────────
-      # trees
-      # ─────────────────────────────────────────────────────────────────────
-      - block__demo_tree_via_decorator|block
-          title: Demonstration menu via decorator
-          title_is_visible: false
-          attributes
-          - data-id: block__demo_tree_via_decorator
-          display
-            check: page_args
-            where: type
-            match: %^embedded/trees(/.*|)$%
-          type: link
-          source: markup/demo/demo_tree_via_decorator
-      - block__demo_tree_sql|block
-          title: Demonstration menu SQL
-          title_is_visible: false
-          attributes
-          - data-id: block__demo_tree_sql
-          display
-            check: page_args
-            where: type
-            match: %^embedded/trees(/.*|)$%
-          type: code
-          source: \effcore\modules\menu\events_page::block_markup__tree_get
-          args
-          - instance_id: demo_sql
-      - block__demo_tree_nosql|block
-          title: Demonstration menu NoSQL
-          title_is_visible: false
-          attributes
-          - data-id: block__demo_tree_nosql
-          display
-            check: page_args
-            where: type
-            match: %^embedded/trees(/.*|)$%
-          type: link
-          source: trees/demo/demo_nosql
       # ─────────────────────────────────────────────────────────────────────
       # selections
       # ─────────────────────────────────────────────────────────────────────
@@ -219,20 +181,58 @@ pages
               - type: ASC
             - limit: 5
       # ─────────────────────────────────────────────────────────────────────
+      # trees
+      # ─────────────────────────────────────────────────────────────────────
+      - block__tree__demo_via_decorator|block
+          title: Demonstration menu via decorator
+          title_is_visible: false
+          attributes
+          - data-id: block__tree__demo_via_decorator
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: link
+          source: markup/demo/demo_tree_via_decorator
+      - block__tree_sql__demo|block
+          title: Demonstration menu SQL
+          title_is_visible: false
+          attributes
+          - data-id: block__tree_sql__demo
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: code
+          source: \effcore\modules\menu\events_page::block_markup__tree_get
+          args
+          - instance_id: demo_sql
+      - block__tree__demo_nosql|block
+          title: Demonstration menu NoSQL
+          title_is_visible: false
+          attributes
+          - data-id: block__tree__demo_nosql
+          display
+            check: page_args
+            where: type
+            match: %^embedded/trees(/.*|)$%
+          type: link
+          source: trees/demo/demo_nosql
+      # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
-      - block__demo_messages|block
+      - block__markup__demo_messages_code|block
           display
             check: page_args
             where: type
             match: %^embedded/messages$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_messages
-      - block__demo_messages_description|block
+      - block__markup__demo_messages_description|block
           title: Description for messages
           title_is_visible: false
           attributes
-          - data-id: block__demo_messages_description
+          - data-id: block__markup__demo_messages_description
           display
             check: page_args
             where: type
@@ -242,30 +242,30 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # other
       # ─────────────────────────────────────────────────────────────────────
-      - block__demo_canvas|block
+      - block__markup__demo_canvas|block
           title: Canvas
           attributes
-          - data-id: block__demo_canvas
+          - data-id: block__markup__demo_canvas
           display
             check: page_args
             where: type
             match: %^embedded/canvas$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_canvas
-      - block__demo_diagram_linear|block
+      - block__markup__demo_diagram_linear|block
           title: Linear diagram
           attributes
-          - data-id: block__demo_diagram_linear
+          - data-id: block__markup__demo_diagram_linear
           display
             check: page_args
             where: type
             match: %^embedded/diagrams$%
           type: code
           source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_linear
-      - block__demo_diagram_radial|block
+      - block__markup__demo_diagram_radial|block
           title: Radial diagram
           attributes
-          - data-id: block__demo_diagram_radial
+          - data-id: block__markup__demo_diagram_radial
           display
             check: page_args
             where: type

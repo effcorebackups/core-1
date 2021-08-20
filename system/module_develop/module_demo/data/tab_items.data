@@ -113,18 +113,18 @@ tab_items
     id_tab: demo
     action_name: embedded/decorators_dynamic
     title: Decorators dynamic
-- demo_trees|tab_item
-    id: demo_trees
-    id_parent: demo_embedded
-    id_tab: demo
-    action_name: embedded/trees
-    title: Trees
 - demo_selections|tab_item
     id: demo_selections
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/selections
     title: Selections
+- demo_trees|tab_item
+    id: demo_trees
+    id_parent: demo_embedded
+    id_tab: demo
+    action_name: embedded/trees
+    title: Trees
 - demo_messages|tab_item
     id: demo_messages
     id_parent: demo_embedded
