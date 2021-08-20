@@ -200,11 +200,14 @@ namespace effcore {
             if (count($c_filters)) {
               krsort($c_filters, SORT_NUMERIC);
               foreach ($c_filters as $c_filter) {
-                if ($c_filter === 'translate') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_translation = true; continue;}
-                if ($c_filter === 'tokenized') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value']); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_tokens      = true; continue;}
-                if (core::is_handler($c_filter) !== true &&      function_exists($c_filter)) $c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']);
-                if (core::is_handler($c_filter) === true && core::handler_exists($c_filter)) $c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']);
+                if ($c_filter === 'translate') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value'], false, false); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_translation = true; continue;}
+                if ($c_filter === 'tokenized') {if (is_string($c_row[$c_row_id]['value'])) $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value'], false, false); if ($c_row[$c_row_id]['value'] instanceof text) $c_row[$c_row_id]['value']->is_apply_tokens      = true; continue;}
+                if (core::is_handler($c_filter) !== true &&      function_exists($c_filter)) {$c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']); continue;}
+                if (core::is_handler($c_filter) === true && core::handler_exists($c_filter)) {$c_row[$c_row_id]['value'] = call_user_func($c_filter, $c_row[$c_row_id]['value']); continue;}
               }
+            }
+            if (is_string($c_row[$c_row_id]['value'])) {
+              $c_row[$c_row_id]['value'] = new text($c_row[$c_row_id]['value'], false, false);
             }
           }
           $decorator->data[] = $c_row;

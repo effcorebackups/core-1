@@ -229,16 +229,22 @@ translations
     - Type "%%_type" from code: Тип "%%_type" из кода
     - Type "%%_type": Тип "%%_type"
     - UML Diagram: UML-диаграмма
+    - unique value 1: уникальное значение 1
+    - unique value 2: уникальное значение 2
+    - unique value 3: уникальное значение 3
     - Usage frequency: Частота использования
     - validation_1: валидация_1
     - validation_2: валидация_2
     - validation_3: валидация_3
+    - value 1: значение 1
     - value 1.1: значение 1.1
     - value 1.2: значение 1.2
     - value 1.3: значение 1.3
+    - value 2: значение 2
     - value 2.1: значение 2.1
     - value 2.2: значение 2.2
     - value 2.3: значение 2.3
+    - value 3: значение 3
     - value 3.1: значение 3.1
     - value 3.2: значение 3.2
     - value 3.3: значение 3.3

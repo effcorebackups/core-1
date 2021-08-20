@@ -75,11 +75,17 @@ selections
         type: field
         entity_name: demo_constraints
         entity_field_name: f_unique
+        settings
+        - filters
+          - 400: translate
         weight: 380
     - demo_constraints.f_foreign
         type: field
         entity_name: demo_constraints
         entity_field_name: f_foreign
+        settings
+        - filters
+          - 400: translate
         weight: 360
 - instance_select-demo_data|selection
     id: instance_select-demo_data
@@ -139,11 +145,17 @@ selections
         type: field
         entity_name: demo_indexes
         entity_field_name: f_index_unique
+        settings
+        - filters
+          - 400: translate
         weight: 380
     - demo_indexes.f_index
         type: field
         entity_name: demo_indexes
         entity_field_name: f_index
+        settings
+        - filters
+          - 400: translate
         weight: 360
 - instance_select-demo_join|selection
     id: instance_select-demo_join
@@ -320,11 +332,17 @@ selections
         type: field
         entity_name: demo_constraints
         entity_field_name: f_unique
+        settings
+        - filters
+          - 400: translate
         weight: 380
     - demo_constraints.f_foreign
         type: field
         entity_name: demo_constraints
         entity_field_name: f_foreign
+        settings
+        - filters
+          - 400: translate
         weight: 360
 - instance_select_multiple-demo_data|selection
     id: instance_select_multiple-demo_data
@@ -374,11 +392,17 @@ selections
         type: field
         entity_name: demo_indexes
         entity_field_name: f_index_unique
+        settings
+        - filters
+          - 400: translate
         weight: 380
     - demo_indexes.f_index
         type: field
         entity_name: demo_indexes
         entity_field_name: f_index
+        settings
+        - filters
+          - 400: translate
         weight: 360
 - instance_select_multiple-demo_join|selection
     id: instance_select_multiple-demo_join
