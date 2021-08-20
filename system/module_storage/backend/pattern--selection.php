@@ -133,7 +133,7 @@ namespace effcore {
 
         $decorator = new decorator;
         $decorator->id = $this->id;
-        $decorator->_main_entity = $this->_main_entity;
+        $decorator->_selection = $this;
         $decorator->attribute_insert('data-main-entity', $this->_main_entity->name);
         foreach ($this->decorator_settings ?? [] as $c_key => $c_value)
           $decorator->                             {$c_key} = $c_value;
