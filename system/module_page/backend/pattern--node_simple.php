@@ -8,7 +8,7 @@ namespace effcore {
           class node_simple {
 
   public $template;
-  public $is_xml_attr_style = false;
+  public $is_xml_style = false;
   public $attributes = [];
   public $weight = 0;
   public $is_builded = false;
@@ -60,7 +60,7 @@ namespace effcore {
   }
 
   function render_attributes() {
-    if ($this->is_xml_attr_style)
+    if ($this->is_xml_style)
          return core::data_to_attr($this->attributes_select(), true);
     else return core::data_to_attr($this->attributes_select()      );
   }

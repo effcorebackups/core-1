@@ -8,6 +8,6 @@ namespace effcore {
           class markup_xml extends markup {
 
   public $template = 'markup_xml';
-  public $is_xml_attr_style = true;
+  public $is_xml_style = true;
 
 }}
