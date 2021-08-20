@@ -461,19 +461,43 @@ selections
           args
           - type: field
         weight: 400
-    - type_text
+    - type_text_with_translation
         type: text
         title|text
           text: Type "%%_type"
           args
-          - type: text
-        text:    item #%%_number
+          - type: text + translation
+        text: text with translation
+        settings
+        - filters
+          - 500: trim
+          - 400: translate
+        weight: 200
+    - type_text_with_translation_with_token
+        type: text
+        title|text
+          text: Type "%%_type"
+          args
+          - type: text + translation + token
+        text: text with translation and token %%_value
         settings
         - filters
           - 500: trim
           - 400: translate
           - 300: tokenized
-        weight: 380
+        weight: 180
+    - type_text_with_token
+        type: text
+        title|text
+          text: Type "%%_type"
+          args
+          - type: text + token
+        text: text with token %%_value
+        settings
+        - filters
+          - 500: trim
+          - 300: tokenized
+        weight: 160
 - demo_data_join|selection
     id: demo_data_join
     title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities

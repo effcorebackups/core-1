@@ -209,6 +209,8 @@ translations
     - Tab 2: Вкладка 2
     - Tab 3: Вкладка 3
     - Text for perform the tests: Текст для выполнения тестов
+    - text with translation and token %%_value: текст с переводом и токеном %%_value
+    - text with translation: текст с переводом
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
