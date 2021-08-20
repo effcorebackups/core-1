@@ -138,8 +138,8 @@
 
   /* block__demo_canvas */
 
-  [data-id='block__demo_canvas'] [data-block-content] {text-align: center}
-  [data-id='block__demo_canvas'] [data-block-content] svg {
+  [data-id='block__markup__demo_canvas'] [data-block-content] {text-align: center}
+  [data-id='block__markup__demo_canvas'] [data-block-content] svg {
     width: 100%;
     max-width: 525px;
     height: auto}
