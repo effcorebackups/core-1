@@ -257,7 +257,7 @@ namespace effcore {
   }
 
   function field_insert_text($row_id = null, $title = null, $text = '', $settings = [], $weight = 0) {
-    $row_id = $row_id ?: $entity_name.'.'.$entity_field_name;
+    $row_id = $row_id ?: 'text';
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type     = 'text';
     $this->fields[$row_id]->title    = $title;
