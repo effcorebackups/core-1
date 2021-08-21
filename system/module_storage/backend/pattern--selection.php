@@ -181,7 +181,7 @@ namespace effcore {
               case 'handler':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? null,
-                  'value' => call_user_func($c_field->handler, $c_row, $c_instance)
+                  'value' => call_user_func($c_field->handler, $c_row_id, $c_row, $c_instance, $c_field->settings ?? [])
                 ];
                 break;
               case 'checkbox':
@@ -287,15 +287,14 @@ namespace effcore {
     }
   }
 
-  function field_insert_handler($row_id = null, $title = null, $handler = '', $settings = []) {
+  function field_insert_handler($row_id = null, $title = null, $handler = '', $settings = [], $weight = 0) {
     $row_id = $row_id ?: 'handler';
     $this->fields[$row_id] = new \stdClass;
-    $this->fields[$row_id]->type    = 'handler';
-    $this->fields[$row_id]->title   = $title;
-    $this->fields[$row_id]->handler = $handler;
-    foreach ($settings as $c_key => $c_value) {
-      $this->fields[$row_id]->{$c_key} = $c_value;
-    }
+    $this->fields[$row_id]->type     = 'handler';
+    $this->fields[$row_id]->title    = $title;
+    $this->fields[$row_id]->handler  = $handler;
+    $this->fields[$row_id]->settings = $settings;
+    $this->fields[$row_id]->weight   = $weight;
   }
 
   function field_insert_checkbox($row_id = null, $title = null, $settings = [], $weight = 0) {

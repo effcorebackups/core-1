@@ -467,7 +467,7 @@ selections
           text: Type "%%_type"
           args
           - type: field
-        weight: 400
+        weight: 950
     - type_join_field
         type: join_field
         entity_name: demo_join
@@ -476,7 +476,7 @@ selections
           text: Type "%%_type"
           args
           - type: join_field
-        weight: 380
+        weight: 850
     - type_text_with_translation
         type: text
         title|text
@@ -488,7 +488,7 @@ selections
         - filters
           - 500: trim
           - 400: translate
-        weight: 200
+        weight: 750
     - type_text_with_translation_with_token
         type: text
         title|text
@@ -501,7 +501,7 @@ selections
           - 500: trim
           - 400: translate
           - 300: tokenized
-        weight: 180
+        weight: 650
     - type_text_with_token
         type: text
         title|text
@@ -513,7 +513,7 @@ selections
         - filters
           - 500: trim
           - 300: tokenized
-        weight: 160
+        weight: 550
     - type_markup
         type: markup
         title|text
@@ -525,7 +525,15 @@ selections
           children
           - data|text
               text: markup
-        weight: 130
+        weight: 450
+    - type_handler
+        type: handler
+        title|text
+          text: Type "%%_type"
+          args
+          - type: handler
+        handler: \effcore\modules\demo\events_selection::demo_handler
+        weight: 350
     - type_checkbox
         type: checkbox
         title|text
@@ -534,7 +542,7 @@ selections
           - type: checkbox
         settings
         - name: is_checked[]
-        weight: 100
+        weight: 250
 - demo_data_join|selection
     id: demo_data_join
     title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
