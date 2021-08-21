@@ -166,12 +166,6 @@ namespace effcore {
                   'value' => $c_field->text
                 ];
                 break;
-              case 'markup':
-                $c_row[$c_row_id] = [
-                  'title' => $c_field->title ?? null,
-                  'value' => $c_field->markup
-                ];
-                break;
               case 'code':
                 $c_row[$c_row_id] = [
                   'title' =>  $c_field->title ?? null,
@@ -264,17 +258,6 @@ namespace effcore {
     $this->fields[$row_id]->title    = $title;
     $this->fields[$row_id]->settings = $settings;
     $this->fields[$row_id]->weight   = $weight;
-  }
-
-  function field_insert_markup($row_id = null, $title = null, $markup = null, $settings = []) {
-    $row_id = $row_id ?: 'markup';
-    $this->fields[$row_id] = new \stdClass;
-    $this->fields[$row_id]->type   = 'markup';
-    $this->fields[$row_id]->title  = $title;
-    $this->fields[$row_id]->markup = $markup;
-    foreach ($settings as $c_key => $c_value) {
-      $this->fields[$row_id]->{$c_key} = $c_value;
-    }
   }
 
   function field_insert_code($row_id = null, $title = null, $code = null, $settings = []) {
