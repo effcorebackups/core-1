@@ -495,7 +495,7 @@ selections
           text: Type "%%_type"
           args
           - type: text + translation + token
-        text: text with translation and token %%_value
+        text: text with translation and token demo_text = "%%_demo_text"
         settings
         - filters
           - 500: trim
@@ -508,7 +508,7 @@ selections
           text: Type "%%_type"
           args
           - type: text + token
-        text: text with token %%_value
+        text: text with token demo_text = "%%_demo_text"
         settings
         - filters
           - 500: trim

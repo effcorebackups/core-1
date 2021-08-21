@@ -209,7 +209,7 @@ translations
     - Tab 2: Укладка 2
     - Tab 3: Укладка 3
     - Text for perform the tests: Тэкст для выканання тэстаў
-    - text with translation and token %%_value: тэкст з перакладам і токенам %%_value
+    - text with translation and token demo_text = "%%_demo_text": тэкст з перакладам і токенам demo_text = "%%_demo_text"
     - text with translation: тэкст з перакладам
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!

@@ -1,0 +1,4 @@
+tokens
+- demo_text
+    type: text
+    value: demo value from token
