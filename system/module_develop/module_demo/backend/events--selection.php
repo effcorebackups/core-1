@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
+          use \effcore\markup;
           use \effcore\text;
           abstract class events_selection {
 
@@ -14,6 +15,7 @@ namespace effcore\modules\demo {
     $selection->field_insert_text('type_text_with_translation_code', 'text with translation', new text('Type "%%_type" from code', ['type' => 'text + translation']), ['filters' => [500 => 'trim', 400 => 'translate']], 190);
     $selection->field_insert_text('type_text_with_translation_with_token_code', 'text with translation and token demo_text = "%%_demo_text"', new text('Type "%%_type" from code', ['type' => 'text + translation + token']), ['filters' => [500 => 'trim', 400 => 'translate', 300 => 'tokenized']], 170);
     $selection->field_insert_text('type_text_with_token_code', 'text with token demo_text = "%%_demo_text"', new text('Type "%%_type" from code', ['type' => 'text + token']), ['filters' => [500 => 'trim', 300 => 'tokenized']], 150);
+    $selection->field_insert_markup('type_markup_code', new text('Type "%%_type" from code', ['type' => 'markup']), new markup('span', [], 'markup'), [], 130);
     $selection->field_insert_checkbox('checkbox-select', new text('Type "%%_type" from code', ['type' => 'checkbox']), ['name' => 'is_checked[]'], 90);
   }
 

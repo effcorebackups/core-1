@@ -514,6 +514,18 @@ selections
           - 500: trim
           - 300: tokenized
         weight: 160
+    - type_markup
+        type: markup
+        title|text
+          text: Type "%%_type"
+          args
+          - type: markup
+        markup|markup
+          tag_name: span
+          children
+          - data|text
+              text: markup
+        weight: 130
     - type_checkbox
         type: checkbox
         title|text
