@@ -514,6 +514,15 @@ selections
           - 500: trim
           - 300: tokenized
         weight: 160
+    - type_checkbox
+        type: checkbox
+        title|text
+          text: Type "%%_type"
+          args
+          - type: checkbox
+        settings
+        - name: is_checked[]
+        weight: 100
 - demo_data_join|selection
     id: demo_data_join
     title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities

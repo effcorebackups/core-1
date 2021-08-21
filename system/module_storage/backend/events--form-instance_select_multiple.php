@@ -45,7 +45,7 @@ namespace effcore\modules\storage {
       $selection = selection::get('instance_select_multiple-'.$entity->name);
       if ($selection) {
         $selection = core::deep_clone($selection);
-        $selection->field_insert_checkbox(null, null, ['weight' => 500]);
+        $selection->field_insert_checkbox('checkbox-select', null, ['name' => 'is_checked[]'], 500);
         $selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
           $c_actions_list = new actions_list;
           if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');

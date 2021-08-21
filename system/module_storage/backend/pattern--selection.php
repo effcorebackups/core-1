@@ -166,16 +166,6 @@ namespace effcore {
                   'value' => $c_field->text
                 ];
                 break;
-              case 'checkbox':
-                $c_form_field = new field_checkbox;
-                $c_form_field->build();
-                $c_form_field->name_set('is_checked[]');
-                $c_form_field->value_set(implode('+', $c_instance->values_id_get()));
-                $c_row[$c_row_id] = [
-                  'title' => $c_field->title ?? null,
-                  'value' => $c_form_field
-                ];
-                break;
               case 'markup':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? null,
@@ -192,6 +182,16 @@ namespace effcore {
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? null,
                   'value' => call_user_func($c_field->handler, $c_row, $c_instance)
+                ];
+                break;
+              case 'checkbox':
+                $c_form_field = new field_checkbox;
+                $c_form_field->build();
+                $c_form_field->name_set($c_field->settings['name'] ?? 'is_checked[]');
+                $c_form_field->value_set(implode('+', $c_instance->values_id_get()));
+                $c_row[$c_row_id] = [
+                  'title' => $c_field->title ?? null,
+                  'value' => $c_form_field
                 ];
                 break;
             }
@@ -266,16 +266,6 @@ namespace effcore {
     $this->fields[$row_id]->weight   = $weight;
   }
 
-  function field_insert_checkbox($row_id = null, $title = null, $settings = []) {
-    $row_id = $row_id ?: 'checkbox';
-    $this->fields[$row_id] = new \stdClass;
-    $this->fields[$row_id]->type  = 'checkbox';
-    $this->fields[$row_id]->title = $title;
-    foreach ($settings as $c_key => $c_value) {
-      $this->fields[$row_id]->{$c_key} = $c_value;
-    }
-  }
-
   function field_insert_markup($row_id = null, $title = null, $markup = null, $settings = []) {
     $row_id = $row_id ?: 'markup';
     $this->fields[$row_id] = new \stdClass;
@@ -307,6 +297,15 @@ namespace effcore {
     foreach ($settings as $c_key => $c_value) {
       $this->fields[$row_id]->{$c_key} = $c_value;
     }
+  }
+
+  function field_insert_checkbox($row_id = null, $title = null, $settings = [], $weight = 0) {
+    $row_id = $row_id ?: 'checkbox';
+    $this->fields[$row_id] = new \stdClass;
+    $this->fields[$row_id]->type     = 'checkbox';
+    $this->fields[$row_id]->title    = $title;
+    $this->fields[$row_id]->settings = $settings;
+    $this->fields[$row_id]->weight   = $weight;
   }
 
   # ─────────────────────────────────────────────────────────────────────

@@ -104,9 +104,9 @@
   table tbody tr:nth-child(even) td {background-color: %%_color__table_row_even}
   table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
 
-  table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  table [data-cellid='checkbox'] x-field,
-  table [data-cellid='checkbox'] x-field input {margin: 0}
+  table [data-cellid^='checkbox'] {width: 1%; padding-right: 0}
+  table [data-cellid^='checkbox'] x-field,
+  table [data-cellid^='checkbox'] x-field input {margin: 0}
 
   table thead [data-cellid='actions'] {width: 1%}
   table tbody [data-cellid='actions']:empty::after {content: ''}
@@ -135,9 +135,9 @@
   x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color__table_row_even}
   x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
 
-  x-table [data-cellid='checkbox'] {width: 1%; padding-right: 0}
-  x-table [data-cellid='checkbox'] x-field,
-  x-table [data-cellid='checkbox'] x-field input {margin: 0}
+  x-table [data-cellid^='checkbox'] {width: 1%; padding-right: 0}
+  x-table [data-cellid^='checkbox'] x-field,
+  x-table [data-cellid^='checkbox'] x-field input {margin: 0}
 
   x-table x-head [data-cellid='actions'] {width: 1%}
   x-table x-body [data-cellid='actions'] {text-align: right}
@@ -173,8 +173,8 @@
     x-table x-cell x-title {margin-right: .5em}
     x-table x-cell x-title::after {content: ':'}
 
-    x-table x-body [data-cellid='checkbox'] {width: auto; padding-right: 15px}
-    x-table x-body [data-cellid='actions' ] {text-align: left}
+    x-table x-body [data-cellid^='checkbox'] {width: auto; padding-right: 15px}
+    x-table x-body [data-cellid='actions'] {text-align: left}
 
     x-table[data-view-type='table-dl'] {border-top: 5px solid %%_color__main}
     x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: auto; border-right: none}
