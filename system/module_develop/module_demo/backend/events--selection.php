@@ -18,6 +18,9 @@ namespace effcore\modules\demo {
     $selection->field_insert_markup     ('type_markup_code',                           new text('Type "%%_type" from code', ['type' => 'markup'                    ]), new markup('span', [], 'markup'),                             [                                                                    ], 400);
     $selection->field_insert_handler    ('type_handler_code',                          new text('Type "%%_type" from code', ['type' => 'handler'                   ]), '\\effcore\\modules\\demo\\events_selection::demo_handler',   [                                                                    ], 300);
     $selection->field_insert_checkbox   ('checkbox-select',                            new text('Type "%%_type" from code', ['type' => 'checkbox'                  ]),                                                               ['name' => 'is_checked[]'                                            ], 200);
+    $selection->field_insert_code       ('type_code_code',                             new text('Type "%%_type" from code', ['type' => 'code'                      ]), function ($c_row_id, $c_row, $c_instance, $settings = []) {
+      return new markup('span', [], 'code');
+    }, [], 100);
   }
 
   static function demo_handler($row_id, $row, $instance, $settings = []) {

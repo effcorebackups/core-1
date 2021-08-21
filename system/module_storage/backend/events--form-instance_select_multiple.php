@@ -46,13 +46,13 @@ namespace effcore\modules\storage {
       if ($selection) {
         $selection = core::deep_clone($selection);
         $selection->field_insert_checkbox('checkbox-select', null, ['name' => 'is_checked[]'], 500);
-        $selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
+        $selection->field_insert_code('actions', null, function ($c_row_id, $c_row, $c_instance, $settings = []) use ($form) {
           $c_actions_list = new actions_list;
           if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
           if ($form->_has_access_select                                   ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
           if ($form->_has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
           return $c_actions_list;
-        }, ['weight' => -500]);
+        }, [], -500);
         $selection->build();
         $form->_selection = $selection;
         $form->child_select('data')->child_insert($selection, 'selection');

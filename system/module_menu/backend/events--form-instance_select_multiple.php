@@ -30,7 +30,7 @@ namespace effcore\modules\menu {
           'operator'   => '=',
           'id_tree_!v' => $form->category_id];
       # $c_row 'actions'
-        $form->_selection->field_insert_code('actions', null, function ($c_row, $c_instance) use ($form) {
+        $form->_selection->field_insert_code('actions', null, function ($c_row_id, $c_row, $c_instance, $settings = []) use ($form) {
           $c_actions_list = new actions_list;
           if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
           if ($form->_has_access_select                                   ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.url::back_part_make(), 'select');
@@ -38,7 +38,7 @@ namespace effcore\modules\menu {
           return $c_actions_list;
         });
       # $c_row 'extra'
-        $form->_selection->field_insert_code('extra', null, function ($c_row, $c_instance) {
+        $form->_selection->field_insert_code('extra', null, function ($c_row_id, $c_row, $c_instance, $settings = []) {
           $c_hidden_parent = new field_hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-type' => 'parent']);
           $c_hidden_weight = new field_hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-type' => 'weight']);
           return new node([], [

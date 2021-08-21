@@ -73,12 +73,12 @@ namespace effcore\modules\storage {
             $has_access_delete = access::check($entity->access_delete);
             if ($has_access_update ||
                 $has_access_delete) {
-              $selection->field_insert_code('actions', 'Actions', function ($c_row, $c_instance) use ($has_access_update, $has_access_delete) {
+              $selection->field_insert_code('actions', 'Actions', function ($c_row_id, $c_row, $c_instance, $settings = []) use ($has_access_update, $has_access_delete) {
                 $c_actions_list = new actions_list;
                 if ($has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.url::back_part_make(), 'delete');
                 if ($has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.url::back_part_make(), 'update');
                 return $c_actions_list;
-              }, ['weight' => -500]);
+              }, [], -500);
             }
             $selection->build();
             return $selection;
