@@ -114,7 +114,7 @@ namespace effcore {
     $selection->template = 'content';
     $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
     foreach ($entity->fields as $c_name => $c_field)
-      $selection->field_insert_entity(null, $entity->name, $c_name, $c_field->title ?? null, $settings[$c_name] ?? [], ($c_weight = $c_weight - 20));
+      $selection->field_insert_entity(null, $c_field->title ?? null, $entity->name, $c_name, $settings[$c_name] ?? [], ($c_weight = $c_weight - 20));
     return $selection;
   }
 

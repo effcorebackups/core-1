@@ -234,13 +234,13 @@ namespace effcore {
   # custom fields
   # ─────────────────────────────────────────────────────────────────────
 
-  function field_insert_entity($row_id = null, $entity_name = '', $entity_field_name = '', $title = null, $settings = [], $weight = 0) {
+  function field_insert_entity($row_id = null, $title = null, $entity_name = '', $entity_field_name = '', $settings = [], $weight = 0) {
     $row_id = $row_id ?: $entity_name.'.'.$entity_field_name;
     $this->fields[$row_id] = new \stdClass;
     $this->fields[$row_id]->type              = 'field';
+    $this->fields[$row_id]->title             = $title;
     $this->fields[$row_id]->entity_name       = $entity_name;
     $this->fields[$row_id]->entity_field_name = $entity_field_name;
-    $this->fields[$row_id]->title             = $title;
     $this->fields[$row_id]->settings          = $settings;
     $this->fields[$row_id]->weight            = $weight;
   }
