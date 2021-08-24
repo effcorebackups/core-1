@@ -284,84 +284,89 @@ namespace effcore {
   static function text_to_data($data, $file = null) {
     $result = new \stdClass;
     $p = [-1 => &$result];
-    $postconstructor_objects = [];
-    $postinit_objects        = [];
-    $postparse_objects       = [];
+    $post_cnst_objects = [];
+    $post_init_objects = [];
+    $post_pars_objects = [];
     $line_number = 0;
     $data = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $data); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
     $data = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $data); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
-    $data_lines = preg_split('%'.cr.nl.'|'.cr.'|'.nl.'%S', $data);
-    foreach ($data_lines as $c_line) {
+    $c_line = strtok($data, cr.nl);
+    while ($c_line !== false) {
       $line_number++;
-      if (strpos(ltrim($c_line, ' '), '#') === 0) continue; # skip comments
-      $c_line = str_replace(a0, nl, $c_line); # convert 'text'.'\0'.'text' to 'text'.'\n'.'text'
-      $matches = [];
-      preg_match('%^(?<indent>[ ]*)'.
-                   '(?<prefix>- |)'.
-                   '(?<name>[^\t].*?)'.
-                   '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
-                   '(?<value>.*)%sS', $c_line, $matches);
-      if (array_key_exists('name', $matches)) {
-        $c_prefix    = $matches['prefix'];
-        $c_depth     = intval(strlen($matches['indent'].$c_prefix) / 2);
-        $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
-        $c_delimiter = $matches['delimiter'];
-        $c_value     = $matches['value'];
-        if ($c_name === '=') $c_name = $c_value;
-      # define each value
-        if ($c_delimiter === ': ') {
-          $c_value = core::string_to_data($c_value);
-        } else {
-          if     ($c_value === '_empty_array' ) $c_value = [];
-          elseif ($c_value === '_string_true' ) $c_value = 'true';
-          elseif ($c_value === '_string_false') $c_value = 'false';
-          else {
-            $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
-            if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
-              message::insert(new text_multiline(['Class "%%_class" does not exist!', 'The class name has been changed to "stdClass".'], ['class' => $c_class_name]), 'error');
-              $c_class_name = 'stdClass';
+      if (strlen(ltrim($c_line, ' ')) &&
+                 ltrim($c_line, ' ')[0] !== '#') {
+        $matches = [];
+        preg_match('%^(?<indent>[ ]*)'.
+                     '(?<prefix>- |)'.
+                     '(?<name>[^\t].*?)'.
+                     '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
+                     '(?<value>.*)%sS', str_replace(a0, nl, $c_line) /* convert 'text'.'\0'.'text' to 'text'.'\n'.'text' */, $matches);
+        if (array_key_exists('name', $matches)) {
+          $c_prefix    = $matches['prefix'];
+          $c_depth     = intval(strlen($matches['indent'].$c_prefix) / 2);
+          $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+          $c_delimiter = $matches['delimiter'];
+          $c_value     = $matches['value'];
+          if ($c_name === '=') $c_name = $c_value;
+        # define each value
+          if ($c_delimiter === ': ') {
+            $c_value = core::string_to_data($c_value);
+          } else {
+            if     ($c_value === '_empty_array' ) $c_value = [];
+            elseif ($c_value === '_string_true' ) $c_value = 'true';
+            elseif ($c_value === '_string_false') $c_value = 'false';
+            else {
+              $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
+              if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
+                message::insert(new text_multiline(['Class "%%_class" does not exist!', 'The class name has been changed to "stdClass".'], ['class' => $c_class_name]), 'error');
+                $c_class_name = 'stdClass';
+              }
+              $c_reflection = new \ReflectionClass($c_class_name);
+              $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
+              $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
+              $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
+              if ($c_is_postconstructor)
+                   $c_value = core::class_get_new_instance($c_class_name);
+              else $c_value = core::class_get_new_instance($c_class_name, [], true);
+              if ($c_is_postconstructor) $post_cnst_objects[] = $c_value;
+              if ($c_is_postinit       ) $post_init_objects[] = $c_value;
+              if ($c_is_postparse      ) $post_pars_objects[] = $c_value;
             }
-            $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
-            $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
-            $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
-            if ($c_is_postconstructor)
-                 $c_value = core::class_get_new_instance($c_class_name);
-            else $c_value = core::class_get_new_instance($c_class_name, [], true);
-            if ($c_is_postconstructor) $postconstructor_objects[] = $c_value;
-            if ($c_is_postinit       ) $postinit_objects       [] = $c_value;
-            if ($c_is_postparse      ) $postparse_objects      [] = $c_value;
           }
-        }
-      # some prevention:
-      # ┌──────┬──────────────────────────────────┬─────────────────────────────┐
-      # │ line │ real class in pattern-*.php      │ object definition in *.data │
-      # ├──────┼──────────────────────────────────┼─────────────────────────────┤
-      # │    1 │ $some_object = new some_class;   ←  some_object|some_class     │
-      # │    2 │ $some_object->prop_as_array = [  ←    prop_as_array            │ ← !!! the right side is the empty object but in the real class this property is an array
-      # │    3 │   'item' => 'value'; …           ←    - item: value            │
-      # └──────┴──────────────────────────────────┴─────────────────────────────┘
-        $c_destination = &core::arrobj_select_value($p[$c_depth-1], $c_name);
-        if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
+        # some prevention:
+        # ┌──────┬──────────────────────────────────┬─────────────────────────────┐
+        # │ line │ real class in pattern-*.php      │ object definition in *.data │
+        # ├──────┼──────────────────────────────────┼─────────────────────────────┤
+        # │    1 │ $some_object = new some_class;   ←  some_object|some_class     │
+        # │    2 │ $some_object->prop_as_array = [  ←    prop_as_array            │ ← !!! the right side is the empty object but in the real class this property is an array
+        # │    3 │   'item' => 'value'; …           ←    - item: value            │
+        # └──────┴──────────────────────────────────┴─────────────────────────────┘
+          $c_destination = &core::arrobj_select_value($p[$c_depth-1], $c_name);
+          if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
+            $p[$c_depth] = &$c_destination;
+            $c_line = strtok(cr.nl);
+            continue;
+          }
+        # insert new item to tree
+          core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
           $p[$c_depth] = &$c_destination;
-          continue;
+        # convert parent item to array
+          if ($c_prefix === '- ' && !is_array($p[$c_depth-1])) {
+            $p[$c_depth-1] = (array)$p[$c_depth-1];
+          }
+
+        } else {
+          if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
+          else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
         }
-      # insert new item to tree
-        core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
-        $p[$c_depth] = &$c_destination;
-      # convert parent item to array
-        if ($c_prefix === '- ' && !is_array($p[$c_depth-1])) {
-          $p[$c_depth-1] = (array)$p[$c_depth-1];
-        }
-      } else {
-        if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Check that there are no empty lines.', 'Check that there is no indent with tabulation characters.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
-        else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Check that there are no empty lines.', 'Check that there is no indent with tabulation characters.', 'Your code editor may not support settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
       }
+      $c_line = strtok(cr.nl);
     }
   # call the interface dependent functions
-    foreach ($postconstructor_objects as $c_object) $c_object->__construct();
-    foreach ($postinit_objects        as $c_object) $c_object->_postinit  ();
-    foreach ($postparse_objects       as $c_object) $c_object->_postparse ();
+    foreach ($post_cnst_objects as $c_object) $c_object->__construct();
+    foreach ($post_init_objects as $c_object) $c_object->_postinit  ();
+    foreach ($post_pars_objects as $c_object) $c_object->_postparse ();
+  # return result
     return $result;
   }
 
