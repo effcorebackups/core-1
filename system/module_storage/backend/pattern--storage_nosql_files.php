@@ -126,7 +126,7 @@ namespace effcore {
         if ($c_value instanceof has_external_cache) {
           $c_cache_id = 'data--'.$c_catalog_name.'-'.str_replace('/', '-', $c_dpath);
           $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::not_external_properties_get());
-          cache::update($c_cache_id, $c_value);
+          $result&= cache::update($c_cache_id, $c_value);
           $c_recursive_values[$c_dpath] = new external_cache(
             $c_cache_id,
             $c_not_external_properties
@@ -354,7 +354,6 @@ namespace effcore {
           if ($c_prefix === '- ' && !is_array($p[$c_depth-1])) {
             $p[$c_depth-1] = (array)$p[$c_depth-1];
           }
-
         } else {
           if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
           else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
