@@ -304,8 +304,10 @@ namespace effcore {
         if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
-      default:
-        $result.= $prefix.' = '.static::data_to_string($data).';'.nl;
+      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "\0..\37'\\").'\';'.nl; break;
+      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;              break;
+      case 'NULL'   : $result.= $prefix.' = null;'.nl;                                        break;
+      default       : $result.= $prefix.' = '.(string)$data.';'.nl;
     }
     return $result;
   }
