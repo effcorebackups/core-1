@@ -25,7 +25,7 @@ namespace effcore\modules\user {
     }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong user nickname', 'go to <a href="/">front page</a>'], [], br.br));
   }
 
-  static function on_show_user_roles($c_row, $c_instance) {
+  static function on_show_user_roles($c_row_id, $c_row, $c_instance, $settings = []) {
     $roles_with_title = [];
     $roles = role::get_all();
     $roles_by_user = user::related_roles_select($c_instance->id);
