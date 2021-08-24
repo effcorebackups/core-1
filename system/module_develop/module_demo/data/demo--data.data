@@ -11,6 +11,7 @@ demo_data
   demo_boolean: true
   demo_string_empty: 
   demo_string: text
+  demo_string_with_quotes: text with 'quotes'
 # ─────────────────────────────────────────────────────────────────────
 # compound types
 # ─────────────────────────────────────────────────────────────────────
