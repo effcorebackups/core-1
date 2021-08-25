@@ -310,7 +310,10 @@ namespace effcore {
           if ($c_name === '=') $c_name = $c_value;
         # define each value
           if ($c_delimiter === ': ') {
-            $c_value = core::string_to_data($c_value);
+            if (is_numeric($c_value)) $c_value = $c_value += 0;
+            if ($c_value === 'true' ) $c_value = true;
+            if ($c_value === 'false') $c_value = false;
+            if ($c_value === 'null' ) $c_value = null;
           } else {
             if     ($c_value === '_empty_array' ) $c_value = [];
             elseif ($c_value === '_string_true' ) $c_value = 'true';
