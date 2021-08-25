@@ -226,8 +226,8 @@ namespace effcore {
   static function string_to_data($string) {
   # ─────────────────────────────────────────────────────────────────────
   # hexadecimal notation is not allowed (example: '0x123')
-  # octal notation is not allowed (example: '0123')
-  # binary notation is not allowed (example: '0b101')
+  #       octal notation is not allowed (example: '0123')
+  #      binary notation is not allowed (example: '0b101')
   # ─────────────────────────────────────────────────────────────────────
     if (is_numeric($string)) return $string += 0;
     if ($string === 'true' ) return true;
@@ -253,22 +253,6 @@ namespace effcore {
                   '['.implode(', ', $expressions).']';
       default: return (string)$data;
     }
-  }
-
-  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
-    $result = [];
-    foreach ((array)$data as $c_name => $c_value) {
-      if ($is_xml_style && $c_value === true) $c_value = $c_name;
-      switch (gettype($c_value)) {
-        case 'NULL'   :                                                                                                                                                                                            break;
-        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                             break;
-        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
-        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
-        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
-      }
-    }
-    if ($join_part) return implode($join_part, $result);
-    else            return                     $result;
   }
 
   static function data_to_code($data, $prefix = '', $array_defaults = null) {
@@ -310,6 +294,22 @@ namespace effcore {
       default       : $result.= $prefix.' = '.(string)$data.';'.nl;
     }
     return $result;
+  }
+
+  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
+    $result = [];
+    foreach ((array)$data as $c_name => $c_value) {
+      if ($is_xml_style && $c_value === true) $c_value = $c_name;
+      switch (gettype($c_value)) {
+        case 'NULL'   :                                                                                                                                                                                            break;
+        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                             break;
+        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
+        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
+        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
+      }
+    }
+    if ($join_part) return implode($join_part, $result);
+    else            return                     $result;
   }
 
   static function data_serialize($data, $is_effective = true) {
