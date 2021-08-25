@@ -283,7 +283,7 @@ namespace effcore {
 
   static function text_to_data($data, $file = null) {
     $result = new \stdClass;
-    $p = [-1 => &$result];
+    $pointers = [-1 => &$result];
     $post_cnst_objects = [];
     $post_init_objects = [];
     $post_pars_objects = [];
@@ -346,18 +346,18 @@ namespace effcore {
         # │    2 │   property           │                          →   $object->property = new \stdClass; │ $object->property = [    │
         # │    3 │   - item: value      │                          │                                      →   'item' => 'value';     │
         # └──────┴──────────────────────┴──────────────────────────┴──────────────────────────────────────┴──────────────────────────┘
-          $c_destination = &core::arrobj_select_value($p[$c_depth-1], $c_name);
+          $c_destination = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
           if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
-            $p[$c_depth] = &$c_destination;
+            $pointers[$c_depth] = &$c_destination;
             $c_line = strtok(cr.nl);
             continue;
           }
         # insert new item to tree
-          core::arrobj_insert_value($p[$c_depth-1], $c_name, $c_value);
-          $p[$c_depth] = &$c_destination;
+          core::arrobj_insert_value($pointers[$c_depth-1], $c_name, $c_value);
+          $pointers[$c_depth] = &$c_destination;
         # convert parent item to array
-          if ($c_prefix === '- ' && !is_array($p[$c_depth-1])) {
-            $p[$c_depth-1] = (array)$p[$c_depth-1];
+          if ($c_prefix === '- ' && !is_array($pointers[$c_depth-1])) {
+            $pointers[$c_depth-1] = (array)$pointers[$c_depth-1];
           }
         } else {
           if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
