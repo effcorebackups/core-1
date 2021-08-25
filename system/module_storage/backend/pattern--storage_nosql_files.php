@@ -281,16 +281,16 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  static function text_to_data($data, $file = null) {
-    $result = new \stdClass;
-    $pointers = [-1 => &$result];
+  static function text_to_data($text, $file = null) {
+    $data = new \stdClass;
+    $pointers = [-1 => &$data];
     $post_cnst_objects = [];
     $post_init_objects = [];
     $post_pars_objects = [];
     $line_number = 0;
-    $data = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $data); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
-    $data = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $data); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
-    $c_line = strtok($data, cr.nl);
+    $text = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $text); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
+    $text = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $text); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
+    $c_line = strtok($text, cr.nl);
     while ($c_line !== false) {
       $line_number++;
       if (strlen(ltrim($c_line, ' ')) &&
@@ -371,7 +371,7 @@ namespace effcore {
     foreach ($post_init_objects as $c_object) $c_object->_postinit  ();
     foreach ($post_pars_objects as $c_object) $c_object->_postparse ();
   # return result
-    return $result;
+    return $data;
   }
 
 }}
