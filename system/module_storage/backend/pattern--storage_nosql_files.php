@@ -285,8 +285,9 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  const ERR_CODE_WRONG_SYNTAX       = 0b00000001;
-  const ERR_CODE_UNKNOWN_CLASS_NAME = 0b00000010;
+  const ERR_CODE_WRONG_SYNTAX         = 0b00000001;
+  const ERR_CODE_CLASS_WAS_NOT_FOUND  = 0b00000010;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND = 0b00000011;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
@@ -297,14 +298,14 @@ namespace effcore {
             'File: %%_file',
             'Line: %%_line',
             'Wrong syntax.',
-            'Make sure there are no tabs indented.',
+            'Make sure there are no leading tab.',
             'Make sure your editor supports the settings from the ".editorconfig" file.',
             'More information can be found in the file "readme/develop.md".'], [
             'func' => 'text_to_data',
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
-        case static::ERR_CODE_UNKNOWN_CLASS_NAME:
+        case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
           message::insert(new text_multiline([
             'Function: %%_func',
             'File: %%_file',
@@ -315,6 +316,16 @@ namespace effcore {
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a',
             'classname' => $c_error->args['classname']]), 'error');
+          break;
+        case static::ERR_CODE_EMPTY_LINE_WAS_FOUND:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'An empty line was found.'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
           break;
       }
     }
@@ -333,8 +344,13 @@ namespace effcore {
     $c_line = strtok($text, cr.nl);
     while ($c_line !== false) {
       $line_number++;
-      if (strlen(ltrim($c_line, ' ')) &&
-                 ltrim($c_line, ' ')[0] !== '#') {
+      if (strlen(ltrim($c_line, ' ')) === 0) {
+        $errors[]= (object)[
+          'code' => static::ERR_CODE_EMPTY_LINE_WAS_FOUND,
+          'line' => $line_number];
+        $c_line = strtok(cr.nl);
+        continue;
+      } elseif (ltrim($c_line, ' ')[0] !== '#') {
         $matches = [];
         preg_match('%^(?<indent>[ ]*)'.
                      '(?<prefix>- |)'.
@@ -362,7 +378,7 @@ namespace effcore {
               $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
               if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
                 $errors[]= (object)[
-                  'code' => static::ERR_CODE_UNKNOWN_CLASS_NAME,
+                  'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
                   'line' => $line_number,
                   'args' => ['classname' => $c_class_name]];
                 $c_class_name = 'stdClass';
