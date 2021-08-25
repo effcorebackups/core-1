@@ -336,14 +336,16 @@ namespace effcore {
               if ($c_is_postparse      ) $post_pars_objects[] = $c_value;
             }
           }
-        # some prevention:
-        # ┌──────┬──────────────────────────────────┬─────────────────────────────┐
-        # │ line │ real class in pattern-*.php      │ object definition in *.data │
-        # ├──────┼──────────────────────────────────┼─────────────────────────────┤
-        # │    1 │ $some_object = new some_class;   ←  some_object|some_class     │
-        # │    2 │ $some_object->prop_as_array = [  ←    prop_as_array            │ ← !!! the right side is the empty object but in the real class this property is an array
-        # │    3 │   'item' => 'value'; …           ←    - item: value            │
-        # └──────┴──────────────────────────────────┴─────────────────────────────┘
+        # note: on line 2 'property' was recognized as an empty object, but after reading line 3, 'property' must be converted to an array
+        # ┌──────┬──────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────┐
+        # │      │                      │                                real class in pattern-*.php                                 │
+        # │ line │ definition in *.data ├──────────────────────────┬──────────────────────────────────────┬──────────────────────────┤
+        # │      │                      │ read line #1             │ read line #2                         │ read line #3             │
+        # ╞══════╪══════════════════════╪══════════════════════════╪══════════════════════════════════════╪══════════════════════════╡
+        # │    1 │ object|classname     → $object = new classname; │ $object = new classname;             │ $object = new classname; │
+        # │    2 │   property           │                          →   $object->property = new \stdClass; │ $object->property = [    │
+        # │    3 │   - item: value      │                          │                                      →   'item' => 'value';     │
+        # └──────┴──────────────────────┴──────────────────────────┴──────────────────────────────────────┴──────────────────────────┘
           $c_destination = &core::arrobj_select_value($p[$c_depth-1], $c_name);
           if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
             $p[$c_depth] = &$c_destination;
