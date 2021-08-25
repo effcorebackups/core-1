@@ -238,7 +238,7 @@ namespace effcore {
 
   static function data_to_string($data) {
     switch (gettype($data)) {
-      case 'string' : return '\''.addcslashes($data, "\0..\37'\\").'\'';
+      case 'string' : return '\''.addcslashes($data, "'\\").'\'';
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
       case 'object' :
@@ -282,7 +282,7 @@ namespace effcore {
                          $array_defaults[$c_key] === $c_value) continue;
             $result.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
                                                                  '['.$c_key.']' :
-                                                   '[\''.addcslashes($c_key, "\0..\37'\\").'\']'));
+                                                   '[\''.addcslashes($c_key, "'\\").'\']'));
           }
         } else {
           $result.= $prefix.' = [];'.nl;
@@ -295,7 +295,7 @@ namespace effcore {
         $is_postconstructor = $reflection->implementsInterface('\\effcore\\has_postconstructor');
         $is_postinit        = $reflection->implementsInterface('\\effcore\\has_postinit'       );
         if ($is_postconstructor)
-             $result = $prefix.' = core::class_get_new_instance(\''.addslashes('\\'.$class_name).'\');'.nl;
+             $result = $prefix.' = core::class_get_new_instance(\''.addcslashes('\\'.$class_name, "'\\").'\');'.nl;
         else $result = $prefix.' = new \\'.$class_name.';'.nl;
         foreach ($data as $c_key => $c_value) {
           if (array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
@@ -304,9 +304,9 @@ namespace effcore {
         if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
-      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "\0..\37'\\").'\';'.nl; break;
-      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;              break;
-      case 'NULL'   : $result.= $prefix.' = null;'.nl;                                        break;
+      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").'\';'.nl; break;
+      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;       break;
+      case 'NULL'   : $result.= $prefix.' = null;'.nl;                                 break;
       default       : $result.= $prefix.' = '.(string)$data.';'.nl;
     }
     return $result;
