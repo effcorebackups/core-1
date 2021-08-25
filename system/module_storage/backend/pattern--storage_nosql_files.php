@@ -167,7 +167,9 @@ namespace effcore {
              file::select_recursive(dir_system,  '%^.*/bundle\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/module\\.data$%') +
              file::select_recursive(dir_modules, '%^.*/bundle\\.data$%') as $c_file) {
-      $c_data = static::text_to_data($c_file->load(), $c_file);
+      $c_text_to_data_result = static::text_to_data($c_file->load());
+      static::text_to_data_show_errors($c_text_to_data_result->errors, $c_file);
+      $c_data = $c_text_to_data_result->data;
       $c_path_relative = $c_file->path_get_relative();
       $c_dirs_relative = $c_file->dirs_get_relative();
       $parsed[$c_path_relative] = new \stdClass;
@@ -224,7 +226,9 @@ namespace effcore {
     }
   # parse each collected file
     foreach ($files as $c_path_relative => $c_file) {
-      $c_data = static::text_to_data($c_file->load(), $c_file);
+      $c_text_to_data_result = static::text_to_data($c_file->load());
+      static::text_to_data_show_errors($c_text_to_data_result->errors, $c_file);
+      $c_data = $c_text_to_data_result->data;
       $parsed[$c_path_relative] = new \stdClass;
       $parsed[$c_path_relative]->file = $c_file;
       $parsed[$c_path_relative]->data = $c_data;
@@ -281,7 +285,43 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  static function text_to_data($text, $file = null) {
+  const ERR_CODE_WRONG_SYNTAX       = 0b00000001;
+  const ERR_CODE_UNKNOWN_CLASS_NAME = 0b00000010;
+
+  static function text_to_data_show_errors($errors = [], $file = null) {
+    foreach ($errors as $c_error) {
+      switch ($c_error->code) {
+        case static::ERR_CODE_WRONG_SYNTAX:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Wrong syntax.',
+            'Make sure there are no tabs indented.',
+            'Make sure your editor supports the settings from the ".editorconfig" file.',
+            'More information can be found in the file "readme/develop.md".'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
+          break;
+        case static::ERR_CODE_UNKNOWN_CLASS_NAME:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Class "%%_classname" was not found.',
+            'The class name has been changed to "stdClass".'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a',
+            'classname' => $c_error->args['classname']]), 'error');
+          break;
+      }
+    }
+  }
+
+  static function text_to_data($text) {
+    $errors = [];
     $data = new \stdClass;
     $pointers = [-1 => &$data];
     $post_cnst_objects = [];
@@ -321,7 +361,10 @@ namespace effcore {
             else {
               $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
               if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
-                message::insert(new text_multiline(['Class "%%_class" does not exist!', 'The class name has been changed to "stdClass".'], ['class' => $c_class_name]), 'error');
+                $errors[]= (object)[
+                  'code' => static::ERR_CODE_UNKNOWN_CLASS_NAME,
+                  'line' => $line_number,
+                  'args' => ['classname' => $c_class_name]];
                 $c_class_name = 'stdClass';
               }
               $c_reflection = new \ReflectionClass($c_class_name);
@@ -360,8 +403,10 @@ namespace effcore {
             $pointers[$c_depth-1] = (array)$pointers[$c_depth-1];
           }
         } else {
-          if ($file) message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line', 'File relative path: %%_path', 'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number, 'path' => $file->path_get_relative()]), 'error');
-          else       message::insert(new text_multiline(['Function: %%_func', 'Wrong syntax in data at line: %%_line',                                'Make sure there are no tabs indented.', 'Make sure your editor supports the settings from the ".editorconfig" file.', 'More information can be found in the file "readme/develop.md".'], ['func' => 'text_to_data', 'line' => $line_number                                      ]), 'error');
+          $errors[]= (object)[
+            'code' => static::ERR_CODE_WRONG_SYNTAX,
+            'line' => $line_number
+          ];
         }
       }
       $c_line = strtok(cr.nl);
@@ -371,7 +416,10 @@ namespace effcore {
     foreach ($post_init_objects as $c_object) $c_object->_postinit  ();
     foreach ($post_pars_objects as $c_object) $c_object->_postparse ();
   # return result
-    return $data;
+    return (object)[
+      'data'   => $data,
+      'errors' => $errors
+    ];
   }
 
 }}
