@@ -223,25 +223,6 @@ namespace effcore {
   ### functionality for data ###
   ##############################
 
-  static function data_to_string($data) {
-    switch (gettype($data)) {
-      case 'string' : return '\''.addcslashes($data, "'\\").'\'';
-      case 'boolean': return $data ? 'true' : 'false';
-      case 'NULL'   : return 'null';
-      case 'object' :
-      case 'array'  :
-        $expressions = [];
-        foreach ($data as $c_key => $c_value) {
-          $expressions[] = static::data_to_string($c_key).' => '.
-                           static::data_to_string($c_value);
-        }
-        return gettype($data) === 'object' ?
-          '(object)['.implode(', ', $expressions).']' :
-                  '['.implode(', ', $expressions).']';
-      default: return (string)$data;
-    }
-  }
-
   static function data_to_code($data, $prefix = '', $array_defaults = null) {
     $result = '';
     switch (gettype($data)) {
@@ -297,6 +278,25 @@ namespace effcore {
     }
     if ($join_part) return implode($join_part, $result);
     else            return                     $result;
+  }
+
+  static function data_stringify($data) {
+    switch (gettype($data)) {
+      case 'string' : return '\''.addcslashes($data, "'\\").'\'';
+      case 'boolean': return $data ? 'true' : 'false';
+      case 'NULL'   : return 'null';
+      case 'object' :
+      case 'array'  :
+        $expressions = [];
+        foreach ($data as $c_key => $c_value) {
+          $expressions[] = static::data_stringify($c_key).' => '.
+                           static::data_stringify($c_value);
+        }
+        return gettype($data) === 'object' ?
+          '(object)['.implode(', ', $expressions).']' :
+                  '['.implode(', ', $expressions).']';
+      default: return (string)$data;
+    }
   }
 
   static function data_serialize($data, $is_effective = true) {
