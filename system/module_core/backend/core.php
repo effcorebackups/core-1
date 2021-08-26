@@ -267,7 +267,9 @@ namespace effcore {
         else $result = $prefix.' = new \\'.$class_name.';'.nl;
         foreach ($data as $c_key => $c_value) {
           if (array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
-          $result.= static::data_to_code($c_value, $prefix.'->'.$c_key, $defaults[$c_key] ?? null);
+          if (static::validate_property_name($c_key))
+               $result.= static::data_to_code($c_value, $prefix.'->'.                 $c_key,              $defaults[$c_key] ?? null);
+          else $result.= static::data_to_code($c_value, $prefix.'->'."{'".addcslashes($c_key, "'\\")."'}", $defaults[$c_key] ?? null);
         }
         if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
@@ -624,6 +626,10 @@ namespace effcore {
 
   static function validate_id($value) {
     return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.field_id_text::characters_allowed.']+$%']]);
+  }
+
+  static function validate_property_name($value) {
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z0-9_]+$%']]);
   }
 
   static function validate_ip_v4($value) {
