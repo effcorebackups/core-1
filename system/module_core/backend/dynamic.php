@@ -13,6 +13,7 @@ namespace effcore {
   static public $data = [];
 
   static function get_file_by_name($name, $sub_dirs = '') {
+    $name = core::sanitize_file_part($name, 'a-zA-Z0-9_\\-\\.', 220);
     return new file(static::directory.$sub_dirs.$name.'.php');
   }
 

@@ -672,14 +672,14 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_part($value, $characters_allowed, $max_length) {
+  static function sanitize_file_part($value, $characters_allowed, $max_length, $prefix = '') {
     $value = trim($value, '.');
-    $value = preg_replace_callback('%(?<char>[^'.$characters_allowed.'])%uS', function ($c_match) {
-      if ($c_match['char'] === ' ') return '-';
-      if (strlen($c_match['char']) === 1) return dechex(ord($c_match['char'][0]));
-      if (strlen($c_match['char']) === 2) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1]));
-      if (strlen($c_match['char']) === 3) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2]));
-      if (strlen($c_match['char']) === 4) return dechex(ord($c_match['char'][0])).dechex(ord($c_match['char'][1])).dechex(ord($c_match['char'][2])).dechex(ord($c_match['char'][3]));
+    $value = preg_replace_callback('%(?<char>[^'.$characters_allowed.'])%uS', function ($c_match) use ($prefix) {
+      if (       $c_match['char']  === ' ') return '-';
+      if (strlen($c_match['char']) ===  1 ) return $prefix.dechex(ord($c_match['char'][0]));
+      if (strlen($c_match['char']) ===  2 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1]));
+      if (strlen($c_match['char']) ===  3 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1])).$prefix.dechex(ord($c_match['char'][2]));
+      if (strlen($c_match['char']) ===  4 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1])).$prefix.dechex(ord($c_match['char'][2])).$prefix.dechex(ord($c_match['char'][3]));
     }, $value);
     $value = substr($value, 0, $max_length);
     return $value;
