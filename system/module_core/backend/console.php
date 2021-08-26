@@ -223,7 +223,7 @@ namespace effcore {
     $result = '  CPU LOAD TIME'.nl.nl;
     foreach ($statistics as $c_key => $c_value) {
       $c_percent = $c_value / $total * 100;
-      $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                           ' | ';
+      $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                             ' | ';
       $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
       $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
       $result.=      locale::format_msecond($c_value).' sec.'.nl; }

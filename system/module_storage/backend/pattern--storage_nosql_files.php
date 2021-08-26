@@ -285,9 +285,10 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  const ERR_CODE_WRONG_SYNTAX         = 0b00000001;
-  const ERR_CODE_CLASS_WAS_NOT_FOUND  = 0b00000010;
-  const ERR_CODE_EMPTY_LINE_WAS_FOUND = 0b00000011;
+  const ERR_CODE_WRONG_SYNTAX            = 0b00000001;
+  const ERR_CODE_CLASS_WAS_NOT_FOUND     = 0b00000010;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b00000011;
+  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b00000100;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
@@ -325,6 +326,16 @@ namespace effcore {
             'func' => 'text_to_data',
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
+          break;
+        case static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Indent size is not even.'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
       }
     }
@@ -365,11 +376,23 @@ namespace effcore {
                    '(?<value>.*)%sS', str_replace(a0, nl, $c_line) /* convert 'text'.'\0'.'text' to 'text'.'\n'.'text' */, $matches);
       if (array_key_exists('name', $matches)) {
         $c_prefix    = $matches['prefix'];
-        $c_depth     = intval(strlen($matches['indent'].$c_prefix) / 2);
-        $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+        $c_indent    = $matches['indent'];
         $c_delimiter = $matches['delimiter'];
         $c_value     = $matches['value'];
-        if ($c_name === '=') $c_name = $c_value;
+        $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+        $c_depth     = strlen($c_indent.$c_prefix) / 2;
+      # checking indentation size
+        if (strlen($c_indent.$c_prefix) % 2) {
+          $errors[]= (object)[
+            'code' => static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN,
+            'line' => $line_number];
+          $c_line = strtok(cr.nl);
+          continue;
+        }
+      # convert "=: value" to "value: value"
+        if ($c_name === '=') {
+          $c_name = $c_value;
+        }
       # define each value
         if ($c_delimiter === ': ') {
           if (is_numeric($c_value)) $c_value = $c_value += 0;
