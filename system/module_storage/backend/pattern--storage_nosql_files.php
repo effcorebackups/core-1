@@ -287,8 +287,9 @@ namespace effcore {
 
   const ERR_CODE_WRONG_SYNTAX            = 0b00000001;
   const ERR_CODE_CLASS_WAS_NOT_FOUND     = 0b00000010;
-  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b00000011;
-  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b00000100;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b00000100;
+  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b00001000;
+  const ERR_CODE_INDENT_OVERSIZE         = 0b00010000;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
@@ -337,6 +338,16 @@ namespace effcore {
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
+        case static::ERR_CODE_INDENT_OVERSIZE:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Indent oversize is detected.'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
+          break;
       }
     }
   }
@@ -352,6 +363,7 @@ namespace effcore {
     $text = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $text); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
     $text = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $text); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
     $c_line = strtok($text, cr.nl);
+    $c_depth_old = 0;
     while ($c_line !== false) {
       $line_number++;
     # skip empty line
@@ -381,7 +393,7 @@ namespace effcore {
         $c_value     = $matches['value'];
         $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
         $c_depth     = strlen($c_indent.$c_prefix) / 2;
-      # checking indentation size
+      # check parity of indent
         if (strlen($c_indent.$c_prefix) % 2) {
           $errors[]= (object)[
             'code' => static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN,
@@ -389,6 +401,15 @@ namespace effcore {
           $c_line = strtok(cr.nl);
           continue;
         }
+      # check oversize of indent
+        if ($c_depth > $c_depth_old + 1) {
+          $errors[]= (object)[
+            'code' => static::ERR_CODE_INDENT_OVERSIZE,
+            'line' => $line_number];
+          $c_line = strtok(cr.nl);
+          continue;
+        }
+        $c_depth_old = $c_depth;
       # convert "=: value" to "value: value"
         if ($c_name === '=') {
           $c_name = $c_value;
