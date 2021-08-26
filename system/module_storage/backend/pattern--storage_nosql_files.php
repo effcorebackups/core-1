@@ -298,7 +298,6 @@ namespace effcore {
             'File: %%_file',
             'Line: %%_line',
             'Wrong syntax.',
-            'Make sure there are no leading tab.',
             'Make sure your editor supports the settings from the ".editorconfig" file.',
             'More information can be found in the file "readme/develop.md".'], [
             'func' => 'text_to_data',
@@ -354,7 +353,7 @@ namespace effcore {
         $matches = [];
         preg_match('%^(?<indent>[ ]*)'.
                      '(?<prefix>- |)'.
-                     '(?<name>[^\t].*?)'.
+                     '(?<name>.+?)'.
                      '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
                      '(?<value>.*)%sS', str_replace(a0, nl, $c_line) /* convert 'text'.'\0'.'text' to 'text'.'\n'.'text' */, $matches);
         if (array_key_exists('name', $matches)) {
