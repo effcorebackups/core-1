@@ -285,26 +285,23 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  const ERR_CODE_WRONG_SYNTAX            = 0b00000001;
-  const ERR_CODE_CLASS_WAS_NOT_FOUND     = 0b00000010;
-  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b00000100;
-  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b00001000;
-  const ERR_CODE_INDENT_OVERSIZE         = 0b00010000;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b0001;
+  const ERR_CODE_CLASS_WAS_NOT_FOUND     = 0b0010;
+  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b0100;
+  const ERR_CODE_INDENT_OVERSIZE         = 0b1000;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
       switch ($c_error->code) {
-        case static::ERR_CODE_WRONG_SYNTAX:
+        case static::ERR_CODE_EMPTY_LINE_WAS_FOUND:
           message::insert(new text_multiline([
             'Function: %%_func',
             'File: %%_file',
             'Line: %%_line',
-            'Wrong syntax.',
-            'Make sure your editor supports the settings from the ".editorconfig" file.',
-            'More information can be found in the file "readme/develop.md".'], [
+            'An empty line was found.'], [
             'func' => 'text_to_data',
             'line' => $c_error->line,
-            'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
           break;
         case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
           message::insert(new text_multiline([
@@ -317,16 +314,6 @@ namespace effcore {
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a',
             'classname' => $c_error->args['classname']]), 'error');
-          break;
-        case static::ERR_CODE_EMPTY_LINE_WAS_FOUND:
-          message::insert(new text_multiline([
-            'Function: %%_func',
-            'File: %%_file',
-            'Line: %%_line',
-            'An empty line was found.'], [
-            'func' => 'text_to_data',
-            'line' => $c_error->line,
-            'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
           break;
         case static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
           message::insert(new text_multiline([
@@ -386,93 +373,87 @@ namespace effcore {
                    '(?<name>.+?)'.
                    '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
                    '(?<value>.*)%sS', str_replace(a0, nl, $c_line) /* convert 'text'.'\0'.'text' to 'text'.'\n'.'text' */, $matches);
-      if (array_key_exists('name', $matches)) {
-        $c_prefix    = $matches['prefix'];
-        $c_indent    = $matches['indent'];
-        $c_delimiter = $matches['delimiter'];
-        $c_value     = $matches['value'];
-        $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
-        $c_depth     = strlen($c_indent.$c_prefix) / 2;
-      # check parity of indent
-        if (strlen($c_indent.$c_prefix) % 2) {
-          $errors[]= (object)[
-            'code' => static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN,
-            'line' => $line_number];
-          $c_line = strtok(cr.nl);
-          continue;
-        }
-      # check oversize of indent
-        if ($c_depth > $c_depth_old + 1) {
-          $errors[]= (object)[
-            'code' => static::ERR_CODE_INDENT_OVERSIZE,
-            'line' => $line_number];
-          $c_line = strtok(cr.nl);
-          continue;
-        }
-        $c_depth_old = $c_depth;
-      # convert "=: value" to "value: value"
-        if ($c_name === '=') {
-          $c_name = $c_value;
-        }
-      # define each value
-        if ($c_delimiter === ': ') {
-          if (is_numeric($c_value)) $c_value = $c_value += 0;
-          if ($c_value === 'true' ) $c_value = true;
-          if ($c_value === 'false') $c_value = false;
-          if ($c_value === 'null' ) $c_value = null;
-        } else {
-          if     ($c_value === '_empty_array' ) $c_value = [];
-          elseif ($c_value === '_string_true' ) $c_value = 'true';
-          elseif ($c_value === '_string_false') $c_value = 'false';
-          else {
-            $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
-            if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
-              $errors[]= (object)[
-                'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
-                'line' => $line_number,
-                'args' => ['classname' => $c_class_name]];
-              $c_class_name = 'stdClass';
-            }
-            $c_reflection = new \ReflectionClass($c_class_name);
-            $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
-            $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
-            $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
-            if ($c_is_postconstructor)
-                 $c_value = core::class_get_new_instance($c_class_name);
-            else $c_value = core::class_get_new_instance($c_class_name, [], true);
-            if ($c_is_postconstructor) $post_cnst_objects[] = $c_value;
-            if ($c_is_postinit       ) $post_init_objects[] = $c_value;
-            if ($c_is_postparse      ) $post_pars_objects[] = $c_value;
-          }
-        }
-      # note: on line 2 'property' was recognized as an empty object, but after reading line 3, 'property' must be converted to an array
-      # ┌──────┬──────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────┐
-      # │      │                      │                                real class in pattern-*.php                                 │
-      # │ line │ definition in *.data ├──────────────────────────┬──────────────────────────────────────┬──────────────────────────┤
-      # │      │                      │ read line #1             │ read line #2                         │ read line #3             │
-      # ╞══════╪══════════════════════╪══════════════════════════╪══════════════════════════════════════╪══════════════════════════╡
-      # │    1 │ object|classname     → $object = new classname; │ $object = new classname;             │ $object = new classname; │
-      # │    2 │   property           │                          →   $object->property = new \stdClass; │ $object->property = [    │
-      # │    3 │   - item: value      │                          │                                      →   'item' => 'value';     │
-      # └──────┴──────────────────────┴──────────────────────────┴──────────────────────────────────────┴──────────────────────────┘
-        $c_destination = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
-        if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
-          $pointers[$c_depth] = &$c_destination;
-          $c_line = strtok(cr.nl);
-          continue;
-        }
-      # insert new item to tree
-        core::arrobj_insert_value($pointers[$c_depth-1], $c_name, $c_value);
-        $pointers[$c_depth] = &$c_destination;
-      # convert parent item to array
-        if ($c_prefix === '- ' && !is_array($pointers[$c_depth-1])) {
-          $pointers[$c_depth-1] = (array)$pointers[$c_depth-1];
-        }
-      } else {
+      $c_prefix    = $matches['prefix'];
+      $c_indent    = $matches['indent'];
+      $c_delimiter = $matches['delimiter'];
+      $c_value     = $matches['value'];
+      $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);
+      $c_depth     = strlen($c_indent.$c_prefix) / 2;
+    # check parity of indent
+      if (strlen($c_indent.$c_prefix) % 2) {
         $errors[]= (object)[
-          'code' => static::ERR_CODE_WRONG_SYNTAX,
-          'line' => $line_number
-        ];
+          'code' => static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN,
+          'line' => $line_number];
+        $c_line = strtok(cr.nl);
+        continue;
+      }
+    # check oversize of indent
+      if ($c_depth > $c_depth_old + 1) {
+        $errors[]= (object)[
+          'code' => static::ERR_CODE_INDENT_OVERSIZE,
+          'line' => $line_number];
+        $c_line = strtok(cr.nl);
+        continue;
+      }
+      $c_depth_old = $c_depth;
+    # convert "=: value" to "value: value"
+      if ($c_name === '=') {
+        $c_name = $c_value;
+      }
+    # define each value
+      if ($c_delimiter === ': ') {
+        if (is_numeric($c_value)) $c_value = $c_value += 0;
+        if ($c_value === 'true' ) $c_value = true;
+        if ($c_value === 'false') $c_value = false;
+        if ($c_value === 'null' ) $c_value = null;
+      }
+      if ($c_delimiter === '|' || $c_delimiter === '') {
+        if     ($c_value === '_empty_array' ) $c_value = [];
+        elseif ($c_value === '_string_true' ) $c_value = 'true';
+        elseif ($c_value === '_string_false') $c_value = 'false';
+        else {
+          $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
+          if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
+            $errors[]= (object)[
+              'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
+              'line' => $line_number,
+              'args' => ['classname' => $c_class_name]];
+            $c_class_name = 'stdClass';
+          }
+          $c_reflection = new \ReflectionClass($c_class_name);
+          $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
+          $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
+          $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
+          if ($c_is_postconstructor)
+               $c_value = core::class_get_new_instance($c_class_name);
+          else $c_value = core::class_get_new_instance($c_class_name, [], true);
+          if ($c_is_postconstructor) $post_cnst_objects[] = $c_value;
+          if ($c_is_postinit       ) $post_init_objects[] = $c_value;
+          if ($c_is_postparse      ) $post_pars_objects[] = $c_value;
+        }
+      }
+    # note: on line 2 'property' was recognized as an empty object, but after reading line 3, 'property' must be converted to an array
+    # ┌──────┬──────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────┐
+    # │      │                      │                                real class in pattern-*.php                                 │
+    # │ line │ definition in *.data ├──────────────────────────┬──────────────────────────────────────┬──────────────────────────┤
+    # │      │                      │ read line #1             │ read line #2                         │ read line #3             │
+    # ╞══════╪══════════════════════╪══════════════════════════╪══════════════════════════════════════╪══════════════════════════╡
+    # │    1 │ object|classname     → $object = new classname; │ $object = new classname;             │ $object = new classname; │
+    # │    2 │   property           │                          →   $object->property = new \stdClass; │ $object->property = [    │
+    # │    3 │   - item: value      │                          │                                      →   'item' => 'value';     │
+    # └──────┴──────────────────────┴──────────────────────────┴──────────────────────────────────────┴──────────────────────────┘
+      $c_destination = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
+      if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
+        $pointers[$c_depth] = &$c_destination;
+        $c_line = strtok(cr.nl);
+        continue;
+      }
+    # insert new item to tree
+      core::arrobj_insert_value($pointers[$c_depth-1], $c_name, $c_value);
+      $pointers[$c_depth] = &$c_destination;
+    # convert parent item to array
+      if ($c_prefix === '- ' && !is_array($pointers[$c_depth-1])) {
+        $pointers[$c_depth-1] = (array)$pointers[$c_depth-1];
       }
       $c_line = strtok(cr.nl);
     }
