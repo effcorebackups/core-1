@@ -285,10 +285,11 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  const ERR_CODE_EMPTY_LINE_WAS_FOUND    = 0b0001;
-  const ERR_CODE_CLASS_WAS_NOT_FOUND     = 0b0010;
-  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN = 0b0100;
-  const ERR_CODE_INDENT_OVERSIZE         = 0b1000;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND        = 0b00001;
+  const ERR_CODE_LEADING_TAB_CHARACTER_FOUND = 0b00010;
+  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN     = 0b00100;
+  const ERR_CODE_INDENT_OVERSIZE             = 0b01000;
+  const ERR_CODE_CLASS_WAS_NOT_FOUND         = 0b10000;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
@@ -303,17 +304,15 @@ namespace effcore {
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
           break;
-        case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
+        case static::ERR_CODE_LEADING_TAB_CHARACTER_FOUND:
           message::insert(new text_multiline([
             'Function: %%_func',
             'File: %%_file',
             'Line: %%_line',
-            'Class "%%_classname" was not found.',
-            'The class name has been changed to "stdClass".'], [
+            'Leading tab character found.'], [
             'func' => 'text_to_data',
             'line' => $c_error->line,
-            'file' => $file ? $file->path_get_relative() : 'n/a',
-            'classname' => $c_error->args['classname']]), 'error');
+            'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
         case static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
           message::insert(new text_multiline([
@@ -334,6 +333,18 @@ namespace effcore {
             'func' => 'text_to_data',
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
+          break;
+        case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Class "%%_classname" was not found.',
+            'The class name has been changed to "stdClass".'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a',
+            'classname' => $c_error->args['classname']]), 'error');
           break;
       }
     }
@@ -357,6 +368,14 @@ namespace effcore {
       if (trim($c_line, ' ') === '') {
         $errors[]= (object)[
           'code' => static::ERR_CODE_EMPTY_LINE_WAS_FOUND,
+          'line' => $c_line_number];
+        $c_line = strtok(cr.nl);
+        continue;
+      }
+    # check leading tab character
+      if (ltrim($c_line, ' ')[0] === tb) {
+        $errors[]= (object)[
+          'code' => static::ERR_CODE_LEADING_TAB_CHARACTER_FOUND,
           'line' => $c_line_number];
         $c_line = strtok(cr.nl);
         continue;
