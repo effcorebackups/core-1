@@ -629,7 +629,7 @@ namespace effcore {
   }
 
   static function validate_property_name($value) {
-    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z0-9_]+$%']]);
+    return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z_][a-zA-Z0-9_]*$%']]);
   }
 
   static function validate_ip_v4($value) {
