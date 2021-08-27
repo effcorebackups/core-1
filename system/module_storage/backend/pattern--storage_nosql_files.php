@@ -431,28 +431,28 @@ namespace effcore {
           if ($c_is_postparse      ) $post_pars_objects[] = $c_value;
         }
       }
-    # note: on line 2 'property' was recognized as an empty object, but after reading line 3, 'property' must be converted to an array
-    # ┌──────┬──────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────┐
-    # │      │                      │                                real class in pattern-*.php                                 │
-    # │ line │ definition in *.data ├──────────────────────────┬──────────────────────────────────────┬──────────────────────────┤
-    # │      │                      │ read line #1             │ read line #2                         │ read line #3             │
-    # ╞══════╪══════════════════════╪══════════════════════════╪══════════════════════════════════════╪══════════════════════════╡
-    # │    1 │ object|classname     → $object = new classname; │ $object = new classname;             │ $object = new classname; │
-    # │    2 │   property           │                          →   $object->property = new \stdClass; │ $object->property = [    │
-    # │    3 │   - item: value      │                          │                                      →   'item' => 'value';     │
-    # └──────┴──────────────────────┴──────────────────────────┴──────────────────────────────────────┴──────────────────────────┘
-      $c_destination = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
-      if (is_array($c_destination) && $c_value instanceof \stdClass && empty((array)$c_value)) {
-        $pointers[$c_depth] = &$c_destination;
+      $c_pointer = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
+      $pointers[$c_depth] = &$c_pointer;
+    # skip if object property (as array) is exists in instance
+      if (is_array($c_pointer) && $c_value instanceof \stdClass && empty((array)$c_value)) {
         $c_line = strtok(cr.nl);
         continue;
       }
     # insert new item to tree
       core::arrobj_insert_value($pointers[$c_depth-1], $c_name, $c_value);
-      $pointers[$c_depth] = &$c_destination;
     # convert parent item to array
-      if ($c_prefix === '- ' && !is_array($pointers[$c_depth-1])) {
-        $pointers[$c_depth-1] = (array)$pointers[$c_depth-1];
+    # ┌──────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────┐
+    # │      │                      │                               real class in pattern-*.php                                │
+    # │ line │ definition in *.data ├──────────────────────────┬────────────────────────────────────┬──────────────────────────┤
+    # │      │                      │ read line #1             │ read line #2                       │ read line #3             │
+    # ╞══════╪══════════════════════╪══════════════════════════╪════════════════════════════════════╪══════════════════════════╡
+    # │    1 │ object               → $object = new \stdClass; │ $object = new \stdClass;           │ $object = new \stdClass; │
+    # │    2 │   property           │                          → $object->property = new \stdClass; │ $object->property = [    │
+    # │    3 │   - item: value      │                          │                                    →   'item' => 'value';     │
+    # └──────┴──────────────────────┴──────────────────────────┴────────────────────────────────────┴──────────────────────────┘
+    # note: on line 2 'property' was recognized as an empty object, but after reading line 3, 'property' must be converted to an array
+      if ($c_prefix === '- ' && is_array($pointers[$c_depth-1]) === false) {
+        $pointers[$c_depth-1]  =  (array)$pointers[$c_depth-1];
       }
       $c_line = strtok(cr.nl);
     }
