@@ -396,12 +396,9 @@ namespace effcore {
         continue;
       }
       $c_depth_old = $c_depth;
-    # convert "=: value" to "value: value"
-      if ($c_name === '=') {
-        $c_name = $c_value;
-      }
     # case for scalar types: string, integer, float, boolean, null (special type)
       if ($c_delimiter === ': ') {
+        if ($c_name === '=' && strlen((string)$c_value)) $c_name = (string)$c_value; # convert "=: value" to "value: value"
         if (is_numeric($c_value)) $c_value = $c_value += 0;
         if ($c_value === 'true' ) $c_value = true;
         if ($c_value === 'false') $c_value = false;
