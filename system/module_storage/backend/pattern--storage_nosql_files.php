@@ -273,10 +273,10 @@ namespace effcore {
   # │ valid strings       ║ interpretation                                                 │
   # ╞═════════════════════╬════════════════════════════════════════════════════════════════╡
   # │ root                ║                                                                │
-  # │ - name: value       ║ root[name]  = value: null | string | float | integer | boolean │
-  # │   name: value       ║ root->name  = value: null | string | float | integer | boolean │
-  # │ - =: value          ║ root[value] = value: null | string | float | integer | boolean │
-  # │   =: value          ║ root->value = value: null | string | float | integer | boolean │
+  # │ - name: value       ║ root[name]  = value: string | integer | float | boolean | null │
+  # │   name: value       ║ root->name  = value: string | integer | float | boolean | null │
+  # │ - =: value          ║ root[value] = value: string | integer | float | boolean | null │
+  # │   =: value          ║ root->value = value: string | integer | float | boolean | null │
   # │ - name              ║ root[name]  = new \stdClass | […]                              │
   # │   name              ║ root->name  = new \stdClass | […]                              │
   # │ - name|classname    ║ root[name]  = new classname                                    │
@@ -350,7 +350,7 @@ namespace effcore {
     $text = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $text); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
     $text = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $text); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
     $c_line = strtok($text, cr.nl);
-    $c_depth_old = 0;
+    $c_depth_old = -1;
     while ($c_line !== false) {
       $line_number++;
     # skip empty line
@@ -400,14 +400,16 @@ namespace effcore {
       if ($c_name === '=') {
         $c_name = $c_value;
       }
-    # define each value
+    # case for scalar types: string, integer, float, boolean, null (special type)
       if ($c_delimiter === ': ') {
         if (is_numeric($c_value)) $c_value = $c_value += 0;
         if ($c_value === 'true' ) $c_value = true;
         if ($c_value === 'false') $c_value = false;
         if ($c_value === 'null' ) $c_value = null;
       }
-      if ($c_delimiter === '|' || $c_delimiter === '') {
+    # case for compound types: array, object
+      if ($c_delimiter === '|' ||
+          $c_delimiter === '') {
         if     ($c_value === '_empty_array' ) $c_value = [];
         elseif ($c_value === '_string_true' ) $c_value = 'true';
         elseif ($c_value === '_string_false') $c_value = 'false';
