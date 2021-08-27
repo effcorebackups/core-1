@@ -346,18 +346,18 @@ namespace effcore {
     $post_cnst_objects = [];
     $post_init_objects = [];
     $post_pars_objects = [];
-    $line_number = 0;
     $text = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $text); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
     $text = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $text); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
     $c_line = strtok($text, cr.nl);
+    $c_line_number = 0;
     $c_depth_old = -1;
     while ($c_line !== false) {
-      $line_number++;
+      $c_line_number++;
     # skip empty line
       if (trim($c_line, ' ') === '') {
         $errors[]= (object)[
           'code' => static::ERR_CODE_EMPTY_LINE_WAS_FOUND,
-          'line' => $line_number];
+          'line' => $c_line_number];
         $c_line = strtok(cr.nl);
         continue;
       }
@@ -383,7 +383,7 @@ namespace effcore {
       if (strlen($c_indent.$c_prefix) % 2) {
         $errors[]= (object)[
           'code' => static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN,
-          'line' => $line_number];
+          'line' => $c_line_number];
         $c_line = strtok(cr.nl);
         continue;
       }
@@ -391,7 +391,7 @@ namespace effcore {
       if ($c_depth > $c_depth_old + 1) {
         $errors[]= (object)[
           'code' => static::ERR_CODE_INDENT_OVERSIZE,
-          'line' => $line_number];
+          'line' => $c_line_number];
         $c_line = strtok(cr.nl);
         continue;
       }
@@ -415,7 +415,7 @@ namespace effcore {
           if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
-              'line' => $line_number,
+              'line' => $c_line_number,
               'args' => ['classname' => $c_class_name]];
             $c_class_name = 'stdClass';
           }
