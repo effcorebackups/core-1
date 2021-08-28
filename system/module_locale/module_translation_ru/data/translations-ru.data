@@ -552,6 +552,7 @@ translations
     - Presets: Предустановки
     - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
     - press to show description: нажмите, чтобы показать описание
+    - press to show more information: нажмите, чтобы показать дополнительную информацию
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Previously used value was specified.: Было указано ранее использованное значение.
