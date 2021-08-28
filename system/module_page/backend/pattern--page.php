@@ -46,20 +46,20 @@ namespace effcore {
           if ($c_area instanceof area && isset($c_area->id)) {
             if (isset($this->blocks[$c_area->id])) {
               $this->_areas_pointers[$c_area->id] = $c_area;
-              $c_area_blocks = $this->blocks[$c_area->id];
-              core::array_sort_by_weight($c_area_blocks);
-              foreach ($c_area_blocks as $c_row_id => $c_block) {
-                if ($c_area_blocks[$c_row_id] instanceof block_preset_link) $c_area_blocks[$c_row_id] = $c_block->block_make();
-                if ($c_area_blocks[$c_row_id] instanceof block) {
-                  $c_area_blocks[$c_row_id]->build($this);
-                  if ($c_area_blocks[$c_row_id]->children_select_count()) {
-                    $c_area->child_insert($c_area_blocks[$c_row_id], $c_row_id);
-                    if (isset($c_area_blocks[$c_row_id]->attributes['data-id']))
-                      $this->used_blocks_cssid[$c_area_blocks[$c_row_id]->attributes['data-id']] =
-                                               $c_area_blocks[$c_row_id]->attributes['data-id'];
-                    if ($c_area_blocks[$c_row_id]->type === 'link' ||
-                        $c_area_blocks[$c_row_id]->type === 'copy') {
-                      $this->used_blocks_dpath[] = $c_area_blocks[$c_row_id]->source;
+              $c_blocks = $this->blocks[$c_area->id];
+              core::array_sort_by_weight($c_blocks);
+              foreach ($c_blocks as $c_row_id => $c_block) {
+                if ($c_blocks[$c_row_id] instanceof block_preset_link) $c_blocks[$c_row_id] = $c_block->block_make();
+                if ($c_blocks[$c_row_id] instanceof block) {
+                  $c_blocks[$c_row_id]->build($this);
+                  if ($c_blocks[$c_row_id]->children_select_count()) {
+                    $c_area->child_insert($c_blocks[$c_row_id], $c_row_id);
+                    if (isset($c_blocks[$c_row_id]->attributes['data-id']))
+                      $this->used_blocks_cssid[$c_blocks[$c_row_id]->attributes['data-id']] =
+                                               $c_blocks[$c_row_id]->attributes['data-id'];
+                    if ($c_blocks[$c_row_id]->type === 'link' ||
+                        $c_blocks[$c_row_id]->type === 'copy') {
+                      $this->used_blocks_dpath[] = $c_blocks[$c_row_id]->source;
                     }
                   }
                 }
