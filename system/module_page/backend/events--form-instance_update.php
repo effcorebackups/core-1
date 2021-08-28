@@ -15,7 +15,7 @@ namespace effcore\modules\page {
           use \effcore\markup;
           use \effcore\text_multiline;
           use \effcore\text;
-          use \effcore\widget_area_blocks;
+          use \effcore\widget_blocks;
           abstract class events_form_instance_update {
 
   static function on_build($event, $form) {
@@ -55,13 +55,13 @@ namespace effcore\modules\page {
                   $c_area->managing_enable();
                   $c_area->build();
                   if ($c_area->id) {
-                    $c_widget_area_blocks = new widget_area_blocks($c_area->id);
-                    $c_widget_area_blocks->name_complex = 'widget_area_blocks__'.$c_area->id;
-                    $c_widget_area_blocks->cform = $form;
-                    $c_widget_area_blocks->build();
-                    $c_widget_area_blocks->value_set_complex($form->_instance->blocks[$c_area->id] ?? null, true);
-                    $c_area->child_insert($c_widget_area_blocks, 'widget_area_blocks');
-                    $form->_widgets_area[$c_area->id] = $c_widget_area_blocks;
+                    $c_widget_blocks = new widget_blocks($c_area->id);
+                    $c_widget_blocks->name_complex = 'widget_blocks__'.$c_area->id;
+                    $c_widget_blocks->cform = $form;
+                    $c_widget_blocks->build();
+                    $c_widget_blocks->value_set_complex($form->_instance->blocks[$c_area->id] ?? null, true);
+                    $c_area->child_insert($c_widget_blocks, 'widget_blocks');
+                    $form->_widgets_area[$c_area->id] = $c_widget_blocks;
                   }
               }
             }

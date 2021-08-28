@@ -351,9 +351,9 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style~='narrow'] {border-radius: 5px}
 
-  /* widget 'items-area_blocks' */
+  /* widget 'items-blocks' */
 
-  x-widget[data-type='items-area_blocks'] {margin: 0}
+  x-widget[data-type='items-blocks'] {margin: 0}
 
   /* audio player in: field 'file-audio' and widget 'items-files-audios' */
 

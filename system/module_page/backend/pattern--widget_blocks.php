@@ -5,14 +5,14 @@
   ##################################################################
 
 namespace effcore {
-          class widget_area_blocks extends widget_items {
+          class widget_blocks extends widget_items {
 
   public $title;
   public $title__not_selected__widget_insert = '- select -';
   public $item_title = 'Block';
   public $content_tag_name = null;
-  public $attributes = ['data-type' => 'items-area_blocks'];
-  public $name_complex = 'widget_area_blocks';
+  public $attributes = ['data-type' => 'items-blocks'];
+  public $name_complex = 'widget_blocks';
   public $id_area;
 
   function __construct($id_area, $attributes = [], $weight = 0) {
