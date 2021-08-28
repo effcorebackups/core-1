@@ -12,6 +12,7 @@ namespace effcore {
   public $proxy    = '';
   public $headers  = [];
   public $post     = [];
+  static $history  = [];
 
   function run(&$test, $dpath, &$c_results) {
     $proxy = $this->proxy instanceof param_from_form ?
@@ -25,10 +26,10 @@ namespace effcore {
     foreach ($prepared_headers as           $c_value) $c_results['reports'][$dpath][] = new text('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
     foreach ($prepared_post    as $c_key => $c_value) $c_results['reports'][$dpath][] = new text('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
   # make request
-    $response = static::request(
+    $response = request::make(
       $prepared_url,
       $prepared_headers,
-      $prepared_post, $proxy);
+      $prepared_post, ['proxy' => $proxy]);
     if (isset($response['info']['http_code'   ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info']['http_code'   ]]);
     if (isset($response['info']['primary_ip'  ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info']['primary_ip'  ]]);
     if (isset($response['info']['primary_port'])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
@@ -66,65 +67,6 @@ namespace effcore {
     foreach ($this->post as $c_key => $c_value)
       if (is_string($c_value))
         $result[$c_key] = token::apply($c_value);
-    return $result;
-  }
-
-  ###########################
-  ### static declarations ###
-  ###########################
-
-  static $history = [];
-  static $curlopt_timeout = 5;
-  static $curlopt_sslversion = CURL_SSLVERSION_TLSv1_2;
-  static $curlopt_ssl_verifyhost = false;
-  static $curlopt_ssl_verifypeer = false;
-
-  static function request($url, $headers = [], $post = [], $proxy = '') {
-    $result = ['info' => [], 'headers' => []];
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL,             $url);
-    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true); # added in CURL v.7.42.0 (2015-04-22)
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
-    curl_setopt($curl, CURLOPT_HEADER,         false);
-    curl_setopt($curl, CURLOPT_HTTPHEADER,  $headers);
-    curl_setopt($curl, CURLOPT_TIMEOUT,        static::$curlopt_timeout       );
-    curl_setopt($curl, CURLOPT_SSLVERSION,     static::$curlopt_sslversion    );
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, static::$curlopt_ssl_verifyhost);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, static::$curlopt_ssl_verifypeer);
-    if ($proxy) curl_setopt($curl, CURLOPT_PROXY, $proxy);
-  # prepare post query
-    if ($post) {
-      curl_setopt($curl, CURLOPT_POST,        true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
-    }
-  # prepare headers
-    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
-      $c_matches = [];
-      preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
-      if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], cr.nl.'"');
-      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => static::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
-      return strlen($c_header);
-    });
-  # prepare return
-    $data = curl_exec($curl);
-    $result['error_message'] = curl_error($curl);
-    $result['error_number' ] = curl_errno($curl);
-    $result['data'] = $data ? ltrim($data, chr(255).chr(254)) : '';
-    $result['info'] = curl_getinfo($curl);
-    curl_close($curl);
-    return $result;
-  }
-
-  static function cookie_parse($string) {
-    $result = [];
-    foreach (explode('; ', $string) as $c_part) {
-      $c_matches = [];
-      preg_match('%^(?<name>[^=]+)=(?<value>.*)$%S', $c_part, $c_matches);
-      if ($c_matches) {
-        $result[$c_matches['name']] = $c_matches['value'];
-      }
-    }
     return $result;
   }
 

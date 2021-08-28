@@ -154,4 +154,41 @@ namespace effcore {
     return $result;
   }
 
+  static function make($url, $headers = [], $post = [], $settings = []) {
+    $result = ['info' => [], 'headers' => []];
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL,             $url    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER,      $headers);
+    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true    ); # added in CURL v.7.42.0 (2015-04-22)
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true    );
+    curl_setopt($curl, CURLOPT_HEADER,          false   );
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION,  array_key_exists('followlocation', $settings) ? $settings['followlocation'] : false);
+    curl_setopt($curl, CURLOPT_TIMEOUT,         array_key_exists('timeout',        $settings) ? $settings['timeout']        : 5);
+    curl_setopt($curl, CURLOPT_SSLVERSION,      array_key_exists('sslversion',     $settings) ? $settings['sslversion']     : CURL_SSLVERSION_TLSv1_2);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,  array_key_exists('ssl_verifyhost', $settings) ? $settings['ssl_verifyhost'] : false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,  array_key_exists('ssl_verifypeer', $settings) ? $settings['ssl_verifypeer'] : false);
+    curl_setopt($curl, CURLOPT_PROXY,           array_key_exists('proxy',          $settings) ? $settings['proxy']          : null);
+  # prepare post query
+    if ($post) {
+      curl_setopt($curl, CURLOPT_POST,        true);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+    }
+  # prepare headers
+    curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
+      if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], cr.nl.'"');
+      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => core::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
+      return strlen($c_header);
+    });
+  # prepare return
+    $data = curl_exec($curl);
+    $result['error_message'] = curl_error($curl);
+    $result['error_number' ] = curl_errno($curl);
+    $result['data'] = $data ? ltrim($data, "\xff\xfe") : '';
+    $result['info'] = curl_getinfo($curl);
+    curl_close($curl);
+    return $result;
+  }
+
 }}
