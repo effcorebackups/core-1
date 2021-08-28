@@ -7,22 +7,24 @@
 namespace effcore {
           abstract class request {
 
-  # $is_files === false
+  # note: in sanitize() only the following types of requests are allowed:
+  # ═════════════════════════════════════════════════════════════════════
+  # sanitize(…, $is_files === false)
   # ─────────────────────────────────────────────────────────────────────
   #   (string)key => (string)value
-  # ─────────────────────────────────────────────────────────────────────
+  # .....................................................................
   #   (string)key => [
   #     (int)0 => (string)value,
   #     (int)1 => (string)value …
   #     (int)N => (string)value
   #   ]
-
-  # $is_files !== false
+  # ═════════════════════════════════════════════════════════════════════
+  # sanitize(…, $is_files !== false)
   # ─────────────────────────────────────────────────────────────────────
   #   (string)key => [
   #     (string)key => (string)|(int)value
   #   ]
-  # ─────────────────────────────────────────────────────────────────────
+  # .....................................................................
   #   (string)key => [
   #     (string)key => [
   #       (int)0 => (string)|(int)value,
@@ -153,6 +155,8 @@ namespace effcore {
     }
     return $result;
   }
+
+  # ─────────────────────────────────────────────────────────────────────
 
   static function make($url, $headers = [], $post = [], $settings = []) {
     $result = ['info' => [], 'headers' => []];
