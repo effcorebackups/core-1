@@ -45,11 +45,6 @@ forms
             element_attributes
             - name: color__table_row_even_id
             - checked: true
-        - color__relation_id|field_checkbox_color
-            title: Relation
-            element_attributes
-            - name: color__relation_id
-            - checked: true
         - color__menu_id|field_checkbox_color
             title: Menu
             element_attributes

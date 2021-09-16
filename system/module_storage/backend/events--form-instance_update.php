@@ -56,8 +56,8 @@ namespace effcore\modules\storage {
                   $c_control->element_attributes['name'] = $c_name;
                   $c_control->element_attributes = ($c_field->managing_control_element_attributes           ?? []) + $c_control->element_attributes;
                   $c_control->element_attributes = ($c_field->managing_control_element_attributes_on_update ?? []) + $c_control->element_attributes;
-                  foreach ($c_field->managing_control_properties           ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
-                  foreach ($c_field->managing_control_properties_on_update ?? [] as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                  if (isset($c_field->managing_control_properties          ) && is_array($c_field->managing_control_properties          )) foreach ($c_field->managing_control_properties           as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                  if (isset($c_field->managing_control_properties_on_update) && is_array($c_field->managing_control_properties_on_update)) foreach ($c_field->managing_control_properties_on_update as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
                   $c_control->cform = $form;
                   $c_control->entity_name = $entity->name;
                   $c_control->entity_field_name = $c_name;

@@ -27,7 +27,7 @@ pages
     - title
       - block__title|block_preset_link
           id: block__title
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__php_dependencies_list|block
           title: PHP dependencies

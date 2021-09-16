@@ -48,7 +48,7 @@ instances
     - id: manage__info
     - title: Info: manage
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_audio_select|instance
     entity_name: permission
     values
@@ -73,7 +73,7 @@ instances
     - id: manage_data__content_page_audio__delete
     - title: Audio: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_gallery_select|instance
     entity_name: permission
     values
@@ -98,7 +98,7 @@ instances
     - id: manage_data__content_page_gallery__delete
     - title: Gallery: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_feedback_select|instance
     entity_name: permission
     values
@@ -123,7 +123,7 @@ instances
     - id: manage_data__user_feedback__delete
     - title: Feedback: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_page_select|instance
     entity_name: permission
     values
@@ -148,7 +148,7 @@ instances
     - id: manage_data__content_page__delete
     - title: Page: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_permission_select|instance
     entity_name: permission
     values
@@ -161,7 +161,7 @@ instances
     - id: manage_data__user_user_permission__update
     - title: Permission: update
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_picture_select|instance
     entity_name: permission
     values
@@ -186,7 +186,7 @@ instances
     - id: manage_data__content_page_picture__delete
     - title: Picture: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_rel_role_ws_perm_select|instance
     entity_name: permission
     values
@@ -211,7 +211,7 @@ instances
     - id: manage_data__user_user_rel_role_ws_perm__delete
     - title: Relation: Role ↔ Permission: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_rel_role_ws_user_select|instance
     entity_name: permission
     values
@@ -236,7 +236,7 @@ instances
     - id: manage_data__user_user_rel_role_ws_user__delete
     - title: Relation: Role ↔ User: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_role_select|instance
     entity_name: permission
     values
@@ -261,7 +261,7 @@ instances
     - id: manage_data__user_user_role__delete
     - title: Role: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_selection_select|instance
     entity_name: permission
     values
@@ -286,7 +286,7 @@ instances
     - id: manage_data__content_page_selection__delete
     - title: Selection: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_text_select|instance
     entity_name: permission
     values
@@ -311,7 +311,7 @@ instances
     - id: manage_data__content_page_text__delete
     - title: Text: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_tree_select|instance
     entity_name: permission
     values
@@ -336,7 +336,7 @@ instances
     - id: manage_data__menu_tree__delete
     - title: Tree: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_tree_item_select|instance
     entity_name: permission
     values
@@ -361,7 +361,7 @@ instances
     - id: manage_data__menu_tree_item__delete
     - title: Tree item: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_user_select|instance
     entity_name: permission
     values
@@ -386,7 +386,7 @@ instances
     - id: manage_data__user_user__delete
     - title: User: delete
     - is_embedded: 1
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - permission_manage_data_video_select|instance
     entity_name: permission
     values
@@ -434,7 +434,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page_audio__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_gallery_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -455,7 +455,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page_gallery__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_feedback_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -476,7 +476,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__user_feedback__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_page_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -497,7 +497,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_picture_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -518,7 +518,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page_picture__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_selection_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -539,7 +539,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page_selection__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_text_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -560,7 +560,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__content_page_text__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_tree_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -581,7 +581,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_tree_item_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -602,7 +602,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__menu_tree_item__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_user_select|instance
     entity_name: relation_role_ws_permission
     values
@@ -623,7 +623,7 @@ instances
     values
     - id_role: managers
     - id_permission: manage_data__user_user__delete
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - rel_role_ws_perm_managers_video_select|instance
     entity_name: relation_role_ws_permission
     values

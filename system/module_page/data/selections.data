@@ -393,7 +393,7 @@ selections
         - filters
           - 400: translate
         weight: 260
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|selection
     id: instance_select_multiple-audio
     pager_is_enabled: true
@@ -585,7 +585,7 @@ selections
         entity_name: video
         entity_field_name: updated
         weight: 340
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|selection
     id: audio
     template: content

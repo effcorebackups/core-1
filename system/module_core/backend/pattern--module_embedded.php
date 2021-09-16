@@ -7,29 +7,33 @@
 namespace effcore {
           class module_embedded {
 
-  # module state diagram for modules without installation process
   # ─────────────────────────────────────────────────────────────────────
+  # module state diagram for modules without installation process:
+  # ═════════════════════════════════════════════════════════════════════
   #
-  #   ┌──────────────┐             ◯◉           ┌─────────────┐
-  #   │              ├──────────────────────────▶             │
-  #   │   disabled   │                          │   enabled   │
-  #   │              ◀──────────────────────────┤             │
-  #   └──────────────┘             ◎◯           └─────────────┘
+  #      ┌──────────────┐             ◯◉           ┌─────────────┐
+  #      │              ├──────────────────────────▶             │
+  #      │   disabled   │                          │   enabled   │
+  #      │              ◀──────────────────────────┤             │
+  #      └──────────────┘             ◎◯           └─────────────┘
   #
+  # ─────────────────────────────────────────────────────────────────────
 
-  # module state diagram for modules with installation process
   # ─────────────────────────────────────────────────────────────────────
+  # module state diagram for modules with installation process:
+  # ═════════════════════════════════════════════════════════════════════
   #
-  #   ┌────────────────────────┐   ◯◉   ┌─────────────────────┐
-  #   │ uninstalled + disabled │────────▶ installed + enabled │
-  #   └────────────▲───────────┘        └───────▲─────┬───────┘
-  #                │                            │     │
-  #                │ ▣ uninstall process     ◯◉ │     │ ◎◯
-  #                │                            │     │
-  #   ┌────────────┴────────────────────────────┴─────▼───────┐
-  #   │                 installed + disabled                  │
-  #   └───────────────────────────────────────────────────────┘
+  #      ┌────────────────────────┐   ◯◉   ┌─────────────────────┐
+  #      │ uninstalled + disabled │────────▶ installed + enabled │
+  #      └────────────▲───────────┘        └───────▲─────┬───────┘
+  #                   │                            │     │
+  #                   │ ▣ uninstall process     ◯◉ │     │ ◎◯
+  #                   │                            │     │
+  #      ┌────────────┴────────────────────────────┴─────▼───────┐
+  #      │                 installed + disabled                  │
+  #      └───────────────────────────────────────────────────────┘
   #
+  # ─────────────────────────────────────────────────────────────────────
 
   public $id;
   public $id_bundle;
@@ -88,8 +92,9 @@ namespace effcore {
   # deployment process: insert instances
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
-      if ($c_instance->insert()) message::insert(new text('Instance with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
-      else                       message::insert(new text('Instance with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
+      if ($c_instance->insert())
+           message::insert(new text('Instance with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
+      else message::insert(new text('Instance with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
     }
   # insert to boot
@@ -100,27 +105,44 @@ namespace effcore {
     }
   }
 
-  function dependencies_status_get() {
-    $dependencies_php = $this->dependencies->php    ?? [];
-    $dependencies_sys = $this->dependencies->system ?? [];
-    $boot_status = core::boot_select();
-    foreach ($dependencies_php as $c_id => $c_version_min) $dependencies_php[$c_id] = (int)(extension_loaded  ($c_id)  && version_compare((new \ReflectionExtension($c_id))->getVersion(), $c_version_min, '>='));
-    foreach ($dependencies_sys as $c_id => $c_version_min) $dependencies_sys[$c_id] = (int)(isset($boot_status[$c_id]) &&                               static::get($c_id)->version   >=   $c_version_min       );
+  function dependencies_info_get($scope) {
+    $has_dependencies_sys = false;
+    $has_dependencies_php = false;
+    $dependencies_sys = isset($this->dependencies->system) && is_array($this->dependencies->system) ? $this->dependencies->system : [];
+    $dependencies_php = isset($this->dependencies->php)    && is_array($this->dependencies->php)    ? $this->dependencies->php    : [];
+    if ($scope === 'default') $enabled = static::get_enabled_by_default();
+    if ($scope === 'boot'   ) $enabled = static::get_enabled_by_boot();
+    foreach ($dependencies_sys as $c_id => $c_version_min) {
+      $c_version_cur = static::get($c_id)->version;
+      if (isset($enabled[$c_id]) !== true                                     ) {$dependencies_sys[$c_id] = (object)['version_min' => $c_version_min, 'state' => 0]; $has_dependencies_sys = true;}
+      if (isset($enabled[$c_id]) === true && $c_version_cur  <  $c_version_min) {$dependencies_sys[$c_id] = (object)['version_min' => $c_version_min, 'state' => 1]; $has_dependencies_sys = true;}
+      if (isset($enabled[$c_id]) === true && $c_version_cur === $c_version_min) {$dependencies_sys[$c_id] = (object)['version_min' => $c_version_min, 'state' => 2];}
+      if (isset($enabled[$c_id]) === true && $c_version_cur  >  $c_version_min) {$dependencies_sys[$c_id] = (object)['version_min' => $c_version_min, 'state' => 3];} }
+    foreach ($dependencies_php as $c_id => $c_version_min) {
+      $c_version_cur = (new \ReflectionExtension($c_id))->getVersion();
+      if (extension_loaded($c_id) !== true                                                        ) {$dependencies_php[$c_id] = (object)['version_min' => $c_version_min, 'state' => 0]; $has_dependencies_php = true;}
+      if (extension_loaded($c_id) === true && version_compare($c_version_cur, $c_version_min, '<')) {$dependencies_php[$c_id] = (object)['version_min' => $c_version_min, 'state' => 1]; $has_dependencies_php = true;}
+      if (extension_loaded($c_id) === true && version_compare($c_version_cur, $c_version_min, '=')) {$dependencies_php[$c_id] = (object)['version_min' => $c_version_min, 'state' => 2];}
+      if (extension_loaded($c_id) === true && version_compare($c_version_cur, $c_version_min, '>')) {$dependencies_php[$c_id] = (object)['version_min' => $c_version_min, 'state' => 3];} }
     $result = new \stdClass;
-    $result->php = $dependencies_php;
+    $result->has_dependencies_sys = $has_dependencies_sys;
+    $result->has_dependencies_php = $has_dependencies_php;
     $result->sys = $dependencies_sys;
+    $result->php = $dependencies_php;
     return $result;
   }
 
-  function depended_status_get() {
-    $result = [];
-    $boot_status = core::boot_select();
+  function required_for_info_get($scope) {
+    $has_required = false;
+    $required = [];
+    if ($scope === 'default') $enabled = static::get_enabled_by_default();
+    if ($scope === 'boot'   ) $enabled = static::get_enabled_by_boot();
     foreach (static::get_all() as $c_module) {
-      $c_dependencies_sys = $c_module->dependencies->system ?? [];
-      if (isset($c_dependencies_sys[$this->id])) {
-        $result[$c_module->id] = (int)isset($boot_status[$c_module->id]);
-      }
-    }
+      if (isset($c_module->dependencies->system[$this->id]) === true && isset($enabled[$c_module->id]) !== true) {$required[$c_module->id] = (object)['state' => 0];}
+      if (isset($c_module->dependencies->system[$this->id]) === true && isset($enabled[$c_module->id]) === true) {$required[$c_module->id] = (object)['state' => 1]; $has_required = true;} }
+    $result = new \stdClass;
+    $result->has_required = $has_required;
+    $result->req = $required;
     return $result;
   }
 
@@ -145,6 +167,20 @@ namespace effcore {
     }
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function is_enabled($module_id) {
+    $enabled = core::boot_select('enabled');
+    return isset($enabled[$module_id]);
+  }
+
+  static function is_installed($module_id) {
+    $installed = core::boot_select('installed');
+    return isset($installed[$module_id]);
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function get($id) {
     static::init();
     return static::$cache['modules'][$id];
@@ -160,6 +196,17 @@ namespace effcore {
     return $result;
   }
 
+  static function get_profiles($property = null, $ws_disabled_by_default = false) {
+    $result = [];
+    foreach (static::get_all() as $c_module) {
+      if ($c_module instanceof module_as_profile) {
+        if ($c_module->enabled !== 'yes' && $ws_disabled_by_default === true) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+        if ($c_module->enabled === 'yes'                                    ) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+      }
+    }
+    return $result;
+  }
+
   static function get_embedded($property = null) {
     $result = [];
     foreach (static::get_all() as $c_module)
@@ -169,6 +216,12 @@ namespace effcore {
                      $c_module->{$property} :
                      $c_module;
     return $result;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function get_enabled_by_boot() {
+    return core::boot_select('enabled');
   }
 
   static function get_enabled_by_default($property = null) {
@@ -181,14 +234,10 @@ namespace effcore {
     return $result;
   }
 
-  static function get_enabled() {
-    return core::boot_select('enabled');
-  }
-
   static function get_installed($ws_enabled = true, $ws_disabled = true) {
     $result    = [];
     $installed = core::boot_select('installed');
-    $enabled   = core::boot_select('enabled'  );
+    $enabled   = core::boot_select('enabled');
     foreach ($installed as $c_id => $c_path) {
       if ($ws_enabled  === true && isset($enabled[$c_id]) === true) $result[$c_id] = $c_path;
       if ($ws_disabled === true && isset($enabled[$c_id]) !== true) $result[$c_id] = $c_path;
@@ -196,30 +245,11 @@ namespace effcore {
     return $result;
   }
 
-  static function get_profiles($property = null, $ws_disabled_by_default = false) {
-    $result = [];
-    foreach (static::get_all() as $c_module) {
-      if ($c_module instanceof module_as_profile) {
-        if ($c_module->enabled !== 'yes' && $ws_disabled_by_default === true) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
-        if ($c_module->enabled === 'yes'                                    ) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
-      }
-    }
-    return $result;
-  }
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function is_enabled($module_id) {
-    $enabled = core::boot_select('enabled');
-    return isset($enabled[$module_id]);
-  }
-
-  static function is_installed($module_id) {
-    $installed = core::boot_select('installed');
-    return isset($installed[$module_id]);
-  }
-
-  static function settings_get($module_id) {
-    $settings = storage::get('files')->select('settings');
-    return $settings[$module_id] ?? [];
+  static function bundle_get($id) {
+    static::init();
+    return static::$cache['bundles'][$id] ?? null;
   }
 
   static function bundle_get_all($property = null) {
@@ -232,10 +262,7 @@ namespace effcore {
     return $result;
   }
 
-  static function bundle_get($id) {
-    static::init();
-    return static::$cache['bundles'][$id] ?? null;
-  }
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function groups_get() {
     static::init();
@@ -243,6 +270,11 @@ namespace effcore {
     foreach (static::$cache['modules'] as $c_module)
       $groups[core::sanitize_id($c_module->group)] = $c_module->group;
     return $groups;
+  }
+
+  static function settings_get($module_id) {
+    $settings = storage::get('files')->select_array('settings');
+    return $settings[$module_id] ?? [];
   }
 
 }}

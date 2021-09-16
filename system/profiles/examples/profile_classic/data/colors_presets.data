@@ -10,7 +10,6 @@ colors_presets
       color__link_active_id: gold_r1
       color__table_row_odd_id: classic_l1
       color__table_row_even_id: classic_l2
-      color__relation_id: white
       color__menu_id: classic_l2
       color__menu_active_id: classic_l1
       color__menu_text_id: white

@@ -12,7 +12,7 @@ namespace effcore {
   public $title_attributes = ['data-fieldset-title' => true];
   public $content_tag_name = 'x-fieldset-content';
   public $content_attributes = ['data-fieldset-content' => true, 'data-nested-content' => true];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title_position = 'top'; # opener not working in 'bottom' mode
   public $state = ''; # '' | opened | closed[checked]
   public $number;
@@ -45,16 +45,19 @@ namespace effcore {
   }
 
   function render_opener() {
-    switch ($this->state) {
-      case 'opened': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number                   ]); break;
-      case 'closed': $opener = new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true]); break;
-      default      : $opener = null;
+    if ($this->state === 'opened' ||
+        $this->state === 'closed') {
+      $form_id      = request::value_get('form_id');
+      $submit_value = request::value_get('f_opener_'.$this->number);
+      $has_error    = $this->has_error_in();
+      if ($form_id === '' && $this->state === 'opened'                    ) /*               default = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => null,                         ]))->render();
+      if ($form_id === '' && $this->state === 'closed'                    ) /*               default = closed */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true,                         ]))->render();
+      if ($form_id !== '' && $has_error !== true && $submit_value !== 'on') /* no error + no checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => null,                         ]))->render();
+      if ($form_id !== '' && $has_error !== true && $submit_value === 'on') /* no error +    checked = closed */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => true,                         ]))->render();
+      if ($form_id !== '' && $has_error === true && $submit_value !== 'on') /*    error + no checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => null, 'aria-invalid' => 'true']))->render();
+      if ($form_id !== '' && $has_error === true && $submit_value === 'on') /*    error +    checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new text('press to show or hide nested content'), 'name' => 'f_opener_'.$this->number, 'id' => 'f_opener_'.$this->number, 'checked' => null, 'aria-invalid' => 'true']))->render();
     }
-    if ($opener && request::value_get('form_id') && request::value_get('f_opener_'.$this->number) === 'on') $opener->attribute_insert('checked', true);
-    if ($opener && request::value_get('form_id') && request::value_get('f_opener_'.$this->number) !== 'on') $opener->attribute_delete('checked'      );
-    if ($opener && $this->has_error_in_container()                                                        ) $opener->attribute_delete('checked'      );
-    return $opener ?
-           $opener->render() : '';
+    return '';
   }
 
   ###########################

@@ -13,10 +13,10 @@ namespace effcore {
   public $item_title = 'Picture';
   public $attributes = ['data-type' => 'items-files-pictures'];
   public $name_complex = 'widget_files_pictures';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $upload_dir = 'pictures/';
   public $fixed_name = 'picture-multiple-%%_item_id_context';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $max_file_size = '1M';
   public $types_allowed = [
     'png'  => 'png',
@@ -58,7 +58,7 @@ namespace effcore {
     );
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
@@ -87,7 +87,7 @@ namespace effcore {
     $field_file_picture->multiple_set();
     $field_file_picture->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : '').'[]');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
@@ -101,7 +101,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
     $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;

@@ -17,7 +17,7 @@ namespace effcore {
     'gif'  => 'gif',
     'jpg'  => 'jpg',
     'jpeg' => 'jpeg'];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $video_player_default_settings = [
     'autoplay'    => null,
     'buffered'    => null,

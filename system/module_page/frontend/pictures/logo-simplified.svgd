@@ -23,10 +23,10 @@
 
   <defs>
     <linearGradient id="color-main">
-      <stop style="stop-color: %%_color__text"/>
+      <stop style="stop-color: %%_return_url_arg{color|black|css_units}"/>
     </linearGradient>
     <linearGradient id="color-fire">
-      <stop style="stop-color: %%_color__text"/>
+      <stop style="stop-color: %%_return_url_arg{color_fire|red|css_units}"/>
     </linearGradient>
   </defs>
 
@@ -48,11 +48,11 @@
       <path id="spark-motion_path-3" style="fill: none; stroke: none" d="M -0.67221,2.508706 0,0"/>
       <path id="spark-motion_path-4" style="fill: none; stroke: none" d="M -1.31819,-2.029836 0,0"/>
       <path id="spark-motion_path-5" style="fill: none; stroke: none" d="M 0.7213,-2.6919131 0,0"/>
-      %%_return_if_url_arg{no_animation|true||<animateMotion xlink:href="#spark-1" begin="0.5s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-1"/></animateMotion>}
-      %%_return_if_url_arg{no_animation|true||<animateMotion xlink:href="#spark-2" begin="0.2s" dur="0.5s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-2"/></animateMotion>}
-      %%_return_if_url_arg{no_animation|true||<animateMotion xlink:href="#spark-3" begin="0.4s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-3"/></animateMotion>}
-      %%_return_if_url_arg{no_animation|true||<animateMotion xlink:href="#spark-4" begin="0.1s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-4"/></animateMotion>}
-      %%_return_if_url_arg{no_animation|true||<animateMotion xlink:href="#spark-5" begin="0.3s" dur="0.3s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-5"/></animateMotion>}
+      <animateMotion xlink:href="#spark-1" begin="0.5s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-1"/></animateMotion>
+      <animateMotion xlink:href="#spark-2" begin="0.2s" dur="0.5s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-2"/></animateMotion>
+      <animateMotion xlink:href="#spark-3" begin="0.4s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-3"/></animateMotion>
+      <animateMotion xlink:href="#spark-4" begin="0.1s" dur="0.2s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-4"/></animateMotion>
+      <animateMotion xlink:href="#spark-5" begin="0.3s" dur="0.3s" repeatCount="indefinite"><mpath xlink:href="#spark-motion_path-5"/></animateMotion>
     </g>
   </g>
 

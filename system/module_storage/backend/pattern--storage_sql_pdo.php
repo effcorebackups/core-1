@@ -133,8 +133,8 @@ namespace effcore {
   }
 
   function transaction_begin   () {if ($this->init()) return $this->connection->beginTransaction();}
-  function transaction_rollback() {if ($this->init()) return $this->connection->rollBack();        }
-  function transaction_commit  () {if ($this->init()) return $this->connection->commit();          }
+  function transaction_rollback() {if ($this->init()) return $this->connection->inTransaction() ? $this->connection->rollBack() : true;}
+  function transaction_commit  () {if ($this->init()) return $this->connection->inTransaction() ? $this->connection->commit()   : true;}
 
   function query(...$query) {
     if (is_array($query[0]))
@@ -145,8 +145,10 @@ namespace effcore {
       $this->prepare_query($query_prepared);
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
-      $result = $this->connection->prepare($query_flat_string);
-      if ($result) $result->execute($this->args);
+      try {
+        $result = $this->connection->prepare($query_flat_string);
+        if ($result) $result->execute($this->args);
+      } catch (pdo_exception $e) {}
       $c_error = $result ? $result->errorInfo() : ['query preparation process return the false', 'no', 'no'];
       event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'result' => &$result, 'errors' => &$c_error]);
       $this->args_previous = $this->args;
@@ -290,13 +292,11 @@ namespace effcore {
       foreach ($entity->fields as $c_name => $c_info) {
 
       # prepare field name
-      # ─────────────────────────────────────────────────────────────────────
         $c_field = [
           'name_!f' => $c_name
         ];
 
       # prepare field type
-      # ─────────────────────────────────────────────────────────────────────
         switch ($c_info->type) {
           case 'autoincrement':
             if ($this->driver ===  'mysql') $c_field += ['type' => 'integer', 'primary_key' => 'primary key', 'autoincrement' => 'auto_increment'];
@@ -311,6 +311,7 @@ namespace effcore {
             }
         }
 
+      # ─────────────────────────────────────────────────────────────────────
       # prepare field properties
       # ─────────────────────────────────────────────────────────────────────
         if (isset($c_info->collate) && $c_info->collate === 'nocase' && $this->driver === 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_general_ci'];
@@ -331,6 +332,7 @@ namespace effcore {
         $fields[$c_name] = $c_field;
       }
 
+    # ─────────────────────────────────────────────────────────────────────
     # PRIMARY, UNIQUE, FOREIGN constraints
     # ─────────────────────────────────────────────────────────────────────
       $auto_name = $entity->auto_name_get();
@@ -342,6 +344,7 @@ namespace effcore {
         }
       }
 
+    # ─────────────────────────────────────────────────────────────────────
     # create entity
     # ─────────────────────────────────────────────────────────────────────
       $this->transaction_begin();
@@ -351,6 +354,7 @@ namespace effcore {
       if ($this->driver === 'sqlite') $this->query(['action' => 'CREATE', 'type' => 'TABLE',                             'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')'                                                                               ]);
       $this->foreign_keys_checks_set(true);
 
+    # ─────────────────────────────────────────────────────────────────────
     # create indexes
     # ─────────────────────────────────────────────────────────────────────
       foreach ($entity->indexes as $c_name => $c_info) {

@@ -24,8 +24,30 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
+  static function widget_manage_settings_get($widget, $item, $c_row_id) {
+    $opener = static::widget_manage_settings_opener_get($widget, $item, $c_row_id);
+    $result = new markup('x-settings');
+  # control for title
+    $field_title = new field_text;
+    $field_title->title = 'Title';
+    $field_title->description_state = 'hidden';
+    $field_title->cform = $widget->cform;
+    $field_title->build();
+    $field_title->name_set($widget->name_get_complex().'__title__'.$c_row_id);
+    $field_title->value_set($item->title ?? '');
+    $field_title->required_set(false);
+  # relate new controls with the widget
+    $widget->controls['#title__'.$c_row_id] = $field_title;
+    $result->child_insert($field_title, 'title');
+    return new node([], [
+      'opener' => $opener,
+      'result' => $result
+    ]);
+  }
+
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
+    $widget_settings = static::widget_manage_settings_get($widget, $item, $c_row_id);
   # info markup
     $presets = block_preset::select_all($widget->id_area);
     $title_markup = isset($presets[$item->id]) ?
@@ -34,8 +56,9 @@ namespace effcore {
     $info_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $title_markup),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
-  # grouping of previous elements in widget 'manage'
+  # relate new controls with the widget
     $result->child_insert($info_markup, 'info');
+    $result->child_insert($widget_settings, 'settings');
     return $result;
   }
 
@@ -66,7 +89,7 @@ namespace effcore {
     $select->name_set($widget->name_get_complex().'__insert');
     $select->required_set(false);
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');
@@ -79,7 +102,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_button_click_insert($widget, $form, $npath, $button) {
     $widget->controls['#insert']->required_set(true);
@@ -96,9 +119,10 @@ namespace effcore {
       $widget->items_set($items);
       $widget->controls['#insert']->value_set('');
       message::insert(new text_multiline([
-        'Item of type "%%_type" was inserted.',
+        'Item of type "%%_type" with ID = "%%_id" was inserted.',
         'Do not forget to save the changes!'], [
-       'type' => (new text($widget->item_title))->render() ]));
+        'type' => (new text($widget->item_title))->render(),
+        'id'   => $new_item->id ]));
       return true;
     }
   }

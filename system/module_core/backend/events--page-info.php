@@ -15,12 +15,13 @@ namespace effcore\modules\core {
           use \effcore\node;
           use \effcore\storage;
           use \effcore\text;
+          use \effcore\token;
           use \effcore\update;
           use \effcore\url;
           abstract class events_page_info {
 
   static function block_markup__system_info($page, $args = []) {
-    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.'frontend/pictures/logo-simplified.svgd', 'alt' => new text('system logotype'), 'width' => '300']));
+    $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.token::apply('frontend/pictures/logo-simplified.svgd?color=%%_return_token_color_encode{color__text}&color_fire=%%_return_token_color_encode{color__text}'), 'alt' => new text('system logotype'), 'width' => '300']));
     $copyright = new markup('x-copyright', [], 'Copyright © 2017—2021 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
@@ -56,16 +57,18 @@ namespace effcore\modules\core {
   }
 
   static function block_markup__environment_info($page, $args = []) {
-    $storage_sql = storage::get('sql');
-    $php_version_curl = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
-    $is_enabled_opcache = function_exists('opcache_get_status') && !empty(@opcache_get_status(false)['opcache_enabled']);
-    $php_memory_limit = core::memory_limit_bytes_get();
-    $php_max_file_uploads = core::max_file_uploads_get();
+    $storage_sql             = storage::get('sql');
+    $php_version_curl        = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
+    $is_enabled_opcache      = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
+    $is_enabled_opcache_jit  = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['jit']['enabled']);
+    $php_memory_limit        = core::memory_limit_bytes_get();
+    $php_max_file_uploads    = core::max_file_uploads_get();
     $php_upload_max_filesize = core::upload_max_filesize_bytes_get();
-    $php_post_max_size = core::post_max_size_bytes_get();
-    $php_max_input_time = core::max_input_time_get();
-    $php_max_execution_time = core::max_execution_time_get();
-    $sticker_for_is_enabled_opcache      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache ? 'yes' : 'no');
+    $php_post_max_size       = core::post_max_size_bytes_get();
+    $php_max_input_time      = core::max_input_time_get();
+    $php_max_execution_time  = core::max_execution_time_get();
+    $sticker_for_is_enabled_opcache      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache     ? 'yes' : 'no');
+    $sticker_for_is_enabled_opcache_jit  = new markup('x-sticker', ['data-style' => $is_enabled_opcache_jit                ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no');
     $sticker_for_php_memory_limit        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x10000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x10000000)]))->render()], locale::format_bytes  ($php_memory_limit)       );
     $sticker_for_php_max_file_uploads    = new markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_pieces (20)]))        ->render()], locale::format_pieces ($php_max_file_uploads)   );
     $sticker_for_php_upload_max_filesize = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));
@@ -75,23 +78,24 @@ namespace effcore\modules\core {
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
-      'web_server'              => ['title' => 'Web server',              'value' => core::server_get_software()                               ],
-      'php_version'             => ['title' => 'PHP version',             'value' => phpversion()                                              ],
-      'php_version_curl'        => ['title' => 'PHP CURL version',        'value' => $php_version_curl                                         ],
-      'php_version_pcre'        => ['title' => 'PHP PCRE version',        'value' => PCRE_VERSION                                              ],
-      'php_state_opcache'       => ['title' => 'PHP OPCache is enabled',  'value' => $sticker_for_is_enabled_opcache                           ],
-      'php_memory_limit'        => ['title' => 'PHP memory_limit',        'value' => $sticker_for_php_memory_limit                             ],
-      'php_max_file_uploads'    => ['title' => 'PHP max_file_uploads',    'value' => $sticker_for_php_max_file_uploads                         ],
-      'php_upload_max_filesize' => ['title' => 'PHP upload_max_filesize', 'value' => $sticker_for_php_upload_max_filesize                      ],
-      'php_post_max_size'       => ['title' => 'PHP post_max_size',       'value' => $sticker_for_php_post_max_size                            ],
-      'php_max_input_time'      => ['title' => 'PHP max_input_time',      'value' => $sticker_for_php_max_input_time                           ],
-      'php_max_execution_time'  => ['title' => 'PHP max_execution_time',  'value' => $sticker_for_php_max_execution_time                       ],
-      'storage_sql'             => ['title' => 'SQL storage',             'value' => $storage_sql->title_get().' '.$storage_sql->version_get() ],
-      'operating_system'        => ['title' => 'Operating System',        'value' => php_uname('s').' | '.php_uname('r').' | '.php_uname('v')  ],
-      'architecture'            => ['title' => 'Architecture',            'value' => php_uname('m')                                            ],
-      'hostname'                => ['title' => 'Hostname',                'value' => php_uname('n')                                            ],
-      'timezone'                => ['title' => 'Time zone',               'value' => date_default_timezone_get()                               ],
-      'datetime'                => ['title' => 'UTC date/time',           'value' => core::datetime_get()                                      ] ]];
+      'web_server'              => ['title' => 'Web server',                 'value' => core::server_get_software()                               ],
+      'php_version'             => ['title' => 'PHP version',                'value' => phpversion()                                              ],
+      'php_version_curl'        => ['title' => 'PHP CURL version',           'value' => $php_version_curl                                         ],
+      'php_version_pcre'        => ['title' => 'PHP PCRE version',           'value' => PCRE_VERSION                                              ],
+      'php_state_opcache'       => ['title' => 'PHP OPCache is enabled',     'value' => $sticker_for_is_enabled_opcache                           ],
+      'php_state_opcache_jit'   => ['title' => 'PHP OPCache JIT is enabled', 'value' => $sticker_for_is_enabled_opcache_jit                       ],
+      'php_memory_limit'        => ['title' => 'PHP memory_limit',           'value' => $sticker_for_php_memory_limit                             ],
+      'php_max_file_uploads'    => ['title' => 'PHP max_file_uploads',       'value' => $sticker_for_php_max_file_uploads                         ],
+      'php_upload_max_filesize' => ['title' => 'PHP upload_max_filesize',    'value' => $sticker_for_php_upload_max_filesize                      ],
+      'php_post_max_size'       => ['title' => 'PHP post_max_size',          'value' => $sticker_for_php_post_max_size                            ],
+      'php_max_input_time'      => ['title' => 'PHP max_input_time',         'value' => $sticker_for_php_max_input_time                           ],
+      'php_max_execution_time'  => ['title' => 'PHP max_execution_time',     'value' => $sticker_for_php_max_execution_time                       ],
+      'storage_sql'             => ['title' => 'SQL storage',                'value' => $storage_sql->title_get().' '.$storage_sql->version_get() ],
+      'operating_system'        => ['title' => 'Operating System',           'value' => php_uname('s').' | '.php_uname('r').' | '.php_uname('v')  ],
+      'architecture'            => ['title' => 'Architecture',               'value' => php_uname('m')                                            ],
+      'hostname'                => ['title' => 'Hostname',                   'value' => php_uname('n')                                            ],
+      'timezone'                => ['title' => 'Time zone',                  'value' => date_default_timezone_get()                               ],
+      'datetime'                => ['title' => 'UTC date/time',              'value' => core::datetime_get()                                      ] ]];
     return new node([], [
       $decorator
     ]);

@@ -38,7 +38,7 @@ pages
           - data-id: block__tabs
           type: link
           source: tabs/user/security
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__security_settings|block
           title: Security settings form

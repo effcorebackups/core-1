@@ -38,7 +38,7 @@ pages
           - data-id: block__tabs
           type: link
           source: tabs/storage/data
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__instance_select_multiple|block
           title: Data management form

@@ -10,7 +10,7 @@ namespace effcore {
   public $tag_name = 'section';
   public $template = 'block';
   public $attributes = ['data-block' => true];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title;
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-block-title' => true];

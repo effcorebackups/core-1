@@ -7,8 +7,7 @@
     height: 44px;
     margin-right: 10px;
     cursor: move;
-    border-radius: 5px;
-    background: %%_color__main url('/system/module_page/frontend/pictures/icons-drag_and_drop.svgd') 50% 50%}
+    background: %%_color__main url('/system/module_page/frontend/pictures/icons-drag_and_drop.svgd?color=%%_return_token_color_encode{color__main}') 50% 50%}
 
   [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='before']   {background: %%_color__warning; display: block; position: relative; height: 6px}
   [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='in'    ]   {background: %%_color__warning; display: block; position: absolute; height: 46px; width: 38px; z-index: 200; opacity: .5}

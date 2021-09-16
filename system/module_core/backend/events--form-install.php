@@ -22,63 +22,51 @@ namespace effcore\modules\core {
           abstract class events_form_install {
 
   static function on_build($event, $form) {
-    $profile_options = module::get_profiles('title');
-    core::array_sort_text($profile_options);
-    $field_profile = $form->child_select('profile')->child_select('profile');
-    $field_profile->values += $profile_options;
-    $field_profile->selected = ['profile_default' => 'profile_default'];
-  }
-
-  static function on_init($event, $form, $items) {
     if (!storage::get('sql')->is_installed()) {
-      $items['#password']->value_set(core::password_generate());
-    # check for PHP dependencies
-      $embedded = module::get_embedded();
-      $dependencies = [];
-      foreach ($embedded as $c_module)
-           $dependencies += $c_module->dependencies->php ?? [];
-      foreach ($dependencies as $c_name => $c_version_min) {
-        if (!extension_loaded($c_name)) {
-          message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => $c_name]), 'error');
-          $items['~install']->disabled_set();
-        } else {
-          $c_version_cur = (new \ReflectionExtension($c_name))->getVersion();
-          if (!version_compare($c_version_cur, $c_version_min, '>=')) {
-            message::insert(new text_multiline([
-              'PHP extension "%%_extension" is too old!',
-              'Current version number is %%_number_current.',
-              'Required version number is %%_number_required.'], [
-              'extension'       => $c_name,
-              'number_current'  => $c_version_cur,
-              'number_required' => $c_version_min]), 'error');
-            $items['~install']->disabled_set();
-          }
-        }
-      }
-    # check OPCache
-      if (!extension_loaded('Zend OPCache')) {
-        message::insert(new text_multiline([
-          'PHP extension "%%_extension" is not available!',
-          'With it, you can speed up the system from 2-3x and more.'], ['extension' => 'Zend OPCache']
-        ), 'warning');
-      }
-    # check PHP dependencies for storage
-      if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
-        $items['#driver:mysql' ]->disabled_set();
-        $items['#driver:sqlite']->disabled_set();
-        $items['~install'      ]->disabled_set();
-        message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'error');
-        message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'error');
-      } else {
-        if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'warning');}
-        if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'warning');}
-      }
+    # profile selection element
+      $field_profile_options = module::get_profiles('title');
+      core::array_sort_text($field_profile_options);
+      $field_profile = $form->child_select('profile')->child_select('profile');
+      $field_profile->values = $field_profile_options;
+      $field_profile->selected = ['profile_default' => 'profile_default'];
     } else {
       $form->children_delete();
       core::send_header_and_exit('access_forbidden', null, new text_multiline([
         'Installation is not available because storage credentials was set!',
         'go to <a href="/">front page</a>'
       ], [], br.br));
+    }
+  }
+
+  static function on_init($event, $form, $items) {
+    $items['#password']->value_set(core::password_generate());
+  # check OPCache
+    if (!extension_loaded('Zend OPCache')) {
+      message::insert(new text_multiline([
+        'PHP extension "%%_extension" is not available!',
+        'With it, you can speed up the system from 2-3x and more.'], ['extension' => 'Zend OPCache']
+      ), 'warning');
+    }
+  # check the dependencies of each module
+    foreach (module::get_enabled_by_default() as $c_module) {
+      $c_dependencies_info = $c_module->dependencies_info_get('default');
+      foreach ($c_dependencies_info->sys as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from module '  .  'with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
+      foreach ($c_dependencies_info->php as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
+      if ($c_dependencies_info->has_dependencies_sys ||
+          $c_dependencies_info->has_dependencies_php) {
+        $items['~install']->disabled_set();
+      }
+    }
+  # check the dependencies for the storage
+    if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
+      $items['#driver:mysql' ]->disabled_set();
+      $items['#driver:sqlite']->disabled_set();
+      $items['~install'      ]->disabled_set();
+      message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'error');
+      message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'error');
+    } else {
+      if (!extension_loaded('pdo_mysql' )) {$items['#driver:mysql' ]->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_mysql' ]), 'warning');}
+      if (!extension_loaded('pdo_sqlite')) {$items['#driver:sqlite']->disabled_set(); message::insert(new text('PHP extension "%%_extension" is not available!', ['extension' => 'pdo_sqlite']), 'warning');}
     }
   }
 
@@ -170,19 +158,15 @@ namespace effcore\modules\core {
             return;
           }
         # prepare data about modules which will be installed
-          $enabled_by_default = module::get_enabled_by_default();
-          $embedded           = module::get_embedded();
-          $modules            = module::get_all();
+          $enabled = module::get_enabled_by_default();
           $modules_to_install = [];
           $modules_to_include = [];
-          core::array_sort_by_property($modules, 'deploy_weight');
-          foreach ($modules as $c_module) {
-            if ($c_module instanceof module_as_profile && $c_module->id !== $items['#profile']->value_get()) continue;
-            if (isset($enabled_by_default[$c_module->id]) ||
-                isset($embedded          [$c_module->id])) {
-              $modules_to_install[$c_module->id] = $c_module;
-              $modules_to_include[$c_module->id] = $c_module->path;
-            }
+          core::array_sort_by_property($enabled, 'deploy_weight');
+          foreach ($enabled as $c_module) {
+            if ($c_module instanceof module_as_profile &&
+                $c_module->id !== $items['#profile']->value_get()) continue;
+            $modules_to_install[$c_module->id] = $c_module;
+            $modules_to_include[$c_module->id] = $c_module->path;
           }
         # installation process
           cache::update_global($modules_to_include);

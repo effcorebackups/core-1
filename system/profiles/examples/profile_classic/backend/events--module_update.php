@@ -16,7 +16,7 @@ namespace effcore\modules\profile_classic {
     return core_events_module_update::on_repo_restore__git($event, $bundle_id);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_update_data_1000($update) {
     return true;

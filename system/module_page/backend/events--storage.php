@@ -16,8 +16,9 @@ namespace effcore\modules\page {
     foreach ($entity->fields as $c_name => $c_field) {
       if (!empty($c_field->managing_control_class)) {
         $c_control = (new \ReflectionClass($c_field->managing_control_class))->newInstanceWithoutConstructor();
-        foreach ($c_field->managing_control_properties ?? [] as $c_prop_name => $c_prop_value)
-          $c_control->{$c_prop_name} = $c_prop_value;
+        if (isset($c_field->managing_control_properties) && is_array($c_field->managing_control_properties))
+          foreach ($c_field->managing_control_properties as $c_prop_name => $c_prop_value)
+            $c_control->{$c_prop_name} = $c_prop_value;
       # deleting the file associated with field_file
         if ($c_control instanceof field_file) {
           if (!empty($instance->{$c_name})) {

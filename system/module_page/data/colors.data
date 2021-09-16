@@ -1,7 +1,7 @@
 colors
 - transparent|color
     id: transparent
-    value: 
+    value_hex: 
     group: base
 - white|color
     id: white
@@ -994,16 +994,4 @@ colors
 - default_3|color
     id: default_3
     value_hex: #3b4157
-    group: default
-- default_4|color
-    id: default_4
-    value_hex: #4169e1
-    group: default
-- default_5|color
-    id: default_5
-    value_hex: #216ce4
-    group: default
-- default_6|color
-    id: default_6
-    value_hex: #1e90ff
     group: default

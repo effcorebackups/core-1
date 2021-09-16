@@ -27,7 +27,7 @@ pages
     - title
       - block__title|block_preset_link
           id: block__title
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__console|block
           title: Console settings form

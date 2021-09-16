@@ -15,7 +15,7 @@ events
   - profile_classic|event
       for: profile_classic
       handler: \effcore\modules\profile_classic\events_module::on_disable
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_update_files
   - examples|event
       for: examples
@@ -53,7 +53,7 @@ events
       for: recovery
       weight: +600
       handler: \effcore\modules\profile_classic\events_form_recovery::on_submit
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
   - user_ru|event
       for: user_ru

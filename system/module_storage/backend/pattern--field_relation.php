@@ -14,7 +14,7 @@ namespace effcore {
   public $element_attributes = [
     'name'     => 'relation',
     'required' => true];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $related_entity_name;
   public $related_entity_field_id_name;
   public $related_entity_field_id_parent_name;

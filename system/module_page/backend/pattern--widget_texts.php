@@ -18,6 +18,7 @@ namespace effcore {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for text
     $field_text = new field_text;
+    $field_text->attributes['data-style'] = 'inline';
     $field_text->description_state = 'hidden';
     $field_text->cform = $widget->cform;
     $field_text->build();
@@ -29,7 +30,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_button_click_insert($widget, $form, $npath, $button) {
     $min_weight = 0;

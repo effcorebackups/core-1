@@ -11,7 +11,7 @@ namespace effcore {
   public $attributes = [
     'type' => 'submit',
     'name' => 'button'];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title = 'button';
   public $break_on_request_value_set = false;
   public $break_on_validate = false;

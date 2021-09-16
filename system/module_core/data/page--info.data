@@ -29,7 +29,7 @@ pages
     - title
       - block__title|block_preset_link
           id: block__title
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__system_info|block
           title: System information

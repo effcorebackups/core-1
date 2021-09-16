@@ -15,7 +15,7 @@ namespace effcore {
   public $item_title = 'File';
   public $attributes = ['data-type' => 'items-files-multimedia'];
   public $name_complex = 'widget_files_multimedia';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $upload_dir = 'multimedia/';
   public $fixed_name = 'multimedia-multiple-%%_item_id_context';
 
@@ -65,7 +65,7 @@ namespace effcore {
     if (media::media_class_get($item->object->type) === 'audio'  ) return widget_files_audios  ::item_markup_get($item, $row_id);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     if (media::media_class_get($item->object->type) === 'picture') return widget_files_pictures::widget_manage_get($widget, $item, $c_row_id);
@@ -101,7 +101,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
     if ($button->_kind === 'picture') {$widget->controls['#file'] = $widget->controls['#file_picture']; return widget_files_pictures::on_file_prepare($widget, $form, $npath, $button, $items, $new_item);}

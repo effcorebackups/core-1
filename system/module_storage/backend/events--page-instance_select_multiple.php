@@ -12,8 +12,9 @@ namespace effcore\modules\storage {
           use \effcore\url;
           abstract class events_page_instance_select_multiple {
 
+  # ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   # URLs variants:
-  # ─────────────────────────────────────────────────────────────────────
+  # ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   # multiple select: / manage / data
   # multiple select: / manage / data / %%_managing_group_id / %%_entity_name
   # multiple select: / manage / data / %%_managing_group_id / %%_entity_name / …………………………………… / ……………………………………………………… / %%_category_id
@@ -22,7 +23,7 @@ namespace effcore\modules\storage {
   #          select: / manage / data / %%_managing_group_id / %%_entity_name / %%_instance_id
   #          update: / manage / data / %%_managing_group_id / %%_entity_name / %%_instance_id / %%_action_name=update
   #          delete: / manage / data / %%_managing_group_id / %%_entity_name / %%_instance_id / %%_action_name=delete
-  # ─────────────────────────────────────────────────────────────────────
+  # ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
   static function on_redirect($event, $page) {
     $managing_group_id  = $page->args_get('managing_group_id');

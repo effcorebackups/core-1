@@ -56,18 +56,14 @@ namespace effcore {
   function render_opener() {
     $color_id        = $this->value_get() ?: 'white';
     $color_value_hex = color::get($color_id)->value_hex ?: '#ffffff';
-    $has_error       = $this->has_error_in_container();
-    return (new markup_simple('input', [
-      'type'             => 'checkbox',
-      'role'             => 'button',
-      'data-opener-type' => 'palette',
-      'id'               => 'f_opener_'.$this->name_get_complex(),
-      'title'            => new text('press to show or hide available colors'),
-      'checked'          => $has_error ? false : true,
-      'aria-invalid'     => $has_error ? 'true' : null,
-      'value'            => $color_id,
-      'style'            => ['background: '.$color_value_hex]
-    ]))->render();
+    $form_id         = request::value_get('form_id');
+    $submit_value    = request::value_get('f_opener_'.$this->name_get_complex());
+    $has_error       = $this->has_error_in();
+    if ($form_id === ''                                                      ) /*               default = closed */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'palette', 'title' => new text('press to show or hide available colors'), 'name' => 'f_opener_'.$this->name_get_complex(), 'id' => 'f_opener_'.$this->name_get_complex(), 'checked' => true,                           'value' => $color_id, 'style' => ['background: '.$color_value_hex]]))->render();
+    if ($form_id !== '' && $has_error !== true && $submit_value !== $color_id) /* no error + no checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'palette', 'title' => new text('press to show or hide available colors'), 'name' => 'f_opener_'.$this->name_get_complex(), 'id' => 'f_opener_'.$this->name_get_complex(), 'checked' => null,                           'value' => $color_id, 'style' => ['background: '.$color_value_hex]]))->render();
+    if ($form_id !== '' && $has_error !== true && $submit_value === $color_id) /* no error +    checked = closed */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'palette', 'title' => new text('press to show or hide available colors'), 'name' => 'f_opener_'.$this->name_get_complex(), 'id' => 'f_opener_'.$this->name_get_complex(), 'checked' => true,                           'value' => $color_id, 'style' => ['background: '.$color_value_hex]]))->render();
+    if ($form_id !== '' && $has_error === true && $submit_value !== $color_id) /*    error + no checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'palette', 'title' => new text('press to show or hide available colors'), 'name' => 'f_opener_'.$this->name_get_complex(), 'id' => 'f_opener_'.$this->name_get_complex(), 'checked' => null, 'aria-invalid' => 'true', 'value' => $color_id, 'style' => ['background: '.$color_value_hex]]))->render();
+    if ($form_id !== '' && $has_error === true && $submit_value === $color_id) /*    error +    checked = opened */ return (new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'palette', 'title' => new text('press to show or hide available colors'), 'name' => 'f_opener_'.$this->name_get_complex(), 'id' => 'f_opener_'.$this->name_get_complex(), 'checked' => null, 'aria-invalid' => 'true', 'value' => $color_id, 'style' => ['background: '.$color_value_hex]]))->render();
   }
 
 }}

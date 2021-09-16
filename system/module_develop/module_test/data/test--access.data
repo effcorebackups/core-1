@@ -571,7 +571,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # ─────────────────────────────────────────────────────────────────────
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - transpositions|step_transpositions
       # ┌────╥─────────┬─────────┬─────────┬─────────┐
       # │  i ║ …select │ …insert │ …update │ …delete │
@@ -596,7 +596,7 @@ tests
         action_before|step_set_role_permissions
           id_role: test
           is_reset: true
-      # ─────────────────────────────────────────────────────────────────────
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         actions
         - select|step_actions
             actions
@@ -622,7 +622,7 @@ tests
                 id_role: test
                 permissions
                 - =: manage_data__content_page_text__delete
-      # ─────────────────────────────────────────────────────────────────────
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         action_after|step_actions
           actions
           # multiple instance select page

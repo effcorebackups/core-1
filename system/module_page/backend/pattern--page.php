@@ -8,7 +8,7 @@ namespace effcore {
           class page extends node implements has_external_cache {
 
   public $template = 'page';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $id;
   public $id_layout = 'simple';
   public $title;
@@ -103,7 +103,7 @@ namespace effcore {
   # page palette is dark or light
     $colors = color::get_all();
     $color_page = $colors[$settings->color__page_id] ?? null;
-    $is_dark_palette = $color_page ? $color_page->is_dark() : false;
+    $is_dark_palette = $color_page && $color_page->is_dark();
 
   # render page
     event::start('on_page_render_before', $this->id, ['page' => &$this, 'template' => &$template]);
@@ -196,7 +196,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select('pages') ?? [] as $c_module_id => $c_pages) {
+      foreach (storage::get('files')->select_array('pages') as $c_module_id => $c_pages) {
         foreach ($c_pages as $c_id => $c_page) {
           if (isset(static::$cache[$c_id])) console::report_about_duplicate('page', $c_id, $c_module_id);
                     static::$cache[$c_id] = $c_page;

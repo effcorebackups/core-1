@@ -81,7 +81,7 @@ block_presets
     source: forms/storage/instance_update
     properties
     - entity_name: user
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - block__selection__user|block_preset
     id: block__selection__user
     managing_group: Selections

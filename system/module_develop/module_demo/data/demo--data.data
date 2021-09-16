@@ -1,7 +1,7 @@
 demo_data
 # ─────────────────────────────────────────────────────────────────────
-# scalar types
-# ─────────────────────────────────────────────────────────────────────
+# scalar types:
+# ═════════════════════════════════════════════════════════════════════
 # demo_integer_exponential: 123e1 # - exponential notation is not supported
 # demo_integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
 # demo_integer_octal: 0123        # - octal notation is not supported

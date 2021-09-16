@@ -11,6 +11,8 @@ namespace effcore {
     return (new instance('poll', ['id' => $id]))->select();
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function answers_by_poll_id_select($id_poll) {
     $result = [];
     $rows = entity::get('poll_answer')->instances_select(['conditions' => [
@@ -36,6 +38,8 @@ namespace effcore {
     ]))->delete();
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function votes_total_select($id_answers) {
     return entity::get('poll_vote')->instances_select_count(['conditions' => [
       'id_answer_!f'       => 'id_answer',
@@ -44,6 +48,8 @@ namespace effcore {
       'id_answer_in_end'   => ')'
     ]]);
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function votes_id_total_by_answers_select($id_answers) {
     $result = [];
@@ -91,6 +97,8 @@ namespace effcore {
     return $result;
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function votes_by_user_id_insert($id_user, $id_answer) {
     return (new instance('poll_vote', [
       'id_user'   => $id_user,
@@ -104,6 +112,8 @@ namespace effcore {
       'id_answer'  => $id_answer
     ]))->insert();
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function votes_by_user_id_delete($id_user, $id_answers) {
     return entity::get('poll_vote')->instances_delete(['conditions' => [

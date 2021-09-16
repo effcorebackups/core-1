@@ -85,7 +85,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__user_feedback__select
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - security_settings|tab_item
     id: security_settings
     id_parent: null

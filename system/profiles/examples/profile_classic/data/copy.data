@@ -11,7 +11,7 @@ copy
     from: copy/sitemap.xml
     to: dynamic/data/sitemap.xml
     if_exists: backup_and_replace
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - logotype
     from: copy/logotype.svg
     to: dynamic/files/pictures/picture-logotype.svg
@@ -136,7 +136,7 @@ copy
     from: copy/logotype-youtube.svgd
     to: dynamic/files/pictures/picture-logotype_youtube.svgd
     if_exists: backup_and_replace
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - gallery_main_item_0
     from: copy/gallery-main-0.picture
     to: dynamic/files/galleries/gallery-main-0.picture

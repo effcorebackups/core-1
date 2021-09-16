@@ -134,6 +134,7 @@ namespace effcore {
   static function block_markup__logs() {
     $total_sequence_hash = '';
     $total_data_hash     = '';
+    $total_by_actions    = [];
     $logs = static::logs_select();
     $decorator = new decorator('table');
     $decorator->id = 'logs';
@@ -143,6 +144,9 @@ namespace effcore {
       $c_data_hash          = core::hash_get(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
+      if (isset($total_by_actions[$c_log->object][$c_log->action]))
+                $total_by_actions[$c_log->object][$c_log->action]++;
+      else      $total_by_actions[$c_log->object][$c_log->action] = 1;
       $c_row_attributes  = ['data-hash-sequence' => core::hash_get_mini($c_sequence_hash)];
       $c_row_attributes += ['data-hash-data'     => core::hash_get_mini($c_data_hash    )];
       $c_row_attributes += ['data-object'        => core::sanitize_id(trim($c_log->object, '.'))];
@@ -158,27 +162,49 @@ namespace effcore {
         'attributes'   => $c_row_attributes,
         'time'         => ['title' => 'Time',              'value' => locale::format_msecond($c_log->time)                                   ],
         'ram_dynamics' => ['title' => 'RAM load dynamics', 'value' => locale::format_bytes  ($c_log->ram_dynamics)                           ],
-        'object'       => ['title' => 'Object',            'value' =>               new text($c_log->object)                                 ],
-        'action'       => ['title' => 'Action',            'value' =>               new text($c_log->action)                                 ],
+        'object'       => ['title' => 'Object',            'value' =>    new text           ($c_log->object)                                 ],
+        'action'       => ['title' => 'Action',            'value' =>    new text           ($c_log->action)                                 ],
         'description'  => ['title' => 'Description',       'value' =>    new text_multiline([$c_log->description, $c_info], $c_log->args, '')],
-        'value'        => ['title' => 'Val.',              'value' =>               new text($c_log->value)                                  ] ];}
-    return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [$decorator, new markup('x-total', [], [
-      new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
+        'value'        => ['title' => 'Val.',              'value' =>    new text           ($c_log->value)                                  ]
+      ];
+    }
+    $markup_total = new markup('x-total', [], [
       new markup('x-param', ['data-id' => 'shash'], [new markup('x-title', [], 'Sequence hash'), new markup('x-value', [], $total_sequence_hash)]),
-      new markup('x-param', ['data-id' => 'dhash'], [new markup('x-title', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )])])
+      new markup('x-param', ['data-id' => 'dhash'], [new markup('x-title', [], 'Data hash'    ), new markup('x-value', [], $total_data_hash    )]),
+      new markup('x-param', ['data-id' => 'count'], [new markup('x-title', [], 'Total'        ), new markup('x-value', [], count($logs)        )]),
+    ]);
+    foreach ($total_by_actions as $c_object_name => $c_object_total) {
+      foreach ($c_object_total as $c_action_name => $c_total) {
+        $markup_total->child_insert(
+          new markup('x-param', ['data-id' => $c_object_name.'-'.$c_action_name], [
+            new markup('x-title', [], new text_multiline(['— ', $c_object_name, ' | ', $c_action_name], [], '')),
+            new markup('x-value', [], $c_total)
+          ])
+        );
+      }
+    }
+    return new block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [
+      $decorator, $markup_total
     ]);
   }
 
+  static function render_info_opener() {
+    return (new markup_simple('input', [
+      'type'             => 'checkbox',
+      'role'             => 'button',
+      'data-opener-type' => 'info',
+      'title'            => new text('press to show more information')
+    ]))->render();
+  }
+
   static function render_info_markup($data) {
-    $info_opener = new markup_simple('input', ['data-opener-type' => 'info', 'type' => 'checkbox', 'role' => 'button', 'title' => new text('press to show more information')]);
-    $info        = new markup('x-info');
+    $info = new markup('x-info');
     foreach ($data as $c_title => $c_value)
       $info->child_insert(
         new markup('x-param', [], [
         new markup('x-title', [], $c_title),
         new markup('x-value', [], $c_value)]), $c_title);
-    return $info_opener->render().
-           $info       ->render();
+    return static::render_info_opener().$info->render();
   }
 
   static function render_stack($data) {
@@ -202,8 +228,8 @@ namespace effcore {
 
   static function block_text__information() {
     $information = [];
-    $information['Total generation time'] = locale::format_msecond(timer::period_get('total', 0, 1));
-    $information['Memory for PHP'] = locale::format_bytes(memory_get_usage(true));
+    $information['Total generation time'] = core::format_msecond(timer::period_get('total', 0, 1));
+    $information['Memory for PHP'] = core::format_bytes(memory_get_usage(true));
     $result = '  CURRENT PAGE INFORMATION'.nl.nl;
     foreach ($information as $c_key => $c_value) {
       $result.= '  '.str_pad($c_key, 38, ' ', STR_PAD_LEFT).' : ';
@@ -226,13 +252,14 @@ namespace effcore {
       $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                             ' | ';
       $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
       $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
-      $result.=      locale::format_msecond($c_value).' sec.'.nl; }
+      $result.=      core::format_msecond($c_value).' sec.'.nl; }
     return nl.$result.nl;
   }
 
   static function block_text__logs() {
     $total_sequence_hash = '';
     $total_data_hash     = '';
+    $total_by_actions    = [];
     $logs = static::logs_select();
     $result = '  EXECUTION PLAN'.nl.nl;
     $result.= '  ------------------------------------------------------------'.nl;
@@ -243,18 +270,26 @@ namespace effcore {
       $c_data_hash          = core::hash_get(['time' => 0              ] + (array)$c_log);
       $total_sequence_hash  = core::hash_get($total_sequence_hash.$c_sequence_hash);
       $total_data_hash      = core::hash_get($total_data_hash    .$c_data_hash    );
-      $result.= '  '.str_pad(locale::format_msecond($c_log->time), 8).' | ';
-      $result.=      str_pad($c_log->object, 10).                     ' | ';
-      $result.=      str_pad($c_log->action, 10).                     ' | ';
-      $result.=      str_pad($c_log->value,   5).                     ' | ';
+      if (isset($total_by_actions[$c_log->object][$c_log->action]))
+                $total_by_actions[$c_log->object][$c_log->action]++;
+      else      $total_by_actions[$c_log->object][$c_log->action] = 1;
+      $result.= '  '.str_pad(core::format_msecond($c_log->time), 8).' | ';
+      $result.=      str_pad($c_log->object, 10).                   ' | ';
+      $result.=      str_pad($c_log->action, 10).                   ' | ';
+      $result.=      str_pad($c_log->value,   5).                   ' | ';
       if (!empty($c_log->info))
            $result.= (new text($c_log->description.'   …   '.static::render_info_text($c_log->info), $c_log->args, false))->render().nl;
       else $result.= (new text($c_log->description,                                                  $c_log->args, false))->render().nl;
     }
     $result.= '  ------------------------------------------------------------'.nl;
-    $result.= nl.'  '.str_pad('Total: ',         16).count($logs);
-    $result.= nl.'  '.str_pad('Sequence hash: ', 16).$total_sequence_hash;
-    $result.= nl.'  '.str_pad('Data hash: ',     16).$total_data_hash;
+    $result.= nl.'  '.str_pad('Sequence hash: ', 25).$total_sequence_hash;
+    $result.= nl.'  '.str_pad('Data hash: ',     25).$total_data_hash;
+    $result.= nl.'  '.str_pad('Total: ',         25).count($logs);
+    foreach ($total_by_actions as $c_object_name => $c_objstatistic) {
+      foreach ($c_objstatistic as $c_action_name => $c_total) {
+        $result.= nl.'  '.str_pad('- '.$c_object_name.' | '.$c_action_name.': ', 25).$c_total;
+      }
+    }
     return nl.$result.nl;
   }
 

@@ -11,7 +11,7 @@ namespace effcore {
   public $item_title = 'File';
   public $attributes = ['data-type' => 'items-files'];
   public $name_complex = 'widget_files';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $upload_dir = '';
   public $fixed_name = 'file-multiple-%%_item_id_context';
   public $fixed_type;
@@ -59,7 +59,7 @@ namespace effcore {
     return $decorator;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
@@ -92,7 +92,7 @@ namespace effcore {
     $field_file->multiple_set();
     $field_file->name_set($widget->name_get_complex().'__file[]');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert');
@@ -105,7 +105,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_values_validate($widget, $form, $npath, $button, $name) {
     return field_file::on_validate_manual($widget->controls[$name], $form, $npath);
@@ -190,7 +190,7 @@ namespace effcore {
 
   static function on_button_click_delete($widget, $form, $npath, $button) {
     $items = $widget->items_get();
-    $title_for_message = $items[$button->_id]->object->file;
+    $item_title = $items[$button->_id]->object->file;
     switch ($items[$button->_id]->object->get_current_state()) {
       case 'pre':
         if ($items[$button->_id]->object->delete_pre()) {
@@ -200,7 +200,7 @@ namespace effcore {
             'Item of type "%%_type" with title = "%%_title" was deleted physically.',
             'Do not forget to save the changes!'], [
             'type'  => (new text($widget->item_title))->render(),
-            'title' => $title_for_message ]));
+            'title' => $item_title ]));
           return true;
         } return;
       case 'fin':
@@ -210,7 +210,7 @@ namespace effcore {
           'Item of type "%%_type" with title = "%%_title" was deleted.',
           'Do not forget to save the changes!'], [
           'type'  => (new text($widget->item_title))->render(),
-          'title' => $title_for_message ]));
+          'title' => $item_title ]));
         return true;
     }
   }

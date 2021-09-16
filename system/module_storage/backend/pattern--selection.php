@@ -12,7 +12,7 @@ namespace effcore {
   public $tag_name = 'x-selection';
   public $attributes = ['data-selection' => true];
   public $template = 'container';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-selection-title' => true];
   public $id;
@@ -40,26 +40,30 @@ namespace effcore {
 
       $used_entities = [];
       $used_storages = [];
-
-    # sort fields
-      foreach ($this->fields ?? [] as $c_row_id => $c_field)
-        if (!property_exists($c_field, 'weight'))
-          $c_field->weight = 0;
-      if (!empty($this->fields))
-        core::array_sort_by_weight($this->fields, 3);
-
-    # analyze fields
       $this->_main_entity = null;
-      foreach ($this->fields ?? [] as $c_row_id => $c_field) {
-        if ($c_field->type === 'field' ||
-            $c_field->type === 'join_field') {
-          $c_entity = entity::get($c_field->entity_name, false);
-          $used_entities[$c_entity->name        ] = $c_entity->name;
-          $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
-          if ($this->_main_entity === null && $c_field->type === 'field') {
-              $this->_main_entity = entity::get($c_field->entity_name);
+
+    # sort + analyze fields
+      if (isset($this->fields) && is_array($this->fields)) {
+        foreach ($this->fields as $c_field)
+          if (!property_exists($c_field, 'weight'))
+            $c_field->weight = 0;
+        core::array_sort_by_weight($this->fields, 3);
+        foreach ($this->fields as $c_row_id => $c_field) {
+          if ($c_field->type === 'field' ||
+              $c_field->type === 'join_field') {
+            $c_entity = entity::get($c_field->entity_name, false);
+            $used_entities[$c_entity->name        ] = $c_entity->name;
+            $used_storages[$c_entity->storage_name] = $c_entity->storage_name;
+            if ($this->_main_entity === null && $c_field->type === 'field') {
+                $this->_main_entity = entity::get($c_field->entity_name);
+            }
           }
         }
+      } else {
+        message::insert(new text(
+          'No fields for select from storage! Selection ID = "%%_id".', ['id' => $this->id]), 'error'
+        );
+        return new node;
       }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -154,7 +158,7 @@ namespace effcore {
                 if ($c_value !== null && $c_value_type === 'date'    ) $c_value = locale::format_date    ($c_value);
                 if ($c_value !== null && $c_value_type === 'time'    ) $c_value = locale::format_time    ($c_value);
                 if ($c_value !== null && $c_value_type === 'datetime') $c_value = locale::format_datetime($c_value);
-                if ($c_value !== null && $c_value_type === 'boolean' ) $c_value = locale::format_logic   ($c_value);
+                if ($c_value !== null && $c_value_type === 'boolean' ) $c_value =   core::format_logic   ($c_value);
                 $c_row[$c_row_id] = [
                   'title'  => $c_title,
                   'value'  => $c_value
@@ -196,7 +200,9 @@ namespace effcore {
                 break;
             }
           # prepare the final value
-            $c_filters = $c_field->settings['filters'] ?? [];
+            $c_filters = !empty($c_field->settings['filters']) &&
+                       is_array($c_field->settings['filters']) ?
+                                $c_field->settings['filters'] : [];
             if (count($c_filters)) {
               krsort($c_filters, SORT_NUMERIC);
               foreach ($c_filters as $c_filter) {
@@ -354,7 +360,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select('selections') ?? [] as $c_module_id => $c_selections) {
+      foreach (storage::get('files')->select_array('selections') as $c_module_id => $c_selections) {
         foreach ($c_selections as $c_row_id => $c_selection) {
           if (isset(static::$cache[$c_selection->id])) console::report_about_duplicate('selection', $c_selection->id, $c_module_id);
                     static::$cache[$c_selection->id] = $c_selection;

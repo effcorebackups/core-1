@@ -96,7 +96,7 @@ namespace effcore {
     return $this->offset !== 0;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function stream_open($path, $mode, $options, &$opened_path) {
     $path_parsed = static::__parse_path($path);

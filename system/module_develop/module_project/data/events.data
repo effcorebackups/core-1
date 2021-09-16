@@ -19,7 +19,7 @@ events
   on_block_presets_dynamic_build
   - all|event
       handler: \effcore\modules\project\events_page::on_block_presets_dynamic_build
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_validate
   - instance_insert__project|event
       for: instance_insert

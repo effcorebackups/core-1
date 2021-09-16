@@ -26,6 +26,18 @@ namespace effcore {
     }
   }
 
+  function select_array($dpath, $expand_cache = false, $with_restore = true) {
+    $result = static::select($dpath, $expand_cache, $with_restore);
+    if (is_array  ($result)) return        $result;
+    if (is_object ($result)) return (array)$result;
+    if (is_numeric($result)) return       [$result];
+    if (is_string ($result)) return       [$result];
+    if (is_bool   ($result)) return       [$result];
+    return [];
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
   # insert new dynamic changes
     $changes_d = data::select('changes') ?: [];
@@ -194,7 +206,7 @@ namespace effcore {
     $parsed       = $preparse->parsed;
     $bundles_path = $preparse->bundles_path;
     $modules_path = $preparse->modules_path;
-    $enabled      = module::get_enabled() + $modules_to_include;
+    $enabled      = module::get_enabled_by_boot() + $modules_to_include;
     $is_no_boot   = $enabled === [];
   # if no modules in the boot (when installing)
     if ($enabled === []) {
@@ -285,11 +297,12 @@ namespace effcore {
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
 
-  const ERR_CODE_EMPTY_LINE_WAS_FOUND        = 0b00001;
-  const ERR_CODE_LEADING_TAB_CHARACTER_FOUND = 0b00010;
-  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN     = 0b00100;
-  const ERR_CODE_INDENT_OVERSIZE             = 0b01000;
-  const ERR_CODE_CLASS_WAS_NOT_FOUND         = 0b10000;
+  const ERR_CODE_EMPTY_LINE_WAS_FOUND        = 0b000001;
+  const ERR_CODE_LEADING_TAB_CHARACTER_FOUND = 0b000010;
+  const ERR_CODE_INDENT_SIZE_IS_NOT_EVEN     = 0b000100;
+  const ERR_CODE_INDENT_OVERSIZE             = 0b001000;
+  const ERR_CODE_CLASS_WAS_NOT_FOUND         = 0b010000;
+  const ERR_CODE_CLASS_NOT_ALLOWED           = 0b100000;
 
   static function text_to_data_show_errors($errors = [], $file = null) {
     foreach ($errors as $c_error) {
@@ -346,11 +359,23 @@ namespace effcore {
             'file' => $file ? $file->path_get_relative() : 'n/a',
             'classname' => $c_error->args['classname']]), 'error');
           break;
+        case static::ERR_CODE_CLASS_NOT_ALLOWED:
+          message::insert(new text_multiline([
+            'Function: %%_func',
+            'File: %%_file',
+            'Line: %%_line',
+            'Class "%%_classname" not allowed.',
+            'The class name has been changed to "stdClass".'], [
+            'func' => 'text_to_data',
+            'line' => $c_error->line,
+            'file' => $file ? $file->path_get_relative() : 'n/a',
+            'classname' => $c_error->args['classname']]), 'error');
+          break;
       }
     }
   }
 
-  static function text_to_data($text) {
+  static function text_to_data($text, $classes = []) {
     $errors = [];
     $data = new \stdClass;
     $pointers = [-1 => &$data];
@@ -362,6 +387,13 @@ namespace effcore {
     $c_line = strtok($text, cr.nl);
     $c_line_number = 0;
     $c_depth_old = -1;
+    $allowed_classes = [];
+    if (count($classes))
+              $classes[]= '\\stdClass';
+    foreach (array_filter($classes, 'strlen') as $c_class) {
+      if ($c_class[0] === '\\') $allowed_classes[              $c_class] =               $c_class;
+      if ($c_class[0] !== '\\') $allowed_classes['\\effcore\\'.$c_class] = '\\effcore\\'.$c_class;
+    }
     while ($c_line !== false) {
       $c_line_number++;
     # skip empty line
@@ -430,13 +462,23 @@ namespace effcore {
         elseif ($c_value === '_string_true' ) $c_value = 'true';
         elseif ($c_value === '_string_false') $c_value = 'false';
         else {
-          $c_class_name = $c_value ? '\\effcore\\'.$c_value : 'stdClass';
-          if ($c_class_name !== 'stdClass' && class_exists($c_class_name) === false) {
+          $c_value = trim($c_value);
+          if ($c_value === ''                        ) $c_class_name = '\\stdClass';
+          if ($c_value !== '' && $c_value[0] !== '\\') $c_class_name = '\\effcore\\'.$c_value;
+          if ($c_value !== '' && $c_value[0] === '\\') $c_class_name =               $c_value;
+          if (count($allowed_classes) && !isset($allowed_classes[$c_class_name])) {
+            $errors[]= (object)[
+              'code' => static::ERR_CODE_CLASS_NOT_ALLOWED,
+              'line' => $c_line_number,
+              'args' => ['classname' => $c_class_name]];
+            $c_class_name = '\\stdClass';
+          }
+          if ($c_class_name !== '\\stdClass' && !class_exists($c_class_name)) {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
               'line' => $c_line_number,
               'args' => ['classname' => $c_class_name]];
-            $c_class_name = 'stdClass';
+            $c_class_name = '\\stdClass';
           }
           $c_reflection = new \ReflectionClass($c_class_name);
           $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
@@ -491,8 +533,9 @@ namespace effcore {
     foreach ($post_pars_objects as $c_object) $c_object->_postparse ();
   # return result
     return (object)[
-      'data'   => $data,
-      'errors' => $errors
+      'allowed_classes' => $allowed_classes,
+      'data'            => $data,
+      'errors'          => $errors
     ];
   }
 

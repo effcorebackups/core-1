@@ -28,7 +28,7 @@ namespace effcore {
 
   static function init($code) {
     if (!isset(static::$cache[$code])) {
-      foreach (storage::get('files')->select('translations') ?? [] as $c_module_id => $c_translations) {
+      foreach (storage::get('files')->select_array('translations') as $c_module_id => $c_translations) {
         foreach ($c_translations as $c_row_id => $c_translation) {
           if ($c_translation->code === $code) {
             if ($c_translation instanceof external_cache)
@@ -45,13 +45,13 @@ namespace effcore {
 
   static function select_all_by_code($code = '') {
     $c_code = $code ?: language::code_get_current();
-    static::init($c_code);
+    if ($c_code !== 'en') static::init($c_code);
     return static::$cache[$c_code] ?? [];
   }
 
   static function apply($string, $args = [], $code = '') {
     $c_code = $code ?: language::code_get_current();
-    static::init($c_code);
+    if ($c_code !== 'en') static::init($c_code);
     $string = static::$cache[$c_code][$string] ?? $string;
     return preg_replace_callback('%\\%\\%_'.'(?<name>[a-z0-9_]{1,64})'.
                                    '(?:\\{'.'(?<args>[^\\}\\n]{1,1024})'.'\\}|)%S', function ($c_match) use ($c_code, $args) {

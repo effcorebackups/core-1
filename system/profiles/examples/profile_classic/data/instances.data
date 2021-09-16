@@ -1188,7 +1188,7 @@ instances
             - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - page_about_ru|instance
     entity_name: page
     values
@@ -1897,7 +1897,7 @@ instances
     - description: Text Front
     - text: Here you can place the most important information about your project,
 >>>>>>>>>>> including special offers.
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - text_about_ru|instance
     entity_name: text
     values

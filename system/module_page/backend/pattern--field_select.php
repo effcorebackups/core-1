@@ -14,7 +14,7 @@ namespace effcore {
   public $element_attributes = [
     'name'     => 'select',
     'required' => true];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $values   = [];
   public $selected = [];
   public $disabled = [];

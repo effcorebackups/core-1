@@ -47,27 +47,30 @@ namespace effcore {
   # │ dir/subdir/page          ║ this path described like a domain (first character is not the slash) │
   # └──────────────────────────╨──────────────────────────────────────────────────────────────────────┘
 
+  # ────────────────────────────────────────────────────────────────────────────────────────────────
   # note:
-  # ════════════════════════════════════════════════════════════════════════════════════════════
+  # ════════════════════════════════════════════════════════════════════════════════════════════════
   # 1. in the next url 'http://name:password@subdomain.domain:port/dir/subdir/page?key=value#anchor'
   #    the name, password and port values after parsing will be in the $domain property.
   #    in any case, the use of credentials in this form is deprecated.
   #    for more details see RFC 3986 clause 3.2.1 (user information) and 7.5 (sensitive information)
   # 2. anchor is not sent through the browser
-  # ────────────────────────────────────────────────────────────────────────────────────────────
+  # ────────────────────────────────────────────────────────────────────────────────────────────────
 
+  # ────────────────────────────────────────────────────────────────────────────────────────────────
   # PCRE note:
-  # ═══╦════════════════════════════════════════════════════════════════════
+  # ═══╦════════════════════════════════════════════════════════════════════════════════════════════
   # L  ║ Letter (Includes the following properties: Ll, Lm, Lo, Lt and Lu.)
   # Ll ║ Lower case letter
   # Lm ║ Modifier letter
   # Lo ║ Other letter
   # Lt ║ Title case letter
   # Lu ║ Upper case letter
-  # ───╨────────────────────────────────────────────────────────────────────
+  # ───╨────────────────────────────────────────────────────────────────────────────────────────────
   # utf8 letters: '[[:alpha:]]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
   # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
   # officially allowed characters ACSII range: '[\\x21-\\x7e]'
+  # ────────────────────────────────────────────────────────────────────────────────────────────────
 
   const is_decode_nothing   = 0b00;
   const is_decode_domain    = 0b01;

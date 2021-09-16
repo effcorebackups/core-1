@@ -64,15 +64,16 @@ namespace effcore {
   # │ dir1/dir2      ║ interpreted as file with name 'dir2'                │
   # └────────────────╨─────────────────────────────────────────────────────┘
 
+  # ───────────────────────────────────────────────────────────────────────────────────────────────
   # note:
-  # ══════════════════════════════════════════════════════════════════════════════════════════
+  # ═══════════════════════════════════════════════════════════════════════════════════════════════
   # 1. only files with extension are available in the URL!
   # 2. if the first character in the path is '/' - it is a absolute path, otherwise - relative path
   # 3. if the last  character in the path is '/' - it is a directory, otherwise - file
   # 4. path components like  '~/' should be ignored or use function 'realpath' to resolve the path
   # 5. path components like  './' should be ignored or use function 'realpath' to resolve the path
   # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path
-  # ──────────────────────────────────────────────────────────────────────────────────────────
+  # ───────────────────────────────────────────────────────────────────────────────────────────────
 
   const scan_mode              = fs_iterator::UNIX_PATHS|fs_iterator::SKIP_DOTS;
   const scan_with_dir_at_first = ri_iterator::SELF_FIRST;
@@ -170,14 +171,14 @@ namespace effcore {
     $this->data = $data;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function parent_get_name() {return ltrim(strrchr(rtrim($this->dirs, '/'), '/'), '/');}
   function hash_get()        {return @md5_file($this->path_get());}
   function size_get()        {return @filesize($this->path_get());}
   function mime_get()        {return function_exists('mime_content_type') ? @mime_content_type($this->path_get()) : null;}
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function is_path_absolute() {
     if (DIRECTORY_SEPARATOR !== '\\') return isset($this->dirs[0]) && $this->dirs[0] === '/';
@@ -188,7 +189,7 @@ namespace effcore {
     return file_exists($this->path_get());
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function load($reset = false) {
     $relative = $this->path_get_relative();
@@ -266,6 +267,7 @@ namespace effcore {
     return $result;
   }
 
+  # ────────────────────────────────────────────────────────────────────────────
   # lock usage example:
   # ════════════════════════════════════════════════════════════════════════════
   #     const lock_life_time         = 3;
@@ -326,7 +328,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache_file_types === null) {
-      foreach (storage::get('files')->select('file_types') ?? [] as $c_module_id => $c_file_types) {
+      foreach (storage::get('files')->select_array('file_types') as $c_module_id => $c_file_types) {
         foreach ($c_file_types as $c_row_id => $c_file_type) {
           if (isset(static::$cache_file_types[$c_file_type->type])) console::report_about_duplicate('file_types', $c_file_type->type, $c_module_id);
                     static::$cache_file_types[$c_file_type->type] = $c_file_type;

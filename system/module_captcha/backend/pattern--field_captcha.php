@@ -7,14 +7,15 @@
 namespace effcore {
           class field_captcha extends field_text {
 
+  # ──────────────────────────────────────────────────────────────────────
   # about CAPTCHA ID:
-  # ═════════════════════════════════════════════════════════════════════════
+  # ══════════════════════════════════════════════════════════════════════
   # duplicates of captcha by IP - it is prevention from DDOS attacks -
   # user can overflow the storage if captcha_id will be a complex value
   # for example: IP + user_agent (in this case user can falsify user_agent
   # on each submit and this action will create a great variety of unique
   # captcha_id in the storage and will make it overflowed)
-  # ─────────────────────────────────────────────────────────────────────────
+  # ──────────────────────────────────────────────────────────────────────
 
   public $title = 'CAPTCHA';
   public $attributes = ['data-type' => 'captcha'];
@@ -23,7 +24,7 @@ namespace effcore {
     'name'         => 'captcha',
     'autocomplete' => 'off',
     'required'     => true];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $length;
   public $attempts_cur;
   public $attempts_max = 3;

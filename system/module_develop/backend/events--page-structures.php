@@ -32,7 +32,7 @@ namespace effcore\modules\develop {
     $groups_by_name = [];
     $u_first_character = null;
     foreach (core::structures_select() as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == $page->args_get('type')) {
+      if ($c_item_info->type === $page->args_get('type')) {
         $c_file = new file($c_item_info->file);
         $c_result = new \stdClass;
         $c_result->name       = $c_item_info->name;
@@ -76,7 +76,7 @@ namespace effcore\modules\develop {
 
   # build diagram for each class
     foreach ($map as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == $page->args_get('type')) {
+      if ($c_item_info->type === $page->args_get('type')) {
         $c_file          = new file($c_item_info->file);
         $c_reflection    = new \ReflectionClass($c_item_full_name);
         $x_class_wrapper = new markup('x-class-wrapper');
@@ -181,7 +181,7 @@ namespace effcore\modules\develop {
     $map = core::structures_select();
     $result = [];
     foreach ($map as $c_item_full_name => $c_item_info) {
-      if ($c_item_info->type == $page->args_get('type')) {
+      if ($c_item_info->type === $page->args_get('type')) {
         $c_reflection = new \ReflectionClass($c_item_full_name);
         $c_file = new file($c_item_info->file);
         $c_return = new \stdClass;

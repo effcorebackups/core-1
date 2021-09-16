@@ -28,10 +28,6 @@ namespace effcore {
     return core::format_number($number, $precision, $dec_point, $thousands, $no_zeros);
   }
 
-  static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
-  static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
-  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
-
   static function format_bytes($bytes, $is_iec = true) {
     if ($bytes && fmod($bytes, 1024 ** 4) === .0) return static::format_number($bytes / 1024 ** 4).' '.($is_iec ? translation::apply('TiB') : translation::apply('T'));
     if ($bytes && fmod($bytes, 1024 ** 3) === .0) return static::format_number($bytes / 1024 ** 3).' '.($is_iec ? translation::apply('GiB') : translation::apply('G'));
@@ -40,16 +36,16 @@ namespace effcore {
     else                                          return static::format_number($bytes            ).' '.(                                      translation::apply('B'));
   }
 
-  static function format_pieces($number) {
-    return static::format_number($number).' '.translation::apply('pcs.');
-  }
+  static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
+  static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
+  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
 
   static function format_seconds($seconds) {
     return translation::apply('%%_number second%%_plural{number|s}', ['number' => $seconds]);
   }
 
-  static function format_logic($value) {
-    return $value ? 'yes' : 'no';
+  static function format_pieces($number) {
+    return static::format_number($number).' '.translation::apply('pcs.');
   }
 
 }}

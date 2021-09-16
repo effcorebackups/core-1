@@ -38,12 +38,13 @@ namespace effcore {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for attribute name
     $field_name = new field_text('Name', null, [], +400);
+    $field_name->attributes['data-style'] = 'inline';
     $field_name->description_state = 'hidden';
     $field_name->cform = $widget->cform;
     $field_name->build();
@@ -51,6 +52,7 @@ namespace effcore {
     $field_name->value_set($item->name);
   # control for attribute value
     $field_value = new field_text('Val.', null, [], +380);
+    $field_value->attributes['data-style'] = 'inline';
     $field_value->description_state = 'hidden';
     $field_value->cform = $widget->cform;
     $field_value->build();
@@ -60,6 +62,7 @@ namespace effcore {
     $field_value->maxlength_set(2048);
   # control for translation status
     $field_is_apply_translation = new field_checkbox('Tr.', null, [], +360);
+    $field_is_apply_translation->attributes['data-style'] = 'inline';
     $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
     $field_is_apply_translation->cform = $widget->cform;
     $field_is_apply_translation->build();
@@ -67,6 +70,7 @@ namespace effcore {
     $field_is_apply_translation->checked_set(!empty($item->is_apply_translation));
   # control for tokens status
     $field_is_apply_tokens = new field_checkbox('To.', null, [], +340);
+    $field_is_apply_tokens->attributes['data-style'] = 'inline';
     $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
     $field_is_apply_tokens->cform = $widget->cform;
     $field_is_apply_tokens->build();
@@ -84,7 +88,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_button_click_insert($widget, $form, $npath, $button) {
     $min_weight = 0;

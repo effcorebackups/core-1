@@ -1,22 +1,100 @@
 
   /* demo tokens:
     ═════════════════════════════════════════════════════════════════════
-    %%_return_if_token{return_if_token||1|0}
-    %%_return_if_token{return_if_token|value|1|0}
-    %%_return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}
-    %%_return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}
-    %%_return_if_token{color__page|#ffffff|1|0}
-    %%_return_if_token{color__page|transparent|1|0}
-    %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}
-    %%_return_if_token_color_is_dark{color__page|1|0}
-    %%_return_if_url_arg{page_id|front|1|0}
-    %%_return_translation{simple string}
-    %%_return_translation{string with parameter = %%_n|n=0}
-    %%_return_translation{string with parameter = %%_n|n=1}
-    %%_return_translation{string with parameter = %%_n|n=2}
-    %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=0}
-    %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=1}
-    %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=2}
+    demo_text: %%_demo_text
+    ─────────────────────────────────────────────────────────────────────
+    user_id: %%_user_id
+    email: %%_email
+    nickname: %%_nickname
+    avatar_path: %%_avatar_path
+    nickname_page_context: %%_nickname_page_context{some_page_arg}
+    ─────────────────────────────────────────────────────────────────────
+    page_width_min: %%_page_width_min
+    page_width_max: %%_page_width_max
+    thumbnail_width_small: %%_thumbnail_width_small
+    thumbnail_width_middle: %%_thumbnail_width_middle
+    thumbnail_width_big: %%_thumbnail_width_big
+    thumbnail_path_cover_default: %%_thumbnail_path_cover_default
+    thumbnail_path_poster_default: %%_thumbnail_path_poster_default
+    page_id_context: %%_page_id_context{front}
+    page_width_min_context: %%_page_width_min_context
+    page_width_max_context: %%_page_width_max_context
+    ─────────────────────────────────────────────────────────────────────
+    instance_id_context: %%_instance_id_context
+    entity_name_context: %%_entity_name_context
+    entity_title_context: %%_entity_title_context
+    entity_title_plural_context: %%_entity_title_plural_context
+    ─────────────────────────────────────────────────────────────────────
+    color__page: %%_color__page
+    color__text: %%_color__text
+    color__main: %%_color__main
+    color__link: %%_color__link
+    color__link_active: %%_color__link_active
+    color__table_row_odd: %%_color__table_row_odd
+    color__table_row_even: %%_color__table_row_even
+    color__menu: %%_color__menu
+    color__menu_active: %%_color__menu_active
+    color__menu_text: %%_color__menu_text
+    color__menu_link: %%_color__menu_link
+    color__menu_link_active: %%_color__menu_link_active
+    color__tabs: %%_color__tabs
+    color__tabs_link: %%_color__tabs_link
+    color__tabs_link_active: %%_color__tabs_link_active
+    color__tabs_link_active_no_bg: %%_color__tabs_link_active_no_bg
+    color__ok: %%_color__ok
+    color__error: %%_color__error
+    color__warning: %%_color__warning
+    color__fieldset: %%_color__fieldset
+    color__fieldset_nested: %%_color__fieldset_nested
+    color__field: %%_color__field
+    color__field_text: %%_color__field_text
+    color__button: %%_color__button
+    color__button_active: %%_color__button_active
+    color__button_text: %%_color__button_text
+    return_token_color_encode{color__page}: %%_return_token_color_encode{color__page}
+    return_token_color_encode{color__page\{-10\|-10\|-10\}}: %%_return_token_color_encode{color__page\{-10\|-10\|-10\}}
+    return_token_color_encode{color__page\{-10\|-10\|-10\|.5\}}: %%_return_token_color_encode{color__page\{-10\|-10\|-10\|.5\}}
+    return_if_token_color_is_dark{color__page|1|0}: %%_return_if_token_color_is_dark{color__page|1|0}
+    return_if_token_color_is_dark{color__page|0|1}: %%_return_if_token_color_is_dark{color__page|0|1}
+    ─────────────────────────────────────────────────────────────────────
+    return_url_arg{color|black|css_units}: %%_return_url_arg{color|black|css_units}
+    return_if_url_arg{page_id|front|1|0}: %%_return_if_url_arg{page_id|front|1|0}
+    return_if_url_arg{page_id|front|0|1}: %%_return_if_url_arg{page_id|front|0|1}
+    ─────────────────────────────────────────────────────────────────────
+    return_if_token{color__page|#ffffff|1|0}: %%_return_if_token{color__page|#ffffff|1|0}
+    return_if_token{color__page|#ffffff|0|1}: %%_return_if_token{color__page|#ffffff|0|1}
+    return_if_token{color__page|transparent|1|0}: %%_return_if_token{color__page|transparent|1|0}
+    return_if_token{color__page|transparent|0|1}: %%_return_if_token{color__page|transparent|0|1}
+    return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}: %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}
+    return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|0|1}: %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|0|1}
+    return_if_token{return_if_token||1|0}: %%_return_if_token{return_if_token||1|0}
+    return_if_token{return_if_token|value|1|0}: %%_return_if_token{return_if_token|value|1|0}
+    return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}: %%_return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}
+    return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}: %%_return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}
+    ─────────────────────────────────────────────────────────────────────
+    return_translation{simple string}: %%_return_translation{simple string}
+    return_translation{string with parameter = %%_n|n=0}: %%_return_translation{string with parameter = %%_n|n=0}
+    return_translation{string with parameter = %%_n|n=1}: %%_return_translation{string with parameter = %%_n|n=1}
+    return_translation{string with parameter = %%_n|n=2}: %%_return_translation{string with parameter = %%_n|n=2}
+    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=0}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=0}
+    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=1}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=1}
+    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=2}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=2}
+    ─────────────────────────────────────────────────────────────────────
+    test_email_random: %%_test_email_random
+    test_email_random: %%_test_email_random{0}
+    test_email_random: %%_test_email_random{0}
+    test_nickname_random: %%_test_nickname_random
+    test_nickname_random: %%_test_nickname_random{0}
+    test_nickname_random: %%_test_nickname_random{0}
+    test_password_random: %%_test_password_random
+    test_password_random: %%_test_password_random{0}
+    test_password_random: %%_test_password_random{0}
+    test_captcha: %%_test_captcha
+    test_form_validation_id: %%_test_form_validation_id{some_form_id}
+    test_cookies: %%_test_cookies
+    test_response_http_code: %%_test_response_http_code
+    test_response_submit_error: %%_test_response_submit_error
+    test_response_time_total: %%_test_response_time_total
     ───────────────────────────────────────────────────────────────────── */
 
   /* console */
@@ -32,7 +110,7 @@
     line-height: 1.5em;
     border-top: 5px dashed #214d58;
     color: white;
-    background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svg') 0 -41px}
+    background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svgd')}
   x-console [data-block] {max-width: 990px; margin: 10px auto}
   x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
 
@@ -72,7 +150,8 @@
   x-console [data-id='block__logs'] tbody tr[data-value='error'  ]   td[data-cellid='value'] {background-color: %%_color__error   !important}
   x-console [data-id='block__logs'] tbody tr[data-value='warning']   td[data-cellid='value'] {background-color: %%_color__warning !important}
 
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 10px; margin: 6px 0 6px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-form.svgd') 0 -85px}
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 20px; margin: 1px 0 1px 5px; border: none; cursor: pointer; background: url('/system/module_page/frontend/pictures/icons-element.svgd') 0 -79px}
+  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked {background: url('/system/module_page/frontend/pictures/icons-element.svgd') -20px -79px}
   x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']         + x-info {display: none}
   x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked + x-info {display: block}
   x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info {display: block; margin: 5px 0 3px 0; padding-top: 3px; border-top: 1px dotted black}
@@ -122,10 +201,10 @@
 
   x-diagram-uml x-class-wrapper {padding-top: 20px}
   x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
-  x-diagram-uml x-children x-class-wrapper             {background: url('pictures/diagram-hline.svgd')                no-repeat, url('pictures/diagram-vline.svgd') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd') no-repeat, url('pictures/diagram-vline.svgd') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:last-child  {background: url('pictures/diagram-hline.svgd')                no-repeat}
-  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd') no-repeat}
+  x-diagram-uml x-children x-class-wrapper             {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') repeat-y}
+  x-diagram-uml x-children x-class-wrapper:last-child  {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat}
+  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat}
 
   x-diagram-uml x-item[data-visibility='public'   ]::before {content: '+ '}
   x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}

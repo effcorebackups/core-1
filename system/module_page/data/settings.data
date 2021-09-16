@@ -4,18 +4,17 @@ settings
   apply_tokens_for_robots: false
   color__page_id: default_1
   color__text_id: white
-  color__main_id: default_4
+  color__main_id: lightblue_l1
   color__link_id: white
   color__link_active_id: gold_r1
   color__table_row_odd_id: default_2
   color__table_row_even_id: default_3
-  color__relation_id: white
   color__menu_id: default_2
   color__menu_active_id: default_3
   color__menu_text_id: white
   color__menu_link_id: white
   color__menu_link_active_id: gold_r1
-  color__tabs_id: default_4
+  color__tabs_id: lightblue_l1
   color__tabs_link_id: white
   color__tabs_link_active_id: white
   color__tabs_link_active_no_bg_id: gold_r1
@@ -26,8 +25,8 @@ settings
   color__fieldset_nested_id: default_1
   color__field_id: default_1
   color__field_text_id: white
-  color__button_id: default_5
-  color__button_active_id: default_6
+  color__button_id: lightblue_l1
+  color__button_active_id: lightblue_l2
   color__button_text_id: white
   console_visibility: 0
   page_width_min: 200

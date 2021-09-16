@@ -7,7 +7,7 @@ General information
 - Author: Maxim Rysevets
 - Developer: Maxim Rysevets
 - Start of development: end of 2016
-- Initial release: 2021-06-01
+- Initial release: 2021-11-08
 - Written in: PHP
 - Supported OS: UNIX, Linux, Microsoft Windows
 - Supported web servers: NGINX, Apache, IIS
@@ -51,13 +51,11 @@ are trying to deny the obvious.
 
 The main focus of the system is on getting maximum performance.
 The evaluation criterion is a simple and understandable condition:
-the system which was installed on hosting with the cheapest tariff plan
-which compliant with the minimum installation requirements (from
-~3-5$ per month), should generate the front page in 0.005 seconds
-if OPCache is enabled or 0.05 seconds if OPCache is disabled, which
-in the first case allows serving up to ~200 clients per second and
-in the second case allows serving up to ~20 clients per second
-(excluding concurrent file downloads).
+the system installed on a hosting with the cheapest tariff plan
+that meets the minimum installation requirements (from ~$3-5 per month)
+should generate the main page in 0.01 second (when using OPCache + JIT
+and Solid-State Drive), which makes it possible to simultaneously
+serve up to ~100 requests per second.
 
 
 Content management
@@ -105,13 +103,16 @@ Appearance
 In the administrative interface of the system, there is a section "Management → View"
 which is responsible for the design of the pages.
 
-In the subsection "Colors → Presets" you can select and apply a ready-made color scheme
-for all elements of the page and in the subsection "Colors → Current" change the color
-of a specific element. The number of colors is limited by the built-in palette (additional
-colors can be obtained by installing or creating your own profile).
+In the subsection "Colors → Presets" you can select and apply color sets for page elements
+and in the subsection "Colors → Current" change the color of a specific element.
+The number of colors is limited by the built-in palette (additional colors can be
+obtained by installing or creating your own profile).
 
 In the "Layouts" subsection, you can view the page layouts available in the system (additional
 layouts can be obtained by installing or creating your own profile).
+All layouts available in the system, as well as the decorator with the "view_type = table-adaptive"
+parameter, can adapt to changing the screen resolution and thus adapt to the display of data
+on the screens of mobile devices.
 
 In the subsection "Global CSS" you can describe your own CSS directives and thus make
 changes to the design of pages.
@@ -123,7 +124,7 @@ in the settings of the pages themselves, these parameters can be overridden.
 Profiles
 ---------------------------------------------------------------------
 
-The system does not have the themes we are used to. To create your own unique look,
+The system does not have the usual design themes. To create your own unique look,
 there is such a module type as "Profile" ("module_as_profile").
 The profile can describe: pages, menus, any kind of blocks (for example, containing text,
 audio, video, galleries, selections, polls), colors and their sets, styles as
@@ -145,10 +146,10 @@ simply select your profile from the list of available ones.
 Modules/Profiles/Libraries
 ---------------------------------------------------------------------
 
-All modules/profiles/libraries must be placed in the "modules" directory, otherwise they
-will be lost during the upgrade — the Git system will clear all directories to the state
-of the master copy. For the same reason, you cannot make changes to modules/profiles that
-are located in the "system" directory.
+New modules/profiles/libraries must be placed in the "modules" directory,
+otherwise they will be lost during the update — the Git system will clear all directories
+to the state of the master copy. For the same reason, you cannot make changes to
+modules/profiles that are located in the "system" directory.
 
 When copying modules in the administrative interface of the system in the section
 "Management → Modules → Install", you should reset the cache (button "↺") in order for new
@@ -203,8 +204,8 @@ Performance improvement
 
 To improve performance, you should:
 
-- enable PHP OPCache;
-- switch to using PHP v.8+;
+- in PHP v.7+ enable OPCache;
+- in PHP v.8+ enable OPCache + JIT;
 - switch to Solid-State Drive (SSD);
 - transfer directories "dynamic/cache" and "dynamic/tmp" to RAM, at the same time,
   to increase the level of reliability of the web server, such RAM must support
@@ -212,32 +213,25 @@ To improve performance, you should:
   Uninterruptible Power Supply (UPS).
 
 The best way to increase performance is to cascade styles wisely.
-This approach makes it possible to do without such technologies as SAS and LESS,
-the main task of which is multiple copying of existing styles to new elements,
-as a result of which the volume of CSS files grows to indecent sizes, although
-it could remain within 10-20KiB.
+This approach allows you to do without the SAS and LESS preprocessors,
+whose main task is to copy existing styles to many new elements,
+as a result of which the size of each CSS file begins to exceed 10-20KiB.
 
-A good way to increase performance is to minify JS files by reducing
-code refactoring with third-party programs or services.
-Also a good decision is to abandon "heavy" libraries like jQuery and switch to CSS3 animation,
-SMIL animation, modern JavaScript and HTML5 capabilities.
+A good way to increase performance is to minify JS files by reducing code
+refactoring with third-party programs or services.
+Also, a good decision is to abandon "heavy" libraries like jQuery
+and switch to CSS3 animation, SMIL animation, modern JavaScript
+and HTML5 capabilities.
 
-The worst way to improve performance is to enable GZIP streaming compression technology.
-This can be done using the web server NGINX, Apache, IIS. The main disadvantage of this
-technology is that the process of unpacking a compressed stream is a resource-intensive
-procedure for the processor. The first consequence of this drawback is that the mobile
-client spends not only processor time working with it, but also the battery resource.
-The second consequence of this drawback is that the rendering of the page by the browser
-of any client takes place with a slight delay and is a multiple of the number of such files.
-At the same time, the traffic transfer rates have grown so much that a 10-20KiB file is
-transferred almost instantly.
-
-It was noticed that in the case of using files, the size of which did not exceed
-10-20KiB, together with the rejection of streaming compression and a good
-communication channel, it led to such a fast loading of the page that was ahead
-of the process of their rendering by the browser.
-And although Google Page Speed recommends otherwise, in this case the test produced an
-incredible 100PSI without any manipulation.
+An immaterial way to increase performance is to enable GZIP streaming
+compression technology. This can be done using the web server NGINX, Apache, IIS.
+However, it should be remembered that compressing and decompressing GZIP traffic
+increases the load on the processor, and as a result, creates a slight delay
+in downloading and decompressing compressed traffic, and also reduces the battery
+life of the mobile device. Information transfer rates in modern networks make
+such optimizations unimportant, and 10-20KiB files are transferred almost
+instantly, which allows you to get 100PSI in Google Page Speed ​​rating without
+such optimizations.
 
 
 Caching
@@ -385,7 +379,7 @@ Functional vector:
   returned regardless of the platform and as a result — complete rejection of functions
   that depend on the environment (for example, "setlocale" and others).
 - Using in code the identity operator '===' instead of simple equality '==', as a result,
-  is excluded a dangerous situation such as: $var = 0; ($var == 'some_text') === true;
+  is excluded a dangerous situation such as: (0 == 'some_text') === true;
 - In the code in the "foreach" loops, the exclusion of references to the "key" and/or "value"
   variables with the subsequent modification of the array structure using these variables,
   which could lead to a skew of the array structure and destruction of the "key + value"
@@ -396,13 +390,20 @@ Licensing
 ---------------------------------------------------------------------
 
 The system is open and free.
+
 The system is not in the public domain.
-Any individual or organization can create a website/web portal/web service
-on the basis of this system for himself or for a third party.
-However, it is forbidden to distribute the files of this system in their
-original or modified form, or in conjunction with anything else.
-This limitation does not apply to modules of other developers,
-the authors of which determine their own licensing policy.
+
+Any person or organization has the right to take the system,
+make changes to it or leave it unchanged, then, on the basis of such a system,
+create a website, a web portal, a web service and place it on a server (deployment),
+where the system will perform work, while program files of the system
+should not become publicly available.
+
+An person or an organization has the right to distribute the system
+as part of other products only unchanged.
+
+Thus, the licensing agreement prohibits distribution of the system in a modified form,
+which makes it illegal for any attempt to pass the system off as a work of its own.
 
 
 Architecture
@@ -566,8 +567,8 @@ Other types are allowed but have not been tested.
 We recommend using only these types for cross-platform compatibility.
 
 The main focus is on ANSI SQL and cross-platform.
-During the development process, PostgreSQL was excluded as an RDBMS in the
-web environment, the least conforming to ANSI standards and having peculiarities
+During the development process, PostgreSQL was excluded as an RDBMS that is
+the least compliant with ANSI standards and has peculiarities
 in working with "autoincrement" counters.
 
 To store dates and times, it was decided to use the types: "time", "date", "datetime".

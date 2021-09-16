@@ -20,6 +20,6 @@
     </rdf:RDF>
   </metadata>
 
-  <line id="hline" x1="15" y1="44" x2="40" y2="44" style="stroke: %%_color__relation; stroke-linecap: square"/>
+  <line id="hline" x1="15" y1="44" x2="40" y2="44" style="stroke: %%_return_url_arg{color|black|css_units}; stroke-linecap: square"/>
 
 </svg>

@@ -20,13 +20,13 @@ namespace effcore {
   }
 
   static function select_all($module_id, $from_number = 0) {
-    $updates = [];
-    foreach (storage::get('files')->select('modules_update_data', false, false) ?? [] as $c_module_id => $c_updates)
+    $result = [];
+    foreach (storage::get('files')->select_array('modules_update_data', false, false) as $c_module_id => $c_updates)
       if ($c_module_id === $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
           if ($c_update->number >= $from_number)
-            $updates[$c_row_id] = $c_update;
-    return $updates;
+            $result[$c_row_id] = $c_update;
+    return $result;
   }
 
   static function select_last_number($module_id) {

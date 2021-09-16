@@ -30,15 +30,18 @@ namespace effcore {
       }
     }
   # reverse the deployment process: delete instances
-    foreach (instance::get_all_by_module($this->id) as $c_instance) {
-      if ($c_instance->select())
-          $c_instance->delete();
+    foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
+      $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
+      if ($c_instance->delete())
+           message::insert(new text('Instance with Row ID = "%%_row_id" was deleted.',     ['row_id' => $c_row_id])           );
+      else message::insert(new text('Instance with Row ID = "%%_row_id" was not deleted!', ['row_id' => $c_row_id]), 'warning');
+      $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
     }
   # reverse the deployment process: delete entities
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->uninstall())
-           message::insert(new text('Entity "%%_entity" was uninstalled.',     ['entity' => $c_entity->name])         );
-      else message::insert(new text('Entity "%%_entity" was not uninstalled!', ['entity' => $c_entity->name]), 'error');
+           message::insert(new text('Entity "%%_entity" was uninstalled.',     ['entity' => $c_entity->name])           );
+      else message::insert(new text('Entity "%%_entity" was not uninstalled!', ['entity' => $c_entity->name]), 'warning');
     }
   # delete changes
     storage::get('files')->changes_delete_all($this->id);

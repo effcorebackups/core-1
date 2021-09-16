@@ -9,7 +9,7 @@ namespace effcore {
 
   public $tag_name = 'x-container';
   public $template = 'container';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title;
   public $title_tag_name = 'x-title';
   public $title_position = 'top';
@@ -62,8 +62,8 @@ namespace effcore {
   # functionality for errors
   # ─────────────────────────────────────────────────────────────────────
 
-  function has_error_in_container() {
-    foreach ($this->children_select_recursive() as $c_child) {
+  function has_error_in($root = null) {
+    foreach (($root ?: $this)->children_select_recursive() as $c_child) {
       if ($c_child instanceof field &&
           $c_child->has_error()) {
         return true;
@@ -71,8 +71,8 @@ namespace effcore {
     }
   }
 
-  function error_set_in_container() {
-    foreach ($this->children_select_recursive() as $c_child) {
+  function error_set_in($root = null) {
+    foreach (($root ?: $this)->children_select_recursive() as $c_child) {
       if ($c_child instanceof field) {
           $c_child->error_set();
       }

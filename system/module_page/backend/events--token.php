@@ -33,6 +33,18 @@ namespace effcore\modules\page {
         break;
     }
   # colors
+    if ($name === 'return_token_color_encode') {
+      if (count($args) === 1) {
+        $text = token::text_decode($args[0]);
+        if (strpos($text, 'color__')        === 0 ||
+            strpos($text, 'color_custom__') === 0) {
+          $value = token::apply('%%_'.$text);
+          if ($value) {
+            return urlencode($value);
+          }
+        }
+      }
+    }
     if ($name === 'return_if_token_color_is_dark') {
       if (count($args) === 3) {
         if (strpos($args[0], 'color__')        === 0 ||
@@ -53,18 +65,17 @@ namespace effcore\modules\page {
       $is_all_colors_available = color_preset::is_all_colors_available();
       if ($name === 'color__page'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__page_id                   : 'default_1'    ];
       if ($name === 'color__text'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__text_id                   : 'white'        ];
-      if ($name === 'color__main'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__main_id                   : 'default_4'    ];
+      if ($name === 'color__main'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__main_id                   : 'lightblue_l1' ];
       if ($name === 'color__link'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__link_id                   : 'white'        ];
       if ($name === 'color__link_active'           ) $color = $colors[ $is_all_colors_available ? $settings->color__link_active_id            : 'gold_r1'      ];
       if ($name === 'color__table_row_odd'         ) $color = $colors[ $is_all_colors_available ? $settings->color__table_row_odd_id          : 'default_2'    ];
       if ($name === 'color__table_row_even'        ) $color = $colors[ $is_all_colors_available ? $settings->color__table_row_even_id         : 'default_3'    ];
-      if ($name === 'color__relation'              ) $color = $colors[ $is_all_colors_available ? $settings->color__relation_id               : 'white'        ];
       if ($name === 'color__menu'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__menu_id                   : 'default_2'    ];
       if ($name === 'color__menu_active'           ) $color = $colors[ $is_all_colors_available ? $settings->color__menu_active_id            : 'default_3'    ];
       if ($name === 'color__menu_text'             ) $color = $colors[ $is_all_colors_available ? $settings->color__menu_text_id              : 'white'        ];
       if ($name === 'color__menu_link'             ) $color = $colors[ $is_all_colors_available ? $settings->color__menu_link_id              : 'white'        ];
       if ($name === 'color__menu_link_active'      ) $color = $colors[ $is_all_colors_available ? $settings->color__menu_link_active_id       : 'gold_r1'      ];
-      if ($name === 'color__tabs'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__tabs_id                   : 'default_4'    ];
+      if ($name === 'color__tabs'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__tabs_id                   : 'lightblue_l1' ];
       if ($name === 'color__tabs_link'             ) $color = $colors[ $is_all_colors_available ? $settings->color__tabs_link_id              : 'white'        ];
       if ($name === 'color__tabs_link_active'      ) $color = $colors[ $is_all_colors_available ? $settings->color__tabs_link_active_id       : 'white'        ];
       if ($name === 'color__tabs_link_active_no_bg') $color = $colors[ $is_all_colors_available ? $settings->color__tabs_link_active_no_bg_id : 'gold_r1'      ];
@@ -75,8 +86,8 @@ namespace effcore\modules\page {
       if ($name === 'color__fieldset_nested'       ) $color = $colors[ $is_all_colors_available ? $settings->color__fieldset_nested_id        : 'default_1'    ];
       if ($name === 'color__field'                 ) $color = $colors[ $is_all_colors_available ? $settings->color__field_id                  : 'default_1'    ];
       if ($name === 'color__field_text'            ) $color = $colors[ $is_all_colors_available ? $settings->color__field_text_id             : 'white'        ];
-      if ($name === 'color__button'                ) $color = $colors[ $is_all_colors_available ? $settings->color__button_id                 : 'default_5'    ];
-      if ($name === 'color__button_active'         ) $color = $colors[ $is_all_colors_available ? $settings->color__button_active_id          : 'default_6'    ];
+      if ($name === 'color__button'                ) $color = $colors[ $is_all_colors_available ? $settings->color__button_id                 : 'lightblue_l1' ];
+      if ($name === 'color__button_active'         ) $color = $colors[ $is_all_colors_available ? $settings->color__button_active_id          : 'lightblue_l2' ];
       if ($name === 'color__button_text'           ) $color = $colors[ $is_all_colors_available ? $settings->color__button_text_id            : 'white'        ];
       if (empty($color->value_hex) === true) return 'transparent';
       if (empty($color->value_hex) !== true && count($args) === 0) return $color->value_hex;

@@ -13,10 +13,10 @@ namespace effcore {
   public $item_title = 'Audio';
   public $attributes = ['data-type' => 'items-files-audios'];
   public $name_complex = 'widget_files_audios';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $upload_dir = 'audios/';
   public $fixed_name = 'audio-multiple-%%_item_id_context';
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $max_file_size = '10M';
   public $types_allowed = [
     'mp3' => 'mp3'
@@ -55,7 +55,7 @@ namespace effcore {
     else return new node([], [                                                                                                                                                               'audio' => new markup('audio', ['src' => $src                                                ] + $item->settings)]);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
@@ -94,7 +94,7 @@ namespace effcore {
     $field_file_cover->build();
     $field_file_cover->name_set($widget->name_get_complex().'__cover');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
@@ -110,7 +110,7 @@ namespace effcore {
     return $result;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
     $pre_path = temporary::directory.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.core::array_key_last($items).'.'.$new_item->object->type;

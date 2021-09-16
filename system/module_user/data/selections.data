@@ -303,7 +303,7 @@ selections
         title: Roles
         handler: \effcore\modules\user\events_page_user::on_show_user_roles
         weight: 240
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
     pager_is_enabled: true
@@ -490,7 +490,7 @@ selections
         entity_name: user
         entity_field_name: updated
         weight: 320
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - user|selection
     id: user
     decorator_settings

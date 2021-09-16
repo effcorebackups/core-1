@@ -16,8 +16,8 @@ namespace effcore {
     $colors = color::get_all();
     $element = $this->child_select('element');
     if (isset($colors[$color_id])) {
-      $element->attribute_insert('style', 'background-color: '.$colors[$color_id]->value_hex);
-      $element->attribute_insert('data-value',                 $colors[$color_id]->value_hex);
+      $element->attribute_insert('style', 'background-color: '.($colors[$color_id]->value_hex ?: '#ffffff'));
+      $element->attribute_insert('data-value',                          $color_id);
     } else {
       $this->checked_set(false);
       $this->invalid_set(true);

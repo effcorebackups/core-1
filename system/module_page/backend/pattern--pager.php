@@ -70,8 +70,9 @@ namespace effcore {
     return $url;
   }
 
- # the dynamic of the pager center part:
  # ─────────────────────────────────────────────────────────────────────
+ # the dynamic of the pager center part:
+ # ═════════════════════════════════════════════════════════════════════
  #
  #
  #         cur = 3

@@ -62,9 +62,9 @@
   /* dropdown menu 'system': icons */
 
   [role='tree'][data-style~='dropdown'][data-id='system'] li                    > a {background-size: 64px 64px; background-repeat: no-repeat; background-position: 0 50%}
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icons-menu-home.svg'   ); background-color: transparent !important; color: %%_color__menu_link !important}
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icons-menu-manage.svg' );}
-  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icons-menu-develop.svg');}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icon-menu-home.svgd?color=%%_return_if_token_color_is_dark{color__menu|white|black}'); background-color: transparent !important; color: %%_color__menu_link !important}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icon-menu-manage.svgd?color=%%_return_if_token_color_is_dark{color__menu|white|black}');}
+  [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icon-menu-develop.svgd?color=%%_return_if_token_color_is_dark{color__menu|white|black}');}
 
   /* linear menu */
 
@@ -95,5 +95,5 @@
   [role='tree'][data-visualization-mode] x-item x-url   {display: block; line-height: 1.4em; color: %%_color__text; opacity: .5}
   [role='tree'][data-visualization-mode] x-item x-url[data-no-url] {opacity: .2}
 
-  [role='tree'][data-visualization-mode] li            {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') repeat-y         }
-  [role='tree'][data-visualization-mode] li:last-child {background: url('pictures/tree-hline.svgd') no-repeat 0 -15px, url('pictures/tree-vline.svgd') no-repeat 0 -61px}
+  [role='tree'][data-visualization-mode] li            {background: url('pictures/tree-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat 0 -15px, url('pictures/tree-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') repeat-y         }
+  [role='tree'][data-visualization-mode] li:last-child {background: url('pictures/tree-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat 0 -15px, url('pictures/tree-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat 0 -61px}

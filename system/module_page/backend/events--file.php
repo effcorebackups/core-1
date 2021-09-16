@@ -60,8 +60,8 @@ namespace effcore\modules\page {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # audio
-  # ─────────────────────────────────────────────────────────────────────
+  # audio:
+  # ═════════════════════════════════════════════════════════════════════
   # test.audio               → container://test.audio:original
   # test.audio?cover=        → container://test.audio:cover
   # test.audio?cover=unknown → container://test.audio:cover
@@ -155,8 +155,8 @@ namespace effcore\modules\page {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # video
-  # ─────────────────────────────────────────────────────────────────────
+  # video:
+  # ═════════════════════════════════════════════════════════════════════
   # test.video                → container://test.video:original
   # test.video?poster=        → container://test.video:poster
   # test.video?poster=unknown → container://test.video:poster
@@ -250,8 +250,8 @@ namespace effcore\modules\page {
   }
 
   # ─────────────────────────────────────────────────────────────────────
-  # picture
-  # ─────────────────────────────────────────────────────────────────────
+  # picture:
+  # ═════════════════════════════════════════════════════════════════════
   # test.picture               → container://test.picture:original
   # test.picture?thumb=        → container://test.picture:original
   # test.picture?thumb=unknown → container://test.picture:original

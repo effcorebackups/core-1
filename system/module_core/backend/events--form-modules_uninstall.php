@@ -19,9 +19,9 @@ namespace effcore\modules\core {
   static function on_init($event, $form, $items) {
     $info = $form->child_select('info');
     $installed = module::get_installed();
-    $enabled   = module::get_enabled  ();
-    $embedded  = module::get_embedded ();
-    $modules   = module::get_all      ();
+    $enabled   = module::get_enabled_by_boot();
+    $embedded  = module::get_embedded();
+    $modules   = module::get_all();
     $checkboxes = new group_checkboxes;
     $checkboxes->description = 'The removing module should be disabled at first. Embedded modules cannot be disabled.';
     $checkboxes->element_attributes['name'] = 'uninstall[]';
@@ -63,7 +63,7 @@ namespace effcore\modules\core {
       # if no one item is selected
         if (!$modules_to_uninstall) {
           message::insert('No one item was selected!', 'warning');
-          $items['*uninstall']->error_set_in_container();
+          $items['*uninstall']->error_set_in();
         }
         break;
     }

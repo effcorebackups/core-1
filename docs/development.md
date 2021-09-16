@@ -4,33 +4,34 @@ When you edit "*.data" files
 ---------------------------------------------------------------------
 
 Files "*.data" have next features:
-- does not support empty lines;
 - does not support indent with tab characters;
-- only Unix line endings (LF) are support;
-- only UTF-8 text encoding are support.
+- only UTF-8 text encoding are support;
+- only Unix line endings (LF) are recommended;
+- empty lines does not recommended.
 
 Be sure that your editor/IDE has a right settings for editing.
 File ".editorconfig" is describe right settings for any editor/IDE
 but only professional editors/IDE can work with this feature.
 
 The next editors/IDE need some improvements:
-- BBEdit            : Adapt to ".editorconfig" if it is in the parent directory.
-- TextWrangler      : Adapt to ".editorconfig".
-- Atom              : Strips trailing whitespace and adds a trailing newline when it is saved.
-                      Install package "EditorConfig" with this command: "apm install editorconfig".
-                      Or go to "Settings → Packages → Core Packages" and disable the package "whitespace".
-- PHPStorm          : Strips trailing whitespace when it is saved.
-                      Install package "EditorConfig".
-                      Or go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save".
-- Visual Studio Code: Tab Size will be automatically detected when a file is opened based on the file contents.
-                      Go to "Preferences → Text Editor → Detect Indentation" and disable it.
-- Espresso          : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Textastic         : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Coda2             : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Eclipse           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Notepad++         : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab).
-- Sublime           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead tab) (p.s. "translate_tabs_to_spaces" : true).
+- Nova              : Adapts to ".editorconfig".
+- TextWrangler      : Adapts to ".editorconfig".
+- BBEdit            : Adapts to ".editorconfig" if it is in the parent directory.
+- Espresso          : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab).
+- Textastic         : Set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab).
+- Coda2             : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab).
+- Notepad++         : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab).
+- Eclipse           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab).
+- Sublime           : Install plugin "EditorConfig" or set "Tab width|size" to "2" and enable "Soft tabs" (spaces instead Tab) (p.s. "translate_tabs_to_spaces" : true).
 - TextMate          : Install plugin "EditorConfig".
+- Atom              : Removes trailing spaces and adds a trailing newline when saving files.
+                      Install the "EditorConfig" package with this command: "apm install editorconfig".
+                      Or go to "Settings → Packages → Core Packages" and disable the "whitespace" package.
+- PHPStorm          : Removes trailing spaces when saving the file.
+                      Install the "EditorConfig" package.
+                      Or go to "Preferences → Editor → General" and disable "Strip trailing spaces on Save".
+- Visual Studio Code: The size of the Tab will be automatically determined based on the content of the file.
+                      Go to "Preferences → Text Editor → Detect Indentation" and disable it.
 
 
 How to activate Neor Profile SQL
@@ -43,19 +44,6 @@ How to activate Neor Profile SQL
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->host = '127.0.0.1';
     data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '4040';
 - Run "/shell/cache_clear.sh".
-
-
-How to set cross-domain cookie
----------------------------------------------------------------------
-
-- For base domain and each subdomain install a new System instance with its own table prefix.
-- For base domain and each subdomain in file "/dynamic/data/changes.php" insert:
-    data::$data['changes']['core']->update['settings/core/cookie_domain'] = BASE_DOMAIN_NAME;
-- For each subdomain in file "/dynamic/data/changes.php" update:
-    data::$data['changes']['core']->update['settings/core/keys']['session'] = KEY_FROM_BASE_DOMAIN;
-    data::$data['changes']['core']->update['settings/core/keys']['salt']    = KEY_FROM_BASE_DOMAIN;
-- For base domain and each subdomain run "/shell/cache_clear.sh".
-- For base domain and each subdomain clear cookie in the browser.
 
 
 About forms
@@ -105,46 +93,4 @@ About forms
      - option[value=1,selected]
      - option[value=2,selected]
      - option[value=3]
-
-
-Platforms differences in IP conversion
----------------------------------------------------------------------
-
-This information is actual for function core::hex_to_ip().
-
-    | hex ip                           |                      to IPv6 on win-x86 |                      to IPv6 on osx-x64 |
-    |----------------------------------|-----------------------------------------|-----------------------------------------|
-    | 00000000000000000000000000000000 |                                      :: |                                      :: |
-    | 0000000000000000000000000000000f |                                     ::f |                              ::0.0.0.15 |
-    | 000000000000000000000000000000ff |                                    ::ff |                             ::0.0.0.255 |
-    | 00000000000000000000000000000fff |                                   ::fff |                            ::0.0.15.255 |
-    | 0000000000000000000000000000ffff |                                  ::ffff |                           ::0.0.255.255 |
-    | 000000000000000000000000000fffff |                          ::0.15.255.255 |                          ::0.15.255.255 |
-    | 00000000000000000000000000ffffff |                         ::0.255.255.255 |                         ::0.255.255.255 |
-    | 0000000000000000000000000fffffff |                        ::15.255.255.255 |                        ::15.255.255.255 |
-    | 000000000000000000000000ffffffff |                       ::255.255.255.255 |                       ::255.255.255.255 |
-    | 00000000000000000000000fffffffff |                           ::f:ffff:ffff |                           ::f:ffff:ffff |
-    | 0000000000000000000000ffffffffff |                          ::ff:ffff:ffff |                          ::ff:ffff:ffff |
-    | 000000000000000000000fffffffffff |                         ::fff:ffff:ffff |                         ::fff:ffff:ffff |
-    | 00000000000000000000ffffffffffff |                  ::ffff:255.255.255.255 |                  ::ffff:255.255.255.255 |
-    | 0000000000000000000fffffffffffff |                      ::f:ffff:ffff:ffff |                      ::f:ffff:ffff:ffff |
-    | 000000000000000000ffffffffffffff |                     ::ff:ffff:ffff:ffff |                     ::ff:ffff:ffff:ffff |
-    | 00000000000000000fffffffffffffff |                    ::fff:ffff:ffff:ffff |                    ::fff:ffff:ffff:ffff |
-    | 0000000000000000ffffffffffffffff |                   ::ffff:ffff:ffff:ffff |                   ::ffff:ffff:ffff:ffff |
-    | 000000000000000fffffffffffffffff |                 ::f:ffff:ffff:ffff:ffff |                 ::f:ffff:ffff:ffff:ffff |
-    | 00000000000000ffffffffffffffffff |                ::ff:ffff:ffff:ffff:ffff |                ::ff:ffff:ffff:ffff:ffff |
-    | 0000000000000fffffffffffffffffff |               ::fff:ffff:ffff:ffff:ffff |               ::fff:ffff:ffff:ffff:ffff |
-    | 000000000000ffffffffffffffffffff |              ::ffff:ffff:ffff:ffff:ffff |              ::ffff:ffff:ffff:ffff:ffff |
-    | 00000000000fffffffffffffffffffff |            ::f:ffff:ffff:ffff:ffff:ffff |            ::f:ffff:ffff:ffff:ffff:ffff |
-    | 0000000000ffffffffffffffffffffff |           ::ff:ffff:ffff:ffff:ffff:ffff |           ::ff:ffff:ffff:ffff:ffff:ffff |
-    | 000000000fffffffffffffffffffffff |          ::fff:ffff:ffff:ffff:ffff:ffff |          ::fff:ffff:ffff:ffff:ffff:ffff |
-    | 00000000ffffffffffffffffffffffff |         ::ffff:ffff:ffff:ffff:ffff:ffff |         ::ffff:ffff:ffff:ffff:ffff:ffff |
-    | 0000000fffffffffffffffffffffffff |       0:f:ffff:ffff:ffff:ffff:ffff:ffff |       ::f:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 000000ffffffffffffffffffffffffff |      0:ff:ffff:ffff:ffff:ffff:ffff:ffff |      ::ff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 00000fffffffffffffffffffffffffff |     0:fff:ffff:ffff:ffff:ffff:ffff:ffff |     ::fff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 0000ffffffffffffffffffffffffffff |    0:ffff:ffff:ffff:ffff:ffff:ffff:ffff |    ::ffff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 000fffffffffffffffffffffffffffff |    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff |    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 00ffffffffffffffffffffffffffffff |   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | 0fffffffffffffffffffffffffffffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
-    | ffffffffffffffffffffffffffffffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff |
 

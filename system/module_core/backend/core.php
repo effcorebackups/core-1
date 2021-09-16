@@ -95,14 +95,14 @@ namespace effcore {
   }
 
   static function structures_select($modules_to_include = []) {
-    $result = cache::select('structures') ?? [];
-    if ($result) {
-      return $result;
-    } else {
+    $result = cache::select('structures');
+    if ($result) return $result;
+    else {
+      $result       = [];
       $files        = [];
       $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
       $modules_path = $preparse->modules_path;
-      $enabled      = static::boot_select('enabled') + $modules_to_include; # === module::get_enabled() + $modules_to_include
+      $enabled      = static::boot_select('enabled') + $modules_to_include; # === module::get_enabled_by_boot() + $modules_to_include
     # if no modules in the boot (when installing)
       if ($enabled === []) {
         foreach ($preparse->parsed as $c_info) {
@@ -587,6 +587,22 @@ namespace effcore {
     return $result;
   }
 
+  static function format_bytes($bytes, $is_iec = true) {
+    if ($bytes && fmod($bytes, 1024 ** 4) === .0) return static::format_number($bytes / 1024 ** 4).' '.($is_iec ? 'TiB' : 'T');
+    if ($bytes && fmod($bytes, 1024 ** 3) === .0) return static::format_number($bytes / 1024 ** 3).' '.($is_iec ? 'GiB' : 'G');
+    if ($bytes && fmod($bytes, 1024 ** 2) === .0) return static::format_number($bytes / 1024 ** 2).' '.($is_iec ? 'MiB' : 'M');
+    if ($bytes && fmod($bytes, 1024 ** 1) === .0) return static::format_number($bytes / 1024 ** 1).' '.($is_iec ? 'KiB' : 'K');
+    else                                          return static::format_number($bytes            ).' '.(                  'B');
+  }
+
+  static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
+  static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
+  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
+
+  static function format_logic($value) {
+    return $value ? 'yes' : 'no';
+  }
+
   ###############
   ### filters ###
   ###############
@@ -667,6 +683,10 @@ namespace effcore {
     return preg_replace('%[^a-z0-9_\\-]%S', $corrector, strtolower($value));
   }
 
+  static function sanitize_css_units($value) {
+    return preg_replace('%[^a-zA-Z0-9\\-\\.\\#\\%]%S', '-', $value); # eg: -1px, 2.3em, #a1b2c3, DarkMagenta, 100%
+  }
+
   static function sanitize_url($value) {
   # remove all characters except: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
     return filter_var($value, FILTER_SANITIZE_URL);
@@ -689,15 +709,43 @@ namespace effcore {
   ### functionality for signatures|keys|hash ###
   ##############################################
 
-  # hash performance (1 millon iterations):
-  # ┌───────────────────╥─────────────┬────────┬─────────────────────────┐
-  # │ function          ║ time (sec.) │ is hex │ has 32-bit sign problem │
-  # ╞═══════════════════╬═════════════╪════════╪═════════════════════════╡
-  # │ crc32(…)          ║ 2.461183    │ no     │ yes                     │
-  # │ hash('crc32b', …) ║ 2.632847    │ yes    │ no                      │
-  # │ md5(…)            ║ 2.682224    │ yes    │ no                      │
-  # │ sha1(…)           ║ 2.704381    │ yes    │ no                      │
-  # └───────────────────╨─────────────┴────────┴─────────────────────────┘
+  # hash performance (5 million iterations):
+  # ┌────────────────────────╥─────────────┬────────┬─────────────────────────┐
+  # │ function               ║ time (sec.) │ is hex │ has 32-bit sign problem │
+  # ╞════════════════════════╬═════════════╪════════╪═════════════════════════╡
+  # │ crc32(…)               ║ 0.093       │ no     │ yes                     │
+  # │ md5(…)                 ║ 0.320       │ yes    │ no                      │
+  # │ sha1(…)                ║ 0.335       │ yes    │ no                      │
+  # │ hash('md2', …)         ║ 4.773       │ yes    │ no                      │
+  # │ hash('md4', …)         ║ 0.329       │ yes    │ no                      │
+  # │ hash('md5', …)         ║ 0.374       │ yes    │ no                      │
+  # │ hash('sha1', …)        ║ 0.390       │ yes    │ no                      │
+  # │ hash('sha256', …)      ║ 0.671       │ yes    │ no                      │
+  # │ hash('sha512/256', …)  ║ 0.852       │ yes    │ no                      │
+  # │ hash('sha512', …)      ║ 0.879       │ yes    │ no                      │
+  # │ hash('sha3-224', …)    ║ 4.512       │ yes    │ no                      │
+  # │ hash('sha3-256', …)    ║ 4.680       │ yes    │ no                      │
+  # │ hash('sha3-512', …)    ║ 5.100       │ yes    │ no                      │
+  # │ hash('ripemd128', …)   ║ 0.572       │ yes    │ no                      │
+  # │ hash('ripemd320', …)   ║ 0.728       │ yes    │ no                      │
+  # │ hash('whirlpool', …)   ║ 1.278       │ yes    │ no                      │
+  # │ hash('tiger128,3', …)  ║ 0.391       │ yes    │ no                      │
+  # │ hash('tiger192,4', …)  ║ 0.443       │ yes    │ no                      │
+  # │ hash('snefru', …)      ║ 2.707       │ yes    │ no                      │
+  # │ hash('snefru256', …)   ║ 2.716       │ yes    │ no                      │
+  # │ hash('gost', …)        ║ 1.970       │ yes    │ no                      │
+  # │ hash('gost-crypto', …) ║ 2.153       │ yes    │ no                      │
+  # │ hash('adler32', …)     ║ 0.204       │ yes    │ no                      │
+  # │ hash('crc32', …)       ║ 0.198       │ yes    │ no                      │
+  # │ hash('crc32b', …)      ║ 0.200       │ yes    │ no                      │
+  # │ hash('fnv132', …)      ║ 0.195       │ yes    │ no                      │
+  # │ hash('fnv1a32', …)     ║ 0.201       │ yes    │ no                      │
+  # │ hash('fnv164', …)      ║ 0.203       │ yes    │ no                      │
+  # │ hash('fnv1a64', …)     ║ 0.209       │ yes    │ no                      │
+  # │ hash('joaat', …)       ║ 0.200       │ yes    │ no                      │
+  # │ hash('haval128,3', …)  ║ 0.747       │ yes    │ no                      │
+  # │ hash('haval256,5', …)  ║ 1.134       │ yes    │ no                      │
+  # └────────────────────────╨─────────────┴────────┴─────────────────────────┘
 
   static function random_part_get() {
     $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
@@ -747,12 +795,12 @@ namespace effcore {
     return $result;
   }
 
-  static function password_get_hash($data) {
-    return sha1(sha1($data).static::key_get('salt'));
+  static function password_hash($password) {
+    return hash('sha3-512', hash('sha3-512', $password).static::key_get('salt'));
   }
 
   static function password_verify($password, $hash) {
-    return hash_equals($hash, static::password_get_hash($password));
+    return hash_equals($hash, static::password_hash($password));
   }
 
   static function hash_get($data) {

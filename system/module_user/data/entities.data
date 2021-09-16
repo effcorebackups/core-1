@@ -675,7 +675,7 @@ entities
     - password_hash
         title: Password hash sum
         type: varchar
-        size: 255
+        size: 1024
         collate: binary
         default: null
         managing_is_enabled_on_insert: true

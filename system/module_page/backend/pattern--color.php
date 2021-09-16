@@ -39,7 +39,7 @@ namespace effcore {
       $new_b = max(min($rgb['b'] + (int)$b_offset, 255), 0);
       if ($return_mode === static::return_rgb ) return  'rgb('.$new_r.','.$new_g.','.$new_b.')';
       if ($return_mode === static::return_rgba) return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$opacity.')';
-      if ($return_mode === static::return_hex) {
+      if ($return_mode === static::return_hex ) {
         return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
                    str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).
                    str_pad(dechex($new_b), 2, '0', STR_PAD_LEFT);
@@ -68,7 +68,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      foreach (storage::get('files')->select('colors') ?? [] as $c_module_id => $c_colors) {
+      foreach (storage::get('files')->select_array('colors') as $c_module_id => $c_colors) {
         foreach ($c_colors as $c_row_id => $c_color) {
           if (isset(static::$cache[$c_color->id])) console::report_about_duplicate('color', $c_color->id, $c_module_id);
                     static::$cache[$c_color->id] = $c_color;

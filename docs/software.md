@@ -104,7 +104,7 @@ The following extensions are used:
     | curl         | no         | for development         |
     | json         | always     | for development         |
 
-The following options are required for minimal configuration:
+The following parameters are recommended for optimal performance:
 - memory_limit: 256M
 - max_file_uploads: 20
 - upload_max_filesize: 1G

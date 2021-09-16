@@ -7,37 +7,37 @@
 namespace effcore {
           class field_file extends field {
 
-  # FORM SUBMIT #1                                                    . FORM SUBMIT #2
-  # ................................................................................................................................................
-  # on_values_init                                                    .
-  #                                     ╔════════ form ════════╗      .      ╔═ pool fin ═╗       ╔════════ form ════════╗
-  #                                     ║ ┌── upload field ──┐ ║      .  ┌──▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
-  #                                     ║ │------------------│ ║      .  │   ╚════════════╝       ║ │------------------│ ║
-  #                                 ┌─────│   + new file 1   │ ║      .  │          │        ┌──────│   + new file 2   │ ║
-  #                                 │   ║ └──────────────────┘ ║      .  │          │        │    ║ └──────────────────┘ ║
-  #                                 │   ╚══════════════════════╝      .  │          └────────│─────▶ ▣ delete old file 1 ────┐
-  #                                 │                                 .  │                   │    ╚══════════════════════╝   │
-  #                                 │                                 .  │          ┌────────┘                               │
-  # ................................│....................................│..........│........................................│......................
-  # on_button_click_insert          │                                 .  │          │                                        │
-  # on_button_click_delete          ▼                                 .  │          ▼                                        ▼
-  #                          ╔═ pool pre ═╗                           .  │   ╔═ pool pre ═╗                      ╔═ pool fin_to_delete ═╗
+  # FORM SUBMIT #1                                                    ◦ FORM SUBMIT #2
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # on_values_init                                                    ◦
+  #                                     ╔════════ form ════════╗      ◦      ╔═ pool fin ═╗       ╔════════ form ════════╗
+  #                                     ║ ┌── upload field ──┐ ║      ◦  ┌──▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
+  #                                     ║ │------------------│ ║      ◦  │   ╚════════════╝       ║ │------------------│ ║
+  #                                 ┌─────│   + new file 1   │ ║      ◦  │          │        ┌──────│   + new file 2   │ ║
+  #                                 │   ║ └──────────────────┘ ║      ◦  │          │        │    ║ └──────────────────┘ ║
+  #                                 │   ╚══════════════════════╝      ◦  │          └────────│─────▶ ▣ delete old file 1 ────┐
+  #                                 │                                 ◦  │                   │    ╚══════════════════════╝   │
+  #                                 │                                 ◦  │          ┌────────┘                               │
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # on_button_click_insert          │                                 ◦  │          │                                        │
+  # on_button_click_delete          ▼                                 ◦  │          ▼                                        ▼
+  #                          ╔═ pool pre ═╗                           ◦  │   ╔═ pool pre ═╗                      ╔═ pool fin_to_delete ═╗
   #                          ║ new file 1 ║                        ┌─────┘   ║ new file 2 ║                      ║       old file 1     ║
-  #                          ╚════════════╝                        │  .      ╚════════════╝                      ╚══════════════════════╝
-  #                                 │                              │  .             │                                        │
-  #                                 │   ╔════════ form ════════╗   │  .             │             ╔════════ form ════════╗   │
-  #                                 │   ║ ┌── upload field ──┐ ║   │  .             │             ║ ┌── upload field ──┐ ║   │
-  #                                 │   ║ │------------------│ ║   │  .             │             ║ │------------------│ ║   │
-  #                                 │   ║ └──────────────────┘ ║   │  .             │             ║ └──────────────────┘ ║   │    ┌ ─ ─ ─ ─ ─ ─ ─ ─
-  #                                 ├────◇ □ delete new file 1 ║   │  .             └──────────────▶ ▣ delete new file 2 ────│───▶  delete process │
-  #                                 │   ╚══════════════════════╝   │  .                           ╚══════════════════════╝   │    └ ─ ─ ─ ─ ─ ─ ─ ─
-  #                                 │                              │  .                                                      │
-  # ................................│..............................│.........................................................│......................
-  # on_values_save                  │                              │  .                                                      │
-  #                                 ▼                              │  .                                                      ▼
-  #                          ╔══ storage ══╗                       │  .                                             ┌ ─ ─ ─ ─ ─ ─ ─ ─
-  #                          ║    file 1   ║───────────────────────┘  .                                               delete process │
-  #                          ╚═════════════╝                          .                                             └ ─ ─ ─ ─ ─ ─ ─ ─
+  #                          ╚════════════╝                        │  ◦      ╚════════════╝                      ╚══════════════════════╝
+  #                                 │                              │  ◦             │                                        │
+  #                                 │   ╔════════ form ════════╗   │  ◦             │             ╔════════ form ════════╗   │
+  #                                 │   ║ ┌── upload field ──┐ ║   │  ◦             │             ║ ┌── upload field ──┐ ║   │
+  #                                 │   ║ │------------------│ ║   │  ◦             │             ║ │------------------│ ║   │
+  #                                 │   ║ └──────────────────┘ ║   │  ◦             │             ║ └──────────────────┘ ║   │    ┌ ─ ─ ─ ─ ─ ─ ─ ─
+  #                                 ├────◇ □ delete new file 1 ║   │  ◦             └──────────────▶ ▣ delete new file 2 ────│───▶  delete process │
+  #                                 │   ╚══════════════════════╝   │  ◦                           ╚══════════════════════╝   │    └ ─ ─ ─ ─ ─ ─ ─ ─
+  #                                 │                              │  ◦                                                      │
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # on_values_save                  │                              │  ◦                                                      │
+  #                                 ▼                              │  ◦                                                      ▼
+  #                          ╔══ storage ══╗                       │  ◦                                             ┌ ─ ─ ─ ─ ─ ─ ─ ─
+  #                          ║    file 1   ║───────────────────────┘  ◦                                               delete process │
+  #                          ╚═════════════╝                          ◦                                             └ ─ ─ ─ ─ ─ ─ ─ ─
 
   public $title = 'File';
   public $item_title = 'File';
@@ -45,7 +45,7 @@ namespace effcore {
   public $element_attributes = [
     'type' => 'file',
     'name' => 'file'];
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $upload_dir = '';
   public $fixed_name;
   public $fixed_type;
@@ -75,7 +75,7 @@ namespace effcore {
     }
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function value_get() {
     $values = $this->values_get();
@@ -84,7 +84,7 @@ namespace effcore {
   }
 
   function value_set($value) {
-    event::start_local('on_values_init', $this, ['value' => $value ? [$value] : []]);
+    event::start_local('on_values_init', $this, ['values' => $value ? [$value] : []]);
   }
 
   function values_get() {
@@ -93,7 +93,7 @@ namespace effcore {
   }
 
   function values_set($values) {
-    event::start_local('on_values_init', $this, ['value' => $values ?: []]);
+    event::start_local('on_values_init', $this, ['values' => $values ?: []]);
   }
 
   function items_get($scope)  {
@@ -105,7 +105,7 @@ namespace effcore {
     $this->cform->validation_cache_set($this->name_get().'__items__'.$scope, $items);
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function file_size_max_get() {
     $system = core::is_abbreviated_bytes($this->max_file_size) ?
@@ -124,7 +124,7 @@ namespace effcore {
            $system > $php__2;
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function render_attribut_accept() {
     $accept_types = [];
@@ -155,7 +155,7 @@ namespace effcore {
   ###########################
 
   static function widget_insert_get($field) {
-    $button = new button(null, ['data-style' => 'insert narrow', 'title' => new text('insert')]);
+    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button->break_on_validate = true;
     $button->build();
     $button->disabled_set($field->disabled_get());
@@ -187,7 +187,7 @@ namespace effcore {
   }
 
   static function widget_manage_action_insert($field, $item, $id, $scope) {
-    $button_delete = new button(null, ['data-style' => 'delete narrow zoomed', 'title' => new text('delete')], +500);
+    $button_delete = new button(null, ['data-style' => 'delete little', 'title' => new text('delete')], +500);
     $button_delete->break_on_validate = true;
     $button_delete->build();
     $button_delete->disabled_set($field->disabled_get());
@@ -204,7 +204,7 @@ namespace effcore {
     return new markup('x-title', [], new text('file "%%_file"', ['file' => $item->file]));
   }
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function sanitize($field, $form, $element, &$new_values) {
     foreach ($new_values as $c_value) {
@@ -266,7 +266,7 @@ namespace effcore {
     $field->result = [];
     foreach ($field->items_get('fin') as $c_item)
       $field->result[] = $c_item->get_current_path(true);
-    event::start_local('on_values_init', $field, ['value' => $field->result]); # update indexes
+    event::start_local('on_values_init', $field, ['values' => $field->result]); # update indexes
     static::debug_info_show($field, 'on_values_save');
     return true;
   }
@@ -299,13 +299,13 @@ namespace effcore {
         $items_pre = $field->items_get('pre');
         if (isset($items_pre[$button->_id])) {
           if ($items_pre[$button->_id]->delete_pre()) {
-            $title_for_message = $items_pre[$button->_id]->file;
+            $item_title = $items_pre[$button->_id]->file;
             unset($items_pre[$button->_id]);
             $field->items_set('pre', $items_pre);
             message::insert(new text(
               'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
               'type'  => (new text($field->item_title))->render(),
-              'title' => $title_for_message
+              'title' => $item_title
             ]));
           } else {
             $field->error_set();
@@ -316,7 +316,7 @@ namespace effcore {
       case 'fin':
         $items_fin = $field->items_get('fin');
         if (isset($items_fin[$button->_id])) {
-          $title_for_message = $items_fin[$button->_id]->file;
+          $item_title = $items_fin[$button->_id]->file;
           $fin_to_delete = $field->items_get('fin_to_delete');
           $fin_to_delete[$button->_id] = $items_fin[$button->_id];
           unset($items_fin[$button->_id]);
@@ -325,7 +325,7 @@ namespace effcore {
           message::insert(new text(
             'Item of type "%%_type" with title = "%%_title" was deleted.', [
             'type'  => (new text($field->item_title))->render(),
-            'title' => $title_for_message
+            'title' => $item_title
           ]));
         }
         break;

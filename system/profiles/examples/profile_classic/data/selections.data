@@ -8,7 +8,7 @@ selections
     - template_row: picture
     - template_row_mapping
       - id: picture.id
-      - src: picture.path
+      - path: picture.path
       - url: picture.url
       - attributes: picture.attributes
       - link_attributes: picture.link_attributes

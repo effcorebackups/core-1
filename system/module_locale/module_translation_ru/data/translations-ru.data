@@ -116,7 +116,6 @@ translations
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
-    - Current version number is %%_number_current.: Номер текущей версии — %%_number_current.
     - Current: Текущие
     - Data deletion form: Форма удаления данных
     - Data hash: Хэш данных
@@ -308,6 +307,7 @@ translations
     - HTTPS is required: Требуется HTTPS
     - I accept the terms of the license agreement.: Я принимаю условия лицензионного соглашения.
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
+    - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Info\: manage: Информация: управлять
     - Information about the selected entry: Информация о выбранной записи
@@ -323,8 +323,12 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна, потому что учётные данные хранилища уже были заданы.
     - installation: установка
     - Installation: Установка
+    - Instance with Row ID = "%%_row_id" was deleted.: Экземпляр с Row ID = "%%_row_id" был удалён.
     - Instance with Row ID = "%%_row_id" was inserted.: Экземпляр с Row ID = "%%_row_id" был добавлен.
+    - Instance with Row ID = "%%_row_id" was not deleted!: Экземпляр с Row ID = "%%_row_id" не был удалён!
     - Instance with Row ID = "%%_row_id" was not inserted!: Экземпляр с Row ID = "%%_row_id" не был добавлен!
+    - Instance with Row ID = "%%_row_id" was not updated!: Экземпляр с Row ID = "%%_row_id" не был обновлён!
+    - Instance with Row ID = "%%_row_id" was updated.: Экземпляр с Row ID = "%%_row_id" был обновлён.
     - Instance: Экземпляр
     - Instances: Экземпляры
     - interface: интерфейс
@@ -420,6 +424,7 @@ translations
     - Management: Управление
     - Managers: Управляющие
     - Match: Соответствие
+    - Maximum number of votes: Максимальное число голосов
     - Maximum width: Максимальная ширина
     - Memory for PHP: Память для PHP
     - Menu active: Меню активное
@@ -435,8 +440,9 @@ translations
     - META: МЕТА
     - MiB: МиБ
     - Minimum width: Минимальная ширина
-    - Mode "Anonymous users + Registered users" provides an opportunity for an attacker to overflow the database by sending a lot of false anonymous votes!: Режим "Анонимные пользователи + Зарегистрированные пользователи" дает возможность злоумышленнику переполнить базу данных, отправив множество ложных анонимных голосов!
-    - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependent_title" (%%_dependent_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependent_title" (%%_dependent_id)!
+    - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependency_title" (%%_dependency_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependency_title" (%%_dependency_id)!
+    - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) зависит от модуля с ID = "%%_dependency_id" с минимальной версией = "%%_dependency_version".
+    - Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) зависит от PHP-расширения с ID = "%%_dependency_id" с минимальной версией = "%%_dependency_version".
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) был выключен.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) был включён.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) был установлен.
@@ -527,8 +533,8 @@ translations
     - PHP CURL version: PHP CURL версия
     - PHP dependencies: PHP-зависимости
     - PHP extension "%%_extension" is not available!: PHP-расширение "%%_extension" недоступно!
-    - PHP extension "%%_extension" is too old!: PHP-расширение "%%_extension" слишком старое!
     - PHP OPCache is enabled: PHP OPCache включён
+    - PHP OPCache JIT is enabled: PHP OPCache JIT включён
     - PHP PCRE version: PHP PCRE версия
     - PHP version: PHP версия
     - picture "%%_picture": изображение "%%_picture"
@@ -553,6 +559,7 @@ translations
     - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
     - press to show description: нажмите, чтобы показать описание
     - press to show more information: нажмите, чтобы показать дополнительную информацию
+    - press to show more settings: нажмите, чтобы показать больше настроек
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Previously used value was specified.: Было указано ранее использованное значение.
@@ -599,7 +606,7 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
     - Report: Отчёт
-    - Required version number is %%_number_required.: Номер требуемой версии — %%_number_required.
+    - required for modules: требуется для модулей
     - reset: сброс
     - restore repository: восстановить репозиторий
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
@@ -749,7 +756,6 @@ translations
     - updated: обновлено
     - Updated: Обновлено
     - Use global META: Использовать глобальный МЕТА
-    - used by modules: используется модулями
     - User agent: Агент пользователя
     - User ID: ID пользователя
     - User information: Информация о пользователе

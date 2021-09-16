@@ -86,7 +86,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page_gallery__select
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - view_colors|tab_item
     id: view_colors
     id_parent: null
@@ -128,7 +128,7 @@ tab_items
     action_name: settings
     title: Settings
     weight: -500
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - seo_meta|tab_item
     id: seo_meta
     id_parent: null

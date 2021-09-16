@@ -15,7 +15,7 @@ namespace effcore {
   public $content_tag_name = 'x-group-content';
   public $content_attributes = ['data-group-content' => true];
   public $name_prefix = null; # unused inherited property
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $field_class = '\\effcore\\field_radiobutton';
   public $field_tag_name = 'x-field';
   public $field_title_tag_name = 'label';
@@ -132,7 +132,7 @@ namespace effcore {
 
   static function validate_required_any($group, $form, $npath) {
     if ($group->required_any && $group->value_get() === '') {
-      $group->error_set_in_container();
+      $group->error_set_in();
       $form->error_set(
         'Group "%%_title" should contain at least one selected item!', ['title' => (new text($group->title))->render() ]
       );

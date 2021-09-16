@@ -7,7 +7,7 @@ module|module
   copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
-    php
-    - curl: 7.1.0
     system
     - develop: 0.900
+    php
+    - curl: 7.1.0

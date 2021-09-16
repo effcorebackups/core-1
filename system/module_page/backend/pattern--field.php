@@ -55,7 +55,7 @@ namespace effcore {
   public $title_tag_name = 'label';
   public $title_attributes = ['data-field-title' => true];
   public $name_prefix = null; # unused inherited property
-# ─────────────────────────────────────────────────────────────────────
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $element_class = '\\effcore\\markup_simple';
   public $element_tag_name = 'input';
   public $element_attributes = [];

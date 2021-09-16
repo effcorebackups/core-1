@@ -157,7 +157,7 @@ namespace effcore {
   }
 
   function source_get() {
-    return $this->attribute_select('method') === 'post' ? '_POST' : '_GET';
+    return $this->attribute_select('method') === 'get' ? '_GET' : '_POST';
   }
 
   function clicked_button_get() {
@@ -214,9 +214,9 @@ namespace effcore {
     }
   }
 
-  # ──────────────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
   # functionality for validation cache
-  # ──────────────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
 
   function validation_cache_date_get($format = 'Y-m-d') {
     $timestmp = static::validation_id_extract_created($this->validation_id);
@@ -295,9 +295,9 @@ namespace effcore {
     return static::$c_form_number++;
   }
 
-  # ──────────────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
   # functionality for validation_id
-  # ──────────────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
 
   static function validation_id_generate($form) {
     $hex_number        = static::validation_id_get_hex_number       ($form->number);
