@@ -57,7 +57,9 @@ namespace effcore {
   }
 
   function install() {
+  # ─────────────────────────────────────────────────────────────────────
   # deployment process: copy files
+  # ─────────────────────────────────────────────────────────────────────
     $copy = storage::get('files')->select('copy');
     if ( isset($copy[$this->id]) ) {
       foreach ($copy[$this->id] as $c_info) {
@@ -83,13 +85,19 @@ namespace effcore {
         else message::insert(new text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
       }
     }
+  
+  # ─────────────────────────────────────────────────────────────────────
   # deployment process: insert entities
+  # ─────────────────────────────────────────────────────────────────────
     foreach (entity::get_all_by_module($this->id) as $c_entity) {
       if ($c_entity->install())
            message::insert(new text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
       else message::insert(new text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
     }
+
+  # ─────────────────────────────────────────────────────────────────────
   # deployment process: insert instances
+  # ─────────────────────────────────────────────────────────────────────
     foreach (instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
       if ($c_instance->insert())
@@ -97,7 +105,10 @@ namespace effcore {
       else message::insert(new text('Instance with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
       $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
     }
+
+  # ─────────────────────────────────────────────────────────────────────
   # insert to boot
+  # ─────────────────────────────────────────────────────────────────────
     if (core::boot_insert($this->id, $this->path, 'installed')) {
       message::insert(
         new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::apply($this->title), 'id' => $this->id])

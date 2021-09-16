@@ -296,7 +296,9 @@ namespace effcore {
           'name_!f' => $c_name
         ];
 
+      # ─────────────────────────────────────────────────────────────────────
       # prepare field type
+      # ─────────────────────────────────────────────────────────────────────
         switch ($c_info->type) {
           case 'autoincrement':
             if ($this->driver ===  'mysql') $c_field += ['type' => 'integer', 'primary_key' => 'primary key', 'autoincrement' => 'auto_increment'];
@@ -318,22 +320,22 @@ namespace effcore {
         if (isset($c_info->collate) && $c_info->collate === 'nocase' && $this->driver === 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'nocase'         ];
         if (isset($c_info->collate) && $c_info->collate === 'binary' && $this->driver === 'mysql' ) $c_field += ['collate_begin' => 'collate', 'collate' => 'utf8_bin'       ];
         if (isset($c_info->collate) && $c_info->collate === 'binary' && $this->driver === 'sqlite') $c_field += ['collate_begin' => 'collate', 'collate' => 'binary'         ];
-      # NOT NULL constraint
+      # constraint NOT NULL
         if (property_exists($c_info, 'not_null') &&
                             $c_info->not_null) $c_field['not_null'] = 'not null';
-      # DEFAULT constraint
+      # constraint DEFAULT
         if (property_exists($c_info, 'default')) {
           if     ($c_info->default === 0)    $c_field += ['default_begin' => 'default', 'default' => '0'                       ];
           elseif ($c_info->default === null) $c_field += ['default_begin' => 'default', 'default' => 'null'                    ];
           else                               $c_field += ['default_begin' => 'default', 'default' => '\''.$c_info->default.'\''];
         }
-      # CHECK constraint
+      # constraint CHECK
         if ($this->driver === 'sqlite' && isset($c_info->check)) $c_field['check'] = ['check_begin' => 'check', 'check' => $c_info->check];
         $fields[$c_name] = $c_field;
       }
 
     # ─────────────────────────────────────────────────────────────────────
-    # PRIMARY, UNIQUE, FOREIGN constraints
+    # constraints: PRIMARY, UNIQUE, FOREIGN
     # ─────────────────────────────────────────────────────────────────────
       $auto_name = $entity->auto_name_get();
       foreach ($entity->constraints as $c_name => $c_info) {
