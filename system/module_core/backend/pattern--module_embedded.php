@@ -194,7 +194,7 @@ namespace effcore {
 
   static function get($id) {
     static::init();
-    return static::$cache['modules'][$id];
+    return static::$cache['modules'][$id] ?? null;
   }
 
   static function get_all($property = null) {
