@@ -6,14 +6,11 @@
 
 namespace effcore\modules\profile_classic {
           use \effcore\color_preset;
-          use \effcore\field;
           use \effcore\message;
           use \effcore\module;
           use \effcore\page;
           use \effcore\text_multiline;
           abstract class events_module {
-
-  static $is_failed_installation = false;
 
   static function on_install($event) {
     $module = module::get('profile_classic');
@@ -36,7 +33,6 @@ namespace effcore\modules\profile_classic {
         color_preset::apply('original_classic');
         $module->install();
       } else {
-        static::$is_failed_installation = true;
         message::insert(new text_multiline([
           'Unable to install the profile "%%_profile" because the system already has Pages with the following IDs: %%_ids',
           'Uninstall the existing profile first.'], ['profile' => $module->title, 'ids' => implode(', ', $page_ids)]), 'warning'
@@ -52,9 +48,9 @@ namespace effcore\modules\profile_classic {
   }
 
   static function on_enable($event) {
-    if (!static::$is_failed_installation) {
-      $module = module::get('profile_classic');
-      $module->enable();
+    if (module::is_installed('profile_classic')) {
+       $module = module::get('profile_classic');
+       $module->enable();
     }
   }
 
