@@ -12,6 +12,7 @@ namespace effcore {
   const is_visible_for_admin    = 0b01;
   const is_visible_for_everyone = 0b10;
 
+  static $is_ignore_duplicates = false;
   static protected $data = [];
   static protected $file_log_err = null;
   static protected $is_init = false;
@@ -82,10 +83,12 @@ namespace effcore {
   }
 
   static function report_about_duplicate($type, $id, $module_id = null) {
-    if ($module_id)                  message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!',            ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
-    else                             message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found!',                                               ['type' => $type, 'id' => $id                           ]), 'error');
-    return $module_id ? static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]) :
-                        static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found',                                    'error', 0, ['type' => $type, 'id' => $id                           ]);
+    if (static::$is_ignore_duplicates === false) {
+      if ($module_id !== null)                     message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!',            ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
+      if ($module_id === null)                     message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found!',                                               ['type' => $type, 'id' => $id                           ]), 'error');
+      if ($module_id !== null) return static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]);
+      if ($module_id === null) return static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found',                                    'error', 0, ['type' => $type, 'id' => $id                           ]);
+    }
   }
 
   # ─────────────────────────────────────────────────────────────────────
