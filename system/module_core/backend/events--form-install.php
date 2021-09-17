@@ -186,8 +186,8 @@ namespace effcore\modules\core {
             $form->children_delete();
             message::insert('System was installed.');
             message::insert(new text_multiline([
-              'your EMail is — %%_email',
-              'your Password is — %%_password'], [
+              'Your EMail is: %%_email',
+              'Your password is: %%_password'], [
               'email'    => $items['#email'   ]->value_get(),
               'password' => $items['#password']->value_get(false)]), 'credentials');
             url::go('/login');
