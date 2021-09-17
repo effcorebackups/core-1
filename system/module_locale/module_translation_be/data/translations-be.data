@@ -140,8 +140,6 @@ translations
     - Demo: Дэма
     - depend from modules: залежыць ад модуляў
     - depend from PHP extensions: залежыць ад PHP-пашырэнняў
-    - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад модуля з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
-    - Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад PHP-пашырэння з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
     - description: апісанне
     - Description: Апісанне
     - Develop: Распрацоўка
@@ -158,7 +156,9 @@ translations
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
+    - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"!
     - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
+    - Duplicate of type "%%_type" with ID = "%%_id" was found!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"!
     - edit: рэдагаваць
     - Edit: Рэдагаваць
     - EMail: Адрас электроннай пошты
@@ -443,6 +443,8 @@ translations
     - MiB: МіБ
     - Minimum width: Мінімальная шырыня
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependency_title" (%%_dependency_id)!: Модуль "%%_title" (%%_id) не можа быць уключаны, калі Вы спрабуеце адключыць залежны модуль "%%_dependency_title" (%%_dependency_id)!
+    - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад модуля з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
+    - Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад PHP-пашырэння з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў усталяваны.

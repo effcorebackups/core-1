@@ -156,7 +156,9 @@ translations
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
+    - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"!
     - duplicate of type "%%_type" with ID = "%%_id" was found: был найден дубликат типа "%%_type" с ID = "%%_id"
+    - Duplicate of type "%%_type" with ID = "%%_id" was found!: Был найден дубликат типа "%%_type" с ID = "%%_id"!
     - edit: редактировать
     - Edit: Редактировать
     - EMail: Адрес электронной почты
