@@ -152,7 +152,7 @@ It is recommended to use the next software:
 
 
 Applications with subscription
-=====================================================================
+---------------------------------------------------------------------
 
 Our project condemns all software (not services) which distributed
 only by subscription, without the possibility of buying a not time-limited

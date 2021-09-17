@@ -39,7 +39,7 @@ The following attack vectors were reviewed:
 
 
 Implemented security solutions
-=====================================================================
+---------------------------------------------------------------------
 
 File vector:
 
@@ -143,7 +143,7 @@ Functional vector:
 
 
 Security recommendations
-=====================================================================
+---------------------------------------------------------------------
 
 - Many web hosting services are still using software that is no longer supported.
   For example: PHP before version 7 or MySQL before version 5.6.
