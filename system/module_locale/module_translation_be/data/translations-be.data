@@ -244,6 +244,7 @@ translations
     - Fieldset: Група палёў
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
+    - file "%%_file" was not deleted: файл "%%_file" не быў выдалены
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
     - File "%%_file" was not written to disc!: Файл "%%_file" не быў запісаны на дыск!
     - File "%%_file" was written to disc.: Файл "%%_file" быў запісаны на дыск.
@@ -262,6 +263,7 @@ translations
     - File types: Тыпы файлаў
     - File upload was stopped by PHP extension.: Загрузка файла была спыненая PHP-пашырэннем.
     - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
+    - file was not copied from "%%_from" to "%%_to": файл не быў скапіяваны з "%%_from" у "%%_to"
     - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
     - File was not written to disc!: Файл не быў запісаны на дыск!
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
