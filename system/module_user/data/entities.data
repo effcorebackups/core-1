@@ -708,6 +708,18 @@ entities
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
         - weight: +260
+    - blocked_until
+        title: Blocked until
+        type: datetime
+        default: null
+        check: (blocked_until <> '')
+        managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +240
+    - login_attempts
+        title: Login attempts
+        type: integer
+        default: null
     constraints
     - primary_id
         type: primary
