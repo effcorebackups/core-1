@@ -369,6 +369,7 @@ entities
         - weight: +360
         managing_control_element_attributes
         - maxlength: 1024
+        - required: null
     - url
         title: URL
         type: varchar
