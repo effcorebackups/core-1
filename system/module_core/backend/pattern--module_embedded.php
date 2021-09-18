@@ -58,6 +58,31 @@ namespace effcore {
 
   function install() {
   # ─────────────────────────────────────────────────────────────────────
+  # deployment process: check for duplicates
+  # ─────────────────────────────────────────────────────────────────────
+    $has_duplicates = false;
+    console::$is_ignore_duplicates = true; instance::init();
+    console::$is_ignore_duplicates = false;
+    foreach (console::$duplicates as $c_type => $c_duplicates) {
+      foreach ($c_duplicates as $c_row_id => $c_modules) {
+        foreach ($c_modules as $c_module_id) {
+          if ($this->id !== $c_module_id) {
+            $has_duplicates = true;
+            message::insert(new text(
+              'Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!', ['type' => $c_type, 'id' => $c_row_id, 'title' => module::get($c_module_id)->title ?? 'n/a']), 'warning'
+            );
+          }
+        }
+      }
+    }
+    if ($has_duplicates) {
+      message::insert(new text(
+        'Remove the module where the dependencies were found and then you can install module "%%_title".', ['title' => $this->title]), 'warning'
+      );
+      return;
+    }
+
+  # ─────────────────────────────────────────────────────────────────────
   # deployment process: insert entities
   # ─────────────────────────────────────────────────────────────────────
     foreach (entity::get_all_by_module($this->id) as $c_entity) {

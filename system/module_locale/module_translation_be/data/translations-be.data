@@ -157,8 +157,7 @@ translations
     - Driver is not selected!: Драйвер не абраны!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"!
-    - duplicate of type "%%_type" with ID = "%%_id" was found: быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"
-    - Duplicate of type "%%_type" with ID = "%%_id" was found!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id"!
+    - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі "%%_title"!
     - edit: рэдагаваць
     - Edit: Рэдагаваць
     - EMail: Адрас электроннай пошты
@@ -609,6 +608,7 @@ translations
     - Relations\: Role ↔ User: Сувязі: Роля ↔ Карыстальнік
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
+    - Remove the module where the dependencies were found and then you can install module "%%_title".: Выдаліце модуль, у якім былі выяўленыя залежнасці, і затым Вы зможаце ўсталяваць модуль "%%_title".
     - Report: Справаздача
     - required for modules: патрабуецца для модуляў
     - reset: скінуць
@@ -750,8 +750,6 @@ translations
     - type: тып
     - Type: Тып
     - Types: Типы
-    - Unable to install the profile "%%_profile" because the system already has Pages with the following IDs\: %%_ids: Немагчыма ўсталяваць профіль "%%_profile" таму што ў сістэме ўжо маюцца Старонкі з наступнымі ID: %%_ids
-    - Uninstall the existing profile first.: Спачатку выдаліце існуючы профіль.
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваны спіс
