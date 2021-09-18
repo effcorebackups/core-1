@@ -72,7 +72,7 @@ namespace effcore {
     if (static::$cache === null) {
       foreach (storage::get('files')->select_array('breadcrumbs') as $c_module_id => $c_breadcrumbs_by_module) {
         foreach ($c_breadcrumbs_by_module as $c_breadcrumbs) {
-          if (isset(static::$cache[$c_breadcrumbs->id])) console::report_about_duplicate('breadcrumbs', $c_breadcrumbs->id, $c_module_id);
+          if (isset(static::$cache[$c_breadcrumbs->id])) console::report_about_duplicate('breadcrumbs', $c_breadcrumbs->id, $c_module_id, static::$cache[$c_breadcrumbs->id]);
                     static::$cache[$c_breadcrumbs->id] = $c_breadcrumbs;
                     static::$cache[$c_breadcrumbs->id]->module_id = $c_module_id;
                     static::$cache[$c_breadcrumbs->id]->origin = 'nosql';

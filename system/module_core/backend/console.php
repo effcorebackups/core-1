@@ -13,6 +13,7 @@ namespace effcore {
   const is_visible_for_everyone = 0b10;
 
   static $is_ignore_duplicates = false;
+  static $duplicates = [];
   static protected $data = [];
   static protected $file_log_err = null;
   static protected $is_init = false;
@@ -82,7 +83,10 @@ namespace effcore {
     return $new_log;
   }
 
-  static function report_about_duplicate($type, $id, $module_id = null) {
+  static function report_about_duplicate($type, $id, $module_id = null, $firstinit = null) {
+    if ($module_id !== null                                 ) static::$duplicates[$type][$id][           $module_id] =            $module_id;
+    if ($firstinit !== null && !empty($firstinit->module_id)) static::$duplicates[$type][$id][$firstinit->module_id] = $firstinit->module_id;
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     if (static::$is_ignore_duplicates === false) {
       if ($module_id !== null)                     message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!',            ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
       if ($module_id === null)                     message::insert(new text('Duplicate of type "%%_type" with ID = "%%_id" was found!',                                               ['type' => $type, 'id' => $id                           ]), 'error');

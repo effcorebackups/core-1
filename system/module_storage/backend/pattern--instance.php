@@ -88,7 +88,7 @@ namespace effcore {
       static::$cache_orig = storage::get('files')->select_array('instances');
       foreach (static::$cache_orig as $c_module_id => $c_instances) {
         foreach ($c_instances as $c_row_id => $c_instance) {
-          if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('instance', $c_row_id, $c_module_id);
+          if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('instance', $c_row_id, $c_module_id, static::$cache[$c_row_id]);
                     static::$cache[$c_row_id] = $c_instance;
                     static::$cache[$c_row_id]->module_id = $c_module_id;
         }

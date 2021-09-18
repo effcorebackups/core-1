@@ -70,7 +70,7 @@ namespace effcore {
     if (static::$cache === null) {
       foreach (storage::get('files')->select_array('colors') as $c_module_id => $c_colors) {
         foreach ($c_colors as $c_row_id => $c_color) {
-          if (isset(static::$cache[$c_color->id])) console::report_about_duplicate('color', $c_color->id, $c_module_id);
+          if (isset(static::$cache[$c_color->id])) console::report_about_duplicate('color', $c_color->id, $c_module_id, static::$cache[$c_color->id]);
                     static::$cache[$c_color->id] = $c_color;
                     static::$cache[$c_color->id]->module_id = $c_module_id;
         }
