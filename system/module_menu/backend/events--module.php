@@ -14,8 +14,10 @@ namespace effcore\modules\menu {
   }
 
   static function on_enable($event) {
-    $module = module::get('menu');
-    $module->enable();
+    if (module::is_installed('menu')) {
+       $module = module::get('menu');
+       $module->enable();
+    }
   }
 
 }}

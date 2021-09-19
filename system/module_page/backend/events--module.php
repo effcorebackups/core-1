@@ -16,8 +16,10 @@ namespace effcore\modules\page {
   }
 
   static function on_enable($event) {
-    $module = module::get('page');
-    $module->enable();
+    if (module::is_installed('page')) {
+       $module = module::get('page');
+       $module->enable();
+    }
   }
 
   static function on_start($event) {

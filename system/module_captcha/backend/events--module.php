@@ -20,8 +20,10 @@ namespace effcore\modules\captcha {
   }
 
   static function on_enable($event) {
-    $module = module::get('captcha');
-    $module->enable();
+    if (module::is_installed('captcha')) {
+       $module = module::get('captcha');
+       $module->enable();
+    }
   }
 
   static function on_disable($event) {

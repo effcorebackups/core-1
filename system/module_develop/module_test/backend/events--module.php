@@ -19,8 +19,10 @@ namespace effcore\modules\test {
   }
 
   static function on_enable($event) {
-    $module = module::get('test');
-    $module->enable();
+    if (module::is_installed('test')) {
+       $module = module::get('test');
+       $module->enable();
+    }
   }
 
   static function on_disable($event) {

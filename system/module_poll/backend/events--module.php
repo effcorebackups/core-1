@@ -19,8 +19,10 @@ namespace effcore\modules\poll {
   }
 
   static function on_enable($event) {
-    $module = module::get('poll');
-    $module->enable();
+    if (module::is_installed('poll')) {
+       $module = module::get('poll');
+       $module->enable();
+    }
   }
 
   static function on_disable($event) {

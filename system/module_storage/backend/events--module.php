@@ -14,8 +14,10 @@ namespace effcore\modules\storage {
   }
 
   static function on_enable($event) {
-    $module = module::get('storage');
-    $module->enable();
+    if (module::is_installed('storage')) {
+       $module = module::get('storage');
+       $module->enable();
+    }
   }
 
 }}

@@ -41,8 +41,10 @@ namespace effcore\modules\demo {
   }
 
   static function on_enable($event) {
-    $module = module::get('demo');
-    $module->enable();
+    if (module::is_installed('demo')) {
+       $module = module::get('demo');
+       $module->enable();
+    }
   }
 
   static function on_disable($event) {

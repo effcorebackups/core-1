@@ -28,8 +28,10 @@ namespace effcore\modules\user {
   }
 
   static function on_enable($event) {
-    $module = module::get('user');
-    $module->enable();
+    if (module::is_installed('user')) {
+       $module = module::get('user');
+       $module->enable();
+    }
   }
 
   static function on_cron_run($event) {

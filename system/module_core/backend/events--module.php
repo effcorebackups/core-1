@@ -15,8 +15,10 @@ namespace effcore\modules\core {
   }
 
   static function on_enable($event) {
-    $module = module::get('core');
-    $module->enable();
+    if (module::is_installed('core')) {
+       $module = module::get('core');
+       $module->enable();
+    }
   }
 
   static function on_cron_run($event) {

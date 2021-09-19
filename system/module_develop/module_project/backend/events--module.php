@@ -19,8 +19,10 @@ namespace effcore\modules\project {
   }
 
   static function on_enable($event) {
-    $module = module::get('project');
-    $module->enable();
+    if (module::is_installed('project')) {
+       $module = module::get('project');
+       $module->enable();
+    }
   }
 
   static function on_disable($event) {
