@@ -11,24 +11,23 @@ namespace effcore\modules\profile_classic {
 
   static function on_install($event) {
     $module = module::get('profile_classic');
-    color_preset::apply('original_classic');
     $module->install();
   }
 
   static function on_uninstall($event) {
-    color_preset::reset();
     $module = module::get('profile_classic');
     $module->uninstall();
   }
 
   static function on_enable($event) {
-    if (module::is_installed('profile_classic')) {
+    if (module::is_installed('profile_classic')) {color_preset::apply('original_classic');
        $module = module::get('profile_classic');
        $module->enable();
     }
   }
 
   static function on_disable($event) {
+    color_preset::reset();
     $module = module::get('profile_classic');
     $module->disable();
   }
