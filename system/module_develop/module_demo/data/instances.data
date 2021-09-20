@@ -5,6 +5,7 @@ instances
 - demo_update_1000|instance
     entity_name: update
     values
+    - module_id: demo
     - last_number: 1000
 # ─────────────────────────────────────────────────────────────────────
 # demo autoincrement

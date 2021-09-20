@@ -5,6 +5,7 @@ instances
 - profile_classic_update_1000|instance
     entity_name: update
     values
+    - module_id: profile_classic
     - last_number: 1000
 # ─────────────────────────────────────────────────────────────────────
 # logotypes

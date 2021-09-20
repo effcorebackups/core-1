@@ -2,4 +2,5 @@ instances
 - core_update_1000|instance
     entity_name: update
     values
+    - module_id: core
     - last_number: 1000
