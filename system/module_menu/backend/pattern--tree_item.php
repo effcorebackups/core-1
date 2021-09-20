@@ -114,7 +114,7 @@ namespace effcore {
     if (static::$is_init_nosql_by_tree === []) {
       foreach (storage::get('files')->select_array('tree_items') as $c_module_id => $c_tree_items) {
         foreach ($c_tree_items as $c_row_id => $c_tree_item) {
-          if (isset(static::$cache[$c_tree_item->id])) console::report_about_duplicate('tree_item', $c_tree_item->id, $c_module_id, $cache[$c_tree_item->id]);
+          if (isset(static::$cache[$c_tree_item->id])) console::report_about_duplicate('tree_item', $c_tree_item->id, $c_module_id, static::$cache[$c_tree_item->id]);
                     static::$cache[$c_tree_item->id] = $c_tree_item;
                     static::$cache[$c_tree_item->id]->module_id = $c_module_id;
                     static::$cache[$c_tree_item->id]->origin = 'nosql';
