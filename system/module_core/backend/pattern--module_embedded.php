@@ -84,7 +84,7 @@ namespace effcore {
     }
     if ($has_duplicates) {
       message::insert(new text(
-        'Remove the module where the dependencies were found and then you can install module "%%_title".', ['title' => $this->title]), 'warning'
+        'Uninstall the modules where the dependencies were found and then you can install module "%%_title".', ['title' => $this->title]), 'warning'
       );
       return;
     }

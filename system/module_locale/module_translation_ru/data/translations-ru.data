@@ -155,9 +155,9 @@ translations
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
+    - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле "%%_title"!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"!
-    - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле "%%_title"!
     - edit: редактировать
     - Edit: Редактировать
     - EMail: Адрес электронной почты
@@ -608,7 +608,6 @@ translations
     - Relations\: Role ↔ User: Связи: Роль ↔ Пользователь
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
     - remember me: запомнить меня
-    - Remove the module where the dependencies were found and then you can install module "%%_title".: Удалите модуль, в котором были обнаружены зависимости, и затем Вы сможете установить модуль "%%_title".
     - Report: Отчёт
     - required for modules: требуется для модулей
     - reset: сброс
@@ -750,6 +749,7 @@ translations
     - type: тип
     - Type: Тип
     - Types: Типы
+    - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Удалите модули, в котором были обнаружены зависимости, и затем Вы сможете установить модуль "%%_title".
     - uninstall: удалить
     - Uninstall: Удалить
     - Unordered list: Неупорядоченный список

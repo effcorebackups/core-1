@@ -155,9 +155,9 @@ translations
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
+    - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі "%%_title"!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"!
-    - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі "%%_title"!
     - edit: рэдагаваць
     - Edit: Рэдагаваць
     - EMail: Адрас электроннай пошты
@@ -608,7 +608,6 @@ translations
     - Relations\: Role ↔ User: Сувязі: Роля ↔ Карыстальнік
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - remember me: запомніць мяне
-    - Remove the module where the dependencies were found and then you can install module "%%_title".: Выдаліце модуль, у якім былі выяўленыя залежнасці, і затым Вы зможаце ўсталяваць модуль "%%_title".
     - Report: Справаздача
     - required for modules: патрабуецца для модуляў
     - reset: скінуць
@@ -750,6 +749,7 @@ translations
     - type: тып
     - Type: Тып
     - Types: Типы
+    - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Выдаліце модулі, у якім былі выяўленыя залежнасці, і затым Вы зможаце ўсталяваць модуль "%%_title".
     - uninstall: выдаліць
     - Uninstall: Выдаліць
     - Unordered list: Неўпарадкаваны спіс
