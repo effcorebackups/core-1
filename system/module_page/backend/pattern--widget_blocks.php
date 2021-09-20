@@ -30,15 +30,22 @@ namespace effcore {
   # control for title
     $field_title = new field_text;
     $field_title->title = 'Title';
-    $field_title->description_state = 'hidden';
     $field_title->cform = $widget->cform;
     $field_title->build();
     $field_title->name_set($widget->name_get_complex().'__title__'.$c_row_id);
     $field_title->value_set($item->title ?? '');
     $field_title->required_set(false);
+    $field_title_is_visible = new field_logic;
+    $field_title_is_visible->title = 'Title is visible';
+    $field_title_is_visible->cform = $widget->cform;
+    $field_title_is_visible->build();
+    $field_title_is_visible->name_set($widget->name_get_complex().'__title_is_visible__'.$c_row_id);
+    $field_title_is_visible->value_set($item->title_is_visible ?? 0);
   # relate new controls with the widget
-    $widget->controls['#title__'.$c_row_id] = $field_title;
-    $result->child_insert($field_title, 'title');
+    $widget->controls['#title__'.           $c_row_id] = $field_title;
+    $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
+    $result->child_insert($field_title,            'title');
+    $result->child_insert($field_title_is_visible, 'title_is_visible');
     return new node([], [
       'opener' => $opener,
       'result' => $result
