@@ -58,18 +58,25 @@ namespace effcore {
 
   function install() {
   # ─────────────────────────────────────────────────────────────────────
-  # deployment process: check for duplicates
+  # deployment process: insert entities
+  # ─────────────────────────────────────────────────────────────────────
+    foreach (entity::get_all_by_module($this->id) as $c_entity) {
+      if ($c_entity->install())
+           message::insert(new text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
+      else message::insert(new text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
+    }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # deployment process: check for instances duplicates
   # ─────────────────────────────────────────────────────────────────────
     $has_duplicates = false;
-    console::$is_ignore_duplicates = true; instance::init();
-    console::$is_ignore_duplicates = false;
-    foreach (console::$duplicates as $c_type => $c_duplicates) {
-      foreach ($c_duplicates as $c_row_id => $c_modules) {
-        foreach ($c_modules as $c_module_id) {
-          if ($this->id !== $c_module_id) {
+    foreach (storage::get('files')->select_array('instances') as $c_module_id => $c_instances) {
+      if ($c_module_id === $this->id) {
+        foreach ($c_instances as $c_row_id => $c_instance) {
+          if ($c_instance->select()) {
             $has_duplicates = true;
             message::insert(new text(
-              'Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!', ['type' => $c_type, 'id' => $c_row_id, 'title' => module::get($c_module_id)->title ?? 'n/a']), 'warning'
+              'Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!', ['type' => 'instance', 'id' => $c_row_id, 'title' => module::get($c_instance->module_id)->title ?? 'n/a']), 'warning'
             );
           }
         }
@@ -80,15 +87,6 @@ namespace effcore {
         'Remove the module where the dependencies were found and then you can install module "%%_title".', ['title' => $this->title]), 'warning'
       );
       return;
-    }
-
-  # ─────────────────────────────────────────────────────────────────────
-  # deployment process: insert entities
-  # ─────────────────────────────────────────────────────────────────────
-    foreach (entity::get_all_by_module($this->id) as $c_entity) {
-      if ($c_entity->install())
-           message::insert(new text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
-      else message::insert(new text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
     }
 
   # ─────────────────────────────────────────────────────────────────────
