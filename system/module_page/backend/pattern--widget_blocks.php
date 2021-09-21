@@ -24,16 +24,10 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function widget_manage_settings_opener_get($widget, $item, $c_row_id) {
-    $form_id      = request::value_get('form_id');
-    $submit_value = request::value_get($widget->name_get_complex().'__settings_opener__'.$c_row_id);
-    if ($form_id === ''                          ) /*    default = closed */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => true]);
-    if ($form_id !== '' && $submit_value !== 'on') /* no checked = opened */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => null]);
-    if ($form_id !== '' && $submit_value === 'on') /*    checked = closed */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => true]);
-  }
-
-  static function widget_manage_settings_get($widget, $item, $c_row_id) {
-    $result = new container('x-settings');
+  static function widget_manage_item_settings_get($widget, $item, $c_row_id) {
+    $result = new widget_item_settings;
+    $result->parent_widget = $widget;
+    $result->parent_row_id = $c_row_id;
   # control for title
     $field_title = new field_text;
     $field_title->title = 'Title';
@@ -53,17 +47,14 @@ namespace effcore {
     $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
     $result->child_insert($field_title,            'title');
     $result->child_insert($field_title_is_visible, 'title_is_visible');
-    return new node([], [
-      'opener' => static::widget_manage_settings_opener_get($widget, $item, $c_row_id, $result),
-      'result' => $result
-    ]);
+    return $result;
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
-    $widget_settings = static::widget_manage_settings_get($widget, $item, $c_row_id);
+    $widget_settings = static::widget_manage_item_settings_get($widget, $item, $c_row_id);
   # info markup
     $presets = block_preset::select_all($widget->id_area);
     $title_markup = isset($presets[$item->id]) ?
