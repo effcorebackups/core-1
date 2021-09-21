@@ -24,6 +24,14 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
+  static function widget_manage_settings_opener_get($widget, $item, $c_row_id) {
+    $form_id      = request::value_get('form_id');
+    $submit_value = request::value_get($widget->name_get_complex().'__settings_opener__'.$c_row_id);
+    if ($form_id === ''                          ) /*    default = closed */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => true]);
+    if ($form_id !== '' && $submit_value !== 'on') /* no checked = opened */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => null]);
+    if ($form_id !== '' && $submit_value === 'on') /*    checked = closed */ return new markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'settings', 'title' => new text('press to show more settings'), 'name' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'id' => $widget->name_get_complex().'__settings_opener__'.$c_row_id, 'checked' => true]);
+  }
+
   static function widget_manage_settings_get($widget, $item, $c_row_id) {
     $result = new container('x-settings');
   # control for title
@@ -50,6 +58,8 @@ namespace effcore {
       'result' => $result
     ]);
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
