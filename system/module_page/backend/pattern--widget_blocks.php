@@ -25,8 +25,7 @@ namespace effcore {
   ###########################
 
   static function widget_manage_settings_get($widget, $item, $c_row_id) {
-    $opener = static::widget_manage_settings_opener_get($widget, $item, $c_row_id);
-    $result = new markup('x-settings');
+    $result = new container('x-settings');
   # control for title
     $field_title = new field_text;
     $field_title->title = 'Title';
@@ -47,7 +46,7 @@ namespace effcore {
     $result->child_insert($field_title,            'title');
     $result->child_insert($field_title_is_visible, 'title_is_visible');
     return new node([], [
-      'opener' => $opener,
+      'opener' => static::widget_manage_settings_opener_get($widget, $item, $c_row_id, $result),
       'result' => $result
     ]);
   }
