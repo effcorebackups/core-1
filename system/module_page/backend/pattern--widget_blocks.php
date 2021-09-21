@@ -40,7 +40,7 @@ namespace effcore {
     $field_title_is_visible->cform = $widget->cform;
     $field_title_is_visible->build();
     $field_title_is_visible->name_set($widget->name_get_complex().'__title_is_visible__'.$c_row_id);
-    $field_title_is_visible->value_set($item->title_is_visible ?? 0);
+    $field_title_is_visible->value_set((int)($item->title_is_visible ?? 0));
   # relate new controls with the widget
     $widget->controls['#title__'.           $c_row_id] = $field_title;
     $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
