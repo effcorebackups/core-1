@@ -15,7 +15,7 @@ forms
             - max: 100
             - value: 5
         - blocked_until|field_number
-            title: Block for number of minutes
+            title: Blocking the login for the number of minutes
             description|text_multiline
               text
               - 0: After exceeding the number of unsuccessful login attempts, the user will be blocked from logging in for the specified time.

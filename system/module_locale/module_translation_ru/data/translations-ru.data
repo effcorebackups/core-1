@@ -57,8 +57,8 @@ translations
     - Avatar: Аватар
     - B: Б
     - Belarusian: Белорусский
-    - Block for number of minutes: Блокировка на количество минут
     - Block: Блок
+    - Blocking the login for the number of minutes: Блокировка входа на количество минут
     - Blocking will not affect existing sessions.: Блокировка не повлияет на существующие сеансы.
     - Blocks: Блоки
     - Breadcrumbs: Хлебные крошки
@@ -656,10 +656,10 @@ translations
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
-    - Session with ID = "%%_id" was deleted.: Сессия с ID = "%%_id" была удалена.
-    - Session with ID = "%%_id" was not deleted!: Сессия с ID = "%%_id" не была удалена!
-    - Session: Сессия
-    - Sessions: Сессии
+    - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
+    - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
+    - Session: Сеанс
+    - Sessions: Сеансы
     - settings page: страница настроек
     - Settings: Настройки
     - Shared parameters: Общие параметры
