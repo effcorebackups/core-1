@@ -12,8 +12,9 @@ forms
             description|text_multiline
               text
               - 0: Incorrect value will make it impossible to log in!
-              - 1: If no domain is specified, then the current domain is used, excluding subdomains.
-              - 2: If a domain is specified, then it and its subdomains are used.
+              - 1: Changing the value will not affect existing sessions.
+              - 2: If no domain is specified, then the current domain is used, excluding subdomains.
+              - 3: If a domain is specified, then it and its subdomains are used.
             element_attributes
             - name: cookie_domain
             - required: false
