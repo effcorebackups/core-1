@@ -656,6 +656,8 @@ translations
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
+    - Session duration when the "remember me" option was not selected (in days): Длительность сеанса когда опция "запомнить меня" не была выбрана (в днях)
+    - Session duration when the "remember me" option was selected (in days): Длительность сеанса когда опция "запомнить меня" была выбрана (в днях)
     - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
     - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
     - Session: Сеанс

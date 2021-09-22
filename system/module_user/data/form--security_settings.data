@@ -25,6 +25,20 @@ forms
             - min: 1
             - max: 10000
             - value: 5
+        - session_duration_min|field_number
+            title: Session duration when the "remember me" option was not selected (in days)
+            element_attributes
+            - name: session_duration_min
+            - min: 1
+            - max: 365
+            - value: 1
+        - session_duration_max|field_number
+            title: Session duration when the "remember me" option was selected (in days)
+            element_attributes
+            - name: session_duration_max
+            - min: 1
+            - max: 365
+            - value: 30
     - button_save|button
         title: save
         attributes
