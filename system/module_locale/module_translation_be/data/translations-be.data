@@ -163,6 +163,7 @@ translations
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Быў знойдзены дублікат тыпу "%%_type" з ID = "%%_id" у модулі з ID = "%%_module_id"!
     - edit: рэдагаваць
     - Edit: Рэдагаваць
+    - Eliminates the possibility of registering to a non-existent EMail address.: Выключае магчымасць рэгістрацыі на неіснуючы адрас электроннай пошты.
     - EMail: Адрас электроннай пошты
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
     - English: Англійская
@@ -594,6 +595,7 @@ translations
     - Registered users: Зарэгістраваныя карыстальнікі
     - Registered: Зарэгістраваны
     - Registration form: Форма рэгістрацыі
+    - Registration via EMail: Рэгістрацыя праз электронную пошту
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
     - Relation: Сувязь
@@ -813,6 +815,7 @@ translations
     - Web server: Вэб-сервер
     - Weight: Вага
     - Welcome, %%_nickname!: Сардэчна запрашаем, %%_nickname!
+    - When registering, the system itself generates a password and sends it to the EMail.: Пры рэгістрацыі сістэма сама генеруе пароль і адпраўляе яго на электронную пошту.
     - While editing this form, someone made changes in parallel and saved them!: Падчас рэдагавання гэтай формы хтосьці паралельна ўнёс змяненні і захаваў іх!
     - Widget "%%_title".: Віджэт "%%_title".
     - With it, you can speed up the system from 2-3x and more.: З ягонай дапамогай Вы можаце паскорыць сістэму ў 2-3 і больш разоў.

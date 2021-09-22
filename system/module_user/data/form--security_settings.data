@@ -39,6 +39,16 @@ forms
             - min: 1
             - max: 365
             - value: 30
+        - send_password_to_email|field_logic
+            title: Registration via EMail
+            description|text_multiline
+              text
+              - 0: When registering, the system itself generates a password and sends it to the EMail.
+              - 1: Eliminates the possibility of registering to a non-existent EMail address.
+            element_attributes
+            - name: send_password_to_email
+            selected
+            - 0: 0
     - button_save|button
         title: save
         attributes
