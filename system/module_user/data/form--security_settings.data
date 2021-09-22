@@ -7,8 +7,24 @@ forms
     children
     - main|fieldset
         children
-        - info|text
-            text: UNDER CONSTRUCTION
+        - login_attempts|field_number
+            title: Number of login attempts
+            element_attributes
+            - name: number
+            - min: 1
+            - max: 100
+            - value: 5
+        - blocked_until|field_number
+            title: Block for number of minutes
+            description|text_multiline
+              text
+              - 0: After exceeding the number of unsuccessful login attempts, the user will be blocked from logging in for the specified time.
+              - 1: Blocking will not affect existing sessions.
+            element_attributes
+            - name: blocked_until
+            - min: 1
+            - max: 10000
+            - value: 5
     - button_save|button
         title: save
         attributes

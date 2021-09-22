@@ -25,6 +25,7 @@ translations
     - Actions: Дзеянні
     - Additional controls will become available after insertion (in update mode).: Дадатковыя элементы кіравання стануць даступныя пасля ўстаўкі (у рэжыме абнаўлення).
     - Administrators: Адміністратары
+    - After exceeding the number of unsuccessful login attempts, the user will be blocked from logging in for the specified time.: Пасля перавышэння колькасці няўдалых спробаў ўваходу будзе заблакавана магчымасць ўваходу карыстачу на паказаны час.
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
     - An error occurred during installation!: Адбылася памылка пры ўсталёўцы!
@@ -56,7 +57,9 @@ translations
     - Avatar: Аватар
     - B: Б
     - Belarusian: Беларускі
+    - Block for number of minutes: Блакаванне на колькасць хвілін
     - Block: Блок
+    - Blocking will not affect existing sessions.: Блакаванне не паўплывае на існуючыя сеансы.
     - Blocks: Блокі
     - Breadcrumbs: Хлебныя крошкі
     - Build number: Нумар зборкі
@@ -496,6 +499,7 @@ translations
     - no url: няма url
     - no: не
     - No: Не
+    - Number of login attempts: Колькасць спроб ўваходу
     - Number: Нумар
     - Object: Аб'ект
     - ok: ок
