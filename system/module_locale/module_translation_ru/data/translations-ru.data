@@ -105,6 +105,7 @@ translations
     - Content of the "robots.txt" file: Содержимое файла robots.txt
     - Content of the "sitemap.xml" file: Содержимое файла "sitemap.xml"
     - Content: Содержимое
+    - Cookie domain: Домен cookie
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
     - Copyright © 2017—2021 Maxim Rysevets. All rights reserved.: Copyright © 2017—2021 Рысевец Максим Владимирович. Все права защищены.
@@ -314,6 +315,8 @@ translations
     - Hostname: Имя узла сети
     - HTTPS is required: Требуется HTTPS
     - I accept the terms of the license agreement.: Я принимаю условия лицензионного соглашения.
+    - If a domain is specified, then it and its subdomains are used.: Если домен задан, то используется он и его поддомены.
+    - If no domain is specified, then the current domain is used, excluding subdomains.: Если домен не задан, то используется текущий домен без учёта поддоменов.
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!

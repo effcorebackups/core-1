@@ -97,7 +97,7 @@ namespace effcore {
   # note: n/a = not applicable
 
   static function id_regenerate($hex_type, $session_params = []) {
-    $cookie_domain = storage::get('files')->select('settings/core/cookie_domain');
+    $cookie_domain = storage::get('files')->select('settings/user/cookie_domain');
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
     if ($hex_type === 'f' && $is_remember === false) $expired = time() + core::date_period_d;

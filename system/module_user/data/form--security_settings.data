@@ -7,6 +7,22 @@ forms
     children
     - main|fieldset
         children
+        - cookie_domain|field_url
+            title: Cookie domain
+            description|text_multiline
+              text
+              - 0: If no domain is specified, then the current domain is used, excluding subdomains.
+              - 1: If a domain is specified, then it and its subdomains are used.
+            element_attributes
+            - name: cookie_domain
+            - required: false
+            should_be_included
+            - =: domain
+            should_be_excluded
+            - =: protocol
+            - =: path
+            - =: query
+            - =: anchor
         - login_attempts|field_number
             title: Number of login attempts
             element_attributes
