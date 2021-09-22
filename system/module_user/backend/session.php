@@ -38,7 +38,10 @@ namespace effcore {
   static function insert($id_user, $session_params = []) {
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    $period = !$is_remember ? core::date_period_d : core::date_period_m;
+    $session_duration_min = storage::get('files')->select('settings/user/session_duration_min');
+    $session_duration_max = storage::get('files')->select('settings/user/session_duration_max');
+    if ($is_remember === false) $period = $session_duration_min * core::date_period_d;
+    if ($is_remember !== false) $period = $session_duration_max * core::date_period_d;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
       'id'          => static::id_get(),
@@ -97,11 +100,13 @@ namespace effcore {
   # note: n/a = not applicable
 
   static function id_regenerate($hex_type, $session_params = []) {
-    $cookie_domain = storage::get('files')->select('settings/user/cookie_domain');
+    $cookie_domain        = storage::get('files')->select('settings/user/cookie_domain');
+    $session_duration_min = storage::get('files')->select('settings/user/session_duration_min');
+    $session_duration_max = storage::get('files')->select('settings/user/session_duration_max');
     $is_remember = isset($session_params['is_remember']);
     $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    if ($hex_type === 'f' && $is_remember === false) $expired = time() + core::date_period_d;
-    if ($hex_type === 'f' && $is_remember !== false) $expired = time() + core::date_period_m;
+    if ($hex_type === 'f' && $is_remember === false) $expired = time() + ($session_duration_min * core::date_period_d);
+    if ($hex_type === 'f' && $is_remember !== false) $expired = time() + ($session_duration_max * core::date_period_d);
     if ($hex_type === 'a'                          ) $expired = 0;
     if ($hex_type === 'f' && $is_fixed_ip === false) $ip = core::empty_ip;
     if ($hex_type === 'f' && $is_fixed_ip !== false) $ip = core::server_get_addr_remote();

@@ -1,5 +1,4 @@
 settings
-  keys
   cookie_domain: 
   login_attempts: 5
   blocked_until: 5
