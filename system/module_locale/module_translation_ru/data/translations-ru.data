@@ -163,6 +163,7 @@ translations
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"!
     - edit: редактировать
     - Edit: Редактировать
+    - Eliminates the possibility of brute-force a password if an attacker knows the EMail.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
     - Eliminates the possibility of registering to a non-existent EMail address.: Исключает возможность регистрации на несуществующий адрес электронной почты.
     - EMail: Адрес электронной почты
     - Enable cookies before login.: Включите cookies до начала входа в систему.

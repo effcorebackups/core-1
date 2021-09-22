@@ -19,7 +19,8 @@ forms
             description|text_multiline
               text
               - 0: After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.
-              - 1: Blocking will not affect existing sessions.
+              - 1: Eliminates the possibility of brute-force a password if an attacker knows the EMail.
+              - 2: Blocking will not affect existing sessions.
             element_attributes
             - name: blocked_until
             - min: 1
