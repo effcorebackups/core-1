@@ -26,10 +26,11 @@ forms
         - login_attempts|field_number
             title: Number of login attempts
             element_attributes
-            - name: number
+            - name: login_attempts
             - min: 1
             - max: 100
             - value: 5
+            - disabled: true
         - blocked_until|field_number
             title: Blocking the login for the number of minutes
             description|text_multiline
@@ -42,6 +43,7 @@ forms
             - min: 1
             - max: 10000
             - value: 5
+            - disabled: true
         - session_duration_min|field_number
             title: Session duration in days when "remember me" is not selected
             element_attributes
@@ -64,11 +66,11 @@ forms
               - 1: Eliminates the possibility of registering to a non-existent EMail address.
             element_attributes
             - name: send_password_to_email
+            - disabled: true
             selected
             - 0: 0
     - button_save|button
         title: save
         attributes
         - value: save
-        - disabled: true
         weight: -500
