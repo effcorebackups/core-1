@@ -81,6 +81,7 @@ translations
     - Changes was not deleted!: Изменения не были удалены!
     - Changes was not saved!: Изменения не были сохранены!
     - Changes was saved.: Изменения были сохранены.
+    - Changing the value will not affect existing sessions.: Изменение значения не повлияет на существующие сеансы.
     - Charset: Кодировка
     - Check field again before submit.: Снова проверьте поле перед отправкой.
     - Checkbox: Флажок
@@ -320,6 +321,7 @@ translations
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
+    - Incorrect value will make it impossible to log in!: Неправильное значение приведет к невозможности входа в систему!
     - Info\: manage: Информация: управлять
     - Information about the selected entry: Информация о выбранной записи
     - Information: Информация

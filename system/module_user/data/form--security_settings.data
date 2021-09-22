@@ -11,8 +11,9 @@ forms
             title: Cookie domain
             description|text_multiline
               text
-              - 0: If no domain is specified, then the current domain is used, excluding subdomains.
-              - 1: If a domain is specified, then it and its subdomains are used.
+              - 0: Incorrect value will make it impossible to log in!
+              - 1: If no domain is specified, then the current domain is used, excluding subdomains.
+              - 2: If a domain is specified, then it and its subdomains are used.
             element_attributes
             - name: cookie_domain
             - required: false
@@ -46,6 +47,8 @@ forms
             - disabled: true
         - session_duration_min|field_number
             title: Session duration in days when "remember me" is not selected
+            description|text
+              text: Changing the value will not affect existing sessions.
             element_attributes
             - name: session_duration_min
             - min: 1
@@ -53,6 +56,8 @@ forms
             - value: 1
         - session_duration_max|field_number
             title: Session duration in days when "remember me" is selected
+            description|text
+              text: Changing the value will not affect existing sessions.
             element_attributes
             - name: session_duration_max
             - min: 1
