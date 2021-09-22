@@ -58,8 +58,8 @@ translations
     - B: Б
     - Belarusian: Белорусский
     - Block: Блок
-    - Blocking the login for the number of minutes: Блокировка входа на количество минут
-    - Blocking will not affect existing sessions.: Блокировка не повлияет на существующие сеансы.
+    - Blocking the login for the number of minutes: Блокирование входа на количество минут
+    - Blocking will not affect existing sessions.: Блокирование не повлияет на существующие сеансы.
     - Blocks: Блоки
     - Breadcrumbs: Хлебные крошки
     - Build number: Номер сборки
@@ -658,8 +658,8 @@ translations
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
-    - Session duration when the "remember me" option was not selected (in days): Длительность сеанса когда опция "запомнить меня" не была выбрана (в днях)
-    - Session duration when the "remember me" option was selected (in days): Длительность сеанса когда опция "запомнить меня" была выбрана (в днях)
+    - Session duration in days when "remember me" is not selected: Длительность сеанса в днях когда не выбрано "запомнить меня"
+    - Session duration in days when "remember me" is selected: Длительность сеанса в днях когда выбрано "запомнить меня"
     - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
     - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
     - Session: Сеанс
