@@ -18,7 +18,7 @@ forms
             title: Blocking the login for the number of minutes
             description|text_multiline
               text
-              - 0: After exceeding the number of unsuccessful login attempts, the user will be blocked from logging in for the specified time.
+              - 0: After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.
               - 1: Blocking will not affect existing sessions.
             element_attributes
             - name: blocked_until

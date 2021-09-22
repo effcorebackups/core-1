@@ -25,7 +25,7 @@ translations
     - Actions: Действия
     - Additional controls will become available after insertion (in update mode).: Дополнительные элементы управления станут доступны после вставки (в режиме обновления).
     - Administrators: Администраторы
-    - After exceeding the number of unsuccessful login attempts, the user will be blocked from logging in for the specified time.: После превышения количества неудачных попыток входа будет заблокирована возможность входа пользователю на указанное время.
+    - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: После превышения значения "Количество попыток входа" будет заблокирована возможность входа на указанное время.
     - All caches was reset.: Все кэши были сброшены.
     - All colors: Все цвета
     - An error occurred during installation!: Произошла ошибка при установке!
