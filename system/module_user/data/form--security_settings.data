@@ -47,7 +47,7 @@ forms
             - value: 5
             - disabled: true
         - session_duration_min|field_number
-            title: Session duration in days when "remember me" is not selected
+            title: Session duration in days when "long session" is not selected
             description|text
               text: Changing the value will not affect existing sessions.
             element_attributes
@@ -56,7 +56,7 @@ forms
             - max: 365
             - value: 1
         - session_duration_max|field_number
-            title: Session duration in days when "remember me" is selected
+            title: Session duration in days when "long session" is selected
             description|text
               text: Changing the value will not affect existing sessions.
             element_attributes

@@ -428,6 +428,7 @@ translations
     - Logout form: Форма выхода
     - logout: выход
     - Logout: Выход
+    - long session: длительный сеанс
     - LOST FIELD: ПОТЕРЯННОЕ ПОЛЕ
     - LOST LAYOUT\: %%_id: ПОТЕРЯННЫЙ МАКЕТ: %%_id
     - M: М
@@ -619,7 +620,6 @@ translations
     - Relations\: Role ↔ Permission: Связи: Роль ↔ Разрешение
     - Relations\: Role ↔ User: Связи: Роль ↔ Пользователь
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
-    - remember me: запомнить меня
     - Report: Отчёт
     - required for modules: требуется для модулей
     - reset: сброс
@@ -664,8 +664,8 @@ translations
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
-    - Session duration in days when "remember me" is not selected: Длительность сеанса в днях когда не выбрано "запомнить меня"
-    - Session duration in days when "remember me" is selected: Длительность сеанса в днях когда выбрано "запомнить меня"
+    - Session duration in days when "long session" is not selected: Длительность сеанса в днях когда не выбрано "длительный сеанс"
+    - Session duration in days when "long session" is selected: Длительность сеанса в днях когда выбрано "длительный сеанс"
     - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
     - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
     - Session: Сеанс

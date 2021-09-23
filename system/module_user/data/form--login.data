@@ -13,7 +13,7 @@ forms
             element_attributes
             - name: session_params[]
             values
-            - is_remember: remember me
+            - is_remember: long session
             - is_fixed_ip: on this ip
             checked
             - =: is_remember
