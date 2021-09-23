@@ -13,10 +13,10 @@ forms
             element_attributes
             - name: session_params[]
             values
-            - is_remember: long session
+            - is_long_session: long session
             - is_fixed_ip: bind to my IP address
             checked
-            - =: is_remember
+            - =: is_long_session
             - =: is_fixed_ip
         - captcha|form_plugin
             name: field_captcha

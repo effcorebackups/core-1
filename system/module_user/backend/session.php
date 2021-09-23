@@ -37,18 +37,18 @@ namespace effcore {
 
   static function insert($id_user, $session_params = []) {
     $settings = module::settings_get('user');
-    $is_remember = isset($session_params['is_remember']);
-    $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    if ($is_remember === false) $period = $settings->session_duration_min * core::date_period_d;
-    if ($is_remember !== false) $period = $settings->session_duration_max * core::date_period_d;
+    $is_long_session = isset($session_params['is_long_session']);
+    $is_fixed_ip     = isset($session_params['is_fixed_ip']);
+    if ($is_long_session === false) $period = $settings->session_duration_min * core::date_period_d;
+    if ($is_long_session !== false) $period = $settings->session_duration_max * core::date_period_d;
     static::id_regenerate('f', $session_params);
     (new instance('session', [
-      'id'          => static::id_get(),
-      'id_user'     => $id_user,
-      'is_remember' => $is_remember ? 1 : 0,
-      'is_fixed_ip' => $is_fixed_ip ? 1 : 0,
-      'expired'     => core::datetime_get('+'.$period.' second'),
-      'data'        => (object)['user_agent' => core::server_get_user_agent(2048)]
+      'id'              => static::id_get(),
+      'id_user'         => $id_user,
+      'is_long_session' => $is_long_session ? 1 : 0,
+      'is_fixed_ip'     => $is_fixed_ip     ? 1 : 0,
+      'expired'         => core::datetime_get('+'.$period.' second'),
+      'data'            => (object)['user_agent' => core::server_get_user_agent(2048)]
     ]))->insert();
     event::start('on_session_insert_after', null, [
       'id_user'     => $id_user,
@@ -100,11 +100,11 @@ namespace effcore {
 
   static function id_regenerate($hex_type, $session_params = []) {
     $settings = module::settings_get('user');
-    $is_remember = isset($session_params['is_remember']);
-    $is_fixed_ip = isset($session_params['is_fixed_ip']);
-    if ($hex_type === 'f' && $is_remember !== true) $expired = time() + ($settings->session_duration_min * core::date_period_d);
-    if ($hex_type === 'f' && $is_remember === true) $expired = time() + ($settings->session_duration_max * core::date_period_d);
-    if ($hex_type === 'a'                         ) $expired = 0;
+    $is_long_session = isset($session_params['is_long_session']);
+    $is_fixed_ip     = isset($session_params['is_fixed_ip']);
+    if ($hex_type === 'f' && $is_long_session !== true) $expired = time() + ($settings->session_duration_min * core::date_period_d);
+    if ($hex_type === 'f' && $is_long_session === true) $expired = time() + ($settings->session_duration_max * core::date_period_d);
+    if ($hex_type === 'a'                             ) $expired = 0;
     if ($hex_type === 'f' && $is_fixed_ip !== true) $ip = core::empty_ip;
     if ($hex_type === 'f' && $is_fixed_ip === true) $ip = core::server_get_addr_remote();
     if ($hex_type === 'a'                         ) $ip = core::server_get_addr_remote();

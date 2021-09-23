@@ -540,8 +540,8 @@ entities
         title: User ID
         type: integer
         not_null: true
-    - is_remember
-        title: Is remember
+    - is_long_session
+        title: Is long session
         type: boolean
         not_null: true
         default: 0
