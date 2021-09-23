@@ -881,9 +881,8 @@ namespace effcore {
   static function ip_to_hex($ip, $is_v6 = true, $is_reversed = true) {
     $ip_hex = '';
     $inaddr = inet_pton($ip);
-    foreach (str_split($inaddr, 1) as $c_char) {
+    foreach (str_split($inaddr, 1) as $c_char)
       $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
-    }
     if ($is_v6)       $ip_hex = str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
     if ($is_reversed) $ip_hex = strrev ($ip_hex);
     return $ip_hex;

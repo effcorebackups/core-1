@@ -83,20 +83,15 @@ namespace effcore {
   ### functionality for session_id ###
   ####################################
 
-  # ┌─────────────┬───────────┬───────────┬────────┬───────────────────┬───────┐
-  # │ Session ID  │ anonymous │ remember? │ on ip? │ secure │ on https │ used? │
-  # ╞═════════════╪═══════════╪═══════════╪════════╪═══════════════════╪═══════╡
-  # │ a--00--00-- │ yes       │ no        │ no     │ n/a    | n/a      │ no    │
-  # │ a--00--ip-- │ yes       │ no        │ yes    │ +      | ++       │ yes   │
-  # │ a--30--00-- │ yes       │ yes       │ no     │ n/a    | n/a      │ no    │
-  # │ a--30--ip-- │ yes       │ yes       │ yes    │ n/a    | n/a      │ no    │
-  # ├─────────────┼───────────┼───────────┼────────┼───────────────────┼───────┤
-  # │ f--01--00-- │ no        │ no        │ no     │ +      | ++       │ yes   │
-  # │ f--01--ip-- │ no        │ no        │ yes    │ ++     | +++      │ yes   │
-  # │ f--30--00-- │ no        │ yes       │ no     │ +      | ++       │ yes   │
-  # │ f--30--ip-- │ no        │ yes       │ yes    │ ++     | +++      │ yes   │
-  # └─────────────┴───────────┴───────────┴────────┴───────────────────┴───────┘
-  # note: n/a = not applicable
+  # ┌──────┬──────────┬──────────────────────────────────┬──────────┬──────────┬──────────┬──────────────────────────────────────────────────────────┐
+  # │ type │ expired  │ IP-v6 (100000f7… == 127.0.0.1)   │ u-agent  │ random   │ hash     │ description                                              │
+  # ╞══════╪══════════╪══════════════════════════════════╪══════════╪══════════╪══════════╪══════════════════════════════════════════════════════════╡
+  # │    a---00000000---100000f7000000000000000000000000---abcdefab---abcdefab---abcdefab │ anonymous                                                │
+  # │    f---abcdef01---00000000000000000000000000000000---abcdefab---abcdefab---abcdefab │ registered without parameters                            │
+  # │    f---abcdef30---00000000000000000000000000000000---abcdefab---abcdefab---abcdefab │ registered with "long session"                           │
+  # │    f---abcdef01---100000f7000000000000000000000000---abcdefab---abcdefab---abcdefab │ registered with "bind to my IP address"                  │
+  # │    f---abcdef30---100000f7000000000000000000000000---abcdefab---abcdefab---abcdefab │ registered with "long session" + "bind to my IP address" │
+  # └──────┴──────────┴──────────────────────────────────┴──────────┴──────────┴──────────┴──────────────────────────────────────────────────────────┘
 
   static function id_regenerate($hex_type, $session_params = []) {
     $settings = module::settings_get('user');
