@@ -3,5 +3,5 @@ settings
   login_attempts: 5
   blocked_until: 5
   session_duration_min: 1
-  session_duration_max: 30
+  session_duration_max: 365
   send_password_to_email: 0
