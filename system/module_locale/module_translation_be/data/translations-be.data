@@ -673,6 +673,7 @@ translations
     - settings page: старонка налад
     - Settings: Налады
     - Shared parameters: Агульныя параметры
+    - Short session\: %%_min day%%_plural{min\|s} \| long session\: %%_max day%%_plural{max\|s}: Кароткі сеанс = %%_min %%_plural{min|day} | працяглы сеанс = %%_max %%_plural{max|day}
     - Simple layout: Просты макет
     - Sitemap editing form: Форма рэдагавання Sitemap
     - Size of uploaded file greater than %%_size.: Памер загружанага файла больш чым %%_size.

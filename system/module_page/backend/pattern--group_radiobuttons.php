@@ -18,6 +18,7 @@ namespace effcore {
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $field_class = '\\effcore\\field_radiobutton';
   public $field_tag_name = 'x-field';
+  public $field_attributes = ['data-type' => 'radiobutton'];
   public $field_title_tag_name = 'label';
   public $field_title_position = 'bottom';
   public $element_attributes = [];
@@ -46,6 +47,7 @@ namespace effcore {
           if (!isset($c_info->element_attributes         )) $c_info->element_attributes = [];
           if (!isset($c_info->element_attributes['value'])) $c_info->element_attributes['value'] = $c_value;
           $c_field                     = new $this->field_class;
+          $c_field->attributes         =     $this->field_attributes;
           $c_field->tag_name           =     $this->field_tag_name;
           $c_field->title_tag_name     =     $this->field_title_tag_name;
           $c_field->title_position     =     $this->field_title_position;

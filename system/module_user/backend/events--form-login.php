@@ -8,6 +8,7 @@ namespace effcore\modules\user {
           use \effcore\core;
           use \effcore\instance;
           use \effcore\message;
+          use \effcore\module;
           use \effcore\session;
           use \effcore\text_multiline;
           use \effcore\text;
@@ -15,6 +16,11 @@ namespace effcore\modules\user {
           abstract class events_form_login {
 
   static function on_init($event, $form, $items) {
+    $settings = module::settings_get('user');
+    $items['#session_params:is_long_session']->description = new text_multiline([
+      'Short session: %%_min day%%_plural{min|s} | long session: %%_max day%%_plural{max|s}'], [
+      'min' => $settings->session_duration_min,
+      'max' => $settings->session_duration_max], '', true, true);
     if (!isset($_COOKIE['cookies_is_enabled'])) {
       message::insert(new text_multiline([
         'Cookies are disabled. You cannot log in!',

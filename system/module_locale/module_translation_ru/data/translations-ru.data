@@ -673,6 +673,7 @@ translations
     - settings page: страница настроек
     - Settings: Настройки
     - Shared parameters: Общие параметры
+    - Short session\: %%_min day%%_plural{min\|s} \| long session\: %%_max day%%_plural{max\|s}: Короткий сеанс = %%_min %%_plural{min|day} | длительный сеанс = %%_max %%_plural{max|day}
     - Simple layout: Простой макет
     - Sitemap editing form: Форма редактирования Sitemap
     - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.

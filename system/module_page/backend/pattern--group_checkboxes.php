@@ -11,6 +11,9 @@ namespace effcore {
     'data-type' => 'checkboxes',
     'role'      => 'group'];
   public $field_class = '\\effcore\\field_checkbox';
+  public $field_attributes = [
+    'data-type' => 'checkbox'
+  ];
 
   function value_get_complex()       {return $this->values_get();      }
   function value_set_complex($value) {       $this->values_set($value);}

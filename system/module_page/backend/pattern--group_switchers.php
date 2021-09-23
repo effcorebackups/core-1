@@ -11,6 +11,8 @@ namespace effcore {
     'data-type' => 'switchers',
     'role'      => 'group'];
   public $element_attributes = [
+    'data-type' => 'switcher'];
+  public $field_attributes = [
     'data-type' => 'switcher'
   ];
 
