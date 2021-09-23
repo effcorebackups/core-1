@@ -14,7 +14,7 @@ forms
             - name: session_params[]
             values
             - is_remember: long session
-            - is_fixed_ip: on this ip
+            - is_fixed_ip: bind to my IP address
             checked
             - =: is_remember
             - =: is_fixed_ip

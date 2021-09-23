@@ -57,6 +57,7 @@ translations
     - Avatar: Аватар
     - B: Б
     - Belarusian: Беларускі
+    - bind to my IP address: прывязаць да майго IP-адраса
     - Block: Блок
     - Blocking the login for the number of minutes: Блакаванне ўваходу на колькасць хвілін
     - Blocking will not affect existing sessions.: Блакаванне не паўплывае на існуючыя сеансы.
@@ -512,7 +513,6 @@ translations
     - Object: Аб'ект
     - ok: ок
     - Okay: Добра
-    - on this ip: на гэтым ip
     - Only unique value is allowed.: Дазваляецца толькі унікальнае значэнне.
     - Operating System: Аперацыйная сістэма
     - Order: Заказ
