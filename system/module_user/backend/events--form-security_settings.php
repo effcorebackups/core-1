@@ -28,7 +28,7 @@ namespace effcore\modules\user {
               $items['#session_duration_max']->value_get()) {
               $items['#session_duration_min']->error_set();
               $items['#session_duration_max']->error_set();
-              message::insert('The maximum value cannot be less than or equal to the minimum!', 'error');
+              $form->error_set('The minimum value cannot be greater than or equal to the maximum!');
           }
         }
         break;

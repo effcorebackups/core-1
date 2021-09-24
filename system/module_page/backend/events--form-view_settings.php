@@ -25,7 +25,7 @@ namespace effcore\modules\page {
               $items['#width_max']->value_get()) {
               $items['#width_min']->error_set();
               $items['#width_max']->error_set();
-              $form->error_set('The maximum value cannot be less than or equal to the minimum!');
+              $form->error_set('The minimum value cannot be greater than or equal to the maximum!');
           }
         }
         break;
