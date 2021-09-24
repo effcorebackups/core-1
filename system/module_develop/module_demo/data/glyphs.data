@@ -1,4 +1,16 @@
 glyphs
+- demo_unicode
+    character: Ё
+    glyph: -X-X-
+>>>>>>>>>>|XXXXX
+>>>>>>>>>>|X----
+>>>>>>>>>>|X----
+>>>>>>>>>>|X----
+>>>>>>>>>>|XXXXX
+>>>>>>>>>>|X----
+>>>>>>>>>>|X----
+>>>>>>>>>>|X----
+>>>>>>>>>>|XXXXX
 - demo_whide
     character: W
     glyph: X-----------------X
