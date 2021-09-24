@@ -20,11 +20,13 @@ namespace effcore\modules\page {
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        if ($items['#width_min']->value_get() >
-            $items['#width_max']->value_get()) {
-            $items['#width_min']->error_set();
-            $items['#width_max']->error_set();
-            $form->error_set('The minimum value is greater than the maximum value!');
+        if (!$form->has_error()) {
+          if ($items['#width_min']->value_get() >=
+              $items['#width_max']->value_get()) {
+              $items['#width_min']->error_set();
+              $items['#width_max']->error_set();
+              $form->error_set('The maximum value cannot be less than or equal to the minimum!');
+          }
         }
         break;
     }

@@ -54,6 +54,9 @@ events
       for: instance_update
       weight: +300
       handler: \effcore\modules\user\events_form_instance_update::on_validate
+  - security_settings|event
+      for: security_settings
+      handler: \effcore\modules\user\events_form_security_settings::on_validate
   on_form_submit
   - login|event
       for: login

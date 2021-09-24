@@ -726,7 +726,8 @@ translations
     - Texts: Текст
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission.: Письмо не было принято к передаче.
-    - The minimum value is greater than the maximum value!: Минимальное значение больше максимального значения!
+    - The maximum value cannot be less than or equal to the minimum!: Максимальное значение не может быть меньше или равно минимальному!
+    - The maximum value cannot be less than the minimum!: Максимальное значение не может быть меньше минимального!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
     - This block will be inserted into the &lt;head&gt; of each page.: Данный блок будет вставлен в &lt;head&gt; каждой страницы.

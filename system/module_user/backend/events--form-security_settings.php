@@ -20,6 +20,21 @@ namespace effcore\modules\user {
     $items['#send_password_to_email']->value_set($settings->send_password_to_email);
   }
 
+  static function on_validate($event, $form, $items) {
+    switch ($form->clicked_button->value_get()) {
+      case 'save':
+        if (!$form->has_error()) {
+          if ($items['#session_duration_min']->value_get() >=
+              $items['#session_duration_max']->value_get()) {
+              $items['#session_duration_min']->error_set();
+              $items['#session_duration_max']->error_set();
+              message::insert('The maximum value cannot be less than or equal to the minimum!', 'error');
+          }
+        }
+        break;
+    }
+  }
+
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
