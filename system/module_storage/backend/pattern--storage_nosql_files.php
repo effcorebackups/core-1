@@ -532,11 +532,11 @@ namespace effcore {
     foreach ($post_init_objects as $c_object) $c_object->_postinit  ();
     foreach ($post_pars_objects as $c_object) $c_object->_postparse ();
   # return result
-    return (object)[
-      'allowed_classes' => $allowed_classes,
-      'data'            => $data,
-      'errors'          => $errors
-    ];
+    $result = new \stdClass;
+    $result->allowed_classes = $allowed_classes;
+    $result->data = $data;
+    $result->errors = $errors;
+    return $result;
   }
 
 }}

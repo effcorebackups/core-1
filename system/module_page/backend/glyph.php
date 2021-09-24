@@ -45,10 +45,10 @@ namespace effcore {
     $rows = explode('|', $glyph);
     foreach ($rows as $c_row)
       $width = max($width, strlen($c_row));
-    return (object)[
-      'width'  => $width,
-      'height' => count($rows)
-    ];
+    $result = new \stdClass;
+    $result->width = $width;
+    $result->height = count($rows);
+    return $result;
   }
 
 }}
