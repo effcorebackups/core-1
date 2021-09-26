@@ -6,7 +6,6 @@
 
 namespace effcore\modules\captcha {
           use \effcore\captcha;
-          use \effcore\field_captcha;
           use \effcore\module;
           abstract class events_module {
 
