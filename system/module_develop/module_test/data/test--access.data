@@ -2,7 +2,6 @@ tests
 - access|test
     id: access
     title: Access
-    description: After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.
     params
     - proxy|field_text
         title: Proxy server

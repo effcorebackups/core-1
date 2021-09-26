@@ -33,6 +33,8 @@ namespace effcore {
     }
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function get_current() {
     static::init();
     return static::$cache;
@@ -53,6 +55,8 @@ namespace effcore {
   static function insert($values) {
     return (new instance('user', $values))->insert();
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function related_roles_select($id_user) {
     $result = [];

@@ -19,7 +19,6 @@ translations
     - − the extension is not enabled by default: − расширение не включено по умолчанию
     - action "%%_name" will be started: действие "%%_name" будет запущено
     - action with rowid = "%%_rowid" will be started: действие с rowid = "%%_rowid" будет запущено
-    - After each 3 registrations you will get the message "The test was failed!" because after every 3-rd challenge the CAPTCHA will change.: После каждых 3-х регистраций Вы будете получать сообщение "Тест не удался!" потому, что после каждой 3-ей попытки защитный код (CAPTCHA) будет изменён.
     - All releases: Все выпуски
     - All types of messages you can see above.: Все типы сообщений Вы можете увидеть выше.
     - ANONYMOUS USER: АНОНИМНЫЙ ПОЛЬЗОВАТЕЛЬ

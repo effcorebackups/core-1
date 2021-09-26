@@ -29,6 +29,8 @@ namespace effcore {
     }
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function select($row_id) {
     static::init();
     return static::$cache[$row_id] ?? null;

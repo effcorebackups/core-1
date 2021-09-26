@@ -33,6 +33,8 @@ namespace effcore {
     }
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function media_class_get($type) {
     switch ($type) {
       case 'audio'  : return 'audio';
@@ -47,6 +49,8 @@ namespace effcore {
       case 'svg'    : return 'picture';
     }
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function is_type_for_thumbnail($type) {
     if ($type === 'jpg' ) return true;

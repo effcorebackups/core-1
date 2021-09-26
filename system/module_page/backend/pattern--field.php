@@ -257,6 +257,17 @@ namespace effcore {
     else              $element->attribute_delete('required');
   }
 
+  function size_get() {
+    $element = $this->child_select('element');
+    return $element->attribute_select('size');
+  }
+
+  function size_set($size = null) {
+    $element = $this->child_select('element');
+    if ($size !== null) $element->attribute_insert('size', $size);
+    else                $element->attribute_delete('size');
+  }
+
   function step_get() {
     $element = $this->child_select('element');
     return $element->attribute_select('step');

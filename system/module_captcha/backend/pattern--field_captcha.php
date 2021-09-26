@@ -7,16 +7,6 @@
 namespace effcore {
           class field_captcha extends field_text {
 
-  # ──────────────────────────────────────────────────────────────────────
-  # about CAPTCHA ID:
-  # ══════════════════════════════════════════════════════════════════════
-  # duplicates of captcha by IP - it is prevention from DDOS attacks -
-  # user can overflow the storage if captcha_id will be a complex value
-  # for example: IP + user_agent (in this case user can falsify user_agent
-  # on each submit and this action will create a great variety of unique
-  # captcha_id in the storage and will make it overflowed)
-  # ──────────────────────────────────────────────────────────────────────
-
   public $title = 'CAPTCHA';
   public $attributes = ['data-type' => 'captcha'];
   public $element_attributes = [
@@ -25,7 +15,6 @@ namespace effcore {
     'autocomplete' => 'off',
     'required'     => true];
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  public $length;
   public $attempts_cur;
   public $attempts_max = 3;
   public $noise = 1;
@@ -33,75 +22,48 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $captcha = $this->captcha_select();
-      if (!$captcha) {
-           $captcha = $this->captcha_generate();
-           $captcha->insert(); }
-      $this->child_insert_first($captcha->canvas, 'canvas');
-      $element = $this->child_select('element');
-      $element->attribute_insert('size',      $captcha->length);
-      $element->attribute_insert('minlength', $captcha->length);
-      $element->attribute_insert('maxlength', $captcha->length);
+      $captcha = captcha::select();
+      if ($captcha) {
+        $this->attempts_cur = $captcha->attempts;
+        $canvas = captcha::canvas_restore(
+          $captcha->canvas_width,
+          $captcha->canvas_height,
+          $captcha->canvas_data
+        );
+      } else {
+        $this->attempts_cur = $this->attempts_max;
+        $result = captcha::canvas_generate_new($this->noise);
+        $canvas = $result->canvas;
+        captcha::insert(
+          $this->attempts_max,
+          $result->characters,
+          $result->canvas->w,
+          $result->canvas->h,
+          $result->canvas->clmask_to_hexstr()
+        );
+      }
+      $this->child_insert_first($canvas, 'canvas');
+      $settings_length = module::settings_get('captcha')->captcha_length;
+      $this->     size_set($settings_length);
+      $this->minlength_set($settings_length);
+      $this->maxlength_set($settings_length);
       if (!frontend::select('form_all__captcha'))
            frontend::insert('form_all__captcha', null, 'styles', ['path' => 'frontend/captcha.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -300], 'form_style', 'captcha');
       $this->is_builded = true;
     }
   }
 
-  function captcha_select() {
-    $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
-    ]))->select();
-    if ($captcha) {
-      $captcha->canvas = new canvas_svg(5 * $captcha->length, 15, 5);
-      $captcha->canvas->matrix_set($captcha->canvas->hexstr_to_clmask($captcha->canvas_data));
-      return $captcha;
-    }
-  }
-
-  function captcha_generate() {
-    $characters = '';
-    $captcha_length = $this->length ?: module::settings_get('captcha')->captcha_length;
-    $captcha_glyphs =                  module::settings_get('captcha')->captcha_glyphs;
-    $canvas = new canvas_svg(5 * $captcha_length, 15, 5);
-    $canvas->fill('#000000', 0, 0, null, null, $this->noise);
-    for ($i = 0; $i < $captcha_length; $i++) {
-      $c_glyph = array_rand($captcha_glyphs);
-      $characters.= $captcha_glyphs[$c_glyph];
-      $canvas->glyph_set($c_glyph,
-        random_int(0, 2) - 1 + ($i * 5),
-        random_int(1, 5)
-      );
-    }
-    $captcha = new instance('captcha', [
-      'ip_hex'      => core::ip_to_hex(core::server_get_addr_remote()),
-      'characters'  => $characters,
-      'attempts'    => $this->attempts_max,
-      'length'      => $captcha_length,
-      'canvas'      => $canvas,
-      'canvas_data' => $canvas->clmask_to_hexstr()
-    ]);
-    return $captcha;
-  }
-
   function captcha_validate($characters) {
-    $captcha = (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
-    ]))->select();
+    $captcha = captcha::select();
     if ($captcha) {
-      if ($captcha->attempts > 0) {
-          $captcha->attempts--;
-          $captcha->update();
-          $this->attempts_cur = $captcha->attempts;
-      } else {
-          $captcha = $this->captcha_generate();
-          $captcha->update();
-          $this->child_update('canvas', $captcha->canvas);
-          $this->attempts_cur = $this->attempts_max;
-      }
-      if ($captcha->characters === $characters) {
-        return true;
-      }
+      $result = (string)$captcha->characters ===
+                (string)$characters;
+      $captcha->attempts--;
+      if ($captcha->attempts > 0) $captcha->update();
+      if ($captcha->attempts < 1) $captcha->delete();
+      $this->is_builded = false;
+      $this->build();
+      return $result;
     }
   }
 
@@ -117,27 +79,6 @@ namespace effcore {
   ###########################
   ### static declarations ###
   ###########################
-
-  static function get_code_by_id($id) {
-    $captcha = (new instance('captcha', [
-      'ip_hex' => $id
-    ]))->select();
-    if ($captcha) {
-      return $captcha->characters;
-    }
-  }
-
-  static function captcha_old_cleaning() {
-    entity::get('captcha')->instances_delete(['conditions' => [
-      'created_!f' => 'created',
-      'operator'   => '<',
-      'created_!v' => core::datetime_get('-1 hour')
-    ]]);
-  }
-
-  static function captcha_cleaning() {
-    entity::get('captcha')->instances_delete();
-  }
 
   static function validate_value($field, $form, $element, &$new_value) {
     if (!$field->captcha_validate($new_value)) {

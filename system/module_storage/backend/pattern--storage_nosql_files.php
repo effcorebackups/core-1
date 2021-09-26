@@ -415,7 +415,7 @@ namespace effcore {
     # skip comment
       if (ltrim($c_line, ' ')[0] === '#') {
         $c_line = strtok(cr.nl);
-        continue;        
+        continue;
       }
     # main processing
       $matches = [];

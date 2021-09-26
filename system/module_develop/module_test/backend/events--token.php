@@ -5,8 +5,8 @@
   ##################################################################
 
 namespace effcore\modules\test {
+          use \effcore\captcha;
           use \effcore\core;
-          use \effcore\field_captcha;
           use \effcore\module;
           use \effcore\step_request;
           abstract class events_token {
@@ -34,9 +34,8 @@ namespace effcore\modules\test {
       if (module::is_enabled('captcha')) {
         $last_response = end(step_request::$history);
         if ($last_response) {
-          return field_captcha::get_code_by_id(
-            core::ip_to_hex($last_response['info']['primary_ip'])
-          );
+          $captcha = captcha::select_by_id(core::ip_to_hex($last_response['info']['primary_ip']));
+          return $captcha->characters ?? null;
         }
       }
     }

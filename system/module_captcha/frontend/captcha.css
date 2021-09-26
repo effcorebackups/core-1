@@ -12,6 +12,6 @@
   x-field[data-type='captcha'] input[name='captcha'][size='8'] {width: 178px}
   x-field[data-type='captcha'] input[name='captcha'][size='9'] {width: 203px}
 
-  x-glyph-control {display: inline-block; margin: 10px 10px 5px 0; vertical-align: top}
-  x-glyph-control x-field[data-type='checkbox'] {margin: 0; text-align: center; transform: scale(.7)}
-  x-glyph-control x-field[data-type='checkbox'] input {margin: 0}
+  x-glyph-settings {display: inline-block; margin: 10px 10px 5px 0; vertical-align: bottom}
+  x-glyph-settings x-field[data-type='checkbox'] {margin: 0; text-align: center; transform: scale(.7)}
+  x-glyph-settings x-field[data-type='checkbox'] input {margin: 0}

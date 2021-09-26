@@ -45,8 +45,12 @@ namespace effcore {
 
   function insert() {
     event::start('on_instance_insert_before', $this->entity_name, ['instance' => &$this]);
-    if ($this->entity_get()->field_get('created') && empty($this->entity_get()->field_get('created')->managing_is_enabled_on_insert)) $this->created = core::datetime_get();
-    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_is_enabled_on_insert)) $this->updated = core::datetime_get();
+    $field_created = $this->entity_get()->field_get('created');
+    $field_updated = $this->entity_get()->field_get('updated');
+    if ($field_created !== null && empty($field_created->managing_is_enabled_on_insert) && $field_created->type === 'datetime') $this->created = core::datetime_get();
+    if ($field_created !== null && empty($field_created->managing_is_enabled_on_insert) && $field_created->type === 'integer' ) $this->created = time();
+    if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_insert) && $field_updated->type === 'datetime') $this->updated = core::datetime_get();
+    if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_insert) && $field_updated->type === 'integer' ) $this->updated = time();
     $result = $this->entity_get()->storage_get()->instance_insert($this);
     event::start('on_instance_insert_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
@@ -54,7 +58,9 @@ namespace effcore {
 
   function update() {
     event::start('on_instance_update_before', $this->entity_name, ['instance' => &$this]);
-    if ($this->entity_get()->field_get('updated') && empty($this->entity_get()->field_get('updated')->managing_is_enabled_on_update)) $this->updated = core::datetime_get();
+    $field_updated = $this->entity_get()->field_get('updated');
+    if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_update) && $field_updated->type === 'datetime') $this->updated = core::datetime_get();
+    if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_update) && $field_updated->type === 'integer' ) $this->updated = time();
     $result = $this->entity_get()->storage_get()->instance_update($this);
     event::start('on_instance_update_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;

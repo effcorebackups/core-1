@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\captcha {
+          use \effcore\captcha;
           use \effcore\field_captcha;
           use \effcore\module;
           abstract class events_module {
@@ -32,7 +33,7 @@ namespace effcore\modules\captcha {
   }
 
   static function on_cron_run($event) {
-    field_captcha::captcha_old_cleaning();
+    captcha::cleaning();
   }
 
 }}
