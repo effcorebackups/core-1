@@ -158,6 +158,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # cron autorun
   # ─────────────────────────────────────────────────────────────────────
+
   if (storage::get('sql')->is_installed()) {
     $settings = module::settings_get('core');
     if ($settings->cron_auto_run_frequency) {
@@ -167,6 +168,10 @@ namespace effcore {
       }
     }
   }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # page search and display
+  # ─────────────────────────────────────────────────────────────────────
 
   ob_start();
   $result = '';
