@@ -36,8 +36,9 @@ namespace effcore\modules\core {
   static function block_markup__service_info($page, $args = []) {
     $settings           = module::settings_get('core');
     $is_required_update = update::is_required();
-    $is_cron_run = !empty($settings->cron_last_run_date) &&
-                          $settings->cron_last_run_date > core::datetime_get('-'.core::date_period_d.' second');
+    $is_cron_run = core::is_cron_run(core::date_period_d);
+    $cron_auto_run_frequency = $settings->cron_auto_run_frequency ?
+        locale::format_seconds($settings->cron_auto_run_frequency): 'no';
     $cron_url = core::server_get_request_scheme().'://'.
                 core::server_get_host(false).'/manage/cron/'.
                 core::key_get('cron');
@@ -49,6 +50,7 @@ namespace effcore\modules\core {
     $decorator->id = 'service_info';
     $decorator->data = [[
       'cron_url'      => ['title' => 'Cron URL',                'value' => url::url_to_markup($cron_url)   ],
+      'cron_auto_run' => ['title' => 'Cron autorun frequency',  'value' => $cron_auto_run_frequency        ],
       'cron_last_run' => ['title' => 'Cron last run',           'value' => $sticker_for_cron_last_run      ],
       'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update ] ]];
     return new node([], [

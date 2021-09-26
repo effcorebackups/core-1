@@ -1020,6 +1020,20 @@ namespace effcore {
     return $result;
   }
 
+  ############
+  ### cron ###
+  ############
+
+  static function is_cron_run($period) {
+    $settings = module::settings_get('core');
+    return !empty($settings->cron_last_run_date) &&
+                  $settings->cron_last_run_date > static::datetime_get('-'.$period.' second');
+  }
+
+  static function cron_run_register() {
+    return storage::get('files')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
+  }
+
   ########################
   ### shared functions ###
   ########################
@@ -1072,7 +1086,7 @@ namespace effcore {
       case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type';                                      break;
     }
     if (isset($template) && template::get($template)) {
-      if (!$message && core::server_get_request_uri() !== '/')
+      if (!$message && static::server_get_request_uri() !== '/')
            $message = 'go to <a href="/">front page</a>';
       $settings = module::settings_get('page');
       $colors   = color::get_all();

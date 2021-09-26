@@ -118,6 +118,7 @@ translations
     - Created: Створана
     - Credentials for storage "%%_name" was not set!: Уліковыя дадзеныя для сховішча "%%_name" не былі зададзены!
     - Credentials: Уліковыя дадзеныя
+    - Cron autorun frequency: Частата аўтазапуску Cron
     - Cron last run: Апошні запуск Cron
     - Current language: Бягучая мова
     - Current page information: Інфармацыя бягучай старонкі
