@@ -158,11 +158,13 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # cron autorun
   # ─────────────────────────────────────────────────────────────────────
-  $settings = module::settings_get('core');
-  if ($settings->cron_auto_run_frequency) {
-    if (!core::is_cron_run($settings->cron_auto_run_frequency) &&
-         core::cron_run_register()) {
-      event::start('on_cron_run');
+  if (storage::get('sql')->is_installed()) {
+    $settings = module::settings_get('core');
+    if ($settings->cron_auto_run_frequency) {
+      if (!core::is_cron_run($settings->cron_auto_run_frequency) &&
+           core::cron_run_register()) {
+        event::start('on_cron_run');
+      }
     }
   }
 
