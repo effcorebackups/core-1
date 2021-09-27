@@ -84,6 +84,15 @@ entities
         type: primary
         fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
 - release|entity
     name: release
     title: Release
@@ -213,3 +222,12 @@ entities
         references: projects
         references_fields
         - =: id
+    indexes
+    - index_created
+        type: index
+        fields
+        - =: created
+    - index_updated
+        type: index
+        fields
+        - =: updated
