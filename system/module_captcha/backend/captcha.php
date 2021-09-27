@@ -81,9 +81,9 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function canvas_restore($width, $height, $data) {
+  static function canvas_restore($width, $height, $binstr) {
     $canvas = new canvas_svg($width, $height, 5);
-    $canvas->matrix_set($canvas->hexstr_to_color_mask($data));
+    $canvas->color_mask_set($binstr);
     return $canvas;
   }
 

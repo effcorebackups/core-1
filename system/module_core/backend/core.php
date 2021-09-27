@@ -900,51 +900,35 @@ namespace effcore {
   ### functionality for binary data ###
   #####################################
 
-  static function binstr_to_hexstr($binstr) {
-    $hexstr = '';
-    foreach (str_split($binstr, 8) as $c_chunk) {
-      $hexstr.= str_pad(base_convert(str_pad($c_chunk, 8, '0'), 2, 16), 2, '0', STR_PAD_LEFT);
-    }
-    return $hexstr;
-  }
-
-  static function hexstr_to_binstr($hexstr) {
-    $binstr = '';
-    foreach (str_split($hexstr, 2) as $c_chunk) {
-      $binstr.= str_pad(base_convert($c_chunk, 16, 2), 8, '0', STR_PAD_LEFT);
-    }
-    return $binstr;
-  }
-
   static function binstr_to_bin($binstr) {
     $result = '';
     foreach (str_split($binstr, 8) as $c_chunk) {
-      $c_result_byte = 0;
+      $c_rbyte = 0;
       $c_chunk = str_pad($c_chunk, 8, '0');
-      if ($c_chunk[0] === '1') $c_result_byte |= 0b10000000;
-      if ($c_chunk[1] === '1') $c_result_byte |= 0b01000000;
-      if ($c_chunk[2] === '1') $c_result_byte |= 0b00100000;
-      if ($c_chunk[3] === '1') $c_result_byte |= 0b00010000;
-      if ($c_chunk[4] === '1') $c_result_byte |= 0b00001000;
-      if ($c_chunk[5] === '1') $c_result_byte |= 0b00000100;
-      if ($c_chunk[6] === '1') $c_result_byte |= 0b00000010;
-      if ($c_chunk[7] === '1') $c_result_byte |= 0b00000001;
-      $result.= chr($c_result_byte); }
+      if ($c_chunk[0] === '1') $c_rbyte |= 0b10000000;
+      if ($c_chunk[1] === '1') $c_rbyte |= 0b01000000;
+      if ($c_chunk[2] === '1') $c_rbyte |= 0b00100000;
+      if ($c_chunk[3] === '1') $c_rbyte |= 0b00010000;
+      if ($c_chunk[4] === '1') $c_rbyte |= 0b00001000;
+      if ($c_chunk[5] === '1') $c_rbyte |= 0b00000100;
+      if ($c_chunk[6] === '1') $c_rbyte |= 0b00000010;
+      if ($c_chunk[7] === '1') $c_rbyte |= 0b00000001;
+      $result.= chr($c_rbyte); }
     return $result;
   }
 
-  function bin_to_binstr($bin) {
+  static function bin_to_binstr($bin) {
     $result = '';
     for ($i = 0; $i < strlen($bin); $i++) {
-      $c_result_byte = ord($bin[$i]);
-      $c_chunk = $c_result_byte & 0b10000000 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b01000000 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00100000 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00010000 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00001000 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00000100 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00000010 ? '1' : '0';
-      $c_chunk.= $c_result_byte & 0b00000001 ? '1' : '0';
+      $c_rbyte = ord($bin[$i]);
+      $c_chunk = $c_rbyte & 0b10000000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b01000000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00100000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00010000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00001000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000100 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000010 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
       $result.= $c_chunk; }
     return $result;
   }

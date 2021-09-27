@@ -28,7 +28,7 @@ namespace effcore {
         $canvas = captcha::canvas_restore(
           $captcha->canvas_width,
           $captcha->canvas_height,
-          $captcha->canvas_data
+          core::bin_to_binstr($captcha->canvas_data)
         );
       } else {
         $this->attempts_cur = $this->attempts_max;
@@ -39,7 +39,7 @@ namespace effcore {
           $result->characters,
           $result->canvas->w,
           $result->canvas->h,
-          $result->canvas->color_mask_to_hexstr()
+          core::binstr_to_bin($result->canvas->color_mask_get())
         );
       }
       $this->child_insert_first($canvas, 'canvas');

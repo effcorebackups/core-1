@@ -71,22 +71,21 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  function color_mask_to_hexstr($color = '#000000') {
+  function color_mask_get($color = '#000000') {
     $binstr = '';
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
       $binstr.= isset($this->canvas[$c_y][$c_x]) &&
                       $this->canvas[$c_y][$c_x] === $color ? '1' : '0'; }}
-    return core::binstr_to_hexstr($binstr);
+    return $binstr;
   }
 
-  function hexstr_to_color_mask($hexstr, $color = '#000000') {
+  function color_mask_set($binstr, $color = '#000000') {
     $matrix = [];
-    $binstr = core::hexstr_to_binstr($hexstr);
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
       $matrix[$c_y][$c_x] = $binstr[$c_x + ($c_y * $this->w)] === '1' ? $color : null; }}
-    return $matrix;
+    $this->matrix_set($matrix);
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
