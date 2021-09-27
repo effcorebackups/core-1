@@ -495,6 +495,7 @@ entities
         title: Created
         type: datetime
         default: null
+        check: (created <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_datetime_local
