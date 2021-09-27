@@ -76,7 +76,7 @@ namespace effcore {
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
       $binstr.= isset($this->canvas[$c_y][$c_x]) &&
-                      $this->canvas[$c_y][$c_x] == $color ? '1' : '0'; }}
+                      $this->canvas[$c_y][$c_x] === $color ? '1' : '0'; }}
     return core::binstr_to_hexstr($binstr);
   }
 
@@ -85,7 +85,7 @@ namespace effcore {
     $binstr = core::hexstr_to_binstr($hexstr);
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
-      $matrix[$c_y][$c_x] = $binstr[$c_x + ($c_y * $this->w)] == '1' ? $color : null; }}
+      $matrix[$c_y][$c_x] = $binstr[$c_x + ($c_y * $this->w)] === '1' ? $color : null; }}
     return $matrix;
   }
 
