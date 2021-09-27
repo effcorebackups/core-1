@@ -39,7 +39,7 @@ namespace effcore {
           $result->characters,
           $result->canvas->w,
           $result->canvas->h,
-          $result->canvas->clmask_to_hexstr()
+          $result->canvas->color_mask_to_hexstr()
         );
       }
       $this->child_insert_first($canvas, 'canvas');

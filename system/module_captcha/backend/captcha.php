@@ -83,7 +83,7 @@ namespace effcore {
 
   static function canvas_restore($width, $height, $data) {
     $canvas = new canvas_svg($width, $height, 5);
-    $canvas->matrix_set($canvas->hexstr_to_clmask($data));
+    $canvas->matrix_set($canvas->hexstr_to_color_mask($data));
     return $canvas;
   }
 
