@@ -22,6 +22,8 @@ namespace effcore {
     parent::__construct([], $weight);
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function pixel_get($x, $y) {
     return $this->canvas[$y][$x] ?? null;
   }
@@ -29,6 +31,8 @@ namespace effcore {
   function pixel_set($x, $y, $color = '#000000') {
     $this->canvas[$y][$x] = $color;
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function matrix_get($x = 0, $y = 0, $w = null, $h = null) {
     $matrix = [];
@@ -65,6 +69,8 @@ namespace effcore {
     }}
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function clmask_to_hexstr($color = '#000000') {
     $binstr = '';
     for ($c_y = 0; $c_y < $this->h; $c_y++) {
@@ -82,6 +88,8 @@ namespace effcore {
       $matrix[$c_y][$c_x] = $binstr[$c_x + ($c_y * $this->w)] == '1' ? $color : null; }}
     return $matrix;
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function render() {
     return (template::make_new($this->template, [
