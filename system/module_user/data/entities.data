@@ -553,7 +553,7 @@ entities
     - expired
         title: Expiration date
         type: datetime
-        default: null
+        not_null: true
     constraints
     - primary_id
         type: primary
