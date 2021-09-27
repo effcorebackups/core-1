@@ -15,14 +15,12 @@ entities
         check: (id <> '')
     - created
         title: Created
-        type: datetime
-        default: null
-        check: (created <> '')
+        type: integer
+        not_null: true
     - updated
         title: Updated
-        type: datetime
-        default: null
-        check: (updated <> '')
+        type: integer
+        not_null: true
     constraints
     - primary_id
         type: primary

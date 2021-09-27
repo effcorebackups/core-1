@@ -253,7 +253,14 @@ namespace effcore {
     ]))->delete();
   }
 
-  static function validation_tmp_cleaning($limit = 5000) {
+  static function validation_cleaning($files_limit = 5000) {
+  # delete items from the storage
+    entity::get('cache_validation')->instances_delete(['conditions' => [
+      'updated_!f' => 'updated',
+      'operator'   => '<',
+      'updated_!v' => time() - core::date_period_d
+    ]]);
+  # delete temporary files
     if (file_exists(temporary::directory.'validation/')) {
       $counter = 0;
       foreach (new rd_iterator(temporary::directory.'validation/', file::scan_mode) as $c_dir_path => $c_spl_dir_info) {
@@ -262,7 +269,7 @@ namespace effcore {
                                   $c_spl_dir_info->getFilename() < core::date_get()) {
           # try to recursively delete all files and directories in current "YYYY-MM-DD" directory
             foreach (new ri_iterator(new rd_iterator($c_dir_path, file::scan_mode), file::scan_with_dir_at_last) as $c_df_path => $c_spl_dir_or_file_info) {
-              if     ($counter >= $limit) return;
+              if     ($counter >= $files_limit) return;
               if     ($c_spl_dir_or_file_info->isFile()) {@unlink($c_df_path); $counter++;}
               elseif ($c_spl_dir_or_file_info->isDir ()) {@rmdir ($c_df_path);}
             }
@@ -272,11 +279,6 @@ namespace effcore {
         }
       }
     }
-    entity::get('cache_validation')->instances_delete(['conditions' => [
-      'updated_!f' => 'updated',
-      'operator'   => '<',
-      'updated_!v' => core::datetime_get('-'.core::date_period_d.' second')
-    ]]);
   }
 
   ###########################
