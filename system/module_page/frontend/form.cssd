@@ -407,6 +407,10 @@
   [data-id='block__form__cache_update'] form#cache_update {margin: 0; text-align: right}
   [data-id='block__form__cache_update'] form#cache_update button {margin: 0}
 
+  /* form 'logout' */
+
+  x-decorator[data-id='sessions_logout'] [data-cellid='is_fixed_ip'] {white-space: nowrap}
+
   /* Polls */
 
   form#vote x-diagram {margin-top: 1em}

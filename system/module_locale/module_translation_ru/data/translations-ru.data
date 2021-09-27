@@ -352,9 +352,10 @@ translations
     - Interfaces: Интерфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ниже версии %%_number больше не поддерживается!
     - Invalid session was deleted!: Недействительный сеанс был удалён!
-    - Is active: Активная
+    - Is current: Текущий
     - is embedded: встроенный
     - Is embedded: Встроенный
+    - Is fixed IP: Фикс. IP
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
     - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!

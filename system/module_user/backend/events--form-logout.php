@@ -32,10 +32,11 @@ namespace effcore\modules\user {
       $c_checkbox->value_set($c_session->id);
       $c_checkbox->checked_set($c_session->id === $session_active->id);
       $decorator->data[$c_session->id] = [
-        'checkbox'  => ['value' => $c_checkbox,                                                'title' => ''               ],
-        'is_active' => ['value' => core::format_logic($c_session->id === $session_active->id), 'title' => 'Is active'      ],
-        'expired'   => ['value' => locale::format_datetime($c_session->expired),               'title' => 'Expiration date'],
-        'info'      => ['value' => $c_session->data->user_agent ?? null,                       'title' => 'User agent'     ]
+        'checkbox'    => ['value' => $c_checkbox,                                                'title' => ''               ],
+        'is_current'  => ['value' => core::format_logic($c_session->id === $session_active->id), 'title' => 'Is current'     ],
+        'is_fixed_ip' => ['value' => core::format_logic($c_session->is_fixed_ip),                'title' => 'Is fixed IP'    ],
+        'expired'     => ['value' => locale::format_datetime($c_session->expired),               'title' => 'Expiration date'],
+        'info'        => ['value' => $c_session->data->user_agent ?? null,                       'title' => 'User agent'     ]
       ]; }
     $decorator->build();
   }
