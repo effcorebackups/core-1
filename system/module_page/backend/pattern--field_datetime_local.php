@@ -36,17 +36,17 @@ namespace effcore {
 
   function value_get() {
     $value = field_text::value_get();
-    if ($this->is_get_utc == true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
-    if ($this->is_get_utc != true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
+    if ($this->is_get_utc === true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
+    if ($this->is_get_utc !== true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
     return $value;
   }
 
   function value_set($value) {
-    if     (core::validate_T_datetime($value) && $this->is_set_utc == true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::   sanitize_T_datetime($value)));
-    elseif (core::validate_T_datetime($value) && $this->is_set_utc != true) parent::value_set(                                core::   sanitize_T_datetime($value) );
-    elseif (core::validate_datetime  ($value) && $this->is_set_utc == true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::datetime_to_T_datetime($value)));
-    elseif (core::validate_datetime  ($value) && $this->is_set_utc != true) parent::value_set(                                core::datetime_to_T_datetime($value) );
-    else                                                                    parent::value_set                                                             ($value);
+    if     (core::validate_T_datetime($value) && $this->is_set_utc === true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::   sanitize_T_datetime($value)));
+    elseif (core::validate_T_datetime($value) && $this->is_set_utc !== true) parent::value_set(                                core::   sanitize_T_datetime($value) );
+    elseif (core::validate_datetime  ($value) && $this->is_set_utc === true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::datetime_to_T_datetime($value)));
+    elseif (core::validate_datetime  ($value) && $this->is_set_utc !== true) parent::value_set(                                core::datetime_to_T_datetime($value) );
+    else                                                                     parent::value_set                                                             ($value);
   }
 
   ###########################

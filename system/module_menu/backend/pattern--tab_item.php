@@ -37,7 +37,7 @@ namespace effcore {
     if (!$this->is_builded) {
       $this->attribute_insert('data-id', $this->id);
       foreach (static::select_all() as $c_item) {
-        if ($c_item->id_parent == $this->id) {
+        if ($c_item->id_parent === $this->id) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build(); }}
       $this->is_builded = true;
@@ -103,15 +103,15 @@ namespace effcore {
     $result = static::$cache ?? [];
     if ($id_tab)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->id_tab != $id_tab)
+        if ($c_item->id_tab !== $id_tab)
           unset($result[$c_id]);
     if ($id_parent)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->id_parent != $id_parent)
+        if ($c_item->id_parent !== $id_parent)
           unset($result[$c_id]);
     if ($is_skip_hidden)
       foreach ($result as $c_id => $c_item)
-        if ($c_item->is_hidden == true)
+        if ($c_item->is_hidden)
           unset($result[$c_id]);
     return $result;
   }
