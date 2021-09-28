@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use const \effcore\cr;
           use const \effcore\nl;
           use \effcore\core;
           use \effcore\event;

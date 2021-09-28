@@ -321,6 +321,7 @@ translations
     - If a domain is specified, then it and its subdomains are used.: Если домен задан, то используется он и его поддомены.
     - If no domain is specified, then the current domain is used, excluding subdomains.: Если домен не задан, то используется текущий домен без учёта поддоменов.
     - If the initial value is not specified, the current value will be used.: Если начальное значение не задано, то будет использовано текущее значение.
+    - Ignore this email if you have not completed any registration on %%_domain.: Проигнорируйте это письмо если Вы не осуществляли никакой регистрации на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Incorrect value will make it impossible to log in!: Неправильное значение приведет к невозможности входа в систему!
@@ -603,6 +604,7 @@ translations
     - Registered user's breadcrumbs: Хлебные крошки зарегистрированного пользователя
     - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
+    - Registering a new user on %%_domain: Регистрация нового пользователя на %%_domain
     - Registration form: Форма регистрации
     - Registration via EMail: Регистрация через электронную почту
     - registration: регистрация
@@ -844,11 +846,13 @@ translations
     - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Вы уже загрузили %%_current_number файл%%_plural{current_number|ov-a}.
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
+    - You received this message because this email address was specified when registering on %%_domain.: Вы получили это сообщение, потому что при регистрации на %%_domain был указан этот адрес электронной почты.
     - Your answer was accepted.: Ваш ответ был принят.
     - Your answer was canceled.: Ваш ответ был отменён.
     - Your answer was not accepted!: Ваш ответ не был принят!
     - Your answer was not canceled!: Ваш ответ не был отменён!
     - Your EMail is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
     - Your EMail is\: %%_email: Ваш адрес электронной почты: %%_email
+    - Your new password on %%_domain was automatically generated\: %%_new_password: Ваш новый пароль на %%_domain был автоматически сгенерирован: %%_new_password
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - Your password is\: %%_password: Ваш пароль: %%_password

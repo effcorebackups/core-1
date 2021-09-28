@@ -72,7 +72,6 @@ forms
               - 1: Eliminates the possibility of registering to a non-existent EMail address.
             element_attributes
             - name: send_password_to_email
-            - disabled: true
             selected
             - 0: 0
     - button_save|button
