@@ -2,6 +2,23 @@ templates
 # ─────────────────────────────────────────────────────────────────────
 # type: text
 # ─────────────────────────────────────────────────────────────────────
+- markup_html
+    name: markup_html
+    type: text
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
+- markup_html_simple
+    name: markup_html_simple
+    type: text
+    data: <%%_tag_name %%_attributes>
+- markup_xml
+    name: markup_xml
+    type: text
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
+- markup_xml_simple
+    name: markup_xml_simple
+    type: text
+    data: <%%_tag_name %%_attributes />
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - actions_list
     name: actions_list
     type: text
@@ -42,22 +59,6 @@ templates
     name: picture
     type: text
     data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes><img data-id="%%_id" src="/%%_path" %%_attributes/></a>
-- markup_html
-    name: markup_html
-    type: text
-    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
-- markup_html_simple
-    name: markup_html_simple
-    type: text
-    data: <%%_tag_name %%_attributes>
-- markup_xml
-    name: markup_xml
-    type: text
-    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
-- markup_xml_simple
-    name: markup_xml_simple
-    type: text
-    data: <%%_tag_name %%_attributes />
 - text
     name: text
     type: text

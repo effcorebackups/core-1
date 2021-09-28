@@ -49,26 +49,6 @@ namespace effcore {
     }}
   }
 
-  function glyph_set($glyph, $x, $y) {
-    $rows = array_reverse(explode('|', $glyph));
-    for ($c_y = 0; $c_y < count ($rows);       $c_y++) {
-    for ($c_x = 0; $c_x < strlen($rows[$c_y]); $c_x++) {
-      $c_color = $rows[$c_y][$c_x] === 'X' ? '#000000' : null;
-      if ($c_color) {
-        $this->pixel_set($c_x + $x, $c_y + $y, $c_color);
-      }
-    }}
-  }
-
-  function fill($color, $x = 0, $y = 0, $w = null, $h = null, $random = 0) {
-    for ($c_y = 0; $c_y < ($h ?: $this->h); $c_y++) {
-    for ($c_x = 0; $c_x < ($w ?: $this->w); $c_x++) {
-      if (!$random || ($random && random_int(0, 10) / 10 > $random)) {
-        $this->pixel_set($c_x + $x, $c_y + $y, $color);
-      }
-    }}
-  }
-
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function color_mask_get($color = '#000000') {
@@ -86,6 +66,30 @@ namespace effcore {
     for ($c_x = 0; $c_x < $this->w; $c_x++) {
       $matrix[$c_y][$c_x] = $binstr[$c_x + ($c_y * $this->w)] === '1' ? $color : null; }}
     $this->matrix_set($matrix);
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  function glyph_set($glyph, $x, $y) {
+    $rows = array_reverse(explode('|', $glyph));
+    for ($c_y = 0; $c_y < count ($rows);       $c_y++) {
+    for ($c_x = 0; $c_x < strlen($rows[$c_y]); $c_x++) {
+      $c_color = $rows[$c_y][$c_x] === 'X' ? '#000000' : null;
+      if ($c_color) {
+        $this->pixel_set($c_x + $x, $c_y + $y, $c_color);
+      }
+    }}
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  function fill($color, $x = 0, $y = 0, $w = null, $h = null, $random = 0) {
+    for ($c_y = 0; $c_y < ($h ?: $this->h); $c_y++) {
+    for ($c_x = 0; $c_x < ($w ?: $this->w); $c_x++) {
+      if (!$random || ($random && random_int(0, 10) / 10 > $random)) {
+        $this->pixel_set($c_x + $x, $c_y + $y, $color);
+      }
+    }}
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
