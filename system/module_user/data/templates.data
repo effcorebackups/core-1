@@ -1,11 +1,11 @@
 templates
-- mail_recovery_subject_default
-    name: mail_recovery_subject_default
+- mail_recovery_subject_embedded
+    name: mail_recovery_subject_embedded
     type: text
     data|text
       text: Password recovery on %%_domain
-- mail_recovery_body_default
-    name: mail_recovery_body_default
+- mail_recovery_body_embedded
+    name: mail_recovery_body_embedded
     type: text
     data|text_multiline
       delimiter: &#10;&#10;
