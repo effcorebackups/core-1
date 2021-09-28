@@ -357,6 +357,7 @@ translations
     - is embedded: встроенный
     - Is embedded: Встроенный
     - Is fixed IP: Фикс. IP
+    - It is recommended that you change your password directly on %%_domain.: Рэкамендуецца змяніць пароль непасрэдна на %%_domain.
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
     - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!
