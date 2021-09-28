@@ -15,8 +15,10 @@ namespace effcore\modules\user {
           use \effcore\url;
           abstract class events_form_recovery {
 
-  const template_mail_recovery_subject = 'mail_recovery_subject';
-  const template_mail_recovery_body    = 'mail_recovery_body';
+  const template_mail_recovery_subject         = 'mail_recovery_subject';
+  const template_mail_recovery_subject_default = 'mail_recovery_subject_default';
+  const template_mail_recovery_body            = 'mail_recovery_body';
+  const template_mail_recovery_body_default    = 'mail_recovery_body_default';
 
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
@@ -43,15 +45,17 @@ namespace effcore\modules\user {
           $new_password = core::password_generate();
           $user->password_hash = core::password_hash($new_password);
           if ($user->update()) {
-            $current_url = url::get_current();
+            $template_mail_recovery_subject_name = template::get(static::template_mail_recovery_subject) ? static::template_mail_recovery_subject : static::template_mail_recovery_subject_default;
+            $template_mail_recovery_body_name    = template::get(static::template_mail_recovery_body)    ? static::template_mail_recovery_body    : static::template_mail_recovery_body_default;
+            $site_url = url::get_current()->domain;
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
-            $mail_from = 'From: no-reply@'.$current_url->domain;
+            $mail_from = 'From: no-reply@'.$site_url;
             $mail_to = $user->nickname.' <'.$user->email.'>';
-            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new(static::template_mail_recovery_subject, [
-              'domain' => $current_url->domain
+            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new($template_mail_recovery_subject_name, [
+              'domain' => $site_url
             ]))->render()).'?=';
-            $mail_body = template::make_new(static::template_mail_recovery_body, [
-              'domain'       => $current_url->domain,
+            $mail_body = template::make_new($template_mail_recovery_body_name, [
+              'domain'       => $site_url,
               'new_password' => $new_password
             ])->render();
             event::start('on_email_send_before', 'recovery', [

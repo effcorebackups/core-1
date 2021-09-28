@@ -7,3 +7,18 @@ templates
     name: page_not_found
     type: file
     path: frontend/template--page--not_found.tpl
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- mail_recovery_subject
+    name: mail_recovery_subject
+    type: text
+    data|text
+      text: Password recovery on %%_domain
+- mail_recovery_body
+    name: mail_recovery_body
+    type: text
+    data|text_multiline
+      delimiter: &#10;&#10;
+      text
+      - 500: You received this message because someone tried to recover the password from your account on %%_domain.
+      - 400: Your new password on %%_domain was changed automatically to: %%_new_password
+      - 300: Your EMail is not shown publicly on %%_domain and it is never shared with third parties!

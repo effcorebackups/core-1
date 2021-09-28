@@ -1,15 +1,15 @@
 templates
-- mail_recovery_subject
-    name: mail_recovery_subject
+- mail_recovery_subject_default
+    name: mail_recovery_subject_default
     type: text
     data|text
       text: Password recovery on %%_domain
-- mail_recovery_body
-    name: mail_recovery_body
+- mail_recovery_body_default
+    name: mail_recovery_body_default
     type: text
     data|text_multiline
       delimiter: &#10;&#10;
       text
-      - 2: You received this message because someone tried to recover the password from your account on %%_domain.
-      - 4: Your new password on %%_domain was changed automatically to: %%_new_password
-      - 6: Your EMail is not shown publicly on %%_domain and it is never shared with third parties!
+      - 500: You received this message because someone tried to recover the password from your account on %%_domain.
+      - 400: Your new password on %%_domain was changed automatically to: %%_new_password
+      - 300: Your EMail is not shown publicly on %%_domain and it is never shared with third parties!
