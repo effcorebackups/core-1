@@ -70,6 +70,14 @@ templates
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────
+- page_access_forbidden_embedded
+    name: page_access_forbidden_embedded
+    type: file
+    path: frontend/template--page--access_forbidden.tpl
+- page_not_found_embedded
+    name: page_not_found_embedded
+    type: file
+    path: frontend/template--page--not_found.tpl
 - canvas_svg
     name: canvas_svg
     type: file
