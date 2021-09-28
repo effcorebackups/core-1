@@ -23,8 +23,8 @@ namespace effcore {
       event::start('on_tab_build_before', $this->id, ['tab' => &$this]);
       $this->attribute_insert('data-id', $this->id);
       foreach (tab_item::select_all() as $c_item) {
-        if ($c_item->id_tab    == $this->id &&
-            $c_item->id_parent == null) {
+        if ($c_item->id_tab    === $this->id &&
+            $c_item->id_parent === null) {
           $this->child_insert($c_item, $c_item->id);
           $c_item->build(); }}
       event::start('on_tab_build_after', $this->id, ['tab' => &$this]);
