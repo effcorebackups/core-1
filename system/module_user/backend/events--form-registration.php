@@ -20,8 +20,8 @@ namespace effcore\modules\user {
 
   const template_mail_registration_subject          = 'mail_registration_subject';
   const template_mail_registration_subject_embedded = 'mail_registration_subject_embedded';
-  const template_mail_registration_body             = 'mail_registration_body';
-  const template_mail_registration_body_embedded    = 'mail_registration_body_embedded';
+  const template_mail_registration_message          = 'mail_registration_message';
+  const template_mail_registration_message_embedded = 'mail_registration_message_embedded';
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('user');
@@ -49,7 +49,7 @@ namespace effcore\modules\user {
           ]);
           if ($user) {
             $template_mail_registration_subject_name = template::get(static::template_mail_registration_subject) ? static::template_mail_registration_subject : static::template_mail_registration_subject_embedded;
-            $template_mail_registration_body_name    = template::get(static::template_mail_registration_body)    ? static::template_mail_registration_body    : static::template_mail_registration_body_embedded;
+            $template_mail_registration_message_name = template::get(static::template_mail_registration_message) ? static::template_mail_registration_message : static::template_mail_registration_message_embedded;
             $site_url = url::get_current()->domain;
             $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
             $mail_from = 'From: no-reply@'.$site_url;
@@ -57,7 +57,7 @@ namespace effcore\modules\user {
             $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new($template_mail_registration_subject_name, [
               'domain' => $site_url
             ]))->render()).'?=';
-            $mail_body = template::make_new($template_mail_registration_body_name, [
+            $mail_body = template::make_new($template_mail_registration_message_name, [
               'domain'       => $site_url,
               'new_password' => $new_password
             ])->render();

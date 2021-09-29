@@ -19,8 +19,8 @@ templates
     type: text
     data|text
       text: Registering a new user on %%_domain
-- mail_registration_body_embedded
-    name: mail_registration_body_embedded
+- mail_registration_message_embedded
+    name: mail_registration_message_embedded
     type: text
     data|text_multiline
       delimiter: &#10;&#10;
