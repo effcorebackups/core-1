@@ -28,6 +28,8 @@ translations
     - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: Пасля перавышэння значэння "Колькасць спробаў ўваходу" будзе заблакавана магчымасць ўваходу на паказаны час.
     - All caches was reset.: Усе кэшы былі скінутыя.
     - All colors: Усе колеры
+    - An empty line was found.: Знойдзены пусты радок.
+    - An error in parsing the "data" format was found!: Памылка разбору фармату "data" была знойдзена!
     - An error occurred during installation!: Адбылася памылка пры ўсталёўцы!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Прыкладам яго змесціва могуць служыць: мета-апісанне, ключавыя мета-словы, карыстальніцкія мета-поля (напрыклад, google-site-verification), карыстальніцкія блокі CSS, карыстальніцкія блокі JS (напрыклад, Google Analytics).
     - Anonymous user: Ананімны карыстальнік
@@ -88,6 +90,8 @@ translations
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
     - checking: праверка
+    - Class "%%_classname" not allowed.: Клас "%%_classname" не дапускаецца.
+    - Class "%%_classname" was not found.: Клас "%%_classname" не знойдзены.
     - click to open in new window: націсніце, каб адкрыць у новым акне
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
@@ -277,6 +281,7 @@ translations
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
     - file: файл
     - File: Файл
+    - File\: %%_file: Файл: %%_file
     - Files from repository: Файлы з рэпазітара
     - files: файлы
     - Files: Файлы
@@ -325,6 +330,8 @@ translations
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: У рэжыме "Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі" зламыснік можа паслаць мноства падробленых ананімных галасоў!
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Incorrect value will make it impossible to log in!: Няправільнае значэнне прывядзе да немагчымасці ўваходу ў сістэму!
+    - Indent oversize is detected.: Выяўлена перавышэнне памеру водступу.
+    - Indent size is not even.: Памер адступлення нячэтны.
     - Info\: manage: Інфармацыя: кіраваць
     - Information about the selected entry: Інфармацыя пра абраны запіс
     - Information: Інфармацыя
@@ -398,6 +405,7 @@ translations
     - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
+    - Leading tab character found.: Знойдзены вядучы сімвал табуляцыі.
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.
     - leave edit mode: пакінуць рэжым рэдагавання
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
@@ -407,6 +415,7 @@ translations
     - License agreement: Ліцэнзійнае пагадненне
     - Light preset: Светлая перадусталёўка
     - Limit: Ліміт
+    - Line\: %%_line: Радок: %%_line
     - Linear diagram: Лінейная дыяграма
     - linear: лінейны/ая
     - Link active: Спасылка актыўная
@@ -460,8 +469,8 @@ translations
     - MiB: МіБ
     - Minimum width: Мінімальная шырыня
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependency_title" (%%_dependency_id)!: Модуль "%%_title" (%%_id) не можа быць уключаны, калі Вы спрабуеце адключыць залежны модуль "%%_dependency_title" (%%_dependency_id)!
-    - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад модуля з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
-    - Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".: Модуль "%%_title" (%%_id) залежыць ад PHP-пашырэння з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version".
+    - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!: Модуль "%%_title" (%%_id) залежыць ад модуля з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version"!
+    - Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!: Модуль "%%_title" (%%_id) залежыць ад PHP-пашырэння з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version"!
     - Module "%%_title" (%%_id) was disabled.: Модуль "%%_title" (%%_id) быў выключаны.
     - Module "%%_title" (%%_id) was enabled.: Модуль "%%_title" (%%_id) быў уключаны.
     - Module "%%_title" (%%_id) was installed.: Модуль "%%_title" (%%_id) быў усталяваны.
@@ -730,6 +739,7 @@ translations
     - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
+    - The class name has been changed to "%%_new_classname".: Імя класа было зменена на "%%_new_classname".
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission!: Ліст не быў прыняты да перадачы!
     - The minimum value cannot be greater than or equal to the maximum!: Мінімальнае значэнне не можа быць больш ці роўна максімальнаму!

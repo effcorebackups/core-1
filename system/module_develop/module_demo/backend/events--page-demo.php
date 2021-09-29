@@ -268,9 +268,9 @@ namespace effcore\modules\demo {
     message::insert( new text_multiline(['Warning message #%%_number.',             $link], ['number' => 1], ' '), 'warning');
     message::insert( new text_multiline(['Warning message #%%_number.'                   ], ['number' => 2], ' '), 'warning');
     message::insert( new text_multiline(['Warning message #%%_number.'                   ], ['number' => 3], ' '), 'warning');
-    message::insert( new text_multiline(['Error message #%%_number.',               $link], ['number' => 1], ' '), 'error');
-    message::insert( new text_multiline(['Error message #%%_number.'                     ], ['number' => 2], ' '), 'error');
-    message::insert( new text_multiline(['Error message #%%_number.'                     ], ['number' => 3], ' '), 'error');
+    message::insert( new text_multiline(['Error message #%%_number!',               $link], ['number' => 1], ' '), 'error');
+    message::insert( new text_multiline(['Error message #%%_number!'                     ], ['number' => 2], ' '), 'error');
+    message::insert( new text_multiline(['Error message #%%_number!'                     ], ['number' => 3], ' '), 'error');
   }
 
   ##############

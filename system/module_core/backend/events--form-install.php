@@ -50,8 +50,8 @@ namespace effcore\modules\core {
   # check the dependencies of each module
     foreach (module::get_enabled_by_default() as $c_module) {
       $c_dependencies_info = $c_module->dependencies_info_get('default');
-      foreach ($c_dependencies_info->sys as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from module '  .  'with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
-      foreach ($c_dependencies_info->php as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version".', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
+      foreach ($c_dependencies_info->sys as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from module '  .  'with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
+      foreach ($c_dependencies_info->php as $c_id => $c_info) if ($c_info->state < 2) message::insert(new text('Module "%%_title" (%%_id) depend from PHP extension with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!', ['title' => $c_module->title, 'id' => $c_module->id, 'dependency_id' => $c_id, 'dependency_version' => $c_info->version_min]), 'error');
       if ($c_dependencies_info->has_dependencies_sys ||
           $c_dependencies_info->has_dependencies_php) {
         $items['~install']->disabled_set();

@@ -309,67 +309,63 @@ namespace effcore {
       switch ($c_error->code) {
         case static::ERR_CODE_EMPTY_LINE_WAS_FOUND:
           message::insert(new text_multiline([
-            'Function: %%_func',
+            'An error in parsing the "data" format was found!',
+            'An empty line was found.',
             'File: %%_file',
-            'Line: %%_line',
-            'An empty line was found.'], [
-            'func' => 'text_to_data',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'warning');
           break;
         case static::ERR_CODE_LEADING_TAB_CHARACTER_FOUND:
           message::insert(new text_multiline([
-            'Function: %%_func',
+            'An error in parsing the "data" format was found!',
+            'Leading tab character found.',
             'File: %%_file',
-            'Line: %%_line',
-            'Leading tab character found.'], [
-            'func' => 'text_to_data',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
         case static::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
           message::insert(new text_multiline([
-            'Function: %%_func',
+            'An error in parsing the "data" format was found!',
+            'Indent size is not even.',
             'File: %%_file',
-            'Line: %%_line',
-            'Indent size is not even.'], [
-            'func' => 'text_to_data',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
         case static::ERR_CODE_INDENT_OVERSIZE:
           message::insert(new text_multiline([
-            'Function: %%_func',
+            'An error in parsing the "data" format was found!',
+            'Indent oversize is detected.',
             'File: %%_file',
-            'Line: %%_line',
-            'Indent oversize is detected.'], [
-            'func' => 'text_to_data',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a']), 'error');
           break;
         case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
           message::insert(new text_multiline([
-            'Function: %%_func',
-            'File: %%_file',
-            'Line: %%_line',
+            'An error in parsing the "data" format was found!',
             'Class "%%_classname" was not found.',
-            'The class name has been changed to "stdClass".'], [
-            'func' => 'text_to_data',
+            'The class name has been changed to "%%_new_classname".',
+            'File: %%_file',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a',
-            'classname' => $c_error->args['classname']]), 'error');
+            'classname'     => $c_error->args['classname'],
+            'new_classname' => $c_error->args['new_classname']]), 'error');
           break;
         case static::ERR_CODE_CLASS_NOT_ALLOWED:
           message::insert(new text_multiline([
-            'Function: %%_func',
-            'File: %%_file',
-            'Line: %%_line',
+            'An error in parsing the "data" format was found!',
             'Class "%%_classname" not allowed.',
-            'The class name has been changed to "stdClass".'], [
-            'func' => 'text_to_data',
+            'The class name has been changed to "%%_new_classname".',
+            'File: %%_file',
+            'Line: %%_line'], [
             'line' => $c_error->line,
             'file' => $file ? $file->path_get_relative() : 'n/a',
-            'classname' => $c_error->args['classname']]), 'error');
+            'classname'     => $c_error->args['classname'],
+            'new_classname' => $c_error->args['new_classname']]), 'error');
           break;
       }
     }
@@ -470,14 +466,16 @@ namespace effcore {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_NOT_ALLOWED,
               'line' => $c_line_number,
-              'args' => ['classname' => $c_class_name]];
+              'args' => ['classname' => $c_class_name,
+                     'new_classname' => 'stdClass']];
             $c_class_name = '\\stdClass';
           }
           if ($c_class_name !== '\\stdClass' && !class_exists($c_class_name)) {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
               'line' => $c_line_number,
-              'args' => ['classname' => $c_class_name]];
+              'args' => ['classname' => $c_class_name,
+                     'new_classname' => 'stdClass']];
             $c_class_name = '\\stdClass';
           }
           $c_reflection = new \ReflectionClass($c_class_name);
