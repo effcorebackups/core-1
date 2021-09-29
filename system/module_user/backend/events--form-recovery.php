@@ -37,8 +37,8 @@ namespace effcore\modules\user {
           $new_password = core::password_generate();
           $user->password_hash = core::password_hash($new_password);
           if ($user->update()) {
-            $site_url = url::get_current()->domain;
-            if (mail::send('recovery', 'no-reply@'.$site_url, $user, ['domain' => $site_url], ['domain' => $site_url, 'new_password' => $new_password], $form, $items)) {
+            $domain = url::get_current()->domain;
+            if (mail::send('recovery', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
               message::insert('A new password was sent to the selected EMail.');
               url::go(url::back_url_get() ?: '/login');
             }
