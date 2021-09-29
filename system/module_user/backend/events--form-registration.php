@@ -5,23 +5,16 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use const \effcore\nl;
           use \effcore\core;
-          use \effcore\event;
+          use \effcore\mail;
           use \effcore\message;
           use \effcore\module;
           use \effcore\session;
-          use \effcore\template;
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\url;
           use \effcore\user;
           abstract class events_form_registration {
-
-  const template_mail_registration_subject          = 'mail_registration_subject';
-  const template_mail_registration_message          = 'mail_registration_message';
-  const template_mail_registration_subject_embedded = 'mail_registration_subject_embedded';
-  const template_mail_registration_message_embedded = 'mail_registration_message_embedded';
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('user');
@@ -38,7 +31,9 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         $settings = module::settings_get('user');
+      # ────────────────────────────────────────────────────────────────────────────────────
       # registration via EMail: a password is generated and sent to the user-specified EMail
+      # ────────────────────────────────────────────────────────────────────────────────────
         if ($settings->send_password_to_email) {
           $new_password = core::password_generate();
           $user = user::insert([
@@ -48,45 +43,20 @@ namespace effcore\modules\user {
             'password_hash' => core::password_hash($new_password)
           ]);
           if ($user) {
-            $template_mail_registration_subject_name = template::get(static::template_mail_registration_subject) ? static::template_mail_registration_subject : static::template_mail_registration_subject_embedded;
-            $template_mail_registration_message_name = template::get(static::template_mail_registration_message) ? static::template_mail_registration_message : static::template_mail_registration_message_embedded;
-            $site_url = url::get_current()->domain;
-            $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
-            $mail_from = 'From: no-reply@'.$site_url;
-            $mail_to = $user->nickname.' <'.$user->email.'>';
-            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new($template_mail_registration_subject_name, [
-              'domain' => $site_url
-            ]))->render()).'?=';
-            $mail_body = template::make_new($template_mail_registration_message_name, [
-              'domain'       => $site_url,
-              'new_password' => $new_password
-            ])->render();
-            event::start('on_email_send_before', 'registration', [
-              'to'       => &$mail_to,
-              'subject'  => &$mail_subject,
-              'body'     => &$mail_body,
-              'from'     => &$mail_from,
-              'encoding' => &$mail_encoding,
-              'form'     => &$form,
-              'items'    => &$items
-            ]);
-            $mail_send_result = mail(
-              $mail_to,
-              $mail_subject,
-              $mail_body,
-              $mail_from.nl.
-              $mail_encoding
-            );
-            if ($mail_send_result) {
-                   message::insert('A new password was sent to the selected EMail.'); url::go(url::back_url_get() ?: '/login');
-            } else message::insert('The letter was not accepted for transmission!', 'error');
+            $domain = url::get_current()->domain;
+            if (mail::send('registration', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
+              message::insert('A new password was sent to the selected EMail.');
+              url::go(url::back_url_get() ?: '/login');
+            }
           } else {
             message::insert(
               'User was not registered!', 'error'
             );
           } 
         } else {
+        # ─────────────────────────────────────────────────────────────────────
         # standard registration: the user sets his own password
+        # ─────────────────────────────────────────────────────────────────────
           $user = user::insert([
             'email'         => $items['#email'   ]->value_get(),
             'nickname'      => $items['#nickname']->value_get(),
