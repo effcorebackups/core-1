@@ -13,8 +13,8 @@ templates
     type: text
     data|text
       text: Password recovery on %%_domain
-- mail_recovery_body
-    name: mail_recovery_body
+- mail_recovery_message
+    name: mail_recovery_message
     type: text
     data|text_multiline
       delimiter: &#10;&#10;

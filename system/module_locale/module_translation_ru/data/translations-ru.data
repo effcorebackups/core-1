@@ -716,6 +716,7 @@ translations
     - Tabs\: link active: Вкладки: ссылка активная
     - Tabs\: link: Вкладки: ссылка
     - Telephone number: Номер телефона
+    - Template "%%_name" was not found!: Шаблон "%%_name" не был найден!
     - Templates: Шаблоны
     - Test execution form: Форма выполнения теста
     - Test: Тест
@@ -730,7 +731,7 @@ translations
     - Text\: update: Текст: обновить
     - Texts: Текст
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
-    - The letter was not accepted for transmission.: Письмо не было принято к передаче.
+    - The letter was not accepted for transmission!: Письмо не было принято к передаче!
     - The maximum value cannot be less than the minimum!: Минимальное значение не может быть больше максимального!
     - The minimum value cannot be greater than or equal to the maximum!: Минимальное значение не может быть больше или равно максимальному!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.

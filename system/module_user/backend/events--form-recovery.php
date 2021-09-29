@@ -5,19 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use const \effcore\nl;
           use \effcore\core;
-          use \effcore\event;
           use \effcore\instance;
+          use \effcore\mail;
           use \effcore\message;
-          use \effcore\template;
           use \effcore\url;
           abstract class events_form_recovery {
-
-  const template_mail_recovery_subject          = 'mail_recovery_subject';
-  const template_mail_recovery_subject_embedded = 'mail_recovery_subject_embedded';
-  const template_mail_recovery_body             = 'mail_recovery_body';
-  const template_mail_recovery_body_embedded    = 'mail_recovery_body_embedded';
 
   static function on_validate($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
@@ -44,38 +37,11 @@ namespace effcore\modules\user {
           $new_password = core::password_generate();
           $user->password_hash = core::password_hash($new_password);
           if ($user->update()) {
-            $template_mail_recovery_subject_name = template::get(static::template_mail_recovery_subject) ? static::template_mail_recovery_subject : static::template_mail_recovery_subject_embedded;
-            $template_mail_recovery_body_name    = template::get(static::template_mail_recovery_body)    ? static::template_mail_recovery_body    : static::template_mail_recovery_body_embedded;
             $site_url = url::get_current()->domain;
-            $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
-            $mail_from = 'From: no-reply@'.$site_url;
-            $mail_to = $user->nickname.' <'.$user->email.'>';
-            $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new($template_mail_recovery_subject_name, [
-              'domain' => $site_url
-            ]))->render()).'?=';
-            $mail_body = template::make_new($template_mail_recovery_body_name, [
-              'domain'       => $site_url,
-              'new_password' => $new_password
-            ])->render();
-            event::start('on_email_send_before', 'recovery', [
-              'to'       => &$mail_to,
-              'subject'  => &$mail_subject,
-              'body'     => &$mail_body,
-              'from'     => &$mail_from,
-              'encoding' => &$mail_encoding,
-              'form'     => &$form,
-              'items'    => &$items
-            ]);
-            $mail_send_result = mail(
-              $mail_to,
-              $mail_subject,
-              $mail_body,
-              $mail_from.nl.
-              $mail_encoding
-            );
-            if ($mail_send_result) {
-                   message::insert('A new password was sent to the selected EMail.'); url::go(url::back_url_get() ?: '/login');
-            } else message::insert('The letter was not accepted for transmission.', 'error');
+            if (mail::send('recovery', 'no-reply@'.$site_url, $user, ['domain' => $site_url], ['domain' => $site_url, 'new_password' => $new_password], $form, $items)) {
+              message::insert('A new password was sent to the selected EMail.');
+              url::go(url::back_url_get() ?: '/login');
+            }
           }
         }
         break;

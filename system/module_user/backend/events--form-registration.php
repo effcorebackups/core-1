@@ -19,8 +19,8 @@ namespace effcore\modules\user {
           abstract class events_form_registration {
 
   const template_mail_registration_subject          = 'mail_registration_subject';
-  const template_mail_registration_subject_embedded = 'mail_registration_subject_embedded';
   const template_mail_registration_message          = 'mail_registration_message';
+  const template_mail_registration_subject_embedded = 'mail_registration_subject_embedded';
   const template_mail_registration_message_embedded = 'mail_registration_message_embedded';
 
   static function on_init($event, $form, $items) {
@@ -79,7 +79,7 @@ namespace effcore\modules\user {
             );
             if ($mail_send_result) {
                    message::insert('A new password was sent to the selected EMail.'); url::go(url::back_url_get() ?: '/login');
-            } else message::insert('The letter was not accepted for transmission.', 'error');
+            } else message::insert('The letter was not accepted for transmission!', 'error');
           } else {
             message::insert(
               'User was not registered!', 'error'

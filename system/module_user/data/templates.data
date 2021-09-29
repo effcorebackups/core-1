@@ -4,8 +4,8 @@ templates
     type: text
     data|text
       text: Password recovery on %%_domain
-- mail_recovery_body_embedded
-    name: mail_recovery_body_embedded
+- mail_recovery_message_embedded
+    name: mail_recovery_message_embedded
     type: text
     data|text_multiline
       delimiter: &#10;&#10;
