@@ -17,7 +17,7 @@ namespace effcore {
     $max = 2 ** $actions_count;
     for ($i = 1; $i < $max; $i++) {
       $c_bits = str_pad(decbin($i), $actions_count, '0', STR_PAD_LEFT);
-      $c_total_state = str_replace(['0', '1'], ['□', '▣'], $c_bits).' | '.$c_bits;
+      $c_total_state = str_replace(['0', '1'], ['□', '▣'], $c_bits);
       $c_results['reports'][$dpath.'/'.$i.'/title_line'] = new text('=================================');
       $c_results['reports'][$dpath.'/'.$i.'/title'     ] = new text('transposition %%_cur from %%_max (%%_state)', ['cur' => $i + 1, 'max' => $max, 'state' => $c_total_state]);
       for ($j = $actions_count - 1; $j >= 0; $j--) {
