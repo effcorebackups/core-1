@@ -5,6 +5,7 @@
   ######################################################################
 
 namespace effcore\modules\profile_classic {
+          use \effcore\module;
           use \effcore\page;
           use \effcore\url;
           abstract class events_form_registration {
@@ -13,7 +14,9 @@ namespace effcore\modules\profile_classic {
     switch ($form->clicked_button->value_get()) {
       case 'register':
         if (!url::back_url_get() && page::get_current()->id === 'registration_ru') {
-          url::get_current()->query_arg_insert('back', '/ru/user/'.$items['#nickname']->value_get());
+          if (module::settings_get('user')->send_password_to_email)
+               url::get_current()->query_arg_insert('back', '/ru/login');
+          else url::get_current()->query_arg_insert('back', '/ru/user/'.$items['#nickname']->value_get());
         }
         break;
     }
