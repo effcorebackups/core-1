@@ -213,6 +213,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест не удался!
     - The test was successful.: Тест выполнен успешно.
+    - The test will not succeed if the "Registration via EMail" option is enabled!: Тест не выполниться успешно если включена опция "Регистрация через электронную почту"!
     - there will be try to delete all permissions: будет попытка удалить все разрешения
     - there will be try to delete all roles: будет попытка удалить все роли
     - there will be try to insert permissions\: %%_permissions: будет попытка вставить разрешения: %%_permissions
