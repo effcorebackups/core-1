@@ -628,7 +628,7 @@ entities
         - related_entity_field_title_name: nickname
         - weight: +400
     - email
-        title: EMail
+        title: Email
         type: varchar
         size: 64
         collate: nocase

@@ -101,7 +101,7 @@ forms
         title: User
         state: closed
         children
-      # field 'EMail'
+      # field 'Email'
         - email|field_email
             element_attributes
             - value: admin@example.com

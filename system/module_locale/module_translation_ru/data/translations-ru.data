@@ -10,7 +10,7 @@ translations
     - %%_entity_title_context\: insert: %%_entity_title_context: вставить
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-ji}
-    - A new password was sent to the selected EMail.: Новый пароль был отправлен на выбранный адрес электронной почты.
+    - A new password was sent to the selected Email.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - access allowed by permission "%%_permission": доступ разрешён по разрешению "%%_permission"
     - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
     - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
@@ -171,9 +171,9 @@ translations
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"!
     - edit: редактировать
     - Edit: Редактировать
-    - Eliminates the possibility of brute-force a password if an attacker knows the EMail.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
-    - Eliminates the possibility of registering to a non-existent EMail address.: Исключает возможность регистрации на несуществующий адрес электронной почты.
-    - EMail: Адрес электронной почты
+    - Eliminates the possibility of brute-force a password if an attacker knows the Email.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
+    - Eliminates the possibility of registering to a non-existent Email address.: Исключает возможность регистрации на несуществующий адрес электронной почты.
+    - Email: Адрес электронной почты
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - English: Английский
     - enter edit mode: войти в режим редактирования
@@ -206,7 +206,7 @@ translations
     - Field "%%_title" contains an error!: Поле "%%_title" содержит ошибку!
     - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
     - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
-    - Field "%%_title" contains an incorrect EMail address!: Поле "%%_title" содержит неверный адрес электронной почты!
+    - Field "%%_title" contains an incorrect Email address!: Поле "%%_title" содержит неверный адрес электронной почты!
     - Field "%%_title" contains an incorrect telephone number!: Поле "%%_title" содержит неверный номер телефона!
     - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
     - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
@@ -616,7 +616,7 @@ translations
     - Registered: Зарегистрированный
     - Registering a new user on %%_domain: Регистрация нового пользователя на %%_domain
     - Registration form: Форма регистрации
-    - Registration via EMail: Регистрация через электронную почту
+    - Registration via Email: Регистрация через электронную почту
     - registration: регистрация
     - Registration: Регистрация
     - Relation: Связь
@@ -800,8 +800,8 @@ translations
     - User update form: Форма обновления пользователя
     - User update: Обновление пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
-    - User with this EMail was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
-    - User with this EMail was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
+    - User with this Email was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
+    - User with this Email was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
     - User with this nickname was already registered!: Пользователь с таким псевдонимом уже был зарегистрирован!
     - user: пользователь
     - User: Пользователь
@@ -839,7 +839,7 @@ translations
     - Web server: Веб-сервер
     - Weight: Вес
     - Welcome, %%_nickname!: Добро пожаловать, %%_nickname!
-    - When registering, the system itself generates a password and sends it to the EMail.: При регистрации система сама генерирует пароль и отправляет его на электронную почту.
+    - When registering, the system itself generates a password and sends it to the Email.: При регистрации система сама генерирует пароль и отправляет его на электронную почту.
     - While editing this form, someone made changes in parallel and saved them!: Во время редактирования этой формы кто-то параллельно внёс изменения и сохранил их!
     - Widget "%%_title".: Виджет "%%_title".
     - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
@@ -863,8 +863,8 @@ translations
     - Your answer was canceled.: Ваш ответ был отменён.
     - Your answer was not accepted!: Ваш ответ не был принят!
     - Your answer was not canceled!: Ваш ответ не был отменён!
-    - Your EMail is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
-    - Your EMail is\: %%_email: Ваш адрес электронной почты: %%_email
+    - Your Email is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
+    - Your Email is\: %%_email: Ваш адрес электронной почты: %%_email
     - Your new password on %%_domain was automatically generated\: %%_new_password: Ваш новый пароль на %%_domain был автоматически сгенерирован: %%_new_password
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - Your password is\: %%_password: Ваш пароль: %%_password

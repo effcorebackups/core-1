@@ -18,7 +18,7 @@ namespace effcore\modules\user {
         if (!$form->has_error()) {
           if (!(new instance('user', ['email' => $items['#email']->value_get()]))->select()) {
             $items['#email']->error_set(
-              'User with this EMail was not registered!'
+              'User with this Email was not registered!'
             );
             return;
           }
@@ -39,7 +39,7 @@ namespace effcore\modules\user {
           if ($user->update()) {
             $domain = url::get_current()->domain;
             if (mail::send('recovery', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
-              message::insert('A new password was sent to the selected EMail.');
+              message::insert('A new password was sent to the selected Email.');
               url::go(url::back_url_get() ?: '/login');
             }
           }

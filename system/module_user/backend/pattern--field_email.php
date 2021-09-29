@@ -7,7 +7,7 @@
 namespace effcore {
           class field_email extends field_text {
 
-  public $title = 'EMail';
+  public $title = 'Email';
   public $attributes = ['data-type' => 'email'];
   public $element_attributes = [
     'type'      => 'email',
@@ -74,7 +74,7 @@ namespace effcore {
     foreach ($multiple_values as $c_value) {
       if (core::validate_email($c_value) === false) {
         $field->error_set(
-          'Field "%%_title" contains an incorrect EMail address!', ['title' => (new text($field->title))->render() ]
+          'Field "%%_title" contains an incorrect Email address!', ['title' => (new text($field->title))->render() ]
         );
         return;
       }
@@ -87,7 +87,7 @@ namespace effcore {
     if ((strlen($old_value) === 0 && $result instanceof instance                                                      ) || # insert new email (e.g. registration)
         (strlen($old_value) !== 0 && $result instanceof instance && $result->{$field->entity_field_name} != $old_value)) { # update old email
       $field->error_set(
-        'User with this EMail was already registered!'
+        'User with this Email was already registered!'
       );
     } else {
       return true;

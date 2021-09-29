@@ -213,7 +213,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
     - The test was failed!: Тэст не атрымаўся!
     - The test was successful.: Тэст выкананы паспяхова.
-    - The test will not succeed if the "Registration via EMail" option is enabled!: Тэст не выканацца паспяхова калі ўключаная опцыя "Рэгістрацыя праз электронную пошту"!
+    - The test will not succeed if the "Registration via Email" option is enabled!: Тэст не выканацца паспяхова калі ўключаная опцыя "Рэгістрацыя праз электронную пошту"!
     - there will be try to delete all permissions: будзе спроба выдаліць усе дазваленні
     - there will be try to delete all roles: будзе спроба выдаліць усе ролі
     - there will be try to insert permissions\: %%_permissions: будзе спроба ўставіць дазваленні: %%_permissions

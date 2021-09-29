@@ -38,7 +38,7 @@ forms
             description|text_multiline
               text
               - 0: After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.
-              - 1: Eliminates the possibility of brute-force a password if an attacker knows the EMail.
+              - 1: Eliminates the possibility of brute-force a password if an attacker knows the Email.
               - 2: Blocking will not affect existing sessions.
             element_attributes
             - name: blocked_until
@@ -65,11 +65,11 @@ forms
             - max: 365
             - value: 30
         - send_password_to_email|field_logic
-            title: Registration via EMail
+            title: Registration via Email
             description|text_multiline
               text
-              - 0: When registering, the system itself generates a password and sends it to the EMail.
-              - 1: Eliminates the possibility of registering to a non-existent EMail address.
+              - 0: When registering, the system itself generates a password and sends it to the Email.
+              - 1: Eliminates the possibility of registering to a non-existent Email address.
             element_attributes
             - name: send_password_to_email
             selected

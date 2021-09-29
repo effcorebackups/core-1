@@ -32,7 +32,7 @@ namespace effcore\modules\user {
       case 'register':
         $settings = module::settings_get('user');
       # ────────────────────────────────────────────────────────────────────────────────────
-      # registration via EMail: a password is generated and sent to the user-specified EMail
+      # registration via Email: a password is generated and sent to the user-specified Email
       # ────────────────────────────────────────────────────────────────────────────────────
         if ($settings->send_password_to_email) {
           $new_password = core::password_generate();
@@ -45,7 +45,7 @@ namespace effcore\modules\user {
           if ($user) {
             $domain = url::get_current()->domain;
             if (mail::send('registration', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
-              message::insert('A new password was sent to the selected EMail.');
+              message::insert('A new password was sent to the selected Email.');
               url::go(url::back_url_get() ?: '/login');
             }
           } else {

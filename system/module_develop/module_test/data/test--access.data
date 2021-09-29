@@ -2,7 +2,7 @@ tests
 - access|test
     id: access
     title: Access
-    description: The test will not succeed if the "Registration via EMail" option is enabled!
+    description: The test will not succeed if the "Registration via Email" option is enabled!
     params
     - proxy|field_text
         title: Proxy server

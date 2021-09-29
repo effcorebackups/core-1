@@ -171,9 +171,9 @@ forms
             element_attributes
             - name: tel
             - value: &plus;000112334455
-      # field 'EMail'
+      # field 'Email'
         - email|field_email
-            title: EMail
+            title: Email
             description|text
               text: Field "%%_title".
               args

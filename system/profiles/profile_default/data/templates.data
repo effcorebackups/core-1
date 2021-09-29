@@ -21,7 +21,7 @@ templates
       text
       - 500: You received this message because someone tried to recover the password from your account on %%_domain.
       - 400: Your new password on %%_domain was changed automatically to: %%_new_password
-      - 300: Your EMail is not shown publicly on %%_domain and it is never shared with third parties!
+      - 300: Your Email is not shown publicly on %%_domain and it is never shared with third parties!
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - mail_registration_subject
     name: mail_registration_subject
