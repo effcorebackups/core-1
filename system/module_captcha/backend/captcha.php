@@ -102,7 +102,7 @@ namespace effcore {
       $row_ids_available = static::glyphs_default;
       message::insert('Module "CAPTCHA" uses glyphs by default!', 'warning');
     }
-  # pick random items
+  # get random items
     for ($i = 0; $i < $settings->captcha_length; $i++) {
       $row_ids_random[$i] = array_rand($row_ids_available);
     }

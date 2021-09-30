@@ -8,10 +8,10 @@ namespace effcore {
           abstract class mail {
 
   static function send($type, $from, $user, $subject_args, $message_args, $form, $items) {
-    $template_subject_name = template::pick('mail_'.$type.'_subject');
-    $template_message_name = template::pick('mail_'.$type.'_message');
-    if (template::get($template_subject_name) !== null &&
-        template::get($template_message_name) !== null) {
+    $template_subject_name = template::pick_name('mail_'.$type.'_subject');
+    $template_message_name = template::pick_name('mail_'.$type.'_message');
+    if ($template_subject_name !== null &&
+        $template_message_name !== null) {
       $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
       $mail_from = 'From: '.$from;
       $mail_to = $user->nickname.' <'.$user->email.'>';

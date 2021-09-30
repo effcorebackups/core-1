@@ -62,7 +62,7 @@ namespace effcore {
     ];
   }
 
-  static function pick($name) {
+  static function pick_name($name) {
     static::init();
     if (isset(static::$cache[$name            ])) return $name;
     if (isset(static::$cache[$name.'_embedded'])) return $name.'_embedded';
