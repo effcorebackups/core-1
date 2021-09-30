@@ -8,10 +8,8 @@ namespace effcore {
           abstract class mail {
 
   static function send($type, $from, $user, $subject_args, $message_args, $form, $items) {
-    $template_subject_name = 'mail_'.$type.'_subject';
-    $template_message_name = 'mail_'.$type.'_message';
-    if (template::get($template_subject_name) === null) $template_subject_name.= '_embedded';
-    if (template::get($template_message_name) === null) $template_message_name.= '_embedded';
+    $template_subject_name = template::pick('mail_'.$type.'_subject');
+    $template_message_name = template::pick('mail_'.$type.'_message');
     if (template::get($template_subject_name) !== null &&
         template::get($template_message_name) !== null) {
       $mail_encoding = 'Content-Type: text/plain; charset=UTF-8';
@@ -38,8 +36,8 @@ namespace effcore {
       if (!$result) message::insert('The letter was not accepted for transmission!', 'error');
       return $result;
     } else {
-      if (template::get($template_subject_name) === null) message::insert(new text('Template "%%_name" was not found!', ['name' => $template_subject_name]), 'error');
-      if (template::get($template_message_name) === null) message::insert(new text('Template "%%_name" was not found!', ['name' => $template_message_name]), 'error');
+      if ($template_subject_name === null) message::insert(new text('Template "%%_name" was not found!', ['name' => 'mail_'.$type.'_subject']), 'error');
+      if ($template_message_name === null) message::insert(new text('Template "%%_name" was not found!', ['name' => 'mail_'.$type.'_message']), 'error');
     }
   }
 

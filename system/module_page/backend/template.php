@@ -45,9 +45,9 @@ namespace effcore {
     }
   }
 
-  static function get($row_id) {
+  static function get($name) {
     static::init();
-    return static::$cache[$row_id] ?? null;
+    return static::$cache[$name] ?? null;
   }
 
   static function get_all() {
@@ -60,6 +60,13 @@ namespace effcore {
       'module_id' => 'module_id',
       'data'      => 'data'
     ];
+  }
+
+  static function pick($name) {
+    static::init();
+    if (isset(static::$cache[$name            ])) return $name;
+    if (isset(static::$cache[$name.'_embedded'])) return $name.'_embedded';
+    return null;
   }
 
   static function make_new($name, $args = []) {
