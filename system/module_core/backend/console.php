@@ -16,6 +16,7 @@ namespace effcore {
   static $duplicates = [];
   static protected $data = [];
   static protected $file_log_err = null;
+  static protected $file_log_wrn = null;
   static protected $is_init = false;
   static protected $visible_mode = self::is_visible_for_nobody;
 
@@ -25,7 +26,8 @@ namespace effcore {
       static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot.php',                           'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
       static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/core.php',       'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
       static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/markers.php', 'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-      static::$file_log_err = new file(static::directory.core::date_get().'/error--'.core::date_get().'.log');
+      static::$file_log_err = new file(static::directory.core::date_get().'/'.  'error--'.core::date_get().'.log');
+      static::$file_log_wrn = new file(static::directory.core::date_get().'/'.'warning--'.core::date_get().'.log');
       static::$visible_mode = static::is_visible_for_nobody;
       if (module::is_enabled('develop')) {
         $settings = module::settings_get('page');
@@ -64,19 +66,21 @@ namespace effcore {
     }
     static::$data[] = $new_log;
 
-  # store errors to the static::$file_log_err
-    if ($value === 'error') {
+  # store errors and warnings to the file
+    if ($value === 'error' ||
+        $value === 'warning') {
       $c_info = $new_log->description;
+      $c_file = $value === 'error' ? static::$file_log_err : static::$file_log_wrn;
       foreach ($new_log->args as $c_key => $c_value) $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
       $c_line = core::time_get().' | uid: '.(user::get_current()->id ?: 0).
                                  ' | '.$new_log->object.
                                  ' | '.$new_log->action.
                                  ' | '.str_replace(br, ' | ', $c_info).nl;
-      if (!static::$file_log_err->append_direct($c_line)) {
+      if (!$c_file->append_direct($c_line)) {
         message::insert(new text_multiline([
           'File "%%_file" was not written to disc!',
           'File permissions (if the file exists) and directory permissions should be checked.'], [
-          'file' => static::$file_log_err->path_get_relative()]), 'error'
+          'file' => $c_file->path_get_relative()]), 'error'
         );
       }
     }
