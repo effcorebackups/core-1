@@ -11,6 +11,7 @@ templates
     name: tree_item_children
     type: text
     data: <ul>%%_children</ul>
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - tabs
     name: tabs
     type: text

@@ -19,18 +19,6 @@ templates
     type: text
     data: <%%_tag_name %%_attributes />
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- actions_list
-    name: actions_list
-    type: text
-    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
-- audio
-    name: audio
-    type: text
-    data: <audio data-id="%%_id" src="/%%_path" %%_attributes></audio>
-- block
-    name: block
-    type: text
-    data: <%%_tag_name %%_attributes>%%_extra_t%%_self%%_children%%_extra_b</%%_tag_name>
 - container
     name: container
     type: text
@@ -43,6 +31,24 @@ templates
     name: content
     type: text
     data: %%_children
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- actions_list
+    name: actions_list
+    type: text
+    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
+- block
+    name: block
+    type: text
+    data: <%%_tag_name %%_attributes>%%_extra_t%%_self%%_children%%_extra_b</%%_tag_name>
+- form
+    name: form
+    type: text
+    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- audio
+    name: audio
+    type: text
+    data: <audio data-id="%%_id" src="/%%_path" %%_attributes></audio>
 - gallery
     name: gallery
     type: text
@@ -51,10 +57,6 @@ templates
     name: gallery_row
     type: text
     data: <x-item data-num="%%_num" data-type="%%_type">%%_children</x-item>
-- form
-    name: form
-    type: text
-    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
 - picture
     name: picture
     type: text
