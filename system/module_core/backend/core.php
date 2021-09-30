@@ -1093,16 +1093,16 @@ namespace effcore {
       header('X-Time-total: '.timer::period_get('total', 0, 1));
     }
     switch ($type) {
-      case 'redirect'              : header('Location: '.$p                      );                                                 break;
-      case 'page_refresh'          : header('Refresh: ' .$p                      );                                                 break;
-      case 'moved_permanently'     : header('HTTP/1.1 301 Moved Permanently'     ); if (!$title) $title = 'Moved Permanently';      break;
-      case 'bad_request'           : header('HTTP/1.1 400 Bad Request'           ); if (!$title) $title = 'Bad Request';            break;
-      case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type'; break;
-      case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden';       $template_name = template::get('page_access_forbidden') ? 'page_access_forbidden' : 'page_access_forbidden_embedded'; break;
-      case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';         $template_name = template::get('page_not_found')        ? 'page_not_found'        : 'page_not_found_embedded';        break;
-      case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';         $template_name = template::get('page_not_found')        ? 'page_not_found'        : 'page_not_found_embedded';        break;
+      case 'redirect'              : header('Location: '.$p                      );                                                                                                     break;
+      case 'page_refresh'          : header('Refresh: ' .$p                      );                                                                                                     break;
+      case 'moved_permanently'     : header('HTTP/1.1 301 Moved Permanently'     ); if (!$title) $title = 'Moved Permanently';                                                          break;
+      case 'bad_request'           : header('HTTP/1.1 400 Bad Request'           ); if (!$title) $title = 'Bad Request';                                                                break;
+      case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type';                                                     break;
+      case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden'; $template_name = template::pick('page_access_forbidden'); break;
+      case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';   $template_name = template::pick('page_not_found');        break;
+      case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';   $template_name = template::pick('page_not_found');        break;
     }
-    if (isset($template_name)) {
+    if (!empty($template_name)) {
       if (!$message && static::server_get_request_uri() !== '/')
            $message = 'go to <a href="/">front page</a>';
       $settings = module::settings_get('page');
