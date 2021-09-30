@@ -17,6 +17,7 @@ namespace effcore {
   static protected $data = [];
   static protected $file_log_err = null;
   static protected $file_log_wrn = null;
+  static protected $is_write_to_file_log_wrn = false;
   static protected $is_init = false;
   static protected $visible_mode = self::is_visible_for_nobody;
 
@@ -67,8 +68,7 @@ namespace effcore {
     static::$data[] = $new_log;
 
   # store errors and warnings to the file
-    if ($value === 'error' ||
-        $value === 'warning') {
+    if ($value === 'error' || ($value === 'warning' && static::$is_write_to_file_log_wrn === true)) {
       $c_info = $new_log->description;
       $c_file = $value === 'error' ? static::$file_log_err : static::$file_log_wrn;
       foreach ($new_log->args as $c_key => $c_value) $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
