@@ -505,7 +505,7 @@ translations
     - Name: Імя
     - New field: Новае поле
     - new item: новы элемент
-    - New password should be different from the current password!: Новы пароль павінен адрознівацца ад існуючага!
+    - New password should be different from the current password!: Новы пароль павінен адрознівацца ад бягучага!
     - New password: Новы пароль
     - nickname: псеўданім
     - Nickname: Псеўданім
@@ -681,7 +681,7 @@ translations
     - Session duration in days when "long session" is not selected: Працягласць сеансу ў днях калі не абрана "працяглы сеанс"
     - Session duration in days when "long session" is selected: Працягласць сеансу ў днях калі абрана "працяглы сеанс"
     - Session with ID = "%%_id" was deleted.: Сеанс з ID = "%%_id" быў выдалены.
-    - Session with ID = "%%_id" was not deleted!: Сеанс з ID = "%%_id" ня быў выдалены!
+    - Session with ID = "%%_id" was not deleted!: Сеанс з ID = "%%_id" не быў выдалены!
     - Session: Сеанс
     - Sessions: Сеансы
     - settings page: старонка налад
