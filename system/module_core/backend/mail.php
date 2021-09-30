@@ -20,13 +20,13 @@ namespace effcore {
       $mail_subject = '=?UTF-8?B?'.base64_encode((template::make_new($template_subject_name, $subject_args))->render()).'?=';
       $mail_message =                            (template::make_new($template_message_name, $message_args))->render();
       event::start('on_email_send_before', 'recovery', [
+        'form'     => $form,
+        'items'    => $items,
         'to'       => &$mail_to,
         'subject'  => &$mail_subject,
         'body'     => &$mail_message,
         'from'     => &$mail_from,
-        'encoding' => &$mail_encoding,
-        'form'     => &$form,
-        'items'    => &$items
+        'encoding' => &$mail_encoding
       ]);
       $result = mail(
         $mail_to,
