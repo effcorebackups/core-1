@@ -107,7 +107,7 @@ namespace effcore {
 
   # render page
     event::start('on_page_render_before', $this->id, ['page' => &$this, 'template' => &$template]);
-    $template = template::make_new($this->template);
+    $template = template::make_new(template::pick_name($this->template));
     $html            = $template->target_get('html');
     $meta            = $template->target_get('head_meta');
     $body            = $template->target_get('body');

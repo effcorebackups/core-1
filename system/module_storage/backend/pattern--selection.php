@@ -324,7 +324,7 @@ namespace effcore {
   function render() {
     $this->build();
     if ($this->template) {
-      return (template::make_new($this->template, [
+      return (template::make_new(template::pick_name($this->template), [
         'tag_name'   => $this->tag_name,
         'attributes' => $this->render_attributes(),
         'self_t'     => $this->render_self(),

@@ -95,7 +95,7 @@ namespace effcore {
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function render() {
-    return (template::make_new($this->template, [
+    return (template::make_new(template::pick_name($this->template), [
       'color_bg' => $this->color_bg,
       'width'    => $this->scale * $this->w,
       'height'   => $this->scale * $this->h,

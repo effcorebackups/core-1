@@ -248,7 +248,7 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
           case 'template':
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_template = template::make_new($this->template_row);
+              $c_template = template::make_new(template::pick_name($this->template_row));
               foreach ($this->template_row_mapping as $c_arg_name => $c_cell_name) {
                 if (is_array($c_row[$c_cell_name])) {
                   $c_template->arg_set($c_arg_name,

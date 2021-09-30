@@ -45,28 +45,28 @@ templates
     type: text
     data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- audio
-    name: audio
+- audio_embedded
+    name: audio_embedded
     type: text
     data: <audio data-id="%%_id" src="/%%_path" %%_attributes></audio>
-- gallery
-    name: gallery
+- gallery_embedded
+    name: gallery_embedded
     type: text
     data: <x-gallery data-id="%%_id" %%_attributes>%%_children</x-gallery>
-- gallery_row
-    name: gallery_row
+- gallery_row_embedded
+    name: gallery_row_embedded
     type: text
     data: <x-item data-num="%%_num" data-type="%%_type">%%_children</x-item>
-- picture
-    name: picture
+- picture_embedded
+    name: picture_embedded
     type: text
     data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes><img data-id="%%_id" src="/%%_path" %%_attributes/></a>
-- text
-    name: text
+- text_embedded
+    name: text_embedded
     type: text
     data: <x-text data-id="%%_id" %%_attributes>%%_text</x-text>
-- video
-    name: video
+- video_embedded
+    name: video_embedded
     type: text
     data: <video data-id="%%_id" src="/%%_path" poster="/%%_poster_path" %%_attributes></video>
 # ─────────────────────────────────────────────────────────────────────
@@ -80,15 +80,15 @@ templates
     name: page_not_found_embedded
     type: file
     path: frontend/template--page--not_found.tpl
-- canvas_svg
-    name: canvas_svg
+- canvas_svg_embedded
+    name: canvas_svg_embedded
     type: file
     path: frontend/template--canvas_svg.tpl
 # ─────────────────────────────────────────────────────────────────────
 # type: node
 # ─────────────────────────────────────────────────────────────────────
-- page
-    name: page
+- page_embedded
+    name: page_embedded
     type: node
     pointers
     - html: html
