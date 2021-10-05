@@ -18,7 +18,7 @@ namespace effcore\modules\profile_classic {
             'email' => $items['#email']->value_get()
           ]))->select();
           if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
-            url::get_current()->query_arg_insert('back', '/ru/user/'.$user->nickname);
+            url::back_url_set('back', '/ru/user/'.$user->nickname);
           }
         }
         break;

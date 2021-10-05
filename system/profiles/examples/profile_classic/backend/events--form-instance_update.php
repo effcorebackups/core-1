@@ -17,9 +17,8 @@ namespace effcore\modules\profile_classic {
         case 'update':
         case 'cancel':
           if ($entity->name === 'user' && page::get_current()->id === 'user_edit_ru') {
-            if (!url::back_url_get()) {
-              url::get_current()->query_arg_insert('back', '/ru/user/'.$items['#nickname']->value_get());
-            }
+            if (!url::back_url_get())
+                 url::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
           }
           break;
       }

@@ -43,10 +43,8 @@ namespace effcore\modules\menu {
         case 'update':
         case 'cancel':
           if ($entity->name === 'tree_item' && !empty($form->_instance)) {
-            if (!url::back_url_get()) {
-              $id_tree = $form->_instance->id_tree;
-              url::get_current()->query_arg_insert('back', $entity->make_url_for_select_multiple().'///'.$id_tree);
-            }
+            if (!url::back_url_get())
+                 url::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$form->_instance->id_tree);
           }
           break;
       }

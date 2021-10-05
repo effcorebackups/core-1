@@ -755,7 +755,9 @@ namespace effcore {
 
   static function signature_get($string, $key_name, $length = 40) {
     $key = static::key_get($key_name);
-    if ($key) return substr(sha1($string.$key), 0, $length);
+    if ($key)
+      return substr(hash('sha3-512',
+                    hash('sha3-512', $string).$key), 0, $length);
     else message::insert(new text('Key "%%_key" does not exist!', ['key' => $key_name]), 'error');
   }
 
@@ -796,7 +798,8 @@ namespace effcore {
   }
 
   static function password_hash($password) {
-    return hash('sha3-512', hash('sha3-512', $password).static::key_get('salt'));
+    return hash('sha3-512',
+           hash('sha3-512', $password).static::key_get('salt'));
   }
 
   static function password_verify($password, $hash) {

@@ -47,14 +47,14 @@
 
   <g id="icon_opener_for_description">
     <g id="ico_shd-v">
-      <circle id="ico_shd-v-dot-1" cx="6"  cy="90" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
-      <circle id="ico_shd-v-dot-2" cx="10" cy="90" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
-      <circle id="ico_shd-v-dot-3" cx="14" cy="90" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-v-dot-1" cx="5"  cy="90" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-v-dot-2" cx="10" cy="90" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-v-dot-3" cx="15" cy="90" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
     </g>
     <g id="ico_shd-h">
-      <circle id="ico_shd-h-dot-1" cx="30" cy="86" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
-      <circle id="ico_shd-h-dot-1" cx="30" cy="90" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
-      <circle id="ico_shd-h-dot-3" cx="30" cy="94" r="1" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-h-dot-1" cx="30" cy="85" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-h-dot-1" cx="30" cy="90" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
+      <circle id="ico_shd-h-dot-3" cx="30" cy="95" r="1.5" style="fill: %%_return_url_arg{color|black|css_units}; stroke: none"/>
     </g>
   </g>
 

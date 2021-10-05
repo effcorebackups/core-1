@@ -8,9 +8,9 @@ namespace effcore\modules\page {
           use \effcore\color;
           use \effcore\color_preset;
           use \effcore\module;
+          use \effcore\request;
           use \effcore\page;
           use \effcore\token;
-          use \effcore\url;
           abstract class events_token {
 
   static function on_apply($name, $args = []) {
@@ -26,7 +26,7 @@ namespace effcore\modules\page {
       case 'page_width_max'               : return $settings->page_width_max;
       case 'page_width_min_context':
       case 'page_width_max_context':
-        $page_id = url::get_current()->query_arg_select('page_id');
+        $page_id = request::value_get('page_id', 0, '_GET');
         $page = is_string($page_id) ? page::get_by_id($page_id, true) : null;
         if ($name === 'page_width_min_context') return !empty($page->data['width_min']) ? $page->data['width_min'] : $settings->page_width_min;
         if ($name === 'page_width_max_context') return !empty($page->data['width_max']) ? $page->data['width_max'] : $settings->page_width_max;

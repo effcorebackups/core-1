@@ -13,7 +13,7 @@ namespace effcore\modules\profile_classic {
     switch ($form->clicked_button->value_get()) {
       case 'recovery':
         if (!url::back_url_get() && page::get_current()->id === 'recovery_ru') {
-          url::get_current()->query_arg_insert('back', '/ru/login');
+          url::back_url_set('back', '/ru/login');
         }
         break;
     }

@@ -197,11 +197,13 @@
     line-height: 1.7em;
     opacity: .3}
   x-description p {margin: 0}
-  input[data-opener-type='description'] {display: block; width: 20px; height: 10px; margin: 2px 0 0 3px; border: none; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') 0 -85px}
+  input[data-opener-type='description'] {display: block; width: 14px; height: 10px; margin: 2px 0 0 0; border: none; opacity: .5; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') -3px -85px}
   input[data-opener-type='description']:checked {display: none}
   input[data-opener-type='description']         + x-description {display: none}
   input[data-opener-type='description']:checked + x-description {display: block}
-  x-field[data-type='switcher'] input[data-opener-type='description'] {margin-left: 9px}
+  x-field[data-type='checkbox']    input[data-opener-type='description'],
+  x-field[data-type='radiobutton'] input[data-opener-type='description'] {margin-left:  6px}
+  x-field[data-type='switcher']    input[data-opener-type='description'] {margin-left: 12px}
 
   /* buttons */
 

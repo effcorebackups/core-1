@@ -147,8 +147,8 @@ namespace effcore {
     );
 
     $body->attribute_insert('data-layout-id', $this->id_layout);
-    $body->child_insert($this->_markup, 'markup');
-    if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+    $body->child_insert($this->_markup, 'markup');  
+    if (request::value_get('manage_layout', 0, '_GET') === 'true') {
       if (access::check((object)['roles' => ['registered' => 'registered']])) {
         $body->attribute_insert('data-is-managed-layout', true);
       }

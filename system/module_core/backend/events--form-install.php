@@ -149,10 +149,11 @@ namespace effcore\modules\core {
             $params->table_prefix
           );
           $changes_is_writable = storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
-            'cron'            => core::key_generate(true),
-            'form_validation' => core::key_generate(    ),
-            'session'         => core::key_generate(    ),
-            'salt'            => core::key_generate(    )
+            'cron' => core::key_generate(true),
+            'salt' => core::key_generate(),
+            'form' => core::key_generate(),
+            'user' => core::key_generate(),
+            'args' => core::key_generate()
           ]);
           if (!$changes_is_writable) {
             return;

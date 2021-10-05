@@ -11,6 +11,7 @@ namespace effcore\modules\page {
           use \effcore\entity;
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\request;
           use \effcore\selection;
           use \effcore\text;
           use \effcore\token;
@@ -34,9 +35,9 @@ namespace effcore\modules\page {
              'roles'             => [  'admins'            =>   'admins'],
              'permissions_match' => ['%^manage_data__.+$%' => '%^manage_data__.+$%']])) {
           $url = clone url::get_current();
-          $edit_mode = $url->query_arg_select('manage_layout');
+          $edit_mode = request::value_get('manage_layout', 0, '_GET');
           if ($edit_mode === 'true')
-               $url->query_arg_delete('manage_layout'        );
+               $url->query_arg_delete('manage_layout');
           else $url->query_arg_insert('manage_layout', 'true');
           $admin_actions = new markup('x-admin-actions', ['data-entity_name' => 'page']);
           if ($edit_mode !== 'true'                                                     ) $admin_actions->child_insert(new markup('a', ['data-id' => 'manage-enter', 'href' => $url->tiny_get()], 'enter edit mode'), 'manage_layout');
@@ -49,7 +50,7 @@ namespace effcore\modules\page {
   }
 
   static function on_block_build_after($event, $block) {
-    if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+    if (request::value_get('manage_layout', 0, '_GET') === 'true') {
       if (access::check((object)['roles' => ['registered' => 'registered']])) {
         if (!empty($block->has_admin_menu)) {
           $instance_id = $block->args['instance_id'];

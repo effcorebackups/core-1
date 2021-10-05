@@ -79,11 +79,6 @@ namespace effcore {
   const scan_with_dir_at_first = ri_iterator::SELF_FIRST;
   const scan_with_dir_at_last  = ri_iterator::CHILD_FIRST;
 
-  const lock_is_absent   = 0b00;
-  const lock_is_active   = 0b01;
-  const lock_was_expired = 0b10;
-  const lock_life_time   = 3;
-
   public $protocol;
   public $dirs;
   public $name;
@@ -265,45 +260,6 @@ namespace effcore {
            console::log_insert('file', 'insertion', $relative, 'ok', timer::period_get('file insert: '.$relative, -1, -2), [], ['memory consumption' => $memory_consumption ?: '—']);
     } else console::log_insert('file', 'insertion', $relative, 'ok', timer::period_get('file insert: '.$relative, -1, -2), []);
     return $result;
-  }
-
-  # ────────────────────────────────────────────────────────────────────────────
-  # lock usage example:
-  # ════════════════════════════════════════════════════════════════════════════
-  #     const lock_life_time         = 3;
-  #     const lock_checks_sleep_time = 1;
-  #     const lock_checks_count      = 10;
-  #     for ($i = 0; $i < static::lock_checks_count; $i++)
-  #       if ($lock->lock_is_set(static::lock_life_time) === file::lock_is_active)
-  #            sleep(static::lock_checks_sleep_time);
-  #       else break;
-  #     $lock->lock_insert();
-  #       # … code …
-  #     $lock->lock_delete();
-  # ────────────────────────────────────────────────────────────────────────────
-
-  function lock_is_set($life_time = null) {
-    if ($life_time === null)
-        $life_time = static::lock_life_time;
-    $lock_path = $this->path_get_absolute().'.lock';
-    $lock_file_is_exists = file_exists($lock_path);
-    if ($lock_file_is_exists === false) return static::lock_is_absent;
-    if ($lock_file_is_exists !== false) {
-      if (time() < (int)@file_get_contents($lock_path) + $life_time)
-           return static::lock_is_active;
-      else return static::lock_was_expired;
-    }
-  }
-
-  function lock_insert() {
-    $lock_path = $this->path_get_absolute().'.lock';
-    return @file_put_contents($lock_path, time());
-  }
-
-  function lock_delete() {
-    $lock_path = $this->path_get_absolute().'.lock';
-    if (file_exists($lock_path))
-            @unlink($lock_path);
   }
 
   ###########################

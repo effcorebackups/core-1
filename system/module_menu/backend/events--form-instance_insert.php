@@ -76,10 +76,8 @@ namespace effcore\modules\menu {
         case 'insert_and_update':
         case 'cancel':
           if ($entity->name === 'tree_item') {
-            if (!url::back_url_get()) {
-              $id_tree = $items['#id_tree']->value_get();
-              url::get_current()->query_arg_insert('back', $entity->make_url_for_select_multiple().'///'.$id_tree);
-            }
+            if (!url::back_url_get())
+                 url::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$items['#id_tree']->value_get());
           }
           break;
       }

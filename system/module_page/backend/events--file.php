@@ -13,7 +13,7 @@ namespace effcore\modules\page {
           use \effcore\file;
           use \effcore\media;
           use \effcore\module;
-          use \effcore\url;
+          use \effcore\request;
           abstract class events_file {
 
   static function prepath_get($type) {
@@ -84,7 +84,7 @@ namespace effcore\modules\page {
           file_exists($path_original)) {
         $info = @unserialize(file_get_contents($path_info));
         $file_types = file::types_get();
-        $arg = url::get_current()->query_arg_select('cover');
+        $arg = request::value_get('cover', 0, '_GET', null);
         if ($arg === null                     ) $target = 'original';
         if ($arg !== null                     ) $target = 'cover';
         if ($arg !== null && $arg === 'small' ) $target = 'cover-small';
@@ -179,7 +179,7 @@ namespace effcore\modules\page {
           file_exists($path_original)) {
         $info = @unserialize(file_get_contents($path_info));
         $file_types = file::types_get();
-        $arg = url::get_current()->query_arg_select('poster');
+        $arg = request::value_get('poster', 0, '_GET', null);
         if ($arg === null                     ) $target = 'original';
         if ($arg !== null                     ) $target = 'poster';
         if ($arg !== null && $arg === 'small' ) $target = 'poster-small';
@@ -277,7 +277,7 @@ namespace effcore\modules\page {
             isset($file_types[ $info['original']['type'] ])) {
           $type_info = $file_types[$info['original']['type']];
           if (media::media_class_get($type_info->type) === 'picture') {
-            switch (url::get_current()->query_arg_select('thumb')) {
+            switch (request::value_get('thumb', 0, '_GET', null)) {
               case 'small' : $size = 'small';  break;
               case 'middle': $size = 'middle'; break;
               case 'big'   : $size = 'big';    break;

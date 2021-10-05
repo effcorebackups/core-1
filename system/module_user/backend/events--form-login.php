@@ -17,7 +17,7 @@ namespace effcore\modules\user {
 
   static function on_init($event, $form, $items) {
     $settings = module::settings_get('user');
-    $items['#session_params:is_long_session']->description = new text_multiline([
+    $items['#session_params:is_long_session']->attributes['title'] = new text_multiline([
       'Short session: %%_min day%%_plural{min|s} | long session: %%_max day%%_plural{max|s}'], [
       'min' => $settings->session_duration_min,
       'max' => $settings->session_duration_max], '', true, true);

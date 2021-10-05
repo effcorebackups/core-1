@@ -6,7 +6,7 @@
 
 namespace effcore\modules\core {
           use \effcore\core;
-          use \effcore\url;
+          use \effcore\request;
           use \effcore\token;
           abstract class events_token {
 
@@ -21,17 +21,17 @@ namespace effcore\modules\core {
         }
         break;
       case 'return_if_url_arg':
-        if (count($args) === 3) return url::get_current()->query_arg_select($args[0]) === $args[1] ? $args[2] : '';
-        if (count($args) === 4) return url::get_current()->query_arg_select($args[0]) === $args[1] ? $args[2] : $args[3];
+        if (count($args) === 3) return request::value_get($args[0], 0, '_GET') === $args[1] ? $args[2] : '';
+        if (count($args) === 4) return request::value_get($args[0], 0, '_GET') === $args[1] ? $args[2] : $args[3];
         break;
       case 'return_url_arg':
         if (count($args) === 3) {
-          $arg_name      = $args[0];
-          $default_value = $args[1];
-          $filter        = $args[2];
+          $color_arg_name = $args[0];
+          $color_default  = $args[1];
+          $filter         = $args[2];
           if ($filter === 'css_units') {
-            return is_string(url::get_current()->query_arg_select($arg_name)) ? core::sanitize_css_units(
-                             url::get_current()->query_arg_select($arg_name)) : $default_value;
+            $color_arg = core::sanitize_css_units(request::value_get($color_arg_name, 0, '_GET'));
+            return $color_arg ?: $color_default;
           }
         }
         break;

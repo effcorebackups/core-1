@@ -11,9 +11,10 @@ namespace effcore\modules\menu {
           use \effcore\frontend;
           use \effcore\markup;
           use \effcore\page;
+          use \effcore\request;
           use \effcore\text;
-          use \effcore\tree;
           use \effcore\tree_item;
+          use \effcore\tree;
           use \effcore\url;
           abstract class events_page {
 
@@ -41,7 +42,7 @@ namespace effcore\modules\menu {
   }
 
   static function on_block_build_after($event, $block) {
-    if (url::get_current()->query_arg_select('manage_layout') === 'true') {
+    if (request::value_get('manage_layout', 0, '_GET') === 'true') {
       if (access::check((object)['roles' => ['registered' => 'registered']])) {
         if (!empty($block->has_admin_tree_menu)) {
           $instance_id = $block->args['instance_id'];

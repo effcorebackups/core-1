@@ -202,22 +202,6 @@ namespace effcore {
     return static::$cache;
   }
 
-  static function back_url_get($arg_name = 'back') {
-    $query_arg = static::get_current()->query_arg_select($arg_name);
-    $url = new static(is_string($query_arg) ? $query_arg : null);
-    return $url->has_error ? '' :
-           $url->full_get();
-  }
-
-  static function back_part_make__custom($url, $arg_name = 'back') {
-    return $arg_name.'='.urlencode($url);
-  }
-
-  static function back_part_make($full = false, $arg_name = 'back') {
-    if ($full) return static::back_part_make__custom(static::get_current()->full_get(), $arg_name);
-    else       return static::back_part_make__custom(static::get_current()->tiny_get(), $arg_name);
-  }
-
   static function is_local($url, $decode = false) {
     return (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === core::server_get_host($decode);
   }
@@ -240,6 +224,8 @@ namespace effcore {
                   $checked_url->full_get().'/') === 0;
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function utf8_encode($value, $prefix = '', $range = self::valid_unicode_range) {
     return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
       if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
@@ -247,16 +233,6 @@ namespace effcore {
       if (strlen($c_match['char']) === 3) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1]))).$prefix.strtoupper(dechex(ord($c_match['char'][2])));
       if (strlen($c_match['char']) === 4) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1]))).$prefix.strtoupper(dechex(ord($c_match['char'][2]))).$prefix.strtoupper(dechex(ord($c_match['char'][3])));
     }, $value);
-  }
-
-  static function go($url) {
-    $messages = message::select_all(false);
-    foreach ($messages as $c_type => $c_messages)
-      foreach ($c_messages as $c_message)
-        message::insert_to_storage($c_message, $c_type);
-    core::send_header_and_exit('redirect', null, null,
-      (new static($url))->full_get()
-    );
   }
 
   static function url_to_markup($url) {
@@ -270,6 +246,34 @@ namespace effcore {
         'anchor'   => new markup('x-anchor',   [], new text($info->anchor ? '#'.$info->anchor : '', [], false, false))
       ]);
     } else return new text;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function back_url_get($arg_name = 'back') {
+    $query_arg = request::value_get($arg_name, 0, '_GET');
+    $url = new static(static::is_local($query_arg) ? $query_arg : null);
+    return $url->has_error ? '' :
+           $url->full_get();
+  }
+
+  static function back_url_set($arg_name = 'back', $url = '') {
+    request::values_set($arg_name, $url, '_GET');
+  }
+
+  static function back_part_make($arg_name = 'back', $url = null) {
+    if ($url) return $arg_name.'='.urlencode($url);
+    else      return $arg_name.'='.urlencode(static::get_current()->tiny_get());
+  }
+
+  static function go($url) {
+    $messages = message::select_all(false);
+    foreach ($messages as $c_type => $c_messages)
+      foreach ($c_messages as $c_message)
+        message::insert_to_storage($c_message, $c_type);
+    core::send_header_and_exit('redirect', null, null,
+      (new static($url))->full_get()
+    );
   }
 
 }}

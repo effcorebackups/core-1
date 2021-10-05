@@ -15,8 +15,8 @@ namespace effcore\modules\profile_classic {
       case 'register':
         if (!url::back_url_get() && page::get_current()->id === 'registration_ru') {
           if (module::settings_get('user')->send_password_to_email)
-               url::get_current()->query_arg_insert('back', '/ru/login');
-          else url::get_current()->query_arg_insert('back', '/ru/user/'.$items['#nickname']->value_get());
+               url::back_url_set('back', '/ru/login');
+          else url::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
         }
         break;
     }

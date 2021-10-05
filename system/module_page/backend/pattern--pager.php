@@ -8,7 +8,7 @@ namespace effcore {
           class pager extends markup {
 
   const ERR_CODE_OK         = 0b0000;
-  const ERR_CODE_CUR_NO_VAL = 0b0001;
+  const ERR_CODE_CUR_NO_INT = 0b0001;
   const ERR_CODE_CUR_LT_MIN = 0b0010;
   const ERR_CODE_CUR_GT_MAX = 0b0100;
   const ERR_CODE_MAX_LT_MIN = 0b1000;
@@ -33,11 +33,9 @@ namespace effcore {
 
   function init() {
     if ($this->cur === null) {
-      $this->cur = url::get_current()->query_arg_select($this->name_get());
-      switch (gettype($this->cur)) {
-        case 'NULL'  :                                                     {$this->cur = $this->min;}                                                   break;
-        case 'string': if ((string)(int)$this->cur !== (string)$this->cur) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_NO_VAL;} break;
-        default      :                                                     {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_NO_VAL;} }
+      $this->cur = request::value_get($this->name_get(), 0, '_GET');
+      if ($this->cur === ''                                                  ) {$this->cur = $this->min;}
+      if ($this->cur !== '' && (string)$this->cur !== (string)(int)$this->cur) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_NO_INT;}
       $this->min = (int)$this->min;
       $this->max = (int)$this->max;
       $this->cur = (int)$this->cur;

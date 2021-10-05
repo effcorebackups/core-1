@@ -127,7 +127,7 @@ namespace effcore\modules\storage {
             if ($form->clicked_button->value_get() === 'cancel') url::go(url::back_url_get() ?: $entity->make_url_for_select_multiple());
             if ($form->clicked_button->value_get() === 'insert_and_update') {
               if ($form->_result instanceof instance) {
-                url::go($form->_result->make_url_for_update().'?'.url::back_part_make__custom($entity->make_url_for_select_multiple()));
+                url::go($form->_result->make_url_for_update().'?'.url::back_part_make('back', $entity->make_url_for_select_multiple()));
               }
             }
           }

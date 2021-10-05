@@ -64,21 +64,20 @@ namespace effcore {
   # │ source[field] === ''                     ║ return ''      │
   # │ source[field] === 'value'                ║ return 'value' │
   # ├──────────────────────────────────────────╫────────────────┤
+  # │ source[field] === [undefined]            ║ return ''      │
   # │ source[field] === [0 => '']              ║ return ''      │
-  # │ source[field] === [0 => '', …]           ║ return ''      │
   # │ source[field] === [0 => 'value']         ║ return 'value' │
-  # │ source[field] === [0 => 'value', …]      ║ return 'value' │
   # └──────────────────────────────────────────╨────────────────┘
 
-  static function value_get($name, $number = 0, $source = '_POST') {
+  static function value_get($name, $number = 0, $source = '_POST', $return_default = '') {
     global ${$source};
-    return !isset(${$source}[$name]) ? '' :
-       (is_string(${$source}[$name]) ? ${$source}[$name] :
-        (is_array(${$source}[$name]) &&
-            isset(${$source}[$name][$number]) ?
-                  ${$source}[$name][$number] : ''));
+    if (   !isset(${$source}[$name])) return  $return_default;
+    if (is_string(${$source}[$name])) return ${$source}[$name];
+    if ( is_array(${$source}[$name]) &&
+            isset(${$source}[$name][$number]))
+    return        ${$source}[$name][$number];
+    return $return_default;
   }
-
 
   # conversion matrix:
   # ┌──────────────────────────────────────────╥──────────────────────────┐
@@ -88,18 +87,19 @@ namespace effcore {
   # │ source[field] === ''                     ║ return [0 => '']         │
   # │ source[field] === 'value'                ║ return [0 => 'value']    │
   # ├──────────────────────────────────────────╫──────────────────────────┤
+  # │ source[field] === [undefined]            ║ return []                │
   # │ source[field] === [0 => '']              ║ return [0 => '']         │
   # │ source[field] === [0 => '', …]           ║ return [0 => '', …]      │
   # │ source[field] === [0 => 'value']         ║ return [0 => 'value']    │
   # │ source[field] === [0 => 'value', …]      ║ return [0 => 'value', …] │
   # └──────────────────────────────────────────╨──────────────────────────┘
 
-  static function values_get($name, $source = '_POST') {
+  static function values_get($name, $source = '_POST', $return_default = []) {
     global ${$source};
-    return !isset(${$source}[$name]) ? [] :
-       (is_string(${$source}[$name]) ? [${$source}[$name]] :
-        (is_array(${$source}[$name]) ?
-                  ${$source}[$name] : []));
+    if (   !isset(${$source}[$name])) return   $return_default;
+    if (is_string(${$source}[$name])) return [${$source}[$name]];
+    if ( is_array(${$source}[$name])) return  ${$source}[$name];
+    return $return_default;
   }
 
   static function values_set($name, $values, $source = '_POST') {
