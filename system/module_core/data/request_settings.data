@@ -1,0 +1,23 @@
+request_settings
+  allowed_args_in_get
+  - =: animation
+  - =: back
+  - =: color
+  - =: color_fire
+  - =: cover
+  - =: manage_layout
+  - =: opacity
+  - =: page
+  - =: page_id
+  - =: page0
+  - =: page1
+  - =: page2
+  - =: page3
+  - =: page4
+  - =: page5
+  - =: page6
+  - =: page7
+  - =: page8
+  - =: page9
+  - =: poster
+  - =: thumb

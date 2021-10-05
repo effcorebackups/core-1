@@ -7,6 +7,23 @@
 namespace effcore {
           abstract class request {
 
+  static protected $cache;
+  static protected $allowed_args_in_get = [];
+
+  static function init() {
+    if (static::$cache === null) {
+      foreach (storage::get('files')->select_array('request_settings') as $c_module_id => $c_settings) {
+        static::$allowed_args_in_get+= $c_settings->allowed_args_in_get;
+        static::$cache[$c_module_id] = $c_settings;
+      }
+    }
+  }
+
+  static function allowed_args_in_get_get() {
+    static::init();
+    return static::$allowed_args_in_get;
+  }
+
   # ─────────────────────────────────────────────────────────────────────
   # sanitize(…, $is_files === false) of requests:
   # ═════════════════════════════════════════════════════════════════════
@@ -38,6 +55,7 @@ namespace effcore {
   static function sanitize($source = '_POST', $is_files = false) {
     $result = [];
     global ${$source};
+  # filtering by structure
     if (is_array(${$source}) && count(${$source})) {
       $iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator(${$source}));
       foreach ($iterator as $c_value) {
@@ -51,6 +69,15 @@ namespace effcore {
         if ($is_files === true && $c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                     is_int($c_value)) $result[$c_k0][$c_k1]   = $c_value;
         if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) &&    is_int($c_value)) $result[$c_k0][$c_k1][] = $c_value;
         if ($is_files === true && $c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_int($c_k2) && is_string($c_value)) $result[$c_k0][$c_k1][] = $c_value;
+      }
+    }
+  # filtering by whitelist
+    if ($source === '_GET') {
+      $allowed_args = request::allowed_args_in_get_get();
+      foreach ($result as $c_name => $c_value) {
+        if (!isset($allowed_args[$c_name])) {
+          unset($result[$c_name]);
+        }
       }
     }
     return $result;
