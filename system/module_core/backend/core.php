@@ -953,8 +953,8 @@ namespace effcore {
   # └─────────────────╨───────┴────────────────╨────────┘
 
   static function server_get_request_scheme() {
-    if (isset($_SERVER['REQUEST_SCHEME'])                     ) return $_SERVER['REQUEST_SCHEME'];
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') return 'https';
+    if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] === 'https') return 'https';
+    if (isset($_SERVER['HTTPS'])          && $_SERVER['HTTPS']          === 'on'   ) return 'https';
     return 'http';
   }
 
