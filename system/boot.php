@@ -22,21 +22,29 @@ namespace effcore {
     date_default_timezone_set('UTC');
   }
 
-  #############################
-  ### load required classes ###
-  #############################
+  # ─────────────────────────────────────────────────────────────────────
+  # make the required registrations
+  # ─────────────────────────────────────────────────────────────────────
 
   require_once('module_core/backend/core.php');
   require_once('module_storage/backend/markers.php');
   spl_autoload_register('\\effcore\\core::structure_autoload');
   stream_wrapper_register('container', '\\effcore\\file_container');
+  timer::tap('total');
+
+  # ─────────────────────────────────────────────────────────────────────
+  # prepare user input
+  # ─────────────────────────────────────────────────────────────────────
+
+  $_ORIGINAL_POST    = $_POST;
+  $_ORIGINAL_GET     = $_GET;
+  $_ORIGINAL_REQUEST = $_REQUEST;
+  $_ORIGINAL_FILES   = $_FILES;
 
   $_POST    = request::sanitize('_POST');
   $_GET     = request::sanitize('_GET');
   $_REQUEST = request::sanitize('_REQUEST');
   $_FILES   = request::sanitize('_FILES', true);
-
-  timer::tap('total');
 
   # ─────────────────────────────────────────────────────────────────────
   # preventing invalid requests (for example: "http://домен/путь?запрос" instead "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81")
@@ -68,7 +76,7 @@ namespace effcore {
   }
 
   #######################
-  ### return the file ###
+  ### return the FILE ###
   #######################
 
   $file = url::get_current()->file_info_get();
@@ -146,7 +154,7 @@ namespace effcore {
   }
 
   #######################
-  ### return the page ###
+  ### return the PAGE ###
   #######################
 
   if (!storage::get('sql')->is_installed()) {
