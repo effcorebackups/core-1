@@ -47,7 +47,7 @@ namespace effcore {
   $_FILES   = request::sanitize('_FILES', true);
 
   # ─────────────────────────────────────────────────────────────────────
-  # preventing invalid requests (for example: "http://домен/путь?запрос" instead "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81")
+  # redirect on invalid requests (for example: send the value "http://домен/путь?запрос" over the socket instead of "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81" through the browser)
   # ─────────────────────────────────────────────────────────────────────
 
   $raw_url = core::server_get_request_scheme().'://'.
@@ -57,23 +57,39 @@ namespace effcore {
     core::send_header_and_exit('bad_request');
   }
 
-  # note:
-  # ═══════════════════╦════════════════════════════════════════════════════════════════════
-  # 1. url /           ║ is page 'page-front'
-  # 2. url /page       ║ is page 'page'
-  # 3. url /file.type  ║ is file 'file.type'
-  # ───────────────────╫────────────────────────────────────────────────────────────────────
-  # 4. url /page/      ║ is wrong notation - redirect to /page and interpreted as page 'page'
-  # 5. url /file/      ║ is wrong notation - redirect to /file and interpreted as page 'file'
-  # 6. url /file.type/ ║ is wrong notation - redirect to /file.type
-  # ───────────────────╨────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # redirect on invalid arguments
+  # ─────────────────────────────────────────────────────────────────────
+
+  if (count($_ORIGINAL_GET)) {
+    if (core::hash_get($_GET) !== core::hash_get($_ORIGINAL_GET)) {
+      core::send_header_and_exit('redirect', null, null, count($_GET) ?
+          core::server_get_request_scheme().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
+          core::server_get_request_scheme().'://'.core::server_get_host(false)
+      );
+    }
+  }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # redirect to url without leading slash
+  # ─────────────────────────────────────────────────────────────────────
 
   if (core::server_get_request_uri()     !== '/' &&
       core::server_get_request_uri()[-1] === '/') {
-    $new_url = rtrim(core::server_get_request_uri(), '/'); # note: trimming for single redirect
-    url::go($new_url === '' ? '/' :
-            $new_url);
+    $new_url = rtrim(core::server_get_request_uri(), '/');
+    core::send_header_and_exit('redirect', null, null,
+        $new_url === '' ? '/' :
+        $new_url
+    );
   }
+
+  # note:
+  # ════════════════╦════════════════════════════════════════════════════
+  # url /           ║ is page 'page-front'
+  # url /page       ║ is page 'page'
+  # url /file       ║ is page 'file'
+  # url /file.type  ║ is file 'file.type'
+  # ────────────────╨────────────────────────────────────────────────────
 
   #######################
   ### return the FILE ###

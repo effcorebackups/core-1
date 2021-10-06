@@ -977,11 +977,6 @@ namespace effcore {
     return $_SERVER['REMOTE_ADDR'];
   }
 
-  static function server_get_user_agent($max_length = 240) {
-    return             isset($_SERVER['HTTP_USER_AGENT']) ?
-      substr(trim(strip_tags($_SERVER['HTTP_USER_AGENT'])), 0, $max_length) : '';
-  }
-
   static function server_get_http_range() {
     $result = new \stdClass;
     $result->has_range = false;
@@ -996,6 +991,11 @@ namespace effcore {
       if (array_key_exists('max', $matches) && strlen($matches['max'])) $result->max = (int)$matches['max'];
     }
     return $result;
+  }
+
+  static function server_get_user_agent($max_length = 240) {
+    return             isset($_SERVER['HTTP_USER_AGENT']) ?
+      substr(trim(strip_tags($_SERVER['HTTP_USER_AGENT'])), 0, $max_length) : '';
   }
 
   static function server_get_user_agent_info() {
