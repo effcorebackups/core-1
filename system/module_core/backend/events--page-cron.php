@@ -13,10 +13,11 @@ namespace effcore\modules\core {
           use \effcore\storage;
           use \effcore\text_multiline;
           use \effcore\timer;
+          use \effcore\user;
           abstract class events_page_cron {
 
   static function block_markup__cron($page, $args = []) {
-    if ($page->args_get('key') === core::key_get('cron')) {
+    if ($page->args_get('key') === user::key_get('cron')) {
       timer::tap('cron');
       $result = event::start('on_cron_run');
       timer::tap('cron');

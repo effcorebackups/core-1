@@ -97,6 +97,10 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+  static function key_get($name) {
+    return storage::get('files')->select('settings/core/keys/'.$name);
+  }
+
   static function key_generate($is_hash_compatible = false, $length = 40) {
     return core::random_bytes_generate($length, $is_hash_compatible ?
       module::settings_get('user')->hash_characters :
@@ -113,7 +117,7 @@ namespace effcore {
   }
 
   static function password_hash($password) {
-    return hash('sha3-512', hash('sha3-512', $password).core::key_get('salt'));
+    return hash('sha3-512', hash('sha3-512', $password).static::key_get('salt'));
   }
 
   static function password_verify($password, $hash) {

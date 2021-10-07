@@ -761,15 +761,11 @@ namespace effcore {
   }
 
   static function signature_get($string, $key_name, $length = 40) {
-    $key = static::key_get($key_name);
+    $key = user::key_get($key_name);
     if ($key)
       return substr(hash('sha3-512',
                     hash('sha3-512', $string).$key), 0, $length);
     else message::insert(new text('Key "%%_key" does not exist!', ['key' => $key_name]), 'error');
-  }
-
-  static function key_get($name) {
-    return storage::get('files')->select('settings/core/keys/'.$name);
   }
 
   static function hash_get($data) {

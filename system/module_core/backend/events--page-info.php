@@ -7,7 +7,6 @@
 namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\decorator;
-          use \effcore\language;
           use \effcore\locale;
           use \effcore\markup_simple;
           use \effcore\markup;
@@ -18,6 +17,7 @@ namespace effcore\modules\core {
           use \effcore\token;
           use \effcore\update;
           use \effcore\url;
+          use \effcore\user;
           abstract class events_page_info {
 
   static function block_markup__system_info($page, $args = []) {
@@ -41,7 +41,7 @@ namespace effcore\modules\core {
         locale::format_seconds($settings->cron_auto_run_frequency): 'no';
     $cron_url = core::server_get_request_scheme().'://'.
                 core::server_get_host(false).'/manage/cron/'.
-                core::key_get('cron');
+                user::key_get('cron');
     $fix_link_for_cron   = new markup('a', ['href' => $cron_url,                     'target' => 'cron'  ], 'fix');
     $fix_link_for_update = new markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');
     $sticker_for_cron_last_run      = new markup('x-sticker', ['data-style' => $is_cron_run        ? 'ok' : 'warning'], $is_cron_run ? $settings->cron_last_run_date : [$settings->cron_last_run_date ? $settings->cron_last_run_date : 'no', ' → ', $fix_link_for_cron]);
