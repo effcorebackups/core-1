@@ -40,7 +40,7 @@ namespace effcore\modules\user {
             'email'         => $items['#email'   ]->value_get(),
             'nickname'      => $items['#nickname']->value_get(),
             'timezone'      => $items['#timezone']->value_get(),
-            'password_hash' => core::password_hash($new_password)
+            'password_hash' => user::password_hash($new_password)
           ]);
           if ($user) {
             $domain = url::get_current()->domain;

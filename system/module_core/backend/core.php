@@ -781,15 +781,6 @@ namespace effcore {
     return $result;
   }
 
-  static function password_hash($password) {
-    return hash('sha3-512',
-           hash('sha3-512', $password).static::key_get('salt'));
-  }
-
-  static function password_verify($password, $hash) {
-    return hash_equals($hash, static::password_hash($password));
-  }
-
   static function hash_get($data) {
     if (gettype($data) === 'string')
          return md5($data);

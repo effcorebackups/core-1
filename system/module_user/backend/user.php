@@ -110,4 +110,12 @@ namespace effcore {
     );
   }
 
+  static function password_hash($password) {
+    return hash('sha3-512', hash('sha3-512', $password).core::key_get('salt'));
+  }
+
+  static function password_verify($password, $hash) {
+    return hash_equals($hash, static::password_hash($password));
+  }
+
 }}

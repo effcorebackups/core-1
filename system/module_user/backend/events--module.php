@@ -5,12 +5,12 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\core;
           use \effcore\instance;
           use \effcore\module;
           use \effcore\request;
           use \effcore\session;
           use \effcore\storage;
+          use \effcore\user;
           abstract class events_module {
 
   static function on_install($event) {
@@ -19,7 +19,7 @@ namespace effcore\modules\user {
     if (count(storage::get('sql')->errors) === 0) {
       $admin = new instance('user', ['nickname' => 'Admin']);
       if ($admin->select()) {
-        $admin->password_hash = core::password_hash(request::value_get('password'));
+        $admin->password_hash = user::password_hash(request::value_get('password'));
         $admin->email         =                     request::value_get('email'   );
         $admin->timezone      =                     request::value_get('timezone');
         $admin->update();

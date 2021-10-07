@@ -5,7 +5,6 @@
   ##################################################################
 
 namespace effcore\modules\user {
-          use \effcore\core;
           use \effcore\instance;
           use \effcore\mail;
           use \effcore\message;
@@ -36,7 +35,7 @@ namespace effcore\modules\user {
         ]))->select();
         if ($user) {
           $new_password = user::password_generate();
-          $user->password_hash = core::password_hash($new_password);
+          $user->password_hash = user::password_hash($new_password);
           if ($user->update()) {
             $domain = url::get_current()->domain;
             if (mail::send('recovery', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
