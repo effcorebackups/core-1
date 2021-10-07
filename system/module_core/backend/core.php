@@ -830,43 +830,6 @@ namespace effcore {
     else return $bytes.'B';
   }
 
-  ###############
-  ### ini_get ###
-  ###############
-
-  static function memory_limit_bytes_get() {
-    $value = ini_get('memory_limit');
-    if (static::is_abbreviated_bytes($value))
-         return static::abbreviated_to_bytes($value);
-    else return (int)$value;
-  }
-
-  static function upload_max_filesize_bytes_get() {
-    $value = ini_get('upload_max_filesize');
-    if (static::is_abbreviated_bytes($value))
-         return static::abbreviated_to_bytes($value);
-    else return (int)$value;
-  }
-
-  static function post_max_size_bytes_get() {
-    $value = ini_get('post_max_size');
-    if (static::is_abbreviated_bytes($value))
-         return static::abbreviated_to_bytes($value);
-    else return (int)$value;
-  }
-
-  static function max_file_uploads_get() {
-    return ini_get('max_file_uploads');
-  }
-
-  static function max_input_time_get() {
-    return ini_get('max_input_time');
-  }
-
-  static function max_execution_time_get() {
-    return ini_get('max_execution_time');
-  }
-
   ############################
   ### functionality for ip ###
   ############################
@@ -924,6 +887,43 @@ namespace effcore {
       $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
       $result.= $c_chunk; }
     return $result;
+  }
+
+  ###############
+  ### ini_get ###
+  ###############
+
+  static function memory_limit_bytes_get() {
+    $value = ini_get('memory_limit');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
+  static function upload_max_filesize_bytes_get() {
+    $value = ini_get('upload_max_filesize');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
+  static function post_max_size_bytes_get() {
+    $value = ini_get('post_max_size');
+    if (static::is_abbreviated_bytes($value))
+         return static::abbreviated_to_bytes($value);
+    else return (int)$value;
+  }
+
+  static function max_file_uploads_get() {
+    return ini_get('max_file_uploads');
+  }
+
+  static function max_input_time_get() {
+    return ini_get('max_input_time');
+  }
+
+  static function max_execution_time_get() {
+    return ini_get('max_execution_time');
   }
 
   ##########################
