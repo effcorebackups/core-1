@@ -187,6 +187,21 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+  static function cookie_parse($string) {
+    $result = [];
+    foreach (explode('; ', $string) as $c_part) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^=]+)='.
+                   '(?<value>.*)$%S', $c_part, $c_matches);
+      if ($c_matches)
+        $result[$c_matches['name']] =
+                $c_matches['value'];
+    }
+    return $result;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function make($url, $headers = [], $post = [], $settings = []) {
     $result = ['info' => [], 'headers' => []];
     $curl = curl_init();
@@ -211,7 +226,7 @@ namespace effcore {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
       if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], cr.nl.'"');
-      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => core::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
+      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => static::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
       return strlen($c_header);
     });
   # prepare return

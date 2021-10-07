@@ -1028,18 +1028,6 @@ namespace effcore {
     return DIRECTORY_SEPARATOR === '\\';
   }
 
-  static function cookie_parse($string) {
-    $result = [];
-    foreach (explode('; ', $string) as $c_part) {
-      $c_matches = [];
-      preg_match('%^(?<name>[^=]+)=(?<value>.*)$%S', $c_part, $c_matches);
-      if ($c_matches) {
-        $result[$c_matches['name']] = $c_matches['value'];
-      }
-    }
-    return $result;
-  }
-
   ############
   ### cron ###
   ############
