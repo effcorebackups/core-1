@@ -325,6 +325,16 @@ namespace effcore {
     return $result;
   }
 
+  static function deep_clone($data, $class_remaping = []) {
+    $string = serialize($data);
+    foreach ($class_remaping as $c_old_name => $c_new_name) {
+      $c_old_name = 'O:'.strlen($c_old_name).':"'.$c_old_name.'"';
+      $c_new_name = 'O:'.strlen($c_new_name).':"'.$c_new_name.'"';
+      $string = str_replace($c_old_name, $c_new_name, $string);
+    }
+    return unserialize($string);
+  }
+
   ################################
   ### functionality for arrays ###
   ################################
@@ -401,6 +411,18 @@ namespace effcore {
     return $result;
   }
 
+  static function array_key_first($array) { # alternative for built-in 'array_key_first' in PHP v.7.3+
+    $keys = array_keys($array);
+    return count($keys) ?
+           reset($keys) : null;
+  }
+
+  static function array_key_last($array) { # alternative for built-in 'array_key_last' in PHP v.7.3+
+    $keys = array_keys($array);
+    return count($keys) ?
+             end($keys) : null;
+  }
+
   static function in_array_string($value, $array) {
     foreach ($array as $c_value) {
       if ((string)$value === (string)$c_value) {
@@ -417,18 +439,6 @@ namespace effcore {
       }
     }
     return $result;
-  }
-
-  static function array_key_first($array) { # alternative for built-in 'array_key_first' in PHP v.7.3+
-    $keys = array_keys($array);
-    return count($keys) ?
-           reset($keys) : null;
-  }
-
-  static function array_key_last($array) { # alternative for built-in 'array_key_last' in PHP v.7.3+
-    $keys = array_keys($array);
-    return count($keys) ?
-             end($keys) : null;
   }
 
   #############################################
@@ -1067,16 +1077,6 @@ namespace effcore {
 
   static function return_htmlspecialchars_encoded($value) {
     return htmlspecialchars($value, ENT_COMPAT|ENT_HTML5, 'UTF-8');
-  }
-
-  static function deep_clone($data, $class_remaping = []) {
-    $string = serialize($data);
-    foreach ($class_remaping as $c_old_name => $c_new_name) {
-      $c_old_name = 'O:'.strlen($c_old_name).':"'.$c_old_name.'"';
-      $c_new_name = 'O:'.strlen($c_new_name).':"'.$c_new_name.'"';
-      $string = str_replace($c_old_name, $c_new_name, $string);
-    }
-    return unserialize($string);
   }
 
 }}
