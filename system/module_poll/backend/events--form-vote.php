@@ -6,13 +6,13 @@
 
 namespace effcore\modules\poll {
           use \effcore\access;
-          use \effcore\color;
           use \effcore\core;
           use \effcore\diagram;
           use \effcore\group_checkboxes;
           use \effcore\group_radiobuttons;
           use \effcore\markup;
           use \effcore\message;
+          use \effcore\module;
           use \effcore\poll;
           use \effcore\session;
           use \effcore\user;
@@ -56,7 +56,8 @@ namespace effcore\modules\poll {
       } else {
       # build diagram and make report
         $diagram = new diagram(null, $poll->diagram_type);
-        $diagram_colors = color::generate_monochrome(count($form->_answers));
+        $settings = module::settings_get('poll');
+        $diagram_colors = core::deep_clone($settings->diagram_colors);
         foreach ($form->_answers as $c_answer) {
           $diagram->slice_insert(                     $c_answer->answer,
             $form->_total ? ($form->_total_by_answers[$c_answer->id] ?? 0) / $form->_total * 100 : 0,

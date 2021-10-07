@@ -1,0 +1,13 @@
+settings
+  answers_max: 10
+  diagram_colors
+  - =: chocolate
+  - =: darkorange
+  - =: limegreen
+  - =: aquamarine
+  - =: dodgerblue
+  - =: tomato
+  - =: yellowgreen
+  - =: gold
+  - =: lightcoral
+  - =: crimson
