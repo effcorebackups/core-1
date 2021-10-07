@@ -10,6 +10,7 @@ namespace effcore\modules\user {
           use \effcore\mail;
           use \effcore\message;
           use \effcore\url;
+          use \effcore\user;
           abstract class events_form_recovery {
 
   static function on_validate($event, $form, $items) {
@@ -34,7 +35,7 @@ namespace effcore\modules\user {
           'email' => $items['#email']->value_get()
         ]))->select();
         if ($user) {
-          $new_password = core::password_generate();
+          $new_password = user::password_generate();
           $user->password_hash = core::password_hash($new_password);
           if ($user->update()) {
             $domain = url::get_current()->domain;

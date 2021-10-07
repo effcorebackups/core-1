@@ -95,4 +95,19 @@ namespace effcore {
     ]))->delete();
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function random_bytes_generate($length = 8, $characters = '0123456789') {
+    $result = '';
+    for ($i = 0; $i < $length; $i++)
+      $result.= $characters[random_int(0, strlen($characters) - 1)];
+    return $result;
+  }
+
+  static function password_generate($length = 8) {
+    return static::random_bytes_generate($length,
+      module::settings_get('user')->password_characters
+    );
+  }
+
 }}

@@ -20,6 +20,7 @@ namespace effcore\modules\core {
           use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\url;
+          use \effcore\user;
           abstract class events_form_install {
 
   static function on_build($event, $form) {
@@ -40,7 +41,7 @@ namespace effcore\modules\core {
   }
 
   static function on_init($event, $form, $items) {
-    $items['#password']->value_set(core::password_generate());
+    $items['#password']->value_set(user::password_generate());
   # check OPCache
     if (!extension_loaded('Zend OPCache')) {
       message::insert(new text_multiline([

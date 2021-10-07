@@ -5,3 +5,8 @@ settings
   session_duration_min: 1
   session_duration_max: 365
   send_password_to_email: 0
+# exclude characters to avoid misunderstanding: 0OoLlIi
+# exclude characters to avoid email problems: $&~^%@
+  password_characters: abcdefghjkmnpqrstuvwxyz
+>>>>>>>>>>>>>>>>>>>>>>>ABCDEFGHJKMNPQRSTUVWXYZ
+>>>>>>>>>>>>>>>>>>>>>>>123456789#_*-+=:;!?

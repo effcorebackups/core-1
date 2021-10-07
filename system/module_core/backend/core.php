@@ -781,22 +781,6 @@ namespace effcore {
     return $result;
   }
 
-  static function password_generate($length = 8) {
-  # exclude to avoid misunderstanding: '0', 'O', 'o', 'L', 'l', 'I', 'i'
-  # exclude to avoid emailing problem: '$', '&', '~', '^', '%', '@'
-    $characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                   '1', '2', '3', '4', '5', '6', '7', '8', '9', '#', '_', '*', '-', '+', '=', ':', ';', '!', '?'];
-    shuffle($characters);
-    $result = '';
-    for ($i = 0; $i < $length; $i++) {
-      $result.= $characters[
-        random_int(0, count($characters) - 1)
-      ];
-    }
-    return $result;
-  }
-
   static function password_hash($password) {
     return hash('sha3-512',
            hash('sha3-512', $password).static::key_get('salt'));
