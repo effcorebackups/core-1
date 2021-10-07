@@ -203,7 +203,10 @@ namespace effcore {
   }
 
   static function is_local($url, $decode = false) {
-    return (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === core::server_get_host($decode);
+    if (strlen($url) === 0                   ) return true;
+    if (strlen($url) !== 0 && $url[0] === '/') return true;
+    if (strlen($url) !== 0 && (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === core::server_get_host($decode)) return true;
+    return false;
   }
 
   static function is_active($url, $compare_type = 'full') {

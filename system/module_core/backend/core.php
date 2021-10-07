@@ -201,6 +201,8 @@ namespace effcore {
                               $reflection->newInstanceWithoutConstructor();
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function is_handler($string) {
     return strpos($string, '::') !== false;
   }
