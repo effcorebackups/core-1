@@ -97,15 +97,17 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function random_bytes_generate($length = 8, $characters = '0123456789') {
-    $result = '';
-    for ($i = 0; $i < $length; $i++)
-      $result.= $characters[random_int(0, strlen($characters) - 1)];
-    return $result;
+  static function key_generate($is_hash_compatible = false, $length = 40) {
+    return core::random_bytes_generate($length, $is_hash_compatible ?
+      module::settings_get('user')->hash_characters :
+      module::settings_get('user')->key_characters
+    );
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function password_generate($length = 8) {
-    return static::random_bytes_generate($length,
+    return core::random_bytes_generate($length,
       module::settings_get('user')->password_characters
     );
   }

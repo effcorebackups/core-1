@@ -753,6 +753,13 @@ namespace effcore {
     return $hex_time.$hex_rand;
   }
 
+  static function random_bytes_generate($length = 8, $characters = '0123456789') {
+    $result = '';
+    for ($i = 0; $i < $length; $i++)
+      $result.= $characters[random_int(0, strlen($characters) - 1)];
+    return $result;
+  }
+
   static function signature_get($string, $key_name, $length = 40) {
     $key = static::key_get($key_name);
     if ($key)
@@ -763,22 +770,6 @@ namespace effcore {
 
   static function key_get($name) {
     return storage::get('files')->select('settings/core/keys/'.$name);
-  }
-
-  static function key_generate($is_hash_compatible = false, $length = 40) {
-    $characters = $is_hash_compatible ?
-      ['a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] :
-      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-       'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-       '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '@', '#', '$', '%', '&', '_', '*', '-', '+', '=', ':', ';', '!', '?', '~', '^'];
-    shuffle($characters);
-    $result = '';
-    for ($i = 0; $i < $length; $i++) {
-      $result.= $characters[
-        random_int(0, count($characters) - 1)
-      ];
-    }
-    return $result;
   }
 
   static function hash_get($data) {
