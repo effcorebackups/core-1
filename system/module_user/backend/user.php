@@ -101,11 +101,14 @@ namespace effcore {
     return storage::get('files')->select('settings/user/keys/'.$name);
   }
 
-  static function key_generate($is_hash_compatible = false, $length = 40) {
-    return core::random_bytes_generate($length, $is_hash_compatible ?
-      module::settings_get('user')->hash_characters :
-      module::settings_get('user')->key_characters
-    );
+  static function keys_install() {
+    return storage::get('files')->changes_insert('user', 'update', 'settings/user/keys', [
+      'cron' => core::random_bytes_generate(40, module::settings_get('user')->hash_characters),
+      'salt' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
+      'form' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
+      'user' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
+      'args' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
+    ]);
   }
 
   static function signature_get($string, $key_name, $length = 40) {
