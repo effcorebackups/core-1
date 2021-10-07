@@ -54,7 +54,7 @@ namespace effcore {
              core::server_get_host(false).
              core::server_get_request_uri();
   if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
-    core::send_header_and_exit('bad_request');
+    response::send_header_and_exit('bad_request');
   }
 
   # ─────────────────────────────────────────────────────────────────────
@@ -63,9 +63,9 @@ namespace effcore {
 
   if (count($_ORIGINAL_GET)) {
     if (core::hash_get($_GET) !== core::hash_get($_ORIGINAL_GET)) {
-      core::send_header_and_exit('redirect', null, null, count($_GET) ?
-          core::server_get_request_scheme().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
-          core::server_get_request_scheme().'://'.core::server_get_host(false)
+      response::send_header_and_exit('redirect', null, null, count($_GET) ?
+        core::server_get_request_scheme().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
+        core::server_get_request_scheme().'://'.core::server_get_host(false)
       );
     }
   }
@@ -77,9 +77,9 @@ namespace effcore {
   if (core::server_get_request_uri()     !== '/' &&
       core::server_get_request_uri()[-1] === '/') {
     $new_url = rtrim(core::server_get_request_uri(), '/');
-    core::send_header_and_exit('redirect', null, null,
-        $new_url === '' ? '/' :
-        $new_url
+    response::send_header_and_exit('redirect', null, null,
+      $new_url === '' ? '/' :
+      $new_url
     );
   }
 
@@ -106,7 +106,7 @@ namespace effcore {
 
     if (($file->name !== '' && $file->name[0] === '.') ||
         ($file->type !== '' && $file->name === '')) {
-      core::send_header_and_exit('access_forbidden', null, new text_multiline([
+      response::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
       ], [], br.br));
@@ -118,7 +118,7 @@ namespace effcore {
 
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'protected') {
-      core::send_header_and_exit('access_forbidden', null, new text_multiline([
+      response::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'
       ], [], br.br));
@@ -145,7 +145,7 @@ namespace effcore {
     if ($real_path !== $file->path_get())   {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 2]); exit();} # resolved path is not the same as the original
     if (strpos($real_path, dir_root) !== 0) {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 3]); exit();} # object is outside the web root
     if (!is_file    ($file->path_get()))    {event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 4]); exit();} # object exists, but it is not a file
-    if (!is_readable($file->path_get())) core::send_header_and_exit('access_forbidden'); # object is inaccessible to the web server by rights
+    if (!is_readable($file->path_get())) response::send_header_and_exit('access_forbidden'); # object is inaccessible to the web server by rights
 
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file

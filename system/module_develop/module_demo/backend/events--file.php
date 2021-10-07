@@ -9,7 +9,7 @@ namespace effcore\modules\demo {
           use const \effcore\nl;
           use \effcore\access;
           use \effcore\console;
-          use \effcore\core;
+          use \effcore\response;
           use \effcore\text_multiline;
           use \effcore\user;
           abstract class events_file {
@@ -32,7 +32,7 @@ namespace effcore\modules\demo {
         print $data;
         exit();
       } else {
-        core::send_header_and_exit('access_forbidden', null, new text_multiline([
+        response::send_header_and_exit('access_forbidden', null, new text_multiline([
           'go to <a href="/">front page</a>'
         ], [], br.br));
       }

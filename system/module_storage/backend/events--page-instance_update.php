@@ -7,9 +7,9 @@
 namespace effcore\modules\storage {
           use const \effcore\br;
           use \effcore\access;
-          use \effcore\core;
           use \effcore\entity;
           use \effcore\instance;
+          use \effcore\response;
           use \effcore\text_multiline;
           abstract class events_page_instance_update {
 
@@ -30,18 +30,18 @@ namespace effcore\modules\storage {
             $instance = new instance($entity_name, $conditions);
             if ($instance->select()) {
               return true;
-            } else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], br.br));
-          }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',                         'go to <a href="/">front page</a>'], [], br.br));
-        }     else core::send_header_and_exit('page_not_found', null, new text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], br.br));
-      }       else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',                           'go to <a href="/">front page</a>'], [], br.br));
-    }         else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group',                      'go to <a href="/">front page</a>'], [], br.br));
+            } else response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], br.br));
+          }   else response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong instance keys',                         'go to <a href="/">front page</a>'], [], br.br));
+        }     else response::send_header_and_exit('page_not_found', null, new text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], br.br));
+      }       else response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong entity name',                           'go to <a href="/">front page</a>'], [], br.br));
+    }         else response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong management group',                      'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_check_access($event, $page) {
     $entity_name = $page->args_get('entity_name');
     $entity = entity::get($entity_name);
     if (!access::check($entity->access_update)) {
-      core::send_header_and_exit('access_forbidden');
+      response::send_header_and_exit('access_forbidden');
     }
   }
 

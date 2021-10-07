@@ -9,6 +9,7 @@ namespace effcore\modules\core {
           use \effcore\console;
           use \effcore\core;
           use \effcore\event;
+          use \effcore\response;
           use \effcore\storage;
           use \effcore\text_multiline;
           use \effcore\timer;
@@ -25,7 +26,7 @@ namespace effcore\modules\core {
       core::cron_run_register();
       exit();
     } else {
-      core::send_header_and_exit('page_not_found', null, new text_multiline([
+      response::send_header_and_exit('page_not_found', null, new text_multiline([
         'wrong cron key',
         'go to <a href="/">front page</a>'
       ], [], br.br));

@@ -7,13 +7,13 @@
 namespace effcore\modules\page {
           use const \effcore\dir_dynamic;
           use const \effcore\dir_root;
-          use \effcore\core;
           use \effcore\data;
           use \effcore\event;
           use \effcore\file;
           use \effcore\media;
           use \effcore\module;
           use \effcore\request;
+          use \effcore\response;
           abstract class events_file {
 
   static function prepath_get($type) {
@@ -55,7 +55,7 @@ namespace effcore\modules\page {
           exit();
         } break;
       case dir_root.'favicon.ico':
-        core::send_header_and_exit('moved_permanently');
+        response::send_header_and_exit('moved_permanently');
     }
   }
 
@@ -98,8 +98,8 @@ namespace effcore\modules\page {
               $type_info = $file_types[$info['original']['type']];
               $file = new file($path_original);
               return true;
-            } else core::send_header_and_exit('unsupported_media_type');
-          }   else core::send_header_and_exit('unsupported_media_type');
+            } else response::send_header_and_exit('unsupported_media_type');
+          }   else response::send_header_and_exit('unsupported_media_type');
         }
       # case for cover or its thumbnails
         if ($target !== 'original') {
@@ -144,13 +144,13 @@ namespace effcore\modules\page {
                         }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$info['cover']['type']);
                       }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$info['cover']['type']);
                     }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$info['cover']['type']);
-                  }         else core::send_header_and_exit('unsupported_media_type');
-                }           else core::send_header_and_exit('unsupported_media_type');
-              }             else core::send_header_and_exit('unsupported_media_type');
-            }               else core::send_header_and_exit('unsupported_media_type');
-          }                 else core::send_header_and_exit('unsupported_media_type');
+                  }         else response::send_header_and_exit('unsupported_media_type');
+                }           else response::send_header_and_exit('unsupported_media_type');
+              }             else response::send_header_and_exit('unsupported_media_type');
+            }               else response::send_header_and_exit('unsupported_media_type');
+          }                 else response::send_header_and_exit('unsupported_media_type');
         }
-      } else core::send_header_and_exit('unsupported_media_type');
+      } else response::send_header_and_exit('unsupported_media_type');
     }
   }
 
@@ -193,8 +193,8 @@ namespace effcore\modules\page {
               $type_info = $file_types[$info['original']['type']];
               $file = new file($path_original);
               return true;
-            } else core::send_header_and_exit('unsupported_media_type');
-          }   else core::send_header_and_exit('unsupported_media_type');
+            } else response::send_header_and_exit('unsupported_media_type');
+          }   else response::send_header_and_exit('unsupported_media_type');
         }
       # case for poster or its thumbnails
         if ($target !== 'original') {
@@ -239,13 +239,13 @@ namespace effcore\modules\page {
                         }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$info['poster']['type']);
                       }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$info['poster']['type']);
                     }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$info['poster']['type']);
-                  }         else core::send_header_and_exit('unsupported_media_type');
-                }           else core::send_header_and_exit('unsupported_media_type');
-              }             else core::send_header_and_exit('unsupported_media_type');
-            }               else core::send_header_and_exit('unsupported_media_type');
-          }                 else core::send_header_and_exit('unsupported_media_type');
+                  }         else response::send_header_and_exit('unsupported_media_type');
+                }           else response::send_header_and_exit('unsupported_media_type');
+              }             else response::send_header_and_exit('unsupported_media_type');
+            }               else response::send_header_and_exit('unsupported_media_type');
+          }                 else response::send_header_and_exit('unsupported_media_type');
         }
-      } else core::send_header_and_exit('unsupported_media_type');
+      } else response::send_header_and_exit('unsupported_media_type');
     }
   }
 
@@ -316,11 +316,11 @@ namespace effcore\modules\page {
                     }   else $file = new file(static::prepath_get('thumbnail_creation_error').         '.'.$type_info->type);
                   }     else $file = new file(static::prepath_get('thumbnail_not_allowed').            '.'.$type_info->type);
                 }       else $file = new file(static::prepath_get('file_outside_of_dynamic_directory').'.'.$type_info->type);
-              }         else core::send_header_and_exit('unsupported_media_type');
-            }           else core::send_header_and_exit('unsupported_media_type');
-          }             else core::send_header_and_exit('unsupported_media_type');
-        }               else core::send_header_and_exit('unsupported_media_type');
-      }                 else core::send_header_and_exit('unsupported_media_type');
+              }         else response::send_header_and_exit('unsupported_media_type');
+            }           else response::send_header_and_exit('unsupported_media_type');
+          }             else response::send_header_and_exit('unsupported_media_type');
+        }               else response::send_header_and_exit('unsupported_media_type');
+      }                 else response::send_header_and_exit('unsupported_media_type');
     }
   }
 

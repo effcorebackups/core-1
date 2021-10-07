@@ -12,9 +12,10 @@ namespace effcore\modules\core {
           use \effcore\event;
           use \effcore\file;
           use \effcore\message;
-          use \effcore\module;
           use \effcore\module_as_profile;
+          use \effcore\module;
           use \effcore\page;
+          use \effcore\response;
           use \effcore\storage;
           use \effcore\text_multiline;
           use \effcore\text;
@@ -31,7 +32,7 @@ namespace effcore\modules\core {
       $field_profile->selected = ['profile_default' => 'profile_default'];
     } else {
       $form->children_delete();
-      core::send_header_and_exit('access_forbidden', null, new text_multiline([
+      response::send_header_and_exit('access_forbidden', null, new text_multiline([
         'Installation is not available because storage credentials was set!',
         'go to <a href="/">front page</a>'
       ], [], br.br));

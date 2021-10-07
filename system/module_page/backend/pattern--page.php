@@ -257,8 +257,8 @@ namespace effcore {
           $page->args_set             ($c_key,   $c_value);
                static::$current = $page;
         return static::$current;
-      } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found');
+      } else response::send_header_and_exit('access_forbidden');
+    }   else response::send_header_and_exit('page_not_found');
   }
 
   static function get_current() {

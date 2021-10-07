@@ -103,7 +103,7 @@ namespace effcore {
           $pager = new pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -200);
           $pager_error_code = $pager->error_code_get();
           if ($pager_error_code === pager::ERR_CODE_CUR_GT_MAX) url::go($pager->url_page_max_get()->tiny_get());
-          if ($pager_error_code !== pager::ERR_CODE_OK) core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], br.br));
+          if ($pager_error_code !== pager::ERR_CODE_OK) response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], br.br));
           if ($page_max_number > 1) {
             $this->query_settings['offset'] = ($pager->cur - 1) * $this->query_settings['limit'];
             $this->child_insert(

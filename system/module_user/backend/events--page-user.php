@@ -7,8 +7,8 @@
 namespace effcore\modules\user {
           use const \effcore\br;
           use \effcore\access;
-          use \effcore\core;
           use \effcore\instance;
+          use \effcore\response;
           use \effcore\role;
           use \effcore\text_multiline;
           use \effcore\user;
@@ -21,8 +21,8 @@ namespace effcore\modules\user {
     if ($user) {
       if ($user->id === user::get_current()->id ||                      # owner
           access::check((object)['roles' => ['admins' => 'admins']])) { # admin
-      } else core::send_header_and_exit('access_forbidden');
-    }   else core::send_header_and_exit('page_not_found', null, new text_multiline(['wrong user nickname', 'go to <a href="/">front page</a>'], [], br.br));
+      } else response::send_header_and_exit('access_forbidden');
+    }   else response::send_header_and_exit('page_not_found', null, new text_multiline(['wrong user nickname', 'go to <a href="/">front page</a>'], [], br.br));
   }
 
   static function on_show_user_roles($c_row_id, $c_row, $c_instance, $settings = []) {
