@@ -135,7 +135,7 @@ namespace effcore {
         $statistics[$c_log->object] += floatval($c_log->time);
         $total += floatval($c_log->time); }}
     $diagram = new diagram(null, 'linear');
-    $colors = core::diagram_colors;
+    $colors = color::generate_monochrome(count($statistics));
     foreach ($statistics as  $c_key => $c_value)
       $diagram->slice_insert($c_key,   $c_value / $total * 100, locale::format_msecond($c_value).' '.translation::apply('sec.'), array_shift($colors), ['data-id' => $c_key]);
     return new block('CPU load time', ['data-id' => 'block__diagram_load'], [$diagram]);
