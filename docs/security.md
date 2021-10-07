@@ -75,7 +75,7 @@ Vector DB:
 
 Session vector:
 
-- The session identifier "session_id" is signed with the "settings/core/keys/session" key
+- The session identifier "session_id" is signed with the "settings/user/keys/session" key
   located on the web server side, which makes it impossible to forge.
 - The session identifier can contain the name of the user agent and its IP address (during
   authentication, the user himself determines whether to bind his session to his IP address)
@@ -89,7 +89,7 @@ Session vector:
 HTTP request vector:
 
 - The form validation identifier "validation_id" is signed with
-  the "settings/core/keys/form_validation" key located on the web server side, which makes
+  the "settings/user/keys/form_validation" key located on the web server side, which makes
   it impossible to forge.
 - The validation identifier of the form contains the name of the user agent and its IP address,
   which makes intercepting the identifier a meaningless procedure — an attacker's request

@@ -150,7 +150,7 @@ namespace effcore\modules\core {
             $params->credentials,
             $params->table_prefix
           );
-          $changes_is_writable = storage::get('files')->changes_insert('core', 'update', 'settings/core/keys', [
+          $changes_is_writable = storage::get('files')->changes_insert('core', 'update', 'settings/user/keys', [
             'cron' => user::key_generate(true),
             'salt' => user::key_generate(),
             'form' => user::key_generate(),

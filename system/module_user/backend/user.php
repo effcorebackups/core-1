@@ -98,7 +98,7 @@ namespace effcore {
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function key_get($name) {
-    return storage::get('files')->select('settings/core/keys/'.$name);
+    return storage::get('files')->select('settings/user/keys/'.$name);
   }
 
   static function key_generate($is_hash_compatible = false, $length = 40) {
@@ -106,6 +106,14 @@ namespace effcore {
       module::settings_get('user')->hash_characters :
       module::settings_get('user')->key_characters
     );
+  }
+
+  static function signature_get($string, $key_name, $length = 40) {
+    $key = static::key_get($key_name);
+    if ($key)
+      return substr(hash('sha3-512',
+                    hash('sha3-512', $string).$key), 0, $length);
+    else message::insert(new text('Key "%%_key" does not exist!', ['key' => $key_name]), 'error');
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦

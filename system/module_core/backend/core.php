@@ -705,9 +705,9 @@ namespace effcore {
     return $value;
   }
 
-  ##############################################
-  ### functionality for signatures|keys|hash ###
-  ##############################################
+  ##############################
+  ### functionality for hash ###
+  ##############################
 
   # hash performance (5 million iterations):
   # ┌────────────────────────╥─────────────┬────────┬─────────────────────────┐
@@ -747,6 +747,16 @@ namespace effcore {
   # │ hash('haval256,5', …)  ║ 1.134       │ yes    │ no                      │
   # └────────────────────────╨─────────────┴────────┴─────────────────────────┘
 
+  static function hash_get($data) {
+    if (gettype($data) === 'string')
+         return md5($data);
+    else return md5(serialize($data));
+  }
+
+  static function hash_get_mini($data, $length = 8) {
+    return substr(static::hash_get($data), 0, $length);
+  }
+
   static function random_part_get() {
     $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
     $hex_rand = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
@@ -758,24 +768,6 @@ namespace effcore {
     for ($i = 0; $i < $length; $i++)
       $result.= $characters[random_int(0, strlen($characters) - 1)];
     return $result;
-  }
-
-  static function signature_get($string, $key_name, $length = 40) {
-    $key = user::key_get($key_name);
-    if ($key)
-      return substr(hash('sha3-512',
-                    hash('sha3-512', $string).$key), 0, $length);
-    else message::insert(new text('Key "%%_key" does not exist!', ['key' => $key_name]), 'error');
-  }
-
-  static function hash_get($data) {
-    if (gettype($data) === 'string')
-         return md5($data);
-    else return md5(serialize($data));
-  }
-
-  static function hash_get_mini($data, $length = 8) {
-    return substr(static::hash_get($data), 0, $length);
   }
 
   ########################
