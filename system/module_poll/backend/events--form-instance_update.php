@@ -6,6 +6,7 @@
 
 namespace effcore\modules\poll {
           use \effcore\entity;
+          use \effcore\module;
           use \effcore\poll;
           use \effcore\text;
           use \effcore\url;
@@ -47,9 +48,9 @@ namespace effcore\modules\poll {
       switch ($form->clicked_button->value_get()) {
         case 'update':
           if ($entity->name === 'poll') {
-            if (count($items['*widget_answers']->value_get_complex()) < 2) {
-              $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number|s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => 2]);
-            }
+            $settings = module::settings_get('poll');
+            if (count($items['*widget_answers']->value_get_complex()) < $settings->answers_min) $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural{number|s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => $settings->answers_min]);
+            if (count($items['*widget_answers']->value_get_complex()) > $settings->answers_max) $form->error_set('Group "%%_title" should contain a maximum %%_number item%%_plural{number|s}!', ['title' => (new text($items['*widget_answers']->title))->render(), 'number' => $settings->answers_max]);
           }
           break;
       }

@@ -1,4 +1,5 @@
 settings
+  answers_min: 2
   answers_max: 10
   diagram_colors
   - =: chocolate

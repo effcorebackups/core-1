@@ -315,7 +315,8 @@ translations
     - go to Russian language: перейти на Русский язык
     - go to section "%%_title": перейти на раздел "%%_title"
     - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
-    - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Группа "%%_title" должна содержать как минимум %%_number элемент%%_plural{number|ov-a}!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Группа "%%_title" должна содержать минимально %%_number элемент%%_plural{number|ov-a}!
+    - Group "%%_title" should contain a maximum %%_number item%%_plural{number\|s}!: Группа "%%_title" должна содержать максимально %%_number элемент%%_plural{number|ov-a}!
     - Group "%%_title" should contain at least one selected item!: Группа "%%_title" должна содержать как минимум один выбранный элемент!
     - Group "%%_title".: Группа "%%_title".
     - Group: Группа
