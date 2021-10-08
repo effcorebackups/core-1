@@ -209,6 +209,10 @@ namespace effcore {
     else return             $_SERVER['HTTP_HOST'];
   }
 
+  static function addr_remote_get() {
+    return $_SERVER['REMOTE_ADDR'];
+  }
+
   static function http_range_get() {
     $result = new \stdClass;
     $result->has_range = false;

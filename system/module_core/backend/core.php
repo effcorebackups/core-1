@@ -907,10 +907,6 @@ namespace effcore {
     return $_SERVER['SERVER_ADDR'];
   }
 
-  static function server_get_addr_remote() {
-    return $_SERVER['REMOTE_ADDR'];
-  }
-
   ############
   ### cron ###
   ############

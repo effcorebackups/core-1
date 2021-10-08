@@ -52,13 +52,13 @@ namespace effcore {
 
   static function select() {
     return (new instance('captcha', [
-      'ip_hex' => core::ip_to_hex(core::server_get_addr_remote())
+      'ip_hex' => core::ip_to_hex(request::addr_remote_get())
     ]))->select();
   }
 
   static function insert($attempts, $characters, $width, $height, $data) {
     return (new instance('captcha', [
-      'ip_hex'        => core::ip_to_hex(core::server_get_addr_remote()),
+      'ip_hex'        => core::ip_to_hex(request::addr_remote_get()),
       'attempts'      => $attempts,
       'characters'    => $characters,
       'canvas_width'  => $width,
