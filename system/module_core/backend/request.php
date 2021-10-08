@@ -187,18 +187,6 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function cookie_parse($string) {
-    $result = [];
-    foreach (explode('; ', $string) as $c_part) {
-      $c_matches = [];
-      preg_match('%^(?<name>[^=]+)='.
-                   '(?<value>.*)$%S', $c_part, $c_matches);
-      if ($c_matches)
-        $result[$c_matches['name']] =
-                $c_matches['value'];
-    }
-    return $result;
-  }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -221,6 +209,21 @@ namespace effcore {
     $result->name_version = $matches['name_v'] ?? '';
     if ($result->name === '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
     if ($result->core === '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
+    return $result;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function cookie_get_info($string) {
+    $result = [];
+    foreach (explode('; ', $string) as $c_part) {
+      $c_matches = [];
+      preg_match('%^(?<name>[^=]+)='.
+                   '(?<value>.*)$%S', $c_part, $c_matches);
+      if ($c_matches)
+        $result[$c_matches['name']] =
+                $c_matches['value'];
+    }
     return $result;
   }
 
@@ -250,7 +253,7 @@ namespace effcore {
       $c_matches = [];
       preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
       if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], cr.nl.'"');
-      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => static::cookie_parse(trim($c_matches['value'], cr.nl.'"'))];
+      if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], cr.nl.'"'), 'parsed' => static::cookie_get_info(trim($c_matches['value'], cr.nl.'"'))];
       return strlen($c_header);
     });
   # prepare return
