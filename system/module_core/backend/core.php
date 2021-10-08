@@ -929,14 +929,6 @@ namespace effcore {
     return $result;
   }
 
-  static function server_get_software() {
-    $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
-                 '(?<full_name_unknown>.*)%', $_SERVER['SERVER_SOFTWARE'], $matches);
-    return !empty($matches['full_name']) ? $matches['name'].' '.$matches['version'] :
-                  $matches['full_name_unknown'];
-  }
-
   static function server_os_is_windows() {
     return DIRECTORY_SEPARATOR === '\\';
   }
