@@ -218,8 +218,11 @@ namespace effcore {
   }
 
   static function uri_get() {
-    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['UNENCODED_URL'];
-    else                                         return $_SERVER[ 'REQUEST_URI' ];
+    return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'UNENCODED_URL' : 'REQUEST_URI'];
+  }
+
+  static function query_get() {
+    return $_SERVER['QUERY_STRING'];
   }
 
   static function http_range_get() {
