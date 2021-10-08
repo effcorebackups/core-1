@@ -61,7 +61,7 @@ namespace effcore\modules\core {
       $repo_path_tmp = realpath(dir_dynamic.'tmp').DIRECTORY_SEPARATOR.'.git_restore-'.$bundle_id;
       if ($repo_path_cur !== false) {
         $result = [];
-        if (core::server_os_is_windows()) {
+        if (core::php_is_on_win()) {
           $commands = [
             'hostname '                                                                               .$stderr_to_stdout,
             'whoami '                                                                                 .$stderr_to_stdout,

@@ -670,7 +670,7 @@ namespace effcore {
 
   static function validate_realpath($value) {
     $value = realpath($value);
-    if ($value !== false && static::server_os_is_windows())
+    if ($value !== false && static::php_is_on_win())
         $value = str_replace('\\', '/', $value);
     return $value;
   }
@@ -853,9 +853,13 @@ namespace effcore {
     return $result;
   }
 
-  ###############
-  ### ini_get ###
-  ###############
+  #######################
+  ### php environment ###
+  #######################
+
+  static function php_is_on_win() {
+    return DIRECTORY_SEPARATOR === '\\';
+  }
 
   static function memory_limit_bytes_get() {
     $value = ini_get('memory_limit');
@@ -927,10 +931,6 @@ namespace effcore {
       if (array_key_exists('max', $matches) && strlen($matches['max'])) $result->max = (int)$matches['max'];
     }
     return $result;
-  }
-
-  static function server_os_is_windows() {
-    return DIRECTORY_SEPARATOR === '\\';
   }
 
   ############
