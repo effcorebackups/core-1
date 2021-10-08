@@ -12,6 +12,7 @@ namespace effcore\modules\core {
           use \effcore\markup;
           use \effcore\module;
           use \effcore\node;
+          use \effcore\request;
           use \effcore\storage;
           use \effcore\text;
           use \effcore\token;
@@ -39,7 +40,7 @@ namespace effcore\modules\core {
     $is_cron_run = core::is_cron_run(core::date_period_d);
     $cron_auto_run_frequency = $settings->cron_auto_run_frequency ?
         locale::format_seconds($settings->cron_auto_run_frequency): 'no';
-    $cron_url = core::server_get_request_scheme().'://'.
+    $cron_url = request::scheme_get().'://'.
                 core::server_get_host(false).'/manage/cron/'.
                 user::key_get('cron');
     $fix_link_for_cron   = new markup('a', ['href' => $cron_url,                     'target' => 'cron'  ], 'fix');

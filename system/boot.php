@@ -50,7 +50,7 @@ namespace effcore {
   # redirect on invalid requests (for example: send the value "http://домен/путь?запрос" over the socket instead of "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81" through the browser)
   # ─────────────────────────────────────────────────────────────────────
 
-  $raw_url = core::server_get_request_scheme().'://'.
+  $raw_url = request::scheme_get().'://'.
              core::server_get_host(false).
              core::server_get_request_uri();
   if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
@@ -64,8 +64,8 @@ namespace effcore {
   if (count($_ORIGINAL_GET)) {
     if (core::hash_get($_GET) !== core::hash_get($_ORIGINAL_GET)) {
       response::send_header_and_exit('redirect', null, null, count($_GET) ?
-        core::server_get_request_scheme().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
-        core::server_get_request_scheme().'://'.core::server_get_host(false)
+        request::scheme_get().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
+        request::scheme_get().'://'.core::server_get_host(false)
       );
     }
   }

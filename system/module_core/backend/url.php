@@ -123,7 +123,7 @@ namespace effcore {
       $this->query     = $query;
       $this->anchor    = $anchor;
       $this->has_error = false;
-      if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? core::server_get_request_scheme() : 'http';
+      if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? request::scheme_get() : 'http';
       if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
       if ($options['completion'] && $this->path     === '') $this->path     = '/';
       if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);

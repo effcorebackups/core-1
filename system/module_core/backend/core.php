@@ -894,24 +894,6 @@ namespace effcore {
   ### server information ###
   ##########################
 
-  # ┌─────────────────╥───────┬────────────────╥────────┐
-  # │        ╲  modes ║       │                ║        │
-  # │ server  ╲       ║ HTTPS │ REQUEST_SCHEME ║ result │
-  # ╞═════════════════╬═══════╪════════════════╬════════╡
-  # │ Apache v2.4     ║ -     │ http           ║ http   │
-  # │ Apache v2.4 SSL ║ on    │ https          ║ https  │
-  # │ NGINX  v1.1     ║ -     │ http           ║ http   │
-  # │ NGINX  v1.1 SSL ║ on    │ https          ║ https  │
-  # │ IIS    v7.5     ║ off   │ -              ║ http   │
-  # │ IIS    v7.5 SSL ║ on    │ -              ║ https  │
-  # └─────────────────╨───────┴────────────────╨────────┘
-
-  static function server_get_request_scheme() {
-    if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] === 'https') return 'https';
-    if (isset($_SERVER['HTTPS'])          && $_SERVER['HTTPS']          === 'on'   ) return 'https';
-    return 'http';
-  }
-
   static function server_get_host($decode = false) {
     if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST']))
          return idn_to_utf8($_SERVER['HTTP_HOST']);
