@@ -203,6 +203,12 @@ namespace effcore {
     return 'http';
   }
 
+  static function host_get($decode = false) {
+    if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST']))
+         return idn_to_utf8($_SERVER['HTTP_HOST']);
+    else return             $_SERVER['HTTP_HOST'];
+  }
+
   static function software_get_info($software = null) {
     $result = new \stdClass;
     $result->name = 'Unknown';

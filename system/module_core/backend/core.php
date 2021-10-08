@@ -898,12 +898,6 @@ namespace effcore {
   ### server information ###
   ##########################
 
-  static function server_get_host($decode = false) {
-    if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST']))
-         return idn_to_utf8($_SERVER['HTTP_HOST']);
-    else return             $_SERVER['HTTP_HOST'];
-  }
-
   static function server_get_request_uri() {
     if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['UNENCODED_URL'];
     else                                         return $_SERVER[ 'REQUEST_URI' ];

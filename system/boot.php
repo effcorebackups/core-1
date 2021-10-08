@@ -51,7 +51,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
 
   $raw_url = request::scheme_get().'://'.
-             core::server_get_host(false).
+             request::host_get(false).
              core::server_get_request_uri();
   if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
     response::send_header_and_exit('bad_request');
@@ -64,8 +64,8 @@ namespace effcore {
   if (count($_ORIGINAL_GET)) {
     if (core::hash_get($_GET) !== core::hash_get($_ORIGINAL_GET)) {
       response::send_header_and_exit('redirect', null, null, count($_GET) ?
-        request::scheme_get().'://'.core::server_get_host(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
-        request::scheme_get().'://'.core::server_get_host(false)
+        request::scheme_get().'://'.request::host_get(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
+        request::scheme_get().'://'.request::host_get(false)
       );
     }
   }

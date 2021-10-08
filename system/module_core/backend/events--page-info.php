@@ -41,7 +41,7 @@ namespace effcore\modules\core {
     $cron_auto_run_frequency = $settings->cron_auto_run_frequency ?
         locale::format_seconds($settings->cron_auto_run_frequency): 'no';
     $cron_url = request::scheme_get().'://'.
-                core::server_get_host(false).'/manage/cron/'.
+                request::host_get(false).'/manage/cron/'.
                 user::key_get('cron');
     $fix_link_for_cron   = new markup('a', ['href' => $cron_url,                     'target' => 'cron'  ], 'fix');
     $fix_link_for_update = new markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');

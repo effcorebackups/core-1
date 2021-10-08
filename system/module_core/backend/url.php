@@ -123,8 +123,8 @@ namespace effcore {
       $this->query     = $query;
       $this->anchor    = $anchor;
       $this->has_error = false;
-      if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === core::server_get_host(false) ? request::scheme_get() : 'http';
-      if ($options['completion'] && $this->domain   === '') $this->domain   =                   core::server_get_host(false);
+      if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === request::host_get(false) ? request::scheme_get() : 'http';
+      if ($options['completion'] && $this->domain   === '') $this->domain   =                   request::host_get(false);
       if ($options['completion'] && $this->path     === '') $this->path     = '/';
       if ($options['decode'] & static::is_decode_domain && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
       if ($options['decode'] & static::is_decode_path) $this->path = rawurldecode($this->path);
@@ -205,7 +205,7 @@ namespace effcore {
   static function is_local($url, $decode = false) {
     if (strlen($url) === 0                   ) return true;
     if (strlen($url) !== 0 && $url[0] === '/') return true;
-    if (strlen($url) !== 0 && (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === core::server_get_host($decode)) return true;
+    if (strlen($url) !== 0 && (new static($url, ['decode' => $decode ? static::is_decode_domain : static::is_decode_nothing]))->domain === request::host_get($decode)) return true;
     return false;
   }
 
