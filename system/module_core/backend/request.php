@@ -202,6 +202,30 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+  static function user_agent_get($max_length = 240) {
+    return             isset($_SERVER['HTTP_USER_AGENT']) ?
+      substr(trim(strip_tags($_SERVER['HTTP_USER_AGENT'])), 0, $max_length) : '';
+  }
+
+  static function user_agent_get_info() {
+    $result = new \stdCLass;
+    $matches = [];
+  # detect Internet Explorer v.6-v.11 (non-existent version like '12' will be identified as '1')
+    $ie_core_to_name = ['8' => '11', '7' => '11', '6' => '10', '5' => '9', '4' => '8', '3' => '7', '2' => '6', '1' => '5'];
+    $ie_name_to_core = array_flip($ie_core_to_name);
+    preg_match('%^(?:.+?(?<name>MSIE) '.'(?<name_v>11|10|9|8|7|6|5|4|3|2|1)|)'.
+                 '(?:.+?(?<core>Trident)/(?<core_v>8|7|6|5|4|3|2|1)|)%', static::user_agent_get(), $matches);
+    $result->name = isset($matches['name']) ? strtolower($matches['name']) : '';
+    $result->core = isset($matches['core']) ? strtolower($matches['core']) : '';
+    $result->core_version = $matches['core_v'] ?? '';
+    $result->name_version = $matches['name_v'] ?? '';
+    if ($result->name === '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
+    if ($result->core === '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
+    return $result;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function make($url, $headers = [], $post = [], $settings = []) {
     $result = ['info' => [], 'headers' => []];
     $curl = curl_init();

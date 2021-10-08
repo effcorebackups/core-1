@@ -331,7 +331,7 @@ namespace effcore {
   static function validation_id_get_hex_number($number) {return str_pad(dechex($number), 2, '0', STR_PAD_LEFT);}
   static function validation_id_get_hex_created      () {return dechex(time());}
   static function validation_id_get_hex_ip           () {return core::ip_to_hex(core::server_get_addr_remote());}
-  static function validation_id_get_hex_uagent_hash_8() {return core::hash_get_mini(core::server_get_user_agent());}
+  static function validation_id_get_hex_uagent_hash_8() {return core::hash_get_mini(request::user_agent_get());}
   static function validation_id_get_hex_random       () {return str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);}
   static function validation_id_get_hex_signature ($id) {return user::signature_get(substr($id, 0, 58), 'form', 8);}
 

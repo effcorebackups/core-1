@@ -80,11 +80,11 @@ namespace effcore {
   function render() {
     $this->build();
     $settings = module::settings_get('page');
-    $user_agent = core::server_get_user_agent_info();
+    $user_agent_info = request::user_agent_get_info();
     header('Content-language: '.language::code_get_current());
     header('Content-Type: text/html; charset='.$this->charset);
-    if ($user_agent->name === 'msie' &&
-        $user_agent->name_version === '11') {
+    if ($user_agent_info->name === 'msie' &&
+        $user_agent_info->name_version === '11') {
       header('X-UA-Compatible: IE=10');
     }
 
@@ -94,7 +94,7 @@ namespace effcore {
         'This page should be use HTTPS protocol!', 'warning'
       );
     }
-    if ($user_agent->name === 'msie' && (int)$user_agent->name_version < 9) {
+    if ($user_agent_info->name === 'msie' && (int)$user_agent_info->name_version < 9) {
       message::insert(new text(
         'Internet Explorer below version %%_number no longer supported!', ['number' => 9]), 'warning'
       );
@@ -138,8 +138,8 @@ namespace effcore {
     $html->attribute_insert('data-user-has-avatar', isset(user::get_current()->avatar_path) ? true : null);
     $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? true : null); # note: refreshed after page reload
     $html->attribute_insert('data-css-path', core::sanitize_id(url::utf8_encode(trim(url::get_current()->path, '/'))));
-    if ($user_agent->name) $html->attribute_insert('data-uagent', core::sanitize_id($user_agent->name.'-'.$user_agent->name_version));
-    if ($user_agent->core) $html->attribute_insert('data-uacore', core::sanitize_id($user_agent->core.'-'.$user_agent->core_version));
+    if ($user_agent_info->name) $html->attribute_insert('data-uagent', core::sanitize_id($user_agent_info->name.'-'.$user_agent_info->name_version));
+    if ($user_agent_info->core) $html->attribute_insert('data-uacore', core::sanitize_id($user_agent_info->core.'-'.$user_agent_info->core_version));
 
     $head_title_text->text = $this->title;
     $meta->child_insert(
