@@ -221,6 +221,11 @@ namespace effcore {
     return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'UNENCODED_URL' : 'REQUEST_URI'];
   }
 
+  static function path_get() {
+    return strstr(static::uri_get(), '?', true) ?:
+                  static::uri_get();
+  }
+
   static function query_get() {
     return $_SERVER['QUERY_STRING'];
   }
