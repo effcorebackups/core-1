@@ -52,7 +52,7 @@ namespace effcore {
 
   $raw_url = request::scheme_get().'://'.
              request::host_get(false).
-             core::server_get_request_uri();
+             request::uri_get();
   if (core::sanitize_url($raw_url) !== $raw_url || core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || url::get_current()->has_error === true) {
     response::send_header_and_exit('bad_request');
   }
@@ -74,9 +74,9 @@ namespace effcore {
   # redirect to url without leading slash
   # ─────────────────────────────────────────────────────────────────────
 
-  if (core::server_get_request_uri()     !== '/' &&
-      core::server_get_request_uri()[-1] === '/') {
-    $new_url = rtrim(core::server_get_request_uri(), '/');
+  if (request::uri_get()     !== '/' &&
+      request::uri_get()[-1] === '/') {
+    $new_url = rtrim(request::uri_get(), '/');
     response::send_header_and_exit('redirect', null, null,
       $new_url === '' ? '/' :
       $new_url

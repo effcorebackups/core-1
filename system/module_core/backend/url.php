@@ -194,7 +194,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null)
-        static::$cache = new static(core::server_get_request_uri());
+        static::$cache = new static(request::uri_get());
   }
 
   static function get_current() {

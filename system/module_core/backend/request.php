@@ -209,8 +209,17 @@ namespace effcore {
     else return             $_SERVER['HTTP_HOST'];
   }
 
+  static function addr_get() {
+    return $_SERVER['SERVER_ADDR'];
+  }
+
   static function addr_remote_get() {
     return $_SERVER['REMOTE_ADDR'];
+  }
+
+  static function uri_get() {
+    if (!empty($_SERVER['IIS_WasUrlRewritten'])) return $_SERVER['UNENCODED_URL'];
+    else                                         return $_SERVER[ 'REQUEST_URI' ];
   }
 
   static function http_range_get() {
