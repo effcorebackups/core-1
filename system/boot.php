@@ -64,8 +64,8 @@ namespace effcore {
   if (count($_ORIGINAL_GET)) {
     if (core::hash_get($_GET) !== core::hash_get($_ORIGINAL_GET)) {
       response::send_header_and_exit('redirect', null, null, count($_GET) ?
-        request::scheme_get().'://'.request::host_get(false).'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
-        request::scheme_get().'://'.request::host_get(false)
+        request::scheme_get().'://'.request::host_get(false).request::path_get().'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
+        request::scheme_get().'://'.request::host_get(false).request::path_get()
       );
     }
   }

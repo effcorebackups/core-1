@@ -24,7 +24,7 @@ namespace effcore {
       case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';   $template_name = template::pick_name('page_not_found');        break;
     }
     if (!empty($template_name)) {
-      if (!$message && request::uri_get() !== '/')
+      if (!$message && request::path_get() !== '/')
            $message = 'go to <a href="/">front page</a>';
       $settings = module::settings_get('page');
       $colors   = color::get_all();
