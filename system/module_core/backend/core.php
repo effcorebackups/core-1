@@ -911,22 +911,6 @@ namespace effcore {
     return $_SERVER['REMOTE_ADDR'];
   }
 
-  static function server_get_http_range() {
-    $result = new \stdClass;
-    $result->has_range = false;
-    $result->min = null;
-    $result->max = null;
-    if (isset($_SERVER['HTTP_RANGE'])) {
-      $result->has_range = true;
-      $matches = [];
-      preg_match('%^bytes=(?<min>[0-9]+)-'.
-                         '(?<max>[0-9]*)$%', $_SERVER['HTTP_RANGE'], $matches);
-      if (array_key_exists('min', $matches) && strlen($matches['min'])) $result->min = (int)$matches['min'];
-      if (array_key_exists('max', $matches) && strlen($matches['max'])) $result->max = (int)$matches['max'];
-    }
-    return $result;
-  }
-
   ############
   ### cron ###
   ############

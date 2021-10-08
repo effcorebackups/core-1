@@ -209,17 +209,19 @@ namespace effcore {
     else return             $_SERVER['HTTP_HOST'];
   }
 
-  static function software_get_info($software = null) {
+  static function http_range_get() {
     $result = new \stdClass;
-    $result->name = 'Unknown';
-    $result->version = '';
-    if ($software === null)
-        $software = $_SERVER['SERVER_SOFTWARE'];
-    $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
-                 '(?<full_name_unknown>.*)%', $software, $matches);
-    if (isset($matches['full_name'        ])) {$result->name = strtolower($matches['name']); $result->version = $matches['version'];}
-    if (isset($matches['full_name_unknown'])) {$result->name = strtolower($matches['full_name_unknown']);}
+    $result->has_range = false;
+    $result->min = null;
+    $result->max = null;
+    if (isset($_SERVER['HTTP_RANGE'])) {
+      $result->has_range = true;
+      $matches = [];
+      preg_match('%^bytes=(?<min>[0-9]+)-'.
+                         '(?<max>[0-9]*)$%', $_SERVER['HTTP_RANGE'], $matches);
+      if (array_key_exists('min', $matches) && strlen($matches['min'])) $result->min = (int)$matches['min'];
+      if (array_key_exists('max', $matches) && strlen($matches['max'])) $result->max = (int)$matches['max'];
+    }
     return $result;
   }
 
@@ -242,6 +244,20 @@ namespace effcore {
     $result->name_version = $matches['name_v'] ?? '';
     if ($result->name === '' && $result->core && isset($ie_core_to_name[$matches['core_v']])) {$result->name = 'msie';    $result->name_version = $ie_core_to_name[$matches['core_v']];}
     if ($result->core === '' && $result->name && isset($ie_name_to_core[$matches['name_v']])) {$result->core = 'trident'; $result->core_version = $ie_name_to_core[$matches['name_v']];}
+    return $result;
+  }
+
+  static function software_get_info($software = null) {
+    $result = new \stdClass;
+    $result->name = 'Unknown';
+    $result->version = '';
+    if ($software === null)
+        $software = $_SERVER['SERVER_SOFTWARE'];
+    $matches = [];
+    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
+                 '(?<full_name_unknown>.*)%', $software, $matches);
+    if (isset($matches['full_name'        ])) {$result->name = strtolower($matches['name']); $result->version = $matches['version'];}
+    if (isset($matches['full_name_unknown'])) {$result->name = strtolower($matches['full_name_unknown']);}
     return $result;
   }
 

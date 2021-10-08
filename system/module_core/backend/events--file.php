@@ -10,6 +10,7 @@ namespace effcore\modules\core {
           use \effcore\core;
           use \effcore\locale;
           use \effcore\module;
+          use \effcore\request;
           use \effcore\response;
           use \effcore\timer;
           use \effcore\token;
@@ -124,7 +125,7 @@ namespace effcore\modules\core {
     }
 
   # if no ranges are specified
-    $ranges = core::server_get_http_range();
+    $ranges = request::http_range_get();
     if ($ranges->has_range !== true) {
       header('Content-Length: '.$length);
       if ($handle = fopen($file->path_get(), 'rb')) {
