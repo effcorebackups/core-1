@@ -335,6 +335,102 @@ namespace effcore {
     return unserialize($string);
   }
 
+  #####################################
+  ### functionality for binary data ###
+  #####################################
+
+  static function binstr_to_bin($binstr) {
+    $result = '';
+    foreach (str_split($binstr, 8) as $c_chunk) {
+      $c_rbyte = 0;
+      $c_chunk = str_pad($c_chunk, 8, '0');
+      if ($c_chunk[0] === '1') $c_rbyte |= 0b10000000;
+      if ($c_chunk[1] === '1') $c_rbyte |= 0b01000000;
+      if ($c_chunk[2] === '1') $c_rbyte |= 0b00100000;
+      if ($c_chunk[3] === '1') $c_rbyte |= 0b00010000;
+      if ($c_chunk[4] === '1') $c_rbyte |= 0b00001000;
+      if ($c_chunk[5] === '1') $c_rbyte |= 0b00000100;
+      if ($c_chunk[6] === '1') $c_rbyte |= 0b00000010;
+      if ($c_chunk[7] === '1') $c_rbyte |= 0b00000001;
+      $result.= chr($c_rbyte); }
+    return $result;
+  }
+
+  static function bin_to_binstr($bin) {
+    $result = '';
+    for ($i = 0; $i < strlen($bin); $i++) {
+      $c_rbyte = ord($bin[$i]);
+      $c_chunk = $c_rbyte & 0b10000000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b01000000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00100000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00010000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00001000 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000100 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000010 ? '1' : '0';
+      $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
+      $result.= $c_chunk; }
+    return $result;
+  }
+
+  #################################################################
+  ### functionality for dpath (data path) and npath (node path) ###
+  #################################################################
+
+  static function dpath_get_pointers(&$data, $dpath, $is_unique_keys = false) {
+    $result = [];
+    $c_pointer = $data;
+    foreach (explode('/', $dpath) as $c_part) {
+      $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
+      if ($is_unique_keys) $result[       ] = &$c_pointer;
+      else                 $result[$c_part] = &$c_pointer;
+    }
+    return $result;
+  }
+
+  static function npath_get_pointers(&$node, $npath, $is_unique_keys = false) {
+    $result = [];
+    $c_pointer = $node;
+    foreach (explode('/', $npath) as $c_part) {
+      $c_pointer = &$c_pointer->children[$c_part];
+      if ($is_unique_keys) $result[       ] = &$c_pointer;
+      else                 $result[$c_part] = &$c_pointer;
+    }
+    return $result;
+  }
+
+  static function path_get_depth($path) {
+    return count_chars($path, 1)[ord('/')] ?? 0;
+  }
+
+  #############################################
+  ### functionality for mix of array|object ###
+  #############################################
+
+  static function &arrobj_select_value(&$data, $name) {
+    if (is_array ($data)) return $data  [$name];
+    if (is_object($data)) return $data->{$name};
+  }
+
+  static function arrobj_insert_value(&$data, $name, $value) {
+    if (is_array ($data)) $data  [$name] = $value;
+    if (is_object($data)) $data->{$name} = $value;
+  }
+
+  static function arrobj_delete_child(&$data, $name) {
+    if (is_array ($data)) unset($data  [$name]);
+    if (is_object($data)) unset($data->{$name});
+  }
+
+  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
+    $result = [];
+    foreach ($data as $c_key => &$c_value) {
+      $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
+      if ((is_array($c_value) || is_object($c_value))                 ) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
+      if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] =                              &$c_value;
+    }
+    return $result;
+  }
+
   ################################
   ### functionality for arrays ###
   ################################
@@ -441,63 +537,50 @@ namespace effcore {
     return $result;
   }
 
-  #############################################
-  ### functionality for mix of array|object ###
-  #############################################
+  ########################
+  ### bytes conversion ###
+  ########################
 
-  static function &arrobj_select_value(&$data, $name) {
-    if (is_array ($data)) return $data  [$name];
-    if (is_object($data)) return $data->{$name};
+  static function is_abbreviated_bytes($number) {
+    $character = substr($number, -1);
+    return in_array($character, ['B', 'K', 'M', 'G', 'T']);
   }
 
-  static function arrobj_insert_value(&$data, $name, $value) {
-    if (is_array ($data)) $data  [$name] = $value;
-    if (is_object($data)) $data->{$name} = $value;
+  static function abbreviated_to_bytes($abbreviated) {
+    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
+    $character = strtoupper(substr($abbreviated, -1));
+    $value = (int)substr($abbreviated, 0, -1);
+    return $value * 1024 ** $powers[$character];
   }
 
-  static function arrobj_delete_child(&$data, $name) {
-    if (is_array ($data)) unset($data  [$name]);
-    if (is_object($data)) unset($data->{$name});
+  static function bytes_to_abbreviated($bytes, $is_iec = false) {
+    if ($bytes && fmod($bytes, 1024 ** 4) === .0) return ($bytes / 1024 ** 4).($is_iec ? 'TiB' : 'T');
+    if ($bytes && fmod($bytes, 1024 ** 3) === .0) return ($bytes / 1024 ** 3).($is_iec ? 'GiB' : 'G');
+    if ($bytes && fmod($bytes, 1024 ** 2) === .0) return ($bytes / 1024 ** 2).($is_iec ? 'MiB' : 'M');
+    if ($bytes && fmod($bytes, 1024 ** 1) === .0) return ($bytes / 1024 ** 1).($is_iec ? 'KiB' : 'K');
+    else return $bytes.'B';
   }
 
-  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
-    $result = [];
-    foreach ($data as $c_key => &$c_value) {
-      $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value))                 ) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
-      if ((is_array($c_value) || is_object($c_value)) == false || $all) $result[$c_dpath] =                              &$c_value;
+  ############################
+  ### functionality for IP ###
+  ############################
+
+  static function ip_to_hex($ip, $is_v6 = true, $is_reversed = true) {
+    $ip_hex = '';
+    $inaddr = inet_pton($ip);
+    foreach (str_split($inaddr, 1) as $c_char)
+      $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
+    if ($is_v6)       $ip_hex = str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
+    if ($is_reversed) $ip_hex = strrev ($ip_hex);
+    return $ip_hex;
+  }
+
+  static function hex_to_ip($ip_hex) {
+    $inaddr = '';
+    foreach (str_split($ip_hex, 2) as $c_part) {
+      $inaddr.= chr(hexdec($c_part));
     }
-    return $result;
-  }
-
-  #################################################################
-  ### functionality for dpath (data path) and npath (node path) ###
-  #################################################################
-
-  static function dpath_get_pointers(&$data, $dpath, $is_unique_keys = false) {
-    $result = [];
-    $c_pointer = $data;
-    foreach (explode('/', $dpath) as $c_part) {
-      $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
-      if ($is_unique_keys) $result[       ] = &$c_pointer;
-      else                 $result[$c_part] = &$c_pointer;
-    }
-    return $result;
-  }
-
-  static function npath_get_pointers(&$node, $npath, $is_unique_keys = false) {
-    $result = [];
-    $c_pointer = $node;
-    foreach (explode('/', $npath) as $c_part) {
-      $c_pointer = &$c_pointer->children[$c_part];
-      if ($is_unique_keys) $result[       ] = &$c_pointer;
-      else                 $result[$c_part] = &$c_pointer;
-    }
-    return $result;
-  }
-
-  static function path_get_depth($path) {
-    return count_chars($path, 1)[ord('/')] ?? 0;
+    return inet_ntop($inaddr);
   }
 
   ###################################
@@ -767,89 +850,6 @@ namespace effcore {
     $result = '';
     for ($i = 0; $i < $length; $i++)
       $result.= $characters[random_int(0, strlen($characters) - 1)];
-    return $result;
-  }
-
-  ########################
-  ### bytes conversion ###
-  ########################
-
-  static function is_abbreviated_bytes($number) {
-    $character = substr($number, -1);
-    return in_array($character, ['B', 'K', 'M', 'G', 'T']);
-  }
-
-  static function abbreviated_to_bytes($abbreviated) {
-    $powers = array_flip(['B', 'K', 'M', 'G', 'T']);
-    $character = strtoupper(substr($abbreviated, -1));
-    $value = (int)substr($abbreviated, 0, -1);
-    return $value * 1024 ** $powers[$character];
-  }
-
-  static function bytes_to_abbreviated($bytes, $is_iec = false) {
-    if ($bytes && fmod($bytes, 1024 ** 4) === .0) return ($bytes / 1024 ** 4).($is_iec ? 'TiB' : 'T');
-    if ($bytes && fmod($bytes, 1024 ** 3) === .0) return ($bytes / 1024 ** 3).($is_iec ? 'GiB' : 'G');
-    if ($bytes && fmod($bytes, 1024 ** 2) === .0) return ($bytes / 1024 ** 2).($is_iec ? 'MiB' : 'M');
-    if ($bytes && fmod($bytes, 1024 ** 1) === .0) return ($bytes / 1024 ** 1).($is_iec ? 'KiB' : 'K');
-    else return $bytes.'B';
-  }
-
-  ############################
-  ### functionality for ip ###
-  ############################
-
-  static function ip_to_hex($ip, $is_v6 = true, $is_reversed = true) {
-    $ip_hex = '';
-    $inaddr = inet_pton($ip);
-    foreach (str_split($inaddr, 1) as $c_char)
-      $ip_hex.= str_pad(dechex(ord($c_char)), 2, '0', STR_PAD_LEFT);
-    if ($is_v6)       $ip_hex = str_pad($ip_hex, 32, '0', STR_PAD_LEFT);
-    if ($is_reversed) $ip_hex = strrev ($ip_hex);
-    return $ip_hex;
-  }
-
-  static function hex_to_ip($ip_hex) {
-    $inaddr = '';
-    foreach (str_split($ip_hex, 2) as $c_part) {
-      $inaddr.= chr(hexdec($c_part));
-    }
-    return inet_ntop($inaddr);
-  }
-
-  #####################################
-  ### functionality for binary data ###
-  #####################################
-
-  static function binstr_to_bin($binstr) {
-    $result = '';
-    foreach (str_split($binstr, 8) as $c_chunk) {
-      $c_rbyte = 0;
-      $c_chunk = str_pad($c_chunk, 8, '0');
-      if ($c_chunk[0] === '1') $c_rbyte |= 0b10000000;
-      if ($c_chunk[1] === '1') $c_rbyte |= 0b01000000;
-      if ($c_chunk[2] === '1') $c_rbyte |= 0b00100000;
-      if ($c_chunk[3] === '1') $c_rbyte |= 0b00010000;
-      if ($c_chunk[4] === '1') $c_rbyte |= 0b00001000;
-      if ($c_chunk[5] === '1') $c_rbyte |= 0b00000100;
-      if ($c_chunk[6] === '1') $c_rbyte |= 0b00000010;
-      if ($c_chunk[7] === '1') $c_rbyte |= 0b00000001;
-      $result.= chr($c_rbyte); }
-    return $result;
-  }
-
-  static function bin_to_binstr($bin) {
-    $result = '';
-    for ($i = 0; $i < strlen($bin); $i++) {
-      $c_rbyte = ord($bin[$i]);
-      $c_chunk = $c_rbyte & 0b10000000 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b01000000 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00100000 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00010000 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00001000 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00000100 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00000010 ? '1' : '0';
-      $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
-      $result.= $c_chunk; }
     return $result;
   }
 
