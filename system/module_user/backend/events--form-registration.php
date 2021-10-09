@@ -52,7 +52,7 @@ namespace effcore\modules\user {
             message::insert(
               'User was not registered!', 'error'
             );
-          } 
+          }
         } else {
         # ─────────────────────────────────────────────────────────────────────
         # standard registration: the user sets his own password
