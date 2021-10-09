@@ -854,44 +854,39 @@ namespace effcore {
   }
 
   #######################
-  ### php environment ###
+  ### PHP environment ###
   #######################
 
   static function php_is_on_win() {
     return DIRECTORY_SEPARATOR === '\\';
   }
 
-  static function memory_limit_bytes_get() {
-    $value = ini_get('memory_limit');
+  static function php_max_execution_time_get()  {return ini_get('max_execution_time');}
+  static function php_max_file_uploads_get()    {return ini_get('max_file_uploads');}
+  static function php_max_input_time_get()      {return ini_get('max_input_time');}
+  static function php_memory_limit_get()        {return ini_get('memory_limit');}
+  static function php_post_max_size_get()       {return ini_get('post_max_size');}
+  static function php_upload_max_filesize_get() {return ini_get('upload_max_filesize');}
+
+  static function php_memory_limit_bytes_get() {
+    $value = static::php_memory_limit_get();
     if (static::is_abbreviated_bytes($value))
          return static::abbreviated_to_bytes($value);
     else return (int)$value;
   }
 
-  static function upload_max_filesize_bytes_get() {
-    $value = ini_get('upload_max_filesize');
+  static function php_upload_max_filesize_bytes_get() {
+    $value = static::php_upload_max_filesize_get();
     if (static::is_abbreviated_bytes($value))
          return static::abbreviated_to_bytes($value);
     else return (int)$value;
   }
 
-  static function post_max_size_bytes_get() {
-    $value = ini_get('post_max_size');
+  static function php_post_max_size_bytes_get() {
+    $value = static::php_post_max_size_get();
     if (static::is_abbreviated_bytes($value))
          return static::abbreviated_to_bytes($value);
     else return (int)$value;
-  }
-
-  static function max_file_uploads_get() {
-    return ini_get('max_file_uploads');
-  }
-
-  static function max_input_time_get() {
-    return ini_get('max_input_time');
-  }
-
-  static function max_execution_time_get() {
-    return ini_get('max_execution_time');
   }
 
   ############

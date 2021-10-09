@@ -65,12 +65,12 @@ namespace effcore\modules\core {
     $php_version_curl        = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
     $is_enabled_opcache      = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
     $is_enabled_opcache_jit  = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['jit']['enabled']);
-    $php_memory_limit        = core::memory_limit_bytes_get();
-    $php_max_file_uploads    = core::max_file_uploads_get();
-    $php_upload_max_filesize = core::upload_max_filesize_bytes_get();
-    $php_post_max_size       = core::post_max_size_bytes_get();
-    $php_max_input_time      = core::max_input_time_get();
-    $php_max_execution_time  = core::max_execution_time_get();
+    $php_memory_limit        = core::php_memory_limit_bytes_get();
+    $php_max_file_uploads    = core::php_max_file_uploads_get();
+    $php_upload_max_filesize = core::php_upload_max_filesize_bytes_get();
+    $php_post_max_size       = core::php_post_max_size_bytes_get();
+    $php_max_input_time      = core::php_max_input_time_get();
+    $php_max_execution_time  = core::php_max_execution_time_get();
     $sticker_for_is_enabled_opcache      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache     ? 'yes' : 'no');
     $sticker_for_is_enabled_opcache_jit  = new markup('x-sticker', ['data-style' => $is_enabled_opcache_jit                ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no');
     $sticker_for_php_memory_limit        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x10000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x10000000)]))->render()], locale::format_bytes  ($php_memory_limit)       );

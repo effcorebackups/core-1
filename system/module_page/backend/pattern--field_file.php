@@ -110,16 +110,16 @@ namespace effcore {
   function file_size_max_get() {
     $system = core::is_abbreviated_bytes($this->max_file_size) ?
               core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
-    $php__1 = core::upload_max_filesize_bytes_get();
-    $php__2 = core::      post_max_size_bytes_get();
+    $php__1 = core::php_upload_max_filesize_bytes_get();
+    $php__2 = core::      php_post_max_size_bytes_get();
     return min($system, $php__1, $php__2);
   }
 
   function file_size_max_has_php_restriction() {
     $system = core::is_abbreviated_bytes($this->max_file_size) ?
               core::abbreviated_to_bytes($this->max_file_size) : (int)$this->max_file_size;
-    $php__1 = core::upload_max_filesize_bytes_get();
-    $php__2 = core::      post_max_size_bytes_get();
+    $php__1 = core::php_upload_max_filesize_bytes_get();
+    $php__2 = core::      php_post_max_size_bytes_get();
     return $system > $php__1 ||
            $system > $php__2;
   }
