@@ -5,8 +5,8 @@ settings
   - form: abcde01234abcde01234abcde01234abcde01234
   - user: abcde01234abcde01234abcde01234abcde01234
   - args: abcde01234abcde01234abcde01234abcde01234
-# note for "password_characters": excluded characters "0OoLlIi" to avoid misunderstanding and "$&~^%@" to avoid email problems
-  password_characters: abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ123456789#_*-+=:;!?
+# note for "password_characters": excluded characters "0OoLlIi" to avoid misunderstanding and "$&~^%@:;" to avoid email problems
+  password_characters: abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ123456789#_*-+=!?
   key_characters: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&_*-+=:;!?~^
   hash_characters: abcdef0123456789
   cookie_domain: 
