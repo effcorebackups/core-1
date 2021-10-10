@@ -110,7 +110,7 @@ The following parameters are recommended for optimal performance:
 - upload_max_filesize: 1G
 - post_max_size: 1G
 - max_input_time: 60
-- max_execution_time: 30
+- max_execution_time: 60
 
 
 SQLite

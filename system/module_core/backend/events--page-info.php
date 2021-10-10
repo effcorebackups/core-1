@@ -78,7 +78,7 @@ namespace effcore\modules\core {
     $sticker_for_php_upload_max_filesize = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));
     $sticker_for_php_post_max_size       = new markup('x-sticker', ['data-style' => $php_post_max_size       >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_post_max_size)      );
     $sticker_for_php_max_input_time      = new markup('x-sticker', ['data-style' => $php_max_input_time      >= 60         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(60)]))        ->render()], locale::format_seconds($php_max_input_time)     );
-    $sticker_for_php_max_execution_time  = new markup('x-sticker', ['data-style' => $php_max_execution_time  >= 30         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(30)]))        ->render()], locale::format_seconds($php_max_execution_time) );
+    $sticker_for_php_max_execution_time  = new markup('x-sticker', ['data-style' => $php_max_execution_time  >= 60         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_seconds(60)]))        ->render()], locale::format_seconds($php_max_execution_time) );
     $decorator = new decorator('table-dl');
     $decorator->id = 'environment_info';
     $decorator->data = [[
