@@ -1,7 +1,7 @@
 tests
-- role_system_security|test
-    id: role_system_security
-    title: Role System Security
+- security__role_system|test
+    id: security__role_system
+    title: Security of Role System
     description: The test will not succeed if the "Registration via Email" option is enabled!
     params
     - proxy|field_text
