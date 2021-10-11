@@ -101,7 +101,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # page "Management → Modules"
+    # page "Management → Modules → Install"
     - request_url-modules|step_request
         url: /manage/modules/install
         headers
@@ -220,7 +220,7 @@ tests
         title: ==================================================================
     - title_for_registered_user|step_title
         title: REGISTERED USER
-    # warming up the form for initialize CAPTCHA and Validation ID
+    # warming up the form for initialize Validation ID
     - form_registration_warming_up|step_request
         url: /registration
         headers
@@ -255,7 +255,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # Admin user page
+    # page of "Admin" user
     - request_url-admin-registered|step_request
         url: /user/Admin
         headers
@@ -271,7 +271,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # Admin user edit page
+    # page of editing "Admin" user
     - request_url-admin-edit-registered|step_request
         url: /user/Admin/edit
         headers
@@ -287,7 +287,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # security page
+    # page "Management → Security → Settings"
     - request_url-security-registered|step_request
         url: /manage/security/settings
         headers
@@ -303,7 +303,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # view page
+    # page "Management → View → Colors → Current"
     - request_url-view-registered|step_request
         url: /manage/view/colors/current
         headers
@@ -319,7 +319,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # locale page
+    # page "Management → Locale"
     - request_url-locale-registered|step_request
         url: /manage/locale
         headers
@@ -335,7 +335,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # modules page
+    # page "Management → Modules → Install"
     - request_url-modules-registered|step_request
         url: /manage/modules/install
         headers
@@ -351,7 +351,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # info page
+    # page "Management → Information"
     - request_url-info-registered|step_request
         url: /manage/info
         headers
@@ -367,7 +367,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # multiple instance select page
+    # page "Management → Data → Content → Texts"
     - request_url-select-multiple-registered|step_request
         url: /manage/data/content/text
         headers
@@ -383,7 +383,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance select page
+    # page "Management → Data → Content → Texts → select instance"
     - request_url-select-registered|step_request
         url: /manage/data/content/text/test
         headers
@@ -399,7 +399,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance insert page
+    # page "Management → Data → Content → Texts → insert instance"
     - request_url-insert-registered|step_request
         url: /manage/data/content/text//insert
         headers
@@ -415,7 +415,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance update page
+    # page "Management → Data → Content → Texts → update instance"
     - request_url-update-registered|step_request
         url: /manage/data/content/text/test/update
         headers
@@ -431,7 +431,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance delete page
+    # page "Management → Data → Content → Texts → delete instance"
     - request_url-delete-registered|step_request
         url: /manage/data/content/text/test/delete
         headers
@@ -459,7 +459,7 @@ tests
         roles
         - =: test
         is_reset: true
-    # Admin user page
+    # page of "Admin" user
     - request_url-admin-registered-role|step_request
         url: /user/Admin
         headers
@@ -475,7 +475,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # Admin user edit page
+    # page of editing "Admin" user
     - request_url-admin-edit-registered-role|step_request
         url: /user/Admin/edit
         headers
@@ -491,7 +491,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # security page
+    # page "Management → Security → Settings"
     - request_url-security-registered-role|step_request
         url: /manage/security/settings
         headers
@@ -507,7 +507,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # view page
+    # page "Management → View → Colors → Current"
     - request_url-view-registered-role|step_request
         url: /manage/view/colors/current
         headers
@@ -523,7 +523,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # locale page
+    # page "Management → Locale"
     - request_url-locale-registered-role|step_request
         url: /manage/locale
         headers
@@ -539,7 +539,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # modules page
+    # page "Management → Modules → Install"
     - request_url-modules-registered-role|step_request
         url: /manage/modules/install
         headers
@@ -555,7 +555,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # info page
+    # page "Management → Information"
     - request_url-info-registered-role|step_request
         url: /manage/info
         headers
@@ -625,7 +625,7 @@ tests
       # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         action_after|step_actions
           actions
-          # multiple instance select page
+          # page "Management → Data → Content → Texts"
           - title_select_multiple|step_title
               title: SELECT MULTIPLE
           - request_url-select-multiple-registered-role|step_request
@@ -656,7 +656,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # instance select page
+          # page "Management → Data → Content → Texts → select instance"
           - title_select|step_title
               title: SELECT
           - request_url-select-registered-role|step_request
@@ -687,7 +687,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # instance insert page
+          # page "Management → Data → Content → Texts → insert instance"
           - title_insert|step_title
               title: INSERT
           - request_url-insert-registered-role|step_request
@@ -718,7 +718,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # instance update page
+          # page "Management → Data → Content → Texts → update instance"
           - title_update|step_title
               title: UPDATE
           - request_url-update-registered-role|step_request
@@ -749,7 +749,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # instance delete page
+          # page "Management → Data → Content → Texts → delete instance"
           - title_delete|step_title
               title: DELETE
           - request_url-delete-registered-role|step_request
