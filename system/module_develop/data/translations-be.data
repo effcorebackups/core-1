@@ -183,7 +183,7 @@ translations
     - row with auto id value = 3: радок з аўтаматычным значэннем id = 3
     - row with default values: радок са значэннямі па змаўчанні
     - row with non-default values: радок са значэннямі ня па змаўчанні
-    - Security of Role System: Бяспека сістэмы роляў
+    - Security of Roles: Бяспека роляў
     - Security of Server Settings: Бяспека налад сэрвэра
     - Selection list (multiple select): Спіс выбару (множны выбар)
     - Selection of "demo_data" entities + join: Выбарка сутнасцяў "demo_data" + join

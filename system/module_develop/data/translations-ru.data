@@ -183,7 +183,7 @@ translations
     - row with auto id value = 3: строка с автоматическим значением id = 3
     - row with default values: строка со значениями по умолчанию
     - row with non-default values: строка со значениями не по умолчанию
-    - Security of Role System: Безопасность системы ролей
+    - Security of Roles: Безопасность ролей
     - Security of Server Settings: Безопасность настроек сервера
     - Selection list (multiple select): Список выбора (множественный выбор)
     - Selection of "demo_data" entities + join: Выборка сущностей "demo_data" + join
