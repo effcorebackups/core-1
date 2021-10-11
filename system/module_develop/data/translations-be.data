@@ -170,7 +170,6 @@ translations
     - Radiobutton 2 (checked): Перамыкач 2 (адзначаны)
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
     - RAM load dynamics: Дынаміка загрузкі АЗП
-    - REDIRECT: ПЕРАНАКІРАВАННЕ
     - REGISTERED USER + ROLE: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК + РОЛЯ
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
@@ -228,6 +227,8 @@ translations
     - Total run time\: %%_time sec.: Агульны час выканання: %%_time сек.
     - Traits: Трэйты
     - transposition %%_cur from %%_max (%%_state): перастаноўка %%_cur з %%_max (%%_state)
+    - TRANSPOSITION OF ".": ПЕРАСТАНОЎКА "."
+    - TRANSPOSITION OF "/": ПЕРАСТАНОЎКА "/"
     - Type "%%_type" from code: Тып "%%_type" з кода
     - Type "%%_type": Тып "%%_type"
     - UML Diagram: UML-дыяграма

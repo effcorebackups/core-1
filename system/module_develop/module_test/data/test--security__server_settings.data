@@ -29,7 +29,7 @@ tests
           name: quantity_of_iterations
         actions
   # ─────────────────────────────────────────────────────────────────────
-  # redirect
+  # transposition of the "/" character
   # ═════════════════════════════════════════════════════════════════════
   # domain/
   # domain///
@@ -44,8 +44,8 @@ tests
   # domain/directory/file.type/
   # domain/directory/file.type///
   # ─────────────────────────────────────────────────────────────────────
-        - title_for_redirect|step_title
-            title: REDIRECT
+        - title_for_transposition_of_slash|step_title
+            title: TRANSPOSITION OF "/"
         # url "/"
         - request_url--|step_request
             url: /
@@ -67,7 +67,7 @@ tests
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---|step_check
+        - response_check----|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -75,13 +75,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/page/"
-        - request_url-page-|step_request
+        - request_url--page-|step_request
             url: /page/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-page-|step_check
+        - response_check--page-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -89,13 +89,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/page///"
-        - request_url-page---|step_request
+        - request_url--page---|step_request
             url: /page///
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-page---|step_check
+        - response_check--page---|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -103,13 +103,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/page/"
-        - request_url-section-page-|step_request
+        - request_url--section-page-|step_request
             url: /section/page/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-section-page-|step_check
+        - response_check--section-page-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -117,13 +117,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/page///"
-        - request_url-section-page---|step_request
+        - request_url--section-page---|step_request
             url: /section/page///
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-section-page---|step_check
+        - response_check--section-page---|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -131,13 +131,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.type/"
-        - request_url-file.type-|step_request
+        - request_url--file.type-|step_request
             url: /file.type/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-file.type-|step_check
+        - response_check--file.type-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -145,13 +145,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.type///"
-        - request_url-file.type---|step_request
+        - request_url--file.type---|step_request
             url: /file.type///
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-file.type---|step_check
+        - response_check--file.type---|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -159,13 +159,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.type/"
-        - request_url-directory-file.type-|step_request
+        - request_url--directory-file.type-|step_request
             url: /directory/file.type/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-directory-file.type-|step_check
+        - response_check--directory-file.type-|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
@@ -173,16 +173,64 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.type///"
-        - request_url-directory-file.type---|step_request
+        - request_url--directory-file.type---|step_request
             url: /directory/file.type///
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check-directory-file.type---|step_check
+        - response_check--directory-file.type---|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+  # ─────────────────────────────────────────────────────────────────────
+  # transposition of the "." character
+  # ═════════════════════════════════════════════════════════════════════
+  # domain/.
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # domain/.page
+  # domain/.
+  # domain/page.
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # domain/.section/page
+  # domain/./page
+  # domain/section./page
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # domain/section/.page
+  # domain/section/.
+  # domain/section/page.
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # domain/.file.type
+  # domain/..type
+  # domain/file..type
+  # domain/file..
+  # domain/file.type.
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # domain/.directory/file.type
+  # domain/./file.type
+  # domain/directory./file.type
+  # domain/directory/.file.type
+  # domain/directory/..type
+  # domain/directory/file..type
+  # domain/directory/file..
+  # domain/directory/file.type.
+  # ─────────────────────────────────────────────────────────────────────
+        - title_for_transposition_of_dot|step_title
+            title: TRANSPOSITION OF "."
+        # url "/."
+        - request_url--.|step_request
+            url: /.
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--.|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 404
             on_failure
             - return_result|step_return
                 value: 0
