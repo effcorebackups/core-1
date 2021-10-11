@@ -23,7 +23,7 @@ tests
   # ─────────────────────────────────────────────────────────────────────
     - title_for_anonymous_user|step_title
         title: ANONYMOUS USER
-    # Admin user page
+    # page of "Admin" user
     - request_url-admin|step_request
         url: /user/Admin
         is_https|param_from_form
@@ -37,7 +37,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # Admin user edit page
+    # page of editing "Admin" user
     - request_url-admin-edit|step_request
         url: /user/Admin/edit
         headers
@@ -53,7 +53,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # security page
+    # page "Management → Security → Settings"
     - request_url-security|step_request
         url: /manage/security/settings
         headers
@@ -69,7 +69,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # view page
+    # page "Management → View → Colors → Current"
     - request_url-view|step_request
         url: /manage/view/colors/current
         headers
@@ -85,7 +85,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # locale page
+    # page "Management → Locale"
     - request_url-locale|step_request
         url: /manage/locale
         headers
@@ -101,7 +101,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # modules page
+    # page "Management → Modules"
     - request_url-modules|step_request
         url: /manage/modules/install
         headers
@@ -117,7 +117,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # info page
+    # page "Management → Information"
     - request_url-info|step_request
         url: /manage/info
         headers
@@ -133,7 +133,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # multiple instance select page
+    # page "Management → Data → Content → Texts"
     - request_url-select-multiple|step_request
         url: /manage/data/content/text
         headers
@@ -149,7 +149,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance select page
+    # page "Management → Data → Content → Texts → select instance"
     - request_url-select|step_request
         url: /manage/data/content/text/test
         headers
@@ -165,7 +165,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance insert page
+    # page "Management → Data → Content → Texts → insert instance"
     - request_url-insert|step_request
         url: /manage/data/content/text//insert
         headers
@@ -181,7 +181,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance update page
+    # page "Management → Data → Content → Texts → update instance"
     - request_url-update|step_request
         url: /manage/data/content/text/test/update
         headers
@@ -197,7 +197,7 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # instance delete page
+    # page "Management → Data → Content → Texts → delete instance"
     - request_url-delete|step_request
         url: /manage/data/content/text/test/delete
         headers
