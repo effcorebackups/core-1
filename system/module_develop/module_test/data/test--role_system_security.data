@@ -1,7 +1,7 @@
 tests
-- access|test
-    id: access
-    title: Access
+- role_system_security|test
+    id: role_system_security
+    title: Role System Security
     description: The test will not succeed if the "Registration via Email" option is enabled!
     params
     - proxy|field_text
@@ -625,9 +625,9 @@ tests
       # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         action_after|step_actions
           actions
-          # page "Management → Data → Content → Texts"
           - title_select_multiple|step_title
               title: SELECT MULTIPLE
+          # page "Management → Data → Content → Texts"
           - request_url-select-multiple-registered-role|step_request
               url: /manage/data/content/text
               headers
@@ -656,9 +656,9 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # page "Management → Data → Content → Texts → select instance"
           - title_select|step_title
               title: SELECT
+          # page "Management → Data → Content → Texts → select instance"
           - request_url-select-registered-role|step_request
               url: /manage/data/content/text/test
               headers
@@ -687,9 +687,9 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # page "Management → Data → Content → Texts → insert instance"
           - title_insert|step_title
               title: INSERT
+          # page "Management → Data → Content → Texts → insert instance"
           - request_url-insert-registered-role|step_request
               url: /manage/data/content/text//insert
               headers
@@ -718,9 +718,9 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # page "Management → Data → Content → Texts → update instance"
           - title_update|step_title
               title: UPDATE
+          # page "Management → Data → Content → Texts → update instance"
           - request_url-update-registered-role|step_request
               url: /manage/data/content/text/test/update
               headers
@@ -749,9 +749,9 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          # page "Management → Data → Content → Texts → delete instance"
           - title_delete|step_title
               title: DELETE
+          # page "Management → Data → Content → Texts → delete instance"
           - request_url-delete-registered-role|step_request
               url: /manage/data/content/text/test/delete
               headers

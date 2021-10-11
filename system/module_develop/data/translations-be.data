@@ -10,6 +10,7 @@ translations
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&NewLine;
+    - Role System Security: Бяспека сістэмы роляў
     - &ndash; request header param "%%_value": &ndash; header-параметр запыту "%%_value"
     - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
     - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр адказу "%%_name" = "%%_value"

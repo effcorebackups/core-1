@@ -180,6 +180,7 @@ translations
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - result of checking is = "%%_result": результат проверки = "%%_result"
     - return = "%%_return": возврат = "%%_return"
+    - Role System Security: Безопасность системы ролей
     - roles after insertion\: %%_roles: роли после вставки: %%_roles
     - roles before insertion\: %%_roles: роли перед вставкой: %%_roles
     - row with auto id value = 1: строка с автоматическим значением id = 1
