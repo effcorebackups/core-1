@@ -94,6 +94,7 @@ translations
     - Field time: Поле time
     - Field unique: Поле unique
     - Field varchar: Поле varchar
+    - FILES AND DIRECTORIES: ФАЙЛЫ И КАТАЛОГИ
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": найден ID пользователя = "%%_id_user" по псевдониму = "%%_nickname"
     - Full report: Полный отчёт
@@ -223,8 +224,8 @@ translations
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
-    - TRANSPOSITION OF ".": ПЕРЕСТАНОВКА "."
-    - TRANSPOSITION OF "/": ПЕРЕСТАНОВКА "/"
+    - TRANSPOSITIONS OF ".": ПЕРЕСТАНОВКИ "."
+    - TRANSPOSITIONS OF "/": ПЕРЕСТАНОВКИ "/"
     - Type "%%_type" from code: Тип "%%_type" из кода
     - Type "%%_type": Тип "%%_type"
     - UML Diagram: UML-диаграмма
