@@ -47,20 +47,6 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /.
-        - request_url--.|step_request
-            url: /.
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--.|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /..
         - request_url--..|step_request
             url: /..
@@ -101,48 +87,6 @@ tests
                 on_failure
                 - return_result|step_return
                     value: 0
-        # url: /0
-        - request_url--0|step_request
-            url: /0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0.
-        - request_url--0.|step_request
-            url: /0.
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0.|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0..
-        - request_url--0..|step_request
-            url: /0..
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0..|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /0...
         - request_url--0...|step_request
             url: /0...
@@ -154,34 +98,6 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /.0
-        - request_url--.0|step_request
-            url: /.0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--.0|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 403
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /..0
-        - request_url--..0|step_request
-            url: /..0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--..0|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -199,42 +115,14 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: /01
-        - request_url--01|step_request
-            url: /01
+        # url: /file.type
+        - request_url--file.type|step_request
+            url: /file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--01|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0.1
-        - request_url--0.1|step_request
-            url: /0.1
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0.1|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0..1
-        - request_url--0..1|step_request
-            url: /0..1
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0..1|step_check
+        - response_check--file.type|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -249,48 +137,6 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--0...1|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /10
-        - request_url--10|step_request
-            url: /10
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--10|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /1.0
-        - request_url--1.0|step_request
-            url: /1.0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--1.0|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /1..0
-        - request_url--1..0|step_request
-            url: /1..0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--1..0|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -478,34 +324,6 @@ tests
             title: ==================================================================
         - title_1|step_title
             title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES)
-        # url: //
-        - request_url---|step_request
-            url: //
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check---|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /./
-        - request_url--.-|step_request
-            url: /./
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--.-|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: //.
         - request_url---.|step_request
             url: //.
@@ -520,20 +338,6 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: ///
-        - request_url----|step_request
-            url: ///
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check----|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: //0
         - request_url---0|step_request
             url: //0
@@ -545,20 +349,6 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0/
-        - request_url--0-|step_request
-            url: /0/
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0-|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -593,20 +383,6 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /.//
-        - request_url--.--|step_request
-            url: /.//
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--.--|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -658,20 +434,6 @@ tests
                 on_failure
                 - return_result|step_return
                     value: 0
-        # url: //./
-        - request_url---.-|step_request
-            url: //./
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check---.-|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: //.0
         - request_url---.0|step_request
             url: //.0
@@ -697,20 +459,6 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: ////
-        - request_url-----|step_request
-            url: ////
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check-----|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
             on_failure
             - return_result|step_return
                 value: 0
@@ -742,34 +490,6 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
-        # url: //0/
-        - request_url---0-|step_request
-            url: //0/
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check---0-|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0./
-        - request_url--0.-|step_request
-            url: /0./
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0.-|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /0.0
         - request_url--0.0|step_request
             url: /0.0
@@ -795,20 +515,6 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0//
-        - request_url--0--|step_request
-            url: /0//
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0--|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 302
             on_failure
             - return_result|step_return
                 value: 0
