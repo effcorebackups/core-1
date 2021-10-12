@@ -42,8 +42,6 @@ translations
     - Classes: Классы
     - Collations: Сравнения
     - Color for generation: Цвет для генерации
-    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES): КОМБИНАТОРИКА: ВОЗМОЖНЫЕ ПЕРЕСТАНОВКИ '.' + '/' + '0' В ПУТИ ФАЙЛА ИЗ URL (ИСКЛЮЧАЯ ДУБЛИКАТЫ)
-    - COMBINATORICS\: POSSIBLE TRANSPOSITIONS OF '.\|..\|...' + '0' + '1' IN PATH OF FILE FROM URL: КОМБИНАТОРИКА: ВОЗМОЖНЫЕ ПЕРЕСТАНОВКИ '.|..|...' + '0' + '1' В ПУТИ ФАЙЛА ИЗ URL
     - Console: Консоль
     - Constraints: Ограничения
     - CPU load time: Время загрузки процессора
@@ -227,6 +225,7 @@ translations
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - TRANSPOSITIONS OF ".": ПЕРЕСТАНОВКИ "."
     - TRANSPOSITIONS OF "/": ПЕРЕСТАНОВКИ "/"
+    - TRANSPOSITIONS OF "~": ПЕРЕСТАНОВКИ "~"
     - Type "%%_type" from code: Тип "%%_type" из кода
     - Type "%%_type": Тип "%%_type"
     - UML Diagram: UML-диаграмма
