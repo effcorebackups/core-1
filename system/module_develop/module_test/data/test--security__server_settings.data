@@ -598,6 +598,10 @@ tests
   # /../../../../../../etc/passwd
   # /~/.ssh/id_rsa
   # /~/any_file
+  # /.git
+  # /.git/config
+  # /dynamic/.git
+  # /dynamic/.git/config
   # /.editorconfig
   # /.gitattributes
   # /.gitignore
@@ -689,6 +693,62 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/.git"
+        - request_url--.git|step_request
+            url: /.git
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--.git|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/.git/config"
+        - request_url--.git-config|step_request
+            url: /.git/config
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--.git-config|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/dynamic/.git"
+        - request_url--dynamic-.git|step_request
+            url: /dynamic/.git
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--dynamic-.git|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/dynamic/.git/config"
+        - request_url--dynamic-.git-config|step_request
+            url: /dynamic/.git/config
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--dynamic-.git-config|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
