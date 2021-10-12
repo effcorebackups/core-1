@@ -95,6 +95,7 @@ translations
     - Field unique: Поле unique
     - Field varchar: Поле varchar
     - FILES AND DIRECTORIES: ФАЙЛЫ І КАТАЛОГІ
+    - FILTRATION OF PARAMETERS: ФІЛЬТРАЦЫЯ ПАРАМЕТРАЎ
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знойдзены ID карыстальніка = "%%_id_user" па псеўданіме = "%%_nickname"
     - Full report: Поўная справаздача
