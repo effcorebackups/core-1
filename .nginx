@@ -17,6 +17,7 @@ server {
   location ^~ /dynamic/logs/  {deny all; error_log off;}
   location ~ /web.config$     {deny all; error_log off;}
   location ~ /\.              {deny all; error_log off;}
+  location ~ /\~              {deny all; error_log off;}
   location / {
     root %%_root;
     fastcgi_index index.php;
@@ -38,6 +39,7 @@ server {
   location ^~ /dynamic/logs/  {deny all; error_log off;}
   location ~ /web.config$     {deny all; error_log off;}
   location ~ /\.              {deny all; error_log off;}
+  location ~ /\~              {deny all; error_log off;}
   location / {
     root %%_root;
     fastcgi_index index.php;

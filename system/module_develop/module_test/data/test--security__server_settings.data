@@ -540,7 +540,7 @@ tests
         - response_check--~page|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -554,7 +554,7 @@ tests
         - response_check--~|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -582,7 +582,7 @@ tests
         - response_check--~section-page|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -596,7 +596,7 @@ tests
         - response_check--~-page|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -624,7 +624,7 @@ tests
         - response_check--section-~page|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -638,7 +638,7 @@ tests
         - response_check--section-~|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -666,7 +666,7 @@ tests
         - response_check--~file.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -680,7 +680,7 @@ tests
         - response_check--~.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -750,7 +750,7 @@ tests
         - response_check--~directory-file.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -764,7 +764,7 @@ tests
         - response_check--~-file.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -792,7 +792,7 @@ tests
         - response_check--directory-~file.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -806,7 +806,7 @@ tests
         - response_check--directory-~.type|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0
@@ -1729,7 +1729,7 @@ tests
         - response_check--~-any_file|step_check
             check: token
             where: %%_test_response_http_code
-            match: 404
+            match: 403
             on_failure
             - return_result|step_return
                 value: 0

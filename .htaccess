@@ -25,5 +25,9 @@ DirectorySlash Off
   Require all denied
 </If>
 
+<If "%{REQUEST_URI} =~ m#/\~#">
+  Require all denied
+</If>
+
 RewriteEngine On
 RewriteRule ^.*$ index.php [L]
