@@ -225,6 +225,7 @@ translations
     - transposition %%_cur from %%_max (%%_state): перастаноўка %%_cur з %%_max (%%_state)
     - TRANSPOSITIONS OF "..": ПЕРАСТАНОЎКІ ".."
     - TRANSPOSITIONS OF ".": ПЕРАСТАНОЎКІ "."
+    - TRANSPOSITIONS OF "": ПЕРАСТАНОЎКІ ""
     - TRANSPOSITIONS OF "/": ПЕРАСТАНОЎКІ "/"
     - TRANSPOSITIONS OF "~": ПЕРАСТАНОЎКІ "~"
     - Type "%%_type" from code: Тып "%%_type" з кода
