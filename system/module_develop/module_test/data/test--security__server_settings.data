@@ -1471,8 +1471,14 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            - return_result|step_return
-                value: 0
+            # case for: IIS
+            - response_check--..-403|step_check
+                check: token
+                where: %%_test_response_http_code
+                match: 403
+                on_failure
+                - return_result|step_return
+                    value: 0
         # url "/directory../file.type"
         - request_url--directory..-file.type|step_request
             url: /directory../file.type
