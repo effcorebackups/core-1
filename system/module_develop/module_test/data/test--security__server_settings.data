@@ -531,6 +531,7 @@ tests
   # ═════════════════════════════════════════════════════════════════════
   # /../../../../../../etc/passwd
   # /~/.ssh/id_rsa
+  # /~/any_file
   # /.editorconfig
   # /.gitattributes
   # /.gitignore
@@ -608,6 +609,20 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/~/any_file"
+        - request_url--~-any_file|step_request
+            url: /~/any_file
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--~-any_file|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 404
             on_failure
             - return_result|step_return
                 value: 0
