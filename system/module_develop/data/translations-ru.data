@@ -224,6 +224,7 @@ translations
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
     - TRANSPOSITIONS OF ".": ПЕРЕСТАНОВКИ "."
+    - TRANSPOSITIONS OF "..": ПЕРЕСТАНОВКИ ".."
     - TRANSPOSITIONS OF "/": ПЕРЕСТАНОВКИ "/"
     - TRANSPOSITIONS OF "~": ПЕРЕСТАНОВКИ "~"
     - Type "%%_type" from code: Тип "%%_type" из кода
