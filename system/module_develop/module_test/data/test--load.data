@@ -28,45 +28,6 @@ tests
         quantity|param_from_form
           name: quantity_of_iterations
         actions
-  # ─────────────────────────────────────────────────────────────────────
-  # combinatorics: possible transpositions of '.|..|...' + '0' + '1' in path of file from url
-  # ─────────────────────────────────────────────────────────────────────
-        - title_0|step_title
-            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.|..|...' + '0' + '1' IN PATH OF FILE FROM URL
-        # url: /
-        - request_url--|step_request
-            url: /
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 200
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /..
-        - request_url--..|step_request
-            url: /..
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--..|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 400
-            on_failure
-            # case for: IIS
-            - response_check--..-403|step_check
-                check: token
-                where: %%_test_response_http_code
-                match: 403
-                on_failure
-                - return_result|step_return
-                    value: 0
         # url: /...
         - request_url--...|step_request
             url: /...
@@ -87,34 +48,6 @@ tests
                 on_failure
                 - return_result|step_return
                     value: 0
-        # url: /0...
-        - request_url--0...|step_request
-            url: /0...
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0...|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /...0
-        - request_url--...0|step_request
-            url: /...0
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--...0|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 403
-            on_failure
-            - return_result|step_return
-                value: 0
         # url: /file.type
         - request_url--file.type|step_request
             url: /file.type
@@ -123,20 +56,6 @@ tests
             proxy|param_from_form
               name: proxy
         - response_check--file.type|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url: /0...1
-        - request_url--0...1|step_request
-            url: /0...1
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--0...1|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -243,13 +162,6 @@ tests
                 on_failure
                 - return_result|step_return
                     value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # combinatorics: possible transpositions of '.' + '/' + '0' in path of file from url (excluding duplicates)
-  # ─────────────────────────────────────────────────────────────────────
-        - title_1_delimiter|step_title
-            title: ==================================================================
-        - title_1|step_title
-            title: COMBINATORICS: POSSIBLE TRANSPOSITIONS OF '.' + '/' + '0' IN PATH OF FILE FROM URL (EXCLUDING DUPLICATES)
         # url: //.
         - request_url---.|step_request
             url: //.
