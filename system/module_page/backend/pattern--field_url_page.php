@@ -23,15 +23,15 @@ namespace effcore {
     'anchor'   => 'anchor'];
 
   function render_description() {
-    $this->render_prepare_description();
-    $this->description[] = new markup('p', ['data-id' => 'url-page-root'   ], new text('Field value should be start with "%%_value".', ['value' => '/'        ]));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-manage' ], new text('Field value cannot be start with "%%_value".', ['value' => '/manage/' ]));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-user'   ], new text('Field value cannot be start with "%%_value".', ['value' => '/user/'   ]));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-dynamic'], new text('Field value cannot be start with "%%_value".', ['value' => '/dynamic/']));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-modules'], new text('Field value cannot be start with "%%_value".', ['value' => '/modules/']));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-readme' ], new text('Field value cannot be start with "%%_value".', ['value' => '/readme/' ]));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-shell'  ], new text('Field value cannot be start with "%%_value".', ['value' => '/shell/'  ]));
-    $this->description[] = new markup('p', ['data-id' => 'url-page-system' ], new text('Field value cannot be start with "%%_value".', ['value' => '/system/' ]));
+    $this->description = static::description_prepare($this->description);
+    $this->description['url-page-root'   ] = new markup('p', ['data-id' => 'url-page-root'   ], new text('Field value should be start with "%%_value".', ['value' => '/'        ]));
+    $this->description['url-page-manage' ] = new markup('p', ['data-id' => 'url-page-manage' ], new text('Field value cannot be start with "%%_value".', ['value' => '/manage/' ]));
+    $this->description['url-page-user'   ] = new markup('p', ['data-id' => 'url-page-user'   ], new text('Field value cannot be start with "%%_value".', ['value' => '/user/'   ]));
+    $this->description['url-page-dynamic'] = new markup('p', ['data-id' => 'url-page-dynamic'], new text('Field value cannot be start with "%%_value".', ['value' => '/dynamic/']));
+    $this->description['url-page-modules'] = new markup('p', ['data-id' => 'url-page-modules'], new text('Field value cannot be start with "%%_value".', ['value' => '/modules/']));
+    $this->description['url-page-readme' ] = new markup('p', ['data-id' => 'url-page-readme' ], new text('Field value cannot be start with "%%_value".', ['value' => '/readme/' ]));
+    $this->description['url-page-shell'  ] = new markup('p', ['data-id' => 'url-page-shell'  ], new text('Field value cannot be start with "%%_value".', ['value' => '/shell/'  ]));
+    $this->description['url-page-system' ] = new markup('p', ['data-id' => 'url-page-system' ], new text('Field value cannot be start with "%%_value".', ['value' => '/system/' ]));
     return parent::render_description();
   }
 

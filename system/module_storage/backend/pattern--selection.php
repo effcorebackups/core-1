@@ -360,7 +360,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select_array('selections') as $c_module_id => $c_selections) {
+      foreach (storage::get('data')->select_array('selections') as $c_module_id => $c_selections) {
         foreach ($c_selections as $c_row_id => $c_selection) {
           if (isset(static::$cache[$c_selection->id])) console::report_about_duplicate('selection', $c_selection->id, $c_module_id, static::$cache[$c_selection->id]);
                     static::$cache[$c_selection->id] = $c_selection;

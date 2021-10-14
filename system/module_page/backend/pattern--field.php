@@ -347,24 +347,26 @@ namespace effcore {
     }
   }
 
-  function render_prepare_description() {
-  # ready for: NULL, string, object|text, object|text_multiline… object+render()
-    if (        $this->description  ===  NULL   ) $this->description = [                                                             ];
-    if (gettype($this->description) === 'string') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
-    if (gettype($this->description) === 'object') $this->description = [new markup('p', ['data-id' => 'default'], $this->description)];
+  function render_opener() {
+    return (new markup_simple('input', [
+      'type'             => 'checkbox',
+      'role'             => 'button',
+      'data-opener-type' => 'description',
+      'title'            => new text('press to show description')
+    ]))->render();
   }
 
   function render_description() {
-    $this->render_prepare_description();
+    $this->description = static::description_prepare($this->description);
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
-      if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description[] = $this->render_description_pattern  ($element);
-      if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description[] = $this->render_description_max      ($element);
-      if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description[] = $this->render_description_min      ($element);
-      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     ) === 'range'                                ) $this->description[] = $this->render_description_cur      ($element);
-      if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_maxlength($element);
-      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description[] = $this->render_description_minlength($element);
-      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description[] = $this->render_description_midlength($element);
+      if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description['pattern'  ] = $this->render_description_pattern  ($element);
+      if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description['max'      ] = $this->render_description_max      ($element);
+      if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description['min'      ] = $this->render_description_min      ($element);
+      if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     ) === 'range'                                ) $this->description['cur'      ] = $this->render_description_cur      ($element);
+      if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['maxlength'] = $this->render_description_maxlength($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['minlength'] = $this->render_description_minlength($element);
+      if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description['midlength'] = $this->render_description_midlength($element);
     }
     if (count($this->description)) {
       if ($this->id_get() && $this->description_state !== 'hidden') $element->attribute_insert('aria-describedby', 'description-'.$this->id_get());
@@ -373,15 +375,6 @@ namespace effcore {
       if ($this->description_state === 'closed'                      ) return $this->render_opener().(new markup($this->description_tag_name, ['id' => $this->id_get() ? 'description-'.$this->id_get() : null], $this->description))->render();
       return '';
     }
-  }
-
-  function render_opener() {
-    return (new markup_simple('input', [
-      'type'             => 'checkbox',
-      'role'             => 'button',
-      'data-opener-type' => 'description',
-      'title'            => new text('press to show description')
-    ]))->render();
   }
 
   function render_description_pattern  ($element) {return new markup('p', ['data-id' => 'pattern'  ], new text('Field value should match the regular expression: %%_expression',               ['expression' => $element->attribute_select('pattern'  )]));}

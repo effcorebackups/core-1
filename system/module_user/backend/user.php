@@ -98,11 +98,11 @@ namespace effcore {
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   static function key_get($name) {
-    return storage::get('files')->select('settings/user/keys/'.$name);
+    return storage::get('data')->select('settings/user/keys/'.$name);
   }
 
   static function keys_install() {
-    return storage::get('files')->changes_insert('user', 'update', 'settings/user/keys', [
+    return storage::get('data')->changes_insert('user', 'update', 'settings/user/keys', [
       'cron' => core::random_bytes_generate(40, module::settings_get('user')->hash_characters),
       'salt' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
       'form' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),

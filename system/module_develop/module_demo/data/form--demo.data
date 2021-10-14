@@ -185,12 +185,9 @@ forms
       # field 'Nickname'
         - nickname|field_nickname
             title: Nickname
-            description|text_multiline
-              text
-              - 0: Field "%%_title".
-              - 1: Field value can contain only the next characters: %%_characters
+            description|text
+              text: Field "%%_title".
               args
-              - characters: "a-z", "A-Z", "0-9", "_", "-"
               - title: field_nickname
             element_attributes
             - name: nickname
@@ -430,6 +427,25 @@ forms
             element_attributes
             - name: textarea
             - value: text in text area
+        - textarea_data|field_textarea_data
+            title: Data in "data" format
+            description|text
+              text: Field "%%_title".
+              args
+              - title: field_textarea_data
+            element_attributes
+            - name: textarea_data
+            - required: null
+            - minlength: null
+            - maxlength: 10000
+            - value: root
+/////////////////////- key_1: value 1
+/////////////////////- key_2: value 2
+/////////////////////- key_3: value 3
+            classes_allowed
+            - =: text
+            - =: \effcore\text_multiline
+            - =: \some_vendor\some_exists_class_name
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────

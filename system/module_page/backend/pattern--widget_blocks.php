@@ -42,12 +42,12 @@ namespace effcore {
     $field_title_is_visible->build();
     $field_title_is_visible->name_set($widget->name_get_complex().'__title_is_visible__'.$c_row_id);
     $field_title_is_visible->value_set((int)($item->title_is_visible ?? 0));
-    $field_attributes = new field_textarea;
+    $field_attributes = new field_textarea_data;
     $field_attributes->title = 'Attributes';
     $field_attributes->cform = $widget->cform;
     $field_attributes->build();
     $field_attributes->name_set($widget->name_get_complex().'__attributes__'.$c_row_id);
-    $field_attributes->value_set(isset($item->attributes) ? storage_nosql_files::data_to_text($item->attributes, 'attributes') : '');
+    $field_attributes->value_data_set($item->attributes ?? null, 'attributes');
     $field_attributes->required_set(false);
     $field_attributes->maxlength_set(10000);
   # relate new controls with the widget

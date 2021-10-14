@@ -87,6 +87,20 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--section--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /section
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--section--length|step_check
+            check: token
+            where: %%_test_response_content_length
+            match: 0
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/.type"
         - request_url--.type|step_request
             url: /.type
@@ -216,6 +230,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check----location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/page/"
         - request_url--page-|step_request
             url: /page/
@@ -227,6 +248,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--page--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /page
             on_failure
             - return_result|step_return
                 value: 0
@@ -286,6 +314,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--section---location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /section
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/section/page/"
         - request_url--section-page-|step_request
             url: /section/page/
@@ -297,6 +332,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--section-page--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /section/page
             on_failure
             - return_result|step_return
                 value: 0
@@ -370,6 +412,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--file.--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /file.
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/file.type/"
         - request_url--file.type-|step_request
             url: /file.type/
@@ -381,6 +430,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--file.type--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /file.type
             on_failure
             - return_result|step_return
                 value: 0
@@ -482,6 +538,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--directory-file.--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /directory/file.
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/directory/file.type/"
         - request_url--directory-file.type-|step_request
             url: /directory/file.type/
@@ -493,6 +556,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-file.type--location|step_check
+            check: token
+            where: %%_test_response_location
+            match: /directory/file.type
             on_failure
             - return_result|step_return
                 value: 0
@@ -1601,6 +1671,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--?page=front&unknown=true=-location|step_check
+            check: token
+            where: %%_test_response_location
+            match: %.*/\?page=front%
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/login?page=front"
         - request_url--login?page=front|step_request
             url: /login?page=front
@@ -1626,6 +1703,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 302
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--login?page=front&unknown=true-location|step_check
+            check: token
+            where: %%_test_response_location
+            match: %.*/login\?page=front%
             on_failure
             - return_result|step_return
                 value: 0

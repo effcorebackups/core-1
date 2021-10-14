@@ -15,8 +15,8 @@ namespace effcore {
 
   static function init($name) {
     if (!isset(static::$cache[$name])) {
-      storage_nosql_files::init('storages');
-      foreach (storage_nosql_files::$data['storages'] as $c_module_id => $c_module_storages) {
+      storage_nosql_data::init('storages');
+      foreach (storage_nosql_data::$data['storages'] as $c_module_id => $c_module_storages) {
         foreach ($c_module_storages as $c_row_id => $c_storage) {
           if ($c_storage->name === $name) {
             static::$cache[$c_storage->name] = $c_storage;

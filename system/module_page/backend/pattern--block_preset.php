@@ -54,7 +54,7 @@ namespace effcore {
   static function init() {
     if (!static::$is_init_nosql) {
          static::$is_init_nosql = true;
-      foreach (storage::get('files')->select_array('block_presets') as $c_module_id => $c_presets) {
+      foreach (storage::get('data')->select_array('block_presets') as $c_module_id => $c_presets) {
         foreach ($c_presets as $c_preset) {
           if (isset(static::$cache[$c_preset->id])) console::report_about_duplicate('block_preset', $c_preset->id, $c_module_id, static::$cache[$c_preset->id]);
                     static::$cache[$c_preset->id] = $c_preset;

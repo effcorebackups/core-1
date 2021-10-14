@@ -39,8 +39,8 @@ namespace effcore {
           (isset($this->display) && $this->display->check === 'user'      &&            $this->display->where === 'role' && preg_match($this->display->match.'m', implode(nl, user::get_current()->roles)))) {
         switch ($this->type) {
           case 'copy':
-          case 'link': if ($this->type === 'copy') $result = core::deep_clone(storage::get('files')->select($this->source, true));
-                       if ($this->type === 'link') $result =                  storage::get('files')->select($this->source, true);
+          case 'link': if ($this->type === 'copy') $result = core::deep_clone(storage::get('data')->select($this->source, true));
+                       if ($this->type === 'link') $result =                  storage::get('data')->select($this->source, true);
                        foreach ($this->properties     as    $c_key => $c_value)
                          core::arrobj_insert_value($result, $c_key,   $c_value);
                        break;

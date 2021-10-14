@@ -49,12 +49,9 @@ namespace effcore {
   }
 
   function render_description() {
-    if ($this->description) {
-      return (
-        new markup($this->description_tag_name, [],
-          new markup('p', [], $this->description)
-        )
-      )->render();
+    $this->description = static::description_prepare($this->description);
+    if (count($this->description)) {
+      return (new markup($this->description_tag_name, [], $this->description))->render();
     }
   }
 

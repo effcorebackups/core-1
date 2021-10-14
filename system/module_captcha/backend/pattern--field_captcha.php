@@ -68,11 +68,10 @@ namespace effcore {
   }
 
   function render_description() {
-    if (!$this->description)
-         $this->description = new text_multiline([
-      'Write the characters from the picture.',
-      'Number of attempts: %%_attempts'], [
-      'attempts' => $this->attempts_cur === null ? 'n/a' : $this->attempts_cur]);
+    $this->description = static::description_prepare($this->description);
+    if (!isset($this->description['default']))
+               $this->description['default'] = new markup('p', ['data-id' => 'default'], 'Write the characters from the picture.');
+    $this->description['attempts'] = new markup('p', ['data-id' => 'attempts'], new text('Number of attempts: %%_attempts', ['attempts' => $this->attempts_cur === null ? 'n/a' : $this->attempts_cur]));
     return parent::render_description();
   }
 

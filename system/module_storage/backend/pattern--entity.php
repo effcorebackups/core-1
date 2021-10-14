@@ -177,7 +177,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      static::$cache_orig = storage::get('files')->select_array('entities');
+      static::$cache_orig = storage::get('data')->select_array('entities');
       foreach (static::$cache_orig as $c_module_id => $c_entities) {
         foreach ($c_entities as $c_row_id => $c_entity) {
           if (isset(static::$cache[$c_entity->name])) console::report_about_duplicate('entity', $c_entity->name, $c_module_id, static::$cache[$c_entity->name]);

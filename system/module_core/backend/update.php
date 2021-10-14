@@ -21,7 +21,7 @@ namespace effcore {
 
   static function select_all($module_id, $from_number = 0) {
     $result = [];
-    foreach (storage::get('files')->select_array('modules_update_data', false, false) as $c_module_id => $c_updates)
+    foreach (storage::get('data')->select_array('modules_update_data', false, false) as $c_module_id => $c_updates)
       if ($c_module_id === $module_id)
         foreach ($c_updates as $c_row_id => $c_update)
           if ($c_update->number >= $from_number)

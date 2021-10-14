@@ -12,7 +12,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      foreach (storage::get('files')->select_array('request_settings') as $c_module_id => $c_settings) {
+      foreach (storage::get('data')->select_array('request_settings') as $c_module_id => $c_settings) {
         static::$allowed_args_in_get+= $c_settings->allowed_args_in_get;
         static::$cache[$c_module_id] = $c_settings;
       }

@@ -70,7 +70,7 @@ namespace effcore {
   # deployment process: check for instances duplicates
   # ─────────────────────────────────────────────────────────────────────
     $has_duplicates = false;
-    foreach (storage::get('files')->select_array('instances') as $c_module_id => $c_instances) {
+    foreach (storage::get('data')->select_array('instances') as $c_module_id => $c_instances) {
       if ($c_module_id === $this->id) {
         foreach ($c_instances as $c_row_id => $c_instance) {
           if ($c_instance->select()) {
@@ -103,7 +103,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # deployment process: copy files
   # ─────────────────────────────────────────────────────────────────────
-    $copy = storage::get('files')->select('copy');
+    $copy = storage::get('data')->select('copy');
     if ( isset($copy[$this->id]) ) {
       foreach ($copy[$this->id] as $c_info) {
         $c_src_file = new file($this->path.$c_info->from);
@@ -196,8 +196,8 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      static::$cache['modules'] = storage::get('files')->select('module');
-      static::$cache['bundles'] = storage::get('files')->select('bundle');
+      static::$cache['modules'] = storage::get('data')->select('module');
+      static::$cache['bundles'] = storage::get('data')->select('bundle');
     }
   }
 
@@ -307,7 +307,7 @@ namespace effcore {
   }
 
   static function settings_get($module_id) {
-    $settings = storage::get('files')->select_array('settings');
+    $settings = storage::get('data')->select_array('settings');
     return $settings[$module_id] ?? [];
   }
 

@@ -25,12 +25,12 @@ namespace effcore\modules\profile_classic {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        $storage = storage::get('files');
+        $storage = storage::get('data');
         $storage->changes_insert('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', $items['*color_custom__head_id']->value_get(), false);
         $storage->changes_insert('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id', $items['*color_custom__foot_id']->value_get()       );
         break;
       case 'reset':
-        $storage = storage::get('files');
+        $storage = storage::get('data');
         $storage->changes_delete('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', false);
         $storage->changes_delete('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id'       );
         static::on_init(null, $form, $items);

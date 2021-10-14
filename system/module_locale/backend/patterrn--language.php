@@ -25,14 +25,14 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      foreach (storage::get('files')->select_array('languages') as $c_module_id => $c_languages) {
+      foreach (storage::get('data')->select_array('languages') as $c_module_id => $c_languages) {
         foreach ($c_languages as $c_row_id => $c_language) {
           if (isset(static::$cache[$c_language->code])) console::report_about_duplicate('language', $c_language->code, $c_module_id, static::$cache[$c_language->code]);
                     static::$cache[$c_language->code] = $c_language;
                     static::$cache[$c_language->code]->module_id = $c_module_id;
         }
       }
-      foreach (storage::get('files')->select_array('plurals') as $c_module_id => $c_plurals_by_module) {
+      foreach (storage::get('data')->select_array('plurals') as $c_module_id => $c_plurals_by_module) {
         foreach ($c_plurals_by_module as $c_plurals_by_language) {
           foreach ($c_plurals_by_language->data as $c_plural_name => $c_plural_info) {
             if (isset(static::$cache[$c_plurals_by_language->code]))

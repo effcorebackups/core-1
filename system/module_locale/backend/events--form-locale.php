@@ -26,12 +26,12 @@ namespace effcore\modules\locale {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $result = true;
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/lang_code',           $items['#lang_code'          ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/format_date',         $items['#format_date'        ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/format_time',         $items['#format_time'        ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('locale', 'update', 'settings/locale/thousands_separator', $items['#thousands_separator']->value_get());
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/lang_code',           $items['#lang_code'          ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/format_date',         $items['#format_date'        ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/format_time',         $items['#format_time'        ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/format_datetime',     $items['#format_datetime'    ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/decimal_point',       $items['#decimal_point'      ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('locale', 'update', 'settings/locale/thousands_separator', $items['#thousands_separator']->value_get());
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
         if ($result) {
@@ -41,12 +41,12 @@ namespace effcore\modules\locale {
         break;
       case 'reset':
         $result = true;
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/lang_code',       false);
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/format_date',     false);
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/format_time',     false);
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/format_datetime', false);
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/decimal_point',   false);
-        $result&= storage::get('files')->changes_delete('locale', 'update', 'settings/locale/thousands_separator');
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/lang_code',       false);
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/format_date',     false);
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/format_time',     false);
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/format_datetime', false);
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/decimal_point',   false);
+        $result&= storage::get('data')->changes_delete('locale', 'update', 'settings/locale/thousands_separator');
         if ($result) message::insert('Changes was deleted.'             );
         else         message::insert('Changes was not deleted!', 'error');
         if ($result) {

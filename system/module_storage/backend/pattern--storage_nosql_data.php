@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class storage_nosql_files implements has_external_cache {
+          class storage_nosql_data implements has_external_cache {
 
   public $name;
 
@@ -350,8 +350,8 @@ namespace effcore {
             'The class name has been changed to "%%_new_classname".',
             'File: %%_file',
             'Line: %%_line'], [
-            'line' => $c_error->line,
-            'file' => $file ? $file->path_get_relative() : 'n/a',
+            'line'          => $c_error->line,
+            'file'          => $file ? $file->path_get_relative() : 'n/a',
             'classname'     => $c_error->args['classname'],
             'new_classname' => $c_error->args['new_classname']]), 'error');
           break;
@@ -362,13 +362,24 @@ namespace effcore {
             'The class name has been changed to "%%_new_classname".',
             'File: %%_file',
             'Line: %%_line'], [
-            'line' => $c_error->line,
-            'file' => $file ? $file->path_get_relative() : 'n/a',
+            'line'          => $c_error->line,
+            'file'          => $file ? $file->path_get_relative() : 'n/a',
             'classname'     => $c_error->args['classname'],
             'new_classname' => $c_error->args['new_classname']]), 'error');
           break;
       }
     }
+  }
+
+  static function text_to_data_classes_prepare($classes = [], $add_std_by_default = true) {
+    $result = [];
+    if (count($classes) && $add_std_by_default)
+              $classes[] = '\\stdClass';
+    foreach (array_filter($classes, 'strlen') as $c_class_name) {
+      if ($c_class_name[0] === '\\') $result[              $c_class_name] =               $c_class_name;
+      if ($c_class_name[0] !== '\\') $result['\\effcore\\'.$c_class_name] = '\\effcore\\'.$c_class_name;
+    }
+    return $result;
   }
 
   static function text_to_data($text, $classes = []) {
@@ -378,18 +389,12 @@ namespace effcore {
     $post_cnst_objects = [];
     $post_init_objects = [];
     $post_pars_objects = [];
+    $allowed_classes = static::text_to_data_classes_prepare($classes, true);
     $text = preg_replace('%'.cr.nl.'[>]+|'.cr.'[>]+|'.nl.'[>]+%S', '', $text); # convert 'string_1'.'\n'.'>>>>>>'.'string_2' to 'string_1'.     'string_2'
     $text = preg_replace('%'.cr.nl.'[/]+|'.cr.'[/]+|'.nl.'[/]+%S', a0, $text); # convert 'string_1'.'\n'.'//////'.'string_2' to 'string_1'.'\0'.'string_2'
     $c_line = strtok($text, cr.nl);
     $c_line_number = 0;
     $c_depth_old = -1;
-    $allowed_classes = [];
-    if (count($classes))
-              $classes[]= '\\stdClass';
-    foreach (array_filter($classes, 'strlen') as $c_class) {
-      if ($c_class[0] === '\\') $allowed_classes[              $c_class] =               $c_class;
-      if ($c_class[0] !== '\\') $allowed_classes['\\effcore\\'.$c_class] = '\\effcore\\'.$c_class;
-    }
     while ($c_line !== false) {
       $c_line_number++;
     # skip empty line

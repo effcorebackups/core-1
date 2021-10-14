@@ -22,7 +22,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # reverse the deployment process: delete files
   # ─────────────────────────────────────────────────────────────────────
-    $copy = storage::get('files')->select('copy');
+    $copy = storage::get('data')->select('copy');
     if ( isset($copy[$this->id]) ) {
       foreach ($copy[$this->id] as $c_info) {
         $c_file = new file($c_info->to);
@@ -55,7 +55,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
   # delete changes
   # ─────────────────────────────────────────────────────────────────────
-    storage::get('files')->changes_delete_all(
+    storage::get('data')->changes_delete_all(
       $this->id
     );
 

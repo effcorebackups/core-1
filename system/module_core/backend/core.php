@@ -49,23 +49,23 @@ namespace effcore {
 
   static function structure_autoload($name) {
     $name = strtolower($name);
-    if ($name === 'effcore\\cache'              ) {require_once(dir_system.'module_core/backend/cache.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/cache.php',                           'ok'); return;}
-    if ($name === 'effcore\\console'            ) {require_once(dir_system.'module_core/backend/console.php'                        ); console::log_insert('file', 'insertion', 'system/module_core/backend/console.php',                         'ok'); return;}
-    if ($name === 'effcore\\data'               ) {require_once(dir_system.'module_core/backend/data.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/data.php',                            'ok'); return;}
-    if ($name === 'effcore\\dynamic'            ) {require_once(dir_system.'module_core/backend/dynamic.php'                        ); console::log_insert('file', 'insertion', 'system/module_core/backend/dynamic.php',                         'ok'); return;}
-    if ($name === 'effcore\\file'               ) {require_once(dir_system.'module_core/backend/file.php'                           ); console::log_insert('file', 'insertion', 'system/module_core/backend/file.php',                            'ok'); return;}
-    if ($name === 'effcore\\markup'             ) {require_once(dir_system.'module_page/backend/pattern--markup.php'                ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--markup.php',                 'ok'); return;}
-    if ($name === 'effcore\\message'            ) {require_once(dir_system.'module_core/backend/pattern--message.php'               ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--message.php',                'ok'); return;}
-    if ($name === 'effcore\\module_as_profile'  ) {require_once(dir_system.'module_core/backend/pattern--module_as_profile.php'     ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_as_profile.php',      'ok'); return;}
-    if ($name === 'effcore\\module_embedded'    ) {require_once(dir_system.'module_core/backend/pattern--module_embedded.php'       ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_embedded.php',        'ok'); return;}
-    if ($name === 'effcore\\module'             ) {require_once(dir_system.'module_core/backend/pattern--module.php'                ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module.php',                 'ok'); return;}
-    if ($name === 'effcore\\node_simple'        ) {require_once(dir_system.'module_page/backend/pattern--node_simple.php'           ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--node_simple.php',            'ok'); return;}
-    if ($name === 'effcore\\node'               ) {require_once(dir_system.'module_page/backend/pattern--node.php'                  ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--node.php',                   'ok'); return;}
-    if ($name === 'effcore\\storage_nosql_files') {require_once(dir_system.'module_storage/backend/pattern--storage_nosql_files.php'); console::log_insert('file', 'insertion', 'system/module_storage/backend/pattern--storage_nosql_files.php', 'ok'); return;}
-    if ($name === 'effcore\\text_multiline'     ) {require_once(dir_system.'module_page/backend/pattern--text_multiline.php'        ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text_multiline.php',         'ok'); return;}
-    if ($name === 'effcore\\text_simple'        ) {require_once(dir_system.'module_page/backend/pattern--text_simple.php'           ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text_simple.php',            'ok'); return;}
-    if ($name === 'effcore\\text'               ) {require_once(dir_system.'module_page/backend/pattern--text.php'                  ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text.php',                   'ok'); return;}
-    if ($name === 'effcore\\timer'              ) {require_once(dir_system.'module_core/backend/timer.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/timer.php',                           'ok'); return;}
+    if ($name === 'effcore\\cache'             ) {require_once(dir_system.'module_core/backend/cache.php'                         ); console::log_insert('file', 'insertion', 'system/module_core/backend/cache.php',                          'ok'); return;}
+    if ($name === 'effcore\\console'           ) {require_once(dir_system.'module_core/backend/console.php'                       ); console::log_insert('file', 'insertion', 'system/module_core/backend/console.php',                        'ok'); return;}
+    if ($name === 'effcore\\data'              ) {require_once(dir_system.'module_core/backend/data.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/data.php',                           'ok'); return;}
+    if ($name === 'effcore\\dynamic'           ) {require_once(dir_system.'module_core/backend/dynamic.php'                       ); console::log_insert('file', 'insertion', 'system/module_core/backend/dynamic.php',                        'ok'); return;}
+    if ($name === 'effcore\\file'              ) {require_once(dir_system.'module_core/backend/file.php'                          ); console::log_insert('file', 'insertion', 'system/module_core/backend/file.php',                           'ok'); return;}
+    if ($name === 'effcore\\markup'            ) {require_once(dir_system.'module_page/backend/pattern--markup.php'               ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--markup.php',                'ok'); return;}
+    if ($name === 'effcore\\message'           ) {require_once(dir_system.'module_core/backend/pattern--message.php'              ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--message.php',               'ok'); return;}
+    if ($name === 'effcore\\module_as_profile' ) {require_once(dir_system.'module_core/backend/pattern--module_as_profile.php'    ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_as_profile.php',     'ok'); return;}
+    if ($name === 'effcore\\module_embedded'   ) {require_once(dir_system.'module_core/backend/pattern--module_embedded.php'      ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module_embedded.php',       'ok'); return;}
+    if ($name === 'effcore\\module'            ) {require_once(dir_system.'module_core/backend/pattern--module.php'               ); console::log_insert('file', 'insertion', 'system/module_core/backend/pattern--module.php',                'ok'); return;}
+    if ($name === 'effcore\\node_simple'       ) {require_once(dir_system.'module_page/backend/pattern--node_simple.php'          ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--node_simple.php',           'ok'); return;}
+    if ($name === 'effcore\\node'              ) {require_once(dir_system.'module_page/backend/pattern--node.php'                 ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--node.php',                  'ok'); return;}
+    if ($name === 'effcore\\storage_nosql_data') {require_once(dir_system.'module_storage/backend/pattern--storage_nosql_data.php'); console::log_insert('file', 'insertion', 'system/module_storage/backend/pattern--storage_nosql_data.php', 'ok'); return;}
+    if ($name === 'effcore\\text_multiline'    ) {require_once(dir_system.'module_page/backend/pattern--text_multiline.php'       ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text_multiline.php',        'ok'); return;}
+    if ($name === 'effcore\\text_simple'       ) {require_once(dir_system.'module_page/backend/pattern--text_simple.php'          ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text_simple.php',           'ok'); return;}
+    if ($name === 'effcore\\text'              ) {require_once(dir_system.'module_page/backend/pattern--text.php'                 ); console::log_insert('file', 'insertion', 'system/module_page/backend/pattern--text.php',                  'ok'); return;}
+    if ($name === 'effcore\\timer'             ) {require_once(dir_system.'module_core/backend/timer.php'                         ); console::log_insert('file', 'insertion', 'system/module_core/backend/timer.php',                          'ok'); return;}
     console::log_insert('autoload', 'search', $name, 'ok');
     if (isset(static::structures_select()[$name])) {
       $c_item_info = static::structures_select()[$name];
@@ -88,7 +88,7 @@ namespace effcore {
     else {
       $result       = [];
       $files        = [];
-      $preparse     = storage_nosql_files::data_find_and_parse_modules_and_bundles();
+      $preparse     = storage_nosql_data::data_find_and_parse_modules_and_bundles();
       $modules_path = $preparse->modules_path;
       $enabled      = static::boot_select('enabled') + $modules_to_include; # === module::get_enabled_by_boot() + $modules_to_include
     # if no modules in the boot (when installing)
@@ -900,7 +900,7 @@ namespace effcore {
   }
 
   static function cron_run_register() {
-    return storage::get('files')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
+    return storage::get('data')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
   }
 
   ########################

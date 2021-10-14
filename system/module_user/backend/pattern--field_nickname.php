@@ -21,9 +21,10 @@ namespace effcore {
   ];
 
   function render_description() {
-    if (!$this->description)
-         $this->description = new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_for_description]);
-    return parent::render_description();
+   $this->description = static::description_prepare($this->description);
+   if (!isset($this->description['characters-allowed']))
+              $this->description['characters-allowed'] = new markup('p', ['data-id' => 'characters-allowed'], new text('Field value can contain only the next characters: %%_characters', ['characters' => static::characters_allowed_for_description]));
+   return parent::render_description();
   }
 
   ###########################

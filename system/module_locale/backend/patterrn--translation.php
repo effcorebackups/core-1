@@ -28,7 +28,7 @@ namespace effcore {
 
   static function init($code) {
     if (!isset(static::$cache[$code])) {
-      foreach (storage::get('files')->select_array('translations') as $c_module_id => $c_translations) {
+      foreach (storage::get('data')->select_array('translations') as $c_module_id => $c_translations) {
         foreach ($c_translations as $c_row_id => $c_translation) {
           if ($c_translation->code === $code) {
             if ($c_translation instanceof external_cache)

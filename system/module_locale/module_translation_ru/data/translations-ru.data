@@ -131,6 +131,7 @@ translations
     - Data deletion form: Форма удаления данных
     - Data hash: Хэш данных
     - Data ID: ID данных
+    - Data in "data" format: Данные в формате "data"
     - Data insertion form: Форма вставки данных
     - Data management form: Форма управления данными
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
@@ -226,6 +227,7 @@ translations
     - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значение поля может содержать минимум %%_number символ%%_plural{number|ov-a}.
     - Field value can contain only %%_number character%%_plural{number\|s}.: Значение поля может содержать только %%_number символ%%_plural{number|ov-a}.
     - Field value can contain only the next characters\: %%_characters: Значение поля может содержать только следующие символы: %%_characters
+    - Field value can contain only the next classes\: %%_classes: Значение поля может содержать только следующие классы: %%_classes
     - Field value can contain Unicode.: Значение поля может содержать Юникод.
     - Field value cannot be greater than\: %%_value: Значение поля не может быть больше чем: %%_value
     - Field value cannot be less than\: %%_value: Значение поля не может быть меньше чем: %%_value

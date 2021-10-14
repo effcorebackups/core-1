@@ -284,7 +284,7 @@ namespace effcore {
 
   static function init() {
     if (static::$cache_file_types === null) {
-      foreach (storage::get('files')->select_array('file_types') as $c_module_id => $c_file_types) {
+      foreach (storage::get('data')->select_array('file_types') as $c_module_id => $c_file_types) {
         foreach ($c_file_types as $c_row_id => $c_file_type) {
           if (isset(static::$cache_file_types[$c_file_type->type])) console::report_about_duplicate('file_types', $c_file_type->type, $c_module_id, static::$cache_file_types[$c_file_type->type]);
                     static::$cache_file_types[$c_file_type->type] = $c_file_type;

@@ -133,13 +133,13 @@ namespace effcore {
   }
 
   function render_description() {
-    $this->render_prepare_description();
-    if ($this->min_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description[] = $this->render_description_file_min_number();
-    if ($this->max_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description[] = $this->render_description_file_max_number();
-    if ($this->min_files_number !== null && $this->min_files_number === $this->max_files_number) $this->description[] = $this->render_description_file_mid_number();
-                                                   $this->description[] = $this->render_description_file_size_max();
-    if ($this->types_allowed                     ) $this->description[] = $this->render_description_file_types_allowed();
-    if ($this->characters_allowed_for_decsription) $this->description[] = $this->render_description_file_characters_allowed_for_decsription();
+    $this->description = static::description_prepare($this->description);
+    if ($this->min_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description['file-number-min'        ] = $this->render_description_file_min_number();
+    if ($this->max_files_number !== null && $this->min_files_number !== $this->max_files_number) $this->description['file-number-max'        ] = $this->render_description_file_max_number();
+    if ($this->min_files_number !== null && $this->min_files_number === $this->max_files_number) $this->description['file-number-mid'        ] = $this->render_description_file_mid_number();
+                                                                                                 $this->description['file-size-max'          ] = $this->render_description_file_size_max();
+    if ($this->types_allowed                                                                   ) $this->description['file-allowed-types'     ] = $this->render_description_file_types_allowed();
+    if ($this->characters_allowed_for_decsription                                              ) $this->description['file-allowed-characters'] = $this->render_description_file_characters_allowed_for_decsription();
     return parent::render_description();
   }
 

@@ -19,7 +19,7 @@ namespace effcore\modules\develop {
   static function on_submit($event, $form, $items) {
     switch ($form->clicked_button->value_get()) {
       case 'save':
-        $result = storage::get('files')->changes_insert('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
+        $result = storage::get('data')->changes_insert('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
         console::init(true);

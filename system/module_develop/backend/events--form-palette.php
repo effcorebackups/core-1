@@ -8,7 +8,7 @@ namespace effcore\modules\develop {
           use \effcore\color;
           use \effcore\markup;
           use \effcore\message;
-          use \effcore\storage_nosql_files;
+          use \effcore\storage_nosql_data;
           use \effcore\text;
           abstract class events_form_palette {
 
@@ -27,7 +27,7 @@ namespace effcore\modules\develop {
           $palette_colors[$c_color_id] = new color($c_color_id, $c_color_value, $items['#group']->value_get());
           $palette_markup[$c_color_id] = new markup('x-color', ['style' => 'background-color: '.$c_color_value]); }
         $items['palette/report']->child_select('palette')->child_insert(new markup('x-palette', [], $palette_markup), 'palette');
-        $items['palette/report']->child_select('data'   )->child_insert(new text(storage_nosql_files::data_to_text($palette_colors, 'colors')), 'data');
+        $items['palette/report']->child_select('data'   )->child_insert(new text(storage_nosql_data::data_to_text($palette_colors, 'colors')), 'data');
         message::insert('Generation done.');
         break;
     }

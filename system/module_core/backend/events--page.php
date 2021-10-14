@@ -65,7 +65,7 @@ namespace effcore\modules\core {
           if ($c_block instanceof block             &&
               $c_block->type             === 'link' && strpos(
               $c_block->source, 'tabs/') === 0) {
-            $active_tab = storage::get('files')->select($c_block->source, true);
+            $active_tab = storage::get('data')->select($c_block->source, true);
           }
         }
       }

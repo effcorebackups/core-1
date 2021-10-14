@@ -39,12 +39,12 @@ namespace effcore\modules\user {
     switch ($form->clicked_button->value_get()) {
       case 'save':
         $result = true;
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/cookie_domain',               $items['#cookie_domain'         ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/login_attempts',         (int)$items['#login_attempts'        ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/blocked_until',          (int)$items['#blocked_until'         ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/session_duration_min',   (int)$items['#session_duration_min'  ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/session_duration_max',   (int)$items['#session_duration_max'  ]->value_get(), false);
-        $result&= storage::get('files')->changes_insert('user', 'update', 'settings/user/send_password_to_email', (int)$items['#send_password_to_email']->value_get());
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/cookie_domain',               $items['#cookie_domain'         ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/login_attempts',         (int)$items['#login_attempts'        ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/blocked_until',          (int)$items['#blocked_until'         ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/session_duration_min',   (int)$items['#session_duration_min'  ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/session_duration_max',   (int)$items['#session_duration_max'  ]->value_get(), false);
+        $result&= storage::get('data')->changes_insert('user', 'update', 'settings/user/send_password_to_email', (int)$items['#send_password_to_email']->value_get());
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
         break;

@@ -26,7 +26,7 @@ namespace effcore\modules\core {
     $copyright = new markup('x-copyright', [], 'Copyright © 2017—2021 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
-      new markup('x-value', [], storage::get('files')->select('bundle/system/build'))]);
+      new markup('x-value', [], storage::get('data')->select('bundle/system/build'))]);
     return new node([], [
       $logo,
       $copyright,

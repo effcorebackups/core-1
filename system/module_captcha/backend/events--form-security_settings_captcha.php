@@ -60,8 +60,8 @@ namespace effcore\modules\captcha {
         $row_ids = [];
         foreach (glyph::get_all() as $c_row_id => $c_item)
           if ($items['#is_enabled_glyph:'.$c_row_id]->checked_get()) $row_ids[$c_row_id] = $c_row_id;
-        $result = storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', (int)$items['#length']->value_get(), false);
-        $result&= storage::get('files')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $row_ids);
+        $result = storage::get('data')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', (int)$items['#length']->value_get(), false);
+        $result&= storage::get('data')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $row_ids);
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
         if ($result) {
@@ -70,8 +70,8 @@ namespace effcore\modules\captcha {
         }
         break;
       case 'reset':
-        $result = storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length', false);
-        $result&= storage::get('files')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs');
+        $result = storage::get('data')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length', false);
+        $result&= storage::get('data')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs');
         if ($result) message::insert('Changes was deleted.'             );
         else         message::insert('Changes was not deleted!', 'error');
         if ($result) {

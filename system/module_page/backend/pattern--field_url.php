@@ -22,19 +22,19 @@ namespace effcore {
   public $should_be_excluded = []; # protocol, domain, path, query, anchor
 
   function render_description() {
-    $this->render_prepare_description();
-    if (isset($this->should_be_excluded['protocol'])) $this->description[] = new markup('p', ['data-id' => 'url-not-protocol'], 'Field value should not contain protocol.');
-    if (isset($this->should_be_excluded['domain'  ])) $this->description[] = new markup('p', ['data-id' => 'url-not-domain'  ], 'Field value should not contain domain.'  );
-    if (isset($this->should_be_excluded['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-not-path'    ], 'Field value should not contain path.'    );
-    if (isset($this->should_be_excluded['query'   ])) $this->description[] = new markup('p', ['data-id' => 'url-not-query'   ], 'Field value should not contain query.'   );
-    if (isset($this->should_be_excluded['anchor'  ])) $this->description[] = new markup('p', ['data-id' => 'url-not-anchor'  ], 'Field value should not contain anchor.'  );
-    if (isset($this->should_be_included['protocol'])) $this->description[] = new markup('p', ['data-id' => 'url-protocol'    ], 'Field value should contain protocol.'    );
-    if (isset($this->should_be_included['domain'  ])) $this->description[] = new markup('p', ['data-id' => 'url-domain'      ], 'Field value should contain domain.'      );
-    if (isset($this->should_be_included['path'    ])) $this->description[] = new markup('p', ['data-id' => 'url-path'        ], 'Field value should contain path.'        );
-    if (isset($this->should_be_included['query'   ])) $this->description[] = new markup('p', ['data-id' => 'url-query'       ], 'Field value should contain query.'       );
-    if (isset($this->should_be_included['anchor'  ])) $this->description[] = new markup('p', ['data-id' => 'url-anchor'      ], 'Field value should contain anchor.'      );
-    if (      $this->is_allowed_unicode === true    ) $this->description[] = new markup('p', ['data-id' => 'url-unicode'     ], 'Field value can contain Unicode.'        );
-    if (      $this->is_allowed_unicode !== true    ) $this->description[] = new markup('p', ['data-id' => 'url-not-unicode' ], 'Field value cannot contain Unicode.'     );
+    $this->description = static::description_prepare($this->description);
+    if (isset($this->should_be_excluded['protocol'])) $this->description['url-not-protocol'] = new markup('p', ['data-id' => 'url-not-protocol'], 'Field value should not contain protocol.');
+    if (isset($this->should_be_excluded['domain'  ])) $this->description['url-not-domain'  ] = new markup('p', ['data-id' => 'url-not-domain'  ], 'Field value should not contain domain.'  );
+    if (isset($this->should_be_excluded['path'    ])) $this->description['url-not-path'    ] = new markup('p', ['data-id' => 'url-not-path'    ], 'Field value should not contain path.'    );
+    if (isset($this->should_be_excluded['query'   ])) $this->description['url-not-query'   ] = new markup('p', ['data-id' => 'url-not-query'   ], 'Field value should not contain query.'   );
+    if (isset($this->should_be_excluded['anchor'  ])) $this->description['url-not-anchor'  ] = new markup('p', ['data-id' => 'url-not-anchor'  ], 'Field value should not contain anchor.'  );
+    if (isset($this->should_be_included['protocol'])) $this->description['url-protocol'    ] = new markup('p', ['data-id' => 'url-protocol'    ], 'Field value should contain protocol.'    );
+    if (isset($this->should_be_included['domain'  ])) $this->description['url-domain'      ] = new markup('p', ['data-id' => 'url-domain'      ], 'Field value should contain domain.'      );
+    if (isset($this->should_be_included['path'    ])) $this->description['url-path'        ] = new markup('p', ['data-id' => 'url-path'        ], 'Field value should contain path.'        );
+    if (isset($this->should_be_included['query'   ])) $this->description['url-query'       ] = new markup('p', ['data-id' => 'url-query'       ], 'Field value should contain query.'       );
+    if (isset($this->should_be_included['anchor'  ])) $this->description['url-anchor'      ] = new markup('p', ['data-id' => 'url-anchor'      ], 'Field value should contain anchor.'      );
+    if (      $this->is_allowed_unicode === true    ) $this->description['url-unicode'     ] = new markup('p', ['data-id' => 'url-unicode'     ], 'Field value can contain Unicode.'        );
+    if (      $this->is_allowed_unicode !== true    ) $this->description['url-not-unicode' ] = new markup('p', ['data-id' => 'url-not-unicode' ], 'Field value cannot contain Unicode.'     );
     return parent::render_description();
   }
 
