@@ -90,7 +90,7 @@ tests
         - response_check--section--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/section$%
+            match: %(http|https)://%%_request_host{preg_quote}/section|/section$%
             on_failure
             - return_result|step_return
                 value: 0
