@@ -124,7 +124,6 @@ translations
     - make request to "%%_url": сделать запрос на "%%_url"
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
-    - matches: соответствует
     - memory consumption: потребление памяти
     - method private: метод приватный
     - method protected: метод защищённый
