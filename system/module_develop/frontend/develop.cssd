@@ -93,8 +93,11 @@
     test_form_validation_id: %%_test_form_validation_id{some_form_id}
     test_cookies: %%_test_cookies
     test_response_http_code: %%_test_response_http_code
+    test_response_location: %%_test_response_location
+    test_response_content_length: %%_test_response_content_length
     test_response_submit_error: %%_test_response_submit_error
     test_response_time_total: %%_test_response_time_total
+    test_response_return_level: %%_test_response_return_level
     ───────────────────────────────────────────────────────────────────── */
 
   /* console */

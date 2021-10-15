@@ -12,6 +12,7 @@ namespace effcore {
     if (module::is_enabled('test')) {
       header('X-PHP-Memory-usage: '.memory_get_usage(true));
       header('X-Time-total: '.timer::period_get('total', 0, 1));
+      header('X-Return-level: system-exit');
     }
     switch ($type) {
       case 'redirect'              : header('Location: '.$p                      );                                                                                                          break;

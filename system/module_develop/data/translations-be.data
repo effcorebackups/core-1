@@ -26,6 +26,7 @@ translations
     - Autoincrement: Аўтаінкрымент
     - autoload: аўтазагрузка
     - beginning: пачатак
+    - calculated real value = "%%_value_real": вылічанае рэальнае значэнне = "%%_value_real"
     - Call "%%_call" for #%%_number: Выклік "%%_call" для #%%_number
     - Call "%%_call" on click "%%_click": Выклік "%%_call" на націск "%%_click"
     - call "%%_call": выклік "%%_call"
