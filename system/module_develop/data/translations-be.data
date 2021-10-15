@@ -26,7 +26,6 @@ translations
     - Autoincrement: Аўтаінкрымент
     - autoload: аўтазагрузка
     - beginning: пачатак
-    - calculated real value = "%%_value_real": вылічанае рэальнае значэнне = "%%_value_real"
     - Call "%%_call" for #%%_number: Выклік "%%_call" для #%%_number
     - Call "%%_call" on click "%%_click": Выклік "%%_call" на націск "%%_click"
     - call "%%_call": выклік "%%_call"
@@ -39,7 +38,7 @@ translations
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
     - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + адзначаны)
-    - checking on "%%_name" = "%%_value": праверка на "%%_name" = "%%_value"
+    - checking on "%%_operand_1" %%_operator "%%_operand_2": праверка на "%%_operand_1" %%_operator "%%_operand_2"
     - Classes: Класы
     - Collations: Параўнанні
     - Color for generation: Колер для генерацыі
@@ -125,6 +124,7 @@ translations
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
+    - matches: адпавядае
     - memory consumption: спажыванне памяці
     - method private: метад прыватны
     - method protected: метад абаронены
@@ -167,6 +167,7 @@ translations
     - Radiobutton 2 (checked): Перамыкач 2 (адзначаны)
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
     - RAM load dynamics: Дынаміка загрузкі АЗП
+    - real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2": рэальная праверка на "%%_operand_real_1" %%_operator "%%_operand_real_2"
     - REGISTERED USER + ROLE: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК + РОЛЯ
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)

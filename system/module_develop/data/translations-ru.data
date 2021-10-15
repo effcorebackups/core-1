@@ -26,7 +26,6 @@ translations
     - Autoincrement: Автоинкремент
     - autoload: автозагрузка
     - beginning: начало
-    - calculated real value = "%%_value_real": вычисленное реальное значение = "%%_value_real"
     - Call "%%_call" for #%%_number: Вызов "%%_call" для #%%_number
     - Call "%%_call" on click "%%_click": Вызов "%%_call" на нажатие "%%_click"
     - call "%%_call": вызов "%%_call"
@@ -39,7 +38,7 @@ translations
     - Checkbox 2 (checked): Флажок 2 (отмечен)
     - Checkbox 3 (disabled): Флажок 3 (отключён)
     - Checkbox 4 (disabled + checked): Флажок 4 (отключён + отмечен)
-    - checking on "%%_name" = "%%_value": проверка на "%%_name" = "%%_value"
+    - checking on "%%_operand_1" %%_operator "%%_operand_2": проверка на "%%_operand_1" %%_operator "%%_operand_2"
     - Classes: Классы
     - Collations: Сравнения
     - Color for generation: Цвет для генерации
@@ -125,6 +124,7 @@ translations
     - make request to "%%_url": сделать запрос на "%%_url"
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
+    - matches: соответствует
     - memory consumption: потребление памяти
     - method private: метод приватный
     - method protected: метод защищённый
@@ -167,6 +167,7 @@ translations
     - Radiobutton 2 (checked): Переключатель 2 (отмечен)
     - Radiobutton 3 (disabled): Переключатель 3 (отключён)
     - RAM load dynamics: Динамика загрузки ОЗУ
+    - real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2": реальная проверка на "%%_operand_real_1" %%_operator "%%_operand_real_2"
     - REGISTERED USER + ROLE: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ + РОЛЬ
     - REGISTERED USER: ЗАРЕГИСТРИРОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
     - Relation (tree view): Связь (в виде дерева)
