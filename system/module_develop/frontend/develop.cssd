@@ -9,6 +9,15 @@
     avatar_path: %%_avatar_path
     nickname_page_context: %%_nickname_page_context{some_page_arg}
     ─────────────────────────────────────────────────────────────────────
+    request_scheme: %%_request_scheme
+    request_host: %%_request_host
+    request_host_decode: %%_request_host_decode
+    request_addr: %%_request_addr
+    request_addr_remote: %%_request_addr_remote
+    request_uri: %%_request_uri
+    request_path: %%_request_path
+    request_query: %%_request_query
+    ─────────────────────────────────────────────────────────────────────
     page_width_min: %%_page_width_min
     page_width_max: %%_page_width_max
     thumbnail_width_small: %%_thumbnail_width_small

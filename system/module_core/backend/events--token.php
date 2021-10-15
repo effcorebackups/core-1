@@ -12,6 +12,14 @@ namespace effcore\modules\core {
 
   static function on_apply($name, $args = []) {
     switch ($name) {
+      case 'request_scheme'     : return request::scheme_get();
+      case 'request_host'       : return request::host_get();
+      case 'request_host_decode': return request::host_get(true);
+      case 'request_addr'       : return request::addr_get();
+      case 'request_addr_remote': return request::addr_remote_get();
+      case 'request_uri'        : return request::uri_get();
+      case 'request_path'       : return request::path_get();
+      case 'request_query'      : return request::query_get();
       case 'return_if_token':
         if (count($args) > 2) {
           $text = token::text_decode($args[0]);
