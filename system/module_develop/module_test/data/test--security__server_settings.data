@@ -90,7 +90,7 @@ tests
         - response_check--section--location|step_check
             check: token
             where: %%_test_response_location
-            match: /section
+            match: %.*/section$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -233,7 +233,7 @@ tests
         - response_check----location|step_check
             check: token
             where: %%_test_response_location
-            match: /
+            match: %.*/$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -254,7 +254,7 @@ tests
         - response_check--page--location|step_check
             check: token
             where: %%_test_response_location
-            match: /page
+            match: %.*/page$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -317,7 +317,7 @@ tests
         - response_check--section---location|step_check
             check: token
             where: %%_test_response_location
-            match: /section
+            match: %.*/section$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -338,7 +338,7 @@ tests
         - response_check--section-page--location|step_check
             check: token
             where: %%_test_response_location
-            match: /section/page
+            match: %.*/section/page$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -415,7 +415,7 @@ tests
         - response_check--file.--location|step_check
             check: token
             where: %%_test_response_location
-            match: /file.
+            match: %.*/file\.$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -436,7 +436,7 @@ tests
         - response_check--file.type--location|step_check
             check: token
             where: %%_test_response_location
-            match: /file.type
+            match: %.*/file\.type$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -541,7 +541,7 @@ tests
         - response_check--directory-file.--location|step_check
             check: token
             where: %%_test_response_location
-            match: /directory/file.
+            match: %.*/directory/file\.$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -562,7 +562,7 @@ tests
         - response_check--directory-file.type--location|step_check
             check: token
             where: %%_test_response_location
-            match: /directory/file.type
+            match: %.*/directory/file\.type$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -1674,7 +1674,7 @@ tests
         - response_check--?page=front&unknown=true=-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/\?page=front%
+            match: %.*/\?page=front$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -1709,7 +1709,7 @@ tests
         - response_check--login?page=front&unknown=true-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/login\?page=front%
+            match: %.*/login\?page=front$%
             on_failure
             - return_result|step_return
                 value: 0
