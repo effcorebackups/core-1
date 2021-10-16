@@ -210,7 +210,7 @@ namespace effcore {
   }
 
   static function addr_get() {
-    return $_SERVER['SERVER_ADDR'];
+    return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'LOCAL_ADDR' : 'SERVER_ADDR'];
   }
 
   static function addr_remote_get() {
