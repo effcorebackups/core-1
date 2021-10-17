@@ -1522,11 +1522,18 @@ tests
             where: %%_test_response_http_code
             match: 400
             on_failure
-            # case for: IIS
-            - response_check--..-iis|step_check
+            - if-iis|step_check
                 check: token
-                where: %%_test_response_http_code
-                match: 403
+                where: %%_test_software_name
+                match: microsoft-iis
+                on_success
+                - if-iis-403|step_check
+                    check: token
+                    where: %%_test_response_http_code
+                    match: 403
+                    on_failure
+                    - return_result|step_return
+                        value: 0
                 on_failure
                 - return_result|step_return
                     value: 0
