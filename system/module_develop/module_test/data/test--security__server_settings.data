@@ -1523,7 +1523,7 @@ tests
             match: 400
             on_failure
             # case for: IIS
-            - response_check--..-403|step_check
+            - response_check--..-iis|step_check
                 check: token
                 where: %%_test_response_http_code
                 match: 403
@@ -1578,7 +1578,7 @@ tests
             match: 400
             on_failure
             # case for: IIS
-            - response_check--..-403|step_check
+            - response_check--..-iis|step_check
                 check: token
                 where: %%_test_response_http_code
                 match: 403
@@ -1766,7 +1766,7 @@ tests
             match: 400
             on_failure
             # case for: IIS
-            - response_check--..-403|step_check
+            - response_check--..-iis|step_check
                 check: token
                 where: %%_test_response_http_code
                 match: 403
@@ -2020,7 +2020,7 @@ tests
             match: 400
             on_failure
             # case for: IIS
-            - response_check--..-..-..-..-..-..-etc-passwd-403|step_check
+            - response_check--..-..-..-..-..-..-etc-passwd-iis|step_check
                 check: token
                 where: %%_test_response_http_code
                 match: 403
