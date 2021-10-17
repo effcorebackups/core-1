@@ -17,6 +17,7 @@
     request_uri: %%_request_uri
     request_path: %%_request_path
     request_query: %%_request_query
+    request_software_name: %%_request_software_name
     request_scheme{preg_quote}: %%_request_scheme{preg_quote}
     request_host{preg_quote}: %%_request_host{preg_quote}
     request_host_decode{preg_quote}: %%_request_host_decode{preg_quote}
@@ -25,6 +26,7 @@
     request_uri{preg_quote}: %%_request_uri{preg_quote}
     request_path{preg_quote}: %%_request_path{preg_quote}
     request_query{preg_quote}: %%_request_query{preg_quote}
+    request_software_name{preg_quote}: %%_request_software_name{preg_quote}
     ─────────────────────────────────────────────────────────────────────
     page_width_min: %%_page_width_min
     page_width_max: %%_page_width_max
