@@ -26,9 +26,6 @@ tokens
 - request_query
     type: code
     handler: \effcore\modules\core\events_token::on_apply
-- request_software_name
-    type: code
-    handler: \effcore\modules\core\events_token::on_apply
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - return_if_token
     type: code

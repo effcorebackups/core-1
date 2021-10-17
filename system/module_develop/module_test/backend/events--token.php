@@ -8,6 +8,7 @@ namespace effcore\modules\test {
           use \effcore\captcha;
           use \effcore\core;
           use \effcore\module;
+          use \effcore\request;
           use \effcore\step_request;
           use \effcore\user;
           abstract class events_token {
@@ -15,6 +16,7 @@ namespace effcore\modules\test {
   static protected $cache = [];
 
   static function on_apply($name, $args = []) {
+    if ($name === 'test_software_name') return request::software_get_info()->name ?? '';
     if ($name === 'test_email_random'    && count($args) === 0) {                                                                                                                                            return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff)).'@example.com';}
     if ($name === 'test_nickname_random' && count($args) === 0) {                                                                                                                                            return 'test_'.core::hash_get_mini(random_int(0, 0x7fffffff));               }
     if ($name === 'test_password_random' && count($args) === 0) {                                                                                                                                            return         user::password_generate();                                    }

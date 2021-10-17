@@ -1,4 +1,7 @@
 tokens
+- test_software_name
+    type: code
+    handler: \effcore\modules\test\events_token::on_apply
 - test_email_random
     type: code
     handler: \effcore\modules\test\events_token::on_apply
