@@ -16,8 +16,8 @@ namespace effcore {
   function run(&$test, $dpath, &$c_results) {
     if ($this->check === 'token') {
       $is_regexp = is_string($this->match) && strlen($this->match) && $this->match[0] === '%';
-      $operand_1 = (string)token::apply($this->where);
-      $operand_2 = (string)token::apply($this->match);
+      $operand_1 = token::apply((string)$this->where);
+      $operand_2 = token::apply((string)$this->match);
       if ($is_regexp) $result = (bool)preg_match($operand_2,    $operand_1);
       else            $result =                  $operand_2 === $operand_1;
       if ($result === true) $c_results['reports'][$dpath.'/on_success_title'] = new text_multiline(['checking on "%%_operand_1" %%_operator "%%_operand_2"', 'real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2"', 'result of checking is = "%%_result"'], ['operand_1' => $this->where, 'operand_2' => $this->match, 'operand_real_1' => $operand_1, 'operand_real_2' => $operand_2, 'operator' => $is_regexp ? '≈' : '=', 'result' => (new text('success'))->render() ]);
