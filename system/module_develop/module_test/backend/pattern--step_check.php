@@ -15,7 +15,7 @@ namespace effcore {
 
   function run(&$test, $dpath, &$c_results) {
     if ($this->check === 'token') {
-      $is_regexp = is_string($this->match) && $this->match[0] === '%';
+      $is_regexp = is_string($this->match) && strlen($this->match) && $this->match[0] === '%';
       $operand_1 = (string)token::apply($this->where);
       $operand_2 = (string)token::apply($this->match);
       if ($is_regexp) $result = (bool)preg_match($operand_2,    $operand_1);

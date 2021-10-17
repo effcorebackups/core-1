@@ -115,6 +115,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/file."
         - request_url--file.|step_request
             url: /file.
@@ -154,6 +161,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -370,6 +384,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check---.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/file/.type"
         - request_url--file-.type|step_request
             url: /file/.type
@@ -381,6 +402,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--file-.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -496,6 +524,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--directory--.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/directory/file/.type"
         - request_url--directory-file-.type|step_request
             url: /directory/file/.type
@@ -507,6 +542,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-file-.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -614,6 +656,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--~page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/~"
         - request_url--~|step_request
             url: /~
@@ -625,6 +674,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--~-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -656,6 +712,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--~section-page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/~/page"
         - request_url--~-page|step_request
             url: /~/page
@@ -667,6 +730,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--~-page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -698,6 +768,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--section-~page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/section/~"
         - request_url--section-~|step_request
             url: /section/~
@@ -709,6 +786,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--section-~-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -740,6 +824,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--~file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/~.type"
         - request_url--~.type|step_request
             url: /~.type
@@ -751,6 +842,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--~.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -824,6 +922,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--~directory-file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/~/file.type"
         - request_url--~-file.type|step_request
             url: /~/file.type
@@ -835,6 +940,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--~-file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -866,6 +978,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--directory-~file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/directory/~.type"
         - request_url--directory-~.type|step_request
             url: /directory/~.type
@@ -877,6 +996,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-~.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -982,6 +1108,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/."
         - request_url--.|step_request
             url: /.
@@ -1021,6 +1154,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--.section-page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1066,6 +1206,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--section-.page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/section/."
         - request_url--section-.|step_request
             url: /section/.
@@ -1108,6 +1255,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/..type"
         - request_url--..type|step_request
             url: /..type
@@ -1119,6 +1273,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--..type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1178,6 +1339,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.directory-file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/./file.type"
         - request_url--.-file.type|step_request
             url: /./file.type
@@ -1220,6 +1388,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--directory-.file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/directory/..type"
         - request_url--directory-..type|step_request
             url: /directory/..type
@@ -1231,6 +1406,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-..type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1321,6 +1503,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--..page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/.."
         - request_url--..|step_request
             url: /..
@@ -1366,6 +1555,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--..section-page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1417,6 +1613,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--section-..page-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/section/.."
         - request_url--section-..|step_request
             url: /section/..
@@ -1459,6 +1662,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--..file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/...type"
         - request_url--...type|step_request
             url: /...type
@@ -1470,6 +1680,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--...type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1529,6 +1746,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--..directory-file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/../file.type"
         - request_url--..-file.type|step_request
             url: /../file.type
@@ -1577,6 +1801,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--directory-..file.type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/directory/...type"
         - request_url--directory-...type|step_request
             url: /directory/...type
@@ -1588,6 +1819,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--directory-...type-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1803,6 +2041,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--~-.ssh-id_rsa-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/~/any_file"
         - request_url--~-any_file|step_request
             url: /~/any_file
@@ -1814,6 +2059,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--~-any_file-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1831,6 +2083,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.git-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/.git/config"
         - request_url--.git-config|step_request
             url: /.git/config
@@ -1842,6 +2101,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--.git-config-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1859,6 +2125,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-.git-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/.git/config"
         - request_url--dynamic-.git-config|step_request
             url: /dynamic/.git/config
@@ -1870,6 +2143,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dynamic-.git-config-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1887,6 +2167,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.editorconfig-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/.gitattributes"
         - request_url--.gitattributes|step_request
             url: /.gitattributes
@@ -1898,6 +2185,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--.gitattributes-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1915,6 +2209,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.gitignore-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/.htaccess"
         - request_url--.htaccess|step_request
             url: /.htaccess
@@ -1926,6 +2227,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--.htaccess-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1943,6 +2251,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--.nginx-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/web.config"
         - request_url--web.config|step_request
             url: /web.config
@@ -1954,6 +2269,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--web.config-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -1971,6 +2293,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--index.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/license.md"
         - request_url--license.md|step_request
             url: /license.md
@@ -1982,6 +2311,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--license.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
@@ -2013,6 +2349,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--readme-about-en.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/shell"
         - request_url--shell|step_request
             url: /shell
@@ -2038,6 +2381,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--shell-dynamic_reset.sh-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
@@ -2083,6 +2433,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-cache-data_original.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/cache/readme.md"
         - request_url--dynamic-cache-readme.md|step_request
             url: /dynamic/cache/readme.md
@@ -2097,6 +2454,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-cache-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/cache/structures.php"
         - request_url--dynamic-cache-structures.php|step_request
             url: /dynamic/cache/structures.php
@@ -2108,6 +2472,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dynamic-cache-structures.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -2139,6 +2510,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-data-boot.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/data/changes.php"
         - request_url--dynamic-data-changes.php|step_request
             url: /dynamic/data/changes.php
@@ -2150,6 +2528,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dynamic-data-changes.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -2167,6 +2552,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-data-data.sqlite-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/data/readme.md"
         - request_url--dynamic-data-readme.md|step_request
             url: /dynamic/data/readme.md
@@ -2178,6 +2570,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dynamic-data-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -2209,6 +2608,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-files-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/logs"
         - request_url--dynamic-logs|step_request
             url: /dynamic/logs
@@ -2234,6 +2640,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dynamic-logs-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
@@ -2265,6 +2678,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--dynamic-tmp-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/modules"
         - request_url--modules|step_request
             url: /modules
@@ -2290,6 +2710,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--modules-readme.md-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
@@ -2321,6 +2748,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--system-boot.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/system/bundle.data"
         - request_url--system-bundle.data|step_request
             url: /system/bundle.data
@@ -2332,6 +2766,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--system-bundle.data-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
@@ -2363,6 +2804,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--system-module_page-module.data-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/system/module_page/backend/markers.php"
         - request_url--system-module_page-backend-markers.php|step_request
             url: /system/module_page/backend/markers.php
@@ -2377,6 +2825,13 @@ tests
             on_failure
             - return_result|step_return
                 value: 0
+        - response_check--system-module_page-backend-markers.php-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/system/module_page/data/entities.data"
         - request_url--system-module_page-data-entities.data|step_request
             url: /system/module_page/data/entities.data
@@ -2388,6 +2843,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--system-module_page-data-entities.data-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
@@ -2444,6 +2906,13 @@ tests
             check: token
             where: %%_test_response_http_code
             match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--system-module_page-frontend-template--canvas_svg.tpl-return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
             on_failure
             - return_result|step_return
                 value: 0
