@@ -52,7 +52,8 @@ namespace effcore\modules\test {
       $type = substr($name, strlen('test_response_'));
       $last_response = end(step_request::$history);
       if ($last_response) {
-        if ($type === 'http_code'      && isset($last_response['info'   ]) && array_key_exists('http_code',                  $last_response['info'   ])) return    (int)$last_response['info'   ]['http_code'];
+        if ($type === 'content'        && isset($last_response['data'])                                                                                ) return (string)$last_response['data'];
+        if ($type === 'http_code'      && isset($last_response['info'])    && array_key_exists('http_code',                  $last_response['info']   )) return    (int)$last_response['info']['http_code'];
         if ($type === 'location'       && isset($last_response['headers']) && array_key_exists('Location',                   $last_response['headers'])) return (string)$last_response['headers']['Location'];
         if ($type === 'content_length' && isset($last_response['headers']) && array_key_exists('Content-Length',             $last_response['headers'])) return    (int)$last_response['headers']['Content-Length'];
         if ($type === 'submit_error'   && isset($last_response['headers']) && array_key_exists('X-Form-Submit-Errors-Count', $last_response['headers'])) return    (int)$last_response['headers']['X-Form-Submit-Errors-Count'];

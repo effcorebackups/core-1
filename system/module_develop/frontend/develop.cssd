@@ -116,6 +116,7 @@
     test_response_submit_error: %%_test_response_submit_error
     test_response_time_total: %%_test_response_time_total
     test_response_return_level: %%_test_response_return_level
+    test_response_content: %%_test_response_content
     ───────────────────────────────────────────────────────────────────── */
 
   /* console */

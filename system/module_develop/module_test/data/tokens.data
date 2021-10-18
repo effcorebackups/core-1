@@ -20,10 +20,14 @@ tokens
 - test_cookies
     type: code
     handler: \effcore\modules\test\events_token::on_apply
-- test_response_content_length
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- test_response_content
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_response_http_code
+    type: code
+    handler: \effcore\modules\test\events_token::on_apply
+- test_response_content_length
     type: code
     handler: \effcore\modules\test\events_token::on_apply
 - test_response_location
