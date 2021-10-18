@@ -113,6 +113,7 @@
     test_response_http_code: %%_test_response_http_code
     test_response_location: %%_test_response_location
     test_response_content_length: %%_test_response_content_length
+    test_response_content_range: %%_test_response_content_range
     test_response_submit_error: %%_test_response_submit_error
     test_response_time_total: %%_test_response_time_total
     test_response_return_level: %%_test_response_return_level

@@ -92,6 +92,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range.txt-content_range-bytes=1-|step_check
+        check: token
+        where: %%_test_response_content_range
+        match: bytes 1-9/10
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range.txt-content-bytes=1-|step_check
         check: token
         where: %%_test_response_content
