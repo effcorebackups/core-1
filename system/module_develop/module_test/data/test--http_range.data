@@ -31,6 +31,24 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    # url "/system/module_develop/module_test/files/test_http_range.txt" [5…]
+    - title_for_5…|step_title
+        title: RANGE: BYTES=5-…
+    - request_url-test_http_range.txt-5…|step_request
+        url: /system/module_develop/module_test/files/test_http_range.txt
+        headers
+        - range: Range: bytes=5-
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-test_http_range.txt-5…|step_check
+        check: token
+        where: %%_test_response_content
+        match: fghij
+        on_failure
+        - return_result|step_return
+            value: 0
   # ─────────────────────────────────────────────────────────────────────
   # return
   # ─────────────────────────────────────────────────────────────────────
