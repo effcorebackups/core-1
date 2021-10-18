@@ -35,8 +35,31 @@ tests
           name: proxy
     - response_check-test_http_range.txt|step_check
         check: token
+        where: %%_test_response_http_code
+        match: 200
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range.txt-content|step_check
+        check: token
         where: %%_test_response_content
         match: abcdefghij
+        on_failure
+        - return_result|step_return
+            value: 0
+    # url "/system/module_develop/module_test/files/test_http_range.txt" [bytes=]
+    - request_url-test_http_range.txt-bytes=|step_request
+        url: /system/module_develop/module_test/files/test_http_range.txt
+        headers
+        - range: Range: bytes=
+        is_https|param_from_form
+          name: is_https
+        proxy|param_from_form
+          name: proxy
+    - response_check-test_http_range.txt-bytes=|step_check
+        check: token
+        where: %%_test_response_http_code
+        match: 416
         on_failure
         - return_result|step_return
             value: 0
@@ -62,7 +85,7 @@ tests
           name: is_https
         proxy|param_from_form
           name: proxy
-    - response_check-test_http_range.txt-bytes=1-|step_check
+    - response_check-test_http_range.txt-content-bytes=1-|step_check
         check: token
         where: %%_test_response_content
         match: bcdefghij
