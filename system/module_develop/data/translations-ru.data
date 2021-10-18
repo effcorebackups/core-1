@@ -224,6 +224,7 @@ translations
     - Total run time\: %%_time sec.: Общее время выполнения: %%_time сек.
     - Traits: Трейты
     - transposition %%_cur from %%_max (%%_state): перестановка %%_cur из %%_max (%%_state)
+    - TRANSPOSITIONS [-1 … length + 2]: ПЕРЕСТАНОВКИ [-1 … length + 2]
     - TRANSPOSITIONS OF "..": ПЕРЕСТАНОВКИ ".."
     - TRANSPOSITIONS OF ".": ПЕРЕСТАНОВКИ "."
     - TRANSPOSITIONS OF "": ПЕРЕСТАНОВКИ ""
