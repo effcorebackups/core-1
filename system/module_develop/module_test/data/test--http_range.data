@@ -16,6 +16,15 @@ tests
         title: HTTPS
         element_attributes
         - name: is_https
+  # ┌────────────────────────────────────────┬─────────┐
+  # │ headers                                │ support │
+  # ╞════════════════════════════════════════╪═════════╡
+  # │ Range: bytes=int-                      │    +    │
+  # │ Range: bytes=int-int                   │    +    │
+  # │ Range: bytes=int-int, int-int          │    -    │
+  # │ Range: bytes=int-int, int-int, int-int │    -    │
+  # │ Range: bytes=-<-length>                │    -    │
+  # └────────────────────────────────────────┴─────────┘
     scenario
     # url "/system/module_develop/module_test/files/test_http_range.txt"
     - request_url-test_http_range.txt|step_request
