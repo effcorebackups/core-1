@@ -200,11 +200,11 @@ selections
           attributes
           - href|text
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection__release__path__raw__context
+              text: http://%%_request_host/%%_selection_release_path_raw_context
           children
           - data|text
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection__release__path__raw__context
+              text: http://%%_request_host/%%_selection_release_path_raw_context
     - release.hash_sum
         type: field
         entity_name: release
@@ -262,11 +262,11 @@ selections
           attributes
           - href|text
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection__release__path__raw__context
+              text: http://%%_request_host/%%_selection_release_path_raw_context
           children
           - data|text
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection__release__path__raw__context
+              text: http://%%_request_host/%%_selection_release_path_raw_context
     - release.hash_sum
         type: field
         entity_name: release
