@@ -7,8 +7,8 @@
 namespace effcore {
           class field_id_text extends field_text {
 
-  const characters_allowed = 'a-z0-9_\\-';
-  const characters_allowed_for_description = '"a-z", "0-9", "_", "-"';
+  const characters_allowed = 'a-z0-9_';
+  const characters_allowed_for_description = '"a-z", "0-9", "_"';
 
   public $title = 'ID';
   public $attributes = ['data-type' => 'id_text'];

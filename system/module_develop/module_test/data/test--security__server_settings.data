@@ -1895,80 +1895,80 @@ tests
   # ─────────────────────────────────────────────────────────────────────
   # FILTRATION OF PARAMETERS
   # ═════════════════════════════════════════════════════════════════════
-  # /?page=front
-  # /?page=front&unkwond=true
-  # /login?page=front
-  # /login?page=front&unkwond=true
+  # /?page=1
+  # /?page=1&unkwond=true
+  # /login?page=1
+  # /login?page=1&unkwond=true
   # ─────────────────────────────────────────────────────────────────────
         - title_for_filtration_of_parameters|step_title
             title: FILTRATION OF PARAMETERS
-        # url "/?page=front"
-        - request_url--?page=front|step_request
-            url: /?page=front
+        # url "/?page=1"
+        - request_url--?page=1|step_request
+            url: /?page=1
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--?page=front|step_check
+        - response_check--?page=1|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
             on_failure
             - return_result|step_return
                 value: 0
-        # url "/?page=front&unknown=true"
-        - request_url--?page=front&unknown=true|step_request
-            url: /?page=front&unknown=true
+        # url "/?page=1&unknown=true"
+        - request_url--?page=1&unknown=true|step_request
+            url: /?page=1&unknown=true
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--?page=front&unknown=true|step_check
+        - response_check--?page=1&unknown=true|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--?page=front&unknown=true=-location|step_check
+        - response_check--?page=1&unknown=true=-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/\?page=front$%
+            match: %.*/\?page=1$%
             on_failure
             - return_result|step_return
                 value: 0
-        # url "/login?page=front"
-        - request_url--login?page=front|step_request
-            url: /login?page=front
+        # url "/login?page=1"
+        - request_url--login?page=1|step_request
+            url: /login?page=1
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--login?page=front|step_check
+        - response_check--login?page=1|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
             on_failure
             - return_result|step_return
                 value: 0
-        # url "/login?page=front&unknown=true"
-        - request_url--login?page=front&unknown=true|step_request
-            url: /login?page=front&unknown=true
+        # url "/login?page=1&unknown=true"
+        - request_url--login?page=1&unknown=true|step_request
+            url: /login?page=1&unknown=true
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--login?page=front&unknown=true|step_check
+        - response_check--login?page=1&unknown=true|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--login?page=front&unknown=true-location|step_check
+        - response_check--login?page=1&unknown=true-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/login\?page=front$%
+            match: %.*/login\?page=1$%
             on_failure
             - return_result|step_return
                 value: 0
