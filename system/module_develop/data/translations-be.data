@@ -101,6 +101,7 @@ translations
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
     - Hash sum: Хэш-сума
+    - Hash sum (md5): Хэш-сума (md5)
     - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
     - Indexes: Індэксы

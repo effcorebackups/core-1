@@ -181,7 +181,7 @@ entities
           - =: 7z
         - weight: +340
     - hash_sum
-        title: Hash sum
+        title: Hash sum (md5)
         type: varchar
         size: 1024
         collate: nocase
