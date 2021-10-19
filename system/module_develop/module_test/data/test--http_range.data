@@ -16,15 +16,6 @@ tests
         title: HTTPS
         element_attributes
         - name: is_https
-  # ┌────────────────────────────────────────┬─────────┐
-  # │ headers                                │ support │
-  # ╞════════════════════════════════════════╪═════════╡
-  # │ Range: bytes=int-                      │    +    │
-  # │ Range: bytes=int-int                   │    +    │
-  # │ Range: bytes=int-int, int-int          │    -    │
-  # │ Range: bytes=int-int, int-int, int-int │    -    │
-  # │ Range: bytes=-<-length>                │    -    │
-  # └────────────────────────────────────────┴─────────┘
     scenario
     # url "/system/module_develop/module_test/files/test_http_range.no_cached_txt"
     - request_url-test_http_range|step_request
@@ -63,17 +54,17 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-    # ┌────────────┬───────────┬─────────────┬────────────┬────────────┬─────────────┬─────────────┬─────────────┐
-    # │ min // max │ ''        │ -1          │ 0          │ 1          │ length      │ length + 1  │ length + 2  │
-    # ╞════════════╪═══════════╪═════════════╪════════════╪════════════╪═════════════╪═════════════╪═════════════╡
-    # │ ''         │ bytes=-   │ bytes=--1   │ bytes=-0   │ bytes=-1   │ bytes=-10   │ bytes=-11   │ bytes=-12   │
-    # │ -1         │ bytes=-1- │ bytes=-1--1 │ bytes=-1-0 │ bytes=-1-1 │ bytes=-1-10 │ bytes=-1-11 │ bytes=-1-12 │
-    # │ 0          │ bytes=0-  │ bytes=0--1  │ bytes=0-0  │ bytes=0-1  │ bytes=0-10  │ bytes=0-11  │ bytes=0-12  │
-    # │ 1          │ bytes=1-  │ bytes=1--1  │ bytes=1-0  │ bytes=1-1  │ bytes=1-10  │ bytes=1-11  │ bytes=1-12  │
-    # │ length     │ bytes=10- │ bytes=10--1 │ bytes=10-0 │ bytes=10-1 │ bytes=10-10 │ bytes=10-11 │ bytes=10-12 │
-    # │ length + 1 │ bytes=11- │ bytes=11--1 │ bytes=11-0 │ bytes=11-1 │ bytes=11-10 │ bytes=11-11 │ bytes=11-12 │
-    # │ length + 2 │ bytes=12- │ bytes=12--1 │ bytes=12-0 │ bytes=12-1 │ bytes=12-10 │ bytes=12-11 │ bytes=12-12 │
-    # └────────────┴───────────┴─────────────┴────────────┴────────────┴─────────────┴─────────────┴─────────────┘
+    # ┌────────────╥───────────┬─────────────┬────────────┬────────────┬─────────────┬─────────────┬─────────────┐
+    # │ min \\ max ║ ''        │ -1          │ 0          │ 1          │ length      │ length + 1  │ length + 2  │
+    # ╞════════════╬═══════════╪═════════════╪════════════╪════════════╪═════════════╪═════════════╪═════════════╡
+    # │ ''         ║ bytes=-   │ bytes=--1   │ bytes=-0   │ bytes=-1   │ bytes=-10   │ bytes=-11   │ bytes=-12   │
+    # │ -1         ║ bytes=-1- │ bytes=-1--1 │ bytes=-1-0 │ bytes=-1-1 │ bytes=-1-10 │ bytes=-1-11 │ bytes=-1-12 │
+    # │ 0          ║ bytes=0-  │ bytes=0--1  │ bytes=0-0  │ bytes=0-1  │ bytes=0-10  │ bytes=0-11  │ bytes=0-12  │
+    # │ 1          ║ bytes=1-  │ bytes=1--1  │ bytes=1-0  │ bytes=1-1  │ bytes=1-10  │ bytes=1-11  │ bytes=1-12  │
+    # │ length     ║ bytes=10- │ bytes=10--1 │ bytes=10-0 │ bytes=10-1 │ bytes=10-10 │ bytes=10-11 │ bytes=10-12 │
+    # │ length + 1 ║ bytes=11- │ bytes=11--1 │ bytes=11-0 │ bytes=11-1 │ bytes=11-10 │ bytes=11-11 │ bytes=11-12 │
+    # │ length + 2 ║ bytes=12- │ bytes=12--1 │ bytes=12-0 │ bytes=12-1 │ bytes=12-10 │ bytes=12-11 │ bytes=12-12 │
+    # └────────────╨───────────┴─────────────┴────────────┴────────────┴─────────────┴─────────────┴─────────────┘
     - title_for_transpositions|step_title
         title: TRANSPOSITIONS [-1 … length + 2]
     # url "/system/module_develop/module_test/files/test_http_range.no_cached_txt" [bytes=-]

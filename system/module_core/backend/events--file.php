@@ -59,16 +59,15 @@ namespace effcore\modules\core {
     exit();
   }
 
-  # range support:
-  # ┌────────────────────────────────────────┬───┐
-  # │ header                                 │   │
-  # ╞════════════════════════════════════════╪═══╡
-  # │ Range: bytes=int-                      │ + │
-  # │ Range: bytes=int-int                   │ + │
-  # │ Range: bytes=int-int, int-int          │ - │
-  # │ Range: bytes=int-int, int-int, int-int │ - │
-  # │ Range: bytes=-<-length>                │ - │
-  # └────────────────────────────────────────┴───┘
+  # ┌────────────────────────────────────────╥─────────┐
+  # │ headers                                ║ support │
+  # ╞════════════════════════════════════════╬═════════╡
+  # │ Range: bytes=int-                      ║    +    │
+  # │ Range: bytes=int-int                   ║    +    │
+  # │ Range: bytes=int-int, int-int          ║    -    │
+  # │ Range: bytes=int-int, int-int, int-int ║    -    │
+  # │ Range: bytes=-<-length>                ║    -    │
+  # └────────────────────────────────────────╨─────────┘
 
   # ─────────────────────────────────────────────────────────────────────
   # http ranges limits:
