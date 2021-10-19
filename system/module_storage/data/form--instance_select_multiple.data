@@ -18,8 +18,8 @@ forms
         break_on_validate: true
         attributes
         - title|text
-            text: Insert a new item of type "%%_entity_title_context" on new page.
             is_apply_tokens: true
+            text: Insert a new item of type "%%_entity_title_context" on new page.
         - data-style: insert
         - value: insert
     - actions|field_select
