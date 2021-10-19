@@ -15,9 +15,10 @@ namespace effcore\modules\project {
         $release = new instance('release', [
           'path' => $file->path_get_relative()
         ]);
-        if ($release->select()) {
-          $release->downloads_num++;
-          $release->update();
+        if ($release->select() &&
+            $release->downloads_num < PHP_INT_MAX_32) {
+            $release->downloads_num++;
+            $release->update();
         }
       }
     }

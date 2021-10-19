@@ -10,6 +10,7 @@
     define('effcore\\dir_dynamic', $www_root.'/dynamic/');
     define('effcore\\dir_system',  $www_root.'/system/');
     define('effcore\\dir_modules', $www_root.'/modules/');
+    define('PHP_INT_MAX_32', 0x7fffffff);
     require_once('system/boot.php');
   } else {
     print 'Current PHP version number is '.PHP_VERSION.'<br>';

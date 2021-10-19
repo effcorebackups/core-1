@@ -841,8 +841,8 @@ namespace effcore {
   }
 
   static function random_part_get() {
-    $hex_time = str_pad(dechex(time()),                    8, '0', STR_PAD_LEFT);
-    $hex_rand = str_pad(dechex(random_int(0, 0x7fffffff)), 8, '0', STR_PAD_LEFT);
+    $hex_time = str_pad(dechex(time()),                        8, '0', STR_PAD_LEFT);
+    $hex_rand = str_pad(dechex(random_int(0, PHP_INT_MAX_32)), 8, '0', STR_PAD_LEFT);
     return $hex_time.$hex_rand;
   }
 
