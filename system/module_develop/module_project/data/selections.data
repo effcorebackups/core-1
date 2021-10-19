@@ -192,6 +192,19 @@ selections
         type: field
         entity_name: release
         entity_field_name: path
+    - release_url
+        type: markup
+        title: Link
+        markup|markup
+          tag_name: a
+          attributes
+          - href|text
+              is_apply_tokens: true
+              text: http://%%_request_host/%%_selection__release__path__raw__context
+          children
+          - data|text
+              is_apply_tokens: true
+              text: http://%%_request_host/%%_selection__release__path__raw__context
     - release.hash_sum
         type: field
         entity_name: release
@@ -241,6 +254,19 @@ selections
         type: field
         entity_name: release
         entity_field_name: path
+    - release_url
+        type: markup
+        title: Link
+        markup|markup
+          tag_name: a
+          attributes
+          - href|text
+              is_apply_tokens: true
+              text: http://%%_request_host/%%_selection__release__path__raw__context
+          children
+          - data|text
+              is_apply_tokens: true
+              text: http://%%_request_host/%%_selection__release__path__raw__context
     - release.hash_sum
         type: field
         entity_name: release

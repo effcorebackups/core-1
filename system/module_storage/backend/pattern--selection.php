@@ -145,6 +145,11 @@ namespace effcore {
         foreach ($this->_instances as $c_instance) {
           $c_row = [];
           foreach ($this->fields as $c_row_id => $c_field) {
+            if ($c_field->type === 'field' ||
+                $c_field->type === 'join_field') {
+              token::insert('selection__'.$c_field->entity_name      .'__'.
+                                          $c_field->entity_field_name.'__'.'raw__context', 'text', $c_instance->{$c_field->entity_field_name});
+            }
           # prepare value to use in decorator
             switch ($c_field->type) {
               case 'field':
