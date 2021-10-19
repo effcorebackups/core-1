@@ -38,6 +38,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 10
+        on_failure
+        - return_result|step_return
+            value: 0
     # url "/system/module_develop/module_test/files/test_http_range.no_cached_txt" [bytes=]
     - request_url-test_http_range-bytes=|step_request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
@@ -122,6 +129,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 10
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-|step_check
         check: token
         where: %%_test_response_content
@@ -149,6 +163,13 @@ tests
         check: token
         where: %%_test_response_content_range
         match: bytes 1-9/10
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range-content_length-bytes=1-|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 9
         on_failure
         - return_result|step_return
             value: 0
@@ -374,6 +395,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-0|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 1
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-0|step_check
         check: token
         where: %%_test_response_content
@@ -500,6 +528,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-1|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 2
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-1|step_check
         check: token
         where: %%_test_response_content
@@ -527,6 +562,13 @@ tests
         check: token
         where: %%_test_response_content_range
         match: bytes 1-1/10
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range-content_length-bytes=1-1|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 1
         on_failure
         - return_result|step_return
             value: 0
@@ -640,6 +682,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-10|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 10
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-10|step_check
         check: token
         where: %%_test_response_content
@@ -667,6 +716,13 @@ tests
         check: token
         where: %%_test_response_content_range
         match: bytes 1-9/10
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range-content_length-bytes=1-10|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 9
         on_failure
         - return_result|step_return
             value: 0
@@ -780,6 +836,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-11|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 10
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-11|step_check
         check: token
         where: %%_test_response_content
@@ -807,6 +870,13 @@ tests
         check: token
         where: %%_test_response_content_range
         match: bytes 1-9/10
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range-content_length-bytes=1-11|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 9
         on_failure
         - return_result|step_return
             value: 0
@@ -920,6 +990,13 @@ tests
         on_failure
         - return_result|step_return
             value: 0
+    - response_check-test_http_range-content_length-bytes=0-12|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 10
+        on_failure
+        - return_result|step_return
+            value: 0
     - response_check-test_http_range-content-bytes=0-12|step_check
         check: token
         where: %%_test_response_content
@@ -947,6 +1024,13 @@ tests
         check: token
         where: %%_test_response_content_range
         match: bytes 1-9/10
+        on_failure
+        - return_result|step_return
+            value: 0
+    - response_check-test_http_range-content_length-bytes=1-12|step_check
+        check: token
+        where: %%_test_response_content_length
+        match: 9
         on_failure
         - return_result|step_return
             value: 0
