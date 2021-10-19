@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__feedback__id_context
+          text: %%_selection_feedback_id_context
     fields
     - feedback.id
         type: field
@@ -53,7 +53,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__permission__id_context
+          text: %%_selection_permission_id_context
     fields
     - permission.id
         type: field
@@ -98,7 +98,7 @@ selections
         - id_role_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__relation_role_ws_permission__id_role_context
+            text: %%_selection_relation_role_ws_permission_id_role_context
       - conjunction: and
       - id_permission
         - id_permission_!f: ~relation_role_ws_permission.id_permission
@@ -106,7 +106,7 @@ selections
         - id_permission_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__relation_role_ws_permission__id_permission_context
+            text: %%_selection_relation_role_ws_permission_id_permission_context
     fields
     - relation_role_ws_permission.id_role
         type: field
@@ -147,7 +147,7 @@ selections
         - id_role_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__relation_role_ws_user__id_role_context
+            text: %%_selection_relation_role_ws_user_id_role_context
       - conjunction: and
       - id_user
         - id_user_!f: ~relation_role_ws_user.id_user
@@ -155,7 +155,7 @@ selections
         - id_user_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__relation_role_ws_user__id_user_context
+            text: %%_selection_relation_role_ws_user_id_user_context
     fields
     - relation_role_ws_user.id_user
         type: field
@@ -201,7 +201,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__role__id_context
+          text: %%_selection_role_id_context
     fields
     - role.id
         type: field
@@ -250,7 +250,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__user__id_context
+          text: %%_selection_user_id_context
     fields
     - user.id
         type: field

@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__selection__id_context
+          text: %%_selection_selection_id_context
     fields
     - selection.id
         type: field

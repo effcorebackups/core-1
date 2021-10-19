@@ -68,7 +68,7 @@ namespace effcore\modules\storage {
           $selection = selection::get('instance_select-'.$entity->name);
           if ($selection) {
             foreach ($conditions as $c_id_key => $c_id_value)
-              token::insert('selection__'.$entity_name.'__'.$c_id_key.'_context', 'text', $c_id_value);
+              token::insert('selection_'.$entity_name.'_'.$c_id_key.'_context', 'text', $c_id_value);
             $selection = core::deep_clone($selection);
             $has_access_update = access::check($entity->access_update);
             $has_access_delete = access::check($entity->access_delete);

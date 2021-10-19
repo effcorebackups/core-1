@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__project__id_context
+          text: %%_selection_project_id_context
     fields
     - project.id
         type: field
@@ -52,7 +52,7 @@ selections
         - id_project_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__release__id_project_context
+            text: %%_selection_release_id_project_context
       - conjunction: and
       - build
         - build_!f: ~release.build
@@ -60,7 +60,7 @@ selections
         - build_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_selection__release__build_context
+            text: %%_selection_release_build_context
     fields
     - release.id_project
         type: field
@@ -199,10 +199,12 @@ selections
           tag_name: a
           attributes
           - href|text
+              is_apply_translation: false
               is_apply_tokens: true
               text: http://%%_request_host/%%_selection_release_path_raw_context
           children
           - data|text
+              is_apply_translation: false
               is_apply_tokens: true
               text: http://%%_request_host/%%_selection_release_path_raw_context
     - release.hash_sum

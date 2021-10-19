@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__audio__id_context
+          text: %%_selection_audio_id_context
     fields
     - audio.id
         type: field
@@ -67,7 +67,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__gallery__id_context
+          text: %%_selection_gallery_id_context
     fields
     - gallery.id
         type: field
@@ -127,7 +127,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__page__id_context
+          text: %%_selection_page_id_context
     fields
     - page.id
         type: field
@@ -212,7 +212,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__picture__id_context
+          text: %%_selection_picture_id_context
     fields
     - picture.id
         type: field
@@ -282,7 +282,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__text__id_context
+          text: %%_selection_text_id_context
     fields
     - text.id
         type: field
@@ -342,7 +342,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__video__id_context
+          text: %%_selection_video_id_context
     fields
     - video.id
         type: field
@@ -608,7 +608,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__audio__id_context
+          text: %%_selection_audio_id_context
     fields
     - audio.id
         type: field
@@ -677,7 +677,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__gallery__id_context
+          text: %%_selection_gallery_id_context
     fields
     - gallery.id
         type: field
@@ -750,7 +750,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__picture__id_context
+          text: %%_selection_picture_id_context
     fields
     - picture.id
         type: field
@@ -831,7 +831,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__text__id_context
+          text: %%_selection_text_id_context
     fields
     - text.id
         type: field
@@ -904,7 +904,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__video__id_context
+          text: %%_selection_video_id_context
     fields
     - video.id
         type: field

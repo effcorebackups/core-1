@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__tree__id_context
+          text: %%_selection_tree_id_context
     fields
     - tree.id
         type: field
@@ -70,7 +70,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__tree_item__id_context
+          text: %%_selection_tree_item_id_context
     fields
     - tree_item.id
         type: field

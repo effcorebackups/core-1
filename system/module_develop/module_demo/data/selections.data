@@ -10,7 +10,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_autoincrement__id_context
+          text: %%_selection_demo_autoincrement_id_context
     fields
     - demo_autoincrement.id
         type: field
@@ -36,7 +36,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_collations__id_context
+          text: %%_selection_demo_collations_id_context
     fields
     - demo_collations.id
         type: field
@@ -64,7 +64,7 @@ selections
       - f_primary_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_constraints__f_primary_context
+          text: %%_selection_demo_constraints_f_primary_context
     fields
     - demo_constraints.f_primary
         type: field
@@ -98,7 +98,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_data__id_context
+          text: %%_selection_demo_data_id_context
     fields
     - demo_data.id
         type: field
@@ -134,7 +134,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_indexes__id_context
+          text: %%_selection_demo_indexes_id_context
     fields
     - demo_indexes.id
         type: field
@@ -168,7 +168,7 @@ selections
       - id_data_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_join__id_data_context
+          text: %%_selection_demo_join_id_data_context
     fields
     - demo_join.id_data
         type: field
@@ -191,7 +191,7 @@ selections
       - id_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection__demo_types__id_context
+          text: %%_selection_demo_types_id_context
     fields
     - demo_types.id
         type: field
