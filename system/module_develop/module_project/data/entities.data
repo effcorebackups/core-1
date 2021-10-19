@@ -228,6 +228,10 @@ entities
         references_fields
         - =: id
     indexes
+    - index_path
+        type: unique index
+        fields
+        - =: path
     - index_created
         type: index
         fields
