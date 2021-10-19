@@ -197,6 +197,11 @@ entities
         - maxlength: 1024
         - required: null
         - disabled: true
+    - downloads_num
+        title: Number of downloads
+        type: integer
+        not_null: true
+        default: 0
     - created
         title: Created
         type: datetime

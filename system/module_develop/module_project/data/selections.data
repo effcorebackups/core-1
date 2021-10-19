@@ -97,6 +97,11 @@ selections
         entity_name: release
         entity_field_name: updated
         weight: 280
+    - release.downloads_num
+        type: field
+        entity_name: release
+        entity_field_name: downloads_num
+        weight: 260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-project|selection
     id: instance_select_multiple-project

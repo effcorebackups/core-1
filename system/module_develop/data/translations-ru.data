@@ -134,6 +134,7 @@ translations
     - namespace: пространство имён
     - NoSQL data: NoSQL данные
     - Notice message #%%_number.: Уведомление №%%_number.
+    - Number of downloads: Количество загрузок
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
     - Option 2 (disabled): Опция 2 (отключена)
