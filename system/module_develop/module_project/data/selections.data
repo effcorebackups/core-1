@@ -192,6 +192,7 @@ selections
         type: field
         entity_name: release
         entity_field_name: path
+        is_visible: false
     - release_url
         type: markup
         title: Link
@@ -256,6 +257,7 @@ selections
         type: field
         entity_name: release
         entity_field_name: path
+        is_visible: false
     - release_url
         type: markup
         title: Link

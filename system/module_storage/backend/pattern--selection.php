@@ -235,6 +235,13 @@ namespace effcore {
               $c_row[$c_row_id]['value'] = new text((string)$c_row[$c_row_id]['value'], false, false);
             }
 
+          # ─────────────────────────────────────────────────────────────────────
+          # delete invisible items
+          # ─────────────────────────────────────────────────────────────────────
+            if (isset($c_field->is_visible) && $c_field->is_visible === false) {
+              unset($c_row[$c_row_id]);
+            }
+
           }
 
         # append $c_row to decorator
