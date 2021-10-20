@@ -143,15 +143,24 @@ namespace effcore {
           $decorator->                             {$c_key} = $c_value;
 
         foreach ($this->_instances as $c_instance) {
-          $c_row = [];
+
+        # ─────────────────────────────────────────────────────────────────────
+        # make context token for each value
+        # ─────────────────────────────────────────────────────────────────────
           foreach ($this->fields as $c_row_id => $c_field) {
-          # make context token for each row value
             if ($c_field->type === 'field' ||
                 $c_field->type === 'join_field') {
               token::insert('selection_'.$c_field->entity_name      .'_'.
-                                         $c_field->entity_field_name.'_'.'raw_context', 'text', $c_instance->{$c_field->entity_field_name});
+                                         $c_field->entity_field_name.'_'.'context', 'text', $c_instance->{$c_field->entity_field_name});
             }
-          # prepare value to use in decorator
+          }
+
+          $c_row = [];
+          foreach ($this->fields as $c_row_id => $c_field) {
+
+          # ─────────────────────────────────────────────────────────────────────
+          # prepare each value for $c_row[$c_row_id]
+          # ─────────────────────────────────────────────────────────────────────
             switch ($c_field->type) {
               case 'field':
               case 'join_field':
@@ -205,7 +214,10 @@ namespace effcore {
                 ];
                 break;
             }
-          # prepare the final value
+
+          # ─────────────────────────────────────────────────────────────────────
+          # prepare each value for $c_row[$c_row_id]: apply the filters
+          # ─────────────────────────────────────────────────────────────────────
             $c_filters = !empty($c_field->settings['filters']) &&
                        is_array($c_field->settings['filters']) ?
                                 $c_field->settings['filters'] : [];
@@ -222,7 +234,10 @@ namespace effcore {
                    is_int($c_row[$c_row_id]['value'])) {
               $c_row[$c_row_id]['value'] = new text((string)$c_row[$c_row_id]['value'], false, false);
             }
+
           }
+
+        # append $c_row to decorator
           $decorator->data[] = $c_row; # null | markup | text
         }
 
