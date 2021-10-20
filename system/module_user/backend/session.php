@@ -130,7 +130,7 @@ namespace effcore {
   static function id_get_hex_expired($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
   static function id_get_hex_ip          ($ip) {return core::ip_to_hex($ip);}
   static function id_get_hex_uagent_hash_8  () {return core::hash_get_mini(request::user_agent_get(80));} # note: why 80? Safari truncates the "user_agent" value for pages in favorites.
-  static function id_get_hex_random         () {return str_pad(dechex(random_int(0, PHP_INT_MAX_32)), 8, '0', STR_PAD_LEFT);}
+  static function id_get_hex_random         () {return str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);}
   static function id_get_hex_signature   ($id) {return user::signature_get(substr($id, 0, 56 + 1), 'user', 8);}
 
   static function id_extract_expired          ($id) {return hexdec(static::id_extract_hex_expired($id));}

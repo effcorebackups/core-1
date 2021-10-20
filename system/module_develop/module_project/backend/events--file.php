@@ -16,7 +16,7 @@ namespace effcore\modules\project {
           'path' => $file->path_get_relative()
         ]);
         if ($release->select() &&
-            $release->downloads_num < PHP_INT_MAX_32) {
+            $release->downloads_num < PHP_INT_32_MAX) {
             $release->downloads_num++;
             $release->update();
         }
