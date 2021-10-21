@@ -1,1 +1,1 @@
-Sitemap: http://example.com/sitemap.xml
+Sitemap: http://%%_request_host/sitemap.xml

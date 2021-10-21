@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://%%_request_host/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/ru</loc>
+    <loc>http://%%_request_host/ru</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/about</loc>
+    <loc>http://%%_request_host/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/ru/about</loc>
+    <loc>http://%%_request_host/ru/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/gallery</loc>
+    <loc>http://%%_request_host/gallery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/ru/gallery</loc>
+    <loc>http://%%_request_host/ru/gallery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/contact</loc>
+    <loc>http://%%_request_host/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://example.com/ru/contact</loc>
+    <loc>http://%%_request_host/ru/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
