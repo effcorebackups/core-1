@@ -62,7 +62,7 @@ namespace effcore {
 
   static function validate_minlength($field, $form, $element, &$new_value) {
     $minlength = $field->minlength_get();
-    if (strlen($new_value) && is_numeric($minlength) && $minlength > strlen($new_value)) {
+    if (strlen($new_value) && is_numeric($minlength) && mb_strlen($new_value, 'UTF-8') < $minlength) {
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
         'Field value can contain a minimum of %%_number character%%_plural{number|s}.'], ['title' => (new text($field->title))->render(), 'number' => $minlength]
@@ -74,8 +74,8 @@ namespace effcore {
 
   static function validate_maxlength($field, $form, $element, &$new_value) {
     $maxlength = $field->maxlength_get();
-    if (strlen($new_value) && is_numeric($maxlength) && $maxlength < strlen($new_value)) {
-      $new_value = substr($new_value, 0, $maxlength);
+    if (strlen($new_value) && is_numeric($maxlength) && mb_strlen($new_value, 'UTF-8') > $maxlength) {
+      $new_value = mb_substr($new_value, 0, $maxlength, 'UTF-8');
       $field->error_set(new text_multiline([
         'Field "%%_title" contains an error!',
         'Field value can contain a maximum of %%_number character%%_plural{number|s}.',
