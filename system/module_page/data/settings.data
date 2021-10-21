@@ -1,7 +1,7 @@
 settings
-  apply_tokens_for_meta: false
-  apply_tokens_for_sitemap: false
-  apply_tokens_for_robots: false
+  apply_tokens_for_meta: true
+  apply_tokens_for_sitemap: true
+  apply_tokens_for_robots: true
   color__page_id: default_1
   color__text_id: white
   color__main_id: lightblue_l1
