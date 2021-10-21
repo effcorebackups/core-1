@@ -16,8 +16,8 @@ namespace effcore {
     'required'  => true,
     'rows'      => 5,
     'minlength' => 5,
-    'maxlength' => 255
-  ];
+    'maxlength' => 255];
+  public $is_unix_line_endings_get = true;
 
   function build() {
     if (!$this->is_builded) {
@@ -32,14 +32,14 @@ namespace effcore {
   }
 
   function value_get() {
-    $element = $this->child_select('element');
-    return  $element->child_select('content')->text_select();
+    $content = $this->child_select('element')->child_select('content');
+    if ($this->is_unix_line_endings_get === true) return str_replace(cr.nl, nl, $content->text_select());
+    if ($this->is_unix_line_endings_get !== true) return                        $content->text_select();
   }
 
   function value_set($value) {
-    $this->value_set_initial($value);
-    $element = $this->child_select('element');
-    return  $element->child_select('content')->text_update($value);
+           $this->value_set_initial($value);
+    return $this->child_select('element')->child_select('content')->text_update($value);
   }
 
 }}

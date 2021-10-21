@@ -426,7 +426,9 @@ forms
               - title: field_textarea
             element_attributes
             - name: textarea
-            - value: text in text area
+            - value: text in text area line 1
+/////////////////////text in text area line 2
+/////////////////////text in text area line 3
         - textarea_data|field_textarea_data
             title: Data in "data" format
             description|text

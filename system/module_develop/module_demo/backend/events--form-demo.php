@@ -5,6 +5,7 @@
   ##################################################################
 
 namespace effcore\modules\demo {
+          use const \effcore\nl;
           use \effcore\core;
           use \effcore\data;
           use \effcore\field;
@@ -63,6 +64,7 @@ namespace effcore\modules\demo {
         $def_value_email = 'test1@example.com,test2@example.com';
         $def_value_select          = ['option_1' => 'Option 1 (selected)'];
         $def_value_select_multiple = ['option_1' => 'Option 1 (selected)'];
+        $def_value_textarea = 'text in text area line 1'.nl.'text in text area line 2'.nl.'text in text area line 3';
         $def_value_textarea_data = new \stdClass;
         $def_value_textarea_data->root['key_1'] = 'value 1';
         $def_value_textarea_data->root['key_2'] = 'value 2';
@@ -89,7 +91,7 @@ namespace effcore\modules\demo {
         if ($items['#relation_tree'  ]->value_get  ()         !== 'demo_sql_item_1'              ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#relation_tree'  ]->title))->render() ]) ); # …\field_relation
         if ($items['#lang_code'      ]->value_get  ()         !== 'en'                           ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#lang_code'      ]->title))->render() ]) ); # …\field_language
         if ($items['#text_direction' ]->value_get  ()         !== 'ltr'                          ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#text_direction' ]->title))->render() ]) ); # …\field_text_direction
-        if ($items['#textarea'       ]->value_get  ()         !== 'text in text area'            ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#textarea'       ]->title))->render() ]) ); # …\field_textarea
+        if ($items['#textarea'       ]->value_get  ()         !==        $def_value_textarea     ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#textarea'       ]->title))->render() ]) ); # …\field_textarea
         if ((array)$items['#textarea_data']->value_data_get() !== (array)$def_value_textarea_data) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#textarea_data'  ]->title))->render() ]) ); # …\field_textarea_data
         if ($items['#checkbox'       ]->checked_get()         !== true                           ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#checkbox'       ]->title))->render() ]) ); # …\field_checkbox
         if ($items['#checkboxes'  ][0]->checked_get()         !== false                          ) message::insert( new text('Field "%%_title" has a changed value.', ['title' => (new text($items['#checkboxes'  ][0]->title))->render() ]) ); # …\field_checkbox
