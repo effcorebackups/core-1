@@ -122,9 +122,9 @@ namespace effcore {
       }
     }
 
-    $file_global_css = new file(dynamic::dir_files.'global.css');
-    if ($file_global_css->is_exists()) {
-      frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/files/global.css', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
+    $file_global_cssd = new file(dynamic::dir_files.'global.cssd');
+    if ($file_global_cssd->is_exists()) {
+      frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/files/global.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
     }
 
     $frontend = frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_cssid);

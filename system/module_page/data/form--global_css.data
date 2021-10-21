@@ -8,7 +8,7 @@ forms
     - settings|fieldset
         children
         - content|field_textarea
-            title: Content of the "global.css" file
+            title: Content of the "global.cssd" file
             element_attributes
             - data-style: code-editor
             - name: content
