@@ -7,7 +7,7 @@
 namespace effcore\modules\page {
           use const \effcore\dir_dynamic;
           use const \effcore\dir_root;
-          use \effcore\data;
+          use \effcore\dynamic;
           use \effcore\event;
           use \effcore\file;
           use \effcore\media;
@@ -36,7 +36,7 @@ namespace effcore\modules\page {
     switch ($file->path_get()) {
       case dir_root.'sitemap.xml':
         $settings = module::settings_get('page');
-        $file = new file(data::directory.'sitemap.xml');
+        $file = new file(dynamic::dir_files.'sitemap.xml');
         if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_sitemap ? 'xmld' : 'xml'];
           if ($settings->apply_tokens_for_sitemap)
@@ -46,7 +46,7 @@ namespace effcore\modules\page {
         } break;
       case dir_root.'robots.txt':
         $settings = module::settings_get('page');
-        $file = new file(data::directory.'robots.txt');
+        $file = new file(dynamic::dir_files.'robots.txt');
         if ($file->is_exists()) {
           $type = file::types_get()[$settings->apply_tokens_for_robots ? 'txtd' : 'txt'];
           if ($settings->apply_tokens_for_robots)
