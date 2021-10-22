@@ -36,7 +36,6 @@ namespace effcore\modules\locale {
         else         message::insert('Changes was not saved!', 'error');
         if ($result) {
           language::code_set_current($items['#lang_code']->value_get());
-          static::on_init(null, $form, $items);
         }
         break;
       case 'reset':

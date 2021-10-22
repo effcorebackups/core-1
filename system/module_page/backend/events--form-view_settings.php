@@ -40,7 +40,6 @@ namespace effcore\modules\page {
         $result&= storage::get('data')->changes_insert('page', 'update', 'settings/page/page_meta_viewport',      $items['#meta_viewport']->value_get()       );
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
-        static::on_init(null, $form, $items);
         break;
       case 'reset':
         $result = storage::get('data')->changes_delete('page', 'update', 'settings/page/page_width_min', false);

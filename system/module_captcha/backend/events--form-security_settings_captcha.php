@@ -66,7 +66,6 @@ namespace effcore\modules\captcha {
         else         message::insert('Changes was not saved!', 'error');
         if ($result) {
           captcha::delete_all();
-          static::on_init(null, $form, $items);
         }
         break;
       case 'reset':
