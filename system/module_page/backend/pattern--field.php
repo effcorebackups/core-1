@@ -361,8 +361,8 @@ namespace effcore {
     $element = $this->child_select('element');
     if ($element instanceof node_simple) {
       if (strlen($element->attribute_select('pattern'  ))                                                                                       ) $this->description['pattern'  ] = $this->render_description_pattern  ($element);
-      if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description['max'      ] = $this->render_description_max      ($element);
       if (strlen($element->attribute_select('min'      ))                                                                                       ) $this->description['min'      ] = $this->render_description_min      ($element);
+      if (strlen($element->attribute_select('max'      ))                                                                                       ) $this->description['max'      ] = $this->render_description_max      ($element);
       if (strlen($element->attribute_select('value'    )) && $element->attribute_select('type'     ) === 'range'                                ) $this->description['cur'      ] = $this->render_description_cur      ($element);
       if (strlen($element->attribute_select('minlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['minlength'] = $this->render_description_minlength($element);
       if (strlen($element->attribute_select('maxlength')) && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['maxlength'] = $this->render_description_maxlength($element);
@@ -381,8 +381,8 @@ namespace effcore {
   function render_description_midlength($element) {return new markup('p', ['data-id' => 'midlength'], new text('Field value can contain only %%_number character%%_plural{number|s}.',         ['number'     => $element->attribute_select('minlength')]));}
   function render_description_minlength($element) {return new markup('p', ['data-id' => 'minlength'], new text('Field value can contain a minimum of %%_number character%%_plural{number|s}.', ['number'     => $element->attribute_select('minlength')]));}
   function render_description_maxlength($element) {return new markup('p', ['data-id' => 'maxlength'], new text('Field value can contain a maximum of %%_number character%%_plural{number|s}.', ['number'     => $element->attribute_select('maxlength')]));}
-  function render_description_max      ($element) {return new markup('p', ['data-id' => 'max'      ], new text('Field value cannot be greater than: %%_value',                                 ['value'      => $element->attribute_select('max'      )]));}
   function render_description_min      ($element) {return new markup('p', ['data-id' => 'min'      ], new text('Field value cannot be less than: %%_value',                                    ['value'      => $element->attribute_select('min'      )]));}
+  function render_description_max      ($element) {return new markup('p', ['data-id' => 'max'      ], new text('Field value cannot be greater than: %%_value',                                 ['value'      => $element->attribute_select('max'      )]));}
   function render_description_cur      ($element) {return new markup('p', ['data-id' => 'cur'      ], new text('Field value at the current moment: %%_value',                                  ['value'      => (new markup('x-value', [], $element->attribute_select('value')))->render()]));}
 
   ###########################

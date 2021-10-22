@@ -17,6 +17,7 @@ forms
               - 3: If a domain is specified, then it and its subdomains are used.
             element_attributes
             - name: cookie_domain
+            - maxlength: 120
             - required: false
             should_be_included
             - =: domain
@@ -79,3 +80,10 @@ forms
         attributes
         - value: save
         weight: -500
+    - button_reset|button
+        title: reset
+        break_on_request_value_set: true
+        break_on_validate: true
+        attributes
+        - value: reset
+        weight: -520

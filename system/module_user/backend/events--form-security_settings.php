@@ -48,6 +48,18 @@ namespace effcore\modules\user {
         if ($result) message::insert('Changes was saved.'             );
         else         message::insert('Changes was not saved!', 'error');
         break;
+      case 'reset':
+        $result = true;
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/cookie_domain',        false);
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/login_attempts',       false);
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/blocked_until',        false);
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/session_duration_min', false);
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/session_duration_max', false);
+        $result&= storage::get('data')->changes_delete('user', 'update', 'settings/user/send_password_to_email');
+        if ($result) message::insert('Changes was deleted.'             );
+        else         message::insert('Changes was not deleted!', 'error');
+        static::on_init(null, $form, $items);
+        break;
     }
   }
 
