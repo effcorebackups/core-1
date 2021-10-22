@@ -29,9 +29,12 @@ forms
             - maxlength: 100
         - format_time|field_text
             title: Time format
-            description|text
-              text: Possible options can be seen on page: %%_page
+            description|text_multiline
+              text
+              - 0: Examples: %%_examples
+              - 1: Possible options can be seen on page: %%_page
               args
+              - examples: "H:i:s"
               - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
             element_attributes
             - name: format_time
