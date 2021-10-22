@@ -240,6 +240,7 @@ translations
     - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
     - Field value should be represented in the international format of telephone numbers.: Значение поля должно быть представлено в международном формате телефонных номеров.
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".
+    - Field value should contain a minimum of %%_number character%%_plural{number\|s}.: Значение поля должно содержать минимум %%_number символ%%_plural{number|ov-a}.
     - Field value should contain anchor.: Значение поля должно содержать якорь.
     - Field value should contain domain.: Значение поля должно содержать домен.
     - Field value should contain path.: Значение поля должно содержать путь.
