@@ -72,7 +72,7 @@ forms
             description|text
               text: Examples: %%_examples
               args
-              - examples: "" | " "
+              - examples: "" | " " | " " | "'"
             element_attributes
             - name: thousands_separator
             - size: 1
