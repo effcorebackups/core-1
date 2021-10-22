@@ -238,7 +238,7 @@ translations
     - Field value is less than %%_number.: Значэнне поля менш чым %%_number.
     - Field value is not a valid number.: Значэнне поля не з'яўляецца дапушчальнай лічбай.
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
-    - Field value must be represented in the international format of telephone numbers.: Значэнне поля павiнна быць прадстаўлена ў міжнародным фармаце тэлефонных нумароў.
+    - Field value should be represented in the international format of telephone numbers.: Значэнне поля павiнна быць прадстаўлена ў міжнародным фармаце тэлефонных нумароў.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
     - Field value should contain anchor.: Значэнне поля павінна змяшчаць якар.
     - Field value should contain domain.: Значэнне поля павінна змяшчаць дамен.

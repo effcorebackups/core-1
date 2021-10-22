@@ -165,7 +165,7 @@ forms
             description|text_multiline
               text
               - 0: Field "%%_title".
-              - 1: Field value must be represented in the international format of telephone numbers.
+              - 1: Field value should be represented in the international format of telephone numbers.
               args
               - title: field_tel
             element_attributes
