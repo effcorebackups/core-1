@@ -90,8 +90,8 @@ translations
     - Checkbox: Сцяжок
     - Checkboxes: Сцяжкі
     - checking: праверка
-    - Class "%%_classname" not allowed.: Клас "%%_classname" не дапускаецца.
-    - Class "%%_classname" was not found.: Клас "%%_classname" не знойдзены.
+    - Class "%%_class_name" not allowed.: Клас "%%_class_name" не дапускаецца.
+    - Class "%%_class_name" was not found.: Клас "%%_class_name" не знойдзены.
     - click to open in new window: націсніце, каб адкрыць у новым акне
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
@@ -743,7 +743,7 @@ translations
     - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
     - Texts: Тэкст
-    - The class name has been changed to "%%_new_classname".: Імя класа было зменена на "%%_new_classname".
+    - The class name has been changed to "%%_new_class_name".: Імя класа было зменена на "%%_new_class_name".
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission!: Ліст не быў прыняты да перадачы!
     - The minimum value cannot be greater than or equal to the maximum!: Мінімальнае значэнне не можа быць больш ці роўна максімальнаму!

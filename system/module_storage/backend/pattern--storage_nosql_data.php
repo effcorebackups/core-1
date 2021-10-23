@@ -291,8 +291,8 @@ namespace effcore {
   # │   =: value          ║ root->value = value: string | integer | float | boolean | null │
   # │ - name              ║ root[name]  = new \stdClass | […]                              │
   # │   name              ║ root->name  = new \stdClass | […]                              │
-  # │ - name|classname    ║ root[name]  = new classname                                    │
-  # │   name|classname    ║ root->name  = new classname                                    │
+  # │ - name|class_name   ║ root[name]  = new class_name                                   │
+  # │   name|class_name   ║ root->name  = new class_name                                   │
   # │ - name|_empty_array ║ root[name]  = []                                               │
   # │   name|_empty_array ║ root->name  = []                                               │
   # └─────────────────────╨────────────────────────────────────────────────────────────────┘
@@ -346,26 +346,26 @@ namespace effcore {
         case static::ERR_CODE_CLASS_WAS_NOT_FOUND:
           message::insert(new text_multiline([
             'An error in parsing the "data" format was found!',
-            'Class "%%_classname" was not found.',
-            'The class name has been changed to "%%_new_classname".',
+            'Class "%%_class_name" was not found.',
+            'The class name has been changed to "%%_new_class_name".',
             'File: %%_file',
             'Line: %%_line'], [
-            'line'          => $c_error->line,
-            'file'          => $file ? $file->path_get_relative() : 'n/a',
-            'classname'     => $c_error->args['classname'],
-            'new_classname' => $c_error->args['new_classname']]), 'error');
+            'line'           => $c_error->line,
+            'file'           => $file ? $file->path_get_relative() : 'n/a',
+            'class_name'     => $c_error->args['class_name'],
+            'new_class_name' => $c_error->args['new_class_name']]), 'error');
           break;
         case static::ERR_CODE_CLASS_NOT_ALLOWED:
           message::insert(new text_multiline([
             'An error in parsing the "data" format was found!',
-            'Class "%%_classname" not allowed.',
-            'The class name has been changed to "%%_new_classname".',
+            'Class "%%_class_name" not allowed.',
+            'The class name has been changed to "%%_new_class_name".',
             'File: %%_file',
             'Line: %%_line'], [
-            'line'          => $c_error->line,
-            'file'          => $file ? $file->path_get_relative() : 'n/a',
-            'classname'     => $c_error->args['classname'],
-            'new_classname' => $c_error->args['new_classname']]), 'error');
+            'line'           => $c_error->line,
+            'file'           => $file ? $file->path_get_relative() : 'n/a',
+            'class_name'     => $c_error->args['class_name'],
+            'new_class_name' => $c_error->args['new_class_name']]), 'error');
           break;
       }
     }
@@ -471,16 +471,16 @@ namespace effcore {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_NOT_ALLOWED,
               'line' => $c_line_number,
-              'args' => ['classname' => $c_class_name,
-                     'new_classname' => 'stdClass']];
+              'args' => ['class_name' => $c_class_name,
+                     'new_class_name' => 'stdClass']];
             $c_class_name = '\\stdClass';
           }
           if ($c_class_name !== '\\stdClass' && !class_exists($c_class_name)) {
             $errors[]= (object)[
               'code' => static::ERR_CODE_CLASS_WAS_NOT_FOUND,
               'line' => $c_line_number,
-              'args' => ['classname' => $c_class_name,
-                     'new_classname' => 'stdClass']];
+              'args' => ['class_name' => $c_class_name,
+                     'new_class_name' => 'stdClass']];
             $c_class_name = '\\stdClass';
           }
           $c_reflection = new \ReflectionClass($c_class_name);
@@ -498,15 +498,15 @@ namespace effcore {
       $c_pointer = &core::arrobj_select_value($pointers[$c_depth-1], $c_name);
       $pointers[$c_depth] = &$c_pointer;
     # skip if object property (as array) is exists in instance
-    # ┌──────╥──────────────────────┬────────────────────────────────────────────────────────────────────────────────────────┐
-    # │      ║                      │                                 real class in pattern-*.php                            │
-    # │ line ║ definition in *.data ├──────────────────────────────┬──────────────────────────────┬──────────────────────────┤
-    # │      ║                      │ read line #1                 │ read line #2                 │ read line #3             │
-    # ╞══════╬══════════════════════╪══════════════════════════════╪══════════════════════════════╪══════════════════════════╡
-    # │    1 ║ object|classname     → $object = new classname;     │ $object = new classname;     │ $object = new classname; │
-    # │    2 ║   property           │ $object->property = [        → $object->property = [        │ $object->property = [    │
-    # │    3 ║   - item: new value  │   'item' => 'default value'; │   'item' => 'default value'; →   'item' => 'new value'; │
-    # └──────╨──────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────┘
+    # ┌──────╥──────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────┐
+    # │      ║                      │                                 real class in pattern-*.php                             │
+    # │ line ║ definition in *.data ├──────────────────────────────┬──────────────────────────────┬───────────────────────────┤
+    # │      ║                      │ read line #1                 │ read line #2                 │ read line #3              │
+    # ╞══════╬══════════════════════╪══════════════════════════════╪══════════════════════════════╪═══════════════════════════╡
+    # │    1 ║ object|class_name    → $object = new class_name;    │ $object = new class_name;    │ $object = new class_name; │
+    # │    2 ║   property           │ $object->property = [        → $object->property = [        │ $object->property = [     │
+    # │    3 ║   - item: new value  │   'item' => 'default value'; │   'item' => 'default value'; →   'item' => 'new value';  │
+    # └──────╨──────────────────────┴──────────────────────────────┴──────────────────────────────┴───────────────────────────┘
     # note: on line #2 was the skipping
       if (is_array($c_pointer) && $c_value instanceof \stdClass && empty((array)$c_value)) {
         $c_line = strtok(cr.nl);

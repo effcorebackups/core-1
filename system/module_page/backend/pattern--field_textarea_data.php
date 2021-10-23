@@ -78,20 +78,20 @@ namespace effcore {
           case storage_nosql_data::ERR_CODE_CLASS_WAS_NOT_FOUND:
             $field->error_set(new text_multiline([
               'Field "%%_title" contains an error!',
-              'Class "%%_classname" was not found.',
+              'Class "%%_class_name" was not found.',
               'Line: %%_line'], [
-              'title'     => (new text($field->title))->render(),
-              'line'      => $c_error->line,
-              'classname' => $c_error->args['classname']]));
+              'title'      => (new text($field->title))->render(),
+              'line'       => $c_error->line,
+              'class_name' => $c_error->args['class_name']]));
             break;
           case storage_nosql_data::ERR_CODE_CLASS_NOT_ALLOWED:
             $field->error_set(new text_multiline([
               'Field "%%_title" contains an error!',
-              'Class "%%_classname" not allowed.',
+              'Class "%%_class_name" not allowed.',
               'Line: %%_line'], [
-              'title'     => (new text($field->title))->render(),
-              'line'      => $c_error->line,
-              'classname' => $c_error->args['classname']]));
+              'title'      => (new text($field->title))->render(),
+              'line'       => $c_error->line,
+              'class_name' => $c_error->args['class_name']]));
             break;
         }
       }

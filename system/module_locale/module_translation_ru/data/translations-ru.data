@@ -90,8 +90,8 @@ translations
     - Checkbox: Флажок
     - Checkboxes: Флажки
     - checking: проверка
-    - Class "%%_classname" not allowed.: Класс "%%_classname" не допускается.
-    - Class "%%_classname" was not found.: Класс "%%_classname" не найден.
+    - Class "%%_class_name" not allowed.: Класс "%%_class_name" не допускается.
+    - Class "%%_class_name" was not found.: Класс "%%_class_name" не найден.
     - click to open in new window: нажмите, чтобы открыть в новом окне
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
@@ -743,7 +743,7 @@ translations
     - Text\: select: Текст: выбрать
     - Text\: update: Текст: обновить
     - Texts: Текст
-    - The class name has been changed to "%%_new_classname".: Имя класса было изменено на "%%_new_classname".
+    - The class name has been changed to "%%_new_class_name".: Имя класса было изменено на "%%_new_class_name".
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission!: Письмо не было принято к передаче!
     - The maximum value cannot be less than the minimum!: Минимальное значение не может быть больше максимального!
