@@ -384,15 +384,15 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент типа "%%_type" с ID = "%%_id" не был добавлен!
     - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент типа "%%_type" с ID = "%%_id" не был обновлён!
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент типа "%%_type" с ID = "%%_id" был обновлён.
-    - Item of type "%%_type" with title = "%%_title" has been saved.: Элемент типа "%%_type" с названием = "%%_title" был сохранён.
-    - Item of type "%%_type" with title = "%%_title" was deleted physically.: Элемент типа "%%_type" с названием = "%%_title" был удалён физически.
-    - Item of type "%%_type" with title = "%%_title" was deleted.: Элемент типа "%%_type" с названием = "%%_title" был удалён.
-    - Item of type "%%_type" with title = "%%_title" was inserted.: Элемент типа "%%_type" с названием = "%%_title" был добавлен.
-    - Item of type "%%_type" with title = "%%_title" was not deleted because it is embedded!: Элемент типа "%%_type" с названием = "%%_title" не был удалён, потому что он является встроенным!
-    - Item of type "%%_type" with title = "%%_title" was not deleted!: Элемент типа "%%_type" с названием = "%%_title" не был удалён!
-    - Item of type "%%_type" with title = "%%_title" was not inserted!: Элемент типа "%%_type" с названием = "%%_title" не был добавлен!
-    - Item of type "%%_type" with title = "%%_title" was not updated!: Элемент типа "%%_type" с названием = "%%_title" не был обновлён!
-    - Item of type "%%_type" with title = "%%_title" was updated.: Элемент типа "%%_type" с названием = "%%_title" был обновлён.
+    - Item of type "%%_type" with title "%%_title" has been saved.: Элемент типа "%%_type" с названием "%%_title" был сохранён.
+    - Item of type "%%_type" with title "%%_title" was deleted physically.: Элемент типа "%%_type" с названием "%%_title" был удалён физически.
+    - Item of type "%%_type" with title "%%_title" was deleted.: Элемент типа "%%_type" с названием "%%_title" был удалён.
+    - Item of type "%%_type" with title "%%_title" was inserted.: Элемент типа "%%_type" с названием "%%_title" был добавлен.
+    - Item of type "%%_type" with title "%%_title" was not deleted because it is embedded!: Элемент типа "%%_type" с названием "%%_title" не был удалён, потому что он является встроенным!
+    - Item of type "%%_type" with title "%%_title" was not deleted!: Элемент типа "%%_type" с названием "%%_title" не был удалён!
+    - Item of type "%%_type" with title "%%_title" was not inserted!: Элемент типа "%%_type" с названием "%%_title" не был добавлен!
+    - Item of type "%%_type" with title "%%_title" was not updated!: Элемент типа "%%_type" с названием "%%_title" не был обновлён!
+    - Item of type "%%_type" with title "%%_title" was updated.: Элемент типа "%%_type" с названием "%%_title" был обновлён.
     - items: элементы
     - Items: Элементы
     - Its contents are not filtered and presented as is.: Его содержание не фильтруется и представляется как есть.

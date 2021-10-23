@@ -775,7 +775,7 @@ namespace effcore {
     return filter_var($value, FILTER_SANITIZE_URL);
   }
 
-  static function sanitize_file_part($value, $characters_allowed, $max_length, $prefix = '') {
+  static function sanitize_file_part($value, $characters_allowed = 'a-zA-Z0-9_\\-\\.', $max_length = 220, $prefix = '') {
     $value = trim($value, '.');
     $value = preg_replace_callback('%(?<char>[^'.$characters_allowed.'])%uS', function ($c_match) use ($prefix) {
       if (       $c_match['char']  === ' ') return '-';

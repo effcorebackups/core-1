@@ -236,7 +236,7 @@ namespace effcore {
         unset($fin_to_delete[$c_id]);
         $field->items_set('fin_to_delete', $fin_to_delete);
         message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+          'Item of type "%%_type" with title "%%_title" was deleted physically.', [
           'type'  => (new text($field->item_title))->render(),
           'title' => $c_title_for_message
         ]));
@@ -254,7 +254,7 @@ namespace effcore {
         $field->items_set('pre', $items_pre);
         $field->items_set('fin', $items_fin);
         message::insert(new text(
-          'Item of type "%%_type" with title = "%%_title" has been saved.', [
+          'Item of type "%%_type" with title "%%_title" has been saved.', [
           'type'  => (new text($field->item_title))->render(),
           'title' => $c_item->file
         ]));
@@ -281,7 +281,7 @@ namespace effcore {
         if ($c_new_item->move_tmp_to_pre(temporary::directory.'validation/'.$field->cform->validation_cache_date_get().'/'.$field->cform->validation_id.'-'.$field->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
           $field->items_set('pre', $items_pre);
           message::insert(new text(
-            'Item of type "%%_type" with title = "%%_title" was inserted.', [
+            'Item of type "%%_type" with title "%%_title" was inserted.', [
             'type'  => (new text($field->item_title))->render(),
             'title' => $c_new_item->file
           ]));
@@ -303,7 +303,7 @@ namespace effcore {
             unset($items_pre[$button->_id]);
             $field->items_set('pre', $items_pre);
             message::insert(new text(
-              'Item of type "%%_type" with title = "%%_title" was deleted physically.', [
+              'Item of type "%%_type" with title "%%_title" was deleted physically.', [
               'type'  => (new text($field->item_title))->render(),
               'title' => $item_title
             ]));
@@ -323,7 +323,7 @@ namespace effcore {
           $field->items_set('fin_to_delete', $fin_to_delete);
           $field->items_set('fin', $items_fin);
           message::insert(new text(
-            'Item of type "%%_type" with title = "%%_title" was deleted.', [
+            'Item of type "%%_type" with title "%%_title" was deleted.', [
             'type'  => (new text($field->item_title))->render(),
             'title' => $item_title
           ]));

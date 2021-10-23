@@ -128,7 +128,7 @@ namespace effcore {
             $widget->fixed_type, true);
           if ($c_result) {
             message::insert(new text(
-              'Item of type "%%_type" with title = "%%_title" has been saved.', [
+              'Item of type "%%_type" with title "%%_title" has been saved.', [
               'type'  => (new text($widget->item_title))->render(),
               'title' => $c_item->object->file
             ]));
@@ -141,7 +141,7 @@ namespace effcore {
             unset($items[$c_row_id]);
             if ($c_result) {
               message::insert(new text_multiline([
-                'Item of type "%%_type" with title = "%%_title" was deleted physically.'], [
+                'Item of type "%%_type" with title "%%_title" was deleted physically.'], [
                 'type'  => (new text($widget->item_title))->render(),
                 'title' => $c_title_for_message
               ]));
@@ -175,7 +175,7 @@ namespace effcore {
         if (event::start_local('on_file_prepare', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'items' => &$items, 'new_item' => &$c_new_item])) {
           $widget->items_set($items);
           message::insert(new text(
-            'Item of type "%%_type" with title = "%%_title" was inserted.', [
+            'Item of type "%%_type" with title "%%_title" was inserted.', [
             'type'  => (new text($widget->item_title))->render(),
             'title' => $c_new_item->object->file]));
         } else {
@@ -197,7 +197,7 @@ namespace effcore {
           unset($items[$button->_id]);
           $widget->items_set($items);
           message::insert(new text_multiline([
-            'Item of type "%%_type" with title = "%%_title" was deleted physically.',
+            'Item of type "%%_type" with title "%%_title" was deleted physically.',
             'Do not forget to save the changes!'], [
             'type'  => (new text($widget->item_title))->render(),
             'title' => $item_title ]));
@@ -207,7 +207,7 @@ namespace effcore {
         $items[$button->_id]->is_deleted = true;
         $widget->items_set($items);
         message::insert(new text_multiline([
-          'Item of type "%%_type" with title = "%%_title" was deleted.',
+          'Item of type "%%_type" with title "%%_title" was deleted.',
           'Do not forget to save the changes!'], [
           'type'  => (new text($widget->item_title))->render(),
           'title' => $item_title ]));
