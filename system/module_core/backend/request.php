@@ -152,7 +152,7 @@ namespace effcore {
   # │ $_FILES[field] === [name = [0 => 'file1', 1 => 'file2']] ║ return [0 => (object)[name = 'file1'], 1 => (object)[name = 'file2']] │
   # └──────────────────────────────────────────────────────────╨───────────────────────────────────────────────────────────────────────┘
 
-  static function files_get($name) {
+  static function files_get($name, $return_class_name = 'file_history') {
     $result = [];
     if (isset($_FILES[$name]['name'    ]) &&
         isset($_FILES[$name]['type'    ]) &&
@@ -160,25 +160,31 @@ namespace effcore {
         isset($_FILES[$name]['tmp_name']) &&
         isset($_FILES[$name]['error'   ])) {
       $info = $_FILES[$name];
+    # converting into a unified structure
       if (!is_array($info['name'    ])) $info['name'    ] = [$info['name'    ]];
       if (!is_array($info['type'    ])) $info['type'    ] = [$info['type'    ]];
       if (!is_array($info['size'    ])) $info['size'    ] = [$info['size'    ]];
       if (!is_array($info['tmp_name'])) $info['tmp_name'] = [$info['tmp_name']];
       if (!is_array($info['error'   ])) $info['error'   ] = [$info['error'   ]];
-      foreach ($info['name'] as $c_number => $c_name) {
-        $c_type     = $info['type'    ][$c_number];
+    # preparing the result
+      foreach ($info['name'] as $c_number => $c_file) {
+        $c_file     = trim($c_file); # note: "name.type"
+        $c_mime     = $info['type'    ][$c_number];
         $c_size     = $info['size'    ][$c_number];
-        $c_tmp_name = $info['tmp_name'][$c_number];
+        $c_path_tmp = $info['tmp_name'][$c_number];
         $c_error    = $info['error'   ][$c_number];
         if ($c_error !== UPLOAD_ERR_NO_FILE) {
-          $result[$c_number] = new file_history;
-          $result[$c_number]->init_from_tmp(
-            $c_name,
-            $c_type,
-            $c_size,
-            $c_tmp_name,
-            $c_error
-          );
+          if ($return_class_name === 'file_history') {
+            $result[$c_number] = new file_history;
+            $result[$c_number]->init_from_tmp($c_file, $c_mime, $c_size, $c_path_tmp, $c_error);
+          } else {
+            $result[$c_number] = new $return_class_name;
+            $result[$c_number]->file     = $c_file;
+            $result[$c_number]->mime     = $c_mime;
+            $result[$c_number]->size     = $c_size;
+            $result[$c_number]->path_tmp = $c_path_tmp;
+            $result[$c_number]->error    = $c_error;
+          }
         }
       }
     }
@@ -304,9 +310,9 @@ namespace effcore {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL,             $url    );
     curl_setopt($curl, CURLOPT_HTTPHEADER,      $headers);
-    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true    ); # added in CURL v.7.42.0 (2015-04-22)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true    );
     curl_setopt($curl, CURLOPT_HEADER,          false   );
+    curl_setopt($curl, CURLOPT_PATH_AS_IS,      true    ); # added in CURL v.7.42.0 (2015-04-22)
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION,  array_key_exists('followlocation', $settings) ? $settings['followlocation'] : false);
     curl_setopt($curl, CURLOPT_TIMEOUT,         array_key_exists('timeout',        $settings) ? $settings['timeout']        : 5);
     curl_setopt($curl, CURLOPT_SSLVERSION,      array_key_exists('sslversion',     $settings) ? $settings['sslversion']     : CURL_SSLVERSION_TLSv1_2);
