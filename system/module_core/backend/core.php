@@ -680,7 +680,7 @@ namespace effcore {
 
   static function format_persent($number, $precision = 2) {return static::format_number(floatval($number), $precision).'%';}
   static function format_msecond($number, $precision = 6) {return static::format_number(floatval($number), $precision);}
-  static function format_version($number)                 {return static::format_number(floatval($number), 3, null, null, false);}
+  static function format_version($number)                 {return static::format_number(floatval($number), 3, '.', '', false);}
 
   static function format_logic($value) {
     return $value ? 'yes' : 'no';
