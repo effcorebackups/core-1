@@ -55,7 +55,9 @@
 
   /* pictures */
 
-  img {border: 0}
+  img {
+    max-width: %%_page_width_max_context{null}px;
+    border: 0}
 
   /* universal styles */
 
