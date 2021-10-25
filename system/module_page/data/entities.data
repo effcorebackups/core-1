@@ -772,7 +772,7 @@ entities
         - weight: +340
         managing_control_element_attributes
         - minlength: null
-        - maxlength: null
+        - maxlength: 16777215
         - required: null
     - created
         title: Created

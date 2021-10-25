@@ -12,6 +12,8 @@ namespace effcore {
   public $attributes = ['data-type' => 'items-attributes'];
   public $name_complex = 'widget_attributes';
   public $state = 'closed';
+  public $attribute_name_maxlength = 0xff;
+  public $attribute_value_maxlength = 0xffff;
 
   ###########################
   ### static declarations ###
@@ -49,6 +51,7 @@ namespace effcore {
     $field_name->cform = $widget->cform;
     $field_name->build();
     $field_name->name_set($widget->name_get_complex().'__name__'.$c_row_id);
+    $field_name->maxlength_set($widget->attribute_name_maxlength);
     $field_name->value_set($item->name);
   # control for attribute value
     $field_value = new field_text('Val.', null, [], +380);
@@ -57,9 +60,9 @@ namespace effcore {
     $field_value->cform = $widget->cform;
     $field_value->build();
     $field_value->name_set($widget->name_get_complex().'__value__'.$c_row_id);
+    $field_value->maxlength_set($widget->attribute_value_maxlength);
     $field_value->value_set($item->value);
     $field_value->required_set(false);
-    $field_value->maxlength_set(2048);
   # control for translation status
     $field_is_apply_translation = new field_checkbox('Tr.', null, [], +360);
     $field_is_apply_translation->attributes['data-style'] = 'inline';
