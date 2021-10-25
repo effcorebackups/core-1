@@ -458,7 +458,7 @@ entities
         - description|text_multiline
             text
             - 0: This block will be inserted into the &lt;head&gt; of this page.
-            - 1: Its contents are not filtered and presented as is.
+            - 1: This content is not filtered and is presented as is.
             - 2: An example of its content can be: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).
         - weight: +240
         managing_control_element_attributes

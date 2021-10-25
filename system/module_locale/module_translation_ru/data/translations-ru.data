@@ -395,7 +395,6 @@ translations
     - Item of type "%%_type" with title "%%_title" was updated.: Элемент типа "%%_type" с названием "%%_title" был обновлён.
     - items: элементы
     - Items: Элементы
-    - Its contents are not filtered and presented as is.: Его содержание не фильтруется и представляется как есть.
     - K: К
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
     - KiB: КиБ
@@ -753,6 +752,7 @@ translations
     - This block will be inserted into the &lt;head&gt; of each page.: Данный блок будет вставлен в &lt;head&gt; каждой страницы.
     - This block will be inserted into the &lt;head&gt; of this page.: Данный блок будет вставлен в &lt;head&gt; этой страницы.
     - This combination of values is already in use!: Такая комбинация значений уже используется!
+    - This content is not filtered and is presented as is.: Это содержание не фильтруется и представляется как есть.
     - This page should be use HTTPS protocol!: Эта страница должна использовать HTTPS-протокол!
     - Thousands separator: Разделитель тысяч
     - thumbnail: миниатюра
