@@ -13,7 +13,6 @@ namespace effcore {
     'type'      => 'email',
     'name'      => 'email',
     'required'  => true,
-    'minlength' => 5,
     'maxlength' => 64
   ];
 
