@@ -14,7 +14,7 @@ forms
             - name: content
             - required: false
             - minlength: null
-            - maxlength: null
+            - maxlength: 16777215
             - rows: 20
         - is_apply_tokens|field_switcher
             title: Apply tokens

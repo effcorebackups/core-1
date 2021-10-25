@@ -463,7 +463,7 @@ entities
         - weight: +240
         managing_control_element_attributes
         - minlength: null
-        - maxlength: null
+        - maxlength: 65535
         - required: null
     - is_use_global_meta
         title: Use global META

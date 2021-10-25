@@ -49,7 +49,7 @@ namespace effcore {
     $field_attributes->name_set($widget->name_get_complex().'__attributes__'.$c_row_id);
     $field_attributes->value_data_set($item->attributes ?? null, 'attributes');
     $field_attributes->required_set(false);
-    $field_attributes->maxlength_set(10000);
+    $field_attributes->maxlength_set(0xffff);
   # relate new controls with the widget
     $widget->controls['#title__'.           $c_row_id] = $field_title;
     $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;

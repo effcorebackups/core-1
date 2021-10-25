@@ -199,7 +199,7 @@ entities
         - weight: +140
         managing_control_element_attributes
         - minlength: null
-        - maxlength: null
+        - maxlength: 65535
         - required: null
     constraints
     - primary_id
