@@ -13,8 +13,7 @@ namespace effcore {
     'type'      => 'text',
     'name'      => 'url',
     'required'  => true,
-    'minlength' => 1,
-    'maxlength' => 2047
+    'maxlength' => 2048
   ];
 
   public $is_allowed_unicode = true;

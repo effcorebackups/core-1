@@ -17,6 +17,7 @@ forms
               - 3: If a domain is specified, then it and its subdomains are used.
             element_attributes
             - name: cookie_domain
+            - minlength: 2
             - maxlength: 120
             - required: false
             should_be_included
