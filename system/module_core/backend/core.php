@@ -220,9 +220,11 @@ namespace effcore {
       switch (gettype($c_value)) {
         case 'NULL'   :                                                                                                                                                                                            break;
         case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                             break;
+        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value, 14)           ).$value_wrapper; break;
+        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value, 14)           ).$value_wrapper; break;
         case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
         case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
-        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                ).$value_wrapper; break;
+        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                              (string)$c_value                ).$value_wrapper; break;
       }
     }
     if ($join_part) return implode($join_part, $result);
@@ -266,7 +268,7 @@ namespace effcore {
         break;
       case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").'\';'.nl; break;
       case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').      ';'.nl; break;
-      case 'integer': $result.= $prefix.' = '.$data.                           ';'.nl; break;
+      case 'integer': $result.= $prefix.' = '.static::format_number($data, 14).';'.nl; break;
       case 'double' : $result.= $prefix.' = '.static::format_number($data, 14).';'.nl; break;
       case 'NULL'   : $result.= $prefix.' = null'.                             ';'.nl; break;
       default       : $result.= $prefix.' = '.(string)$data.                   ';'.nl;
