@@ -265,9 +265,11 @@ namespace effcore {
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
       case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").'\';'.nl; break;
-      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').';'.nl;       break;
-      case 'NULL'   : $result.= $prefix.' = null;'.nl;                                 break;
-      default       : $result.= $prefix.' = '.(string)$data.';'.nl;
+      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').      ';'.nl; break;
+      case 'integer': $result.= $prefix.' = '.$data.                           ';'.nl; break;
+      case 'double' : $result.= $prefix.' = '.static::format_number($data, 14).';'.nl; break;
+      case 'NULL'   : $result.= $prefix.' = null'.                             ';'.nl; break;
+      default       : $result.= $prefix.' = '.(string)$data.                   ';'.nl;
     }
     return $result;
   }
@@ -660,7 +662,7 @@ namespace effcore {
 
   static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
     $result = $precision > 0 ? # disable the rounding effect
-       substr(number_format($number, $precision + 5, $dec_point, $thousands), 0, -5) :
+       substr(number_format($number, $precision + 1, $dec_point, $thousands), 0, -1) :
               number_format($number, $precision,     $dec_point, $thousands);
     if ($no_zeros && strpos($result, $dec_point) !== false) {
       $result = rtrim($result, '0');
