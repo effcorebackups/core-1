@@ -49,7 +49,7 @@ entities
     - title
         title: Title
         type: varchar
-        size: 255
+        size: 1024
         collate: nocase
         not_null: true
         check: (title <> '')
@@ -60,6 +60,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +380
+        managing_control_element_attributes
+        - maxlength: 1024
     - title_is_visible
         title: Title is visible
         type: boolean
@@ -206,7 +208,7 @@ entities
     - title
         title: Title
         type: varchar
-        size: 255
+        size: 1024
         collate: nocase
         not_null: true
         check: (title <> '')
@@ -217,6 +219,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +340
+        managing_control_element_attributes
+        - maxlength: 1024
     - attributes
         title: Attributes
         type: blob

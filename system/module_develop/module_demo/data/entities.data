@@ -35,7 +35,7 @@ entities
     - description
         title: Description
         type: varchar
-        size: 255
+        size: 1024
         collate: nocase
         not_null: true
         check: (description <> '')
@@ -46,6 +46,8 @@ entities
         managing_control_class: \effcore\field_text
         managing_control_properties
         - weight: +380
+        managing_control_element_attributes
+        - maxlength: 1024
     - weight
         title: Weight
         type: integer
@@ -253,7 +255,7 @@ entities
     - description
         title: Description
         type: varchar
-        size: 255
+        size: 1024
         collate: nocase
         not_null: true
         check: (description <> '')
@@ -265,6 +267,8 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +380
+        managing_control_element_attributes
+        - maxlength: 1024
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # MySQL : field_1 integer … primary key auto_increment
