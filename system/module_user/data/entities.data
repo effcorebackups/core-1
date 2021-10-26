@@ -192,10 +192,6 @@ entities
         fields
         - =: id
     indexes
-    - index_title
-        type: index
-        fields
-        - =: title
     - index_created
         type: index
         fields
@@ -506,10 +502,6 @@ entities
         fields
         - =: id
     indexes
-    - index_title
-        type: index
-        fields
-        - =: title
     - index_weight
         type: index
         fields
