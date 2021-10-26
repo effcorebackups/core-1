@@ -279,6 +279,8 @@ namespace effcore {
   static function data_stringify($data) {
     switch (gettype($data)) {
       case 'string' : return '\''.addcslashes($data, "'\\").'\'';
+      case 'integer': return static::format_number($data, 14);
+      case 'double' : return static::format_number($data, 14);
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
       case 'object' :
