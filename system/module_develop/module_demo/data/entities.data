@@ -255,7 +255,7 @@ entities
     - description
         title: Description
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         not_null: true
         check: (description <> '')
@@ -268,7 +268,7 @@ entities
         - is_validate_uniqueness: true
         - weight: +380
         managing_control_element_attributes
-        - maxlength: 1024
+        - maxlength: 255
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # MySQL : field_1 integer … primary key auto_increment
