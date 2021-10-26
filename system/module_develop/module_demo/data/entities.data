@@ -267,8 +267,6 @@ entities
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +380
-        managing_control_element_attributes
-        - maxlength: 255
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # MySQL : field_1 integer … primary key auto_increment
