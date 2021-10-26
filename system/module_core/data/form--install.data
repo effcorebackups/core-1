@@ -58,7 +58,7 @@ forms
                 element_attributes
                 - name: database_name
                 - value: effcore
-                - maxlength: 128
+                - maxlength: 127
                 - pattern: ^[a-zA-Z0-9_\-]+$
       # driver
         - is_sqlite|field_radiobutton
