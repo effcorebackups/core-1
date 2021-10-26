@@ -371,7 +371,7 @@ entities
     - url
         title: URL
         type: varchar
-        size: 1024
+        size: 512
         collate: nocase
         not_null: true
         check: (url <> '')
@@ -382,7 +382,7 @@ entities
         - is_validate_uniqueness: true
         - weight: +340
         managing_control_element_attributes
-        - maxlength: 1024
+        - maxlength: 512
     - is_https
         title: HTTPS is required
         type: boolean
