@@ -659,10 +659,9 @@ namespace effcore {
   ##############
 
   static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
-    $precision = $precision ? $precision + 5 : 0; # disable the rounding effect
-    $result    = $precision ?
-       substr(number_format($number, $precision, $dec_point, $thousands), 0, -5) :
-              number_format($number, $precision, $dec_point, $thousands);
+    $result = $precision > 0 ? # disable the rounding effect
+       substr(number_format($number, $precision + 5, $dec_point, $thousands), 0, -5) :
+              number_format($number, $precision,     $dec_point, $thousands);
     if ($no_zeros && strpos($result, $dec_point) !== false) {
       $result = rtrim($result, '0');
       $result = rtrim($result, $dec_point);
