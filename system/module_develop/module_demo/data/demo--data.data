@@ -10,7 +10,7 @@ demo_data
   demo_string: text
   demo_string_empty: 
   demo_integer: 1
-  demo_float: 2.3
+  demo_float: 0.000001
   demo_boolean: true
 # ─────────────────────────────────────────────────────────────────────
 # special types
