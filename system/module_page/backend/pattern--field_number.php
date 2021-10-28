@@ -83,9 +83,12 @@ namespace effcore {
 
   static function validate_step($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
-      $step = $field->step_get() ?: 1;
-      $min = (float)$field->min_get();
-      $max = (float)$field->max_get();
+      $step  = $field->step_get() ?: 1;
+      $min   = (float)$field->min_get();
+      $max   = (float)$field->max_get();
+      $value = (float)$new_value;
+      if ($value === $min) return true;
+      if ($value === $max) return true;
       if (rtrim(strrchr(number_format(($new_value - $min) / $step, 11), '.'), '.0') !== '') {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
