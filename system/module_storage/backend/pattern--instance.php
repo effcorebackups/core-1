@@ -16,9 +16,11 @@ namespace effcore {
     $this->values_set($values);
   }
 
-  function __get  ($name)         {return       $this->values[$name];         }
-  function __set  ($name, $value) {             $this->values[$name] = $value;}
-  function __isset($name)         {return isset($this->values[$name]);        }
+  function __isset($name) {return isset($this->values[$name]);}
+  function __get  ($name) {return       $this->values[$name] ;}
+  function __set  ($name, $value) {
+    $this->values[$name] = core::exponencial_string_normalize($value);
+  }
 
   function values_set($values) {$this->values = $values;}
   function values_get($names = []) {
@@ -72,6 +74,8 @@ namespace effcore {
     event::start('on_instance_delete_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
     return $result;
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function make_url_for_select() {return '/manage/data/'.$this->entity_get()->managing_group_id.'/'.$this->entity_get()->name.'/'.implode('+', $this->values_id_get());          }
   function make_url_for_update() {return '/manage/data/'.$this->entity_get()->managing_group_id.'/'.$this->entity_get()->name.'/'.implode('+', $this->values_id_get()).'/update';}
