@@ -912,6 +912,12 @@ namespace effcore {
   ### shared functions ###
   ########################
 
+  static function float_fraction_length_get($value) {
+    $length = strlen(core::format_number((float)$value - (int)$value, 10)) - 2;
+    return $length > 0 ?
+           $length : 0;
+  }
+
   static function exponencial_string_normalize($value) {
     if (is_string($value) && is_numeric($value))
       if ($value !== (string)(int)$value && $value[0] !== '0')
