@@ -912,6 +912,13 @@ namespace effcore {
   ### shared functions ###
   ########################
 
+  static function exponencial_string_normalize($value) {
+    if (is_string($value) && is_numeric($value))
+      if ($value !== (string)(int)$value && $value[0] !== '0')
+        return core::format_number($value, 14);
+    return $value;
+  }
+
   static function strtolower_en($value) {
     return preg_replace_callback('%(?<char>[A-Z])%S', function ($c_match) {
       return strtolower($c_match['char']);
