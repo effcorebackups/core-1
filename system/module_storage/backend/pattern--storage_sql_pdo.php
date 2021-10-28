@@ -153,7 +153,7 @@ namespace effcore {
       event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'result' => &$result, 'errors' => &$c_error]);
       $this->args_previous = $this->args;
       $this->args = [];
-      if ($c_error[0] !== '00000') {
+      if ($c_error[0] !== \PDO::ERR_NONE) {
         $this->errors[] = $c_error;
         message::insert(new text_multiline([
           'Query error!',

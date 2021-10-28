@@ -2,7 +2,7 @@ demo_data
 # ─────────────────────────────────────────────────────────────────────
 # scalar types:
 # ═════════════════════════════════════════════════════════════════════
-# demo_integer_exponential: 123e1 # - exponential notation is not supported
+# demo_integer_exponential: 123e1 # - exponential notation is not supported (examples: 123e1, 1.2e3, 7E-10, 1_234.567)
 # demo_integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
 # demo_integer_octal: 0123        # - octal notation is not supported
 # demo_integer_binary: 0b101      # - binary notation is not supported
