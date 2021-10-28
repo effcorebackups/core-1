@@ -9,11 +9,9 @@ namespace effcore\modules\page {
           use \effcore\area;
           use \effcore\core;
           use \effcore\entity;
-          use \effcore\field_number;
           use \effcore\form_part;
           use \effcore\layout;
           use \effcore\markup;
-          use \effcore\text_multiline;
           use \effcore\text;
           use \effcore\widget_blocks;
           abstract class events_form_instance_update {

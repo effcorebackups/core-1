@@ -27,7 +27,6 @@ forms
             - name: multiplier_l
             - min: +1
             - max: +26
-            - step: 1
             - value: 11
         - multiplier_r|field_number
             title: Multiplier (right)
@@ -35,7 +34,6 @@ forms
             - name: multiplier_r
             - min: +1
             - max: +26
-            - step: 1
             - value: 11
         - report|fieldset
             title: Report
