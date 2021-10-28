@@ -45,7 +45,7 @@ namespace effcore {
                 static::validate_min       ($field, $form, $element, $new_value) &&
                 static::validate_max       ($field, $form, $element, $new_value) &&
                 static::validate_fraction  ($field, $form, $element, $new_value) &&
-                static::validate_step      ($field, $form, $element, $new_value) &&
+                static::validate_range     ($field, $form, $element, $new_value) &&
                 static::validate_pattern   ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
                 static::validate_uniqueness($field,                  $new_value, $old_value) : true);
       $field->value_set($new_value);
@@ -81,7 +81,7 @@ namespace effcore {
     return true;
   }
 
-  static function validate_step($field, $form, $element, &$new_value) {
+  static function validate_range($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
       $step  = $field->step_get() ?: 1;
       $min   = (float)$field->min_get();
