@@ -38,16 +38,16 @@ namespace effcore {
       $new_value = request::value_get($name, static::current_number_generate($name), $form->source_get());
       $new_value = str_replace(',', '.', $new_value);
       $old_value = $field->value_get_initial();
-      $result = static::validate_required  ($field, $form, $element, $new_value) &&
-                static::validate_minlength ($field, $form, $element, $new_value) &&
-                static::validate_maxlength ($field, $form, $element, $new_value) &&
-                static::validate_value     ($field, $form, $element, $new_value) &&
-                static::validate_min       ($field, $form, $element, $new_value) &&
-                static::validate_max       ($field, $form, $element, $new_value) &&
-                static::validate_fraction  ($field, $form, $element, $new_value) &&
-                static::validate_range     ($field, $form, $element, $new_value) &&
-                static::validate_pattern   ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
-                static::validate_uniqueness($field,                  $new_value, $old_value) : true);
+      $result = static::validate_required       ($field, $form, $element, $new_value) &&
+                static::validate_minlength      ($field, $form, $element, $new_value) &&
+                static::validate_maxlength      ($field, $form, $element, $new_value) &&
+                static::validate_value          ($field, $form, $element, $new_value) &&
+                static::validate_min            ($field, $form, $element, $new_value) &&
+                static::validate_max            ($field, $form, $element, $new_value) &&
+                static::validate_fractional_part($field, $form, $element, $new_value) &&
+                static::validate_range          ($field, $form, $element, $new_value) &&
+                static::validate_pattern        ($field, $form, $element, $new_value) && (!empty($field->is_validate_uniqueness) ?
+                static::validate_uniqueness     ($field,                  $new_value, $old_value) : true);
       $field->value_set($new_value);
       return $result;
     }
@@ -64,7 +64,7 @@ namespace effcore {
     }
   }
 
-  static function validate_fraction($field, $form, $element, &$new_value) {
+  static function validate_fractional_part($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
       $step = $field->step_get() ?: 1;
       $fraction_step_length      = strlen(ltrim(rtrim(strrchr(number_format($step, 10), '.'), '0'), '.'));
