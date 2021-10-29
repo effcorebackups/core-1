@@ -768,11 +768,11 @@ namespace effcore {
   }
 
   static function validate_range($min, $max, $step, $value) {
-    if (bccomp(            $value, $min, 20) /* $value  <  $min */ === -1) return false;
-    if (bccomp(            $value, $max, 20) /* $value  >  $max */ === +1) return false;
-    if (bccomp(            $value, $min, 20) /* $value === $min */ ===  0) return true;
-    if (bccomp(            $value, $max, 20) /* $value === $max */ ===  0) return true;
-    if (bccomp(bcmod(bcsub($value, $min, 20), $step, 20), '0', 20) ===  0) return true;
+    if (bccomp(           $value, $min, 20) /* $value  <  $min */ ===  -1) return false;
+    if (bccomp(           $value, $max, 20) /* $value  >  $max */ ===  +1) return false;
+    if (bccomp(           $value, $min, 20) /* $value === $min */ ===   0) return true;
+    if (bccomp(           $value, $max, 20) /* $value === $max */ ===   0) return true;
+    if (rtrim(bcdiv(bcsub($value, $min, 20), $step, 20), '0')[-1] === '.') return true;
     return false;
   }
 
