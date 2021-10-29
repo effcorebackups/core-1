@@ -767,6 +767,17 @@ namespace effcore {
     return filter_var($value, FILTER_VALIDATE_URL, $flags);
   }
 
+  static function validate_range($min, $max, $step, $value) {
+    if (bccomp(            $value, $min, 20) /* $value  <  $min */ === -1) return false;
+    if (bccomp(            $value, $max, 20) /* $value  >  $max */ === +1) return false;
+    if (bccomp(            $value, $min, 20) /* $value === $min */ ===  0) return true;
+    if (bccomp(            $value, $max, 20) /* $value === $max */ ===  0) return true;
+    if (bccomp(bcmod(bcsub($value, $min, 20), $step, 20), '0', 20) ===  0) return true;
+    return false;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function sanitize_id($value, $corrector = '-') {
     return preg_replace('%[^a-z0-9_\\-]%S', $corrector, strtolower($value));
   }

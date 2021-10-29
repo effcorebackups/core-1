@@ -67,9 +67,9 @@ namespace effcore {
   static function validate_fraction($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
       $step = $field->step_get() ?: 1;
-      $fraction_step_length      = strlen(ltrim(rtrim(strrchr(number_format($step, 11), '.'), '0'), '.'));
+      $fraction_step_length      = strlen(ltrim(rtrim(strrchr(number_format($step, 10), '.'), '0'), '.'));
       $fraction_new_value_length = strlen(ltrim(rtrim(strrchr(              $new_value, '.'), '0'), '.'));
-      if ($fraction_new_value_length > 11 ||
+      if ($fraction_new_value_length > 10 ||
           $fraction_new_value_length > $fraction_step_length) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
@@ -89,7 +89,7 @@ namespace effcore {
       $value = (float)$new_value;
       if ($value === $min) return true;
       if ($value === $max) return true;
-      if (rtrim(strrchr(number_format(($new_value - $min) / $step, 11), '.'), '.0') !== '') {
+      if (rtrim(strrchr(number_format(($new_value - $min) / $step, 10), '.'), '.0') !== '') {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
           'Field value is not in valid range.'], ['title' => (new text($field->title))->render() ]

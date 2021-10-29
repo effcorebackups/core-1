@@ -7,8 +7,9 @@ module|module_embedded
   version: 0.900
   dependencies
     php
+    - bcmath: 1.0
+    - exif: 1.0
     - fileinfo: 1.0
     - filter: 7.1.0
-    - hash: 1.0
-    - exif: 1.0
     - gd: 1.0
+    - hash: 1.0
