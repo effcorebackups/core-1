@@ -240,9 +240,9 @@ namespace effcore {
             if (is_array($array_defaults) && array_key_exists($c_key,
                          $array_defaults) &&
                          $array_defaults[$c_key] === $c_value) continue;
-            $result.= static::data_to_code($c_value, $prefix.(is_int($c_key) ?
-                                                                 '['.$c_key.']' :
-                                                   '[\''.addcslashes($c_key, "'\\").'\']'));
+            $result.= static::data_to_code($c_value, $prefix.(is_numeric($c_key) ?
+                                               '['.static::format_number($c_key).         ']' :
+                                               '[\''.        addcslashes($c_key, "'\\").'\']'));
           }
         } else {
           $result.= $prefix.' = [];'.nl;
