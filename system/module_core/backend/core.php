@@ -923,8 +923,9 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function float_fraction_length_get($value) {
-    $length = strlen(core::format_number((float)$value - (int)$value, 10)) - 2;
+  static function fractional_length_get($value) {
+    $fractional_part = bcsub($value, (string)(int)$value, 40);
+    $length = strlen(rtrim($fractional_part, '0')) - 2;
     return $length > 0 ?
            $length : 0;
   }
