@@ -73,7 +73,7 @@ namespace effcore {
           $fraction_new_value_length > $fraction_step_length) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
-          'Fraction part is too long.'], ['title' => (new text($field->title))->render() ]
+          'Fractional part is too long.'], ['title' => (new text($field->title))->render() ]
         ));
         return;
       }
