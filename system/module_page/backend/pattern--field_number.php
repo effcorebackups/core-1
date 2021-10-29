@@ -83,13 +83,10 @@ namespace effcore {
 
   static function validate_range($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
-      $step  = $field->step_get() ?: 1;
-      $min   = (float)$field->min_get();
-      $max   = (float)$field->max_get();
-      $value = (float)$new_value;
-      if ($value === $min) return true;
-      if ($value === $max) return true;
-      if (rtrim(strrchr(number_format(($new_value - $min) / $step, 10), '.'), '.0') !== '') {
+      $str_min = core::format_number($field-> min_get(),      10);
+      $str_max = core::format_number($field-> max_get(),      10);
+      $str_stp = core::format_number($field->step_get() ?: 1, 10);
+      if (!core::validate_range($str_min, $str_max, $str_stp, $new_value)) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
           'Field value is not in valid range.'], ['title' => (new text($field->title))->render() ]
