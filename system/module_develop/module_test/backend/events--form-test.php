@@ -48,7 +48,7 @@ namespace effcore\modules\test {
           timer::tap('test_total');
         # show message
           if (!empty($test_result['return']))
-               message::insert(new text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => locale::format_number(timer::period_get('test_total', -1, -2), 10)]));
+               message::insert(new text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => locale::format_number(timer::period_get('test_total', -1, -2), core::fpart_max_len)]));
           else message::insert('The test was failed!', 'error');
         # make report
           if (!empty($test_result['reports'])) {

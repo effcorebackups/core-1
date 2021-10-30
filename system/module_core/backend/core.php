@@ -219,13 +219,13 @@ namespace effcore {
     foreach ((array)$data as $c_name => $c_value) {
       if ($is_xml_style && $c_value === true) $c_value = $c_name;
       switch (gettype($c_value)) {
-        case 'NULL'   :                                                                                                                                                                                            break;
-        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                             break;
-        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value)               ).$value_wrapper; break;
-        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value, 10)           ).$value_wrapper; break;
-        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)               ).$value_wrapper; break;
-        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')).$value_wrapper; break;
-        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                              (string)$c_value                ).$value_wrapper; break;
+        case 'NULL'   :                                                                                                                                                                                                    break;
+        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                     break;
+        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value)                       ).$value_wrapper; break;
+        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value, static::fpart_max_len)).$value_wrapper; break;
+        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)                       ).$value_wrapper; break;
+        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')        ).$value_wrapper; break;
+        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                              (string)$c_value                        ).$value_wrapper; break;
       }
     }
     if ($join_part) return implode($join_part, $result);
@@ -242,8 +242,8 @@ namespace effcore {
                          $array_defaults) &&
                          $array_defaults[$c_key] === $c_value) continue;
             $result.= static::data_to_code($c_value, $prefix.(is_numeric($c_key) ?
-                                               '['.static::format_number($c_key, 10).     ']' :
-                                               '[\''.        addcslashes($c_key, "'\\").'\']'));
+                                               '['.static::format_number($c_key, static::fpart_max_len).']' :
+                                               '[\''.        addcslashes($c_key, "'\\").              '\']'));
           }
         } else {
           $result.= $prefix.' = [];'.nl;
@@ -267,12 +267,12 @@ namespace effcore {
         if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
-      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").'\';'.nl; break;
-      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').      ';'.nl; break;
-      case 'integer': $result.= $prefix.' = '.static::format_number($data).    ';'.nl; break;
-      case 'double' : $result.= $prefix.' = '.static::format_number($data, 10).';'.nl; break;
-      case 'NULL'   : $result.= $prefix.' = null'.                             ';'.nl; break;
-      default       : $result.= $prefix.' = '.(string)$data.                   ';'.nl;
+      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").                   '\';'.nl; break;
+      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').                         ';'.nl; break;
+      case 'integer': $result.= $prefix.' = '.static::format_number($data).                       ';'.nl; break;
+      case 'double' : $result.= $prefix.' = '.static::format_number($data, static::fpart_max_len).';'.nl; break;
+      case 'NULL'   : $result.= $prefix.' = null'.                                                ';'.nl; break;
+      default       : $result.= $prefix.' = '.(string)$data.                                      ';'.nl;
     }
     return $result;
   }
@@ -281,7 +281,7 @@ namespace effcore {
     switch (gettype($data)) {
       case 'string' : return '\''.addcslashes($data, "'\\").'\'';
       case 'integer': return static::format_number($data);
-      case 'double' : return static::format_number($data, 10);
+      case 'double' : return static::format_number($data, static::fpart_max_len);
       case 'boolean': return $data ? 'true' : 'false';
       case 'NULL'   : return 'null';
       case 'object' :
@@ -944,7 +944,7 @@ namespace effcore {
   static function exponencial_string_normalize($value) {
     if (is_string($value) && is_numeric($value))
       if ($value !== (string)(int)$value && $value[0] !== '0' && strpbrk($value, 'eE'))
-        return core::format_number($value, 10);
+        return core::format_number($value, static::fpart_max_len);
     return $value;
   }
 
