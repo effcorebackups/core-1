@@ -7,11 +7,12 @@
 namespace effcore {
           abstract class core {
 
+  const empty_ip = '::';
   const date_period_h = 60 * 60;
   const date_period_d = 60 * 60 * 24;
   const date_period_w = 60 * 60 * 24 * 7;
   const date_period_m = 60 * 60 * 24 * 30;
-  const empty_ip = '::';
+  const fpart_max_len = 10;
 
   ####################
   ### boot modules ###
@@ -923,11 +924,22 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function fractional_length_get($value) {
-    $fractional_part = bcsub($value, (string)(int)$value, 40);
-    $length = strlen(rtrim($fractional_part, '0')) - 2;
-    return $length > 0 ?
-           $length : 0;
+  static function fractional_part_length_get($value) {
+  # case for strings (examples: '', '100', '0', '0.00100')
+  # note: exponential notation is not supported (examples: 1.23e6, 1.23e-6)
+    if (is_string($value) && !strpbrk($value, 'eE')) {
+      $fpart = strrchr($value, '.');
+      return $fpart !== false ? strlen($fpart) - 1 : 0;
+    }
+  # case for integer and float (examples: 100, 0, 0.00100)
+  # note: extra spaces in the right side will be skipped,
+  # exponential notation is not supported (examples: 1.23e6, 1.23e-6)
+    if (is_int($value) || is_float($value)) {
+      $fpart = bcsub($value, (string)(int)$value, 40);
+      $fpart_len = strlen(rtrim($fpart, '0')) - 2;
+      return $fpart_len > 0 ?
+             $fpart_len : 0;
+    }
   }
 
   static function exponencial_string_normalize($value) {

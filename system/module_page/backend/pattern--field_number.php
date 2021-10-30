@@ -66,11 +66,11 @@ namespace effcore {
 
   static function validate_fractional_part($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
-      $step = $field->step_get() ?: 1;
-      $fraction_step_length      = strlen(ltrim(rtrim(strrchr(number_format($step, 10), '.'), '0'), '.'));
-      $fraction_new_value_length = strlen(ltrim(rtrim(strrchr(              $new_value, '.'), '0'), '.'));
-      if ($fraction_new_value_length > 10 ||
-          $fraction_new_value_length > $fraction_step_length) {
+      $str_stp = core::format_number($field->step_get() ?: 1, core::fpart_max_len);
+      $fp_stp_length = core::fractional_part_length_get($str_stp);
+      $fp_val_length = core::fractional_part_length_get($new_value);
+      if ($fp_val_length > core::fpart_max_len ||
+          $fp_val_length > $fp_stp_length) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
           'Fractional part is too long.'], ['title' => (new text($field->title))->render() ]
@@ -83,9 +83,9 @@ namespace effcore {
 
   static function validate_range($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
-      $str_min = core::format_number($field-> min_get(),      10);
-      $str_max = core::format_number($field-> max_get(),      10);
-      $str_stp = core::format_number($field->step_get() ?: 1, 10);
+      $str_min = core::format_number($field-> min_get(),      core::fpart_max_len);
+      $str_max = core::format_number($field-> max_get(),      core::fpart_max_len);
+      $str_stp = core::format_number($field->step_get() ?: 1, core::fpart_max_len);
       if (!core::validate_range($str_min, $str_max, $str_stp, $new_value)) {
         $field->error_set(new text_multiline([
           'Field "%%_title" contains an error!',
