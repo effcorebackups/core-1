@@ -67,8 +67,8 @@ namespace effcore {
   static function validate_fractional_part($field, $form, $element, &$new_value) {
     if (strlen($new_value)) {
       $str_stp = core::format_number($field->step_get() ?: 1, core::fpart_max_len);
-      $fp_stp_length = core::fractional_part_length_get($str_stp);
-      $fp_val_length = core::fractional_part_length_get($new_value);
+      $fp_stp_length = core::fractional_part_length_get($str_stp,   false);
+      $fp_val_length = core::fractional_part_length_get($new_value, false);
       if ($fp_val_length > core::fpart_max_len ||
           $fp_val_length > $fp_stp_length) {
         $field->error_set(new text_multiline([

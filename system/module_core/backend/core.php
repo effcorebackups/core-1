@@ -924,21 +924,20 @@ namespace effcore {
   ### shared functions ###
   ########################
 
-  static function fractional_part_length_get($value) {
-  # case for strings (examples: '', '100', '0', '0.00100')
-  # note: exponential notation is not supported (examples: 1.23e6, 1.23e-6)
+  static function fractional_part_length_get($value, $no_zeros = true) {
+  # case for strings (examples: '', '100', '0', '0.00100') but NOT exponential (examples: '1.23e-6')
     if (is_string($value) && !strpbrk($value, 'eE')) {
       $fpart = strrchr($value, '.');
-      return $fpart !== false ? strlen($fpart) - 1 : 0;
+      if ($fpart !== false && $no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
+      if ($fpart !== false && $no_zeros !== true) return strlen(      $fpart      ) - 1;
+      return 0;
     }
-  # case for integer and float (examples: 100, 0, 0.00100)
-  # note: extra spaces in the right side will be skipped,
-  # exponential notation is not supported (examples: 1.23e6, 1.23e-6)
+  # case for integer and float (examples: 100, 0, 0.00100) but NOT exponential (examples: 1.23e-6)
     if (is_int($value) || is_float($value)) {
-      $fpart = bcsub($value, (string)(int)$value, 40);
-      $fpart_len = strlen(rtrim($fpart, '0')) - 2;
-      return $fpart_len > 0 ?
-             $fpart_len : 0;
+      $fpart = ltrim(bcsub($value, (string)(int)$value, 40), '0');
+      if ($no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
+      if ($no_zeros !== true) return strlen(      $fpart      ) - 1;
+      return 0;
     }
   }
 
