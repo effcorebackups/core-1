@@ -55,8 +55,3 @@ entities
         type: primary
         fields
         - =: module_id
-    indexes
-    - index_module_id
-        type: index
-        fields
-        - =: module_id

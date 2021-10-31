@@ -635,7 +635,7 @@ entities
     - avatar_path
         title: Avatar path
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         default: null
         managing_is_enabled_on_insert: true
@@ -684,6 +684,18 @@ entities
         - required: null
         managing_control_element_attributes_on_insert
         - required: true
+    - blocked_until
+        title: Blocked until
+        type: datetime
+        default: null
+        check: (blocked_until <> '')
+        managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +240
+    - login_attempts
+        title: Login attempts
+        type: integer
+        default: null
     - created
         title: Created
         type: datetime
@@ -700,18 +712,6 @@ entities
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
         - weight: +260
-    - blocked_until
-        title: Blocked until
-        type: datetime
-        default: null
-        check: (blocked_until <> '')
-        managing_control_class: \effcore\field_datetime_local
-        managing_control_properties
-        - weight: +240
-    - login_attempts
-        title: Login attempts
-        type: integer
-        default: null
     constraints
     - primary_id
         type: primary
@@ -725,6 +725,10 @@ entities
         type: unique
         fields
         - =: email
+    - unique_avatar_path
+        type: unique
+        fields
+        - =: avatar_path
     indexes
     - index_created
         type: index

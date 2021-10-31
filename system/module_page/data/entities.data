@@ -904,7 +904,7 @@ entities
     - poster_path
         title: Poster path
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         default: null
         managing_is_enabled_on_insert: true
@@ -945,6 +945,10 @@ entities
         type: unique
         fields
         - =: path
+    - unique_poster_path
+        type: unique
+        fields
+        - =: poster_path
     indexes
     - index_created
         type: index

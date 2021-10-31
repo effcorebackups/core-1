@@ -205,11 +205,6 @@ entities
         references: polls
         references_fields
         - =: id
-    indexes
-    - index_id_poll
-        type: index
-        fields
-        - =: id_poll
 - poll_vote|entity
     name: poll_vote
     title: Poll vote

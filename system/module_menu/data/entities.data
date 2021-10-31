@@ -316,14 +316,6 @@ entities
         references_fields
         - =: id
     indexes
-    - index_id_parent
-        type: index
-        fields
-        - =: id_parent
-    - index_id_tree
-        type: index
-        fields
-        - =: id_tree
     - index_weight
         type: index
         fields
