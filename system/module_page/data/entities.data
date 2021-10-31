@@ -113,7 +113,7 @@ entities
     - path
         title: Path
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         default: null
         managing_is_enabled_on_insert: true
@@ -147,6 +147,10 @@ entities
         fields
         - =: id
     indexes
+    - index_path
+        type: unique index
+        fields
+        - =: path
     - index_created
         type: index
         fields
@@ -607,7 +611,7 @@ entities
     - path
         title: Path
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         default: null
         managing_is_enabled_on_insert: true
@@ -678,6 +682,10 @@ entities
         fields
         - =: id
     indexes
+    - index_path
+        type: unique index
+        fields
+        - =: path
     - index_created
         type: index
         fields
@@ -881,7 +889,7 @@ entities
     - path
         title: Path
         type: varchar
-        size: 1024
+        size: 255
         collate: nocase
         default: null
         managing_is_enabled_on_insert: true
@@ -934,6 +942,10 @@ entities
         fields
         - =: id
     indexes
+    - index_path
+        type: unique index
+        fields
+        - =: path
     - index_created
         type: index
         fields
