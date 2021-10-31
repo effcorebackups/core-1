@@ -13,7 +13,7 @@ namespace effcore {
   function disable() {
     if (core::boot_delete($this->id, 'enabled')) {
       message::insert(
-        new text('Module "%%_title" (%%_id) was disabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
+        new text('Module "%%_title" (%%_id) was disabled.', ['title' => (new text($this->title))->render(), 'id' => $this->id])
       );
     }
   }
@@ -64,7 +64,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
     if (core::boot_delete($this->id, 'installed')) {
       message::insert(
-        new text('Module data "%%_title" (%%_id) was removed.', ['title' => translation::apply($this->title), 'id' => $this->id])
+        new text('Module data "%%_title" (%%_id) was removed.', ['title' => (new text($this->title))->render(), 'id' => $this->id])
       );
     }
   }

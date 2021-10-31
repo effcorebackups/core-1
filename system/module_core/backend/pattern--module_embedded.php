@@ -51,7 +51,7 @@ namespace effcore {
   function enable() {
     if (core::boot_insert($this->id, $this->path, 'enabled')) {
       message::insert(
-        new text('Module "%%_title" (%%_id) was enabled.', ['title' => translation::apply($this->title), 'id' => $this->id])
+        new text('Module "%%_title" (%%_id) was enabled.', ['title' => (new text($this->title))->render(), 'id' => $this->id])
       );
     }
   }
@@ -134,7 +134,7 @@ namespace effcore {
   # ─────────────────────────────────────────────────────────────────────
     if (core::boot_insert($this->id, $this->path, 'installed')) {
       message::insert(
-        new text('Module "%%_title" (%%_id) was installed.', ['title' => translation::apply($this->title), 'id' => $this->id])
+        new text('Module "%%_title" (%%_id) was installed.', ['title' => (new text($this->title))->render(), 'id' => $this->id])
       );
     }
   }
