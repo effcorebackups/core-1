@@ -221,8 +221,8 @@ namespace effcore {
       switch (gettype($c_value)) {
         case 'NULL'   :                                                                                                                                                                                                    break;
         case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                     break;
-        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value)                       ).$value_wrapper; break;
-        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                static::format_number($c_value, static::fpart_max_len)).$value_wrapper; break;
+        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value)                        .$value_wrapper; break;
+        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value, static::fpart_max_len) .$value_wrapper; break;
         case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)                       ).$value_wrapper; break;
         case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')        ).$value_wrapper; break;
         default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                              (string)$c_value                        ).$value_wrapper; break;
