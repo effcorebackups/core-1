@@ -13,7 +13,6 @@ namespace effcore\modules\core {
           use \effcore\message;
           use \effcore\module;
           use \effcore\text;
-          use \effcore\translation;
           abstract class events_form_modules_uninstall {
 
   static function on_init($event, $form, $items) {

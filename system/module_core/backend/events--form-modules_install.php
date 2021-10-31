@@ -18,7 +18,6 @@ namespace effcore\modules\core {
           use \effcore\node;
           use \effcore\text_simple;
           use \effcore\text;
-          use \effcore\translation;
           use \effcore\url;
           abstract class events_form_modules_install {
 
