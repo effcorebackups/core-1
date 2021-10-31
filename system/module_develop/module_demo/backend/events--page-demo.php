@@ -298,18 +298,18 @@ namespace effcore\modules\demo {
 
   static function block_markup__demo_diagram_linear($page, $args = []) {
     $diagram = new diagram('Title', 'linear');
-    $diagram->slice_insert('Parameter 1', 70, '0.07 '.translation::apply('sec.'));
-    $diagram->slice_insert('Parameter 2', 20, '0.02 '.translation::apply('sec.'));
-    $diagram->slice_insert('Parameter 3', 10, '0.01 '.translation::apply('sec.'));
+    $diagram->slice_insert('Parameter 1', 70, (new text('%%_number sec.', ['number' => '0.07']))->render());
+    $diagram->slice_insert('Parameter 2', 20, (new text('%%_number sec.', ['number' => '0.02']))->render());
+    $diagram->slice_insert('Parameter 3', 10, (new text('%%_number sec.', ['number' => '0.01']))->render());
     return $diagram;
   }
 
   static function block_markup__demo_diagram_radial($page, $args = []) {
     $diagram = new diagram('Title', 'radial');
-    $diagram->slice_insert('Parameter 1', 40, '0.04 '.translation::apply('sec.'), '#216ce4');
-    $diagram->slice_insert('Parameter 2', 30, '0.03 '.translation::apply('sec.'), '#48be38');
-    $diagram->slice_insert('Parameter 3', 20, '0.02 '.translation::apply('sec.'), '#fc5740');
-    $diagram->slice_insert('Parameter 4', 10, '0.01 '.translation::apply('sec.'), '#fd9a1e');
+    $diagram->slice_insert('Parameter 1', 40, (new text('%%_number sec.', ['number' => '0.04']))->render(), '#216ce4');
+    $diagram->slice_insert('Parameter 2', 30, (new text('%%_number sec.', ['number' => '0.03']))->render(), '#48be38');
+    $diagram->slice_insert('Parameter 3', 20, (new text('%%_number sec.', ['number' => '0.02']))->render(), '#fc5740');
+    $diagram->slice_insert('Parameter 4', 10, (new text('%%_number sec.', ['number' => '0.01']))->render(), '#fd9a1e');
     return $diagram;
   }
 

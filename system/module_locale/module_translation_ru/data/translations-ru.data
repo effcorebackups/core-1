@@ -9,6 +9,7 @@ translations
     - %%_entity_title_context\: delete: %%_entity_title_context: удалить
     - %%_entity_title_context\: insert: %%_entity_title_context: вставить
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
+    - %%_number sec.: %%_number сек.
     - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-ji}
     - A new password was sent to the selected Email.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - access allowed by permission "%%_permission": доступ разрешён по разрешению "%%_permission"
