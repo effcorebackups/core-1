@@ -19,6 +19,7 @@ namespace effcore {
   function __isset($name) {return isset($this->values[$name]);}
   function __get  ($name) {return       $this->values[$name] ;}
   function __set  ($name, $value) {
+  # note: SQLite in fields of type "real" can store numbers in exponential form (example: 1.23e-6)
     $this->values[$name] = core::exponencial_string_normalize($value);
   }
 
