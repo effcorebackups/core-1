@@ -146,11 +146,11 @@ entities
         type: primary
         fields
         - =: id
-    indexes
-    - index_path
-        type: unique index
+    - unique_path
+        type: unique
         fields
         - =: path
+    indexes
     - index_created
         type: index
         fields
@@ -681,11 +681,11 @@ entities
         type: primary
         fields
         - =: id
-    indexes
-    - index_path
-        type: unique index
+    - unique_path
+        type: unique
         fields
         - =: path
+    indexes
     - index_created
         type: index
         fields
@@ -941,11 +941,11 @@ entities
         type: primary
         fields
         - =: id
-    indexes
-    - index_path
-        type: unique index
+    - unique_path
+        type: unique
         fields
         - =: path
+    indexes
     - index_created
         type: index
         fields
