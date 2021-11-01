@@ -143,6 +143,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_time
         managing_control_properties
+        - value_current_if_null: true
         - weight: +220
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: date | SQLite: text
