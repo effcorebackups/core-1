@@ -69,13 +69,12 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-         $this->is_builded = true;
       $element = new $this->element_class($this->element_tag_name);
       $this->child_insert($element, 'element');
       foreach ($this->attributes_select('element_attributes') as $c_key => $c_value) {
         if ($c_value === null) $element->attribute_delete($c_key);
-        if ($c_value !== null) $element->attribute_insert($c_key, $c_value);
-      }
+        if ($c_value !== null) $element->attribute_insert($c_key, $c_value); }
+      $this->is_builded = true;
     }
   }
 

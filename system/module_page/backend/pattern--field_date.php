@@ -25,7 +25,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $value = parent::value_get();
+      $value = static::value_get();
       if ($value != null) {$this->value_set(     $value     ); $this->is_builded = true; return;}
       if ($value == null) {$this->value_set(core::date_get()); $this->is_builded = true; return;}
     }

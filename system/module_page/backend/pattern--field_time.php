@@ -20,16 +20,13 @@ namespace effcore {
     'required' => true,
     'min'      => self::input_min_time,
     'max'      => self::input_max_time,
-    'step'     => 1
-  ];
+    'step'     => 1];
+  public $value_current_if_null = false;
 
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $value = parent::value_get();
-      if ($value !== null) $this->value_set(                  $value                 );
-      if ($value === null) $this->value_set(locale::time_utc_to_loc(core::time_get()));
-      $this->is_builded = true;
+      $this->value_set(static::value_get());
     }
   }
 
@@ -42,9 +39,9 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if (core::validate_time($value))
-         parent::value_set(core::sanitize_time($value));
-    else parent::value_set(                    $value );
+    if ($this->value_current_if_null === true && $value === null) $value = locale::time_utc_to_loc(core::time_get());
+    if (core::validate_time($value)) parent::value_set(core::sanitize_time($value));
+    else                             parent::value_set(                    $value );
   }
 
   ###########################

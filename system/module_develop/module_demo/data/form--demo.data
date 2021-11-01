@@ -258,6 +258,7 @@ forms
             - name: time
             - step: 60
             - value: 01:23:45
+            value_current_if_null: true
       # field 'Date/Time'
         - datetime|field_datetime
             title: Date/Time
