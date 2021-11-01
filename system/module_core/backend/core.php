@@ -319,12 +319,11 @@ namespace effcore {
         $defaults = $reflection->getDefaultProperties();
         $result_children = [];
         foreach ($data as $c_key => $c_val) {
-          if ($is_effective && array_key_exists($c_key,  $defaults)
-                            &&        $defaults[$c_key] === $c_val) continue;
+          if ($is_effective && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_val) continue;
           $result_children[] = static::data_serialize($c_key, $is_effective);
           $result_children[] = static::data_serialize($c_val, $is_effective); }
-        $result = 'O:'.strlen($class_name).':"'.
-                              $class_name.'":'.(int)(count($result_children) / 2).':{'.
+        $result = 'O:'.strlen($class_name).
+                         ':"'.$class_name.'":'.(int)(count($result_children) / 2).':{'.
                                                implode('', $result_children).'}';
         break;
       default:
