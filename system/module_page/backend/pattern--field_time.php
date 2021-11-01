@@ -18,18 +18,18 @@ namespace effcore {
     'type'     => 'time',
     'name'     => 'time',
     'required' => true,
-    'value'    => self::input_min_time,
     'min'      => self::input_min_time,
     'max'      => self::input_max_time,
-    'step'     => 60
+    'step'     => 1
   ];
 
   function build() {
     if (!$this->is_builded) {
       parent::build();
       $value = parent::value_get();
-      if ($value != null) {$this->value_set(                  $value                 ); $this->is_builded = true; return;}
-      if ($value == null) {$this->value_set(locale::time_utc_to_loc(core::time_get())); $this->is_builded = true; return;}
+      if ($value !== null) $this->value_set(                  $value                 );
+      if ($value === null) $this->value_set(locale::time_utc_to_loc(core::time_get()));
+      $this->is_builded = true;
     }
   }
 

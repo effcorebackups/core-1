@@ -330,6 +330,7 @@ translations
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - If a domain is specified, then it and its subdomains are used.: Калі дамен зададзены, то выкарыстоўваецца ён і яго поддомены.
     - If no domain is specified, then the current domain is used, excluding subdomains.: Калі дамен не зададзены, то выкарыстоўваецца бягучы дамен без уліку паддаменаў.
+    - If the "step" attribute is "60" then the ":00" seconds will be truncated.: Калі атрыбут "step" роўны "60", тады секунды ":00" будуць абразацца.
     - If the initial value is not specified, the current value will be used.: Калі пачатковае значэнне не зададзена, то будзе выкарыстана бягучае значэнне.
     - Ignore this email if you have not completed any registration on %%_domain.: Праігнаруйце гэты ліст калі Вы не ажыццяўлялі ніякай рэгістрацыі на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: У рэжыме "Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі" зламыснік можа паслаць мноства падробленых ананімных галасоў!

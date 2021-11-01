@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
     c_selection.querySelector__notNull('[data-decorator][data-view-type="table-adaptive"]').forFirst__(function(decorator){
       var head_cell       = decorator.querySelector__notNull   ('x-head x-cell[data-cellid="checkbox-select"]'                       );
       var body_checkboxes = decorator.querySelectorAll__notNull('x-body x-cell[data-cellid="checkbox-select"] input[type="checkbox"]');
-      if (head_cell.length == 1 && body_checkboxes.length) {
+      if (head_cell.length === 1 && body_checkboxes.length) {
         var checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.title = effcore.tokens['text_select_all_rows'];

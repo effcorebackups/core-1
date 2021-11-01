@@ -251,10 +251,12 @@ forms
               text
               - 0: Field "%%_title".
               - 1: If the initial value is not specified, the current value will be used.
+              - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
               - title: field_time
             element_attributes
             - name: time
+            - step: 60
             - value: 01:23:45
       # field 'Date/Time'
         - datetime|field_datetime
