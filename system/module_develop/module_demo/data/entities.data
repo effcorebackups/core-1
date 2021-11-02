@@ -175,6 +175,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
+        - value_current_if_null: true
         - weight: +180
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: tinyint | SQLite: integer
@@ -508,6 +509,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
+        - value_current_if_null: true
         - weight: +340
     constraints
     - primary_id
