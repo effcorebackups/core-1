@@ -288,8 +288,6 @@ forms
             element_attributes
             - name: datetime_local
             - step: 1
-            - min: 2030-01-01 12:00:00
-            - max: 2030-01-03 12:00:00
             - value: 2030-01-02 12:00:00
             value_current_if_null: true
             is_get_utc: true

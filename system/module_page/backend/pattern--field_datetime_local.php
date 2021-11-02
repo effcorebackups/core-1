@@ -25,29 +25,26 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       field_text::build();
-      $value = field_text::value_get();
       $min = $this->min_get();
       $max = $this->max_get();
-      if ($min          ) {$this->  min_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $min        )));                                  }
-      if ($max          ) {$this->  max_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc(        $max        )));                                  }
-      if ($value != null) {$this->value_set(core::datetime_to_T_datetime(                                   $value       ) ); $this->is_builded = true; return;}
-      if ($value == null) {$this->value_set(core::datetime_to_T_datetime(                            core::datetime_get()) ); $this->is_builded = true; return;}
+      if ($min) $this->min_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc($min)));
+      if ($max) $this->max_set(core::datetime_to_T_datetime(locale::datetime_utc_to_loc($max)));
+      $this->value_set(field_text::value_get());
     }
   }
 
   function value_get() {
-    $value = field_text::value_get();
-    if ($this->is_get_utc === true && core::validate_T_datetime($value)) return locale::datetime_loc_to_utc(core::T_datetime_to_datetime($value));
-    if ($this->is_get_utc !== true && core::validate_T_datetime($value)) return                             core::T_datetime_to_datetime($value);
+    $value = parent::value_get();
+    if ($value !== null && core::validate_datetime($value) && $this->is_get_utc === true) $value = locale::datetime_loc_to_utc($value);
     return $value;
   }
 
   function value_set($value) {
-    if     (core::validate_T_datetime($value) && $this->is_set_utc === true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::   sanitize_T_datetime($value)));
-    elseif (core::validate_T_datetime($value) && $this->is_set_utc !== true) parent::value_set(                                core::   sanitize_T_datetime($value) );
-    elseif (core::validate_datetime  ($value) && $this->is_set_utc === true) parent::value_set(locale::datetime_T_utc_to_T_loc(core::datetime_to_T_datetime($value)));
-    elseif (core::validate_datetime  ($value) && $this->is_set_utc !== true) parent::value_set(                                core::datetime_to_T_datetime($value) );
-    else                                                                     parent::value_set                                                             ($value);
+    $this->value_set_initial($value);
+    if ($value === null && $this->value_current_if_null === true) $value = core::datetime_get();
+    if ($value !== null && core::validate_datetime($value)) $value = core::datetime_to_T_datetime($value);
+    if ($value !== null && core::validate_T_datetime($value) && $this->is_set_utc === true) $value = locale::datetime_T_utc_to_T_loc($value);
+    parent::value_set($value);
   }
 
   ###########################
@@ -55,10 +52,14 @@ namespace effcore {
   ###########################
 
   static function on_validate($field, $form, $npath) {
-    $is_set_utc_old = $field->is_set_utc;
-    $field->is_set_utc = false;
-    $result = parent::on_validate($field, $form, $npath);
-    $field->is_set_utc = $is_set_utc_old;
+    if ($field->is_set_utc === true) {$field->is_set_utc = false; $result = parent::on_validate($field, $form, $npath); $field->is_set_utc = true;}
+    if ($field->is_set_utc !== true) {                            $result = parent::on_validate($field, $form, $npath);                           }
+    return $result;
+  }
+
+  static function on_request_value_set($field, $form, $npath) {
+    if ($field->is_set_utc === true) {$field->is_set_utc = false; $result = parent::on_request_value_set($field, $form, $npath); $field->is_set_utc = true;}
+    if ($field->is_set_utc !== true) {                            $result = parent::on_request_value_set($field, $form, $npath);                           }
     return $result;
   }
 
