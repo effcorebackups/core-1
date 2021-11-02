@@ -25,7 +25,7 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $value = static::value_get();
+      $value = parent::value_get();
       $min = $this->min_get();
       $max = $this->max_get();
       if ($min          ) {$this->  min_set(core::datetime_to_T_datetime(        $min        ));                                  }
