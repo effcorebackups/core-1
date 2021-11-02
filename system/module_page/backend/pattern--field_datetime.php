@@ -19,7 +19,8 @@ namespace effcore {
     'name'     => 'datetime',
     'min'      => self::input_min_datetime,
     'max'      => self::input_max_datetime,
-    'required' => true];
+    'required' => true,
+    'step'     => 1];
   public $value_current_if_null = false;
 
   function build() {
@@ -35,16 +36,14 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_T_datetime($value))
-         return core::T_datetime_to_datetime($value);
-    else return $value;
+    if ($value !== null && core::validate_T_datetime($value)) $value = core::T_datetime_to_datetime($value);
+    return $value;
   }
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if ($value === null && $this->value_current_if_null === true) $value = core::datetime_to_T_datetime(core::datetime_get());
-    if ($value !== null && core::validate_datetime  ($value))     $value = core::datetime_to_T_datetime($value);
-    if ($value !== null && core::validate_T_datetime($value))     $value = core::sanitize_T_datetime   ($value);
+    if ($value === null && $this->value_current_if_null === true) $value = core::datetime_get();
+    if ($value !== null && core::validate_datetime($value)) $value = core::datetime_to_T_datetime($value);
     parent::value_set($value);
   }
 
