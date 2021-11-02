@@ -257,7 +257,7 @@ forms
               - title: field_time
             element_attributes
             - name: time
-            - step: 60
+            - step: 1
             - value: 01:23:45
             value_current_if_null: true
       # field 'Date/Time'
@@ -276,17 +276,22 @@ forms
       # field 'Local Date/Time'
         - datetime_local|field_datetime_local
             title: Local Date/Time
-            is_get_utc: true
-            is_set_utc: true
             description|text_multiline
               text
               - 0: Field "%%_title".
               - 1: If the initial value is not specified, the current value will be used.
+              - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
               - title: field_datetime_local
             element_attributes
             - name: datetime_local
-            - value: 2030-02-01 01:23:45
+            - step: 1
+            - min: 2030-01-01 12:00:00
+            - max: 2030-01-03 12:00:00
+            - value: 2030-01-02 12:00:00
+            is_get_utc: true
+            is_set_utc: true
+            value_current_if_null: true
       # field 'Time zone'
         - timezone|field_timezone
             title: Time zone

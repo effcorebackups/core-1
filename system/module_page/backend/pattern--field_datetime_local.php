@@ -15,9 +15,10 @@ namespace effcore {
   public $element_attributes = [
     'type'     => 'datetime-local',
     'name'     => 'datetime_local',
-    'required' => true,
     'min'      => self::input_min_datetime,
-    'max'      => self::input_max_datetime];
+    'max'      => self::input_max_datetime,
+    'required' => true,
+    'step'     => 1];
   public $is_get_utc = true;
   public $is_set_utc = true;
 

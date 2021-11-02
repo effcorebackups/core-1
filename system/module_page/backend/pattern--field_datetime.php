@@ -17,9 +17,9 @@ namespace effcore {
   public $element_attributes = [
     'type'     => 'datetime-local',
     'name'     => 'datetime',
-    'required' => true,
     'min'      => self::input_min_datetime,
-    'max'      => self::input_max_datetime];
+    'max'      => self::input_max_datetime,
+    'required' => true];
   public $value_current_if_null = false;
 
   function build() {
