@@ -684,6 +684,10 @@ entities
         - required: null
         managing_control_element_attributes_on_insert
         - required: true
+    - login_attempts
+        title: Login attempts
+        type: integer
+        default: null
     - blocked_until
         title: Blocked until
         type: datetime
@@ -691,11 +695,7 @@ entities
         check: (blocked_until <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +240
-    - login_attempts
-        title: Login attempts
-        type: integer
-        default: null
+        - weight: +280
     - created
         title: Created
         type: datetime
@@ -703,7 +703,7 @@ entities
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +280
+        - weight: +260
     - updated
         title: Updated
         type: datetime
@@ -711,7 +711,7 @@ entities
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +260
+        - weight: +240
     constraints
     - primary_id
         type: primary

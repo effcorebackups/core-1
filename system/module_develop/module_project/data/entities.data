@@ -73,12 +73,16 @@ entities
         default: null
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +320
     constraints
     - primary_id
         type: primary
@@ -208,12 +212,16 @@ entities
         default: null
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +280
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +260
     constraints
     - primary_id_project
         type: primary

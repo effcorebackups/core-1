@@ -64,12 +64,16 @@ entities
         default: null
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +320
     - access
         title: Read access
         type: blob

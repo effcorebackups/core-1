@@ -93,12 +93,16 @@ entities
         default: null
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +320
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - weight: +300
     - access
         title: Read access
         type: blob
@@ -108,6 +112,8 @@ entities
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_access
+        managing_control_properties
+        - weight: +280
     constraints
     - primary_id
         type: primary
