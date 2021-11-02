@@ -272,6 +272,7 @@ forms
             element_attributes
             - name: datetime
             - value: 2030-02-01 01:23:45
+            value_current_if_null: true
       # field 'Local Date/Time'
         - datetime_local|field_datetime_local
             title: Local Date/Time

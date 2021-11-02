@@ -19,19 +19,17 @@ namespace effcore {
     'name'     => 'datetime',
     'required' => true,
     'min'      => self::input_min_datetime,
-    'max'      => self::input_max_datetime
-  ];
+    'max'      => self::input_max_datetime];
+  public $value_current_if_null = false;
 
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $value = parent::value_get();
       $min = $this->min_get();
       $max = $this->max_get();
-      if ($min          ) {$this->  min_set(core::datetime_to_T_datetime(        $min        ));                                  }
-      if ($max          ) {$this->  max_set(core::datetime_to_T_datetime(        $max        ));                                  }
-      if ($value != null) {$this->value_set(core::datetime_to_T_datetime(       $value       )); $this->is_builded = true; return;}
-      if ($value == null) {$this->value_set(core::datetime_to_T_datetime(core::datetime_get())); $this->is_builded = true; return;}
+      if ($min) $this->min_set(core::datetime_to_T_datetime($min));
+      if ($max) $this->max_set(core::datetime_to_T_datetime($max));
+      $this->value_set(parent::value_get());
     }
   }
 
@@ -44,9 +42,10 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if     (core::validate_T_datetime($value)) parent::value_set(core::   sanitize_T_datetime($value));
-    elseif (core::validate_datetime  ($value)) parent::value_set(core::datetime_to_T_datetime($value));
-    else                                       parent::value_set                             ($value);
+    if ($value === null && $this->value_current_if_null === true) $value = core::datetime_to_T_datetime(core::datetime_get());
+    if ($value !== null && core::validate_datetime  ($value))     $value = core::datetime_to_T_datetime($value);
+    if ($value !== null && core::validate_T_datetime($value))     $value = core::sanitize_T_datetime   ($value);
+    parent::value_set($value);
   }
 
   ###########################
