@@ -32,7 +32,7 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_time($value))
+    if         (core::validate_time($value))
          return core::sanitize_time($value);
     else return $value;
   }

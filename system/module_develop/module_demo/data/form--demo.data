@@ -244,6 +244,7 @@ forms
             element_attributes
             - name: date
             - value: 2030-02-01
+            value_current_if_null: true
       # field 'Time'
         - time|field_time
             title: Time

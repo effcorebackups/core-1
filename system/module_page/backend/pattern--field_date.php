@@ -19,30 +19,28 @@ namespace effcore {
     'name'     => 'date',
     'required' => true,
     'min'      => self::input_min_date,
-    'max'      => self::input_max_date
-  ];
+    'max'      => self::input_max_date];
+  public $value_current_if_null = false;
 
   function build() {
     if (!$this->is_builded) {
       parent::build();
-      $value = parent::value_get();
-      if ($value != null) {$this->value_set(     $value     ); $this->is_builded = true; return;}
-      if ($value == null) {$this->value_set(core::date_get()); $this->is_builded = true; return;}
+      $this->value_set(parent::value_get());
     }
   }
 
   function value_get() {
     $value = parent::value_get();
-    if (core::validate_date($value))
+    if         (core::validate_date($value))
          return core::sanitize_date($value);
     else return $value;
   }
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if (core::validate_date($value))
-         parent::value_set(core::sanitize_date($value));
-    else parent::value_set(                    $value );
+    if ($this->value_current_if_null === true && $value === null) $value = core::date_get();
+    if (core::validate_date($value)) parent::value_set(core::sanitize_date($value));
+    else                             parent::value_set(                    $value );
   }
 
   ###########################
