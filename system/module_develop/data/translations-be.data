@@ -100,10 +100,12 @@ translations
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
-    - Hash sum: Хэш-сума
     - Hash sum (md5): Хэш-сума (md5)
+    - Hash sum: Хэш-сума
     - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
+    - If the "step" attribute is "60" then the ":00" seconds will be truncated.: Калі атрыбут "step" роўны "60", тады секунды ":00" будуць абразацца.
+    - If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.: Калі параметр "value_current_if_null" роўны "true" і пачатковае значэнне не пазначана, тады будзе выкарыстоўвацца бягучае значэнне.
     - Indexes: Індэксы
     - init.: ініцыял.
     - Is even: Цотнае
