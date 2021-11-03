@@ -239,20 +239,20 @@ selections
         - filters
           - 400: translate
         weight: 260
-    - demo_types.f_time
-        type: field
-        entity_name: demo_types
-        entity_field_name: f_time
-        weight: 240
     - demo_types.f_date
         type: field
         entity_name: demo_types
         entity_field_name: f_date
-        weight: 220
+        weight: 240
     - demo_types.f_datetime
         type: field
         entity_name: demo_types
         entity_field_name: f_datetime
+        weight: 220
+    - demo_types.f_time
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_time
         weight: 200
     - demo_types.f_boolean
         type: field
@@ -622,10 +622,6 @@ selections
         type: field
         entity_name: demo_types
         entity_field_name: f_varchar
-    - f_time
-        type: field
-        entity_name: demo_types
-        entity_field_name: f_time
     - f_date
         type: field
         entity_name: demo_types
@@ -634,6 +630,10 @@ selections
         type: field
         entity_name: demo_types
         entity_field_name: f_datetime
+    - f_time
+        type: field
+        entity_name: demo_types
+        entity_field_name: f_time
     - f_boolean
         type: field
         entity_name: demo_types

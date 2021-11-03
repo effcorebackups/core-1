@@ -18,7 +18,7 @@ namespace effcore {
   static function datetime_T_loc_to_T_utc($datetime) {$date = \DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new \DateTimeZone(core::timezone_get_client()) ); if ($date) return $date->setTimezone( new \DateTimeZone('UTC') )->format('Y-m-d\\TH:i:s');}
 
   static function         format_date    ($date)     {$date = \DateTime::createFromFormat('Y-m-d',       $date,     new \DateTimeZone('UTC') ); if ($date) return $date->setTime    (0, 0)                                            ->format(module::settings_get('locale')->format_date    );}
-  static function         format_time    ($time)     {$date = \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locale')->format_time    );}
+  static function         format_time    ($time)     {$date = \DateTime::createFromFormat(      'H:i:s', $time,     new \DateTimeZone('UTC') ); if ($date) return $date                                                               ->format(module::settings_get('locale')->format_time    );}
   static function         format_datetime($datetime) {$date = \DateTime::createFromFormat('Y-m-d H:i:s', $datetime, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locale')->format_datetime);}
   static function         format_timestmp($timestmp) {$date = \DateTime::createFromFormat('U',           $timestmp, new \DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new \DateTimeZone(core::timezone_get_client()) )->format(module::settings_get('locale')->format_datetime);}
 
