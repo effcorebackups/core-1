@@ -136,20 +136,6 @@ entities
         managing_control_element_attributes_on_insert
         - value: default text
     # ─────────────────────────────────────────────────────────────────────
-    # MySQL: time | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_time
-        title: Field time
-        type: time
-        default: null
-        check: (f_time <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_time
-        managing_control_properties
-        - value_current_if_null: true
-        - weight: +220
-    # ─────────────────────────────────────────────────────────────────────
     # MySQL: date | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_date
@@ -162,7 +148,7 @@ entities
         managing_control_class: \effcore\field_date
         managing_control_properties
         - value_current_if_null: true
-        - weight: +200
+        - weight: +220
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: datetime | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
@@ -174,6 +160,20 @@ entities
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_datetime_local
+        managing_control_properties
+        - value_current_if_null: true
+        - weight: +200
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: time | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_time
+        title: Field time
+        type: time
+        default: null
+        check: (f_time <> '')
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
+        managing_control_class: \effcore\field_time
         managing_control_properties
         - value_current_if_null: true
         - weight: +180

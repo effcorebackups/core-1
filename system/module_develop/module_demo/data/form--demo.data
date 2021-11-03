@@ -233,19 +233,6 @@ forms
       # ─────────────────────────────────────────────────────────────────────
       # date/time
       # ─────────────────────────────────────────────────────────────────────
-        - date|field_date
-            title: Date
-            description|text_multiline
-              text
-              - 0: Field "%%_title".
-              - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
-              args
-              - title: field_date
-            element_attributes
-            - name: date
-            - value: 2030-02-01
-            value_current_if_null: true
-      # field 'Time'
         - time|field_time
             title: Time
             description|text_multiline
@@ -259,6 +246,19 @@ forms
             - name: time
             - step: 1
             - value: 01:23:45
+            value_current_if_null: true
+      # field 'Date'
+        - date|field_date
+            title: Date
+            description|text_multiline
+              text
+              - 0: Field "%%_title".
+              - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
+              args
+              - title: field_date
+            element_attributes
+            - name: date
+            - value: 2030-02-01
             value_current_if_null: true
       # field 'Date/Time'
         - datetime|field_datetime
