@@ -290,8 +290,6 @@ forms
             - step: 1
             - value: 2030-01-02 12:00:00
             value_current_if_null: true
-            is_get_utc: true
-            is_set_utc: true
       # field 'Time zone'
         - timezone|field_timezone
             title: Time zone

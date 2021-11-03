@@ -19,8 +19,7 @@ namespace effcore {
     'max'      => self::input_max_datetime,
     'required' => true,
     'step'     => 1];
-  public $is_get_utc = true;
-  public $is_set_utc = true;
+  public $is_utc_conversion = true;
 
   function build() {
     if (!$this->is_builded) {
@@ -35,7 +34,7 @@ namespace effcore {
 
   function value_get() {
     $value = parent::value_get();
-    if ($value !== null && core::validate_datetime($value) && $this->is_get_utc === true) $value = locale::datetime_loc_to_utc($value);
+    if ($value !== null && core::validate_datetime($value) && $this->is_utc_conversion === true) $value = locale::datetime_loc_to_utc($value);
     return $value;
   }
 
@@ -43,7 +42,7 @@ namespace effcore {
     $this->value_set_initial($value);
     if ($value === null && $this->value_current_if_null === true) $value = core::datetime_get();
     if ($value !== null && core::validate_datetime($value)) $value = core::datetime_to_T_datetime($value);
-    if ($value !== null && core::validate_T_datetime($value) && $this->is_set_utc === true) $value = locale::datetime_T_utc_to_T_loc($value);
+    if ($value !== null && core::validate_T_datetime($value) && $this->is_utc_conversion === true) $value = locale::datetime_T_utc_to_T_loc($value);
     parent::value_set($value);
   }
 
@@ -52,14 +51,16 @@ namespace effcore {
   ###########################
 
   static function on_validate($field, $form, $npath) {
-    if ($field->is_set_utc === true) {$field->is_set_utc = false; $result = parent::on_validate($field, $form, $npath); $field->is_set_utc = true;}
-    if ($field->is_set_utc !== true) {                            $result = parent::on_validate($field, $form, $npath);                           }
+    $field->is_utc_conversion = false;
+    $result = parent::on_validate($field, $form, $npath);
+    $field->is_utc_conversion = true;
     return $result;
   }
 
   static function on_request_value_set($field, $form, $npath) {
-    if ($field->is_set_utc === true) {$field->is_set_utc = false; $result = parent::on_request_value_set($field, $form, $npath); $field->is_set_utc = true;}
-    if ($field->is_set_utc !== true) {                            $result = parent::on_request_value_set($field, $form, $npath);                           }
+    $field->is_utc_conversion = false;
+    $result = parent::on_request_value_set($field, $form, $npath);
+    $field->is_utc_conversion = true;
     return $result;
   }
 
