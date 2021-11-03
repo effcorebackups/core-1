@@ -104,8 +104,8 @@ namespace effcore {
     # case for any system file ('.type', '.name.type'…) - show 'forbidden' even if it does not exist!
     # ─────────────────────────────────────────────────────────────────────
 
-    if (($file->name !== '' && $file->name[0] === '.') ||
-        ($file->type !== '' && $file->name === '')) {
+    if ( ($file->name !== '' && $file->name[0] === '.') ||
+         ($file->type !== '' && $file->name === '') ) {
       response::send_header_and_exit('access_forbidden', null, new text_multiline([
         'file of this type is protected',
         'go to <a href="/">front page</a>'

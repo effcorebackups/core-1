@@ -152,9 +152,9 @@ namespace effcore {
           ($hex_type === 'f' && $expired >= time())) {
         if ($hex_signature === static::id_get_hex_signature($id)) {
           if ($hex_uagent_hash_8 === static::id_get_hex_uagent_hash_8()) {
-            if (($hex_type === 'a' && $hex_ip === core::ip_to_hex(request::addr_remote_get())) ||
-                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(request::addr_remote_get())) ||
-                ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::empty_ip))) {
+            if ( ($hex_type === 'a' && $hex_ip === core::ip_to_hex(request::addr_remote_get())) ||
+                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(request::addr_remote_get())) ||
+                 ($hex_type === 'f' && $hex_ip === core::ip_to_hex(core::empty_ip)) ) {
               return true;
             }
           }

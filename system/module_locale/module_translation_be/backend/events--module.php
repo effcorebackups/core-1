@@ -12,8 +12,8 @@ namespace effcore\modules\translation_be {
           abstract class events_module {
 
   static function on_enable($event) {
-    if ((page::get_current()->id === 'install' && language::code_get_current() === 'be') ||
-        (page::get_current()->id !== 'install')) {
+    if ( (page::get_current()->id === 'install' && language::code_get_current() === 'be') ||
+         (page::get_current()->id !== 'install') ) {
       $module = module::get('translation_be');
       $module->enable();
     }
