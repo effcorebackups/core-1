@@ -37,7 +37,7 @@ namespace effcore {
     if (static::$cache === null) {
       foreach (storage::get('data')->select_array('templates') as $c_module_id => $c_templates) {
         foreach ($c_templates as $c_row_id => $c_template) {
-          if (isset(static::$cache[$c_template->name])) console::report_about_duplicate('template', $c_template->name, $c_module_id, static::$cache[$c_template->name]);
+          if (isset(static::$cache[$c_template->name])) console::report_about_duplicate('templates', $c_template->name, $c_module_id, static::$cache[$c_template->name]);
                     static::$cache[$c_template->name] = $c_template;
                     static::$cache[$c_template->name]->module_id = $c_module_id;
         }

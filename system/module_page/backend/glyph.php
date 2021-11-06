@@ -17,7 +17,7 @@ namespace effcore {
     if (!static::$cache) {
       foreach (storage::get('data')->select_array('glyphs') as $c_module_id => $c_items) {
         foreach ($c_items as $c_row_id => $c_item) {
-          if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('glyph', $c_row_id, $c_module_id, static::$cache[$c_row_id]);
+          if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('glyphs', $c_row_id, $c_module_id, static::$cache[$c_row_id]);
                     static::$cache[$c_row_id] = $c_item;
                     static::$cache[$c_row_id]->module_id = $c_module_id;
         }
