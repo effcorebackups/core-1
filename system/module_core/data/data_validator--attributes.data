@@ -2,7 +2,7 @@ data_validators
 - attributes|data_validator
     id: attributes
     scenario
-    - check_if_settings_or_settings_part|step_validate
+    - check_if_settings_or_its_part|step_validate
         check: current
         where: dpath
         match: %^settings(/.*|)$%
@@ -33,6 +33,17 @@ data_validators
                 check: current
                 where: type
                 match: %^(string|integer|double|boolean|null|array|object)$%
+                on_success
+              # check "settings/item:array"
+                - check_if_array|step_validate
+                    check: current
+                    where: type
+                    match: %^array$%
+              # check "settings/item:object"
+                - check_if_object|step_validate
+                    check: current
+                    where: type
+                    match: %^object$%
                 on_failure
                 - error_register|step_validate_error_register
                     message|text
@@ -48,14 +59,3 @@ data_validators
               - 1: Each item must be contained in the "%%_root" array.
               args
               - root: settings
-    #- check_current_item_for_nesting_level|step_validate
-    #    check: current
-    #    where: dpath
-    #    match: %^settings/[^/]*[/].*$%
-    #    on_success
-    #    - return_error|step_return
-    #        message: This level of nesting is not allowed!
-    #- check_current_item_for_value|step_validate
-    #    check: current
-    #    where: value is less than
-    #    match: -10000
