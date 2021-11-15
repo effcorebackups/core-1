@@ -7,7 +7,7 @@ General information
 - Author: Maxim Rysevets
 - Developer: Maxim Rysevets
 - Start of development: end of 2016
-- Initial release: 2021-11-08
+- Initial release: 2022-01-01
 - Written in: PHP
 - Supported OS: UNIX, Linux, Microsoft Windows
 - Supported web servers: NGINX, Apache, IIS
@@ -17,7 +17,7 @@ General information
 - Website: http://effcore.com
 
 EFFCORE — the next-generation mini-CMS (Content Management System)
-and mini-CMF (Content Management Framework) developed by between 2016 and 2021.
+and mini-CMF (Content Management Framework) developed by between 2016 and 2022.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, PSR-0.
 

@@ -4,7 +4,7 @@ module|module
   title: Project
   group: Develop
   description: Module for publishing projects.
-  copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   version: 0.900
   dependencies
     system

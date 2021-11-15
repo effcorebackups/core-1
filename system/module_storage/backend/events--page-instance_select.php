@@ -1,7 +1,7 @@
 <?php
 
   ##################################################################
-  ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
+  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
 namespace effcore\modules\storage {

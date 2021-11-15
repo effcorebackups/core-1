@@ -4,7 +4,7 @@ module|module
   title: Belarusian
   group: Translations
   description: Module for translation into Belarusian language.
-  copyright: Copyright © 2017—2021 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-by-mini.svg
   enabled: yes
   version: 0.900

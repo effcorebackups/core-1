@@ -1,7 +1,7 @@
 <?php
 
   ##################################################################
-  ### Copyright © 2017—2021 Maxim Rysevets. All rights reserved. ###
+  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
   ##################################################################
 
 namespace effcore\modules\core {
@@ -23,7 +23,7 @@ namespace effcore\modules\core {
 
   static function block_markup__system_info($page, $args = []) {
     $logo      = new markup('x-logo',      [], new markup_simple('img', ['src' => '/'.module::get('page')->path.token::apply('frontend/pictures/logo-simplified.svgd?color=%%_return_token_color_encode{color__text}&color_fire=%%_return_token_color_encode{color__text}'), 'alt' => new text('system logotype'), 'width' => '300']));
-    $copyright = new markup('x-copyright', [], 'Copyright © 2017—2021 Maxim Rysevets. All rights reserved.');
+    $copyright = new markup('x-copyright', [], 'Copyright © 2017—2022 Maxim Rysevets. All rights reserved.');
     $build     = new markup('x-build',     [], [
       new markup('x-title', [], 'Build number'),
       new markup('x-value', [], storage::get('data')->select('bundle/system/build'))]);
