@@ -371,7 +371,8 @@ translations
     - Is fixed IP: Фікс. IP
     - It is recommended that you change your password directly on %%_domain.: Рэкамендуецца змяніць пароль непасрэдна на %%_domain.
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" знаходзіцца па-за межамі дапушчальных межаў!
-    - Item "%%_dpath_value" must be an array!: Элемент "%%_dpath_value" павінен быць масівам!
+    - Item "%%_dpath_value" must be of type "%%_type"!: Элемент "%%_dpath_value" павінен быць тыпу "%%_type"!
+    - Item "%%_dpath_value" must be one of the following types\: %%_types!: Элемент "%%_dpath_value" павінен быць адным з наступных тыпаў: %%_types!
     - Item of type "%%_type" was deleted.: Элемент тыпу "%%_type" быў выдалены.
     - Item of type "%%_type" was inserted.: Элемент тыпу "%%_type" быў даданы.
     - Item of type "%%_type" was not deleted!: Элемент тыпу "%%_type" не быў выдалены!

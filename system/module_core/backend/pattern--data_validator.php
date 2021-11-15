@@ -12,6 +12,8 @@ namespace effcore {
 
   function validate($data) {
     $c_results = [];
+    $c_results['errors'] = [];
+    $c_results['trace_info'] = [];
     $data_as_array = is_array($data) ? $data : [$data];
     $recursive_values = core::arrobj_select_values_recursive($data_as_array);
     foreach ($recursive_values as $c_dpath_value => $c_value) {
