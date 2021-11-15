@@ -18,7 +18,7 @@ namespace effcore {
       event::start('on_breadcrumbs_build_before', $this->id, ['breadcrumbs' => &$this]);
       $this->children_delete();
       foreach ($this->links as $c_row_id => $c_link) {
-        if ($this->is_remove_last_link && $c_link == end($this->links)) break;
+        if ($this->is_remove_last_link && $c_link === end($this->links)) break;
         $c_link_markup = new markup('a', ['href' => $c_link->url], new text($c_link->title, [], true, true), $c_link->weight ?? 0);
         if (url::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current',        'true');
         if (url::is_active_trail($c_link->url)) $c_link_markup->attribute_insert('data-selected-trail', 'true');

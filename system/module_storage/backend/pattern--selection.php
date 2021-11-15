@@ -69,6 +69,8 @@ namespace effcore {
     # ─────────────────────────────────────────────────────────────────────
     # prepare the query and request data from the storage
     # ─────────────────────────────────────────────────────────────────────
+      if (count($used_storages) === 0) {message::insert(new text('No fields for select from storage! Selection ID = "%%_id".',     ['id' => $this->id]), 'warning'); return new node;}
+      if (count($used_storages)  >  1) {message::insert(new text('Distributed queries are not supported! Selection ID = "%%_id".', ['id' => $this->id]), 'warning'); return new node;}
       if (count($used_storages) === 1) {
         $this->attribute_insert('data-main-entity', $this->_main_entity->name, 'attributes', true);
 
@@ -117,16 +119,6 @@ namespace effcore {
           $this->query_settings
         );
 
-      } elseif (count($used_storages) === 0) {
-        message::insert(new text(
-          'No fields for select from storage! Selection ID = "%%_id".', ['id' => $this->id]), 'error'
-        );
-        return new node;
-      } elseif (count($used_storages) >= 2) {
-        message::insert(new text(
-          'Distributed queries are not supported! Selection ID = "%%_id".', ['id' => $this->id]), 'warning'
-        );
-        return new node;
       }
 
     # ─────────────────────────────────────────────────────────────────────

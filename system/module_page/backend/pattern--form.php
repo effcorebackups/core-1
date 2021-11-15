@@ -181,8 +181,8 @@ namespace effcore {
       if ($c_child instanceof complex_control && $c_child->name_get_complex()) $groups     ['*'.$c_child->name_get_complex()                          ][] = $c_child;
     }
     foreach ($groups as $c_name => $c_group) {
-      if (count($c_group) == 1) $this->items[$c_name] = reset($c_group);
-      if (count($c_group) >= 2) $this->items[$c_name] =       $c_group;
+      if (count($c_group) === 1) $this->items[$c_name] = reset($c_group);
+      if (count($c_group)  >  1) $this->items[$c_name] =       $c_group;
     }
   }
 

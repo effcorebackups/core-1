@@ -9,7 +9,20 @@ tests
         - name: quantity_of_iterations
         - value: 1
         - min: 1
-        - max: 5
+        - max: 100
+    - proxy|field_text
+        title: Proxy server
+        description|text
+          text: Examples: %%_examples
+          args
+          - examples: "127.0.0.1:8888" | "127.0.0.1:4321"
+        element_attributes
+        - name: proxy
+        - required: false
+    - is_https|field_switcher
+        title: HTTPS
+        element_attributes
+        - name: is_https
     scenario
     - repeat|step_repeat
         id: cycle_1
@@ -20,6 +33,19 @@ tests
             title: Title with token: "current iteration" = "%%_value"
             args
             - value: %%_test_step_repeat_i_cycle_1
+        - request|step_request
+            url: /
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - check|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
         - code|step_code
             handler: \effcore\modules\demo\events_test::step_code_demo_handler
             args
