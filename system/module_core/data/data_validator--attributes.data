@@ -17,6 +17,7 @@ data_validators
                 check: current
                 where: type
                 match: %^array$%
+              # when "settings" is of an invalid type
                 on_failure
                 - error_register|step_validate_error_register
                     message|text
@@ -44,6 +45,7 @@ data_validators
                     check: current
                     where: type
                     match: %^object$%
+              # when "settings/*" is of an invalid type
                 on_failure
                 - error_register|step_validate_error_register
                     message|text
