@@ -1,0 +1,50 @@
+data_validators
+- attributes|data_validator
+    id: attributes
+    scenario
+    - check_if_settings_or_settings_part|step_validate
+        check: current
+        where: dpath
+        match: %^settings(/.*|)$%
+        on_success
+      # check settings
+        - check_settings|step_validate
+            check: current
+            where: dpath
+            match: %^settings$%
+            on_success
+            - check_type|step_validate
+                check: current
+                where: type
+                match: %^array$%
+                on_failure
+                - error_register|step_validate_error_register
+                    message: Item "%%_dpath_value" must be an array!
+      # when not settings or settings part
+        on_failure
+        - error_register|step_validate_error_register
+            message|text_multiline
+              text
+              - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
+              - 1: Each item must be contained in the "%%_root" array.
+              args
+              - root: settings
+    #    on_failure
+    #    - error_register|step_validate_error_register
+    #        message|text_multiline
+    #          text
+    #          - 0: The item is of the wrong type.
+    #          - 1: The following types are allowed: %%_types
+    #          args
+    #          - types: null
+    #- check_current_item_for_nesting_level|step_validate
+    #    check: current
+    #    where: dpath
+    #    match: %^settings/[^/]*[/].*$%
+    #    on_success
+    #    - return_error|step_return
+    #        message: This level of nesting is not allowed!
+    #- check_current_item_for_value|step_validate
+    #    check: current
+    #    where: value is less than
+    #    match: -10000

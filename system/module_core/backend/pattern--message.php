@@ -86,9 +86,7 @@ namespace effcore {
     if (count($instances)) {
       foreach ($instances as $c_instance)
         $result[$c_instance->type][] = $c_instance->data;
-      static::cleaning(
-        session::id_get()
-      );
+      static::cleaning(session::id_get());
     }
     return $result;
   }

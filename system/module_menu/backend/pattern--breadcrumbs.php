@@ -17,7 +17,7 @@ namespace effcore {
     if (!$this->is_builded) {
       event::start('on_breadcrumbs_build_before', $this->id, ['breadcrumbs' => &$this]);
       $this->children_delete();
-      foreach ($this->links as $rowid => $c_link) {
+      foreach ($this->links as $c_row_id => $c_link) {
         if ($this->is_remove_last_link && $c_link == end($this->links)) break;
         $c_link_markup = new markup('a', ['href' => $c_link->url], new text($c_link->title, [], true, true), $c_link->weight ?? 0);
         if (url::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current',        'true');
@@ -32,25 +32,25 @@ namespace effcore {
     return $this->links;
   }
 
-  function link_select($rowid) {
-    return $this->links[$rowid];
+  function link_select($row_id) {
+    return $this->links[$row_id];
   }
 
-  function link_insert($rowid, $title, $url, $weight = null) {
-    $this->links[$rowid] = new \stdClass;
-    $this->links[$rowid]->title = $title;
-    $this->links[$rowid]->url = $url;
-    $this->links[$rowid]->weight = $weight === null ? 1 - count($this->links) : $weight;
+  function link_insert($row_id, $title, $url, $weight = null) {
+    $this->links[$row_id] = new \stdClass;
+    $this->links[$row_id]->title = $title;
+    $this->links[$row_id]->url = $url;
+    $this->links[$row_id]->weight = $weight === null ? 1 - count($this->links) : $weight;
   }
 
-  function link_update($rowid, $title = null, $url = null, $weight = null) {
-    if ($title  !== null) $this->links[$rowid]->title  = $title;
-    if ($url    !== null) $this->links[$rowid]->url    = $url;
-    if ($weight !== null) $this->links[$rowid]->weight = $weight;
+  function link_update($row_id, $title = null, $url = null, $weight = null) {
+    if ($title  !== null) $this->links[$row_id]->title  = $title;
+    if ($url    !== null) $this->links[$row_id]->url    = $url;
+    if ($weight !== null) $this->links[$row_id]->weight = $weight;
   }
 
-  function link_delete($rowid) {
-    unset($this->links[$rowid]);
+  function link_delete($row_id) {
+    unset($this->links[$row_id]);
   }
 
   function render() {

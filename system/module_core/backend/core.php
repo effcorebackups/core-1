@@ -214,7 +214,17 @@ namespace effcore {
   ### functionality for data ###
   ##############################
 
-  static function data_to_attr($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
+  static function gettype($data, $full = true) {
+    $type = strtolower(gettype($data));
+    if ($type === 'object' && $full === true) {
+      $class_name = '\\'.get_class($data);
+      if (static::structure_is_local($class_name))
+           $type.= ':'.substr($class_name, strlen('\\effcore\\'));
+      else $type.= ':'.       $class_name; }
+    return $type;
+  }
+
+  static function data_to_attributes($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
     $result = [];
     foreach ((array)$data as $c_name => $c_value) {
       if ($is_xml_style && $c_value === true) $c_value = $c_name;
@@ -427,12 +437,13 @@ namespace effcore {
     if (is_object($data)) unset($data->{$name});
   }
 
-  static function arrobj_select_values_recursive(&$data, $all = false, $dpath = '') {
+  static function arrobj_select_values_recursive(&$data, $is_parent_at_last = false, $dpath = '') {
     $result = [];
     foreach ($data as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if ((is_array($c_value) || is_object($c_value)) !== false        ) $result += static::arrobj_select_values_recursive($c_value, $all, $c_dpath);
-      if ((is_array($c_value) || is_object($c_value)) === false || $all) $result[$c_dpath] =                              &$c_value;
+      if ($is_parent_at_last === false)              $result[$c_dpath] = &$c_value;
+      if (is_array($c_value) || is_object($c_value)) $result += static::arrobj_select_values_recursive($c_value, $is_parent_at_last, $c_dpath);
+      if ($is_parent_at_last !== false)              $result[$c_dpath] = &$c_value;
     }
     return $result;
   }
@@ -503,12 +514,12 @@ namespace effcore {
     return array_combine($array, $array);
   }
 
-  static function array_values_select_recursive(&$array, $all = false, $dpath = '') {
+  static function array_values_select_recursive(&$array, $dpath = '') {
     $result = [];
     foreach ($array as $c_key => &$c_value) {
       $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value) !== false        ) $result += static::array_values_select_recursive($c_value, $all, $c_dpath);
-      if (is_array($c_value) === false || $all) $result[$c_dpath] =                             &$c_value;
+      if (is_array($c_value) === true) $result += static::array_values_select_recursive($c_value, $c_dpath);
+      if (is_array($c_value) !== true) $result[$c_dpath] = &$c_value;
     }
     return $result;
   }
@@ -583,9 +594,8 @@ namespace effcore {
 
   static function hex_to_ip($ip_hex) {
     $inaddr = '';
-    foreach (str_split($ip_hex, 2) as $c_part) {
+    foreach (str_split($ip_hex, 2) as $c_part)
       $inaddr.= chr(hexdec($c_part));
-    }
     return inet_ntop($inaddr);
   }
 

@@ -29,7 +29,7 @@ namespace effcore {
            $message = 'go to <a href="/">front page</a>';
       $settings = module::settings_get('page');
       $colors   = color::get_all();
-      $content  = (template::make_new($template_name, ['attributes' => core::data_to_attr([
+      $content  = (template::make_new($template_name, ['attributes' => core::data_to_attributes([
         'lang'               => language::code_get_current()]),
         'message'            => is_object($message) && method_exists($message, 'render') ? $message->render() : (new text($message))->render(),
         'title'              => is_object($title  ) && method_exists($title,   'render') ? $title  ->render() : (new text($title  ))->render(),

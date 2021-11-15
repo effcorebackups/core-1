@@ -16,10 +16,11 @@ namespace effcore {
                 $this->quantity->get() :
                 $this->quantity;
     for ($i = 1; $i <= $quantity; $i++) {
-      $c_results['reports'][$dpath] = new text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
-      foreach ($this->actions as $c_row_id => $c_step) {
+      $c_results['reports'][$dpath.':'.$i]['dpath'] = '### dpath: '.$dpath.':'.$i;
+      $c_results['reports'][$dpath.':'.$i][] = new text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
+      foreach ($this->actions as $c_dpath_in_cycle => $c_step) {
         if ($this->id) token::insert('test_step_repeat_i_'.$this->id, 'text', $i, null, 'test');
-        $c_step->run($test, $dpath.'/'.$i.'/'.$c_row_id, $c_results);
+        $c_step->run($test, $dpath.':'.$i.'/'.$c_dpath_in_cycle, $c_results);
         if (array_key_exists('return', $c_results)) {
           return;
         }

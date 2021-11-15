@@ -281,8 +281,8 @@ namespace effcore {
     if ($software === null)
         $software = $_SERVER['SERVER_SOFTWARE'];
     $matches = [];
-    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+))|'.
-                 '(?<full_name_unknown>.*)%', $software, $matches);
+    preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+).*)$|'.
+                '^(?<full_name_unknown>.*)$%', $software, $matches);
     if (isset($matches['full_name'        ])) {$result->name = strtolower($matches['name']); $result->version = $matches['version'];}
     if (isset($matches['full_name_unknown'])) {$result->name = strtolower($matches['full_name_unknown']);}
     return $result;

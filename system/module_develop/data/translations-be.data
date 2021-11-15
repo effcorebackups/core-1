@@ -227,7 +227,10 @@ translations
     - Total generation time: Агульны час генерацыі
     - Total run time\: %%_time sec.: Агульны час выканання: %%_time сек.
     - Traits: Трэйты
-    - transposition %%_cur from %%_max (%%_state): перастаноўка %%_cur з %%_max (%%_state)
+    - transposition "action after": перастаноўка "action after"
+    - transposition "action before": перастаноўка "action before"
+    - transposition "action" #%%_num: перастаноўка "action" №%%_num
+    - TRANSPOSITION %%_cur FROM %%_max \| %%_state: ПЕРАСТАНОЎКА %%_cur З %%_max | %%_state
     - TRANSPOSITIONS [-1 … length + 2]: ПЕРАСТАНОЎКІ [-1 … length + 2]
     - TRANSPOSITIONS OF "..": ПЕРАСТАНОЎКІ ".."
     - TRANSPOSITIONS OF ".": ПЕРАСТАНОЎКІ "."

@@ -625,7 +625,7 @@ tests
       # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         action_after|step_actions
           actions
-          - title_select_multiple|step_title
+          - title_for_select_multiple|step_title
               title: SELECT MULTIPLE
           # page "Management → Data → Content → Texts"
           - request_url-select-multiple-registered-role|step_request
@@ -656,7 +656,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          - title_select|step_title
+          - title_for_select|step_title
               title: SELECT
           # page "Management → Data → Content → Texts → select instance"
           - request_url-select-registered-role|step_request
@@ -687,7 +687,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          - title_insert|step_title
+          - title_for_insert|step_title
               title: INSERT
           # page "Management → Data → Content → Texts → insert instance"
           - request_url-insert-registered-role|step_request
@@ -718,7 +718,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          - title_update|step_title
+          - title_for_update|step_title
               title: UPDATE
           # page "Management → Data → Content → Texts → update instance"
           - request_url-update-registered-role|step_request
@@ -749,7 +749,7 @@ tests
                   on_failure
                   - return_result|step_return
                       value: 0
-          - title_delete|step_title
+          - title_for_delete|step_title
               title: DELETE
           # page "Management → Data → Content → Texts → delete instance"
           - request_url-delete-registered-role|step_request

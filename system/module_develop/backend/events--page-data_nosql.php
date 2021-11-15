@@ -172,7 +172,7 @@ namespace effcore\modules\develop {
     ksort($tokens);
     foreach ($tokens as $c_row_id => $c_token) {
       $decorator->data[] = [
-        'rowid'     => ['value' => new text_simple($c_row_id          ), 'title' => 'Row ID'   ],
+        'row_id'    => ['value' => new text_simple($c_row_id          ), 'title' => 'Row ID'   ],
         'type'      => ['value' => new text_simple($c_token->type     ), 'title' => 'Type'     ],
         'module_id' => ['value' => new text_simple($c_token->module_id), 'title' => 'Module ID']
       ];

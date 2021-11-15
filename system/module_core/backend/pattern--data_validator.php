@@ -5,20 +5,18 @@
   ##################################################################
 
 namespace effcore {
-          class test implements has_external_cache {
+          class data_validator implements has_external_cache {
 
   public $id;
-  public $title;
-  public $description;
-  public $params;
   public $scenario;
 
-  function run() {
+  function validate($data) {
     $c_results = [];
-    foreach ($this->scenario as $c_dpath => $c_step) {
-      $c_step->run($this, $c_dpath, $c_results);
-      if (array_key_exists('return', $c_results)) {
-        break;
+    $data_as_array = is_array($data) ? $data : [$data];
+    $recursive_values = core::arrobj_select_values_recursive($data_as_array);
+    foreach ($recursive_values as $c_dpath_value => $c_value) {
+      foreach ($this->scenario as $c_dpath_scenario => $c_step) {
+        $c_step->run($this, $c_dpath_scenario, $c_dpath_value, $c_value, $c_results);
       }
     }
     return $c_results;
@@ -32,8 +30,7 @@ namespace effcore {
 
   static function not_external_properties_get() {
     return [
-      'id'    => 'id',
-      'title' => 'title'
+      'id' => 'id',
     ];
   }
 
@@ -43,11 +40,11 @@ namespace effcore {
 
   static function init() {
     if (static::$cache === null) {
-      foreach (storage::get('data')->select_array('tests') as $c_module_id => $c_tests) {
-        foreach ($c_tests as $c_row_id => $c_test) {
-          if (isset(static::$cache[$c_test->id])) console::report_about_duplicate('tests', $c_test->id, $c_module_id, static::$cache[$c_test->id]);
-                    static::$cache[$c_test->id] = $c_test;
-                    static::$cache[$c_test->id]->module_id = $c_module_id;
+      foreach (storage::get('data')->select_array('data_validators') as $c_module_id => $c_validators) {
+        foreach ($c_validators as $c_row_id => $c_validator) {
+          if (isset(static::$cache[$c_validator->id])) console::report_about_duplicate('data_validators', $c_validator->id, $c_module_id, static::$cache[$c_validator->id]);
+                    static::$cache[$c_validator->id] = $c_validator;
+                    static::$cache[$c_validator->id]->module_id = $c_module_id;
         }
       }
     }

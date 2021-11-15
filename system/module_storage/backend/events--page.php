@@ -43,10 +43,10 @@ namespace effcore\modules\storage {
         page::get_current()->id === 'instance_delete') {
       $back_return_0 = page::get_current()->args_get('back_return_0');
       $back_return_n = page::get_current()->args_get('back_return_n');
-      $rowids = array_keys($breadcrumbs->link_select_all());
-      $rowid_last = array_pop($rowids);
-      if ($rowid_last) {
-        $breadcrumbs->link_update($rowid_last,                         null,
+      $row_ids = array_keys($breadcrumbs->link_select_all());
+      $row_id_last = array_pop($row_ids);
+      if ($row_id_last) {
+        $breadcrumbs->link_update($row_id_last,                        null,
           $back_return_0 ?: (url::back_url_get() ?: ($back_return_n ?: null))
         );
       }

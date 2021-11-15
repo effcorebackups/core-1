@@ -31,7 +31,7 @@ namespace effcore\modules\test {
             $c_key   = core::array_key_first($c_cookie['parsed']);
             $c_value =                 reset($c_cookie['parsed']);
             $result[$c_key] = $c_value; }}}
-      return core::data_to_attr($result, false, '; ', '', '');
+      return core::data_to_attributes($result, false, '; ', '', '');
     }
     if ($name === 'test_captcha') {
       if (module::is_enabled('captcha')) {

@@ -171,6 +171,7 @@ translations
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module "%%_title"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле "%%_title"!
     - duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id": был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"
     - Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!: Был найден дубликат типа "%%_type" с ID = "%%_id" в модуле с ID = "%%_module_id"!
+    - Each item must be contained in the "%%_root" array.: Каждый элемент должен находиться в массиве "%%_root".
     - edit: редактировать
     - Edit: Редактировать
     - Eliminates the possibility of brute-force a password if an attacker knows the Email.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
@@ -369,6 +370,8 @@ translations
     - Is embedded: Встроенный
     - Is fixed IP: Фикс. IP
     - It is recommended that you change your password directly on %%_domain.: Рекомендуется изменить пароль непосредственно на %%_domain.
+    - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" находится за пределами допустимых границ!
+    - Item "%%_dpath_value" must be an array!: Элемент "%%_dpath_value" должен быть массивом!
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
     - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!

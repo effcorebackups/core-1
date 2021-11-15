@@ -21,6 +21,7 @@ namespace effcore {
     $prepared_url     = $this->prepared_url_get    ();
     $prepared_headers = $this->prepared_headers_get();
     $prepared_post    = $this->prepared_post_get   ();
+                $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
                 $c_results['reports'][$dpath][] = new text('make request to "%%_url"', ['url'   => $this->prepared_url_get()]);
     if ($proxy) $c_results['reports'][$dpath][] = new text('proxy server = %%_proxy',  ['proxy' => $proxy]);
     foreach ($prepared_headers as           $c_value) $c_results['reports'][$dpath][] = new text('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
@@ -30,11 +31,11 @@ namespace effcore {
       $prepared_url,
       $prepared_headers,
       $prepared_post, ['proxy' => $proxy]);
-    if (isset($response['info']['http_code'   ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'http_code',    'value' => $response['info']['http_code'   ]]);
-    if (isset($response['info']['primary_ip'  ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_ip',   'value' => $response['info']['primary_ip'  ]]);
-    if (isset($response['info']['primary_port'])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'primary_port', 'value' => $response['info']['primary_port']]);
-    if (isset($response['info']['local_ip'    ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_ip',     'value' => $response['info']['local_ip'    ]]);
-    if (isset($response['info']['local_port'  ])) $c_results['reports'][$dpath][] = new text('&ndash; response param "%%_name" = "%%_value"', ['name' => 'local_port',   'value' => $response['info']['local_port'  ]]);
+    if (isset($response['info'   ]['http_code'                 ])) $c_results['reports'][$dpath][] = new text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'http_code',                  'value' => $response['info'   ]['http_code'   ]]);
+    if (isset($response['info'   ]['primary_ip'                ])) $c_results['reports'][$dpath][] = new text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_ip',                 'value' => $response['info'   ]['primary_ip'  ]]);
+    if (isset($response['info'   ]['primary_port'              ])) $c_results['reports'][$dpath][] = new text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_port',               'value' => $response['info'   ]['primary_port']]);
+    if (isset($response['info'   ]['local_ip'                  ])) $c_results['reports'][$dpath][] = new text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'local_ip',                   'value' => $response['info'   ]['local_ip'    ]]);
+    if (isset($response['info'   ]['local_port'                ])) $c_results['reports'][$dpath][] = new text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'local_port',                 'value' => $response['info'   ]['local_port'  ]]);
     if (isset($response['headers']['X-PHP-Memory-usage'        ])) $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-PHP-Memory-usage',         'value' => $response['headers']['X-PHP-Memory-usage'].' ('.locale::format_bytes  ($response['headers']['X-PHP-Memory-usage']).')' ]);
     if (isset($response['headers']['X-Time-total'              ])) $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Time-total',               'value' => $response['headers']['X-Time-total'      ].' ('.locale::format_msecond($response['headers']['X-Time-total'      ]).')' ]);
     if (isset($response['headers']['X-Form-Submit-Errors-Count'])) $c_results['reports'][$dpath][] = new text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Form-Submit-Errors-Count', 'value' => $response['headers']['X-Form-Submit-Errors-Count'] ]);

@@ -17,7 +17,8 @@ namespace effcore {
       if ($this->is_apply_tokens && is_string($c_value))
            $args[$c_key] = token::apply($c_value);
       else $args[$c_key] =              $c_value;
-    $c_results['reports'][$dpath] = new text($this->title, $args);
+    $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
+    $c_results['reports'][$dpath][] = new text($this->title, $args);
   }
 
 }}

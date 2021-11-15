@@ -90,7 +90,7 @@ tests
         - response_check--section--location|step_check
             check: token
             where: %%_test_response_location
-            match: %(http|https)://%%_request_host{preg_quote}/section|/section$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section|/section)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -247,7 +247,7 @@ tests
         - response_check----location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/|/)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -268,7 +268,7 @@ tests
         - response_check--page--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/page$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/page|/page)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -331,7 +331,7 @@ tests
         - response_check--section---location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/section$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section|/section)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -352,7 +352,7 @@ tests
         - response_check--section-page--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/section/page$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section/page|/section/page)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -443,7 +443,7 @@ tests
         - response_check--file.--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/file\.$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/file\.|/file\.)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -464,7 +464,7 @@ tests
         - response_check--file.type--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/file\.type$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/file\.type|/file\.type)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -583,7 +583,7 @@ tests
         - response_check--directory-file.--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/directory/file\.$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -604,7 +604,7 @@ tests
         - response_check--directory-file.type--location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/directory/file\.type$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -1933,7 +1933,7 @@ tests
         - response_check--?page=1&unknown=true=-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/\?page=1$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/\?page=1|/\?page=1)$%
             on_failure
             - return_result|step_return
                 value: 0
@@ -1968,7 +1968,7 @@ tests
         - response_check--login?page=1&unknown=true-location|step_check
             check: token
             where: %%_test_response_location
-            match: %.*/login\?page=1$%
+            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|step_return
                 value: 0

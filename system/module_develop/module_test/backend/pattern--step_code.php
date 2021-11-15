@@ -17,12 +17,9 @@ namespace effcore {
       if ($this->is_apply_tokens && is_string($c_value))
            $args[$c_key] = token::apply($c_value);
       else $args[$c_key] =              $c_value;
-    $c_results['reports'][$dpath] = new text('call "%%_call"', ['call' => $this->handler]);
-    call_user_func_array($this->handler, [
-      'test'    => &$test,
-      'dpath'   => $dpath.'::'.core::handler_get_method($this->handler),
-      'results' => &$c_results
-    ] + $args);
+    $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
+    $c_results['reports'][$dpath][] = new text('call "%%_call"', ['call' => $this->handler]);
+    call_user_func_array($this->handler, ['test' => &$test, 'dpath' => $dpath.'::'.core::handler_get_method($this->handler), 'results' => &$c_results] + $args);
   }
 
 }}

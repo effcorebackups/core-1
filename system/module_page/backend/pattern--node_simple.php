@@ -61,8 +61,8 @@ namespace effcore {
 
   function render_attributes() {
     if ($this->is_xml_style)
-         return core::data_to_attr($this->attributes_select(), true);
-    else return core::data_to_attr($this->attributes_select()      );
+         return core::data_to_attributes($this->attributes_select(), true);
+    else return core::data_to_attributes($this->attributes_select()      );
   }
 
   function render_self() {
