@@ -2,13 +2,13 @@ data_validators
 - attributes|data_validator
     id: attributes
     scenario
-    - check_if_settings_or_its_part|step_validate
+    - check-settings+settings-*|step_validate
         check: current
         where: dpath
         match: %^settings(/.*|)$%
         on_success
-      # check "settings"
-        - check_settings|step_validate
+      # check "settings:array"
+        - check-settings|step_validate
             check: current
             where: dpath
             match: %^settings$%
@@ -24,8 +24,8 @@ data_validators
                       text: Item "%%_dpath_value" must be of type "%%_type"!
                       args
                       - type: array
-      # check "settings/*"
-        - check_settings_*|step_validate
+      # check "settings:array/*"
+        - check-settings-*|step_validate
             check: current
             where: dpath
             match: %^settings/.+$%
@@ -35,17 +35,17 @@ data_validators
                 where: type
                 match: %^(string|integer|double|boolean|null|array|object)$%
                 on_success
-              # check "settings/item:array"
-                - check_if_array|step_validate
+              # check "settings:array/item:array/item"
+                - check-settings-item-item|step_validate
                     check: current
-                    where: type
-                    match: %^array$%
-              # check "settings/item:object"
-                - check_if_object|step_validate
-                    check: current
-                    where: type
-                    match: %^object$%
-              # when "settings/*" is of an invalid type
+                    where: dpath
+                    match: %^settings(/[^/]+)(/[^/]+)$%
+                    on_success
+                    - check_if_array|step_validate
+                        check: parent+1
+                        where: type
+                        match: %^array$%
+              # when "settings:array/*" is of an invalid type
                 on_failure
                 - error_register|step_validate_error_register
                     message|text
