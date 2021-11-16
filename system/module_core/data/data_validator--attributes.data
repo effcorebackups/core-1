@@ -48,7 +48,7 @@ data_validators
                           args
                           - types: string, integer, double, boolean, null, array, object:text, object:text_simple
           # check "settings/item:array/item"
-            - check-settings-item-item|step_validate
+            - check-settings-item:array-item|step_validate
                 check: current
                 where: dpath
                 match: %^settings(/[^/]+)(/[^/]+)$%
@@ -69,6 +69,50 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: string, integer, double
+          # check "settings/item:object:text/is_apply_translation"
+            - check-settings-item:object:text-is_apply_translation|step_validate
+                check: current
+                where: dpath
+                match: %^settings(/[^/]+)(/is_apply_translation)$%
+                on_success
+                - check_if_parrent_is_object_text|step_validate
+                    check: parent_+2
+                    where: type
+                    match: object:text
+                    on_success
+                    - check_type|step_validate
+                        check: current
+                        where: type
+                        match: boolean
+                      # when "settings/item:object:text/is_apply_translation:__INVALID__TYPE__"
+                        on_failure
+                        - error_register|step_validate_error_register
+                            message|text
+                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                              args
+                              - types: boolean
+          # check "settings/item:object:text/is_apply_tokens"
+            - check-settings-item:object:text-is_apply_tokens|step_validate
+                check: current
+                where: dpath
+                match: %^settings(/[^/]+)(/is_apply_tokens)$%
+                on_success
+                - check_if_parrent_is_object_text|step_validate
+                    check: parent_+2
+                    where: type
+                    match: object:text
+                    on_success
+                    - check_type|step_validate
+                        check: current
+                        where: type
+                        match: boolean
+                      # when "settings/item:object:text/is_apply_tokens:__INVALID__TYPE__"
+                        on_failure
+                        - error_register|step_validate_error_register
+                            message|text
+                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                              args
+                              - types: boolean
       # when not "settings" or "settings/*"
         on_failure
         - error_register|step_validate_error_register
