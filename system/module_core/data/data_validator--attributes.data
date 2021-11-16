@@ -69,8 +69,8 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: string, integer, double
-          # check "settings/item:object:text/is_apply_translation"
-            - check-settings-item:object:text-is_apply_translation|step_validate
+          # check "settings/item:object:text/is_apply_translation:boolean"
+            - check-settings-item:object:text-is_apply_translation:boolean|step_validate
                 check: current
                 where: dpath
                 match: %^settings(/[^/]+)(/is_apply_translation)$%
@@ -91,8 +91,8 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: boolean
-          # check "settings/item:object:text/is_apply_tokens"
-            - check-settings-item:object:text-is_apply_tokens|step_validate
+          # check "settings/item:object:text/is_apply_tokens:boolean"
+            - check-settings-item:object:text-is_apply_tokens:boolean|step_validate
                 check: current
                 where: dpath
                 match: %^settings(/[^/]+)(/is_apply_tokens)$%
@@ -113,8 +113,8 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: boolean
-          # check "settings/item:object:text_simple/weight"
-            - check-settings-item:object:text_simple-weight|step_validate
+          # check "settings/item:object:text_simple/weight:integer"
+            - check-settings-item:object:text_simple-weight:integer|step_validate
                 check: current
                 where: dpath
                 match: %^settings(/[^/]+)(/weight)$%
@@ -135,8 +135,8 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: integer
-          # check "settings/item:object:text_simple/delimiter"
-            - check-settings-item:object:text_simple-delimiter|step_validate
+          # check "settings/item:object:text_simple/delimiter:string"
+            - check-settings-item:object:text_simple-delimiter:string|step_validate
                 check: current
                 where: dpath
                 match: %^settings(/[^/]+)(/delimiter)$%
@@ -151,6 +151,28 @@ data_validators
                         where: type
                         match: string
                       # when "settings/item:object:text_simple/delimiter:__INVALID__TYPE__"
+                        on_failure
+                        - error_register|step_validate_error_register
+                            message|text
+                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                              args
+                              - types: string
+          # check "settings/item:object:text_simple/text:string"
+            - check-settings-item:object:text_simple-text:string|step_validate
+                check: current
+                where: dpath
+                match: %^settings(/[^/]+)(/text)$%
+                on_success
+                - check_if_parrent_is_object_text_simple|step_validate
+                    check: parent_+2
+                    where: type
+                    match: object:text_simple
+                    on_success
+                    - check_type|step_validate
+                        check: current
+                        where: type
+                        match: string
+                      # when "settings/item:object:text_simple/text:__INVALID__TYPE__"
                         on_failure
                         - error_register|step_validate_error_register
                             message|text
