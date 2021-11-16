@@ -39,14 +39,14 @@ data_validators
                 - check_type|step_validate
                     check: current
                     where: type
-                    match: %^(string|integer|double|boolean|null|array|object)$%
+                    match: %^(string|integer|double|boolean|null|array|object:text|object:text_simple)$%
                   # when "settings/item:__INVALID__TYPE__"
                     on_failure
                     - error_register|step_validate_error_register
                         message|text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
-                          - types: string, integer, double, boolean, null, array, object
+                          - types: string, integer, double, boolean, null, array, object:text, object:text_simple
           # check "settings/item:array/item"
             - check-settings-item-item|step_validate
                 check: current

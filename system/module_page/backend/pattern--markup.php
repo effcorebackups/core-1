@@ -40,7 +40,7 @@ namespace effcore {
     if (gettype($data) === 'string' ) $result = ['default' => new markup('p', ['data-id' => 'default'], $data)];
     if (gettype($data) === 'integer') $result = ['default' => new markup('p', ['data-id' => 'default'], $data)];
     if (gettype($data) === 'double' ) $result = ['default' => new markup('p', ['data-id' => 'default'], $data)];
-    if (gettype($data) === 'object' ) $result = ['default' => new markup('p', ['data-id' => 'default'], $data)]; # ready for: object|text, object|text_multiline, object->render()
+    if (gettype($data) === 'object' ) $result = ['default' => new markup('p', ['data-id' => 'default'], $data)]; # ready for: object:text, object:text_multiline, object->render()
     if (gettype($data) === 'array'  ) $result = $data;
     return $result;
   }
