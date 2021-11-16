@@ -11,12 +11,12 @@ data_validators
         - check-settings|step_validate
             check: current
             where: dpath
-            match: %^settings$%
+            match: settings
             on_success
             - check_type|step_validate
                 check: current
                 where: type
-                match: %^array$%
+                match: array
               # when "settings:__INVALID__TYPE__"
                 on_failure
                 - error_register|step_validate_error_register
@@ -44,19 +44,19 @@ data_validators
                     - check_if_parrent_is_array|step_validate
                         check: parent_+2
                         where: type
-                        match: %^array$%
+                        match: array
                         on_success
                         - check_type|step_validate
                             check: current
                             where: type
-                            match: %^(string|integer|double|boolean|null)$%
+                            match: %^(string|integer|double)$%
                           # when "settings/item/item:__INVALID__TYPE__"
                             on_failure
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
                                   args
-                                  - types: string, integer, double, boolean, null
+                                  - types: string, integer, double
               # when "settings/*:__INVALID__TYPE__"
                 on_failure
                 - error_register|step_validate_error_register
