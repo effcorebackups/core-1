@@ -113,6 +113,28 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: boolean
+          # check "settings/item:object:text_simple/weight"
+            - check-settings-item:object:text_simple-weight|step_validate
+                check: current
+                where: dpath
+                match: %^settings(/[^/]+)(/weight)$%
+                on_success
+                - check_if_parrent_is_object_text_simple|step_validate
+                    check: parent_+2
+                    where: type
+                    match: object:text_simple
+                    on_success
+                    - check_type|step_validate
+                        check: current
+                        where: type
+                        match: integer
+                      # when "settings/item:object:text_simple/weight:__INVALID__TYPE__"
+                        on_failure
+                        - error_register|step_validate_error_register
+                            message|text
+                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                              args
+                              - types: integer
       # when not "settings" or "settings/*"
         on_failure
         - error_register|step_validate_error_register
