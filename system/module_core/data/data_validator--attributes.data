@@ -50,7 +50,7 @@ data_validators
                             check: current
                             where: type
                             match: %^(string|integer|double)$%
-                          # when "settings/item/item:__INVALID__TYPE__"
+                          # when "settings/item:array/item:__INVALID__TYPE__"
                             on_failure
                             - error_register|step_validate_error_register
                                 message|text
