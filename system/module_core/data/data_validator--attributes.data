@@ -6,6 +6,14 @@ data_validators
         check: current
         where: dpath
         match: %^settings(/.+|)$%
+        on_failure
+        - error_register|step_validate_error_register
+            message|text_multiline
+              text
+              - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
+              - 1: Each item must be contained in the "%%_root" array.
+              args
+              - root: settings
         on_success
       # check "settings:array"
         - check-settings|step_validate
@@ -179,12 +187,3 @@ data_validators
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
                               - types: string
-      # when not "settings" or "settings/*"
-        on_failure
-        - error_register|step_validate_error_register
-            message|text_multiline
-              text
-              - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
-              - 1: Each item must be contained in the "%%_root" array.
-              args
-              - root: settings
