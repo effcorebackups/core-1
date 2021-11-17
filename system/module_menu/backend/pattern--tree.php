@@ -73,8 +73,8 @@ namespace effcore {
         foreach ($c_trees as $c_row_id => $c_tree) {
           if (isset(static::$cache[$c_tree->id])) console::report_about_duplicate('trees', $c_tree->id, $c_module_id, static::$cache[$c_tree->id]);
                     static::$cache[$c_tree->id] = $c_tree;
-                    static::$cache[$c_tree->id]->module_id = $c_module_id;
                     static::$cache[$c_tree->id]->origin = 'nosql';
+                    static::$cache[$c_tree->id]->module_id = $c_module_id;
         }
       }
     }

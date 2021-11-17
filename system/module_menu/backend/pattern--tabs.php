@@ -12,6 +12,7 @@ namespace effcore {
   public $template_top_items = 'tab_top_items';
   public $template_sub_items = 'tab_sub_items';
   public $attributes = ['role' => 'tablist'];
+  public $origin = 'nosql'; # nosql | dynamic
 
   function __construct($id = null, $attributes = [], $weight = 0) {
     if ($id) $this->id = $id;
@@ -107,6 +108,7 @@ namespace effcore {
         foreach ($c_tabs as $c_row_id => $c_tab) {
           if (isset(static::$cache[$c_tab->id])) console::report_about_duplicate('tabs', $c_tab->id, $c_module_id, static::$cache[$c_tab->id]);
                     static::$cache[$c_tab->id] = $c_tab;
+                    static::$cache[$c_tab->id]->origin = 'nosql';
                     static::$cache[$c_tab->id]->module_id = $c_module_id;
         }
       }
@@ -127,6 +129,7 @@ namespace effcore {
     static::init();
     $new_tab = new static($id, $attributes, $weight);
            static::$cache[$id] = $new_tab;
+           static::$cache[$id]->origin = 'dynamic';
            static::$cache[$id]->module_id = $module_id;
     return static::$cache[$id];
   }
