@@ -11,8 +11,8 @@ namespace effcore {
   public $managing_group = 'Text'; # copy to: (new block)->_preset->managing_group
   public $managing_title;          # copy to: (new block)->_preset->managing_title
   public $in_areas;                # copy to: (new block)->_preset->in_areas
-  public $module_id;               # copy to: (new block)->_preset->module_id
   public $origin = 'nosql';        # copy to: (new block)->_preset->origin
+  public $module_id;               # copy to: (new block)->_preset->module_id
   public $weight = 0;              # copy to: (new block)->weight
 
   function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $weight = 0) {
@@ -58,8 +58,8 @@ namespace effcore {
         foreach ($c_presets as $c_preset) {
           if (isset(static::$cache[$c_preset->id])) console::report_about_duplicate('block_presets', $c_preset->id, $c_module_id, static::$cache[$c_preset->id]);
                     static::$cache[$c_preset->id] = $c_preset;
-                    static::$cache[$c_preset->id]->module_id = $c_module_id;
                     static::$cache[$c_preset->id]->origin = 'nosql';
+                    static::$cache[$c_preset->id]->module_id = $c_module_id;
         }
       }
     }
@@ -92,8 +92,8 @@ namespace effcore {
   static function insert($id, $managing_group = null, $managing_title = null, $in_areas = null, $extra = [], $weight = 0, $module_id = null) {
     static::init();
     $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $weight);
-    $new_preset->module_id = $module_id;
     $new_preset->origin = 'dynamic';
+    $new_preset->module_id = $module_id;
     foreach ($extra as $c_key => $c_value) $new_preset->{$c_key} = $c_value;
            static::$cache[$id] = $new_preset;
     return static::$cache[$id];
