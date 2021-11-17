@@ -235,7 +235,7 @@ namespace effcore {
               $c_tree_item = tree_item::insert($c_title,
                 $c_id_tree.'-'.$c_id, $c_id_parent !== null ?
                 $c_id_tree.'-'.$c_id_parent : null,
-                $c_id_tree,    $c_url, $c_access, ['data-real-id' => $c_id], [], $c_weight);
+                $c_id_tree,    $c_url, $c_access, ['data-real-id' => $c_id], [], $c_weight, 'page');
               $c_tree_item->extra = $c_extra;
             }
             $result->child_insert(

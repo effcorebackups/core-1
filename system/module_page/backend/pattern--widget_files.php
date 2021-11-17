@@ -121,7 +121,7 @@ namespace effcore {
     foreach ($items as $c_row_id => $c_item) {
       switch ($c_item->object->get_current_state()) {
         case 'pre': # moving of 'pre' items into the directory 'files'
-          token::insert('item_id_context', 'text', $c_row_id, 'page');
+          token::insert('item_id_context', 'text', $c_row_id, null, 'page');
           $c_result = $c_item->object->move_pre_to_fin(dynamic::dir_files.
             $widget->upload_dir.$c_item->object->file,
             $widget->fixed_name,

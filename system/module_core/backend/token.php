@@ -23,6 +23,7 @@ namespace effcore {
         foreach ($c_tokens as $c_row_id => $c_token) {
           if (isset(static::$cache[$c_row_id])) console::report_about_duplicate('tokens', $c_row_id, $c_module_id, static::$cache[$c_row_id]);
                     static::$cache[$c_row_id] = $c_token;
+                    static::$cache[$c_row_id]->origin = 'nosql';
                     static::$cache[$c_row_id]->module_id = $c_module_id;
         }
       }
@@ -44,8 +45,9 @@ namespace effcore {
   static function insert($row_id, $type, $value = null, $handler = null, $module_id = null) {
     static::init();
     $new_token = new \stdClass;
-    if (true      ) $new_token->type      = $type;
-    if (true      ) $new_token->value     = $value;
+                    $new_token->type      = $type;
+                    $new_token->value     = $value;
+                    $new_token->origin    = 'dynamic';
     if ($handler  ) $new_token->handler   = $handler;
     if ($module_id) $new_token->module_id = $module_id;
            static::$cache[$row_id] = $new_token;

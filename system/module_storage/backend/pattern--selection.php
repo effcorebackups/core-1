@@ -143,7 +143,7 @@ namespace effcore {
             if ($c_field->type === 'field' ||
                 $c_field->type === 'join_field') {
               token::insert('selection_'.$c_field->entity_name      .'_'.
-                                         $c_field->entity_field_name.'_'.'context', 'text', $c_instance->{$c_field->entity_field_name}, 'storage');
+                                         $c_field->entity_field_name.'_'.'context', 'text', $c_instance->{$c_field->entity_field_name}, null, 'storage');
             }
           }
 

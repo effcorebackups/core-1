@@ -21,7 +21,7 @@ namespace effcore\modules\project {
 
   static function block_markup__selection_release_current_make($page, $args = []) {
     if (!empty($args['id_project'])) {
-      token::insert('id_project_context', 'text', $args['id_project'], 'project');
+      token::insert('id_project_context', 'text', $args['id_project'], null, 'project');
       $selection = core::deep_clone(selection::get('release_current'));
       $selection->title = $selection->title->render();
       $selection->build();
@@ -31,7 +31,7 @@ namespace effcore\modules\project {
 
   static function block_markup__selection_releases_make($page, $args = []) {
     if (!empty($args['id_project'])) {
-      token::insert('id_project_context', 'text', $args['id_project'], 'project');
+      token::insert('id_project_context', 'text', $args['id_project'], null, 'project');
       $selection = core::deep_clone(selection::get('releases'));
       $selection->title = $selection->title->render();
       $selection->build();

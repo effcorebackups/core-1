@@ -37,7 +37,7 @@ namespace effcore {
             $c_instance->{$this->related_entity_field_title_name    },           $tree_id.'-'.
             $c_instance->{$this->related_entity_field_id_name       },
             $c_instance->{$this->related_entity_field_id_parent_name} !== null ? $tree_id.'-'.
-            $c_instance->{$this->related_entity_field_id_parent_name} :   null,  $tree_id, null, null, [], [], $c_instance->weight);
+            $c_instance->{$this->related_entity_field_id_parent_name} :   null,  $tree_id, null, null, [], [], $c_instance->weight, 'storage');
           $c_tree_item->id_real = $c_instance->{$this->related_entity_field_id_name};
         }
         $tree->build();
