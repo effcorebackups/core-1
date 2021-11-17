@@ -20,6 +20,7 @@ namespace effcore {
   public $access;
   public $cache_href;
   public $cache_href_default;
+  public $origin = 'nosql'; # nosql | dynamic
 
   function __construct($title = null, $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0) {
     if ($id                 ) $this->id                  = $id;
@@ -125,6 +126,7 @@ namespace effcore {
     static::init();
     $new_item = new static($title, $id, $id_parent, $id_tab, $action_name, $action_name_default, $attributes, $element_attributes, $is_hidden, $weight);
            static::$cache[$id] = $new_item;
+           static::$cache[$id]->origin = 'dynamic';
            static::$cache[$id]->module_id = $module_id;
     return static::$cache[$id];
   }

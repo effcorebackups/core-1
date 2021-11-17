@@ -54,7 +54,7 @@ namespace effcore\modules\develop {
       foreach ($trees as $c_tree) {
         tab_item::insert(                        $c_tree->title,
            'nosql_trees_'.                       $c_tree->id,
-           'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id
+           'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id, null, [], [], false, 0, 'develop'
         );
       }
     }
@@ -65,7 +65,7 @@ namespace effcore\modules\develop {
       foreach ($languages as $c_language) {
         tab_item::insert(                                     $c_language->title_en,
           'nosql_translations_'.                              $c_language->code,
-          'nosql_translations', 'data_nosql', 'translations/'.$c_language->code
+          'nosql_translations', 'data_nosql', 'translations/'.$c_language->code, null, [], [], false, 0, 'develop'
         );
       }
     }

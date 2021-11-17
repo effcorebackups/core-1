@@ -31,7 +31,7 @@ namespace effcore\modules\page {
       foreach ($presets as $c_preset) {
         tab_item::insert(                                  $c_preset->title,
           'view_colors_presets_'.                          $c_preset->id,
-          'view_colors_presets', 'view', 'colors/presets/'.$c_preset->id
+          'view_colors_presets', 'view', 'colors/presets/'.$c_preset->id, null, [], [], false, 0, 'page'
         );
       }
     }
@@ -42,7 +42,7 @@ namespace effcore\modules\page {
       foreach ($layouts as $c_layout) {
         tab_item::insert(                    $c_layout->title,
           'view_layouts_'.                   $c_layout->id,
-          'view_layouts', 'view', 'layouts/'.$c_layout->id
+          'view_layouts', 'view', 'layouts/'.$c_layout->id, null, [], [], false, 0, 'page'
         );
       }
     }
