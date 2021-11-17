@@ -121,8 +121,8 @@ namespace effcore {
     static::init_sql($id);
     $new_tree = new static($title, $id, $access, $attributes, $weight);
            static::$cache[$id] = $new_tree;
-           static::$cache[$id]->module_id = $module_id;
            static::$cache[$id]->origin = 'dynamic';
+           static::$cache[$id]->module_id = $module_id;
     return static::$cache[$id];
   }
 

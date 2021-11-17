@@ -31,7 +31,7 @@ namespace effcore {
       if ($this->related_entity_field_id_parent_name) {
         $tree_id = 'field_relation-'.$this->name_get();
                 tree::delete(      $tree_id);
-        $tree = tree::insert(null, $tree_id);
+        $tree = tree::insert(null, $tree_id, null, [], 0, 'storage');
         foreach ($instances as $c_instance) {
           $c_tree_item = tree_item::insert(
             $c_instance->{$this->related_entity_field_title_name    },           $tree_id.'-'.
