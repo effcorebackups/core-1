@@ -86,7 +86,7 @@ namespace effcore\modules\page {
         !empty($args['entity_name'])) {
       $selection = selection::get($args['entity_name']);
       if ($selection) {
-        token::insert('selection_'.$args['entity_name'].'_id_context', 'text', $args['instance_id']);
+        token::insert('selection_'.$args['entity_name'].'_id_context', 'text', $args['instance_id'], 'page');
         $selection = core::deep_clone($selection);
         $selection->id = $args['entity_name'].'_'.$args['instance_id'];
         $selection->build();
