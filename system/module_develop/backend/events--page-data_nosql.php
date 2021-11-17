@@ -41,7 +41,7 @@ namespace effcore\modules\develop {
       $languages = language::get_all();
       core::array_sort_by_text_property($languages, 'title_en', 'd', false);
       unset($languages['en']);
-      if (count($languages) === 0 && $id != null           ) url::go($page->args_get('base').'/translations/'                        );
+      if (count($languages) === 0 && $id !== null          ) url::go($page->args_get('base').'/translations/'                        );
       if (count($languages) !== 0 && empty($languages[$id])) url::go($page->args_get('base').'/translations/'.reset($languages)->code);
     }
   }
