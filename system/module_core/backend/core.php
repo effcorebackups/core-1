@@ -452,6 +452,16 @@ namespace effcore {
   ### functionality for arrays ###
   ################################
 
+  static function array_values_select_recursive(&$array, $dpath = '') {
+    $result = [];
+    foreach ($array as $c_key => &$c_value) {
+      $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
+      if (is_array($c_value) === true) $result += static::array_values_select_recursive($c_value, $c_dpath);
+      if (is_array($c_value) !== true) $result[$c_dpath] = &$c_value;
+    }
+    return $result;
+  }
+
   static function array_rotate($data) {
     $result = [];
     foreach ($data as $c_row) {                  # convert │1│2│ to │1│3│
@@ -512,16 +522,6 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function array_values_select_recursive(&$array, $dpath = '') {
-    $result = [];
-    foreach ($array as $c_key => &$c_value) {
-      $c_dpath = $dpath ? $dpath.'/'.$c_key : $c_key;
-      if (is_array($c_value) === true) $result += static::array_values_select_recursive($c_value, $c_dpath);
-      if (is_array($c_value) !== true) $result[$c_dpath] = &$c_value;
-    }
-    return $result;
-  }
-
   static function array_keys_map($array) {
     return array_combine($array, $array);
   }
@@ -549,7 +549,7 @@ namespace effcore {
   static function array_search__value_in_any_array_item($value, $array) {
     $result = [];
     foreach ($array as $c_key => $c_value)
-      if (strpos((string)$c_value, $value) === 0)
+      if (strpos((string)$c_value, (string)$value) === 0)
         $result[$c_key] = $c_value;
     return $result;
   }
@@ -557,7 +557,7 @@ namespace effcore {
   static function array_search__any_array_item_in_value($value, $array) {
     $result = [];
     foreach ($array as $c_key => $c_value)
-      if (strpos($value, (string)$c_value) === 0)
+      if (strpos((string)$value, (string)$c_value) === 0)
         $result[$c_key] = $c_value;
     return $result;
   }
