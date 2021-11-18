@@ -33,158 +33,159 @@ data_validators
                       text: Item "%%_dpath_value" must be of type "%%_type"!
                       args
                       - type: array
-      # check "settings/*"
-        - check-settings-*|step_validate
-            check: current
-            where: dpath
-            match: %^settings/.+$%
-            on_success
-          # check "settings/item"
-            - check-settings-item|step_validate
+            on_failure
+          # check "settings/*"
+            - check-settings-*|step_validate
                 check: current
                 where: dpath
-                match: %^settings(/[^/]+)$%
+                match: %^settings/.+$%
                 on_success
-                - check_type|step_validate
+              # check "settings/item"
+                - check-settings-item|step_validate
                     check: current
-                    where: type
-                    match: %^(string|integer|double|boolean|null|array|object:text|object:text_simple)$%
-                  # when "settings/item:__INVALID__TYPE__"
-                    on_failure
-                    - error_register|step_validate_error_register
-                        message|text
-                          text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                          args
-                          - types: string, integer, double, boolean, null, array, object:text, object:text_simple
-          # check "settings/item:array/item"
-            - check-settings-item:array-item|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/[^/]+)$%
-                on_success
-                - check_if_parrent_is_array|step_validate
-                    check: parent_+2
-                    where: type
-                    match: array
+                    where: dpath
+                    match: %^settings(/[^/]+)$%
                     on_success
                     - check_type|step_validate
                         check: current
                         where: type
-                        match: %^(string|integer|double)$%
-                      # when "settings/item:array/item:__INVALID__TYPE__"
+                        match: %^(string|integer|double|boolean|null|array|object:text|object:text_simple)$%
+                      # when "settings/item:__INVALID__TYPE__"
                         on_failure
                         - error_register|step_validate_error_register
                             message|text
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
                               args
-                              - types: string, integer, double
-          # check "settings/item:object:text/is_apply_translation:boolean"
-            - check-settings-item:object:text-is_apply_translation:boolean|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/is_apply_translation)$%
-                on_success
-                - check_if_parrent_is_object_text|step_validate
-                    check: parent_+2
-                    where: type
-                    match: object:text
+                              - types: string, integer, double, boolean, null, array, object:text, object:text_simple
+              # check "settings/item:array/item"
+                - check-settings-item:array-item|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/[^/]+)$%
                     on_success
-                    - check_type|step_validate
-                        check: current
+                    - check_if_parrent_is_array|step_validate
+                        check: parent_+2
                         where: type
-                        match: boolean
-                      # when "settings/item:object:text/is_apply_translation:__INVALID__TYPE__"
-                        on_failure
-                        - error_register|step_validate_error_register
-                            message|text
-                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                              args
-                              - types: boolean
-          # check "settings/item:object:text/is_apply_tokens:boolean"
-            - check-settings-item:object:text-is_apply_tokens:boolean|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/is_apply_tokens)$%
-                on_success
-                - check_if_parrent_is_object_text|step_validate
-                    check: parent_+2
-                    where: type
-                    match: object:text
+                        match: array
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: %^(string|integer|double)$%
+                          # when "settings/item:array/item:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: string, integer, double
+              # check "settings/item:object:text/is_apply_translation:boolean"
+                - check-settings-item:object:text-is_apply_translation:boolean|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/is_apply_translation)$%
                     on_success
-                    - check_type|step_validate
-                        check: current
+                    - check_if_parrent_is_object_text|step_validate
+                        check: parent_+2
                         where: type
-                        match: boolean
-                      # when "settings/item:object:text/is_apply_tokens:__INVALID__TYPE__"
-                        on_failure
-                        - error_register|step_validate_error_register
-                            message|text
-                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                              args
-                              - types: boolean
-          # check "settings/item:object:text_simple/weight:integer"
-            - check-settings-item:object:text_simple-weight:integer|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/weight)$%
-                on_success
-                - check_if_parrent_is_object_text_simple|step_validate
-                    check: parent_+2
-                    where: type
-                    match: object:text_simple
+                        match: object:text
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: boolean
+                          # when "settings/item:object:text/is_apply_translation:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: boolean
+              # check "settings/item:object:text/is_apply_tokens:boolean"
+                - check-settings-item:object:text-is_apply_tokens:boolean|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/is_apply_tokens)$%
                     on_success
-                    - check_type|step_validate
-                        check: current
+                    - check_if_parrent_is_object_text|step_validate
+                        check: parent_+2
                         where: type
-                        match: integer
-                      # when "settings/item:object:text_simple/weight:__INVALID__TYPE__"
-                        on_failure
-                        - error_register|step_validate_error_register
-                            message|text
-                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                              args
-                              - types: integer
-          # check "settings/item:object:text_simple/delimiter:string"
-            - check-settings-item:object:text_simple-delimiter:string|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/delimiter)$%
-                on_success
-                - check_if_parrent_is_object_text_simple|step_validate
-                    check: parent_+2
-                    where: type
-                    match: object:text_simple
+                        match: object:text
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: boolean
+                          # when "settings/item:object:text/is_apply_tokens:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: boolean
+              # check "settings/item:object:text_simple/weight:integer"
+                - check-settings-item:object:text_simple-weight:integer|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/weight)$%
                     on_success
-                    - check_type|step_validate
-                        check: current
+                    - check_if_parrent_is_object_text_simple|step_validate
+                        check: parent_+2
                         where: type
-                        match: string
-                      # when "settings/item:object:text_simple/delimiter:__INVALID__TYPE__"
-                        on_failure
-                        - error_register|step_validate_error_register
-                            message|text
-                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                              args
-                              - types: string
-          # check "settings/item:object:text_simple/text:string"
-            - check-settings-item:object:text_simple-text:string|step_validate
-                check: current
-                where: dpath
-                match: %^settings(/[^/]+)(/text)$%
-                on_success
-                - check_if_parrent_is_object_text_simple|step_validate
-                    check: parent_+2
-                    where: type
-                    match: object:text_simple
+                        match: object:text_simple
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: integer
+                          # when "settings/item:object:text_simple/weight:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: integer
+              # check "settings/item:object:text_simple/delimiter:string"
+                - check-settings-item:object:text_simple-delimiter:string|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/delimiter)$%
                     on_success
-                    - check_type|step_validate
-                        check: current
+                    - check_if_parrent_is_object_text_simple|step_validate
+                        check: parent_+2
                         where: type
-                        match: string
-                      # when "settings/item:object:text_simple/text:__INVALID__TYPE__"
-                        on_failure
-                        - error_register|step_validate_error_register
-                            message|text
-                              text: Item "%%_dpath_value" must be one of the following types: %%_types!
-                              args
-                              - types: string
+                        match: object:text_simple
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: string
+                          # when "settings/item:object:text_simple/delimiter:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: string
+              # check "settings/item:object:text_simple/text:string"
+                - check-settings-item:object:text_simple-text:string|step_validate
+                    check: current
+                    where: dpath
+                    match: %^settings(/[^/]+)(/text)$%
+                    on_success
+                    - check_if_parrent_is_object_text_simple|step_validate
+                        check: parent_+2
+                        where: type
+                        match: object:text_simple
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: string
+                          # when "settings/item:object:text_simple/text:__INVALID__TYPE__"
+                            on_failure
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: string
