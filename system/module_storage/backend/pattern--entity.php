@@ -95,7 +95,7 @@ namespace effcore {
   }
 
   function fields_get_name() {
-    return core::array_kmap(
+    return core::array_keys_map(
       array_keys($this->fields)
     );
   }

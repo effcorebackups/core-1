@@ -26,7 +26,7 @@ namespace effcore {
   function values_set($values) {$this->values = $values;}
   function values_get($names = []) {
     if (count($names)) {
-      return array_intersect_key($this->values, core::array_kmap($names));
+      return array_intersect_key($this->values, core::array_keys_map($names));
     } else {
       return $this->values;
     }

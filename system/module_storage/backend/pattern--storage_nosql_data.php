@@ -227,7 +227,7 @@ namespace effcore {
     foreach ($enabled as $c_enabled_path) {
       $c_files = file::select_recursive($c_enabled_path,  '%^.*\\.data$%');
       foreach ($c_files as $c_path_relative => $c_file) {
-        $c_module_id = key(core::in_array__any_array_item_in_value($c_path_relative, $modules_path));
+        $c_module_id = key(core::array_search__any_array_item_in_value($c_path_relative, $modules_path));
         if (isset($enabled[$c_module_id])) {
           if ($c_file->name === 'bundle') continue;
           if ($c_file->name === 'module') continue;
@@ -247,7 +247,7 @@ namespace effcore {
     }
   # build the result
     foreach ($parsed as $c_path_relative => $c_file) {
-      $c_module_id = key(core::in_array__any_array_item_in_value($c_path_relative, $modules_path));
+      $c_module_id = key(core::array_search__any_array_item_in_value($c_path_relative, $modules_path));
       foreach ($c_file->data as $c_type => $c_data) {
         if ($c_type === 'bundle') $c_module_id = $c_data->id;
         if ($c_module_id) {

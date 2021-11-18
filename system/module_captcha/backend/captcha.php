@@ -94,7 +94,7 @@ namespace effcore {
     $settings = module::settings_get('captcha');
     $glyphs = glyph::get_all();
     $row_ids_settings = $settings->captcha_glyphs;
-    $row_ids_all = core::array_kmap(array_keys($glyphs));
+    $row_ids_all = core::array_keys_map(array_keys($glyphs));
     $row_ids_available = array_intersect($row_ids_settings, $row_ids_all);
     $row_ids_random = [];
   # the case when uses glyphs from third-party module and this module is disabled

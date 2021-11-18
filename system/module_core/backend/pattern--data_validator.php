@@ -21,9 +21,8 @@ namespace effcore {
     $recursive_values = core::arrobj_select_values_recursive($data_as_array);
     foreach ($recursive_values as $c_dpath_value => $c_value) {
       if ($c_results['on_failure_break_global'] === true) break;
-      if ($c_results['on_failure_break_nested'])
-        foreach ($c_results['on_failure_break_nested'] as $c_nested_dpath)
-          if (strpos($c_dpath_value, $c_nested_dpath) === 0) continue 2;
+      if ($c_results['on_failure_break_nested'] && core::array_search__any_array_item_in_value($c_dpath_value,
+          $c_results['on_failure_break_nested'])) continue;
       $c_value_depth = count(explode('/', $c_dpath_value));
       $c_results['parents_info'][$c_value_depth] = $c_value;
       $c_results['parents_info'] = array_slice($c_results['parents_info'], 0, $c_value_depth, true);

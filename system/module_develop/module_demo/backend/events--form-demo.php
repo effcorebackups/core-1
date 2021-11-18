@@ -59,8 +59,8 @@ namespace effcore\modules\demo {
         message::insert(
           new text('Call "%%_call" on click "%%_click"', ['call' => '\\'.__METHOD__, 'click' => (new text('send'))->render()])
         );
-        $def_value_checkboxes = core::array_kmap(['checkbox_2', 'checkbox_4']);
-        $def_value_switchers  = core::array_kmap(['switcher_2', 'switcher_4']);
+        $def_value_checkboxes = core::array_keys_map(['checkbox_2', 'checkbox_4']);
+        $def_value_switchers  = core::array_keys_map(['switcher_2', 'switcher_4']);
         $def_value_email = 'test1@example.com,test2@example.com';
         $def_value_select          = ['option_1' => 'Option 1 (selected)'];
         $def_value_select_multiple = ['option_1' => 'Option 1 (selected)'];

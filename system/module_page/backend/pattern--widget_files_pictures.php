@@ -35,7 +35,7 @@ namespace effcore {
     $decorator->view_type = 'template';
     $decorator->template = 'content';
     $decorator->template_row = 'gallery_row';
-    $decorator->template_row_mapping = core::array_kmap(['num', 'type', 'children']);
+    $decorator->template_row_mapping = core::array_keys_map(['num', 'type', 'children']);
     if ($complex) {
       core::array_sort_by_weight($complex);
       foreach ($complex as $c_row_id => $c_item) {

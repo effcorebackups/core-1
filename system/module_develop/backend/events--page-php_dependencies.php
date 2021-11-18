@@ -108,7 +108,7 @@ namespace effcore\modules\develop {
              file::select_recursive(dir_modules, '%^.*\\.php$%') as $c_path => $c_file) {
       $c_matches = [];
       $c_path_relative = $c_file->path_get_relative();
-      $c_module_id = key(core::in_array__any_array_item_in_value($c_path_relative, $modules_path));
+      $c_module_id = key(core::array_search__any_array_item_in_value($c_path_relative, $modules_path));
     # load file and search functions in it
       preg_match_all('%(?<![a-zA-Z0-9_])(?<name>[a-zA-Z0-9_]+)\\(%sS', $c_file->load(), $c_matches, PREG_OFFSET_CAPTURE);
       if ($c_matches) {

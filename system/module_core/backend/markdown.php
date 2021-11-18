@@ -181,7 +181,7 @@ namespace effcore {
   static function markdown_to_markup($data) {
     $pool = new node;
     $strings = explode(nl, $data);
-    $inline_tags = core::array_kmap(static::markup_inline_tags_get());
+    $inline_tags = core::array_keys_map(static::markup_inline_tags_get());
     foreach ($strings as $c_number => $c_string) {
       $c_string    = static::string_prepare($c_string);
       $c_indent    = strspn($c_string, ' ');

@@ -35,14 +35,14 @@ namespace effcore {
   function value_get_complex() {
     $roles = $this->child_select('group_roles')->values_get();
     return $roles ? (object)[
-      'roles' => core::array_kmap($roles)
+      'roles' => core::array_keys_map($roles)
     ] : null;
   }
 
   function value_set_complex($value) {
     $this->value_set_initial($value);
     $this->child_select('group_roles')->values_set(
-      core::array_kmap($value->roles ?? [])
+      core::array_keys_map($value->roles ?? [])
     );
   }
 

@@ -106,7 +106,7 @@ namespace effcore {
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path, '%^.*\\.php$%');
         foreach ($c_files as $c_path_relative => $c_file) {
-          $c_module_id = key(static::in_array__any_array_item_in_value($c_path_relative, $modules_path));
+          $c_module_id = key(static::array_search__any_array_item_in_value($c_path_relative, $modules_path));
           if (isset($enabled[$c_module_id])) {
             $files[$c_path_relative] = $c_file;
           }
@@ -512,10 +512,6 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function array_kmap($array) {
-    return array_combine($array, $array);
-  }
-
   static function array_values_select_recursive(&$array, $dpath = '') {
     $result = [];
     foreach ($array as $c_key => &$c_value) {
@@ -524,6 +520,10 @@ namespace effcore {
       if (is_array($c_value) !== true) $result[$c_dpath] = &$c_value;
     }
     return $result;
+  }
+
+  static function array_keys_map($array) {
+    return array_combine($array, $array);
   }
 
   static function array_key_first($array) { # alternative for built-in 'array_key_first' in PHP v.7.3+
@@ -540,13 +540,13 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function in_array__any_array_item_is_equal_value($value, $array) {
+  static function array_search__any_array_item_is_equal_value($value, $array) {
     foreach ($array as $c_value)
       if ((string)$value === (string)$c_value)
         return true;
   }
 
-  static function in_array__value_in_any_array_item($value, $array) {
+  static function array_search__value_in_any_array_item($value, $array) {
     $result = [];
     foreach ($array as $c_key => $c_value)
       if (strpos((string)$c_value, $value) === 0)
@@ -554,8 +554,7 @@ namespace effcore {
     return $result;
   }
 
-
-  static function in_array__any_array_item_in_value($value, $array) {
+  static function array_search__any_array_item_in_value($value, $array) {
     $result = [];
     foreach ($array as $c_key => $c_value)
       if (strpos($value, (string)$c_value) === 0)
