@@ -15,9 +15,15 @@ namespace effcore {
     $c_results['errors'] = [];
     $c_results['trace_info'] = [];
     $c_results['parents_info'] = [];
+    $c_results['on_failure_break_nested'] = [];
+    $c_results['on_failure_break_global'] = false;
     $data_as_array = is_array($data) ? $data : [$data];
     $recursive_values = core::arrobj_select_values_recursive($data_as_array);
     foreach ($recursive_values as $c_dpath_value => $c_value) {
+      if ($c_results['on_failure_break_global'] === true) break;
+      if ($c_results['on_failure_break_nested'])
+        foreach ($c_results['on_failure_break_nested'] as $c_nested_dpath)
+          if (strpos($c_dpath_value, $c_nested_dpath) === 0) continue 2;
       $c_value_depth = count(explode('/', $c_dpath_value));
       $c_results['parents_info'][$c_value_depth] = $c_value;
       $c_results['parents_info'] = array_slice($c_results['parents_info'], 0, $c_value_depth, true);

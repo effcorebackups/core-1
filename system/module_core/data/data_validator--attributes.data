@@ -6,6 +6,7 @@ data_validators
         check: current
         where: dpath
         match: %^settings(/.+|)$%
+        on_failure_break: nested
         on_failure
         - error_register|step_validate_error_register
             message|text_multiline
