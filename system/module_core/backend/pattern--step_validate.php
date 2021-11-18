@@ -12,7 +12,6 @@ namespace effcore {
   public $match;
   public $on_success;
   public $on_failure;
-  public $on_failure_break; # nested | global
 
   function run(&$data_validator, $c_dpath_scenario, $c_dpath_value, $c_value, &$c_results) {
     if ($this->check === 'current') {
@@ -29,8 +28,6 @@ namespace effcore {
         if ($this->where === 'value' && $is_regexp !== true                                ) $result =                  $match === $c_value;
         if ($result === true && isset($this->on_success)) foreach ($this->on_success as $c_dpath_in_cycle => $c_step) $c_step->run($data_validator, $c_dpath_scenario.':on_success/'.$c_dpath_in_cycle, $c_dpath_value, $c_value, $c_results);
         if ($result !== true && isset($this->on_failure)) foreach ($this->on_failure as $c_dpath_in_cycle => $c_step) $c_step->run($data_validator, $c_dpath_scenario.':on_failure/'.$c_dpath_in_cycle, $c_dpath_value, $c_value, $c_results);
-        if ($result !== true && $this->on_failure_break === 'nested') $c_results['on_failure_break_nested'][$c_dpath_value] = $c_dpath_value;
-        if ($result !== true && $this->on_failure_break === 'global') $c_results['on_failure_break_global'] = true;
       }
     }
     if (strpos($this->check, 'parent_') === 0) {
@@ -51,8 +48,6 @@ namespace effcore {
           if ($this->where === 'value' && $is_regexp !== true                               ) $result =                  $match === $parent;
           if ($result === true && isset($this->on_success)) foreach ($this->on_success as $c_dpath_in_cycle => $c_step) $c_step->run($data_validator, $c_dpath_scenario.':on_success/'.$c_dpath_in_cycle, $c_dpath_value, $c_value, $c_results);
           if ($result !== true && isset($this->on_failure)) foreach ($this->on_failure as $c_dpath_in_cycle => $c_step) $c_step->run($data_validator, $c_dpath_scenario.':on_failure/'.$c_dpath_in_cycle, $c_dpath_value, $c_value, $c_results);
-          if ($result !== true && $this->on_failure_break === 'nested') $c_results['on_failure_break_nested'][$c_dpath_value] = $c_dpath_value;
-          if ($result !== true && $this->on_failure_break === 'global') $c_results['on_failure_break_global'] = true;
         }
       }
     }

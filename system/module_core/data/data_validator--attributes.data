@@ -6,9 +6,9 @@ data_validators
         check: current
         where: dpath
         match: %^settings(/.+|)$%
-        on_failure_break: nested
         on_failure
         - error_register|step_validate_error_register
+            break: nested
             message|text_multiline
               text
               - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
@@ -26,9 +26,10 @@ data_validators
                 check: current
                 where: type
                 match: array
-              # when "settings:__INVALID__TYPE__"
                 on_failure
+              # when "settings:__INVALID__TYPE__"
                 - error_register|step_validate_error_register
+                    break: nested
                     message|text
                       text: Item "%%_dpath_value" must be of type "%%_type"!
                       args
@@ -50,8 +51,8 @@ data_validators
                         check: current
                         where: type
                         match: %^(string|integer|double|boolean|null|array|object:text|object:text_simple)$%
-                      # when "settings/item:__INVALID__TYPE__"
                         on_failure
+                      # when "settings/item:__INVALID__TYPE__"
                         - error_register|step_validate_error_register
                             message|text
                               text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -72,8 +73,8 @@ data_validators
                             check: current
                             where: type
                             match: %^(string|integer|double)$%
-                          # when "settings/item:array/item:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:array/item:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -94,8 +95,8 @@ data_validators
                             check: current
                             where: type
                             match: boolean
-                          # when "settings/item:object:text/is_apply_translation:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:object:text/is_apply_translation:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -116,8 +117,8 @@ data_validators
                             check: current
                             where: type
                             match: boolean
-                          # when "settings/item:object:text/is_apply_tokens:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:object:text/is_apply_tokens:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -138,8 +139,8 @@ data_validators
                             check: current
                             where: type
                             match: integer
-                          # when "settings/item:object:text_simple/weight:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:object:text_simple/weight:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -160,8 +161,8 @@ data_validators
                             check: current
                             where: type
                             match: string
-                          # when "settings/item:object:text_simple/delimiter:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:object:text_simple/delimiter:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
@@ -182,8 +183,8 @@ data_validators
                             check: current
                             where: type
                             match: string
-                          # when "settings/item:object:text_simple/text:__INVALID__TYPE__"
                             on_failure
+                          # when "settings/item:object:text_simple/text:__INVALID__TYPE__"
                             - error_register|step_validate_error_register
                                 message|text
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
