@@ -33,7 +33,7 @@ namespace effcore {
     if ($name && $type) {
       if ($field->disabled_get()) return true;
       $new_values = request::values_get($name, $form->source_get());
-      $field->checked_set(core::in_array_string($field->value_get(), $new_values));
+      $field->checked_set(core::in_array__any_array_item_is_equal_value($field->value_get(), $new_values));
     }
   }
 
@@ -45,13 +45,13 @@ namespace effcore {
       if ($field->disabled_get()) return true;
       $new_values = request::values_get($name, $form->source_get());
       $result = static::validate_required($field, $form, $element, $new_values);
-      $field->checked_set(core::in_array_string($field->value_get(), $new_values));
+      $field->checked_set(core::in_array__any_array_item_is_equal_value($field->value_get(), $new_values));
       return $result;
     }
   }
 
   static function validate_required($field, $form, $element, &$new_values) {
-    if ($field->required_get() && !core::in_array_string($field->value_get(), $new_values)) {
+    if ($field->required_get() && !core::in_array__any_array_item_is_equal_value($field->value_get(), $new_values)) {
       $field->error_set(
         'Field "%%_title" should be enabled!', ['title' => (new text($field->title))->render() ]
       );

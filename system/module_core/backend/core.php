@@ -106,7 +106,7 @@ namespace effcore {
       foreach ($enabled as $c_enabled_path) {
         $c_files = file::select_recursive($c_enabled_path, '%^.*\\.php$%');
         foreach ($c_files as $c_path_relative => $c_file) {
-          $c_module_id = key(static::in_array_strpos($c_path_relative, $modules_path));
+          $c_module_id = key(static::in_array__any_array_item_in_value($c_path_relative, $modules_path));
           if (isset($enabled[$c_module_id])) {
             $files[$c_path_relative] = $c_file;
           }
@@ -510,6 +510,8 @@ namespace effcore {
     return static::array_sort_by_property($array, 'weight', 'a');
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   static function array_kmap($array) {
     return array_combine($array, $array);
   }
@@ -536,21 +538,28 @@ namespace effcore {
              end($keys) : null;
   }
 
-  static function in_array_string($value, $array) {
-    foreach ($array as $c_value) {
-      if ((string)$value === (string)$c_value) {
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  static function in_array__any_array_item_is_equal_value($value, $array) {
+    foreach ($array as $c_value)
+      if ((string)$value === (string)$c_value)
         return true;
-      }
-    }
   }
 
-  static function in_array_strpos($value, $array) {
+  static function in_array__value_in_any_array_item($value, $array) {
     $result = [];
-    foreach ($array as $c_key => $c_value) {
-      if (strpos($value, (string)$c_value) === 0) {
+    foreach ($array as $c_key => $c_value)
+      if (strpos((string)$c_value, $value) === 0)
         $result[$c_key] = $c_value;
-      }
-    }
+    return $result;
+  }
+
+
+  static function in_array__any_array_item_in_value($value, $array) {
+    $result = [];
+    foreach ($array as $c_key => $c_value)
+      if (strpos($value, (string)$c_value) === 0)
+        $result[$c_key] = $c_value;
     return $result;
   }
 
