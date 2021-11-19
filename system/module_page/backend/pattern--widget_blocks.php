@@ -24,47 +24,10 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function widget_manage_item_settings_get($widget, $item, $c_row_id) {
-    $result = new widget_item_settings;
-    $result->parent_widget = $widget;
-    $result->parent_row_id = $c_row_id;
-  # control for title
-    $field_title = new field_text;
-    $field_title->title = 'Title';
-    $field_title->cform = $widget->cform;
-    $field_title->build();
-    $field_title->name_set($widget->name_get_complex().'__title__'.$c_row_id);
-    $field_title->value_set($item->title ?? '');
-    $field_title->required_set(false);
-    $field_title_is_visible = new field_logic;
-    $field_title_is_visible->title = 'Title is visible';
-    $field_title_is_visible->cform = $widget->cform;
-    $field_title_is_visible->build();
-    $field_title_is_visible->name_set($widget->name_get_complex().'__title_is_visible__'.$c_row_id);
-    $field_title_is_visible->value_set((int)($item->title_is_visible ?? 0));
-    $field_attributes = new field_textarea_data;
-    $field_attributes->title = 'Attributes';
-    $field_attributes->cform = $widget->cform;
-    $field_attributes->build();
-    $field_attributes->name_set($widget->name_get_complex().'__attributes__'.$c_row_id);
-    $field_attributes->value_data_set($item->attributes ?? null, 'attributes');
-    $field_attributes->required_set(false);
-    $field_attributes->maxlength_set(0xffff);
-  # relate new controls with the widget
-    $widget->controls['#title__'.           $c_row_id] = $field_title;
-    $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
-    $widget->controls['#attributes__'.      $c_row_id] = $field_attributes;
-    $result->child_insert($field_title,            'title');
-    $result->child_insert($field_title_is_visible, 'title_is_visible');
-    $result->child_insert($field_attributes,       'attributes');
-    return $result;
-  }
-
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
-    $widget_settings = static::widget_manage_item_settings_get($widget, $item, $c_row_id);
+    $widget_settings = new widget_item_settings($widget, $item, $c_row_id);
+    $widget_settings->build();
   # info markup
     $presets = block_preset::select_all($widget->id_area);
     $title_markup = isset($presets[$item->id]) ?
@@ -142,16 +105,6 @@ namespace effcore {
         'id'   => $new_item->id ]));
       return true;
     }
-  }
-
-  static function on_request_value_set($widget, $form, $npath) {
-    $items = $widget->items_get();
-    foreach ($items as $c_row_id => $c_item) {
-      if (isset($widget->controls['#weight__'.          $c_row_id])) $c_item->weight           = (int)$widget->controls['#weight__'.          $c_row_id]->value_get();
-      if (isset($widget->controls['#title__'.           $c_row_id])) $c_item->title            =      $widget->controls['#title__'.           $c_row_id]->value_get();
-      if (isset($widget->controls['#title_is_visible__'.$c_row_id])) $c_item->title_is_visible =      $widget->controls['#title_is_visible__'.$c_row_id]->value_get();
-      if (isset($widget->controls['#settings__'.        $c_row_id])) $c_item->settings         =      $widget->controls['#settings__'.        $c_row_id]->value_get(); }
-    $widget->items_set($items);
   }
 
 }}
