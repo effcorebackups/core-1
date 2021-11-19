@@ -208,10 +208,9 @@ namespace effcore {
   static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      if (isset($widget->controls['#weight__'.          $c_row_id])) $c_item->weight           = (int)$widget->controls['#weight__'.          $c_row_id]->value_get();
-      if (isset($widget->controls['#title__'.           $c_row_id])) $c_item->title            =      $widget->controls['#title__'.           $c_row_id]->value_get();
-      if (isset($widget->controls['#title_is_visible__'.$c_row_id])) $c_item->title_is_visible =      $widget->controls['#title_is_visible__'.$c_row_id]->value_get();
-      if (isset($widget->controls['#settings__'.        $c_row_id])) $c_item->settings         =      $widget->controls['#settings__'.        $c_row_id]->value_get(); }
+      if (isset($widget->controls['#weight__'.  $c_row_id])) $c_item->weight   = (int)$widget->controls['#weight__'.  $c_row_id]->value_get();
+      if (isset($widget->controls['#title__'.   $c_row_id])) $c_item->title    =      $widget->controls['#title__'.   $c_row_id]->value_get();
+      if (isset($widget->controls['#settings__'.$c_row_id])) $c_item->settings =      $widget->controls['#settings__'.$c_row_id]->value_get(); }
     $widget->items_set($items);
   }
 
