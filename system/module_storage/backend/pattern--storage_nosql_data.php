@@ -383,6 +383,8 @@ namespace effcore {
   }
 
   static function text_to_data($text, $classes = []) {
+    if (!is_string($text))
+      throw new \Exception('Only text is allowed in the "text_to_data" function!');
     $errors = [];
     $data = new \stdClass;
     $pointers = [-1 => &$data];
