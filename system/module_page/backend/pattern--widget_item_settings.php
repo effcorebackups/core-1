@@ -74,9 +74,12 @@ namespace effcore {
     $field_attributes->cform = $widget->parent_widget->cform;
     $field_attributes->build();
     $field_attributes->name_set($widget->parent_widget->name_get_complex().'__attributes__'.$c_row_id);
-    $field_attributes->value_data_set($item->attributes->attributes ?? null, 'attributes');
+//  $field_attributes->value_data_set($item->attributes->attributes ?? null, 'attributes');
     $field_attributes->required_set(false);
     $field_attributes->maxlength_set(0xffff);
+    $field_attributes->data_validator_id = 'attributes';
+    $field_attributes->classes_allowed['text'] = 'text';
+    $field_attributes->classes_allowed['text_simple'] = 'text_simple';
   # relate new controls with the widget
     $widget->controls['#title__'.           $c_row_id] = $field_title;
     $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
@@ -91,7 +94,7 @@ namespace effcore {
     $items = $widget->parent_widget->items_get();
     $items[$widget->c_row_id]->title            = $widget->controls['#title__'.           $widget->c_row_id]->value_get();
     $items[$widget->c_row_id]->title_is_visible = $widget->controls['#title_is_visible__'.$widget->c_row_id]->value_get();
-    $items[$widget->c_row_id]->attributes       = $widget->controls['#attributes__'.      $widget->c_row_id]->value_data_get();
+//  $items[$widget->c_row_id]->attributes       = $widget->controls['#attributes__'.      $widget->c_row_id]->value_data_get();
     $widget->parent_widget->items_set($items);
   }
 
