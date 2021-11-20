@@ -116,11 +116,11 @@ namespace effcore {
   static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      if (isset($widget->controls['#weight__'.              $c_row_id])) $c_item->weight               = (int)$widget->controls['#weight__'.               $c_row_id]->value_get();
-      if (isset($widget->controls['#name__'.                $c_row_id])) $c_item->name                 =      $widget->controls['#name__'.                 $c_row_id]->value_get();
-      if (isset($widget->controls['#value__'.               $c_row_id])) $c_item->value                =      $widget->controls['#value__'.                $c_row_id]->value_get();
-      if (isset($widget->controls['#is_apply_translation__'.$c_row_id])) $c_item->is_apply_translation =      $widget->controls['#is_apply_translation__'. $c_row_id]->checked_get();
-      if (isset($widget->controls['#is_apply_tokens__'.     $c_row_id])) $c_item->is_apply_tokens      =      $widget->controls['#is_apply_tokens__'.      $c_row_id]->checked_get(); }
+      $c_item->weight               = (int)$widget->controls['#weight__'.               $c_row_id]->value_get();
+      $c_item->name                 =      $widget->controls['#name__'.                 $c_row_id]->value_get();
+      $c_item->value                =      $widget->controls['#value__'.                $c_row_id]->value_get();
+      $c_item->is_apply_translation =      $widget->controls['#is_apply_translation__'. $c_row_id]->checked_get();
+      $c_item->is_apply_tokens      =      $widget->controls['#is_apply_tokens__'.      $c_row_id]->checked_get(); }
     $widget->items_set($items);
   }
 

@@ -53,8 +53,8 @@ namespace effcore {
   static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      if (isset($widget->controls['#weight__'.$c_row_id])) $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
-      if (isset($widget->controls['#text__'.  $c_row_id])) $c_item->text   =      $widget->controls['#text__'.  $c_row_id]->value_get(); }
+      $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
+      $c_item->text   =      $widget->controls['#text__'.  $c_row_id]->value_get(); }
     $widget->items_set($items);
   }
 
