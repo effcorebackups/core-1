@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_item_settings extends container {
+          class widget_block_settings extends container {
 
   public $tag_name = null;
   public $content_tag_name = 'x-settings';

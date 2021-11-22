@@ -26,7 +26,7 @@ namespace effcore {
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
-    $widget_settings = new widget_item_settings($widget, $item, $c_row_id);
+    $widget_settings = new widget_block_settings($widget, $item, $c_row_id);
     $widget_settings->build();
   # info markup
     $presets = block_preset::select_all($widget->id_area);
