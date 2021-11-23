@@ -106,6 +106,8 @@ namespace effcore {
           } else {
             return true;
           }
+        } else {
+          return true;
         }
       }
     } else {
