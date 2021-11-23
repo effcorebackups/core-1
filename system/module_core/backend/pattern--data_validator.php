@@ -17,18 +17,29 @@ namespace effcore {
     $c_results['parents_info'] = [];
     $c_results['break_nested'] = [];
     $c_results['break_global'] = false;
-    $data_as_array = is_array($data) ? $data : [$data];
-    $recursive_values = core::arrobj_select_values_recursive($data_as_array);
-    foreach ($recursive_values as $c_dpath_value => $c_value) {
-      if ($c_results['break_global'] === true) break;
-      if ($c_results['break_nested'] && core::array_search__any_array_item_in_value($c_dpath_value,
-          $c_results['break_nested'])) continue;
-      $c_value_depth = count(explode('/', $c_dpath_value));
-      $c_results['parents_info'][$c_value_depth] = $c_value;
-      $c_results['parents_info'] = array_slice($c_results['parents_info'], 0, $c_value_depth, true);
-      foreach ($this->scenario as $c_dpath_scenario => $c_step) {
-        $c_step->run($this, $c_dpath_scenario, $c_dpath_value, $c_value, $c_results);
-      }
+    switch (gettype($data)) {
+      case 'array' :
+      case 'object':
+        foreach (core::arrobj_select_values_recursive($data) as $c_dpath_value => $c_value) {
+          if ($c_results['break_global'] === true) break;
+          if ($c_results['break_nested'] && core::array_search__any_array_item_in_value($c_dpath_value,
+              $c_results['break_nested'])) continue;
+          $c_value_depth = count(explode('/', $c_dpath_value));
+          $c_results['parents_info'][$c_value_depth] = $c_value;
+          $c_results['parents_info'] = array_slice($c_results['parents_info'], 0, $c_value_depth, true);
+          foreach ($this->scenario as $c_dpath_scenario => $c_step) {
+            $c_step->run($this, $c_dpath_scenario, $c_dpath_value, $c_value, $c_results);
+          }
+        }
+        break;
+      case 'string'           : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                      $data.                      ':string',            $data, $c_results); break;
+      case 'integer'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,  core::format_number($data).                     ':integer',           $data, $c_results); break;
+      case 'double'           : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,  core::format_number($data, core::fpart_max_len).':double',            $data, $c_results); break;
+      case 'boolean'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                     ($data ? 'true' : 'false').  ':boolean',           $data, $c_results); break;
+      case 'resource'         : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                  ':resource',          $data, $c_results); break;
+      case 'resource (closed)': foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                  ':resource (closed)', $data, $c_results); break;
+      case 'NULL'             : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                   'null',              $data, $c_results); break;
+      default                 : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                  ':unknown type',      $data, $c_results);
     }
     return $c_results;
   }

@@ -961,7 +961,7 @@ namespace effcore {
   static function exponencial_string_normalize($value) {
     if (is_string($value) && is_numeric($value))
       if ($value !== (string)(int)$value && $value[0] !== '0' && strpbrk($value, 'eE'))
-        return core::format_number($value, static::fpart_max_len);
+        return static::format_number($value, static::fpart_max_len);
     return $value;
   }
 
