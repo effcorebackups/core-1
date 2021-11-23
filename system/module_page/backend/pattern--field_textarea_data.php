@@ -103,12 +103,8 @@ namespace effcore {
           if (count($validate_result['errors'])) {
             foreach ($validate_result['errors'] as $c_error_message)
               $field->error_set($c_error_message);
-          } else {
-            return true;
-          }
-        } else {
-          return true;
-        }
+          } else return true;
+        }   else return true;
       }
     } else {
       return true;
