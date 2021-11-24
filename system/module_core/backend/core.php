@@ -229,13 +229,23 @@ namespace effcore {
     foreach ((array)$data as $c_name => $c_value) {
       if ($is_xml_style && $c_value === true) $c_value = $c_name;
       switch (gettype($c_value)) {
-        case 'NULL'   :                                                                                                                                                                                                    break;
-        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                     break;
-        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value)                        .$value_wrapper; break;
-        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value, static::fpart_max_len) .$value_wrapper; break;
-        case 'array'  :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                         implode(' ', $c_value)                       ).$value_wrapper; break;
-        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '')        ).$value_wrapper; break;
-        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                              (string)$c_value                        ).$value_wrapper; break;
+        case 'array'  :
+          $c_nested_result = [];
+          foreach ($c_value as $c_nested_key => $c_nested_value) {
+            switch (gettype($c_nested_value)) {
+              case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                        break;
+              case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::fpart_max_len); break;
+              case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                        break;
+              default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                             break; }}
+          $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.implode(' ', array_filter($c_nested_result, 'strlen')).$value_wrapper;
+          break;
+        case 'NULL'   :                                                                                                                                                                                                           break;
+        case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                            break;
+        case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value)                               .$value_wrapper; break;
+        case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value, static::fpart_max_len)        .$value_wrapper; break;
+        case 'string' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                               ).$value_wrapper; break;
+        case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '__NO_RENDERER__')).$value_wrapper; break;
+        default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.'__UNSUPPORTED_TYPE__'                                                                                  .$value_wrapper; break;
       }
     }
     if ($join_part) return implode($join_part, $result);
