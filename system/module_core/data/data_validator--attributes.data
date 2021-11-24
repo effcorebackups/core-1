@@ -49,6 +49,22 @@ data_validators
           - item_array_empty|_empty_array
           - item_array_nested
             - 0: nested string
+          - item_object_text|text
+              is_apply_translation: null
+              is_apply_tokens: null
+          - item_object_text_simple|text_simple
+              text: null
+              delimiter: null
+              weight: null
+          - item_object_empty
+          - item_object
+              property_1: value 1
+              property_2: value 2
+              property_3: value 3
+          - item_object_nested
+              0
+                0
+                  0: nested value
         - object_text|text
             is_apply_translation: null
             is_apply_tokens: null
