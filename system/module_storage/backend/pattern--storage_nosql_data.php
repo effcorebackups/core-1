@@ -464,6 +464,7 @@ namespace effcore {
         if     ($c_value === '_empty_array' ) $c_value = [];
         elseif ($c_value === '_string_true' ) $c_value = 'true';
         elseif ($c_value === '_string_false') $c_value = 'false';
+        elseif ($c_value === '_string_nl'   ) $c_value = nl;
         else {
           $c_value = trim($c_value);
           if ($c_value === ''                        ) $c_class_name = '\\stdClass';

@@ -1,6 +1,79 @@
 data_validators
 - attributes|data_validator
     id: attributes
+    examples
+    - valid_dataset
+        settings
+        - string: text
+        - string_empty: 
+        - string_true|_string_true
+        - string_false|_string_false
+        - integer: 123
+        - float: 0.000001
+        - boolean_true: true
+        - boolean_false: false
+        - null: null
+        - array_empty|_empty_array
+        - array
+          - item_string: text
+          - item_string_empty: 
+          - item_string_true|_string_true
+          - item_string_false|_string_false
+          - item_integer: 123
+          - item_float: 0.000001
+        - object_text|text
+            custom_preperty: null
+            text: some text
+            is_apply_translation: true
+            is_apply_tokens: false
+        - object_text_simple|text_simple
+            custom_preperty: null
+            text: some text
+            delimiter|_string_nl
+            weight: 0
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - invalid_dataset
+        settings_other_1
+        - 0
+          - 0
+            - 0: some value 1
+        settings_other_2
+        - 0
+          - 0
+            - 0: some value 2
+        settings
+        - array
+          - item_boolean_true: true
+          - item_boolean_false: false
+          - item_null: null
+          - item_array_empty|_empty_array
+          - item_array_nested
+            - 0: nested string
+        - object_text|text
+            is_apply_translation: null
+            is_apply_tokens: null
+        - object_text_simple|text_simple
+            text: null
+            delimiter: null
+            weight: null
+        - object_empty
+        - object
+            property_1: value 1
+            property_2: value 2
+            property_3: value 3
+        - object_nested
+            0
+              0
+                0: nested value
+        settings_other_3
+        - 0
+          - 0
+            - 0: some value 3
+        settings_other_4
+        - 0
+          - 0
+            - 0: some value 4
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     scenario
     - check-settings+settings-*|step_validate
         check: current

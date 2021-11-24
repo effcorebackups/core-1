@@ -27,8 +27,7 @@ namespace effcore {
     foreach (array_filter($this->classes_allowed, 'strlen') as $c_class_name) {
       if (core::structure_is_local($c_class_name))
            $classes[$c_class_name] = '|'.substr($c_class_name, strlen('\\effcore\\'));
-      else $classes[$c_class_name] = '|'.       $c_class_name;
-    }
+      else $classes[$c_class_name] = '|'.       $c_class_name; }
     $this->description = static::description_prepare($this->description);
     if (!isset($this->description['classes-allowed']) && count($classes))
                $this->description['classes-allowed'] = new markup('p', ['data-id' => 'classes-allowed'], new text('Field value can contain only the next classes: %%_classes', ['classes' => implode(', ', $classes)]));
