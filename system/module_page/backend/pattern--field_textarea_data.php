@@ -13,7 +13,9 @@ namespace effcore {
   public $data_validator_id;
 
   function value_data_get() {
-    return storage_nosql_data::text_to_data($this->value_get(), $this->classes_allowed)->data;
+    if ($this->value_get()) {
+      return storage_nosql_data::text_to_data($this->value_get(), $this->classes_allowed)->data;
+    }
   }
 
   function value_data_set($value, $root_name) {
