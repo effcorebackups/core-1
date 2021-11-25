@@ -230,14 +230,15 @@ namespace effcore {
       if ($is_xml_style && $c_value === true) $c_value = $c_name;
       switch (gettype($c_value)) {
         case 'array'  :
-          $c_nested_result = [];
-          foreach ($c_value as $c_nested_key => $c_nested_value) {
-            switch (gettype($c_nested_value)) {
-              case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                        break;
-              case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::fpart_max_len); break;
-              case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                        break;
-              default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                             break; }}
-          $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.implode(' ', array_filter($c_nested_result, 'strlen')).$value_wrapper;
+          if (count($c_value)) {
+            $c_nested_result = [];
+            foreach ($c_value as $c_nested_key => $c_nested_value) {
+              switch (gettype($c_nested_value)) {
+                case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                        break;
+                case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::fpart_max_len); break;
+                case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                        break;
+                default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                             break; }}
+            $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.implode(' ', array_filter($c_nested_result, 'strlen')).$value_wrapper; }
           break;
         case 'NULL'   :                                                                                                                                                                                                           break;
         case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                            break;
