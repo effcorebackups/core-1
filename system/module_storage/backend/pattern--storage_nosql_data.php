@@ -263,13 +263,17 @@ namespace effcore {
     return $result;
   }
 
-  static function data_to_text($data, $entity_name = 'root', $entity_prefix = '', $depth = 0) {
+  static function data_to_text($data, $entity_name = 'root', $is_optimized = true, $entity_prefix = '', $depth = 0) {
     $result = [];
     if (strlen($entity_name) && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
     if (strlen($entity_name) && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
+    if (is_object($data) && $is_optimized === true)
+         $defaults = (new \ReflectionClass(get_class($data)))->getDefaultProperties();
+    else $defaults = null;
     foreach ($data as $c_key => $c_value) {
-      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                            is_array($data) ? '- ' : '  ', $depth + 1);
+      if (is_array($defaults) && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
+      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
+      elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key                                                                                           , $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_empty_array';
       elseif (is_int   ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.core::format_number($c_value);
       elseif (is_float ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.core::format_number($c_value, core::fpart_max_len);

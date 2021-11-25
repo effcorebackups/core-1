@@ -50,8 +50,8 @@ namespace effcore {
     return $this->error_code;
   }
 
-  function name_get($optimized = true) {
-    if (!$optimized)
+  function name_get($is_optimized = true) {
+    if (!$is_optimized)
          return             $this->name.$this->id;
     else return $this->id ? $this->name.$this->id :
                             $this->name;
