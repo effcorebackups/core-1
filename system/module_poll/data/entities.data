@@ -97,7 +97,7 @@ entities
           - 1: Registered users
           - 0: Anonymous users + Registered users
         - selected
-          - 1: 1
+          - =: 1
         - weight: +320
     - total_max
         title: Maximum number of votes

@@ -75,7 +75,7 @@ forms
             element_attributes
             - name: send_password_to_email
             selected
-            - 0: 0
+            - =: 0
     - button_save|button
         title: save
         attributes

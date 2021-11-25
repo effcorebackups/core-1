@@ -272,18 +272,19 @@ namespace effcore {
     else $defaults = null;
     foreach ($data as $c_key => $c_value) {
       if (is_array($defaults) && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
-      if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
+      if     (is_object($c_value)                         ) $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key                                                                                           , $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
-      elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).'|_empty_array';
-      elseif (is_int   ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': '.core::format_number($c_value);
-      elseif (is_float ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': '.core::format_number($c_value, core::fpart_max_len);
-      elseif ($c_value === nl)                              $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).'|_string_nl';
-      elseif ($c_value === 'true')                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).'|_string_true';
-      elseif ($c_value === 'false')                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).'|_string_false';
-      elseif ($c_value === true)                            $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': true';
-      elseif ($c_value === false)                           $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': false';
-      elseif ($c_value === null)                            $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': null';
-      else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').str_replace([':', '|'], ['\\:', '\\|'], $c_key).': '.$c_value;
+      elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_empty_array';
+      elseif (is_null  ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': null';
+      elseif (is_bool  ($c_value) && $c_value === true    ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': true';
+      elseif (is_bool  ($c_value) && $c_value === false   ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': false';
+      elseif (is_string($c_value) && $c_value === nl      ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_nl';
+      elseif (is_string($c_value) && $c_value === 'true'  ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_true';
+      elseif (is_string($c_value) && $c_value === 'false' ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_false';
+      elseif (is_string($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.$c_value;
+      elseif (is_int   ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.core::format_number($c_value);
+      elseif (is_float ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.core::format_number($c_value, core::fpart_max_len);
+      else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': __UNSUPPORTED_TYPE__';
     }
     return implode(nl, $result);
   }

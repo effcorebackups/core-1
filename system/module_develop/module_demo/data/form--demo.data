@@ -358,7 +358,7 @@ forms
             element_attributes
             - name: logic
             selected
-            - 1: 1
+            - =: 1
       # field 'Relation'
         - relation|field_relation
             title: Relation
