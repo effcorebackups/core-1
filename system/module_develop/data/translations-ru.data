@@ -104,7 +104,7 @@ translations
     - Hash sum: Хэш-сумма
     - head cell #%%_number: заглавная ячейка №%%_number
     - Header %%_size: Заголовок %%_size
-    - If the "step" attribute is "60" then the ":00" seconds will be truncated.: Если атрибут "step" равен "60", тогда секунды ":00" будут обрезаться.
+    - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Если атрибут "step" равен "60", тогда секунды ":00" будут обрезаться.
     - If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.: Если параметр  "value_current_if_null" равен "true" и начальное значение не указано, тогда будет использоваться текущее значение.
     - Indexes: Индексы
     - init.: инициал.
