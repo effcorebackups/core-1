@@ -263,7 +263,7 @@ namespace effcore {
     return $result;
   }
 
-  static function data_to_text($data, $entity_name = '', $entity_prefix = '', $depth = 0) {
+  static function data_to_text($data, $entity_name = 'root', $entity_prefix = '', $depth = 0) {
     $result = [];
     if (strlen($entity_name) && $depth === 0) $result[] =                              $entity_prefix.$entity_name;
     if (strlen($entity_name) && $depth !== 0) $result[] = str_repeat('  ', $depth - 1).$entity_prefix.$entity_name;
