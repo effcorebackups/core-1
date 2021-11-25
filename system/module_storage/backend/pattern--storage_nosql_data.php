@@ -271,6 +271,9 @@ namespace effcore {
       if     (is_object($c_value))                          $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key,                                                                                            is_array($data) ? '- ' : '  ', $depth + 1);
       elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_empty_array';
+      elseif (is_int   ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.core::format_number($c_value);
+      elseif (is_float ($c_value))                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': '.core::format_number($c_value, core::fpart_max_len);
+      elseif ($c_value === nl)                              $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_nl';
       elseif ($c_value === 'true')                          $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_true';
       elseif ($c_value === 'false')                         $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.'|_string_false';
       elseif ($c_value === true)                            $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').$c_key.': true';
