@@ -260,7 +260,6 @@ translations
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
     - File "%%_file" was deleted.: Файл "%%_file" был удалён.
-    - File "%%_file" was deleted.: Файл "%%_file" был удалён.
     - file "%%_file" was not deleted: файл "%%_file" не был удалён
     - File "%%_file" was not deleted!: Файл "%%_file" не был удалён!
     - File "%%_file" was not written to disc!: Файл "%%_file" не был записан на диск!
