@@ -318,19 +318,19 @@ namespace effcore {
     }
   }
 
-  static function data_serialize($data, $is_effective = true) {
+  static function data_serialize($data, $is_optimized = true) {
     $result = '';
     switch (gettype($data)) {
-      case 'string' : return 's:'.strlen($data).':"'.$data            .'";';
-      case 'boolean': return 'b:'.                  ($data ? '1' : '0').';';
-      case 'integer': return 'i:'.                   $data             .';';
-      case 'double' : return 'd:'.                   $data             .';';
-      case 'NULL'   : return 'N'                                       .';';
+      case 'string' : return 's:'.strlen($data).':'.     '"'.$data.'"'                                                   .';';
+      case 'boolean': return 'b:'.                          ($data ? '1' : '0')                                          .';';
+      case 'integer': return 'i:'.                           $data                                                       .';';
+      case 'double' : return 'd:'.($is_optimized === false ? $data : static::format_number($data, static::fpart_max_len)).';';
+      case 'NULL'   : return 'N'                                                                                         .';';
       case 'array'  :
         $result_children = [];
         foreach ($data as $c_key => $c_val) {
-          $result_children[] = static::data_serialize($c_key, $is_effective);
-          $result_children[] = static::data_serialize($c_val, $is_effective); }
+          $result_children[] = static::data_serialize($c_key, $is_optimized);
+          $result_children[] = static::data_serialize($c_val, $is_optimized); }
         $result = 'a:'.count($data).':{'.implode('', $result_children).'}';
         break;
       case 'object':
@@ -339,9 +339,9 @@ namespace effcore {
         $defaults = $reflection->getDefaultProperties();
         $result_children = [];
         foreach ($data as $c_key => $c_val) {
-          if ($is_effective && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_val) continue;
-          $result_children[] = static::data_serialize($c_key, $is_effective);
-          $result_children[] = static::data_serialize($c_val, $is_effective); }
+          if ($is_optimized && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_val) continue;
+          $result_children[] = static::data_serialize($c_key, $is_optimized);
+          $result_children[] = static::data_serialize($c_val, $is_optimized); }
         $result = 'O:'.strlen($class_name).
                          ':"'.$class_name.'":'.(int)(count($result_children) / 2).':{'.
                                                implode('', $result_children).'}';
