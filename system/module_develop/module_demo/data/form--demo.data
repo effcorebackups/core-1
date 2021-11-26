@@ -301,7 +301,7 @@ forms
             - name: timezone
             - required: true
             selected
-            - UTC: UTC
+            - =: UTC
       # ─────────────────────────────────────────────────────────────────────
       # select
       # ─────────────────────────────────────────────────────────────────────
@@ -380,7 +380,7 @@ forms
             element_attributes
             - name: relation
             selected
-            - demo_sql_item_1: demo_sql_item_1
+            - =: demo_sql_item_1
       # field 'Relation' (tree view)
         - relation_tree|field_relation
             title: Relation (tree view)
@@ -400,7 +400,7 @@ forms
             element_attributes
             - name: relation_tree
             selected
-            - demo_sql_item_1: demo_sql_item_1
+            - =: demo_sql_item_1
       # field 'Language'
         - language|field_language
             title: Language
@@ -411,7 +411,7 @@ forms
             element_attributes
             - name: lang_code
             selected
-            - en: en
+            - =: en
       # field 'Text direction'
         - text_direction|field_text_direction
             title: Text direction
@@ -422,7 +422,7 @@ forms
             element_attributes
             - name: text_direction
             selected
-            - ltr: ltr
+            - =: ltr
        # ─────────────────────────────────────────────────────────────────────
        # textarea
        # ─────────────────────────────────────────────────────────────────────

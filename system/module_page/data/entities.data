@@ -427,9 +427,9 @@ entities
         managing_control_class: \effcore\field_text_direction
         managing_control_properties
         - disabled
-          - rtl: rtl
+          - =: rtl
         - selected
-          - ltr: ltr
+          - =: ltr
         - weight: +280
         managing_control_element_attributes_on_update
         - disabled: true
