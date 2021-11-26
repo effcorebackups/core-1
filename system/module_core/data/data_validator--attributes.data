@@ -213,6 +213,28 @@ data_validators
                                   text: Item "%%_dpath_value" must be one of the following types: %%_types!
                                   args
                                   - types: boolean
+              # check "attributes/item:object:text/args:array"
+                - check-attributes-item:object:text-args:array|step_validate
+                    check: current
+                    where: dpath
+                    match: %^attributes(/[^/]+)(/args)$%
+                    on_success
+                    - check_if_parrent_is_object_text|step_validate
+                        check: parent_+2
+                        where: type
+                        match: object:text
+                        on_success
+                        - check_type|step_validate
+                            check: current
+                            where: type
+                            match: array
+                            on_failure
+                          # when "attributes/item:object:text/args:__INVALID__TYPE__"
+                            - error_register|step_validate_error_register
+                                message|text
+                                  text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                                  args
+                                  - types: array
               # check "attributes/item:object:text_simple/weight:integer"
                 - check-attributes-item:object:text_simple-weight:integer|step_validate
                     check: current
