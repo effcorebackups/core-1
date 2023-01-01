@@ -4,4 +4,4 @@ module|module_embedded
   title: User
   description: Module for working with user accounts and permissions.
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
-  version: 0.900
+  version: 0.901

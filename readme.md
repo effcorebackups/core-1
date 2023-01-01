@@ -15,6 +15,7 @@ General information
 - Is open source project: yes
 - License: proprietary software
 - Website: http://effcore.com
+- Repository: http://bitbucket.org/effcore/core
 
 EFFCORE — the next-generation mini-CMS (Content Management System)
 and mini-CMF (Content Management Framework) developed by between 2016 and 2022.
