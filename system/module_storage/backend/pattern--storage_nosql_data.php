@@ -38,14 +38,16 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true) {
+  function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true, $null_prevention = true) {
   # insert new dynamic changes
-    $changes_d = data::select('changes') ?: [];
+    $changes_d = data::select('changes');
+    if ($changes_d === null && $null_prevention === true) return false;
+    if ($changes_d === null && $null_prevention !== true) $changes_d = [];
     if (!isset($changes_d[$module_id]           )) $changes_d[$module_id] = new \stdClass;
     if (!isset($changes_d[$module_id]->{$action})) $changes_d[$module_id]->{$action} = [];
     $changes_d[$module_id]->{$action}[$dpath] = $value;
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
-  # prevent opcache work
+  # prevent OPCache work
     if ($result) {
       static::$changes_dynamic['changes'] = $changes_d;
       if ($rebuild) {
@@ -62,7 +64,7 @@ namespace effcore {
     if (isset($changes_d[$module_id]->{$action}) && (array)$changes_d[$module_id]->{$action} === []) unset($changes_d[$module_id]->{$action}        );
     if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            === []) unset($changes_d[$module_id]                   );
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
-  # prevent opcache work
+  # prevent OPCache work
     if ($result) {
       static::$changes_dynamic['changes'] = $changes_d;
       if ($rebuild) {
@@ -77,7 +79,7 @@ namespace effcore {
     $changes_d = data::select('changes') ?: [];
     unset($changes_d[$module_id]);
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);
-  # prevent opcache work
+  # prevent OPCache work
     if ($result) {
       static::$changes_dynamic['changes'] = $changes_d;
       if ($rebuild) {

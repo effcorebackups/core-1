@@ -6,6 +6,7 @@
 
 namespace effcore\modules\profile_classic {
           use \effcore\color_preset;
+          use \effcore\message;
           use \effcore\module;
           abstract class events_module {
 
@@ -20,14 +21,19 @@ namespace effcore\modules\profile_classic {
   }
 
   static function on_enable($event) {
-    if (module::is_installed('profile_classic')) {color_preset::apply('original_classic');
-       $module = module::get('profile_classic');
-       $module->enable();
+    if (module::is_installed('profile_classic')) {
+      $result = color_preset::apply('original_classic');
+      if ($result) message::insert('Color settings have been changed.'             );
+      else         message::insert('Color settings have not been changed!', 'error');
+      $module = module::get('profile_classic');
+      $module->enable();
     }
   }
 
   static function on_disable($event) {
-    color_preset::reset();
+    $result = color_preset::reset();
+    if ($result) message::insert('Color settings have been changed.'             );
+    else         message::insert('Color settings have not been changed!', 'error');
     $module = module::get('profile_classic');
     $module->disable();
   }

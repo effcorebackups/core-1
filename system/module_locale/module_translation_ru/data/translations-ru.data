@@ -99,6 +99,8 @@ translations
     - Color assignment form: Форма присвоения цвета
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
     - Color preset apply form: Форма применения цветовых предустановок
+    - Color settings have been changed.: Цветовые настройки были изменены.
+    - Color settings have not been changed!: Цветовые настройки не были изменены!
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
     - Color: Цвет
     - Colors was applied.: Цвета были применены.
@@ -404,6 +406,8 @@ translations
     - Kind: Вид
     - Language code: Код языка
     - Language selection menu: Меню выбора языка
+    - Language settings have been changed.: Языковые настройки были изменены.
+    - Language settings have not been changed!: Языковые настройки не были изменены!
     - Language: Язык
     - Languages: Языки
     - launch: запуск

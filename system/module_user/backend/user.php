@@ -108,7 +108,7 @@ namespace effcore {
       'form' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
       'user' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
       'args' => core::random_bytes_generate(40, module::settings_get('user')->key_characters),
-    ]);
+    ], true, false);
   }
 
   static function signature_get($string, $key_name, $length = 40) {

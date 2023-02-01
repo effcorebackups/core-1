@@ -24,8 +24,8 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  static function select_info() {
-    return static::$info;
+  static function select_info($name) {
+    return static::$info[$name] ?? null;
   }
 
   static function select($name, $sub_dirs = '') {
@@ -55,7 +55,7 @@ namespace effcore {
         return false;
       }
       if (function_exists('opcache_invalidate')) {
-      # reset opcache before load related dynamic files (styles, scripts and etc.)
+      # reset OPCache before load related dynamic files (styles, scripts and etc.)
         @opcache_invalidate($file->path_get());
       }
       return true;

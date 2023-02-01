@@ -6,6 +6,7 @@
 
 namespace effcore\modules\translation_be {
           use \effcore\language;
+          use \effcore\message;
           use \effcore\module;
           use \effcore\page;
           use \effcore\storage;
@@ -23,8 +24,10 @@ namespace effcore\modules\translation_be {
     $module = module::get('translation_be');
     $module->disable();
     if (language::code_get_current() === 'be') {
-      storage::get('data')->changes_insert('locale', 'update', 'settings/locale/lang_code', 'en');
-      language::code_set_current('en');
+      $result = storage::get('data')->changes_insert('locale', 'update', 'settings/locale/lang_code', 'en');
+      if ($result) language::code_set_current('en');
+      if ($result) message::insert('Language settings have been changed.'             );
+      else         message::insert('Language settings have not been changed!', 'error');
     }
   }
 
