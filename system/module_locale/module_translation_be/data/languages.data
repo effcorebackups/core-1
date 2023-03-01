@@ -2,5 +2,5 @@ languages
 - be|language
     code: be
     title_en: Belarusian
-    title_native: Беларускі
+    title_native: Беларуская
     license_path: system/module_locale/module_translation_be/licenses/license-be.md

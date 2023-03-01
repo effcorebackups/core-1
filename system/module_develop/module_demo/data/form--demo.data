@@ -438,7 +438,7 @@ forms
 /////////////////////text in text area line 2
 /////////////////////text in text area line 3
         - textarea_data|field_textarea_data
-            title: Data in "data" format
+            title: Attributes (example of working with "data"-format)
             description|text
               text: Field "%%_title".
               args
@@ -448,13 +448,39 @@ forms
             - required: null
             - minlength: null
             - maxlength: 10000
-            - value: root
-/////////////////////- key_1: value 1
-/////////////////////- key_2: value 2
-/////////////////////- key_3: value 3
+            - rows: 28
+            - value: attributes
+/////////////////////- string: text
+/////////////////////- string_empty: 
+/////////////////////- string_true|_string_true
+/////////////////////- string_false|_string_false
+/////////////////////- integer: 123
+/////////////////////- float: 0.000001
+/////////////////////- boolean_true: true
+/////////////////////- boolean_false: false
+/////////////////////- null: null
+/////////////////////- array_empty|_empty_array
+/////////////////////- array
+/////////////////////  - item_string: text
+/////////////////////  - item_string_empty: 
+/////////////////////  - item_string_true|_string_true
+/////////////////////  - item_string_false|_string_false
+/////////////////////  - item_integer: 123
+/////////////////////  - item_float: 0.000001
+/////////////////////- object_text|text
+/////////////////////    custom_preperty: null
+/////////////////////    text: some text
+/////////////////////    is_apply_translation: true
+/////////////////////    is_apply_tokens: false
+/////////////////////- object_text_simple|text_simple
+/////////////////////    custom_preperty: null
+/////////////////////    text: some text
+/////////////////////    delimiter|_string_nl
+/////////////////////    weight: 0
+            data_validator_id: attributes
             classes_allowed
             - =: text
-            - =: \effcore\text_multiline
+            - =: \effcore\text_simple
             - =: \some_vendor\some_exists_class_name
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes

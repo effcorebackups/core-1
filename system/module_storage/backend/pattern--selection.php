@@ -72,7 +72,7 @@ namespace effcore {
       if (count($used_storages) === 0) {message::insert(new text('No fields for select from storage! Selection ID = "%%_id".',     ['id' => $this->id]), 'warning'); return new node;}
       if (count($used_storages)  >  1) {message::insert(new text('Distributed queries are not supported! Selection ID = "%%_id".', ['id' => $this->id]), 'warning'); return new node;}
       if (count($used_storages) === 1) {
-        $this->attribute_insert('data-main-entity', $this->_main_entity->name, 'attributes', true);
+        $this->attribute_insert('data-entity', $this->_main_entity->name, 'attributes', true);
 
       # prepare join
         foreach ($this->fields as $c_row_id => $c_field) {
@@ -130,11 +130,12 @@ namespace effcore {
         $decorator = new decorator;
         $decorator->id = $this->id;
         $decorator->_selection = $this;
-        $decorator->attribute_insert('data-main-entity', $this->_main_entity->name);
+        $decorator->attribute_insert('data-entity', $this->_main_entity->name);
         foreach ($this->decorator_settings ?? [] as $c_key => $c_value)
           $decorator->                             {$c_key} = $c_value;
 
         foreach ($this->_instances as $c_instance) {
+          $c_instance_id = implode('+', $c_instance->values_id_get());
 
         # ─────────────────────────────────────────────────────────────────────
         # make context token for each value
@@ -142,8 +143,8 @@ namespace effcore {
           foreach ($this->fields as $c_row_id => $c_field) {
             if ($c_field->type === 'field' ||
                 $c_field->type === 'join_field') {
-              token::insert('selection_'.$c_field->entity_name      .'_'.
-                                         $c_field->entity_field_name.'_'.'context', 'text', $c_instance->{$c_field->entity_field_name}, null, 'storage');
+              token::insert('selection_'.$c_field->entity_name.'_'.$c_field->entity_field_name.               '_cur_context', 'text', $c_instance->{$c_field->entity_field_name}, null, 'storage');
+              token::insert('selection_'.$c_field->entity_name.'_'.$c_field->entity_field_name.'_'.$c_instance_id.'_context', 'text', $c_instance->{$c_field->entity_field_name}, null, 'storage');
             }
           }
 
@@ -167,8 +168,9 @@ namespace effcore {
                 if ($c_value !== null && $c_value_type === 'time'    ) $c_value = locale::format_time    ($c_value);
                 if ($c_value !== null && $c_value_type === 'boolean' ) $c_value =   core::format_logic   ($c_value);
                 $c_row[$c_row_id] = [
-                  'title'  => $c_title,
-                  'value'  => $c_value
+                  'attributes' => ['data-entity-field-name' => $c_field->entity_field_name],
+                  'title' => $c_title,
+                  'value' => $c_value
                 ];
                 break;
               case 'text':
@@ -180,7 +182,7 @@ namespace effcore {
               case 'markup':
                 $c_row[$c_row_id] = [
                   'title' => $c_field->title ?? null,
-                  'value' => $c_field->markup
+                  'value' => $c_field->markup->render() # note: "render" is for markup containing tokens
                 ];
                 break;
               case 'code':

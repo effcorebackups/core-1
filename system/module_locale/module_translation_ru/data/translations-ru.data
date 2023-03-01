@@ -46,6 +46,7 @@ translations
     - apply: применить
     - Architecture: Архитектура
     - Attribute: Атрибут
+    - Attributes (example of working with "data"-format): Атрибуты (пример работы с "data"-форматом)
     - Attributes: Атрибуты
     - audio "%%_audio": аудио "%%_audio"
     - audio: аудио
@@ -134,7 +135,6 @@ translations
     - Data deletion form: Форма удаления данных
     - Data hash: Хэш данных
     - Data ID: ID данных
-    - Data in "data" format: Данные в формате "data"
     - Data insertion form: Форма вставки данных
     - Data management form: Форма управления данными
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
@@ -167,6 +167,8 @@ translations
     - Distributed queries are not supported! Selection ID = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".
     - Do not forget to save the changes!: Не забудьте сохранить изменения!
     - do not show: не показывать
+    - download: скачать
+    - Download: Скачать
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
     - Driver error text\: %%_text: Текст ошибки драйвера: %%_text
     - Driver is not selected!: Драйвер не выбран!
@@ -326,13 +328,15 @@ translations
     - Group "%%_title" should contain at least one selected item!: Группа "%%_title" должна содержать как минимум один выбранный элемент!
     - Group "%%_title".: Группа "%%_title".
     - Group: Группа
+    - Hash sum (md5): Хэш-сумма (md5)
+    - Hash sum: Хэш-сумма
     - Headers: Заголовки
     - Hostname: Имя узла сети
     - HTTPS is required: Требуется HTTPS
     - I accept the terms of the license agreement.: Я принимаю условия лицензионного соглашения.
     - If a domain is specified, then it and its subdomains are used.: Если домен задан, то используется он и его поддомены.
     - If no domain is specified, then the current domain is used, excluding subdomains.: Если домен не задан, то используется текущий домен без учёта поддоменов.
-    - Ignore this email if you have not completed any registration on %%_domain.: Проигнорируйте это письмо если Вы не осуществляли никакой регистрации на %%_domain.
+    - Ignore this email if you have not completed any registration on %%_domain.: Проигнорируйте это письмо, если Вы не осуществляли никакой регистрации на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
     - Incorrect email or password!: Неверный адрес электронной почты или пароль!
     - Incorrect value will make it impossible to log in!: Неправильное значение приведет к невозможности входа в систему!
@@ -495,6 +499,7 @@ translations
     - Module for testing.: Модуль для тестирования.
     - Module for translation into Belarusian language.: Модуль для перевода на белорусский язык.
     - Module for translation into Russian language.: Модуль для перевода на русский язык.
+    - Module for translation into Ukrainian language.: Модуль для перевода на украинский язык.
     - Module for working with navigation elements.: Модуль для работы с элементами навигации.
     - Module for working with pages.: Модуль для работы со страницами.
     - Module for working with polls.: Модуль для работы с опросами.
@@ -531,6 +536,7 @@ translations
     - no url: нет url
     - no: нет
     - No: Нет
+    - Number of downloads: Количество загрузок
     - Number of login attempts: Количество попыток входа
     - Number: Номер
     - Object: Объект
@@ -684,12 +690,13 @@ translations
     - selections: выборки
     - Selections: Выборки
     - send: отправить
+    - SEO\: manage: SEO: управлять
     - Sequence: Последовательность
     - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
-    - Session duration in days when "long session" is not selected: Длительность сеанса в днях когда не выбрано "длительный сеанс"
-    - Session duration in days when "long session" is selected: Длительность сеанса в днях когда выбрано "длительный сеанс"
+    - Session duration in days when "long session" is not selected: Длительность сеанса в днях, когда не выбрано "длительный сеанс"
+    - Session duration in days when "long session" is selected: Длительность сеанса в днях, когда выбрано "длительный сеанс"
     - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
     - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
     - Session: Сеанс
@@ -748,7 +755,7 @@ translations
     - Text\: insert: Текст: вставить
     - Text\: select: Текст: выбрать
     - Text\: update: Текст: обновить
-    - Texts: Текст
+    - Texts: Тексты
     - The class name has been changed to "%%_new_class_name".: Имя класса было изменено на "%%_new_class_name".
     - The following related items will also be deleted\:: Также будут удалены следующие связанные элементы:
     - The letter was not accepted for transmission!: Письмо не было принято к передаче!
@@ -792,6 +799,7 @@ translations
     - type: тип
     - Type: Тип
     - Types: Типы
+    - Ukrainian: Украинский
     - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Удалите модули, в котором были обнаружены зависимости, и затем Вы сможете установить модуль "%%_title".
     - uninstall: удалить
     - Uninstall: Удалить

@@ -1,0 +1,20 @@
+translations
+- uk|translation
+    code: uk
+    data
+    - Access recovery: Відновлення доступу
+    - Anonymous user's menu: Меню анонімного користувача
+    - Edit user %%_nickname_page_context{nickname}: Редагувати користувача %%_nickname_page_context{nickname}
+    - Grid 2x5 \| profile "Default": Сітка 2x5 | профіль "За замовчуванням"
+    - Grid 3x5 \| profile "Default": Сітка 3x5 | профіль "За замовчуванням"
+    - Grid 4x5 \| profile "Default": Сітка 4x5 | профіль "За замовчуванням"
+    - Grid 5x5 \| profile "Default": Сітка 5x5 | профіль "За замовчуванням"
+    - Module for profile "Default".: Модуль для профілю "За замовчуванням".
+    - New User Registration: Реєстрація нового користувача
+    - Profile "Default": Профіль "За замовчуванням"
+    - Registered user's menu: Меню зареєстрованого користувача
+    - Text Front: Текст Головної
+    - The main text of the page: Основний текст сторінки
+    - Universal layout \| profile "Default": Універсальний макет | профіль "За замовчуванням"
+    - User %%_nickname_page_context{nickname}: Користувач %%_nickname_page_context{nickname}
+    - Welcome to our site!: Ласкаво просимо на наш сайт!

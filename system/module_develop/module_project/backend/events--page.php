@@ -8,6 +8,7 @@ namespace effcore\modules\project {
           use \effcore\block_preset;
           use \effcore\core;
           use \effcore\entity;
+          use \effcore\project;
           use \effcore\selection;
           use \effcore\token;
           abstract class events_page {
@@ -21,21 +22,35 @@ namespace effcore\modules\project {
 
   static function block_markup__selection_release_current_make($page, $args = []) {
     if (!empty($args['id_project'])) {
-      token::insert('id_project_context', 'text', $args['id_project'], null, 'project');
-      $selection = core::deep_clone(selection::get('release_current'));
-      $selection->title = $selection->title->render();
-      $selection->build();
-      return $selection;
+      $project = project::select($args['id_project']);
+      if ($project) {
+        token::insert('project_id_context',          'text', $project->id,          null, 'project');
+        token::insert('project_title_context',       'text', $project->title,       null, 'project');
+        token::insert('project_description_context', 'text', $project->description, null, 'project');
+        token::insert('project_created_context',     'text', $project->created,     null, 'project');
+        token::insert('project_updated_context',     'text', $project->updated,     null, 'project');
+        $selection = core::deep_clone(selection::get('release_current'));
+        $selection->title = $selection->title->render();
+        $selection->build();
+        return $selection;
+      }
     }
   }
 
   static function block_markup__selection_releases_make($page, $args = []) {
     if (!empty($args['id_project'])) {
-      token::insert('id_project_context', 'text', $args['id_project'], null, 'project');
-      $selection = core::deep_clone(selection::get('releases'));
-      $selection->title = $selection->title->render();
-      $selection->build();
-      return $selection;
+      $project = project::select($args['id_project']);
+      if ($project) {
+        token::insert('project_id_context',          'text', $project->id,          null, 'project');
+        token::insert('project_title_context',       'text', $project->title,       null, 'project');
+        token::insert('project_description_context', 'text', $project->description, null, 'project');
+        token::insert('project_created_context',     'text', $project->created,     null, 'project');
+        token::insert('project_updated_context',     'text', $project->updated,     null, 'project');
+        $selection = core::deep_clone(selection::get('releases'));
+        $selection->title = $selection->title->render();
+        $selection->build();
+        return $selection;
+      }
     }
   }
 

@@ -1,0 +1,41 @@
+translations
+- uk|translation
+    code: uk
+    data
+    - Example of update description.: Приклад опису оновлення.
+    - Example of update: Приклад оновлення
+    - Logotype Behance: Логотип Behance
+    - Logotype Bitbucket: Логотип Bitbucket
+    - Logotype Blogger: Логотип Blogger
+    - Logotype Facebook: Логотип Facebook
+    - Logotype Flickr: Логотип Flickr
+    - Logotype Github: Логотип Github
+    - Logotype Gitlab: Логотип Gitlab
+    - Logotype Instagram: Логотип Instagram
+    - Logotype Line: Логотип Line
+    - Logotype Linkedin: Логотип Linkedin
+    - Logotype Livejournal: Логотип Livejournal
+    - Logotype main: Логотип основний
+    - Logotype Messenger: Логотип Messenger
+    - Logotype OK: Логотип OK
+    - Logotype Pinterest: Логотип Pinterest
+    - Logotype Reddit: Логотип Reddit
+    - Logotype Skype: Логотип Skype
+    - Logotype Snapchat: Логотип Snapchat
+    - Logotype Soundcloud: Логотип Soundcloud
+    - Logotype Telegram: Логотип Telegram
+    - Logotype Tiktok: Логотип Tiktok
+    - Logotype Tumblr: Логотип Tumblr
+    - Logotype Twitter: Логотип Twitter
+    - Logotype Viber: Логотип Viber
+    - Logotype Vimeo: Логотип Vimeo
+    - Logotype VK: Логотип VK
+    - Logotype Wechat: Логотип Wechat
+    - Logotype Whatsapp: Логотип Whatsapp
+    - Logotype Yahoo: Логотип Yahoo
+    - Logotype Youtube: Логотип Youtube
+    - Module for example of profile "Classic".: Модуль для прикладу профілю "Класика".
+    - Original \| profile "Classic": Оригінал | профіль "Класика"
+    - Page part "foot": Частина сторінки "foot"
+    - Page part "head": Частина сторінки "head"
+    - Profile "Classic": Профіль "Класика"

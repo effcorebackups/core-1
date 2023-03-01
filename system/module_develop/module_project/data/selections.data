@@ -168,7 +168,7 @@ selections
     title|text
       is_apply_translation: true
       is_apply_tokens: true
-      text: Current release of the project "%%_id_project_context"
+      text: Current release of the project %%_project_title_context
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -178,7 +178,7 @@ selections
       - id_project_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_id_project_context
+          text: %%_project_id_context
     - order
       - build_!f: ~release.build
       - type: DESC
@@ -195,19 +195,17 @@ selections
         is_visible: false
     - release_url
         type: markup
-        title: Link
+        title: File
         markup|markup
           tag_name: a
           attributes
           - href|text
               is_apply_translation: false
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection_release_path_context
+              text: http://%%_request_host/%%_selection_release_path_cur_context
           children
           - data|text
-              is_apply_translation: false
-              is_apply_tokens: true
-              text: http://%%_request_host/%%_selection_release_path_context
+              text: Download
     - release.hash_sum
         type: field
         entity_name: release
@@ -232,7 +230,7 @@ selections
     title|text
       is_apply_translation: true
       is_apply_tokens: true
-      text: Releases of the project "%%_id_project_context"
+      text: Releases of the project %%_project_title_context
     pager_is_enabled: true
     decorator_settings
     - view_type: table-dl
@@ -243,7 +241,7 @@ selections
       - id_project_!v|text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_id_project_context
+          text: %%_project_id_context
     - order
       - build_!f: ~release.build
       - type: DESC
@@ -260,17 +258,17 @@ selections
         is_visible: false
     - release_url
         type: markup
-        title: Link
+        title: File
         markup|markup
           tag_name: a
           attributes
           - href|text
+              is_apply_translation: false
               is_apply_tokens: true
-              text: http://%%_request_host/%%_selection_release_path_context
+              text: http://%%_request_host/%%_selection_release_path_cur_context
           children
           - data|text
-              is_apply_tokens: true
-              text: http://%%_request_host/%%_selection_release_path_context
+              text: Download
     - release.hash_sum
         type: field
         entity_name: release

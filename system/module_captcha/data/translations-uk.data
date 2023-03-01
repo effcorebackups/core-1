@@ -1,0 +1,10 @@
+translations
+- uk|translation
+    code: uk
+    data
+    - CAPTCHA: Захисний код (CAPTCHA)
+    - Field "%%_title" contains an incorrect characters from picture!: Поле "%%_title" містить невірні символи із зображення!
+    - Module for working with CAPTCHA in forms.: Модуль для роботи із захисним кодом (CAPTCHA) у формах.
+    - Number of attempts\: %%_attempts: Кількість спроб: %%_attempts
+    - Security settings CAPTCHA form: Форма налаштувань безпеки CAPTCHA
+    - Write the characters from the picture.: Напишіть символи з зображення.

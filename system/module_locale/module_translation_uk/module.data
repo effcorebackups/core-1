@@ -1,0 +1,15 @@
+module|module
+  id: translation_uk
+  id_bundle: system
+  title: Ukrainian
+  group: Translations
+  description: Module for translation into Ukrainian language.
+  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
+  icon_path: frontend/pictures/flag-ua-mini.svg
+  enabled: yes
+  version: 0.903
+  dependencies
+    system
+    - locale: 0.903
+  urls
+  - settings page: /manage/locale

@@ -32,7 +32,7 @@ translations
     - Call "%%_call": Выклік "%%_call"
     - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталаг "%%_catalog_name" у сховішчы "%%_storage_name" будзе ініцыялізаваны
     - cell #%%_number: ячэйка №%%_number
-    - changing permissions for role = "%%_role": змена дазваленняў для ролі = "%%_role"
+    - changing permissions for role = "%%_role": змена дазволаў для ролі = "%%_role"
     - changing roles for user with nickname = "%%_nickname": змена роляў для карыстальніка з псеўданімам = "%%_nickname"
     - Checkbox 1: Сцяжок 1
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
@@ -45,7 +45,7 @@ translations
     - Console: Кансоль
     - Constraints: Абмежаванні
     - CPU load time: Час загрузкі працэсара
-    - Current release of the project "%%_id_project_context": Бягучы рэліз праекта "%%_id_project_context"
+    - Current release of the project %%_project_title_context: Бягучы рэліз праекта %%_project_title_context
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
     - default text: тэкст па змаўчанні
@@ -100,8 +100,6 @@ translations
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
-    - Hash sum (md5): Хэш-сума (md5)
-    - Hash sum: Хэш-сума
     - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
     - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Калі атрыбут "step" роўны "60", тады секунды ":00" будуць абразацца.
@@ -137,7 +135,6 @@ translations
     - namespace: прастора імёнаў
     - NoSQL data: NoSQL дадзеныя
     - Notice message #%%_number.: Паведамленне №%%_number.
-    - Number of downloads: Колькасць загрузак
     - Ok message #%%_number.: Добрае паведамленне №%%_number.
     - Option 1 (selected): Опцыя 1 (абрана)
     - Option 2 (disabled): Опцыя 2 (адключана)
@@ -153,8 +150,8 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - Password hash sum: Хэш-сума пароля
-    - permissions after insertion\: %%_permissions: дазваленні пасля ўстаўкі: %%_permissions
-    - permissions before insertion\: %%_permissions: дазваленні перад устаўкай: %%_permissions
+    - permissions after insertion\: %%_permissions: дазволы пасля ўстаўкі: %%_permissions
+    - permissions before insertion\: %%_permissions: дазволы перад устаўкай: %%_permissions
     - PHP ext.: PHP-паш.
     - PHP extension: PHP-пашырэнне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
@@ -176,7 +173,7 @@ translations
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - Release (current): Выпуск (бягучы)
     - Release: Выпуск
-    - Releases of the project "%%_id_project_context": Выпускі праекта "%%_id_project_context"
+    - Releases of the project %%_project_title_context: Выпускі праекта %%_project_title_context
     - Releases: Выпускі
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
@@ -214,12 +211,12 @@ translations
     - text with translation: тэкст з перакладам
     - The report was generated in real time.: Справаздача была створана ў рэжыме рэальнага часу.
     - The system can search for the used functions only for enabled PHP modules!: Сістэма можа шукаць выкарыстоўваныя функцыі толькі для ўключаных PHP-модуляў!
-    - The test was failed!: Тэст не атрымаўся!
-    - The test was successful.: Тэст выкананы паспяхова.
+    - The test was failed!: Тэст быў правалены!
+    - The test was successful.: Тэст быў паспяховым.
     - The test will not succeed if the "Registration via Email" option is enabled!: Тэст не выканацца паспяхова калі ўключаная опцыя "Рэгістрацыя праз электронную пошту"!
-    - there will be try to delete all permissions: будзе спроба выдаліць усе дазваленні
+    - there will be try to delete all permissions: будзе спроба выдаліць усе дазволы
     - there will be try to delete all roles: будзе спроба выдаліць усе ролі
-    - there will be try to insert permissions\: %%_permissions: будзе спроба ўставіць дазваленні: %%_permissions
+    - there will be try to insert permissions\: %%_permissions: будзе спроба ўставіць дазволы: %%_permissions
     - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.

@@ -7,6 +7,7 @@
 namespace effcore\modules\project {
           use \effcore\entity;
           use \effcore\file;
+          use \effcore\release;
           use \effcore\text_multiline;
           use \effcore\text;
           abstract class events_form_instance_insert {
@@ -21,15 +22,7 @@ namespace effcore\modules\project {
           # field 'id_project' + field 'build'
             $id_project = $items['#id_project']->value_get();
             $build      = $items['#build'     ]->value_get();
-            $result = $entity->instances_select(['conditions' => [
-              'id_project_!f'       => 'id_project',
-              'id_project_operator' => '=',
-              'id_project_!v'       => $id_project,
-              'conjunction'         => 'and',
-              'build_!f'            => 'build',
-              'build_operator'      => '=',
-              'build!v'             => $build], 'limit' => 1]);
-            if ($result) {
+            if (release::select($id_project, $build)) {
               $items['#id_project']->error_set();
               $items['#build']->error_set(new text_multiline([
                 'Field "%%_title" contains an error!',

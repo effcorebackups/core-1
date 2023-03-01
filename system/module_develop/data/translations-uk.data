@@ -1,0 +1,260 @@
+translations
+- uk|translation
+    code: uk
+    data
+    - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.
+>>>>> Paragraph content. Paragraph content. Paragraph content. Paragraph content.&NewLine;: 
+>>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+>>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+>>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
+>>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&NewLine;
+    - &ndash; request header param "%%_value": &ndash; header-параметр запиту "%%_value"
+    - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запиту "%%_name" = "%%_value"
+    - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр відповіді "%%_name" = "%%_value"
+    - &ndash; response param "%%_name" = "%%_value": &ndash; параметр відповіді "%%_name" = "%%_value"
+    - + the extension is always enabled: + розширення завжди увімкнено
+    - ± the extension is enabled by default: ± розширення увімкнено за умовчанням
+    - − the extension is not enabled by default: − розширення не ввімкнено за умовчанням
+    - action "%%_name" will be started: дія "%%_name" буде запущена
+    - action with rowid = "%%_rowid" will be started: дія з rowid = "%%_rowid" буде запущена
+    - All releases: Усі випуски
+    - All types of messages you can see above.: Всі типи повідомлень Ви можете побачити вище.
+    - ANONYMOUS USER: АНОНІМНИЙ КОРИСТУВАЧ
+    - arguments: аргументи
+    - Autoincrement: Автоінкремент
+    - autoload: завант.
+    - beginning: початок
+    - Call "%%_call" for #%%_number: Виклик "%%_call" для #%%_number
+    - Call "%%_call" on click "%%_click": Виклик "%%_call" для натискання "%%_click"
+    - call "%%_call": виклик "%%_call"
+    - Call "%%_call": Виклик "%%_call"
+    - catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized: каталог "%%_catalog_name" у сховищі "%%_storage_name" буде ініціалізований
+    - cell #%%_number: осередок №%%_number
+    - changing permissions for role = "%%_role": зміна дозволів для ролі = "%%_role"
+    - changing roles for user with nickname = "%%_nickname": зміна ролей для користувача з псевдонімом = "%%_nickname"
+    - Checkbox 1: Прапорець 1
+    - Checkbox 2 (checked): Прапорець 2 (відзначений)
+    - Checkbox 3 (disabled): Прапорець 3 (вимкнений)
+    - Checkbox 4 (disabled + checked): Прапорець 4 (вимкнений + відзначений)
+    - checking on "%%_operand_1" %%_operator "%%_operand_2": перевірка на "%%_operand_1" %%_operator "%%_operand_2"
+    - Classes: Класи
+    - Collations: Порівняння
+    - Color for generation: Колір для створення
+    - Console: Консоль
+    - Constraints: Обмеження
+    - CPU load time: Час завантаження процесора
+    - Current release of the project %%_project_title_context: Поточний випуск проекту %%_project_title_context
+    - Decorators dynamic: Декоратори динамічні
+    - Decorators static: Декоратори статичні
+    - default text: текст за замовчуванням
+    - Default type.: Тип за замовчуванням.
+    - Demonstration form: Демонстраційна форма
+    - Demonstration menu NoSQL: Меню демонстраційне NoSQL
+    - Demonstration menu SQL: Меню демонстраційне SQL
+    - Demonstration menu via decorator: Меню демонстраційне через декоратор
+    - Demonstration of field types for Selection: Демонстрація типів полів у вибірки
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100: Демонстрація вибірки сутностей "demo_data" з об'єднанням з сутностями "demo_join" де ID >= 100
+    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Демонстрація вибірки сутностей "demo_data" з об'єднанням з сутностями "demo_join"
+    - Demonstration of selection of entities "demo_types": Демонстрація вибірки сутностей "demo_types"
+    - Description for messages: Опис для повідомлень
+    - Displaying the console will result in a %%_value increase in RAM consumption!: Відображення консолі призведе до збільшення споживання ОЗП на %%_value!
+    - Embedded elements: Вбудовані елементи
+    - ending: закінчення
+    - Error message #%%_number!: Повідомлення про помилку №%%_number!
+    - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query": стан помилки = %%_state<br>код помилки = %%_code<br>текст помилки = %%_text<br>запит = "%%_query"
+    - error state = %%_state<br>error code = %%_code<br>error text = %%_text<br>query = "%%_query"<br>arguments = [%%_args]: стан помилки = %%_state<br>код помилки = %%_code<br>текст помилки = %%_text<br>запит = "%%_query"<br>аргументи = [%%_args]
+    - event system was initialized: система подій була ініціалізована
+    - Example of update 1: Приклад оновлення 1
+    - Example of update 2 (outstripping): Приклад оновлення 2 (випереджаюче)
+    - Example of update 3 (outstripping): Приклад оновлення 3 (випереджаюче)
+    - Example of update description 1.: Приклад опису оновлення 1.
+    - Example of update description 2.: Приклад опису оновлення 2.
+    - Example of update description 3.: Приклад опису оновлення 3.
+    - Execution plan: План виконання
+    - Export diagram to file "%%_file" for using with "StarUML" software.: Експорт діаграми у файл "%%_file" для використання у програмі "StarUML".
+    - Field #1: Поле №1
+    - Field #2: Поле №2
+    - Field #3: Поле №3
+    - Field binary: Поле binary
+    - Field blob: Поле blob
+    - Field boolean: Поле boolean
+    - Field date: Поле date
+    - Field datetime: Поле datetime
+    - Field foreign: Поле foreign
+    - Field index unique: Поле index unique
+    - Field index: Поле index
+    - Field integer: Поле integer
+    - Field nocase: Поле nocase
+    - Field primary: Поле primary
+    - Field real: Поле real
+    - Field time: Поле time
+    - Field unique: Поле unique
+    - Field varchar: Поле varchar
+    - FILES AND DIRECTORIES: ФАЙЛИ ТА КАТАЛОГИ
+    - FILTRATION OF PARAMETERS: ФІЛЬТРАЦІЯ ПАРАМЕТРІВ
+    - For ID: Для ID
+    - found user ID = "%%_id_user" by nickname = "%%_nickname": знайдено ID користувача = "%%_id_user" за псевдонімом = "%%_nickname"
+    - Full report: Повний звіт
+    - Group 1: Група 1
+    - Group 2 (inserted from code): Група 2 (вставлена з коду)
+    - Handler: Обробник
+    - head cell #%%_number: великий осередок №%%_number
+    - Header %%_size: Заголовок %%_size
+    - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Якщо атрибут "step" дорівнює "60", тоді секунди ":00" будуть обрізатися.
+    - If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.: Якщо параметр "value_current_if_null" дорівнює "true" і початкове значення не вказано, тоді буде використано поточне значення.
+    - Indexes: Індекси
+    - init.: ініціал.
+    - Is even: Парне
+    - item #%%_number: пункт №%%_number
+    - item #1: пункт №1
+    - item #1.1: пункт №1.1
+    - item #1.2: пункт №1.2
+    - item #1.2.1: пункт №1.2.1
+    - item #1.2.2: пункт №1.2.2
+    - item #1.2.3 (from code): пункт №1.2.3 (з коду)
+    - item #1.2.3: пункт №1.2.3
+    - item #1.3: пункт №1.3
+    - item #2: пункт №2
+    - item #3 (from code): пункт №3 (з коду)
+    - item #3: пункт №3
+    - Join: З'єднання
+    - Joins: З'єднання
+    - Main content of Micro Tab #%%_num: Основний зміст мікровкладки №%%_num
+    - make request to "%%_url": зробити запит на "%%_url"
+    - Markup dynamic: Розмітка динамічна
+    - Markup static: Розмітка статична
+    - memory consumption: споживання пам'яті
+    - method private: метод приватний
+    - method protected: метод захищений
+    - method public: метод публічний
+    - Module dependencies from PHP extensions: Залежність модулів від PHP-розширень
+    - Multiplier (left): Множник (лівий)
+    - Multiplier (right): Множник (правий)
+    - namespace: простір імен
+    - NoSQL data: NoSQL дані
+    - Notice message #%%_number.: Повідомлення №%%_number.
+    - Ok message #%%_number.: Гарне повідомлення №%%_number.
+    - Option 1 (selected): Опція 1 (обрана)
+    - Option 2 (disabled): Опція 2 (вимкнена)
+    - Option 3: Опція 3
+    - Option 4: Опція 4
+    - Option 5 (inserted + disabled from code): Опція 5 (вставлено + вимкнено з коду)
+    - Option 6 (inserted from code): Опція 6 (вставлена з коду)
+    - Option 7 (inserted from code): Опція 7 (вставлена з коду)
+    - Option 8 (inserted from code): Опція 8 (вставлена з коду)
+    - Option 9 (inserted from code): Опція 9 (вставлена з коду)
+    - Parameter 1: Параметр 1
+    - Parameter 2: Параметр 2
+    - Parameter 3: Параметр 3
+    - Parameter 4: Параметр 4
+    - Password hash sum: Хеш-сума пароля
+    - permissions after insertion\: %%_permissions: дозволи після вставки: %%_permissions
+    - permissions before insertion\: %%_permissions: дозволи перед вставкою: %%_permissions
+    - PHP ext.: PHP-розш.
+    - PHP extension: PHP-розширення
+    - PHP functions usage: Використання PHP-функцій
+    - Pos.: Поз.
+    - Project ID: ID проекту
+    - property private: властивість приватна
+    - property protected: властивість захищена
+    - property public: властивість публічна
+    - proxy server = %%_proxy: проксі-сервер = %%_proxy
+    - Proxy server: Проксі-сервер
+    - Quantity of iterations: Кількість ітерацій
+    - Radiobutton 1: Перемикач 1
+    - Radiobutton 2 (checked): Перемикач 2 (відзначений)
+    - Radiobutton 3 (disabled): Перемикач 3 (вимкнений)
+    - RAM load dynamics: Динаміка завантаження ОЗУ
+    - real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2": реальна перевірка на "%%_operand_real_1" %%_operator "%%_operand_real_2"
+    - REGISTERED USER + ROLE: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ + РОЛЬ
+    - REGISTERED USER: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ
+    - Relation (tree view): Зв'язок (у вигляді дерева)
+    - Release (current): Випуск (поточний)
+    - Release: Випуск
+    - Releases of the project %%_project_title_context: Випуски проекту %%_project_title_context
+    - Releases: Випуски
+    - repeat %%_cur from %%_max: повтор %%_cur з %%_max
+    - result of checking is = "%%_result": результат перевірки = "%%_result"
+    - return = "%%_return": повернення = "%%_return"
+    - roles after insertion\: %%_roles: ролі після вставки: %%_roles
+    - roles before insertion\: %%_roles: ролі перед вставкою: %%_roles
+    - row with auto id value = 1: срядок з автоматичним значенням id = 1
+    - row with auto id value = 2: срядок з автоматичним значенням id = 2
+    - row with auto id value = 3: срядок з автоматичним значенням id = 3
+    - row with default values: рядок зі значеннями за замовчуванням
+    - row with non-default values: рядок зі значеннями не за замовчуванням
+    - Security of Roles: Безпека ролей
+    - Security of Server Settings: Безпека налаштувань сервера
+    - Selection list (multiple select): Список вибору (множинний вибір)
+    - Selection of "demo_data" entities + join: Вибірка сутностей "demo_data" + join
+    - Sequence hash: Хеш послідовності
+    - show for admin: показувати адміністратору
+    - show for everyone: показувати всім
+    - simple string: простий рядок
+    - some description: якийсь опис
+    - stack: стек
+    - storage "%%_name" was initialized: сховище "%%_name" було ініціалізовано
+    - string with parameter = %%_n: рядок із параметром = %%_n
+    - string with plural value = %%_number second%%_plural{number\|s}: рядок з численним числом = %%_number секунд%%_plural{number|a-ji}
+    - submission: передача
+    - Switcher 1: Вимикач 1
+    - Switcher 2 (checked): Вимикач 2 (відзначений)
+    - Switcher 3 (disabled): Вимикач 3 (вимкнений)
+    - Switcher 4 (disabled + checked): Вимикач 4 (вимкнений + відзначений)
+    - Tab 1: Вкладка 1
+    - Tab 2: Вкладка 2
+    - Tab 3: Вкладка 3
+    - Text for perform the tests: Текст для виконання тестів
+    - text with translation and token demo_text = "%%_demo_text": текст з перекладом та токеном demo_text = "%%_demo_text"
+    - text with translation: текст з перекладом
+    - The report was generated in real time.: Звіт був створений у режимі реального часу.
+    - The system can search for the used functions only for enabled PHP modules!: Система може шукати функції, що використовуються тільки для включених PHP-модулів!
+    - The test was failed!: Тест був провалений!
+    - The test was successful.: Тест був успішним.
+    - The test will not succeed if the "Registration via Email" option is enabled!: Тест не виконатись успішно якщо включена опція "Реєстрація через електронну пошту"!
+    - there will be try to delete all permissions: буде спроба видалити всі дозволи
+    - there will be try to delete all roles: буде спроба видалити всі ролі
+    - there will be try to insert permissions\: %%_permissions: буде спроба вставити дозволи: %%_permissions
+    - there will be try to insert roles\: %%_roles: буде спроба вставити ролі: %%_roles
+    - This description is always shown.: Цей опис завжди показується.
+    - This description is shown on top.: Цей опис показаний зверху.
+    - To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.: Для підвищення продуктивності консоль у файлах типу ".cssd" та ".jsd" відображатиметься лише в режимі "показати всім".
+    - Total generation time: Загальний час генерації
+    - Total run time\: %%_time sec.: Загальний час виконання: %%_time сек.
+    - Traits: Трейти
+    - transposition "action after": перестановка "action after"
+    - transposition "action before": перестановка "action before"
+    - transposition "action" #%%_num: перестановка "action" №%%_num
+    - TRANSPOSITION %%_cur FROM %%_max \| %%_state: ПЕРЕСТАНОВКА %%_cur З %%_max | %%_state
+    - TRANSPOSITIONS [-1 … length + 2]: ПЕРЕСТАНОВКИ [-1 … length + 2]
+    - TRANSPOSITIONS OF "..": ПЕРЕСТАНОВКИ ".."
+    - TRANSPOSITIONS OF ".": ПЕРЕСТАНОВКИ "."
+    - TRANSPOSITIONS OF "": ПЕРЕСТАНОВКИ ""
+    - TRANSPOSITIONS OF "/": ПЕРЕСТАНОВКИ "/"
+    - TRANSPOSITIONS OF "~": ПЕРЕСТАНОВКИ "~"
+    - Type "%%_type" from code: Тип "%%_type" з коду
+    - Type "%%_type": Тип "%%_type"
+    - UML Diagram: UML-діаграма
+    - unique value 1: унікальне значення 1
+    - unique value 2: унікальне значення 2
+    - unique value 3: унікальне значення 3
+    - Usage frequency: Частота використання
+    - validation_1: валідація_1
+    - validation_2: валідація_2
+    - validation_3: валідація_3
+    - value 1: значення 1
+    - value 1.1: значення 1.1
+    - value 1.2: значення 1.2
+    - value 1.3: значення 1.3
+    - value 2: значення 2
+    - value 2.1: значення 2.1
+    - value 2.2: значення 2.2
+    - value 2.3: значення 2.3
+    - value 3: значення 3
+    - value 3.1: значення 3.1
+    - value 3.2: значення 3.2
+    - value 3.3: значення 3.3
+    - value_set: знач_встан
+    - Warning message #%%_number.: Попереджувальне повідомлення №%%_number.

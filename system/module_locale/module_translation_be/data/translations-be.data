@@ -12,7 +12,7 @@ translations
     - %%_number sec.: %%_number сек.
     - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-ji}
     - A new password was sent to the selected Email.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
-    - access allowed by permission "%%_permission": доступ дазволены па дазваленні "%%_permission"
+    - access allowed by permission "%%_permission": доступ дазволены па дазволу "%%_permission"
     - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
     - access allowed by user ID "%%_user": доступ дазволены па ID карыстальніка "%%_user"
     - Access forbidden: Доступ забаронены
@@ -46,6 +46,7 @@ translations
     - apply: прымяніць
     - Architecture: Архітэктура
     - Attribute: Атрыбут
+    - Attributes (example of working with "data"-format): Атрыбуты (прымер працы з "data"-фарматам)
     - Attributes: Атрыбуты
     - audio "%%_audio": аўдыё "%%_audio"
     - audio: аўдыё
@@ -59,7 +60,7 @@ translations
     - Avatar path: Шлях аватара
     - Avatar: Аватар
     - B: Б
-    - Belarusian: Беларускі
+    - Belarusian: Беларуская
     - bind to my IP address: прывязаць да майго IP-адраса
     - Block: Блок
     - Blocking the login for the number of minutes: Блакаванне ўваходу на колькасць хвілін
@@ -134,7 +135,6 @@ translations
     - Data deletion form: Форма выдалення дадзеных
     - Data hash: Хэш дадзеных
     - Data ID: ID дадзеных
-    - Data in "data" format: Дадзеныя ў фармаце "data"
     - Data insertion form: Форма ўстаўкі дадзеных
     - Data management form: Форма кіравання дадзенымі
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
@@ -163,10 +163,12 @@ translations
     - Diagrams: Дыяграмы
     - Digit: Лічба
     - Directory for temporary upload is missing.: Каталог для часовай загрузкі адсутнічае.
-    - Directory permissions should be checked.: Дазвалення каталога павінны быць правераны.
+    - Directory permissions should be checked.: Дазволы каталога павінны быць правераны.
     - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - Do not forget to save the changes!: Не забудзьце захаваць змены!
     - do not show: не паказваць
+    - download: спампаваць
+    - Download: Спампаваць
     - Driver error code\: %%_code: Код памылкі драйвера: %%_code
     - Driver error text\: %%_text: Тэкст памылкі драйвера: %%_text
     - Driver is not selected!: Драйвер не абраны!
@@ -176,7 +178,7 @@ translations
     - Each item must be contained in the "%%_root" array.: Кожны элемент павінен знаходзіцца ў масіве "%%_root".
     - edit: рэдагаваць
     - Edit: Рэдагаваць
-    - Eliminates the possibility of brute-force a password if an attacker knows the Email.: Ухіляе магчымасць падбору паролю калі зламыснік ведае адрас электроннай пошты.
+    - Eliminates the possibility of brute-force a password if an attacker knows the Email.: Ухіляе магчымасць падбору паролю, калі зламыснік ведае адрас электроннай пошты.
     - Eliminates the possibility of registering to a non-existent Email address.: Выключае магчымасць рэгістрацыі на неіснуючы адрас электроннай пошты.
     - Email: Адрас электроннай пошты
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
@@ -276,8 +278,8 @@ translations
     - File not found: Файл не знойдзены
     - file of this type is protected: файл гэтага тыпу абаронены
     - file path: шлях да файла
-    - File permissions (if the file exists) and directory permissions should be checked.: Дазвалення файла (калі файл існуе) і дазвалення каталога павінны быць правераны.
-    - File permissions should be checked.: Дазвалення файла павінны быць правераны.
+    - File permissions (if the file exists) and directory permissions should be checked.: Дазволы файла (калі файл існуе) і дазволы каталога павінны быць правераны.
+    - File permissions should be checked.: Дазволы файла павінны быць правераны.
     - File types: Тыпы файлаў
     - File upload was stopped by PHP extension.: Загрузка файла была спыненая PHP-пашырэннем.
     - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
@@ -326,13 +328,15 @@ translations
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна змяшчаць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Group: Група
+    - Hash sum (md5): Хэш-сума (md5)
+    - Hash sum: Хэш-сума
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
     - HTTPS is required: Патрабуецца HTTPS
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - If a domain is specified, then it and its subdomains are used.: Калі дамен зададзены, то выкарыстоўваецца ён і яго поддомены.
     - If no domain is specified, then the current domain is used, excluding subdomains.: Калі дамен не зададзены, то выкарыстоўваецца бягучы дамен без уліку паддаменаў.
-    - Ignore this email if you have not completed any registration on %%_domain.: Праігнаруйце гэты ліст калі Вы не ажыццяўлялі ніякай рэгістрацыі на %%_domain.
+    - Ignore this email if you have not completed any registration on %%_domain.: Праігнаруйце гэты ліст, калі Вы не ажыццяўлялі ніякай рэгістрацыі на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: У рэжыме "Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі" зламыснік можа паслаць мноства падробленых ананімных галасоў!
     - Incorrect email or password!: Памылковы адрас электроннай пошты ці пароль!
     - Incorrect value will make it impossible to log in!: Няправільнае значэнне прывядзе да немагчымасці ўваходу ў сістэму!
@@ -495,10 +499,11 @@ translations
     - Module for testing.: Модуль для тэставання.
     - Module for translation into Belarusian language.: Модуль для перакладу на беларускую мову.
     - Module for translation into Russian language.: Модуль для перакладу на рускую мову.
+    - Module for translation into Ukrainian language.: Модуль для перакладу на ўкраінскую мову.
     - Module for working with navigation elements.: Модуль для працы з элементамі навігацыі.
     - Module for working with pages.: Модуль для працы са старонкамі.
     - Module for working with polls.: Модуль для працы з апытаннямі.
-    - Module for working with user accounts and permissions.: Модуль для працы з акаўнтамі і дазваленнямі карыстальнікаў.
+    - Module for working with user accounts and permissions.: Модуль для працы з акаўнтамі і дазволамі карыстальнікаў.
     - Module ID: ID модуля
     - Module installation form: Форма усталёўкі модуляў
     - Module: Модуль
@@ -531,6 +536,7 @@ translations
     - no url: няма url
     - no: не
     - No: Не
+    - Number of downloads: Колькасць загрузак
     - Number of login attempts: Колькасць спроб ўваходу
     - Number: Нумар
     - Object: Аб'ект
@@ -563,11 +569,11 @@ translations
     - path: шлях
     - Path: Шлях
     - pcs.: шт.
-    - Permission ID: ID дазвалення
-    - Permission: Дазваленне
-    - Permission\: select: Дазваленне: абраць
-    - Permission\: update: Дазваленне: абнавіць
-    - Permissions: Дазваленні
+    - Permission ID: ID дазволу
+    - Permission: Дазвол
+    - Permission\: select: Дазвол: абраць
+    - Permission\: update: Дазвол: абнавіць
+    - Permissions: Дазволы
     - PHP CURL version: PHP CURL версія
     - PHP dependencies: PHP-залежнасці
     - PHP extension "%%_extension" is not available!: PHP-пашырэнне "%%_extension" недаступна!
@@ -630,18 +636,18 @@ translations
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
     - Relation: Сувязь
-    - Relation\: Role ↔ Permission: Сувязь: Роля ↔ Дазваленне
-    - Relation\: Role ↔ Permission\: delete: Сувязь: Роля ↔ Дазваленне: выдаліць
-    - Relation\: Role ↔ Permission\: insert: Сувязь: Роля ↔ Дазваленне: уставіць
-    - Relation\: Role ↔ Permission\: select: Сувязь: Роля ↔ Дазваленне: абраць
-    - Relation\: Role ↔ Permission\: update: Сувязь: Роля ↔ Дазваленне: абнавіць
+    - Relation\: Role ↔ Permission: Сувязь: Роля ↔ Дазвол
+    - Relation\: Role ↔ Permission\: delete: Сувязь: Роля ↔ Дазвол: выдаліць
+    - Relation\: Role ↔ Permission\: insert: Сувязь: Роля ↔ Дазвол: уставіць
+    - Relation\: Role ↔ Permission\: select: Сувязь: Роля ↔ Дазвол: абраць
+    - Relation\: Role ↔ Permission\: update: Сувязь: Роля ↔ Дазвол: абнавіць
     - Relation\: Role ↔ User: Сувязь: Роля ↔ Карыстальнік
     - Relation\: Role ↔ User\: delete: Сувязь: Роля ↔ Карыстальнік: выдаліць
     - Relation\: Role ↔ User\: insert: Сувязь: Роля ↔ Карыстальнік: уставіць
     - Relation\: Role ↔ User\: select: Сувязь: Роля ↔ Карыстальнік: абраць
     - Relation\: Role ↔ User\: update: Сувязь: Роля ↔ Карыстальнік: абнавіць
     - Relations: Сувязі
-    - Relations\: Role ↔ Permission: Сувязі: Роля ↔ Дазваленне
+    - Relations\: Role ↔ Permission: Сувязі: Роля ↔ Дазвол
     - Relations\: Role ↔ User: Сувязі: Роля ↔ Карыстальнік
     - Reload this page and make changes again to prevent inconsistency.: Перазагрузіце гэтую старонку і зноў унясіце змены, каб прадухіліць нязладжанасць дзеянняў.
     - Report: Справаздача
@@ -662,7 +668,7 @@ translations
     - roles: ролі
     - Roles: Ролі
     - Row ID: ID радка
-    - Russian: Рускі
+    - Russian: Руская
     - save: захаваць
     - search: пошук
     - Search: Пошук
@@ -684,12 +690,13 @@ translations
     - selections: выбаркі
     - Selections: Выбаркі
     - send: адправіць
+    - SEO\: manage: SEO: кіраваць
     - Sequence: Паслядоўнасць
     - Server time zone: Гадзінны пояс сервера
     - Server: Сервер
     - Service: Абслугоўванне
-    - Session duration in days when "long session" is not selected: Працягласць сеансу ў днях калі не абрана "працяглы сеанс"
-    - Session duration in days when "long session" is selected: Працягласць сеансу ў днях калі абрана "працяглы сеанс"
+    - Session duration in days when "long session" is not selected: Працягласць сеансу ў днях, калі не абрана "працяглы сеанс"
+    - Session duration in days when "long session" is selected: Працягласць сеансу ў днях, калі абрана "працяглы сеанс"
     - Session with ID = "%%_id" was deleted.: Сеанс з ID = "%%_id" быў выдалены.
     - Session with ID = "%%_id" was not deleted!: Сеанс з ID = "%%_id" не быў выдалены!
     - Session: Сеанс
@@ -748,7 +755,7 @@ translations
     - Text\: insert: Тэкст: уставіць
     - Text\: select: Тэкст: абраць
     - Text\: update: Тэкст: абнавіць
-    - Texts: Тэкст
+    - Texts: Тэксты
     - The class name has been changed to "%%_new_class_name".: Імя класа было зменена на "%%_new_class_name".
     - The following related items will also be deleted\:: Таксама будуць выдалены наступныя звязаныя элементы:
     - The letter was not accepted for transmission!: Ліст не быў прыняты да перадачы!
@@ -792,6 +799,7 @@ translations
     - type: тып
     - Type: Тып
     - Types: Типы
+    - Ukrainian: Украінская
     - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Выдаліце модулі, у якім былі выяўленыя залежнасці, і затым Вы зможаце ўсталяваць модуль "%%_title".
     - uninstall: выдаліць
     - Uninstall: Выдаліць
@@ -805,7 +813,7 @@ translations
     - User ID: ID карыстальніка
     - User information: Інфармацыя аб карыстальніку
     - User name: Імя карыстальніка
-    - User permissions: Дазвалення карыстальніка
+    - User permissions: Дазволы карыстальніка
     - User roles: Ролі карыстальніка
     - User type: Тып карыстальніка
     - User update form: Форма абнаўлення карыстальніка

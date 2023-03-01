@@ -5,4 +5,4 @@ module|module_embedded
   description: Module for working with navigation elements.
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   deploy_weight: +500
-  version: 0.902
+  version: 0.903

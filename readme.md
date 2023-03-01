@@ -71,7 +71,7 @@ have an individual layout. Thus, the markup of any page can be unique.
 Localization
 ---------------------------------------------------------------------
 
-The system already has translations of its interface into Belarusian and Russian languages.
+The system already has translations of its interface into Belarusian, Russian, Ukrainian.
 In the administrative interface of the system in the section "Management → Locale"
 you can set the main language of the system interface and in the section
 "Management → Data → Content → Pages" for each page, you can set its own

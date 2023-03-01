@@ -4,4 +4,4 @@
     background: url('pictures/flag-neutral-mini.svg') no-repeat 0 2px}
 
   [role='tree'][data-id='languages'] li[data-id='language_en'] {
-    background: url('pictures/flag-uk-mini.svg') no-repeat 0 2px}
+    background: url('pictures/flag-gb-mini.svg') no-repeat 0 2px}

@@ -1,0 +1,6 @@
+languages
+- uk|language
+    code: uk
+    title_en: Ukrainian
+    title_native: Українська
+    license_path: system/module_locale/module_translation_uk/licenses/license-uk.md

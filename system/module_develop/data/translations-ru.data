@@ -45,7 +45,7 @@ translations
     - Console: Консоль
     - Constraints: Ограничения
     - CPU load time: Время загрузки процессора
-    - Current release of the project "%%_id_project_context": Текущий выпуск проекта "%%_id_project_context"
+    - Current release of the project %%_project_title_context: Текущий выпуск проекта %%_project_title_context
     - Decorators dynamic: Декораторы динамические
     - Decorators static: Декораторы статические
     - default text: текст по умолчанию
@@ -100,8 +100,6 @@ translations
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - Handler: Обработчик
-    - Hash sum (md5): Хэш-сумма (md5)
-    - Hash sum: Хэш-сумма
     - head cell #%%_number: заглавная ячейка №%%_number
     - Header %%_size: Заголовок %%_size
     - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Если атрибут "step" равен "60", тогда секунды ":00" будут обрезаться.
@@ -137,7 +135,6 @@ translations
     - namespace: пространство имён
     - NoSQL data: NoSQL данные
     - Notice message #%%_number.: Уведомление №%%_number.
-    - Number of downloads: Количество загрузок
     - Ok message #%%_number.: Хорошее сообщение №%%_number.
     - Option 1 (selected): Опция 1 (выбрана)
     - Option 2 (disabled): Опция 2 (отключена)
@@ -176,7 +173,7 @@ translations
     - Relation (tree view): Связь (в виде дерева)
     - Release (current): Выпуск (текущий)
     - Release: Выпуск
-    - Releases of the project "%%_id_project_context": Выпуски проекта "%%_id_project_context"
+    - Releases of the project %%_project_title_context: Выпуски проекта %%_project_title_context
     - Releases: Выпуски
     - repeat %%_cur from %%_max: повтор %%_cur из %%_max
     - result of checking is = "%%_result": результат проверки = "%%_result"
@@ -214,8 +211,8 @@ translations
     - text with translation: текст с переводом
     - The report was generated in real time.: Отчёт был создан в режиме реального времени.
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
-    - The test was failed!: Тест не удался!
-    - The test was successful.: Тест выполнен успешно.
+    - The test was failed!: Тест был провален!
+    - The test was successful.: Тест был успешным.
     - The test will not succeed if the "Registration via Email" option is enabled!: Тест не выполниться успешно если включена опция "Регистрация через электронную почту"!
     - there will be try to delete all permissions: будет попытка удалить все разрешения
     - there will be try to delete all roles: будет попытка удалить все роли
