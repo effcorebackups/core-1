@@ -18,7 +18,7 @@ forms
             description_state: opened
             element_attributes
             - name: visibility
-            values
+            items
             - not_selected: - select -
             - 0: do not show
             - 1: show for admin

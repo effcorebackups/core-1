@@ -80,9 +80,9 @@ namespace effcore {
       $this->fields['data'] = new \stdClass;
       $this->fields['data']->title = 'Data';
       $this->fields['data']->type = 'blob';
-      $this->fields['data']->filter_select = 'unserialize';
-      $this->fields['data']->filter_insert = '\\effcore\\core::data_serialize';
-      $this->fields['data']->filter_update = '\\effcore\\core::data_serialize';
+      $this->fields['data']->converter_on_select = 'unserialize';
+      $this->fields['data']->converter_on_insert = '\\effcore\\core::data_serialize';
+      $this->fields['data']->converter_on_update = '\\effcore\\core::data_serialize';
     }
   }
 

@@ -7,9 +7,9 @@ module|module
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-ru-mini.svg
   enabled: yes
-  version: 0.903
+  version: 0.904
   dependencies
     system
-    - locale: 0.903
+    - locale: 0.904
   urls
   - settings page: /manage/locale

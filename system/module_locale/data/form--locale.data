@@ -7,8 +7,8 @@ forms
     children
     - settings|fieldset
         children
-        - language|field_language
-        - timezone_server|field_timezone
+        - language|field_select_language
+        - timezone_server|field_select_timezone
             title: Server time zone
             element_attributes
             - name: timezone_server

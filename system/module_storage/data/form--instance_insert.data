@@ -21,10 +21,12 @@ forms
         title: insert
         attributes
         - value: insert
+        - disabled: true
     - button_insert_and_update|button
         title: insert and update
         attributes
         - value: insert_and_update
+        - disabled: true
         weight: -500
     - button_cancel|button
         title: cancel
@@ -32,4 +34,5 @@ forms
         break_on_validate: true
         attributes
         - value: cancel
+        - disabled: true
         weight: -520

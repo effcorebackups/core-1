@@ -2,6 +2,17 @@ translations
 - ru|translation
     code: ru
     data
+    - Africa: Африка
+    - America: Америка
+    - Antarctica: Антарктида
+    - Arctic: Арктика
+    - Asia: Азия
+    - Atlantic: Атлантика
+    - Australia: Австралия
+    - Europe: Европа
+    - Indian: Индия
+    - Pacific: Тихий океан
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - - no -: - нет -
     - - root -: - корень -
     - - select -: - выбрать -
@@ -40,9 +51,6 @@ translations
     - Anonymous: Аноним
     - Answer: Ответ
     - Answers: Ответы
-    - apply tokens: применить токены
-    - Apply tokens: Применить токены
-    - apply translation: применить перевод
     - apply: применить
     - Architecture: Архитектура
     - Attribute: Атрибут
@@ -149,6 +157,7 @@ translations
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decorator settings: Настройки оформления
+    - Definition list: Список определений
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - delete: удалить
     - Delete: Удалить
@@ -164,7 +173,6 @@ translations
     - Digit: Цифра
     - Directory for temporary upload is missing.: Каталог для временной загрузки отсутствует.
     - Directory permissions should be checked.: Разрешения каталога должны быть проверены.
-    - Distributed queries are not supported! Selection ID = "%%_id".: Распределённые запросы не поддерживаются! ID выборки = "%%_id".
     - Do not forget to save the changes!: Не забудьте сохранить изменения!
     - do not show: не показывать
     - download: скачать
@@ -188,7 +196,9 @@ translations
     - Entity "%%_entity" was not installed!: Сущность "%%_entity" не была установлена!
     - Entity "%%_entity" was not uninstalled!: Сущность "%%_entity" не была удалена!
     - Entity "%%_entity" was uninstalled.: Сущность "%%_entity" была удалена.
+    - Entity "%%_name" is not available.: Сущность "%%_name" не доступна.
     - entity is embedded: сущность является встроенной
+    - Entity name: Имя сущности
     - Error: Ошибка
     - Error\: %%_error: Ошибка: %%_error
     - event: событие
@@ -370,10 +380,17 @@ translations
     - Interfaces: Интерфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ниже версии %%_number больше не поддерживается!
     - Invalid session was deleted!: Недействительный сеанс был удалён!
+    - Is apply tokens: Применить токены
+    - Is apply translation: Применить перевод
     - Is current: Текущий
+    - Is do not apply formatting: Не применять форматирование
     - is embedded: встроенный
     - Is embedded: Встроенный
+    - Is enabled: Включенный
     - Is fixed IP: Фикс. IP
+    - Is not visible: Не видно
+    - Is trimmed: Обрезано
+    - Is visible: Видно
     - It is recommended that you change your password directly on %%_domain.: Рекомендуется изменить пароль непосредственно на %%_domain.
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" находится за пределами допустимых границ!
     - Item "%%_dpath_value" must be of type "%%_type"!: Элемент "%%_dpath_value" должен быть типа "%%_type"!
@@ -465,6 +482,7 @@ translations
     - management for this entity is not available: управление для этой сущности недоступно
     - Management: Управление
     - Managers: Управляющие
+    - Mapping: Картографирование
     - Match: Соответствие
     - Maximum number of votes: Максимальное число голосов
     - Maximum width: Максимальная ширина
@@ -525,15 +543,15 @@ translations
     - nickname: псевдоним
     - Nickname: Псевдоним
     - No additional parameters.: Нет дополнительных параметров.
-    - No fields for select from storage! Selection ID = "%%_id".: Нет полей для выборки из хранилища! ID выборки = "%%_id".
-    - no fields: нет полей
-    - no items: нет элементов
-    - no modules: нет модулей
+    - No fields.: Нет полей.
+    - No items.: Нет элементов.
+    - No modules.: Нет модулей.
     - No one item was selected!: Ни один элемент не был выбран!
-    - no Selection with ID = "%%_id": нет выборки с ID = "%%_id"
+    - No restrictions.: Нет ограничений.
+    - No Selection with ID = "%%_id".: Нет выборки с ID = "%%_id".
     - NO TITLE: НЕТ ЗАГОЛОВКА
-    - no updates: нет обновлений
-    - no url: нет url
+    - No updates.: Нет обновлений.
+    - No URL.: Нет URL.
     - no: нет
     - No: Нет
     - Number of downloads: Количество загрузок
@@ -659,6 +677,7 @@ translations
     - right to left: справа налево
     - robots.txt editing form: Форма редактирования robots.txt
     - Role ID: ID роли
+    - Role IDs: ID ролей
     - role: роль
     - Role: Роль
     - Role\: delete: Роль: удалить
@@ -680,6 +699,7 @@ translations
     - select all rows: выбрать все строки
     - select: выбрать
     - Select: Выбрать
+    - Selection ID = "%%_id".: ID выборки = "%%_id".
     - Selection list: Список выбора
     - selection: выборка
     - Selection: Выборка
@@ -733,6 +753,8 @@ translations
     - System was not installed!: Система не была установлена!
     - System: Система
     - T: Т
+    - Table (adaptive): Таблица (адаптивная)
+    - Table (DL): Таблица (DL)
     - Table prefix: Префикс таблиц
     - Table: Таблица
     - Table\: row even: Таблица: строка чётная
@@ -743,6 +765,8 @@ translations
     - Tabs\: link: Вкладки: ссылка
     - Telephone number: Номер телефона
     - Template "%%_name" was not found!: Шаблон "%%_name" не был найден!
+    - Template (item): Шаблон (элемент)
+    - Template: Шаблон
     - Templates: Шаблоны
     - Test execution form: Форма выполнения теста
     - Test: Тест
@@ -833,6 +857,7 @@ translations
     - val.: знач.
     - Val.: Знач.
     - Value in pixels.: Величина в пикселях.
+    - Value settings: Настройки значения
     - Value was trimmed to the required length!: Значение было обрезано до требуемой длины!
     - Value: Значение
     - Values: Значения
@@ -847,6 +872,7 @@ translations
     - Videos: Видео
     - View customization form: Форма настройки вида
     - View more: Смотреть больше
+    - View type: Тип вида
     - View: Вид
     - View\: manage: Вид: управлять
     - Visibility: Видимость
@@ -866,8 +892,8 @@ translations
     - wrong cron key: неправильный ключ cron
     - wrong entity name: неправильное имя сущности
     - wrong instance key: неправильный ключ экземпляра
-    - wrong instance keys: неправильные ключи экземпляра
     - wrong management group: неправильная группа управления
+    - wrong number of instance keys: неправильное количество ключей экземпляра
     - wrong pager value: неправильное значение пейджера
     - wrong user nickname: неправильный псевдоним пользователя
     - yes: да

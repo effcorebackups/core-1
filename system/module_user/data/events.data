@@ -18,6 +18,10 @@ events
       for: instance_insert
       weight: +300
       handler: \effcore\modules\user\events_form_instance_insert::on_build
+  - instance_update__user|event
+      for: instance_update
+      weight: +300
+      handler: \effcore\modules\user\events_form_instance_update::on_build
   on_form_init
   - login|event
       for: login

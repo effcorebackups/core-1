@@ -28,7 +28,7 @@ namespace effcore\modules\core {
     $modules  = module::get_all();
     $groups   = module::groups_get();
     $modules_by_groups = [];
-    core::array_sort_text($groups);
+    core::array_sort($groups);
     foreach ($groups as $c_group_id => $c_group_title) {
       $c_fieldset = new fieldset($c_group_title);
       $c_fieldset->state = 'closed';
@@ -36,7 +36,7 @@ namespace effcore\modules\core {
       foreach ($modules as $c_module)
         if ($c_group_id === $c_module->group_get_id())
           $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
-      core::array_sort_by_text_property(
+      core::array_sort_by_string(
         $modules_by_groups[$c_group_id]
       );
     }
@@ -74,9 +74,9 @@ namespace effcore\modules\core {
         if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'bundle-build'      ], [new markup('x-title', [                       ], 'bundle build number'       ), new markup('x-value', [],                 module::bundle_get($c_module->id_bundle)->build                                                                                         )]), 'bundle_build'      );
         if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'bundle-title'      ], [new markup('x-title', [                       ], 'bundle title'              ), new markup('x-value', [],                 module::bundle_get($c_module->id_bundle)->title                                                                                         )]), 'bundle_title'      );
         if ($c_module->id_bundle                              ) $c_info->child_insert(new markup('x-param', ['data-type' => 'bundle-description'], [new markup('x-title', [                       ], 'bundle description'        ), new markup('x-value', [],                 module::bundle_get($c_module->id_bundle)->description                                                                                   )]), 'bundle_description');
-        if ($c_required_for_sys_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'required-for-sys'  ], [new markup('x-title', [                       ], 'required for modules'      ), new markup('x-value', [],                                    $c_required_for_sys_items                                                                                            )]), 'required_for_sys'  );
-        if ($c_dependencies_sys_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-php'  ], [new markup('x-title', [                       ], 'depend from modules'       ), new markup('x-value', [],                                    $c_dependencies_sys_items                                                                                            )]), 'dependencies_sys'  );
         if ($c_dependencies_php_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-sys'  ], [new markup('x-title', [                       ], 'depend from PHP extensions'), new markup('x-value', [],                                    $c_dependencies_php_items                                                                                            )]), 'dependencies_php'  );
+        if ($c_dependencies_sys_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'dependencies-php'  ], [new markup('x-title', [                       ], 'depend from modules'       ), new markup('x-value', [],                                    $c_dependencies_sys_items                                                                                            )]), 'dependencies_sys'  );
+        if ($c_required_for_sys_items->children_select_count()) $c_info->child_insert(new markup('x-param', ['data-type' => 'required-for-sys'  ], [new markup('x-title', [                       ], 'required for modules'      ), new markup('x-value', [],                                    $c_required_for_sys_items                                                                                            )]), 'required_for_sys'  );
         if (isset($c_module->urls) && is_array($c_module->urls))
           foreach ($c_module->urls as $c_title => $c_url)
             if (isset($enabled[$c_module->id]))
@@ -142,7 +142,7 @@ namespace effcore\modules\core {
         $modules_to_install = [];
         $modules_to_include = [];
       # collect information
-        core::array_sort_by_property($modules, 'deploy_weight');
+        core::array_sort_by_number($modules, 'deploy_weight');
         foreach ($modules as $c_module) {
           if (!isset($embedded[$c_module->id])) {
             if ($items['#is_enabled:'.$c_module->id]->checked_get() !== false && isset($enabled[$c_module->id]) === false) {$modules_to_enable [$c_module->id] = $c_module; $modules_to_include[$c_module->id] = $c_module->path;}

@@ -319,6 +319,12 @@ namespace effcore {
     }
   }
 
+  static function data_is_serialized($data) {
+    if ($data === 'b:0;') return true;
+    if (is_string($data) && @unserialize($data, ['allowed_classes' => ['stdClass']]) !== false) return true;
+    return false;
+  }
+
   static function data_serialize($data, $is_optimized = true) {
     $result = '';
     switch (gettype($data)) {
@@ -495,40 +501,44 @@ namespace effcore {
   # │                 ▼ -100            │  │         │  │        │  │       │  │      │  │     │  │    │  │   │  │  │  │9│
   # └───────────────────────────────────┘  └─────────┘  └────────┘  └───────┘  └──────┘  └─────┘  └────┘  └───┘  └──┘  └─┘
 
-  static function array_sort_text(&$array, $order = 'd', $translated = true) {
+  static function array_sort(&$array, $order = 'd', $translated = true) {
     uasort($array, function ($a, $b) use ($order, $translated) {
       if ($order === 'a' && $translated === false) return                    $b  <=>                    $a;
       if ($order === 'd' && $translated === false) return                    $a  <=>                    $b;
-      if ($order === 'a' && $translated)           return translation::apply($b) <=> translation::apply($a);
-      if ($order === 'd' && $translated)           return translation::apply($a) <=> translation::apply($b);
+      if ($order === 'a' && $translated !== false) return translation::apply($b) <=> translation::apply($a);
+      if ($order === 'd' && $translated !== false) return translation::apply($a) <=> translation::apply($b);
     });
     return $array;
   }
 
-  static function array_sort_by_text_property(&$array, $property = 'title', $order = 'd', $translated = true) {
-    uasort($array, function ($a, $b) use ($property, $order, $translated) {
-      if ($order === 'a' && $translated === false) return                    $b->{$property}  <=>                    $a->{$property};
-      if ($order === 'd' && $translated === false) return                    $a->{$property}  <=>                    $b->{$property};
-      if ($order === 'a' && $translated)           return translation::apply($b->{$property}) <=> translation::apply($a->{$property});
-      if ($order === 'd' && $translated)           return translation::apply($a->{$property}) <=> translation::apply($b->{$property});
+  static function array_sort_by_string(&$array, $key = 'title', $order = 'd', $translated = true) {
+    uasort($array, function ($a, $b) use ($key, $order, $translated) {
+      if ($order === 'a' && $translated === false) return                     (is_object($b) ? $b->{$key} : $b[$key])   <=>                     (is_object($a) ? $a->{$key} : $a[$key])  ;
+      if ($order === 'd' && $translated === false) return                     (is_object($a) ? $a->{$key} : $a[$key])   <=>                     (is_object($b) ? $b->{$key} : $b[$key])  ;
+      if ($order === 'a' && $translated !== false) return translation::apply( (is_object($b) ? $b->{$key} : $b[$key]) ) <=> translation::apply( (is_object($a) ? $a->{$key} : $a[$key]) );
+      if ($order === 'd' && $translated !== false) return translation::apply( (is_object($a) ? $a->{$key} : $a[$key]) ) <=> translation::apply( (is_object($b) ? $b->{$key} : $b[$key]) );
     });
     return $array;
   }
 
-  static function array_sort_by_property(&$array, $property, $order = 'a') {
-    uasort($array, function ($a, $b) use ($property, $order) {
-      if ($order === 'a') return $b->{$property} <=> $a->{$property};
-      if ($order === 'd') return $a->{$property} <=> $b->{$property};
+  static function array_sort_by_number(&$array, $key = 'weight', $order = 'a') {
+    $increments = []; # note: with preservation of order for equal values
+    foreach ($array as &$c_item) {
+      $c_value = is_object($c_item) ? $c_item->{$key} : $c_item[$key];
+      if ($order === 'a') $increments[$c_value] = array_key_exists($c_value, $increments) ? $increments[$c_value] - .0001 : 0;
+      if ($order === 'd') $increments[$c_value] = array_key_exists($c_value, $increments) ? $increments[$c_value] + .0001 : 0;
+      if (is_object($c_item)) $c_item->_synthetic_weight   = $c_value + $increments[$c_value];
+      else                    $c_item['_synthetic_weight'] = $c_value + $increments[$c_value];
+    }
+    uasort($array, function ($a, $b) use ($order) {
+      if ($order === 'a') return (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']) <=> (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']);
+      if ($order === 'd') return (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']) <=> (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']);
     });
+    foreach ($array as &$c_item) {
+      if (is_object($c_item)) unset($c_item->_synthetic_weight);
+      else                    unset($c_item['_synthetic_weight']);
+    }
     return $array;
-  }
-
-  static function array_sort_by_weight(&$array, $corrector = .001) {
-    $c_weight = 0;                # if $array[n].weight === 0 && $array[n+1].weight === 0, the relative
-    foreach ($array as $c_item)   # order of these items in the sorted array will be undefined.
-      if ($c_item->weight === 0)  # we should preprocess items with weight = 0 before sorting
-          $c_item->weight = $c_weight -= $corrector;
-    return static::array_sort_by_property($array, 'weight', 'a');
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -885,17 +895,28 @@ namespace effcore {
     return substr(static::hash_get($data), 0, $length);
   }
 
+  static function random_bytes_generate($length = 8, $characters = '0123456789') {
+    $result = '';
+    for ($i = 0; $i < $length; $i++)
+      $result.= $characters[random_int(0, strlen($characters) - 1)];
+    return $result;
+  }
+
   static function random_part_get() {
     $hex_time = str_pad(dechex(time()),                        8, '0', STR_PAD_LEFT);
     $hex_rand = str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);
     return $hex_time.$hex_rand;
   }
 
-  static function random_bytes_generate($length = 8, $characters = '0123456789') {
-    $result = '';
-    for ($i = 0; $i < $length; $i++)
-      $result.= $characters[random_int(0, strlen($characters) - 1)];
-    return $result;
+  static function number_part_get($name, $keys) {
+    $used_numbers = [];
+    foreach ($keys as $c_name) {
+      if (strpos($c_name, $name) === 0) {
+        $suffix = substr($c_name, strlen($name));
+        if ((string)$suffix === (string)(int)$suffix) {
+          $used_numbers[]= (int)$suffix; }}}
+    if (count($used_numbers) !== 0) return (string)(max($used_numbers) + 1);
+    if (count($used_numbers) === 0) return '2';
   }
 
   #######################

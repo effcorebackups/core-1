@@ -51,6 +51,12 @@ events
   - install|event
       for: install
       handler: \effcore\modules\core\events_form_install::on_build
+  - modules_uninstall|event
+      for: modules_uninstall
+      handler: \effcore\modules\core\events_form_modules_uninstall::on_build
+  - modules_update_data|event
+      for: modules_update_data
+      handler: \effcore\modules\core\events_form_modules_update_data::on_build
   on_form_init
   - install|event
       for: install

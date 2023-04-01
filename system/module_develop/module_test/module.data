@@ -5,9 +5,9 @@ module|module
   group: Develop
   description: Module for testing.
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
-  version: 0.903
+  version: 0.904
   dependencies
     system
-    - develop: 0.903
+    - develop: 0.904
     php
     - curl: 7.1.0

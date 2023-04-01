@@ -1,6 +1,7 @@
 selections
 - instance_select-selection|selection
     id: instance_select-selection
+    main_entity_name: selection
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -12,74 +13,55 @@ selections
           is_apply_tokens: true
           text: %%_selection_selection_id_context
     fields
-    - selection.id
-        type: field
-        entity_name: selection
-        entity_field_name: id
-        weight: 400
-    - selection.title
-        type: field
-        entity_name: selection
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - selection.attributes
-        type: field
-        entity_name: selection
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - selection.created
-        type: field
-        entity_name: selection
-        entity_field_name: created
-        weight: 340
-    - selection.updated
-        type: field
-        entity_name: selection
-        entity_field_name: updated
-        weight: 320
-    - selection.is_embedded
-        type: field
-        entity_name: selection
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 300
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - main_entity_name
+          entity_field_name: main_entity_name
+          weight: 380
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 360
+      - this_attributes
+          entity_field_name: attributes
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-selection|selection
     id: instance_select_multiple-selection
+    main_entity_name: selection
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - selection.id
-        type: field
-        entity_name: selection
-        entity_field_name: id
-        weight: 400
-    - selection.title
-        type: field
-        entity_name: selection
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - selection.created
-        type: field
-        entity_name: selection
-        entity_field_name: created
-        weight: 360
-    - selection.updated
-        type: field
-        entity_name: selection
-        entity_field_name: updated
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - created
+          entity_field_name: created
+          weight: 360
+      - updated
+          entity_field_name: updated
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320

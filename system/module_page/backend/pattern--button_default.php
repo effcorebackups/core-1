@@ -15,7 +15,7 @@ namespace effcore {
     'name'      => 'button'];
 
   function __construct($attributes = [], $weight = 0) {
-    parent::__construct(null, $attributes, [], $weight);
+    parent::__construct(null, $attributes, $weight);
   }
 
   function build() {

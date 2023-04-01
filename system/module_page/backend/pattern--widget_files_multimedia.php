@@ -37,16 +37,16 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {
+  static function value_to_markup($value) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-multimedia-items';
     $decorator->view_type = 'template';
     $decorator->template = 'content';
-    $decorator->template_row = 'gallery_row';
-    $decorator->template_row_mapping = core::array_keys_map(['num', 'type', 'children']);
-    if ($complex) {
-      core::array_sort_by_weight($complex);
-      foreach ($complex as $c_row_id => $c_item) {
+    $decorator->template_item = 'gallery_item';
+    $decorator->mapping = core::array_keys_map(['num', 'type', 'children']);
+    if ($value) {
+      core::array_sort_by_number($value);
+      foreach ($value as $c_row_id => $c_item) {
         if (in_array(media::media_class_get($c_item->object->type), ['picture', 'audio', 'video'])) {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => media::media_class_get($c_item->object->type)],
@@ -79,9 +79,7 @@ namespace effcore {
     $media_type = new micro_tabs;
     $media_type->element_attributes['name'] = 'media_type';
     $media_type->checked['1'] = '1';
-    $media_type->item_insert('Pictures', '1');
-    $media_type->item_insert('Video',    '2');
-    $media_type->item_insert('Audio',    '3');
+    $media_type->items_set(['1' => 'Pictures', '2' => 'Video', '3' => 'Audio']);
     $fieldset_pictures = new fieldset(null, null, ['data-micro_tabs-content-id' => '1', 'data-type' => 'pictures']);
     $fieldset_video    = new fieldset(null, null, ['data-micro_tabs-content-id' => '2', 'data-type' => 'video'   ]);
     $fieldset_audio    = new fieldset(null, null, ['data-micro_tabs-content-id' => '3', 'data-type' => 'audio'   ]);

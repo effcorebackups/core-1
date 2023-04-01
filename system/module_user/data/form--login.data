@@ -12,7 +12,7 @@ forms
         - session_params|group_switchers
             element_attributes
             - name: session_params[]
-            values
+            items
             - is_long_session: long session
             - is_fixed_ip: bind to my IP address
             checked

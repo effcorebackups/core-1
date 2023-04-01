@@ -53,8 +53,8 @@ templates
     name: gallery_embedded
     type: text
     data: <x-gallery data-id="%%_id" %%_attributes>%%_children</x-gallery>
-- gallery_row_embedded
-    name: gallery_row_embedded
+- gallery_item_embedded
+    name: gallery_item_embedded
     type: text
     data: <x-item data-num="%%_num" data-type="%%_type">%%_children</x-item>
 - picture_embedded

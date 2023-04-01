@@ -1,6 +1,7 @@
 selections
 - instance_select-poll|selection
     id: instance_select-poll
+    main_entity_name: poll
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -12,100 +13,67 @@ selections
           is_apply_tokens: true
           text: %%_selection_poll_id_context
     fields
-    - poll.id
-        type: field
-        entity_name: poll
-        entity_field_name: id
-        weight: 400
-    - poll.question
-        type: field
-        entity_name: poll
-        entity_field_name: question
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - poll.expired
-        type: field
-        entity_name: poll
-        entity_field_name: expired
-        weight: 360
-    - poll.diagram_type
-        type: field
-        entity_name: poll
-        entity_field_name: diagram_type
-        settings
-        - filters
-          - 400: translate
-        weight: 340
-    - poll.user_type
-        type: field
-        entity_name: poll
-        entity_field_name: user_type
-        weight: 320
-    - poll.is_multiple
-        type: field
-        entity_name: poll
-        entity_field_name: is_multiple
-        settings
-        - filters
-          - 400: translate
-        weight: 300
-    - poll.is_cancelable
-        type: field
-        entity_name: poll
-        entity_field_name: is_cancelable
-        settings
-        - filters
-          - 400: translate
-        weight: 280
-    - poll.created
-        type: field
-        entity_name: poll
-        entity_field_name: created
-        weight: 260
-    - poll.updated
-        type: field
-        entity_name: poll
-        entity_field_name: updated
-        weight: 240
-    - poll.is_embedded
-        type: field
-        entity_name: poll
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 220
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - question
+          entity_field_name: question
+          is_apply_translation: true
+          weight: 380
+      - expired
+          entity_field_name: expired
+          weight: 360
+      - diagram_type
+          entity_field_name: diagram_type
+          is_apply_translation: true
+          weight: 340
+      - user_type
+          entity_field_name: user_type
+          weight: 320
+      - is_multiple
+          entity_field_name: is_multiple
+          is_apply_translation: true
+          weight: 300
+      - is_cancelable
+          entity_field_name: is_cancelable
+          is_apply_translation: true
+          weight: 280
+      - created
+          entity_field_name: created
+          weight: 260
+      - updated
+          entity_field_name: updated
+          weight: 240
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 220
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-poll|selection
     id: instance_select_multiple-poll
+    main_entity_name: poll
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - poll.id
-        type: field
-        entity_name: poll
-        entity_field_name: id
-        weight: 400
-    - poll.question
-        type: field
-        entity_name: poll
-        entity_field_name: question
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - poll.expired
-        type: field
-        entity_name: poll
-        entity_field_name: expired
-        weight: 360
-    - poll.created
-        type: field
-        entity_name: poll
-        entity_field_name: created
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - question
+          entity_field_name: question
+          is_apply_translation: true
+          weight: 380
+      - expired
+          entity_field_name: expired
+          weight: 360
+      - created
+          entity_field_name: created
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320

@@ -24,6 +24,52 @@ namespace effcore {
   ### attributes ###
   ##################
 
+  function has_attribute($name, $scope = 'attributes') { # CSS equivalent: x-node[attribute]
+    return $this->attribute_select($name, $scope) !== null;
+  }
+
+  function has_attribute_value($name, $value, $scope = 'attributes') { # CSS equivalent: x-node[attribute='value']
+    $attr_value = $this->attribute_select($name, $scope);
+    if ( (is_string($attr_value) || is_numeric($attr_value)) &&
+         (is_string($value     ) || is_numeric($value     )) )
+         return (string)$attr_value === (string)$value;
+    else return false;
+  }
+
+  function has_attribute_value_contains($name, $value, $scope = 'attributes') { # CSS equivalent: x-node[attribute*='value']
+    $attr_value = $this->attribute_select($name, $scope);
+    if ( (is_string($attr_value) || is_numeric($attr_value)) &&
+         (is_string($value     ) || is_numeric($value     )) && strlen($value) && strlen($attr_value) )
+         return strpos((string)$attr_value, (string)$value) !== false;
+    else return false;
+  }
+
+  function has_attribute_value_includes($name, $value, $scope = 'attributes') { # CSS equivalent: x-node[attribute~='value']
+    $attr_value = $this->attribute_select($name, $scope);
+    if ( (is_string($attr_value) || is_numeric($attr_value)) &&
+         (is_string($value     ) || is_numeric($value     )) && strlen($value) && strlen($attr_value) )
+         return (bool)preg_match('%\\b('.preg_quote((string)$value).')\\b%', (string)$attr_value);
+    else return false;
+  }
+
+  function has_attribute_value_starts($name, $value, $scope = 'attributes') { # CSS equivalent: x-node[attribute^='value']
+    $attr_value = $this->attribute_select($name, $scope);
+    if ( (is_string($attr_value) || is_numeric($attr_value)) &&
+         (is_string($value     ) || is_numeric($value     )) && strlen($value) && strlen($attr_value) )
+         return (bool)preg_match('%^'.preg_quote((string)$value).'%', (string)$attr_value);
+    else return false;
+  }
+
+  function has_attribute_value_ends($name, $value, $scope = 'attributes') { # CSS equivalent: x-node[attribute$='value']
+    $attr_value = $this->attribute_select($name, $scope);
+    if ( (is_string($attr_value) || is_numeric($attr_value)) &&
+         (is_string($value     ) || is_numeric($value     )) && strlen($value) && strlen($attr_value) )
+         return (bool)preg_match('%'.preg_quote((string)$value).'$%', (string)$attr_value);
+    else return false;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function attribute_select($name, $scope = 'attributes') {
     return $this->{$scope}[$name] ?? null;
   }

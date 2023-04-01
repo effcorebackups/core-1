@@ -78,7 +78,7 @@ namespace effcore {
     $c_children = $this->children;
     while (true) {
       if (count($c_children)) {
-        core::array_sort_by_weight($c_children);
+        core::array_sort_by_number($c_children);
         $c_found = false;
         foreach ($c_children as $c_child) {
           if ( ($ws_access !== true) ||

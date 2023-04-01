@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_language extends field_select {
+          class field_select_language extends field_select {
 
   public $title = 'Language';
   public $title__not_selected = '- select -';
@@ -18,15 +18,17 @@ namespace effcore {
   function build() {
     if (!$this->is_builded) {
       parent::build();
+      $items = [];
       $languages = language::get_all();
-      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+      core::array_sort_by_string($languages, 'title_en', 'd', false);
       $languages = ['en' => $languages['en']] + $languages;
-      $this->option_insert($this->title__not_selected, 'not_selected');
-      foreach ($languages as $c_code => $c_info) {
-        $this->option_insert(new text_simple(
+      foreach ($languages as $c_code => $c_info)
+        $items[$c_code] = new text_simple(
           $c_code !== 'en' ? $c_info->title_en.' / '.$c_info->title_native.' ('.$c_code.')' :
-                             $c_info->title_en.                            ' ('.$c_code.')'), $c_code); }
-      $this->is_builded = true;
+                             $c_info->title_en.                            ' ('.$c_code.')');
+      $this->items = ['not_selected' => $this->title__not_selected] + $items;
+      $this->is_builded = false;
+      parent::build();
     }
   }
 

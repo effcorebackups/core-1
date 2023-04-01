@@ -31,15 +31,18 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function value_get() { # return: string | __OTHER_TYPE__ (when "value" in *.data is another type)
     $content = $this->child_select('element')->child_select('content');
     if ($this->is_unix_line_endings_get === true) return str_replace(cr.nl, nl, $content->text_select());
     if ($this->is_unix_line_endings_get !== true) return                        $content->text_select();
   }
 
   function value_set($value) {
-           $this->value_set_initial($value);
-    return $this->child_select('element')->child_select('content')->text_update($value);
+    $this->value_set_initial($value);
+    if (is_null   ($value)) return $this->child_select('element')->child_select('content')->text_delete();
+    if (is_int    ($value)) return $this->child_select('element')->child_select('content')->text_update(core::format_number($value));
+    if (is_float  ($value)) return $this->child_select('element')->child_select('content')->text_update(core::format_number($value, core::fpart_max_len));
+    if (is_string ($value)) return $this->child_select('element')->child_select('content')->text_update($value);
   }
 
 }}

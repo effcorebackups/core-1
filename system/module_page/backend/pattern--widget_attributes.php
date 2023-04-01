@@ -19,11 +19,11 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_attributes($complex) {
-    if ($complex) {
-      core::array_sort_by_weight($complex);
+  static function value_to_attributes($value) {
+    if ($value) {
+      core::array_sort_by_number($value);
       $attributes = [];
-      foreach ($complex as $c_item)
+      foreach ($value as $c_item)
         $attributes[$c_item->name] = new text(
                  $c_item->value, [],
           !empty($c_item->is_apply_translation),
@@ -32,10 +32,10 @@ namespace effcore {
     }
   }
 
-  static function complex_value_to_markup($complex) {
-    if ($complex) {
+  static function value_to_markup($value) {
+    if ($value) {
       return core::data_to_attributes(
-        static::complex_value_to_attributes($complex)
+        static::value_to_attributes($value)
       );
     }
   }
@@ -54,40 +54,20 @@ namespace effcore {
     $field_name->maxlength_set($widget->attribute_name_maxlength);
     $field_name->value_set($item->name);
   # control for attribute value
-    $field_value = new field_text('Val.', null, [], +380);
-    $field_value->attributes['data-style'] = 'inline';
-    $field_value->description_state = 'hidden';
-    $field_value->cform = $widget->cform;
+    $field_value = new widget_text_object;
+    $field_value->name_complex = $widget->name_get_complex().'__'.$c_row_id;
+    $field_value->field_text_title = null;
+    $field_value->field_text_maxlength = $widget->attribute_value_maxlength;
+    $field_value->field_text_required = false;
     $field_value->build();
-    $field_value->name_set($widget->name_get_complex().'__value__'.$c_row_id);
-    $field_value->maxlength_set($widget->attribute_value_maxlength);
-    $field_value->value_set($item->value);
-    $field_value->required_set(false);
-  # control for translation status
-    $field_is_apply_translation = new field_checkbox('Tr.', null, [], +360);
-    $field_is_apply_translation->attributes['data-style'] = 'inline';
-    $field_is_apply_translation->attribute_insert('title', new text('apply translation'), 'element_attributes');
-    $field_is_apply_translation->cform = $widget->cform;
-    $field_is_apply_translation->build();
-    $field_is_apply_translation->name_set($widget->name_get_complex().'__is_apply_translation__'.$c_row_id);
-    $field_is_apply_translation->checked_set(!empty($item->is_apply_translation));
-  # control for tokens status
-    $field_is_apply_tokens = new field_checkbox('To.', null, [], +340);
-    $field_is_apply_tokens->attributes['data-style'] = 'inline';
-    $field_is_apply_tokens->attribute_insert('title', new text('apply tokens'), 'element_attributes');
-    $field_is_apply_tokens->cform = $widget->cform;
-    $field_is_apply_tokens->build();
-    $field_is_apply_tokens->name_set($widget->name_get_complex().'__is_apply_tokens__'.$c_row_id);
-    $field_is_apply_tokens->checked_set(!empty($item->is_apply_tokens));
+    $field_value->value_set(new text($item->value, [],
+      !empty($item->is_apply_translation),
+      !empty($item->is_apply_tokens)));
   # relate new controls with the widget
-    $widget->controls['#name__'.                $c_row_id] = $field_name;
-    $widget->controls['#value__'.               $c_row_id] = $field_value;
-    $widget->controls['#is_apply_translation__'.$c_row_id] = $field_is_apply_translation;
-    $widget->controls['#is_apply_tokens__'.     $c_row_id] = $field_is_apply_tokens;
-    $result->child_insert($field_name,                 'name');
-    $result->child_insert($field_value,                'value');
-    $result->child_insert($field_is_apply_translation, 'is_apply_translation');
-    $result->child_insert($field_is_apply_tokens,      'is_apply_tokens');
+    $widget->controls['#name__'. $c_row_id] = $field_name;
+    $widget->controls['#value__'.$c_row_id] = $field_value;
+    $result->child_insert($field_name,  'field_name');
+    $result->child_insert($field_value, 'field_value');
     return $result;
   }
 
@@ -116,11 +96,13 @@ namespace effcore {
   static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
-      $c_item->weight               = (int)$widget->controls['#weight__'.               $c_row_id]->value_get();
-      $c_item->name                 =      $widget->controls['#name__'.                 $c_row_id]->value_get();
-      $c_item->value                =      $widget->controls['#value__'.                $c_row_id]->value_get();
-      $c_item->is_apply_translation =      $widget->controls['#is_apply_translation__'. $c_row_id]->checked_get();
-      $c_item->is_apply_tokens      =      $widget->controls['#is_apply_tokens__'.      $c_row_id]->checked_get(); }
+      $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
+      $c_item->name   =      $widget->controls['#name__'.  $c_row_id]->value_get();
+      $c_value        =      $widget->controls['#value__'. $c_row_id]->value_get();
+      if ($c_value instanceof text) {
+        $c_item->value                = $c_value->text;
+        $c_item->is_apply_translation = $c_value->is_apply_translation;
+        $c_item->is_apply_tokens      = $c_value->is_apply_tokens; }}
     $widget->items_set($items);
   }
 

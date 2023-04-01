@@ -27,7 +27,7 @@ namespace effcore {
           $c_color_value     = $c_color->value_hex ?: 'transparent';
           $c_element_attributes = [
             'value' => $c_color_id,
-            'title' => (new text('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color_id, 'value' => $c_color_value]))->render(),
+            'title' => new text('color ID = "%%_id" and value = "%%_value"', ['id' => $c_color_id, 'value' => $c_color_value]),
             'style' => ['background-color: '.$c_color_value_hex]];
           $c_field                     = new $this->field_class;
           $c_field->tag_name           = $this->field_tag_name;

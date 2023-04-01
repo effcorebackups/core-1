@@ -81,7 +81,9 @@
   x-field [data-field-title] {display: block; font-size: 1.2em}
   x-container {display: block; margin: 20px 0}
 
-  x-field[data-type^='file']             x-widget[data-type^='delete'] x-item {display: block; margin-left: 5px}
+  x-field[data-type^='file'] input[type='file'] {padding: 8px}
+  x-field[data-type^='file'] button[data-style~='insert'] {margin: 5px 5px 5px 10px}
+  x-field[data-type^='file']             x-widget[data-type^='delete'] x-item {display: block; margin: 5px}
   x-field[data-type^='file']             x-widget[data-type^='delete'] x-item button[data-style~='delete'] {margin: 0 10px}
   x-field[data-type^='file']             x-widget[data-type^='delete'] x-item img[data-type='thumbnail'] {margin: 2px 10px 2px 0; vertical-align: middle}
   x-field[data-type^='file'][data-debug] x-widget[data-type^='delete+fin'] {min-height: 10px; border-left: 10px solid %%_color__ok}
@@ -90,7 +92,7 @@
   x-field[data-type^='file']             button[data-style~='insert'] {border-radius: 5px}
 
   x-field[data-style~='inline']                    {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
-  x-field[data-style~='inline'] [data-field-title] {display: inline-block; margin: 2px 10px 2px 0; vertical-align: middle}
+  x-field[data-style~='inline'] [data-field-title] {display: inline-block; margin: 0   10px 0   0; vertical-align: middle}
   x-field[data-style~='inline'] input {margin: 0}
   x-field[data-style~='inline'][data-type='checkbox'] {margin-right: 10px}
   x-field[data-style~='inline'][data-type='checkbox'] [data-field-title] {margin: 0}
@@ -107,6 +109,11 @@
     font-size: 1.2em}
   x-group [data-group-content] {
     display: block}
+
+  /* x-group[data-type='text_object'] */
+
+  x-group[data-type='text_object'] x-field {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
+  x-group[data-type='text_object'] x-field[data-role='checkbox'] {margin: 15px 10px 2px 0}
 
   /* mark 'required' */
 
@@ -141,9 +148,6 @@
   input[type='range'] {border-radius: 20px}
   input[type='email'] {text-transform: lowercase}
   input[type='color'] {text-transform: lowercase}
-
-  input[type='file'] {padding: 8px}
-  input[type='file'] + button[data-style~='insert'] {margin-left: 10px}
 
   /* checkboxes and radiobuttons */
 
@@ -352,13 +356,32 @@
   x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
   x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style~='insert'] {border-radius: 5px}
 
+  /* widget 'items-attributes' */
+
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] {display: inline-block; margin: 0}
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-type='text'] input {margin: 0}
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-role='checkbox'] {margin-top: 2px}
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-description {display: none}
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] [data-opener-type='description'] {display: none}
+
+  /* widget 'decorator-settings' */
+
+  x-widget[data-type='decorator-settings'] {margin: 30px 0}
+  x-widget[data-type='decorator-settings'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
+  x-widget[data-type='decorator-settings'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
+  x-widget[data-type='decorator-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid #7d659a}
+
   /* widget 'items-blocks' */
 
   x-widget[data-type='items-blocks'] {margin: 0}
-  x-widget[data-type='items-blocks'] input[data-opener-type='settings'] {transform: scale(.77); float: right; margin: 7px; border-radius: 15px; border-color: %%_color__main; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') -20px -80px}
-  x-widget[data-type='items-blocks'] input[data-opener-type='settings']:checked {background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') 0 -80px}
-  x-widget[data-type='items-blocks'] input[data-opener-type='settings']:checked ~ x-settings:first-of-type {display: none}
-  x-widget[data-type='items-blocks'] x-settings {
+
+  /* widget x-settings */
+
+  x-widget input[data-opener-type='settings'] {transform: scale(.77); float: right; margin: 7px; border-radius: 15px; border-color: %%_color__main; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') -20px -80px}
+  x-widget input[data-opener-type='settings']:checked {background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode{color__main}') 0 -80px}
+  x-widget input[data-opener-type='settings']:checked ~ x-settings:first-of-type {display: none}
+
+  x-widget x-settings {
     display: block;
     margin-top: 10px;
     padding: 10px 10px 10px 40px;

@@ -9,6 +9,7 @@ request_settings
   - =: opacity
   - =: page
   - =: page_id
+  - =: page1
   - =: page2
   - =: page3
   - =: page4

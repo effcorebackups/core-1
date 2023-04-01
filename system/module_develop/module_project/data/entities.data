@@ -44,8 +44,8 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -56,8 +56,8 @@ entities
     - description
         title: Description
         type: blob
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
@@ -128,7 +128,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_relation
+        managing_control_class: \effcore\field_select_relation
         managing_control_properties
         - related_entity_name: project
         - related_entity_field_id_name: id
@@ -156,8 +156,8 @@ entities
     - description
         title: Description
         type: blob
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
@@ -190,8 +190,8 @@ entities
         size: 1024
         collate: nocase
         default: null
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text

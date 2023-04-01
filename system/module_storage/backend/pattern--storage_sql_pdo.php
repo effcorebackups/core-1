@@ -8,8 +8,6 @@ namespace effcore {
           use const \effcore\br;
           use \effcore\console;
           use \effcore\core;
-          use \PDO          as pdo;
-          use \PDOException as pdo_exception;
           class storage_sql_pdo implements has_external_cache {
 
   public $name;
@@ -18,6 +16,7 @@ namespace effcore {
   public $table_prefix = '';
   public $args = [];
   public $args_previous = [];
+  public $error_reporting = true;
   public $errors = [];
   protected $queries = [];
   protected $connection;
@@ -44,7 +43,7 @@ namespace effcore {
           event::start('on_storage_init_before', 'pdo', ['storage' => &$this]);
           switch ($this->driver) {
             case 'mysql':
-              $this->connection = new pdo(
+              $this->connection = new \PDO(
                 $this->driver.               ':host='.
                 $this->credentials->host.    ';port='.
                 $this->credentials->port.    ';dbname='.
@@ -53,16 +52,17 @@ namespace effcore {
                 $this->credentials->password);
               break;
             case 'sqlite':
-              $this->connection = new pdo(
+              $this->connection = new \PDO(
                 $this->driver.':'.data::directory.
                 $this->credentials->file_name);
               $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     'operator' => '=', 'value' => '"UTF-8"']);
               $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', 'operator' => '=', 'value' =>  'ON'    ]);
               break;
           }
+          $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
           event::start('on_storage_init_after', 'pdo', ['storage' => &$this]);
           return $this->connection;
-        } catch (pdo_exception $e) {
+        } catch (\PDOException $e) {
           message::insert(new text(
             'Storage "%%_name" is not available!', ['name' => $this->name]), 'error'
           );
@@ -85,7 +85,7 @@ namespace effcore {
     try {
       switch ($driver) {
         case 'mysql':
-          $connection = new pdo(
+          $connection = new \PDO(
             $driver.           ':host='.
             $credentials->host.';port='.
             $credentials->port.';dbname='.
@@ -95,7 +95,7 @@ namespace effcore {
           break;
         case 'sqlite':
           $path = data::directory.$credentials->file_name;
-          $connection = new pdo($driver.':'.$path);
+          $connection = new \PDO($driver.':'.$path);
           if (!is_writable($path)) {
             throw new \Exception('File is not writable!');
           }
@@ -103,7 +103,7 @@ namespace effcore {
       }
       $connection = null;
       return true;
-    } catch (pdo_exception $e) {
+    } catch (\PDOException $e) {
       return ['message' => $e->getMessage(), 'code' => $e->getCode()]; } catch (\Exception $e) {
       return ['message' => $e->getMessage(), 'code' => $e->getCode()];
     }
@@ -136,6 +136,23 @@ namespace effcore {
   function transaction_rollback() {if ($this->init()) return $this->connection->inTransaction() ? $this->connection->rollBack() : true;}
   function transaction_commit  () {if ($this->init()) return $this->connection->inTransaction() ? $this->connection->commit()   : true;}
 
+  function query_test(...$query) {
+    if (is_array($query[0]))
+        $query = $query[0];
+    if ($this->init()) {
+      $this->prepare_query($query);
+      $query_flat = core::array_values_select_recursive($query);
+      $query_flat_string = implode(' ', $query_flat).';';
+      $statement = $this->connection->prepare($query_flat_string);
+      if ($statement instanceof \PDOStatement) {
+          $statement->execute($this->args);
+             $error_info = $statement->errorInfo();
+      } else $error_info = ['HY007', 0, 'Associated statement is not prepared'];
+      $this->args = [];
+      return $error_info;
+    }
+  }
+
   function query(...$query) {
     if (is_array($query[0]))
         $query = $query[0];
@@ -145,45 +162,26 @@ namespace effcore {
       $this->prepare_query($query_prepared);
       $query_flat = core::array_values_select_recursive($query_prepared);
       $query_flat_string = implode(' ', $query_flat).';';
-      try {
-        $result = $this->connection->prepare($query_flat_string);
-        if ($result) $result->execute($this->args);
-      } catch (pdo_exception $e) {}
-      $c_error = $result ? $result->errorInfo() : ['query preparation process return the false', 'no', 'no'];
-      event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'result' => &$result, 'errors' => &$c_error]);
+      $statement = $this->connection->prepare($query_flat_string);
+      if ($statement instanceof \PDOStatement) {
+          $statement->execute($this->args);
+             $error_info = $statement->errorInfo();
+      } else $error_info = ['HY007', 0, 'Associated statement is not prepared'];
+      event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'statement' => &$statement, 'errors' => &$error_info]);
       $this->args_previous = $this->args;
       $this->args = [];
-      if ($c_error[0] !== \PDO::ERR_NONE) {
-        $this->errors[] = $c_error;
-        message::insert(new text_multiline([
-          'Query error!',
-          'SQL state: %%_state',
-          'Driver error code: %%_code',
-          'Driver error text: %%_text',
-          'More info in "%%_info".'], [
-          'state' => $c_error[0],
-          'code'  => $c_error[1],
-          'text'  => $c_error[2],
-          'info'  => 'dynamic/logs/']), 'error');
-        $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_flat_string);
-        $query_beautiful_args = '\''.implode('\', \'', $this->args_previous).'\'';
-        console::log_insert('storage', 'query',  count($this->args_previous) ?
-          'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"'.br.'arguments = [%%_args]' :
-          'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"',
-          'error', 0, [
-          'state' => $c_error[0],
-          'code'  => $c_error[1],
-          'text'  => $c_error[2],
-          'query' => $query_beautiful,
-          'args'  => $query_beautiful_args]);
+      if ($error_info[0] !== \PDO::ERR_NONE) {
+        $this->errors[] = $error_info;
+        if ($this->error_reporting === true)
+          static::error_report($error_info, $query_flat_string, $this->args_previous);
         return null;
       }
       switch (strtoupper(array_values($query)[0])) {
-        case 'SELECT': return $result ? $result->fetchAll(pdo::FETCH_CLASS|pdo::FETCH_PROPS_LATE, '\\effcore\\instance') : null;
+        case 'SELECT': return $statement->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, '\\effcore\\instance');
         case 'INSERT': return $this->connection->lastInsertId();
-        case 'UPDATE': return $result->rowCount();
-        case 'DELETE': return $result->rowCount();
-        default      : return $result;
+        case 'UPDATE': return $statement->rowCount();
+        case 'DELETE': return $statement->rowCount();
+        default      : return $statement;
       }
     }
   }
@@ -388,49 +386,7 @@ namespace effcore {
     }
   }
 
-  function instances_select($entity, $options = [], $idkey = null) {
-    $options += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
-    if ($this->init()) {
-      $query = [
-        'action'       => 'SELECT',
-        'fields_!,'    => (count($options['fields']) ? $options['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $options['join_fields'],
-        'target_begin' => 'FROM',
-        'target_!t'    => '~'.$entity->name];
-      foreach ($options['join'] as $c_join_id => $c_join_part)
-               $query  ['join']   [$c_join_id] = $c_join_part;
-      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $options['conditions']];
-      if (count($options['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $options['group'     ]];
-      if (count($options['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $options['order'     ]];
-      if (      $options['limit'     ] ) {
-        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
-        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
-      }
-      $result = [];
-      foreach ($this->query($query) ?: [] as $c_instance) {
-        foreach ($c_instance->values as $c_name => $c_value) {
-          if ($c_value !== null && isset($entity->fields[$c_name]->filter_select))
-              $c_instance->{$c_name} =  ($entity->fields[$c_name]->filter_select)($c_value);
-        }
-        $c_instance->entity_set_name($entity->name);
-        if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
-        else        $result[                     ] = $c_instance;
-      }
-      return $result;
-    }
-  }
-
-  function instances_delete($entity, $options = []) {
-    $options += ['conditions' => [], 'limit' => null];
-    if ($this->init()) {
-      $query = [
-        'action'       => 'DELETE',
-        'target_begin' => 'FROM',
-        'target_!t'    => '~'.$entity->name];
-      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' =>      $options['conditions']];
-      if (      $options['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$options['limit'     ]];
-      return $this->query($query);
-    }
-  }
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function instances_select_count($entity, $options = []) {
     $options += ['join' => [], 'conditions' => [], 'limit' => null, 'offset' => 0];
@@ -459,6 +415,52 @@ namespace effcore {
     return 0;
   }
 
+  function instances_select($entity, $options = [], $idkey = null) {
+    $options += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
+    if ($this->init()) {
+      $query = [
+        'action'       => 'SELECT',
+        'fields_!,'    => (count($options['fields']) ? $options['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $options['join_fields'],
+        'target_begin' => 'FROM',
+        'target_!t'    => '~'.$entity->name];
+      foreach ($options['join'] as $c_join_id => $c_join_part)
+               $query  ['join']   [$c_join_id] = $c_join_part;
+      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $options['conditions']];
+      if (count($options['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $options['group'     ]];
+      if (count($options['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $options['order'     ]];
+      if (      $options['limit'     ] ) {
+        $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
+        $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
+      }
+      $result = [];
+      foreach ($this->query($query) ?: [] as $c_instance) {
+        foreach ($c_instance->values as $c_name => $c_value) {
+          if ($c_value !== null && isset($entity->fields[$c_name]->converter_on_select))
+              $c_instance->{$c_name} =  ($entity->fields[$c_name]->converter_on_select)($c_value);
+        }
+        $c_instance->entity_set_name($entity->name);
+        if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
+        else        $result[                     ] = $c_instance;
+      }
+      return $result;
+    }
+  }
+
+  function instances_delete($entity, $options = []) {
+    $options += ['conditions' => [], 'limit' => null];
+    if ($this->init()) {
+      $query = [
+        'action'       => 'DELETE',
+        'target_begin' => 'FROM',
+        'target_!t'    => '~'.$entity->name];
+      if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' =>      $options['conditions']];
+      if (      $options['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$options['limit'     ]];
+      return $this->query($query);
+    }
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function instance_select($instance) { # return: null | instance
     if ($this->init()) {
       $entity = $instance->entity_get();
@@ -475,9 +477,9 @@ namespace effcore {
         'limit'           => 1]);
       if ( isset($result[0]) ) {
         foreach ($result[0]->values as $c_name => $c_value) {
-          if ( $c_value !== null && isset($entity->fields[$c_name]->filter_select))
-               $instance->{$c_name} =    ($entity->fields[$c_name]->filter_select)($c_value);
-          else $instance->{$c_name} =                                              $c_value;
+          if ( $c_value !== null && isset($entity->fields[$c_name]->converter_on_select))
+               $instance->{$c_name} =    ($entity->fields[$c_name]->converter_on_select)($c_value);
+          else $instance->{$c_name} =                                                    $c_value;
           $instance->_id_fields_original = $id_fields; }
         return $instance;
       }
@@ -489,8 +491,8 @@ namespace effcore {
       $entity = $instance->entity_get();
       $values = $instance->values_get();
       foreach ($values as $c_name => $c_value)
-        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->filter_insert))
-            $values[$c_name] =                ($entity->fields[$c_name]->filter_insert)($c_value);
+        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converter_on_insert))
+            $values[$c_name] =                ($entity->fields[$c_name]->converter_on_insert)($c_value);
       $values = array_intersect_key($values, $entity->fields_get_name());
       $fields = array_keys($values);
       $auto_name = $entity->auto_name_get();
@@ -517,8 +519,8 @@ namespace effcore {
       $entity = $instance->entity_get();
       $values = $instance->values_get();
       foreach ($values as $c_name => $c_value)
-        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->filter_update))
-            $values[$c_name] =                ($entity->fields[$c_name]->filter_update)($c_value);
+        if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converter_on_update))
+            $values[$c_name] =                ($entity->fields[$c_name]->converter_on_update)($c_value);
       $values = array_intersect_key($values, $entity->fields_get_name());
       $id_fields = $entity->id_from_values_get($values);
       $row_count = $this->query([
@@ -561,6 +563,31 @@ namespace effcore {
     return [
       'name' => 'name'
     ];
+  }
+
+  static function error_report($error_info, $query_string, $args) {
+    $query_beautiful = str_replace([' ,', '( ', ' )'], [',', '(', ')'], $query_string);
+    $query_beautiful_args = '\''.implode('\', \'', $args).'\'';
+    message::insert(new text_multiline([
+      'Query error!',
+      'SQL state: %%_state',
+      'Driver error code: %%_code',
+      'Driver error text: %%_text',
+      'More info in "%%_info".'], [
+      'state' => $error_info[0],
+      'code'  => $error_info[1],
+      'text'  => $error_info[2],
+      'info'  => 'dynamic/logs/']), 'error');
+    console::log_insert('storage', 'query',  count($args) ?
+      'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"'.br.'arguments = [%%_args]' :
+      'error state = %%_state'.br.'error code = %%_code'.br.'error text = %%_text'.br.'query = "%%_query"',
+      'error', 0, [
+      'state' => $error_info[0],
+      'code'  => $error_info[1],
+      'text'  => $error_info[2],
+      'query' => $query_beautiful,
+      'args'  => $query_beautiful_args]
+    );
   }
 
 }}

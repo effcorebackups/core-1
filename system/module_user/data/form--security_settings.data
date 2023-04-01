@@ -66,7 +66,7 @@ forms
             - min: 1
             - max: 365
             - value: 30
-        - send_password_to_email|field_logic
+        - send_password_to_email|field_select_logic
             title: Registration via Email
             description|text_multiline
               text

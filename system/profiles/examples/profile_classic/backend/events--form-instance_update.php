@@ -12,16 +12,14 @@ namespace effcore\modules\profile_classic {
 
   static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
-    if ($entity) {
-      switch ($form->clicked_button->value_get()) {
-        case 'update':
-        case 'cancel':
-          if ($entity->name === 'user' && page::get_current()->id === 'user_edit_ru') {
-            if (!url::back_url_get())
-                 url::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
-          }
-          break;
-      }
+    switch ($form->clicked_button->value_get()) {
+      case 'update':
+      case 'cancel':
+        if ($entity->name === 'user' && page::get_current()->id === 'user_edit_ru') {
+          if (!url::back_url_get())
+               url::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
+        }
+        break;
     }
   }
 

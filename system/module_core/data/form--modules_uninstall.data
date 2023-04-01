@@ -10,4 +10,5 @@ forms
         title: apply
         attributes
         - value: apply
+        - disabled: true
         weight: -500

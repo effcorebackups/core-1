@@ -47,6 +47,20 @@ entities
         - weight: +400
         managing_control_element_attributes_on_update
         - disabled: true
+    - main_entity_name
+        title: Entity name
+        type: varchar
+        size: 64
+        collate: nocase
+        not_null: true
+        check: (main_entity_name <> '')
+        managing_is_enabled_on_insert: true
+        managing_is_enabled_on_update: true
+        managing_control_class: \effcore\field_select_entity_name
+        managing_control_properties
+        - weight: +380
+        managing_control_element_attributes_on_update
+        - disabled: true
     - title
         title: Title
         type: varchar
@@ -54,67 +68,59 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
         managing_control_properties
-        - weight: +380
+        - weight: +360
         managing_control_element_attributes
         - maxlength: 1024
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
         managing_control_properties
         - name_complex: attributes
-        - weight: +360
+        - weight: +340
     - fields
         title: Fields
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_entity_fields
+        managing_control_class: \effcore\widget_selection_fields
         managing_control_properties
         - name_complex: fields
-        - weight: +340
+        - weight: +320
     - query_settings
         title: Query settings
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_control_value_manual_get: true
-        managing_control_value_manual_set: true
-        managing_control_properties
-        - weight: +320
-    - decorator_settings
-        title: Decorator settings
-        type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
         managing_control_value_manual_get: true
         managing_control_value_manual_set: true
         managing_control_properties
         - weight: +300
-    - pager_settings
-        title: Pager settings
+    - decorator_settings
+        title: Decorator settings
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
-        managing_control_value_manual_get: true
-        managing_control_value_manual_set: true
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        managing_is_enabled_on_update: true
+        managing_control_class: \effcore\widget_selection_decorator_settings
         managing_control_properties
+        - name_complex: decorator_settings
         - weight: +280
     - created
         title: Created
@@ -123,7 +129,7 @@ entities
         check: (created <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +260
+        - weight: +240
     - updated
         title: Updated
         type: datetime
@@ -131,7 +137,7 @@ entities
         check: (updated <> '')
         managing_control_class: \effcore\field_datetime_local
         managing_control_properties
-        - weight: +240
+        - weight: +220
     constraints
     - primary_id
         type: primary

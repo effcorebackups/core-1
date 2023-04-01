@@ -748,8 +748,14 @@ instances
             id: block__text_sql__front
             title: The main text of the page
       - footer
-        - block__selection__social_networks|block_preset_link
-            id: block__selection__social_networks
+        - block__selection_sql__social_networks|block_preset_link
+            id: block__selection_sql__social_networks
+            title: Social networks
+            title_is_visible: false
+            attributes
+            - data-block: true
+            - data-id: block__selection_sql__social_networks
+            - data-style: at-right
         - block__text_sql__copyright|block_preset_link
             id: block__text_sql__copyright
             title: Copyright
@@ -1389,9 +1395,14 @@ instances
             id: block__text_sql__front_ru
             title: Основной текст страницы
       - footer
-        - block__selection__social_networks|block_preset_link
-            id: block__selection__social_networks
+        - block__selection_sql__social_networks|block_preset_link
+            id: block__selection_sql__social_networks
             title: Социальные сети
+            title_is_visible: false
+            attributes
+            - data-block: true
+            - data-id: block__selection__social_networks
+            - data-style: at-right
         - block__text_sql__copyright_ru|block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
@@ -2467,3 +2478,53 @@ instances
           - muted: null
           - preload: metadata
           - data-cover-is-embedded: false
+# ─────────────────────────────────────────────────────────────────────
+# selections
+# ─────────────────────────────────────────────────────────────────────
+- selection_social_networks|instance
+    entity_name: selection
+    values
+    - id: social_networks
+    - main_entity_name: picture
+    - title: Social networks
+    - data
+      - template: content
+    - decorator_settings
+      - view_type: template
+      - template_item: picture
+      - mapping
+        - id: id
+        - path: path
+        - url: url
+        - attributes: this_attributes
+        - link_attributes: link_attributes
+    - query_settings
+      - conditions
+        - id_!f: ~picture.id
+        - id_in_begin: in (
+        - id_in_!,
+          - 0_!v: logotype_twitter
+          - 1_!v: logotype_facebook
+          - 2_!v: logotype_instagram
+        - id_in_end: )
+    - fields
+      - main
+        - id
+            entity_field_name: id
+            weight: 400
+        - description
+            entity_field_name: description
+            is_apply_translation: true
+            weight: 380
+        - path
+            entity_field_name: path
+            weight: 360
+        - url
+            entity_field_name: url
+            weight: 340
+        - this_attributes
+            entity_field_name: attributes
+            weight: 320
+        - link_attributes
+            entity_field_name: link_attributes
+            weight: 300

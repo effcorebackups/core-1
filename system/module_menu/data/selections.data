@@ -1,6 +1,7 @@
 selections
 - instance_select-tree|selection
     id: instance_select-tree
+    main_entity_name: tree
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -12,55 +13,37 @@ selections
           is_apply_tokens: true
           text: %%_selection_tree_id_context
     fields
-    - tree.id
-        type: field
-        entity_name: tree
-        entity_field_name: id
-        weight: 400
-    - tree.title
-        type: field
-        entity_name: tree
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - tree.title_is_visible
-        type: field
-        entity_name: tree
-        entity_field_name: title_is_visible
-        settings
-        - filters
-          - 400: translate
-        weight: 360
-    - tree.attributes
-        type: field
-        entity_name: tree
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 340
-    - tree.created
-        type: field
-        entity_name: tree
-        entity_field_name: created
-        weight: 320
-    - tree.updated
-        type: field
-        entity_name: tree
-        entity_field_name: updated
-        weight: 300
-    - tree.is_embedded
-        type: field
-        entity_name: tree
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - title_is_visible
+          entity_field_name: title_is_visible
+          is_apply_translation: true
+          weight: 360
+      - this_attributes
+          entity_field_name: attributes
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
+      - access
+          entity_field_name: access
+          weight: 260
 - instance_select-tree_item|selection
     id: instance_select-tree_item
+    main_entity_name: tree_item
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -72,135 +55,98 @@ selections
           is_apply_tokens: true
           text: %%_selection_tree_item_id_context
     fields
-    - tree_item.id
-        type: field
-        entity_name: tree_item
-        entity_field_name: id
-        weight: 400
-    - tree_item.id_tree
-        type: field
-        entity_name: tree_item
-        entity_field_name: id_tree
-        weight: 380
-    - tree_item.id_parent
-        type: field
-        entity_name: tree_item
-        entity_field_name: id_parent
-        weight: 360
-    - tree_item.title
-        type: field
-        entity_name: tree_item
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 340
-    - tree_item.attributes
-        type: field
-        entity_name: tree_item
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 320
-    - tree_item.url
-        type: field
-        entity_name: tree_item
-        entity_field_name: url
-        weight: 300
-    - tree_item.link_attributes
-        type: field
-        entity_name: tree_item
-        entity_field_name: link_attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 280
-    - tree_item.weight
-        type: field
-        entity_name: tree_item
-        entity_field_name: weight
-        weight: 260
-    - tree_item.created
-        type: field
-        entity_name: tree_item
-        entity_field_name: created
-        weight: 240
-    - tree_item.updated
-        type: field
-        entity_name: tree_item
-        entity_field_name: updated
-        weight: 220
-    - tree_item.is_embedded
-        type: field
-        entity_name: tree_item
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 200
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - id_tree
+          entity_field_name: id_tree
+          weight: 380
+      - id_parent
+          entity_field_name: id_parent
+          weight: 360
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 340
+      - this_attributes
+          entity_field_name: attributes
+          weight: 320
+      - url
+          entity_field_name: url
+          weight: 300
+      - link_attributes
+          entity_field_name: link_attributes
+          weight: 280
+      - weight
+          entity_field_name: weight
+          weight: 260
+      - created
+          entity_field_name: created
+          weight: 240
+      - updated
+          entity_field_name: updated
+          weight: 220
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 200
+      - access
+          entity_field_name: access
+          weight: 180
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-tree|selection
     id: instance_select_multiple-tree
+    main_entity_name: tree
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - tree.id
-        type: field
-        entity_name: tree
-        entity_field_name: id
-        weight: 400
-    - tree.title
-        type: field
-        entity_name: tree
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 360
 - instance_select_multiple-tree_item|selection
     id: instance_select_multiple-tree_item
+    main_entity_name: tree_item
     pager_is_enabled: true
     decorator_settings
     - view_type: tree
     - tree_visualization_mode: decorated-rearrangeable
-    - tree_mapping
-      - id: tree_item.id
-      - id_parent: tree_item.id_parent
-      - id_tree: tree_item.id_tree
-      - title: tree_item.title
-      - url: tree_item.url
-      - weight: tree_item.weight
+    - mapping
+      - id: id
+      - id_parent: id_parent
+      - id_tree: id_tree
+      - title: title
+      - url: url
+      - weight: weight
     query_settings
     - limit: 10000
     fields
-    - tree_item.id
-        type: field
-        entity_name: tree_item
-        entity_field_name: id
-    - tree_item.id_tree
-        type: field
-        entity_name: tree_item
-        entity_field_name: id_tree
-    - tree_item.id_parent
-        type: field
-        entity_name: tree_item
-        entity_field_name: id_parent
-    - tree_item.title
-        type: field
-        entity_name: tree_item
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-    - tree_item.url
-        type: field
-        entity_name: tree_item
-        entity_field_name: url
-    - tree_item.weight
-        type: field
-        entity_name: tree_item
-        entity_field_name: weight
+    - main
+      - id
+          entity_field_name: id
+      - id_tree
+          entity_field_name: id_tree
+      - id_parent
+          entity_field_name: id_parent
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+      - url
+          entity_field_name: url
+      - weight
+          entity_field_name: weight
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true

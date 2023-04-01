@@ -8,18 +8,18 @@ namespace effcore {
           class micro_tabs extends node {
 
   public $element_attributes = ['role' => 'micro_tabs-item'];
-  public $values  = [];
+  public $items   = [];
   public $checked = [];
 
-  function __construct($values = null, $checked = null) {
-    if ($values ) $this->values   = $values;
+  function __construct($items = null, $checked = null) {
+    if ($items  ) $this->items    = $items;
     if ($checked) $this->checked  = $checked;
     parent::__construct();
   }
 
   function build() {
     if (!$this->is_builded) {
-      foreach ($this->values as $c_value => $c_info) {
+      foreach ($this->items as $c_value => $c_info) {
         if (!$this->child_select($c_value)) {
           if (is_string($c_info)) $c_info = (object)['title' => $c_info];
           if (!isset($c_info->title                      )) $c_info->title  = $c_value;
@@ -40,15 +40,17 @@ namespace effcore {
     }
   }
 
-  function item_insert($title = null, $value = '', $element_attributes = [], $weight = 0, $ws_rebuild = true) {
-    $this->values[$value] = (object)[
-      'title'              => $title,
-      'element_attributes' => $element_attributes,
-      'weight'             => $weight];
+  function items_set($items = [], $ws_rebuild = true) {
+    $this->items = $items;
     if ($ws_rebuild) {
       $this->is_builded = false;
       $this->build();
     }
   }
+
+  function items_get() {
+    return $this->items;
+  }
+
 
 }}

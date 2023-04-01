@@ -22,7 +22,9 @@ namespace effcore {
   public $validation_cache;
   public $validation_cache_hash;
   public $validation_cache_is_persistent = false;
-  public $has_error_on_init = false;
+  public $has_no_fields = false;
+  public $has_no_items = false;
+  public $has_error_on_build = false;
   protected $items = [];
 
   function build() {
@@ -67,10 +69,10 @@ namespace effcore {
       foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof control                  ) $c_child->cform = $this;
 
     # call "init" handlers
-      $this->form_items_update();
+      $this->items_update();
       event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], /* on_before_step */ null,
         function ($event, $form, $items) { /* on_after_step */
-          $form->form_items_update();
+          $form->items_update();
         }
       );
 
@@ -143,7 +145,7 @@ namespace effcore {
 
   function is_submitted() {
   # check if 'form_id' is match
-    if ($this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ==
+    if ($this->child_select('hidden_id_form')->value_request_get(0, $this->source_get()) ===
         $this->child_select('hidden_id_form')->value_get()) {
     # check if form 'number' + 'created' + 'ip' + 'uagent' + 'random' is match
       if (static::validation_id_check(static::validation_id_get_raw($this), $this)) {
@@ -169,21 +171,22 @@ namespace effcore {
     }
   }
 
-  function form_items_update() {
+  function items_update() {
     $this->items = [];
     $groups      = [];
     foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
-      if ($c_child instanceof container                                      ) $this->items[$c_npath                                                    ] = $c_child;
+      if ($c_child instanceof container                                      ) $this->items[    $c_npath                                                ] = $c_child;
       if ($c_child instanceof button                                         ) $this->items['~'.$c_child->value_get       ()                            ] = $c_child;
       if ($c_child instanceof field_hidden                                   ) $this->items['!'.$c_child->name_get        ()                            ] = $c_child;
       if ($c_child instanceof field                                          ) $groups     ['#'.$c_child->name_get        ()                          ][] = $c_child;
       if ($c_child instanceof field_radiobutton                              ) $groups     ['#'.$c_child->name_get        ().':'.$c_child->value_get()][] = $c_child;
-      if ($c_child instanceof complex_control && $c_child->name_get_complex()) $groups     ['*'.$c_child->name_get_complex()                          ][] = $c_child;
+      if ($c_child instanceof control_complex && $c_child->name_get_complex()) $groups     ['*'.$c_child->name_get_complex()                          ][] = $c_child;
     }
     foreach ($groups as $c_name => $c_group) {
       if (count($c_group) === 1) $this->items[$c_name] = reset($c_group);
       if (count($c_group)  >  1) $this->items[$c_name] =       $c_group;
     }
+    return $this->items;
   }
 
   # ─────────────────────────────────────────────────────────────────────

@@ -5,91 +5,91 @@ block_presets
     managing_title: Login form
     in_areas
     - =: content
+    type: copy
+    source: forms/user/login
     title: Login form
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__login
-    type: copy
-    source: forms/user/login
 - block__form__logout|block_preset
     id: block__form__logout
     managing_group: Forms
     managing_title: Logout form
     in_areas
     - =: content
+    type: copy
+    source: forms/user/logout
     title: Logout form
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__logout
-    type: copy
-    source: forms/user/logout
 - block__form__recovery|block_preset
     id: block__form__recovery
     managing_group: Forms
     managing_title: Access recovery form
     in_areas
     - =: content
+    type: copy
+    source: forms/user/recovery
     title: Access recovery form
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__recovery
-    type: copy
-    source: forms/user/recovery
 - block__form__registration|block_preset
     id: block__form__registration
     managing_group: Forms
     managing_title: Registration form
     in_areas
     - =: content
+    type: copy
+    source: forms/user/registration
     title: Registration form
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__registration
-    type: copy
-    source: forms/user/registration
 - block__form__instance_insert__feedback|block_preset
     id: block__form__instance_insert__feedback
     managing_group: Forms
     managing_title: Feedback form
     in_areas
     - =: content
+    type: copy
+    source: forms/storage/instance_insert
+    properties
+    - entity_name: feedback
     title: Feedback form
     title_is_visible: true
     attributes
     - data-block: true
     - data-id: block__form__instance_insert__feedback
-    type: copy
-    source: forms/storage/instance_insert
-    properties
-    - entity_name: feedback
 - block__form__instance_update__user|block_preset
     id: block__form__instance_update__user
     managing_group: Forms
     managing_title: User update form
     in_areas
     - =: content
+    type: copy
+    source: forms/storage/instance_update
+    properties
+    - entity_name: user
     title: User update form
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__form__instance_update__user
-    type: copy
-    source: forms/storage/instance_update
-    properties
-    - entity_name: user
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - block__selection__user|block_preset
     id: block__selection__user
     managing_group: Selections
     managing_title: User information
+    type: link
+    source: selections/user/user
     title: User information
     title_is_visible: false
     attributes
     - data-block: true
     - data-id: block__selection__user
-    type: link
-    source: selections/user/user

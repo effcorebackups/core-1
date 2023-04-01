@@ -14,23 +14,33 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      $wrapper = new fieldset($this->title);
-      $wrapper->title = $this->main_title;
-      $wrapper->state = 'closed';
-      $this->child_insert($wrapper, 'wrapper');
-    # text of license agreement
-      $language = language::get(language::code_get_current());
-      $license_file = new file($language->license_path ?: dir_root.'license.md');
-      $license_markup = new markup('x-document', ['data-style' => 'license'], markdown::markdown_to_markup($license_file->load()));
-      $wrapper->child_insert($license_markup, 'license');
-    # switcher 'agree to license agreement'
-      $switcher_agree = new field_switcher($this->text_agree);
-      $switcher_agree->build();
-      $switcher_agree->name_set('is_agree');
-      $switcher_agree->required_set(true);
-      $wrapper->child_insert($switcher_agree, 'is_agree');
+      $this->child_insert(static::widget_manage_get($this), 'manage');
       $this->is_builded = true;
     }
+  }
+
+  ###########################
+  ### static declarations ###
+  ###########################
+
+  static function widget_manage_get($widget) {
+    $result = new fieldset($widget->title);
+    $result->title = $widget->main_title;
+    $result->state = 'closed';
+  # text of license agreement
+    $language = language::get(language::code_get_current());
+    $license_file = new file($language->license_path ?: dir_root.'license.md');
+    $license_markup = new markup('x-document', ['data-style' => 'license'], markdown::markdown_to_markup($license_file->load()));
+  # switcher 'agree to license agreement'
+    $field_switcher_is_agree = new field_switcher($widget->text_agree);
+    $field_switcher_is_agree->build();
+    $field_switcher_is_agree->name_set('is_agree');
+    $field_switcher_is_agree->required_set(true);
+  # relate new controls with the widget
+    $widget->controls['#is_agree'] = $field_switcher_is_agree;
+    $result->child_insert($license_markup, 'license_markup');
+    $result->child_insert($field_switcher_is_agree, 'field_switcher_is_agree');
+    return $result;
   }
 
 }}

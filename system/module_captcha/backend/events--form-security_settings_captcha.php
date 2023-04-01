@@ -24,7 +24,7 @@ namespace effcore\modules\captcha {
     $items['#length']->value_set($settings_captcha->length);
     $items['main/glyphs']->children_delete();
     $glyphs_all = glyph::get_all();
-    core::array_sort_by_text_property($glyphs_all, 'character');
+    core::array_sort_by_string($glyphs_all, 'character');
     foreach ($glyphs_all as $c_row_id => $c_item) {
       $c_sizes = glyph::get_sizes($c_item->glyph);
       $c_canvas = new canvas_svg($c_sizes->width + 2, $c_sizes->height + 2, 6);

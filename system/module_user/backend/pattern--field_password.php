@@ -17,12 +17,12 @@ namespace effcore {
     'maxlength' => 255
   ];
 
-  function value_get($return_hash = true) {
+  function value_get($return_hash = true) { # return: null | string | hash(string) | __OTHER_TYPE__ (when "value" in *.data is another type)
     $element = $this->child_select('element');
     $value = $element->attribute_select('value');
-    if ($value !== '' && $return_hash !== false) return user::password_hash($value);
-    if ($value !== '' && $return_hash === false) return                     $value;
-    if ($value === ''                          ) return                     $value;
+    if (is_string($value) && strlen($value) && $return_hash !== false) return user::password_hash($value);
+    if (is_string($value) && strlen($value) && $return_hash === false) return                     $value;
+    return $value;
   }
 
 }}

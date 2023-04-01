@@ -2,6 +2,17 @@ translations
 - uk|translation
     code: uk
     data
+    - Africa: Африка
+    - America: Америка
+    - Antarctica: Антарктида
+    - Arctic: Арктика
+    - Asia: Азія
+    - Atlantic: Атлантика
+    - Australia: Австралія
+    - Europe: Європа
+    - Indian: Індія
+    - Pacific: Тихий океан
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - - no -: - ні -
     - - root -: - корінь -
     - - select -: - вибрати -
@@ -29,7 +40,7 @@ translations
     - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: Після перевищення значення "Кількість спроб входу" буде заблоковано можливість входу на вказаний час.
     - All caches was reset.: Усі кеші були скинуті.
     - All colors: Всі кольори
-    - An empty line was found.: Виявлено порожній рядок.
+    - An empty line was found.: Був знайдений порожній рядок.
     - An error in parsing the "data" format was found!: Помилка аналізу формату "data" була виявлена!
     - An error occurred during installation!: Виникла помилка під час встановлення!
     - An example of its content can be\: meta description, meta keywords, custom meta fields (for example, google-site-verification), custom CSS blocks, custom JS blocks (for example, Google Analytics).: Прикладом такого змісту можуть бути: мета-опис, ключові мета-слова, користувальницькі мета-поля (наприклад, google-site-verification), користувальницькі блоки CSS, користувальницькі блоки JS (наприклад, Google Analytics).
@@ -40,9 +51,6 @@ translations
     - Anonymous: Анонім
     - Answer: Відповідь
     - Answers: Відповіді
-    - apply tokens: застосувати токени
-    - Apply tokens: Застосувати токени
-    - apply translation: застосувати переклад
     - apply: застосувати
     - Architecture: Архітектура
     - Attribute: Атрибут
@@ -93,7 +101,7 @@ translations
     - Checkboxes: Прапорці
     - checking: перевірка
     - Class "%%_class_name" not allowed.: Клас "%%_class_name" не допускається.
-    - Class "%%_class_name" was not found.: Клас "%%_class_name" не знайдений.
+    - Class "%%_class_name" was not found.: Клас "%%_class_name" не був знайдений.
     - click to open in new window: натисніть, щоб відкрити у новому вікні
     - click to open the menu item "%%_title": натисніть, щоб відкрити пункт меню "%%_title"
     - click to open the tab "%%_title": натисніть, щоб відкрити вкладку "%%_title"
@@ -149,6 +157,7 @@ translations
     - Date/Time: Дата/Час
     - Decimal point: Десяткова крапка
     - Decorator settings: Налаштування оформлення
+    - Definition list: Список визначень
     - Delete item of type "%%_type" with ID = "%%_id"?: Видалити елемент типу "%%_type" з ID = "%%_id"?
     - delete: видалити
     - Delete: Видалити
@@ -164,7 +173,6 @@ translations
     - Digit: Цифра
     - Directory for temporary upload is missing.: Каталог для тимчасового завантаження відсутній.
     - Directory permissions should be checked.: Дозволи каталогу мають бути перевірені.
-    - Distributed queries are not supported! Selection ID = "%%_id".: Розподілені запити не підтримуються! ID вибірки = "%%_id".
     - Do not forget to save the changes!: Не забудьте зберегти зміни!
     - do not show: Не відображати
     - download: завантажити
@@ -188,7 +196,9 @@ translations
     - Entity "%%_entity" was not installed!: Сутність "%%_entity" не була встановлена!
     - Entity "%%_entity" was not uninstalled!: Сутність "%%_entity" не була видалена!
     - Entity "%%_entity" was uninstalled.: Сутність "%%_entity" була видалена.
+    - Entity "%%_name" is not available.: Сутність "%%_name" недоступна.
     - entity is embedded: сутність є вбудованою
+    - Entity name: Ім'я сутності
     - Error: Помилка
     - Error\: %%_error: Помилка: %%_error
     - event: подія
@@ -370,10 +380,17 @@ translations
     - Interfaces: Інтерфейси
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer нижче версії %%_number більше не підтримується!
     - Invalid session was deleted!: Недійсний сеанс був видалений!
+    - Is apply tokens: Застосувати токени
+    - Is apply translation: Застосувати переклад
     - Is current: Поточний
+    - Is do not apply formatting: Не застосовувати форматування
     - is embedded: вбудований
     - Is embedded: Вбудований
+    - Is enabled: Увімкнений
     - Is fixed IP: Фікс. IP
+    - Is not visible: Не видно
+    - Is trimmed: Обрізане
+    - Is visible: Видно
     - It is recommended that you change your password directly on %%_domain.: Рекомендується змінити пароль безпосередньо на %%_domain.
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Елемент "%%_dpath_value" знаходиться поза дозволеними межами!
     - Item "%%_dpath_value" must be of type "%%_type"!: Елемент "%%_dpath_value" має бути типу "%%_type"!
@@ -419,7 +436,7 @@ translations
     - Layout ID: ID макету
     - Layout: Макет
     - Layouts: Макети
-    - Leading tab character found.: Виявлено провідний символ табуляції.
+    - Leading tab character found.: Був знайдений провідний символ табуляції.
     - Leave 0 if you want to use global page size settings.: Залиште 0, якщо Ви хочете використовувати глобальні налаштування розміру сторінки.
     - leave edit mode: вийти з режиму редагування
     - Leave the field blank if you do not want to change its value.: Залишіть поле порожнім, якщо Ви не бажаєте змінювати його значення.
@@ -465,6 +482,7 @@ translations
     - management for this entity is not available: керування для цієї сутності недоступне
     - Management: Керування
     - Managers: Керівники
+    - Mapping: Картографування
     - Match: Відповідність
     - Maximum number of votes: Максимальна кількість голосів
     - Maximum width: Максимальна ширина
@@ -525,15 +543,15 @@ translations
     - nickname: псевдонім
     - Nickname: Псевдонім
     - No additional parameters.: Немає додаткових параметрів.
-    - No fields for select from storage! Selection ID = "%%_id".: Немає полів для вибірки зі сховища! ID вибірки = "%%_id".
-    - no fields: немає полів
-    - no items: немає елементів
-    - no modules: немає модулів
+    - No fields.: Немає полів.
+    - No items.: Немає елементів.
+    - No modules.: Немає модулів.
     - No one item was selected!: Жоден елемент був обраний!
-    - no Selection with ID = "%%_id": немає вибірки з ID = "%%_id"
+    - No restrictions.: Немає обмежень.
+    - No Selection with ID = "%%_id".: Немає вибірки з ID = "%%_id".
     - NO TITLE: НЕМАЄ ЗАГОЛОВКА
-    - no updates: немає оновлень
-    - no url: немає url
+    - No updates.: Немає оновлень.
+    - No URL.: Немає URL.
     - no: ні
     - No: Ні
     - Number of downloads: Кількість завантажень
@@ -659,6 +677,7 @@ translations
     - right to left: справа наліво
     - robots.txt editing form: Форма редагування robots.txt
     - Role ID: ID ролі
+    - Role IDs: ID ролів
     - role: роль
     - Role: Роль
     - Role\: delete: Роль: видалити
@@ -680,6 +699,7 @@ translations
     - select all rows: вибрати всі рядки
     - select: вибрати
     - Select: Вибрати
+    - Selection ID = "%%_id".: ID вибірки = "%%_id".
     - Selection list: Список вибору
     - selection: вибірка
     - Selection: Вибірка
@@ -733,6 +753,8 @@ translations
     - System was not installed!: Система не була встановлена!
     - System: Система
     - T: Т
+    - Table (adaptive): Таблиця (адаптивна)
+    - Table (DL): Таблиця (DL)
     - Table prefix: Префікс таблиць
     - Table: Таблиця
     - Table\: row even: Таблиця: рядок парний
@@ -743,6 +765,8 @@ translations
     - Tabs\: link: Вкладки: посилання
     - Telephone number: Номер телефону
     - Template "%%_name" was not found!: Шаблон "%%_name" не був знайдений!
+    - Template (item): Шаблон (елемент)
+    - Template: Шаблон
     - Templates: Шаблони
     - Test execution form: Форма виконання тесту
     - Test: Тест
@@ -833,6 +857,7 @@ translations
     - val.: знач.
     - Val.: Знач.
     - Value in pixels.: Величина у пікселях.
+    - Value settings: Налаштування значення
     - Value was trimmed to the required length!: Значення було обрізане до потрібної довжини!
     - Value: Значення
     - Values: Значення
@@ -847,6 +872,7 @@ translations
     - Videos: Відео
     - View customization form: Форма налаштування виду
     - View more: Дивитися більше
+    - View type: Тип вигляду
     - View: Вид
     - View\: manage: Вид: керувати
     - Visibility: Видимість
@@ -866,8 +892,8 @@ translations
     - wrong cron key: неправильний ключ cron
     - wrong entity name: неправильне ім'я сутності
     - wrong instance key: неправильний ключ екземпляра
-    - wrong instance keys: неправильні ключі екземпляра
     - wrong management group: неправильна група керування
+    - wrong number of instance keys: неправильна кількість ключів екземпляра
     - wrong pager value: неправильне значення пейджера
     - wrong user nickname: неправильний псевдонім користувача
     - yes: так

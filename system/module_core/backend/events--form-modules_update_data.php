@@ -17,41 +17,43 @@ namespace effcore\modules\core {
           use \effcore\update;
           abstract class events_form_modules_update_data {
 
-  static function on_init($event, $form, $items) {
-    $info = $form->child_select('info');
-    $info->children_delete();
-    $has_updates = false;
+  static function on_build($event, $form) {
+    $form->child_select('info')->children_delete();
+    $form->_has_updates = false;
     $modules = module::get_all();
-    core::array_sort_by_text_property($modules);
+    core::array_sort_by_string($modules);
+    $fieldset_number = 0;
     foreach ($modules as $c_module) {
       $c_updates            = update::select_all        ($c_module->id);
       $c_update_last_number = update::select_last_number($c_module->id);
       if (count($c_updates)) {
         $c_fieldset = new fieldset($c_module->title);
+        $c_fieldset->number = $fieldset_number++;
         $c_fieldset->state = 'closed';
         $c_checkboxes = new group_checkboxes;
         $c_checkboxes->element_attributes['name'] = 'update_'.$c_module->id.'[]';
         $c_fieldset->child_insert($c_checkboxes, 'checkboxes');
-        $info->child_insert($c_fieldset, $c_module->id);
-        core::array_sort_by_property($c_updates, 'number');
+        $form->child_select('info')->child_insert($c_fieldset, $c_module->id);
+        core::array_sort_by_number($c_updates, 'number', 'a');
+        $c_checkboxes_items = [];
         foreach ($c_updates as $c_update) {
-          if ($c_update->number > $c_update_last_number === true) {$has_updates = true; $c_fieldset->state = 'opened';}
+          if ($c_update->number > $c_update_last_number === true) {$form->_has_updates = true; $c_fieldset->state = 'opened';}
           if ($c_update->number > $c_update_last_number !== true) {$c_checkboxes->disabled[$c_update->number] = $c_update->number;}
-          $c_checkboxes->field_insert(
-            $c_update->number.': '.(new text($c_update->title))->render(),
-            $c_update->description ?? null,
-            $c_update->number
-          );
-        }
+          if (!empty($c_update->description))
+               $c_checkboxes_items[$c_update->number] = (object)['title' => $c_update->number.': '.(new text($c_update->title))->render(), 'description' => $c_update->description];
+          else $c_checkboxes_items[$c_update->number] = (object)['title' => $c_update->number.': '.(new text($c_update->title))->render()]; }
+        $c_checkboxes->items_set($c_checkboxes_items);
       }
     }
-    if ($info->children_select_count() === 0) {
-      $form->child_update('info', new markup('x-no-items', ['data-style' => 'table'], 'no updates'));
-      $items['~apply']->disabled_set();
+    if ($form->child_select('info')->children_select_count() === 0) {
+      $form->child_update('info',
+        new markup('x-no-items', ['data-style' => 'table'], 'No updates.')
+      );
     }
-    if ($has_updates === false) {
-      $items['~apply']->disabled_set();
-    }
+  }
+
+  static function on_init($event, $form, $items) {
+    $items['~apply']->disabled_set($form->_has_updates === false);
   }
 
   static function on_submit($event, $form, $items) {
@@ -59,12 +61,12 @@ namespace effcore\modules\core {
       case 'apply':
         $has_choice = false;
         $modules = module::get_all();
-        core::array_sort_by_text_property($modules);
+        core::array_sort_by_string($modules);
         foreach ($modules as $c_module) {
           $c_updates            = update::select_all        ($c_module->id);
           $c_update_last_number = update::select_last_number($c_module->id);
           if (count($c_updates)) {
-            core::array_sort_by_property($c_updates, 'number', 'd');
+            core::array_sort_by_number($c_updates, 'number', 'd');
             foreach ($c_updates as $c_update) {
               if ($c_update->number > $c_update_last_number) {
                 if ($items['#update_'.$c_module->id.':'.$c_update->number]->checked_get()) {
@@ -87,8 +89,10 @@ namespace effcore\modules\core {
           message::insert(
             'No one item was selected!', 'warning'
           );
+        } else {
+          static::on_build(null, $form);
+          static::on_init (null, $form, $form->items_update());
         }
-        static::on_init(null, $form, $items);
         break;
     }
   }

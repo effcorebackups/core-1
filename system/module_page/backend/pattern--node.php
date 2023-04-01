@@ -35,7 +35,7 @@ namespace effcore {
   function children_select($sort = false) {
     if ($sort) {
       $copy = $this->children;
-           return core::array_sort_by_weight($copy);
+           return core::array_sort_by_number($copy);
     } else return $this->children;
   }
 

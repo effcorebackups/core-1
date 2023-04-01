@@ -45,8 +45,8 @@ entities
         collate: nocase
         not_null: true
         check: (name <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -74,8 +74,8 @@ entities
         collate: nocase
         not_null: true
         check: (message <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
@@ -163,8 +163,8 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -238,7 +238,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_relation
+        managing_control_class: \effcore\field_select_relation
         managing_control_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
@@ -254,7 +254,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_relation
+        managing_control_class: \effcore\field_select_relation
         managing_control_properties
         - related_entity_name: permission
         - related_entity_field_id_name: id
@@ -342,7 +342,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_relation
+        managing_control_class: \effcore\field_select_relation
         managing_control_properties
         - related_entity_name: user
         - related_entity_field_id_name: id
@@ -358,7 +358,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_relation
+        managing_control_class: \effcore\field_select_relation
         managing_control_properties
         - related_entity_name: role
         - related_entity_field_id_name: id
@@ -463,8 +463,8 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -657,9 +657,10 @@ entities
         size: 64
         collate: nocase
         default: UTC
+        converter_on_render: \effcore\field_select_timezone::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_timezone
+        managing_control_class: \effcore\field_select_timezone
         managing_control_properties
         - weight: +320
         managing_control_element_attributes

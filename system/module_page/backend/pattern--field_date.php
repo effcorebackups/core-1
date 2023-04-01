@@ -29,7 +29,7 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function value_get() { # return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
     $value = parent::value_get();
     if         (core::validate_date($value))
          return core::sanitize_date($value);
@@ -38,9 +38,11 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if ($this->value_current_if_null === true && $value === null) $value = core::date_get();
-    if (core::validate_date($value)) parent::value_set(core::sanitize_date($value));
-    else                             parent::value_set(                    $value );
+    if (is_null($value) || is_string($value)) {
+      if ($this->value_current_if_null === true && $value === null) $value = core::date_get();
+      if (core::validate_date($value)) parent::value_set(core::sanitize_date($value));
+      else                             parent::value_set(                    $value );
+    }
   }
 
   ###########################

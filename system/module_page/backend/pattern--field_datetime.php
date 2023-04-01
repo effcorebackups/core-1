@@ -34,7 +34,7 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function value_get() { # return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
     $value = parent::value_get();
     if ($value !== null && core::validate_T_datetime($value)) $value = core::T_datetime_to_datetime($value);
     return $value;
@@ -42,9 +42,11 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if ($value === null && $this->value_current_if_null === true) $value = core::datetime_get();
-    if ($value !== null && core::validate_datetime($value)) $value = core::datetime_to_T_datetime($value);
-    parent::value_set($value);
+    if (is_null($value) || is_string($value)) {
+      if ($value === null && $this->value_current_if_null === true) $value = core::datetime_get();
+      if ($value !== null && core::validate_datetime($value)) $value = core::datetime_to_T_datetime($value);
+      parent::value_set($value);
+    }
   }
 
   ###########################

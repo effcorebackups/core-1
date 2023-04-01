@@ -22,14 +22,17 @@ forms
             text: Insert a new item of type "%%_entity_title_context" on new page.
         - data-style: insert
         - value: insert
+        - disabled: true
     - actions|field_select
         title: Actions
         element_attributes
         - name: actions
         - disabled: true
-        values
+        items
         - not_selected: - select -
         - delete: Delete
+        disabled
+        - =: delete
     - data|node
     - button_apply|button
         title: apply

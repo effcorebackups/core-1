@@ -47,7 +47,7 @@ namespace effcore {
             if (isset($this->blocks[$c_area->id])) {
               $this->_areas_pointers[$c_area->id] = $c_area;
               $c_blocks = $this->blocks[$c_area->id];
-              core::array_sort_by_weight($c_blocks);
+              core::array_sort_by_number($c_blocks);
               foreach ($c_blocks as $c_row_id => $c_block) {
                 if ($c_blocks[$c_row_id] instanceof block_preset_link) $c_blocks[$c_row_id] = $c_block->block_make();
                 if ($c_blocks[$c_row_id] instanceof block) {
@@ -114,7 +114,7 @@ namespace effcore {
     $head_title_text = $template->target_get('head_title_text', true);
 
     if ($this->_areas_pointers) {
-      core::array_sort_by_property($this->_areas_pointers, 'render_weight');
+      core::array_sort_by_number($this->_areas_pointers, 'render_weight');
       foreach ($this->_areas_pointers as $c_area_id => $c_area) {
         $this->_areas_pointers[$c_area_id]->children_update(
           [new text_simple( (new node([], $c_area->children_select(true)))->render() )]

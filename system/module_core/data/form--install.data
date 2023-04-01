@@ -104,7 +104,7 @@ forms
       # field 'Password'
         - password|field_password
       # field 'Time zone'
-        - timezone|field_timezone
+        - timezone|field_select_timezone
             element_attributes
             - data-source: uagent-timezone
     # profile parameters
@@ -117,8 +117,6 @@ forms
             title: Profile
             element_attributes
             - name: profile
-            values
-            - not_selected: - select -
     - button_install|button
         title: install
         attributes

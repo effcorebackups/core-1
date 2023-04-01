@@ -82,6 +82,17 @@ namespace effcore {
   # element properties
   # ─────────────────────────────────────────────────────────────────────
 
+  # supporting of markup styles:
+  # ┌──────────────────────────────╥──────────╥─────────┐
+  # │ style                        ║ is valid ║ support │
+  # ╞══════════════════════════════╬══════════╬═════════╡
+  # │ <x-tag disabled/>            ║ yes      ║ yes     │
+  # │ <x-tag disabled=""/>         ║ yes      ║ no      │
+  # │ <x-tag disabled="disabled"/> ║ yes      ║ no      │
+  # │ <x-tag disabled="true"/>     ║ no       ║ no      │
+  # │ <x-tag disabled="false"/>    ║ no       ║ no      │
+  # └──────────────────────────────╨──────────╨─────────┘
+
   function auto_id_generate() {
     $name = $this->name_get();
     if ($name !== null) {
@@ -287,7 +298,7 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function value_get() { # return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
     $element = $this->child_select('element');
     return $element->attribute_select('value');
   }
@@ -295,7 +306,10 @@ namespace effcore {
   function value_set($value) {
     $this->value_set_initial($value);
     $element = $this->child_select('element');
-    return $element->attribute_insert('value', $value);
+    if (is_null   ($value)) return $element->attribute_insert('value', null);
+    if (is_int    ($value)) return $element->attribute_insert('value', core::format_number($value));
+    if (is_float  ($value)) return $element->attribute_insert('value', core::format_number($value, core::fpart_max_len));
+    if (is_string ($value)) return $element->attribute_insert('value', $value);
   }
 
   # ─────────────────────────────────────────────────────────────────────

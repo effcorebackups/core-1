@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class group_radiobuttons extends control implements complex_control {
+          class group_radiobuttons extends control implements control_complex {
 
   public $tag_name = 'x-group';
   public $attributes = [
@@ -23,13 +23,13 @@ namespace effcore {
   public $field_title_position = 'bottom';
   public $element_attributes = [];
   public $required_any = false;
-  public $values   = [];
+  public $items    = [];
   public $required = [];
   public $disabled = [];
   public $checked  = [];
 
-  function __construct($values = null, $required = null, $disabled = null, $checked = null) {
-    if ($values  ) $this->values   = $values;
+  function __construct($items = null, $required = null, $disabled = null, $checked = null) {
+    if ($items   ) $this->items    = $items;
     if ($required) $this->required = $required;
     if ($disabled) $this->disabled = $disabled;
     if ($checked ) $this->checked  = $checked;
@@ -38,7 +38,7 @@ namespace effcore {
 
   function build() {
     if (!$this->is_builded) {
-      foreach ($this->values as $c_value => $c_info) {
+      foreach ($this->items as $c_value => $c_info) {
         if (!$this->child_select($c_value)) {
           if (is_string($c_info)) $c_info = (object)['title' => $c_info];
           if (!isset($c_info->title                      )) $c_info->title = $c_value;
@@ -65,17 +65,19 @@ namespace effcore {
     }
   }
 
-  function field_insert($title = null, $description = null, $value = '', $element_attributes = [], $weight = 0, $ws_rebuild = true) {
-    $this->values[$value] = (object)[
-      'title'              => $title,
-      'description'        => $description,
-      'element_attributes' => $element_attributes,
-      'weight'             => $weight];
+  function items_set($items = [], $ws_rebuild = true) {
+    $this->items = $items;
     if ($ws_rebuild) {
       $this->is_builded = false;
       $this->build();
     }
   }
+
+  function items_get() {
+    return $this->items;
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function name_get_complex($trim = true) {
   # try to find the name in 'element_attributes'
@@ -91,9 +93,6 @@ namespace effcore {
     }
   }
 
-  function value_get_complex()       {return $this->value_get();      }
-  function value_set_complex($value) {       $this->value_set($value);}
-
   function value_get() {
     foreach ($this->children_select() as $c_child) {
       if ($c_child instanceof $this->field_class &&
@@ -105,6 +104,7 @@ namespace effcore {
   }
 
   function value_set($value) {
+    $this->value_set_initial($value);
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) $c_child->checked_set(false);
     foreach ($this->children_select() as $c_child) if ($c_child instanceof $this->field_class) {
       if ((string)$c_child->value_get() === (string)$value) {
@@ -115,7 +115,7 @@ namespace effcore {
   }
 
   function disabled_get() {
-    return count($this->values) +
+    return count($this->items) +
            count($this->disabled);
   }
 
@@ -133,7 +133,7 @@ namespace effcore {
   }
 
   static function validate_required_any($group, $form, $npath) {
-    if ($group->required_any && $group->value_get() === '') {
+    if ($group->required_any && count($group->items) !== count($group->disabled) && $group->value_get() === '') {
       $group->error_set_in();
       $form->error_set(
         'Group "%%_title" should contain at least one selected item!', ['title' => (new text($group->title))->render() ]

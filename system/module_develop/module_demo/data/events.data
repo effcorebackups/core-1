@@ -93,6 +93,10 @@ events
       for: virtual
       handler: \effcore\modules\demo\events_file::on_load_virtual
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  on_form_build
+  - demo|event
+      for: demo
+      handler: \effcore\modules\demo\events_form_demo::on_build
   on_form_init
   - demo|event
       for: demo

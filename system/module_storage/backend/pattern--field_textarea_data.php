@@ -9,7 +9,6 @@ namespace effcore {
 
   public $title = 'Data in "data" format';
   public $classes_allowed = [];
-  public $class_std_by_default = true;
   public $data_validator_id;
 
   function value_data_get() {

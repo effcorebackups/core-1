@@ -11,18 +11,16 @@ namespace effcore\modules\project {
 
   static function on_submit($event, $form, $items) {
     $entity = entity::get($form->entity_name);
-    if ($entity) {
-      switch ($form->clicked_button->value_get()) {
-        case 'update':
-          if ($entity->name === 'release' && !$form->has_error()) {
-          # field 'hash sum'
-            $file = new file($items['#path']->value_get());
-            if ($file->is_exists())
-                 $items['#hash_sum']->value_set($file->hash_get());
-            else $items['#hash_sum']->value_set('');
-          }
-          break;
-      }
+    switch ($form->clicked_button->value_get()) {
+      case 'update':
+        if ($entity->name === 'release' && !$form->has_error()) {
+        # field 'hash sum'
+          $file = new file($items['#path']->value_get());
+          if ($file->is_exists())
+               $items['#hash_sum']->value_set($file->hash_get());
+          else $items['#hash_sum']->value_set('');
+        }
+        break;
     }
   }
 

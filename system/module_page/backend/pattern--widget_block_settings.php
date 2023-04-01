@@ -54,46 +54,48 @@ namespace effcore {
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = new node;
   # control for title
-    $field_title = new field_text;
-    $field_title->title = 'Title';
+    $field_title = new widget_text_object;
+    $field_title->field_text_title = 'Title';
+    $field_title->field_text_required = false;
     $field_title->cform = $widget->parent_widget->cform;
+    $field_title->name_complex = $widget->parent_widget->name_get_complex().'__title__'.$c_row_id;
     $field_title->build();
-    $field_title->name_set($widget->parent_widget->name_get_complex().'__title__'.$c_row_id);
-    $field_title->value_set($item->title ?? '');
-    $field_title->required_set(false);
+    $field_title->value_set($item->title instanceof text ?
+                            $item->title :
+                   new text($item->title));
   # control for title visibility
-    $field_title_is_visible = new field_logic;
+    $field_title_is_visible = new field_select_logic;
     $field_title_is_visible->title = 'Title is visible';
     $field_title_is_visible->cform = $widget->parent_widget->cform;
     $field_title_is_visible->build();
     $field_title_is_visible->name_set($widget->parent_widget->name_get_complex().'__title_is_visible__'.$c_row_id);
-    $field_title_is_visible->value_set((int)($item->title_is_visible ?? 0));
+    $field_title_is_visible->value_set($item->title_is_visible ?? false);
   # control for attributes
     $field_attributes = new field_textarea_data;
     $field_attributes->title = 'Attributes';
     $field_attributes->cform = $widget->parent_widget->cform;
+    $field_attributes->classes_allowed['text'] = 'text';
+    $field_attributes->classes_allowed['text_simple'] = 'text_simple';
+    $field_attributes->data_validator_id = 'attributes';
     $field_attributes->build();
     $field_attributes->name_set($widget->parent_widget->name_get_complex().'__attributes__'.$c_row_id);
     $field_attributes->value_data_set($item->attributes ?? null, 'attributes');
     $field_attributes->required_set(false);
     $field_attributes->maxlength_set(0xffff);
-    $field_attributes->data_validator_id = 'attributes';
-    $field_attributes->classes_allowed['text'] = 'text';
-    $field_attributes->classes_allowed['text_simple'] = 'text_simple';
   # relate new controls with the widget
     $widget->controls['#title__'.           $c_row_id] = $field_title;
     $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
     $widget->controls['#attributes__'.      $c_row_id] = $field_attributes;
-    $result->child_insert($field_title,            'title');
-    $result->child_insert($field_title_is_visible, 'title_is_visible');
-    $result->child_insert($field_attributes,       'attributes');
+    $result->child_insert($field_title,            'field_title');
+    $result->child_insert($field_title_is_visible, 'field_title_is_visible');
+    $result->child_insert($field_attributes,       'field_attributes');
     return $result;
   }
 
   static function on_request_value_set($widget, $form, $npath) {
     $items = $widget->parent_widget->items_get();
-    $items[$widget->c_row_id]->title            = $widget->controls['#title__'.           $widget->c_row_id]->value_get();
-    $items[$widget->c_row_id]->title_is_visible = $widget->controls['#title_is_visible__'.$widget->c_row_id]->value_get();
+    $items[$widget->c_row_id]->title            = $widget->controls['#title__'.           $widget->c_row_id]->     value_get();
+    $items[$widget->c_row_id]->title_is_visible = $widget->controls['#title_is_visible__'.$widget->c_row_id]->     value_get();
     $items[$widget->c_row_id]->attributes       = $widget->controls['#attributes__'.      $widget->c_row_id]->value_data_get()->attributes ?? [];
     $widget->parent_widget->items_set($items);
   }

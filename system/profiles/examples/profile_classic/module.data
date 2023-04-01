@@ -6,4 +6,7 @@ module|module_as_profile
   description: Module for example of profile "Classic".
   copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
   enabled: yes
-  version: 1.000
+  version: 0.904
+  dependencies
+    system
+    - core: 0.904

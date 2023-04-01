@@ -30,7 +30,7 @@ namespace effcore {
     }
   }
 
-  function value_get() {
+  function value_get() { # return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
     $value = parent::value_get();
     if         (core::validate_time($value))
          return core::sanitize_time($value);
@@ -39,9 +39,11 @@ namespace effcore {
 
   function value_set($value) {
     $this->value_set_initial($value);
-    if ($this->value_current_if_null === true && $value === null) $value = locale::time_utc_to_loc(core::time_get());
-    if (core::validate_time($value)) parent::value_set(core::sanitize_time($value));
-    else                             parent::value_set(                    $value );
+    if (is_null($value) || is_string($value)) {
+      if ($this->value_current_if_null === true && $value === null) $value = locale::time_utc_to_loc(core::time_get());
+      if (core::validate_time($value)) parent::value_set(core::sanitize_time($value));
+      else                             parent::value_set(                    $value );
+    }
   }
 
   ###########################

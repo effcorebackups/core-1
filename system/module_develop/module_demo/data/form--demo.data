@@ -291,15 +291,16 @@ forms
             - value: 2030-01-02 12:00:00
             value_current_if_null: true
       # field 'Time zone'
-        - timezone|field_timezone
+        - timezone|field_select_timezone
             title: Time zone
             description|text
               text: Field "%%_title".
               args
-              - title: field_timezone
+              - title: field_select_timezone
             element_attributes
             - name: timezone
             - required: true
+            sort: by_zones
             selected
             - =: UTC
       # ─────────────────────────────────────────────────────────────────────
@@ -313,14 +314,14 @@ forms
               - title: field_select
             element_attributes
             - name: select
-            values
+            items
             - not_selected: - select -
             - option_1: Option 1 (selected)
             - option_2: Option 2 (disabled)
             - option_3: Option 3
             - group_1
                 title: Group 1
-                values
+                items
                 - option_4: Option 4
             selected
             - =: option_1
@@ -336,36 +337,36 @@ forms
             - name: select_multiple[]
             - multiple: true
             - size: 11
-            values
+            items
             - option_1: Option 1 (selected)
             - option_2: Option 2 (disabled)
             - option_3: Option 3
             - group_1
                 title: Group 1
-                values
+                items
                 - option_4: Option 4
             selected
             - =: option_1
             disabled
             - =: option_2
       # field 'Logic'
-        - logic|field_logic
+        - logic|field_select_logic
             title: Logic
             description|text
               text: Field "%%_title".
               args
-              - title: field_logic
+              - title: field_select_logic
             element_attributes
             - name: logic
             selected
             - =: 1
       # field 'Relation'
-        - relation|field_relation
+        - relation|field_select_relation
             title: Relation
             description|text
               text: Field "%%_title".
               args
-              - title: field_relation
+              - title: field_select_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_title_name: title
@@ -382,12 +383,12 @@ forms
             selected
             - =: demo_sql_item_1
       # field 'Relation' (tree view)
-        - relation_tree|field_relation
+        - relation_tree|field_select_relation
             title: Relation (tree view)
             description|text
               text: Field "%%_title".
               args
-              - title: field_relation
+              - title: field_select_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_id_parent_name: id_parent
@@ -402,18 +403,18 @@ forms
             selected
             - =: demo_sql_item_1
       # field 'Language'
-        - language|field_language
+        - language|field_select_language
             title: Language
             description|text
               text: Field "%%_title".
               args
-              - title: field_language
+              - title: field_select_language
             element_attributes
             - name: lang_code
             selected
             - =: en
       # field 'Text direction'
-        - text_direction|field_text_direction
+        - text_direction|field_select_text_direction
             title: Text direction
             description|text
               text: Field "%%_title".
@@ -477,11 +478,11 @@ forms
 /////////////////////    text: some text
 /////////////////////    delimiter|_string_nl
 /////////////////////    weight: 0
-            data_validator_id: attributes
             classes_allowed
             - =: text
             - =: \effcore\text_simple
             - =: \some_vendor\some_exists_class_name
+            data_validator_id: attributes
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
@@ -511,7 +512,7 @@ forms
                   - title: group_checkboxes
                 element_attributes
                 - name: checkboxes[]
-                values
+                items
                 - checkbox_1: Checkbox 1
                 - checkbox_2: Checkbox 2 (checked)
                 - checkbox_3: Checkbox 3 (disabled)
@@ -547,7 +548,7 @@ forms
                   - title: group_switchers
                 element_attributes
                 - name: switchers[]
-                values
+                items
                 - switcher_1: Switcher 1
                 - switcher_2: Switcher 2 (checked)
                 - switcher_3: Switcher 3 (disabled)
@@ -572,6 +573,8 @@ forms
                   - 1: Access settings are not applicable if no one role is active!
                   args
                   - title: widget_access
+                checked_roles
+                - =: demo
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
@@ -600,7 +603,7 @@ forms
                   - title: group_radiobuttons
                 element_attributes
                 - name: radiobuttons
-                values
+                items
                 - radiobutton_1: Radiobutton 1
                 - radiobutton_2: Radiobutton 2 (checked)
                 - radiobutton_3
@@ -626,7 +629,7 @@ forms
         - micro_tabs|micro_tabs
             element_attributes
             - name: micro_tabs
-            values
+            items
             - 1: Tab 1
             - 2: Tab 2
             - 3

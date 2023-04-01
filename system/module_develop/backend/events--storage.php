@@ -27,8 +27,8 @@ namespace effcore\modules\develop {
     timer::tap('storage query with hash: '.$query_hash);
   }
 
-  static function on_query_after($event, $storage, $query, $result, $errors) {
-    if ($errors[0] === '00000') {
+  static function on_query_after($event, $storage, $query, $statement, $errors) {
+    if ($errors[0] === \PDO::ERR_NONE) {
       $query_hash = core::hash_get($query);
       timer::tap('storage query with hash: '.$query_hash);
       $args_trimmed = [];

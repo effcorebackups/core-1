@@ -197,7 +197,7 @@ translations
     - stack: стек
     - storage "%%_name" was initialized: сховище "%%_name" було ініціалізовано
     - string with parameter = %%_n: рядок із параметром = %%_n
-    - string with plural value = %%_number second%%_plural{number\|s}: рядок з численним числом = %%_number секунд%%_plural{number|a-ji}
+    - string with plural value = %%_number second%%_plural{number\|s}: рядок з численним числом = %%_number секунд%%_plural{number|a-i}
     - submission: передача
     - Switcher 1: Вимикач 1
     - Switcher 2 (checked): Вимикач 2 (відзначений)

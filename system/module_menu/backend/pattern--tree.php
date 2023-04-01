@@ -89,7 +89,7 @@ namespace effcore {
           $c_instance->title,
           $c_instance->id,
           $c_instance->access,
-          widget_attributes::complex_value_to_attributes($c_instance->attributes) ?? [], 0);
+          widget_attributes::value_to_attributes($c_instance->attributes) ?? [], 0);
         static::$cache[$c_tree->id] = $c_tree;
         static::$cache[$c_tree->id]->origin = 'sql';
         static::$cache[$c_tree->id]->module_id = $c_instance->module_id;

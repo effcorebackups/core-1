@@ -16,11 +16,11 @@ namespace effcore {
     $this->weight = $weight;
   }
 
-  function text_lines_count()                {$lines = explode($this->delimiter, $this->text); return count($lines);}
-  function text_line_select($key)            {$lines = explode($this->delimiter, $this->text); if (array_key_exists($key, $lines)) return $lines[$key];             else return null;}
-  function text_line_append($key, $new_text) {$lines = explode($this->delimiter, $this->text); if (array_key_exists($key, $lines))        $lines[$key].= $new_text; else $lines[$key] = $new_text; $this->text = implode($this->delimiter, $lines);}
-  function text_line_update($key, $new_text) {$lines = explode($this->delimiter, $this->text);       $lines[$key] = $new_text;                                                                     $this->text = implode($this->delimiter, $lines);}
-  function text_line_delete($key)            {$lines = explode($this->delimiter, $this->text); unset($lines[$key]);                                                                                $this->text = implode($this->delimiter, $lines);}
+  function text_lines_count()                {$lines = explode(strlen($this->delimiter) ? $this->delimiter : nl, $this->text); return count($lines);}
+  function text_line_select($key)            {$lines = explode(strlen($this->delimiter) ? $this->delimiter : nl, $this->text); if (array_key_exists($key, $lines)) return $lines[$key];             else return null;}
+  function text_line_append($key, $new_text) {$lines = explode(strlen($this->delimiter) ? $this->delimiter : nl, $this->text); if (array_key_exists($key, $lines))        $lines[$key].= $new_text; else $lines[$key] = $new_text; $this->text = implode($this->delimiter, $lines);}
+  function text_line_update($key, $new_text) {$lines = explode(strlen($this->delimiter) ? $this->delimiter : nl, $this->text);       $lines[$key] = $new_text;                                                                     $this->text = implode($this->delimiter, $lines);}
+  function text_line_delete($key)            {$lines = explode(strlen($this->delimiter) ? $this->delimiter : nl, $this->text); unset($lines[$key]);                                                                                $this->text = implode($this->delimiter, $lines);}
 
   function text_select()          {return $this->text;}
   function text_update($new_text) {$this->text = $new_text;}

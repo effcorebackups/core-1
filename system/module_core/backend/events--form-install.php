@@ -26,10 +26,10 @@ namespace effcore\modules\core {
   static function on_build($event, $form) {
     if (!storage::get('sql')->is_installed()) {
     # profile selection element
-      $field_profile_options = module::get_profiles('title');
-      core::array_sort_text($field_profile_options);
+      $field_profile_items = module::get_profiles('title');
+      core::array_sort($field_profile_items);
       $field_profile = $form->child_select('profile')->child_select('profile');
-      $field_profile->values = $field_profile_options;
+      $field_profile->items = ['not_selected' => '- select -'] + $field_profile_items;
       $field_profile->selected = ['profile_default' => 'profile_default'];
     } else {
       $form->children_delete();
@@ -157,7 +157,7 @@ namespace effcore\modules\core {
           $enabled = module::get_enabled_by_default();
           $modules_to_install = [];
           $modules_to_include = [];
-          core::array_sort_by_property($enabled, 'deploy_weight');
+          core::array_sort_by_number($enabled, 'deploy_weight');
           foreach ($enabled as $c_module) {
             if ($c_module instanceof module_as_profile &&
                 $c_module->id !== $items['#profile']->value_get()) continue;

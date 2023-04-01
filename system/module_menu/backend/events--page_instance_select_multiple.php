@@ -18,7 +18,7 @@ namespace effcore\modules\menu {
     $category_id = page::get_current()->args_get('category_id');
     if ($entity_name === 'tree_item') {
       $trees = tree::select_all('sql');
-      core::array_sort_by_text_property($trees);
+      core::array_sort_by_string($trees);
       if (empty($trees[$category_id])) {
         url::go(page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
       }
@@ -30,7 +30,7 @@ namespace effcore\modules\menu {
     $category_id = page::get_current()->args_get('category_id');
     if ($entity_name === 'tree_item') {
       $trees = tree::select_all('sql');
-      core::array_sort_by_text_property($trees);
+      core::array_sort_by_string($trees);
       foreach ($trees as $c_tree) {
         $c_tree_item_title = (new text_multiline([
           'title' => $c_tree->title, 'id' => '('.$c_tree->id.')'], [], ' '))->render();

@@ -53,7 +53,7 @@ namespace effcore\modules\user {
           'email' => $items['#email']->value_get()
         ]))->select();
         if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
-          session::insert($user->id, core::array_keys_map($items['*session_params']->values_get()));
+          session::insert($user->id, core::array_keys_map($items['*session_params']->value_get()));
           message::insert(new text('Welcome, %%_nickname!', ['nickname' => $user->nickname]));
           url::go(url::back_url_get() ?: '/user/'.$user->nickname);
         }

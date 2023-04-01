@@ -35,9 +35,9 @@ namespace effcore\modules\demo {
   static function on_page_build_before          ($event, $page) {}
   static function on_page_build_after           ($event, $page) {}
   static function on_page_render_before         ($event, $page, $template) {}
-  static function on_query_before               ($event, $storage, $query) {}                   # see: \effcore\modules\develop\events_storage::on_query_before
-  static function on_query_after                ($event, $storage, $query, $result, $errors) {} # see: \effcore\modules\develop\events_storage::on_query_after
-  static function on_repo_restore               ($event, $bundle_id) {}                         # see: \effcore\modules\core\events_module_update::on_repo_restore
+  static function on_query_before               ($event, $storage, $query) {}                      # see: \effcore\modules\develop\events_storage::on_query_before
+  static function on_query_after                ($event, $storage, $query, $statement, $errors) {} # see: \effcore\modules\develop\events_storage::on_query_after
+  static function on_repo_restore               ($event, $bundle_id) {}                            # see: \effcore\modules\core\events_module_update::on_repo_restore
   static function on_selection_build_before     ($event, $selection) {}
   static function on_selection_build_after      ($event, $selection) {}
   static function on_session_insert_after       ($event, $id_user, $id_session, $params) {}

@@ -48,8 +48,8 @@ entities
         collate: nocase
         not_null: true
         check: (question <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -76,7 +76,7 @@ entities
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_select
         managing_control_properties
-        - values
+        - items
           - not_selected: - select -
           - linear: Linear diagram
           - radial: Radial diagram
@@ -92,7 +92,7 @@ entities
         managing_control_properties
         - description|text
             text: In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!
-        - values
+        - items
           - not_selected: - select -
           - 1: Registered users
           - 0: Anonymous users + Registered users
@@ -186,8 +186,8 @@ entities
         collate: nocase
         not_null: true
         check: (answer <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
     - weight
         title: Weight
         type: integer

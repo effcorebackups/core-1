@@ -1,6 +1,7 @@
 selections
 - instance_select-audio|selection
     id: instance_select-audio
+    main_entity_name: audio
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -12,52 +13,33 @@ selections
           is_apply_tokens: true
           text: %%_selection_audio_id_context
     fields
-    - audio.id
-        type: field
-        entity_name: audio
-        entity_field_name: id
-        weight: 400
-    - audio.description
-        type: field
-        entity_name: audio
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - audio.attributes
-        type: field
-        entity_name: audio
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - audio.path
-        type: field
-        entity_name: audio
-        entity_field_name: path
-        weight: 340
-    - audio.created
-        type: field
-        entity_name: audio
-        entity_field_name: created
-        weight: 320
-    - audio.updated
-        type: field
-        entity_name: audio
-        entity_field_name: updated
-        weight: 300
-    - audio.is_embedded
-        type: field
-        entity_name: audio
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - instance_select-gallery|selection
     id: instance_select-gallery
+    main_entity_name: gallery
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -69,55 +51,33 @@ selections
           is_apply_tokens: true
           text: %%_selection_gallery_id_context
     fields
-    - gallery.id
-        type: field
-        entity_name: gallery
-        entity_field_name: id
-        weight: 400
-    - gallery.title
-        type: field
-        entity_name: gallery
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - gallery.attributes
-        type: field
-        entity_name: gallery
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - gallery.items
-        type: field
-        entity_name: gallery
-        entity_field_name: items
-        settings
-        - filters
-          - 600: \effcore\widget_files_multimedia::complex_value_to_markup
-        weight: 340
-    - gallery.created
-        type: field
-        entity_name: gallery
-        entity_field_name: created
-        weight: 320
-    - gallery.updated
-        type: field
-        entity_name: gallery
-        entity_field_name: updated
-        weight: 300
-    - gallery.is_embedded
-        type: field
-        entity_name: gallery
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - items
+          entity_field_name: items
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - instance_select-page|selection
     id: instance_select-page
+    main_entity_name: page
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -129,80 +89,53 @@ selections
           is_apply_tokens: true
           text: %%_selection_page_id_context
     fields
-    - page.id
-        type: field
-        entity_name: page
-        entity_field_name: id
-        weight: 400
-    - page.id_layout
-        type: field
-        entity_name: page
-        entity_field_name: id_layout
-        weight: 380
-    - page.title
-        type: field
-        entity_name: page
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 360
-    - page.url
-        type: field
-        entity_name: page
-        entity_field_name: url
-        weight: 340
-    - page.is_https
-        type: field
-        entity_name: page
-        entity_field_name: is_https
-        settings
-        - filters
-          - 400: translate
-        weight: 320
-    - page.lang_code
-        type: field
-        entity_name: page
-        entity_field_name: lang_code
-        weight: 300
-    - page.text_direction
-        type: field
-        entity_name: page
-        entity_field_name: text_direction
-        weight: 280
-    - page.charset
-        type: field
-        entity_name: page
-        entity_field_name: charset
-        weight: 260
-    - page.is_use_global_meta
-        type: field
-        entity_name: page
-        entity_field_name: is_use_global_meta
-        settings
-        - filters
-          - 400: translate
-        weight: 220
-    - page.created
-        type: field
-        entity_name: page
-        entity_field_name: created
-        weight: 200
-    - page.updated
-        type: field
-        entity_name: page
-        entity_field_name: updated
-        weight: 180
-    - page.is_embedded
-        type: field
-        entity_name: page
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 160
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - id_layout
+          entity_field_name: id_layout
+          weight: 380
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 360
+      - url
+          entity_field_name: url
+          weight: 340
+      - is_https
+          entity_field_name: is_https
+          is_apply_translation: true
+          weight: 320
+      - lang_code
+          entity_field_name: lang_code
+          weight: 300
+      - text_direction
+          entity_field_name: text_direction
+          weight: 280
+      - charset
+          entity_field_name: charset
+          weight: 260
+      - is_use_global_meta
+          entity_field_name: is_use_global_meta
+          is_apply_translation: true
+          weight: 240
+      - created
+          entity_field_name: created
+          weight: 220
+      - updated
+          entity_field_name: updated
+          weight: 200
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 180
+      - access
+          entity_field_name: access
+          weight: 160
 - instance_select-picture|selection
     id: instance_select-picture
+    main_entity_name: picture
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -214,65 +147,39 @@ selections
           is_apply_tokens: true
           text: %%_selection_picture_id_context
     fields
-    - picture.id
-        type: field
-        entity_name: picture
-        entity_field_name: id
-        weight: 400
-    - picture.description
-        type: field
-        entity_name: picture
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - picture.attributes
-        type: field
-        entity_name: picture
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - picture.path
-        type: field
-        entity_name: picture
-        entity_field_name: path
-        weight: 340
-    - picture.link_attributes
-        type: field
-        entity_name: picture
-        entity_field_name: link_attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 320
-    - picture.url
-        type: field
-        entity_name: picture
-        entity_field_name: url
-        weight: 300
-    - picture.created
-        type: field
-        entity_name: picture
-        entity_field_name: created
-        weight: 280
-    - picture.updated
-        type: field
-        entity_name: picture
-        entity_field_name: updated
-        weight: 260
-    - picture.is_embedded
-        type: field
-        entity_name: picture
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 240
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - link_attributes
+          entity_field_name: link_attributes
+          weight: 320
+      - url
+          entity_field_name: url
+          weight: 300
+      - created
+          entity_field_name: created
+          weight: 280
+      - updated
+          entity_field_name: updated
+          weight: 260
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 240
 - instance_select-text|selection
     id: instance_select-text
+    main_entity_name: text
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -284,55 +191,34 @@ selections
           is_apply_tokens: true
           text: %%_selection_text_id_context
     fields
-    - text.id
-        type: field
-        entity_name: text
-        entity_field_name: id
-        weight: 400
-    - text.description
-        type: field
-        entity_name: text
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - text.attributes
-        type: field
-        entity_name: text
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - text.text
-        type: field
-        entity_name: text
-        entity_field_name: text
-        settings
-        - filters
-          - 400: translate
-        weight: 340
-    - text.created
-        type: field
-        entity_name: text
-        entity_field_name: created
-        weight: 320
-    - text.updated
-        type: field
-        entity_name: text
-        entity_field_name: updated
-        weight: 300
-    - text.is_embedded
-        type: field
-        entity_name: text
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - text
+          entity_field_name: text
+          is_apply_translation: true
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - instance_select-video|selection
     id: instance_select-video
+    main_entity_name: video
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -344,263 +230,216 @@ selections
           is_apply_tokens: true
           text: %%_selection_video_id_context
     fields
-    - video.id
-        type: field
-        entity_name: video
-        entity_field_name: id
-        weight: 400
-    - video.description
-        type: field
-        entity_name: video
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - video.attributes
-        type: field
-        entity_name: video
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - video.path
-        type: field
-        entity_name: video
-        entity_field_name: path
-        weight: 340
-    - video.poster_path
-        type: field
-        entity_name: video
-        entity_field_name: poster_path
-        weight: 320
-    - video.created
-        type: field
-        entity_name: video
-        entity_field_name: created
-        weight: 300
-    - video.updated
-        type: field
-        entity_name: video
-        entity_field_name: updated
-        weight: 280
-    - video.is_embedded
-        type: field
-        entity_name: video
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 260
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - poster_path
+          entity_field_name: poster_path
+          weight: 320
+      - created
+          entity_field_name: created
+          weight: 300
+      - updated
+          entity_field_name: updated
+          weight: 280
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|selection
     id: instance_select_multiple-audio
+    main_entity_name: audio
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - audio.id
-        type: field
-        entity_name: audio
-        entity_field_name: id
-        weight: 400
-    - audio.description
-        type: field
-        entity_name: audio
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - audio.created
-        type: field
-        entity_name: audio
-        entity_field_name: created
-        weight: 360
-    - audio.updated
-        type: field
-        entity_name: audio
-        entity_field_name: updated
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - created
+          entity_field_name: created
+          weight: 360
+      - updated
+          entity_field_name: updated
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320
 - instance_select_multiple-gallery|selection
     id: instance_select_multiple-gallery
+    main_entity_name: gallery
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - gallery.id
-        type: field
-        entity_name: gallery
-        entity_field_name: id
-        weight: 400
-    - gallery.title
-        type: field
-        entity_name: gallery
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - gallery.created
-        type: field
-        entity_name: gallery
-        entity_field_name: created
-        weight: 360
-    - gallery.updated
-        type: field
-        entity_name: gallery
-        entity_field_name: updated
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - created
+          entity_field_name: created
+          weight: 360
+      - updated
+          entity_field_name: updated
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320
 - instance_select_multiple-page|selection
     id: instance_select_multiple-page
+    main_entity_name: page
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - page.id
-        type: field
-        entity_name: page
-        entity_field_name: id
-        weight: 400
-    - page.title
-        type: field
-        entity_name: page
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - page.url
-        type: field
-        entity_name: page
-        entity_field_name: url
-        weight: 360
-    - page.lang_code
-        type: field
-        entity_name: page
-        entity_field_name: lang_code
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - url
+          entity_field_name: url
+          weight: 360
+      - lang_code
+          entity_field_name: lang_code
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320
 - instance_select_multiple-picture|selection
     id: instance_select_multiple-picture
+    main_entity_name: picture
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - picture.id
-        type: field
-        entity_name: picture
-        entity_field_name: id
-        weight: 400
-    - picture.description
-        type: field
-        entity_name: picture
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - picture.url
-        type: field
-        entity_name: picture
-        entity_field_name: url
-        weight: 360
-    - picture.created
-        type: field
-        entity_name: picture
-        entity_field_name: created
-        weight: 340
-    - picture.updated
-        type: field
-        entity_name: picture
-        entity_field_name: updated
-        weight: 320
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - url
+          entity_field_name: url
+          weight: 360
+      - created
+          entity_field_name: created
+          weight: 340
+      - updated
+          entity_field_name: updated
+          weight: 320
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 300
 - instance_select_multiple-text|selection
     id: instance_select_multiple-text
+    main_entity_name: text
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - text.id
-        type: field
-        entity_name: text
-        entity_field_name: id
-        weight: 400
-    - text.description
-        type: field
-        entity_name: text
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - text.created
-        type: field
-        entity_name: text
-        entity_field_name: created
-        weight: 360
-    - text.updated
-        type: field
-        entity_name: text
-        entity_field_name: updated
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - created
+          entity_field_name: created
+          weight: 360
+      - updated
+          entity_field_name: updated
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 320
 - instance_select_multiple-video|selection
     id: instance_select_multiple-video
+    main_entity_name: video
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
     - limit: 50
     fields
-    - video.id
-        type: field
-        entity_name: video
-        entity_field_name: id
-        weight: 400
-    - video.description
-        type: field
-        entity_name: video
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - video.created
-        type: field
-        entity_name: video
-        entity_field_name: created
-        weight: 360
-    - video.updated
-        type: field
-        entity_name: video
-        entity_field_name: updated
-        weight: 340
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - created
+          entity_field_name: created
+          weight: 360
+      - updated
+          entity_field_name: updated
+          weight: 340
+      - is_embedded
+          entity_field_name: is_embedded
+          is_not_visible: true
+          weight: 300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|selection
     id: audio
+    main_entity_name: audio
     template: content
     decorator_settings
     - view_type: template
     - template: content
-    - template_row: audio
-    - template_row_mapping
-      - id: audio.id
-      - description: audio.description
-      - attributes: audio.attributes
-      - path: audio.path
-      - created: audio.created
-      - updated: audio.updated
-      - is_embedded: audio.is_embedded
+    - template_item: audio
+    - mapping
+      - id: id
+      - description: description
+      - attributes: this_attributes
+      - path: path
+      - created: created
+      - updated: updated
+      - is_embedded: is_embedded
     query_settings
     - conditions
       - id_!f: ~audio.id
@@ -610,66 +449,47 @@ selections
           is_apply_tokens: true
           text: %%_selection_audio_id_context
     fields
-    - audio.id
-        type: field
-        entity_name: audio
-        entity_field_name: id
-        weight: 400
-    - audio.description
-        type: field
-        entity_name: audio
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - audio.attributes
-        type: field
-        entity_name: audio
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - audio.path
-        type: field
-        entity_name: audio
-        entity_field_name: path
-        weight: 340
-    - audio.created
-        type: field
-        entity_name: audio
-        entity_field_name: created
-        weight: 320
-    - audio.updated
-        type: field
-        entity_name: audio
-        entity_field_name: updated
-        weight: 300
-    - audio.is_embedded
-        type: field
-        entity_name: audio
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - gallery|selection
     id: gallery
+    main_entity_name: gallery
     template: content
     decorator_settings
     - view_type: template
     - template: content
-    - template_row: gallery
-    - template_row_mapping
-      - id: gallery.id
-      - title: gallery.title
-      - attributes: gallery.attributes
-      - children: gallery.items
-      - items: gallery.items
-      - created: gallery.created
-      - updated: gallery.updated
-      - is_embedded: gallery.is_embedded
+    - template_item: gallery
+    - mapping
+      - id: id
+      - title: title
+      - attributes: this_attributes
+      - children: items
+      - items: items
+      - created: created
+      - updated: updated
+      - is_embedded: is_embedded
     query_settings
     - conditions
       - id_!f: ~gallery.id
@@ -679,70 +499,48 @@ selections
           is_apply_tokens: true
           text: %%_selection_gallery_id_context
     fields
-    - gallery.id
-        type: field
-        entity_name: gallery
-        entity_field_name: id
-        weight: 400
-    - gallery.title
-        type: field
-        entity_name: gallery
-        entity_field_name: title
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - gallery.attributes
-        type: field
-        entity_name: gallery
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - gallery.items
-        type: field
-        entity_name: gallery
-        entity_field_name: items
-        settings
-        - filters
-          - 600: \effcore\widget_files_multimedia::complex_value_to_markup
-        weight: 340
-    - gallery.created
-        type: field
-        entity_name: gallery
-        entity_field_name: created
-        weight: 320
-    - gallery.updated
-        type: field
-        entity_name: gallery
-        entity_field_name: updated
-        weight: 300
-    - gallery.is_embedded
-        type: field
-        entity_name: gallery
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - title
+          entity_field_name: title
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - items
+          entity_field_name: items
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - picture|selection
     id: picture
+    main_entity_name: picture
     template: content
     decorator_settings
     - view_type: template
     - template: content
-    - template_row: picture
-    - template_row_mapping
-      - id: picture.id
-      - description: picture.description
-      - attributes: picture.attributes
-      - path: picture.path
-      - link_attributes: picture.link_attributes
-      - url: picture.url
-      - created: picture.created
-      - updated: picture.updated
-      - is_embedded: picture.is_embedded
+    - template_item: picture
+    - mapping
+      - id: id
+      - description: description
+      - attributes: this_attributes
+      - path: path
+      - link_attributes: link_attributes
+      - url: url
+      - created: created
+      - updated: updated
+      - is_embedded: is_embedded
     query_settings
     - conditions
       - id_!f: ~picture.id
@@ -752,78 +550,52 @@ selections
           is_apply_tokens: true
           text: %%_selection_picture_id_context
     fields
-    - picture.id
-        type: field
-        entity_name: picture
-        entity_field_name: id
-        weight: 400
-    - picture.description
-        type: field
-        entity_name: picture
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - picture.attributes
-        type: field
-        entity_name: picture
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - picture.path
-        type: field
-        entity_name: picture
-        entity_field_name: path
-        weight: 340
-    - picture.link_attributes
-        type: field
-        entity_name: picture
-        entity_field_name: link_attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 320
-    - picture.url
-        type: field
-        entity_name: picture
-        entity_field_name: url
-        weight: 300
-    - picture.created
-        type: field
-        entity_name: picture
-        entity_field_name: created
-        weight: 280
-    - picture.updated
-        type: field
-        entity_name: picture
-        entity_field_name: updated
-        weight: 260
-    - picture.is_embedded
-        type: field
-        entity_name: picture
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 240
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - link_attributes
+          entity_field_name: link_attributes
+          weight: 320
+      - url
+          entity_field_name: url
+          weight: 300
+      - created
+          entity_field_name: created
+          weight: 280
+      - updated
+          entity_field_name: updated
+          weight: 260
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 240
 - text|selection
     id: text
+    main_entity_name: text
     template: content
     decorator_settings
     - view_type: template
     - template: content
-    - template_row: text
-    - template_row_mapping
-      - id: text.id
-      - description: text.description
-      - attributes: text.attributes
-      - text: text.text
-      - created: text.created
-      - updated: text.updated
-      - is_embedded: text.is_embedded
+    - template_item: text
+    - mapping
+      - id: id
+      - description: description
+      - attributes: this_attributes
+      - text: text
+      - created: created
+      - updated: updated
+      - is_embedded: is_embedded
     query_settings
     - conditions
       - id_!f: ~text.id
@@ -833,70 +605,48 @@ selections
           is_apply_tokens: true
           text: %%_selection_text_id_context
     fields
-    - text.id
-        type: field
-        entity_name: text
-        entity_field_name: id
-        weight: 400
-    - text.description
-        type: field
-        entity_name: text
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - text.attributes
-        type: field
-        entity_name: text
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - text.text
-        type: field
-        entity_name: text
-        entity_field_name: text
-        settings
-        - filters
-          - 400: translate
-        weight: 340
-    - text.created
-        type: field
-        entity_name: text
-        entity_field_name: created
-        weight: 320
-    - text.updated
-        type: field
-        entity_name: text
-        entity_field_name: updated
-        weight: 300
-    - text.is_embedded
-        type: field
-        entity_name: text
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 280
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - text
+          entity_field_name: text
+          is_apply_translation: true
+          weight: 340
+      - created
+          entity_field_name: created
+          weight: 320
+      - updated
+          entity_field_name: updated
+          weight: 300
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 280
 - video|selection
     id: video
+    main_entity_name: video
     template: content
     decorator_settings
     - view_type: template
     - template: content
-    - template_row: video
-    - template_row_mapping
-      - id: video.id
-      - description: video.description
-      - attributes: video.attributes
-      - path: video.path
-      - poster_path: video.poster_path
-      - attributes: video.attributes
-      - created: video.created
-      - updated: video.updated
-      - is_embedded: video.is_embedded
+    - template_item: video
+    - mapping
+      - id: id
+      - description: description
+      - attributes: this_attributes
+      - path: path
+      - poster_path: poster_path
+      - created: created
+      - updated: updated
+      - is_embedded: is_embedded
     query_settings
     - conditions
       - id_!f: ~video.id
@@ -906,52 +656,30 @@ selections
           is_apply_tokens: true
           text: %%_selection_video_id_context
     fields
-    - video.id
-        type: field
-        entity_name: video
-        entity_field_name: id
-        weight: 400
-    - video.description
-        type: field
-        entity_name: video
-        entity_field_name: description
-        settings
-        - filters
-          - 400: translate
-        weight: 380
-    - video.attributes
-        type: field
-        entity_name: video
-        entity_field_name: attributes
-        settings
-        - filters
-          - 600: \effcore\widget_attributes::complex_value_to_markup
-        weight: 360
-    - video.path
-        type: field
-        entity_name: video
-        entity_field_name: path
-        weight: 340
-    - video.poster_path
-        type: field
-        entity_name: video
-        entity_field_name: poster_path
-        weight: 320
-    - video.created
-        type: field
-        entity_name: video
-        entity_field_name: created
-        weight: 300
-    - video.updated
-        type: field
-        entity_name: video
-        entity_field_name: updated
-        weight: 280
-    - video.is_embedded
-        type: field
-        entity_name: video
-        entity_field_name: is_embedded
-        settings
-        - filters
-          - 400: translate
-        weight: 260
+    - main
+      - id
+          entity_field_name: id
+          weight: 400
+      - description
+          entity_field_name: description
+          is_apply_translation: true
+          weight: 380
+      - this_attributes
+          entity_field_name: attributes
+          weight: 360
+      - path
+          entity_field_name: path
+          weight: 340
+      - poster_path
+          entity_field_name: poster_path
+          weight: 320
+      - created
+          entity_field_name: created
+          weight: 300
+      - updated
+          entity_field_name: updated
+          weight: 280
+      - is_embedded
+          entity_field_name: is_embedded
+          is_apply_translation: true
+          weight: 260

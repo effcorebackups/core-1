@@ -89,8 +89,8 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -101,9 +101,10 @@ entities
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
@@ -211,8 +212,8 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -223,9 +224,10 @@ entities
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
@@ -235,9 +237,10 @@ entities
     - items
         title: Items
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_files_multimedia::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_files_multimedia
@@ -347,7 +350,7 @@ entities
         check: (id_layout <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_layout
+        managing_control_class: \effcore\field_select_layout
         managing_control_properties
         - weight: +380
         managing_control_properties_on_insert
@@ -362,8 +365,8 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -404,11 +407,11 @@ entities
         collate: nocase
         default: null
         check: (lang_code <> '')
-        filter_insert: \effcore\core::return_null_if_empty
-        filter_update: \effcore\core::return_null_if_empty
+        converter_on_insert: \effcore\core::return_null_if_empty
+        converter_on_update: \effcore\core::return_null_if_empty
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_language
+        managing_control_class: \effcore\field_select_language
         managing_control_properties
         - title__not_selected: - system value -
         - weight: +300
@@ -424,7 +427,7 @@ entities
         check: (text_direction <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text_direction
+        managing_control_class: \effcore\field_select_text_direction
         managing_control_properties
         - disabled
           - =: rtl
@@ -441,8 +444,8 @@ entities
         not_null: true
         default: utf-8
         check: (charset <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -484,9 +487,10 @@ entities
     - access
         title: Read access
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_access::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_access
@@ -495,9 +499,9 @@ entities
     - blocks
         title: Blocks
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
         managing_control_properties
         - weight: +180
     - created
@@ -587,8 +591,8 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -599,9 +603,10 @@ entities
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
@@ -637,9 +642,10 @@ entities
     - link_attributes
         title: Link attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
@@ -747,8 +753,8 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -759,9 +765,10 @@ entities
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes
@@ -771,8 +778,8 @@ entities
     - text
         title: Text
         type: blob
-        filter_insert: \effcore\core::return_null_if_empty
-        filter_update: \effcore\core::return_null_if_empty
+        converter_on_insert: \effcore\core::return_null_if_empty
+        converter_on_update: \effcore\core::return_null_if_empty
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
@@ -865,8 +872,8 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        filter_insert: \effcore\core::return_htmlspecialchars_encoded
-        filter_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_text
@@ -877,9 +884,10 @@ entities
     - attributes
         title: Attributes
         type: blob
-        filter_select: unserialize
-        filter_insert: \effcore\core::data_serialize
-        filter_update: \effcore\core::data_serialize
+        converter_on_select: unserialize
+        converter_on_insert: \effcore\core::data_serialize
+        converter_on_update: \effcore\core::data_serialize
+        converter_on_render: \effcore\widget_attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\widget_attributes

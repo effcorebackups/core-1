@@ -16,13 +16,13 @@ forms
             entity_field_name: nickname
             is_validate_uniqueness: true
         - password|field_password
-        - timezone|field_timezone
+        - timezone|field_select_timezone
             element_attributes
             - data-source: uagent-timezone
         - session_params|group_switchers
             element_attributes
             - name: session_params[]
-            values
+            items
             - is_long_session: long session
             - is_fixed_ip: bind to my IP address
             checked

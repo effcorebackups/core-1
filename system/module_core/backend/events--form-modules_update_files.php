@@ -21,7 +21,7 @@ namespace effcore\modules\core {
     $info = $form->child_select('info');
     $info->children_delete();
     $bundles = module::bundle_get_all();
-    core::array_sort_by_text_property($bundles);
+    core::array_sort_by_string($bundles);
     foreach ($bundles as $c_bundle) {
       if (isset($c_bundle->repo_update_handler_in_module) && module::is_enabled(
                 $c_bundle->repo_update_handler_in_module)) {
@@ -50,7 +50,7 @@ namespace effcore\modules\core {
       }
     }
     if ($info->children_select_count() === 0) {
-      $form->child_update('info', new markup('x-no-items', ['data-style' => 'table'], 'no updates'));
+      $form->child_update('info', new markup('x-no-items', ['data-style' => 'table'], 'No updates.'));
     }
   }
 

@@ -12,18 +12,18 @@ namespace effcore {
   public $attributes = ['data-block' => true];
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   public $title;
+  public $title_is_visible = 1;
   public $title_tag_name = 'h2';
   public $title_attributes = ['data-block-title' => true];
-  public $title_is_visible = 1;
   public $content_tag_name = 'x-section-content';
   public $content_attributes = ['data-block-content' => true];
-  public $extra_t;
-  public $extra_b;
   public $display;
   public $type; # copy | link | code | text
   public $source;
   public $properties = [];
   public $args       = [];
+  public $extra_t;
+  public $extra_b;
 
   function __construct($title = null, $attributes = [], $children = [], $weight = 0) {
     if ($title) $this->title = $title;

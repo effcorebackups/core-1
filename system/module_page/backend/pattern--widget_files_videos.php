@@ -26,16 +26,16 @@ namespace effcore {
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {
+  static function value_to_markup($value) {
     $decorator = new decorator;
     $decorator->id = 'widget_files-videos-items';
     $decorator->view_type = 'template';
     $decorator->template = 'content';
-    $decorator->template_row = 'gallery_row';
-    $decorator->template_row_mapping = core::array_keys_map(['num', 'type', 'children']);
-    if ($complex) {
-      core::array_sort_by_weight($complex);
-      foreach ($complex as $c_row_id => $c_item) {
+    $decorator->template_item = 'gallery_item';
+    $decorator->mapping = core::array_keys_map(['num', 'type', 'children']);
+    if ($value) {
+      core::array_sort_by_number($value);
+      foreach ($value as $c_row_id => $c_item) {
         if (media::media_class_get($c_item->object->type) === 'video') {
           $decorator->data[$c_row_id] = [
             'type'     => ['value' => 'video'  ],
@@ -98,19 +98,19 @@ namespace effcore {
     $field_file_poster->build();
     $field_file_poster->name_set($widget->name_get_complex().'__poster');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
-    $button->_type = 'insert';
-    $button->_kind = 'video';
+    $button_insert = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
+    $button_insert->break_on_validate = true;
+    $button_insert->build();
+    $button_insert->value_set($widget->name_get_complex().'__insert'.($group ? '_'.$group : ''));
+    $button_insert->_type = 'insert';
+    $button_insert->_kind = 'video';
   # relate new controls with the widget
     if (true                      ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_video;
     if ($widget->poster_is_allowed) $widget->controls['#poster'                           ] = $field_file_poster;
-    if (true                      ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button;
-    if (true                      ) $result->child_insert($field_file_video, 'file');
-    if ($widget->poster_is_allowed) $result->child_insert($field_file_poster, 'poster');
-    if (true                      ) $result->child_insert($button, 'button');
+    if (true                      ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
+    if (true                      ) $result->child_insert($field_file_video, 'field_file_video');
+    if ($widget->poster_is_allowed) $result->child_insert($field_file_poster, 'field_file_poster');
+    if (true                      ) $result->child_insert($button_insert, 'button_insert');
     return $result;
   }
 

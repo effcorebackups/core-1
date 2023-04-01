@@ -15,7 +15,7 @@ namespace effcore {
     'name'     => 'select',
     'required' => true];
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  public $values   = [];
+  public $items    = [];
   public $selected = [];
   public $disabled = [];
 
@@ -23,81 +23,28 @@ namespace effcore {
     if (!$this->is_builded) {
       parent::build();
       $this->child_select('element')->children_delete();
-      foreach ($this->values as $c_id => $c_data) {
-        if (is_object($c_data) &&
-               !empty($c_data->title) &&
-               !empty($c_data->values)) {
+      foreach ($this->items as $c_id => $c_item) {
+        if (is_object($c_item) &&
+               !empty($c_item->title) &&
+               !empty($c_item->items)) {
           if (!$this->optgroup_select($c_id))
-               $this->optgroup_insert($c_id, $c_data->title);
-          foreach ($c_data->values as $g_id => $g_data)
-               $this->option_insert($g_data, $g_id, [], $c_id);
-        } else $this->option_insert($c_data,            $c_id); }
+               $this->optgroup_insert($c_id, $c_item->title);
+          foreach ($c_item->items as $g_id => $g_item)
+               $this->option_insert($g_item, $g_id, [], $c_id);
+        } else $this->option_insert($c_item,            $c_id); }
       $this->is_builded = true;
     }
   }
 
-  function value_get() {
-    $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node        &&
-          $c_child->tag_name === 'option' &&
-          $c_child->attribute_select('selected') === 'selected') {
-        return $c_child->attribute_select('value');
-      }
-    }
+  function items_set($items = []) {
+    $this->items = $items;
   }
 
-  function value_set($value) {
-    $this->value_set_initial($value);
-    $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node &&
-          $c_child->tag_name === 'option') {
-        if ((string)$c_child->attribute_select('value') === (string)$value) $c_child->attribute_insert('selected', 'selected');
-        if ((string)$c_child->attribute_select('value') !== (string)$value) $c_child->attribute_delete('selected');
-      }
-    }
+  function items_get() {
+    return $this->items;
   }
 
-  function values_get() {
-    $result = [];
-    $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node        &&
-          $c_child->tag_name === 'option' &&
-          $c_child->attribute_select('selected') === 'selected') {
-        $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
-      }
-    }
-    return $result;
-  }
-
-  function values_get_allowed() {
-    $result = [];
-    $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node &&
-          $c_child->tag_name === 'option') {
-        if ($c_child->attribute_select('disabled') !== 'disabled' &&
-            $c_child->attribute_select('disabled') !== true) {
-          $result[$c_child->attribute_select('value')] = $c_child->child_select('content')->text_select();
-        }
-      }
-    }
-    return $result;
-  }
-
-  function values_set($values, $clear = true) {
-    $element = $this->child_select('element');
-    foreach ($element->children_select_recursive() as $c_child) {
-      if ($c_child instanceof node &&
-          $c_child->tag_name === 'option') {
-        if (core::array_search__any_array_item_is_equal_value($c_child->attribute_select('value'), $values))
-                        $c_child->attribute_insert('selected', 'selected');
-        elseif ($clear) $c_child->attribute_delete('selected');
-      }
-    }
-  }
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function optgroup_select($id) {
     return $this->child_select('element')->child_select($id);
@@ -112,11 +59,71 @@ namespace effcore {
   function option_insert($title, $value, $attributes = [], $optgroup_id = null) {
     $option = new markup('option', $attributes, ['content' => $title]);
     $option->attribute_insert('value', $value === 'not_selected' ? '' : $value);
-    if (isset($this->selected[$value])) $option->attribute_insert('selected', 'selected');
-    if (isset($this->disabled[$value])) $option->attribute_insert('disabled',    true   );
+    if (isset($this->selected[$value])) $option->attribute_insert('selected', true);
+    if (isset($this->disabled[$value])) $option->attribute_insert('disabled', true);
     if (!$optgroup_id)
          $this->child_select('element')->child_insert(                            $option, $value);
     else $this->child_select('element')->child_select($optgroup_id)->child_insert($option, $value);
+  }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+  function value_get($options = []) { # return: null | number | string | array | serialize(array)
+    $result = [];
+    $element = $this->child_select('element');
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node        &&
+          $c_child->tag_name === 'option' &&
+          $c_child->attribute_select('selected') === true) {
+        $result[$c_child->attribute_select('value')] =
+                $c_child->child_select('content')->text_select();
+      }
+    }
+    if ($this->multiple_get() !== true) return key($result);
+    if ($this->multiple_get() === true) {
+      if (!empty($options['return_serialized']))
+           return serialize($result);
+      else return           $result;
+    }
+  }
+
+  function values_get_allowed() {
+    $result = [];
+    $element = $this->child_select('element');
+    foreach ($element->children_select_recursive() as $c_child) {
+      if ($c_child instanceof node &&
+          $c_child->tag_name === 'option') {
+        if ($c_child->attribute_select('disabled') !== true) {
+          $result[$c_child->attribute_select('value')] =
+                  $c_child->child_select('content')->text_select();
+        }
+      }
+    }
+    return $result;
+  }
+
+  function value_set($value) {
+    $this->value_set_initial($value);
+    if (core::data_is_serialized($value)) $value = unserialize($value);
+    if (is_null  ($value)) $value = [];
+    if (is_int   ($value)) $value = [core::format_number($value)];
+    if (is_float ($value)) $value = [core::format_number($value, core::fpart_max_len)];
+    if (is_string($value)) $value = [$value];
+    if (is_array ($value)) {
+      $element = $this->child_select('element');
+      $element_children = $element->children_select_recursive();
+      foreach ($element_children as $c_child) if ($c_child instanceof node && $c_child->tag_name === 'option') $c_child->attribute_delete('selected');
+      foreach ($element_children as $c_child) if ($c_child instanceof node && $c_child->tag_name === 'option') {
+        if ($c_child->attribute_select('disabled') !== true) {
+          if (core::array_search__any_array_item_is_equal_value($c_child->attribute_select('value'), $value)) {
+            $c_child->attribute_insert('selected', true);
+            if ($this->multiple_get() === false) {
+              return;
+            }
+          }
+        }
+      }
+    }
   }
 
   ###########################
@@ -131,7 +138,7 @@ namespace effcore {
       $values_allowed = $field->values_get_allowed();
       $new_values = request::values_get($name, $form->source_get());
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
-      $field->values_set($new_values);
+      $field->value_set($new_values);
     }
   }
 
@@ -146,7 +153,7 @@ namespace effcore {
       $new_values = array_unique(array_intersect($new_values, array_keys($values_allowed))); # filter fake values
       $result = static::validate_required($field, $form, $element, $new_values) &&
                 static::validate_multiple($field, $form, $element, $new_values);
-      $field->values_set($new_values);
+      $field->value_set($new_values);
       return $result;
     }
   }

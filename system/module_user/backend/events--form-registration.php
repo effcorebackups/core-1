@@ -65,7 +65,7 @@ namespace effcore\modules\user {
           ]);
           if ($user) {
             session::insert($user->id,
-              core::array_keys_map($items['*session_params']->values_get())
+              core::array_keys_map($items['*session_params']->value_get())
             );
             message::insert(
               new text('Welcome, %%_nickname!', ['nickname' => $user->nickname])

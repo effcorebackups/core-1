@@ -117,16 +117,29 @@ namespace effcore {
     return static::$cache_orig[$name] ?? [];
   }
 
-  static function selection_make($entity_name, $conditions, $settings = []) {
-    $c_weight = 420;
+  static function selection_make($entity_name, $conditions = [], $settings = []) {
     $entity = entity::get($entity_name);
-    $selection = new selection;
-    $selection->id = $entity_name.'-'.core::hash_get($conditions);
-    $selection->template = 'content';
-    $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
-    foreach ($entity->fields as $c_name => $c_field)
-      $selection->field_insert_entity(null, $c_field->title ?? null, $entity->name, $c_name, $settings[$c_name] ?? [], ($c_weight = $c_weight - 20));
-    return $selection;
+    if ($entity) {
+      $c_weight = 420;
+      $selection = new selection;
+      $selection->id = $entity_name.'-'.core::hash_get($conditions);
+      $selection->main_entity_name = $entity_name;
+      $selection->template = 'content';
+      $selection->origin = 'dynamic';
+      $selection->title = $entity->title;
+      $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
+      foreach ($entity->fields as $c_name => $c_field) {
+        $selection->fields['main'][$c_name] = new \stdClass;
+        $selection->fields['main'][$c_name]->title = $c_field->title ?? null;
+        $selection->fields['main'][$c_name]->entity_field_name = $c_name;
+        $selection->fields['main'][$c_name]->weight = ($c_weight = $c_weight - 20);
+      }
+      return $selection;
+    } else {
+      return new markup('x-no-items', ['data-style' => 'table'], new text_multiline(
+        ['Entity "%%_name" is not available.', 'Selection ID = "%%_id".'], ['name' => $entity_name, 'id' => $entity_name.'-'.core::hash_get($conditions)]
+      ));
+    }
   }
 
 }}

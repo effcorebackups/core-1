@@ -20,35 +20,47 @@ namespace effcore {
     'txt' => 'txt'
   ];
 
-  function value_get_complex($is_relative = true) {
+  function value_get($options = []) { # return: array | serialize(array)
     event::start_local('on_values_save', $this);
+    $is_relative = array_key_exists('is_relative', $options) && $options['is_relative'] === false ? false : true;
     $items = $this->items_get();
     foreach ($items as $c_item) {
-      if (empty($c_item->object->tmp_path) === true)           unset($c_item->object->tmp_path);
-      if (empty($c_item->object->pre_path) === true)           unset($c_item->object->pre_path);
-      if (empty($c_item->object->fin_path) !== true && $is_relative) $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+      if (empty($c_item->object->tmp_path) === true                         ) unset($c_item->object->tmp_path);
+      if (empty($c_item->object->pre_path) === true                         ) unset($c_item->object->pre_path);
+      if (empty($c_item->object->fin_path) !== true && $is_relative === true)       $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+      if (empty($c_item->object->fin_path) !== true && $is_relative !== true)       $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_absolute();
     }
-    return $items;
+    if (!empty($options['return_serialized']))
+         return serialize($items);
+    else return           $items;
   }
 
-  function value_set_complex($value, $once = false, $is_absolute = true) {
-    if (is_array($value))
+  function value_set($value, $options = []) {
+    $this->value_set_initial($value);
+    $is_absolute = array_key_exists('is_absolute', $options) && $options['is_absolute'] === false ? false : true;
+    if (core::data_is_serialized($value)) $value = unserialize($value);
+    if ($value === null) $value = [];
+    if ($value ===  '' ) $value = [];
+    if (is_array($value)) {
       foreach ($value as $c_item)
-        if (empty($c_item->object->fin_path) !== true && $is_absolute)
-          $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_absolute();
-    $this->items_set($value, $once);
+        if (empty($c_item->object->fin_path) !== true)
+          if ($is_absolute)
+               $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_absolute();
+          else $c_item->object->fin_path = (new file($c_item->object->fin_path))->path_get_relative();
+      $this->items_set($value, !empty($options['once']));
+    }
   }
 
   ###########################
   ### static declarations ###
   ###########################
 
-  static function complex_value_to_markup($complex) {
+  static function value_to_markup($value) {
     $decorator = new decorator('ul');
     $decorator->id = 'widget_files-items';
-    if ($complex) {
-      core::array_sort_by_weight($complex);
-      foreach ($complex as $c_row_id => $c_item) {
+    if ($value) {
+      core::array_sort_by_number($value);
+      foreach ($value as $c_row_id => $c_item) {
         $decorator->data[$c_row_id] = [
           'path' => ['title' => 'Path', 'value' => $c_item->object->get_current_path(true)],
           'type' => ['title' => 'Type', 'value' => $c_item->object->mime],
@@ -92,16 +104,16 @@ namespace effcore {
     $field_file->multiple_set();
     $field_file->name_set($widget->name_get_complex().'__file[]');
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($widget->name_get_complex().'__insert');
-    $button->_type = 'insert';
+    $button_insert = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
+    $button_insert->break_on_validate = true;
+    $button_insert->build();
+    $button_insert->value_set($widget->name_get_complex().'__insert');
+    $button_insert->_type = 'insert';
   # relate new controls with the widget
     $widget->controls['#file'  ] = $field_file;
-    $widget->controls['~insert'] = $button;
-    $result->child_insert($field_file, 'file');
-    $result->child_insert($button, 'button');
+    $widget->controls['~insert'] = $button_insert;
+    $result->child_insert($field_file, 'field_file');
+    $result->child_insert($button_insert, 'button_insert');
     return $result;
   }
 

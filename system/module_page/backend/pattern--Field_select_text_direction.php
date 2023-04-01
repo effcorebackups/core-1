@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class field_text_direction extends field_select {
+          class field_select_text_direction extends field_select {
 
   public $title = 'Text direction';
   public $attributes = ['data-type' => 'text_direction'];
@@ -13,7 +13,7 @@ namespace effcore {
     'name'     => 'text_direction',
     'required' => true
   ];
-  public $values = [
+  public $items = [
     'not_selected' => '- select -',
     'ltr'          => 'left to right (ltr)',
     'rtl'          => 'right to left (rtl)'

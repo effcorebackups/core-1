@@ -20,6 +20,18 @@ events
   - all|event
       handler: \effcore\modules\poll\events_page::on_block_presets_dynamic_build
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  on_form_build
+  - instance_insert__poll|event
+      for: instance_insert
+      weight: +300
+      handler: \effcore\modules\poll\events_form_instance_insert::on_build
+  - instance_update__poll|event
+      for: instance_update
+      weight: +300
+      handler: \effcore\modules\poll\events_form_instance_update::on_build
+  - vote|event
+      for: vote
+      handler: \effcore\modules\poll\events_form_vote::on_build
   on_form_init
   - instance_insert__poll|event
       for: instance_insert

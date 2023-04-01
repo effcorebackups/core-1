@@ -26,8 +26,6 @@ namespace effcore {
 
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
-    $widget_settings = new widget_block_settings($widget, $item, $c_row_id);
-    $widget_settings->build();
   # info markup
     $presets = block_preset::select_all($widget->id_area);
     $title_markup = isset($presets[$item->id]) ?
@@ -36,6 +34,16 @@ namespace effcore {
     $info_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $title_markup),
         'id'    => new markup('x-id',    [], new text_simple($item->id) ) ]);
+  # create widget_settings and prepare item (copy properties from block_preset to block_preset_link)
+    if ($item instanceof block_preset_link) {
+      if (!isset($item->title) ||
+          !isset($item->attributes)) {
+        $preset = $item->preset_make();
+        $item->title            = $preset->title;
+        $item->title_is_visible = $preset->title_is_visible;
+        $item->attributes       = $preset->attributes; }}
+    $widget_settings = new widget_block_settings($widget, $item, $c_row_id);
+    $widget_settings->build();
   # relate new controls with the widget
     $result->child_insert($info_markup, 'info');
     $result->child_insert($widget_settings, 'settings');
@@ -45,40 +53,24 @@ namespace effcore {
   static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
-    $presets = block_preset::select_all($widget->id_area);
-    core::array_sort_by_text_property($presets, 'managing_group');
-    $options = ['not_selected' => $widget->title__not_selected__widget_insert];
-    foreach ($presets as $c_preset) {
-      $c_group_id = core::sanitize_id($c_preset->managing_group);
-      if (!isset($options[$c_group_id])) {
-                 $options[$c_group_id] = new \stdClass;
-                 $options[$c_group_id]->title = $c_preset->managing_group; }
-      $options[$c_group_id]->values[$c_preset->id] = (new text_multiline([
-        'title' => $c_preset->managing_title, 'id' => '('.$c_preset->id.')'], [], ' '
-      ))->render();
-    }
-    foreach ($options as $c_group) {
-      if ($c_group instanceof \stdClass) {
-        core::array_sort_text($c_group->values);
-      }
-    }
-    $select = new field_select('Insert block');
-    $select->values = $options;
-    $select->cform = $widget->cform;
-    $select->build();
-    $select->name_set($widget->name_get_complex().'__insert');
-    $select->required_set(false);
+    $field_select_block_preset = new field_select_block_preset('Insert block');
+    $field_select_block_preset->title__not_selected = $widget->title__not_selected__widget_insert;
+    $field_select_block_preset->id_area = $widget->id_area;
+    $field_select_block_preset->cform = $widget->cform;
+    $field_select_block_preset->build();
+    $field_select_block_preset->name_set($widget->name_get_complex().'__insert');
+    $field_select_block_preset->required_set(false);
   # button for insertion of the new item
-    $button = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($widget->name_get_complex().'__insert');
-    $button->_type = 'insert';
+    $button_insert = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
+    $button_insert->break_on_validate = true;
+    $button_insert->build();
+    $button_insert->value_set($widget->name_get_complex().'__insert');
+    $button_insert->_type = 'insert';
   # relate new controls with the widget
-    $widget->controls['#insert'] = $select;
-    $widget->controls['~insert'] = $button;
-    $result->child_insert($select, 'select');
-    $result->child_insert($button, 'button');
+    $widget->controls['#insert'] = $field_select_block_preset;
+    $widget->controls['~insert'] = $button_insert;
+    $result->child_insert($field_select_block_preset, 'field_select_block_preset');
+    $result->child_insert($button_insert, 'button_insert');
     return $result;
   }
 

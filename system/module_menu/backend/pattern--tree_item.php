@@ -92,7 +92,7 @@ namespace effcore {
     return (new markup('x-item', $this->attributes_select('element_attributes'), [
       new markup('x-title', [], $this->title),
       new markup('x-extra', [], $this->extra),
-      $this->url ? url::url_to_markup($this->url) : new markup('x-url', ['data-no-url' => true], 'no url')
+      $this->url ? url::url_to_markup($this->url) : new markup('x-url', ['data-no-url' => true], 'No URL.')
     ]))->render();
   }
 
@@ -142,8 +142,8 @@ namespace effcore {
           $c_instance->id_tree,
           $c_instance->url,
           $c_instance->access,
-          widget_attributes::complex_value_to_attributes($c_instance->     attributes) ?? [],
-          widget_attributes::complex_value_to_attributes($c_instance->link_attributes) ?? [],
+          widget_attributes::value_to_attributes($c_instance->     attributes) ?? [],
+          widget_attributes::value_to_attributes($c_instance->link_attributes) ?? [],
           $c_instance->weight);
         static::$cache[$c_tree_item->id] = $c_tree_item;
         static::$cache[$c_tree_item->id]->module_id = $c_instance->module_id;

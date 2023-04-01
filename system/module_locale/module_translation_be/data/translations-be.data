@@ -2,6 +2,17 @@ translations
 - be|translation
     code: be
     data
+    - Africa: Афрыка
+    - America: Амерыка
+    - Antarctica: Антарктыда
+    - Arctic: Арктыка
+    - Asia: Азія
+    - Atlantic: Атлантыка
+    - Australia: Аўстралія
+    - Europe: Еўропа
+    - Indian: Індыя
+    - Pacific: Ціхі акіян
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - - no -: - няма -
     - - root -: - корань -
     - - select -: - абраць -
@@ -40,9 +51,6 @@ translations
     - Anonymous: Ананім
     - Answer: Адказ
     - Answers: Адказы
-    - apply tokens: прымяніць токены
-    - Apply tokens: Прымяніць токены
-    - apply translation: прымяніць пераклад
     - apply: прымяніць
     - Architecture: Архітэктура
     - Attribute: Атрыбут
@@ -149,6 +157,7 @@ translations
     - Date/Time: Дата/Час
     - Decimal point: Дзесятковая кропка
     - Decorator settings: Налады афармлення
+    - Definition list: Спіс азначэнняў
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
     - delete: выдаліць
     - Delete: Выдаліць
@@ -164,7 +173,6 @@ translations
     - Digit: Лічба
     - Directory for temporary upload is missing.: Каталог для часовай загрузкі адсутнічае.
     - Directory permissions should be checked.: Дазволы каталога павінны быць правераны.
-    - Distributed queries are not supported! Selection ID = "%%_id".: Размеркаваныя запыты не падтрымліваюцца! ID выбаркі = "%%_id".
     - Do not forget to save the changes!: Не забудзьце захаваць змены!
     - do not show: не паказваць
     - download: спампаваць
@@ -188,7 +196,9 @@ translations
     - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была ўсталявана!
     - Entity "%%_entity" was not uninstalled!: Сутнасць "%%_entity" не была выдалена!
     - Entity "%%_entity" was uninstalled.: Сутнасць "%%_entity" была выдалена.
+    - Entity "%%_name" is not available.: Сутнасць "%%_name" не даступная.
     - entity is embedded: сутнасць з'яўляецца убудаванай
+    - Entity name: Імя сутнасці
     - Error: Памылка
     - Error\: %%_error: Памылка: %%_error
     - event: падзея
@@ -370,10 +380,17 @@ translations
     - Interfaces: Інтэрфейсы
     - Internet Explorer below version %%_number no longer supported!: Internet Explorer ніжэй версіі %%_number больш не падтрымліваецца!
     - Invalid session was deleted!: Несапраўдны сеанс быў выдалены!
+    - Is apply tokens: Прымяніць токены
+    - Is apply translation: Прымяніць пераклад
     - Is current: Бягучы
+    - Is do not apply formatting: Не прымяняць фарматаванне
     - is embedded: убудаваны
     - Is embedded: Убудаваны
+    - Is enabled: Уключаны
     - Is fixed IP: Фікс. IP
+    - Is not visible: Ня бачна
+    - Is trimmed: Абрэзана
+    - Is visible: Бачна
     - It is recommended that you change your password directly on %%_domain.: Рэкамендуецца змяніць пароль непасрэдна на %%_domain.
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" знаходзіцца па-за межамі дапушчальных межаў!
     - Item "%%_dpath_value" must be of type "%%_type"!: Элемент "%%_dpath_value" павінен быць тыпу "%%_type"!
@@ -465,6 +482,7 @@ translations
     - management for this entity is not available: кіраванне для гэтай сутнасьці недаступна
     - Management: Кіраванне
     - Managers: Кіраўнікі
+    - Mapping: Картаграфаванне
     - Match: Адпаведнасць
     - Maximum number of votes: Максімальная колькасць галасоў
     - Maximum width: Максімальная шырыня
@@ -525,15 +543,15 @@ translations
     - nickname: псеўданім
     - Nickname: Псеўданім
     - No additional parameters.: Няма дадатковых параметраў.
-    - No fields for select from storage! Selection ID = "%%_id".: Няма палёў для выбаркі са сховішча! ID выбаркі = "%%_id".
-    - no fields: няма палёў
-    - no items: няма элементаў
-    - no modules: няма модуляў
+    - No fields.: Няма палёў.
+    - No items.: Няма элементаў.
+    - No modules.: Няма модуляў.
     - No one item was selected!: Ні адзін элемент не быў абраны!
-    - no Selection with ID = "%%_id": няма выбаркі з ID = "%%_id"
+    - No restrictions.: Няма абмежаванняў.
+    - No Selection with ID = "%%_id".: Няма выбаркі з ID = "%%_id".
     - NO TITLE: НЯМА ЗАГАЛОЎКУ
-    - no updates: няма абнаўленняў
-    - no url: няма url
+    - No updates.: Няма абнаўленняў.
+    - No URL.: Няма URL.
     - no: не
     - No: Не
     - Number of downloads: Колькасць загрузак
@@ -659,6 +677,7 @@ translations
     - right to left: справа налева
     - robots.txt editing form: Форма рэдагавання robots.txt
     - Role ID: ID ролі
+    - Role IDs: ID роляў
     - role: роля
     - Role: Роля
     - Role\: delete: Роля: выдаліць
@@ -680,6 +699,7 @@ translations
     - select all rows: абраць усе радкі
     - select: абраць
     - Select: Абраць
+    - Selection ID = "%%_id".: ID выбаркі = "%%_id".
     - Selection list: Спіс выбару
     - selection: выбарка
     - Selection: Выбарка
@@ -733,6 +753,8 @@ translations
     - System was not installed!: Сістэма не была ўсталявана.
     - System: Сістэма
     - T: Т
+    - Table (adaptive): Табліца (адаптыўная)
+    - Table (DL): Табліца (DL)
     - Table prefix: Прэфікс табліц
     - Table: Табліца
     - Table\: row even: Табліца: радок цотны
@@ -743,6 +765,8 @@ translations
     - Tabs\: link: Укладкі: спасылка
     - Telephone number: Нумар тэлефона
     - Template "%%_name" was not found!: Шаблён "%%_name" не быў знойдзены!
+    - Template (item): Шаблон (элемент)
+    - Template: Шаблон
     - Templates: Шаблоны
     - Test execution form: Форма выканання тэсту
     - Test: Тэст
@@ -833,6 +857,7 @@ translations
     - val.: знач.
     - Val.: Знач.
     - Value in pixels.: Велічыня ў пікселях.
+    - Value settings: Налады значэння
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
     - Value: Значэнне
     - Values: Значэнні
@@ -847,6 +872,7 @@ translations
     - Videos: Відэа
     - View customization form: Форма налады выгляду
     - View more: Глядзець больш
+    - View type: Тып выгляду
     - View: Выгляд
     - View\: manage: Выгляд: кіраваць
     - Visibility: Бачнасць
@@ -866,8 +892,8 @@ translations
     - wrong cron key: няправільны ключ cron
     - wrong entity name: няправільнае імя сутнасці
     - wrong instance key: няправільны ключ асобніка
-    - wrong instance keys: няправільныя ключы асобніка
     - wrong management group: няправільная група кіравання
+    - wrong number of instance keys: няправільная колькасць ключоў асобніка
     - wrong pager value: няправільнае значэнне пэйджара
     - wrong user nickname: няправільны псеўданім карыстальніка
     - yes: так

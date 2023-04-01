@@ -7,7 +7,7 @@
 
   function Effcore() {
     this.tokens = [];
-    this.tokens['text_no_items'                ] = '%%_return_translation{no items}';
+    this.tokens['text_no_items'                ] = '%%_return_translation{No items.}';
     this.tokens['text_select_all_rows'         ] = '%%_return_translation{select all rows}';
     this.tokens['thumbnail_path_cover_default' ] = '%%_thumbnail_path_cover_default';
     this.tokens['thumbnail_path_poster_default'] = '%%_thumbnail_path_poster_default';

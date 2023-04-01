@@ -23,7 +23,7 @@ forms
             - maxlength: 65535
             - rows: 20
         - is_apply_tokens|field_switcher
-            title: Apply tokens
+            title: Is apply tokens
             element_attributes
             - name: is_apply_tokens
     - button_save|button

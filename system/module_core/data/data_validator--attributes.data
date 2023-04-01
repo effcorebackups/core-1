@@ -305,7 +305,7 @@ data_validators
                 - is-type|step_validate
                     check: current
                     where: type
-                    match: string
+                    match: %^(string|integer)$%
                     on_failure
                   # when "attributes/item/delimiter:__INVALID__TYPE__"
                     - error_register|step_validate_error_register
@@ -313,7 +313,7 @@ data_validators
                         message|text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
-                          - types: string
+                          - types: string, integer
       # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       # check "attributes/object:text_simple/text"
       # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -332,7 +332,7 @@ data_validators
                 - is-type|step_validate
                     check: current
                     where: type
-                    match: string
+                    match: %^(string|integer|double)$%
                     on_failure
                   # when "attributes/item/text:__INVALID__TYPE__"
                     - error_register|step_validate_error_register
@@ -340,4 +340,4 @@ data_validators
                         message|text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
-                          - types: string
+                          - types: string, integer, double

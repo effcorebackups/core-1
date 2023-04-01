@@ -32,14 +32,14 @@ namespace effcore\modules\develop {
     if ($type === null) url::go($page->args_get('base').'/events');
     if ($type === 'trees') {
       $trees = tree::select_all('nosql');
-      core::array_sort_by_text_property($trees);
+      core::array_sort_by_string($trees);
       if (empty($trees[$id])) {
         url::go($page->args_get('base').'/trees/'.reset($trees)->id);
       }
     }
     if ($type === 'translations') {
       $languages = language::get_all();
-      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+      core::array_sort_by_string($languages, 'title_en', 'd', false);
       unset($languages['en']);
       if (count($languages) === 0 && $id !== null          ) url::go($page->args_get('base').'/translations/'                        );
       if (count($languages) !== 0 && empty($languages[$id])) url::go($page->args_get('base').'/translations/'.reset($languages)->code);
@@ -50,7 +50,7 @@ namespace effcore\modules\develop {
     $type = page::get_current()->args_get('type');
     if ($type === 'trees') {
       $trees = tree::select_all('nosql');
-      core::array_sort_by_text_property($trees);
+      core::array_sort_by_string($trees);
       foreach ($trees as $c_tree) {
         tab_item::insert(                        $c_tree->title,
            'nosql_trees_'.                       $c_tree->id,
@@ -60,7 +60,7 @@ namespace effcore\modules\develop {
     }
     if ($type === 'translations') {
       $languages = language::get_all();
-      core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+      core::array_sort_by_string($languages, 'title_en', 'd', false);
       unset($languages['en']);
       foreach ($languages as $c_language) {
         tab_item::insert(                                     $c_language->title_en,

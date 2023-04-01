@@ -12,10 +12,9 @@ namespace effcore {
   public $attributes = ['data-decorator' => true];
   public $view_type = 'table'; # table | table-adaptive | table-dl | ul | dl | tree | template
   public $template = 'markup_html';
-  public $template_row;
-  public $template_row_mapping = [];
+  public $template_item;
+  public $mapping = [];
   public $tree_visualization_mode; # null | decorated | decorated-rearrangeable
-  public $tree_mapping = [];
   public $result_attributes = [];
   public $visibility_rowid  = 'not_int'; # visible | not_int | hidden
   public $visibility_cellid = 'not_int'; # visible | not_int | hidden
@@ -219,14 +218,14 @@ namespace effcore {
           case 'tree':
             $trees = new node;
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_id        = core::return_rendered( array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : ( array_key_exists('id',        $this->tree_mapping) ? $c_row[$this->tree_mapping['id'       ]]['value'] : null) );
-              $c_id_parent = core::return_rendered( array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : ( array_key_exists('id_parent', $this->tree_mapping) ? $c_row[$this->tree_mapping['id_parent']]['value'] : null) );
-              $c_id_tree   = core::return_rendered( array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : ( array_key_exists('id_tree',   $this->tree_mapping) ? $c_row[$this->tree_mapping['id_tree'  ]]['value'] : null) );
-              $c_title     = core::return_rendered( array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : ( array_key_exists('title',     $this->tree_mapping) ? $c_row[$this->tree_mapping['title'    ]]['value'] : null) );
-              $c_url       = core::return_rendered( array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : ( array_key_exists('url',       $this->tree_mapping) ? $c_row[$this->tree_mapping['url'      ]]['value'] : null) );
-              $c_weight    = core::return_rendered( array_key_exists('weight',    $c_row) ? $c_row['weight'   ]['value'] : ( array_key_exists('weight',    $this->tree_mapping) ? $c_row[$this->tree_mapping['weight'   ]]['value'] : null) );
-              $c_access    =                        array_key_exists('access',    $c_row) ? $c_row['access'   ]['value'] : ( array_key_exists('access',    $this->tree_mapping) ? $c_row[$this->tree_mapping['access'   ]]['value'] : null);
-              $c_extra     =                        array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : ( array_key_exists('extra',     $this->tree_mapping) ? $c_row[$this->tree_mapping['extra'    ]]['value'] : null);
+              $c_id        = core::return_rendered( array_key_exists('id',        $c_row) ? $c_row['id'       ]['value'] : (array_key_exists('id',        $this->mapping) && array_key_exists($this->mapping['id'       ], $c_row) ? $c_row[$this->mapping['id'       ]]['value'] : null) );
+              $c_id_parent = core::return_rendered( array_key_exists('id_parent', $c_row) ? $c_row['id_parent']['value'] : (array_key_exists('id_parent', $this->mapping) && array_key_exists($this->mapping['id_parent'], $c_row) ? $c_row[$this->mapping['id_parent']]['value'] : null) );
+              $c_id_tree   = core::return_rendered( array_key_exists('id_tree',   $c_row) ? $c_row['id_tree'  ]['value'] : (array_key_exists('id_tree',   $this->mapping) && array_key_exists($this->mapping['id_tree'  ], $c_row) ? $c_row[$this->mapping['id_tree'  ]]['value'] : null) );
+              $c_title     = core::return_rendered( array_key_exists('title',     $c_row) ? $c_row['title'    ]['value'] : (array_key_exists('title',     $this->mapping) && array_key_exists($this->mapping['title'    ], $c_row) ? $c_row[$this->mapping['title'    ]]['value'] : null) );
+              $c_url       = core::return_rendered( array_key_exists('url',       $c_row) ? $c_row['url'      ]['value'] : (array_key_exists('url',       $this->mapping) && array_key_exists($this->mapping['url'      ], $c_row) ? $c_row[$this->mapping['url'      ]]['value'] : null) );
+              $c_weight    = core::return_rendered( array_key_exists('weight',    $c_row) ? $c_row['weight'   ]['value'] : (array_key_exists('weight',    $this->mapping) && array_key_exists($this->mapping['weight'   ], $c_row) ? $c_row[$this->mapping['weight'   ]]['value'] : null) );
+              $c_access    =                        array_key_exists('access',    $c_row) ? $c_row['access'   ]['value'] : (array_key_exists('access',    $this->mapping) && array_key_exists($this->mapping['access'   ], $c_row) ? $c_row[$this->mapping['access'   ]]['value'] : null);
+              $c_extra     =                        array_key_exists('extra',     $c_row) ? $c_row['extra'    ]['value'] : (array_key_exists('extra',     $this->mapping) && array_key_exists($this->mapping['extra'    ], $c_row) ? $c_row[$this->mapping['extra'    ]]['value'] : null);
               $c_id_tree = 'decorator-'.$c_id_tree;
               $c_tree = tree::insert($this->title ?? null, $c_id_tree, null, [], 0, 'page');
               $c_tree->visualization_mode = $this->tree_visualization_mode;
@@ -248,9 +247,9 @@ namespace effcore {
         # ─────────────────────────────────────────────────────────────────────
           case 'template':
             foreach ($this->data as $c_row_id => $c_row) {
-              $c_template = template::make_new(template::pick_name($this->template_row));
-              foreach ($this->template_row_mapping as $c_arg_name => $c_cell_name) {
-                if (is_array($c_row[$c_cell_name])) {
+              $c_template = template::make_new(template::pick_name($this->template_item));
+              foreach ($this->mapping as $c_arg_name => $c_cell_name) {
+                if (isset($c_row[$c_cell_name]) && is_array($c_row[$c_cell_name])) {
                   $c_template->arg_set($c_arg_name,
                     core::return_rendered($c_row[$c_cell_name]['value'])
                   );
@@ -268,7 +267,7 @@ namespace effcore {
         );
       } else {
         $this->child_insert(
-          new markup('x-no-items', ['data-style' => 'table'], 'no items'), 'no_items'
+          new markup('x-no-items', ['data-style' => 'table'], 'No items.'), 'message_no_items'
         );
       }
       event::start('on_decorator_build_after', $this->id, ['decorator' => &$this]);

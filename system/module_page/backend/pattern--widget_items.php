@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_items extends control implements complex_control {
+          class widget_items extends control implements control_complex {
 
   public $tag_name = 'x-widget';
   public $attributes = ['data-type' => 'items'];
@@ -43,7 +43,7 @@ namespace effcore {
     foreach ($this->items_get() as $c_row_id => $c_item) {
       if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
       if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
-      $c_widget->weight = $c_widget->child_select('weight')->value_get();
+      $c_widget->weight = $c_widget->child_select('field_weight')->value_get();
     }
   # delete old widgets
     foreach ($group->children_select() as $c_row_id => $c_widget) {
@@ -52,18 +52,31 @@ namespace effcore {
       }
     }
   # message 'no items'
-    if ($group->children_select_count() !== 0) $group->child_delete(                                          'no_items');
-    if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'no items'), 'no_items');
+    if ($group->children_select_count() !== 0) $group->child_delete(                                           'no_items');
+    if ($group->children_select_count() === 0) $group->child_insert(new markup('x-no-items', [], 'No items.'), 'no_items');
   }
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+  function value_get($options = []) { # return: array | serialize(array)
+    if (!empty($options['return_serialized']))
+         return serialize($this->items_get());
+    else return           $this->items_get();
+  }
+
+  function value_set($value, $options = []) {
+    $this->value_set_initial($value);
+    if (core::data_is_serialized($value)) $value = unserialize($value);
+    if ($value === null) $value = [];
+    if ($value ===  '' ) $value = [];
+    if (is_array($value)) {
+      $this->items_set($value, !empty($options['once']));
+    }
+  }
+
   function name_get_complex() {
     return $this->name_complex;
   }
-
-  function value_get_complex()                      {return $this->items_get();             }
-  function value_set_complex($value, $once = false) {       $this->items_set($value, $once);}
 
   function disabled_get() {
     return false;
@@ -159,7 +172,7 @@ namespace effcore {
   # relate new controls with the widget
     $widget->controls['#weight__'.$c_row_id] = $field_weight;
     $widget->controls['~delete__'.$c_row_id] = $button_delete;
-    $result->child_insert($field_weight, 'weight');
+    $result->child_insert($field_weight, 'field_weight');
     $result->child_insert($button_delete, 'button_delete');
     return $result;
   }
@@ -167,14 +180,14 @@ namespace effcore {
   static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # button for insertion of the new item
-    $button = new button('insert', ['title' => new text('insert')]);
-    $button->break_on_validate = true;
-    $button->build();
-    $button->value_set($widget->name_get_complex().'__insert');
-    $button->_type = 'insert';
+    $button_insert = new button('insert', ['title' => new text('insert')]);
+    $button_insert->break_on_validate = true;
+    $button_insert->build();
+    $button_insert->value_set($widget->name_get_complex().'__insert');
+    $button_insert->_type = 'insert';
   # relate new controls with the widget
-    $widget->controls['~insert'] = $button;
-    $result->child_insert($button, 'button');
+    $widget->controls['~insert'] = $button_insert;
+    $result->child_insert($button_insert, 'button_insert');
     return $result;
   }
 

@@ -21,7 +21,7 @@ namespace effcore\modules\locale {
 
   static function block_markup__tree_languages($page, $args = []) {
     $languages = language::get_all();
-    core::array_sort_by_text_property($languages, 'title_en', 'd', false);
+    core::array_sort_by_string($languages, 'title_en', 'd', false);
     $languages = ['en' => $languages['en']] + $languages;
     $menu = new markup('x-tree', ['role' => 'tree', 'data-id' => 'languages', 'data-style' => 'linear']);
     $menu->child_insert(new markup('h2', ['data-tree-title' => true, 'aria-hidden' => 'true'], 'Language selection menu'), 'title');

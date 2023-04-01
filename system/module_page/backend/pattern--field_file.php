@@ -9,7 +9,7 @@ namespace effcore {
 
   # FORM SUBMIT #1                                                    ◦ FORM SUBMIT #2
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # on_values_init                                                    ◦
+  # on_value_init                                                     ◦
   #                                     ╔════════ form ════════╗      ◦      ╔═ pool fin ═╗       ╔════════ form ════════╗
   #                                     ║ ┌── upload field ──┐ ║      ◦  ┌──▶║ old file 1 ║       ║ ┌── upload field ──┐ ║
   #                                     ║ │------------------│ ║      ◦  │   ╚════════════╝       ║ │------------------│ ║
@@ -33,7 +33,7 @@ namespace effcore {
   #                                 │   ╚══════════════════════╝   │  ◦                           ╚══════════════════════╝   │    └ ─ ─ ─ ─ ─ ─ ─ ─
   #                                 │                              │  ◦                                                      │
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # on_values_save                  │                              │  ◦                                                      │
+  # on_value_save                   │                              │  ◦                                                      │
   #                                 ▼                              │  ◦                                                      ▼
   #                          ╔══ storage ══╗                       │  ◦                                             ┌ ─ ─ ─ ─ ─ ─ ─ ─
   #                          ║    file 1   ║───────────────────────┘  ◦                                               delete process │
@@ -77,23 +77,24 @@ namespace effcore {
 
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-  function value_get() {
-    $values = $this->values_get();
-    if (isset($values[0]))
-       return $values[0];
+  function value_get($options = []) { # return: null | string | array | serialize(array)
+    event::start_local('on_value_save', $this);
+    if ($this->multiple_get() !== true) return is_array($this->result) && count($this->result) ? reset($this->result) : null;
+    if ($this->multiple_get() === true) {
+      if (!empty($options['return_serialized']))
+           return serialize($this->result);
+      else return           $this->result;
+    }
+
   }
 
   function value_set($value) {
-    event::start_local('on_values_init', $this, ['values' => $value ? [$value] : []]);
-  }
-
-  function values_get() {
-    event::start_local('on_values_save', $this);
-    return $this->result ?? [];
-  }
-
-  function values_set($values) {
-    event::start_local('on_values_init', $this, ['values' => $values ?: []]);
+    $this->value_set_initial($value);
+    if (is_null  ($value)) $value = [];
+    if (is_string($value)) $value = [$value];
+    if (is_array ($value)) {
+      event::start_local('on_value_init', $this, ['values' => $value]);
+    }
   }
 
   function items_get($scope)  {
@@ -216,7 +217,7 @@ namespace effcore {
     }
   }
 
-  static function on_values_init($field, $values = []) {
+  static function on_value_init($field, $values = []) {
     $fin_items = [];
     $fin_to_delete = $field->items_get('fin_to_delete');
     foreach ($values as $c_id => $c_path_relative) {
@@ -228,7 +229,7 @@ namespace effcore {
     static::widget_manage_build($field);
   }
 
-  static function on_values_save($field) {
+  static function on_value_save($field) {
     $fin_to_delete = $field->items_get('fin_to_delete');
     foreach ($fin_to_delete as $c_id => $c_item) {
       if ($c_item->delete_fin()) {
@@ -266,8 +267,8 @@ namespace effcore {
     $field->result = [];
     foreach ($field->items_get('fin') as $c_item)
       $field->result[] = $c_item->get_current_path(true);
-    event::start_local('on_values_init', $field, ['values' => $field->result]); # update indexes
-    static::debug_info_show($field, 'on_values_save');
+    event::start_local('on_value_init', $field, ['values' => $field->result]); # update indexes
+    static::debug_info_show($field, 'on_value_save');
     return true;
   }
 
@@ -419,7 +420,7 @@ namespace effcore {
       $result.= 'pool fin_to_delete:'.br; foreach ($field->items_get('fin_to_delete') as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
       $result.= 'pool fin:'.br;           foreach ($field->items_get('fin')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
       $result.= 'pool pre:'.br;           foreach ($field->items_get('pre')           as $c_id => $c_item) {$result.= '&nbsp;&nbsp;&nbsp;'.$c_id.': '.$c_item->name.br;} $result.= br;
-      message::insert($result);
+      message::insert($result, 'warning');
     }
   }
 
