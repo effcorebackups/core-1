@@ -71,6 +71,7 @@ translations
     - Belarusian: Белорусский
     - bind to my IP address: привязать к моему IP-адресу
     - Block: Блок
+    - Blocked until: Заблокировано до
     - Blocking the login for the number of minutes: Блокирование входа на количество минут
     - Blocking will not affect existing sessions.: Блокирование не повлияет на существующие сеансы.
     - Blocks: Блоки
@@ -86,6 +87,7 @@ translations
     - button: кнопка
     - Button: Кнопка
     - Button\: text: Кнопка: текст
+    - By languages: По языкам
     - Cache update form: Форма обновления кэша
     - cache: кэш
     - cancel: отменить
@@ -151,9 +153,7 @@ translations
     - Data update is required: Требуется обновление данных
     - Data: Данные
     - Database name: Имя базы данных
-    - Date format: Формат даты
     - Date: Дата
-    - Date/time format: Формат даты/времени
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decorator settings: Настройки оформления
@@ -238,6 +238,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле может содержать максимум %%_number файл%%_plural{number|ov-a}.
     - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле может содержать минимум %%_number файл%%_plural{number|ov-a}.
     - Field can contain only %%_number file%%_plural{number\|s}.: Поле может содержать только %%_number файл%%_plural{number|ov-a}.
+    - Field name: Имя поля
     - Field value at the current moment\: %%_value: Значение поля в текущий момент: %%_value
     - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значение поля может содержать максимум %%_number символ%%_plural{number|ov-a}.
     - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значение поля может содержать минимум %%_number символ%%_plural{number|ov-a}.
@@ -307,6 +308,7 @@ translations
     - Form elements: Элементы формы
     - form: форма
     - Form: Форма
+    - Formats: Форматы
     - forms: формы
     - Forms: Формы
     - Fractional part is too long.: Дробная часть слишком длинная.
@@ -319,6 +321,8 @@ translations
     - Gallery\: insert: Галерея: вставить
     - Gallery\: select: Галерея: выбрать
     - Gallery\: update: Галерея: обновить
+    - General information: Общая информация
+    - General: Общие
     - generate: генерировать
     - Generation done.: Генерация выполнена.
     - GiB: ГиБ
@@ -459,7 +463,8 @@ translations
     - Local Date: Локальная Дата
     - Local Date/Time: Локальная Дата/Время
     - Local Time: Локальное Время
-    - Locale settings form: Форма настройки локали
+    - Locale general settings form: Форма общих настроек локали
+    - Locale setting form by language: Форма настройки локали по языку
     - Locale: Локаль
     - Locale\: manage: Локаль: управлять
     - Logic: Логика
@@ -562,6 +567,7 @@ translations
     - Okay: Хорошо
     - Only unique value is allowed.: Допускается только уникальное значение.
     - Operating System: Операционная система
+    - Operator: Оператор
     - Order: Заказ
     - Ordered list: Упорядоченный список
     - Origin: Происхождение
@@ -795,7 +801,6 @@ translations
     - Thousands separator: Разделитель тысяч
     - thumbnail: миниатюра
     - TiB: ТиБ
-    - Time format: Формат времени
     - Time zone: Часовой пояс
     - Time: Время
     - Title is visible: Заголовок виден

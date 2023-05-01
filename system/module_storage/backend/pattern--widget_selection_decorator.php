@@ -5,7 +5,7 @@
   ##################################################################
 
 namespace effcore {
-          class widget_selection_decorator_settings extends control implements control_complex {
+          class widget_selection_decorator extends control implements control_complex {
 
   public $tag_name = 'x-widget';
   public $title_tag_name = 'label';
@@ -15,8 +15,8 @@ namespace effcore {
   public $name_complex = 'decorator_settings';
   public $attributes = [
     'data-type' => 'decorator-settings',
-    'role'      => 'group'
-  ];
+    'role'      => 'group'];
+  public $_instance;
 
   function build() {
     if (!$this->is_builded) {
@@ -47,7 +47,7 @@ namespace effcore {
       if (!empty($value['view_type'    ])) $this->controls['#view_type'    ]->     value_set($value['view_type']);
       if (!empty($value['template'     ])) $this->controls['#template'     ]->     value_set($value['template']);
       if (!empty($value['template_item'])) $this->controls['#template_item']->     value_set($value['template_item']);
-      if (!empty($value['mapping'      ])) $this->controls['#mapping'      ]->value_data_set($value['mapping'] ?? null, 'mapping');
+      if (!empty($value['mapping'      ])) $this->controls['#mapping'      ]->value_data_set($value['mapping'], 'mapping');
     }
   }
 
@@ -67,8 +67,9 @@ namespace effcore {
     $result = new node;
   # control for type of view
     $field_select_view_type = new field_select;
-    $field_select_view_type->title = 'View type';
     $field_select_view_type->cform = $widget->cform;
+    $field_select_view_type->attributes['data-role'] = 'view-type';
+    $field_select_view_type->title = 'View type';
     $field_select_view_type->disabled['tree'] = 'tree';
     $field_select_view_type->items_set([
       'not_selected'   => '- select -',
@@ -92,23 +93,26 @@ namespace effcore {
                         $c_name; }}
     core::array_sort($template_items);
     $field_select_template = new field_select;
-    $field_select_template->title = 'Template';
     $field_select_template->cform = $widget->cform;
+    $field_select_template->attributes['data-role'] = 'template';
+    $field_select_template->title = 'Template';
     $field_select_template->items_set(['not_selected' => '- select -'] + $template_items);
     $field_select_template->build();
     $field_select_template->name_set($widget->name_get_complex().'__template');
     $field_select_template->value_set('markup_html');
     $field_select_template_item = new field_select;
-    $field_select_template_item->title = 'Template (item)';
     $field_select_template_item->cform = $widget->cform;
+    $field_select_template_item->attributes['data-role'] = 'template-item';
+    $field_select_template_item->title = 'Template (item)';
     $field_select_template_item->items_set(['not_selected' => '- select -'] + $template_items);
     $field_select_template_item->build();
     $field_select_template_item->name_set($widget->name_get_complex().'__template_item');
     $field_select_template_item->value_set('content');
   # control for mapping
     $field_textarea_data_mapping = new field_textarea_data;
-    $field_textarea_data_mapping->title = 'Mapping';
     $field_textarea_data_mapping->cform = $widget->cform;
+    $field_textarea_data_mapping->attributes['data-role'] = 'data-mapping';
+    $field_textarea_data_mapping->title = 'Mapping';
     $field_textarea_data_mapping->data_validator_id = 'mapping';
     $field_textarea_data_mapping->element_attributes['rows'] = 17;
     $field_textarea_data_mapping->build();
@@ -138,9 +142,9 @@ namespace effcore {
     $widget->controls['#template'     ] = $field_select_template;
     $widget->controls['#template_item'] = $field_select_template_item;
     $widget->controls['#mapping'      ] = $field_textarea_data_mapping;
-    $result->child_insert($field_select_view_type, 'field_select_view_type');
-    $result->child_insert($field_select_template, 'field_select_template');
-    $result->child_insert($field_select_template_item, 'field_select_template_item');
+    $result->child_insert($field_select_view_type,      'field_select_view_type');
+    $result->child_insert($field_select_template,       'field_select_template');
+    $result->child_insert($field_select_template_item,  'field_select_template_item');
     $result->child_insert($field_textarea_data_mapping, 'field_textarea_data_mapping');
     return $result;
   }

@@ -288,12 +288,12 @@ namespace effcore {
         if ($is_postconstructor) $result.= $prefix.'->__construct();'.nl;
         if ($is_postinit)        $result.= $prefix.  '->_postinit();'.nl;
         break;
-      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").                   '\';'.nl; break;
-      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false').                         ';'.nl; break;
-      case 'integer': $result.= $prefix.' = '.static::format_number($data).                       ';'.nl; break;
+      case 'string' : $result.= $prefix.' = '.'\''.addcslashes($data, "'\\").'\''                .';'.nl; break;
+      case 'boolean': $result.= $prefix.' = '.($data ? 'true' : 'false')                         .';'.nl; break;
+      case 'integer': $result.= $prefix.' = '.static::format_number($data)                       .';'.nl; break;
       case 'double' : $result.= $prefix.' = '.static::format_number($data, static::fpart_max_len).';'.nl; break;
-      case 'NULL'   : $result.= $prefix.' = null'.                                                ';'.nl; break;
-      default       : $result.= $prefix.' = '.(string)$data.                                      ';'.nl;
+      case 'NULL'   : $result.= $prefix.' = null'                                                .';'.nl; break;
+      default       : $result.= $prefix.' = '.(string)$data                                      .';'.nl;
     }
     return $result;
   }

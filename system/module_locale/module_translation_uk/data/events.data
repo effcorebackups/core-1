@@ -1,4 +1,12 @@
 events
+  on_module_install
+  - translation_uk|event
+      for: translation_uk
+      handler: \effcore\modules\translation_uk\events_module::on_install
+  on_module_uninstall
+  - translation_uk|event
+      for: translation_uk
+      handler: \effcore\modules\translation_uk\events_module::on_uninstall
   on_module_enable
   - translation_uk|event
       for: translation_uk

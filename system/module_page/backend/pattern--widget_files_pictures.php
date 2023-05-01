@@ -97,7 +97,7 @@ namespace effcore {
     $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_picture;
     $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
     $result->child_insert($field_file_picture, 'field_file_picture');
-    $result->child_insert($button_insert, 'button_insert');
+    $result->child_insert($button_insert,      'button_insert');
     return $result;
   }
 

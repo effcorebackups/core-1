@@ -13,7 +13,7 @@ namespace effcore\modules\project {
     $entity = entity::get($form->entity_name);
     switch ($form->clicked_button->value_get()) {
       case 'update':
-        if ($entity->name === 'release' && !$form->has_error()) {
+        if ($entity->name === 'project_release' && !$form->has_error()) {
         # field 'hash sum'
           $file = new file($items['#path']->value_get());
           if ($file->is_exists())

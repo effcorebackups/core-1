@@ -21,10 +21,10 @@ events
       handler: \effcore\modules\project\events_page::on_block_presets_dynamic_build
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_file_load
-  - static_release|event
+  - static_project_release|event
       for: static
       weight: +500
-      handler: \effcore\modules\project\events_file::on_load_static_release
+      handler: \effcore\modules\project\events_file::on_load_static_project_release
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_validate
   - instance_insert__project|event

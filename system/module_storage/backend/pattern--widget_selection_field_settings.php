@@ -54,18 +54,20 @@ namespace effcore {
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = new node;
   # control for title
-    $field_title = new widget_text_object;
-    $field_title->field_text_title = 'Title';
-    $field_title->field_text_required = false;
-    $field_title->cform = $widget->parent_widget->cform;
-    $field_title->name_complex = $widget->parent_widget->name_get_complex().'__title__'.$c_row_id;
-    $field_title->build();
-    $field_title->value_set($item->title instanceof text ?
-                            $item->title :
-                   new text($item->title));
+    $widget_text_object_title = new widget_text_object;
+    $widget_text_object_title->cform = $widget->parent_widget->cform;
+    $widget_text_object_title->name_complex = $widget->parent_widget->name_get_complex().'__title__'.$c_row_id;
+    $widget_text_object_title->attributes['data-role'] = 'title';
+    $widget_text_object_title->field_text_title = 'Title';
+    $widget_text_object_title->field_text_required = false;
+    $widget_text_object_title->build();
+    $widget_text_object_title->value_set($item->title instanceof text ?
+                                         $item->title :
+                                new text($item->title));
   # control for value settings
     $group_value_settings = new group_checkboxes;
     $group_value_settings->title = 'Value settings';
+    $group_value_settings->attributes['data-role'] = 'value-settings';
     $group_value_settings->element_attributes['name'] = $widget->parent_widget->name_get_complex().'__value_settings__'.$c_row_id.'[]';
     $group_value_settings->items_set([
       'is_apply_translation' => 'Is apply translation',
@@ -76,10 +78,10 @@ namespace effcore {
     $group_value_settings->build();
     $group_value_settings->value_set($item->value_settings ?? []);
   # relate new controls with the widget
-    $widget->controls['#title__'.         $c_row_id] = $field_title;
+    $widget->controls['#title__'         .$c_row_id] = $widget_text_object_title;
     $widget->controls['*value_settings__'.$c_row_id] = $group_value_settings;
-    $result->child_insert($field_title, 'field_title');
-    $result->child_insert($group_value_settings, 'group_value_settings');
+    $result->child_insert($widget_text_object_title, 'widget_text_object_title');
+    $result->child_insert($group_value_settings,     'group_value_settings');
     return $result;
   }
 

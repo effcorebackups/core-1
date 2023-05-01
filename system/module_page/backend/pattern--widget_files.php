@@ -112,7 +112,7 @@ namespace effcore {
   # relate new controls with the widget
     $widget->controls['#file'  ] = $field_file;
     $widget->controls['~insert'] = $button_insert;
-    $result->child_insert($field_file, 'field_file');
+    $result->child_insert($field_file,    'field_file');
     $result->child_insert($button_insert, 'button_insert');
     return $result;
   }

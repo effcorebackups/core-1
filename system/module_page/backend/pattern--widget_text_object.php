@@ -68,22 +68,23 @@ namespace effcore {
     $result = new node;
   # control for text value
     $field_text = new field_text;
+    $field_text->attributes['data-role'] = 'title';
     $field_text->title = $widget->field_text_title;
     $field_text->build();
-    $field_text->value_set($widget->field_text_value);
     $field_text->name_set($widget->name_get_complex().'__text');
+    $field_text->value_set($widget->field_text_value);
     $field_text->maxlength_set($widget->field_text_maxlength);
     $field_text->required_set($widget->field_text_required);
   # control for translation status
     $field_is_apply_translation = new field_checkbox('Tr.');
-    $field_is_apply_translation->attributes['data-role'] = 'checkbox';
+    $field_is_apply_translation->attributes['data-role'] = 'is-apply-translation';
     $field_is_apply_translation->attribute_insert('title', new text('Is apply translation'), 'element_attributes');
     $field_is_apply_translation->build();
     $field_is_apply_translation->name_set($widget->name_get_complex().'__is_apply_translation');
     $field_is_apply_translation->checked_set($widget->field_is_apply_translation_checked);
   # control for tokens status
     $field_is_apply_tokens = new field_checkbox('To.');
-    $field_is_apply_tokens->attributes['data-role'] = 'checkbox';
+    $field_is_apply_tokens->attributes['data-role'] = 'is-apply-tokens';
     $field_is_apply_tokens->attribute_insert('title', new text('Is apply tokens'), 'element_attributes');
     $field_is_apply_tokens->build();
     $field_is_apply_tokens->name_set($widget->name_get_complex().'__is_apply_tokens');

@@ -259,9 +259,9 @@ namespace effcore {
   static function validation_cleaning($files_limit = 5000) {
   # delete items from the storage
     entity::get('cache_validation')->instances_delete(['conditions' => [
-      'updated_!f' => 'updated',
-      'operator'   => '<',
-      'updated_!v' => time() - core::date_period_d
+      'updated_!f'       => 'updated',
+      'updated_operator' => '<',
+      'updated_!v'       => time() - core::date_period_d
     ]]);
   # delete temporary files
     if (file_exists(temporary::directory.'validation/')) {

@@ -82,17 +82,17 @@ namespace effcore {
     $field_file_audio->build();
     $field_file_audio->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new audio cover
-    $field_file_cover = new field_file_picture;
-    $field_file_cover->title             = 'Cover';
-    $field_file_cover->max_file_size     = $widget->cover_max_file_size;
-    $field_file_cover->types_allowed     = $widget->cover_types_allowed;
-    $field_file_cover->cform             = $widget->cform;
-    $field_file_cover->min_files_number  = null;
-    $field_file_cover->max_files_number  = null;
-    $field_file_cover->has_widget_insert = false;
-    $field_file_cover->has_widget_manage = false;
-    $field_file_cover->build();
-    $field_file_cover->name_set($widget->name_get_complex().'__cover');
+    $field_file_picture_cover = new field_file_picture;
+    $field_file_picture_cover->title             = 'Cover';
+    $field_file_picture_cover->max_file_size     = $widget->cover_max_file_size;
+    $field_file_picture_cover->types_allowed     = $widget->cover_types_allowed;
+    $field_file_picture_cover->cform             = $widget->cform;
+    $field_file_picture_cover->min_files_number  = null;
+    $field_file_picture_cover->max_files_number  = null;
+    $field_file_picture_cover->has_widget_insert = false;
+    $field_file_picture_cover->has_widget_manage = false;
+    $field_file_picture_cover->build();
+    $field_file_picture_cover->name_set($widget->name_get_complex().'__cover');
   # button for insertion of the new item
     $button_insert = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button_insert->break_on_validate = true;
@@ -102,11 +102,11 @@ namespace effcore {
     $button_insert->_kind = 'audio';
   # relate new controls with the widget
     if (true                     ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_audio;
-    if ($widget->cover_is_allowed) $widget->controls['#cover'                            ] = $field_file_cover;
+    if ($widget->cover_is_allowed) $widget->controls['#cover'                            ] = $field_file_picture_cover;
     if (true                     ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
-    if (true                     ) $result->child_insert($field_file_audio, 'field_file_audio');
-    if ($widget->cover_is_allowed) $result->child_insert($field_file_cover, 'field_file_cover');
-    if (true                     ) $result->child_insert($button_insert, 'button_insert');
+    if (true                     ) $result->child_insert($field_file_audio,         'field_file_audio');
+    if ($widget->cover_is_allowed) $result->child_insert($field_file_picture_cover, 'field_file_picture_cover');
+    if (true                     ) $result->child_insert($button_insert,            'button_insert');
     return $result;
   }
 

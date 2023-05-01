@@ -93,7 +93,8 @@
 
   x-field[data-style~='inline']                    {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
   x-field[data-style~='inline'] [data-field-title] {display: inline-block; margin: 0   10px 0   0; vertical-align: middle}
-  x-field[data-style~='inline'] input {margin: 0}
+  x-field[data-style~='inline'] input,
+  x-field[data-style~='inline'] select {margin: 0}
   x-field[data-style~='inline'][data-type='checkbox'] {margin-right: 10px}
   x-field[data-style~='inline'][data-type='checkbox'] [data-field-title] {margin: 0}
   x-field[data-style~='inline'][data-type='checkbox'] input {margin-right: 5px}
@@ -113,7 +114,7 @@
   /* x-group[data-type='text_object'] */
 
   x-group[data-type='text_object'] x-field {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
-  x-group[data-type='text_object'] x-field[data-role='checkbox'] {margin: 15px 10px 2px 0}
+  x-group[data-type='text_object'] x-field[data-type='checkbox'] {margin: 15px 10px 2px 0}
 
   /* mark 'required' */
 
@@ -360,16 +361,30 @@
 
   x-widget[data-type='items-attributes'] x-group[data-type='text_object'] {display: inline-block; margin: 0}
   x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-type='text'] input {margin: 0}
-  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-role='checkbox'] {margin-top: 2px}
+  x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-type='checkbox'] {margin-top: 2px}
   x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-description {display: none}
   x-widget[data-type='items-attributes'] x-group[data-type='text_object'] [data-opener-type='description'] {display: none}
+
+  /* widget 'query-settings' */
+
+  x-widget[data-type='query-settings'] {margin: 30px 0}
+  x-widget[data-type='query-settings'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
+  x-widget[data-type='query-settings'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
+  x-widget[data-type='query-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid %%_color__main}
+
+  x-widget[data-type='items-query-conditions'] [data-role='field-name'] select {width: 200px}
+  x-widget[data-type='items-query-conditions'] [data-role='operator']   select {width:  70px}
+  x-widget[data-type='items-query-conditions'] [data-role='value']      input  {width: 200px}
+
+  x-widget[data-type='items-query-order'] [data-role='field-name'] select {width: 200px}
+  x-widget[data-type='items-query-order'] [data-role='type']       select {width: 200px}
 
   /* widget 'decorator-settings' */
 
   x-widget[data-type='decorator-settings'] {margin: 30px 0}
   x-widget[data-type='decorator-settings'] [data-widget-title] {display: inline-block; vertical-align: middle; font-size: 1.5em; line-height: 1.2em}
   x-widget[data-type='decorator-settings'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
-  x-widget[data-type='decorator-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid #7d659a}
+  x-widget[data-type='decorator-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid %%_color__main}
 
   /* widget 'items-blocks' */
 

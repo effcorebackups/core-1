@@ -3,8 +3,8 @@ pages
     id: install
     id_layout: installation
     title: Installation
-    url: %^(?<base>/install)(/
->>>>>>>>>>>(?<lang_code>[a-z]{2,2})|)$%
+    url: %^(?<base>/install)
+>>>>>>>>>(/(?<lang_code>[a-z]{2})|)$%
     is_https: true
     blocks
     - header

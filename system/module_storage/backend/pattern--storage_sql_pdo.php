@@ -44,9 +44,9 @@ namespace effcore {
           switch ($this->driver) {
             case 'mysql':
               $this->connection = new \PDO(
-                $this->driver.               ':host='.
-                $this->credentials->host.    ';port='.
-                $this->credentials->port.    ';dbname='.
+                $this->driver               .':host='.
+                $this->credentials->host    .';port='.
+                $this->credentials->port    .';dbname='.
                 $this->credentials->database.';charset=utf8',
                 $this->credentials->login,
                 $this->credentials->password);
@@ -86,7 +86,7 @@ namespace effcore {
       switch ($driver) {
         case 'mysql':
           $connection = new \PDO(
-            $driver.           ':host='.
+            $driver           .':host='.
             $credentials->host.';port='.
             $credentials->port.';dbname='.
             $credentials->database,
@@ -186,14 +186,17 @@ namespace effcore {
     }
   }
 
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
   function prepare_query(&$query = [], $is_emulation = false) {
     foreach ($query as $c_key => &$c_value) {
       $c_modifier = strrchr($c_key, '!');
-      if (is_array($c_value) && $c_modifier !== '!a') {
+      if (is_array($c_value) && $c_modifier !== '!v') {
         $this->prepare_query($c_value, $is_emulation);
         switch ($c_modifier) {
           case '!,':
-          case '!=':
+          case '!and':
+          case '!or':
             $c_new_values = [];
             foreach ($c_value as $c_sub_key => $c_sub_values) {
               if (!is_int($c_sub_key))
@@ -210,7 +213,6 @@ namespace effcore {
           case '!t': $c_value = $this->prepare_table($c_value);                break;
           case '!f': $c_value = $this->prepare_field($c_value);                break;
           case '!v': $c_value = $this->prepare_value($c_value, $is_emulation); break;
-          case '!a': $c_value = $this->prepare_value($c_value, $is_emulation); break;
         }
       }
     }
@@ -240,6 +242,8 @@ namespace effcore {
       else $this->args[] = core::return_rendered(      $value);
     return is_array($value) ? implode(', ', array_pad([], count($value), '?')) : '?';
   }
+
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
   function prepare_tables(...$tables) {
     $result = [];
@@ -393,7 +397,7 @@ namespace effcore {
     if ($this->init()) {
       $query = [
         'action'       => 'SELECT',
-        'fields_!,'    => ['count' => [
+        'fields'       => ['count' => [
           'function_begin' => 'count(',
           'function_field' => '*',
           'function_end'   => ')',
@@ -468,7 +472,7 @@ namespace effcore {
       $id_fields = $entity->id_from_values_get($values);
       $result = $this->query([
         'action'          => 'SELECT',
-        'fields_!,'       => ['all_!f' => '*'],
+        'fields'          => ['all_!f' => '*'],
         'target_begin'    => 'FROM',
         'target_!t'       => '~'.$entity->name,
         'condition_begin' => 'WHERE',

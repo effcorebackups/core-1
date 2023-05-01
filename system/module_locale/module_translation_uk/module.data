@@ -7,9 +7,9 @@ module|module
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   icon_path: frontend/pictures/flag-ua-mini.svg
   enabled: yes
-  version: 0.904
+  version: 0.905
   dependencies
     system
-    - locale: 0.904
+    - locale: 0.905
   urls
   - settings page: /manage/locale

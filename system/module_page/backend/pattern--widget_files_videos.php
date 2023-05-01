@@ -86,17 +86,17 @@ namespace effcore {
     $field_file_video->build();
     $field_file_video->name_set($widget->name_get_complex().'__file'.($group ? '_'.$group : ''));
   # control for upload new video poster
-    $field_file_poster = new field_file_picture;
-    $field_file_poster->title             = 'Poster';
-    $field_file_poster->max_file_size     = $widget->poster_max_file_size;
-    $field_file_poster->types_allowed     = $widget->poster_types_allowed;
-    $field_file_poster->cform             = $widget->cform;
-    $field_file_poster->min_files_number  = null;
-    $field_file_poster->max_files_number  = null;
-    $field_file_poster->has_widget_insert = false;
-    $field_file_poster->has_widget_manage = false;
-    $field_file_poster->build();
-    $field_file_poster->name_set($widget->name_get_complex().'__poster');
+    $field_file_picture_poster = new field_file_picture;
+    $field_file_picture_poster->title             = 'Poster';
+    $field_file_picture_poster->max_file_size     = $widget->poster_max_file_size;
+    $field_file_picture_poster->types_allowed     = $widget->poster_types_allowed;
+    $field_file_picture_poster->cform             = $widget->cform;
+    $field_file_picture_poster->min_files_number  = null;
+    $field_file_picture_poster->max_files_number  = null;
+    $field_file_picture_poster->has_widget_insert = false;
+    $field_file_picture_poster->has_widget_manage = false;
+    $field_file_picture_poster->build();
+    $field_file_picture_poster->name_set($widget->name_get_complex().'__poster');
   # button for insertion of the new item
     $button_insert = new button(null, ['data-style' => 'insert', 'title' => new text('insert')]);
     $button_insert->break_on_validate = true;
@@ -106,11 +106,11 @@ namespace effcore {
     $button_insert->_kind = 'video';
   # relate new controls with the widget
     if (true                      ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_video;
-    if ($widget->poster_is_allowed) $widget->controls['#poster'                           ] = $field_file_poster;
+    if ($widget->poster_is_allowed) $widget->controls['#poster'                           ] = $field_file_picture_poster;
     if (true                      ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
-    if (true                      ) $result->child_insert($field_file_video, 'field_file_video');
-    if ($widget->poster_is_allowed) $result->child_insert($field_file_poster, 'field_file_poster');
-    if (true                      ) $result->child_insert($button_insert, 'button_insert');
+    if (true                      ) $result->child_insert($field_file_video,          'field_file_video');
+    if ($widget->poster_is_allowed) $result->child_insert($field_file_picture_poster, 'field_file_picture_poster');
+    if (true                      ) $result->child_insert($button_insert,             'button_insert');
     return $result;
   }
 

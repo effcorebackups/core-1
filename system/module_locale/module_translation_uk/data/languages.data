@@ -4,3 +4,9 @@ languages
     title_en: Ukrainian
     title_native: Українська
     license_path: system/module_locale/module_translation_uk/licenses/license-uk.md
+    default_formats
+    - date: d.m.Y
+    - time: H:i:s
+    - datetime: d.m.Y H:i:s
+    - thousands_separator:  
+    - decimal_point: ,

@@ -2,13 +2,13 @@ pages
 - view|page
     id: view
     title: View
-    url: %^(?<base>/manage/view)(/
->>>>>>>>>>>(?<type>colors/current|
+    url: %^(?<base>/manage/view)
+>>>>>>>>>(/(?<type>colors/current|
 >>>>>>>>>>>>>>>>>>>colors/presets|
 >>>>>>>>>>>>>>>>>>>layouts|
 >>>>>>>>>>>>>>>>>>>global_css|
->>>>>>>>>>>>>>>>>>>settings)(/
->>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
+>>>>>>>>>>>>>>>>>>>settings)
+>>>>>>>>>(/(?<id>[a-z0-9_]+)|)|)$%
     is_https: true
     access
       roles
@@ -21,7 +21,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link

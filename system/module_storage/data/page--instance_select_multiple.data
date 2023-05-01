@@ -2,10 +2,10 @@ pages
 - instance_select_multiple|page
     id: instance_select_multiple
     title: %%_entity_title_plural_context
-    url: %^(?<base>/manage/data)(/
->>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)(/
->>>>>>>>>>>(?<entity_name>[a-z0-9_]+)(///
->>>>>>>>>>>(?<category_id>[a-z0-9_]+)|)|)|)$%
+    url: %^(?<base>/manage/data)
+>>>>>>>>>(/(?<managing_group_id>[a-z0-9_\-]+)
+>>>>>>>>>(/(?<entity_name>[a-z0-9_]+)
+>>>>>>>(///(?<category_id>[a-z0-9_]+)|)|)|)$%
     is_https: true
     access
       roles
@@ -16,7 +16,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link

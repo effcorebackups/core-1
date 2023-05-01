@@ -45,29 +45,32 @@ namespace effcore {
   static function widget_manage_get($widget, $item, $c_row_id) {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for attribute name
-    $field_name = new field_text('Name', null, [], +400);
-    $field_name->attributes['data-style'] = 'inline';
-    $field_name->description_state = 'hidden';
-    $field_name->cform = $widget->cform;
-    $field_name->build();
-    $field_name->name_set($widget->name_get_complex().'__name__'.$c_row_id);
-    $field_name->maxlength_set($widget->attribute_name_maxlength);
-    $field_name->value_set($item->name);
+    $field_text_name = new field_text('Name', null, [], +400);
+    $field_text_name->cform = $widget->cform;
+    $field_text_name->attributes['data-role'] = 'name';
+    $field_text_name->attributes['data-style'] = 'inline';
+    $field_text_name->description_state = 'hidden';
+    $field_text_name->build();
+    $field_text_name->name_set($widget->name_get_complex().'__name__'.$c_row_id);
+    $field_text_name->maxlength_set($widget->attribute_name_maxlength);
+    $field_text_name->value_set($item->name);
   # control for attribute value
-    $field_value = new widget_text_object;
-    $field_value->name_complex = $widget->name_get_complex().'__'.$c_row_id;
-    $field_value->field_text_title = null;
-    $field_value->field_text_maxlength = $widget->attribute_value_maxlength;
-    $field_value->field_text_required = false;
-    $field_value->build();
-    $field_value->value_set(new text($item->value, [],
+    $widget_text_object_value = new widget_text_object;
+    $widget_text_object_value->cform = $widget->cform;
+    $widget_text_object_value->name_complex = $widget->name_get_complex().'__'.$c_row_id;
+    $widget_text_object_value->attributes['data-role'] = 'value';
+    $widget_text_object_value->field_text_title = null;
+    $widget_text_object_value->field_text_maxlength = $widget->attribute_value_maxlength;
+    $widget_text_object_value->field_text_required = false;
+    $widget_text_object_value->build();
+    $widget_text_object_value->value_set(new text($item->value, [],
       !empty($item->is_apply_translation),
       !empty($item->is_apply_tokens)));
   # relate new controls with the widget
-    $widget->controls['#name__'. $c_row_id] = $field_name;
-    $widget->controls['#value__'.$c_row_id] = $field_value;
-    $result->child_insert($field_name,  'field_name');
-    $result->child_insert($field_value, 'field_value');
+    $widget->controls['#name__'. $c_row_id] = $field_text_name;
+    $widget->controls['#value__'.$c_row_id] = $widget_text_object_value;
+    $result->child_insert($field_text_name,          'field_text_name');
+    $result->child_insert($widget_text_object_value, 'widget_text_object_value');
     return $result;
   }
 
@@ -97,8 +100,8 @@ namespace effcore {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
       $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
-      $c_item->name   =      $widget->controls['#name__'.  $c_row_id]->value_get();
-      $c_value        =      $widget->controls['#value__'. $c_row_id]->value_get();
+      $c_item->name   =      $widget->controls['#name__'  .$c_row_id]->value_get();
+      $c_value        =      $widget->controls['#value__' .$c_row_id]->value_get();
       if ($c_value instanceof text) {
         $c_item->value                = $c_value->text;
         $c_item->is_apply_translation = $c_value->is_apply_translation;

@@ -6,7 +6,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~project.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -16,68 +16,70 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - description
           entity_field_name: description
-          weight: 360
+          is_apply_translation: true
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
-- instance_select-release|selection
-    id: instance_select-release
-    main_entity_name: release
+          weight: +320
+- instance_select-project_release|selection
+    id: instance_select-project_release
+    main_entity_name: project_release
     decorator_settings
     - view_type: table-dl
     query_settings
     - conditions
-      - id_project
-        - id_project_!f: ~release.id_project
-        - id_project_operator: =
-        - id_project_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_release_id_project_context
-      - conjunction: and
-      - build
-        - build_!f: ~release.build
-        - build_operator: =
-        - build_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_release_build_context
+      - conjunction_!and
+        - id_project
+          - id_project_!f: id_project
+          - id_project_operator: =
+          - id_project_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_project_release_id_project_context
+        - build
+          - build_!f: build
+          - build_operator: =
+          - build_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_project_release_build_context
     fields
     - main
       - id_project
           entity_field_name: id_project
-          weight: 400
+          weight: +400
       - build
           entity_field_name: build
-          weight: 380
+          weight: +380
       - description
           entity_field_name: description
-          weight: 360
+          is_apply_translation: true
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - hash_sum
           entity_field_name: hash_sum
-          weight: 320
+          weight: +320
       - created
           entity_field_name: created
-          weight: 300
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: 280
+          weight: +280
       - downloads_num
           entity_field_name: downloads_num
-          weight: 260
+          weight: +260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-project|selection
     id: instance_select_multiple-project
@@ -91,43 +93,54 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
-- instance_select_multiple-release|selection
-    id: instance_select_multiple-release
-    main_entity_name: release
+          weight: +340
+- instance_select_multiple-project_release|selection
+    id: instance_select_multiple-project_release
+    main_entity_name: project_release
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
     query_settings
+    - order
+      - fields_!,
+        - id_project
+          - id_project_!f: id_project
+          - id_project_type: DESC
+        - build
+          - build_!f: build
+          - build_type: DESC
     - limit: 50
     fields
     - main
       - id_project
           entity_field_name: id_project
-          weight: 400
+          weight: +400
       - build
           entity_field_name: build
-          weight: 380
+          weight: +380
+      - downloads_num
+          entity_field_name: downloads_num
+          weight: +360
       - created
           entity_field_name: created
-          weight: 360
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +320
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- release_current|selection
-    id: release_current
-    main_entity_name: release
+- project_release_current|selection
+    id: project_release_current
+    main_entity_name: project_release
     title|text
       is_apply_translation: true
       is_apply_tokens: true
@@ -136,38 +149,38 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_project_!f: ~release.id_project
+      - id_project_!f: id_project
       - id_project_operator: =
       - id_project_!v|text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_project_id_context
     - order
-      - build_!f: ~release.build
-      - type: DESC
+      - build_!f: build
+      - build_type: DESC
     - limit: 1
     fields
     - main
       - build
           entity_field_name: build
-          weight: 400
+          weight: +400
       - path
           entity_field_name: path
           is_not_visible: true
-          weight: 380
+          weight: +380
       - hash_sum
           entity_field_name: hash_sum
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 300
+          weight: +300
     - markup
       - release_url
           title: File
@@ -177,13 +190,13 @@ selections
             - href|text
                 is_apply_translation: false
                 is_apply_tokens: true
-                text: http://%%_request_host/%%_selection_release_path_cur_context
+                text: http://%%_request_host/%%_selection_project_release_path_cur_context
             children
             - data|text
                 text: Download
-- releases|selection
-    id: releases
-    main_entity_name: release
+- project_releases|selection
+    id: project_releases
+    main_entity_name: project_release
     title|text
       is_apply_translation: true
       is_apply_tokens: true
@@ -193,38 +206,38 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_project_!f: ~release.id_project
+      - id_project_!f: id_project
       - id_project_operator: =
       - id_project_!v|text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_project_id_context
     - order
-      - build_!f: ~release.build
-      - type: DESC
+      - build_!f: build
+      - build_type: DESC
     - limit: 50
     fields
     - main
       - build
           entity_field_name: build
-          weight: 400
+          weight: +400
       - path
           entity_field_name: path
           is_not_visible: true
-          weight: 380
+          weight: +380
       - hash_sum
           entity_field_name: hash_sum
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 300
+          weight: +300
     - markup
       - release_url
           title: File
@@ -234,8 +247,8 @@ selections
             - href|text
                 is_apply_translation: false
                 is_apply_tokens: true
-                text: http://%%_request_host/%%_selection_release_path_cur_context
+                text: http://%%_request_host/%%_selection_project_release_path_cur_context
             children
             - data|text
                 text: Download
-          weight: 280
+          weight: +280

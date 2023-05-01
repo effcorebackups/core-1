@@ -8,7 +8,6 @@ block_presets
     title: Messages
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__messages
 - block__title|block_preset
     id: block__title
@@ -19,7 +18,6 @@ block_presets
     title: Page title
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__title
 - block__page_actions|block_preset
     id: block__page_actions
@@ -30,5 +28,4 @@ block_presets
     title: Page actions
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__page_actions

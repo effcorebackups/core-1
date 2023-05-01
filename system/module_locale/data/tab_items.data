@@ -1,0 +1,23 @@
+tab_items
+- locale_general|tab_item
+    id: locale_general
+    id_parent: null
+    id_tab: locale
+    action_name: general
+    title: General
+    weight: +500
+- locale_by_language|tab_item
+    id: locale_by_language
+    id_parent: null
+    id_tab: locale
+    action_name: by_language
+    action_name_default: by_language/en
+    title: By languages
+    weight: +480
+- locale_by_language_en|tab_item
+    id: locale_by_language_en
+    id_parent: locale_by_language
+    id_tab: locale
+    action_name: by_language/en
+    title: English
+    weight: +500

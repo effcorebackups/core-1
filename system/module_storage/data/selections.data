@@ -6,7 +6,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~selection.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -16,27 +16,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - main_entity_name
           entity_field_name: main_entity_name
-          weight: 380
+          weight: +380
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 360
+          weight: +360
       - this_attributes
           entity_field_name: attributes
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-selection|selection
     id: instance_select_multiple-selection
@@ -50,18 +50,18 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320

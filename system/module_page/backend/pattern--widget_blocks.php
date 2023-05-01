@@ -54,9 +54,9 @@ namespace effcore {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
     $field_select_block_preset = new field_select_block_preset('Insert block');
+    $field_select_block_preset->cform = $widget->cform;
     $field_select_block_preset->title__not_selected = $widget->title__not_selected__widget_insert;
     $field_select_block_preset->id_area = $widget->id_area;
-    $field_select_block_preset->cform = $widget->cform;
     $field_select_block_preset->build();
     $field_select_block_preset->name_set($widget->name_get_complex().'__insert');
     $field_select_block_preset->required_set(false);

@@ -12,6 +12,20 @@ namespace effcore\modules\translation_be {
           use \effcore\storage;
           abstract class events_module {
 
+  static function on_install($event) {
+    if ( (page::get_current()->id === 'install' && language::code_get_current() === 'be') ||
+         (page::get_current()->id !== 'install') ) {
+      $module = module::get('translation_be');
+      $module->install();
+    }
+  }
+
+  static function on_uninstall($event) {
+    $module = module::get('translation_be');
+    $module->uninstall();
+    storage::get('data')->changes_delete('locale', 'update', 'settings/locale/formats/be');
+  }
+
   static function on_enable($event) {
     if ( (page::get_current()->id === 'install' && language::code_get_current() === 'be') ||
          (page::get_current()->id !== 'install') ) {

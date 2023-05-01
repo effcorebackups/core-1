@@ -210,8 +210,8 @@ namespace effcore {
   }
 
   static function host_get($decode = false) {
-    if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST']))
-         return idn_to_utf8($_SERVER['HTTP_HOST']);
+    if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
+         return idn_to_utf8($_SERVER['HTTP_HOST'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
     else return             $_SERVER['HTTP_HOST'];
   }
 

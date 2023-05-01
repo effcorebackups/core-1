@@ -56,6 +56,7 @@ entities
     - description
         title: Description
         type: blob
+        default: null
         converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
         converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
@@ -97,11 +98,11 @@ entities
         type: index
         fields
         - =: updated
-- release|entity
-    name: release
+- project_release|entity
+    name: project_release
     title: Release
     title_plural: Releases
-    catalog_name: releases
+    catalog_name: project_releases
     managing_is_enabled: true
     managing_group_id: project
     has_parallel_checking: true
@@ -156,6 +157,7 @@ entities
     - description
         title: Description
         type: blob
+        default: null
         converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
         converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
@@ -179,7 +181,7 @@ entities
         managing_control_properties
         - title: File
         - max_file_size: 500M
-        - upload_dir: releases/
+        - upload_dir: project_releases/
         - types_allowed
           - =: zip
           - =: 7z
@@ -206,6 +208,12 @@ entities
         type: integer
         not_null: true
         default: 0
+        managing_is_enabled_on_update: true
+        managing_control_class: \effcore\field_number
+        managing_control_element_attributes
+        - min: 0
+        - max: 2000000000
+        - disabled: true
     - created
         title: Created
         type: datetime

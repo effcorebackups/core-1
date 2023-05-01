@@ -48,8 +48,8 @@ namespace effcore {
           $c_offset = 0;
           foreach ($this->slices as $c_slice) {
             $diagram->child_insert(new markup_xml_simple('circle', $coords + ['style' =>
-              'stroke: '.                               $c_slice->color.                '; '.
-              'stroke-dasharray: '. core::format_number($c_slice->persent_value, 2).' 100; '.
+              'stroke: '           .                    $c_slice->color            .    '; '.
+              'stroke-dasharray: ' .core::format_number($c_slice->persent_value, 2).' 100; '.
               'stroke-dashoffset: '.core::format_number($c_offset,               2).    '; '.
               'stroke-width: 30%; '.
               'fill: none']));

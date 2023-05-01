@@ -38,7 +38,7 @@ namespace effcore {
     $field_switcher_is_agree->required_set(true);
   # relate new controls with the widget
     $widget->controls['#is_agree'] = $field_switcher_is_agree;
-    $result->child_insert($license_markup, 'license_markup');
+    $result->child_insert($license_markup,          'license_markup');
     $result->child_insert($field_switcher_is_agree, 'field_switcher_is_agree');
     return $result;
   }

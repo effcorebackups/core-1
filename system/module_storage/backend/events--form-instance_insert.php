@@ -32,13 +32,13 @@ namespace effcore\modules\storage {
             if (!empty($c_field->managing_is_enabled_on_insert) &&
                  isset($c_field->managing_control_class)) {
               $c_control = new $c_field->managing_control_class;
+              $c_control->cform = $form;
               $c_control->title = $c_field->title;
               $c_control->element_attributes['name'] = $c_name;
               $c_control->element_attributes = ($c_field->managing_control_element_attributes           ?? []) + $c_control->element_attributes;
               $c_control->element_attributes = ($c_field->managing_control_element_attributes_on_insert ?? []) + $c_control->element_attributes;
               if (isset($c_field->managing_control_properties          ) && is_array($c_field->managing_control_properties          )) foreach ($c_field->managing_control_properties           as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
               if (isset($c_field->managing_control_properties_on_insert) && is_array($c_field->managing_control_properties_on_insert)) foreach ($c_field->managing_control_properties_on_insert as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
-              $c_control->cform = $form;
               $c_control->entity_name = $entity->name;
               $c_control->entity_field_name = $c_name;
               $c_control->value_set_initial('', true);

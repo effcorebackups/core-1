@@ -3,3 +3,9 @@ languages
     code: en
     title_en: English
     title_native: English
+    default_formats
+    - date: Y-m-d
+    - time: H:i:s
+    - datetime: Y-m-d H:i:s
+    - thousands_separator:  
+    - decimal_point: .

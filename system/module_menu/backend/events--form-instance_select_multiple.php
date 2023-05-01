@@ -29,9 +29,9 @@ namespace effcore\modules\menu {
         # drag-and-drop functionality
           $form->_selection->is_builded = false;
           $form->_selection->query_settings['conditions'] = [
-            'id_tree_!f' => 'id_tree',
-            'operator'   => '=',
-            'id_tree_!v' => $form->category_id];
+            'id_tree_!f'       => 'id_tree',
+            'id_tree_operator' => '=',
+            'id_tree_!v'       => $form->category_id];
         # field 'extra'
           $form->_selection->fields['code']['extra'] = new \stdClass;
           $form->_selection->fields['code']['extra']->closure = function ($c_row_id, $c_row, $c_instance, $settings = []) {

@@ -4,3 +4,9 @@ languages
     title_en: Russian
     title_native: Русский
     license_path: system/module_locale/module_translation_ru/licenses/license-ru.md
+    default_formats
+    - date: d.m.Y
+    - time: H:i:s
+    - datetime: d.m.Y H:i:s
+    - thousands_separator:  
+    - decimal_point: ,

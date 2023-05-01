@@ -8,6 +8,8 @@ namespace effcore\modules\locale {
           use \effcore\core;
           use \effcore\language;
           use \effcore\markup;
+          use \effcore\page;
+          use \effcore\tab_item;
           use \effcore\text_simple;
           use \effcore\text;
           use \effcore\url;
@@ -16,6 +18,34 @@ namespace effcore\modules\locale {
   static function on_page_language_apply($event, $page) {
     if ($page->lang_code !== null) {
       language::code_set_current($page->lang_code);
+    }
+  }
+
+  static function on_redirect($event, $page) {
+    $section = $page->args_get('section');
+    if ($section === null) url::go($page->args_get('base').'/general');
+    if ($section && strpos($section, 'by_language') === 0) {
+      $languages = language::get_all();
+      $lang_code = $page->args_get('lang_code');
+      if (!isset($languages[$lang_code])) {
+        url::go($page->args_get('base').'/by_language/en');
+      }
+    }
+  }
+
+  static function on_tab_build_before($event, $tab) {
+    $section = page::get_current()->args_get('section');
+    if ($section && strpos($section, 'by_language') === 0) {
+      $languages = language::get_all();
+      core::array_sort_by_string($languages, 'title_en', 'd', false);
+      foreach ($languages as $c_language) {
+        if ($c_language->code !== 'en') {
+          tab_item::insert(                                $c_language->title_en,
+            'locale_by_language_'                         .$c_language->code,
+            'locale_by_language', 'locale', 'by_language/'.$c_language->code, null, [], [], false, 0, 'locale'
+          );
+        }
+      }
     }
   }
 

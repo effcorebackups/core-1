@@ -17,14 +17,12 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -55,7 +53,6 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -90,7 +87,6 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -123,7 +119,6 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -156,7 +151,6 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -195,7 +189,6 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -210,8 +203,9 @@ instances
         - block__title|block_preset_link
             id: block__title
       - content
-        - block__selection__user|block_preset_link
-            id: block__selection__user
+        - block__selection_sql__user|block_preset_link
+            id: block__selection_sql__user
+            title: User information
 - page_user_edit|instance
     entity_name: page
     values
@@ -233,7 +227,6 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -271,7 +264,7 @@ instances
     - is_embedded: 1
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -288,7 +281,7 @@ instances
     - is_embedded: 1
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -382,3 +375,64 @@ instances
     - access
         roles
         - =: registered
+# ─────────────────────────────────────────────────────────────────────
+# selections
+# ─────────────────────────────────────────────────────────────────────
+- selection_user|instance
+    entity_name: selection
+    values
+    - id: user
+    - title: General information
+    - main_entity_name: user
+    - data
+      - is_custom_conditions: true
+    - decorator_settings
+      - view_type: table-dl
+    - query_settings
+      - conditions
+        - nickname_!f: nickname
+        - nickname_operator: =
+        - nickname_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_nickname_page_context{nickname}
+      - limit: 1
+    - fields
+      - main
+        - id
+            title: ID
+            entity_field_name: id
+            weight: +400
+        - nickname
+            title: Nickname
+            entity_field_name: nickname
+            weight: +380
+        - avatar_path
+            title: Avatar path
+            entity_field_name: avatar_path
+            weight: +360
+        - timezone
+            title: Time zone
+            entity_field_name: timezone
+            is_apply_translation: true
+            weight: +340
+        - created
+            title: Created
+            entity_field_name: created
+            weight: +320
+        - updated
+            title: Updated
+            entity_field_name: updated
+            weight: +300
+        - is_embedded
+            title: Is embedded
+            entity_field_name: is_embedded
+            is_apply_translation: true
+            weight: +280
+      - handlers
+        - roles
+            title: Roles
+            handler: \effcore\modules\user\events_page_user::on_show_user_roles
+            is_apply_translation: true
+            weight: -400
+    - is_embedded: 1

@@ -186,6 +186,7 @@ namespace effcore\modules\core {
               'Your password is: %%_password'], [
               'email'    => $items['#email'   ]->value_get(),
               'password' => $items['#password']->value_get(false)]), 'credentials');
+            cache::update_global();
             url::go('/login');
           } else {
             message::insert(new text_multiline([

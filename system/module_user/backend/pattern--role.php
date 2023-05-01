@@ -26,7 +26,10 @@ namespace effcore {
   static function init_sql() {
     if (!static::$is_init___sql) {
          static::$is_init___sql = true;
-      $instances = entity::get('role')->instances_select(['order' => ['weight_!f' => 'weight', 'DESC', ',', 'title_!f' => 'title', 'ASC']]);
+      $instances = entity::get('role')->instances_select([
+        'order' => ['fields_!,' => [
+          'weight' => ['weight_!f' => 'weight', 'weight_type' => 'DESC'],
+          'title'  => [ 'title_!f' => 'title',   'title_type' => 'ASC' ] ]] ]);
       foreach ($instances as $c_instance) {
         $c_role = new static;
         foreach ($c_instance->values_get() as $c_key => $c_value)
@@ -61,10 +64,10 @@ namespace effcore {
   static function related_permissions_by_roles_select($roles) {
     $result = [];
     $items = entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
-      'id_role_!f' => 'id_role',
-      'in_begin'   => 'in (',
-      'in_!a'      => $roles,
-      'in_end'     => ')']]);
+      'id_role_!f'           => 'id_role',
+      'id_in_begin_operator' => 'in (',
+      'id_in_!v'             => $roles,
+      'id_in_end_operator'   => ')']]);
     foreach ($items as $c_item)
       $result[$c_item->id_permission] =
               $c_item->id_permission;
@@ -83,9 +86,9 @@ namespace effcore {
 
   static function related_permissions_delete($id_role) {
     entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
-      'id_role_!f' => 'id_role',
-      'operator'   => '=',
-      'id_role_!v' => $id_role
+      'id_role_!f'       => 'id_role',
+      'id_role_operator' => '=',
+      'id_role_!v'       => $id_role
     ]]);
   }
 

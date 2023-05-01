@@ -6,7 +6,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~audio.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -16,27 +16,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - instance_select-gallery|selection
     id: instance_select-gallery
     main_entity_name: gallery
@@ -44,7 +44,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~gallery.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -54,27 +54,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - items
           entity_field_name: items
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - instance_select-page|selection
     id: instance_select-page
     main_entity_name: page
@@ -82,7 +82,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~page.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -92,47 +92,48 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - id_layout
           entity_field_name: id_layout
-          weight: 380
+          weight: +380
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 360
+          weight: +360
       - url
           entity_field_name: url
-          weight: 340
+          weight: +340
       - is_https
           entity_field_name: is_https
           is_apply_translation: true
-          weight: 320
+          weight: +320
       - lang_code
           entity_field_name: lang_code
-          weight: 300
+          weight: +300
       - text_direction
           entity_field_name: text_direction
-          weight: 280
+          weight: +280
       - charset
           entity_field_name: charset
-          weight: 260
+          weight: +260
       - is_use_global_meta
           entity_field_name: is_use_global_meta
           is_apply_translation: true
-          weight: 240
+          weight: +240
       - created
           entity_field_name: created
-          weight: 220
+          weight: +220
       - updated
           entity_field_name: updated
-          weight: 200
+          weight: +200
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 180
+          weight: +180
       - access
           entity_field_name: access
-          weight: 160
+          is_apply_translation: true
+          weight: +160
 - instance_select-picture|selection
     id: instance_select-picture
     main_entity_name: picture
@@ -140,7 +141,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~picture.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -150,33 +151,33 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - link_attributes
           entity_field_name: link_attributes
-          weight: 320
+          weight: +320
       - url
           entity_field_name: url
-          weight: 300
+          weight: +300
       - created
           entity_field_name: created
-          weight: 280
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: 260
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 240
+          weight: +240
 - instance_select-text|selection
     id: instance_select-text
     main_entity_name: text
@@ -184,7 +185,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~text.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -194,28 +195,28 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - text
           entity_field_name: text
           is_apply_translation: true
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - instance_select-video|selection
     id: instance_select-video
     main_entity_name: video
@@ -223,7 +224,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~video.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -233,30 +234,30 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - poster_path
           entity_field_name: poster_path
-          weight: 320
+          weight: +320
       - created
           entity_field_name: created
-          weight: 300
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: 280
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 260
+          weight: +260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|selection
     id: instance_select_multiple-audio
@@ -270,21 +271,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320
 - instance_select_multiple-gallery|selection
     id: instance_select_multiple-gallery
     main_entity_name: gallery
@@ -297,21 +298,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320
 - instance_select_multiple-page|selection
     id: instance_select_multiple-page
     main_entity_name: page
@@ -324,21 +325,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - url
           entity_field_name: url
-          weight: 360
+          weight: +360
       - lang_code
           entity_field_name: lang_code
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320
 - instance_select_multiple-picture|selection
     id: instance_select_multiple-picture
     main_entity_name: picture
@@ -351,24 +352,24 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - url
           entity_field_name: url
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 300
+          weight: +300
 - instance_select_multiple-text|selection
     id: instance_select_multiple-text
     main_entity_name: text
@@ -381,21 +382,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320
 - instance_select_multiple-video|selection
     id: instance_select_multiple-video
     main_entity_name: video
@@ -408,21 +409,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 300
+          weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|selection
     id: audio
@@ -442,7 +443,7 @@ selections
       - is_embedded: is_embedded
     query_settings
     - conditions
-      - id_!f: ~audio.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -452,27 +453,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - gallery|selection
     id: gallery
     main_entity_name: gallery
@@ -492,7 +493,7 @@ selections
       - is_embedded: is_embedded
     query_settings
     - conditions
-      - id_!f: ~gallery.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -502,27 +503,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - items
           entity_field_name: items
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - picture|selection
     id: picture
     main_entity_name: picture
@@ -543,7 +544,7 @@ selections
       - is_embedded: is_embedded
     query_settings
     - conditions
-      - id_!f: ~picture.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -553,33 +554,33 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - link_attributes
           entity_field_name: link_attributes
-          weight: 320
+          weight: +320
       - url
           entity_field_name: url
-          weight: 300
+          weight: +300
       - created
           entity_field_name: created
-          weight: 280
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: 260
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 240
+          weight: +240
 - text|selection
     id: text
     main_entity_name: text
@@ -598,7 +599,7 @@ selections
       - is_embedded: is_embedded
     query_settings
     - conditions
-      - id_!f: ~text.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -608,28 +609,28 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - text
           entity_field_name: text
           is_apply_translation: true
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
 - video|selection
     id: video
     main_entity_name: video
@@ -649,7 +650,7 @@ selections
       - is_embedded: is_embedded
     query_settings
     - conditions
-      - id_!f: ~video.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -659,27 +660,27 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - this_attributes
           entity_field_name: attributes
-          weight: 360
+          weight: +360
       - path
           entity_field_name: path
-          weight: 340
+          weight: +340
       - poster_path
           entity_field_name: poster_path
-          weight: 320
+          weight: +320
       - created
           entity_field_name: created
-          weight: 300
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: 280
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 260
+          weight: +260

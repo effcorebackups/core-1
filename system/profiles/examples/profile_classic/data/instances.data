@@ -19,7 +19,7 @@ instances
     - url: /
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype main
           is_apply_translation: false
@@ -32,7 +32,7 @@ instances
     - url: /ru
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Логотип основной
           is_apply_translation: false
@@ -45,13 +45,13 @@ instances
     - url: https://behance.net
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Behance
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_bitbucket|instance
@@ -63,13 +63,13 @@ instances
     - url: https://bitbucket.org
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Bitbucket
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_blogger|instance
@@ -81,13 +81,13 @@ instances
     - url: https://blogger.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Blogger
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_facebook|instance
@@ -99,13 +99,13 @@ instances
     - url: https://facebook.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Facebook
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_flickr|instance
@@ -117,13 +117,13 @@ instances
     - url: https://flickr.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Flickr
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_github|instance
@@ -135,13 +135,13 @@ instances
     - url: https://github.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Github
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_gitlab|instance
@@ -153,13 +153,13 @@ instances
     - url: https://gitlab.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Gitlab
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_instagram|instance
@@ -171,13 +171,13 @@ instances
     - url: https://instagram.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Instagram
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_line|instance
@@ -189,13 +189,13 @@ instances
     - url: https://line.me
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Line
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_linkedin|instance
@@ -207,13 +207,13 @@ instances
     - url: https://linkedin.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Linkedin
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_livejournal|instance
@@ -225,13 +225,13 @@ instances
     - url: https://livejournal.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Livejournal
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_messenger|instance
@@ -243,13 +243,13 @@ instances
     - url: https://messenger.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Messenger
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_ok|instance
@@ -261,13 +261,13 @@ instances
     - url: https://ok.ru
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype OK
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_pinterest|instance
@@ -279,13 +279,13 @@ instances
     - url: https://pinterest.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Pinterest
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_reddit|instance
@@ -297,13 +297,13 @@ instances
     - url: https://reddit.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Reddit
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_skype|instance
@@ -315,13 +315,13 @@ instances
     - url: https://skype.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Skype
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_snapchat|instance
@@ -333,13 +333,13 @@ instances
     - url: https://snapchat.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Snapchat
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_soundcloud|instance
@@ -351,13 +351,13 @@ instances
     - url: https://soundcloud.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Soundcloud
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_telegram|instance
@@ -369,13 +369,13 @@ instances
     - url: https://telegram.org
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Telegram
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_tiktok|instance
@@ -387,13 +387,13 @@ instances
     - url: https://tiktok.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Tiktok
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_tumblr|instance
@@ -405,13 +405,13 @@ instances
     - url: https://tumblr.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Tumblr
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_twitter|instance
@@ -423,13 +423,13 @@ instances
     - url: https://twitter.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Twitter
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_viber|instance
@@ -441,13 +441,13 @@ instances
     - url: https://viber.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Viber
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_vimeo|instance
@@ -459,13 +459,13 @@ instances
     - url: https://vimeo.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Vimeo
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_vk|instance
@@ -477,13 +477,13 @@ instances
     - url: https://vk.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype VK
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_wechat|instance
@@ -495,13 +495,13 @@ instances
     - url: https://wechat.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Wechat
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_whatsapp|instance
@@ -513,13 +513,13 @@ instances
     - url: https://whatsapp.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Whatsapp
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_yahoo|instance
@@ -531,13 +531,13 @@ instances
     - url: https://yahoo.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Yahoo
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 - logotype_youtube|instance
@@ -549,13 +549,13 @@ instances
     - url: https://youtube.com
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: alt
           value: Logotype Youtube
           is_apply_translation: true
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: target
           value: _blank
 # ─────────────────────────────────────────────────────────────────────
@@ -580,21 +580,18 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -622,7 +619,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_contact|instance
@@ -644,21 +640,18 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -688,7 +681,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_front|instance
@@ -710,21 +702,18 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -753,14 +742,12 @@ instances
             title: Social networks
             title_is_visible: false
             attributes
-            - data-block: true
             - data-id: block__selection_sql__social_networks
             - data-style: at-right
         - block__text_sql__copyright|block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_gallery|instance
@@ -782,21 +769,18 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous|block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -823,7 +807,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_login|instance
@@ -846,14 +829,12 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -883,7 +864,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_logout|instance
@@ -908,14 +888,12 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -945,7 +923,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_recovery|instance
@@ -968,14 +945,12 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1005,7 +980,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_registration|instance
@@ -1028,14 +1002,12 @@ instances
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1065,7 +1037,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_user|instance
@@ -1091,14 +1062,12 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1121,14 +1090,14 @@ instances
         - block__title|block_preset_link
             id: block__title
       - content
-        - block__selection__user|block_preset_link
-            id: block__selection__user
+        - block__selection_sql__user|block_preset_link
+            id: block__selection_sql__user
+            title: User information
       - footer
         - block__text_sql__copyright|block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_user_edit|instance
@@ -1154,14 +1123,12 @@ instances
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1191,7 +1158,6 @@ instances
             id: block__text_sql__copyright
             title: Copyright
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -1215,21 +1181,18 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1260,7 +1223,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_contact_ru|instance
@@ -1283,21 +1245,18 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1331,7 +1290,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_front_ru|instance
@@ -1354,21 +1312,18 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1400,14 +1355,12 @@ instances
             title: Социальные сети
             title_is_visible: false
             attributes
-            - data-block: true
             - data-id: block__selection__social_networks
             - data-style: at-right
         - block__text_sql__copyright_ru|block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_gallery_ru|instance
@@ -1430,21 +1383,18 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__user_anonymous_ru|block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1474,7 +1424,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_login_ru|instance
@@ -1497,14 +1446,12 @@ instances
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1539,7 +1486,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_logout_ru|instance
@@ -1565,14 +1511,12 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1607,7 +1551,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_recovery_ru|instance
@@ -1630,14 +1573,12 @@ instances
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1672,7 +1613,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_registration_ru|instance
@@ -1695,14 +1635,12 @@ instances
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1737,7 +1675,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_user_ru|instance
@@ -1764,14 +1701,12 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1798,15 +1733,14 @@ instances
             id: block__title
             title: Заголовок страницы
       - content
-        - block__selection__user|block_preset_link
-            id: block__selection__user
+        - block__selection_sql__user|block_preset_link
+            id: block__selection_sql__user
             title: Информация о пользователе
       - footer
         - block__text_sql__copyright_ru|block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 - page_user_edit_ru|instance
@@ -1833,14 +1767,12 @@ instances
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
-            - data-block: true
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
         - block__tree_sql__languages|block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
-            - data-block: true
             - data-id: block__tree_sql__languages
             - data-style: at-right
         - block__tree__system|block_preset_link
@@ -1875,7 +1807,6 @@ instances
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
-            - data-block: true
             - data-id: block__text_sql__copyright
             - data-style: at-left
 # ─────────────────────────────────────────────────────────────────────
@@ -1949,7 +1880,7 @@ instances
     - is_embedded: 1
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -1965,7 +1896,7 @@ instances
     - title_is_visible: 0
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -1982,7 +1913,7 @@ instances
     - is_embedded: 1
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -1998,7 +1929,7 @@ instances
     - title_is_visible: 0
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -2014,7 +1945,7 @@ instances
     - title_is_visible: 0
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: linear
           is_apply_translation: false
@@ -2027,7 +1958,7 @@ instances
     - title_is_visible: 0
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -2040,7 +1971,7 @@ instances
     - title_is_visible: 0
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-style
           value: dropdown
           is_apply_translation: false
@@ -2222,10 +2153,10 @@ instances
     - id_tree: languages
     - title: English
     - url: /
-    - weight: 0
+    - weight: +0
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: title
           value: go to English language
           is_apply_translation: true
@@ -2241,7 +2172,7 @@ instances
     - weight: -1
     - link_attributes
       - 0
-          weight: 0
+          weight: +0
           name: title
           value: go to Russian language
           is_apply_translation: true
@@ -2255,7 +2186,7 @@ instances
     - id_tree: main
     - title: About Us
     - url: /about
-    - weight: 0
+    - weight: +0
 - tree_item_gallery|instance
     entity_name: tree_item
     values
@@ -2283,7 +2214,7 @@ instances
     - id_tree: main_ru
     - title: О нас
     - url: /ru/about
-    - weight: 0
+    - weight: +0
 - tree_item_gallery_ru|instance
     entity_name: tree_item
     values
@@ -2312,14 +2243,14 @@ instances
     - title: Main gallery
     - attributes
       - 0
-          weight: 0
+          weight: +0
           name: data-player-name
           value: default
           is_apply_translation: false
           is_apply_tokens: false
     - items
       - 0
-          weight: 0
+          weight: +0
           object|file_history
             name: 1000x1500-01
             type: picture
@@ -2481,12 +2412,70 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # selections
 # ─────────────────────────────────────────────────────────────────────
+- selection_user|instance
+    entity_name: selection
+    values
+    - id: user
+    - title: General information
+    - main_entity_name: user
+    - data
+      - is_custom_conditions: true
+    - decorator_settings
+      - view_type: table-dl
+    - query_settings
+      - conditions
+        - nickname_!f: nickname
+        - nickname_operator: =
+        - nickname_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_nickname_page_context{nickname}
+      - limit: 1
+    - fields
+      - main
+        - id
+            title: ID
+            entity_field_name: id
+            weight: +400
+        - nickname
+            title: Nickname
+            entity_field_name: nickname
+            weight: +380
+        - avatar_path
+            title: Avatar path
+            entity_field_name: avatar_path
+            weight: +360
+        - timezone
+            title: Time zone
+            entity_field_name: timezone
+            is_apply_translation: true
+            weight: +340
+        - created
+            title: Created
+            entity_field_name: created
+            weight: +320
+        - updated
+            title: Updated
+            entity_field_name: updated
+            weight: +300
+        - is_embedded
+            title: Is embedded
+            entity_field_name: is_embedded
+            is_apply_translation: true
+            weight: +280
+      - handlers
+        - roles
+            title: Roles
+            handler: \effcore\modules\user\events_page_user::on_show_user_roles
+            is_apply_translation: true
+            weight: -400
+    - is_embedded: 1
 - selection_social_networks|instance
     entity_name: selection
     values
     - id: social_networks
-    - main_entity_name: picture
     - title: Social networks
+    - main_entity_name: picture
     - data
       - template: content
     - decorator_settings
@@ -2500,31 +2489,33 @@ instances
         - link_attributes: link_attributes
     - query_settings
       - conditions
-        - id_!f: ~picture.id
-        - id_in_begin: in (
-        - id_in_!,
-          - 0_!v: logotype_twitter
-          - 1_!v: logotype_facebook
-          - 2_!v: logotype_instagram
-        - id_in_end: )
+        - conjunction_!and
+          - id
+            - id_!f: id
+            - id_in_begin_operator: in (
+            - id_in_!v
+              - 0: logotype_twitter
+              - 1: logotype_facebook
+              - 2: logotype_instagram
+            - id_in_end_operator: )
     - fields
       - main
         - id
             entity_field_name: id
-            weight: 400
+            weight: +400
         - description
             entity_field_name: description
             is_apply_translation: true
-            weight: 380
+            weight: +380
         - path
             entity_field_name: path
-            weight: 360
+            weight: +360
         - url
             entity_field_name: url
-            weight: 340
+            weight: +340
         - this_attributes
             entity_field_name: attributes
-            weight: 320
+            weight: +320
         - link_attributes
             entity_field_name: link_attributes
-            weight: 300
+            weight: +300

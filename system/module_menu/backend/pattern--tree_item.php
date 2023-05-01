@@ -29,7 +29,8 @@ namespace effcore {
     if ($id_tree           ) $this->id_tree            = $id_tree;
     if ($url               ) $this->url                = $url;
     if ($access            ) $this->access             = $access;
-    if ($element_attributes) $this->element_attributes = $element_attributes;
+    if ($element_attributes) $this->element_attributes = $element_attributes +
+                             $this->element_attributes;
     parent::__construct($attributes, [], $weight);
   }
 

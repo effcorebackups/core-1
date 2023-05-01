@@ -24,7 +24,7 @@ tab_items
     id: data_project_release
     id_parent: data_project
     id_tab: data
-    action_name: project/release
+    action_name: project/project_release
     title: Releases
     weight: +480
     access

@@ -71,6 +71,7 @@ translations
     - Belarusian: Білоруська
     - bind to my IP address: прив'язати до моєї IP-адреси
     - Block: Блок
+    - Blocked until: Заблоковано доки
     - Blocking the login for the number of minutes: Блокування входу на кількість хвилин
     - Blocking will not affect existing sessions.: Блокування не вплине на існуючі сеанси.
     - Blocks: Блоки
@@ -86,6 +87,7 @@ translations
     - button: кнопка
     - Button: Кнопка
     - Button\: text: Кнопка: текст
+    - By languages: По мовах
     - Cache update form: Форма оновлення кешу
     - cache: кеш
     - cancel: відмінити
@@ -151,9 +153,7 @@ translations
     - Data update is required: Потрібне оновлення даних
     - Data: Дані
     - Database name: Ім'я бази даних
-    - Date format: Формат дати
     - Date: Дата
-    - Date/time format: Формат дати/часу
     - Date/Time: Дата/Час
     - Decimal point: Десяткова крапка
     - Decorator settings: Налаштування оформлення
@@ -238,6 +238,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле може містити максимум %%_number файл%%_plural{number|iv-i}.
     - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле може містити мінімум %%_number файл%%_plural{number|iv-i}.
     - Field can contain only %%_number file%%_plural{number\|s}.: Поле може містити тільки %%_number файл%%_plural{number|iv-i}.
+    - Field name: Ім'я поля
     - Field value at the current moment\: %%_value: Значення поля у поточний момент: %%_value
     - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значення поля може містити максимум %%_number символ%%_plural{number|iv-i}.
     - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значення поля може містити мінімум %%_number символ%%_plural{number|iv-i}.
@@ -307,6 +308,7 @@ translations
     - Form elements: Елементи форми
     - form: форма
     - Form: Форма
+    - Formats: Формати
     - forms: форми
     - Forms: Форми
     - Fractional part is too long.: Дробова частина надто довга.
@@ -319,6 +321,8 @@ translations
     - Gallery\: insert: Галерея: вставити
     - Gallery\: select: Галерея: вибрати
     - Gallery\: update: Галерея: оновити
+    - General information: Загальна інформація
+    - General: Загальні
     - generate: генерувати
     - Generation done.: Генерація виконана.
     - GiB: ГіБ
@@ -459,7 +463,8 @@ translations
     - Local Date: Локальна Дата
     - Local Date/Time: Локальна Дата/Час
     - Local Time: Локальний Час
-    - Locale settings form: Форма налаштування локалі
+    - Locale general settings form: Форма загальних налаштувань локалі
+    - Locale setting form by language: Форма налаштування локалі за мовою
     - Locale: Локаль
     - Locale\: manage: Локаль: керувати
     - Logic: Логіка
@@ -562,6 +567,7 @@ translations
     - Okay: Добре
     - Only unique value is allowed.: Дозволяється тільки унікальне значення.
     - Operating System: Операційна система
+    - Operator: Оператор
     - Order: Замовлення
     - Ordered list: Упорядкований список
     - Origin: Походження
@@ -795,7 +801,6 @@ translations
     - Thousands separator: Розділювач тисяч
     - thumbnail: мініатюра
     - TiB: ТіБ
-    - Time format: Формат часу
     - Time zone: Часовий пояс
     - Time: Час
     - Title is visible: Заголовок видимий

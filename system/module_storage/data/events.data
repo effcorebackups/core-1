@@ -52,10 +52,6 @@ events
       for: instance_insert
       weight: +600
       handler: \effcore\modules\storage\events_form_instance_insert::on_init
-  - instance_insert__selection|event
-      for: instance_insert
-      weight: +300
-      handler: \effcore\modules\storage\events_form_instance_insert__selection::on_init
   - instance_update|event
       for: instance_update
       weight: +600

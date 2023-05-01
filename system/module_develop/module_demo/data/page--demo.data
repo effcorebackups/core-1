@@ -23,7 +23,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link
@@ -138,7 +137,7 @@ pages
           properties
           - title: null
       - block__selection__demo_data_join|block
-          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
+          title: Demonstration of selection of "demo_data" entities with JOIN
           attributes
           - data-id: block__selection__demo_data_join
           - data-style: title-is-simple
@@ -151,7 +150,7 @@ pages
           properties
           - title: null
       - block__selection__demo_data_join__with_properties|block
-          title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100
+          title: Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions)
           attributes
           - data-id: block__selection__demo_data_join__with_properties
           - data-style: title-is-simple
@@ -166,12 +165,25 @@ pages
           - pager_id: 2
           - query_settings
             - conditions
-              - id_!f: ~demo_data.id
-              - operator: >=
-              - id_!v: 100
+              - conjunction_!and
+                - id
+                  - id_!f: id
+                  - id_operator: <
+                  - id_!v: 250
+                - is_even
+                  - is_even_!f: is_even
+                  - is_even_in_begin_operator: in (
+                  - is_even_!v: 1
+                  - id_in_end_operator: )
+                - email
+                  - email_!f: ~demo_join.email
+                  - email_operator: like
+                  - email_!v: user#_2%
+                  - email_escape_begin: escape
+                  - email_escape_!v: #
             - order
-              - title_!f: ~demo_data.id
-              - type: ASC
+              - title_!f: id
+              - title_type: ASC
             - limit: 5
       # ─────────────────────────────────────────────────────────────────────
       # trees

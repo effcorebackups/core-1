@@ -63,6 +63,7 @@ forms
         - files_texts|widget_files
             title: Texts
             item_title: Text
+            state: opened
             name_complex: files_texts
             upload_dir: demo/
             types_allowed
@@ -70,6 +71,7 @@ forms
       # widget 'Pictures'
         - files_pictures|widget_files_pictures
             title: Pictures
+            state: opened
             name_complex: files_pictures
             upload_dir: demo/
             types_allowed
@@ -84,6 +86,7 @@ forms
       # widget 'Audios'
         - files_audios|widget_files_audios
             title: Audios
+            state: opened
             name_complex: files_audios
             upload_dir: demo/
             audio_player_on_manage_is_visible: true
@@ -93,6 +96,7 @@ forms
       # widget 'Videos'
         - files_videos|widget_files_videos
             title: Videos
+            state: opened
             name_complex: files_videos
             upload_dir: demo/
             poster_is_allowed: true
@@ -373,11 +377,11 @@ forms
             query_settings
             - conditions
               - id_tree_!f: id_tree
-              - operator: =
+              - id_tree_operator: =
               - id_tree_!v: demo_sql
             - order
               - weight_!f: title
-              - type: ASC
+              - weight_type: ASC
             element_attributes
             - name: relation
             selected
@@ -396,7 +400,7 @@ forms
             query_settings
             - conditions
               - id_tree_!f: id_tree
-              - operator: =
+              - id_tree_operator: =
               - id_tree_!v: demo_sql
             element_attributes
             - name: relation_tree
@@ -477,7 +481,7 @@ forms
 /////////////////////    custom_preperty: null
 /////////////////////    text: some text
 /////////////////////    delimiter|_string_nl
-/////////////////////    weight: 0
+/////////////////////    weight: +0
             classes_allowed
             - =: text
             - =: \effcore\text_simple

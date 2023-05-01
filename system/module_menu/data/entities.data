@@ -51,8 +51,7 @@ entities
         type: varchar
         size: 1024
         collate: nocase
-        not_null: true
-        check: (title <> '')
+        default: null
         converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
         converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
@@ -78,6 +77,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -107,6 +107,7 @@ entities
     - access
         title: Read access
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -232,6 +233,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -259,6 +261,7 @@ entities
     - link_attributes
         title: Link attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -298,6 +301,7 @@ entities
     - access
         title: Read access
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize

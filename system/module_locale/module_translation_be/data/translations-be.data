@@ -71,6 +71,7 @@ translations
     - Belarusian: Беларуская
     - bind to my IP address: прывязаць да майго IP-адраса
     - Block: Блок
+    - Blocked until: Заблакавана да
     - Blocking the login for the number of minutes: Блакаванне ўваходу на колькасць хвілін
     - Blocking will not affect existing sessions.: Блакаванне не паўплывае на існуючыя сеансы.
     - Blocks: Блокі
@@ -86,6 +87,7 @@ translations
     - button: кнопка
     - Button: Кнопка
     - Button\: text: Кнопка: тэкст
+    - By languages: Па мовах
     - Cache update form: Форма абнаўлення кэша
     - cache: кэш
     - cancel: адмяніць
@@ -151,9 +153,7 @@ translations
     - Data update is required: Патрабуецца абнаўленне дадзеных
     - Data: Дадзеныя
     - Database name: Імя базы дадзеных
-    - Date format: Фармат даты
     - Date: Дата
-    - Date/time format: Фармат даты/часу
     - Date/Time: Дата/Час
     - Decimal point: Дзесятковая кропка
     - Decorator settings: Налады афармлення
@@ -190,7 +190,7 @@ translations
     - Eliminates the possibility of registering to a non-existent Email address.: Выключае магчымасць рэгістрацыі на неіснуючы адрас электроннай пошты.
     - Email: Адрас электроннай пошты
     - Enable cookies before login.: Уключыце cookies да пачатку ўваходу ў сістэму.
-    - English: Англійская
+    - English: Ангельская
     - enter edit mode: увайсці ў рэжым рэдагавання
     - Entity "%%_entity" was installed.: Сутнасць "%%_entity" была ўсталявана.
     - Entity "%%_entity" was not installed!: Сутнасць "%%_entity" не была ўсталявана!
@@ -238,6 +238,7 @@ translations
     - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number|au-a}.
     - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number|au-a}.
     - Field can contain only %%_number file%%_plural{number\|s}.: Поле можа змяшчаць толькі %%_number файл%%_plural{number|au-a}.
+    - Field name: Імя поля
     - Field value at the current moment\: %%_value: Значэнне поля ў бягучы момант: %%_value
     - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural{number|au-a}.
     - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number|au-a}.
@@ -307,6 +308,7 @@ translations
     - Form elements: Элементы формы
     - form: форма
     - Form: Форма
+    - Formats: Фарматы
     - forms: формы
     - Forms: Формы
     - Fractional part is too long.: Дробавая частка надта доўгая.
@@ -319,6 +321,8 @@ translations
     - Gallery\: insert: Галерэя: уставіць
     - Gallery\: select: Галерэя: абраць
     - Gallery\: update: Галерэя: абнавіць
+    - General information: Агульная інфармацыя
+    - General: Агульныя
     - generate: генераваць
     - Generation done.: Генерацыя выканана.
     - GiB: ГіБ
@@ -459,7 +463,8 @@ translations
     - Local Date: Лакальная Дата
     - Local Date/Time: Лакальная Дата/Час
     - Local Time: Лакальны Час
-    - Locale settings form: Форма налад лакалі
+    - Locale general settings form: Форма агульных налад лакалі
+    - Locale setting form by language: Форма налады лакалі па мове
     - Locale: Лакаль
     - Locale\: manage: Лакаль: кіраваць
     - Logic: Логіка
@@ -562,6 +567,7 @@ translations
     - Okay: Добра
     - Only unique value is allowed.: Дазваляецца толькі унікальнае значэнне.
     - Operating System: Аперацыйная сістэма
+    - Operator: Аператар
     - Order: Заказ
     - Ordered list: Упарадкаваны спіс
     - Origin: Паходжанне
@@ -795,7 +801,6 @@ translations
     - Thousands separator: Раздзяляльнік тысяч
     - thumbnail: мініяцюра
     - TiB: ТіБ
-    - Time format: Фармат часу
     - Time zone: Гадзінны пояс
     - Time: Час
     - Title is visible: Загаловак бачны

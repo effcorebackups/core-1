@@ -101,6 +101,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -210,8 +211,7 @@ entities
         type: varchar
         size: 1024
         collate: nocase
-        not_null: true
-        check: (title <> '')
+        default: null
         converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
         converter_on_update: \effcore\core::return_htmlspecialchars_encoded
         managing_is_enabled_on_insert: true
@@ -224,6 +224,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -237,6 +238,7 @@ entities
     - items
         title: Items
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -458,6 +460,7 @@ entities
     - meta
         title: META
         type: blob
+        default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
         managing_control_class: \effcore\field_textarea
@@ -487,6 +490,7 @@ entities
     - access
         title: Read access
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -499,6 +503,7 @@ entities
     - blocks
         title: Blocks
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -603,6 +608,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -642,6 +648,7 @@ entities
     - link_attributes
         title: Link attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -765,6 +772,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -778,6 +786,7 @@ entities
     - text
         title: Text
         type: blob
+        default: null
         converter_on_insert: \effcore\core::return_null_if_empty
         converter_on_update: \effcore\core::return_null_if_empty
         managing_is_enabled_on_insert: true
@@ -884,6 +893,7 @@ entities
     - attributes
         title: Attributes
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize

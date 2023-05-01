@@ -2,8 +2,8 @@ pages
 - security|page
     id: security
     title: Security
-    url: %^(?<base>/manage/security)(/
->>>>>>>>>>>(?<type>settings)|)$%
+    url: %^(?<base>/manage/security)
+>>>>>>>>>(/(?<type>settings)|)$%
     is_https: true
     access
       roles
@@ -16,7 +16,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link

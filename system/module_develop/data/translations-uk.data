@@ -55,8 +55,8 @@ translations
     - Demonstration menu SQL: Меню демонстраційне SQL
     - Demonstration menu via decorator: Меню демонстраційне через декоратор
     - Demonstration of field types for Selection: Демонстрація типів полів у вибірки
-    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities where ID >= 100: Демонстрація вибірки сутностей "demo_data" з об'єднанням з сутностями "demo_join" де ID >= 100
-    - Demonstration of selection of "demo_data" entities with joining with "demo_join" entities: Демонстрація вибірки сутностей "demo_data" з об'єднанням з сутностями "demo_join"
+    - Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions): Демонстрація вибірки сутностей "demo_data" з JOIN (та перевизначеними умовами)
+    - Demonstration of selection of "demo_data" entities with JOIN: Демонстрація вибірки сутностей "demo_data" з JOIN
     - Demonstration of selection of entities "demo_types": Демонстрація вибірки сутностей "demo_types"
     - Description for messages: Опис для повідомлень
     - Displaying the console will result in a %%_value increase in RAM consumption!: Відображення консолі призведе до збільшення споживання ОЗП на %%_value!

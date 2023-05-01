@@ -212,10 +212,13 @@ namespace effcore {
             if (!empty($this->fields['markup']) && is_array($this->fields['markup'])) {
               foreach ($this->fields['markup'] as $c_cell_id => $c_markup) {
                 $c_row[$c_cell_id] = [
-                  'value'          => $c_markup->markup->render(), # note: "render" is for markup containing tokens
-                  'title'          => isset($c_markup->title) ? $c_markup->title : null,
-                  'is_not_visible' => isset($c_markup->is_not_visible) && $c_markup->is_not_visible,
-                  'weight'         => isset($c_markup->weight) ? (int)$c_markup->weight : 0
+                  'value'                => $c_markup->markup->render(), # note: "render" is for markup containing tokens
+                  'title'                => isset($c_markup->title) ? $c_markup->title : null,
+                  'is_apply_translation' => isset($c_markup->is_apply_translation) && $c_markup->is_apply_translation,
+                  'is_apply_tokens'      => isset($c_markup->is_apply_tokens)      && $c_markup->is_apply_tokens,
+                  'is_trimmed'           => isset($c_markup->is_trimmed)           && $c_markup->is_trimmed,
+                  'is_not_visible'       => isset($c_markup->is_not_visible)       && $c_markup->is_not_visible,
+                  'weight'               => isset($c_markup->weight) ? (int)$c_markup->weight : 0
                 ];
               }
             }
@@ -238,10 +241,13 @@ namespace effcore {
             if (!empty($this->fields['handlers']) && is_array($this->fields['handlers'])) {
               foreach ($this->fields['handlers'] as $c_cell_id => $c_handler) {
                 $c_row[$c_cell_id] = [
-                  'value'          => call_user_func($c_handler->handler, $c_cell_id, $c_row, $c_instance, $c_handler->settings ?? []),
-                  'title'          => isset($c_handler->title) ? $c_handler->title : null,
-                  'is_not_visible' => isset($c_handler->is_not_visible) && $c_handler->is_not_visible,
-                  'weight'         => isset($c_handler->weight) ? (int)$c_handler->weight : 0
+                  'value'                => call_user_func($c_handler->handler, $c_cell_id, $c_row, $c_instance, $c_handler->settings ?? []),
+                  'title'                => isset($c_handler->title) ? $c_handler->title : null,
+                  'is_apply_translation' => isset($c_handler->is_apply_translation) && $c_handler->is_apply_translation,
+                  'is_apply_tokens'      => isset($c_handler->is_apply_tokens)      && $c_handler->is_apply_tokens,
+                  'is_trimmed'           => isset($c_handler->is_trimmed)           && $c_handler->is_trimmed,
+                  'is_not_visible'       => isset($c_handler->is_not_visible)       && $c_handler->is_not_visible,
+                  'weight'               => isset($c_handler->weight) ? (int)$c_handler->weight : 0
                 ];
               }
             }
@@ -249,10 +255,13 @@ namespace effcore {
             if (!empty($this->fields['code']) && is_array($this->fields['code'])) {
               foreach ($this->fields['code'] as $c_cell_id => $c_code) {
                 $c_row[$c_cell_id] = [
-                  'value'          => call_user_func($c_code->closure, $c_cell_id, $c_row, $c_instance, $c_code->settings ?? []),
-                  'title'          => isset($c_code->title) ? $c_code->title : null,
-                  'is_not_visible' => isset($c_code->is_not_visible) && $c_code->is_not_visible,
-                  'weight'         => isset($c_code->weight) ? (int)$c_code->weight : 0
+                  'value'                => call_user_func($c_code->closure, $c_cell_id, $c_row, $c_instance, $c_code->settings ?? []),
+                  'title'                => isset($c_code->title) ? $c_code->title : null,
+                  'is_apply_translation' => isset($c_code->is_apply_translation) && $c_code->is_apply_translation,
+                  'is_apply_tokens'      => isset($c_code->is_apply_tokens)      && $c_code->is_apply_tokens,
+                  'is_trimmed'           => isset($c_code->is_trimmed)           && $c_code->is_trimmed,
+                  'is_not_visible'       => isset($c_code->is_not_visible)       && $c_code->is_not_visible,
+                  'weight'               => isset($c_code->weight) ? (int)$c_code->weight : 0
                 ];
               }
             }
@@ -271,9 +280,9 @@ namespace effcore {
                 );
               }
             # apply translation, tokens…
-              if ($c_row[$c_cell_id]['value'] instanceof text && !empty($c_row[$c_cell_id]['is_trimmed']          )) $c_row[$c_cell_id]['value']->text = trim($c_row[$c_cell_id]['value']->text);
-              if ($c_row[$c_cell_id]['value'] instanceof text && !empty($c_row[$c_cell_id]['is_apply_translation'])) $c_row[$c_cell_id]['value']->is_apply_translation = true;
-              if ($c_row[$c_cell_id]['value'] instanceof text && !empty($c_row[$c_cell_id]['is_apply_tokens']     )) $c_row[$c_cell_id]['value']->is_apply_tokens      = true;
+              if ($c_row[$c_cell_id]['value'] instanceof text && is_string($c_row[$c_cell_id]['value']->text_select()) && !empty($c_row[$c_cell_id]['is_trimmed'])) $c_row[$c_cell_id]['value']->text_update(trim($c_row[$c_cell_id]['value']->text_select()));
+              if ($c_row[$c_cell_id]['value'] instanceof text) $c_row[$c_cell_id]['value']->is_apply_translation = !empty($c_row[$c_cell_id]['is_apply_translation']);
+              if ($c_row[$c_cell_id]['value'] instanceof text) $c_row[$c_cell_id]['value']->is_apply_tokens      = !empty($c_row[$c_cell_id]['is_apply_tokens']);
             # removal of unnecessary parameters
               unset($c_row[$c_cell_id]['converter_on_render']);
               unset($c_row[$c_cell_id]['is_trimmed']);
@@ -383,8 +392,8 @@ namespace effcore {
         $selection = new static;
         $selection->origin = 'sql';
         foreach ($instance->values_get() as $c_key => $c_value)
-          if ($c_key === 'attributes') $selection->{$c_key} = widget_attributes::value_to_attributes($c_value) ?? [];
-          else                         $selection->{$c_key} =                                        $c_value;
+          if ($c_key === 'attributes') $selection->{$c_key} = (widget_attributes::value_to_attributes($c_value) ?? []) + $selection->{$c_key};
+          else                         $selection->{$c_key} =                                         $c_value;
         foreach ($selection->data ?? [] as $c_key => $c_value)
                  $selection->             {$c_key} = $c_value;
         static::$cache[$selection->id] = $selection;
@@ -396,8 +405,8 @@ namespace effcore {
         $c_selection = new static;
         $c_selection->origin = 'sql';
         foreach ($c_instance->values_get() as $c_key => $c_value)
-          if ($c_key === 'attributes') $c_selection->{$c_key} = widget_attributes::value_to_attributes($c_value) ?? [];
-          else                         $c_selection->{$c_key} =                                        $c_value;
+          if ($c_key === 'attributes') $c_selection->{$c_key} = (widget_attributes::value_to_attributes($c_value) ?? []) + $c_selection->{$c_key};
+          else                         $c_selection->{$c_key} =                                         $c_value;
         foreach ($c_selection->data ?? [] as $c_key => $c_value)
                  $c_selection->             {$c_key} = $c_value;
         static::$cache[$c_selection->id] = $c_selection;

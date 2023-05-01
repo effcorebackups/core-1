@@ -12,7 +12,14 @@ namespace effcore {
   public $item_title = 'Field';
   public $attributes = ['data-type' => 'items-entity_fields'];
   public $name_complex = 'widget_selection_fields';
-  public $main_entity_name = null;
+  public $_instance;
+
+  protected $value_join;
+  protected $value_texts;
+  protected $value_markup;
+  protected $value_checkboxes;
+  protected $value_handlers;
+  protected $value_code;
 
   function value_get($options = []) { # return: array | serialize(array)
     $value_external = [];
@@ -30,6 +37,12 @@ namespace effcore {
         $value_external['main'][$c_row_id]->is_not_visible        = empty($c_item->value_settings['is_not_visible'])       ? false : true;
       }
     }
+    if ($this->value_join      ) $value_external['join'      ] = $this->value_join;
+    if ($this->value_texts     ) $value_external['texts'     ] = $this->value_texts;
+    if ($this->value_markup    ) $value_external['markup'    ] = $this->value_markup;
+    if ($this->value_checkboxes) $value_external['checkboxes'] = $this->value_checkboxes;
+    if ($this->value_handlers  ) $value_external['handlers'  ] = $this->value_handlers;
+    if ($this->value_code      ) $value_external['code'      ] = $this->value_code;
     if (!empty($options['return_serialized']))
          return serialize($value_external);
     else return           $value_external;
@@ -42,19 +55,25 @@ namespace effcore {
     if ($value ===  '' ) $value = [];
     if (is_array($value)) {
       $value_internal = [];
-      if (!empty($value['main']) && is_array($value['main'])) {
+      if (!empty($value['join'      ]) && is_array($value['join'      ])) $this->value_join       = $value['join'      ];
+      if (!empty($value['texts'     ]) && is_array($value['texts'     ])) $this->value_texts      = $value['texts'     ];
+      if (!empty($value['markup'    ]) && is_array($value['markup'    ])) $this->value_markup     = $value['markup'    ];
+      if (!empty($value['checkboxes']) && is_array($value['checkboxes'])) $this->value_checkboxes = $value['checkboxes'];
+      if (!empty($value['handlers'  ]) && is_array($value['handlers'  ])) $this->value_handlers   = $value['handlers'  ];
+      if (!empty($value['code'      ]) && is_array($value['code'      ])) $this->value_code       = $value['code'      ];
+      if (!empty($value['main'      ]) && is_array($value['main'      ])) {
         foreach ($value['main'] as $c_row_id => $c_value) {
           $value_internal[$c_row_id] = new \stdClass;
           $value_internal[$c_row_id]->type              = 'main';
-          $value_internal[$c_row_id]->entity_name       = $this->main_entity_name;
+          $value_internal[$c_row_id]->entity_name       = $this->_instance->main_entity_name;
           $value_internal[$c_row_id]->entity_field_name = $c_value->entity_field_name;
           $value_internal[$c_row_id]->title             = $c_value->title ?? null;
           $value_internal[$c_row_id]->weight            = $c_value->weight ?? 0;
           if (!empty($c_value->is_apply_translation)) $value_internal[$c_row_id]->value_settings['is_apply_translation'] = 'is_apply_translation';
-          if (!empty($c_value->is_apply_tokens     )) $value_internal[$c_row_id]->value_settings['is_apply_tokens']      = 'is_apply_tokens';
-          if (!empty($c_value->is_trimmed          )) $value_internal[$c_row_id]->value_settings['is_trimmed']           = 'is_trimmed';
-          if (!empty($c_value->is_not_formatted    )) $value_internal[$c_row_id]->value_settings['is_not_formatted']     = 'is_not_formatted';
-          if (!empty($c_value->is_not_visible      )) $value_internal[$c_row_id]->value_settings['is_not_visible']       = 'is_not_visible';
+          if (!empty($c_value->is_apply_tokens     )) $value_internal[$c_row_id]->value_settings['is_apply_tokens'     ] = 'is_apply_tokens';
+          if (!empty($c_value->is_trimmed          )) $value_internal[$c_row_id]->value_settings['is_trimmed'          ] = 'is_trimmed';
+          if (!empty($c_value->is_not_formatted    )) $value_internal[$c_row_id]->value_settings['is_not_formatted'    ] = 'is_not_formatted';
+          if (!empty($c_value->is_not_visible      )) $value_internal[$c_row_id]->value_settings['is_not_visible'      ] = 'is_not_visible';
         }
       }
       $this->items_set($value_internal, !empty($options['once']));
@@ -76,30 +95,22 @@ namespace effcore {
     $info_markup = new markup('x-info',  [], [
         'title' => new markup('x-title', [], $title_markup),
         'id'    => new markup('x-id',    [], 'row_id: '.$c_row_id) ]);
-  # create widget_settings
+  # insert widget for settings
     $widget_settings = new widget_selection_field_settings($widget, $item, $c_row_id);
     $widget_settings->build();
   # grouping of previous elements in widget 'manage'
     $result->child_insert($info_markup, 'info');
-    $result->child_insert($widget_settings, 'settings');
+    $result->child_insert($widget_settings, 'widget_settings');
     return $result;
   }
 
   static function widget_insert_get($widget) {
     $result = new markup('x-widget', ['data-type' => 'insert']);
   # control with type of new item
-    $disabled_items = [];
-    $entities = entity::get_all();
-    foreach ($entities as $c_entity) {
-      if (!empty($c_entity->managing_is_enabled)) {
-        foreach ($c_entity->fields as $c_field_name => $c_field_info) {
-          if ($widget->main_entity_name !== $c_entity->name) {
-            $disabled_items[$c_entity->name.'|'.$c_field_name] =
-                            $c_entity->name.'|'.$c_field_name; }}}}
     $field_select_entity_field_name = new field_select_entity_field_name('New field');
-    $field_select_entity_field_name->title__not_selected = $widget->title__not_selected__widget_insert;
     $field_select_entity_field_name->cform = $widget->cform;
-    $field_select_entity_field_name->disabled = $disabled_items;
+    $field_select_entity_field_name->title__not_selected = $widget->title__not_selected__widget_insert;
+    $field_select_entity_field_name->disabled = field_select_entity_field_name::generate_disabled_items([$widget->_instance->main_entity_name]);
     $field_select_entity_field_name->build();
     $field_select_entity_field_name->name_set($widget->name_get_complex().'__insert');
     $field_select_entity_field_name->required_set(false);
@@ -113,7 +124,7 @@ namespace effcore {
     $widget->controls['#insert'] = $field_select_entity_field_name;
     $widget->controls['~insert'] = $button_insert;
     $result->child_insert($field_select_entity_field_name, 'field_select_entity_field_name');
-    $result->child_insert($button_insert, 'button_insert');
+    $result->child_insert($button_insert,                  'button_insert');
     return $result;
   }
 
@@ -124,33 +135,35 @@ namespace effcore {
     $result_validation = field_select::on_validate($widget->controls['#insert'], $form, $npath);
     $widget->controls['#insert']->required_set(false);
     if ($result_validation) {
-      $params = explode('|', $widget->controls['#insert']->value_get());
-      if ($params[0] === $widget->main_entity_name) { # main entity
-        $min_weight = 0;
-        $items = $widget->items_get();
-        foreach ($items as $c_row_id => $c_item)
-          $min_weight = min($min_weight, $c_item->weight);
-        $new_item = new \stdClass;
-        $new_item->weight = count($items) ? $min_weight - 5 : 0;
-        $new_item->type              = 'main';
-        $new_item->entity_name       = $params[0];
-        $new_item->entity_field_name = $params[1];
-        $entity = entity::get($new_item->entity_name);
-        if ($entity && isset($entity->fields[$new_item->entity_field_name])) {
-          $new_item->title = $entity->fields[$new_item->entity_field_name]->title;
+      $field_name_info = $widget->controls['#insert']->value_get_parsed();
+      if ($field_name_info !== null) {
+        if ($field_name_info['entity_name'] === $widget->_instance->main_entity_name) {
+          $min_weight = 0;
+          $items = $widget->items_get();
+          foreach ($items as $c_row_id => $c_item)
+            $min_weight = min($min_weight, $c_item->weight);
+          $new_item = new \stdClass;
+          $new_item->weight = count($items) ? $min_weight - 5 : 0;
+          $new_item->type              = 'main';
+          $new_item->entity_name       = $field_name_info['entity_name'];
+          $new_item->entity_field_name = $field_name_info['entity_field_name'];
+          $entity = entity::get($new_item->entity_name);
+          if ($entity && isset($entity->fields[$new_item->entity_field_name])) {
+            $new_item->title = $entity->fields[$new_item->entity_field_name]->title;
+          }
+          if (array_key_exists($field_name_info['entity_field_name'], $items))
+                 $new_row_id = $field_name_info['entity_field_name'].core::number_part_get($field_name_info['entity_field_name'], array_keys($items));
+          else   $new_row_id = $field_name_info['entity_field_name'];
+          $items[$new_row_id] = $new_item;
+          $widget->items_set($items);
+          $widget->controls['#insert']->value_set('');
+          message::insert(new text_multiline([
+            'Item of type "%%_type" was inserted.',
+            'Do not forget to save the changes!'], [
+            'type' => (new text($widget->item_title))->render() ]));
+          return true;
         }
-        if (array_key_exists($params[1], $items))
-               $new_row_id = $params[1].core::number_part_get($params[1], array_keys($items));
-        else   $new_row_id = $params[1];
-        $items[$new_row_id] = $new_item;
       }
-      $widget->items_set($items);
-      $widget->controls['#insert']->value_set('');
-      message::insert(new text_multiline([
-        'Item of type "%%_type" was inserted.',
-        'Do not forget to save the changes!'], [
-        'type' => (new text($widget->item_title))->render() ]));
-      return true;
     }
   }
 

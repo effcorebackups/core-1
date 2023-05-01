@@ -1,0 +1,67 @@
+forms
+- locale_by_language|form
+    attributes
+    - id: locale_by_language
+    - method: post
+    - novalidate: true
+    children
+    - formats|fieldset
+        title: Formats
+        children
+        - date|field_text
+            title: Date
+            description|text
+              text: Possible options can be seen on page: %%_page
+              args
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
+            element_attributes
+            - name: date
+            - minlength: 3
+            - maxlength: 100
+        - time|field_text
+            title: Time
+            description|text
+              text: Possible options can be seen on page: %%_page
+              args
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
+            element_attributes
+            - name: time
+            - minlength: 3
+            - maxlength: 100
+        - datetime|field_text
+            title: Date/Time
+            description|text
+              text: Possible options can be seen on page: %%_page
+              args
+              - page: <a href="https://php.net/manual/datetime.format.php" target="_blank">https://php.net/manual/datetime.format.php</a>
+            element_attributes
+            - name: datetime
+            - minlength: 3
+            - maxlength: 100
+        - thousands_separator|field_text
+            title: Thousands separator
+            element_attributes
+            - name: thousands_separator
+            - size: 1
+            - minlength: null
+            - maxlength: 1
+            - required: null
+        - decimal_point|field_text
+            title: Decimal point
+            element_attributes
+            - name: decimal_point
+            - size: 1
+            - minlength: null
+            - maxlength: 1
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        weight: -500
+    - button_reset|button
+        title: reset
+        break_on_request_value_set: true
+        break_on_validate: true
+        attributes
+        - value: reset
+        weight: -520

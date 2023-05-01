@@ -4,7 +4,7 @@ module|module_embedded
   title: Core
   description: Module for support the operation of the whole system.
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
-  version: 0.904
+  version: 0.905
   dependencies
     php
     - bcmath: 1.0

@@ -12,6 +12,12 @@ namespace effcore {
   public $title_native;
   public $license_path;
 
+  function formats_get() {
+    $settings = module::settings_get('locale');
+    return $settings->formats[$this->code] ??
+                              $this->default_formats;
+  }
+
   ###########################
   ### static declarations ###
   ###########################

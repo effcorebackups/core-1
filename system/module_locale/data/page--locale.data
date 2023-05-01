@@ -2,7 +2,9 @@ pages
 - locale|page
     id: locale
     title: Locale
-    url: /manage/locale
+    url: %^(?<base>/manage/locale)
+>>>>>>>>>(/(?<section>general|by_language
+>>>>>>>>>(/(?<lang_code>[a-z]{2})|))|)$%
     is_https: true
     access
       roles
@@ -15,7 +17,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link
@@ -29,12 +30,35 @@ pages
     - title
       - block__title|block_preset_link
           id: block__title
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - content
-      - block__form__locale|block
-          title: Locale settings form
+    - tabs
+      - block__tabs|block
+          title: Tabs
           title_is_visible: false
           attributes
-          - data-id: block__form__locale
+          - data-id: block__tabs
           type: link
-          source: forms/locale/locale
+          source: tabs/locale/locale
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - content
+      - block__form__locale_general|block
+          title: Locale general settings form
+          title_is_visible: false
+          attributes
+          - data-id: block__form__locale_general
+          display
+            check: page_args
+            where: section
+            match: %^general$%
+          type: link
+          source: forms/locale/locale_general
+      - block__form__locale_by_language|block
+          title: Locale setting form by language
+          title_is_visible: false
+          attributes
+          - data-id: block__form__locale_by_language
+          display
+            check: page_args
+            where: section
+            match: %^by_language/[a-z]{2}$%
+          type: link
+          source: forms/locale/locale_by_language

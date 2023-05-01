@@ -92,10 +92,10 @@ namespace effcore {
     $widget->controls['*fieldset_pictures'] = $fieldset_pictures;
     $widget->controls['*fieldset_video'   ] = $fieldset_video;
     $widget->controls['*fieldset_audio'   ] = $fieldset_audio;
-    $result->child_insert($media_type, 'media_type');
+    $result->child_insert($media_type,        'media_type');
     $result->child_insert($fieldset_pictures, 'pictures');
-    $result->child_insert($fieldset_video, 'video');
-    $result->child_insert($fieldset_audio, 'audio');
+    $result->child_insert($fieldset_video,    'video');
+    $result->child_insert($fieldset_audio,    'audio');
     return $result;
   }
 

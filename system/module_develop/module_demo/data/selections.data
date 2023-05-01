@@ -6,7 +6,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~demo_autoincrement.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -16,11 +16,11 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
 - instance_select-demo_collations|selection
     id: instance_select-demo_collations
     main_entity_name: demo_collations
@@ -28,7 +28,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~demo_collations.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -38,13 +38,13 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - f_nocase
           entity_field_name: f_nocase
-          weight: 380
+          weight: +380
       - f_binary
           entity_field_name: f_binary
-          weight: 360
+          weight: +360
 - instance_select-demo_constraints|selection
     id: instance_select-demo_constraints
     main_entity_name: demo_constraints
@@ -52,7 +52,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - f_primary_!f: ~demo_constraints.f_primary
+      - f_primary_!f: f_primary
       - f_primary_operator: =
       - f_primary_!v|text
           is_apply_translation: false
@@ -62,15 +62,15 @@ selections
     - main
       - f_primary
           entity_field_name: f_primary
-          weight: 400
+          weight: +400
       - f_unique
           entity_field_name: f_unique
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - f_foreign
           entity_field_name: f_foreign
           is_apply_translation: true
-          weight: 360
+          weight: +360
 - instance_select-demo_data|selection
     id: instance_select-demo_data
     main_entity_name: demo_data
@@ -78,7 +78,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~demo_data.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -88,17 +88,28 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - nickname
           entity_field_name: nickname
-          weight: 380
+          weight: +380
       - is_even
           entity_field_name: is_even
           is_apply_translation: true
-          weight: 360
+          weight: +340
       - created
           entity_field_name: created
-          weight: 340
+          weight: +320
+    - join
+      - demo_join
+          type: left outer join
+          entity_name: demo_join
+          entity_field_name: id_data
+          on_entity_name: demo_data
+          on_entity_field_name: id
+          fields
+          - email
+              entity_field_name: email
+              weight: +360
 - instance_select-demo_indexes|selection
     id: instance_select-demo_indexes
     main_entity_name: demo_indexes
@@ -106,7 +117,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~demo_indexes.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -116,15 +127,15 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - f_index_unique
           entity_field_name: f_index_unique
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - f_index
           entity_field_name: f_index
           is_apply_translation: true
-          weight: 360
+          weight: +360
 - instance_select-demo_join|selection
     id: instance_select-demo_join
     main_entity_name: demo_join
@@ -132,7 +143,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_data_!f: ~demo_join.id_data
+      - id_data_!f: id_data
       - id_data_operator: =
       - id_data_!v|text
           is_apply_translation: false
@@ -142,10 +153,10 @@ selections
     - main
       - id_data
           entity_field_name: id_data
-          weight: 400
+          weight: +400
       - email
           entity_field_name: email
-          weight: 380
+          weight: +380
 - instance_select-demo_types|selection
     id: instance_select-demo_types
     main_entity_name: demo_types
@@ -153,7 +164,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~demo_types.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -163,50 +174,51 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - weight
           entity_field_name: weight
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - f_integer
           entity_field_name: f_integer
-          weight: 300
+          weight: +300
       - f_real
           entity_field_name: f_real
-          weight: 280
+          weight: +280
       - f_varchar
           entity_field_name: f_varchar
           is_apply_translation: true
-          weight: 260
+          weight: +260
       - f_date
           entity_field_name: f_date
-          weight: 240
+          weight: +240
       - f_datetime
           entity_field_name: f_datetime
-          weight: 220
+          weight: +220
       - f_time
           entity_field_name: f_time
-          weight: 200
+          weight: +200
       - f_boolean
           entity_field_name: f_boolean
           is_apply_translation: true
-          weight: 180
+          weight: +180
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 160
+          weight: +160
       - access
           entity_field_name: access
-          weight: 140
+          is_apply_translation: true
+          weight: +140
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-demo_autoincrement|selection
     id: instance_select_multiple-demo_autoincrement
@@ -220,11 +232,11 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
 - instance_select_multiple-demo_collations|selection
     id: instance_select_multiple-demo_collations
     main_entity_name: demo_collations
@@ -237,13 +249,13 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - f_nocase
           entity_field_name: f_nocase
-          weight: 380
+          weight: +380
       - f_binary
           entity_field_name: f_binary
-          weight: 360
+          weight: +360
 - instance_select_multiple-demo_constraints|selection
     id: instance_select_multiple-demo_constraints
     main_entity_name: demo_constraints
@@ -256,15 +268,15 @@ selections
     - main
       - f_primary
           entity_field_name: f_primary
-          weight: 400
+          weight: +400
       - f_unique
           entity_field_name: f_unique
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - f_foreign
           entity_field_name: f_foreign
           is_apply_translation: true
-          weight: 360
+          weight: +360
 - instance_select_multiple-demo_data|selection
     id: instance_select_multiple-demo_data
     main_entity_name: demo_data
@@ -277,17 +289,28 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - nickname
           entity_field_name: nickname
-          weight: 380
+          weight: +380
       - is_even
           entity_field_name: is_even
           is_apply_translation: true
-          weight: 360
+          weight: +340
       - created
           entity_field_name: created
-          weight: 340
+          weight: +320
+    - join
+      - demo_join
+          type: left outer join
+          entity_name: demo_join
+          entity_field_name: id_data
+          on_entity_name: demo_data
+          on_entity_field_name: id
+          fields
+          - email
+              entity_field_name: email
+              weight: +360
 - instance_select_multiple-demo_indexes|selection
     id: instance_select_multiple-demo_indexes
     main_entity_name: demo_indexes
@@ -300,15 +323,15 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - f_index_unique
           entity_field_name: f_index_unique
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - f_index
           entity_field_name: f_index
           is_apply_translation: true
-          weight: 360
+          weight: +360
 - instance_select_multiple-demo_join|selection
     id: instance_select_multiple-demo_join
     main_entity_name: demo_join
@@ -321,10 +344,10 @@ selections
     - main
       - id_data
           entity_field_name: id_data
-          weight: 400
+          weight: +400
       - email
           entity_field_name: email
-          weight: 380
+          weight: +380
 - instance_select_multiple-demo_types|selection
     id: instance_select_multiple-demo_types
     main_entity_name: demo_types
@@ -337,15 +360,15 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 360
+          weight: +360
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - demo_selection_field_types|selection
     id: demo_selection_field_types
@@ -354,9 +377,19 @@ selections
     decorator_settings
     - view_type: ul
     query_settings
+    - conditions
+      - conjunction_!and
+        - nicknames
+          - nickname_!f: nickname
+          - nickname_operator: =
+          - nickname_!v: user_001
+        - email
+          - email_!f: ~demo_join.email
+          - email_operator: =
+          - email_!v: user_001@example.com
     - order
-      - title_!f: ~demo_data.id
-      - type: ASC
+      - title_!f: id
+      - title_type: ASC
     - limit: 1
     fields
     - checkboxes
@@ -367,7 +400,7 @@ selections
             - type: checkbox
           settings
           - name: is_checked[]
-          weight: 400
+          weight: +400
     - main
       - type_field
           entity_field_name: id
@@ -375,7 +408,7 @@ selections
             text: Type "%%_type"
             args
             - type: field
-          weight: 380
+          weight: +380
     - join
       - demo_join
           type: left outer join
@@ -390,7 +423,7 @@ selections
                 text: Type "%%_type"
                 args
                 - type: join field
-              weight: 360
+              weight: +360
     - texts
       - type_text_with_translation
           title|text
@@ -400,7 +433,7 @@ selections
           text: text with translation
           is_trimmed: true
           is_apply_translation: true
-          weight: 340
+          weight: +340
       - type_text_with_translation_with_token
           title|text
             text: Type "%%_type"
@@ -410,7 +443,7 @@ selections
           is_trimmed: true
           is_apply_translation: true
           is_apply_tokens: true
-          weight: 320
+          weight: +320
       - type_text_with_token
           title|text
             text: Type "%%_type"
@@ -419,7 +452,7 @@ selections
           text: text with token demo_text = "%%_demo_text"
           is_trimmed: true
           is_apply_tokens: true
-          weight: 300
+          weight: +300
     - markup
       - type_markup
           title|text
@@ -431,7 +464,7 @@ selections
             children
             - data|text
                 text: markup
-          weight: 280
+          weight: +280
     - handlers
       - type_handler
           title|text
@@ -441,49 +474,7 @@ selections
           settings
           - demo_value: value from handler settings
           handler: \effcore\modules\demo\events_selection::demo_handler
-          weight: 260
-- demo_data_join|selection
-    id: demo_data_join
-    main_entity_name: demo_data
-    title: Demonstration of selection of "demo_data" entities with joining with "demo_join" entities
-    pager_is_enabled: true
-    decorator_settings
-    - view_type: table-adaptive
-    query_settings
-    - conditions
-      - id_!f: ~demo_data.id
-      - id_operator: >=
-      - id_!v: 1
-    - order
-      - title_!f: ~demo_data.id
-      - type: ASC
-    - limit: 5
-    fields
-    - main
-      - id
-          entity_field_name: id
-          weight: 400
-      - nickname
-          entity_field_name: nickname
-          weight: 380
-      - created
-          entity_field_name: created
-          weight: 360
-      - is_even
-          entity_field_name: is_even
-          is_apply_translation: true
-          weight: 340
-    - join
-      - demo_join
-          type: left outer join
-          entity_name: demo_join
-          entity_field_name: id_data
-          on_entity_name: demo_data
-          on_entity_field_name: id
-          fields
-          - email
-              entity_field_name: email
-              weight: 320
+          weight: +260
 - demo_data_types|selection
     id: demo_data_types
     main_entity_name: demo_types
@@ -496,33 +487,89 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - f_integer
           entity_field_name: f_integer
-          weight: 360
+          weight: +360
       - f_real
           entity_field_name: f_real
-          weight: 340
+          weight: +340
       - f_varchar
           entity_field_name: f_varchar
-          weight: 320
+          is_apply_translation: true
+          weight: +320
       - f_date
           entity_field_name: f_date
-          weight: 300
+          weight: +300
       - f_datetime
           entity_field_name: f_datetime
-          weight: 280
+          weight: +280
       - f_time
           entity_field_name: f_time
-          weight: 260
+          weight: +260
       - f_boolean
           entity_field_name: f_boolean
           is_apply_translation: true
-          weight: 240
+          weight: +240
       - f_blob
           entity_field_name: f_blob
-          weight: 220
+          weight: +220
+- demo_data_join|selection
+    id: demo_data_join
+    main_entity_name: demo_data
+    title: Demonstration of selection of "demo_data" entities with JOIN
+    pager_is_enabled: true
+    decorator_settings
+    - view_type: table-adaptive
+    query_settings
+    - conditions
+      - conjunction_!and
+        - id
+          - id_!f: id
+          - id_operator: <
+          - id_!v: 150
+        - is_even
+          - is_even_!f: is_even
+          - is_even_in_begin_operator: in (
+          - is_even_!v: 1
+          - id_in_end_operator: )
+        - email
+          - email_!f: ~demo_join.email
+          - email_operator: like
+          - email_!v: user#_1%
+          - email_escape_begin: escape
+          - email_escape_!v: #
+    - order
+      - title_!f: id
+      - title_type: ASC
+    - limit: 5
+    fields
+    - main
+      - id
+          entity_field_name: id
+          weight: +400
+      - nickname
+          entity_field_name: nickname
+          weight: +380
+      - created
+          entity_field_name: created
+          weight: +340
+      - is_even
+          entity_field_name: is_even
+          is_apply_translation: true
+          weight: +320
+    - join
+      - demo_join
+          type: left outer join
+          entity_name: demo_join
+          entity_field_name: id_data
+          on_entity_name: demo_data
+          on_entity_field_name: id
+          fields
+          - email
+              entity_field_name: email
+              weight: +360

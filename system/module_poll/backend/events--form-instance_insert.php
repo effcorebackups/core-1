@@ -20,10 +20,10 @@ namespace effcore\modules\poll {
       $entity = entity::get($form->entity_name);
       if ($entity->name === 'poll') {
         $widget_answers = new widget_texts;
+        $widget_answers->cform = $form;
+        $widget_answers->name_complex = 'widget_answers';
         $widget_answers->title = 'Answers';
         $widget_answers->item_title = 'Answer';
-        $widget_answers->name_complex = 'widget_answers';
-        $widget_answers->cform = $form;
         $widget_answers->weight = -500;
         $form->child_select('fields')->child_insert($widget_answers, 'answers');
       }

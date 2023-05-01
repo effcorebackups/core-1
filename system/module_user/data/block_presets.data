@@ -10,7 +10,6 @@ block_presets
     title: Login form
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__form__login
 - block__form__logout|block_preset
     id: block__form__logout
@@ -23,7 +22,6 @@ block_presets
     title: Logout form
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__form__logout
 - block__form__recovery|block_preset
     id: block__form__recovery
@@ -36,7 +34,6 @@ block_presets
     title: Access recovery form
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__form__recovery
 - block__form__registration|block_preset
     id: block__form__registration
@@ -49,7 +46,6 @@ block_presets
     title: Registration form
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__form__registration
 - block__form__instance_insert__feedback|block_preset
     id: block__form__instance_insert__feedback
@@ -64,7 +60,6 @@ block_presets
     title: Feedback form
     title_is_visible: true
     attributes
-    - data-block: true
     - data-id: block__form__instance_insert__feedback
 - block__form__instance_update__user|block_preset
     id: block__form__instance_update__user
@@ -79,17 +74,4 @@ block_presets
     title: User update form
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__form__instance_update__user
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- block__selection__user|block_preset
-    id: block__selection__user
-    managing_group: Selections
-    managing_title: User information
-    type: link
-    source: selections/user/user
-    title: User information
-    title_is_visible: false
-    attributes
-    - data-block: true
-    - data-id: block__selection__user

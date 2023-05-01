@@ -57,14 +57,9 @@ namespace effcore\modules\user {
         # field 'user' + field 'role'
           $id_user = $items['#id_user']->value_get();
           $id_role = $items['#id_role']->value_get();
-          $result = $entity->instances_select(['conditions' => [
-            'id_user_!f'       => 'id_user',
-            'id_user_operator' => '=',
-            'id_user_!v'       => $id_user,
-            'conjunction'      => 'and',
-            'id_role_!f'       => 'id_role',
-            'id_role_operator' => '=',
-            'id_role_!v'       => $id_role], 'limit' => 1]);
+          $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
+            'id_user' => ['id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user],
+            'id_role' => ['id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role] ]], 'limit' => 1]);
           if ($result) {
             $items['#id_user']->error_set();
             $items['#id_role']->error_set(new text_multiline([
@@ -77,14 +72,9 @@ namespace effcore\modules\user {
         # field 'role' + field 'permission'
           $id_role       = $items['#id_role'      ]->value_get();
           $id_permission = $items['#id_permission']->value_get();
-          $result = $entity->instances_select(['conditions' => [
-            'id_role_!f'             => 'id_role',
-            'id_role_operator'       => '=',
-            'id_role_!v'             => $id_role,
-            'conjunction'            => 'and',
-            'id_permission_!f'       => 'id_permission',
-            'id_permission_operator' => '=',
-            'id_permission_!v'       => $id_permission], 'limit' => 1]);
+          $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
+            'id_role'       => [      'id_role_!f' => 'id_role',             'id_role_operator' => '=',       'id_role_!v' => $id_role      ],
+            'id_permission' => ['id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission] ]], 'limit' => 1]);
           if ($result) {
             $items['#id_role'      ]->error_set();
             $items['#id_permission']->error_set(new text_multiline([

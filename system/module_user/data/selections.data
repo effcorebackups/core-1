@@ -6,7 +6,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~feedback.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -16,22 +16,22 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - name
           entity_field_name: name
-          weight: 380
+          weight: +380
       - email
           entity_field_name: email
-          weight: 360
+          weight: +360
       - message
           entity_field_name: message
-          weight: 340
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
 - instance_select-permission|selection
     id: instance_select-permission
     main_entity_name: permission
@@ -39,7 +39,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~permission.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -49,21 +49,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 320
+          weight: +320
 - instance_select-relation_role_ws_permission|selection
     id: instance_select-relation_role_ws_permission
     main_entity_name: relation_role_ws_permission
@@ -71,35 +71,35 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_role
-        - id_role_!f: ~relation_role_ws_permission.id_role
-        - id_role_operator: =
-        - id_role_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_relation_role_ws_permission_id_role_context
-      - conjunction: and
-      - id_permission
-        - id_permission_!f: ~relation_role_ws_permission.id_permission
-        - id_permission_operator: =
-        - id_permission_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_relation_role_ws_permission_id_permission_context
+      - conjunction_!and
+        - id_role
+          - id_role_!f: id_role
+          - id_role_operator: =
+          - id_role_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_relation_role_ws_permission_id_role_context
+        - id_permission
+          - id_permission_!f: id_permission
+          - id_permission_operator: =
+          - id_permission_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_relation_role_ws_permission_id_permission_context
     fields
     - main
       - id_role
           entity_field_name: id_role
-          weight: 400
+          weight: +400
       - id_permission
           entity_field_name: id_permission
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
 - instance_select-relation_role_ws_user|selection
     id: instance_select-relation_role_ws_user
     main_entity_name: relation_role_ws_user
@@ -107,39 +107,39 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_role
-        - id_role_!f: ~relation_role_ws_user.id_role
-        - id_role_operator: =
-        - id_role_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_relation_role_ws_user_id_role_context
-      - conjunction: and
-      - id_user
-        - id_user_!f: ~relation_role_ws_user.id_user
-        - id_user_operator: =
-        - id_user_!v|text
-            is_apply_translation: false
-            is_apply_tokens: true
-            text: %%_selection_relation_role_ws_user_id_user_context
+      - conjunction_!and
+        - id_role
+          - id_role_!f: id_role
+          - id_role_operator: =
+          - id_role_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_relation_role_ws_user_id_role_context
+        - id_user
+          - id_user_!f: id_user
+          - id_user_operator: =
+          - id_user_!v|text
+              is_apply_translation: false
+              is_apply_tokens: true
+              text: %%_selection_relation_role_ws_user_id_user_context
     fields
     - main
       - id_user
           entity_field_name: id_user
-          weight: 400
+          weight: +360
       - id_role
           entity_field_name: id_role
-          weight: 380
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 280
+          weight: +280
     - join
       - user
           type: left outer join
@@ -150,7 +150,7 @@ selections
           fields
           - nickname
               entity_field_name: nickname
-              weight: 360
+              weight: +400
       - role
           type: left outer join
           entity_name: role
@@ -162,7 +162,7 @@ selections
               entity_field_name: title
               title: Role
               is_apply_translation: true
-              weight: 340
+              weight: +380
 - instance_select-role|selection
     id: instance_select-role
     main_entity_name: role
@@ -170,7 +170,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~role.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -180,24 +180,24 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - weight
           entity_field_name: weight
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 300
+          weight: +300
 - instance_select-user|selection
     id: instance_select-user
     main_entity_name: user
@@ -205,7 +205,7 @@ selections
     - view_type: table-dl
     query_settings
     - conditions
-      - id_!f: ~user.id
+      - id_!f: id
       - id_operator: =
       - id_!v|text
           is_apply_translation: false
@@ -215,35 +215,35 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - nickname
           entity_field_name: nickname
-          weight: 380
+          weight: +380
       - email
           entity_field_name: email
-          weight: 360
+          weight: +360
       - avatar_path
           entity_field_name: avatar_path
-          weight: 340
+          weight: +340
       - timezone
           entity_field_name: timezone
           is_apply_translation: true
-          weight: 320
+          weight: +320
       - created
           entity_field_name: created
-          weight: 300
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: 280
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: 260
+          weight: +260
     - handlers
       - roles
           title: Roles
           handler: \effcore\modules\user\events_page_user::on_show_user_roles
-          weight: 240
+          weight: +240
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-feedback|selection
     id: instance_select_multiple-feedback
@@ -257,19 +257,19 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - name
           entity_field_name: name
-          weight: 380
+          weight: +380
       - email
           entity_field_name: email
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
 - instance_select_multiple-permission|selection
     id: instance_select_multiple-permission
     main_entity_name: permission
@@ -282,15 +282,15 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 360
+          weight: +360
 - instance_select_multiple-relation_role_ws_permission|selection
     id: instance_select_multiple-relation_role_ws_permission
     main_entity_name: relation_role_ws_permission
@@ -303,16 +303,16 @@ selections
     - main
       - id_role
           entity_field_name: id_role
-          weight: 400
+          weight: +400
       - id_permission
           entity_field_name: id_permission
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
 - instance_select_multiple-relation_role_ws_user|selection
     id: instance_select_multiple-relation_role_ws_user
     main_entity_name: relation_role_ws_user
@@ -325,20 +325,22 @@ selections
     - main
       - id_user
           entity_field_name: id_user
-          weight: 400
+          is_not_visible: true
+          weight: +360
       - id_role
           entity_field_name: id_role
-          weight: 380
+          is_not_visible: true
+          weight: +340
       - created
           entity_field_name: created
-          weight: 320
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: 300
+          weight: +300
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 280
+          weight: +280
     - join
       - user
           type: left outer join
@@ -349,7 +351,7 @@ selections
           fields
           - nickname
               entity_field_name: nickname
-              weight: 360
+              weight: +400
       - role
           type: left outer join
           entity_name: role
@@ -361,7 +363,7 @@ selections
               entity_field_name: title
               title: Role
               is_apply_translation: true
-              weight: 340
+              weight: +380
 - instance_select_multiple-role|selection
     id: instance_select_multiple-role
     main_entity_name: role
@@ -374,21 +376,21 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: 380
+          weight: +380
       - created
           entity_field_name: created
-          weight: 360
+          weight: +360
       - updated
           entity_field_name: updated
-          weight: 340
+          weight: +340
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 320
+          weight: +320
 - instance_select_multiple-user|selection
     id: instance_select_multiple-user
     main_entity_name: user
@@ -401,63 +403,20 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: 400
+          weight: +400
       - nickname
           entity_field_name: nickname
-          weight: 380
+          weight: +380
       - email
           entity_field_name: email
-          weight: 360
+          weight: +360
       - created
           entity_field_name: created
-          weight: 340
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: 320
+          weight: +320
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: 300
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- user|selection
-    id: user
-    main_entity_name: user
-    decorator_settings
-    - view_type: table-dl
-    query_settings
-    - conditions
-      - id_!f: ~user.nickname
-      - id_operator: =
-      - id_!v|text
-          is_apply_translation: false
-          is_apply_tokens: true
-          text: %%_nickname_page_context{nickname}
-    fields
-    - main
-      - id
-          entity_field_name: id
-          weight: 400
-      - nickname
-          entity_field_name: nickname
-          weight: 380
-      - avatar_path
-          entity_field_name: avatar_path
-          weight: 360
-      - timezone
-          entity_field_name: timezone
-          weight: 340
-      - created
-          entity_field_name: created
-          weight: 320
-      - updated
-          entity_field_name: updated
-          weight: 300
-      - is_embedded
-          entity_field_name: is_embedded
-          is_apply_translation: true
-          weight: 280
-    - handlers
-      - roles
-          title: Roles
-          handler: \effcore\modules\user\events_page_user::on_show_user_roles
-          weight: 260
+          weight: +300

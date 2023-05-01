@@ -71,8 +71,8 @@ namespace effcore\modules\core {
     $php_post_max_size       = core::php_post_max_size_bytes_get();
     $php_max_input_time      = core::php_max_input_time_get();
     $php_max_execution_time  = core::php_max_execution_time_get();
-    $sticker_for_is_enabled_opcache      = new markup('x-sticker', ['data-style' => $is_enabled_opcache                    ? 'ok' : 'warning'], $is_enabled_opcache     ? 'yes' : 'no');
-    $sticker_for_is_enabled_opcache_jit  = new markup('x-sticker', ['data-style' => $is_enabled_opcache_jit                ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no');
+    $sticker_for_is_enabled_opcache      =                                               new markup('x-sticker', ['data-style' => $is_enabled_opcache     ? 'ok' : 'warning'], $is_enabled_opcache     ? 'yes' : 'no');
+    $sticker_for_is_enabled_opcache_jit  = version_compare(phpversion(), '8.0.0', '>') ? new markup('x-sticker', ['data-style' => $is_enabled_opcache_jit ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no') : '-';
     $sticker_for_php_memory_limit        = new markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x10000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x10000000)]))->render()], locale::format_bytes  ($php_memory_limit)       );
     $sticker_for_php_max_file_uploads    = new markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_pieces (20)]))        ->render()], locale::format_pieces ($php_max_file_uploads)   );
     $sticker_for_php_upload_max_filesize = new markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new text('Recommended minimum value: %%_value', ['value' => locale::format_bytes  (0x40000000)]))->render()], locale::format_bytes  ($php_upload_max_filesize));

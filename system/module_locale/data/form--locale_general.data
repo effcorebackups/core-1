@@ -1,0 +1,27 @@
+forms
+- locale_general|form
+    attributes
+    - id: locale_general
+    - method: post
+    - novalidate: true
+    children
+    - settings|fieldset
+        children
+        - language|field_select_language
+        - timezone_server|field_select_timezone
+            title: Server time zone
+            element_attributes
+            - name: timezone_server
+            - disabled: true
+    - button_save|button
+        title: save
+        attributes
+        - value: save
+        weight: -500
+    - button_reset|button
+        title: reset
+        break_on_request_value_set: true
+        break_on_validate: true
+        attributes
+        - value: reset
+        weight: -520

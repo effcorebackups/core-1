@@ -22,7 +22,7 @@ namespace effcore\modules\demo {
     $selection->fields['main']['type_field_from_code']->entity_field_name = 'id';
   # field 'join' example
     $selection->fields['join']['type_join_from_code'] = new \stdClass;
-    $selection->fields['join']['type_join_from_code']->type = 'left outer join';    
+    $selection->fields['join']['type_join_from_code']->type = 'left outer join';
     $selection->fields['join']['type_join_from_code']->entity_name          = 'demo_join';
     $selection->fields['join']['type_join_from_code']->entity_field_name    = 'id_data';
     $selection->fields['join']['type_join_from_code']->on_entity_name       = 'demo_data';

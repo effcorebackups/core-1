@@ -26,7 +26,7 @@ namespace effcore\modules\test {
     core::array_sort_by_string($tests);
     foreach ($tests as $c_test) {
       tab_item::insert(            $c_test->title,
-        'test_execution_'.         $c_test->id,
+        'test_execution_'         .$c_test->id,
         'test_execution', 'tests', $c_test->id, null, [], [], false, 0, 'develop'
       );
     }

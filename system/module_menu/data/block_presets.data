@@ -10,7 +10,6 @@ block_presets
     title: System menu
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__tree__system
     - data-style: at-left
 - block__breadcrumbs__system|block_preset
@@ -22,7 +21,6 @@ block_presets
     title: System breadcrumbs
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__breadcrumbs__system
 - block__breadcrumbs__user_registered|block_preset
     id: block__breadcrumbs__user_registered
@@ -33,7 +31,6 @@ block_presets
     title: Registered user's breadcrumbs
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__breadcrumbs__user_registered
 - block__breadcrumbs__user_anonymous|block_preset
     id: block__breadcrumbs__user_anonymous
@@ -44,5 +41,4 @@ block_presets
     title: Anonymous user's breadcrumbs
     title_is_visible: false
     attributes
-    - data-block: true
     - data-id: block__breadcrumbs__user_anonymous

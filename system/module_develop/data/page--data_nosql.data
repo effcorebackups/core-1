@@ -2,15 +2,15 @@ pages
 - data_nosql|page
     id: data_nosql
     title: NoSQL data
-    url: %^(?<base>/develop/data_nosql)(/
->>>>>>>>>>>(?<type>events|
+    url: %^(?<base>/develop/data_nosql)
+>>>>>>>>>(/(?<type>events|
 >>>>>>>>>>>>>>>>>>>selections|
 >>>>>>>>>>>>>>>>>>>trees|
 >>>>>>>>>>>>>>>>>>>file_types|
 >>>>>>>>>>>>>>>>>>>templates|
 >>>>>>>>>>>>>>>>>>>tokens|
->>>>>>>>>>>>>>>>>>>translations)(/
->>>>>>>>>>>(?<id>[a-z0-9_]+)|)|)$%
+>>>>>>>>>>>>>>>>>>>translations)
+>>>>>>>>>(/(?<id>[a-z0-9_]+)|)|)$%
     is_https: true
     access
       roles
@@ -21,7 +21,6 @@ pages
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
-          - data-block: true
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
       - block__tree__system|block_preset_link

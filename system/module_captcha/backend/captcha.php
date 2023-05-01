@@ -73,9 +73,9 @@ namespace effcore {
 
   static function cleaning() {
     entity::get('captcha')->instances_delete(['conditions' => [
-      'created_!f' => 'created',
-      'operator'   => '<',
-      'created_!v' => time() - (60 * 5)
+      'created_!f'       => 'created',
+      'created_operator' => '<',
+      'created_!v'       => time() - (60 * 5)
     ]]);
   }
 

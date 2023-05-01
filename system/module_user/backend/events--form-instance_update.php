@@ -61,14 +61,9 @@ namespace effcore\modules\user {
           $id_role_new = $items['#id_role']->value_get        ();
           $id_role_old = $items['#id_role']->value_get_initial();
           if ($id_role_new !== $id_role_old) {
-            $result = $entity->instances_select(['conditions' => [
-              'id_user_!f'       => 'id_user',
-              'id_user_operator' => '=',
-              'id_user_!v'       => $id_user,
-              'conjunction'      => 'and',
-              'id_role_!f'       => 'id_role',
-              'id_role_operator' => '=',
-              'id_role_!v'       => $id_role_new], 'limit' => 1]);
+            $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
+              'id_user' => ['id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user    ],
+              'id_role' => ['id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role_new] ]], 'limit' => 1]);
             if ($result) {
               $items['#id_role']->error_set(new text_multiline([
                 'Field "%%_title" contains an error!',
@@ -83,14 +78,9 @@ namespace effcore\modules\user {
           $id_permission_new = $items['#id_permission']->value_get        ();
           $id_permission_old = $items['#id_permission']->value_get_initial();
           if ($id_permission_new !== $id_permission_old) {
-            $result = $entity->instances_select(['conditions' => [
-              'id_role_!f'             => 'id_role',
-              'id_role_operator'       => '=',
-              'id_role_!v'             => $id_role,
-              'conjunction'            => 'and',
-              'id_permission_!f'       => 'id_permission',
-              'id_permission_operator' => '=',
-              'id_permission_!v'       => $id_permission_new], 'limit' => 1]);
+            $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
+              'id_role'       => [      'id_role_!f' => 'id_role',             'id_role_operator' => '=',       'id_role_!v' => $id_role          ],
+              'id_permission' => ['id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission_new] ]], 'limit' => 1]);
             if ($result) {
               $items['#id_role'      ]->error_set();
               $items['#id_permission']->error_set(new text_multiline([

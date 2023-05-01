@@ -258,8 +258,8 @@ namespace effcore {
     $result = '  CPU LOAD TIME'.nl.nl;
     foreach ($statistics as $c_key => $c_value) {
       $c_percent = $c_value / $total * 100;
-      $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT).                             ' | ';
-      $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-').          ' | ';
+      $result.= '  '.str_pad($c_key, 15, ' ', STR_PAD_LEFT)                           .  ' | ';
+      $result.=      str_pad(str_repeat('#', (int)($c_percent / 10)), 10, '-')        .  ' | ';
       $result.=      str_pad(core::format_number($c_percent, 2), 5, ' ', STR_PAD_LEFT).' % | ';
       $result.=      core::format_msecond($c_value).' sec.'.nl; }
     return nl.$result.nl;
@@ -283,9 +283,9 @@ namespace effcore {
                 $total_by_actions[$c_log->object][$c_log->action]++;
       else      $total_by_actions[$c_log->object][$c_log->action] = 1;
       $result.= '  '.str_pad(core::format_msecond($c_log->time), 8).' | ';
-      $result.=      str_pad($c_log->object, 10).                   ' | ';
-      $result.=      str_pad($c_log->action, 10).                   ' | ';
-      $result.=      str_pad($c_log->value,   5).                   ' | ';
+      $result.=      str_pad($c_log->object, 10)                   .' | ';
+      $result.=      str_pad($c_log->action, 10)                   .' | ';
+      $result.=      str_pad($c_log->value,   5)                   .' | ';
       if (!empty($c_log->info))
            $result.= (new text($c_log->description.'   …   '.static::render_info_text($c_log->info), $c_log->args, false))->render().nl;
       else $result.= (new text($c_log->description,                                                  $c_log->args, false))->render().nl;

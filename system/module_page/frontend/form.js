@@ -22,6 +22,20 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* ───────────────────────────────────────────────────────────────────── */
+  /* operator 'is null' + 'is not null' on Selection edit page             */
+  /* ───────────────────────────────────────────────────────────────────── */
+
+  document.querySelectorAll__notNull('x-widget[data-type="items-query-conditions"] [data-type="manage"] x-widget[data-rowid]').forEach(function(c_row_widget){
+    var c_field_operator = c_row_widget.querySelector__notNull('x-field[data-role="operator"] select')[0];
+    var c_field_value    = c_row_widget.querySelector__notNull('x-field[data-role="value"] input'    )[0];
+    c_field_operator.addEventListener('change', function(){
+      if (this.value === 'is null' ||
+          this.value === 'is not null')
+        c_field_value.value = 'n/a';
+    });
+  });
+
+  /* ───────────────────────────────────────────────────────────────────── */
   /* palette                                                               */
   /* ───────────────────────────────────────────────────────────────────── */
 

@@ -27,6 +27,7 @@ namespace effcore {
     $block = new block;
     $block->_preset = new \stdClass;
     foreach ($this as $c_key => $c_value) {
+      if ($c_key === 'attributes'    ) {$block->attributes             += $this->attributes;     continue;}
       if ($c_key === 'id'            ) {$block->_preset->id             = $this->id;             continue;}
       if ($c_key === 'managing_group') {$block->_preset->managing_group = $this->managing_group; continue;}
       if ($c_key === 'managing_title') {$block->_preset->managing_title = $this->managing_title; continue;}

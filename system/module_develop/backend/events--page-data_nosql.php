@@ -53,7 +53,7 @@ namespace effcore\modules\develop {
       core::array_sort_by_string($trees);
       foreach ($trees as $c_tree) {
         tab_item::insert(                        $c_tree->title,
-           'nosql_trees_'.                       $c_tree->id,
+           'nosql_trees_'                       .$c_tree->id,
            'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id, null, [], [], false, 0, 'develop'
         );
       }
@@ -61,12 +61,13 @@ namespace effcore\modules\develop {
     if ($type === 'translations') {
       $languages = language::get_all();
       core::array_sort_by_string($languages, 'title_en', 'd', false);
-      unset($languages['en']);
       foreach ($languages as $c_language) {
-        tab_item::insert(                                     $c_language->title_en,
-          'nosql_translations_'.                              $c_language->code,
-          'nosql_translations', 'data_nosql', 'translations/'.$c_language->code, null, [], [], false, 0, 'develop'
-        );
+        if ($c_language->code !== 'en') {
+          tab_item::insert(                                     $c_language->title_en,
+            'nosql_translations_'                              .$c_language->code,
+            'nosql_translations', 'data_nosql', 'translations/'.$c_language->code, null, [], [], false, 0, 'develop'
+          );
+        }
       }
     }
   }

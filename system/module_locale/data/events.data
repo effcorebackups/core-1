@@ -5,15 +5,30 @@ events
       handler: \effcore\modules\locale\events_module::on_enable
 # ═════════════════════════════════════════════════════════════════════
   on_form_init
-  - locale|event
-      for: locale
-      handler: \effcore\modules\locale\events_form_locale::on_init
+  - locale_general|event
+      for: locale_general
+      handler: \effcore\modules\locale\events_form_locale_general::on_init
+  - locale_by_language|event
+      for: locale_by_language
+      handler: \effcore\modules\locale\events_form_locale_by_language::on_init
   on_form_submit
-  - locale|event
-      for: locale
-      handler: \effcore\modules\locale\events_form_locale::on_submit
+  - locale_general|event
+      for: locale_general
+      handler: \effcore\modules\locale\events_form_locale_general::on_submit
+  - locale_by_language|event
+      for: locale_by_language
+      handler: \effcore\modules\locale\events_form_locale_by_language::on_submit
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
   - all|event
       weight: +700
       handler: \effcore\modules\locale\events_page::on_page_language_apply
+  - locale|event
+      for: locale
+      weight: +600
+      handler: \effcore\modules\locale\events_page::on_redirect
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  on_tab_build_before
+  - locale|event
+      for: locale
+      handler: \effcore\modules\locale\events_page::on_tab_build_before

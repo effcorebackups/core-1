@@ -1,44 +1,7 @@
 form_parts
-- form_instance_update__selection_query_settings|fieldset
-    title: Query settings
-    weight: +300
-    children
-    - conditions|fieldset
-        title: Conditions
-        children
-        - data|field_textarea_data
-            title: null
-            element_attributes
-            - name: conditions_data
-            - required: null
-            - minlength: null
-            - maxlength: 10000
-            - rows: 10
-            - value: conditions
-            - disabled: true
-    - sequence|fieldset
-        title: Sequence
-        children
-        - data|field_textarea_data
-            title: null
-            element_attributes
-            - name: order_data
-            - required: null
-            - minlength: null
-            - maxlength: 10000
-            - rows: 5
-            - value: order
-            - disabled: true
-    - limit|field_number
-        title: Limit
-        element_attributes
-        - name: limit
-        - value: 50
-        - min: 1
-        - max: 10000
 - form_instance_update__selection_pager_settings|fieldset
     title: Pager settings
-    weight: +260
+    weight: +290
     children
     - is_enabled|field_switcher
         title: Is enabled

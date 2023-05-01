@@ -32,10 +32,9 @@ namespace effcore\modules\menu {
       $trees = tree::select_all('sql');
       core::array_sort_by_string($trees);
       foreach ($trees as $c_tree) {
-        $c_tree_item_title = (new text_multiline([
-          'title' => $c_tree->title, 'id' => '('.$c_tree->id.')'], [], ' '))->render();
+        $c_tree_item_title = (new text_multiline(['title' => $c_tree->title, 'id' => '('.$c_tree->id.')'], [], ' '))->render();
         tab_item::insert(                                    $c_tree_item_title,
-          'data_menu_tree_item_'.                            $c_tree->id,
+          'data_menu_tree_item_'                            .$c_tree->id,
           'data_menu_tree_item', 'data', 'menu/tree_item///'.$c_tree->id, null, [], [], false, 0, 'menu'
         );
       }

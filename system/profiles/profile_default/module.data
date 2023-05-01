@@ -5,7 +5,7 @@ module|module_as_profile
   description: Module for profile "Default".
   copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
   enabled: yes
-  version: 0.904
+  version: 0.905
   dependencies
     system
-    - core: 0.904
+    - core: 0.905

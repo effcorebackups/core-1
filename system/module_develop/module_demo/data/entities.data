@@ -77,6 +77,7 @@ entities
     - access
         title: Read access
         type: blob
+        default: null
         converter_on_select: unserialize
         converter_on_insert: \effcore\core::data_serialize
         converter_on_update: \effcore\core::data_serialize
@@ -200,6 +201,7 @@ entities
     - f_blob
         title: Field blob
         type: blob
+        default: null
         converter_on_insert: \effcore\core::return_null_if_empty
         converter_on_update: \effcore\core::return_null_if_empty
         managing_is_enabled_on_insert: true

@@ -16,7 +16,7 @@ namespace effcore {
   public $title_attributes = ['data-widget-title' => true];
   public $content_tag_name = 'x-widget-content';
   public $content_attributes = ['data-widget-content' => true, 'data-nested-content' => true];
-  public $state = 'opened'; # '' | opened | closed[checked]
+  public $state = ''; # '' | opened | closed[checked]
   public $name_complex = 'widget_items';
   public $controls = [];
   public $number;
@@ -155,9 +155,10 @@ namespace effcore {
       'data-rearrangeable' => true], [], $item->weight);
   # control for weight
     $field_weight = new field_weight(null, null, [], +400);
+    $field_weight->cform = $widget->cform;
+    $field_weight->attributes['data-role'] = 'weight';
     $field_weight->attributes['data-style'] = 'inline';
     $field_weight->description_state = 'hidden';
-    $field_weight->cform = $widget->cform;
     $field_weight->build();
     $field_weight->name_set($widget->name_get_complex().'__weight__'.$c_row_id);
     $field_weight->required_set(false);
@@ -172,7 +173,7 @@ namespace effcore {
   # relate new controls with the widget
     $widget->controls['#weight__'.$c_row_id] = $field_weight;
     $widget->controls['~delete__'.$c_row_id] = $button_delete;
-    $result->child_insert($field_weight, 'field_weight');
+    $result->child_insert($field_weight,  'field_weight');
     $result->child_insert($button_delete, 'button_delete');
     return $result;
   }

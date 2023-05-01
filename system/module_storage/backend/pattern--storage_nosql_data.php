@@ -60,7 +60,7 @@ namespace effcore {
   function changes_delete($module_id, $action, $dpath, $rebuild = true) {
   # delete old dynamic changes
     $changes_d = data::select('changes') ?: [];
-    if (isset($changes_d[$module_id]->{$action}[$dpath]))                                            unset($changes_d[$module_id]->{$action}[$dpath]);    
+    if (isset($changes_d[$module_id]->{$action}[$dpath]))                                            unset($changes_d[$module_id]->{$action}[$dpath]);
     if (isset($changes_d[$module_id]->{$action}) && (array)$changes_d[$module_id]->{$action} === []) unset($changes_d[$module_id]->{$action}        );
     if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            === []) unset($changes_d[$module_id]                   );
     $result = data::update('changes', $changes_d, '', ['build_date' => core::datetime_get()]);

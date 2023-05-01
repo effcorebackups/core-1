@@ -7,7 +7,7 @@
 namespace effcore {
           class widget_texts extends widget_items {
 
-  public $attributes = ['data-type' => 'items'];
+  public $attributes = ['data-type' => 'items-texts'];
   public $name_complex = 'widget_texts';
 
   ###########################
@@ -18,9 +18,10 @@ namespace effcore {
     $result = parent::widget_manage_get($widget, $item, $c_row_id);
   # control for text
     $field_text = new field_text;
+    $field_text->cform = $widget->cform;
+    $field_text->attributes['data-role'] = 'question';
     $field_text->attributes['data-style'] = 'inline';
     $field_text->description_state = 'hidden';
-    $field_text->cform = $widget->cform;
     $field_text->build();
     $field_text->name_set($widget->name_get_complex().'__text__'.$c_row_id);
     $field_text->value_set($item->text ?? '');
@@ -54,7 +55,7 @@ namespace effcore {
     $items = $widget->items_get();
     foreach ($items as $c_row_id => $c_item) {
       $c_item->weight = (int)$widget->controls['#weight__'.$c_row_id]->value_get();
-      $c_item->text   =      $widget->controls['#text__'.  $c_row_id]->value_get(); }
+      $c_item->text   =      $widget->controls['#text__'  .$c_row_id]->value_get(); }
     $widget->items_set($items);
   }
 

@@ -32,10 +32,10 @@ namespace effcore {
           }
         }
         break;
-      case 'string'           : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                      $data.                      ':string',            $data, $c_results); break;
-      case 'integer'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,  core::format_number($data).                     ':integer',           $data, $c_results); break;
+      case 'string'           : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                      $data                      .':string',            $data, $c_results); break;
+      case 'integer'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,  core::format_number($data)                     .':integer',           $data, $c_results); break;
       case 'double'           : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,  core::format_number($data, core::fpart_max_len).':double',            $data, $c_results); break;
-      case 'boolean'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                     ($data ? 'true' : 'false').  ':boolean',           $data, $c_results); break;
+      case 'boolean'          : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                     ($data ? 'true' : 'false')  .':boolean',           $data, $c_results); break;
       case 'resource'         : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                  ':resource',          $data, $c_results); break;
       case 'resource (closed)': foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                  ':resource (closed)', $data, $c_results); break;
       case 'NULL'             : foreach ($this->scenario as $c_dpath_scenario => $c_step) $c_step->run($this, $c_dpath_scenario,                                                   'null',              $data, $c_results); break;

@@ -33,8 +33,8 @@ namespace effcore\modules\page {
                 $c_area->build();
                 if ($c_area->id) {
                   $c_widget_blocks = new widget_blocks($c_area->id);
-                  $c_widget_blocks->name_complex = 'widget_blocks__'.$c_area->id;
                   $c_widget_blocks->cform = $form;
+                  $c_widget_blocks->name_complex = 'widget_blocks__'.$c_area->id;
                   $c_widget_blocks->build();
                   $c_widget_blocks->value_set($form->_instance->blocks[$c_area->id] ?? null, ['once' => true]);
                   $c_area->child_insert($c_widget_blocks, 'widget_blocks');

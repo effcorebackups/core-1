@@ -8,7 +8,7 @@ module|module
   urls
   - settings page: /manage/security/settings_captcha
   enabled: yes
-  version: 0.904
+  version: 0.905
   dependencies
     system
-    - core: 0.904
+    - core: 0.905

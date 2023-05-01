@@ -15,7 +15,10 @@ namespace effcore {
         'id_user_!f'       => 'id_user',
         'id_user_operator' => '=',
         'id_user_!v'       => $id_user],
-      'order' => ['expired_!f' => 'expired', 'DESC']], 'id'
+      'order' => [
+        'expired_!f'   => 'expired',
+        'expired_type' => 'DESC'
+      ]], 'id'
     );
   }
 
@@ -73,9 +76,9 @@ namespace effcore {
 
   static function cleaning() {
     entity::get('session')->instances_delete(['conditions' => [
-      'expired_!f' => 'expired',
-      'operator'   => '<',
-      'expired_!v' => core::datetime_get()
+      'expired_!f'       => 'expired',
+      'expired_operator' => '<',
+      'expired_!v'       => core::datetime_get()
     ]]);
   }
 
