@@ -1,17 +1,15 @@
 <?php
 
-# PSR-1 style.
+# PSR Style.
 
 class Vendor_Model_DemoClassPsr
 {
 
-    public $PublicAttribute1;
+    public $PublicAttribute;
 
-    public function mainMethod($arg1, &$arg2, $arg3 = [])
+    public function mainMethod(int $arg1, bool &$arg2, ?array $arg3 = [], ... $otherArgs) : ?array
     {
-        # method body
+        return null;
     }
-
-    public $PublicAttribute2;
 
 }

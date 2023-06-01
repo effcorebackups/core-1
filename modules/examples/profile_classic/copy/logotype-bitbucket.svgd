@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="80"
+    height="80"
+    viewBox="0 0 76 76"
+    style="shape-rendering: auto">
+
+    <defs>
+        <linearGradient id="gradient" x1="64.01" y1="30.27" x2="32.99" y2="54.48" gradientUnits="userSpaceOnUse">
+            <stop offset="0.18" style="stop-color: %%_color__main; stop-opacity: .6"/>
+            <stop offset="1"    stop-color="%%_color__main"/>
+        </linearGradient>
+    </defs>
+
+    <g id="logo_bitbucket" transform="matrix(1, 0, 0, 1, 0, 3.559)">
+        <path style="fill: %%_color__main"  d="M 73.532 0.272 C 75.046 0.253 76.21 1.604 75.968 3.098 L 69.726 41.42 L 72.68 23.23 L 25.862 23.23 L 30.149 45.628 L 30.774 46.708 L 13.586 68.622 C 11.978 68.609 10.612 67.443 10.346 65.858 L 0.006 3.086 C -0.237 1.592 0.928 0.241 2.442 0.26 Z M 63.204 68.622 L 63.231 68.622 L 63.192 68.622 Z"/>
+        <path style="fill: url(#gradient)" d="M 72.68 23.23 L 49.819 23.23 L 45.983 45.628 L 30.149 45.628 L 11.454 67.819 C 12.047 68.331 12.802 68.616 13.586 68.622 L 63.204 68.622 C 64.411 68.638 65.447 67.768 65.64 66.576 Z"/>
+    </g>
+
+</svg>

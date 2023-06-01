@@ -1,0 +1,2521 @@
+instances
+# ─────────────────────────────────────────────────────────────────────
+# updates
+# ─────────────────────────────────────────────────────────────────────
+- profile_classic_update_1000|instance
+    entity_name: update
+    values
+    - module_id: profile_classic
+    - last_number: 1000
+# ─────────────────────────────────────────────────────────────────────
+# logotypes
+# ─────────────────────────────────────────────────────────────────────
+- logotype|instance
+    entity_name: picture
+    values
+    - id: logotype
+    - description: Logotype main
+    - path: dynamic/files/pictures/picture-logotype.svg
+    - url: /
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype main
+          is_apply_translation: false
+- logotype_ru|instance
+    entity_name: picture
+    values
+    - id: logotype_ru
+    - description: Логотип основной
+    - path: dynamic/files/pictures/picture-logotype-ru.svg
+    - url: /ru
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Логотип основной
+          is_apply_translation: false
+- logotype_behance|instance
+    entity_name: picture
+    values
+    - id: logotype_behance
+    - description: Logotype Behance
+    - path: dynamic/files/pictures/picture-logotype_behance.svgd
+    - url: https://behance.net
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Behance
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_bitbucket|instance
+    entity_name: picture
+    values
+    - id: logotype_bitbucket
+    - description: Logotype Bitbucket
+    - path: dynamic/files/pictures/picture-logotype_bitbucket.svgd
+    - url: https://bitbucket.org
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Bitbucket
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_blogger|instance
+    entity_name: picture
+    values
+    - id: logotype_blogger
+    - description: Logotype Blogger
+    - path: dynamic/files/pictures/picture-logotype_blogger.svgd
+    - url: https://blogger.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Blogger
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_facebook|instance
+    entity_name: picture
+    values
+    - id: logotype_facebook
+    - description: Logotype Facebook
+    - path: dynamic/files/pictures/picture-logotype_facebook.svgd
+    - url: https://facebook.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Facebook
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_flickr|instance
+    entity_name: picture
+    values
+    - id: logotype_flickr
+    - description: Logotype Flickr
+    - path: dynamic/files/pictures/picture-logotype_flickr.svgd
+    - url: https://flickr.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Flickr
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_github|instance
+    entity_name: picture
+    values
+    - id: logotype_github
+    - description: Logotype Github
+    - path: dynamic/files/pictures/picture-logotype_github.svgd
+    - url: https://github.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Github
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_gitlab|instance
+    entity_name: picture
+    values
+    - id: logotype_gitlab
+    - description: Logotype Gitlab
+    - path: dynamic/files/pictures/picture-logotype_gitlab.svgd
+    - url: https://gitlab.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Gitlab
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_instagram|instance
+    entity_name: picture
+    values
+    - id: logotype_instagram
+    - description: Logotype Instagram
+    - path: dynamic/files/pictures/picture-logotype_instagram.svgd
+    - url: https://instagram.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Instagram
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_line|instance
+    entity_name: picture
+    values
+    - id: logotype_line
+    - description: Logotype Line
+    - path: dynamic/files/pictures/picture-logotype_line.svgd
+    - url: https://line.me
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Line
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_linkedin|instance
+    entity_name: picture
+    values
+    - id: logotype_linkedin
+    - description: Logotype Linkedin
+    - path: dynamic/files/pictures/picture-logotype_linkedin.svgd
+    - url: https://linkedin.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Linkedin
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_livejournal|instance
+    entity_name: picture
+    values
+    - id: logotype_livejournal
+    - description: Logotype Livejournal
+    - path: dynamic/files/pictures/picture-logotype_livejournal.svgd
+    - url: https://livejournal.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Livejournal
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_messenger|instance
+    entity_name: picture
+    values
+    - id: logotype_messenger
+    - description: Logotype Messenger
+    - path: dynamic/files/pictures/picture-logotype_messenger.svgd
+    - url: https://messenger.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Messenger
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_ok|instance
+    entity_name: picture
+    values
+    - id: logotype_ok
+    - description: Logotype OK
+    - path: dynamic/files/pictures/picture-logotype_ok.svgd
+    - url: https://ok.ru
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype OK
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_pinterest|instance
+    entity_name: picture
+    values
+    - id: logotype_pinterest
+    - description: Logotype Pinterest
+    - path: dynamic/files/pictures/picture-logotype_pinterest.svgd
+    - url: https://pinterest.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Pinterest
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_reddit|instance
+    entity_name: picture
+    values
+    - id: logotype_reddit
+    - description: Logotype Reddit
+    - path: dynamic/files/pictures/picture-logotype_reddit.svgd
+    - url: https://reddit.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Reddit
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_skype|instance
+    entity_name: picture
+    values
+    - id: logotype_skype
+    - description: Logotype Skype
+    - path: dynamic/files/pictures/picture-logotype_skype.svgd
+    - url: https://skype.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Skype
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_snapchat|instance
+    entity_name: picture
+    values
+    - id: logotype_snapchat
+    - description: Logotype Snapchat
+    - path: dynamic/files/pictures/picture-logotype_snapchat.svgd
+    - url: https://snapchat.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Snapchat
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_soundcloud|instance
+    entity_name: picture
+    values
+    - id: logotype_soundcloud
+    - description: Logotype Soundcloud
+    - path: dynamic/files/pictures/picture-logotype_soundcloud.svgd
+    - url: https://soundcloud.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Soundcloud
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_telegram|instance
+    entity_name: picture
+    values
+    - id: logotype_telegram
+    - description: Logotype Telegram
+    - path: dynamic/files/pictures/picture-logotype_telegram.svgd
+    - url: https://telegram.org
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Telegram
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_tiktok|instance
+    entity_name: picture
+    values
+    - id: logotype_tiktok
+    - description: Logotype Tiktok
+    - path: dynamic/files/pictures/picture-logotype_tiktok.svgd
+    - url: https://tiktok.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Tiktok
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_tumblr|instance
+    entity_name: picture
+    values
+    - id: logotype_tumblr
+    - description: Logotype Tumblr
+    - path: dynamic/files/pictures/picture-logotype_tumblr.svgd
+    - url: https://tumblr.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Tumblr
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_twitter|instance
+    entity_name: picture
+    values
+    - id: logotype_twitter
+    - description: Logotype Twitter
+    - path: dynamic/files/pictures/picture-logotype_twitter.svgd
+    - url: https://twitter.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Twitter
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_viber|instance
+    entity_name: picture
+    values
+    - id: logotype_viber
+    - description: Logotype Viber
+    - path: dynamic/files/pictures/picture-logotype_viber.svgd
+    - url: https://viber.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Viber
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_vimeo|instance
+    entity_name: picture
+    values
+    - id: logotype_vimeo
+    - description: Logotype Vimeo
+    - path: dynamic/files/pictures/picture-logotype_vimeo.svgd
+    - url: https://vimeo.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Vimeo
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_vk|instance
+    entity_name: picture
+    values
+    - id: logotype_vk
+    - description: Logotype VK
+    - path: dynamic/files/pictures/picture-logotype_vk.svgd
+    - url: https://vk.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype VK
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_wechat|instance
+    entity_name: picture
+    values
+    - id: logotype_wechat
+    - description: Logotype Wechat
+    - path: dynamic/files/pictures/picture-logotype_wechat.svgd
+    - url: https://wechat.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Wechat
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_whatsapp|instance
+    entity_name: picture
+    values
+    - id: logotype_whatsapp
+    - description: Logotype Whatsapp
+    - path: dynamic/files/pictures/picture-logotype_whatsapp.svgd
+    - url: https://whatsapp.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Whatsapp
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_yahoo|instance
+    entity_name: picture
+    values
+    - id: logotype_yahoo
+    - description: Logotype Yahoo
+    - path: dynamic/files/pictures/picture-logotype_yahoo.svgd
+    - url: https://yahoo.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Yahoo
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+- logotype_youtube|instance
+    entity_name: picture
+    values
+    - id: logotype_youtube
+    - description: Logotype Youtube
+    - path: dynamic/files/pictures/picture-logotype_youtube.svgd
+    - url: https://youtube.com
+    - attributes
+      - 0
+          weight: +0
+          name: alt
+          value: Logotype Youtube
+          is_apply_translation: true
+    - link_attributes
+      - 0
+          weight: +0
+          name: target
+          value: _blank
+# ─────────────────────────────────────────────────────────────────────
+# pages
+# ─────────────────────────────────────────────────────────────────────
+- page_about|instance
+    entity_name: page
+    values
+    - id: about
+    - id_layout: original_classic
+    - title: About Us
+    - url: /about
+    - lang_code: en
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__text_sql__about|block_preset_link
+            id: block__text_sql__about
+            title: The main text of the page
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_contact|instance
+    entity_name: page
+    values
+    - id: contact
+    - id_layout: original_classic
+    - title: Contact Us
+    - url: /contact
+    - lang_code: en
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__text_sql__contact|block_preset_link
+            id: block__text_sql__contact
+            title: The main text of the page
+        - block__form__instance_insert__feedback|block_preset_link
+            id: block__form__instance_insert__feedback
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_front|instance
+    entity_name: page
+    values
+    - id: front
+    - id_layout: original_classic
+    - title: Front
+    - url: /
+    - lang_code: en
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__text_sql__front|block_preset_link
+            id: block__text_sql__front
+            title: The main text of the page
+      - footer
+        - block__selection_sql__social_networks|block_preset_link
+            id: block__selection_sql__social_networks
+            title: Social networks
+            title_is_visible: false
+            attributes
+            - data-id: block__selection_sql__social_networks
+            - data-style: at-right
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_gallery|instance
+    entity_name: page
+    values
+    - id: gallery
+    - id_layout: original_classic
+    - title: Gallery
+    - url: /gallery
+    - lang_code: en
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__gallery_sql__main|block_preset_link
+            id: block__gallery_sql__main
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_login|instance
+    entity_name: page
+    values
+    - id: login
+    - id_layout: original_classic
+    - title: Login
+    - url: /login
+    - lang_code: en
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__login|block_preset_link
+            id: block__form__login
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_logout|instance
+    entity_name: page
+    values
+    - id: logout
+    - id_layout: original_classic
+    - title: Logout
+    - url: /logout
+    - lang_code: en
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__logout|block_preset_link
+            id: block__form__logout
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_recovery|instance
+    entity_name: page
+    values
+    - id: recovery
+    - id_layout: original_classic
+    - title: Access recovery
+    - url: /recovery
+    - lang_code: en
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__recovery|block_preset_link
+            id: block__form__recovery
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_registration|instance
+    entity_name: page
+    values
+    - id: registration
+    - id_layout: original_classic
+    - title: New User Registration
+    - url: /registration
+    - lang_code: en
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous|block_preset_link
+            id: block__tree_sql__user_anonymous
+            title: Anonymous user's menu
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__registration|block_preset_link
+            id: block__form__registration
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_user|instance
+    entity_name: page
+    values
+    - id: user
+    - id_layout: original_classic
+    - title: User %%_nickname_page_context(nickname)
+    - url: /user/%%_nickname
+    - lang_code: en
+    - is_https: 1
+    - is_embedded: 1
+    - origin: hybrid
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__selection_sql__user|block_preset_link
+            id: block__selection_sql__user
+            title: User information
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_user_edit|instance
+    entity_name: page
+    values
+    - id: user_edit
+    - id_layout: original_classic
+    - title: Edit user %%_nickname_page_context(nickname)
+    - url: /user/%%_nickname/edit
+    - lang_code: en
+    - is_https: 1
+    - is_embedded: 1
+    - origin: hybrid
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+        - block__tree_sql__user_registered|block_preset_link
+            id: block__tree_sql__user_registered
+            title: Registered user's menu
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Language selection menu
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+      - header
+        - block__picture_sql__logotype|block_preset_link
+            id: block__picture_sql__logotype
+            title: Logotype
+      - menu
+        - block__tree_sql__main|block_preset_link
+            id: block__tree_sql__main
+            title: Main menu
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+      - title
+        - block__title|block_preset_link
+            id: block__title
+      - content
+        - block__form__instance_update__user|block_preset_link
+            id: block__form__instance_update__user
+      - footer
+        - block__text_sql__copyright|block_preset_link
+            id: block__text_sql__copyright
+            title: Copyright
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- page_about_ru|instance
+    entity_name: page
+    values
+    - id: about_ru
+    - id_layout: original_classic
+    - title: О нас
+    - url: /ru/about
+    - lang_code: ru
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__text_sql__about_ru|block_preset_link
+            id: block__text_sql__about_ru
+            title: Основной текст страницы
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_contact_ru|instance
+    entity_name: page
+    values
+    - id: contact_ru
+    - id_layout: original_classic
+    - title: Связь
+    - url: /ru/contact
+    - lang_code: ru
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__text_sql__contact_ru|block_preset_link
+            id: block__text_sql__contact_ru
+            title: Основной текст страницы
+        - block__form__instance_insert__feedback|block_preset_link
+            id: block__form__instance_insert__feedback
+            title: Форма обратной связи
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_front_ru|instance
+    entity_name: page
+    values
+    - id: front_ru
+    - id_layout: original_classic
+    - title: Главная
+    - url: /ru
+    - lang_code: ru
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__text_sql__front_ru|block_preset_link
+            id: block__text_sql__front_ru
+            title: Основной текст страницы
+      - footer
+        - block__selection_sql__social_networks|block_preset_link
+            id: block__selection_sql__social_networks
+            title: Социальные сети
+            title_is_visible: false
+            attributes
+            - data-id: block__selection__social_networks
+            - data-style: at-right
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_gallery_ru|instance
+    entity_name: page
+    values
+    - id: gallery_ru
+    - id_layout: original_classic
+    - title: Галерея
+    - url: /ru/gallery
+    - lang_code: ru
+    - is_https: 0
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__gallery_sql__main|block_preset_link
+            id: block__gallery_sql__main
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_login_ru|instance
+    entity_name: page
+    values
+    - id: login_ru
+    - id_layout: original_classic
+    - title: Вход
+    - url: /ru/login
+    - lang_code: ru
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+            title: Хлебные крошки анонимного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__form__login|block_preset_link
+            id: block__form__login
+            title: Форма входа
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_logout_ru|instance
+    entity_name: page
+    values
+    - id: logout_ru
+    - id_layout: original_classic
+    - title: Выход
+    - url: /ru/logout
+    - lang_code: ru
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+            title: Хлебные крошки зарегистрированного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__form__logout|block_preset_link
+            id: block__form__logout
+            title: Форма выхода
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_recovery_ru|instance
+    entity_name: page
+    values
+    - id: recovery_ru
+    - id_layout: original_classic
+    - title: Восстановление доступа
+    - url: /ru/recovery
+    - lang_code: ru
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+            title: Хлебные крошки анонимного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__form__recovery|block_preset_link
+            id: block__form__recovery
+            title: Форма восстановления доступа
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_registration_ru|instance
+    entity_name: page
+    values
+    - id: registration_ru
+    - id_layout: original_classic
+    - title: Регистрация нового пользователя
+    - url: /ru/registration
+    - lang_code: ru
+    - is_https: 1
+    - meta: <meta name="description" content="">
+////////////<meta name="keywords" content="">
+    - access
+        roles
+        - =: anonymous
+    - blocks
+      - system
+        - block__tree_sql__user_anonymous_ru|block_preset_link
+            id: block__tree_sql__user_anonymous_ru
+            title: Меню анонимного пользователя
+            attributes
+            - data-id: block__tree_sql__user_anonymous
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_anonymous|block_preset_link
+            id: block__breadcrumbs__user_anonymous
+            title: Хлебные крошки анонимного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__form__registration|block_preset_link
+            id: block__form__registration
+            title: Форма регистрации
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_user_ru|instance
+    entity_name: page
+    values
+    - id: user_ru
+    - id_layout: original_classic
+    - title: Пользователь %%_nickname_page_context(nickname)
+    - url: /ru/user/%%_nickname
+    - lang_code: ru
+    - is_https: 1
+    - is_embedded: 1
+    - origin: hybrid
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+            title: Хлебные крошки зарегистрированного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__selection_sql__user|block_preset_link
+            id: block__selection_sql__user
+            title: Информация о пользователе
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+- page_user_edit_ru|instance
+    entity_name: page
+    values
+    - id: user_edit_ru
+    - id_layout: original_classic
+    - title: Редактировать пользователя %%_nickname_page_context(nickname)
+    - url: /ru/user/%%_nickname/edit
+    - lang_code: ru
+    - is_https: 1
+    - is_embedded: 1
+    - origin: hybrid
+    - access
+        roles
+        - =: admins
+        - =: registered
+    - blocks
+      - system
+        - block__page_actions|block_preset_link
+            id: block__page_actions
+            title: Действия страницы
+        - block__tree_sql__user_registered_ru|block_preset_link
+            id: block__tree_sql__user_registered_ru
+            title: Меню зарегистрированного пользователя
+            attributes
+            - data-id: block__tree_sql__user_registered
+            - data-style: at-right
+        - block__tree_sql__languages|block_preset_link
+            id: block__tree_sql__languages
+            title: Меню выбора языка
+            attributes
+            - data-id: block__tree_sql__languages
+            - data-style: at-right
+        - block__tree__system|block_preset_link
+            id: block__tree__system
+            title: Системное меню
+      - header
+        - block__picture_sql__logotype_ru|block_preset_link
+            id: block__picture_sql__logotype_ru
+            title: Логотип
+      - menu
+        - block__tree_sql__main_ru|block_preset_link
+            id: block__tree_sql__main_ru
+            title: Меню главное
+      - breadcrumbs
+        - block__breadcrumbs__user_registered|block_preset_link
+            id: block__breadcrumbs__user_registered
+            title: Хлебные крошки зарегистрированного пользователя
+      - messages
+        - block__messages|block_preset_link
+            id: block__messages
+            title: Сообщения
+      - title
+        - block__title|block_preset_link
+            id: block__title
+            title: Заголовок страницы
+      - content
+        - block__form__instance_update__user|block_preset_link
+            id: block__form__instance_update__user
+            title: Форма обновления пользователя
+      - footer
+        - block__text_sql__copyright_ru|block_preset_link
+            id: block__text_sql__copyright_ru
+            title: Авторские права
+            attributes
+            - data-id: block__text_sql__copyright
+            - data-style: at-left
+# ─────────────────────────────────────────────────────────────────────
+# texts
+# ─────────────────────────────────────────────────────────────────────
+- text_about|instance
+    entity_name: text
+    values
+    - id: about
+    - description: Text About Us
+    - text: Here you can describe your story in detail,
+>>>>>>>>>>> tell about your achievements.
+- text_copyright|instance
+    entity_name: text
+    values
+    - id: copyright
+    - description: Text Copyright
+    - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
+- text_contact|instance
+    entity_name: text
+    values
+    - id: contact
+    - description: Text Contact Us
+    - text: Here you can place: names of contact persons, addresses of branches,
+>>>>>>>>>>> e-mail addresses, phone numbers, location map.
+- text_front|instance
+    entity_name: text
+    values
+    - id: front
+    - description: Text Front
+    - text: Here you can place the most important information about your project,
+>>>>>>>>>>> including special offers.
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- text_about_ru|instance
+    entity_name: text
+    values
+    - id: about_ru
+    - description: Текст О нас
+    - text: Здесь Вы можете подробно описать
+>>>>>>>>>>> свою историю, рассказать о своих достижениях.
+- text_copyright_ru|instance
+    entity_name: text
+    values
+    - id: copyright_ru
+    - description: Текст Авторских прав
+    - text: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
+- text_contact_ru|instance
+    entity_name: text
+    values
+    - id: contact_ru
+    - description: Текст Связь
+    - text: Здесь Вы можете разместить: имена контактных лиц, адреса филиалов,
+>>>>>>>>>>> адреса электронной почты, номера телефонов,
+>>>>>>>>>>> схему проезда, форму обратной связи.
+- text_front_ru|instance
+    entity_name: text
+    values
+    - id: front_ru
+    - description: Текст Главной
+    - text: Здесь Вы можете разместить самую важную
+>>>>>>>>>>> информацию о своём проекте, в том числе специальные предложения.
+# ─────────────────────────────────────────────────────────────────────
+# trees
+# ─────────────────────────────────────────────────────────────────────
+- tree_user_anonymous|instance
+    entity_name: tree
+    values
+    - id: user_anonymous
+    - title: Anonymous user's menu
+    - title_is_visible: 0
+    - is_embedded: 1
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: anonymous
+- tree_user_anonymous_ru|instance
+    entity_name: tree
+    values
+    - id: user_anonymous_ru
+    - title: Меню анонимного пользователя
+    - title_is_visible: 0
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: anonymous
+- tree_user_registered|instance
+    entity_name: tree
+    values
+    - id: user_registered
+    - title: Registered user's menu
+    - title_is_visible: 0
+    - is_embedded: 1
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: registered
+- tree_user_registered_ru|instance
+    entity_name: tree
+    values
+    - id: user_registered_ru
+    - title: Меню зарегистрированного пользователя
+    - title_is_visible: 0
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+    - access
+        roles
+        - =: registered
+- tree_languages|instance
+    entity_name: tree
+    values
+    - id: languages
+    - title: Language selection menu
+    - title_is_visible: 0
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: linear
+          is_apply_translation: false
+          is_apply_tokens: false
+- tree_main|instance
+    entity_name: tree
+    values
+    - id: main
+    - title: Main menu
+    - title_is_visible: 0
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+- tree_main_ru|instance
+    entity_name: tree
+    values
+    - id: main_ru
+    - title: Меню главное
+    - title_is_visible: 0
+    - attributes
+      - 0
+          weight: +0
+          name: data-style
+          value: dropdown
+          is_apply_translation: false
+          is_apply_tokens: false
+# ─────────────────────────────────────────────────────────────────────
+# tree items
+# ─────────────────────────────────────────────────────────────────────
+#
+# ── menu: user_anonymous ─────────────────────────────────────────────
+- tree_item_anonymous|instance
+    entity_name: tree_item
+    values
+    - id: anonymous
+    - id_parent: null
+    - id_tree: user_anonymous
+    - title: User
+    - access
+        roles
+        - =: anonymous
+- tree_item_login|instance
+    entity_name: tree_item
+    values
+    - id: login
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Login
+    - url: /login
+    - weight: +500
+    - access
+        roles
+        - =: anonymous
+- tree_item_registration|instance
+    entity_name: tree_item
+    values
+    - id: registration
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Registration
+    - url: /registration
+    - access
+        roles
+        - =: anonymous
+- tree_item_recovery|instance
+    entity_name: tree_item
+    values
+    - id: recovery
+    - id_parent: anonymous
+    - id_tree: user_anonymous
+    - title: Recovery
+    - url: /recovery
+    - weight: -500
+    - access
+        roles
+        - =: anonymous
+# ── menu: user_anonymous_ru ──────────────────────────────────────────
+- tree_item_anonymous_ru|instance
+    entity_name: tree_item
+    values
+    - id: anonymous_ru
+    - id_parent: null
+    - id_tree: user_anonymous_ru
+    - title: Пользователь
+    - access
+        roles
+        - =: anonymous
+- tree_item_login_ru|instance
+    entity_name: tree_item
+    values
+    - id: login_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Вход
+    - url: /ru/login
+    - weight: +500
+    - access
+        roles
+        - =: anonymous
+- tree_item_registration_ru|instance
+    entity_name: tree_item
+    values
+    - id: registration_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Регистрация
+    - url: /ru/registration
+    - access
+        roles
+        - =: anonymous
+- tree_item_recovery_ru|instance
+    entity_name: tree_item
+    values
+    - id: recovery_ru
+    - id_parent: anonymous_ru
+    - id_tree: user_anonymous_ru
+    - title: Восстановление
+    - url: /ru/recovery
+    - weight: -500
+    - access
+        roles
+        - =: anonymous
+# ── menu: user_registered ────────────────────────────────────────────
+- tree_item_registered|instance
+    entity_name: tree_item
+    values
+    - id: registered
+    - id_parent: null
+    - id_tree: user_registered
+    - title: %%_nickname
+    - url: /user/%%_nickname
+    - access
+        roles
+        - =: registered
+- tree_item_user_edit|instance
+    entity_name: tree_item
+    values
+    - id: user_edit
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Edit
+    - url: /user/%%_nickname/edit
+    - weight: +500
+    - access
+        roles
+        - =: registered
+- tree_item_logout|instance
+    entity_name: tree_item
+    values
+    - id: logout
+    - id_parent: registered
+    - id_tree: user_registered
+    - title: Logout
+    - url: /logout
+    - weight: -500
+    - access
+        roles
+        - =: registered
+# ── menu: user_registered_ru ─────────────────────────────────────────
+- tree_item_registered_ru|instance
+    entity_name: tree_item
+    values
+    - id: registered_ru
+    - id_parent: null
+    - id_tree: user_registered_ru
+    - title: %%_nickname
+    - url: /ru/user/%%_nickname
+    - access
+        roles
+        - =: registered
+- tree_item_user_edit_ru|instance
+    entity_name: tree_item
+    values
+    - id: user_edit_ru
+    - id_parent: registered_ru
+    - id_tree: user_registered_ru
+    - title: Редактировать
+    - url: /ru/user/%%_nickname/edit
+    - weight: +500
+    - access
+        roles
+        - =: registered
+- tree_item_logout_ru|instance
+    entity_name: tree_item
+    values
+    - id: logout_ru
+    - id_parent: registered_ru
+    - id_tree: user_registered_ru
+    - title: Выход
+    - url: /ru/logout?back=%2Fru
+    - weight: -500
+    - access
+        roles
+        - =: registered
+# ── menu: languages ──────────────────────────────────────────────────
+- tree_item_language_to_en|instance
+    entity_name: tree_item
+    values
+    - id: language_en
+    - id_parent: null
+    - id_tree: languages
+    - title: English
+    - url: /
+    - weight: +0
+    - link_attributes
+      - 0
+          weight: +0
+          name: title
+          value: go to English language
+          is_apply_translation: true
+          is_apply_tokens: false
+- tree_item_language_to_ru|instance
+    entity_name: tree_item
+    values
+    - id: language_ru
+    - id_parent: null
+    - id_tree: languages
+    - title: Russian
+    - url: /ru
+    - weight: -1
+    - link_attributes
+      - 0
+          weight: +0
+          name: title
+          value: go to Russian language
+          is_apply_translation: true
+          is_apply_tokens: false
+# ── menu: main ───────────────────────────────────────────────────────
+- tree_item_about|instance
+    entity_name: tree_item
+    values
+    - id: about
+    - id_parent: null
+    - id_tree: main
+    - title: About Us
+    - url: /about
+    - weight: +0
+- tree_item_gallery|instance
+    entity_name: tree_item
+    values
+    - id: gallery
+    - id_parent: null
+    - id_tree: main
+    - title: Gallery
+    - url: /gallery
+    - weight: -1
+- tree_item_contact|instance
+    entity_name: tree_item
+    values
+    - id: contact
+    - id_parent: null
+    - id_tree: main
+    - title: Contact Us
+    - url: /contact
+    - weight: -2
+# ── menu: main_ru ────────────────────────────────────────────────────
+- tree_item_about_ru|instance
+    entity_name: tree_item
+    values
+    - id: about_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: О нас
+    - url: /ru/about
+    - weight: +0
+- tree_item_gallery_ru|instance
+    entity_name: tree_item
+    values
+    - id: gallery_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: Галерея
+    - url: /ru/gallery
+    - weight: -1
+- tree_item_contact_ru|instance
+    entity_name: tree_item
+    values
+    - id: contact_ru
+    - id_parent: null
+    - id_tree: main_ru
+    - title: Связь
+    - url: /ru/contact
+    - weight: -2
+# ─────────────────────────────────────────────────────────────────────
+# galleries
+# ─────────────────────────────────────────────────────────────────────
+- gallery_main|instance
+    entity_name: gallery
+    values
+    - id: main
+    - title: Main gallery
+    - attributes
+      - 0
+          weight: +0
+          name: data-player-name
+          value: default
+          is_apply_translation: false
+          is_apply_tokens: false
+    - items
+      - 0
+          weight: +0
+          object|file_history
+            name: 1000x1500-01
+            type: picture
+            file: 1000x1500-01.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-0.picture
+            size: 6930
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 1
+          weight: -5
+          object|file_history
+            name: 1000x1500-02
+            type: picture
+            file: 1000x1500-02.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-1.picture
+            size: 6970
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 2
+          weight: -10
+          object|file_history
+            name: 1000x1500-03
+            type: picture
+            file: 1000x1500-03.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-2.picture
+            size: 6970
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 3
+          weight: -15
+          object|file_history
+            name: 1500x1000-01
+            type: picture
+            file: 1500x1000-01.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-3.picture
+            size: 8054
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 4
+          weight: -20
+          object|file_history
+            name: 1500x1000-02
+            type: picture
+            file: 1500x1000-02.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-4.picture
+            size: 8047
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 5
+          weight: -25
+          object|file_history
+            name: 1500x1000-03
+            type: picture
+            file: 1500x1000-03.picture
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-5.picture
+            size: 8048
+          settings
+          - title: click to open in new window
+          - alt: thumbnail
+          - target: widget_files-pictures-items
+          - data-thumbnails-is-embedded: true
+      - 6
+          weight: -30
+          object|file_history
+            name: audio-01
+            type: audio
+            file: audio-01.audio
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-6.audio
+            size: 22913
+          settings
+          - data-player-name: default
+          - data-player-timeline-is-visible|_string_true
+          - autoplay: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - preload: metadata
+          - data-cover-is-embedded: true
+      - 7
+          weight: -35
+          object|file_history
+            name: video-01
+            type: video
+            file: video-01.video
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-7.video
+            size: 20363
+          settings
+          - autoplay: null
+          - buffered: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - played: null
+          - preload: metadata
+          - data-poster-is-embedded: true
+      - 8
+          weight: -40
+          object|file_history
+            name: video-02
+            type: mp4
+            file: video-02.mp4
+            mime: video/mp4
+            fin_path: dynamic/files/galleries/gallery-main-8.mp4
+            size: 19692
+          settings
+          - autoplay: null
+          - buffered: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - played: null
+          - preload: metadata
+          - data-poster-is-embedded: false
+      - 9
+          weight: -45
+          object|file_history
+            name: audio-02
+            type: mp3
+            file: audio-02.mp3
+            mime: audio/mpeg
+            fin_path: dynamic/files/galleries/gallery-main-9.mp3
+            size: 22241
+          settings
+          - data-player-name: default
+          - data-player-timeline-is-visible|_string_true
+          - autoplay: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - preload: metadata
+          - data-cover-is-embedded: false
+# ─────────────────────────────────────────────────────────────────────
+# selections
+# ─────────────────────────────────────────────────────────────────────
+- selection_user|instance
+    entity_name: selection
+    values
+    - id: user
+    - title: General information
+    - main_entity_name: user
+    - data
+      - is_custom_conditions: true
+    - decorator_settings
+      - view_type: table-dl
+    - query_settings
+      - conditions
+        - nickname_!f: nickname
+        - nickname_operator: =
+        - nickname_!v|text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_nickname_page_context(nickname)
+      - limit: 1
+    - fields
+      - main
+        - id
+            title: ID
+            entity_field_name: id
+            weight: +400
+        - nickname
+            title: Nickname
+            entity_field_name: nickname
+            weight: +380
+        - avatar_path
+            title: Avatar path
+            entity_field_name: avatar_path
+            weight: +360
+        - timezone
+            title: Time zone
+            entity_field_name: timezone
+            is_apply_translation: true
+            weight: +340
+        - created
+            title: Created
+            entity_field_name: created
+            weight: +320
+        - updated
+            title: Updated
+            entity_field_name: updated
+            weight: +300
+        - is_embedded
+            title: Is embedded
+            entity_field_name: is_embedded
+            is_apply_translation: true
+            weight: +280
+      - handlers
+        - roles
+            title: Roles
+            handler: \effcore\modules\user\events_page_user::on_show_user_roles
+            is_apply_translation: true
+            weight: -400
+    - is_embedded: 1
+- selection_social_networks|instance
+    entity_name: selection
+    values
+    - id: social_networks
+    - title: Social networks
+    - main_entity_name: picture
+    - data
+      - template: content
+    - decorator_settings
+      - view_type: template
+      - template_item: picture
+      - mapping
+        - id: id
+        - path: path
+        - url: url
+        - attributes: this_attributes
+        - link_attributes: link_attributes
+    - query_settings
+      - conditions
+        - conjunction_!and
+          - id
+            - id_!f: id
+            - id_in_begin_operator: in (
+            - id_in_!v
+              - 0: logotype_twitter
+              - 1: logotype_facebook
+              - 2: logotype_instagram
+            - id_in_end_operator: )
+    - fields
+      - main
+        - id
+            entity_field_name: id
+            weight: +400
+        - description
+            entity_field_name: description
+            is_apply_translation: true
+            weight: +380
+        - path
+            entity_field_name: path
+            weight: +360
+        - url
+            entity_field_name: url
+            weight: +340
+        - this_attributes
+            entity_field_name: attributes
+            weight: +320
+        - link_attributes
+            entity_field_name: link_attributes
+            weight: +300

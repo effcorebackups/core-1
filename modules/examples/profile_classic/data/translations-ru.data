@@ -1,0 +1,40 @@
+translations
+- ru|translation
+    code: ru
+    data
+    - Example of update description.: Пример описания обновления.
+    - Example of update: Пример обновления
+    - Logotype Behance: Логотип Behance
+    - Logotype Bitbucket: Логотип Bitbucket
+    - Logotype Blogger: Логотип Blogger
+    - Logotype Facebook: Логотип Facebook
+    - Logotype Flickr: Логотип Flickr
+    - Logotype Github: Логотип Github
+    - Logotype Gitlab: Логотип Gitlab
+    - Logotype Instagram: Логотип Instagram
+    - Logotype Line: Логотип Line
+    - Logotype Linkedin: Логотип Linkedin
+    - Logotype Livejournal: Логотип Livejournal
+    - Logotype main: Логотип основной
+    - Logotype Messenger: Логотип Messenger
+    - Logotype OK: Логотип OK
+    - Logotype Pinterest: Логотип Pinterest
+    - Logotype Reddit: Логотип Reddit
+    - Logotype Skype: Логотип Skype
+    - Logotype Snapchat: Логотип Snapchat
+    - Logotype Soundcloud: Логотип Soundcloud
+    - Logotype Telegram: Логотип Telegram
+    - Logotype Tiktok: Логотип Tiktok
+    - Logotype Tumblr: Логотип Tumblr
+    - Logotype Twitter: Логотип Twitter
+    - Logotype Viber: Логотип Viber
+    - Logotype Vimeo: Логотип Vimeo
+    - Logotype VK: Логотип VK
+    - Logotype Wechat: Логотип Wechat
+    - Logotype Whatsapp: Логотип Whatsapp
+    - Logotype Yahoo: Логотип Yahoo
+    - Logotype Youtube: Логотип Youtube
+    - Original \| profile "Classic": Оригинал | профиль "Классика"
+    - Page part "foot": Часть страницы "foot"
+    - Page part "head": Часть страницы "head"
+    - Profile "Classic": Профиль "Классика"

@@ -28,31 +28,31 @@ tests
         quantity|param_from_form
           name: quantity_of_iterations
         actions
-  # ─────────────────────────────────────────────────────────────────────
-  # TRANSPOSITION OF THE "" CHARACTER
-  # ═════════════════════════════════════════════════════════════════════
-  # domain/
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain//page
-  # domain/section/
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/.type
-  # domain/file.
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain//file.type
-  # domain/directory/.type
-  # domain/directory/file.
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # TRANSPOSITION OF THE "" CHARACTER
+        # ═════════════════════════════════════════════════════════════════════
+        # domain/
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain//page
+        # domain/section/
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/.type
+        # domain/file.
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain//file.type
+        # domain/directory/.type
+        # domain/directory/file.
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_transposition_of_empty|step_title
             title: TRANSPOSITIONS OF ""
         # url "/"
-        - request_url--|step_request
+        - request_url--164b9b11|step_request
             url: /
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--|step_check
+        - response_check--164b9b11|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -60,13 +60,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "//page"
-        - request_url---page|step_request
+        - request_url--0dc172e1|step_request
             url: //page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---page|step_check
+        - response_check--0dc172e1|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -74,27 +74,27 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/"
-        - request_url--section-|step_request
+        - request_url--accb0053|step_request
             url: /section/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-|step_check
+        - response_check--accb0053|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section--location|step_check
+        - response_check--accb0053--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section|/section)$%
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section--length|step_check
+        - response_check--accb0053--content_length|step_check
             check: token
             where: %%_test_response_content_length
             match: 0
@@ -102,20 +102,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.type"
-        - request_url--.type|step_request
+        - request_url--a4a35be0|step_request
             url: /.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.type|step_check
+        - response_check--a4a35be0|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.type-return_level|step_check
+        - response_check--a4a35be0--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -123,13 +123,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file."
-        - request_url--file.|step_request
+        - request_url--7cd28f8a|step_request
             url: /file.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.|step_check
+        - response_check--7cd28f8a|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -137,13 +137,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "//file.type"
-        - request_url---file.type|step_request
+        - request_url--c97a7191|step_request
             url: //file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---file.type|step_check
+        - response_check--c97a7191|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -151,20 +151,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/.type"
-        - request_url--directory-.type|step_request
+        - request_url--6c70764b|step_request
             url: /directory/.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-.type|step_check
+        - response_check--6c70764b|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-.type-return_level|step_check
+        - response_check--6c70764b--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -172,58 +172,58 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file."
-        - request_url--directory-file.|step_request
+        - request_url--b401a221|step_request
             url: /directory/file.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.|step_check
+        - response_check--b401a221|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # TRANSPOSITION OF THE "/" CHARACTER
-  # ═════════════════════════════════════════════════════════════════════
-  # domain//page
-  # domain//
-  # domain/page/
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain//section/page
-  # domain///page
-  # domain/section//page
-  # domain/section//
-  # domain/section/page/
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain//file.type
-  # domain//.type
-  # domain/file/.type
-  # domain/file./type
-  # domain/file./
-  # domain/file.type/
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain//directory/file.type
-  # domain///file.type
-  # domain/directory//file.type
-  # domain/directory//.type
-  # domain/directory/file/.type
-  # domain/directory/file./type
-  # domain/directory/file./
-  # domain/directory/file.type/
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # TRANSPOSITION OF THE "/" CHARACTER
+        # ═════════════════════════════════════════════════════════════════════
+        # domain//page
+        # domain//
+        # domain/page/
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain//section/page
+        # domain///page
+        # domain/section//page
+        # domain/section//
+        # domain/section/page/
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain//file.type
+        # domain//.type
+        # domain/file/.type
+        # domain/file./type
+        # domain/file./
+        # domain/file.type/
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain//directory/file.type
+        # domain///file.type
+        # domain/directory//file.type
+        # domain/directory//.type
+        # domain/directory/file/.type
+        # domain/directory/file./type
+        # domain/directory/file./
+        # domain/directory/file.type/
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_transposition_of_slash|step_title
             title: TRANSPOSITIONS OF "/"
         # url "//page"
-        - request_url---page|step_request
+        - request_url--0dc172e1|step_request
             url: //page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---page|step_check
+        - response_check--0dc172e1|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -231,55 +231,55 @@ tests
             - return_result|step_return
                 value: 0
         # url "//"
-        - request_url---|step_request
+        - request_url--d19b00c2|step_request
             url: //
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---|step_check
+        - response_check--d19b00c2|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check----location|step_check
+        - response_check--d19b00c2--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/|/)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/|/)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/page/"
-        - request_url--page-|step_request
+        - request_url--e584344a|step_request
             url: /page/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--page-|step_check
+        - response_check--e584344a|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--page--location|step_check
+        - response_check--e584344a--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/page|/page)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/page|/page)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "//section/page"
-        - request_url---section-page|step_request
+        - request_url--1ad9b473|step_request
             url: //section/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---section-page|step_check
+        - response_check--1ad9b473|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -287,13 +287,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "///page"
-        - request_url----page|step_request
+        - request_url--30387409|step_request
             url: ///page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check----page|step_check
+        - response_check--30387409|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -301,13 +301,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section//page"
-        - request_url--section--page|step_request
+        - request_url--e3dc5fc9|step_request
             url: /section//page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section--page|step_check
+        - response_check--e3dc5fc9|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -315,55 +315,55 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section//"
-        - request_url--section--|step_request
+        - request_url--c86a8464|step_request
             url: /section//
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section--|step_check
+        - response_check--c86a8464|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section---location|step_check
+        - response_check--c86a8464---location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section|/section)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/section/page/"
-        - request_url--section-page-|step_request
+        - request_url--0b991962|step_request
             url: /section/page/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-page-|step_check
+        - response_check--0b991962|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section-page--location|step_check
+        - response_check--0b991962--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/section/page|/section/page)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section/page|/section/page)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "//file.type"
-        - request_url---file.type|step_request
+        - request_url--c97a7191|step_request
             url: //file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---file.type|step_check
+        - response_check--c97a7191|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -371,20 +371,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "//.type"
-        - request_url---.type|step_request
+        - request_url--995a5d08|step_request
             url: //.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---.type|step_check
+        - response_check--995a5d08|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check---.type-return_level|step_check
+        - response_check--995a5d08--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -392,20 +392,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file/.type"
-        - request_url--file-.type|step_request
+        - request_url--23acb4d1|step_request
             url: /file/.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file-.type|step_check
+        - response_check--23acb4d1|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--file-.type-return_level|step_check
+        - response_check--23acb4d1--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -413,13 +413,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file./type"
-        - request_url--file.-type|step_request
+        - request_url--d6c69183|step_request
             url: /file./type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.-type|step_check
+        - response_check--d6c69183|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -427,55 +427,55 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file./"
-        - request_url--file.-|step_request
+        - request_url--2e01cfd8|step_request
             url: /file./
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.-|step_check
+        - response_check--2e01cfd8|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--file.--location|step_check
+        - response_check--2e01cfd8--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/file\.|/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/file\.|/file\.)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/file.type/"
-        - request_url--file.type-|step_request
+        - request_url--d53f7856|step_request
             url: /file.type/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.type-|step_check
+        - response_check--d53f7856|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--file.type--location|step_check
+        - response_check--d53f7856--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/file\.type|/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/file\.type|/file\.type)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "//directory/file.type"
-        - request_url---directory-file.type|step_request
+        - request_url--d84e7558|step_request
             url: //directory/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check---directory-file.type|step_check
+        - response_check--d84e7558|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -483,13 +483,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "///file.type"
-        - request_url----file.type|step_request
+        - request_url--23e13486|step_request
             url: ///file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check----file.type|step_check
+        - response_check--23e13486|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -497,13 +497,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory//file.type"
-        - request_url--directory--file.type|step_request
+        - request_url--3d72f97a|step_request
             url: /directory//file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory--file.type|step_check
+        - response_check--3d72f97a|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -511,20 +511,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory//.type"
-        - request_url--directory--.type|step_request
+        - request_url--f60feaff|step_request
             url: /directory//.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory--.type|step_check
+        - response_check--f60feaff|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory--.type-return_level|step_check
+        - response_check--f60feaff--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -532,20 +532,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file/.type"
-        - request_url--directory-file-.type|step_request
+        - request_url--d7a43c3a|step_request
             url: /directory/file/.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file-.type|step_check
+        - response_check--d7a43c3a|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-file-.type-return_level|step_check
+        - response_check--d7a43c3a--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -553,13 +553,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file./type"
-        - request_url--directory-file.-type|step_request
+        - request_url--22ce1968|step_request
             url: /directory/file./type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.-type|step_check
+        - response_check--22ce1968|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -567,96 +567,96 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file./"
-        - request_url--directory-file.-|step_request
+        - request_url--4154782f|step_request
             url: /directory/file./
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.-|step_check
+        - response_check--4154782f|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-file.--location|step_check
+        - response_check--4154782f--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/directory/file\.|/directory/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/directory/file.type/"
-        - request_url--directory-file.type-|step_request
+        - request_url--2137f0bd|step_request
             url: /directory/file.type/
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.type-|step_check
+        - response_check--2137f0bd|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-file.type--location|step_check
+        - response_check--2137f0bd--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/directory/file\.type|/directory/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # TRANSPOSITION OF THE "~" CHARACTER
-  # ═════════════════════════════════════════════════════════════════════
-  # domain/~page
-  # domain/~
-  # domain/page~
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/~section/page
-  # domain/~/page
-  # domain/section~/page
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/section/~page
-  # domain/section/~
-  # domain/section/page~
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/~file.type
-  # domain/~.type
-  # domain/file~.type
-  # domain/file.~type
-  # domain/file.~
-  # domain/file.type~
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/~directory/file.type
-  # domain/~/file.type
-  # domain/directory~/file.type
-  # domain/directory/~file.type
-  # domain/directory/~.type
-  # domain/directory/file~.type
-  # domain/directory/file.~type
-  # domain/directory/file.~
-  # domain/directory/file.type~
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # TRANSPOSITION OF THE "~" CHARACTER
+        # ═════════════════════════════════════════════════════════════════════
+        # domain/~page
+        # domain/~
+        # domain/page~
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/~section/page
+        # domain/~/page
+        # domain/section~/page
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/section/~page
+        # domain/section/~
+        # domain/section/page~
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/~file.type
+        # domain/~.type
+        # domain/file~.type
+        # domain/file.~type
+        # domain/file.~
+        # domain/file.type~
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/~directory/file.type
+        # domain/~/file.type
+        # domain/directory~/file.type
+        # domain/directory/~file.type
+        # domain/directory/~.type
+        # domain/directory/file~.type
+        # domain/directory/file.~type
+        # domain/directory/file.~
+        # domain/directory/file.type~
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_transposition_of_tilda|step_title
             title: TRANSPOSITIONS OF "~"
         # url "/~page"
-        - request_url--~page|step_request
+        - request_url--d2ab672d|step_request
             url: /~page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~page|step_check
+        - response_check--d2ab672d|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~page-return_level|step_check
+        - response_check--d2ab672d--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -664,20 +664,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~"
-        - request_url--~|step_request
+        - request_url--612d56be|step_request
             url: /~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~|step_check
+        - response_check--612d56be|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~-return_level|step_check
+        - response_check--612d56be--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -685,13 +685,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/page~"
-        - request_url--page~|step_request
+        - request_url--55326236|step_request
             url: /page~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--page~|step_check
+        - response_check--55326236|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -699,20 +699,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~section/page"
-        - request_url--~section-page|step_request
+        - request_url--437576ff|step_request
             url: /~section/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~section-page|step_check
+        - response_check--437576ff|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~section-page-return_level|step_check
+        - response_check--437576ff--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -720,20 +720,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~/page"
-        - request_url--~-page|step_request
+        - request_url--cdec9874|step_request
             url: /~/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~-page|step_check
+        - response_check--cdec9874|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~-page-return_level|step_check
+        - response_check--cdec9874--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -741,13 +741,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section~/page"
-        - request_url--section~-page|step_request
+        - request_url--1e08b3b4|step_request
             url: /section~/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section~-page|step_check
+        - response_check--1e08b3b4|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -755,20 +755,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/~page"
-        - request_url--section-~page|step_request
+        - request_url--3cb64a05|step_request
             url: /section/~page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-~page|step_check
+        - response_check--3cb64a05|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section-~page-return_level|step_check
+        - response_check--3cb64a05--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -776,20 +776,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/~"
-        - request_url--section-~|step_request
+        - request_url--78dcd218|step_request
             url: /section/~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-~|step_check
+        - response_check--78dcd218|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section-~-return_level|step_check
+        - response_check--78dcd218--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -797,13 +797,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/page~"
-        - request_url--section-page~|step_request
+        - request_url--bb2f4f1e|step_request
             url: /section/page~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-page~|step_check
+        - response_check--bb2f4f1e|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -811,20 +811,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~file.type"
-        - request_url--~file.type|step_request
+        - request_url--469ee882|step_request
             url: /~file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~file.type|step_check
+        - response_check--469ee882|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~file.type-return_level|step_check
+        - response_check--469ee882--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -832,20 +832,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~.type"
-        - request_url--~.type|step_request
+        - request_url--648eb175|step_request
             url: /~.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~.type|step_check
+        - response_check--648eb175|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~.type-return_level|step_check
+        - response_check--648eb175--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -853,13 +853,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file~.type"
-        - request_url--file~.type|step_request
+        - request_url--de7858ac|step_request
             url: /file~.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file~.type|step_check
+        - response_check--de7858ac|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -867,13 +867,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.~type"
-        - request_url--file.~type|step_request
+        - request_url--09ac844f|step_request
             url: /file.~type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.~type|step_check
+        - response_check--09ac844f|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -881,13 +881,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.~"
-        - request_url--file.~|step_request
+        - request_url--9eb799a4|step_request
             url: /file.~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.~|step_check
+        - response_check--9eb799a4|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -895,13 +895,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.type~"
-        - request_url--file.type~|step_request
+        - request_url--65892e2a|step_request
             url: /file.type~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.type~|step_check
+        - response_check--65892e2a|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -909,20 +909,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~directory/file.type"
-        - request_url--~directory-file.type|step_request
+        - request_url--e4697210|step_request
             url: /~directory/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~directory-file.type|step_check
+        - response_check--e4697210|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~directory-file.type-return_level|step_check
+        - response_check--e4697210--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -930,20 +930,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~/file.type"
-        - request_url--~-file.type|step_request
+        - request_url--8a93825e|step_request
             url: /~/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~-file.type|step_check
+        - response_check--8a93825e|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~-file.type-return_level|step_check
+        - response_check--8a93825e--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -951,13 +951,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory~/file.type"
-        - request_url--directory~-file.type|step_request
+        - request_url--94004fa2|step_request
             url: /directory~/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory~-file.type|step_check
+        - response_check--94004fa2|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -965,20 +965,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/~file.type"
-        - request_url--directory-~file.type|step_request
+        - request_url--b2966069|step_request
             url: /directory/~file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-~file.type|step_check
+        - response_check--b2966069|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-~file.type-return_level|step_check
+        - response_check--b2966069--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -986,20 +986,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/~.type"
-        - request_url--directory-~.type|step_request
+        - request_url--0bdb0682|step_request
             url: /directory/~.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-~.type|step_check
+        - response_check--0bdb0682|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-~.type-return_level|step_check
+        - response_check--0bdb0682--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1007,13 +1007,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file~.type"
-        - request_url--directory-file~.type|step_request
+        - request_url--2a70d047|step_request
             url: /directory/file~.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file~.type|step_check
+        - response_check--2a70d047|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1021,13 +1021,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.~type"
-        - request_url--directory-file.~type|step_request
+        - request_url--fda40ca4|step_request
             url: /directory/file.~type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.~type|step_check
+        - response_check--fda40ca4|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1035,13 +1035,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.~"
-        - request_url--directory-file.~|step_request
+        - request_url--f1e22e53|step_request
             url: /directory/file.~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.~|step_check
+        - response_check--f1e22e53|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1049,66 +1049,66 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.type~"
-        - request_url--directory-file.type~|step_request
+        - request_url--9181a6c1|step_request
             url: /directory/file.type~
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.type~|step_check
+        - response_check--9181a6c1|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # TRANSPOSITION OF THE "." CHARACTER
-  # ═════════════════════════════════════════════════════════════════════
-  # domain/.page
-  # domain/.
-  # domain/page.
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/.section/page
-  # domain/./page
-  # domain/section./page
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/section/.page
-  # domain/section/.
-  # domain/section/page.
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/.file.type
-  # domain/..type
-  # domain/file..type
-  # domain/file..
-  # domain/file.type.
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/.directory/file.type
-  # domain/./file.type
-  # domain/directory./file.type
-  # domain/directory/.file.type
-  # domain/directory/..type
-  # domain/directory/file..type
-  # domain/directory/file..
-  # domain/directory/file.type.
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # TRANSPOSITION OF THE "." CHARACTER
+        # ═════════════════════════════════════════════════════════════════════
+        # domain/.page
+        # domain/.
+        # domain/page.
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/.section/page
+        # domain/./page
+        # domain/section./page
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/section/.page
+        # domain/section/.
+        # domain/section/page.
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/.file.type
+        # domain/..type
+        # domain/file..type
+        # domain/file..
+        # domain/file.type.
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/.directory/file.type
+        # domain/./file.type
+        # domain/directory./file.type
+        # domain/directory/.file.type
+        # domain/directory/..type
+        # domain/directory/file..type
+        # domain/directory/file..
+        # domain/directory/file.type.
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_transposition_of_dot|step_title
             title: TRANSPOSITIONS OF "."
         # url "/.page"
-        - request_url--.page|step_request
+        - request_url--80a67fa8|step_request
             url: /.page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.page|step_check
+        - response_check--80a67fa8|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.page-return_level|step_check
+        - response_check--80a67fa8--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1116,13 +1116,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/."
-        - request_url--.|step_request
+        - request_url--6686c1c6|step_request
             url: /.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.|step_check
+        - response_check--6686c1c6|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1130,13 +1130,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/page."
-        - request_url--page.|step_request
+        - request_url--5299f54e|step_request
             url: /page.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--page.|step_check
+        - response_check--5299f54e|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1144,20 +1144,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.section/page"
-        - request_url--.section-page|step_request
+        - request_url--1f8f109b|step_request
             url: /.section/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.section-page|step_check
+        - response_check--1f8f109b|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.section-page-return_level|step_check
+        - response_check--1f8f109b--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1165,13 +1165,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/./page"
-        - request_url--.-page|step_request
+        - request_url--48355c12|step_request
             url: /./page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.-page|step_check
+        - response_check--48355c12|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1179,13 +1179,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section./page"
-        - request_url--section.-page|step_request
+        - request_url--9bd177d2|step_request
             url: /section./page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section.-page|step_check
+        - response_check--9bd177d2|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1193,20 +1193,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/.page"
-        - request_url--section-.page|step_request
+        - request_url--6ebb5280|step_request
             url: /section/.page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-.page|step_check
+        - response_check--6ebb5280|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section-.page-return_level|step_check
+        - response_check--6ebb5280--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1214,13 +1214,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/."
-        - request_url--section-.|step_request
+        - request_url--7f774560|step_request
             url: /section/.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-.|step_check
+        - response_check--7f774560|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1228,13 +1228,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/page."
-        - request_url--section-page.|step_request
+        - request_url--bc84d866|step_request
             url: /section/page.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-page.|step_check
+        - response_check--bc84d866|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1242,20 +1242,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.file.type"
-        - request_url--.file.type|step_request
+        - request_url--aedae111|step_request
             url: /.file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.file.type|step_check
+        - response_check--aedae111|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.file.type-return_level|step_check
+        - response_check--aedae111--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1263,20 +1263,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/..type"
-        - request_url--..type|step_request
+        - request_url--e1577513|step_request
             url: /..type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..type|step_check
+        - response_check--e1577513|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--..type-return_level|step_check
+        - response_check--e1577513--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1284,13 +1284,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file..type"
-        - request_url--file..type|step_request
+        - request_url--5ba19cca|step_request
             url: /file..type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file..type|step_check
+        - response_check--5ba19cca|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1298,13 +1298,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.."
-        - request_url--file..|step_request
+        - request_url--991c0edc|step_request
             url: /file..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file..|step_check
+        - response_check--991c0edc|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1312,13 +1312,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.type."
-        - request_url--file.type.|step_request
+        - request_url--6222b952|step_request
             url: /file.type.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.type.|step_check
+        - response_check--6222b952|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1326,20 +1326,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.directory/file.type"
-        - request_url--.directory-file.type|step_request
+        - request_url--0ec1776c|step_request
             url: /.directory/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.directory-file.type|step_check
+        - response_check--0ec1776c|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.directory-file.type-return_level|step_check
+        - response_check--0ec1776c--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1347,13 +1347,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/./file.type"
-        - request_url--.-file.type|step_request
+        - request_url--cd66987f|step_request
             url: /./file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.-file.type|step_check
+        - response_check--cd66987f|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1361,13 +1361,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory./file.type"
-        - request_url--directory.-file.type|step_request
+        - request_url--d3f55583|step_request
             url: /directory./file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory.-file.type|step_check
+        - response_check--d3f55583|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1375,20 +1375,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/.file.type"
-        - request_url--directory-.file.type|step_request
+        - request_url--5ad269fa|step_request
             url: /directory/.file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-.file.type|step_check
+        - response_check--5ad269fa|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-.file.type-return_level|step_check
+        - response_check--5ad269fa--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1396,20 +1396,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/..type"
-        - request_url--directory-..type|step_request
+        - request_url--8e02c2e4|step_request
             url: /directory/..type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-..type|step_check
+        - response_check--8e02c2e4|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-..type-return_level|step_check
+        - response_check--8e02c2e4--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1417,13 +1417,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file..type"
-        - request_url--directory-file..type|step_request
+        - request_url--afa91421|step_request
             url: /directory/file..type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file..type|step_check
+        - response_check--afa91421|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1431,13 +1431,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.."
-        - request_url--directory-file..|step_request
+        - request_url--f649b92b|step_request
             url: /directory/file..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file..|step_check
+        - response_check--f649b92b|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1445,65 +1445,65 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.type."
-        - request_url--directory-file.type.|step_request
+        - request_url--962a31b9|step_request
             url: /directory/file.type.
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.type.|step_check
+        - response_check--962a31b9|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # TRANSPOSITION OF THE ".." CHARACTERS
-  # ═════════════════════════════════════════════════════════════════════
-  # domain/..page
-  # domain/..
-  # domain/page..
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/..section/page
-  # domain/../page
-  # domain/section../page
-  # domain/section/..page
-  # domain/section/..
-  # domain/section/page..
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/..file.type
-  # domain/...type
-  # domain/file...type
-  # domain/file...
-  # domain/file.type..
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  # domain/..directory/file.type
-  # domain/../file.type
-  # domain/directory../file.type
-  # domain/directory/..file.type
-  # domain/directory/...type
-  # domain/directory/file...type
-  # domain/directory/file...
-  # domain/directory/file.type..
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # TRANSPOSITION OF THE ".." CHARACTERS
+        # ═════════════════════════════════════════════════════════════════════
+        # domain/..page
+        # domain/..
+        # domain/page..
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/..section/page
+        # domain/../page
+        # domain/section../page
+        # domain/section/..page
+        # domain/section/..
+        # domain/section/page..
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/..file.type
+        # domain/...type
+        # domain/file...type
+        # domain/file...
+        # domain/file.type..
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # domain/..directory/file.type
+        # domain/../file.type
+        # domain/directory../file.type
+        # domain/directory/..file.type
+        # domain/directory/...type
+        # domain/directory/file...type
+        # domain/directory/file...
+        # domain/directory/file.type..
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_transposition_of_dots|step_title
             title: TRANSPOSITIONS OF ".."
         # url "/..page"
-        - request_url--..page|step_request
+        - request_url--c552515b|step_request
             url: /..page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..page|step_check
+        - response_check--c552515b|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--..page-return_level|step_check
+        - response_check--c552515b--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1511,13 +1511,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.."
-        - request_url--..|step_request
+        - request_url--8aedd093|step_request
             url: /..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..|step_check
+        - response_check--8aedd093|step_check
             check: token
             where: %%_test_response_http_code
             match: 400
@@ -1538,13 +1538,13 @@ tests
                 - return_result|step_return
                     value: 0
         # url "/page.."
-        - request_url--page..|step_request
+        - request_url--dcd4cbe8|step_request
             url: /page..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--page..|step_check
+        - response_check--dcd4cbe8|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1552,20 +1552,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/..section/page"
-        - request_url--..section-page|step_request
+        - request_url--fdb24bf6|step_request
             url: /..section/page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..section-page|step_check
+        - response_check--fdb24bf6|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--..section-page-return_level|step_check
+        - response_check--fdb24bf6--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1573,13 +1573,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/../page"
-        - request_url--..-page|step_request
+        - request_url--98ab53b8|step_request
             url: /../page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..-page|step_check
+        - response_check--98ab53b8|step_check
             check: token
             where: %%_test_response_http_code
             match: 400
@@ -1600,13 +1600,13 @@ tests
                 - return_result|step_return
                     value: 0
         # url "/section../page"
-        - request_url--section..-page|step_request
+        - request_url--01e83dce|step_request
             url: /section../page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section..-page|step_check
+        - response_check--01e83dce|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1614,20 +1614,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/..page"
-        - request_url--section-..page|step_request
+        - request_url--9de767c8|step_request
             url: /section/..page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-..page|step_check
+        - response_check--9de767c8|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--section-..page-return_level|step_check
+        - response_check--9de767c8--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1635,13 +1635,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/.."
-        - request_url--section-..|step_request
+        - request_url--36ef88fc|step_request
             url: /section/..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-..|step_check
+        - response_check--36ef88fc|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1649,13 +1649,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/section/page.."
-        - request_url--section-page..|step_request
+        - request_url--8461fd7b|step_request
             url: /section/page..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--section-page..|step_check
+        - response_check--8461fd7b|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1663,20 +1663,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/..file.type"
-        - request_url--..file.type|step_request
+        - request_url--aac608ff|step_request
             url: /..file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..file.type|step_check
+        - response_check--aac608ff|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--..file.type-return_level|step_check
+        - response_check--aac608ff--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1684,20 +1684,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/...type"
-        - request_url--...type|step_request
+        - request_url--31c97ab9|step_request
             url: /...type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--...type|step_check
+        - response_check--31c97ab9|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--...type-return_level|step_check
+        - response_check--31c97ab9--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1705,13 +1705,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file...type"
-        - request_url--file...type|step_request
+        - request_url--d7c8de63|step_request
             url: /file...type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file...type|step_check
+        - response_check--d7c8de63|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1719,13 +1719,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file..."
-        - request_url--file...|step_request
+        - request_url--2c1fd13f|step_request
             url: /file...
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file...|step_check
+        - response_check--2c1fd13f|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1733,13 +1733,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/file.type.."
-        - request_url--file.type..|step_request
+        - request_url--c8a46ddd|step_request
             url: /file.type..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--file.type..|step_check
+        - response_check--c8a46ddd|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1747,20 +1747,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/..directory/file.type"
-        - request_url--..directory-file.type|step_request
+        - request_url--caee742e|step_request
             url: /..directory/file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..directory-file.type|step_check
+        - response_check--caee742e|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--..directory-file.type-return_level|step_check
+        - response_check--caee742e--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1768,13 +1768,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/../file.type"
-        - request_url--..-file.type|step_request
+        - request_url--bee4a36f|step_request
             url: /../file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..-file.type|step_check
+        - response_check--bee4a36f|step_check
             check: token
             where: %%_test_response_http_code
             match: 400
@@ -1795,13 +1795,13 @@ tests
                 - return_result|step_return
                     value: 0
         # url "/directory../file.type"
-        - request_url--directory..-file.type|step_request
+        - request_url--d39c841e|step_request
             url: /directory../file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory..-file.type|step_check
+        - response_check--d39c841e|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1809,20 +1809,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/..file.type"
-        - request_url--directory-..file.type|step_request
+        - request_url--b2dfe299|step_request
             url: /directory/..file.type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-..file.type|step_check
+        - response_check--b2dfe299|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-..file.type-return_level|step_check
+        - response_check--b2dfe299--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1830,20 +1830,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/...type"
-        - request_url--directory-...type|step_request
+        - request_url--3d0bd099|step_request
             url: /directory/...type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-...type|step_check
+        - response_check--3d0bd099|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--directory-...type-return_level|step_check
+        - response_check--3d0bd099--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -1851,13 +1851,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file...type"
-        - request_url--directory-file...type|step_request
+        - request_url--cfd13405|step_request
             url: /directory/file...type
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file...type|step_check
+        - response_check--cfd13405|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1865,13 +1865,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file..."
-        - request_url--directory-file...|step_request
+        - request_url--20dd7b1f|step_request
             url: /directory/file...
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file...|step_check
+        - response_check--20dd7b1f|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -1879,37 +1879,37 @@ tests
             - return_result|step_return
                 value: 0
         # url "/directory/file.type.."
-        - request_url--directory-file.type..|step_request
+        - request_url--d0bd87bb|step_request
             url: /directory/file.type..
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--directory-file.type..|step_check
+        - response_check--d0bd87bb|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # FILTRATION OF PARAMETERS
-  # ═════════════════════════════════════════════════════════════════════
-  # /?page=1
-  # /?page=1&unkwond=true
-  # /login?page=1
-  # /login?page=1&unkwond=true
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # FILTRATION OF PARAMETERS
+        # ═════════════════════════════════════════════════════════════════════
+        # /?page=1
+        # /?page=1&unkwond=true
+        # /login?page=1
+        # /login?page=1&unkwond=true
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_filtration_of_parameters|step_title
             title: FILTRATION OF PARAMETERS
         # url "/?page=1"
-        - request_url--?page=1|step_request
+        - request_url--dc7705fd|step_request
             url: /?page=1
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--?page=1|step_check
+        - response_check--dc7705fd|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -1917,34 +1917,34 @@ tests
             - return_result|step_return
                 value: 0
         # url "/?page=1&unknown=true"
-        - request_url--?page=1&unknown=true|step_request
+        - request_url--bb480ca7|step_request
             url: /?page=1&unknown=true
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--?page=1&unknown=true|step_check
+        - response_check--bb480ca7|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--?page=1&unknown=true=-location|step_check
+        - response_check--bb480ca7--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/\?page=1|/\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/\?page=1|/\?page=1)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/login?page=1"
-        - request_url--login?page=1|step_request
+        - request_url--c1090ffd|step_request
             url: /login?page=1
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--login?page=1|step_check
+        - response_check--c1090ffd|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -1952,90 +1952,144 @@ tests
             - return_result|step_return
                 value: 0
         # url "/login?page=1&unknown=true"
-        - request_url--login?page=1&unknown=true|step_request
+        - request_url--0b381b8b|step_request
             url: /login?page=1&unknown=true
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--login?page=1&unknown=true|step_check
+        - response_check--0b381b8b|step_check
             check: token
             where: %%_test_response_http_code
             match: 302
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--login?page=1&unknown=true-location|step_check
+        - response_check--0b381b8b--location|step_check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host{preg_quote}/login\?page=1|/login\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # FILES AND DIRECTORIES
-  # ═════════════════════════════════════════════════════════════════════
-  # /../../../../../../etc/passwd
-  # /~/.ssh/id_rsa
-  # /~/any_file
-  # /.git
-  # /.git/config
-  # /dynamic/.git
-  # /dynamic/.git/config
-  # /.editorconfig
-  # /.gitattributes
-  # /.gitignore
-  # /.htaccess
-  # /.nginx
-  # /web.config
-  # /index.php
-  # /license.md
-  # /readme
-  # /readme/about-en.md
-  # /shell
-  # /shell/dynamic_reset.sh
-  # /dynamic
-  # /dynamic/cache
-  # /dynamic/cache/data_original.php
-  # /dynamic/cache/readme.md
-  # /dynamic/cache/structures.php
-  # /dynamic/data
-  # /dynamic/data/boot.php
-  # /dynamic/data/changes.php
-  # /dynamic/data/data.sqlite
-  # /dynamic/data/readme.md
-  # /dynamic/files
-  # /dynamic/files/readme.md
-  # /dynamic/logs
-  # /dynamic/logs/readme.md
-  # /dynamic/tmp
-  # /dynamic/tmp/readme.md
-  # /modules
-  # /modules/readme.md
-  # /system
-  # /system/boot.php
-  # /system/bundle.data
-  # /system/module_page
-  # /system/module_page/module.data
-  # /system/module_page/backend/markers.php
-  # /system/module_page/data/entities.data
-  # /system/module_page/frontend/form.cssd
-  # /system/module_page/frontend/form.js
-  # /system/module_page/frontend/pictures/icons-element.svgd
-  # /system/module_page/frontend/template--canvas_svg.tpl
-  # /system/module_core/frontend/core.jsd
-  # /system/module_captcha/frontend/captcha.css
-  # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # FILES AND DIRECTORIES
+        # ═════════════════════════════════════════════════════════════════════
+        # /../../../../../../etc/passwd
+        # /~/.ssh/id_rsa
+        # /~/any_file
+        # /.git
+        # /.git/config
+        # /.git/hooks/update.sample
+        # /dynamic/.git
+        # /dynamic/.git/config
+        # /dynamic/.git/hooks/update.sample
+        # /.editorconfig
+        # /.gitattributes
+        # /.gitignore
+        # /.htaccess
+        # /.nginx
+        # /web.config
+        # /composer.json
+        # /composer.lock
+        # /index.php
+        # /license.md
+        # /readme
+        # /readme/about-en.md
+        # /shell
+        # /shell/dynamic_reset.sh
+        # /dynamic
+        # /dynamic/readme.md
+        # /dynamic/cache
+        # /dynamic/cache/data_original.php
+        # /dynamic/cache/readme.md
+        # /dynamic/cache/structures.php
+        # /dynamic/data
+        # /dynamic/data/boot.php
+        # /dynamic/data/changes.php
+        # /dynamic/data/data.sqlite
+        # /dynamic/data/readme.md
+        # /dynamic/files
+        # /dynamic/files/readme.md
+        # /dynamic/logs
+        # /dynamic/logs/readme.md
+        # /dynamic/tmp
+        # /dynamic/tmp/readme.md
+        # /system
+        # /system/boot.php
+        # /system/bundle.data
+        # /system/module_page
+        # /system/module_page/module.data
+        # /system/module_page/backend/markers.php
+        # /system/module_page/data/entities.data
+        # /system/module_page/frontend/form.cssd
+        # /system/module_page/frontend/form.js
+        # /system/module_page/frontend/pictures/icons-element.svgd
+        # /system/module_page/frontend/pictures/icons-file.svg
+        # /system/module_page/frontend/template--canvas_svg.tpl
+        # /system/module_core/frontend/core.jsd
+        # /system/module_captcha/frontend/captcha.css
+        # /modules
+        # /modules/readme.md
+        # /modules/examples/bundle.data
+        # /modules/examples/composer.json
+        # /modules/examples/profile_classic/backend/events--module.php
+        # /modules/examples/profile_classic/copy/sitemap.xml
+        # /modules/examples/profile_classic/data/settings.data
+        # /modules/examples/profile_classic/frontend/page.cssd
+        # /modules/examples/profile_classic/frontend/template--page--not_found.tpl
+        # /modules/examples/profile_classic/frontend/pictures/page-bg.svg
+        # /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico
+        # /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png
+        # /modules/examples/profile_classic/module.data
+        # /modules/vendors/backend/events--module.php
+        # /modules/vendors/data/events.data
+        # /modules/vendors/module.data
+        # /modules/vendors/packages/readme.md
+        # /modules/vendors/packages/autoload.php
+        # /modules/vendors/packages/composer/installed.json
+        # /modules/vendors/packages/composer/installed.php
+        # /modules/vendors/packages/composer/installers/.github/workflows/phpstan.yml
+        # /modules/vendors/packages/composer/installers/composer.json
+        # /modules/vendors/packages/composer/installers/LICENSE
+        # /modules/vendors/packages/composer/installers/phpstan.neon.dist
+        # /modules/vendors/packages/composer/installers/src/bootstrap.php
+        # /modules/vendors/packages/composer/installers/src/Composer/Installers/ZendInstaller.php
+        # /modules/vendors/packages/composer/LICENSE
+        # /modules/vendors/packages/composer/platform_check.php
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/.editorconfig
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/.travis.yml
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/CHANGELOG.md
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/composer.json
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/LICENSE
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/phpunit.xml
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/src/Plugin.php
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/src/Installers/Installer.php
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/PluginTest.php
+        # /modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/Installers/InstallerTest.php
+        # /modules/vendors/packages/tinymce/tinymce/.npmignore
+        # /modules/vendors/packages/tinymce/tinymce/CHANGELOG.md
+        # /modules/vendors/packages/tinymce/tinymce/composer.json
+        # /modules/vendors/packages/tinymce/tinymce/tinymce.js
+        # /modules/vendors/packages/tinymce/tinymce/tinymce.d.ts
+        # /modules/vendors/packages/tinymce/tinymce/license.txt
+        # /modules/vendors/packages/tinymce/tinymce/icons/default/index.js
+        # /modules/vendors/packages/tinymce/tinymce/models/dom/index.js
+        # /modules/vendors/packages/tinymce/tinymce/plugins/code/index.js
+        # /modules/vendors/packages/tinymce/tinymce/skins/content/default/content.css
+        # /modules/vendors/packages/tinymce/tinymce/skins/ui/oxide/content.css
+        # /modules/vendors/packages/tinymce/tinymce/themes/silver/index.js
+        # ─────────────────────────────────────────────────────────────────────
         - title_for_files_and_directories|step_title
             title: FILES AND DIRECTORIES
         # url "/../../../../../../etc/passwd"
-        - request_url--..-..-..-..-..-..-etc-passwd|step_request
+        - request_url--8b2c14f2|step_request
             url: /../../../../../../etc/passwd
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--..-..-..-..-..-..-etc-passwd|step_check
+        - response_check--8b2c14f2|step_check
             check: token
             where: %%_test_response_http_code
             match: 400
@@ -2056,20 +2110,20 @@ tests
                 - return_result|step_return
                     value: 0
         # url "/~/.ssh/id_rsa"
-        - request_url--~-.ssh-id_rsa|step_request
+        - request_url--c93cd2bb|step_request
             url: /~/.ssh/id_rsa
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~-.ssh-id_rsa|step_check
+        - response_check--c93cd2bb|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~-.ssh-id_rsa-return_level|step_check
+        - response_check--c93cd2bb--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2077,20 +2131,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/~/any_file"
-        - request_url--~-any_file|step_request
+        - request_url--f89ef490|step_request
             url: /~/any_file
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--~-any_file|step_check
+        - response_check--f89ef490|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--~-any_file-return_level|step_check
+        - response_check--f89ef490--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2098,20 +2152,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.git"
-        - request_url--.git|step_request
+        - request_url--93965d50|step_request
             url: /.git
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.git|step_check
+        - response_check--93965d50|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.git-return_level|step_check
+        - response_check--93965d50--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2119,20 +2173,41 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.git/config"
-        - request_url--.git-config|step_request
+        - request_url--87450670|step_request
             url: /.git/config
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.git-config|step_check
+        - response_check--87450670|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.git-config-return_level|step_check
+        - response_check--87450670--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/.git/hooks/update.sample"
+        - request_url--c94505d1|step_request
+            url: /.git/hooks/update.sample
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--c94505d1|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--c94505d1--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2140,20 +2215,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/.git"
-        - request_url--dynamic-.git|step_request
+        - request_url--c8ba8ef2|step_request
             url: /dynamic/.git
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-.git|step_check
+        - response_check--c8ba8ef2|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-.git-return_level|step_check
+        - response_check--c8ba8ef2--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2161,20 +2236,41 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/.git/config"
-        - request_url--dynamic-.git-config|step_request
+        - request_url--896fc938|step_request
             url: /dynamic/.git/config
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-.git-config|step_check
+        - response_check--896fc938|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-.git-config-return_level|step_check
+        - response_check--896fc938--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/dynamic/.git/hooks/update.sample"
+        - request_url--52232503|step_request
+            url: /dynamic/.git/hooks/update.sample
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--52232503|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--52232503--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2182,20 +2278,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.editorconfig"
-        - request_url--.editorconfig|step_request
+        - request_url--a7d50424|step_request
             url: /.editorconfig
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.editorconfig|step_check
+        - response_check--a7d50424|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.editorconfig-return_level|step_check
+        - response_check--a7d50424--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2203,20 +2299,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.gitattributes"
-        - request_url--.gitattributes|step_request
+        - request_url--8792240f|step_request
             url: /.gitattributes
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.gitattributes|step_check
+        - response_check--8792240f|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.gitattributes-return_level|step_check
+        - response_check--8792240f--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2224,20 +2320,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.gitignore"
-        - request_url--.gitignore|step_request
+        - request_url--0ae12bc6|step_request
             url: /.gitignore
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.gitignore|step_check
+        - response_check--0ae12bc6|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.gitignore-return_level|step_check
+        - response_check--0ae12bc6--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2245,20 +2341,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.htaccess"
-        - request_url--.htaccess|step_request
+        - request_url--de7fc307|step_request
             url: /.htaccess
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.htaccess|step_check
+        - response_check--de7fc307|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.htaccess-return_level|step_check
+        - response_check--de7fc307--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2266,20 +2362,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/.nginx"
-        - request_url--.nginx|step_request
+        - request_url--4639459d|step_request
             url: /.nginx
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--.nginx|step_check
+        - response_check--4639459d|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--.nginx-return_level|step_check
+        - response_check--4639459d--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2287,20 +2383,62 @@ tests
             - return_result|step_return
                 value: 0
         # url "/web.config"
-        - request_url--web.config|step_request
+        - request_url--ee2664c5|step_request
             url: /web.config
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--web.config|step_check
+        - response_check--ee2664c5|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--web.config-return_level|step_check
+        - response_check--ee2664c5--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/composer.json"
+        - request_url--e044ca93|step_request
+            url: /composer.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--e044ca93|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--e044ca93--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/composer.lock"
+        - request_url--f837a19f|step_request
+            url: /composer.lock
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--f837a19f|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--f837a19f--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2308,41 +2446,41 @@ tests
             - return_result|step_return
                 value: 0
         # url "/index.php"
-        - request_url--index.php|step_request
+        - request_url--01614d89|step_request
             url: /index.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--index.php|step_check
+        - response_check--01614d89|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--index.php-return_level|step_check
+        - response_check--01614d89--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: %^(system-exit|)$%
             on_failure
             - return_result|step_return
                 value: 0
         # url "/license.md"
-        - request_url--license.md|step_request
+        - request_url--639e6ebb|step_request
             url: /license.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--license.md|step_check
+        - response_check--639e6ebb|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--license.md-return_level|step_check
+        - response_check--639e6ebb--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -2350,13 +2488,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/readme"
-        - request_url--readme|step_request
+        - request_url--7d0d3813|step_request
             url: /readme
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--readme|step_check
+        - response_check--7d0d3813|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2364,20 +2502,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/readme/about-en.md"
-        - request_url--readme-about-en.md|step_request
+        - request_url--50886e7b|step_request
             url: /readme/about-en.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--readme-about-en.md|step_check
+        - response_check--50886e7b|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--readme-about-en.md-return_level|step_check
+        - response_check--50886e7b--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -2385,13 +2523,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/shell"
-        - request_url--shell|step_request
+        - request_url--e1a381d6|step_request
             url: /shell
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--shell|step_check
+        - response_check--e1a381d6|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2399,48 +2537,69 @@ tests
             - return_result|step_return
                 value: 0
         # url "/shell/dynamic_reset.sh"
-        - request_url--shell-dynamic_reset.sh|step_request
+        - request_url--48c4fe72|step_request
             url: /shell/dynamic_reset.sh
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--shell-dynamic_reset.sh|step_check
+        - response_check--48c4fe72|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--shell-dynamic_reset.sh-return_level|step_check
+        - response_check--48c4fe72--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/dynamic"
-        - request_url--dynamic|step_request
+        - request_url--fdb651fe|step_request
             url: /dynamic
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic|step_check
+        - response_check--fdb651fe|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|step_return
                 value: 0
+        # url "/dynamic/readme.md"
+        - request_url--e8d646b4|step_request
+            url: /dynamic/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--e8d646b4|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--e8d646b4--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
         # url "/dynamic/cache"
-        - request_url--dynamic-cache|step_request
+        - request_url--84a36b38|step_request
             url: /dynamic/cache
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-cache|step_check
+        - response_check--84a36b38|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2448,20 +2607,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/cache/data_original.php"
-        - request_url--dynamic-cache-data_original.php|step_request
+        - request_url--0bed921c|step_request
             url: /dynamic/cache/data_original.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-cache-data_original.php|step_check
+        - response_check--0bed921c|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-cache-data_original.php-return_level|step_check
+        - response_check--0bed921c--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2469,20 +2628,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/cache/readme.md"
-        - request_url--dynamic-cache-readme.md|step_request
+        - request_url--fe417926|step_request
             url: /dynamic/cache/readme.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-cache-readme.md|step_check
+        - response_check--fe417926|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-cache-readme.md-return_level|step_check
+        - response_check--fe417926--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2490,20 +2649,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/cache/structures.php"
-        - request_url--dynamic-cache-structures.php|step_request
+        - request_url--97ee0155|step_request
             url: /dynamic/cache/structures.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-cache-structures.php|step_check
+        - response_check--97ee0155|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-cache-structures.php-return_level|step_check
+        - response_check--97ee0155--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2511,13 +2670,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/data"
-        - request_url--dynamic-data|step_request
+        - request_url--73f94e34|step_request
             url: /dynamic/data
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-data|step_check
+        - response_check--73f94e34|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2525,20 +2684,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/data/boot.php"
-        - request_url--dynamic-data-boot.php|step_request
+        - request_url--ab22ac51|step_request
             url: /dynamic/data/boot.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-data-boot.php|step_check
+        - response_check--ab22ac51|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-data-boot.php-return_level|step_check
+        - response_check--ab22ac51--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2546,20 +2705,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/data/changes.php"
-        - request_url--dynamic-data-changes.php|step_request
+        - request_url--ec856453|step_request
             url: /dynamic/data/changes.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-data-changes.php|step_check
+        - response_check--ec856453|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-data-changes.php-return_level|step_check
+        - response_check--ec856453--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2567,20 +2726,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/data/data.sqlite"
-        - request_url--dynamic-data-data.sqlite|step_request
+        - request_url--1d25a671|step_request
             url: /dynamic/data/data.sqlite
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-data-data.sqlite|step_check
+        - response_check--1d25a671|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-data-data.sqlite-return_level|step_check
+        - response_check--1d25a671--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2588,20 +2747,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/data/readme.md"
-        - request_url--dynamic-data-readme.md|step_request
+        - request_url--f9ec6f32|step_request
             url: /dynamic/data/readme.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-data-readme.md|step_check
+        - response_check--f9ec6f32|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-data-readme.md-return_level|step_check
+        - response_check--f9ec6f32--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2609,13 +2768,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/files"
-        - request_url--dynamic-files|step_request
+        - request_url--c8c954e8|step_request
             url: /dynamic/files
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-files|step_check
+        - response_check--c8c954e8|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2623,20 +2782,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/files/readme.md"
-        - request_url--dynamic-files-readme.md|step_request
+        - request_url--daa8d8e4|step_request
             url: /dynamic/files/readme.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-files-readme.md|step_check
+        - response_check--daa8d8e4|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-files-readme.md-return_level|step_check
+        - response_check--daa8d8e4--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -2644,13 +2803,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/logs"
-        - request_url--dynamic-logs|step_request
+        - request_url--8dca9be0|step_request
             url: /dynamic/logs
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-logs|step_check
+        - response_check--8dca9be0|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2658,20 +2817,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/logs/readme.md"
-        - request_url--dynamic-logs-readme.md|step_request
+        - request_url--9e4a0707|step_request
             url: /dynamic/logs/readme.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-logs-readme.md|step_check
+        - response_check--9e4a0707|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-logs-readme.md-return_level|step_check
+        - response_check--9e4a0707--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: 
@@ -2679,13 +2838,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/tmp"
-        - request_url--dynamic-tmp|step_request
+        - request_url--d8e3212a|step_request
             url: /dynamic/tmp
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-tmp|step_check
+        - response_check--d8e3212a|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2693,55 +2852,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/dynamic/tmp/readme.md"
-        - request_url--dynamic-tmp-readme.md|step_request
+        - request_url--07beb285|step_request
             url: /dynamic/tmp/readme.md
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--dynamic-tmp-readme.md|step_check
+        - response_check--07beb285|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--dynamic-tmp-readme.md-return_level|step_check
-            check: token
-            where: %%_test_response_return_level
-            match: system-exit
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url "/modules"
-        - request_url--modules|step_request
-            url: /modules
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--modules|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 404
-            on_failure
-            - return_result|step_return
-                value: 0
-        # url "/modules/readme.md"
-        - request_url--modules-readme.md|step_request
-            url: /modules/readme.md
-            is_https|param_from_form
-              name: is_https
-            proxy|param_from_form
-              name: proxy
-        - response_check--modules-readme.md|step_check
-            check: token
-            where: %%_test_response_http_code
-            match: 403
-            on_failure
-            - return_result|step_return
-                value: 0
-        - response_check--modules-readme.md-return_level|step_check
+        - response_check--07beb285--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -2749,13 +2873,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system"
-        - request_url--system|step_request
+        - request_url--6ce91b10|step_request
             url: /system
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system|step_check
+        - response_check--6ce91b10|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2763,55 +2887,55 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/boot.php"
-        - request_url--system-boot.php|step_request
+        - request_url--df5f134e|step_request
             url: /system/boot.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-boot.php|step_check
+        - response_check--df5f134e|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-boot.php-return_level|step_check
+        - response_check--df5f134e--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/system/bundle.data"
-        - request_url--system-bundle.data|step_request
+        - request_url--c5e3478f|step_request
             url: /system/bundle.data
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-bundle.data|step_check
+        - response_check--c5e3478f|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-bundle.data-return_level|step_check
+        - response_check--c5e3478f--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/system/module_page"
-        - request_url--system-module_page|step_request
+        - request_url--846a1629|step_request
             url: /system/module_page
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page|step_check
+        - response_check--846a1629|step_check
             check: token
             where: %%_test_response_http_code
             match: 404
@@ -2819,76 +2943,76 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_page/module.data"
-        - request_url--system-module_page-module.data|step_request
+        - request_url--d893e680|step_request
             url: /system/module_page/module.data
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-module.data|step_check
+        - response_check--d893e680|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-module_page-module.data-return_level|step_check
+        - response_check--d893e680--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/system/module_page/backend/markers.php"
-        - request_url--system-module_page-backend-markers.php|step_request
+        - request_url--3f72bf7c|step_request
             url: /system/module_page/backend/markers.php
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-backend-markers.php|step_check
+        - response_check--3f72bf7c|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-module_page-backend-markers.php-return_level|step_check
+        - response_check--3f72bf7c--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/system/module_page/data/entities.data"
-        - request_url--system-module_page-data-entities.data|step_request
+        - request_url--fbd63b8e|step_request
             url: /system/module_page/data/entities.data
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-data-entities.data|step_check
+        - response_check--fbd63b8e|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-module_page-data-entities.data-return_level|step_check
+        - response_check--fbd63b8e--return_level|step_check
             check: token
             where: %%_test_response_return_level
-            match: system-exit
+            match: 
             on_failure
             - return_result|step_return
                 value: 0
         # url "/system/module_page/frontend/form.cssd"
-        - request_url--system-module_page-frontend-form.cssd|step_request
+        - request_url--09f0bdd1|step_request
             url: /system/module_page/frontend/form.cssd
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-form.cssd|step_check
+        - response_check--09f0bdd1|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -2896,13 +3020,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_page/frontend/form.js"
-        - request_url--system-module_page-frontend-form.js|step_request
+        - request_url--2604c783|step_request
             url: /system/module_page/frontend/form.js
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-form.js|step_check
+        - response_check--2604c783|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -2910,13 +3034,27 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_page/frontend/pictures/icons-element.svgd"
-        - request_url--system-module_page-frontend-pictures-icons-element.svgd|step_request
+        - request_url--aea66a20|step_request
             url: /system/module_page/frontend/pictures/icons-element.svgd
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-pictures-icons-element.svgd|step_check
+        - response_check--aea66a20|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/system/module_page/frontend/pictures/icons-file.svg"
+        - request_url--df2345d1|step_request
+            url: /system/module_page/frontend/pictures/icons-file.svg
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--df2345d1|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -2924,20 +3062,20 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_page/frontend/template--canvas_svg.tpl"
-        - request_url--system-module_page-frontend-template--canvas_svg.tpl|step_request
+        - request_url--66912de1|step_request
             url: /system/module_page/frontend/template--canvas_svg.tpl
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_page-frontend-template--canvas_svg.tpl|step_check
+        - response_check--66912de1|step_check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|step_return
                 value: 0
-        - response_check--system-module_page-frontend-template--canvas_svg.tpl-return_level|step_check
+        - response_check--66912de1--return_level|step_check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -2945,13 +3083,13 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_core/frontend/core.jsd"
-        - request_url--system-module_core-frontend-core.jsd|step_request
+        - request_url--7b7a0cc7|step_request
             url: /system/module_core/frontend/core.jsd
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_core-frontend-core.jsd|step_check
+        - response_check--7b7a0cc7|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
@@ -2959,21 +3097,973 @@ tests
             - return_result|step_return
                 value: 0
         # url "/system/module_captcha/frontend/captcha.css"
-        - request_url--system-module_captcha-frontend-captcha.css|step_request
+        - request_url--223a800f|step_request
             url: /system/module_captcha/frontend/captcha.css
             is_https|param_from_form
               name: is_https
             proxy|param_from_form
               name: proxy
-        - response_check--system-module_captcha-frontend-captcha.css|step_check
+        - response_check--223a800f|step_check
             check: token
             where: %%_test_response_http_code
             match: 200
             on_failure
             - return_result|step_return
                 value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # return
-  # ─────────────────────────────────────────────────────────────────────
+        # url "/modules"
+        - request_url--9bfc39f4|step_request
+            url: /modules
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--9bfc39f4|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 404
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/readme.md"
+        - request_url--71034a5f|step_request
+            url: /modules/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--71034a5f|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/bundle.data"
+        - request_url--409b17ab|step_request
+            url: /modules/examples/bundle.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--409b17ab|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--409b17ab--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/composer.json"
+        - request_url--70bcf379|step_request
+            url: /modules/examples/composer.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--70bcf379|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--70bcf379--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/backend/events--module.php"
+        - request_url--c8c11515|step_request
+            url: /modules/examples/profile_classic/backend/events--module.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--c8c11515|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--c8c11515--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/copy/sitemap.xml"
+        - request_url--81e0fa44|step_request
+            url: /modules/examples/profile_classic/copy/sitemap.xml
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--81e0fa44|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/data/settings.data"
+        - request_url--f802fc0d|step_request
+            url: /modules/examples/profile_classic/data/settings.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--f802fc0d|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--f802fc0d--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/frontend/page.cssd"
+        - request_url--b3ea6dde|step_request
+            url: /modules/examples/profile_classic/frontend/page.cssd
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--b3ea6dde|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/frontend/template--page--not_found.tpl"
+        - request_url--0608160e|step_request
+            url: /modules/examples/profile_classic/frontend/template--page--not_found.tpl
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--0608160e|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--0608160e--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: system-exit
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/frontend/pictures/page-bg.svg"
+        - request_url--a3936075|step_request
+            url: /modules/examples/profile_classic/frontend/pictures/page-bg.svg
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--a3936075|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico"
+        - request_url--549e7731|step_request
+            url: /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--549e7731|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png"
+        - request_url--04d09d18|step_request
+            url: /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--04d09d18|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 200
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/examples/profile_classic/module.data"
+        - request_url--997a889b|step_request
+            url: /modules/examples/profile_classic/module.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--997a889b|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--997a889b--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/backend/events--module.php"
+        - request_url--99c4df90|step_request
+            url: /modules/vendors/backend/events--module.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--99c4df90|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--99c4df90--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/data/events.data"
+        - request_url--55ac1826|step_request
+            url: /modules/vendors/data/events.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--55ac1826|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--55ac1826--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/module.data"
+        - request_url--1dd9a50a|step_request
+            url: /modules/vendors/module.data
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--1dd9a50a|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--1dd9a50a--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/readme.md"
+        - request_url--592a9e29|step_request
+            url: /modules/vendors/packages/readme.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--592a9e29|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--592a9e29--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/autoload.php"
+        - request_url--3dd2dabb|step_request
+            url: /modules/vendors/packages/autoload.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--3dd2dabb|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--3dd2dabb--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installed.json"
+        - request_url--733c5229|step_request
+            url: /modules/vendors/packages/composer/installed.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--733c5229|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--733c5229--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installed.php"
+        - request_url--53378c68|step_request
+            url: /modules/vendors/packages/composer/installed.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--53378c68|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--53378c68--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/.github/workflows/phpstan.yml"
+        - request_url--23abc2e4|step_request
+            url: /modules/vendors/packages/composer/installers/.github/workflows/phpstan.yml
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--23abc2e4|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--23abc2e4--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/composer.json"
+        - request_url--4bbc2982|step_request
+            url: /modules/vendors/packages/composer/installers/composer.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--4bbc2982|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--4bbc2982--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/LICENSE"
+        - request_url--5f0e5f42|step_request
+            url: /modules/vendors/packages/composer/installers/LICENSE
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--5f0e5f42|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--5f0e5f42--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/phpstan.neon.dist"
+        - request_url--feb36501|step_request
+            url: /modules/vendors/packages/composer/installers/phpstan.neon.dist
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--feb36501|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--feb36501--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/src/bootstrap.php"
+        - request_url--79ed0e27|step_request
+            url: /modules/vendors/packages/composer/installers/src/bootstrap.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--79ed0e27|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--79ed0e27--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/installers/src/Composer/Installers/ZendInstaller.php"
+        - request_url--6cdf2c2e|step_request
+            url: /modules/vendors/packages/composer/installers/src/Composer/Installers/ZendInstaller.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--6cdf2c2e|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--6cdf2c2e--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/LICENSE"
+        - request_url--dff52a28|step_request
+            url: /modules/vendors/packages/composer/LICENSE
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--dff52a28|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dff52a28--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/composer/platform_check.php"
+        - request_url--dd53a952|step_request
+            url: /modules/vendors/packages/composer/platform_check.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--dd53a952|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--dd53a952--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/.editorconfig"
+        - request_url--76531dc9|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/.editorconfig
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--76531dc9|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--76531dc9--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/.travis.yml"
+        - request_url--1387661d|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/.travis.yml
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--1387661d|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--1387661d--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/CHANGELOG.md"
+        - request_url--9a1285d0|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/CHANGELOG.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--9a1285d0|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--9a1285d0--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/composer.json"
+        - request_url--31c2d37e|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/composer.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--31c2d37e|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--31c2d37e--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/LICENSE"
+        - request_url--3edf300c|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/LICENSE
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--3edf300c|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--3edf300c--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/phpunit.xml"
+        - request_url--63995b88|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/phpunit.xml
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--63995b88|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--63995b88--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/src/Plugin.php"
+        - request_url--adcdf909|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/src/Plugin.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--adcdf909|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--adcdf909--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/src/Installers/Installer.php"
+        - request_url--3fed212d|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/src/Installers/Installer.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--3fed212d|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--3fed212d--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/PluginTest.php"
+        - request_url--95a01682|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/PluginTest.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--95a01682|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--95a01682--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/Installers/InstallerTest.php"
+        - request_url--0ad8ad2c|step_request
+            url: /modules/vendors/packages/oomphinc/composer-installers-extender/tests/src/Installers/InstallerTest.php
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--0ad8ad2c|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--0ad8ad2c--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/.npmignore"
+        - request_url--282a90e8|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/.npmignore
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--282a90e8|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--282a90e8--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/CHANGELOG.md"
+        - request_url--f2fece6e|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/CHANGELOG.md
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--f2fece6e|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--f2fece6e--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/composer.json"
+        - request_url--45878fb4|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/composer.json
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--45878fb4|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--45878fb4--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/tinymce.js"
+        - request_url--039272ab|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/tinymce.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--039272ab|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/tinymce.d.ts"
+        - request_url--1ffb4d5d|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/tinymce.d.ts
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--1ffb4d5d|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--1ffb4d5d--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/license.txt"
+        - request_url--900283b9|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/license.txt
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--900283b9|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: 403
+            on_failure
+            - return_result|step_return
+                value: 0
+        - response_check--900283b9--return_level|step_check
+            check: token
+            where: %%_test_response_return_level
+            match: 
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/icons/default/index.js"
+        - request_url--8510f223|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/icons/default/index.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--8510f223|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/models/dom/index.js"
+        - request_url--d3e55958|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/models/dom/index.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--d3e55958|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/plugins/code/index.js"
+        - request_url--9b28796b|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/plugins/code/index.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--9b28796b|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/skins/content/default/content.css"
+        - request_url--c5eff0b0|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/skins/content/default/content.css
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--c5eff0b0|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/skins/ui/oxide/content.css"
+        - request_url--3e4d0ea1|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/skins/ui/oxide/content.css
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--3e4d0ea1|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+        # url "/modules/vendors/packages/tinymce/tinymce/themes/silver/index.js"
+        - request_url--50cff443|step_request
+            url: /modules/vendors/packages/tinymce/tinymce/themes/silver/index.js
+            is_https|param_from_form
+              name: is_https
+            proxy|param_from_form
+              name: proxy
+        - response_check--50cff443|step_check
+            check: token
+            where: %%_test_response_http_code
+            match: %^(200|404)$%
+            on_failure
+            - return_result|step_return
+                value: 0
+    # ─────────────────────────────────────────────────────────────────────
+    # return
+    # ─────────────────────────────────────────────────────────────────────
     - return_result|step_return
         value: 1

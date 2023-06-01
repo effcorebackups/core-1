@@ -1,22 +1,23 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class table_head extends markup {
+namespace effcore;
 
-  public $tag_name = 'thead';
+class table_head extends markup {
 
-  function __construct($attributes = [], $children = [], $weight = 0) {
-    parent::__construct(null, $attributes, $children, $weight);
-  }
+    public $tag_name = 'thead';
 
-  function child_insert($child, $id = null) {
-    if ($child instanceof table_head_row) return parent::child_insert(                       $child,                $id);
-    if ($child instanceof instance      ) return parent::child_insert(new table_head_row([], $child->values_get()), $id);
-    if (is_array($child)                ) return parent::child_insert(new table_head_row([], $child),               $id);
-  }
+    function __construct($attributes = [], $children = [], $weight = 0) {
+        parent::__construct(null, $attributes, $children, $weight);
+    }
 
-}}
+    function child_insert($child, $id = null) {
+        if ($child instanceof table_head_row) return parent::child_insert(                       $child,                $id);
+        if ($child instanceof instance      ) return parent::child_insert(new table_head_row([], $child->values_get()), $id);
+        if (is_array($child)                ) return parent::child_insert(new table_head_row([], $child),               $id);
+    }
+
+}

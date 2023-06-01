@@ -5,9 +5,15 @@ file_types
 - data
     type: data
     kind: protected
+    headers
+    - Content-type: text/plain
 - sqlite
     type: sqlite
     kind: protected
+    headers
+    - Content-type: application/vnd.sqlite3
 - db
     type: db
     kind: protected
+    headers
+    - Content-type: application/vnd.sqlite3

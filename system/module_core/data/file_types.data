@@ -14,18 +14,24 @@ file_types
 - exe
     type: exe
     kind: protected
+    headers
+    - Content-type: application/octet-stream
 - inc
     type: inc
     kind: protected
 - ini
     type: ini
     kind: protected
+    headers
+    - Content-type: text/plain
 - lock
     type: lock
     kind: protected
 - log
     type: log
     kind: protected
+    headers
+    - Content-type: text/plain
 - markdown
     type: md
     kind: protected
@@ -34,12 +40,18 @@ file_types
 - phar
     type: phar
     kind: protected
+    headers
+    - Content-type: application/phar
 - php
     type: php
     kind: protected
+    headers
+    - Content-type: application/x-php
 - po
     type: po
     kind: protected
+    headers
+    - Content-type: text/plain
 - profile
     type: profile
     kind: protected
@@ -49,27 +61,39 @@ file_types
 - sh
     type: sh
     kind: protected
+    headers
+    - Content-type: application/x-sh
 - sql
     type: sql
     kind: protected
+    headers
+    - Content-type: text/plain
 - template
     type: tpl
     kind: protected
+    headers
+    - Content-type: text/plain
 - tmp
     type: tmp
     kind: protected
 - tmpl
     type: tmpl
     kind: protected
+    headers
+    - Content-type: text/plain
 - twig
     type: twig
     kind: protected
+    headers
+    - Content-type: application/twig
 - unknown
     type: unknown
     kind: protected
 - yml
     type: yml
     kind: protected
+    headers
+    - Content-type: text/yaml
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────
@@ -125,10 +149,22 @@ file_types
     type: aiff
     headers
     - Content-type: audio/aiff
+- apk
+    type: apk
+    headers
+    - Content-type: application/vnd.android.package-archive
+- apng
+    type: apng
+    headers
+    - Content-type: image/png
 - avi
     type: avi
     headers
     - Content-type: video/x-msvideo
+- avif
+    type: avif
+    headers
+    - Content-type: image/avif
 - atom
     type: atom
     headers
@@ -158,6 +194,10 @@ file_types
     type: csv
     headers
     - Content-type: text/csv
+- deb
+    type: deb
+    headers
+    - Content-type: application/vnd.debian.binary-package
 - der
     type: der
     headers
@@ -194,6 +234,10 @@ file_types
     type: gzip
     headers
     - Content-type: application/x-gzip
+- heif
+    type: heif
+    headers
+    - Content-type: image/heif
 - htm
     type: htm
     headers
@@ -443,6 +487,10 @@ file_types
     type: xml
     headers
     - Content-type: text/xml
+- xpm
+    type: xpm
+    headers
+    - Content-type: image/x-xpixmap
 - xsd
     type: xsd
     headers

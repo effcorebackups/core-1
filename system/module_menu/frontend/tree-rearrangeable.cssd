@@ -1,27 +1,29 @@
 
-  [role='tree'][data-visualization-mode$='rearrangeable'] x-draggable-icon {
-    float: left;
-    position: relative;
-    z-index: 100;
-    width: 30px;
-    height: 44px;
-    margin-right: 10px;
-    cursor: move;
-    background: %%_color__main url('/system/module_page/frontend/pictures/icons-drag_and_drop.svgd?color=%%_return_token_color_encode{color__main}') 50% 50%}
+[role='tree'][data-visualization-mode$='rearrangeable'] x-draggable-icon {
+  float: left;
+  position: relative;
+  z-index: 100;
+  width: 30px;
+  height: 44px;
+  margin-right: 10px;
+  cursor: move;
+  background: %%_color__main url('/system/module_page/frontend/pictures/icons-drag_and_drop.svgd?color=%%_return_token_color_encode(color__main)') 50% 50%;
+}
 
-  [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='before']   {background: %%_color__warning; display: block; position: relative; height: 6px}
-  [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='in'    ]   {background: %%_color__warning; display: block; position: absolute; height: 46px; width: 38px; z-index: 200; opacity: .5}
-  [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]   {background: %%_color__warning; display: block; position: relative; height: 6px}
-  [role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active] {background: %%_color__ok}
+[role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='before']   {background: %%_color__warning; display: block; position: relative; height: 6px}
+[role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='in'    ]   {background: %%_color__warning; display: block; position: absolute; height: 46px; width: 38px; z-index: 200; opacity: .5}
+[role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-position='after' ]   {background: %%_color__warning; display: block; position: relative; height: 6px}
+[role='tree'][data-visualization-mode$='rearrangeable'] x-droppable-area[data-droppable-is-active] {background: %%_color__ok}
 
-  [role='tree'][data-visualization-mode$='rearrangeable']                                   li:not(:last-child) {padding-bottom: 0}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                  {padding-bottom: 0; padding-top: 0}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li:not(:last-child) > x-droppable-area[data-position='after'] {display: none}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                                      x-droppable-area                         {visibility: hidden}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li                                      x-droppable-area                         {visibility: visible}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active]        x-droppable-area                         {visibility: hidden}
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active] + li > x-droppable-area[data-position='before'] {visibility: hidden}
+[role='tree'][data-visualization-mode$='rearrangeable']                                   li:not(:last-child) {padding-bottom: 0}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                  {padding-bottom: 0; padding-top: 0}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li:not(:last-child) > x-droppable-area[data-position='after'] {display: none}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed]             li                                      x-droppable-area                         {visibility: hidden}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li                                      x-droppable-area                         {visibility: visible}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active]        x-droppable-area                         {visibility: hidden}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-has-rearrangeable-is-active] li[data-rearrangeable-is-active] + li > x-droppable-area[data-position='before'] {visibility: hidden}
 
-  [role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed] x-item {
-    border-left: 0;
-    padding-left: 0}
+[role='tree'][data-visualization-mode$='rearrangeable'][data-js-is-processed] x-item {
+  border-left: 0;
+  padding-left: 0;
+}

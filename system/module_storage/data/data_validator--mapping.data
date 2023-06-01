@@ -1,0 +1,62 @@
+data_validators
+- mapping|data_validator
+    id: mapping
+    scenario
+    # check "mapping|mapping/*"
+    - is-mapping|step_validate
+        check: current
+        where: dpath
+        match: %^mapping(/.+|)$%
+        on_failure
+        # when NOT "mapping"
+        - error_register|step_validate_error_register
+            break: nested
+            message|text_multiline
+              text
+              - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
+              - 1: Each item must be contained in the "%%_root" array.
+              args
+              - root: mapping
+        on_success
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # check "mapping"
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - is-mapping:root|step_validate
+            check: current
+            where: dpath
+            match: mapping
+            on_success
+            # check "mapping:__TYPE__"
+            - is-type|step_validate
+                check: current
+                where: type
+                match: array
+                on_failure
+                # when "mapping:__INVALID__TYPE__"
+                - error_register|step_validate_error_register
+                    break: nested
+                    message|text
+                      text: Item "%%_dpath_value" must be of type "%%_type"!
+                      args
+                      - type: array
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # check "mapping/item"
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - is-mapping-item|step_validate
+            check: current
+            where: dpath
+            match: %^mapping(/[^/]+)$%
+            on_success
+            # check "mapping/item:__TYPE__"
+            - is-type|step_validate
+                check: current
+                where: type
+                match: %^(string|integer|double)$%
+                on_failure
+                # when "mapping/item:__INVALID__TYPE__"
+                - error_register|step_validate_error_register
+                    break: nested
+                    message|text
+                      text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                      args
+                      - types: string, integer, double

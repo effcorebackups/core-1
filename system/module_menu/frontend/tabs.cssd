@@ -1,37 +1,37 @@
 
-  /* x-tabs */
+/* x-tabs */
 
-  x-tabs {display: block; margin: 100px auto}
+x-tabs {display: block; margin: 100px auto}
 
-  /* x-top-items */
+/* x-top-items */
 
-  x-tabs x-top-items {
-    display: block;
-    border-bottom: 5px solid %%_color__tabs;
-    font-size: 1.1em}
-  x-tabs x-top-items ul {margin: 0; padding: 0; list-style: none}
-  x-tabs x-top-items li {margin: 0; padding: 0; display: inline-block}
+x-tabs x-top-items {
+  display: block;
+  border-bottom: 5px solid %%_color__tabs;
+  font-size: 1.1em}
+x-tabs x-top-items ul {margin: 0; padding: 0; list-style: none}
+x-tabs x-top-items li {margin: 0; padding: 0; display: inline-block}
 
-  x-tabs x-top-items a {
-    display: inline-block;
-    padding: 15px 15px 10px 15px;
-    border-radius: 15px 15px 0 0}
-  x-tabs x-top-items a             {color: %%_color__tabs_link}
-  x-tabs x-top-items a[href]:hover {color: %%_color__tabs_link_active_no_bg}
-  x-tabs x-top-items a[aria-selected      ='true'],
-  x-tabs x-top-items a[data-selected-trail='true'] {color: %%_color__tabs_link_active !important; background: %%_color__tabs; text-decoration: none}
+x-tabs x-top-items a {
+  display: inline-block;
+  padding: 15px 15px 10px 15px;
+  border-radius: 15px 15px 0 0}
+x-tabs x-top-items a             {color: %%_color__tabs_link}
+x-tabs x-top-items a[href]:hover {color: %%_color__tabs_link_active_no_bg}
+x-tabs x-top-items a[aria-selected      ='true'],
+x-tabs x-top-items a[data-selected-trail='true'] {color: %%_color__tabs_link_active !important; background: %%_color__tabs; text-decoration: none}
 
-  /* x-sub-items */
+/* x-sub-items */
 
-  x-tabs x-sub-items {
-    display: block;
-    padding: 10px 0;
-    border-left: 1px solid %%_color__tabs}
-  x-tabs x-sub-items ul {margin: 0; padding-left: 14px; list-style: none}
-  x-tabs x-sub-items ul ul {padding-left: 0}
-  x-tabs x-sub-items ul ul li::before {content: '— '}
+x-tabs x-sub-items {
+  display: block;
+  padding: 10px 0;
+  border-left: 1px solid %%_color__tabs}
+x-tabs x-sub-items ul {margin: 0; padding-left: 14px; list-style: none}
+x-tabs x-sub-items ul ul {padding-left: 0}
+x-tabs x-sub-items ul ul li::before {content: '— '}
 
-  x-tabs x-sub-items a             {color: %%_color__tabs_link}
-  x-tabs x-sub-items a[href]:hover {color: %%_color__tabs_link_active_no_bg}
-  x-tabs x-sub-items a[aria-selected      ='true'],
-  x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color__tabs_link_active_no_bg !important}
+x-tabs x-sub-items a             {color: %%_color__tabs_link}
+x-tabs x-sub-items a[href]:hover {color: %%_color__tabs_link_active_no_bg}
+x-tabs x-sub-items a[aria-selected      ='true'],
+x-tabs x-sub-items a[data-selected-trail='true'] {color: %%_color__tabs_link_active_no_bg !important}

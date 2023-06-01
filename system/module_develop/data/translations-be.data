@@ -197,7 +197,7 @@ translations
     - stack: стэк
     - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
     - string with parameter = %%_n: радок з параметрам = %%_n
-    - string with plural value = %%_number second%%_plural{number\|s}: радок з множным лікам = %%_number секунд%%_plural{number|a-ji}
+    - string with plural value = %%_number second%%_plural(number\|s): радок з множным лікам = %%_number секунд%%_plural(number|a-ji)
     - submission: перадача
     - Switcher 1: Выключальнік 1
     - Switcher 2 (checked): Выключальнік 2 (адзначаны)

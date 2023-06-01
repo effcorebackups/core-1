@@ -12,7 +12,7 @@ translations
     - Europe: Еўропа
     - Indian: Індыя
     - Pacific: Ціхі акіян
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - - no -: - няма -
     - - root -: - корань -
     - - select -: - абраць -
@@ -21,7 +21,7 @@ translations
     - %%_entity_title_context\: insert: %%_entity_title_context: уставіць
     - %%_entity_title_context\: update: %%_entity_title_context: абнавіць
     - %%_number sec.: %%_number сек.
-    - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-ji}
+    - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
     - A new password was sent to the selected Email.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - access allowed by permission "%%_permission": доступ дазволены па дазволу "%%_permission"
     - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
@@ -79,8 +79,8 @@ translations
     - Build number: Нумар зборкі
     - bundle build number: нумар зборкі пакету
     - bundle description: апісанне пакету
-    - Bundle for examples of custom profiles.: Пакет прыкладаў карыстацкіх профіляў.
     - bundle id: id пакету
+    - Bundle of examples of custom modules and profiles.: Пакет прыкладаў карыстацкіх модуляў і профіляў.
     - bundle title: загаловак пакету
     - Bundle with system.: Пакет з сістэмай.
     - Button active: Кнопка актыўная
@@ -122,7 +122,7 @@ translations
     - Console settings: Налады кансолі
     - Content in the &lt;head&gt;: Змесціва ў &lt;head&gt;
     - Content of the "global.cssd" file: Змесціва файла "global.cssd"
-    - Content of the "robots.txt" file: Змесціва файла robots.txt
+    - Content of the "robots.txt" file: Змесціва файла "robots.txt"
     - Content of the "sitemap.xml" file: Змесціва файла "sitemap.xml"
     - Content: Змесціва
     - Cookie domain: Дамен cookie
@@ -235,14 +235,14 @@ translations
     - Field "%%_title" should be enabled!: Поле "%%_title" павінна быць уключана!
     - Field "%%_title" should be selected!: Поле "%%_title" павінна быць абрана!
     - Field "%%_title".: Поле "%%_title".
-    - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць максімум %%_number файл%%_plural{number|au-a}.
-    - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле можа змяшчаць мінімум %%_number файл%%_plural{number|au-a}.
-    - Field can contain only %%_number file%%_plural{number\|s}.: Поле можа змяшчаць толькі %%_number файл%%_plural{number|au-a}.
+    - Field can contain a maximum of %%_number file%%_plural(number\|s).: Поле можа змяшчаць максімум %%_number файл%%_plural(number|au-a).
+    - Field can contain a minimum of %%_number file%%_plural(number\|s).: Поле можа змяшчаць мінімум %%_number файл%%_plural(number|au-a).
+    - Field can contain only %%_number file%%_plural(number\|s).: Поле можа змяшчаць толькі %%_number файл%%_plural(number|au-a).
     - Field name: Імя поля
     - Field value at the current moment\: %%_value: Значэнне поля ў бягучы момант: %%_value
-    - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural{number|au-a}.
-    - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural{number|au-a}.
-    - Field value can contain only %%_number character%%_plural{number\|s}.: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural{number|au-a}.
+    - Field value can contain a maximum of %%_number character%%_plural(number\|s).: Значэнне поля можа змяшчаць максімум %%_number сімвал%%_plural(number|au-a).
+    - Field value can contain a minimum of %%_number character%%_plural(number\|s).: Значэнне поля можа змяшчаць мінімум %%_number сімвал%%_plural(number|au-a).
+    - Field value can contain only %%_number character%%_plural(number\|s).: Значэнне поля можа змяшчаць толькі %%_number сімвал%%_plural(number|au-a).
     - Field value can contain only the next characters\: %%_characters: Значэнне поля можа змяшчаць толькі наступныя сімвалы: %%_characters
     - Field value can contain only the next classes\: %%_classes: Значэнне поля можа змяшчаць толькі наступныя класы: %%_classes
     - Field value can contain Unicode.: Значэнне поля можа змяшчаць Юнікод.
@@ -257,7 +257,7 @@ translations
     - Field value is not in valid range.: Значэнне поля не адпавядае дапушчальнаму дыяпазону.
     - Field value should be represented in the international format of telephone numbers.: Значэнне поля павiнна быць прадстаўлена ў міжнародным фармаце тэлефонных нумароў.
     - Field value should be start with "%%_value".: Значэнне поля павінна пачынацца з "%%_value".
-    - Field value should contain a minimum of %%_number character%%_plural{number\|s}.: Значэнне поля павінна змяшчаць мінімум %%_number сімвал%%_plural{number|au-a}.
+    - Field value should contain a minimum of %%_number character%%_plural(number\|s).: Значэнне поля павінна змяшчаць мінімум %%_number сімвал%%_plural(number|au-a).
     - Field value should contain anchor.: Значэнне поля павінна змяшчаць якар.
     - Field value should contain domain.: Значэнне поля павінна змяшчаць дамен.
     - Field value should contain path.: Значэнне поля павінна змяшчаць шлях.
@@ -337,8 +337,8 @@ translations
     - go to Russian language: перайсці на Рускую мову
     - go to section "%%_title": перайсці на падзел "%%_title"
     - Group "%%_title" has a changed value.: Група "%%_title" мае змененае значэнне.
-    - Group "%%_title" should contain a maximum %%_number item%%_plural{number\|s}!: Група "%%_title" павінна змяшчаць максімальна %%_number элемент%%_plural{number|au-a}!
-    - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Група "%%_title" павінна змяшчаць мінімальна %%_number элемент%%_plural{number|au-a}!
+    - Group "%%_title" should contain a maximum %%_number item%%_plural(number\|s)!: Група "%%_title" павінна змяшчаць максімальна %%_number элемент%%_plural(number|au-a)!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural(number\|s)!: Група "%%_title" павінна змяшчаць мінімальна %%_number элемент%%_plural(number|au-a)!
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна змяшчаць як мінімум адзін абраны элемент!
     - Group "%%_title".: Група "%%_title".
     - Group: Група
@@ -349,6 +349,7 @@ translations
     - HTTPS is required: Патрабуецца HTTPS
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - If a domain is specified, then it and its subdomains are used.: Калі дамен зададзены, то выкарыстоўваецца ён і яго поддомены.
+    - If filled, the file will be available at\: %%_page: Калі запоўнена, файл будзе даступны па адрасе: %%_page
     - If no domain is specified, then the current domain is used, excluding subdomains.: Калі дамен не зададзены, то выкарыстоўваецца бягучы дамен без уліку паддаменаў.
     - Ignore this email if you have not completed any registration on %%_domain.: Праігнаруйце гэты ліст, калі Вы не ажыццяўлялі ніякай рэгістрацыі на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: У рэжыме "Ананімныя карыстальнікі + Зарэгістраваныя карыстальнікі" зламыснік можа паслаць мноства падробленых ананімных галасоў!
@@ -423,6 +424,7 @@ translations
     - Item of type "%%_type" with title "%%_title" was not inserted!: Элемент тыпу "%%_type" з назвай "%%_title" не быў даданы!
     - Item of type "%%_type" with title "%%_title" was not updated!: Элемент тыпу "%%_type" з назвай "%%_title" не быў абноўлены!
     - Item of type "%%_type" with title "%%_title" was updated.: Элемент тыпу "%%_type" з назвай "%%_title" быў абноўлены.
+    - Item\: %%_item: Элемент: %%_item
     - items: элементы
     - Items: Элементы
     - K: К
@@ -441,6 +443,7 @@ translations
     - Layout: Макет
     - Layouts: Макеты
     - Leading tab character found.: Знойдзены вядучы сімвал табуляцыі.
+    - Leave 0 if you want to remove page size limits.: Пакіньце 0, калі Вы жадаеце прыбраць абмежаванні памеру старонкі.
     - Leave 0 if you want to use global page size settings.: Пакіньце 0, калі Вы жадаеце выкарыстоўваць глабальныя налады памеру старонкі.
     - leave edit mode: пакінуць рэжым рэдагавання
     - Leave the field blank if you do not want to change its value.: Пакіньце поле пустым, калі Вы не жадаеце змяняць ягонае значэнне.
@@ -500,6 +503,7 @@ translations
     - Menus: Меню
     - Message from storage\: %%_message: Паведамленне ад сховішча: %%_message
     - Message: Паведамленне
+    - Message\: %%_message: Паведамленне: %%_message
     - Messages: Паведамленні
     - META editing form: Форма рэдагавання META
     - META: МЕТА
@@ -515,10 +519,12 @@ translations
     - Module data "%%_title" (%%_id) was removed.: Дадзеныя модуля "%%_title" (%%_id) былі выдалены.
     - Module for demonstrating capabilities.: Модуль для дэманстрацыі магчымасцяў.
     - Module for development.: Модуль для распрацоўкі.
+    - Module for example of profile "Classic".: Модуль для прыкладу профілю "Класіка".
     - Module for localization.: Модуль для лакалізацыі.
     - Module for publishing projects.: Модуль для публікацыі праектаў.
     - Module for storages support.: Модуль для падтрымкі сховішчаў дадзеных.
     - Module for support the operation of the whole system.: Модуль для падтрымкі працы ўсёй сістэмы.
+    - Module for support vendors packages.: Модуль падтрымкі пакетаў пастаўшчыкоў.
     - Module for testing.: Модуль для тэставання.
     - Module for translation into Belarusian language.: Модуль для перакладу на беларускую мову.
     - Module for translation into Russian language.: Модуль для перакладу на рускую мову.
@@ -730,7 +736,7 @@ translations
     - settings page: старонка налад
     - Settings: Налады
     - Shared parameters: Агульныя параметры
-    - Short session\: %%_min day%%_plural{min\|s} \| long session\: %%_max day%%_plural{max\|s}: Кароткі сеанс = %%_min %%_plural{min|day} | працяглы сеанс = %%_max %%_plural{max|day}
+    - Short session\: %%_min day%%_plural(min\|s) \| long session\: %%_max day%%_plural(max\|s): Кароткі сеанс = %%_min %%_plural(min|day) | працяглы сеанс = %%_max %%_plural(max|day)
     - Simple layout: Просты макет
     - Sitemap editing form: Форма рэдагавання Sitemap
     - Size of uploaded file greater than %%_size.: Памер загружанага файла больш чым %%_size.
@@ -824,7 +830,6 @@ translations
     - Tree\: select: Дрэва: абраць
     - Tree\: update: Дрэва: абнавіць
     - Trees: Дрэвы
-    - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Паспрабуйце ўвесці значэнне "127.0.0.1" альбо "localhost", калі Вы атрымліваеце паведамленне пра памылку выгляду "unknown mysql server host [::1]".
     - type: тып
     - Type: Тып
     - Types: Типы
@@ -866,6 +871,7 @@ translations
     - Value was trimmed to the required length!: Значэнне было абрэзана да патрабаванай даўжыні!
     - Value: Значэнне
     - Values: Значэнні
+    - Vendors: Пастаўшчыкі
     - version: версія
     - Version: Версія
     - video "%%_video": відэа "%%_video"
@@ -905,7 +911,7 @@ translations
     - Yes: Так
     - You are trying to upload too few files!: Вы спрабуеце загрузіць занадта мала файлаў!
     - You are trying to upload too much files!: Вы спрабуеце загрузіць надта шмат файлаў!
-    - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Вы ўжо загрузілі %%_current_number файл%%_plural{current_number|au-a}.
+    - You have already uploaded %%_current_number file%%_plural(current_number\|s).: Вы ўжо загрузілі %%_current_number файл%%_plural(current_number|au-a).
     - You have not made any changes before!: Вы не рабілі ніякіх змяненняў раней!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы атрымалі гэтае паведамленне, таму што хтосьці спрабаваў аднавіць пароль ад Вашага акаўнту на %%_domain.
     - You received this message because this email address was specified when registering on %%_domain.: Вы атрымалі гэтае паведамленне, таму што пры рэгістрацыі на %%_domain быў ўказаны гэты адрас электроннай пошты.

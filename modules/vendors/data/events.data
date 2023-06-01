@@ -1,0 +1,9 @@
+events
+  on_module_enable
+  - vendors|event
+      for: vendors
+      handler: \effcore\modules\vendors\events_module::on_enable
+  on_module_disable
+  - vendors|event
+      for: vendors
+      handler: \effcore\modules\vendors\events_module::on_disable

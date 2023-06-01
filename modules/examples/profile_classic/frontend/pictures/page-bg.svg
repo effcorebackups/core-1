@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    style="shape-rendering: auto">
+
+    <path style="stroke-width: 6px; stroke: white; stroke-opacity: 0.02; stroke-linecap: round; fill: none" d="M 3.962 16.038 C 6.981 16.038 9.126 11.74 10 10 C 10.874 8.26 13.019 3.962 16.038 3.962"/>
+
+</svg>

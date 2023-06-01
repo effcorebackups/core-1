@@ -1,33 +1,33 @@
 demo_data
-# ─────────────────────────────────────────────────────────────────────
-# scalar types:
-# ═════════════════════════════════════════════════════════════════════
-# demo_integer_exponential: 123e1 # - exponential notation is not supported (examples: 1.23e6, 1.23e-6)
-# demo_integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
-# demo_integer_octal: 0123        # - octal notation is not supported
-# demo_integer_binary: 0b101      # - binary notation is not supported
-# ─────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # scalar types:
+  # ═════════════════════════════════════════════════════════════════════
+  # demo_integer_exponential: 123e1 # - exponential notation is not supported (examples: 1.23e6, 1.23e-6)
+  # demo_integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
+  # demo_integer_octal: 0123        # - octal notation is not supported
+  # demo_integer_binary: 0b101      # - binary notation is not supported
+  # ─────────────────────────────────────────────────────────────────────
   demo_string: text
   demo_string_empty: 
   demo_integer: 123
   demo_float: 0.000001
   demo_boolean: true
-# ─────────────────────────────────────────────────────────────────────
-# special types
-# ─────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # special types
+  # ─────────────────────────────────────────────────────────────────────
   demo_null: null
-# ─────────────────────────────────────────────────────────────────────
-# compound types
-# ─────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # compound types
+  # ─────────────────────────────────────────────────────────────────────
   demo_array
-  - item_1: item value 1
-  - item_2: item value 2
-  - item_3: item value 3
+  - key_1: item value 1
+  - key_2: item value 2
+  - key_3: item value 3
   demo_array_empty|_empty_array
   demo_object
-    prop_1: property value 1
-    prop_2: property value 2
-    prop_3: property value 3
+    property_1: property value 1
+    property_2: property value 2
+    property_3: property value 3
   demo_object_empty
   demo_object_text|text
     text: some translated text
@@ -35,18 +35,18 @@ demo_data
     text: some raw text
   demo_string_true|_string_true
   demo_string_false|_string_false
-# ─────────────────────────────────────────────────────────────────────
-# nesting
-# ─────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # nesting
+  # ─────────────────────────────────────────────────────────────────────
   demo_nested
     prop_1: nested value 1
     demo_nested
       prop_1: nested value 1.1
       demo_nested
         prop_1: nested value 1.1.1
-# ─────────────────────────────────────────────────────────────────────
-# multiline
-# ─────────────────────────────────────────────────────────────────────
+  # ─────────────────────────────────────────────────────────────────────
+  # multiline
+  # ─────────────────────────────────────────────────────────────────────
   demo_string_s_wrapped: line 1
 >>>>>>>>>>>>>>>>>>>>>>>> still line 1
 >>>>>>>>>>>>>>>>>>>>>>>> still line 1

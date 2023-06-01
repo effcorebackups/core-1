@@ -1,13 +1,14 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          abstract class data extends dynamic {
+namespace effcore;
 
-  const type = 'data';
-  const directory = dir_dynamic.'data/';
+abstract class data extends dynamic {
 
-}}
+    const TYPE = 'data';
+    const DIRECTORY = DIR_DYNAMIC.'data/';
+
+}

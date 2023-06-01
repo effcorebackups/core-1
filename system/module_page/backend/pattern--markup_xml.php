@@ -1,13 +1,14 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class markup_xml extends markup {
+namespace effcore;
 
-  public $template = 'markup_xml';
-  public $is_xml_style = true;
+class markup_xml extends markup {
 
-}}
+    public $template = 'markup_xml';
+    public $is_xml_style = true;
+
+}

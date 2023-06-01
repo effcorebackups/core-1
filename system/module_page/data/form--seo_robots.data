@@ -9,6 +9,11 @@ forms
         children
         - content|field_textarea
             title: Content of the "robots.txt" file
+            description_state: opened
+            description|text
+              text: If filled, the file will be available at: %%_page
+              args
+              - page: <a href="/robots.txt" target="_blank">/robots.txt</a>
             element_attributes
             - data-style: code-editor
             - name: content

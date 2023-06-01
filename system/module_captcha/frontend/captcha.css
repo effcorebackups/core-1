@@ -1,25 +1,25 @@
 
-  x-field[data-type='captcha'] svg {display: block; margin: 10px 0}
-  x-field[data-type='captcha'] input[name='captcha'] {font-size: 2em; text-align: center}
+x-field[data-type='captcha'] svg {display: block; margin: 10px 0}
+x-field[data-type='captcha'] input[name='captcha'] {font-size: 2em; text-align: center}
 
-  /* CSS4 width: calc(attr(size number) * 25 - 12px) */
+/* CSS4 width: calc(attr(size number) * 25 - 12px) */
 
-  x-field[data-type='captcha'] input[name='captcha'][size= '1'] {width:  13px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '2'] {width:  38px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '3'] {width:  63px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '4'] {width:  88px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '5'] {width: 113px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '6'] {width: 138px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '7'] {width: 163px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '8'] {width: 188px}
-  x-field[data-type='captcha'] input[name='captcha'][size= '9'] {width: 213px}
-  x-field[data-type='captcha'] input[name='captcha'][size='10'] {width: 238px}
-  x-field[data-type='captcha'] input[name='captcha'][size='11'] {width: 263px}
-  x-field[data-type='captcha'] input[name='captcha'][size='12'] {width: 288px}
-  x-field[data-type='captcha'] input[name='captcha'][size='13'] {width: 313px}
-  x-field[data-type='captcha'] input[name='captcha'][size='14'] {width: 338px}
-  x-field[data-type='captcha'] input[name='captcha'][size='15'] {width: 363px}
+x-field[data-type='captcha'] input[name='captcha'][size= '1'] {width:  13px}
+x-field[data-type='captcha'] input[name='captcha'][size= '2'] {width:  38px}
+x-field[data-type='captcha'] input[name='captcha'][size= '3'] {width:  63px}
+x-field[data-type='captcha'] input[name='captcha'][size= '4'] {width:  88px}
+x-field[data-type='captcha'] input[name='captcha'][size= '5'] {width: 113px}
+x-field[data-type='captcha'] input[name='captcha'][size= '6'] {width: 138px}
+x-field[data-type='captcha'] input[name='captcha'][size= '7'] {width: 163px}
+x-field[data-type='captcha'] input[name='captcha'][size= '8'] {width: 188px}
+x-field[data-type='captcha'] input[name='captcha'][size= '9'] {width: 213px}
+x-field[data-type='captcha'] input[name='captcha'][size='10'] {width: 238px}
+x-field[data-type='captcha'] input[name='captcha'][size='11'] {width: 263px}
+x-field[data-type='captcha'] input[name='captcha'][size='12'] {width: 288px}
+x-field[data-type='captcha'] input[name='captcha'][size='13'] {width: 313px}
+x-field[data-type='captcha'] input[name='captcha'][size='14'] {width: 338px}
+x-field[data-type='captcha'] input[name='captcha'][size='15'] {width: 363px}
 
-  x-glyph-settings {display: inline-block; margin: 10px 10px 5px 0; vertical-align: bottom}
-  x-glyph-settings x-field[data-type='checkbox'] {margin: 0; text-align: center; transform: scale(.7)}
-  x-glyph-settings x-field[data-type='checkbox'] input {margin: 0}
+x-glyph-settings {display: inline-block; margin: 10px 10px 5px 0; vertical-align: bottom}
+x-glyph-settings x-field[data-type='checkbox'] {margin: 0; text-align: center; transform: scale(.7)}
+x-glyph-settings x-field[data-type='checkbox'] input {margin: 0}

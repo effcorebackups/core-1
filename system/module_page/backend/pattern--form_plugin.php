@@ -1,44 +1,44 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class form_plugin {
+namespace effcore;
 
-  public $name;
-  public $args = [];
-  public $properties = [];
-  public $weight = 0;
+class form_plugin {
 
-  function __construct($name = null, $args = [], $properties = [], $weight = 0) {
-    if ($name      ) $this->name       = $name;
-    if ($args      ) $this->args       = $args;
-    if ($properties) $this->properties = $properties;
-    if ($weight    ) $this->weight     = $weight;
-  }
+    public $name;
+    public $args = [];
+    public $properties = [];
+    public $weight = 0;
 
-  function name_get() {
-           return $this->name[0] === '\\' ?
-                  $this->name :
-    '\\effcore\\'.$this->name;
-  }
+    function __construct($name = null, $args = [], $properties = [], $weight = 0) {
+        if ($name      ) $this->name       = $name;
+        if ($args      ) $this->args       = $args;
+        if ($properties) $this->properties = $properties;
+        if ($weight    ) $this->weight     = $weight;
+    }
 
-  function is_available() {
-    return core::structure_is_exists($this->name_get());
-  }
+    function name_get() {
+        return $this->name[0] === '\\' ?
+               $this->name : '\\effcore\\'.$this->name;
+    }
 
-  function object_get() {
-    $object = core::class_get_new_instance($this->name_get(), $this->args, true);
-    if ($this->weight) $object->weight = $this->weight;
-    foreach ($this->properties as $c_key => $c_value)
-                        $object->{$c_key} = $c_value;
-    return $object;
-  }
+    function is_available() {
+        return core::structure_is_exists($this->name_get());
+    }
 
-  function render() {
-    return '';
-  }
+    function object_get() {
+        $object = core::class_get_new_instance($this->name_get(), $this->args, true);
+        if ($this->weight) $object->weight = $this->weight;
+        foreach ($this->properties as $c_key => $c_value)
+               $object->{$c_key} = $c_value;
+        return $object;
+    }
 
-}}
+    function render() {
+        return '';
+    }
+
+}

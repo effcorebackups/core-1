@@ -1,253 +1,256 @@
 
-  /* demo tokens:
-    ═════════════════════════════════════════════════════════════════════
-    demo_text: %%_demo_text
-    ─────────────────────────────────────────────────────────────────────
-    user_id: %%_user_id
-    email: %%_email
-    nickname: %%_nickname
-    avatar_path: %%_avatar_path
-    nickname_page_context: %%_nickname_page_context{some_page_arg}
-    ─────────────────────────────────────────────────────────────────────
-    request_scheme: %%_request_scheme
-    request_host: %%_request_host
-    request_host_decode: %%_request_host_decode
-    request_addr: %%_request_addr
-    request_addr_remote: %%_request_addr_remote
-    request_uri: %%_request_uri
-    request_path: %%_request_path
-    request_query: %%_request_query
-    request_scheme{preg_quote}: %%_request_scheme{preg_quote}
-    request_host{preg_quote}: %%_request_host{preg_quote}
-    request_host_decode{preg_quote}: %%_request_host_decode{preg_quote}
-    request_addr{preg_quote}: %%_request_addr{preg_quote}
-    request_addr_remote{preg_quote}: %%_request_addr_remote{preg_quote}
-    request_uri{preg_quote}: %%_request_uri{preg_quote}
-    request_path{preg_quote}: %%_request_path{preg_quote}
-    request_query{preg_quote}: %%_request_query{preg_quote}
-    ─────────────────────────────────────────────────────────────────────
-    page_width_min: %%_page_width_min
-    page_width_max: %%_page_width_max
-    thumbnail_width_small: %%_thumbnail_width_small
-    thumbnail_width_middle: %%_thumbnail_width_middle
-    thumbnail_width_big: %%_thumbnail_width_big
-    thumbnail_path_cover_default: %%_thumbnail_path_cover_default
-    thumbnail_path_poster_default: %%_thumbnail_path_poster_default
-    page_id_context: %%_page_id_context{front}
-    page_width_min_context: %%_page_width_min_context
-    page_width_max_context: %%_page_width_max_context
-    ─────────────────────────────────────────────────────────────────────
-    instance_id_context: %%_instance_id_context
-    entity_name_context: %%_entity_name_context
-    entity_title_context: %%_entity_title_context
-    entity_title_plural_context: %%_entity_title_plural_context
-    ─────────────────────────────────────────────────────────────────────
-    color__page: %%_color__page
-    color__text: %%_color__text
-    color__main: %%_color__main
-    color__link: %%_color__link
-    color__link_active: %%_color__link_active
-    color__table_row_odd: %%_color__table_row_odd
-    color__table_row_even: %%_color__table_row_even
-    color__menu: %%_color__menu
-    color__menu_active: %%_color__menu_active
-    color__menu_text: %%_color__menu_text
-    color__menu_link: %%_color__menu_link
-    color__menu_link_active: %%_color__menu_link_active
-    color__tabs: %%_color__tabs
-    color__tabs_link: %%_color__tabs_link
-    color__tabs_link_active: %%_color__tabs_link_active
-    color__tabs_link_active_no_bg: %%_color__tabs_link_active_no_bg
-    color__ok: %%_color__ok
-    color__error: %%_color__error
-    color__warning: %%_color__warning
-    color__fieldset: %%_color__fieldset
-    color__fieldset_nested: %%_color__fieldset_nested
-    color__field: %%_color__field
-    color__field_text: %%_color__field_text
-    color__button: %%_color__button
-    color__button_active: %%_color__button_active
-    color__button_text: %%_color__button_text
-    return_token_color_encode{color__page}: %%_return_token_color_encode{color__page}
-    return_token_color_encode{color__page\{-10\|-10\|-10\}}: %%_return_token_color_encode{color__page\{-10\|-10\|-10\}}
-    return_token_color_encode{color__page\{-10\|-10\|-10\|.5\}}: %%_return_token_color_encode{color__page\{-10\|-10\|-10\|.5\}}
-    return_if_token_color_is_dark{color__page|1|0}: %%_return_if_token_color_is_dark{color__page|1|0}
-    return_if_token_color_is_dark{color__page|0|1}: %%_return_if_token_color_is_dark{color__page|0|1}
-    ─────────────────────────────────────────────────────────────────────
-    return_url_arg{color|black|css_units}: %%_return_url_arg{color|black|css_units}
-    return_if_url_arg{page_id|front|1|0}: %%_return_if_url_arg{page_id|front|1|0}
-    return_if_url_arg{page_id|front|0|1}: %%_return_if_url_arg{page_id|front|0|1}
-    ─────────────────────────────────────────────────────────────────────
-    return_if_token{color__page|#ffffff|1|0}: %%_return_if_token{color__page|#ffffff|1|0}
-    return_if_token{color__page|#ffffff|0|1}: %%_return_if_token{color__page|#ffffff|0|1}
-    return_if_token{color__page|transparent|1|0}: %%_return_if_token{color__page|transparent|1|0}
-    return_if_token{color__page|transparent|0|1}: %%_return_if_token{color__page|transparent|0|1}
-    return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}: %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|1|0}
-    return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|0|1}: %%_return_if_token{color__page\{-10\|-10\|-10\}|#f5f5f5|0|1}
-    return_if_token{return_if_token||1|0}: %%_return_if_token{return_if_token||1|0}
-    return_if_token{return_if_token|value|1|0}: %%_return_if_token{return_if_token|value|1|0}
-    return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}: %%_return_if_token{return_if_token\{token_name\|nested_value\|2\}|value|1|0}
-    return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}: %%_return_if_token{return_if_token\{token_name\|nested_value\|2\|3\}|value|1|0}
-    ─────────────────────────────────────────────────────────────────────
-    return_translation{simple string}: %%_return_translation{simple string}
-    return_translation{string with parameter = %%_n|n=0}: %%_return_translation{string with parameter = %%_n|n=0}
-    return_translation{string with parameter = %%_n|n=1}: %%_return_translation{string with parameter = %%_n|n=1}
-    return_translation{string with parameter = %%_n|n=2}: %%_return_translation{string with parameter = %%_n|n=2}
-    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=0}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=0}
-    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=1}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=1}
-    return_translation{string with plural value = number second%%_plural\{number\|s\}|number=2}: %%_return_translation{string with plural value = %%_number second%%_plural\{number\|s\}|number=2}
-    ─────────────────────────────────────────────────────────────────────
-    test_software_name: %%_test_software_name
-    test_email_random: %%_test_email_random
-    test_email_random: %%_test_email_random{0}
-    test_email_random: %%_test_email_random{0}
-    test_nickname_random: %%_test_nickname_random
-    test_nickname_random: %%_test_nickname_random{0}
-    test_nickname_random: %%_test_nickname_random{0}
-    test_password_random: %%_test_password_random
-    test_password_random: %%_test_password_random{0}
-    test_password_random: %%_test_password_random{0}
-    test_captcha: %%_test_captcha
-    test_form_validation_id: %%_test_form_validation_id{some_form_id}
-    test_cookies: %%_test_cookies
-    test_response_http_code: %%_test_response_http_code
-    test_response_location: %%_test_response_location
-    test_response_content_length: %%_test_response_content_length
-    test_response_content_range: %%_test_response_content_range
-    test_response_submit_error: %%_test_response_submit_error
-    test_response_time_total: %%_test_response_time_total
-    test_response_return_level: %%_test_response_return_level
-    test_response_content: %%_test_response_content
-    ───────────────────────────────────────────────────────────────────── */
+/* demo tokens:
+═════════════════════════════════════════════════════════════════════
+demo_text: %%_demo_text
+─────────────────────────────────────────────────────────────────────
+user_id: %%_user_id
+email: %%_email
+nickname: %%_nickname
+avatar_path: %%_avatar_path
+nickname_page_context: %%_nickname_page_context(some_page_arg)
+─────────────────────────────────────────────────────────────────────
+request_scheme: %%_request_scheme
+request_host: %%_request_host
+request_host_decode: %%_request_host_decode
+request_addr: %%_request_addr
+request_addr_remote: %%_request_addr_remote
+request_uri: %%_request_uri
+request_path: %%_request_path
+request_query: %%_request_query
+request_scheme(preg_quote): %%_request_scheme(preg_quote)
+request_host(preg_quote): %%_request_host(preg_quote)
+request_host_decode(preg_quote): %%_request_host_decode(preg_quote)
+request_addr(preg_quote): %%_request_addr(preg_quote)
+request_addr_remote(preg_quote): %%_request_addr_remote(preg_quote)
+request_uri(preg_quote): %%_request_uri(preg_quote)
+request_path(preg_quote): %%_request_path(preg_quote)
+request_query(preg_quote): %%_request_query(preg_quote)
+─────────────────────────────────────────────────────────────────────
+page_width_min: %%_page_width_min
+page_width_max: %%_page_width_max
+thumbnail_width_small: %%_thumbnail_width_small
+thumbnail_width_middle: %%_thumbnail_width_middle
+thumbnail_width_big: %%_thumbnail_width_big
+thumbnail_path_cover_default: %%_thumbnail_path_cover_default
+thumbnail_path_poster_default: %%_thumbnail_path_poster_default
+page_id_context: %%_page_id_context(front)
+page_width_min_context: %%_page_width_min_context
+page_width_max_context: %%_page_width_max_context
+─────────────────────────────────────────────────────────────────────
+instance_id_context: %%_instance_id_context
+entity_name_context: %%_entity_name_context
+entity_title_context: %%_entity_title_context
+entity_title_plural_context: %%_entity_title_plural_context
+─────────────────────────────────────────────────────────────────────
+color__page: %%_color__page
+color__text: %%_color__text
+color__main: %%_color__main
+color__link: %%_color__link
+color__link_active: %%_color__link_active
+color__table_row_odd: %%_color__table_row_odd
+color__table_row_even: %%_color__table_row_even
+color__menu: %%_color__menu
+color__menu_active: %%_color__menu_active
+color__menu_text: %%_color__menu_text
+color__menu_link: %%_color__menu_link
+color__menu_link_active: %%_color__menu_link_active
+color__tabs: %%_color__tabs
+color__tabs_link: %%_color__tabs_link
+color__tabs_link_active: %%_color__tabs_link_active
+color__tabs_link_active_no_bg: %%_color__tabs_link_active_no_bg
+color__ok: %%_color__ok
+color__error: %%_color__error
+color__warning: %%_color__warning
+color__fieldset: %%_color__fieldset
+color__fieldset_nested: %%_color__fieldset_nested
+color__field: %%_color__field
+color__field_text: %%_color__field_text
+color__button: %%_color__button
+color__button_active: %%_color__button_active
+color__button_text: %%_color__button_text
+return_token_color_encode(color__page): %%_return_token_color_encode(color__page)
+return_token_color_encode(color__page(-10|-10|-10)): %%_return_token_color_encode(color__page\(-10\|-10\|-10\))
+return_token_color_encode(color__page(-10|-10|-10|.5)): %%_return_token_color_encode(color__page\(-10\|-10\|-10\|.5\))
+return_if_token_color_is_dark(color__page|1|0): %%_return_if_token_color_is_dark(color__page|1|0)
+return_if_token_color_is_dark(color__page|0|1): %%_return_if_token_color_is_dark(color__page|0|1)
+─────────────────────────────────────────────────────────────────────
+return_url_arg(color|black|css_units): %%_return_url_arg(color|black|css_units)
+return_if_url_arg(page_id|front|1|0): %%_return_if_url_arg(page_id|front|1|0)
+return_if_url_arg(page_id|front|0|1): %%_return_if_url_arg(page_id|front|0|1)
+─────────────────────────────────────────────────────────────────────
+return_if_token(color__page|#ffffff|1|0): %%_return_if_token(color__page|#ffffff|1|0)
+return_if_token(color__page|#ffffff|0|1): %%_return_if_token(color__page|#ffffff|0|1)
+return_if_token(color__page|transparent|1|0): %%_return_if_token(color__page|transparent|1|0)
+return_if_token(color__page|transparent|0|1): %%_return_if_token(color__page|transparent|0|1)
+return_if_token(color__page(-10|-10|-10)|#f5f5f5|1|0): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|1|0)
+return_if_token(color__page(-10|-10|-10)|#f5f5f5|0|1): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|0|1)
+return_if_token(return_if_token||1|0): %%_return_if_token(return_if_token||1|0)
+return_if_token(return_if_token|value|1|0): %%_return_if_token(return_if_token|value|1|0)
+return_if_token(return_if_token(token_name|nested_value|2)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\)|value|1|0)
+return_if_token(return_if_token(token_name|nested_value|2|3)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\|3\)|value|1|0)
+─────────────────────────────────────────────────────────────────────
+return_translation(simple string): %%_return_translation(simple string)
+return_translation(string with parameter = %%_n|n=0): %%_return_translation(string with parameter = %%_n|n=0)
+return_translation(string with parameter = %%_n|n=1): %%_return_translation(string with parameter = %%_n|n=1)
+return_translation(string with parameter = %%_n|n=2): %%_return_translation(string with parameter = %%_n|n=2)
+return_translation(string with plural value = number second%%_plural(number|s)|number=0): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
+return_translation(string with plural value = number second%%_plural(number|s)|number=1): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
+return_translation(string with plural value = number second%%_plural(number|s)|number=2): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
+─────────────────────────────────────────────────────────────────────
+test_software_name: %%_test_software_name
+test_email_random: %%_test_email_random
+test_email_random: %%_test_email_random(0)
+test_email_random: %%_test_email_random(0)
+test_nickname_random: %%_test_nickname_random
+test_nickname_random: %%_test_nickname_random(0)
+test_nickname_random: %%_test_nickname_random(0)
+test_password_random: %%_test_password_random
+test_password_random: %%_test_password_random(0)
+test_password_random: %%_test_password_random(0)
+test_captcha: %%_test_captcha
+test_form_validation_id: %%_test_form_validation_id(some_form_id)
+test_cookies: %%_test_cookies
+test_response_http_code: %%_test_response_http_code
+test_response_location: %%_test_response_location
+test_response_content_length: %%_test_response_content_length
+test_response_content_range: %%_test_response_content_range
+test_response_submit_error: %%_test_response_submit_error
+test_response_time_total: %%_test_response_time_total
+test_response_return_level: %%_test_response_return_level
+test_response_content: %%_test_response_content
+─────────────────────────────────────────────────────────────────────
+*/
 
-  /* console */
+/* console */
 
-  x-console {
-    position: absolute;
-    left: 0;
-    width: calc(100% - 20px - 20px);
-    margin-top: 100px;
-    padding: 50px 20px 0 20px;
-    font-family: 'Arial';
-    font-size: 15px;
-    line-height: 1.5em;
-    border-top: 5px dashed #214d58;
-    color: white;
-    background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svgd')}
-  x-console [data-block] {max-width: 990px; margin: 10px auto}
-  x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
+x-console {
+  position: absolute;
+  left: 0;
+  width: calc(100% - 20px - 20px);
+  margin-top: 100px;
+  padding: 50px 20px 0 20px;
+  font-family: 'Arial';
+  font-size: 15px;
+  line-height: 1.5em;
+  border-top: 5px dashed #214d58;
+  color: white;
+  background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svgd')}
+x-console [data-block] {max-width: 990px; margin: 10px auto}
+x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
 
-  x-console x-table {margin: 0}
-  x-console x-table[data-view-type='table-dl'] {border-top-color: #214d58}
-  x-console x-table[data-view-type='table-dl'] x-cell[data-role='title'] {border-right-color: #214d58}
-  x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .3)}
-  x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .2)}
-  x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .3)}
-  x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .2)}
-  x-console table {margin: 0}
-  x-console table tbody {
-    border-top-color: #214d58;
-    border-bottom-color: #214d58;
-    background-color: #214d58}
+x-console x-table {margin: 0}
+x-console x-table[data-view-type='table-dl'] {border-top-color: #214d58}
+x-console x-table[data-view-type='table-dl'] x-cell[data-role='title'] {border-right-color: #214d58}
+x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .3)}
+x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: rgba(0, 0, 0, .2)}
+x-console x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .3)}
+x-console x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: rgba(0, 0, 0, .2)}
+x-console table {margin: 0}
+x-console table tbody {
+  border-top-color: #214d58;
+  border-bottom-color: #214d58;
+  background-color: #214d58;
+}
 
-  x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale {border-color: #214d58}
-  x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale-fill {background-color: #214d58}
+x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale {border-color: #214d58}
+x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale-fill {background-color: #214d58}
 
-  x-console [data-id='block__info'] [data-decorator],
-  x-console [data-id='block__logs'] [data-decorator] {overflow: auto}
+x-console [data-id='block__info'] [data-decorator],
+x-console [data-id='block__logs'] [data-decorator] {overflow: auto}
 
-  x-console [data-id='block__logs'] tbody tr                         {background-color: white}
-  x-console [data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
-  x-console [data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
-  x-console [data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
-  x-console [data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
-  x-console [data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
-  x-console [data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
+x-console [data-id='block__logs'] tbody tr                         {background-color: white}
+x-console [data-id='block__logs'] tbody tr[data-object='autoload'] {background-color: burlywood}
+x-console [data-id='block__logs'] tbody tr[data-object='file'    ] {background-color: palegoldenrod}
+x-console [data-id='block__logs'] tbody tr[data-object='event'   ] {background-color: mediumaquamarine}
+x-console [data-id='block__logs'] tbody tr[data-object='storage' ] {background-color: palegreen}
+x-console [data-id='block__logs'] tbody tr[data-object='form'    ] {background-color: peachpuff}
+x-console [data-id='block__logs'] tbody tr[data-object='access'  ] {background-color: thistle}
 
-  x-console [data-id='block__logs'] tbody tr                         td {vertical-align: top; color: black; background-color: transparent}
-  x-console [data-id='block__logs'] tbody tr                         td[data-cellid='ram_dynamics'] {width: 8%}
-  x-console [data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time' ] {background-color: %%_color__warning}
-  x-console [data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time' ] {background-color: %%_color__error}
-  x-console [data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time' ] {background-color: %%_color__error}
-  x-console [data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time' ] {background-color: %%_color__error}
-  x-console [data-id='block__logs'] tbody tr[data-value='error'  ]   td[data-cellid='value'] {background-color: %%_color__error   !important}
-  x-console [data-id='block__logs'] tbody tr[data-value='warning']   td[data-cellid='value'] {background-color: %%_color__warning !important}
+x-console [data-id='block__logs'] tbody tr                         td {vertical-align: top; color: black; background-color: transparent}
+x-console [data-id='block__logs'] tbody tr                         td[data-cellid='ram_dynamics'] {width: 8%}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cellid='time' ] {background-color: %%_color__warning}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cellid='time' ] {background-color: %%_color__error}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cellid='time' ] {background-color: %%_color__error}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cellid='time' ] {background-color: %%_color__error}
+x-console [data-id='block__logs'] tbody tr[data-value='error'  ]   td[data-cellid='value'] {background-color: %%_color__error   !important}
+x-console [data-id='block__logs'] tbody tr[data-value='warning']   td[data-cellid='value'] {background-color: %%_color__warning !important}
 
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 20px; margin: 1px 0 1px 5px; border: none; cursor: pointer; opacity: .2; background: url('/system/module_page/frontend/pictures/icons-element.svgd') 0 -80px}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked {background: url('/system/module_page/frontend/pictures/icons-element.svgd') -20px -80px}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']         + x-info {display: none}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked + x-info {display: block}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info {display: block; margin: 5px 0 3px 0; padding-top: 3px; border-top: 1px dotted black}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param {display: block}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-title {font-weight: bold}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-title::after {content: ': '}
-  x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-value {}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 20px; margin: 1px 0 1px 5px; border: none; cursor: pointer; opacity: .2; background: url('/system/module_page/frontend/pictures/icons-element.svgd') 0 -80px}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked {background: url('/system/module_page/frontend/pictures/icons-element.svgd') -20px -80px}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']         + x-info {display: none}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] input[data-opener-type='info']:checked + x-info {display: block}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info {display: block; margin: 5px 0 3px 0; padding-top: 3px; border-top: 1px dotted black}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param {display: block}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-title {font-weight: bold}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-title::after {content: ': '}
+x-console [data-id='block__logs'] tbody td[data-cellid='description'] x-info x-param x-value {}
 
-  x-console [data-id='block__logs'] x-total {display: block; margin: 2em 0}
-  x-console [data-id='block__logs'] x-total x-param {display: block; font-size: .9em}
-  x-console [data-id='block__logs'] x-total x-param x-title {display: inline-block; width: 200px}
-  x-console [data-id='block__logs'] x-total x-param x-title::after {content: ': '}
-  x-console [data-id='block__logs'] x-total x-param x-value {font-family: monospace}
+x-console [data-id='block__logs'] x-total {display: block; margin: 2em 0}
+x-console [data-id='block__logs'] x-total x-param {display: block; font-size: .9em}
+x-console [data-id='block__logs'] x-total x-param x-title {display: inline-block; width: 200px}
+x-console [data-id='block__logs'] x-total x-param x-title::after {content: ': '}
+x-console [data-id='block__logs'] x-total x-param x-value {font-family: monospace}
 
-  /* PHP dependencies */
+/* PHP dependencies */
 
-  [data-decorator][data-id='extensions_dependency'] {font-size: .9em}
+[data-decorator][data-id='extensions_dependency'] {font-size: .9em}
 
-  /* events */
+/* events */
 
-  [data-decorator][data-id^='nosql_events_handlers'] {overflow: auto}
-  [data-decorator][data-id^='nosql_events_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
+[data-decorator][data-id^='nosql_events_handlers'] {overflow: auto}
+[data-decorator][data-id^='nosql_events_handlers'] x-cell[data-cellid='weight'] {white-space: nowrap}
 
-  /* x-structures-list */
+/* x-structures-list */
 
-  x-structures-list {display: block}
-  x-structures-list x-item {display: block; margin: 40px 0}
-  x-structures-list x-item > x-name {display: block; font-size: 1.5em; line-height: 1.5em}
-  x-structures-list x-item x-namespace {display: block}
-  x-structures-list x-file-path x-directory {display: none}
-  x-structures-list x-file-path:hover x-directory {display: inline-block}
+x-structures-list {display: block}
+x-structures-list x-item {display: block; margin: 40px 0}
+x-structures-list x-item > x-name {display: block; font-size: 1.5em; line-height: 1.5em}
+x-structures-list x-item x-namespace {display: block}
+x-structures-list x-file-path x-directory {display: none}
+x-structures-list x-file-path:hover x-directory {display: inline-block}
 
-  /* block__structures_diagram */
+/* block__structures_diagram */
 
-  x-diagram-uml {font-family: 'Arial'; color: black; overflow: auto}
-  x-diagram-uml, x-diagram-uml * {display: block}
-  x-diagram-uml x-children:empty {display: none}
-  x-diagram-uml x-class {width: 370px; border: 1px solid #ff2b2b; background: #fff5d8}
-  x-diagram-uml x-class x-name-wrapper {padding: 3px; text-align: center}
-  x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
-  x-diagram-uml x-class x-namespace {margin-bottom: 3px; font-size: .9em; line-height: 1em}
-  x-diagram-uml x-class x-namespace:empty {display: none}
-  x-diagram-uml x-class[data-abstract] x-name {font-style: italic}
-  x-diagram-uml x-class x-attributes,
-  x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
-  x-diagram-uml x-item[data-static] {text-decoration: underline}
+x-diagram-uml {font-family: 'Arial'; color: black; overflow: auto}
+x-diagram-uml, x-diagram-uml * {display: block}
+x-diagram-uml x-children:empty {display: none}
+x-diagram-uml x-class {width: 370px; border: 1px solid #ff2b2b; background: #fff5d8}
+x-diagram-uml x-class x-name-wrapper {padding: 3px; text-align: center}
+x-diagram-uml x-class x-name {font-weight: bold; text-transform: capitalize}
+x-diagram-uml x-class x-namespace {margin-bottom: 3px; font-size: .9em; line-height: 1em}
+x-diagram-uml x-class x-namespace:empty {display: none}
+x-diagram-uml x-class[data-abstract] x-name {font-style: italic}
+x-diagram-uml x-class x-attributes,
+x-diagram-uml x-class x-operations {padding: 3px 6px; border-top: 1px solid #ff2b2b}
+x-diagram-uml x-item[data-static] {text-decoration: underline}
 
-  x-diagram-uml x-class-wrapper {padding-top: 20px}
-  x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
-  x-diagram-uml x-children x-class-wrapper             {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') repeat-y}
-  x-diagram-uml x-children x-class-wrapper:last-child  {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat}
-  x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark{color__text|black|white}') no-repeat}
+x-diagram-uml x-class-wrapper {padding-top: 20px}
+x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
+x-diagram-uml x-children x-class-wrapper             {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') repeat-y}
+x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') repeat-y}
+x-diagram-uml x-children x-class-wrapper:last-child  {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat}
+x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat}
 
-  x-diagram-uml x-item[data-visibility='public'   ]::before {content: '+ '}
-  x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
-  x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
+x-diagram-uml x-item[data-visibility='public'   ]::before {content: '+ '}
+x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
+x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 
-  [data-id='block__structures_diagram']                   x-diagram-uml x-attributes,
-  [data-id='block__structures_diagram']                   x-diagram-uml x-operations {display: none}
-  [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
-  [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
+[data-id='block__structures_diagram']                   x-diagram-uml x-attributes,
+[data-id='block__structures_diagram']                   x-diagram-uml x-operations {display: none}
+[data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
+[data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
-  /* block__demo_canvas */
+/* block__demo_canvas */
 
-  [data-id='block__markup__demo_canvas'] [data-block-content] {text-align: center}
-  [data-id='block__markup__demo_canvas'] [data-block-content] svg {
-    width: 100%;
-    max-width: 525px;
-    height: auto}
+[data-id='block__markup__demo_canvas'] [data-block-content] {text-align: center}
+[data-id='block__markup__demo_canvas'] [data-block-content] svg {
+  width: 100%;
+  max-width: 525px;
+  height: auto;
+}
 
-  /* palette */
+/* palette */
 
-  form#palette x-palette {display: block; margin: 5px 0; text-align: center}
-  form#palette x-palette x-color {display: inline-block; width: 30px; height: 30px}
-  form#palette x-palette x-color:nth-child(11) {border: 1px solid red; margin: -1px; position: relative; opacity: 1}
+form#palette x-palette {display: block; margin: 5px 0; text-align: center}
+form#palette x-palette x-color {display: inline-block; width: 30px; height: 30px}
+form#palette x-palette x-color:nth-child(11) {border: 1px solid red; margin: -1px; position: relative; opacity: 1}

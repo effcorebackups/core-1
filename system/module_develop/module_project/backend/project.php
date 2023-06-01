@@ -1,16 +1,17 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          abstract class project {
+namespace effcore;
 
-  static function select($id) {
-    return (new instance('project', [
-      'id' => $id
-    ]))->select();
-  }
+abstract class project {
 
-}}
+    static function select($id) {
+        return (new instance('project', [
+            'id' => $id
+        ]))->select();
+    }
+
+}

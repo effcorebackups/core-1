@@ -15,12 +15,12 @@ events
   - captcha|event
       for: captcha
       handler: \effcore\modules\captcha\events_module::on_disable
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
   - captcha|event
       for: captcha
       handler: \effcore\modules\captcha\events_module::on_cron_run
-# ═════════════════════════════════════════════════════════════════════
+  # ═════════════════════════════════════════════════════════════════════
   on_form_init
   - security_settings_captcha|event
       for: security_settings_captcha

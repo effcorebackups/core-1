@@ -3,7 +3,7 @@ languages
     code: be
     title_en: Belarusian
     title_native: Беларуская
-    license_path: system/module_locale/module_translation_be/licenses/license-be.md
+    license_path: system/module_locale/module_translation_be/files/license-be.md
     default_formats
     - date: d.m.Y
     - time: H:i:s

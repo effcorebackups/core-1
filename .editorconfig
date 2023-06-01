@@ -6,29 +6,64 @@ root = true
 charset = utf-8
 end_of_line = lf
 indent_style = space
-indent_size = 2
+indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
+
+[*.css]
+file_type = css
+syntax = css
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 [*.cssd]
 file_type = css
 syntax = css
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 [*.data]
 file_type = yaml
 syntax = yaml
+indent_size = 2
+
+[*.js]
+file_type = javascript
+syntax = javascript
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 [*.jsd]
 file_type = javascript
 syntax = javascript
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 [*.md]
 file_type = markdown
 syntax = markdown
+insert_final_newline = true
+
+[*.php]
+file_type = php
+syntax = php
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.sh]
+insert_final_newline = true
+
+[*.svg]
+file_type = xml
+syntax = xml
+trim_trailing_whitespace = true
 
 [*.svgd]
 file_type = xml
 syntax = xml
+trim_trailing_whitespace = true
 
 [*.tpl]
 file_type = html

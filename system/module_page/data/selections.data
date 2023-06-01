@@ -332,6 +332,7 @@ selections
           weight: +380
       - url
           entity_field_name: url
+          is_not_visible: true
           weight: +360
       - lang_code
           entity_field_name: lang_code
@@ -340,6 +341,11 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +320
+    - handlers
+      - url_in_link
+          title: URL
+          handler: \effcore\modules\page\events_selection::handler_page_link
+          weight: +360
 - instance_select_multiple-picture|selection
     id: instance_select_multiple-picture
     main_entity_name: picture

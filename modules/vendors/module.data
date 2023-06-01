@@ -1,0 +1,12 @@
+module|module
+  id: vendors
+  id_bundle: system
+  title: Vendors
+  group: System
+  description: Module for support vendors packages.
+  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
+  enabled: yes
+  version: 0.906
+  dependencies
+    system
+    - core: 0.906

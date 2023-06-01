@@ -1,35 +1,36 @@
 
-  var effcore = new Effcore;
+var effcore = new Effcore;
 
-  /* ───────────────────────────────────────────────────────────────────── */
-  /* Effcore helper class                                                  */
-  /* ───────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────── */
+/* Effcore helper class                                                  */
+/* ───────────────────────────────────────────────────────────────────── */
 
-  function Effcore() {
+function Effcore() {
     this.tokens = [];
-    this.tokens['text_no_items'                ] = '%%_return_translation{No items.}';
-    this.tokens['text_select_all_rows'         ] = '%%_return_translation{select all rows}';
+    this.tokens['text_no_items'                ] = '%%_return_translation(No items.)';
+    this.tokens['text_select_all_rows'         ] = '%%_return_translation(select all rows)';
     this.tokens['thumbnail_path_cover_default' ] = '%%_thumbnail_path_cover_default';
     this.tokens['thumbnail_path_poster_default'] = '%%_thumbnail_path_poster_default';
     this.uagent = document.documentElement.getAttribute('data-uagent') ? document.documentElement.getAttribute('data-uagent') : '';
     this.uacore = document.documentElement.getAttribute('data-uacore') ? document.documentElement.getAttribute('data-uacore') : '';
-  }
+}
 
-  Effcore.prototype.getType = function(value) {
+Effcore.prototype.getType = function (value) {
     return Object.prototype.toString.call(value).slice(8, -1);
-  }
+}
 
-  /* ───────────────────────────────────────────────────────────────────── */
-  /* URL class                                                             */
-  /* ───────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────── */
+/* URL class                                                             */
+/* ───────────────────────────────────────────────────────────────────── */
 
-  function EffURL(url, non_completion) {
+function EffURL(url, non_completion) {
     this.raw = url;
     this.pattern = new RegExp('^(?:([a-zA-Z]+)://|)' +                                /* protocol */
                                   '([a-zA-Z0-9\\-\\.]{2,200}(?:\\:([0-9]{1,5})|)|)' + /* domain + port */
                                  '(/[\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)' +         /* path */
                             '(?:\\?([\\x21-\\x22\\x24-\\x7e]*)|)' +                   /* query */
                             '(?:\\#([\\x21-\\x7e]*)|)$');                             /* anchor */
+
     var parse = this.parse = url.match(this.pattern);
     var protocol = parse !== null && parse[1] !== undefined ? parse[1] : '';
     var domain   = parse !== null && parse[2] !== undefined ? parse[2] : '';
@@ -37,7 +38,8 @@
     var path     = parse !== null && parse[4] !== undefined ? parse[4] : '';
     var query    = parse !== null && parse[5] !== undefined ? parse[5] : '';
     var anchor   = parse !== null && parse[6] !== undefined ? parse[6] : '';
- /* matrix check */
+
+    /* matrix check */
     if ( (!protocol.length && !domain.length &&  path.length && !query.length && !anchor.length) ||  //                  /path
          (!protocol.length && !domain.length &&  path.length &&  query.length && !anchor.length) ||  //                  /path?query
          (!protocol.length && !domain.length &&  path.length && !query.length &&  anchor.length) ||  //                  /path#anchor
@@ -52,131 +54,164 @@
          ( protocol.length &&  domain.length &&  path.length &&  query.length && !anchor.length) ||  // protocol://domain/path?query
          ( protocol.length &&  domain.length &&  path.length && !query.length &&  anchor.length) ||  // protocol://domain/path?#anchor
          ( protocol.length &&  domain.length &&  path.length &&  query.length &&  anchor.length) ) { // protocol://domain/path?query#anchor
-      this.protocol  = protocol;
-      this.domain    = domain;
-      this.port      = port;
-      this.path      = path;
-      this.query     = query;
-      this.anchor    = anchor;
-      this.has_error = false;
-      if (!(non_completion === true) && this.protocol === '') this.protocol = window.location.protocol.replace(/[:]*$/g, '');
-      if (!(non_completion === true) && this.domain   === '') this.domain   = window.location.hostname;
-      if (!(non_completion === true) && this.path     === '') this.path     = '/';
+        this.protocol  = protocol;
+        this.domain    = domain;
+        this.port      = port;
+        this.path      = path;
+        this.query     = query;
+        this.anchor    = anchor;
+        this.has_error = false;
+        if (!(non_completion === true) && this.protocol === '') this.protocol = window.location.protocol.replace(/[:]*$/g, '');
+        if (!(non_completion === true) && this.domain   === '') this.domain   = window.location.hostname;
+        if (!(non_completion === true) && this.path     === '') this.path     = '/';
     } else this.has_error = true;
-  }
+}
 
-  EffURL.prototype.tinyGet = function() {
+EffURL.prototype.tinyGet = function () {
     if (!this.has_error) {
-      var result = this.path;
-      if (this.query ) result+= '?' + this.query;
-      if (this.anchor) result+= '#' + this.anchor;
-      return result;
+        var result = this.path;
+        if (this.query ) result+= '?' + this.query;
+        if (this.anchor) result+= '#' + this.anchor;
+        return result;
     }
-  }
+}
 
-  EffURL.prototype.fullGet = function() {
+EffURL.prototype.fullGet = function () {
     if (!this.has_error) {
-      result = this.protocol + '://' + this.domain + this.path;
-      if (this.query ) result+= '?' + this.query;
-      if (this.anchor) result+= '#' + this.anchor;
-      return result.replace(/[/]*$/g, '');
+        var result = this.protocol + '://' + this.domain + this.path;
+        if (this.query ) result+= '?' + this.query;
+        if (this.anchor) result+= '#' + this.anchor;
+        return result.replace(/[/]*$/g, '');
     }
-  }
+}
 
-  EffURL.prototype.queryArgSelect = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;}
-  EffURL.prototype.queryArgInsert = function(name, value) {if (this.has_error) return; args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery(args); return this;}
-  EffURL.prototype.queryArgDelete = function(name       ) {if (this.has_error) return; args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery(args); return this;}
+EffURL.prototype.queryArgSelect = function (name       ) {if (this.has_error) return; var args = this.parseUrlQuery(this.query); return args[name] ? args[name] : null;}
+EffURL.prototype.queryArgInsert = function (name, value) {if (this.has_error) return; var args = this.parseUrlQuery(this.query);        args[name] = value; this.query = this.buildUrlQuery(args); return this;}
+EffURL.prototype.queryArgDelete = function (name       ) {if (this.has_error) return; var args = this.parseUrlQuery(this.query); delete args[name];         this.query = this.buildUrlQuery(args); return this;}
 
-  EffURL.prototype.parseUrlQuery = function(value) {
+EffURL.prototype.parseUrlQuery = function (value) {
     var result = {}, counters = {};
-    value.split('&').forEach(function(c_param_raw){
-      var c_param = c_param_raw.split('=');
-      if (c_param[0].length) {
-        var c_key = c_param.shift(), c_val = c_param.join('='), c_analyze = c_key.match(/([a-z0-9\_\-]+)(?:\[([a-z0-9\_\-]*)\]|)$/i);
-        if (c_analyze[2] !== undefined) {
-          var c_sub_key = decodeURIComponent(c_analyze[1]);
-          var c_sub_idx = decodeURIComponent(c_analyze[2]);
-          var c_sub_val = decodeURIComponent(c_val);
-          if (c_sub_idx === '' && counters[c_sub_key] === undefined) counters[c_sub_key] = 0;
-          if (c_sub_idx === '' && counters[c_sub_key] !== undefined) c_sub_idx = counters[c_sub_key]++;
-          if (result[c_sub_key] === undefined)
-              result[c_sub_key] = {};
-          result[c_sub_key][c_sub_idx] = c_sub_val;
-        } else {
-          result[decodeURIComponent(c_key)] =
-                 decodeURIComponent(c_val);
+    value.split('&').forEach(function (c_param_raw) {
+        var c_param = c_param_raw.split('=');
+        if (c_param[0].length) {
+            var c_key = c_param.shift(), c_val = c_param.join('='), c_analyze = c_key.match(/([a-z0-9\_\-]+)(?:\[([a-z0-9\_\-]*)\]|)$/i);
+            if (c_analyze[2] !== undefined) {
+                var c_sub_key = decodeURIComponent(c_analyze[1]);
+                var c_sub_idx = decodeURIComponent(c_analyze[2]);
+                var c_sub_val = decodeURIComponent(c_val);
+                if (c_sub_idx === '' && counters[c_sub_key] === undefined) counters[c_sub_key] = 0;
+                if (c_sub_idx === '' && counters[c_sub_key] !== undefined) c_sub_idx = counters[c_sub_key]++;
+                if (result[c_sub_key] === undefined)
+                    result[c_sub_key] = {};
+                result[c_sub_key][c_sub_idx] = c_sub_val;
+            } else {
+                result[decodeURIComponent(c_key)] =
+                       decodeURIComponent(c_val);
+            }
         }
-      }
     });
     return result;
-  }
+}
 
-  EffURL.prototype.buildUrlQuery = function(params) {
+EffURL.prototype.buildUrlQuery = function (params) {
     var result = [];
-    for (c_key in params)
-      if (effcore.getType(params[c_key]) === 'Object')
-        for (c_sub_key in params[c_key])
-           result.push(encodeURIComponent(c_key) + '[' + c_sub_key + ']=' + encodeURIComponent(params[c_key][c_sub_key]));
-      else result.push(encodeURIComponent(c_key) +                    '=' + encodeURIComponent(params[c_key]));
+    for (var c_key in params)
+        if (effcore.getType(params[c_key]) === 'Object')
+            for (var c_sub_key in params[c_key])
+                result.push(encodeURIComponent(c_key) + '[' + c_sub_key + ']=' + encodeURIComponent(params[c_key][c_sub_key]));
+        else    result.push(encodeURIComponent(c_key) +                    '=' + encodeURIComponent(params[c_key]));
     return result.join('&');
-  }
+}
 
-  /* ───────────────────────────────────────────────────────────────────── */
-  /* polyfills                                                             */
-  /* ───────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────── */
+/* polyfills                                                             */
+/* ───────────────────────────────────────────────────────────────────── */
 
-  if (!Element.prototype.prepend) {
-       Element.prototype.prepend = function(){
-      for (var i = arguments.length - 1; i >= 0; i--) {
-        if (arguments[i] instanceof Node)
-             this.insertBefore(                               arguments[i],   this.firstChild);
-        else this.insertBefore(document.createTextNode(String(arguments[i])), this.firstChild);
-      }
-    }
-  }
+if (!Node.prototype.hasOwnProperty('prepend')) {
+    Object.defineProperty(Node.prototype, 'prepend', {
+        configurable: true,
+        enumerable  : true,
+        writable    : true,
+        value: function () {
+            for (var i = arguments.length - 1; i >= 0; i--) {
+                if (arguments[i] instanceof Node)
+                     this.insertBefore(                               arguments[i],   this.firstChild);
+                else this.insertBefore(document.createTextNode(String(arguments[i])), this.firstChild);
+            }
+        }
+    });
+}
 
-  if (!Element.prototype.append) {
-       Element.prototype.append = function(){
-      for (var i = 0; i < arguments.length; i++) {
-          if (arguments[i] instanceof Node)
-             this.appendChild(                               arguments[i]  );
-        else this.appendChild(document.createTextNode(String(arguments[i])));
-      }
-    }
-  }
+if (!Node.prototype.hasOwnProperty('append')) {
+    Object.defineProperty(Node.prototype, 'append', {
+        configurable: true,
+        enumerable  : true,
+        writable    : true,
+        value: function () {
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i] instanceof Node)
+                     this.appendChild(                               arguments[i]  );
+                else this.appendChild(document.createTextNode(String(arguments[i])));
+            }
+        }
+    });
+}
 
-  if (!NodeList.prototype.forEach) {
-       NodeList.prototype.forEach = Array.prototype.forEach;
-  }
+if (!NodeList.prototype.hasOwnProperty('forEach')) {
+    Object.defineProperty(NodeList.prototype, 'forEach', {
+        configurable: true,
+        enumerable  : true,
+        writable    : true,
+        value: Array.prototype.forEach
+    });
+}
 
-  /* ───────────────────────────────────────────────────────────────────── */
-  /* additions                                                             */
-  /* ───────────────────────────────────────────────────────────────────── */
+if (!KeyboardEvent.prototype.hasOwnProperty('code')) {
+    Object.defineProperty(KeyboardEvent.prototype, 'code', {
+        configurable: true,
+        enumerable  : true,
+        get: function () {
+            switch (this.keyCode) {
+                case 27: return 'Escape';
+                case 13: return 'Enter';
+                case 37: return 'ArrowLeft';
+                case 38: return 'ArrowUp';
+                case 39: return 'ArrowRight';
+                case 40: return 'ArrowDown';
+            }
+        }
+    });
+}
 
-  NodeList.prototype.forFirst__ =
-     Array.prototype.forFirst__ = function(handler){
-    if (this[0]) handler(this[0]);
-  }
+/* ───────────────────────────────────────────────────────────────────── */
+/* additions                                                             */
+/* ───────────────────────────────────────────────────────────────────── */
 
-  Document.prototype.querySelector__notNull =
-      Node.prototype.querySelector__notNull = function(query){
-    var result = this.querySelector(query);
-    if (result instanceof Node)
-         return [result];
-    else return [      ];
-  }
+if (!Node.prototype.hasOwnProperty('querySelector__withHandler')) {
+    Object.defineProperty(Node.prototype, 'querySelector__withHandler', {
+        configurable: true,
+        enumerable  : true,
+        writable    : true,
+        value: function (query, handler) {
+            var result = this.querySelector(query);
+            if (result instanceof Node) {
+                handler(result);
+            }
+        }
+    });
+}
 
-  Document.prototype.querySelectorAll__notNull =
-      Node.prototype.querySelectorAll__notNull = function(query){
-    var result = this.querySelectorAll(query);
-    return result instanceof NodeList ?
-           result : [];
-  }
-
-  Document.prototype.createElement__withAttributes = function(tag_name, attributes, options){
-    var node = document.createElement(tag_name, options);
-    if (effcore.getType(attributes) === 'Object')
-      for (c_key in attributes)
-        node.setAttribute(c_key, attributes[c_key]);
-    return node;
-  }
+if (!Document.prototype.hasOwnProperty('createElement__withAttributes')) {
+    Object.defineProperty(Document.prototype, 'createElement__withAttributes', {
+        configurable: true,
+        enumerable  : true,
+        writable    : true,
+        value: function (tag_name, attributes, options) {
+            var node = document.createElement(tag_name, options);
+            if (effcore.getType(attributes) === 'Object')
+                for (var c_key in attributes)
+                    node.setAttribute(c_key, attributes[c_key]);
+            return node;
+        }
+    });
+}

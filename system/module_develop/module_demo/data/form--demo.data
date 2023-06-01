@@ -12,7 +12,7 @@ forms
         - button_default|button_default
             attributes
             - value: send
-      # field 'File'
+        # field 'File'
         - file_text|field_file
             title: Text
             item_title: Text
@@ -23,7 +23,7 @@ forms
               - title: field_file
             element_attributes
             - name: file_text
-      # field 'Pictures'
+        # field 'Pictures'
         - file_picture|field_file_picture
             title: Pictures
             min_files_number: 0
@@ -38,7 +38,7 @@ forms
             - multiple: true
             thumbnails
             - =: small
-      # field 'Audio'
+        # field 'Audio'
         - file_audio|field_file_audio
             title: Audio
             upload_dir: demo/
@@ -49,7 +49,7 @@ forms
               - title: field_file_audio
             element_attributes
             - name: file_audio[]
-      # field 'Video'
+        # field 'Video'
         - file_video|field_file_video
             title: Video
             upload_dir: demo/
@@ -59,7 +59,7 @@ forms
               - title: field_file_video
             element_attributes
             - name: file_video[]
-      # widget 'Files'
+        # widget 'Files'
         - files_texts|widget_files
             title: Texts
             item_title: Text
@@ -68,7 +68,7 @@ forms
             upload_dir: demo/
             types_allowed
             - =: txt
-      # widget 'Pictures'
+        # widget 'Pictures'
         - files_pictures|widget_files_pictures
             title: Pictures
             state: opened
@@ -83,7 +83,7 @@ forms
             thumbnails_is_allowed: true
             thumbnails
             - =: small
-      # widget 'Audios'
+        # widget 'Audios'
         - files_audios|widget_files_audios
             title: Audios
             state: opened
@@ -93,7 +93,7 @@ forms
             cover_is_allowed: true
             types_allowed
             - =: mp3
-      # widget 'Videos'
+        # widget 'Videos'
         - files_videos|widget_files_videos
             title: Videos
             state: opened
@@ -102,7 +102,7 @@ forms
             poster_is_allowed: true
             types_allowed
             - =: mp4
-      # field 'Text'
+        # field 'Text'
         - text|field_text
             title: Text
             description_state: opened
@@ -117,7 +117,7 @@ forms
             - value: text in input
             - minlength: 5
             - pattern: ^[a-zA-Z0-9 ]+$
-      # field 'Password'
+        # field 'Password'
         - password|field_password
             title: Password
             description_position: top
@@ -130,7 +130,7 @@ forms
             element_attributes
             - name: password
             - value: text in password
-      # field 'Search'
+        # field 'Search'
         - search|field_search
             title: Search
             description|text
@@ -140,7 +140,7 @@ forms
             element_attributes
             - name: search
             - value: text in search
-      # field 'URL'
+        # field 'URL'
         - url|field_url
             title: URL
             description|text
@@ -150,20 +150,20 @@ forms
             element_attributes
             - name: url
             - value: http://example.com
-          # is_allowed_unicode: false
-          # should_be_included
-          # - =: protocol
-          # - =: domain
-          # - =: path
-          # - =: query
-          # - =: anchor
-          # should_be_excluded
-          # - =: protocol
-          # - =: domain
-          # - =: path
-          # - =: query
-          # - =: anchor
-      # field 'Telephone number'
+            # is_allowed_unicode: false
+            # should_be_included
+            # - =: protocol
+            # - =: domain
+            # - =: path
+            # - =: query
+            # - =: anchor
+            # should_be_excluded
+            # - =: protocol
+            # - =: domain
+            # - =: path
+            # - =: query
+            # - =: anchor
+        # field 'Telephone number'
         - tel|field_tel
             title: Telephone number
             description|text_multiline
@@ -175,7 +175,7 @@ forms
             element_attributes
             - name: tel
             - value: &plus;000112334455
-      # field 'Email'
+        # field 'Email'
         - email|field_email
             title: Email
             description|text
@@ -186,7 +186,7 @@ forms
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: true
-      # field 'Nickname'
+        # field 'Nickname'
         - nickname|field_nickname
             title: Nickname
             description|text
@@ -196,7 +196,7 @@ forms
             element_attributes
             - name: nickname
             - value: user
-      # field 'Digit' (number)
+        # field 'Digit' (number)
         - number|field_number
             title: Digit
             description|text
@@ -209,7 +209,7 @@ forms
             - max: +0.1
             - step: 0.000002
             - value: 0
-      # field 'Range'
+        # field 'Range'
         - range|field_range
             title: Range
             description|text
@@ -222,7 +222,7 @@ forms
             - max: +1
             - step: 0.2
             - value: 0
-      # field 'Color'
+        # field 'Color'
         - color|field_color
             title: Color
             description|text_multiline
@@ -234,9 +234,9 @@ forms
             element_attributes
             - name: color
             - value: #ffffff
-      # ─────────────────────────────────────────────────────────────────────
-      # date/time
-      # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # date/time
+        # ─────────────────────────────────────────────────────────────────────
         - time|field_time
             title: Time
             description|text_multiline
@@ -251,7 +251,7 @@ forms
             - step: 1
             - value: 01:23:45
             value_current_if_null: true
-      # field 'Date'
+        # field 'Date'
         - date|field_date
             title: Date
             description|text_multiline
@@ -264,7 +264,7 @@ forms
             - name: date
             - value: 2030-02-01
             value_current_if_null: true
-      # field 'Date/Time'
+        # field 'Date/Time'
         - datetime|field_datetime
             title: Date/Time
             description|text_multiline
@@ -279,7 +279,7 @@ forms
             - step: 1
             - value: 2030-02-01 01:23:45
             value_current_if_null: true
-      # field 'Local Date/Time'
+        # field 'Local Date/Time'
         - datetime_local|field_datetime_local
             title: Local Date/Time
             description|text_multiline
@@ -294,7 +294,7 @@ forms
             - step: 1
             - value: 2030-01-02 12:00:00
             value_current_if_null: true
-      # field 'Time zone'
+        # field 'Time zone'
         - timezone|field_select_timezone
             title: Time zone
             description|text
@@ -307,9 +307,9 @@ forms
             sort: by_zones
             selected
             - =: UTC
-      # ─────────────────────────────────────────────────────────────────────
-      # select
-      # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # select
+        # ─────────────────────────────────────────────────────────────────────
         - select|field_select
             title: Selection list
             description|text
@@ -353,7 +353,7 @@ forms
             - =: option_1
             disabled
             - =: option_2
-      # field 'Logic'
+        # field 'Logic'
         - logic|field_select_logic
             title: Logic
             description|text
@@ -364,7 +364,7 @@ forms
             - name: logic
             selected
             - =: 1
-      # field 'Relation'
+        # field 'Relation'
         - relation|field_select_relation
             title: Relation
             description|text
@@ -386,7 +386,7 @@ forms
             - name: relation
             selected
             - =: demo_sql_item_1
-      # field 'Relation' (tree view)
+        # field 'Relation' (tree view)
         - relation_tree|field_select_relation
             title: Relation (tree view)
             description|text
@@ -406,7 +406,7 @@ forms
             - name: relation_tree
             selected
             - =: demo_sql_item_1
-      # field 'Language'
+        # field 'Language'
         - language|field_select_language
             title: Language
             description|text
@@ -417,7 +417,7 @@ forms
             - name: lang_code
             selected
             - =: en
-      # field 'Text direction'
+        # field 'Text direction'
         - text_direction|field_select_text_direction
             title: Text direction
             description|text
@@ -428,9 +428,9 @@ forms
             - name: text_direction
             selected
             - =: ltr
-       # ─────────────────────────────────────────────────────────────────────
-       # textarea
-       # ─────────────────────────────────────────────────────────────────────
+        # ─────────────────────────────────────────────────────────────────────
+        # textarea
+        # ─────────────────────────────────────────────────────────────────────
         - textarea|field_textarea
             title: Text area
             description|text
@@ -495,7 +495,7 @@ forms
             title_is_visible: 1
             state: opened
             children
-          # field 'Checkbox'
+            # field 'Checkbox'
             - checkbox|field_checkbox
                 title: Checkbox
                 description|text
@@ -506,7 +506,7 @@ forms
                 - name: checkbox
                 - value: checkbox
                 - checked: true
-          # group 'Checkboxes'
+            # group 'Checkboxes'
             - checkboxes|group_checkboxes
                 title: Checkboxes
                 required_any: true
@@ -532,7 +532,7 @@ forms
                 checked
                 - =: checkbox_2
                 - =: checkbox_4
-          # field 'Switcher'
+            # field 'Switcher'
             - switcher|field_switcher
                 title: Switcher
                 description|text
@@ -542,7 +542,7 @@ forms
                 element_attributes
                 - name: switcher
                 - checked: true
-          # group 'Switchers'
+            # group 'Switchers'
             - switchers|group_switchers
                 title: Switchers
                 required_any: true
@@ -568,7 +568,7 @@ forms
                 checked
                 - =: switcher_2
                 - =: switcher_4
-          # widget 'Access'
+            # widget 'Access'
             - access|widget_access
                 title: Access
                 description|text_multiline
@@ -587,7 +587,7 @@ forms
             title_is_visible: 1
             state: opened
             children
-          # field 'Radiobutton'
+            # field 'Radiobutton'
             - radiobutton|field_radiobutton
                 title: Radiobutton
                 description|text
@@ -597,7 +597,7 @@ forms
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
-          # group 'Radiobuttons'
+            # group 'Radiobuttons'
             - radiobuttons|group_radiobuttons
                 title: Radiobuttons
                 required_any: true
@@ -620,7 +620,7 @@ forms
                 - =: radiobutton_3
                 checked
                 - =: radiobutton_2
-          # group 'Color' (palette)
+            # group 'Color' (palette)
             - palette|group_palette
                 title: Color
                 description|text
@@ -629,7 +629,7 @@ forms
                   - title: group_palette
                 element_attributes
                 - name: palette_color
-      # micro_tabs
+        # micro_tabs
         - micro_tabs|micro_tabs
             element_attributes
             - name: micro_tabs

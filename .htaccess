@@ -2,32 +2,76 @@ Options -Indexes
 DirectorySlash Off
 
 <IfModule headers_module>
-  Header unset "X-Powered-By"
+    Header unset "X-Powered-By"
 </IfModule>
 
+#########################
+### system protection ###
+#########################
+
+<If "%{REQUEST_URI} -strmatch '/shell/*'">
+    Require all denied
+</If>
+
 <If "%{REQUEST_URI} -strmatch '/dynamic/cache/*'">
-  Require all denied
+    Require all denied
 </If>
 
 <If "%{REQUEST_URI} -strmatch '/dynamic/data/*'">
-  Require all denied
+    Require all denied
 </If>
 
 <If "%{REQUEST_URI} -strmatch '/dynamic/logs/*'">
-  Require all denied
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} -strmatch '*/composer.json'">
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} -strmatch '*/composer.lock'">
+    Require all denied
 </If>
 
 <If "%{REQUEST_URI} -strmatch '*/web.config'">
-  Require all denied
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} -strmatch '*.data'">
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} -strmatch '*.php'">
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} -strmatch '/index.php'">
+    Require all granted
 </If>
 
 <If "%{REQUEST_URI} =~ m#/\.#">
-  Require all denied
+    Require all denied
 </If>
 
 <If "%{REQUEST_URI} =~ m#/\~#">
-  Require all denied
+    Require all denied
 </If>
+
+##########################
+### vendors protection ###
+##########################
+
+<If "%{REQUEST_URI} -strmatch '/modules/vendors/packages/*'">
+    Require all denied
+</If>
+
+<If "%{REQUEST_URI} =~ m#^/modules/vendors/packages/.*\.(apng|avif|gif|heif|ico|jpeg|jpg|png|svg|webp|css|js)$#">
+    Require all granted
+</If>
+
+##########################
+### SINGLE ENTRY POINT ###
+##########################
 
 RewriteEngine On
 RewriteRule ^.*$ index.php [L]

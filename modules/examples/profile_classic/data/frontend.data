@@ -1,0 +1,74 @@
+frontend
+- block_tree_sql_languages__profile_classic|frontend
+    display
+      check: block
+      where: cssid
+      match: %^block__tree_sql__languages$%
+    styles
+    - block_style__module_locale
+        path: /system/module_locale/frontend/locale.cssd
+        weight: -400
+        attributes
+        - rel: stylesheet
+        - media: all
+    - block_style__module_translation_ru
+        path: /system/module_locale/module_translation_ru/frontend/locale.css
+        weight: -500
+        attributes
+        - rel: stylesheet
+        - media: all
+- page_all__profile_classic|frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    styles
+    - page_style
+        path: frontend/page.cssd?page_id=%%_page_id_context
+        weight: -500
+        attributes
+        - rel: stylesheet
+        - media: all
+    favicons
+    # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
+    - icon_32_classic
+        path: frontend/pictures/icon-favourite-32.ico
+        attributes
+        - rel: icon
+        - type: image/x-icon
+        - sizes: 32x32
+    # icon for all modern browsers: Safari, Opera, Chrome, Firefox, IE 11, Edge …
+    - icon_32_modern
+        path: frontend/pictures/icon-favourite-32.png
+        attributes
+        - rel: icon
+        - type: image/png
+        - sizes: 32x32
+    # icon for Safari on iPad 1/2
+    - icon_apple_76
+        path: frontend/pictures/icon-favourite-76.png
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 76x76
+    # icon for Safari on iPhone
+    - icon_apple_120
+        path: frontend/pictures/icon-favourite-120.png
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 120x120
+    # icon for Safari on any iPad
+    - icon_apple_152
+        path: frontend/pictures/icon-favourite-152.png
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 152x152
+    # icon for Safari on iPad 3+, iPhone, macOS
+    - icon_apple_192
+        path: frontend/pictures/icon-favourite-192.png
+        attributes
+        - rel: apple-touch-icon
+        - type: image/png
+        - sizes: 192x192

@@ -172,7 +172,7 @@ instances
     entity_name: page
     values
     - id: user
-    - title: User %%_nickname_page_context{nickname}
+    - title: User %%_nickname_page_context(nickname)
     - url: /user/%%_nickname
     - is_https: 1
     - is_embedded: 1
@@ -210,7 +210,7 @@ instances
     entity_name: page
     values
     - id: user_edit
-    - title: Edit user %%_nickname_page_context{nickname}
+    - title: Edit user %%_nickname_page_context(nickname)
     - url: /user/%%_nickname/edit
     - is_https: 1
     - is_embedded: 1
@@ -395,7 +395,7 @@ instances
         - nickname_!v|text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_nickname_page_context{nickname}
+            text: %%_nickname_page_context(nickname)
       - limit: 1
     - fields
       - main

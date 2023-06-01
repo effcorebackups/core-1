@@ -1,18 +1,19 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class param_from_form {
+namespace effcore;
 
-  public $name;
+class param_from_form {
 
-  function get() {
-    if ($this->name) {
-      return request::value_get($this->name);
+    public $name;
+
+    function get() {
+        if ($this->name) {
+            return request::value_get($this->name);
+        }
     }
-  }
 
-}}
+}

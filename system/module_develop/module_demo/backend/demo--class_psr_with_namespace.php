@@ -1,19 +1,17 @@
 <?php
 
-# PSR-1 style with namespace.
+# PSR Style with namespace.
 
 namespace Vendor\Model;
 
 class DemoClassPsrWithNamespace
 {
 
-    public $PublicAttribute1;
+    public $PublicAttribute;
 
-    public function mainMethod($arg1, &$arg2, $arg3 = [])
+    public function mainMethod(int $arg1, bool &$arg2, ?array $arg3 = [], ... $otherArgs) : ?array
     {
-        # method body
+        return null;
     }
-
-    public $PublicAttribute2;
 
 }

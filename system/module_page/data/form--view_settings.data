@@ -10,14 +10,20 @@ forms
         children
         - width_min|field_number
             title: Minimum width
-            description: Value in pixels.
+            description|text_multiline
+              text
+              - 0: Value in pixels.
+              - 1: Leave 0 if you want to use global page size settings.
             element_attributes
             - name: width_min
             - min: 0
             - max: 10000
         - width_max|field_number
             title: Maximum width
-            description: Value in pixels.
+            description|text_multiline
+              text
+              - 0: Value in pixels.
+              - 1: Leave 0 if you want to use global page size settings.
             element_attributes
             - name: width_max
             - min: 0

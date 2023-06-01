@@ -1,26 +1,27 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class button_default extends button {
+namespace effcore;
 
-  public $title = null;
-  public $attributes = [
-    'tabindex'  => -1,
-    'data-type' => 'default',
-    'type'      => 'submit',
-    'name'      => 'button'];
+class button_default extends button {
 
-  function __construct($attributes = [], $weight = 0) {
-    parent::__construct(null, $attributes, $weight);
-  }
+    public $title = null;
+    public $attributes = [
+        'tabindex'  => -1,
+        'data-type' => 'default',
+        'type'      => 'submit',
+        'name'      => 'button'];
 
-  function build() {
-    if (!$this->is_builded)
-         $this->is_builded = true;
-  }
+    function __construct($attributes = [], $weight = 0) {
+        parent::__construct(null, $attributes, $weight);
+    }
 
-}}
+    function build() {
+        if (!$this->is_builded)
+             $this->is_builded = true;
+    }
+
+}

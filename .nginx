@@ -1,51 +1,75 @@
-# before start nginx on the 127.0.0.1:
-# - copy this file outside the site root path (this file will be reset to default state after each system update)
-# - insert "include path-to-this-file;" to the file "/usr/local/etc/nginx/nginx.conf" or
-# - insert "include path-to-this-file;" to the file           "/etc/nginx/nginx.conf"
-# - here replace the %%_root to your site root path
-# - here replace the %%_include to "/usr/local/etc/nginx/fastcgi.conf" or
-# - here replace the %%_include to           "/etc/nginx/fastcgi.conf"
-# - here replace the %%_domain_crt         to domain certificate path
-# - here replace the %%_domain_private_key to domain private key path
+# !!! THIS FILE WILL BE RESET TO DEFAULT STATE AFTER EACH SYSTEM UPDATE !!!
+
+# SETUP ACTIONS on 127.0.0.1 for `/etc/nginx/`:
+# - copy this file as `/etc/nginx/my_site.conf`;
+# - in file `/etc/nginx/nginx.conf` insert line `include /etc/nginx/my_site.conf;` to section `http`;
+# - in file `/etc/nginx/my_site.conf` replace the `%%_root`               to your site root path
+# - in file `/etc/nginx/my_site.conf` replace the `%%_include`            to `/etc/nginx/fastcgi.conf`
+# - in file `/etc/nginx/my_site.conf` replace the `%%_domain_crt`         to domain certificate path
+# - in file `/etc/nginx/my_site.conf` replace the `%%_domain_private_key` to domain private key path
+
+# SETUP ACTIONS on 127.0.0.1 for `/usr/local/etc/nginx/`:
+# - copy this file as `/usr/local/etc/nginx/my_site.conf`;
+# - in file `/usr/local/etc/nginx/nginx.conf` insert line `include /usr/local/etc/nginx/my_site.conf;` to section `http`;
+# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_root`               to your site root path
+# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_include`            to `/usr/local/etc/nginx/fastcgi.conf`
+# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_domain_crt`         to domain certificate path
+# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_domain_private_key` to domain private key path
 
 server {
-  listen 127.0.0.1:80;
-  server_name 127.0.0.1;
-  client_max_body_size 100M;
-  location ^~ /dynamic/cache/ {deny all; error_log off;}
-  location ^~ /dynamic/data/  {deny all; error_log off;}
-  location ^~ /dynamic/logs/  {deny all; error_log off;}
-  location ~ /web.config$     {deny all; error_log off;}
-  location ~ /\.              {deny all; error_log off;}
-  location ~ /\~              {deny all; error_log off;}
-  location / {
+    listen 127.0.0.1:80;
+    server_name 127.0.0.1;
     root %%_root;
-    fastcgi_index index.php;
-    fastcgi_pass 127.0.0.1:9000;
-    include %%_include;
-    fastcgi_param SCRIPT_NAME /index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
-  }
+    client_max_body_size 100M;
+    location ^~ /shell/                    {deny all; error_log off;}
+    location ^~ /dynamic/cache/            {deny all; error_log off;}
+    location ^~ /dynamic/data/             {deny all; error_log off;}
+    location ^~ /dynamic/logs/             {deny all; error_log off;}
+    location ~* /modules/vendors/packages/.*\.(apng|avif|gif|heif|ico|jpeg|jpg|png|svg|webp|css|js)$ {allow all;}
+    location ~* /modules/vendors/packages/ {deny all; error_log off;}
+    location ~* /composer.json$            {deny all; error_log off;}
+    location ~* /composer.lock$            {deny all; error_log off;}
+    location ~* /web.config$               {deny all; error_log off;}
+    location ~* .*\.data$                  {deny all; error_log off;}
+    location ~* .*\.php$                   {deny all; error_log off;}
+    location ~* /\.                        {deny all; error_log off;}
+    location ~* /\~                        {deny all; error_log off;}
+  # SINGLE ENTRY POINT
+    location / {
+        fastcgi_index index.php;
+        fastcgi_pass 127.0.0.1:9000;
+        include %%_include;
+        fastcgi_param SCRIPT_NAME /index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    }
 }
 
 server {
-  listen 127.0.0.1:443 ssl;
-  server_name 127.0.0.1;
-  client_max_body_size 100M;
-  ssl_certificate     %%_domain_crt;
-  ssl_certificate_key %%_domain_private_key;
-  location ^~ /dynamic/cache/ {deny all; error_log off;}
-  location ^~ /dynamic/data/  {deny all; error_log off;}
-  location ^~ /dynamic/logs/  {deny all; error_log off;}
-  location ~ /web.config$     {deny all; error_log off;}
-  location ~ /\.              {deny all; error_log off;}
-  location ~ /\~              {deny all; error_log off;}
-  location / {
-    root %%_root;
-    fastcgi_index index.php;
-    fastcgi_pass 127.0.0.1:9000;
-    include %%_include;
-    fastcgi_param SCRIPT_NAME /index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
-  }
+    listen 127.0.0.1:443 ssl;
+    server_name 127.0.0.1;
+    root                %%_root;
+    ssl_certificate     %%_domain_crt;
+    ssl_certificate_key %%_domain_private_key;
+    client_max_body_size 100M;
+    location ^~ /shell/                    {deny all; error_log off;}
+    location ^~ /dynamic/cache/            {deny all; error_log off;}
+    location ^~ /dynamic/data/             {deny all; error_log off;}
+    location ^~ /dynamic/logs/             {deny all; error_log off;}
+    location ~* /modules/vendors/packages/.*\.(apng|avif|gif|heif|ico|jpeg|jpg|png|svg|webp|css|js)$ {allow all;}
+    location ~* /modules/vendors/packages/ {deny all; error_log off;}
+    location ~* /composer.json$            {deny all; error_log off;}
+    location ~* /composer.lock$            {deny all; error_log off;}
+    location ~* /web.config$               {deny all; error_log off;}
+    location ~* .*\.data$                  {deny all; error_log off;}
+    location ~* .*\.php$                   {deny all; error_log off;}
+    location ~* /\.                        {deny all; error_log off;}
+    location ~* /\~                        {deny all; error_log off;}
+  # SINGLE ENTRY POINT
+    location / {
+        fastcgi_index index.php;
+        fastcgi_pass 127.0.0.1:9000;
+        include %%_include;
+        fastcgi_param SCRIPT_NAME /index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    }
 }

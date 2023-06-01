@@ -1,27 +1,32 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore { # indicates that the class should clear own cache after install any new module
-          interface should_clear_cache_after_on_install {
-  static function cache_cleaning();
-}}
+namespace effcore {
+    interface should_clear_cache_after_on_install { # indicates that the class should clear own cache after install any new module
+        static function cache_cleaning();
+    }
+}
 
-namespace effcore { # indicates that the cache should be separated by files
-          interface has_external_cache {
-  static function not_external_properties_get();
-}}
+namespace effcore {
+    interface has_external_cache { # indicates that the cache should be separated by files
+        static function not_external_properties_get();
+    }
+}
 
-namespace effcore { # indicates that the __construct() should be called after the data load
-          interface has_postconstructor {
-}}
+namespace effcore {
+    interface has_postconstructor { # indicates that the __construct() should be called after the data load
+    }
+}
 
-namespace effcore { # indicates that the _postinit() should be called after the data load
-          interface has_postinit {
-}}
+namespace effcore {
+    interface has_postinit { # indicates that the _postinit() should be called after the data load
+    }
+}
 
-namespace effcore { # indicates that the _postparse() should be called after parse the data
-          interface has_postparse {
-}}
+namespace effcore {
+    interface has_postparse { # indicates that the _postparse() should be called after parse the data
+    }
+}

@@ -9,6 +9,11 @@ forms
         children
         - content|field_textarea
             title: Content of the "sitemap.xml" file
+            description_state: opened
+            description|text
+              text: If filled, the file will be available at: %%_page
+              args
+              - page: <a href="/sitemap.xml" target="_blank">/sitemap.xml</a>
             element_attributes
             - data-style: code-editor
             - name: content

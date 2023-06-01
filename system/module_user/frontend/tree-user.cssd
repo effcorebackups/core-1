@@ -1,7 +1,7 @@
 
-  /* dropdown menu 'user': icons */
+/* dropdown menu 'user': icons */
 
-                         [role='tree'][data-style~='dropdown'][data-id^='user'] li                        > a {background-size: 48px 48px; background-repeat: no-repeat; background-position: 8px 50%}
-                         [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='anonymous' ] > a {padding-left: 77px; background-image: url('pictures/avatar-anonymous.svg');}
-                         [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('pictures/avatar-registered.svgd?color=%%_return_token_color_encode{color__main}');}
-  [data-user-has-avatar] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('/%%_avatar_path?thumb=small');}
+                       [role='tree'][data-style~='dropdown'][data-id^='user'] li                        > a {background-size: 48px 48px; background-repeat: no-repeat; background-position: 8px 50%}
+                       [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='anonymous' ] > a {padding-left: 77px; background-image: url('pictures/avatar-anonymous.svg');}
+                       [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('pictures/avatar-registered.svgd?color=%%_return_token_color_encode(color__main)');}
+[data-user-has-avatar] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('/%%_avatar_path?thumb=small');}

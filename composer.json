@@ -1,0 +1,61 @@
+{
+    "name": "effcore/core",
+    "description": "EFFCORE — the next-generation mini-CMS/CMF",
+    "keywords": ["CMS", "CMF", "EFFCORE"],
+    "homepage": "http://effcore.com",
+    "license": "proprietary",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Maxim Rysevets",
+            "email": "root@effcore.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-zend-opcache": "*",
+        "composer/installers": "^2.2",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "effcore/examples": "dev-main"
+    },
+    "suggest": {
+        "oomphinc/composer-installers-extender": "Required to install packages with custom types.",
+        "effcore/examples": "An example of installing a library of type \"effcore-bundle\" or \"effcore-module\"."
+    },
+    "config": {
+        "vendor-dir": "modules/vendors/packages",
+        "allow-plugins": {
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php modules/vendors/packages/post-install-cmd.php"
+        ],
+        "post-update-cmd": [
+            "php modules/vendors/packages/post-install-cmd.php"
+        ]
+    },
+    "extra": {
+        "installer-types": [
+            "effcore-bundle",
+            "effcore-module"
+        ],
+        "installer-paths": {
+            "modules/{$name}": [
+                "type:effcore-bundle",
+                "type:effcore-module"
+            ]
+        }
+    }
+}

@@ -1,0 +1,65 @@
+events
+  on_module_install
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_install
+  on_module_uninstall
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_uninstall
+  on_module_enable
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_enable
+  on_module_disable
+  - profile_classic|event
+      for: profile_classic
+      handler: \effcore\modules\profile_classic\events_module::on_disable
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  on_update_files
+  - examples|event
+      for: examples
+      handler: \effcore\modules\profile_classic\events_module_update::on_update_files
+  on_repo_restore
+  - examples|event
+      for: examples
+      handler: \effcore\modules\profile_classic\events_module_update::on_repo_restore
+  # ═════════════════════════════════════════════════════════════════════
+  on_form_build
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_build
+  on_form_init
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_init
+  on_form_submit
+  - colors|event
+      for: colors
+      handler: \effcore\modules\profile_classic\events_form_colors::on_submit
+  - instance_update__user|event
+      for: instance_update
+      weight: +600
+      handler: \effcore\modules\profile_classic\events_form_instance_update::on_submit
+  - login|event
+      for: login
+      weight: +600
+      handler: \effcore\modules\profile_classic\events_form_login::on_submit
+  - registration|event
+      for: registration
+      weight: +600
+      handler: \effcore\modules\profile_classic\events_form_registration::on_submit
+  - recovery|event
+      for: recovery
+      weight: +600
+      handler: \effcore\modules\profile_classic\events_form_recovery::on_submit
+  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+  on_page_build_before
+  - user_ru|event
+      for: user_ru
+      weight: +500
+      handler: \effcore\modules\user\events_page_user::on_check_access_and_existence
+  - user_edit_ru|event
+      for: user_edit_ru
+      weight: +500
+      handler: \effcore\modules\user\events_page_user_edit::on_check_access_and_existence_and_set_page_args

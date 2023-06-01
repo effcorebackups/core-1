@@ -1,20 +1,20 @@
-*.config  text eol=lf whitespace=tab-in-indent,tabwidth=2
+*.config  text eol=lf whitespace=tab-in-indent,tabwidth=4
 *.css     text eol=lf whitespace=tab-in-indent,tabwidth=2
 *.cssd    text eol=lf whitespace=tab-in-indent,tabwidth=2
 *.data    text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.html    text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.js      text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.jsd     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.json    text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.log     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.md      text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.php     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.sh      text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.svg     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.svgd    text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.tpl     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.txt     text eol=lf whitespace=tab-in-indent,tabwidth=2
-*.xml     text eol=lf whitespace=tab-in-indent,tabwidth=2
+*.html    text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.js      text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.jsd     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.json    text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.log     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.md      text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.php     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.sh      text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.svg     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.svgd    text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.tpl     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.txt     text eol=lf whitespace=tab-in-indent,tabwidth=4
+*.xml     text eol=lf whitespace=tab-in-indent,tabwidth=4
 
 *.gif    binary
 *.ico    binary

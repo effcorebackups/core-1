@@ -12,7 +12,7 @@ translations
     - Europe: Європа
     - Indian: Індія
     - Pacific: Тихий океан
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - - no -: - ні -
     - - root -: - корінь -
     - - select -: - вибрати -
@@ -21,7 +21,7 @@ translations
     - %%_entity_title_context\: insert: %%_entity_title_context: вставити
     - %%_entity_title_context\: update: %%_entity_title_context: оновити
     - %%_number sec.: %%_number сек.
-    - %%_number second%%_plural{number\|s}: %%_number секунд%%_plural{number|a-i}
+    - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-i)
     - A new password was sent to the selected Email.: Новий пароль був надіслан на вибрану адресу електронної пошти.
     - access allowed by permission "%%_permission": доступ дозволений за дозволом "%%_permission"
     - access allowed by role "%%_role": доступ дозволений по ролі "%%_role"
@@ -79,8 +79,8 @@ translations
     - Build number: Номер збирання
     - bundle build number: номер збирання пакета
     - bundle description: опис пакету
-    - Bundle for examples of custom profiles.: Пакет прикладів профілів користувача.
     - bundle id: id пакету
+    - Bundle of examples of custom modules and profiles.: Пакет прикладів користувацьких модулів та профілів.
     - bundle title: заголовок пакету
     - Bundle with system.: Пакет з системою.
     - Button active: Кнопка активна
@@ -122,7 +122,7 @@ translations
     - Console settings: Налаштування консолі
     - Content in the &lt;head&gt;: Зміст в &lt;head&gt;
     - Content of the "global.cssd" file: Зміст файлу "global.cssd"
-    - Content of the "robots.txt" file: Зміст файлу robots.txt
+    - Content of the "robots.txt" file: Зміст файлу "robots.txt"
     - Content of the "sitemap.xml" file: Зміст файлу "sitemap.xml"
     - Content: Зміст
     - Cookie domain: Домен cookie
@@ -235,14 +235,14 @@ translations
     - Field "%%_title" should be enabled!: Поле "%%_title" повинно бути увімкнено!
     - Field "%%_title" should be selected!: Поле "%%_title" повинно бути вибрано!
     - Field "%%_title".: Поле "%%_title".
-    - Field can contain a maximum of %%_number file%%_plural{number\|s}.: Поле може містити максимум %%_number файл%%_plural{number|iv-i}.
-    - Field can contain a minimum of %%_number file%%_plural{number\|s}.: Поле може містити мінімум %%_number файл%%_plural{number|iv-i}.
-    - Field can contain only %%_number file%%_plural{number\|s}.: Поле може містити тільки %%_number файл%%_plural{number|iv-i}.
+    - Field can contain a maximum of %%_number file%%_plural(number\|s).: Поле може містити максимум %%_number файл%%_plural(number|iv-i).
+    - Field can contain a minimum of %%_number file%%_plural(number\|s).: Поле може містити мінімум %%_number файл%%_plural(number|iv-i).
+    - Field can contain only %%_number file%%_plural(number\|s).: Поле може містити тільки %%_number файл%%_plural(number|iv-i).
     - Field name: Ім'я поля
     - Field value at the current moment\: %%_value: Значення поля у поточний момент: %%_value
-    - Field value can contain a maximum of %%_number character%%_plural{number\|s}.: Значення поля може містити максимум %%_number символ%%_plural{number|iv-i}.
-    - Field value can contain a minimum of %%_number character%%_plural{number\|s}.: Значення поля може містити мінімум %%_number символ%%_plural{number|iv-i}.
-    - Field value can contain only %%_number character%%_plural{number\|s}.: Значення поля може містити тільки %%_number символ%%_plural{number|iv-i}.
+    - Field value can contain a maximum of %%_number character%%_plural(number\|s).: Значення поля може містити максимум %%_number символ%%_plural(number|iv-i).
+    - Field value can contain a minimum of %%_number character%%_plural(number\|s).: Значення поля може містити мінімум %%_number символ%%_plural(number|iv-i).
+    - Field value can contain only %%_number character%%_plural(number\|s).: Значення поля може містити тільки %%_number символ%%_plural(number|iv-i).
     - Field value can contain only the next characters\: %%_characters: Значення поля може містити тільки такі символи: %%_characters
     - Field value can contain only the next classes\: %%_classes: Значення поля може містити тільки такі класи: %%_classes
     - Field value can contain Unicode.: Значення поля може містити Юнікод.
@@ -257,7 +257,7 @@ translations
     - Field value is not in valid range.: Значення поля не відповідає допустимому діапазону.
     - Field value should be represented in the international format of telephone numbers.: Значення поля повинно бути представлене у міжнародному форматі телефонних номерів.
     - Field value should be start with "%%_value".: Значення поля повинно починатися з %%_value.
-    - Field value should contain a minimum of %%_number character%%_plural{number\|s}.: Значення поля повинно містити мінімум %%_number символ%%_plural{number|iv-i}.
+    - Field value should contain a minimum of %%_number character%%_plural(number\|s).: Значення поля повинно містити мінімум %%_number символ%%_plural(number|iv-i).
     - Field value should contain anchor.: Значення поля повинно містити якір.
     - Field value should contain domain.: Значення поля повинно містити домен.
     - Field value should contain path.: Значення поля повинно містити шлях.
@@ -337,8 +337,8 @@ translations
     - go to Russian language: перейти на Російську мову
     - go to section "%%_title": перейти до розділу "%%_title"
     - Group "%%_title" has a changed value.: Група %%_title має змінене значення.
-    - Group "%%_title" should contain a maximum %%_number item%%_plural{number\|s}!: Група "%%_title" повинна містити максимально %%_number элемент%%_plural{number|iv-i}!
-    - Group "%%_title" should contain a minimum %%_number item%%_plural{number\|s}!: Група "%%_title" повинна містити мінімально %%_number элемент%%_plural{number|iv-i}!
+    - Group "%%_title" should contain a maximum %%_number item%%_plural(number\|s)!: Група "%%_title" повинна містити максимально %%_number элемент%%_plural(number|iv-i)!
+    - Group "%%_title" should contain a minimum %%_number item%%_plural(number\|s)!: Група "%%_title" повинна містити мінімально %%_number элемент%%_plural(number|iv-i)!
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" повинна містити щонайменше один вибраний елемент!
     - Group "%%_title".: Група "%%_title".
     - Group: Група
@@ -349,6 +349,7 @@ translations
     - HTTPS is required: Потрібен HTTPS
     - I accept the terms of the license agreement.: Я приймаю умови ліцензійної угоди.
     - If a domain is specified, then it and its subdomains are used.: Якщо домен заданий, то використовується він та його піддомени.
+    - If filled, the file will be available at\: %%_page: Якщо заповнено, то файл буде доступний на адресу: %%_page
     - If no domain is specified, then the current domain is used, excluding subdomains.: Якщо домен не заданий, то використовується поточний домен без урахування піддоменів.
     - Ignore this email if you have not completed any registration on %%_domain.: Проігноруйте цей лист, якщо Ви не здійснювали жодної реєстрації на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: У режимі "Анонімні користувачі + Зареєстровані користувачі" зловмисник може надіслати велику кількість підроблених анонімних голосів!
@@ -423,6 +424,7 @@ translations
     - Item of type "%%_type" with title "%%_title" was not inserted!: Елемент типу "%%_type" під назвою "%%_title" не був доданий!
     - Item of type "%%_type" with title "%%_title" was not updated!: Елемент типу "%%_type" під назвою "%%_title" не був оновлений!
     - Item of type "%%_type" with title "%%_title" was updated.: Елемент типу "%%_type" під назвою "%%_title" був оновлений.
+    - Item\: %%_item: Елемент: %%_item
     - items: елементи
     - Items: Елементи
     - K: К
@@ -441,6 +443,7 @@ translations
     - Layout: Макет
     - Layouts: Макети
     - Leading tab character found.: Був знайдений провідний символ табуляції.
+    - Leave 0 if you want to remove page size limits.: Залишіть 0, якщо Ви бажаєте видалити обмеження розміру сторінки.
     - Leave 0 if you want to use global page size settings.: Залиште 0, якщо Ви хочете використовувати глобальні налаштування розміру сторінки.
     - leave edit mode: вийти з режиму редагування
     - Leave the field blank if you do not want to change its value.: Залишіть поле порожнім, якщо Ви не бажаєте змінювати його значення.
@@ -500,6 +503,7 @@ translations
     - Menus: Меню
     - Message from storage\: %%_message: Повідомлення від сховищ: %%_message
     - Message: Повідомлення
+    - Message\: %%_message: Повідомлення: %%_message
     - Messages: Повідомлення
     - META editing form: Форма редагування META
     - META: МЕТА
@@ -515,10 +519,12 @@ translations
     - Module data "%%_title" (%%_id) was removed.: Дані модуля %%_title (%%_id) були видалені.
     - Module for demonstrating capabilities.: Модуль демонстрації можливостей.
     - Module for development.: Модуль для розробок.
+    - Module for example of profile "Classic".: Модуль для прикладу профілю "Класика".
     - Module for localization.: Модуль для локалізації.
     - Module for publishing projects.: Модуль для публікації проектів.
     - Module for storages support.: Модуль для підтримки сховищ даних.
     - Module for support the operation of the whole system.: Модуль для підтримки роботи усієї системи.
+    - Module for support vendors packages.: Модуль підтримки пакетів постачальників.
     - Module for testing.: Модуль для тестування.
     - Module for translation into Belarusian language.: Модуль для перекладу білоруською мовою.
     - Module for translation into Russian language.: Модуль для перекладу російською мовою.
@@ -730,7 +736,7 @@ translations
     - settings page: сторінка налаштувань
     - Settings: Налаштування
     - Shared parameters: Загальні параметри
-    - Short session\: %%_min day%%_plural{min\|s} \| long session\: %%_max day%%_plural{max\|s}: Короткий сеанс = %%_min %%_plural{min|day} | довготривалий сеанс = %%_max %%_plural{max|day}
+    - Short session\: %%_min day%%_plural(min\|s) \| long session\: %%_max day%%_plural(max\|s): Короткий сеанс = %%_min %%_plural(min|day) | довготривалий сеанс = %%_max %%_plural(max|day)
     - Simple layout: Простий макет
     - Sitemap editing form: Форма редагування Sitemap
     - Size of uploaded file greater than %%_size.: Розмір завантаженого файлу більше ніж %%_size.
@@ -789,8 +795,8 @@ translations
     - The class name has been changed to "%%_new_class_name".: Ім'я класу було змінено на %%_new_class_name.
     - The following related items will also be deleted\:: Також будуть видалені такі пов'язані елементи:
     - The letter was not accepted for transmission!: Лист не був прийняти до передачі!
-    - The maximum value cannot be less than the minimum!: Мінімальне значення не може бути більшим за максимальне!
     - The minimum value cannot be greater than or equal to the maximum!: Мінімальне значення не може бути більшим або рівним максимальному!
+    - The minimum value cannot be greater than the maximum!: Мінімальне значення не може бути більшим за максимальне!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Модуль, що видаляється, спочатку повинен бути вимкнений. Вбудовані модулі не можуть бути вимкнені.
     - The report will be created after submitting the form.: Звіт буде створений після надсилання форми.
     - This block will be inserted into the &lt;head&gt; of each page.: Цей блок буде вставлений у &lt;head&gt; кожної сторінки.
@@ -824,7 +830,6 @@ translations
     - Tree\: select: Дерево: вибрати
     - Tree\: update: Дерево: оновити
     - Trees: Дерева
-    - Try entering the value "127.0.0.1" or "localhost" if you get an error message such as "unknown mysql server host [\:\:1]".: Спробуйте ввести значення "127.0.0.1" або "localhost", якщо Ви отримуєте повідомлення про помилку "unknown mysql server host [::1]".
     - type: тип
     - Type: Тип
     - Types: Типи
@@ -866,6 +871,7 @@ translations
     - Value was trimmed to the required length!: Значення було обрізане до потрібної довжини!
     - Value: Значення
     - Values: Значення
+    - Vendors: Постачальники
     - version: версія
     - Version: Версія
     - video "%%_video": відео "%%_video"
@@ -905,7 +911,7 @@ translations
     - Yes: Так
     - You are trying to upload too few files!: Ви намагаєтеся завантажити занадто мало файлів!
     - You are trying to upload too much files!: Ви намагаєтесь завантажити занадто багато файлів!
-    - You have already uploaded %%_current_number file%%_plural{current_number\|s}.: Ви вже завантажили %%_current_number файл%%_plural{current_number|iv-i}.
+    - You have already uploaded %%_current_number file%%_plural(current_number\|s).: Ви вже завантажили %%_current_number файл%%_plural(current_number|iv-i).
     - You have not made any changes before!: Ви не робили жодних змін раніше!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Ви отримали це повідомлення, тому що хтось намагався відновити пароль від Вашого облікового запису на %%_domain.
     - You received this message because this email address was specified when registering on %%_domain.: Ви отримали це повідомлення, тому що при реєстрації на %%_domain була вказана ця адреса електронної пошти.

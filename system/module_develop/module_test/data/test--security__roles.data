@@ -18,9 +18,9 @@ tests
         element_attributes
         - name: is_https
     scenario
-  # ─────────────────────────────────────────────────────────────────────
-  # anonymous user
-  # ─────────────────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────
+    # anonymous user
+    # ─────────────────────────────────────────────────────────────────────
     - title_for_anonymous_user|step_title
         title: ANONYMOUS USER
     # page of "Admin" user
@@ -213,9 +213,9 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # registered user
-  # ─────────────────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────
+    # registered user
+    # ─────────────────────────────────────────────────────────────────────
     - title_for_registered_user_delimiter|step_title
         title: ==================================================================
     - title_for_registered_user|step_title
@@ -239,9 +239,9 @@ tests
           name: proxy
         post
         - form_id: registration
-        - validation_id: %%_test_form_validation_id{registration}
+        - validation_id: %%_test_form_validation_id(registration)
         - email: %%_test_email_random
-        - nickname: %%_test_nickname_random{0}
+        - nickname: %%_test_nickname_random(0)
         - password: %%_test_password_random
         - timezone: UTC
         - session_params[0]: is_long_session
@@ -447,15 +447,15 @@ tests
         on_failure
         - return_result|step_return
             value: 0
-  # ─────────────────────────────────────────────────────────────────────
-  # registered user + role
-  # ─────────────────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────
+    # registered user + role
+    # ─────────────────────────────────────────────────────────────────────
     - title_for_registered_user_ws_role_delimiter|step_title
         title: ==================================================================
     - title_for_registered_user_ws_role|step_title
         title: REGISTERED USER + ROLE
     - set_user_roles|step_set_user_roles
-        nickname: %%_test_nickname_random{0}
+        nickname: %%_test_nickname_random(0)
         roles
         - =: test
         is_reset: true
@@ -573,30 +573,30 @@ tests
             value: 0
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - transpositions|step_transpositions
-      # ┌────╥─────────┬─────────┬─────────┬─────────┐
-      # │  i ║ …select │ …insert │ …update │ …delete │
-      # ╞════╬═════════╪═════════╪═════════╪═════════╡
-      # │  0 ║         │         │         │         │ ← 0000 === □□□□
-      # │  1 ║         │         │         │    x    │ ← 0001 === □□□▣
-      # │  2 ║         │         │    x    │         │ ← 0010 === □□▣□
-      # │  3 ║         │         │    x    │    x    │ ← 0011 === □□▣▣
-      # │  4 ║         │    x    │         │         │ ← 0100 === □▣□□
-      # │  5 ║         │    x    │         │    x    │ ← 0101 === □▣□▣
-      # │  6 ║         │    x    │    x    │         │ ← 0110 === □▣▣□
-      # │  7 ║         │    x    │    x    │    x    │ ← 0111 === □▣▣▣
-      # │  8 ║    x    │         │         │         │ ← 1000 === ▣□□□
-      # │  9 ║    x    │         │         │    x    │ ← 1001 === ▣□□▣
-      # │ 10 ║    x    │         │    x    │         │ ← 1010 === ▣□▣□
-      # │ 11 ║    x    │         │    x    │    x    │ ← 1011 === ▣□▣▣
-      # │ 12 ║    x    │    x    │         │         │ ← 1100 === ▣▣□□
-      # │ 13 ║    x    │    x    │         │    x    │ ← 1101 === ▣▣□▣
-      # │ 14 ║    x    │    x    │    x    │         │ ← 1110 === ▣▣▣□
-      # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111 === ▣▣▣▣
-      # └────╨─────────┴─────────┴─────────┴─────────┘
+        # ┌────╥─────────┬─────────┬─────────┬─────────┐
+        # │  i ║ …select │ …insert │ …update │ …delete │
+        # ╞════╬═════════╪═════════╪═════════╪═════════╡
+        # │  0 ║         │         │         │         │ ← 0000 === □□□□
+        # │  1 ║         │         │         │    x    │ ← 0001 === □□□▣
+        # │  2 ║         │         │    x    │         │ ← 0010 === □□▣□
+        # │  3 ║         │         │    x    │    x    │ ← 0011 === □□▣▣
+        # │  4 ║         │    x    │         │         │ ← 0100 === □▣□□
+        # │  5 ║         │    x    │         │    x    │ ← 0101 === □▣□▣
+        # │  6 ║         │    x    │    x    │         │ ← 0110 === □▣▣□
+        # │  7 ║         │    x    │    x    │    x    │ ← 0111 === □▣▣▣
+        # │  8 ║    x    │         │         │         │ ← 1000 === ▣□□□
+        # │  9 ║    x    │         │         │    x    │ ← 1001 === ▣□□▣
+        # │ 10 ║    x    │         │    x    │         │ ← 1010 === ▣□▣□
+        # │ 11 ║    x    │         │    x    │    x    │ ← 1011 === ▣□▣▣
+        # │ 12 ║    x    │    x    │         │         │ ← 1100 === ▣▣□□
+        # │ 13 ║    x    │    x    │         │    x    │ ← 1101 === ▣▣□▣
+        # │ 14 ║    x    │    x    │    x    │         │ ← 1110 === ▣▣▣□
+        # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111 === ▣▣▣▣
+        # └────╨─────────┴─────────┴─────────┴─────────┘
         action_before|step_set_role_permissions
           id_role: test
           is_reset: true
-      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         actions
         - select|step_actions
             actions
@@ -622,7 +622,7 @@ tests
                 id_role: test
                 permissions
                 - =: manage_data__content_page_text__delete
-      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         action_after|step_actions
           actions
           - title_for_select_multiple|step_title
@@ -784,10 +784,10 @@ tests
         id_role: test
         is_reset: true
     - reset_user_roles|step_set_user_roles
-        nickname: %%_test_nickname_random{0}
+        nickname: %%_test_nickname_random(0)
         is_reset: true
-  # ─────────────────────────────────────────────────────────────────────
-  # return
-  # ─────────────────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────
+    # return
+    # ─────────────────────────────────────────────────────────────────────
     - return_result|step_return
         value: 1

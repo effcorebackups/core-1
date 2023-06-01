@@ -1,0 +1,57 @@
+{
+    "name": "effcore/examples",
+    "type": "effcore-bundle",
+    "description": "Bundle of examples of custom modules and profiles.",
+    "keywords": ["EFFCORE", "module", "profile", "example"],
+    "homepage": "http://example.com",
+    "license": [
+        "proprietary",
+        "Apache-2.0",
+        "BSD-2-Clause",
+        "BSD-3-Clause",
+        "BSD-4-Clause",
+        "GPL-2.0-only",
+        "GPL-2.0-or-later",
+        "GPL-3.0-only",
+        "GPL-3.0-or-later",
+        "LGPL-2.1-only",
+        "LGPL-2.1-or-later",
+        "LGPL-3.0-only",
+        "LGPL-3.0-or-later",
+        "MIT"
+    ],
+    "authors": [
+        {
+            "name": "John Doe",
+            "email": "info@example.com",
+            "homepage": "http://example.com/john_doe",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@example.com"
+    },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://example.com/sponsorship"
+        }
+    ],
+    "require": {
+        "tinymce/tinymce": "^6.1"
+    },
+    "suggest": {
+        "tinymce/tinymce": "An example of installing a universal third-party library."
+    },
+    "autoload": {
+        "classmap": ["composer_helper.php"]
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "composer_helper::preInstall"
+        ],
+        "pre-update-cmd": [
+            "composer_helper::preInstall"
+        ]
+    }
+}

@@ -4,7 +4,13 @@ file_types
 # ─────────────────────────────────────────────────────────────────────
 - audio
     type: audio
+    headers
+    - Content-type: audio/*
 - picture
     type: picture
+    headers
+    - Content-type: image/*
 - video
     type: video
+    headers
+    - Content-type: video/*

@@ -1,25 +1,26 @@
 <?php
 
-  ##################################################################
-  ### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
-  ##################################################################
+##################################################################
+### Copyright © 2017—2022 Maxim Rysevets. All rights reserved. ###
+##################################################################
 
-namespace effcore {
-          class markup_simple extends node_simple {
+namespace effcore;
 
-  public $tag_name = 'input';
-  public $template = 'markup_html_simple';
+class markup_simple extends node_simple {
 
-  function __construct($tag_name = null, $attributes = [], $weight = 0) {
-    if ($tag_name) $this->tag_name = $tag_name;
-    parent::__construct($attributes, $weight);
-  }
+    public $tag_name = 'input';
+    public $template = 'markup_html_simple';
 
-  function render() {
-    return (template::make_new($this->template, [
-      'tag_name'   => $this->tag_name,
-      'attributes' => $this->render_attributes()
-    ]))->render();
-  }
+    function __construct($tag_name = null, $attributes = [], $weight = 0) {
+        if ($tag_name) $this->tag_name = $tag_name;
+        parent::__construct($attributes, $weight);
+    }
 
-}}
+    function render() {
+        return (template::make_new($this->template, [
+            'tag_name'   => $this->tag_name,
+            'attributes' => $this->render_attributes()
+        ]))->render();
+    }
+
+}
