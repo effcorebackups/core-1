@@ -11,12 +11,12 @@ templates
 - mail_recovery_subject
     name: mail_recovery_subject
     type: text
-    data|text
+    data|Text
       text: Password recovery on %%_domain
 - mail_recovery_message
     name: mail_recovery_message
     type: text
-    data|text_multiline
+    data|Text_multiline
       delimiter: &#10;&#10;
       text
       - 500: You received this message because someone tried to recover the password from your account on %%_domain.
@@ -26,12 +26,12 @@ templates
 - mail_registration_subject
     name: mail_registration_subject
     type: text
-    data|text
+    data|Text
       text: Registering a new user on %%_domain
 - mail_registration_message
     name: mail_registration_message
     type: text
-    data|text_multiline
+    data|Text_multiline
       delimiter: &#10;&#10;
       text
       - 500: You received this message because this email address was specified when registering on %%_domain.

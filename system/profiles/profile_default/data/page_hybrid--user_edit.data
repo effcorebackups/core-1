@@ -1,4 +1,4 @@
 pages
-- user_edit|page_hybrid
+- user_edit|Page_hybrid
     id: user_edit
     url: %^/user/(?<nickname>[a-zA-Z0-9_\-]{4,32})/edit$%

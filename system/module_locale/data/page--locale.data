@@ -1,5 +1,5 @@
 pages
-- locale|page
+- locale|Page
     id: locale
     title: Locale
     url: %^(?<base>/manage/locale)
@@ -13,25 +13,25 @@ pages
       - =: manage__locale
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -40,7 +40,7 @@ pages
           source: tabs/locale/locale
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__locale_general|block
+      - block__form__locale_general|Block
           title: Locale general settings form
           title_is_visible: false
           attributes
@@ -51,7 +51,7 @@ pages
             match: %^general$%
           type: link
           source: forms/locale/locale_general
-      - block__form__locale_by_language|block
+      - block__form__locale_by_language|Block
           title: Locale setting form by language
           title_is_visible: false
           attributes

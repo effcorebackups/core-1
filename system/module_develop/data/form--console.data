@@ -1,15 +1,15 @@
 forms
-- console|form
+- console|Form
     attributes
     - id: console
     - method: post
     - novalidate: true
     children
-    - settings|fieldset
+    - settings|Fieldset
         children
-        - visibility|field_select
+        - visibility|Field_Select
             title: Visibility
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.
               - 1: Displaying the console will result in a %%_value increase in RAM consumption!
@@ -25,7 +25,7 @@ forms
             - 2: show for everyone
             selected
             - =: 0
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save

@@ -1,5 +1,5 @@
 pages
-- seo|page
+- seo|Page
     id: seo
     title: SEO
     url: %^(?<base>/manage/seo)
@@ -14,25 +14,25 @@ pages
       - =: manage__seo
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -41,7 +41,7 @@ pages
           source: tabs/page/seo
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__seo_meta|block
+      - block__form__seo_meta|Block
           title: META editing form
           title_is_visible: false
           attributes
@@ -52,7 +52,7 @@ pages
             match: %^meta$%
           type: link
           source: forms/page/seo_meta
-      - block__form__seo_sitemap|block
+      - block__form__seo_sitemap|Block
           title: Sitemap editing form
           title_is_visible: false
           attributes
@@ -63,7 +63,7 @@ pages
             match: %^sitemap$%
           type: link
           source: forms/page/seo_sitemap
-      - block__form__seo_robots|block
+      - block__form__seo_robots|Block
           title: robots.txt editing form
           title_is_visible: false
           attributes

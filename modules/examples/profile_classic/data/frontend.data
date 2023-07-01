@@ -1,5 +1,5 @@
 frontend
-- block_tree_sql_languages__profile_classic|frontend
+- block_tree_sql_languages__profile_classic|Frontend
     display
       check: block
       where: cssid
@@ -17,7 +17,7 @@ frontend
         attributes
         - rel: stylesheet
         - media: all
-- page_all__profile_classic|frontend
+- page_all__profile_classic|Frontend
     display
       check: url
       where: path
@@ -30,14 +30,14 @@ frontend
         - rel: stylesheet
         - media: all
     favicons
-    # icon classic for browsers: Safari, Opera, Chrome, IE 9-11, Edge …
+    # icon classic for browsers: Safari, Opera, Chrome, Edge …
     - icon_32_classic
         path: frontend/pictures/icon-favourite-32.ico
         attributes
         - rel: icon
         - type: image/x-icon
         - sizes: 32x32
-    # icon for all modern browsers: Safari, Opera, Chrome, Firefox, IE 11, Edge …
+    # icon for all modern browsers: Safari, Opera, Chrome, Firefox, Edge …
     - icon_32_modern
         path: frontend/pictures/icon-favourite-32.png
         attributes

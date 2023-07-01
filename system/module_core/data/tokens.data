@@ -4,35 +4,35 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 - request_scheme
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_host
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_host_decode
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_addr
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_addr_remote
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_uri
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_path
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_query
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - return_if_token
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - return_if_url_arg
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply
 - return_url_arg
     type: code
-    handler: \effcore\modules\core\events_token::on_apply
+    handler: \effcore\modules\core\Events_Token::on_apply

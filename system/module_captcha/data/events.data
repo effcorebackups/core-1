@@ -1,35 +1,35 @@
 events
   on_module_install
-  - captcha|event
+  - captcha|Event
       for: captcha
-      handler: \effcore\modules\captcha\events_module::on_install
+      handler: \effcore\modules\captcha\Events_Module::on_install
   on_module_uninstall
-  - captcha|event
+  - captcha|Event
       for: captcha
-      handler: \effcore\modules\captcha\events_module::on_uninstall
+      handler: \effcore\modules\captcha\Events_Module::on_uninstall
   on_module_enable
-  - captcha|event
+  - captcha|Event
       for: captcha
-      handler: \effcore\modules\captcha\events_module::on_enable
+      handler: \effcore\modules\captcha\Events_Module::on_enable
   on_module_disable
-  - captcha|event
+  - captcha|Event
       for: captcha
-      handler: \effcore\modules\captcha\events_module::on_disable
+      handler: \effcore\modules\captcha\Events_Module::on_disable
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
-  - captcha|event
+  - captcha|Event
       for: captcha
-      handler: \effcore\modules\captcha\events_module::on_cron_run
+      handler: \effcore\modules\captcha\Events_Module::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
   on_form_init
-  - security_settings_captcha|event
+  - security_settings_captcha|Event
       for: security_settings_captcha
-      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_init
+      handler: \effcore\modules\captcha\Events_Form_Security_settings_captcha::on_init
   on_form_validate
-  - security_settings_captcha|event
+  - security_settings_captcha|Event
       for: security_settings_captcha
-      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_validate
+      handler: \effcore\modules\captcha\Events_Form_Security_settings_captcha::on_validate
   on_form_submit
-  - security_settings_captcha|event
+  - security_settings_captcha|Event
       for: security_settings_captcha
-      handler: \effcore\modules\captcha\events_form_security_settings_captcha::on_submit
+      handler: \effcore\modules\captcha\Events_Form_Security_settings_captcha::on_submit

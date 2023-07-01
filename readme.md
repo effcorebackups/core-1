@@ -20,7 +20,7 @@ General information
 
 **EFFCORE** — the next-generation mini-CMS (Content Management System)
 and mini-CMF (Content Management Framework).
-It was developed between 2016 and 2022.
+It was developed between 2016 and 2023.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, Composer…
 
@@ -288,34 +288,32 @@ Example from `demo--data.data` file:
         property_name_2: value 2
         property_name_3: value 3
       demo_object_empty
-      demo_object_text|text
+      demo_object_text|Text
         text: some translated text
 
 Such a file will be converted to a PHP file `/dynamic/cache/data--demo.php`
 with the following content:
 
-    namespace effcore {
-        cache::$data['demo_data'] = new \stdClass;
-        cache::$data['demo_data']->demo_string = 'text';
-        cache::$data['demo_data']->demo_string_empty = '';
-        cache::$data['demo_data']->demo_integer = 123;
-        cache::$data['demo_data']->demo_float = 0.000001;
-        cache::$data['demo_data']->demo_boolean = true;
-        cache::$data['demo_data']->demo_null = null;
-        cache::$data['demo_data']->demo_array['key_1'] = 'value 1';
-        cache::$data['demo_data']->demo_array['key_2'] = 'value 2';
-        cache::$data['demo_data']->demo_array['key_3'] = 'value 3';
-        cache::$data['demo_data']->demo_array_empty = [];
-        cache::$data['demo_data']->demo_object = new \stdClass;
-        cache::$data['demo_data']->demo_object->property_name_1 = 'value 1';
-        cache::$data['demo_data']->demo_object->property_name_2 = 'value 2';
-        cache::$data['demo_data']->demo_object->property_name_3 = 'value 3';
-        cache::$data['demo_data']->demo_object_empty = new \stdClass;
-        cache::$data['demo_data']->demo_object_text = new \effcore\text;
-        cache::$data['demo_data']->demo_object_text->text = 'some translated text';
-    }
+    Cache::$data['demo_data'] = new \stdClass;
+    Cache::$data['demo_data']->demo_string = 'text';
+    Cache::$data['demo_data']->demo_string_empty = '';
+    Cache::$data['demo_data']->demo_integer = 123;
+    Cache::$data['demo_data']->demo_float = 0.000001;
+    Cache::$data['demo_data']->demo_boolean = true;
+    Cache::$data['demo_data']->demo_null = null;
+    Cache::$data['demo_data']->demo_array['key_1'] = 'value 1';
+    Cache::$data['demo_data']->demo_array['key_2'] = 'value 2';
+    Cache::$data['demo_data']->demo_array['key_3'] = 'value 3';
+    Cache::$data['demo_data']->demo_array_empty = [];
+    Cache::$data['demo_data']->demo_object = new \stdClass;
+    Cache::$data['demo_data']->demo_object->property_name_1 = 'value 1';
+    Cache::$data['demo_data']->demo_object->property_name_2 = 'value 2';
+    Cache::$data['demo_data']->demo_object->property_name_3 = 'value 3';
+    Cache::$data['demo_data']->demo_object_empty = new \stdClass;
+    Cache::$data['demo_data']->demo_object_text = new \effcore\Text;
+    Cache::$data['demo_data']->demo_object_text->text = 'some translated text';
 
-When `cache::select('demo_data')` is called, this file will be loaded into memory
+When `Cache::select('demo_data')` is called, this file will be loaded into memory
 and the data will become available without delay.
 
 **If PHP OPCache is used** then all data will be compiled into op-code
@@ -330,7 +328,7 @@ For each line in this format, there are only the following
 notation variations:
 
 - `entity_name`
-- `entity_name|class_name`
+- `entity_name|Class_name`
 - `object_property_name: value`
 - `- array_key_name: value`
 

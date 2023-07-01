@@ -1,5 +1,5 @@
 markup
-- demo_tree_via_decorator|decorator
+- demo_tree_via_decorator|Decorator
     view_type: tree
     title: Demonstration menu via decorator
     id: demo_tree

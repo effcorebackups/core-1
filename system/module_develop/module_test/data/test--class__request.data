@@ -1,0 +1,63 @@
+tests
+- class__request|Test
+    id: class__request
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Request
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-sanitize_structure|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::sanitize_structure()
+    - code-sanitize_structure|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-sanitize_structure+value_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::sanitize_structure() + Request::value_get()
+    - code-sanitize_structure+value_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_and_value_get
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-sanitize_structure+values_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::sanitize_structure() + Request::values_get()
+    - code-sanitize_structure+values_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_and_values_get
+    # ═════════════════════════════════════════════════════════════════════
+    - title-sanitize_structure_files-delimiter|Test_step_Title
+        title: ==================================================================
+    - title-sanitize_structure_files|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::sanitize_structure_files()
+    - code-sanitize_structure_files|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_files
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-files_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::files_get()
+    - code-files_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__files_get
+    # ═════════════════════════════════════════════════════════════════════
+    - title-software_get_info-delimiter|Test_step_Title
+        title: ==================================================================
+    - title-software_get_info|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::software_get_info()
+    - code-software_get_info|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__software_get_info
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

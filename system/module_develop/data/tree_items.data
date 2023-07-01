@@ -1,5 +1,5 @@
 tree_items
-- develop|tree_item
+- develop|Tree_item
     id: develop
     id_parent: null
     id_tree: system
@@ -9,7 +9,7 @@ tree_items
     access
       roles
       - =: admins
-- palette|tree_item
+- palette|Tree_item
     id: palette
     id_parent: develop
     id_tree: system
@@ -18,7 +18,7 @@ tree_items
     access
       roles
       - =: admins
-- structures|tree_item
+- structures|Tree_item
     id: structures
     id_parent: develop
     id_tree: system
@@ -27,7 +27,7 @@ tree_items
     access
       roles
       - =: admins
-- data_nosql|tree_item
+- data_nosql|Tree_item
     id: data_nosql
     id_parent: develop
     id_tree: system
@@ -36,7 +36,7 @@ tree_items
     access
       roles
       - =: admins
-- php_dependencies|tree_item
+- php_dependencies|Tree_item
     id: php_dependencies
     id_parent: develop
     id_tree: system
@@ -45,7 +45,7 @@ tree_items
     access
       roles
       - =: admins
-- console|tree_item
+- console|Tree_item
     id: console
     id_parent: develop
     id_tree: system

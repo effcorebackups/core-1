@@ -1,5 +1,5 @@
 tree_items
-- locale|tree_item
+- locale|Tree_item
     id: locale
     id_parent: manage
     id_tree: system

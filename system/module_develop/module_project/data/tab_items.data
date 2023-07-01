@@ -1,5 +1,5 @@
 tab_items
-- data_project|tab_item
+- data_project|Tab_item
     id: data_project
     id_parent: null
     id_tab: data
@@ -10,7 +10,7 @@ tab_items
     access
       roles
       - =: admins
-- data_project_project|tab_item
+- data_project_project|Tab_item
     id: data_project_project
     id_parent: data_project
     id_tab: data
@@ -20,7 +20,7 @@ tab_items
     access
       roles
       - =: admins
-- data_project_release|tab_item
+- data_project_release|Tab_item
     id: data_project_release
     id_parent: data_project
     id_tab: data

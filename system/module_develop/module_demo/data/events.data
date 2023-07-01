@@ -1,244 +1,244 @@
 events
   on_module_install
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module::on_install
-  - example|event
+      handler: \effcore\modules\demo\Events_Module::on_install
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_module_install
+      handler: \effcore\modules\demo\Events_Examples::on_module_install
   on_module_uninstall
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module::on_uninstall
-  - example|event
+      handler: \effcore\modules\demo\Events_Module::on_uninstall
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_module_uninstall
+      handler: \effcore\modules\demo\Events_Examples::on_module_uninstall
   on_module_enable
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module::on_enable
-  - example|event
+      handler: \effcore\modules\demo\Events_Module::on_enable
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_module_enable
+      handler: \effcore\modules\demo\Events_Examples::on_module_enable
   on_module_disable
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module::on_disable
-  - example|event
+      handler: \effcore\modules\demo\Events_Module::on_disable
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_module_disable
+      handler: \effcore\modules\demo\Events_Examples::on_module_disable
   on_module_start
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module::on_start
-  - example|event
+      handler: \effcore\modules\demo\Events_Module::on_start
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_module_start
+      handler: \effcore\modules\demo\Events_Examples::on_module_start
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_module_update_data_before
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module_update::on_update_data_before
+      handler: \effcore\modules\demo\Events_Module_update::on_update_data_before
   on_module_update_data_after
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_module_update::on_update_data_after
+      handler: \effcore\modules\demo\Events_Module_update::on_update_data_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_cron_run
+      handler: \effcore\modules\demo\Events_Examples::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
   on_block_presets_dynamic_build
-  - example|event
+  - example|Event
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_block_presets_dynamic_build
+      handler: \effcore\modules\demo\Events_Examples::on_block_presets_dynamic_build
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_breadcrumbs_build_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_breadcrumbs_build_before
   on_breadcrumbs_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_breadcrumbs_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_breadcrumbs_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_decorator_build_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_decorator_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_decorator_build_before
   on_decorator_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_decorator_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_decorator_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_email_send_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_email_send_before
+      handler: \effcore\modules\demo\Events_Examples::on_email_send_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_file_load
-  - virtual|event
+  - virtual|Event
       for: virtual
-      handler: \effcore\modules\demo\events_file::on_load_virtual
+      handler: \effcore\modules\demo\Events_File::on_load_virtual
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_build
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_build
+      handler: \effcore\modules\demo\Events_Form_Demo::on_build
   on_form_init
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_init
-  - example|event
+      handler: \effcore\modules\demo\Events_Form_Demo::on_init
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_form_init
+      handler: \effcore\modules\demo\Events_Examples::on_form_init
   on_form_validate
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_validate
-  - instance_insert__demo|event
+      handler: \effcore\modules\demo\Events_Form_Demo::on_validate
+  - instance_insert__demo|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\demo\events_form_instance_insert::on_validate
-  - instance_update__demo|event
+      handler: \effcore\modules\demo\Events_Form_Instance_insert::on_validate
+  - instance_update__demo|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\demo\events_form_instance_update::on_validate
-  - example|event
+      handler: \effcore\modules\demo\Events_Form_Instance_update::on_validate
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_form_validate
+      handler: \effcore\modules\demo\Events_Examples::on_form_validate
   on_form_submit
-  - demo|event
+  - demo|Event
       for: demo
-      handler: \effcore\modules\demo\events_form_demo::on_submit
-  - example|event
+      handler: \effcore\modules\demo\Events_Form_Demo::on_submit
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_form_submit
+      handler: \effcore\modules\demo\Events_Examples::on_form_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_instance_delete_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_delete_before
+      handler: \effcore\modules\demo\Events_Examples::on_instance_delete_before
   on_instance_insert_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_insert_before
+      handler: \effcore\modules\demo\Events_Examples::on_instance_insert_before
   on_instance_select_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_select_before
+      handler: \effcore\modules\demo\Events_Examples::on_instance_select_before
   on_instance_update_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_update_before
+      handler: \effcore\modules\demo\Events_Examples::on_instance_update_before
   on_instance_delete_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_delete_after
+      handler: \effcore\modules\demo\Events_Examples::on_instance_delete_after
   on_instance_insert_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_insert_after
+      handler: \effcore\modules\demo\Events_Examples::on_instance_insert_after
   on_instance_select_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_select_after
+      handler: \effcore\modules\demo\Events_Examples::on_instance_select_after
   on_instance_update_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_instance_update_after
+      handler: \effcore\modules\demo\Events_Examples::on_instance_update_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - demo|event
+  - demo|Event
       for: demo
       weight: +600
-      handler: \effcore\modules\demo\events_page_demo::on_redirect
-  - example|event
+      handler: \effcore\modules\demo\Events_Page_Demo::on_redirect
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_page_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_page_build_before
   on_page_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_page_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_page_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_render_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_page_render_before
+      handler: \effcore\modules\demo\Events_Examples::on_page_render_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_selection_build_before
-  - demo_selection_field_types|event
+  - demo_selection_field_types|Event
       for: demo_selection_field_types
-      handler: \effcore\modules\demo\events_selection::on_selection_build_before_demo_selection_field_types
-  - example|event
+      handler: \effcore\modules\demo\Events_Selection::on_selection_build_before_demo_selection_field_types
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_selection_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_selection_build_before
   on_selection_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_selection_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_selection_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_session_insert_after
-  - example|event
+  - example|Event
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_session_insert_after
+      handler: \effcore\modules\demo\Events_Examples::on_session_insert_after
   on_session_delete_before
-  - example|event
+  - example|Event
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_session_delete_before
+      handler: \effcore\modules\demo\Events_Examples::on_session_delete_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_tab_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_tab_build_before
   on_tab_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_tab_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_tab_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tree_build_before
-  - demo_nosql|event
+  - demo_nosql|Event
       for: demo_nosql
-      handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_nosql
-  - demo_sql|event
+      handler: \effcore\modules\demo\Events_Page_Demo::on_tree_build_before_nosql
+  - demo_sql|Event
       for: demo_sql
-      handler: \effcore\modules\demo\events_page_demo::on_tree_build_before_sql
-  - example|event
+      handler: \effcore\modules\demo\Events_Page_Demo::on_tree_build_before_sql
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_tree_build_before
+      handler: \effcore\modules\demo\Events_Examples::on_tree_build_before
   on_tree_build_after
-  - example|event
+  - example|Event
       for: example
       skip_console_log: true
-      handler: \effcore\modules\demo\events_examples::on_tree_build_after
+      handler: \effcore\modules\demo\Events_Examples::on_tree_build_after

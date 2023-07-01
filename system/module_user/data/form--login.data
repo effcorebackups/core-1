@@ -1,15 +1,15 @@
 forms
-- login|form
+- login|Form
     attributes
     - id: login
     - method: post
     - novalidate: true
     children
-    - credentials|fieldset
+    - credentials|Fieldset
         children
-        - email|field_email
-        - password|field_password
-        - session_params|group_switchers
+        - email|Field_Email
+        - password|Field_Password
+        - session_params|Group_Switchers
             element_attributes
             - name: session_params[]
             items
@@ -18,9 +18,9 @@ forms
             checked
             - =: is_long_session
             - =: is_fixed_ip
-        - captcha|form_plugin
+        - captcha|Form_plugin
             name: field_captcha
-    - button_login|button
+    - button_login|Button
         title: login
         attributes
         - value: login

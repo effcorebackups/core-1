@@ -1,5 +1,5 @@
 selections
-- instance_select-tree|selection
+- instance_select-tree|Selection
     id: instance_select-tree
     main_entity_name: tree
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_tree_id_context
@@ -42,7 +42,7 @@ selections
           entity_field_name: access
           is_apply_translation: true
           weight: +260
-- instance_select-tree_item|selection
+- instance_select-tree_item|Selection
     id: instance_select-tree_item
     main_entity_name: tree_item
     decorator_settings
@@ -51,7 +51,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_tree_item_id_context
@@ -97,7 +97,7 @@ selections
           is_apply_translation: true
           weight: +180
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-tree|selection
+- instance_select_multiple-tree|Selection
     id: instance_select_multiple-tree
     main_entity_name: tree
     pager_is_enabled: true
@@ -118,7 +118,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +360
-- instance_select_multiple-tree_item|selection
+- instance_select_multiple-tree_item|Selection
     id: instance_select_multiple-tree_item
     main_entity_name: tree_item
     pager_is_enabled: true

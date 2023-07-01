@@ -1,16 +1,16 @@
 forms
-- seo_robots|form
+- seo_robots|Form
     attributes
     - id: seo_robots
     - method: post
     - novalidate: true
     children
-    - settings|fieldset
+    - settings|Fieldset
         children
-        - content|field_textarea
+        - content|Field_Textarea
             title: Content of the "robots.txt" file
             description_state: opened
-            description|text
+            description|Text
               text: If filled, the file will be available at: %%_page
               args
               - page: <a href="/robots.txt" target="_blank">/robots.txt</a>
@@ -21,11 +21,11 @@ forms
             - minlength: null
             - maxlength: 16777215
             - rows: 20
-        - is_apply_tokens|field_switcher
+        - is_apply_tokens|Field_Switcher
             title: Is apply tokens
             element_attributes
             - name: is_apply_tokens
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save

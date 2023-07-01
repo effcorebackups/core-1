@@ -1,5 +1,5 @@
 pages
-- php_dependencies|page
+- php_dependencies|Page
     id: php_dependencies
     title: PHP dependencies
     url: /develop/php_dependencies
@@ -9,29 +9,29 @@ pages
       - =: admins
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__php_dependencies_list|block
+      - block__php_dependencies_list|Block
           title: PHP dependencies
           title_is_visible: false
           attributes
           - data-id: block__php_dependencies_list
           type: code
-          source: \effcore\modules\develop\events_page_php_dependencies::block_markup__php_dependencies_list
+          source: \effcore\modules\develop\Events_Page_PHP_dependencies::block_markup__php_dependencies_list

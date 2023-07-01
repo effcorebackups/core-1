@@ -1,5 +1,5 @@
 tree_items
-- front|tree_item
+- front|Tree_item
     id: front
     id_parent: null
     id_tree: system
@@ -9,7 +9,7 @@ tree_items
     access
       roles
       - =: registered
-- view|tree_item
+- view|Tree_item
     id: view
     id_parent: manage
     id_tree: system
@@ -21,7 +21,7 @@ tree_items
       - =: admins
       permissions
       - =: manage__view
-- seo|tree_item
+- seo|Tree_item
     id: seo
     id_parent: manage
     id_tree: system

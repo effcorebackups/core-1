@@ -2,7 +2,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_front|instance
+- page_front|Instance
     entity_name: page
     values
     - id: front
@@ -11,33 +11,33 @@ instances
     - is_https: 0
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__text_sql__front|block_preset_link
+        - block__text_sql__front|Block_preset_link
             id: block__text_sql__front
             title: The main text of the page
-- page_login|instance
+- page_login|Instance
     entity_name: page
     values
     - id: login
@@ -49,27 +49,27 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__login|block_preset_link
+        - block__form__login|Block_preset_link
             id: block__form__login
-- page_logout|instance
+- page_logout|Instance
     entity_name: page
     values
     - id: logout
@@ -81,29 +81,29 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__logout|block_preset_link
+        - block__form__logout|Block_preset_link
             id: block__form__logout
-- page_recovery|instance
+- page_recovery|Instance
     entity_name: page
     values
     - id: recovery
@@ -115,27 +115,27 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__recovery|block_preset_link
+        - block__form__recovery|Block_preset_link
             id: block__form__recovery
-- page_registration|instance
+- page_registration|Instance
     entity_name: page
     values
     - id: registration
@@ -147,28 +147,28 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__registration|block_preset_link
+        - block__form__registration|Block_preset_link
             id: block__form__registration
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- page_user|instance
+- page_user|Instance
     entity_name: page
     values
     - id: user
@@ -183,30 +183,30 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__selection_sql__user|block_preset_link
+        - block__selection_sql__user|Block_preset_link
             id: block__selection_sql__user
             title: User information
-- page_user_edit|instance
+- page_user_edit|Instance
     entity_name: page
     values
     - id: user_edit
@@ -221,32 +221,32 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__instance_update__user|block_preset_link
+        - block__form__instance_update__user|Block_preset_link
             id: block__form__instance_update__user
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_front|instance
+- text_front|Instance
     entity_name: text
     values
     - id: front
@@ -255,7 +255,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
-- tree_user_anonymous|instance
+- tree_user_anonymous|Instance
     entity_name: tree
     values
     - id: user_anonymous
@@ -272,7 +272,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_user_registered|instance
+- tree_user_registered|Instance
     entity_name: tree
     values
     - id: user_registered
@@ -294,7 +294,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 #
 # ── menu: user_anonymous ─────────────────────────────────────────────
-- tree_item_anonymous|instance
+- tree_item_anonymous|Instance
     entity_name: tree_item
     values
     - id: anonymous
@@ -304,7 +304,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_login|instance
+- tree_item_login|Instance
     entity_name: tree_item
     values
     - id: login
@@ -316,7 +316,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_registration|instance
+- tree_item_registration|Instance
     entity_name: tree_item
     values
     - id: registration
@@ -327,7 +327,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_recovery|instance
+- tree_item_recovery|Instance
     entity_name: tree_item
     values
     - id: recovery
@@ -340,7 +340,7 @@ instances
         roles
         - =: anonymous
 # ── menu: user_registered ────────────────────────────────────────────
-- tree_item_registered|instance
+- tree_item_registered|Instance
     entity_name: tree_item
     values
     - id: registered
@@ -351,7 +351,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_user_edit|instance
+- tree_item_user_edit|Instance
     entity_name: tree_item
     values
     - id: user_edit
@@ -363,7 +363,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_logout|instance
+- tree_item_logout|Instance
     entity_name: tree_item
     values
     - id: logout
@@ -378,7 +378,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # selections
 # ─────────────────────────────────────────────────────────────────────
-- selection_user|instance
+- selection_user|Instance
     entity_name: selection
     values
     - id: user
@@ -392,7 +392,7 @@ instances
       - conditions
         - nickname_!f: nickname
         - nickname_operator: =
-        - nickname_!v|text
+        - nickname_!v|Text
             is_apply_translation: false
             is_apply_tokens: true
             text: %%_nickname_page_context(nickname)
@@ -432,7 +432,7 @@ instances
       - handlers
         - roles
             title: Roles
-            handler: \effcore\modules\user\events_page_user::on_show_user_roles
+            handler: \effcore\modules\user\Events_Page_User::on_show_user_roles
             is_apply_translation: true
             weight: -400
     - is_embedded: 1

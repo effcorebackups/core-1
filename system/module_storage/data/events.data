@@ -1,150 +1,150 @@
 events
   on_module_install
-  - storage|event
+  - storage|Event
       for: storage
-      handler: \effcore\modules\storage\events_module::on_install
+      handler: \effcore\modules\storage\Events_Module::on_install
   on_module_enable
-  - storage|event
+  - storage|Event
       for: storage
-      handler: \effcore\modules\storage\events_module::on_enable
+      handler: \effcore\modules\storage\Events_Module::on_enable
   # ═════════════════════════════════════════════════════════════════════
   on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\storage\events_page::on_block_presets_dynamic_build
+  - all|Event
+      handler: \effcore\modules\storage\Events_Page::on_block_presets_dynamic_build
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_breadcrumbs_build_before
-  - system|event
+  - system|Event
       for: system
       weight: +500
-      handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_before
-  - system_apply_back_return|event
+      handler: \effcore\modules\storage\Events_Page::on_breadcrumbs_build_before
+  - system_apply_back_return|Event
       for: system
       weight: +300
-      handler: \effcore\modules\storage\events_page::on_breadcrumbs_build_after_apply_back_return
+      handler: \effcore\modules\storage\Events_Page::on_breadcrumbs_build_after_apply_back_return
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_build
-  - instance_select_multiple|event
+  - instance_select_multiple|Event
       for: instance_select_multiple
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_build
-  - instance_insert|event
+      handler: \effcore\modules\storage\Events_Form_Instance_select_multiple::on_build
+  - instance_insert|Event
       for: instance_insert
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_insert::on_build
-  - instance_update|event
+      handler: \effcore\modules\storage\Events_Form_Instance_insert::on_build
+  - instance_update|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_update::on_build
-  - instance_update__selection|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update::on_build
+  - instance_update__selection|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\storage\events_form_instance_update__selection::on_build
-  - instance_delete|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update__Selection::on_build
+  - instance_delete|Event
       for: instance_delete
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_delete::on_build
+      handler: \effcore\modules\storage\Events_Form_Instance_delete::on_build
   on_form_init
-  - instance_select_multiple|event
+  - instance_select_multiple|Event
       for: instance_select_multiple
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_init
-  - instance_insert|event
+      handler: \effcore\modules\storage\Events_Form_Instance_select_multiple::on_init
+  - instance_insert|Event
       for: instance_insert
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_insert::on_init
-  - instance_update|event
+      handler: \effcore\modules\storage\Events_Form_Instance_insert::on_init
+  - instance_update|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_update::on_init
-  - instance_update__selection|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update::on_init
+  - instance_update__selection|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\storage\events_form_instance_update__selection::on_init
-  - instance_delete|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update__Selection::on_init
+  - instance_delete|Event
       for: instance_delete
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_delete::on_init
+      handler: \effcore\modules\storage\Events_Form_Instance_delete::on_init
   on_form_validate
-  - instance_select_multiple|event
+  - instance_select_multiple|Event
       for: instance_select_multiple
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_validate
-  - instance_insert|event
+      handler: \effcore\modules\storage\Events_Form_Instance_select_multiple::on_validate
+  - instance_insert|Event
       for: instance_insert
       weight: -600
-      handler: \effcore\modules\storage\events_form_instance_insert::on_validate
-  - instance_update|event
+      handler: \effcore\modules\storage\Events_Form_Instance_insert::on_validate
+  - instance_update|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_update::on_validate
-  - instance_update__selection|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update::on_validate
+  - instance_update__selection|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\storage\events_form_instance_update__selection::on_validate
-  - instance_delete|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update__Selection::on_validate
+  - instance_delete|Event
       for: instance_delete
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_delete::on_validate
+      handler: \effcore\modules\storage\Events_Form_Instance_delete::on_validate
   on_form_submit
-  - instance_select_multiple|event
+  - instance_select_multiple|Event
       for: instance_select_multiple
       weight: -300
-      handler: \effcore\modules\storage\events_form_instance_select_multiple::on_submit
-  - instance_insert|event
+      handler: \effcore\modules\storage\Events_Form_Instance_select_multiple::on_submit
+  - instance_insert|Event
       for: instance_insert
       weight: -300
-      handler: \effcore\modules\storage\events_form_instance_insert::on_submit
-  - instance_update|event
+      handler: \effcore\modules\storage\Events_Form_Instance_insert::on_submit
+  - instance_update|Event
       for: instance_update
       weight: -300
-      handler: \effcore\modules\storage\events_form_instance_update::on_submit
-  - instance_delete|event
+      handler: \effcore\modules\storage\Events_Form_Instance_update::on_submit
+  - instance_delete|Event
       for: instance_delete
       weight: -300
-      handler: \effcore\modules\storage\events_form_instance_delete::on_submit
-  - instance_update__selection|event
+      handler: \effcore\modules\storage\Events_Form_Instance_delete::on_submit
+  - instance_update__selection|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\storage\events_form_instance_update__selection::on_submit
+      handler: \effcore\modules\storage\Events_Form_Instance_update__Selection::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - instance_select_multiple__redirect|event
+  - instance_select_multiple__redirect|Event
       for: instance_select_multiple
       weight: +600
-      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_redirect
-  - instance_select__redirect_and_check_existence|event
+      handler: \effcore\modules\storage\Events_Page_Instance_select_multiple::on_redirect
+  - instance_select__redirect_and_check_existence|Event
       for: instance_select
       weight: +600
-      handler: \effcore\modules\storage\events_page_instance_select::on_redirect_and_check_existence
-  - instance_select_multiple__check_access|event
+      handler: \effcore\modules\storage\Events_Page_Instance_select::on_redirect_and_check_existence
+  - instance_select_multiple__check_access|Event
       for: instance_select_multiple
       weight: +500
-      handler: \effcore\modules\storage\events_page_instance_select_multiple::on_check_access
-  - instance_select__check_access|event
+      handler: \effcore\modules\storage\Events_Page_Instance_select_multiple::on_check_access
+  - instance_select__check_access|Event
       for: instance_select
       weight: +500
-      handler: \effcore\modules\storage\events_page_instance_select::on_check_access
-  - instance_insert__check_existence|event
+      handler: \effcore\modules\storage\Events_Page_Instance_select::on_check_access
+  - instance_insert__check_existence|Event
       for: instance_insert
       weight: +600
-      handler: \effcore\modules\storage\events_page_instance_insert::on_check_existence
-  - instance_insert__check_access|event
+      handler: \effcore\modules\storage\Events_Page_Instance_insert::on_check_existence
+  - instance_insert__check_access|Event
       for: instance_insert
       weight: +500
-      handler: \effcore\modules\storage\events_page_instance_insert::on_check_access
-  - instance_update__check_existence|event
+      handler: \effcore\modules\storage\Events_Page_Instance_insert::on_check_access
+  - instance_update__check_existence|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\storage\events_page_instance_update::on_check_existence
-  - instance_update__check_access|event
+      handler: \effcore\modules\storage\Events_Page_Instance_update::on_check_existence
+  - instance_update__check_access|Event
       for: instance_update
       weight: +500
-      handler: \effcore\modules\storage\events_page_instance_update::on_check_access
-  - instance_delete__check_existence|event
+      handler: \effcore\modules\storage\Events_Page_Instance_update::on_check_access
+  - instance_delete__check_existence|Event
       for: instance_delete
       weight: +600
-      handler: \effcore\modules\storage\events_page_instance_delete::on_check_existence
-  - instance_delete__check_access|event
+      handler: \effcore\modules\storage\Events_Page_Instance_delete::on_check_existence
+  - instance_delete__check_access|Event
       for: instance_delete
       weight: +500
-      handler: \effcore\modules\storage\events_page_instance_delete::on_check_access
+      handler: \effcore\modules\storage\Events_Page_Instance_delete::on_check_access

@@ -1,18 +1,18 @@
 forms
-- vote|form
+- vote|Form
     attributes
     - id: vote
     - method: post
     - novalidate: true
     children
-    - fields|fieldset
+    - fields|Fieldset
         title: Question
-    - button_vote|button
+    - button_vote|Button
         title: vote
         attributes
         - value: vote
         weight: -500
-    - button_cancel|button
+    - button_cancel|Button
         title: cancel
         break_on_validate: true
         attributes

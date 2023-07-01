@@ -1,105 +1,105 @@
 events
   on_module_install
-  - user|event
+  - user|Event
       for: user
-      handler: \effcore\modules\user\events_module::on_install
+      handler: \effcore\modules\user\Events_Module::on_install
   on_module_enable
-  - user|event
+  - user|Event
       for: user
-      handler: \effcore\modules\user\events_module::on_enable
+      handler: \effcore\modules\user\Events_Module::on_enable
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
-  - user|event
+  - user|Event
       for: user
-      handler: \effcore\modules\user\events_module::on_cron_run
+      handler: \effcore\modules\user\Events_Module::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
   on_form_build
-  - instance_insert__user|event
+  - instance_insert__user|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_insert::on_build
-  - instance_update__user|event
+      handler: \effcore\modules\user\Events_Form_Instance_insert::on_build
+  - instance_update__user|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_update::on_build
+      handler: \effcore\modules\user\Events_Form_Instance_update::on_build
   on_form_init
-  - login|event
+  - login|Event
       for: login
-      handler: \effcore\modules\user\events_form_login::on_init
-  - registration|event
+      handler: \effcore\modules\user\Events_Form_Login::on_init
+  - registration|Event
       for: registration
-      handler: \effcore\modules\user\events_form_registration::on_init
-  - instance_insert__user|event
+      handler: \effcore\modules\user\Events_Form_Registration::on_init
+  - instance_insert__user|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_insert::on_init
-  - instance_update__user|event
+      handler: \effcore\modules\user\Events_Form_Instance_insert::on_init
+  - instance_update__user|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_update::on_init
-  - logout|event
+      handler: \effcore\modules\user\Events_Form_Instance_update::on_init
+  - logout|Event
       for: logout
-      handler: \effcore\modules\user\events_form_logout::on_init
-  - security_settings|event
+      handler: \effcore\modules\user\Events_Form_Logout::on_init
+  - security_settings|Event
       for: security_settings
-      handler: \effcore\modules\user\events_form_security_settings::on_init
+      handler: \effcore\modules\user\Events_Form_Security_settings::on_init
   on_form_validate
-  - login|event
+  - login|Event
       for: login
-      handler: \effcore\modules\user\events_form_login::on_validate
-  - recovery|event
+      handler: \effcore\modules\user\Events_Form_Login::on_validate
+  - recovery|Event
       for: recovery
-      handler: \effcore\modules\user\events_form_recovery::on_validate
-  - instance_insert__user|event
+      handler: \effcore\modules\user\Events_Form_Recovery::on_validate
+  - instance_insert__user|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_insert::on_validate
-  - instance_update__user|event
+      handler: \effcore\modules\user\Events_Form_Instance_insert::on_validate
+  - instance_update__user|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\user\events_form_instance_update::on_validate
-  - security_settings|event
+      handler: \effcore\modules\user\Events_Form_Instance_update::on_validate
+  - security_settings|Event
       for: security_settings
-      handler: \effcore\modules\user\events_form_security_settings::on_validate
+      handler: \effcore\modules\user\Events_Form_Security_settings::on_validate
   on_form_submit
-  - login|event
+  - login|Event
       for: login
-      handler: \effcore\modules\user\events_form_login::on_submit
-  - registration|event
+      handler: \effcore\modules\user\Events_Form_Login::on_submit
+  - registration|Event
       for: registration
-      handler: \effcore\modules\user\events_form_registration::on_submit
-  - recovery|event
+      handler: \effcore\modules\user\Events_Form_Registration::on_submit
+  - recovery|Event
       for: recovery
-      handler: \effcore\modules\user\events_form_recovery::on_submit
-  - logout|event
+      handler: \effcore\modules\user\Events_Form_Recovery::on_submit
+  - logout|Event
       for: logout
-      handler: \effcore\modules\user\events_form_logout::on_submit
-  - instance_insert__user|event
+      handler: \effcore\modules\user\Events_Form_Logout::on_submit
+  - instance_insert__user|Event
       for: instance_insert
       weight: -600
-      handler: \effcore\modules\user\events_form_instance_insert::on_submit
-  - instance_update__user|event
+      handler: \effcore\modules\user\Events_Form_Instance_insert::on_submit
+  - instance_update__user|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\user\events_form_instance_update::on_submit
-  - security_settings|event
+      handler: \effcore\modules\user\Events_Form_Instance_update::on_submit
+  - security_settings|Event
       for: security_settings
-      handler: \effcore\modules\user\events_form_security_settings::on_submit
+      handler: \effcore\modules\user\Events_Form_Security_settings::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - security|event
+  - security|Event
       for: security
       weight: +600
-      handler: \effcore\modules\user\events_page_security::on_redirect
-  - user|event
+      handler: \effcore\modules\user\Events_Page_Security::on_redirect
+  - user|Event
       for: user
       weight: +500
-      handler: \effcore\modules\user\events_page_user::on_check_access_and_existence
-  - user_edit|event
+      handler: \effcore\modules\user\Events_Page_User::on_check_access_and_existence
+  - user_edit|Event
       for: user_edit
       weight: +500
-      handler: \effcore\modules\user\events_page_user_edit::on_check_access_and_existence_and_set_page_args
+      handler: \effcore\modules\user\Events_Page_User_edit::on_check_access_and_existence_and_set_page_args
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tree_build_after
-  - all|event
-      handler: \effcore\modules\user\events_page::on_tree_build_after
+  - all|Event
+      handler: \effcore\modules\user\Events_Page::on_tree_build_after

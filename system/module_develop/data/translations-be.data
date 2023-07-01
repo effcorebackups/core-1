@@ -1,5 +1,5 @@
 translations
-- be|translation
+- be|Translation
     code: be
     data
     - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
@@ -38,7 +38,9 @@ translations
     - Checkbox 2 (checked): Сцяжок 2 (адзначаны)
     - Checkbox 3 (disabled): Сцяжок 3 (адключаны)
     - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + адзначаны)
+    - checking of item "%%_id"\: "%%_result": праверка пункта "%%_id": "%%_result"
     - checking on "%%_operand_1" %%_operator "%%_operand_2": праверка на "%%_operand_1" %%_operator "%%_operand_2"
+    - Class "%%_name": Клас "%%_name"
     - Classes: Класы
     - Collations: Параўнанні
     - Color for generation: Колер для генерацыі
@@ -73,6 +75,7 @@ translations
     - Example of update description 2.: Прыклад апісання абнаўлення 2.
     - Example of update description 3.: Прыклад апісання абнаўлення 3.
     - Execution plan: План выканання
+    - expected value\: "%%_value": чаканае значэнне: "%%_value"
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспарт дыяграмы ў файл "%%_file" для выкарыстання ў праграме "StarUML".
     - Field #1: Поле №1
     - Field #2: Поле №2
@@ -97,6 +100,8 @@ translations
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знойдзены ID карыстальніка = "%%_id_user" па псеўданіме = "%%_nickname"
     - Full report: Поўная справаздача
+    - FUNCTION "%%_name": ФУНКЦЫЯ "%%_name"
+    - gotten value\: "%%_value": атрыманае значэнне: "%%_value"
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
     - Handler: Апрацоўшчык
@@ -126,6 +131,7 @@ translations
     - Markup dynamic: Разметка дынамічная
     - Markup static: Разметка статычная
     - memory consumption: спажыванне памяці
+    - METHOD "%%_name": МЕТАД "%%_name"
     - method private: метад прыватны
     - method protected: метад абаронены
     - method public: метад публічны
@@ -145,6 +151,16 @@ translations
     - Option 7 (inserted from code): Опцыя 7 (устаўлена з кода)
     - Option 8 (inserted from code): Опцыя 8 (устаўлена з кода)
     - Option 9 (inserted from code): Опцыя 9 (устаўлена з кода)
+    - Page charset: Кадзіроўка старонкі
+    - Page ID: ID старонкі
+    - Page is embedded: Старонка ўбудавана
+    - Page language: Мова старонкі
+    - Page Layout ID: ID макета старонкі
+    - Page Module ID: ID модуля старонкі
+    - Page origin: Паходжанне старонкі
+    - Page text direction: Напраўленне тэксту старонкі
+    - Page URL: URL старонкі
+    - Page with HTTPS: Старонка з HTTPS
     - Parameter 1: Параметр 1
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
@@ -154,6 +170,7 @@ translations
     - permissions before insertion\: %%_permissions: дазволы перад устаўкай: %%_permissions
     - PHP ext.: PHP-паш.
     - PHP extension: PHP-пашырэнне
+    - PHP functioning: PHP-функцыянаванне
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
     - Project ID: ID праекта
@@ -194,6 +211,7 @@ translations
     - show for everyone: паказваць усім
     - simple string: просты радок
     - some description: нейкае апісанне
+    - speed of "%%_name"\: %%_value: хуткасць "%%_name": %%_value
     - stack: стэк
     - storage "%%_name" was initialized: сховішча "%%_name" было ініцыялізавана
     - string with parameter = %%_n: радок з параметрам = %%_n

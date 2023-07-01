@@ -1,8 +1,8 @@
 forms
-- modules_update_files|form
+- modules_update_files|Form
     attributes
     - id: modules_update_files
     - method: post
     - novalidate: true
     children
-    - info|fieldset
+    - info|Fieldset

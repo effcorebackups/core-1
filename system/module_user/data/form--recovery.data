@@ -1,16 +1,16 @@
 forms
-- recovery|form
+- recovery|Form
     attributes
     - id: recovery
     - method: post
     - novalidate: true
     children
-    - credentials|fieldset
+    - credentials|Fieldset
         children
-        - email|field_email
-        - captcha|form_plugin
+        - email|Field_Email
+        - captcha|Form_plugin
             name: field_captcha
-    - button_recovery|button
+    - button_recovery|Button
         title: recovery
         attributes
         - value: recovery

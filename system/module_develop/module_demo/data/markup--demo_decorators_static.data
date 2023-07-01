@@ -1,15 +1,15 @@
 markup
-- demo_decorators_static|node
+- demo_decorators_static|Node
     children
     # ─────────────────────────────────────────────────────────────────────
     # view_type = table
     # ─────────────────────────────────────────────────────────────────────
-    - table_title|markup
+    - table_title|Markup
         tag_name: h3
         children
-        - content|text
+        - content|Text
             text: view_type = table
-    - table|decorator
+    - table|Decorator
         view_type: table
         id: demo_table
         data
@@ -56,12 +56,12 @@ markup
     # ─────────────────────────────────────────────────────────────────────
     # view_type = table-adaptive
     # ─────────────────────────────────────────────────────────────────────
-    - table_adaptive_title|markup
+    - table_adaptive_title|Markup
         tag_name: h3
         children
-        - content|text
+        - content|Text
             text: view_type = table-adaptive
-    - table_adaptive|decorator
+    - table_adaptive|Decorator
         view_type: table-adaptive
         id: demo_table_adaptive
         data
@@ -108,12 +108,12 @@ markup
     # ─────────────────────────────────────────────────────────────────────
     # view_type = table-dl
     # ─────────────────────────────────────────────────────────────────────
-    - table_dl_title|markup
+    - table_dl_title|Markup
         tag_name: h3
         children
-        - content|text
+        - content|Text
             text: view_type = table-dl
-    - table_dl|decorator
+    - table_dl|Decorator
         view_type: table-dl
         id: demo_table_dl
         data
@@ -166,12 +166,12 @@ markup
     # ─────────────────────────────────────────────────────────────────────
     # view_type = ul
     # ─────────────────────────────────────────────────────────────────────
-    - ul_title|markup
+    - ul_title|Markup
         tag_name: h3
         children
-        - content|text
+        - content|Text
             text: view_type = ul
-    - ul|decorator
+    - ul|Decorator
         view_type: ul
         id: demo_ul
         data
@@ -224,12 +224,12 @@ markup
     # ─────────────────────────────────────────────────────────────────────
     # view_type = dl
     # ─────────────────────────────────────────────────────────────────────
-    - dl_title|markup
+    - dl_title|Markup
         tag_name: h3
         children
-        - content|text
+        - content|Text
             text: view_type = dl
-    - dl|decorator
+    - dl|Decorator
         view_type: dl
         id: demo_dl
         data

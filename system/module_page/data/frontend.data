@@ -1,5 +1,5 @@
 frontend
-- page_all__page|frontend
+- page_all__page|Frontend
     display
       check: url
       where: path
@@ -17,7 +17,7 @@ frontend
         weight: +500
         attributes
         - defer: true
-- form_all__page|frontend
+- form_all__page|Frontend
     display
       check: block
       where: dpath

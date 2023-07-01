@@ -23,34 +23,44 @@
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "ext-zend-opcache": "*",
-        "composer/installers": "^2.2",
-        "oomphinc/composer-installers-extender": "^2.0",
+        "effcore/installer": "dev-main",
         "effcore/examples": "dev-main"
     },
     "suggest": {
-        "oomphinc/composer-installers-extender": "Required to install packages with custom types.",
+        "effcore/installer": "Required to install EFFCORE packages and modules.",
         "effcore/examples": "An example of installing a library of type \"effcore-bundle\" or \"effcore-module\"."
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://bitbucket.org/effcore/installer"
+        },
+        {
+            "type": "vcs",
+            "url": "https://bitbucket.org/effcore/examples"
+        }
+    ],
     "config": {
         "vendor-dir": "modules/vendors/packages",
         "allow-plugins": {
             "composer/installers": true,
-            "oomphinc/composer-installers-extender": true
+            "effcore/installer": true
+        }
+    },
+    "autoload":{
+        "psr-4": {
+            "effcore\\composer_installer\\": "/modules/vendors/packages/effcore/installer"
         }
     },
     "scripts": {
         "post-install-cmd": [
-            "php modules/vendors/packages/post-install-cmd.php"
+            "effcore\\composer_installer\\Plugin::postInstallCmd"
         ],
         "post-update-cmd": [
-            "php modules/vendors/packages/post-install-cmd.php"
+            "effcore\\composer_installer\\Plugin::postInstallCmd"
         ]
     },
     "extra": {
-        "installer-types": [
-            "effcore-bundle",
-            "effcore-module"
-        ],
         "installer-paths": {
             "modules/{$name}": [
                 "type:effcore-bundle",

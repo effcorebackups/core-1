@@ -1,66 +1,66 @@
 forms
-- demo|form
+- demo|Form
     attributes
     - id: demo
     - enctype: multipart/form-data
     - method: post
     - novalidate: true
     children
-    - form_elements|fieldset
+    - form_elements|Fieldset
         title: Form elements
         children
-        - button_default|button_default
+        - button_default|Button_default
             attributes
             - value: send
         # field 'File'
-        - file_text|field_file
+        - file_text|Field_File
             title: Text
             item_title: Text
             upload_dir: demo/
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_file
+              - title: Field_File
             element_attributes
             - name: file_text
         # field 'Pictures'
-        - file_picture|field_file_picture
+        - file_picture|Field_File_picture
             title: Pictures
             min_files_number: 0
             max_files_number: 3
             upload_dir: demo/
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_file_picture
+              - title: Field_File_picture
             element_attributes
             - name: file_picture[]
             - multiple: true
             thumbnails
             - =: small
         # field 'Audio'
-        - file_audio|field_file_audio
+        - file_audio|Field_File_audio
             title: Audio
             upload_dir: demo/
             audio_player_on_manage_is_visible: true
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_file_audio
+              - title: Field_File_audio
             element_attributes
             - name: file_audio[]
         # field 'Video'
-        - file_video|field_file_video
+        - file_video|Field_File_video
             title: Video
             upload_dir: demo/
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_file_video
+              - title: Field_File_video
             element_attributes
             - name: file_video[]
         # widget 'Files'
-        - files_texts|widget_files
+        - files_texts|Widget_Files
             title: Texts
             item_title: Text
             state: opened
@@ -69,7 +69,7 @@ forms
             types_allowed
             - =: txt
         # widget 'Pictures'
-        - files_pictures|widget_files_pictures
+        - files_pictures|Widget_Files_pictures
             title: Pictures
             state: opened
             name_complex: files_pictures
@@ -84,7 +84,7 @@ forms
             thumbnails
             - =: small
         # widget 'Audios'
-        - files_audios|widget_files_audios
+        - files_audios|Widget_Files_audios
             title: Audios
             state: opened
             name_complex: files_audios
@@ -94,7 +94,7 @@ forms
             types_allowed
             - =: mp3
         # widget 'Videos'
-        - files_videos|widget_files_videos
+        - files_videos|Widget_Files_videos
             title: Videos
             state: opened
             name_complex: files_videos
@@ -103,50 +103,50 @@ forms
             types_allowed
             - =: mp4
         # field 'Text'
-        - text|field_text
+        - text|Field_Text
             title: Text
             description_state: opened
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: This description is always shown.
               args
-              - title: field_text
+              - title: Field_Text
             element_attributes
             - name: text
             - value: text in input
             - minlength: 5
             - pattern: ^[a-zA-Z0-9 ]+$
         # field 'Password'
-        - password|field_password
+        - password|Field_Password
             title: Password
             description_position: top
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: This description is shown on top.
               args
-              - title: field_password
+              - title: Field_Password
             element_attributes
             - name: password
             - value: text in password
         # field 'Search'
-        - search|field_search
+        - search|Field_Search
             title: Search
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_search
+              - title: Field_Search
             element_attributes
             - name: search
             - value: text in search
         # field 'URL'
-        - url|field_url
+        - url|Field_URL
             title: URL
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_url
+              - title: Field_URL
             element_attributes
             - name: url
             - value: http://example.com
@@ -164,45 +164,45 @@ forms
             # - =: query
             # - =: anchor
         # field 'Telephone number'
-        - tel|field_tel
+        - tel|Field_Tel
             title: Telephone number
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: Field value should be represented in the international format of telephone numbers.
               args
-              - title: field_tel
+              - title: Field_Tel
             element_attributes
             - name: tel
             - value: &plus;000112334455
         # field 'Email'
-        - email|field_email
+        - email|Field_Email
             title: Email
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_email
+              - title: Field_Email
             element_attributes
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: true
         # field 'Nickname'
-        - nickname|field_nickname
+        - nickname|Field_Nickname
             title: Nickname
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_nickname
+              - title: Field_Nickname
             element_attributes
             - name: nickname
             - value: user
         # field 'Digit' (number)
-        - number|field_number
+        - number|Field_Number
             title: Digit
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_number
+              - title: Field_Number
             element_attributes
             - name: number
             - min: -0.1
@@ -210,12 +210,12 @@ forms
             - step: 0.000002
             - value: 0
         # field 'Range'
-        - range|field_range
+        - range|Field_Range
             title: Range
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_range
+              - title: Field_Range
             element_attributes
             - name: range
             - min: -1
@@ -223,84 +223,84 @@ forms
             - step: 0.2
             - value: 0
         # field 'Color'
-        - color|field_color
+        - color|Field_Color
             title: Color
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.
               args
-              - title: field_color
+              - title: Field_Color
             element_attributes
             - name: color
             - value: #ffffff
         # ─────────────────────────────────────────────────────────────────────
         # date/time
         # ─────────────────────────────────────────────────────────────────────
-        - time|field_time
+        - time|Field_Time
             title: Time
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
-              - title: field_time
+              - title: Field_Time
             element_attributes
             - name: time
             - step: 1
             - value: 01:23:45
             value_current_if_null: true
         # field 'Date'
-        - date|field_date
+        - date|Field_Date
             title: Date
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               args
-              - title: field_date
+              - title: Field_Date
             element_attributes
             - name: date
             - value: 2030-02-01
             value_current_if_null: true
         # field 'Date/Time'
-        - datetime|field_datetime
+        - datetime|Field_Datetime
             title: Date/Time
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
-              - title: field_datetime
+              - title: Field_Datetime
             element_attributes
             - name: datetime
             - step: 1
             - value: 2030-02-01 01:23:45
             value_current_if_null: true
         # field 'Local Date/Time'
-        - datetime_local|field_datetime_local
+        - datetime_local|Field_Datetime_local
             title: Local Date/Time
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Field "%%_title".
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
-              - title: field_datetime_local
+              - title: Field_Datetime_local
             element_attributes
             - name: datetime_local
             - step: 1
             - value: 2030-01-02 12:00:00
             value_current_if_null: true
         # field 'Time zone'
-        - timezone|field_select_timezone
+        - timezone|Field_Select_timezone
             title: Time zone
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select_timezone
+              - title: Field_Select_timezone
             element_attributes
             - name: timezone
             - required: true
@@ -310,12 +310,12 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         # select
         # ─────────────────────────────────────────────────────────────────────
-        - select|field_select
+        - select|Field_Select
             title: Selection list
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select
+              - title: Field_Select
             element_attributes
             - name: select
             items
@@ -331,12 +331,12 @@ forms
             - =: option_1
             disabled
             - =: option_2
-        - select_multiple|field_select
+        - select_multiple|Field_Select
             title: Selection list (multiple select)
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select
+              - title: Field_Select
             element_attributes
             - name: select_multiple[]
             - multiple: true
@@ -354,23 +354,23 @@ forms
             disabled
             - =: option_2
         # field 'Logic'
-        - logic|field_select_logic
+        - logic|Field_Select_logic
             title: Logic
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select_logic
+              - title: Field_Select_logic
             element_attributes
             - name: logic
             selected
             - =: 1
         # field 'Relation'
-        - relation|field_select_relation
+        - relation|Field_Select_relation
             title: Relation
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select_relation
+              - title: Field_Select_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_title_name: title
@@ -387,12 +387,12 @@ forms
             selected
             - =: demo_sql_item_1
         # field 'Relation' (tree view)
-        - relation_tree|field_select_relation
+        - relation_tree|Field_Select_relation
             title: Relation (tree view)
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select_relation
+              - title: Field_Select_relation
             related_entity_name: tree_item
             related_entity_field_id_name: id
             related_entity_field_id_parent_name: id_parent
@@ -407,20 +407,20 @@ forms
             selected
             - =: demo_sql_item_1
         # field 'Language'
-        - language|field_select_language
+        - language|Field_Select_language
             title: Language
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_select_language
+              - title: Field_Select_language
             element_attributes
             - name: lang_code
             selected
             - =: en
         # field 'Text direction'
-        - text_direction|field_select_text_direction
+        - text_direction|Field_Select_text_direction
             title: Text direction
-            description|text
+            description|Text
               text: Field "%%_title".
               args
               - title: text_direction
@@ -431,23 +431,23 @@ forms
         # ─────────────────────────────────────────────────────────────────────
         # textarea
         # ─────────────────────────────────────────────────────────────────────
-        - textarea|field_textarea
+        - textarea|Field_Textarea
             title: Text area
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_textarea
+              - title: Field_Textarea
             element_attributes
             - name: textarea
             - value: text in text area line 1
 /////////////////////text in text area line 2
 /////////////////////text in text area line 3
-        - textarea_data|field_textarea_data
+        - textarea_data|Field_Textarea_data
             title: Attributes (example of working with "data"-format)
-            description|text
+            description|Text
               text: Field "%%_title".
               args
-              - title: field_textarea_data
+              - title: Field_Textarea_data
             element_attributes
             - name: textarea_data
             - required: null
@@ -472,48 +472,48 @@ forms
 /////////////////////  - item_string_false|_string_false
 /////////////////////  - item_integer: 123
 /////////////////////  - item_float: 0.000001
-/////////////////////- object_text|text
+/////////////////////- object_text|Text
 /////////////////////    custom_preperty: null
 /////////////////////    text: some text
 /////////////////////    is_apply_translation: true
 /////////////////////    is_apply_tokens: false
-/////////////////////- object_text_simple|text_simple
+/////////////////////- object_text_simple|Text_simple
 /////////////////////    custom_preperty: null
 /////////////////////    text: some text
 /////////////////////    delimiter|_string_nl
 /////////////////////    weight: +0
             classes_allowed
-            - =: text
-            - =: \effcore\text_simple
-            - =: \some_vendor\some_exists_class_name
+            - =: Text
+            - =: \effcore\Text_simple
+            - =: \some_vendor\Some_exists_class_name
             data_validator_id: attributes
         # ─────────────────────────────────────────────────────────────────────
         # checkboxes
         # ─────────────────────────────────────────────────────────────────────
-        - checkboxes_all|fieldset
+        - checkboxes_all|Fieldset
             title: Checkboxes
             title_is_visible: 1
             state: opened
             children
             # field 'Checkbox'
-            - checkbox|field_checkbox
+            - checkbox|Field_Checkbox
                 title: Checkbox
-                description|text
+                description|Text
                   text: Field "%%_title".
                   args
-                  - title: field_checkbox
+                  - title: Field_Checkbox
                 element_attributes
                 - name: checkbox
                 - value: checkbox
                 - checked: true
             # group 'Checkboxes'
-            - checkboxes|group_checkboxes
+            - checkboxes|Group_Checkboxes
                 title: Checkboxes
                 required_any: true
-                description|text
+                description|Text
                   text: Group "%%_title".
                   args
-                  - title: group_checkboxes
+                  - title: Group_Checkboxes
                 element_attributes
                 - name: checkboxes[]
                 items
@@ -533,23 +533,23 @@ forms
                 - =: checkbox_2
                 - =: checkbox_4
             # field 'Switcher'
-            - switcher|field_switcher
+            - switcher|Field_Switcher
                 title: Switcher
-                description|text
+                description|Text
                   text: Field "%%_title".
                   args
-                  - title: field_switcher
+                  - title: Field_Switcher
                 element_attributes
                 - name: switcher
                 - checked: true
             # group 'Switchers'
-            - switchers|group_switchers
+            - switchers|Group_Switchers
                 title: Switchers
                 required_any: true
-                description|text
+                description|Text
                   text: Group "%%_title".
                   args
-                  - title: group_switchers
+                  - title: Group_Switchers
                 element_attributes
                 - name: switchers[]
                 items
@@ -569,42 +569,42 @@ forms
                 - =: switcher_2
                 - =: switcher_4
             # widget 'Access'
-            - access|widget_access
+            - access|Widget_Access
                 title: Access
-                description|text_multiline
+                description|Text_multiline
                   text
                   - 0: Widget "%%_title".
                   - 1: Access settings are not applicable if no one role is active!
                   args
-                  - title: widget_access
+                  - title: Widget_Access
                 checked_roles
                 - =: demo
         # ─────────────────────────────────────────────────────────────────────
         # radiobuttons
         # ─────────────────────────────────────────────────────────────────────
-        - radiobuttons_all|fieldset
+        - radiobuttons_all|Fieldset
             title: Radiobuttons
             title_is_visible: 1
             state: opened
             children
             # field 'Radiobutton'
-            - radiobutton|field_radiobutton
+            - radiobutton|Field_Radiobutton
                 title: Radiobutton
-                description|text
+                description|Text
                   text: Field "%%_title".
                   args
-                  - title: field_radiobutton
+                  - title: Field_Radiobutton
                 element_attributes
                 - name: radiobutton
                 - value: radiobutton
             # group 'Radiobuttons'
-            - radiobuttons|group_radiobuttons
+            - radiobuttons|Group_Radiobuttons
                 title: Radiobuttons
                 required_any: true
-                description|text
+                description|Text
                   text: Group "%%_title".
                   args
-                  - title: group_radiobuttons
+                  - title: Group_Radiobuttons
                 element_attributes
                 - name: radiobuttons
                 items
@@ -621,16 +621,16 @@ forms
                 checked
                 - =: radiobutton_2
             # group 'Color' (palette)
-            - palette|group_palette
+            - palette|Group_Palette
                 title: Color
-                description|text
+                description|Text
                   text: Group "%%_title".
                   args
-                  - title: group_palette
+                  - title: Group_Palette
                 element_attributes
                 - name: palette_color
         # micro_tabs
-        - micro_tabs|micro_tabs
+        - micro_tabs|Micro_tabs
             element_attributes
             - name: micro_tabs
             items
@@ -643,40 +643,40 @@ forms
                 weight: -5
             checked
             - =: 1
-        - micro_tab_1_content|fieldset
+        - micro_tab_1_content|Fieldset
             attributes
             - data-micro_tabs-content-id: 1
             children
-            - content_main|text
+            - content_main|Text
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 1
-        - micro_tab_2_content|fieldset
+        - micro_tab_2_content|Fieldset
             attributes
             - data-micro_tabs-content-id: 2
             children
-            - content_main|text
+            - content_main|Text
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 2
-        - micro_tab_3_content|fieldset
+        - micro_tab_3_content|Fieldset
             attributes
             - data-micro_tabs-content-id: 3
             children
-            - content_main|text
+            - content_main|Text
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 3
-    - hidden|field_hidden
+    - hidden|Field_Hidden
         attributes
         - name: hidden_name
         - value: hidden_value
-    - button_send|button
+    - button_send|Button
         title: send
         attributes
         - value: send
         weight: -500
-    - button_reset|button
+    - button_reset|Button
         title: reset
         break_on_request_value_set: true
         break_on_validate: true

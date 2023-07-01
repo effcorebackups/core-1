@@ -1,17 +1,17 @@
 forms
-- install|form
+- install|Form
     attributes
     - id: install
     - method: post
     - novalidate: true
     children
-    - license_agreement|widget_license_agreement
-    - storage|fieldset
+    - license_agreement|Widget_License_agreement
+    - storage|Fieldset
         title: Storage
         state: closed
         children
         # driver
-        - is_mysql|field_radiobutton
+        - is_mysql|Field_Radiobutton
             title: MySQL
             attributes
             - data-before-container: true
@@ -19,10 +19,10 @@ forms
             - name: driver
             - value: mysql
         # MySQL parameters
-        - mysql|fieldset
+        - mysql|Fieldset
             children
             # field 'Hostname'
-            - host|field_text
+            - host|Field_Text
                 title: Hostname
                 element_attributes
                 - name: host
@@ -30,7 +30,7 @@ forms
                 - maxlength: 253
                 - pattern: ^[a-z0-9_\-\:\.\[\]/]+$
             # field 'Port'
-            - port|field_number
+            - port|Field_Number
                 title: Port
                 element_attributes
                 - name: port
@@ -38,7 +38,7 @@ forms
                 - min: 1024
                 - max: 49150
             # field 'User name' (login)
-            - storage_login|field_text
+            - storage_login|Field_Text
                 title: User name
                 element_attributes
                 - name: storage_login
@@ -46,13 +46,13 @@ forms
                 - maxlength: 64
                 - pattern: ^[a-zA-Z0-9_\-]+$
             # field 'Password'
-            - password|field_password
+            - password|Field_Password
                 element_attributes
                 - name: storage_password
                 - minlength: null
                 - required: null
             # field 'Database name'
-            - database_name|field_text
+            - database_name|Field_Text
                 title: Database name
                 element_attributes
                 - name: database_name
@@ -60,7 +60,7 @@ forms
                 - maxlength: 127
                 - pattern: ^[a-zA-Z0-9_\-]+$
         # driver
-        - is_sqlite|field_radiobutton
+        - is_sqlite|Field_Radiobutton
             title: SQLite
             attributes
             - data-before-container: true
@@ -68,10 +68,10 @@ forms
             - name: driver
             - value: sqlite
         # SQLite parameters
-        - sqlite|fieldset
+        - sqlite|Fieldset
             children
             # field 'File name'
-            - file_name|field_text
+            - file_name|Field_Text
                 title: File name
                 element_attributes
                 - name: file_name
@@ -80,11 +80,11 @@ forms
                 - pattern: ^[a-zA-Z0-9_\-\.]+$
                 - readonly: true
         # shared parameters
-        - params|fieldset
+        - params|Fieldset
             title: Shared parameters
             children
             # field 'Table prefix'
-            - table_prefix|field_text
+            - table_prefix|Field_Text
                 title: Table prefix
                 element_attributes
                 - name: table_prefix
@@ -92,31 +92,31 @@ forms
                 - pattern: ^[a-zA-Z0-9_\-]+$
                 - required: null
     # user parameters
-    - user|fieldset
+    - user|Fieldset
         title: User
         state: closed
         children
         # field 'Email'
-        - email|field_email
+        - email|Field_Email
             element_attributes
             - value: admin@example.com
         # field 'Password'
-        - password|field_password
+        - password|Field_Password
         # field 'Time zone'
-        - timezone|field_select_timezone
+        - timezone|Field_Select_timezone
             element_attributes
             - data-source: uagent-timezone
     # profile parameters
-    - profile|fieldset
+    - profile|Fieldset
         title: Profile
         state: closed
         children
         # field 'Profile'
-        - profile|field_select
+        - profile|Field_Select
             title: Profile
             element_attributes
             - name: profile
-    - button_install|button
+    - button_install|Button
         title: install
         attributes
         - value: install

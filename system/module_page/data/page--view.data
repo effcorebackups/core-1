@@ -1,5 +1,5 @@
 pages
-- view|page
+- view|Page
     id: view
     title: View
     url: %^(?<base>/manage/view)
@@ -17,25 +17,25 @@ pages
       - =: manage__view
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -44,7 +44,7 @@ pages
           source: tabs/page/view
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__colors|block
+      - block__form__colors|Block
           title: Color assignment form
           title_is_visible: false
           attributes
@@ -55,7 +55,7 @@ pages
             match: %^colors/current$%
           type: link
           source: forms/page/colors
-      - block__form__colors_preset|block
+      - block__form__colors_preset|Block
           title: Color preset apply form
           title_is_visible: false
           attributes
@@ -66,7 +66,7 @@ pages
             match: %^colors/presets$%
           type: link
           source: forms/page/colors_preset
-      - block__form__layout|block
+      - block__form__layout|Block
           title: Layout editing form
           title_is_visible: false
           attributes
@@ -77,7 +77,7 @@ pages
             match: %^layouts$%
           type: link
           source: forms/page/layout
-      - block__form__global_css|block
+      - block__form__global_css|Block
           title: Global CSS editing form
           title_is_visible: false
           attributes
@@ -88,7 +88,7 @@ pages
             match: %^global_css$%
           type: link
           source: forms/page/global_css
-      - block__form__view_settings|block
+      - block__form__view_settings|Block
           title: View customization form
           title_is_visible: false
           attributes

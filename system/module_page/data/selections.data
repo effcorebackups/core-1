@@ -1,5 +1,5 @@
 selections
-- instance_select-audio|selection
+- instance_select-audio|Selection
     id: instance_select-audio
     main_entity_name: audio
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_audio_id_context
@@ -37,7 +37,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- instance_select-gallery|selection
+- instance_select-gallery|Selection
     id: instance_select-gallery
     main_entity_name: gallery
     decorator_settings
@@ -46,7 +46,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_gallery_id_context
@@ -75,7 +75,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- instance_select-page|selection
+- instance_select-page|Selection
     id: instance_select-page
     main_entity_name: page
     decorator_settings
@@ -84,7 +84,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_page_id_context
@@ -134,7 +134,7 @@ selections
           entity_field_name: access
           is_apply_translation: true
           weight: +160
-- instance_select-picture|selection
+- instance_select-picture|Selection
     id: instance_select-picture
     main_entity_name: picture
     decorator_settings
@@ -143,7 +143,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_picture_id_context
@@ -178,7 +178,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +240
-- instance_select-text|selection
+- instance_select-text|Selection
     id: instance_select-text
     main_entity_name: text
     decorator_settings
@@ -187,7 +187,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_text_id_context
@@ -217,7 +217,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- instance_select-video|selection
+- instance_select-video|Selection
     id: instance_select-video
     main_entity_name: video
     decorator_settings
@@ -226,7 +226,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_video_id_context
@@ -259,7 +259,7 @@ selections
           is_apply_translation: true
           weight: +260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-audio|selection
+- instance_select_multiple-audio|Selection
     id: instance_select_multiple-audio
     main_entity_name: audio
     pager_is_enabled: true
@@ -286,7 +286,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +320
-- instance_select_multiple-gallery|selection
+- instance_select_multiple-gallery|Selection
     id: instance_select_multiple-gallery
     main_entity_name: gallery
     pager_is_enabled: true
@@ -313,7 +313,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +320
-- instance_select_multiple-page|selection
+- instance_select_multiple-page|Selection
     id: instance_select_multiple-page
     main_entity_name: page
     pager_is_enabled: true
@@ -344,9 +344,9 @@ selections
     - handlers
       - url_in_link
           title: URL
-          handler: \effcore\modules\page\events_selection::handler_page_link
+          handler: \effcore\modules\page\Events_Selection::handler_page_link
           weight: +360
-- instance_select_multiple-picture|selection
+- instance_select_multiple-picture|Selection
     id: instance_select_multiple-picture
     main_entity_name: picture
     pager_is_enabled: true
@@ -376,7 +376,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +300
-- instance_select_multiple-text|selection
+- instance_select_multiple-text|Selection
     id: instance_select_multiple-text
     main_entity_name: text
     pager_is_enabled: true
@@ -403,7 +403,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +320
-- instance_select_multiple-video|selection
+- instance_select_multiple-video|Selection
     id: instance_select_multiple-video
     main_entity_name: video
     pager_is_enabled: true
@@ -431,7 +431,7 @@ selections
           is_not_visible: true
           weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- audio|selection
+- audio|Selection
     id: audio
     main_entity_name: audio
     template: content
@@ -451,7 +451,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_audio_id_context
@@ -480,7 +480,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- gallery|selection
+- gallery|Selection
     id: gallery
     main_entity_name: gallery
     template: content
@@ -501,7 +501,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_gallery_id_context
@@ -530,7 +530,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- picture|selection
+- picture|Selection
     id: picture
     main_entity_name: picture
     template: content
@@ -552,7 +552,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_picture_id_context
@@ -587,7 +587,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +240
-- text|selection
+- text|Selection
     id: text
     main_entity_name: text
     template: content
@@ -607,7 +607,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_text_id_context
@@ -637,7 +637,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
-- video|selection
+- video|Selection
     id: video
     main_entity_name: video
     template: content
@@ -658,7 +658,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_video_id_context

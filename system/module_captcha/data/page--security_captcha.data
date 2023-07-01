@@ -1,5 +1,5 @@
 pages
-- security_captcha|page
+- security_captcha|Page
     id: security_captcha
     title: Security
     url: %^(?<base>/manage/security)/
@@ -12,25 +12,25 @@ pages
       - =: manage__security
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -39,7 +39,7 @@ pages
           source: tabs/user/security
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__security_settings_captcha|block
+      - block__form__security_settings_captcha|Block
           title: Security settings CAPTCHA form
           title_is_visible: false
           attributes

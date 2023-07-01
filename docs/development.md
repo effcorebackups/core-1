@@ -56,11 +56,11 @@ How to activate Neor Profile SQL
 
 - In file `/dynamic/data/changes.php` change:
 
-      data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '3306';
+      Data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '3306';
 
   to:
 
-      data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '4040';
+      Data::$data['changes']['core']->insert['storages/storage/sql']->credentials->port = '4040';
 
 - Run `/shell/cache_clear.sh`.
 

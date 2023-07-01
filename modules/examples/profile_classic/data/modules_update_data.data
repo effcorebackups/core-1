@@ -3,4 +3,4 @@ modules_update_data
     number: 1000
     title: Example of update
     description: Example of update description.
-    handler: \effcore\modules\profile_classic\events_module_update::on_update_data_1000
+    handler: \effcore\modules\profile_classic\Events_Module_update::on_update_data_1000

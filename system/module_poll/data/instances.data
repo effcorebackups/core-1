@@ -2,25 +2,25 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # permissions
 # ─────────────────────────────────────────────────────────────────────
-- permission_manage_data_poll_select|instance
+- permission_manage_data_poll_select|Instance
     entity_name: permission
     values
     - id: manage_data__content_page_poll__select
     - title: Poll: select
     - is_embedded: 1
-- permission_manage_data_poll_insert|instance
+- permission_manage_data_poll_insert|Instance
     entity_name: permission
     values
     - id: manage_data__content_page_poll__insert
     - title: Poll: insert
     - is_embedded: 1
-- permission_manage_data_poll_update|instance
+- permission_manage_data_poll_update|Instance
     entity_name: permission
     values
     - id: manage_data__content_page_poll__update
     - title: Poll: update
     - is_embedded: 1
-- permission_manage_data_poll_delete|instance
+- permission_manage_data_poll_delete|Instance
     entity_name: permission
     values
     - id: manage_data__content_page_poll__delete

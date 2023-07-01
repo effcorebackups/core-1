@@ -1,5 +1,5 @@
 block_presets
-- block__form__login|block_preset
+- block__form__login|Block_preset
     id: block__form__login
     managing_group: Forms
     managing_title: Login form
@@ -11,7 +11,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__form__login
-- block__form__logout|block_preset
+- block__form__logout|Block_preset
     id: block__form__logout
     managing_group: Forms
     managing_title: Logout form
@@ -23,7 +23,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__form__logout
-- block__form__recovery|block_preset
+- block__form__recovery|Block_preset
     id: block__form__recovery
     managing_group: Forms
     managing_title: Access recovery form
@@ -35,7 +35,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__form__recovery
-- block__form__registration|block_preset
+- block__form__registration|Block_preset
     id: block__form__registration
     managing_group: Forms
     managing_title: Registration form
@@ -47,7 +47,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__form__registration
-- block__form__instance_insert__feedback|block_preset
+- block__form__instance_insert__feedback|Block_preset
     id: block__form__instance_insert__feedback
     managing_group: Forms
     managing_title: Feedback form
@@ -61,7 +61,7 @@ block_presets
     title_is_visible: true
     attributes
     - data-id: block__form__instance_insert__feedback
-- block__form__instance_update__user|block_preset
+- block__form__instance_update__user|Block_preset
     id: block__form__instance_update__user
     managing_group: Forms
     managing_title: User update form

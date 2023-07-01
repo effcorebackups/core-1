@@ -1,5 +1,5 @@
 tab_items
-- data_content_poll|tab_item
+- data_content_poll|Tab_item
     id: data_content_poll
     id_parent: data_content_page
     id_tab: data

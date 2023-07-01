@@ -1,27 +1,27 @@
 forms
-- security_settings_captcha|form
+- security_settings_captcha|Form
     attributes
     - id: security_settings_captcha
     - method: post
     - novalidate: true
     children
-    - main|fieldset
+    - main|Fieldset
         children
-        - length|field_number
+        - length|Field_Number
             title: Length
             element_attributes
             - name: length
             - value: 6
             - min: 1
             - max: 15
-        - glyphs|fieldset
+        - glyphs|Fieldset
             title: Glyphs
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save
         weight: -500
-    - button_reset|button
+    - button_reset|Button
         title: reset
         break_on_validate: true
         attributes

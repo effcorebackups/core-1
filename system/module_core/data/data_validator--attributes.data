@@ -1,5 +1,5 @@
 data_validators
-- attributes|data_validator
+- attributes|Data_validator
     id: attributes
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     # invalid dataset example
@@ -20,10 +20,10 @@ data_validators
     #   - item_array_empty|_empty_array
     #   - item_array_nested
     #     - 0: nested string
-    #   - item_object_text|text
+    #   - item_object_text|Text
     #       is_apply_translation: null
     #       is_apply_tokens: null
-    #   - item_object_text_simple|text_simple
+    #   - item_object_text_simple|Text_simple
     #       text: null
     #       delimiter: null
     #       weight: null
@@ -36,12 +36,12 @@ data_validators
     #       0
     #         0
     #           0: nested value
-    # - object_text|text
+    # - object_text|Text
     #     is_apply_translation
     #     - key: value
     #     is_apply_tokens
     #     - key: value
-    # - object_text_simple|text_simple
+    # - object_text_simple|Text_simple
     #     text
     #     - key: value
     #     delimiter
@@ -68,15 +68,15 @@ data_validators
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     scenario
     # check "attributes|attributes/*"
-    - is-attributes|step_validate
+    - is-attributes|Validator_step_Validate
         check: current
         where: dpath
         match: %^attributes(/.+|)$%
         on_failure
         # when NOT "attributes"
-        - error_register|step_validate_error_register
+        - error_register|Validator_step_Error_register
             break: nested
-            message|text_multiline
+            message|Text_multiline
               text
               - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
               - 1: Each item must be contained in the "%%_root" array.
@@ -86,258 +86,258 @@ data_validators
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes:root|step_validate
+        - is-attributes:root|Validator_step_Validate
             check: current
             where: dpath
             match: attributes
             on_success
             # check "attributes:__TYPE__"
-            - is-type|step_validate
+            - is-type|Validator_step_Validate
                 check: current
                 where: type
                 match: array
                 on_failure
                 # when "attributes:__INVALID__TYPE__"
-                - error_register|step_validate_error_register
+                - error_register|Validator_step_Error_register
                     break: nested
-                    message|text
+                    message|Text
                       text: Item "%%_dpath_value" must be of type "%%_type"!
                       args
                       - type: array
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/item"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-item|step_validate
+        - is-attributes-item|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)$%
             on_success
             # check "attributes/item:__TYPE__"
-            - is-type|step_validate
+            - is-type|Validator_step_Validate
                 check: current
                 where: type
-                match: %^(string|integer|double|boolean|null|array|object:text|object:text_simple)$%
+                match: %^(string|integer|double|boolean|null|array|object:Text|object:Text_simple)$%
                 on_failure
                 # when "attributes/item:__INVALID__TYPE__"
-                - error_register|step_validate_error_register
+                - error_register|Validator_step_Error_register
                     break: nested
-                    message|text
+                    message|Text
                       text: Item "%%_dpath_value" must be one of the following types: %%_types!
                       args
-                      - types: string, integer, double, boolean, null, array, object:text, object:text_simple
+                      - types: string, integer, double, boolean, null, array, object:Text, object:Text_simple
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/array/item"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-array-item|step_validate
+        - is-attributes-array-item|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/[^/]+)$%
             on_success
             # check "attributes/item:__TYPE__/item"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
                 match: array
                 on_success
                 # check "attributes/item/item:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: %^(string|integer|double)$%
                     on_failure
                     # when "attributes/item/item:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: string, integer, double
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text/is_apply_translation"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text-is_apply_translation|step_validate
+        - is-attributes-object:text-is_apply_translation|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/is_apply_translation)$%
             on_success
             # check "attributes/item:__TYPE__/is_apply_translation"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: object:text
+                match: object:Text
                 on_success
                 # check "attributes/item/is_apply_translation:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: boolean
                     on_failure
                     # when "attributes/item/is_apply_translation:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: boolean
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text/is_apply_tokens"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text-is_apply_tokens|step_validate
+        - is-attributes-object:text-is_apply_tokens|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/is_apply_tokens)$%
             on_success
             # check "attributes/item:__TYPE__/is_apply_tokens"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: object:text
+                match: object:Text
                 on_success
                 # check "attributes/item/is_apply_tokens:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: boolean
                     on_failure
                     # when "attributes/item/is_apply_tokens:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: boolean
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text/args"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text-args|step_validate
+        - is-attributes-object:text-args|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/args)$%
             on_success
             # check "attributes/item:__TYPE__/args"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: object:text
+                match: object:Text
                 on_success
                 # check "attributes/item/args:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: array
                     on_failure
                     # when "attributes/item/args:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: array
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text/args/item"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text-args-item|step_validate
+        - is-attributes-object:text-args-item|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/args)(/[^/]+)$%
             on_success
             # check "attributes/item:__TYPE__/args/item"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: object:text
+                match: object:Text
                 on_success
                 # check "attributes/item/args/item:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: %^(string|integer|double)$%
                     on_failure
                     # when "attributes/item/args/item:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: string, integer, double
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text_simple/weight"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text_simple-weight|step_validate
+        - is-attributes-object:text_simple-weight|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/weight)$%
             on_success
             # check "attributes/item:__TYPE__/weight"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: %^(object:text_simple|object:text)$%
+                match: %^(object:Text_simple|object:Text)$%
                 on_success
                 # check "attributes/item/weight:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: integer
                     on_failure
                     # when "attributes/item/weight:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: integer
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text_simple/delimiter"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text_simple-delimiter|step_validate
+        - is-attributes-object:text_simple-delimiter|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/delimiter)$%
             on_success
             # check "attributes/item:__TYPE__/delimiter"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: %^(object:text_simple|object:text)$%
+                match: %^(object:Text_simple|object:Text)$%
                 on_success
                 # check "attributes/item/delimiter:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: %^(string|integer)$%
                     on_failure
                     # when "attributes/item/delimiter:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: string, integer
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # check "attributes/object:text_simple/text"
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        - is-attributes-object:text_simple-text|step_validate
+        - is-attributes-object:text_simple-text|Validator_step_Validate
             check: current
             where: dpath
             match: %^attributes(/[^/]+)(/text)$%
             on_success
             # check "attributes/item:__TYPE__/text"
-            - is-type:parent|step_validate
+            - is-type:parent|Validator_step_Validate
                 check: parent_+2
                 where: type
-                match: %^(object:text_simple|object:text)$%
+                match: %^(object:Text_simple|object:Text)$%
                 on_success
                 # check "attributes/item/text:__TYPE__"
-                - is-type|step_validate
+                - is-type|Validator_step_Validate
                     check: current
                     where: type
                     match: %^(string|integer|double)$%
                     on_failure
                     # when "attributes/item/text:__INVALID__TYPE__"
-                    - error_register|step_validate_error_register
+                    - error_register|Validator_step_Error_register
                         break: nested
-                        message|text
+                        message|Text
                           text: Item "%%_dpath_value" must be one of the following types: %%_types!
                           args
                           - types: string, integer, double

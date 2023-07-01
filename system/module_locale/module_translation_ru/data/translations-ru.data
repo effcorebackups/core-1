@@ -1,5 +1,5 @@
 translations
-- ru|translation
+- ru|Translation
     code: ru
     data
     - Africa: Африка
@@ -128,7 +128,7 @@ translations
     - Cookie domain: Домен cookie
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
-    - Copyright © 2017—2022 Maxim Rysevets. All rights reserved.: Copyright © 2017—2022 Рысевец Максим Владимирович. Все права защищены.
+    - Copyright © 2017—2023 Maxim Rysevets. All rights reserved.: Copyright © 2017—2023 Рысевец Максим Владимирович. Все права защищены.
     - copyright: авторские права
     - Copyright: Авторские права
     - Core: Ядро
@@ -383,7 +383,6 @@ translations
     - Interface: Интерфейс
     - interfaces: интерфейсы
     - Interfaces: Интерфейсы
-    - Internet Explorer below version %%_number no longer supported!: Internet Explorer ниже версии %%_number больше не поддерживается!
     - Invalid session was deleted!: Недействительный сеанс был удалён!
     - Is apply tokens: Применить токены
     - Is apply translation: Применить перевод
@@ -724,7 +723,6 @@ translations
     - send: отправить
     - SEO\: manage: SEO: управлять
     - Sequence: Последовательность
-    - Server time zone: Часовой пояс сервера
     - Server: Сервер
     - Service: Обслуживание
     - Session duration in days when "long session" is not selected: Длительность сеанса в днях, когда не выбрано "длительный сеанс"
@@ -863,7 +861,6 @@ translations
     - User\: select: Пользователь: выбрать
     - User\: update: Пользователь: обновить
     - Users: Пользователи
-    - UTC date/time: UTC дата/время
     - val.: знач.
     - Val.: Знач.
     - Value in pixels.: Величина в пикселях.

@@ -1,92 +1,92 @@
 events
   on_module_install
-  - menu|event
+  - menu|Event
       for: menu
-      handler: \effcore\modules\menu\events_module::on_install
+      handler: \effcore\modules\menu\Events_Module::on_install
   on_module_enable
-  - menu|event
+  - menu|Event
       for: menu
-      handler: \effcore\modules\menu\events_module::on_enable
+      handler: \effcore\modules\menu\Events_Module::on_enable
   # ═════════════════════════════════════════════════════════════════════
   on_block_build_after
-  - all|event
+  - all|Event
       weight: +300
-      handler: \effcore\modules\menu\events_page::on_block_build_after
+      handler: \effcore\modules\menu\Events_Page::on_block_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\menu\events_page::on_block_presets_dynamic_build
+  - all|Event
+      handler: \effcore\modules\menu\Events_Page::on_block_presets_dynamic_build
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_breadcrumbs_build_before
-  - system|event
+  - system|Event
       for: system
       weight: +400
-      handler: \effcore\modules\menu\events_page::on_breadcrumbs_build_before
+      handler: \effcore\modules\menu\Events_Page::on_breadcrumbs_build_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_build
-  - instance_select_multiple__menu|event
+  - instance_select_multiple__menu|Event
       for: instance_select_multiple
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_select_multiple::on_build
-  - instance_insert__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_select_multiple::on_build
+  - instance_insert__menu|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_insert::on_build
-  - instance_update__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_insert::on_build
+  - instance_update__menu|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_update::on_build
-  - instance_delete__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_update::on_build
+  - instance_delete__menu|Event
       for: instance_delete
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_delete::on_build
+      handler: \effcore\modules\menu\Events_Form_Instance_delete::on_build
   on_form_init
-  - instance_select_multiple__menu|event
+  - instance_select_multiple__menu|Event
       for: instance_select_multiple
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_select_multiple::on_init
-  - instance_insert__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_select_multiple::on_init
+  - instance_insert__menu|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_insert::on_init
+      handler: \effcore\modules\menu\Events_Form_Instance_insert::on_init
   on_form_validate
-  - instance_insert__menu|event
+  - instance_insert__menu|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\menu\events_form_instance_insert::on_validate
+      handler: \effcore\modules\menu\Events_Form_Instance_insert::on_validate
   on_form_submit
-  - instance_select_multiple__menu|event
+  - instance_select_multiple__menu|Event
       for: instance_select_multiple
       weight: +600
-      handler: \effcore\modules\menu\events_form_instance_select_multiple::on_submit
-  - instance_insert__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_select_multiple::on_submit
+  - instance_insert__menu|Event
       for: instance_insert
       weight: +600
-      handler: \effcore\modules\menu\events_form_instance_insert::on_submit
-  - instance_update__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_insert::on_submit
+  - instance_update__menu|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\menu\events_form_instance_update::on_submit
-  - instance_delete__menu|event
+      handler: \effcore\modules\menu\Events_Form_Instance_update::on_submit
+  - instance_delete__menu|Event
       for: instance_delete
       weight: +600
-      handler: \effcore\modules\menu\events_form_instance_delete::on_submit
+      handler: \effcore\modules\menu\Events_Form_Instance_delete::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - instance_select_multiple|event
+  - instance_select_multiple|Event
       for: instance_select_multiple
       weight: +550
-      handler: \effcore\modules\menu\events_page_instance_select_multiple::on_redirect
-  - instance_insert|event
+      handler: \effcore\modules\menu\Events_Page_Instance_select_multiple::on_redirect
+  - instance_insert|Event
       for: instance_insert
       weight: +550
-      handler: \effcore\modules\menu\events_page_instance_insert::on_check_existence
+      handler: \effcore\modules\menu\Events_Page_Instance_insert::on_check_existence
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - data|event
+  - data|Event
       for: data
-      handler: \effcore\modules\menu\events_page_instance_select_multiple::on_tab_build_before
+      handler: \effcore\modules\menu\Events_Page_Instance_select_multiple::on_tab_build_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tree_build_after
-  - all|event
-      handler: \effcore\modules\menu\events_page::on_tree_build_after
+  - all|Event
+      handler: \effcore\modules\menu\Events_Page::on_tree_build_after

@@ -3,14 +3,14 @@ modules_update_data
     number: 1000
     title: Example of update 1
     description: Example of update description 1.
-    handler: \effcore\modules\demo\events_module_update::on_update_data_1000
+    handler: \effcore\modules\demo\Events_Module_update::on_update_data_1000
 - demo_1001
     number: 1001
     title: Example of update 2 (outstripping)
     description: Example of update description 2.
-    handler: \effcore\modules\demo\events_module_update::on_update_data_1001
+    handler: \effcore\modules\demo\Events_Module_update::on_update_data_1001
 - demo_1002
     number: 1002
     title: Example of update 3 (outstripping)
     description: Example of update description 3.
-    handler: \effcore\modules\demo\events_module_update::on_update_data_1002
+    handler: \effcore\modules\demo\Events_Module_update::on_update_data_1002

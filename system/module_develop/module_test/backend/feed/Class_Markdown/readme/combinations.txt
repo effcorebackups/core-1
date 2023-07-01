@@ -1,0 +1,638 @@
+
+
+
+#########################
+### table of contents ###
+#########################
+
+
+- HEADER (ATX) with HEADER -----> impossible
+- HEADER (ATX) with PARAGRAPH --> impossible
+- HEADER (ATX) with LIST -------> impossible
+- HEADER (ATX) with CODE -------> impossible
+- HEADER (ATX) with BLOCKQUOTE -> impossible
+- HEADER (ATX) with HR ---------> impossible
+- HEADER (ATX) with MARKUP
+
+- HEADER (SETEXT) with HEADER (ATX)
+- HEADER (SETEXT) with PARAGRAPH
+- HEADER (SETEXT) with LIST
+- HEADER (SETEXT) with CODE
+- HEADER (SETEXT) with BLOCKQUOTE
+- HEADER (SETEXT) with HR
+- HEADER (SETEXT) with MARKUP
+
+- PARAGRAPH with HEADER --------> impossible
+- PARAGRAPH with PARAGRAPH -----> impossible
+- PARAGRAPH with LIST ----------> impossible
+- PARAGRAPH with CODE ----------> impossible
+- PARAGRAPH with BLOCKQUOTE ----> impossible
+- PARAGRAPH with HR ------------> impossible
+- PARAGRAPH with MARKUP
+
+- LIST with HEADER
+- LIST with PARAGRAPH
+- LIST with LIST ---------------> impossible
+- LIST with CODE
+- LIST with BLOCKQUOTE
+- LIST with HR
+- LIST with MARKUP
+
+- CODE with HEADER
+- CODE with PARAGRAPH ----------> impossible
+- CODE with LIST
+- CODE with CODE ---------------> impossible
+- CODE with BLOCKQUOTE
+- CODE with HR
+- CODE with MARKUP
+
+- BLOCKQUOTE with HEADER
+- BLOCKQUOTE with PARAGRAPH ----> impossible
+- BLOCKQUOTE with LIST
+- BLOCKQUOTE with CODE
+- BLOCKQUOTE with BLOCKQUOTE
+- BLOCKQUOTE with HR
+- BLOCKQUOTE with MARKUP
+
+- HR with HEADER ---------------> impossible
+- HR with PARAGRAPH ------------> impossible
+- HR with LIST -----------------> impossible
+- HR with CODE -----------------> impossible
+- HR with BLOCKQUOTE -----------> impossible
+- HR with HR -------------------> impossible
+- HR with MARKUP ---------------> impossible
+
+
+
+#####################################################
+### HEADER (ATX) with MARKUP = HEADER with MARKUP ###
+#####################################################
+
+
+# <a href="http://example.com">link</a>
+
+
+# <x-tag data-attribute="true">data</x-tag>
+
+
+# <div data-attribute="true">data</div>
+
+
+
+#####################################################################
+### HEADER (SETEXT) with HEADER (ATX) = HEADER near HR            ###
+### HEADER (SETEXT) with PARAGRAPH    = HEADER                    ###
+### HEADER (SETEXT) with LIST ITEM    = LIST near HR              ###
+### HEADER (SETEXT) with LIST ITEMS   = LIST near HR              ###
+### HEADER (SETEXT) with CODE         = CODE near HR              ###
+### HEADER (SETEXT) with BLOCKQUOTE   = BLOCKQUOTE near HR        ###
+### HEADER (SETEXT) with HR           = HR near HR                ###
+### HEADER (SETEXT) with MARKUP       = MARKUP | MARKUP IN HEADER ###
+#####################################################################
+
+
+# Title H1
+----------
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+----------------
+
+********************
+
+- list item
+-----------
+
+********************
+
+- list item 1
+- list item 2
+- list item 3
+-------------
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+---------------
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+-------------------
+
+********************
+
+*  *  *
+-------
+
+********************
+
+<a href="http://example.com">link</a>
+-------------------------------------
+
+
+<x-tag data-attribute="true">data</x-tag>
+-----------------------------------------
+
+
+<div data-attribute="true">data</div>
+-------------------------------------
+
+
+
+############################################################
+### PARAGRAPH with MARKUP = MARKUP | MARKUP IN PARAGRAPH ###
+############################################################
+
+
+paragraph line 1
+<a href="http://example.com">link</a>
+paragraph line 3
+
+
+paragraph line 1
+<x-tag data-attribute="true">data</x-tag>
+paragraph line 3
+
+
+paragraph line 1
+<div data-attribute="true">data</div>
+paragraph line 3
+
+
+
+###########################################################################
+### LIST with HEADER (ATX)    (indent < 3) = LIST near HEADER near LIST ###
+### LIST with HEADER (ATX)    (indent > 2) = HEADER in LIST             ###
+### LIST with HEADER (SETEXT) (indent < 2) = TEXT in LIST               ###
+### LIST with HEADER (SETEXT) (indent > 1) = HEADER in LIST             ###
+###########################################################################
+
+
+- list item 1
+# Title H1 (atx-style)
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+   # Title H1 (atx-style)
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+Title H1 (Setext-style)
+=======================
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+  Title H1 (Setext-style)
+  =======================
+- list item 2
+- list item 3
+
+
+
+########################################################################################
+### LIST         with PARAGRAPH         (indent = *) = TEXT in LIST                  ###
+### LIST         with PARAGRAPH with NL (indent = *) = TEXT in LIST                  ###
+### LIST with NL with PARAGRAPH         (indent < 2) = LIST near PARAGRAPH near LIST ###
+### LIST with NL with PARAGRAPH         (indent > 1) = PARAGRAPH in LIST             ###
+### LIST with NL with PARAGRAPH         (indent > 5) = CODE in LIST                  ###
+########################################################################################
+
+
+- list item 1
+paragraph line 1
+paragraph line 2
+paragraph line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+          paragraph line 1
+          paragraph line 2
+          paragraph line 3
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+- list item 2
+- list item 3
+
+
+- list item 1
+          paragraph line 1
+          paragraph line 2
+          paragraph line 3
+<!-- empty line -->
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+  paragraph line 1
+  paragraph line 2
+  paragraph line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      paragraph line 1
+      paragraph line 2
+      paragraph line 3
+- list item 2
+- list item 3
+
+
+
+##################################################################################
+### LIST with CODE                            = CODE in LIST                   ###
+### LIST with         BLOCKQUOTE (indent < 2) = LIST near BLOCKQUOTE near LIST ###
+### LIST with         BLOCKQUOTE (indent > 1) = BLOCKQUOTE in LIST             ###
+### LIST with         BLOCKQUOTE (indent > 5) = TEXT in LIST                   ###
+### LIST with NL with BLOCKQUOTE (indent > 5) = CODE in LIST                   ###
+### LIST with HR                 (indent < 2) = LIST near HR near LIST         ###
+### LIST with HR                 (indent > 1) = HR in LIST                     ###
+### LIST with HR                 (indent > 5) = TEXT in LIST                   ###
+### LIST with NL with HR         (indent > 5) = CODE in LIST                   ###
+##################################################################################
+
+
+- list item 1
+<!-- empty line -->
+      code line 1
+            code line 2
+      code line 3
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+  > blockquote line 1
+  > blockquote line 2
+  > blockquote line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+      > blockquote line 1
+      > blockquote line 2
+      > blockquote line 3
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      > blockquote line 1
+      > blockquote line 2
+      > blockquote line 3
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+*  *  *
+- list item 2
+- list item 3
+
+
+- list item 1
+-  -  -
+- list item 2
+- list item 3
+
+
+- list item 1
+  *  *  *
+- list item 2
+- list item 3
+
+
+- list item 1
+  -  -  -
+- list item 2
+- list item 3
+
+
+- list item 1
+      *  *  *
+- list item 2
+- list item 3
+
+
+- list item 1
+      -  -  -
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      *  *  *
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      -  -  -
+- list item 2
+- list item 3
+
+
+
+##########################################
+### LIST with MARKUP = MARKUP IN LIST  ###
+##########################################
+
+
+- list item 1
+<a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+<x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+<div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+  <a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+  <x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+  <div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+      <a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+      <x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+      <div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+<!-- empty line -->
+<a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+<x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+<div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+<!-- empty line -->
+  <a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+  <x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+  <div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+********************
+
+- list item 1
+<!-- empty line -->
+      <a href="http://example.com">link</a>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      <x-tag data-attribute="true">data</x-tag>
+- list item 2
+- list item 3
+
+
+- list item 1
+<!-- empty line -->
+      <div data-attribute="true">data</div>
+- list item 2
+- list item 3
+
+
+
+#########################################################
+### CODE with HEADER (ATX)    = CODE + '# ' + TEXT    ###
+### CODE with HEADER (SETEXT) = CODE + TEXT + '='|'-' ###
+### CODE with LIST            = CODE + '- ' + TEXT    ###
+### CODE with BLOCKQUOTE      = CODE + '&gt;' + TEXT  ###
+### CODE with HR              = CODE                  ###
+### CODE with MARKUP          = CODE                  ###
+#########################################################
+
+
+    # Title H1 (atx-style)
+
+********************
+
+    Title H1 (Setext-style)
+    =======================
+
+********************
+
+    - list item 1
+    - list item 2
+    - list item 3
+
+********************
+
+    > blockquote line 1
+    > blockquote line 2
+    > blockquote line 3
+
+********************
+
+    *  *  *
+
+
+    -  -  -
+
+********************
+
+    code line 1
+    <a href="http://example.com">link</a>
+    code line 3
+
+
+    code line 1
+    <x-tag data-attribute="true">data</x-tag>
+    code line 3
+
+
+    code line 1
+    <div data-attribute="true">data</div>
+    code line 3
+
+
+
+##################################################################
+### BLOCKQUOTE with HEADER (ATX)    = HEADER in BLOCKQUOTE     ###
+### BLOCKQUOTE with HEADER (SETEXT) = HEADER in BLOCKQUOTE     ###
+### BLOCKQUOTE with LIST            = LIST in BLOCKQUOTE       ###
+### BLOCKQUOTE with CODE            = CODE in BLOCKQUOTE       ###
+### BLOCKQUOTE with BLOCKQUOTE      = BLOCKQUOTE in BLOCKQUOTE ###
+### BLOCKQUOTE with HR              = HR in BLOCKQUOTE         ###
+### BLOCKQUOTE with MARKUP          = MARKUP in BLOCKQUOTE     ###
+##################################################################
+
+
+> # Title H1 (atx-style)
+
+********************
+
+> Title H1 (Setext-style)
+> =======================
+
+********************
+
+> - list item 1
+>     - list item 1.1
+>         - list item 1.1.1
+>     - list item 1.2
+> - list item 2
+
+
+> 1. numbered list item 1
+> 2. numbered list item 2
+> 3. numbered list item 3
+
+********************
+
+>     code line 1
+>          code line 2
+>     code line 3
+
+********************
+
+> blockquote line 1
+> > blockquote line 1.1
+> blockquote line 2
+
+********************
+
+> *  *  *
+
+
+> -  -  -
+
+********************
+
+> blockquote line 1
+> <a href="http://example.com">link</a>
+> blockquote line 3
+
+
+> blockquote line 1
+> <x-tag data-attribute="true">data</x-tag>
+> blockquote line 3
+
+
+> blockquote line 1
+> <div data-attribute="true">data</div>
+> blockquote line 3
+
+

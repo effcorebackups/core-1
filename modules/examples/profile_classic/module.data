@@ -1,13 +1,13 @@
-module|module_as_profile
+module|Module_as_profile
   id: profile_classic
   id_bundle: examples
   title: Profile "Classic"
   group: Profiles
   description: Module for example of profile "Classic".
   copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
-  version: 0.906
+  version: 0.907
   dependencies
     system
-    - core: 0.906
-    - vendors: 0.906
-    - translation_ru: 0.906
+    - core: 0.907
+    - vendors: 0.907
+    - translation_ru: 0.907

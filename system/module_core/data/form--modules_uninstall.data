@@ -1,12 +1,12 @@
 forms
-- modules_uninstall|form
+- modules_uninstall|Form
     attributes
     - id: modules_uninstall
     - method: post
     - novalidate: true
     children
-    - info|fieldset
-    - button_apply|button
+    - info|Fieldset
+    - button_apply|Button
         title: apply
         attributes
         - value: apply

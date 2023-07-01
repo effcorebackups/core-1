@@ -1,5 +1,5 @@
 selections
-- instance_select-feedback|selection
+- instance_select-feedback|Selection
     id: instance_select-feedback
     main_entity_name: feedback
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_feedback_id_context
@@ -32,7 +32,7 @@ selections
       - updated
           entity_field_name: updated
           weight: +300
-- instance_select-permission|selection
+- instance_select-permission|Selection
     id: instance_select-permission
     main_entity_name: permission
     decorator_settings
@@ -41,7 +41,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_permission_id_context
@@ -64,7 +64,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +320
-- instance_select-relation_role_ws_permission|selection
+- instance_select-relation_role_ws_permission|Selection
     id: instance_select-relation_role_ws_permission
     main_entity_name: relation_role_ws_permission
     decorator_settings
@@ -75,14 +75,14 @@ selections
         - id_role
           - id_role_!f: id_role
           - id_role_operator: =
-          - id_role_!v|text
+          - id_role_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
               text: %%_selection_relation_role_ws_permission_id_role_context
         - id_permission
           - id_permission_!f: id_permission
           - id_permission_operator: =
-          - id_permission_!v|text
+          - id_permission_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
               text: %%_selection_relation_role_ws_permission_id_permission_context
@@ -100,7 +100,7 @@ selections
       - updated
           entity_field_name: updated
           weight: +340
-- instance_select-relation_role_ws_user|selection
+- instance_select-relation_role_ws_user|Selection
     id: instance_select-relation_role_ws_user
     main_entity_name: relation_role_ws_user
     decorator_settings
@@ -111,14 +111,14 @@ selections
         - id_role
           - id_role_!f: id_role
           - id_role_operator: =
-          - id_role_!v|text
+          - id_role_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
               text: %%_selection_relation_role_ws_user_id_role_context
         - id_user
           - id_user_!f: id_user
           - id_user_operator: =
-          - id_user_!v|text
+          - id_user_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
               text: %%_selection_relation_role_ws_user_id_user_context
@@ -163,7 +163,7 @@ selections
               title: Role
               is_apply_translation: true
               weight: +380
-- instance_select-role|selection
+- instance_select-role|Selection
     id: instance_select-role
     main_entity_name: role
     decorator_settings
@@ -172,7 +172,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_role_id_context
@@ -198,7 +198,7 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +300
-- instance_select-user|selection
+- instance_select-user|Selection
     id: instance_select-user
     main_entity_name: user
     decorator_settings
@@ -207,7 +207,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_user_id_context
@@ -242,10 +242,10 @@ selections
     - handlers
       - roles
           title: Roles
-          handler: \effcore\modules\user\events_page_user::on_show_user_roles
+          handler: \effcore\modules\user\Events_Page_User::on_show_user_roles
           weight: +240
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-feedback|selection
+- instance_select_multiple-feedback|Selection
     id: instance_select_multiple-feedback
     main_entity_name: feedback
     pager_is_enabled: true
@@ -270,7 +270,7 @@ selections
       - updated
           entity_field_name: updated
           weight: +320
-- instance_select_multiple-permission|selection
+- instance_select_multiple-permission|Selection
     id: instance_select_multiple-permission
     main_entity_name: permission
     pager_is_enabled: true
@@ -291,7 +291,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +360
-- instance_select_multiple-relation_role_ws_permission|selection
+- instance_select_multiple-relation_role_ws_permission|Selection
     id: instance_select_multiple-relation_role_ws_permission
     main_entity_name: relation_role_ws_permission
     pager_is_enabled: true
@@ -313,7 +313,7 @@ selections
       - updated
           entity_field_name: updated
           weight: +340
-- instance_select_multiple-relation_role_ws_user|selection
+- instance_select_multiple-relation_role_ws_user|Selection
     id: instance_select_multiple-relation_role_ws_user
     main_entity_name: relation_role_ws_user
     pager_is_enabled: true
@@ -364,7 +364,7 @@ selections
               title: Role
               is_apply_translation: true
               weight: +380
-- instance_select_multiple-role|selection
+- instance_select_multiple-role|Selection
     id: instance_select_multiple-role
     main_entity_name: role
     pager_is_enabled: true
@@ -391,7 +391,7 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +320
-- instance_select_multiple-user|selection
+- instance_select_multiple-user|Selection
     id: instance_select_multiple-user
     main_entity_name: user
     pager_is_enabled: true

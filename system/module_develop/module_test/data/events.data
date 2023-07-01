@@ -1,37 +1,37 @@
 events
   on_module_install
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_module::on_install
+      handler: \effcore\modules\test\Events_Module::on_install
   on_module_uninstall
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_module::on_uninstall
+      handler: \effcore\modules\test\Events_Module::on_uninstall
   on_module_enable
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_module::on_enable
+      handler: \effcore\modules\test\Events_Module::on_enable
   on_module_disable
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_module::on_disable
+      handler: \effcore\modules\test\Events_Module::on_disable
   # ═════════════════════════════════════════════════════════════════════
   on_form_init
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_form_test::on_init
+      handler: \effcore\modules\test\Events_Form_Test::on_init
   on_form_submit
-  - test|event
+  - test|Event
       for: test
-      handler: \effcore\modules\test\events_form_test::on_submit
+      handler: \effcore\modules\test\Events_Form_Test::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - tests|event
+  - tests|Event
       for: tests
       weight: +600
-      handler: \effcore\modules\test\events_page_test::on_redirect
+      handler: \effcore\modules\test\Events_Page_Test::on_redirect
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - tests|event
+  - tests|Event
       for: tests
-      handler: \effcore\modules\test\events_page_test::on_tab_build_before
+      handler: \effcore\modules\test\Events_Page_Test::on_tab_build_before

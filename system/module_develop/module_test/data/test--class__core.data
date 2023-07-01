@@ -1,0 +1,115 @@
+tests
+- class__core|Test
+    id: class__core
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Core
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-gettype|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::gettype()
+    - code-gettype|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__gettype
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-in_array|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::in_array()
+    - code-in_array|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__in_array
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-sort|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::sort_*()
+    - code-sort|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__sort
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-fractional_part_length_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::fractional_part_length_get()
+    - code-fractional_part_length_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__fractional_part_length_get
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-exponencial_string_normalize|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::exponencial_string_normalize()
+    - code-exponencial_string_normalize|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__exponencial_string_normalize
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-data_stringify|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::data_stringify()
+    - code-data_stringify|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__data_stringify
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-bytes_to_abbreviated|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::bytes_to_abbreviated()
+    - code-bytes_to_abbreviated|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__bytes_to_abbreviated
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-abbreviated_to_bytes|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::abbreviated_to_bytes()
+    - code-abbreviated_to_bytes|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__abbreviated_to_bytes
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-data_serialize|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::data_serialize()
+    - code-data_serialize|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__data_serialize
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-arrobj_select_values_recursive|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::arrobj_select_values_recursive()
+    - code-arrobj_select_values_recursive|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__arrobj_select_values_recursive
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-data_to_attributes|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::data_to_attributes()
+    - code-data_to_attributes|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__data_to_attributes
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_range|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_range()
+    - code-validate_range|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_range
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_mime_type|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_mime_type()
+    - code-validate_mime_type|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_mime_type
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

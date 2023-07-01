@@ -1,0 +1,80 @@
+tests
+- php|Test
+    id: php
+    title: PHP functioning
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-hash|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: hash()
+    - code-hash|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__hash
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-isset|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: isset()
+    - code-isset|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__isset
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-empty|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: empty()
+    - code-empty|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__empty
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-is_numeric|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: is_numeric()
+    - code-is_numeric|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_numeric
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-is_float|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: is_float()
+    - code-is_float|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_float
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-is_int|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: is_int()
+    - code-is_int|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_int
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-intval|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: intval()
+    - code-intval|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__intval
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-floatval|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: floatval()
+    - code-floatval|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__floatval
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-in_array|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: in_array()
+    - code-in_array|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__in_array
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

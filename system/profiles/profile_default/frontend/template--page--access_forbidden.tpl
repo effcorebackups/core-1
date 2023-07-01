@@ -9,16 +9,17 @@
               text-align: center;
               color: %%_color__text;
               background: %%_color__page}
+            h1 {font-size: 1.6em}
+            a       {color: %%_color__link}
+            a:hover {color: %%_color__link_active}
+            svg#icon {margin: 50px 0}
+            /* console */
             pre {
               display: inline-block;
               max-width: 40em;
               overflow: scroll;
               margin: 100px auto;
               text-align: left}
-            a       {color: %%_color__link}
-            a:hover {color: %%_color__link_active}
-            h1 {font-size: 1.6em}
-            svg#icon {margin: 50px 0}
         </style>
     </head>
     <body>

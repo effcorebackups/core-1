@@ -1,5 +1,5 @@
 entities
-- captcha|entity
+- captcha|Entity
     name: captcha
     title: CAPTCHA
     title_plural: CAPTCHAs

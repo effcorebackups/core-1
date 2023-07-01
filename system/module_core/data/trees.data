@@ -1,5 +1,5 @@
 trees
-- system|tree
+- system|Tree
     id: system
     title: System menu
     title_is_visible: 0

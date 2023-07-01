@@ -4,13 +4,13 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 - instance_id_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_apply
+    handler: \effcore\modules\storage\Events_Token::on_apply
 - entity_name_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_apply
+    handler: \effcore\modules\storage\Events_Token::on_apply
 - entity_title_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_apply
+    handler: \effcore\modules\storage\Events_Token::on_apply
 - entity_title_plural_context
     type: code
-    handler: \effcore\modules\storage\events_token::on_apply
+    handler: \effcore\modules\storage\Events_Token::on_apply

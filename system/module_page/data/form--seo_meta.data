@@ -1,16 +1,16 @@
 forms
-- seo_meta|form
+- seo_meta|Form
     attributes
     - id: seo_meta
     - method: post
     - novalidate: true
     children
-    - settings|fieldset
+    - settings|Fieldset
         children
-        - content|field_textarea
+        - content|Field_Textarea
             title: Content in the &lt;head&gt;
             description_state: opened
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: This block will be inserted into the &lt;head&gt; of each page.
               - 1: This content is not filtered and is presented as is.
@@ -22,11 +22,11 @@ forms
             - minlength: null
             - maxlength: 65535
             - rows: 20
-        - is_apply_tokens|field_switcher
+        - is_apply_tokens|Field_Switcher
             title: Is apply tokens
             element_attributes
             - name: is_apply_tokens
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save

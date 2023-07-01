@@ -1,5 +1,5 @@
 instances
-- core_update_1000|instance
+- core_update_1000|Instance
     entity_name: update
     values
     - module_id: core

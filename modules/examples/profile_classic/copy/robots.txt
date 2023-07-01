@@ -1,1 +1,7 @@
 Sitemap: http://%%_request_host/sitemap.xml
+
+User-agent: *
+User-agent: AdsBot-Google
+Disallow: /install
+Disallow: /dynamic
+Allow: /dynamic/files

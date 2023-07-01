@@ -1,5 +1,5 @@
 tree_items
-- manage|tree_item
+- manage|Tree_item
     id: manage
     id_parent: null
     id_tree: system
@@ -11,7 +11,7 @@ tree_items
       permissions_match
       - =: %^manage__.+$%
       - =: %^manage_data__.+__select$%
-- modules|tree_item
+- modules|Tree_item
     id: modules
     id_parent: manage
     id_tree: system
@@ -23,7 +23,7 @@ tree_items
       - =: admins
       permissions
       - =: manage__modules
-- info|tree_item
+- info|Tree_item
     id: info
     id_parent: manage
     id_tree: system

@@ -1,5 +1,5 @@
 block_presets
-- block__tree__system|block_preset
+- block__tree__system|Block_preset
     id: block__tree__system
     managing_group: Menus
     managing_title: System menu
@@ -12,7 +12,7 @@ block_presets
     attributes
     - data-id: block__tree__system
     - data-style: at-left
-- block__breadcrumbs__system|block_preset
+- block__breadcrumbs__system|Block_preset
     id: block__breadcrumbs__system
     managing_group: Breadcrumbs
     managing_title: System breadcrumbs
@@ -22,7 +22,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__breadcrumbs__system
-- block__breadcrumbs__user_registered|block_preset
+- block__breadcrumbs__user_registered|Block_preset
     id: block__breadcrumbs__user_registered
     managing_group: Breadcrumbs
     managing_title: Registered user
@@ -32,7 +32,7 @@ block_presets
     title_is_visible: false
     attributes
     - data-id: block__breadcrumbs__user_registered
-- block__breadcrumbs__user_anonymous|block_preset
+- block__breadcrumbs__user_anonymous|Block_preset
     id: block__breadcrumbs__user_anonymous
     managing_group: Breadcrumbs
     managing_title: Anonymous user

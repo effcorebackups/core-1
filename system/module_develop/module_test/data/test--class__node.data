@@ -1,0 +1,51 @@
+tests
+- class__node|Test
+    id: class__node
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Node
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-has_attribute_value|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $node->has_attribute_value()
+    - code-has_attribute_value|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Node::test_step_code__has_attribute_value
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-has_attribute_value_contains|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $node->has_attribute_value_contains()
+    - code-has_attribute_value_contains|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Node::test_step_code__has_attribute_value_contains
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-has_attribute_value_includes|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $node->has_attribute_value_includes()
+    - code-has_attribute_value_includes|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Node::test_step_code__has_attribute_value_includes
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-has_attribute_value_starts|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $node->has_attribute_value_starts()
+    - code-has_attribute_value_starts|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Node::test_step_code__has_attribute_value_starts
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-has_attribute_value_ends|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $node->has_attribute_value_ends()
+    - code-has_attribute_value_ends|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Node::test_step_code__has_attribute_value_ends
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

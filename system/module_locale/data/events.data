@@ -1,34 +1,34 @@
 events
   on_module_enable
-  - locale|event
+  - locale|Event
       for: locale
-      handler: \effcore\modules\locale\events_module::on_enable
+      handler: \effcore\modules\locale\Events_Module::on_enable
   # ═════════════════════════════════════════════════════════════════════
   on_form_init
-  - locale_general|event
+  - locale_general|Event
       for: locale_general
-      handler: \effcore\modules\locale\events_form_locale_general::on_init
-  - locale_by_language|event
+      handler: \effcore\modules\locale\Events_Form_Locale_general::on_init
+  - locale_by_language|Event
       for: locale_by_language
-      handler: \effcore\modules\locale\events_form_locale_by_language::on_init
+      handler: \effcore\modules\locale\Events_Form_Locale_by_language::on_init
   on_form_submit
-  - locale_general|event
+  - locale_general|Event
       for: locale_general
-      handler: \effcore\modules\locale\events_form_locale_general::on_submit
-  - locale_by_language|event
+      handler: \effcore\modules\locale\Events_Form_Locale_general::on_submit
+  - locale_by_language|Event
       for: locale_by_language
-      handler: \effcore\modules\locale\events_form_locale_by_language::on_submit
+      handler: \effcore\modules\locale\Events_Form_Locale_by_language::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - all|event
+  - all|Event
       weight: +700
-      handler: \effcore\modules\locale\events_page::on_page_language_apply
-  - locale|event
+      handler: \effcore\modules\locale\Events_Page::on_page_language_apply
+  - locale|Event
       for: locale
       weight: +600
-      handler: \effcore\modules\locale\events_page::on_redirect
+      handler: \effcore\modules\locale\Events_Page::on_redirect
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - locale|event
+  - locale|Event
       for: locale
-      handler: \effcore\modules\locale\events_page::on_tab_build_before
+      handler: \effcore\modules\locale\Events_Page::on_tab_build_before

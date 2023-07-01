@@ -1,12 +1,12 @@
 forms
-- modules_update_data|form
+- modules_update_data|Form
     attributes
     - id: modules_update_data
     - method: post
     - novalidate: true
     children
-    - info|fieldset
-    - button_apply|button
+    - info|Fieldset
+    - button_apply|Button
         title: apply
         attributes
         - value: apply

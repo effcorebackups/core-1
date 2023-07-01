@@ -1,0 +1,19 @@
+tests
+- class__data_validator|Test
+    id: class__data_validator
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Data_validator
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-validate|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $data_validator->validate()
+    - code-validate|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Data_validator::test_step_code__validate
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

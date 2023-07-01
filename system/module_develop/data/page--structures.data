@@ -1,5 +1,5 @@
 pages
-- structures|page
+- structures|Page
     id: structures
     title: Structures
     url: %^(?<base>/develop/structures)
@@ -15,25 +15,25 @@ pages
       - =: admins
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -42,14 +42,14 @@ pages
           source: tabs/develop/structures
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__cache_update|block
+      - block__form__cache_update|Block
           title: Cache update form
           title_is_visible: false
           attributes
           - data-id: block__form__cache_update
           type: link
           source: forms/core/cache_update
-      - block__structures_list|block
+      - block__structures_list|Block
           title: Structures
           title_is_visible: false
           attributes
@@ -59,8 +59,8 @@ pages
             where: view
             match: %^list$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::block_markup__structures_list
-      - block__structures_diagram|block
+          source: \effcore\modules\develop\Events_Page_Structures::block_markup__structures_list
+      - block__structures_diagram|Block
           title: UML Diagram
           attributes
           - data-id: block__structures_diagram
@@ -70,11 +70,11 @@ pages
             where: view
             match: %^diagram$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::block_markup__structures_diagram
-      - block__export|block
+          source: \effcore\modules\develop\Events_Page_Structures::block_markup__structures_diagram
+      - block__export|Block
           display
             check: page_args
             where: view
             match: %^export$%
           type: code
-          source: \effcore\modules\develop\events_page_structures::export
+          source: \effcore\modules\develop\Events_Page_Structures::export

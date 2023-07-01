@@ -1,42 +1,42 @@
 layouts
-- installation|layout
+- installation|Layout
     id: installation
     title: Installation
     children
-    - header|area
+    - header|Area
         id: header
         tag_name: header
-    - title|area
+    - title|Area
         id: title
-    - messages|area
+    - messages|Area
         id: messages
         render_weight: -500
-    - content|area
+    - content|Area
         id: content
         render_weight: +500
-- simple|layout
+- simple|Layout
     id: simple
     title: Simple layout
     children
-    - system|area
+    - system|Area
         id: system
-    - header|area
+    - header|Area
         id: header
         tag_name: header
-    - menu|area
+    - menu|Area
         id: menu
-    - breadcrumbs|area
+    - breadcrumbs|Area
         id: breadcrumbs
-    - messages|area
+    - messages|Area
         id: messages
         render_weight: -500
-    - title|area
+    - title|Area
         id: title
-    - tabs|area
+    - tabs|Area
         id: tabs
-    - content|area
+    - content|Area
         id: content
         render_weight: +500
-    - footer|area
+    - footer|Area
         id: footer
         tag_name: footer

@@ -1,5 +1,5 @@
 tree_items
-- data|tree_item
+- data|Tree_item
     id: data
     id_parent: manage
     id_tree: system

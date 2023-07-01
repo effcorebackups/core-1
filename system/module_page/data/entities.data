@@ -1,5 +1,5 @@
 entities
-- cache_validation|entity
+- cache_validation|Entity
     name: cache_validation
     title: Cache for validation process
     title_plural: Caches for validation process
@@ -36,7 +36,7 @@ entities
         fields
         - =: updated
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- audio|entity
+- audio|Entity
     name: audio
     title: Audio
     title_plural: Audios
@@ -76,7 +76,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -89,11 +89,11 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -103,12 +103,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: attributes
         - weight: +360
@@ -120,7 +120,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_file_audio
+        managing_control_class: \effcore\Field_File_audio
         managing_control_properties
         - title: Audio
         - max_file_size: 30M
@@ -132,7 +132,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +320
     - updated
@@ -140,7 +140,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +300
     constraints
@@ -161,7 +161,7 @@ entities
         type: index
         fields
         - =: updated
-- gallery|entity
+- gallery|Entity
     name: gallery
     title: Gallery
     title_plural: Galleries
@@ -200,7 +200,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -212,11 +212,11 @@ entities
         size: 1024
         collate: nocase
         default: null
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -226,12 +226,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: attributes
         - weight: +360
@@ -240,12 +240,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_files_multimedia::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Files_multimedia::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_files_multimedia
+        managing_control_class: \effcore\Widget_Files_multimedia
         managing_control_properties
         - upload_dir: galleries/
         - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
@@ -268,7 +268,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +320
     - updated
@@ -276,7 +276,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +300
     constraints
@@ -293,7 +293,7 @@ entities
         type: index
         fields
         - =: updated
-- page|entity
+- page|Entity
     name: page
     title: Page
     title_plural: Pages
@@ -336,7 +336,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -352,7 +352,7 @@ entities
         check: (id_layout <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_select_layout
+        managing_control_class: \effcore\Field_Select_layout
         managing_control_properties
         - weight: +380
         managing_control_properties_on_insert
@@ -367,11 +367,11 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +360
         managing_control_element_attributes
@@ -386,7 +386,7 @@ entities
         check: (url <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_url_page
+        managing_control_class: \effcore\Field_URL_page
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +340
@@ -399,7 +399,7 @@ entities
         default: 0
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_switcher
+        managing_control_class: \effcore\Field_Switcher
         managing_control_properties
         - weight: +320
     - lang_code
@@ -409,11 +409,11 @@ entities
         collate: nocase
         default: null
         check: (lang_code <> '')
-        converter_on_insert: \effcore\core::return_null_if_empty
-        converter_on_update: \effcore\core::return_null_if_empty
+        converter_on_insert: \effcore\Core::return_null_if_empty
+        converter_on_update: \effcore\Core::return_null_if_empty
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_select_language
+        managing_control_class: \effcore\Field_Select_language
         managing_control_properties
         - title__not_selected: - system value -
         - weight: +300
@@ -429,7 +429,7 @@ entities
         check: (text_direction <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_select_text_direction
+        managing_control_class: \effcore\Field_Select_text_direction
         managing_control_properties
         - disabled
           - =: rtl
@@ -446,11 +446,11 @@ entities
         not_null: true
         default: utf-8
         check: (charset <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +260
         managing_control_element_attributes
@@ -463,9 +463,9 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_textarea
+        managing_control_class: \effcore\Field_Textarea
         managing_control_properties
-        - description|text_multiline
+        - description|Text_multiline
             text
             - 0: This block will be inserted into the &lt;head&gt; of this page.
             - 1: This content is not filtered and is presented as is.
@@ -482,7 +482,7 @@ entities
         default: 1
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_switcher
+        managing_control_class: \effcore\Field_Switcher
         managing_control_properties
         - weight: +220
         managing_control_element_attributes
@@ -492,12 +492,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_access::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Access::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_access
+        managing_control_class: \effcore\Widget_Access
         managing_control_properties
         - weight: +200
     - blocks
@@ -505,8 +505,8 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
         managing_control_properties
         - weight: +180
     - created
@@ -514,7 +514,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +160
     - updated
@@ -522,7 +522,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +140
     constraints
@@ -543,7 +543,7 @@ entities
         type: index
         fields
         - =: updated
-- picture|entity
+- picture|Entity
     name: picture
     title: Picture
     title_plural: Pictures
@@ -583,7 +583,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -596,11 +596,11 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -610,12 +610,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: attributes
         - weight: +360
@@ -627,7 +627,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_file_picture
+        managing_control_class: \effcore\Field_File_picture
         managing_control_properties
         - title: Picture
         - max_file_size: 1M
@@ -650,12 +650,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: link_attributes
         - weight: +320
@@ -667,7 +667,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_url
+        managing_control_class: \effcore\Field_URL
         managing_control_properties
         - weight: +300
         managing_control_element_attributes
@@ -678,7 +678,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +280
     - updated
@@ -686,7 +686,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +260
     constraints
@@ -707,7 +707,7 @@ entities
         type: index
         fields
         - =: updated
-- text|entity
+- text|Entity
     name: text
     title: Text
     title_plural: Texts
@@ -747,7 +747,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -760,11 +760,11 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -774,12 +774,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: attributes
         - weight: +360
@@ -787,11 +787,11 @@ entities
         title: Text
         type: blob
         default: null
-        converter_on_insert: \effcore\core::return_null_if_empty
-        converter_on_update: \effcore\core::return_null_if_empty
+        converter_on_insert: \effcore\Core::return_null_if_empty
+        converter_on_update: \effcore\Core::return_null_if_empty
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_textarea
+        managing_control_class: \effcore\Field_Textarea
         managing_control_properties
         - weight: +340
         managing_control_element_attributes
@@ -803,7 +803,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +320
     - updated
@@ -811,7 +811,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +300
     constraints
@@ -828,7 +828,7 @@ entities
         type: index
         fields
         - =: updated
-- video|entity
+- video|Entity
     name: video
     title: Video
     title_plural: Videos
@@ -868,7 +868,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -881,11 +881,11 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -895,12 +895,12 @@ entities
         type: blob
         default: null
         converter_on_select: unserialize
-        converter_on_insert: \effcore\core::data_serialize
-        converter_on_update: \effcore\core::data_serialize
-        converter_on_render: \effcore\widget_attributes::value_to_markup
+        converter_on_insert: \effcore\Core::data_serialize
+        converter_on_update: \effcore\Core::data_serialize
+        converter_on_render: \effcore\Widget_Attributes::value_to_markup
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\widget_attributes
+        managing_control_class: \effcore\Widget_Attributes
         managing_control_properties
         - name_complex: attributes
         - weight: +360
@@ -912,7 +912,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_file_video
+        managing_control_class: \effcore\Field_File_video
         managing_control_properties
         - title: Video
         - max_file_size: 500M
@@ -927,7 +927,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_file_picture
+        managing_control_class: \effcore\Field_File_picture
         managing_control_properties
         - title: Poster
         - max_file_size: 1M
@@ -943,7 +943,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +300
     - updated
@@ -951,7 +951,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +280
     constraints

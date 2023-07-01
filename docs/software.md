@@ -13,7 +13,6 @@ The following clients are supported:
 - Opera           (modern versions);
 - Mozilla Firefox (modern versions);
 - Google Chrome   (modern versions);
-- Microsoft Internet Explorer v9+;
 - Microsoft Edge.
 
 
@@ -130,26 +129,30 @@ Only high quality licensed expensive software was used for create the project.
 It is recommended to use the next software:
 - **macOS** for using quality software and make development environment;
 - **Nova + Intelephense** (mac) for working with code|markup|styles and searching in the code;
-- **PHPStorm** (mac|win|linux) for working with code|markup|styles and searching in the code;
 - **Textastic** (mac) for working with huge text files;
 - **Hex Fiend** (mac) for working with hex files;
 - **Find Any Files** (mac) for searching in the code;
 - **VisualGrep** (mac) for searching in the code;
 - **RegExRX** (mac|win) for improve your regular expressions;
 - **Tower** (mac|win) for working with Git;
+- **Araxis Merge** (mac|win) for search differences in code;
 - **Kaleidoscope** (mac) for search differences in code;
 - **Transmit** (mac) for working with FTP;
 - **SequelPro** / **Sequel Ace** (mac) for working with MySQL databases;
+- **DataGrip** (mac|win|linux) for working with databases;
 - **SQLiteFlow** (mac) for working with SQLite databases;
 - **Neor Profile SQL** (mac|win|linux) for debug MySQL queries;
 - **Charles** (mac|win|linux) for debug HTTP|S traffic and validate the markup;
 - **Proxie** (mac) for debug HTTP|S traffic;
 - **Rested** (mac) for debug HTTP traffic;
-- **BoxySVG** (mac|win) for working with SVG vector graphics;
+- **Acorn** (mac) for working with raster graphics;
+- **Pixelmator Pro** (mac) for working with raster graphics;
+- **BoxySVG** (mac|win) for working with vector graphics;
 - **Monodraw** (mac) for working with pseudo-graphics and diagrams;
 - **StarUML** (mac|win|linux) for working with UML diagrams;
 - **OmniGraffle** (mac) for working with diagrams;
 - **WebToLayers** (mac) for take screenshots of web pages;
+- **Keyshape** (mac) for animation of vector and raster graphics;
 - **ColorSnapper** (mac) for pick the "right" colors;
 - **Paletter** (mac) for generating a color palette;
 - **MetaImage** (mac) for working with images metadata;
@@ -168,11 +171,14 @@ ignore such software!
 Trademarks
 =====================================================================
 
+- Acorn is registered trademark or trademarks of Flying Meat Inc.
 - Apache HTTP Server, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.
 - Apple®, iPad®, iPad Air®, iPad mini™, iPad Pro®, iPhone®, macOS®, OS X®, Retina®, Retina HD®, Safari® are trademarks of Apple Inc., registered in the U.S. and other countries.
+- Araxis Merge is registered trademark or trademarks of Araxis Ltd.
 - BoxySVG is registered trademark or trademarks of Jarosław Foksa.
 - Charles is registered trademark or trademarks of XK72.
 - ColorSnapper is registered trademark or trademarks of Koole Sache.
+- DataGrip is registered trademark of JetBrains s.r.o.
 - Find Any Files is registered trademark or trademarks of Thomas Tempelmann.
 - Firefox® is registered trademark of Mozilla Foundation.
 - FreeBSD® is registered trademark of The FreeBSD Foundation.
@@ -180,7 +186,8 @@ Trademarks
 - Hex Fiend is registered trademark of ridiculous_fish.
 - iOS is trademark or registered trademark of Cisco in the U.S. and other countries and is used by Apple under license.
 - Kaleidoscope is registered trademark or trademarks of Leitmotif GmbH.
-- Microsoft, Windows®, Internet Explorer®, Edge®, Internet Information Services (IIS) are registered trademarks or trademarks of Microsoft Corporation in the U.S. and/or other countries.
+- Keyshape is registered trademark or trademarks of Pixofield Ltd.
+- Microsoft, Windows®, Edge®, Internet Information Services (IIS) are registered trademarks or trademarks of Microsoft Corporation in the U.S. and/or other countries.
 - Monodraw is registered trademark or trademarks of Helftone Ltd.
 - MySQL™ is registered trademark or trademarks of Oracle Corporation and/or its affiliates.
 - Neor Profile SQL is registered trademark or trademarks of Neor LLC.
@@ -190,7 +197,7 @@ Trademarks
 - Opera® is registered trademark or trademarks of Opera Software AS.
 - Paletter is registered trademark or trademarks of Toys, Inc.
 - PHP is registered trademark or trademarks of PHP Group.
-- PHPStorm is registered trademark of JetBrains s.r.o.
+- Pixelmator Pro is registered trademark or trademarks of Pixelmator Team.
 - Proxie is registered trademark or trademarks of Proxie Team.
 - RegExRX is registered trademark or trademarks of MacTechnologies Consulting.
 - Rested is registered trademark or trademarks of Hello, Resolven Apps.

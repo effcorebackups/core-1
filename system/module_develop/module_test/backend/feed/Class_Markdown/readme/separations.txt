@@ -1,0 +1,1857 @@
+
+
+
+#########################
+### table of contents ###
+#########################
+
+
+- HEADER near HEADER
+- HEADER near PARAGRAPH
+- HEADER near LIST
+- HEADER near CODE
+- HEADER near BLOCKQUOTE
+- HEADER near HR
+- HEADER near MARKUP
+
+- PARAGRAPH near HEADER
+- PARAGRAPH near PARAGRAPH
+- PARAGRAPH near LIST
+- PARAGRAPH near CODE
+- PARAGRAPH near BLOCKQUOTE
+- PARAGRAPH near HR
+- PARAGRAPH near MARKUP
+
+- LIST near HEADER
+- LIST near PARAGRAPH
+- LIST near LIST
+- LIST near CODE
+- LIST near BLOCKQUOTE
+- LIST near HR
+- LIST near MARKUP
+
+- CODE near HEADER
+- CODE near PARAGRAPH
+- CODE near LIST
+- CODE near CODE
+- CODE near BLOCKQUOTE
+- CODE near HR
+- CODE near MARKUP
+
+- BLOCKQUOTE near HEADER
+- BLOCKQUOTE near PARAGRAPH
+- BLOCKQUOTE near LIST
+- BLOCKQUOTE near CODE
+- BLOCKQUOTE near BLOCKQUOTE
+- BLOCKQUOTE near HR
+- BLOCKQUOTE near MARKUP
+
+- HR near HEADER
+- HR near PARAGRAPH
+- HR near LIST
+- HR near CODE
+- HR near BLOCKQUOTE
+- HR near HR
+- HR near MARKUP
+
+- MARKUP near MARKUP
+- MARKUP near HEADER
+- MARKUP near PARAGRAPH
+- MARKUP near LIST
+- MARKUP near CODE
+- MARKUP near BLOCKQUOTE
+- MARKUP near HR
+
+
+
+##########################
+### HEADER near HEADER ###
+##########################
+
+
+# Title H1 (atx-style)
+## Title H2 (atx-style)
+
+********************
+
+Title H1 (Setext-style)
+=======================
+Title H2 (Setext-style)
+-----------------------
+
+********************
+
+# Title H1 (atx-style)
+Title H2 (Setext-style)
+-----------------------
+
+********************
+
+Title H1 (Setext-style)
+=======================
+## Title H2 (atx-style)
+
+********************
+********************
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+## Title H2 (atx-style)
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+Title H2 (Setext-style)
+-----------------------
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+Title H2 (Setext-style)
+-----------------------
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+## Title H2 (atx-style)
+
+
+
+#############################
+### HEADER near PARAGRAPH ###
+#############################
+
+
+# Title H1 (atx-style)
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+########################
+### HEADER near LIST ###
+########################
+
+
+# Title H1 (atx-style)
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+########################
+### HEADER near CODE ###
+########################
+
+
+# Title H1 (atx-style)
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+##############################
+### HEADER near BLOCKQUOTE ###
+##############################
+
+
+# Title H1 (atx-style)
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+######################
+### HEADER near HR ###
+######################
+
+
+# Title H1 (atx-style)
+*  *  *
+
+
+# Title H1 (atx-style)
+-  -  -
+
+
+# Title H1 (atx-style)
+-------
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+*  *  *
+
+
+# Title H1 (atx-style)
+<!-- empty line -->
+-  -  -
+
+
+# Title H1 (atx-style)
+<!-- empty line -->
+-------
+
+********************
+
+Title H1 (Setext-style)
+=======================
+*  *  *
+
+
+Title H1 (Setext-style)
+=======================
+-  -  -
+
+
+Title H1 (Setext-style)
+=======================
+-------
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+*  *  *
+
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+-  -  -
+
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+-------
+
+
+
+##########################
+### HEADER near MARKUP ###
+##########################
+
+# Title H1 (atx-style)
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+# Title H1 (atx-style)
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+Title H1 (Setext-style)
+=======================
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+#############################
+### PARAGRAPH near HEADER ###
+#############################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+# Title H1 (atx-style)
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+Title H1 (Setext-style)
+=======================
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+################################
+### PARAGRAPH near PARAGRAPH ###
+################################
+
+
+paragraph 1 line 1
+paragraph 1 line 2
+paragraph 1 line 3
+<!-- empty line -->
+paragraph 2 line 1
+paragraph 2 line 2
+paragraph 2 line 3
+
+********************
+
+paragraph 1 line 1
+paragraph 1 line 2
+paragraph 1 line 3
+<!-- empty line -->
+<!-- empty line -->
+<!-- empty line -->
+paragraph 2 line 1
+paragraph 2 line 2
+paragraph 2 line 3
+
+
+
+###########################
+### PARAGRAPH near LIST ###
+###########################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+###########################
+### PARAGRAPH near CODE ###
+###########################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+#################################
+### PARAGRAPH near BLOCKQUOTE ###
+#################################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+#########################
+### PARAGRAPH near HR ###
+#########################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+*  *  *
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+-  -  -
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+-------
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+*  *  *
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+-  -  -
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+-------
+
+
+
+#############################
+### PARAGRAPH near MARKUP ###
+#############################
+
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+paragraph line 1
+paragraph line 2
+paragraph line 3
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+########################
+### LIST near HEADER ###
+########################
+
+
+* list item 1
+* list item 2
+* list item 3
+# Title H1 (atx-style)
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+Title H1 (Setext-style)
+=======================
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+###########################
+### LIST near PARAGRAPH ###
+###########################
+
+
+* list item 1
+* list item 2
+* list item 3
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+######################
+### LIST near LIST ###
+######################
+
+
+* list item 1.1
+* list item 1.2
+* list item 1.3
++ list item 2.1
++ list item 2.2
++ list item 2.3
+
+********************
+
+* list item 1.1
+* list item 1.2
+* list item 1.3
+<!-- empty line -->
++ list item 2.1
++ list item 2.2
++ list item 2.3
+
+
+
+######################
+### LIST near CODE ###
+######################
+
+
+* list item 1
+* list item 2
+* list item 3
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+############################
+### LIST near BLOCKQUOTE ###
+############################
+
+
+* list item 1
+* list item 2
+* list item 3
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+####################
+### LIST near HR ###
+####################
+
+
+* list item 1
+* list item 2
+* list item 3
+*  *  *
+
+
+* list item 1
+* list item 2
+* list item 3
+-  -  -
+
+
+* list item 1
+* list item 2
+* list item 3
+-------
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+*  *  *
+
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+-  -  -
+
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+-------
+
+
+
+########################
+### LIST near MARKUP ###
+########################
+
+
+* list item 1
+* list item 2
+* list item 3
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+* list item 1
+* list item 2
+* list item 3
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+########################
+### CODE near HEADER ###
+########################
+
+
+    code line 1
+         code line 2
+    code line 3
+# Title H1 (atx-style)
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+Title H1 (Setext-style)
+=======================
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+###########################
+### CODE near PARAGRAPH ###
+###########################
+
+
+    code line 1
+         code line 2
+    code line 3
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+######################
+### CODE near LIST ###
+######################
+
+
+    code line 1
+         code line 2
+    code line 3
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+######################
+### CODE near CODE ###
+######################
+
+
+    code 1 line 1
+         code 1 line 2
+    code 1 line 3
+    code 2 line 1
+         code 2 line 2
+    code 2 line 3
+
+********************
+
+    code 1 line 1
+         code 1 line 2
+    code 1 line 3
+<!-- empty line -->
+<!-- empty line -->
+<!-- empty line -->
+    code 2 line 1
+         code 2 line 2
+    code 2 line 3
+
+
+
+############################
+### CODE near BLOCKQUOTE ###
+############################
+
+
+    code line 1
+         code line 2
+    code line 3
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+####################
+### CODE near HR ###
+####################
+
+
+    code line 1
+         code line 2
+    code line 3
+*  *  *
+
+
+    code line 1
+         code line 2
+    code line 3
+-  -  -
+
+
+    code line 1
+         code line 2
+    code line 3
+-------
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+*  *  *
+
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+-  -  -
+
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+-------
+
+
+
+########################
+### CODE near MARKUP ###
+########################
+
+
+    code line 1
+         code line 2
+    code line 3
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+    code line 1
+         code line 2
+    code line 3
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+##############################
+### BLOCKQUOTE near HEADER ###
+##############################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+# Title H1 (atx-style)
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+Title H1 (Setext-style)
+=======================
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+#################################
+### BLOCKQUOTE near PARAGRAPH ###
+#################################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+############################
+### BLOCKQUOTE near LIST ###
+############################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+############################
+### BLOCKQUOTE near CODE ###
+############################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+##################################
+### BLOCKQUOTE near BLOCKQUOTE ###
+##################################
+
+
+> blockquote 1 line 1
+> blockquote 1 line 2
+> blockquote 1 line 3
+> blockquote 2 line 1
+> blockquote 2 line 2
+> blockquote 2 line 3
+
+********************
+
+> blockquote 1 line 1
+> blockquote 1 line 2
+> blockquote 1 line 3
+<!-- empty line -->
+> blockquote 2 line 1
+> blockquote 2 line 2
+> blockquote 2 line 3
+
+
+
+##########################
+### BLOCKQUOTE near HR ###
+##########################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+*  *  *
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+-  -  -
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+-------
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+*  *  *
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+-  -  -
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+-------
+
+
+
+##############################
+### BLOCKQUOTE near MARKUP ###
+##############################
+
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+######################
+### HR near HEADER ###
+######################
+
+
+*  *  *
+# Title H1 (atx-style)
+
+
+-  -  -
+# Title H1 (atx-style)
+
+
+-------
+# Title H1 (atx-style)
+
+********************
+
+*  *  *
+<!-- empty line -->
+# Title H1 (atx-style)
+
+
+-  -  -
+<!-- empty line -->
+# Title H1 (atx-style)
+
+
+-------
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+*  *  *
+Title H1 (Setext-style)
+=======================
+
+
+-  -  -
+Title H1 (Setext-style)
+=======================
+
+
+-------
+Title H1 (Setext-style)
+=======================
+
+********************
+
+*  *  *
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+-  -  -
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+-------
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+#########################
+### HR near PARAGRAPH ###
+#########################
+
+
+*  *  *
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+-  -  -
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+-------
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+*  *  *
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+-  -  -
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+-------
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+####################
+### HR near LIST ###
+####################
+
+
+*  *  *
+* list item 1
+* list item 2
+* list item 3
+
+
+-  -  -
+* list item 1
+* list item 2
+* list item 3
+
+
+-------
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+*  *  *
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+-  -  -
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+-------
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+####################
+### HR near CODE ###
+####################
+
+
+*  *  *
+    code line 1
+         code line 2
+    code line 3
+
+
+-  -  -
+    code line 1
+         code line 2
+    code line 3
+
+
+-------
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+*  *  *
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+-  -  -
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+-------
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+##########################
+### HR near BLOCKQUOTE ###
+##########################
+
+
+*  *  *
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+-  -  -
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+-------
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+*  *  *
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+-  -  -
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+-------
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+##################
+### HR near HR ###
+##################
+
+
+-  -  -
+-  -  -
+
+
+*  *  *
+*  *  *
+
+
+-  -  -
+*  *  *
+
+
+*  *  *
+-  -  -
+
+********************
+
+-------
+-------
+
+
+*  *  *
+*  *  *
+
+
+-------
+*  *  *
+
+
+*  *  *
+-------
+
+********************
+
+-  -  -
+<!-- empty line -->
+-  -  -
+
+
+*  *  *
+<!-- empty line -->
+*  *  *
+
+
+-  -  -
+<!-- empty line -->
+*  *  *
+
+
+*  *  *
+<!-- empty line -->
+-  -  -
+
+********************
+
+-------
+<!-- empty line -->
+-------
+
+
+*  *  *
+<!-- empty line -->
+*  *  *
+
+
+-------
+<!-- empty line -->
+*  *  *
+
+
+*  *  *
+<!-- empty line -->
+-------
+
+
+
+######################
+### HR near MARKUP ###
+######################
+
+
+*  *  *
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+-  -  -
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+-------
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+********************
+
+*  *  *
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+-  -  -
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+-------
+<!-- empty line -->
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+
+
+
+##########################
+### MARKUP near MARKUP ###
+##########################
+
+
+<div>
+  markup 1 line 1
+  markup 1 line 2
+  markup 1 line 3
+</div>
+<div>
+  markup 2 line 1
+  markup 2 line 2
+  markup 2 line 3
+</div>
+
+********************
+
+<div>
+  markup 1 line 1
+  markup 1 line 2
+  markup 1 line 3
+</div>
+<!-- empty line -->
+<div>
+  markup 2 line 1
+  markup 2 line 2
+  markup 2 line 3
+</div>
+
+
+
+##########################
+### MARKUP near HEADER ###
+##########################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+# Title H1 (atx-style)
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+# Title H1 (atx-style)
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+Title H1 (Setext-style)
+=======================
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+Title H1 (Setext-style)
+=======================
+
+
+
+#############################
+### MARKUP near PARAGRAPH ###
+#############################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+paragraph line 1
+paragraph line 2
+paragraph line 3
+
+
+
+########################
+### MARKUP near LIST ###
+########################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+* list item 1
+* list item 2
+* list item 3
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+* list item 1
+* list item 2
+* list item 3
+
+
+
+########################
+### MARKUP near CODE ###
+########################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+    code line 1
+         code line 2
+    code line 3
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+    code line 1
+         code line 2
+    code line 3
+
+
+
+##############################
+### MARKUP near BLOCKQUOTE ###
+##############################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+> blockquote line 1
+> blockquote line 2
+> blockquote line 3
+
+
+
+######################
+### MARKUP near HR ###
+######################
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+*  *  *
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+-  -  -
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+-------
+
+********************
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+*  *  *
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+-  -  -
+
+
+<div>
+  markup line 1
+  markup line 2
+  markup line 3
+</div>
+<!-- empty line -->
+-------
+
+

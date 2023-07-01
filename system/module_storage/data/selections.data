@@ -1,5 +1,5 @@
 selections
-- instance_select-selection|selection
+- instance_select-selection|Selection
     id: instance_select-selection
     main_entity_name: selection
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_selection_id_context
@@ -38,7 +38,7 @@ selections
           is_apply_translation: true
           weight: +280
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-selection|selection
+- instance_select_multiple-selection|Selection
     id: instance_select_multiple-selection
     main_entity_name: selection
     pager_is_enabled: true

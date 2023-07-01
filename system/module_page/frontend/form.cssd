@@ -487,10 +487,3 @@ x-decorator[data-id='sessions_logout'] [data-cellid='is_fixed_ip'] {white-space:
 form#vote x-diagram {margin-top: 1em}
 form#vote x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
 form#vote x-total x-title::after {content: ': '}
-
-/* degrade for IE (not beautiful) */
-
-html[data-uagent^='msie'] input[type='checkbox'],
-html[data-uagent^='msie'] input[type='radio'] {padding: 4px}
-html[data-uagent^='msie'] input[data-opener-type='description'] {margin-left: 8px; padding: 0; width: 10px}
-html[data-uagent^='msie'] input[data-opener-type='title'] {background-image: none}

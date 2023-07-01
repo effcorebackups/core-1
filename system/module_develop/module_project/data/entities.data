@@ -1,5 +1,5 @@
 entities
-- project|entity
+- project|Entity
     name: project
     title: Project
     title_plural: Projects
@@ -31,7 +31,7 @@ entities
         check: (id <> '')
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_id_text
+        managing_control_class: \effcore\Field_ID_text
         managing_control_properties
         - is_validate_uniqueness: true
         - weight: +400
@@ -44,11 +44,11 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -57,11 +57,11 @@ entities
         title: Description
         type: blob
         default: null
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_textarea
+        managing_control_class: \effcore\Field_Textarea
         managing_control_properties
         - weight: +360
         managing_control_element_attributes
@@ -73,7 +73,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +340
     - updated
@@ -81,7 +81,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +320
     constraints
@@ -98,7 +98,7 @@ entities
         type: index
         fields
         - =: updated
-- project_release|entity
+- project_release|Entity
     name: project_release
     title: Release
     title_plural: Releases
@@ -129,7 +129,7 @@ entities
         not_null: true
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_select_relation
+        managing_control_class: \effcore\Field_Select_relation
         managing_control_properties
         - related_entity_name: project
         - related_entity_field_id_name: id
@@ -144,7 +144,7 @@ entities
         default: 1000
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_number
+        managing_control_class: \effcore\Field_Number
         managing_control_properties
         - weight: +380
         managing_control_element_attributes
@@ -158,11 +158,11 @@ entities
         title: Description
         type: blob
         default: null
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_textarea
+        managing_control_class: \effcore\Field_Textarea
         managing_control_properties
         - weight: +360
         managing_control_element_attributes
@@ -177,7 +177,7 @@ entities
         default: null
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_file
+        managing_control_class: \effcore\Field_File
         managing_control_properties
         - title: File
         - max_file_size: 500M
@@ -192,11 +192,11 @@ entities
         size: 1024
         collate: nocase
         default: null
-        converter_on_insert: \effcore\core::return_htmlspecialchars_encoded
-        converter_on_update: \effcore\core::return_htmlspecialchars_encoded
+        converter_on_insert: \effcore\Core::return_encoded
+        converter_on_update: \effcore\Core::return_encoded
         managing_is_enabled_on_insert: true
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_text
+        managing_control_class: \effcore\Field_Text
         managing_control_properties
         - weight: +320
         managing_control_element_attributes
@@ -209,7 +209,7 @@ entities
         not_null: true
         default: 0
         managing_is_enabled_on_update: true
-        managing_control_class: \effcore\field_number
+        managing_control_class: \effcore\Field_Number
         managing_control_element_attributes
         - min: 0
         - max: 2000000000
@@ -219,7 +219,7 @@ entities
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +280
     - updated
@@ -227,7 +227,7 @@ entities
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\field_datetime_local
+        managing_control_class: \effcore\Field_Datetime_local
         managing_control_properties
         - weight: +260
     constraints

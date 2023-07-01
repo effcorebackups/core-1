@@ -1,5 +1,5 @@
 selections
-- instance_select-demo_autoincrement|selection
+- instance_select-demo_autoincrement|Selection
     id: instance_select-demo_autoincrement
     main_entity_name: demo_autoincrement
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_autoincrement_id_context
@@ -21,7 +21,7 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +380
-- instance_select-demo_collations|selection
+- instance_select-demo_collations|Selection
     id: instance_select-demo_collations
     main_entity_name: demo_collations
     decorator_settings
@@ -30,7 +30,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_collations_id_context
@@ -45,7 +45,7 @@ selections
       - f_binary
           entity_field_name: f_binary
           weight: +360
-- instance_select-demo_constraints|selection
+- instance_select-demo_constraints|Selection
     id: instance_select-demo_constraints
     main_entity_name: demo_constraints
     decorator_settings
@@ -54,7 +54,7 @@ selections
     - conditions
       - f_primary_!f: f_primary
       - f_primary_operator: =
-      - f_primary_!v|text
+      - f_primary_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_constraints_f_primary_context
@@ -71,7 +71,7 @@ selections
           entity_field_name: f_foreign
           is_apply_translation: true
           weight: +360
-- instance_select-demo_data|selection
+- instance_select-demo_data|Selection
     id: instance_select-demo_data
     main_entity_name: demo_data
     decorator_settings
@@ -80,7 +80,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_data_id_context
@@ -110,7 +110,7 @@ selections
           - email
               entity_field_name: email
               weight: +360
-- instance_select-demo_indexes|selection
+- instance_select-demo_indexes|Selection
     id: instance_select-demo_indexes
     main_entity_name: demo_indexes
     decorator_settings
@@ -119,7 +119,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_indexes_id_context
@@ -136,7 +136,7 @@ selections
           entity_field_name: f_index
           is_apply_translation: true
           weight: +360
-- instance_select-demo_join|selection
+- instance_select-demo_join|Selection
     id: instance_select-demo_join
     main_entity_name: demo_join
     decorator_settings
@@ -145,7 +145,7 @@ selections
     - conditions
       - id_data_!f: id_data
       - id_data_operator: =
-      - id_data_!v|text
+      - id_data_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_join_id_data_context
@@ -157,7 +157,7 @@ selections
       - email
           entity_field_name: email
           weight: +380
-- instance_select-demo_types|selection
+- instance_select-demo_types|Selection
     id: instance_select-demo_types
     main_entity_name: demo_types
     decorator_settings
@@ -166,7 +166,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_demo_types_id_context
@@ -220,7 +220,7 @@ selections
           is_apply_translation: true
           weight: +140
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-demo_autoincrement|selection
+- instance_select_multiple-demo_autoincrement|Selection
     id: instance_select_multiple-demo_autoincrement
     main_entity_name: demo_autoincrement
     pager_is_enabled: true
@@ -237,7 +237,7 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +380
-- instance_select_multiple-demo_collations|selection
+- instance_select_multiple-demo_collations|Selection
     id: instance_select_multiple-demo_collations
     main_entity_name: demo_collations
     pager_is_enabled: true
@@ -256,7 +256,7 @@ selections
       - f_binary
           entity_field_name: f_binary
           weight: +360
-- instance_select_multiple-demo_constraints|selection
+- instance_select_multiple-demo_constraints|Selection
     id: instance_select_multiple-demo_constraints
     main_entity_name: demo_constraints
     pager_is_enabled: true
@@ -277,7 +277,7 @@ selections
           entity_field_name: f_foreign
           is_apply_translation: true
           weight: +360
-- instance_select_multiple-demo_data|selection
+- instance_select_multiple-demo_data|Selection
     id: instance_select_multiple-demo_data
     main_entity_name: demo_data
     pager_is_enabled: true
@@ -311,7 +311,7 @@ selections
           - email
               entity_field_name: email
               weight: +360
-- instance_select_multiple-demo_indexes|selection
+- instance_select_multiple-demo_indexes|Selection
     id: instance_select_multiple-demo_indexes
     main_entity_name: demo_indexes
     pager_is_enabled: true
@@ -332,7 +332,7 @@ selections
           entity_field_name: f_index
           is_apply_translation: true
           weight: +360
-- instance_select_multiple-demo_join|selection
+- instance_select_multiple-demo_join|Selection
     id: instance_select_multiple-demo_join
     main_entity_name: demo_join
     pager_is_enabled: true
@@ -348,7 +348,7 @@ selections
       - email
           entity_field_name: email
           weight: +380
-- instance_select_multiple-demo_types|selection
+- instance_select_multiple-demo_types|Selection
     id: instance_select_multiple-demo_types
     main_entity_name: demo_types
     pager_is_enabled: true
@@ -370,7 +370,7 @@ selections
           is_not_visible: true
           weight: +360
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- demo_selection_field_types|selection
+- demo_selection_field_types|Selection
     id: demo_selection_field_types
     main_entity_name: demo_data
     title: Demonstration of field types for Selection
@@ -394,7 +394,7 @@ selections
     fields
     - checkboxes
       - type_checkbox
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: checkbox
@@ -404,7 +404,7 @@ selections
     - main
       - type_field
           entity_field_name: id
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: field
@@ -419,14 +419,14 @@ selections
           fields
           - email
               entity_field_name: email
-              title|text
+              title|Text
                 text: Type "%%_type"
                 args
                 - type: join field
               weight: +360
     - texts
       - type_text_with_translation
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: text + translation
@@ -435,7 +435,7 @@ selections
           is_apply_translation: true
           weight: +340
       - type_text_with_translation_with_token
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: text + translation + token
@@ -445,7 +445,7 @@ selections
           is_apply_tokens: true
           weight: +320
       - type_text_with_token
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: text + token
@@ -455,27 +455,27 @@ selections
           weight: +300
     - markup
       - type_markup
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: markup
-          markup|markup
+          markup|Markup
             tag_name: span
             children
-            - data|text
+            - data|Text
                 text: markup
           weight: +280
     - handlers
       - type_handler
-          title|text
+          title|Text
             text: Type "%%_type"
             args
             - type: handler
           settings
           - demo_value: value from handler settings
-          handler: \effcore\modules\demo\events_selection::demo_handler
+          handler: \effcore\modules\demo\Events_Selection::demo_handler
           weight: +260
-- demo_data_types|selection
+- demo_data_types|Selection
     id: demo_data_types
     main_entity_name: demo_types
     title: Demonstration of selection of entities "demo_types"
@@ -518,7 +518,7 @@ selections
       - f_blob
           entity_field_name: f_blob
           weight: +220
-- demo_data_join|selection
+- demo_data_join|Selection
     id: demo_data_join
     main_entity_name: demo_data
     title: Demonstration of selection of "demo_data" entities with JOIN

@@ -1,5 +1,5 @@
 pages
-- data_nosql|page
+- data_nosql|Page
     id: data_nosql
     title: NoSQL data
     url: %^(?<base>/develop/data_nosql)
@@ -17,25 +17,25 @@ pages
       - =: admins
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -44,14 +44,14 @@ pages
           source: tabs/develop/data_nosql
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__cache_update|block
+      - block__form__cache_update|Block
           title: Cache update form
           title_is_visible: false
           attributes
           - data-id: block__form__cache_update
           type: link
           source: forms/core/cache_update
-      - block__nosql_events|block
+      - block__nosql_events|Block
           title: Events
           title_is_visible: false
           attributes
@@ -61,8 +61,8 @@ pages
             where: type
             match: %^events$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_events
-      - block__nosql_trees|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_events
+      - block__nosql_trees|Block
           title: Trees
           title_is_visible: false
           attributes
@@ -72,8 +72,8 @@ pages
             where: type
             match: %^trees$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tree
-      - block__nosql_selections|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_tree
+      - block__nosql_selections|Block
           title: Selections
           title_is_visible: false
           attributes
@@ -83,8 +83,8 @@ pages
             where: type
             match: %^selections$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_selections
-      - block__nosql_file_types|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_selections
+      - block__nosql_file_types|Block
           title: File types
           title_is_visible: false
           attributes
@@ -94,8 +94,8 @@ pages
             where: type
             match: %^file_types$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_file_types
-      - block__nosql_templates|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_file_types
+      - block__nosql_templates|Block
           title: Templates
           title_is_visible: false
           attributes
@@ -105,8 +105,8 @@ pages
             where: type
             match: %^templates$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_templates
-      - block__nosql_tokens|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_templates
+      - block__nosql_tokens|Block
           title: Tokens
           title_is_visible: false
           attributes
@@ -116,8 +116,8 @@ pages
             where: type
             match: %^tokens$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_tokens
-      - block__nosql_translations|block
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_tokens
+      - block__nosql_translations|Block
           title: Translations
           title_is_visible: false
           attributes
@@ -127,4 +127,4 @@ pages
             where: type
             match: %^translations$%
           type: code
-          source: \effcore\modules\develop\events_page_data_nosql::block_markup__nosql_translations
+          source: \effcore\modules\develop\Events_Page_Data_NoSQL::block_markup__nosql_translations

@@ -1,5 +1,5 @@
 pages
-- info|page
+- info|Page
     id: info
     title: Information
     url: /manage/info
@@ -11,43 +11,43 @@ pages
       - =: manage__info
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__system_info|block
+      - block__system_info|Block
           title: System information
           title_is_visible: false
           attributes
           - data-id: block__system_info
           type: code
-          source: \effcore\modules\core\events_page_info::block_markup__system_info
-      - block__service_info|block
+          source: \effcore\modules\core\Events_Page_Info::block_markup__system_info
+      - block__service_info|Block
           title: Service
           attributes
           - data-id: block__service_info
           - data-style: title-is-simple
           type: code
-          source: \effcore\modules\core\events_page_info::block_markup__service_info
-      - block__environment_info|block
+          source: \effcore\modules\core\Events_Page_Info::block_markup__service_info
+      - block__environment_info|Block
           title: Server
           attributes
           - data-id: block__environment_info
           - data-style: title-is-simple
           type: code
-          source: \effcore\modules\core\events_page_info::block_markup__environment_info
+          source: \effcore\modules\core\Events_Page_Info::block_markup__environment_info

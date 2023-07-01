@@ -1,5 +1,5 @@
 selections
-- instance_select-poll|selection
+- instance_select-poll|Selection
     id: instance_select-poll
     main_entity_name: poll
     decorator_settings
@@ -8,7 +8,7 @@ selections
     - conditions
       - id_!f: id
       - id_operator: =
-      - id_!v|text
+      - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
           text: %%_selection_poll_id_context
@@ -50,7 +50,7 @@ selections
           is_apply_translation: true
           weight: +220
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- instance_select_multiple-poll|selection
+- instance_select_multiple-poll|Selection
     id: instance_select_multiple-poll
     main_entity_name: poll
     pager_is_enabled: true

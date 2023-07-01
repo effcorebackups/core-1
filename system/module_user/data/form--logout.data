@@ -1,12 +1,12 @@
 forms
-- logout|form
+- logout|Form
     attributes
     - id: logout
     - method: post
     - novalidate: true
     children
-    - sessions|node
-    - button_logout|button
+    - sessions|Node
+    - button_logout|Button
         title: logout
         attributes
         - value: logout

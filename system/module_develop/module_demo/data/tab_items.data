@@ -1,5 +1,5 @@
 tab_items
-- data_demo|tab_item
+- data_demo|Tab_item
     id: data_demo
     id_parent: null
     id_tab: data
@@ -10,7 +10,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_types|tab_item
+- data_demo_types|Tab_item
     id: data_demo_types
     id_parent: data_demo
     id_tab: data
@@ -20,7 +20,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_data|tab_item
+- data_demo_data|Tab_item
     id: data_demo_data
     id_parent: data_demo
     id_tab: data
@@ -30,7 +30,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_join|tab_item
+- data_demo_join|Tab_item
     id: data_demo_join
     id_parent: data_demo
     id_tab: data
@@ -40,7 +40,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_autoincrement|tab_item
+- data_demo_autoincrement|Tab_item
     id: data_demo_autoincrement
     id_parent: data_demo
     id_tab: data
@@ -49,7 +49,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_collations|tab_item
+- data_demo_collations|Tab_item
     id: data_demo_collations
     id_parent: data_demo
     id_tab: data
@@ -58,7 +58,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_constraints|tab_item
+- data_demo_constraints|Tab_item
     id: data_demo_constraints
     id_parent: data_demo
     id_tab: data
@@ -67,7 +67,7 @@ tab_items
     access
       roles
       - =: admins
-- data_demo_indexes|tab_item
+- data_demo_indexes|Tab_item
     id: data_demo_indexes
     id_parent: data_demo
     id_tab: data
@@ -77,67 +77,67 @@ tab_items
       roles
       - =: admins
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- demo_embedded|tab_item
+- demo_embedded|Tab_item
     id: demo_embedded
     id_parent: null
     id_tab: demo
     title: Embedded elements
-- demo_form_elements|tab_item
+- demo_form_elements|Tab_item
     id: demo_form_elements
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/form_elements
     title: Form elements
     weight: +500
-- demo_markup_static|tab_item
+- demo_markup_static|Tab_item
     id: demo_markup_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_static
     title: Markup static
-- demo_markup_dynamic|tab_item
+- demo_markup_dynamic|Tab_item
     id: demo_markup_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/markup_dynamic
     title: Markup dynamic
-- demo_decorators_static|tab_item
+- demo_decorators_static|Tab_item
     id: demo_decorators_static
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_static
     title: Decorators static
-- demo_decorators_dynamic|tab_item
+- demo_decorators_dynamic|Tab_item
     id: demo_decorators_dynamic
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/decorators_dynamic
     title: Decorators dynamic
-- demo_selections|tab_item
+- demo_selections|Tab_item
     id: demo_selections
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/selections
     title: Selections
-- demo_trees|tab_item
+- demo_trees|Tab_item
     id: demo_trees
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/trees
     title: Trees
-- demo_messages|tab_item
+- demo_messages|Tab_item
     id: demo_messages
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/messages
     title: Messages
-- demo_canvas|tab_item
+- demo_canvas|Tab_item
     id: demo_canvas
     id_parent: demo_embedded
     id_tab: demo
     action_name: embedded/canvas
     title: Canvas
-- demo_diagrams|tab_item
+- demo_diagrams|Tab_item
     id: demo_diagrams
     id_parent: demo_embedded
     id_tab: demo

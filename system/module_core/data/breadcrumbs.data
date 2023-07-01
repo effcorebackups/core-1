@@ -1,19 +1,19 @@
 breadcrumbs
-- system|breadcrumbs
+- system|Breadcrumbs
     id: system
     links
     - front
         title: Front
         url: /
         weight: +0
-- user_registered|breadcrumbs
+- user_registered|Breadcrumbs
     id: user_registered
     links
     - front
         title: Front
         url: /
         weight: +0
-- user_anonymous|breadcrumbs
+- user_anonymous|Breadcrumbs
     id: user_anonymous
     links
     - front

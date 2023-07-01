@@ -1,5 +1,5 @@
 forms
-- instance_delete|form
+- instance_delete|Form
     managing_group_id: null
     entity_name: null
     instance_id: null
@@ -12,17 +12,17 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_default|button_default
+    - button_default|Button_default
         attributes
         - value: delete
-    - info|fieldset
-    - button_delete|button
+    - info|Fieldset
+    - button_delete|Button
         title: delete
         attributes
         - value: delete
         - disabled: true
         weight: -500
-    - button_cancel|button
+    - button_cancel|Button
         title: cancel
         break_on_request_value_set: true
         break_on_validate: true

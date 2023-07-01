@@ -1,61 +1,61 @@
 events
   on_module_enable
-  - develop|event
+  - develop|Event
       for: develop
-      handler: \effcore\modules\develop\events_module::on_enable
+      handler: \effcore\modules\develop\Events_Module::on_enable
   on_module_disable
-  - develop|event
+  - develop|Event
       for: develop
-      handler: \effcore\modules\develop\events_module::on_disable
+      handler: \effcore\modules\develop\Events_Module::on_disable
   on_module_start
-  - develop|event
+  - develop|Event
       for: develop
       weight: +600
-      handler: \effcore\modules\develop\events_module::on_start
+      handler: \effcore\modules\develop\Events_Module::on_start
   # ═════════════════════════════════════════════════════════════════════
   on_form_init
-  - console|event
+  - console|Event
       for: console
-      handler: \effcore\modules\develop\events_form_console::on_init
+      handler: \effcore\modules\develop\Events_Form_Console::on_init
   on_form_submit
-  - console|event
+  - console|Event
       for: console
-      handler: \effcore\modules\develop\events_form_console::on_submit
-  - palette|event
+      handler: \effcore\modules\develop\Events_Form_Console::on_submit
+  - palette|Event
       for: palette
-      handler: \effcore\modules\develop\events_form_palette::on_submit
+      handler: \effcore\modules\develop\Events_Form_Palette::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - structures|event
+  - structures|Event
       for: structures
       weight: +600
-      handler: \effcore\modules\develop\events_page_structures::on_redirect
-  - data_nosql|event
+      handler: \effcore\modules\develop\Events_Page_Structures::on_redirect
+  - data_nosql|Event
       for: data_nosql
       weight: +600
-      handler: \effcore\modules\develop\events_page_data_nosql::on_redirect
+      handler: \effcore\modules\develop\Events_Page_Data_NoSQL::on_redirect
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_query_before
-  - pdo|event
+  - pdo|Event
       for: pdo
       skip_console_log: true
-      handler: \effcore\modules\develop\events_storage::on_query_before
+      handler: \effcore\modules\develop\Events_Storage::on_query_before
   on_query_after
-  - pdo|event
+  - pdo|Event
       for: pdo
       skip_console_log: true
-      handler: \effcore\modules\develop\events_storage::on_query_after
+      handler: \effcore\modules\develop\Events_Storage::on_query_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_storage_init_before
-  - pdo|event
+  - pdo|Event
       for: pdo
-      handler: \effcore\modules\develop\events_storage::on_init_before
+      handler: \effcore\modules\develop\Events_Storage::on_init_before
   on_storage_init_after
-  - pdo|event
+  - pdo|Event
       for: pdo
-      handler: \effcore\modules\develop\events_storage::on_init_after
+      handler: \effcore\modules\develop\Events_Storage::on_init_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - data_nosql|event
+  - data_nosql|Event
       for: data_nosql
-      handler: \effcore\modules\develop\events_page_data_nosql::on_tab_build_before
+      handler: \effcore\modules\develop\Events_Page_Data_NoSQL::on_tab_build_before

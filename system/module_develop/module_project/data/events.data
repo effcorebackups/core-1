@@ -1,42 +1,42 @@
 events
   on_module_install
-  - project|event
+  - project|Event
       for: project
-      handler: \effcore\modules\project\events_module::on_install
+      handler: \effcore\modules\project\Events_Module::on_install
   on_module_uninstall
-  - project|event
+  - project|Event
       for: project
-      handler: \effcore\modules\project\events_module::on_uninstall
+      handler: \effcore\modules\project\Events_Module::on_uninstall
   on_module_enable
-  - project|event
+  - project|Event
       for: project
-      handler: \effcore\modules\project\events_module::on_enable
+      handler: \effcore\modules\project\Events_Module::on_enable
   on_module_disable
-  - project|event
+  - project|Event
       for: project
-      handler: \effcore\modules\project\events_module::on_disable
+      handler: \effcore\modules\project\Events_Module::on_disable
   # ═════════════════════════════════════════════════════════════════════
   on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\project\events_page::on_block_presets_dynamic_build
+  - all|Event
+      handler: \effcore\modules\project\Events_Page::on_block_presets_dynamic_build
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_file_load
-  - static_project_release|event
+  - static_project_release|Event
       for: static
       weight: +500
-      handler: \effcore\modules\project\events_file::on_load_static_project_release
+      handler: \effcore\modules\project\Events_File::on_load_static_project_release
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_validate
-  - instance_insert__project|event
+  - instance_insert__project|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\project\events_form_instance_insert::on_validate
+      handler: \effcore\modules\project\Events_Form_Instance_insert::on_validate
   on_form_submit
-  - instance_insert__project|event
+  - instance_insert__project|Event
       for: instance_insert
       weight: +600
-      handler: \effcore\modules\project\events_form_instance_insert::on_submit
-  - instance_update__project|event
+      handler: \effcore\modules\project\Events_Form_Instance_insert::on_submit
+  - instance_update__project|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\project\events_form_instance_update::on_submit
+      handler: \effcore\modules\project\Events_Form_Instance_update::on_submit

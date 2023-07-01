@@ -1,5 +1,5 @@
 frontend
-- page_all__develop|frontend
+- page_all__develop|Frontend
     display
       check: url
       where: path

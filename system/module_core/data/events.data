@@ -1,114 +1,114 @@
 events
   on_module_install
-  - core|event
+  - core|Event
       for: core
-      handler: \effcore\modules\core\events_module::on_install
+      handler: \effcore\modules\core\Events_Module::on_install
   on_module_enable
-  - core|event
+  - core|Event
       for: core
-      handler: \effcore\modules\core\events_module::on_enable
+      handler: \effcore\modules\core\Events_Module::on_enable
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_update_files
-  - system|event
+  - system|Event
       for: system
-      handler: \effcore\modules\core\events_module_update::on_update_files
+      handler: \effcore\modules\core\Events_Module_update::on_update_files
   on_repo_restore
-  - system|event
+  - system|Event
       for: system
-      handler: \effcore\modules\core\events_module_update::on_repo_restore
+      handler: \effcore\modules\core\Events_Module_update::on_repo_restore
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
-  - core|event
+  - core|Event
       for: core
-      handler: \effcore\modules\core\events_module::on_cron_run
+      handler: \effcore\modules\core\Events_Module::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
   on_breadcrumbs_build_before
-  - system|event
+  - system|Event
       for: system
       weight: +600
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
-  - user_registered|event
+      handler: \effcore\modules\core\Events_Page::on_breadcrumbs_build_before
+  - user_registered|Event
       for: user_registered
       weight: +600
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
-  - user_anonymous|event
+      handler: \effcore\modules\core\Events_Page::on_breadcrumbs_build_before
+  - user_anonymous|Event
       for: user_anonymous
       weight: +600
-      handler: \effcore\modules\core\events_page::on_breadcrumbs_build_before
+      handler: \effcore\modules\core\Events_Page::on_breadcrumbs_build_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_file_load
-  - not_found|event
+  - not_found|Event
       for: not_found
-      handler: \effcore\modules\core\events_file::on_load_not_found
-  - dynamic|event
+      handler: \effcore\modules\core\Events_File::on_load_not_found
+  - dynamic|Event
       for: dynamic
-      handler: \effcore\modules\core\events_file::on_load_dynamic
-  - static|event
+      handler: \effcore\modules\core\Events_File::on_load_dynamic
+  - static|Event
       for: static
-      handler: \effcore\modules\core\events_file::on_load_static
+      handler: \effcore\modules\core\Events_File::on_load_static
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_build
-  - install|event
+  - install|Event
       for: install
-      handler: \effcore\modules\core\events_form_install::on_build
-  - modules_uninstall|event
+      handler: \effcore\modules\core\Events_Form_Install::on_build
+  - modules_uninstall|Event
       for: modules_uninstall
-      handler: \effcore\modules\core\events_form_modules_uninstall::on_build
-  - modules_update_data|event
+      handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_build
+  - modules_update_data|Event
       for: modules_update_data
-      handler: \effcore\modules\core\events_form_modules_update_data::on_build
+      handler: \effcore\modules\core\Events_Form_Modules_Update_data::on_build
   on_form_init
-  - install|event
+  - install|Event
       for: install
-      handler: \effcore\modules\core\events_form_install::on_init
-  - modules_install|event
+      handler: \effcore\modules\core\Events_Form_Install::on_init
+  - modules_install|Event
       for: modules_install
-      handler: \effcore\modules\core\events_form_modules_install::on_init
-  - modules_uninstall|event
+      handler: \effcore\modules\core\Events_Form_Modules_Install::on_init
+  - modules_uninstall|Event
       for: modules_uninstall
-      handler: \effcore\modules\core\events_form_modules_uninstall::on_init
-  - modules_update_data|event
+      handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_init
+  - modules_update_data|Event
       for: modules_update_data
-      handler: \effcore\modules\core\events_form_modules_update_data::on_init
-  - modules_update_files|event
+      handler: \effcore\modules\core\Events_Form_Modules_Update_data::on_init
+  - modules_update_files|Event
       for: modules_update_files
-      handler: \effcore\modules\core\events_form_modules_update_files::on_init
+      handler: \effcore\modules\core\Events_Form_Modules_Update_files::on_init
   on_form_validate
-  - install|event
+  - install|Event
       for: install
-      handler: \effcore\modules\core\events_form_install::on_validate
-  - modules_install|event
+      handler: \effcore\modules\core\Events_Form_Install::on_validate
+  - modules_install|Event
       for: modules_install
-      handler: \effcore\modules\core\events_form_modules_install::on_validate
-  - modules_uninstall|event
+      handler: \effcore\modules\core\Events_Form_Modules_Install::on_validate
+  - modules_uninstall|Event
       for: modules_uninstall
-      handler: \effcore\modules\core\events_form_modules_uninstall::on_validate
+      handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_validate
   on_form_submit
-  - install|event
+  - install|Event
       for: install
-      handler: \effcore\modules\core\events_form_install::on_submit
-  - modules_install|event
+      handler: \effcore\modules\core\Events_Form_Install::on_submit
+  - modules_install|Event
       for: modules_install
-      handler: \effcore\modules\core\events_form_modules_install::on_submit
-  - modules_uninstall|event
+      handler: \effcore\modules\core\Events_Form_Modules_Install::on_submit
+  - modules_uninstall|Event
       for: modules_uninstall
-      handler: \effcore\modules\core\events_form_modules_uninstall::on_submit
-  - modules_update_data|event
+      handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_submit
+  - modules_update_data|Event
       for: modules_update_data
-      handler: \effcore\modules\core\events_form_modules_update_data::on_submit
-  - modules_update_files|event
+      handler: \effcore\modules\core\Events_Form_Modules_Update_data::on_submit
+  - modules_update_files|Event
       for: modules_update_files
-      handler: \effcore\modules\core\events_form_modules_update_files::on_submit
-  - cache_update|event
+      handler: \effcore\modules\core\Events_Form_Modules_Update_files::on_submit
+  - cache_update|Event
       for: cache_update
-      handler: \effcore\modules\core\events_form_cache_update::on_submit
+      handler: \effcore\modules\core\Events_Form_Cache_update::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - install|event
+  - install|Event
       for: install
       weight: +600
-      handler: \effcore\modules\core\events_page_install::on_redirect
-  - modules|event
+      handler: \effcore\modules\core\Events_Page_Install::on_redirect
+  - modules|Event
       for: modules
       weight: +600
-      handler: \effcore\modules\core\events_page_modules::on_redirect
+      handler: \effcore\modules\core\Events_Page_Modules::on_redirect

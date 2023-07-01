@@ -1,0 +1,29 @@
+{
+    "name": "effcore/installer",
+    "description": "Extends the 'composer/installers' plugin to install EFFCORE packages and modules.",
+    "homepage": "https://bitbucket.org/effcore/installer",
+    "type": "composer-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Maxim Rysevets",
+            "email": "root@effcore.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "composer-plugin-api": "^2.0",
+        "composer/installers": "^2.0"
+    },
+    "autoload":{
+        "psr-4": {
+            "effcore\\composer_installer\\": "/"
+        }
+    },
+    "extra": {
+        "class": "effcore\\composer_installer\\Plugin"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

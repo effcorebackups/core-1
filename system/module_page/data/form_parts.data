@@ -1,9 +1,9 @@
 form_parts
-- form_instance_update__page_width|node
+- form_instance_update__page_width|Node
     children
-    - width_min|field_number
+    - width_min|Field_Number
         title: Minimum width
-        description|text_multiline
+        description|Text_multiline
           text
           - 0: Value in pixels.
           - 1: Leave 0 if you want to use global page size settings.
@@ -12,9 +12,9 @@ form_parts
         - value: 0
         - min: 0
         - max: 10000
-    - width_max|field_number
+    - width_max|Field_Number
         title: Maximum width
-        description|text_multiline
+        description|Text_multiline
           text
           - 0: Value in pixels.
           - 1: Leave 0 if you want to use global page size settings.

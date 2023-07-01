@@ -1,5 +1,5 @@
 tab_items
-- data_menu|tab_item
+- data_menu|Tab_item
     id: data_menu
     id_parent: null
     id_tab: data
@@ -12,7 +12,7 @@ tab_items
       - =: admins
       permissions_match
       - =: %^manage_data__menu_.+__select$%
-- data_menu_tree|tab_item
+- data_menu_tree|Tab_item
     id: data_menu_tree
     id_parent: data_menu
     id_tab: data
@@ -24,7 +24,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__menu_tree__select
-- data_menu_tree_item|tab_item
+- data_menu_tree_item|Tab_item
     id: data_menu_tree_item
     id_parent: data_menu
     id_tab: data

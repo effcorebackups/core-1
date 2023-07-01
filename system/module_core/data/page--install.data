@@ -1,5 +1,5 @@
 pages
-- install|page
+- install|Page
     id: install
     id_layout: installation
     title: Installation
@@ -8,29 +8,29 @@ pages
     is_https: true
     blocks
     - header
-      - block__tree__languages|block
+      - block__tree__languages|Block
           title: Languages
           title_is_visible: false
           attributes
           - data-id: block__tree__languages
           type: code
-          source: \effcore\modules\locale\events_page::block_markup__tree_languages
-      - block__system_info|block
+          source: \effcore\modules\locale\Events_Page::block_markup__tree_languages
+      - block__system_info|Block
           title: System information
           title_is_visible: false
           attributes
           - data-id: block__system_info
           type: code
-          source: \effcore\modules\core\events_page_info::block_markup__system_info
+          source: \effcore\modules\core\Events_Page_Info::block_markup__system_info
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__install|block
+      - block__form__install|Block
           title: System installation parameters form
           title_is_visible: false
           attributes

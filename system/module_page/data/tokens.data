@@ -4,121 +4,121 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 - page_width_min
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - page_width_max
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - thumbnail_width_small
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - thumbnail_width_middle
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - thumbnail_width_big
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - thumbnail_path_cover_default
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - thumbnail_path_poster_default
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
 - page_id_context
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - page_width_min_context
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - page_width_max_context
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 # ─────────────────────────────────────────────────────────────────────
 # global color tokens
 # ─────────────────────────────────────────────────────────────────────
 - return_token_color_encode
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - return_if_token_color_is_dark
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__page
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__text
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__main
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__link
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__link_active
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__table_row_odd
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__table_row_even
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__menu
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__menu_active
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__menu_text
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__menu_link
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__menu_link_active
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__tabs
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__tabs_link
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__tabs_link_active
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__tabs_link_active_no_bg
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__ok
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__error
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__warning
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__fieldset
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__fieldset_nested
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__field
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__field_text
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__button
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__button_active
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply
 - color__button_text
     type: code
-    handler: \effcore\modules\page\events_token::on_apply
+    handler: \effcore\modules\page\Events_Token::on_apply

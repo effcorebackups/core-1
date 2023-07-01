@@ -1,5 +1,5 @@
 pages
-- modules|page
+- modules|Page
     id: modules
     title: Modules
     url: %^(?<base>/manage/modules)
@@ -15,25 +15,25 @@ pages
       - =: manage__modules
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -42,7 +42,7 @@ pages
           source: tabs/core/modules
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__cache_update|block
+      - block__form__cache_update|Block
           title: Cache update form
           title_is_visible: false
           attributes
@@ -53,7 +53,7 @@ pages
             match: %^install$%
           type: link
           source: forms/core/cache_update
-      - block__form__modules_install|block
+      - block__form__modules_install|Block
           title: Module installation form
           title_is_visible: false
           attributes
@@ -64,7 +64,7 @@ pages
             match: %^install$%
           type: link
           source: forms/core/modules_install
-      - block__form__modules_uninstall|block
+      - block__form__modules_uninstall|Block
           title: Modules data deletion form
           attributes
           - data-id: block__form__modules_uninstall
@@ -74,7 +74,7 @@ pages
             match: %^uninstall$%
           type: link
           source: forms/core/modules_uninstall
-      - block__form__modules_update_data|block
+      - block__form__modules_update_data|Block
           title: Modules data update form
           attributes
           - data-id: block__form__modules_update_data
@@ -84,7 +84,7 @@ pages
             match: %^update/data$%
           type: link
           source: forms/core/modules_update_data
-      - block__form__modules_update_files|block
+      - block__form__modules_update_files|Block
           title: Modules files update form
           attributes
           - data-id: block__form__modules_update_files

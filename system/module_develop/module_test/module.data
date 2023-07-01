@@ -1,13 +1,13 @@
-module|module
+module|Module
   id: test
   id_bundle: system
   title: Test
   group: Develop
   description: Module for testing.
-  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
-  version: 0.906
+  copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
+  version: 0.907
   dependencies
     system
-    - develop: 0.906
+    - develop: 0.907
     php
     - curl: 7.1.0

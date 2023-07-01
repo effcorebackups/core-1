@@ -1,15 +1,15 @@
 forms
-- cache_update|form
+- cache_update|Form
     attributes
     - id: cache_update
     - method: post
     - novalidate: true
     children
-    - button_update|button
+    - button_update|Button
         title: null
         attributes
         - data-style: update
-        - title|text
+        - title|Text
             text: Update
         - value: update
         weight: -500

@@ -1,19 +1,19 @@
 tab_items
-- modules_install|tab_item
+- modules_install|Tab_item
     id: modules_install
     id_parent: null
     id_tab: modules
     action_name: install
     title: Install
     weight: +500
-- modules_uninstall|tab_item
+- modules_uninstall|Tab_item
     id: modules_uninstall
     id_parent: null
     id_tab: modules
     action_name: uninstall
     title: Uninstall
     weight: +480
-- modules_update|tab_item
+- modules_update|Tab_item
     id: modules_update
     id_parent: null
     id_tab: modules
@@ -21,14 +21,14 @@ tab_items
     action_name_default: update/files
     title: Update
     weight: +460
-- modules_update_files|tab_item
+- modules_update_files|Tab_item
     id: modules_update_files
     id_parent: modules_update
     id_tab: modules
     action_name: update/files
     title: Files from repository
     weight: +500
-- modules_update_data|tab_item
+- modules_update_data|Tab_item
     id: modules_update_data
     id_parent: modules_update
     id_tab: modules

@@ -1,5 +1,5 @@
 tab_items
-- data_content|tab_item
+- data_content|Tab_item
     id: data_content
     id_parent: null
     id_tab: data
@@ -12,7 +12,7 @@ tab_items
       - =: admins
       permissions_match
       - =: %^manage_data__content_.+__select$%
-- data_content_page|tab_item
+- data_content_page|Tab_item
     id: data_content_page
     id_parent: data_content
     id_tab: data
@@ -26,7 +26,7 @@ tab_items
       - =: manage_data__content_page__select
       permissions_match
       - =: %^manage_data__content_page_.+__select$%
-- data_content_text|tab_item
+- data_content_text|Tab_item
     id: data_content_text
     id_parent: data_content_page
     id_tab: data
@@ -38,7 +38,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page_text__select
-- data_content_picture|tab_item
+- data_content_picture|Tab_item
     id: data_content_picture
     id_parent: data_content_page
     id_tab: data
@@ -50,7 +50,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page_picture__select
-- data_content_audio|tab_item
+- data_content_audio|Tab_item
     id: data_content_audio
     id_parent: data_content_page
     id_tab: data
@@ -62,7 +62,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page_audio__select
-- data_content_video|tab_item
+- data_content_video|Tab_item
     id: data_content_video
     id_parent: data_content_page
     id_tab: data
@@ -74,7 +74,7 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__content_page_video__select
-- data_content_gallery|tab_item
+- data_content_gallery|Tab_item
     id: data_content_gallery
     id_parent: data_content_page
     id_tab: data
@@ -87,7 +87,7 @@ tab_items
       permissions
       - =: manage_data__content_page_gallery__select
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- view_colors|tab_item
+- view_colors|Tab_item
     id: view_colors
     id_parent: null
     id_tab: view
@@ -95,33 +95,33 @@ tab_items
     action_name_default: colors/current
     title: Colors
     weight: +500
-- view_colors_current|tab_item
+- view_colors_current|Tab_item
     id: view_colors_current
     id_parent: view_colors
     id_tab: view
     action_name: colors/current
     title: Current
     weight: +500
-- view_colors_presets|tab_item
+- view_colors_presets|Tab_item
     id: view_colors_presets
     id_parent: view_colors
     id_tab: view
     action_name: colors/presets
     title: Presets
     weight: +480
-- view_layouts|tab_item
+- view_layouts|Tab_item
     id: view_layouts
     id_parent: null
     id_tab: view
     action_name: layouts
     title: Layouts
-- view_global_css|tab_item
+- view_global_css|Tab_item
     id: view_global_css
     id_parent: null
     id_tab: view
     action_name: global_css
     title: Global CSS
-- view_settings|tab_item
+- view_settings|Tab_item
     id: view_settings
     id_parent: null
     id_tab: view
@@ -129,20 +129,20 @@ tab_items
     title: Settings
     weight: -500
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- seo_meta|tab_item
+- seo_meta|Tab_item
     id: seo_meta
     id_parent: null
     id_tab: seo
     action_name: meta
     title: META
     weight: +500
-- seo_sitemap|tab_item
+- seo_sitemap|Tab_item
     id: seo_sitemap
     id_parent: null
     id_tab: seo
     action_name: sitemap
     title: Sitemap
-- seo_robots|tab_item
+- seo_robots|Tab_item
     id: seo_robots
     id_parent: null
     id_tab: seo

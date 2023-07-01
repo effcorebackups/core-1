@@ -1,5 +1,5 @@
 translations
-- ru|translation
+- ru|Translation
     code: ru
     data
     - Paragraph content. Paragraph content. Paragraph content. Paragraph content.
@@ -38,7 +38,9 @@ translations
     - Checkbox 2 (checked): Флажок 2 (отмечен)
     - Checkbox 3 (disabled): Флажок 3 (отключён)
     - Checkbox 4 (disabled + checked): Флажок 4 (отключён + отмечен)
+    - checking of item "%%_id"\: "%%_result": проверка пункта "%%_id": "%%_result"
     - checking on "%%_operand_1" %%_operator "%%_operand_2": проверка на "%%_operand_1" %%_operator "%%_operand_2"
+    - Class "%%_name": Класс "%%_name"
     - Classes: Классы
     - Collations: Сравнения
     - Color for generation: Цвет для генерации
@@ -73,6 +75,7 @@ translations
     - Example of update description 2.: Пример описания обновления 2.
     - Example of update description 3.: Пример описания обновления 3.
     - Execution plan: План выполнения
+    - expected value\: "%%_value": ожидаемое значение: "%%_value"
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспорт диаграммы в файл "%%_file" для использования в программе "StarUML".
     - Field #1: Поле №1
     - Field #2: Поле №2
@@ -97,6 +100,8 @@ translations
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": найден ID пользователя = "%%_id_user" по псевдониму = "%%_nickname"
     - Full report: Полный отчёт
+    - FUNCTION "%%_name": ФУНКЦИЯ "%%_name"
+    - gotten value\: "%%_value": полученное значение: "%%_value"
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - Handler: Обработчик
@@ -126,6 +131,7 @@ translations
     - Markup dynamic: Разметка динамическая
     - Markup static: Разметка статическая
     - memory consumption: потребление памяти
+    - METHOD "%%_name": МЕТОД "%%_name"
     - method private: метод приватный
     - method protected: метод защищённый
     - method public: метод публичный
@@ -145,6 +151,16 @@ translations
     - Option 7 (inserted from code): Опция 7 (вставлена из кода)
     - Option 8 (inserted from code): Опция 8 (вставлена из кода)
     - Option 9 (inserted from code): Опция 9 (вставлена из кода)
+    - Page charset: Кодировка страницы
+    - Page ID: ID страницы
+    - Page is embedded: Страница встроена
+    - Page language: Язык страницы
+    - Page Layout ID: ID макета страницы
+    - Page Module ID: ID модуля страницы
+    - Page origin: Происхождение страницы
+    - Page text direction: Направление текста страницы
+    - Page URL: URL страницы
+    - Page with HTTPS: Страница с HTTPS
     - Parameter 1: Параметр 1
     - Parameter 2: Параметр 2
     - Parameter 3: Параметр 3
@@ -154,6 +170,7 @@ translations
     - permissions before insertion\: %%_permissions: разрешения перед вставкой: %%_permissions
     - PHP ext.: PHP-расш.
     - PHP extension: PHP-расширение
+    - PHP functioning: PHP-функционирование
     - PHP functions usage: Использование PHP-функций
     - Pos.: Поз.
     - Project ID: ID проекта
@@ -194,6 +211,7 @@ translations
     - show for everyone: показывать всем
     - simple string: простая строка
     - some description: некое описание
+    - speed of "%%_name"\: %%_value: скорость "%%_name": %%_value
     - stack: стек
     - storage "%%_name" was initialized: хранилище "%%_name" было инициализировано
     - string with parameter = %%_n: строка с параметром = %%_n

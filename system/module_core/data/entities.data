@@ -1,5 +1,5 @@
 entities
-- message|entity
+- message|Entity
     name: message
     title: Message
     title_plural: Messages
@@ -33,7 +33,7 @@ entities
         type: index
         fields
         - =: expired
-- update|entity
+- update|Entity
     name: update
     title: Update
     title_plural: Updates

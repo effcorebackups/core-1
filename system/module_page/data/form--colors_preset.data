@@ -1,146 +1,146 @@
 forms
-- colors_preset|form
+- colors_preset|Form
     attributes
     - id: colors_preset
     - method: post
     - novalidate: true
     children
-    - colors|fieldset
+    - colors|Fieldset
         title: All colors
         attributes
         - data-type: colors-preset
         children
-        - color__page_id|field_checkbox_color
+        - color__page_id|Field_Checkbox_color
             title: Page
             element_attributes
             - name: color__page_id
             - checked: true
-        - color__text_id|field_checkbox_color
+        - color__text_id|Field_Checkbox_color
             title: Text
             element_attributes
             - name: color__text_id
             - checked: true
-        - color__main_id|field_checkbox_color
+        - color__main_id|Field_Checkbox_color
             title: Main color
             element_attributes
             - name: color__main_id
             - checked: true
-        - color__link_id|field_checkbox_color
+        - color__link_id|Field_Checkbox_color
             title: Link
             element_attributes
             - name: color__link_id
             - checked: true
-        - color__link_active_id|field_checkbox_color
+        - color__link_active_id|Field_Checkbox_color
             title: Link active
             element_attributes
             - name: color__link_active_id
             - checked: true
-        - color__table_row_odd_id|field_checkbox_color
+        - color__table_row_odd_id|Field_Checkbox_color
             title: Table: row odd
             element_attributes
             - name: color__table_row_odd_id
             - checked: true
-        - color__table_row_even_id|field_checkbox_color
+        - color__table_row_even_id|Field_Checkbox_color
             title: Table: row even
             element_attributes
             - name: color__table_row_even_id
             - checked: true
-        - color__menu_id|field_checkbox_color
+        - color__menu_id|Field_Checkbox_color
             title: Menu
             element_attributes
             - name: color__menu_id
             - checked: true
-        - color__menu_active_id|field_checkbox_color
+        - color__menu_active_id|Field_Checkbox_color
             title: Menu active
             element_attributes
             - name: color__menu_active_id
             - checked: true
-        - color__menu_text_id|field_checkbox_color
+        - color__menu_text_id|Field_Checkbox_color
             title: Menu: text
             element_attributes
             - name: color__menu_text_id
             - checked: true
-        - color__menu_link_id|field_checkbox_color
+        - color__menu_link_id|Field_Checkbox_color
             title: Menu: link
             element_attributes
             - name: color__menu_link_id
             - checked: true
-        - color__menu_link_active_id|field_checkbox_color
+        - color__menu_link_active_id|Field_Checkbox_color
             title: Menu: link active
             element_attributes
             - name: color__menu_link_active_id
             - checked: true
-        - color__tabs_id|field_checkbox_color
+        - color__tabs_id|Field_Checkbox_color
             title: Tabs
             element_attributes
             - name: color__tabs_id
             - checked: true
-        - color__tabs_link_id|field_checkbox_color
+        - color__tabs_link_id|Field_Checkbox_color
             title: Tabs: link
             element_attributes
             - name: color__tabs_link_id
             - checked: true
-        - color__tabs_link_active_id|field_checkbox_color
+        - color__tabs_link_active_id|Field_Checkbox_color
             title: Tabs: link active
             element_attributes
             - name: color__tabs_link_active_id
             - checked: true
-        - color__tabs_link_active_no_bg_id|field_checkbox_color
+        - color__tabs_link_active_no_bg_id|Field_Checkbox_color
             title: Tabs: link active (no background)
             element_attributes
             - name: color__tabs_link_active_no_bg_id
             - checked: true
-        - color__ok_id|field_checkbox_color
+        - color__ok_id|Field_Checkbox_color
             title: Okay
             element_attributes
             - name: color__ok_id
             - checked: true
-        - color__warning_id|field_checkbox_color
+        - color__warning_id|Field_Checkbox_color
             title: Warning
             element_attributes
             - name: color__warning_id
             - checked: true
-        - color__error_id|field_checkbox_color
+        - color__error_id|Field_Checkbox_color
             title: Error
             element_attributes
             - name: color__error_id
             - checked: true
-        - color__fieldset_id|field_checkbox_color
+        - color__fieldset_id|Field_Checkbox_color
             title: Fieldset
             element_attributes
             - name: color__fieldset_id
             - checked: true
-        - color__fieldset_nested_id|field_checkbox_color
+        - color__fieldset_nested_id|Field_Checkbox_color
             title: Fieldset nested
             element_attributes
             - name: color__fieldset_nested_id
             - checked: true
-        - color__field_id|field_checkbox_color
+        - color__field_id|Field_Checkbox_color
             title: Field
             element_attributes
             - name: color__field_id
             - checked: true
-        - color__field_text_id|field_checkbox_color
+        - color__field_text_id|Field_Checkbox_color
             title: Field: text
             element_attributes
             - name: color__field_text_id
             - checked: true
-        - color__button_id|field_checkbox_color
+        - color__button_id|Field_Checkbox_color
             title: Button
             element_attributes
             - name: color__button_id
             - checked: true
-        - color__button_active_id|field_checkbox_color
+        - color__button_active_id|Field_Checkbox_color
             title: Button active
             element_attributes
             - name: color__button_active_id
             - checked: true
-        - color__button_text_id|field_checkbox_color
+        - color__button_text_id|Field_Checkbox_color
             title: Button: text
             element_attributes
             - name: color__button_text_id
             - checked: true
-    - button_apply|button
+    - button_apply|Button
         title: apply
         attributes
         - value: apply

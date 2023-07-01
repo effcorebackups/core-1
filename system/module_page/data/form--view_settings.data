@@ -1,16 +1,16 @@
 forms
-- view_settings|form
+- view_settings|Form
     attributes
     - id: view_settings
     - method: post
     - novalidate: true
     children
-    - page|fieldset
+    - page|Fieldset
         title: Page
         children
-        - width_min|field_number
+        - width_min|Field_Number
             title: Minimum width
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Value in pixels.
               - 1: Leave 0 if you want to use global page size settings.
@@ -18,9 +18,9 @@ forms
             - name: width_min
             - min: 0
             - max: 10000
-        - width_max|field_number
+        - width_max|Field_Number
             title: Maximum width
-            description|text_multiline
+            description|Text_multiline
               text
               - 0: Value in pixels.
               - 1: Leave 0 if you want to use global page size settings.
@@ -28,17 +28,17 @@ forms
             - name: width_max
             - min: 0
             - max: 10000
-        - meta_viewport|field_text
+        - meta_viewport|Field_Text
             title: META viewport
             element_attributes
             - name: meta_viewport
             - maxlength: 2000
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save
         weight: -500
-    - button_reset|button
+    - button_reset|Button
         title: reset
         break_on_request_value_set: true
         break_on_validate: true

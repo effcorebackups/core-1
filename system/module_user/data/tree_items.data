@@ -1,5 +1,5 @@
 tree_items
-- security|tree_item
+- security|Tree_item
     id: security
     id_parent: manage
     id_tree: system

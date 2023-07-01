@@ -1,5 +1,5 @@
 pages
-- cron|page
+- cron|Page
     id: cron
     title: Cron
     url: %^/manage/cron/(?<key>[a-f0-9]{40})$%
@@ -9,6 +9,6 @@ pages
       - =: registered
     blocks
     - content
-      - block__cron|block
+      - block__cron|Block
           type: code
-          source: \effcore\modules\core\events_page_cron::block_markup__cron
+          source: \effcore\modules\core\Events_Page_Cron::block_markup__cron

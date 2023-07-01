@@ -1,23 +1,23 @@
 forms
-- test|form
+- test|Form
     attributes
     - id: test
     - method: post
     - novalidate: true
     children
-    - params|fieldset
+    - params|Fieldset
         title: Parameters
-    - report|fieldset
+    - report|Fieldset
         title: Report
         children
-        - document|markup
+        - document|Markup
             tag_name: x-document
             attributes
             - data-style: report
             children
-            - data|text
+            - data|Text
                 text: The report will be created after submitting the form.
-    - button_launch|button
+    - button_launch|Button
         title: launch
         attributes
         - value: launch

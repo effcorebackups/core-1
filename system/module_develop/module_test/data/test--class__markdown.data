@@ -1,0 +1,35 @@
+tests
+- class__markdown|Test
+    id: class__markdown
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Markdown
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-markdown_to_markup-simple|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Markdown::markdown_to_markup()
+    - code-markdown_to_markup-simple|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Markdown::test_step_code__markdown_to_markup__simple
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-markdown_to_markup-separation|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Markdown::markdown_to_markup()
+    - code-markdown_to_markup-separation|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Markdown::test_step_code__markdown_to_markup__separation
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-markdown_to_markup-combination|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Markdown::markdown_to_markup()
+    - code-markdown_to_markup-combination|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Markdown::test_step_code__markdown_to_markup__combination
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

@@ -73,5 +73,5 @@ will be placed in the directory `/modules`):
 An example of installing a universal third-party library (the library
 will be placed in the directory `/modules/vendors/packages`):
 
-    composer require tinymce/tinymce
+    composer require Vendor\Model
 

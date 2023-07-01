@@ -32,12 +32,12 @@ settings
   page_width_min: 200
   page_width_max: 990
   page_meta_viewport: width=300, initial-scale=1
-  prepath__cover_not_found: system/module_page/frontend/pictures/message--cover-not-found
-  prepath__file_outside_of_dynamic_directory: system/module_page/frontend/pictures/message--file-outside-of-dynamic-directory
-  prepath__poster_not_found: system/module_page/frontend/pictures/message--poster-not-found
+  prepath__cover_is_not_found: system/module_page/frontend/pictures/message--cover-is-not-found
+  prepath__file_is_outside_of_dynamic_directory: system/module_page/frontend/pictures/message--file-is-outside-of-dynamic-directory
+  prepath__poster_is_not_found: system/module_page/frontend/pictures/message--poster-is-not-found
   prepath__thumbnail_creation_error: system/module_page/frontend/pictures/message--thumbnail-creation-error
   prepath__thumbnail_embedding_error: system/module_page/frontend/pictures/message--thumbnail-embedding-error
-  prepath__thumbnail_not_allowed: system/module_page/frontend/pictures/message--thumbnail-not-allowed
+  prepath__thumbnail_is_not_allowed: system/module_page/frontend/pictures/message--thumbnail-is-not-allowed
   show_warning_if_not_https: false
   thumbnail_quality_jpeg: 90
   thumbnail_path_cover_default: system/module_page/frontend/pictures/thumbnail-cover-default.svg

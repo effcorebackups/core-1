@@ -1,73 +1,73 @@
 layouts
-- original_classic|layout
+- original_classic|Layout
     id: original_classic
     title: Original | profile "Classic"
     children
-    - page_part_head|area
+    - page_part_head|Area
         tag_name: x-page-part
         attributes
         - data-page-part-id: head
         children
-        - page_part_wrapper|area
+        - page_part_wrapper|Area
             tag_name: x-page-part-wrapper
             attributes
             - data-page-part-wrapper: true
             children
-            - system|area
+            - system|Area
                 id: system
-            - header|area
+            - header|Area
                 id: header
                 tag_name: header
-            - menu|area
+            - menu|Area
                 id: menu
-    - page_part_body|area
+    - page_part_body|Area
         tag_name: x-page-part
         attributes
         - data-page-part-id: body
         children
-        - page_part_wrapper|area
+        - page_part_wrapper|Area
             tag_name: x-page-part-wrapper
             attributes
             - data-page-part-wrapper: true
             children
-            - content|area
+            - content|Area
                 type: table
                 attributes
                 - data-area-group-id: content
                 children
-                - left|area
+                - left|Area
                     type: column
                     attributes
                     - data-area-group-id: left
                     children
-                    - breadcrumbs|area
+                    - breadcrumbs|Area
                         id: breadcrumbs
-                    - messages|area
+                    - messages|Area
                         id: messages
                         render_weight: -500
-                    - title|area
+                    - title|Area
                         id: title
-                    - tabs|area
+                    - tabs|Area
                         id: tabs
-                    - content|area
+                    - content|Area
                         id: content
                         render_weight: +500
-                - right|area
+                - right|Area
                     id: right
                     type: column
                     tag_name: aside
                     attributes
                     - style: width: 200px
-    - page_part_foot|area
+    - page_part_foot|Area
         tag_name: x-page-part
         attributes
         - data-page-part-id: foot
         children
-        - page_part_wrapper|area
+        - page_part_wrapper|Area
             tag_name: x-page-part-wrapper
             attributes
             - data-page-part-wrapper: true
             children
-            - footer|area
+            - footer|Area
                 id: footer
                 tag_name: footer

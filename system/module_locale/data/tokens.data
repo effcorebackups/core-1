@@ -4,4 +4,4 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 - return_translation
     type: code
-    handler: \effcore\modules\locale\events_token::on_apply
+    handler: \effcore\modules\locale\Events_Token::on_apply

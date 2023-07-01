@@ -1,5 +1,5 @@
 pages
-- demo|page
+- demo|Page
     id: demo
     title: Demo
     url: %^(?<base>/develop/demo)
@@ -19,25 +19,25 @@ pages
       - =: admins
     blocks
     - system
-      - block__tree_sql__user_registered|block_preset_link
+      - block__tree_sql__user_registered|Block_preset_link
           id: block__tree_sql__user_registered
           title: Registered user's menu
           attributes
           - data-id: block__tree_sql__user_registered
           - data-style: at-right
-      - block__tree__system|block_preset_link
+      - block__tree__system|Block_preset_link
           id: block__tree__system
     - breadcrumbs
-      - block__breadcrumbs__system|block_preset_link
+      - block__breadcrumbs__system|Block_preset_link
           id: block__breadcrumbs__system
     - messages
-      - block__messages|block_preset_link
+      - block__messages|Block_preset_link
           id: block__messages
     - title
-      - block__title|block_preset_link
+      - block__title|Block_preset_link
           id: block__title
     - tabs
-      - block__tabs|block
+      - block__tabs|Block
           title: Tabs
           title_is_visible: false
           attributes
@@ -46,7 +46,7 @@ pages
           source: tabs/demo/demo
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__demo|block
+      - block__form__demo|Block
           title: Demonstration form
           title_is_visible: false
           attributes
@@ -60,7 +60,7 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # markup
       # ─────────────────────────────────────────────────────────────────────
-      - block__markup__demo_static|block
+      - block__markup__demo_static|Block
           title: Markup static
           title_is_visible: false
           attributes
@@ -71,7 +71,7 @@ pages
             match: %^embedded/markup_static$%
           type: link
           source: markup/demo/demo_markup_static
-      - block__markup__demo_dynamic|block
+      - block__markup__demo_dynamic|Block
           title: Markup dynamic
           title_is_visible: false
           attributes
@@ -81,11 +81,11 @@ pages
             where: type
             match: %^embedded/markup_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_markup_dynamic
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_markup_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # decorators
       # ─────────────────────────────────────────────────────────────────────
-      - block__markup__demo_decorator_static|block
+      - block__markup__demo_decorator_static|Block
           title: Decorators static
           attributes
           - data-id: block__markup__demo_decorator_static
@@ -96,7 +96,7 @@ pages
             match: %^embedded/decorators_static$%
           type: link
           source: markup/demo/demo_decorators_static
-      - block__markup__demo_decorator_dynamic|block
+      - block__markup__demo_decorator_dynamic|Block
           title: Decorators dynamic
           attributes
           - data-id: block__markup__demo_decorator_dynamic
@@ -106,11 +106,11 @@ pages
             where: type
             match: %^embedded/decorators_dynamic$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_decorators_dynamic
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_decorators_dynamic
       # ─────────────────────────────────────────────────────────────────────
       # selections
       # ─────────────────────────────────────────────────────────────────────
-      - block__selection__demo_field_types|block
+      - block__selection__demo_field_types|Block
           title: Demonstration of field types for Selection
           attributes
           - data-id: block__selection__demo_field_types
@@ -123,7 +123,7 @@ pages
           source: selections/demo/demo_selection_field_types
           properties
           - title: null
-      - block__selection__demo_data_types|block
+      - block__selection__demo_data_types|Block
           title: Demonstration of selection of entities "demo_types"
           attributes
           - data-id: block__selection__demo_data_types
@@ -136,7 +136,7 @@ pages
           source: selections/demo/demo_data_types
           properties
           - title: null
-      - block__selection__demo_data_join|block
+      - block__selection__demo_data_join|Block
           title: Demonstration of selection of "demo_data" entities with JOIN
           attributes
           - data-id: block__selection__demo_data_join
@@ -149,7 +149,7 @@ pages
           source: selections/demo/demo_data_join
           properties
           - title: null
-      - block__selection__demo_data_join__with_properties|block
+      - block__selection__demo_data_join__with_properties|Block
           title: Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions)
           attributes
           - data-id: block__selection__demo_data_join__with_properties
@@ -188,7 +188,7 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # trees
       # ─────────────────────────────────────────────────────────────────────
-      - block__tree__demo_via_decorator|block
+      - block__tree__demo_via_decorator|Block
           title: Demonstration menu via decorator
           title_is_visible: false
           attributes
@@ -199,7 +199,7 @@ pages
             match: %^embedded/trees(/.*|)$%
           type: link
           source: markup/demo/demo_tree_via_decorator
-      - block__tree_sql__demo|block
+      - block__tree_sql__demo|Block
           title: Demonstration menu SQL
           title_is_visible: false
           attributes
@@ -209,10 +209,10 @@ pages
             where: type
             match: %^embedded/trees(/.*|)$%
           type: code
-          source: \effcore\modules\menu\events_page::block_markup__tree_get
+          source: \effcore\modules\menu\Events_Page::block_markup__tree_get
           args
           - instance_id: demo_sql
-      - block__tree__demo_nosql|block
+      - block__tree__demo_nosql|Block
           title: Demonstration menu NoSQL
           title_is_visible: false
           attributes
@@ -226,14 +226,14 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # messages
       # ─────────────────────────────────────────────────────────────────────
-      - block__markup__demo_messages_code|block
+      - block__markup__demo_messages_code|Block
           display
             check: page_args
             where: type
             match: %^embedded/messages$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_messages
-      - block__markup__demo_messages_description|block
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_messages
+      - block__markup__demo_messages_description|Block
           title: Description for messages
           title_is_visible: false
           attributes
@@ -247,7 +247,7 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       # other
       # ─────────────────────────────────────────────────────────────────────
-      - block__markup__demo_canvas|block
+      - block__markup__demo_canvas|Block
           title: Canvas
           attributes
           - data-id: block__markup__demo_canvas
@@ -256,8 +256,8 @@ pages
             where: type
             match: %^embedded/canvas$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_canvas
-      - block__markup__demo_diagram_linear|block
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_canvas
+      - block__markup__demo_diagram_linear|Block
           title: Linear diagram
           attributes
           - data-id: block__markup__demo_diagram_linear
@@ -266,8 +266,8 @@ pages
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_linear
-      - block__markup__demo_diagram_radial|block
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_diagram_linear
+      - block__markup__demo_diagram_radial|Block
           title: Radial diagram
           attributes
           - data-id: block__markup__demo_diagram_radial
@@ -276,4 +276,4 @@ pages
             where: type
             match: %^embedded/diagrams$%
           type: code
-          source: \effcore\modules\demo\events_page_demo::block_markup__demo_diagram_radial
+          source: \effcore\modules\demo\Events_Page_Demo::block_markup__demo_diagram_radial

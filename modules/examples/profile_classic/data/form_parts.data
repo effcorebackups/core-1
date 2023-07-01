@@ -1,14 +1,14 @@
 form_parts
-- form_colors__profile_classic|fieldset
+- form_colors__profile_classic|Fieldset
     title: Profile "Classic"
     children
-    - color_custom__head_id|group_palette
+    - color_custom__head_id|Group_Palette
         title: Page part "head"
         attributes
         - required: true
         element_attributes
         - name: color_custom__head_id
-    - color_custom__foot_id|group_palette
+    - color_custom__foot_id|Group_Palette
         title: Page part "foot"
         attributes
         - required: true

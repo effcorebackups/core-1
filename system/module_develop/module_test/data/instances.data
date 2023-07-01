@@ -2,13 +2,13 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # instances for perform the tests
 # ─────────────────────────────────────────────────────────────────────
-- test_text|instance
+- test_text|Instance
     entity_name: text
     values
     - id: test
     - description: Text for perform the tests
     - text: some text
-- role_test|instance
+- role_test|Instance
     entity_name: role
     values
     - id: test

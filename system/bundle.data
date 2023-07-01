@@ -2,7 +2,7 @@ bundle
   id: system
   title: System
   description: Bundle with system.
-  build: 1006
+  build: 1007
   repo_update_handler_in_module: core
   repo_can_restore: true
   repo_directory: ..

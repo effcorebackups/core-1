@@ -1,5 +1,5 @@
 tab_items
-- security_settings_captcha|tab_item
+- security_settings_captcha|Tab_item
     id: security_settings_captcha
     id_parent: null
     id_tab: security

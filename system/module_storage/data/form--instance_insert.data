@@ -1,5 +1,5 @@
 forms
-- instance_insert|form
+- instance_insert|Form
     managing_group_id: null
     entity_name: null
     category_id: null
@@ -13,22 +13,22 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_default|button_default
+    - button_default|Button_default
         attributes
         - value: insert
-    - fields|fieldset
-    - button_insert|button
+    - fields|Fieldset
+    - button_insert|Button
         title: insert
         attributes
         - value: insert
         - disabled: true
-    - button_insert_and_update|button
+    - button_insert_and_update|Button
         title: insert and update
         attributes
         - value: insert_and_update
         - disabled: true
         weight: -500
-    - button_cancel|button
+    - button_cancel|Button
         title: cancel
         break_on_request_value_set: true
         break_on_validate: true

@@ -1,5 +1,5 @@
 tab_items
-- data_content_selection|tab_item
+- data_content_selection|Tab_item
     id: data_content_selection
     id_parent: data_content_page
     id_tab: data

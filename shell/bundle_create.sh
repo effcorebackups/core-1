@@ -37,7 +37,7 @@ rm $bundle_name
   find modules                  -maxdepth 1 -type f      -name 'readme.md'            & \
   find modules/vendors          -maxdepth 1 -type f      -name 'module.data'          & \
   find modules/vendors/packages -maxdepth 1 -type f      -name 'readme.md'            & \
-  find modules/vendors/packages -maxdepth 1 -type f      -name 'post-install-cmd.php' & \
+  find modules/vendors/packages/effcore     -type f -not -path '*/.*'                 & \
   find modules/vendors/backend              -type f -not -path '*/.*'                 & \
   find modules/vendors/data                 -type f -not -path '*/.*'                 & \
   find modules/examples                     -type f -not -path '*/.*'                 & \

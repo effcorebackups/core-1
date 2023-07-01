@@ -1,12 +1,12 @@
 forms
-- modules_install|form
+- modules_install|Form
     attributes
     - id: modules_install
     - method: post
     - novalidate: true
     children
-    - info|node
-    - button_apply|button
+    - info|Node
+    - button_apply|Button
         title: apply
         attributes
         - value: apply

@@ -1,11 +1,11 @@
-module|module_as_profile
+module|Module_as_profile
   id: profile_default
   id_bundle: system
   title: Profile "Default"
   description: Module for profile "Default".
-  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
+  copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
   enabled: yes
-  version: 0.906
+  version: 0.907
   dependencies
     system
-    - core: 0.906
+    - core: 0.907

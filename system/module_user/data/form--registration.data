@@ -1,25 +1,25 @@
 forms
-- registration|form
+- registration|Form
     attributes
     - id: registration
     - method: post
     - novalidate: true
     children
-    - credentials|fieldset
+    - credentials|Fieldset
         children
-        - email|field_email
+        - email|Field_Email
             entity_name: user
             entity_field_name: email
             is_validate_uniqueness: true
-        - nickname|field_nickname
+        - nickname|Field_Nickname
             entity_name: user
             entity_field_name: nickname
             is_validate_uniqueness: true
-        - password|field_password
-        - timezone|field_select_timezone
+        - password|Field_Password
+        - timezone|Field_Select_timezone
             element_attributes
             - data-source: uagent-timezone
-        - session_params|group_switchers
+        - session_params|Group_Switchers
             element_attributes
             - name: session_params[]
             items
@@ -28,9 +28,9 @@ forms
             checked
             - =: is_long_session
             - =: is_fixed_ip
-        - captcha|form_plugin
+        - captcha|Form_plugin
             name: field_captcha
-    - button_register|button
+    - button_register|Button
         title: register
         attributes
         - value: register

@@ -2,7 +2,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # updates
 # ─────────────────────────────────────────────────────────────────────
-- profile_classic_update_1000|instance
+- profile_classic_update_1000|Instance
     entity_name: update
     values
     - module_id: profile_classic
@@ -10,7 +10,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # logotypes
 # ─────────────────────────────────────────────────────────────────────
-- logotype|instance
+- logotype|Instance
     entity_name: picture
     values
     - id: logotype
@@ -23,7 +23,7 @@ instances
           name: alt
           value: Logotype main
           is_apply_translation: false
-- logotype_ru|instance
+- logotype_ru|Instance
     entity_name: picture
     values
     - id: logotype_ru
@@ -36,7 +36,7 @@ instances
           name: alt
           value: Логотип основной
           is_apply_translation: false
-- logotype_behance|instance
+- logotype_behance|Instance
     entity_name: picture
     values
     - id: logotype_behance
@@ -54,7 +54,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_bitbucket|instance
+- logotype_bitbucket|Instance
     entity_name: picture
     values
     - id: logotype_bitbucket
@@ -72,7 +72,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_blogger|instance
+- logotype_blogger|Instance
     entity_name: picture
     values
     - id: logotype_blogger
@@ -90,7 +90,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_facebook|instance
+- logotype_facebook|Instance
     entity_name: picture
     values
     - id: logotype_facebook
@@ -108,7 +108,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_flickr|instance
+- logotype_flickr|Instance
     entity_name: picture
     values
     - id: logotype_flickr
@@ -126,7 +126,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_github|instance
+- logotype_github|Instance
     entity_name: picture
     values
     - id: logotype_github
@@ -144,7 +144,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_gitlab|instance
+- logotype_gitlab|Instance
     entity_name: picture
     values
     - id: logotype_gitlab
@@ -162,7 +162,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_instagram|instance
+- logotype_instagram|Instance
     entity_name: picture
     values
     - id: logotype_instagram
@@ -180,7 +180,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_line|instance
+- logotype_line|Instance
     entity_name: picture
     values
     - id: logotype_line
@@ -198,7 +198,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_linkedin|instance
+- logotype_linkedin|Instance
     entity_name: picture
     values
     - id: logotype_linkedin
@@ -216,7 +216,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_livejournal|instance
+- logotype_livejournal|Instance
     entity_name: picture
     values
     - id: logotype_livejournal
@@ -234,7 +234,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_messenger|instance
+- logotype_messenger|Instance
     entity_name: picture
     values
     - id: logotype_messenger
@@ -252,7 +252,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_ok|instance
+- logotype_ok|Instance
     entity_name: picture
     values
     - id: logotype_ok
@@ -270,7 +270,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_pinterest|instance
+- logotype_pinterest|Instance
     entity_name: picture
     values
     - id: logotype_pinterest
@@ -288,7 +288,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_reddit|instance
+- logotype_reddit|Instance
     entity_name: picture
     values
     - id: logotype_reddit
@@ -306,7 +306,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_skype|instance
+- logotype_skype|Instance
     entity_name: picture
     values
     - id: logotype_skype
@@ -324,7 +324,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_snapchat|instance
+- logotype_snapchat|Instance
     entity_name: picture
     values
     - id: logotype_snapchat
@@ -342,7 +342,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_soundcloud|instance
+- logotype_soundcloud|Instance
     entity_name: picture
     values
     - id: logotype_soundcloud
@@ -360,7 +360,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_telegram|instance
+- logotype_telegram|Instance
     entity_name: picture
     values
     - id: logotype_telegram
@@ -378,7 +378,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_tiktok|instance
+- logotype_tiktok|Instance
     entity_name: picture
     values
     - id: logotype_tiktok
@@ -396,7 +396,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_tumblr|instance
+- logotype_tumblr|Instance
     entity_name: picture
     values
     - id: logotype_tumblr
@@ -414,7 +414,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_twitter|instance
+- logotype_twitter|Instance
     entity_name: picture
     values
     - id: logotype_twitter
@@ -432,7 +432,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_viber|instance
+- logotype_viber|Instance
     entity_name: picture
     values
     - id: logotype_viber
@@ -450,7 +450,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_vimeo|instance
+- logotype_vimeo|Instance
     entity_name: picture
     values
     - id: logotype_vimeo
@@ -468,7 +468,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_vk|instance
+- logotype_vk|Instance
     entity_name: picture
     values
     - id: logotype_vk
@@ -486,7 +486,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_wechat|instance
+- logotype_wechat|Instance
     entity_name: picture
     values
     - id: logotype_wechat
@@ -504,7 +504,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_whatsapp|instance
+- logotype_whatsapp|Instance
     entity_name: picture
     values
     - id: logotype_whatsapp
@@ -522,7 +522,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_yahoo|instance
+- logotype_yahoo|Instance
     entity_name: picture
     values
     - id: logotype_yahoo
@@ -540,7 +540,7 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_youtube|instance
+- logotype_youtube|Instance
     entity_name: picture
     values
     - id: logotype_youtube
@@ -561,7 +561,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # pages
 # ─────────────────────────────────────────────────────────────────────
-- page_about|instance
+- page_about|Instance
     entity_name: page
     values
     - id: about
@@ -574,54 +574,54 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__text_sql__about|block_preset_link
+        - block__text_sql__about|Block_preset_link
             id: block__text_sql__about
             title: The main text of the page
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_contact|instance
+- page_contact|Instance
     entity_name: page
     values
     - id: contact
@@ -634,56 +634,56 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__text_sql__contact|block_preset_link
+        - block__text_sql__contact|Block_preset_link
             id: block__text_sql__contact
             title: The main text of the page
-        - block__form__instance_insert__feedback|block_preset_link
+        - block__form__instance_insert__feedback|Block_preset_link
             id: block__form__instance_insert__feedback
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_front|instance
+- page_front|Instance
     entity_name: page
     values
     - id: front
@@ -696,61 +696,61 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__text_sql__front|block_preset_link
+        - block__text_sql__front|Block_preset_link
             id: block__text_sql__front
             title: The main text of the page
       - footer
-        - block__selection_sql__social_networks|block_preset_link
+        - block__selection_sql__social_networks|Block_preset_link
             id: block__selection_sql__social_networks
             title: Social networks
             title_is_visible: false
             attributes
             - data-id: block__selection_sql__social_networks
             - data-style: at-right
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_gallery|instance
+- page_gallery|Instance
     entity_name: page
     values
     - id: gallery
@@ -763,53 +763,53 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__gallery_sql__main|block_preset_link
+        - block__gallery_sql__main|Block_preset_link
             id: block__gallery_sql__main
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_login|instance
+- page_login|Instance
     entity_name: page
     values
     - id: login
@@ -825,48 +825,48 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__login|block_preset_link
+        - block__form__login|Block_preset_link
             id: block__form__login
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_logout|instance
+- page_logout|Instance
     entity_name: page
     values
     - id: logout
@@ -882,50 +882,50 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__logout|block_preset_link
+        - block__form__logout|Block_preset_link
             id: block__form__logout
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_recovery|instance
+- page_recovery|Instance
     entity_name: page
     values
     - id: recovery
@@ -941,48 +941,48 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__recovery|block_preset_link
+        - block__form__recovery|Block_preset_link
             id: block__form__recovery
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_registration|instance
+- page_registration|Instance
     entity_name: page
     values
     - id: registration
@@ -998,48 +998,48 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous|block_preset_link
+        - block__tree_sql__user_anonymous|Block_preset_link
             id: block__tree_sql__user_anonymous
             title: Anonymous user's menu
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__registration|block_preset_link
+        - block__form__registration|Block_preset_link
             id: block__form__registration
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_user|instance
+- page_user|Instance
     entity_name: page
     values
     - id: user
@@ -1056,51 +1056,51 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__selection_sql__user|block_preset_link
+        - block__selection_sql__user|Block_preset_link
             id: block__selection_sql__user
             title: User information
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_user_edit|instance
+- page_user_edit|Instance
     entity_name: page
     values
     - id: user_edit
@@ -1117,51 +1117,51 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
-        - block__tree_sql__user_registered|block_preset_link
+        - block__tree_sql__user_registered|Block_preset_link
             id: block__tree_sql__user_registered
             title: Registered user's menu
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Language selection menu
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
       - header
-        - block__picture_sql__logotype|block_preset_link
+        - block__picture_sql__logotype|Block_preset_link
             id: block__picture_sql__logotype
             title: Logotype
       - menu
-        - block__tree_sql__main|block_preset_link
+        - block__tree_sql__main|Block_preset_link
             id: block__tree_sql__main
             title: Main menu
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
       - content
-        - block__form__instance_update__user|block_preset_link
+        - block__form__instance_update__user|Block_preset_link
             id: block__form__instance_update__user
       - footer
-        - block__text_sql__copyright|block_preset_link
+        - block__text_sql__copyright|Block_preset_link
             id: block__text_sql__copyright
             title: Copyright
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- page_about_ru|instance
+- page_about_ru|Instance
     entity_name: page
     values
     - id: about_ru
@@ -1174,58 +1174,58 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__text_sql__about_ru|block_preset_link
+        - block__text_sql__about_ru|Block_preset_link
             id: block__text_sql__about_ru
             title: Основной текст страницы
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_contact_ru|instance
+- page_contact_ru|Instance
     entity_name: page
     values
     - id: contact_ru
@@ -1238,61 +1238,61 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__text_sql__contact_ru|block_preset_link
+        - block__text_sql__contact_ru|Block_preset_link
             id: block__text_sql__contact_ru
             title: Основной текст страницы
-        - block__form__instance_insert__feedback|block_preset_link
+        - block__form__instance_insert__feedback|Block_preset_link
             id: block__form__instance_insert__feedback
             title: Форма обратной связи
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_front_ru|instance
+- page_front_ru|Instance
     entity_name: page
     values
     - id: front_ru
@@ -1305,65 +1305,65 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__text_sql__front_ru|block_preset_link
+        - block__text_sql__front_ru|Block_preset_link
             id: block__text_sql__front_ru
             title: Основной текст страницы
       - footer
-        - block__selection_sql__social_networks|block_preset_link
+        - block__selection_sql__social_networks|Block_preset_link
             id: block__selection_sql__social_networks
             title: Социальные сети
             title_is_visible: false
             attributes
             - data-id: block__selection__social_networks
             - data-style: at-right
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_gallery_ru|instance
+- page_gallery_ru|Instance
     entity_name: page
     values
     - id: gallery_ru
@@ -1376,57 +1376,57 @@ instances
 ////////////<meta name="keywords" content="">
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__gallery_sql__main|block_preset_link
+        - block__gallery_sql__main|Block_preset_link
             id: block__gallery_sql__main
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_login_ru|instance
+- page_login_ru|Instance
     entity_name: page
     values
     - id: login_ru
@@ -1442,53 +1442,53 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
             title: Хлебные крошки анонимного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__form__login|block_preset_link
+        - block__form__login|Block_preset_link
             id: block__form__login
             title: Форма входа
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_logout_ru|instance
+- page_logout_ru|Instance
     entity_name: page
     values
     - id: logout_ru
@@ -1504,56 +1504,56 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
             title: Хлебные крошки зарегистрированного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__form__logout|block_preset_link
+        - block__form__logout|Block_preset_link
             id: block__form__logout
             title: Форма выхода
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_recovery_ru|instance
+- page_recovery_ru|Instance
     entity_name: page
     values
     - id: recovery_ru
@@ -1569,53 +1569,53 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
             title: Хлебные крошки анонимного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__form__recovery|block_preset_link
+        - block__form__recovery|Block_preset_link
             id: block__form__recovery
             title: Форма восстановления доступа
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_registration_ru|instance
+- page_registration_ru|Instance
     entity_name: page
     values
     - id: registration_ru
@@ -1631,53 +1631,53 @@ instances
         - =: anonymous
     - blocks
       - system
-        - block__tree_sql__user_anonymous_ru|block_preset_link
+        - block__tree_sql__user_anonymous_ru|Block_preset_link
             id: block__tree_sql__user_anonymous_ru
             title: Меню анонимного пользователя
             attributes
             - data-id: block__tree_sql__user_anonymous
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_anonymous|block_preset_link
+        - block__breadcrumbs__user_anonymous|Block_preset_link
             id: block__breadcrumbs__user_anonymous
             title: Хлебные крошки анонимного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__form__registration|block_preset_link
+        - block__form__registration|Block_preset_link
             id: block__form__registration
             title: Форма регистрации
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_user_ru|instance
+- page_user_ru|Instance
     entity_name: page
     values
     - id: user_ru
@@ -1694,56 +1694,56 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
             title: Хлебные крошки зарегистрированного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__selection_sql__user|block_preset_link
+        - block__selection_sql__user|Block_preset_link
             id: block__selection_sql__user
             title: Информация о пользователе
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
             - data-id: block__text_sql__copyright
             - data-style: at-left
-- page_user_edit_ru|instance
+- page_user_edit_ru|Instance
     entity_name: page
     values
     - id: user_edit_ru
@@ -1760,50 +1760,50 @@ instances
         - =: registered
     - blocks
       - system
-        - block__page_actions|block_preset_link
+        - block__page_actions|Block_preset_link
             id: block__page_actions
             title: Действия страницы
-        - block__tree_sql__user_registered_ru|block_preset_link
+        - block__tree_sql__user_registered_ru|Block_preset_link
             id: block__tree_sql__user_registered_ru
             title: Меню зарегистрированного пользователя
             attributes
             - data-id: block__tree_sql__user_registered
             - data-style: at-right
-        - block__tree_sql__languages|block_preset_link
+        - block__tree_sql__languages|Block_preset_link
             id: block__tree_sql__languages
             title: Меню выбора языка
             attributes
             - data-id: block__tree_sql__languages
             - data-style: at-right
-        - block__tree__system|block_preset_link
+        - block__tree__system|Block_preset_link
             id: block__tree__system
             title: Системное меню
       - header
-        - block__picture_sql__logotype_ru|block_preset_link
+        - block__picture_sql__logotype_ru|Block_preset_link
             id: block__picture_sql__logotype_ru
             title: Логотип
       - menu
-        - block__tree_sql__main_ru|block_preset_link
+        - block__tree_sql__main_ru|Block_preset_link
             id: block__tree_sql__main_ru
             title: Меню главное
       - breadcrumbs
-        - block__breadcrumbs__user_registered|block_preset_link
+        - block__breadcrumbs__user_registered|Block_preset_link
             id: block__breadcrumbs__user_registered
             title: Хлебные крошки зарегистрированного пользователя
       - messages
-        - block__messages|block_preset_link
+        - block__messages|Block_preset_link
             id: block__messages
             title: Сообщения
       - title
-        - block__title|block_preset_link
+        - block__title|Block_preset_link
             id: block__title
             title: Заголовок страницы
       - content
-        - block__form__instance_update__user|block_preset_link
+        - block__form__instance_update__user|Block_preset_link
             id: block__form__instance_update__user
             title: Форма обновления пользователя
       - footer
-        - block__text_sql__copyright_ru|block_preset_link
+        - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
             title: Авторские права
             attributes
@@ -1812,27 +1812,27 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # texts
 # ─────────────────────────────────────────────────────────────────────
-- text_about|instance
+- text_about|Instance
     entity_name: text
     values
     - id: about
     - description: Text About Us
     - text: Here you can describe your story in detail,
 >>>>>>>>>>> tell about your achievements.
-- text_copyright|instance
+- text_copyright|Instance
     entity_name: text
     values
     - id: copyright
     - description: Text Copyright
     - text: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
-- text_contact|instance
+- text_contact|Instance
     entity_name: text
     values
     - id: contact
     - description: Text Contact Us
     - text: Here you can place: names of contact persons, addresses of branches,
 >>>>>>>>>>> e-mail addresses, phone numbers, location map.
-- text_front|instance
+- text_front|Instance
     entity_name: text
     values
     - id: front
@@ -1840,20 +1840,20 @@ instances
     - text: Here you can place the most important information about your project,
 >>>>>>>>>>> including special offers.
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- text_about_ru|instance
+- text_about_ru|Instance
     entity_name: text
     values
     - id: about_ru
     - description: Текст О нас
     - text: Здесь Вы можете подробно описать
 >>>>>>>>>>> свою историю, рассказать о своих достижениях.
-- text_copyright_ru|instance
+- text_copyright_ru|Instance
     entity_name: text
     values
     - id: copyright_ru
     - description: Текст Авторских прав
     - text: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
-- text_contact_ru|instance
+- text_contact_ru|Instance
     entity_name: text
     values
     - id: contact_ru
@@ -1861,7 +1861,7 @@ instances
     - text: Здесь Вы можете разместить: имена контактных лиц, адреса филиалов,
 >>>>>>>>>>> адреса электронной почты, номера телефонов,
 >>>>>>>>>>> схему проезда, форму обратной связи.
-- text_front_ru|instance
+- text_front_ru|Instance
     entity_name: text
     values
     - id: front_ru
@@ -1871,7 +1871,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
-- tree_user_anonymous|instance
+- tree_user_anonymous|Instance
     entity_name: tree
     values
     - id: user_anonymous
@@ -1888,7 +1888,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_user_anonymous_ru|instance
+- tree_user_anonymous_ru|Instance
     entity_name: tree
     values
     - id: user_anonymous_ru
@@ -1904,7 +1904,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_user_registered|instance
+- tree_user_registered|Instance
     entity_name: tree
     values
     - id: user_registered
@@ -1921,7 +1921,7 @@ instances
     - access
         roles
         - =: registered
-- tree_user_registered_ru|instance
+- tree_user_registered_ru|Instance
     entity_name: tree
     values
     - id: user_registered_ru
@@ -1937,7 +1937,7 @@ instances
     - access
         roles
         - =: registered
-- tree_languages|instance
+- tree_languages|Instance
     entity_name: tree
     values
     - id: languages
@@ -1950,7 +1950,7 @@ instances
           value: linear
           is_apply_translation: false
           is_apply_tokens: false
-- tree_main|instance
+- tree_main|Instance
     entity_name: tree
     values
     - id: main
@@ -1963,7 +1963,7 @@ instances
           value: dropdown
           is_apply_translation: false
           is_apply_tokens: false
-- tree_main_ru|instance
+- tree_main_ru|Instance
     entity_name: tree
     values
     - id: main_ru
@@ -1981,7 +1981,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 #
 # ── menu: user_anonymous ─────────────────────────────────────────────
-- tree_item_anonymous|instance
+- tree_item_anonymous|Instance
     entity_name: tree_item
     values
     - id: anonymous
@@ -1991,7 +1991,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_login|instance
+- tree_item_login|Instance
     entity_name: tree_item
     values
     - id: login
@@ -2003,7 +2003,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_registration|instance
+- tree_item_registration|Instance
     entity_name: tree_item
     values
     - id: registration
@@ -2014,7 +2014,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_recovery|instance
+- tree_item_recovery|Instance
     entity_name: tree_item
     values
     - id: recovery
@@ -2027,7 +2027,7 @@ instances
         roles
         - =: anonymous
 # ── menu: user_anonymous_ru ──────────────────────────────────────────
-- tree_item_anonymous_ru|instance
+- tree_item_anonymous_ru|Instance
     entity_name: tree_item
     values
     - id: anonymous_ru
@@ -2037,7 +2037,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_login_ru|instance
+- tree_item_login_ru|Instance
     entity_name: tree_item
     values
     - id: login_ru
@@ -2049,7 +2049,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_registration_ru|instance
+- tree_item_registration_ru|Instance
     entity_name: tree_item
     values
     - id: registration_ru
@@ -2060,7 +2060,7 @@ instances
     - access
         roles
         - =: anonymous
-- tree_item_recovery_ru|instance
+- tree_item_recovery_ru|Instance
     entity_name: tree_item
     values
     - id: recovery_ru
@@ -2073,7 +2073,7 @@ instances
         roles
         - =: anonymous
 # ── menu: user_registered ────────────────────────────────────────────
-- tree_item_registered|instance
+- tree_item_registered|Instance
     entity_name: tree_item
     values
     - id: registered
@@ -2084,7 +2084,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_user_edit|instance
+- tree_item_user_edit|Instance
     entity_name: tree_item
     values
     - id: user_edit
@@ -2096,7 +2096,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_logout|instance
+- tree_item_logout|Instance
     entity_name: tree_item
     values
     - id: logout
@@ -2109,7 +2109,7 @@ instances
         roles
         - =: registered
 # ── menu: user_registered_ru ─────────────────────────────────────────
-- tree_item_registered_ru|instance
+- tree_item_registered_ru|Instance
     entity_name: tree_item
     values
     - id: registered_ru
@@ -2120,7 +2120,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_user_edit_ru|instance
+- tree_item_user_edit_ru|Instance
     entity_name: tree_item
     values
     - id: user_edit_ru
@@ -2132,7 +2132,7 @@ instances
     - access
         roles
         - =: registered
-- tree_item_logout_ru|instance
+- tree_item_logout_ru|Instance
     entity_name: tree_item
     values
     - id: logout_ru
@@ -2145,7 +2145,7 @@ instances
         roles
         - =: registered
 # ── menu: languages ──────────────────────────────────────────────────
-- tree_item_language_to_en|instance
+- tree_item_language_to_en|Instance
     entity_name: tree_item
     values
     - id: language_en
@@ -2161,7 +2161,7 @@ instances
           value: go to English language
           is_apply_translation: true
           is_apply_tokens: false
-- tree_item_language_to_ru|instance
+- tree_item_language_to_ru|Instance
     entity_name: tree_item
     values
     - id: language_ru
@@ -2178,7 +2178,7 @@ instances
           is_apply_translation: true
           is_apply_tokens: false
 # ── menu: main ───────────────────────────────────────────────────────
-- tree_item_about|instance
+- tree_item_about|Instance
     entity_name: tree_item
     values
     - id: about
@@ -2187,7 +2187,7 @@ instances
     - title: About Us
     - url: /about
     - weight: +0
-- tree_item_gallery|instance
+- tree_item_gallery|Instance
     entity_name: tree_item
     values
     - id: gallery
@@ -2196,7 +2196,7 @@ instances
     - title: Gallery
     - url: /gallery
     - weight: -1
-- tree_item_contact|instance
+- tree_item_contact|Instance
     entity_name: tree_item
     values
     - id: contact
@@ -2206,7 +2206,7 @@ instances
     - url: /contact
     - weight: -2
 # ── menu: main_ru ────────────────────────────────────────────────────
-- tree_item_about_ru|instance
+- tree_item_about_ru|Instance
     entity_name: tree_item
     values
     - id: about_ru
@@ -2215,7 +2215,7 @@ instances
     - title: О нас
     - url: /ru/about
     - weight: +0
-- tree_item_gallery_ru|instance
+- tree_item_gallery_ru|Instance
     entity_name: tree_item
     values
     - id: gallery_ru
@@ -2224,7 +2224,7 @@ instances
     - title: Галерея
     - url: /ru/gallery
     - weight: -1
-- tree_item_contact_ru|instance
+- tree_item_contact_ru|Instance
     entity_name: tree_item
     values
     - id: contact_ru
@@ -2236,7 +2236,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # galleries
 # ─────────────────────────────────────────────────────────────────────
-- gallery_main|instance
+- gallery_main|Instance
     entity_name: gallery
     values
     - id: main
@@ -2251,13 +2251,13 @@ instances
     - items
       - 0
           weight: +0
-          object|file_history
+          object|File_history
             name: 1000x1500-01
             type: picture
             file: 1000x1500-01.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-0.picture
-            size: 6930
+            size: 6026
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2265,13 +2265,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 1
           weight: -5
-          object|file_history
+          object|File_history
             name: 1000x1500-02
             type: picture
             file: 1000x1500-02.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-1.picture
-            size: 6970
+            size: 6038
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2279,13 +2279,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 2
           weight: -10
-          object|file_history
+          object|File_history
             name: 1000x1500-03
             type: picture
             file: 1000x1500-03.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-2.picture
-            size: 6970
+            size: 6035
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2293,13 +2293,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 3
           weight: -15
-          object|file_history
+          object|File_history
             name: 1500x1000-01
             type: picture
             file: 1500x1000-01.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-3.picture
-            size: 8054
+            size: 5577
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2307,13 +2307,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 4
           weight: -20
-          object|file_history
+          object|File_history
             name: 1500x1000-02
             type: picture
             file: 1500x1000-02.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-4.picture
-            size: 8047
+            size: 5574
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2321,13 +2321,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 5
           weight: -25
-          object|file_history
+          object|File_history
             name: 1500x1000-03
             type: picture
             file: 1500x1000-03.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-5.picture
-            size: 8048
+            size: 5575
           settings
           - title: click to open in new window
           - alt: thumbnail
@@ -2335,13 +2335,13 @@ instances
           - data-thumbnails-is-embedded: true
       - 6
           weight: -30
-          object|file_history
+          object|File_history
             name: audio-01
             type: audio
             file: audio-01.audio
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-6.audio
-            size: 22913
+            size: 19763
           settings
           - data-player-name: default
           - data-player-timeline-is-visible|_string_true
@@ -2354,13 +2354,13 @@ instances
           - data-cover-is-embedded: true
       - 7
           weight: -35
-          object|file_history
+          object|File_history
             name: video-01
             type: video
             file: video-01.video
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-7.video
-            size: 20363
+            size: 18269
           settings
           - autoplay: null
           - buffered: null
@@ -2373,13 +2373,13 @@ instances
           - data-poster-is-embedded: true
       - 8
           weight: -40
-          object|file_history
+          object|File_history
             name: video-02
             type: mp4
             file: video-02.mp4
             mime: video/mp4
             fin_path: dynamic/files/galleries/gallery-main-8.mp4
-            size: 19692
+            size: 15148
           settings
           - autoplay: null
           - buffered: null
@@ -2392,13 +2392,13 @@ instances
           - data-poster-is-embedded: false
       - 9
           weight: -45
-          object|file_history
+          object|File_history
             name: audio-02
             type: mp3
             file: audio-02.mp3
             mime: audio/mpeg
             fin_path: dynamic/files/galleries/gallery-main-9.mp3
-            size: 22241
+            size: 16744
           settings
           - data-player-name: default
           - data-player-timeline-is-visible|_string_true
@@ -2412,7 +2412,7 @@ instances
 # ─────────────────────────────────────────────────────────────────────
 # selections
 # ─────────────────────────────────────────────────────────────────────
-- selection_user|instance
+- selection_user|Instance
     entity_name: selection
     values
     - id: user
@@ -2426,7 +2426,7 @@ instances
       - conditions
         - nickname_!f: nickname
         - nickname_operator: =
-        - nickname_!v|text
+        - nickname_!v|Text
             is_apply_translation: false
             is_apply_tokens: true
             text: %%_nickname_page_context(nickname)
@@ -2466,11 +2466,11 @@ instances
       - handlers
         - roles
             title: Roles
-            handler: \effcore\modules\user\events_page_user::on_show_user_roles
+            handler: \effcore\modules\user\Events_Page_User::on_show_user_roles
             is_apply_translation: true
             weight: -400
     - is_embedded: 1
-- selection_social_networks|instance
+- selection_social_networks|Instance
     entity_name: selection
     values
     - id: social_networks

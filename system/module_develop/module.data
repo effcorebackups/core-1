@@ -1,11 +1,11 @@
-module|module
+module|Module
   id: develop
   id_bundle: system
   title: Develop
   group: Develop
   description: Module for development.
-  copyright: Copyright © 2017—2022 Maxim Rysevets. All rights reserved.
-  version: 0.906
+  copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
+  version: 0.907
   dependencies
     system
-    - core: 0.906
+    - core: 0.907

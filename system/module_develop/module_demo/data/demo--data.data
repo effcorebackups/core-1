@@ -29,9 +29,9 @@ demo_data
     property_2: property value 2
     property_3: property value 3
   demo_object_empty
-  demo_object_text|text
+  demo_object_text|Text
     text: some translated text
-  demo_object_text_simple|text_simple
+  demo_object_text_simple|Text_simple
     text: some raw text
   demo_string_true|_string_true
   demo_string_false|_string_false

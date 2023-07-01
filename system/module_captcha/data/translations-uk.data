@@ -1,5 +1,5 @@
 translations
-- uk|translation
+- uk|Translation
     code: uk
     data
     - CAPTCHA: Захисний код (CAPTCHA)

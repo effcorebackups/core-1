@@ -1,13 +1,13 @@
 forms
-- layout|form
+- layout|Form
     attributes
     - id: layout
     - method: post
     - novalidate: true
     children
-    - layout_manager|markup
+    - layout_manager|Markup
         tag_name: x-layout-manager
-    - button_save|button
+    - button_save|Button
         title: save
         attributes
         - value: save

@@ -1,5 +1,5 @@
 tree_items
-- tests|tree_item
+- tests|Tree_item
     id: tests
     id_parent: develop
     id_tree: system

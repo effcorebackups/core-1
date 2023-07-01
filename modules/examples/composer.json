@@ -22,9 +22,9 @@
     ],
     "authors": [
         {
-            "name": "John Doe",
+            "name": "Author/Rightholder",
             "email": "info@example.com",
-            "homepage": "http://example.com/john_doe",
+            "homepage": "http://example.com/authors",
             "role": "Developer"
         }
     ],
@@ -38,20 +38,18 @@
         }
     ],
     "require": {
-        "tinymce/tinymce": "^6.1"
     },
     "suggest": {
-        "tinymce/tinymce": "An example of installing a universal third-party library."
     },
     "autoload": {
-        "classmap": ["composer_helper.php"]
+        "classmap": ["Composer_helper.php"]
     },
     "scripts": {
         "pre-install-cmd": [
-            "composer_helper::preInstall"
+            "Composer_helper::preInstallCmd"
         ],
         "pre-update-cmd": [
-            "composer_helper::preInstall"
+            "Composer_helper::preInstallCmd"
         ]
     }
 }

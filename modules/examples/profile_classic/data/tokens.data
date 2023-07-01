@@ -4,7 +4,7 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 - color_custom__head
     type: code
-    handler: \effcore\modules\profile_classic\events_token::on_apply
+    handler: \effcore\modules\profile_classic\Events_Token::on_apply
 - color_custom__foot
     type: code
-    handler: \effcore\modules\profile_classic\events_token::on_apply
+    handler: \effcore\modules\profile_classic\Events_Token::on_apply

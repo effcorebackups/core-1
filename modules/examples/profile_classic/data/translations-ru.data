@@ -1,5 +1,5 @@
 translations
-- ru|translation
+- ru|Translation
     code: ru
     data
     - Example of update description.: Пример описания обновления.

@@ -1,19 +1,19 @@
 form_parts
-- form_instance_update__selection_pager_settings|fieldset
+- form_instance_update__selection_pager_settings|Fieldset
     title: Pager settings
     weight: +290
     children
-    - is_enabled|field_switcher
+    - is_enabled|Field_Switcher
         title: Is enabled
         element_attributes
         - name: pager_is_enabled
-    - name|field_id_text
+    - name|Field_ID_text
         title: Name
         element_attributes
         - name: pager_name
         - value: page
         - disabled: true
-    - id|field_number
+    - id|Field_Number
         title: ID
         element_attributes
         - name: pager_id

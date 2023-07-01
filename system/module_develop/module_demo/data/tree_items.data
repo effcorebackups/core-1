@@ -1,5 +1,5 @@
 tree_items
-- demo|tree_item
+- demo|Tree_item
     id: demo
     id_parent: develop
     id_tree: system
@@ -10,7 +10,7 @@ tree_items
       roles
       - =: admins
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- demo_nosql_item_1|tree_item
+- demo_nosql_item_1|Tree_item
     id: demo_nosql_item_1
     id_parent: null
     id_tree: demo_nosql
@@ -19,7 +19,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_1_1|tree_item
+- demo_nosql_item_1_1|Tree_item
     id: demo_nosql_item_1_1
     id_parent: demo_nosql_item_1
     id_tree: demo_nosql
@@ -28,7 +28,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_1_2|tree_item
+- demo_nosql_item_1_2|Tree_item
     id: demo_nosql_item_1_2
     id_parent: demo_nosql_item_1
     id_tree: demo_nosql
@@ -37,7 +37,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_1_2_1|tree_item
+- demo_nosql_item_1_2_1|Tree_item
     id: demo_nosql_item_1_2_1
     id_parent: demo_nosql_item_1_2
     id_tree: demo_nosql
@@ -46,7 +46,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_1_2_2|tree_item
+- demo_nosql_item_1_2_2|Tree_item
     id: demo_nosql_item_1_2_2
     id_parent: demo_nosql_item_1_2
     id_tree: demo_nosql
@@ -55,7 +55,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_1_3|tree_item
+- demo_nosql_item_1_3|Tree_item
     id: demo_nosql_item_1_3
     id_parent: demo_nosql_item_1
     id_tree: demo_nosql
@@ -64,7 +64,7 @@ tree_items
     access
       roles
       - =: admins
-- demo_nosql_item_2|tree_item
+- demo_nosql_item_2|Tree_item
     id: demo_nosql_item_2
     id_parent: null
     id_tree: demo_nosql

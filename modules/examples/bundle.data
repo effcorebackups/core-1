@@ -2,7 +2,7 @@ bundle
   id: examples
   title: Examples
   description: Bundle of examples of custom modules and profiles.
-  build: 1006
+  build: 1007
   repo_update_handler_in_module: profile_classic
   repo_can_restore: true
   repo_directory: .

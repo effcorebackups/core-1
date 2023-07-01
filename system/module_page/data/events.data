@@ -1,145 +1,145 @@
 events
   on_module_install
-  - page|event
+  - page|Event
       for: page
-      handler: \effcore\modules\page\events_module::on_install
+      handler: \effcore\modules\page\Events_Module::on_install
   on_module_enable
-  - page|event
+  - page|Event
       for: page
-      handler: \effcore\modules\page\events_module::on_enable
+      handler: \effcore\modules\page\Events_Module::on_enable
   on_module_start
-  - page|event
+  - page|Event
       for: page
       weight: +500
-      handler: \effcore\modules\page\events_module::on_start
+      handler: \effcore\modules\page\Events_Module::on_start
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_cron_run
-  - page|event
+  - page|Event
       for: page
-      handler: \effcore\modules\page\events_module::on_cron_run
+      handler: \effcore\modules\page\Events_Module::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
   on_block_build_after
-  - all|event
+  - all|Event
       weight: +300
-      handler: \effcore\modules\page\events_page::on_block_build_after
+      handler: \effcore\modules\page\Events_Page::on_block_build_after
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_block_presets_dynamic_build
-  - all|event
-      handler: \effcore\modules\page\events_page::on_block_presets_dynamic_build
+  - all|Event
+      handler: \effcore\modules\page\Events_Page::on_block_presets_dynamic_build
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_file_load
-  - not_found|event
+  - not_found|Event
       for: not_found
       weight: +500
-      handler: \effcore\modules\page\events_file::on_load_not_found
-  - static_audio|event
+      handler: \effcore\modules\page\Events_File::on_load_not_found
+  - static_audio|Event
       for: static
       weight: +500
-      handler: \effcore\modules\page\events_file::on_load_static_audio
-  - static_picture|event
+      handler: \effcore\modules\page\Events_File::on_load_static_audio
+  - static_picture|Event
       for: static
       weight: +500
-      handler: \effcore\modules\page\events_file::on_load_static_picture
-  - static_video|event
+      handler: \effcore\modules\page\Events_File::on_load_static_picture
+  - static_video|Event
       for: static
       weight: +500
-      handler: \effcore\modules\page\events_file::on_load_static_video
+      handler: \effcore\modules\page\Events_File::on_load_static_video
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_form_build
-  - instance_update__page|event
+  - instance_update__page|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\page\events_form_instance_update::on_build
+      handler: \effcore\modules\page\Events_Form_Instance_update::on_build
   on_form_init
-  - colors|event
+  - colors|Event
       for: colors
-      handler: \effcore\modules\page\events_form_colors::on_init
-  - colors_preset|event
+      handler: \effcore\modules\page\Events_Form_Colors::on_init
+  - colors_preset|Event
       for: colors_preset
-      handler: \effcore\modules\page\events_form_colors_preset::on_init
-  - layout|event
+      handler: \effcore\modules\page\Events_Form_Colors_preset::on_init
+  - layout|Event
       for: layout
-      handler: \effcore\modules\page\events_form_layout::on_init
-  - global_css|event
+      handler: \effcore\modules\page\Events_Form_Layout::on_init
+  - global_css|Event
       for: global_css
-      handler: \effcore\modules\page\events_form_global_css::on_init
-  - view_settings|event
+      handler: \effcore\modules\page\Events_Form_Global_CSS::on_init
+  - view_settings|Event
       for: view_settings
-      handler: \effcore\modules\page\events_form_view_settings::on_init
-  - seo_meta|event
+      handler: \effcore\modules\page\Events_Form_View_settings::on_init
+  - seo_meta|Event
       for: seo_meta
-      handler: \effcore\modules\page\events_form_seo_meta::on_init
-  - seo_sitemap|event
+      handler: \effcore\modules\page\Events_Form_SEO_meta::on_init
+  - seo_sitemap|Event
       for: seo_sitemap
-      handler: \effcore\modules\page\events_form_seo_sitemap::on_init
-  - seo_robots|event
+      handler: \effcore\modules\page\Events_Form_SEO_sitemap::on_init
+  - seo_robots|Event
       for: seo_robots
-      handler: \effcore\modules\page\events_form_seo_robots::on_init
-  - instance_insert__page|event
+      handler: \effcore\modules\page\Events_Form_SEO_robots::on_init
+  - instance_insert__page|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\page\events_form_instance_insert::on_init
-  - instance_update__page|event
+      handler: \effcore\modules\page\Events_Form_Instance_insert::on_init
+  - instance_update__page|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\page\events_form_instance_update::on_init
+      handler: \effcore\modules\page\Events_Form_Instance_update::on_init
   on_form_validate
-  - view_settings|event
+  - view_settings|Event
       for: view_settings
-      handler: \effcore\modules\page\events_form_view_settings::on_validate
-  - instance_insert__page|event
+      handler: \effcore\modules\page\Events_Form_View_settings::on_validate
+  - instance_insert__page|Event
       for: instance_insert
       weight: +300
-      handler: \effcore\modules\page\events_form_instance_insert::on_validate
-  - instance_update__page|event
+      handler: \effcore\modules\page\Events_Form_Instance_insert::on_validate
+  - instance_update__page|Event
       for: instance_update
       weight: +300
-      handler: \effcore\modules\page\events_form_instance_update::on_validate
+      handler: \effcore\modules\page\Events_Form_Instance_update::on_validate
   on_form_submit
-  - colors|event
+  - colors|Event
       for: colors
-      handler: \effcore\modules\page\events_form_colors::on_submit
-  - colors_preset|event
+      handler: \effcore\modules\page\Events_Form_Colors::on_submit
+  - colors_preset|Event
       for: colors_preset
-      handler: \effcore\modules\page\events_form_colors_preset::on_submit
-  - layout|event
+      handler: \effcore\modules\page\Events_Form_Colors_preset::on_submit
+  - layout|Event
       for: layout
-      handler: \effcore\modules\page\events_form_layout::on_submit
-  - global_css|event
+      handler: \effcore\modules\page\Events_Form_Layout::on_submit
+  - global_css|Event
       for: global_css
-      handler: \effcore\modules\page\events_form_global_css::on_submit
-  - view_settings|event
+      handler: \effcore\modules\page\Events_Form_Global_CSS::on_submit
+  - view_settings|Event
       for: view_settings
-      handler: \effcore\modules\page\events_form_view_settings::on_submit
-  - seo_meta|event
+      handler: \effcore\modules\page\Events_Form_View_settings::on_submit
+  - seo_meta|Event
       for: seo_meta
-      handler: \effcore\modules\page\events_form_seo_meta::on_submit
-  - seo_sitemap|event
+      handler: \effcore\modules\page\Events_Form_SEO_meta::on_submit
+  - seo_sitemap|Event
       for: seo_sitemap
-      handler: \effcore\modules\page\events_form_seo_sitemap::on_submit
-  - seo_robots|event
+      handler: \effcore\modules\page\Events_Form_SEO_sitemap::on_submit
+  - seo_robots|Event
       for: seo_robots
-      handler: \effcore\modules\page\events_form_seo_robots::on_submit
-  - instance_update__page|event
+      handler: \effcore\modules\page\Events_Form_SEO_robots::on_submit
+  - instance_update__page|Event
       for: instance_update
       weight: +600
-      handler: \effcore\modules\page\events_form_instance_update::on_submit
+      handler: \effcore\modules\page\Events_Form_Instance_update::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_instance_delete_before
-  - all|event
-      handler: \effcore\modules\page\events_storage::on_instance_delete_before
+  - all|Event
+      handler: \effcore\modules\page\Events_Storage::on_instance_delete_before
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
-  - view|event
+  - view|Event
       for: view
       weight: +600
-      handler: \effcore\modules\page\events_page_view::on_redirect
-  - seo|event
+      handler: \effcore\modules\page\Events_Page_View::on_redirect
+  - seo|Event
       for: seo
       weight: +600
-      handler: \effcore\modules\page\events_page_seo::on_redirect
+      handler: \effcore\modules\page\Events_Page_SEO::on_redirect
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_tab_build_before
-  - view|event
+  - view|Event
       for: view
-      handler: \effcore\modules\page\events_page_view::on_tab_build_before
+      handler: \effcore\modules\page\Events_Page_View::on_tab_build_before

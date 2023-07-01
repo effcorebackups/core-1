@@ -1,60 +1,62 @@
 tests
-- demo|test
+- demo|Test
     id: demo
     title: Demo
     params
-    - quantity_of_iterations|field_number
+    - quantity_of_iterations|Field_Number
         title: Quantity of iterations
         element_attributes
         - name: quantity_of_iterations
         - value: 1
         - min: 1
         - max: 100
-    - proxy|field_text
+    - proxy|Field_Text
         title: Proxy server
-        description|text
+        description|Text
           text: Examples: %%_examples
           args
           - examples: "127.0.0.1:8888" | "127.0.0.1:4321"
         element_attributes
         - name: proxy
         - required: false
-    - is_https|field_switcher
+    - is_https|Field_Switcher
         title: HTTPS
         element_attributes
         - name: is_https
     scenario
-    - repeat|step_repeat
+    - repeat|Test_step_Repeat
         id: cycle_1
-        quantity|param_from_form
+        quantity|Param_from_form
           name: quantity_of_iterations
         actions
-        - title|step_title
-            title: Title with token: "current iteration" = "%%_value"
-            args
-            - value: %%_test_step_repeat_i_cycle_1
-        - request|step_request
+        - title|Test_step_Title
+            title|text
+              text: Title with token: "current iteration" = "%%_value"
+              args
+              - value: %%_test_step_repeat_i_cycle_1
+              is_apply_tokens: true
+        - request|Test_step_Request
             url: /
-            is_https|param_from_form
+            is_https|Param_from_form
               name: is_https
-            proxy|param_from_form
+            proxy|Param_from_form
               name: proxy
-        - check|step_check
+        - check|Test_step_Check
             check: token
             where: %%_test_response_http_code
             match: 200
             on_failure
-            - return_result|step_return
+            - return_result|Test_step_Return
                 value: 0
-        - code|step_code
-            handler: \effcore\modules\demo\events_test::step_code_demo_handler
+        - code|Test_step_Code
+            handler: \effcore\modules\demo\Events_Test::test_step_code__demo_handler
             args
             - param_1: value 1
             - param_2: value 2
             - param_3: value 3
             - current_iteration: %%_test_step_repeat_i_cycle_1
             is_apply_tokens: true
-        - transpositions|step_transpositions
+        - transpositions|Test_step_Transpositions
             # ┌───╥───────────┬───────────┬───────────┐
             # │ i ║ action #1 │ action #2 │ action #3 │
             # ╞═══╬═══════════╪═══════════╪═══════════╡
@@ -67,34 +69,37 @@ tests
             # │ 6 ║     x     │     x     │           │ ← 110 == ▣▣□
             # │ 7 ║     x     │     x     │     x     │ ← 111 == ▣▣▣
             # └───╨───────────┴───────────┴───────────┘
-            action_before|step_actions
+            action_before|Test_step_Actions
               actions
-              - title|step_title
+              - title|Test_step_Title
                   title: transposition "action before"
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             actions
-            - action_1|step_actions
+            - action-1|Test_step_Actions
                 actions
-                - title|step_title
-                    title: transposition "action" #%%_num
-                    args
-                    - num: 1
-            - action_2|step_actions
+                - title|Test_step_Title
+                    title|text
+                      text: transposition "action" #%%_num
+                      args
+                      - num: 1
+            - action-2|Test_step_Actions
                 actions
-                - title|step_title
-                    title: transposition "action" #%%_num
-                    args
-                    - num: 2
-            - action_3|step_actions
+                - title|Test_step_Title
+                    title|text
+                      text: transposition "action" #%%_num
+                      args
+                      - num: 2
+            - action-3|Test_step_Actions
                 actions
-                - title|step_title
-                    title: transposition "action" #%%_num
-                    args
-                    - num: 3
+                - title|Test_step_Title
+                    title|text
+                      text: transposition "action" #%%_num
+                      args
+                      - num: 3
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-            action_after|step_actions
+            action_after|Test_step_Actions
               actions
-              - title|step_title
+              - title|Test_step_Title
                   title: transposition "action after"
-    - return|step_return
+    - return|Test_step_Return
         value: 1

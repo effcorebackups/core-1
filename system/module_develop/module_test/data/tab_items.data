@@ -1,5 +1,5 @@
 tab_items
-- test_execution|tab_item
+- test_execution|Tab_item
     id: test_execution
     id_parent: null
     id_tab: tests

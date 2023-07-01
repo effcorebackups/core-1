@@ -103,37 +103,37 @@ templates
     - head_styles: html/children/head/children/styles
     - head_scripts: html/children/head/children/scripts
     - body: html/children/body
-    data|node
+    data|Node
       children
-      - doctype|markup_simple
+      - doctype|Markup_simple
           tag_name: !DOCTYPE
           attributes
           - html: true
-      - html|markup
+      - html|Markup
           tag_name: html
           attributes
           - lang: en
           - dir: ltr
           children
-          - head|markup
+          - head|Markup
               tag_name: head
               children
-              - meta|node
+              - meta|Node
                   children
-                  - meta_charset|markup_simple
+                  - meta_charset|Markup_simple
                       tag_name: meta
                       attributes
                       - charset: utf-8
-              - title|markup
+              - title|Markup
                   tag_name: title
                   children
-                  - content|text
+                  - content|Text
                       is_apply_tokens: true
                       text: 
-              - icons|node
-              - styles|node
-              - scripts|node
-              - meta_custom_global|node
-              - meta_custom|node
-          - body|markup
+              - icons|Node
+              - styles|Node
+              - scripts|Node
+              - meta_custom_global|Node
+              - meta_custom|Node
+          - body|Markup
               tag_name: body

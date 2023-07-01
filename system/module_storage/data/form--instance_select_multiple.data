@@ -1,5 +1,5 @@
 forms
-- instance_select_multiple|form
+- instance_select_multiple|Form
     managing_group_id: null
     entity_name: null
     category_id: null
@@ -12,18 +12,18 @@ forms
     - method: post
     - novalidate: true
     children
-    - button_insert|button
+    - button_insert|Button
         title: null
         break_on_request_value_set: true
         break_on_validate: true
         attributes
-        - title|text
+        - title|Text
             is_apply_tokens: true
             text: Insert a new item of type "%%_entity_title_context" on new page.
         - data-style: insert
         - value: insert
         - disabled: true
-    - actions|field_select
+    - actions|Field_Select
         title: Actions
         element_attributes
         - name: actions
@@ -33,8 +33,8 @@ forms
         - delete: Delete
         disabled
         - =: delete
-    - data|node
-    - button_apply|button
+    - data|Node
+    - button_apply|Button
         title: apply
         attributes
         - value: apply
