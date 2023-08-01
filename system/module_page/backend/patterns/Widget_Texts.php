@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Widget_Texts extends Widget_Items {
 
     public $attributes = ['data-type' => 'items-texts'];

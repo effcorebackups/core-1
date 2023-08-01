@@ -11,6 +11,8 @@ use PDO;
 use PDOException;
 use PDOStatement;
 
+#[\AllowDynamicProperties]
+
 class Storage_SQL_PDO implements Has_external_cache {
 
     public $name;

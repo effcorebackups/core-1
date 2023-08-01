@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Datetime extends Field_Text {
 
     use Field__Shared;

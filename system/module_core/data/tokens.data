@@ -5,16 +5,13 @@ tokens
 - request_scheme
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
+- request_server_name
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_host
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
-- request_host_decode
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
 - request_addr
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_addr_remote
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
 - request_uri

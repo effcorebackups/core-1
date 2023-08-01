@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Block extends Markup {
 
     public $tag_name = 'section';

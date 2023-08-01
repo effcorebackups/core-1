@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_License_agreement extends Control {
 
     public $tag_name = 'x-widget';

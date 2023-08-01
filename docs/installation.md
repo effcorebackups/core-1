@@ -4,6 +4,47 @@ Installation
 =====================================================================
 
 
+Installing via Docker
+---------------------------------------------------------------------
+
+If you have Docker installed and **running** on your operating system,
+you can run commands that will build a new image from a reference Linux
+distribution. NGINX, PHP, Git will be installed into this image, and the
+latest version of this System will be uploaded through the repository.
+Then it will be enough to open a browser and type the address
+`127.0.0.1:8080` where you will see the System installation page.
+
+Run the following commands to start the system via Docker:
+
+    mkdir docker-effcore
+    cd docker-effcore
+    git clone https://github.com/effectivecore/docker.git .
+    ./build.sh
+
+
+Installing via Composer
+---------------------------------------------------------------------
+
+Create a new project in the current directory:
+
+    composer create-project effcore/core:dev-main .
+
+Installing all third-party libraries in the case when the project
+is deployed from the archive:
+
+    composer install
+
+An example of installing a library of type `effcore-bundle` or `effcore-module` (the library
+will be placed in the directory `/modules`):
+
+    composer require effcore/examples:dev-main
+
+An example of installing a universal third-party library (the library
+will be placed in the directory `/modules/vendors/packages`):
+
+    composer require Vendor\Model
+
+
 Installing via bundle archive
 ---------------------------------------------------------------------
 
@@ -47,31 +88,4 @@ Actions for installations:
   modules and continue the installation.
   For the first time also recommended to enable `display_errors`,
   `log_errors` and set `error_reporting` to `E_ALL`.
-
-
-Installing via Composer
----------------------------------------------------------------------
-
-Create a new project in the current directory:
-
-    composer create-project effcore/core:dev-main .
-
-Installing all third-party libraries in the case when the project
-is deployed from the archive:
-
-    composer install
-
-Project update:
-
-    composer update
-
-An example of installing a library of type `effcore-bundle` or `effcore-module` (the library
-will be placed in the directory `/modules`):
-
-    composer require effcore/examples:dev-main
-
-An example of installing a universal third-party library (the library
-will be placed in the directory `/modules/vendors/packages`):
-
-    composer require Vendor\Model
 

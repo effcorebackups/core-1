@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Text extends Field {
 
     public $title = 'Text';

@@ -5,10 +5,10 @@ tokens
 - user_id
     type: code
     handler: \effcore\modules\user\Events_Token::on_apply
-- email
+- nickname
     type: code
     handler: \effcore\modules\user\Events_Token::on_apply
-- nickname
+- email
     type: code
     handler: \effcore\modules\user\Events_Token::on_apply
 - avatar_path

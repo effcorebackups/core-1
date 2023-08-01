@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Hidden extends Markup_simple {
 
     public $tag_name = 'input';

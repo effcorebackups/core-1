@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Search extends Field_Text {
 
     public $title = 'Search';

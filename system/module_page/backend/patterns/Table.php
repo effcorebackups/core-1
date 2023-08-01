@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Table extends Markup {
 
     public $tag_name = 'table';

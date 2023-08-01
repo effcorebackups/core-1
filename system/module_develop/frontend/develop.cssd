@@ -2,46 +2,33 @@
 /* demo tokens:
 ═════════════════════════════════════════════════════════════════════
 demo_text: %%_demo_text
-─────────────────────────────────────────────────────────────────────
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 user_id: %%_user_id
-email: %%_email
 nickname: %%_nickname
+email: %%_email
 avatar_path: %%_avatar_path
-nickname_page_context: %%_nickname_page_context(some_page_arg)
-─────────────────────────────────────────────────────────────────────
-request_scheme: %%_request_scheme
-request_host: %%_request_host
-request_host_decode: %%_request_host_decode
-request_addr: %%_request_addr
-request_addr_remote: %%_request_addr_remote
-request_uri: %%_request_uri
-request_path: %%_request_path
-request_query: %%_request_query
-request_scheme(preg_quote): %%_request_scheme(preg_quote)
-request_host(preg_quote): %%_request_host(preg_quote)
-request_host_decode(preg_quote): %%_request_host_decode(preg_quote)
-request_addr(preg_quote): %%_request_addr(preg_quote)
-request_addr_remote(preg_quote): %%_request_addr_remote(preg_quote)
-request_uri(preg_quote): %%_request_uri(preg_quote)
-request_path(preg_quote): %%_request_path(preg_quote)
-request_query(preg_quote): %%_request_query(preg_quote)
-─────────────────────────────────────────────────────────────────────
-page_width_min: %%_page_width_min
-page_width_max: %%_page_width_max
+nickname_page_context: %%_nickname_page_context(some_page_arg|0)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_translation(simple string): %%_return_translation(simple string)
+return_translation(string with parameter = %_n|n=0): %%_return_translation(string with parameter = %%_n|n=0)
+return_translation(string with parameter = %_n|n=1): %%_return_translation(string with parameter = %%_n|n=1)
+return_translation(string with parameter = %_n|n=2): %%_return_translation(string with parameter = %%_n|n=2)
+return_translation(string with plural value = number second%_plural(number|s)|number=0): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
+return_translation(string with plural value = number second%_plural(number|s)|number=1): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
+return_translation(string with plural value = number second%_plural(number|s)|number=2): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
+return_translation(unknown string): %%_return_translation(unknown string)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+page_id_context: %%_page_id_context(front)
 thumbnail_width_small: %%_thumbnail_width_small
 thumbnail_width_middle: %%_thumbnail_width_middle
 thumbnail_width_big: %%_thumbnail_width_big
 thumbnail_path_cover_default: %%_thumbnail_path_cover_default
 thumbnail_path_poster_default: %%_thumbnail_path_poster_default
-page_id_context: %%_page_id_context(front)
+page_width_min: %%_page_width_min
+page_width_max: %%_page_width_max
 page_width_min_context: %%_page_width_min_context
 page_width_max_context: %%_page_width_max_context
-─────────────────────────────────────────────────────────────────────
-instance_id_context: %%_instance_id_context
-entity_name_context: %%_entity_name_context
-entity_title_context: %%_entity_title_context
-entity_title_plural_context: %%_entity_title_plural_context
-─────────────────────────────────────────────────────────────────────
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 color__page: %%_color__page
 color__text: %%_color__text
 color__main: %%_color__main
@@ -59,8 +46,8 @@ color__tabs_link: %%_color__tabs_link
 color__tabs_link_active: %%_color__tabs_link_active
 color__tabs_link_active_no_bg: %%_color__tabs_link_active_no_bg
 color__ok: %%_color__ok
-color__error: %%_color__error
 color__warning: %%_color__warning
+color__error: %%_color__error
 color__fieldset: %%_color__fieldset
 color__fieldset_nested: %%_color__fieldset_nested
 color__field: %%_color__field
@@ -68,35 +55,79 @@ color__field_text: %%_color__field_text
 color__button: %%_color__button
 color__button_active: %%_color__button_active
 color__button_text: %%_color__button_text
+color__unknown: %%_color__unknown
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 return_token_color_encode(color__page): %%_return_token_color_encode(color__page)
+return_token_color_encode(color__page(0|0|0)): %%_return_token_color_encode(color__page\(0\|0\|0\))
+return_token_color_encode(color__page(0|0|0|0)): %%_return_token_color_encode(color__page\(0\|0\|0\|0\))
 return_token_color_encode(color__page(-10|-10|-10)): %%_return_token_color_encode(color__page\(-10\|-10\|-10\))
+return_token_color_encode(color__page(+10|+10|+10)): %%_return_token_color_encode(color__page\(+10\|+10\|+10\))
 return_token_color_encode(color__page(-10|-10|-10|.5)): %%_return_token_color_encode(color__page\(-10\|-10\|-10\|.5\))
+return_token_color_encode(color__page(+10|+10|+10|.5)): %%_return_token_color_encode(color__page\(+10\|+10\|+10\|.5\))
+return_token_color_encode(color__page(-1000|-1000|-1000|-5)): %%_return_token_color_encode(color__page\(-1000\|-1000\|-1000\|-5\))
+return_token_color_encode(color__page(+1000|+1000|+1000|+5)): %%_return_token_color_encode(color__page\(+1000\|+1000\|+1000\|+5\))
+return_token_color_encode(color__page(x|y|z|a)): %%_return_token_color_encode(color__page\(x\|y\|z\|a\))
+return_token_color_encode(color__unknown): %%_return_token_color_encode(color__unknown)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 return_if_token_color_is_dark(color__page|1|0): %%_return_if_token_color_is_dark(color__page|1|0)
 return_if_token_color_is_dark(color__page|0|1): %%_return_if_token_color_is_dark(color__page|0|1)
-─────────────────────────────────────────────────────────────────────
-return_url_arg(color|black|css_units): %%_return_url_arg(color|black|css_units)
-return_if_url_arg(page_id|front|1|0): %%_return_if_url_arg(page_id|front|1|0)
-return_if_url_arg(page_id|front|0|1): %%_return_if_url_arg(page_id|front|0|1)
-─────────────────────────────────────────────────────────────────────
+return_if_token_color_is_dark(color__unknown|1|0): %%_return_if_token_color_is_dark(color__unknown|1|0)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request_scheme: %%_request_scheme
+request_scheme(preg_quote=yes): %%_request_scheme(preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request_host: %%_request_host
+request_host(preg_quote=yes): %%_request_host(preg_quote=yes)
+request_host(no_port=yes): %%_request_host(no_port=yes)
+request_host(no_port=yes|preg_quote=yes): %%_request_host(no_port=yes|preg_quote=yes)
+request_host(decode=yes): %%_request_host(decode=yes)
+request_host(decode=yes|preg_quote=yes): %%_request_host(decode=yes|preg_quote=yes)
+request_host(decode=yes|no_port=yes): %%_request_host(decode=yes|no_port=yes)
+request_host(decode=yes|no_port=yes|preg_quote=yes): %%_request_host(decode=yes|no_port=yes|preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request_server_name: %%_request_server_name
+request_server_name(preg_quote=yes): %%_request_server_name(preg_quote=yes)
+request_server_name(with_specific_port=yes): %%_request_server_name(with_specific_port=yes)
+request_server_name(with_specific_port=yes|preg_quote=yes): %%_request_server_name(with_specific_port=yes|preg_quote=yes)
+request_server_name(decode=yes): %%_request_server_name(decode=yes)
+request_server_name(decode=yes|preg_quote=yes): %%_request_server_name(decode=yes|preg_quote=yes)
+request_server_name(decode=yes|with_specific_port=yes): %%_request_server_name(decode=yes|with_specific_port=yes)
+request_server_name(decode=yes|with_specific_port=yes|preg_quote=yes): %%_request_server_name(decode=yes|with_specific_port=yes|preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request_addr: %%_request_addr
+request_addr(preg_quote=yes): %%_request_addr(preg_quote=yes)
+request_uri: %%_request_uri
+request_uri(preg_quote=yes): %%_request_uri(preg_quote=yes)
+request_path: %%_request_path
+request_path(preg_quote=yes): %%_request_path(preg_quote=yes)
+request_query: %%_request_query
+request_query(preg_quote=yes): %%_request_query(preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 return_if_token(color__page|#ffffff|1|0): %%_return_if_token(color__page|#ffffff|1|0)
 return_if_token(color__page|#ffffff|0|1): %%_return_if_token(color__page|#ffffff|0|1)
 return_if_token(color__page|transparent|1|0): %%_return_if_token(color__page|transparent|1|0)
 return_if_token(color__page|transparent|0|1): %%_return_if_token(color__page|transparent|0|1)
 return_if_token(color__page(-10|-10|-10)|#f5f5f5|1|0): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|1|0)
 return_if_token(color__page(-10|-10|-10)|#f5f5f5|0|1): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|0|1)
+return_if_token(||1|0): %%_return_if_token(||1|0)
+return_if_token(unknown||1|0): %%_return_if_token(unknown||1|0)
 return_if_token(return_if_token||1|0): %%_return_if_token(return_if_token||1|0)
 return_if_token(return_if_token|value|1|0): %%_return_if_token(return_if_token|value|1|0)
 return_if_token(return_if_token(token_name|nested_value|2)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\)|value|1|0)
 return_if_token(return_if_token(token_name|nested_value|2|3)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\|3\)|value|1|0)
-─────────────────────────────────────────────────────────────────────
-return_translation(simple string): %%_return_translation(simple string)
-return_translation(string with parameter = %%_n|n=0): %%_return_translation(string with parameter = %%_n|n=0)
-return_translation(string with parameter = %%_n|n=1): %%_return_translation(string with parameter = %%_n|n=1)
-return_translation(string with parameter = %%_n|n=2): %%_return_translation(string with parameter = %%_n|n=2)
-return_translation(string with plural value = number second%%_plural(number|s)|number=0): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
-return_translation(string with plural value = number second%%_plural(number|s)|number=1): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
-return_translation(string with plural value = number second%%_plural(number|s)|number=2): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
-─────────────────────────────────────────────────────────────────────
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_if_url_arg(page_id|front|1|0): %%_return_if_url_arg(page_id|front|1|0)
+return_if_url_arg(page_id|front|0|1): %%_return_if_url_arg(page_id|front|0|1)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_url_arg(color|default_value|filter_css_color=yes): %%_return_url_arg(color|default_value|filter_css_color=yes)
+return_url_arg(color|default_value|filter_css_float=yes): %%_return_url_arg(color|default_value|filter_css_float=yes)
+return_url_arg(color|default_value|filter_css_units=yes): %%_return_url_arg(color|default_value|filter_css_units=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+instance_id_context: %%_instance_id_context
+entity_name_context: %%_entity_name_context
+entity_title_context: %%_entity_title_context
+entity_title_plural_context: %%_entity_title_plural_context
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 test_software_name: %%_test_software_name
 test_email_random: %%_test_email_random
 test_email_random: %%_test_email_random(0)
@@ -107,9 +138,9 @@ test_nickname_random: %%_test_nickname_random(0)
 test_password_random: %%_test_password_random
 test_password_random: %%_test_password_random(0)
 test_password_random: %%_test_password_random(0)
+test_cookies: %%_test_cookies
 test_captcha: %%_test_captcha
 test_form_validation_id: %%_test_form_validation_id(some_form_id)
-test_cookies: %%_test_cookies
 test_response_http_code: %%_test_response_http_code
 test_response_location: %%_test_response_location
 test_response_content_length: %%_test_response_content_length

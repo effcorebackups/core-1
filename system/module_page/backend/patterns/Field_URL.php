@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_URL extends Field_Text {
 
     public $title = 'URL';

@@ -15,7 +15,7 @@ use effcore\Token;
 
 abstract class Events_Token {
 
-    static function on_apply($name, $args = []) {
+    static function on_apply($name, $args) {
         $settings = Module::settings_get('page');
         switch ($name) {
             case 'page_id_context'              : return Page::get_current() ? Page::get_current()->id : null;
@@ -35,34 +35,6 @@ abstract class Events_Token {
                 break;
         }
         # colors
-        if ($name === 'return_token_color_encode') {
-            if (count($args) === 1) {
-                if ( (strpos($args[0], 'color__')        === 0 ||
-                      strpos($args[0], 'color_custom__') === 0) &&
-                      strpos($args[0], '%%') === false) {
-                    $value = Token::apply('%%_'.$args[0]);
-                    if ($value) {
-                        return urlencode($value);
-                    }
-                }
-            }
-        }
-        if ($name === 'return_if_token_color_is_dark') {
-            if (count($args) === 3) {
-                if ( (strpos($args[0], 'color__')        === 0 ||
-                      strpos($args[0], 'color_custom__') === 0) &&
-                      strpos($args[0], '%%') === false) {
-                    $value = Token::apply('%%_'.$args[0]);
-                    if ($value) {
-                        $is_dark = (new Color(null, $value))->is_dark();
-                        if ($is_dark !== null) {
-                            return $is_dark ? $args[1] :
-                                              $args[2];
-                        }
-                    }
-                }
-            }
-        }
         if (strpos($name, 'color__') === 0) {
             $colors = Color::get_all();
             $is_all_colors_available = Color_preset::is_all_colors_available();
@@ -93,9 +65,37 @@ abstract class Events_Token {
             if ($name === 'color__button_active'         ) $color = $colors[ $is_all_colors_available ? $settings->color__button_active_id          : 'lightblue_l2' ];
             if ($name === 'color__button_text'           ) $color = $colors[ $is_all_colors_available ? $settings->color__button_text_id            : 'white'        ];
             if (empty($color->value_hex) === true) return 'transparent';
-            if (empty($color->value_hex) !== true && count($args) === 0) return $color->value_hex;
-            if (empty($color->value_hex) !== true && count($args) === 3) return $color->filter_shift((int)$args[0], (int)$args[1], (int)$args[2], 1, Color::RETURN_HEX);
-            if (empty($color->value_hex) !== true && count($args) === 4) return $color->filter_shift((int)$args[0], (int)$args[1], (int)$args[2], (float)$args[3], Color::RETURN_RGBA);
+            if (empty($color->value_hex) !== true && $args->get_count() === 0) return $color->value_hex;
+            if (empty($color->value_hex) !== true && $args->get_count() === 3) return $color->filter_shift((int)$args->get(0), (int)$args->get(1), (int)$args->get(2), 1, Color::RETURN_HEX);
+            if (empty($color->value_hex) !== true && $args->get_count() === 4) return $color->filter_shift((int)$args->get(0), (int)$args->get(1), (int)$args->get(2), (float)$args->get(3), Color::RETURN_RGBA);
+        }
+        if ($name === 'return_token_color_encode') {
+            if ($args->get_count() === 1) {
+                if ( (strpos($args->get(0), 'color__')        === 0 ||
+                      strpos($args->get(0), 'color_custom__') === 0) &&
+                      strpos($args->get(0), '%%') === false) {
+                    $value = Token::apply('%%_'.$args->get(0));
+                    if ($value) {
+                        return urlencode($value);
+                    }
+                }
+            }
+        }
+        if ($name === 'return_if_token_color_is_dark') {
+            if ($args->get_count() === 3) {
+                if ( (strpos($args->get(0), 'color__')        === 0 ||
+                      strpos($args->get(0), 'color_custom__') === 0) &&
+                      strpos($args->get(0), '%%') === false) {
+                    $value = Token::apply('%%_'.$args->get(0));
+                    if ($value) {
+                        $is_dark = (new Color(null, $value))->is_dark();
+                        if ($is_dark !== null) {
+                            return $is_dark ? $args->get(1) :
+                                              $args->get(2);
+                        }
+                    }
+                }
+            }
         }
     }
 

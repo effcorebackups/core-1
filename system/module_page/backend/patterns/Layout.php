@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Layout extends Node implements Has_external_cache {
 
     public $id;

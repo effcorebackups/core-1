@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Tree_item extends Node {
 
     public $template = 'tree_item';

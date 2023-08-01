@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Markup_XML extends Markup {
 
     public $template = 'markup_xml';

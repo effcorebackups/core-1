@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Frontend {
 
     public $display;

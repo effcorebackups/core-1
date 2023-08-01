@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_Files_videos extends Widget_Files {
 
     use Widget_Files_videos__Shared;

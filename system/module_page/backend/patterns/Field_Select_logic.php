@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_logic extends Field_Select {
 
     public $title = 'Logic';

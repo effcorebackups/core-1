@@ -5,8 +5,8 @@ module|Module
   group: Develop
   description: Module for demonstrating capabilities.
   copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
-  version: 0.907
+  version: 0.908
   dependencies
     system
-    - develop: 0.907
-    - test: 0.907
+    - develop: 0.908
+    - test: 0.908

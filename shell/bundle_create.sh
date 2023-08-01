@@ -28,6 +28,7 @@ rm $bundle_name
   find .                        -maxdepth 1 -type f      -name 'index.php'            & \
   find .                        -maxdepth 1 -type f      -name 'license.md'           & \
   find .                        -maxdepth 1 -type f      -name 'web.config'           & \
+  find .                        -maxdepth 1 -type f      -name 'readme.md'            & \
   find dynamic                  -maxdepth 1 -type f      -name 'readme.md'            & \
   find dynamic/cache            -maxdepth 1 -type f      -name 'readme.md'            & \
   find dynamic/data             -maxdepth 1 -type f      -name 'readme.md'            & \
@@ -41,7 +42,7 @@ rm $bundle_name
   find modules/vendors/backend              -type f -not -path '*/.*'                 & \
   find modules/vendors/data                 -type f -not -path '*/.*'                 & \
   find modules/examples                     -type f -not -path '*/.*'                 & \
-  find readme                               -type f -not -path '*/.*'                 & \
+  find docs                                 -type f -not -path '*/.*'                 & \
   find shell                                -type f -not -path '*/.*'                 & \
   find system                               -type f -not -path '*/.*';                  \
 } | zip -9 $bundle_name -@

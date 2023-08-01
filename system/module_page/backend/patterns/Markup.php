@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Markup extends Node {
 
     public $tag_name = 'div';

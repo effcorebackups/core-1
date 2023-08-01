@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Message extends Markup {
 
     public $tag_name = 'x-messages';

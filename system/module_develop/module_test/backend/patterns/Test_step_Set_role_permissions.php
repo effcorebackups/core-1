@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Test_step_Set_role_permissions {
 
     public $id_role;

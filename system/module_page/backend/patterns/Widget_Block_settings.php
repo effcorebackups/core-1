@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_Block_settings extends Container {
 
     public $tag_name = null;

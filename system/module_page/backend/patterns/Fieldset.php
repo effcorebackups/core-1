@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Fieldset extends Container {
 
     public $tag_name = 'fieldset';

@@ -11,6 +11,8 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Form extends Markup implements Has_external_cache {
 
     public $tag_name = 'form';

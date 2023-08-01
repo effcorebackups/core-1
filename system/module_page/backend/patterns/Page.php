@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Page extends Node implements Has_external_cache {
 
     public $template = 'page';

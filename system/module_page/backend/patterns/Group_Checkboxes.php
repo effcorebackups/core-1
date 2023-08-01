@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Group_Checkboxes extends Group_Radiobuttons {
 
     public $attributes = [

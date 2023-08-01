@@ -5,7 +5,7 @@ frontend
       where: cssid
       match: %^block__tree__languages$%
     styles
-    - page_style
+    - tree_style
         path: frontend/tree.cssd
         weight: +400
         attributes

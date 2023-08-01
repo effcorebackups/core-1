@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Instance implements Should_clear_cache_after_on_install {
 
     public $entity_name;

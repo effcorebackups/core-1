@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Widget_Items extends Control implements Control_complex {
 
     public $tag_name = 'x-widget';

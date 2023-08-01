@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Validator_step_Error_register {
 
     public $break; # null | 'nested' | 'global'

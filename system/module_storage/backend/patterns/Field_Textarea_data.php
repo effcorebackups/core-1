@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Textarea_data extends Field_Textarea {
 
     public $title = 'Data in "data" format';

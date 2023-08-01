@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Weight extends Field_Number {
 
     const INPUT_MIN_WEIGHT = -1000;

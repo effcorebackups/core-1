@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Module_as_profile extends Module {
 
     public $group = 'Profiles';

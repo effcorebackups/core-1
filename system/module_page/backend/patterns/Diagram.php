@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Diagram extends Container {
 
     public $tag_name = 'x-diagram';

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Module extends Module_embedded {
 
     public $group = 'Other';

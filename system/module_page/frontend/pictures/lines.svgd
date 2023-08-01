@@ -21,11 +21,11 @@
     </metadata>
 
     <g id="lines">
-        <line id="line-1" x1="-17.5" y1="42.5" x2="27.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|css_units); stroke-opacity: %%_return_url_arg(opacity|.08|css_units); stroke-width: 7px"/>
-        <line id="line-2" x1="2.5"   y1="42.5" x2="47.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|css_units); stroke-opacity: %%_return_url_arg(opacity|.08|css_units); stroke-width: 7px"/>
-        <line id="line-3" x1="22.5"  y1="42.5" x2="67.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|css_units); stroke-opacity: %%_return_url_arg(opacity|.08|css_units); stroke-width: 7px"/>
-        <line id="line-4" x1="42.5"  y1="42.5" x2="87.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|css_units); stroke-opacity: %%_return_url_arg(opacity|.08|css_units); stroke-width: 7px"/>
-        <line id="line-5" x1="-37.5" y1="42.5" x2="7.5"  y2="-2.5" style="stroke: %%_return_url_arg(color|white|css_units); stroke-opacity: %%_return_url_arg(opacity|.08|css_units); stroke-width: 7px"/>
+        <line id="line-1" x1="-17.5" y1="42.5" x2="27.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|filter_css_color=yes); stroke-opacity: %%_return_url_arg(opacity|.08|filter_css_float=yes); stroke-width: 7px"/>
+        <line id="line-2" x1="2.5"   y1="42.5" x2="47.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|filter_css_color=yes); stroke-opacity: %%_return_url_arg(opacity|.08|filter_css_float=yes); stroke-width: 7px"/>
+        <line id="line-3" x1="22.5"  y1="42.5" x2="67.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|filter_css_color=yes); stroke-opacity: %%_return_url_arg(opacity|.08|filter_css_float=yes); stroke-width: 7px"/>
+        <line id="line-4" x1="42.5"  y1="42.5" x2="87.5" y2="-2.5" style="stroke: %%_return_url_arg(color|white|filter_css_color=yes); stroke-opacity: %%_return_url_arg(opacity|.08|filter_css_float=yes); stroke-width: 7px"/>
+        <line id="line-5" x1="-37.5" y1="42.5" x2="7.5"  y2="-2.5" style="stroke: %%_return_url_arg(color|white|filter_css_color=yes); stroke-opacity: %%_return_url_arg(opacity|.08|filter_css_float=yes); stroke-width: 7px"/>
         %%_return_if_url_arg(animation|true|<animateTransform attributeType="XML" attributeName="transform" type="translate" from="0 0" to="-20 0" dur="0.3s" repeatCount="indefinite"/>)
     </g>
 

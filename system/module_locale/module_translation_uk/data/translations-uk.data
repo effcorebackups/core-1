@@ -571,6 +571,7 @@ translations
     - ok: ок
     - Okay: Добре
     - Only unique value is allowed.: Дозволяється тільки унікальне значення.
+    - OpenSSL version: OpenSSL версія
     - Operating System: Операційна система
     - Operator: Оператор
     - Order: Замовлення

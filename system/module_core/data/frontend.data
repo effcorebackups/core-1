@@ -5,8 +5,18 @@ frontend
       where: path
       match: %^.*$%
     scripts
-    - page_script
-        path: frontend/core.jsd
+    - class_Effcore
+        path: frontend/Effcore.jsd
+        weight: +600
+        attributes
+        - defer: true
+    - class_EffURL
+        path: frontend/EffURL.js
+        weight: +600
+        attributes
+        - defer: true
+    - polyfills
+        path: frontend/polyfills.js
         weight: +600
         attributes
         - defer: true

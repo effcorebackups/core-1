@@ -1,0 +1,38 @@
+
+'use strict';
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* Effcore singleton class                                               */
+/* ───────────────────────────────────────────────────────────────────── */
+
+class Effcore {
+
+    constructor() {
+        this.tokens = [];
+        this.tokens['text_no_items'                ] = '%%_return_translation(No items.)';
+        this.tokens['text_select_all_rows'         ] = '%%_return_translation(select all rows)';
+        this.tokens['thumbnail_path_cover_default' ] = '%%_thumbnail_path_cover_default';
+        this.tokens['thumbnail_path_poster_default'] = '%%_thumbnail_path_poster_default';
+        console.log(
+            'Effcore singleton class was initialized'
+        );
+    }
+
+    /* ─────────────────── */
+    /* static declarations */
+    /* ─────────────────── */
+
+    static getInstance() {
+        if (!this.instance) this.instance = new this;
+        return this.instance;
+    }
+
+    static getToken(name) {
+        return this.getInstance().tokens[name];
+    }
+
+    static getType(value) {
+        return Object.prototype.toString.call(value).slice(8, -1);
+    }
+
+}

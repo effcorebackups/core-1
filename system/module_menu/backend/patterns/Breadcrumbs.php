@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Breadcrumbs extends Markup {
 
     public $tag_name = 'nav';

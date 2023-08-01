@@ -33,11 +33,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://bitbucket.org/effcore/installer"
+            "url": "https://github.com/effectivecore/installer"
         },
         {
             "type": "vcs",
-            "url": "https://bitbucket.org/effcore/examples"
+            "url": "https://github.com/effectivecore/examples"
         }
     ],
     "config": {

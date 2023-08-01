@@ -9,6 +9,8 @@ namespace effcore;
 use ReflectionExtension;
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Module_embedded {
 
     # ─────────────────────────────────────────────────────────────────────

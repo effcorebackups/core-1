@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_relation extends Field_Select {
 
     public $title = 'Relation';

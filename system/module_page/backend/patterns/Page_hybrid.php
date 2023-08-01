@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Page_hybrid extends Page {
 
     const IS_LOADING_WAS_NOT            = 0b00;

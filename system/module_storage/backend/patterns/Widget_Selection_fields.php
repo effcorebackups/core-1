@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Widget_Selection_fields extends Widget_Items {
 
     public $title = 'Fields';

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Textarea extends Field_Text {
 
     public $title = 'Text area';

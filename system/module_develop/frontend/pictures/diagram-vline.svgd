@@ -20,6 +20,6 @@
         </rdf:RDF>
     </metadata>
 
-    <line id="vline" x1="15" y1="0" x2="15" y2="90" style="stroke: %%_return_url_arg(color|black|css_units)"/>
+    <line id="vline" x1="15" y1="0" x2="15" y2="90" style="stroke: %%_return_url_arg(color|black|filter_css_color=yes)"/>
 
 </svg>

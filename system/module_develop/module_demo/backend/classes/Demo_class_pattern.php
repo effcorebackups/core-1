@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Demo_class_pattern {
 
     public $prop_1 = 'property value 1';

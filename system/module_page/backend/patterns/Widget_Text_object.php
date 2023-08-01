@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_Text_object extends Control implements Control_complex {
 
     public $tag_name = 'x-group';

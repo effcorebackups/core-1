@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (head_cell && body_checkboxes.length) {
                 var checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
-                    checkbox.title = effcore.tokens['text_select_all_rows'];
+                    checkbox.title = Effcore.getToken('text_select_all_rows');
                 head_cell.append(checkbox);
                 checkbox.addEventListener('change', function () {
                     body_checkboxes.forEach(function (c_checkbox) {

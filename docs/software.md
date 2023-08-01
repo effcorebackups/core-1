@@ -7,20 +7,14 @@ Supported Software
 Clients Software
 ---------------------------------------------------------------------
 
-The following clients are supported:
-- Apple Safari v10+;
-- Apple Mobile Safari on iOS v8+;
-- Opera           (modern versions);
-- Mozilla Firefox (modern versions);
-- Google Chrome   (modern versions);
-- Microsoft Edge.
+All modern browsers with ES6 support.
 
 
 Server Software
 ---------------------------------------------------------------------
 
 Operating Systems:
-- UNIX (Apple macOS, FreeBSD) [priority];
+- UNIX [priority];
 - Linux;
 - Microsoft Windows.
 
@@ -41,23 +35,23 @@ Storage systems:
 - SQLite v3.6.19+.
 
 
-Apache
+Apache Requirements
 ---------------------------------------------------------------------
 
-To enable Apache, do the following:
-- enable module `php7_module`;
-- enable module `rewrite_module`;
-- enable module `dir_module`;
-- enable module `mime_module`.
+To work through Apache the following actions are required:
+- activate the module `php7_module`;
+- activate the module `rewrite_module`;
+- activate the module `dir_module`;
+- activate the module `mime_module`.
 
 If you got "500 Internal Server Error" see the Apache error log.
 
 
-NGINX
+NGINX Requirements
 ---------------------------------------------------------------------
 
-To enable NGINX, do the following (example for `/etc/nginx/`):
-- make "SETUP ACTIONS" from `.nginx`;
+To work through NGINX the following actions are required:
+- make "SETUP ACTIONS" from file `.nginx`;
 - run `php-fpm`.
 
 If you got "502 Bad Gateway" check if php-fpm is running.
@@ -66,7 +60,7 @@ If you got "502 Bad Gateway" check if php-fpm is running.
 Internet Information Services (IIS)
 ---------------------------------------------------------------------
 
-To enable IIS (for v7.5), do the following:
+To work through IIS v7.5+ the following actions are required:
 - in "Turn Windows features on or off" enable option _Internet Information Services → Web Management Tools → IIS Management Console_;
 - in "Turn Windows features on or off" enable option _Internet Information Services → World Wide Web Services → Application Development Features → CGI_;
 - in "Turn Windows features on or off" enable option _Internet Information Services → World Wide Web Services → Common HTTP Features → Static Content_;

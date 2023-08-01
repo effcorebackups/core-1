@@ -10,6 +10,8 @@ use Exception;
 use ReflectionClass;
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Storage_NoSQL_data implements Has_external_cache {
 
     public $name;

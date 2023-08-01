@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Micro_tabs extends Node {
 
     public $element_attributes = ['role' => 'micro_tabs-item'];

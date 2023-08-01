@@ -9,6 +9,8 @@ namespace effcore;
 use DateTimeZone;
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_timezone extends Field_Select {
 
     public $title = 'Time zone';

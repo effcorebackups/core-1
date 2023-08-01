@@ -124,9 +124,10 @@ class Url {
             $this->query     = $query;
             $this->anchor    = $anchor;
             $this->has_error = false;
-            if ($options['completion'] && $this->protocol === '') $this->protocol = $this->domain === Request::host_get(false) ? Request::scheme_get() : 'http';
-            if ($options['completion'] && $this->domain   === '') $this->domain   =                   Request::host_get(false);
-            if ($options['completion'] && $this->path     === '') $this->path     = '/';
+            if ($options['completion'] && $this->domain   === ''                                              ) $this->domain   = Request::host_get(false);
+            if ($options['completion'] && $this->protocol === '' && $this->domain === Request::host_get(false)) $this->protocol = Request::scheme_get();
+            if ($options['completion'] && $this->protocol === '' && $this->domain !== Request::host_get(false)) $this->protocol = 'http';
+            if ($options['completion'] && $this->path     === ''                                              ) $this->path     = '/';
             if ($options['decode'] & static::IS_DECODE_DOMAIN && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
             if ($options['decode'] & static::IS_DECODE_PATH) $this->path = rawurldecode($this->path);
         } else $this->has_error = true;

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Canvas_SVG extends Node_simple {
 
     public $template = 'canvas_svg';

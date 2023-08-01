@@ -1,7 +1,7 @@
 {
     "name": "effcore/installer",
     "description": "Extends the 'composer/installers' plugin to install EFFCORE packages and modules.",
-    "homepage": "https://bitbucket.org/effcore/installer",
+    "homepage": "https://github.com/effectivecore/installer",
     "type": "composer-plugin",
     "license": "proprietary",
     "authors": [

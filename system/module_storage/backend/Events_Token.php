@@ -12,7 +12,7 @@ use effcore\Text;
 
 abstract class Events_Token {
 
-    static function on_apply($name, $args = []) {
+    static function on_apply($name, $args) {
         switch ($name) {
             case 'instance_id_context'        : if (Page::get_current()) {return         Page::get_current()->args_get('instance_id');} break;
             case 'entity_name_context'        : if (Page::get_current()) {return         Page::get_current()->args_get('entity_name');} break;

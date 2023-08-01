@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Checkbox_color extends Field_Checkbox {
 
     public $title = 'Color';

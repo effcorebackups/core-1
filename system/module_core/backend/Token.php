@@ -6,6 +6,7 @@
 
 namespace effcore;
 
+use effcore\Token_args;
 use stdClass;
 
 abstract class Token {
@@ -14,10 +15,6 @@ abstract class Token {
 
     static function cache_cleaning() {
         static::$cache = null;
-    }
-
-    static function arg_decode($text) {
-        return str_replace(['\\(', '\\)', '\\|'], ['(', ')', '|'], $text);
     }
 
     static function init() {
@@ -61,10 +58,8 @@ abstract class Token {
         if ($string) {
             return preg_replace_callback('%\\%\\%_'.'(?<name>[a-z0-9_]{1,64})'.
                                            '(?:\\('.'(?<args>.{1,1024}?)'.'(?<!\\\\)'.'\\)|)%S', function ($c_match) {
-                $c_name =       $c_match['name'];
-                $c_args = isset($c_match['args']) ? preg_split('%(?<!\\\\)\\|%S', $c_match['args']) : [];
-                foreach ($c_args as $c_id => $c_arg)
-                    $c_args[$c_id] = static::arg_decode($c_arg);
+                $c_name = $c_match['name'];
+                $c_args = new Token_args($c_match['args'] ?? '');
                 $c_info = static::select($c_name);
                 if ($c_info) {
                     switch ($c_info->type) {

@@ -1,50 +1,30 @@
-# !!! THIS FILE WILL BE RESET TO DEFAULT STATE AFTER EACH SYSTEM UPDATE !!!
+
+#################################################################################
+### !!! THIS FILE WILL BE RESET TO DEFAULT STATE AFTER EACH SYSTEM UPDATE !!! ###
+#################################################################################
 
 # SETUP ACTIONS on 127.0.0.1 for `/etc/nginx/`:
-# - copy this file as `/etc/nginx/my_site.conf`;
-# - in file `/etc/nginx/nginx.conf` insert line `include /etc/nginx/my_site.conf;` to section `http`;
-# - in file `/etc/nginx/my_site.conf` replace the `%%_root`               to your site root path
-# - in file `/etc/nginx/my_site.conf` replace the `%%_include`            to `/etc/nginx/fastcgi.conf`
-# - in file `/etc/nginx/my_site.conf` replace the `%%_domain_crt`         to domain certificate path
-# - in file `/etc/nginx/my_site.conf` replace the `%%_domain_private_key` to domain private key path
-
+#     1. Here replace the `%%_root`               to your site root path
+#     2. Here replace the `%%_domain_crt`         to domain certificate path OR comment out this line with `#`
+#     3. Here replace the `%%_domain_private_key` to domain private key path OR comment out this line with `#`
+#     4. Here comment out this line `listen 127.0.0.1:443 ssl;` if you wan't to use HTTPS
+#     5. Here replace the `%%_include`            to `/etc/nginx/fastcgi.conf`
+#     6. Copy this file as `/etc/nginx/my_site.conf`
+#     7. In file `/etc/nginx/nginx.conf` in section `http` add
+#        the next line `include /etc/nginx/my_site.conf;`
+#
 # SETUP ACTIONS on 127.0.0.1 for `/usr/local/etc/nginx/`:
-# - copy this file as `/usr/local/etc/nginx/my_site.conf`;
-# - in file `/usr/local/etc/nginx/nginx.conf` insert line `include /usr/local/etc/nginx/my_site.conf;` to section `http`;
-# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_root`               to your site root path
-# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_include`            to `/usr/local/etc/nginx/fastcgi.conf`
-# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_domain_crt`         to domain certificate path
-# - in file `/usr/local/etc/nginx/my_site.conf` replace the `%%_domain_private_key` to domain private key path
+#     1. Here replace the `%%_root`               to your site root path
+#     2. Here replace the `%%_domain_crt`         to domain certificate path OR comment out this line with `#`
+#     3. Here replace the `%%_domain_private_key` to domain private key path OR comment out this line with `#`
+#     4. Here comment out this line `listen 127.0.0.1:443 ssl;` if you wan't to use HTTPS
+#     5. Here replace the `%%_include`            to `/usr/local/etc/nginx/fastcgi.conf`
+#     6. Copy this file as `/usr/local/etc/nginx/my_site.conf`
+#     7. In file `/usr/local/etc/nginx/nginx.conf` in section `http` add
+#        the next line `include /usr/local/etc/nginx/my_site.conf;`
 
 server {
     listen 127.0.0.1:80;
-    server_name 127.0.0.1;
-    root %%_root;
-    client_max_body_size 100M;
-    location ^~ /shell/                    {deny all; error_log off;}
-    location ^~ /dynamic/cache/            {deny all; error_log off;}
-    location ^~ /dynamic/data/             {deny all; error_log off;}
-    location ^~ /dynamic/logs/             {deny all; error_log off;}
-    location ~* /modules/vendors/packages/.*\.(apng|avif|gif|heif|ico|jpeg|jpg|png|svg|webp|css|js)$ {allow all;}
-    location ~* /modules/vendors/packages/ {deny all; error_log off;}
-    location ~* /composer.json$            {deny all; error_log off;}
-    location ~* /composer.lock$            {deny all; error_log off;}
-    location ~* /web.config$               {deny all; error_log off;}
-    location ~* .*\.data$                  {deny all; error_log off;}
-    location ~* .*\.php$                   {deny all; error_log off;}
-    location ~* /\.                        {deny all; error_log off;}
-    location ~* /\~                        {deny all; error_log off;}
-  # SINGLE ENTRY POINT
-    location / {
-        fastcgi_index index.php;
-        fastcgi_pass 127.0.0.1:9000;
-        include %%_include;
-        fastcgi_param SCRIPT_NAME /index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root/index.php;
-    }
-}
-
-server {
     listen 127.0.0.1:443 ssl;
     server_name 127.0.0.1;
     root                %%_root;

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_text_direction extends Field_Select {
 
     public $title = 'Text direction';

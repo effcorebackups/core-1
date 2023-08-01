@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Button extends Markup {
 
     public $tag_name = 'button';

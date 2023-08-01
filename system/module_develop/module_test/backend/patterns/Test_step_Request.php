@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Test_step_Request {
 
     public $url;
@@ -56,7 +58,13 @@ class Test_step_Request {
         $is_https = $this->is_https instanceof Param_from_form ?
                     $this->is_https->get() :
                     $this->is_https;
-        return ($is_https ? 'https' : 'http').'://'.Url::get_current()->domain.$this->url;
+        $protocol = $is_https ? 'https' : 'http';
+        $domain = Request::name_get();
+        $port = Request::port_get();
+        $url = $this->url;
+        if ($port !== '80' && $port !== '443')
+             return $protocol.'://'.$domain.':'.$port.$url;
+        else return $protocol.'://'.$domain.          $url;
     }
 
     function prepared_headers_get() {

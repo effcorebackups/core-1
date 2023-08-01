@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Entity implements Has_external_cache, Should_clear_cache_after_on_install, Has_postparse {
 
     public $name;

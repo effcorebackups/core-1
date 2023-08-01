@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_ID_number extends Field_Number {
 
     public $title = 'ID';

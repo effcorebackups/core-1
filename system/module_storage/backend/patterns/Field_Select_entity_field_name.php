@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_entity_field_name extends Field_Select {
 
     public $title = 'Field name';

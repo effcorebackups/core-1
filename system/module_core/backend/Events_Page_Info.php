@@ -85,6 +85,7 @@ abstract class Events_Page_Info {
         $decorator->id = 'environment_info';
         $decorator->data = [[
             'web_server'              => ['title' => 'Web server',                 'value' => ucfirst($web_server_info->name).' '.$web_server_info->version],
+            'openssl_version'         => ['title' => 'OpenSSL version',            'value' => OPENSSL_VERSION_TEXT                                         ],
             'php_version'             => ['title' => 'PHP version',                'value' => phpversion()                                                 ],
             'php_version_curl'        => ['title' => 'PHP CURL version',           'value' => $php_version_curl                                            ],
             'php_version_pcre'        => ['title' => 'PHP PCRE version',           'value' => PCRE_VERSION                                                 ],
@@ -100,6 +101,12 @@ abstract class Events_Page_Info {
             'operating_system'        => ['title' => 'Operating System',           'value' => php_uname('s').' | '.php_uname('r').' | '.php_uname('v')     ],
             'architecture'            => ['title' => 'Architecture',               'value' => php_uname('m')                                               ],
             'hostname'                => ['title' => 'Hostname',                   'value' => php_uname('n')                                               ],
+            'request_http_host'       => ['title' => 'HTTP_HOST',                  'value' => Request::host_get().' | '.Request::host_get(true)            ],
+            'request_name'            => ['title' => 'SERVER_NAME',                'value' => Request::name_get().' | '.Request::name_get(true)            ],
+            'request_addr'            => ['title' => 'SERVER_ADDR',                'value' => Request::addr_get()                                          ],
+            'request_port'            => ['title' => 'SERVER_PORT',                'value' => Request::port_get()                                          ],
+            'request_addr_remote'     => ['title' => 'REMOTE_ADDR',                'value' => Request::addr_remote_get()                                   ],
+            'request_port_remote'     => ['title' => 'REMOTE_PORT',                'value' => Request::port_remote_get()                                   ],
             'datetime'                => ['title' => 'Date/Time',                  'value' => Core::datetime_get().' (UTC)'                                ] ]];
         return new Node([], [
             $decorator

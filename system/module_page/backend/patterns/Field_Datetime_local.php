@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Datetime_local extends Field_Datetime {
 
     const INPUT_MIN_DATETIME = '0001-01-01 12:00:00';

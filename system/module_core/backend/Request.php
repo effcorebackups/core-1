@@ -235,17 +235,34 @@ abstract class Request {
     }
 
     static function host_get($decode = false) {
-        if ($decode && function_exists('idn_to_utf8') && idn_to_utf8($_SERVER['HTTP_HOST'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
-             return idn_to_utf8($_SERVER['HTTP_HOST'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
-        else return             $_SERVER['HTTP_HOST'];
+        $parts = strpos($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
+        if ($decode && function_exists('idn_to_utf8') &&
+                        idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
+            $parts[0] = idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        return implode(':', $parts);
+    }
+
+    static function name_get($decode = false) {
+        if ($decode && function_exists('idn_to_utf8') &&
+                    idn_to_utf8($_SERVER['SERVER_NAME'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
+             return idn_to_utf8($_SERVER['SERVER_NAME'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        else return $_SERVER['SERVER_NAME'];
     }
 
     static function addr_get() {
         return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'LOCAL_ADDR' : 'SERVER_ADDR'];
     }
 
+    static function port_get() {
+        return $_SERVER['SERVER_PORT'];
+    }
+
     static function addr_remote_get() {
         return $_SERVER['REMOTE_ADDR'];
+    }
+
+    static function port_remote_get() {
+        return $_SERVER['REMOTE_PORT'];
     }
 
     static function uri_get() {

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_File_picture extends Field_File {
 
     public $title = 'Picture';

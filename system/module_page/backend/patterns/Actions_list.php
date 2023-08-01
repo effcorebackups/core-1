@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Actions_list extends Markup {
 
     public $title = 'actions';

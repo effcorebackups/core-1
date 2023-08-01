@@ -635,7 +635,7 @@ abstract class Core {
 
     static function is_abbreviated_bytes($number) {
         $character = substr($number, -1);
-        return in_array($character, ['B', 'K', 'M', 'G', 'T'], true);
+        return static::in_array($character, ['B', 'K', 'M', 'G', 'T']);
     }
 
     static function abbreviated_to_bytes($abbreviated) {
@@ -830,14 +830,38 @@ abstract class Core {
         return false;
     }
 
+    static function validate_css_color($value) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^\\#[a-fA-F0-9]{3}$|^\\#[a-fA-F0-9]{6}$|^[a-zA-Z]{3,20}$%S']]); # examples: "#ff0", "#a1b2c3", "Red", "LightGoldenrodYellow"
+    }
+
+    static function validate_css_float($value) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9]{0,4}[\\.]{0,1}[0-9]{1,3}$%S']]); # examples: ".567", "1234.567", "1234567" | fake values: ".", "123.", "1.2.3", "12..3"
+    }
+
+    # valid values:
+    # ┌────────────┬─────────────┐
+    # │ 1234.567   │ -1234.567   │
+    # │ 1234 567   │ -1234 567   │
+    # │     .567   │ -    .567   │
+    # │      567   │ -     567   │
+    # ├────────────┼─────────────┤
+    # │ 1234.567px │ -1234.567px │
+    # │ 1234 567px │ -1234 567px │
+    # │     .567px │ -    .567px │
+    # │      567px │ -     567px │
+    # └────────────┴─────────────┘
+
+    static function validate_css_units($value) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+            '%^(?<sign>[\\-]{0,1})'. # examples: "-1px", "1234.567em", ".5%", "-.567px" | fake values: "-", ".", "px", "123.", "123-", "12-3", "12--3", "12..3", "1-2-3", "1.2.3"
+              '(?<value>[0-9]{0,4}[\\.]{0,1}[0-9]{1,3})'.
+              '(?<dimension>px|em|\\%|)$%S']]);
+    }
+
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function sanitize_id($value, $corrector = '-') {
         return preg_replace('%[^a-z0-9_\\-]%S', $corrector, strtolower($value));
-    }
-
-    static function sanitize_css_units($value) {
-        return preg_replace('%[^a-zA-Z0-9\\-\\.\\#\\%]%S', '-', $value); # eg: -1px, 2.3em, #a1b2c3, DarkMagenta, 100%
     }
 
     static function sanitize_url($value) {

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Nickname extends Field_Text {
 
     const CHARACTERS_ALLOWED = 'a-zA-Z0-9_\\-';

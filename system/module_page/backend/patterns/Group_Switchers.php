@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Group_Switchers extends Group_Checkboxes {
 
     public $attributes = [

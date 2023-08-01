@@ -17,18 +17,18 @@ abstract class Events_Token {
 
     protected static $cache = [];
 
-    static function on_apply($name, $args = []) {
+    static function on_apply($name, $args) {
         if ($name === 'test_software_name') return Request::software_get_info()->name ?? '';
-        if ($name === 'test_email_random'    && count($args) === 0) {                                                                                                                                            return 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX)).'@example.com';}
-        if ($name === 'test_nickname_random' && count($args) === 0) {                                                                                                                                            return 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX));               }
-        if ($name === 'test_password_random' && count($args) === 0) {                                                                                                                                            return         User::password_generate();                                        }
-        if ($name === 'test_email_random'    && count($args) === 1) {if (!isset( static::$cache['test_email_random'   ][Core::hash_get($args[0])] )) static::$cache['test_email_random'   ][Core::hash_get($args[0])] = 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX)).'@example.com'; return static::$cache['test_email_random'   ][Core::hash_get($args[0])];}
-        if ($name === 'test_nickname_random' && count($args) === 1) {if (!isset( static::$cache['test_nickname_random'][Core::hash_get($args[0])] )) static::$cache['test_nickname_random'][Core::hash_get($args[0])] = 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX));                return static::$cache['test_nickname_random'][Core::hash_get($args[0])];}
-        if ($name === 'test_password_random' && count($args) === 1) {if (!isset( static::$cache['test_password_random'][Core::hash_get($args[0])] )) static::$cache['test_password_random'][Core::hash_get($args[0])] =         User::password_generate();                                         return static::$cache['test_password_random'][Core::hash_get($args[0])];}
+        if ($name === 'test_email_random'    && $args->get_count() === 0) {                                                                                                                                                      return 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX)).'@example.com';}
+        if ($name === 'test_nickname_random' && $args->get_count() === 0) {                                                                                                                                                      return 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX));               }
+        if ($name === 'test_password_random' && $args->get_count() === 0) {                                                                                                                                                      return         User::password_generate();                                        }
+        if ($name === 'test_email_random'    && $args->get_count() === 1) {if (!isset( static::$cache['test_email_random'   ][Core::hash_get($args->get(0))] )) static::$cache['test_email_random'   ][Core::hash_get($args->get(0))] = 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX)).'@example.com'; return static::$cache['test_email_random'   ][Core::hash_get($args->get(0))];}
+        if ($name === 'test_nickname_random' && $args->get_count() === 1) {if (!isset( static::$cache['test_nickname_random'][Core::hash_get($args->get(0))] )) static::$cache['test_nickname_random'][Core::hash_get($args->get(0))] = 'test_'.Core::hash_get_mini(random_int(0, PHP_INT_32_MAX));                return static::$cache['test_nickname_random'][Core::hash_get($args->get(0))];}
+        if ($name === 'test_password_random' && $args->get_count() === 1) {if (!isset( static::$cache['test_password_random'][Core::hash_get($args->get(0))] )) static::$cache['test_password_random'][Core::hash_get($args->get(0))] =         User::password_generate();                                         return static::$cache['test_password_random'][Core::hash_get($args->get(0))];}
         if ($name === 'test_cookies') {
             $result = [];
             foreach (Test_step_Request::$history as $c_response) {
-                if ( isset($c_response['headers']['Set-Cookie']) ) {
+                if (isset($c_response['headers']['Set-Cookie'])) {
                     foreach ($c_response['headers']['Set-Cookie'] as $c_cookie) {
                         $c_key   = Core::array_key_first($c_cookie['parsed']);
                         $c_value =                 reset($c_cookie['parsed']);
@@ -44,10 +44,10 @@ abstract class Events_Token {
                 }
             }
         }
-        if ($name === 'test_form_validation_id' && count($args) === 1) {
+        if ($name === 'test_form_validation_id' && $args->get_count() === 1) {
             $last_response = end(Test_step_Request::$history);
             if ($last_response) {
-                return $last_response['headers']['X-Form-Validation-Id--'.$args[0]] ?? '';
+                return $last_response['headers']['X-Form-Validation-Id--'.$args->get(0)] ?? '';
             }
         }
         if (strpos($name, 'test_response_') === 0) {

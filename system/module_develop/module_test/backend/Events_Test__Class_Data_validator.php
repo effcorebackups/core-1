@@ -37,7 +37,7 @@ abstract class Events_Test__Class_Data_validator {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => Core::return_encoded($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
                 $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => 'undefined']);
                 $c_results['return'] = 0;
                 return;
@@ -46,7 +46,7 @@ abstract class Events_Test__Class_Data_validator {
 
         $structure_mismatching = array_diff($gotten, $expected);
         foreach ($structure_mismatching as $c_gotten) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => 'n/a']);
+            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => 'n/a']);
             $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten]);
         }
         if (count($structure_mismatching)) {
@@ -153,7 +153,7 @@ abstract class Events_Test__Class_Data_validator {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => Core::return_encoded($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
                 $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => 'undefined']);
                 $c_results['return'] = 0;
                 return;
@@ -162,7 +162,7 @@ abstract class Events_Test__Class_Data_validator {
 
         $structure_mismatching = array_diff($gotten, $expected);
         foreach ($structure_mismatching as $c_gotten) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => 'n/a']);
+            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => 'n/a']);
             $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten]);
         }
         if (count($structure_mismatching)) {

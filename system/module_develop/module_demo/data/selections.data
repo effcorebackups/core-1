@@ -65,7 +65,6 @@ selections
           weight: +400
       - f_unique
           entity_field_name: f_unique
-          is_apply_translation: true
           weight: +380
       - f_foreign
           entity_field_name: f_foreign
@@ -130,11 +129,9 @@ selections
           weight: +400
       - f_index_unique
           entity_field_name: f_index_unique
-          is_apply_translation: true
           weight: +380
       - f_index
           entity_field_name: f_index
-          is_apply_translation: true
           weight: +360
 - instance_select-demo_join|Selection
     id: instance_select-demo_join
@@ -271,7 +268,6 @@ selections
           weight: +400
       - f_unique
           entity_field_name: f_unique
-          is_apply_translation: true
           weight: +380
       - f_foreign
           entity_field_name: f_foreign
@@ -326,11 +322,9 @@ selections
           weight: +400
       - f_index_unique
           entity_field_name: f_index_unique
-          is_apply_translation: true
           weight: +380
       - f_index
           entity_field_name: f_index
-          is_apply_translation: true
           weight: +360
 - instance_select_multiple-demo_join|Selection
     id: instance_select_multiple-demo_join

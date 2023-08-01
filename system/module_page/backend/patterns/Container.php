@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Container extends Markup {
 
     public $tag_name = 'x-container';

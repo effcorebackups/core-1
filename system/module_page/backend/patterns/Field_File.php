@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_File extends Field {
 
     # FORM SUBMIT #1                                                    ◦ FORM SUBMIT #2

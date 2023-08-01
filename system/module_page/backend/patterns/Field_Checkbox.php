@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Checkbox extends Field_Radiobutton {
 
     public $title;

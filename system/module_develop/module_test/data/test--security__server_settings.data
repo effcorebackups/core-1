@@ -90,7 +90,7 @@ tests
         - response_check-accb0053-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -247,7 +247,7 @@ tests
         - response_check-d19b00c2-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/|/)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/|/)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -268,7 +268,7 @@ tests
         - response_check-e584344a-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/page|/page)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/page|/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -331,7 +331,7 @@ tests
         - response_check-c86a8464-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -352,7 +352,7 @@ tests
         - response_check-0b991962-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/section/page|/section/page)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section/page|/section/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -443,7 +443,7 @@ tests
         - response_check-2e01cfd8-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/file\.|/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/file\.|/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -464,7 +464,7 @@ tests
         - response_check-d53f7856-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/file\.type|/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/file\.type|/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -583,7 +583,7 @@ tests
         - response_check-4154782f-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/directory/file\.|/directory/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -604,7 +604,7 @@ tests
         - response_check-2137f0bd-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/directory/file\.type|/directory/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1933,7 +1933,7 @@ tests
         - response_check-bb480ca7-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/\?page=1|/\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/\?page=1|/\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1968,7 +1968,7 @@ tests
         - response_check-0b381b8b-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_host(preg_quote)/login\?page=1|/login\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1994,8 +1994,8 @@ tests
         # /composer.lock
         # /index.php
         # /license.md
-        # /readme
-        # /readme/about.md
+        # /docs
+        # /docs/security.md
         # /shell
         # /shell/dynamic_reset.sh
         # /dynamic
@@ -2029,7 +2029,7 @@ tests
         # /system/module_page/frontend/pictures/icons-element.svgd
         # /system/module_page/frontend/pictures/icons-file.svg
         # /system/module_page/frontend/template--canvas_svg.tpl
-        # /system/module_core/frontend/core.jsd
+        # /system/module_core/frontend/Effcore.jsd
         # /system/module_captcha/frontend/captcha.css
         # /modules
         # /modules/readme.md
@@ -2471,35 +2471,35 @@ tests
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/readme"
-        - request_url-7d0d3813|Test_step_Request
-            url: /readme
+        # url "/docs"
+        - request_url-755f86fe|Test_step_Request
+            url: /docs
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
               name: proxy
-        - response_check-7d0d3813|Test_step_Check
+        - response_check-755f86fe|Test_step_Check
             check: token
             where: %%_test_response_http_code
             match: 404
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/readme/about.md"
-        - request_url-139ebd60|Test_step_Request
-            url: /readme/about.md
+        # url "/docs/security.md"
+        - request_url-3c7ac230|Test_step_Request
+            url: /docs/security.md
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
               name: proxy
-        - response_check-139ebd60|Test_step_Check
+        - response_check-3c7ac230|Test_step_Check
             check: token
             where: %%_test_response_http_code
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        - response_check-139ebd60-return_level|Test_step_Check
+        - response_check-3c7ac230-return_level|Test_step_Check
             check: token
             where: %%_test_response_return_level
             match: system-exit
@@ -3108,14 +3108,14 @@ tests
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/system/module_core/frontend/core.jsd"
-        - request_url-7b7a0cc7|Test_step_Request
-            url: /system/module_core/frontend/core.jsd
+        # url "/system/module_core/frontend/Effcore.jsd"
+        - request_url-18d8bd8b|Test_step_Request
+            url: /system/module_core/frontend/Effcore.jsd
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
               name: proxy
-        - response_check-7b7a0cc7|Test_step_Check
+        - response_check-18d8bd8b|Test_step_Check
             check: token
             where: %%_test_response_http_code
             match: 200

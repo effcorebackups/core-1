@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Range extends Field_Number {
 
     const INPUT_MIN_RANGE = 0;

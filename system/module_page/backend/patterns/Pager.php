@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Pager extends Markup {
 
     const ERR_CODE_OK         = 0b0000;

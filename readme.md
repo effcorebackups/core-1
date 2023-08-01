@@ -15,14 +15,13 @@ General information
 - Is open source project: yes
 - License: proprietary software
 - Website: [http://effcore.com](http://effcore.com)
-- Main code repository: [https://bitbucket.org/effcore](https://bitbucket.org/effcore)
-- Mirror of main code repository: [https://github.com/effcore-foundation](https://github.com/effcore-foundation)
+- Code repository: [https://github.com/effectivecore](https://github.com/effectivecore)
 
 **EFFCORE** — the next-generation mini-CMS (Content Management System)
 and mini-CMF (Content Management Framework).
 It was developed between 2016 and 2023.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
-UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, Composer…
+UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, Composer, Docker…
 
 Can be used as a tool to create simple websites without the need for programming.
 It can be used as a tool for creating web portals and web services with the need
@@ -374,7 +373,7 @@ SQL
 ---------------------------------------------------------------------
 
 MySQL or SQLite can be used as SQL storage.
-Required versions can be found in the `readme/software.md` file.
+Required versions can be found in the `docs/software.md` file.
 The main emphasis in the System is on ANSI SQL and cross-platform.
 
 The following features are supported:
@@ -584,19 +583,9 @@ Licensing
 
 The System is **open and free**.
 
-The System is not in the public domain.
+The license agreement is simple and minimalistic and does not restrict
+the rights of respectable users.
 
-Any person or organization has the right to take the System,
-make changes to it or leave it unchanged, then, on the basis of such a System,
-create a website, a web portal, a web service and place it on a server (deployment),
-where the System will perform work and program files of the System
-should not become publicly available.
-
-An person or an organization has the right to distribute the System
-as part of other products only unchanged.
-
-Thus, the license agreement imposes a ban on the distribution of the System
-in a modified form. This is done to prevent malicious persons from impersonating
-the authors of this work. At the same time, conscientious users are essentially
-not limited in their rights.
+According to the license agreement, malicious users who would like to give
+out this work as their own will already be out of the legal field.
 

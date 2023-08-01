@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Widget_Selection_query_conditions extends Widget_Items {
 
     public $title = 'Conditions';

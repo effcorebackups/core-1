@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_block_preset extends Field_Select {
 
     public $title = 'Block preset';

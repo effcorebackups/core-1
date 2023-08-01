@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Markup_simple extends Node_simple {
 
     public $tag_name = 'input';

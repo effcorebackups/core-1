@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Group_Palette extends Group_Radiobuttons {
 
     public $title_tag_name = 'label';

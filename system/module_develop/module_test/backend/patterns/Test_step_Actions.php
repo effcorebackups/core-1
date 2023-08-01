@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Test_step_Actions {
 
     function run(&$test, $dpath, &$c_results) {

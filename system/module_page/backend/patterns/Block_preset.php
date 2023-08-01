@@ -8,6 +8,8 @@ namespace effcore;
 
 use stdClass;
 
+#[\AllowDynamicProperties]
+
 class Block_preset {
 
     public $id;                      # copy to: (new Block)->_preset->id

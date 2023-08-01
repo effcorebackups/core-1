@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Group_Radiobuttons extends Control implements Control_complex {
 
     public $tag_name = 'x-group';

@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Selection extends Markup implements Has_external_cache {
 
     const DEFAULT_LIMIT = 50;

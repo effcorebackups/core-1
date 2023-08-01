@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_Selection_field_settings extends Container {
 
     public $tag_name = null;

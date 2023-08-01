@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Tel extends Field_Text {
 
     public $title = 'Telephone number';

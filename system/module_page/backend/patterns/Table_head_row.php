@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Table_head_row extends Markup {
 
     public $tag_name = 'tr';

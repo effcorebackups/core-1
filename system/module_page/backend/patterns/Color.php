@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Color {
 
     const RETURN_HEX  = 0b00;
@@ -38,8 +40,9 @@ class Color {
             $new_r = max(min($rgb['r'] + (int)$r_offset, 255), 0);
             $new_g = max(min($rgb['g'] + (int)$g_offset, 255), 0);
             $new_b = max(min($rgb['b'] + (int)$b_offset, 255), 0);
+            $new_opacity = max(min($opacity, 1), 0);
             if ($return_mode === static::RETURN_RGB ) return  'rgb('.$new_r.','.$new_g.','.$new_b.')';
-            if ($return_mode === static::RETURN_RGBA) return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$opacity.')';
+            if ($return_mode === static::RETURN_RGBA) return 'rgba('.$new_r.','.$new_g.','.$new_b.','.$new_opacity.')';
             if ($return_mode === static::RETURN_HEX ) {
                 return '#'.str_pad(dechex($new_r), 2, '0', STR_PAD_LEFT).
                            str_pad(dechex($new_g), 2, '0', STR_PAD_LEFT).

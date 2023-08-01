@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Select_entity_name extends Field_Select {
 
     public $title = 'Entity name';

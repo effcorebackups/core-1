@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Area extends Markup {
 
     public $tag_name = 'x-area';

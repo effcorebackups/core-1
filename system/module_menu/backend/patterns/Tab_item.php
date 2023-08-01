@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Tab_item extends Node {
 
     public $template = 'tab_item';

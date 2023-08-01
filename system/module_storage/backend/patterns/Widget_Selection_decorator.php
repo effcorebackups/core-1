@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Widget_Selection_decorator extends Control implements Control_complex {
 
     public $tag_name = 'x-widget';

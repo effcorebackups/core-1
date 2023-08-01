@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+#[\AllowDynamicProperties]
+
 class Field_Captcha extends Field_Text {
 
     public $title = 'CAPTCHA';
