@@ -2,6 +2,6 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
-- return_translation
+- translation
     type: code
     handler: \effcore\modules\locale\Events_Token::on_apply

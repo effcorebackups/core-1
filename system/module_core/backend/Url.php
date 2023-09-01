@@ -157,9 +157,9 @@ class Url {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-    function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                                                     }
-    function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = http_build_query($args, '', '&', PHP_QUERY_RFC3986);}
-    function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = http_build_query($args, '', '&', PHP_QUERY_RFC3986);}
+    function query_arg_select($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args); return $args[$name] ?? null;                                            }
+    function query_arg_insert($name, $value) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);        $args[$name] = $value; $this->query = static::build_query($args);}
+    function query_arg_delete($name        ) {if ($this->has_error) return; $args = []; parse_str($this->query, $args);  unset($args[$name]);         $this->query = static::build_query($args);}
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -231,6 +231,23 @@ class Url {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+    static function build_query($data, $path = null) {
+        $result = [];
+        foreach ($data as $c_key => $c_value) {
+            $c_path = $path ? $path.'['.rawurlencode($c_key).']' :
+                                        rawurlencode($c_key);
+            if (is_array($c_value) === true) $result += static::build_query($c_value, $c_path);
+            if (is_array($c_value) !== true) $result[$c_path] = rawurlencode($c_value);
+        }
+        if ($path !== null) return $result;
+        if ($path === null) {
+            $final_result = [];
+            foreach ($result as $c_key => $c_value)
+                $final_result[]= $c_key.'='.$c_value;
+            return implode('&', $final_result);
+        }
+    }
+
     static function utf8_encode($value, $prefix = '', $range = self::VALID_UNICODE_RANGE) {
         return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
             if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
@@ -267,8 +284,8 @@ class Url {
     }
 
     static function back_part_make($arg_name = 'back', $url = null) {
-        if ($url) return $arg_name.'='.urlencode($url);
-        else      return $arg_name.'='.urlencode(static::get_current()->tiny_get());
+        if ($url) return $arg_name.'='.rawurlencode($url);
+        else      return $arg_name.'='.rawurlencode(static::get_current()->tiny_get());
     }
 
     static function go($url) {

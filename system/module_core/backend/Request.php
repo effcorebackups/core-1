@@ -242,7 +242,15 @@ abstract class Request {
         return implode(':', $parts);
     }
 
-    static function name_get($decode = false) {
+    static function hostname_get($decode = false) {
+        $parts = strpos($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
+        if ($decode && function_exists('idn_to_utf8') &&
+                           idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
+               $parts[0] = idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        return $parts[0];
+    }
+
+    static function server_name_get($decode = false) {
         if ($decode && function_exists('idn_to_utf8') &&
                     idn_to_utf8($_SERVER['SERVER_NAME'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
              return idn_to_utf8($_SERVER['SERVER_NAME'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);

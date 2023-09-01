@@ -11,6 +11,9 @@ tokens
 - request_host
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
+- request_hostname
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
 - request_addr
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply

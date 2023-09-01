@@ -460,7 +460,7 @@ An example of variables that can be used in dynamic files:
 - `%%_page_width_max_context`
 - `%%_request_scheme`
 - `%%_request_host`
-- `%%_return_translation(simple string)`
+- `%%_translation(simple string)`
 
 In fact:
 - *`*.cssd`* is a classic CSS file that contains cascading style sheets,

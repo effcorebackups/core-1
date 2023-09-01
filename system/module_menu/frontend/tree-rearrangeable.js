@@ -1,8 +1,15 @@
+
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* rearrangeable                                                         */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // rearrangeable
+    // ─────────────────────────────────────────────────────────────────────
 
     document.querySelectorAll('[role="tree"][data-visualization-mode="decorated-rearrangeable"]').forEach(function (c_has_rearrangeable) {
         c_has_rearrangeable.setAttribute('data-js-is-processed', '');

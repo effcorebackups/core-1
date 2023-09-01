@@ -19,13 +19,16 @@ abstract class Events_Token {
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
             case 'request_server_name':
-                $result = Request::name_get($args->get_named('decode') === 'yes');
+                $result = Request::server_name_get($args->get_named('decode') === 'yes');
                 if ($args->get_named('with_specific_port') === 'yes' && Request::port_get() !== '80' && Request::port_get() !== '443') $result = $result.':'.Request::port_get();
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
             case 'request_host':
                 $result = Request::host_get($args->get_named('decode') === 'yes');
-                if ($args->get_named('no_port') === 'yes' && strpos($result, ':')) $result = explode(':', $result)[0];
+                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
+                return $result;
+            case 'request_hostname':
+                $result = Request::hostname_get($args->get_named('decode') === 'yes');
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
             case 'request_addr':

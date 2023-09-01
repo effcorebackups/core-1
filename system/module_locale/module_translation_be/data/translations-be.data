@@ -346,6 +346,7 @@ translations
     - Hash sum: Хэш-сума
     - Headers: Загалоўкі
     - Hostname: Імя вузла сеткі
+    - HTTP_HOST (no port): HTTP_HOST (няма порта)
     - HTTPS is required: Патрабуецца HTTPS
     - I accept the terms of the license agreement.: Я прымаю ўмовы ліцэнзійнага пагаднення.
     - If a domain is specified, then it and its subdomains are used.: Калі дамен зададзены, то выкарыстоўваецца ён і яго поддомены.

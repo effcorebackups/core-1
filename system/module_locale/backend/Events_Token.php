@@ -12,7 +12,7 @@ abstract class Events_Token {
 
     static function on_apply($name, $args) {
         switch ($name) {
-            case 'return_translation':
+            case 'translation':
                 if ($args->get_count() === 1) return Translation::apply($args->get(0));
                 if ($args->get_count()  >  1) return Translation::apply($args->get(0), $args->get_named_all());
                 break;

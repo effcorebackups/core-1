@@ -76,7 +76,7 @@ abstract class Events_Token {
                       strpos($args->get(0), '%%') === false) {
                     $value = Token::apply('%%_'.$args->get(0));
                     if ($value) {
-                        return urlencode($value);
+                        return rawurlencode($value);
                     }
                 }
             }

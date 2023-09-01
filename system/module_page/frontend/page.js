@@ -1,15 +1,22 @@
+
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* this code activate hover state on iOS devices                         */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // this code activate hover state on iOS devices
+    // ─────────────────────────────────────────────────────────────────────
 
     document.addEventListener('touchstart', function () {
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* audio player                                                          */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // audio player
+    // ─────────────────────────────────────────────────────────────────────
 
     Element.prototype.process__defaultAudioPlayer = function () {
         var c_audio        = this;
@@ -54,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         c_time_total.innerText = '‐ : ‐ ‐';
         c_button_play.value = 'play';
 
-        /* bind events */
+        // bind events
         c_audio.addEventListener('loadedmetadata', on_updateTimeInfo);
         c_audio.addEventListener('timeupdate',     on_updateTimeInfo);
         c_audio.addEventListener('play',        function () {c_player.   setAttribute('data-is-playing', '');});
@@ -77,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
         c_audio.process__defaultAudioPlayer();
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* gallery player                                                        */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // gallery player
+    // ─────────────────────────────────────────────────────────────────────
 
     document.querySelectorAll('x-gallery[data-player-name="default"]').forEach(function (c_gallery) {
         var c_player               = document.createElement__withAttributes('x-gallery-player', {'aria-hidden' : 'true'});
@@ -103,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
         c_player_viewing_part.append(c_player_button_l, c_player_viewing_area, c_player_button_r);
         c_player.append(c_player_thumbnails, c_player_button_c, c_player_viewing_part);
 
-        /* bind events */
+        // bind events
         c_player_button_l.addEventListener('click', function () {player_move_L();});
         c_player_button_r.addEventListener('click', function () {player_move_R();});
         c_player_button_c.addEventListener('click', function () {player_hide();});
@@ -115,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        /* process of each gallery item */
+        // process of each gallery item
         c_gallery.querySelectorAll('x-item').forEach(function (c_item) {
             var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
             switch (c_item.getAttribute('data-type')) {
@@ -147,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     break;
             }
 
-            /* when click on item in gallery */
+            // when click on item in gallery
             c_item.addEventListener('click', function (event) {
                 event.stopPropagation();
                 event.preventDefault();
@@ -158,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }, true);
 
-            /* when click on thumbnail in player */
+            // when click on thumbnail in player
             c_thumbnail.addEventListener('click', function () {
                 thumbnails_reset_state();
                 c_thumbnail.setAttribute('aria-selected', 'true');

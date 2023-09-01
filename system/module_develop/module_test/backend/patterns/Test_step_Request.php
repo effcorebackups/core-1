@@ -59,7 +59,7 @@ class Test_step_Request {
                     $this->is_https->get() :
                     $this->is_https;
         $protocol = $is_https ? 'https' : 'http';
-        $domain = Request::name_get();
+        $domain = Request::server_name_get();
         $port = Request::port_get();
         $url = $this->url;
         if ($port !== '80' && $port !== '443')

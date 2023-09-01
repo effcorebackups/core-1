@@ -9,14 +9,14 @@ email: %%_email
 avatar_path: %%_avatar_path
 nickname_page_context: %%_nickname_page_context(some_page_arg|0)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_translation(simple string): %%_return_translation(simple string)
-return_translation(string with parameter = %_n|n=0): %%_return_translation(string with parameter = %%_n|n=0)
-return_translation(string with parameter = %_n|n=1): %%_return_translation(string with parameter = %%_n|n=1)
-return_translation(string with parameter = %_n|n=2): %%_return_translation(string with parameter = %%_n|n=2)
-return_translation(string with plural value = number second%_plural(number|s)|number=0): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
-return_translation(string with plural value = number second%_plural(number|s)|number=1): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
-return_translation(string with plural value = number second%_plural(number|s)|number=2): %%_return_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
-return_translation(unknown string): %%_return_translation(unknown string)
+translation(simple string): %%_translation(simple string)
+translation(string with parameter = %_n|n=0): %%_translation(string with parameter = %%_n|n=0)
+translation(string with parameter = %_n|n=1): %%_translation(string with parameter = %%_n|n=1)
+translation(string with parameter = %_n|n=2): %%_translation(string with parameter = %%_n|n=2)
+translation(string with plural value = number second%_plural(number|s)|number=0): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
+translation(string with plural value = number second%_plural(number|s)|number=1): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
+translation(string with plural value = number second%_plural(number|s)|number=2): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
+translation(unknown string): %%_translation(unknown string)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 page_id_context: %%_page_id_context(front)
 thumbnail_width_small: %%_thumbnail_width_small
@@ -78,12 +78,13 @@ request_scheme(preg_quote=yes): %%_request_scheme(preg_quote=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 request_host: %%_request_host
 request_host(preg_quote=yes): %%_request_host(preg_quote=yes)
-request_host(no_port=yes): %%_request_host(no_port=yes)
-request_host(no_port=yes|preg_quote=yes): %%_request_host(no_port=yes|preg_quote=yes)
 request_host(decode=yes): %%_request_host(decode=yes)
 request_host(decode=yes|preg_quote=yes): %%_request_host(decode=yes|preg_quote=yes)
-request_host(decode=yes|no_port=yes): %%_request_host(decode=yes|no_port=yes)
-request_host(decode=yes|no_port=yes|preg_quote=yes): %%_request_host(decode=yes|no_port=yes|preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request_hostname: %%_request_hostname
+request_hostname(preg_quote=yes): %%_request_hostname(preg_quote=yes)
+request_hostname(decode=yes): %%_request_hostname(decode=yes)
+request_hostname(decode=yes|preg_quote=yes): %%_request_hostname(decode=yes|preg_quote=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 request_server_name: %%_request_server_name
 request_server_name(preg_quote=yes): %%_request_server_name(preg_quote=yes)

@@ -41,6 +41,7 @@ translations
     - checking of item "%%_id"\: "%%_result": проверка пункта "%%_id": "%%_result"
     - checking on "%%_operand_1" %%_operator "%%_operand_2": проверка на "%%_operand_1" %%_operator "%%_operand_2"
     - Class "%%_name": Класс "%%_name"
+    - Class "%%_name" (JS): Класс "%%_name" (JS)
     - Classes: Классы
     - Collations: Сравнения
     - Color for generation: Цвет для генерации

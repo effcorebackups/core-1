@@ -1,7 +1,13 @@
 
-/* ───────────────────────────────────────────────────────────────────── */
-/* polyfills                                                             */
-/* ───────────────────────────────────────────────────────────────────── */
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
+// ─────────────────────────────────────────────────────────────────────
+// polyfills
+// ─────────────────────────────────────────────────────────────────────
 
 if (!Node.prototype.hasOwnProperty('prepend')) {
     Object.defineProperty(Node.prototype, 'prepend', {
@@ -59,9 +65,20 @@ if (!KeyboardEvent.prototype.hasOwnProperty('code')) {
     });
 }
 
-/* ───────────────────────────────────────────────────────────────────── */
-/* additions                                                             */
-/* ───────────────────────────────────────────────────────────────────── */
+// ─────────────────────────────────────────────────────────────────────
+// additions
+// ─────────────────────────────────────────────────────────────────────
+
+if (!Object.prototype.hasOwnProperty('maxIndex')) {
+    Object.defineProperty(Object.prototype, 'maxIndex', {
+        value: function () {
+            return Object.keys(this)
+                .filter((value) => /^[0-9]+$/.test(value))
+                .map((value) => parseInt(value))
+                .reduce((a, b) => Math.max(a, b), -1);
+        }
+    });
+}
 
 if (!Node.prototype.hasOwnProperty('querySelector__withHandler')) {
     Object.defineProperty(Node.prototype, 'querySelector__withHandler', {

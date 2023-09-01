@@ -1,0 +1,47 @@
+
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
+// ─────────────────────────────────────────────────────────────────────
+// Class EffcoreTest
+// ─────────────────────────────────────────────────────────────────────
+
+const DPATH = 'js';
+
+class EffcoreTest {
+
+    constructor(testClass, method) {
+        this.testClass = testClass;
+        this.method = method;
+        this.c_results = {};
+        this.c_results['reports'] = {};
+        this.c_results['reports'][DPATH] = [];
+        this.c_results['return'] = null;
+    }
+
+    run() {
+        this.c_results['reports'] = {};
+        this.c_results['reports'][DPATH] = [];
+        this.c_results['return'] = null;
+
+        this.reportLineSet('### dpath: ' + DPATH);
+        this.reportLineSet(Effcore.argsApply(Effcore.getTranslation('call "@@_call"'), {'call' : this.testClass.name + '.' + this.method}));
+        this.reportLineSet('');
+            this.testClass[this.method](this, DPATH, this.c_results);
+        this.reportLineSet('');
+
+        return this.c_results['return'];
+    }
+
+    reportGet() {
+        return this.c_results['reports'][DPATH];
+    }
+
+    reportLineSet(text) {
+        this.c_results['reports'][DPATH].push(text);
+    }
+
+}

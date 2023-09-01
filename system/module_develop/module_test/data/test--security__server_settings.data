@@ -90,7 +90,7 @@ tests
         - response_check-accb0053-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -247,7 +247,7 @@ tests
         - response_check-d19b00c2-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/|/)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/|/)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -268,7 +268,7 @@ tests
         - response_check-e584344a-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/page|/page)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/page|/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -331,7 +331,7 @@ tests
         - response_check-c86a8464-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section|/section)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -352,7 +352,7 @@ tests
         - response_check-0b991962-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/section/page|/section/page)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section/page|/section/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -443,7 +443,7 @@ tests
         - response_check-2e01cfd8-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/file\.|/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/file\.|/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -464,7 +464,7 @@ tests
         - response_check-d53f7856-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/file\.type|/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/file\.type|/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -583,7 +583,7 @@ tests
         - response_check-4154782f-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/directory/file\.|/directory/file\.)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -604,7 +604,7 @@ tests
         - response_check-2137f0bd-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1933,7 +1933,7 @@ tests
         - response_check-bb480ca7-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/\?page=1|/\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/\?page=1|/\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1968,7 +1968,7 @@ tests
         - response_check-0b381b8b-location|Test_step_Check
             check: token
             where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes\|preg_quote=yes)/login\?page=1|/login\?page=1)$%
+            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0

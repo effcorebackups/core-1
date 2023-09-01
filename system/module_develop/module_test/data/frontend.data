@@ -1,0 +1,28 @@
+frontend
+- page_test__js|Frontend
+    display
+      check: url
+      where: path
+      match: %^/develop/tests/.*__js$%
+    scripts
+    - class_EffcoreTest
+        path: frontend/EffcoreTest.jsd
+        weight: +600
+        attributes
+        - defer: true
+- page_test__class_url__js|Frontend
+    display
+      check: url
+      where: path
+      match: %^/develop/tests/class__url__js$%
+    scripts
+    - events
+        path: frontend/Events_Test__Class_Url.js
+        weight: +500
+        attributes
+        - defer: true
+    - runner
+        path: frontend/events_test__class_url__runner.js
+        weight: +400
+        attributes
+        - defer: true

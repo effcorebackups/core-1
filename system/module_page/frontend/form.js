@@ -1,52 +1,59 @@
+
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* range                                                                 */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // range
+    // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelector__withHandler('input[type="range"]', function (c_range) {
-        c_range.parentNode.querySelector__withHandler('x-value', function (x_value) {
-            c_range.addEventListener('mousemove', function () {
+    document.querySelector__withHandler('input[type="range"]', (c_range) => {
+        c_range.parentNode.querySelector__withHandler('x-value', (x_value) => {
+            c_range.addEventListener('mousemove', () => {
                 x_value.innerText = c_range.title = c_range.value;
             });
         });
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* timezone                                                              */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // timezone
+    // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('select[data-source="uagent-timezone"]').forEach(function (c_timezone) {
+    document.querySelectorAll('select[data-source="uagent-timezone"]').forEach((c_timezone) => {
         if (c_timezone.value === '' && window.Intl) {
             c_timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
         }
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* operator 'is null' + 'is not null' on Selection edit page             */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // operator 'is null' + 'is not null' on Selection edit page
+    // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('x-widget[data-type="items-query-conditions"] [data-type="manage"] x-widget[data-rowid]').forEach(function (c_row_widget) {
-        var c_field_operator = c_row_widget.querySelector('x-field[data-role="operator"] select');
-        var c_field_value    = c_row_widget.querySelector('x-field[data-role="value"] input');
+    document.querySelectorAll('x-widget[data-type="items-query-conditions"] [data-type="manage"] x-widget[data-rowid]').forEach((c_row_widget) => {
+        let c_field_operator = c_row_widget.querySelector('x-field[data-role="operator"] select');
+        let c_field_value    = c_row_widget.querySelector('x-field[data-role="value"] input');
         if (c_field_operator && c_field_value) {
-            c_field_operator.addEventListener('change', function () {
-                if (this.value === 'is null' ||
-                    this.value === 'is not null') {
+            c_field_operator.addEventListener('change', () => {
+                if (c_field_operator.value === 'is null' ||
+                    c_field_operator.value === 'is not null') {
                     c_field_value.value = 'n/a';
                 }
             });
         }
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* palette                                                               */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // palette
+    // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('x-group[data-type="palette"]').forEach(function (c_palette) {
-        c_palette.querySelector__withHandler('input[data-opener-type="palette"]', function (opener) {
-            c_palette.querySelectorAll('x-field input').forEach(function (c_input) {
-                c_input.addEventListener('click', function () {
+    document.querySelectorAll('x-group[data-type="palette"]').forEach((c_palette) => {
+        c_palette.querySelector__withHandler('input[data-opener-type="palette"]', (opener) => {
+            c_palette.querySelectorAll('x-field input').forEach((c_input) => {
+                c_input.addEventListener('click', () => {
                     opener.style.backgroundColor = c_input.style.backgroundColor;
                     opener.value                 = c_input.value;
                 });
@@ -54,31 +61,47 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* table-adaptive + check all                                            */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // table-adaptive + check all
+    // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('[data-selection]').forEach(function (c_selection) {
-        c_selection.querySelector__withHandler('[data-decorator][data-view-type="table-adaptive"]', function (decorator) {
-            var head_cell       = decorator.querySelector   ('x-head x-cell[data-cellid="checkbox-select"]');
-            var body_checkboxes = decorator.querySelectorAll('x-body x-cell[data-cellid="checkbox-select"] input[type="checkbox"]');
+    document.querySelectorAll('[data-selection]').forEach((c_selection) => {
+        c_selection.querySelector__withHandler('[data-decorator][data-view-type="table-adaptive"]', (decorator) => {
+            let head_cell       = decorator.querySelector   ('x-head x-cell[data-cellid="checkbox-select"]');
+            let body_checkboxes = decorator.querySelectorAll('x-body x-cell[data-cellid="checkbox-select"] input[type="checkbox"]');
             if (head_cell && body_checkboxes.length) {
-                var checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.title = Effcore.getToken('text_select_all_rows');
-                head_cell.append(checkbox);
-                checkbox.addEventListener('change', function () {
-                    body_checkboxes.forEach(function (c_checkbox) {
-                        c_checkbox.checked = checkbox.checked;
+                let check_all = document.createElement('input');
+                check_all.type = 'checkbox';
+                check_all.title = Effcore.getTranslation('select all rows');
+                head_cell.append(check_all);
+                // when clicking on "check_all"
+                check_all.addEventListener('change', () => {
+                    for (let c_checkbox of body_checkboxes) {
+                        c_checkbox.checked = check_all.checked;
+                    }
+                });
+                // when clicking on single checkbox
+                body_checkboxes.forEach((c_checkbox) => {
+                    c_checkbox.addEventListener('change', () => {
+                        let is_all_checked = c_checkbox.checked;
+                        for (let c_checkbox_test of body_checkboxes) {
+                            if (c_checkbox_test !== c_checkbox) {
+                                is_all_checked &= c_checkbox_test.checked;
+                                if (is_all_checked === false) {
+                                    break;
+                                }
+                            }
+                        }
+                        check_all.checked = is_all_checked;
                     });
                 });
             }
         });
     });
 
-    /* ───────────────────────────────────────────────────────────────────── */
-    /* rearrangeable                                                         */
-    /* ───────────────────────────────────────────────────────────────────── */
+    // ─────────────────────────────────────────────────────────────────────
+    // rearrangeable
+    // ─────────────────────────────────────────────────────────────────────
 
     document.querySelectorAll('[data-has-rearrangeable]').forEach(function (c_has_rearrangeable) {
         c_has_rearrangeable.setAttribute('data-js-is-processed', '');

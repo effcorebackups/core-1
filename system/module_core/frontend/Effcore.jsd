@@ -1,16 +1,30 @@
 
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
 'use strict';
 
-/* ───────────────────────────────────────────────────────────────────── */
-/* Effcore singleton class                                               */
-/* ───────────────────────────────────────────────────────────────────── */
+// ─────────────────────────────────────────────────────────────────────
+// Effcore singleton class
+// ─────────────────────────────────────────────────────────────────────
 
 class Effcore {
 
     constructor() {
+        this.translations = [];
+        this.translations['No items.'] = '%%_translation(No items.)';
+        this.translations['select all rows'] = '%%_translation(select all rows)';
+        this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
+        this.translations['expected value: "@@_value"'] = '%%_translation(expected value: "%%_value")';
+        this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
+        this.translations['gotten value: "@@_value"'] = '%%_translation(gotten value: "%%_value")';
+        this.translations['success'] = '%%_translation(success)';
+        this.translations['failure'] = '%%_translation(failure)';
+        this.translations['call "@@_call"'] = '%%_translation(call "%%_call")';
+        this.translations['The test was successful.'] = '%%_translation(The test was successful.)';
+        this.translations['The test was failed!'] = '%%_translation(The test was failed!)';
         this.tokens = [];
-        this.tokens['text_no_items'                ] = '%%_return_translation(No items.)';
-        this.tokens['text_select_all_rows'         ] = '%%_return_translation(select all rows)';
         this.tokens['thumbnail_path_cover_default' ] = '%%_thumbnail_path_cover_default';
         this.tokens['thumbnail_path_poster_default'] = '%%_thumbnail_path_poster_default';
         console.log(
@@ -18,9 +32,9 @@ class Effcore {
         );
     }
 
-    /* ─────────────────── */
-    /* static declarations */
-    /* ─────────────────── */
+    ///////////////////////////
+    /// static declarations ///
+    ///////////////////////////
 
     static getInstance() {
         if (!this.instance) this.instance = new this;
@@ -31,8 +45,41 @@ class Effcore {
         return this.getInstance().tokens[name];
     }
 
+    static getTranslation(name) {
+        return this.getInstance().translations[name];
+    }
+
     static getType(value) {
         return Object.prototype.toString.call(value).slice(8, -1);
+    }
+
+    static argsApply(string, args = {}) {
+        return string.replace(/%%_([a-zA-Z0-9_]+)/g, (c_arg, c_arg_name) => {
+            return args[c_arg_name] !== undefined ?
+                   args[c_arg_name] : '';
+        });
+    }
+
+    static messageAdd(text, type = 'ok') {
+        let messages_place = document.querySelector('[data-area-id="messages"] [data-id="block__messages"] [data-block-content]');
+        if (messages_place) {
+            let messages = messages_place.querySelector('x-messages');
+            if (messages === null) {
+                messages = document.createElement('x-messages');
+                messages_place.append(messages);
+            }
+            let list = messages.querySelector('ul[data-type="' + type + '"]');
+            if (list === null) {
+                list = document.createElement('ul');
+                list.setAttribute('data-type', type);
+                messages.append(list);
+            }
+            let item = document.createElement('li');
+            let item_text = document.createElement('p');
+            item_text.innerHTML = text;
+            item.append(item_text);
+            list.append(item);
+        }
     }
 
 }
