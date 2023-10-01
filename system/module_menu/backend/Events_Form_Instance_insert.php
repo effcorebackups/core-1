@@ -24,7 +24,7 @@ abstract class Events_Form_Instance_insert {
                 if (!$form->category_id)
                      $form->category_id = Page::get_current()->args_get('category_id');
                 # field 'parent'
-                $form->child_select('fields')->child_select('id_parent')->query_settings['conditions'] = [
+                $form->child_select('fields')->child_select('id_parent')->query_settings['where'] = [
                     'id_tree_!f'       => 'id_tree',
                     'id_tree_operator' => '=',
                     'id_tree_!v'       => $form->category_id

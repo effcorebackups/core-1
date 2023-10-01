@@ -21,7 +21,7 @@ class External_cache {
 
     function load_from_nosql_storage($with_restore = true) {
         if (!Cache::is_exists($this->cache_name) && $with_restore)
-            Storage_NoSQL_data::cache_update();
+            Storage_Data::cache_update();
         $result = Cache::select($this->cache_name);
         if ($result && !empty($this->module_id)) $result->module_id = $this->module_id;
         if ($result && !empty($this->origin   )) $result->origin    = $this->origin;

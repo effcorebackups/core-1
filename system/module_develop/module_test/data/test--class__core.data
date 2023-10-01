@@ -110,6 +110,54 @@ tests
           - name: Core::validate_mime_type()
     - code-validate_mime_type|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_mime_type
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-ip_to_hex|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::ip_to_hex()
+    - code-ip_to_hex|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__ip_to_hex
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-hex_to_ip|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::hex_to_ip()
+    - code-hex_to_ip|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__hex_to_ip
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_number_with_minus|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_number($value, true)
+    - code-validate_number_with_minus|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_number_with_minus
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_number|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_number($value, false)
+    - code-validate_number|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_number
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_int_with_minus|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_int_with_minus($value, true)
+    - code-validate_int_with_minus|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_int_with_minus
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_int|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::validate_int($value, false)
+    - code-validate_int|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_int
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

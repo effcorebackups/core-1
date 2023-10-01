@@ -3,10 +3,10 @@ tests
     id: demo
     title: Demo
     params
-    - quantity_of_iterations|Field_Number
-        title: Quantity of iterations
+    - quantity|Field_Number
+        title: Quantity of repetitions
         element_attributes
-        - name: quantity_of_iterations
+        - name: quantity
         - value: 1
         - min: 1
         - max: 100
@@ -27,10 +27,11 @@ tests
     - repeat|Test_step_Repeat
         id: cycle_1
         quantity|Param_from_form
-          name: quantity_of_iterations
+          name: quantity
+          default: 1
         actions
         - title|Test_step_Title
-            title|text
+            title|Text
               text: Title with token: "current iteration" = "%%_value"
               args
               - value: %%_test_step_repeat_i_cycle_1
@@ -78,21 +79,21 @@ tests
             - action-1|Test_step_Actions
                 actions
                 - title|Test_step_Title
-                    title|text
+                    title|Text
                       text: transposition "action" #%%_num
                       args
                       - num: 1
             - action-2|Test_step_Actions
                 actions
                 - title|Test_step_Title
-                    title|text
+                    title|Text
                       text: transposition "action" #%%_num
                       args
                       - num: 2
             - action-3|Test_step_Actions
                 actions
                 - title|Test_step_Title
-                    title|text
+                    title|Text
                       text: transposition "action" #%%_num
                       args
                       - num: 3

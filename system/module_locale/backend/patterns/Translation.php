@@ -8,7 +8,7 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Translation implements Has_external_cache {
+class Translation implements has_Data_cache {
 
     public $code;
     public $data;

@@ -8,7 +8,7 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Selection extends Markup implements Has_external_cache {
+class Selection extends Markup implements has_Data_cache {
 
     const DEFAULT_LIMIT = 50;
 
@@ -89,7 +89,7 @@ class Selection extends Markup implements Has_external_cache {
                             foreach ($c_join->fields as $c_field) {
                                 $this->query_settings['join_fields'][$c_join->entity_name.'.'.$c_field->entity_field_name] = [
                                     $c_field->entity_field_name.'_!f' => '~'.$c_join->entity_name.'.'.$c_field->entity_field_name, 'alias_begin' => 'as',
-                                                              'alias' => '"'.$c_join->entity_name.'.'.$c_field->entity_field_name.'"'
+                                                              'alias' => '`'.$c_join->entity_name.'.'.$c_field->entity_field_name.'`'
                                 ];
                             }
                         }

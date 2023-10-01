@@ -68,9 +68,9 @@ class Group_Radiobuttons extends Control implements Control_complex {
         }
     }
 
-    function items_set($items = [], $ws_rebuild = true) {
+    function items_set($items = [], $with_rebuild = true) {
         $this->items = $items;
-        if ($ws_rebuild) {
+        if ($with_rebuild) {
             $this->is_builded = false;
             $this->build();
         }

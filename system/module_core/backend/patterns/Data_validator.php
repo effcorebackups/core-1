@@ -8,7 +8,7 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Data_validator implements Has_external_cache {
+class Data_validator implements has_Data_cache {
 
     public $id;
     public $scenario;

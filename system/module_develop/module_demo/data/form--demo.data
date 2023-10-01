@@ -375,13 +375,13 @@ forms
             related_entity_field_id_name: id
             related_entity_field_title_name: title
             query_settings
-            - conditions
+            - where
               - id_tree_!f: id_tree
               - id_tree_operator: =
               - id_tree_!v: demo_sql
             - order
               - weight_!f: title
-              - weight_type: ASC
+              - weight_direction: ASC
             element_attributes
             - name: relation
             selected
@@ -398,7 +398,7 @@ forms
             related_entity_field_id_parent_name: id_parent
             related_entity_field_title_name: title
             query_settings
-            - conditions
+            - where
               - id_tree_!f: id_tree
               - id_tree_operator: =
               - id_tree_!v: demo_sql

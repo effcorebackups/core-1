@@ -1,0 +1,59 @@
+tests
+- class__storage_sql|Test
+    id: class__storage_sql
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Storage_SQL
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-query_prepare|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $storage->query_prepare()
+    - code-query_prepare|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__query_prepare
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-join|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: join
+    - code-join|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__join
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-group_by|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: group_by
+    - code-group_by|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__group_by
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-in|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: in
+    - code-in|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__in
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-distinct|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: distinct
+    - code-distinct|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__distinct
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-transaction|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: transaction
+    - code-transaction|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_SQL::test_step_code__transaction
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

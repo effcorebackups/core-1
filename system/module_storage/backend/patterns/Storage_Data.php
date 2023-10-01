@@ -12,7 +12,7 @@ use stdClass;
 
 #[\AllowDynamicProperties]
 
-class Storage_NoSQL_data implements Has_external_cache {
+class Storage_Data implements has_Data_cache {
 
     public $name;
 
@@ -144,7 +144,7 @@ class Storage_NoSQL_data implements Has_external_cache {
             static::$data[$c_catalog_name] = $c_data;
             $c_recursive_values = Core::arrobj_select_values_recursive($c_data, true);
             foreach ($c_recursive_values as $c_dpath => $c_value) {
-                if ($c_value instanceof Has_external_cache) {
+                if ($c_value instanceof has_Data_cache) {
                     $c_cache_id = 'data--'.$c_catalog_name.'-'.str_replace('/', '-', $c_dpath);
                     $c_not_external_properties = array_intersect_key((array)$c_value, $c_value::not_external_properties_get());
                     $result&= Cache::update($c_cache_id, $c_value);
@@ -290,7 +290,7 @@ class Storage_NoSQL_data implements Has_external_cache {
             elseif (is_string($c_value) && $c_value === NL      ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_nl';
             elseif (is_string($c_value) && $c_value === 'true'  ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_true';
             elseif (is_string($c_value) && $c_value === 'false' ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_string_false';
-            elseif (is_string($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.str_replace(NL, NL.'>>>>', $c_value);
+            elseif (is_string($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.str_replace(NL, NL.'////', $c_value);
             elseif (is_int   ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.Core::format_number($c_value);
             elseif (is_float ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.Core::format_number($c_value, Core::FPART_MAX_LEN);
             else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': __UNSUPPORTED_TYPE__';
@@ -502,9 +502,9 @@ class Storage_NoSQL_data implements Has_external_cache {
                         $c_class_name = '\\stdClass';
                     }
                     $c_reflection = new ReflectionClass($c_class_name);
-                    $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\Has_postconstructor');
-                    $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\Has_postinit');
-                    $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\Has_postparse');
+                    $c_is_postconstructor = $c_reflection->implementsInterface('\\effcore\\has_postconstructor');
+                    $c_is_postinit        = $c_reflection->implementsInterface('\\effcore\\has_postinit');
+                    $c_is_postparse       = $c_reflection->implementsInterface('\\effcore\\has_postparse');
                     if ($c_is_postconstructor)
                          $c_value = Core::class_get_new_instance($c_class_name);
                     else $c_value = Core::class_get_new_instance($c_class_name, [], true);

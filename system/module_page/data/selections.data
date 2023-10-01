@@ -5,7 +5,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -43,7 +43,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -81,7 +81,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -140,7 +140,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -184,7 +184,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -223,7 +223,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -448,7 +448,7 @@ selections
       - updated: updated
       - is_embedded: is_embedded
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -498,7 +498,7 @@ selections
       - updated: updated
       - is_embedded: is_embedded
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -549,7 +549,7 @@ selections
       - updated: updated
       - is_embedded: is_embedded
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -604,7 +604,7 @@ selections
       - updated: updated
       - is_embedded: is_embedded
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -655,7 +655,7 @@ selections
       - updated: updated
       - is_embedded: is_embedded
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text

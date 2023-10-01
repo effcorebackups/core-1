@@ -61,10 +61,11 @@ abstract class User {
 
     static function related_roles_select($id_user) {
         $result = [];
-        $items = Entity::get('relation_role_ws_user')->instances_select(['conditions' => [
-            'id_user_!f'       => 'id_user',
-            'id_user_operator' => '=',
-            'id_user_!v'       => $id_user]]);
+        $items = Entity::get('relation_role_with_user')->instances_select([
+            'where' => [
+                'id_user_!f'       => 'id_user',
+                'id_user_operator' => '=',
+                'id_user_!v'       => $id_user]]);
         foreach ($items as $c_item)
             $result[$c_item->id_role] =
                     $c_item->id_role;
@@ -73,7 +74,7 @@ abstract class User {
 
     static function related_roles_insert($id_user, $roles, $module_id = null) {
         foreach ($roles as $c_id_role) {
-            (new Instance('relation_role_ws_user', [
+            (new Instance('relation_role_with_user', [
                 'id_role'   => $c_id_role,
                 'id_user'   =>   $id_user,
                 'module_id' => $module_id
@@ -82,15 +83,16 @@ abstract class User {
     }
 
     static function related_roles_delete($id_user) {
-        Entity::get('relation_role_ws_user')->instances_delete(['conditions' => [
-            'id_user_!f'       => 'id_user',
-            'id_user_operator' => '=',
-            'id_user_!v'       => $id_user
+        Entity::get('relation_role_with_user')->instances_delete([
+            'where' => [
+                'id_user_!f'       => 'id_user',
+                'id_user_operator' => '=',
+                'id_user_!v'       => $id_user
         ]]);
     }
 
     static function related_role_delete($id_user, $id_role) {
-        (new Instance('relation_role_ws_user', [
+        (new Instance('relation_role_with_user', [
             'id_user' => $id_user,
             'id_role' => $id_role
         ]))->delete();

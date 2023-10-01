@@ -3,10 +3,10 @@ tests
     id: security__server_settings
     title: Security of Server Settings
     params
-    - quantity_of_iterations|Field_Number
-        title: Quantity of iterations
+    - quantity|Field_Number
+        title: Quantity of repetitions
         element_attributes
-        - name: quantity_of_iterations
+        - name: quantity
         - value: 1
         - min: 1
         - max: 20
@@ -26,7 +26,8 @@ tests
     scenario
     - repeat|Test_step_Repeat
         quantity|Param_from_form
-          name: quantity_of_iterations
+          name: quantity
+          default: 1
         actions
         # ─────────────────────────────────────────────────────────────────────
         # TRANSPOSITION OF THE "" CHARACTER
@@ -2017,7 +2018,6 @@ tests
         # /dynamic/tmp/readme.md
         # /system
         # /system/boot_web.php
-        # /system/boot_cli.php
         # /system/boot_initialization.php
         # /system/bundle.data
         # /system/module_page
@@ -2036,7 +2036,7 @@ tests
         # /modules/examples/bundle.data
         # /modules/examples/composer.json
         # /modules/examples/profile_classic/backend/Events_Module.php
-        # /modules/examples/profile_classic/copy/sitemap.xml
+        # /modules/examples/profile_classic/files/sitemap.xml
         # /modules/examples/profile_classic/data/settings.data
         # /modules/examples/profile_classic/frontend/page.cssd
         # /modules/examples/profile_classic/frontend/template--page--not_found.tpl
@@ -2891,27 +2891,6 @@ tests
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/system/boot_cli.php"
-        - request_url-8f11ff45|Test_step_Request
-            url: /system/boot_cli.php
-            is_https|Param_from_form
-              name: is_https
-            proxy|Param_from_form
-              name: proxy
-        - response_check-8f11ff45|Test_step_Check
-            check: token
-            where: %%_test_response_http_code
-            match: 403
-            on_failure
-            - return_result|Test_step_Return
-                value: 0
-        - response_check-8f11ff45-return_level|Test_step_Check
-            check: token
-            where: %%_test_response_return_level
-            match: 
-            on_failure
-            - return_result|Test_step_Return
-                value: 0
         # url "/system/boot_initialization.php"
         - request_url-7ebbe527|Test_step_Request
             url: /system/boot_initialization.php
@@ -3227,14 +3206,14 @@ tests
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/modules/examples/profile_classic/copy/sitemap.xml"
-        - request_url-81e0fa44|Test_step_Request
-            url: /modules/examples/profile_classic/copy/sitemap.xml
+        # url "/modules/examples/profile_classic/files/sitemap.xml"
+        - request_url-49aa60f4|Test_step_Request
+            url: /modules/examples/profile_classic/files/sitemap.xml
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
               name: proxy
-        - response_check-81e0fa44|Test_step_Check
+        - response_check-49aa60f4|Test_step_Check
             check: token
             where: %%_test_response_http_code
             match: 200

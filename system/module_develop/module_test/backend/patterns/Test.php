@@ -8,11 +8,12 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Test implements Has_external_cache {
+class Test implements has_Data_cache {
 
     public $id;
     public $title;
     public $description;
+    public $type = 'php';
     public $params;
     public $scenario;
 

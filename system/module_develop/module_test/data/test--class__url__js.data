@@ -5,13 +5,7 @@ tests
       text: Class "%%_name" (JS)
       args
       - name: Url
+    type: js
     scenario
-    # ═════════════════════════════════════════════════════════════════════
-    - title-construct|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: $url->construct()
-    # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
-        value: 1
+        value: 0

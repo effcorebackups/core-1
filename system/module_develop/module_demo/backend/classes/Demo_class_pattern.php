@@ -10,14 +10,14 @@ namespace effcore;
 
 class Demo_class_pattern {
 
-    public $prop_1 = 'property value 1';
-    public $prop_2 = 'property value 2';
-    public $prop_3 = 'property value 3';
+    public $property_1 = 'property value 1';
+    public $property_2 = 'property value 2';
+    public $property_3 = 'property value 3';
 
-    public $prop_as_array = [
-        'item 1' => 'item value 1',
-        'item 2' => 'item value 2',
-        'item 3' => 'item value 3'
+    public $property_as_array = [
+        'key 1' => 'value 1',
+        'key 2' => 'value 2',
+        'key 3' => 'value 3'
     ];
 
 }

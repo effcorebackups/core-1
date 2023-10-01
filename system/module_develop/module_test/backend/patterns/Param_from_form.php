@@ -11,10 +11,11 @@ namespace effcore;
 class Param_from_form {
 
     public $name;
+    public $default;
 
     function get() {
         if ($this->name) {
-            return Request::value_get($this->name);
+            return Request::value_get($this->name, 0, '_POST', $this->default);
         }
     }
 

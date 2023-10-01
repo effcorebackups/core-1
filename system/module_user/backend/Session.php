@@ -12,13 +12,13 @@ abstract class Session {
 
     static function select_all_by_id_user($id_user) {
         return Entity::get('session')->instances_select([
-            'conditions' => [
+            'where' => [
                 'id_user_!f'       => 'id_user',
                 'id_user_operator' => '=',
                 'id_user_!v'       => $id_user],
             'order' => [
-                'expired_!f'   => 'expired',
-                'expired_type' => 'DESC'
+                'expired_!f'        => 'expired',
+                'expired_direction' => 'DESC'
             ]], 'id'
         );
     }
@@ -76,10 +76,11 @@ abstract class Session {
     }
 
     static function cleaning() {
-        Entity::get('session')->instances_delete(['conditions' => [
-            'expired_!f'       => 'expired',
-            'expired_operator' => '<',
-            'expired_!v'       => Core::datetime_get()
+        Entity::get('session')->instances_delete([
+            'where' => [
+                'expired_!f'       => 'expired',
+                'expired_operator' => '<',
+                'expired_!v'       => Core::datetime_get()
         ]]);
     }
 

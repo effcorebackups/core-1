@@ -11,7 +11,7 @@ namespace effcore;
 class Field_Select_relation extends Field_Select {
 
     public $title = 'Relation';
-    public $title_ws_id = true;
+    public $title_with_id = true;
     public $title__not_selected = '- select -';
     public $attributes = ['data-type' => 'relation'];
     public $element_attributes = [
@@ -47,8 +47,8 @@ class Field_Select_relation extends Field_Select {
         $result = [];
         foreach ($field->_instances as $c_instance) {
             $c_id_real = $c_instance->{$field->related_entity_field_id_name};
-            if ($field->title_ws_id === true) $result[$c_id_real] = new Text_multiline(['title' => $c_instance->{$field->related_entity_field_title_name}, 'id' => '('.$c_id_real.')'], [], ' ');
-            if ($field->title_ws_id !== true) $result[$c_id_real] = new Text_multiline(['title' => $c_instance->{$field->related_entity_field_title_name}                            ], [], ' ');
+            if ($field->title_with_id === true) $result[$c_id_real] = new Text_multiline(['title' => $c_instance->{$field->related_entity_field_title_name}, 'id' => '('.$c_id_real.')'], [], ' ');
+            if ($field->title_with_id !== true) $result[$c_id_real] = new Text_multiline(['title' => $c_instance->{$field->related_entity_field_title_name}                            ], [], ' ');
         }
         return $result;
     }
@@ -70,8 +70,8 @@ class Field_Select_relation extends Field_Select {
         foreach ($tree->children_select_recursive(null, '', false, true) as $c_npath => $c_child) {
             $c_id_real = $c_child->id_real;
             $c_depth_marker = str_repeat('—', Core::path_get_depth($c_npath) + 1);
-            if ($field->title_ws_id === true) $result[$c_id_real] = new Text_multiline(['depth_marker' => $c_depth_marker, 'title' => $c_child->title, 'id' => '('.$c_id_real.')'], [], ' ');
-            if ($field->title_ws_id !== true) $result[$c_id_real] = new Text_multiline(['depth_marker' => $c_depth_marker, 'title' => $c_child->title                            ], [], ' ');
+            if ($field->title_with_id === true) $result[$c_id_real] = new Text_multiline(['depth_marker' => $c_depth_marker, 'title' => $c_child->title, 'id' => '('.$c_id_real.')'], [], ' ');
+            if ($field->title_with_id !== true) $result[$c_id_real] = new Text_multiline(['depth_marker' => $c_depth_marker, 'title' => $c_child->title                            ], [], ' ');
         }
         return $result;
     }

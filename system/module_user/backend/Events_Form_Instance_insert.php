@@ -19,7 +19,7 @@ abstract class Events_Form_Instance_insert {
         if ($form->has_error_on_build === false &&
             $form->has_no_fields      === false) {
             $entity = Entity::get($form->entity_name);
-            if ($entity->name === 'relation_role_ws_user') {
+            if ($entity->name === 'relation_role_with_user') {
                 # field 'role'
                 $form->child_select('fields')->child_select('id_role')->disabled['anonymous' ] = 'anonymous';
                 $form->child_select('fields')->child_select('id_role')->disabled['registered'] = 'registered';
@@ -54,13 +54,15 @@ abstract class Events_Form_Instance_insert {
         switch ($form->clicked_button->value_get()) {
             case 'insert':
             case 'insert_and_update':
-                if ($entity->name === 'relation_role_ws_user' && !$form->has_error()) {
+                if ($entity->name === 'relation_role_with_user' && !$form->has_error()) {
                     # field 'user' + field 'role'
                     $id_user = $items['#id_user']->value_get();
                     $id_role = $items['#id_role']->value_get();
-                    $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
-                        'id_user' => ['id_user_!f' => 'id_user', 'id_user_operator' => '=', 'id_user_!v' => $id_user],
-                        'id_role' => ['id_role_!f' => 'id_role', 'id_role_operator' => '=', 'id_role_!v' => $id_role] ]], 'limit' => 1]);
+                    $result = $entity->instances_select([
+                        'where' => ['conjunction_!and' => [
+                            'id_user' => ['field_!f' => 'id_user', 'operator' => '=', 'value_!v' => $id_user],
+                            'id_role' => ['field_!f' => 'id_role', 'operator' => '=', 'value_!v' => $id_role] ]],
+                        'limit' => 1]);
                     if ($result) {
                         $items['#id_user']->error_set();
                         $items['#id_role']->error_set(new Text_multiline([
@@ -69,13 +71,15 @@ abstract class Events_Form_Instance_insert {
                         ));
                     }
                 }
-                if ($entity->name === 'relation_role_ws_permission' && !$form->has_error()) {
+                if ($entity->name === 'relation_role_with_permission' && !$form->has_error()) {
                     # field 'role' + field 'permission'
                     $id_role       = $items['#id_role'      ]->value_get();
                     $id_permission = $items['#id_permission']->value_get();
-                    $result = $entity->instances_select(['conditions' => ['conjunction_!and' => [
-                        'id_role'       => [      'id_role_!f' => 'id_role',             'id_role_operator' => '=',       'id_role_!v' => $id_role      ],
-                        'id_permission' => ['id_permission_!f' => 'id_permission', 'id_permission_operator' => '=', 'id_permission_!v' => $id_permission] ]], 'limit' => 1]);
+                    $result = $entity->instances_select([
+                        'where' => ['conjunction_!and' => [
+                            'id_role'       => ['field_!f' => 'id_role',       'operator' => '=', 'value_!v' => $id_role      ],
+                            'id_permission' => ['field_!f' => 'id_permission', 'operator' => '=', 'value_!v' => $id_permission] ]],
+                        'limit' => 1]);
                     if ($result) {
                         $items['#id_role'      ]->error_set();
                         $items['#id_permission']->error_set(new Text_multiline([

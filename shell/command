@@ -12,4 +12,47 @@ if (version_compare(PHP_VERSION, '7.1.0', '>=') !== true) {
 }
 
 require_once('../system/boot_initialization.php');
-require_once('../system/boot_cli.php');
+
+effcore\Language::code_set_current('en');
+
+$command_name = $_SERVER['argv'][1] ?? null;
+$command_args = $_SERVER['argv'] ? array_slice($_SERVER['argv'], 2) : [];
+
+foreach ($command_args as $c_arg_num => $c_arg_value) {
+    $c_matches = [];
+    preg_match('%^[\\-]{1,2}(?<name>[a-z0-9_]{1,64})(?:[=](?<value>.*)|)$%S', $c_arg_value, $c_matches);
+    if (array_key_exists('name', $c_matches)) {
+        if (array_key_exists('value', $c_matches))
+              $command_args[$c_matches['name']] = $c_matches['value'];
+        else  $command_args[$c_matches['name']] = true;
+        unset($command_args[$c_arg_num]);
+    }
+}
+
+if (!$command_name) {
+    print 'COMMAND NAME IS REQUIRED!'.effcore\NL.effcore\NL;
+    print 'FORMAT: ./command <name>'            .effcore\NL.effcore\NL;
+    print 'The following names are available:'  .effcore\NL;
+    foreach (effcore\Command::get_all() as $c_command) {
+        print '  - '.$c_command->name.': '.
+                     $c_command->description.effcore\NL;
+    }
+    exit();
+}
+
+if (!effcore\Command::get($command_name)) {
+    print 'INVALID COMMAND NAME!'               .effcore\NL.effcore\NL;
+    print 'FORMAT: ./command <name>'            .effcore\NL.effcore\NL;
+    print 'The following names are available:'  .effcore\NL;
+    foreach (effcore\Command::get_all() as $c_command) {
+        print '  - '.$c_command->name.': '.
+                     $c_command->description.effcore\NL;
+    }
+    exit();
+}
+
+effcore\Command::get($command_name)->run(
+    $command_name, $command_args
+);
+
+exit();

@@ -389,7 +389,7 @@ instances
     - decorator_settings
       - view_type: table-dl
     - query_settings
-      - conditions
+      - where
         - nickname_!f: nickname
         - nickname_operator: =
         - nickname_!v|Text

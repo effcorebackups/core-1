@@ -74,7 +74,7 @@ class Tabs extends Node {
         ]))->render() : '';
     }
 
-    function get_first_branch($ws_access = true) {
+    function get_first_branch($with_access = true) {
         $result = [];
         static::init();
         $this->build();
@@ -84,8 +84,8 @@ class Tabs extends Node {
                 Core::array_sort_by_number($c_children);
                 $c_found = false;
                 foreach ($c_children as $c_child) {
-                    if ( ($ws_access !== true) ||
-                         ($ws_access === true && Access::check($c_child->access)) ) {
+                    if ( ($with_access !== true) ||
+                         ($with_access === true && Access::check($c_child->access)) ) {
                         $result[] = $c_child;
                         $c_children = $c_child->children;
                         $c_found = true;

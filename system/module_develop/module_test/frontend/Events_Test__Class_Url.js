@@ -109,7 +109,6 @@ class Events_Test__Class_Url {
                 return;
             }
         }
-
     }
 
     static test_step_code__has_error(test, dpath, c_results) {

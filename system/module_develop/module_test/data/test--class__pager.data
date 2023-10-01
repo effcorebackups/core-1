@@ -1,0 +1,19 @@
+tests
+- class__pager|Test
+    id: class__pager
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Pager
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-build|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Pager->build()
+    - code-build|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Pager::test_step_code__build
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

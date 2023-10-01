@@ -27,27 +27,27 @@ class Test_step_Request {
                     $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
                     $c_results['reports'][$dpath][] = new Text('make request to "%%_url"', ['url'   => $this->prepared_url_get()]);
         if ($proxy) $c_results['reports'][$dpath][] = new Text('proxy server = %%_proxy',  ['proxy' => $proxy]);
-        foreach ($prepared_headers as           $c_value) $c_results['reports'][$dpath][] = new Text('&ndash; request header param "%%_value"',           [                  'value' => $c_value]);
-        foreach ($prepared_post    as $c_key => $c_value) $c_results['reports'][$dpath][] = new Text('&ndash; request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
+        foreach ($prepared_headers as           $c_value) $c_results['reports'][$dpath][] = new Text('- request header param "%%_value"',           [                  'value' => $c_value]);
+        foreach ($prepared_post    as $c_key => $c_value) $c_results['reports'][$dpath][] = new Text('- request post param "%%_name" = "%%_value"', ['name' => $c_key, 'value' => $c_value]);
         # make request
         $response = Request::make(
             $prepared_url,
             $prepared_headers,
             $prepared_post, ['proxy' => $proxy]);
-        if (isset($response['info'   ]['http_code'                 ])) $c_results['reports'][$dpath][] = new Text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'http_code',                  'value' => $response['info'   ]['http_code'   ]]);
-        if (isset($response['info'   ]['primary_ip'                ])) $c_results['reports'][$dpath][] = new Text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_ip',                 'value' => $response['info'   ]['primary_ip'  ]]);
-        if (isset($response['info'   ]['primary_port'              ])) $c_results['reports'][$dpath][] = new Text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_port',               'value' => $response['info'   ]['primary_port']]);
-        if (isset($response['info'   ]['local_ip'                  ])) $c_results['reports'][$dpath][] = new Text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'local_ip',                   'value' => $response['info'   ]['local_ip'    ]]);
-        if (isset($response['info'   ]['local_port'                ])) $c_results['reports'][$dpath][] = new Text('&ndash; response '.    'param "%%_name" = "%%_value"', ['name' => 'local_port',                 'value' => $response['info'   ]['local_port'  ]]);
-        if (isset($response['headers']['X-PHP-Memory-usage'        ])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-PHP-Memory-usage',         'value' => $response['headers']['X-PHP-Memory-usage'].' ('.Locale::format_bytes  ($response['headers']['X-PHP-Memory-usage']).')' ]);
-        if (isset($response['headers']['X-Time-total'              ])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Time-total',               'value' => $response['headers']['X-Time-total'      ].' ('.Locale::format_msecond($response['headers']['X-Time-total'      ]).')' ]);
-        if (isset($response['headers']['X-Form-Submit-Errors-Count'])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Form-Submit-Errors-Count', 'value' => $response['headers']['X-Form-Submit-Errors-Count'] ]);
-        if (isset($response['headers']['X-Return-level'            ])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'X-Return-level',             'value' => $response['headers']['X-Return-level'            ] ]);
-        if (isset($response['headers']['Location'                  ])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'Location',                   'value' => $response['headers']['Location'                  ] ]);
-        if (isset($response['headers']['Content-Length'            ])) $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'Content-Length',             'value' => $response['headers']['Content-Length'            ] ]);
+        if (isset($response['info'   ]['http_code'                 ])) $c_results['reports'][$dpath][] = new Text('- response '.    'param "%%_name" = "%%_value"', ['name' => 'http_code',                  'value' => $response['info'   ]['http_code'   ]]);
+        if (isset($response['info'   ]['primary_ip'                ])) $c_results['reports'][$dpath][] = new Text('- response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_ip',                 'value' => $response['info'   ]['primary_ip'  ]]);
+        if (isset($response['info'   ]['primary_port'              ])) $c_results['reports'][$dpath][] = new Text('- response '.    'param "%%_name" = "%%_value"', ['name' => 'primary_port',               'value' => $response['info'   ]['primary_port']]);
+        if (isset($response['info'   ]['local_ip'                  ])) $c_results['reports'][$dpath][] = new Text('- response '.    'param "%%_name" = "%%_value"', ['name' => 'local_ip',                   'value' => $response['info'   ]['local_ip'    ]]);
+        if (isset($response['info'   ]['local_port'                ])) $c_results['reports'][$dpath][] = new Text('- response '.    'param "%%_name" = "%%_value"', ['name' => 'local_port',                 'value' => $response['info'   ]['local_port'  ]]);
+        if (isset($response['headers']['X-PHP-Memory-usage'        ])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'X-PHP-Memory-usage',         'value' => $response['headers']['X-PHP-Memory-usage'].' ('.Locale::format_bytes  ($response['headers']['X-PHP-Memory-usage']).')' ]);
+        if (isset($response['headers']['X-Time-total'              ])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'X-Time-total',               'value' => $response['headers']['X-Time-total'      ].' ('.Locale::format_msecond($response['headers']['X-Time-total'      ]).')' ]);
+        if (isset($response['headers']['X-Form-Submit-Errors-Count'])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'X-Form-Submit-Errors-Count', 'value' => $response['headers']['X-Form-Submit-Errors-Count'] ]);
+        if (isset($response['headers']['X-Return-level'            ])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'X-Return-level',             'value' => $response['headers']['X-Return-level'            ] ]);
+        if (isset($response['headers']['Location'                  ])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'Location',                   'value' => $response['headers']['Location'                  ] ]);
+        if (isset($response['headers']['Content-Length'            ])) $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'Content-Length',             'value' => $response['headers']['Content-Length'            ] ]);
         if (isset($response['headers']['Set-Cookie'                ])) {
             foreach ($response['headers']['Set-Cookie'] as $c_cookie) {
-                $c_results['reports'][$dpath][] = new Text('&ndash; response header param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
+                $c_results['reports'][$dpath][] = new Text('- response header param "%%_name" = "%%_value"', ['name' => 'Set-Cookie', 'value' => $c_cookie['raw']]);
             }
         }
         $c_results['response'] = $response;

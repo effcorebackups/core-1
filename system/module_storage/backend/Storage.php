@@ -16,8 +16,8 @@ abstract class Storage {
 
     static function init($name) {
         if (!isset(static::$cache[$name])) {
-            Storage_NoSQL_data::init('storages');
-            foreach (Storage_NoSQL_data::$data['storages'] as $c_module_id => $c_module_storages) {
+            Storage_Data::init('storages');
+            foreach (Storage_Data::$data['storages'] as $c_module_id => $c_module_storages) {
                 foreach ($c_module_storages as $c_row_id => $c_storage) {
                     if ($c_storage->name === $name) {
                         static::$cache[$c_storage->name] = $c_storage;

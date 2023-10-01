@@ -26,3 +26,19 @@ frontend
         weight: +400
         attributes
         - defer: true
+- page_test__js__js|Frontend
+    display
+      check: url
+      where: path
+      match: %^/develop/tests/js__js$%
+    scripts
+    - events
+        path: frontend/Events_Test__JS.js
+        weight: +500
+        attributes
+        - defer: true
+    - runner
+        path: frontend/events_test__JS__runner.js
+        weight: +400
+        attributes
+        - defer: true

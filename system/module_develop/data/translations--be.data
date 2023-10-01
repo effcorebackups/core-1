@@ -10,10 +10,10 @@ translations
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.
 >>>>> Тэкст параграфа. Тэкст параграфа. Тэкст параграфа. Тэкст параграфа.&NewLine;
-    - &ndash; request header param "%%_value": &ndash; header-параметр запыту "%%_value"
-    - &ndash; request post param "%%_name" = "%%_value": &ndash; post-параметр запыту "%%_name" = "%%_value"
-    - &ndash; response header param "%%_name" = "%%_value": &ndash; header-параметр адказу "%%_name" = "%%_value"
-    - &ndash; response param "%%_name" = "%%_value": &ndash; параметр адказу "%%_name" = "%%_value"
+    - - request header param "%%_value": - header-параметр запыту "%%_value"
+    - - request post param "%%_name" = "%%_value": - post-параметр запыту "%%_name" = "%%_value"
+    - - response header param "%%_name" = "%%_value": - header-параметр адказу "%%_name" = "%%_value"
+    - - response param "%%_name" = "%%_value": - параметр адказу "%%_name" = "%%_value"
     - + the extension is always enabled: + пашырэнне заўсёды ўключана
     - ± the extension is enabled by default: ± пашырэнне ўключана па змаўчанні
     - − the extension is not enabled by default: − пашырэнне ня ўключана па змаўчанні
@@ -40,8 +40,8 @@ translations
     - Checkbox 4 (disabled + checked): Сцяжок 4 (адключаны + адзначаны)
     - checking of item "%%_id"\: "%%_result": праверка пункта "%%_id": "%%_result"
     - checking on "%%_operand_1" %%_operator "%%_operand_2": праверка на "%%_operand_1" %%_operator "%%_operand_2"
-    - Class "%%_name": Клас "%%_name"
     - Class "%%_name" (JS): Клас "%%_name" (JS)
+    - Class "%%_name": Клас "%%_name"
     - Classes: Класы
     - Collations: Параўнанні
     - Color for generation: Колер для генерацыі
@@ -127,6 +127,7 @@ translations
     - item #3: пункт №3
     - Join: Злучэнне
     - Joins: Злучэння
+    - JS functioning (JS): JS-функцыянаванне (JS)
     - Main content of Micro Tab #%%_num: Асноўны змест мікра-ўкладкі №%%_num
     - make request to "%%_url": зрабіць запыт на "%%_url"
     - Markup dynamic: Разметка дынамічная
@@ -181,7 +182,7 @@ translations
     - property public: уласцівасць публічная
     - proxy server = %%_proxy: проксі-сервер = %%_proxy
     - Proxy server: Проксі-сервер
-    - Quantity of iterations: Колькасць ітэрацый
+    - Quantity of repetitions: Колькасць паўтораў
     - Radiobutton 1: Перамыкач 1
     - Radiobutton 2 (checked): Перамыкач 2 (адзначаны)
     - Radiobutton 3 (disabled): Перамыкач 3 (адключаны)
@@ -195,6 +196,7 @@ translations
     - Releases of the project %%_project_title_context: Выпускі праекта %%_project_title_context
     - Releases: Выпускі
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
+    - RESEARCH THE WORD "%%_word": ДАСЛЕДАВАЦЬ СЛОВА "%%_word"
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
     - return = "%%_return": вяртанне = "%%_return"
     - roles after insertion\: %%_roles: ролі пасля ўстаўкі: %%_roles

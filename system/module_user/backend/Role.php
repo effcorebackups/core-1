@@ -31,8 +31,8 @@ class Role {
              static::$is_init___sql = true;
             $instances = Entity::get('role')->instances_select([
                 'order' => ['fields_!,' => [
-                    'weight' => ['weight_!f' => 'weight', 'weight_type' => 'DESC'],
-                    'title'  => [ 'title_!f' => 'title',   'title_type' => 'ASC' ] ]] ]);
+                    'weight' => ['weight_!f' => 'weight', 'weight_direction' => 'DESC'],
+                    'title'  => [ 'title_!f' => 'title',   'title_direction' => 'ASC' ] ]] ]);
             foreach ($instances as $c_instance) {
                 $c_role = new static;
                 foreach ($c_instance->values_get() as $c_key => $c_value)
@@ -54,10 +54,11 @@ class Role {
 
     static function related_permissions_select($id_role) {
         $result = [];
-        $items = Entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
-            'id_role_!f'       => 'id_role',
-            'id_role_operator' => '=',
-            'id_role_!v'       => $id_role]]);
+        $items = Entity::get('relation_role_with_permission')->instances_select([
+            'where' => [
+                'id_role_!f'       => 'id_role',
+                'id_role_operator' => '=',
+                'id_role_!v'       => $id_role]]);
         foreach ($items as $c_item)
             $result[$c_item->id_permission] =
                     $c_item->id_permission;
@@ -66,11 +67,12 @@ class Role {
 
     static function related_permissions_by_roles_select($roles) {
         $result = [];
-        $items = Entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
-            'id_role_!f'           => 'id_role',
-            'id_in_begin_operator' => 'in (',
-            'id_in_!v'             => $roles,
-            'id_in_end_operator'   => ')']]);
+        $items = Entity::get('relation_role_with_permission')->instances_select([
+            'where' => [
+                'id_role_!f'           => 'id_role',
+                'id_in_begin_operator' => 'in (',
+                'id_in_!v'             => $roles,
+                'id_in_end_operator'   => ')']]);
         foreach ($items as $c_item)
             $result[$c_item->id_permission] =
                     $c_item->id_permission;
@@ -79,7 +81,7 @@ class Role {
 
     static function related_permissions_insert($id_role, $permissions, $module_id = null) {
         foreach ($permissions as $c_id_permission) {
-            (new Instance('relation_role_ws_permission', [
+            (new Instance('relation_role_with_permission', [
                 'id_permission' => $c_id_permission,
                 'id_role'       => $id_role,
                 'module_id'     => $module_id
@@ -88,15 +90,16 @@ class Role {
     }
 
     static function related_permissions_delete($id_role) {
-        Entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
-            'id_role_!f'       => 'id_role',
-            'id_role_operator' => '=',
-            'id_role_!v'       => $id_role
+        Entity::get('relation_role_with_permission')->instances_delete([
+            'where' => [
+                'id_role_!f'       => 'id_role',
+                'id_role_operator' => '=',
+                'id_role_!v'       => $id_role
         ]]);
     }
 
     static function related_permission_delete($id_role, $id_permission) {
-        (new Instance('relation_role_ws_permission', [
+        (new Instance('relation_role_with_permission', [
             'id_role'       => $id_role,
             'id_permission' => $id_permission
         ]))->delete();

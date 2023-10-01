@@ -134,10 +134,11 @@ class Tree_item extends Node {
         if (Tree::select($id_tree)         &&
             Tree::select($id_tree)->origin === 'sql') {
             static::$is_init___sql_by_tree[$id_tree] = true;
-            $instances = Entity::get('tree_item')->instances_select(['conditions' => [
-                'id_tree_!f'       => 'id_tree',
-                'id_tree_operator' => '=',
-                'id_tree_!v'       => $id_tree]], 'id');
+            $instances = Entity::get('tree_item')->instances_select([
+                'where' => [
+                    'id_tree_!f'       => 'id_tree',
+                    'id_tree_operator' => '=',
+                    'id_tree_!v'       => $id_tree]], 'id');
             foreach ($instances as $c_instance) {
                 $c_tree_item = new static(
                     $c_instance->title,

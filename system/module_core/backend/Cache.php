@@ -37,10 +37,10 @@ abstract class Cache extends Dynamic {
     }
 
     static function update_global($modules_to_include = []) {
-        static::cleaning();                                    # delete dynamic/cache/*.php
-        Core::structures_select($modules_to_include);          # create dynamic/cache/structures.php
-        Storage_NoSQL_data::cache_update($modules_to_include); # create dynamic/cache/data--*.php
-        Core::structures_cache_cleaning_after_on_install();    # method *::cache_cleaning() call for each class which implements "Should_clear_cache_after_on_install"
+        static::cleaning();                              # delete dynamic/cache/*.php
+        Core::structures_select($modules_to_include);    # create dynamic/cache/structures.php
+        Storage_Data::cache_update($modules_to_include); # create dynamic/cache/data--*.php
+        Core::structures_cache_cleaning_after_install(); # method *::cache_cleaning() call for each class which implements "cache_cleaning_after_install"
     }
 
 }

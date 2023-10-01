@@ -66,14 +66,14 @@ class Language {
         return static::get($code)->plurals ?? [];
     }
 
+    static function code_get_setting() {
+        return Module::settings_get('locale')->lang_code;
+    }
+
     static function code_get_current() {
         if   (!static::$current)
                static::$current = static::code_get_setting();
         return static::$current;
-    }
-
-    static function code_get_setting() {
-        return Module::settings_get('locale')->lang_code;
     }
 
     static function code_set_current($code) {

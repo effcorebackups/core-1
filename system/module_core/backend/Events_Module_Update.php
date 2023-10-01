@@ -63,7 +63,7 @@ abstract class Events_Module_update {
             $repo_path_tmp = realpath(DIR_DYNAMIC.'tmp').DIRECTORY_SEPARATOR.'.git_restore-'.$bundle_id;
             if ($repo_path_cur !== false) {
                 $result = [];
-                if (Core::php_is_on_win()) {
+                if (Core::is_Win()) {
                     $commands = [
                         'hostname '                                                                               .$stderr_to_stdout,
                         'whoami '                                                                                 .$stderr_to_stdout,

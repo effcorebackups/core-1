@@ -2423,7 +2423,7 @@ instances
     - decorator_settings
       - view_type: table-dl
     - query_settings
-      - conditions
+      - where
         - nickname_!f: nickname
         - nickname_operator: =
         - nickname_!v|Text
@@ -2488,16 +2488,16 @@ instances
         - attributes: this_attributes
         - link_attributes: link_attributes
     - query_settings
-      - conditions
+      - where
         - conjunction_!and
           - id
-            - id_!f: id
-            - id_in_begin_operator: in (
-            - id_in_!v
+            - field_!f: id
+            - in_operator_begin: in (
+            - in_value_!v
               - 0: logotype_twitter
               - 1: logotype_facebook
               - 2: logotype_instagram
-            - id_in_end_operator: )
+            - in_operator_end: )
     - fields
       - main
         - id

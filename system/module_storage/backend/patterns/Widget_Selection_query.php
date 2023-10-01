@@ -34,11 +34,11 @@ class Widget_Selection_query extends Control implements Control_complex {
 
     function value_get($options = []) { # @return: array | serialize(array)
         $result = [];
-        # prepare conditions
+        # prepare where
         if ($this->_instance->data['is_custom_conditions'] ?? false) {
             $conditions = $this->controls['#conditions_data']->value_data_get()->conditions ?? null;
-               $result['conditions'] = is_array($conditions) ? $conditions : [];
-        } else $result['conditions'] = $this->controls['*widget_query_conditions']->value_get_prepared();
+               $result['where'] = is_array($conditions) ? $conditions : [];
+        } else $result['where'] = $this->controls['*widget_query_conditions']->value_get_prepared();
         # prepare order
         $result['order'] = $this->controls['*widget_query_order']->value_get_prepared();
         # prepare limit
@@ -55,11 +55,11 @@ class Widget_Selection_query extends Control implements Control_complex {
         if ($value === null) $value = [];
         if ($value ===  '' ) $value = [];
         if (is_array($value)) {
-            # prepare conditions
-            if (!empty($value['conditions'])) {
+            # prepare where
+            if (!empty($value['where'])) {
                 if ($this->_instance->data['is_custom_conditions'] ?? false)
-                     $this->controls['#conditions_data']->value_data_set($value['conditions'], 'conditions');
-                else $this->controls['*widget_query_conditions']->value_set_prepared($value['conditions'], $options);
+                     $this->controls['#conditions_data']->value_data_set($value['where'], 'conditions');
+                else $this->controls['*widget_query_conditions']->value_set_prepared($value['where'], $options);
             }
             # prepare order
             if (!empty($value['order'])) {

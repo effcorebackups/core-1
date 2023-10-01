@@ -30,7 +30,7 @@ abstract class Events_Form_Instance_select_multiple {
                 if (isset($trees[$form->category_id])) {
                     # drag-and-drop functionality
                     $form->_selection->is_builded = false;
-                    $form->_selection->query_settings['conditions'] = [
+                    $form->_selection->query_settings['where'] = [
                         'id_tree_!f'       => 'id_tree',
                         'id_tree_operator' => '=',
                         'id_tree_!v'       => $form->category_id];
@@ -70,10 +70,11 @@ abstract class Events_Form_Instance_select_multiple {
                 if ($entity->name === 'tree_item' && $form->category_id) {
                     $event->is_last = true;
                     $has_changes = false;
-                    $tree_items = Entity::get('tree_item')->instances_select(['conditions' => [
-                        'id_tree_!f'       => 'id_tree',
-                        'id_tree_operator' => '=',
-                        'id_tree_!v'       => $form->category_id]], 'id');
+                    $tree_items = Entity::get('tree_item')->instances_select([
+                        'where' => [
+                            'id_tree_!f'       => 'id_tree',
+                            'id_tree_operator' => '=',
+                            'id_tree_!v'       => $form->category_id]], 'id');
                     foreach ($tree_items as $c_item) {
                         $c_new_parent = Request::value_get('parent-'.$c_item->id) ?: null;
                         $c_new_weight = Request::value_get('weight-'.$c_item->id) ?: '0';

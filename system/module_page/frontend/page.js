@@ -118,7 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (c_player.getAttribute('aria-hidden') !== 'true') {
                 if (event.code === 'ArrowLeft' ) player_move_L();
                 if (event.code === 'ArrowRight') player_move_R();
-                if (event.code === 'Escape'    ) player_hide();
+                if (event.code === 'Escape'    ) {
+                    event.preventDefault();
+                    player_hide();
+                }
             }
         });
 

@@ -8,7 +8,7 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Event implements Should_clear_cache_after_on_install {
+class Event implements cache_cleaning_after_install {
 
     public $for;
     public $handler;

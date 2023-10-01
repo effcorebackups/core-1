@@ -450,9 +450,9 @@ tests
     # ─────────────────────────────────────────────────────────────────────
     # registered user + role
     # ─────────────────────────────────────────────────────────────────────
-    - title-registered_user_ws_role-delimiter|Test_step_Title
+    - title-registered_user_with_role-delimiter|Test_step_Title
         title: ==================================================================
-    - title-registered_user_ws_role|Test_step_Title
+    - title-registered_user_with_role|Test_step_Title
         title: REGISTERED USER + ROLE
     - set_user_roles|Test_step_Set_user_roles
         nickname: %%_test_nickname_random(0)

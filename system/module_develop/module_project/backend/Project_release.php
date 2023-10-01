@@ -15,9 +15,12 @@ abstract class Project_release {
     }
 
     static function select($id_project, $build) {
-        return Entity::get('project_release')->instances_select(['conditions' => ['conjunction_!and' => [
-            'id_project' => ['id_project_!f' => 'id_project', 'id_project_operator' => '=', 'id_project_!v' => $id_project],
-            'build'      => [     'build_!f' => 'build',           'build_operator' => '=',      'build_!v' => $build     ] ]], 'limit' => 1
+        return Entity::get('project_release')->instances_select([
+            'where' => [
+                'conjunction_!and' => [
+                    'id_project' => ['field_!f' => 'id_project', 'operator' => '=', 'value_!v' => $id_project],
+                    'build'      => ['field_!f' => 'build',      'operator' => '=', 'value_!v' => $build     ] ]],
+            'limit' => 1
         ]);
     }
 

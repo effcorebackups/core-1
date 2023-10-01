@@ -38,30 +38,30 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__user_user_role__select
-- data_user_rel_role_ws_user|Tab_item
-    id: data_user_rel_role_ws_user
+- data_user_rel_role_with_user|Tab_item
+    id: data_user_rel_role_with_user
     id_parent: data_user_user
     id_tab: data
-    action_name: user/relation_role_ws_user
+    action_name: user/relation_role_with_user
     title: Relations: Role ↔ User
     weight: +480
     access
       roles
       - =: admins
       permissions
-      - =: manage_data__user_user_rel_role_ws_user__select
-- data_user_rel_role_ws_perm|Tab_item
-    id: data_user_rel_role_ws_perm
+      - =: manage_data__user_user_rel_role_with_user__select
+- data_user_rel_role_with_perm|Tab_item
+    id: data_user_rel_role_with_perm
     id_parent: data_user_user
     id_tab: data
-    action_name: user/relation_role_ws_permission
+    action_name: user/relation_role_with_permission
     title: Relations: Role ↔ Permission
     weight: +460
     access
       roles
       - =: admins
       permissions
-      - =: manage_data__user_user_rel_role_ws_perm__select
+      - =: manage_data__user_user_rel_role_with_perm__select
 - data_user_permission|Tab_item
     id: data_user_permission
     id_parent: data_user_user

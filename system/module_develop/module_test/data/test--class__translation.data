@@ -1,0 +1,27 @@
+tests
+- class__translation|Test
+    id: class__translation
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Translation
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-research_word-seconds|Test_step_Title
+        title|Text
+          text: RESEARCH THE WORD "%%_word"
+          args
+          - word: seconds
+    - code-research_word-seconds|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__research_word__seconds
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-research_word-files|Test_step_Title
+        title|Text
+          text: RESEARCH THE WORD "%%_word"
+          args
+          - word: files
+    - code-research_word-files|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__research_word__files
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

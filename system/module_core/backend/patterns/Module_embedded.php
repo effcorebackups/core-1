@@ -241,12 +241,12 @@ class Module_embedded {
         return $result;
     }
 
-    static function get_profiles($property = null, $ws_disabled_by_default = false) {
+    static function get_profiles($property = null, $with_disabled_by_default = false) {
         $result = [];
         foreach (static::get_all() as $c_module) {
             if ($c_module instanceof Module_as_profile) {
-                if ($c_module->enabled !== 'yes' && $ws_disabled_by_default === true) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
-                if ($c_module->enabled === 'yes'                                    ) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+                if ($c_module->enabled !== 'yes' && $with_disabled_by_default === true) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
+                if ($c_module->enabled === 'yes'                                      ) $result[$c_module->id] = $property ? $c_module->{$property} : $c_module;
             }
         }
         return $result;
@@ -279,13 +279,13 @@ class Module_embedded {
         return $result;
     }
 
-    static function get_installed($ws_enabled = true, $ws_disabled = true) {
+    static function get_installed($with_enabled = true, $with_disabled = true) {
         $result    = [];
         $installed = Core::boot_select('installed');
         $enabled   = Core::boot_select('enabled');
         foreach ($installed as $c_id => $c_path) {
-            if ($ws_enabled  === true && isset($enabled[$c_id]) === true) $result[$c_id] = $c_path;
-            if ($ws_disabled === true && isset($enabled[$c_id]) !== true) $result[$c_id] = $c_path;
+            if ($with_enabled  === true && isset($enabled[$c_id]) === true) $result[$c_id] = $c_path;
+            if ($with_disabled === true && isset($enabled[$c_id]) !== true) $result[$c_id] = $c_path;
         }
         return $result;
     }

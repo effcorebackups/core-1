@@ -1,0 +1,50 @@
+test_data
+  # ─────────────────────────────────────────────────────────────────────
+  # scalar types
+  # ═════════════════════════════════════════════════════════════════════
+  # integer_exponential: 123e1 # - exponential notation is not supported
+  # integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
+  # integer_octal: 0123        # - octal notation is not supported
+  # integer_binary: 0b101      # - binary notation is not supported
+  # ─────────────────────────────────────────────────────────────────────
+  integer: 123
+  float: 0.000001
+  boolean_true: true
+  boolean_false: false
+  string: text
+  string_empty: 
+  string_true|_string_true
+  string_false|_string_false
+  string_single_line: line 1
+>>>>>>>>>>>>>>>>>>>>>>>> still line 1
+>>>>>>>>>>>>>>>>>>>>>>>> still line 1
+  string_multiline: line 1
+//////////////////////// line 2
+//////////////////////// line 3
+  # ─────────────────────────────────────────────────────────────────────
+  # special types
+  # ─────────────────────────────────────────────────────────────────────
+  null: null
+  # ─────────────────────────────────────────────────────────────────────
+  # compound types
+  # ─────────────────────────────────────────────────────────────────────
+  array
+  - key_1: item value 1
+  - key_2: item value 2
+  - key_3: item value 3
+  array_empty|_empty_array
+  object
+    property_1: property value 1
+    property_2: property value 2
+    property_3: property value 3
+  object_empty
+  object_text|Text
+    text: some translated text
+  object_text_simple|Text_simple
+    text: some raw text
+  nested
+    property_1: nested value 1
+    nested
+      property_1: nested value 1.1
+      nested
+        property_1: nested value 1.1.1

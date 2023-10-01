@@ -10,7 +10,7 @@ use stdClass;
 
 #[\AllowDynamicProperties]
 
-class Instance implements Should_clear_cache_after_on_install {
+class Instance implements cache_cleaning_after_install {
 
     public $entity_name;
     public $values;
@@ -122,17 +122,17 @@ class Instance implements Should_clear_cache_after_on_install {
         return static::$cache_orig[$name] ?? [];
     }
 
-    static function selection_make($entity_name, $conditions = [], $settings = []) {
+    static function selection_make($entity_name, $where = [], $settings = []) {
         $entity = Entity::get($entity_name);
         if ($entity) {
             $c_weight = 420;
             $selection = new Selection;
-            $selection->id = $entity_name.'-'.Core::hash_get($conditions);
+            $selection->id = $entity_name.'-'.Core::hash_get($where);
             $selection->main_entity_name = $entity_name;
             $selection->template = 'content';
             $selection->origin = 'dynamic';
             $selection->title = $entity->title;
-            $selection->query_settings['conditions'] = $entity->storage_get()->prepare_attributes($conditions);
+            $selection->query_settings['where'] = $entity->storage_get()->prepare_attributes($where);
             foreach ($entity->fields as $c_name => $c_field) {
                 $selection->fields['main'][$c_name] = new stdClass;
                 $selection->fields['main'][$c_name]->title = $c_field->title ?? null;
@@ -142,7 +142,7 @@ class Instance implements Should_clear_cache_after_on_install {
             return $selection;
         } else {
             return new Markup('x-no-items', ['data-style' => 'table'], new Text_multiline(
-                ['Entity "%%_name" is not available.', 'Selection ID = "%%_id".'], ['name' => $entity_name, 'id' => $entity_name.'-'.Core::hash_get($conditions)]
+                ['Entity "%%_name" is not available.', 'Selection ID = "%%_id".'], ['name' => $entity_name, 'id' => $entity_name.'-'.Core::hash_get($where)]
             ));
         }
     }

@@ -23,12 +23,20 @@ abstract class Core {
     const SORT_ASC = 0;
     const SORT_DSC = 1;
 
-    #######################
-    ### PHP environment ###
-    #######################
+    ###################
+    ### environment ###
+    ###################
 
-    static function php_is_on_win() {
+    static function is_CLI() {
+        return PHP_SAPI === 'cli';
+    }
+
+    static function is_Win() {
         return DIRECTORY_SEPARATOR === '\\';
+    }
+
+    static function is_IIS() {
+        return !empty($_SERVER['IIS_WasUrlRewritten']);
     }
 
     static function php_max_execution_time_get()  {return ini_get('max_execution_time');}
@@ -95,23 +103,23 @@ abstract class Core {
 
     static function structure_autoload($name) {
         $name = strtolower($name);
-        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                         ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Cache.php',                          'ok'); return;}
-        if ($name === 'effcore\\console'           ) {require_once(DIR_SYSTEM.'module_core/backend/Console.php'                       ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Console.php',                        'ok'); return;}
-        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                          ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Data.php',                           'ok'); return;}
-        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                       ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php',                        'ok'); return;}
-        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                          ); Console::log_insert('file', 'insertion', 'system/module_core/backend/File.php',                           'ok'); return;}
-        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'               ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php',                'ok'); return;}
-        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'              ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php',               'ok'); return;}
-        if ($name === 'effcore\\module_as_profile' ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_as_profile.php'    ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_as_profile.php',     'ok'); return;}
-        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'      ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php',       'ok'); return;}
-        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'               ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php',                'ok'); return;}
-        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'          ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php',           'ok'); return;}
-        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'                 ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php',                  'ok'); return;}
-        if ($name === 'effcore\\storage_nosql_data') {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_NoSQL_data.php'); Console::log_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_NoSQL_data.php', 'ok'); return;}
-        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'       ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php',        'ok'); return;}
-        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'          ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php',           'ok'); return;}
-        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'                 ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php',                  'ok'); return;}
-        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                         ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Timer.php',                          'ok'); return;}
+        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                     ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Cache.php',                      'ok'); return;}
+        if ($name === 'effcore\\console'           ) {require_once(DIR_SYSTEM.'module_core/backend/Console.php'                   ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Console.php',                    'ok'); return;}
+        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                      ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Data.php',                       'ok'); return;}
+        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                   ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php',                    'ok'); return;}
+        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                      ); Console::log_insert('file', 'insertion', 'system/module_core/backend/File.php',                       'ok'); return;}
+        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'           ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php',            'ok'); return;}
+        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'          ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php',           'ok'); return;}
+        if ($name === 'effcore\\module_as_profile' ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_as_profile.php'); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_as_profile.php', 'ok'); return;}
+        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'  ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php',   'ok'); return;}
+        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'           ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php',            'ok'); return;}
+        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'      ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php',       'ok'); return;}
+        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'             ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php',              'ok'); return;}
+        if ($name === 'effcore\\storage_data'      ) {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_Data.php'  ); Console::log_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_Data.php',   'ok'); return;}
+        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'   ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php',    'ok'); return;}
+        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'      ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php',       'ok'); return;}
+        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'             ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php',              'ok'); return;}
+        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                     ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Timer.php',                      'ok'); return;}
         Console::log_insert('autoload', 'search', $name, 'ok');
         if (isset(static::structures_select()[$name])) {
             $c_item_info = static::structures_select()[$name];
@@ -120,9 +128,9 @@ abstract class Core {
         }
     }
 
-    static function structures_cache_cleaning_after_on_install() {
+    static function structures_cache_cleaning_after_install() {
         foreach (static::structures_select() as $c_full_name => $c_structure) {
-            if (isset($c_structure->implements['effcore\\Should_clear_cache_after_on_install'])) {
+            if (isset($c_structure->implements['effcore\\cache_cleaning_after_install'])) {
                 $c_full_name::cache_cleaning();
             }
         }
@@ -134,7 +142,7 @@ abstract class Core {
         else {
             $result       = [];
             $files        = [];
-            $preparse     = Storage_NoSQL_data::data_find_and_parse_modules_and_bundles();
+            $preparse     = Storage_Data::data_find_and_parse_modules_and_bundles();
             $modules_path = $preparse->modules_path;
             $enabled      = static::boot_select('enabled') + $modules_to_include; # === Module::get_enabled_by_boot() + $modules_to_include
             # if no modules in the boot (when installing)
@@ -319,8 +327,8 @@ abstract class Core {
                 $class_name = get_class($data);
                 $reflection = new ReflectionClass($class_name);
                 $defaults           = $reflection->getDefaultProperties();
-                $is_postconstructor = $reflection->implementsInterface('\\effcore\\Has_postconstructor');
-                $is_postinit        = $reflection->implementsInterface('\\effcore\\Has_postinit'       );
+                $is_postconstructor = $reflection->implementsInterface('\\effcore\\has_postconstructor');
+                $is_postinit        = $reflection->implementsInterface('\\effcore\\has_postinit'       );
                 if ($is_postconstructor)
                      $result = $prefix.' = Core::class_get_new_instance(\''.addcslashes('\\'.$class_name, "'\\").'\');'.NL;
                 else $result = $prefix.' = new \\'.$class_name.';'.NL;
@@ -749,20 +757,32 @@ abstract class Core {
     ### filters ###
     ###############
 
-    # number validation matrix: number(n) → is_valid(0|1|2)
-    # ┌───────────╥──────────┬───────────┬───────────┬────────────┬───────────┬────────────┬────────────┬─────────────┬────────────┬─────────────┐
-    # │           ║          ┊ with '-'  │           ┊ with '-'   │           ┊ with '-'   │            ┊ with '-'    │            ┊ with '-'    │
-    # ╞═══════════╬══════════┊═══════════╪═══════════┊════════════╪═══════════┊════════════╪════════════┊═════════════╪════════════┊═════════════╡
-    # │           ║ ''   → 0 ┊ '-'   → 0 │ '0'   → 1 ┊ '-0'   → 0 │ '1'   → 1 ┊ '-1'   → 1 │ '01'   → 0 ┊ '-01'   → 0 │ '10'   → 1 ┊ '-10'   → 1 │
-    # │ with '.'  ║ '.'  → 0 ┊ '-.'  → 0 │ '0.'  → 0 ┊ '-0.'  → 0 │ '1.'  → 0 ┊ '-1.'  → 0 │ '01.'  → 0 ┊ '-01.'  → 0 │ '10.'  → 0 ┊ '-10.'  → 0 │
-    # │ with '.0' ║ '.0' → 0 ┊ '-.0' → 0 │ '0.0' → 1 ┊ '-0.0' → 2 │ '1.0' → 1 ┊ '-1.0' → 1 │ '01.0' → 0 ┊ '-01.0' → 0 │ '10.0' → 1 ┊ '-10.0' → 1 │
-    # └───────────╨──────────┴───────────┴───────────┴────────────┴───────────┴────────────┴────────────┴─────────────┴────────────┴─────────────┘
-
-    static function validate_number($value) {
+    static function validate_number($value, $with_minus = true) {
         return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            '%^(?<integer>[-]{0,1}[1-9][0-9]*|0)$|'.
-             '^(?<float_s>[-]{0,1}[0-9]'.   '[.][0-9]{1,})$|'.
-             '^(?<float_l>[-]{0,1}[1-9][0-9]+[.][0-9]{1,})$%'
+            $with_minus ? '%^(?<int___1>'.             '[0]'                        .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'                       .')$|'.
+                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'                       .')$|'.
+                           '^(?<float_1>'.           '[0-9]' .'[.]'.    '[0-9]+'    .')$|'.
+                           '^(?<float_2>'.'[-]'.     '[0-9]' .'[.]'.'[0]*[1-9]+[0]*'.')$|'.
+                           '^(?<float_3>'.'[-]'.'[1-9]'      .'[.]'.    '[0-9]+'    .')$|'.
+                           '^(?<float_4>'.      '[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$|'.
+                           '^(?<float_5>'.'[-]'.'[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$%S' :
+                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+                          '%^(?<int___1>'.             '[0]'                        .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'                       .')$|'.
+                           '^(?<float_1>'.           '[0-9]' .'[.]'.    '[0-9]+'    .')$|'.
+                           '^(?<float_4>'.      '[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$%S'
+        ]]);
+    }
+
+    static function validate_int($value, $with_minus = true) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+            $with_minus ? '%^(?<int___1>'.             '[0]' .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'.')$|'.
+                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'.')$%S' :
+                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+                          '%^(?<int___1>'.             '[0]' .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'.')$%S'
         ]]);
     }
 
@@ -812,7 +832,7 @@ abstract class Core {
 
     static function validate_realpath($value) {
         $value = realpath($value);
-        if ($value !== false && static::php_is_on_win())
+        if ($value !== false && static::is_Win())
             $value = str_replace('\\', '/', $value);
         return $value;
     }

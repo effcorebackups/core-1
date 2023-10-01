@@ -34,10 +34,11 @@ class Control extends Container {
     function value_is_unique_in_storage_sql($value) { # @return: null | false | Instance
         if ($this->entity_name &&
             $this->entity_field_name) {
-            $result = Entity::get($this->entity_name)->instances_select(['conditions' => [
-                'field_!f' => $this->entity_field_name,
-                'operator' => '=',
-                'field_!v' => $value], 'limit' => 1]);
+            $result = Entity::get($this->entity_name)->instances_select([
+                'where' => [
+                    'field_!f' => $this->entity_field_name,
+                    'operator' => '=',
+                    'value_!v' => $value], 'limit' => 1]);
             return reset($result);
         }
     }

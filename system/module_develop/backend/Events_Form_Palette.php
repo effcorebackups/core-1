@@ -9,7 +9,7 @@ namespace effcore\modules\develop;
 use effcore\Color;
 use effcore\Markup;
 use effcore\Message;
-use effcore\Storage_NoSQL_data;
+use effcore\Storage_Data;
 use effcore\Text;
 
 abstract class Events_Form_Palette {
@@ -29,7 +29,7 @@ abstract class Events_Form_Palette {
                     $palette_colors[$c_color_id] = new Color($c_color_id, $c_color_value, $items['#group']->value_get());
                     $palette_markup[$c_color_id] = new Markup('x-color', ['style' => 'background-color: '.$c_color_value]); }
                 $items['palette/report']->child_select('palette')->child_insert(new Markup('x-palette', [], $palette_markup), 'palette');
-                $items['palette/report']->child_select('data'   )->child_insert(new Text(Storage_NoSQL_data::data_to_text($palette_colors, 'colors')), 'data');
+                $items['palette/report']->child_select('data'   )->child_insert(new Text(Storage_Data::data_to_text($palette_colors, 'colors')), 'data');
                 Message::insert('Generation done.');
                 break;
         }

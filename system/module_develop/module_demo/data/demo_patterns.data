@@ -1,0 +1,7 @@
+demo_patterns
+  demo_pattern_object|Demo_class_pattern
+    property_3: property value 3 [modified]
+    property_4: property value 4 [new]
+    property_as_array
+    - key 3: value 3 [modified]
+    - key 4: value 4 [new]

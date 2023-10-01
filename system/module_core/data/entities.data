@@ -4,7 +4,7 @@ entities
     title: Message
     title_plural: Messages
     catalog_name: messages
-    ws_data: true
+    with_data: true
     fields
     - id_session
         title: Session ID

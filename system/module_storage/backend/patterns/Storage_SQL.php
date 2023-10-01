@@ -13,7 +13,7 @@ use PDOStatement;
 
 #[\AllowDynamicProperties]
 
-class Storage_SQL_PDO implements Has_external_cache {
+class Storage_SQL implements has_Data_cache {
 
     public $name;
     public $driver;
@@ -126,8 +126,8 @@ class Storage_SQL_PDO implements Has_external_cache {
 
     function version_get() {
         if ($this->init()) {
-            if ($this->driver === 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
-            if ($this->driver === 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias' => 'version'])[0]->version;
+            if ($this->driver === 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias_!f' => 'version'])[0]->version;
+            if ($this->driver === 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias_!f' => 'version'])[0]->version;
         }
     }
 
@@ -362,8 +362,8 @@ class Storage_SQL_PDO implements Has_external_cache {
             $this->transaction_begin();
             $this->foreign_keys_checks_set(false);
             $this->query(['action' => 'DROP', 'type' => 'TABLE', 'if_exists' => 'IF EXISTS', 'target_!t' => '~'.$entity->name]);
-            if ($this->driver ===  'mysql') $this->query(['action' => 'CREATE', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_condition' => '=', 'charset' => 'utf8']);
-            if ($this->driver === 'sqlite') $this->query(['action' => 'CREATE', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')'                                                                               ]);
+            if ($this->driver ===  'mysql') $this->query(['action' => 'CREATE', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')', 'charset_begin' => 'CHARSET', 'charset_operator' => '=', 'charset' => 'utf8']);
+            if ($this->driver === 'sqlite') $this->query(['action' => 'CREATE', 'type' => 'TABLE', 'target_!t' => '~'.$entity->name, 'fields_and_constraints_begin' => '(', 'fields_and_constraints_!,' => $fields + $constraints, 'fields_and_constraints_end' => ')'                                                                              ]);
             $this->foreign_keys_checks_set(true);
 
             # ─────────────────────────────────────────────────────────────────────
@@ -399,28 +399,42 @@ class Storage_SQL_PDO implements Has_external_cache {
         }
     }
 
+    function entity_truncate($entity) {
+        if ($this->init()) {
+            $this->foreign_keys_checks_set(false);
+            $result = $this->query([
+                'action'    => 'TRUNCATE',
+                'target_!t' => '~'.$entity->name]);
+            $this->foreign_keys_checks_set(true);
+            return $result;
+        }
+    }
+
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     function instances_select_count($entity, $options = []) {
-        $options += ['join' => [], 'conditions' => [], 'limit' => null, 'offset' => 0];
+        $options += [
+            'distinct' => null,
+            'join'     => [], 'where' => [],   'group'  => [],
+            'having'   => [], 'limit' => null, 'offset' => 0];
         if ($this->init()) {
-            $query = [
-                'action'       => 'SELECT',
-                'fields'       => ['count' => [
-                    'function_begin' => 'count(',
-                    'function_field' => '*',
-                    'function_end'   => ')',
-                    'alias_begin'    => 'as',
-                    'alias'          => 'count']],
-                'target_begin' => 'FROM',
-                'target_!t'    => '~'.$entity->name];
+            if ($options['distinct'])
+                 $query = ['action' => 'SELECT', 'distinct' => 'DISTINCT'];
+            else $query = ['action' => 'SELECT'];
+            $query['fields']['count']['function_begin'] = 'count(';
+            $query['fields']['count']['function_field'] = '*';
+            $query['fields']['count']['function_end'] = ')';
+            $query['fields']['count']['alias_begin'] = 'as';
+            $query['fields']['count']['alias_!f'] = 'count';
+            $query['target_begin'] = 'FROM';
+            $query['target_!t'] = '~'.$entity->name;
             foreach ($options['join'] as $c_join_id => $c_join_part)
                      $query  ['join']   [$c_join_id] = $c_join_part;
-            if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' => $options['conditions']];
-            if (      $options['limit'     ] ) {
-                $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
-                $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
-            }
+            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE',    'where'  =>      $options['where' ]];
+            if (count($options['group' ])) $query += ['group_begin'  => 'GROUP BY', 'group'  =>      $options['group' ]];
+            if (count($options['having'])) $query += ['having_begin' => 'HAVING',   'having' =>      $options['having']];
+            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT',    'limit'  => (int)$options['limit' ]];
+            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET',   'offset' => (int)$options['offset']];
             $result = $this->query($query);
             if ( isset($result[0]->count) )
                 return $result[0]->count;
@@ -429,22 +443,28 @@ class Storage_SQL_PDO implements Has_external_cache {
     }
 
     function instances_select($entity, $options = [], $idkey = null) {
-        $options += ['fields' => [], 'join_fields' => [], 'join' => [], 'conditions' => [], 'group' => [], 'order' => [], 'limit' => null, 'offset' => 0];
+        $options += [
+            'distinct' => null,
+            'fields'   => [], 'join_fields' => [],   'join'   => [],
+            'where'    => [], 'group'       => [],   'having' => [],
+            'order'    => [], 'limit'       => null, 'offset' => 0];
         if ($this->init()) {
-            $query = [
-                'action'       => 'SELECT',
-                'fields_!,'    => (count($options['fields']) ? $options['fields'] : ['all_!f' => '~'.$entity->name.'.*']) + $options['join_fields'],
-                'target_begin' => 'FROM',
-                'target_!t'    => '~'.$entity->name];
+            if ($options['distinct'])
+                 $query = ['action' => 'SELECT', 'distinct' => 'DISTINCT'];
+            else $query = ['action' => 'SELECT'];
+            if (count($options['fields']))
+                 $query['fields_!,'] = $options['fields']                   + $options['join_fields'];
+            else $query['fields_!,'] = ['all_!f' => '~'.$entity->name.'.*'] + $options['join_fields'];
+            $query['target_begin'] = 'FROM';
+            $query['target_!t'] = '~'.$entity->name;
             foreach ($options['join'] as $c_join_id => $c_join_part)
                      $query  ['join']   [$c_join_id] = $c_join_part;
-            if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE',    'condition' => $options['conditions']];
-            if (count($options['group'     ])) $query += ['group_begin'     => 'GROUP BY', 'group'     => $options['group'     ]];
-            if (count($options['order'     ])) $query += ['order_begin'     => 'ORDER BY', 'order'     => $options['order'     ]];
-            if (      $options['limit'     ] ) {
-                $query += ['limit_begin'  => 'LIMIT',  'limit'  => (int)$options['limit' ]];
-                $query += ['offset_begin' => 'OFFSET', 'offset' => (int)$options['offset']];
-            }
+            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE',    'where'  =>      $options['where' ]];
+            if (count($options['group' ])) $query += ['group_begin'  => 'GROUP BY', 'group'  =>      $options['group' ]];
+            if (count($options['having'])) $query += ['having_begin' => 'HAVING',   'having' =>      $options['having']];
+            if (count($options['order' ])) $query += ['order_begin'  => 'ORDER BY', 'order'  =>      $options['order' ]];
+            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT',    'limit'  => (int)$options['limit' ]];
+            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET',   'offset' => (int)$options['offset']];
             $result = [];
             foreach ($this->query($query) ?: [] as $c_instance) {
                 foreach ($c_instance->values as $c_name => $c_value) {
@@ -460,14 +480,14 @@ class Storage_SQL_PDO implements Has_external_cache {
     }
 
     function instances_delete($entity, $options = []) {
-        $options += ['conditions' => [], 'limit' => null];
+        $options += ['where' => [], 'limit' => null];
         if ($this->init()) {
             $query = [
                 'action'       => 'DELETE',
                 'target_begin' => 'FROM',
                 'target_!t'    => '~'.$entity->name];
-            if (count($options['conditions'])) $query += ['condition_begin' => 'WHERE', 'condition' =>      $options['conditions']];
-            if (      $options['limit'     ] ) $query += ['limit_begin    ' => 'LIMIT', 'limit'     => (int)$options['limit'     ]];
+            if (count($options['where'])) $query += ['where_begin' => 'WHERE', 'where' =>      $options['where']];
+            if (      $options['limit'] ) $query += ['limit_begin' => 'LIMIT', 'limit' => (int)$options['limit']];
             return $this->query($query);
         }
     }
@@ -480,14 +500,14 @@ class Storage_SQL_PDO implements Has_external_cache {
             $values = $instance->values_get();
             $id_fields = $entity->id_from_values_get($values);
             $result = $this->query([
-                'action'          => 'SELECT',
-                'fields'          => ['all_!f' => '*'],
-                'target_begin'    => 'FROM',
-                'target_!t'       => '~'.$entity->name,
-                'condition_begin' => 'WHERE',
-                'condition'       => $this->prepare_attributes($id_fields),
-                'limit_begin'     => 'LIMIT',
-                'limit'           => 1]);
+                'action'       => 'SELECT',
+                'fields'       => ['all_!f' => '*'],
+                'target_begin' => 'FROM',
+                'target_!t'    => '~'.$entity->name,
+                'where_begin'  => 'WHERE',
+                'where'        => $this->prepare_attributes($id_fields),
+                'limit_begin'  => 'LIMIT',
+                'limit'        => 1]);
             if (isset($result[0])) {
                 foreach ($result[0]->values as $c_name => $c_value) {
                     if ( $c_value !== null && isset($entity->fields[$c_name]->converter_on_select) )
@@ -541,8 +561,8 @@ class Storage_SQL_PDO implements Has_external_cache {
                 'target_!t'               => '~'.$entity->name,
                 'fields_and_values_begin' => 'SET',
                 'fields_and_values'       => $this->prepare_attributes($values, ','),
-                'condition_begin'         => 'WHERE',
-                'condition'               => $this->prepare_attributes($instance->_id_fields_original ?: $id_fields)]);
+                'where_begin'             => 'WHERE',
+                'where'                   => $this->prepare_attributes($instance->_id_fields_original ?: $id_fields)]);
             if ($row_count === 1) {
                 $instance->_id_fields_original = $id_fields;
                 return $instance;
@@ -556,11 +576,11 @@ class Storage_SQL_PDO implements Has_external_cache {
             $values = $instance->values_get();
             $id_fields = $entity->id_from_values_get($values);
             $row_count = $this->query([
-                'action'          => 'DELETE',
-                'target_begin'    => 'FROM',
-                'target_!t'       => '~'.$entity->name,
-                'condition_begin' => 'WHERE',
-                'condition'       => $this->prepare_attributes($id_fields)]);
+                'action'       => 'DELETE',
+                'target_begin' => 'FROM',
+                'target_!t'    => '~'.$entity->name,
+                'where_begin'  => 'WHERE',
+                'where'        => $this->prepare_attributes($id_fields)]);
             if ($row_count === 1) {
                 $instance->values_set([]);
                 return $instance;

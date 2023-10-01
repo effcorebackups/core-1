@@ -5,7 +5,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -38,7 +38,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -64,28 +64,28 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +320
-- instance_select-relation_role_ws_permission|Selection
-    id: instance_select-relation_role_ws_permission
-    main_entity_name: relation_role_ws_permission
+- instance_select-relation_role_with_permission|Selection
+    id: instance_select-relation_role_with_permission
+    main_entity_name: relation_role_with_permission
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - conjunction_!and
         - id_role
-          - id_role_!f: id_role
-          - id_role_operator: =
-          - id_role_!v|Text
+          - field_!f: id_role
+          - operator: =
+          - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_ws_permission_id_role_context
+              text: %%_selection_relation_role_with_permission_id_role_context
         - id_permission
-          - id_permission_!f: id_permission
-          - id_permission_operator: =
-          - id_permission_!v|Text
+          - field_!f: id_permission
+          - operator: =
+          - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_ws_permission_id_permission_context
+              text: %%_selection_relation_role_with_permission_id_permission_context
     fields
     - main
       - id_role
@@ -100,28 +100,28 @@ selections
       - updated
           entity_field_name: updated
           weight: +340
-- instance_select-relation_role_ws_user|Selection
-    id: instance_select-relation_role_ws_user
-    main_entity_name: relation_role_ws_user
+- instance_select-relation_role_with_user|Selection
+    id: instance_select-relation_role_with_user
+    main_entity_name: relation_role_with_user
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - conjunction_!and
         - id_role
-          - id_role_!f: id_role
-          - id_role_operator: =
-          - id_role_!v|Text
+          - field_!f: id_role
+          - operator: =
+          - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_ws_user_id_role_context
+              text: %%_selection_relation_role_with_user_id_role_context
         - id_user
-          - id_user_!f: id_user
-          - id_user_operator: =
-          - id_user_!v|Text
+          - field_!f: id_user
+          - operator: =
+          - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_ws_user_id_user_context
+              text: %%_selection_relation_role_with_user_id_user_context
     fields
     - main
       - id_user
@@ -145,7 +145,7 @@ selections
           type: left outer join
           entity_name: user
           entity_field_name: id
-          on_entity_name: relation_role_ws_user
+          on_entity_name: relation_role_with_user
           on_entity_field_name: id_user
           fields
           - nickname
@@ -155,7 +155,7 @@ selections
           type: left outer join
           entity_name: role
           entity_field_name: id
-          on_entity_name: relation_role_ws_user
+          on_entity_name: relation_role_with_user
           on_entity_field_name: id_role
           fields
           - title
@@ -169,7 +169,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -204,7 +204,7 @@ selections
     decorator_settings
     - view_type: table-dl
     query_settings
-    - conditions
+    - where
       - id_!f: id
       - id_operator: =
       - id_!v|Text
@@ -291,9 +291,9 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +360
-- instance_select_multiple-relation_role_ws_permission|Selection
-    id: instance_select_multiple-relation_role_ws_permission
-    main_entity_name: relation_role_ws_permission
+- instance_select_multiple-relation_role_with_permission|Selection
+    id: instance_select_multiple-relation_role_with_permission
+    main_entity_name: relation_role_with_permission
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
@@ -313,9 +313,9 @@ selections
       - updated
           entity_field_name: updated
           weight: +340
-- instance_select_multiple-relation_role_ws_user|Selection
-    id: instance_select_multiple-relation_role_ws_user
-    main_entity_name: relation_role_ws_user
+- instance_select_multiple-relation_role_with_user|Selection
+    id: instance_select_multiple-relation_role_with_user
+    main_entity_name: relation_role_with_user
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive
@@ -346,7 +346,7 @@ selections
           type: left outer join
           entity_name: user
           entity_field_name: id
-          on_entity_name: relation_role_ws_user
+          on_entity_name: relation_role_with_user
           on_entity_field_name: id_user
           fields
           - nickname
@@ -356,7 +356,7 @@ selections
           type: left outer join
           entity_name: role
           entity_field_name: id
-          on_entity_name: relation_role_ws_user
+          on_entity_name: relation_role_with_user
           on_entity_field_name: id_role
           fields
           - title

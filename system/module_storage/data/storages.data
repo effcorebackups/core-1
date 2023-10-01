@@ -1,5 +1,5 @@
 storages
-- sql|Storage_SQL_PDO
+- sql|Storage_SQL
     name: sql
-- data|Storage_NoSQL_data
+- data|Storage_Data
     name: data

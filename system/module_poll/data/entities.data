@@ -6,9 +6,9 @@ entities
     catalog_name: polls
     managing_is_enabled: true
     has_parallel_checking: true
-    ws_is_embedded: true
-    ws_module_id: true
-    ws_data: true
+    with_is_embedded: true
+    with_module_id: true
+    with_data: true
     access_select
       roles
       - =: admins
@@ -169,7 +169,7 @@ entities
     title: Poll answer
     title_plural: Poll answers
     catalog_name: poll_answers
-    ws_data: true
+    with_data: true
     fields
     - id
         title: ID

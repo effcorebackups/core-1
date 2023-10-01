@@ -49,10 +49,11 @@ class Permission {
 
     static function related_roles_select($id_permission) {
         $result = [];
-        $items = Entity::get('relation_role_ws_permission')->instances_select(['conditions' => [
-            'id_permission_!f'       => 'id_permission',
-            'id_permission_operator' => '=',
-            'id_permission_!v'       => $id_permission]]);
+        $items = Entity::get('relation_role_with_permission')->instances_select([
+            'where' => [
+                'id_permission_!f'       => 'id_permission',
+                'id_permission_operator' => '=',
+                'id_permission_!v'       => $id_permission]]);
         foreach ($items as $c_item)
             $result[$c_item->id_role] =
                     $c_item->id_role;
@@ -61,7 +62,7 @@ class Permission {
 
     static function related_roles_insert($id_permission, $roles, $module_id = null) {
         foreach ($roles as $c_id_role) {
-            (new Instance('relation_role_ws_permission', [
+            (new Instance('relation_role_with_permission', [
                 'id_role'       => $c_id_role,
                 'id_permission' => $id_permission,
                 'module_id'     => $module_id
@@ -70,15 +71,16 @@ class Permission {
     }
 
     static function related_roles_delete($id_permission) {
-        Entity::get('relation_role_ws_permission')->instances_delete(['conditions' => [
-            'id_permission_!f'       => 'id_permission',
-            'id_permission_operator' => '=',
-            'id_permission_!v'       => $id_permission
+        Entity::get('relation_role_with_permission')->instances_delete([
+            'where' => [
+                'id_permission_!f'       => 'id_permission',
+                'id_permission_operator' => '=',
+                'id_permission_!v'       => $id_permission
         ]]);
     }
 
     static function related_role_delete($id_permission, $id_role) {
-        (new Instance('relation_role_ws_permission', [
+        (new Instance('relation_role_with_permission', [
             'id_permission' => $id_permission,
             'id_role'       => $id_role
         ]))->delete();

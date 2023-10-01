@@ -20,10 +20,12 @@ abstract class Events_Form_Instance_insert {
                 if ($entity->name === 'demo_join' && !$form->has_error()) {
                     # field 'id_data'
                     $id_data = $items['#id_data']->value_get();
-                    $result = $entity->instances_select(['conditions' => [
-                        'id_data_!f'       => 'id_data',
-                        'id_data_operator' => '=',
-                        'id_data_!v'       => $id_data], 'limit' => 1]);
+                    $result = $entity->instances_select([
+                        'where' => [
+                            'id_data_!f'       => 'id_data',
+                            'id_data_operator' => '=',
+                            'id_data_!v'       => $id_data],
+                        'limit' => 1]);
                     if ($result) {
                         $items['#id_data']->error_set(new Text_multiline([
                             'Field "%%_title" contains the previously used combination of values!',

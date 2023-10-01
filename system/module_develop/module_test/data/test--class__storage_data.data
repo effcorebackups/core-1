@@ -1,0 +1,35 @@
+tests
+- class__storage_data|Test
+    id: class__storage_data
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Storage_Data
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-parse|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Storage_Data::text_to_data()
+    - code-parse|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_Data::test_step_code__parse
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-text_to_data_to_text|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Storage_Data::text_to_data() → Storage_Data::data_to_text()
+    - code-text_to_data_to_text|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_Data::test_step_code__text_to_data_to_text
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-select_array|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Storage_Data->select_array()
+    - code-select_array|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_Data::test_step_code__select_array
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

@@ -10,7 +10,7 @@ use stdClass;
 
 #[\AllowDynamicProperties]
 
-class Entity implements Has_external_cache, Should_clear_cache_after_on_install, Has_postparse {
+class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_install {
 
     public $name;
     public $storage_name = 'sql';
@@ -23,10 +23,10 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
     public $has_button_insert_and_update        = false;
     public $has_message_for_additional_controls = false;
 
-    public $ws_is_embedded = false;
-    public $ws_module_id   = false;
-    public $ws_origin      = false;
-    public $ws_data        = false;
+    public $with_is_embedded = false;
+    public $with_module_id   = false;
+    public $with_origin      = false;
+    public $with_data        = false;
 
     public $title;
     public $title_plural;
@@ -44,7 +44,7 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
         if ($this->managing_is_enabled && $this->access_update === null) $this->access_update = (object)['roles' => ['admins' => 'admins']];
         if ($this->managing_is_enabled && $this->access_delete === null) $this->access_delete = (object)['roles' => ['admins' => 'admins']];
         # insert field 'is_embedded'
-        if ($this->ws_is_embedded) {
+        if ($this->with_is_embedded) {
             $this->fields['is_embedded'] = new stdClass;
             $this->fields['is_embedded']->title = 'Is embedded';
             $this->fields['is_embedded']->type = 'boolean';
@@ -55,7 +55,7 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
             $this->fields['is_embedded']->managing_control_element_attributes['disabled'] = true;
         }
         # insert field 'module_id' and index for it
-        if ($this->ws_module_id) {
+        if ($this->with_module_id) {
             $this->fields['module_id'] = new stdClass;
             $this->fields['module_id']->title = 'Module ID';
             $this->fields['module_id']->type = 'varchar';
@@ -68,7 +68,7 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
             $this->indexes['index_module_id']->fields = ['module_id' => 'module_id'];
         }
         # insert field 'origin' and index for it
-        if ($this->ws_origin) {
+        if ($this->with_origin) {
             $this->fields['origin'] = new stdClass;
             $this->fields['origin']->title = 'Origin';
             $this->fields['origin']->type = 'varchar';
@@ -81,7 +81,7 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
             $this->indexes['index_origin']->fields = ['origin' => 'origin'];
         }
         # insert field 'data'
-        if ($this->ws_data) {
+        if ($this->with_data) {
             $this->fields['data'] = new stdClass;
             $this->fields['data']->title = 'Data';
             $this->fields['data']->type = 'blob';
@@ -140,6 +140,10 @@ class Entity implements Has_external_cache, Should_clear_cache_after_on_install,
 
     function uninstall() {
         return $this->storage_get()->entity_uninstall($this);
+    }
+
+    function truncate() {
+        return $this->storage_get()->entity_truncate($this);
     }
 
     function instances_select_count($params = []) {

@@ -164,26 +164,26 @@ pages
           - title: null
           - pager_id: 2
           - query_settings
-            - conditions
+            - where
               - conjunction_!and
                 - id
-                  - id_!f: id
-                  - id_operator: <
-                  - id_!v: 250
+                  - field_!f: id
+                  - operator: <
+                  - value_!v: 250
                 - is_even
-                  - is_even_!f: is_even
-                  - is_even_in_begin_operator: in (
-                  - is_even_!v: 1
-                  - id_in_end_operator: )
+                  - field_!f: is_even
+                  - in_operator_begin: in (
+                  - in_value_!v: 1
+                  - in_operator_end: )
                 - email
-                  - email_!f: ~demo_join.email
-                  - email_operator: like
-                  - email_!v: user#_2%
-                  - email_escape_begin: escape
-                  - email_escape_!v: #
+                  - field_!f: ~demo_join.email
+                  - operator: like
+                  - value_!v: user#_2%
+                  - escape_begin: escape
+                  - escape_!v: #
             - order
               - title_!f: id
-              - title_type: ASC
+              - title_direction: ASC
             - limit: 5
       # ─────────────────────────────────────────────────────────────────────
       # trees

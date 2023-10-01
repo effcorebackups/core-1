@@ -3,11 +3,11 @@ changes
   # only structured types is supported: array|object
   # ─────────────────────────────────────────────────────────────────────
   insert
-  - demo_data/demo/demo_array
+  - test_data/test/array
     - key_4: item value 4 [new]
     - key_5: item value 5 [new]
     - key_6: item value 6 [new]
-  - demo_data/demo/demo_object
+  - test_data/test/object
       property_4: property value 4 [new]
       property_5: property value 5 [new]
       property_6: property value 6 [new]
@@ -15,8 +15,8 @@ changes
   # only scalar types is supported: string|numeric
   # ─────────────────────────────────────────────────────────────────────
   update
-  - demo_data/demo/demo_object/property_5: property value 5 [new] + [modified]
-  - demo_data/demo/demo_array/key_5: item value 5 [new] + [modified]
+  - test_data/test/object/property_5: property value 5 [new] + [modified]
+  - test_data/test/array/key_5: item value 5 [new] + [modified]
   delete
-  - demo_data/demo/demo_object/property_4: null
-  - demo_data/demo/demo_array/key_4: null
+  - test_data/test/object/property_4: null
+  - test_data/test/array/key_4: null

@@ -13,7 +13,7 @@ use stdClass;
 
 #[\AllowDynamicProperties]
 
-class Form extends Markup implements Has_external_cache {
+class Form extends Markup implements has_Data_cache {
 
     public $tag_name = 'form';
     public $template = 'form';
@@ -264,10 +264,11 @@ class Form extends Markup implements Has_external_cache {
 
     static function validation_cleaning($files_limit = 5000) {
         # delete items from the storage
-        Entity::get('cache_validation')->instances_delete(['conditions' => [
-            'updated_!f'       => 'updated',
-            'updated_operator' => '<',
-            'updated_!v'       => time() - Core::DATE_PERIOD_D
+        Entity::get('cache_validation')->instances_delete([
+            'where' => [
+                'updated_!f'       => 'updated',
+                'updated_operator' => '<',
+                'updated_!v'       => time() - Core::DATE_PERIOD_D
         ]]);
         # delete temporary files
         if (file_exists(Temporary::DIRECTORY.'validation/')) {

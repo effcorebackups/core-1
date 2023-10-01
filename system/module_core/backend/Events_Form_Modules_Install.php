@@ -44,6 +44,8 @@ abstract class Events_Form_Modules_Install {
         }
         foreach ($modules_by_groups as $c_modules) {
             foreach ($c_modules as $c_module) {
+                $c_is_enabled  = isset($enabled [$c_module->id]);
+                $c_is_embedded = isset($embedded[$c_module->id]);
                 $c_required_for_info      = $c_module->required_for_info_get('boot');
                 $c_dependencies_info      = $c_module->dependencies_info_get('boot');
                 $c_required_for_sys_items = new Node;
@@ -58,11 +60,12 @@ abstract class Events_Form_Modules_Install {
                 $c_switcher->build();
                 $c_switcher->name_set('is_enabled[]');
                 $c_switcher->value_set($c_module->id);
-                $c_switcher->checked_set (isset($enabled [$c_module->id]));
-                $c_switcher->disabled_set(isset($embedded[$c_module->id])            ||
-                                          $c_required_for_info->has_required         ||
-                                          $c_dependencies_info->has_dependencies_php ||
-                                          $c_dependencies_info->has_dependencies_sys);
+                $c_switcher->checked_set($c_is_enabled);
+                $c_switcher->disabled_set(
+                    ($c_is_embedded                     && $c_is_enabled) ||
+                    ($c_required_for_info->has_required && $c_is_enabled) ||
+                    ($c_dependencies_info->has_dependencies_sys)          ||
+                    ($c_dependencies_info->has_dependencies_php));
                 $c_info->child_insert($c_switcher, 'switcher');
                 if ($c_module->icon_path                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'icon'              ], [new Markup('x-title', ['aria-hidden' => 'true'], 'icon'                      ), new Markup('x-value', [], new Markup_simple('img', ['src' => $c_module->icon_path[0] === '/' ? $c_module->icon_path : '/'.$c_module->path.$c_module->icon_path, 'alt' => 'icon']) )]), 'icon'              );
                 if (true                                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'title'             ], [new Markup('x-title', ['aria-hidden' => 'true'], 'title'                     ), new Markup('x-value', [],                                    $c_module->title                                                                                                     )]), 'title'             );
@@ -81,7 +84,7 @@ abstract class Events_Form_Modules_Install {
                 if ($c_required_for_sys_items->children_select_count()) $c_info->child_insert(new Markup('x-param', ['data-type' => 'required-for-sys'  ], [new Markup('x-title', [                       ], 'required for modules'      ), new Markup('x-value', [],                                    $c_required_for_sys_items                                                                                            )]), 'required_for_sys'  );
                 if (isset($c_module->urls) && is_array($c_module->urls))
                     foreach ($c_module->urls as $c_title => $c_url)
-                        if (isset($enabled[$c_module->id]))
+                        if ($c_is_enabled)
                             $c_info->child_insert(new Markup('x-param', ['data-type' => 'url'], [
                                 new Markup('x-title', [], $c_title),
                                 new Markup('x-value', [], new Markup('a', ['href' => $c_url], Url::url_to_markup($c_url)))

@@ -12,6 +12,10 @@ use stdClass;
 
 abstract class Request {
 
+    const DEFAULT_ADDR = '127.0.0.1';
+    const DEFAULT_HOST = 'localhost';
+    const DEFAULT_PORT = 80;
+
     protected static $cache;
     protected static $allowed_args_in_get = [];
 
@@ -117,14 +121,14 @@ abstract class Request {
     # │ source[field] === [0 => 'value']         ║ return 'value' │
     # └──────────────────────────────────────────╨────────────────┘
 
-    static function value_get($name, $number = 0, $source = '_POST', $return_default = '') {
+    static function value_get($name, $number = 0, $source = '_POST', $default = '') {
         global ${$source};
-        if (   !isset(${$source}[$name])) return  $return_default;
+        if (   !isset(${$source}[$name])) return $default;
         if (is_string(${$source}[$name])) return ${$source}[$name];
         if ( is_array(${$source}[$name]) &&
                 isset(${$source}[$name][$number]))
         return        ${$source}[$name][$number];
-        return $return_default;
+        return $default;
     }
 
     # conversion matrix:
@@ -142,12 +146,12 @@ abstract class Request {
     # │ source[field] === [0 => 'value', …]      ║ return [0 => 'value', …] │
     # └──────────────────────────────────────────╨──────────────────────────┘
 
-    static function values_get($name, $source = '_POST', $return_default = []) {
+    static function values_get($name, $source = '_POST', $default = []) {
         global ${$source};
-        if (   !isset(${$source}[$name])) return   $return_default;
+        if (   !isset(${$source}[$name])) return  $default;
         if (is_string(${$source}[$name])) return [${$source}[$name]];
         if ( is_array(${$source}[$name])) return  ${$source}[$name];
-        return $return_default;
+        return $default;
     }
 
     static function values_set($name, $values, $source = '_POST') {
@@ -258,7 +262,8 @@ abstract class Request {
     }
 
     static function addr_get() {
-        return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'LOCAL_ADDR' : 'SERVER_ADDR'];
+        return Core::is_IIS() ? $_SERVER['LOCAL_ADDR']:
+                                $_SERVER['SERVER_ADDR'];
     }
 
     static function port_get() {
@@ -274,7 +279,8 @@ abstract class Request {
     }
 
     static function uri_get() {
-        return $_SERVER[!empty($_SERVER['IIS_WasUrlRewritten']) ? 'UNENCODED_URL' : 'REQUEST_URI'];
+        return Core::is_IIS() ? $_SERVER['UNENCODED_URL'] :
+                                $_SERVER['REQUEST_URI'];
     }
 
     static function path_get() {

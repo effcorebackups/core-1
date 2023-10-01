@@ -1,0 +1,9 @@
+tests
+- js__js|Test
+    id: js__js
+    title|Text
+      text: JS functioning (JS)
+    type: js
+    scenario
+    - return|Test_step_Return
+        value: 0

@@ -16,13 +16,13 @@ class Field_Textarea_data extends Field_Textarea {
 
     function value_data_get() {
         if ($this->value_get()) {
-            return Storage_NoSQL_data::text_to_data($this->value_get(), $this->classes_allowed)->data;
+            return Storage_Data::text_to_data($this->value_get(), $this->classes_allowed)->data;
         }
     }
 
     function value_data_set($value, $root_name) {
         if ($value) {
-            $this->value_set(Storage_NoSQL_data::data_to_text($value, $root_name));
+            $this->value_set(Storage_Data::data_to_text($value, $root_name));
         }
     }
 
@@ -44,11 +44,11 @@ class Field_Textarea_data extends Field_Textarea {
 
     static function validate_value($field, $form, $element, &$new_value) {
         if (strlen($new_value)) {
-            $parsed_result = Storage_NoSQL_data::text_to_data($new_value, $field->classes_allowed);
+            $parsed_result = Storage_Data::text_to_data($new_value, $field->classes_allowed);
             if (count($parsed_result->errors)) {
                 foreach ($parsed_result->errors as $c_error) {
                     switch ($c_error->code) {
-                        case Storage_NoSQL_data::ERR_CODE_EMPTY_LINE_WAS_FOUND:
+                        case Storage_Data::ERR_CODE_EMPTY_LINE_WAS_FOUND:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'An empty line was found.',
@@ -56,7 +56,7 @@ class Field_Textarea_data extends Field_Textarea {
                                 'title' => (new Text($field->title))->render(),
                                 'line'  => $c_error->line]));
                             break;
-                        case Storage_NoSQL_data::ERR_CODE_LEADING_TAB_CHARACTER_FOUND:
+                        case Storage_Data::ERR_CODE_LEADING_TAB_CHARACTER_FOUND:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'Leading tab character found.',
@@ -64,7 +64,7 @@ class Field_Textarea_data extends Field_Textarea {
                                 'title' => (new Text($field->title))->render(),
                                 'line'  => $c_error->line]));
                             break;
-                        case Storage_NoSQL_data::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
+                        case Storage_Data::ERR_CODE_INDENT_SIZE_IS_NOT_EVEN:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'Indent size is not even.',
@@ -72,7 +72,7 @@ class Field_Textarea_data extends Field_Textarea {
                                 'title' => (new Text($field->title))->render(),
                                 'line'  => $c_error->line]));
                             break;
-                        case Storage_NoSQL_data::ERR_CODE_INDENT_OVERSIZE:
+                        case Storage_Data::ERR_CODE_INDENT_OVERSIZE:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'Indent oversize is detected.',
@@ -80,7 +80,7 @@ class Field_Textarea_data extends Field_Textarea {
                                 'title' => (new Text($field->title))->render(),
                                 'line'  => $c_error->line]));
                             break;
-                        case Storage_NoSQL_data::ERR_CODE_CLASS_WAS_NOT_FOUND:
+                        case Storage_Data::ERR_CODE_CLASS_WAS_NOT_FOUND:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'Class "%%_class_name" was not found.',
@@ -89,7 +89,7 @@ class Field_Textarea_data extends Field_Textarea {
                                 'line'       => $c_error->line,
                                 'class_name' => $c_error->args['class_name']]));
                             break;
-                        case Storage_NoSQL_data::ERR_CODE_CLASS_NOT_ALLOWED:
+                        case Storage_Data::ERR_CODE_CLASS_NOT_ALLOWED:
                             $field->error_set(new Text_multiline([
                                 'Field "%%_title" contains an error!',
                                 'Class "%%_class_name" not allowed.',

@@ -24,7 +24,7 @@ abstract class Events_Form_Instance_update {
                 $tree_item->build();
                 foreach ($tree_item->children_select_recursive() as $c_child) $form->child_select('fields')->child_select('id_parent')->disabled[$c_child->id] = $c_child->id;
                 $form->child_select('fields')->child_select('id_parent')->disabled[$form->_instance->id] = $form->_instance->id;
-                $form->child_select('fields')->child_select('id_parent')->query_settings['conditions'] = [
+                $form->child_select('fields')->child_select('id_parent')->query_settings['where'] = [
                     'id_tree_!f'       => 'id_tree',
                     'id_tree_operator' => '=',
                     'id_tree_!v'       => $form->_instance->id_tree
