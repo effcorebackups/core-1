@@ -1,0 +1,43 @@
+tests
+- class__file|Test
+    id: class__file
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: File
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-path_parse|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: File::__path_parse()
+    - code-path_parse|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File::test_step_code__path_parse
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-path_parse__with_protocol|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: File::__path_parse() + protocol
+    - code-path_parse__with_protocol|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File::test_step_code__path_parse__with_protocol
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-get_mode_info|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: File::get_mode_info()
+    - code-get_mode_info|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File::test_step_code__get_mode_info
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-fopen|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: fopen()
+    - code-fopen|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File::test_step_code__fopen
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

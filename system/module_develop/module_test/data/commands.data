@@ -2,56 +2,66 @@ commands
 - test|Command
     name: test
     description: Run the test.
-////        parameters:
-////        --server_name=effcore: when the server has multiple instances on 127.0.0.1
-////        --server_port=80: server port by default
-////        --server_port=443: server port when using HTTPS
-////        --https: when using HTTPS
-////        --proxy=127.0.0.1:8888: when using proxy
-////        --quantity=1: quantity of repetitions = 1 (by default, minimum)
-////        --quantity=100: quantity of repetitions = 100 (maximum)
-////        examples:
-////        ./command test demo\
-////            --server_name=effcore\
-////            --server_port=80
-////        ./command test demo\
-////            --server_name=effcore\
-////            --server_port=80\
-////            --proxy=127.0.0.1:8888
-////        ./command test demo\
-////            --server_name=effcore\
-////            --server_port=443\
-////            --https\
-////            --proxy=127.0.0.1:8888\
-////            --quantity=1
+////////////////      |
+////////////////      | PARAMETERS:
+////////////////      | ----------------------------------------------------------------------------
+////////////////      |   --server_name=effcore: when the server has multiple instances on 127.0.0.1
+////////////////      |   --server_port=80: server port by default
+////////////////      |   --server_port=443: server port when using HTTPS
+////////////////      |   --https: when using HTTPS
+////////////////      |   --proxy=127.0.0.1:8888: when using proxy
+////////////////      |   --quantity=1: quantity of repetitions = 1 (by default, minimum)
+////////////////      |   --quantity=100: quantity of repetitions = 100 (maximum)
+////////////////      |
+////////////////      | EXAMPLES:
+////////////////      | ----------------------------------------------------------------------------
+////////////////      |   ./command test demo\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=80
+////////////////      |   ./command test demo\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=80\
+////////////////      |       --proxy=127.0.0.1:8888
+////////////////      |   ./command test demo\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=443\
+////////////////      |       --https\
+////////////////      |       --proxy=127.0.0.1:8888\
+////////////////      |       --quantity=1
+////////////////      |
     handler: \effcore\modules\test\Events_Command::test
 - test_all|Command
     name: test_all
     description: Run all tests.
-////        parameters:
-////        --server_name=effcore: when the server has multiple instances on 127.0.0.1
-////        --server_port=80: server port by default
-////        --server_port=443: server port when using HTTPS
-////        --https: when using HTTPS
-////        --proxy=127.0.0.1:8888: when using proxy
-////        --quantity=1: quantity of repetitions = 1 (by default, minimum)
-////        --quantity=100: quantity of repetitions = 100 (maximum)
-////        --force: skip errors
-////        examples:
-////        ./command test_all\
-////            --server_name=effcore\
-////            --server_port=80\
-////            --force
-////        ./command test_all\
-////            --server_name=effcore\
-////            --server_port=80\
-////            --proxy=127.0.0.1:8888\
-////            --force
-////        ./command test_all\
-////            --server_name=effcore\
-////            --server_port=443\
-////            --https\
-////            --proxy=127.0.0.1:8888\
-////            --quantity=1\
-////            --force
+////////////////      |
+////////////////      | PARAMETERS:
+////////////////      | ----------------------------------------------------------------------------
+////////////////      |   --server_name=effcore: when the server has multiple instances on 127.0.0.1
+////////////////      |   --server_port=80: server port by default
+////////////////      |   --server_port=443: server port when using HTTPS
+////////////////      |   --https: when using HTTPS
+////////////////      |   --proxy=127.0.0.1:8888: when using proxy
+////////////////      |   --quantity=1: quantity of repetitions = 1 (by default, minimum)
+////////////////      |   --quantity=100: quantity of repetitions = 100 (maximum)
+////////////////      |   --force: skip errors
+////////////////      |
+////////////////      | examples:
+////////////////      | ----------------------------------------------------------------------------
+////////////////      |   ./command test_all\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=80\
+////////////////      |       --force
+////////////////      |   ./command test_all\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=80\
+////////////////      |       --proxy=127.0.0.1:8888\
+////////////////      |       --force
+////////////////      |   ./command test_all\
+////////////////      |       --server_name=effcore\
+////////////////      |       --server_port=443\
+////////////////      |       --https\
+////////////////      |       --proxy=127.0.0.1:8888\
+////////////////      |       --quantity=1\
+////////////////      |       --force
+////////////////      |
     handler: \effcore\modules\test\Events_Command::test_all

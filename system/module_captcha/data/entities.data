@@ -3,7 +3,7 @@ entities
     name: captcha
     title: CAPTCHA
     title_plural: CAPTCHAs
-    catalog_name: captcha
+    table_name: captcha
     fields
     - ip_hex
         title: IP address

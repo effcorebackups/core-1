@@ -10,7 +10,7 @@ class Url {
 
     # valid urls:
     # ┌────────────────────────────────────────────────────────────╥──────────┬────────────────────────────┬────────────────────┬─────────────┬──────────┬────────────────────────────────────────────────────────────────────┬─────────────────────────────────────┐
-    # │ url                                                        ║ protocol │ domain                     │ path               │ query       │ anchor   │ full_get                                                           │ tiny_get                            │
+    # │ url                                                        ║ protocol │ domain                     │ path               │ query       │ anchor   │ absolute_get                                                       │ relative_get                        │
     # ╞════════════════════════════════════════════════════════════╬══════════╪════════════════════════════╪════════════════════╪═════════════╪══════════╪════════════════════════════════════════════════════════════════════╪═════════════════════════════════════╡
     # │                        '/'                                 ║ 'http'   │ 'current.subdomain.domain' │ '/'                │ ''          │ ''       │ 'http://current.subdomain.domain'                                  │ '/'                                 │
     # │                        '/?key=value'                       ║ 'http'   │ 'current.subdomain.domain' │ '/'                │ 'key=value' │ ''       │ 'http://current.subdomain.domain/?key=value'                       │ '/?key=value'                       │
@@ -21,6 +21,7 @@ class Url {
     # │                        '/dir/subdir/page#anchor'           ║ 'http'   │ 'current.subdomain.domain' │ '/dir/subdir/page' │ ''          │ 'anchor' │ 'http://current.subdomain.domain/dir/subdir/page#anchor'           │ '/dir/subdir/page#anchor'           │
     # │                        '/dir/subdir/page?key=value#anchor' ║ 'http'   │ 'current.subdomain.domain' │ '/dir/subdir/page' │ 'key=value' │ 'anchor' │ 'http://current.subdomain.domain/dir/subdir/page?key=value#anchor' │ '/dir/subdir/page?key=value#anchor' │
     # │        'subdomain.domain'                                  ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ ''       │         'http://subdomain.domain'                                  │ '/'                                 │
+    # │        'subdomain.domain/'                                 ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ ''       │         'http://subdomain.domain'                                  │ '/'                                 │
     # │        'subdomain.domain/?key=value'                       ║ 'http'   │         'subdomain.domain' │ '/'                │ 'key=value' │ ''       │         'http://subdomain.domain/?key=value'                       │ '/?key=value'                       │
     # │        'subdomain.domain/#anchor'                          ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ 'anchor' │         'http://subdomain.domain/#anchor'                          │ '/#anchor'                          │
     # │        'subdomain.domain/?key=value#anchor'                ║ 'http'   │         'subdomain.domain' │ '/'                │ 'key=value' │ 'anchor' │         'http://subdomain.domain/?key=value#anchor'                │ '/?key=value#anchor'                │
@@ -29,6 +30,7 @@ class Url {
     # │        'subdomain.domain/dir/subdir/page#anchor'           ║ 'http'   │         'subdomain.domain' │ '/dir/subdir/page' │ ''          │ 'anchor' │         'http://subdomain.domain/dir/subdir/page#anchor'           │ '/dir/subdir/page#anchor'           │
     # │        'subdomain.domain/dir/subdir/page?key=value#anchor' ║ 'http'   │         'subdomain.domain' │ '/dir/subdir/page' │ 'key=value' │ 'anchor' │         'http://subdomain.domain/dir/subdir/page?key=value#anchor' │ '/dir/subdir/page?key=value#anchor' │
     # │ 'http://subdomain.domain'                                  ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ ''       │         'http://subdomain.domain'                                  │ '/'                                 │
+    # │ 'http://subdomain.domain/'                                 ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ ''       │         'http://subdomain.domain'                                  │ '/'                                 │
     # │ 'http://subdomain.domain/?key=value'                       ║ 'http'   │         'subdomain.domain' │ '/'                │ 'key=value' │ ''       │         'http://subdomain.domain/?key=value'                       │ '/?key=value'                       │
     # │ 'http://subdomain.domain/#anchor'                          ║ 'http'   │         'subdomain.domain' │ '/'                │ ''          │ 'anchor' │         'http://subdomain.domain/#anchor'                          │ '/#anchor'                          │
     # │ 'http://subdomain.domain/?key=value#anchor'                ║ 'http'   │         'subdomain.domain' │ '/'                │ 'key=value' │ 'anchor' │         'http://subdomain.domain/?key=value#anchor'                │ '/?key=value#anchor'                │
@@ -38,18 +40,17 @@ class Url {
     # │ 'http://subdomain.domain/dir/subdir/page?key=value#anchor' ║ 'http'   │         'subdomain.domain' │ '/dir/subdir/page' │ 'key=value' │ 'anchor' │         'http://subdomain.domain/dir/subdir/page?key=value#anchor' │ '/dir/subdir/page?key=value#anchor' │
     # └────────────────────────────────────────────────────────────╨──────────┴────────────────────────────┴────────────────────┴─────────────┴──────────┴────────────────────────────────────────────────────────────────────┴─────────────────────────────────────┘
 
-    # wrong urls:
-    # ┌──────────────────────────╥──────────────────────────────────────────────────────────────────────┐
-    # │ url                      ║ behavior                                                             │
-    # ╞══════════════════════════╬══════════════════════════════════════════════════════════════════════╡
-    # │ http://subdomain.domain/ ║ should be redirected to 'http://subdomain.domain'                    │
-    # │ subdomain.domain/        ║ should be redirected to 'http://subdomain.domain'                    │
-    # │ /subdomain.domain        ║ this domain described like a path (first character is the slash)     │
-    # │ dir/subdir/page          ║ this path described like a domain (first character is not the slash) │
-    # └──────────────────────────╨──────────────────────────────────────────────────────────────────────┘
+    # processing rules:
+    # ┌────────────────╥────────────────────────────────────────┐
+    # │ url            ║ behavior                               │
+    # ╞════════════════╬════════════════════════════════════════╡
+    # │ /some/address  ║ relative path                          │
+    # │  some/address  ║ absolute path                          │
+    # │  some/address/ ║ should be redirected to 'some/address' │
+    # └────────────────╨────────────────────────────────────────┘
 
     # ────────────────────────────────────────────────────────────────────────────────────────────────
-    # note:
+    # RFC note:
     # ════════════════════════════════════════════════════════════════════════════════════════════════
     # 1. in the next url 'http://name:password@subdomain.domain:port/dir/subdir/page?key=value#anchor'
     #    the name, password and port values after parsing will be in the $domain property.
@@ -68,7 +69,7 @@ class Url {
     # Lt ║ Title case letter
     # Lu ║ Upper case letter
     # ───╨────────────────────────────────────────────────────────────────────────────────────────────
-    # utf8 letters: '[[:alpha:]]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
+    # UTF8 letters: '[[:alpha:]]' === '[\\p{L}]' === '[\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}]'
     # officially allowed characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
     # officially allowed characters ACSII range: '[\\x21-\\x7e]'
     # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -135,7 +136,7 @@ class Url {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-    function tiny_get() {
+    function relative_get() {
         if (!$this->has_error) {
             $result = $this->path;
             if ($this->query ) $result.= '?'.$this->query;
@@ -144,7 +145,7 @@ class Url {
         }
     }
 
-    function full_get() {
+    function absolute_get() {
         if (!$this->has_error) {
             $result = $this->path;
             if ($this->domain  ) $result =     $this->domain.$result;
@@ -180,7 +181,7 @@ class Url {
 
     function file_type_get() {
         if (!$this->has_error) {
-            return ltrim(strtolower(strrchr($this->path, '.')), '.');
+            return ltrim(mb_strtolower(strrchr($this->path, '.')), '.');
         }
     }
 
@@ -196,12 +197,22 @@ class Url {
 
     static function init() {
         if (static::$cache === null)
-            static::$cache = new static(Request::uri_get());
+            static::$cache = new static(Request::URI_get());
     }
 
     static function get_current() {
         static::init();
         return static::$cache;
+    }
+
+    static function is_absolute($url) {
+        if (strlen($url) && $url[0] !== '/') return true;
+        else return false;
+    }
+
+    static function is_relative($url) {
+        if (strlen($url) && $url[0] === '/') return true;
+        else return false;
     }
 
     static function is_local($url, $decode = false) {
@@ -215,8 +226,8 @@ class Url {
         $checked_url = new static($url);
         $current_url =     static::get_current();
         switch ($compare_type) {
-            case 'full': return $checked_url->full_get() ===
-                                $current_url->full_get();
+            case 'full': return $checked_url->absolute_get() ===
+                                $current_url->absolute_get();
             case 'path': return $checked_url->domain.$checked_url->path ===
                                 $current_url->domain.$current_url->path;
         }
@@ -225,8 +236,8 @@ class Url {
     static function is_active_trail($url) {
         $checked_url = new static($url);
         $current_url =     static::get_current();
-        return strpos($current_url->full_get().'/',
-                      $checked_url->full_get().'/') === 0;
+        return strpos($current_url->absolute_get().'/',
+                      $checked_url->absolute_get().'/') === 0;
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -248,7 +259,7 @@ class Url {
         }
     }
 
-    static function utf8_encode($value, $prefix = '', $range = self::VALID_UNICODE_RANGE) {
+    static function UTF8_encode($value, $prefix = '', $range = self::VALID_UNICODE_RANGE) {
         return preg_replace_callback('%(?<char>['.$range.'])%uS', function ($c_match) use ($prefix) {
             if (strlen($c_match['char']) === 1) return                               $c_match['char'][0];
             if (strlen($c_match['char']) === 2) return $prefix.strtoupper(dechex(ord($c_match['char'][0]))).$prefix.strtoupper(dechex(ord($c_match['char'][1])));
@@ -276,7 +287,7 @@ class Url {
         $query_arg = Request::value_get($arg_name, 0, '_GET');
         $url = new static(static::is_local($query_arg) ? $query_arg : null);
         return $url->has_error ? '' :
-               $url->full_get();
+               $url->absolute_get();
     }
 
     static function back_url_set($arg_name = 'back', $url = '') {
@@ -285,7 +296,7 @@ class Url {
 
     static function back_part_make($arg_name = 'back', $url = null) {
         if ($url) return $arg_name.'='.rawurlencode($url);
-        else      return $arg_name.'='.rawurlencode(static::get_current()->tiny_get());
+        else      return $arg_name.'='.rawurlencode(static::get_current()->relative_get());
     }
 
     static function go($url) {
@@ -294,7 +305,7 @@ class Url {
             foreach ($c_messages as $c_message)
                 Message::insert_to_storage($c_message, $c_type);
         Response::send_header_and_exit('redirect', null, null,
-            (new static($url))->full_get()
+            (new static($url))->absolute_get()
         );
     }
 

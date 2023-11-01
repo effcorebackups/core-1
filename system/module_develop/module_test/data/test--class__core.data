@@ -95,22 +95,6 @@ tests
     - code-data_to_attributes|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__data_to_attributes
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_range|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Core::validate_range()
-    - code-validate_range|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_range
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_mime_type|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Core::validate_mime_type()
-    - code-validate_mime_type|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_mime_type
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-ip_to_hex|Test_step_Title
         title|Text
           text: METHOD "%%_name"
@@ -127,37 +111,21 @@ tests
     - code-hex_to_ip|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__hex_to_ip
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_number_with_minus|Test_step_Title
+    - title-html_entity_encode_total|Test_step_Title
         title|Text
           text: METHOD "%%_name"
           args
-          - name: Core::validate_number($value, true)
-    - code-validate_number_with_minus|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_number_with_minus
+          - name: Core::html_entity_encode_total()
+    - code-html_entity_encode_total|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__html_entity_encode_total
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_number|Test_step_Title
+    - title-html_entity_decode_total|Test_step_Title
         title|Text
           text: METHOD "%%_name"
           args
-          - name: Core::validate_number($value, false)
-    - code-validate_number|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_number
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_int_with_minus|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Core::validate_int_with_minus($value, true)
-    - code-validate_int_with_minus|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_int_with_minus
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-validate_int|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Core::validate_int($value, false)
-    - code-validate_int|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__validate_int
+          - name: Core::html_entity_decode_total()
+    - code-html_entity_decode_total|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__html_entity_decode_total
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

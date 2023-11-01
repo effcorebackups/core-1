@@ -5,7 +5,8 @@ forms
     - method: post
     - novalidate: true
     children
-    - main|Fieldset
+    - session|Fieldset
+        title: Session
         children
         - cookie_domain|Field_URL
             title: Cookie domain
@@ -20,13 +21,33 @@ forms
             - minlength: 2
             - maxlength: 120
             - required: false
-            should_be_included
-            - =: domain
-            should_be_excluded
-            - =: protocol
-            - =: path
-            - =: query
-            - =: anchor
+            parts
+            - protocol: -
+            - domain: +
+            - path: -
+            - query: -
+            - anchor: -
+        - session_duration_short|Field_Number
+            title: Short session, in days
+            description|Text
+              text: Changing the value will not affect existing sessions.
+            element_attributes
+            - name: session_duration_short
+            - min: 1
+            - max: 365
+            - value: 1
+        - session_duration_long|Field_Number
+            title: Long session, in days
+            description|Text
+              text: Changing the value will not affect existing sessions.
+            element_attributes
+            - name: session_duration_long
+            - min: 1
+            - max: 365
+            - value: 30
+    - login|Fieldset
+        title: Login
+        children
         - login_attempts|Field_Number
             title: Number of login attempts
             element_attributes
@@ -35,43 +56,28 @@ forms
             - max: 100
             - value: 5
             - disabled: true
-        - blocked_until|Field_Number
-            title: Blocking the login for the number of minutes
+        - login_blocked_until|Field_Number
+            title: Temporary login blocking, in minutes
             description|Text_multiline
               text
               - 0: After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.
-              - 1: Eliminates the possibility of brute-force a password if an attacker knows the Email.
+              - 1: Eliminates the possibility of brute-force a password if an attacker knows the EMail address.
               - 2: Blocking will not affect existing sessions.
             element_attributes
-            - name: blocked_until
+            - name: login_blocked_until
             - min: 1
             - max: 10000
             - value: 5
             - disabled: true
-        - session_duration_min|Field_Number
-            title: Session duration in days when "long session" is not selected
-            description|Text
-              text: Changing the value will not affect existing sessions.
-            element_attributes
-            - name: session_duration_min
-            - min: 1
-            - max: 365
-            - value: 1
-        - session_duration_max|Field_Number
-            title: Session duration in days when "long session" is selected
-            description|Text
-              text: Changing the value will not affect existing sessions.
-            element_attributes
-            - name: session_duration_max
-            - min: 1
-            - max: 365
-            - value: 30
+    - registration|Fieldset
+        title: Registration
+        children
         - send_password_to_email|Field_Select_logic
-            title: Registration via Email
+            title: Registration via EMail address
             description|Text_multiline
               text
-              - 0: When registering, the system itself generates a password and sends it to the Email.
-              - 1: Eliminates the possibility of registering to a non-existent Email address.
+              - 0: When registering, the system itself generates a password and sends it to the EMail address.
+              - 1: Eliminates the possibility of registering to a non-existent EMail address.
             element_attributes
             - name: send_password_to_email
             selected

@@ -43,8 +43,8 @@ abstract class Session {
         $settings = Module::settings_get('user');
         $is_long_session = isset($session_params['is_long_session']);
         $is_fixed_ip     = isset($session_params['is_fixed_ip']);
-        if ($is_long_session === false) $period = $settings->session_duration_min * Core::DATE_PERIOD_D;
-        if ($is_long_session !== false) $period = $settings->session_duration_max * Core::DATE_PERIOD_D;
+        if ($is_long_session === false) $period = $settings->session_duration_short * Core::DATE_PERIOD_D;
+        if ($is_long_session !== false) $period = $settings->session_duration_long  * Core::DATE_PERIOD_D;
         static::id_regenerate('f', $session_params);
         (new Instance('session', [
             'id'              => static::id_get(),
@@ -102,8 +102,8 @@ abstract class Session {
         $settings = Module::settings_get('user');
         $is_long_session = isset($session_params['is_long_session']);
         $is_fixed_ip     = isset($session_params['is_fixed_ip']);
-        if ($hex_type === 'f' && $is_long_session !== true) $expired = time() + ($settings->session_duration_min * Core::DATE_PERIOD_D);
-        if ($hex_type === 'f' && $is_long_session === true) $expired = time() + ($settings->session_duration_max * Core::DATE_PERIOD_D);
+        if ($hex_type === 'f' && $is_long_session !== true) $expired = time() + ($settings->session_duration_short * Core::DATE_PERIOD_D);
+        if ($hex_type === 'f' && $is_long_session === true) $expired = time() + ($settings->session_duration_long  * Core::DATE_PERIOD_D);
         if ($hex_type === 'a'                             ) $expired = 0;
         if ($hex_type === 'f' && $is_fixed_ip !== true) $ip = Core::EMPTY_IP;
         if ($hex_type === 'f' && $is_fixed_ip === true) $ip = Request::addr_remote_get();
@@ -119,9 +119,11 @@ abstract class Session {
                       $hex_uagent_hash_8. # strlen === 8
                       $hex_random;        # strlen === 8
         $session_id.= User::signature_get($session_id, 'user', 8);
-        header_remove('Set-Cookie');
-        setcookie('session_id', $session_id,    $expired, '/', $settings->cookie_domain, 0, 1);
-        setcookie('cookies_is_enabled', 'true', $expired, '/', $settings->cookie_domain);
+        if (!headers_sent()) {
+            header_remove('set-cookie');
+            setcookie('session_id', $session_id,    $expired, '/', $settings->cookie_domain, 0, 1);
+            setcookie('cookies_is_enabled', 'true', $expired, '/', $settings->cookie_domain);
+        }
         $_COOKIE['session_id'] = $session_id;
         return $session_id;
     }
@@ -134,7 +136,7 @@ abstract class Session {
 
     static function id_get_hex_expired($expired) {return str_pad(dechex($expired), 8, '0', STR_PAD_LEFT);}
     static function id_get_hex_ip          ($ip) {return Core::ip_to_hex($ip);}
-    static function id_get_hex_uagent_hash_8  () {return Core::hash_get_mini(Request::user_agent_get(80));} # note: why 80? Safari truncates the "user_agent" value for pages in favorites.
+    static function id_get_hex_uagent_hash_8  () {return Security::hash_get_mini(Request::user_agent_get(80));} # note: why 80? Safari truncates the "user_agent" value for pages in favorites.
     static function id_get_hex_random         () {return str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);}
     static function id_get_hex_signature   ($id) {return User::signature_get(substr($id, 0, 56 + 1), 'user', 8);}
 
@@ -147,7 +149,7 @@ abstract class Session {
     static function id_extract_hex_signature    ($id) {return substr($id, 56 + 1,  8);}
 
     static function id_check($id) {
-        if (Core::validate_hash($id, 65)) {
+        if (Security::validate_hash($id, 65)) {
             $expired           = static::id_extract_expired          ($id);
             $hex_type          = static::id_extract_hex_type         ($id);
             $hex_ip            = static::id_extract_hex_ip           ($id);

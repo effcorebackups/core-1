@@ -5,13 +5,13 @@ settings
   - form: abcde01234abcde01234abcde01234abcde01234
   - user: abcde01234abcde01234abcde01234abcde01234
   - args: abcde01234abcde01234abcde01234abcde01234
-# note for "password_characters": excluded characters "0OoLlIi" to avoid misunderstanding and "$&~^%@:;" to avoid email problems
+# note for "password_characters": excluded characters "0OoLlIi" to avoid misunderstanding and "$&~^%@:;" to avoid EMail problems
   password_characters: abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ123456789#_*-+=!?
   key_characters: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&_*-+=:;!?~^
   hash_characters: abcdef0123456789
   cookie_domain: 
   login_attempts: 5
-  blocked_until: 5
-  session_duration_min: 1
-  session_duration_max: 365
+  login_blocked_until: 5
+  session_duration_short: 1
+  session_duration_long: 365
   send_password_to_email: 0

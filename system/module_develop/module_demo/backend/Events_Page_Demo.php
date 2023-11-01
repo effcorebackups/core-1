@@ -10,13 +10,13 @@ use effcore\Canvas_SVG;
 use effcore\Decorator;
 use effcore\Diagram;
 use effcore\Locale;
+use effcore\Markup_Table_body_row_cell;
+use effcore\Markup_Table_body_row;
+use effcore\Markup_Table;
 use effcore\Markup;
 use effcore\Message;
 use effcore\Node;
 use effcore\Tab_item;
-use effcore\Table_body_row_cell;
-use effcore\Table_body_row;
-use effcore\Table;
 use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Tree_item;
@@ -98,22 +98,26 @@ abstract class Events_Page_Demo {
             'th_3' => new Text('head cell #%%_number', ['number' => 3])
         ]];
         $table_tbody = [
-            [   'td_1' =>                             new Text('cell #%%_number', ['number' => 1.1]),
-                'td_2' =>                             new Text('cell #%%_number', ['number' => 1.2]),
-                'td_3' =>                             new Text('cell #%%_number', ['number' => 1.3])],
-            [   'td_1' =>                             new Text('cell #%%_number', ['number' => 2.1]),
-                'td_2' =>                             new Text('cell #%%_number', ['number' => 2.2]),
-                'td_3' => new Table_body_row_cell([], new Text('cell #%%_number', ['number' => 2.3]))],
-            new Table_body_row([], [
-                'td_1' =>                             new Text('cell #%%_number', ['number' => 3.1]),
-                'td_2' =>                             new Text('cell #%%_number', ['number' => 3.2]),
-                'td_3' => new Table_body_row_cell([], new Text('cell #%%_number', ['number' => 3.3]))]),
-            new Table_body_row([], [
-                'td_1' => new Table_body_row_cell(['colspan' => 3], new Text(''))
+            [
+                'td_1' =>                                    new Text('cell #%%_number', ['number' => 1.1]),
+                'td_2' =>                                    new Text('cell #%%_number', ['number' => 1.2]),
+                'td_3' =>                                    new Text('cell #%%_number', ['number' => 1.3])
+            ], [
+                'td_1' =>                                    new Text('cell #%%_number', ['number' => 2.1]),
+                'td_2' =>                                    new Text('cell #%%_number', ['number' => 2.2]),
+                'td_3' => new Markup_Table_body_row_cell([], new Text('cell #%%_number', ['number' => 2.3]))
+            ],
+            new Markup_Table_body_row([], [
+                'td_1' =>                                    new Text('cell #%%_number', ['number' => 3.1]),
+                'td_2' =>                                    new Text('cell #%%_number', ['number' => 3.2]),
+                'td_3' => new Markup_Table_body_row_cell([], new Text('cell #%%_number', ['number' => 3.3]))
+            ]),
+            new Markup_Table_body_row([], [
+                'td_1' => new Markup_Table_body_row_cell(['colspan' => 3], new Text(''))
             ])
         ];
         $table_title = new Markup('h2', [], 'Table');
-        $table = new Table(['class' => ['table' => 'table']],
+        $table = new Markup_Table(['class' => ['table' => 'table']],
             $table_tbody,
             $table_thead
         );

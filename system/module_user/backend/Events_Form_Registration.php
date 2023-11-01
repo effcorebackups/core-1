@@ -21,9 +21,9 @@ abstract class Events_Form_Registration {
     static function on_init($event, $form, $items) {
         $settings = Module::settings_get('user');
         $items['#session_params:is_long_session']->attributes['title'] = new Text_multiline([
-            'Short session: %%_min day%%_plural(min|s) | long session: %%_max day%%_plural(max|s)'], [
-            'min' => $settings->session_duration_min,
-            'max' => $settings->session_duration_max], '', true, true);
+            'Short session: %%_short day%%_plural(short|s) | long session: %%_long day%%_plural(long|s)'], [
+            'short' => $settings->session_duration_short,
+            'long'  => $settings->session_duration_long], '', true, true);
         $items['#password']->disabled_set((bool)$settings->send_password_to_email);
         $items['#email'   ]->value_set('');
         $items['#nickname']->value_set('');
@@ -34,9 +34,9 @@ abstract class Events_Form_Registration {
             case 'register':
                 $settings = Module::settings_get('user');
 
-                # ────────────────────────────────────────────────────────────────────────────────────
-                # registration via Email: a password is generated and sent to the user-specified Email
-                # ────────────────────────────────────────────────────────────────────────────────────
+                # ────────────────────────────────────────────────────────────────────────────────────────────────────
+                # registration via EMail address: a password is generated and sent to the user-specified EMail address
+                # ────────────────────────────────────────────────────────────────────────────────────────────────────
 
                 if ($settings->send_password_to_email) {
                     $new_password = User::password_generate();
@@ -49,7 +49,7 @@ abstract class Events_Form_Registration {
                     if ($user) {
                         $domain = Url::get_current()->domain;
                         if (Mail::send('registration', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
-                            Message::insert('A new password was sent to the selected Email.');
+                            Message::insert('A new password was sent to the selected EMail address.');
                             Url::go(Url::back_url_get() ?: '/login');
                         }
                     } else {

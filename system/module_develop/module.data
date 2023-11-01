@@ -5,7 +5,7 @@ module|Module
   group: Develop
   description: Module for development.
   copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
-  version: 0.910
+  version: 0.911
   dependencies
     system
-    - core: 0.910
+    - core: 0.911

@@ -28,12 +28,14 @@ class Module extends Module_embedded {
         # ─────────────────────────────────────────────────────────────────────
 
         $copy = Storage::get('data')->select('copy');
-        if ( isset($copy[$this->id]) ) {
+        if (isset($copy[$this->id])) {
             foreach ($copy[$this->id] as $c_info) {
                 $c_file = new File($c_info->to);
-                if (@unlink($c_file->path_get()))
-                     Message::insert(new Text('File "%%_file" was deleted.',     ['file' => $c_file->path_get_relative()]));
-                else Message::insert(new Text('File "%%_file" was not deleted!', ['file' => $c_file->path_get_relative()]), 'warning');
+                if ($c_file->is_exists()) {
+                    if (File::delete($c_file->path_get()))
+                         Message::insert(new Text('File "%%_file" was deleted.',     ['file' => $c_file->path_get_relative()]));
+                    else Message::insert(new Text('File "%%_file" was not deleted!', ['file' => $c_file->path_get_relative()]), 'warning');
+                }
             }
         }
 
@@ -44,8 +46,8 @@ class Module extends Module_embedded {
         foreach (Instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
             if ($c_instance->delete())
-                 Message::insert(new Text('Instance with Row ID = "%%_row_id" was deleted.',     ['row_id' => $c_row_id])           );
-            else Message::insert(new Text('Instance with Row ID = "%%_row_id" was not deleted!', ['row_id' => $c_row_id]), 'warning');
+                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was deleted.',     ['row_id' => $c_row_id])           );
+            else Message::insert(new Text('Table row with Row ID = "%%_row_id" was not deleted!', ['row_id' => $c_row_id]), 'warning');
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
         }
 
@@ -55,15 +57,15 @@ class Module extends Module_embedded {
 
         foreach (Entity::get_all_by_module($this->id) as $c_entity) {
             if ($c_entity->uninstall())
-                 Message::insert(new Text('Entity "%%_entity" was uninstalled.',     ['entity' => $c_entity->name])           );
-            else Message::insert(new Text('Entity "%%_entity" was not uninstalled!', ['entity' => $c_entity->name]), 'warning');
+                 Message::insert(new Text('Table "%%_name" was uninstalled.',     ['name' => $c_entity->table_name])           );
+            else Message::insert(new Text('Table "%%_name" was not uninstalled!', ['name' => $c_entity->table_name]), 'warning');
         }
 
         # ─────────────────────────────────────────────────────────────────────
         # delete changes
         # ─────────────────────────────────────────────────────────────────────
 
-        Storage::get('data')->changes_delete_all(
+        Storage::get('data')->changes_unregister_all(
             $this->id
         );
 

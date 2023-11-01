@@ -31,16 +31,16 @@ abstract class Events_Form_Instance_insert {
                     $form->_instance = new Instance($entity->name);
                     $form->child_select('fields')->children_delete();
                     foreach ($entity->fields as $c_name => $c_field) {
-                        if (!empty($c_field->managing_is_enabled_on_insert) &&
-                             isset($c_field->managing_control_class)) {
-                            $c_control = new $c_field->managing_control_class;
+                        if (!empty($c_field->managing->is_enabled_on_insert) &&
+                            !empty($c_field->managing->control->class)) {
+                            $c_control = new $c_field->managing->control->class;
                             $c_control->cform = $form;
                             $c_control->title = $c_field->title;
                             $c_control->element_attributes['name'] = $c_name;
-                            $c_control->element_attributes = ($c_field->managing_control_element_attributes           ?? []) + $c_control->element_attributes;
-                            $c_control->element_attributes = ($c_field->managing_control_element_attributes_on_insert ?? []) + $c_control->element_attributes;
-                            if (isset($c_field->managing_control_properties          ) && is_array($c_field->managing_control_properties          )) foreach ($c_field->managing_control_properties           as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
-                            if (isset($c_field->managing_control_properties_on_insert) && is_array($c_field->managing_control_properties_on_insert)) foreach ($c_field->managing_control_properties_on_insert as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                            $c_control->element_attributes = ($c_field->managing->control->element_attributes           ?? []) + $c_control->element_attributes;
+                            $c_control->element_attributes = ($c_field->managing->control->element_attributes_on_insert ?? []) + $c_control->element_attributes;
+                            if (isset($c_field->managing->control->properties          ) && is_array($c_field->managing->control->properties          )) foreach ($c_field->managing->control->properties           as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
+                            if (isset($c_field->managing->control->properties_on_insert) && is_array($c_field->managing->control->properties_on_insert)) foreach ($c_field->managing->control->properties_on_insert as $c_prop_name => $c_prop_value) $c_control->{$c_prop_name} = $c_prop_value;
                             $c_control->entity_name = $entity->name;
                             $c_control->entity_field_name = $c_name;
                             $c_control->value_set_initial('', true);
@@ -103,16 +103,16 @@ abstract class Events_Form_Instance_insert {
             case 'insert':
             case 'insert_and_update':
                 foreach ($entity->fields as $c_name => $c_field) {
-                    if (!empty($c_field->managing_is_enabled_on_insert) &&
-                         isset($c_field->managing_control_class)) {
+                    if (!empty($c_field->managing->is_enabled_on_insert) &&
+                        !empty($c_field->managing->control->class)) {
                         $c_value = null;
-                        $c_reflection = new ReflectionClass($c_field->managing_control_class);
+                        $c_reflection = new ReflectionClass($c_field->managing->control->class);
                         $c_prefix = $c_reflection->implementsInterface('\\effcore\\Control_complex') ? '*' : '#';
                         $c_control = $items[$c_prefix.$c_name];
                         if     (is_object($c_control) && $c_control instanceof Control && $c_control instanceof Field_Checkbox !== true) $c_value = $c_control->  value_get();
                         elseif (is_object($c_control) && $c_control instanceof Control && $c_control instanceof Field_Checkbox === true) $c_value = $c_control->checked_get() ? 1 : 0;
-                        if (!empty($c_field->managing_control_value_manual_get_if_empty) && empty($c_value)) continue;
-                        if (!empty($c_field->managing_control_value_manual_get         )                   ) continue;
+                        if (!empty($c_field->managing->control->value_manual_get_if_empty) && empty($c_value)) continue;
+                        if (!empty($c_field->managing->control->value_manual_get         )                   ) continue;
                         $form->_instance->{$c_name} = $c_value;
                     }
                 }
@@ -121,16 +121,21 @@ abstract class Events_Form_Instance_insert {
                 # show messages
                 if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => (new Text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
                 if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new Text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
-                # ↓↓↓ no break ↓↓↓
-            case 'cancel':
-                if ($form->is_redirect_enabled) {
-                    if ($form->clicked_button->value_get() === 'insert') Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
-                    if ($form->clicked_button->value_get() === 'cancel') Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
-                    if ($form->clicked_button->value_get() === 'insert_and_update') {
-                        if ($form->_result instanceof Instance) {
-                            Url::go($form->_result->make_url_for_update().'?'.Url::back_part_make('back', $entity->make_url_for_select_multiple()));
+                # redirect if no error
+                if ($form->_result !== null) {
+                    if ($form->is_redirect_enabled) {
+                        if ($form->clicked_button->value_get() === 'insert') Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                        if ($form->clicked_button->value_get() === 'insert_and_update') {
+                            if ($form->_result instanceof Instance) {
+                                Url::go($form->_result->make_url_for_update().'?'.Url::back_part_make('back', $entity->make_url_for_select_multiple()));
+                            }
                         }
                     }
+                }
+                break;
+            case 'cancel':
+                if ($form->is_redirect_enabled) {
+                    Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
                 }
                 break;
         }

@@ -239,7 +239,7 @@ class Field_File extends Field {
                 unset($fin_to_delete[$c_id]);
                 $field->items_set('fin_to_delete', $fin_to_delete);
                 Message::insert(new Text(
-                    'Item of type "%%_type" with title "%%_title" was deleted physically.', [
+                    'File of type "%%_type" with title "%%_title" was deleted physically.', [
                     'type'  => (new Text($field->item_title))->render(),
                     'title' => $c_title_for_message
                 ]));
@@ -257,7 +257,7 @@ class Field_File extends Field {
                 $field->items_set('pre', $items_pre);
                 $field->items_set('fin', $items_fin);
                 Message::insert(new Text(
-                    'Item of type "%%_type" with title "%%_title" has been saved.', [
+                    'File of type "%%_type" with title "%%_title" has been saved.', [
                     'type'  => (new Text($field->item_title))->render(),
                     'title' => $c_item->file
                 ]));
@@ -280,11 +280,11 @@ class Field_File extends Field {
             $items_pre = $field->items_get('pre');
             foreach ($values as $c_new_item) {
                 $items_pre[] = $c_new_item;
-                $c_new_row_id = Core::array_key_last($items_pre);
+                $c_new_row_id = array_key_last($items_pre);
                 if ($c_new_item->move_tmp_to_pre(Temporary::DIRECTORY.'validation/'.$field->cform->validation_cache_date_get().'/'.$field->cform->validation_id.'-'.$field->name_get().'-'.$c_new_row_id.'.'.$c_new_item->type)) {
                     $field->items_set('pre', $items_pre);
                     Message::insert(new Text(
-                        'Item of type "%%_type" with title "%%_title" was inserted.', [
+                        'File of type "%%_type" with title "%%_title" was inserted.', [
                         'type'  => (new Text($field->item_title))->render(),
                         'title' => $c_new_item->file
                     ]));
@@ -306,7 +306,7 @@ class Field_File extends Field {
                         unset($items_pre[$button->_id]);
                         $field->items_set('pre', $items_pre);
                         Message::insert(new Text(
-                            'Item of type "%%_type" with title "%%_title" was deleted physically.', [
+                            'File of type "%%_type" with title "%%_title" was deleted physically.', [
                             'type'  => (new Text($field->item_title))->render(),
                             'title' => $item_title
                         ]));
@@ -326,7 +326,7 @@ class Field_File extends Field {
                     $field->items_set('fin_to_delete', $fin_to_delete);
                     $field->items_set('fin', $items_fin);
                     Message::insert(new Text(
-                        'Item of type "%%_type" with title "%%_title" was deleted.', [
+                        'File of type "%%_type" with title "%%_title" was deleted.', [
                         'type'  => (new Text($field->item_title))->render(),
                         'title' => $item_title
                     ]));

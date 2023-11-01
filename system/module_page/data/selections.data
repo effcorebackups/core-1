@@ -29,14 +29,19 @@ selections
           weight: +340
       - created
           entity_field_name: created
-          weight: +320
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: +300
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +280
+          weight: +260
+    - handlers
+      - pre_listening
+          title: Pre-listening
+          handler: \effcore\modules\page\Events_Selection::handler__audio__pre_listening
+          weight: +320
 - instance_select-gallery|Selection
     id: instance_select-gallery
     main_entity_name: gallery
@@ -63,6 +68,7 @@ selections
           entity_field_name: attributes
           weight: +360
       - items
+          title: Preview
           entity_field_name: items
           weight: +340
       - created
@@ -102,6 +108,7 @@ selections
           weight: +360
       - url
           entity_field_name: url
+          is_not_visible: true
           weight: +340
       - is_https
           entity_field_name: is_https
@@ -112,6 +119,7 @@ selections
           weight: +300
       - text_direction
           entity_field_name: text_direction
+          is_not_visible: true
           weight: +280
       - charset
           entity_field_name: charset
@@ -134,6 +142,16 @@ selections
           entity_field_name: access
           is_apply_translation: true
           weight: +160
+    - handlers
+      - url_in_link
+          title: URL
+          handler: \effcore\modules\page\Events_Selection::handler__page__link
+          weight: +340
+      - text_direction
+          title: Text direction
+          handler: \effcore\modules\page\Events_Selection::handler__page__text_direction
+          is_apply_translation: true
+          weight: +280
 - instance_select-picture|Selection
     id: instance_select-picture
     main_entity_name: picture
@@ -170,14 +188,23 @@ selections
           weight: +300
       - created
           entity_field_name: created
-          weight: +280
+          weight: +240
       - updated
           entity_field_name: updated
-          weight: +260
+          weight: +220
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +240
+          weight: +200
+    - handlers
+      - url_absolute
+          title: Absolute URL
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_absolute
+          weight: +280
+      - preview
+          title: Preview
+          handler: \effcore\modules\page\Events_Selection::handler__picture__preview
+          weight: +260
 - instance_select-text|Selection
     id: instance_select-text
     main_entity_name: text
@@ -250,14 +277,19 @@ selections
           weight: +320
       - created
           entity_field_name: created
-          weight: +300
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: +280
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +260
+          weight: +240
+    - handlers
+      - preview
+          title: Preview
+          handler: \effcore\modules\page\Events_Selection::handler__video__view
+          weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|Selection
     id: instance_select_multiple-audio
@@ -276,15 +308,28 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +380
+      - this_attributes
+          entity_field_name: attributes
+          is_not_visible: true
+          weight: +360
+      - path
+          entity_field_name: path
+          is_not_visible: true
+          weight: +340
       - created
           entity_field_name: created
-          weight: +360
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: +340
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
+          weight: +260
+    - handlers
+      - pre_listening
+          title: Pre-listening
+          handler: \effcore\modules\page\Events_Selection::handler__audio__pre_listening
           weight: +320
 - instance_select_multiple-gallery|Selection
     id: instance_select_multiple-gallery
@@ -344,7 +389,7 @@ selections
     - handlers
       - url_in_link
           title: URL
-          handler: \effcore\modules\page\Events_Selection::handler_page_link
+          handler: \effcore\modules\page\Events_Selection::handler__page__link
           weight: +360
 - instance_select_multiple-picture|Selection
     id: instance_select_multiple-picture
@@ -363,19 +408,37 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +380
+      - this_attributes
+          entity_field_name: attributes
+          is_not_visible: true
+          weight: +360
+      - path
+          entity_field_name: path
+          is_not_visible: true
+          weight: +340
+      - link_attributes
+          entity_field_name: link_attributes
+          is_not_visible: true
+          weight: +320
       - url
           entity_field_name: url
-          weight: +360
+          is_not_visible: true
+          weight: +300
       - created
           entity_field_name: created
-          weight: +340
+          weight: +260
       - updated
           entity_field_name: updated
-          weight: +320
+          weight: +240
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: +300
+          weight: +220
+    - handlers
+      - preview
+          title: Preview
+          handler: \effcore\modules\page\Events_Selection::handler__picture__preview
+          weight: +280
 - instance_select_multiple-text|Selection
     id: instance_select_multiple-text
     main_entity_name: text
@@ -420,15 +483,32 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +380
+      - this_attributes
+          entity_field_name: attributes
+          is_not_visible: true
+          weight: +360
+      - path
+          entity_field_name: path
+          is_not_visible: true
+          weight: +340
+      - poster_path
+          entity_field_name: poster_path
+          is_not_visible: true
+          weight: +320
       - created
           entity_field_name: created
-          weight: +360
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: +340
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
+          weight: +240
+    - handlers
+      - preview
+          title: Preview
+          handler: \effcore\modules\page\Events_Selection::handler__video__view
           weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|Selection
@@ -537,7 +617,7 @@ selections
     decorator_settings
     - view_type: template
     - template: content
-    - template_item: picture
+    - template_item: picture_or_picture_in_link_embedded
     - mapping
       - id: id
       - description: description

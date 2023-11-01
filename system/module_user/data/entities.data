@@ -3,7 +3,7 @@ entities
     name: feedback
     title: Feedback
     title_plural: Feedbacks
-    catalog_name: feedbacks
+    table_name: feedbacks
     managing_is_enabled: true
     managing_group_id: user
     with_data: true
@@ -32,12 +32,14 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - name
         title: Name
         type: varchar
@@ -45,28 +47,33 @@ entities
         collate: nocase
         not_null: true
         check: (name <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - minlength: 4
-        - maxlength: 64
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - minlength: 4
+            - maxlength: 64
     - email
-        title: Email
+        title: EMail address
         type: varchar
         size: 64
         collate: nocase
         not_null: true
         check: (email <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Email
-        managing_control_properties
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Email
+            properties
+            - weight: +360
     - message
         title: Message
         type: varchar
@@ -74,32 +81,39 @@ entities
         collate: nocase
         not_null: true
         check: (message <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Textarea
-        managing_control_properties
-        - weight: +340
-        managing_control_element_attributes
-        - minlength: 50
-        - maxlength: 2048
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Textarea
+            properties
+            - weight: +340
+            element_attributes
+            - minlength: 50
+            - maxlength: 2048
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +320
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +320
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +300
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +300
     constraints
     - primary_id
         type: primary
@@ -122,7 +136,7 @@ entities
     name: permission
     title: Permission
     title_plural: Permissions
-    catalog_name: permissions
+    table_name: permissions
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
@@ -148,14 +162,16 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - title
         title: Title
         type: varchar
@@ -163,29 +179,38 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - size: 60
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +360
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +360
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     constraints
     - primary_id
         type: primary
@@ -204,7 +229,7 @@ entities
     name: relation_role_with_permission
     title: Relation: Role ↔ Permission
     title_plural: Relations: Role ↔ Permission
-    catalog_name: relations_role_with_permission
+    table_name: relations_role_with_permission
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
@@ -236,46 +261,54 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: role
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: title
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: role
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: title
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - id_permission
         title: Permission ID
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: permission
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: title
-        - weight: +380
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: permission
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: title
+            - weight: +380
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +360
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +360
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     constraints
     - primary_id_role_id_permission
         type: primary
@@ -309,7 +342,7 @@ entities
     name: relation_role_with_user
     title: Relation: Role ↔ User
     title_plural: Relations: Role ↔ User
-    catalog_name: relations_role_with_user
+    table_name: relations_role_with_user
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
@@ -340,46 +373,54 @@ entities
         title: User ID
         type: integer
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: user
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: nickname
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: user
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: nickname
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - id_role
         title: Role ID
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: role
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: title
-        - weight: +380
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: role
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: title
+            - weight: +380
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +360
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +360
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     constraints
     - primary_id_role_id_user
         type: primary
@@ -413,7 +454,7 @@ entities
     name: role
     title: Role
     title_plural: Roles
-    catalog_name: roles
+    table_name: roles
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
@@ -448,14 +489,16 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - title
         title: Title
         type: varchar
@@ -463,39 +506,50 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - size: 60
     - weight
         title: Weight
         type: integer
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Weight
-        managing_control_properties
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Weight
+            properties
+            - weight: +360
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +320
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +320
     constraints
     - primary_id
         type: primary
@@ -518,7 +572,7 @@ entities
     name: session
     title: Session
     title_plural: Sessions
-    catalog_name: sessions
+    table_name: sessions
     with_data: true
     fields
     - id
@@ -567,7 +621,7 @@ entities
     name: user
     title: User
     title_plural: Users
-    catalog_name: users
+    table_name: users
     managing_is_enabled: true
     managing_group_id: user
     has_parallel_checking: true
@@ -599,13 +653,15 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - nickname
         title: Nickname
         type: varchar
@@ -613,78 +669,89 @@ entities
         collate: nocase
         not_null: true
         check: (nickname <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Nickname
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Nickname
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     - email
-        title: Email
+        title: EMail address
         type: varchar
         size: 64
         collate: nocase
         not_null: true
         check: (email <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Email
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Email
+            properties
+            - is_validate_uniqueness: true
+            - weight: +360
     - avatar_path
         title: Avatar path
         type: varchar
         size: 255
         collate: nocase
         default: null
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_File_picture
-        managing_control_properties
-        - title: Avatar
-        - max_file_size: 30K
-        - upload_dir: avatars/
-        - fixed_name: avatar-%%_user_id
-        - thumbnails
-          - =: small
-        - weight: +340
-        managing_control_element_attributes_on_insert
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_File_picture
+            properties
+            - title: Avatar
+            - max_file_size: 30K
+            - upload_dir: avatars/
+            - fixed_name: avatar-%%_user_id
+            - thumbnails
+              - =: small
+            - weight: +340
+            element_attributes_on_insert
+            - disabled: true
     - timezone
         title: Time zone
         type: varchar
         size: 64
         collate: nocase
         default: UTC
-        converter_on_render: \effcore\Field_Select_timezone::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_timezone
-        managing_control_properties
-        - weight: +320
-        managing_control_element_attributes
-        - data-source: uagent-timezone
+        converters
+          on_render: \effcore\Field_Select_timezone::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_timezone
+            properties
+            - weight: +320
+            element_attributes
+            - data-source: uagent-timezone
     - password_hash
         title: Password hash sum
         type: varchar
         size: 1024
         collate: binary
         default: null
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Password
-        managing_control_value_manual_get_if_empty: true
-        managing_control_value_manual_set: true
-        managing_control_properties
-        - title: New password
-        - weight: +300
-        managing_control_properties_on_update
-        - description: Leave the field blank if you do not want to change its value.
-        managing_control_element_attributes_on_update
-        - required: null
-        managing_control_element_attributes_on_insert
-        - required: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            value_manual_get_if_empty: true
+            value_manual_set: true
+            class: \effcore\Field_Password
+            properties
+            - title: New password
+            - weight: +300
+            properties_on_update
+            - description: Leave the field blank if you do not want to change its value.
+            element_attributes_on_update
+            - required: null
+            element_attributes_on_insert
+            - required: true
     - login_attempts
         title: Login attempts
         type: integer
@@ -694,25 +761,31 @@ entities
         type: datetime
         default: null
         check: (blocked_until <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +280
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +280
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +260
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +260
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +240
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +240
     constraints
     - primary_id
         type: primary

@@ -3,7 +3,7 @@ entities
     name: message
     title: Message
     title_plural: Messages
-    catalog_name: messages
+    table_name: messages
     with_data: true
     fields
     - id_session
@@ -37,7 +37,7 @@ entities
     name: update
     title: Update
     title_plural: Updates
-    catalog_name: updates
+    table_name: updates
     fields
     - module_id
         title: Module ID

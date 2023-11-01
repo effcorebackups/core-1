@@ -3,7 +3,7 @@ entities
     name: tree
     title: Tree
     title_plural: Trees
-    catalog_name: trees
+    table_name: trees
     managing_is_enabled: true
     managing_group_id: menu
     has_parallel_checking: true
@@ -38,85 +38,103 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - title
         title: Title
         type: varchar
         size: 1024
         collate: nocase
         default: null
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - maxlength: 1024
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - maxlength: 1024
+            - size: 60
     - title_is_visible
         title: Title is visible
         type: boolean
         not_null: true
         default: 1
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_logic
-        managing_control_properties
-        - weight: +360
-        managing_control_properties_on_insert
-        - selected
-          - =: 1
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_logic
+            properties
+            - weight: +360
+            properties_on_insert
+            - selected
+              - =: 1
     - attributes
         title: Attributes
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Attributes::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Attributes
-        managing_control_properties
-        - name_complex: attributes
-        - weight: +340
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Attributes::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Attributes
+            properties
+            - name_complex: attributes
+            - weight: +340
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +320
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +320
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +300
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +300
     - access
         title: Read access
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Access::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Access
-        managing_control_properties
-        - weight: +280
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Access::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Access
+            properties
+            - weight: +280
     constraints
     - primary_id
         type: primary
@@ -135,7 +153,7 @@ entities
     name: tree_item
     title: Tree item
     title_plural: Tree items
-    catalog_name: tree_items
+    table_name: tree_items
     managing_is_enabled: true
     managing_group_id: menu
     has_parallel_checking: true
@@ -170,50 +188,57 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - id_tree
         title: Tree ID
         type: varchar
         size: 255
         collate: nocase
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: tree
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: title
-        - weight: +380
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: tree
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: title
+            - weight: +380
+            element_attributes
+            - disabled: true
     - id_parent
         title: Parent ID
         type: varchar
         size: 255
         collate: nocase
         default: null
-        converter_on_insert: \effcore\Core::return_null_if_empty
-        converter_on_update: \effcore\Core::return_null_if_empty
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: tree_item
-        - related_entity_field_id_name: id
-        - related_entity_field_id_parent_name: id_parent
-        - related_entity_field_title_name: title
-        - title__not_selected: - root -
-        - weight: +360
-        managing_control_element_attributes
-        - required: null
+        converters
+          on_insert: \effcore\Core::to_null_if_empty
+          on_update: \effcore\Core::to_null_if_empty
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: tree_item
+            - related_entity_field_id_name: id
+            - related_entity_field_id_parent_name: id_parent
+            - related_entity_field_title_name: title
+            - title__not_selected: - root -
+            - weight: +360
+            element_attributes
+            - required: null
     - title
         title: Title
         type: varchar
@@ -221,96 +246,118 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +340
-        managing_control_element_attributes
-        - maxlength: 1024
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +340
+            element_attributes
+            - maxlength: 1024
+            - size: 60
     - attributes
         title: Attributes
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Attributes::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Attributes
-        managing_control_properties
-        - name_complex: attributes
-        - weight: +320
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Attributes::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Attributes
+            properties
+            - name_complex: attributes
+            - weight: +320
     - url
         title: URL
         type: varchar
         size: 2048
         collate: nocase
         default: null
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_URL
-        managing_control_properties
-        - weight: +300
-        managing_control_element_attributes
-        - maxlength: 2048
-        - required: null
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_URL
+            properties
+            - weight: +300
+            element_attributes
+            - maxlength: 2048
+            - required: null
+            - size: 60
     - link_attributes
         title: Link attributes
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Attributes::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Attributes
-        managing_control_properties
-        - name_complex: link_attributes
-        - weight: +280
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Attributes::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Attributes
+            properties
+            - name_complex: link_attributes
+            - weight: +280
     - weight
         title: Weight
         type: integer
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Weight
-        managing_control_properties
-        - weight: +260
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Weight
+            properties
+            - weight: +260
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +240
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +240
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +220
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +220
     - access
         title: Read access
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Access::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Access
-        managing_control_properties
-        - weight: +200
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Access::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Access
+            properties
+            - weight: +200
     constraints
     - primary_id
         type: primary

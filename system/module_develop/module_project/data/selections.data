@@ -181,19 +181,12 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +300
-    - markup
-      - release_url
-          title: File
-          markup|Markup
-            tag_name: a
-            attributes
-            - href|Text
-                is_apply_translation: false
-                is_apply_tokens: true
-                text: http://%%_request_host/%%_selection_project_release_path_cur_context
-            children
-            - data|Text
-                text: Download
+    - handlers
+      - download_link
+          title: Download link
+          handler: \effcore\modules\project\Events_Selection::handler__project_release__download_link
+          is_apply_translation: true
+          weight: +280
 - project_releases|Selection
     id: project_releases
     main_entity_name: project_release
@@ -238,17 +231,9 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +300
-    - markup
-      - release_url
-          title: File
-          markup|Markup
-            tag_name: a
-            attributes
-            - href|Text
-                is_apply_translation: false
-                is_apply_tokens: true
-                text: http://%%_request_host/%%_selection_project_release_path_cur_context
-            children
-            - data|Text
-                text: Download
+    - handlers
+      - download_link
+          title: Download link
+          handler: \effcore\modules\project\Events_Selection::handler__project_release__download_link
+          is_apply_translation: true
           weight: +280

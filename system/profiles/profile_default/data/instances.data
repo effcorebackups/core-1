@@ -432,7 +432,7 @@ instances
       - handlers
         - roles
             title: Roles
-            handler: \effcore\modules\user\Events_Page_User::on_show_user_roles
+            handler: \effcore\modules\user\Events_Selection::handler__user__roles
             is_apply_translation: true
             weight: -400
     - is_embedded: 1

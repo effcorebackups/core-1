@@ -31,6 +31,7 @@ settings
   console_visibility: 0
   page_width_min: 200
   page_width_max: 990
+  page_width_mobile: 600
   page_meta_viewport: width=300, initial-scale=1
   prepath__cover_is_not_found: system/module_page/frontend/pictures/message--cover-is-not-found
   prepath__file_is_outside_of_dynamic_directory: system/module_page/frontend/pictures/message--file-is-outside-of-dynamic-directory

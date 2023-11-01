@@ -25,11 +25,11 @@ abstract class Events_File {
                 $data.= 'type: '.$file->type.NL;
                 $data.= 'current user: '.$user->nickname.NL;
                 $data.= 'current user roles: '.implode(', ', $user->roles);
-                header('Content-Length: '.strlen($data));
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename='.$file->name.'.txt');
-                header('Cache-Control: private, no-cache, no-store, must-revalidate');
-                header('Expires: 0');
+                header('content-length: '.strlen($data));
+                header('content-type: application/octet-stream');
+                header('content-disposition: attachment; filename='.$file->name.'.txt');
+                header('cache-control: private, no-cache, no-store, must-revalidate');
+                header('expires: 0');
                 print $data;
                 exit();
             } else {

@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var thumbnails_reset_state = function () {c_player_thumbnails.querySelectorAll          ('x-thumbnail[aria-selected="true"]').forEach(function (c_selected) { c_selected.removeAttribute('aria-selected'); });}
         var viewing_area_clear     = function () {c_player_viewing_area.innerHTML = '';}
         c_gallery.prepend(c_player);
-        c_gallery.setAttribute('data-player-is-processed', true);
+        c_gallery.setAttribute('data-player-is-processed', 'true');
         c_player_viewing_part.append(c_player_button_l, c_player_viewing_area, c_player_button_r);
         c_player.append(c_player_thumbnails, c_player_button_c, c_player_viewing_part);
 
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
             switch (c_item.getAttribute('data-type')) {
                 case 'picture':
                     var c_image = c_item.getElementsByTagName('img')[0];
-                    var c_thumbnail_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).tinyGet();
-                    var c_preview_a_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).tinyGet();
+                    var c_thumbnail_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'small')).relativeGet();
+                    var c_preview_a_img_src = (new EffURL(c_image.getAttribute('src')).queryArgDelete('thumb').queryArgInsert('thumb', 'big'  )).relativeGet();
                     var c_thumbnail_img = document.createElement__withAttributes('img', {'src' : c_thumbnail_img_src});
                     var c_preview_a_img = document.createElement__withAttributes('img', {'src' : c_preview_a_img_src});
                     c_thumbnail.setAttribute('data-preview-area-content', JSON.stringify(c_preview_a_img.outerHTML).replace(/^"/, '').replace(/"$/, ''));

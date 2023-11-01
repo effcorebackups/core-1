@@ -1525,7 +1525,7 @@ tests
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_software_name
+                where: %%_test_response_web_server_name
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
@@ -1587,7 +1587,7 @@ tests
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_software_name
+                where: %%_test_response_web_server_name
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
@@ -1782,7 +1782,7 @@ tests
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_software_name
+                where: %%_test_response_web_server_name
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
@@ -2080,7 +2080,7 @@ tests
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_software_name
+                where: %%_test_response_web_server_name
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check

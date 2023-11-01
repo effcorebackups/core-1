@@ -60,7 +60,13 @@ templates
 - picture_embedded
     name: picture_embedded
     type: text
-    data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes><img data-id="%%_id" src="/%%_path" %%_attributes/></a>
+    data: <img data-id="%%_id" src="/%%_path" %%_attributes/>
+- picture_in_link_embedded
+    name: picture_in_link_embedded
+    type: text
+    data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes>
+>>>>>>>>>>>>>><img data-id="%%_id" src="/%%_path" %%_attributes/>
+>>>>>>>>>></a>
 - text_embedded
     name: text_embedded
     type: text
@@ -69,6 +75,13 @@ templates
     name: video_embedded
     type: text
     data: <video data-id="%%_id" src="/%%_path" poster="/%%_poster_path" %%_attributes></video>
+# ─────────────────────────────────────────────────────────────────────
+# type: code
+# ─────────────────────────────────────────────────────────────────────
+- picture_or_picture_in_link_embedded
+    name: picture_or_picture_in_link_embedded
+    type: code
+    handler: \effcore\modules\page\Events_Selection::template__picture_or_picture_in_link_embedded
 # ─────────────────────────────────────────────────────────────────────
 # type: file
 # ─────────────────────────────────────────────────────────────────────

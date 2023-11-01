@@ -33,12 +33,12 @@ class Diagram extends Container {
                     foreach ($this->slices as $c_slice) {
                         $c_param = new Markup('x-param', $c_slice->attributes, [], $c_slice->weight);
                         $c_param->child_insert(new Markup('x-title', [], $c_slice->title));
+                        $c_param->child_insert(new Markup('x-scale', [], new Markup('x-scale-fill', ['style' => ['width: '.(int)$c_slice->persent_value.'%']]) ));
                         $c_param->child_insert(new Markup('x-value', [], [
                             $c_slice->complex_value ?
                             $c_slice->complex_value.' ('.Locale::format_persent($c_slice->persent_value, 1).')' :
-                                                         Locale::format_persent($c_slice->persent_value, 1),
-                            new Markup('x-scale',      [                                                       ],
-                            new Markup('x-scale-fill', ['style' => ['width: '.(int)$c_slice->persent_value.'%']])) ]));
+                                                         Locale::format_persent($c_slice->persent_value, 1)
+                        ]));
                         $this->child_insert($c_param);
                     }
                     break;

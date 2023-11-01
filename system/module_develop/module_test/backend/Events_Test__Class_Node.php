@@ -7,6 +7,7 @@
 namespace effcore\modules\test;
 
 use effcore\Node;
+use effcore\Test;
 use effcore\Text;
 
 abstract class Events_Test__Class_Node {
@@ -66,8 +67,8 @@ abstract class Events_Test__Class_Node {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -129,8 +130,8 @@ abstract class Events_Test__Class_Node {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -192,8 +193,8 @@ abstract class Events_Test__Class_Node {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -255,8 +256,8 @@ abstract class Events_Test__Class_Node {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -318,8 +319,8 @@ abstract class Events_Test__Class_Node {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }

@@ -1,7 +1,4 @@
 tokens
-- test_software_name
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
 - test_email_random
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply
@@ -9,15 +6,6 @@ tokens
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply
 - test_password_random
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_captcha
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_form_validation_id
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_cookies
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -43,5 +31,17 @@ tokens
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply
 - test_response_time_total
+    type: code
+    handler: \effcore\modules\test\Events_Token::on_apply
+- test_response_web_server_name
+    type: code
+    handler: \effcore\modules\test\Events_Token::on_apply
+- test_response_form_validation_id
+    type: code
+    handler: \effcore\modules\test\Events_Token::on_apply
+- test_response_cookies
+    type: code
+    handler: \effcore\modules\test\Events_Token::on_apply
+- test_response_captcha
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply

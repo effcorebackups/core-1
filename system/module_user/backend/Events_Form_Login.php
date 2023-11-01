@@ -20,9 +20,9 @@ abstract class Events_Form_Login {
     static function on_init($event, $form, $items) {
         $settings = Module::settings_get('user');
         $items['#session_params:is_long_session']->attributes['title'] = new Text_multiline([
-            'Short session: %%_min day%%_plural(min|s) | long session: %%_max day%%_plural(max|s)'], [
-            'min' => $settings->session_duration_min,
-            'max' => $settings->session_duration_max], '', true, true);
+            'Short session: %%_short day%%_plural(short|s) | long session: %%_long day%%_plural(long|s)'], [
+            'short' => $settings->session_duration_short,
+            'long'  => $settings->session_duration_long], '', true, true);
         if (!isset($_COOKIE['cookies_is_enabled'])) {
             Message::insert(new Text_multiline([
                 'Cookies are disabled. You cannot log in!',
@@ -41,7 +41,7 @@ abstract class Events_Form_Login {
                     if (!$user || !hash_equals($user->password_hash, $items['#password']->value_get())) {
                         $items['#email'   ]->error_set();
                         $items['#password']->error_set();
-                        $form->error_set('Incorrect email or password!');
+                        $form->error_set('Incorrect EMail address or password!');
                     }
                 }
                 break;

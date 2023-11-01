@@ -71,7 +71,7 @@ abstract class Events_Form_Vote {
                     );
                 }
                 $form->child_select('fields')->child_insert($diagram, 'diagram');
-                $form->child_select('fields')->child_insert(new Markup('x-total', [], [
+                $form->child_select('fields')->child_insert(new Markup('x-diagram-total', [], [
                     new Markup('x-title', [], 'Total'),
                     new Markup('x-value', [], $form->_total)]), 'total'
                 );
@@ -118,6 +118,7 @@ abstract class Events_Form_Vote {
                     $poll_data['cache']['total'           ] = Poll::votes_total_select              (array_keys($form->_answers));
                     $poll_data['cache']['total_by_answers'] = Poll::votes_id_total_by_answers_select(array_keys($form->_answers));
                     $form->_poll->data = $poll_data;
+                    $form->_poll->question = html_entity_decode($form->_poll->question);
                     $form->_poll->update();
                        Message::insert('Your answer was accepted.');
                 } else Message::insert('Your answer was not accepted!', 'error');
@@ -134,6 +135,7 @@ abstract class Events_Form_Vote {
                     $poll_data['cache']['total'           ] = Poll::votes_total_select              (array_keys($form->_answers));
                     $poll_data['cache']['total_by_answers'] = Poll::votes_id_total_by_answers_select(array_keys($form->_answers));
                     $form->_poll->data = $poll_data;
+                    $form->_poll->question = html_entity_decode($form->_poll->question);
                     $form->_poll->update();
                        Message::insert('Your answer was canceled.');
                 } else Message::insert('Your answer was not canceled!', 'error');

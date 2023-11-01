@@ -27,7 +27,7 @@ abstract class Mail {
                 'from'     => &$mail_from,
                 'encoding' => &$mail_encoding
             ]);
-            $result = mail(
+            $result = @mail(
                 $mail_to,
                 $mail_subject,
                 $mail_message,

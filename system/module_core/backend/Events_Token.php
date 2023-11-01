@@ -8,6 +8,7 @@ namespace effcore\modules\core;
 
 use effcore\Core;
 use effcore\Request;
+use effcore\Security;
 use effcore\Token;
 
 abstract class Events_Token {
@@ -36,7 +37,7 @@ abstract class Events_Token {
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
             case 'request_uri':
-                $result = Request::uri_get();
+                $result = Request::URI_get();
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
             case 'request_path':
@@ -65,9 +66,9 @@ abstract class Events_Token {
                     $arg_name      = $args->get(0);
                     $default_value = $args->get(1);
                     $value         = Request::value_get($arg_name, 0, '_GET');
-                    if ($args->get_named('filter_css_color') === 'yes') $value = Core::validate_css_color($value) ? $value : null; # examples: "…&value=%23ff0", "…&value=%23a1b2c3", "…&value=LightGoldenrodYellow"
-                    if ($args->get_named('filter_css_float') === 'yes') $value = Core::validate_css_float($value) ? $value : null; # examples: "…&value=%2E567", "…&value=1234%2E567", "…&value=1234567"
-                    if ($args->get_named('filter_css_units') === 'yes') $value = Core::validate_css_units($value) ? $value : null; # examples: "…&value=%2D1234%2E567px"
+                    if ($args->get_named('filter_css_color') === 'yes') $value = Security::validate_css_color($value) ? $value : null; # examples: "…&value=%23ff0", "…&value=%23a1b2c3", "…&value=LightGoldenrodYellow"
+                    if ($args->get_named('filter_css_float') === 'yes') $value = Security::validate_css_float($value) ? $value : null; # examples: "…&value=%2E567", "…&value=1234%2E567", "…&value=1234567"
+                    if ($args->get_named('filter_css_units') === 'yes') $value = Security::validate_css_units($value) ? $value : null; # examples: "…&value=%2D1234%2E567px"
                     return $value ?: $default_value;
                 }
                 break;

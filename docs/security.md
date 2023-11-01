@@ -21,7 +21,7 @@ The following attack vectors were reviewed:
 - An attacker can try to spoof the form validation identifier.
 - An attacker can try to submit a pre-filled form multiple times (authentication form
   `form_login`, new user registration form `form_registration`, password recovery
-  form `form_recovery`) in order to brute-force the email address and/or username
+  form `form_recovery`) in order to brute-force the EMail address and/or username
   and/or password or bypassing the CAPTCHA.
 - An attacker can try to unblock blocked fields on a form using a browser.
 - An attacker can try to send a larger field value than allowed by the
@@ -103,9 +103,9 @@ HTTP request vector:
 - The data of the GET/POST request is checked for the correspondence of the dimensions
   of the arrays and their indices.
 - URL query arguments (`http://domain/path?QUERY`) are filtered.
-- The basic module CAPTCHA minimizes the possibility of brute-force email address and password
-  in the authentication form `form_login`, brute-force email and/or username in the
-  new user registration form `form_registration`, brute-force email address in the access
+- The basic module CAPTCHA minimizes the possibility of brute-force EMail address and password
+  in the authentication form `form_login`, brute-force EMail and/or username in the
+  new user registration form `form_registration`, brute-force EMail address in the access
   recovery form `form_recovery` and registration of spam robots in the new user registration
   form `form_registration`.
 - Input filtering prevents malicious code (JavaScript) from entering to the system.
@@ -119,9 +119,9 @@ Organizational vector:
   only to authorized persons.
 - Only administrators have access to the profiles of other users (for example,
   users with the "Administrators" role).
-- All email addresses of users are hidden from other system participants and it is
+- All EMail addresses of users are hidden from other system participants and it is
   not possible to calculate the correspondence between the user's name and his
-  email address. Thus, it will be impossible to remotely reset the password of
+  EMail address. Thus, it will be impossible to remotely reset the password of
   another user or try to guess the password for his account.
 - It is possible to make changes to the user's registration data only if the
   password from his account is known — this minimizes the intra-system
@@ -164,7 +164,7 @@ Security recommendations
   You can use CSR procedure (Certificate Signing Request):
   - generate public and private keys with identifying information on your side;
   - send a public key with identifying information to the CA to sign the public key.
-- It is not recommended to use public email services to recover passwords
+- It is not recommended to use public EMail services to recover passwords
   and send important mail. It is recommended that you use your own server for mail
   services and use a different server for each service (if possible).
 - It is recommended to using the secure hardware crypto-processor

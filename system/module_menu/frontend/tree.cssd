@@ -53,7 +53,7 @@
 
 /* dropdown menu: adaptivity */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: %%_page_width_mobile(null)px) {
   [data-area-id='system'] [data-block][data-id^='block__tree_'] {float: none}
   [role='tree'][data-style~='dropdown'] ul {float: none; display: block}
   [role='tree'][data-style~='dropdown'] li {float: none; display: block}

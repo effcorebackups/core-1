@@ -18,6 +18,12 @@ forms
             - name: width_min
             - min: 0
             - max: 10000
+        - width_mobile|Field_Number
+            title: Width for transition to mobile view
+            element_attributes
+            - name: width_mobile
+            - min: 0
+            - max: 10000
         - width_max|Field_Number
             title: Maximum width
             description|Text_multiline

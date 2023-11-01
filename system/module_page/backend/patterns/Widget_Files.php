@@ -129,7 +129,7 @@ class Widget_Files extends Widget_Items {
     }
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.Core::array_key_last($items).'.'.$new_item->object->type;
+        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
         return $new_item->object->move_tmp_to_pre($pre_path);
     }
 
@@ -145,7 +145,7 @@ class Widget_Files extends Widget_Items {
                         $widget->fixed_type, true);
                     if ($c_result) {
                         Message::insert(new Text(
-                            'Item of type "%%_type" with title "%%_title" has been saved.', [
+                            'File of type "%%_type" with title "%%_title" has been saved.', [
                             'type'  => (new Text($widget->item_title))->render(),
                             'title' => $c_item->object->file
                         ]));
@@ -158,7 +158,7 @@ class Widget_Files extends Widget_Items {
                         unset($items[$c_row_id]);
                         if ($c_result) {
                             Message::insert(new Text_multiline([
-                                'Item of type "%%_type" with title "%%_title" was deleted physically.'], [
+                                'File of type "%%_type" with title "%%_title" was deleted physically.'], [
                                 'type'  => (new Text($widget->item_title))->render(),
                                 'title' => $c_title_for_message
                             ]));
@@ -192,7 +192,7 @@ class Widget_Files extends Widget_Items {
                 if (Event::start_local('on_file_prepare', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'items' => &$items, 'new_item' => &$c_new_item])) {
                     $widget->items_set($items);
                     Message::insert(new Text(
-                        'Item of type "%%_type" with title "%%_title" was inserted.', [
+                        'File of type "%%_type" with title "%%_title" was inserted.', [
                         'type'  => (new Text($widget->item_title))->render(),
                         'title' => $c_new_item->object->file]));
                 } else {
@@ -214,7 +214,7 @@ class Widget_Files extends Widget_Items {
                     unset($items[$button->_id]);
                     $widget->items_set($items);
                     Message::insert(new Text_multiline([
-                        'Item of type "%%_type" with title "%%_title" was deleted physically.',
+                        'File of type "%%_type" with title "%%_title" was deleted physically.',
                         'Do not forget to save the changes!'], [
                         'type'  => (new Text($widget->item_title))->render(),
                         'title' => $item_title ]));
@@ -224,7 +224,7 @@ class Widget_Files extends Widget_Items {
                 $items[$button->_id]->is_deleted = true;
                 $widget->items_set($items);
                 Message::insert(new Text_multiline([
-                    'Item of type "%%_type" with title "%%_title" was deleted.',
+                    'File of type "%%_type" with title "%%_title" was deleted.',
                     'Do not forget to save the changes!'], [
                     'type'  => (new Text($widget->item_title))->render(),
                     'title' => $item_title ]));

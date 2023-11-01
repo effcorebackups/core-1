@@ -33,7 +33,7 @@ abstract class Events_Form_Logout {
             $c_checkbox->name_set('is_checked[]');
             $c_checkbox->value_set($c_session->id);
             $c_checkbox->checked_set($c_session->id === $session_active->id);
-            $c_user_agent_filtered = $c_session->data->user_agent ? Core::return_encoded($c_session->data->user_agent) : null;
+            $c_user_agent_filtered = $c_session->data->user_agent ? Core::html_entity_encode($c_session->data->user_agent) : null;
             $decorator->data[$c_session->id] = [
                 'checkbox'    => ['value' => $c_checkbox,                                                'title' => ''               ],
                 'is_current'  => ['value' => Core::format_logic($c_session->id === $session_active->id), 'title' => 'Is current'     ],

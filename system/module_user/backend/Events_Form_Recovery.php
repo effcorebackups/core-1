@@ -20,7 +20,7 @@ abstract class Events_Form_Recovery {
                 if (!$form->has_error()) {
                     if (!(new Instance('user', ['email' => $items['#email']->value_get()]))->select()) {
                         $items['#email']->error_set(
-                            'User with this Email was not registered!'
+                            'User with this EMail address was not registered!'
                         );
                         return;
                     }
@@ -41,7 +41,7 @@ abstract class Events_Form_Recovery {
                     if ($user->update()) {
                         $domain = Url::get_current()->domain;
                         if (Mail::send('recovery', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
-                            Message::insert('A new password was sent to the selected Email.');
+                            Message::insert('A new password was sent to the selected EMail address.');
                             Url::go(Url::back_url_get() ?: '/login');
                         }
                     }

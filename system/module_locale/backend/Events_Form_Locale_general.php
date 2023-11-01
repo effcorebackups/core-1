@@ -21,14 +21,14 @@ abstract class Events_Form_Locale_general {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_insert('locale', 'update', 'settings/locale/lang_code', $items['#lang_code']->value_get());
+                $result = Storage::get('data')->changes_register('locale', 'update', 'settings/locale/lang_code', $items['#lang_code']->value_get());
                 if ($result) {
                     Language::code_set_current($items['#lang_code']->value_get());
                        Message::insert('Changes was saved.'             );
                 } else Message::insert('Changes was not saved!', 'error');
                 break;
             case 'reset':
-                $result = Storage::get('data')->changes_delete('locale', 'update', 'settings/locale/lang_code');
+                $result = Storage::get('data')->changes_unregister('locale', 'update', 'settings/locale/lang_code');
                 if ($result) {
                     Language::code_set_current('en');
                     static::on_init(null, $form, $items);

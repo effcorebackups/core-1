@@ -83,8 +83,8 @@ class Page extends Node implements has_Data_cache {
     function render() {
         $this->build();
         $settings = Module::settings_get('page');
-        header('Content-language: '.Language::code_get_current());
-        header('Content-Type: text/html; charset='.$this->charset);
+        header('content-language: '.Language::code_get_current());
+        header('content-type: text/html; charset='.$this->charset);
 
         # show important messages
         if ($settings->show_warning_if_not_https && !empty($this->is_https) && Url::get_current()->protocol !== 'https') {
@@ -129,7 +129,7 @@ class Page extends Node implements has_Data_cache {
         $html->attribute_insert('dir',  $this->text_direction);
         $html->attribute_insert('data-user-has-avatar', isset(User::get_current()->avatar_path) ? true : null);
         $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? true : null); # note: refreshed after page reload
-        $html->attribute_insert('data-css-path', Core::sanitize_id(Url::utf8_encode(trim(Url::get_current()->path, '/'))));
+        $html->attribute_insert('data-css-path', Security::sanitize_id(Url::UTF8_encode(trim(Url::get_current()->path, '/'))));
 
         $head_title_text->text = $this->title;
         $meta->child_insert(

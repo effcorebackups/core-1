@@ -1,0 +1,67 @@
+tests
+- class__security|Test
+    id: class__security
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Security
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-sanitize_from_XSS|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::sanitize_from_XSS()
+    - code-sanitize_from_XSS|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__sanitize_from_XSS
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_number_with_minus|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_number($value, true)
+    - code-validate_number_with_minus|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_number_with_minus
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_number|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_number($value, false)
+    - code-validate_number|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_number
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_int_with_minus|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_int_with_minus($value, true)
+    - code-validate_int_with_minus|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_int_with_minus
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_int|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_int($value, false)
+    - code-validate_int|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_int
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_mime_type|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_mime_type()
+    - code-validate_mime_type|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_mime_type
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_range|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_range()
+    - code-validate_range|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_range
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

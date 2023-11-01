@@ -49,15 +49,15 @@ tests
     - code-files_get|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__files_get
     # ═════════════════════════════════════════════════════════════════════
-    - title-software_get_info-delimiter|Test_step_Title
+    - title-web_server_get_info-delimiter|Test_step_Title
         title: ==================================================================
-    - title-software_get_info|Test_step_Title
+    - title-web_server_get_info|Test_step_Title
         title|Text
           text: METHOD "%%_name"
           args
-          - name: Request::software_get_info()
-    - code-software_get_info|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__software_get_info
+          - name: Request::web_server_get_info()
+    - code-web_server_get_info|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__web_server_get_info
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

@@ -11,6 +11,48 @@ use DateTimeZone;
 
 abstract class Locale {
 
+    # examples of using:
+    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
+    # │ +14:00 — Pacific/Kiritimati                           │ to format   │ result              │
+    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
+    # │           Locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
+    # │           Locale::format_time ('01:02:03')            │ H:i:s       │ 15:02:03            │
+    # │       Locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 01.02.2030 15:02:03 │
+    # │       Locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 01.01.1970 14:00:00 │
+    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
+    # │       Locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
+    # │       Locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 15:02:03            │
+    # │   Locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ Y-m-d H:i:s │ 2030-02-01 15:02:03 │
+    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
+    # │       Locale::date_loc_to_utc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
+    # │       Locale::time_loc_to_utc ('15:02:03')            │ H:i:s       │ 01:02:03            │
+    # │   Locale::datetime_loc_to_utc ('2030-02-01 15:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
+    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
+    #
+    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
+    # │ -11:00 — Pacific/Pago_Pago                            │ to format   │ result              │
+    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
+    # │           Locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
+    # │           Locale::format_time ('01:02:03')            │ H:i:s       │ 14:02:03            │
+    # │       Locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 31.01.2030 14:02:03 │
+    # │       Locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 31.12.1969 13:00:00 │
+    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
+    # │       Locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
+    # │       Locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 14:02:03            │
+    # │   Locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ Y-m-d H:i:s │ 2030-01-31 14:02:03 │
+    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
+    # │       Locale::date_loc_to_utc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
+    # │       Locale::time_loc_to_utc ('14:02:03')            │ H:i:s       │ 01:02:03            │
+    # │   Locale::datetime_loc_to_utc ('2030-01-31 14:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
+    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
+    #
+    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
+    # │                                                       │ to format   │ result              │
+    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
+    # │   Core::T_datetime_to_datetime('2030-02-01T01:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
+    # │   Core::datetime_to_T_datetime('2030-02-01 01:02:03') │ Y-m-dTH:i:s │ 2030-02-01T01:02:03 │
+    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
+
     static function         date_utc_to_loc($date)     {$date = DateTime::createFromFormat('Y-m-d',         $date,     new DateTimeZone('UTC') ); if ($date) return $date->setTime    (0, 0)                                           ->format('Y-m-d'        );}
     static function         time_utc_to_loc($time)     {$date = DateTime::createFromFormat(      'H:i:s',   $time,     new DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new DateTimeZone(Core::timezone_get_client()) )->format(      'H:i:s'  );}
     static function     datetime_utc_to_loc($datetime) {$date = DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new DateTimeZone('UTC') ); if ($date) return $date->setTimezone( new DateTimeZone(Core::timezone_get_client()) )->format('Y-m-d H:i:s'  );}

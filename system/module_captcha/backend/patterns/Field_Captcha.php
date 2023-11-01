@@ -85,7 +85,7 @@ class Field_Captcha extends Field_Text {
     static function validate_value($field, $form, $element, &$new_value) {
         if (!$field->captcha_validate($new_value)) {
             $field->error_set(
-                'Field "%%_title" contains an incorrect characters from picture!', ['title' => (new Text($field->title))->render() ]
+                'Value of "%%_title" field does not match the value in the picture!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
             return true;

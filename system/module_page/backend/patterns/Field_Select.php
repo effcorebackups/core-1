@@ -164,7 +164,7 @@ class Field_Select extends Field {
     static function validate_required($field, $form, $element, &$new_values) {
         if ($field->required_get() && empty(array_filter($new_values, 'strlen'))) {
             $field->error_set(
-                'Field "%%_title" should be selected!', ['title' => (new Text($field->title))->render() ]
+                'Value of "%%_title" field should be selected!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
             return true;
@@ -174,9 +174,11 @@ class Field_Select extends Field {
     static function validate_multiple($field, $form, $element, &$new_values) {
         if (!$field->multiple_get() && count($new_values) > 1) {
             $new_values = array_slice($new_values, -1);
-            $field->error_set(
-                'Field "%%_title" does not support multiple select!', ['title' => (new Text($field->title))->render() ]
-            );
+            $field->error_set(new Text_multiline([
+                'Field "%%_title" does not support multiple select!',
+                'Value has been corrected.',
+                'Check value again before submit.'], ['title' => (new Text($field->title))->render()]
+            ));
         } else {
             return true;
         }

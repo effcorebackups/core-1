@@ -9,6 +9,7 @@ namespace effcore\modules\test;
 use const effcore\DIR_ROOT;
 use effcore\Core;
 use effcore\Request;
+use effcore\Test;
 use effcore\Text;
 use effcore\Url;
 
@@ -27,6 +28,7 @@ abstract class Events_Test__Class_Url {
                                    '/dir/subdir/page#anchor'                   => ['protocol' => $protocol, 'domain' => $domain,               'path' => '/dir/subdir/page',     'query' => '',              'anchor' => 'anchor'],
                                    '/dir/subdir/page?key=value#anchor'         => ['protocol' => $protocol, 'domain' => $domain,               'path' => '/dir/subdir/page',     'query' => 'key=value',     'anchor' => 'anchor'],
                    'subdomain.domain'                                          => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => ''      ],
+                   'subdomain.domain/'                                         => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => ''      ],
                    'subdomain.domain/?key=value'                               => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => 'key=value',     'anchor' => ''      ],
                    'subdomain.domain/#anchor'                                  => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => 'anchor'],
                    'subdomain.domain/?key=value#anchor'                        => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => 'key=value',     'anchor' => 'anchor'],
@@ -35,6 +37,7 @@ abstract class Events_Test__Class_Url {
                    'subdomain.domain/dir/subdir/page#anchor'                   => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/dir/subdir/page',     'query' => '',              'anchor' => 'anchor'],
                    'subdomain.domain/dir/subdir/page?key=value#anchor'         => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/dir/subdir/page',     'query' => 'key=value',     'anchor' => 'anchor'],
                    'subdomain.domain:80'                                       => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => ''      ],
+                   'subdomain.domain:80/'                                      => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => ''      ],
                    'subdomain.domain:80/?key=value'                            => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => 'key=value',     'anchor' => ''      ],
                    'subdomain.domain:80/#anchor'                               => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => 'anchor'],
                    'subdomain.domain:80/?key=value#anchor'                     => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => 'key=value',     'anchor' => 'anchor'],
@@ -43,6 +46,7 @@ abstract class Events_Test__Class_Url {
                    'subdomain.domain:80/dir/subdir/page#anchor'                => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/dir/subdir/page',     'query' => '',              'anchor' => 'anchor'],
                    'subdomain.domain:80/dir/subdir/page?key=value#anchor'      => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/dir/subdir/page',     'query' => 'key=value',     'anchor' => 'anchor'],
             'http://subdomain.domain'                                          => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => ''      ],
+            'http://subdomain.domain/'                                         => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => ''      ],
             'http://subdomain.domain/?key=value'                               => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => 'key=value',     'anchor' => ''      ],
             'http://subdomain.domain/#anchor'                                  => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => '',              'anchor' => 'anchor'],
             'http://subdomain.domain/?key=value#anchor'                        => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/',                    'query' => 'key=value',     'anchor' => 'anchor'],
@@ -51,6 +55,7 @@ abstract class Events_Test__Class_Url {
             'http://subdomain.domain/dir/subdir/page#anchor'                   => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/dir/subdir/page',     'query' => '',              'anchor' => 'anchor'],
             'http://subdomain.domain/dir/subdir/page?key=value#anchor'         => ['protocol' => 'http',    'domain' => 'subdomain.domain',    'path' => '/dir/subdir/page',     'query' => 'key=value',     'anchor' => 'anchor'],
             'http://subdomain.domain:80'                                       => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => ''      ],
+            'http://subdomain.domain:80/'                                      => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => ''      ],
             'http://subdomain.domain:80/?key=value'                            => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => 'key=value',     'anchor' => ''      ],
             'http://subdomain.domain:80/#anchor'                               => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => '',              'anchor' => 'anchor'],
             'http://subdomain.domain:80/?key=value#anchor'                     => ['protocol' => 'http',    'domain' => 'subdomain.domain:80', 'path' => '/',                    'query' => 'key=value',     'anchor' => 'anchor'],
@@ -65,6 +70,8 @@ abstract class Events_Test__Class_Url {
                                  '/дир/субдир/страница?ключ=значение'          => ['protocol' => $protocol, 'domain' => $domain,               'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => ''      ],
                                  '/дир/субдир/страница#якорь'                  => ['protocol' => $protocol, 'domain' => $domain,               'path' => '/дир/субдир/страница', 'query' => '',              'anchor' => 'якорь' ],
                                  '/дир/субдир/страница?ключ=значение#якорь'    => ['protocol' => $protocol, 'domain' => $domain,               'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => 'якорь' ],
+                   'субдомен.домен'                                            => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => ''      ],
+                   'субдомен.домен/'                                           => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => ''      ],
                    'субдомен.домен/?ключ=значение'                             => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => 'ключ=значение', 'anchor' => ''      ],
                    'субдомен.домен/#якорь'                                     => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => 'якорь' ],
                    'субдомен.домен/?ключ=значение#якорь'                       => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => 'ключ=значение', 'anchor' => 'якорь' ],
@@ -72,6 +79,8 @@ abstract class Events_Test__Class_Url {
                    'субдомен.домен/дир/субдир/страница?ключ=значение'          => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => ''      ],
                    'субдомен.домен/дир/субдир/страница#якорь'                  => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => '',              'anchor' => 'якорь' ],
                    'субдомен.домен/дир/субдир/страница?ключ=значение#якорь'    => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => 'якорь' ],
+                   'субдомен.домен:80'                                         => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => ''      ],
+                   'субдомен.домен:80/'                                        => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => ''      ],
                    'субдомен.домен:80/?ключ=значение'                          => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => 'ключ=значение', 'anchor' => ''      ],
                    'субдомен.домен:80/#якорь'                                  => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => 'якорь' ],
                    'субдомен.домен:80/?ключ=значение#якорь'                    => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => 'ключ=значение', 'anchor' => 'якорь' ],
@@ -79,6 +88,8 @@ abstract class Events_Test__Class_Url {
                    'субдомен.домен:80/дир/субдир/страница?ключ=значение'       => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => ''      ],
                    'субдомен.домен:80/дир/субдир/страница#якорь'               => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/дир/субдир/страница', 'query' => '',              'anchor' => 'якорь' ],
                    'субдомен.домен:80/дир/субдир/страница?ключ=значение#якорь' => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => 'якорь' ],
+            'http://субдомен.домен'                                            => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => ''      ],
+            'http://субдомен.домен/'                                           => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => ''      ],
             'http://субдомен.домен/?ключ=значение'                             => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => 'ключ=значение', 'anchor' => ''      ],
             'http://субдомен.домен/#якорь'                                     => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => '',              'anchor' => 'якорь' ],
             'http://субдомен.домен/?ключ=значение#якорь'                       => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/',                    'query' => 'ключ=значение', 'anchor' => 'якорь' ],
@@ -86,6 +97,8 @@ abstract class Events_Test__Class_Url {
             'http://субдомен.домен/дир/субдир/страница?ключ=значение'          => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => ''      ],
             'http://субдомен.домен/дир/субдир/страница#якорь'                  => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => '',              'anchor' => 'якорь' ],
             'http://субдомен.домен/дир/субдир/страница?ключ=значение#якорь'    => ['protocol' => 'http',    'domain' => 'субдомен.домен',      'path' => '/дир/субдир/страница', 'query' => 'ключ=значение', 'anchor' => 'якорь' ],
+            'http://субдомен.домен:80'                                         => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => ''      ],
+            'http://субдомен.домен:80/'                                        => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => ''      ],
             'http://субдомен.домен:80/?ключ=значение'                          => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => 'ключ=значение', 'anchor' => ''      ],
             'http://субдомен.домен:80/#якорь'                                  => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => '',              'anchor' => 'якорь' ],
             'http://субдомен.домен:80/?ключ=значение#якорь'                    => ['protocol' => 'http',    'domain' => 'субдомен.домен:80',   'path' => '/',                    'query' => 'ключ=значение', 'anchor' => 'якорь' ],
@@ -105,8 +118,8 @@ abstract class Events_Test__Class_Url {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_url))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_url)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -133,8 +146,8 @@ abstract class Events_Test__Class_Url {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_url->has_error ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_url->has_error)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -300,8 +313,8 @@ abstract class Events_Test__Class_Url {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -467,15 +480,15 @@ abstract class Events_Test__Class_Url {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
         }
     }
 
-    static function test_step_code__full_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__absolute_get(&$test, $dpath, &$c_results) {
         $protocol = Request::scheme_get();
         $domain = Request::host_get();
         $data = [
@@ -488,6 +501,7 @@ abstract class Events_Test__Class_Url {
                                     '/dir/subdir/page#anchor'           => $protocol.'://'.$domain.'/dir/subdir/page#anchor',
                                     '/dir/subdir/page?key=value#anchor' => $protocol.'://'.$domain.'/dir/subdir/page?key=value#anchor',
                             $domain                                     => $protocol.'://'.$domain,
+                            $domain.'/'                                 => $protocol.'://'.$domain,
                             $domain.'/?key=value'                       => $protocol.'://'.$domain.'/?key=value',
                             $domain.'/#anchor'                          => $protocol.'://'.$domain.'/#anchor',
                             $domain.'/?key=value#anchor'                => $protocol.'://'.$domain.'/?key=value#anchor',
@@ -496,6 +510,7 @@ abstract class Events_Test__Class_Url {
                             $domain.'/dir/subdir/page#anchor'           => $protocol.'://'.$domain.'/dir/subdir/page#anchor',
                             $domain.'/dir/subdir/page?key=value#anchor' => $protocol.'://'.$domain.'/dir/subdir/page?key=value#anchor',
             $protocol.'://'.$domain                                     => $protocol.'://'.$domain,
+            $protocol.'://'.$domain.'/'                                 => $protocol.'://'.$domain,
             $protocol.'://'.$domain.'/?key=value'                       => $protocol.'://'.$domain.'/?key=value',
             $protocol.'://'.$domain.'/#anchor'                          => $protocol.'://'.$domain.'/#anchor',
             $protocol.'://'.$domain.'/?key=value#anchor'                => $protocol.'://'.$domain.'/?key=value#anchor',
@@ -507,20 +522,20 @@ abstract class Events_Test__Class_Url {
 
         foreach ($data as $c_value => $c_expected) {
             $c_url = new Url($c_value);
-            $c_gotten = $c_url->full_get();
+            $c_gotten = $c_url->absolute_get();
             $c_result = $c_gotten === $c_expected;
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
         }
     }
 
-    static function test_step_code__tiny_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__relative_get(&$test, $dpath, &$c_results) {
         $protocol = Request::scheme_get();
         $domain = Request::host_get();
         $data = [
@@ -533,6 +548,7 @@ abstract class Events_Test__Class_Url {
                                     '/dir/subdir/page#anchor'           => '/dir/subdir/page#anchor',
                                     '/dir/subdir/page?key=value#anchor' => '/dir/subdir/page?key=value#anchor',
                             $domain                                     => '/',
+                            $domain.'/'                                 => '/',
                             $domain.'/?key=value'                       => '/?key=value',
                             $domain.'/#anchor'                          => '/#anchor',
                             $domain.'/?key=value#anchor'                => '/?key=value#anchor',
@@ -541,6 +557,7 @@ abstract class Events_Test__Class_Url {
                             $domain.'/dir/subdir/page#anchor'           => '/dir/subdir/page#anchor',
                             $domain.'/dir/subdir/page?key=value#anchor' => '/dir/subdir/page?key=value#anchor',
             $protocol.'://'.$domain                                     => '/',
+            $protocol.'://'.$domain.'/'                                 => '/',
             $protocol.'://'.$domain.'/?key=value'                       => '/?key=value',
             $protocol.'://'.$domain.'/#anchor'                          => '/#anchor',
             $protocol.'://'.$domain.'/?key=value#anchor'                => '/?key=value#anchor',
@@ -552,16 +569,39 @@ abstract class Events_Test__Class_Url {
 
         foreach ($data as $c_value => $c_expected) {
             $c_url = new Url($c_value);
-            $c_gotten = $c_url->tiny_get();
+            $c_gotten = $c_url->relative_get();
             $c_result = $c_gotten === $c_expected;
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
+        }
+    }
+
+    static function test_step_code__file_type_get(&$test, $dpath, &$c_results) {
+        $file_1 = new Url('http://example.com/path/Name.ext');
+        $file_2 = new Url('http://example.com/path/Name.Расширение');
+        $file_3 = new Url('http://example.com/path/Имя.ext');
+        $file_4 = new Url('http://example.com/path/Имя.Расширение');
+
+        $gotten = $file_1->file_type_get() === 'ext' &&
+                  $file_2->file_type_get() === 'расширение' &&
+                  $file_3->file_type_get() === 'ext' &&
+                  $file_4->file_type_get() === 'расширение';
+
+        $expected = true;
+        $result = $gotten === $expected;
+        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('failure'))->render()]);
+        if ($result !== true) {
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
+            $c_results['return'] = 0;
+            return;
         }
     }
 
@@ -906,8 +946,8 @@ abstract class Events_Test__Class_Url {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -952,8 +992,8 @@ abstract class Events_Test__Class_Url {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -996,12 +1036,12 @@ abstract class Events_Test__Class_Url {
         foreach ($data as $c_value => $c_expected) {
             $c_parse_result = null;
             $c_gotten = parse_str($c_value, $c_parse_result);
-            $c_result = serialize($c_parse_result) === serialize($c_expected);
+            $c_result = Core::data_serialize($c_parse_result, false, true) === Core::data_serialize($c_expected, false, true);
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -1019,8 +1059,8 @@ abstract class Events_Test__Class_Url {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1031,8 +1071,8 @@ abstract class Events_Test__Class_Url {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1043,8 +1083,8 @@ abstract class Events_Test__Class_Url {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1057,13 +1097,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         $url = new Url($value);
         $url->query_arg_insert('scalar', 'encode_[]=_value');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1072,13 +1112,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         $url = new Url($value);
         $url->query_arg_insert('array', [0 => 'value 1', 'string' => 'value 2']);
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1088,13 +1128,13 @@ abstract class Events_Test__Class_Url {
         $url = new Url($value);
         $url->query_arg_insert('scalar', 'encode_[]=_value');
         $url->query_arg_insert('array', [0 => 'value 1', 'string' => 'value 2']);
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1103,13 +1143,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         $url = new Url($value);
         $url->query_arg_insert('ключ_1', 'значение 1');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1122,13 +1162,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value';
         $url = new Url($value);
         $url->query_arg_insert('scalar', 'encode_[]=_new_value');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1137,13 +1177,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?array[0]=new%20value%201&array[string]=new%20value%202';
         $url = new Url($value);
         $url->query_arg_insert('array', [0 => 'new value 1', 'string' => 'new value 2']);
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1153,13 +1193,13 @@ abstract class Events_Test__Class_Url {
         $url = new Url($value);
         $url->query_arg_insert('scalar', 'encode_[]=_new_value');
         $url->query_arg_insert('array', [0 => 'new value 1', 'string' => 'new value 2']);
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1168,13 +1208,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%202';
         $url = new Url($value);
         $url->query_arg_insert('ключ_1', 'значение 2');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1187,13 +1227,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         $url = new Url($value);
         $url->query_arg_delete('scalar');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1202,13 +1242,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         $url = new Url($value);
         $url->query_arg_delete('array');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1218,13 +1258,13 @@ abstract class Events_Test__Class_Url {
         $url = new Url($value);
         $url->query_arg_delete('scalar');
         $url->query_arg_delete('array');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -1233,13 +1273,13 @@ abstract class Events_Test__Class_Url {
         $expected = 'http://example.com';
         $url = new Url($value);
         $url->query_arg_delete('ключ_1');
-        $gotten = $url->full_get();
+        $gotten = $url->absolute_get();
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }

@@ -76,7 +76,7 @@ class Frontend {
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
                     $result->icons->child_insert(new Markup_simple('link', [
-                        'href' => Token::apply($c_url->tiny_get())
+                        'href' => Token::apply($c_url->relative_get())
                     ] + $c_attributes, $c_weight));
                 }
 
@@ -86,7 +86,7 @@ class Frontend {
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
                     $result->styles->child_insert(new Markup_simple('link', [
-                        'href' => Token::apply($c_url->tiny_get())
+                        'href' => Token::apply($c_url->relative_get())
                     ] + $c_attributes, $c_weight));
                 }
 
@@ -96,7 +96,7 @@ class Frontend {
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
                     $result->scripts->child_insert(new Markup('script', [
-                        'src' => Token::apply($c_url->tiny_get())
+                        'src' => Token::apply($c_url->relative_get())
                     ] + $c_attributes, [], $c_weight));
                 }
 
@@ -124,7 +124,8 @@ class Frontend {
                ($display->check === 'url' && $display->where === 'query'     && preg_match($display->match, Url::get_current()->query          )) ||
                ($display->check === 'url' && $display->where === 'anchor'    && preg_match($display->match, Url::get_current()->anchor         )) ||
                ($display->check === 'url' && $display->where === 'file_type' && preg_match($display->match, Url::get_current()->file_type_get())) ||
-               ($display->check === 'url' && $display->where === 'full'      && preg_match($display->match, Url::get_current()->full_get     ()));
+               ($display->check === 'url' && $display->where === 'relative'  && preg_match($display->match, Url::get_current()-> relative_get())) ||
+               ($display->check === 'url' && $display->where === 'absolute'  && preg_match($display->match, Url::get_current()-> absolute_get()));
     }
 
 }

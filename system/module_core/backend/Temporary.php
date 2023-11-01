@@ -9,6 +9,6 @@ namespace effcore;
 abstract class Temporary extends Dynamic {
 
     const TYPE = 'tmp';
-    const DIRECTORY = DIR_DYNAMIC.'tmp/';
+    const DIRECTORY = parent::DIRECTORY.'tmp/';
 
 }

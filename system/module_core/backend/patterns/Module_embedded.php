@@ -70,8 +70,8 @@ class Module_embedded {
 
         foreach (Entity::get_all_by_module($this->id) as $c_entity) {
             if ($c_entity->install())
-                 Message::insert(new Text('Entity "%%_entity" was installed.',     ['entity' => $c_entity->name])         );
-            else Message::insert(new Text('Entity "%%_entity" was not installed!', ['entity' => $c_entity->name]), 'error');
+                 Message::insert(new Text('Table "%%_name" was installed.',     ['name' => $c_entity->table_name])         );
+            else Message::insert(new Text('Table "%%_name" was not installed!', ['name' => $c_entity->table_name]), 'error');
         }
 
         # ─────────────────────────────────────────────────────────────────────
@@ -105,8 +105,8 @@ class Module_embedded {
         foreach (Instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
             if ($c_instance->insert())
-                 Message::insert(new Text('Instance with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
-            else Message::insert(new Text('Instance with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
+                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
+            else Message::insert(new Text('Table row with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
         }
 
@@ -192,7 +192,7 @@ class Module_embedded {
     }
 
     function group_get_id() {
-        return Core::sanitize_id($this->group);
+        return Security::sanitize_id($this->group);
     }
 
     ###########################
@@ -313,7 +313,7 @@ class Module_embedded {
         static::init();
         $groups = [];
         foreach (static::$cache['modules'] as $c_module)
-            $groups[Core::sanitize_id($c_module->group)] = $c_module->group;
+            $groups[Security::sanitize_id($c_module->group)] = $c_module->group;
         return $groups;
     }
 

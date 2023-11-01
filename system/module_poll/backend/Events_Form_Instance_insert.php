@@ -67,12 +67,16 @@ abstract class Events_Form_Instance_insert {
             switch ($form->clicked_button->value_get()) {
                 case 'insert':
                 case 'insert_and_update':
-                    foreach ($items['*widget_answers']->value_get() as $c_item)
-                        Poll::answer_insert($form->_instance->id, $c_item->text, $c_item->weight);
-                    # reset not actual data
-                    $items['*widget_answers']->items_reset();
-                    static::on_init(null, $form, $items);
-                    # ↓↓↓ no break ↓↓↓
+                    if ($form->_result !== null) {
+                        foreach ($items['*widget_answers']->value_get() as $c_item)
+                            Poll::answer_insert($form->_instance->id, $c_item->text, $c_item->weight);
+                        # reset not actual data
+                        $items['*widget_answers']->items_reset();
+                        static::on_init(null, $form, $items);
+                        # redirect if no error
+                        Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    }
+                    break;
                 case 'cancel':
                     Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
                     break;

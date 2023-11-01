@@ -8,11 +8,11 @@ namespace effcore\modules\test;
 
 use const effcore\DIR_ROOT;
 use effcore\Core;
-use effcore\Test;
 use effcore\Test_feed__Core__Select_recursive;
 use effcore\Test_feed__Core__Serialize;
-use effcore\Text;
+use effcore\Test;
 use effcore\Text_simple;
+use effcore\Text;
 use stdCLass;
 
 abstract class Events_Test__Class_Core {
@@ -52,8 +52,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -81,8 +81,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -111,8 +111,8 @@ abstract class Events_Test__Class_Core {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'array_sort_by_number:Core::SORT_ASC', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'array_sort_by_number:Core::SORT_ASC', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -138,8 +138,8 @@ abstract class Events_Test__Class_Core {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'array_sort_by_number:Core::SORT_ASC', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'array_sort_by_number:Core::SORT_ASC', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -246,8 +246,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' (no_zeros = '.($c_is_no_zeros ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' (no_zeros = '.($c_is_no_zeros ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -298,8 +298,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -387,8 +387,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -449,8 +449,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $expected[$c_row_id], 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $expected[$c_row_id], 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -499,8 +499,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -547,8 +547,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -556,43 +556,53 @@ abstract class Events_Test__Class_Core {
     }
 
     static function test_step_code__data_serialize(&$test, $dpath, &$c_results) {
-        $value_string        = 'string';
-        $value_integer       = 123;
-        $value_float         = 0.000001;
-        $value_boolean_true  = true;
-        $value_boolean_false = false;
-        $value_null          = null;
-        $value_object_simple = new stdCLass;
-        $value_object        = new Test_feed__Core__Serialize;
-        $value_array_empty   = [];
-        $value_array         = [
-            null                  => 'key null',
-            'string'              => 'key string',
-            123                   => 'key integer',
-          # 0.000001              => 'key float',
-          # true                  => 'key boolean:true',
-          # false                 => 'key boolean:false',
-            'value_string'        => $value_string,
-            'value_integer'       => $value_integer,
-            'value_float'         => $value_float,
-            'value_boolean_true'  => $value_boolean_true,
-            'value_boolean_false' => $value_boolean_false,
-            'value_null'          => $value_null,
-            'value_array_empty'   => $value_array_empty,
-            'value object simple' => new stdCLass,
-            'value object'        => new Test_feed__Core__Serialize
+
+        $feed_class_1 = new Test_feed__Core__Serialize;
+        $feed_class_1->prop_string = 'new string 1';
+
+        $feed_class_2 = new Test_feed__Core__Serialize;
+        $feed_class_2->prop_string = 'new string 2';
+
+        $data_raw = [
+            'string'        => 'string',
+            'integer'       => 123,
+            'float'         => 0.000001,
+            'boolean_true'  => true,
+            'boolean_false' => false,
+            'null'          => null,
+            'object_simple' => new stdCLass,
+            'object'        => $feed_class_1,
+            'array_empty'   => [],
+            'array'         => [
+                null                  => 'key null',
+                'string'              => 'key string',
+                123                   => 'key integer',
+              # 0.000001              => 'key float',
+              # true                  => 'key boolean:true',
+              # false                 => 'key boolean:false',
+                'value_string'        => 'string',
+                'value_integer'       => 123,
+                'value_float'         => 0.000001,
+                'value_boolean_true'  => true,
+                'value_boolean_false' => false,
+                'value_null'          => null,
+                'value_array_empty'   => [],
+                'value_object_simple' => new stdCLass,
+                'value_object'        => $feed_class_2
+            ]
         ];
 
         $data = [
-            'value_string'        => $value_string,
-            'value_integer'       => $value_integer,
-            'value_float'         => $value_float,
-            'value_boolean_true'  => $value_boolean_true,
-            'value_boolean_false' => $value_boolean_false,
-            'value_null'          => $value_null,
-            'value_object_simple' => $value_object_simple,
-            'value_object'        => $value_object,
-            'value_array'         => $value_array
+            'value_string'        => $data_raw['string'],
+            'value_integer'       => $data_raw['integer'],
+            'value_float'         => $data_raw['float'],
+            'value_boolean_true'  => $data_raw['boolean_true'],
+            'value_boolean_false' => $data_raw['boolean_false'],
+            'value_null'          => $data_raw['null'],
+            'value_object_simple' => $data_raw['object_simple'],
+            'value_object'        => $data_raw['object'],
+            'value_array'         => $data_raw['array'],
+            'value_mixed'         => $data_raw
         ];
 
         ###############################################################
@@ -600,15 +610,16 @@ abstract class Events_Test__Class_Core {
         ###############################################################
 
         $expected = [
-            'value_string'        => serialize($value_string),
-            'value_integer'       => serialize($value_integer),
-            'value_float'         => serialize($value_float),
-            'value_boolean_true'  => serialize($value_boolean_true),
-            'value_boolean_false' => serialize($value_boolean_false),
-            'value_null'          => serialize($value_null),
-            'value_object_simple' => serialize($value_object_simple),
-            'value_object'        => serialize($value_object),
-            'value_array'         => serialize($value_array)
+            'value_string'        => serialize($data_raw['string']),
+            'value_integer'       => serialize($data_raw['integer']),
+            'value_float'         => serialize($data_raw['float']),
+            'value_boolean_true'  => serialize($data_raw['boolean_true']),
+            'value_boolean_false' => serialize($data_raw['boolean_false']),
+            'value_null'          => serialize($data_raw['null']),
+            'value_object_simple' => serialize($data_raw['object_simple']),
+            'value_object'        => serialize($data_raw['object']),
+            'value_array'         => serialize($data_raw['array']),
+            'value_mixed'         => serialize($data_raw)
         ];
 
         foreach ($data as $c_row_id => $c_value) {
@@ -618,8 +629,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = false)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = false)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -630,15 +641,63 @@ abstract class Events_Test__Class_Core {
         ###########################
 
         $expected = [
-            'value_string'        => 's:6:"string";',
-            'value_integer'       => 'i:123;',
+            'value_string'        => serialize($data_raw['string']),
+            'value_integer'       => serialize($data_raw['integer']),
+            'value_boolean_true'  => serialize($data_raw['boolean_true']),
+            'value_boolean_false' => serialize($data_raw['boolean_false']),
+            'value_null'          => serialize($data_raw['null']),
+            'value_object_simple' => serialize($data_raw['object_simple']),
             'value_float'         => 'd:0.000001;',
-            'value_boolean_true'  => 'b:1;',
-            'value_boolean_false' => 'b:0;',
-            'value_null'          => 'N;',
-            'value_object_simple' => 'O:8:"stdClass":0:{}',
-            'value_object'        => 'O:34:"effcore\Test_feed__Core__Serialize":0:{}',
-            'value_array'         => 'a:12:{s:0:"";s:8:"key null";s:6:"string";s:10:"key string";i:123;s:11:"key integer";s:12:"value_string";s:6:"string";s:13:"value_integer";i:123;s:11:"value_float";d:0.000001;s:18:"value_boolean_true";b:1;s:19:"value_boolean_false";b:0;s:10:"value_null";N;s:17:"value_array_empty";a:0:{}s:19:"value object simple";O:8:"stdClass":0:{}s:12:"value object";O:34:"effcore\Test_feed__Core__Serialize":0:{}}'
+            'value_object' => 'O:34:"effcore\Test_feed__Core__Serialize":1:{'.
+                's:11:"prop_string";s:12:"new string 1";'.
+            '}',
+            'value_array' =>
+                'a:12:{'.
+                    's:0:"";s:8:"key null";'.
+                    's:6:"string";s:10:"key string";'.
+                    'i:123;s:11:"key integer";'.
+                    's:12:"value_string";s:6:"string";'.
+                    's:13:"value_integer";i:123;'.
+                    's:11:"value_float";d:0.000001;'.
+                    's:18:"value_boolean_true";b:1;'.
+                    's:19:"value_boolean_false";b:0;'.
+                    's:10:"value_null";N;'.
+                    's:17:"value_array_empty";a:0:{}'.
+                    's:19:"value_object_simple";O:8:"stdClass":0:{}'.
+                    's:12:"value_object";O:34:"effcore\Test_feed__Core__Serialize":1:{'.
+                        's:11:"prop_string";s:12:"new string 2";'.
+                    '}'.
+                '}',
+            'value_mixed' =>
+                'a:10:{'.
+                    's:6:"string";s:6:"string";'.
+                    's:7:"integer";i:123;'.
+                    's:5:"float";d:0.000001;'.
+                    's:12:"boolean_true";b:1;'.
+                    's:13:"boolean_false";b:0;'.
+                    's:4:"null";N;'.
+                    's:13:"object_simple";O:8:"stdClass":0:{}'.
+                    's:6:"object";O:34:"effcore\Test_feed__Core__Serialize":1:{'.
+                        's:11:"prop_string";s:12:"new string 1";'.
+                    '}'.
+                    's:11:"array_empty";a:0:{}'.
+                    's:5:"array";a:12:{'.
+                        's:0:"";s:8:"key null";'.
+                        's:6:"string";s:10:"key string";'.
+                        'i:123;s:11:"key integer";'.
+                        's:12:"value_string";s:6:"string";'.
+                        's:13:"value_integer";i:123;'.
+                        's:11:"value_float";d:0.000001;'.
+                        's:18:"value_boolean_true";b:1;'.
+                        's:19:"value_boolean_false";b:0;'.
+                        's:10:"value_null";N;'.
+                        's:17:"value_array_empty";a:0:{}'.
+                        's:19:"value_object_simple";O:8:"stdClass":0:{}'.
+                        's:12:"value_object";O:34:"effcore\Test_feed__Core__Serialize":1:{'.
+                            's:11:"prop_string";s:12:"new string 2";'.
+                        '}'.
+                    '}'.
+                '}'
         ];
 
         foreach ($data as $c_row_id => $c_value) {
@@ -648,8 +707,156 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = true)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = true)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        ##############################################
+        ### is_optimized = false | is_ksort = true ###
+        ##############################################
+
+        $expected = [
+            'value_string'        => serialize($data_raw['string']),
+            'value_integer'       => serialize($data_raw['integer']),
+            'value_boolean_true'  => serialize($data_raw['boolean_true']),
+            'value_boolean_false' => serialize($data_raw['boolean_false']),
+            'value_null'          => serialize($data_raw['null']),
+            'value_object_simple' => serialize($data_raw['object_simple']),
+            'value_float'         => serialize($data_raw['float']),
+            'value_object' =>
+                'O:34:"effcore\Test_feed__Core__Serialize":7:{'.
+                    's:10:"prop_array";a:10:{'.
+                        's:0:"";s:8:"key null";'.
+                        'i:123;s:11:"key integer";'.
+                        's:6:"string";s:10:"key string";'.
+                        's:17:"value_array_empty";a:0:{}'.
+                        's:19:"value_boolean_false";b:0;'.
+                        's:18:"value_boolean_true";b:1;'.
+                        's:11:"value_float";d:1.0E-6;'.
+                        's:13:"value_integer";i:123;'.
+                        's:10:"value_null";N;'.
+                        's:12:"value_string";s:6:"string";'.
+                    '}'.
+                    's:18:"prop_boolean_false";b:0;'.
+                    's:17:"prop_boolean_true";b:1;'.
+                    's:10:"prop_float";d:1.0E-6;'.
+                    's:12:"prop_integer";i:123;'.
+                    's:9:"prop_null";N;'.
+                    's:11:"prop_string";'.
+                    's:12:"new string 1";'.
+                '}',
+            'value_array' =>
+                'a:12:{'.
+                    's:0:"";s:8:"key null";'.
+                    'i:123;s:11:"key integer";'.
+                    's:6:"string";s:10:"key string";'.
+                    's:17:"value_array_empty";a:0:{}'.
+                    's:19:"value_boolean_false";b:0;'.
+                    's:18:"value_boolean_true";b:1;'.
+                    's:11:"value_float";d:1.0E-6;'.
+                    's:13:"value_integer";i:123;'.
+                    's:10:"value_null";N;'.
+                    's:12:"value_object";O:34:"effcore\Test_feed__Core__Serialize":7:{'.
+                        's:10:"prop_array";a:10:{'.
+                            's:0:"";s:8:"key null";'.
+                            'i:123;s:11:"key integer";'.
+                            's:6:"string";s:10:"key string";'.
+                            's:17:"value_array_empty";a:0:{}'.
+                            's:19:"value_boolean_false";b:0;'.
+                            's:18:"value_boolean_true";b:1;'.
+                            's:11:"value_float";d:1.0E-6;'.
+                            's:13:"value_integer";i:123;'.
+                            's:10:"value_null";N;'.
+                            's:12:"value_string";s:6:"string";'.
+                        '}'.
+                        's:18:"prop_boolean_false";b:0;'.
+                        's:17:"prop_boolean_true";b:1;'.
+                        's:10:"prop_float";d:1.0E-6;'.
+                        's:12:"prop_integer";i:123;'.
+                        's:9:"prop_null";N;'.
+                        's:11:"prop_string";s:12:"new string 2";'.
+                    '}'.
+                    's:19:"value_object_simple";O:8:"stdClass":0:{}'.
+                    's:12:"value_string";s:6:"string";'.
+                '}',
+            'value_mixed' =>
+                'a:10:{'.
+                    's:5:"array";a:12:{'.
+                        's:0:"";s:8:"key null";'.
+                        'i:123;s:11:"key integer";'.
+                        's:6:"string";s:10:"key string";'.
+                        's:17:"value_array_empty";a:0:{}'.
+                        's:19:"value_boolean_false";b:0;'.
+                        's:18:"value_boolean_true";b:1;'.
+                        's:11:"value_float";d:1.0E-6;'.
+                        's:13:"value_integer";i:123;'.
+                        's:10:"value_null";N;'.
+                        's:12:"value_object";O:34:"effcore\Test_feed__Core__Serialize":7:{'.
+                            's:10:"prop_array";a:10:{'.
+                                's:0:"";s:8:"key null";'.
+                                'i:123;s:11:"key integer";'.
+                                's:6:"string";s:10:"key string";'.
+                                's:17:"value_array_empty";a:0:{}'.
+                                's:19:"value_boolean_false";b:0;'.
+                                's:18:"value_boolean_true";b:1;'.
+                                's:11:"value_float";d:1.0E-6;'.
+                                's:13:"value_integer";i:123;'.
+                                's:10:"value_null";N;'.
+                                's:12:"value_string";s:6:"string";'.
+                            '}'.
+                            's:18:"prop_boolean_false";b:0;'.
+                            's:17:"prop_boolean_true";b:1;'.
+                            's:10:"prop_float";d:1.0E-6;'.
+                            's:12:"prop_integer";i:123;'.
+                            's:9:"prop_null";N;'.
+                            's:11:"prop_string";s:12:"new string 2";'.
+                        '}'.
+                        's:19:"value_object_simple";O:8:"stdClass":0:{}'.
+                        's:12:"value_string";s:6:"string";'.
+                    '}'.
+                    's:11:"array_empty";a:0:{}'.
+                    's:13:"boolean_false";b:0;'.
+                    's:12:"boolean_true";b:1;'.
+                    's:5:"float";d:1.0E-6;'.
+                    's:7:"integer";i:123;'.
+                    's:4:"null";N;'.
+                    's:6:"object";O:34:"effcore\Test_feed__Core__Serialize":7:{'.
+                        's:10:"prop_array";a:10:{'.
+                            's:0:"";s:8:"key null";'.
+                            'i:123;s:11:"key integer";'.
+                            's:6:"string";s:10:"key string";'.
+                            's:17:"value_array_empty";a:0:{}'.
+                            's:19:"value_boolean_false";b:0;'.
+                            's:18:"value_boolean_true";b:1;'.
+                            's:11:"value_float";d:1.0E-6;'.
+                            's:13:"value_integer";i:123;'.
+                            's:10:"value_null";N;'.
+                            's:12:"value_string";s:6:"string";'.
+                        '}'.
+                        's:18:"prop_boolean_false";b:0;'.
+                        's:17:"prop_boolean_true";b:1;'.
+                        's:10:"prop_float";d:1.0E-6;'.
+                        's:12:"prop_integer";i:123;'.
+                        's:9:"prop_null";N;'.
+                        's:11:"prop_string";s:12:"new string 1";'.
+                    '}'.
+                    's:13:"object_simple";O:8:"stdClass":0:{}'.
+                    's:6:"string";s:6:"string";'.
+                '}'
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Core::data_serialize($c_value, false, true);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = false, ksort = true)', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (is_optimized = false, ksort = true)', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -723,8 +930,8 @@ abstract class Events_Test__Class_Core {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* (is_parent_at_last = false)', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* (is_parent_at_last = false)', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -781,8 +988,8 @@ abstract class Events_Test__Class_Core {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* (is_parent_at_last = true)', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* (is_parent_at_last = true)', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($expected))]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($gotten))]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -846,251 +1053,51 @@ abstract class Events_Test__Class_Core {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '*', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '*', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($gotten)]);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
     }
 
-    static function test_step_code__validate_range(&$test, $dpath, &$c_results) {
-        $data = [
-            '0.000002 & -2' => Core::validate_range('-1', '1', '0.000002', '-2'),
-            '0.000002 & -1' => Core::validate_range('-1', '1', '0.000002', '-1'),
-            '0.000002 & +0' => Core::validate_range('-1', '1', '0.000002',  '0'),
-            '0.000002 & +1' => Core::validate_range('-1', '1', '0.000002',  '1'),
-            '0.000002 & +2' => Core::validate_range('-1', '1', '0.000002',  '2'),
-            '0.000003 & -2' => Core::validate_range('-1', '1', '0.000003', '-2'),
-            '0.000003 & -1' => Core::validate_range('-1', '1', '0.000003', '-1'),
-            '0.000003 & +0' => Core::validate_range('-1', '1', '0.000003',  '0'),
-            '0.000003 & +1' => Core::validate_range('-1', '1', '0.000003',  '1'),
-            '0.000003 & +2' => Core::validate_range('-1', '1', '0.000003',  '2')
-        ];
-
-        $expected = [
-            '0.000002 & -2' => false,
-            '0.000002 & -1' => true,
-            '0.000002 & +0' => true,
-            '0.000002 & +1' => true,
-            '0.000002 & +2' => false,
-            '0.000003 & -2' => false,
-            '0.000003 & -1' => true,
-            '0.000003 & +0' => false,
-            '0.000003 & +1' => true,
-            '0.000003 & +2' => false
-        ];
-
-        foreach ($data as $c_row_id => $c_gotten) {
-            $c_expected = $expected[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $c_expected ? 'true' : 'false']);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $c_gotten ? 'true' : 'false']);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        ###########################################
-        ### test for range: -1000000 … +1000000 ###
-        ###########################################
-
-        $f_min  = '-1.0';
-        $f_max  =  '1.0';
-        $f_step =  '0.000003';
-        $i_min  =  -1000000;
-        $i_max  =  +1000000;
-        $i_step =  +3;
-
-        for ($i = 0; $i < 1000000; $i++) {
-            $c_f_value = bcmul($i, '0.000001', 6);
-            $c_gotten_i = Core::validate_range($f_min, $f_max, $f_step, $c_f_value);
-            $c_gotten_f = Core::validate_range($i_min, $i_max, $i_step, $i);
-            $c_gotten_alternative = (($i - $i_min) % $i_step) === 0;
-            if ($c_gotten_i !== $c_gotten_alternative ||
-                $c_gotten_f !== $c_gotten_alternative) {
-                $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'range: -1000000 … +1000000', 'result' => (new Text('failure'))->render()]);
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => $c_gotten_i]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"',    ['value' => $c_gotten_alternative]);
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"',  ['value' => $c_gotten_f]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"',    ['value' => $c_gotten_alternative]);
-                $c_results['reports'][$dpath][] = $c_f_value.' | f_min = '    .$f_min.
-                                                             ' | f_max = '    .$f_max.
-                                                             ' | f_step = '   .$f_step.
-                                                             ' | c_f_value = '.$c_f_value.
-                                                             ' | i_min = '    .$i_min.
-                                                             ' | i_max = '    .$i_max.
-                                                             ' | i_step = '   .$i_step.
-                                                             ' | i = '        .$i;
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', [
-            'id' => 'range: -1000000 … +1000000', 'result' => (new Text('success')
-        )->render()]);
-    }
-
-    static function test_step_code__validate_mime_type(&$test, $dpath, &$c_results) {
-        $data = [
-            'application/atom+xml',
-            'application/EDI-X12',
-            'application/EDIFACT',
-            'application/font-sfnt',
-            'application/font-woff',
-            'application/font-woff2',
-            'application/java-archive',
-            'application/javascript',
-            'application/json',
-            'application/msword',
-            'application/octet-stream',
-            'application/ogg',
-            'application/pdf',
-            'application/rss+xml',
-            'application/rtf',
-            'application/vnd.google-earth.kml+xml',
-            'application/vnd.mozilla.xul+xml',
-            'application/vnd.ms-excel',
-            'application/vnd.ms-fontobject',
-            'application/vnd.ms-powerpoint',
-            'application/vnd.oasis.opendocument.graphics',
-            'application/vnd.oasis.opendocument.presentation',
-            'application/vnd.oasis.opendocument.spreadsheet',
-            'application/vnd.oasis.opendocument.text',
-            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            'application/x-7z-compressed',
-            'application/x-bzip',
-            'application/x-bzip2',
-            'application/x-compressed',
-            'application/x-dvi',
-            'application/x-font-opentype',
-            'application/x-font-ttf',
-            'application/x-gzip',
-            'application/x-iwork-keynote-sffkey',
-            'application/x-iwork-numbers-sffnumbers',
-            'application/x-iwork-pages-sffpages',
-            'application/x-javascript',
-            'application/x-latex',
-            'application/x-newton-compatible-pkg',
-            'application/x-pkcs12',
-            'application/x-pkcs7-certificates',
-            'application/x-pkcs7-certreqresp',
-            'application/x-pkcs7-mime',
-            'application/x-pkcs7-signature',
-            'application/x-rar-compressed',
-            'application/x-redhat-package-manager',
-            'application/x-shockwave-flash',
-            'application/x-stuffit',
-            'application/x-tar',
-            'application/x-www-form-urlencoded',
-            'application/x-x509-ca-cert',
-            'application/xhtml+xml',
-            'application/zip',
-            'audio/aac',
-            'audio/aiff',
-            'audio/flac',
-            'audio/midi',
-            'audio/mpeg',
-            'audio/ogg',
-            'audio/wav',
-            'audio/x-m4a',
-            'audio/x-ms-wma',
-            'image/gif',
-            'image/jpeg',
-            'image/png',
-            'image/svg+xml',
-            'image/tiff',
-            'image/webp',
-            'image/x-icon',
-            'image/x-ms-bmp',
-            'multipart/alternative',
-            'multipart/encrypted',
-            'multipart/form-data',
-            'multipart/mixed',
-            'multipart/related',
-            'multipart/signed',
-            'text/cmd',
-            'text/css',
-            'text/csv',
-            'text/html',
-            'text/javascript',
-            'text/markdown',
-            'text/php',
-            'text/plain',
-            'text/x-jquery-tmpl',
-            'text/xml',
-            'video/3gpp',
-            'video/3gpp2',
-            'video/mp4',
-            'video/mpeg',
-            'video/ogg',
-            'video/quicktime',
-            'video/webm',
-            'video/x-flv',
-            'video/x-m4v',
-            'video/x-matroska',
-            'video/x-ms-wmv',
-            'video/x-msvideo'
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $c_expected = $c_value;
-            $c_gotten = Core::validate_mime_type($c_value);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-    }
-
     # hex ip to ip platform differences:
-    # ┌──────────────────────────────────┬─────────────────────────────────────────┬─────────────────────────────────────────┐
-    # │ hex ip                           │                        to ip on win-x86 │                        to ip on osx-x64 │
-    # ├──────────────────────────────────┼─────────────────────────────────────────┼─────────────────────────────────────────┤
-    # │ 00000000000000000000000000000000 │                                      :: │                                      :: │
-    # │ 0000000000000000000000000000000f │                                     ::f │                              ::0.0.0.15 │ !!!
-    # │ 000000000000000000000000000000ff │                                    ::ff │                             ::0.0.0.255 │ !!!
-    # │ 00000000000000000000000000000fff │                                   ::fff │                            ::0.0.15.255 │ !!!
-    # │ 0000000000000000000000000000ffff │                                  ::ffff │                           ::0.0.255.255 │ !!!
-    # │ 000000000000000000000000000fffff │                          ::0.15.255.255 │                          ::0.15.255.255 │
-    # │ 00000000000000000000000000ffffff │                         ::0.255.255.255 │                         ::0.255.255.255 │
-    # │ 0000000000000000000000000fffffff │                        ::15.255.255.255 │                        ::15.255.255.255 │
-    # │ 000000000000000000000000ffffffff │                       ::255.255.255.255 │                       ::255.255.255.255 │
-    # │ 00000000000000000000000fffffffff │                           ::f:ffff:ffff │                           ::f:ffff:ffff │
-    # │ 0000000000000000000000ffffffffff │                          ::ff:ffff:ffff │                          ::ff:ffff:ffff │
-    # │ 000000000000000000000fffffffffff │                         ::fff:ffff:ffff │                         ::fff:ffff:ffff │
-    # │ 00000000000000000000ffffffffffff │                  ::ffff:255.255.255.255 │                  ::ffff:255.255.255.255 │
-    # │ 0000000000000000000fffffffffffff │                      ::f:ffff:ffff:ffff │                      ::f:ffff:ffff:ffff │
-    # │ 000000000000000000ffffffffffffff │                     ::ff:ffff:ffff:ffff │                     ::ff:ffff:ffff:ffff │
-    # │ 00000000000000000fffffffffffffff │                    ::fff:ffff:ffff:ffff │                    ::fff:ffff:ffff:ffff │
-    # │ 0000000000000000ffffffffffffffff │                   ::ffff:ffff:ffff:ffff │                   ::ffff:ffff:ffff:ffff │
-    # │ 000000000000000fffffffffffffffff │                 ::f:ffff:ffff:ffff:ffff │                 ::f:ffff:ffff:ffff:ffff │
-    # │ 00000000000000ffffffffffffffffff │                ::ff:ffff:ffff:ffff:ffff │                ::ff:ffff:ffff:ffff:ffff │
-    # │ 0000000000000fffffffffffffffffff │               ::fff:ffff:ffff:ffff:ffff │               ::fff:ffff:ffff:ffff:ffff │
-    # │ 000000000000ffffffffffffffffffff │              ::ffff:ffff:ffff:ffff:ffff │              ::ffff:ffff:ffff:ffff:ffff │
-    # │ 00000000000fffffffffffffffffffff │            ::f:ffff:ffff:ffff:ffff:ffff │            ::f:ffff:ffff:ffff:ffff:ffff │
-    # │ 0000000000ffffffffffffffffffffff │           ::ff:ffff:ffff:ffff:ffff:ffff │           ::ff:ffff:ffff:ffff:ffff:ffff │
-    # │ 000000000fffffffffffffffffffffff │          ::fff:ffff:ffff:ffff:ffff:ffff │          ::fff:ffff:ffff:ffff:ffff:ffff │
-    # │ 00000000ffffffffffffffffffffffff │         ::ffff:ffff:ffff:ffff:ffff:ffff │         ::ffff:ffff:ffff:ffff:ffff:ffff │
-    # │ 0000000fffffffffffffffffffffffff |       0:f:ffff:ffff:ffff:ffff:ffff:ffff │       ::f:ffff:ffff:ffff:ffff:ffff:ffff │ !!!
-    # │ 000000ffffffffffffffffffffffffff |      0:ff:ffff:ffff:ffff:ffff:ffff:ffff │      ::ff:ffff:ffff:ffff:ffff:ffff:ffff │ !!!
-    # │ 00000fffffffffffffffffffffffffff |     0:fff:ffff:ffff:ffff:ffff:ffff:ffff │     ::fff:ffff:ffff:ffff:ffff:ffff:ffff │ !!!
-    # │ 0000ffffffffffffffffffffffffffff |    0:ffff:ffff:ffff:ffff:ffff:ffff:ffff │    ::ffff:ffff:ffff:ffff:ffff:ffff:ffff │ !!!
-    # │ 000fffffffffffffffffffffffffffff |    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff │    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-    # │ 00ffffffffffffffffffffffffffffff |   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-    # │ 0fffffffffffffffffffffffffffffff |  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-    # │ ffffffffffffffffffffffffffffffff | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │ ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
-    # └──────────────────────────────────┴─────────────────────────────────────────┴─────────────────────────────────────────┘
+    # ┌──────────────────────────────────┬─────────────────────────────────────────┐
+    # │ hex-ip                           │                                      ip │
+    # ├──────────────────────────────────┼─────────────────────────────────────────┤
+    # │ 00000000000000000000000000000000 │                                      :: │
+    # │ 0000000000000000000000000000000f │                              ::0.0.0.15 │
+    # │ 000000000000000000000000000000ff │                             ::0.0.0.255 │
+    # │ 00000000000000000000000000000fff │                            ::0.0.15.255 │
+    # │ 0000000000000000000000000000ffff │                           ::0.0.255.255 │
+    # │ 000000000000000000000000000fffff │                          ::0.15.255.255 │
+    # │ 00000000000000000000000000ffffff │                         ::0.255.255.255 │
+    # │ 0000000000000000000000000fffffff │                        ::15.255.255.255 │
+    # │ 000000000000000000000000ffffffff │                       ::255.255.255.255 │
+    # │ 00000000000000000000000fffffffff │                           ::f:ffff:ffff │
+    # │ 0000000000000000000000ffffffffff │                          ::ff:ffff:ffff │
+    # │ 000000000000000000000fffffffffff │                         ::fff:ffff:ffff │
+    # │ 00000000000000000000ffffffffffff │                  ::ffff:255.255.255.255 │
+    # │ 0000000000000000000fffffffffffff │                      ::f:ffff:ffff:ffff │
+    # │ 000000000000000000ffffffffffffff │                     ::ff:ffff:ffff:ffff │
+    # │ 00000000000000000fffffffffffffff │                    ::fff:ffff:ffff:ffff │
+    # │ 0000000000000000ffffffffffffffff │                   ::ffff:ffff:ffff:ffff │
+    # │ 000000000000000fffffffffffffffff │                 ::f:ffff:ffff:ffff:ffff │
+    # │ 00000000000000ffffffffffffffffff │                ::ff:ffff:ffff:ffff:ffff │
+    # │ 0000000000000fffffffffffffffffff │               ::fff:ffff:ffff:ffff:ffff │
+    # │ 000000000000ffffffffffffffffffff │              ::ffff:ffff:ffff:ffff:ffff │
+    # │ 00000000000fffffffffffffffffffff │            ::f:ffff:ffff:ffff:ffff:ffff │
+    # │ 0000000000ffffffffffffffffffffff │           ::ff:ffff:ffff:ffff:ffff:ffff │
+    # │ 000000000fffffffffffffffffffffff │          ::fff:ffff:ffff:ffff:ffff:ffff │
+    # │ 00000000ffffffffffffffffffffffff │         ::ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 0000000fffffffffffffffffffffffff │       ::f:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 000000ffffffffffffffffffffffffff │      ::ff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 00000fffffffffffffffffffffffffff │     ::fff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 0000ffffffffffffffffffffffffffff │    ::ffff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 000fffffffffffffffffffffffffffff │    f:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 00ffffffffffffffffffffffffffffff │   ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ 0fffffffffffffffffffffffffffffff │  fff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # │ ffffffffffffffffffffffffffffffff │ ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff │
+    # └──────────────────────────────────┴─────────────────────────────────────────┘
     #
     #            ::ffff ==          ::0.0.255.255 == 0000000000000000000000000000ffff
     #       ::ffff:ffff ==      ::255.255.255.255 == 000000000000000000000000ffffffff
@@ -1115,7 +1122,7 @@ abstract class Events_Test__Class_Core {
                               '::ffff:ffff:ffff:ffff' => '0000000000000000ffffffffffffffff',
                          '::ffff:ffff:ffff:ffff:ffff' => '000000000000ffffffffffffffffffff',
                     '::ffff:ffff:ffff:ffff:ffff:ffff' => '00000000ffffffffffffffffffffffff',
-               '::ffff:ffff:ffff:ffff:ffff:ffff:ffff' => '0000ffffffffffffffffffffffffffff', # error on 32-bit platform
+               '::ffff:ffff:ffff:ffff:ffff:ffff:ffff' => Core::is_Win() ? '' : '0000ffffffffffffffffffffffffffff',
             'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff' => 'ffffffffffffffffffffffffffffffff',
                                          'ffff::ffff' => 'ffff000000000000000000000000ffff',
                                     'ffff::ffff:ffff' => 'ffff00000000000000000000ffffffff',
@@ -1128,8 +1135,8 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -1173,704 +1180,136 @@ abstract class Events_Test__Class_Core {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
         }
     }
 
-    static function test_step_code__validate_number_with_minus(&$test, $dpath, &$c_results) {
-
+    static function test_step_code__html_entity_encode_total(&$test, $dpath, &$c_results) {
         $data = [
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = ''           Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [  X Y ] - 0101 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [  X.  ] - 0110 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [  X.Y ] - 0111 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -X Y ] - 1101 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ -X.  ] - 1110 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '0'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,
-            /* [  X Y ] - 0101 */     ' 0  ' => 1,    '  0 0' => 0,    '  0 1' => 0,    '  0 N' => 0,    '  0 00' => 0,    '  0 01' => 0,    '  0 10' => 0,    '  0 11' => 0,
-            /* [  X.  ] - 0110 */     ' 0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 0. ' => 0,    '  0.0' => 1,    '  0.1' => 1,    '  0.N' => 0,    '  0.00' => 1,    '  0.01' => 1,    '  0.10' => 1,    '  0.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,
-            /* [ -X Y ] - 1101 */     '-0  ' => 0,    '- 0 0' => 0,    '- 0 1' => 0,    '- 0 N' => 0,    '- 0 00' => 0,    '- 0 01' => 0,    '- 0 10' => 0,    '- 0 11' => 0,
-            /* [ -X.  ] - 1110 */     '-0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-0. ' => 0,    '- 0.0' => 0,    '- 0.1' => 1,    '- 0.N' => 0,    '- 0.00' => 0,    '- 0.01' => 1,    '- 0.10' => 1,    '- 0.11' => 1,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '1'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,
-            /* [  X Y ] - 0101 */     ' 1  ' => 1,    '  1 0' => 1,    '  1 1' => 1,    '  1 N' => 0,    '  1 00' => 1,    '  1 01' => 1,    '  1 10' => 1,    '  1 11' => 1,
-            /* [  X.  ] - 0110 */     ' 1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 1. ' => 0,    '  1.0' => 1,    '  1.1' => 1,    '  1.N' => 0,    '  1.00' => 1,    '  1.01' => 1,    '  1.10' => 1,    '  1.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-1  ' => 1,    '- 1  ' => 1,    '- 1  ' => 1,    '- 1  ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,
-            /* [ -X Y ] - 1101 */     '-1  ' => 1,    '- 1 0' => 1,    '- 1 1' => 1,    '- 1 N' => 0,    '- 1 00' => 1,    '- 1 01' => 1,    '- 1 10' => 1,    '- 1 11' => 1,
-            /* [ -X.  ] - 1110 */     '-1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-1. ' => 0,    '- 1.0' => 1,    '- 1.1' => 1,    '- 1.N' => 0,    '- 1.00' => 1,    '- 1.01' => 1,    '- 1.10' => 1,    '- 1.11' => 1,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = 'K'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '  K ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,
-            /* [  X Y ] - 0101 */     '  K ' => 0,    '  K 0' => 0,    '  K 1' => 0,    '  K N' => 0,    '  K 00' => 0,    '  K 01' => 0,    '  K 10' => 0,    '  K 11' => 0,
-            /* [  X.  ] - 0110 */     '  K.' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,
-            /* [  X.Y ] - 0111 */     '  K.' => 0,    '  K.0' => 0,    '  K.1' => 0,    '  K.N' => 0,    '  K.00' => 0,    '  K.01' => 0,    '  K.10' => 0,    '  K.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '- K ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,
-            /* [ -X Y ] - 1101 */     '- K ' => 0,    '- K 0' => 0,    '- K 1' => 0,    '- K N' => 0,    '- K 00' => 0,    '- K 01' => 0,    '- K 10' => 0,    '- K 11' => 0,
-            /* [ -X.  ] - 1110 */     '- K.' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- K.' => 0,    '- K.0' => 0,    '- K.1' => 0,    '- K.N' => 0,    '- K.00' => 0,    '- K.01' => 0,    '- K.10' => 0,    '- K.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '00'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 00 ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,
-            /* [  X Y ] - 0101 */     ' 00 ' => 0,    ' 00 0' => 0,    ' 00 1' => 0,    ' 00 N' => 0,    ' 00 00' => 0,    ' 00 01' => 0,    ' 00 10' => 0,    ' 00 11' => 0,
-            /* [  X.  ] - 0110 */     ' 00.' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 00.' => 0,    ' 00.0' => 0,    ' 00.1' => 0,    ' 00.N' => 0,    ' 00.00' => 0,    ' 00.01' => 0,    ' 00.10' => 0,    ' 00.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-00 ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,
-            /* [ -X Y ] - 1101 */     '-00 ' => 0,    '-00 0' => 0,    '-00 1' => 0,    '-00 N' => 0,    '-00 00' => 0,    '-00 01' => 0,    '-00 10' => 0,    '-00 11' => 0,
-            /* [ -X.  ] - 1110 */     '-00.' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-00.' => 0,    '-00.0' => 0,    '-00.1' => 0,    '-00.N' => 0,    '-00.00' => 0,    '-00.01' => 0,    '-00.10' => 0,    '-00.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '01'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 01 ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,
-            /* [  X Y ] - 0101 */     ' 01 ' => 0,    ' 01 0' => 0,    ' 01 1' => 0,    ' 01 N' => 0,    ' 01 00' => 0,    ' 01 01' => 0,    ' 01 10' => 0,    ' 01 11' => 0,
-            /* [  X.  ] - 0110 */     ' 01.' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 01.' => 0,    ' 01.0' => 0,    ' 01.1' => 0,    ' 01.N' => 0,    ' 01.00' => 0,    ' 01.01' => 0,    ' 01.10' => 0,    ' 01.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-01 ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,
-            /* [ -X Y ] - 1101 */     '-01 ' => 0,    '-01 0' => 0,    '-01 1' => 0,    '-01 N' => 0,    '-01 00' => 0,    '-01 01' => 0,    '-01 10' => 0,    '-01 11' => 0,
-            /* [ -X.  ] - 1110 */     '-01.' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-01.' => 0,    '-01.0' => 0,    '-01.1' => 0,    '-01.N' => 0,    '-01.00' => 0,    '-01.01' => 0,    '-01.10' => 0,    '-01.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '10'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 10 ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,
-            /* [  X Y ] - 0101 */     ' 10 ' => 1,    ' 10 0' => 1,    ' 10 1' => 1,    ' 10 N' => 0,    ' 10 00' => 1,    ' 10 01' => 1,    ' 10 10' => 1,    ' 10 11' => 1,
-            /* [  X.  ] - 0110 */     ' 10.' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 10.' => 0,    ' 10.0' => 1,    ' 10.1' => 1,    ' 10.N' => 0,    ' 10.00' => 1,    ' 10.01' => 1,    ' 10.10' => 1,    ' 10.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-10 ' => 1,    '-10  ' => 1,    '-10  ' => 1,    '-10  ' => 1,    '-10   ' => 1,    '-10   ' => 1,    '-10   ' => 1,    '-10   ' => 1,
-            /* [ -X Y ] - 1101 */     '-10 ' => 1,    '-10 0' => 1,    '-10 1' => 1,    '-10 N' => 0,    '-10 00' => 1,    '-10 01' => 1,    '-10 10' => 1,    '-10 11' => 1,
-            /* [ -X.  ] - 1110 */     '-10.' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-10.' => 0,    '-10.0' => 1,    '-10.1' => 1,    '-10.N' => 0,    '-10.00' => 1,    '-10.01' => 1,    '-10.10' => 1,    '-10.11' => 1,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '11'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 11 ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,
-            /* [  X Y ] - 0101 */     ' 11 ' => 1,    ' 11 0' => 1,    ' 11 1' => 1,    ' 11 N' => 0,    ' 11 00' => 1,    ' 11 01' => 1,    ' 11 10' => 1,    ' 11 11' => 1,
-            /* [  X.  ] - 0110 */     ' 11.' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 11.' => 0,    ' 11.0' => 1,    ' 11.1' => 1,    ' 11.N' => 0,    ' 11.00' => 1,    ' 11.01' => 1,    ' 11.10' => 1,    ' 11.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-11 ' => 1,    '-11  ' => 1,    '-11  ' => 1,    '-11  ' => 1,    '-11   ' => 1,    '-11   ' => 1,    '-11   ' => 1,    '-11   ' => 1,
-            /* [ -X Y ] - 1101 */     '-11 ' => 1,    '-11 0' => 1,    '-11 1' => 1,    '-11 N' => 0,    '-11 00' => 1,    '-11 01' => 1,    '-11 10' => 1,    '-11 11' => 1,
-            /* [ -X.  ] - 1110 */     '-11.' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-11.' => 0,    '-11.0' => 1,    '-11.1' => 1,    '-11.N' => 0,    '-11.00' => 1,    '-11.01' => 1,    '-11.10' => 1,    '-11.11' => 1,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+            '<',
+            '>',
+            'a',
+            'z',
+            'A',
+            'Z',
+            'а',
+            'я',
+            'А',
+            'Я',
+            '😀'
         ];
 
-        foreach ($data as $c_raw_value => $c_expected) {
-            $c_value = str_replace(' ', '', $c_raw_value);
-            $c_expected = (bool)$c_expected;
-            $c_gotten = Core::validate_number($c_value) === $c_value;
+        $expected = [
+            '&lt;',
+            '&gt;',
+            '&#97;',
+            '&#122;',
+            '&#65;',
+            '&#90;',
+            '&#1072;',
+            '&#1103;',
+            '&#1040;',
+            '&#1071;',
+            '&#128512;'
+        ];
+
+        foreach ($data as $c_key => $c_symbol) {
+            $c_value = $c_symbol;
+            $c_expected = $expected[$c_key];
+            $c_gotten = Core::html_entity_encode_total($c_value);
             $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_symbol, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_symbol, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
         }
     }
 
-    static function test_step_code__validate_number(&$test, $dpath, &$c_results) {
-
+    static function test_step_code__html_entity_decode_total(&$test, $dpath, &$c_results) {
         $data = [
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = ''           Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [  X Y ] - 0101 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [  X.  ] - 0110 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [  X.Y ] - 0111 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -X Y ] - 1101 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ -X.  ] - 1110 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '0'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,
-            /* [  X Y ] - 0101 */     ' 0  ' => 1,    '  0 0' => 0,    '  0 1' => 0,    '  0 N' => 0,    '  0 00' => 0,    '  0 01' => 0,    '  0 10' => 0,    '  0 11' => 0,
-            /* [  X.  ] - 0110 */     ' 0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 0. ' => 0,    '  0.0' => 1,    '  0.1' => 1,    '  0.N' => 0,    '  0.00' => 1,    '  0.01' => 1,    '  0.10' => 1,    '  0.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,
-            /* [ -X Y ] - 1101 */     '-0  ' => 0,    '- 0 0' => 0,    '- 0 1' => 0,    '- 0 N' => 0,    '- 0 00' => 0,    '- 0 01' => 0,    '- 0 10' => 0,    '- 0 11' => 0,
-            /* [ -X.  ] - 1110 */     '-0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-0. ' => 0,    '- 0.0' => 0,    '- 0.1' => 0,    '- 0.N' => 0,    '- 0.00' => 0,    '- 0.01' => 0,    '- 0.10' => 0,    '- 0.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '1'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,
-            /* [  X Y ] - 0101 */     ' 1  ' => 1,    '  1 0' => 1,    '  1 1' => 1,    '  1 N' => 0,    '  1 00' => 1,    '  1 01' => 1,    '  1 10' => 1,    '  1 11' => 1,
-            /* [  X.  ] - 0110 */     ' 1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 1. ' => 0,    '  1.0' => 1,    '  1.1' => 1,    '  1.N' => 0,    '  1.00' => 1,    '  1.01' => 1,    '  1.10' => 1,    '  1.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-1  ' => 0,    '- 1  ' => 0,    '- 1  ' => 0,    '- 1  ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,
-            /* [ -X Y ] - 1101 */     '-1  ' => 0,    '- 1 0' => 0,    '- 1 1' => 0,    '- 1 N' => 0,    '- 1 00' => 0,    '- 1 01' => 0,    '- 1 10' => 0,    '- 1 11' => 0,
-            /* [ -X.  ] - 1110 */     '-1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-1. ' => 0,    '- 1.0' => 0,    '- 1.1' => 0,    '- 1.N' => 0,    '- 1.00' => 0,    '- 1.01' => 0,    '- 1.10' => 0,    '- 1.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = 'K'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '  K ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,
-            /* [  X Y ] - 0101 */     '  K ' => 0,    '  K 0' => 0,    '  K 1' => 0,    '  K N' => 0,    '  K 00' => 0,    '  K 01' => 0,    '  K 10' => 0,    '  K 11' => 0,
-            /* [  X.  ] - 0110 */     '  K.' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,
-            /* [  X.Y ] - 0111 */     '  K.' => 0,    '  K.0' => 0,    '  K.1' => 0,    '  K.N' => 0,    '  K.00' => 0,    '  K.01' => 0,    '  K.10' => 0,    '  K.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '- K ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,
-            /* [ -X Y ] - 1101 */     '- K ' => 0,    '- K 0' => 0,    '- K 1' => 0,    '- K N' => 0,    '- K 00' => 0,    '- K 01' => 0,    '- K 10' => 0,    '- K 11' => 0,
-            /* [ -X.  ] - 1110 */     '- K.' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- K.' => 0,    '- K.0' => 0,    '- K.1' => 0,    '- K.N' => 0,    '- K.00' => 0,    '- K.01' => 0,    '- K.10' => 0,    '- K.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '00'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 00 ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,
-            /* [  X Y ] - 0101 */     ' 00 ' => 0,    ' 00 0' => 0,    ' 00 1' => 0,    ' 00 N' => 0,    ' 00 00' => 0,    ' 00 01' => 0,    ' 00 10' => 0,    ' 00 11' => 0,
-            /* [  X.  ] - 0110 */     ' 00.' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 00.' => 0,    ' 00.0' => 0,    ' 00.1' => 0,    ' 00.N' => 0,    ' 00.00' => 0,    ' 00.01' => 0,    ' 00.10' => 0,    ' 00.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-00 ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,
-            /* [ -X Y ] - 1101 */     '-00 ' => 0,    '-00 0' => 0,    '-00 1' => 0,    '-00 N' => 0,    '-00 00' => 0,    '-00 01' => 0,    '-00 10' => 0,    '-00 11' => 0,
-            /* [ -X.  ] - 1110 */     '-00.' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-00.' => 0,    '-00.0' => 0,    '-00.1' => 0,    '-00.N' => 0,    '-00.00' => 0,    '-00.01' => 0,    '-00.10' => 0,    '-00.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '01'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 01 ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,
-            /* [  X Y ] - 0101 */     ' 01 ' => 0,    ' 01 0' => 0,    ' 01 1' => 0,    ' 01 N' => 0,    ' 01 00' => 0,    ' 01 01' => 0,    ' 01 10' => 0,    ' 01 11' => 0,
-            /* [  X.  ] - 0110 */     ' 01.' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 01.' => 0,    ' 01.0' => 0,    ' 01.1' => 0,    ' 01.N' => 0,    ' 01.00' => 0,    ' 01.01' => 0,    ' 01.10' => 0,    ' 01.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-01 ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,
-            /* [ -X Y ] - 1101 */     '-01 ' => 0,    '-01 0' => 0,    '-01 1' => 0,    '-01 N' => 0,    '-01 00' => 0,    '-01 01' => 0,    '-01 10' => 0,    '-01 11' => 0,
-            /* [ -X.  ] - 1110 */     '-01.' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-01.' => 0,    '-01.0' => 0,    '-01.1' => 0,    '-01.N' => 0,    '-01.00' => 0,    '-01.01' => 0,    '-01.10' => 0,    '-01.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '10'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 10 ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,
-            /* [  X Y ] - 0101 */     ' 10 ' => 1,    ' 10 0' => 1,    ' 10 1' => 1,    ' 10 N' => 0,    ' 10 00' => 1,    ' 10 01' => 1,    ' 10 10' => 1,    ' 10 11' => 1,
-            /* [  X.  ] - 0110 */     ' 10.' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 10.' => 0,    ' 10.0' => 1,    ' 10.1' => 1,    ' 10.N' => 0,    ' 10.00' => 1,    ' 10.01' => 1,    ' 10.10' => 1,    ' 10.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-10 ' => 0,    '-10  ' => 0,    '-10  ' => 0,    '-10  ' => 0,    '-10   ' => 0,    '-10   ' => 0,    '-10   ' => 0,    '-10   ' => 0,
-            /* [ -X Y ] - 1101 */     '-10 ' => 0,    '-10 0' => 0,    '-10 1' => 0,    '-10 N' => 0,    '-10 00' => 0,    '-10 01' => 0,    '-10 10' => 0,    '-10 11' => 0,
-            /* [ -X.  ] - 1110 */     '-10.' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-10.' => 0,    '-10.0' => 0,    '-10.1' => 0,    '-10.N' => 0,    '-10.00' => 0,    '-10.01' => 0,    '-10.10' => 0,    '-10.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '11'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 11 ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,
-            /* [  X Y ] - 0101 */     ' 11 ' => 1,    ' 11 0' => 1,    ' 11 1' => 1,    ' 11 N' => 0,    ' 11 00' => 1,    ' 11 01' => 1,    ' 11 10' => 1,    ' 11 11' => 1,
-            /* [  X.  ] - 0110 */     ' 11.' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 11.' => 0,    ' 11.0' => 1,    ' 11.1' => 1,    ' 11.N' => 0,    ' 11.00' => 1,    ' 11.01' => 1,    ' 11.10' => 1,    ' 11.11' => 1,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-11 ' => 0,    '-11  ' => 0,    '-11  ' => 0,    '-11  ' => 0,    '-11   ' => 0,    '-11   ' => 0,    '-11   ' => 0,    '-11   ' => 0,
-            /* [ -X Y ] - 1101 */     '-11 ' => 0,    '-11 0' => 0,    '-11 1' => 0,    '-11 N' => 0,    '-11 00' => 0,    '-11 01' => 0,    '-11 10' => 0,    '-11 11' => 0,
-            /* [ -X.  ] - 1110 */     '-11.' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-11.' => 0,    '-11.0' => 0,    '-11.1' => 0,    '-11.N' => 0,    '-11.00' => 0,    '-11.01' => 0,    '-11.10' => 0,    '-11.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+            '&amp;',
+            '&quot;',
+            '&apos;',
+            '&lt;',
+            '&gt;',
+            '&plus;',
+            '&comma;',
+            '&excl;',
+            '&dollar;',
+            '&lpar;',
+            '&ncedil;',
+            '&euro;',
+            '&#97;',
+            '&#122;',
+            '&#65;',
+            '&#90;',
+            '&#1072;',
+            '&#1103;',
+            '&#1040;',
+            '&#1071;',
+            '&#128512;',
+            '&#128512',
+            '&#x1F600;',
+            '&#x1F600',
+            '&#x1f600;',
+            '&#x1f600',
+            '&#xfffff',
+            '&#x00000000000000000000000000000000000fffff',
+            '&#999999',
+            '&#00000000000000000000000000000000000999999'
         ];
 
-        foreach ($data as $c_raw_value => $c_expected) {
-            $c_value = str_replace(' ', '', $c_raw_value);
-            $c_expected = (bool)$c_expected;
-            $c_gotten = Core::validate_number($c_value, false) === $c_value;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-    }
-
-    static function test_step_code__validate_int_with_minus(&$test, $dpath, &$c_results) {
-
-        $data = [
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = ''           Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [  X Y ] - 0101 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [  X.  ] - 0110 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [  X.Y ] - 0111 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -X Y ] - 1101 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ -X.  ] - 1110 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '0'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,
-            /* [  X Y ] - 0101 */     ' 0  ' => 1,    '  0 0' => 0,    '  0 1' => 0,    '  0 N' => 0,    '  0 00' => 0,    '  0 01' => 0,    '  0 10' => 0,    '  0 11' => 0,
-            /* [  X.  ] - 0110 */     ' 0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 0. ' => 0,    '  0.0' => 0,    '  0.1' => 0,    '  0.N' => 0,    '  0.00' => 0,    '  0.01' => 0,    '  0.10' => 0,    '  0.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,
-            /* [ -X Y ] - 1101 */     '-0  ' => 0,    '- 0 0' => 0,    '- 0 1' => 0,    '- 0 N' => 0,    '- 0 00' => 0,    '- 0 01' => 0,    '- 0 10' => 0,    '- 0 11' => 0,
-            /* [ -X.  ] - 1110 */     '-0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-0. ' => 0,    '- 0.0' => 0,    '- 0.1' => 0,    '- 0.N' => 0,    '- 0.00' => 0,    '- 0.01' => 0,    '- 0.10' => 0,    '- 0.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '1'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,
-            /* [  X Y ] - 0101 */     ' 1  ' => 1,    '  1 0' => 1,    '  1 1' => 1,    '  1 N' => 0,    '  1 00' => 1,    '  1 01' => 1,    '  1 10' => 1,    '  1 11' => 1,
-            /* [  X.  ] - 0110 */     ' 1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 1. ' => 0,    '  1.0' => 0,    '  1.1' => 0,    '  1.N' => 0,    '  1.00' => 0,    '  1.01' => 0,    '  1.10' => 0,    '  1.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-1  ' => 1,    '- 1  ' => 1,    '- 1  ' => 1,    '- 1  ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,    '- 1   ' => 1,
-            /* [ -X Y ] - 1101 */     '-1  ' => 1,    '- 1 0' => 1,    '- 1 1' => 1,    '- 1 N' => 0,    '- 1 00' => 1,    '- 1 01' => 1,    '- 1 10' => 1,    '- 1 11' => 1,
-            /* [ -X.  ] - 1110 */     '-1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-1. ' => 0,    '- 1.0' => 0,    '- 1.1' => 0,    '- 1.N' => 0,    '- 1.00' => 0,    '- 1.01' => 0,    '- 1.10' => 0,    '- 1.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = 'K'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '  K ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,
-            /* [  X Y ] - 0101 */     '  K ' => 0,    '  K 0' => 0,    '  K 1' => 0,    '  K N' => 0,    '  K 00' => 0,    '  K 01' => 0,    '  K 10' => 0,    '  K 11' => 0,
-            /* [  X.  ] - 0110 */     '  K.' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,
-            /* [  X.Y ] - 0111 */     '  K.' => 0,    '  K.0' => 0,    '  K.1' => 0,    '  K.N' => 0,    '  K.00' => 0,    '  K.01' => 0,    '  K.10' => 0,    '  K.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '- K ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,
-            /* [ -X Y ] - 1101 */     '- K ' => 0,    '- K 0' => 0,    '- K 1' => 0,    '- K N' => 0,    '- K 00' => 0,    '- K 01' => 0,    '- K 10' => 0,    '- K 11' => 0,
-            /* [ -X.  ] - 1110 */     '- K.' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- K.' => 0,    '- K.0' => 0,    '- K.1' => 0,    '- K.N' => 0,    '- K.00' => 0,    '- K.01' => 0,    '- K.10' => 0,    '- K.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '00'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 00 ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,
-            /* [  X Y ] - 0101 */     ' 00 ' => 0,    ' 00 0' => 0,    ' 00 1' => 0,    ' 00 N' => 0,    ' 00 00' => 0,    ' 00 01' => 0,    ' 00 10' => 0,    ' 00 11' => 0,
-            /* [  X.  ] - 0110 */     ' 00.' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 00.' => 0,    ' 00.0' => 0,    ' 00.1' => 0,    ' 00.N' => 0,    ' 00.00' => 0,    ' 00.01' => 0,    ' 00.10' => 0,    ' 00.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-00 ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,
-            /* [ -X Y ] - 1101 */     '-00 ' => 0,    '-00 0' => 0,    '-00 1' => 0,    '-00 N' => 0,    '-00 00' => 0,    '-00 01' => 0,    '-00 10' => 0,    '-00 11' => 0,
-            /* [ -X.  ] - 1110 */     '-00.' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-00.' => 0,    '-00.0' => 0,    '-00.1' => 0,    '-00.N' => 0,    '-00.00' => 0,    '-00.01' => 0,    '-00.10' => 0,    '-00.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '01'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 01 ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,
-            /* [  X Y ] - 0101 */     ' 01 ' => 0,    ' 01 0' => 0,    ' 01 1' => 0,    ' 01 N' => 0,    ' 01 00' => 0,    ' 01 01' => 0,    ' 01 10' => 0,    ' 01 11' => 0,
-            /* [  X.  ] - 0110 */     ' 01.' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 01.' => 0,    ' 01.0' => 0,    ' 01.1' => 0,    ' 01.N' => 0,    ' 01.00' => 0,    ' 01.01' => 0,    ' 01.10' => 0,    ' 01.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-01 ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,
-            /* [ -X Y ] - 1101 */     '-01 ' => 0,    '-01 0' => 0,    '-01 1' => 0,    '-01 N' => 0,    '-01 00' => 0,    '-01 01' => 0,    '-01 10' => 0,    '-01 11' => 0,
-            /* [ -X.  ] - 1110 */     '-01.' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-01.' => 0,    '-01.0' => 0,    '-01.1' => 0,    '-01.N' => 0,    '-01.00' => 0,    '-01.01' => 0,    '-01.10' => 0,    '-01.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '10'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 10 ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,
-            /* [  X Y ] - 0101 */     ' 10 ' => 1,    ' 10 0' => 1,    ' 10 1' => 1,    ' 10 N' => 0,    ' 10 00' => 1,    ' 10 01' => 1,    ' 10 10' => 1,    ' 10 11' => 1,
-            /* [  X.  ] - 0110 */     ' 10.' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 10.' => 0,    ' 10.0' => 0,    ' 10.1' => 0,    ' 10.N' => 0,    ' 10.00' => 0,    ' 10.01' => 0,    ' 10.10' => 0,    ' 10.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-10 ' => 1,    '-10  ' => 1,    '-10  ' => 1,    '-10  ' => 1,    '-10   ' => 1,    '-10   ' => 1,    '-10   ' => 1,    '-10   ' => 1,
-            /* [ -X Y ] - 1101 */     '-10 ' => 1,    '-10 0' => 1,    '-10 1' => 1,    '-10 N' => 0,    '-10 00' => 1,    '-10 01' => 1,    '-10 10' => 1,    '-10 11' => 1,
-            /* [ -X.  ] - 1110 */     '-10.' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-10.' => 0,    '-10.0' => 0,    '-10.1' => 0,    '-10.N' => 0,    '-10.00' => 0,    '-10.01' => 0,    '-10.10' => 0,    '-10.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '11'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 11 ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,
-            /* [  X Y ] - 0101 */     ' 11 ' => 1,    ' 11 0' => 1,    ' 11 1' => 1,    ' 11 N' => 0,    ' 11 00' => 1,    ' 11 01' => 1,    ' 11 10' => 1,    ' 11 11' => 1,
-            /* [  X.  ] - 0110 */     ' 11.' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 11.' => 0,    ' 11.0' => 0,    ' 11.1' => 0,    ' 11.N' => 0,    ' 11.00' => 0,    ' 11.01' => 0,    ' 11.10' => 0,    ' 11.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 1,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 1,    '-   11' => 1,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-11 ' => 1,    '-11  ' => 1,    '-11  ' => 1,    '-11  ' => 1,    '-11   ' => 1,    '-11   ' => 1,    '-11   ' => 1,    '-11   ' => 1,
-            /* [ -X Y ] - 1101 */     '-11 ' => 1,    '-11 0' => 1,    '-11 1' => 1,    '-11 N' => 0,    '-11 00' => 1,    '-11 01' => 1,    '-11 10' => 1,    '-11 11' => 1,
-            /* [ -X.  ] - 1110 */     '-11.' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-11.' => 0,    '-11.0' => 0,    '-11.1' => 0,    '-11.N' => 0,    '-11.00' => 0,    '-11.01' => 0,    '-11.10' => 0,    '-11.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+        $expected = [
+            '&',
+            '"',
+            "'",
+            '<',
+            '>',
+            '+',
+            ',',
+            '!',
+            '$',
+            '(',
+            'ņ',
+            '€',
+            'a',
+            'z',
+            'A',
+            'Z',
+            'а',
+            'я',
+            'А',
+            'Я',
+            '😀',
+            '😀',
+            '😀',
+            '😀',
+            '😀',
+            '😀',
+            "\u{fffff}",
+            "\u{fffff}",
+            "\u{f423f}",
+            "\u{f423f}"
         ];
 
-        foreach ($data as $c_raw_value => $c_expected) {
-            $c_value = str_replace(' ', '', $c_raw_value);
-            $c_expected = (bool)$c_expected;
-            $c_gotten = Core::validate_int($c_value) === $c_value;
+        foreach ($data as $c_key => $c_symbol) {
+            $c_value = $c_symbol;
+            $c_expected = $expected[$c_key];
+            $c_gotten = Core::html_entity_decode_total($c_value);
             $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_symbol, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_symbol, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-    }
-
-    static function test_step_code__validate_int(&$test, $dpath, &$c_results) {
-
-        $data = [
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = ''           Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [  X Y ] - 0101 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [  X.  ] - 0110 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [  X.Y ] - 0111 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -X Y ] - 1101 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ -X.  ] - 1110 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '0'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0  ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,    '  0   ' => 1,
-            /* [  X Y ] - 0101 */     ' 0  ' => 1,    '  0 0' => 0,    '  0 1' => 0,    '  0 N' => 0,    '  0 00' => 0,    '  0 01' => 0,    '  0 10' => 0,    '  0 11' => 0,
-            /* [  X.  ] - 0110 */     ' 0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0. ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,    '  0.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 0. ' => 0,    '  0.0' => 0,    '  0.1' => 0,    '  0.N' => 0,    '  0.00' => 0,    '  0.01' => 0,    '  0.10' => 0,    '  0.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0  ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,    '- 0   ' => 0,
-            /* [ -X Y ] - 1101 */     '-0  ' => 0,    '- 0 0' => 0,    '- 0 1' => 0,    '- 0 N' => 0,    '- 0 00' => 0,    '- 0 01' => 0,    '- 0 10' => 0,    '- 0 11' => 0,
-            /* [ -X.  ] - 1110 */     '-0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0. ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,    '- 0.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-0. ' => 0,    '- 0.0' => 0,    '- 0.1' => 0,    '- 0.N' => 0,    '- 0.00' => 0,    '- 0.01' => 0,    '- 0.10' => 0,    '- 0.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '1'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1  ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,    '  1   ' => 1,
-            /* [  X Y ] - 0101 */     ' 1  ' => 1,    '  1 0' => 1,    '  1 1' => 1,    '  1 N' => 0,    '  1 00' => 1,    '  1 01' => 1,    '  1 10' => 1,    '  1 11' => 1,
-            /* [  X.  ] - 0110 */     ' 1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1. ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,    '  1.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 1. ' => 0,    '  1.0' => 0,    '  1.1' => 0,    '  1.N' => 0,    '  1.00' => 0,    '  1.01' => 0,    '  1.10' => 0,    '  1.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-1  ' => 0,    '- 1  ' => 0,    '- 1  ' => 0,    '- 1  ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,    '- 1   ' => 0,
-            /* [ -X Y ] - 1101 */     '-1  ' => 0,    '- 1 0' => 0,    '- 1 1' => 0,    '- 1 N' => 0,    '- 1 00' => 0,    '- 1 01' => 0,    '- 1 10' => 0,    '- 1 11' => 0,
-            /* [ -X.  ] - 1110 */     '-1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1. ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,    '- 1.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-1. ' => 0,    '- 1.0' => 0,    '- 1.1' => 0,    '- 1.N' => 0,    '- 1.00' => 0,    '- 1.01' => 0,    '- 1.10' => 0,    '- 1.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = 'K'          Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     '  K ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K  ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,    '  K   ' => 0,
-            /* [  X Y ] - 0101 */     '  K ' => 0,    '  K 0' => 0,    '  K 1' => 0,    '  K N' => 0,    '  K 00' => 0,    '  K 01' => 0,    '  K 10' => 0,    '  K 11' => 0,
-            /* [  X.  ] - 0110 */     '  K.' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K. ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,    '  K.  ' => 0,
-            /* [  X.Y ] - 0111 */     '  K.' => 0,    '  K.0' => 0,    '  K.1' => 0,    '  K.N' => 0,    '  K.00' => 0,    '  K.01' => 0,    '  K.10' => 0,    '  K.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '- K ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K  ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,    '- K   ' => 0,
-            /* [ -X Y ] - 1101 */     '- K ' => 0,    '- K 0' => 0,    '- K 1' => 0,    '- K N' => 0,    '- K 00' => 0,    '- K 01' => 0,    '- K 10' => 0,    '- K 11' => 0,
-            /* [ -X.  ] - 1110 */     '- K.' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K. ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,    '- K.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '- K.' => 0,    '- K.0' => 0,    '- K.1' => 0,    '- K.N' => 0,    '- K.00' => 0,    '- K.01' => 0,    '- K.10' => 0,    '- K.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '00'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 00 ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00  ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,    ' 00   ' => 0,
-            /* [  X Y ] - 0101 */     ' 00 ' => 0,    ' 00 0' => 0,    ' 00 1' => 0,    ' 00 N' => 0,    ' 00 00' => 0,    ' 00 01' => 0,    ' 00 10' => 0,    ' 00 11' => 0,
-            /* [  X.  ] - 0110 */     ' 00.' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00. ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,    ' 00.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 00.' => 0,    ' 00.0' => 0,    ' 00.1' => 0,    ' 00.N' => 0,    ' 00.00' => 0,    ' 00.01' => 0,    ' 00.10' => 0,    ' 00.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-00 ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00  ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,    '-00   ' => 0,
-            /* [ -X Y ] - 1101 */     '-00 ' => 0,    '-00 0' => 0,    '-00 1' => 0,    '-00 N' => 0,    '-00 00' => 0,    '-00 01' => 0,    '-00 10' => 0,    '-00 11' => 0,
-            /* [ -X.  ] - 1110 */     '-00.' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00. ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,    '-00.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-00.' => 0,    '-00.0' => 0,    '-00.1' => 0,    '-00.N' => 0,    '-00.00' => 0,    '-00.01' => 0,    '-00.10' => 0,    '-00.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '01'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 01 ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01  ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,    ' 01   ' => 0,
-            /* [  X Y ] - 0101 */     ' 01 ' => 0,    ' 01 0' => 0,    ' 01 1' => 0,    ' 01 N' => 0,    ' 01 00' => 0,    ' 01 01' => 0,    ' 01 10' => 0,    ' 01 11' => 0,
-            /* [  X.  ] - 0110 */     ' 01.' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01. ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,    ' 01.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 01.' => 0,    ' 01.0' => 0,    ' 01.1' => 0,    ' 01.N' => 0,    ' 01.00' => 0,    ' 01.01' => 0,    ' 01.10' => 0,    ' 01.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-01 ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01  ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,    '-01   ' => 0,
-            /* [ -X Y ] - 1101 */     '-01 ' => 0,    '-01 0' => 0,    '-01 1' => 0,    '-01 N' => 0,    '-01 00' => 0,    '-01 01' => 0,    '-01 10' => 0,    '-01 11' => 0,
-            /* [ -X.  ] - 1110 */     '-01.' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01. ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,    '-01.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-01.' => 0,    '-01.0' => 0,    '-01.1' => 0,    '-01.N' => 0,    '-01.00' => 0,    '-01.01' => 0,    '-01.10' => 0,    '-01.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '10'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 10 ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10  ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,    ' 10   ' => 1,
-            /* [  X Y ] - 0101 */     ' 10 ' => 1,    ' 10 0' => 1,    ' 10 1' => 1,    ' 10 N' => 0,    ' 10 00' => 1,    ' 10 01' => 1,    ' 10 10' => 1,    ' 10 11' => 1,
-            /* [  X.  ] - 0110 */     ' 10.' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10. ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,    ' 10.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 10.' => 0,    ' 10.0' => 0,    ' 10.1' => 0,    ' 10.N' => 0,    ' 10.00' => 0,    ' 10.01' => 0,    ' 10.10' => 0,    ' 10.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-10 ' => 0,    '-10  ' => 0,    '-10  ' => 0,    '-10  ' => 0,    '-10   ' => 0,    '-10   ' => 0,    '-10   ' => 0,    '-10   ' => 0,
-            /* [ -X Y ] - 1101 */     '-10 ' => 0,    '-10 0' => 0,    '-10 1' => 0,    '-10 N' => 0,    '-10 00' => 0,    '-10 01' => 0,    '-10 10' => 0,    '-10 11' => 0,
-            /* [ -X.  ] - 1110 */     '-10.' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10. ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,    '-10.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-10.' => 0,    '-10.0' => 0,    '-10.1' => 0,    '-10.N' => 0,    '-10.00' => 0,    '-10.01' => 0,    '-10.10' => 0,    '-10.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /*          X = '11'         Y = ''           Y = '0'         Y = '1'           Y = 'N'          Y = '00'          Y = '01'          Y = '10'          Y = '11'    */
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-            /* [      ] - 0000 */     '    ' => 0,    '     ' => 0,    '     ' => 0,    '     ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,    '      ' => 0,
-            /* [    Y ] - 0001 */     '    ' => 0,    '    0' => 1,    '    1' => 1,    '    N' => 0,    '    00' => 0,    '    01' => 0,    '    10' => 1,    '    11' => 1,
-            /* [   .  ] - 0010 */     '  . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   . ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,    '   .  ' => 0,
-            /* [   .Y ] - 0011 */     '  . ' => 0,    '   .0' => 0,    '   .1' => 0,    '   .N' => 0,    '   .00' => 0,    '   .01' => 0,    '   .10' => 0,    '   .11' => 0,
-            /* [  X   ] - 0100 */     ' 11 ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11  ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,    ' 11   ' => 1,
-            /* [  X Y ] - 0101 */     ' 11 ' => 1,    ' 11 0' => 1,    ' 11 1' => 1,    ' 11 N' => 0,    ' 11 00' => 1,    ' 11 01' => 1,    ' 11 10' => 1,    ' 11 11' => 1,
-            /* [  X.  ] - 0110 */     ' 11.' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11. ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,    ' 11.  ' => 0,
-            /* [  X.Y ] - 0111 */     ' 11.' => 0,    ' 11.0' => 0,    ' 11.1' => 0,    ' 11.N' => 0,    ' 11.00' => 0,    ' 11.01' => 0,    ' 11.10' => 0,    ' 11.11' => 0,
-            /* [ -    ] - 1000 */     '-   ' => 0,    '-    ' => 0,    '-    ' => 0,    '-    ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,    '-     ' => 0,
-            /* [ -  Y ] - 1001 */     '-   ' => 0,    '-   0' => 0,    '-   1' => 0,    '-   N' => 0,    '-   00' => 0,    '-   01' => 0,    '-   10' => 0,    '-   11' => 0,
-            /* [ - .  ] - 1010 */     '- . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  . ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,    '-  .  ' => 0,
-            /* [ - .Y ] - 1011 */     '- . ' => 0,    '-  .0' => 0,    '-  .1' => 0,    '-  .N' => 0,    '-  .00' => 0,    '-  .01' => 0,    '-  .10' => 0,    '-  .11' => 0,
-            /* [ -X   ] - 1100 */     '-11 ' => 0,    '-11  ' => 0,    '-11  ' => 0,    '-11  ' => 0,    '-11   ' => 0,    '-11   ' => 0,    '-11   ' => 0,    '-11   ' => 0,
-            /* [ -X Y ] - 1101 */     '-11 ' => 0,    '-11 0' => 0,    '-11 1' => 0,    '-11 N' => 0,    '-11 00' => 0,    '-11 01' => 0,    '-11 10' => 0,    '-11 11' => 0,
-            /* [ -X.  ] - 1110 */     '-11.' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11. ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,    '-11.  ' => 0,
-            /* [ -X.Y ] - 1111 */     '-11.' => 0,    '-11.0' => 0,    '-11.1' => 0,    '-11.N' => 0,    '-11.00' => 0,    '-11.01' => 0,    '-11.10' => 0,    '-11.11' => 0,
-            /* ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-        ];
-
-        foreach ($data as $c_raw_value => $c_expected) {
-            $c_value = str_replace(' ', '', $c_raw_value);
-            $c_expected = (bool)$c_expected;
-            $c_gotten = Core::validate_int($c_value, false) === $c_value;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value.' = '.($c_expected ? 'ok' : 'invalid'), 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }

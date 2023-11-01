@@ -1,0 +1,49 @@
+changes
+  # ─────────────────────────────────────────────────────────────────────
+  # supported types: string|integer|double|boolean|null|array|object
+  # ─────────────────────────────────────────────────────────────────────
+  insert
+  - test_data/test/string_insert: text (insert)
+  - test_data/test/integer_insert: 0
+  - test_data/test/float_insert: 0.0
+  - test_data/test/boolean_true_insert: false
+  - test_data/test/boolean_false_insert: true
+  - test_data/test/null_insert: 0
+  - test_data/test/array
+    - key_4: item value 4 (insert)
+    - key_5: item value 5 (insert)
+    - key_6: item value 6 (insert)
+  - test_data/test/array_insert
+    - key_7: item value 7
+  - test_data/test/object
+      property_4: property value 4 (insert)
+      property_5: property value 5 (insert)
+      property_6: property value 6 (insert)
+  - test_data/test/object_insert
+      property_7: property value 7
+  # ─────────────────────────────────────────────────────────────────────
+  # supported types: string|integer|double|boolean|null|array|object
+  # ─────────────────────────────────────────────────────────────────────
+  update
+  - test_data/test/string_insert: text (insert / update)
+  - test_data/test/integer_insert: 456
+  - test_data/test/float_insert: 456.789
+  - test_data/test/boolean_true_insert: true
+  - test_data/test/boolean_false_insert: false
+  - test_data/test/null_insert: null
+  - test_data/test/array/key_5: item value 5 (insert / update)
+  - test_data/test/array_insert
+    - key_7: item value 7
+    - key_8: item value 8
+    - key_9: item value 9
+  - test_data/test/object/property_5: property value 5 (insert / update)
+  - test_data/test/object_insert
+      property_7: property value 7
+      property_8: property value 8
+      property_9: property value 9
+  # ─────────────────────────────────────────────────────────────────────
+  # supported types: null
+  # ─────────────────────────────────────────────────────────────────────
+  delete
+  - test_data/test/array/key_4: null
+  - test_data/test/object/property_4: null

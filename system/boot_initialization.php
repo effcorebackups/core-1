@@ -33,12 +33,27 @@ define('effcore\\DIR_DYNAMIC', $web_root.'/dynamic/');
 define('effcore\\DIR_SYSTEM',  $web_root.'/system/');
 define('effcore\\DIR_MODULES', $web_root.'/modules/');
 
+# case, on any platform, when strange errors occur due to JIT
 ini_set('pcre.jit', false);
+
+# case, on Windows platform, when PHP is an Apache module and OPCache JIT is enabled and the following error appears: "virtualprotect() failed 87 the parameter is incorrect"
+if (DIRECTORY_SEPARATOR === '\\') {
+    ini_set('opcache.enable', false);
+}
+
 date_default_timezone_set('UTC');
 
 require_once(DIR_SYSTEM.'module_core/backend/Core.php');
 require_once(DIR_SYSTEM.'module_storage/backend/interfaces/markers.php');
-spl_autoload_register('\\effcore\\Core::structure_autoload');
+require_once(DIR_SYSTEM.'module_core/backend/Extend_exception.php');
+require_once(DIR_SYSTEM.'module_core/backend/Console.php');
+
+spl_autoload_register(
+    '\\effcore\\Core::structure_autoload'
+);
+
+Console::init();
+
 if (in_array('container', stream_get_wrappers(), true) !== true) {
     stream_wrapper_register('container', '\\effcore\\File_container');
 }

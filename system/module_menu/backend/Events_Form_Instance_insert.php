@@ -54,9 +54,8 @@ abstract class Events_Form_Instance_insert {
                     if ($items['#id']->value_get()) {
                         if (Tree::select($items['#id']->value_get())) {
                             $items['#id']->error_set(new Text_multiline([
-                                'Field "%%_title" contains an error!',
-                                'Previously used value was specified.',
-                                'Only unique value is allowed.'], ['title' => (new Text($items['#id']->title))->render() ]
+                                'Value of "%%_title" field is already in use!',
+                                'Value should be unique.'], ['title' => (new Text($items['#id']->title))->render() ]
                             ));
                         }
                     }
@@ -66,9 +65,8 @@ abstract class Events_Form_Instance_insert {
                     if ($items['#id']->value_get()) {
                         if (Tree_item::select($items['#id']->value_get(), null)) {
                             $items['#id']->error_set(new Text_multiline([
-                                'Field "%%_title" contains an error!',
-                                'Previously used value was specified.',
-                                'Only unique value is allowed.'], ['title' => (new Text($items['#id']->title))->render() ]
+                                'Value of "%%_title" field is already in use!',
+                                'Value should be unique.'], ['title' => (new Text($items['#id']->title))->render() ]
                             ));
                         }
                     }

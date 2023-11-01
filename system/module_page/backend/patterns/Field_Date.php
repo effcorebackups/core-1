@@ -34,8 +34,8 @@ class Field_Date extends Field_Text {
 
     function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
         $value = parent::value_get();
-        if         (Core::validate_date($value))
-             return Core::sanitize_date($value);
+        if         (Security::validate_date($value))
+             return Security::sanitize_date($value);
         else return $value;
     }
 
@@ -43,8 +43,8 @@ class Field_Date extends Field_Text {
         $this->value_set_initial($value);
         if (is_null($value) || is_string($value)) {
             if ($this->value_current_if_null === true && $value === null) $value = Core::date_get();
-            if (Core::validate_date($value)) parent::value_set(Core::sanitize_date($value));
-            else                             parent::value_set(                    $value );
+            if (Security::validate_date($value)) parent::value_set(Security::sanitize_date($value));
+            else                                 parent::value_set(                        $value );
         }
     }
 
@@ -75,12 +75,12 @@ class Field_Date extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_date($new_value)) {
+        if (strlen($new_value) && !Security::validate_date($new_value)) {
             $field->error_set(
-                'Field "%%_title" contains an incorrect date!', ['title' => (new Text($field->title))->render() ]
+                'Value of "%%_title" field is not a valid date!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
-            $new_value = Core::sanitize_date($new_value);
+            $new_value = Security::sanitize_date($new_value);
             return true;
         }
     }

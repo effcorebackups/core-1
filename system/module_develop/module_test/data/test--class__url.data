@@ -23,21 +23,29 @@ tests
     - code-has_error|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__has_error
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-full_get|Test_step_Title
+    - title-absolute_get|Test_step_Title
         title|Text
           text: METHOD "%%_name"
           args
-          - name: $url->full_get()
-    - code-full_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__full_get
+          - name: $url->absolute_get()
+    - code-absolute_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__absolute_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-tiny_get|Test_step_Title
+    - title-relative_get|Test_step_Title
         title|Text
           text: METHOD "%%_name"
           args
-          - name: $url->tiny_get()
-    - code-tiny_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__tiny_get
+          - name: $url->relative_get()
+    - code-relative_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__relative_get
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-file_type_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: $url->file_type_get()
+    - code-file_type_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__file_type_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-file_info_get|Test_step_Title
         title|Text

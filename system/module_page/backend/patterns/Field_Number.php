@@ -57,10 +57,9 @@ class Field_Number extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && Core::validate_number($new_value) === false) {
-            $field->error_set(new Text_multiline([
-                'Field "%%_title" contains an error!',
-                'Field value is not a valid number.'], ['title' => (new Text($field->title))->render() ]
+        if (strlen($new_value) && Security::validate_number($new_value) === false) {
+            $field->error_set(new Text(
+                'Value of "%%_title" field is not a valid number!', ['title' => (new Text($field->title))->render() ]
             ));
         } else {
             return true;
@@ -69,14 +68,13 @@ class Field_Number extends Field_Text {
 
     static function validate_fractional_part($field, $form, $element, &$new_value) {
         if (strlen($new_value)) {
-            $str_stp = Core::format_number($field->step_get() ?: 1, Core::FPART_MAX_LEN);
-            $fp_stp_length = Core::fractional_part_length_get($str_stp,   false);
-            $fp_val_length = Core::fractional_part_length_get($new_value, false);
-            if ($fp_val_length > Core::FPART_MAX_LEN ||
-                $fp_val_length > $fp_stp_length) {
-                $field->error_set(new Text_multiline([
-                    'Field "%%_title" contains an error!',
-                    'Fractional part is too long.'], ['title' => (new Text($field->title))->render() ]
+            $string_step        = Core::format_number($field->step_get() ?: 1, Core::FPART_MAX_LEN);
+            $step__fpart_length = Core::fractional_part_length_get($string_step, false);
+            $value_fpart_length = Core::fractional_part_length_get($new_value,   false);
+            if ($value_fpart_length > Core::FPART_MAX_LEN ||
+                $value_fpart_length > $step__fpart_length) {
+                $field->error_set(new Text(
+                    'Value of "%%_title" field contains a fractional part that is too long!', ['title' => (new Text($field->title))->render() ]
                 ));
                 return;
             }
@@ -86,13 +84,12 @@ class Field_Number extends Field_Text {
 
     static function validate_range($field, $form, $element, &$new_value) {
         if (strlen($new_value)) {
-            $str_min = Core::format_number($field-> min_get(),      Core::FPART_MAX_LEN);
-            $str_max = Core::format_number($field-> max_get(),      Core::FPART_MAX_LEN);
-            $str_stp = Core::format_number($field->step_get() ?: 1, Core::FPART_MAX_LEN);
-            if (!Core::validate_range($str_min, $str_max, $str_stp, $new_value)) {
-                $field->error_set(new Text_multiline([
-                    'Field "%%_title" contains an error!',
-                    'Field value is not in valid range.'], ['title' => (new Text($field->title))->render() ]
+            $string_step = Core::format_number($field->step_get() ?: 1, Core::FPART_MAX_LEN);
+            $string__min = Core::format_number($field-> min_get(),      Core::FPART_MAX_LEN);
+            $string__max = Core::format_number($field-> max_get(),      Core::FPART_MAX_LEN);
+            if (!Security::validate_range($string__min, $string__max, $string_step, $new_value)) {
+                $field->error_set(new Text(
+                    'Value of "%%_title" field is not within the valid range!', ['title' => (new Text($field->title))->render() ]
                 ));
                 return;
             }

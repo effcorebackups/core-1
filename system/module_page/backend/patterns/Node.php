@@ -146,7 +146,7 @@ class Node extends Node_simple {
     }
 
     function render_child($child) {
-        return Core::return_rendered($child);
+        return Core::to_rendered($child);
     }
 
 }

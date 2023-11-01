@@ -22,7 +22,7 @@ frontend
         attributes
         - defer: true
     - runner
-        path: frontend/events_test__class_url__runner.js
+        path: frontend/Events_Test__Class_URL__runner.js
         weight: +400
         attributes
         - defer: true
@@ -38,7 +38,7 @@ frontend
         attributes
         - defer: true
     - runner
-        path: frontend/events_test__JS__runner.js
+        path: frontend/Events_Test__JS__runner.js
         weight: +400
         attributes
         - defer: true

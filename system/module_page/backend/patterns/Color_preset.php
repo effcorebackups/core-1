@@ -63,7 +63,7 @@ class Color_preset {
             $storage = Storage::get('data');
             foreach ($preset->colors as $c_color_type => $c_color_id)
                 if (is_null($selected) || (is_array($selected) && isset($selected[$c_color_type])))
-                    $result&= $storage->changes_insert('page', 'update', 'settings/page/'.$c_color_type, $c_color_id, false);
+                    $result&= $storage->changes_register('page', 'update', 'settings/page/'.$c_color_type, $c_color_id, false);
             if ($reset) Storage_Data::cache_update();
             return $result;
         }
@@ -73,7 +73,7 @@ class Color_preset {
         $result = true;
         $storage = Storage::get('data');
         foreach ($selected as $c_color_type => $c_color_id)
-            $result&= $storage->changes_insert('page', 'update', 'settings/page/'.$c_color_type, $c_color_id, false);
+            $result&= $storage->changes_register('page', 'update', 'settings/page/'.$c_color_type, $c_color_id, false);
         if ($reset) Storage_Data::cache_update();
         return $result;
     }
@@ -84,7 +84,7 @@ class Color_preset {
         $settings = Module::settings_get('page');
         foreach ($settings as $c_color_type => $c_color_id)
             if (strpos($c_color_type, 'color__') === 0)
-                $result&= $storage->changes_delete('page', 'update', 'settings/page/'.$c_color_type, false);
+                $result&= $storage->changes_unregister('page', 'update', 'settings/page/'.$c_color_type, false);
         if ($reset) Storage_Data::cache_update();
         return $result;
     }

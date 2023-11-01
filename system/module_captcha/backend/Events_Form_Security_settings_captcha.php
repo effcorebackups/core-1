@@ -64,8 +64,8 @@ abstract class Events_Form_Security_settings_captcha {
                 foreach (Glyph::get_all() as $c_row_id => $c_item)
                     if ($items['#is_enabled_glyph:'.$c_row_id]->checked_get())
                         $row_ids[$c_row_id] = $c_row_id;
-                $result = Storage::get('data')->changes_insert('captcha', 'update', 'settings/captcha/captcha_length', (int)$items['#length']->value_get(), false);
-                $result&= Storage::get('data')->changes_insert('captcha', 'update', 'settings/captcha/captcha_glyphs', $row_ids);
+                $result = Storage::get('data')->changes_register('captcha', 'update', 'settings/captcha/captcha_length', (int)$items['#length']->value_get(), false);
+                $result&= Storage::get('data')->changes_register('captcha', 'update', 'settings/captcha/captcha_glyphs', $row_ids);
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
                 if ($result) {
@@ -73,8 +73,8 @@ abstract class Events_Form_Security_settings_captcha {
                 }
                 break;
             case 'reset':
-                $result = Storage::get('data')->changes_delete('captcha', 'update', 'settings/captcha/captcha_length', false);
-                $result&= Storage::get('data')->changes_delete('captcha', 'update', 'settings/captcha/captcha_glyphs');
+                $result = Storage::get('data')->changes_unregister('captcha', 'update', 'settings/captcha/captcha_length', false);
+                $result&= Storage::get('data')->changes_unregister('captcha', 'update', 'settings/captcha/captcha_glyphs');
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');
                 if ($result) {

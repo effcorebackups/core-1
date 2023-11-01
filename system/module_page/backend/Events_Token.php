@@ -25,6 +25,7 @@ abstract class Events_Token {
             case 'thumbnail_path_cover_default' : return $settings->thumbnail_path_cover_default;
             case 'thumbnail_path_poster_default': return $settings->thumbnail_path_poster_default;
             case 'page_width_min'               : return $settings->page_width_min;
+            case 'page_width_mobile'            : return $settings->page_width_mobile;
             case 'page_width_max'               : return $settings->page_width_max;
             case 'page_width_min_context':
             case 'page_width_max_context':

@@ -6,18 +6,80 @@
 
 namespace effcore;
 
+use effcore\Extend_exception;
 use Exception;
 
 class File_container {
+
+    # ─────────────────────────────────────────────────────────────────────
+    # An example of a container after executing the code below:
+    # ═════════════════════════════════════════════════════════════════════
+    #
+    #    $handle = fopen('container://'.$path_root.'simple.box:file_1);
+    #    fwrite($handle, 'X');
+    #    fclose($handle);
+    #
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #
+    #    container-head=a:5:{
+    #        s:7:"version";d:1;
+    #        s:13:"lock_timestmp";i:1000000000;
+    #        s:11:"meta_offset";i:271;
+    #        s:16:"meta_offset_prev";i:0;
+    #        s:8:"checksum";s:32:"00000000000000000000000000000000";
+    #    }
+    #    X
+    #    container-meta=a:1:{
+    #        s:6:"file_1";a:2:{
+    #            s:6:"length";i:1;
+    #            s:6:"offset";i:255;
+    #        }
+    #    }
+    #
+    # ─────────────────────────────────────────────────────────────────────
+
+    # ─────────────────────────────────────────────────────────────────────
+    # An example of a container after executing the code below:
+    # ═════════════════════════════════════════════════════════════════════
+    #
+    #    $handle = fopen('container://'.$path_root.'simple.box:file_1);
+    #    fwrite($handle, 'X');
+    #    fclose($handle);
+    #    $handle = fopen('container://'.$path_root.'simple.box:file_1);
+    #    fwrite($handle, 'Y');
+    #    fclose($handle);
+    #
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #
+    #    container-head=a:5:{
+    #        s:7:"version";d:1;
+    #        s:13:"lock_timestmp";i:1000000000;
+    #        s:11:"meta_offset";i:348;
+    #        s:16:"meta_offset_prev";i:271;
+    #        s:8:"checksum";s:32:"00000000000000000000000000000000";
+    #    }
+    #    X
+    #    container-meta=a:1:{
+    #        s:6:"file_1";a:2:{
+    #            s:6:"length";i:1;
+    #            s:6:"offset";i:255;
+    #        }
+    #    }
+    #    Y
+    #    container-meta=a:1:{
+    #        s:6:"file_1";a:2:{
+    #            s:6:"length";i:1;
+    #            s:6:"offset";i:332;
+    #        }
+    #    }
+    #
+    # ─────────────────────────────────────────────────────────────────────
 
     const WRAPPER = 'container';
     const META_TITLE = self::WRAPPER.'-meta=';
     const HEAD_TITLE = self::WRAPPER.'-head=';
     const HEAD_TITLE_LENGTH = 15;
     const HEAD_LENGTH = 0xff;
-    const MESSAGE_FILE_MODE_IS_NOT_WRITING  = 'File mode does not support writing!';
-    const MESSAGE_FILE_MODE_IS_NOT_READING  = 'File mode does not support reading!';
-    const MESSAGE_FILE_PATH_IS_INVALID      = 'File path is invalid! Correct format: "'.self::WRAPPER.'://path_to_'.self::WRAPPER.':path_to_file';
 
     public $context;
 
@@ -26,8 +88,9 @@ class File_container {
     protected $path_root;
     protected $path_file;
     protected $mode;
-    protected $mode_is_readable = false; # valid reading modes: rb|r+b|a+b|c+b
-    protected $mode_is_writable = false; # valid writing modes: r+b|wb|w+b|xb|x+b|cb|c+b
+    protected $mode_is_readable = false;
+    protected $mode_is_writable = false;
+    protected $mode_is_seekable = false;
     protected $meta_parsed      = [];
     protected $was_changed      = false;
 
@@ -39,8 +102,8 @@ class File_container {
     protected $checksum         = '00000000000000000000000000000000';
 
     # meta properties
-    protected $offset = 0;
     protected $length = 0;
+    protected $offset = 0;
 
     function __head_init() {
         fseek($this->stream, static::HEAD_TITLE_LENGTH);
@@ -75,7 +138,7 @@ class File_container {
             'meta_offset_prev' => $this->meta_offset_prev,
             'checksum'         => $this->checksum
         ]), static::HEAD_LENGTH -
-                static::HEAD_TITLE_LENGTH
+            static::HEAD_TITLE_LENGTH
         ));
     }
 
@@ -99,24 +162,40 @@ class File_container {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     function stream_open($path, $mode, $options, &$opened_path) {
-        $path_parsed = static::__parse_path($path);
+        $path_parsed = static::__path_parse($path);
         if ($path_parsed['path_root']) {
             $this->path_root = $path_parsed['path_root'];
             $this->path_file = $path_parsed['path_file'];
             $this->target    = $path_parsed['target'   ];
             $this->mode      = $mode ?: 'c+b';
-            $this->mode_is_readable = strpbrk($this->mode,  'r' ) || strpos($this->mode, 'a+') === 0 || strpos($this->mode, 'c+') === 0;
-            $this->mode_is_writable = strpbrk($this->mode, 'wxc') || strpos($this->mode, 'r+') === 0;
-            $this->stream = @fopen($this->path_root, $this->mode, false, $this->context ?: stream_context_create([static::WRAPPER => []]));
+            $mode_info = File::get_mode_info($this->mode);
+            $this->mode_is_readable = $mode_info && $mode_info['is_readable'];
+            $this->mode_is_writable = $mode_info && $mode_info['is_writable'];
+            $this->mode_is_seekable = $mode_info && $mode_info['is_seekable'];
+            if (!$this->mode_is_readable) throw new Extend_exception(File::ERR_MESSAGE_MODE_IS_NOT_READABLE, File::ERR_CODE_MODE_IS_NOT_READABLE, ['File "%%_file" cannot be created or opened or modified!', 'File mode does not support reading!'], ['file' => $this->path_root]);
+            if (!$this->mode_is_seekable) throw new Extend_exception(File::ERR_MESSAGE_MODE_IS_NOT_SEEKABLE, File::ERR_CODE_MODE_IS_NOT_SEEKABLE, ['File "%%_file" cannot be created or opened or modified!', 'File mode does not support seeking!'], ['file' => $this->path_root]);
+            try {
+                $this->stream = @fopen($this->path_root, $this->mode, false, $this->context ?: stream_context_create([static::WRAPPER => []]));
+            } catch (Exception $e) {}
             if ($this->stream) {
                 $this->__head_init();
                 $this->__meta_init();
                 fseek($this->stream, $this->offset);
                 return true;
-            }
-        } else throw new Exception(
-            static::MESSAGE_FILE_PATH_IS_INVALID
-        );
+            } else {
+                $file = new File($path_parsed['path_root']);
+                if ($file) {
+                    $path = $file->path_get_absolute();
+                    $dirs = $file->dirs_get_absolute();
+                    $reason = File::get_fopen_error_reason($dirs, $path, $this->mode);
+                    if ($reason === Directory::ERR_CODE_IS_NOT_EXISTS      ) throw new Extend_exception(Directory::ERR_MESSAGE_IS_NOT_EXISTS,       Directory::ERR_CODE_IS_NOT_EXISTS,       ['File "%%_file" cannot be created or opened or modified!', 'Directory "%%_directory" is not exists!'],                 ['file' => $path, 'directory' => $dirs]);
+                    if ($reason === Directory::ERR_CODE_PERM_ARE_TOO_STRICT) throw new Extend_exception(Directory::ERR_MESSAGE_PERM_ARE_TOO_STRICT, Directory::ERR_CODE_PERM_ARE_TOO_STRICT, ['File "%%_file" cannot be created or opened or modified!', 'Directory permissions of "%%_directory" are too strict!'], ['file' => $path, 'directory' => $dirs]);
+                    if ($reason === File::ERR_CODE_IS_NOT_EXISTS           ) throw new Extend_exception(File::ERR_MESSAGE_IS_NOT_EXISTS,            File::ERR_CODE_IS_NOT_EXISTS,            ['File "%%_file" cannot be created or opened or modified!', 'File is not exists!'],                                     ['file' => $path]);
+                    if ($reason === File::ERR_CODE_IS_EXISTS               ) throw new Extend_exception(File::ERR_MESSAGE_IS_EXISTS,                File::ERR_CODE_IS_EXISTS,                ['File "%%_file" cannot be created or opened or modified!', 'File is exists!'],                                         ['file' => $path]);
+                    if ($reason === File::ERR_CODE_PERM_ARE_TOO_STRICT     ) throw new Extend_exception(File::ERR_MESSAGE_PERM_ARE_TOO_STRICT,      File::ERR_CODE_PERM_ARE_TOO_STRICT,      ['File "%%_file" cannot be created or opened or modified!', 'File permissions of "%%_file" are too strict!'],           ['file' => $path]);
+                                                                             throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN,                  File::ERR_CODE_UNKNOWN);
+                } else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID,          File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']); };
+        }         else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID,          File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']);
     }
 
     function stream_stat() {
@@ -138,39 +217,37 @@ class File_container {
     }
 
     function stream_seek($offset, $whence = SEEK_SET) {
+        if ($whence === SEEK_CUR               ) throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_seek() error: $whence = SEEK_CUR '.               'is not correctly supported by PHP!');
+        if ($whence === SEEK_SET && $offset < 0) throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_seek() error: $whence = SEEK_SET + negative offset is not correctly supported by PHP!');
         if ($this->__root_is_exists()) {
             if ($this->__file_is_exists()) {
                 $min = $this->offset;
                 $max = $this->offset + $this->length;
-                if ($whence === SEEK_CUR) {} # not supported by PHP
                 if ($whence === SEEK_SET) {$new = $min + $offset; if ($new < $min) $new = $min; if ($new > $max) $new = $max; return fseek($this->stream, $new, SEEK_SET);} # PHP always return -1
                 if ($whence === SEEK_END) {$new = $max + $offset; if ($new < $min) $new = $min; if ($new > $max) $new = $max; return fseek($this->stream, $new, SEEK_SET);} # PHP always return -1
-            } else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
-        }     else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
+            } else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_seek() + __file_is_exists() error!');
+        }     else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_seek() + __root_is_exists() error!');
     }
 
     function stream_read($length = 0x2000) { # built-in value from PHP
-        if ($this->mode_is_readable) {
-            if ($this->__root_is_exists()) {
-                if ($this->target === 'root') return fread($this->stream, $length);
-                if ($this->target === 'file' && $this->__file_is_exists()) {
-                    $debug = debug_backtrace(0, 2);
-                    if ($debug[1]['function'] === 'fread') $length =
-                        $debug[1][  'args'  ][1]; # fix built-in value
-                    $min = $this->offset;
-                    $max = $this->offset + $this->length;
-                    $cur = ftell($this->stream);
-                    if ($cur < $min) fseek($this->stream, $min);
-                    if ($cur > $max) fseek($this->stream, $max);
-                    $cur = ftell($this->stream);
-                    if ($cur + $length > $max)
-                               $length = $max - $cur;
-                    if ($length >= 1)
-                         return fread($this->stream, $length);
-                    else return '';
-                } else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
-            }     else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
-        }         else throw new Exception(static::MESSAGE_FILE_MODE_IS_NOT_READING);
+        if ($this->__root_is_exists()) {
+            if ($this->target === 'root') return fread($this->stream, $length);
+            if ($this->target === 'file' && $this->__file_is_exists()) {
+                $debug = debug_backtrace(0, 2);
+                if ($debug[1]['function'] === 'fread') $length =
+                    $debug[1][  'args'  ][1]; # fix built-in value
+                $min = $this->offset;
+                $max = $this->offset + $this->length;
+                $cur = ftell($this->stream);
+                if ($cur < $min) fseek($this->stream, $min);
+                if ($cur > $max) fseek($this->stream, $max);
+                $cur = ftell($this->stream);
+                if ($length + $cur > $max)
+                    $length = $max - $cur;
+                if ($length >= 1) return fread($this->stream, $length);
+                else              return '';
+            } else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_read() + __file_is_exists() error!');
+        }     else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_read() + __root_is_exists() error!');
     }
 
     function stream_write($data) {
@@ -190,9 +267,9 @@ class File_container {
                         $this->was_changed = true;
                     }
                     return $result;
-                } else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
-            }     else throw new Exception(static::MESSAGE_FILE_PATH_IS_INVALID);
-        }         else throw new Exception(static::MESSAGE_FILE_MODE_IS_NOT_WRITING);
+                } else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_write() in "target === file" error!');
+            }     else throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN, File::ERR_CODE_UNKNOWN, 'stream_write() + __root_is_exists() error!');
+        }         else throw new Extend_exception(File::ERR_MESSAGE_MODE_IS_NOT_WRITABLE, File::ERR_CODE_MODE_IS_NOT_WRITABLE);
     }
 
     function stream_flush() {
@@ -209,20 +286,20 @@ class File_container {
         }
     }
 
-    function dir_closedir()                           {} # not supported
-    function dir_opendir($path, $options)             {} # not supported
-    function dir_readdir()                            {} # not supported
-    function dir_rewinddir()                          {} # not supported
-    function mkdir($path, $mode, $options)            {} # not supported
-    function rename($path_from, $path_to)             {} # not supported
-    function rmdir($path, $options)                   {} # not supported
-    function stream_cast($cast_as)                    {} # not supported
-    function stream_eof()                             {} # not supported
-    function stream_lock($operation)                  {} # not supported
-    function stream_metadata($path, $option, $value)  {} # not supported
-    function stream_set_option($option, $arg1, $arg2) {} # not supported
-    function stream_tell()                            {} # not supported by PHP
-    function stream_truncate($new_size)               {} # not supported
+    function dir_closedir()                           {} # is not supported
+    function dir_opendir($path, $options)             {} # is not supported
+    function dir_readdir()                            {} # is not supported
+    function dir_rewinddir()                          {} # is not supported
+    function mkdir($path, $mode, $options)            {} # is not supported
+    function rename($path_from, $path_to)             {} # is not supported
+    function rmdir($path, $options)                   {} # is not supported
+    function stream_cast($cast_as)                    {} # is not supported
+    function stream_lock($operation)                  {} # is not supported
+    function stream_metadata($path, $option, $value)  {} # is not supported
+    function stream_set_option($option, $arg1, $arg2) {} # is not supported
+    function stream_truncate($new_size)               {} # is not supported
+    function stream_tell()                            {} # is not correctly supported by PHP
+    function stream_eof()                             {} # is not correctly supported by PHP
 
     ###########################
     ### static declarations ###
@@ -231,12 +308,19 @@ class File_container {
     static function __data___pack($data) {return    serialize($data);}
     static function __data_unpack($data) {return @unserialize($data);}
 
-    static function __parse_path($path) {
-        $path_pure = substr($path, strlen(static::WRAPPER.'://'));
-        $path_file = ltrim(strrchr($path_pure, ':'), ':');
-        $path_root = $path_file ? substr($path_pure, 0, -1 - strlen($path_file)) : $path_pure;
-        return ['path_root' => $path_root, 'target' => empty($path_file) ? 'root' : 'file',
-                'path_file' => $path_file];
+    static function __path_parse($path) {
+        if (strlen((string)$path)) {
+            $matches = [];
+            preg_match('%^'.'(?:(?<rprotocol>[a-z]{1,20})://|)'.
+                               '(?<path_root>([a-zA-Z][:][^:]+)|[^:]+|)'.
+                         '(?:[:](?<path_file>.+)|)'.'$%S', (string)$path, $matches);
+            $rprotocol = array_key_exists('rprotocol', $matches) ? $matches['rprotocol'] : '';
+            $path_root = array_key_exists('path_root', $matches) ? $matches['path_root'] : '';
+            $path_file = array_key_exists('path_file', $matches) ? $matches['path_file'] : '';
+            if ($path_file)
+                 return ['protocol' => $rprotocol, 'path_root' => $path_root, 'path_file' => $path_file, 'target' => 'file'];
+            else return ['protocol' => $rprotocol, 'path_root' => $path_root, 'path_file' => $path_file, 'target' => 'root'];
+        }        return ['protocol' => '',         'path_root' => '',         'path_file' => '',         'target' => 'root'];
     }
 
     static function meta_get($path) {
@@ -281,8 +365,8 @@ class File_container {
     }
 
     static function unlink($path) {
-        $path_parsed = static::__parse_path($path);
-        if ($path_parsed['target'] === 'root') unlink($path_parsed['path_root']);
+        $path_parsed = static::__path_parse($path);
+        if ($path_parsed['target'] === 'root') @unlink($path_parsed['path_root']);
         if ($path_parsed['target'] === 'file') {
             $opened_path = [];
             $handle = new static;

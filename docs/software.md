@@ -19,20 +19,25 @@ Operating Systems:
 - Microsoft Windows.
 
 Architectures:
-- x86;
 - x64.
 
 Web Servers:
-- Apache v2.4+ [priority];
-- NGINX v1.10+ [priority];
-- Internet Information Services (IIS) v7.5+.
+- Apache v2.4.x [priority];
+- NGINX v1.20+ [priority];
+- Internet Information Services (IIS) v10.0+.
 
 Server-side scripting language:
-- PHP v7.1+.
+- PHP v7.3.x;
+- PHP v7.4.x;
+- PHP v8.0.x;
+- PHP v8.1.x;
+- PHP v8.2.x.
 
 Storage systems:
-- MySQL v5.6+;
-- SQLite v3.6.19+.
+- MySQL v5.6.x;
+- MySQL v5.7.x;
+- MySQL v8.0.x;
+- SQLite v3.4.x.
 
 
 Apache Requirements
@@ -60,17 +65,31 @@ If you got "502 Bad Gateway" check if php-fpm is running.
 Internet Information Services (IIS)
 ---------------------------------------------------------------------
 
-To work through IIS v7.5+ the following actions are required:
-- in "Turn Windows features on or off" enable option _Internet Information Services → Web Management Tools → IIS Management Console_;
-- in "Turn Windows features on or off" enable option _Internet Information Services → World Wide Web Services → Application Development Features → CGI_;
-- in "Turn Windows features on or off" enable option _Internet Information Services → World Wide Web Services → Common HTTP Features → Static Content_;
-- in _IIS Manager → Handler Mappings_ select "Add Module Mapping" and fill in the following fields:
-  - `Request Path = *.php`
-  - `Module = FastCgiModule`
-  - `Executable = {PHP_ROOT}\php-cgi.exe`
-  - `Name = PHP`
-- install the module "URL Rewrite Module 2.1" or newer
-  from "The Official Microsoft IIS Site".
+To work through IIS v10.0+ the following actions are required:
+- in `Control Panel → Programs and Features → Turn Windows features on or off`:
+  - enable option `Internet Information Services → Web Management Tools → IIS Management Console`;
+  - enable option `Internet Information Services → World Wide Web Services → Common HTTP Features → Static Content`;
+  - enable option `Internet Information Services → World Wide Web Services → Application Development Features → CGI`;
+  - click `OK` to apply the changes;
+- in `Programs → Windows Administrative Tools → Internet Information Services (IIS) Manager`:
+  - click on the icon `Handler Mapping`;
+  - in the right sidebar click on the link `Add Module Mapping`;
+  - in the window that opens, fill in the following fields:
+    - `Request Path = *.php`
+    - `Module = FastCgiModule`
+    - `Executable = C:\php\php-cgi.exe`
+    - `Name = PHP`
+    - click `OK` to apply the changes;
+- in `C:\inetpub\wwwroot` create a new file `index.php` with the following
+  content `<?php phpInfo();` (you need to change directory permissions so that
+  the current user can change the contents of this directory);
+- through a web browser, open the location `127.0.0.1/index.php` and check
+  the PHP installation;
+- from the `Official Microsoft IIS Site` download and install the module
+  `URL Rewrite Module`;
+- checkout the project to the directory `C:\inetpub\wwwroot`;
+- for the directory `C:\inetpub\wwwroot\dynamic` add full rights for the user `UISR`;
+- in `php.ini` enable the parameter `fastcgi.impersonate = 1`.
 
 If you got "500 Internal Server Error" check `web.config`
 in web root (section `rewrite`).

@@ -53,7 +53,7 @@ class EffURL {
         }
     }
 
-    tinyGet() {
+    relativeGet() {
         if (!this.has_error) {
             let result = this.path;
             if (this.query ) result+= '?' + this.query;
@@ -62,7 +62,7 @@ class EffURL {
         }
     }
 
-    fullGet() {
+    absoluteGet() {
         if (!this.has_error) {
             let result = this.protocol + '://' + this.domain + this.path;
             if (this.query ) result+= '?' + this.query;

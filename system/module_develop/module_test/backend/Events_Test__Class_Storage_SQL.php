@@ -11,6 +11,7 @@ use effcore\Entity;
 use effcore\Instance;
 use effcore\Session;
 use effcore\Storage;
+use effcore\Test;
 use effcore\Text;
 
 abstract class Events_Test__Class_Storage_SQL {
@@ -127,8 +128,8 @@ abstract class Events_Test__Class_Storage_SQL {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -244,8 +245,8 @@ abstract class Events_Test__Class_Storage_SQL {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -331,7 +332,7 @@ abstract class Events_Test__Class_Storage_SQL {
                     'total' => [
                         'field_!f' => 'total',
                         'operator' => '>',
-                        'value_!v' => 0]]],
+                        'value'    => 0]]],
             'limit_begin' => 'LIMIT',
             'limit' => 1,
             'offset_begin' => 'OFFSET',
@@ -358,7 +359,7 @@ abstract class Events_Test__Class_Storage_SQL {
                     'total' => [
                         'field_!f' => 'total',
                         'operator' => '>',
-                        'value_!v' => 0]]
+                        'value'    => 0]]
                 ],
             'order_!,' => [
                 'total' => [
@@ -378,8 +379,8 @@ abstract class Events_Test__Class_Storage_SQL {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -422,13 +423,13 @@ abstract class Events_Test__Class_Storage_SQL {
         ]);
 
         $expected = true;
-        $gotten = serialize($result_1) === serialize($result_2);
+        $gotten = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -474,13 +475,13 @@ abstract class Events_Test__Class_Storage_SQL {
         foreach ($result_2 as $c_instance) $c_instance->entity_name = null;
 
         $expected = true;
-        $gotten = serialize($result_1) === serialize($result_2);
+        $gotten = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
         $result = $gotten === $expected;
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -539,8 +540,8 @@ abstract class Events_Test__Class_Storage_SQL {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }
@@ -581,8 +582,8 @@ abstract class Events_Test__Class_Storage_SQL {
         if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => $expected ? 'true' : 'false']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => $gotten ? 'true' : 'false']);
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;
         }

@@ -41,8 +41,8 @@ abstract class Events_Page {
                          $url->query_arg_delete('manage_layout');
                     else $url->query_arg_insert('manage_layout', 'true');
                     $admin_actions = new Markup('x-admin-actions', ['data-entity_name' => 'page']);
-                    if ($edit_mode !== 'true'                                                     ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-enter', 'href' => $url->tiny_get()], 'enter edit mode'), 'manage_layout');
-                    if ($edit_mode === 'true'                                                     ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-leave', 'href' => $url->tiny_get()], 'leave edit mode'), 'manage_layout');
+                    if ($edit_mode !== 'true'                                                     ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-enter', 'href' => $url->relative_get()], 'enter edit mode'), 'manage_layout');
+                    if ($edit_mode === 'true'                                                     ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-leave', 'href' => $url->relative_get()], 'leave edit mode'), 'manage_layout');
                     if ($edit_mode === 'true' && Access::check(Entity::get('page')->access_update)) $admin_actions->child_insert(new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/content/page/'.$page->id.'/update?'.Url::back_part_make()], new Markup('x-action-title', ['data-action-title' => true], 'update')), 'update_page');
                     return $admin_actions;
                 }

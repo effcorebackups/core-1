@@ -6,7 +6,6 @@
 
 namespace effcore\modules\page;
 
-use const effcore\DIR_DYNAMIC;
 use const effcore\DIR_ROOT;
 use effcore\Core;
 use effcore\Dynamic;
@@ -131,7 +130,7 @@ abstract class Events_File {
                                 if (Media::is_type_for_thumbnail($type_info->type)) {
                                     if (isset($info['cover_thumbnails']) && is_array($info['cover_thumbnails'])) {
                                         if (isset($size) && isset($info['cover_thumbnails'][$size])) {
-                                            if (strpos($path, DIR_DYNAMIC) === 0) {
+                                            if (strpos($path, Dynamic::DIRECTORY) === 0) {
                                                 $settings = Module::settings_get('page');
                                                 if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                                 if ($size === 'middle') $width = $settings->thumbnail_width_middle;
@@ -140,7 +139,7 @@ abstract class Events_File {
                                                 $result = Media::thumbnail_create($path_cover, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                                                 if ($result && file_exists($path_thumbnail_tmp)) {
                                                     if (Media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
-                                                        @unlink($path_thumbnail_tmp);
+                                                        File::delete($path_thumbnail_tmp);
                                                         $file = new File($path_target);
                                                         return true;
                                                     } else $file = new File(static::prepath_get('thumbnail_embedding_error'           ).'.'.$info['cover']['type']);
@@ -226,7 +225,7 @@ abstract class Events_File {
                                 if (Media::is_type_for_thumbnail($type_info->type)) {
                                     if (isset($info['poster_thumbnails']) && is_array($info['poster_thumbnails'])) {
                                         if (isset($size) && isset($info['poster_thumbnails'][$size])) {
-                                            if (strpos($path, DIR_DYNAMIC) === 0) {
+                                            if (strpos($path, Dynamic::DIRECTORY) === 0) {
                                                 $settings = Module::settings_get('page');
                                                 if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                                 if ($size === 'middle') $width = $settings->thumbnail_width_middle;
@@ -235,7 +234,7 @@ abstract class Events_File {
                                                 $result = Media::thumbnail_create($path_poster, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                                                 if ($result && file_exists($path_thumbnail_tmp)) {
                                                     if (Media::container_file_insert($path_container, $path_thumbnail_tmp, $target)) {
-                                                        @unlink($path_thumbnail_tmp);
+                                                        File::delete($path_thumbnail_tmp);
                                                         $file = new File($path_target);
                                                         return true;
                                                     } else $file = new File(static::prepath_get('thumbnail_embedding_error'           ).'.'.$info['poster']['type']);
@@ -303,7 +302,7 @@ abstract class Events_File {
                         if (Media::is_type_for_thumbnail($type_info->type)) {
                             if (isset($info['thumbnails']) && is_array($info['thumbnails'])) {
                                 if (isset($info['thumbnails'][$size])) {
-                                    if (strpos($path, DIR_DYNAMIC) === 0) {
+                                    if (strpos($path, Dynamic::DIRECTORY) === 0) {
                                         $settings = Module::settings_get('page');
                                         if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                         if ($size === 'middle') $width = $settings->thumbnail_width_middle;
@@ -312,7 +311,7 @@ abstract class Events_File {
                                         $result = Media::thumbnail_create($path_original, $path_thumbnail_tmp, $width, null, $settings->thumbnail_quality_jpeg);
                                         if ($result && file_exists($path_thumbnail_tmp)) {
                                             if (Media::container_file_insert($path_container, $path_thumbnail_tmp, 'thumbnail-'.$size)) {
-                                                @unlink($path_thumbnail_tmp);
+                                                File::delete($path_thumbnail_tmp);
                                                 $file = new File($path_thumbnail);
                                                 return true;
                                             } else $file = new File(static::prepath_get('thumbnail_embedding_error'           ).'.'.$type_info->type);

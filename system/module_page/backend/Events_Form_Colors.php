@@ -32,7 +32,7 @@ abstract class Events_Form_Colors {
                 $selected = [];
                 foreach ($items as $c_item) {
                     if ($c_item instanceof Group_Palette) {
-                        if ( strpos($c_item->name_get_complex(), 'color__') === 0 ) {
+                        if (strpos($c_item->name_get_complex(), 'color__') === 0) {
                             $selected[$c_item->name_get_complex()] = $c_item->value_get();
                         }
                     }

@@ -7,8 +7,6 @@
 namespace effcore;
 
 use DateTime;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use stdClass;
 
 #[\AllowDynamicProperties]
@@ -50,9 +48,9 @@ class Form extends Markup implements has_Data_cache {
             $this->child_insert(new Field_Hidden('form_id',       $id                 ), 'hidden_id_form'      );
             $this->child_insert(new Field_Hidden('validation_id', $this->validation_id), 'hidden_id_validation');
 
-            # send test headers 'X-Form-Validation-Id--form_id: validation_id'
+            # send test headers 'x-form-validation-id--form_id: validation_id'
             if (Module::is_enabled('test')) {
-                header('X-Form-Validation-Id--'.$id.': '.$this->validation_id);
+                header('x-form-validation-id--'.$id.': '.$this->validation_id);
             }
 
             # call "build" handlers
@@ -105,9 +103,9 @@ class Form extends Markup implements has_Data_cache {
                         Event::start('on_form_validate', $id, ['form' => &$this, 'items' => &$this->items]);
                     }
 
-                    # send test headers 'X-Form-Submit-Errors-Count: N' (before a possible redirect)
+                    # send test headers 'x-form-submit-errors-count: N' (before a possible redirect)
                     if (Module::is_enabled('test')) {
-                        header('X-Form-Submit-Errors-Count: '.count(static::$errors));
+                        header('x-form-submit-errors-count: '.count(static::$errors));
                     }
 
                     # show errors before submit (before a possible redirect after submit)
@@ -124,9 +122,9 @@ class Form extends Markup implements has_Data_cache {
                     }
 
                     # update or delete validation cache (will not be deleted if redirection has occurred)
-                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent !== false &&                                Core::hash_get($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
-                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() === true && Core::hash_get($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
-                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() !== true                                                                            ) $this->validation_cache_storage_delete();
+                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent !== false &&                                Security::hash_get($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
+                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() === true && Security::hash_get($this->validation_cache) !== $this->validation_cache_hash) $this->validation_cache_storage_update();
+                    if ($this->validation_cache !== null && $this->validation_cache_is_persistent === false && $this->has_error() !== true                                                                                ) $this->validation_cache_storage_delete();
 
                 }
             }
@@ -236,7 +234,7 @@ class Form extends Markup implements has_Data_cache {
         if ($this->validation_cache === null) {
             $instance = (new Instance('cache_validation', ['id' => $this->validation_id]))->select();
             $this->validation_cache = $instance ? $instance->data : [];
-            $this->validation_cache_hash = Core::hash_get($this->validation_cache);
+            $this->validation_cache_hash = Security::hash_get($this->validation_cache);
         }
     }
 
@@ -271,24 +269,9 @@ class Form extends Markup implements has_Data_cache {
                 'updated_!v'       => time() - Core::DATE_PERIOD_D
         ]]);
         # delete temporary files
-        if (file_exists(Temporary::DIRECTORY.'validation/')) {
-            $counter = 0;
-            foreach (new RecursiveDirectoryIterator(Temporary::DIRECTORY.'validation/', File::SCAN_MODE) as $c_dir_path => $c_spl_dir_info) {
-                if ($c_spl_dir_info->isDir()) {
-                    if (Core::validate_date($c_spl_dir_info->getFilename()) &&
-                                            $c_spl_dir_info->getFilename() < Core::date_get()) {
-                        # try to recursively delete all files and directories in current "YYYY-MM-DD" directory
-                        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($c_dir_path, File::SCAN_MODE), File::SCAN_WITH_DIR_AT_LAST) as $c_df_path => $c_spl_dir_or_file_info) {
-                            if     ($counter >= $files_limit) return;
-                            if     ($c_spl_dir_or_file_info->isFile()) {@unlink($c_df_path); $counter++;}
-                            elseif ($c_spl_dir_or_file_info->isDir ()) {@rmdir ($c_df_path);}
-                        }
-                        # try to delete empty directories
-                        @rmdir($c_dir_path);
-                    }
-                }
-            }
-        }
+        Directory::items_delete_by_date(
+            Temporary::DIRECTORY.'validation/', $files_limit, Core::date_get()
+        );
     }
 
     ###########################
@@ -341,7 +324,7 @@ class Form extends Markup implements has_Data_cache {
     static function validation_id_get_hex_number($number) {return str_pad(dechex($number), 2, '0', STR_PAD_LEFT);}
     static function validation_id_get_hex_created      () {return dechex(time());}
     static function validation_id_get_hex_ip           () {return Core::ip_to_hex(Request::addr_remote_get());}
-    static function validation_id_get_hex_uagent_hash_8() {return Core::hash_get_mini(Request::user_agent_get());}
+    static function validation_id_get_hex_uagent_hash_8() {return Security::hash_get_mini(Request::user_agent_get());}
     static function validation_id_get_hex_random       () {return str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);}
     static function validation_id_get_hex_signature ($id) {return User::signature_get(substr($id, 0, 58), 'form', 8);}
 
@@ -355,7 +338,7 @@ class Form extends Markup implements has_Data_cache {
     static function validation_id_extract_hex_signature    ($id) {return substr($id, 58,  8);}
 
     static function validation_id_check($id, $form) {
-        if (Core::validate_hash($id, 66)) {
+        if (Security::validate_hash($id, 66)) {
             $number            = static::validation_id_extract_number           ($id);
             $created           = static::validation_id_extract_created          ($id);
             $hex_ip            = static::validation_id_extract_hex_ip           ($id);

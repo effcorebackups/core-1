@@ -17,6 +17,7 @@ use effcore\Markup;
 use effcore\Message;
 use effcore\Module;
 use effcore\Node;
+use effcore\Security;
 use effcore\Text_simple;
 use effcore\Text;
 use effcore\Url;
@@ -88,7 +89,7 @@ abstract class Events_Form_Modules_Install {
                             $c_info->child_insert(new Markup('x-param', ['data-type' => 'url'], [
                                 new Markup('x-title', [], $c_title),
                                 new Markup('x-value', [], new Markup('a', ['href' => $c_url], Url::url_to_markup($c_url)))
-                            ]), 'url_'.Core::sanitize_id($c_title, '_'));
+                            ]), 'url_'.Security::sanitize_id($c_title, '_'));
                 $info->child_select($c_module->group_get_id())->child_insert($c_info, 'module_'.$c_module->id);
             }
         }

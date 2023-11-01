@@ -195,27 +195,42 @@ selections
           entity_field_name: f_varchar
           is_apply_translation: true
           weight: +260
-      - f_date
-          entity_field_name: f_date
-          weight: +240
-      - f_datetime
-          entity_field_name: f_datetime
-          weight: +220
       - f_time
           entity_field_name: f_time
+          weight: +240
+      - f_date
+          entity_field_name: f_date
+          weight: +220
+      - f_datetime
+          entity_field_name: f_datetime
           weight: +200
+      - f_datetime_raw
+          title: Type "datetime" (class "Field_DateTime") not formatted
+          entity_field_name: f_datetime
+          weight: +180
+          is_not_formatted: true
+      - f_datetime_local
+          entity_field_name: f_datetime_local
+          weight: +160
+      - f_datetime_local_raw
+          title: Type "datetime" (class "Field_DateTime_local") not formatted
+          entity_field_name: f_datetime_local
+          weight: +140
+          is_not_formatted: true
       - f_boolean
           entity_field_name: f_boolean
           is_apply_translation: true
-          weight: +180
+          weight: +120
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +160
+          weight: +100
       - access
           entity_field_name: access
           is_apply_translation: true
-          weight: +140
+          weight: +80
+          converters
+            on_render: \effcore\Widget_Access::value_to_markup
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-demo_autoincrement|Selection
     id: instance_select_multiple-demo_autoincrement
@@ -467,7 +482,7 @@ selections
             - type: handler
           settings
           - demo_value: value from handler settings
-          handler: \effcore\modules\demo\Events_Selection::demo_handler
+          handler: \effcore\modules\demo\Events_Selection::handler__demo
           weight: +260
 - demo_data_types|Selection
     id: demo_data_types
@@ -496,22 +511,35 @@ selections
           entity_field_name: f_varchar
           is_apply_translation: true
           weight: +320
-      - f_date
-          entity_field_name: f_date
-          weight: +300
-      - f_datetime
-          entity_field_name: f_datetime
-          weight: +280
       - f_time
           entity_field_name: f_time
+          weight: +300
+      - f_date
+          entity_field_name: f_date
+          weight: +280
+      - f_datetime
+          entity_field_name: f_datetime
           weight: +260
+      - f_datetime_raw
+          title: Type "datetime" (class "Field_DateTime") not formatted
+          entity_field_name: f_datetime
+          weight: +240
+          is_not_formatted: true
+      - f_datetime_local
+          entity_field_name: f_datetime_local
+          weight: +220
+      - f_datetime_local_raw
+          title: Type "datetime" (class "Field_DateTime_local") not formatted
+          entity_field_name: f_datetime_local
+          weight: +200
+          is_not_formatted: true
       - f_boolean
           entity_field_name: f_boolean
           is_apply_translation: true
-          weight: +240
+          weight: +180
       - f_blob
           entity_field_name: f_blob
-          weight: +220
+          weight: +160
 - demo_data_join|Selection
     id: demo_data_join
     main_entity_name: demo_data

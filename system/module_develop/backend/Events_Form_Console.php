@@ -21,10 +21,10 @@ abstract class Events_Form_Console {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_insert('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
+                $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
-                Console::init(true);
+                Console::visible_mode_get(true);
                 break;
         }
     }

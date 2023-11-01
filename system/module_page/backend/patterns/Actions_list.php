@@ -33,7 +33,7 @@ class Actions_list extends Markup {
             $this->child_insert($list, 'actions_list');
             foreach ($this->actions as $c_name => $c_title) {
                 $c_href = $c_name[0] === '/' ? $c_name : Page::get_current()->args_get('base').'/'.($c_name);
-                $list->child_insert(new Markup('a', ['data-id' => Core::sanitize_id($c_title), 'title' => new Text($c_title), 'href' => $c_href],
+                $list->child_insert(new Markup('a', ['data-id' => Security::sanitize_id($c_title), 'title' => new Text($c_title), 'href' => $c_href],
                     new Markup('x-action-title', $this->action_title_attributes, $c_title)
                 )); }
             $this->is_builded = true;

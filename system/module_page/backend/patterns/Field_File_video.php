@@ -11,6 +11,7 @@ namespace effcore;
 class Field_File_video extends Field_File {
 
     public $title = 'Video';
+    public $item_title = 'Video';
     public $attributes = ['data-type' => 'file-video'];
     public $element_attributes = [
         'type' => 'file',

@@ -2,10 +2,10 @@ test_data
   # ─────────────────────────────────────────────────────────────────────
   # scalar types
   # ═════════════════════════════════════════════════════════════════════
-  # integer_exponential: 123e1 # - exponential notation is not supported
-  # integer_hexadecimal: 0x123 # - hexadecimal notation is not supported
-  # integer_octal: 0123        # - octal notation is not supported
-  # integer_binary: 0b101      # - binary notation is not supported
+  # exponential notation '123e1' is not supported
+  # hexadecimal notation '0x123' is not supported
+  # octal notation '0123' is not supported
+  # binary notation '0b101' is not supported
   # ─────────────────────────────────────────────────────────────────────
   integer: 123
   float: 0.000001

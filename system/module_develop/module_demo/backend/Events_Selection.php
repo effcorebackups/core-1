@@ -67,7 +67,7 @@ abstract class Events_Selection {
         $selection->fields['handlers']['type_handler_from_code']->weight = 250;
         $selection->fields['handlers']['type_handler_from_code']->title = new Text('Type "%%_type" from code', ['type' => 'handler']);
         $selection->fields['handlers']['type_handler_from_code']->settings = ['demo_value' => 'value from handler settings'];
-        $selection->fields['handlers']['type_handler_from_code']->handler = '\\effcore\\modules\\demo\\Events_Selection::demo_handler';
+        $selection->fields['handlers']['type_handler_from_code']->handler = '\\effcore\\modules\\demo\\Events_Selection::handler__demo';
         # field 'code' example
         $selection->fields['code']['type_code_from_code'] = new stdClass;
         $selection->fields['code']['type_code_from_code']->weight = 100;
@@ -78,7 +78,7 @@ abstract class Events_Selection {
         };
     }
 
-    static function demo_handler($c_row_id, $c_row, $c_instance, $settings = []) {
+    static function handler__demo($c_row_id, $c_row, $c_instance, $settings = []) {
         return new Markup('span', [], $settings['demo_value']);
     }
 

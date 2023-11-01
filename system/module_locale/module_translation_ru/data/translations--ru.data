@@ -22,7 +22,8 @@ translations
     - %%_entity_title_context\: update: %%_entity_title_context: обновить
     - %%_number sec.: %%_number сек.
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
-    - A new password was sent to the selected Email.: Новый пароль был отправлен на выбранный адрес электронной почты.
+    - A new password was sent to the selected EMail address.: Новый пароль был отправлен на выбранный адрес электронной почты.
+    - Absolute URL: Абсолютный URL
     - access allowed by permission "%%_permission": доступ разрешён по разрешению "%%_permission"
     - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
     - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
@@ -53,6 +54,7 @@ translations
     - Answers: Ответы
     - apply: применить
     - Architecture: Архитектура
+    - ascending: по возрастанию
     - Attribute: Атрибут
     - Attributes (example of working with "data"-format): Атрибуты (пример работы с "data"-форматом)
     - Attributes: Атрибуты
@@ -68,11 +70,11 @@ translations
     - Avatar path: Путь аватара
     - Avatar: Аватар
     - B: Б
+    - Be careful, your mistake may lead to XSS injection.: Будьте осторожны, ваша ошибка может привести к внедрению XSS.
     - Belarusian: Белорусский
     - bind to my IP address: привязать к моему IP-адресу
     - Block: Блок
     - Blocked until: Заблокировано до
-    - Blocking the login for the number of minutes: Блокирование входа на количество минут
     - Blocking will not affect existing sessions.: Блокирование не повлияет на существующие сеансы.
     - Blocks: Блоки
     - Breadcrumbs: Хлебные крошки
@@ -98,7 +100,7 @@ translations
     - Changes was saved.: Изменения были сохранены.
     - Changing the value will not affect existing sessions.: Изменение значения не повлияет на существующие сеансы.
     - Charset: Кодировка
-    - Check field again before submit.: Снова проверьте поле перед отправкой.
+    - Check value again before submit.: Снова проверьте значение перед отправкой.
     - Checkbox: Флажок
     - Checkboxes: Флажки
     - checking: проверка
@@ -117,6 +119,7 @@ translations
     - Colors was applied.: Цвета были применены.
     - Colors was not applied!: Цвета не были применены!
     - Colors: Цвета
+    - Combination of values should be unique.: Комбинация значений должна быть уникальной.
     - Conditions: Условия
     - Console settings form: Форма настроек консоли
     - Console settings: Настройки консоли
@@ -125,13 +128,14 @@ translations
     - Content of the "robots.txt" file: Содержимое файла "robots.txt"
     - Content of the "sitemap.xml" file: Содержимое файла "sitemap.xml"
     - Content: Содержимое
-    - Cookie domain: Домен cookie
+    - Cookie domain: Cookie-домен
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
     - Copyright © 2017—2023 Maxim Rysevets. All rights reserved.: Copyright © 2017—2023 Рысевец Максим Владимирович. Все права защищены.
     - copyright: авторские права
     - Copyright: Авторские права
     - Core: Ядро
+    - Correct format\: "%%_format": Правильный формат: "%%_format"
     - Cover: Обложка
     - Created: Создано
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
@@ -164,6 +168,7 @@ translations
     - Demo: Демо
     - depend from modules: зависит от модулей
     - depend from PHP extensions: зависит от PHP-расширений
+    - descending: по убыванию
     - description: описание
     - Description: Описание
     - Develop: Разработка
@@ -171,10 +176,23 @@ translations
     - Diagram: Диаграмма
     - Diagrams: Диаграммы
     - Digit: Цифра
+    - Directory "%%_directory" cannot be created!: Каталог "%%_directory" не может быть создан!
+    - Directory "%%_directory" cannot be deleted!: Каталог "%%_directory" не может быть удалён!
+    - Directory "%%_directory" is not exists!: Каталог "%%_directory" не существует!
+    - Directory "%%_directory" is not readable!: Каталог "%%_directory" недоступен для чтения!
+    - Directory "%%_directory" is not writable!: Каталог "%%_directory" недоступен для записи!
+    - Directory cannot be created!: Каталог не может быть создан!
+    - Directory cannot be deleted!: Каталог не может быть удалён!
     - Directory for temporary upload is missing.: Каталог для временной загрузки отсутствует.
-    - Directory permissions should be checked.: Разрешения каталога должны быть проверены.
+    - Directory is not exists!: Каталог не существует!
+    - Directory is not readable!: Каталог недоступен для чтения!
+    - Directory is not writable!: Каталог недоступен для записи!
+    - Directory permissions are too strict!: Разрешения каталога слишком строгие!
+    - Directory permissions of "%%_directory" are too strict!: Разрешения каталога "%%_directory" слишком строгие!
+    - Directory permissions or file permissions are too strict!: Разрешения каталога или разрешения файла слишком строгие!
     - Do not forget to save the changes!: Не забудьте сохранить изменения!
     - do not show: не показывать
+    - Download link: Ссылка для скачивания
     - download: скачать
     - Download: Скачать
     - Driver error code\: %%_code: Код ошибки драйвера: %%_code
@@ -186,16 +204,13 @@ translations
     - Each item must be contained in the "%%_root" array.: Каждый элемент должен находиться в массиве "%%_root".
     - edit: редактировать
     - Edit: Редактировать
-    - Eliminates the possibility of brute-force a password if an attacker knows the Email.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
-    - Eliminates the possibility of registering to a non-existent Email address.: Исключает возможность регистрации на несуществующий адрес электронной почты.
-    - Email: Адрес электронной почты
+    - Eliminates the possibility of brute-force a password if an attacker knows the EMail address.: Устраняет возможность подбора пароля, если злоумышленник знает адрес электронной почты.
+    - Eliminates the possibility of registering to a non-existent EMail address.: Исключает возможность регистрации на несуществующий адрес электронной почты.
+    - EMail address: Адрес электронной почты
+    - EMail: Электронная почта
     - Enable cookies before login.: Включите cookies до начала входа в систему.
     - English: Английский
     - enter edit mode: войти в режим редактирования
-    - Entity "%%_entity" was installed.: Сущность "%%_entity" была установлена.
-    - Entity "%%_entity" was not installed!: Сущность "%%_entity" не была установлена!
-    - Entity "%%_entity" was not uninstalled!: Сущность "%%_entity" не была удалена!
-    - Entity "%%_entity" was uninstalled.: Сущность "%%_entity" была удалена.
     - Entity "%%_name" is not available.: Сущность "%%_name" не доступна.
     - entity is embedded: сущность является встроенной
     - Entity name: Имя сущности
@@ -220,26 +235,19 @@ translations
     - Feedback\: update: Отзыв: обновить
     - Feedbacks: Отзывы
     - Field "%%_title" cannot be blank!: Поле "%%_title" не может быть пустым!
+    - Field "%%_title" contains a combination of values that is already in use!: Поле "%%_title" содержит уже использующуюся комбинацию значений!
     - Field "%%_title" contains an error!: Поле "%%_title" содержит ошибку!
-    - Field "%%_title" contains an incorrect date!: Поле "%%_title" содержит неверную дату!
-    - Field "%%_title" contains an incorrect date/time!: Поле "%%_title" содержит неверную дату/время!
-    - Field "%%_title" contains an incorrect Email address!: Поле "%%_title" содержит неверный адрес электронной почты!
-    - Field "%%_title" contains an incorrect telephone number!: Поле "%%_title" содержит неверный номер телефона!
-    - Field "%%_title" contains an incorrect time!: Поле "%%_title" содержит неверное время!
-    - Field "%%_title" contains an incorrect URL!: Поле "%%_title" содержит неверный URL!
-    - Field "%%_title" contains an incorrect value!: Поле "%%_title" содержит неверное значение!
-    - Field "%%_title" contains the previously used combination of values!: Поле "%%_title" содержит ранее использованную комбинацию значений!
     - Field "%%_title" does not support multiple select!: Поле "%%_title" не поддерживает множественный выбор!
+    - Field "%%_title" does not support multiple values!: Поле "%%_title" не поддерживает множественные значения!
     - Field "%%_title" does not support uploading a file of this type!: Поле "%%_title" не поддерживает загрузку такого типа файла!
-    - Field "%%_title" has a changed value.: Поле "%%_title" имеет изменённое значение.
     - Field "%%_title" should be enabled!: Поле "%%_title" должно быть включено!
-    - Field "%%_title" should be selected!: Поле "%%_title" должно быть выбрано!
     - Field "%%_title".: Поле "%%_title".
     - Field can contain a maximum of %%_number file%%_plural(number\|s).: Поле может содержать максимум %%_number файл%%_plural(number|ov-a).
     - Field can contain a minimum of %%_number file%%_plural(number\|s).: Поле может содержать минимум %%_number файл%%_plural(number|ov-a).
     - Field can contain only %%_number file%%_plural(number\|s).: Поле может содержать только %%_number файл%%_plural(number|ov-a).
     - Field name: Имя поля
     - Field value at the current moment\: %%_value: Значение поля в текущий момент: %%_value
+    - Field value can contain "%%_value".: Значение поля может содержать "%%_value".
     - Field value can contain a maximum of %%_number character%%_plural(number\|s).: Значение поля может содержать максимум %%_number символ%%_plural(number|ov-a).
     - Field value can contain a minimum of %%_number character%%_plural(number\|s).: Значение поля может содержать минимум %%_number символ%%_plural(number|ov-a).
     - Field value can contain only %%_number character%%_plural(number\|s).: Значение поля может содержать только %%_number символ%%_plural(number|ov-a).
@@ -249,31 +257,37 @@ translations
     - Field value cannot be greater than\: %%_value: Значение поля не может быть больше чем: %%_value
     - Field value cannot be less than\: %%_value: Значение поля не может быть меньше чем: %%_value
     - Field value cannot be start with "%%_value".: Значение поля не должно начинаться с "%%_value".
+    - Field value cannot contain "%%_value".: Значение поля не может содержать "%%_value".
     - Field value cannot contain Unicode.: Значение поля не может содержать Юникод.
-    - Field value does not match the regular expression "%%_expression".: Значение поля не соответствует регулярному выражению "%%_expression".
-    - Field value is greater than %%_number.: Значение поля больше чем %%_number.
-    - Field value is less than %%_number.: Значение поля меньше чем %%_number.
-    - Field value is not a valid number.: Значение поля не является допустимым числом.
-    - Field value is not in valid range.: Значение поля не соответствует допустимому диапазону.
+    - Field value should be a relative URL.: Значение поля должно быть относительным URL.
+    - Field value should be an absolute URL.: Значение поля должно быть абсолютным URL.
     - Field value should be represented in the international format of telephone numbers.: Значение поля должно быть представлено в международном формате телефонных номеров.
     - Field value should be start with "%%_value".: Значение поля должно начинаться с "%%_value".
     - Field value should contain a minimum of %%_number character%%_plural(number\|s).: Значение поля должно содержать минимум %%_number символ%%_plural(number|ov-a).
-    - Field value should contain anchor.: Значение поля должно содержать якорь.
-    - Field value should contain domain.: Значение поля должно содержать домен.
-    - Field value should contain path.: Значение поля должно содержать путь.
-    - Field value should contain protocol.: Значение поля должно содержать протокол.
-    - Field value should contain query.: Значение поля должно содержать запрос.
+    - Field value should contain URL with anchor.: Значение поля должно содержать URL с якорем.
+    - Field value should contain URL with domain.: Значение поля должно содержать URL с доменом.
+    - Field value should contain URL with path.: Значение поля должно содержать URL с путём.
+    - Field value should contain URL with protocol.: Значение поля должно содержать URL с протоколом.
+    - Field value should contain URL with query.: Значение поля должно содержать URL с запросом.
     - Field value should match the regular expression\: %%_expression: Значение поля должно соответствовать регулярному выражению: %%_expression
-    - Field value should not contain anchor.: Значение поля не должно содержать якорь.
-    - Field value should not contain domain.: Значение поля не должно содержать домен.
-    - Field value should not contain path.: Значение поля не должно содержать путь.
-    - Field value should not contain protocol.: Значение поля не должно содержать протокол.
-    - Field value should not contain query.: Значение поля не должно содержать запрос.
+    - Field value should not contain URL with anchor.: Значение поля не должно содержать URL с якорем.
+    - Field value should not contain URL with domain.: Значение поля не должно содержать URL с доменом.
+    - Field value should not contain URL with path.: Значение поля не должно содержать URL с путём.
+    - Field value should not contain URL with protocol.: Значение поля не должно содержать URL с протоколом.
+    - Field value should not contain URL with query.: Значение поля не должно содержать URL с запросом.
     - Field: Поле
     - Field\: text: Поле: текст
     - Fields: Поля
     - Fieldset nested: Группа полей вложенная
     - Fieldset: Группа полей
+    - File "%%_file" cannot be created or opened or modified!: Файл "%%_file" невозможно создать или открыть или модифицировать!
+    - File "%%_file" cannot be created!: Файл "%%_file" не может быть создан!
+    - File "%%_file" cannot be deleted!: Файл "%%_file" не может быть удалён!
+    - File "%%_file" cannot be modified!: Файл "%%_file" не может быть изменён!
+    - File "%%_file" is exists!: Файл "%%_file" существует!
+    - File "%%_file" is not exists!: Файл "%%_file" не существует!
+    - File "%%_file" is not readable!: Файл "%%_file" недоступен для чтения!
+    - File "%%_file" is not writable!: Файл "%%_file" недоступен для записи!
     - File "%%_file" was deleted.: Файл "%%_file" был удалён.
     - file "%%_file" was not deleted: файл "%%_file" не был удалён
     - File "%%_file" was not deleted!: Файл "%%_file" не был удалён!
@@ -283,13 +297,30 @@ translations
     - File can have a maximum size\: %%_value (PHP restriction): Файл может иметь максимальный размер: %%_value (ограничение PHP)
     - File can have a maximum size\: %%_value: Файл может иметь максимальный размер: %%_value
     - File can only be of the next types\: %%_types: Файл может быть только следующих типов: %%_types
+    - File cannot be created or modified!: Файл не может быть создан или изменён!
+    - File cannot be created!: Файл не может быть создан!
+    - File cannot be deleted!: Файл не может быть удалён!
+    - File cannot be modified!: Файл не может быть изменён!
     - File is empty.: Файл пуст.
+    - File is exists!: Файл существует!
+    - File is not exists!: Файл не существует!
+    - File is not readable!: Файл недоступен для чтения!
+    - File is not writable!: Файл недоступен для записи!
+    - File mode does not support reading!: Файловый режим не поддерживает чтение!
+    - File mode does not support seeking!: Файловый режим не поддерживает смещение!
+    - File mode does not support writing!: Файловый режим не поддерживает запись!
     - File name can contain only the next characters\: %%_characters: Имя файла может содержать только следующие символы: %%_characters
     - File name: Имя файла
     - File not found: Файл не найден
     - file of this type is protected: файл этого типа защищён
+    - File of type "%%_type" with title "%%_title" has been saved.: Файл типа "%%_type" с названием "%%_title" был сохранён.
+    - File of type "%%_type" with title "%%_title" was deleted physically.: Файл типа "%%_type" с названием "%%_title" был удалён физически.
+    - File of type "%%_type" with title "%%_title" was deleted.: Файл типа "%%_type" с названием "%%_title" был удалён.
+    - File of type "%%_type" with title "%%_title" was inserted.: Файл типа "%%_type" с названием "%%_title" был добавлен.
+    - File path is invalid!: Путь к файлу недействителен!
     - file path: путь к файлу
-    - File permissions (if the file exists) and directory permissions should be checked.: Разрешения файла (если файл существует) и разрешения каталога должны быть проверены.
+    - File permissions are too strict!: Разрешения файла слишком строгие!
+    - File permissions of "%%_file" are too strict!: Разрешения файла "%%_file" слишком строгие!
     - File permissions should be checked.: Разрешения файла должны быть проверены.
     - File types: Типы файлов
     - File upload was stopped by PHP extension.: Загрузка файла была остановлена PHP-расширением.
@@ -311,7 +342,6 @@ translations
     - Formats: Форматы
     - forms: формы
     - Forms: Формы
-    - Fractional part is too long.: Дробная часть слишком длинная.
     - Front: Главная
     - Function: Функция
     - G: Г
@@ -336,7 +366,6 @@ translations
     - go to page %%_link: перейти на страницу %%_link
     - go to Russian language: перейти на Русский язык
     - go to section "%%_title": перейти на раздел "%%_title"
-    - Group "%%_title" has a changed value.: Группа "%%_title" имеет изменённое значение.
     - Group "%%_title" should contain a maximum %%_number item%%_plural(number\|s)!: Группа "%%_title" должна содержать максимально %%_number элемент%%_plural(number|ov-a)!
     - Group "%%_title" should contain a minimum %%_number item%%_plural(number\|s)!: Группа "%%_title" должна содержать минимально %%_number элемент%%_plural(number|ov-a)!
     - Group "%%_title" should contain at least one selected item!: Группа "%%_title" должна содержать как минимум один выбранный элемент!
@@ -352,9 +381,9 @@ translations
     - If a domain is specified, then it and its subdomains are used.: Если домен задан, то используется он и его поддомены.
     - If filled, the file will be available at\: %%_page: Если заполнено, то файл будет доступен по адресу: %%_page
     - If no domain is specified, then the current domain is used, excluding subdomains.: Если домен не задан, то используется текущий домен без учёта поддоменов.
-    - Ignore this email if you have not completed any registration on %%_domain.: Проигнорируйте это письмо, если Вы не осуществляли никакой регистрации на %%_domain.
+    - Ignore this mail if you have not completed any registration on %%_domain.: Проигнорируйте это письмо, если Вы не осуществляли никакой регистрации на %%_domain.
     - In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!: В режиме "Анонимные пользователи + Зарегистрированные пользователи" злоумышленник может послать множество поддельных анонимных голосов!
-    - Incorrect email or password!: Неверный адрес электронной почты или пароль!
+    - Incorrect EMail address or password!: Неверный адрес электронной почты или пароль!
     - Incorrect value will make it impossible to log in!: Неправильное значение приведет к невозможности входа в систему!
     - Indent oversize is detected.: Обнаружено превышение размера отступа.
     - Indent size is not even.: Размер отступа нечётный.
@@ -372,12 +401,6 @@ translations
     - Installation is not available because storage credentials was set!: Установка недоступна, потому что учётные данные хранилища уже были заданы.
     - installation: установка
     - Installation: Установка
-    - Instance with Row ID = "%%_row_id" was deleted.: Экземпляр с Row ID = "%%_row_id" был удалён.
-    - Instance with Row ID = "%%_row_id" was inserted.: Экземпляр с Row ID = "%%_row_id" был добавлен.
-    - Instance with Row ID = "%%_row_id" was not deleted!: Экземпляр с Row ID = "%%_row_id" не был удалён!
-    - Instance with Row ID = "%%_row_id" was not inserted!: Экземпляр с Row ID = "%%_row_id" не был добавлен!
-    - Instance with Row ID = "%%_row_id" was not updated!: Экземпляр с Row ID = "%%_row_id" не был обновлён!
-    - Instance with Row ID = "%%_row_id" was updated.: Экземпляр с Row ID = "%%_row_id" был обновлён.
     - Instance: Экземпляр
     - Instances: Экземпляры
     - interface: интерфейс
@@ -415,10 +438,6 @@ translations
     - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент типа "%%_type" с ID = "%%_id" не был добавлен!
     - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент типа "%%_type" с ID = "%%_id" не был обновлён!
     - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент типа "%%_type" с ID = "%%_id" был обновлён.
-    - Item of type "%%_type" with title "%%_title" has been saved.: Элемент типа "%%_type" с названием "%%_title" был сохранён.
-    - Item of type "%%_type" with title "%%_title" was deleted physically.: Элемент типа "%%_type" с названием "%%_title" был удалён физически.
-    - Item of type "%%_type" with title "%%_title" was deleted.: Элемент типа "%%_type" с названием "%%_title" был удалён.
-    - Item of type "%%_type" with title "%%_title" was inserted.: Элемент типа "%%_type" с названием "%%_title" был добавлен.
     - Item of type "%%_type" with title "%%_title" was not deleted because it is embedded!: Элемент типа "%%_type" с названием "%%_title" не был удалён, потому что он является встроенным!
     - Item of type "%%_type" with title "%%_title" was not deleted!: Элемент типа "%%_type" с названием "%%_title" не был удалён!
     - Item of type "%%_type" with title "%%_title" was not inserted!: Элемент типа "%%_type" с названием "%%_title" не был добавлен!
@@ -429,6 +448,7 @@ translations
     - Items: Элементы
     - K: К
     - Key "%%_key" does not exist!: Ключ "%%_key" не существует!
+    - Keys installation failed!: Установка ключей не удалась!
     - KiB: КиБ
     - Kind: Вид
     - Language code: Код языка
@@ -481,6 +501,7 @@ translations
     - Logout form: Форма выхода
     - logout: выход
     - Logout: Выход
+    - Long session, in days: Длительный сеанс, в днях
     - long session: длительный сеанс
     - LOST FIELD: ПОТЕРЯННОЕ ПОЛЕ
     - LOST LAYOUT\: %%_id: ПОТЕРЯННЫЙ МАКЕТ: %%_id
@@ -494,7 +515,7 @@ translations
     - Match: Соответствие
     - Maximum number of votes: Максимальное число голосов
     - Maximum width: Максимальная ширина
-    - Memory for PHP: Память для PHP
+    - Memory used: Использовано памяти
     - Menu active: Меню активное
     - Menu: Меню
     - Menu\: link active: Меню: ссылка активная
@@ -571,7 +592,6 @@ translations
     - Object: Объект
     - ok: ок
     - Okay: Хорошо
-    - Only unique value is allowed.: Допускается только уникальное значение.
     - OpenSSL version: OpenSSL версия
     - Operating System: Операционная система
     - Operator: Оператор
@@ -594,6 +614,7 @@ translations
     - Palette: Палитра
     - Parameter: Параметр
     - Parameters: Параметры
+    - Parent directory permissions are too strict!: Разрешения родительского каталога слишком строгие!
     - Parent ID: ID родителя
     - Password recovery on %%_domain: Восстановление пароля на %%_domain
     - Password: Пароль
@@ -629,6 +650,7 @@ translations
     - Possible options can be seen on page\: %%_page: Возможные варианты можно увидеть на странице: %%_page
     - Poster path: Путь плаката
     - Poster: Плакат
+    - Pre-listening: Предварительное прослушивание
     - Prefix: Префикс
     - Presets: Предустановки
     - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
@@ -637,7 +659,7 @@ translations
     - press to show more settings: нажмите, чтобы показать больше настроек
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
-    - Previously used value was specified.: Было указано ранее использованное значение.
+    - Preview: Предварительный просмотр
     - Profile: Профиль
     - Profiles: Профили
     - Project: Проект
@@ -663,7 +685,7 @@ translations
     - Registered: Зарегистрированный
     - Registering a new user on %%_domain: Регистрация нового пользователя на %%_domain
     - Registration form: Форма регистрации
-    - Registration via Email: Регистрация через электронную почту
+    - Registration via EMail address: Регистрация через адрес электронной почты
     - registration: регистрация
     - Registration: Регистрация
     - Relation: Связь
@@ -727,8 +749,6 @@ translations
     - Sequence: Последовательность
     - Server: Сервер
     - Service: Обслуживание
-    - Session duration in days when "long session" is not selected: Длительность сеанса в днях, когда не выбрано "длительный сеанс"
-    - Session duration in days when "long session" is selected: Длительность сеанса в днях, когда выбрано "длительный сеанс"
     - Session with ID = "%%_id" was deleted.: Сеанс с ID = "%%_id" был удалён.
     - Session with ID = "%%_id" was not deleted!: Сеанс с ID = "%%_id" не был удалён!
     - Session: Сеанс
@@ -736,7 +756,8 @@ translations
     - settings page: страница настроек
     - Settings: Настройки
     - Shared parameters: Общие параметры
-    - Short session\: %%_min day%%_plural(min\|s) \| long session\: %%_max day%%_plural(max\|s): Короткий сеанс = %%_min %%_plural(min|day) | длительный сеанс = %%_max %%_plural(max|day)
+    - Short session, in days: Короткий сеанс, в днях
+    - Short session\: %%_short day%%_plural(short\|s) \| long session\: %%_long day%%_plural(long\|s): Короткий сеанс = %%_short %%_plural(short|day) | длительный сеанс = %%_long %%_plural(long|day)
     - Simple layout: Простой макет
     - Sitemap editing form: Форма редактирования Sitemap
     - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.
@@ -748,6 +769,7 @@ translations
     - SQL storage: SQL хранилище
     - state: состояние
     - State: Состояние
+    - Statistics: Статистика
     - Storage "%%_name" is not available!: Хранилище "%%_name" недоступно!
     - Storage is not available with these credentials!: Хранилище недоступно с этими учётными данными!
     - storage: хранилище
@@ -765,9 +787,19 @@ translations
     - System was not installed!: Система не была установлена!
     - System: Система
     - T: Т
+    - Table "%%_name" was installed.: Таблица "%%_name" была установлена.
+    - Table "%%_name" was not installed!: Таблица "%%_name" не была установлена!
+    - Table "%%_name" was not uninstalled!: Таблица "%%_name" не была удалена!
+    - Table "%%_name" was uninstalled.: Таблица "%%_name" была удалена.
     - Table (adaptive): Таблица (адаптивная)
     - Table (DL): Таблица (DL)
     - Table prefix: Префикс таблиц
+    - Table row with Row ID = "%%_row_id" was deleted.: Строка таблицы с Row ID = "%%_row_id" была удалена.
+    - Table row with Row ID = "%%_row_id" was inserted.: Строка таблицы с Row ID = "%%_row_id" была добавлена.
+    - Table row with Row ID = "%%_row_id" was not deleted!: Строка таблицы с Row ID = "%%_row_id" не была удалена!
+    - Table row with Row ID = "%%_row_id" was not inserted!: Строка таблицы с Row ID = "%%_row_id" не была добавлена!
+    - Table row with Row ID = "%%_row_id" was not updated!: Строка таблицы с Row ID = "%%_row_id" не была обновлена!
+    - Table row with Row ID = "%%_row_id" was updated.: Строка таблицы с Row ID = "%%_row_id" была обновлена.
     - Table: Таблица
     - Table\: row even: Таблица: строка чётная
     - Table\: row odd: Таблица: строка нечётная
@@ -780,6 +812,7 @@ translations
     - Template (item): Шаблон (элемент)
     - Template: Шаблон
     - Templates: Шаблоны
+    - Temporary login blocking, in minutes: Временная блокировка входа, в минутах
     - Test execution form: Форма выполнения теста
     - Test: Тест
     - Tests: Тесты
@@ -799,6 +832,7 @@ translations
     - The minimum value cannot be greater than the maximum!: Минимальное значение не может быть больше максимального!
     - The removing module should be disabled at first. Embedded modules cannot be disabled.: Удаляемый модуль вначале должен быть отключен. Встроенные модули не могут быть отключены.
     - The report will be created after submitting the form.: Отчёт будет создан после отправки формы.
+    - The width for transition to mobile view must not be less than the "Minimum Width" and greater than the "Maximum Width"!: Ширина для перехода к мобильному виду не должна быть меньше "Минимальной ширины" и больше "Максимальной ширины"!
     - This block will be inserted into the &lt;head&gt; of each page.: Данный блок будет вставлен в &lt;head&gt; каждой страницы.
     - This block will be inserted into the &lt;head&gt; of this page.: Данный блок будет вставлен в &lt;head&gt; этой страницы.
     - This combination of values is already in use!: Такая комбинация значений уже используется!
@@ -837,6 +871,7 @@ translations
     - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Удалите модули, в котором были обнаружены зависимости, и затем Вы сможете установить модуль "%%_title".
     - uninstall: удалить
     - Uninstall: Удалить
+    - Unknown error!: Неизвестная ошибка!
     - Unordered list: Неупорядоченный список
     - update: обновить
     - Update: Обновить
@@ -853,8 +888,8 @@ translations
     - User update form: Форма обновления пользователя
     - User update: Обновление пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
-    - User with this Email was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
-    - User with this Email was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
+    - User with this EMail address was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
+    - User with this EMail address was not registered!: Пользователь с таким адресом электронной почты не был зарегистрирован!
     - User with this nickname was already registered!: Пользователь с таким псевдонимом уже был зарегистрирован!
     - user: пользователь
     - User: Пользователь
@@ -865,9 +900,47 @@ translations
     - Users: Пользователи
     - val.: знач.
     - Val.: Знач.
+    - Value has been corrected.: Значение было скорректировано.
     - Value in pixels.: Величина в пикселях.
+    - Value of "%%_title" field can contain "%%_value"!: Значение поля "%%_title" может содержать "%%_value"!
+    - Value of "%%_title" field can contain a maximum of %%_number character%%_plural(number\|s)!: Значение поля "%%_title" может содержать максимум %%_number символ%%_plural(number|ov-a)!
+    - Value of "%%_title" field can contain only the next characters\: %%_characters: Значение поля "%%_title" может содержать только следующие символы: %%_characters
+    - Value of "%%_title" field cannot be start with "%%_value"!: Значение поля "%%_title" не может начинаться с "%%_value"!
+    - Value of "%%_title" field cannot contain "%%_value"!: Значение поля "%%_title" не может содержать "%%_value"!
+    - Value of "%%_title" field contains a fractional part that is too long!: Значение поля "%%_title" содержит слишком длинную дробную часть!
+    - Value of "%%_title" field does not match the regular expression "%%_expression"!: Значение поля "%%_title" не соответствует регулярному выражению "%%_expression"!
+    - Value of "%%_title" field is already in use!: Значение поля "%%_title" уже используется!
+    - Value of "%%_title" field is changed!: Значение поля "%%_title" изменено!
+    - Value of "%%_title" field is greater than %%_number!: Значение поля "%%_title" больше чем %%_number!
+    - Value of "%%_title" field is incorrect!: Значение поля "%%_title" является неверным!
+    - Value of "%%_title" field is less than %%_number!: Значение поля "%%_title" меньше чем %%_number!
+    - Value of "%%_title" field is not a valid date and time!: Значение поля "%%_title" не является допустимой датой и временем!
+    - Value of "%%_title" field is not a valid date!: Значение поля "%%_title" не является допустимой датой!
+    - Value of "%%_title" field is not a valid EMail address!: Значение поля "%%_title" не является допустимым адресом электронной почты!
+    - Value of "%%_title" field is not a valid number!: Значение поля "%%_title" не является допустимым числом!
+    - Value of "%%_title" field is not a valid telephone number!: Значение поля "%%_title" не является допустимым номером телефона!
+    - Value of "%%_title" field is not a valid time!: Значение поля "%%_title" не является допустимым временем!
+    - Value of "%%_title" field is not a valid URL!: Значение поля "%%_title" не является допустимым URL!
+    - Value of "%%_title" field is not within the valid range!: Значение поля "%%_title" не попадает в допустимый диапазон!
+    - Value of "%%_title" field should be a relative URL!: Значение поля "%%_title" должно быть относительным URL!
+    - Value of "%%_title" field should be an absolute URL!: Значение поля "%%_title" должно быть абсолютным URL!
+    - Value of "%%_title" field should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue!: Значение поля "%%_title" должно быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей!
+    - Value of "%%_title" field should be selected!: Значение поля "%%_title" должно быть выбрано!
+    - Value of "%%_title" field should be start with "%%_value"!: Значение поля "%%_title" должно начинаться с "%%_value"!
+    - Value of "%%_title" field should contain a minimum of %%_number character%%_plural(number\|s)!: Значение поля "%%_title" должно содержать минимум %%_number символ%%_plural(number|ov-a)!
+    - Value of "%%_title" field should contain URL with anchor!: Значение поля "%%_title" должно содержать URL с якорем!
+    - Value of "%%_title" field should contain URL with domain!: Значение поля "%%_title" должно содержать URL с доменом!
+    - Value of "%%_title" field should contain URL with path!: Значение поля "%%_title" должно содержать URL с путём!
+    - Value of "%%_title" field should contain URL with protocol!: Значение поля "%%_title" должно содержать URL с протоколом!
+    - Value of "%%_title" field should contain URL with query!: Значение поля "%%_title" должно содержать URL с запросом!
+    - Value of "%%_title" field should not contain URL with anchor!: Значение поля "%%_title" не должно содержать URL с якорем!
+    - Value of "%%_title" field should not contain URL with domain!: Значение поля "%%_title" не должно содержать URL с доменом!
+    - Value of "%%_title" field should not contain URL with path!: Значение поля "%%_title" не должно содержать URL с путём!
+    - Value of "%%_title" field should not contain URL with protocol!: Значение поля "%%_title" не должно содержать URL с протоколом!
+    - Value of "%%_title" field should not contain URL with query!: Значение поля "%%_title" не должно содержать URL с запросом!
+    - Value of "%%_title" group is changed!: Значение группы "%%_title" изменено!
     - Value settings: Настройки значения
-    - Value was trimmed to the required length!: Значение было обрезано до требуемой длины!
+    - Value should be unique.: Значение должно быть уникальным.
     - Value: Значение
     - Values: Значения
     - Vendors: Поставщики
@@ -894,10 +967,10 @@ translations
     - Web server: Веб-сервер
     - Weight: Вес
     - Welcome, %%_nickname!: Добро пожаловать, %%_nickname!
-    - When registering, the system itself generates a password and sends it to the Email.: При регистрации система сама генерирует пароль и отправляет его на электронную почту.
+    - When registering, the system itself generates a password and sends it to the EMail address.: При регистрации система сама генерирует пароль и отправляет его на адрес электронной почты.
     - While editing this form, someone made changes in parallel and saved them!: Во время редактирования этой формы кто-то параллельно внёс изменения и сохранил их!
     - Widget "%%_title".: Виджет "%%_title".
-    - With it, you can speed up the system from 2-3x and more.: С его помощью Вы можете ускорить систему в 2-3 и более раз.
+    - Width for transition to mobile view: Ширина для перехода к мобильному виду
     - wrong category: неправильная категория
     - wrong cron key: неправильный ключ cron
     - wrong entity name: неправильное имя сущности
@@ -913,13 +986,13 @@ translations
     - You have already uploaded %%_current_number file%%_plural(current_number\|s).: Вы уже загрузили %%_current_number файл%%_plural(current_number|ov-a).
     - You have not made any changes before!: Вы не производили каких либо изменений ранее!
     - You received this message because someone tried to recover the password from your account on %%_domain.: Вы получили это сообщение, потому что кто-то пытался восстановить пароль от Вашего аккаунта на %%_domain.
-    - You received this message because this email address was specified when registering on %%_domain.: Вы получили это сообщение, потому что при регистрации на %%_domain был указан этот адрес электронной почты.
+    - You received this message because this EMail address was specified when registering on %%_domain.: Вы получили это сообщение, потому что при регистрации на %%_domain был указан этот адрес электронной почты.
     - Your answer was accepted.: Ваш ответ был принят.
     - Your answer was canceled.: Ваш ответ был отменён.
     - Your answer was not accepted!: Ваш ответ не был принят!
     - Your answer was not canceled!: Ваш ответ не был отменён!
-    - Your Email is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
-    - Your Email is\: %%_email: Ваш адрес электронной почты: %%_email
+    - Your EMail address is not shown publicly on %%_domain and it is never shared with third parties!: Ваш адрес электронной почты не отображается публично на %%_domain и он никогда не передаётся третьим лицам!
+    - Your EMail address is\: %%_email: Ваш адрес электронной почты: %%_email
     - Your new password on %%_domain was automatically generated\: %%_new_password: Ваш новый пароль на %%_domain был автоматически сгенерирован: %%_new_password
     - Your new password on %%_domain was changed automatically to\: %%_new_password: Ваш новый пароль на %%_domain был изменён автоматически на: %%_new_password
     - Your password is\: %%_password: Ваш пароль: %%_password

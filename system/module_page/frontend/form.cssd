@@ -157,7 +157,7 @@ select option {color: %%_color__field_text}
 textarea {display: block; box-sizing: border-box; width: 100%; min-width: 100px}
 input[type='range'] {border-radius: 20px}
 input[type='email'] {text-transform: lowercase}
-input[type='color'] {text-transform: lowercase}
+input[type='color'] {height: 40px; padding: 0; cursor: pointer; text-transform: lowercase}
 
 /* checkboxes and radiobuttons */
 
@@ -484,6 +484,6 @@ x-decorator[data-id='sessions_logout'] [data-cellid='is_fixed_ip'] {white-space:
 
 /* Polls */
 
-form#vote x-diagram {margin-top: 1em}
-form#vote x-total {display: block; margin-bottom: 1.2em; font-size: 1.1em; text-align: center}
-form#vote x-total x-title::after {content: ': '}
+form#vote x-fieldset-content {padding-left: 30px}
+form#vote x-fieldset-content x-diagram {}
+form#vote x-fieldset-content x-diagram-total {}

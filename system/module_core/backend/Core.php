@@ -102,27 +102,29 @@ abstract class Core {
     ###############################################
 
     static function structure_autoload($name) {
-        $name = strtolower($name);
-        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                     ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Cache.php',                      'ok'); return;}
-        if ($name === 'effcore\\console'           ) {require_once(DIR_SYSTEM.'module_core/backend/Console.php'                   ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Console.php',                    'ok'); return;}
-        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                      ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Data.php',                       'ok'); return;}
-        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                   ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php',                    'ok'); return;}
-        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                      ); Console::log_insert('file', 'insertion', 'system/module_core/backend/File.php',                       'ok'); return;}
-        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'           ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php',            'ok'); return;}
-        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'          ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php',           'ok'); return;}
-        if ($name === 'effcore\\module_as_profile' ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_as_profile.php'); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_as_profile.php', 'ok'); return;}
-        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'  ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php',   'ok'); return;}
-        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'           ); Console::log_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php',            'ok'); return;}
-        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'      ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php',       'ok'); return;}
-        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'             ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php',              'ok'); return;}
-        if ($name === 'effcore\\storage_data'      ) {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_Data.php'  ); Console::log_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_Data.php',   'ok'); return;}
-        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'   ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php',    'ok'); return;}
-        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'      ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php',       'ok'); return;}
-        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'             ); Console::log_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php',              'ok'); return;}
-        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                     ); Console::log_insert('file', 'insertion', 'system/module_core/backend/Timer.php',                      'ok'); return;}
-        Console::log_insert('autoload', 'search', $name, 'ok');
-        if (isset(static::structures_select()[$name])) {
-            $c_item_info = static::structures_select()[$name];
+        $name = mb_strtolower($name);
+        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Timer.php',                      'ok'); return;}
+        if ($name === 'effcore\\storage_data'      ) {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_Data.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_Data.php',   'ok'); return;}
+        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php',            'ok'); return;}
+        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php',   'ok'); return;}
+        if ($name === 'effcore\\module_as_profile' ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_as_profile.php'); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_as_profile.php', 'ok'); return;}
+        if ($name === 'effcore\\security'          ) {require_once(DIR_SYSTEM.'module_core/backend/Security.php'                  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Security.php',                   'ok'); return;}
+        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Data.php',                       'ok'); return;}
+        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                   ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php',                    'ok'); return;}
+        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/File.php',                       'ok'); return;}
+        if ($name === 'effcore\\directory'         ) {require_once(DIR_SYSTEM.'module_core/backend/Directory.php'                 ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Directory.php',                  'ok'); return;}
+        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Cache.php',                      'ok'); return;}
+        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'          ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php',           'ok'); return;}
+        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php',            'ok'); return;}
+        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php',              'ok'); return;}
+        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php',       'ok'); return;}
+        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'   ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php',    'ok'); return;}
+        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php',       'ok'); return;}
+        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php',              'ok'); return;}
+        $c_item_info = static::structures_select()[$name] ?? null;
+        if ($c_item_info !== null) Console::log_insert('autoload', 'search', $name, 'ok');
+        if ($c_item_info === null) Console::log_insert('autoload', 'search', $name, 'error');
+        if ($c_item_info) {
             $c_file = new File(DIR_ROOT.$c_item_info->file);
             $c_file->require();
         }
@@ -157,8 +159,9 @@ abstract class Core {
             arsort($enabled);
             # collect *.php files
             foreach ($enabled as $c_enabled_path) {
-                $c_files = File::select_recursive($c_enabled_path, '%^.*\\.php$%');
-                foreach ($c_files as $c_path_relative => $c_file) {
+                $c_files = Directory::items_select(DIR_ROOT.$c_enabled_path, '%^.*\\.php$%');
+                foreach ($c_files as $c_file) {
+                    $c_path_relative = $c_file->path_get_relative();
                     $c_module_id = key(static::array_search__array_item_in_value($c_path_relative, $modules_path));
                     if (isset($enabled[$c_module_id])) {
                         $files[$c_path_relative] = $c_file;
@@ -205,8 +208,8 @@ abstract class Core {
                         $c_item->file = $c_file->path_get_relative();
                         # insert to result pool
                         if (!$c_item->namespace)
-                             $result[strtolower(                        $c_item->name)] = $c_item;
-                        else $result[strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
+                             $result[mb_strtolower(                        $c_item->name)] = $c_item;
+                        else $result[mb_strtolower($c_item->namespace.'\\'.$c_item->name)] = $c_item;
                     }
                 }
             }
@@ -217,7 +220,7 @@ abstract class Core {
     }
 
     static function structure_is_exists($name) {
-        $name = trim(strtolower($name), '\\');
+        $name = trim(mb_strtolower($name), '\\');
         if (isset(static::structures_select()[$name])) {
             return true;
         }
@@ -334,7 +337,7 @@ abstract class Core {
                 else $result = $prefix.' = new \\'.$class_name.';'.NL;
                 foreach ($data as $c_key => $c_value) {
                     if (array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
-                    if (static::validate_property_name($c_key))
+                    if (Security::validate_property_name($c_key))
                          $result.= static::data_to_code($c_value, $prefix.'->'.                 $c_key,              $defaults[$c_key] ?? null);
                     else $result.= static::data_to_code($c_value, $prefix.'->'."{'".addcslashes($c_key, "'\\")."'}", $defaults[$c_key] ?? null);
                 }
@@ -378,7 +381,7 @@ abstract class Core {
         return false;
     }
 
-    static function data_serialize($data, $is_optimized = true) {
+    static function data_serialize($data, $is_optimized = true, $is_ksort = false) {
         $result = '';
         switch (gettype($data)) {
             case 'string' : return 's:'.strlen($data).':'.     '"'.$data.'"'                                                   .';';
@@ -388,20 +391,25 @@ abstract class Core {
             case 'NULL'   : return 'N'                                                                                         .';';
             case 'array'  :
                 $result_children = [];
+                if ($is_ksort) ksort($data, SORT_STRING);
                 foreach ($data as $c_key => $c_val) {
-                    $result_children[] = static::data_serialize($c_key, $is_optimized);
-                    $result_children[] = static::data_serialize($c_val, $is_optimized); }
+                    $result_children[] = static::data_serialize($c_key, $is_optimized, $is_ksort);
+                    $result_children[] = static::data_serialize($c_val, $is_optimized, $is_ksort); }
                 $result = 'a:'.count($data).':{'.implode('', $result_children).'}';
                 break;
             case 'object':
                 $class_name = get_class($data);
                 $reflection = new ReflectionClass($class_name);
                 $defaults = $reflection->getDefaultProperties();
+                $properties = [];
+                foreach ($data as $c_key => $c_val)
+                    $properties  [$c_key] = $c_val;
+                if ($is_ksort) ksort($properties, SORT_STRING);
                 $result_children = [];
-                foreach ($data as $c_key => $c_val) {
+                foreach ($properties as $c_key => $c_val) {
                     if ($is_optimized && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_val) continue;
-                    $result_children[] = static::data_serialize($c_key, $is_optimized);
-                    $result_children[] = static::data_serialize($c_val, $is_optimized); }
+                    $result_children[] = static::data_serialize($c_key, $is_optimized, $is_ksort);
+                    $result_children[] = static::data_serialize($c_val, $is_optimized, $is_ksort); }
                 $result = 'O:'.strlen($class_name).
                                  ':"'.$class_name.'":'.(int)(count($result_children) / 2).':{'.
                                                        implode('', $result_children).'}';
@@ -419,43 +427,6 @@ abstract class Core {
             $string = str_replace($c_old_name, $c_new_name, $string);
         }
         return unserialize($string);
-    }
-
-    #####################################
-    ### functionality for binary data ###
-    #####################################
-
-    static function binstr_to_bin($binstr) {
-        $result = '';
-        foreach (str_split($binstr, 8) as $c_chunk) {
-            $c_rbyte = 0;
-            $c_chunk = str_pad($c_chunk, 8, '0');
-            if ($c_chunk[0] === '1') $c_rbyte |= 0b10000000;
-            if ($c_chunk[1] === '1') $c_rbyte |= 0b01000000;
-            if ($c_chunk[2] === '1') $c_rbyte |= 0b00100000;
-            if ($c_chunk[3] === '1') $c_rbyte |= 0b00010000;
-            if ($c_chunk[4] === '1') $c_rbyte |= 0b00001000;
-            if ($c_chunk[5] === '1') $c_rbyte |= 0b00000100;
-            if ($c_chunk[6] === '1') $c_rbyte |= 0b00000010;
-            if ($c_chunk[7] === '1') $c_rbyte |= 0b00000001;
-            $result.= chr($c_rbyte); }
-        return $result;
-    }
-
-    static function bin_to_binstr($bin) {
-        $result = '';
-        for ($i = 0; $i < strlen($bin); $i++) {
-            $c_rbyte = ord($bin[$i]);
-            $c_chunk = $c_rbyte & 0b10000000 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b01000000 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00100000 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00010000 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00001000 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00000100 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00000010 ? '1' : '0';
-            $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
-            $result.= $c_chunk; }
-        return $result;
     }
 
     #################################################################
@@ -594,25 +565,9 @@ abstract class Core {
         return $array;
     }
 
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-
     static function array_keys_map($array) {
         return array_combine($array, $array);
     }
-
-    static function array_key_first($array) { # alternative for built-in 'array_key_first' in PHP v.7.3+
-        $keys = array_keys($array);
-        return count($keys) ?
-               reset($keys) : null;
-    }
-
-    static function array_key_last($array) { # alternative for built-in 'array_key_last' in PHP v.7.3+
-        $keys = array_keys($array);
-        return count($keys) ?
-                 end($keys) : null;
-    }
-
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function in_array($value, $array) {
         foreach ($array as $c_value)
@@ -661,6 +616,43 @@ abstract class Core {
         else return $bytes.'B';
     }
 
+    #####################################
+    ### functionality for binary data ###
+    #####################################
+
+    static function binstr_to_bin($binstr) {
+        $result = '';
+        foreach (str_split($binstr, 8) as $c_chunk) {
+            $c_rbyte = 0;
+            $c_chunk = str_pad($c_chunk, 8, '0');
+            if ($c_chunk[0] === '1') $c_rbyte |= 0b10000000;
+            if ($c_chunk[1] === '1') $c_rbyte |= 0b01000000;
+            if ($c_chunk[2] === '1') $c_rbyte |= 0b00100000;
+            if ($c_chunk[3] === '1') $c_rbyte |= 0b00010000;
+            if ($c_chunk[4] === '1') $c_rbyte |= 0b00001000;
+            if ($c_chunk[5] === '1') $c_rbyte |= 0b00000100;
+            if ($c_chunk[6] === '1') $c_rbyte |= 0b00000010;
+            if ($c_chunk[7] === '1') $c_rbyte |= 0b00000001;
+            $result.= chr($c_rbyte); }
+        return $result;
+    }
+
+    static function bin_to_binstr($bin) {
+        $result = '';
+        for ($i = 0; $i < strlen($bin); $i++) {
+            $c_rbyte = ord($bin[$i]);
+            $c_chunk = $c_rbyte & 0b10000000 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b01000000 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00100000 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00010000 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00001000 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00000100 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00000010 ? '1' : '0';
+            $c_chunk.= $c_rbyte & 0b00000001 ? '1' : '0';
+            $result.= $c_chunk; }
+        return $result;
+    }
+
     ############################
     ### functionality for IP ###
     ############################
@@ -686,51 +678,6 @@ abstract class Core {
     ### functionality for date|time ###
     ###################################
 
-    # examples of using:
-    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
-    # │ +14:00 — Pacific/Kiritimati                           │ to format   │ result              │
-    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
-    # │           Locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
-    # │           Locale::format_time ('01:02:03')            │ H:i:s       │ 15:02:03            │
-    # │       Locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 01.02.2030 15:02:03 │
-    # │       Locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 01.01.1970 14:00:00 │
-    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
-    # │       Locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
-    # │       Locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 15:02:03            │
-    # │   Locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ Y-m-d H:i:s │ 2030-02-01 15:02:03 │
-    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
-    # │       Locale::date_loc_to_utc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
-    # │       Locale::time_loc_to_utc ('15:02:03')            │ H:i:s       │ 01:02:03            │
-    # │   Locale::datetime_loc_to_utc ('2030-02-01 15:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
-    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
-    #
-    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
-    # │ -11:00 — Pacific/Pago_Pago                            │ to format   │ result              │
-    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
-    # │           Locale::format_date ('2030-02-01')          │ d.m.Y       │ 01.02.2030          │
-    # │           Locale::format_time ('01:02:03')            │ H:i:s       │ 14:02:03            │
-    # │       Locale::format_datetime ('2030-02-01 01:02:03') │ d.m.Y H:i:s │ 31.01.2030 14:02:03 │
-    # │       Locale::format_timestmp (0)                     │ d.m.Y H:i:s │ 31.12.1969 13:00:00 │
-    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
-    # │       Locale::date_utc_to_loc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
-    # │       Locale::time_utc_to_loc ('01:02:03')            │ H:i:s       │ 14:02:03            │
-    # │   Locale::datetime_utc_to_loc ('2030-02-01 01:02:03') │ Y-m-d H:i:s │ 2030-01-31 14:02:03 │
-    # ├───────────────────────────────────────────────────────┼─────────────┼─────────────────────┤
-    # │       Locale::date_loc_to_utc ('2030-02-01')          │ Y-m-d       │ 2030-02-01          │
-    # │       Locale::time_loc_to_utc ('14:02:03')            │ H:i:s       │ 01:02:03            │
-    # │   Locale::datetime_loc_to_utc ('2030-01-31 14:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
-    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
-    #
-    # ┌───────────────────────────────────────────────────────┬─────────────┬─────────────────────┐
-    # │                                                       │ to format   │ result              │
-    # ╞═══════════════════════════════════════════════════════╪═════════════╪═════════════════════╡
-    # │   Core::T_datetime_to_datetime('2030-02-01T01:02:03') │ Y-m-d H:i:s │ 2030-02-01 01:02:03 │
-    # │   Core::datetime_to_T_datetime('2030-02-01 01:02:03') │ Y-m-dTH:i:s │ 2030-02-01T01:02:03 │
-    # └───────────────────────────────────────────────────────┴─────────────┴─────────────────────┘
-    #
-    # note: each function 'Locale::*_format' uses local date/time format settings
-    # that have been set on the page '/manage/locale'
-
     static function timezone_get_client() {return User::get_current()->timezone ?? 'UTC';}
     static function timezone_get_offset_sec($name = 'UTC') {return (new DateTimeZone($name))->getOffset(new DateTime);}
     static function timezone_get_offset_tme($name = 'UTC') {return (new DateTime('now', new DateTimeZone($name)))->format('P');}
@@ -738,172 +685,14 @@ abstract class Core {
     static function T_datetime_to_datetime($datetime) {$date = DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
     static function datetime_to_T_datetime($datetime) {$date = DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
 
-    static function date_get           ($offset = '', $format = 'Y-m-d'        ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-    static function time_get           ($offset = '', $format =       'H:i:s'  ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-    static function datetime_get       ($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
-    static function T_datetime_get     ($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+    static function       date_get($offset = '', $format = 'Y-m-d'        ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+    static function       time_get($offset = '', $format =       'H:i:s'  ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+    static function   datetime_get($offset = '', $format = 'Y-m-d H:i:s'  ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
+    static function T_datetime_get($offset = '', $format = 'Y-m-d\\TH:i:s') {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
 
-    static function validate_date      ($value) {$result = DateTime::createFromFormat('Y-m-d',         $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d'        )) === strlen(Field_Date    ::INPUT_MAX_DATE    );}
-    static function validate_time      ($value) {$result = DateTime::createFromFormat(      'H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format(      'H:i:s'  )) === strlen(Field_Time    ::INPUT_MAX_TIME    );}
-    static function validate_datetime  ($value) {$result = DateTime::createFromFormat('Y-m-d H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d H:i:s'  )) === strlen(Field_Datetime::INPUT_MAX_DATETIME);}
-    static function validate_T_datetime($value) {$result = DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d\\TH:i:s')) === strlen(Field_Datetime::INPUT_MAX_DATETIME);}
-
-    static function sanitize_date      ($value) {$result = DateTime::createFromFormat('Y-m-d',         $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d'        ) : null;}
-    static function sanitize_time      ($value) {$result = DateTime::createFromFormat(      'H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format(      'H:i:s'  ) : null;}
-    static function sanitize_datetime  ($value) {$result = DateTime::createFromFormat('Y-m-d H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d H:i:s'  ) : null;}
-    static function sanitize_T_datetime($value) {$result = DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d\\TH:i:s') : null;}
-
-    ###############
-    ### filters ###
-    ###############
-
-    static function validate_number($value, $with_minus = true) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            $with_minus ? '%^(?<int___1>'.             '[0]'                        .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'                       .')$|'.
-                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'                       .')$|'.
-                           '^(?<float_1>'.           '[0-9]' .'[.]'.    '[0-9]+'    .')$|'.
-                           '^(?<float_2>'.'[-]'.     '[0-9]' .'[.]'.'[0]*[1-9]+[0]*'.')$|'.
-                           '^(?<float_3>'.'[-]'.'[1-9]'      .'[.]'.    '[0-9]+'    .')$|'.
-                           '^(?<float_4>'.      '[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$|'.
-                           '^(?<float_5>'.'[-]'.'[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$%S' :
-                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                          '%^(?<int___1>'.             '[0]'                        .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'                       .')$|'.
-                           '^(?<float_1>'.           '[0-9]' .'[.]'.    '[0-9]+'    .')$|'.
-                           '^(?<float_4>'.      '[1-9][0-9]+'.'[.]'.    '[0-9]+'    .')$%S'
-        ]]);
-    }
-
-    static function validate_int($value, $with_minus = true) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            $with_minus ? '%^(?<int___1>'.             '[0]' .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'.')$|'.
-                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'.')$%S' :
-                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                          '%^(?<int___1>'.             '[0]' .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'.')$%S'
-        ]]);
-    }
-
-    static function validate_hex_color($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            '%^#(?<R>[a-f0-9]{2})'.
-               '(?<G>[a-f0-9]{2})'.
-               '(?<B>[a-f0-9]{2})$%'
-        ]]);
-    }
-
-    static function validate_email($value) {
-        return filter_var($value, FILTER_VALIDATE_EMAIL);
-    }
-
-    static function validate_hash($value, $length = 32) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-f0-9]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
-    }
-
-    static function validate_id($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.Field_ID_text::CHARACTERS_ALLOWED.']+$%']]);
-    }
-
-    static function validate_property_name($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-zA-Z_][a-zA-Z0-9_]*$%']]);
-    }
-
-    static function validate_ip_v4($value) {
-        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-    }
-
-    static function validate_ip_v6($value) {
-        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
-    }
-
-    static function validate_mime_type($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-z]{1,20}/[a-zA-Z0-9\\+\\-\\.]{1,100}$%']]);
-    }
-
-    static function validate_nickname($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^['.Field_Nickname::CHARACTERS_ALLOWED.']{4,32}$%']]);
-    }
-
-    static function validate_tel($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[+][0-9]{1,14}$%']]);
-    }
-
-    static function validate_realpath($value) {
-        $value = realpath($value);
-        if ($value !== false && static::is_Win())
-            $value = str_replace('\\', '/', $value);
-        return $value;
-    }
-
-    static function validate_url($value, $flags = 0) {
-        return filter_var($value, FILTER_VALIDATE_URL, $flags);
-    }
-
-    static function validate_range($min, $max, $step, $value) {
-        if (bccomp(           $value, $min, 20) /* $value  <  $min */ ===  -1) return false;
-        if (bccomp(           $value, $max, 20) /* $value  >  $max */ ===  +1) return false;
-        if (bccomp(           $value, $min, 20) /* $value === $min */ ===   0) return true;
-        if (bccomp(           $value, $max, 20) /* $value === $max */ ===   0) return true;
-        if (rtrim(bcdiv(bcsub($value, $min, 20), $step, 20), '0')[-1] === '.') return true;
-        return false;
-    }
-
-    static function validate_css_color($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^\\#[a-fA-F0-9]{3}$|^\\#[a-fA-F0-9]{6}$|^[a-zA-Z]{3,20}$%S']]); # examples: "#ff0", "#a1b2c3", "Red", "LightGoldenrodYellow"
-    }
-
-    static function validate_css_float($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9]{0,4}[\\.]{0,1}[0-9]{1,3}$%S']]); # examples: ".567", "1234.567", "1234567" | fake values: ".", "123.", "1.2.3", "12..3"
-    }
-
-    # valid values:
-    # ┌────────────┬─────────────┐
-    # │ 1234.567   │ -1234.567   │
-    # │ 1234 567   │ -1234 567   │
-    # │     .567   │ -    .567   │
-    # │      567   │ -     567   │
-    # ├────────────┼─────────────┤
-    # │ 1234.567px │ -1234.567px │
-    # │ 1234 567px │ -1234 567px │
-    # │     .567px │ -    .567px │
-    # │      567px │ -     567px │
-    # └────────────┴─────────────┘
-
-    static function validate_css_units($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            '%^(?<sign>[\\-]{0,1})'. # examples: "-1px", "1234.567em", ".5%", "-.567px" | fake values: "-", ".", "px", "123.", "123-", "12-3", "12--3", "12..3", "1-2-3", "1.2.3"
-              '(?<value>[0-9]{0,4}[\\.]{0,1}[0-9]{1,3})'.
-              '(?<dimension>px|em|\\%|)$%S']]);
-    }
-
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-
-    static function sanitize_id($value, $corrector = '-') {
-        return preg_replace('%[^a-z0-9_\\-]%S', $corrector, strtolower($value));
-    }
-
-    static function sanitize_url($value) {
-        # remove all characters except: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,;:.!?+-*/='"`^~(){}[]<>|\$#@%&
-        return filter_var($value, FILTER_SANITIZE_URL);
-    }
-
-    static function sanitize_file_part($value, $characters_allowed = 'a-zA-Z0-9_\\-\\.', $max_length = 220, $prefix = '') {
-        $value = trim($value, '.');
-        $value = preg_replace_callback('%(?<char>[^'.$characters_allowed.'])%uS', function ($c_match) use ($prefix) {
-            if (       $c_match['char']  === ' ') return '-';
-            if (strlen($c_match['char']) ===  1 ) return $prefix.dechex(ord($c_match['char'][0]));
-            if (strlen($c_match['char']) ===  2 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1]));
-            if (strlen($c_match['char']) ===  3 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1])).$prefix.dechex(ord($c_match['char'][2]));
-            if (strlen($c_match['char']) ===  4 ) return $prefix.dechex(ord($c_match['char'][0])).$prefix.dechex(ord($c_match['char'][1])).$prefix.dechex(ord($c_match['char'][2])).$prefix.dechex(ord($c_match['char'][3]));
-        }, $value);
-        return substr($value, 0, $max_length);
-    }
-
-    ##############
-    ### format ###
-    ##############
+    ####################################
+    ### functionality for formatting ###
+    ####################################
 
     static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
         $result = $precision > 0 ? # disable the rounding effect
@@ -933,56 +722,22 @@ abstract class Core {
     }
 
     ##############################
-    ### functionality for hash ###
+    ### functionality for cron ###
     ##############################
 
-    # hash performance (5 million iterations):
-    # ┌────────────────────────╥─────────────┬────────┬─────────────────────────┐
-    # │ function               ║ time (sec.) │ is hex │ has 32-bit sign problem │
-    # ╞════════════════════════╬═════════════╪════════╪═════════════════════════╡
-    # │ crc32(…)               ║ 0.093       │ no     │ yes                     │
-    # │ md5(…)                 ║ 0.320       │ yes    │ no                      │
-    # │ sha1(…)                ║ 0.335       │ yes    │ no                      │
-    # │ hash('md2', …)         ║ 4.773       │ yes    │ no                      │
-    # │ hash('md4', …)         ║ 0.329       │ yes    │ no                      │
-    # │ hash('md5', …)         ║ 0.374       │ yes    │ no                      │
-    # │ hash('sha1', …)        ║ 0.390       │ yes    │ no                      │
-    # │ hash('sha256', …)      ║ 0.671       │ yes    │ no                      │
-    # │ hash('sha512/256', …)  ║ 0.852       │ yes    │ no                      │
-    # │ hash('sha512', …)      ║ 0.879       │ yes    │ no                      │
-    # │ hash('sha3-224', …)    ║ 4.512       │ yes    │ no                      │
-    # │ hash('sha3-256', …)    ║ 4.680       │ yes    │ no                      │
-    # │ hash('sha3-512', …)    ║ 5.100       │ yes    │ no                      │
-    # │ hash('ripemd128', …)   ║ 0.572       │ yes    │ no                      │
-    # │ hash('ripemd320', …)   ║ 0.728       │ yes    │ no                      │
-    # │ hash('whirlpool', …)   ║ 1.278       │ yes    │ no                      │
-    # │ hash('tiger128,3', …)  ║ 0.391       │ yes    │ no                      │
-    # │ hash('tiger192,4', …)  ║ 0.443       │ yes    │ no                      │
-    # │ hash('snefru', …)      ║ 2.707       │ yes    │ no                      │
-    # │ hash('snefru256', …)   ║ 2.716       │ yes    │ no                      │
-    # │ hash('gost', …)        ║ 1.970       │ yes    │ no                      │
-    # │ hash('gost-crypto', …) ║ 2.153       │ yes    │ no                      │
-    # │ hash('adler32', …)     ║ 0.204       │ yes    │ no                      │
-    # │ hash('crc32', …)       ║ 0.198       │ yes    │ no                      │
-    # │ hash('crc32b', …)      ║ 0.200       │ yes    │ no                      │
-    # │ hash('fnv132', …)      ║ 0.195       │ yes    │ no                      │
-    # │ hash('fnv1a32', …)     ║ 0.201       │ yes    │ no                      │
-    # │ hash('fnv164', …)      ║ 0.203       │ yes    │ no                      │
-    # │ hash('fnv1a64', …)     ║ 0.209       │ yes    │ no                      │
-    # │ hash('joaat', …)       ║ 0.200       │ yes    │ no                      │
-    # │ hash('haval128,3', …)  ║ 0.747       │ yes    │ no                      │
-    # │ hash('haval256,5', …)  ║ 1.134       │ yes    │ no                      │
-    # └────────────────────────╨─────────────┴────────┴─────────────────────────┘
-
-    static function hash_get($data) {
-        if (gettype($data) === 'string')
-             return md5($data);
-        else return md5(serialize($data));
+    static function is_cron_run($period) {
+        $settings = Module::settings_get('core');
+        return !empty($settings->cron_last_run_date) &&
+                      $settings->cron_last_run_date > static::datetime_get('-'.$period.' second');
     }
 
-    static function hash_get_mini($data, $length = 8) {
-        return substr(static::hash_get($data), 0, $length);
+    static function cron_run_register() {
+        return Storage::get('data')->changes_register('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
     }
+
+    ####################################
+    ### functionality for file parts ###
+    ####################################
 
     static function random_bytes_generate($length = 8, $characters = '0123456789') {
         $result = '';
@@ -1008,23 +763,34 @@ abstract class Core {
         if (count($used_numbers) === 0) return '2';
     }
 
-    ############
-    ### cron ###
-    ############
-
-    static function is_cron_run($period) {
-        $settings = Module::settings_get('core');
-        return !empty($settings->cron_last_run_date) &&
-                      $settings->cron_last_run_date > static::datetime_get('-'.$period.' second');
-    }
-
-    static function cron_run_register() {
-        return Storage::get('data')->changes_insert('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
-    }
-
     ########################
     ### shared functions ###
     ########################
+
+    static function html_entity_encode($value) {
+        # ENT_COMPAT: will convert double-quotes and leave single-quotes alone
+        return htmlspecialchars((string)$value, ENT_COMPAT|ENT_SUBSTITUTE|ENT_HTML5, 'UTF-8');
+    }
+
+    static function html_entity_encode_total($value, $is_hex = false) {
+        return preg_replace_callback('%(?<char>.)%uS', function ($c_match) use ($is_hex) {
+            $c_attempt = htmlspecialchars($c_match['char'], ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML5, 'UTF-8');
+            if ($c_attempt === $c_match['char'] && $is_hex === true) return '&#x'.dechex(mb_ord($c_match['char'])).';';
+            if ($c_attempt === $c_match['char'] && $is_hex !== true) return '&#'.        mb_ord($c_match['char']) .';';
+            return $c_attempt;
+        }, $value);
+    }
+
+    static function html_entity_decode_total($value) {
+        $value = html_entity_decode($value, ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML5, 'UTF-8');
+        return preg_replace_callback('%[&][#][x](?<hex_value>[0]{0,1024}[0-9a-f]{1,5})[;]{0,1}|'.
+                                      '[&][#]'.'(?<dec_value>[0]{0,1024}[0-9'.']{1,6})[;]{0,1}%iS', function ($c_match) {
+            if (!empty($c_match['hex_value'])) return mb_chr(hexdec(ltrim($c_match['hex_value'], '0')), 'UTF-8');
+            if (!empty($c_match['dec_value'])) return mb_chr(       ltrim($c_match['dec_value'], '0'),  'UTF-8');
+            return '';
+        }, $value);
+        return $value;
+    }
 
     static function fractional_part_length_get($value, $no_zeros = true) {
         # case for strings (examples: '', '100', '0', '0.00100') but NOT exponential (examples: '1.23e-6')
@@ -1050,24 +816,18 @@ abstract class Core {
         return $value;
     }
 
-    static function strtolower_en($value) {
-        return preg_replace_callback('%(?<char>[A-Z])%S', function ($c_match) {
-            return strtolower($c_match['char']);
-        }, $value);
-    }
-
-    static function return_rendered($value) {
+    static function to_rendered($value) {
         return is_object($value) && method_exists($value, 'render') ?
                          $value->render() :
                          $value;
     }
 
-    static function return_null_if_empty($value) {
+    static function to_null_if_empty($value) {
         return $value ?: null;
     }
 
-    static function return_encoded($value) {
-        return htmlspecialchars($value, ENT_COMPAT|ENT_HTML5, 'UTF-8');
+    static function to_markdown($value) {
+        return new Node([], Markdown::markdown_to_markup($value));
     }
 
 }

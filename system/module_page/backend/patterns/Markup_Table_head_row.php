@@ -8,17 +8,18 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Table_head_row_cell extends Markup {
+class Markup_Table_head_row extends Markup {
 
-    public $tag_name = 'th';
+    public $tag_name = 'tr';
 
     function __construct($attributes = [], $children = [], $weight = 0) {
         parent::__construct(null, $attributes, $children, $weight);
     }
 
     function child_insert($child, $id = null) {
-        if (is_string($child) || is_numeric($child)) return parent::child_insert(new Text($child), $id);
-        else                                         return parent::child_insert(         $child,  $id);
+        if ($child instanceof Markup_Table_head_row_cell)
+             return parent::child_insert(                                   $child,  $id);
+        else return parent::child_insert(new Markup_Table_head_row_cell([], $child), $id);
     }
 
 }

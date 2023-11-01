@@ -28,7 +28,7 @@ abstract class Request {
         }
     }
 
-    static function allowed_args_in_get_get() {
+    static function allowed_args_in_GET_get() {
         static::init();
         return static::$allowed_args_in_get;
     }
@@ -48,8 +48,8 @@ abstract class Request {
     static function sanitize_structure($source = '_POST') {
         $result = [];
         global ${$source};
-        # filtering by structure
-        if (is_array(${$source}) && count(${$source})) {
+        if (count(${$source})) {
+            # filtering by structure
             $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator(${$source}));
             foreach ($iterator as $c_value) {
                 $c_depth = $iterator->getDepth();
@@ -59,13 +59,13 @@ abstract class Request {
                 if ($c_depth === 0 && is_string($c_k0) &&                  is_string($c_value)) $result[$c_k0]   = $c_value;
                 if ($c_depth === 1 && is_string($c_k0) && is_int($c_k1) && is_string($c_value)) $result[$c_k0][] = $c_value;
             }
-        }
-        # filtering by whitelist
-        if ($source === '_GET') {
-            $allowed_args = Request::allowed_args_in_get_get();
-            foreach ($result as $c_name => $c_value) {
-                if (!isset($allowed_args[$c_name])) {
-                    unset($result[$c_name]);
+            # filtering by whitelist
+            if ($source === '_GET') {
+                $allowed_args = Request::allowed_args_in_GET_get();
+                foreach ($result as $c_name => $c_value) {
+                    if (!isset($allowed_args[$c_name])) {
+                        unset($result[$c_name]);
+                    }
                 }
             }
         }
@@ -91,8 +91,8 @@ abstract class Request {
     static function sanitize_structure_files($source = '_FILES') {
         $result = [];
         global ${$source};
-        # filtering by structure
-        if (is_array(${$source}) && count(${$source})) {
+        if (count(${$source})) {
+            # filtering by structure
             $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator(${$source}));
             foreach ($iterator as $c_value) {
                 $c_depth = $iterator->getDepth();
@@ -271,21 +271,21 @@ abstract class Request {
     }
 
     static function addr_remote_get() {
-        return $_SERVER['REMOTE_ADDR'];
+        return $_SERVER['REMOTE_ADDR'] ?? '';
     }
 
     static function port_remote_get() {
-        return $_SERVER['REMOTE_PORT'];
+        return $_SERVER['REMOTE_PORT'] ?? '';
     }
 
-    static function uri_get() {
+    static function URI_get() {
         return Core::is_IIS() ? $_SERVER['UNENCODED_URL'] :
                                 $_SERVER['REQUEST_URI'];
     }
 
     static function path_get() {
-        return strstr(static::uri_get(), '?', true) ?:
-                      static::uri_get();
+        return strstr(static::URI_get(), '?', true) ?:
+                      static::URI_get();
     }
 
     static function query_get() {
@@ -313,17 +313,19 @@ abstract class Request {
             mb_strcut(trim(strip_tags($_SERVER['HTTP_USER_AGENT'])), 0, $max_length) : '';
     }
 
-    static function software_get_info($software = null) {
+    static function web_server_get_info($software = null) {
         $result = new stdClass;
-        $result->name = 'Unknown';
+        $result->name = 'CLI';
         $result->version = '';
-        if ($software === null)
+        if ($software === null && !empty($_SERVER['SERVER_SOFTWARE']))
             $software = $_SERVER['SERVER_SOFTWARE'];
-        $matches = [];
-        preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+).*)$|'.
-                    '^(?<full_name_unknown>.*)$%', $software, $matches);
-        if (isset($matches['full_name'        ])) {$result->name = strtolower($matches['name']); $result->version = $matches['version'];}
-        if (isset($matches['full_name_unknown'])) {$result->name = strtolower($matches['full_name_unknown']);}
+        if ($software) {
+            $matches = [];
+            preg_match('%^(?<full_name>(?<name>[a-zA-Z0-9\\-]+)/(?<version>[a-zA-Z0-9\\.]+).*)$|'.
+                        '^(?<full_name_unknown>.*)$%', $software, $matches);
+            if (isset($matches['full_name'        ])) {$result->name = mb_strtolower($matches['name']); $result->version = $matches['version'];}
+            if (isset($matches['full_name_unknown'])) {$result->name = mb_strtolower($matches['full_name_unknown']);}
+        }
         return $result;
     }
 
@@ -367,8 +369,8 @@ abstract class Request {
         curl_setopt($curl, CURLOPT_HEADERFUNCTION, function ($curl, $c_header) use (&$result) {
             $c_matches = [];
             preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
-            if ($c_matches && $c_matches['name'] !== 'Set-Cookie') $result['headers'][$c_matches['name']]   =           trim($c_matches['value'], CR.NL.'"');
-            if ($c_matches && $c_matches['name'] === 'Set-Cookie') $result['headers'][$c_matches['name']][] = ['raw' => trim($c_matches['value'], CR.NL.'"'), 'parsed' => static::cookie_get_info(trim($c_matches['value'], CR.NL.'"'))];
+            if ($c_matches && strtolower($c_matches['name']) !== 'set-cookie') $result['headers'][strtolower($c_matches['name'])]   =           trim($c_matches['value'], CR.NL.'"');
+            if ($c_matches && strtolower($c_matches['name']) === 'set-cookie') $result['headers'][strtolower($c_matches['name'])][] = ['raw' => trim($c_matches['value'], CR.NL.'"'), 'parsed' => static::cookie_get_info(trim($c_matches['value'], CR.NL.'"'))];
             return strlen($c_header);
         });
         # prepare return

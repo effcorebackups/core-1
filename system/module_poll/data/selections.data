@@ -30,6 +30,7 @@ selections
           weight: +340
       - user_type
           entity_field_name: user_type
+          is_not_visible: true
           weight: +320
       - is_multiple
           entity_field_name: is_multiple
@@ -41,14 +42,24 @@ selections
           weight: +280
       - created
           entity_field_name: created
-          weight: +260
+          weight: +240
       - updated
           entity_field_name: updated
-          weight: +240
+          weight: +220
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +220
+          weight: +200
+    - handlers
+      - user_type
+          title: User type
+          handler: \effcore\modules\poll\Events_Selection::handler__poll__user_type
+          is_apply_translation: true
+          weight: +320
+      - statistics
+          title: Statistics
+          handler: \effcore\modules\poll\Events_Selection::handler__poll__statistics
+          weight: +260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-poll|Selection
     id: instance_select_multiple-poll

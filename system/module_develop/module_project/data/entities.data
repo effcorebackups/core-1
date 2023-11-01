@@ -3,7 +3,7 @@ entities
     name: project
     title: Project
     title_plural: Projects
-    catalog_name: projects
+    table_name: projects
     managing_is_enabled: true
     managing_group_id: project
     has_parallel_checking: true
@@ -29,14 +29,16 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - title
         title: Title
         type: varchar
@@ -44,46 +46,57 @@ entities
         collate: nocase
         not_null: true
         check: (title <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - maxlength: 1024
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - maxlength: 1024
+            - size: 60
     - description
         title: Description
         type: blob
         default: null
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Textarea
-        managing_control_properties
-        - weight: +360
-        managing_control_element_attributes
-        - minlength: null
-        - maxlength: 65535
-        - required: null
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Textarea
+            properties
+            - weight: +360
+            element_attributes
+            - minlength: null
+            - maxlength: 65535
+            - required: null
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +320
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +320
     constraints
     - primary_id
         type: primary
@@ -102,7 +115,7 @@ entities
     name: project_release
     title: Release
     title_plural: Releases
-    catalog_name: project_releases
+    table_name: project_releases
     managing_is_enabled: true
     managing_group_id: project
     has_parallel_checking: true
@@ -127,109 +140,128 @@ entities
         size: 255
         collate: nocase
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: project
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: title
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: project
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: title
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - build
         title: Build number
         type: integer
         not_null: true
         default: 1000
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Number
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - min: 1
-        - max: 50000
-        managing_control_element_attributes_on_insert
-        - value: 1000
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +380
+            element_attributes
+            - min: 1
+            - max: 50000
+            element_attributes_on_insert
+            - value: 1000
+            element_attributes_on_update
+            - disabled: true
     - description
         title: Description
         type: blob
         default: null
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Textarea
-        managing_control_properties
-        - weight: +360
-        managing_control_element_attributes
-        - minlength: null
-        - maxlength: 65535
-        - required: null
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Textarea
+            properties
+            - weight: +360
+            element_attributes
+            - minlength: null
+            - maxlength: 65535
+            - required: null
     - path
         title: Path
         type: varchar
         size: 255
         collate: nocase
         default: null
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_File
-        managing_control_properties
-        - title: File
-        - max_file_size: 500M
-        - upload_dir: project_releases/
-        - types_allowed
-          - =: zip
-          - =: 7z
-        - weight: +340
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_File
+            properties
+            - title: File
+            - max_file_size: 500M
+            - upload_dir: project_releases/
+            - types_allowed
+              - =: zip
+              - =: 7z
+            - weight: +340
     - hash_sum
         title: Hash sum (md5)
         type: varchar
         size: 1024
         collate: nocase
         default: null
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +320
-        managing_control_element_attributes
-        - maxlength: 1024
-        - required: null
-        - disabled: true
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +320
+            element_attributes
+            - maxlength: 1024
+            - required: null
+            - disabled: true
+            - size: 60
     - downloads_num
         title: Number of downloads
         type: integer
         not_null: true
         default: 0
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Number
-        managing_control_element_attributes
-        - min: 0
-        - max: 2000000000
-        - disabled: true
+        managing
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            element_attributes
+            - min: 0
+            - max: 2000000000
+            - disabled: true
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +280
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +280
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +260
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +260
     constraints
     - primary_id_project
         type: primary

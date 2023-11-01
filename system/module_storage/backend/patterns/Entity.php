@@ -14,7 +14,7 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
 
     public $name;
     public $storage_name = 'sql';
-    public $catalog_name;
+    public $table_name;
     public $fields      = [];
     public $constraints = [];
     public $indexes     = [];
@@ -50,9 +50,11 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
             $this->fields['is_embedded']->type = 'boolean';
             $this->fields['is_embedded']->not_null = true;
             $this->fields['is_embedded']->default = 0;
-            $this->fields['is_embedded']->managing_control_class = '\\effcore\\Field_Switcher';
-            $this->fields['is_embedded']->managing_control_properties['weight'] = 390;
-            $this->fields['is_embedded']->managing_control_element_attributes['disabled'] = true;
+            $this->fields['is_embedded']->managing = new stdClass;
+            $this->fields['is_embedded']->managing->control = new stdClass;
+            $this->fields['is_embedded']->managing->control->class = '\\effcore\\Field_Switcher';
+            $this->fields['is_embedded']->managing->control->properties['weight'] = 390;
+            $this->fields['is_embedded']->managing->control->element_attributes['disabled'] = true;
         }
         # insert field 'module_id' and index for it
         if ($this->with_module_id) {
@@ -85,9 +87,10 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
             $this->fields['data'] = new stdClass;
             $this->fields['data']->title = 'Data';
             $this->fields['data']->type = 'blob';
-            $this->fields['data']->converter_on_select = 'unserialize';
-            $this->fields['data']->converter_on_insert = '\\effcore\\Core::data_serialize';
-            $this->fields['data']->converter_on_update = '\\effcore\\Core::data_serialize';
+            $this->fields['data']->converters = new stdClass;
+            $this->fields['data']->converters->on_select = 'unserialize';
+            $this->fields['data']->converters->on_insert = '\\effcore\\Core::data_serialize';
+            $this->fields['data']->converters->on_update = '\\effcore\\Core::data_serialize';
         }
     }
 
@@ -172,7 +175,7 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
         return [
             'name'              => 'name',
             'storage_name'      => 'storage_name',
-            'catalog_name'      => 'catalog_name',
+            'table_name'        => 'table_name',
             'title'             => 'title',
             'title_plural'      => 'title_plural',
             'managing_group_id' => 'managing_group_id'
@@ -232,6 +235,18 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
         foreach (static::$cache as $c_item)
             $groups[$c_item->managing_group_id] = $c_item->managing_group_id;
         return $groups;
+    }
+
+    static function converters_apply($value, $converters = []) {
+        if (!is_array($converters))
+                      $converters = [$converters];
+        krsort($converters, SORT_NUMERIC);
+        foreach ($converters as $c_converter) {
+            if (Core::is_handler($c_converter) === true && !Core::handler_exists($c_converter)) throw new Extend_exception('Converter is not available! Converter: "'.$c_converter.'"', 0, 'Converter "%%_name" is not available!', ['name' => $c_converter]);
+            if (Core::is_handler($c_converter) !== true &&      !function_exists($c_converter)) throw new Extend_exception('Converter is not available! Converter: "'.$c_converter.'"', 0, 'Converter "%%_name" is not available!', ['name' => $c_converter]);
+            $value = call_user_func($c_converter, $value);
+        }
+        return $value;
     }
 
 }

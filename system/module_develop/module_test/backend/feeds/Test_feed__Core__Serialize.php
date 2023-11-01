@@ -7,6 +7,7 @@
 namespace effcore;
 
 class Test_feed__Core__Serialize {
+
     public $prop_string        = 'string';
     public $prop_integer       = 123;
     public $prop_float         = 0.000001;
@@ -28,4 +29,5 @@ class Test_feed__Core__Serialize {
         'value_null'          => null,
         'value_array_empty'   => []
     ];
+
 }

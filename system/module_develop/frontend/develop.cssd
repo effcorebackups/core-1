@@ -129,7 +129,6 @@ entity_name_context: %%_entity_name_context
 entity_title_context: %%_entity_title_context
 entity_title_plural_context: %%_entity_title_plural_context
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-test_software_name: %%_test_software_name
 test_email_random: %%_test_email_random
 test_email_random: %%_test_email_random(0)
 test_email_random: %%_test_email_random(0)
@@ -139,9 +138,6 @@ test_nickname_random: %%_test_nickname_random(0)
 test_password_random: %%_test_password_random
 test_password_random: %%_test_password_random(0)
 test_password_random: %%_test_password_random(0)
-test_cookies: %%_test_cookies
-test_captcha: %%_test_captcha
-test_form_validation_id: %%_test_form_validation_id(some_form_id)
 test_response_http_code: %%_test_response_http_code
 test_response_location: %%_test_response_location
 test_response_content_length: %%_test_response_content_length
@@ -150,6 +146,10 @@ test_response_submit_error: %%_test_response_submit_error
 test_response_time_total: %%_test_response_time_total
 test_response_return_level: %%_test_response_return_level
 test_response_content: %%_test_response_content
+test_response_web_server_name: %%_test_response_web_server_name
+test_response_form_validation_id: %%_test_response_form_validation_id(some_form_id)
+test_response_cookies: %%_test_response_cookies
+test_response_captcha: %%_test_response_captcha
 ─────────────────────────────────────────────────────────────────────
 */
 
@@ -184,6 +184,7 @@ x-console table tbody {
   background-color: #214d58;
 }
 
+x-console [data-id='block__diagram_load'] [data-block-content] {margin: 0; padding: 10px 40px 20px 40px; background-color: rgba(0, 0, 0, .1)}
 x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale {border-color: #214d58}
 x-console [data-id='block__diagram_load'] x-diagram[data-type='linear'] x-param x-scale-fill {background-color: #214d58}
 

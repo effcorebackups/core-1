@@ -11,7 +11,7 @@ class Template_code extends Template {
     public $handler = '';
 
     function render() {
-        return call_user_func($this->handler, $this->args);
+        return call_user_func($this->handler, $this->args, $this->args_raw);
     }
 
     ###########################

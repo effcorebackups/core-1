@@ -94,7 +94,7 @@
 
 /* menu 'main': adaptivity */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: %%_page_width_mobile(null)px) {
   [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul    li:not(:last-child) > a {border-bottom: 1px dotted white; border-right: none}
   [data-layout-id='original_classic'] [role='tree'][data-id^='main'] ul ul li:not(:last-child) > a {border-bottom: none}
 }

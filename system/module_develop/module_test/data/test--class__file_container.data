@@ -1,0 +1,27 @@
+tests
+- class__file_container|Test
+    id: class__file_container
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: File_container
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-path_parse|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: File__container::__path_parse()
+    - code-path_parse|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File_container::test_step_code__path_parse
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-fopen_fwrite_fread_fseek|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: fopen(), fwrite(), fread(), fseek(), fclose()
+    - code-fopen_fwrite_fread_fseek|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File_container::test_step_code__fopen_fwrite_fread_fseek
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

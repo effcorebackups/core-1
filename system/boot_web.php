@@ -12,15 +12,15 @@ Timer::tap('total');
 # prepare incoming parameters
 # ─────────────────────────────────────────────────────────────────────
 
-$_ORIGINAL_POST    = $_POST;
-$_ORIGINAL_GET     = $_GET;
-$_ORIGINAL_REQUEST = $_REQUEST;
-$_ORIGINAL_FILES   = $_FILES;
+global $_ORIGINAL_POST;    $_ORIGINAL_POST    = $_POST;
+global $_ORIGINAL_GET;     $_ORIGINAL_GET     = $_GET;
+global $_ORIGINAL_REQUEST; $_ORIGINAL_REQUEST = $_REQUEST;
+global $_ORIGINAL_FILES;   $_ORIGINAL_FILES   = $_FILES;
 
-$_POST    = Request::sanitize_structure('_POST');
-$_GET     = Request::sanitize_structure('_GET');
-$_REQUEST = Request::sanitize_structure('_REQUEST');
-$_FILES   = Request::sanitize_structure_files();
+if (count($_POST))    $_POST    = Request::sanitize_structure('_POST');
+if (count($_GET))     $_GET     = Request::sanitize_structure('_GET');
+if (count($_REQUEST)) $_REQUEST = Request::sanitize_structure('_REQUEST');
+if (count($_FILES))   $_FILES   = Request::sanitize_structure_files();
 
 # ─────────────────────────────────────────────────────────────────────
 # redirect on invalid requests (for example: send the value "http://домен/путь?запрос" over the socket instead of "http://xn--d1acufc/%D0%BF%D1%83%D1%82%D1%8C?%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81" through the browser)
@@ -28,8 +28,8 @@ $_FILES   = Request::sanitize_structure_files();
 
 $raw_url = Request::scheme_get().'://'.
            Request::host_get(false).
-           Request::uri_get();
-if (Core::sanitize_url($raw_url) !== $raw_url || Core::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || Url::get_current()->has_error === true) {
+           Request::URI_get();
+if (Security::sanitize_url($raw_url) !== $raw_url || Security::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || Url::get_current()->has_error === true) {
     Response::send_header_and_exit('bad_request');
 }
 
@@ -38,7 +38,7 @@ if (Core::sanitize_url($raw_url) !== $raw_url || Core::validate_url($raw_url, FI
 # ─────────────────────────────────────────────────────────────────────
 
 if (count($_ORIGINAL_GET)) {
-    if (Core::hash_get($_GET) !== Core::hash_get($_ORIGINAL_GET)) {
+    if (Security::hash_get($_GET) !== Security::hash_get($_ORIGINAL_GET)) {
         Response::send_header_and_exit('redirect', null, null, count($_GET) ?
             Request::scheme_get().'://'.Request::host_get(false).Request::path_get().'?'.http_build_query($_GET, '', '&', PHP_QUERY_RFC3986) :
             Request::scheme_get().'://'.Request::host_get(false).Request::path_get()
@@ -50,9 +50,9 @@ if (count($_ORIGINAL_GET)) {
 # redirect to url without leading slash
 # ─────────────────────────────────────────────────────────────────────
 
-if (Request::uri_get()     !== '/' &&
-    Request::uri_get()[-1] === '/') {
-    $new_url = rtrim(Request::uri_get(), '/');
+if (Request::URI_get()     !== '/' &&
+    Request::URI_get()[-1] === '/') {
+    $new_url = rtrim(Request::URI_get(), '/');
     Response::send_header_and_exit('redirect', null, null,
         $new_url === '' ? '/' :
         $new_url
@@ -116,7 +116,7 @@ if ($file instanceof File && $file->type) {
     # ─────────────────────────────────────────────────────────────────────
 
     $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
-    $real_path = Core::validate_realpath($file->path_get());
+    $real_path = Security::validate_realpath($file->path_get());
     if ($real_path === false)               {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 1]); exit();} # object does not really exist or object is inaccessible to the web server by rights
     if ($real_path !== $file->path_get())   {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 2]); exit();} # resolved path is not the same as the original
     if (strpos($real_path, DIR_ROOT) !== 0) {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 3]); exit();} # object is outside the web root
@@ -190,11 +190,12 @@ if (Console::visible_mode_get()) {
     $result = str_replace('</body>', Console::markup_get()->render().'</body>', $result);
 }
 if (Module::is_enabled('test')) {
-    header('X-PHP-Memory-usage: '.memory_get_usage(true));
-    header('X-Time-total: '.Timer::period_get('total', 0, 1));
-    header('X-Return-level: system-page');
+    header('x-web-server-name: '.Request::web_server_get_info()->name);
+    header('x-time-total: '.Timer::period_get('total', 0, 1));
+    header('x-php-memory-usage: '.memory_get_usage(true));
+    header('x-return-level: system-page');
 }
-header('Cache-Control: private, no-cache');
-header('Content-Length: '.strlen($result));
+header('cache-control: private, no-cache');
+header('content-length: '.strlen($result));
 print $result;
 exit();

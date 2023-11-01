@@ -29,7 +29,7 @@ class Field_Select_entity_field_name extends Field_Select {
             foreach ($entities as $c_entity) {
                 if (!empty($c_entity->managing_is_enabled)) {
                     foreach ($c_entity->fields as $c_name => $c_field) {
-                        if (isset($c_field->managing_control_class)) {
+                        if (!empty($c_field->managing->control->class)) {
                             if (!isset($items[$c_entity->name])) {
                                        $items[$c_entity->name] = new stdClass;
                                        $items[$c_entity->name]->title = $c_entity->title; }
@@ -71,7 +71,7 @@ class Field_Select_entity_field_name extends Field_Select {
         foreach ($entities as $c_entity)
             if (!empty($c_entity->managing_is_enabled))
                 foreach ($c_entity->fields as $c_name => $c_field)
-                    if (isset($c_field->managing_control_class))
+                    if (!empty($c_field->managing->control->class))
                         if (!Core::in_array($c_entity->name, $filter))
                             $result[$c_entity->name.'.'.$c_name] =
                                     $c_entity->name.'.'.$c_name;

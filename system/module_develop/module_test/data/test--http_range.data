@@ -49,7 +49,7 @@ tests
     - request_url-test_http_range-bytes=|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=
+        - range: bytes=
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -78,7 +78,7 @@ tests
     - request_url-test_http_range-bytes=-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-
+        - range: bytes=-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -94,7 +94,7 @@ tests
     - request_url-test_http_range-bytes=-1-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-
+        - range: bytes=-1-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -110,7 +110,7 @@ tests
     - request_url-test_http_range-bytes=0-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-
+        - range: bytes=0-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -147,7 +147,7 @@ tests
     - request_url-test_http_range-bytes=1-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-
+        - range: bytes=1-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -184,7 +184,7 @@ tests
     - request_url-test_http_range-bytes=10-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-
+        - range: bytes=10-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -200,7 +200,7 @@ tests
     - request_url-test_http_range-bytes=11-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-
+        - range: bytes=11-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -216,7 +216,7 @@ tests
     - request_url-test_http_range-bytes=12-|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-
+        - range: bytes=12-
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -232,7 +232,7 @@ tests
     - request_url-test_http_range-bytes=--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=--1
+        - range: bytes=--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -248,7 +248,7 @@ tests
     - request_url-test_http_range-bytes=-1--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1--1
+        - range: bytes=-1--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -264,7 +264,7 @@ tests
     - request_url-test_http_range-bytes=0--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0--1
+        - range: bytes=0--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -280,7 +280,7 @@ tests
     - request_url-test_http_range-bytes=1--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1--1
+        - range: bytes=1--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -296,7 +296,7 @@ tests
     - request_url-test_http_range-bytes=10--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10--1
+        - range: bytes=10--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -312,7 +312,7 @@ tests
     - request_url-test_http_range-bytes=11--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11--1
+        - range: bytes=11--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -328,7 +328,7 @@ tests
     - request_url-test_http_range-bytes=12--1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12--1
+        - range: bytes=12--1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -344,7 +344,7 @@ tests
     - request_url-test_http_range-bytes=-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-0
+        - range: bytes=-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -360,7 +360,7 @@ tests
     - request_url-test_http_range-bytes=-1-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-0
+        - range: bytes=-1-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -376,7 +376,7 @@ tests
     - request_url-test_http_range-bytes=0-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-0
+        - range: bytes=0-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -413,7 +413,7 @@ tests
     - request_url-test_http_range-bytes=1-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-0
+        - range: bytes=1-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -429,7 +429,7 @@ tests
     - request_url-test_http_range-bytes=10-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-0
+        - range: bytes=10-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -445,7 +445,7 @@ tests
     - request_url-test_http_range-bytes=11-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-0
+        - range: bytes=11-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -461,7 +461,7 @@ tests
     - request_url-test_http_range-bytes=12-0|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-0
+        - range: bytes=12-0
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -477,7 +477,7 @@ tests
     - request_url-test_http_range-bytes=-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1
+        - range: bytes=-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -493,7 +493,7 @@ tests
     - request_url-test_http_range-bytes=-1-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-1
+        - range: bytes=-1-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -509,7 +509,7 @@ tests
     - request_url-test_http_range-bytes=0-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-1
+        - range: bytes=0-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -546,7 +546,7 @@ tests
     - request_url-test_http_range-bytes=1-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-1
+        - range: bytes=1-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -583,7 +583,7 @@ tests
     - request_url-test_http_range-bytes=10-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-1
+        - range: bytes=10-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -599,7 +599,7 @@ tests
     - request_url-test_http_range-bytes=11-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-1
+        - range: bytes=11-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -615,7 +615,7 @@ tests
     - request_url-test_http_range-bytes=12-1|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-1
+        - range: bytes=12-1
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -631,7 +631,7 @@ tests
     - request_url-test_http_range-bytes=-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-10
+        - range: bytes=-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -647,7 +647,7 @@ tests
     - request_url-test_http_range-bytes=-1-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-10
+        - range: bytes=-1-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -663,7 +663,7 @@ tests
     - request_url-test_http_range-bytes=0-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-10
+        - range: bytes=0-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -700,7 +700,7 @@ tests
     - request_url-test_http_range-bytes=1-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-10
+        - range: bytes=1-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -737,7 +737,7 @@ tests
     - request_url-test_http_range-bytes=10-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-10
+        - range: bytes=10-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -753,7 +753,7 @@ tests
     - request_url-test_http_range-bytes=11-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-10
+        - range: bytes=11-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -769,7 +769,7 @@ tests
     - request_url-test_http_range-bytes=12-10|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-10
+        - range: bytes=12-10
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -785,7 +785,7 @@ tests
     - request_url-test_http_range-bytes=-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-11
+        - range: bytes=-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -801,7 +801,7 @@ tests
     - request_url-test_http_range-bytes=-1-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-11
+        - range: bytes=-1-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -817,7 +817,7 @@ tests
     - request_url-test_http_range-bytes=0-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-11
+        - range: bytes=0-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -854,7 +854,7 @@ tests
     - request_url-test_http_range-bytes=1-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-11
+        - range: bytes=1-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -891,7 +891,7 @@ tests
     - request_url-test_http_range-bytes=10-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-11
+        - range: bytes=10-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -907,7 +907,7 @@ tests
     - request_url-test_http_range-bytes=11-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-11
+        - range: bytes=11-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -923,7 +923,7 @@ tests
     - request_url-test_http_range-bytes=12-11|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-11
+        - range: bytes=12-11
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -939,7 +939,7 @@ tests
     - request_url-test_http_range-bytes=-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-12
+        - range: bytes=-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -955,7 +955,7 @@ tests
     - request_url-test_http_range-bytes=-1-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=-1-12
+        - range: bytes=-1-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -971,7 +971,7 @@ tests
     - request_url-test_http_range-bytes=0-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=0-12
+        - range: bytes=0-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -1008,7 +1008,7 @@ tests
     - request_url-test_http_range-bytes=1-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=1-12
+        - range: bytes=1-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -1045,7 +1045,7 @@ tests
     - request_url-test_http_range-bytes=10-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=10-12
+        - range: bytes=10-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -1061,7 +1061,7 @@ tests
     - request_url-test_http_range-bytes=11-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=11-12
+        - range: bytes=11-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -1077,7 +1077,7 @@ tests
     - request_url-test_http_range-bytes=12-12|Test_step_Request
         url: /system/module_develop/module_test/files/test_http_range.no_cached_txt
         headers
-        - range: Range: bytes=12-12
+        - range: bytes=12-12
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form

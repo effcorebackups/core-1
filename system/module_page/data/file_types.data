@@ -5,12 +5,12 @@ file_types
 - audio
     type: audio
     headers
-    - Content-type: audio/*
+    - content-type: audio/*
 - picture
     type: picture
     headers
-    - Content-type: image/*
+    - content-type: image/*
 - video
     type: video
     headers
-    - Content-type: video/*
+    - content-type: video/*

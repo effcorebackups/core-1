@@ -41,7 +41,7 @@ abstract class Markdown {
         if (static::node_type_get($element) === '_markup'   ) $text_object = $element;
         if ($text_object) {
             $text = $text_object->text_select();
-            if ($encode     ) $new_text = Core::return_encoded($new_text);
+            if ($encode     ) $new_text = Core::html_entity_encode($new_text);
             if ($text === '') $text =          $new_text;
             if ($text !== '') $text = $text.NL.$new_text;
             if ($with_br    ) $text = preg_replace('%[ ]+'.NL.'%S', static::markup_br_get()->render().NL, $text);
@@ -118,7 +118,7 @@ abstract class Markdown {
     static function markup_code_get($data) {
         return new Markup('pre', [], [
             'code' => new Markup('code', [], [
-                'text' => new Text(Core::return_encoded($data))
+                'text' => new Text(Core::html_entity_encode($data))
             ])]
         );
     }
@@ -573,7 +573,7 @@ abstract class Markdown {
                         $text = preg_replace_callback('%\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]'.'\\:'.
                                         '(?:[ ]{0,64}'.      '(?<url>[^ "\\n]{1,1024})'.   '|)'.
                                         '(?:[ ]{0,64}'.'["]'.'(?<title>[^"\\n]{1,512})'.'["]|)%S', function ($c_match) {
-                            static::$references[Core::hash_get(strtolower($c_match['id']))] = (object)[
+                            static::$references[Security::hash_get(mb_strtolower($c_match['id']))] = (object)[
                                 'url'   => array_key_exists('url',   $c_match) ? trim($c_match['url'  ]) : '',
                                 'title' => array_key_exists('title', $c_match) ? trim($c_match['title']) : '',
                             ];
@@ -610,12 +610,12 @@ abstract class Markdown {
                         # image|link|email
                         $text = preg_replace('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new Markup_simple('img', ['title' => '$3', 'src'  => '$2',  'alt' => '$1']))->render(), $text);
                         $text = preg_replace('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new Markup       ('a',   ['title' => '$3', 'href' => '$2'], new Text('$1')))->render(), $text);
-                        $text = preg_replace_callback('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Core::hash_get(strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup_simple('img', ['title' => static::$references[$c_id]->title, 'src'  => static::$references[$c_id]->url,  'alt' => $c_match['text']]))->render(); else return $c_match[0];}, $text);
-                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024})'. '\\]'.'\\['.                          '\\]%S', function ($c_match) {$c_id = Core::hash_get(strtolower($c_match['text'])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
-                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Core::hash_get(strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace_callback('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup_simple('img', ['title' => static::$references[$c_id]->title, 'src'  => static::$references[$c_id]->url,  'alt' => $c_match['text']]))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024})'. '\\]'.'\\['.                          '\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['text'])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
                         $text = preg_replace_callback('%'.'\\<'.'(?<text>[^\\>\\n]{5,512})'.'\\>'.'%S', function ($c_match) {
-                            if (Core::validate_email($c_match['text'])) return (new Markup('a', ['href' => 'mailto:'.$c_match['text']], new Text($c_match['text'])))->render();
-                            if (Core::validate_url  ($c_match['text'])) return (new Markup('a', ['href' =>           $c_match['text']], new Text($c_match['text'])))->render();
+                            if (Security::validate_email($c_match['text'])) return (new Markup('a', ['href' => 'mailto:'.$c_match['text']], new Text($c_match['text'])))->render();
+                            if (Security::validate_url  ($c_match['text'])) return (new Markup('a', ['href' =>           $c_match['text']], new Text($c_match['text'])))->render();
                             return $c_match[0];
                         }, $text);
                         # code|strong|em

@@ -21,7 +21,7 @@ abstract class Events_Form_SEO_sitemap {
         $file = new File(Dynamic::DIR_FILES.'sitemap.xml');
         if ($file->is_exists()) {
             $items['#content']->value_set(
-                $file->load()
+                $file->load() ?: ''
             );
         }
     }
@@ -30,21 +30,29 @@ abstract class Events_Form_SEO_sitemap {
         switch ($form->clicked_button->value_get()) {
             case 'save':
                 $file = new File(Dynamic::DIR_FILES.'sitemap.xml');
+                $old_value = $file->load() ?: '';
                 $new_value = $items['#content']->value_get();
-                if (strlen($new_value) !== 0) {
-                    $file->data_set($new_value);
-                    if ($file->save())
-                         Message::insert(new Text_multiline(['File "%%_file" was written to disc.'                                                                                          ], ['file' => $file->path_get_relative()])         );
-                    else Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'File permissions (if the file exists) and directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
+                $result = true;
+                if ($new_value !== $old_value) {
+                    if (strlen($new_value) !== 0) {
+                        $file->data_set($new_value);
+                        $result = $file->save();
+                        if ($result)                   Message::insert(new Text_multiline(['File "%%_file" was written to disc.'                                             ], ['file' => $file->path_get_relative()])         );
+                        else { if ($file->is_exists()) Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'File permissions are too strict!'     ], ['file' => $file->path_get_relative()]), 'error');
+                               else                    Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'Directory permissions are too strict!'], ['file' => $file->path_get_relative()]), 'error');
+                        }
+                    }
+                    if (strlen($new_value) === 0 && $file->is_exists()) {
+                        $result = File::delete($file->path_get());
+                        if ($result) Message::insert(new Text_multiline(['File "%%_file" was deleted.'                                             ], ['file' => $file->path_get_relative()])         );
+                        else         Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions are too strict!'], ['file' => $file->path_get_relative()]), 'error');
+                    }
                 }
-                if (strlen($new_value) === 0 && $file->is_exists()) {
-                    if (@unlink($file->path_get()))
-                         Message::insert(new Text_multiline(['File "%%_file" was deleted.'                                                ], ['file' => $file->path_get_relative()])         );
-                    else Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => $file->path_get_relative()]), 'error');
+                if ($result) {
+                    $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/apply_tokens_for_sitemap', $items['#is_apply_tokens']->checked_get());
+                    if ($result) Message::insert('Changes was saved.'             );
+                    else         Message::insert('Changes was not saved!', 'error');
                 }
-                $result = Storage::get('data')->changes_insert('page', 'update', 'settings/page/apply_tokens_for_sitemap', $items['#is_apply_tokens']->checked_get());
-                if ($result) Message::insert('Changes was saved.'             );
-                else         Message::insert('Changes was not saved!', 'error');
                 break;
         }
     }

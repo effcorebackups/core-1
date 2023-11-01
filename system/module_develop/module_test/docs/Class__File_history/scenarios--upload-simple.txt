@@ -1,0 +1,1131 @@
+
+
+
+PRECONDITIONS:
+═══════════════════════════════════════════════════════════════════════
+- file_text|field_file
+    is_debug_mode: true
+    min_files_number: 0
+    max_files_number: 3
+    element_attributes
+    - name: file_text[]
+    - multiple: true
+───────────────────────────────────────────────────────────────────────
+
+
+
+##################
+### PRE INSERT ###
+##################
+
+formula:
+═══════════════════════════════════════════════════════════════════════
+         fin[-] | fin[X] | fin[X,Y] +
+         pre[-] | pre[M] | pre[M,N] +
+                  new[A] | new[A,B] | new[A,B,C] | new[A,B,C,D]
+───────────────────────────────────────────────────────────────────────
+
+permutations:
+═══════════════════════════════════════════════════════════════════════
+         fin-_pre-_newA │ fin-_preM_newA │ fin-_preN-_newA
+         fin-_pre-_newB │ fin-_preM_newB │ fin-_preN-_newB
+         fin-_pre-_newC │ fin-_preM_newC │ fin-_preN-_newC
+         fin-_pre-_newD │ fin-_preM_newD │ fin-_preN-_newD
+         ───────────────┼────────────────┼─────────────────
+         finX_pre-_newA │ finX_preM_newA │ finX_preN-_newA
+         finX_pre-_newB │ finX_preM_newB │ finX_preN-_newB
+         finX_pre-_newC │ finX_preM_newC │ finX_preN-_newC
+         finX_pre-_newD │ finX_preM_newD │ finX_preN-_newD
+         ───────────────┼────────────────┼────────────────
+         finY_pre-_newA │ finY_preM_newA │ finY_preN-_newA
+         finY_pre-_newB │ finY_preM_newB │ finY_preN-_newB
+         finY_pre-_newC │ finY_preM_newC │ finY_preN-_newC
+         finY_pre-_newD │ finY_preM_newD │ finY_preN-_newD
+.......................................................................
+finDelX_finZ__pre-_newA │ finDelX_finZ__pre-_newB │ finDelX_finZ__pre-_newC │ finDelX_finZ__pre-_newD
+────────────────────────┼─────────────────────────┼─────────────────────────┼────────────────────────
+finDelY_finZ__pre-_newA │ finDelY_finZ__pre-_newB │ finDelY_finZ__pre-_newC │ finDelY_finZ__pre-_newD
+────────────────────────┼─────────────────────────┼─────────────────────────┼────────────────────────
+finDelZ_fin-__pre-_newA │ finDelZ_fin-__pre-_newB │ finDelZ_fin-__pre-_newC │ finDelZ_fin-__pre-_newD
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_pre-_newA":
+  fin[-]
+  pre[-]
++ new[A]
+  ──────
+= fin[-]
+= pre[A]
+
+
+test "fin-_pre-_newB":
+  fin[-]
+  pre[-]
++ new[A,B]
+  ────────
+= fin[-]
+= pre[A,B]
+
+
+test "fin-_pre-_newC":
+  fin[-]
+  pre[-]
++ new[A,B,C]
+  ──────────
+= fin[-]
+= pre[A,B,C]
+
+
+test "fin-_pre-_newD":
+  fin[-]
+  pre[-]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_preM_newA":
+  fin[-]
+  pre[M]
++ new[A]
+  ────────
+= fin[-]
+= pre[M,A]
+
+
+test "fin-_preM_newB":
+  fin[-]
+  pre[M]
++ new[A,B]
+  ──────────
+= fin[-]
+= pre[M,A,B]
+
+
+test "fin-_preM_newC":
+  fin[-]
+  pre[M]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "fin-_preM_newD":
+  fin[-]
+  pre[M]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_preN_newA":
+  fin[-]
+  pre[M,N]
++ new[A]
+  ──────────
+= fin[-]
+= pre[M,N,A]
+
+
+test "fin-_preN_newB":
+  fin[-]
+  pre[M,N]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "fin-_preN_newC":
+  fin[-]
+  pre[M,N]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "fin-_preN_newD":
+  fin[-]
+  pre[M,N]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finX_pre-_newA":
+  fin[X]
+  pre[-]
++ new[A]
+  ──────
+= fin[X]
+= pre[A]
+
+
+test "finX_pre-_newB":
+  fin[X]
+  pre[-]
++ new[A,B]
+  ────────
+= fin[X]
+= pre[A,B]
+
+
+test "finX_pre-_newC":
+  fin[X]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_pre-_newD":
+  fin[X]
+  pre[-]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preM_newA":
+  fin[X]
+  pre[M]
++ new[A]
+  ──────
+= fin[X]
+= pre[M,A]
+
+
+test "finX_preM_newB":
+  fin[X]
+  pre[M]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_preM_newC":
+  fin[X]
+  pre[M]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_preM_newD":
+  fin[X]
+  pre[M]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preN_newA":
+  fin[X]
+  pre[M,N]
++ new[A]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_preN_newB":
+  fin[X]
+  pre[M,N]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_preN_newC":
+  fin[X]
+  pre[M,N]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finX_preN_newD":
+  fin[X]
+  pre[M,N]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finY_pre-_newA":
+  fin[X,Y]
+  pre[-]
++ new[A]
+  ────────
+= fin[X,Y]
+= pre[A]
+
+
+test "finY_pre-_newB":
+  fin[X,Y]
+  pre[-]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_pre-_newC":
+  fin[X,Y]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_pre-_newD":
+  fin[X,Y]
+  pre[-]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finY_preM_newA":
+  fin[X,Y]
+  pre[M]
++ new[A]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preM_newB":
+  fin[X,Y]
+  pre[M]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preM_newC":
+  fin[X,Y]
+  pre[M]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preM_newD":
+  fin[X,Y]
+  pre[M]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finY_preN_newA":
+  fin[X,Y]
+  pre[M,N]
++ new[A]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preN_newB":
+  fin[X,Y]
+  pre[M,N]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preN_newC":
+  fin[X,Y]
+  pre[M,N]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finY_preN_newD":
+  fin[X,Y]
+  pre[M,N]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+.......................................................................
+.......................................................................
+
+
+test "finDelX_finZ__pre-_newA":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[-]
++ new[A]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y,Z]
+= pre[A]
+
+
+test "finDelX_finZ__pre-_newB":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[-]
++ new[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelX_finZ__pre-_newC":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelX_finZ__pre-_newD":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[-]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+
+
+test "finDelY_finZ__pre-_newA":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[-]
++ new[A]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[Z]
+= pre[A]
+
+
+test "finDelY_finZ__pre-_newB":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[-]
++ new[A,B]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[Z]
+= pre[A,B]
+
+
+test "finDelY_finZ__pre-_newC":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelY_finZ__pre-_newD":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[-]
++ new[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+
+
+test "finDelZ_fin-__pre-_newA":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[-]
++ new[A]
+  ────────────────────
+= fin_to_delete[X,Y,Z]
+= fin[-]
+= pre[A]
+
+
+test "finDelZ_fin-__pre-_newB":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[-]
++ new[A,B]
+  ────────────────────
+= fin_to_delete[X,Y,Z]
+= fin[-]
+= pre[A,B]
+
+
+test "finDelZ_fin-__pre-_newC":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= fin_to_delete[X,Y,Z]
+= fin[-]
+= pre[A,B,C]
+
+
+test "finDelZ_fin-__pre-_newD":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[-]
++ new[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+
+##################
+### PRE DELETE ###
+##################
+
+formula:
+═══════════════════════════════════════════════════════════════════════
+       fin[-] | fin[X] | fin[X,Y] +
+                pre[M] | pre[M,N] | pre[M,N,K] -
+                pre[M] | pre[M,N] | pre[M,N,K]
+───────────────────────────────────────────────────────────────────────
+
+permutations:
+═══════════════════════════════════════════════════════════════════════
+                fin-_preM │ fin-_preN* │ fin-_preK**
+                ──────────┼────────────┼────────────
+                finX_preM │ finX_preN* │ finX_preK**
+                ──────────┼────────────┼────────────
+                finY_preM │ finY_preN* │ finY_preK**
+.......................................................................
+finDelX_finZ__preA | finDelX_finZ__preB | finDelX_finZ__preC | finDelX_finZ__preD
+───────────────────┼────────────────────┼────────────────────┼───────────────────
+finDelY_finZ__preA | finDelY_finZ__preB | finDelY_finZ__preC | finDelY_finZ__preD
+───────────────────┼────────────────────┼────────────────────┼───────────────────
+finDelZ_fin-__preA | finDelZ_fin-__preB | finDelZ_fin-__preC | finDel-_finZ__preD
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_preM":
+  fin[-]
+  pre[M]
+- pre[M]
+  ──────
+= fin[-]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_preMN" (11):
+  fin[-]
+  pre[M,N]
+- pre[M,N]
+  ──────
+= fin[-]
+= pre[-]
+
+
+test "fin-_preMn" (10):
+  fin[-]
+  pre[M,N]
+- pre[M]
+  ──────
+= fin[-]
+= pre[N]
+
+
+test "fin-_premN": (01)
+  fin[-]
+  pre[M,N]
+- pre[N]
+  ──────
+= fin[-]
+= pre[M]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "fin-_preMNK" (111):
+  fin[-]
+  pre[M,N,K]
+- pre[M,N,K]
+  ──────
+= fin[-]
+= pre[-]
+
+
+test "fin-_preMNk" (110):
+  fin[-]
+  pre[M,N,K]
+- pre[M,N]
+  ──────
+= fin[-]
+= pre[K]
+
+
+test "fin-_preMnK" (101):
+  fin[-]
+  pre[M,N,K]
+- pre[M,K]
+  ──────
+= fin[-]
+= pre[N]
+
+
+test "fin-_preMnk" (100):
+  fin[-]
+  pre[M,N,K]
+- pre[M]
+  ──────
+= fin[-]
+= pre[N,K]
+
+
+test "fin-_premNK" (011):
+  fin[-]
+  pre[M,N,K]
+- pre[N,K]
+  ──────
+= fin[-]
+= pre[M]
+
+
+test "fin-_premNk" (010):
+  fin[-]
+  pre[M,N,K]
+- pre[N]
+  ──────
+= fin[-]
+= pre[M,K]
+
+
+test "fin-_premnK" (001):
+  fin[-]
+  pre[M,N,K]
+- pre[K]
+  ──────
+= fin[-]
+= pre[M,N]
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finX_preM":
+  fin[X]
+  pre[M]
+- pre[M]
+  ──────
+= fin[X]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preMN" (11):
+  fin[X]
+  pre[M,N]
+- pre[M,N]
+  ──────
+= fin[X]
+= pre[-]
+
+
+test "finX_preMn" (10):
+  fin[X]
+  pre[M,N]
+- pre[M]
+  ──────
+= fin[X]
+= pre[N]
+
+
+test "finX_premN" (01):
+  fin[X]
+  pre[M,N]
+- pre[N]
+  ──────
+= fin[X]
+= pre[M]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preK":
+  fin[X]
+  pre[M,N,K]
+- pre[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finY_preM":
+  fin[X,Y]
+  pre[M]
+- pre[M]
+  ──────
+= fin[X,Y]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finY_preN":
+  fin[X,Y]
+  pre[M,N]
+- pre[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finY_preK":
+  fin[X,Y]
+  pre[M,N,K]
+- pre[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+.......................................................................
+.......................................................................
+
+
+test "finDelX_finZ__preA":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[A]
+- pre[A]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y,Z]
+= pre[-]
+
+
+test "finDelX_finZ__preB":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[A,B]
+- pre[A,B]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelX_finZ__preC":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[A,B,C]
+- pre[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelX_finZ__preD":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[A,B,C,D]
+- pre[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+
+
+test "finDelY_finZ__preA":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[A]
+- pre[A]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y,Z]
+= pre[-]
+
+
+test "finDelY_finZ__preB":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[A,B]
+- pre[A,B]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[Z]
+= pre[-]
+
+
+test "finDelY_finZ__preC":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[A,B,C]
+- pre[A,B,C]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+test "finDelY_finZ__preD":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[A,B,C,D]
+- pre[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+.......................................................................
+
+
+test "finDelZ_fin-__preA":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[A]
+- pre[A]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y,Z]
+= pre[-]
+
+
+test "finDelZ_fin-__preB":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[A,B]
+- pre[A,B]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[Z]
+= pre[-]
+
+
+test "finDelZ_fin-__preC":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[A,B,C]
+- pre[A,B,C]
+  ────────────────────
+= fin_to_delete[X,Y,Z]
+= fin[-]
+= pre[-]
+
+
+test "finDelZ_fin-__preD":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[A,B,C,D]
+- pre[A,B,C,D]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+
+##################
+### FIN DELETE ###
+##################
+
+formula:
+═══════════════════════════════════════════════════════════════════════
+                fin[X] | fin[X,Y] | fin[X,Y,Z] +
+       pre[-] | pre[M] | pre[M,N] -
+                fin[X] | fin[X,Y] | fin[X,Y,Z]
+───────────────────────────────────────────────────────────────────────
+
+permutations:
+═══════════════════════════════════════════════════════════════════════
+                finX_pre-   │ finX_preM   │ finX_preN
+                ────────────┼─────────────┼──────────
+                finY*_pre-  │ finY*_preM  │ finY*_preN
+                ────────────┼─────────────┼──────────
+                finZ**_pre- │ finZ**_preM │ finZ**_preN
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_pre-":
+  fin[X]
+  pre[-]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[-]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preM":
+  fin[X]
+  pre[M]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[-]
+= pre[M]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finX_preN":
+  fin[X]
+  pre[M,N]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[-]
+= pre[M,N]
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finXY_pre-" (11):
+  fin[X,Y]
+  pre[-]
+- fin[X,Y]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[-]
+= pre[-]
+
+
+test "finXy_pre-" (10):
+  fin[X,Y]
+  pre[-]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y]
+= pre[-]
+
+
+test "finxY_pre-" (01):
+  fin[X,Y]
+  pre[-]
+- fin[Y]
+  ────────────────────
+= fin_to_delete[Y]
+= fin[X]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finXY_preM" (11):
+  fin[X,Y]
+  pre[M]
+- fin[X,Y]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[-]
+= pre[M]
+
+
+test "finXy_preM" (10):
+  fin[X,Y]
+  pre[M]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y]
+= pre[M]
+
+
+test "finxY_preM" (01):
+  fin[X,Y]
+  pre[M]
+- fin[Y]
+  ────────────────────
+= fin_to_delete[Y]
+= fin[X]
+= pre[M]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finY_preN":
+  fin[X,Y]
+  pre[M,N]
+- fin[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+═══════════════════════════════════════════════════════════════════════
+
+
+test "finXYZ_pre-" (111):
+  fin[X,Y,Z]
+  pre[-]
+- fin[X,Y,Z]
+  ────────────────────
+= fin_to_delete[X,Y,Z]
+= fin[-]
+= pre[-]
+
+
+test "finXYz_pre-" (110):
+  fin[X,Y,Z]
+  pre[-]
+- fin[X,Y]
+  ────────────────────
+= fin_to_delete[X,Y]
+= fin[Z]
+= pre[-]
+
+
+test "finXyZ_pre-" (101):
+  fin[X,Y,Z]
+  pre[-]
+- fin[X,Z]
+  ────────────────────
+= fin_to_delete[X,Z]
+= fin[Y]
+= pre[-]
+
+
+test "finXyz_pre-" (100):
+  fin[X,Y,Z]
+  pre[-]
+- fin[X]
+  ────────────────────
+= fin_to_delete[X]
+= fin[Y,Z]
+= pre[-]
+
+
+test "finxYZ_pre-" (011):
+  fin[X,Y,Z]
+  pre[-]
+- fin[Y,Z]
+  ────────────────────
+= fin_to_delete[Y,Z]
+= fin[X]
+= pre[-]
+
+
+test "finxYz_pre-" (010):
+  fin[X,Y,Z]
+  pre[-]
+- fin[Y]
+  ────────────────────
+= fin_to_delete[Y]
+= fin[X,Z]
+= pre[-]
+
+
+test "finxyZ_pre-" (001):
+  fin[X,Y,Z]
+  pre[-]
+- fin[Z]
+  ────────────────────
+= fin_to_delete[Z]
+= fin[X,Y]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finZ_preM":
+  fin[X,Y,Z]
+  pre[M]
+- fin[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finZ_preN":
+  fin[X,Y,Z]
+  pre[M,N]
+- fin[*]
+  ────────────────────
+= SHOULD BE IMPOSSIBLE
+
+
+
+############
+### SAVE ###
+############
+
+
+test "finDelX_finZ__preA":
+  fin_to_delete[X]
+  fin[Y,Z]
+  pre[A]
++ save
+  ────────────────────
+= fin_to_delete[-]
+= fin[Y,Z,A]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finDelY_finZ__preB":
+  fin_to_delete[X,Y]
+  fin[Z]
+  pre[A,B]
++ save
+  ────────────────────
+= fin_to_delete[-]
+= fin[Z,A,B]
+= pre[-]
+
+
+───────────────────────────────────────────────────────────────────────
+
+
+test "finDelZ_fin-__preC":
+  fin_to_delete[X,Y,Z]
+  fin[-]
+  pre[A,B,C]
++ save
+  ────────────────────
+= fin_to_delete[-]
+= fin[A,B,C]
+= pre[-]
+
+

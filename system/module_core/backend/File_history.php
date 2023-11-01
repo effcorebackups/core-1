@@ -43,7 +43,7 @@ class File_history {
         $this->name     = $file->name_get();
         $this->type     = $file->type_get();
         $this->file     = $file->file_get();
-        $this->mime     = Core::validate_mime_type($type) ? $type : '';
+        $this->mime     = Security::validate_mime_type($type) ? $type : '';
         $this->size     = $size;
         $this->tmp_path = $path;
         $this->error    = $error;
@@ -74,8 +74,8 @@ class File_history {
                 unset($this->tmp_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions should be checked.'], ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                   ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]);
+                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions are too strict!'], ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]);
             }
         }
     }
@@ -95,8 +95,8 @@ class File_history {
                 unset($this->pre_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions should be checked.'], ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                   ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]);
+                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions are too strict!'], ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]);
             }
         }
     }
@@ -115,8 +115,8 @@ class File_history {
                 unset($this->pre_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => (new File($this->pre_path))->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                   ['file' => (new File($this->pre_path))->path_get_relative()]);
+                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions are too strict!'], ['file' => (new File($this->pre_path))->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                ['file' => (new File($this->pre_path))->path_get_relative()]);
             }
         }
     }
@@ -128,8 +128,8 @@ class File_history {
                 unset($this->fin_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions should be checked.'], ['file' => (new File($this->fin_path))->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                   ['file' => (new File($this->fin_path))->path_get_relative()]);
+                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions are too strict!'], ['file' => (new File($this->fin_path))->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                ['file' => (new File($this->fin_path))->path_get_relative()]);
             }
         }
     }
@@ -138,8 +138,8 @@ class File_history {
 
     function sanitize_tmp($characters_allowed = 'a-zA-Z0-9_\\-\\.', $max_length_name = 227, $max_length_type = 10) {
         # note: if the type "unknown" is not present in the "types_allowed" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
-        $this->name = Core::sanitize_file_part($this->name, $characters_allowed, $max_length_name);
-        $this->type = Core::sanitize_file_part($this->type, $characters_allowed, $max_length_type);
+        $this->name = Security::sanitize_file_part($this->name, $characters_allowed, $max_length_name);
+        $this->type = Security::sanitize_file_part($this->type, $characters_allowed, $max_length_type);
         if (!strlen($this->name)) $this->name = Core::random_part_get();
         if (!strlen($this->type)) $this->type = 'unknown';
         $this->file = $this->name.'.'.$this->type;

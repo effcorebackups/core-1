@@ -30,6 +30,14 @@ tests
           - name: Storage_Data->select_array()
     - code-select_array|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Storage_Data::test_step_code__select_array
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-changes|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Storage_Data->changes()
+    - code-changes|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Storage_Data::test_step_code__changes
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

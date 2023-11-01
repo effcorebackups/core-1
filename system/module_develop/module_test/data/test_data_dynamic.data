@@ -1,0 +1,18 @@
+test_data_dynamic
+  integer: 123
+  float: 0.000001
+  boolean_true: true
+  boolean_false: false
+  string: text
+  string_empty: 
+  null: null
+  array
+  - key_1: item value 1
+  - key_2: item value 2
+  - key_3: item value 3
+  array_empty|_empty_array
+  object
+    property_1: property value 1
+    property_2: property value 2
+    property_3: property value 3
+  object_empty

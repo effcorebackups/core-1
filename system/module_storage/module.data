@@ -4,9 +4,7 @@ module|Module_embedded
   title: Storage
   description: Module for storages support.
   copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
-  version: 0.910
+  version: 0.911
   dependencies
     system
-    - core: 0.910
-    php
-    - mbstring: 7.1.0
+    - core: 0.911

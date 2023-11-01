@@ -55,10 +55,10 @@ class Instance implements cache_cleaning_after_install {
         Event::start('on_instance_insert_before', $this->entity_name, ['instance' => &$this]);
         $field_created = $this->entity_get()->field_get('created');
         $field_updated = $this->entity_get()->field_get('updated');
-        if ($field_created !== null && empty($field_created->managing_is_enabled_on_insert) && $field_created->type === 'datetime') $this->created = Core::datetime_get();
-        if ($field_created !== null && empty($field_created->managing_is_enabled_on_insert) && $field_created->type === 'integer' ) $this->created = time();
-        if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_insert) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
-        if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_insert) && $field_updated->type === 'integer' ) $this->updated = time();
+        if ($field_created !== null && empty($field_created->managing->is_enabled_on_insert) && $field_created->type === 'datetime') $this->created = Core::datetime_get();
+        if ($field_created !== null && empty($field_created->managing->is_enabled_on_insert) && $field_created->type === 'integer' ) $this->created = time();
+        if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_insert) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
+        if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_insert) && $field_updated->type === 'integer' ) $this->updated = time();
         $result = $this->entity_get()->storage_get()->instance_insert($this);
         Event::start('on_instance_insert_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
@@ -67,8 +67,8 @@ class Instance implements cache_cleaning_after_install {
     function update() {
         Event::start('on_instance_update_before', $this->entity_name, ['instance' => &$this]);
         $field_updated = $this->entity_get()->field_get('updated');
-        if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_update) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
-        if ($field_updated !== null && empty($field_updated->managing_is_enabled_on_update) && $field_updated->type === 'integer' ) $this->updated = time();
+        if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_update) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
+        if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_update) && $field_updated->type === 'integer' ) $this->updated = time();
         $result = $this->entity_get()->storage_get()->instance_update($this);
         Event::start('on_instance_update_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
@@ -127,7 +127,7 @@ class Instance implements cache_cleaning_after_install {
         if ($entity) {
             $c_weight = 420;
             $selection = new Selection;
-            $selection->id = $entity_name.'-'.Core::hash_get($where);
+            $selection->id = $entity_name.'-'.Security::hash_get($where);
             $selection->main_entity_name = $entity_name;
             $selection->template = 'content';
             $selection->origin = 'dynamic';
@@ -142,7 +142,7 @@ class Instance implements cache_cleaning_after_install {
             return $selection;
         } else {
             return new Markup('x-no-items', ['data-style' => 'table'], new Text_multiline(
-                ['Entity "%%_name" is not available.', 'Selection ID = "%%_id".'], ['name' => $entity_name, 'id' => $entity_name.'-'.Core::hash_get($where)]
+                ['Entity "%%_name" is not available.', 'Selection ID = "%%_id".'], ['name' => $entity_name, 'id' => $entity_name.'-'.Security::hash_get($where)]
             ));
         }
     }

@@ -68,10 +68,9 @@ class Field_Nickname extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_nickname($new_value)) {
-            $field->error_set(new Text_multiline([
-                'Field "%%_title" contains an error!',
-                'Field value can contain only the next characters: %%_characters'], ['title' => (new Text($field->title))->render(), 'characters' => static::CHARACTERS_ALLOWED_FOR_DESCRIPTION ]
+        if (strlen($new_value) && !Security::validate_nickname($new_value)) {
+            $field->error_set(new Text(
+                'Value of "%%_title" field can contain only the next characters: %%_characters', ['title' => (new Text($field->title))->render(), 'characters' => static::CHARACTERS_ALLOWED_FOR_DESCRIPTION ]
             ));
         } else {
             return true;
@@ -79,9 +78,14 @@ class Field_Nickname extends Field_Text {
     }
 
     static function validate_uniqueness($field, $new_value, $old_value = null) {
+        # - old_value === '' && new_value NOT found                            | OK    (e.g. registration - nickname does not exist)
+        # - old_value === '' && new_value     found                            | ERROR (e.g. registration - nickname already exists)
+        # - old_value !== '' && new_value NOT found                            | OK    (e.g. updating profile - nickname does not exist)
+        # - old_value !== '' && new_value     found && old_value === new_value | OK    (e.g. updating profile - nickname already exists and it          belong to me)
+        # - old_value !== '' && new_value     found && old_value !== new_value | ERROR (e.g. updating profile - nickname already exists and it does not belong to me)
         $result = $field->value_is_unique_in_storage_sql($new_value);
-        if ( (strlen($old_value) === 0 && $result instanceof Instance                                                       ) ||  # insert new nickname (e.g. registration)
-             (strlen($old_value) !== 0 && $result instanceof Instance && $result->{$field->entity_field_name} !== $old_value) ) { # update old nickname
+        if ( (strlen($old_value) === 0 && $result instanceof Instance                                                       ) ||
+             (strlen($old_value) !== 0 && $result instanceof Instance && $result->{$field->entity_field_name} !== $old_value) ) {
             $field->error_set(
                 'User with this nickname was already registered!'
             );

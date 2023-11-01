@@ -62,11 +62,11 @@ abstract class Events_Page_Info {
     }
 
     static function block_markup__environment_info($page, $args = []) {
-        $web_server_info         = Request::software_get_info();
+        $web_server_info         = Request::web_server_get_info();
         $storage_sql             = Storage::get('sql');
-        $php_version_curl        = curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'];
+        $php_version_curl        = function_exists('curl_version') ? curl_version()['version'].' | ssl: '.curl_version()['ssl_version'].' | libz: '.curl_version()['libz_version'] : '—';
         $is_enabled_opcache      = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']);
-        $is_enabled_opcache_jit  = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['jit']['enabled']);
+        $is_enabled_opcache_jit  = function_exists('opcache_get_status') && !empty(opcache_get_status(false)['opcache_enabled']) && !empty(opcache_get_status(false)['jit']['enabled']);
         $php_memory_limit        = Core::php_memory_limit_bytes_get();
         $php_max_file_uploads    = Core::php_max_file_uploads_get();
         $php_upload_max_filesize = Core::php_upload_max_filesize_bytes_get();
@@ -74,7 +74,7 @@ abstract class Events_Page_Info {
         $php_max_input_time      = Core::php_max_input_time_get();
         $php_max_execution_time  = Core::php_max_execution_time_get();
         $sticker_for_is_enabled_opcache      =                                               new Markup('x-sticker', ['data-style' => $is_enabled_opcache     ? 'ok' : 'warning'], $is_enabled_opcache     ? 'yes' : 'no');
-        $sticker_for_is_enabled_opcache_jit  = version_compare(phpversion(), '8.0.0', '>') ? new Markup('x-sticker', ['data-style' => $is_enabled_opcache_jit ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no') : '-';
+        $sticker_for_is_enabled_opcache_jit  = version_compare(phpversion(), '8.0.0', '>') ? new Markup('x-sticker', ['data-style' => $is_enabled_opcache_jit ? 'ok' : 'warning'], $is_enabled_opcache_jit ? 'yes' : 'no') : '—';
         $sticker_for_php_memory_limit        = new Markup('x-sticker', ['data-style' => $php_memory_limit        >= 0x10000000 ? 'ok' : 'warning', 'title' => (new Text('Recommended minimum value: %%_value', ['value' => Locale::format_bytes  (0x10000000)]))->render()], Locale::format_bytes  ($php_memory_limit)       );
         $sticker_for_php_max_file_uploads    = new Markup('x-sticker', ['data-style' => $php_max_file_uploads    >= 20         ? 'ok' : 'warning', 'title' => (new Text('Recommended minimum value: %%_value', ['value' => Locale::format_pieces (20)]))        ->render()], Locale::format_pieces ($php_max_file_uploads)   );
         $sticker_for_php_upload_max_filesize = new Markup('x-sticker', ['data-style' => $php_upload_max_filesize >= 0x40000000 ? 'ok' : 'warning', 'title' => (new Text('Recommended minimum value: %%_value', ['value' => Locale::format_bytes  (0x40000000)]))->render()], Locale::format_bytes  ($php_upload_max_filesize));
@@ -85,7 +85,7 @@ abstract class Events_Page_Info {
         $decorator->id = 'environment_info';
         $decorator->data = [[
             'web_server'              => ['title' => 'Web server',                 'value' => ucfirst($web_server_info->name).' '.$web_server_info->version  ],
-            'openssl_version'         => ['title' => 'OpenSSL version',            'value' => OPENSSL_VERSION_TEXT                                           ],
+            'openssl_version'         => ['title' => 'OpenSSL version',            'value' => defined('OPENSSL_VERSION_TEXT') ? OPENSSL_VERSION_TEXT : '—'   ],
             'php_version'             => ['title' => 'PHP version',                'value' => phpversion()                                                   ],
             'php_version_curl'        => ['title' => 'PHP CURL version',           'value' => $php_version_curl                                              ],
             'php_version_pcre'        => ['title' => 'PHP PCRE version',           'value' => PCRE_VERSION                                                   ],

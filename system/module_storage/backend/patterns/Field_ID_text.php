@@ -34,10 +34,9 @@ class Field_ID_text extends Field_Text {
     ###########################
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_id($new_value)) {
-            $field->error_set(new Text_multiline([
-                'Field "%%_title" contains an error!',
-                'Field value can contain only the next characters: %%_characters'], ['title' => (new Text($field->title))->render(), 'characters' => static::CHARACTERS_ALLOWED_FOR_DESCRIPTION ]
+        if (strlen($new_value) && !Security::validate_id($new_value)) {
+            $field->error_set(new Text(
+                'Value of "%%_title" field can contain only the next characters: %%_characters', ['title' => (new Text($field->title))->render(), 'characters' => static::CHARACTERS_ALLOWED_FOR_DESCRIPTION ]
             ));
         } else {
             return true;

@@ -5,6 +5,9 @@ tokens
 - page_width_min
     type: code
     handler: \effcore\modules\page\Events_Token::on_apply
+- page_width_mobile
+    type: code
+    handler: \effcore\modules\page\Events_Token::on_apply
 - page_width_max
     type: code
     handler: \effcore\modules\page\Events_Token::on_apply

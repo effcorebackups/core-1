@@ -84,6 +84,7 @@ abstract class Events_Form_Instance_select_multiple {
                                 $c_item->weight    !== $c_new_weight) {
                                 $c_item->id_parent  =  $c_new_parent;
                                 $c_item->weight     =  $c_new_weight;
+                                $c_item->title = html_entity_decode($c_item->title);
                                 $has_changes = true;
                                 $c_result = $c_item->update();
                                 if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => (new Text($entity->title))->render(), 'id' => $c_item->id])           );

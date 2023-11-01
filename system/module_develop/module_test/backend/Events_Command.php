@@ -9,6 +9,7 @@ namespace effcore\modules\test;
 use const effcore\NL;
 use effcore\Core;
 use effcore\Request;
+use effcore\Security;
 use effcore\Test;
 use effcore\Text_multiline;
 use effcore\Timer;
@@ -42,7 +43,7 @@ abstract class Events_Command {
                         foreach ($c_part as $c_key => $c_line) {
                             if ($c_line instanceof Text_multiline)
                                 $c_line->delimiter = NL;
-                            $c_part[$c_key] = Core::return_rendered($c_line);
+                            $c_part[$c_key] = Core::to_rendered($c_line);
                         }
                     if (is_array($c_part))
                          print (new Text_multiline($c_part, [], NL))->render().NL;
@@ -59,6 +60,7 @@ abstract class Events_Command {
     static function test_all($args = []) {
         $global_report = [];
         static::_environment_prepare($args);
+        Timer::tap('test_total');
         foreach (Test::get_all() as $c_test) {
             if ($c_test->type === 'php') {
                 Timer::tap('test_total_'.$c_test->id);
@@ -76,7 +78,7 @@ abstract class Events_Command {
                             foreach ($c_part as $c_key => $c_line) {
                                 if ($c_line instanceof Text_multiline)
                                     $c_line->delimiter = NL;
-                                $c_part[$c_key] = Core::return_rendered($c_line);
+                                $c_part[$c_key] = Core::to_rendered($c_line);
                             }
                         if (is_array($c_part))
                              print (new Text_multiline($c_part, [], NL))->render().NL;
@@ -99,6 +101,10 @@ abstract class Events_Command {
                 print NL.NL.NL;
             }
         }
+        Timer::tap('test_total');
+        $timer_value = Core::format_number(
+            Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN
+        );
 
         print NL.NL.NL.'GLOBAL REPORT'.NL;
         print str_repeat('=', 80).NL;
@@ -108,6 +114,7 @@ abstract class Events_Command {
         print str_repeat('-', 80).NL;
               foreach ($global_report as $c_line) print $c_line.NL;
         print str_repeat('=', 80).NL;
+        print 'TOTAL TIME: '.$timer_value.NL;
     }
 
     static function _environment_prepare($args = []) {
@@ -120,7 +127,10 @@ abstract class Events_Command {
         $_SERVER['REMOTE_PORT'  ] = $args['remote_port'] ?? Request::DEFAULT_PORT;
         $_SERVER['UNENCODED_URL'] = '';
         $_SERVER['REQUEST_URI'  ] = '';
-        if (!empty($args['quantity']) && Core::validate_int($args['quantity']) && $args['quantity'] >= 1 && $args['quantity'] <= 100) {
+        if (!empty($args['server_software'])) {
+            $_SERVER['SERVER_SOFTWARE'] = $args['server_software'];
+        }
+        if (!empty($args['quantity']) && Security::validate_int($args['quantity']) && $args['quantity'] >= 1 && $args['quantity'] <= 100) {
             $_POST['quantity'] = $args['quantity'];
         }
         if (!empty($args['proxy'])) {
@@ -134,10 +144,9 @@ abstract class Events_Command {
     static function _show_error($title) {
         print $title.NL.NL;
         print 'FORMAT: ./command test <name>'  .NL.NL;
-        print 'The following names are available:'.NL;
+        print 'THE FOLLOWING NAMES ARE AVAILABLE:'.NL;
         foreach (Test::get_all(false) as $c_test) {
-            print '  - '.$c_test->id.': '.
-                         Core::return_rendered($c_test->title).NL;
+            print '  - '.$c_test->id.': '.Core::to_rendered($c_test->title).NL;
         }
     }
 

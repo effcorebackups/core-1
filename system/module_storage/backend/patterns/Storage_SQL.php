@@ -35,7 +35,7 @@ class Storage_SQL implements has_Data_cache {
                $this->credentials;
     }
 
-    function init($driver = null, $credentials = null, $table_prefix = '', $root = Data::DIRECTORY) {
+    function init($driver = null, $credentials = null, $table_prefix = '', $path_root = Data::DIRECTORY) {
         if ($this->connection) return
             $this->connection;
         else {
@@ -58,7 +58,7 @@ class Storage_SQL implements has_Data_cache {
                             break;
                         case 'sqlite':
                             $this->connection = new PDO(
-                                $this->driver.':'.$root.
+                                $this->driver.':'.$path_root.
                                 $this->credentials->file_name);
                             $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     'operator' => '=', 'value' => '"UTF-8"']);
                             $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', 'operator' => '=', 'value' =>  'ON'    ]);
@@ -73,20 +73,20 @@ class Storage_SQL implements has_Data_cache {
                     );
                 }
             } else {
-                $path = (new File(Data::DIRECTORY.'changes.php'))->path_get_relative();
+                $path_relative = (new File(Data::DIRECTORY.'changes.php'))->path_get_relative();
                 $link = (new Markup('a', ['href' => '/install/en'], 'Installation'))->render();
                 Message::insert(new Text_multiline([
                     'Credentials for storage "%%_name" was not set!',
                     'Restore the storage credentials in "%%_file" or reinstall this system on the page: %%_link'], [
                     'name' => $this->name,
-                    'file' => $path,
+                    'file' => $path_relative,
                     'link' => $link]), 'credentials'
                 );
             }
         }
     }
 
-    function test($driver = null, $credentials = null, $root = Data::DIRECTORY) {
+    function test($driver = null, $credentials = null, $path_root = Data::DIRECTORY) {
         if ($driver      === null) $driver      = $this->driver;
         if ($credentials === null) $credentials = $this->credentials;
         if ($driver &&
@@ -103,10 +103,8 @@ class Storage_SQL implements has_Data_cache {
                             $credentials->password);
                         break;
                     case 'sqlite':
-                        $path = $root.$credentials->file_name;
-                        if (file_exists($path) !== true && is_writable($root) !== true) throw new Exception('Directory "'.$root.'" is not writable!');
-                        if (file_exists($path) === true && is_writable($path) !== true) throw new Exception('File "'.     $path.'" is not writable!');
-                        $connection = new PDO($driver.':'.$path);
+                        $path_file = $path_root.$credentials->file_name;
+                        $connection = new PDO($driver.':'.$path_file);
                         break;
                 }
                 $connection = null;
@@ -173,6 +171,8 @@ class Storage_SQL implements has_Data_cache {
             $statement = $this->connection->prepare($query_flat_string);
             if ($statement instanceof PDOStatement) {
                 $statement->execute($this->args);
+              # $debug_1 = $statement->activeQueryString();
+              # $debug_2 = $statement->debugDumpParams();
                    $error_info = $statement->errorInfo();
             } else $error_info = ['HY007', 0, 'Associated statement is not prepared'];
             Event::start('on_query_after', 'pdo', ['storage' => &$this, 'query' => $query, 'statement' => &$statement, 'errors' => &$error_info]);
@@ -185,7 +185,7 @@ class Storage_SQL implements has_Data_cache {
                 return null;
             }
             switch (strtoupper(array_values($query)[0])) {
-                case 'SELECT': return $statement->fetchAll(PDO::FETCH_CLASS| PDO::FETCH_PROPS_LATE, '\\effcore\\Instance');
+                case 'SELECT': return $statement->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, '\\effcore\\Instance');
                 case 'INSERT': return $this->connection->lastInsertId();
                 case 'UPDATE': return $statement->rowCount();
                 case 'DELETE': return $statement->rowCount();
@@ -227,26 +227,24 @@ class Storage_SQL implements has_Data_cache {
     }
 
     function prepare_table($name) {
-        if ($name[0] === '~') $name = Entity::get(ltrim($name, '~'))->catalog_name;
-        if ($this->driver === 'mysql' ) return '`'.$this->table_prefix.$name.'`';
-        if ($this->driver === 'sqlite') return '"'.$this->table_prefix.$name.'"';
+        if ($name[0] === '~') $name = Entity::get(ltrim($name, '~'))->table_name;
+        return '`'.$this->table_prefix.$name.'`';
     }
 
     function prepare_field($name) {
         if (strpos($name, '.') !== false) {
             $parts = explode('.', $name);
-            if ($this->driver === 'mysql' ) return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
-            if ($this->driver === 'sqlite') return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '"'.$parts[1].'"'); } else {
-            if ($this->driver === 'mysql' ) return $name === '*' ? '*' : '`'.$name.'`';
-            if ($this->driver === 'sqlite') return $name === '*' ? '*' : '"'.$name.'"';
+            return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
+        } else {
+            return $name === '*' ? '*' : '`'.$name.'`';
         }
     }
 
     function prepare_value($value, $is_emulation = false) {
         if (!$is_emulation)
             if (is_array($value)) foreach ($value as $c_sub_value)
-                 $this->args[] = Core::return_rendered($c_sub_value);
-            else $this->args[] = Core::return_rendered(      $value);
+                 $this->args[] = Core::to_rendered($c_sub_value);
+            else $this->args[] = Core::to_rendered(      $value);
         return is_array($value) ? implode(', ', array_pad([], count($value), '?')) : '?';
     }
 
@@ -349,9 +347,9 @@ class Storage_SQL implements has_Data_cache {
             $auto_name = $entity->auto_name_get();
             foreach ($entity->constraints as $c_name => $c_info) {
                 if ($c_info->fields !== [$auto_name => $auto_name]) {
-                    if ($c_info->type === 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
-                    if ($c_info->type ===  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
-                    if ($c_info->type === 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->catalog_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->prepare_fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+                    if ($c_info->type === 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
+                    if ($c_info->type ===  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
+                    if ($c_info->type === 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->prepare_fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
                 }
             }
 
@@ -374,7 +372,7 @@ class Storage_SQL implements has_Data_cache {
                 $this->query([
                     'action'       => 'CREATE',
                     'type'         => $c_info->type,
-                    'name_!f'      => $this->table_prefix.$entity->catalog_name.'__'.$c_name,
+                    'name_!f'      => $this->table_prefix.$entity->table_name.'__'.$c_name,
                     'on'           => 'ON',
                     'target_!t'    => '~'.$entity->name,
                     'fields_begin' => '(',
@@ -436,8 +434,9 @@ class Storage_SQL implements has_Data_cache {
             if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT',    'limit'  => (int)$options['limit' ]];
             if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET',   'offset' => (int)$options['offset']];
             $result = $this->query($query);
-            if ( isset($result[0]->count) )
-                return $result[0]->count;
+            if (isset($result[0]->count)) {
+                return (int)$result[0]->count;
+            }
         }
         return 0;
     }
@@ -468,8 +467,9 @@ class Storage_SQL implements has_Data_cache {
             $result = [];
             foreach ($this->query($query) ?: [] as $c_instance) {
                 foreach ($c_instance->values as $c_name => $c_value) {
-                    if ($c_value !== null && isset($entity->fields[$c_name]->converter_on_select))
-                        $c_instance->{$c_name} =  ($entity->fields[$c_name]->converter_on_select)($c_value);
+                    if ($c_value !== null && isset($entity->fields[$c_name]->converters->on_select)) {
+                        $c_instance->{$c_name} = Entity::converters_apply($c_value, $entity->fields[$c_name]->converters->on_select);
+                    }
                 }
                 $c_instance->entity_set_name($entity->name);
                 if ($idkey) $result[$c_instance->{$idkey}] = $c_instance;
@@ -510,9 +510,9 @@ class Storage_SQL implements has_Data_cache {
                 'limit'        => 1]);
             if (isset($result[0])) {
                 foreach ($result[0]->values as $c_name => $c_value) {
-                    if ( $c_value !== null && isset($entity->fields[$c_name]->converter_on_select) )
-                         $instance->{$c_name} =    ($entity->fields[$c_name]->converter_on_select)($c_value);
-                    else $instance->{$c_name} =                                                    $c_value;
+                    if ($c_value !== null && isset($entity->fields[$c_name]->converters->on_select) )
+                         $instance->{$c_name} = Entity::converters_apply($c_value, $entity->fields[$c_name]->converters->on_select);
+                    else $instance->{$c_name} =                          $c_value;
                     $instance->_id_fields_original = $id_fields; }
                 return $instance;
             }
@@ -524,8 +524,8 @@ class Storage_SQL implements has_Data_cache {
             $entity = $instance->entity_get();
             $values = $instance->values_get();
             foreach ($values as $c_name => $c_value)
-                if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converter_on_insert))
-                    $values[$c_name] =                ($entity->fields[$c_name]->converter_on_insert)($c_value);
+                if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converters->on_insert))
+                    $values[$c_name] = Entity::converters_apply($c_value, $entity->fields[$c_name]->converters->on_insert);
             $values = array_intersect_key($values, $entity->fields_get_name());
             $fields = array_keys($values);
             $auto_name = $entity->auto_name_get();
@@ -552,8 +552,8 @@ class Storage_SQL implements has_Data_cache {
             $entity = $instance->entity_get();
             $values = $instance->values_get();
             foreach ($values as $c_name => $c_value)
-                if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converter_on_update))
-                    $values[$c_name] =                ($entity->fields[$c_name]->converter_on_update)($c_value);
+                if ($values[$c_name] !== null && isset($entity->fields[$c_name]->converters->on_update))
+                    $values[$c_name] = Entity::converters_apply($c_value, $entity->fields[$c_name]->converters->on_update);
             $values = array_intersect_key($values, $entity->fields_get_name());
             $id_fields = $entity->id_from_values_get($values);
             $row_count = $this->query([

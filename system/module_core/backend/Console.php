@@ -6,11 +6,9 @@
 
 namespace effcore;
 
-use stdClass;
-
 abstract class Console {
 
-    const DIRECTORY = DIR_DYNAMIC.'logs/';
+    const DIRECTORY = Dynamic::DIRECTORY.'logs/';
     const IS_VISIBLE_FOR_NOBODY   = 0b00;
     const IS_VISIBLE_FOR_ADMIN    = 0b01;
     const IS_VISIBLE_FOR_EVERYONE = 0b10;
@@ -18,24 +16,24 @@ abstract class Console {
     static $is_ignore_duplicates = false;
     static $duplicates = [];
     protected static $data = [];
-    protected static $file_log_err = null;
-    protected static $file_log_wrn = null;
     protected static $is_write_to_file_log_wrn = false;
     protected static $is_init = false;
-    protected static $visible_mode = self::IS_VISIBLE_FOR_NOBODY;
+    protected static $visible_mode = null;
 
     static function init($reset = false) {
         if (!static::$is_init || $reset) {
             static::$is_init = true;
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'index.php',                                            'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot_initialization.php',                       'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/Core.php',                  'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_storage/backend/interfaces/markers.php', 'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/File_container.php',        'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/boot_web.php',                                  'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$data[] = (object)['object' => 'file', 'action' => 'insertion', 'description' => 'system/module_core/backend/Console.php',               'value' => 'ok', 'time' => 0, 'ram_dynamics' => memory_get_usage(true), 'args' => [], 'info' => []];
-            static::$file_log_err = new File(static::DIRECTORY.Core::date_get().'/'.  'error--'.Core::date_get().'.log');
-            static::$file_log_wrn = new File(static::DIRECTORY.Core::date_get().'/'.'warning--'.Core::date_get().'.log');
+            static::log_simple_insert('file', 'insertion', 'index.php',                                            'ok');
+            static::log_simple_insert('file', 'insertion', 'system/boot_initialization.php',                       'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Core.php',                  'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_storage/backend/interfaces/markers.php', 'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Extend_exception.php',      'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Console.php',               'ok');
+        }
+    }
+
+    static function visible_mode_get($reset = false) {
+        if (static::$visible_mode === null || $reset === true) {
             static::$visible_mode = static::IS_VISIBLE_FOR_NOBODY;
             if (Module::is_enabled('develop')) {
                 $settings = Module::settings_get('page');
@@ -43,56 +41,66 @@ abstract class Console {
                 if ($settings->console_visibility === static::IS_VISIBLE_FOR_ADMIN && Access::check((object)['roles' => ['admins' => 'admins']])) static::$visible_mode = static::IS_VISIBLE_FOR_ADMIN;
             }
         }
-    }
-
-    static function visible_mode_get() {
-        static::init();
         return static::$visible_mode;
     }
 
     static function logs_select() {
-        static::init();
+        if (!static::$is_init) static::init();
         return static::$data;
     }
 
+    static function &log_simple_insert($object, $action, $description = null, $value = '', $time = 0, $args = [], $info = []) {
+        if (!static::$is_init) static::init();
+        $new_item = (object)[
+            'object'       => $object,
+            'action'       => $action,
+            'description'  => $description,
+            'value'        => $value,
+            'time'         => $time,
+            'args'         => $args,
+            'info'         => $info,
+            'ram_dynamics' => memory_get_usage(true)];
+        static::$data[] = $new_item;
+        return $new_item;
+    }
+
     static function &log_insert($object, $action, $description = null, $value = '', $time = 0, $args = [], $info = []) {
-        static::init();
-        $new_log = new stdClass;
-        $new_log->object       = $object;
-        $new_log->action       = $action;
-        $new_log->description  = $description;
-        $new_log->value        = $value;
-        $new_log->time         = $time;
-        $new_log->args         = $args;
-        $new_log->info         = $info;
-        $new_log->ram_dynamics = memory_get_usage(true);
+        if (!static::$is_init) static::init();
+
+        $new_item = static::log_simple_insert(
+            $object, $action, $description, $value, $time, $args, $info
+        );
+
         if (static::visible_mode_get()) {
             $stack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
             if ($stack[0]['function'] === 'log_insert'            ) array_shift($stack);
             if ($stack[0]['function'] === 'report_about_duplicate') array_shift($stack);
-            $new_log->info['stack'] = static::render_stack($stack);
+            $new_item->info['stack'] = static::render_stack($stack);
         }
-        static::$data[] = $new_log;
 
         # store errors and warnings to the file
         if ($value === 'error' || ($value === 'warning' && static::$is_write_to_file_log_wrn === true)) {
-            $c_info = $new_log->description;
-            if ($value === 'error') $c_file = static::$file_log_err;
-            if ($value !== 'error') $c_file = static::$file_log_wrn;
-            foreach ($new_log->args as $c_key => $c_value) $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
+            $c_info = $new_item->description;
+            foreach ($new_item->args as $c_key => $c_value)
+                $c_info = str_replace('%%_'.$c_key, $c_value, $c_info);
             $c_line = Core::time_get().' | uid: '.(User::get_current()->id ?: 0).
-                                       ' | '.$new_log->object.
-                                       ' | '.$new_log->action.
-                                       ' | '.str_replace(BR, ' | ', $c_info).NL;
+                                       ' | '.$new_item->object.
+                                       ' | '.$new_item->action.
+                                       ' | '.str_replace(BR, ' | ', $c_info).CR.NL;
+            # write new line to file
+            $c_path_root = static::DIRECTORY.Core::date_get().'/';
+            if ($value === 'error') $c_path_file = $c_path_root.  'error--'.Core::date_get().'.log';
+            if ($value !== 'error') $c_path_file = $c_path_root.'warning--'.Core::date_get().'.log';
+            $c_file = new File($c_path_file);
             if (!$c_file->append_direct($c_line)) {
-                Message::insert(new Text_multiline([
-                    'File "%%_file" was not written to disc!',
-                    'File permissions (if the file exists) and directory permissions should be checked.'], [
-                    'file' => $c_file->path_get_relative()]), 'error'
-                );
+                $c_path_file_is_exists = file_exists($c_path_file);
+                $c_path_root_is_exists = file_exists($c_path_root);
+                if ( $c_path_file_is_exists                           ) Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'File permissions are too strict!'            ], ['file' => $c_file->path_get_relative()]), 'error');
+                if (!$c_path_file_is_exists &&  $c_path_root_is_exists) Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'Directory permissions are too strict!'       ], ['file' => $c_file->path_get_relative()]), 'error');
+                if (!$c_path_file_is_exists && !$c_path_root_is_exists) Message::insert(new Text_multiline(['File "%%_file" was not written to disc!', 'Parent directory permissions are too strict!'], ['file' => $c_file->path_get_relative()]), 'error');
             }
         }
-        return $new_log;
+        return $new_item;
     }
 
     static function report_about_duplicate($type, $id, $module_id, $firstinit = null) {
@@ -138,7 +146,7 @@ abstract class Console {
             'page_lang_code'      => ['title' => 'Page language',         'value' => new Text_simple($page->lang_code)                         ],
             'language'            => ['title' => 'Current language',      'value' => new Text_simple(Language::code_get_setting())             ],
             'generation_time'     => ['title' => 'Total generation time', 'value' => Locale::format_msecond(Timer::period_get('total', 0, 1))  ],
-            'memory_usage'        => ['title' => 'Memory for PHP',        'value' => Locale::format_bytes(memory_get_usage(true))              ],
+            'memory_usage'        => ['title' => 'Memory used',           'value' => Locale::format_bytes(memory_get_usage(true))              ],
             'user_roles'          => ['title' => 'User roles',            'value' => $user_roles       ? implode(', ', $user_roles      ) : '—'],
             'user_permissions'    => ['title' => 'User permissions',      'value' => $user_permissions ? implode(', ', $user_permissions) : '—'] ]];
         return new Block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
@@ -154,7 +162,7 @@ abstract class Console {
                 $statistics[$c_log->object] += floatval($c_log->time);
                 $total += floatval($c_log->time); }}
         $diagram = new Diagram(null, 'linear');
-        foreach ($statistics as    $c_key => $c_value)
+        foreach ($statistics    as $c_key => $c_value)
             $diagram->slice_insert($c_key,   $c_value / $total * 100, (new Text('%%_number sec.', ['number' => Locale::format_msecond($c_value)]))->render(), 'black', ['data-id' => $c_key]);
         return new Block('CPU load time', ['data-id' => 'block__diagram_load'], [$diagram]);
     }
@@ -168,18 +176,18 @@ abstract class Console {
         $decorator->id = 'logs';
         $decorator->result_attributes = ['data-style' => 'compact'];
         foreach (static::logs_select() as $c_row_id => $c_log) {
-            $c_sequence_hash      = Core::hash_get(['time' => 0, 'args' => []] + (array)$c_log);
-            $c_data_hash          = Core::hash_get(['time' => 0              ] + (array)$c_log);
-            $total_sequence_hash  = Core::hash_get($total_sequence_hash.$c_sequence_hash);
-            $total_data_hash      = Core::hash_get($total_data_hash    .$c_data_hash    );
+            $c_sequence_hash      = Security::hash_get(['time' => 0, 'ram_dynamics' => 0, 'info' => '', 'args' => []] + (array)$c_log);
+            $c_data_hash          = Security::hash_get(['time' => 0, 'ram_dynamics' => 0                            ] + (array)$c_log);
+            $total_sequence_hash  = Security::hash_get($total_sequence_hash.$c_sequence_hash);
+            $total_data_hash      = Security::hash_get($total_data_hash    .$c_data_hash    );
             if (isset($total_by_actions[$c_log->object][$c_log->action]))
                       $total_by_actions[$c_log->object][$c_log->action]++;
             else      $total_by_actions[$c_log->object][$c_log->action] = 1;
-            $c_row_attributes  = ['data-hash-sequence' => Core::hash_get_mini($c_sequence_hash)];
-            $c_row_attributes += ['data-hash-data'     => Core::hash_get_mini($c_data_hash    )];
-            $c_row_attributes += ['data-object'        => Core::sanitize_id($c_log->object ? trim($c_log->object, '.') : '')];
-            $c_row_attributes += ['data-action'        => Core::sanitize_id($c_log->action ? trim($c_log->action, '.') : '')];
-            $c_row_attributes += ['data-value'         => Core::sanitize_id($c_log->value  ? trim($c_log->value,  '.') : '')];
+            $c_row_attributes  = ['data-hash-sequence' => Security::hash_get_mini($c_sequence_hash)];
+            $c_row_attributes += ['data-hash-data'     => Security::hash_get_mini($c_data_hash    )];
+            $c_row_attributes += ['data-object'        => Security::sanitize_id($c_log->object ? trim($c_log->object, '.') : '')];
+            $c_row_attributes += ['data-action'        => Security::sanitize_id($c_log->action ? trim($c_log->action, '.') : '')];
+            $c_row_attributes += ['data-value'         => Security::sanitize_id($c_log->value  ? trim($c_log->value,  '.') : '')];
             $c_info = !empty($c_log->info) ? static::render_info_markup($c_log->info) : '';
             if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
             if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
@@ -257,7 +265,7 @@ abstract class Console {
     static function block_text__information() {
         $information = [];
         $information['Total generation time'] = Core::format_msecond(Timer::period_get('total', 0, 1));
-        $information['Memory for PHP'] = Core::format_bytes(memory_get_usage(true));
+        $information['Memory used'] = Core::format_bytes(memory_get_usage(true));
         $result = '  CURRENT PAGE INFORMATION'.NL.NL;
         foreach ($information as $c_key => $c_value) {
             $result.= '  '.str_pad($c_key, 38, ' ', STR_PAD_LEFT).' : ';
@@ -294,10 +302,10 @@ abstract class Console {
         $result.= '  Time     | Object     | Action     | Value | Description    '.NL;
         $result.= '  ------------------------------------------------------------'.NL;
         foreach (static::logs_select() as $c_log) {
-            $c_sequence_hash      = Core::hash_get(['time' => 0, 'args' => []] + (array)$c_log);
-            $c_data_hash          = Core::hash_get(['time' => 0              ] + (array)$c_log);
-            $total_sequence_hash  = Core::hash_get($total_sequence_hash.$c_sequence_hash);
-            $total_data_hash      = Core::hash_get($total_data_hash    .$c_data_hash    );
+            $c_sequence_hash      = Security::hash_get(['time' => 0, 'args' => []] + (array)$c_log);
+            $c_data_hash          = Security::hash_get(['time' => 0              ] + (array)$c_log);
+            $total_sequence_hash  = Security::hash_get($total_sequence_hash.$c_sequence_hash);
+            $total_data_hash      = Security::hash_get($total_data_hash    .$c_data_hash    );
             if (isset($total_by_actions[$c_log->object][$c_log->action]))
                       $total_by_actions[$c_log->object][$c_log->action]++;
             else      $total_by_actions[$c_log->object][$c_log->action] = 1;

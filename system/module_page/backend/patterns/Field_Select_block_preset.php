@@ -27,7 +27,7 @@ class Field_Select_block_preset extends Field_Select {
             $presets = Block_preset::select_all($this->id_area);
             Core::array_sort_by_string($presets, 'managing_group');
             foreach ($presets as $c_preset) {
-                $c_group_id = Core::sanitize_id($c_preset->managing_group);
+                $c_group_id = Security::sanitize_id($c_preset->managing_group);
                 if (!isset($items[$c_group_id])) {
                            $items[$c_group_id] = new stdClass;
                            $items[$c_group_id]->title = $c_preset->managing_group; }

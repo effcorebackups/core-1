@@ -9,6 +9,6 @@ namespace effcore;
 abstract class Data extends Dynamic {
 
     const TYPE = 'data';
-    const DIRECTORY = DIR_DYNAMIC.'data/';
+    const DIRECTORY = parent::DIRECTORY.'data/';
 
 }

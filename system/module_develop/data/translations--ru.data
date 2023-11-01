@@ -14,7 +14,8 @@ translations
     - - request post param "%%_name" = "%%_value": - post-параметр запроса "%%_name" = "%%_value"
     - - response header param "%%_name" = "%%_value": - header-параметр ответа "%%_name" = "%%_value"
     - - response param "%%_name" = "%%_value": - параметр ответа "%%_name" = "%%_value"
-    - + the extension is always enabled: + расширение всегда включено
+    - state of "%%_of" is\: "%%_state": состояние "%%_of": "%%_state"
+    - + the extension is part of the PHP core: + расширение является частью ядра PHP
     - ± the extension is enabled by default: ± расширение включено по умолчанию
     - − the extension is not enabled by default: − расширение не включено по умолчанию
     - action "%%_name" will be started: действие "%%_name" будет запущено
@@ -76,33 +77,18 @@ translations
     - Example of update description 2.: Пример описания обновления 2.
     - Example of update description 3.: Пример описания обновления 3.
     - Execution plan: План выполнения
-    - expected value\: "%%_value": ожидаемое значение: "%%_value"
+    - expected value\: %%_value: ожидаемое значение: %%_value
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспорт диаграммы в файл "%%_file" для использования в программе "StarUML".
     - Field #1: Поле №1
     - Field #2: Поле №2
     - Field #3: Поле №3
-    - Field binary: Поле binary
-    - Field blob: Поле blob
-    - Field boolean: Поле boolean
-    - Field date: Поле date
-    - Field datetime: Поле datetime
-    - Field foreign: Поле foreign
-    - Field index unique: Поле index unique
-    - Field index: Поле index
-    - Field integer: Поле integer
-    - Field nocase: Поле nocase
-    - Field primary: Поле primary
-    - Field real: Поле real
-    - Field time: Поле time
-    - Field unique: Поле unique
-    - Field varchar: Поле varchar
     - FILES AND DIRECTORIES: ФАЙЛЫ И КАТАЛОГИ
     - FILTRATION OF PARAMETERS: ФИЛЬТРАЦИЯ ПАРАМЕТРОВ
     - For ID: Для ID
     - found user ID = "%%_id_user" by nickname = "%%_nickname": найден ID пользователя = "%%_id_user" по псевдониму = "%%_nickname"
     - Full report: Полный отчёт
     - FUNCTION "%%_name": ФУНКЦИЯ "%%_name"
-    - gotten value\: "%%_value": полученное значение: "%%_value"
+    - gotten value\: %%_value: полученное значение: %%_value
     - Group 1: Группа 1
     - Group 2 (inserted from code): Группа 2 (вставлена из кода)
     - Handler: Обработчик
@@ -228,6 +214,8 @@ translations
     - Tab 1: Вкладка 1
     - Tab 2: Вкладка 2
     - Tab 3: Вкладка 3
+    - TEST FOR THE CASE WHEN THE FILE EXISTS: ТЕСТ НА ТОТ СЛУЧАЙ КОГДА ФАЙЛ СУЩЕСТВУЕТ
+    - TEST FOR THE CASE WHEN THE FILE NOT EXISTS: ТЕСТ НА ТОТ СЛУЧАЙ КОГДА ФАЙЛ НЕ СУЩЕСТВУЕТ
     - Text for perform the tests: Текст для выполнения тестов
     - text with translation and token demo_text = "%%_demo_text": текст с переводом и токеном demo_text = "%%_demo_text"
     - text with translation: текст с переводом
@@ -235,7 +223,7 @@ translations
     - The system can search for the used functions only for enabled PHP modules!: Система может искать используемые функции только для включённых PHP-модулей!
     - The test was failed!: Тест был провален!
     - The test was successful.: Тест был успешным.
-    - The test will not succeed if the "Registration via Email" option is enabled!: Тест не выполниться успешно если включена опция "Регистрация через электронную почту"!
+    - The test will not succeed if the "Registration via EMail address" option is enabled!: Тест не выполниться успешно если включена опция "Регистрация через адрес электронной почты"!
     - there will be try to delete all permissions: будет попытка удалить все разрешения
     - there will be try to delete all roles: будет попытка удалить все роли
     - there will be try to insert permissions\: %%_permissions: будет попытка вставить разрешения: %%_permissions
@@ -258,6 +246,25 @@ translations
     - TRANSPOSITIONS OF "~": ПЕРЕСТАНОВКИ "~"
     - Type "%%_type" from code: Тип "%%_type" из кода
     - Type "%%_type": Тип "%%_type"
+    - Type "binary": Тип "binary"
+    - Type "blob": Тип "blob"
+    - Type "boolean": Тип "boolean"
+    - Type "date": Тип "date"
+    - Type "datetime" (class "Field_DateTime_local") not formatted: Тип "datetime" (класс "Field_DateTime_local") не отформатирован
+    - Type "datetime" (class "Field_DateTime_local"): Тип "datetime" (класс "Field_DateTime_local")
+    - Type "datetime" (class "Field_DateTime") not formatted: Тип "datetime" (класс "Field_DateTime") не отформатирован
+    - Type "datetime" (class "Field_DateTime"): Тип "datetime" (класс "Field_DateTime")
+    - Type "datetime": Тип "datetime"
+    - Type "foreign": Тип "foreign"
+    - Type "index unique": Тип "index unique"
+    - Type "index": Тип "index"
+    - Type "integer": Тип "integer"
+    - Type "nocase": Тип "nocase"
+    - Type "primary": Тип "primary"
+    - Type "real": Тип "real"
+    - Type "time": Тип "time"
+    - Type "unique": Тип "unique"
+    - Type "varchar": Тип "varchar"
     - UML Diagram: UML-диаграмма
     - unique value 1: уникальное значение 1
     - unique value 2: уникальное значение 2

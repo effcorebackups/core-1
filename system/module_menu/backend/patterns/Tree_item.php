@@ -68,10 +68,13 @@ class Tree_item extends Node {
     function render() {
         $visualization_mode = Tree::select($this->id_tree)->visualization_mode;
         if (Access::check($this->access)) {
-            $rendered_self     = $visualization_mode ? $this->render_self__managed() : $this->render_self();
-            $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ? (Template::make_new($this->template_children, [
-                'children' => $this->render_children($this->children_select(true))]
-            ))->render() : '';
+            $rendered_self = $visualization_mode ?
+                $this->render_self__managed() :
+                $this->render_self();
+            $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ?
+                (Template::make_new($this->template_children, [
+                    'children' => $this->render_children($this->children_select(true))]
+                ))->render() : '';
             return (Template::make_new($this->template, [
                 'attributes' => $this->render_attributes(),
                 'self'       => $rendered_self,

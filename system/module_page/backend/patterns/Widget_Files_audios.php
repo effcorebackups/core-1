@@ -116,7 +116,7 @@ class Widget_Files_audios extends Widget_Files {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.Core::array_key_last($items).'.'.$new_item->object->type;
+        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
         if ($new_item->object->move_tmp_to_pre($pre_path)) {
             $new_item->settings = $widget->audio_player_default_settings;
             $new_item->settings['data-cover-is-embedded'] = false;
@@ -130,7 +130,7 @@ class Widget_Files_audios extends Widget_Files {
                                 if ($cover->move_tmp_to_pre($pre_path.'.'.$cover->type)) {
                                     if ($new_item->object->container_audio_make($widget->cover_thumbnails, $cover->get_current_path())) {
                                         $new_item->settings['data-cover-is-embedded'] = true;
-                                        @unlink($pre_path.'.'.$cover->type);
+                                        File::delete($pre_path.'.'.$cover->type);
                                     }
                                 }
                             }

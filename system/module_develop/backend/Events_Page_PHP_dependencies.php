@@ -10,7 +10,7 @@ use const effcore\DIR_MODULES;
 use const effcore\DIR_SYSTEM;
 use effcore\Core;
 use effcore\Decorator;
-use effcore\File;
+use effcore\Directory;
 use effcore\Markup;
 use effcore\Module;
 use effcore\Node;
@@ -19,7 +19,7 @@ use effcore\Text_simple;
 
 abstract class Events_Page_PHP_dependencies {
 
-    # legend: + the extension is always enabled
+    # legend: + the extension is part of the PHP core
     #         ± the extension is enabled by default
     #         − the extension is not enabled by default
 
@@ -66,6 +66,7 @@ abstract class Events_Page_PHP_dependencies {
         'pgsql'        => '−',
         'Phar'         => '±',
         'posix'        => '±',
+        'random'       => '+',
         'readline'     => '−',
         'Reflection'   => '+',
         'session'      => '±',
@@ -90,7 +91,7 @@ abstract class Events_Page_PHP_dependencies {
         'xsl'          => '−',
         'Zend OPcache' => '−',
         'zip'          => '−',
-        'zlib'         => '−'
+        'zlib'         => '−',
     ];
 
     static function block_markup__php_dependencies_list($page, $args = []) {
@@ -106,8 +107,8 @@ abstract class Events_Page_PHP_dependencies {
             }
         }
         # scan each php file on used functions
-        foreach (File::select_recursive(DIR_SYSTEM,  '%^.*\\.php$%') +
-                 File::select_recursive(DIR_MODULES, '%^.*\\.php$%') as $c_path => $c_file) {
+        foreach (Directory::items_select(DIR_SYSTEM,  '%^.*\\.php$%') +
+                 Directory::items_select(DIR_MODULES, '%^.*\\.php$%') as $c_path => $c_file) {
             $c_matches = [];
             $c_path_relative = $c_file->path_get_relative();
             $c_module_id = key(Core::array_search__array_item_in_value($c_path_relative, $modules_path));
@@ -140,7 +141,7 @@ abstract class Events_Page_PHP_dependencies {
 
         $mod_title = new Markup('h2', [], 'Module dependencies from PHP extensions');
         $mod_legend = new Markup('p', [], new Text_multiline([
-            '+ the extension is always enabled',
+            '+ the extension is part of the PHP core',
             '± the extension is enabled by default',
             '− the extension is not enabled by default']));
         $mod_decorator = new Decorator('table-adaptive');

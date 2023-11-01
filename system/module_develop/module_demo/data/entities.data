@@ -3,7 +3,7 @@ entities
     name: demo_types
     title: Types
     title_plural: Types
-    catalog_name: demo_types
+    table_name: demo_types
     managing_is_enabled: true
     managing_group_id: demo
     with_is_embedded: true
@@ -25,13 +25,15 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - description
         title: Description
         type: varchar
@@ -39,180 +41,224 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - maxlength: 1024
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - maxlength: 1024
+            - size: 60
     - weight
         title: Weight
         type: integer
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Weight
-        managing_control_properties
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Weight
+            properties
+            - weight: +360
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +340
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +340
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +320
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +320
     - access
         title: Read access
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Access::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Access
-        managing_control_properties
-        - weight: +300
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Access::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Access
+            properties
+            - weight: +300
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: int | SQLite: integer
     # ─────────────────────────────────────────────────────────────────────
     - f_integer
-        title: Field integer
+        title: Type "integer"
         type: integer
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Number
-        managing_control_properties
-        - weight: +280
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +280
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: double | SQLite: real
     # ─────────────────────────────────────────────────────────────────────
     - f_real
-        title: Field real
+        title: Type "real"
         type: real
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Number
-        managing_control_properties
-        - weight: +260
-        managing_control_element_attributes
-        - min: -1000
-        - max: +1000
-        - step: 0.000002
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +260
+            element_attributes
+            - min: -1000
+            - max: +1000
+            - step: 0.000002
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: varchar | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_varchar
-        title: Field varchar
+        title: Type "varchar"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         default: default text
         check: (f_varchar <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +240
-        managing_control_element_attributes_on_insert
-        - value: default text
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: date | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_date
-        title: Field date
-        type: date
-        default: null
-        check: (f_date <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Date
-        managing_control_properties
-        - value_current_if_null: true
-        - weight: +220
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: datetime | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_datetime
-        title: Field datetime
-        type: datetime
-        default: null
-        check: (f_datetime <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - value_current_if_null: true
-        - weight: +200
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +240
+            element_attributes_on_insert
+            - value: default text
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: time | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_time
-        title: Field time
+        title: Type "time"
         type: time
         default: null
         check: (f_time <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Time
-        managing_control_properties
-        - value_current_if_null: true
-        - weight: +180
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Time
+            properties
+            - value_current_if_null: true
+            - weight: +220
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: date | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_date
+        title: Type "date"
+        type: date
+        default: null
+        check: (f_date <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Date
+            properties
+            - value_current_if_null: true
+            - weight: +200
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: datetime | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_datetime
+        title: Type "datetime" (class "Field_DateTime")
+        type: datetime
+        default: null
+        check: (f_datetime <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime
+            properties
+            - value_current_if_null: true
+            - weight: +180
+    - f_datetime_local
+        title: Type "datetime" (class "Field_DateTime_local")
+        type: datetime
+        default: null
+        check: (f_datetime_local <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - value_current_if_null: true
+            - weight: +160
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: tinyint | SQLite: integer
     # ─────────────────────────────────────────────────────────────────────
     - f_boolean
-        title: Field boolean
+        title: Type "boolean"
         type: boolean
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_logic
-        managing_control_properties
-        - weight: +160
-        managing_control_properties_on_insert
-        - selected
-          - =: 0
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_logic
+            properties
+            - weight: +140
+            properties_on_insert
+            - selected
+              - =: 0
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: blob | SQLite: blob
     # ─────────────────────────────────────────────────────────────────────
     - f_blob
-        title: Field blob
+        title: Type "blob"
         type: blob
         default: null
-        converter_on_insert: \effcore\Core::return_null_if_empty
-        converter_on_update: \effcore\Core::return_null_if_empty
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Textarea
-        managing_control_properties
-        - weight: +140
-        managing_control_element_attributes
-        - minlength: null
-        - maxlength: 65535
-        - required: null
+        converters
+          on_insert: \effcore\Core::to_null_if_empty
+          on_update: \effcore\Core::to_null_if_empty
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Textarea
+            properties
+            - weight: +140
+            element_attributes
+            - minlength: null
+            - maxlength: 65535
+            - required: null
     constraints
     - primary_id
         type: primary
@@ -235,7 +281,7 @@ entities
     name: demo_autoincrement
     title: Autoincrement
     title_plural: Autoincrement
-    catalog_name: demo_autoincrement
+    table_name: demo_autoincrement
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -255,13 +301,15 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - description
         title: Description
         type: varchar
@@ -269,14 +317,17 @@ entities
         collate: nocase
         not_null: true
         check: (description <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # MySQL : field_1 integer … primary key auto_increment
@@ -298,7 +349,7 @@ entities
     name: demo_collations
     title: Collations
     title_plural: Collations
-    catalog_name: demo_collations
+    table_name: demo_collations
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -318,41 +369,49 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - f_nocase
-        title: Field nocase
+        title: Type "nocase"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         check: (f_nocase <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
     - f_binary
-        title: Field binary
+        title: Type "binary"
         type: varchar
         size: 255
         collate: binary
         not_null: true
         check: (f_binary <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +360
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +360
     constraints
     - primary_id
         type: primary
@@ -362,7 +421,7 @@ entities
     name: demo_constraints
     title: Constraints
     title_plural: Constraints
-    catalog_name: demo_constraints
+    table_name: demo_constraints
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -379,47 +438,54 @@ entities
       - =: admins
     fields
     - f_primary
-        title: Field primary
+        title: Type "primary"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         check: (f_primary <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - f_unique
-        title: Field unique
+        title: Type "unique"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         check: (f_unique <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     - f_foreign
-        title: Field foreign
+        title: Type "foreign"
         type: integer
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: demo_autoincrement
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: description
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: demo_autoincrement
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: description
+            - weight: +360
     constraints
     # ─────────────────────────────────────────────────────────────────────
     # CONSTRAINT name PRIMARY KEY (field_1, …)
@@ -454,7 +520,7 @@ entities
     name: demo_data
     title: Data
     title_plural: Data
-    catalog_name: demo_data
+    table_name: demo_data
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -474,13 +540,15 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - nickname
         title: Nickname
         type: varchar
@@ -488,32 +556,38 @@ entities
         collate: nocase
         not_null: true
         check: (nickname <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Nickname
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Nickname
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     - is_even
         title: Is even
         type: boolean
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_logic
-        managing_control_properties
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_logic
+            properties
+            - weight: +360
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - value_current_if_null: true
-        - weight: +340
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - value_current_if_null: true
+            - weight: +340
     constraints
     - primary_id
         type: primary
@@ -532,7 +606,7 @@ entities
     name: demo_indexes
     title: Indexes
     title_plural: Indexes
-    catalog_name: demo_indexes
+    table_name: demo_indexes
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -552,42 +626,50 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - f_index_unique
-        title: Field index unique
+        title: Type "index unique"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         check: (f_index_unique <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     - f_index
-        title: Field index
+        title: Type "index"
         type: varchar
         size: 255
         collate: nocase
         not_null: true
         check: (f_index <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +360
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +360
     constraints
     - primary_id
         type: primary
@@ -612,7 +694,7 @@ entities
     name: demo_join
     title: Join
     title_plural: Joins
-    catalog_name: demo_join
+    table_name: demo_join
     managing_is_enabled: true
     managing_group_id: demo
     access_select
@@ -632,27 +714,31 @@ entities
         title: Data ID
         type: integer
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_relation
-        managing_control_properties
-        - related_entity_name: demo_data
-        - related_entity_field_id_name: id
-        - related_entity_field_title_name: nickname
-        - weight: +400
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_relation
+            properties
+            - related_entity_name: demo_data
+            - related_entity_field_id_name: id
+            - related_entity_field_title_name: nickname
+            - weight: +400
     - email
-        title: Email
+        title: EMail address
         type: varchar
         size: 64
         collate: nocase
         not_null: true
         check: (email <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Email
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +380
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Email
+            properties
+            - is_validate_uniqueness: true
+            - weight: +380
     constraints
     - foreign_id_data
         type: foreign

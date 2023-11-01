@@ -15,7 +15,7 @@ file_types
     type: exe
     kind: protected
     headers
-    - Content-type: application/octet-stream
+    - content-type: application/octet-stream
 - inc
     type: inc
     kind: protected
@@ -23,7 +23,7 @@ file_types
     type: ini
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - lock
     type: lock
     kind: protected
@@ -31,27 +31,27 @@ file_types
     type: log
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - markdown
     type: md
     kind: protected
     headers
-    - Content-type: text/markdown
+    - content-type: text/markdown
 - phar
     type: phar
     kind: protected
     headers
-    - Content-type: application/phar
+    - content-type: application/phar
 - php
     type: php
     kind: protected
     headers
-    - Content-type: application/x-php
+    - content-type: application/x-php
 - po
     type: po
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - profile
     type: profile
     kind: protected
@@ -62,17 +62,17 @@ file_types
     type: sh
     kind: protected
     headers
-    - Content-type: application/x-sh
+    - content-type: application/x-sh
 - sql
     type: sql
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - template
     type: tpl
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - tmp
     type: tmp
     kind: protected
@@ -80,12 +80,12 @@ file_types
     type: tmpl
     kind: protected
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - twig
     type: twig
     kind: protected
     headers
-    - Content-type: application/twig
+    - content-type: application/twig
 - unknown
     type: unknown
     kind: protected
@@ -93,7 +93,7 @@ file_types
     type: yml
     kind: protected
     headers
-    - Content-type: text/yaml
+    - content-type: text/yaml
 # ─────────────────────────────────────────────────────────────────────
 # dynamic types
 # ─────────────────────────────────────────────────────────────────────
@@ -101,401 +101,401 @@ file_types
     type: cssd
     kind: dynamic
     headers
-    - Content-type: text/css
-    - X-Content-Type-Options: nosniff
+    - content-type: text/css
+    - x-content-type-options: nosniff
 - html_dynamic
     type: htmld
     headers
-    - Content-type: text/html
+    - content-type: text/html
 - js_dynamic
     type: jsd
     kind: dynamic
     headers
-    - Content-type: application/javascript
-    - X-Content-Type-Options: nosniff
+    - content-type: application/javascript
+    - x-content-type-options: nosniff
 - svg_dynamic
     type: svgd
     kind: dynamic
     headers
-    - Content-type: image/svg+xml
+    - content-type: image/svg+xml
 - txt_dynamic
     type: txtd
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - xml_dynamic
     type: xmld
     headers
-    - Content-type: text/xml
+    - content-type: text/xml
 # ─────────────────────────────────────────────────────────────────────
 # static types
 # ─────────────────────────────────────────────────────────────────────
 - 3gp
     type: 3gp
     headers
-    - Content-type: video/3gpp
+    - content-type: video/3gpp
 - 3gpp
     type: 3gpp
     headers
-    - Content-type: video/3gpp
+    - content-type: video/3gpp
 - 7z
     type: 7z
     headers
-    - Content-type: application/x-7z-compressed
+    - content-type: application/x-7z-compressed
 - aac
     type: aac
     headers
-    - Content-type: audio/aac
+    - content-type: audio/aac
 - aiff
     type: aiff
     headers
-    - Content-type: audio/aiff
+    - content-type: audio/aiff
 - apk
     type: apk
     headers
-    - Content-type: application/vnd.android.package-archive
+    - content-type: application/vnd.android.package-archive
 - apng
     type: apng
     headers
-    - Content-type: image/png
+    - content-type: image/png
 - avi
     type: avi
     headers
-    - Content-type: video/x-msvideo
+    - content-type: video/x-msvideo
 - avif
     type: avif
     headers
-    - Content-type: image/avif
+    - content-type: image/avif
 - atom
     type: atom
     headers
-    - Content-type: application/atom+xml
+    - content-type: application/atom+xml
 - bmp
     type: bmp
     headers
-    - Content-type: image/x-ms-bmp
+    - content-type: image/x-ms-bmp
 - bz
     type: bz
     headers
-    - Content-type: application/x-bzip
+    - content-type: application/x-bzip
 - bz2
     type: bz2
     headers
-    - Content-type: application/x-bzip2
+    - content-type: application/x-bzip2
 - crt
     type: crt
     headers
-    - Content-type: application/x-x509-ca-cert
+    - content-type: application/x-x509-ca-cert
 - css
     type: css
     headers
-    - Content-type: text/css
-    - X-Content-Type-Options: nosniff
+    - content-type: text/css
+    - x-content-type-options: nosniff
 - csv
     type: csv
     headers
-    - Content-type: text/csv
+    - content-type: text/csv
 - deb
     type: deb
     headers
-    - Content-type: application/vnd.debian.binary-package
+    - content-type: application/vnd.debian.binary-package
 - der
     type: der
     headers
-    - Content-type: application/x-x509-ca-cert
+    - content-type: application/x-x509-ca-cert
 - dmg
     type: dmg
     headers
-    - Content-type: application/octet-stream
+    - content-type: application/octet-stream
 - doc
     type: doc
     headers
-    - Content-type: application/msword
+    - content-type: application/msword
 - docx
     type: docx
     headers
-    - Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    - content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 - eot
     type: eot
     headers
-    - Content-type: application/vnd.ms-fontobject
+    - content-type: application/vnd.ms-fontobject
 - flac
     type: flac
     headers
-    - Content-type: audio/flac
+    - content-type: audio/flac
 - gif
     type: gif
     headers
-    - Content-type: image/gif
+    - content-type: image/gif
 - gz
     type: gz
     headers
-    - Content-type: application/x-compressed
+    - content-type: application/x-compressed
 - gzip
     type: gzip
     headers
-    - Content-type: application/x-gzip
+    - content-type: application/x-gzip
 - heif
     type: heif
     headers
-    - Content-type: image/heif
+    - content-type: image/heif
 - htm
     type: htm
     headers
-    - Content-type: text/html
+    - content-type: text/html
 - html
     type: html
     headers
-    - Content-type: text/html
+    - content-type: text/html
 - ico
     type: ico
     headers
-    - Content-type: image/x-icon
+    - content-type: image/x-icon
 - iso
     type: iso
     headers
-    - Content-type: application/octet-stream
+    - content-type: application/octet-stream
 - img
     type: img
     headers
-    - Content-type: application/octet-stream
+    - content-type: application/octet-stream
 - jar
     type: jar
     headers
-    - Content-type: application/java-archive
+    - content-type: application/java-archive
 - jpeg
     type: jpeg
     headers
-    - Content-type: image/jpeg
+    - content-type: image/jpeg
 - jpg
     type: jpg
     headers
-    - Content-type: image/jpeg
+    - content-type: image/jpeg
 - json
     type: json
     headers
-    - Content-type: application/json
+    - content-type: application/json
 - js
     type: js
     headers
-    - Content-type: application/javascript
-    - X-Content-Type-Options: nosniff
+    - content-type: application/javascript
+    - x-content-type-options: nosniff
 - keynote
     type: keynote
     headers
-    - Content-type: application/x-iwork-keynote-sffkey
+    - content-type: application/x-iwork-keynote-sffkey
 - m4a
     type: m4a
     headers
-    - Content-type: audio/x-m4a
+    - content-type: audio/x-m4a
 - m4v
     type: m4v
     headers
-    - Content-type: video/x-m4v
+    - content-type: video/x-m4v
 - map
     type: map
     headers
-    - Content-type: application/json
+    - content-type: application/json
 - mid
     type: mid
     headers
-    - Content-type: audio/midi
+    - content-type: audio/midi
 - midi
     type: midi
     headers
-    - Content-type: audio/midi
+    - content-type: audio/midi
 - mkv
     type: mkv
     headers
-    - Content-type: video/x-matroska
+    - content-type: video/x-matroska
 - mov
     type: mov
     headers
-    - Content-type: video/quicktime
+    - content-type: video/quicktime
 - mp3
     type: mp3
     headers
-    - Content-type: audio/mpeg
+    - content-type: audio/mpeg
 - mp4
     type: mp4
     headers
-    - Content-type: video/mp4
+    - content-type: video/mp4
 - mpeg
     type: mpeg
     headers
-    - Content-type: video/mpeg
+    - content-type: video/mpeg
 - mpg
     type: mpg
     headers
-    - Content-type: video/mpeg
+    - content-type: video/mpeg
 - numbers
     type: numbers
     headers
-    - Content-type: application/x-iwork-numbers-sffnumbers
+    - content-type: application/x-iwork-numbers-sffnumbers
 - odg
     type: odg
     headers
-    - Content-type: application/vnd.oasis.opendocument.graphics
+    - content-type: application/vnd.oasis.opendocument.graphics
 - odp
     type: odp
     headers
-    - Content-type: application/vnd.oasis.opendocument.presentation
+    - content-type: application/vnd.oasis.opendocument.presentation
 - ods
     type: ods
     headers
-    - Content-type: application/vnd.oasis.opendocument.spreadsheet
+    - content-type: application/vnd.oasis.opendocument.spreadsheet
 - odt
     type: odt
     headers
-    - Content-type: application/vnd.oasis.opendocument.text
+    - content-type: application/vnd.oasis.opendocument.text
 - ogg
     type: ogg
     headers
-    - Content-type: audio/ogg
+    - content-type: audio/ogg
 - ogv
     type: ogv
     headers
-    - Content-type: video/ogg
+    - content-type: video/ogg
 - otf
     type: otf
     headers
-    - Content-type: application/x-font-opentype
+    - content-type: application/x-font-opentype
 - pages
     type: pages
     headers
-    - Content-type: application/x-iwork-pages-sffpages
+    - content-type: application/x-iwork-pages-sffpages
 - pdf
     type: pdf
     headers
-    - Content-type: application/pdf
+    - content-type: application/pdf
 - pem
     type: pem
     headers
-    - Content-type: application/x-x509-ca-cert
+    - content-type: application/x-x509-ca-cert
 - pkg
     type: pkg
     headers
-    - Content-type: application/x-newton-compatible-pkg
+    - content-type: application/x-newton-compatible-pkg
 - png
     type: png
     headers
-    - Content-type: image/png
+    - content-type: image/png
 - psd
     type: psd
     headers
-    - Content-type: application/octet-stream
+    - content-type: application/octet-stream
 - ppt
     type: ppt
     headers
-    - Content-type: application/vnd.ms-powerpoint
+    - content-type: application/vnd.ms-powerpoint
 - pptx
     type: pptx
     headers
-    - Content-type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+    - content-type: application/vnd.openxmlformats-officedocument.presentationml.presentation
 - rar
     type: rar
     headers
-    - Content-type: application/x-rar-compressed
+    - content-type: application/x-rar-compressed
 - rpm
     type: rpm
     headers
-    - Content-type: application/x-redhat-package-manager
+    - content-type: application/x-redhat-package-manager
 - rss
     type: rss
     headers
-    - Content-type: application/rss+xml
+    - content-type: application/rss+xml
 - rtf
     type: rtf
     headers
-    - Content-type: application/rtf
+    - content-type: application/rtf
 - sfnt
     type: sfnt
     headers
-    - Content-type: application/font-sfnt
+    - content-type: application/font-sfnt
 - svg
     type: svg
     headers
-    - Content-type: image/svg+xml
+    - content-type: image/svg+xml
 - svgz
     type: svgz
     headers
-    - Content-type: image/svg+xml
+    - content-type: image/svg+xml
 - tar
     type: tar
     headers
-    - Content-type: application/x-tar
+    - content-type: application/x-tar
 - tgz
     type: tgz
     headers
-    - Content-type: application/x-compressed
+    - content-type: application/x-compressed
 - tif
     type: tif
     headers
-    - Content-type: image/tiff
+    - content-type: image/tiff
 - tiff
     type: tiff
     headers
-    - Content-type: image/tiff
+    - content-type: image/tiff
 - ttf
     type: ttf
     headers
-    - Content-type: application/x-font-ttf
+    - content-type: application/x-font-ttf
 - txt
     type: txt
     headers
-    - Content-type: text/plain
+    - content-type: text/plain
 - wav
     type: wav
     headers
-    - Content-type: audio/wav
+    - content-type: audio/wav
 - webm
     type: webm
     headers
-    - Content-type: video/webm
+    - content-type: video/webm
 - webp
     type: webp
     headers
-    - Content-type: image/webp
+    - content-type: image/webp
 - wma
     type: wma
     headers
-    - Content-type: audio/x-ms-wma
+    - content-type: audio/x-ms-wma
 - wmv
     type: wmv
     headers
-    - Content-type: video/x-ms-wmv
+    - content-type: video/x-ms-wmv
 - woff
     type: woff
     headers
-    - Content-type: application/font-woff
+    - content-type: application/font-woff
 - woff2
     type: woff2
     headers
-    - Content-type: application/font-woff2
+    - content-type: application/font-woff2
 - xls
     type: xls
     headers
-    - Content-type: application/vnd.ms-excel
+    - content-type: application/vnd.ms-excel
 - xlsx
     type: xlsx
     headers
-    - Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    - content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 - xhtml
     type: xhtml
     headers
-    - Content-type: application/xhtml+xml
+    - content-type: application/xhtml+xml
 - xml
     type: xml
     headers
-    - Content-type: text/xml
+    - content-type: text/xml
 - xpm
     type: xpm
     headers
-    - Content-type: image/x-xpixmap
+    - content-type: image/x-xpixmap
 - xsd
     type: xsd
     headers
-    - Content-type: text/xml
+    - content-type: text/xml
 - zip
     type: zip
     headers
-    - Content-type: application/zip
+    - content-type: application/zip

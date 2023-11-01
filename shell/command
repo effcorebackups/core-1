@@ -1,17 +1,21 @@
 #!/usr/bin/env php
-
 <?php
 
 ##################################################################
 ### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
-if (version_compare(PHP_VERSION, '7.1.0', '>=') !== true) {
-    print 'Requires PHP version 7.1.0 or higher! The current version is '.PHP_VERSION."\n";
+if (version_compare(PHP_VERSION, '7.3.0', '>=') !== true) {
+    print 'Requires PHP version 7.3.0 or higher! The current version is '.PHP_VERSION."\n";
     exit();
 }
 
-require_once('../system/boot_initialization.php');
+if (PHP_INT_SIZE < 8) {
+    print 'Requires 64-bit platform!';
+    exit();
+}
+
+require_once(__DIR__.'/../system/boot_initialization.php');
 
 effcore\Language::code_set_current('en');
 
@@ -29,30 +33,97 @@ foreach ($command_args as $c_arg_num => $c_arg_value) {
     }
 }
 
+#################################
+### showing start information ###
+#################################
+
+print effcore\NL.str_repeat('=', 80).effcore\NL;
+print 'PHP VERSION: '.phpversion().effcore\NL;
+print 'COMMAND NAME: '.($command_name ?: 'n/a').effcore\NL;
+if (!count($command_args))
+    print 'ARGUMENTS: n/a'.effcore\NL;
+else {
+    print 'ARGUMENTS:'.effcore\NL;
+    foreach ($command_args as $c_name => $c_value) {
+        print '  - '.$c_name.' = '.$c_value.effcore\NL;
+    }
+}
+print str_repeat('-', 80).effcore\NL;
+
+############################
+### enabling strict mode ###
+############################
+
+if (empty($command_args['no_strict'])) { # strictest mode: no errors, no warnings
+    set_error_handler(
+        function($errno, $message, $file_path, $line_number) {
+            throw new \ErrorException(
+                $message, /* code = */ 0,
+                $errno,
+                $file_path,
+                $line_number
+            );
+        }
+    );
+}
+
+#####################
+### showing hints ###
+#####################
+
+$commands = effcore\Command::get_all();
+if (!$commands) {
+    print 'NO COMMANDS WERE FOUND!'.effcore\NL;
+    print 'ENABLE MODULES THAT CONTAIN COMMANDS, FOR EXAMPLE: "TEST"'.effcore\NL;
+    exit();
+}
+
 if (!$command_name) {
-    print 'COMMAND NAME IS REQUIRED!'.effcore\NL.effcore\NL;
-    print 'FORMAT: ./command <name>'            .effcore\NL.effcore\NL;
-    print 'The following names are available:'  .effcore\NL;
-    foreach (effcore\Command::get_all() as $c_command) {
-        print '  - '.$c_command->name.': '.
-                     $c_command->description.effcore\NL;
+    print 'COMMAND NAME IS REQUIRED!'     .effcore\NL.effcore\NL;
+    print 'FORMAT: ./command <name>'      .effcore\NL;
+    print 'PARAMETERS:'                   .effcore\NL;
+    print '  --no_strict: ignore warnings'.effcore\NL;
+    print '  --with_console: show console'.effcore\NL.effcore\NL;
+    if ($commands) {
+        print 'THE FOLLOWING NAMES ARE AVAILABLE:'.effcore\NL;
+        foreach ($commands as $c_command) {
+            print '  - '.$c_command->name.': '.
+                         $c_command->description.effcore\NL;
+        }
     }
     exit();
 }
 
 if (!effcore\Command::get($command_name)) {
-    print 'INVALID COMMAND NAME!'               .effcore\NL.effcore\NL;
-    print 'FORMAT: ./command <name>'            .effcore\NL.effcore\NL;
-    print 'The following names are available:'  .effcore\NL;
-    foreach (effcore\Command::get_all() as $c_command) {
-        print '  - '.$c_command->name.': '.
-                     $c_command->description.effcore\NL;
+    print 'INVALID COMMAND NAME!'         .effcore\NL.effcore\NL;
+    print 'FORMAT: ./command <name>'      .effcore\NL;
+    print 'PARAMETERS:'                   .effcore\NL;
+    print '  --no_strict: ignore warnings'.effcore\NL;
+    print '  --with_console: show console'.effcore\NL.effcore\NL;
+    if ($commands) {
+        print 'THE FOLLOWING NAMES ARE AVAILABLE:'.effcore\NL;
+        foreach ($commands as $c_command) {
+            print '  - '.$c_command->name.': '.
+                         $c_command->description.effcore\NL;
+        }
     }
     exit();
 }
 
-effcore\Command::get($command_name)->run(
-    $command_name, $command_args
-);
+#########################
+### command executing ###
+#########################
+
+if (!empty($command_args['with_console'])) {
+    effcore\Timer::tap('total');
+    effcore\Command::get($command_name)->run(
+        $command_name, $command_args);
+    effcore\Timer::tap('total');
+    print effcore\NL.effcore\Console::text_get();
+} else {
+    effcore\Command::get($command_name)->run(
+        $command_name, $command_args
+    );
+}
 
 exit();

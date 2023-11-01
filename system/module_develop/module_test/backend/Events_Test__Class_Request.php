@@ -6,8 +6,8 @@
 
 namespace effcore\modules\test;
 
-use effcore\Core;
 use effcore\Request;
+use effcore\Test;
 use effcore\Text;
 
 abstract class Events_Test__Class_Request {
@@ -92,8 +92,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -197,8 +197,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -256,8 +256,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -316,8 +316,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -348,8 +348,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded($c_gotten)]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -449,8 +449,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -505,8 +505,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -609,8 +609,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -974,8 +974,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }
@@ -984,19 +984,20 @@ abstract class Events_Test__Class_Request {
         $_FILES = $_FILES_ORIGINAL;
     }
 
-    ####################################
-    ### Request::software_get_info() ###
-    ####################################
+    ######################################
+    ### Request::web_server_get_info() ###
+    ######################################
 
-    static function test_step_code__software_get_info(&$test, $dpath, &$c_results) {
+    static function test_step_code__web_server_get_info(&$test, $dpath, &$c_results) {
         $data = [
-            'nginx'       => (array)Request::software_get_info('nginx/1.1X.X'),
-            'apache_nix'  => (array)Request::software_get_info('Apache/2.4.XX (Unix) LibreSSL/2.2.X PHP/5.6.XX'),
-            'apache_win'  => (array)Request::software_get_info('Apache/2.4.XX (Win32) OpenSSL/1.X.X PHP/5.6.XX'),
-            'iis'         => (array)Request::software_get_info('Microsoft-IIS/7.5'),
-            'lighttpd'    => (array)Request::software_get_info('lighttpd/1.X.XX'),
-            'unknown_nix' => (array)Request::software_get_info('Unknown/1.0.XX (Linux)'),
-            'unknown'     => (array)Request::software_get_info('Unknown server v-1-0')
+            'nginx'       => (array)Request::web_server_get_info('nginx/1.1X.X'),
+            'apache_nix'  => (array)Request::web_server_get_info('Apache/2.4.XX (Unix) LibreSSL/2.2.X PHP/5.6.XX'),
+            'apache_win'  => (array)Request::web_server_get_info('Apache/2.4.XX (Win32) OpenSSL/1.X.X PHP/5.6.XX'),
+            'iis'         => (array)Request::web_server_get_info('Microsoft-IIS/7.5'),
+            'lighttpd'    => (array)Request::web_server_get_info('lighttpd/1.X.XX'),
+            'unknown_nix' => (array)Request::web_server_get_info('Unknown/1.0.XX (Linux)'),
+            'unknown'     => (array)Request::web_server_get_info('Unknown server v-1-0'),
+            'unknown_utf' => (array)Request::web_server_get_info('Сервер v-1-0'),
         ];
 
         $expected = [
@@ -1006,7 +1007,8 @@ abstract class Events_Test__Class_Request {
             'iis'         => ['name' => 'microsoft-iis',        'version' => '7.5'],
             'lighttpd'    => ['name' => 'lighttpd',             'version' => '1.X.XX'],
             'unknown_nix' => ['name' => 'unknown',              'version' => '1.0.XX'],
-            'unknown'     => ['name' => 'unknown server v-1-0', 'version' => '']
+            'unknown'     => ['name' => 'unknown server v-1-0', 'version' => ''],
+            'unknown_utf' => ['name' => 'сервер v-1-0',         'version' => ''],
         ];
 
         foreach ($data as $c_row_id => $c_field) {
@@ -1016,8 +1018,8 @@ abstract class Events_Test__Class_Request {
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: "%%_value"', ['value' => Core::return_encoded(serialize($c_expected))]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: "%%_value"', ['value' => Core::return_encoded(serialize($c_gotten))]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
                 $c_results['return'] = 0;
                 return;
             }

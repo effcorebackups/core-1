@@ -112,7 +112,7 @@ class Selection extends Markup implements has_Data_cache {
                         $page_max_number = 1;
                     $pager = new Pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -200);
                     $pager_error_code = $pager->error_code_get();
-                    if ($pager_error_code === Pager::ERR_CODE_CUR_GT_MAX) Url::go($pager->url_page_max_get()->tiny_get());
+                    if ($pager_error_code === Pager::ERR_CODE_CUR_GT_MAX) Url::go($pager->url_page_max_get()->relative_get());
                     if ($pager_error_code !== Pager::ERR_CODE_OK) Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], BR.BR));
                     if ($page_max_number > 1) {
                         $this->query_settings['offset'] = ($pager->cur - 1) * $this->query_settings['limit'];
@@ -137,26 +137,30 @@ class Selection extends Markup implements has_Data_cache {
                     foreach ($this->_instances as $c_instance) {
                         $c_row = [];
                         $c_instance_id = implode('+', $c_instance->values_id_get());
-                        # fields (main entity)
+
+                        ############################
+                        ### fields (main entity) ###
+                        ############################
+
                         foreach ($this->fields['main'] as $c_cell_id => $c_field) {
-                            $c_def_title               = $this->_entities['_main']->fields[$c_field->entity_field_name]->title               ?? null;
-                            $c_def_converter_on_render = $this->_entities['_main']->fields[$c_field->entity_field_name]->converter_on_render ?? null;
-                            $c_value_type              = $this->_entities['_main']->fields[$c_field->entity_field_name]->type;
-                            $c_value                   = $c_instance->                    {$c_field->entity_field_name};
+                            $c_def_title                = $this->_entities['_main']->fields[$c_field->entity_field_name]->title                 ?? null;
+                            $c_def_converters_on_render = $this->_entities['_main']->fields[$c_field->entity_field_name]->converters->on_render ?? null;
+                            $c_value_type               = $this->_entities['_main']->fields[$c_field->entity_field_name]->type;
+                            $c_value                    = $c_instance->                    {$c_field->entity_field_name};
                             Token::insert('selection_'.$this->main_entity_name.'_'.$c_field->entity_field_name.               '_cur_context', 'text', $c_value, null, 'storage');
                             Token::insert('selection_'.$this->main_entity_name.'_'.$c_field->entity_field_name.'_'.$c_instance_id.'_context', 'text', $c_value, null, 'storage');
                             $c_is_not_formatted = isset($c_field->is_not_formatted) && $c_field->is_not_formatted === true;
                             if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'real'    ) $c_value = Locale::format_number  ($c_value, Core::FPART_MAX_LEN);
                             if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'integer' ) $c_value = Locale::format_number  ($c_value);
+                            if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'time'    ) $c_value = Locale::format_time    ($c_value);
                             if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'date'    ) $c_value = Locale::format_date    ($c_value);
                             if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'datetime') $c_value = Locale::format_datetime($c_value);
-                            if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'time'    ) $c_value = Locale::format_time    ($c_value);
                             if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'boolean' ) $c_value =   Core::format_logic   ($c_value);
                             $c_row[$c_cell_id] = [
                                 'attributes'           => ['data-entity-field-name' => $c_field->entity_field_name],
                                 'value'                => $c_value,
-                                'title'                => isset($c_field->title)               ? $c_field->title               : $c_def_title,
-                                'converter_on_render'  => isset($c_field->converter_on_render) ? $c_field->converter_on_render : $c_def_converter_on_render,
+                                'title'                => isset($c_field->title)                 ? $c_field->title                 : $c_def_title,
+                                'converters_on_render' => isset($c_field->converters->on_render) ? $c_field->converters->on_render : $c_def_converters_on_render,
                                 'is_apply_translation' => isset($c_field->is_apply_translation) && $c_field->is_apply_translation,
                                 'is_apply_tokens'      => isset($c_field->is_apply_tokens)      && $c_field->is_apply_tokens,
                                 'is_trimmed'           => isset($c_field->is_trimmed)           && $c_field->is_trimmed,
@@ -164,29 +168,33 @@ class Selection extends Markup implements has_Data_cache {
                                 'weight'               => isset($c_field->weight) ? (int)$c_field->weight : 0
                             ];
                         }
-                        # fields 'join'
+
+                        #####################
+                        ### fields 'join' ###
+                        #####################
+
                         if (!empty($this->fields['join']) && is_array($this->fields['join'])) {
                             foreach ($this->fields['join'] as $c_join_row_id => $c_join) {
                                 if (isset($this->_entities[$c_join->entity_name])) {
                                     foreach ($c_join->fields as $c_cell_id => $c_field) {
-                                        $c_def_title               = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->title               ?? null;
-                                        $c_def_converter_on_render = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->converter_on_render ?? null;
-                                        $c_value_type              = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->type;
-                                        $c_value                   = $c_instance->   {$c_join->entity_name   .'.'.  $c_field->entity_field_name};
+                                        $c_def_title                = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->title                 ?? null;
+                                        $c_def_converters_on_render = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->converters->on_render ?? null;
+                                        $c_value_type               = $this->_entities[$c_join->entity_name]->fields[$c_field->entity_field_name]->type;
+                                        $c_value                    = $c_instance->   {$c_join->entity_name   .'.'.  $c_field->entity_field_name};
                                         Token::insert('selection_'.$c_join->entity_name.'_'.$c_field->entity_field_name.               '_cur_context', 'text', $c_value, null, 'storage');
                                         Token::insert('selection_'.$c_join->entity_name.'_'.$c_field->entity_field_name.'_'.$c_instance_id.'_context', 'text', $c_value, null, 'storage');
                                         $c_is_not_formatted = isset($c_field->is_not_formatted) && $c_field->is_not_formatted === true;
                                         if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'real'    ) $c_value = Locale::format_number  ($c_value, Core::FPART_MAX_LEN);
                                         if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'integer' ) $c_value = Locale::format_number  ($c_value);
+                                        if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'time'    ) $c_value = Locale::format_time    ($c_value);
                                         if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'date'    ) $c_value = Locale::format_date    ($c_value);
                                         if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'datetime') $c_value = Locale::format_datetime($c_value);
-                                        if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'time'    ) $c_value = Locale::format_time    ($c_value);
                                         if ($c_is_not_formatted === false && $c_value !== null && $c_value_type === 'boolean' ) $c_value =   Core::format_logic   ($c_value);
                                         $c_row[$c_join_row_id.'_'.$c_cell_id] = [
                                             'attributes'           => ['data-entity-field-name' => $c_join->entity_name.'.'.$c_field->entity_field_name],
                                             'value'                => $c_value,
-                                            'title'                => isset($c_field->title)               ? $c_field->title               : $c_def_title,
-                                            'converter_on_render'  => isset($c_field->converter_on_render) ? $c_field->converter_on_render : $c_def_converter_on_render,
+                                            'title'                => isset($c_field->title)                 ? $c_field->title                 : $c_def_title,
+                                            'converters_on_render' => isset($c_field->converters->on_render) ? $c_field->converters->on_render : $c_def_converters_on_render,
                                             'is_apply_translation' => isset($c_field->is_apply_translation) && $c_field->is_apply_translation,
                                             'is_apply_tokens'      => isset($c_field->is_apply_tokens)      && $c_field->is_apply_tokens,
                                             'is_trimmed'           => isset($c_field->is_trimmed)           && $c_field->is_trimmed,
@@ -197,7 +205,11 @@ class Selection extends Markup implements has_Data_cache {
                                 }
                             }
                         }
-                        # fields 'text'
+
+                        #####################
+                        ### fields 'text' ###
+                        #####################
+
                         if (!empty($this->fields['texts']) && is_array($this->fields['texts'])) {
                             foreach ($this->fields['texts'] as $c_cell_id => $c_text) {
                                 $c_row[$c_cell_id] = [
@@ -211,7 +223,11 @@ class Selection extends Markup implements has_Data_cache {
                                 ];
                             }
                         }
-                        # fields 'markup'
+
+                        #######################
+                        ### fields 'markup' ###
+                        #######################
+
                         if (!empty($this->fields['markup']) && is_array($this->fields['markup'])) {
                             foreach ($this->fields['markup'] as $c_cell_id => $c_markup) {
                                 $c_row[$c_cell_id] = [
@@ -225,7 +241,11 @@ class Selection extends Markup implements has_Data_cache {
                                 ];
                             }
                         }
-                        # fields 'checkbox'
+
+                        #########################
+                        ### fields 'checkbox' ###
+                        #########################
+
                         if (!empty($this->fields['checkboxes']) && is_array($this->fields['checkboxes'])) {
                             foreach ($this->fields['checkboxes'] as $c_cell_id => $c_checkbox) {
                                 $c_form_field = new Field_Checkbox;
@@ -240,7 +260,11 @@ class Selection extends Markup implements has_Data_cache {
                                 ];
                             }
                         }
-                        # fields 'handler'
+
+                        ########################
+                        ### fields 'handler' ###
+                        ########################
+
                         if (!empty($this->fields['handlers']) && is_array($this->fields['handlers'])) {
                             foreach ($this->fields['handlers'] as $c_cell_id => $c_handler) {
                                 $c_row[$c_cell_id] = [
@@ -254,7 +278,11 @@ class Selection extends Markup implements has_Data_cache {
                                 ];
                             }
                         }
-                        # fields 'code'
+
+                        #####################
+                        ### fields 'code' ###
+                        #####################
+
                         if (!empty($this->fields['code']) && is_array($this->fields['code'])) {
                             foreach ($this->fields['code'] as $c_cell_id => $c_code) {
                                 $c_row[$c_cell_id] = [
@@ -268,12 +296,18 @@ class Selection extends Markup implements has_Data_cache {
                                 ];
                             }
                         }
-                        # post-processing
+
+                        #######################
+                        ### post-processing ###
+                        #######################
+
                         foreach ($c_row as $c_cell_id => $c_cell) {
-                            # apply markup filter
-                            if (!empty($c_row[$c_cell_id]['converter_on_render'])) {
-                                if (Core::is_handler($c_row[$c_cell_id]['converter_on_render']) !== true &&      function_exists($c_row[$c_cell_id]['converter_on_render'])) $c_row[$c_cell_id]['value'] = call_user_func($c_row[$c_cell_id]['converter_on_render'], $c_row[$c_cell_id]['value']);
-                                if (Core::is_handler($c_row[$c_cell_id]['converter_on_render']) === true && Core::handler_exists($c_row[$c_cell_id]['converter_on_render'])) $c_row[$c_cell_id]['value'] = call_user_func($c_row[$c_cell_id]['converter_on_render'], $c_row[$c_cell_id]['value']);
+                            # apply on_render filter
+                            if (!empty($c_row[$c_cell_id]['converters_on_render'])) {
+                                $c_row[$c_cell_id]['value'] = Entity::converters_apply(
+                                    $c_row[$c_cell_id]['value'],
+                                    $c_row[$c_cell_id]['converters_on_render']
+                                );
                             }
                             # convert scalar value to '\effcore\Text'
                             if (is_numeric($c_row[$c_cell_id]['value']) ||
@@ -287,7 +321,7 @@ class Selection extends Markup implements has_Data_cache {
                             if ($c_row[$c_cell_id]['value'] instanceof Text) $c_row[$c_cell_id]['value']->is_apply_translation = !empty($c_row[$c_cell_id]['is_apply_translation']);
                             if ($c_row[$c_cell_id]['value'] instanceof Text) $c_row[$c_cell_id]['value']->is_apply_tokens      = !empty($c_row[$c_cell_id]['is_apply_tokens']);
                             # removal of unnecessary parameters
-                            unset($c_row[$c_cell_id]['converter_on_render']);
+                            unset($c_row[$c_cell_id]['converters_on_render']);
                             unset($c_row[$c_cell_id]['is_trimmed']);
                             unset($c_row[$c_cell_id]['is_apply_translation']);
                             unset($c_row[$c_cell_id]['is_apply_tokens']);

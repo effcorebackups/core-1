@@ -14,7 +14,7 @@ abstract class Dynamic {
     public static $data = [];
 
     static function get_file_by_name($name, $sub_dirs = '') {
-        $name = Core::sanitize_file_part($name);
+        $name = Security::sanitize_file_part($name);
         return new File(static::DIRECTORY.$sub_dirs.$name.'.php');
     }
 
@@ -43,23 +43,31 @@ abstract class Dynamic {
         static::$data[$name] = $data;
         $file = static::get_file_by_name($name, $sub_dirs);
         if ($info) static::$info[$name] = $info;
-        if (File::mkdir_if_not_exists($file->dirs_get()) &&
-                          is_writable($file->dirs_get())) {
+        if (Directory::create($file->dirs_get()) && Directory::is_writable($file->dirs_get())) {
+            # make '*.data'-file content
             $file->data_set('<?php'.NL.NL.'namespace effcore;'.NL.NL.'# '.$name.NL.NL.($info ?
                 Core::data_to_code($info, Core::structure_get_part_name(static::class).'::$info[\''.$name.'\']') : '').
                 Core::data_to_code($data, Core::structure_get_part_name(static::class).'::$data[\''.$name.'\']')
             );
             if (!$file->save()) {
-                static::message_on_error_insert($file);
+                Message::insert(new Text_multiline([
+                    'File "%%_file" was not written to disc!',
+                    'File permissions are too strict!'], [
+                    'file' => $file->path_get_relative()]), 'error'
+                );
                 return false;
             }
+            # reset OPCache before load related dynamic files (styles, scripts and etc.)
             if (function_exists('opcache_invalidate')) {
-                # reset OPCache before load related dynamic files (styles, scripts and etc.)
                 @opcache_invalidate($file->path_get());
             }
             return true;
         } else {
-            static::message_on_error_insert($file);
+            Message::insert(new Text_multiline([
+                'File "%%_file" was not written to disc!',
+                'Directory permissions are too strict!'], [
+                'file' => $file->path_get_relative()]), 'error'
+            );
             return false;
         }
     }
@@ -69,28 +77,16 @@ abstract class Dynamic {
             unset(static::$data[$name]);
         $file = static::get_file_by_name($name, $sub_dirs);
         if ($file->is_exists()) {
-            $result = @unlink($file->path_get());
-            if   (!$result) static::message_on_error_delete($file);
+            $result = File::delete($file->path_get());
+            if (!$result) {
+                Message::insert(new Text_multiline([
+                    'File "%%_file" was not deleted!',
+                    'Directory permissions are too strict!'], [
+                    'file' => $file->path_get_relative()]), 'error'
+                );
+            }
             return $result;
         }
-    }
-
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-
-    static function message_on_error_insert($file) {
-        Message::insert(new Text_multiline([
-            'File "%%_file" was not written to disc!',
-            'File permissions (if the file exists) and directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-        );
-    }
-
-    static function message_on_error_delete($file) {
-        Message::insert(new Text_multiline([
-            'File "%%_file" was not deleted!',
-            'Directory permissions should be checked.'], [
-            'file' => $file->path_get_relative()]), 'error'
-        );
     }
 
 }

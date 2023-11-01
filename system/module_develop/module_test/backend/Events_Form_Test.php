@@ -56,7 +56,7 @@ abstract class Events_Form_Test {
                         $items['report']->child_select('document')->children_delete();
                         foreach ($test_result['reports'] as $c_dpath => $c_part) {
                             $c_depth = Core::path_get_depth($c_dpath);
-                            if (is_array($c_part)) foreach ($c_part as $c_key => $c_line) $c_part[$c_key] = Core::return_rendered($c_line);
+                            if (is_array($c_part)) foreach ($c_part as $c_key => $c_line) $c_part[$c_key] = Core::to_rendered($c_line);
                             if (is_array($c_part)) $items['report']->child_select('document')->child_insert(new Markup('p', ['data-depth' => $c_depth], new Text_multiline($c_part) ));
                             else                   $items['report']->child_select('document')->child_insert(new Markup('p', ['data-depth' => $c_depth],                    $c_part  ));
                         }

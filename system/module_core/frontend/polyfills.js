@@ -15,7 +15,7 @@ if (!Node.prototype.hasOwnProperty('prepend')) {
         enumerable  : true,
         writable    : true,
         value: function () {
-            for (var i = arguments.length - 1; i >= 0; i--) {
+            for (let i = arguments.length - 1; i >= 0; i--) {
                 if (arguments[i] instanceof Node)
                      this.insertBefore(                               arguments[i],   this.firstChild);
                 else this.insertBefore(document.createTextNode(String(arguments[i])), this.firstChild);
@@ -30,7 +30,7 @@ if (!Node.prototype.hasOwnProperty('append')) {
         enumerable  : true,
         writable    : true,
         value: function () {
-            for (var i = 0; i < arguments.length; i++) {
+            for (let i = 0; i < arguments.length; i++) {
                 if (arguments[i] instanceof Node)
                      this.appendChild(                               arguments[i]  );
                 else this.appendChild(document.createTextNode(String(arguments[i])));
@@ -86,7 +86,7 @@ if (!Node.prototype.hasOwnProperty('querySelector__withHandler')) {
         enumerable  : true,
         writable    : true,
         value: function (query, handler) {
-            var result = this.querySelector(query);
+            let result = this.querySelector(query);
             if (result instanceof Node) {
                 handler(result);
             }
@@ -100,9 +100,9 @@ if (!Document.prototype.hasOwnProperty('createElement__withAttributes')) {
         enumerable  : true,
         writable    : true,
         value: function (tag_name, attributes, options) {
-            var node = document.createElement(tag_name, options);
+            let node = document.createElement(tag_name, options);
             if (Effcore.getType(attributes) === 'Object')
-                for (var c_key in attributes)
+                for (let c_key in attributes)
                     node.setAttribute(c_key, attributes[c_key]);
             return node;
         }

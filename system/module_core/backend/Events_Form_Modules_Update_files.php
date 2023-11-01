@@ -14,6 +14,7 @@ use effcore\Event;
 use effcore\Fieldset;
 use effcore\Markup;
 use effcore\Module;
+use effcore\Security;
 use effcore\Text_multiline;
 use effcore\Text;
 
@@ -27,7 +28,7 @@ abstract class Events_Form_Modules_Update_files {
         foreach ($bundles as $c_bundle) {
             if (isset($c_bundle->repo_update_handler_in_module) && Module::is_enabled(
                       $c_bundle->repo_update_handler_in_module)) {
-                $c_repo_settings_path = Core::validate_realpath(DIR_ROOT.
+                $c_repo_settings_path = Security::validate_realpath(DIR_ROOT.
                     $c_bundle->path.
                     $c_bundle->repo_directory.'/.'.
                     $c_bundle->repo_type);

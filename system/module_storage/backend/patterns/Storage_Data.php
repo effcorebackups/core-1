@@ -45,7 +45,7 @@ class Storage_Data implements has_Data_cache {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-    function changes_insert($module_id, $action, $dpath, $value = null, $rebuild = true, $null_prevention = true) {
+    function changes_register($module_id, $action, $dpath, $value = null, $rebuild = true, $null_prevention = true) {
         # insert new dynamic changes
         $changes_d = Data::select('changes');
         if ($changes_d === null && $null_prevention === true) return false;
@@ -53,7 +53,18 @@ class Storage_Data implements has_Data_cache {
         if (!isset($changes_d[$module_id]           )) $changes_d[$module_id] = new stdClass;
         if (!isset($changes_d[$module_id]->{$action})) $changes_d[$module_id]->{$action} = [];
         $changes_d[$module_id]->{$action}[$dpath] = $value;
-        $result = Data::update('changes', $changes_d, '', ['build_date' => Core::datetime_get()]);
+        # sort actions
+        foreach ($changes_d as $c_module_id => $c_changes) {
+            $c_sorted_data = new stdClass;
+            if (isset($changes_d[$c_module_id]->insert)) $c_sorted_data->insert = $changes_d[$c_module_id]->insert;
+            if (isset($changes_d[$c_module_id]->update)) $c_sorted_data->update = $changes_d[$c_module_id]->update;
+            if (isset($changes_d[$c_module_id]->delete)) $c_sorted_data->delete = $changes_d[$c_module_id]->delete;
+            $changes_d[$c_module_id] = $c_sorted_data;
+        }
+        # save data
+        $result = Data::update('changes', $changes_d, '', [
+            'build_date' => Core::datetime_get()
+        ]);
         # prevent OPCache work
         if ($result) {
             static::$changes_dynamic['changes'] = $changes_d;
@@ -64,13 +75,24 @@ class Storage_Data implements has_Data_cache {
         return $result;
     }
 
-    function changes_delete($module_id, $action, $dpath, $rebuild = true) {
+    function changes_unregister($module_id, $action, $dpath, $rebuild = true) {
         # delete old dynamic changes
         $changes_d = Data::select('changes') ?: [];
-        if (isset($changes_d[$module_id]->{$action}[$dpath]))                                            unset($changes_d[$module_id]->{$action}[$dpath]);
-        if (isset($changes_d[$module_id]->{$action}) && (array)$changes_d[$module_id]->{$action} === []) unset($changes_d[$module_id]->{$action}        );
-        if (isset($changes_d[$module_id])            && (array)$changes_d[$module_id]            === []) unset($changes_d[$module_id]                   );
-        $result = Data::update('changes', $changes_d, '', ['build_date' => Core::datetime_get()]);
+        if (isset($changes_d[$module_id]->{$action}) && array_key_exists($dpath, $changes_d[$module_id]->{$action})      ) unset($changes_d[$module_id]->{$action}[$dpath]);
+        if (isset($changes_d[$module_id]->{$action}) &&                   (array)$changes_d[$module_id]->{$action} === []) unset($changes_d[$module_id]->{$action}        );
+        if (isset($changes_d[$module_id])            &&                   (array)$changes_d[$module_id]            === []) unset($changes_d[$module_id]                   );
+        # sort actions
+        foreach ($changes_d as $c_module_id => $c_changes) {
+            $c_sorted_data = new stdClass;
+            if (isset($changes_d[$c_module_id]->insert)) $c_sorted_data->insert = $changes_d[$c_module_id]->insert;
+            if (isset($changes_d[$c_module_id]->update)) $c_sorted_data->update = $changes_d[$c_module_id]->update;
+            if (isset($changes_d[$c_module_id]->delete)) $c_sorted_data->delete = $changes_d[$c_module_id]->delete;
+            $changes_d[$c_module_id] = $c_sorted_data;
+        }
+        # save data
+        $result = Data::update('changes', $changes_d, '', [
+            'build_date' => Core::datetime_get()
+        ]);
         # prevent OPCache work
         if ($result) {
             static::$changes_dynamic['changes'] = $changes_d;
@@ -81,11 +103,14 @@ class Storage_Data implements has_Data_cache {
         return $result;
     }
 
-    function changes_delete_all($module_id, $rebuild = true) {
+    function changes_unregister_all($module_id, $rebuild = true) {
         # delete old dynamic changes for specified module
         $changes_d = Data::select('changes') ?: [];
         unset($changes_d[$module_id]);
-        $result = Data::update('changes', $changes_d, '', ['build_date' => Core::datetime_get()]);
+        # save data
+        $result = Data::update('changes', $changes_d, '', [
+            'build_date' => Core::datetime_get()
+        ]);
         # prevent OPCache work
         if ($result) {
             static::$changes_dynamic['changes'] = $changes_d;
@@ -111,7 +136,7 @@ class Storage_Data implements has_Data_cache {
 
     static function init($catalog_name, $with_restore = true) {
         if (!isset(static::$data[$catalog_name])) {
-            Console::log_insert('storage', 'init.', 'catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'files']);
+            Console::log_insert('storage', 'init.', 'catalog "%%_catalog_name" in storage "%%_storage_name" will be initialized', 'ok', 0, ['catalog_name' => $catalog_name, 'storage_name' => 'Data']);
             $cache = Cache::select('data--'.$catalog_name);
             if     ($cache       ) static::$data[$catalog_name] = $cache;
             elseif ($with_restore) static::cache_update();
@@ -126,16 +151,18 @@ class Storage_Data implements has_Data_cache {
         $result = true;
         # init data and original data
         static::$data = [];
-        $data_orig = Cache::select('data_original');
-        if (!$data_orig) {
-            $data_orig = static::data_find_and_parse($modules_to_include);
-            $result&= Cache::update('data_original', $data_orig, '', ['build_date' => Core::datetime_get()]);
+        $data_original = Cache::select('data_original');
+        if ($data_original === null) {
+            $data_original = static::data_find_and_parse($modules_to_include);
+            $result&= Cache::update('data_original', $data_original, '', [
+                'build_date' => Core::datetime_get()
+            ]);
         }
         # init dynamic and static changes
         $changes_d = Data::select('changes') ?: [];
-        $changes_s =   $data_orig['changes'] ?? [];
+        $changes_s = $data_original['changes'] ?? [];
         # apply all changes to original data and get the final data
-        $data = Core::deep_clone($data_orig);
+        $data = Core::deep_clone($data_original);
         static::data_changes_apply($changes_d, $data);
         static::data_changes_apply($changes_s, $data);
         unset($data['changes']);
@@ -165,15 +192,39 @@ class Storage_Data implements has_Data_cache {
         foreach ($changes as $module_id => $c_module_changes) {
             foreach ($c_module_changes as $c_action => $c_changes) {
                 foreach ($c_changes as $c_dpath => $c_data) {
-                    $c_pointers   = @Core::dpath_get_pointers($data, $c_dpath);
-                    $c_parnt_name = @array_keys($c_pointers)[count($c_pointers)-2];
-                    $c_child_name = @array_keys($c_pointers)[count($c_pointers)-1];
-                    $c_parnt      =            &$c_pointers[$c_parnt_name];
-                    $c_child      =            &$c_pointers[$c_child_name];
-                    switch ($c_action) {
-                        case 'insert': if ($c_child !== null) {foreach ($c_data as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key,        $c_value);} break; # supported types: array | object
-                        case 'update': if ($c_parnt !== null) {                                        Core::arrobj_insert_value($c_parnt, $c_child_name, $c_data );} break; # supported types: array | object | string | numeric | bool | null
-                        case 'delete': if ($c_parnt !== null) {                                        Core::arrobj_delete_child($c_parnt, $c_child_name          );} break;
+                    $c_pointers    = @Core::dpath_get_pointers($data, $c_dpath);
+                    $c_parent_name = @array_keys($c_pointers)[count($c_pointers)-2];
+                    $c_child_name  = @array_keys($c_pointers)[count($c_pointers)-1];
+                    $c_parent      =            &$c_pointers[$c_parent_name];
+                    $c_child       =            &$c_pointers[$c_child_name];
+                    # supported types: array|object
+                    if ($c_action === 'insert' && $c_child !== null) {
+                        if (gettype($c_data) === 'array'  ) foreach ($c_data as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
+                        if (gettype($c_data) === 'object' ) foreach ($c_data as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
+                    }
+                    # supported types: array|object|string|integer|double|boolean|null
+                    if ($c_action === 'insert' && $c_child === null) {
+                        if (gettype($c_data) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                    }
+                    # supported types: array|object|string|integer|double|boolean|null
+                    if ($c_action === 'update' && $c_parent !== null) {
+                        if (gettype($c_data) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_data) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                    }
+                    # supported types: null
+                    if ($c_action === 'delete' && $c_parent !== null) {
+                        if (gettype($c_data) === 'NULL') Core::arrobj_delete_child($c_parent, $c_child_name);
                     }
                 }
             }
@@ -184,10 +235,11 @@ class Storage_Data implements has_Data_cache {
         $parsed = [];
         $bundles_path = [];
         $modules_path = [];
-        foreach (File::select_recursive(DIR_SYSTEM,  '%^.*/module\\.data$%') +
-                 File::select_recursive(DIR_SYSTEM,  '%^.*/bundle\\.data$%') +
-                 File::select_recursive(DIR_MODULES, '%^.*/module\\.data$%') +
-                 File::select_recursive(DIR_MODULES, '%^.*/bundle\\.data$%') as $c_file) {
+        $files = Directory::items_select(DIR_SYSTEM,  '%^.*/module\\.data$%') +
+                 Directory::items_select(DIR_SYSTEM,  '%^.*/bundle\\.data$%') +
+                 Directory::items_select(DIR_MODULES, '%^.*/module\\.data$%') +
+                 Directory::items_select(DIR_MODULES, '%^.*/bundle\\.data$%');
+        foreach ($files as $c_file) {
             $c_text_to_data_result = static::text_to_data($c_file->load());
             static::text_to_data_show_errors($c_text_to_data_result->errors, $c_file);
             $c_data = $c_text_to_data_result->data;
@@ -234,8 +286,9 @@ class Storage_Data implements has_Data_cache {
         # collect *.data files
         arsort($enabled);
         foreach ($enabled as $c_enabled_path) {
-            $c_files = File::select_recursive($c_enabled_path,  '%^.*\\.data$%');
-            foreach ($c_files as $c_path_relative => $c_file) {
+            $c_files = Directory::items_select(DIR_ROOT.$c_enabled_path, '%^.*\\.data$%');
+            foreach ($c_files as $c_file) {
+                $c_path_relative = $c_file->path_get_relative();
                 $c_module_id = key(Core::array_search__array_item_in_value($c_path_relative, $modules_path));
                 if (isset($enabled[$c_module_id])) {
                     if ($c_file->name === 'bundle') continue;
@@ -442,10 +495,12 @@ class Storage_Data implements has_Data_cache {
             preg_match('%^(?<indent>[ ]*)'.
                          '(?<prefix>- |)'.
                          '(?<name>.+?)'.
-                         '(?<delimiter>(?<!\\\\): |(?<!\\\\)\\||$)'.
+                         '(?<delimiter>'.'(?<!\\\\)'.'[:][ ]'.'|'.
+                                         '(?<!\\\\)'.'[|]'   .'|'.
+                                                      '$'    .')'.
                          '(?<value>.*)%sS', str_replace(A0, NL, $c_line) /* convert 'text'.'\0'.'text' to 'text'.'\n'.'text' */, $matches);
-            $c_prefix    = $matches['prefix'];
             $c_indent    = $matches['indent'];
+            $c_prefix    = $matches['prefix'];
             $c_delimiter = $matches['delimiter'];
             $c_value     = $matches['value'];
             $c_name      = str_replace(['\\:', '\\|'], [':', '|'], $matches['name']);

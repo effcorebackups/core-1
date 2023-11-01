@@ -105,7 +105,7 @@ abstract class User {
     }
 
     static function keys_install() {
-        return Storage::get('data')->changes_insert('user', 'update', 'settings/user/keys', [
+        return Storage::get('data')->changes_register('user', 'update', 'settings/user/keys', [
             'cron' => Core::random_bytes_generate(40, Module::settings_get('user')->hash_characters),
             'salt' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),
             'form' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),

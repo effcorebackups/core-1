@@ -6,11 +6,8 @@
 
 namespace effcore;
 
-use FilesystemIterator;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
+use Exception;
 use stdClass;
-use UnexpectedValueException;
 
 class File {
 
@@ -79,9 +76,29 @@ class File {
     # 6. path components like '../' should be ignored or use function 'realpath' to resolve the path
     # ───────────────────────────────────────────────────────────────────────────────────────────────
 
-    const SCAN_MODE              = FilesystemIterator::UNIX_PATHS|FilesystemIterator::SKIP_DOTS;
-    const SCAN_WITH_DIR_AT_FIRST = RecursiveIteratorIterator::SELF_FIRST;
-    const SCAN_WITH_DIR_AT_LAST  = RecursiveIteratorIterator::CHILD_FIRST;
+    const READ_BLOCK_SIZE = 1024;
+
+    const ERR_MESSAGE_UNKNOWN              = 'Unknown error!';
+    const ERR_MESSAGE_PATH_IS_INVALID      = 'File path is invalid!';
+    const ERR_MESSAGE_IS_NOT_EXISTS        = 'File is not exists!';
+    const ERR_MESSAGE_IS_EXISTS            = 'File is exists!';
+    const ERR_MESSAGE_IS_NOT_READABLE      = 'File is not readable!';
+    const ERR_MESSAGE_IS_NOT_WRITABLE      = 'File is not writable!';
+    const ERR_MESSAGE_PERM_ARE_TOO_STRICT  = 'File permissions are too strict!';
+    const ERR_MESSAGE_MODE_IS_NOT_READABLE = 'File mode does not support reading!';
+    const ERR_MESSAGE_MODE_IS_NOT_WRITABLE = 'File mode does not support writing!';
+    const ERR_MESSAGE_MODE_IS_NOT_SEEKABLE = 'File mode does not support seeking!';
+
+    const ERR_CODE_UNKNOWN              = 0;
+    const ERR_CODE_PATH_IS_INVALID      = 1;
+    const ERR_CODE_IS_NOT_EXISTS        = 2;
+    const ERR_CODE_IS_EXISTS            = 3;
+    const ERR_CODE_IS_NOT_READABLE      = 4;
+    const ERR_CODE_IS_NOT_WRITABLE      = 5;
+    const ERR_CODE_PERM_ARE_TOO_STRICT  = 6;
+    const ERR_CODE_MODE_IS_NOT_READABLE = 7;
+    const ERR_CODE_MODE_IS_NOT_WRITABLE = 8;
+    const ERR_CODE_MODE_IS_NOT_SEEKABLE = 9;
 
     public $protocol;
     public $dirs;
@@ -94,7 +111,7 @@ class File {
     }
 
     function parse($path) {
-        $info = static::path_parse($path);
+        $info = static::__path_parse($path);
         if ($info) {
             $this->protocol = $info->protocol;
             $this->dirs     = $info->dirs;
@@ -190,33 +207,45 @@ class File {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
+    function require($once = true) {
+        $path_relative = $this->path_get_relative();
+        Timer::tap('file insert: '.$path_relative);
+        $result = $once ? require_once($this->path_get()) :
+                          require     ($this->path_get());
+        Timer::tap('file insert: '.$path_relative);
+        Console::log_insert('file', 'insertion', $path_relative, 'ok', Timer::period_get('file insert: '.$path_relative, -1, -2), [], [
+            'memory consumption' => static::cache_op_info_get($this->path_get_absolute())['memory_consumption'] ?? '-']
+        );
+        return $result;
+    }
+
     function load($reset = false) {
-        $relative = $this->path_get_relative();
-        Timer::tap('file load: '.$relative);
-        if (!$reset && isset(static::$cache_data[$relative]))
-             $this->data  =  static::$cache_data[$relative];
-        else $this->data  =  static::$cache_data[$relative] = @file_get_contents($this->path_get());
-        Timer::tap('file load: '.$relative);
-        Console::log_insert('file', 'load', $relative, 'ok',
-            Timer::period_get('file load: '.$relative, -1, -2)
+        $path_relative = $this->path_get_relative();
+        Timer::tap('file load: '.$path_relative);
+        if (!$reset && isset(static::$cache_data[$path_relative]))
+             $this->data  =  static::$cache_data[$path_relative];
+        else $this->data  =  static::$cache_data[$path_relative] = @file_get_contents($this->path_get());
+        Timer::tap('file load: '.$path_relative);
+        Console::log_insert('file', 'load', $path_relative, 'ok',
+            Timer::period_get('file load: '.$path_relative, -1, -2)
         );
         return $this->data;
     }
 
     function save() {
-        static::mkdir_if_not_exists($this->dirs_get());
-        return   @file_put_contents($this->path_get(), $this->data);
+        Directory::create($this->dirs_get());
+        return @file_put_contents($this->path_get(), $this->data);
     }
 
     function append_direct($data) {
-        static::mkdir_if_not_exists($this->dirs_get());
-        return   @file_put_contents($this->path_get(), $data, FILE_APPEND);
+        Directory::create($this->dirs_get());
+        try { return @file_put_contents($this->path_get(), $data, FILE_APPEND); } catch (Exception $e) {}
     }
 
     function copy($new_dirs, $new_name = null, $this_reset = false) {
         $path_old = $this->path_get();
         $path_new = $new_dirs.($new_name ?: $this->file_get());
-        static::mkdir_if_not_exists($new_dirs);
+        Directory::create($new_dirs);
         if (@copy($path_old, $path_new)) {
             if ($this_reset)
                 $this->__construct($path_new);
@@ -227,7 +256,7 @@ class File {
     function move($new_dirs, $new_name = null) {
         $path_old = $this->path_get();
         $path_new = $new_dirs.($new_name ?: $this->file_get());
-        static::mkdir_if_not_exists($new_dirs);
+        Directory::create($new_dirs);
         if (@rename($path_old, $path_new)) {
             $this->__construct($path_new);
             return true;
@@ -237,7 +266,7 @@ class File {
     function move_uploaded($new_dirs, $new_name = null) {
         $path_old = $this->path_get();
         $path_new = $new_dirs.($new_name ?: $this->file_get());
-        static::mkdir_if_not_exists($new_dirs);
+        Directory::create($new_dirs);
         if (@move_uploaded_file($path_old, $path_new)) {
             $this->__construct($path_new);
             return true;
@@ -251,19 +280,6 @@ class File {
             $this->__construct($path_new);
             return true;
         }
-    }
-
-    function require($once = true) {
-        $relative = $this->path_get_relative();
-        Timer::tap('file insert: '.$relative);
-        $result = $once ? require_once($this->path_get()) :
-                          require     ($this->path_get());
-        Timer::tap('file insert: '.$relative);
-        if (Console::visible_mode_get()) {
-            $memory_consumption = static::cache_op_info_get($this->path_get_absolute())['memory_consumption'] ?? null;
-               Console::log_insert('file', 'insertion', $relative, 'ok', Timer::period_get('file insert: '.$relative, -1, -2), [], ['memory consumption' => $memory_consumption ?: '—']);
-        } else Console::log_insert('file', 'insertion', $relative, 'ok', Timer::period_get('file insert: '.$relative, -1, -2), []);
-        return $result;
     }
 
     ###########################
@@ -281,7 +297,7 @@ class File {
     }
 
     static function cache_op_info_get($path_absolute) {
-        if (static::$cache_op === null)
+        if (static::$cache_op === null && function_exists('opcache_get_status'))
             static::$cache_op = opcache_get_status(true);
         return static::$cache_op['scripts'][$path_absolute] ?? null;
     }
@@ -298,7 +314,16 @@ class File {
         }
     }
 
-    static function path_parse($path, $is_ignore_name = false) {
+    static function types_get() {
+        static::init();
+        return static::$cache_file_types;
+    }
+
+    static function delete($path) {
+        try { return @unlink($path); } catch (Exception $e) {}
+    }
+
+    static function __path_parse($path, $is_ignore_name = false) {
         if (strlen((string)$path)) {
             $result = new stdClass;
             $matches = [];
@@ -310,36 +335,79 @@ class File {
             $result->dirs     = array_key_exists('dirs',     $matches) ? strrev($matches['dirs'    ]) : '';
             $result->name     = array_key_exists('name',     $matches) ? strrev($matches['name'    ]) : '';
             $result->type     = array_key_exists('type',     $matches) ? strrev($matches['type'    ]) : '';
-            if (strlen($result->name) === 0 && strlen($result->type) === 0 && $is_ignore_name !== true) return;
-            if (strlen($result->name) !== 0 && strlen($result->type) === 0 && ($result->name === '.' || $result->name === '..')) return;
+            if ($result->name === '' && $result->type === '' && $is_ignore_name !== true)                          return;
+            if ($result->name !== '' && $result->type === '' && ($result->name === '.' || $result->name === '..')) return;
+            if ($result->name === '' && $result->type === '' && $result->dirs === '' && $result->protocol === '')  return;
             return $result;
         }
     }
 
-    static function types_get() {
-        static::init();
-        return static::$cache_file_types;
+    # ┌───────────┬─────────────┬─────────────┬─────────────┬──────────────────┬─────────────┬───────┐
+    # │ file mode │ is readable │ is writable │ is seekable │ is auto-creation │ is trimming │ seek  │
+    # ├───────────┼─────────────┼─────────────┼─────────────┼──────────────────┼─────────────┼───────┤
+    # │     r     │     yes     │             │     yes     │                  │             │   0   │
+    # │     r+    │     yes     │     yes     │     yes     │                  │             │   0   │
+    # │     w     │             │     yes     │     yes     │       yes        │     yes     │   0   │
+    # │     w+    │     yes     │     yes     │     yes     │       yes        │     yes     │   0   │
+    # │     c     │             │     yes     │     yes     │       yes        │             │   0   │
+    # │     c+    │     yes     │     yes     │     yes     │       yes        │             │   0   │
+    # │     a     │             │     yes     │             │       yes        │             │ end^2 │
+    # │     a+    │     yes     │     yes     │             │       yes        │             │ end^2 │
+    # │     x     │             │     yes     │     yes     │       yes^1      │             │   0   │
+    # │     x+    │     yes     │     yes     │     yes     │       yes^1      │             │   0   │
+    # └───────────┴─────────────┴─────────────┴─────────────┴──────────────────┴─────────────┴───────┘
+    # ^1: If the file exists then an error occurs.
+    # ^2: Seek only affects the reading position, writes are always appended.
+
+    static function get_mode_info($mode) {
+        $symbol = $mode[0];
+        $has_plus = strpos($mode, '+') !== false;
+        if ($symbol === 'r' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => false];
+        if ($symbol === 'w' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        if ($symbol === 'c' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        if ($symbol === 'a' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => false, 'is_auto_creation' => true];
+        if ($symbol === 'x' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        if ($symbol === 'r' && $has_plus !== true) return ['is_readable' => true,  'is_writable' => false, 'is_seekable' => true,  'is_auto_creation' => false];
+        if ($symbol === 'w' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        if ($symbol === 'c' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        if ($symbol === 'a' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => false, 'is_auto_creation' => true];
+        if ($symbol === 'x' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
     }
 
-    static function mkdir_if_not_exists($dirs, $mode = 0777) {
-        return file_exists($dirs) || @mkdir($dirs, $mode, true);
-    }
-
-    static function select_recursive($path, $filter = '', $with_dirs = false) {
-        try {
-            $result = [];
-            if ($with_dirs === true) $scan = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, static::SCAN_MODE), static::SCAN_WITH_DIR_AT_FIRST);
-            if ($with_dirs !== true) $scan = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, static::SCAN_MODE));
-            foreach ($scan as $c_path => $c_spl_file_info) {
-                if (!$filter || ($filter && preg_match($filter, $c_path))) {
-                    if     ($c_spl_file_info->isFile()) $result[$c_path] = new static($c_path);
-                    elseif ($c_spl_file_info->isDir ()) $result[$c_path] =            $c_path;
-                }
-            }
-            krsort($result);
-            return $result;
-        } catch (UnexpectedValueException $e) {
-            return [];
+    static function get_fopen_error_reason($path_root, $path_file, $mode) {
+        $mode_info = static::get_mode_info($mode);
+        $mode_is_readable        = $mode_info && $mode_info['is_readable'];
+        $mode_is_writable        = $mode_info && $mode_info['is_writable'];
+        $mode_is_auto_creation   = $mode_info && $mode_info['is_auto_creation'];
+        $root_is_executable = Core::is_Win() ? true : is_executable($path_root);
+        $root_is_exists     = file_exists($path_root);
+        $root_is_writable   = is_writable($path_root);
+        $file_is_exists     = file_exists($path_file);
+        $file_is_readable   = is_readable($path_file);
+        $file_is_writable   = is_writable($path_file);
+        # DIRECTORY is NOT exists
+        if (!$root_is_exists) {
+            return Directory::ERR_CODE_IS_NOT_EXISTS;
+        }
+        # DIRECTORY permission has 'x' │ FILE is exists │ FOPEN mode is 'x'/x+'
+        if ($root_is_executable && $file_is_exists && strpbrk($mode, 'x')) {
+            return static::ERR_CODE_IS_EXISTS;
+        }
+        # DIRECTORY permission has 'x' │ FILE is exists | FOPEN mode is 'r'/'r+'/'w'/'w+'/'c'/'c+'/'a'/'a+'
+        if ($root_is_executable && $file_is_exists && strpbrk($mode, 'r'.'w'.'c'.'a')) {
+            if (!$file_is_readable && !$file_is_writable                     ) return static::ERR_CODE_PERM_ARE_TOO_STRICT; # FILE permission is '---' │ FOPEN mode is *
+            if ( $file_is_readable && !$file_is_writable && $mode_is_writable) return static::ERR_CODE_PERM_ARE_TOO_STRICT; # FILE permission is 'r--' │ FOPEN mode is 'r+'/'w'/'w+'/'c'/'c+'/'a'/'a+'
+            if (!$file_is_readable &&  $file_is_writable && $mode_is_readable) return static::ERR_CODE_PERM_ARE_TOO_STRICT; # FILE permission is '-w-' │ FOPEN mode is 'r'/'r+'/'w+'/'c+'/'a+'
+        }
+        # DIRECTORY permission has 'x' │ FILE is NOT exists
+        if ($root_is_executable && !$file_is_exists) {
+            if (!$root_is_writable && !$mode_is_auto_creation) return static::ERR_CODE_IS_NOT_EXISTS;          # FOPEN mode is 'r'/'r+'
+            if ( $root_is_writable && !$mode_is_auto_creation) return static::ERR_CODE_IS_NOT_EXISTS;          # FOPEN mode is 'r'/'r+'
+            if (!$root_is_writable &&  $mode_is_auto_creation) return Directory::ERR_CODE_PERM_ARE_TOO_STRICT; # FOPEN mode is 'w'/'w+'/'c'/'c+'/'a'/'a+'/'x'/'x+'
+        }
+        # DIRECTORY permission has NOT 'x' │ FILE STATE IS UNDETECTABLE
+        if (!$root_is_executable) {
+            return Directory::ERR_CODE_PERM_ARE_TOO_STRICT;
         }
     }
 

@@ -8,7 +8,7 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Field_Datetime extends Field_Text {
+class Field_DateTime extends Field_Text {
 
     use Field__Shared;
 
@@ -39,7 +39,7 @@ class Field_Datetime extends Field_Text {
 
     function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
         $value = parent::value_get();
-        if ($value !== null && Core::validate_T_datetime($value)) $value = Core::T_datetime_to_datetime($value);
+        if ($value !== null && Security::validate_T_datetime($value)) $value = Core::T_datetime_to_datetime($value);
         return $value;
     }
 
@@ -47,7 +47,7 @@ class Field_Datetime extends Field_Text {
         $this->value_set_initial($value);
         if (is_null($value) || is_string($value)) {
             if ($value === null && $this->value_current_if_null === true) $value = Core::datetime_get();
-            if ($value !== null && Core::validate_datetime($value)) $value = Core::datetime_to_T_datetime($value);
+            if ($value !== null && Security::validate_datetime($value))   $value = Core::datetime_to_T_datetime($value);
             parent::value_set($value);
         }
     }
@@ -80,12 +80,12 @@ class Field_Datetime extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_T_datetime($new_value)) {
+        if (strlen($new_value) && !Security::validate_T_datetime($new_value)) {
             $field->error_set(
-                'Field "%%_title" contains an incorrect date/time!', ['title' => (new Text($field->title))->render() ]
+                'Value of "%%_title" field is not a valid date and time!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
-            $new_value = Core::sanitize_T_datetime($new_value);
+            $new_value = Security::sanitize_T_datetime($new_value);
             return true;
         }
     }

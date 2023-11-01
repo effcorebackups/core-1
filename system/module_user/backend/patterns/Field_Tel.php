@@ -26,9 +26,9 @@ class Field_Tel extends Field_Text {
     ###########################
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_tel($new_value)) {
+        if (strlen($new_value) && !Security::validate_tel($new_value)) {
             $field->error_set(
-                'Field "%%_title" contains an incorrect telephone number!', ['title' => (new Text($field->title))->render() ]
+                'Value of "%%_title" field is not a valid telephone number!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
             return true;

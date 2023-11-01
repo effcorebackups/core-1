@@ -9,6 +9,11 @@ forms
         children
         - content|Field_Textarea
             title: Content of the "global.cssd" file
+            description_state: opened
+            description|Text
+              text: If filled, the file will be available at: %%_page
+              args
+              - page: <a href="/dynamic/files/global.cssd" target="_blank">/dynamic/files/global.cssd</a>
             element_attributes
             - data-style: code-editor
             - name: content

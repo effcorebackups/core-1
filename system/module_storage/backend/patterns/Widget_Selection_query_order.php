@@ -85,8 +85,8 @@ class Widget_Selection_query_order extends Widget_Items {
         $field_select_type->title = 'Type';
         $field_select_type->items_set([
             'not_selected' => '- select -',
-            'asc'          => 'ASC',
-            'desc'         => 'DESC']);
+            'asc'          => 'ascending',
+            'desc'         => 'descending']);
         $field_select_type->build();
         $field_select_type->name_set($widget->name_get_complex().'__type__'.$c_row_id);
         $field_select_type->value_set($item->type ?? null);

@@ -28,13 +28,13 @@ abstract class Events_Form_Colors {
         switch ($form->clicked_button->value_get()) {
             case 'save':
                 $storage = Storage::get('data');
-                $storage->changes_insert('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', $items['*color_custom__head_id']->value_get(), false);
-                $storage->changes_insert('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id', $items['*color_custom__foot_id']->value_get()       );
+                $storage->changes_register('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', $items['*color_custom__head_id']->value_get(), false);
+                $storage->changes_register('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id', $items['*color_custom__foot_id']->value_get()       );
                 break;
             case 'reset':
                 $storage = Storage::get('data');
-                $storage->changes_delete('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', false);
-                $storage->changes_delete('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id'       );
+                $storage->changes_unregister('profile_classic', 'update', 'settings/profile_classic/color_custom__head_id', false);
+                $storage->changes_unregister('profile_classic', 'update', 'settings/profile_classic/color_custom__foot_id'       );
                 static::on_init(null, $form, $items);
                 break;
         }

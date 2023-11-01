@@ -38,7 +38,8 @@ class Control extends Container {
                 'where' => [
                     'field_!f' => $this->entity_field_name,
                     'operator' => '=',
-                    'value_!v' => $value], 'limit' => 1]);
+                    'value_!v' => $value],
+                'limit' => 1]);
             return reset($result);
         }
     }

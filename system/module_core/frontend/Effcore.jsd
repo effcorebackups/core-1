@@ -16,9 +16,9 @@ class Effcore {
         this.translations['No items.'] = '%%_translation(No items.)';
         this.translations['select all rows'] = '%%_translation(select all rows)';
         this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
-        this.translations['expected value: "@@_value"'] = '%%_translation(expected value: "%%_value")';
+        this.translations['expected value: "@@_value"'] = '%%_translation(expected value: %%_value)';
         this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
-        this.translations['gotten value: "@@_value"'] = '%%_translation(gotten value: "%%_value")';
+        this.translations['gotten value: "@@_value"'] = '%%_translation(gotten value: %%_value)';
         this.translations['success'] = '%%_translation(success)';
         this.translations['failure'] = '%%_translation(failure)';
         this.translations['call "@@_call"'] = '%%_translation(call "%%_call")';

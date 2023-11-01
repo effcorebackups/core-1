@@ -10,7 +10,9 @@ use const effcore\BR;
 use effcore\Cache;
 use effcore\Core;
 use effcore\Data;
+use effcore\Directory;
 use effcore\Event;
+use effcore\Extend_exception;
 use effcore\File;
 use effcore\Message;
 use effcore\Module_as_profile;
@@ -22,6 +24,7 @@ use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Url;
 use effcore\User;
+use Exception;
 use stdClass;
 
 abstract class Events_Form_Install {
@@ -45,13 +48,15 @@ abstract class Events_Form_Install {
 
     static function on_init($event, $form, $items) {
         $items['#password']->value_set(User::password_generate());
-        # check OPCache
-        if (!extension_loaded('Zend OPCache')) {
-            Message::insert(new Text_multiline([
-                'PHP extension "%%_extension" is not available!',
-                'With it, you can speed up the system from 2-3x and more.'], ['extension' => 'Zend OPCache']
-            ), 'warning');
+
+        # check file system permissions
+        if (!Directory::is_writable(Data::DIRECTORY)) {
+            Message::insert(new Text(
+                'Directory permissions of "%%_directory" are too strict!', ['directory' => Data::DIRECTORY]
+            ), 'error');
+            $items['~install']->disabled_set();
         }
+
         # check the dependencies of each module
         foreach (Module::get_enabled_by_default() as $c_module) {
             $c_dependencies_info = $c_module->dependencies_info_get('default');
@@ -62,6 +67,7 @@ abstract class Events_Form_Install {
                 $items['~install']->disabled_set();
             }
         }
+
         # check the dependencies for the storage
         if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_sqlite')) {
             $items['#driver:mysql' ]->disabled_set();
@@ -79,6 +85,7 @@ abstract class Events_Form_Install {
         switch ($form->clicked_button->value_get()) {
             case 'install':
                 if (!Storage::get('sql')->is_installed()) {
+
                     if ($items['#driver:mysql' ]->checked_get() === false &&
                         $items['#driver:sqlite']->checked_get() === false) {
                         $items['#driver:mysql' ]->error_set();
@@ -86,7 +93,13 @@ abstract class Events_Form_Install {
                         $form->error_set('Driver is not selected!');
                         return;
                     }
+
                     if (!$form->has_error()) {
+
+                        #############
+                        ### MySQL ###
+                        #############
+
                         if ($items['#driver:mysql']->checked_get()) {
                             $test = Storage::get('sql')->test('mysql', (object)[
                                 'host'     => $items['#host'            ]->value_get(),
@@ -103,24 +116,36 @@ abstract class Events_Form_Install {
                                 $items['#database_name'   ]->error_set();
                                 $form->error_set(new Text_multiline([
                                     'Storage is not available with these credentials!',
-                                    'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
+                                    'Message from storage: %%_message'], ['message' => mb_strtolower($test['message'])]
                                 ));
                             }
                         }
+
+                        ##############
+                        ### SQLite ###
+                        ##############
+
                         if ($items['#driver:sqlite']->checked_get()) {
-                            File::mkdir_if_not_exists(Data::DIRECTORY);
-                            $test = Storage::get('sql')->test('sqlite', (object)[
-                                'file_name' => $items['#file_name']->value_get()
-                            ]);
-                            if ($test !== true) {
-                                $items['#file_name']->error_set();
-                                $form->error_set(new Text_multiline([
-                                    'Storage is not available with these credentials!',
-                                    'Message from storage: %%_message'], ['message' => strtolower($test['message'])]
-                                ));
+                            try {
+                                Directory::create(Data::DIRECTORY);
+                                $test = Storage::get('sql')->test('sqlite', (object)[
+                                    'file_name' => $items['#file_name']->value_get()
+                                ]);
+                                if ($test !== true) {
+                                    $items['#file_name']->error_set();
+                                    $form->error_set(new Text_multiline([
+                                        'Storage is not available with these credentials!',
+                                        'Message from storage: %%_message'], ['message' => mb_strtolower($test['message'])]
+                                    ));
+                                }
+                            } catch (Extend_exception|Exception $e) {
+                                if     ($e instanceof Extend_exception) $form->error_set($e->getExMessageTextObject());
+                                elseif ($e instanceof Exception       ) $form->error_set($e->getMessage());
+                                return;
                             }
                         }
                     }
+
                 }
                 break;
         }
@@ -130,6 +155,15 @@ abstract class Events_Form_Install {
         switch ($form->clicked_button->value_get()) {
             case 'install':
                 if (!Storage::get('sql')->is_installed()) {
+
+                    Data::delete('boot');
+                    Data::delete('changes');
+                    File::delete(Data::DIRECTORY.'data.sqlite');
+
+                    #############
+                    ### MySQL ###
+                    #############
+
                     if ($items['#driver:mysql']->checked_get()) {
                         $params = new stdClass;
                         $params->driver = 'mysql';
@@ -141,6 +175,11 @@ abstract class Events_Form_Install {
                         $params->credentials->password = $items['#storage_password']->value_get(false);
                         $params->table_prefix          = $items['#table_prefix'    ]->value_get();
                     }
+
+                    ##############
+                    ### SQLite ###
+                    ##############
+
                     if ($items['#driver:sqlite']->checked_get()) {
                         $params = new stdClass;
                         $params->driver = 'sqlite';
@@ -148,15 +187,33 @@ abstract class Events_Form_Install {
                         $params->credentials->file_name = $items['#file_name'   ]->value_get();
                         $params->table_prefix           = $items['#table_prefix']->value_get();
                     }
+
+                    ################################
+                    ### initializing SQL storage ###
+                    ################################
+
                     Storage::get('sql')->init(
                         $params->driver,
                         $params->credentials,
                         $params->table_prefix
                     );
+
+                    #########################################################################
+                    ### attempt to install keys (the first attempt of using Data storage) ###
+                    #########################################################################
+
                     if (!User::keys_install()) {
+                        Message::insert(new Text_multiline([
+                            'Keys installation failed!',
+                            'System was not installed!']), 'error'
+                        );
                         return;
                     }
-                    # prepare data about modules which will be installed
+
+                    #######################################################
+                    ### prepare data of modules which will be installed ###
+                    #######################################################
+
                     $enabled = Module::get_enabled_by_default();
                     $modules_to_install = [];
                     $modules_to_include = [];
@@ -167,7 +224,11 @@ abstract class Events_Form_Install {
                         $modules_to_install[$c_module->id] = $c_module;
                         $modules_to_include[$c_module->id] = $c_module->path;
                     }
-                    # installation process
+
+                    ############################
+                    ### installation process ###
+                    ############################
+
                     Cache::update_global($modules_to_include);
                     foreach ($modules_to_install as $c_module) {
                         Event::start('on_module_install', $c_module->id);
@@ -178,14 +239,18 @@ abstract class Events_Form_Install {
                             break;
                         }
                     }
-                    # save the result if there are no errors
+
+                    ##############################################
+                    ### save the result if there are no errors ###
+                    ##############################################
+
                     if (count(Storage::get('sql')->errors) === 0) {
-                        Storage::get('data')->changes_insert('core',   'insert', 'storages/storage/sql', $params, false);
-                        Storage::get('data')->changes_insert('locale', 'update', 'settings/locale/lang_code', Page::get_current()->args_get('lang_code'));
+                        Storage::get('data')->changes_register('core',   'insert', 'storages/storage/sql', $params, false);
+                        Storage::get('data')->changes_register('locale', 'update', 'settings/locale/lang_code', Page::get_current()->args_get('lang_code'));
                         $form->children_delete();
                         Message::insert('System was installed.');
                         Message::insert(new Text_multiline([
-                            'Your Email is: %%_email',
+                            'Your EMail address is: %%_email',
                             'Your password is: %%_password'], [
                             'email'    => $items['#email'   ]->value_get(),
                             'password' => $items['#password']->value_get(false)]), 'credentials');
@@ -197,6 +262,7 @@ abstract class Events_Form_Install {
                             'System was not installed!']), 'error'
                         );
                     }
+
                 }
                 break;
         }

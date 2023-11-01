@@ -11,19 +11,22 @@ abstract class Response {
     static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
         Timer::tap('total');
         if (Module::is_enabled('test')) {
-            header('X-PHP-Memory-usage: '.memory_get_usage(true));
-            header('X-Time-total: '.Timer::period_get('total', 0, 1));
-            header('X-Return-level: system-exit');
+            header('x-web-server-name: '.Request::web_server_get_info()->name);
+            header('x-time-total: '.Timer::period_get('total', 0, 1));
+            header('x-php-memory-usage: '.memory_get_usage(true));
+            header('x-return-level: system-exit');
         }
         switch ($type) {
-            case 'redirect'              : header('Location: '.$p                      );                                                                                                          break;
-            case 'page_refresh'          : header('Refresh: ' .$p                      );                                                                                                          break;
-            case 'moved_permanently'     : header('HTTP/1.1 301 Moved Permanently'     ); if (!$title) $title = 'Moved Permanently';                                                               break;
-            case 'bad_request'           : header('HTTP/1.1 400 Bad Request'           ); if (!$title) $title = 'Bad Request';                                                                     break;
-            case 'unsupported_media_type': header('HTTP/1.1 415 Unsupported Media Type'); if (!$title) $title = 'Unsupported Media Type';                                                          break;
-            case 'access_forbidden'      : header('HTTP/1.1 403 Forbidden'             ); if (!$title) $title = 'Access forbidden'; $template_name = Template::pick_name('page_access_forbidden'); break;
-            case 'page_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'Page not found';   $template_name = Template::pick_name('page_not_found');        break;
-            case 'file_not_found'        : header('HTTP/1.0 404 Not Found'             ); if (!$title) $title = 'File not found';   $template_name = Template::pick_name('page_not_found');        break;
+            case 'redirect'              : header('location: '.$p                      );                                                                                                               break;
+            case 'page_refresh'          : header('refresh: ' .$p                      );                                                                                                               break;
+            case 'moved_permanently'     : header('http/1.1 301 moved permanently'     ); if (!$title) $title = 'Moved Permanently';                                                                    break;
+            case 'bad_request'           : header('http/1.1 400 bad request'           ); if (!$title) $title = 'Bad Request';                                                                          break;
+            case 'unsupported_media_type': header('http/1.1 415 unsupported media type'); if (!$title) $title = 'Unsupported Media Type';                                                               break;
+            case 'access_forbidden'      : header('http/1.1 403 forbidden'             ); if (!$title) $title = 'Access forbidden';      $template_name = Template::pick_name('page_access_forbidden'); break;
+            case 'page_not_found'        : header('http/1.0 404 not found'             ); if (!$title) $title = 'Page not found';        $template_name = Template::pick_name('page_not_found');        break;
+            case 'file_not_found'        : header('http/1.0 404 not found'             ); if (!$title) $title = 'File not found';        $template_name = Template::pick_name('page_not_found');        break;
+            case 'no_content'            : header('http/1.0 204 no content'            ); if (!$title) $title = 'No Content';            $template_name = Template::pick_name('no_content');            break;
+            case 'internal_server_error' : header('http/1.0 500 internal server error' ); if (!$title) $title = 'Internal Server Error'; $template_name = Template::pick_name('internal_server_error'); break;
         }
         if (!empty($template_name)) {
             if (!$message && Request::path_get() !== '/')
@@ -40,10 +43,10 @@ abstract class Response {
                 'color__link_active' => isset($colors[$settings->color__link_active_id]) ? $colors[$settings->color__link_active_id]->value_hex : '',
                 'console'            => Console::visible_mode_get() === Console::IS_VISIBLE_FOR_EVERYONE ? (new Markup('pre', [], Console::text_get()))->render() : ''
             ]))->render();
-            header('Content-Length: '.strlen($content));
+            header('content-length: '.strlen($content));
             print $content;
         } else {
-            header('Content-Length: 0');
+            header('content-length: 0');
         }
         exit();
     }

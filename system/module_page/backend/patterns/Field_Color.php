@@ -32,7 +32,7 @@ class Field_Color extends Field_Text {
             if ($field->disabled_get()) return true;
             if ($field->readonly_get()) return true;
             $new_value = Request::value_get($name, static::current_number_generate($name), $form->source_get());
-            $new_value = Core::strtolower_en($new_value);
+            $new_value = mb_strtolower($new_value);
             $old_value = $field->value_get_initial();
             $result = static::validate_required  ($field, $form, $element, $new_value) &&
                       static::validate_minlength ($field, $form, $element, $new_value) &&
@@ -46,10 +46,9 @@ class Field_Color extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Core::validate_hex_color($new_value)) {
-            $field->error_set(new Text_multiline([
-                'Field "%%_title" contains an error!',
-                'Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.'], ['title' => (new Text($field->title))->render() ]
+        if (strlen($new_value) && !Security::validate_hex_color($new_value)) {
+            $field->error_set(new Text(
+                'Value of "%%_title" field should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue!', ['title' => (new Text($field->title))->render() ]
             ));
         } else {
             return true;

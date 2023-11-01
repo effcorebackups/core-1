@@ -3,7 +3,7 @@ entities
     name: selection
     title: Selection
     title_plural: Selections
-    catalog_name: selections
+    table_name: selections
     managing_is_enabled: true
     has_button_insert_and_update: true
     has_message_for_additional_controls: true
@@ -39,14 +39,16 @@ entities
         collate: nocase
         not_null: true
         check: (id <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_text
-        managing_control_properties
-        - is_validate_uniqueness: true
-        - weight: +400
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_text
+            properties
+            - is_validate_uniqueness: true
+            - weight: +400
+            element_attributes_on_update
+            - disabled: true
     - main_entity_name
         title: Entity name
         type: varchar
@@ -54,94 +56,116 @@ entities
         collate: nocase
         not_null: true
         check: (main_entity_name <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select_entity_name
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes_on_update
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_entity_name
+            properties
+            - weight: +380
+            element_attributes_on_update
+            - disabled: true
     - title
         title: Title
         type: varchar
         size: 1024
         collate: nocase
         default: null
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +360
-        managing_control_element_attributes
-        - maxlength: 1024
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +360
+            element_attributes
+            - maxlength: 1024
+            - size: 60
     - attributes
         title: Attributes
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        converter_on_render: \effcore\Widget_Attributes::value_to_markup
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Attributes
-        managing_control_properties
-        - name_complex: attributes
-        - weight: +340
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Widget_Attributes::value_to_markup
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Attributes
+            properties
+            - name_complex: attributes
+            - weight: +340
     - fields
         title: Fields
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Selection_fields
-        managing_control_properties
-        - name_complex: fields
-        - weight: +320
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+        managing
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Selection_fields
+            properties
+            - name_complex: fields
+            - weight: +320
     - query_settings
         title: Query settings
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Selection_query
-        managing_control_properties
-        - name_complex: query_settings
-        - weight: +300
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+        managing
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Selection_query
+            properties
+            - name_complex: query_settings
+            - weight: +300
     - decorator_settings
         title: Decorator settings
         type: blob
         default: null
-        converter_on_select: unserialize
-        converter_on_insert: \effcore\Core::data_serialize
-        converter_on_update: \effcore\Core::data_serialize
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Widget_Selection_decorator
-        managing_control_properties
-        - name_complex: decorator_settings
-        - weight: +280
+        converters
+          on_select: unserialize
+          on_insert: \effcore\Core::data_serialize
+          on_update: \effcore\Core::data_serialize
+        managing
+          is_enabled_on_update: true
+          control
+            class: \effcore\Widget_Selection_decorator
+            properties
+            - name_complex: decorator_settings
+            - weight: +280
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +240
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +240
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +220
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +220
     constraints
     - primary_id
         type: primary

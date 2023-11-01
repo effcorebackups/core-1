@@ -25,7 +25,7 @@ abstract class Events_Form_Locale_by_language {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_insert('locale', 'update', 'settings/locale/formats/'.Page::get_current()->args_get('lang_code'), [
+                $result = Storage::get('data')->changes_register('locale', 'update', 'settings/locale/formats/'.Page::get_current()->args_get('lang_code'), [
                     'date'                => $items['#date'               ]->value_get(),
                     'time'                => $items['#time'               ]->value_get(),
                     'datetime'            => $items['#datetime'           ]->value_get(),
@@ -35,7 +35,7 @@ abstract class Events_Form_Locale_by_language {
                 else         Message::insert('Changes was not saved!', 'error');
                 break;
             case 'reset':
-                $result = Storage::get('data')->changes_delete('locale', 'update', 'settings/locale/formats/'.Page::get_current()->args_get('lang_code'));
+                $result = Storage::get('data')->changes_unregister('locale', 'update', 'settings/locale/formats/'.Page::get_current()->args_get('lang_code'));
                 if ($result) static::on_init(null, $form, $items);
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');

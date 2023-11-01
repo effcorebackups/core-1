@@ -15,6 +15,7 @@ abstract class Events_Form_View_settings {
     static function on_init($event, $form, $items) {
         $settings = Module::settings_get('page');
         $items['#width_min'    ]->value_set($settings->page_width_min    );
+        $items['#width_mobile' ]->value_set($settings->page_width_mobile );
         $items['#width_max'    ]->value_set($settings->page_width_max    );
         $items['#meta_viewport']->value_set($settings->page_meta_viewport);
     }
@@ -30,6 +31,13 @@ abstract class Events_Form_View_settings {
                         $form->error_set('The minimum value cannot be greater than the maximum!');
                     }
                 }
+                if (!$form->has_error()) {
+                    if ($items['#width_mobile']->value_get() < $items['#width_min']->value_get() ||
+                        $items['#width_mobile']->value_get() > $items['#width_max']->value_get()) {
+                        $items['#width_mobile']->error_set();
+                        $form->error_set('The width for transition to mobile view must not be less than the "Minimum Width" and greater than the "Maximum Width"!');
+                    }
+                }
                 break;
         }
     }
@@ -37,16 +45,18 @@ abstract class Events_Form_View_settings {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_insert('page', 'update', 'settings/page/page_width_min',     (int)$items['#width_min'    ]->value_get(), false);
-                $result&= Storage::get('data')->changes_insert('page', 'update', 'settings/page/page_width_max',     (int)$items['#width_max'    ]->value_get(), false);
-                $result&= Storage::get('data')->changes_insert('page', 'update', 'settings/page/page_meta_viewport',      $items['#meta_viewport']->value_get()       );
+                $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_min',     (int)$items['#width_min'    ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_mobile',  (int)$items['#width_mobile' ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_max',     (int)$items['#width_max'    ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_meta_viewport',      $items['#meta_viewport']->value_get()       );
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
                 break;
             case 'reset':
-                $result = Storage::get('data')->changes_delete('page', 'update', 'settings/page/page_width_min', false);
-                $result&= Storage::get('data')->changes_delete('page', 'update', 'settings/page/page_width_max', false);
-                $result&= Storage::get('data')->changes_delete('page', 'update', 'settings/page/page_meta_viewport'   );
+                $result = Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_min',    false);
+                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_mobile', false);
+                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_max',    false);
+                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_meta_viewport'      );
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');
                 static::on_init(null, $form, $items);

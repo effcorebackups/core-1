@@ -12,9 +12,10 @@ use effcore\Markup_simple;
 use effcore\Markup;
 use effcore\Message;
 use effcore\Node;
+use effcore\Security;
+use effcore\Text_multiline;
 use effcore\Text_simple;
 use effcore\Text;
-use effcore\Text_multiline;
 use effcore\Url;
 use ReflectionClass;
 use stdClass;
@@ -35,7 +36,7 @@ abstract class Events_Page_Structures {
 
     static function block_markup__structures_list($page, $args = []) {
         $targets = new Markup('x-targets');
-        $list = new Markup('x-structures-list', ['data-type' => Core::sanitize_id($page->args_get('type'))]);
+        $list = new Markup('x-structures-list', ['data-type' => Security::sanitize_id($page->args_get('type'))]);
         $groups_by_name = [];
         $u_first_character = null;
         foreach (Core::structures_select() as $c_item_full_name => $c_item_info) {
@@ -221,7 +222,7 @@ abstract class Events_Page_Structures {
                     $c_file = new File($c_item_info->file);
                     $c_return = new stdClass;
                     $c_return->_type = 'UMLClass';
-                    $c_return->_id = 'CLASS-'.Core::hash_get($c_item_full_name);
+                    $c_return->_id = 'CLASS-'.Security::hash_get($c_item_full_name);
                     $c_return->name = $c_item_info->name;
                     $c_return->stereotype = $c_item_info->namespace;
                     $c_return->isAbstract            = !empty($c_item_info->modifier) && $c_item_info->modifier === 'abstract';
@@ -238,8 +239,8 @@ abstract class Events_Page_Structures {
                         $c_relation->_type = 'UMLGeneralization';
                         $c_relation->source = new stdClass;
                         $c_relation->target = new stdClass;
-                        $c_relation->source->{'$ref'} = 'CLASS-'.Core::hash_get($c_item_full_name       );
-                        $c_relation->target->{'$ref'} = 'CLASS-'.Core::hash_get($c_item_parent_full_name);
+                        $c_relation->source->{'$ref'} = 'CLASS-'.Security::hash_get($c_item_full_name       );
+                        $c_relation->target->{'$ref'} = 'CLASS-'.Security::hash_get($c_item_parent_full_name);
                         $c_return->ownedElements = [$c_relation];
                     }
 
@@ -297,10 +298,10 @@ abstract class Events_Page_Structures {
         }
 
         # print result
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename='.$page->args_get('type').'.mdj');
-        header('Cache-Control: private, no-cache, no-store, must-revalidate');
-        header('Expires: 0');
+        header('content-type: application/octet-stream');
+        header('content-disposition: attachment; filename='.$page->args_get('type').'.mdj');
+        header('cache-control: private, no-cache, no-store, must-revalidate');
+        header('expires: 0');
         print json_encode(
             (object)[
                 '_type' => 'Project',

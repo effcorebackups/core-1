@@ -6,10 +6,10 @@
 
 namespace effcore\modules\core;
 
-use const effcore\DIR_DYNAMIC;
 use const effcore\DIR_ROOT;
 use effcore\Cache;
 use effcore\Core;
+use effcore\Dynamic;
 use effcore\Entity;
 use effcore\Message;
 use effcore\Module;
@@ -60,7 +60,7 @@ abstract class Events_Module_update {
             $stderr_to_stdout        = '2>&1';
             $stderr_to_stdout_to_nul = '2>&1 > nul & exit 0';
             $repo_path_cur = realpath(DIR_ROOT.$bundle->path.$bundle->repo_directory);
-            $repo_path_tmp = realpath(DIR_DYNAMIC.'tmp').DIRECTORY_SEPARATOR.'.git_restore-'.$bundle_id;
+            $repo_path_tmp = realpath(Dynamic::DIRECTORY.'tmp').DIRECTORY_SEPARATOR.'.git_restore-'.$bundle_id;
             if ($repo_path_cur !== false) {
                 $result = [];
                 if (Core::is_Win()) {
@@ -105,8 +105,8 @@ abstract class Events_Module_update {
     static function on_update_data_1000($update) {
         $entity = Entity::get('message');
         if ($entity->install())
-             {Message::insert(new Text('Entity "%%_entity" was installed.',     ['entity' => $entity->name])         ); return true; }
-        else {Message::insert(new Text('Entity "%%_entity" was not installed!', ['entity' => $entity->name]), 'error'); return false;}
+             {Message::insert(new Text('Table "%%_name" was installed.',     ['name' => $entity->table_name])         ); return true; }
+        else {Message::insert(new Text('Table "%%_name" was not installed!', ['name' => $entity->table_name]), 'error'); return false;}
     }
 
 }

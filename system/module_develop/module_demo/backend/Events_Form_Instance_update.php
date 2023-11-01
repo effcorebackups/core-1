@@ -29,8 +29,8 @@ abstract class Events_Form_Instance_update {
                             'limit' => 1]);
                         if ($result) {
                             $items['#id_data']->error_set(new Text_multiline([
-                                'Field "%%_title" contains the previously used combination of values!',
-                                'Only unique value is allowed.'], ['title' => (new Text($items['#id_data']->title))->render() ]
+                                'Field "%%_title" contains a combination of values that is already in use!',
+                                'Combination of values should be unique.'], ['title' => (new Text($items['#id_data']->title))->render() ]
                             ));
                         }
                     }

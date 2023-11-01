@@ -8,22 +8,26 @@ namespace effcore;
 
 abstract class Cache extends Dynamic {
 
-    const DIRECTORY = DIR_DYNAMIC.'cache/';
+    const DIRECTORY = parent::DIRECTORY.'cache/';
     public static $info = []; # own cache info space
     public static $data = []; # own cache data space
 
     static function cleaning() {
         static::$info = [];
         static::$data = [];
-        foreach (File::select_recursive(static::DIRECTORY, '', true) as $c_path => $c_object) {
+        foreach (Directory::items_select(static::DIRECTORY, '', true) as $c_path => $c_object) {
             if ($c_path !== static::DIRECTORY.'readme.md') {
                 if ($c_object instanceof File) {
-                    if (!@unlink($c_path)) {
-                        $c_file = new File($c_path);
-                        static::message_on_error_delete($c_file);
+                    if (!File::delete($c_path)) {
+                        $c_path_relative = (new File($c_path))->path_get_relative();
+                        Message::insert(new Text_multiline([
+                            'File "%%_file" was not deleted!',
+                            'Directory permissions are too strict!'], [
+                            'file' => $c_path_relative]), 'error'
+                        );
                     }
                 } else {
-                    @rmdir($c_path);
+                    Directory::delete($c_path);
                 }
             }
         }

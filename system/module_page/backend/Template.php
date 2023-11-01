@@ -11,6 +11,7 @@ class Template {
     public $name;
     public $data;
     public $args = [];
+    public $args_raw = [];
     public $module_id;
 
     function __construct($name, $args = []) {
@@ -20,8 +21,9 @@ class Template {
         }
     }
 
-    function arg_set($name, $value) {
-        $this->args[$name] = $value;
+    function arg_set($name, $value, $value_raw = null) {
+        $this->args    [$name] = $value;
+        $this->args_raw[$name] = $value_raw;
     }
 
     ###########################

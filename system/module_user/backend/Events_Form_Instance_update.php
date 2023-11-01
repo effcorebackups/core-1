@@ -101,7 +101,7 @@ abstract class Events_Form_Instance_update {
                     # field 'new password' + field 'current password'
                     if (!hash_equals($form->_instance->password_hash, $items['#password_hash_current']->value_get())) {
                         $items['#password_hash_current']->error_set(
-                            'Field "%%_title" contains an incorrect value!', ['title' => (new Text($items['#password_hash_current']->title))->render() ]
+                            'Value of "%%_title" field is incorrect!', ['title' => (new Text($items['#password_hash_current']->title))->render() ]
                         );
                         return;
                     }

@@ -67,7 +67,13 @@ abstract class Events_Form_Instance_delete {
                 $form->_result = $form->_instance->delete();
                 if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id])         );
                 if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id]), 'error');
-                # ↓↓↓ no break ↓↓↓
+                # redirect if no error
+                if ($form->_result !== null) {
+                    if (empty(Page::get_current()->args_get('back_delete_is_canceled'))) {
+                        Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    }
+                }
+                break;
             case 'cancel':
                 if (empty(Page::get_current()->args_get('back_delete_is_canceled'))) {
                     Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());

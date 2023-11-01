@@ -3,7 +3,7 @@ entities
     name: poll
     title: Poll
     title_plural: Polls
-    catalog_name: polls
+    table_name: polls
     managing_is_enabled: true
     has_parallel_checking: true
     with_is_embedded: true
@@ -34,13 +34,15 @@ entities
         title: ID
         type: autoincrement
         not_null: true
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_ID_number
-        managing_control_properties
-        - weight: +400
-        managing_control_element_attributes
-        - disabled: true
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_ID_number
+            properties
+            - weight: +400
+            element_attributes
+            - disabled: true
     - question
         title: Question
         type: varchar
@@ -48,23 +50,29 @@ entities
         collate: nocase
         not_null: true
         check: (question <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Text
-        managing_control_properties
-        - weight: +380
-        managing_control_element_attributes
-        - maxlength: 2048
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Text
+            properties
+            - weight: +380
+            element_attributes
+            - maxlength: 2048
+            - size: 60
     - expired
         title: Expiration date
         type: datetime
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +360
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +360
     - diagram_type
         title: Diagram type
         type: varchar
@@ -72,84 +80,98 @@ entities
         collate: nocase
         not_null: true
         check: (diagram_type <> '')
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select
-        managing_control_properties
-        - items
-          - not_selected: - select -
-          - linear: Linear diagram
-          - radial: Radial diagram
-        - weight: +340
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select
+            properties
+            - items
+              - not_selected: - select -
+              - linear: Linear diagram
+              - radial: Radial diagram
+            - weight: +340
     - user_type
         title: User type
         type: integer
         not_null: true
         default: 1
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Select
-        managing_control_properties
-        - description|Text
-            text: In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!
-        - items
-          - not_selected: - select -
-          - 1: Registered users
-          - 0: Anonymous users + Registered users
-        - selected
-          - =: 1
-        - weight: +320
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select
+            properties
+            - description|Text
+                text: In mode "Anonymous users + Registered users", an attacker can send many fake anonymous votes!
+            - items
+              - not_selected: - select -
+              - 1: Registered users
+              - 0: Anonymous users + Registered users
+            - selected
+              - =: 1
+            - weight: +320
     - total_max
         title: Maximum number of votes
         type: integer
         not_null: true
         default: 1000000
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Number
-        managing_control_properties
-        - weight: +300
-        managing_control_element_attributes
-        - min: 1
-        - max: 50000000
-        managing_control_element_attributes_on_insert
-        - value: 1000000
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +300
+            element_attributes
+            - min: 1
+            - max: 50000000
+            element_attributes_on_insert
+            - value: 1000000
     - is_multiple
         title: Multiple choice
         type: boolean
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Switcher
-        managing_control_properties
-        - weight: +280
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Switcher
+            properties
+            - weight: +280
     - is_cancelable
         title: Vote can be canceled
         type: boolean
         not_null: true
         default: 0
-        managing_is_enabled_on_insert: true
-        managing_is_enabled_on_update: true
-        managing_control_class: \effcore\Field_Switcher
-        managing_control_properties
-        - weight: +260
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Switcher
+            properties
+            - weight: +260
     - created
         title: Created
         type: datetime
         default: null
         check: (created <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +240
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +240
     - updated
         title: Updated
         type: datetime
         default: null
         check: (updated <> '')
-        managing_control_class: \effcore\Field_Datetime_local
-        managing_control_properties
-        - weight: +220
+        managing
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - weight: +220
     constraints
     - primary_id
         type: primary
@@ -168,7 +190,7 @@ entities
     name: poll_answer
     title: Poll answer
     title_plural: Poll answers
-    catalog_name: poll_answers
+    table_name: poll_answers
     with_data: true
     fields
     - id
@@ -186,8 +208,9 @@ entities
         collate: nocase
         not_null: true
         check: (answer <> '')
-        converter_on_insert: \effcore\Core::return_encoded
-        converter_on_update: \effcore\Core::return_encoded
+        converters
+          on_insert: \effcore\Core::html_entity_encode
+          on_update: \effcore\Core::html_entity_encode
     - weight
         title: Weight
         type: integer
@@ -209,7 +232,7 @@ entities
     name: poll_vote
     title: Poll vote
     title_plural: Poll votes
-    catalog_name: poll_votes
+    table_name: poll_votes
     fields
     - id_answer
         title: Answer ID

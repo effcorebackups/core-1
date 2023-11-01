@@ -24,6 +24,7 @@ class Events_Test__Class_Url {
                                    '/dir/subdir/page#anchor'                   : {'protocol' : protocol, 'domain' : domain,                'path' : '/dir/subdir/page',     'query' : '',              'anchor' : 'anchor'},
                                    '/dir/subdir/page?key=value#anchor'         : {'protocol' : protocol, 'domain' : domain,                'path' : '/dir/subdir/page',     'query' : 'key=value',     'anchor' : 'anchor'},
                    'subdomain.domain'                                          : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : ''      },
+                   'subdomain.domain/'                                         : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : ''      },
                    'subdomain.domain/?key=value'                               : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : 'key=value',     'anchor' : ''      },
                    'subdomain.domain/#anchor'                                  : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : 'anchor'},
                    'subdomain.domain/?key=value#anchor'                        : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : 'key=value',     'anchor' : 'anchor'},
@@ -32,6 +33,7 @@ class Events_Test__Class_Url {
                    'subdomain.domain/dir/subdir/page#anchor'                   : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/dir/subdir/page',     'query' : '',              'anchor' : 'anchor'},
                    'subdomain.domain/dir/subdir/page?key=value#anchor'         : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/dir/subdir/page',     'query' : 'key=value',     'anchor' : 'anchor'},
                    'subdomain.domain:80'                                       : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : ''      },
+                   'subdomain.domain:80/'                                      : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : ''      },
                    'subdomain.domain:80/?key=value'                            : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : 'key=value',     'anchor' : ''      },
                    'subdomain.domain:80/#anchor'                               : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : 'anchor'},
                    'subdomain.domain:80/?key=value#anchor'                     : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : 'key=value',     'anchor' : 'anchor'},
@@ -40,6 +42,7 @@ class Events_Test__Class_Url {
                    'subdomain.domain:80/dir/subdir/page#anchor'                : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/dir/subdir/page',     'query' : '',              'anchor' : 'anchor'},
                    'subdomain.domain:80/dir/subdir/page?key=value#anchor'      : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/dir/subdir/page',     'query' : 'key=value',     'anchor' : 'anchor'},
             'http://subdomain.domain'                                          : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : ''      },
+            'http://subdomain.domain/'                                         : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : ''      },
             'http://subdomain.domain/?key=value'                               : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : 'key=value',     'anchor' : ''      },
             'http://subdomain.domain/#anchor'                                  : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : '',              'anchor' : 'anchor'},
             'http://subdomain.domain/?key=value#anchor'                        : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/',                    'query' : 'key=value',     'anchor' : 'anchor'},
@@ -48,6 +51,7 @@ class Events_Test__Class_Url {
             'http://subdomain.domain/dir/subdir/page#anchor'                   : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/dir/subdir/page',     'query' : '',              'anchor' : 'anchor'},
             'http://subdomain.domain/dir/subdir/page?key=value#anchor'         : {'protocol' : 'http',   'domain' : 'subdomain.domain',    'path' : '/dir/subdir/page',     'query' : 'key=value',     'anchor' : 'anchor'},
             'http://subdomain.domain:80'                                       : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : ''      },
+            'http://subdomain.domain:80/'                                      : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : ''      },
             'http://subdomain.domain:80/?key=value'                            : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : 'key=value',     'anchor' : ''      },
             'http://subdomain.domain:80/#anchor'                               : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : '',              'anchor' : 'anchor'},
             'http://subdomain.domain:80/?key=value#anchor'                     : {'protocol' : 'http',   'domain' : 'subdomain.domain:80', 'path' : '/',                    'query' : 'key=value',     'anchor' : 'anchor'},
@@ -62,6 +66,8 @@ class Events_Test__Class_Url {
                                  '/дир/субдир/страница?ключ=значение'          : {'protocol' : protocol, 'domain' : domain,                'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : ''      },
                                  '/дир/субдир/страница#якорь'                  : {'protocol' : protocol, 'domain' : domain,                'path' : '/дир/субдир/страница', 'query' : '',              'anchor' : 'якорь' },
                                  '/дир/субдир/страница?ключ=значение#якорь'    : {'protocol' : protocol, 'domain' : domain,                'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : 'якорь' },
+                   'субдомен.домен'                                            : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : ''      },
+                   'субдомен.домен/'                                           : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : ''      },
                    'субдомен.домен/?ключ=значение'                             : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : 'ключ=значение', 'anchor' : ''      },
                    'субдомен.домен/#якорь'                                     : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : 'якорь' },
                    'субдомен.домен/?ключ=значение#якорь'                       : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : 'ключ=значение', 'anchor' : 'якорь' },
@@ -69,6 +75,8 @@ class Events_Test__Class_Url {
                    'субдомен.домен/дир/субдир/страница?ключ=значение'          : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : ''      },
                    'субдомен.домен/дир/субдир/страница#якорь'                  : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : '',              'anchor' : 'якорь' },
                    'субдомен.домен/дир/субдир/страница?ключ=значение#якорь'    : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : 'якорь' },
+                   'субдомен.домен:80'                                         : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : ''      },
+                   'субдомен.домен:80/'                                        : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : ''      },
                    'субдомен.домен:80/?ключ=значение'                          : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : 'ключ=значение', 'anchor' : ''      },
                    'субдомен.домен:80/#якорь'                                  : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : 'якорь' },
                    'субдомен.домен:80/?ключ=значение#якорь'                    : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : 'ключ=значение', 'anchor' : 'якорь' },
@@ -76,6 +84,8 @@ class Events_Test__Class_Url {
                    'субдомен.домен:80/дир/субдир/страница?ключ=значение'       : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : ''      },
                    'субдомен.домен:80/дир/субдир/страница#якорь'               : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/дир/субдир/страница', 'query' : '',              'anchor' : 'якорь' },
                    'субдомен.домен:80/дир/субдир/страница?ключ=значение#якорь' : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : 'якорь' },
+            'http://субдомен.домен'                                            : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : ''      },
+            'http://субдомен.домен/'                                           : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : ''      },
             'http://субдомен.домен/?ключ=значение'                             : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : 'ключ=значение', 'anchor' : ''      },
             'http://субдомен.домен/#якорь'                                     : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : '',              'anchor' : 'якорь' },
             'http://субдомен.домен/?ключ=значение#якорь'                       : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/',                    'query' : 'ключ=значение', 'anchor' : 'якорь' },
@@ -83,6 +93,8 @@ class Events_Test__Class_Url {
             'http://субдомен.домен/дир/субдир/страница?ключ=значение'          : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : ''      },
             'http://субдомен.домен/дир/субдир/страница#якорь'                  : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : '',              'anchor' : 'якорь' },
             'http://субдомен.домен/дир/субдир/страница?ключ=значение#якорь'    : {'protocol' : 'http',   'domain' : 'субдомен.домен',      'path' : '/дир/субдир/страница', 'query' : 'ключ=значение', 'anchor' : 'якорь' },
+            'http://субдомен.домен:80'                                         : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : ''      },
+            'http://субдомен.домен:80/'                                        : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : ''      },
             'http://субдомен.домен:80/?ключ=значение'                          : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : 'ключ=значение', 'anchor' : ''      },
             'http://субдомен.домен:80/#якорь'                                  : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : '',              'anchor' : 'якорь' },
             'http://субдомен.домен:80/?ключ=значение#якорь'                    : {'protocol' : 'http',   'domain' : 'субдомен.домен:80',   'path' : '/',                    'query' : 'ключ=значение', 'anchor' : 'якорь' },
@@ -473,7 +485,7 @@ class Events_Test__Class_Url {
         }
     }
 
-    static test_step_code__full_get(test, dpath, c_results) {
+    static test_step_code__absolute_get(test, dpath, c_results) {
         let protocol = window.location.protocol.replace(/[:]*$/g, '');
         let domain = window.location.host;
         let data = {};
@@ -486,6 +498,7 @@ class Events_Test__Class_Url {
             data[                            '/dir/subdir/page#anchor'          ] = protocol + '://' + domain + '/dir/subdir/page#anchor';
             data[                            '/dir/subdir/page?key=value#anchor'] = protocol + '://' + domain + '/dir/subdir/page?key=value#anchor';
             data[                   domain                                      ] = protocol + '://' + domain;
+            data[                   domain + '/'                                ] = protocol + '://' + domain;
             data[                   domain + '/?key=value'                      ] = protocol + '://' + domain + '/?key=value';
             data[                   domain + '/#anchor'                         ] = protocol + '://' + domain + '/#anchor';
             data[                   domain + '/?key=value#anchor'               ] = protocol + '://' + domain + '/?key=value#anchor';
@@ -494,6 +507,7 @@ class Events_Test__Class_Url {
             data[                   domain + '/dir/subdir/page#anchor'          ] = protocol + '://' + domain + '/dir/subdir/page#anchor';
             data[                   domain + '/dir/subdir/page?key=value#anchor'] = protocol + '://' + domain + '/dir/subdir/page?key=value#anchor';
             data[protocol + '://' + domain                                      ] = protocol + '://' + domain;
+            data[protocol + '://' + domain + '/'                                ] = protocol + '://' + domain;
             data[protocol + '://' + domain + '/?key=value'                      ] = protocol + '://' + domain + '/?key=value';
             data[protocol + '://' + domain + '/#anchor'                         ] = protocol + '://' + domain + '/#anchor';
             data[protocol + '://' + domain + '/?key=value#anchor'               ] = protocol + '://' + domain + '/?key=value#anchor';
@@ -505,7 +519,7 @@ class Events_Test__Class_Url {
         for (let c_value in data) {
             let c_expected = data[c_value];
             let c_url = new EffURL(c_value);
-            let c_gotten = c_url.fullGet();
+            let c_gotten = c_url.absoluteGet();
             let c_result = c_gotten === c_expected;
             if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
             if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
@@ -518,7 +532,7 @@ class Events_Test__Class_Url {
         }
     }
 
-    static test_step_code__tiny_get(test, dpath, c_results) {
+    static test_step_code__relative_get(test, dpath, c_results) {
         let protocol = window.location.protocol.replace(/[:]*$/g, '');
         let domain = window.location.host;
         let data = {};
@@ -531,6 +545,7 @@ class Events_Test__Class_Url {
             data[                            '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
             data[                            '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
             data[                   domain                                      ] = '/';
+            data[                   domain + '/'                                ] = '/';
             data[                   domain + '/?key=value'                      ] = '/?key=value';
             data[                   domain + '/#anchor'                         ] = '/#anchor';
             data[                   domain + '/?key=value#anchor'               ] = '/?key=value#anchor';
@@ -539,6 +554,7 @@ class Events_Test__Class_Url {
             data[                   domain + '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
             data[                   domain + '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
             data[protocol + '://' + domain                                      ] = '/';
+            data[protocol + '://' + domain + '/'                                ] = '/';
             data[protocol + '://' + domain + '/?key=value'                      ] = '/?key=value';
             data[protocol + '://' + domain + '/#anchor'                         ] = '/#anchor';
             data[protocol + '://' + domain + '/?key=value#anchor'               ] = '/?key=value#anchor';
@@ -550,7 +566,7 @@ class Events_Test__Class_Url {
         for (let c_value in data) {
             let c_expected = data[c_value];
             let c_url = new EffURL(c_value);
-            let c_gotten = c_url.tinyGet();
+            let c_gotten = c_url.relativeGet();
             let c_result = c_gotten === c_expected;
             if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
             if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
@@ -707,7 +723,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         url = new EffURL(value);
         url.queryArgInsert('scalar', 'encode_[]=_value');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -722,7 +738,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         url = new EffURL(value);
         url.queryArgInsert('array', {0 : 'value 1', 'string' : 'value 2'});
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -738,7 +754,7 @@ class Events_Test__Class_Url {
         url = new EffURL(value);
         url.queryArgInsert('scalar', 'encode_[]=_value');
         url.queryArgInsert('array', {0 : 'value 1', 'string' : 'value 2'});
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -753,7 +769,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         url = new EffURL(value);
         url.queryArgInsert('ключ_1', 'значение 1');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -772,7 +788,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value';
         url = new EffURL(value);
         url.queryArgInsert('scalar', 'encode_[]=_new_value');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -787,7 +803,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?array[0]=new%20value%201&array[string]=new%20value%202';
         url = new EffURL(value);
         url.queryArgInsert('array', {0 : 'new value 1', 'string' : 'new value 2'});
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -803,7 +819,7 @@ class Events_Test__Class_Url {
         url = new EffURL(value);
         url.queryArgInsert('scalar', 'encode_[]=_new_value');
         url.queryArgInsert('array', {0 : 'new value 1', 'string' : 'new value 2'});
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -818,7 +834,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%202';
         url = new EffURL(value);
         url.queryArgInsert('ключ_1', 'значение 2');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -837,7 +853,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         url = new EffURL(value);
         url.queryArgDelete('scalar');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -852,7 +868,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         url = new EffURL(value);
         url.queryArgDelete('array');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -868,7 +884,7 @@ class Events_Test__Class_Url {
         url = new EffURL(value);
         url.queryArgDelete('scalar');
         url.queryArgDelete('array');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
@@ -883,7 +899,7 @@ class Events_Test__Class_Url {
         expected = 'http://example.com';
         url = new EffURL(value);
         url.queryArgDelete('ключ_1');
-        gotten = url.fullGet();
+        gotten = url.absoluteGet();
         result = gotten === expected;
         if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
         if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );

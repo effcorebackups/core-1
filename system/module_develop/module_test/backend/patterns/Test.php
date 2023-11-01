@@ -76,4 +76,34 @@ class Test implements has_Data_cache {
         return static::$cache;
     }
 
+    static function result_prepare($value, $depth = 0) {
+        $result = '';
+        switch (gettype($value)) {
+            case 'string' : $result =         $value;                    break;
+            case 'integer': $result = (string)$value;                    break;
+            case 'double' : $result = (string)$value;                    break;
+            case 'boolean': $result =         $value ? 'true' : 'false'; break;
+            case 'NULL'   : $result =                  'null';           break;
+            case 'array'  :
+            case 'object' :
+                $lines = $depth === 0 ? ['⌖|'.gettype($value)] : [];
+                $list_symbol = gettype($value) === 'array' ? '- ' : '  ';
+                foreach ($value as $c_key => $c_value)
+                    if (is_object($c_value) || is_array($c_value)) {
+                        if (!count((array)$c_value))
+                             $lines[] = str_repeat('  ', $depth).$list_symbol.$c_key.'|'.gettype($c_value);
+                        else $lines[] = str_repeat('  ', $depth).$list_symbol.$c_key.'|'.gettype($c_value).NL.static::result_prepare($c_value, $depth + 1); }
+                    else     $lines[] = str_repeat('  ', $depth).$list_symbol.$c_key.': '.                    static::result_prepare($c_value, $depth + 1);
+                $result = implode(NL, $lines);
+                break;
+        }
+        if (!Core::is_CLI() && $depth === 0) {
+            $result = str_replace(['<', '>'], ['&lt;', '&gt;'], $result);
+        }
+        if (strpos($result, NL) !== false && $depth === 0) {
+            $result = NL.$result;
+        }
+        return $result;
+    }
+
 }

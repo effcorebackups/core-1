@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let tests = [
                 {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__construct'},
                 {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__has_error'},
-                {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__full_get'},
-                {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__tiny_get'},
+                {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__absolute_get'},
+                {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__relative_get'},
                 {testClass : Events_Test__Class_Url, 'method' : 'test_step_code__query_args'}
             ];
 

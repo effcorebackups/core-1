@@ -117,6 +117,79 @@ forms
             - value: text in input
             - minlength: 5
             - pattern: ^[a-zA-Z0-9 ]+$
+            - size: 60
+        # field 'Search'
+        - search|Field_Search
+            title: Search
+            description|Text
+              text: Field "%%_title".
+              args
+              - title: Field_Search
+            element_attributes
+            - name: search
+            - value: text in search
+            - size: 57
+        # field 'URL'
+        - url|Field_URL
+            title: URL
+            description|Text
+              text: Field "%%_title".
+              args
+              - title: Field_URL
+            element_attributes
+            - name: url
+            - value: http://domain/path?q=w#p1
+            - size: 60
+            is_trim_trailing_slash: false
+            is_trim_trailing_question: false
+            is_trim_trailing_sharp: false
+            is_allowed_unicode: true
+            scope: absolute
+            parts
+            - protocol: +
+            - domain: +
+            - path: +
+            - query: +
+            - anchor: +
+#           scope: relative
+#           parts
+#           - path: +
+#           - query: +
+#           - anchor: +
+        # field 'Email'
+        - email|Field_Email
+            title: EMail address
+            description|Text
+              text: Field "%%_title".
+              args
+              - title: Field_Email
+            element_attributes
+            - name: email
+            - value: test1@example.com,test2@example.com
+            - multiple: true
+            - size: 60
+        # field 'Telephone number'
+        - tel|Field_Tel
+            title: Telephone number
+            description|Text_multiline
+              text
+              - 0: Field "%%_title".
+              - 1: Field value should be represented in the international format of telephone numbers.
+              args
+              - title: Field_Tel
+            element_attributes
+            - name: tel
+            - value: &plus;000112334455
+        # field 'Nickname'
+        - nickname|Field_Nickname
+            title: Nickname
+            description|Text
+              text: Field "%%_title".
+              args
+              - title: Field_Nickname
+            element_attributes
+            - name: nickname
+            - value: user
         # field 'Password'
         - password|Field_Password
             title: Password
@@ -130,72 +203,6 @@ forms
             element_attributes
             - name: password
             - value: text in password
-        # field 'Search'
-        - search|Field_Search
-            title: Search
-            description|Text
-              text: Field "%%_title".
-              args
-              - title: Field_Search
-            element_attributes
-            - name: search
-            - value: text in search
-        # field 'URL'
-        - url|Field_URL
-            title: URL
-            description|Text
-              text: Field "%%_title".
-              args
-              - title: Field_URL
-            element_attributes
-            - name: url
-            - value: http://example.com
-            # is_allowed_unicode: false
-            # should_be_included
-            # - =: protocol
-            # - =: domain
-            # - =: path
-            # - =: query
-            # - =: anchor
-            # should_be_excluded
-            # - =: protocol
-            # - =: domain
-            # - =: path
-            # - =: query
-            # - =: anchor
-        # field 'Telephone number'
-        - tel|Field_Tel
-            title: Telephone number
-            description|Text_multiline
-              text
-              - 0: Field "%%_title".
-              - 1: Field value should be represented in the international format of telephone numbers.
-              args
-              - title: Field_Tel
-            element_attributes
-            - name: tel
-            - value: &plus;000112334455
-        # field 'Email'
-        - email|Field_Email
-            title: Email
-            description|Text
-              text: Field "%%_title".
-              args
-              - title: Field_Email
-            element_attributes
-            - name: email
-            - value: test1@example.com,test2@example.com
-            - multiple: true
-        # field 'Nickname'
-        - nickname|Field_Nickname
-            title: Nickname
-            description|Text
-              text: Field "%%_title".
-              args
-              - title: Field_Nickname
-            element_attributes
-            - name: nickname
-            - value: user
         # field 'Digit' (number)
         - number|Field_Number
             title: Digit
@@ -250,6 +257,8 @@ forms
             - name: time
             - step: 1
             - value: 01:23:45
+#           - min: 00:00:00
+#           - max: 23:59:59
             value_current_if_null: true
         # field 'Date'
         - date|Field_Date
@@ -263,9 +272,11 @@ forms
             element_attributes
             - name: date
             - value: 2030-02-01
+#           - min: 0001-01-01
+#           - max: 9999-12-31
             value_current_if_null: true
         # field 'Date/Time'
-        - datetime|Field_Datetime
+        - datetime|Field_DateTime
             title: Date/Time
             description|Text_multiline
               text
@@ -273,14 +284,16 @@ forms
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
-              - title: Field_Datetime
+              - title: Field_DateTime
             element_attributes
             - name: datetime
             - step: 1
             - value: 2030-02-01 01:23:45
+#           - min: 0001-01-01 00:00:00
+#           - max: 9999-12-31 00:00:00
             value_current_if_null: true
         # field 'Local Date/Time'
-        - datetime_local|Field_Datetime_local
+        - datetime_local|Field_DateTime_local
             title: Local Date/Time
             description|Text_multiline
               text
@@ -288,7 +301,7 @@ forms
               - 1: If the "value_current_if_null" parameter is "true" and the initial value is not specified, the current value will be used.
               - 2: If the "step" attribute is "60" then the ":00" seconds will be truncated.
               args
-              - title: Field_Datetime_local
+              - title: Field_DateTime_local
             element_attributes
             - name: datetime_local
             - step: 1

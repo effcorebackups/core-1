@@ -78,24 +78,29 @@ selections
           weight: +300
       - link_attributes
           entity_field_name: link_attributes
-          weight: +280
+          weight: +260
       - weight
           entity_field_name: weight
-          weight: +260
+          weight: +240
       - created
           entity_field_name: created
-          weight: +240
+          weight: +220
       - updated
           entity_field_name: updated
-          weight: +220
+          weight: +200
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +200
+          weight: +180
       - access
           entity_field_name: access
           is_apply_translation: true
-          weight: +180
+          weight: +160
+    - handlers
+      - url_absolute
+          title: Absolute URL
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_absolute
+          weight: +280
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-tree|Selection
     id: instance_select_multiple-tree
