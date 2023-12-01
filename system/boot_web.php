@@ -82,7 +82,7 @@ if ($file instanceof File && $file->type) {
 
     if ( ($file->name !== '' && $file->name[0] === '.') ||
          ($file->type !== '' && $file->name === '') ) {
-        Response::send_header_and_exit('access_forbidden', null, new Text_multiline([
+        Response::send_header_and_exit('file_access_forbidden', null, new Text_multiline([
             'file of this type is protected',
             'go to <a href="/">front page</a>'
         ], [], BR.BR));
@@ -94,7 +94,7 @@ if ($file instanceof File && $file->type) {
 
     if (isset($file_types[$file->type]->kind) &&
               $file_types[$file->type]->kind === 'protected') {
-        Response::send_header_and_exit('access_forbidden', null, new Text_multiline([
+        Response::send_header_and_exit('file_access_forbidden', null, new Text_multiline([
             'file of this type is protected',
             'go to <a href="/">front page</a>'
         ], [], BR.BR));
@@ -117,11 +117,11 @@ if ($file instanceof File && $file->type) {
 
     $type = $file_types[$file->type] ?? (object)['type' => $file->type, 'module_id' => null];
     $real_path = Security::validate_realpath($file->path_get());
-    if ($real_path === false)               {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 1]); exit();} # object does not really exist or object is inaccessible to the web server by rights
-    if ($real_path !== $file->path_get())   {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 2]); exit();} # resolved path is not the same as the original
-    if (strpos($real_path, DIR_ROOT) !== 0) {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 3]); exit();} # object is outside the web root
-    if (!is_file    ($file->path_get()))    {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 4]); exit();} # object exists, but it is not a file
-    if (!is_readable($file->path_get())) Response::send_header_and_exit('access_forbidden'); # object is inaccessible to the web server by rights
+    if ($real_path === false)                   {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 1]); exit();} # object does not really exist or object is inaccessible to the web server by rights
+    if ($real_path !== $file->path_get())       {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 2]); exit();} # resolved path is not the same as the original
+    if (!str_starts_with($real_path, DIR_ROOT)) {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 3]); exit();} # object is outside the web root
+    if (!is_file    ($file->path_get()))        {Event::start('on_file_load', 'not_found', ['type_info' => &$type, 'file' => &$file, 'real_path' => $real_path, 'phase' => 4]); exit();} # object exists, but it is not a file
+    if (!is_readable($file->path_get())) Response::send_header_and_exit('file_access_forbidden'); # object is inaccessible to the web server by rights
 
     # ─────────────────────────────────────────────────────────────────────
     # case for dynamic file

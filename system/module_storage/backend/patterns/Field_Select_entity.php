@@ -8,13 +8,13 @@ namespace effcore;
 
 #[\AllowDynamicProperties]
 
-class Field_Select_entity_name extends Field_Select {
+class Field_Select_entity extends Field_Select {
 
-    public $title = 'Entity name';
+    public $title = 'Entity';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'entity_name'];
+    public $attributes = ['data-type' => 'entity'];
     public $element_attributes = [
-        'name'     => 'entity_name',
+        'name'     => 'entity',
         'required' => true
     ];
 

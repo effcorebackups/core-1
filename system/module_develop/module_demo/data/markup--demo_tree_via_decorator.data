@@ -4,7 +4,7 @@ markup
     title: Demonstration menu via decorator
     id: demo_tree
     data
-    - rowid-1
+    - row-1
       - id
         - title: ID
         - value: 1
@@ -20,7 +20,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1
-    - rowid-1_1
+    - row-1_1
       - id
         - title: ID
         - value: 2
@@ -36,7 +36,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_1
-    - rowid-1_2
+    - row-1_2
       - id
         - title: ID
         - value: 3
@@ -52,7 +52,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_2
-    - rowid-1_2_1
+    - row-1_2_1
       - id
         - title: ID
         - value: 4
@@ -68,7 +68,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_1
-    - rowid-1_2_2
+    - row-1_2_2
       - id
         - title: ID
         - value: 5
@@ -84,7 +84,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_2
-    - rowid-1_2_3
+    - row-1_2_3
       - id
         - title: ID
         - value: 6
@@ -100,7 +100,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_2/item_1_2_3
-    - rowid-1_3
+    - row-1_3
       - id
         - title: ID
         - value: 7
@@ -116,7 +116,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_1/item_1_3
-    - rowid-2
+    - row-2
       - id
         - title: ID
         - value: 8
@@ -132,7 +132,7 @@ markup
       - url
         - title: URL
         - value: /develop/demo/embedded/trees/item_2
-    - rowid-3
+    - row-3
       - id
         - title: ID
         - value: 9

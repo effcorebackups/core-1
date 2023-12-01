@@ -18,7 +18,7 @@ class Token_args {
             $this->args = preg_split('%(?<!\\\\)\\|%S', $text);
             foreach ($this->args as $c_id => $c_arg) {
                 $c_arg = static::arg_decode($c_arg);
-                if (strpos($c_arg, '=')) {
+                if (str_contains($c_arg, '=')) {
                     $c_matches = [];
                     preg_match('%^(?<name>[a-z0-9_]{1,64})=(?<value>.*)$%S', $c_arg, $c_matches);
                     if (array_key_exists('name', $c_matches) && array_key_exists('value', $c_matches)) {

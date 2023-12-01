@@ -7,6 +7,7 @@
 namespace effcore\modules\core;
 
 use effcore\Core;
+use effcore\Locale;
 use effcore\Request;
 use effcore\Security;
 use effcore\Token;
@@ -48,10 +49,24 @@ abstract class Events_Token {
                 $result = Request::query_get();
                 if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
                 return $result;
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            case 'current_time_utc'                : return                              Core::    time_get();
+            case 'current_date_utc'                : return                              Core::    date_get();
+            case 'current_datetime_utc'            : return                              Core::datetime_get();
+            case 'current_time_utc_formatted'      : return Locale:: format_utc_time    (Core::    time_get());
+            case 'current_date_utc_formatted'      : return Locale:: format_utc_date    (Core::    date_get());
+            case 'current_datetime_utc_formatted'  : return Locale:: format_utc_datetime(Core::datetime_get());
+            case 'current_time_local'              : return Locale::     time_utc_to_loc(Core::    time_get());
+            case 'current_date_local'              : return Locale::     date_utc_to_loc(Core::    date_get());
+            case 'current_datetime_local'          : return Locale:: datetime_utc_to_loc(Core::datetime_get());
+            case 'current_time_local_formatted'    : return Locale:: format_loc_time    (Core::    time_get());
+            case 'current_date_local_formatted'    : return Locale:: format_loc_date    (Core::    date_get());
+            case 'current_datetime_local_formatted': return Locale:: format_loc_datetime(Core::datetime_get());
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             case 'return_if_token':
                 if ($args->get_count() > 2) {
-                    if (strpos($args->get(0), '%%') === false) {
-                        if (strpos($args->get(0), 'return_if') !== false) return '!!! "return_if…" inside "return_if_token" is meaningless !!!';
+                    if (!str_contains($args->get(0), '%%')) {
+                        if (str_contains($args->get(0), 'return_if')) return '!!! "return_if…" inside "return_if_token" is meaningless !!!';
                         if (strlen($args->get(0)) && $args->get_count() === 3) return Token::apply('%%_'.$args->get(0)) === $args->get(1) ? $args->get(2) : null;
                         if (strlen($args->get(0)) && $args->get_count() === 4) return Token::apply('%%_'.$args->get(0)) === $args->get(1) ? $args->get(2) : $args->get(3);
                     }

@@ -10,17 +10,17 @@ use stdClass;
 
 #[\AllowDynamicProperties]
 
-class Field_Select_entity_field_name extends Field_Select {
+class Field_Select_entity_field extends Field_Select {
 
-    public $title = 'Field name';
+    public $title = 'Entity field';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'entity_field_name'];
+    public $attributes = ['data-type' => 'entity_field'];
     public $element_attributes = [
-        'name'     => 'entity_field_name',
+        'name'     => 'entity_field',
         'required' => true
     ];
 
-    function build() {
+    function build($filter = null) {
         if (!$this->is_builded) {
             parent::build();
             $items = [];
@@ -28,8 +28,9 @@ class Field_Select_entity_field_name extends Field_Select {
             Core::array_sort_by_string($entities);
             foreach ($entities as $c_entity) {
                 if (!empty($c_entity->managing_is_enabled)) {
-                    foreach ($c_entity->fields as $c_name => $c_field) {
-                        if (!empty($c_field->managing->control->class)) {
+                    if ($filter === null ||
+                        $filter === $c_entity->name) {
+                        foreach ($c_entity->fields as $c_name => $c_field) {
                             if (!isset($items[$c_entity->name])) {
                                        $items[$c_entity->name] = new stdClass;
                                        $items[$c_entity->name]->title = $c_entity->title; }
@@ -37,10 +38,10 @@ class Field_Select_entity_field_name extends Field_Select {
                             $c_text_object->_text_translated = $c_text_object->render();
                             $items[$c_entity->name]->items[$c_entity->name.'.'.$c_name] = $c_text_object;
                         }
+                        Core::array_sort_by_string(
+                            $items[$c_entity->name]->items, '_text_translated', Core::SORT_DSC, false
+                        );
                     }
-                    Core::array_sort_by_string(
-                        $items[$c_entity->name]->items, '_text_translated', Core::SORT_DSC, false
-                    );
                 }
             }
             $this->items = ['not_selected' => $this->title__not_selected] + $items;
@@ -58,24 +59,11 @@ class Field_Select_entity_field_name extends Field_Select {
     ###########################
 
     static function parse_value($value) {
-        $parsed = is_string($value) && strlen($value) && strpos($value, '.') !== false ? explode('.', $value) : null;
+        $parsed = is_string($value) && strlen($value) && str_contains($value, '.') ? explode('.', $value) : null;
         if (is_array($parsed) && count($parsed) === 2)
             return ['entity_name' => $parsed[0],
               'entity_field_name' => $parsed[1]];
         else return null;
-    }
-
-    static function generate_disabled_items($filter) {
-        $result = [];
-        $entities = Entity::get_all();
-        foreach ($entities as $c_entity)
-            if (!empty($c_entity->managing_is_enabled))
-                foreach ($c_entity->fields as $c_name => $c_field)
-                    if (!empty($c_field->managing->control->class))
-                        if (!Core::in_array($c_entity->name, $filter))
-                            $result[$c_entity->name.'.'.$c_name] =
-                                    $c_entity->name.'.'.$c_name;
-        return $result;
     }
 
 }

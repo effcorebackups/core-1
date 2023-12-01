@@ -235,8 +235,8 @@ class Storage_Data implements has_Data_cache {
         $parsed = [];
         $bundles_path = [];
         $modules_path = [];
-        $files = Directory::items_select(DIR_SYSTEM,  '%^.*/module\\.data$%') +
-                 Directory::items_select(DIR_SYSTEM,  '%^.*/bundle\\.data$%') +
+        $files = Directory::items_select(DIR_SYSTEM , '%^.*/module\\.data$%') +
+                 Directory::items_select(DIR_SYSTEM , '%^.*/bundle\\.data$%') +
                  Directory::items_select(DIR_MODULES, '%^.*/module\\.data$%') +
                  Directory::items_select(DIR_MODULES, '%^.*/bundle\\.data$%');
         foreach ($files as $c_file) {
@@ -334,7 +334,7 @@ class Storage_Data implements has_Data_cache {
         else $defaults = null;
         foreach ($data as $c_key => $c_value) {
             if (is_array($defaults) && array_key_exists($c_key, $defaults) && $defaults[$c_key] === $c_value) continue;
-            if     (is_object($c_value)                         ) $result[] = static::data_to_text($c_value, $c_key.(strpos(get_class($c_value), 'effcore\\') === 0 ? '|'.substr(get_class($c_value), 8) : ''), $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
+            if     (is_object($c_value)                         ) $result[] = static::data_to_text($c_value, $c_key.(str_starts_with(get_class($c_value), 'effcore\\') ? '|'.substr(get_class($c_value), 8) : ''), $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
             elseif (is_array ($c_value) && count($c_value) !== 0) $result[] = static::data_to_text($c_value, $c_key                                                                                           , $is_optimized, is_array($data) ? '- ' : '  ', $depth + 1);
             elseif (is_array ($c_value) && count($c_value) === 0) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).'|_empty_array';
             elseif (is_null  ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': null';

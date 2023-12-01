@@ -14,5 +14,6 @@ if (PHP_INT_SIZE < 8) {
     exit();
 }
 
+require_once('system/boot_polyfills.php');
 require_once('system/boot_initialization.php');
 require_once('system/boot_web.php');

@@ -239,7 +239,7 @@ abstract class Request {
     }
 
     static function host_get($decode = false) {
-        $parts = strpos($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
+        $parts = str_contains($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
         if ($decode && function_exists('idn_to_utf8') &&
                         idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
             $parts[0] = idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
@@ -247,7 +247,7 @@ abstract class Request {
     }
 
     static function hostname_get($decode = false) {
-        $parts = strpos($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
+        $parts = str_contains($_SERVER['HTTP_HOST'], ':') ? explode(':', $_SERVER['HTTP_HOST']) : [$_SERVER['HTTP_HOST']];
         if ($decode && function_exists('idn_to_utf8') &&
                            idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46))
                $parts[0] = idn_to_utf8($parts[0], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
@@ -349,17 +349,17 @@ abstract class Request {
     static function make($url, $headers = [], $post = [], $settings = []) {
         $result = ['info' => [], 'headers' => []];
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL,             $url    );
-        curl_setopt($curl, CURLOPT_HTTPHEADER,      $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true    );
-        curl_setopt($curl, CURLOPT_HEADER,          false   );
-        curl_setopt($curl, CURLOPT_PATH_AS_IS,      true    ); # added in CURL v.7.42.0 (2015-04-22)
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION,  array_key_exists('followlocation', $settings) ? $settings['followlocation'] : false);
-        curl_setopt($curl, CURLOPT_TIMEOUT,         array_key_exists('timeout',        $settings) ? $settings['timeout']        : 5);
-        curl_setopt($curl, CURLOPT_SSLVERSION,      array_key_exists('sslversion',     $settings) ? $settings['sslversion']     : CURL_SSLVERSION_TLSv1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,  array_key_exists('ssl_verifyhost', $settings) ? $settings['ssl_verifyhost'] : false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,  array_key_exists('ssl_verifypeer', $settings) ? $settings['ssl_verifypeer'] : false);
-        curl_setopt($curl, CURLOPT_PROXY,           array_key_exists('proxy',          $settings) ? $settings['proxy']          : null);
+        curl_setopt($curl, CURLOPT_URL           , $url    );
+        curl_setopt($curl, CURLOPT_HTTPHEADER    , $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true    );
+        curl_setopt($curl, CURLOPT_HEADER        , false   );
+        curl_setopt($curl, CURLOPT_PATH_AS_IS    , true    ); # added in CURL v.7.42.0 (2015-04-22)
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, array_key_exists('followlocation', $settings) ? $settings['followlocation'] : false);
+        curl_setopt($curl, CURLOPT_TIMEOUT       , array_key_exists('timeout'       , $settings) ? $settings['timeout']        : 5);
+        curl_setopt($curl, CURLOPT_SSLVERSION    , array_key_exists('sslversion'    , $settings) ? $settings['sslversion']     : CURL_SSLVERSION_TLSv1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, array_key_exists('ssl_verifyhost', $settings) ? $settings['ssl_verifyhost'] : false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, array_key_exists('ssl_verifypeer', $settings) ? $settings['ssl_verifypeer'] : false);
+        curl_setopt($curl, CURLOPT_PROXY         , array_key_exists('proxy'         , $settings) ? $settings['proxy']          : null);
         # prepare post query
         if ($post) {
             curl_setopt($curl, CURLOPT_POST,        true);

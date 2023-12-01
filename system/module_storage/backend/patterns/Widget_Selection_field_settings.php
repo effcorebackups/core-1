@@ -67,6 +67,26 @@ class Widget_Selection_field_settings extends Container {
         $widget_text_object_title->value_set($item->title instanceof Text ?
                                              $item->title :
                                     new Text($item->title));
+        # control for format type
+        $field_format = new Field_Select;
+        $field_format->cform = $widget->parent_widget->cform;
+        $field_format->title = 'Format';
+        $field_format->items_set([
+            ''             => 'by field type in the DB',
+            'raw'          => ' RAW',
+            'boolean'      => ' boolean',
+            'real'         => ' real',
+            'integer'      => ' integer',
+            'time'         => ' time',
+            'date'         => ' date',
+            'datetime'     => ' datetime',
+            'time_utc'     => ' time_utc',
+            'date_utc'     => ' date_utc',
+            'datetime_utc' => ' datetime_utc']);
+        $field_format->build();
+        $field_format->required_set(false);
+        $field_format->name_set($widget->parent_widget->name_get_complex().'__format__'.$c_row_id);
+        $field_format->value_set($item->format ?? '');
         # control for value settings
         $group_value_settings = new Group_Checkboxes;
         $group_value_settings->title = 'Value settings';
@@ -75,23 +95,31 @@ class Widget_Selection_field_settings extends Container {
         $group_value_settings->items_set([
             'is_apply_translation' => 'Is apply translation',
             'is_apply_tokens'      => 'Is apply tokens',
-            'is_trimmed'           => 'Is trimmed',
-            'is_not_formatted'     => 'Is do not apply formatting',
             'is_not_visible'       => 'Is not visible']);
         $group_value_settings->build();
-        $group_value_settings->value_set($item->value_settings ?? []);
+        $value_settings = [];
+        if (!empty($item->is_apply_translation)) $value_settings['is_apply_translation'] = 'is_apply_translation';
+        if (!empty($item->is_apply_tokens     )) $value_settings['is_apply_tokens'     ] = 'is_apply_tokens';
+        if (!empty($item->is_not_visible      )) $value_settings['is_not_visible'      ] = 'is_not_visible';
+        $group_value_settings->value_set($value_settings);
         # relate new controls with the widget
         $widget->controls['#title__'         .$c_row_id] = $widget_text_object_title;
+        $widget->controls['#format__'        .$c_row_id] = $field_format;
         $widget->controls['*value_settings__'.$c_row_id] = $group_value_settings;
         $result->child_insert($widget_text_object_title, 'widget_text_object_title');
-        $result->child_insert($group_value_settings,     'group_value_settings');
+        $result->child_insert($field_format            , 'field_format');
+        $result->child_insert($group_value_settings    , 'group_value_settings');
         return $result;
     }
 
     static function on_request_value_set($widget, $form, $npath) {
         $items = $widget->parent_widget->items_get();
-        $items[$widget->c_row_id]->title = $widget->controls['#title__'.$widget->c_row_id]->value_get();
-        $items[$widget->c_row_id]->value_settings = $widget->controls['*value_settings__'.$widget->c_row_id]->value_get();
+        $value_settings                   = $widget->controls['*value_settings__'.$widget->c_row_id]->value_get();
+        $items[$widget->c_row_id]->title  = $widget->controls['#title__'         .$widget->c_row_id]->value_get();
+        $items[$widget->c_row_id]->format = $widget->controls['#format__'        .$widget->c_row_id]->value_get();
+        $items[$widget->c_row_id]->is_apply_translation = isset($value_settings['is_apply_translation']);
+        $items[$widget->c_row_id]->is_apply_tokens      = isset($value_settings['is_apply_tokens'     ]);
+        $items[$widget->c_row_id]->is_not_visible       = isset($value_settings['is_not_visible'      ]);
         $widget->parent_widget->items_set($items);
     }
 

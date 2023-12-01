@@ -1,7 +1,7 @@
 pages
 - instance_update|Page
     id: instance_update
-    title: %%_entity_title_context: update
+    title: %%_entity_title_context | change
     url: %^(?<base>/manage/data)/
 >>>>>>>>>>>(?<managing_group_id>[a-z0-9_\-]+)/
 >>>>>>>>>>>(?<entity_name>[a-z0-9_]+)/

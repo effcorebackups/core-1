@@ -587,7 +587,7 @@ forms
                 description|Text_multiline
                   text
                   - 0: Widget "%%_title".
-                  - 1: Access settings are not applicable if no one role is active!
+                  - 1: Access settings are not applied if nothing is selected!
                   args
                   - title: Widget_Access
                 checked_roles

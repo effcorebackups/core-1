@@ -11,10 +11,10 @@ namespace effcore;
 class Text_simple {
 
     public $text = '';
-    public $weight = 0;
+    public $weight = +0;
     public $delimiter = NL;
 
-    function __construct($text = '', $weight = 0) {
+    function __construct($text = '', $weight = +0) {
         if ($text !== '') $this->text_update($text);
         $this->weight = $weight;
     }

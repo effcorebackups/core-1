@@ -105,7 +105,7 @@ abstract class Events_Module_update {
     static function on_update_data_1000($update) {
         $entity = Entity::get('message');
         if ($entity->install())
-             {Message::insert(new Text('Table "%%_name" was installed.',     ['name' => $entity->table_name])         ); return true; }
+             {Message::insert(new Text('Table "%%_name" was installed.'    , ['name' => $entity->table_name])         ); return true; }
         else {Message::insert(new Text('Table "%%_name" was not installed!', ['name' => $entity->table_name]), 'error'); return false;}
     }
 

@@ -40,18 +40,18 @@ abstract class Events_Page_Instance_select {
                         $instance = new Instance($entity_name, $conditions);
                         if ($instance->select() === null && Url::back_url_get() !== '') Url::go(Url::back_url_get()); # after deletion
                         if ($instance->select() === null && Url::back_url_get() === '')
-                           Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], BR.BR));
-                    } else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong number of instance keys',               'go to <a href="/">front page</a>'], [], BR.BR));
+                           Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong instance key'                         , 'go to <a href="/">front page</a>'], [], BR.BR));
+                    } else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong number of instance keys'              , 'go to <a href="/">front page</a>'], [], BR.BR));
                 }     else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], BR.BR));
-            }         else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong entity name',                           'go to <a href="/">front page</a>'], [], BR.BR));
-        }             else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong management group',                      'go to <a href="/">front page</a>'], [], BR.BR));
+            }         else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong entity name'                          , 'go to <a href="/">front page</a>'], [], BR.BR));
+        }             else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong management group'                     , 'go to <a href="/">front page</a>'], [], BR.BR));
     }
 
     static function on_check_access($event, $page) {
         $entity_name = $page->args_get('entity_name');
         $entity = Entity::get($entity_name);
-        if (!Access::check($entity->access_select)) {
-            Response::send_header_and_exit('access_forbidden');
+        if (!Access::check($entity->access->on_select)) {
+            Response::send_header_and_exit('page_access_forbidden');
         }
     }
 
@@ -71,19 +71,19 @@ abstract class Events_Page_Instance_select {
                     $selection = Selection::get('instance_select-'.$entity->name);
                     if ($selection) {
                         foreach ($conditions as $c_id_key => $c_id_value)
-                            Token::insert('selection_'.$entity_name.'_'.$c_id_key.'_context', 'text', $c_id_value, null, 'storage');
+                            Token::insert('selection__'.$entity_name.'__'.$c_id_key.'__context', 'text', $c_id_value, null, 'storage');
                         $selection = Core::deep_clone($selection);
-                        $has_access_update = Access::check($entity->access_update);
-                        $has_access_delete = Access::check($entity->access_delete);
+                        $has_access_update = Access::check($entity->access->on_update);
+                        $has_access_delete = Access::check($entity->access->on_delete);
                         if ($has_access_update ||
                             $has_access_delete) {
                             $selection->fields['code']['actions'] = new stdClass;
                             $selection->fields['code']['actions']->title = 'Actions';
                             $selection->fields['code']['actions']->weight = -500;
-                            $selection->fields['code']['actions']->closure = function ($c_row_id, $c_row, $c_instance, $settings = []) use ($has_access_update, $has_access_delete) {
+                            $selection->fields['code']['actions']->closure = function ($c_cell_id, $c_row, $c_instance, $origin) use ($has_access_update, $has_access_delete) {
                                 $c_actions_list = new Actions_list;
-                                if ($has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.Url::back_part_make(), 'delete');
-                                if ($has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.Url::back_part_make(), 'update');
+                                if ($has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.Url::back_part_make());
+                                if ($has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.Url::back_part_make());
                                 return $c_actions_list;
                             };
                         }

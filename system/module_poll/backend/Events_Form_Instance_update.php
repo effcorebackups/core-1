@@ -26,7 +26,7 @@ abstract class Events_Form_Instance_update {
                 $widget_answers->name_complex = 'widget_answers';
                 $widget_answers->title = 'Answers';
                 $widget_answers->item_title = 'Answer';
-                $widget_answers->weight = 140;
+                $widget_answers->weight = +140;
                 $form->child_select('fields')->child_insert($widget_answers, 'answers');
             }
         }

@@ -9,26 +9,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_poll__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_poll__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_poll__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_poll__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_poll__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_poll__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_poll__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_poll__delete
     fields
     - id
         title: ID

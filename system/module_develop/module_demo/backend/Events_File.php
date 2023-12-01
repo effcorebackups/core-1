@@ -33,7 +33,7 @@ abstract class Events_File {
                 print $data;
                 exit();
             } else {
-                Response::send_header_and_exit('access_forbidden', null, new Text_multiline([
+                Response::send_header_and_exit('file_access_forbidden', null, new Text_multiline([
                     'go to <a href="/">front page</a>'
                 ], [], BR.BR));
             }

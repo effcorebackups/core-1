@@ -1,0 +1,11 @@
+selection_handlers
+- handler__poll__user_type_as_text
+    title: User type as text
+    entity_name: poll
+    handler: \effcore\modules\poll\Events_Selection::handler__poll__user_type_as_text
+    is_apply_translation: true
+- handler__poll__statistics
+    title: Statistics
+    entity_name: poll
+    handler: \effcore\modules\poll\Events_Selection::handler__poll__statistics
+    is_apply_translation: true

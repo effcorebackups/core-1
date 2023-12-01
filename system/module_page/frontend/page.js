@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // bind events
         c_audio.addEventListener('loadedmetadata', on_updateTimeInfo);
-        c_audio.addEventListener('timeupdate',     on_updateTimeInfo);
-        c_audio.addEventListener('play',        function () {c_player.   setAttribute('data-is-playing', '');});
-        c_audio.addEventListener('pause',       function () {c_player.removeAttribute('data-is-playing');});
-        c_audio.addEventListener('ended',       function () {c_player.removeAttribute('data-is-playing');});
+        c_audio.addEventListener('timeupdate' ,    on_updateTimeInfo);
+        c_audio.addEventListener('play'       , function () {c_player.   setAttribute('data-is-playing', '');});
+        c_audio.addEventListener('pause'      , function () {c_player.removeAttribute('data-is-playing');});
+        c_audio.addEventListener('ended'      , function () {c_player.removeAttribute('data-is-playing');});
         c_button_play.addEventListener('click', function () {
             if (c_audio.paused) c_audio.play ();
             else                c_audio.pause();

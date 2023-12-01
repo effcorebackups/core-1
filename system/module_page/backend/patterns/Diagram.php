@@ -18,7 +18,7 @@ class Diagram extends Container {
     public $type = 'linear'; # linear | radial
     public $slices = [];
 
-    function __construct($title = null, $type = null, $attributes = [], $weight = 0) {
+    function __construct($title = null, $type = null, $attributes = [], $weight = +0) {
         if ($type) $this->type = $type;
         parent::__construct(null, $title, null, $attributes, [], $weight);
     }
@@ -55,7 +55,7 @@ class Diagram extends Container {
                         $diagram->child_insert(new Markup_XML_simple('circle', $coords + ['style' =>
                             'stroke: '           .                    $c_slice->color            .    '; '.
                             'stroke-dasharray: ' .Core::format_number($c_slice->persent_value, 2).' 100; '.
-                            'stroke-dashoffset: '.Core::format_number($c_offset,               2).    '; '.
+                            'stroke-dashoffset: '.Core::format_number($c_offset              , 2).    '; '.
                             'stroke-width: 30%; '.
                             'fill: none']));
                         $c_offset -= $c_slice->persent_value;
@@ -75,7 +75,7 @@ class Diagram extends Container {
         }
     }
 
-    function slice_insert($title, $persent_value, $complex_value = null, $color = null, $attributes = [], $weight = 0) {
+    function slice_insert($title, $persent_value, $complex_value = null, $color = null, $attributes = [], $weight = +0) {
         $new_slice = new stdClass;
         $new_slice->title         = $title;
         $new_slice->persent_value = $persent_value;

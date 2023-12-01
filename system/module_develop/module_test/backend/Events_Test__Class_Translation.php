@@ -6,8 +6,10 @@
 
 namespace effcore\modules\test;
 
+use const effcore\NL;
 use effcore\Test;
 use effcore\Text;
+use effcore\Translation;
 
 abstract class Events_Test__Class_Translation {
 
@@ -237,6 +239,242 @@ abstract class Events_Test__Class_Translation {
             $c_result = $c_gotten === $c_expected;
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+    }
+
+    static function test_step_code__filter(&$test, $dpath, &$c_results) {
+        $data = [
+            'empty' => '',
+            '**' =>
+                'some text at line 1. | некоторый текст в строке 1.'.NL.
+                'some text at line 2. | некоторый текст в строке 2.'.NL.
+                'some text at line 3. | некоторый текст в строке 3.',
+            'en' =>
+                '%%_lang(en)'.
+                'some text at line 1.'.NL.
+                'some text at line 2.'.NL.
+                'some text at line 3.',
+            'ru' =>
+                '%%_lang(ru)'.
+                'некоторый текст в строке 1.'.NL.
+                'некоторый текст в строке 2.'.NL.
+                'некоторый текст в строке 3.',
+            '**_en_ru-canonical' =>
+                '%%_lang(**)'.
+                'some text at line 1. | некоторый текст в строке 1.'.NL.
+                'some text at line 2. | некоторый текст в строке 2.'.NL.
+                'some text at line 3. | некоторый текст в строке 3.'.NL.
+                '%%_lang(en)'.
+                'some text at line 4.'.NL.
+                'some text at line 5.'.NL.
+                'some text at line 6.'.NL.
+                '%%_lang(ru)'.
+                'некоторый текст в строке 7.'.NL.
+                'некоторый текст в строке 8.'.NL.
+                'некоторый текст в строке 9.',
+            '**_en_**' =>
+                'some text at line 1. | некоторый текст в строке 1.'.NL.
+                'some text at line 2. | некоторый текст в строке 2.'.NL.
+                'some text at line 3. | некоторый текст в строке 3.'.NL.
+                '%%_lang(en)'.
+                'some text at line 4.'.NL.
+                'some text at line 5.'.NL.
+                'some text at line 6.'.NL.
+                '%%_lang'.
+                'some text at line 7. | некоторый текст в строке 7.'.NL.
+                'some text at line 8. | некоторый текст в строке 8.'.NL.
+                'some text at line 9. | некоторый текст в строке 9.',
+            '**_ru_**' =>
+                'some text at line 1. | некоторый текст в строке 1.'.NL.
+                'some text at line 2. | некоторый текст в строке 2.'.NL.
+                'some text at line 3. | некоторый текст в строке 3.'.NL.
+                '%%_lang(ru)'.
+                'некоторый текст в строке 4.'.NL.
+                'некоторый текст в строке 5.'.NL.
+                'некоторый текст в строке 6.'.NL.
+                '%%_lang'.
+                'some text at line 7. | некоторый текст в строке 7.'.NL.
+                'some text at line 8. | некоторый текст в строке 8.'.NL.
+                'some text at line 9. | некоторый текст в строке 9.'
+        ];
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $expected_en = [
+            'empty' => [],
+            '**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.' ],
+            'en' => [
+                0 => 'some text at line 1.'.NL.
+                     'some text at line 2.'.NL.
+                     'some text at line 3.' ],
+            'ru' => [],
+            '**_en_ru-canonical' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'some text at line 4.'.NL.
+                     'some text at line 5.'.NL.
+                     'some text at line 6.'.NL ],
+            '**_en_**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'some text at line 4.'.NL.
+                     'some text at line 5.'.NL.
+                     'some text at line 6.'.NL,
+                2 => 'some text at line 7. | некоторый текст в строке 7.'.NL.
+                     'some text at line 8. | некоторый текст в строке 8.'.NL.
+                     'some text at line 9. | некоторый текст в строке 9.' ],
+            '**_ru_**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'some text at line 7. | некоторый текст в строке 7.'.NL.
+                     'some text at line 8. | некоторый текст в строке 8.'.NL.
+                     'some text at line 9. | некоторый текст в строке 9.'
+            ]
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_expected = $expected_en[$c_row_id];
+            $c_gotten = Translation::filter($c_value, 'en');
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $expected_en_strict = [
+            'empty' => [],
+            '**' => [],
+            'en' => [
+                0 => 'some text at line 1.'.NL.
+                     'some text at line 2.'.NL.
+                     'some text at line 3.' ],
+            'ru' => [],
+            '**_en_ru-canonical' => [
+                0 => 'some text at line 4.'.NL.
+                     'some text at line 5.'.NL.
+                     'some text at line 6.'.NL ],
+            '**_en_**' => [
+                0 => 'some text at line 4.'.NL.
+                     'some text at line 5.'.NL.
+                     'some text at line 6.'.NL ],
+            '**_ru_**' => []
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_expected = $expected_en_strict[$c_row_id];
+            $c_gotten = Translation::filter($c_value, 'en', true);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $expected_ru = [
+            'empty' => [],
+            '**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.' ],
+            'en' => [],
+            'ru' => [
+                0 => 'некоторый текст в строке 1.'.NL.
+                     'некоторый текст в строке 2.'.NL.
+                     'некоторый текст в строке 3.' ],
+            '**_en_ru-canonical' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'некоторый текст в строке 7.'.NL.
+                     'некоторый текст в строке 8.'.NL.
+                     'некоторый текст в строке 9.' ],
+            '**_en_**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'some text at line 7. | некоторый текст в строке 7.'.NL.
+                     'some text at line 8. | некоторый текст в строке 8.'.NL.
+                     'some text at line 9. | некоторый текст в строке 9.' ],
+            '**_ru_**' => [
+                0 => 'some text at line 1. | некоторый текст в строке 1.'.NL.
+                     'some text at line 2. | некоторый текст в строке 2.'.NL.
+                     'some text at line 3. | некоторый текст в строке 3.'.NL,
+                1 => 'некоторый текст в строке 4.'.NL.
+                     'некоторый текст в строке 5.'.NL.
+                     'некоторый текст в строке 6.'.NL,
+                2 => 'some text at line 7. | некоторый текст в строке 7.'.NL.
+                     'some text at line 8. | некоторый текст в строке 8.'.NL.
+                     'some text at line 9. | некоторый текст в строке 9.'
+            ]
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_expected = $expected_ru[$c_row_id];
+            $c_gotten = Translation::filter($c_value, 'ru');
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $expected_ru_strict = [
+            'empty' => [],
+            '**' => [],
+            'en' => [],
+            'ru' => [
+                0 => 'некоторый текст в строке 1.'.NL.
+                     'некоторый текст в строке 2.'.NL.
+                     'некоторый текст в строке 3.' ],
+            '**_en_ru-canonical' => [
+                0 => 'некоторый текст в строке 7.'.NL.
+                     'некоторый текст в строке 8.'.NL.
+                     'некоторый текст в строке 9.' ],
+            '**_en_**' => [],
+            '**_ru_**' => [
+                0 => 'некоторый текст в строке 4.'.NL.
+                     'некоторый текст в строке 5.'.NL.
+                     'некоторый текст в строке 6.'.NL
+            ]
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_expected = $expected_ru_strict[$c_row_id];
+            $c_gotten = Translation::filter($c_value, 'ru', true);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
                 $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
                 $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);

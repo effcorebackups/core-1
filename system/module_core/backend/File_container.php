@@ -109,11 +109,11 @@ class File_container {
         fseek($this->stream, static::HEAD_TITLE_LENGTH);
         $head = fread($this->stream, static::HEAD_LENGTH - static::HEAD_TITLE_LENGTH);
         $head_parsed = static::__data_unpack($head);
-        if ($head_parsed && array_key_exists('version',          $head_parsed)) $this->version          = $head_parsed['version'      ];
-        if ($head_parsed && array_key_exists('lock_timestmp',    $head_parsed)) $this->lock_timestmp    = $head_parsed['lock_timestmp'];
-        if ($head_parsed && array_key_exists('meta_offset',      $head_parsed)) $this->meta_offset      = $head_parsed['meta_offset'  ];
+        if ($head_parsed && array_key_exists('version'         , $head_parsed)) $this->version          = $head_parsed['version'      ];
+        if ($head_parsed && array_key_exists('lock_timestmp'   , $head_parsed)) $this->lock_timestmp    = $head_parsed['lock_timestmp'];
+        if ($head_parsed && array_key_exists('meta_offset'     , $head_parsed)) $this->meta_offset      = $head_parsed['meta_offset'  ];
         if ($head_parsed && array_key_exists('meta_offset_prev', $head_parsed)) $this->meta_offset_prev = $head_parsed['meta_offset'  ];
-        if ($head_parsed && array_key_exists('checksum',         $head_parsed)) $this->checksum         = $head_parsed['checksum'     ];
+        if ($head_parsed && array_key_exists('checksum'        , $head_parsed)) $this->checksum         = $head_parsed['checksum'     ];
     }
 
     function __meta_init() {
@@ -188,14 +188,14 @@ class File_container {
                     $path = $file->path_get_absolute();
                     $dirs = $file->dirs_get_absolute();
                     $reason = File::get_fopen_error_reason($dirs, $path, $this->mode);
-                    if ($reason === Directory::ERR_CODE_IS_NOT_EXISTS      ) throw new Extend_exception(Directory::ERR_MESSAGE_IS_NOT_EXISTS,       Directory::ERR_CODE_IS_NOT_EXISTS,       ['File "%%_file" cannot be created or opened or modified!', 'Directory "%%_directory" is not exists!'],                 ['file' => $path, 'directory' => $dirs]);
+                    if ($reason === Directory::ERR_CODE_IS_NOT_EXISTS      ) throw new Extend_exception(Directory::ERR_MESSAGE_IS_NOT_EXISTS      , Directory::ERR_CODE_IS_NOT_EXISTS      , ['File "%%_file" cannot be created or opened or modified!', 'Directory "%%_directory" is not exists!'],                 ['file' => $path, 'directory' => $dirs]);
                     if ($reason === Directory::ERR_CODE_PERM_ARE_TOO_STRICT) throw new Extend_exception(Directory::ERR_MESSAGE_PERM_ARE_TOO_STRICT, Directory::ERR_CODE_PERM_ARE_TOO_STRICT, ['File "%%_file" cannot be created or opened or modified!', 'Directory permissions of "%%_directory" are too strict!'], ['file' => $path, 'directory' => $dirs]);
-                    if ($reason === File::ERR_CODE_IS_NOT_EXISTS           ) throw new Extend_exception(File::ERR_MESSAGE_IS_NOT_EXISTS,            File::ERR_CODE_IS_NOT_EXISTS,            ['File "%%_file" cannot be created or opened or modified!', 'File is not exists!'],                                     ['file' => $path]);
-                    if ($reason === File::ERR_CODE_IS_EXISTS               ) throw new Extend_exception(File::ERR_MESSAGE_IS_EXISTS,                File::ERR_CODE_IS_EXISTS,                ['File "%%_file" cannot be created or opened or modified!', 'File is exists!'],                                         ['file' => $path]);
-                    if ($reason === File::ERR_CODE_PERM_ARE_TOO_STRICT     ) throw new Extend_exception(File::ERR_MESSAGE_PERM_ARE_TOO_STRICT,      File::ERR_CODE_PERM_ARE_TOO_STRICT,      ['File "%%_file" cannot be created or opened or modified!', 'File permissions of "%%_file" are too strict!'],           ['file' => $path]);
-                                                                             throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN,                  File::ERR_CODE_UNKNOWN);
-                } else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID,          File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']); };
-        }         else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID,          File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']);
+                    if ($reason === File::ERR_CODE_IS_NOT_EXISTS           ) throw new Extend_exception(File::ERR_MESSAGE_IS_NOT_EXISTS           , File::ERR_CODE_IS_NOT_EXISTS           , ['File "%%_file" cannot be created or opened or modified!', 'File is not exists!'],                                     ['file' => $path]);
+                    if ($reason === File::ERR_CODE_IS_EXISTS               ) throw new Extend_exception(File::ERR_MESSAGE_IS_EXISTS               , File::ERR_CODE_IS_EXISTS               , ['File "%%_file" cannot be created or opened or modified!', 'File is exists!'],                                         ['file' => $path]);
+                    if ($reason === File::ERR_CODE_PERM_ARE_TOO_STRICT     ) throw new Extend_exception(File::ERR_MESSAGE_PERM_ARE_TOO_STRICT     , File::ERR_CODE_PERM_ARE_TOO_STRICT     , ['File "%%_file" cannot be created or opened or modified!', 'File permissions of "%%_file" are too strict!'],           ['file' => $path]);
+                                                                             throw new Extend_exception(File::ERR_MESSAGE_UNKNOWN                 , File::ERR_CODE_UNKNOWN);
+                } else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID         , File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']); };
+        }         else                                                       throw new Extend_exception(File::ERR_MESSAGE_PATH_IS_INVALID         , File::ERR_CODE_PATH_IS_INVALID, ['File path is invalid!', 'Correct format: "%%_format"'], ['format' => self::WRAPPER.'://path_to_'.self::WRAPPER.':internal_path']);
     }
 
     function stream_stat() {
@@ -320,7 +320,7 @@ class File_container {
             if ($path_file)
                  return ['protocol' => $rprotocol, 'path_root' => $path_root, 'path_file' => $path_file, 'target' => 'file'];
             else return ['protocol' => $rprotocol, 'path_root' => $path_root, 'path_file' => $path_file, 'target' => 'root'];
-        }        return ['protocol' => '',         'path_root' => '',         'path_file' => '',         'target' => 'root'];
+        }        return ['protocol' => ''        , 'path_root' => ''        , 'path_file' => ''        , 'target' => 'root'];
     }
 
     static function meta_get($path) {

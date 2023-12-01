@@ -1,7 +1,7 @@
 pages
 - demo|Page
     id: demo
-    title: Demo
+    title: Demonstration
     url: %^(?<base>/develop/demo)
 >>>>>>>>((/(?<type>embedded/form_elements|
 >>>>>>>>>>>>>>>>>>>embedded/markup_static|
@@ -172,9 +172,9 @@ pages
                   - value_!v: 250
                 - is_even
                   - field_!f: is_even
-                  - in_operator_begin: in (
+                  - in_begin_operator: in (
                   - in_value_!v: 1
-                  - in_operator_end: )
+                  - in_end_operator: )
                 - email
                   - field_!f: ~demo_join.email
                   - operator: like

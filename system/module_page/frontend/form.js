@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // operator 'is null' + 'is not null' on Selection edit page
     // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('x-widget[data-type="items-query-conditions"] [data-type="manage"] x-widget[data-rowid]').forEach((c_row_widget) => {
+    document.querySelectorAll('x-widget[data-type="items-query-conditions"] [data-type="manage"] x-widget[data-row-id]').forEach((c_row_widget) => {
         let c_field_operator = c_row_widget.querySelector('x-field[data-role="operator"] select');
         let c_field_value    = c_row_widget.querySelector('x-field[data-role="value"] input');
         if (c_field_operator && c_field_value) {
@@ -67,32 +67,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('[data-selection]').forEach((c_selection) => {
         c_selection.querySelector__withHandler('[data-decorator][data-view-type="table-adaptive"]', (decorator) => {
-            let head_cell       = decorator.querySelector   ('x-head x-cell[data-cellid="checkbox-select"]');
-            let body_checkboxes = decorator.querySelectorAll('x-body x-cell[data-cellid="checkbox-select"] input[type="checkbox"]');
+            let head_cell       = decorator.querySelector   ('x-head x-cell[data-cell-id$="checkbox_select"]');
+            let body_checkboxes = decorator.querySelectorAll('x-body x-cell[data-cell-id$="checkbox_select"] input[type="checkbox"]');
+            let query_checker   = 'x-body x-cell[data-cell-id$="checkbox_select"] input[type="checkbox"]:not(:checked)';
             if (head_cell && body_checkboxes.length) {
+                // insert checkbox "check_all"
                 let check_all = document.createElement('input');
-                check_all.type = 'checkbox';
-                check_all.title = Effcore.getTranslation('select all rows');
+                    check_all.type = 'checkbox';
+                    check_all.title = Effcore.getTranslation('select all rows');
+                    check_all.checked = decorator.querySelectorAll(query_checker).length === 0;
                 head_cell.append(check_all);
                 // when clicking on "check_all"
                 check_all.addEventListener('change', () => {
-                    for (let c_checkbox of body_checkboxes) {
+                    body_checkboxes.forEach((c_checkbox) => {
                         c_checkbox.checked = check_all.checked;
-                    }
+                    });
                 });
                 // when clicking on single checkbox
                 body_checkboxes.forEach((c_checkbox) => {
                     c_checkbox.addEventListener('change', () => {
-                        let is_all_checked = c_checkbox.checked;
-                        for (let c_checkbox_test of body_checkboxes) {
-                            if (c_checkbox_test !== c_checkbox) {
-                                is_all_checked &= c_checkbox_test.checked;
-                                if (is_all_checked === false) {
-                                    break;
-                                }
-                            }
-                        }
-                        check_all.checked = is_all_checked;
+                        check_all.checked = decorator.querySelectorAll(
+                            query_checker
+                        ).length === 0;
                     });
                 });
             }
@@ -111,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var draggable_icon = document.createElement('x-draggable-icon');
                 draggable_icon.setAttribute('draggable', 'true');
                 draggable_icon.addEventListener('dragstart', function (event) { window._effDataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', ''); c_rearrangeable.   setAttribute('data-rearrangeable-is-active', ''); });
-                draggable_icon.addEventListener('dragend',   function (event) { window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'    ); });
+                draggable_icon.addEventListener('dragend'  , function (event) { window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.removeAttribute('data-rearrangeable-is-active'    ); });
             c_rearrangeable.prepend(draggable_icon);
 
             var handler_on_dragover  = function (event) { event.preventDefault();                               };
@@ -135,10 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
             droppable_area_0.setAttribute('data-position', 'before');
             droppable_area_N.setAttribute('data-position', 'after' );
             [droppable_area_0, droppable_area_N].forEach(function (droppable_area) {
-                droppable_area.addEventListener('dragover',  handler_on_dragover );
+                droppable_area.addEventListener('dragover' , handler_on_dragover );
                 droppable_area.addEventListener('dragenter', handler_on_dragenter);
                 droppable_area.addEventListener('dragleave', handler_on_dragleave);
-                droppable_area.addEventListener('drop',      handler_on_drop  );
+                droppable_area.addEventListener('drop'     , handler_on_drop  );
             });
             c_rearrangeable.prepend(droppable_area_0);
             c_rearrangeable.append (droppable_area_N);

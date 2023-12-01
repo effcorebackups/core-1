@@ -86,7 +86,7 @@ class File_history {
             $dst_file = new File(Token::apply($dst_path));
             if ($fixed_name           ) $dst_file->name_set(Token::apply($fixed_name));
             if ($fixed_type           ) $dst_file->type_set(Token::apply($fixed_type));
-            if ($dst_file->is_exists()) $dst_file->name_set($dst_file->name_get().'-'.Core::random_part_get());
+            if ($dst_file->is_exists()) $dst_file->name_set($dst_file->name_get().'-'.Core::random_part_generate());
             if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
                 if ($is_save_original_data === false) $this->name = $dst_file->name_get();
                 if ($is_save_original_data === false) $this->type = $dst_file->type_get();
@@ -140,12 +140,12 @@ class File_history {
         # note: if the type "unknown" is not present in the "types_allowed" in the field settings, you will get a message: Field "Title" does not support uploading a file of this type!
         $this->name = Security::sanitize_file_part($this->name, $characters_allowed, $max_length_name);
         $this->type = Security::sanitize_file_part($this->type, $characters_allowed, $max_length_type);
-        if (!strlen($this->name)) $this->name = Core::random_part_get();
+        if (!strlen($this->name)) $this->name = Core::random_part_generate();
         if (!strlen($this->type)) $this->type = 'unknown';
         $this->file = $this->name.'.'.$this->type;
         # special case for IIS, Apache, NGINX
         if ($this->file === 'web.config' || $this->type === 'htaccess' || $this->type === 'nginx') {
-            $this->name = Core::random_part_get();
+            $this->name = Core::random_part_generate();
             $this->type = 'unknown';
             $this->file = $this->name.'.'.$this->type;
         }

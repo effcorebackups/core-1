@@ -100,7 +100,7 @@ class Test implements has_Data_cache {
         if (!Core::is_CLI() && $depth === 0) {
             $result = str_replace(['<', '>'], ['&lt;', '&gt;'], $result);
         }
-        if (strpos($result, NL) !== false && $depth === 0) {
+        if (str_contains($result, NL) && $depth === 0) {
             $result = NL.$result;
         }
         return $result;

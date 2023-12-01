@@ -68,7 +68,7 @@ class Field extends Control {
     public $set_auto_id = true;
     public $has_error = false;
 
-    function __construct($title = null, $description = null, $attributes = [], $weight = 0) {
+    function __construct($title = null, $description = null, $attributes = [], $weight = +0) {
         parent::__construct(null, $title, $description, $attributes, [], $weight);
     }
 
@@ -395,13 +395,13 @@ class Field extends Control {
         }
     }
 
-    function render_description_pattern  ($element) {return new Markup('p', ['data-id' => 'pattern'  ], new Text('Field value should match the regular expression: %%_expression',               ['expression' => $element->attribute_select('pattern'  )]));}
-    function render_description_midlength($element) {return new Markup('p', ['data-id' => 'midlength'], new Text('Field value can contain only %%_number character%%_plural(number|s).',         ['number'     => $element->attribute_select('minlength')]));}
+    function render_description_pattern  ($element) {return new Markup('p', ['data-id' => 'pattern'  ], new Text('Field value should match the regular expression: %%_expression'              , ['expression' => $element->attribute_select('pattern'  )]));}
+    function render_description_midlength($element) {return new Markup('p', ['data-id' => 'midlength'], new Text('Field value can contain only %%_number character%%_plural(number|s).'        , ['number'     => $element->attribute_select('minlength')]));}
     function render_description_minlength($element) {return new Markup('p', ['data-id' => 'minlength'], new Text('Field value can contain a minimum of %%_number character%%_plural(number|s).', ['number'     => $element->attribute_select('minlength')]));}
     function render_description_maxlength($element) {return new Markup('p', ['data-id' => 'maxlength'], new Text('Field value can contain a maximum of %%_number character%%_plural(number|s).', ['number'     => $element->attribute_select('maxlength')]));}
-    function render_description_min      ($element) {return new Markup('p', ['data-id' => 'min'      ], new Text('Field value cannot be less than: %%_value',                                    ['value'      => $element->attribute_select('min'      )]));}
-    function render_description_max      ($element) {return new Markup('p', ['data-id' => 'max'      ], new Text('Field value cannot be greater than: %%_value',                                 ['value'      => $element->attribute_select('max'      )]));}
-    function render_description_cur      ($element) {return new Markup('p', ['data-id' => 'cur'      ], new Text('Field value at the current moment: %%_value',                                  ['value'      => (new Markup('x-value', [], $element->attribute_select('value')))->render()]));}
+    function render_description_min      ($element) {return new Markup('p', ['data-id' => 'min'      ], new Text('Field value cannot be less than: %%_value'                                   , ['value'      => $element->attribute_select('min'      )]));}
+    function render_description_max      ($element) {return new Markup('p', ['data-id' => 'max'      ], new Text('Field value cannot be greater than: %%_value'                                , ['value'      => $element->attribute_select('max'      )]));}
+    function render_description_cur      ($element) {return new Markup('p', ['data-id' => 'cur'      ], new Text('Field value at the current moment: %%_value'                                 , ['value'      => (new Markup('x-value', [], $element->attribute_select('value')))->render()]));}
 
     ###########################
     ### static declarations ###

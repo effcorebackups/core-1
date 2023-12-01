@@ -108,9 +108,9 @@ abstract class Events_Command {
 
         print NL.NL.NL.'GLOBAL REPORT'.NL;
         print str_repeat('=', 80).NL;
-        print str_pad('Test ID',     30).' | '.
+        print str_pad('Test ID'    , 30).' | '.
               str_pad('Time (sec.)', 11).' | '.
-              str_pad('Result',      27).NL;
+              str_pad('Result'     , 27).NL;
         print str_repeat('-', 80).NL;
               foreach ($global_report as $c_line) print $c_line.NL;
         print str_repeat('=', 80).NL;

@@ -1,25 +1,26 @@
 entities
 - demo_types|Entity
     name: demo_types
-    title: Types
-    title_plural: Types
+    title: Demonstration: Types
+    title_plural: Demonstration: Types
     table_name: demo_types
     managing_is_enabled: true
     managing_group_id: demo
     with_is_embedded: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -103,40 +104,6 @@ entities
             properties
             - weight: +300
     # ─────────────────────────────────────────────────────────────────────
-    # MySQL: int | SQLite: integer
-    # ─────────────────────────────────────────────────────────────────────
-    - f_integer
-        title: Type "integer"
-        type: integer
-        not_null: true
-        default: 0
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Number
-            properties
-            - weight: +280
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: double | SQLite: real
-    # ─────────────────────────────────────────────────────────────────────
-    - f_real
-        title: Type "real"
-        type: real
-        not_null: true
-        default: 0
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Number
-            properties
-            - weight: +260
-            element_attributes
-            - min: -1000
-            - max: +1000
-            - step: 0.000002
-    # ─────────────────────────────────────────────────────────────────────
     # MySQL: varchar | SQLite: text
     # ─────────────────────────────────────────────────────────────────────
     - f_varchar
@@ -156,88 +123,9 @@ entities
           control
             class: \effcore\Field_Text
             properties
-            - weight: +240
+            - weight: +280
             element_attributes_on_insert
             - value: default text
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: time | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_time
-        title: Type "time"
-        type: time
-        default: null
-        check: (f_time <> '')
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Time
-            properties
-            - value_current_if_null: true
-            - weight: +220
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: date | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_date
-        title: Type "date"
-        type: date
-        default: null
-        check: (f_date <> '')
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Date
-            properties
-            - value_current_if_null: true
-            - weight: +200
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: datetime | SQLite: text
-    # ─────────────────────────────────────────────────────────────────────
-    - f_datetime
-        title: Type "datetime" (class "Field_DateTime")
-        type: datetime
-        default: null
-        check: (f_datetime <> '')
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_DateTime
-            properties
-            - value_current_if_null: true
-            - weight: +180
-    - f_datetime_local
-        title: Type "datetime" (class "Field_DateTime_local")
-        type: datetime
-        default: null
-        check: (f_datetime_local <> '')
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_DateTime_local
-            properties
-            - value_current_if_null: true
-            - weight: +160
-    # ─────────────────────────────────────────────────────────────────────
-    # MySQL: tinyint | SQLite: integer
-    # ─────────────────────────────────────────────────────────────────────
-    - f_boolean
-        title: Type "boolean"
-        type: boolean
-        not_null: true
-        default: 0
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Select_logic
-            properties
-            - weight: +140
-            properties_on_insert
-            - selected
-              - =: 0
     # ─────────────────────────────────────────────────────────────────────
     # MySQL: blob | SQLite: blob
     # ─────────────────────────────────────────────────────────────────────
@@ -254,11 +142,150 @@ entities
           control
             class: \effcore\Field_Textarea
             properties
-            - weight: +140
+            - weight: +260
             element_attributes
             - minlength: null
             - maxlength: 65535
             - required: null
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: int | SQLite: integer
+    # ─────────────────────────────────────────────────────────────────────
+    - f_integer
+        title: Type "integer"
+        type: integer
+        not_null: true
+        default: 0
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +240
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: double | SQLite: real
+    # ─────────────────────────────────────────────────────────────────────
+    - f_real
+        title: Type "real"
+        type: real
+        not_null: true
+        default: 0
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Number
+            properties
+            - weight: +220
+            element_attributes
+            - min: -1000
+            - max: +1000
+            - step: 0.000002
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: time | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_time_1
+        title: Type "time" (Field_Time)
+        type: time
+        default: null
+        check: (f_time_1 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Time
+            properties
+            - value_current_if_null: true
+            - weight: +200
+    - f_time_2
+        title: Type "time" (Field_Time_local)
+        type: time
+        default: null
+        check: (f_time_2 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Time_local
+            properties
+            - value_current_if_null: true
+            - weight: +180
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: date | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_date_1
+        title: Type "date" (Field_Date)
+        type: date
+        default: null
+        check: (f_date_1 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Date
+            properties
+            - value_current_if_null: true
+            - weight: +160
+    - f_date_2
+        title: Type "date" (Field_Date_local)
+        type: date
+        default: null
+        check: (f_date_2 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Date_local
+            properties
+            - value_current_if_null: true
+            - weight: +140
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: datetime | SQLite: text
+    # ─────────────────────────────────────────────────────────────────────
+    - f_datetime_1
+        title: Type "datetime" (Field_DateTime)
+        type: datetime
+        default: null
+        check: (f_datetime_1 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime
+            properties
+            - value_current_if_null: true
+            - weight: +120
+    - f_datetime_2
+        title: Type "datetime" (Field_DateTime_local)
+        type: datetime
+        default: null
+        check: (f_datetime_2 <> '')
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_DateTime_local
+            properties
+            - value_current_if_null: true
+            - weight: +100
+    # ─────────────────────────────────────────────────────────────────────
+    # MySQL: tinyint | SQLite: integer
+    # ─────────────────────────────────────────────────────────────────────
+    - f_boolean
+        title: Type "boolean"
+        type: boolean
+        not_null: true
+        default: 0
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_logic
+            properties
+            - weight: +80
+            properties_on_insert
+            - selected
+              - =: 0
     constraints
     - primary_id
         type: primary
@@ -279,23 +306,24 @@ entities
         - =: updated
 - demo_autoincrement|Entity
     name: demo_autoincrement
-    title: Autoincrement
-    title_plural: Autoincrement
+    title: Demonstration: Autoincrement
+    title_plural: Demonstration: Autoincrement
     table_name: demo_autoincrement
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -347,23 +375,24 @@ entities
         - =: description
 - demo_collations|Entity
     name: demo_collations
-    title: Collations
-    title_plural: Collations
+    title: Demonstration: Collations
+    title_plural: Demonstration: Collations
     table_name: demo_collations
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -419,23 +448,24 @@ entities
         - =: id
 - demo_constraints|Entity
     name: demo_constraints
-    title: Constraints
-    title_plural: Constraints
+    title: Demonstration: Constraints
+    title_plural: Demonstration: Constraints
     table_name: demo_constraints
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - f_primary
         title: Type "primary"
@@ -518,23 +548,24 @@ entities
         on_delete: cascade
 - demo_data|Entity
     name: demo_data
-    title: Data
-    title_plural: Data
+    title: Demonstration: Data
+    title_plural: Demonstration: Data
     table_name: demo_data
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -604,23 +635,24 @@ entities
         - =: created
 - demo_indexes|Entity
     name: demo_indexes
-    title: Indexes
-    title_plural: Indexes
+    title: Demonstration: Indexes
+    title_plural: Demonstration: Indexes
     table_name: demo_indexes
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -692,23 +724,24 @@ entities
         - =: f_index
 - demo_join|Entity
     name: demo_join
-    title: Join
-    title_plural: Joins
+    title: Demonstration: Joins
+    title_plural: Demonstration: Joins
     table_name: demo_join
     managing_is_enabled: true
     managing_group_id: demo
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id_data
         title: Data ID

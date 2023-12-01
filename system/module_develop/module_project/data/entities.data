@@ -9,18 +9,19 @@ entities
     has_parallel_checking: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -113,26 +114,27 @@ entities
         - =: updated
 - project_release|Entity
     name: project_release
-    title: Release
-    title_plural: Releases
+    title: Project release
+    title_plural: Project releases
     table_name: project_releases
     managing_is_enabled: true
     managing_group_id: project
     has_parallel_checking: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-    access_insert
-      roles
-      - =: admins
-    access_update
-      roles
-      - =: admins
-    access_delete
-      roles
-      - =: admins
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+        roles
+        - =: admins
+      on_update
+        roles
+        - =: admins
+      on_delete
+        roles
+        - =: admins
     fields
     - id_project
         title: Project ID
@@ -176,8 +178,15 @@ entities
         type: blob
         default: null
         converters
-          on_insert: \effcore\Core::html_entity_encode
-          on_update: \effcore\Core::html_entity_encode
+          on_insert
+          - +0: \effcore\Security::sanitize_from_XSS
+          - -600: \effcore\Core::to_null_if_empty
+          on_update
+          - +0: \effcore\Security::sanitize_from_XSS
+          - -600: \effcore\Core::to_null_if_empty
+          on_render
+          - -400: \effcore\Core::to_current_lang
+          - -500: \effcore\Core::to_markdown
         managing
           is_enabled_on_insert: true
           is_enabled_on_update: true

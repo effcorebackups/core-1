@@ -60,7 +60,7 @@ class Storage_SQL implements has_Data_cache {
                             $this->connection = new PDO(
                                 $this->driver.':'.$path_root.
                                 $this->credentials->file_name);
-                            $this->query(['action' => 'PRAGMA', 'command' => 'encoding',     'operator' => '=', 'value' => '"UTF-8"']);
+                            $this->query(['action' => 'PRAGMA', 'command' => 'encoding'    , 'operator' => '=', 'value' => '"UTF-8"']);
                             $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys', 'operator' => '=', 'value' =>  'ON'    ]);
                             break;
                     }
@@ -124,17 +124,17 @@ class Storage_SQL implements has_Data_cache {
 
     function version_get() {
         if ($this->init()) {
-            if ($this->driver === 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()',        'alias_begin' => 'as', 'alias_!f' => 'version'])[0]->version;
+            if ($this->driver === 'mysql' ) return $this->query(['action' => 'SELECT', 'command' => 'version()'       , 'alias_begin' => 'as', 'alias_!f' => 'version'])[0]->version;
             if ($this->driver === 'sqlite') return $this->query(['action' => 'SELECT', 'command' => 'sqlite_version()', 'alias_begin' => 'as', 'alias_!f' => 'version'])[0]->version;
         }
     }
 
     function foreign_keys_checks_set($is_check = true) {
         if ($this->init()) {
-            if ($this->driver ===  'mysql' && $is_check !== true) $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '0'  ]);
-            if ($this->driver === 'sqlite' && $is_check !== true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       'operator' => '=', 'value' => 'OFF']);
-            if ($this->driver ===  'mysql' && $is_check === true) $this->query(['action' => 'SET',    'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '1'  ]);
-            if ($this->driver === 'sqlite' && $is_check === true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys',       'operator' => '=', 'value' => 'ON' ]);
+            if ($this->driver ===  'mysql' && $is_check !== true) $this->query(['action' => 'SET'   , 'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '0'  ]);
+            if ($this->driver === 'sqlite' && $is_check !== true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys'      , 'operator' => '=', 'value' => 'OFF']);
+            if ($this->driver ===  'mysql' && $is_check === true) $this->query(['action' => 'SET'   , 'command' => 'FOREIGN_KEY_CHECKS', 'operator' => '=', 'value' => '1'  ]);
+            if ($this->driver === 'sqlite' && $is_check === true) $this->query(['action' => 'PRAGMA', 'command' => 'foreign_keys'      , 'operator' => '=', 'value' => 'ON' ]);
         }
     }
 
@@ -232,7 +232,7 @@ class Storage_SQL implements has_Data_cache {
     }
 
     function prepare_field($name) {
-        if (strpos($name, '.') !== false) {
+        if (str_contains($name, '.')) {
             $parts = explode('.', $name);
             return $this->prepare_table($parts[0]).'.'.($parts[1] === '*' ? '*' : '`'.$parts[1].'`');
         } else {
@@ -348,7 +348,7 @@ class Storage_SQL implements has_Data_cache {
             foreach ($entity->constraints as $c_name => $c_info) {
                 if ($c_info->fields !== [$auto_name => $auto_name]) {
                     if ($c_info->type === 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
-                    if ($c_info->type ===  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'UNIQUE',      'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
+                    if ($c_info->type ===  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'UNIQUE'     , 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
                     if ($c_info->type === 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->prepare_fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
                 }
             }
@@ -428,11 +428,11 @@ class Storage_SQL implements has_Data_cache {
             $query['target_!t'] = '~'.$entity->name;
             foreach ($options['join'] as $c_join_id => $c_join_part)
                      $query  ['join']   [$c_join_id] = $c_join_part;
-            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE',    'where'  =>      $options['where' ]];
+            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE'   , 'where'  =>      $options['where' ]];
             if (count($options['group' ])) $query += ['group_begin'  => 'GROUP BY', 'group'  =>      $options['group' ]];
-            if (count($options['having'])) $query += ['having_begin' => 'HAVING',   'having' =>      $options['having']];
-            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT',    'limit'  => (int)$options['limit' ]];
-            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET',   'offset' => (int)$options['offset']];
+            if (count($options['having'])) $query += ['having_begin' => 'HAVING'  , 'having' =>      $options['having']];
+            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT'   , 'limit'  => (int)$options['limit' ]];
+            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET'  , 'offset' => (int)$options['offset']];
             $result = $this->query($query);
             if (isset($result[0]->count)) {
                 return (int)$result[0]->count;
@@ -458,12 +458,12 @@ class Storage_SQL implements has_Data_cache {
             $query['target_!t'] = '~'.$entity->name;
             foreach ($options['join'] as $c_join_id => $c_join_part)
                      $query  ['join']   [$c_join_id] = $c_join_part;
-            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE',    'where'  =>      $options['where' ]];
+            if (count($options['where' ])) $query += ['where_begin'  => 'WHERE'   , 'where'  =>      $options['where' ]];
             if (count($options['group' ])) $query += ['group_begin'  => 'GROUP BY', 'group'  =>      $options['group' ]];
-            if (count($options['having'])) $query += ['having_begin' => 'HAVING',   'having' =>      $options['having']];
+            if (count($options['having'])) $query += ['having_begin' => 'HAVING'  , 'having' =>      $options['having']];
             if (count($options['order' ])) $query += ['order_begin'  => 'ORDER BY', 'order'  =>      $options['order' ]];
-            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT',    'limit'  => (int)$options['limit' ]];
-            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET',   'offset' => (int)$options['offset']];
+            if (      $options['limit' ] ) $query += ['limit_begin'  => 'LIMIT'   , 'limit'  => (int)$options['limit' ]];
+            if (      $options['limit' ] ) $query += ['offset_begin' => 'OFFSET'  , 'offset' => (int)$options['offset']];
             $result = [];
             foreach ($this->query($query) ?: [] as $c_instance) {
                 foreach ($c_instance->values as $c_name => $c_value) {
@@ -611,7 +611,7 @@ class Storage_SQL implements has_Data_cache {
             'code'  => $error_info[1],
             'text'  => $error_info[2],
             'info'  => 'dynamic/logs/']), 'error');
-        Console::log_insert('storage', 'query',  count($args) ?
+        Console::log_insert('storage', 'query', count($args) ?
             'error state = %%_state'.BR.'error code = %%_code'.BR.'error text = %%_text'.BR.'query = "%%_query"'.BR.'arguments = [%%_args]' :
             'error state = %%_state'.BR.'error code = %%_code'.BR.'error text = %%_text'.BR.'query = "%%_query"',
             'error', 0, [

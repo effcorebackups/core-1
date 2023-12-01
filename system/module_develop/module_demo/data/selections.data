@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_autoincrement_id_context
+          text: %%_selection__demo_autoincrement__id__context
     fields
     - main
       - id
@@ -33,7 +33,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_collations_id_context
+          text: %%_selection__demo_collations__id__context
     fields
     - main
       - id
@@ -57,7 +57,7 @@ selections
       - f_primary_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_constraints_f_primary_context
+          text: %%_selection__demo_constraints__f_primary__context
     fields
     - main
       - f_primary
@@ -82,7 +82,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_data_id_context
+          text: %%_selection__demo_data__id__context
     fields
     - main
       - id
@@ -121,7 +121,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_indexes_id_context
+          text: %%_selection__demo_indexes__id__context
     fields
     - main
       - id
@@ -145,7 +145,7 @@ selections
       - id_data_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_join_id_data_context
+          text: %%_selection__demo_join__id_data__context
     fields
     - main
       - id_data
@@ -166,7 +166,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_demo_types_id_context
+          text: %%_selection__demo_types__id__context
     fields
     - main
       - id
@@ -175,52 +175,243 @@ selections
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: +380
+          weight: +390
       - weight
           entity_field_name: weight
-          weight: +360
+          weight: +380
       - created
           entity_field_name: created
-          weight: +340
+          weight: +370
       - updated
           entity_field_name: updated
-          weight: +320
-      - f_integer
-          entity_field_name: f_integer
-          weight: +300
-      - f_real
-          entity_field_name: f_real
-          weight: +280
+          weight: +360
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       - f_varchar
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_varchar
+            - extra_info: (format: n/a)
+          entity_field_name: f_varchar
+          weight: +350
+      - f_varchar__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_varchar
+            - extra_info: (format: n/a; transl.)
           entity_field_name: f_varchar
           is_apply_translation: true
+          weight: +340
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_blob
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_blob
+            - extra_info: (format: n/a)
+          entity_field_name: f_blob
+          weight: +330
+      - f_blob__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_blob
+            - extra_info: (format: n/a; transl.)
+          entity_field_name: f_blob
+          is_apply_translation: true
+          weight: +320
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_integer
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: def. integer)
+          entity_field_name: f_integer
+          weight: +310
+      - f_integer__integer
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: integer)
+          entity_field_name: f_integer
+          format: integer
+          weight: +300
+      - f_integer__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: raw)
+          entity_field_name: f_integer
+          format: raw
+          weight: +290
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_real
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: def. real)
+          entity_field_name: f_real
+          weight: +280
+      - f_real__real
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: real)
+          entity_field_name: f_real
+          format: real
+          weight: +270
+      - f_real__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: raw)
+          entity_field_name: f_real
+          format: raw
           weight: +260
-      - f_time
-          entity_field_name: f_time
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_time_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_1
+            - extra_info: (format: time_utc)
+          entity_field_name: f_time_1
+          format: time_utc
+          weight: +250
+      - f_time_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_1
+            - extra_info: (format: raw)
+          entity_field_name: f_time_1
+          format: raw
           weight: +240
-      - f_date
-          entity_field_name: f_date
+      - f_time_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_2
+            - extra_info: (format: def. time)
+          entity_field_name: f_time_2
+          weight: +230
+      - f_time_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_2
+            - extra_info: (format: raw)
+          entity_field_name: f_time_2
+          format: raw
           weight: +220
-      - f_datetime
-          entity_field_name: f_datetime
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_date_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_1
+            - extra_info: (format: date_utc)
+          entity_field_name: f_date_1
+          format: date_utc
+          weight: +210
+      - f_date_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_1
+            - extra_info: (format: raw)
+          entity_field_name: f_date_1
+          format: raw
           weight: +200
-      - f_datetime_raw
-          title: Type "datetime" (class "Field_DateTime") not formatted
-          entity_field_name: f_datetime
+      - f_date_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_2
+            - extra_info: (format: def. date)
+          entity_field_name: f_date_2
+          weight: +190
+      - f_date_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_2
+            - extra_info: (format: raw)
+          entity_field_name: f_date_2
+          format: raw
           weight: +180
-          is_not_formatted: true
-      - f_datetime_local
-          entity_field_name: f_datetime_local
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_datetime_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_1
+            - extra_info: (format: datetime_utc)
+          entity_field_name: f_datetime_1
+          format: datetime_utc
+          weight: +170
+      - f_datetime_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_1
+            - extra_info: (format: raw)
+          entity_field_name: f_datetime_1
+          format: raw
           weight: +160
-      - f_datetime_local_raw
-          title: Type "datetime" (class "Field_DateTime_local") not formatted
-          entity_field_name: f_datetime_local
+      - f_datetime_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_2
+            - extra_info: (format: def. datetime)
+          entity_field_name: f_datetime_2
+          weight: +150
+      - f_datetime_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_2
+            - extra_info: (format: raw)
+          entity_field_name: f_datetime_2
+          format: raw
           weight: +140
-          is_not_formatted: true
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       - f_boolean
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: def. boolean)
           entity_field_name: f_boolean
+          weight: +130
+      - f_boolean__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: boolean; transl.)
+          entity_field_name: f_boolean
+          format: boolean
           is_apply_translation: true
           weight: +120
+      - f_boolean__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: raw)
+          entity_field_name: f_boolean
+          format: raw
+          weight: +110
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
@@ -228,9 +419,46 @@ selections
       - access
           entity_field_name: access
           is_apply_translation: true
-          weight: +80
           converters
             on_render: \effcore\Widget_Access::value_to_markup
+          weight: +80
+    - markup
+      - delimiter_1
+          markup|Text
+            text: 
+          weight: +355
+      - delimiter_2
+          markup|Text
+            text: 
+          weight: +335
+      - delimiter_3
+          markup|Text
+            text: 
+          weight: +315
+      - delimiter_4
+          markup|Text
+            text: 
+          weight: +285
+      - delimiter_5
+          markup|Text
+            text: 
+          weight: +255
+      - delimiter_6
+          markup|Text
+            text: 
+          weight: +215
+      - delimiter_7
+          markup|Text
+            text: 
+          weight: +175
+      - delimiter_8
+          markup|Text
+            text: 
+          weight: +135
+      - delimiter_9
+          markup|Text
+            text: 
+          weight: +105
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-demo_autoincrement|Selection
     id: instance_select_multiple-demo_autoincrement
@@ -401,17 +629,8 @@ selections
       - title_direction: ASC
     - limit: 1
     fields
-    - checkboxes
-      - type_checkbox
-          title|Text
-            text: Type "%%_type"
-            args
-            - type: checkbox
-          settings
-          - name: is_checked[]
-          weight: +400
     - main
-      - type_field
+      - main__data
           entity_field_name: id
           title|Text
             text: Type "%%_type"
@@ -419,7 +638,7 @@ selections
             - type: field
           weight: +380
     - join
-      - demo_join
+      - join__data
           type: left outer join
           entity_name: demo_join
           entity_field_name: id_data
@@ -434,36 +653,33 @@ selections
                 - type: join field
               weight: +360
     - texts
-      - type_text_with_translation
+      - text__with_translation
           title|Text
             text: Type "%%_type"
             args
             - type: text + translation
           text: text with translation
-          is_trimmed: true
           is_apply_translation: true
           weight: +340
-      - type_text_with_translation_with_token
+      - text__with_translation_and_token
           title|Text
             text: Type "%%_type"
             args
             - type: text + translation + token
           text: text with translation and token demo_text = "%%_demo_text"
-          is_trimmed: true
           is_apply_translation: true
           is_apply_tokens: true
           weight: +320
-      - type_text_with_token
+      - text__with_token
           title|Text
             text: Type "%%_type"
             args
             - type: text + token
           text: text with token demo_text = "%%_demo_text"
-          is_trimmed: true
           is_apply_tokens: true
           weight: +300
     - markup
-      - type_markup
+      - markup__data
           title|Text
             text: Type "%%_type"
             args
@@ -475,14 +691,44 @@ selections
                 text: markup
           weight: +280
     - handlers
-      - type_handler
+      - handler__data1__checkbox_select
+          title|Text
+            text: Type "%%_type"
+            args
+            - type: handler:checkbox_1
+          settings
+          - name: is_checked_data1[]
+          - instance_id: 100
+          handler: \effcore\modules\page\Events_Selection::handler__any__checkbox_select
+          weight: +500
+      - handler__data2__checkbox_select
+          title|Text
+            text: Type "%%_type"
+            args
+            - type: handler:checkbox_2
+          settings
+          - name: is_checked_data2[]
+          - instance_id: 200
+          handler: \effcore\modules\page\Events_Selection::handler__any__checkbox_select
+          weight: +500
+      - handler__text1
           title|Text
             text: Type "%%_type"
             args
             - type: handler
           settings
-          - demo_value: value from handler settings
+          - demo_value: text with translation
           handler: \effcore\modules\demo\Events_Selection::handler__demo
+          weight: +260
+      - handler__text2
+          title|Text
+            text: Type "%%_type"
+            args
+            - type: handler+is_apply_translation=false
+          settings
+          - demo_value: text with translation
+          handler: \effcore\modules\demo\Events_Selection::handler__demo
+          is_apply_translation: false
           weight: +260
 - demo_data_types|Selection
     id: demo_data_types
@@ -496,50 +742,237 @@ selections
     - main
       - id
           entity_field_name: id
-          weight: +400
+          weight: +370
       - description
           entity_field_name: description
           is_apply_translation: true
-          weight: +380
-      - f_integer
-          entity_field_name: f_integer
           weight: +360
-      - f_real
-          entity_field_name: f_real
-          weight: +340
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       - f_varchar
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_varchar
+            - extra_info: (format: n/a)
+          entity_field_name: f_varchar
+          weight: +350
+      - f_varchar__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_varchar
+            - extra_info: (format: n/a; transl.)
           entity_field_name: f_varchar
           is_apply_translation: true
-          weight: +320
-      - f_time
-          entity_field_name: f_time
-          weight: +300
-      - f_date
-          entity_field_name: f_date
-          weight: +280
-      - f_datetime
-          entity_field_name: f_datetime
-          weight: +260
-      - f_datetime_raw
-          title: Type "datetime" (class "Field_DateTime") not formatted
-          entity_field_name: f_datetime
-          weight: +240
-          is_not_formatted: true
-      - f_datetime_local
-          entity_field_name: f_datetime_local
-          weight: +220
-      - f_datetime_local_raw
-          title: Type "datetime" (class "Field_DateTime_local") not formatted
-          entity_field_name: f_datetime_local
-          weight: +200
-          is_not_formatted: true
-      - f_boolean
-          entity_field_name: f_boolean
-          is_apply_translation: true
-          weight: +180
+          weight: +340
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
       - f_blob
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_blob
+            - extra_info: (format: n/a)
           entity_field_name: f_blob
+          weight: +330
+      - f_blob__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_blob
+            - extra_info: (format: n/a; transl.)
+          entity_field_name: f_blob
+          is_apply_translation: true
+          weight: +320
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_integer
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: def. integer)
+          entity_field_name: f_integer
+          weight: +310
+      - f_integer__integer
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: integer)
+          entity_field_name: f_integer
+          format: integer
+          weight: +300
+      - f_integer__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_integer
+            - extra_info: (format: raw)
+          entity_field_name: f_integer
+          format: raw
+          weight: +290
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_real
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: def. real)
+          entity_field_name: f_real
+          weight: +280
+      - f_real__real
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: real)
+          entity_field_name: f_real
+          format: real
+          weight: +270
+      - f_real__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_real
+            - extra_info: (format: raw)
+          entity_field_name: f_real
+          format: raw
+          weight: +260
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_time_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_1
+            - extra_info: (format: time_utc)
+          entity_field_name: f_time_1
+          format: time_utc
+          weight: +250
+      - f_time_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_1
+            - extra_info: (format: raw)
+          entity_field_name: f_time_1
+          format: raw
+          weight: +240
+      - f_time_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_2
+            - extra_info: (format: def. time)
+          entity_field_name: f_time_2
+          weight: +230
+      - f_time_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_time_2
+            - extra_info: (format: raw)
+          entity_field_name: f_time_2
+          format: raw
+          weight: +220
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_date_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_1
+            - extra_info: (format: date_utc)
+          entity_field_name: f_date_1
+          format: date_utc
+          weight: +210
+      - f_date_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_1
+            - extra_info: (format: raw)
+          entity_field_name: f_date_1
+          format: raw
+          weight: +200
+      - f_date_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_2
+            - extra_info: (format: def. date)
+          entity_field_name: f_date_2
+          weight: +190
+      - f_date_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_date_2
+            - extra_info: (format: raw)
+          entity_field_name: f_date_2
+          format: raw
+          weight: +180
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_datetime_1
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_1
+            - extra_info: (format: datetime_utc)
+          entity_field_name: f_datetime_1
+          format: datetime_utc
+          weight: +170
+      - f_datetime_1__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_1
+            - extra_info: (format: raw)
+          entity_field_name: f_datetime_1
+          format: raw
           weight: +160
+      - f_datetime_2
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_2
+            - extra_info: (format: def. datetime)
+          entity_field_name: f_datetime_2
+          weight: +150
+      - f_datetime_2__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_datetime_2
+            - extra_info: (format: raw)
+          entity_field_name: f_datetime_2
+          format: raw
+          weight: +140
+      # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+      - f_boolean
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: def. boolean)
+          entity_field_name: f_boolean
+          weight: +130
+      - f_boolean__with_translation
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: boolean; transl.)
+          entity_field_name: f_boolean
+          format: boolean
+          is_apply_translation: true
+          weight: +120
+      - f_boolean__raw
+          title|Text
+            text: Field "%%_name" %%_extra_info
+            args
+            - name: f_boolean
+            - extra_info: (format: raw)
+          entity_field_name: f_boolean
+          format: raw
+          weight: +110
 - demo_data_join|Selection
     id: demo_data_join
     main_entity_name: demo_data
@@ -556,9 +989,9 @@ selections
           - value_!v: 150
         - is_even
           - field_!f: is_even
-          - in_operator_begin: in (
+          - in_begin_operator: in (
           - in_value_!v: 1
-          - in_operator_end: )
+          - in_end_operator: )
         - email
           - field_!f: ~demo_join.email
           - operator: like

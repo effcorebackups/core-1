@@ -43,7 +43,8 @@ abstract class Events_Form_Instance_update__Selection {
         switch ($form->clicked_button->value_get()) {
             case 'update':
                 if ($entity->name === 'selection') {
-                    if (empty($items['*fields']->value_get()['main'])) {
+                    if (empty($items['*fields']->value_get()['main']) &&
+                        empty($items['*fields']->value_get()['handlers'])) {
                         $form->error_set('Group "%%_title" should contain a minimum %%_number item%%_plural(number|s)!', ['title' => (new Text($items['*fields']->title))->render(), 'number' => 1]);
                     }
                 }

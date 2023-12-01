@@ -7,9 +7,10 @@
 namespace effcore\modules\user;
 
 use effcore\Entity;
-use effcore\Message;
-use effcore\Page;
 use effcore\Form_plugin;
+use effcore\Message;
+use effcore\Module;
+use effcore\Page;
 use effcore\Text_multiline;
 use effcore\Text;
 
@@ -44,7 +45,9 @@ abstract class Events_Form_Instance_insert {
                 $items['#name'   ]->value_set('');
                 $items['#email'  ]->value_set('');
                 $items['#message']->value_set('');
-                $items['#captcha']->value_set('');
+                if (Module::is_enabled('captcha')) {
+                    $items['#captcha']->value_set('');
+                }
             }
         }
     }
@@ -77,7 +80,7 @@ abstract class Events_Form_Instance_insert {
                     $id_permission = $items['#id_permission']->value_get();
                     $result = $entity->instances_select([
                         'where' => ['conjunction_!and' => [
-                            'id_role'       => ['field_!f' => 'id_role',       'operator' => '=', 'value_!v' => $id_role      ],
+                            'id_role'       => ['field_!f' => 'id_role'      , 'operator' => '=', 'value_!v' => $id_role      ],
                             'id_permission' => ['field_!f' => 'id_permission', 'operator' => '=', 'value_!v' => $id_permission] ]],
                         'limit' => 1]);
                     if ($result) {

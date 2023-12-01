@@ -22,9 +22,10 @@ abstract class Response {
             case 'moved_permanently'     : header('http/1.1 301 moved permanently'     ); if (!$title) $title = 'Moved Permanently';                                                                    break;
             case 'bad_request'           : header('http/1.1 400 bad request'           ); if (!$title) $title = 'Bad Request';                                                                          break;
             case 'unsupported_media_type': header('http/1.1 415 unsupported media type'); if (!$title) $title = 'Unsupported Media Type';                                                               break;
-            case 'access_forbidden'      : header('http/1.1 403 forbidden'             ); if (!$title) $title = 'Access forbidden';      $template_name = Template::pick_name('page_access_forbidden'); break;
+            case 'page_access_forbidden' : header('http/1.1 403 forbidden'             ); if (!$title) $title = 'Page access forbidden'; $template_name = Template::pick_name('page_access_forbidden'); break;
+            case 'file_access_forbidden' : header('http/1.1 403 forbidden'             ); if (!$title) $title = 'File access forbidden'; $template_name = Template::pick_name('file_access_forbidden'); break;
             case 'page_not_found'        : header('http/1.0 404 not found'             ); if (!$title) $title = 'Page not found';        $template_name = Template::pick_name('page_not_found');        break;
-            case 'file_not_found'        : header('http/1.0 404 not found'             ); if (!$title) $title = 'File not found';        $template_name = Template::pick_name('page_not_found');        break;
+            case 'file_not_found'        : header('http/1.0 404 not found'             ); if (!$title) $title = 'File not found';        $template_name = Template::pick_name('file_not_found');        break;
             case 'no_content'            : header('http/1.0 204 no content'            ); if (!$title) $title = 'No Content';            $template_name = Template::pick_name('no_content');            break;
             case 'internal_server_error' : header('http/1.0 500 internal server error' ); if (!$title) $title = 'Internal Server Error'; $template_name = Template::pick_name('internal_server_error'); break;
         }
@@ -36,7 +37,7 @@ abstract class Response {
             $content  = (Template::make_new($template_name, ['attributes' => Core::data_to_attributes([
                 'lang'               => Language::code_get_current()]),
                 'message'            => is_object($message) && method_exists($message, 'render') ? $message->render() : (new Text($message))->render(),
-                'title'              => is_object($title  ) && method_exists($title,   'render') ? $title  ->render() : (new Text($title  ))->render(),
+                'title'              => is_object($title  ) && method_exists($title  , 'render') ? $title  ->render() : (new Text($title  ))->render(),
                 'color__page'        => isset($colors[$settings->color__page_id       ]) ? $colors[$settings->color__page_id       ]->value_hex : '',
                 'color__text'        => isset($colors[$settings->color__text_id       ]) ? $colors[$settings->color__text_id       ]->value_hex : '',
                 'color__link'        => isset($colors[$settings->color__link_id       ]) ? $colors[$settings->color__link_id       ]->value_hex : '',

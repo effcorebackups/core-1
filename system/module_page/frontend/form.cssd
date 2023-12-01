@@ -17,6 +17,7 @@ x-form-message {
   line-height: 1.4em;
   text-align: center;
   border: 1px dotted %%_color__main;
+  background: url('pictures/lines.svgd?opacity=.04&color=%%_return_if_token_color_is_dark(color__page|white|black)');
 }
 
 /* micro_tabs */
@@ -64,7 +65,7 @@ fieldset [data-fieldset-title] + [data-fieldset-content] {margin-top: 30px}
 fieldset > x-description {margin-top: 20px}
 
 fieldset input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color__main url('pictures/icons-element.svgd?color=white') 0 -60px}
-fieldset input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-element.svgd?color=white') -20px -60px}
+fieldset input[data-opener-type='title']:checked {background-position: -20px -60px}
 fieldset input[data-opener-type='title']:checked ~ [data-fieldset-content]:first-of-type {display: none}
 
 fieldset [data-fieldset-content] {
@@ -122,6 +123,15 @@ x-group [data-group-content] {
 x-group[data-type='text_object'] x-field {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
 x-group[data-type='text_object'] x-field[data-type='checkbox'] {margin: 15px 10px 2px 0}
 
+/* x-group[data-type='access'] */
+
+x-group[data-type='access'] {
+  margin: 40px 0;
+  padding: 30px;
+  border: 1px dashed %%_color__main;
+  background: url('pictures/lines.svgd?opacity=.04&color=%%_return_if_token_color_is_dark(color__page|white|black)');
+}
+
 /* mark 'required' */
 
 [data-mark-required]::after {
@@ -176,12 +186,12 @@ input[type='radio'   ] {
 input[type='radio'   ] {border-radius: 13px}
 input[type='checkbox'][data-type='switcher'] {border-radius: 15px; width: 40px}
 
-input[type='radio'   ]                               {background: %%_color__field}
-input[type='checkbox']                               {background: %%_color__field}
-input[type='radio'   ]:checked                       {background: %%_color__field url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)')   0   -20px}
-input[type='checkbox']:checked                       {background: %%_color__field url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)')   0     0  }
-input[type='checkbox'][data-type='switcher']         {background: %%_color__field url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)')   0   -40px}
-input[type='checkbox'][data-type='switcher']:checked {background: %%_color__field url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)') -46px -40px}
+input[type='radio'   ],
+input[type='checkbox']                               {background: %%_color__field url('pictures/icons-element.svgd?color=%%_return_token_color_encoded(color__main)') no-repeat 1000px 0}
+input[type='radio'   ]:checked                       {background-position:   0   -20px}
+input[type='checkbox']:checked                       {background-position:   0     0  }
+input[type='checkbox'][data-type='switcher']         {background-position:   0   -40px}
+input[type='checkbox'][data-type='switcher']:checked {background-position: -46px -40px}
 
 input[data-state-default='not_checked']:checked,
 input[data-state-default='checked'    ]:not(:checked) {border-color: %%_color__warning}
@@ -216,7 +226,7 @@ x-description {
 }
 
 x-description p {margin: 0}
-input[data-opener-type='description'] {display: block; width: 14px; height: 6px; margin: 2px 0 0 0; border: none; background: url('pictures/lines.svgd?opacity=.5&color=%%_return_token_color_encode(color__main)'); background-size: 6px 6px}
+input[data-opener-type='description'] {display: block; width: 14px; height: 6px; margin: 2px 0 0 0; border: none; background: url('pictures/lines.svgd?opacity=.5&color=%%_return_token_color_encoded(color__main)'); background-size: 6px 6px}
 input[data-opener-type='description']:checked {display: none}
 input[data-opener-type='description']         + x-description {display: none}
 input[data-opener-type='description']:checked + x-description {display: block}
@@ -251,9 +261,9 @@ button[data-type='default'] {
   left: -10000px;
 }
 
-button[data-style~='update'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encode(color__button_text)'); background-position: 50%   0  }
-button[data-style~='insert'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encode(color__button_text)'); background-position: 50% -40px}
-button[data-style~='delete'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encode(color__button_text)'); background-position: 50% -80px}
+button[data-style~='update'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encoded(color__button_text)'); background-position: 50%   0  }
+button[data-style~='insert'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encoded(color__button_text)'); background-position: 50% -40px}
+button[data-style~='delete'] {width: 40px; height: 40px; padding: 0; background-image: url('pictures/icons-button.svgd?color=%%_return_token_color_encoded(color__button_text)'); background-position: 50% -80px}
 
 button[data-style~='little'] {
   height: 20px;
@@ -281,7 +291,7 @@ x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transpare
 /* group 'palette' */
 
 x-group[data-type='palette'] input[data-opener-type='palette'] {margin: 0 10px 0 0; border-width: 1px}
-x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)') -18px 2px !important}
+x-group[data-type='palette'] input[data-opener-type='palette'][value='transparent'] {background: white url('pictures/icons-element.svgd?color=%%_return_token_color_encoded(color__main)') -18px 2px !important}
 x-group[data-type='palette'] input[data-opener-type='palette']:checked ~ [data-group-content]:first-of-type {display: none}
 
 x-group[data-type='palette'] [data-group-title] {
@@ -317,7 +327,7 @@ x-group[data-type='palette'] hr {
   height: 44px;
   margin-right: 10px;
   cursor: move;
-  background: %%_color__main url('pictures/icons-drag_and_drop.svgd?color=%%_return_token_color_encode(color__main)') 50% 50%;
+  background: %%_color__main url('pictures/icons-drag_and_drop.svgd?color=%%_return_token_color_encoded(color__main)') 50% 50%;
 }
 
 [data-has-rearrangeable] x-droppable-area {
@@ -342,7 +352,7 @@ x-group[data-type='palette'] hr {
 /* widget */
 
 x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color__main url('pictures/icons-element.svgd?color=white') 0 -60px}
-x-widget input[data-opener-type='title']:checked {background: %%_color__main url('pictures/icons-element.svgd?color=white') -20px -60px}
+x-widget input[data-opener-type='title']:checked {background-position: -20px -60px}
 x-widget input[data-opener-type='title']:checked ~ [data-widget-content]:first-of-type {display: none}
 
 x-widgets-group {display: block}
@@ -394,12 +404,12 @@ x-widget[data-type='query-settings'] [data-widget-title] {display: inline-block;
 x-widget[data-type='query-settings'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
 x-widget[data-type='query-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid %%_color__main}
 
-x-widget[data-type='items-query-conditions'] [data-role='field-name'] select {width: 200px}
-x-widget[data-type='items-query-conditions'] [data-role='operator']   select {width:  70px}
-x-widget[data-type='items-query-conditions'] [data-role='value']      input  {width: 200px}
+x-widget[data-type='items-query-conditions'] [data-role='field']    select {width: 200px}
+x-widget[data-type='items-query-conditions'] [data-role='operator'] select {width:  70px}
+x-widget[data-type='items-query-conditions'] [data-role='value']    input  {width: 200px}
 
-x-widget[data-type='items-query-order'] [data-role='field-name'] select {width: 200px}
-x-widget[data-type='items-query-order'] [data-role='type']       select {width: 200px}
+x-widget[data-type='items-query-order'] [data-role='field'] select {width: 250px}
+x-widget[data-type='items-query-order'] [data-role='type']  select {width: 200px}
 
 /* widget 'decorator-settings' */
 
@@ -414,8 +424,8 @@ x-widget[data-type='items-blocks'] {margin: 0}
 
 /* widget x-settings */
 
-x-widget input[data-opener-type='settings'] {transform: scale(.77); float: right; margin: 7px; border-radius: 15px; border-color: %%_color__main; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)') -20px -80px}
-x-widget input[data-opener-type='settings']:checked {background: url('pictures/icons-element.svgd?color=%%_return_token_color_encode(color__main)') 0 -80px}
+x-widget input[data-opener-type='settings'] {transform: scale(.77); float: right; margin: 7px; border-radius: 15px; border-color: %%_color__main; background: url('pictures/icons-element.svgd?color=%%_return_token_color_encoded(color__main)') -20px -80px}
+x-widget input[data-opener-type='settings']:checked {background-position: 0 -80px}
 x-widget input[data-opener-type='settings']:checked ~ x-settings:first-of-type {display: none}
 
 x-widget x-settings {
@@ -477,10 +487,6 @@ form#modules_update_files button[value^='repo_restore_'] {
 
 [data-id='block__form__cache_update'] form#cache_update {margin: 0; text-align: right}
 [data-id='block__form__cache_update'] form#cache_update button {margin: 0}
-
-/* form 'logout' */
-
-x-decorator[data-id='sessions_logout'] [data-cellid='is_fixed_ip'] {white-space: nowrap}
 
 /* Polls */
 

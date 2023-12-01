@@ -19,7 +19,7 @@ translations
     - ± the extension is enabled by default: ± розширення увімкнено за умовчанням
     - − the extension is not enabled by default: − розширення не ввімкнено за умовчанням
     - action "%%_name" will be started: дія "%%_name" буде запущена
-    - action with rowid = "%%_rowid" will be started: дія з rowid = "%%_rowid" буде запущена
+    - action with row_id = "%%_row_id" will be started: дія з row_id = "%%_row_id" буде запущена
     - All releases: Усі випуски
     - All types of messages you can see above.: Всі типи повідомлень Ви можете побачити вище.
     - ANONYMOUS USER: АНОНІМНИЙ КОРИСТУВАЧ
@@ -62,6 +62,13 @@ translations
     - Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions): Демонстрація вибірки сутностей "demo_data" з JOIN (та перевизначеними умовами)
     - Demonstration of selection of "demo_data" entities with JOIN: Демонстрація вибірки сутностей "demo_data" з JOIN
     - Demonstration of selection of entities "demo_types": Демонстрація вибірки сутностей "demo_types"
+    - Demonstration\: Autoincrement: Демонстрація: Автоінкремент
+    - Demonstration\: Collations: Демонстрація: Порівняння
+    - Demonstration\: Constraints: Демонстрація: Обмеження
+    - Demonstration\: Data: Демонстрація: Дані
+    - Demonstration\: Indexes: Демонстрація: Індекси
+    - Demonstration\: Joins: Демонстрація: З'єднання
+    - Demonstration\: Types: Демонстрація: Типи
     - Description for messages: Опис для повідомлень
     - Displaying the console will result in a %%_value increase in RAM consumption!: Відображення консолі призведе до збільшення споживання ОЗП на %%_value!
     - Embedded elements: Вбудовані елементи
@@ -79,6 +86,7 @@ translations
     - Execution plan: План виконання
     - expected value\: %%_value: очікуване значення: %%_value
     - Export diagram to file "%%_file" for using with "StarUML" software.: Експорт діаграми у файл "%%_file" для використання у програмі "StarUML".
+    - Field "%%_name" %%_extra_info: Поле "%%_name" %%_extra_info
     - Field #1: Поле №1
     - Field #2: Поле №2
     - Field #3: Поле №3
@@ -91,7 +99,6 @@ translations
     - gotten value\: %%_value: отримане значення: %%_value
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (вставлена з коду)
-    - Handler: Обробник
     - head cell #%%_number: великий осередок №%%_number
     - Header %%_size: Заголовок %%_size
     - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Якщо атрибут "step" дорівнює "60", тоді секунди ":00" будуть обрізатися.
@@ -162,6 +169,9 @@ translations
     - PHP functions usage: Використання PHP-функцій
     - Pos.: Поз.
     - Project ID: ID проекту
+    - Project release (current): Випуск праекта (поточний)
+    - Project release: Випуск праекта
+    - Project releases: Випуски проекту
     - PROPERTY "%%_name": ВЛАСТИВІСТЬ "%%_name"
     - property private: властивість приватна
     - property protected: властивість захищена
@@ -177,7 +187,6 @@ translations
     - REGISTERED USER + ROLE: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ + РОЛЬ
     - REGISTERED USER: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ
     - Relation (tree view): Зв'язок (у вигляді дерева)
-    - Release (current): Випуск (поточний)
     - Release: Випуск
     - Releases of the project %%_project_title_context: Випуски проекту %%_project_title_context
     - Releases: Випуски
@@ -249,11 +258,10 @@ translations
     - Type "binary": Тип "binary"
     - Type "blob": Тип "blob"
     - Type "boolean": Тип "boolean"
-    - Type "date": Тип "date"
-    - Type "datetime" (class "Field_DateTime_local") not formatted: Тип "datetime" (клас "Field_DateTime_local") не відформатовано
-    - Type "datetime" (class "Field_DateTime_local"): Тип "datetime" (клас "Field_DateTime_local")
-    - Type "datetime" (class "Field_DateTime") not formatted: Тип "datetime" (клас "Field_DateTime") не відформатовано
-    - Type "datetime" (class "Field_DateTime"): Тип "datetime" (клас "Field_DateTime")
+    - Type "date" (Field_Date_local): Тип "date" (Field_Date_local)
+    - Type "date" (Field_Date): Тип "date" (Field_Date)
+    - Type "datetime" (Field_DateTime_local): Тип "datetime" (Field_DateTime_local)
+    - Type "datetime" (Field_DateTime): Тип "datetime" (Field_DateTime)
     - Type "datetime": Тип "datetime"
     - Type "foreign": Тип "foreign"
     - Type "index unique": Тип "index unique"
@@ -262,7 +270,8 @@ translations
     - Type "nocase": Тип "nocase"
     - Type "primary": Тип "primary"
     - Type "real": Тип "real"
-    - Type "time": Тип "time"
+    - Type "time" (Field_Time_local): Тип "time" (Field_Time_local)
+    - Type "time" (Field_Time): Тип "time" (Field_Time)
     - Type "unique": Тип "unique"
     - Type "varchar": Тип "varchar"
     - UML Diagram: UML-діаграма

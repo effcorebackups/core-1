@@ -64,10 +64,10 @@ abstract class Events_Page {
         if (is_array($blocks)) {
             foreach ($blocks as $c_id_area => $c_blocks_by_area) {
                 foreach ($c_blocks_by_area as $c_block) {
-                    if ($c_block instanceof Block             &&
-                        $c_block->type             === 'link' && strpos(
-                        $c_block->source, 'tabs/') === 0) {
-                        $active_tab = Storage::get('data')->select($c_block->source, true);
+                    if ($c_block instanceof Block && $c_block->type === 'link') {
+                        if (str_starts_with($c_block->source, 'tabs/')) {
+                            $active_tab = Storage::get('data')->select($c_block->source, true);
+                        }
                     }
                 }
             }

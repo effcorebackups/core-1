@@ -11,26 +11,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_selection__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_selection__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_selection__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_selection__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_selection__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_selection__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_selection__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_selection__delete
     fields
     - id
         title: ID
@@ -60,7 +61,7 @@ entities
           is_enabled_on_insert: true
           is_enabled_on_update: true
           control
-            class: \effcore\Field_Select_entity_name
+            class: \effcore\Field_Select_entity
             properties
             - weight: +380
             element_attributes_on_update
@@ -109,6 +110,7 @@ entities
           on_select: unserialize
           on_insert: \effcore\Core::data_serialize
           on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Core::data_serialize
         managing
           is_enabled_on_update: true
           control
@@ -124,6 +126,7 @@ entities
           on_select: unserialize
           on_insert: \effcore\Core::data_serialize
           on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Core::data_serialize
         managing
           is_enabled_on_update: true
           control
@@ -139,6 +142,7 @@ entities
           on_select: unserialize
           on_insert: \effcore\Core::data_serialize
           on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Core::data_serialize
         managing
           is_enabled_on_update: true
           control

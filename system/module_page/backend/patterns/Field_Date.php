@@ -32,20 +32,11 @@ class Field_Date extends Field_Text {
         }
     }
 
-    function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
-        $value = parent::value_get();
-        if         (Security::validate_date($value))
-             return Security::sanitize_date($value);
-        else return $value;
-    }
-
     function value_set($value) {
         $this->value_set_initial($value);
-        if (is_null($value) || is_string($value)) {
-            if ($this->value_current_if_null === true && $value === null) $value = Core::date_get();
-            if (Security::validate_date($value)) parent::value_set(Security::sanitize_date($value));
-            else                                 parent::value_set(                        $value );
-        }
+        if (is_null  ($value) && $this->value_current_if_null !== true) return parent::value_set('');
+        if (is_null  ($value) && $this->value_current_if_null === true) return parent::value_set(Core::date_get());
+        if (is_string($value))                                          return parent::value_set($value);
     }
 
     ###########################
@@ -80,7 +71,6 @@ class Field_Date extends Field_Text {
                 'Value of "%%_title" field is not a valid date!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
-            $new_value = Security::sanitize_date($new_value);
             return true;
         }
     }

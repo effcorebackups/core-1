@@ -77,7 +77,7 @@ abstract class Events_Form_Modules_Update_data {
                                     Event::start('on_module_update_data_after', $c_module->id, ['update' => $c_update]);
                                     if ($c_result) {
                                         Update::insert_last_number($c_module->id, $c_update->number);
-                                             Message::insert(new Text('Data update #%%_number for module "%%_title" (%%_id) was applied.',     ['title' => (new Text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );
+                                             Message::insert(new Text('Data update #%%_number for module "%%_title" (%%_id) was applied.'    , ['title' => (new Text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number])         );
                                     } else { Message::insert(new Text('Data update #%%_number for module "%%_title" (%%_id) was not applied!', ['title' => (new Text($c_module->title))->render(), 'id' => $c_module->id, 'number' => $c_update->number]), 'error');
                                         break;
                                     }

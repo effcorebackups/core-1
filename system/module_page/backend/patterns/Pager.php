@@ -26,7 +26,7 @@ class Pager extends Markup {
     public $name = 'page';
     public $id = 0;
 
-    function __construct($min = 1, $max = 1, $name = 'page', $id = 0, $attributes = [], $weight = 0) {
+    function __construct($min = 1, $max = 1, $name = 'page', $id = 0, $attributes = [], $weight = +0) {
         $this->min  = $min;
         $this->max  = $max;
         $this->name = $name;

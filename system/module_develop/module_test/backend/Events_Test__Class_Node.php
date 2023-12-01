@@ -36,7 +36,7 @@ abstract class Events_Test__Class_Node {
             'attr_str__take_string__small__at_end'   => $node->has_attribute_value('data-str',  '23' ),
             'attr_str__take_int__small__at_end'      => $node->has_attribute_value('data-str',   23  ),
             'attr_str__take_string_empty'            => $node->has_attribute_value('data-str', ''    ),
-            'attr_unknown'                           => $node->has_attribute_value('unknown',  '123' )
+            'attr_unknown'                           => $node->has_attribute_value('unknown' , '123' )
         ];
 
         $expected = [
@@ -99,7 +99,7 @@ abstract class Events_Test__Class_Node {
             'attr_str__take_string__small__at_end'   => $node->has_attribute_value_contains('data-str',  '23' ),
             'attr_str__take_int__small__at_end'      => $node->has_attribute_value_contains('data-str',   23  ),
             'attr_str__take_string_empty'            => $node->has_attribute_value_contains('data-str', ''    ),
-            'attr_unknown'                           => $node->has_attribute_value_contains('unknown',  '123' )
+            'attr_unknown'                           => $node->has_attribute_value_contains('unknown' , '123' )
         ];
 
         $expected = [
@@ -162,7 +162,7 @@ abstract class Events_Test__Class_Node {
             'attr_str__take_string__small__at_end'   => $node->has_attribute_value_includes('data-str',  '23' ),
             'attr_str__take_int__small__at_end'      => $node->has_attribute_value_includes('data-str',   23  ),
             'attr_str__take_string_empty'            => $node->has_attribute_value_includes('data-str', ''    ),
-            'attr_unknown'                           => $node->has_attribute_value_includes('unknown',  '123' )
+            'attr_unknown'                           => $node->has_attribute_value_includes('unknown' , '123' )
         ];
 
         $expected = [
@@ -225,7 +225,7 @@ abstract class Events_Test__Class_Node {
             'attr_str__take_string__small__at_end'   => $node->has_attribute_value_starts('data-str',  '23' ),
             'attr_str__take_int__small__at_end'      => $node->has_attribute_value_starts('data-str',   23  ),
             'attr_str__take_string_empty'            => $node->has_attribute_value_starts('data-str', ''    ),
-            'attr_unknown'                           => $node->has_attribute_value_starts('unknown',  '123' )
+            'attr_unknown'                           => $node->has_attribute_value_starts('unknown' , '123' )
         ];
 
         $expected = [
@@ -288,7 +288,7 @@ abstract class Events_Test__Class_Node {
             'attr_str__take_string__small__at_end'   => $node->has_attribute_value_ends('data-str',  '23' ),
             'attr_str__take_int__small__at_end'      => $node->has_attribute_value_ends('data-str',   23  ),
             'attr_str__take_string_empty'            => $node->has_attribute_value_ends('data-str', ''    ),
-            'attr_unknown'                           => $node->has_attribute_value_ends('unknown',  '123' )
+            'attr_unknown'                           => $node->has_attribute_value_ends('unknown' , '123' )
         ];
 
         $expected = [

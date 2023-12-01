@@ -50,18 +50,18 @@ abstract class Events_Token {
             return Core::data_to_attributes($result, false, '; ', '', '');
         }
 
-        if (strpos($name, 'test_response_') === 0) {
+        if (str_starts_with($name, 'test_response_')) {
             $type = substr($name, strlen('test_response_'));
             $last_response = end(Test_step_Request::$history);
             if ($last_response) {
                 if ($type === 'content'         && isset($last_response['data'])                                                                                ) return (string)$last_response['data'];
-                if ($type === 'http_code'       && isset($last_response['info'])    && array_key_exists('http_code',                  $last_response['info']   )) return    (int)$last_response['info']['http_code'];
-                if ($type === 'location'        && isset($last_response['headers']) && array_key_exists('location',                   $last_response['headers'])) return (string)$last_response['headers']['location'];
-                if ($type === 'content_length'  && isset($last_response['headers']) && array_key_exists('content-length',             $last_response['headers'])) return    (int)$last_response['headers']['content-length'];
-                if ($type === 'content_range'   && isset($last_response['headers']) && array_key_exists('content-range',              $last_response['headers'])) return (string)$last_response['headers']['content-range'];
+                if ($type === 'http_code'       && isset($last_response['info'])    && array_key_exists('http_code'                 , $last_response['info']   )) return    (int)$last_response['info']['http_code'];
+                if ($type === 'location'        && isset($last_response['headers']) && array_key_exists('location'                  , $last_response['headers'])) return (string)$last_response['headers']['location'];
+                if ($type === 'content_length'  && isset($last_response['headers']) && array_key_exists('content-length'            , $last_response['headers'])) return    (int)$last_response['headers']['content-length'];
+                if ($type === 'content_range'   && isset($last_response['headers']) && array_key_exists('content-range'             , $last_response['headers'])) return (string)$last_response['headers']['content-range'];
                 if ($type === 'submit_error'    && isset($last_response['headers']) && array_key_exists('x-form-submit-errors-count', $last_response['headers'])) return    (int)$last_response['headers']['x-form-submit-errors-count'];
-                if ($type === 'time_total'      && isset($last_response['headers']) && array_key_exists('x-time-total',               $last_response['headers'])) return  (float)$last_response['headers']['x-time-total'];
-                if ($type === 'return_level'    && isset($last_response['headers']) && array_key_exists('x-return-level',             $last_response['headers'])) return (string)$last_response['headers']['x-return-level'];
+                if ($type === 'time_total'      && isset($last_response['headers']) && array_key_exists('x-time-total'              , $last_response['headers'])) return  (float)$last_response['headers']['x-time-total'];
+                if ($type === 'return_level'    && isset($last_response['headers']) && array_key_exists('x-return-level'            , $last_response['headers'])) return (string)$last_response['headers']['x-return-level'];
                 if ($type === 'web_server_name') {
                     return $last_response['headers']['x-web-server-name'] ?? Request::web_server_get_info()->name;
                 }

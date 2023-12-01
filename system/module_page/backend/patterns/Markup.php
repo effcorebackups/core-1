@@ -13,14 +13,14 @@ class Markup extends Node {
     public $tag_name = 'div';
     public $template = 'markup_html';
 
-    function __construct($tag_name = null, $attributes = [], $children = [], $weight = 0) {
+    function __construct($tag_name = null, $attributes = [], $children = [], $weight = +0) {
         if ($tag_name) $this->tag_name = $tag_name;
         parent::__construct($attributes, $children, $weight);
     }
 
     function child_insert($child, $id = null) {
         if (is_string($child) || is_numeric($child)) return parent::child_insert(new Text($child), $id);
-        else                                         return parent::child_insert(         $child,  $id);
+        else                                         return parent::child_insert(         $child , $id);
     }
 
     function render() {

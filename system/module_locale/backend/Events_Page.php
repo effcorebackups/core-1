@@ -26,7 +26,7 @@ abstract class Events_Page {
     static function on_redirect($event, $page) {
         $section = $page->args_get('section');
         if ($section === null) Url::go($page->args_get('base').'/general');
-        if ($section && strpos($section, 'by_language') === 0) {
+        if ($section && str_starts_with($section, 'by_language')) {
             $languages = Language::get_all();
             $lang_code = $page->args_get('lang_code');
             if (!isset($languages[$lang_code])) {
@@ -37,7 +37,7 @@ abstract class Events_Page {
 
     static function on_tab_build_before($event, $tab) {
         $section = Page::get_current()->args_get('section');
-        if ($section && strpos($section, 'by_language') === 0) {
+        if ($section && str_starts_with($section, 'by_language')) {
             $languages = Language::get_all();
             Core::array_sort_by_string($languages, 'title_en', Core::SORT_DSC, false);
             foreach ($languages as $c_language) {

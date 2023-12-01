@@ -332,9 +332,9 @@ class File {
                             '(?<dirs>.*?)'.
                       '(?://:(?<protocol>[a-z]{1,20})|)$%S', strrev((string)$path), $matches);
             $result->protocol = array_key_exists('protocol', $matches) ? strrev($matches['protocol']) : '';
-            $result->dirs     = array_key_exists('dirs',     $matches) ? strrev($matches['dirs'    ]) : '';
-            $result->name     = array_key_exists('name',     $matches) ? strrev($matches['name'    ]) : '';
-            $result->type     = array_key_exists('type',     $matches) ? strrev($matches['type'    ]) : '';
+            $result->dirs     = array_key_exists('dirs'    , $matches) ? strrev($matches['dirs'    ]) : '';
+            $result->name     = array_key_exists('name'    , $matches) ? strrev($matches['name'    ]) : '';
+            $result->type     = array_key_exists('type'    , $matches) ? strrev($matches['type'    ]) : '';
             if ($result->name === '' && $result->type === '' && $is_ignore_name !== true)                          return;
             if ($result->name !== '' && $result->type === '' && ($result->name === '.' || $result->name === '..')) return;
             if ($result->name === '' && $result->type === '' && $result->dirs === '' && $result->protocol === '')  return;
@@ -361,17 +361,17 @@ class File {
 
     static function get_mode_info($mode) {
         $symbol = $mode[0];
-        $has_plus = strpos($mode, '+') !== false;
-        if ($symbol === 'r' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => false];
-        if ($symbol === 'w' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
-        if ($symbol === 'c' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
-        if ($symbol === 'a' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => false, 'is_auto_creation' => true];
-        if ($symbol === 'x' && $has_plus === true) return ['is_readable' => true,  'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
-        if ($symbol === 'r' && $has_plus !== true) return ['is_readable' => true,  'is_writable' => false, 'is_seekable' => true,  'is_auto_creation' => false];
-        if ($symbol === 'w' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
-        if ($symbol === 'c' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
-        if ($symbol === 'a' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => false, 'is_auto_creation' => true];
-        if ($symbol === 'x' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true,  'is_seekable' => true,  'is_auto_creation' => true];
+        $has_plus = str_contains($mode, '+');
+        if ($symbol === 'r' && $has_plus === true) return ['is_readable' => true , 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => false];
+        if ($symbol === 'w' && $has_plus === true) return ['is_readable' => true , 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
+        if ($symbol === 'c' && $has_plus === true) return ['is_readable' => true , 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
+        if ($symbol === 'a' && $has_plus === true) return ['is_readable' => true , 'is_writable' => true , 'is_seekable' => false, 'is_auto_creation' => true ];
+        if ($symbol === 'x' && $has_plus === true) return ['is_readable' => true , 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
+        if ($symbol === 'r' && $has_plus !== true) return ['is_readable' => true , 'is_writable' => false, 'is_seekable' => true , 'is_auto_creation' => false];
+        if ($symbol === 'w' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
+        if ($symbol === 'c' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
+        if ($symbol === 'a' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true , 'is_seekable' => false, 'is_auto_creation' => true ];
+        if ($symbol === 'x' && $has_plus !== true) return ['is_readable' => false, 'is_writable' => true , 'is_seekable' => true , 'is_auto_creation' => true ];
     }
 
     static function get_fopen_error_reason($path_root, $path_file, $mode) {

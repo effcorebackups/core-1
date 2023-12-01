@@ -23,12 +23,13 @@ abstract class Console {
     static function init($reset = false) {
         if (!static::$is_init || $reset) {
             static::$is_init = true;
-            static::log_simple_insert('file', 'insertion', 'index.php',                                            'ok');
-            static::log_simple_insert('file', 'insertion', 'system/boot_initialization.php',                       'ok');
-            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Core.php',                  'ok');
+            static::log_simple_insert('file', 'insertion', 'index.php'                                           , 'ok');
+            static::log_simple_insert('file', 'insertion', 'system/boot_polyfills.php'                           , 'ok');
+            static::log_simple_insert('file', 'insertion', 'system/boot_initialization.php'                      , 'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Core.php'                 , 'ok');
             static::log_simple_insert('file', 'insertion', 'system/module_storage/backend/interfaces/markers.php', 'ok');
-            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Extend_exception.php',      'ok');
-            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Console.php',               'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Extend_exception.php'     , 'ok');
+            static::log_simple_insert('file', 'insertion', 'system/module_core/backend/Console.php'              , 'ok');
         }
     }
 
@@ -109,8 +110,8 @@ abstract class Console {
             static::$duplicates[$type][$id][           $module_id] =            $module_id;
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         if (static::$is_ignore_duplicates === false) {
-            Message::insert(new Text(                    'Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!',            ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
-            return static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"', 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]);
+            Message::insert(new Text(                    'Duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"!',             ['type' => $type, 'id' => $id, 'module_id' => $module_id]), 'error');
+            return static::log_insert('storage', 'load', 'duplicate of type "%%_type" with ID = "%%_id" was found in module with ID = "%%_module_id"' , 'error', 0, ['type' => $type, 'id' => $id, 'module_id' => $module_id]);
         }
     }
 
@@ -129,26 +130,22 @@ abstract class Console {
     static function block_markup__information() {
         $page = Page::get_current();
         $user = User::get_current();
-        $user_roles = $user->roles;
-        $user_permissions = Role::related_permissions_by_roles_select($user_roles);
         $decorator = new Decorator('table-dl');
         $decorator->id = 'page_information';
         $decorator->data = [[
-            'page_url'            => ['title' => 'Page URL',              'value' => wordwrap(htmlentities($page->url), 80, NL, true)          ],
-            'page_is_embedded'    => ['title' => 'Page is embedded',      'value' => Core::format_logic($page->is_embedded)                    ],
-            'page_with_https'     => ['title' => 'Page with HTTPS',       'value' => Core::format_logic($page->is_https)                       ],
-            'page_id'             => ['title' => 'Page ID',               'value' => new Text_simple($page->id)                                ],
-            'page_layout_id'      => ['title' => 'Page Layout ID',        'value' => new Text_simple($page->id_layout)                         ],
-            'page_module_id'      => ['title' => 'Page Module ID',        'value' => new Text_simple($page->module_id)                         ],
-            'page_origin'         => ['title' => 'Page origin',           'value' => new Text_simple($page->origin)                            ],
-            'page_charset'        => ['title' => 'Page charset',          'value' => new Text_simple($page->charset)                           ],
-            'page_text_direction' => ['title' => 'Page text direction',   'value' => new Text_simple($page->text_direction)                    ],
-            'page_lang_code'      => ['title' => 'Page language',         'value' => new Text_simple($page->lang_code)                         ],
-            'language'            => ['title' => 'Current language',      'value' => new Text_simple(Language::code_get_setting())             ],
-            'generation_time'     => ['title' => 'Total generation time', 'value' => Locale::format_msecond(Timer::period_get('total', 0, 1))  ],
-            'memory_usage'        => ['title' => 'Memory used',           'value' => Locale::format_bytes(memory_get_usage(true))              ],
-            'user_roles'          => ['title' => 'User roles',            'value' => $user_roles       ? implode(', ', $user_roles      ) : '—'],
-            'user_permissions'    => ['title' => 'User permissions',      'value' => $user_permissions ? implode(', ', $user_permissions) : '—'] ]];
+            'page_url'            => ['title' => 'Page URL'             , 'value' => wordwrap(htmlentities($page->url), 80, NL, true)        , 'is_apply_translation' => false],
+            'page_is_embedded'    => ['title' => 'Page is embedded'     , 'value' => Core::format_logic($page->is_embedded)                  , 'is_apply_translation' => true ],
+            'page_with_https'     => ['title' => 'Page with HTTPS'      , 'value' => Core::format_logic($page->is_https)                     , 'is_apply_translation' => true ],
+            'page_id'             => ['title' => 'Page ID'              , 'value' => $page->id                                               , 'is_apply_translation' => false],
+            'page_layout_id'      => ['title' => 'Page Layout ID'       , 'value' => $page->id_layout                                        , 'is_apply_translation' => false],
+            'page_module_id'      => ['title' => 'Page Module ID'       , 'value' => $page->module_id                                        , 'is_apply_translation' => false],
+            'page_origin'         => ['title' => 'Page origin'          , 'value' => $page->origin                                           , 'is_apply_translation' => false],
+            'page_charset'        => ['title' => 'Page charset'         , 'value' => $page->charset                                          , 'is_apply_translation' => false],
+            'page_text_direction' => ['title' => 'Page text direction'  , 'value' => $page->text_direction                                   , 'is_apply_translation' => false],
+            'page_lang_code'      => ['title' => 'Page language'        , 'value' => $page->lang_code                                        , 'is_apply_translation' => false],
+            'language'            => ['title' => 'Current language'     , 'value' => Language::code_get_from_settings()                      , 'is_apply_translation' => false],
+            'generation_time'     => ['title' => 'Total generation time', 'value' => Locale::format_msecond(Timer::period_get('total', 0, 1)), 'is_apply_translation' => false],
+            'memory_usage'        => ['title' => 'Memory used'          , 'value' => Locale::format_bytes(memory_get_usage(true))            , 'is_apply_translation' => false] ]];
         return new Block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
     }
 
@@ -187,7 +184,7 @@ abstract class Console {
             $c_row_attributes += ['data-hash-data'     => Security::hash_get_mini($c_data_hash    )];
             $c_row_attributes += ['data-object'        => Security::sanitize_id($c_log->object ? trim($c_log->object, '.') : '')];
             $c_row_attributes += ['data-action'        => Security::sanitize_id($c_log->action ? trim($c_log->action, '.') : '')];
-            $c_row_attributes += ['data-value'         => Security::sanitize_id($c_log->value  ? trim($c_log->value,  '.') : '')];
+            $c_row_attributes += ['data-value'         => Security::sanitize_id($c_log->value  ? trim($c_log->value , '.') : '')];
             $c_info = !empty($c_log->info) ? static::render_info_markup($c_log->info) : '';
             if ($c_log->time  >= .000099) $c_row_attributes['data-loading-level'] = 1;
             if ($c_log->time  >=  .00099) $c_row_attributes['data-loading-level'] = 2;
@@ -196,12 +193,12 @@ abstract class Console {
             if ($c_log->time  >=     .99) $c_row_attributes['data-loading-level'] = 5;
             $decorator->data[] = [
                 'attributes'   => $c_row_attributes,
-                'time'         => ['title' => 'Time',              'value' => Locale::format_msecond($c_log->time)                                   ],
-                'ram_dynamics' => ['title' => 'RAM load dynamics', 'value' => Locale::format_bytes  ($c_log->ram_dynamics)                           ],
-                'object'       => ['title' => 'Object',            'value' =>    new Text           ($c_log->object)                                 ],
-                'action'       => ['title' => 'Action',            'value' =>    new Text           ($c_log->action)                                 ],
-                'description'  => ['title' => 'Description',       'value' =>    new Text_multiline([$c_log->description, $c_info], $c_log->args, '')],
-                'value'        => ['title' => 'Val.',              'value' =>    new Text           ($c_log->value)                                  ]
+                'time'         => ['title' => 'Time'             , 'value' => Locale::format_msecond($c_log->time)                                   , 'is_apply_translation' => false],
+                'ram_dynamics' => ['title' => 'RAM load dynamics', 'value' => Locale::format_bytes  ($c_log->ram_dynamics)                           , 'is_apply_translation' => false],
+                'object'       => ['title' => 'Object'           , 'value' =>                        $c_log->object                                  , 'is_apply_translation' => true ],
+                'action'       => ['title' => 'Action'           , 'value' =>                        $c_log->action                                  , 'is_apply_translation' => true ],
+                'description'  => ['title' => 'Description'      , 'value' =>    new Text_multiline([$c_log->description, $c_info], $c_log->args, ''), 'is_apply_translation' => true ],
+                'value'        => ['title' => 'Val.'             , 'value' =>                        $c_log->value                                   , 'is_apply_translation' => false]
             ];
         }
         $markup_total = new Markup('x-total', [], [
@@ -319,8 +316,8 @@ abstract class Console {
         }
         $result.= '  ------------------------------------------------------------'.NL;
         $result.= NL.'  '.str_pad('Sequence hash: ', 25).$total_sequence_hash;
-        $result.= NL.'  '.str_pad('Data hash: ',     25).$total_data_hash;
-        $result.= NL.'  '.str_pad('Total: ',         25).count($logs);
+        $result.= NL.'  '.str_pad('Data hash: '    , 25).$total_data_hash;
+        $result.= NL.'  '.str_pad('Total: '        , 25).count($logs);
         foreach ($total_by_actions as $c_object_name => $c_objstatistic) {
             foreach ($c_objstatistic as $c_action_name => $c_total) {
                 $result.= NL.'  '.str_pad('- '.$c_object_name.' | '.$c_action_name.': ', 25).$c_total;

@@ -22,7 +22,7 @@ class Field_DateTime_local extends Field_DateTime {
         'max'      => self::INPUT_MAX_DATETIME,
         'required' => true,
         'step'     => 1];
-    public $is_UTC_conversion = true;
+    public $is_UTC = true;
 
     function build() {
         if (!$this->is_builded) {
@@ -35,20 +35,21 @@ class Field_DateTime_local extends Field_DateTime {
         }
     }
 
-    function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
-        $value = parent::value_get();
-        if ($value !== null && Security::validate_datetime($value) && $this->is_UTC_conversion === true) $value = Locale::datetime_loc_to_utc($value);
-        return $value;
+    function value_get() { # @return: null | string
+        $value = Field_Text::value_get();
+        if (is_string($value) && Security::validate_datetime  ($value) && $this->is_UTC) return Locale::datetime_loc_to_utc(                             $value );
+        if (is_string($value) && Security::validate_T_datetime($value) && $this->is_UTC) return Locale::datetime_loc_to_utc(Core::T_datetime_to_datetime($value));
+        if (is_string($value))                                                           return                                                          $value;
+        if (is_null  ($value))                                                           return                                                          $value;
     }
 
     function value_set($value) {
         $this->value_set_initial($value);
-        if (is_null($value) || is_string($value)) {
-            if ($value === null && $this->value_current_if_null === true) $value = Core::datetime_get();
-            if ($value !== null && Security::validate_datetime($value)) $value = Core::datetime_to_T_datetime($value);
-            if ($value !== null && Security::validate_T_datetime($value) && $this->is_UTC_conversion === true) $value = Locale::datetime_T_utc_to_T_loc($value);
-            parent::value_set($value);
-        }
+        if (is_null  ($value) && $this->value_current_if_null !== true)                  return Field_Text::value_set('');
+        if (is_null  ($value) && $this->value_current_if_null === true)                  return Field_Text::value_set(Core::datetime_to_T_datetime(Locale::datetime_utc_to_loc    (Core::datetime_get())));
+        if (is_string($value) && Security::validate_datetime  ($value) && $this->is_UTC) return Field_Text::value_set(Core::datetime_to_T_datetime(Locale::datetime_utc_to_loc    ($value)));
+        if (is_string($value) && Security::validate_T_datetime($value) && $this->is_UTC) return Field_Text::value_set(                             Locale::datetime_T_utc_to_T_loc($value) );
+        if (is_string($value))                                                           return Field_Text::value_set(                                                             $value  );
     }
 
     ###########################
@@ -56,16 +57,16 @@ class Field_DateTime_local extends Field_DateTime {
     ###########################
 
     static function on_validate($field, $form, $npath) {
-        $field->is_UTC_conversion = false;
+        $field->is_UTC = false;
         $result = parent::on_validate($field, $form, $npath);
-        $field->is_UTC_conversion = true;
+        $field->is_UTC = true;
         return $result;
     }
 
     static function on_request_value_set($field, $form, $npath) {
-        $field->is_UTC_conversion = false;
+        $field->is_UTC = false;
         $result = parent::on_request_value_set($field, $form, $npath);
-        $field->is_UTC_conversion = true;
+        $field->is_UTC = true;
         return $result;
     }
 

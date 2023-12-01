@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_audio_id_context
+          text: %%_selection__audio__id__context
     fields
     - main
       - id
@@ -26,22 +26,35 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          is_not_visible: true
           weight: +340
+      - cover_path
+          entity_field_name: cover_path
+          is_not_visible: true
+          weight: +320
       - created
           entity_field_name: created
-          weight: +300
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: +280
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +260
+          weight: +240
     - handlers
-      - pre_listening
+      - handler__any__path_as_link
+          title: Path
+          handler: \effcore\modules\page\Events_Selection::handler__any__path_as_link
+          weight: +340
+      - handler__audio__cover_paths_as_links
+          title: Cover paths
+          handler: \effcore\modules\page\Events_Selection::handler__audio__cover_paths_as_links
+          weight: +320
+      - handler__audio__pre_listening
           title: Pre-listening
           handler: \effcore\modules\page\Events_Selection::handler__audio__pre_listening
-          weight: +320
+          weight: +300
 - instance_select-gallery|Selection
     id: instance_select-gallery
     main_entity_name: gallery
@@ -54,7 +67,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_gallery_id_context
+          text: %%_selection__gallery__id__context
     fields
     - main
       - id
@@ -93,7 +106,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_page_id_context
+          text: %%_selection__page__id__context
     fields
     - main
       - id
@@ -143,11 +156,11 @@ selections
           is_apply_translation: true
           weight: +160
     - handlers
-      - url_in_link
+      - handler__page__url_as_link
           title: URL
-          handler: \effcore\modules\page\Events_Selection::handler__page__link
+          handler: \effcore\modules\page\Events_Selection::handler__page__url_as_link
           weight: +340
-      - text_direction
+      - handler__page__text_direction
           title: Text direction
           handler: \effcore\modules\page\Events_Selection::handler__page__text_direction
           is_apply_translation: true
@@ -164,7 +177,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_picture_id_context
+          text: %%_selection__picture__id__context
     fields
     - main
       - id
@@ -179,12 +192,14 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          is_not_visible: true
           weight: +340
       - link_attributes
           entity_field_name: link_attributes
           weight: +320
       - url
           entity_field_name: url
+          is_not_visible: true
           weight: +300
       - created
           entity_field_name: created
@@ -197,11 +212,19 @@ selections
           is_apply_translation: true
           weight: +200
     - handlers
-      - url_absolute
+      - handler__any__paths_as_links
+          title: Paths
+          handler: \effcore\modules\page\Events_Selection::handler__any__paths_as_links
+          weight: +340
+      - handler__any__url_as_link
+          title: URL
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link
+          weight: +300
+      - handler__any__url_as_link_absolute
           title: Absolute URL
-          handler: \effcore\modules\page\Events_Selection::handler__any__url_absolute
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link_absolute
           weight: +280
-      - preview
+      - handler__picture__preview
           title: Preview
           handler: \effcore\modules\page\Events_Selection::handler__picture__preview
           weight: +260
@@ -217,7 +240,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_text_id_context
+          text: %%_selection__text__id__context
     fields
     - main
       - id
@@ -234,16 +257,22 @@ selections
           entity_field_name: text
           is_apply_translation: true
           weight: +340
+      - text__raw
+          title: Text (raw)
+          entity_field_name: text
+          converters
+            on_render|_empty_array
+          weight: +320
       - created
           entity_field_name: created
-          weight: +320
+          weight: +300
       - updated
           entity_field_name: updated
-          weight: +300
+          weight: +280
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +280
+          weight: +260
 - instance_select-video|Selection
     id: instance_select-video
     main_entity_name: video
@@ -256,7 +285,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_video_id_context
+          text: %%_selection__video__id__context
     fields
     - main
       - id
@@ -271,9 +300,11 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          is_not_visible: true
           weight: +340
       - poster_path
           entity_field_name: poster_path
+          is_not_visible: true
           weight: +320
       - created
           entity_field_name: created
@@ -286,9 +317,17 @@ selections
           is_apply_translation: true
           weight: +240
     - handlers
-      - preview
+      - handler__any__path_as_link
+          title: Path
+          handler: \effcore\modules\page\Events_Selection::handler__any__path_as_link
+          weight: +340
+      - handler__video__poster_paths_as_links
+          title: Poster paths
+          handler: \effcore\modules\page\Events_Selection::handler__video__poster_paths_as_links
+          weight: +320
+      - handler__video__preview
           title: Preview
-          handler: \effcore\modules\page\Events_Selection::handler__video__view
+          handler: \effcore\modules\page\Events_Selection::handler__video__preview
           weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|Selection
@@ -327,7 +366,7 @@ selections
           is_not_visible: true
           weight: +260
     - handlers
-      - pre_listening
+      - handler__audio__pre_listening
           title: Pre-listening
           handler: \effcore\modules\page\Events_Selection::handler__audio__pre_listening
           weight: +320
@@ -387,9 +426,9 @@ selections
           is_not_visible: true
           weight: +320
     - handlers
-      - url_in_link
+      - handler__page__url_as_link
           title: URL
-          handler: \effcore\modules\page\Events_Selection::handler__page__link
+          handler: \effcore\modules\page\Events_Selection::handler__page__url_as_link
           weight: +360
 - instance_select_multiple-picture|Selection
     id: instance_select_multiple-picture
@@ -435,7 +474,7 @@ selections
           is_not_visible: true
           weight: +220
     - handlers
-      - preview
+      - handler__picture__preview
           title: Preview
           handler: \effcore\modules\page\Events_Selection::handler__picture__preview
           weight: +280
@@ -506,9 +545,9 @@ selections
           is_not_visible: true
           weight: +240
     - handlers
-      - preview
+      - handler__video__preview
           title: Preview
-          handler: \effcore\modules\page\Events_Selection::handler__video__view
+          handler: \effcore\modules\page\Events_Selection::handler__video__preview
           weight: +300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|Selection
@@ -534,7 +573,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_audio_id_context
+          text: %%_selection__audio__id__context
     fields
     - main
       - id
@@ -584,7 +623,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_gallery_id_context
+          text: %%_selection__gallery__id__context
     fields
     - main
       - id
@@ -617,7 +656,7 @@ selections
     decorator_settings
     - view_type: template
     - template: content
-    - template_item: picture_or_picture_in_link_embedded
+    - template_item: picture_or_picture_in_link
     - mapping
       - id: id
       - description: description
@@ -635,7 +674,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_picture_id_context
+          text: %%_selection__picture__id__context
     fields
     - main
       - id
@@ -690,7 +729,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_text_id_context
+          text: %%_selection__text__id__context
     fields
     - main
       - id
@@ -741,7 +780,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_video_id_context
+          text: %%_selection__video__id__context
     fields
     - main
       - id

@@ -7,26 +7,27 @@ entities
     managing_is_enabled: true
     managing_group_id: user
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_feedback__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_feedback__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_feedback__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_feedback__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_feedback__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_feedback__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_feedback__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_feedback__delete
     fields
     - id
         title: ID
@@ -142,18 +143,19 @@ entities
     has_parallel_checking: true
     with_is_embedded: true
     with_module_id: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_permission__select
-    access_insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_permission__update
-    access_delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_permission__select
+      on_insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_permission__update
+      on_delete
     fields
     - id
         title: ID
@@ -234,26 +236,27 @@ entities
     managing_group_id: user
     has_parallel_checking: true
     with_module_id: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_perm__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_perm__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_perm__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_perm__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_perm__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_perm__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_perm__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_perm__delete
     fields
     - id_role
         title: Role ID
@@ -348,26 +351,27 @@ entities
     has_parallel_checking: true
     with_is_embedded: true
     with_module_id: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_user__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_user__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_user__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_rel_role_with_user__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_user__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_user__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_user__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_rel_role_with_user__delete
     fields
     - id_user
         title: User ID
@@ -461,26 +465,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_role__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_role__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_role__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user_role__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_role__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_role__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_role__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user_role__delete
     fields
     - id
         title: ID
@@ -574,6 +579,17 @@ entities
     title_plural: Sessions
     table_name: sessions
     with_data: true
+    managing_is_enabled: true
+    managing_group_id: user
+    access
+      on_select
+        roles
+        - =: admins
+      on_insert
+      on_update
+      on_delete
+        roles
+        - =: admins
     fields
     - id
         title: ID
@@ -628,26 +644,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__user_user__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__user_user__delete
     fields
     - id
         title: ID

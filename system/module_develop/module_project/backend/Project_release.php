@@ -19,7 +19,7 @@ abstract class Project_release {
             'where' => [
                 'conjunction_!and' => [
                     'id_project' => ['field_!f' => 'id_project', 'operator' => '=', 'value_!v' => $id_project],
-                    'build'      => ['field_!f' => 'build',      'operator' => '=', 'value_!v' => $build     ] ]],
+                    'build'      => ['field_!f' => 'build'     , 'operator' => '=', 'value_!v' => $build     ] ]],
             'limit' => 1
         ]);
     }

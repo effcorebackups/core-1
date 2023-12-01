@@ -93,6 +93,14 @@ templates
     name: page_not_found_embedded
     type: file
     path: frontend/template--page--not_found.tpl
+- file_access_forbidden_embedded
+    name: file_access_forbidden_embedded
+    type: file
+    path: frontend/template--file--access_forbidden.tpl
+- file_not_found_embedded
+    name: file_not_found_embedded
+    type: file
+    path: frontend/template--file--not_found.tpl
 - canvas_svg_embedded
     name: canvas_svg_embedded
     type: file

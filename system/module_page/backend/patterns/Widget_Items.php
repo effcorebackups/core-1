@@ -26,7 +26,7 @@ class Widget_Items extends Control implements Control_complex {
     public $controls = [];
     public $number;
 
-    function __construct($attributes = [], $weight = 0) {
+    function __construct($attributes = [], $weight = +0) {
         parent::__construct(null, null, null, $attributes, [], $weight);
     }
 
@@ -156,7 +156,7 @@ class Widget_Items extends Control implements Control_complex {
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = new Markup('x-widget', [
-            'data-rowid'         => $c_row_id,
+            'data-row-id'        => $c_row_id,
             'data-rearrangeable' => true], [], $item->weight);
         # control for weight
         $field_weight = new Field_Weight(null, null, [], +400);
@@ -178,7 +178,7 @@ class Widget_Items extends Control implements Control_complex {
         # relate new controls with the widget
         $widget->controls['#weight__'.$c_row_id] = $field_weight;
         $widget->controls['~delete__'.$c_row_id] = $button_delete;
-        $result->child_insert($field_weight,  'field_weight');
+        $result->child_insert($field_weight , 'field_weight');
         $result->child_insert($button_delete, 'button_delete');
         return $result;
     }
@@ -200,12 +200,12 @@ class Widget_Items extends Control implements Control_complex {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_button_click_insert($widget, $form, $npath, $button) {
-        $min_weight = 0;
+        $min_weight = +0;
         $items = $widget->items_get();
         foreach ($items as $c_row_id => $c_item)
             $min_weight = min($min_weight, $c_item->weight);
         $new_item = new stdClass;
-        $new_item->weight = count($items) ? $min_weight - 5 : 0;
+        $new_item->weight = count($items) ? $min_weight - +5 : +0;
         $items[] = $new_item;
         $new_item->id = 0;
         $widget->items_set($items);
@@ -222,7 +222,7 @@ class Widget_Items extends Control implements Control_complex {
         unset($items[$button->_id]);
         $widget->items_set($items);
         if ($item_id) Message::insert(new Text_multiline(['Item of type "%%_type" with ID = "%%_id" was deleted.', 'Do not forget to save the changes!'], ['type' => (new Text($widget->item_title))->render(), 'id' => $item_id ]));
-        else          Message::insert(new Text_multiline(['Item of type "%%_type" was deleted.',                   'Do not forget to save the changes!'], ['type' => (new Text($widget->item_title))->render()                   ]));
+        else          Message::insert(new Text_multiline(['Item of type "%%_type" was deleted.'                  , 'Do not forget to save the changes!'], ['type' => (new Text($widget->item_title))->render()                   ]));
         return true;
     }
 

@@ -36,11 +36,11 @@ abstract class Events_Form_Instance_select_multiple {
                         'id_tree_!v'       => $form->category_id];
                     # field 'extra'
                     $form->_selection->fields['code']['extra'] = new stdClass;
-                    $form->_selection->fields['code']['extra']->closure = function ($c_row_id, $c_row, $c_instance, $settings = []) {
+                    $form->_selection->fields['code']['extra']->closure = function ($c_cell_id, $c_row, $c_instance, $origin = []) {
                         return new Node([], [
                             'actions'       => $c_row['actions']['value'],
                             'hidden_parent' => new Field_Hidden('parent-'.$c_instance->id, $c_instance->id_parent, ['data-type' => 'parent']),
-                            'hidden_weight' => new Field_Hidden('weight-'.$c_instance->id, $c_instance->weight,    ['data-type' => 'weight'])
+                            'hidden_weight' => new Field_Hidden('weight-'.$c_instance->id, $c_instance->weight   , ['data-type' => 'weight'])
                         ]);
                     };
                     $form->_selection->build();
@@ -87,7 +87,7 @@ abstract class Events_Form_Instance_select_multiple {
                                 $c_item->title = html_entity_decode($c_item->title);
                                 $has_changes = true;
                                 $c_result = $c_item->update();
-                                if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was updated.',     ['type' => (new Text($entity->title))->render(), 'id' => $c_item->id])           );
+                                if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was updated.'    , ['type' => (new Text($entity->title))->render(), 'id' => $c_item->id])           );
                                 if ($form->is_show_result_message && $c_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not updated!', ['type' => (new Text($entity->title))->render(), 'id' => $c_item->id]), 'warning');
                             }
                         }

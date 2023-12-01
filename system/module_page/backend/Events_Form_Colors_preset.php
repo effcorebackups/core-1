@@ -19,7 +19,7 @@ abstract class Events_Form_Colors_preset {
         if ($preset) {
             foreach ($items as $c_item) {
                 if ($c_item instanceof Field_Checkbox_color) {
-                    if (strpos($c_item->name_get(), 'color__') === 0) {
+                    if (str_starts_with($c_item->name_get(), 'color__')) {
                         $c_item->color_set(
                             $preset->colors->{$c_item->name_get()}
                         );
@@ -38,7 +38,7 @@ abstract class Events_Form_Colors_preset {
                 if ($preset) {
                     foreach ($items as $c_item) {
                         if ($c_item instanceof Field_Checkbox_color) {
-                            if (strpos($c_item->name_get(), 'color__') === 0) {
+                            if (str_starts_with($c_item->name_get(), 'color__')) {
                                 if ($c_item->checked_get()) {
                                     $changes[$c_item->name_get()] = true;
                                 }

@@ -68,19 +68,19 @@ abstract class Events_Test__Class_Storage_SQL {
         # │ valid variants                                │ SQL syntax                                            │ how to make a code                                                                     │
         # ╞═══════════════════════════════════════════════╪═══════════════════════════════════════════════════════╪════════════════════════════════════════════════════════════════════════════════════════╡
         # │ table_name.field_name                         │ `table_name`.`field_name`                             │ 'key_!,' => ['key_!f' => 'table_name.field_name']                                      │
-        # │ table_name                                    │ `table_name`                                          │             ['key_!t' => 'table_name']                                                 │
-        # │ field_name                                    │ `field_name`                                          │             ['key_!f' => 'field_name']                                                 │
-        # │ value                                         │ "value"                                               │             ['key_!v' => 'value']                                                      │
+        # │ table_name                                    │ `table_name`                                          │             ['key_!t' => 'table_name'           ]                                      │
+        # │ field_name                                    │ `field_name`                                          │             ['key_!f' => 'field_name'           ]                                      │
+        # │ value                                         │ "value"                                               │             ['key_!v' => 'value'                ]                                      │
         # ├───────────────────────────────────────────────┼───────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┤
-        # │ table_name,            table_name             │ `table_name`,              `table_name`               │ 'key_!,' => ['key1!t' => 'table_name',            'key2!t' => 'table_name']            │
-        # │ field_name,            field_name             │ `field_name`,              `field_name`               │ 'key_!,' => ['key1!f' => 'field_name',            'key2!f' => 'field_name']            │
-        # │ field_name,            value                  │ `field_name`,              "value"                    │ 'key_!,' => ['key1!f' => 'field_name',            'key2!v' => 'value']                 │
-        # │ field_name,            table_name.field_name  │ `field_name`,              `table_name`.`field_name`  │ 'key_!,' => ['key1!f' => 'field_name',            'key2!f' => 'table_name.field_name'] │
-        # │ value,                 field_name             │ "value",                   `field_name`               │ 'key_!,' => ['key1!v' => 'value',                 'key2!f' => 'field_name']            │
-        # │ value,                 value                  │ "value",                   "value"                    │ 'key_!,' => ['key1!v' => 'value',                 'key2!v' => 'value']                 │
-        # │ value,                 table_name.field_name  │ "value",                   `table_name`.`field_name`  │ 'key_!,' => ['key1!v' => 'value',                 'key2!f' => 'table_name.field_name'] │
-        # │ table_name.field_name, field_name             │ `table_name`.`field_name`, `field_name`               │ 'key_!,' => ['key1!f' => 'table_name.field_name', 'key2!f' => 'field_name']            │
-        # │ table_name.field_name, value                  │ `table_name`.`field_name`, "value"                    │ 'key_!,' => ['key1!f' => 'table_name.field_name', 'key2!v' => 'value']                 │
+        # │ table_name           , table_name             │ `table_name`             , `table_name`               │ 'key_!,' => ['key1!t' => 'table_name'           , 'key2!t' => 'table_name'           ] │
+        # │ field_name           , field_name             │ `field_name`             , `field_name`               │ 'key_!,' => ['key1!f' => 'field_name'           , 'key2!f' => 'field_name'           ] │
+        # │ field_name           , value                  │ `field_name`             , "value"                    │ 'key_!,' => ['key1!f' => 'field_name'           , 'key2!v' => 'value'                ] │
+        # │ field_name           , table_name.field_name  │ `field_name`             , `table_name`.`field_name`  │ 'key_!,' => ['key1!f' => 'field_name'           , 'key2!f' => 'table_name.field_name'] │
+        # │ value                , field_name             │ "value"                  , `field_name`               │ 'key_!,' => ['key1!v' => 'value'                , 'key2!f' => 'field_name'           ] │
+        # │ value                , value                  │ "value"                  , "value"                    │ 'key_!,' => ['key1!v' => 'value'                , 'key2!v' => 'value'                ] │
+        # │ value                , table_name.field_name  │ "value"                  , `table_name`.`field_name`  │ 'key_!,' => ['key1!v' => 'value'                , 'key2!f' => 'table_name.field_name'] │
+        # │ table_name.field_name, field_name             │ `table_name`.`field_name`, `field_name`               │ 'key_!,' => ['key1!f' => 'table_name.field_name', 'key2!f' => 'field_name'           ] │
+        # │ table_name.field_name, value                  │ `table_name`.`field_name`, "value"                    │ 'key_!,' => ['key1!f' => 'table_name.field_name', 'key2!v' => 'value'                ] │
         # │ table_name.field_name, table_name.field_name  │ `table_name`.`field_name`, `table_name`.`field_name`  │ 'key_!,' => ['key1!f' => 'table_name.field_name', 'key2!f' => 'table_name.field_name'] │
         # └───────────────────────────────────────────────┴───────────────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -89,13 +89,13 @@ abstract class Events_Test__Class_Storage_SQL {
             '02' => ['data'   => ['key_!f' => 'field_name'                                                ]],
             '03' => ['data'   => ['key_!v' => 'value'                                                     ]],
             '04' => ['data'   => ['key_!f' => 'table_name.field_name'                                     ]],
-            '05' => ['data!,' => ['key1!t' => 'table_name',            'key2!t' => 'table_name'           ]],
-            '06' => ['data!,' => ['key1!f' => 'field_name',            'key2!f' => 'field_name'           ]],
-            '07' => ['data!,' => ['key1!f' => 'field_name',            'key2!v' => 'value'                ]],
-            '08' => ['data!,' => ['key1!f' => 'field_name',            'key2!f' => 'table_name.field_name']],
-            '09' => ['data!,' => ['key1!v' => 'value',                 'key2!f' => 'field_name'           ]],
-            '10' => ['data!,' => ['key1!v' => 'value',                 'key2!v' => 'value'                ]],
-            '11' => ['data!,' => ['key1!v' => 'value',                 'key2!f' => 'table_name.field_name']],
+            '05' => ['data!,' => ['key1!t' => 'table_name'           , 'key2!t' => 'table_name'           ]],
+            '06' => ['data!,' => ['key1!f' => 'field_name'           , 'key2!f' => 'field_name'           ]],
+            '07' => ['data!,' => ['key1!f' => 'field_name'           , 'key2!v' => 'value'                ]],
+            '08' => ['data!,' => ['key1!f' => 'field_name'           , 'key2!f' => 'table_name.field_name']],
+            '09' => ['data!,' => ['key1!v' => 'value'                , 'key2!f' => 'field_name'           ]],
+            '10' => ['data!,' => ['key1!v' => 'value'                , 'key2!v' => 'value'                ]],
+            '11' => ['data!,' => ['key1!v' => 'value'                , 'key2!f' => 'table_name.field_name']],
             '12' => ['data!,' => ['key1!f' => 'table_name.field_name', 'key2!f' => 'field_name'           ]],
             '13' => ['data!,' => ['key1!f' => 'table_name.field_name', 'key2!v' => 'value'                ]],
             '14' => ['data!,' => ['key1!f' => 'table_name.field_name', 'key2!f' => 'table_name.field_name']],
@@ -106,13 +106,13 @@ abstract class Events_Test__Class_Storage_SQL {
             '02' => ['data'   => ['key_!f' => '`field_name`'                                                                ]],
             '03' => ['data'   => ['key_!v' => '?'                                                                           ]],
             '04' => ['data'   => ['key_!f' => '`table_name`.`field_name`'                                                   ]],
-            '05' => ['data!,' => ['key1!t' => '`table_name`',              0 => ',', 'key2!t' => '`table_name`'             ]],
-            '06' => ['data!,' => ['key1!f' => '`field_name`',              0 => ',', 'key2!f' => '`field_name`'             ]],
-            '07' => ['data!,' => ['key1!f' => '`field_name`',              0 => ',', 'key2!v' => '?'                        ]],
-            '08' => ['data!,' => ['key1!f' => '`field_name`',              0 => ',', 'key2!f' => '`table_name`.`field_name`']],
-            '09' => ['data!,' => ['key1!v' => '?',                         0 => ',', 'key2!f' => '`field_name`'             ]],
-            '10' => ['data!,' => ['key1!v' => '?',                         0 => ',', 'key2!v' => '?'                        ]],
-            '11' => ['data!,' => ['key1!v' => '?',                         0 => ',', 'key2!f' => '`table_name`.`field_name`']],
+            '05' => ['data!,' => ['key1!t' => '`table_name`'             , 0 => ',', 'key2!t' => '`table_name`'             ]],
+            '06' => ['data!,' => ['key1!f' => '`field_name`'             , 0 => ',', 'key2!f' => '`field_name`'             ]],
+            '07' => ['data!,' => ['key1!f' => '`field_name`'             , 0 => ',', 'key2!v' => '?'                        ]],
+            '08' => ['data!,' => ['key1!f' => '`field_name`'             , 0 => ',', 'key2!f' => '`table_name`.`field_name`']],
+            '09' => ['data!,' => ['key1!v' => '?'                        , 0 => ',', 'key2!f' => '`field_name`'             ]],
+            '10' => ['data!,' => ['key1!v' => '?'                        , 0 => ',', 'key2!v' => '?'                        ]],
+            '11' => ['data!,' => ['key1!v' => '?'                        , 0 => ',', 'key2!f' => '`table_name`.`field_name`']],
             '12' => ['data!,' => ['key1!f' => '`table_name`.`field_name`', 0 => ',', 'key2!f' => '`field_name`'             ]],
             '13' => ['data!,' => ['key1!f' => '`table_name`.`field_name`', 0 => ',', 'key2!v' => '?'                        ]],
             '14' => ['data!,' => ['key1!f' => '`table_name`.`field_name`', 0 => ',', 'key2!f' => '`table_name`.`field_name`']],
@@ -174,15 +174,15 @@ abstract class Events_Test__Class_Storage_SQL {
             'target' => '`users`',
             'join' => [
                 'relation_role_with_user' => ['type' => 'LEFT OUTER JOIN', 'target' => '`relations_role_with_user`', 'on' => 'ON', 'left' => '`users`.`id`', 'operator' => '=', 'right' => '`relations_role_with_user`.`id_user`'],
-                'role'                    => ['type' => 'LEFT OUTER JOIN', 'target' => '`roles`',                    'on' => 'ON', 'left' => '`roles`.`id`', 'operator' => '=', 'right' => '`relations_role_with_user`.`id_role`']],
+                'role'                    => ['type' => 'LEFT OUTER JOIN', 'target' => '`roles`'                   , 'on' => 'ON', 'left' => '`roles`.`id`', 'operator' => '=', 'right' => '`relations_role_with_user`.`id_role`']],
             'where_begin' => 'WHERE',
             'where' => [
-                'id'       => ['field' => '`users`.`id`',       'operator' => '=', 'value' => 1], 'and',
+                'id'       => ['field' => '`users`.`id`'      , 'operator' => '=', 'value' => 1], 'and',
                 'nickname' => ['field' => '`users`.`nickname`', 'operator' => '=', 'value' => '"Admin"']],
             'order_begin' => 'ORDER BY',
             'order' => [
                 'title' => ['field' => '`roles`.`title`', 'direction' => 'ASC'], ',',
-                'id'    => ['field' => '`users`.`id`',    'direction' => 'DESC']],
+                'id'    => ['field' => '`users`.`id`'   , 'direction' => 'DESC']],
             'limit_begin' => 'LIMIT',
             'limit' => 1,
             'offset_begin' => 'OFFSET',
@@ -199,16 +199,16 @@ abstract class Events_Test__Class_Storage_SQL {
             'target_!t' => '~user',
             'join' => [
                 'relation_role_with_user' => ['type' => 'LEFT OUTER JOIN', 'target_!t' => '~relation_role_with_user', 'on' => 'ON', 'left_!f' => '~user.id', 'operator' => '=', 'right_!f' => '~relation_role_with_user.id_user'],
-                'role'                    => ['type' => 'LEFT OUTER JOIN', 'target_!t' => '~role',                    'on' => 'ON', 'left_!f' => '~role.id', 'operator' => '=', 'right_!f' => '~relation_role_with_user.id_role']],
+                'role'                    => ['type' => 'LEFT OUTER JOIN', 'target_!t' => '~role'                   , 'on' => 'ON', 'left_!f' => '~role.id', 'operator' => '=', 'right_!f' => '~relation_role_with_user.id_role']],
             'where_begin' => 'WHERE',
             'where' => [
                 'conjunction_!and' => [
-                    'id'       => ['field_!f' => '~user.id',       'operator' => '=', 'value_!v' => 1],
+                    'id'       => ['field_!f' => '~user.id'      , 'operator' => '=', 'value_!v' => 1],
                     'nickname' => ['field_!f' => '~user.nickname', 'operator' => '=', 'value_!v' => 'Admin']]],
             'order_begin' => 'ORDER BY',
             'order_!,' => [
                 'title' => ['field_!f' => '~role.title', 'direction' => 'ASC'],
-                'id'    => ['field_!f' => '~user.id',    'direction' => 'DESC']],
+                'id'    => ['field_!f' => '~user.id'   , 'direction' => 'DESC']],
             'limit_begin' => 'LIMIT',
             'limit' => 1,
             'offset_begin' => 'OFFSET',
@@ -226,11 +226,11 @@ abstract class Events_Test__Class_Storage_SQL {
                 'role'                    => ['type' => 'LEFT OUTER JOIN', 'target_!t' => '~role'                   , 'on' => 'ON', 'left_!f' => '~role.id', 'operator' => '=', 'right_!f' => '~relation_role_with_user.id_role']],
             'where' => [
                 'conjunction_!and' => [
-                    'id'       => ['field_!f' => '~user.id',       'operator' => '=', 'value_!v' => 1],
+                    'id'       => ['field_!f' => '~user.id'      , 'operator' => '=', 'value_!v' => 1],
                     'nickname' => ['field_!f' => '~user.nickname', 'operator' => '=', 'value_!v' => 'Admin']]],
             'order_!,' => [
                 'title' => ['field_!f' => '~role.title', 'direction' => 'ASC'],
-                'id'    => ['field_!f' => '~user.id',    'direction' => 'DESC']],
+                'id'    => ['field_!f' => '~user.id'   , 'direction' => 'DESC']],
             'limit' => 1,
             'offset' => 0
         ]);
@@ -402,11 +402,11 @@ abstract class Events_Test__Class_Storage_SQL {
         $result_1 = Entity::get('role')->instances_select([
             'where' => [
                 'field_!f' => 'module_id',
-                'in_operator_begin' => 'in (',
+                'in_begin_operator' => 'in (',
                 'in_!,' => [
                     'in_value_1_!v' => 'user',
                     'in_value_2_!v' => 'test'],
-                'in_operator_end' => ')'
+                'in_end_operator' => ')'
             ],
             'order' => [
                 'field_!f' => 'title']
@@ -415,9 +415,9 @@ abstract class Events_Test__Class_Storage_SQL {
         $result_2 = Entity::get('role')->instances_select([
             'where' => [
                 'field_!f'          => 'module_id',
-                'in_operator_begin' => 'in (',
+                'in_begin_operator' => 'in (',
                 'in_value_!v'       => ['user', 'test'],
-                'in_operator_end'   => ')'],
+                'in_end_operator'   => ')'],
             'order' => [
                 'field_!f' => 'title']
         ]);
@@ -499,7 +499,7 @@ abstract class Events_Test__Class_Storage_SQL {
             'where' => [
                 'conjunction_!and' => [
                     'id_session' => ['field_!f' => 'id_session', 'operator' => '=', 'value_!v' => $session_id],
-                    'type'       => ['field_!f' => 'type',       'operator' => '=', 'value_!v' => 'test']]]
+                    'type'       => ['field_!f' => 'type'      , 'operator' => '=', 'value_!v' => 'test']]]
         ];
 
         ##################################################

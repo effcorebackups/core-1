@@ -32,7 +32,7 @@ class Role {
             $instances = Entity::get('role')->instances_select([
                 'order' => ['fields_!,' => [
                     'weight' => ['weight_!f' => 'weight', 'weight_direction' => 'DESC'],
-                    'title'  => [ 'title_!f' => 'title',   'title_direction' => 'ASC' ] ]] ]);
+                    'title'  => [ 'title_!f' => 'title' ,  'title_direction' => 'ASC' ] ]] ]);
             foreach ($instances as $c_instance) {
                 $c_role = new static;
                 foreach ($c_instance->values_get() as $c_key => $c_value)

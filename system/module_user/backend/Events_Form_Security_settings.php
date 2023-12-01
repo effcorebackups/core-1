@@ -41,22 +41,22 @@ abstract class Events_Form_Security_settings {
         switch ($form->clicked_button->value_get()) {
             case 'save':
                 $result = true;
-                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/cookie_domain',               $items['#cookie_domain'         ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/cookie_domain'         ,      $items['#cookie_domain'         ]->value_get(), false);
                 $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/session_duration_short', (int)$items['#session_duration_short']->value_get(), false);
-                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/session_duration_long',  (int)$items['#session_duration_long' ]->value_get(), false);
-                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/login_attempts',         (int)$items['#login_attempts'        ]->value_get(), false);
-                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/login_blocked_until',    (int)$items['#login_blocked_until'   ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/session_duration_long' , (int)$items['#session_duration_long' ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/login_attempts'        , (int)$items['#login_attempts'        ]->value_get(), false);
+                $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/login_blocked_until'   , (int)$items['#login_blocked_until'   ]->value_get(), false);
                 $result&= Storage::get('data')->changes_register('user', 'update', 'settings/user/send_password_to_email', (int)$items['#send_password_to_email']->value_get());
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
                 break;
             case 'reset':
                 $result = true;
-                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/cookie_domain',          false);
+                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/cookie_domain'         , false);
                 $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/session_duration_short', false);
-                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/session_duration_long',  false);
-                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/login_attempts',         false);
-                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/login_blocked_until',    false);
+                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/session_duration_long' , false);
+                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/login_attempts'        , false);
+                $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/login_blocked_until'   , false);
                 $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/send_password_to_email');
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');

@@ -67,9 +67,9 @@ class Widget_Files extends Widget_Items {
             Core::array_sort_by_number($value);
             foreach ($value as $c_row_id => $c_item) {
                 $decorator->data[$c_row_id] = [
-                    'path' => ['title' => 'Path', 'value' => $c_item->object->get_current_path(true)],
-                    'type' => ['title' => 'Type', 'value' => $c_item->object->mime],
-                    'size' => ['title' => 'Size', 'value' => $c_item->object->size]
+                    'path' => ['title' => 'Path', 'value' => $c_item->object->get_current_path(true), 'is_apply_translation' => false],
+                    'type' => ['title' => 'Type', 'value' => $c_item->object->mime                  , 'is_apply_translation' => false],
+                    'size' => ['title' => 'Size', 'value' => $c_item->object->size                  , 'is_apply_translation' => false]
                 ];
             }
         }
@@ -85,9 +85,9 @@ class Widget_Files extends Widget_Items {
         $id_markup = $item->object->get_current_state() === 'pre' ?
             new Text_multiline(['new item', '…'], [], '') :
             new Text($file->file_get());
-        $info_markup = new Markup('x-info',  [], [
+        $info_markup = new Markup('x-info' , [], [
             'title' => new Markup('x-title', [], $item->object->file),
-            'id'    => new Markup('x-id',    [], $id_markup)]);
+            'id'    => new Markup('x-id'   , [], $id_markup)]);
         # grouping of previous elements in widget 'manage'
         $result->child_insert($info_markup, 'info');
         return $result;
@@ -117,7 +117,7 @@ class Widget_Files extends Widget_Items {
         # relate new controls with the widget
         $widget->controls['#file'  ] = $field_file;
         $widget->controls['~insert'] = $button_insert;
-        $result->child_insert($field_file,    'field_file');
+        $result->child_insert($field_file   , 'field_file');
         $result->child_insert($button_insert, 'button_insert');
         return $result;
     }
@@ -181,12 +181,12 @@ class Widget_Files extends Widget_Items {
         if (!$widget->controls['#file']->has_error() && count($values) !== 0) {
             $items = $widget->items_get();
             foreach ($values as $c_value) {
-                $min_weight = 0;
+                $min_weight = +0;
                 foreach ($items as $c_row_id => $c_item)
                     $min_weight = min($min_weight, $c_item->weight);
                 $c_new_item = new stdClass;
                 $c_new_item->is_deleted = false;
-                $c_new_item->weight = count($items) ? $min_weight - 5 : 0;
+                $c_new_item->weight = count($items) ? $min_weight - +5 : +0;
                 $c_new_item->object = $c_value;
                 $items[] = $c_new_item;
                 if (Event::start_local('on_file_prepare', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'items' => &$items, 'new_item' => &$c_new_item])) {

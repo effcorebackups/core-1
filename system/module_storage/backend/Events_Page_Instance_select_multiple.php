@@ -35,7 +35,7 @@ abstract class Events_Page_Instance_select_multiple {
         # collect manageable entities
         foreach ($entities as $c_entity) {
             if ($c_entity->managing_is_enabled) {
-                if (Access::check($c_entity->access_select)) {
+                if (Access::check($c_entity->access->on_select)) {
                     $entities_by_groups[$c_entity->managing_group_id]
                                        [$c_entity->name] = $c_entity->title_plural;
                 }
@@ -46,15 +46,15 @@ abstract class Events_Page_Instance_select_multiple {
             if (empty($entities_by_groups[$managing_group_id][$entity_name])) {
                 $first_branch = Tabs::select('data')->get_first_branch();
                 if (count($first_branch)) Url::go($page->args_get('base').'/'.end($first_branch)->action_name);
-                else Response::send_header_and_exit('access_forbidden');
-        }}      else Response::send_header_and_exit('access_forbidden');
+                else Response::send_header_and_exit('page_access_forbidden');
+        }}      else Response::send_header_and_exit('page_access_forbidden');
     }
 
     static function on_check_access($event, $page) {
         $entity_name = $page->args_get('entity_name');
         $entity = Entity::get($entity_name);
-        if (!Access::check($entity->access_select)) {
-            Response::send_header_and_exit('access_forbidden');
+        if (!Access::check($entity->access->on_select)) {
+            Response::send_header_and_exit('page_access_forbidden');
         }
     }
 

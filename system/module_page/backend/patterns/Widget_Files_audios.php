@@ -41,8 +41,8 @@ class Widget_Files_audios extends Widget_Files {
             foreach ($value as $c_row_id => $c_item) {
                 if (Media::media_class_get($c_item->object->type) === 'audio') {
                     $decorator->data[$c_row_id] = [
-                        'type'     => ['value' => 'audio'  ],
-                        'num'      => ['value' => $c_row_id],
+                        'type'     => ['value' => 'audio'  , 'is_apply_translation' => false],
+                        'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
                         'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
                     ];
                 }
@@ -64,7 +64,7 @@ class Widget_Files_audios extends Widget_Files {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'audio') {
-            if (!empty($widget->audio_player_on_manage_is_visible)) $result->child_insert(new Markup('audio',      ['src' => '/'.$item->object->get_current_path(true)] + $widget->audio_player_on_manage_settings, [], +500), 'player');
+            if (!empty($widget->audio_player_on_manage_is_visible)) $result->child_insert(new Markup('audio'     , ['src' => '/'.$item->object->get_current_path(true)] + $widget->audio_player_on_manage_settings, [], +500), 'player');
             if (!empty($item->settings['data-cover-is-embedded']))  $result->child_insert(new Markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
         }
         return $result;
@@ -107,9 +107,9 @@ class Widget_Files_audios extends Widget_Files {
         if (true                     ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_audio;
         if ($widget->cover_is_allowed) $widget->controls['#cover'                            ] = $field_file_picture_cover;
         if (true                     ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
-        if (true                     ) $result->child_insert($field_file_audio,         'field_file_audio');
+        if (true                     ) $result->child_insert($field_file_audio        , 'field_file_audio');
         if ($widget->cover_is_allowed) $result->child_insert($field_file_picture_cover, 'field_file_picture_cover');
-        if (true                     ) $result->child_insert($button_insert,            'button_insert');
+        if (true                     ) $result->child_insert($button_insert           , 'button_insert');
         return $result;
     }
 

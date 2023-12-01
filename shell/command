@@ -15,6 +15,7 @@ if (PHP_INT_SIZE < 8) {
     exit();
 }
 
+require_once(__DIR__.'/../system/boot_polyfills.php');
 require_once(__DIR__.'/../system/boot_initialization.php');
 
 effcore\Language::code_set_current('en');
@@ -54,7 +55,7 @@ print str_repeat('-', 80).effcore\NL;
 ### enabling strict mode ###
 ############################
 
-if (empty($command_args['no_strict'])) { # strictest mode: no errors, no warnings
+if (empty($command_args['no_strict'])) { # each warning is an error
     set_error_handler(
         function($errno, $message, $file_path, $line_number) {
             throw new \ErrorException(

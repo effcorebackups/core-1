@@ -22,6 +22,14 @@ tests
           - word: files
     - code-research_word-files|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__research_word__files
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-filter|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Translation::filter()
+    - code-filter|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__filter
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

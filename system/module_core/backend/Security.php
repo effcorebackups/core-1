@@ -70,9 +70,9 @@ abstract class Security {
     ### functionality for sanitization ###
     ######################################
 
-    static function sanitize_date      ($value) {$result = DateTime::createFromFormat('Y-m-d',         $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d'        ) : null;}
-    static function sanitize_time      ($value) {$result = DateTime::createFromFormat(      'H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format(      'H:i:s'  ) : null;}
-    static function sanitize_datetime  ($value) {$result = DateTime::createFromFormat('Y-m-d H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d H:i:s'  ) : null;}
+    static function sanitize_date      ($value) {$result = DateTime::createFromFormat('Y-m-d'        , $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d'        ) : null;}
+    static function sanitize_time      ($value) {$result = DateTime::createFromFormat(      'H:i:s'  , $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format(      'H:i:s'  ) : null;}
+    static function sanitize_datetime  ($value) {$result = DateTime::createFromFormat('Y-m-d H:i:s'  , $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d H:i:s'  ) : null;}
     static function sanitize_T_datetime($value) {$result = DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new DateTimeZone('UTC')); return $result instanceof DateTime ? $result->format('Y-m-d\\TH:i:s') : null;}
 
     static function sanitize_id($value, $corrector = '-') {
@@ -99,7 +99,7 @@ abstract class Security {
     static function sanitize_tags($value, $allowed_tags = self::WHITE_TAGS) {
         $allowed_tags_parsed = Core::array_keys_map(explode('|', $allowed_tags));
         return preg_replace_callback('%'.'[<]'.'(?<closer>[/]|)'.'(?<tag_name>[a-z]{1,1024})'.'(?<attributes>[^>]{0,})'.'(?<end>[>]|)'.'%iS', function ($c_match) use ($allowed_tags, $allowed_tags_parsed) {
-            if (strpos($c_match['attributes'], '<') !== false)
+            if (str_contains($c_match['attributes'], '<'))
                 $c_match['attributes'] = static::sanitize_tags($c_match['attributes'], $allowed_tags);
             if (isset($allowed_tags_parsed[$c_match['tag_name']]))
                  return    '<'.$c_match['closer'].$c_match['tag_name'].$c_match['attributes'].($c_match['end'] ? '>'    : '');
@@ -150,9 +150,9 @@ abstract class Security {
     ### functionality for validation ###
     ####################################
 
-    static function validate_date      ($value) {if ($value === null) return false; $result = DateTime::createFromFormat('Y-m-d',         $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d'        )) === strlen(Field_Date::INPUT_MAX_DATE);}
-    static function validate_time      ($value) {if ($value === null) return false; $result = DateTime::createFromFormat(      'H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format(      'H:i:s'  )) === strlen(Field_Time::INPUT_MAX_TIME);}
-    static function validate_datetime  ($value) {if ($value === null) return false; $result = DateTime::createFromFormat('Y-m-d H:i:s',   $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d H:i:s'  )) === strlen(Field_DateTime::INPUT_MAX_DATETIME);}
+    static function validate_date      ($value) {if ($value === null) return false; $result = DateTime::createFromFormat('Y-m-d'        , $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d'        )) === strlen(Field_Date::INPUT_MAX_DATE);}
+    static function validate_time      ($value) {if ($value === null) return false; $result = DateTime::createFromFormat(      'H:i:s'  , $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format(      'H:i:s'  )) === strlen(Field_Time::INPUT_MAX_TIME);}
+    static function validate_datetime  ($value) {if ($value === null) return false; $result = DateTime::createFromFormat('Y-m-d H:i:s'  , $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d H:i:s'  )) === strlen(Field_DateTime::INPUT_MAX_DATETIME);}
     static function validate_T_datetime($value) {if ($value === null) return false; $result = DateTime::createFromFormat('Y-m-d\\TH:i:s', $value, new DateTimeZone('UTC')); return $result instanceof DateTime && strlen($result->format('Y-m-d\\TH:i:s')) === strlen(Field_DateTime::INPUT_MAX_DATETIME);}
 
     static function validate_id($value) {

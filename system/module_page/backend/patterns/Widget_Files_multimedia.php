@@ -52,8 +52,8 @@ class Widget_Files_multimedia extends Widget_Files {
             foreach ($value as $c_row_id => $c_item) {
                 if (Core::in_array(Media::media_class_get($c_item->object->type), ['picture', 'audio', 'video'])) {
                     $decorator->data[$c_row_id] = [
-                        'type'     => ['value' => Media::media_class_get($c_item->object->type)],
-                        'num'      => ['value' => $c_row_id],
+                        'type'     => ['value' => Media::media_class_get($c_item->object->type), 'is_apply_translation' => false],
+                        'num'      => ['value' => $c_row_id                                    , 'is_apply_translation' => false],
                         'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
                     ];
                 }
@@ -95,10 +95,10 @@ class Widget_Files_multimedia extends Widget_Files {
         $widget->controls['*fieldset_pictures'] = $fieldset_pictures;
         $widget->controls['*fieldset_video'   ] = $fieldset_video;
         $widget->controls['*fieldset_audio'   ] = $fieldset_audio;
-        $result->child_insert($media_type,        'media_type');
+        $result->child_insert($media_type       , 'media_type');
         $result->child_insert($fieldset_pictures, 'pictures');
-        $result->child_insert($fieldset_video,    'video');
-        $result->child_insert($fieldset_audio,    'audio');
+        $result->child_insert($fieldset_video   , 'video');
+        $result->child_insert($fieldset_audio   , 'audio');
         return $result;
     }
 

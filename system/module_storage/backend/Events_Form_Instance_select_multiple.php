@@ -29,24 +29,25 @@ abstract class Events_Form_Instance_select_multiple {
         if (isset($groups[$form->managing_group_id])) {
             if ($entity) {
                 $form->attribute_insert('data-entity_name', $form->entity_name);
-                $form->_has_access_select = (bool)Access::check($entity->access_select);
-                $form->_has_access_insert = (bool)Access::check($entity->access_insert);
-                $form->_has_access_update = (bool)Access::check($entity->access_update);
-                $form->_has_access_delete = (bool)Access::check($entity->access_delete);
+                $form->_has_access_select = (bool)Access::check($entity->access->on_select);
+                $form->_has_access_insert = (bool)Access::check($entity->access->on_insert);
+                $form->_has_access_update = (bool)Access::check($entity->access->on_update);
+                $form->_has_access_delete = (bool)Access::check($entity->access->on_delete);
                 # list of items
                 $selection = Selection::get('instance_select_multiple-'.$entity->name);
                 if ($selection) {
                     $selection = Core::deep_clone($selection);
-                    $selection->fields['checkboxes']['checkbox-select'] = new stdClass;
-                    $selection->fields['checkboxes']['checkbox-select']->weight = 500;
-                    $selection->fields['checkboxes']['checkbox-select']->settings = ['name' => 'is_checked[]'];
+                    $selection->fields['handlers']['handler__any__checkbox_select'] = new stdClass;
+                    $selection->fields['handlers']['handler__any__checkbox_select']->weight = +500;
+                    $selection->fields['handlers']['handler__any__checkbox_select']->settings = [];
+                    $selection->fields['handlers']['handler__any__checkbox_select']->handler = '\\effcore\\modules\\page\\Events_Selection::handler__any__checkbox_select';
                     $selection->fields['code']['actions'] = new stdClass;
                     $selection->fields['code']['actions']->weight = -500;
-                    $selection->fields['code']['actions']->closure = function ($c_row_id, $c_row, $c_instance, $settings = []) use ($form) {
+                    $selection->fields['code']['actions']->closure = function ($c_cell_id, $c_row, $c_instance, $origin) use ($form) {
                         $c_actions_list = new Actions_list;
-                        if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert($c_instance->make_url_for_delete().'?'.Url::back_part_make(), 'delete');
-                        if ($form->_has_access_select                                   ) $c_actions_list->action_insert($c_instance->make_url_for_select().'?'.Url::back_part_make(), 'select');
-                        if ($form->_has_access_update                                   ) $c_actions_list->action_insert($c_instance->make_url_for_update().'?'.Url::back_part_make(), 'update');
+                        if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.Url::back_part_make());
+                        if ($form->_has_access_select                                   ) $c_actions_list->action_insert('select', 'review', $c_instance->make_url_for_select().'?'.Url::back_part_make());
+                        if ($form->_has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.Url::back_part_make());
                         return $c_actions_list;
                     };
                     $selection->build();
@@ -106,8 +107,8 @@ abstract class Events_Form_Instance_select_multiple {
                         if ($items['#actions']->value_get() === 'delete') {
                             if (empty($c_instance->is_embedded)) {
                                 $c_result = $c_instance->delete();
-                                if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.',                            ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id])           );
-                                if ($form->is_show_result_message && $c_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!',                        ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'error'  );
+                                if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.'                           , ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id])           );
+                                if ($form->is_show_result_message && $c_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!'                       , ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'error'  );
                             } else                                                       Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!', ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'warning');
                         }
                     }

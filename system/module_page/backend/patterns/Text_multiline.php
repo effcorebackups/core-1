@@ -14,7 +14,7 @@ class Text_multiline extends Text {
     public $args = [];
     public $delimiter = BR;
 
-    function __construct($text = [], $args = [], $delimiter = BR, $with_translation = true, $with_tokens = false, $weight = 0) {
+    function __construct($text = [], $args = [], $delimiter = BR, $with_translation = true, $with_tokens = false, $weight = +0) {
         if ($text) $this->text_update($text);
         if ($args) $this->args_set($args);
         $this->delimiter            = $delimiter;

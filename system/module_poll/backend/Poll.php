@@ -26,7 +26,7 @@ abstract class Poll {
         return $result;
     }
 
-    static function answer_insert($id_poll, $answer, $weight = 0) {
+    static function answer_insert($id_poll, $answer, $weight = +0) {
         return (new Instance('poll_answer', [
             'id_poll' => $id_poll,
             'answer'  => $answer,
@@ -46,9 +46,9 @@ abstract class Poll {
         return Entity::get('poll_vote')->instances_select_count([
             'where' => [
                 'id_answer_!f'                => 'id_answer',
-                'id_answer_in_operator_begin' => 'in (',
+                'id_answer_in_begin_operator' => 'in (',
                 'id_answer_in_value_!v'       => $id_answers,
-                'id_answer_in_operator_end'   => ')'
+                'id_answer_in_end_operator'   => ')'
         ]]);
     }
 
@@ -67,9 +67,9 @@ abstract class Poll {
                     'alias_!f'       => 'total']],
             'where' => [
                 'id_answer_!f'                => 'id_answer',
-                'id_answer_in_operator_begin' => 'in (',
+                'id_answer_in_begin_operator' => 'in (',
                 'id_answer_in_value_!v'       => $id_answers,
-                'id_answer_in_operator_end'   => ')'],
+                'id_answer_in_end_operator'   => ')'],
             'group' => [
                 'id_answer_!f' => 'id_answer']]);
         foreach ($rows as $c_row)
@@ -89,9 +89,9 @@ abstract class Poll {
                         'id_user_!v'       => $id_user],
                     'id_answer' => [
                         'id_answer_!f'                => 'id_answer',
-                        'id_answer_in_operator_begin' => 'in (',
+                        'id_answer_in_begin_operator' => 'in (',
                         'id_answer_in_value_!v'       => $id_answers,
-                        'id_answer_in_operator_end'   => ')']]]]);
+                        'id_answer_in_end_operator'   => ')']]]]);
         foreach ($rows as $c_row)
             $result[$c_row->id_answer] =
                     $c_row->id_answer;
@@ -109,9 +109,9 @@ abstract class Poll {
                         'id_session_!v'       => $id_session],
                 'id_answer' => [
                     'id_answer_!f'                => 'id_answer',
-                    'id_answer_in_operator_begin' => 'in (',
+                    'id_answer_in_begin_operator' => 'in (',
                     'id_answer_in_value_!v'       => $id_answers,
-                    'id_answer_in_operator_end'   => ')']]]]);
+                    'id_answer_in_end_operator'   => ')']]]]);
         foreach ($rows as $c_row)
             $result[$c_row->id_answer] =
                     $c_row->id_answer;
@@ -146,9 +146,9 @@ abstract class Poll {
                         'id_user_!v'       => $id_user],
                     'id_answer' => [
                         'id_answer_!f'                => 'id_answer',
-                        'id_answer_in_operator_begin' => 'in (',
+                        'id_answer_in_begin_operator' => 'in (',
                         'id_answer_in_value_!v'       => $id_answers,
-                        'id_answer_in_operator_end'   => ')'
+                        'id_answer_in_end_operator'   => ')'
         ]]]]);
     }
 
@@ -162,9 +162,9 @@ abstract class Poll {
                         'id_session_!v'       => $id_session],
                     'id_answer' => [
                         'id_answer_!f'                => 'id_answer',
-                        'id_answer_in_operator_begin' => 'in (',
+                        'id_answer_in_begin_operator' => 'in (',
                         'id_answer_in_value_!v'       => $id_answers,
-                        'id_answer_in_operator_end'   => ')'
+                        'id_answer_in_end_operator'   => ')'
         ]]]]);
     }
 

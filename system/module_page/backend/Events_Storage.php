@@ -41,7 +41,7 @@ abstract class Events_Storage {
                         $c_file = new File(DIR_ROOT.$instance->{$c_name});
                         if ($c_file->is_exists()) {
                             if (File::delete($c_file->path_get()))
-                                 Message::insert(new Text('File "%%_file" was deleted.',     ['file' => $c_file->path_get_relative()]));
+                                 Message::insert(new Text('File "%%_file" was deleted.'    , ['file' => $c_file->path_get_relative()]));
                             else Message::insert(new Text('File "%%_file" was not deleted!', ['file' => $c_file->path_get_relative()]), 'warning');
                         }
                     }
@@ -58,7 +58,7 @@ abstract class Events_Storage {
                                 $c_file = new File($c_item->object->get_current_path());
                                 if ($c_file->is_exists()) {
                                     if (File::delete($c_file->path_get()))
-                                         Message::insert(new Text('File "%%_file" was deleted.',     ['file' => $c_file->path_get_relative()]));
+                                         Message::insert(new Text('File "%%_file" was deleted.'    , ['file' => $c_file->path_get_relative()]));
                                     else Message::insert(new Text('File "%%_file" was not deleted!', ['file' => $c_file->path_get_relative()]), 'warning');
                                 }
                             }

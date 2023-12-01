@@ -1,5 +1,5 @@
 frontend
-- page_test__js|Frontend
+- page_test__js__develop|Frontend
     display
       check: url
       where: path
@@ -10,23 +10,7 @@ frontend
         weight: +600
         attributes
         - defer: true
-- page_test__class_url__js|Frontend
-    display
-      check: url
-      where: path
-      match: %^/develop/tests/class__url__js$%
-    scripts
-    - events
-        path: frontend/Events_Test__Class_Url.js
-        weight: +500
-        attributes
-        - defer: true
-    - runner
-        path: frontend/Events_Test__Class_URL__runner.js
-        weight: +400
-        attributes
-        - defer: true
-- page_test__js__js|Frontend
+- page_test__js__js__develop|Frontend
     display
       check: url
       where: path
@@ -39,6 +23,22 @@ frontend
         - defer: true
     - runner
         path: frontend/Events_Test__JS__runner.js
+        weight: +400
+        attributes
+        - defer: true
+- page_test__class_url__js__develop|Frontend
+    display
+      check: url
+      where: path
+      match: %^/develop/tests/class__url__js$%
+    scripts
+    - events
+        path: frontend/Events_Test__Class_Url.js
+        weight: +500
+        attributes
+        - defer: true
+    - runner
+        path: frontend/Events_Test__Class_URL__runner.js
         weight: +400
         attributes
         - defer: true

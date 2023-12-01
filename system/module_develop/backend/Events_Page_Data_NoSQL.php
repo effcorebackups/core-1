@@ -18,7 +18,6 @@ use effcore\Page;
 use effcore\Selection;
 use effcore\Tab_item;
 use effcore\Template;
-use effcore\Text_simple;
 use effcore\Text;
 use effcore\Token;
 use effcore\Translation;
@@ -88,10 +87,10 @@ abstract class Events_Page_Data_NoSQL {
             $report->child_insert($c_decorator,                                                                                                                            $c_event_type.'_decorator');
             foreach ($c_events as $c_event) {
                 $c_decorator->data[] = [
-                    'module_id' => ['value' => new Text_simple($c_event->module_id), 'title' => 'Module ID'],
-                    'for_id'    => ['value' => new Text_simple($c_event->for      ), 'title' => 'For ID'   ],
-                    'handler'   => ['value' => new Text_simple($c_event->handler  ), 'title' => 'Handler'  ],
-                    'weight'    => ['value' => new Text_simple($c_event->weight   ), 'title' => 'Weight'   ]
+                    'module_id' => ['title' => 'Module ID', 'value' => $c_event->module_id, 'is_apply_translation' => false],
+                    'for_id'    => ['title' => 'For ID'   , 'value' => $c_event->for      , 'is_apply_translation' => false],
+                    'handler'   => ['title' => 'Handler'  , 'value' => $c_event->handler  , 'is_apply_translation' => false],
+                    'weight'    => ['title' => 'Weight'   , 'value' => $c_event->weight   , 'is_apply_translation' => false]
                 ];
             }
         }
@@ -130,8 +129,8 @@ abstract class Events_Page_Data_NoSQL {
         $decorator->id = 'nosql_selections';
         foreach ($selection as $c_selection) {
             $decorator->data[] = [
-                'id'    => ['value' =>                                                             new Text_simple($c_selection->id   ), 'title' => 'ID'   ],
-                'title' => ['value' => $c_selection->title instanceof Text ? $c_selection->title : new Text       ($c_selection->title), 'title' => 'Title']
+                'id'    => ['title' => 'ID'   , 'value' => $c_selection->id   , 'is_apply_translation' => false],
+                'title' => ['title' => 'Title', 'value' => $c_selection->title, 'is_apply_translation' => true ]
             ];
         }
         return $decorator;
@@ -144,10 +143,10 @@ abstract class Events_Page_Data_NoSQL {
         ksort($file_types);
         foreach ($file_types as $c_type) {
             $decorator->data[] = [
-                'type'      => ['value' => new Text_simple(      $c_type->type                                           ), 'title' => 'Type'     ],
-                'kind'      => ['value' => new Text_simple(      $c_type->kind ?? null                                   ), 'title' => 'Kind'     ],
-                'module_id' => ['value' => new Text_simple(      $c_type->module_id                                      ), 'title' => 'Module ID'],
-                'headers'   => ['value' => new Text_simple(isset($c_type->headers) ? implode(BR, $c_type->headers) : null), 'title' => 'Headers'  ]
+                'type'      => ['title' => 'Type'     , 'value' =>       $c_type->type                                           , 'is_apply_translation' => false],
+                'kind'      => ['title' => 'Kind'     , 'value' =>       $c_type->kind ?? null                                   , 'is_apply_translation' => false],
+                'module_id' => ['title' => 'Module ID', 'value' =>       $c_type->module_id                                      , 'is_apply_translation' => false],
+                'headers'   => ['title' => 'Headers'  , 'value' => isset($c_type->headers) ? implode(BR, $c_type->headers) : null, 'is_apply_translation' => false]
             ];
         }
         return $decorator;
@@ -160,9 +159,9 @@ abstract class Events_Page_Data_NoSQL {
         ksort($templates);
         foreach ($templates as $c_template) {
             $decorator->data[] = [
-                'name'      => ['value' => new Text_simple($c_template->name     ), 'title' => 'Name'     ],
-                'type'      => ['value' => new Text_simple($c_template->type     ), 'title' => 'Type'     ],
-                'module_id' => ['value' => new Text_simple($c_template->module_id), 'title' => 'Module ID'],
+                'name'      => ['title' => 'Name'     , 'value' => $c_template->name     , 'is_apply_translation' => false],
+                'type'      => ['title' => 'Type'     , 'value' => $c_template->type     , 'is_apply_translation' => false],
+                'module_id' => ['title' => 'Module ID', 'value' => $c_template->module_id, 'is_apply_translation' => false],
             ];
         }
         return $decorator;
@@ -175,9 +174,9 @@ abstract class Events_Page_Data_NoSQL {
         ksort($tokens);
         foreach ($tokens as $c_row_id => $c_token) {
             $decorator->data[] = [
-                'row_id'    => ['value' => new Text_simple($c_row_id          ), 'title' => 'Row ID'   ],
-                'type'      => ['value' => new Text_simple($c_token->type     ), 'title' => 'Type'     ],
-                'module_id' => ['value' => new Text_simple($c_token->module_id), 'title' => 'Module ID']
+                'row_id'    => ['title' => 'Row ID'   , 'value' => $c_row_id          , 'is_apply_translation' => false],
+                'type'      => ['title' => 'Type'     , 'value' => $c_token->type     , 'is_apply_translation' => false],
+                'module_id' => ['title' => 'Module ID', 'value' => $c_token->module_id, 'is_apply_translation' => false]
             ];
         }
         return $decorator;
@@ -193,8 +192,8 @@ abstract class Events_Page_Data_NoSQL {
             ksort($translations);
             foreach ($translations as $c_english => $c_translated) {
                 $decorator->data[] = [
-                    'english'     => ['value' => new Text_simple($c_english   ), 'title' => 'English'    ],
-                    'translation' => ['value' => new Text_simple($c_translated), 'title' => 'Translation']
+                    'english'     => ['title' => 'English'    , 'value' => $c_english   , 'is_apply_translation' => false],
+                    'translation' => ['title' => 'Translation', 'value' => $c_translated, 'is_apply_translation' => false]
                 ];
             }
         }

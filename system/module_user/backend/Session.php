@@ -27,9 +27,13 @@ abstract class Session {
         $session_id       = static::id_get();
         $session_hex_type = static::id_extract_hex_type($session_id);
         if ($session_hex_type === 'f') {
-            if (!static::$current)
-                 static::$current = (new Instance('session', ['id' => $session_id]))->select();
-            if (!static::$current) {
+            # loading session information from the database
+            if (static::$current === null)
+                static::$current = (new Instance('session', [
+                    'id' => $session_id,
+                ]))->select();
+            # regenerate Session ID for CURRENT session
+            if (static::$current === null) {
                 static::id_regenerate('a');
                 Message::insert('Invalid session was deleted!', 'warning');
                 return null;
@@ -121,7 +125,7 @@ abstract class Session {
         $session_id.= User::signature_get($session_id, 'user', 8);
         if (!headers_sent()) {
             header_remove('set-cookie');
-            setcookie('session_id', $session_id,    $expired, '/', $settings->cookie_domain, 0, 1);
+            setcookie('session_id', $session_id   , $expired, '/', $settings->cookie_domain, 0, 1);
             setcookie('cookies_is_enabled', 'true', $expired, '/', $settings->cookie_domain);
         }
         $_COOKIE['session_id'] = $session_id;

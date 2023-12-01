@@ -74,7 +74,7 @@ abstract class Events_Form_Demo {
                 Message::insert(
                     new Text('Call "%%_call" on click "%%_click"', ['call' => '\\'.__METHOD__, 'click' => (new Text('send'))->render()])
                 );
-                $value_def_access = (object)['roles' => ['demo' => 'demo']];
+                $value_def_access = (object)['roles' => ['demo' => 'demo'], 'users' => []];
                 $value_def_checkboxes = Core::array_keys_map(['checkbox_2', 'checkbox_4']);
                 $value_def_switchers  = Core::array_keys_map(['switcher_2', 'switcher_4']);
                 $value_def_email = 'test1@example.com,test2@example.com';

@@ -1,7 +1,7 @@
 tests
 - demo|Test
     id: demo
-    title: Demo
+    title: Demonstration
     params
     - quantity|Field_Number
         title: Quantity of repetitions

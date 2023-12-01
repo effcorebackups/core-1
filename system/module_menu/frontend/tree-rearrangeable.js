@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var draggable_icon = document.createElement('x-draggable-icon');
                 draggable_icon.setAttribute('draggable', 'true');
                 draggable_icon.addEventListener('dragstart', function (event) { window._effDataTransferNode = this; c_has_rearrangeable.   setAttribute('data-has-rearrangeable-is-active', ''); c_rearrangeable.parentNode.   setAttribute('data-rearrangeable-is-active', ''); });
-                draggable_icon.addEventListener('dragend',   function (event) { window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.parentNode.removeAttribute('data-rearrangeable-is-active'    ); });
+                draggable_icon.addEventListener('dragend'  , function (event) { window._effDataTransferNode = null; c_has_rearrangeable.removeAttribute('data-has-rearrangeable-is-active'    ); c_rearrangeable.parentNode.removeAttribute('data-rearrangeable-is-active'    ); });
             c_rearrangeable.prepend(draggable_icon);
 
             var handler_on_dragover  = function (event) { event.preventDefault();                               };
@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
             droppable_area_M.setAttribute('data-position', 'in'    );
             droppable_area_N.setAttribute('data-position', 'after' );
             [droppable_area_0, droppable_area_M, droppable_area_N].forEach(function (droppable_area) {
-                droppable_area.addEventListener('dragover',  handler_on_dragover );
+                droppable_area.addEventListener('dragover' , handler_on_dragover );
                 droppable_area.addEventListener('dragenter', handler_on_dragenter);
                 droppable_area.addEventListener('dragleave', handler_on_dragleave);
-                droppable_area.addEventListener('drop',      handler_on_drop  );
+                droppable_area.addEventListener('drop'     , handler_on_drop  );
             });
             c_rearrangeable.parentNode.prepend(droppable_area_0, droppable_area_M);
             c_rearrangeable.parentNode.append (droppable_area_N);

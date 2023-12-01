@@ -6,6 +6,8 @@
 
 namespace effcore;
 
+use stdClass;
+
 #[\AllowDynamicProperties]
 
 class Actions_list extends Markup {
@@ -18,23 +20,27 @@ class Actions_list extends Markup {
     public $template = 'actions_list';
     public $actions = [];
 
-    function __construct($title = null, $attributes = [], $weight = 0) {
+    function __construct($title = null, $attributes = [], $weight = +0) {
         parent::__construct(null, $attributes, [], $weight);
         $this->title = $title;
     }
 
-    function action_insert($action_name, $title) {
-        $this->actions[$action_name] = $title;
+    function action_insert($name, $title, $url) {
+        $this->actions[$name] = new stdClass;
+        $this->actions[$name]->title = $title;
+        $this->actions[$name]->url   = $url;
     }
 
     function build() {
         if (!$this->is_builded) {
             $list = new Markup('x-actions-list');
             $this->child_insert($list, 'actions_list');
-            foreach ($this->actions as $c_name => $c_title) {
-                $c_href = $c_name[0] === '/' ? $c_name : Page::get_current()->args_get('base').'/'.($c_name);
-                $list->child_insert(new Markup('a', ['data-id' => Security::sanitize_id($c_title), 'title' => new Text($c_title), 'href' => $c_href],
-                    new Markup('x-action-title', $this->action_title_attributes, $c_title)
+            foreach ($this->actions as $c_name => $c_info) {
+                $c_href = $c_info->url[0] === '/' ?
+                          $c_info->url : Page::get_current()->args_get('base').'/'.
+                          $c_info->url;
+                $list->child_insert(new Markup('a', ['data-id' => $c_name, 'title' => new Text($c_info->title), 'href' => $c_href],
+                    new Markup('x-action-title', $this->action_title_attributes, $c_info->title)
                 )); }
             $this->is_builded = true;
         }

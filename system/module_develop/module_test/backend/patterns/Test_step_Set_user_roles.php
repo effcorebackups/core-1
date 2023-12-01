@@ -30,7 +30,7 @@ class Test_step_Set_user_roles {
                                  User::related_roles_insert($user->id, $this->roles, 'test');
             $new_roles     =     User::related_roles_select($user->id);
             $c_results['reports'][$dpath][] = new Text('roles before insertion: %%_roles', ['roles' => implode(', ', $old_roles) ?: 'n/a']);
-            $c_results['reports'][$dpath][] = new Text('roles after insertion: %%_roles',  ['roles' => implode(', ', $new_roles) ?: 'n/a']);
+            $c_results['reports'][$dpath][] = new Text('roles after insertion: %%_roles' , ['roles' => implode(', ', $new_roles) ?: 'n/a']);
         }
     }
 

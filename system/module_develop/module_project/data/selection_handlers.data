@@ -1,0 +1,6 @@
+selection_handlers
+- handler__project_release__path_as_link
+    title: Download link
+    entity_name: project_release
+    handler: \effcore\modules\project\Events_Selection::handler__project_release__path_as_link
+    is_apply_translation: true

@@ -3,7 +3,7 @@ tree_items
     id: demo
     id_parent: develop
     id_tree: system
-    title: Demo
+    title: Demonstration
     url: /develop/demo
     weight: +500
     access

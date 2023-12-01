@@ -1,0 +1,13 @@
+frontend
+- page_all__user|Frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    styles
+    - user_style
+        path: frontend/user.cssd?page_id=%%_page_id_context
+        weight: +500
+        attributes
+        - rel: stylesheet
+        - media: all

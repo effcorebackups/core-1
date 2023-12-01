@@ -10,26 +10,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree__delete
     fields
     - id
         title: ID
@@ -160,26 +161,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree_item__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree_item__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree_item__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__menu_tree_item__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree_item__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree_item__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree_item__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__menu_tree_item__delete
     fields
     - id
         title: ID

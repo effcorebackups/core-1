@@ -25,7 +25,7 @@ class Tab_item extends Node {
     public $cache_href_default;
     public $origin = 'nosql'; # nosql | dynamic
 
-    function __construct($title = null, $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0) {
+    function __construct($title = null, $id = null, $id_parent = null, $id_tab = null, $action_name = null, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = +0) {
         if ($id                 ) $this->id                  = $id;
         if ($id_parent          ) $this->id_parent           = $id_parent;
         if ($id_tab             ) $this->id_tab              = $id_tab;
@@ -72,7 +72,7 @@ class Tab_item extends Node {
     function render_self() {
         $href_default = $this->href_default_get();
         if ($href_default           ) $this->attribute_insert('href', $href_default,         'element_attributes');
-        if ($this->is_active      ()) $this->attribute_insert('aria-selected',       'true', 'element_attributes');
+        if ($this->is_active      ()) $this->attribute_insert('aria-selected'      , 'true', 'element_attributes');
         if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
                                       $this->attribute_insert('title', new Text('click to open the tab "%%_title"', ['title' => (new Text($this->title, [], true, true))->render() ]), 'element_attributes');
         return (new Markup('a', $this->attributes_select('element_attributes'),
@@ -125,7 +125,7 @@ class Tab_item extends Node {
         return static::$cache[$id] ?? null;
     }
 
-    static function insert($title, $id, $id_parent, $id_tab, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = 0, $module_id = null) {
+    static function insert($title, $id, $id_parent, $id_tab, $action_name, $action_name_default = null, $attributes = [], $element_attributes = [], $is_hidden = false, $weight = +0, $module_id = null) {
         static::init();
         $new_item = new static($title, $id, $id_parent, $id_tab, $action_name, $action_name_default, $attributes, $element_attributes, $is_hidden, $weight);
                static::$cache[$id] = $new_item;

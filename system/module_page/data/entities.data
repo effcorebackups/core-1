@@ -46,26 +46,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_audio__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_audio__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_audio__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_audio__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_audio__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_audio__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_audio__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_audio__delete
     fields
     - id
         title: ID
@@ -138,6 +139,27 @@ entities
             - upload_dir: audios/
             - fixed_name: audio-%%_instance_id_context
             - weight: +340
+    - cover_path
+        title: Cover path
+        type: varchar
+        size: 255
+        collate: nocase
+        default: null
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_File_picture
+            properties
+            - title: Cover
+            - max_file_size: 1M
+            - upload_dir: audios/
+            - fixed_name: audio-%%_instance_id_context-cover
+            - thumbnails
+              - =: small
+              - =: middle
+              - =: big
+            - weight: +320
     - created
         title: Created
         type: datetime
@@ -147,7 +169,7 @@ entities
           control
             class: \effcore\Field_DateTime_local
             properties
-            - weight: +320
+            - weight: +300
     - updated
         title: Updated
         type: datetime
@@ -157,7 +179,7 @@ entities
           control
             class: \effcore\Field_DateTime_local
             properties
-            - weight: +300
+            - weight: +280
     constraints
     - primary_id
         type: primary
@@ -185,26 +207,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_gallery__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_gallery__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_gallery__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_gallery__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_gallery__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_gallery__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_gallery__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_gallery__delete
     fields
     - id
         title: ID
@@ -337,26 +360,27 @@ entities
     with_module_id: true
     with_origin: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page__delete
     fields
     - id
         title: ID
@@ -404,10 +428,10 @@ entities
         check: (title <> '')
         converters
           on_insert
-          - 0: \effcore\Core::html_entity_encode
+          - +0: \effcore\Core::html_entity_encode
           - -600: \effcore\Core::to_null_if_empty
           on_update
-          - 0: \effcore\Core::html_entity_encode
+          - +0: \effcore\Core::html_entity_encode
           - -600: \effcore\Core::to_null_if_empty
         managing
           is_enabled_on_insert: true
@@ -573,6 +597,7 @@ entities
           on_select: unserialize
           on_insert: \effcore\Core::data_serialize
           on_update: \effcore\Core::data_serialize
+          on_render: \effcore\Core::data_serialize
         managing
           control
             properties
@@ -625,26 +650,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_picture__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_picture__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_picture__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_picture__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_picture__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_picture__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_picture__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_picture__delete
     fields
     - id
         title: ID
@@ -810,26 +836,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_text__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_text__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_text__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_text__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_text__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_text__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_text__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_text__delete
     fields
     - id
         title: ID
@@ -891,13 +918,14 @@ entities
         default: null
         converters
           on_insert
-          - 0: \effcore\Security::sanitize_from_XSS
+          - +0: \effcore\Security::sanitize_from_XSS
           - -600: \effcore\Core::to_null_if_empty
           on_update
-          - 0: \effcore\Security::sanitize_from_XSS
+          - +0: \effcore\Security::sanitize_from_XSS
           - -600: \effcore\Core::to_null_if_empty
           on_render
-          - 0: \effcore\Core::to_markdown
+          - -400: \effcore\Core::to_current_lang
+          - -500: \effcore\Core::to_markdown
         managing
           is_enabled_on_insert: true
           is_enabled_on_update: true
@@ -953,26 +981,27 @@ entities
     with_is_embedded: true
     with_module_id: true
     with_data: true
-    access_select
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_video__select
-    access_insert
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_video__insert
-    access_update
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_video__update
-    access_delete
-      roles
-      - =: admins
-      permissions
-      - =: manage_data__content_page_video__delete
+    access
+      on_select
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_video__select
+      on_insert
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_video__insert
+      on_update
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_video__update
+      on_delete
+        roles
+        - =: admins
+        permissions
+        - =: manage_data__content_page_video__delete
     fields
     - id
         title: ID

@@ -15,7 +15,6 @@ use effcore\Markup;
 use effcore\Module;
 use effcore\Node;
 use effcore\Text_multiline;
-use effcore\Text_simple;
 
 abstract class Events_Page_PHP_dependencies {
 
@@ -107,7 +106,7 @@ abstract class Events_Page_PHP_dependencies {
             }
         }
         # scan each php file on used functions
-        foreach (Directory::items_select(DIR_SYSTEM,  '%^.*\\.php$%') +
+        foreach (Directory::items_select(DIR_SYSTEM , '%^.*\\.php$%') +
                  Directory::items_select(DIR_MODULES, '%^.*\\.php$%') as $c_path => $c_file) {
             $c_matches = [];
             $c_path_relative = $c_file->path_get_relative();
@@ -155,8 +154,8 @@ abstract class Events_Page_PHP_dependencies {
                               !isset(static::EXTENSIONS_DEFAULT_STATUS[$c_name]) ? $c_name :
                         $c_name.' ('.static::EXTENSIONS_DEFAULT_STATUS[$c_name].')');
                 $mod_decorator->data[$c_module_id] = [
-                    'module'    => ['value' => new Text_simple($c_module_id), 'title' => 'Module'       ],
-                    'extension' => ['value' => $c_extensions_list,            'title' => 'PHP extension']
+                    'module'    => ['value' => $c_module_id      , 'title' => 'Module'       , 'is_apply_translation' => false],
+                    'extension' => ['value' => $c_extensions_list, 'title' => 'PHP extension', 'is_apply_translation' => false]
                 ];
             }
         }
@@ -171,8 +170,8 @@ abstract class Events_Page_PHP_dependencies {
         $fnc_decorator->result_attributes = ['data-style' => 'compact'];
         foreach ($statistic_by_fnc as $c_function => $c_positions) {
             $fnc_decorator->data[$c_function] = [
-                'function' => ['value' => new Text_simple($c_function),         'title' => 'Function'       ],
-                'usage'    => ['value' => new Text_simple(count($c_positions)), 'title' => 'Usage frequency']
+                'function' => ['value' => $c_function        , 'title' => 'Function'       , 'is_apply_translation' => false],
+                'usage'    => ['value' => count($c_positions), 'title' => 'Usage frequency', 'is_apply_translation' => false]
             ];
         }
 
@@ -188,18 +187,18 @@ abstract class Events_Page_PHP_dependencies {
             foreach ($c_functions as $c_function => $c_positions) {
                 foreach ($c_positions as $c_position_info) {
                     $ext_decorator->data[] = [
-                        'extension' => ['value' => new Text_simple($c_extension                   ), 'title' => 'PHP ext.'],
-                        'module'    => ['value' => new Text_simple($c_position_info->module ?: '—'), 'title' => 'Module'  ],
-                        'function'  => ['value' => new Text_simple($c_function                    ), 'title' => 'Function'],
-                        'file'      => ['value' => new Text_simple($c_position_info->file         ), 'title' => 'File'    ],
-                        'position'  => ['value' => new Text_simple($c_position_info->position     ), 'title' => 'Pos.'    ]
+                        'extension' => ['value' => $c_extension                  , 'title' => 'PHP ext.', 'is_apply_translation' => false],
+                        'module'    => ['value' => $c_position_info->module ?: '', 'title' => 'Module'  , 'is_apply_translation' => false],
+                        'function'  => ['value' => $c_function                   , 'title' => 'Function', 'is_apply_translation' => false],
+                        'file'      => ['value' => $c_position_info->file        , 'title' => 'File'    , 'is_apply_translation' => false],
+                        'position'  => ['value' => $c_position_info->position    , 'title' => 'Pos.'    , 'is_apply_translation' => false]
                     ];
                 }
             }
         }
         # return result
         return new Node([], [
-            new Markup('p',  [], new Text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
+            new Markup('p', [], new Text_multiline(['The report was generated in real time.', 'The system can search for the used functions only for enabled PHP modules!'])),
             $mod_title,
             $mod_decorator,
             $mod_legend,

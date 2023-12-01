@@ -26,7 +26,7 @@ class Micro_tabs extends Node {
                 if (!$this->child_select($c_value)) {
                     if (is_string($c_info)) $c_info = (object)['title' => $c_info];
                     if (!isset($c_info->title                      )) $c_info->title  = $c_value;
-                    if (!isset($c_info->weight                     )) $c_info->weight = 0;
+                    if (!isset($c_info->weight                     )) $c_info->weight = +0;
                     if (!isset($c_info->element_attributes         )) $c_info->element_attributes = [];
                     if (!isset($c_info->element_attributes['value'])) $c_info->element_attributes['value'] = $c_value;
                     $c_field                     = new Field_Radiobutton;

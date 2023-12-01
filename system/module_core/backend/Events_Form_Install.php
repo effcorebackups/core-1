@@ -39,7 +39,7 @@ abstract class Events_Form_Install {
             $field_profile->selected = ['profile_default' => 'profile_default'];
         } else {
             $form->children_delete();
-            Response::send_header_and_exit('access_forbidden', null, new Text_multiline([
+            Response::send_header_and_exit('page_access_forbidden', null, new Text_multiline([
                 'Installation is not available because storage credentials was set!',
                 'go to <a href="/">front page</a>'
             ], [], BR.BR));
@@ -232,7 +232,7 @@ abstract class Events_Form_Install {
                     Cache::update_global($modules_to_include);
                     foreach ($modules_to_install as $c_module) {
                         Event::start('on_module_install', $c_module->id);
-                        Event::start('on_module_enable',  $c_module->id);
+                        Event::start('on_module_enable' , $c_module->id);
                         # cancel installation and show message if module was not installed
                         if (count(Storage::get('sql')->errors) !== 0) {
                             Message::insert(new Text('Module "%%_title" (%%_id) was not installed!', ['title' => (new Text($c_module->title))->render(), 'id' => $c_module->id]), 'error');
@@ -245,7 +245,7 @@ abstract class Events_Form_Install {
                     ##############################################
 
                     if (count(Storage::get('sql')->errors) === 0) {
-                        Storage::get('data')->changes_register('core',   'insert', 'storages/storage/sql', $params, false);
+                        Storage::get('data')->changes_register('core'  , 'insert', 'storages/storage/sql', $params, false);
                         Storage::get('data')->changes_register('locale', 'update', 'settings/locale/lang_code', Page::get_current()->args_get('lang_code'));
                         $form->children_delete();
                         Message::insert('System was installed.');

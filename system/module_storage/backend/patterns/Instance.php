@@ -47,7 +47,7 @@ class Instance implements cache_cleaning_after_install {
     function select() {
         Event::start('on_instance_select_before', $this->entity_name, ['instance' => &$this]);
         $result = $this->entity_get()->storage_get()->instance_select($this);
-        Event::start('on_instance_select_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
+        Event::start('on_instance_select_after' , $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
     }
 
@@ -60,7 +60,7 @@ class Instance implements cache_cleaning_after_install {
         if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_insert) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
         if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_insert) && $field_updated->type === 'integer' ) $this->updated = time();
         $result = $this->entity_get()->storage_get()->instance_insert($this);
-        Event::start('on_instance_insert_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
+        Event::start('on_instance_insert_after' , $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
     }
 
@@ -70,14 +70,14 @@ class Instance implements cache_cleaning_after_install {
         if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_update) && $field_updated->type === 'datetime') $this->updated = Core::datetime_get();
         if ($field_updated !== null && empty($field_updated->managing->is_enabled_on_update) && $field_updated->type === 'integer' ) $this->updated = time();
         $result = $this->entity_get()->storage_get()->instance_update($this);
-        Event::start('on_instance_update_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
+        Event::start('on_instance_update_after' , $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
     }
 
     function delete() {
         Event::start('on_instance_delete_before', $this->entity_name, ['instance' => &$this]);
         $result = $this->entity_get()->storage_get()->instance_delete($this);
-        Event::start('on_instance_delete_after',  $this->entity_name, ['instance' => &$this, 'result' => $result]);
+        Event::start('on_instance_delete_after' , $this->entity_name, ['instance' => &$this, 'result' => $result]);
         return $result;
     }
 
@@ -122,10 +122,10 @@ class Instance implements cache_cleaning_after_install {
         return static::$cache_orig[$name] ?? [];
     }
 
-    static function selection_make($entity_name, $where = [], $settings = []) {
+    static function selection_make($entity_name, $where = []) {
         $entity = Entity::get($entity_name);
         if ($entity) {
-            $c_weight = 420;
+            $c_weight = +400;
             $selection = new Selection;
             $selection->id = $entity_name.'-'.Security::hash_get($where);
             $selection->main_entity_name = $entity_name;
@@ -137,8 +137,9 @@ class Instance implements cache_cleaning_after_install {
                 $selection->fields['main'][$c_name] = new stdClass;
                 $selection->fields['main'][$c_name]->title = $c_field->title ?? null;
                 $selection->fields['main'][$c_name]->entity_field_name = $c_name;
-                $selection->fields['main'][$c_name]->weight = ($c_weight = $c_weight - 20);
-            }
+                $selection->fields['main'][$c_name]->weight = $c_weight;
+                $c_weight = $c_weight - 20; }
+            $selection->build();
             return $selection;
         } else {
             return new Markup('x-no-items', ['data-style' => 'table'], new Text_multiline(

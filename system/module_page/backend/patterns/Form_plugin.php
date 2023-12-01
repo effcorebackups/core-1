@@ -13,9 +13,9 @@ class Form_plugin {
     public $name;
     public $args = [];
     public $properties = [];
-    public $weight = 0;
+    public $weight = +0;
 
-    function __construct($name = null, $args = [], $properties = [], $weight = 0) {
+    function __construct($name = null, $args = [], $properties = [], $weight = +0) {
         if ($name      ) $this->name       = $name;
         if ($args      ) $this->args       = $args;
         if ($properties) $this->properties = $properties;

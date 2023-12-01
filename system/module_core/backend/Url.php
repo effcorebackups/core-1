@@ -98,11 +98,11 @@ class Url {
                    '(?:\\?(?<query>['.$options['extra'].'\\x21-\\x22\\x24-\\x7e]*)|)'.           # \\x21-\\x7e +  [^#] === \\x21-\\x22 + \\x24-\\x7e
                   '(?:\\#(?<anchor>['.$options['extra'].'\\x21-\\x7e]*)|)$%uS', $this->raw, $matches);
         $protocol = array_key_exists('protocol', $matches) ? $matches['protocol'] : '';
-        $domain   = array_key_exists('domain',   $matches) ? $matches['domain'  ] : '';
-        $port     = array_key_exists('port',     $matches) ? $matches['port'    ] : '';
-        $path     = array_key_exists('path',     $matches) ? $matches['path'    ] : '';
-        $query    = array_key_exists('query',    $matches) ? $matches['query'   ] : '';
-        $anchor   = array_key_exists('anchor',   $matches) ? $matches['anchor'  ] : '';
+        $domain   = array_key_exists('domain'  , $matches) ? $matches['domain'  ] : '';
+        $port     = array_key_exists('port'    , $matches) ? $matches['port'    ] : '';
+        $path     = array_key_exists('path'    , $matches) ? $matches['path'    ] : '';
+        $query    = array_key_exists('query'   , $matches) ? $matches['query'   ] : '';
+        $anchor   = array_key_exists('anchor'  , $matches) ? $matches['anchor'  ] : '';
         # matrix check
         if ( (!strlen($protocol) && !strlen($domain) &&  strlen($path) && !strlen($query) && !strlen($anchor)) ||  #                  /path
              (!strlen($protocol) && !strlen($domain) &&  strlen($path) &&  strlen($query) && !strlen($anchor)) ||  #                  /path?query
@@ -236,8 +236,10 @@ class Url {
     static function is_active_trail($url) {
         $checked_url = new static($url);
         $current_url =     static::get_current();
-        return strpos($current_url->absolute_get().'/',
-                      $checked_url->absolute_get().'/') === 0;
+        return str_starts_with(
+            $current_url->absolute_get().'/',
+            $checked_url->absolute_get().'/'
+        );
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
@@ -273,10 +275,10 @@ class Url {
         if (!$info->has_error) {
             return new Markup('x-url', [], [
                 'protocol' => new Markup('x-protocol', [], new Text($info->protocol ? $info->protocol.'://' : '', [], false, false)),
-                'domain'   => new Markup('x-domain',   [], new Text($info->domain, [], false, false)),
-                'path'     => new Markup('x-path',     [], new Text(str_replace('/', (new Markup('x-slash', [], '/'))->render(), $info->path), [], false, false)),
-                'query'    => new Markup('x-query',    [], new Text($info->query  ? '?'.$info->query  : '', [], false, false)),
-                'anchor'   => new Markup('x-anchor',   [], new Text($info->anchor ? '#'.$info->anchor : '', [], false, false))
+                'domain'   => new Markup('x-domain'  , [], new Text($info->domain, [], false, false)),
+                'path'     => new Markup('x-path'    , [], new Text(str_replace('/', (new Markup('x-slash', [], '/'))->render(), $info->path), [], false, false)),
+                'query'    => new Markup('x-query'   , [], new Text($info->query  ? '?'.$info->query  : '', [], false, false)),
+                'anchor'   => new Markup('x-anchor'  , [], new Text($info->anchor ? '#'.$info->anchor : '', [], false, false))
             ]);
         } else return new Text;
     }

@@ -23,7 +23,7 @@ abstract class Events_Page_User_edit {
             $page->args_set('instance_id', $user->id);
             if ($user->id === User::get_current()->id ||                      # owner
                 Access::check((object)['roles' => ['admins' => 'admins']])) { # admin
-            } else Response::send_header_and_exit('access_forbidden');
+            } else Response::send_header_and_exit('page_access_forbidden');
         }     else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong user nickname', 'go to <a href="/">front page</a>'], [], BR.BR));
     }
 

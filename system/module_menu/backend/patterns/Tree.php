@@ -20,7 +20,7 @@ class Tree extends Node {
     public $origin = 'nosql'; # nosql | sql | dynamic
     public $visualization_mode; # null | decorated | decorated-rearrangeable
 
-    function __construct($title = null, $id = null, $access = null, $attributes = [], $weight = 0) {
+    function __construct($title = null, $id = null, $access = null, $attributes = [], $weight = +0) {
         if ($title ) $this->title  = $title;
         if ($id    ) $this->id     = $id;
         if ($access) $this->access = $access;
@@ -30,7 +30,7 @@ class Tree extends Node {
     function build() {
         if (!$this->is_builded) {
             Event::start('on_tree_build_before', $this->id, ['tree' => &$this]);
-            $this->attribute_insert('data-id',                 $this->id,                 'attributes', true);
+            $this->attribute_insert('data-id'                , $this->id                , 'attributes', true);
             $this->attribute_insert('data-visualization-mode', $this->visualization_mode, 'attributes', true);
             foreach (Tree_item::select_all_by_id_tree($this->id) as $c_item) {
                 if ($c_item->id_tree   === $this->id &&
@@ -119,7 +119,7 @@ class Tree extends Node {
         return static::$cache[$id] ?? null;
     }
 
-    static function insert($title = null, $id = null, $access = null, $attributes = [], $weight = 0, $module_id = null) {
+    static function insert($title = null, $id = null, $access = null, $attributes = [], $weight = +0, $module_id = null) {
         static::init    (   );
         static::init_sql($id);
         $new_tree = new static($title, $id, $access, $attributes, $weight);

@@ -27,6 +27,46 @@ tokens
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- current_time_utc
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_date_utc
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_datetime_utc
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- current_time_utc_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_date_utc_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_datetime_utc_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- current_time_local
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_date_local
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_datetime_local
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- current_time_local_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_date_local_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+- current_datetime_local_formatted
+    type: code
+    handler: \effcore\modules\core\Events_Token::on_apply
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - return_if_token
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply

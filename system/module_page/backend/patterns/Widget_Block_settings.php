@@ -92,8 +92,8 @@ class Widget_Block_settings extends Container {
         $widget->controls['#title__'           .$c_row_id] = $field_title;
         $widget->controls['#title_is_visible__'.$c_row_id] = $field_title_is_visible;
         $widget->controls['#attributes__'      .$c_row_id] = $field_textarea_data_attributes;
-        $result->child_insert($field_title,                    'field_title');
-        $result->child_insert($field_title_is_visible,         'field_title_is_visible');
+        $result->child_insert($field_title                   , 'field_title');
+        $result->child_insert($field_title_is_visible        , 'field_title_is_visible');
         $result->child_insert($field_textarea_data_attributes, 'field_textarea_data_attributes');
         return $result;
     }

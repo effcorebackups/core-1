@@ -32,18 +32,18 @@ abstract class Events_Page_Instance_update {
                         $instance = new Instance($entity_name, $conditions);
                         if ($instance->select()) {
                             return true;
-                        } else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong instance key',                          'go to <a href="/">front page</a>'], [], BR.BR));
-                    }     else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong number of instance keys',               'go to <a href="/">front page</a>'], [], BR.BR));
+                        } else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong instance key'                         , 'go to <a href="/">front page</a>'], [], BR.BR));
+                    }     else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong number of instance keys'              , 'go to <a href="/">front page</a>'], [], BR.BR));
                 }         else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], BR.BR));
-            }             else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong entity name',                           'go to <a href="/">front page</a>'], [], BR.BR));
-        }                 else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong management group',                      'go to <a href="/">front page</a>'], [], BR.BR));
+            }             else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong entity name'                          , 'go to <a href="/">front page</a>'], [], BR.BR));
+        }                 else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong management group'                     , 'go to <a href="/">front page</a>'], [], BR.BR));
     }
 
     static function on_check_access($event, $page) {
         $entity_name = $page->args_get('entity_name');
         $entity = Entity::get($entity_name);
-        if (!Access::check($entity->access_update)) {
-            Response::send_header_and_exit('access_forbidden');
+        if (!Access::check($entity->access->on_update)) {
+            Response::send_header_and_exit('page_access_forbidden');
         }
     }
 

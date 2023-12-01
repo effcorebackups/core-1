@@ -17,7 +17,7 @@ class Button_default extends Button {
         'type'      => 'submit',
         'name'      => 'button'];
 
-    function __construct($attributes = [], $weight = 0) {
+    function __construct($attributes = [], $weight = +0) {
         parent::__construct(null, $attributes, $weight);
     }
 

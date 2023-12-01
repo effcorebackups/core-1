@@ -17,7 +17,7 @@ abstract class Events_Form_Colors {
         $settings = Module::settings_get('page');
         foreach ($items as $c_item) {
             if ($c_item instanceof Group_Palette) {
-                if (strpos($c_item->name_get_complex(), 'color__') === 0) {
+                if (str_starts_with($c_item->name_get_complex(), 'color__')) {
                     $c_item->value_set(
                         $settings->{$c_item->name_get_complex()}
                     );
@@ -32,7 +32,7 @@ abstract class Events_Form_Colors {
                 $selected = [];
                 foreach ($items as $c_item) {
                     if ($c_item instanceof Group_Palette) {
-                        if (strpos($c_item->name_get_complex(), 'color__') === 0) {
+                        if (str_starts_with($c_item->name_get_complex(), 'color__')) {
                             $selected[$c_item->name_get_complex()] = $c_item->value_get();
                         }
                     }

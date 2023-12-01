@@ -6,10 +6,13 @@
 
 namespace effcore\modules\test;
 
+use const effcore\DIR_ROOT;
 use effcore\Core;
 use effcore\Locale;
 use effcore\Test;
 use effcore\Text;
+use stdCLass;
+use Throwable;
 
 abstract class Events_Test__PHP {
 
@@ -821,14 +824,14 @@ abstract class Events_Test__PHP {
 
     static function test_step_code__in_array(&$test, $dpath, &$c_results) {
         $data = [
-            'value_string_empty'           => in_array('',   ['']),
-            'value_null'                   => in_array(null, ['']),
-            'value_int_0'                  => in_array(0,    ['']),
-            'value_string_0'               => in_array('0',  ['']),
-            'value_string_empty_is_strict' => in_array('',   [''], true),
+            'value_string_empty'           => in_array(''  , ['']      ),
+            'value_null'                   => in_array(null, ['']      ),
+            'value_int_0'                  => in_array(0   , ['']      ),
+            'value_string_0'               => in_array('0' , ['']      ),
+            'value_string_empty_is_strict' => in_array(''  , [''], true),
             'value_null_is_strict'         => in_array(null, [''], true),
-            'value_int_0_is_strict'        => in_array(0,    [''], true),
-            'value_string_0_is_strict'     => in_array('0',  [''], true)
+            'value_int_0_is_strict'        => in_array(0   , [''], true),
+            'value_string_0_is_strict'     => in_array('0' , [''], true)
         ];
 
         $expected = [
@@ -845,6 +848,724 @@ abstract class Events_Test__PHP {
         foreach ($data as $c_row_id => $c_gotten) {
             $c_expected = $expected[$c_row_id];
             $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+    }
+
+    static function test_step_code__str_starts_with(&$test, $dpath, &$c_results) {
+
+        # case for console tests - each warning is an error
+        set_error_handler(
+            function($errno, $message, $file_path, $line_number) {
+                throw new \ErrorException(
+                    $message, 0,
+                    $errno,
+                    $file_path,
+                    $line_number
+                );
+            }
+        );
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '100';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => true ,
+            'string_2'     => false,
+            'string_X'     => false,
+            'int_0'        => false,
+            'int_1'        => true ,
+            'float_0'      => false,
+            'float_1'      => true ,
+            'bool_false'   => true ,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '010';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => false,
+            'string_2'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => false,
+            'float_0'      => true ,
+            'float_1'      => false,
+            'bool_false'   => true ,
+            'bool_true'    => false,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '001';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => false,
+            'string_2'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => false,
+            'float_0'      => true ,
+            'float_1'      => false,
+            'bool_false'   => true ,
+            'bool_true'    => false,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $needle = '0';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $haystack = [
+            'string_empty' => ''   ,
+            'string_1'     => '100',
+            'string_2'     => '010',
+            'string_3'     => '001',
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => null ,
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => false,
+            'string_1'     => false,
+            'string_2'     => true ,
+            'string_3'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => false,
+            'float_0'      => true ,
+            'float_1'      => false,
+            'bool_false'   => false,
+            'bool_true'    => false,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? false : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($haystack as $c_row_id => $c_haystack) {
+            try {
+                $c_gotten = @str_starts_with($c_haystack, $needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $needle = '1';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $haystack = [
+            'string_empty' => ''   ,
+            'string_1'     => '100',
+            'string_2'     => '010',
+            'string_3'     => '001',
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => null ,
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => false,
+            'string_1'     => true ,
+            'string_2'     => false,
+            'string_3'     => false,
+            'string_X'     => false,
+            'int_0'        => false,
+            'int_1'        => true ,
+            'float_0'      => false,
+            'float_1'      => true ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? false : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($haystack as $c_row_id => $c_haystack) {
+            try {
+                $c_gotten = @str_starts_with($c_haystack, $needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+    }
+
+    static function test_step_code__str_contains(&$test, $dpath, &$c_results) {
+
+        # case for console tests - each warning is an error
+        set_error_handler(
+            function($errno, $message, $file_path, $line_number) {
+                throw new \ErrorException(
+                    $message, 0,
+                    $errno,
+                    $file_path,
+                    $line_number
+                );
+            }
+        );
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '100';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => true ,
+            'string_2'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => true ,
+            'float_0'      => true ,
+            'float_1'      => true ,
+            'bool_false'   => true ,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_contains($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '010';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => true ,
+            'string_2'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => true ,
+            'float_0'      => true ,
+            'float_1'      => true ,
+            'bool_false'   => true ,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_contains($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $haystack = '001';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $needle = [
+            'string_empty' => ''   ,
+            'string_1'     => '1'  ,
+            'string_2'     => '0'  ,
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false, # (string)false === ''
+            'bool_true'    => true , # (string)true  === '1'
+            'null'         => null , # (string)null  === ''
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => true ,
+            'string_1'     => true ,
+            'string_2'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => true ,
+            'float_0'      => true ,
+            'float_1'      => true ,
+            'bool_false'   => true ,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? true : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($needle as $c_row_id => $c_needle) {
+            try {
+                $c_gotten = @str_contains($haystack, $c_needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $needle = '0';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $haystack = [
+            'string_empty' => ''   ,
+            'string_1'     => '100',
+            'string_2'     => '010',
+            'string_3'     => '001',
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => null ,
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => false,
+            'string_1'     => true ,
+            'string_2'     => true ,
+            'string_3'     => true ,
+            'string_X'     => false,
+            'int_0'        => true ,
+            'int_1'        => false,
+            'float_0'      => true ,
+            'float_1'      => false,
+            'bool_false'   => false,
+            'bool_true'    => false,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? false : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($haystack as $c_row_id => $c_haystack) {
+            try {
+                $c_gotten = @str_contains($c_haystack, $needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $needle = '1';
+
+        $c_results['reports'][$dpath][] = '';
+        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
+        $c_results['reports'][$dpath][] = '';
+
+        $haystack = [
+            'string_empty' => ''   ,
+            'string_1'     => '100',
+            'string_2'     => '010',
+            'string_3'     => '001',
+            'string_X'     => 'X'  ,
+            'int_0'        => 0    ,
+            'int_1'        => 1    ,
+            'float_0'      => 0.0  ,
+            'float_1'      => 1.0  ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => null ,
+            'array_empty'  => [ ]  ,
+            'array_0'      => [0]  ,
+            'array_1'      => [1]  ,
+            'class_std'    => new stdCLass,
+            'class_test'   => new Test,
+            'resource'     => fopen(DIR_ROOT.'license.md', 'r')
+        ];
+
+        $expected = [
+            'string_empty' => false,
+            'string_1'     => true ,
+            'string_2'     => true ,
+            'string_3'     => true ,
+            'string_X'     => false,
+            'int_0'        => false,
+            'int_1'        => true ,
+            'float_0'      => false,
+            'float_1'      => true ,
+            'bool_false'   => false,
+            'bool_true'    => true ,
+            'null'         => preg_match('/^8.0./', PHP_VERSION) ? false : 'exception',
+            'array_empty'  => 'exception',
+            'array_0'      => 'exception',
+            'array_1'      => 'exception',
+            'class_std'    => 'exception',
+            'class_test'   => 'exception',
+            'resource'     => 'exception'
+        ];
+
+        foreach ($haystack as $c_row_id => $c_haystack) {
+            try {
+                $c_gotten = @str_contains($c_haystack, $needle);
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            } catch (Throwable $e) {
+                $c_gotten = 'exception';
+                $c_expected = $expected[$c_row_id];
+                $c_result = $c_gotten === $c_expected;
+            }
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {

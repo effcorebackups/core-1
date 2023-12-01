@@ -11,9 +11,9 @@ namespace effcore;
 class Block_preset_link {
 
     public $id;
-    public $weight = 0;
+    public $weight = +0;
 
-    function __construct($id = null, $weight = 0) {
+    function __construct($id = null, $weight = +0) {
         if ($id    ) $this->id     = $id;
         if ($weight) $this->weight = $weight;
     }

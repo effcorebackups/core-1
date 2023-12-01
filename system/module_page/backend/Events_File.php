@@ -43,7 +43,7 @@ abstract class Events_File {
                     $type = File::types_get()[$settings->apply_tokens_for_sitemap ? 'xmld' : 'xml'];
                     if ($settings->apply_tokens_for_sitemap)
                          Event::start('on_file_load', 'dynamic', ['type_info' => &$type, 'file' => &$file]);
-                    else Event::start('on_file_load', 'static',  ['type_info' => &$type, 'file' => &$file]);
+                    else Event::start('on_file_load', 'static' , ['type_info' => &$type, 'file' => &$file]);
                     exit();
                 } break;
             case DIR_ROOT.'robots.txt':
@@ -53,7 +53,7 @@ abstract class Events_File {
                     $type = File::types_get()[$settings->apply_tokens_for_robots ? 'txtd' : 'txt'];
                     if ($settings->apply_tokens_for_robots)
                          Event::start('on_file_load', 'dynamic', ['type_info' => &$type, 'file' => &$file]);
-                    else Event::start('on_file_load', 'static',  ['type_info' => &$type, 'file' => &$file]);
+                    else Event::start('on_file_load', 'static' , ['type_info' => &$type, 'file' => &$file]);
                     exit();
                 } break;
             case DIR_ROOT.'favicon.ico':
@@ -130,7 +130,7 @@ abstract class Events_File {
                                 if (Media::is_type_for_thumbnail($type_info->type)) {
                                     if (isset($info['cover_thumbnails']) && is_array($info['cover_thumbnails'])) {
                                         if (isset($size) && isset($info['cover_thumbnails'][$size])) {
-                                            if (strpos($path, Dynamic::DIRECTORY) === 0) {
+                                            if (str_starts_with($path, Dynamic::DIRECTORY)) {
                                                 $settings = Module::settings_get('page');
                                                 if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                                 if ($size === 'middle') $width = $settings->thumbnail_width_middle;
@@ -225,7 +225,7 @@ abstract class Events_File {
                                 if (Media::is_type_for_thumbnail($type_info->type)) {
                                     if (isset($info['poster_thumbnails']) && is_array($info['poster_thumbnails'])) {
                                         if (isset($size) && isset($info['poster_thumbnails'][$size])) {
-                                            if (strpos($path, Dynamic::DIRECTORY) === 0) {
+                                            if (str_starts_with($path, Dynamic::DIRECTORY)) {
                                                 $settings = Module::settings_get('page');
                                                 if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                                 if ($size === 'middle') $width = $settings->thumbnail_width_middle;
@@ -302,7 +302,7 @@ abstract class Events_File {
                         if (Media::is_type_for_thumbnail($type_info->type)) {
                             if (isset($info['thumbnails']) && is_array($info['thumbnails'])) {
                                 if (isset($info['thumbnails'][$size])) {
-                                    if (strpos($path, Dynamic::DIRECTORY) === 0) {
+                                    if (str_starts_with($path, Dynamic::DIRECTORY)) {
                                         $settings = Module::settings_get('page');
                                         if ($size === 'small' ) $width = $settings->thumbnail_width_small;
                                         if ($size === 'middle') $width = $settings->thumbnail_width_middle;

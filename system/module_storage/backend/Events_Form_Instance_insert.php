@@ -58,7 +58,7 @@ abstract class Events_Form_Instance_insert {
                     if ($form->has_no_fields === false && empty($entity->has_message_for_additional_controls) === false) {
                         $form->child_select('fields')->child_insert(
                             new Markup('x-form-message', [], ['message' => new Text(
-                                'Additional controls will become available after insertion (in update mode).')
+                                'Additional controls will become available after appending.')
                             ], -500), 'message_additional_controls'
                         );
                     }
@@ -119,7 +119,7 @@ abstract class Events_Form_Instance_insert {
                 # insert action
                 $form->_result = $form->_instance->insert();
                 # show messages
-                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was inserted.',     ['type' => (new Text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was inserted.'    , ['type' => (new Text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
                 if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new Text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
                 # redirect if no error
                 if ($form->_result !== null) {

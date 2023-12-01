@@ -36,7 +36,7 @@ abstract class Events_Token {
                 break;
         }
         # colors
-        if (strpos($name, 'color__') === 0) {
+        if (str_starts_with($name, 'color__')) {
             $colors = Color::get_all();
             $is_all_colors_available = Color_preset::is_all_colors_available();
             if ($name === 'color__page'                  ) $color = $colors[ $is_all_colors_available ? $settings->color__page_id                   : 'default_1'    ];
@@ -70,11 +70,11 @@ abstract class Events_Token {
             if (empty($color->value_hex) !== true && $args->get_count() === 3) return $color->filter_shift((int)$args->get(0), (int)$args->get(1), (int)$args->get(2), 1, Color::RETURN_HEX);
             if (empty($color->value_hex) !== true && $args->get_count() === 4) return $color->filter_shift((int)$args->get(0), (int)$args->get(1), (int)$args->get(2), (float)$args->get(3), Color::RETURN_RGBA);
         }
-        if ($name === 'return_token_color_encode') {
+        if ($name === 'return_token_color_encoded') {
             if ($args->get_count() === 1) {
-                if ( (strpos($args->get(0), 'color__')        === 0 ||
-                      strpos($args->get(0), 'color_custom__') === 0) &&
-                      strpos($args->get(0), '%%') === false) {
+                if ( (str_starts_with($args->get(0), 'color__') ||
+                      str_starts_with($args->get(0), 'color_custom__')) &&
+                      str_contains   ($args->get(0), '%%') === false) {
                     $value = Token::apply('%%_'.$args->get(0));
                     if ($value) {
                         return rawurlencode($value);
@@ -84,9 +84,9 @@ abstract class Events_Token {
         }
         if ($name === 'return_if_token_color_is_dark') {
             if ($args->get_count() === 3) {
-                if ( (strpos($args->get(0), 'color__')        === 0 ||
-                      strpos($args->get(0), 'color_custom__') === 0) &&
-                      strpos($args->get(0), '%%') === false) {
+                if ( (str_starts_with($args->get(0), 'color__') ||
+                      str_starts_with($args->get(0), 'color_custom__')) &&
+                      str_contains   ($args->get(0), '%%') === false) {
                     $value = Token::apply('%%_'.$args->get(0));
                     if ($value) {
                         $is_dark = (new Color(null, $value))->is_dark();

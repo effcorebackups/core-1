@@ -118,12 +118,12 @@ table tbody tr:nth-child(odd)  td {background-color: %%_color__table_row_odd}
 table tbody tr:nth-child(even) td {background-color: %%_color__table_row_even}
 table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
 
-table [data-cellid^='checkbox'] {width: 1%; padding-right: 0}
-table [data-cellid^='checkbox'] x-field,
-table [data-cellid^='checkbox'] x-field input {margin: 0}
+table [data-cell-id$='checkbox_select'] {width: 1%; padding-right: 0}
+table [data-cell-id$='checkbox_select'] x-field,
+table [data-cell-id$='checkbox_select'] input[type='checkbox'] {margin: 0}
 
-table thead [data-cellid='actions'] {width: 1%}
-table tbody [data-cellid='actions']:empty::after {content: ''}
+table thead [data-cell-id='actions'] {width: 1%}
+table tbody [data-cell-id='actions']:empty::after {content: ''}
 
 table[data-style~='compact'] {font-size: .9em}
 table[data-style~='compact'] thead th {padding: 12px 7px}
@@ -149,13 +149,13 @@ x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color__table_r
 x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color__table_row_even}
 x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
 
-x-table [data-cellid^='checkbox'] {width: 1%; padding-right: 0}
-x-table [data-cellid^='checkbox'] x-field,
-x-table [data-cellid^='checkbox'] x-field input {margin: 0}
+x-table [data-cell-id$='checkbox_select'] {width: 1%; padding-right: 0}
+x-table [data-cell-id$='checkbox_select'] x-field,
+x-table [data-cell-id$='checkbox_select'] input[type='checkbox'] {margin: 0}
 
-x-table x-head [data-cellid='actions'] {width: 1%}
-x-table x-body [data-cellid='actions'] {text-align: right}
-x-table x-body [data-cellid='actions'] x-value:empty::after {content: ''}
+x-table x-head [data-cell-id='actions'] {width: 1%}
+x-table x-body [data-cell-id='actions'] {text-align: right}
+x-table x-body [data-cell-id='actions'] x-value:empty::after {content: ''}
 
 x-table[data-view-type='table-dl'] x-cell {vertical-align: top}
 x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: 30%; border-right: 5px solid %%_color__main}
@@ -164,6 +164,10 @@ x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title
 x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: %%_color__table_row_even}
 x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: %%_color__table_row_odd}
 x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: %%_color__table_row_even}
+
+x-table[data-view-type='table-dl'] x-cell[data-role='value']:empty::after {
+  content: 'x'; opacity: .3
+}
 
 x-table[data-style~='compact'] {font-size: .9em}
 x-table[data-style~='compact'] x-head x-cell {padding-top: 12px; padding-bottom: 12px}
@@ -187,8 +191,8 @@ x-table[data-style~='compact']        x-cell:last-child {padding-right: 17px}
   x-table x-cell x-title {margin-right: .5em}
   x-table x-cell x-title::after {content: ':'}
 
-  x-table x-body [data-cellid^='checkbox'] {width: auto; padding-right: 15px}
-  x-table x-body [data-cellid='actions'] {text-align: left}
+  x-table x-body [data-cell-id$='checkbox_select'] {width: auto; padding-right: 15px}
+  x-table x-body [data-cell-id='actions'] {text-align: left}
 
   x-table[data-view-type='table-dl'] {border-top: 5px solid %%_color__main}
   x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: auto; border-right: none}
@@ -332,18 +336,18 @@ x-messages ul[data-type='credentials'] li {
 /* x-actions */
 
 x-actions a [data-action-title] {display: none}
-x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encode(color__main)')    no-repeat 0  -1px}
-x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encode(color__main)')    no-repeat 0 -41px}
-x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encode(color__warning)') no-repeat 0 -61px}
+x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__main)')    no-repeat 0  -1px}
+x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__main)')    no-repeat 0 -41px}
+x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__warning)') no-repeat 0 -61px}
 
 /* x-sticker */
 
 x-sticker {
   display: inline-block;
   margin-right: 5px;
-  padding: 3px 7px;
+  padding: 3px 5px;
   cursor: default;
-  border-radius: 8px;
+  border-radius: 3px;
   line-height: 1.1em;
   color: white;
   background-color: gray}
@@ -356,7 +360,7 @@ x-sticker[title] {cursor: help}
                             x-sticker a {color: white !important}
 [data-page-palette-is-dark] x-sticker a {color: black !important}
 
-x-module-info x-sticker {padding: 3px 7px 2px 7px; line-height: 1em; font-size: .8em}
+x-module-info x-sticker {padding-top: 4px; line-height: 1em; font-size: .8em}
 x-module-info x-sticker x-version::before {content: 'v'}
 x-module-info x-sticker x-version {margin-left: .5em}
 
@@ -422,23 +426,6 @@ x-document[data-style~='report'] p[data-depth='8'] {margin-left: 120px}
 x-document[data-style~='report'] p[data-depth='9'] {margin-left: 135px}
 
 x-document[data-style~='license'] {}
-
-/* x-file-path */
-
-x-file-path {display: inline-block}
-x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('pictures/icons-file.svg') no-repeat; margin-right: 10px}
-x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('pictures/icons-file.svg') no-repeat 0 -30px}
-
-/* x-targets */
-
-x-targets {display: block; margin: 50px 0 150px 0}
-x-targets a {
-  display: inline-block;
-  margin: 2px 5px 2px 0;
-  padding: 5px 10px;
-  border: 1px solid %%_color__main;
-  border-radius: 10px;
-}
 
 /* x-diagram */
 
@@ -558,28 +545,34 @@ x-gallery-player x-viewing-part x-viewing-area video {display: inline-block; wid
   overflow: hidden; /* disable scroll on body */
 }
 
-/* manage-data-content */
+/* decorators view */
 
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item {display: inline-block; margin: 0 10px 10px 0}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block; max-width: 126px}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; max-width: 126px}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='audio'] img[data-type='cover'] {display: block; max-width: 126px; height: auto}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='audio'] x-audio-player {margin: 0; max-width: 126px}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='audio'] x-audio-player x-timeline {display: none}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-item[data-type='video'] video {margin: 0; max-width: 126px}
-[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cellid='items'] x-no-items {margin: 5px 0; border: 0}
+[data-decorator] [data-entity-field='access'] h3 {margin: 0}
+[data-decorator] [data-entity-field='access'] ul {margin: 0 0 0 20px; padding: 0; list-style: none}
 
-[data-css-path^='manage-data-content-picture' ] [data-decorator][data-entity_name='picture'] [data-cellid='preview'] img {width:  60px; display: block}
-[data-css-path^='manage-data-content-picture-'] [data-decorator][data-entity_name='picture'] [data-cellid='preview'] img {width: 100px}
+[data-decorator] [data-handler='handler__session__data'] h3 {margin: 0}
+[data-decorator] [data-handler$='_paths_as_links'] ul {margin: 0; padding: 0; list-style: none}
 
-[data-css-path^='manage-data-content-audio' ] [data-decorator][data-entity_name='audio'] [data-cellid='pre_listening'] x-audio-player {margin: 0}
-[data-css-path^='manage-data-content-audio-'] [data-decorator][data-entity_name='audio'] [data-cellid='pre_listening'] x-audio-player {margin: 0}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item {display: inline-block; max-width: 126px; margin: 0 10px 5px 0}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] {display: block}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='picture'] a[data-type='picture-wrapper'] img {display: block; width: 126px; height: auto}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='audio'] img[data-type='cover'] {display: block; width: 126px; height: auto}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='audio'] x-audio-player {margin: 0; min-width: 126px}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='audio'] x-audio-player x-timeline {display: none}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-item[data-type='video'] video {margin: 0; width: 126px; height: auto}
+[data-css-path^='manage-data-content-gallery-'] [data-decorator][data-entity_name='gallery'] [data-cell-id='items'] x-no-items {margin: 5px 0; border: 0}
 
-[data-css-path^='manage-data-content-video' ] [data-decorator][data-entity_name='video'] [data-cellid='preview'] video {width: 100px; margin: 0}
-[data-css-path^='manage-data-content-video-'] [data-decorator][data-entity_name='video'] [data-cellid='preview'] video {width: 300px; margin: 5px 0}
+[data-css-path^='manage-data-content-picture' ] [data-decorator][data-entity_name='picture'] [data-handler='handler__picture__preview'] img {width:  60px; display: block}
+[data-css-path^='manage-data-content-picture-'] [data-decorator][data-entity_name='picture'] [data-handler='handler__picture__preview'] img {width: 100px}
 
-[data-css-path^='manage-data-content-poll-'] [data-decorator][data-entity_name='poll'] [data-cellid='statistics'] x-diagram {}
-[data-css-path^='manage-data-content-poll-'] [data-decorator][data-entity_name='poll'] [data-cellid='statistics'] x-diagram-total x-title {display: inline}
+[data-css-path^='manage-data-content-audio' ] [data-decorator][data-entity_name='audio'] [data-handler='handler__audio__pre_listening'] x-audio-player {margin: 0}
+[data-css-path^='manage-data-content-audio-'] [data-decorator][data-entity_name='audio'] [data-handler='handler__audio__pre_listening'] x-audio-player {margin: 0}
+
+[data-css-path^='manage-data-content-video' ] [data-decorator][data-entity_name='video'] [data-handler='handler__video__preview'] video {width: 100px; margin: 0}
+[data-css-path^='manage-data-content-video-'] [data-decorator][data-entity_name='video'] [data-handler='handler__video__preview'] video {width: 300px; margin: 5px 0}
+
+[data-css-path^='manage-data-content-poll-'] [data-decorator][data-entity_name='poll'] [data-handler='handler__poll__statistics'] x-diagram {}
+[data-css-path^='manage-data-content-poll-'] [data-decorator][data-entity_name='poll'] [data-handler='handler__poll__statistics'] x-diagram-total x-title {display: inline}
 
 /* block 'system info' */
 

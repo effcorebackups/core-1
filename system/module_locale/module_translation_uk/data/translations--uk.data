@@ -17,26 +17,27 @@ translations
     - - root -: - корінь -
     - - select -: - вибрати -
     - - system value -: - системне значення -
-    - %%_entity_title_context\: delete: %%_entity_title_context: видалити
-    - %%_entity_title_context\: insert: %%_entity_title_context: вставити
-    - %%_entity_title_context\: update: %%_entity_title_context: оновити
+    - %%_entity_title_context \| append: %%_entity_title_context | додати
+    - %%_entity_title_context \| change: %%_entity_title_context | змінити
+    - %%_entity_title_context \| delete: %%_entity_title_context | видалити
     - %%_number sec.: %%_number сек.
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-i)
     - A new password was sent to the selected EMail address.: Новий пароль був надіслан на вибрану адресу електронної пошти.
+    - Absolute URL as link: Абсолютний URL як посилання
     - Absolute URL: Абсолютний URL
     - access allowed by permission "%%_permission": доступ дозволений за дозволом "%%_permission"
     - access allowed by role "%%_role": доступ дозволений по ролі "%%_role"
     - access allowed by user ID "%%_user": доступ дозволений по ID користувача "%%_user"
     - Access forbidden: Доступ заборонений
     - Access recovery form: Форма відновлення доступу
-    - Access settings are not applicable if no one role is active!: Налаштування доступу не застосовуються, якщо жодна роль не активна!
+    - Access settings are not applied if nothing is selected!: Налаштування доступу не застосовуються, якщо нічого не вибрано!
     - access: доступ
     - Access: Доступ
     - action: дія
     - Action: Дія
     - actions: дії
     - Actions: Дії
-    - Additional controls will become available after insertion (in update mode).: Додаткові елементи керування стануть доступними після вставки (в режимі оновлення).
+    - Additional controls will become available after appending.: Додаткові елементи керування стануть доступними після додавання.
     - Administrators: Адміністратори
     - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: Після перевищення значення "Кількість спроб входу" буде заблоковано можливість входу на вказаний час.
     - All caches was reset.: Усі кеші були скинуті.
@@ -52,6 +53,8 @@ translations
     - Anonymous: Анонім
     - Answer: Відповідь
     - Answers: Відповіді
+    - append and change: додати та змінити
+    - append: додати
     - apply: застосувати
     - Architecture: Архітектура
     - ascending: по зростанню
@@ -68,6 +71,8 @@ translations
     - audios: аудіо
     - Audios: Аудіо
     - Avatar path: Шлях аватара
+    - Avatar paths as links: Шляхи аватара як посилання
+    - Avatar paths: Шляхи аватара
     - Avatar: Аватар
     - B: Б
     - Be careful, your mistake may lead to XSS injection.: Будьте обережні, ваша помилка може призвести до впровадження XSS.
@@ -89,11 +94,13 @@ translations
     - button: кнопка
     - Button: Кнопка
     - Button\: text: Кнопка: текст
+    - by field type in the DB: за типом поля в БД
     - By languages: По мовах
     - Cache update form: Форма оновлення кешу
     - cache: кеш
     - cancel: відмінити
     - Canvas: Полотно
+    - change: змінити
     - Changes was deleted.: Зміни були видалені.
     - Changes was not deleted!: Зміни не були видалені!
     - Changes was not saved!: Зміни не були збережені!
@@ -136,6 +143,9 @@ translations
     - Copyright: Авторські права
     - Core: Ядро
     - Correct format\: "%%_format": Правильний формат: "%%_format"
+    - Cover path: Шлях обкладинки
+    - Cover paths as links: Шляхи обкладинки як посилання
+    - Cover paths: Шляхи обкладинки
     - Cover: Обкладинка
     - Created: Створено
     - Credentials for storage "%%_name" was not set!: Облікові дані для сховища "%%_name" не були задані!
@@ -165,10 +175,11 @@ translations
     - Delete item of type "%%_type" with ID = "%%_id"?: Видалити елемент типу "%%_type" з ID = "%%_id"?
     - delete: видалити
     - Delete: Видалити
-    - Demo: Демо
+    - Demonstration: Демонстрація
     - depend from modules: залежить від модулів
     - depend from PHP extensions: залежить від PHP-розширень
     - descending: по спаданню
+    - Description (raw): Опис (необроблений)
     - description: опис
     - Description: Опис
     - Develop: Розробка
@@ -234,6 +245,7 @@ translations
     - Feedback\: select: Відгук: вибрати
     - Feedback\: update: Відгук: оновити
     - Feedbacks: Відгуки
+    - FIELD "%%_name" IS REQUIRED: ПОТРІБНО ПОЛЕ "%%_name"
     - Field "%%_title" cannot be blank!: Поле "%%_title" не може бути порожнім!
     - Field "%%_title" contains a combination of values that is already in use!: Поле "%%_title" містить комбінацію значень, що вже використовується!
     - Field "%%_title" contains an error!: Поле "%%_title" містить помилку!
@@ -294,6 +306,7 @@ translations
     - File "%%_file" was not written to disc!: Файл "%%_file" не був записаний на диск!
     - File "%%_file" was written to disc.: Файл "%%_file" був записаний на диск.
     - file "%%_file": файл "%%_file"
+    - File access forbidden: Доступ до файлу заборонений
     - File can have a maximum size\: %%_value (PHP restriction): Файл може мати максимальний розмір: %%_value (обмеження PHP)
     - File can have a maximum size\: %%_value: Файл може мати максимальний розмір: %%_value
     - File can only be of the next types\: %%_types: Файл може бути тільки наступних типів: %%_types
@@ -339,6 +352,7 @@ translations
     - Form elements: Елементи форми
     - form: форма
     - Form: Форма
+    - Format: Формат
     - Formats: Формати
     - forms: форми
     - Forms: Форми
@@ -371,6 +385,10 @@ translations
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" повинна містити щонайменше один вибраний елемент!
     - Group "%%_title".: Група "%%_title".
     - Group: Група
+    - handler: обробник
+    - Handler: Обробник
+    - handlers: обробники
+    - Handlers: Обробники
     - Hash sum (md5): Хеш-сума (md5)
     - Hash sum: Хеш-сума
     - Headers: Заголовки
@@ -390,8 +408,6 @@ translations
     - Info\: manage: Інформація: керувати
     - Information about the selected entry: Інформація про обраний запис
     - Information: Інформація
-    - Insert a new item of type "%%_entity_title_context" on new page.: Вставити новий елемент типу "%%_entity_title_context" на новій сторінці.
-    - insert and update: вставити та оновити
     - Insert block: Вставити блок
     - insert: вставити
     - Insert: Вставити
@@ -411,13 +427,12 @@ translations
     - Is apply tokens: Застосувати токени
     - Is apply translation: Застосувати переклад
     - Is current: Поточний
-    - Is do not apply formatting: Не застосовувати форматування
     - is embedded: вбудований
     - Is embedded: Вбудований
     - Is enabled: Увімкнений
     - Is fixed IP: Фікс. IP
+    - Is long session: Довгий сеанс
     - Is not visible: Не видно
-    - Is trimmed: Обрізане
     - Is visible: Видно
     - It is recommended that you change your password directly on %%_domain.: Рекомендується змінити пароль безпосередньо на %%_domain.
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Елемент "%%_dpath_value" знаходиться поза дозволеними межами!
@@ -491,6 +506,7 @@ translations
     - Locale: Локаль
     - Locale\: manage: Локаль: керувати
     - Logic: Логіка
+    - Login attempts: Спроби входу
     - Login form: Форма входу
     - login: вхід
     - Login: Вхід
@@ -504,6 +520,7 @@ translations
     - Long session, in days: Тривалий сеанс, у днях
     - long session: довготривалий сеанс
     - LOST FIELD: ВТРАЧЕНЕ ПОЛЕ
+    - LOST HANDLER: ВТРАЧЕНИЙ ХЕНДЛЕР
     - LOST LAYOUT\: %%_id: ВТРАЧЕНИЙ МАКЕТ: %%_id
     - M: М
     - Main color: Основний колір
@@ -540,7 +557,7 @@ translations
     - Module data "%%_title" (%%_id) was removed.: Дані модуля %%_title (%%_id) були видалені.
     - Module for demonstrating capabilities.: Модуль демонстрації можливостей.
     - Module for development.: Модуль для розробок.
-    - Module for example of profile "Classic".: Модуль для прикладу профілю "Класика".
+    - Module for example of profile "Classic".: Модуль для прикладу профілю "Класичний".
     - Module for localization.: Модуль для локалізації.
     - Module for publishing projects.: Модуль для публікації проектів.
     - Module for storages support.: Модуль для підтримки сховищ даних.
@@ -600,6 +617,7 @@ translations
     - Origin: Походження
     - ORPHANED BLOCK: ОСИРОТІЛИЙ БЛОК
     - Other: Інші
+    - Page access forbidden: Доступ до сторінки заборонений
     - Page actions: Події сторінки
     - Page not found: Сторінка не знайдена
     - Page title: Заголовок сторінки
@@ -618,8 +636,12 @@ translations
     - Parent ID: ID батька
     - Password recovery on %%_domain: Відновлення пароля на %%_domain
     - Password: Пароль
+    - Path as link: Шлях як посилання
     - path: шлях
     - Path: Шлях
+    - Paths as links: Шляхи як посилання
+    - paths: шляхи
+    - Paths: Шляхи
     - pcs.: шт.
     - Permission ID: ID дозволу
     - Permission: Дозвіл
@@ -634,6 +656,7 @@ translations
     - PHP PCRE version: PHP PCRE версія
     - PHP version: PHP версія
     - picture "%%_picture": зображення "%%_picture"
+    - picture: зображення
     - Picture: Зображення
     - Picture\: delete: Зображення: видалити
     - Picture\: insert: Зображення: вставити
@@ -649,6 +672,8 @@ translations
     - Port: Порт
     - Possible options can be seen on page\: %%_page: Можливі варіанти можна побачити на сторінці: %%_page
     - Poster path: Шлях плаката
+    - Poster paths as links: Шляхи плаката як посилання
+    - Poster paths: Шляхи плаката
     - Poster: Плакат
     - Pre-listening: Попереднє прослуховування
     - Prefix: Префікс
@@ -708,11 +733,11 @@ translations
     - reset: скидання
     - restore repository: відновити репозиторій
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Відновити облікові дані сховища в "%%_file" або перевстановіть цю систему на сторінці: %%_link
+    - review: огляд
     - right to left (rtl): справа наліво (rtl)
     - right to left: справа наліво
     - robots.txt editing form: Форма редагування robots.txt
     - Role ID: ID ролі
-    - Role IDs: ID ролів
     - role: роль
     - Role: Роль
     - Role\: delete: Роль: видалити
@@ -809,13 +834,16 @@ translations
     - Tabs\: link: Вкладки: посилання
     - Telephone number: Номер телефону
     - Template "%%_name" was not found!: Шаблон "%%_name" не був знайдений!
-    - Template (item): Шаблон (елемент)
+    - Template for a group of items: Шаблон для групи елементів
+    - Template for item: Шаблон для елемента
+    - Template settings: Налаштування шаблону
     - Template: Шаблон
     - Templates: Шаблони
     - Temporary login blocking, in minutes: Тимчасове блокування входу, у хвилинах
     - Test execution form: Форма виконання тесту
     - Test: Тест
     - Tests: Тести
+    - Text (raw): Текст (необроблений)
     - Text area: Текстова область
     - Text direction code: Код напрямку тексту
     - Text direction: Напрямок тексту
@@ -871,19 +899,21 @@ translations
     - Uninstall the modules where the dependencies were found and then you can install module "%%_title".: Видаліть модулі, в яких були виявлені залежності, і потім Ви зможете встановити модуль "%%_title".
     - uninstall: видалити
     - Uninstall: Видалити
+    - universal handlers: універсальні обробники
     - Unknown error!: Невідома помилка!
     - Unordered list: Невпорядкований список
     - update: оновити
     - Update: Оновити
     - updated: оновлено
     - Updated: Оновлено
+    - URL as link: URL як посилання
     - Use global META: Використовувати глобальний МЕТА
     - User agent: Агент користувача
     - User ID: ID користувача
+    - User IDs: ID користувачів
     - User information: Інформація про користувача
     - User name: Ім'я користувача
-    - User permissions: Дозволи користувача
-    - User roles: Ролі користувача
+    - User type as text: Тип користувача як текст
     - User type: Тип користувача
     - User update form: Форма оновлення користувача
     - User update: Оновлення користувача
@@ -947,6 +977,7 @@ translations
     - version: версія
     - Version: Версія
     - video "%%_video": відео "%%_video"
+    - video: відео
     - Video: Відео
     - Video\: delete: Відео: видалити
     - Video\: insert: Відео: вставити

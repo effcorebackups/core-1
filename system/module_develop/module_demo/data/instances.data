@@ -86,7 +86,7 @@ instances
     entity_name: role
     values
     - id: demo
-    - title: Demo
+    - title: Demonstration
 # ─────────────────────────────────────────────────────────────────────
 # trees
 # ─────────────────────────────────────────────────────────────────────
@@ -167,12 +167,14 @@ instances
     values
     - id: 2
     - description: row with non-default values
+    - f_varchar: text with translation
+    - f_blob: text with translation
     - f_integer: 123456
     - f_real: 0.000002
-    - f_varchar: text
-    - f_time: 12:34:56
-    - f_date: 2030-12-31
-    - f_datetime: 2030-12-31 12:34:56
-    - f_datetime_local: 2030-12-31 12:34:56
+    - f_time_1: 12:34:56
+    - f_time_2: 12:34:56
+    - f_date_1: 2030-12-31
+    - f_date_2: 2030-12-31
+    - f_datetime_1: 2030-12-31 12:34:56
+    - f_datetime_2: 2030-12-31 12:34:56
     - f_boolean: 1
-    - f_blob: 12345

@@ -37,19 +37,19 @@ class Field_DateTime extends Field_Text {
         }
     }
 
-    function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
+    function value_get() { # @return: null | string
         $value = parent::value_get();
-        if ($value !== null && Security::validate_T_datetime($value)) $value = Core::T_datetime_to_datetime($value);
-        return $value;
+        if (is_string($value) && Security::validate_T_datetime($value)) return Core::T_datetime_to_datetime($value);
+        if (is_string($value))                                          return                              $value;
+        if (is_null  ($value))                                          return                              $value;
     }
 
     function value_set($value) {
         $this->value_set_initial($value);
-        if (is_null($value) || is_string($value)) {
-            if ($value === null && $this->value_current_if_null === true) $value = Core::datetime_get();
-            if ($value !== null && Security::validate_datetime($value))   $value = Core::datetime_to_T_datetime($value);
-            parent::value_set($value);
-        }
+        if (is_null  ($value) && $this->value_current_if_null !== true) return parent::value_set('');
+        if (is_null  ($value) && $this->value_current_if_null === true) return parent::value_set(Core::datetime_to_T_datetime(Locale::datetime_utc_to_loc(Core::datetime_get())));
+        if (is_string($value) && Security::validate_datetime($value))   return parent::value_set(Core::datetime_to_T_datetime($value));
+        if (is_string($value))                                          return parent::value_set($value);
     }
 
     ###########################
@@ -64,7 +64,8 @@ class Field_DateTime extends Field_Text {
             if ($field->disabled_get()) return true;
             if ($field->readonly_get()) return true;
             $new_value = Request::value_get($name, static::current_number_generate($name), $form->source_get());
-            $new_value = strlen($new_value) === 16 ? $new_value.':00' : $new_value;
+            if (strlen($new_value) === 16) $new_value.= ':00';
+            if (Security::validate_datetime($new_value)) $new_value = Core::datetime_to_T_datetime($new_value);
             $old_value = $field->value_get_initial();
             $result = static::validate_required  ($field, $form, $element, $new_value) &&
                       static::validate_minlength ($field, $form, $element, $new_value) &&
@@ -80,12 +81,11 @@ class Field_DateTime extends Field_Text {
     }
 
     static function validate_value($field, $form, $element, &$new_value) {
-        if (strlen($new_value) && !Security::validate_T_datetime($new_value)) {
+        if (strlen($new_value) && !(Security::validate_datetime($new_value) || Security::validate_T_datetime($new_value))) {
             $field->error_set(
                 'Value of "%%_title" field is not a valid date and time!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
-            $new_value = Security::sanitize_T_datetime($new_value);
             return true;
         }
     }

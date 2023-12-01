@@ -13,7 +13,7 @@ class Event implements cache_cleaning_after_install {
     public $for;
     public $handler;
     public $skip_console_log = false;
-    public $weight = 0;
+    public $weight = +0;
 
     ###########################
     ### static declarations ###
@@ -87,9 +87,9 @@ class Event implements cache_cleaning_after_install {
                     if ($c_event->skip_console_log === false) Console::log_insert('event', 'beginning', ltrim($c_event->handler, '\\'), null, 0);
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
                     Timer::tap('event call: '.$type);
-                    if ($on_before_step)                       call_user_func_array($on_before_step,   ['event' => $c_event] + $args);
+                    if ($on_before_step)                       call_user_func_array($on_before_step  , ['event' => $c_event] + $args);
                     $result[$c_event->handler][] = $c_return = call_user_func_array($c_event->handler, ['event' => $c_event] + $args);
-                    if ($on_after_step)                        call_user_func_array($on_after_step,    ['event' => $c_event] + $args);
+                    if ($on_after_step)                        call_user_func_array($on_after_step   , ['event' => $c_event] + $args);
                     Timer::tap('event call: '.$type);
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
                     if ($c_event->skip_console_log === false) Console::log_insert('event', 'ending', ltrim($c_event->handler, '\\'), $c_return ? 'ok' : null, Timer::period_get('event call: '.$type, -1, -2));
@@ -105,7 +105,7 @@ class Event implements cache_cleaning_after_install {
     static function start_local($method, &$object, $args = []) {
         static::start('on_event_start_local_before', null, ['method' => $method, 'object' => &$object, 'args' => $args]);
         $result = call_user_func_array(get_class($object).'::'.$method, [&$object] + $args);
-        static::start('on_event_start_local_after',  null, ['method' => $method, 'object' => &$object, 'args' => $args]);
+        static::start('on_event_start_local_after' , null, ['method' => $method, 'object' => &$object, 'args' => $args]);
         return $result;
     }
 

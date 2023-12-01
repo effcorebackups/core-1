@@ -18,7 +18,7 @@ class Widget_Blocks extends Widget_Items {
     public $name_complex = 'widget_blocks';
     public $id_area;
 
-    function __construct($id_area, $attributes = [], $weight = 0) {
+    function __construct($id_area, $attributes = [], $weight = +0) {
         $this->id_area = $id_area;
         parent::__construct($attributes, $weight);
     }
@@ -34,9 +34,9 @@ class Widget_Blocks extends Widget_Items {
         $title_markup = isset($presets[$item->id]) ?
                              [$presets[$item->id]->managing_group, ': ',
                               $presets[$item->id]->managing_title] : 'ORPHANED BLOCK';
-        $info_markup = new Markup('x-info',  [], [
+        $info_markup = new Markup('x-info' , [], [
             'title' => new Markup('x-title', [], $title_markup),
-            'id'    => new Markup('x-id',    [], new Text_simple($item->id) ) ]);
+            'id'    => new Markup('x-id'   , [], new Text_simple($item->id) ) ]);
         # create widget_settings and prepare item (copy properties from Block_preset to Block_preset_link)
         if ($item instanceof Block_preset_link) {
             if (!isset($item->title) ||
@@ -84,12 +84,12 @@ class Widget_Blocks extends Widget_Items {
         $result_validation = Field_Select::on_validate($widget->controls['#insert'], $form, $npath);
         $widget->controls['#insert']->required_set(false);
         if ($result_validation) {
-            $min_weight = 0;
+            $min_weight = +0;
             $items = $widget->items_get();
             foreach ($items as $c_row_id => $c_item)
                 $min_weight = min($min_weight, $c_item->weight);
             $new_item = new Block_preset_link($widget->controls['#insert']->value_get());
-            $new_item->weight = count($items) ? $min_weight - 5 : 0;
+            $new_item->weight = count($items) ? $min_weight - +5 : +0;
             $items[] = $new_item;
             $widget->items_set($items);
             $widget->controls['#insert']->value_set('');

@@ -103,24 +103,24 @@ abstract class Core {
 
     static function structure_autoload($name) {
         $name = mb_strtolower($name);
-        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Timer.php',                      'ok'); return;}
-        if ($name === 'effcore\\storage_data'      ) {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_Data.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_Data.php',   'ok'); return;}
-        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php',            'ok'); return;}
-        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php',   'ok'); return;}
+        if ($name === 'effcore\\timer'             ) {require_once(DIR_SYSTEM.'module_core/backend/Timer.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Timer.php'                     , 'ok'); return;}
+        if ($name === 'effcore\\storage_data'      ) {require_once(DIR_SYSTEM.'module_storage/backend/patterns/Storage_Data.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_storage/backend/patterns/Storage_Data.php'  , 'ok'); return;}
+        if ($name === 'effcore\\module'            ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module.php'           , 'ok'); return;}
+        if ($name === 'effcore\\module_embedded'   ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_embedded.php'  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_embedded.php'  , 'ok'); return;}
         if ($name === 'effcore\\module_as_profile' ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Module_as_profile.php'); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Module_as_profile.php', 'ok'); return;}
-        if ($name === 'effcore\\security'          ) {require_once(DIR_SYSTEM.'module_core/backend/Security.php'                  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Security.php',                   'ok'); return;}
-        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Data.php',                       'ok'); return;}
-        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                   ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php',                    'ok'); return;}
-        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/File.php',                       'ok'); return;}
-        if ($name === 'effcore\\directory'         ) {require_once(DIR_SYSTEM.'module_core/backend/Directory.php'                 ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Directory.php',                  'ok'); return;}
-        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Cache.php',                      'ok'); return;}
-        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'          ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php',           'ok'); return;}
-        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php',            'ok'); return;}
-        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php',              'ok'); return;}
-        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php',       'ok'); return;}
-        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'   ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php',    'ok'); return;}
-        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php',       'ok'); return;}
-        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php',              'ok'); return;}
+        if ($name === 'effcore\\security'          ) {require_once(DIR_SYSTEM.'module_core/backend/Security.php'                  ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Security.php'                  , 'ok'); return;}
+        if ($name === 'effcore\\data'              ) {require_once(DIR_SYSTEM.'module_core/backend/Data.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Data.php'                      , 'ok'); return;}
+        if ($name === 'effcore\\dynamic'           ) {require_once(DIR_SYSTEM.'module_core/backend/Dynamic.php'                   ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Dynamic.php'                   , 'ok'); return;}
+        if ($name === 'effcore\\file'              ) {require_once(DIR_SYSTEM.'module_core/backend/File.php'                      ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/File.php'                      , 'ok'); return;}
+        if ($name === 'effcore\\directory'         ) {require_once(DIR_SYSTEM.'module_core/backend/Directory.php'                 ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Directory.php'                 , 'ok'); return;}
+        if ($name === 'effcore\\cache'             ) {require_once(DIR_SYSTEM.'module_core/backend/Cache.php'                     ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/Cache.php'                     , 'ok'); return;}
+        if ($name === 'effcore\\message'           ) {require_once(DIR_SYSTEM.'module_core/backend/patterns/Message.php'          ); Console::log_simple_insert('file', 'insertion', 'system/module_core/backend/patterns/Message.php'          , 'ok'); return;}
+        if ($name === 'effcore\\markup'            ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Markup.php'           ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Markup.php'           , 'ok'); return;}
+        if ($name === 'effcore\\node'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node.php'             , 'ok'); return;}
+        if ($name === 'effcore\\node_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Node_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Node_simple.php'      , 'ok'); return;}
+        if ($name === 'effcore\\text_multiline'    ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_multiline.php'   ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_multiline.php'   , 'ok'); return;}
+        if ($name === 'effcore\\text_simple'       ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text_simple.php'      ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text_simple.php'      , 'ok'); return;}
+        if ($name === 'effcore\\text'              ) {require_once(DIR_SYSTEM.'module_page/backend/patterns/Text.php'             ); Console::log_simple_insert('file', 'insertion', 'system/module_page/backend/patterns/Text.php'             , 'ok'); return;}
         $c_item_info = static::structures_select()[$name] ?? null;
         if ($c_item_info !== null) Console::log_insert('autoload', 'search', $name, 'ok');
         if ($c_item_info === null) Console::log_insert('autoload', 'search', $name, 'error');
@@ -249,7 +249,7 @@ abstract class Core {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function is_handler($string) {
-        return strpos($string, '::') !== false;
+        return str_contains($string, '::');
     }
 
     static function handler_exists($handler) {
@@ -546,21 +546,23 @@ abstract class Core {
     }
 
     static function array_sort_by_number(&$array, $key = 'weight', $order = self::SORT_ASC) {
-        $increments = []; # note: with preservation of order for equal values
-        foreach ($array as &$c_item) {
-            $c_value = is_object($c_item) ? $c_item->{$key} : $c_item[$key];
-            if ($order === static::SORT_ASC) $increments[$c_value] = array_key_exists($c_value, $increments) ? $increments[$c_value] - .0001 : 0;
-            if ($order === static::SORT_DSC) $increments[$c_value] = array_key_exists($c_value, $increments) ? $increments[$c_value] + .0001 : 0;
-            if (is_object($c_item)) $c_item->_synthetic_weight   = $c_value + $increments[$c_value];
-            else                    $c_item['_synthetic_weight'] = $c_value + $increments[$c_value];
-        }
-        uasort($array, function ($a, $b) use ($order) {
-            if ($order === static::SORT_ASC) return (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']) <=> (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']);
-            if ($order === static::SORT_DSC) return (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']) <=> (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']);
-        });
-        foreach ($array as &$c_item) {
-            if (is_object($c_item)) unset($c_item->_synthetic_weight);
-            else                    unset($c_item['_synthetic_weight']);
+        if (count($array) > 1) {
+            $corrections = [];
+            foreach ($array as &$c_item) {
+                $c_weight = is_object($c_item) ? $c_item->{$key} : $c_item[$key];
+                if ($order === static::SORT_ASC) $corrections[$c_weight] = array_key_exists($c_weight, $corrections) ? $corrections[$c_weight] - .0001 : 0;
+                if ($order === static::SORT_DSC) $corrections[$c_weight] = array_key_exists($c_weight, $corrections) ? $corrections[$c_weight] + .0001 : 0;
+                if (is_object($c_item)) $c_item->_synthetic_weight   = $c_weight + $corrections[$c_weight];
+                else                    $c_item['_synthetic_weight'] = $c_weight + $corrections[$c_weight];
+            }
+            uasort($array, function ($a, $b) use ($order) {
+                if ($order === static::SORT_ASC) return (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']) <=> (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']);
+                if ($order === static::SORT_DSC) return (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']) <=> (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']);
+            });
+            foreach ($array as &$c_item) {
+                if (is_object($c_item)) unset($c_item->_synthetic_weight);
+                else                    unset($c_item['_synthetic_weight']);
+            }
         }
         return $array;
     }
@@ -579,7 +581,7 @@ abstract class Core {
     static function array_search__value_in_array_item($value, $array) {
         $result = [];
         foreach ($array as $c_key => $c_value)
-            if (strpos((string)$c_value, (string)$value) === 0)
+            if (str_starts_with((string)$c_value, (string)$value))
                 $result[$c_key] = $c_value;
         return $result;
     }
@@ -587,7 +589,7 @@ abstract class Core {
     static function array_search__array_item_in_value($value, $array) {
         $result = [];
         foreach ($array as $c_key => $c_value)
-            if (strpos((string)$value, (string)$c_value) === 0)
+            if (str_starts_with((string)$value, (string)$c_value))
                 $result[$c_key] = $c_value;
         return $result;
     }
@@ -678,12 +680,17 @@ abstract class Core {
     ### functionality for date|time ###
     ###################################
 
-    static function timezone_get_client() {return User::get_current()->timezone ?? 'UTC';}
-    static function timezone_get_offset_sec($name = 'UTC') {return (new DateTimeZone($name))->getOffset(new DateTime);}
-    static function timezone_get_offset_tme($name = 'UTC') {return (new DateTime('now', new DateTimeZone($name)))->format('P');}
+    static function timezone_get_server()   {return                                  'UTC';}
+    static function timezone_get_client()   {return User::get_current()->timezone ?? 'UTC';}
+    static function timezone_set_client($timezone) {User::get_current()->timezone = $timezone;}
+
+    static function timezone_get_offset_s($name = 'UTC') {$value = (new DateTimeZone($name))->getOffset(new DateTime); return $value;}
+    static function timezone_get_offset_m($name = 'UTC') {$value = (new DateTimeZone($name))->getOffset(new DateTime); return $value ? $value / 60      : 0;}
+    static function timezone_get_offset_h($name = 'UTC') {$value = (new DateTimeZone($name))->getOffset(new DateTime); return $value ? $value / 60 / 60 : 0;}
+    static function timezone_get_offset_string_time($name = 'UTC') {return (new DateTime('now', new DateTimeZone($name)))->format('P');}
 
     static function T_datetime_to_datetime($datetime) {$date = DateTime::createFromFormat('Y-m-d\\TH:i:s', $datetime, new DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d H:i:s'  );}
-    static function datetime_to_T_datetime($datetime) {$date = DateTime::createFromFormat('Y-m-d H:i:s',   $datetime, new DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
+    static function datetime_to_T_datetime($datetime) {$date = DateTime::createFromFormat('Y-m-d H:i:s'  , $datetime, new DateTimeZone('UTC') ); if ($date) return $date->format('Y-m-d\\TH:i:s');}
 
     static function       date_get($offset = '', $format = 'Y-m-d'        ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
     static function       time_get($offset = '', $format =       'H:i:s'  ) {return (new DateTime('now', new DateTimeZone('UTC')))->modify( $offset ?: '+0' )->format( $format );}
@@ -697,8 +704,8 @@ abstract class Core {
     static function format_number($number, $precision = 0, $dec_point = '.', $thousands = '', $no_zeros = true) {
         $result = $precision > 0 ? # disable the rounding effect
              substr(number_format($number, $precision + 1, $dec_point, $thousands), 0, -1) :
-                    number_format($number, $precision,     $dec_point, $thousands);
-        if ($no_zeros && strpos($result, $dec_point) !== false) {
+                    number_format($number, $precision    , $dec_point, $thousands);
+        if ($no_zeros && str_contains($result, $dec_point)) {
             $result = rtrim($result, '0');
             $result = rtrim($result, $dec_point);
         }
@@ -746,16 +753,16 @@ abstract class Core {
         return $result;
     }
 
-    static function random_part_get() {
+    static function random_part_generate() {
         $hex_time = str_pad(dechex(time()),                        8, '0', STR_PAD_LEFT);
         $hex_rand = str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);
         return $hex_time.$hex_rand;
     }
 
-    static function number_part_get($name, $keys) {
+    static function numerical_suffix_generate($name, $used_names) {
         $used_numbers = [];
-        foreach ($keys as $c_name) {
-            if (strpos($c_name, $name) === 0) {
+        foreach ($used_names as $c_name) {
+            if (str_starts_with($c_name, $name)) {
                 $suffix = substr($c_name, strlen($name));
                 if ((string)$suffix === (string)(int)$suffix) {
                     $used_numbers[]= (int)$suffix; }}}
@@ -824,6 +831,12 @@ abstract class Core {
 
     static function to_null_if_empty($value) {
         return $value ?: null;
+    }
+
+    static function to_current_lang($value) {
+        $result = Translation::filter($value, Language::code_get_current());
+        if ($result) return implode(NL, $result);
+        else         return '';
     }
 
     static function to_markdown($value) {

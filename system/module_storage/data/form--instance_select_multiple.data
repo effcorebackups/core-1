@@ -19,7 +19,7 @@ forms
         attributes
         - title|Text
             is_apply_tokens: true
-            text: Insert a new item of type "%%_entity_title_context" on new page.
+            text: append
         - data-style: insert
         - value: insert
         - disabled: true

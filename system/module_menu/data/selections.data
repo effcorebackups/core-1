@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_tree_id_context
+          text: %%_selection__tree__id__context
     fields
     - main
       - id
@@ -54,7 +54,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_tree_item_id_context
+          text: %%_selection__tree_item__id__context
     fields
     - main
       - id
@@ -75,6 +75,7 @@ selections
           weight: +320
       - url
           entity_field_name: url
+          is_not_visible: true
           weight: +300
       - link_attributes
           entity_field_name: link_attributes
@@ -97,9 +98,13 @@ selections
           is_apply_translation: true
           weight: +160
     - handlers
-      - url_absolute
+      - handler__any__url_as_link
+          title: URL
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link
+          weight: +300
+      - handler__any__url_as_link_absolute
           title: Absolute URL
-          handler: \effcore\modules\page\Events_Selection::handler__any__url_absolute
+          handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link_absolute
           weight: +280
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-tree|Selection

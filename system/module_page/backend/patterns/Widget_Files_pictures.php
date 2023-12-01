@@ -44,8 +44,8 @@ class Widget_Files_pictures extends Widget_Files {
             foreach ($value as $c_row_id => $c_item) {
                 if (Media::media_class_get($c_item->object->type) === 'picture') {
                     $decorator->data[$c_row_id] = [
-                        'type'     => ['value' => 'picture'],
-                        'num'      => ['value' => $c_row_id],
+                        'type'     => ['value' => 'picture', 'is_apply_translation' => false],
+                        'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
                         'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
                     ];
                 }
@@ -100,7 +100,7 @@ class Widget_Files_pictures extends Widget_Files {
         $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_picture;
         $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
         $result->child_insert($field_file_picture, 'field_file_picture');
-        $result->child_insert($button_insert,      'button_insert');
+        $result->child_insert($button_insert     , 'button_insert');
         return $result;
     }
 

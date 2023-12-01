@@ -19,7 +19,7 @@ class Button extends Markup {
     public $break_on_request_value_set = false;
     public $break_on_validate = false;
 
-    function __construct($title = null, $attributes = [], $weight = 0) {
+    function __construct($title = null, $attributes = [], $weight = +0) {
         $this->title = $title;
         parent::__construct(null, $attributes, [], $weight);
     }

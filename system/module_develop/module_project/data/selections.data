@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_project_id_context
+          text: %%_selection__project__id__context
     fields
     - main
       - id
@@ -45,14 +45,14 @@ selections
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_project_release_id_project_context
+              text: %%_selection__project_release__id_project__context
         - build
           - field_!f: build
           - operator: =
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_project_release_build_context
+              text: %%_selection__project_release__build__context
     fields
     - main
       - id_project
@@ -65,21 +65,33 @@ selections
           entity_field_name: description
           is_apply_translation: true
           weight: +360
+      - description__raw
+          title: Description (raw)
+          entity_field_name: description
+          converters
+            on_render|_empty_array
+          weight: +340
       - path
           entity_field_name: path
-          weight: +340
+          is_not_visible: true
+          weight: +320
       - hash_sum
           entity_field_name: hash_sum
-          weight: +320
+          weight: +300
       - created
           entity_field_name: created
-          weight: +300
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: +280
+          weight: +260
       - downloads_num
           entity_field_name: downloads_num
-          weight: +260
+          weight: +240
+    - handlers
+      - handler__any__path_as_link
+          title: Path
+          handler: \effcore\modules\page\Events_Selection::handler__any__path_as_link
+          weight: +320
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-project|Selection
     id: instance_select_multiple-project
@@ -182,9 +194,9 @@ selections
           is_apply_translation: true
           weight: +300
     - handlers
-      - download_link
+      - handler__project_release__path_as_link
           title: Download link
-          handler: \effcore\modules\project\Events_Selection::handler__project_release__download_link
+          handler: \effcore\modules\project\Events_Selection::handler__project_release__path_as_link
           is_apply_translation: true
           weight: +280
 - project_releases|Selection
@@ -232,8 +244,8 @@ selections
           is_apply_translation: true
           weight: +300
     - handlers
-      - download_link
+      - handler__project_release__path_as_link
           title: Download link
-          handler: \effcore\modules\project\Events_Selection::handler__project_release__download_link
+          handler: \effcore\modules\project\Events_Selection::handler__project_release__path_as_link
           is_apply_translation: true
           weight: +280

@@ -13,10 +13,10 @@ class Node_simple {
     public $template;
     public $is_xml_style = false;
     public $attributes = [];
-    public $weight = 0;
+    public $weight = +0;
     public $is_builded = false;
 
-    function __construct($attributes = [], $weight = 0) {
+    function __construct($attributes = [], $weight = +0) {
         $this->weight = $weight;
         foreach ($attributes as $c_key => $c_value) {
             $this->attribute_insert($c_key, $c_value);
@@ -43,7 +43,7 @@ class Node_simple {
         $attr_value = $this->attribute_select($name, $scope);
         if ( (is_string($attr_value) || is_numeric($attr_value)) &&
              (is_string($value     ) || is_numeric($value     )) && strlen($value) && strlen($attr_value) )
-             return strpos((string)$attr_value, (string)$value) !== false;
+             return str_contains((string)$attr_value, (string)$value);
         else return false;
     }
 

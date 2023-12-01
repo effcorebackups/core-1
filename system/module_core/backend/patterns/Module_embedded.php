@@ -52,7 +52,7 @@ class Module_embedded {
     public $dependencies;
     public $enabled = 'yes';
     public $icon_path;
-    public $deploy_weight = 0;
+    public $deploy_weight = +0;
 
     function enable() {
         if (Core::boot_insert($this->id, $this->path, 'enabled')) {
@@ -70,7 +70,7 @@ class Module_embedded {
 
         foreach (Entity::get_all_by_module($this->id) as $c_entity) {
             if ($c_entity->install())
-                 Message::insert(new Text('Table "%%_name" was installed.',     ['name' => $c_entity->table_name])         );
+                 Message::insert(new Text('Table "%%_name" was installed.'    , ['name' => $c_entity->table_name])         );
             else Message::insert(new Text('Table "%%_name" was not installed!', ['name' => $c_entity->table_name]), 'error');
         }
 
@@ -105,7 +105,7 @@ class Module_embedded {
         foreach (Instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
             if ($c_instance->insert())
-                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was inserted.',     ['row_id' => $c_row_id])         );
+                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was inserted.'    , ['row_id' => $c_row_id])         );
             else Message::insert(new Text('Table row with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
         }
@@ -135,7 +135,7 @@ class Module_embedded {
                 }
                 # trying to copy the file
                 if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
-                     Message::insert(new Text('File was copied from "%%_from" to "%%_to".',     ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
+                     Message::insert(new Text('File was copied from "%%_from" to "%%_to".'    , ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
                 else Message::insert(new Text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
             }
         }

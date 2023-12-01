@@ -15,15 +15,15 @@ class Area extends Markup {
     public $id;
     public $title;
     public $type; # null | table | row | column
-    public $render_weight = 0;
+    public $render_weight = +0;
     public $managing_is_enabled = false;
 
     function build() {
         if (!$this->is_builded) {
             if ($this->type) $this->attribute_insert('data-area-type', $this->type);
-            if ($this->id  ) $this->attribute_insert('data-area-id',   $this->id  );
+            if ($this->id  ) $this->attribute_insert('data-area-id'  , $this->id  );
             if ($this->id && $this->managing_is_enabled) $this->child_insert(new Markup('x-area-info', [], [
-                'id'       => new Markup('x-area-id',       [], new Text_simple($this->id)),
+                'id'       => new Markup('x-area-id'      , [], new Text_simple($this->id)),
                 'tag_name' => new Markup('x-area-tag-name', [], new Text_simple($this->tag_name_real)) ]), 'id');
             $this->is_builded = true;
         }

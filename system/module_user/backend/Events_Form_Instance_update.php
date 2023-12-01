@@ -85,7 +85,7 @@ abstract class Events_Form_Instance_update {
                         $result = $entity->instances_select([
                             'where' => [
                                 'conjunction_!and' => [
-                                    'id_role'       => ['field_!f' => 'id_role',       'operator' => '=', 'value_!v' => $id_role          ],
+                                    'id_role'       => ['field_!f' => 'id_role'      , 'operator' => '=', 'value_!v' => $id_role          ],
                                     'id_permission' => ['field_!f' => 'id_permission', 'operator' => '=', 'value_!v' => $id_permission_new] ]],
                             'limit' => 1]);
                         if ($result) {

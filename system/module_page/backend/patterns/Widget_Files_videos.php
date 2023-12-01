@@ -41,8 +41,8 @@ class Widget_Files_videos extends Widget_Files {
             foreach ($value as $c_row_id => $c_item) {
                 if (Media::media_class_get($c_item->object->type) === 'video') {
                     $decorator->data[$c_row_id] = [
-                        'type'     => ['value' => 'video'  ],
-                        'num'      => ['value' => $c_row_id],
+                        'type'     => ['value' => 'video'  , 'is_apply_translation' => false],
+                        'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
                         'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
                     ];
                 }
@@ -111,9 +111,9 @@ class Widget_Files_videos extends Widget_Files {
         if (true                      ) $widget->controls[  '#file'.($group ? '_'.$group : '')] = $field_file_video;
         if ($widget->poster_is_allowed) $widget->controls['#poster'                           ] = $field_file_picture_poster;
         if (true                      ) $widget->controls['~insert'.($group ? '_'.$group : '')] = $button_insert;
-        if (true                      ) $result->child_insert($field_file_video,          'field_file_video');
+        if (true                      ) $result->child_insert($field_file_video         , 'field_file_video');
         if ($widget->poster_is_allowed) $result->child_insert($field_file_picture_poster, 'field_file_picture_poster');
-        if (true                      ) $result->child_insert($button_insert,             'button_insert');
+        if (true                      ) $result->child_insert($button_insert            , 'button_insert');
         return $result;
     }
 

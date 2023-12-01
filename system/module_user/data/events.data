@@ -99,7 +99,3 @@ events
       for: user_edit
       weight: +500
       handler: \effcore\modules\user\Events_Page_User_edit::on_check_access_and_existence_and_set_page_args
-  # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-  on_tree_build_after
-  - all|Event
-      handler: \effcore\modules\user\Events_Page::on_tree_build_after

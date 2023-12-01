@@ -68,6 +68,7 @@ class Widget_Selection_decorator extends Control implements Control_complex {
 
     static function widget_manage_get($widget) {
         $result = new Node;
+
         # control for type of view
         $field_select_view_type = new Field_Select;
         $field_select_view_type->cform = $widget->cform;
@@ -86,30 +87,40 @@ class Widget_Selection_decorator extends Control implements Control_complex {
         $field_select_view_type->build();
         $field_select_view_type->name_set($widget->name_get_complex().'__view_type');
         $field_select_view_type->value_set('table');
-        # controls for templates
-        $template_items = [];
+
+        ##############################
+        ### controls for templates ###
+        ##############################
+
+        $fieldset_template_settings = new Fieldset('Template settings');
+        $fieldset_template_settings->state = 'closed';
+
+        $templates_list = [];
         $templates = Template::get_all();
         foreach ($templates as $c_template) {
             if ($c_template->type === 'text') {
                 $c_name = preg_replace('%_embedded$%S', '', $c_template->name);
-                $template_items[$c_name] = $c_name; }}
-        Core::array_sort($template_items);
+                $templates_list[$c_name] = ' '.$c_name; }}
+        Core::array_sort($templates_list);
+
         $field_select_template = new Field_Select;
         $field_select_template->cform = $widget->cform;
         $field_select_template->attributes['data-role'] = 'template';
-        $field_select_template->title = 'Template';
-        $field_select_template->items_set(['not_selected' => '- select -'] + $template_items);
+        $field_select_template->title = 'Template for a group of items';
+        $field_select_template->items_set(['not_selected' => '- select -'] + $templates_list);
         $field_select_template->build();
         $field_select_template->name_set($widget->name_get_complex().'__template');
         $field_select_template->value_set('markup_html');
+
         $field_select_template_item = new Field_Select;
         $field_select_template_item->cform = $widget->cform;
         $field_select_template_item->attributes['data-role'] = 'template-item';
-        $field_select_template_item->title = 'Template (item)';
-        $field_select_template_item->items_set(['not_selected' => '- select -'] + $template_items);
+        $field_select_template_item->title = 'Template for item';
+        $field_select_template_item->items_set(['not_selected' => '- select -'] + $templates_list);
         $field_select_template_item->build();
         $field_select_template_item->name_set($widget->name_get_complex().'__template_item');
         $field_select_template_item->value_set('content');
+
         # control for mapping
         $field_textarea_data_mapping = new Field_Textarea_data;
         $field_textarea_data_mapping->cform = $widget->cform;
@@ -139,15 +150,17 @@ class Widget_Selection_decorator extends Control implements Control_complex {
             'children'        => 'items',
             'items'           => 'items',
         ], 'mapping');
+
         # relate new controls with the widget
         $widget->controls['#view_type'    ] = $field_select_view_type;
         $widget->controls['#template'     ] = $field_select_template;
         $widget->controls['#template_item'] = $field_select_template_item;
         $widget->controls['#mapping'      ] = $field_textarea_data_mapping;
-        $result->child_insert($field_select_view_type,      'field_select_view_type');
-        $result->child_insert($field_select_template,       'field_select_template');
-        $result->child_insert($field_select_template_item,  'field_select_template_item');
-        $result->child_insert($field_textarea_data_mapping, 'field_textarea_data_mapping');
+        $fieldset_template_settings->child_insert($field_select_template      , 'field_select_template');
+        $fieldset_template_settings->child_insert($field_select_template_item , 'field_select_template_item');
+        $fieldset_template_settings->child_insert($field_textarea_data_mapping, 'field_textarea_data_mapping');
+        $result->child_insert($field_select_view_type     , 'field_select_view_type');
+        $result->child_insert($fieldset_template_settings , 'fieldset_template_settings');
         return $result;
     }
 

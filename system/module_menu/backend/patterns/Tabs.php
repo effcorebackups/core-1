@@ -17,7 +17,7 @@ class Tabs extends Node {
     public $attributes = ['role' => 'tablist'];
     public $origin = 'nosql'; # nosql | dynamic
 
-    function __construct($id = null, $attributes = [], $weight = 0) {
+    function __construct($id = null, $attributes = [], $weight = +0) {
         if ($id) $this->id = $id;
         parent::__construct($attributes, [], $weight);
     }
@@ -128,7 +128,7 @@ class Tabs extends Node {
         return static::$cache[$id] ?? null;
     }
 
-    static function insert($id, $attributes = [], $weight = 0, $module_id = null) {
+    static function insert($id, $attributes = [], $weight = +0, $module_id = null) {
         static::init();
         $new_tab = new static($id, $attributes, $weight);
                static::$cache[$id] = $new_tab;

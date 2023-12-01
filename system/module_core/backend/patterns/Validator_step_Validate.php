@@ -33,7 +33,7 @@ class Validator_step_Validate {
                 if ($result !== true && isset($this->on_failure)) foreach ($this->on_failure as $c_dpath_in_cycle => $c_step) $c_step->run($data_validator, $c_dpath_scenario.':on_failure/'.$c_dpath_in_cycle, $c_dpath_value, $c_value, $c_results);
             }
         }
-        if (strpos($this->check, 'parent_') === 0) {
+        if (str_starts_with($this->check, 'parent_')) {
             if (Core::in_array($this->where, ['dpath', 'type', 'value'])) {
                 $depth = (int)substr($this->check, strlen('parent_'));
                 if ($depth > 0 && isset($c_results['parents_info'][                                    $depth])) $parent = $c_results['parents_info'][                                    $depth];

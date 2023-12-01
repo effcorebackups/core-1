@@ -960,10 +960,10 @@ abstract class Events_Test__Class_Security {
             if ($c_gotten_i !== $c_gotten_alternative ||
                 $c_gotten_f !== $c_gotten_alternative) {
                 $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'range: -1000000 … +1000000', 'result' => (new Text('failure'))->render()]);
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value',  ['value' => $c_gotten_i]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value',    ['value' => $c_gotten_alternative]);
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value',  ['value' => $c_gotten_f]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value',    ['value' => $c_gotten_alternative]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_gotten_i]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value'  , ['value' => $c_gotten_alternative]);
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_gotten_f]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value'  , ['value' => $c_gotten_alternative]);
                 $c_results['reports'][$dpath][] = $c_f_value.' | f_min = '    .$f_min.
                                                              ' | f_max = '    .$f_max.
                                                              ' | f_step = '   .$f_step.

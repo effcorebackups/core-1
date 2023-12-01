@@ -33,16 +33,14 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
     public $managing_is_enabled = false;
     public $managing_group_id = 'content';
 
-    public $access_select;
-    public $access_insert;
-    public $access_update;
-    public $access_delete;
+    public $access;
 
     function _postparse() {
-        if ($this->managing_is_enabled && $this->access_select === null) $this->access_select = (object)['roles' => ['admins' => 'admins']];
-        if ($this->managing_is_enabled && $this->access_insert === null) $this->access_insert = (object)['roles' => ['admins' => 'admins']];
-        if ($this->managing_is_enabled && $this->access_update === null) $this->access_update = (object)['roles' => ['admins' => 'admins']];
-        if ($this->managing_is_enabled && $this->access_delete === null) $this->access_delete = (object)['roles' => ['admins' => 'admins']];
+        if ($this->access === null) $this->access = new stdClass;
+        if ($this->managing_is_enabled && empty($this->access->on_select)) $this->access->on_select = (object)['roles' => ['admins' => 'admins']];
+        if ($this->managing_is_enabled && empty($this->access->on_insert)) $this->access->on_insert = (object)['roles' => ['admins' => 'admins']];
+        if ($this->managing_is_enabled && empty($this->access->on_update)) $this->access->on_update = (object)['roles' => ['admins' => 'admins']];
+        if ($this->managing_is_enabled && empty($this->access->on_delete)) $this->access->on_delete = (object)['roles' => ['admins' => 'admins']];
         # insert field 'is_embedded'
         if ($this->with_is_embedded) {
             $this->fields['is_embedded'] = new stdClass;
@@ -91,6 +89,7 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
             $this->fields['data']->converters->on_select = 'unserialize';
             $this->fields['data']->converters->on_insert = '\\effcore\\Core::data_serialize';
             $this->fields['data']->converters->on_update = '\\effcore\\Core::data_serialize';
+            $this->fields['data']->converters->on_render = '\\effcore\\Core::data_serialize';
         }
     }
 

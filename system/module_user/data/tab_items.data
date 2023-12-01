@@ -74,6 +74,16 @@ tab_items
       - =: admins
       permissions
       - =: manage_data__user_user_permission__select
+- data_user_session|Tab_item
+    id: data_user_session
+    id_parent: data_user_user
+    id_tab: data
+    action_name: user/session
+    title: Sessions
+    weight: +420
+    access
+      roles
+      - =: admins
 - data_user_feedback|Tab_item
     id: data_user_feedback
     id_parent: data_user

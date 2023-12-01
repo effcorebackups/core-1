@@ -33,20 +33,11 @@ class Field_Time extends Field_Text {
         }
     }
 
-    function value_get() { # @return: null | string | __OTHER_TYPE__ (when "value" in *.data is another type)
-        $value = parent::value_get();
-        if         (Security::validate_time($value))
-             return Security::sanitize_time($value);
-        else return $value;
-    }
-
     function value_set($value) {
         $this->value_set_initial($value);
-        if (is_null($value) || is_string($value)) {
-            if ($this->value_current_if_null === true && $value === null) $value = Locale::time_utc_to_loc(Core::time_get());
-            if (Security::validate_time($value)) parent::value_set(Security::sanitize_time($value));
-            else                                 parent::value_set(                        $value );
-        }
+        if (is_null  ($value) && $this->value_current_if_null !== true) return parent::value_set('');
+        if (is_null  ($value) && $this->value_current_if_null === true) return parent::value_set(Locale::time_utc_to_loc(Core::time_get()));
+        if (is_string($value))                                          return parent::value_set($value);
     }
 
     ###########################
@@ -82,7 +73,6 @@ class Field_Time extends Field_Text {
                 'Value of "%%_title" field is not a valid time!', ['title' => (new Text($field->title))->render() ]
             );
         } else {
-            $new_value = Security::sanitize_time($new_value);
             return true;
         }
     }

@@ -70,7 +70,7 @@ class Field_Number extends Field_Text {
         if (strlen($new_value)) {
             $string_step        = Core::format_number($field->step_get() ?: 1, Core::FPART_MAX_LEN);
             $step__fpart_length = Core::fractional_part_length_get($string_step, false);
-            $value_fpart_length = Core::fractional_part_length_get($new_value,   false);
+            $value_fpart_length = Core::fractional_part_length_get($new_value  , false);
             if ($value_fpart_length > Core::FPART_MAX_LEN ||
                 $value_fpart_length > $step__fpart_length) {
                 $field->error_set(new Text(

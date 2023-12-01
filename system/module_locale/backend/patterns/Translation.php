@@ -89,4 +89,16 @@ class Translation implements has_Data_cache {
         }
     }
 
+    static function filter($string, $code = '**', $strict = false) {
+        $result = [];
+        $parsed = preg_split('%\\%\\%\\_'.'lang'.'(?<code>\\('.'[a-z\\*]{2}'.'\\)|)%S', $string, -1, PREG_SPLIT_DELIM_CAPTURE);
+        for ($i = 0, $cur_code = '**'; $i < count($parsed); $i++) {
+            if (strlen($parsed[$i]) === 0) { $cur_code = '**';                    continue; }
+            if (strlen($parsed[$i]) === 4) { $cur_code = trim($parsed[$i], '()'); continue; }
+            if ($cur_code === '**' && $strict === false) $result[] = $parsed[$i];
+            if ($cur_code === $code                    ) $result[] = $parsed[$i];
+        }
+        return $result;
+    }
+
 }

@@ -30,7 +30,7 @@ abstract class Events_Form_Vote {
             $form->_answers = Poll::answers_by_poll_id_select($form->_id_poll);
             $form->_total            = $form->_poll->data['cache']['total'           ] ?? Poll::votes_total_select              (array_keys($form->_answers));
             $form->_total_by_answers = $form->_poll->data['cache']['total_by_answers'] ?? Poll::votes_id_total_by_answers_select(array_keys($form->_answers));
-            if ($form->_id_user) $form->_votes = Poll::votes_id_by_user_id_select   ($form->_id_user,    array_keys($form->_answers));
+            if ($form->_id_user) $form->_votes = Poll::votes_id_by_user_id_select   ($form->_id_user   , array_keys($form->_answers));
             else                 $form->_votes = Poll::votes_id_by_session_id_select($form->_id_session, array_keys($form->_answers));
             $form->child_select('fields')->children_delete();
             $form->child_select('fields')->title = $form->_poll->question;
@@ -110,7 +110,7 @@ abstract class Events_Form_Vote {
             case 'vote':
                 # insert votes by Answer ID or User ID, update cache
                 foreach ($form->_poll->is_multiple ? $items['*answers']->value_get() : [$items['*answers']->value_get()] as $c_id_answer)
-                    if ($form->_id_user) $result = Poll::votes_by_user_id_insert   ($form->_id_user,    $c_id_answer);
+                    if ($form->_id_user) $result = Poll::votes_by_user_id_insert   ($form->_id_user   , $c_id_answer);
                     else                 $result = Poll::votes_by_session_id_insert($form->_id_session, $c_id_answer);
                 if ($result) {
                     $form->_poll->select();
@@ -127,7 +127,7 @@ abstract class Events_Form_Vote {
                 break;
             case 'cancel':
                 # delete votes by Answer ID or User ID, update cache
-                if ($form->_id_user) $result = Poll::votes_by_user_id_delete   ($form->_id_user,    array_keys($form->_answers));
+                if ($form->_id_user) $result = Poll::votes_by_user_id_delete   ($form->_id_user   , array_keys($form->_answers));
                 else                 $result = Poll::votes_by_session_id_delete($form->_id_session, array_keys($form->_answers));
                 if ($result) {
                     $form->_poll->select();

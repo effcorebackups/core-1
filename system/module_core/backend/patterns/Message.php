@@ -57,7 +57,7 @@ class Message extends Markup {
 
     static function cleaning($id_session = null) {
         if ($id_session) $where = [     'id_!f' => 'id_session',      'id_operator' => '=',      'id_!v' => $id_session];
-        else             $where = ['expired_!f' => 'expired',    'expired_operator' => '<', 'expired_!v' => time()     ];
+        else             $where = ['expired_!f' => 'expired'   , 'expired_operator' => '<', 'expired_!v' => time()     ];
         Entity::get('message')->instances_delete([
             'where' => $where
         ]);
@@ -85,7 +85,7 @@ class Message extends Markup {
             'where' => [
                 'conjunction_!and' => [
                     'id_session' => ['field_!f' => 'id_session', 'operator' => '=', 'value_!v' => Session::id_get()],
-                    'expired'    => ['field_!f' => 'expired',    'operator' => '>', 'value_!v' => time()]]]
+                    'expired'    => ['field_!f' => 'expired'   , 'operator' => '>', 'value_!v' => time()]]]
         ]);
         if (count($instances)) {
             foreach ($instances as $c_instance)

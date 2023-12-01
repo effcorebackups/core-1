@@ -39,12 +39,12 @@ class Widget_Texts extends Widget_Items {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_button_click_insert($widget, $form, $npath, $button) {
-        $min_weight = 0;
+        $min_weight = +0;
         $items = $widget->items_get();
         foreach ($items as $c_row_id => $c_item)
             $min_weight = min($min_weight, $c_item->weight);
         $new_item = new stdClass;
-        $new_item->weight = count($items) ? $min_weight - 5 : 0;
+        $new_item->weight = count($items) ? $min_weight - +5 : +0;
         $new_item->id = 0;
         $new_item->text = '';
         $items[] = $new_item;

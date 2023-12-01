@@ -25,7 +25,7 @@ class Widget_Selection_query_conditions extends Widget_Items {
         if (count($items)) {
             Core::array_sort_by_number($items);
             foreach ($items as $c_row_id => $c_item) {
-                $c_field_name_info = Field_Select_entity_field_name::parse_value($c_item->field_name);
+                $c_field_name_info = Field_Select_entity_field::parse_value($c_item->field_name);
                 $c_operator        = $c_item->operator;
                 $c_value           = $c_item->value;
                 if ($c_field_name_info !== null) {
@@ -68,7 +68,7 @@ class Widget_Selection_query_conditions extends Widget_Items {
                 $c_keys   = array_keys  ($c_condition);
                 $c_values = array_values($c_condition);
                 $c_count  =        count($c_condition);
-                $c_weight = isset($c_weight) ? $c_weight - 5 : 0;
+                $c_weight = isset($c_weight) ? $c_weight - +5 : +0;
                 $items[$c_row_id] = new stdClass;
                 $items[$c_row_id]->weight = $c_weight;
                 if ($c_count  >  1 && substr($c_keys[0], -2) === '!f'      ) $items[$c_row_id]->field_name = $c_values[0][0] === '~' ? ltrim($c_values[0], '~') : $this->_instance->main_entity_name.'.'.$c_values[0];
@@ -88,16 +88,15 @@ class Widget_Selection_query_conditions extends Widget_Items {
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
         # control for condition field name
-        $field_select_entity_field_name = new Field_Select_entity_field_name;
-        $field_select_entity_field_name->cform = $widget->cform;
-        $field_select_entity_field_name->attributes['data-role'] = 'field-name';
-        $field_select_entity_field_name->attributes['data-style'] = 'inline';
-        $field_select_entity_field_name->description_state = 'hidden';
-        $field_select_entity_field_name->disabled = Field_Select_entity_field_name::generate_disabled_items([$widget->_instance->main_entity_name]);
-        $field_select_entity_field_name->title = 'Field';
-        $field_select_entity_field_name->build();
-        $field_select_entity_field_name->name_set($widget->name_get_complex().'__field_name__'.$c_row_id);
-        $field_select_entity_field_name->value_set($item->field_name ?? null);
+        $field_select_entity_field = new Field_Select_entity_field;
+        $field_select_entity_field->cform = $widget->cform;
+        $field_select_entity_field->attributes['data-role'] = 'field';
+        $field_select_entity_field->attributes['data-style'] = 'inline';
+        $field_select_entity_field->description_state = 'hidden';
+        $field_select_entity_field->title = 'Field';
+        $field_select_entity_field->build($widget->_instance->main_entity_name);
+        $field_select_entity_field->name_set($widget->name_get_complex().'__field_name__'.$c_row_id);
+        $field_select_entity_field->value_set($item->field_name ?? null);
         # control for condition operator
         $field_select_operator = new Field_Select;
         $field_select_operator->cform = $widget->cform;
@@ -134,24 +133,24 @@ class Widget_Selection_query_conditions extends Widget_Items {
         $field_text_value->maxlength_set(10000);
         $field_text_value->value_set($item->value ?? null);
         # relate new controls with the widget
-        $widget->controls['#field_name__'.$c_row_id] = $field_select_entity_field_name;
+        $widget->controls['#field_name__'.$c_row_id] = $field_select_entity_field;
         $widget->controls['#operator__'  .$c_row_id] = $field_select_operator;
         $widget->controls['#value__'     .$c_row_id] = $field_text_value;
-        $result->child_insert($field_select_entity_field_name, 'field_select_entity_field_name');
-        $result->child_insert($field_select_operator,          'field_select_operator');
-        $result->child_insert($field_text_value,               'field_text_value');
+        $result->child_insert($field_select_entity_field, 'field_select_entity_field');
+        $result->child_insert($field_select_operator    , 'field_select_operator');
+        $result->child_insert($field_text_value         , 'field_text_value');
         return $result;
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_button_click_insert($widget, $form, $npath, $button) {
-        $min_weight = 0;
+        $min_weight = +0;
         $items = $widget->items_get();
         foreach ($items as $c_row_id => $c_item)
             $min_weight = min($min_weight, $c_item->weight);
         $new_item = new stdClass;
-        $new_item->weight = count($items) ? $min_weight - 5 : 0;
+        $new_item->weight = count($items) ? $min_weight - +5 : +0;
         $new_item->field_name = '';
         $new_item->operator   = '';
         $new_item->value      = '';

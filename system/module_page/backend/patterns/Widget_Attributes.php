@@ -24,15 +24,14 @@ class Widget_Attributes extends Widget_Items {
     ### static declarations ###
     ###########################
 
-    static function value_to_attributes($value) {
+    static function value_to_attributes($value, $is_apply_origin_translation = true) {
         if ($value) {
             Core::array_sort_by_number($value);
             $attributes = [];
-            foreach ($value as $c_item)
-                $attributes[$c_item->name] = new Text(
-                            $c_item->value, [],
-                     !empty($c_item->is_apply_translation),
-                     !empty($c_item->is_apply_tokens));
+            foreach ($value as $c_item) {
+                if ($is_apply_origin_translation === true) $attributes[$c_item->name] = new Text($c_item->value, [], !empty($c_item->is_apply_translation), !empty($c_item->is_apply_tokens));
+                if ($is_apply_origin_translation !== true) $attributes[$c_item->name] = new Text($c_item->value, [],                 false                , !empty($c_item->is_apply_tokens));
+            }
             return $attributes;
         }
     }
@@ -74,7 +73,7 @@ class Widget_Attributes extends Widget_Items {
         # relate new controls with the widget
         $widget->controls['#name__'. $c_row_id] = $field_text_name;
         $widget->controls['#value__'.$c_row_id] = $widget_text_object_value;
-        $result->child_insert($field_text_name,          'field_text_name');
+        $result->child_insert($field_text_name         , 'field_text_name');
         $result->child_insert($widget_text_object_value, 'widget_text_object_value');
         return $result;
     }
@@ -82,12 +81,12 @@ class Widget_Attributes extends Widget_Items {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_button_click_insert($widget, $form, $npath, $button) {
-        $min_weight = 0;
+        $min_weight = +0;
         $items = $widget->items_get();
         foreach ($items as $c_row_id => $c_item)
             $min_weight = min($min_weight, $c_item->weight);
         $new_item = new stdClass;
-        $new_item->weight               = count($items) ? $min_weight - 5 : 0;
+        $new_item->weight               = count($items) ? $min_weight - +5 : +0;
         $new_item->name                 = '';
         $new_item->value                = '';
         $new_item->is_apply_translation = false;

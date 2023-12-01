@@ -65,7 +65,7 @@ abstract class Events_Form_Instance_delete {
         switch ($form->clicked_button->value_get()) {
             case 'delete':
                 $form->_result = $form->_instance->delete();
-                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.',     ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id])         );
+                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.'    , ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id])         );
                 if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id]), 'error');
                 # redirect if no error
                 if ($form->_result !== null) {

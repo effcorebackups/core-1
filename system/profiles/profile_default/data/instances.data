@@ -402,37 +402,102 @@ instances
         - id
             title: ID
             entity_field_name: id
-            weight: +400
+            weight: +0
         - nickname
             title: Nickname
             entity_field_name: nickname
-            weight: +380
+            weight: -5
         - avatar_path
             title: Avatar path
             entity_field_name: avatar_path
-            weight: +360
+            is_not_visible: true
+            weight: -10
         - timezone
             title: Time zone
             entity_field_name: timezone
             is_apply_translation: true
-            weight: +340
+            weight: -15
         - created
             title: Created
             entity_field_name: created
-            weight: +320
+            weight: -20
         - updated
             title: Updated
             entity_field_name: updated
-            weight: +300
+            weight: -25
         - is_embedded
             title: Is embedded
             entity_field_name: is_embedded
             is_apply_translation: true
-            weight: +280
+            weight: -30
       - handlers
-        - roles
+        - handler__user__avatar_paths_as_links
+            title: Avatar paths
+            handler: \effcore\modules\user\Events_Selection::handler__user__avatar_paths_as_links
+            weight: -35
+        - handler__user__roles
             title: Roles
             handler: \effcore\modules\user\Events_Selection::handler__user__roles
             is_apply_translation: true
-            weight: -400
+            weight: -40
+        - handler__user__permissions
+            title: Permissions
+            handler: \effcore\modules\user\Events_Selection::handler__user__permissions
+            is_apply_translation: true
+            weight: -45
+    - is_embedded: 1
+- selection_user_sessions|Instance
+    entity_name: selection
+    values
+    - id: user_sessions
+    - title: Sessions
+    - main_entity_name: session
+    - data
+      - is_custom_conditions: true
+      - pager_is_enabled: true
+    - decorator_settings
+      - view_type: table-adaptive
+    - query_settings
+      - where
+        - id_user_!f: id_user
+        - id_user_operator: =
+        - id_user_!v|Text
+            is_apply_translation: false
+            is_apply_tokens: true
+            text: %%_user_id
+      - limit: 50
+    - fields
+      - main
+        - id
+            title: ID
+            entity_field_name: id
+            is_not_visible: true
+            weight: -10
+        - is_fixed_ip
+            title: Is fixed IP
+            entity_field_name: is_fixed_ip
+            is_apply_translation: true
+            weight: -15
+        - expired
+            title: Expiration date
+            entity_field_name: expired
+            weight: -20
+        - data
+            entity_field_name: data
+            is_not_visible: true
+            weight: -25
+      - handlers
+        - handler__any__checkbox_select
+            handler: \effcore\modules\page\Events_Selection::handler__any__checkbox_select
+            weight: +0
+        - handler__session__is_current
+            title: Is current
+            handler: \effcore\modules\user\Events_Selection::handler__session__is_current
+            is_apply_translation: true
+            weight: -5
+        - handler__session__data
+            title: Data
+            handler: \effcore\modules\user\Events_Selection::handler__session__data
+            is_apply_translation: true
+            weight: -30
     - is_embedded: 1

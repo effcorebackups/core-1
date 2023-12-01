@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_poll_id_context
+          text: %%_selection__poll__id__context
     fields
     - main
       - id
@@ -51,14 +51,15 @@ selections
           is_apply_translation: true
           weight: +200
     - handlers
-      - user_type
+      - handler__poll__user_type_as_text
           title: User type
-          handler: \effcore\modules\poll\Events_Selection::handler__poll__user_type
+          handler: \effcore\modules\poll\Events_Selection::handler__poll__user_type_as_text
           is_apply_translation: true
           weight: +320
-      - statistics
+      - handler__poll__statistics
           title: Statistics
           handler: \effcore\modules\poll\Events_Selection::handler__poll__statistics
+          is_apply_translation: true
           weight: +260
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-poll|Selection

@@ -284,10 +284,10 @@ abstract class Events_Test__Class_Request {
             'transposition_2' => [0 => ''           ],
             'transposition_3' => [0 => 'X'          ],
             'transposition_4' => [          1 => '' ],
-            'transposition_5' => [0 => '',  1 => '' ],
+            'transposition_5' => [0 => '' , 1 => '' ],
             'transposition_6' => [0 => 'X', 1 => '' ],
             'transposition_7' => [          1 => 'Y'],
-            'transposition_8' => [0 => '',  1 => 'Y'],
+            'transposition_8' => [0 => '' , 1 => 'Y'],
             'transposition_9' => [0 => 'X', 1 => 'Y']
         ];
 
@@ -477,22 +477,22 @@ abstract class Events_Test__Class_Request {
             'transposition_2' => [0 => ''           ],
             'transposition_3' => [0 => 'X'          ],
             'transposition_4' => [          1 => '' ],
-            'transposition_5' => [0 => '',  1 => '' ],
+            'transposition_5' => [0 => '' , 1 => '' ],
             'transposition_6' => [0 => 'X', 1 => '' ],
             'transposition_7' => [          1 => 'Y'],
-            'transposition_8' => [0 => '',  1 => 'Y'],
+            'transposition_8' => [0 => '' , 1 => 'Y'],
             'transposition_9' => [0 => 'X', 1 => 'Y']
         ];
 
         $expected = [
-            'transposition_1' => [],
-            'transposition_2' => [''],
-            'transposition_3' => ['X'],
-            'transposition_4' => [''], # index '1' convert to '0' after sanitization
-            'transposition_5' => ['', ''],
-            'transposition_6' => ['X', ''],
-            'transposition_7' => ['Y'], # index '1' convert to '0' after sanitization
-            'transposition_8' => ['', 'Y'],
+            'transposition_1' => [        ],
+            'transposition_2' => [''      ],
+            'transposition_3' => ['X'     ],
+            'transposition_4' => [''      ], # index '1' convert to '0' after sanitization
+            'transposition_5' => ['' ,  ''],
+            'transposition_6' => ['X', '' ],
+            'transposition_7' => ['Y'     ], # index '1' convert to '0' after sanitization
+            'transposition_8' => ['' , 'Y'],
             'transposition_9' => ['X', 'Y']
         ];
 
@@ -643,47 +643,47 @@ abstract class Events_Test__Class_Request {
             ],
             # input[name="file[]",value="file1.png,file2.png",multiple="multiple"]
             'field_array__file1_file2_multiple' => [
-                'name'     => [0 => 'file1.png',        1 => 'file2.png'],
-                'type'     => [0 => 'image/png',        1 => 'image/png'],
+                'name'     => [0 => 'file1.png'       , 1 => 'file2.png'],
+                'type'     => [0 => 'image/png'       , 1 => 'image/png'],
                 'tmp_name' => [0 => '/tmp/phpxxxxxxxx', 1 => '/tmp/phpyyyyyyyy'],
-                'error'    => [0 => 0,                  1 => 0],
-                'size'     => [0 => 1000,               1 => 1000]
+                'error'    => [0 => 0                 , 1 => 0],
+                'size'     => [0 => 1000              , 1 => 1000]
             ],
             # input[name="file[]",value="",multiple="multiple"]
             # input[name="file[]",value="",multiple="multiple"]
             'field_array__no_file1_multiple__no_file2_multiple' => [
-                'name'     => [0 => '',                 1 => ''],
-                'type'     => [0 => '',                 1 => ''],
-                'tmp_name' => [0 => '',                 1 => ''],
+                'name'     => [0 => ''                , 1 => ''],
+                'type'     => [0 => ''                , 1 => ''],
+                'tmp_name' => [0 => ''                , 1 => ''],
                 'error'    => [0 => UPLOAD_ERR_NO_FILE, 1 => UPLOAD_ERR_NO_FILE],
-                'size'     => [0 => 0,                  1 => 0]
+                'size'     => [0 => 0                 , 1 => 0]
             ],
             # input[name="file[]",value="file1.png",multiple="multiple"]
             # input[name="file[]",value="",         multiple="multiple"]
             'field_array__file1_multiple__no_file2_multiple' => [
-                'name'     => [0 => 'file1.png',        1 => ''],
-                'type'     => [0 => 'image/png',        1 => ''],
+                'name'     => [0 => 'file1.png'       , 1 => ''],
+                'type'     => [0 => 'image/png'       , 1 => ''],
                 'tmp_name' => [0 => '/tmp/phpxxxxxxxx', 1 => ''],
-                'error'    => [0 => 0,                  1 => UPLOAD_ERR_NO_FILE],
-                'size'     => [0 => 1000,               1 => 0]
+                'error'    => [0 => 0                 , 1 => UPLOAD_ERR_NO_FILE],
+                'size'     => [0 => 1000              , 1 => 0]
             ],
             # input[name="file[]",value="",         multiple="multiple"]
             # input[name="file[]",value="file2.png",multiple="multiple"]
             'field_array__no_file_1_multiple__file2_multiple' => [
-                'name'     => [0 => '',                 1 => 'file2.png'],
-                'type'     => [0 => '',                 1 => 'image/png'],
-                'tmp_name' => [0 => '',                 1 => '/tmp/phpyyyyyyyy'],
+                'name'     => [0 => ''                , 1 => 'file2.png'],
+                'type'     => [0 => ''                , 1 => 'image/png'],
+                'tmp_name' => [0 => ''                , 1 => '/tmp/phpyyyyyyyy'],
                 'error'    => [0 => UPLOAD_ERR_NO_FILE, 1 => 0],
-                'size'     => [0 => 0,                  1 => 1000]
+                'size'     => [0 => 0                 , 1 => 1000]
             ],
             # input[name="file[]",value="file1.png",multiple="multiple"]
             # input[name="file[]",value="file2.png",multiple="multiple"]
             'field_array__file1_multiple__file2_multiple' => [
-                'name'     => [0 => 'file1.png',        1 => 'file2.png'],
-                'type'     => [0 => 'image/png',        1 => 'image/png'],
+                'name'     => [0 => 'file1.png'       , 1 => 'file2.png'],
+                'type'     => [0 => 'image/png'       , 1 => 'image/png'],
                 'tmp_name' => [0 => '/tmp/phpxxxxxxxx', 1 => '/tmp/phpyyyyyyyy'],
-                'error'    => [0 => 0,                  1 => 0],
-                'size'     => [0 => 1000,               1 => 1000]
+                'error'    => [0 => 0                 , 1 => 0],
+                'size'     => [0 => 1000              , 1 => 1000]
             ],
             'field_error_1' => [
                 'name'     => 'file.png',
@@ -1001,14 +1001,14 @@ abstract class Events_Test__Class_Request {
         ];
 
         $expected = [
-            'nginx'       => ['name' => 'nginx',                'version' => '1.1X.X'],
-            'apache_nix'  => ['name' => 'apache',               'version' => '2.4.XX'],
-            'apache_win'  => ['name' => 'apache',               'version' => '2.4.XX'],
-            'iis'         => ['name' => 'microsoft-iis',        'version' => '7.5'],
-            'lighttpd'    => ['name' => 'lighttpd',             'version' => '1.X.XX'],
-            'unknown_nix' => ['name' => 'unknown',              'version' => '1.0.XX'],
+            'nginx'       => ['name' => 'nginx'               , 'version' => '1.1X.X'],
+            'apache_nix'  => ['name' => 'apache'              , 'version' => '2.4.XX'],
+            'apache_win'  => ['name' => 'apache'              , 'version' => '2.4.XX'],
+            'iis'         => ['name' => 'microsoft-iis'       , 'version' => '7.5'],
+            'lighttpd'    => ['name' => 'lighttpd'            , 'version' => '1.X.XX'],
+            'unknown_nix' => ['name' => 'unknown'             , 'version' => '1.0.XX'],
             'unknown'     => ['name' => 'unknown server v-1-0', 'version' => ''],
-            'unknown_utf' => ['name' => 'сервер v-1-0',         'version' => ''],
+            'unknown_utf' => ['name' => 'сервер v-1-0'        , 'version' => ''],
         ];
 
         foreach ($data as $c_row_id => $c_field) {

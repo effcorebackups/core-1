@@ -199,7 +199,7 @@ abstract class Markdown {
             if (preg_match('%^(?<indent>[ ]{0,})'.
                              '(?<return>[<][/]{0,1}(?<tag>[a-z0-9\\-]{1,})[^>]{0,}[>].*)$%S', $c_string, $c_matches)) {
 
-                if (strpos($c_matches['tag'], 'x-') === 0)
+                if (str_starts_with($c_matches['tag'], 'x-'))
                      $is_inline_tag = true;
                 else $is_inline_tag = isset($inline_tags[$c_matches['tag']]);
 
@@ -333,7 +333,7 @@ abstract class Markdown {
                     $c_max_depth = count($c_last_item->_pointers);
                     $c_cur_depth = (int)(floor($c_indent - $c_last_item->_indent) / 2) + 1;
                     if ($c_cur_depth - $c_max_depth < 1                                                                ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', $c_cur_depth - 1, $c_size);                                        continue;}
-                    if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', null,             $c_size);                                        continue;}
+                    if ($c_cur_depth - $c_max_depth > 0 && $c_cur_depth - $c_max_depth < 3                             ) {static::list_process__insert_data($c_last_item, $c_matches['return'], '_header', null            , $c_size);                                        continue;}
                     if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_delimiter') {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string),  '_code'); continue;}
                     if ($c_cur_depth - $c_max_depth > 2 && static::node_type_get($c_last_list_element) === '_code'     ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).                    trim($c_string), ' _code'); continue;}
                     if ($c_cur_depth - $c_max_depth > 2                                                                ) {static::list_process__insert_data($c_last_item, str_repeat(' ', $c_indent - 4 - ($c_max_depth * 2)).static::meta_encode(trim($c_string)), '_text'); continue;}
@@ -574,7 +574,7 @@ abstract class Markdown {
                                         '(?:[ ]{0,64}'.      '(?<url>[^ "\\n]{1,1024})'.   '|)'.
                                         '(?:[ ]{0,64}'.'["]'.'(?<title>[^"\\n]{1,512})'.'["]|)%S', function ($c_match) {
                             static::$references[Security::hash_get(mb_strtolower($c_match['id']))] = (object)[
-                                'url'   => array_key_exists('url',   $c_match) ? trim($c_match['url'  ]) : '',
+                                'url'   => array_key_exists('url'  , $c_match) ? trim($c_match['url'  ]) : '',
                                 'title' => array_key_exists('title', $c_match) ? trim($c_match['title']) : '',
                             ];
                             return '';
@@ -609,10 +609,10 @@ abstract class Markdown {
                         $text = $c_item->text_select();
                         # image|link|email
                         $text = preg_replace('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new Markup_simple('img', ['title' => '$3', 'src'  => '$2',  'alt' => '$1']))->render(), $text);
-                        $text = preg_replace('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new Markup       ('a',   ['title' => '$3', 'href' => '$2'], new Text('$1')))->render(), $text);
-                        $text = preg_replace_callback('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup_simple('img', ['title' => static::$references[$c_id]->title, 'src'  => static::$references[$c_id]->url,  'alt' => $c_match['text']]))->render(); else return $c_match[0];}, $text);
-                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024})'. '\\]'.'\\['.                          '\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['text'])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
-                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup       ('a',   ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\('.'(?:[ ]{0,64}'.'(?<url>[^ \\)"\\n]{1,1024})'.'|)'.'(?:[ ]{0,64}["]'.'(?<title>[^"\\n]{1,512})'.'["]|)'.'[ ]{0,64}\\)%S', (new Markup       ('a'  , ['title' => '$3', 'href' => '$2'], new Text('$1')))->render(), $text);
+                        $text = preg_replace_callback('%\\!\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup_simple('img', ['title' => static::$references[$c_id]->title, 'src'  => static::$references[$c_id]->url , 'alt' => $c_match['text']]))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024})'. '\\]'.'\\['.                          '\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['text'])); if (isset(static::$references[$c_id])) return (new Markup       ('a'  , ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
+                        $text = preg_replace_callback('%'.'\\['.'(?<text>[^\\]\\n]{1,1024}|)'.'\\]'.'\\['.'(?<id>[^\\]\\n]{1,127})'.'\\]%S', function ($c_match) {$c_id = Security::hash_get(mb_strtolower($c_match['id'  ])); if (isset(static::$references[$c_id])) return (new Markup       ('a'  , ['title' => static::$references[$c_id]->title, 'href' => static::$references[$c_id]->url], new Text($c_match['text'])))->render(); else return $c_match[0];}, $text);
                         $text = preg_replace_callback('%'.'\\<'.'(?<text>[^\\>\\n]{5,512})'.'\\>'.'%S', function ($c_match) {
                             if (Security::validate_email($c_match['text'])) return (new Markup('a', ['href' => 'mailto:'.$c_match['text']], new Text($c_match['text'])))->render();
                             if (Security::validate_url  ($c_match['text'])) return (new Markup('a', ['href' =>           $c_match['text']], new Text($c_match['text'])))->render();
@@ -625,7 +625,7 @@ abstract class Markdown {
                             ))->render();
                         }, $text);
                         $text = preg_replace('%'.'([*_])\\1'.'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1\\1'.'%sS', (new Markup('strong', [], '$2'))->render(), $text);
-                        $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1'   .'%sS', (new Markup('em',     [], '$2'))->render(), $text);
+                        $text = preg_replace('%'.'([*_])'   .'(?<phrase>(?:(?!\\1).){1,2048})'.'\\1'   .'%sS', (new Markup('em'    , [], '$2'))->render(), $text);
                         $c_item->text_update($text);
                     }
                     break;

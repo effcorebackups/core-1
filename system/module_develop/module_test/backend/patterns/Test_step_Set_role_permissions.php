@@ -24,7 +24,7 @@ class Test_step_Set_role_permissions {
                              Role::related_permissions_insert($this->id_role, $this->permissions, 'test');
         $new_permissions  =  Role::related_permissions_select($this->id_role);
         $c_results['reports'][$dpath][] = new Text('permissions before insertion: %%_permissions', ['permissions' => implode(', ', $old_permissions) ?: 'n/a']);
-        $c_results['reports'][$dpath][] = new Text('permissions after insertion: %%_permissions',  ['permissions' => implode(', ', $new_permissions) ?: 'n/a']);
+        $c_results['reports'][$dpath][] = new Text('permissions after insertion: %%_permissions' , ['permissions' => implode(', ', $new_permissions) ?: 'n/a']);
     }
 
 }

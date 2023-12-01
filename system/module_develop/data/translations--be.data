@@ -19,7 +19,7 @@ translations
     - ± the extension is enabled by default: ± пашырэнне ўключана па змаўчанні
     - − the extension is not enabled by default: − пашырэнне ня ўключана па змаўчанні
     - action "%%_name" will be started: дзеянне "%%_name" будзе запушчана
-    - action with rowid = "%%_rowid" will be started: дзеянне з rowid = "%%_rowid" будзе запушчана
+    - action with row_id = "%%_row_id" will be started: дзеянне з row_id = "%%_row_id" будзе запушчана
     - All releases: Усе выпускі
     - All types of messages you can see above.: Усе тыпы паведамленняў Вы можаце ўбачыць вышэй.
     - ANONYMOUS USER: АНАНІМНЫ КАРЫСТАЛЬНІК
@@ -62,6 +62,13 @@ translations
     - Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions): Дэманстрацыя выбаркі сутнасцяў "demo_data" з JOIN (і перавызначанымі ўмовамі)
     - Demonstration of selection of "demo_data" entities with JOIN: Дэманстрацыя выбаркі сутнасцяў "demo_data" з JOIN
     - Demonstration of selection of entities "demo_types": Дэманстрацыя выбаркі сутнасцяў "demo_types"
+    - Demonstration\: Autoincrement: Дэманстрацыя: Аўтаінкрымент
+    - Demonstration\: Collations: Дэманстрацыя: Параўнанні
+    - Demonstration\: Constraints: Дэманстрацыя: Абмежаванні
+    - Demonstration\: Data: Дэманстрацыя: Дадзеныя
+    - Demonstration\: Indexes: Дэманстрацыя: Індэксы
+    - Demonstration\: Joins: Дэманстрацыя: Злучэння
+    - Demonstration\: Types: Дэманстрацыя: Типы
     - Description for messages: Апісанне для паведамленняў
     - Displaying the console will result in a %%_value increase in RAM consumption!: Адлюстраванне кансолі прывядзе да павелічэння спажывання АЗП на %%_value!
     - Embedded elements: Убудаваныя элементы
@@ -79,6 +86,7 @@ translations
     - Execution plan: План выканання
     - expected value\: %%_value: чаканае значэнне: %%_value
     - Export diagram to file "%%_file" for using with "StarUML" software.: Экспарт дыяграмы ў файл "%%_file" для выкарыстання ў праграме "StarUML".
+    - Field "%%_name" %%_extra_info: Поле "%%_name" %%_extra_info
     - Field #1: Поле №1
     - Field #2: Поле №2
     - Field #3: Поле №3
@@ -91,7 +99,6 @@ translations
     - gotten value\: %%_value: атрыманае значэнне: %%_value
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (устаўлена з кода)
-    - Handler: Апрацоўшчык
     - head cell #%%_number: загалоўная ячэйка №%%_number
     - Header %%_size: Загаловак %%_size
     - If the "step" attribute is "60" then the "\:00" seconds will be truncated.: Калі атрыбут "step" роўны "60", тады секунды ":00" будуць абразацца.
@@ -162,6 +169,9 @@ translations
     - PHP functions usage: Выкарыстоўванне PHP-функцый
     - Pos.: Паз.
     - Project ID: ID праекта
+    - Project release (current): Выпуск проекту (бягучы)
+    - Project release: Выпуск проекту
+    - Project releases: Выпускі праекта
     - PROPERTY "%%_name": УЛАСЦІВАСЦЬ "%%_name"
     - property private: уласцівасць прыватная
     - property protected: уласцівасць абароненая
@@ -177,7 +187,6 @@ translations
     - REGISTERED USER + ROLE: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК + РОЛЯ
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
-    - Release (current): Выпуск (бягучы)
     - Release: Выпуск
     - Releases of the project %%_project_title_context: Выпускі праекта %%_project_title_context
     - Releases: Выпускі
@@ -249,11 +258,10 @@ translations
     - Type "binary": Тып "binary"
     - Type "blob": Тып "blob"
     - Type "boolean": Тып "boolean"
-    - Type "date": Тып "date"
-    - Type "datetime" (class "Field_DateTime_local") not formatted: Тып "datetime" (клас "Field_DateTime_local") не адфарматаваны
-    - Type "datetime" (class "Field_DateTime_local"): Тып "datetime" (клас "Field_DateTime_local")
-    - Type "datetime" (class "Field_DateTime") not formatted: Тып "datetime" (клас "Field_DateTime") не адфарматаваны
-    - Type "datetime" (class "Field_DateTime"): Тып "datetime" (клас "Field_DateTime")
+    - Type "date" (Field_Date_local): Тып "date" (Field_Date_local)
+    - Type "date" (Field_Date): Тып "date" (Field_Date)
+    - Type "datetime" (Field_DateTime_local): Тып "datetime" (Field_DateTime_local)
+    - Type "datetime" (Field_DateTime): Тып "datetime" (Field_DateTime)
     - Type "datetime": Тып "datetime"
     - Type "foreign": Тып "foreign"
     - Type "index unique": Тып "index unique"
@@ -262,7 +270,8 @@ translations
     - Type "nocase": Тып "nocase"
     - Type "primary": Тып "primary"
     - Type "real": Тып "real"
-    - Type "time": Тып "time"
+    - Type "time" (Field_Time_local): Тып "time" (Field_Time_local)
+    - Type "time" (Field_Time): Тып "time" (Field_Time)
     - Type "unique": Тып "unique"
     - Type "varchar": Тып "varchar"
     - UML Diagram: UML-дыяграма

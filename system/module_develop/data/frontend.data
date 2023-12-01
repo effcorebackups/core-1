@@ -3,7 +3,7 @@ frontend
     display
       check: url
       where: path
-      match: %^/develop/.*$%
+      match: %^/develop/.*$|^/manage/data/demo/.*$%
     styles
     - page_style
         path: frontend/develop.cssd?page_id=%%_page_id_context

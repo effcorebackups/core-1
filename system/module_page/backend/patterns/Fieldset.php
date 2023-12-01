@@ -20,7 +20,7 @@ class Fieldset extends Container {
     public $state = ''; # '' | opened | closed[checked]
     public $number;
 
-    function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = 0) {
+    function __construct($title = null, $description = null, $attributes = [], $children = [], $weight = +0) {
         parent::__construct(null, $title, $description, $attributes, $children, $weight);
     }
 

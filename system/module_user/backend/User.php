@@ -44,13 +44,30 @@ abstract class User {
     static function select($id, $is_load_roles = false, $is_load_permissions = false) {
         $user = new Instance('user', ['id' => $id]);
         if ($user->select()) {
-            $user->roles = $is_load_roles ?
+            $user->roles = $is_load_roles || $is_load_permissions ?
                 ['registered' => 'registered'] + static::related_roles_select($id) :
                 ['registered' => 'registered'];
             $user->permissions = $is_load_permissions ?
                 Role::related_permissions_by_roles_select($user->roles) : [];
             return $user;
         }
+    }
+
+    static function select_multiple($ids, $is_load_roles = false, $is_load_permissions = false) {
+        $users = Entity::get('user')->instances_select([
+            'where' => [
+                'id_!f'                => 'id',
+                'id_in_begin_operator' => 'in (',
+                'id_in_value_!v'       => $ids,
+                'id_in_end_operator'   => ')']], 'id');
+        foreach ($users as $c_user) {
+            $c_user->roles = $is_load_roles || $is_load_permissions ?
+                ['registered' => 'registered'] + static::related_roles_select($c_user->id) :
+                ['registered' => 'registered'];
+            $c_user->permissions = $is_load_permissions ?
+                Role::related_permissions_by_roles_select($c_user->roles) : [];
+        }
+        return $users;
     }
 
     static function insert($values) {

@@ -96,9 +96,9 @@ class Widget_Text_object extends Control implements Control_complex {
         $widget->controls['#text'                ] = $field_text;
         $widget->controls['#is_apply_translation'] = $field_is_apply_translation;
         $widget->controls['#is_apply_tokens'     ] = $field_is_apply_tokens;
-        $result->child_insert($field_text,                 'field_text');
+        $result->child_insert($field_text                , 'field_text');
         $result->child_insert($field_is_apply_translation, 'field_is_apply_translation');
-        $result->child_insert($field_is_apply_tokens,      'field_is_apply_tokens');
+        $result->child_insert($field_is_apply_tokens     , 'field_is_apply_tokens');
         return $result;
     }
 

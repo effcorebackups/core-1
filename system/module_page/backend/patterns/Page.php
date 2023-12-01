@@ -120,13 +120,13 @@ class Page extends Node implements has_Data_cache {
         }
 
         $frontend = Frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_cssid);
-        $template->arg_set('charset',      $this    ->charset);
-        $template->arg_set('head_icons',   $frontend->icons  );
-        $template->arg_set('head_styles',  $frontend->styles );
+        $template->arg_set('charset'     , $this    ->charset);
+        $template->arg_set('head_icons'  , $frontend->icons  );
+        $template->arg_set('head_styles' , $frontend->styles );
         $template->arg_set('head_scripts', $frontend->scripts);
 
         $html->attribute_insert('lang', $this->lang_code ?: Language::code_get_current());
-        $html->attribute_insert('dir',  $this->text_direction);
+        $html->attribute_insert('dir' , $this->text_direction);
         $html->attribute_insert('data-user-has-avatar', isset(User::get_current()->avatar_path) ? true : null);
         $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? true : null); # note: refreshed after page reload
         $html->attribute_insert('data-css-path', Security::sanitize_id(Url::UTF8_encode(trim(Url::get_current()->path, '/'))));
@@ -248,7 +248,7 @@ class Page extends Node implements has_Data_cache {
                     $page->args_set           ($c_key,   $c_value);
                        static::$current = $page;
                 return static::$current;
-            } else Response::send_header_and_exit('access_forbidden');
+            } else Response::send_header_and_exit('page_access_forbidden');
         }     else Response::send_header_and_exit('page_not_found');
     }
 

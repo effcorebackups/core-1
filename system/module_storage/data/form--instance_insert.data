@@ -18,12 +18,12 @@ forms
         - value: insert
     - fields|Fieldset
     - button_insert|Button
-        title: insert
+        title: append
         attributes
         - value: insert
         - disabled: true
     - button_insert_and_update|Button
-        title: insert and update
+        title: append and change
         attributes
         - value: insert_and_update
         - disabled: true

@@ -160,7 +160,7 @@ abstract class Events_Form_Modules_Install {
                     foreach ($modules_to_enable as $c_module) {
                         if (!Module::is_installed($c_module->id)) {
                           Event::start('on_module_install', $c_module->id);
-                        } Event::start('on_module_enable',  $c_module->id);
+                        } Event::start('on_module_enable' , $c_module->id);
                     }
                 }
                 # disable modules

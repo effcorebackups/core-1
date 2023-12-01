@@ -43,7 +43,7 @@ class Test_step_Transpositions {
                 if ($i >> $j & 1) {
                     $c_row_id = $row_ids[$actions_count - 1 - $j];
                     $c_results['reports'][$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id]['dpath'] = '### dpath: '.$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id;
-                    $c_results['reports'][$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id]['actions_title'] = new Text('action with rowid = "%%_rowid" will be started', ['rowid' => $c_row_id]);
+                    $c_results['reports'][$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id]['actions_title'] = new Text('action with row_id = "%%_row_id" will be started', ['row_id' => $c_row_id]);
                     $this->actions[$c_row_id]->run($test, $dpath.':'.$i.':'.$j.'/actions:'.$c_row_id, $c_results);
                     if (array_key_exists('return', $c_results)) {
                         return;

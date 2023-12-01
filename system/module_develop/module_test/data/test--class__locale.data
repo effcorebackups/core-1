@@ -1,0 +1,19 @@
+tests
+- class__locale|Test
+    id: class__locale
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Locale
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-conversion|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: *
+    - code-conversion|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Locale::test_step_code__conversion
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

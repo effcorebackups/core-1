@@ -39,8 +39,8 @@ abstract class Events_Page {
     }
 
     static function on_block_presets_dynamic_build($event, $id = null) {
-        if ($id === null                                          ) {foreach (Tree::select_all('sql') as $c_item)            Block_preset::insert('block__tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['title' => 'Menu', 'title_is_visible' => false, 'type' => 'code', 'source' => '\\effcore\\modules\\menu\\Events_Page::block_markup__tree_get', 'args' => ['instance_id' => $c_item->id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-id' => 'block__tree_sql__'.$c_item->id]], 0, 'menu');}
-        if ($id !== null && strpos($id, 'block__tree_sql__') === 0) {$c_item__id = substr($id, strlen('block__tree_sql__')); Block_preset::insert('block__tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['title' => 'Menu', 'title_is_visible' => false, 'type' => 'code', 'source' => '\\effcore\\modules\\menu\\Events_Page::block_markup__tree_get', 'args' => ['instance_id' => $c_item__id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-id' => 'block__tree_sql__'.$c_item__id]], 0, 'menu');}
+        if ($id === null                                             ) {foreach (Tree::select_all('sql') as $c_item)            Block_preset::insert('block__tree_sql__'.$c_item->id, 'Menus', $c_item->title ?: 'NO TITLE', [ /* all areas */ ], ['title' => 'Menu', 'title_is_visible' => false, 'type' => 'code', 'source' => '\\effcore\\modules\\menu\\Events_Page::block_markup__tree_get', 'args' => ['instance_id' => $c_item->id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-id' => 'block__tree_sql__'.$c_item->id]], 0, 'menu');}
+        if ($id !== null && str_starts_with($id, 'block__tree_sql__')) {$c_item__id = substr($id, strlen('block__tree_sql__')); Block_preset::insert('block__tree_sql__'.$c_item__id, 'Menus',                   'NO TITLE', [ /* all areas */ ], ['title' => 'Menu', 'title_is_visible' => false, 'type' => 'code', 'source' => '\\effcore\\modules\\menu\\Events_Page::block_markup__tree_get', 'args' => ['instance_id' => $c_item__id, 'entity_name' => 'tree'], 'has_admin_tree_menu' => true, 'attributes' => ['data-id' => 'block__tree_sql__'.$c_item__id]], 0, 'menu');}
     }
 
     static function on_block_build_after($event, $block) {
@@ -49,9 +49,9 @@ abstract class Events_Page {
                 if (!empty($block->has_admin_tree_menu)) {
                     $instance_id = $block->args['instance_id'];
                     $entity_name = $block->args['entity_name'];
-                    if ($entity_name === 'tree'                                &&
-                        Access::check(Entity::get('tree_item')->access_select) &&
-                        Access::check(Entity::get('tree_item')->access_update)) {
+                    if ($entity_name === 'tree'                                    &&
+                        Access::check(Entity::get('tree_item')->access->on_select) &&
+                        Access::check(Entity::get('tree_item')->access->on_update)) {
                         $block->extra_t = new Markup('x-admin-actions', ['data-entity_name' => $entity_name],
                             new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.Url::back_part_make()],
                                 new Markup('x-action-title', ['data-action-title' => true], 'update')
@@ -74,8 +74,8 @@ abstract class Events_Page {
              Frontend::insert('tree_all__menu', null, 'styles', ['path' => 'frontend/tree.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +400], 'tree_style', 'menu');
         if ($tree->visualization_mode === 'decorated-rearrangeable') {
             if (!Frontend::select('tree_rearrangeable__menu')) {
-                 Frontend::insert('tree_rearrangeable__menu', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js',   'attributes' => [            'defer' => true            ], 'weight' => +300], 'tree_script', 'menu');
-                 Frontend::insert('tree_rearrangeable__menu', null, 'styles',  ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +300], 'tree_style',  'menu');
+                 Frontend::insert('tree_rearrangeable__menu', null, 'scripts', ['path'  => 'frontend/tree-rearrangeable.js'  , 'attributes' => [            'defer' => true            ], 'weight' => +300], 'tree_script', 'menu');
+                 Frontend::insert('tree_rearrangeable__menu', null, 'styles' , ['path'  => 'frontend/tree-rearrangeable.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => +300], 'tree_style' , 'menu');
             }
         }
     }

@@ -28,7 +28,7 @@ class Block extends Markup {
     public $extra_t;
     public $extra_b;
 
-    function __construct($title = null, $attributes = [], $children = [], $weight = 0) {
+    function __construct($title = null, $attributes = [], $children = [], $weight = +0) {
         if ($title) $this->title = $title;
         parent::__construct(null, $attributes, $children, $weight);
     }

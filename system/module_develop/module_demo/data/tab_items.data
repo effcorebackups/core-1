@@ -5,7 +5,7 @@ tab_items
     id_tab: data
     action_name: demo
     action_name_default: demo/demo_types
-    title: Demo
+    title: Demonstration
     weight: -500
     access
       roles

@@ -1,0 +1,30 @@
+selection_handlers
+- handler__user__avatar_paths
+    title: Avatar paths
+    entity_name: user
+    handler: \effcore\modules\user\Events_Selection::handler__user__avatar_paths
+- handler__user__avatar_paths_as_links
+    title: Avatar paths as links
+    entity_name: user
+    handler: \effcore\modules\user\Events_Selection::handler__user__avatar_paths_as_links
+- handler__user__roles
+    title: Roles
+    entity_name: user
+    handler: \effcore\modules\user\Events_Selection::handler__user__roles
+    is_apply_translation: true
+- handler__user__permissions
+    title: Permissions
+    entity_name: user
+    handler: \effcore\modules\user\Events_Selection::handler__user__permissions
+    is_apply_translation: true
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- handler__session__is_current
+    title: Is current
+    entity_name: session
+    handler: \effcore\modules\user\Events_Selection::handler__session__is_current
+    is_apply_translation: true
+- handler__session__data
+    title: Data
+    entity_name: session
+    handler: \effcore\modules\user\Events_Selection::handler__session__data
+    is_apply_translation: true

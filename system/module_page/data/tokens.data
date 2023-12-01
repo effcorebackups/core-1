@@ -41,7 +41,7 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # global color tokens
 # ─────────────────────────────────────────────────────────────────────
-- return_token_color_encode
+- return_token_color_encoded
     type: code
     handler: \effcore\modules\page\Events_Token::on_apply
 - return_if_token_color_is_dark

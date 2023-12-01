@@ -6,9 +6,9 @@ module|Module
   description: Module for translation into Belarusian language.
   copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
   enabled: yes
-  version: 0.911
+  version: 0.912
   dependencies
     system
-    - locale: 0.911
+    - locale: 0.912
   urls
   - settings page: /manage/locale

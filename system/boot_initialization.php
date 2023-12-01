@@ -28,9 +28,9 @@ define('effcore\\CR', "\r");
 define('effcore\\TB', "\t");
 define('effcore\\BR', "<br>");
 define('effcore\\HR', "<hr>");
-define('effcore\\DIR_ROOT',    $web_root.'/');
+define('effcore\\DIR_ROOT'   , $web_root.'/');
 define('effcore\\DIR_DYNAMIC', $web_root.'/dynamic/');
-define('effcore\\DIR_SYSTEM',  $web_root.'/system/');
+define('effcore\\DIR_SYSTEM' , $web_root.'/system/');
 define('effcore\\DIR_MODULES', $web_root.'/modules/');
 
 # case, on any platform, when strange errors occur due to JIT

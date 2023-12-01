@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_feedback_id_context
+          text: %%_selection__feedback__id__context
     fields
     - main
       - id
@@ -44,7 +44,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_permission_id_context
+          text: %%_selection__permission__id__context
     fields
     - main
       - id
@@ -78,28 +78,53 @@ selections
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_with_permission_id_role_context
+              text: %%_selection__relation_role_with_permission__id_role__context
         - id_permission
           - field_!f: id_permission
           - operator: =
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_with_permission_id_permission_context
+              text: %%_selection__relation_role_with_permission__id_permission__context
     fields
     - main
       - id_role
           entity_field_name: id_role
-          weight: +400
+          weight: +360
       - id_permission
           entity_field_name: id_permission
-          weight: +380
+          weight: +340
       - created
           entity_field_name: created
-          weight: +360
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: +340
+          weight: +300
+    - join
+      - role
+          type: left outer join
+          entity_name: role
+          entity_field_name: id
+          on_entity_name: relation_role_with_permission
+          on_entity_field_name: id_role
+          fields
+          - title
+              title: Role
+              entity_field_name: title
+              is_apply_translation: true
+              weight: +400
+      - permission
+          type: left outer join
+          entity_name: permission
+          entity_field_name: id
+          on_entity_name: relation_role_with_permission
+          on_entity_field_name: id_permission
+          fields
+          - nickname
+              title: Permission
+              entity_field_name: title
+              is_apply_translation: true
+              weight: +380
 - instance_select-relation_role_with_user|Selection
     id: instance_select-relation_role_with_user
     main_entity_name: relation_role_with_user
@@ -114,14 +139,14 @@ selections
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_with_user_id_role_context
+              text: %%_selection__relation_role_with_user__id_role__context
         - id_user
           - field_!f: id_user
           - operator: =
           - value_!v|Text
               is_apply_translation: false
               is_apply_tokens: true
-              text: %%_selection_relation_role_with_user_id_user_context
+              text: %%_selection__relation_role_with_user__id_user__context
     fields
     - main
       - id_user
@@ -149,6 +174,7 @@ selections
           on_entity_field_name: id_user
           fields
           - nickname
+              title: User
               entity_field_name: nickname
               weight: +400
       - role
@@ -175,7 +201,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_role_id_context
+          text: %%_selection__role__id__context
     fields
     - main
       - id
@@ -210,7 +236,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_user_id_context
+          text: %%_selection__user__id__context
     fields
     - main
       - id
@@ -224,6 +250,7 @@ selections
           weight: +360
       - avatar_path
           entity_field_name: avatar_path
+          is_not_visible: true
           weight: +340
       - timezone
           entity_field_name: timezone
@@ -240,18 +267,70 @@ selections
           is_apply_translation: true
           weight: +260
     - handlers
-      - roles
+      - handler__user__avatar_paths_as_links
+          title: Avatar paths
+          handler: \effcore\modules\user\Events_Selection::handler__user__avatar_paths_as_links
+          weight: -400
+      - handler__user__roles
           title: Roles
           handler: \effcore\modules\user\Events_Selection::handler__user__roles
           is_apply_translation: true
-          weight: +240
+          weight: -420
+      - handler__user__permissions
+          title: Permissions
+          handler: \effcore\modules\user\Events_Selection::handler__user__permissions
+          is_apply_translation: true
+          weight: -440
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- instance_select-session|Selection
+    id: instance_select-session
+    main_entity_name: session
+    decorator_settings
+    - view_type: table-dl
+    query_settings
+    - where
+      - id_!f: id
+      - id_operator: =
+      - id_!v|Text
+          is_apply_translation: false
+          is_apply_tokens: true
+          text: %%_selection__session__id__context
+    fields
+    - main
+      - id
+          entity_field_name: id
+          weight: +400
+      - id_user
+          entity_field_name: id_user
+          weight: +380
+      - is_long_session
+          entity_field_name: is_long_session
+          is_apply_translation: true
+          weight: +360
+      - is_fixed_ip
+          entity_field_name: is_fixed_ip
+          is_apply_translation: true
+          weight: +340
+      - expired
+          entity_field_name: expired
+          weight: +320
+      - data
+          entity_field_name: data
+          is_not_visible: true
+          weight: +300
+    - handlers
+      - handler__session__data
+          title: Data
+          handler: \effcore\modules\user\Events_Selection::handler__session__data
+          is_apply_translation: true
+          weight: -300
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-feedback|Selection
     id: instance_select_multiple-feedback
     main_entity_name: feedback
     pager_is_enabled: true
     decorator_settings
-    - view_type: table-adaptive
+    - view_type: table-dl
     query_settings
     - limit: 50
     fields
@@ -265,12 +344,15 @@ selections
       - email
           entity_field_name: email
           weight: +360
+      - message
+          entity_field_name: message
+          weight: +340
       - created
           entity_field_name: created
-          weight: +340
+          weight: +320
       - updated
           entity_field_name: updated
-          weight: +320
+          weight: +300
 - instance_select_multiple-permission|Selection
     id: instance_select_multiple-permission
     main_entity_name: permission
@@ -351,6 +433,7 @@ selections
           on_entity_field_name: id_user
           fields
           - nickname
+              title: User
               entity_field_name: nickname
               weight: +400
       - role
@@ -421,3 +504,46 @@ selections
           entity_field_name: is_embedded
           is_not_visible: true
           weight: +300
+- instance_select_multiple-session|Selection
+    id: instance_select_multiple-session
+    main_entity_name: session
+    pager_is_enabled: true
+    decorator_settings
+    - view_type: table-adaptive
+    query_settings
+    - order
+      - fields_!,
+        - id_user
+          - field_!f: id_user
+          - direction: ASC
+    - limit: 500
+    fields
+    - main
+      - id
+          entity_field_name: id
+          is_not_visible: true
+          weight: +400
+      - id_user
+          entity_field_name: id_user
+          weight: +380
+      - is_long_session
+          entity_field_name: is_long_session
+          is_apply_translation: true
+          weight: +360
+      - is_fixed_ip
+          entity_field_name: is_fixed_ip
+          is_apply_translation: true
+          weight: +340
+      - expired
+          entity_field_name: expired
+          weight: +320
+      - data
+          entity_field_name: data
+          is_not_visible: true
+          weight: +300
+    - handlers
+      - handler__session__data
+          title: Data
+          handler: \effcore\modules\user\Events_Selection::handler__session__data
+          is_apply_translation: true
+          weight: -300

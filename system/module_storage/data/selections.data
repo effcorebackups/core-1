@@ -11,7 +11,7 @@ selections
       - id_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_selection_selection_id_context
+          text: %%_selection__selection__id__context
     fields
     - main
       - id
@@ -51,17 +51,20 @@ selections
       - id
           entity_field_name: id
           weight: +400
+      - main_entity_name
+          entity_field_name: main_entity_name
+          weight: +380
       - title
           entity_field_name: title
           is_apply_translation: true
-          weight: +380
+          weight: +360
       - created
           entity_field_name: created
-          weight: +360
+          weight: +340
       - updated
           entity_field_name: updated
-          weight: +340
+          weight: +320
       - is_embedded
           entity_field_name: is_embedded
           is_not_visible: true
-          weight: +320
+          weight: +300

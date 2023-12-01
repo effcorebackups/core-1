@@ -18,9 +18,9 @@ class Block_preset {
     public $in_areas;                # copy to: (new Block)->_preset->in_areas
     public $origin = 'nosql';        # copy to: (new Block)->_preset->origin
     public $module_id;               # copy to: (new Block)->_preset->module_id
-    public $weight = 0;              # copy to: (new Block)->weight
+    public $weight = +0;             # copy to: (new Block)->weight
 
-    function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $weight = 0) {
+    function __construct($id = null, $managing_group = null, $managing_title = null, $in_areas = null, $weight = +0) {
         if ($id            ) $this->id             = $id;
         if ($managing_group) $this->managing_group = $managing_group;
         if ($managing_title) $this->managing_title = $managing_title;
@@ -94,7 +94,7 @@ class Block_preset {
         return static::$cache[$id] ?? null;
     }
 
-    static function insert($id, $managing_group = null, $managing_title = null, $in_areas = null, $extra = [], $weight = 0, $module_id = null) {
+    static function insert($id, $managing_group = null, $managing_title = null, $in_areas = null, $extra = [], $weight = +0, $module_id = null) {
         static::init();
         $new_preset = new static($id, $managing_group, $managing_title, $in_areas, $weight);
         $new_preset->origin = 'dynamic';

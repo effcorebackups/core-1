@@ -17,7 +17,7 @@ abstract class Access {
     static function check($access, $user = null) {
         if ($access === null) return true;
         if (  $user === null) $user = User::get_current();
-        if (isset($access->roles      )) foreach ($user->roles as $c_role) if (isset($access->roles[ $c_role ])) {Console::log_insert('access', 'checking', 'access allowed by role "%%_role"',    'ok', 0, ['role' =>  $c_role ]); return true;}
+        if (isset($access->roles      )) foreach ($user->roles as $c_role) if (isset($access->roles[ $c_role ])) {Console::log_insert('access', 'checking', 'access allowed by role "%%_role"'   , 'ok', 0, ['role' =>  $c_role ]); return true;}
         if (isset($access->users      ))                                   if (isset($access->users[$user->id])) {Console::log_insert('access', 'checking', 'access allowed by user ID "%%_user"', 'ok', 0, ['user' => $user->id]); return true;}
         if (isset($access->permissions)) {
             if (!isset(static::$cache[$user->id]['permissions']))

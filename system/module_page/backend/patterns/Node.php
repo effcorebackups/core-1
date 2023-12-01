@@ -12,7 +12,7 @@ class Node extends Node_simple {
 
     public $children = [];
 
-    function __construct($attributes = [], $children = [], $weight = 0) {
+    function __construct($attributes = [], $children = [], $weight = +0) {
         parent::__construct($attributes, $weight);
 
         # ─────────────────────────────────────────────────────────────────────

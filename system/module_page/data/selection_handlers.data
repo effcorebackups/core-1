@@ -1,0 +1,58 @@
+selection_handlers
+- handler__any__checkbox_select
+    title: Checkbox
+    entity_name: *
+    handler: \effcore\modules\page\Events_Selection::handler__any__checkbox_select
+    format: raw
+    is_apply_translation: false
+    is_apply_tokens: false
+    is_not_visible: false
+- handler__any__path_as_link
+    title: Path as link
+    entity_name: *
+    handler: \effcore\modules\page\Events_Selection::handler__any__path_as_link
+- handler__any__paths_as_links
+    title: Paths as links
+    entity_name: *
+    handler: \effcore\modules\page\Events_Selection::handler__any__paths_as_links
+- handler__any__url_as_link
+    title: URL as link
+    entity_name: *
+    handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link
+- handler__any__url_as_link_absolute
+    title: Absolute URL as link
+    entity_name: *
+    handler: \effcore\modules\page\Events_Selection::handler__any__url_as_link_absolute
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- handler__page__url_as_link
+    title: URL as link
+    entity_name: page
+    handler: \effcore\modules\page\Events_Selection::handler__page__url_as_link
+- handler__page__text_direction
+    title: Text direction
+    entity_name: page
+    handler: \effcore\modules\page\Events_Selection::handler__page__text_direction
+    is_apply_translation: true
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- handler__audio__pre_listening
+    title: Pre-listening
+    entity_name: audio
+    handler: \effcore\modules\page\Events_Selection::handler__audio__pre_listening
+- handler__audio__cover_paths_as_links
+    title: Cover paths as links
+    entity_name: audio
+    handler: \effcore\modules\page\Events_Selection::handler__audio__cover_paths_as_links
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- handler__video__poster_paths_as_links
+    title: Poster paths as links
+    entity_name: video
+    handler: \effcore\modules\page\Events_Selection::handler__video__poster_paths_as_links
+- handler__video__preview
+    title: Preview
+    entity_name: video
+    handler: \effcore\modules\page\Events_Selection::handler__video__preview
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- handler__picture__preview
+    title: Preview
+    entity_name: picture
+    handler: \effcore\modules\page\Events_Selection::handler__picture__preview

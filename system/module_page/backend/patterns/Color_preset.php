@@ -51,7 +51,7 @@ class Color_preset {
         $colors = Color::get_all();
         $settings = Module::settings_get('page');
         foreach ($settings as $c_color_type => $c_color_id)
-            if (strpos($c_color_type, 'color__') === 0)
+            if (str_starts_with($c_color_type, 'color__'))
                 $result&= !empty($colors[$c_color_id]);
         return $result;
     }
@@ -83,7 +83,7 @@ class Color_preset {
         $storage = Storage::get('data');
         $settings = Module::settings_get('page');
         foreach ($settings as $c_color_type => $c_color_id)
-            if (strpos($c_color_type, 'color__') === 0)
+            if (str_starts_with($c_color_type, 'color__'))
                 $result&= $storage->changes_unregister('page', 'update', 'settings/page/'.$c_color_type, false);
         if ($reset) Storage_Data::cache_update();
         return $result;
