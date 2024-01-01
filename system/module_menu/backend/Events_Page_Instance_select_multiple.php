@@ -20,7 +20,7 @@ abstract class Events_Page_Instance_select_multiple {
         $category_id = Page::get_current()->args_get('category_id');
         if ($entity_name === 'tree_item') {
             $trees = Tree::select_all('sql');
-            Core::array_sort_by_string($trees);
+            Core::array_sort_by_string($trees, 'description');
             if (empty($trees[$category_id])) {
                 Url::go(Page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
             }
@@ -32,9 +32,9 @@ abstract class Events_Page_Instance_select_multiple {
         $category_id = Page::get_current()->args_get('category_id');
         if ($entity_name === 'tree_item') {
             $trees = Tree::select_all('sql');
-            Core::array_sort_by_string($trees);
+            Core::array_sort_by_string($trees, 'description');
             foreach ($trees as $c_tree) {
-                $c_tree_item_title = (new Text_multiline(['title' => $c_tree->title, 'id' => '('.$c_tree->id.')'], [], ' '))->render();
+                $c_tree_item_title = (new Text_multiline(['title' => $c_tree->description, 'id' => '('.$c_tree->id.')'], [], ' '))->render();
                 Tab_item::insert(                                      $c_tree_item_title,
                     'data_menu_tree_item_'                            .$c_tree->id,
                     'data_menu_tree_item', 'data', 'menu/tree_item///'.$c_tree->id, null, [], [], false, 0, 'menu'

@@ -23,6 +23,7 @@ forms
               - title: Field_File
             element_attributes
             - name: file_text
+            is_debug_mode: false
         # field 'Pictures'
         - file_picture|Field_File_picture
             title: Pictures
@@ -38,6 +39,7 @@ forms
             - multiple: true
             thumbnails
             - =: small
+            is_debug_mode: true
         # field 'Audio'
         - file_audio|Field_File_audio
             title: Audio
@@ -49,6 +51,7 @@ forms
               - title: Field_File_audio
             element_attributes
             - name: file_audio[]
+            is_debug_mode: false
         # field 'Video'
         - file_video|Field_File_video
             title: Video
@@ -59,6 +62,7 @@ forms
               - title: Field_File_video
             element_attributes
             - name: file_video[]
+            is_debug_mode: false
         # widget 'Files'
         - files_texts|Widget_Files
             title: Texts

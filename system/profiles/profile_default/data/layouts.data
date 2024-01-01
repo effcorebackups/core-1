@@ -11,19 +11,16 @@ layouts
     - menu|Area
         id: menu
     - content|Area
-        type: table
+        type: flex
+        attributes
+        - data-group-id: main-columns
         children
         - left|Area
             id: left
-            type: column
             tag_name: aside
-            attributes
-            - data-area-group-id: left
-            - style: width: 200px
         - center|Area
-            type: column
             attributes
-            - data-area-group-id: center
+            - data-group-id: center
             children
             - breadcrumbs|Area
                 id: breadcrumbs
@@ -37,47 +34,22 @@ layouts
             - content|Area
                 id: content
                 render_weight: +500
-            - grid_2x2|Area
-                type: table
+            - tiles|Area
+                type: flex
                 attributes
-                - data-area-group-id: grid_2x2
+                - data-group-id: center-tiles
                 children
-                - col_1_1|Area
-                    id: grid_2x2_col_1_1
-                    type: column
-                - col_1_2|Area
-                    id: grid_2x2_col_1_2
-                    type: column
-            - grid_4x4|Area
-                type: table
-                attributes
-                - data-area-group-id: grid_4x4
-                children
-                - row_1|Area
-                    type: row
-                    children
-                    - col_1_1|Area
-                        id: grid_4x4_col_1_1
-                        type: column
-                    - col_1_2|Area
-                        id: grid_4x4_col_1_2
-                        type: column
-                - row_2|Area
-                    type: row
-                    children
-                    - col_2_1|Area
-                        id: grid_4x4_col_2_1
-                        type: column
-                    - col_2_2|Area
-                        id: grid_4x4_col_2_2
-                        type: column
+                - tile_1|Area
+                    id: tile_1
+                - tile_2|Area
+                    id: tile_2
+                - tile_3|Area
+                    id: tile_3
+                - tile_4|Area
+                    id: tile_4
         - right|Area
             id: right
-            type: column
             tag_name: aside
-            attributes
-            - data-area-group-id: right
-            - style: width: 200px
     - footer|Area
         id: footer
         tag_name: footer
@@ -104,56 +76,29 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_2x5|Area
-        type: table
-        attributes
-        - data-area-group-id: grid_2x5
+    - grid_2x|Area
+        type: grid-2x
         children
-        - row_1|Area
-            type: row
-            children
-            - col_1_1|Area
-                id: col_1_1
-                type: column
-            - col_1_2|Area
-                id: col_1_2
-                type: column
-        - row_2|Area
-            type: row
-            children
-            - col_2_1|Area
-                id: col_2_1
-                type: column
-            - col_2_2|Area
-                id: col_2_2
-                type: column
-        - row_3|Area
-            type: row
-            children
-            - col_3_1|Area
-                id: col_3_1
-                type: column
-            - col_3_2|Area
-                id: col_3_2
-                type: column
-        - row_4|Area
-            type: row
-            children
-            - col_4_1|Area
-                id: col_4_1
-                type: column
-            - col_4_2|Area
-                id: col_4_2
-                type: column
-        - row_5|Area
-            type: row
-            children
-            - col_5_1|Area
-                id: col_5_1
-                type: column
-            - col_5_2|Area
-                id: col_5_2
-                type: column
+        - cell_1_1|Area
+            id: cell_1_1
+        - cell_1_2|Area
+            id: cell_1_2
+        - cell_2_1|Area
+            id: cell_2_1
+        - cell_2_2|Area
+            id: cell_2_2
+        - cell_3_1|Area
+            id: cell_3_1
+        - cell_3_2|Area
+            id: cell_3_2
+        - cell_4_1|Area
+            id: cell_4_1
+        - cell_4_2|Area
+            id: cell_4_2
+        - cell_5_1|Area
+            id: cell_5_1
+        - cell_5_2|Area
+            id: cell_5_2
     - footer|Area
         id: footer
         tag_name: footer
@@ -180,71 +125,39 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_3x5|Area
-        type: table
-        attributes
-        - data-area-group-id: grid_3x5
+    - grid_3x|Area
+        type: grid-3x
         children
-        - row_1|Area
-            type: row
-            children
-            - col_1_1|Area
-                id: col_1_1
-                type: column
-            - col_1_2|Area
-                id: col_1_2
-                type: column
-            - col_1_3|Area
-                id: col_1_3
-                type: column
-        - row_2|Area
-            type: row
-            children
-            - col_2_1|Area
-                id: col_2_1
-                type: column
-            - col_2_2|Area
-                id: col_2_2
-                type: column
-            - col_2_3|Area
-                id: col_2_3
-                type: column
-        - row_3|Area
-            type: row
-            children
-            - col_3_1|Area
-                id: col_3_1
-                type: column
-            - col_3_2|Area
-                id: col_3_2
-                type: column
-            - col_3_3|Area
-                id: col_3_3
-                type: column
-        - row_4|Area
-            type: row
-            children
-            - col_4_1|Area
-                id: col_4_1
-                type: column
-            - col_4_2|Area
-                id: col_4_2
-                type: column
-            - col_4_3|Area
-                id: col_4_3
-                type: column
-        - row_5|Area
-            type: row
-            children
-            - col_5_1|Area
-                id: col_5_1
-                type: column
-            - col_5_2|Area
-                id: col_5_2
-                type: column
-            - col_5_3|Area
-                id: col_5_3
-                type: column
+        - cell_1_1|Area
+            id: cell_1_1
+        - cell_1_2|Area
+            id: cell_1_2
+        - cell_1_3|Area
+            id: cell_1_3
+        - cell_2_1|Area
+            id: cell_2_1
+        - cell_2_2|Area
+            id: cell_2_2
+        - cell_2_3|Area
+            id: cell_2_3
+        - cell_3_1|Area
+            id: cell_3_1
+        - cell_3_2|Area
+            id: cell_3_2
+        - cell_3_3|Area
+            id: cell_3_3
+        - cell_4_1|Area
+            id: cell_4_1
+        - cell_4_2|Area
+            id: cell_4_2
+        - cell_4_3|Area
+            id: cell_4_3
+        - cell_5_1|Area
+            id: cell_5_1
+        - cell_5_2|Area
+            id: cell_5_2
+        - cell_5_3|Area
+            id: cell_5_3
     - footer|Area
         id: footer
         tag_name: footer
@@ -272,85 +185,48 @@ layouts
         id: content
         render_weight: +500
     - grid_4x5|Area
-        type: table
-        attributes
-        - data-area-group-id: grid_4x5
+        type: grid-4x
         children
-        - row_1|Area
-            type: row
-            children
-            - col_1_1|Area
-                id: col_1_1
-                type: column
-            - col_1_2|Area
-                id: col_1_2
-                type: column
-            - col_1_3|Area
-                id: col_1_3
-                type: column
-            - col_1_4|Area
-                id: col_1_4
-                type: column
-        - row_2|Area
-            type: row
-            children
-            - col_2_1|Area
-                id: col_2_1
-                type: column
-            - col_2_2|Area
-                id: col_2_2
-                type: column
-            - col_2_3|Area
-                id: col_2_3
-                type: column
-            - col_2_4|Area
-                id: col_2_4
-                type: column
-        - row_3|Area
-            type: row
-            children
-            - col_3_1|Area
-                id: col_3_1
-                type: column
-            - col_3_2|Area
-                id: col_3_2
-                type: column
-            - col_3_3|Area
-                id: col_3_3
-                type: column
-            - col_3_4|Area
-                id: col_3_4
-                type: column
-        - row_4|Area
-            type: row
-            children
-            - col_4_1|Area
-                id: col_4_1
-                type: column
-            - col_4_2|Area
-                id: col_4_2
-                type: column
-            - col_4_3|Area
-                id: col_4_3
-                type: column
-            - col_4_4|Area
-                id: col_4_4
-                type: column
-        - row_5|Area
-            type: row
-            children
-            - col_5_1|Area
-                id: col_5_1
-                type: column
-            - col_5_2|Area
-                id: col_5_2
-                type: column
-            - col_5_3|Area
-                id: col_5_3
-                type: column
-            - col_5_4|Area
-                id: col_5_4
-                type: column
+        - cell_1_1|Area
+            id: cell_1_1
+        - cell_1_2|Area
+            id: cell_1_2
+        - cell_1_3|Area
+            id: cell_1_3
+        - cell_1_4|Area
+            id: cell_1_4
+        - cell_2_1|Area
+            id: cell_2_1
+        - cell_2_2|Area
+            id: cell_2_2
+        - cell_2_3|Area
+            id: cell_2_3
+        - cell_2_4|Area
+            id: cell_2_4
+        - cell_3_1|Area
+            id: cell_3_1
+        - cell_3_2|Area
+            id: cell_3_2
+        - cell_3_3|Area
+            id: cell_3_3
+        - cell_3_4|Area
+            id: cell_3_4
+        - cell_4_1|Area
+            id: cell_4_1
+        - cell_4_2|Area
+            id: cell_4_2
+        - cell_4_3|Area
+            id: cell_4_3
+        - cell_4_4|Area
+            id: cell_4_4
+        - cell_5_1|Area
+            id: cell_5_1
+        - cell_5_2|Area
+            id: cell_5_2
+        - cell_5_3|Area
+            id: cell_5_3
+        - cell_5_4|Area
+            id: cell_5_4
     - footer|Area
         id: footer
         tag_name: footer
@@ -378,100 +254,58 @@ layouts
         id: content
         render_weight: +500
     - grid_5x5|Area
-        type: table
-        attributes
-        - data-area-group-id: grid_5x5
+        type: grid-5x
         children
-        - row_1|Area
-            type: row
-            children
-            - col_1_1|Area
-                id: col_1_1
-                type: column
-            - col_1_2|Area
-                id: col_1_2
-                type: column
-            - col_1_3|Area
-                id: col_1_3
-                type: column
-            - col_1_4|Area
-                id: col_1_4
-                type: column
-            - col_1_5|Area
-                id: col_1_5
-                type: column
-        - row_2|Area
-            type: row
-            children
-            - col_2_1|Area
-                id: col_2_1
-                type: column
-            - col_2_2|Area
-                id: col_2_2
-                type: column
-            - col_2_3|Area
-                id: col_2_3
-                type: column
-            - col_2_4|Area
-                id: col_2_4
-                type: column
-            - col_2_5|Area
-                id: col_2_5
-                type: column
-        - row_3|Area
-            type: row
-            children
-            - col_3_1|Area
-                id: col_3_1
-                type: column
-            - col_3_2|Area
-                id: col_3_2
-                type: column
-            - col_3_3|Area
-                id: col_3_3
-                type: column
-            - col_3_4|Area
-                id: col_3_4
-                type: column
-            - col_3_5|Area
-                id: col_3_5
-                type: column
-        - row_4|Area
-            type: row
-            children
-            - col_4_1|Area
-                id: col_4_1
-                type: column
-            - col_4_2|Area
-                id: col_4_2
-                type: column
-            - col_4_3|Area
-                id: col_4_3
-                type: column
-            - col_4_4|Area
-                id: col_4_4
-                type: column
-            - col_4_5|Area
-                id: col_4_5
-                type: column
-        - row_5|Area
-            type: row
-            children
-            - col_5_1|Area
-                id: col_5_1
-                type: column
-            - col_5_2|Area
-                id: col_5_2
-                type: column
-            - col_5_3|Area
-                id: col_5_3
-                type: column
-            - col_5_4|Area
-                id: col_5_4
-                type: column
-            - col_5_5|Area
-                id: col_5_5
-                type: column
+        - cell_1_1|Area
+            id: cell_1_1
+        - cell_1_2|Area
+            id: cell_1_2
+        - cell_1_3|Area
+            id: cell_1_3
+        - cell_1_4|Area
+            id: cell_1_4
+        - cell_1_5|Area
+            id: cell_1_5
+        - cell_2_1|Area
+            id: cell_2_1
+        - cell_2_2|Area
+            id: cell_2_2
+        - cell_2_3|Area
+            id: cell_2_3
+        - cell_2_4|Area
+            id: cell_2_4
+        - cell_2_5|Area
+            id: cell_2_5
+        - cell_3_1|Area
+            id: cell_3_1
+        - cell_3_2|Area
+            id: cell_3_2
+        - cell_3_3|Area
+            id: cell_3_3
+        - cell_3_4|Area
+            id: cell_3_4
+        - cell_3_5|Area
+            id: cell_3_5
+        - cell_4_1|Area
+            id: cell_4_1
+        - cell_4_2|Area
+            id: cell_4_2
+        - cell_4_3|Area
+            id: cell_4_3
+        - cell_4_4|Area
+            id: cell_4_4
+        - cell_4_5|Area
+            id: cell_4_5
+        - cell_5_1|Area
+            id: cell_5_1
+        - cell_5_2|Area
+            id: cell_5_2
+        - cell_5_3|Area
+            id: cell_5_3
+        - cell_5_4|Area
+            id: cell_5_4
+        - cell_5_5|Area
+            id: cell_5_5
     - footer|Area
         id: footer
         tag_name: footer

@@ -99,7 +99,7 @@ class Node_simple {
 
     function render() {
         if ($this->template) {
-            return (Template::make_new($this->template, [
+            return (Template::make_new(Template::pick_name($this->template), [
                 'attributes' => $this->render_attributes(),
                 'self'       => $this->render_self(),
             ]))->render();

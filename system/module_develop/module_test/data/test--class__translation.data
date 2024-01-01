@@ -7,21 +7,45 @@ tests
       - name: Translation
     scenario
     # ═════════════════════════════════════════════════════════════════════
-    - title-research_word-seconds|Test_step_Title
+    - title-apply|Test_step_Title
         title|Text
-          text: RESEARCH THE WORD "%%_word"
+          text: METHOD "%%_name"
           args
-          - word: seconds
-    - code-research_word-seconds|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__research_word__seconds
+          - name: Translation::apply()
+    - code-apply|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__apply
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-research_word-files|Test_step_Title
+    - title-apply-pieces|Test_step_Title
         title|Text
-          text: RESEARCH THE WORD "%%_word"
+          text: METHOD "%%_name"
           args
-          - word: files
-    - code-research_word-files|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__research_word__files
+          - name: Translation::apply('pieces')
+    - code-apply-pieces|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__apply__pieces
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-apply-seconds|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Translation::apply('seconds')
+    - code-apply-seconds|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__apply__seconds
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-apply-files|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Translation::apply('files')
+    - code-apply-files|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__apply__files
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-plural|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Translation::plural()
+    - code-plural|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__plural
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-filter|Test_step_Title
         title|Text

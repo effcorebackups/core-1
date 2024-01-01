@@ -29,7 +29,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__palette|Block
-          title: Palette generation form
+          title: Form for generating a palette
           title_is_visible: false
           attributes
           - data-id: block__form__palette

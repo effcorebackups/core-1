@@ -21,23 +21,21 @@ trait Widget_Files_audios__Shared {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $audio_player_on_manage_is_visible = true;
     public $audio_player_on_manage_settings = [
-        'data-player-name'                => 'default',
-        'data-player-timeline-is-visible' => 'false',
-        'autoplay'    => null,
-        'controls'    => true,
-        'crossorigin' => null,
-        'loop'        => null,
-        'muted'       => null,
-        'preload'     => 'metadata'];
+        'data-player-name' => 'default',
+        'autoplay'         => null,
+        'controls'         => true,
+        'crossorigin'      => null,
+        'loop'             => null,
+        'muted'            => null,
+        'preload'          => 'metadata'];
     public $audio_player_default_settings = [
-        'data-player-name'                => 'default',
-        'data-player-timeline-is-visible' => 'true',
-        'autoplay'    => null,
-        'controls'    => true,
-        'crossorigin' => null,
-        'loop'        => null,
-        'muted'       => null,
-        'preload'     => 'metadata'
+        'data-player-name' => 'default',
+        'autoplay'         => null,
+        'controls'         => true,
+        'crossorigin'      => null,
+        'loop'             => null,
+        'muted'            => null,
+        'preload'          => 'metadata'
     ];
 
 }

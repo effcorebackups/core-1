@@ -61,7 +61,7 @@ class Effcore {
     }
 
     static messageAdd(text, type = 'ok') {
-        let messages_place = document.querySelector('[data-area-id="messages"] [data-id="block__messages"] [data-block-content]');
+        let messages_place = document.querySelector('[data-area][data-id="messages"] [data-id="block__messages"] [data-block-content]');
         if (messages_place) {
             let messages = messages_place.querySelector('x-messages');
             if (messages === null) {

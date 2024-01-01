@@ -10,6 +10,7 @@ use effcore\Area;
 use effcore\Core;
 use effcore\Layout;
 use effcore\Message;
+use effcore\Markup;
 use effcore\Page;
 
 abstract class Events_Form_Layout {
@@ -21,7 +22,9 @@ abstract class Events_Form_Layout {
             foreach ($layout->children_select_recursive() as $c_child)
                 if ($c_child instanceof Area)
                     $c_child->managing_enable();
-            $form->child_select('layout_manager')->child_insert($layout);
+            $form->child_select('data')->child_insert(
+                new Markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout]), 'layout_manager'
+            );
         }
     }
 

@@ -12,6 +12,10 @@ class Area extends Markup {
 
     public $tag_name = 'x-area';
     public $tag_name_real;
+    public $attributes = [
+        'data-area' => true
+    ];
+
     public $id;
     public $title;
     public $type; # null | table | row | column
@@ -20,8 +24,8 @@ class Area extends Markup {
 
     function build() {
         if (!$this->is_builded) {
-            if ($this->type) $this->attribute_insert('data-area-type', $this->type);
-            if ($this->id  ) $this->attribute_insert('data-area-id'  , $this->id  );
+            if ($this->id  ) $this->attribute_insert('data-id',   $this->id);
+            if ($this->type) $this->attribute_insert('data-type', $this->type);
             if ($this->id && $this->managing_is_enabled) $this->child_insert(new Markup('x-area-info', [], [
                 'id'       => new Markup('x-area-id'      , [], new Text_simple($this->id)),
                 'tag_name' => new Markup('x-area-tag-name', [], new Text_simple($this->tag_name_real)) ]), 'id');

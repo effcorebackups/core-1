@@ -1,6 +1,7 @@
 selections
 - instance_select-poll|Selection
     id: instance_select-poll
+    description: Poll
     main_entity_name: poll
     decorator_settings
     - view_type: table-dl
@@ -64,6 +65,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-poll|Selection
     id: instance_select_multiple-poll
+    description: Polls
     main_entity_name: poll
     pager_is_enabled: true
     decorator_settings

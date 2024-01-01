@@ -13,17 +13,15 @@ class Tree extends Node {
     public $template = 'tree';
     public $attributes = ['role' => 'tree'];
     public $id;
-    public $title;
-    public $title_is_visible = 1;
-    public $title_attributes = ['data-tree-title' => true];
+    public $description;
     public $access;
     public $origin = 'nosql'; # nosql | sql | dynamic
     public $visualization_mode; # null | decorated | decorated-rearrangeable
 
-    function __construct($title = null, $id = null, $access = null, $attributes = [], $weight = +0) {
-        if ($title ) $this->title  = $title;
-        if ($id    ) $this->id     = $id;
-        if ($access) $this->access = $access;
+    function __construct($description = null, $id = null, $access = null, $attributes = [], $weight = +0) {
+        if ($description) $this->description = $description;
+        if ($id         ) $this->id          = $id;
+        if ($access     ) $this->access      = $access;
         parent::__construct($attributes, [], $weight);
     }
 
@@ -48,11 +46,6 @@ class Tree extends Node {
             $this->build();
             return parent::render();
         }
-    }
-
-    function render_self() {
-        if ($this->title && (bool)$this->title_is_visible !== true) return (new Markup('h2', $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
-        if ($this->title && (bool)$this->title_is_visible === true) return (new Markup('h2', $this->title_attributes + [                       ], $this->title))->render();
     }
 
     ###########################
@@ -89,14 +82,13 @@ class Tree extends Node {
              static::$is_init___sql = true;
             foreach (Entity::get('tree')->instances_select() as $c_instance) {
                 $c_tree = new static(
-                    $c_instance->title,
+                    $c_instance->description,
                     $c_instance->id,
                     $c_instance->access,
                     Widget_Attributes::value_to_attributes($c_instance->attributes) ?? [], 0);
                 static::$cache[$c_tree->id] = $c_tree;
                 static::$cache[$c_tree->id]->origin = 'sql';
                 static::$cache[$c_tree->id]->module_id = $c_instance->module_id;
-                static::$cache[$c_tree->id]->title_is_visible = $c_instance->title_is_visible;
             }
         }
     }
@@ -119,10 +111,10 @@ class Tree extends Node {
         return static::$cache[$id] ?? null;
     }
 
-    static function insert($title = null, $id = null, $access = null, $attributes = [], $weight = +0, $module_id = null) {
+    static function insert($description = null, $id = null, $access = null, $attributes = [], $weight = +0, $module_id = null) {
         static::init    (   );
         static::init_sql($id);
-        $new_tree = new static($title, $id, $access, $attributes, $weight);
+        $new_tree = new static($description, $id, $access, $attributes, $weight);
                static::$cache[$id] = $new_tree;
                static::$cache[$id]->origin = 'dynamic';
                static::$cache[$id]->module_id = $module_id;

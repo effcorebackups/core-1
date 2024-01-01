@@ -24,7 +24,7 @@ use effcore\User;
 abstract class Events_Page_Info {
 
     static function block_markup__system_info($page, $args = []) {
-        $logo      = new Markup('x-logo'     , [], new Markup_simple('img', ['src' => '/'.Module::get('page')->path.Token::apply('frontend/pictures/logo.svgd?color=%%_return_token_color_encoded(color__text)&color_fire=%%_return_token_color_encoded(color__text)'), 'alt' => new Text('system logotype'), 'width' => '300']));
+        $logo      = new Markup('x-logo'     , [], new Markup_simple('img', ['src' => Core::to_url_from_path(Module::get('page')->path.Token::apply('frontend/pictures/logo.svgd?color=%%_return_token_color_encoded(color__text)&color_fire=%%_return_token_color_encoded(color__text)')), 'alt' => new Text('system logotype'), 'width' => '300']));
         $copyright = new Markup('x-copyright', [], 'Copyright © 2017—2023 Maxim Rysevets. All rights reserved.');
         $build     = new Markup('x-build'    , [], [
             new Markup('x-title', [], 'Build number'),

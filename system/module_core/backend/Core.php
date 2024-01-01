@@ -283,26 +283,36 @@ abstract class Core {
     static function data_to_attributes($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
         $result = [];
         foreach ((array)$data as $c_name => $c_value) {
-            if ($is_xml_style && $c_value === true) $c_value = $c_name;
             switch (gettype($c_value)) {
                 case 'array'  :
                     if (count($c_value)) {
                         $c_nested_result = [];
-                        foreach ($c_value as $c_nested_key => $c_nested_value) {
+                        foreach ($c_value as $c_nested_name => $c_nested_value) {
                             switch (gettype($c_nested_value)) {
-                                case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                        break;
-                                case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::FPART_MAX_LEN); break;
-                                case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                        break;
-                                default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                             break; }}
+                                case 'NULL'   : break;
+                                case 'boolean': if ($c_nested_value) $c_nested_result[] = $c_nested_name;                                                                                    break;
+                                case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                                                                            break;
+                                case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::FPART_MAX_LEN);                                                     break;
+                                case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                                                                            break;
+                                case 'object' : $c_nested_result[] = str_replace('"', '&quot;', (method_exists($c_nested_value, 'render') ? $c_nested_value->render() : '__NO_RENDERER__')); break;
+                                default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                                                                                 break; }}
                         $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.implode(' ', array_filter($c_nested_result, 'strlen')).$value_wrapper; }
                     break;
-                case 'NULL'   :                                                                                                                                                                                                           break;
-                case 'boolean': if ($c_value) $result[] = $name_wrapper.$c_name.$name_wrapper;                                                                                                                                            break;
-                case 'integer':               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value)                               .$value_wrapper; break;
-                case 'double' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.                                          static::format_number($c_value, static::FPART_MAX_LEN)        .$value_wrapper; break;
-                case 'string' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;',                                      $c_value                               ).$value_wrapper; break;
-                case 'object' :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '__NO_RENDERER__')).$value_wrapper; break;
-                default       :               $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.'__UNSUPPORTED_TYPE__'                                                                                  .$value_wrapper; break;
+                case 'NULL'   : break;
+                case 'boolean':
+                    if ($c_value && $is_xml_style !== true) $result[] = $name_wrapper.$c_name.$name_wrapper;
+                    if ($c_value && $is_xml_style === true) $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.$c_name.$value_wrapper;
+                    break;
+                case 'integer': $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.     static::format_number($c_value)                       .$value_wrapper; break;
+                case 'double' : $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.     static::format_number($c_value, static::FPART_MAX_LEN).$value_wrapper; break;
+                case 'string' : $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', $c_value                       ).$value_wrapper; break;
+                case 'object' :
+                    if ($c_value instanceof Text_RAW === true) $result[] = $c_value->render();
+                    if ($c_value instanceof Text_RAW !== true) $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '__NO_RENDERER__')).$value_wrapper;
+                    break;
+                default:
+                    $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.'__UNSUPPORTED_TYPE__'.$value_wrapper;
+                    break;
             }
         }
         if ($join_part) return implode($join_part, $result);
@@ -547,21 +557,28 @@ abstract class Core {
 
     static function array_sort_by_number(&$array, $key = 'weight', $order = self::SORT_ASC) {
         if (count($array) > 1) {
-            $corrections = [];
-            foreach ($array as &$c_item) {
-                $c_weight = is_object($c_item) ? $c_item->{$key} : $c_item[$key];
-                if ($order === static::SORT_ASC) $corrections[$c_weight] = array_key_exists($c_weight, $corrections) ? $corrections[$c_weight] - .0001 : 0;
-                if ($order === static::SORT_DSC) $corrections[$c_weight] = array_key_exists($c_weight, $corrections) ? $corrections[$c_weight] + .0001 : 0;
-                if (is_object($c_item)) $c_item->_synthetic_weight   = $c_weight + $corrections[$c_weight];
-                else                    $c_item['_synthetic_weight'] = $c_weight + $corrections[$c_weight];
+            $buffer = [];
+            $real_weights = [];
+            foreach ($array as $c_row_id => &$c_item) {           $c_weight = 0;
+                if (is_array ($c_item) && isset($c_item  [$key])) $c_weight = $c_item  [$key];
+                if (is_object($c_item) && isset($c_item->{$key})) $c_weight = $c_item->{$key};
+                if (!is_numeric($c_weight)) {
+                    trigger_error('Weight is not numeric in Core::array_sort_by_number().', E_USER_WARNING);
+                    $c_weight = 0; }
+                if ($order === static::SORT_ASC) $real_weights[$c_weight] = array_key_exists($c_weight, $real_weights) ? $real_weights[$c_weight] - .0001 : $c_weight;
+                if ($order === static::SORT_DSC) $real_weights[$c_weight] = array_key_exists($c_weight, $real_weights) ? $real_weights[$c_weight] + .0001 : $c_weight;
+                $buffer[$c_row_id] = [
+                    'weight' => $real_weights[$c_weight],
+                    'object' => &$c_item
+                ];
             }
-            uasort($array, function ($a, $b) use ($order) {
-                if ($order === static::SORT_ASC) return (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']) <=> (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']);
-                if ($order === static::SORT_DSC) return (is_object($a) ? $a->_synthetic_weight : $a['_synthetic_weight']) <=> (is_object($b) ? $b->_synthetic_weight : $b['_synthetic_weight']);
+            uasort($buffer, function ($a, $b) use ($order) {
+                if ($order === static::SORT_ASC) return $b['weight'] <=> $a['weight'];
+                if ($order === static::SORT_DSC) return $a['weight'] <=> $b['weight'];
             });
-            foreach ($array as &$c_item) {
-                if (is_object($c_item)) unset($c_item->_synthetic_weight);
-                else                    unset($c_item['_synthetic_weight']);
+            $array = [];
+            foreach ($buffer as $c_row_id => &$c_buf_item) {
+                $array[$c_row_id] = &$c_buf_item['object'];
             }
         }
         return $array;
@@ -831,6 +848,10 @@ abstract class Core {
 
     static function to_null_if_empty($value) {
         return $value ?: null;
+    }
+
+    static function to_url_from_path($value) {
+        return is_string($value) && strlen($value) && $value[0] !== '/' ? '/'.$value : $value;
     }
 
     static function to_current_lang($value) {

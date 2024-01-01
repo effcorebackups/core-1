@@ -98,12 +98,14 @@ class Page extends Node implements has_Data_cache {
         $color_page = $colors[$settings->color__page_id] ?? null;
         $is_dark_palette = $color_page && $color_page->is_dark();
 
+        # global styles
+        $file_global_cssd = new File(Dynamic::DIR_FILES.'global.cssd');
+        if ($file_global_cssd->is_exists()) {
+            Frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/files/global.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
+        }
+
         # render page
         $template = Template::make_new(Template::pick_name($this->template));
-        $html            = $template->target_get('html');
-        $meta            = $template->target_get('head_meta');
-        $body            = $template->target_get('body');
-        $head_title_text = $template->target_get('head_title_text', true);
 
         if ($this->_areas_pointers) {
             Core::array_sort_by_number($this->_areas_pointers, 'render_weight');
@@ -114,46 +116,50 @@ class Page extends Node implements has_Data_cache {
             }
         }
 
-        $file_global_cssd = new File(Dynamic::DIR_FILES.'global.cssd');
-        if ($file_global_cssd->is_exists()) {
-            Frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/files/global.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
-        }
-
         $frontend = Frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_cssid);
-        $template->arg_set('charset'     , $this    ->charset);
-        $template->arg_set('head_icons'  , $frontend->icons  );
-        $template->arg_set('head_styles' , $frontend->styles );
-        $template->arg_set('head_scripts', $frontend->scripts);
+        $template->arg_set('lang'   , $this->lang_code ?: Language::code_get_current());
+        $template->arg_set('dir'    , $this->text_direction);
+        $template->arg_set('icons'  , $frontend->icons  ->render());
+        $template->arg_set('styles' , $frontend->styles ->render());
+        $template->arg_set('scripts', $frontend->scripts->render());
 
-        $html->attribute_insert('lang', $this->lang_code ?: Language::code_get_current());
-        $html->attribute_insert('dir' , $this->text_direction);
-        $html->attribute_insert('data-user-has-avatar', isset(User::get_current()->avatar_path) ? true : null);
-        $html->attribute_insert('data-page-palette-is-dark', $is_dark_palette ? true : null); # note: refreshed after page reload
-        $html->attribute_insert('data-css-path', Security::sanitize_id(Url::UTF8_encode(trim(Url::get_current()->path, '/'))));
-
-        $head_title_text->text = $this->title;
-        $meta->child_insert(
-            new Markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]), 'viewport'
+        $html_attributes = [];
+        $html_attributes['data-user-has-avatar'] = isset(User::get_current()->avatar_path) ? true : null;
+        $html_attributes['data-page-palette-is-dark'] = $is_dark_palette ? true : null; # note: refreshed after page reload
+        $html_attributes['data-css-path'] = Security::sanitize_id(Url::UTF8_encode(trim(Url::get_current()->path, '/')));
+        $template->arg_set('html_custom_attributes',
+            Core::data_to_attributes($html_attributes)
         );
 
-        $body->attribute_insert('data-layout-id', $this->id_layout);
-        $body->child_insert($this->_markup, 'markup');
-        if (Request::value_get('manage_layout', 0, '_GET') === 'true') {
-            if (Access::check((object)['roles' => ['registered' => 'registered']])) {
-                $body->attribute_insert('data-is-managed-layout', true);
-            }
-        }
+        $template->arg_set('title',
+            (new Text($this->title, [], true, true))->render()
+        );
+
+        $body_attributes = [];
+        $body_attributes['data-layout-id'] = $this->id_layout;
+        if (Request::value_get('manage_layout', 0, '_GET') === 'true')
+            if (Access::check((object)['roles' => ['registered' => 'registered']]))
+                $body_attributes['data-is-managed-layout'] = true;
+        $template->arg_set('body_custom_attributes',
+            Core::data_to_attributes($body_attributes)
+        );
+
+        $template->arg_set('body',
+            $this->_markup->render()
+        );
+
+        $meta_charset  = (new Markup_simple('meta', ['charset' => $this->charset]))->render();
+        $meta_viewport = (new Markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]))->render();
+        $template->arg_set('meta', $meta_charset.$meta_viewport);
 
         $file_meta = new File(Dynamic::DIR_FILES.'meta.html');
         if ($this->is_use_global_meta && $file_meta->is_exists()) {
-            $template->arg_set('head_meta_custom_global',
-                new Text($file_meta->load(), [], false, $settings->apply_tokens_for_meta)
+            $template->arg_set('meta_custom_global',
+                (new Text($file_meta->load(), [], false, $settings->apply_tokens_for_meta))->render()
             );
         }
         if ($this->meta) {
-            $template->arg_set('head_meta_custom',
-                new Text($this->meta, [], false, false)
-            );
+            $template->arg_set('meta_custom', $this->meta);
         }
 
         Event::start('on_page_render_before', $this->id, ['page' => &$this, 'template' => &$template]);

@@ -1,9 +1,10 @@
 
 [role='tree'] {display: block; position: relative}
-[role='tree'] [data-tree-title] {}
 
 [role='tree'] a[aria-selected      ='true'],
 [role='tree'] a[data-selected-trail='true'] {color: %%_color__link_active}
+
+
 
 /* dropdown menu: orientation and dynamics */
 
@@ -26,6 +27,8 @@
 [role='tree'][data-style~='dropdown'] li       ul {display: none}
 [role='tree'][data-style~='dropdown'] li:hover ul {display: block}
 
+
+
 /* dropdown menu: sizes */
 
 [role='tree'][data-style~='dropdown'] ul,
@@ -34,6 +37,8 @@
 [role='tree'][data-style~='dropdown'] ul ul ul {padding: 0 0 0 21px}
 [role='tree'][data-style~='dropdown'] li     a {padding: 21px; display: block}
 [role='tree'][data-style~='dropdown'] li li  a {padding: 0}
+
+
 
 /* dropdown menu: colors */
 
@@ -51,14 +56,18 @@
 [role='tree'][data-style~='dropdown']    li:hover                         {                                   background-color: %%_color__menu_active}
 [role='tree'][data-style~='dropdown'] li li:hover                         {                                   background-color: transparent}
 
+
+
 /* dropdown menu: adaptivity */
 
 @media screen and (max-width: %%_page_width_mobile(null)px) {
-  [data-area-id='system'] [data-block][data-id^='block__tree_'] {float: none}
+  [data-area][data-id='system'] [data-block][data-id^='block__tree_'] {float: none}
   [role='tree'][data-style~='dropdown'] ul {float: none; display: block}
   [role='tree'][data-style~='dropdown'] li {float: none; display: block}
   [role='tree'][data-style~='dropdown'] ul ul {position: relative}
 }
+
+
 
 /* dropdown menu 'system': icons */
 
@@ -66,6 +75,8 @@
 [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='front'  ] > a {padding-left: 64px; background-image: url('pictures/icon-menu-home.svgd?color=%%_return_if_token_color_is_dark(color__menu|white|black)'); background-color: transparent !important; color: %%_color__menu_link !important}
 [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='manage' ] > a {padding-left: 64px; background-image: url('pictures/icon-menu-manage.svgd?color=%%_return_if_token_color_is_dark(color__menu|white|black)');}
 [role='tree'][data-style~='dropdown'][data-id='system'] li[data-id='develop'] > a {padding-left: 64px; background-image: url('pictures/icon-menu-develop.svgd?color=%%_return_if_token_color_is_dark(color__menu|white|black)');}
+
+
 
 /* linear menu */
 
@@ -85,6 +96,8 @@
 [role='tree'][data-style~='linear'] li a:hover                       {color: %%_color__menu_link_active}
 [role='tree'][data-style~='linear'] li a[aria-selected      ='true'] {color: %%_color__menu_link_active}
 [role='tree'][data-style~='linear'] li a[data-selected-trail='true'] {color: %%_color__menu_link_active}
+
+
 
 /* menu visualization for management */
 

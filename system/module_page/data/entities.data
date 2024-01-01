@@ -246,12 +246,13 @@ entities
             - weight: +400
             element_attributes_on_update
             - disabled: true
-    - title
-        title: Title
+    - description
+        title: Description
         type: varchar
         size: 1024
         collate: nocase
-        default: null
+        not_null: true
+        check: (description <> '')
         converters
           on_insert: \effcore\Core::html_entity_encode
           on_update: \effcore\Core::html_entity_encode

@@ -72,10 +72,10 @@ class Tree_item extends Node {
                 $this->render_self__managed() :
                 $this->render_self();
             $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ?
-                (Template::make_new($this->template_children, [
+                (Template::make_new(Template::pick_name($this->template_children), [
                     'children' => $this->render_children($this->children_select(true))]
                 ))->render() : '';
-            return (Template::make_new($this->template, [
+            return (Template::make_new(Template::pick_name($this->template), [
                 'attributes' => $this->render_attributes(),
                 'self'       => $rendered_self,
                 'children'   => $rendered_children

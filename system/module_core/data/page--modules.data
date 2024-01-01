@@ -43,7 +43,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__cache_update|Block
-          title: Cache update form
+          title: Form for updating the cache
           title_is_visible: false
           attributes
           - data-id: block__form__cache_update
@@ -54,7 +54,7 @@ pages
           type: link
           source: forms/core/cache_update
       - block__form__modules_install|Block
-          title: Module installation form
+          title: Form for installing modules
           title_is_visible: false
           attributes
           - data-id: block__form__modules_install
@@ -65,7 +65,7 @@ pages
           type: link
           source: forms/core/modules_install
       - block__form__modules_uninstall|Block
-          title: Modules data deletion form
+          title: Form for deleting module data
           attributes
           - data-id: block__form__modules_uninstall
           display
@@ -75,7 +75,7 @@ pages
           type: link
           source: forms/core/modules_uninstall
       - block__form__modules_update_data|Block
-          title: Modules data update form
+          title: Form for updating module data
           attributes
           - data-id: block__form__modules_update_data
           display
@@ -85,7 +85,7 @@ pages
           type: link
           source: forms/core/modules_update_data
       - block__form__modules_update_files|Block
-          title: Modules files update form
+          title: Form for updating module files
           attributes
           - data-id: block__form__modules_update_files
           display

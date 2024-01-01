@@ -1,6 +1,7 @@
 selections
 - instance_select-selection|Selection
     id: instance_select-selection
+    description: Selection
     main_entity_name: selection
     decorator_settings
     - view_type: table-dl
@@ -20,8 +21,8 @@ selections
       - main_entity_name
           entity_field_name: main_entity_name
           weight: +380
-      - title
-          entity_field_name: title
+      - description
+          entity_field_name: description
           is_apply_translation: true
           weight: +360
       - this_attributes
@@ -40,6 +41,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-selection|Selection
     id: instance_select_multiple-selection
+    description: Selections
     main_entity_name: selection
     pager_is_enabled: true
     decorator_settings
@@ -54,8 +56,8 @@ selections
       - main_entity_name
           entity_field_name: main_entity_name
           weight: +380
-      - title
-          entity_field_name: title
+      - description
+          entity_field_name: description
           is_apply_translation: true
           weight: +360
       - created

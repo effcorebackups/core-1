@@ -1,0 +1,69 @@
+
+x-audio-player {
+  display: inline-block;
+  width: 100%;
+  min-width: 64px;
+  overflow: hidden;
+  line-height: 0;
+  color: white;
+  background: %%_color__main;
+}
+
+x-audio-player * {
+  user-select: none;
+ -webkit-user-select: none;
+}
+
+x-audio-player button[value='play'] {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  vertical-align: top;
+  cursor: pointer;
+  background: %%_color__main(20|20|20) url('../pictures/icons-button.svgd?color=white') 4px -118px;
+}
+
+x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main(30|30|30)}
+x-audio-player button[value='play']:enabled:active {background-color: %%_color__main(40|40|40); box-shadow: none}
+x-audio-player[data-is-playing] button[value='play'] {background-position: 2px -158px}
+
+x-audio-player x-timeline {
+  display: inline-block;
+  width: calc(100% - 44px - 12px - 12px - 64px);
+  min-width: 20px;
+  height: 20px;
+  margin: 12px;
+  cursor: not-allowed;
+  background: %%_color__main(10|10|10);
+}
+
+x-audio-player[data-is-loadedmetadata] x-timeline {cursor: pointer}
+x-audio-player[data-is-progressing]    x-timeline {background-image: url('pictures/lines.svgd?animation=true'); background-size: 20px 20px}
+
+x-audio-player x-timeline x-track-position {
+  display: block;
+  width: 0;
+  height: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: %%_color__main(30|30|30);
+}
+
+x-audio-player x-time {
+  display: inline-block;
+  width: 64px;
+  margin: 4px 0;
+  overflow: hidden;
+  white-space: normal;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1em;
+  text-align: center;
+}
+
+x-audio-player x-time x-time-elapsed {display: inline-block; margin: 3px; white-space: nowrap}
+x-audio-player x-time x-time-total   {display: inline-block; margin: 3px; white-space: nowrap; opacity: .5}

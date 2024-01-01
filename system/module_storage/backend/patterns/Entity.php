@@ -20,6 +20,7 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
     public $indexes     = [];
 
     public $has_parallel_checking               = false;
+    public $has_relation_checking               = false;
     public $has_button_insert_and_update        = false;
     public $has_message_for_additional_controls = false;
 
@@ -120,6 +121,25 @@ class Entity implements has_Data_cache, has_postparse, cache_cleaning_after_inst
                 return $name;
             }
         }
+    }
+
+    function references_get() {
+        $result = [];
+        foreach ($this->constraints as $c_row_id => $c_constraint)
+            if ($c_constraint->type === 'foreign')
+                $result[$c_row_id] = $c_constraint;
+        return $result;
+    }
+
+    function references_to_me_get() {
+        $result = [];
+        foreach (static::get_all() as $c_entity) {
+            if ($c_entity->name !== $this->name) {
+                foreach ($c_entity->constraints as $c_row_id => $c_constraint) {
+                    if ($c_constraint->type === 'foreign')
+                        if ($c_constraint->reference_entity === $this->name)
+                            $result[$c_entity->name][$c_row_id] = $c_constraint; }}}
+        return $result;
     }
 
     function id_get() {

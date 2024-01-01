@@ -40,7 +40,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__security_settings|Block
-          title: Security settings form
+          title: Form for security settings
           title_is_visible: false
           attributes
           - data-id: block__form__security_settings

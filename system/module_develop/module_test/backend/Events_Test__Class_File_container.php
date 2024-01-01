@@ -6,10 +6,15 @@
 
 namespace effcore\modules\test;
 
+use const effcore\DIR_ROOT;
+use effcore\Core;
 use effcore\Directory;
 use effcore\Extend_exception;
 use effcore\File_container;
+use effcore\File_history;
 use effcore\File;
+use effcore\Module;
+use effcore\Storage_Data;
 use effcore\Temporary;
 use effcore\Test;
 use effcore\Text_multiline;
@@ -426,6 +431,175 @@ abstract class Events_Test__Class_File_container {
             $c_results['return'] = 0;
             return;
         }
+    }
+
+    static function test_step_code__gallery_main_make(&$test, $dpath, &$c_results) {
+
+        $dir_etalones = DIR_ROOT.Module::get('profile_classic')->path.'files/';
+        $dir_src      = DIR_ROOT.Module::get('test'           )->path.'files/';
+        $dir_dst      = Temporary::DIRECTORY.'test/gallery_main/';
+
+        $gallery_items = [];
+
+        if (!Directory::create($dir_dst)) {
+            $c_results['reports'][$dpath][] = new Text_multiline([
+                'Directory "%%_directory" cannot be created!',
+                'Parent directory permissions are too strict!'], ['directory' => $dir_dst]);
+            $c_results['return'] = 0;
+            return;
+        }
+
+        $info = [
+            'gallery-main-0.picture' => ['src_name' => '1000x1500-1.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-1.picture' => ['src_name' => '1000x1500-2.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-2.picture' => ['src_name' => '1000x1500-3.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-3.picture' => ['src_name' => '1500x1000-4.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-4.picture' => ['src_name' => '1500x1000-5.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-5.picture' => ['src_name' => '1500x1000-6.png', 'size' => ['small', 'middle', 'big']],
+            'gallery-main-6.mp3'     => ['src_name' => 'audio.mp3'                                            ],
+            'gallery-main-7.audio'   => ['src_name' => 'audio.mp3',       'size' => ['small', 'middle', 'big'], 'cover'  => 'cover.png' ],
+            'gallery-main-8.mp4'     => ['src_name' => 'video.mp4'                                            ],
+            'gallery-main-9.video'   => ['src_name' => 'video.mp4',       'size' => ['small', 'middle', 'big'], 'poster' => 'poster.png'],
+        ];
+
+        # delete: …/tmp/test/gallery_main/gallery-main-0.picture
+        # delete: …/tmp/test/gallery_main/gallery-main-1.picture
+        # delete: …/tmp/test/gallery_main/gallery-main-2.picture …
+        foreach ($info as $c_dst_name => $c_info) {
+            if (file_exists($dir_dst.$c_dst_name)) {
+                if (File::delete($dir_dst.$c_dst_name)) {
+                    $c_results['reports'][$dpath][] = new Text(
+                        'File "%%_file" was deleted.', [
+                        'file' => $dir_dst.$c_dst_name
+                    ]);
+                } else {
+                    $c_results['reports'][$dpath][] = new Text_multiline([
+                        'File "%%_file" was not deleted!',
+                        'Directory permissions are too strict!'], [
+                        'file' => $dir_dst.$c_dst_name]);
+                    $c_results['return'] = 0;
+                    return;
+                }
+            }
+        }
+
+        foreach ($info as $c_dst_name => $c_info) {
+
+            # move: …/module_test/files/1000x1500-1.png → …/tmp/test/gallery_main/1000x1500-1.png
+            # move: …/module_test/files/1000x1500-2.png → …/tmp/test/gallery_main/1000x1500-2.png
+            # move: …/module_test/files/1000x1500-3.png → …/tmp/test/gallery_main/1000x1500-3.png
+            $c_file             = new File($dir_src. $c_info['src_name']);
+            $c_result_copy = $c_file->copy($dir_dst, $c_info['src_name'], true);
+            if ($c_result_copy) {
+                $c_results['reports'][$dpath][] = new Text(
+                    'File "%%_file" was copied to "%%_to".', [
+                    'file' => $dir_src.$c_info['src_name'],
+                    'to'   => $dir_dst.$c_info['src_name']
+                ]);
+            } else {
+                $c_results['reports'][$dpath][] = new Text_multiline([
+                    'File "%%_file" was not copied to "%%_to"!',
+                    'Directory permissions are too strict!'], [
+                    'file' => $dir_src.$c_info['src_name'],
+                    'to'   => $dir_dst.$c_info['src_name']]);
+                $c_results['return'] = 0;
+                return;
+            }
+
+            switch ((new File($c_dst_name))->type_get()) {
+                case 'picture':
+                    $c_file_history = new File_history;
+                    if ($c_file_history->init_from_fin($c_file->path_get_relative())) {
+                        # make container: …/tmp/test/gallery_main/1000x1500-1.png → …/tmp/test/gallery_main/1000x1500-1.picture
+                        # make container: …/tmp/test/gallery_main/1000x1500-2.png → …/tmp/test/gallery_main/1000x1500-2.picture
+                        # make container: …/tmp/test/gallery_main/1000x1500-3.png → …/tmp/test/gallery_main/1000x1500-3.picture
+                        if ($c_file_history->container_picture_make(Core::array_keys_map($c_info['size']))) {
+                            $c_results['reports'][$dpath][] = new Text(
+                                'File "%%_file" was converted to "%%_to".', [
+                                'file' => $c_file->path_get_absolute(),
+                                'to'   => $c_file_history->get_current_path()]);
+                            # rename: …/tmp/test/gallery_main/1000x1500-1.picture → …/tmp/test/gallery_main/gallery-main-0.picture
+                            # rename: …/tmp/test/gallery_main/1000x1500-2.picture → …/tmp/test/gallery_main/gallery-main-1.picture
+                            # rename: …/tmp/test/gallery_main/1000x1500-3.picture → …/tmp/test/gallery_main/gallery-main-2.picture
+                            $c_file = new File($c_file_history->get_current_path());
+                            if ($c_file->move($dir_dst, $c_dst_name)) {
+                                $gallery_items[]= ['object' => $c_file_history];
+                                     $c_results['reports'][$dpath][] = new Text('File "%%_file" was moved to "%%_to".',         ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]);
+                            } else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not moved to "%%_to"!',     ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]); $c_results['return'] = 0; return; }
+                        }     else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not converted to "%%_to"!', ['file' => $c_file_history->get_current_path(), 'to' => '*.picture'         ]); $c_results['return'] = 0; return; }
+                    }         else { $c_results['reports'][$dpath][] = new Text('picture error: init_from_fin()');                                                                                              $c_results['return'] = 0; return; }
+                    break;
+
+                case 'audio':
+                    $c_file_history = new File_history;
+                    if ($c_file_history->init_from_fin($c_file->path_get_relative())) {
+                        # make container: …/tmp/test/gallery_main/audio.mp3 → …/tmp/test/gallery_main/audio.audio
+                        if ($c_file_history->container_audio_make(Core::array_keys_map($c_info['size']), isset($c_info['cover']) ? $dir_src.$c_info['cover'] : null)) {
+                            $c_results['reports'][$dpath][] = new Text(
+                                'File "%%_file" was converted to "%%_to".', [
+                                'file' => $c_file->path_get_absolute(),
+                                'to'   => $c_file_history->get_current_path()]);
+                            # rename: …/tmp/test/gallery_main/audio.audio → …/tmp/test/gallery_main/gallery-main-7.audio
+                            $c_file = new File($c_file_history->get_current_path());
+                            if ($c_file->move($dir_dst, $c_dst_name)) {
+                                $gallery_items[]= ['object' => $c_file_history];
+                                     $c_results['reports'][$dpath][] = new Text('File "%%_file" was moved to "%%_to".',         ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]);
+                            } else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not moved to "%%_to"!',     ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]); $c_results['return'] = 0; return; }
+                        }     else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not converted to "%%_to"!', ['file' => $c_file_history->get_current_path(), 'to' => '*.audio'           ]); $c_results['return'] = 0; return; }
+                    }         else { $c_results['reports'][$dpath][] = new Text('audio error: init_from_fin()');                                                                                                $c_results['return'] = 0; return; }
+                    break;
+
+                case 'video':
+                    $c_file_history = new File_history;
+                    if ($c_file_history->init_from_fin($c_file->path_get_relative())) {
+                        # make container: …/tmp/test/gallery_main/video.mp4 → …/tmp/test/gallery_main/video.video
+                        if ($c_file_history->container_video_make(Core::array_keys_map($c_info['size']), isset($c_info['poster']) ? $dir_src.$c_info['poster'] : null)) {
+                            $c_results['reports'][$dpath][] = new Text(
+                                'File "%%_file" was converted to "%%_to".', [
+                                'file' => $c_file->path_get_absolute(),
+                                'to'   => $c_file_history->get_current_path()]);
+                            # rename: …/tmp/test/gallery_main/video.video → …/tmp/test/gallery_main/gallery-main-9.video
+                            $c_file = new File($c_file_history->get_current_path());
+                            if ($c_file->move($dir_dst, $c_dst_name)) {
+                                $gallery_items[]= ['object' => $c_file_history];
+                                     $c_results['reports'][$dpath][] = new Text('File "%%_file" was moved to "%%_to".',         ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]);
+                            } else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not moved to "%%_to"!',     ['file' => $c_file_history->get_current_path(), 'to' => $dir_dst.$c_dst_name]); $c_results['return'] = 0; return; }
+                        }     else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not converted to "%%_to"!', ['file' => $c_file_history->get_current_path(), 'to' => '*.video'           ]); $c_results['return'] = 0; return; }
+                    }         else { $c_results['reports'][$dpath][] = new Text('video error: init_from_fin()');                                                                                                $c_results['return'] = 0; return; }
+                    break;
+
+                case 'mp3':
+                case 'mp4':
+                    # rename: …/tmp/test/gallery_main/audio.mp3 → …/tmp/test/gallery_main/gallery-main-6.mp3
+                    # rename: …/tmp/test/gallery_main/video.mp4 → …/tmp/test/gallery_main/gallery-main-8.mp4
+                    $c_old_path = $c_file->path_get_absolute();
+                    if ($c_file->move($dir_dst, $c_dst_name)) {
+                        $gallery_items[]= ['object' => new File_history($c_file->path_get_relative())];
+                             $c_results['reports'][$dpath][] = new Text('File "%%_file" was moved to "%%_to".',     ['file' => $c_old_path, 'to' => $dir_dst.$c_dst_name]);
+                    } else { $c_results['reports'][$dpath][] = new Text('File "%%_file" was not moved to "%%_to"!', ['file' => $c_old_path, 'to' => $dir_dst.$c_dst_name]); $c_results['return'] = 0; return; }
+                    break;
+            }
+        }
+
+        # comparison with etalones
+        foreach ($info as $c_dst_name => $c_info) {
+            $c_file_etalone = new File($dir_etalones.$c_dst_name);
+            $c_file_compare = new File($dir_dst     .$c_dst_name);
+            $c_gotten   = $c_file_compare->hash_get();
+            $c_expected = $c_file_etalone->hash_get();
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'hash: '.$c_dst_name, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'hash: '.$c_dst_name, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        $gallery_data = Storage_Data::data_to_text($gallery_items, 'items');
+        $c_results['reports'][$dpath][] = $gallery_data;
     }
 
 }

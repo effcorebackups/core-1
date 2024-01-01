@@ -27,7 +27,9 @@ abstract class Events_Form_Instance_update {
                     Form_part::get('form_instance_update__page_width'), 'page_width'
                 );
                 # layout and its blocks
-                $layout = Core::deep_clone(Layout::select($form->_instance->id_layout));
+                $layout = Core::deep_clone(
+                    Layout::select($form->_instance->id_layout)
+                );
                 if ($layout) {
                     foreach ($layout->children_select_recursive() as $c_area) {
                         if ($c_area instanceof Area) {
@@ -45,7 +47,7 @@ abstract class Events_Form_Instance_update {
                         }
                     }
                     $form->child_select('fields')->child_insert(
-                        new Markup('x-layout-manager', ['data-id' => $layout->id], ['manager' => $layout], -500), 'layout_manager'
+                        new Markup('x-layout-manager', ['data-layout-id' => $layout->id], ['manager' => $layout], -500), 'layout_manager'
                     );
                 } else {
                     $form->child_select('fields')->child_insert(

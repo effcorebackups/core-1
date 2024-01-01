@@ -78,7 +78,7 @@ abstract class Events_Form_Vote {
             }
         } else {
             $form->child_update('fields',
-                new Markup('x-no-items', ['data-style' => 'table'], 'No items.')
+                new Markup('x-no-items', ['data-style' => 'table'], 'Poll has been deleted.')
             );
         }
     }

@@ -451,16 +451,17 @@ Dynamic processing makes it possible to organize the output of System variables
 in such files or perform any other operation with their content.
 
 An example of variables that can be used in dynamic files:
-- `%%_color__main`
-- `%%_color__main(10|10|10|.5)`
-- `%%_return_if_token_color_is_dark(color__text|#000|#fff)`
-- `%%_return_if_token(color__text|#fff|1|0)`
-- `%%_avatar_path`
-- `%%_page_width_min_context`
-- `%%_page_width_max_context`
-- `%%_request_scheme`
-- `%%_request_host`
-- `%%_translation(simple string)`
+
+    %%_color__main
+    %%_color__main(10|10|10|.5)
+    %%_return_if_token_color_is_dark(color__text|#000|#fff)
+    %%_return_if_token(color__text|#fff|1|0)
+    %%_avatar_path
+    %%_page_width_min_context
+    %%_page_width_max_context
+    %%_request_scheme
+    %%_request_host
+    %%_translation(simple string)
 
 In fact:
 - *`*.cssd`* is a classic CSS file that contains cascading style sheets,
@@ -470,7 +471,7 @@ In fact:
 - *`*.svgd`* is a classic SVG containing vector graphics in XML format,
   but which may contain dynamic content.
 
-**Note**: See `/system/module_develop/frontend/develop.cssd`
+**Note**: See `develop.cssd`
 for more examples.
 
 

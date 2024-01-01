@@ -45,7 +45,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__cache_update|Block
-          title: Cache update form
+          title: Form for updating the cache
           title_is_visible: false
           attributes
           - data-id: block__form__cache_update

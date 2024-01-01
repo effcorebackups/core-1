@@ -46,7 +46,7 @@ class Widget_Files_pictures extends Widget_Files {
                     $decorator->data[$c_row_id] = [
                         'type'     => ['value' => 'picture', 'is_apply_translation' => false],
                         'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
-                        'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
+                        'children' => ['value' => static::render_item($c_item, $c_row_id)]
                     ];
                 }
             }
@@ -54,21 +54,37 @@ class Widget_Files_pictures extends Widget_Files {
         return $decorator;
     }
 
-    static function item_markup_get($item, $row_id) {
-        $src = '/'.$item->object->get_current_path(true);
-        return new Markup('a', ['data-type' => 'picture-wrapper', 'href' => $src.'?thumb=big', 'title' => new Text($item->settings['title']), 'target' => $item->settings['target']],
-            new Markup_simple('img', ['src' => $src.'?thumb=middle', 'alt' => new Text($item->settings['alt'])])
-        );
+    static function render_item($item, $row_id) {
+        $url = Core::to_url_from_path($item->object->get_current_path(true));
+        return Template::make_new(Template::pick_name('picture_in_link'), [
+            'id'  => $row_id,
+            'url' => $url, /* original size if JS is disabled */
+            'src' => $url ? $url.'?thumb=middle' : '',
+            'link_attributes' => Core::data_to_attributes([
+                'data-type' => 'picture-wrapper',
+                'title'     => new Text($item->settings['title']),
+                'target'    => $item->settings['target']]),
+            'attributes' => Core::data_to_attributes([
+                'alt' => new Text($item->settings['alt'])
+            ])
+        ])->render();
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
+        $result->child_select('button_delete')->_kind = 'picture';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'picture') {
             if (!empty($item->settings['data-thumbnails-is-embedded'])) {
-                $result->child_insert(new Markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?thumb=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+                $result->child_insert(new Markup_simple('img', [
+                    'data-type' => 'thumbnail',
+                    'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?thumb=small',
+                    'alt'       => new Text('thumbnail'),
+                    'width'     => '44',
+                    'height'    => '44',
+                ], +450), 'thumbnail');
             }
         }
         return $result;
@@ -107,8 +123,7 @@ class Widget_Files_pictures extends Widget_Files {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
-        if ($new_item->object->move_tmp_to_pre($pre_path)) {
+        if (parent::on_file_prepare($widget, $form, $npath, $button,  $items,  $new_item)) {
             $new_item->settings = $widget->picture_default_settings;
             $new_item->settings['data-thumbnails-is-embedded'] = false;
             if ($widget->thumbnails_is_allowed) {

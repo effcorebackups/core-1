@@ -33,7 +33,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__instance_update|Block
-          title: Data update form
+          title: Form for changing data
           title_is_visible: false
           attributes
           - data-id: block__form__instance_update

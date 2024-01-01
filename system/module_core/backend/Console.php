@@ -34,7 +34,7 @@ abstract class Console {
     }
 
     static function visible_mode_get($reset = false) {
-        if (static::$visible_mode === null || $reset === true) {
+        if (static::$visible_mode === null || $reset) {
             static::$visible_mode = static::IS_VISIBLE_FOR_NOBODY;
             if (Module::is_enabled('develop')) {
                 $settings = Module::settings_get('page');
@@ -146,7 +146,7 @@ abstract class Console {
             'language'            => ['title' => 'Current language'     , 'value' => Language::code_get_from_settings()                      , 'is_apply_translation' => false],
             'generation_time'     => ['title' => 'Total generation time', 'value' => Locale::format_msecond(Timer::period_get('total', 0, 1)), 'is_apply_translation' => false],
             'memory_usage'        => ['title' => 'Memory used'          , 'value' => Locale::format_bytes(memory_get_usage(true))            , 'is_apply_translation' => false] ]];
-        return new Block('Current page information', ['data-id' => 'block__info', 'data-style' => 'title-is-simple'], [$decorator]);
+        return new Block('Current page information', ['data-id' => 'block__info'], [$decorator]);
     }
 
     static function block_markup__diagram_load() {
@@ -216,7 +216,7 @@ abstract class Console {
                 );
             }
         }
-        return new Block('Execution plan', ['data-id' => 'block__logs', 'data-style' => 'title-is-simple'], [
+        return new Block('Execution plan', ['data-id' => 'block__logs'], [
             $decorator, $markup_total
         ]);
     }

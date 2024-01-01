@@ -19,7 +19,7 @@ class Markup_simple extends Node_simple {
     }
 
     function render() {
-        return (Template::make_new($this->template, [
+        return (Template::make_new(Template::pick_name($this->template), [
             'tag_name'   => $this->tag_name,
             'attributes' => $this->render_attributes()
         ]))->render();

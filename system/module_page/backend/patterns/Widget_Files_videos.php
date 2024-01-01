@@ -43,7 +43,7 @@ class Widget_Files_videos extends Widget_Files {
                     $decorator->data[$c_row_id] = [
                         'type'     => ['value' => 'video'  , 'is_apply_translation' => false],
                         'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
-                        'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
+                        'children' => ['value' => static::render_item($c_item, $c_row_id)]
                     ];
                 }
             }
@@ -51,24 +51,43 @@ class Widget_Files_videos extends Widget_Files {
         return $decorator;
     }
 
-    static function item_markup_get($item, $row_id) {
+    static function render_item($item, $row_id) {
         $settings = Module::settings_get('page');
-        $src = '/'.$item->object->get_current_path(true);
-        $src_poster = $src.'?poster=big';
-        $src_poster_default = '/'.$settings->thumbnail_path_poster_default;
-        if ($item->settings['data-poster-is-embedded'])
-             return new Markup('video', ['src' => $src, 'poster' => $src_poster        ] + $item->settings);
-        else return new Markup('video', ['src' => $src, 'poster' => $src_poster_default] + $item->settings);
+        $url = Core::to_url_from_path($item->object->get_current_path(true));
+        if ($item->settings['data-poster-is-embedded']) {
+            return Template::make_new(Template::pick_name('video'), [
+                'id'         => $row_id,
+                'src'        => $url,
+                'poster'     => $url.'?poster=big',
+                'attributes' => Core::data_to_attributes($item->settings)
+            ])->render();
+        } else {
+            return Template::make_new(Template::pick_name('video'), [
+                'id'         => $row_id,
+                'src'        => $url,
+                'poster'     => Core::to_url_from_path($settings->thumbnail_path_poster_default),
+                'attributes' => Core::data_to_attributes($item->settings)
+            ])->render();
+        }
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
+        $result->child_select('button_delete')->_kind = 'video';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'video') {
             if (!empty($item->settings['data-poster-is-embedded'])) {
-                $result->child_insert(new Markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?poster=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+                $result->child_select('info')->child_select('title')->child_select('text')->text_append(
+                    ' + '.(new Text('poster'))->render());
+                $result->child_insert(new Markup_simple('img', [
+                    'data-type' => 'thumbnail',
+                    'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?poster=small',
+                    'alt'       => new Text('thumbnail'),
+                    'width'     => '44',
+                    'height'    => '44'
+                ], +450), 'thumbnail');
             }
         }
         return $result;
@@ -120,8 +139,7 @@ class Widget_Files_videos extends Widget_Files {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
-        if ($new_item->object->move_tmp_to_pre($pre_path)) {
+        if (parent::on_file_prepare($widget, $form, $npath, $button,  $items,  $new_item)) {
             $new_item->settings = $widget->video_player_default_settings;
             $new_item->settings['data-poster-is-embedded'] = false;
             if ($widget->poster_is_allowed) {
@@ -131,6 +149,7 @@ class Widget_Files_videos extends Widget_Files {
                     if ($poster instanceof File_history) {
                         if (Media::media_class_get($poster->type) === 'picture') {
                             if (Media::is_type_for_thumbnail($poster->type)) {
+                                $pre_path = $new_item->object->get_current_path();
                                 if ($poster->move_tmp_to_pre($pre_path.'.'.$poster->type)) {
                                     if ($new_item->object->container_video_make($widget->poster_thumbnails, $poster->get_current_path())) {
                                         $new_item->settings['data-poster-is-embedded'] = true;

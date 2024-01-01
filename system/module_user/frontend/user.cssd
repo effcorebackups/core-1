@@ -6,6 +6,8 @@
                        [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('pictures/avatar-registered.svgd?color=%%_return_token_color_encoded(color__main)');}
 [data-user-has-avatar] [role='tree'][data-style~='dropdown'][data-id^='user'] li[data-id^='registered'] > a {padding-left: 77px; background-image: url('/%%_avatar_path?thumb=small');}
 
+
+
 /* decorators view */
 
 [data-decorator][data-entity_name='user'] [data-handler='handler__user__roles']                 ul,

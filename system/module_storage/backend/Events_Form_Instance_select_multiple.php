@@ -14,6 +14,7 @@ use effcore\Markup;
 use effcore\Message;
 use effcore\Page;
 use effcore\Selection;
+use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Url;
 use stdClass;
@@ -105,11 +106,35 @@ abstract class Events_Form_Instance_select_multiple {
                 if (!empty($form->_selected_instances)) {
                     foreach ($form->_selected_instances as $c_instance_id => $c_instance) {
                         if ($items['#actions']->value_get() === 'delete') {
-                            if (empty($c_instance->is_embedded)) {
-                                $c_result = $c_instance->delete();
-                                if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.'                           , ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id])           );
-                                if ($form->is_show_result_message && $c_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!'                       , ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'error'  );
-                            } else                                                       Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!', ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'warning');
+                            if (!empty($c_instance->is_embedded)) {
+                                Message::insert(new Text(
+                                    'Item of type "%%_type" with ID = "%%_id" cannot be deleted because it is embedded!', [
+                                    'type' => (new Text($entity->title))->render(),
+                                    'id'   => $c_instance_id]), 'warning'
+                                );
+                                continue;
+                            }
+                            if (!empty($entity->has_relation_checking)) {
+                                $statistics = $c_instance->has_related_instances();
+                                if ($statistics) {
+                                    foreach ($statistics as $c_related_entity_name => $c_count) {
+                                        $c_related_entity = Entity::get($c_related_entity_name);
+                                        Message::insert(new Text_multiline([
+                                            'Item of type "%%_type" with ID = "%%_id" cannot be deleted because it has a relationship with elements of type "%%_related_type"!',
+                                            'Number of detected relations = %%_number piece%%_plural(number|s).',
+                                            'First remove the dependent elements.'], [
+                                            'type'         => (new Text(          $entity->title))->render(),
+                                            'related_type' => (new Text($c_related_entity->title))->render(),
+                                            'id'           => $c_instance_id,
+                                            'number'       => $c_count]), 'warning'
+                                        );
+                                    }
+                                    continue;
+                                }
+                            }
+                            $c_result = $c_instance->delete();
+                            if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was deleted.'    , ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id])         );
+                            if ($form->is_show_result_message && $c_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not deleted!', ['type' => (new Text($entity->title))->render(), 'id' => $c_instance_id]), 'error');
                         }
                     }
                 }

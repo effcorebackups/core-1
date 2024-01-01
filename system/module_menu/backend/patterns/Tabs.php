@@ -39,7 +39,7 @@ class Tabs extends Node {
     function render() {
         static::init();
         $this->build();
-        return (Template::make_new($this->template, [
+        return (Template::make_new(Template::pick_name($this->template), [
             'attributes' => $this->render_attributes(),
             'top_items'  => $this->render_top_items(),
             'sub_items'  => $this->render_sub_items()
@@ -53,7 +53,7 @@ class Tabs extends Node {
             $c_clone->children = [];
             $rendered.= $c_clone->render();
         }
-        return $rendered ? (Template::make_new($this->template_top_items, [
+        return $rendered ? (Template::make_new(Template::pick_name($this->template_top_items), [
             'children' => $rendered
         ]))->render() : '';
     }
@@ -69,7 +69,7 @@ class Tabs extends Node {
                 break;
             }
         }
-        return $rendered ? (Template::make_new($this->template_sub_items, [
+        return $rendered ? (Template::make_new(Template::pick_name($this->template_sub_items), [
             'children' => $rendered
         ]))->render() : '';
     }

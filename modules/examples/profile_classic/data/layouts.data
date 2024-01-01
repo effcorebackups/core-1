@@ -3,15 +3,15 @@ layouts
     id: original_classic
     title: Original | profile "Classic"
     children
-    - page_part_head|Area
-        tag_name: x-page-part
+    - part_head|Area
+        tag_name: x-part
         attributes
-        - data-page-part-id: head
+        - data-group-id: head
         children
-        - page_part_wrapper|Area
-            tag_name: x-page-part-wrapper
+        - wrapper|Area
+            tag_name: x-wrapper
             attributes
-            - data-page-part-wrapper: true
+            - data-wrapper: true
             children
             - system|Area
                 id: system
@@ -20,25 +20,24 @@ layouts
                 tag_name: header
             - menu|Area
                 id: menu
-    - page_part_body|Area
-        tag_name: x-page-part
+    - part_body|Area
+        tag_name: x-part
         attributes
-        - data-page-part-id: body
+        - data-group-id: body
         children
-        - page_part_wrapper|Area
-            tag_name: x-page-part-wrapper
+        - wrapper|Area
+            tag_name: x-wrapper
             attributes
-            - data-page-part-wrapper: true
+            - data-wrapper: true
             children
             - content|Area
-                type: table
+                type: flex
                 attributes
-                - data-area-group-id: content
+                - data-group-id: content
                 children
                 - left|Area
-                    type: column
                     attributes
-                    - data-area-group-id: left
+                    - data-group-id: left
                     children
                     - breadcrumbs|Area
                         id: breadcrumbs
@@ -54,19 +53,16 @@ layouts
                         render_weight: +500
                 - right|Area
                     id: right
-                    type: column
                     tag_name: aside
-                    attributes
-                    - style: width: 200px
-    - page_part_foot|Area
-        tag_name: x-page-part
+    - part_foot|Area
+        tag_name: x-part
         attributes
-        - data-page-part-id: foot
+        - data-group-id: foot
         children
-        - page_part_wrapper|Area
-            tag_name: x-page-part-wrapper
+        - wrapper|Area
+            tag_name: x-wrapper
             attributes
-            - data-page-part-wrapper: true
+            - data-wrapper: true
             children
             - footer|Area
                 id: footer

@@ -18,6 +18,7 @@ use ReflectionClass;
 abstract class Events_Storage {
 
     static function on_instance_delete_before($event, $instance) {
+        $instance->select(); # select all values
         $entity = $instance->entity_get();
         foreach ($entity->fields as $c_name => $c_field) {
             if (!empty($c_field->managing->control->class)) {

@@ -49,12 +49,13 @@ entities
             - weight: +400
             element_attributes_on_update
             - disabled: true
-    - title
-        title: Title
+    - description
+        title: Description
         type: varchar
         size: 1024
         collate: nocase
-        default: null
+        not_null: true
+        check: (description <> '')
         converters
           on_insert: \effcore\Core::html_entity_encode
           on_update: \effcore\Core::html_entity_encode
@@ -68,21 +69,6 @@ entities
             element_attributes
             - maxlength: 1024
             - size: 60
-    - title_is_visible
-        title: Title is visible
-        type: boolean
-        not_null: true
-        default: 1
-        managing
-          is_enabled_on_insert: true
-          is_enabled_on_update: true
-          control
-            class: \effcore\Field_Select_logic
-            properties
-            - weight: +360
-            properties_on_insert
-            - selected
-              - =: 1
     - attributes
         title: Attributes
         type: blob
@@ -214,7 +200,7 @@ entities
             properties
             - related_entity_name: tree
             - related_entity_field_id_name: id
-            - related_entity_field_title_name: title
+            - related_entity_field_title_name: description
             - weight: +380
             element_attributes
             - disabled: true
@@ -369,15 +355,15 @@ entities
         type: foreign
         fields
         - =: id_tree
-        references: trees
-        references_fields
+        reference_entity: tree
+        reference_fields
         - =: id
     - foreign_id_parent
         type: foreign
         fields
         - =: id_parent
-        references: tree_items
-        references_fields
+        reference_entity: tree_item
+        reference_fields
         - =: id
     indexes
     - index_weight

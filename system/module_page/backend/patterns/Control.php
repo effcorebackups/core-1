@@ -27,7 +27,7 @@ class Control extends Container {
     }
 
     function value_set_initial($value, $reset = false) {
-        if ($this->initial_value === null || $reset === true)
+        if ($this->initial_value === null || $reset)
             $this->initial_value = $value;
     }
 

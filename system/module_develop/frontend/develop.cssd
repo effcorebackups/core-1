@@ -168,6 +168,8 @@ test_response_captcha: %%_test_response_captcha
 ─────────────────────────────────────────────────────────────────────
 */
 
+
+
 /* console */
 
 x-console {
@@ -183,7 +185,7 @@ x-console {
   color: white;
   background: #6fa3aa url('/system/module_page/frontend/pictures/lines.svgd')}
 x-console [data-block] {max-width: 990px; margin: 10px auto}
-x-console [data-block] [data-block-title] {margin: 2em 0 0 0; color: white; border-bottom: 5px solid #214d58}
+x-console [data-block] [data-block-title] {color: white}
 
 x-console x-table {margin: 0}
 x-console x-table[data-view-type='table-dl'] {border-top-color: #214d58}
@@ -239,6 +241,8 @@ x-console [data-id='block__logs'] x-total x-param x-title {display: inline-block
 x-console [data-id='block__logs'] x-total x-param x-title::after {content: ': '}
 x-console [data-id='block__logs'] x-total x-param x-value {font-family: monospace}
 
+
+
 /* x-targets */
 
 x-targets {display: block; margin: 50px 0 150px 0}
@@ -250,11 +254,15 @@ x-targets a {
   border-radius: 10px;
 }
 
+
+
 /* x-file-path */
 
 x-file-path {display: inline-block}
 x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat; margin-right: 10px}
 x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat 0 -30px}
+
+
 
 /* x-structures-list */
 
@@ -264,6 +272,8 @@ x-structures-list x-item > x-name {display: block; font-size: 1.5em; line-height
 x-structures-list x-item x-namespace {display: block}
 x-structures-list x-file-path x-directory {display: none}
 x-structures-list x-file-path:hover x-directory {display: inline-block}
+
+
 
 /* block__structures_diagram */
 
@@ -298,6 +308,8 @@ x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-attributes,
 [data-id='block__structures_diagram'] #expand:checked ~ x-diagram-uml x-operations {display: block}
 
+
+
 /* block__demo_canvas */
 
 [data-id='block__markup__demo_canvas'] [data-block-content] {text-align: center}
@@ -307,11 +319,15 @@ x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
   height: auto;
 }
 
+
+
 /* palette */
 
 form#palette x-palette {display: block; margin: 5px 0; text-align: center}
 form#palette x-palette x-color {display: inline-block; width: 30px; height: 30px}
 form#palette x-palette x-color:nth-child(11) {border: 1px solid red; margin: -1px; position: relative; opacity: 1}
+
+
 
 /* decorators view */
 

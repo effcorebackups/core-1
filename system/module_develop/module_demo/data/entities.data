@@ -541,8 +541,8 @@ entities
         type: foreign
         fields
         - =: f_foreign
-        references: demo_autoincrement
-        references_fields
+        reference_entity: demo_autoincrement
+        reference_fields
         - =: id
         on_update: cascade
         on_delete: cascade
@@ -777,8 +777,8 @@ entities
         type: foreign
         fields
         - =: id_data
-        references: demo_data
-        references_fields
+        reference_entity: demo_data
+        reference_fields
         - =: id
     indexes
     - index_id_data

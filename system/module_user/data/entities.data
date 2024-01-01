@@ -322,15 +322,15 @@ entities
         type: foreign
         fields
         - =: id_role
-        references: roles
-        references_fields
+        reference_entity: role
+        reference_fields
         - =: id
     - foreign_id_permission
         type: foreign
         fields
         - =: id_permission
-        references: permissions
-        references_fields
+        reference_entity: permission
+        reference_fields
         - =: id
     indexes
     - index_created
@@ -435,15 +435,15 @@ entities
         type: foreign
         fields
         - =: id_role
-        references: roles
-        references_fields
+        reference_entity: role
+        reference_fields
         - =: id
     - foreign_id_user
         type: foreign
         fields
         - =: id_user
-        references: users
-        references_fields
+        reference_entity: user
+        reference_fields
         - =: id
     indexes
     - index_created
@@ -625,8 +625,8 @@ entities
         type: foreign
         fields
         - =: id_user
-        references: users
-        references_fields
+        reference_entity: user
+        reference_fields
         - =: id
     indexes
     - index_expired

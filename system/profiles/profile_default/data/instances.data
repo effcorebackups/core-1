@@ -259,8 +259,7 @@ instances
     entity_name: tree
     values
     - id: user_anonymous
-    - title: Anonymous user's menu
-    - title_is_visible: 0
+    - description: Anonymous user's menu
     - is_embedded: 1
     - attributes
       - 0
@@ -276,8 +275,7 @@ instances
     entity_name: tree
     values
     - id: user_registered
-    - title: Registered user's menu
-    - title_is_visible: 0
+    - description: Registered user's menu
     - is_embedded: 1
     - attributes
       - 0
@@ -382,7 +380,7 @@ instances
     entity_name: selection
     values
     - id: user
-    - title: General information
+    - description: General information
     - main_entity_name: user
     - data
       - is_custom_conditions: true
@@ -450,7 +448,7 @@ instances
     entity_name: selection
     values
     - id: user_sessions
-    - title: Sessions
+    - description: Sessions
     - main_entity_name: session
     - data
       - is_custom_conditions: true

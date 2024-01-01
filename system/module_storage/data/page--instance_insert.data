@@ -33,7 +33,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__instance_insert|Block
-          title: Data insertion form
+          title: Form for adding data
           title_is_visible: false
           attributes
           - data-id: block__form__instance_insert

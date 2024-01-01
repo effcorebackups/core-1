@@ -47,7 +47,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__demo|Block
-          title: Demonstration form
+          title: Form for feature demonstration
           title_is_visible: false
           attributes
           - data-id: block__form__demo
@@ -89,7 +89,6 @@ pages
           title: Decorators static
           attributes
           - data-id: block__markup__demo_decorator_static
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -100,7 +99,6 @@ pages
           title: Decorators dynamic
           attributes
           - data-id: block__markup__demo_decorator_dynamic
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -114,46 +112,36 @@ pages
           title: Demonstration of field types for Selection
           attributes
           - data-id: block__selection__demo_field_types
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: link
           source: selections/demo/demo_selection_field_types
-          properties
-          - title: null
       - block__selection__demo_data_types|Block
           title: Demonstration of selection of entities "demo_types"
           attributes
           - data-id: block__selection__demo_data_types
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: link
           source: selections/demo/demo_data_types
-          properties
-          - title: null
       - block__selection__demo_data_join|Block
           title: Demonstration of selection of "demo_data" entities with JOIN
           attributes
           - data-id: block__selection__demo_data_join
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
             match: %^embedded/selections$%
           type: copy
           source: selections/demo/demo_data_join
-          properties
-          - title: null
       - block__selection__demo_data_join__with_properties|Block
           title: Demonstration of selection of "demo_data" entities with JOIN (and overridden conditions)
           attributes
           - data-id: block__selection__demo_data_join__with_properties
-          - data-style: title-is-simple
           display
             check: page_args
             where: type
@@ -161,7 +149,6 @@ pages
           type: copy
           source: selections/demo/demo_data_join
           properties
-          - title: null
           - pager_id: 2
           - query_settings
             - where
@@ -190,7 +177,6 @@ pages
       # ─────────────────────────────────────────────────────────────────────
       - block__tree__demo_via_decorator|Block
           title: Demonstration menu via decorator
-          title_is_visible: false
           attributes
           - data-id: block__tree__demo_via_decorator
           display
@@ -201,7 +187,6 @@ pages
           source: markup/demo/demo_tree_via_decorator
       - block__tree_sql__demo|Block
           title: Demonstration menu SQL
-          title_is_visible: false
           attributes
           - data-id: block__tree_sql__demo
           display
@@ -214,7 +199,6 @@ pages
           - instance_id: demo_sql
       - block__tree__demo_nosql|Block
           title: Demonstration menu NoSQL
-          title_is_visible: false
           attributes
           - data-id: block__tree__demo_nosql
           display

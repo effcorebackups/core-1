@@ -61,17 +61,18 @@ class Permission {
     }
 
     static function related_roles_insert($id_permission, $roles, $module_id = null) {
+        $result = [];
         foreach ($roles as $c_id_role) {
-            (new Instance('relation_role_with_permission', [
+            $result[$c_id_role] = (new Instance('relation_role_with_permission', [
                 'id_role'       => $c_id_role,
                 'id_permission' => $id_permission,
                 'module_id'     => $module_id
-            ]))->insert();
-        }
+            ]))->insert(); }
+        return $result;
     }
 
     static function related_roles_delete($id_permission) {
-        Entity::get('relation_role_with_permission')->instances_delete([
+        return Entity::get('relation_role_with_permission')->instances_delete([
             'where' => [
                 'id_permission_!f'       => 'id_permission',
                 'id_permission_operator' => '=',
@@ -80,7 +81,7 @@ class Permission {
     }
 
     static function related_role_delete($id_permission, $id_role) {
-        (new Instance('relation_role_with_permission', [
+        return (new Instance('relation_role_with_permission', [
             'id_permission' => $id_permission,
             'id_role'       => $id_role
         ]))->delete();

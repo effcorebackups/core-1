@@ -18,6 +18,8 @@ class Container extends Markup {
     public $title_position = 'top';
     public $title_attributes = [];
     public $title_is_visible = true;
+    public $title_is_apply_translation = true;
+    public $title_is_apply_tokens = false;
     public $content_tag_name;
     public $content_attributes = [];
     public $description;
@@ -31,24 +33,24 @@ class Container extends Markup {
     }
 
     function render() {
-        $is_bottom_title    = !empty($this->title_position)       && $this->title_position       === 'bottom';
-        $is_top_description = !empty($this->description_position) && $this->description_position === 'top';
-        return (Template::make_new($this->template, [
-            'tag_name'      => $this->tag_name,
-            'attributes'    => $this->render_attributes(),
-            'self_t'        => $is_bottom_title    ? '' : $this->render_self(),
-            'self_b'        => $is_bottom_title    ?      $this->render_self()        : '',
-            'description_t' => $is_top_description ?      $this->render_description() : '',
-            'description_b' => $is_top_description ? '' : $this->render_description(),
-            'children'      => $this->content_tag_name ? (new Markup($this->content_tag_name, $this->content_attributes,
-                               $this->render_children($this->children_select(true)) ))->render() :
-                               $this->render_children($this->children_select(true))
+        $is_title_in_footer       = !empty($this->title_position)       && $this->title_position       === 'bottom';
+        $is_description_in_header = !empty($this->description_position) && $this->description_position === 'top';
+        return (Template::make_new(Template::pick_name($this->template), [
+            'tag_name'           => $this->tag_name,
+            'attributes'         => $this->render_attributes(),
+            'title_header'       => $is_title_in_footer       ? '' : $this->render_self(),
+            'title_footer'       => $is_title_in_footer       ?      $this->render_self()        : '',
+            'description_header' => $is_description_in_header ?      $this->render_description() : '',
+            'description_footer' => $is_description_in_header ? '' : $this->render_description(),
+            'children' => $this->content_tag_name ?
+                (new Markup($this->content_tag_name, $this->content_attributes, $this->render_children($this->children_select(true)) ))->render() :
+                                                                                $this->render_children($this->children_select(true))
         ]))->render();
     }
 
     function render_self() {
-        if ($this->title && (bool)$this->title_is_visible !== true) return (new Markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->attribute_select('required') ? true : null, 'aria-hidden' => 'true'], $this->title))->render();
-        if ($this->title && (bool)$this->title_is_visible === true) return (new Markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->attribute_select('required') ? true : null                         ], $this->title))->render();
+        if ($this->title && (bool)$this->title_is_visible !== true) return (new Markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->attribute_select('required') ? true : null, 'aria-hidden' => 'true'], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
+        if ($this->title && (bool)$this->title_is_visible === true) return (new Markup($this->title_tag_name, $this->title_attributes + ['data-mark-required' => $this->attribute_select('required') ? true : null                         ], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
     }
 
     function render_description() {

@@ -35,3 +35,39 @@ frontend
         weight: +400
         attributes
         - defer: true
+- gallery_player|Frontend
+    display
+      check: block
+      where: cssid
+      match: %^block__gallery_.*$%
+    styles
+    - style
+        path: frontend/gallery_player/styles.cssd
+        weight: +300
+        attributes
+        - rel: stylesheet
+        - media: all
+    scripts
+    - script
+        path: frontend/gallery_player/script.js
+        weight: +300
+        attributes
+        - defer: true
+- audio_player|Frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    styles
+    - style
+        path: frontend/audio_player/styles.cssd
+        weight: +300
+        attributes
+        - rel: stylesheet
+        - media: all
+    scripts
+    - script
+        path: frontend/audio_player/script.js
+        weight: +300
+        attributes
+        - defer: true

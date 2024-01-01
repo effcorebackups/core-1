@@ -119,8 +119,8 @@ abstract class Events_Form_Instance_insert {
                 # insert action
                 $form->_result = $form->_instance->insert();
                 # show messages
-                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was inserted.'    , ['type' => (new Text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
-                if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not inserted!', ['type' => (new Text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
+                if ($form->is_show_result_message && $form->_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was appended.'    , ['type' => (new Text($entity->title))->render(), 'id' => implode('+', $form->_instance->values_id_get()) ])           );
+                if ($form->is_show_result_message && $form->_result === null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was not appended!', ['type' => (new Text($entity->title))->render(), 'id' => 'n/a'                                           ]), 'warning');
                 # redirect if no error
                 if ($form->_result !== null) {
                     if ($form->is_redirect_enabled) {

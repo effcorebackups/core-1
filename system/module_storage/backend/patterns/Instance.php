@@ -21,6 +21,8 @@ class Instance implements cache_cleaning_after_install {
         $this->values_set($values);
     }
 
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
     function __isset($name) {return isset($this->values[$name]);}
     function __get  ($name) {return       $this->values[$name] ;}
     function __set  ($name, $value) {
@@ -41,8 +43,23 @@ class Instance implements cache_cleaning_after_install {
         return $this->entity_get()->id_from_values_get($this->values_get());
     }
 
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
     function entity_get() {return Entity::get($this->entity_name);}
     function entity_set_name($entity_name) {$this->entity_name = $entity_name;}
+
+    function has_related_instances() {
+        $result = [];
+        foreach ($this->entity_get()->references_to_me_get() as $c_related_entity_name => $c_relations) {
+            foreach ($c_relations as $c_relation) {
+                $where = array_combine($c_relation->fields, $this->values_get($c_relation->reference_fields));
+                $query_settings['where'] = $this->entity_get()->storage_get()->prepare_attributes($where);
+                $c_count = Entity::get($c_related_entity_name)->instances_select_count($query_settings);
+                if ($c_count)  $result[$c_related_entity_name] = $c_count; }}
+        return $result;
+    }
+
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     function select() {
         Event::start('on_instance_select_before', $this->entity_name, ['instance' => &$this]);
@@ -131,7 +148,6 @@ class Instance implements cache_cleaning_after_install {
             $selection->main_entity_name = $entity_name;
             $selection->template = 'content';
             $selection->origin = 'dynamic';
-            $selection->title = $entity->title;
             $selection->query_settings['where'] = $entity->storage_get()->prepare_attributes($where);
             foreach ($entity->fields as $c_name => $c_field) {
                 $selection->fields['main'][$c_name] = new stdClass;

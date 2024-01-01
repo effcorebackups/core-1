@@ -97,10 +97,35 @@ class Form extends Markup implements has_Data_cache {
 
                     # call "on_validate" handlers (parent should be at the end)
                     if (empty($this->clicked_button->break_on_validate)) {
-                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate'        )) {$c_result = Event::start_local('on_validate'        , $c_child, ['form' => $this, 'npath' => $c_npath]); Console::log_insert('form', 'validation_1', $c_npath, $c_result ? 'ok' : 'warning');}
-                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_2')) {$c_result = Event::start_local('on_validate_phase_2', $c_child, ['form' => $this, 'npath' => $c_npath]); Console::log_insert('form', 'validation_2', $c_npath, $c_result ? 'ok' : 'warning');}
-                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) if (is_object($c_child) && method_exists($c_child, 'on_validate_phase_3')) {$c_result = Event::start_local('on_validate_phase_3', $c_child, ['form' => $this, 'npath' => $c_npath]); Console::log_insert('form', 'validation_3', $c_npath, $c_result ? 'ok' : 'warning');}
-                        Event::start('on_form_validate', $id, ['form' => &$this, 'items' => &$this->items]);
+
+                        # field validation
+                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+                            if (is_object($c_child) && method_exists($c_child, 'on_validate')) {
+                                $c_result = Event::start_local('on_validate', $c_child, ['form' => $this, 'npath' => $c_npath]);
+                                Console::log_insert('form',    'on_validate', $c_npath, $c_result ? 'ok' : 'warning');
+                            }
+                        }
+
+                        # field validation after validation (for example, to avoid making requests if the "Nickname" field has an incorrect value)
+                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+                            if (is_object($c_child) && method_exists($c_child, 'on_validate_after')) {
+                                $c_result = Event::start_local('on_validate_after', $c_child, ['form' => $this, 'npath' => $c_npath]);
+                                Console::log_insert('form',    'on_validate_after', $c_npath, $c_result ? 'ok' : 'warning');
+                            }
+                        }
+
+                        # form validation
+                        Event::start('on_form_validate', $id, [
+                            'form' => &$this, 'items' => &$this->items]
+                        );
+
+                        # final field validation (for example, for files)
+                        foreach ($this->children_select_recursive(null, '', true) as $c_npath => $c_child) {
+                            if (is_object($c_child) && method_exists($c_child, 'on_validate_final')) {
+                                $c_result = Event::start_local('on_validate_final', $c_child, ['form' => $this, 'npath' => $c_npath]);
+                                Console::log_insert('form',    'on_validate_final', $c_npath, $c_result ? 'ok' : 'warning');
+                            }
+                        }
                     }
 
                     # send test headers 'x-form-submit-errors-count: N' (before a possible redirect)

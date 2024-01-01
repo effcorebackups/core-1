@@ -1,34 +1,34 @@
 templates
-- tree
-    name: tree
+- tree__embedded
+    name: tree__embedded
     type: text
     data: <x-tree %%_attributes>%%_self<ul>%%_children</ul></x-tree>
-- tree_item
-    name: tree_item
+- tree_item__embedded
+    name: tree_item__embedded
     type: text
     data: <li %%_attributes>%%_self%%_children</li>
-- tree_item_children
-    name: tree_item_children
+- tree_item_children__embedded
+    name: tree_item_children__embedded
     type: text
     data: <ul>%%_children</ul>
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- tabs
-    name: tabs
+- tabs__embedded
+    name: tabs__embedded
     type: text
     data: <x-tabs %%_attributes>%%_top_items%%_sub_items</x-tabs>
-- tab_top_items
-    name: tab_top_items
+- tab_top_items__embedded
+    name: tab_top_items__embedded
     type: text
     data: <x-top-items><ul>%%_children</ul></x-top-items>
-- tab_sub_items
-    name: tab_sub_items
+- tab_sub_items__embedded
+    name: tab_sub_items__embedded
     type: text
     data: <x-sub-items><ul>%%_children</ul></x-sub-items>
-- tab_item
-    name: tab_item
+- tab_item__embedded
+    name: tab_item__embedded
     type: text
     data: <li %%_attributes>%%_self%%_children</li>
-- tab_item_children
-    name: tab_item_children
+- tab_item_children__embedded
+    name: tab_item_children__embedded
     type: text
     data: <ul>%%_children</ul>

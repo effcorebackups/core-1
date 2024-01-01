@@ -45,7 +45,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__colors|Block
-          title: Color assignment form
+          title: Form for сolor assignment
           title_is_visible: false
           attributes
           - data-id: block__form__colors
@@ -56,7 +56,7 @@ pages
           type: link
           source: forms/page/colors
       - block__form__colors_preset|Block
-          title: Color preset apply form
+          title: Form for applying color presets
           title_is_visible: false
           attributes
           - data-id: block__form__colors_preset
@@ -67,7 +67,7 @@ pages
           type: link
           source: forms/page/colors_preset
       - block__form__layout|Block
-          title: Layout editing form
+          title: Form for editing the layout
           title_is_visible: false
           attributes
           - data-id: block__form__layout
@@ -78,7 +78,7 @@ pages
           type: link
           source: forms/page/layout
       - block__form__global_css|Block
-          title: Global CSS editing form
+          title: Form for editing global CSS
           title_is_visible: false
           attributes
           - data-id: block__form__global_css
@@ -89,7 +89,7 @@ pages
           type: link
           source: forms/page/global_css
       - block__form__view_settings|Block
-          title: View customization form
+          title: Form for view customization
           title_is_visible: false
           attributes
           - data-id: block__form__view_settings

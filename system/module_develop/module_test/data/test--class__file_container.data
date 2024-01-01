@@ -22,6 +22,14 @@ tests
           - name: fopen(), fwrite(), fread(), fseek(), fclose()
     - code-fopen_fwrite_fread_fseek|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_File_container::test_step_code__fopen_fwrite_fread_fseek
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-gallery_main_make|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: container_*_make
+    - code-gallery_main_make|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_File_container::test_step_code__gallery_main_make
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

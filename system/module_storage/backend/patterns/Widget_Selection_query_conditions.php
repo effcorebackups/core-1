@@ -157,7 +157,7 @@ class Widget_Selection_query_conditions extends Widget_Items {
         $items[] = $new_item;
         $widget->items_set($items);
         Message::insert(new Text_multiline([
-            'Item of type "%%_type" was inserted.',
+            'Item of type "%%_type" was appended.',
             'Do not forget to save the changes!'], [
             'type' => (new Text($widget->item_title))->render() ]));
         return true;

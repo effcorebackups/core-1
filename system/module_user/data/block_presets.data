@@ -2,76 +2,76 @@ block_presets
 - block__form__login|Block_preset
     id: block__form__login
     managing_group: Forms
-    managing_title: Login form
+    managing_title: Form for login
     in_areas
     - =: content
     type: copy
     source: forms/user/login
-    title: Login form
+    title: Form for login
     title_is_visible: false
     attributes
     - data-id: block__form__login
 - block__form__logout|Block_preset
     id: block__form__logout
     managing_group: Forms
-    managing_title: Logout form
+    managing_title: Form for logout
     in_areas
     - =: content
     type: copy
     source: forms/user/logout
-    title: Logout form
+    title: Form for logout
     title_is_visible: false
     attributes
     - data-id: block__form__logout
 - block__form__recovery|Block_preset
     id: block__form__recovery
     managing_group: Forms
-    managing_title: Access recovery form
+    managing_title: Form for restoring access
     in_areas
     - =: content
     type: copy
     source: forms/user/recovery
-    title: Access recovery form
+    title: Form for restoring access
     title_is_visible: false
     attributes
     - data-id: block__form__recovery
 - block__form__registration|Block_preset
     id: block__form__registration
     managing_group: Forms
-    managing_title: Registration form
+    managing_title: Form for registration
     in_areas
     - =: content
     type: copy
     source: forms/user/registration
-    title: Registration form
+    title: Form for registration
     title_is_visible: false
     attributes
     - data-id: block__form__registration
 - block__form__instance_insert__feedback|Block_preset
     id: block__form__instance_insert__feedback
     managing_group: Forms
-    managing_title: Feedback form
+    managing_title: Form for feedback
     in_areas
     - =: content
     type: copy
     source: forms/storage/instance_insert
     properties
     - entity_name: feedback
-    title: Feedback form
+    title: Form for feedback
     title_is_visible: true
     attributes
     - data-id: block__form__instance_insert__feedback
 - block__form__instance_update__user|Block_preset
     id: block__form__instance_update__user
     managing_group: Forms
-    managing_title: User update form
+    managing_title: Form for changing user data
     in_areas
     - =: content
     type: copy
     source: forms/storage/instance_update
     properties
     - entity_name: user
-    title: User update form
+    title: Form for changing user data
     title_is_visible: false
     attributes
     - data-id: block__form__instance_update__user

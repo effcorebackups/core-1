@@ -41,7 +41,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__locale_general|Block
-          title: Locale general settings form
+          title: Form for general locale settings
           title_is_visible: false
           attributes
           - data-id: block__form__locale_general
@@ -52,7 +52,7 @@ pages
           type: link
           source: forms/locale/locale_general
       - block__form__locale_by_language|Block
-          title: Locale setting form by language
+          title: Form for setting locale by language
           title_is_visible: false
           attributes
           - data-id: block__form__locale_by_language

@@ -49,12 +49,11 @@ translations
     - Console: Кансоль
     - Constraints: Абмежаванні
     - CPU load time: Час загрузкі працэсара
-    - Current release of the project %%_project_title_context: Бягучы рэліз праекта %%_project_title_context
+    - Current release of the project %%_project__title__context: Бягучы рэліз праекта %%_project__title__context
     - Decorators dynamic: Дэкаратары дынамічныя
     - Decorators static: Дэкаратары статычныя
     - default text: тэкст па змаўчанні
     - Default type.: Тып па змаўчанні.
-    - Demonstration form: Дэманстрацыйная форма
     - Demonstration menu NoSQL: Меню дэманстрацыйнае NoSQL
     - Demonstration menu SQL: Меню дэманстрацыйнае SQL
     - Demonstration menu via decorator: Меню дэманстрацыйнае праз дэкаратар
@@ -93,6 +92,7 @@ translations
     - FILES AND DIRECTORIES: ФАЙЛЫ І КАТАЛОГІ
     - FILTRATION OF PARAMETERS: ФІЛЬТРАЦЫЯ ПАРАМЕТРАЎ
     - For ID: Для ID
+    - Form for feature demonstration: Форма для дэманстрацыі магчымасцяў
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знойдзены ID карыстальніка = "%%_id_user" па псеўданіме = "%%_nickname"
     - Full report: Поўная справаздача
     - FUNCTION "%%_name": ФУНКЦЫЯ "%%_name"
@@ -161,8 +161,8 @@ translations
     - Parameter 3: Параметр 3
     - Parameter 4: Параметр 4
     - Password hash sum: Хэш-сума пароля
-    - permissions after insertion\: %%_permissions: дазволы пасля ўстаўкі: %%_permissions
-    - permissions before insertion\: %%_permissions: дазволы перад устаўкай: %%_permissions
+    - permissions after appending\: %%_permissions: дазволы пасля дадання: %%_permissions
+    - permissions before appending\: %%_permissions: дазволы перад даданнем: %%_permissions
     - PHP ext.: PHP-паш.
     - PHP extension: PHP-пашырэнне
     - PHP functioning: PHP-функцыянаванне
@@ -188,14 +188,13 @@ translations
     - REGISTERED USER: ЗАРЭГІСТРАВАНЫ КАРЫСТАЛЬНІК
     - Relation (tree view): Сувязь (у выглядзе дрэва)
     - Release: Выпуск
-    - Releases of the project %%_project_title_context: Выпускі праекта %%_project_title_context
+    - Releases of the project %%_project__title__context: Выпускі праекта %%_project__title__context
     - Releases: Выпускі
     - repeat %%_cur from %%_max: паўтор %%_cur з %%_max
-    - RESEARCH THE WORD "%%_word": ДАСЛЕДАВАЦЬ СЛОВА "%%_word"
     - result of checking is = "%%_result": вынік праверкі = "%%_result"
     - return = "%%_return": вяртанне = "%%_return"
-    - roles after insertion\: %%_roles: ролі пасля ўстаўкі: %%_roles
-    - roles before insertion\: %%_roles: ролі перад устаўкай: %%_roles
+    - roles after appending\: %%_roles: ролі пасля дадання: %%_roles
+    - roles before appending\: %%_roles: ролі перад даданнем: %%_roles
     - row with auto id value = 1: радок з аўтаматычным значэннем id = 1
     - row with auto id value = 2: радок з аўтаматычным значэннем id = 2
     - row with auto id value = 3: радок з аўтаматычным значэннем id = 3
@@ -233,10 +232,10 @@ translations
     - The test was failed!: Тэст быў правалены!
     - The test was successful.: Тэст быў паспяховым.
     - The test will not succeed if the "Registration via EMail address" option is enabled!: Тэст не выканацца паспяхова калі ўключаная опцыя "Рэгістрацыя праз адрас электроннай пошты"!
+    - there will be try to append permissions\: %%_permissions: будзе спроба дадаць дазволы: %%_permissions
+    - there will be try to append roles\: %%_roles: будзе спроба дадаць ролі: %%_roles
     - there will be try to delete all permissions: будзе спроба выдаліць усе дазволы
     - there will be try to delete all roles: будзе спроба выдаліць усе ролі
-    - there will be try to insert permissions\: %%_permissions: будзе спроба ўставіць дазволы: %%_permissions
-    - there will be try to insert roles\: %%_roles: будзе спроба ўставіць ролі: %%_roles
     - This description is always shown.: Гэта апісанне заўсёды паказваецца.
     - This description is shown on top.: Гэта апісанне паказана зверху.
     - To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.: Для павышэння прадукцыйнасці кансоль у файлах тыпу ".cssd" і ".jsd" будзе адлюстроўвацца толькі ў рэжыме "паказаць усім".

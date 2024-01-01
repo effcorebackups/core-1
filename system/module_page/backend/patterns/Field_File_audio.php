@@ -21,14 +21,13 @@ class Field_File_audio extends Field_File {
         'mp3' => 'mp3'];
     public $audio_player_on_manage_is_visible = true;
     public $audio_player_on_manage_settings = [
-        'data-player-name'                => 'default',
-        'data-player-timeline-is-visible' => 'true',
-        'autoplay'    => false,
-        'controls'    => true,
-        'crossorigin' => null,
-        'loop'        => false,
-        'muted'       => false,
-        'preload'     => 'metadata'
+        'data-player-name' => 'default',
+        'autoplay'         => false,
+        'controls'         => true,
+        'crossorigin'      => null,
+        'loop'             => false,
+        'muted'            => false,
+        'preload'          => 'metadata'
     ];
 
     ###########################
@@ -37,7 +36,7 @@ class Field_File_audio extends Field_File {
 
     static function widget_manage_action_text_get($field, $item, $id, $scope) {
         if ($field->audio_player_on_manage_is_visible) {
-            $player_markup = new Markup('audio', ['src' => '/'.$item->get_current_path(true)] + $field->audio_player_on_manage_settings, [], +450);
+            $player_markup = new Markup('audio', ['src' => Core::to_url_from_path($item->get_current_path(true))] + $field->audio_player_on_manage_settings, [], +450);
                return new Node([], [$player_markup, new Text('audio "%%_audio"', ['audio' => $item->file])]);
         } else return new Node([], [                new Text('audio "%%_audio"', ['audio' => $item->file])]);
     }

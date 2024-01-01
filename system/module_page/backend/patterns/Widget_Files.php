@@ -26,7 +26,6 @@ class Widget_Files extends Widget_Items {
     ];
 
     function value_get($options = []) { # @return: array | serialize(array)
-        Event::start_local('on_values_save', $this);
         $is_relative = array_key_exists('is_relative', $options) && $options['is_relative'] === false ? false : true;
         $items = $this->items_get();
         foreach ($items as $c_item) {
@@ -86,8 +85,8 @@ class Widget_Files extends Widget_Items {
             new Text_multiline(['new item', '…'], [], '') :
             new Text($file->file_get());
         $info_markup = new Markup('x-info' , [], [
-            'title' => new Markup('x-title', [], $item->object->file),
-            'id'    => new Markup('x-id'   , [], $id_markup)]);
+            'title' => new Markup('x-title', [], ['text' => $item->title ?? $item->object->file]),
+            'id'    => new Markup('x-id'   , [], ['text' => $id_markup])]);
         # grouping of previous elements in widget 'manage'
         $result->child_insert($info_markup, 'info');
         return $result;
@@ -129,56 +128,18 @@ class Widget_Files extends Widget_Items {
     }
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
-        return $new_item->object->move_tmp_to_pre($pre_path);
-    }
-
-    static function on_values_save($widget) {
-        $items = $widget->items_get();
-        foreach ($items as $c_row_id => $c_item) {
-            switch ($c_item->object->get_current_state()) {
-                case 'pre': # moving of 'pre' items into the directory 'files'
-                    Token::insert('item_id_context', 'text', $c_row_id, null, 'page');
-                    $c_result = $c_item->object->move_pre_to_fin(Dynamic::DIR_FILES.
-                        $widget->upload_dir.$c_item->object->file,
-                        $widget->fixed_name,
-                        $widget->fixed_type, true);
-                    if ($c_result) {
-                        Message::insert(new Text(
-                            'File of type "%%_type" with title "%%_title" has been saved.', [
-                            'type'  => (new Text($widget->item_title))->render(),
-                            'title' => $c_item->object->file
-                        ]));
-                    }
-                    break;
-                case 'fin': # deletion of 'fin' items which marked as 'deleted'
-                    if (!empty($c_item->is_deleted)) {
-                        $c_title_for_message = $c_item->object->file;
-                        $c_result = $c_item->object->delete_fin();
-                        unset($items[$c_row_id]);
-                        if ($c_result) {
-                            Message::insert(new Text_multiline([
-                                'File of type "%%_type" with title "%%_title" was deleted physically.'], [
-                                'type'  => (new Text($widget->item_title))->render(),
-                                'title' => $c_title_for_message
-                            ]));
-                        }
-                    }
-                    break;
-                case null: # cache cleaning for lost files
-                    unset($items[$c_row_id]);
-                    break;
-            }
+        $last_key = count($items) ? array_key_last($items) + 1 : 0;
+        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.$last_key.'.'.$new_item->object->type;
+        if ($new_item->object->move_tmp_to_pre($pre_path)) {
+            return true;
         }
-        $widget->items_set($items);
-        $widget->is_builded = false;
-        $widget->build();
     }
 
     static function on_button_click_insert($widget, $form, $npath, $button) {
         $values = Event::start_local('on_values_validate', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'name' => '#file']);
         if (!$widget->controls['#file']->has_error() && count($values) === 0) {$widget->controls['#file']->error_set('Field "%%_title" cannot be blank!', ['title' => (new Text($widget->controls['#file']->title))->render() ]); return;}
         if (!$widget->controls['#file']->has_error() && count($values) !== 0) {
+            $has_error = false;
             $items = $widget->items_get();
             foreach ($values as $c_value) {
                 $min_weight = +0;
@@ -187,21 +148,25 @@ class Widget_Files extends Widget_Items {
                 $c_new_item = new stdClass;
                 $c_new_item->is_deleted = false;
                 $c_new_item->weight = count($items) ? $min_weight - +5 : +0;
+                $c_new_item->title = $c_value->file;
                 $c_new_item->object = $c_value;
-                $items[] = $c_new_item;
                 if (Event::start_local('on_file_prepare', $widget, ['form' => $form, 'npath' => $npath, 'button' => $button, 'items' => &$items, 'new_item' => &$c_new_item])) {
+                    $items[] = $c_new_item;
                     $widget->items_set($items);
                     Message::insert(new Text(
-                        'File of type "%%_type" with title "%%_title" was inserted.', [
+                        'File of type "%%_type" with title "%%_title" was appended.', [
                         'type'  => (new Text($widget->item_title))->render(),
                         'title' => $c_new_item->object->file]));
                 } else {
-                    $form->error_set();
-                    return;
+                    $has_error = true;
                 }
             }
-            Message::insert('Do not forget to save the changes!');
-            return true;
+            if ($has_error) {
+                $widget->error_set_in();
+            } else {
+                Message::insert('Do not forget to save the changes!');
+                return true;
+            }
         }
     }
 
@@ -219,7 +184,10 @@ class Widget_Files extends Widget_Items {
                         'type'  => (new Text($widget->item_title))->render(),
                         'title' => $item_title ]));
                     return true;
-                } return;
+                } else {
+                    $widget->error_set_in();
+                }
+                break;
             case 'fin':
                 $items[$button->_id]->is_deleted = true;
                 $widget->items_set($items);
@@ -229,6 +197,54 @@ class Widget_Files extends Widget_Items {
                     'type'  => (new Text($widget->item_title))->render(),
                     'title' => $item_title ]));
                 return true;
+        }
+    }
+
+    static function on_validate_final($widget, $form, $npath) {
+        if (!$form->has_error()) {
+            $has_error = false;
+            $items = $widget->items_get();
+            foreach ($items as $c_row_id => $c_item) {
+                switch ($c_item->object->get_current_state()) {
+                    case 'pre': # moving of 'pre' items into the directory 'files'
+                        Token::insert('item_id_context', 'text', $c_row_id, null, 'page');
+                        $c_result = $c_item->object->move_pre_to_fin(Dynamic::DIR_FILES.$widget->upload_dir.$c_item->object->file, $widget->fixed_name, $widget->fixed_type);
+                        if ($c_result) {
+                            Message::insert(new Text(
+                                'File of type "%%_type" with title "%%_title" has been saved.', [
+                                'type'  => (new Text($widget->item_title))->render(),
+                                'title' => $c_item->object->file
+                            ]));
+                        } else {
+                            $has_error = true;
+                        }
+                        break;
+                    case 'fin': # deletion of 'fin' items which marked as 'deleted'
+                        if (!empty($c_item->is_deleted)) {
+                            $c_result = $c_item->object->delete_fin();
+                            if ($c_result) {
+                                unset($items[$c_row_id]);
+                                Message::insert(new Text_multiline([
+                                    'File of type "%%_type" with title "%%_title" was deleted physically.'], [
+                                    'type'  => (new Text($widget->item_title))->render(),
+                                    'title' => $c_item->object->file
+                                ]));
+                            } else {
+                                $has_error = true;
+                            }
+                        }
+                        break;
+                    case null: # cache cleaning for lost files
+                        unset($items[$c_row_id]);
+                        break;
+                }
+            }
+            $widget->items_set($items);
+            $widget->build(true);
+            if ($has_error) {
+                $widget->error_set_in();
+            }
+            return !$has_error;
         }
     }
 

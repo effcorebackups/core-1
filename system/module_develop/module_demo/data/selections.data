@@ -1,6 +1,7 @@
 selections
 - instance_select-demo_autoincrement|Selection
     id: instance_select-demo_autoincrement
+    description: Demonstration: Autoincrement
     main_entity_name: demo_autoincrement
     decorator_settings
     - view_type: table-dl
@@ -23,6 +24,7 @@ selections
           weight: +380
 - instance_select-demo_collations|Selection
     id: instance_select-demo_collations
+    description: Demonstration: Collations
     main_entity_name: demo_collations
     decorator_settings
     - view_type: table-dl
@@ -47,6 +49,7 @@ selections
           weight: +360
 - instance_select-demo_constraints|Selection
     id: instance_select-demo_constraints
+    description: Demonstration: Constraints
     main_entity_name: demo_constraints
     decorator_settings
     - view_type: table-dl
@@ -72,6 +75,7 @@ selections
           weight: +360
 - instance_select-demo_data|Selection
     id: instance_select-demo_data
+    description: Demonstration: Data
     main_entity_name: demo_data
     decorator_settings
     - view_type: table-dl
@@ -111,6 +115,7 @@ selections
               weight: +360
 - instance_select-demo_indexes|Selection
     id: instance_select-demo_indexes
+    description: Demonstration: Indexes
     main_entity_name: demo_indexes
     decorator_settings
     - view_type: table-dl
@@ -135,6 +140,7 @@ selections
           weight: +360
 - instance_select-demo_join|Selection
     id: instance_select-demo_join
+    description: Demonstration: Joins
     main_entity_name: demo_join
     decorator_settings
     - view_type: table-dl
@@ -156,6 +162,7 @@ selections
           weight: +380
 - instance_select-demo_types|Selection
     id: instance_select-demo_types
+    description: Demonstration: Types
     main_entity_name: demo_types
     decorator_settings
     - view_type: table-dl
@@ -462,6 +469,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-demo_autoincrement|Selection
     id: instance_select_multiple-demo_autoincrement
+    description: Demonstration: Autoincrement
     main_entity_name: demo_autoincrement
     pager_is_enabled: true
     decorator_settings
@@ -479,6 +487,7 @@ selections
           weight: +380
 - instance_select_multiple-demo_collations|Selection
     id: instance_select_multiple-demo_collations
+    description: Demonstration: Collations
     main_entity_name: demo_collations
     pager_is_enabled: true
     decorator_settings
@@ -498,6 +507,7 @@ selections
           weight: +360
 - instance_select_multiple-demo_constraints|Selection
     id: instance_select_multiple-demo_constraints
+    description: Demonstration: Constraints
     main_entity_name: demo_constraints
     pager_is_enabled: true
     decorator_settings
@@ -518,6 +528,7 @@ selections
           weight: +360
 - instance_select_multiple-demo_data|Selection
     id: instance_select_multiple-demo_data
+    description: Demonstration: Data
     main_entity_name: demo_data
     pager_is_enabled: true
     decorator_settings
@@ -552,6 +563,7 @@ selections
               weight: +360
 - instance_select_multiple-demo_indexes|Selection
     id: instance_select_multiple-demo_indexes
+    description: Demonstration: Indexes
     main_entity_name: demo_indexes
     pager_is_enabled: true
     decorator_settings
@@ -571,6 +583,7 @@ selections
           weight: +360
 - instance_select_multiple-demo_join|Selection
     id: instance_select_multiple-demo_join
+    description: Demonstration: Joins
     main_entity_name: demo_join
     pager_is_enabled: true
     decorator_settings
@@ -587,6 +600,7 @@ selections
           weight: +380
 - instance_select_multiple-demo_types|Selection
     id: instance_select_multiple-demo_types
+    description: Demonstration: Types
     main_entity_name: demo_types
     pager_is_enabled: true
     decorator_settings
@@ -609,8 +623,8 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - demo_selection_field_types|Selection
     id: demo_selection_field_types
+    description: Demonstration: Types
     main_entity_name: demo_data
-    title: Demonstration of field types for Selection
     decorator_settings
     - view_type: ul
     query_settings
@@ -732,8 +746,8 @@ selections
           weight: +260
 - demo_data_types|Selection
     id: demo_data_types
+    description: Demonstration: Types
     main_entity_name: demo_types
-    title: Demonstration of selection of entities "demo_types"
     decorator_settings
     - view_type: ul
     query_settings
@@ -975,8 +989,8 @@ selections
           weight: +110
 - demo_data_join|Selection
     id: demo_data_join
+    description: Demonstration: Joins
     main_entity_name: demo_data
-    title: Demonstration of selection of "demo_data" entities with JOIN
     pager_is_enabled: true
     decorator_settings
     - view_type: table-adaptive

@@ -6,16 +6,21 @@
 
 namespace effcore\modules\page;
 
+use effcore\Core;
+use effcore\Decorator;
 use effcore\Entity;
 use effcore\Field_Checkbox;
 use effcore\Markup_simple;
 use effcore\Markup;
+use effcore\Media;
 use effcore\Module;
-use effcore\Template;
 use effcore\Text_simple;
 use effcore\Text;
 use effcore\Url;
 use effcore\Widget_Attributes;
+use effcore\Widget_Files_audios;
+use effcore\Widget_Files_pictures;
+use effcore\Widget_Files_videos;
 
 abstract class Events_Selection {
 
@@ -55,7 +60,7 @@ abstract class Events_Selection {
     static function handler__any__path_as_link($c_cell_id, $c_row, $c_instance, $origin) {
         if (array_key_exists('path', $c_instance->values_get())) {
             if ($c_instance->path) {
-                   return new Markup('a', ['href' => '/'.$c_instance->path, 'target' => '_blank'], new Text_simple('/'.$c_instance->path));
+                   return new Markup('a', ['href' => Core::to_url_from_path($c_instance->path), 'target' => '_blank'], new Text_simple(Core::to_url_from_path($c_instance->path)));
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'path']);
     }
@@ -63,11 +68,12 @@ abstract class Events_Selection {
     static function handler__any__paths_as_links($c_cell_id, $c_row, $c_instance, $origin) {
         if (array_key_exists('path', $c_instance->values_get())) {
             if ($c_instance->path) {
+                $url = Core::to_url_from_path($c_instance->path);
                 $result = new Markup('ul', ['data-type' => 'paths']);
-                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => '/'.$c_instance->path                , 'target' => '_blank'], new Text_simple('/'.$c_instance->path                ))), 'original');
-                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => '/'.$c_instance->path.'?thumb=small' , 'target' => '_blank'], new Text_simple('/'.$c_instance->path.'?thumb=small' ))), 'small'   );
-                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => '/'.$c_instance->path.'?thumb=middle', 'target' => '_blank'], new Text_simple('/'.$c_instance->path.'?thumb=middle'))), 'middle'  );
-                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => '/'.$c_instance->path.'?thumb=big'   , 'target' => '_blank'], new Text_simple('/'.$c_instance->path.'?thumb=big'   ))), 'big'     );
+                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => $url                , 'target' => '_blank'], new Text_simple($url                ))), 'original');
+                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => $url.'?thumb=small' , 'target' => '_blank'], new Text_simple($url.'?thumb=small' ))), 'small'   );
+                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => $url.'?thumb=middle', 'target' => '_blank'], new Text_simple($url.'?thumb=middle'))), 'middle'  );
+                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => $url.'?thumb=big'   , 'target' => '_blank'], new Text_simple($url.'?thumb=big'   ))), 'big'     );
                    return $result;
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'path']);
@@ -119,7 +125,7 @@ abstract class Events_Selection {
             if (array_key_exists('attributes', $c_instance->values_get())) {
                 if ($c_instance->path) {
                     $attributes = Widget_Attributes::value_to_attributes($c_instance->attributes ?? [], $origin->is_apply_translation ?? true);
-                    $attributes['src'] = '/'.$c_instance->path;
+                    $attributes['src'] = Core::to_url_from_path($c_instance->path);
                        return new Markup('audio', $attributes);
                 } else return '';
             }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'attributes']);
@@ -129,11 +135,12 @@ abstract class Events_Selection {
     static function handler__audio__cover_paths_as_links($c_cell_id, $c_row, $c_instance, $origin) {
         if (array_key_exists('cover_path', $c_instance->values_get())) {
             if ($c_instance->cover_path) {
+                $url = Core::to_url_from_path($c_instance->cover_path);
                 $result = new Markup('ul', ['data-type' => 'paths']);
-                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => '/'.$c_instance->cover_path                , 'target' => '_blank'], new Text_simple('/'.$c_instance->cover_path                ))), 'original');
-                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => '/'.$c_instance->cover_path.'?thumb=small' , 'target' => '_blank'], new Text_simple('/'.$c_instance->cover_path.'?thumb=small' ))), 'small'   );
-                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => '/'.$c_instance->cover_path.'?thumb=middle', 'target' => '_blank'], new Text_simple('/'.$c_instance->cover_path.'?thumb=middle'))), 'middle'  );
-                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => '/'.$c_instance->cover_path.'?thumb=big'   , 'target' => '_blank'], new Text_simple('/'.$c_instance->cover_path.'?thumb=big'   ))), 'big'     );
+                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => $url                , 'target' => '_blank'], new Text_simple($url                ))), 'original');
+                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => $url.'?thumb=small' , 'target' => '_blank'], new Text_simple($url.'?thumb=small' ))), 'small'   );
+                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => $url.'?thumb=middle', 'target' => '_blank'], new Text_simple($url.'?thumb=middle'))), 'middle'  );
+                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => $url.'?thumb=big'   , 'target' => '_blank'], new Text_simple($url.'?thumb=big'   ))), 'big'     );
                    return $result;
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'cover_path']);
@@ -142,11 +149,12 @@ abstract class Events_Selection {
     static function handler__video__poster_paths_as_links($c_cell_id, $c_row, $c_instance, $origin) {
         if (array_key_exists('poster_path', $c_instance->values_get())) {
             if ($c_instance->poster_path) {
+                $url = Core::to_url_from_path($c_instance->poster_path);
                 $result = new Markup('ul', ['data-type' => 'paths']);
-                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => '/'.$c_instance->poster_path                , 'target' => '_blank'], new Text_simple('/'.$c_instance->poster_path                ))), 'original');
-                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => '/'.$c_instance->poster_path.'?thumb=small' , 'target' => '_blank'], new Text_simple('/'.$c_instance->poster_path.'?thumb=small' ))), 'small'   );
-                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => '/'.$c_instance->poster_path.'?thumb=middle', 'target' => '_blank'], new Text_simple('/'.$c_instance->poster_path.'?thumb=middle'))), 'middle'  );
-                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => '/'.$c_instance->poster_path.'?thumb=big'   , 'target' => '_blank'], new Text_simple('/'.$c_instance->poster_path.'?thumb=big'   ))), 'big'     );
+                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => $url                , 'target' => '_blank'], new Text_simple($url                ))), 'original');
+                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => $url.'?thumb=small' , 'target' => '_blank'], new Text_simple($url.'?thumb=small' ))), 'small'   );
+                $result->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => $url.'?thumb=middle', 'target' => '_blank'], new Text_simple($url.'?thumb=middle'))), 'middle'  );
+                $result->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => $url.'?thumb=big'   , 'target' => '_blank'], new Text_simple($url.'?thumb=big'   ))), 'big'     );
                    return $result;
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'poster_path']);
@@ -159,9 +167,9 @@ abstract class Events_Selection {
                     $settings = Module::settings_get('page');
                     $attributes = Widget_Attributes::value_to_attributes($c_instance->attributes ?? [], $origin->is_apply_translation ?? true);
                     if (!empty($c_instance->poster_path))
-                         $attributes['poster'] = '/'.$c_instance->poster_path;
-                    else $attributes['poster'] = '/'.$settings->thumbnail_path_poster_default;
-                    $attributes['src'] = '/'.$c_instance->path;
+                         $attributes['poster'] = Core::to_url_from_path($c_instance->poster_path);
+                    else $attributes['poster'] = Core::to_url_from_path($settings->thumbnail_path_poster_default);
+                    $attributes['src'] = Core::to_url_from_path($c_instance->path);
                        return new Markup('video', $attributes);
                 } else return '';
             }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'attributes']);
@@ -173,7 +181,7 @@ abstract class Events_Selection {
             if ($c_instance->path) {
                 $link_attributes = Widget_Attributes::value_to_attributes($c_instance->link_attributes ?? [], $origin->is_apply_translation ?? true);
                 $this_attributes = Widget_Attributes::value_to_attributes($c_instance->     attributes ?? [], $origin->is_apply_translation ?? true);
-                $this_attributes['src'] = '/'.$c_instance->path;
+                $this_attributes['src'] = Core::to_url_from_path($c_instance->path);
                 if (isset($c_instance->url)) {
                        $link_attributes[ 'href' ] = (new Url($c_instance->url))->absolute_get();
                        $link_attributes['target'] = '_blank';
@@ -183,35 +191,64 @@ abstract class Events_Selection {
         }         else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'path']);
     }
 
-    #################
-    ### TEMPLATES ###
-    #################
-
-    static function template__picture_or_picture_in_link_embedded($args, $args_raw) {
-        if (!empty($args['url'])) {
-            $args['url'] = (new Url($args['url']))->absolute_get();
-            return (Template::make_new(Template::pick_name('picture_in_link'), [
-                'id'              => $args['id']              ?? '',
-                'description'     => $args['description']     ?? '',
-                'attributes'      => $args['attributes']      ?? '',
-                'path'            => $args['path']            ?? '',
-                'link_attributes' => $args['link_attributes'] ?? '',
-                'url'             => $args['url']             ?? '',
-                'created'         => $args['created']         ?? '',
-                'updated'         => $args['updated']         ?? '',
-                'is_embedded'     => $args['is_embedded']     ?? '',
-            ]))->render();
-        } else {
-            return (Template::make_new(Template::pick_name('picture'), [
-                'id'              => $args['id']          ?? '',
-                'description'     => $args['description'] ?? '',
-                'attributes'      => $args['attributes']  ?? '',
-                'path'            => $args['path']        ?? '',
-                'created'         => $args['created']     ?? '',
-                'updated'         => $args['updated']     ?? '',
-                'is_embedded'     => $args['is_embedded'] ?? '',
-            ]))->render();
-        }
+    static function handler__gallery__items_manage($c_cell_id, $c_row, $c_instance, $origin) {
+        if (array_key_exists('items', $c_instance->values_get())) {
+            $value = Core::deep_clone($c_instance->items);
+            $decorator = new Decorator;
+            $decorator->id = 'widget_files-multimedia-items';
+            $decorator->view_type = 'template';
+            $decorator->template = 'gallery';
+            $decorator->template_item = 'gallery_item';
+            $decorator->mapping = Core::array_keys_map(['num', 'type', 'children']);
+            if ($value) {
+                Core::array_sort_by_number($value);
+                foreach ($value as $c_row_id => $c_item) {
+                    if (Core::in_array(Media::media_class_get($c_item->object->type), ['picture', 'audio', 'video'])) {
+                        if (Media::media_class_get($c_item->object->type) === 'picture') {
+                            $c_url = Core::to_url_from_path($c_item->object->get_current_path(true));
+                            $c_urls = new Markup('ul', ['data-type' => 'paths']);
+                            $c_urls->child_insert(new Markup('li', ['data-name' => 'small' ], new Markup('a', ['href' => $c_url.'?thumb=small' , 'target' => '_blank'], 'small' )), 'small' );
+                            $c_urls->child_insert(new Markup('li', ['data-name' => 'middle'], new Markup('a', ['href' => $c_url.'?thumb=middle', 'target' => '_blank'], 'middle')), 'middle');
+                            $c_urls->child_insert(new Markup('li', ['data-name' => 'big'   ], new Markup('a', ['href' => $c_url.'?thumb=big'   , 'target' => '_blank'], 'big'   )), 'big'   );
+                            $decorator->data[$c_row_id] = [
+                                'type'     => ['value' => 'picture', 'is_apply_translation' => false],
+                                'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
+                                'children' => ['value' => Widget_Files_pictures::render_item($c_item, $c_row_id).$c_urls->render()]
+                            ];
+                        }
+                        if (Media::media_class_get($c_item->object->type) === 'video') {
+                            $c_url = Core::to_url_from_path($c_item->object->get_current_path(true));
+                            $c_urls = new Markup('ul', ['data-type' => 'paths']);
+                            if ($c_item->settings['data-poster-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => $c_url.'?poster'       , 'target' => '_blank'], 'poster original')), 'original');
+                            if ($c_item->settings['data-poster-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => $c_url.'?poster=small' , 'target' => '_blank'], 'poster small'   )), 'small'   );
+                            if ($c_item->settings['data-poster-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => $c_url.'?poster=middle', 'target' => '_blank'], 'poster middle'  )), 'middle'  );
+                            if ($c_item->settings['data-poster-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => $c_url.'?poster=big'   , 'target' => '_blank'], 'poster big'     )), 'big'     );
+                                                                              $c_urls->child_insert(new Markup('li', ['data-name' => 'main'    ], new Markup('a', ['href' => $c_url                 , 'target' => '_blank'], 'video'          )), 'main'    );
+                            $decorator->data[$c_row_id] = [
+                                'type'     => ['value' => 'video'  , 'is_apply_translation' => false],
+                                'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
+                                'children' => ['value' => Widget_Files_videos::render_item($c_item, $c_row_id).$c_urls->render()]
+                            ];
+                        }
+                        if (Media::media_class_get($c_item->object->type) === 'audio') {
+                            $c_url = Core::to_url_from_path($c_item->object->get_current_path(true));
+                            $c_urls = new Markup('ul', ['data-type' => 'paths']);
+                            if ($c_item->settings['data-cover-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => $c_url.'?cover'       , 'target' => '_blank'], 'cover original')), 'original');
+                            if ($c_item->settings['data-cover-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => $c_url.'?cover=small' , 'target' => '_blank'], 'cover small'   )), 'small'   );
+                            if ($c_item->settings['data-cover-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'middle'  ], new Markup('a', ['href' => $c_url.'?cover=middle', 'target' => '_blank'], 'cover middle'  )), 'middle'  );
+                            if ($c_item->settings['data-cover-is-embedded']) $c_urls->child_insert(new Markup('li', ['data-name' => 'big'     ], new Markup('a', ['href' => $c_url.'?cover=big'   , 'target' => '_blank'], 'cover big'     )), 'big'     );
+                                                                             $c_urls->child_insert(new Markup('li', ['data-name' => 'main'    ], new Markup('a', ['href' => $c_url                , 'target' => '_blank'], 'audio'         )), 'main'    );
+                            $decorator->data[$c_row_id] = [
+                                'type'     => ['value' => 'audio'  , 'is_apply_translation' => false],
+                                'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
+                                'children' => ['value' => Widget_Files_audios::render_item($c_item, $c_row_id).$c_urls->render()]
+                            ];
+                        }
+                    }
+                }
+            }
+               return $decorator;
+        } else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'items']);
     }
 
 }

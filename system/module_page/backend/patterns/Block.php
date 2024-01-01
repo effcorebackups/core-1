@@ -16,6 +16,8 @@ class Block extends Markup {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $title;
     public $title_is_visible = 1;
+    public $title_is_apply_translation = 1;
+    public $title_is_apply_tokens = 0;
     public $title_tag_name = 'h2';
     public $title_attributes = ['data-block-title' => true];
     public $content_tag_name = 'x-section-content';
@@ -25,8 +27,8 @@ class Block extends Markup {
     public $source;
     public $properties = [];
     public $args       = [];
-    public $extra_t;
-    public $extra_b;
+    public $header;
+    public $footer;
 
     function __construct($title = null, $attributes = [], $children = [], $weight = +0) {
         if ($title) $this->title = $title;
@@ -60,40 +62,40 @@ class Block extends Markup {
 
     function render() {
         if ($this->template) {
-            return (Template::make_new($this->template, [
+            return (Template::make_new(Template::pick_name($this->template), [
                 'tag_name'   => $this->tag_name,
                 'attributes' => $this->render_attributes(),
-                'extra_t'    => $this->render_extra_t(),
-                'extra_b'    => $this->render_extra_b(),
+                'header'     => $this->render_header(),
                 'self'       => $this->render_self(),
+                'footer'     => $this->render_footer(),
                 'children'   => $this->content_tag_name ? (new Markup($this->content_tag_name, $this->content_attributes,
                                 $this->render_children($this->children_select(true)) ))->render() :
                                 $this->render_children($this->children_select(true))
             ]))->render();
         } else {
-            return $this->render_extra_t().
+            return $this->render_header().
                    $this->render_self().
                    $this->render_children($this->children_select(true)).
-                   $this->render_extra_b();
+                   $this->render_footer();
         }
     }
 
     function render_self() {
-        if ($this->title && (bool)$this->title_is_visible !== true) return (new Markup($this->title_tag_name, $this->title_attributes + ['aria-hidden' => 'true'], $this->title))->render();
-        if ($this->title && (bool)$this->title_is_visible === true) return (new Markup($this->title_tag_name, $this->title_attributes + [                       ], $this->title))->render();
+        if ($this->title && (bool)$this->title_is_visible !== true) return (new Markup($this->title_tag_name, $this->title_attributes + ['aria-hidden' => 'true'], is_string($this->title) ? is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title : $this->title))->render();
+        if ($this->title && (bool)$this->title_is_visible === true) return (new Markup($this->title_tag_name, $this->title_attributes + [                       ], is_string($this->title) ? is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title : $this->title))->render();
     }
 
-    function render_extra_t() {
-        if ($this->extra_t !== null) {
-            if (is_string($this->extra_t) || is_numeric($this->extra_t)) return (new Text($this->extra_t))->render();
-            else                                                         return           $this->extra_t  ->render();
+    function render_header() {
+        if ($this->header !== null) {
+            if (is_string($this->header) || is_numeric($this->header)) return (new Text($this->header))->render();
+            else                                                       return           $this->header  ->render();
         }
     }
 
-    function render_extra_b() {
-        if ($this->extra_b !== null) {
-            if (is_string($this->extra_b) || is_numeric($this->extra_b)) return (new Text($this->extra_b))->render();
-            else                                                         return           $this->extra_b  ->render();
+    function render_footer() {
+        if ($this->footer !== null) {
+            if (is_string($this->footer) || is_numeric($this->footer)) return (new Text($this->footer))->render();
+            else                                                       return           $this->footer  ->render();
         }
     }
 

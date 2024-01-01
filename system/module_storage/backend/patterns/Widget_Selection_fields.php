@@ -195,7 +195,7 @@ class Widget_Selection_fields extends Widget_Items {
                         $widget->items_set($items);
                         $widget->controls['#insert']->value_set('');
                         Message::insert(new Text_multiline([
-                            'Item of type "%%_type" was inserted.',
+                            'Item of type "%%_type" was appended.',
                             'Do not forget to save the changes!'], [
                             'type' => (new Text($widget->item_title))->render() ]));
                         return true;
@@ -226,7 +226,7 @@ class Widget_Selection_fields extends Widget_Items {
                     $widget->items_set($items);
                     $widget->controls['#insert']->value_set('');
                     Message::insert(new Text_multiline([
-                        'Item of type "%%_type" was inserted.',
+                        'Item of type "%%_type" was appended.',
                         'Do not forget to save the changes!'], [
                         'type' => (new Text($widget->item_title))->render() ]));
                     return true;

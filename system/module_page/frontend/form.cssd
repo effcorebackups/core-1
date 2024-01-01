@@ -7,6 +7,8 @@ form [aria-invalid='true'] {border-color: %%_color__error !important}
 form [data-form-title] {}
 form [data-form-title] + fieldset {margin-top: 1em}
 
+
+
 /* x-form-message */
 
 x-form-message {
@@ -19,6 +21,8 @@ x-form-message {
   border: 1px dotted %%_color__main;
   background: url('pictures/lines.svgd?opacity=.04&color=%%_return_if_token_color_is_dark(color__page|white|black)');
 }
+
+
 
 /* micro_tabs */
 
@@ -51,6 +55,8 @@ input[type='radio'][role='micro_tabs-item'][value='7']:checked ~ [data-micro_tab
 input[type='radio'][role='micro_tabs-item'][value='8']:checked ~ [data-micro_tabs-content-id='8'],
 input[type='radio'][role='micro_tabs-item'][value='9']:checked ~ [data-micro_tabs-content-id='9'] {display: block}
 
+
+
 /* fieldset */
 
 fieldset {margin: 50px 0; padding: 0; border: none}
@@ -74,12 +80,16 @@ fieldset [data-fieldset-content] {
   border-top: 5px solid %%_color__main}
 fieldset [data-fieldset-content]::after {content: ''; clear: both; display: block}
 
+
+
 /* data-nested-content */
 
 [data-nested-content],
 [data-nested-content] [data-nested-content]                       [data-nested-content] {background: %%_color__fieldset}
 [data-nested-content]                                             [data-nested-content],
 [data-nested-content] [data-nested-content] [data-nested-content] [data-nested-content] {background: %%_color__fieldset_nested}
+
+
 
 /* field */
 
@@ -105,6 +115,8 @@ x-field[data-style~='inline'][data-type='checkbox'] {margin-right: 10px}
 x-field[data-style~='inline'][data-type='checkbox'] [data-field-title] {margin: 0}
 x-field[data-style~='inline'][data-type='checkbox'] input {margin-right: 5px}
 
+
+
 /* group */
 
 x-group {display: block; margin: 20px 0}
@@ -118,10 +130,14 @@ x-group [data-group-content] {
   display: block;
 }
 
+
+
 /* x-group[data-type='text_object'] */
 
 x-group[data-type='text_object'] x-field {display: inline-block; margin: 2px 20px 2px 0; vertical-align: middle}
 x-group[data-type='text_object'] x-field[data-type='checkbox'] {margin: 15px 10px 2px 0}
+
+
 
 /* x-group[data-type='access'] */
 
@@ -131,6 +147,8 @@ x-group[data-type='access'] {
   border: 1px dashed %%_color__main;
   background: url('pictures/lines.svgd?opacity=.04&color=%%_return_if_token_color_is_dark(color__page|white|black)');
 }
+
+
 
 /* mark 'required' */
 
@@ -144,6 +162,8 @@ x-group[data-type='access'] {
   vertical-align: top;
   background: %%_color__error;
 }
+
+
 
 /* inputs */
 
@@ -168,6 +188,8 @@ textarea {display: block; box-sizing: border-box; width: 100%; min-width: 100px}
 input[type='range'] {border-radius: 20px}
 input[type='email'] {text-transform: lowercase}
 input[type='color'] {height: 40px; padding: 0; cursor: pointer; text-transform: lowercase}
+
+
 
 /* checkboxes and radiobuttons */
 
@@ -202,6 +224,8 @@ input[type='radio'   ] + label[for] {
   cursor: pointer;
 }
 
+
+
 /* checkboxes and radiobuttons inside containers */
 
 x-field[data-type^='switcher'   ] [data-field-title],
@@ -214,6 +238,8 @@ x-group[data-type='radiobuttons'] x-field {margin: 10px 0}
 x-group[data-type='switchers'   ] x-field [data-field-title],
 x-group[data-type='checkboxes'  ] x-field [data-field-title],
 x-group[data-type='radiobuttons'] x-field [data-field-title] {display: inline; font-size: 1em}
+
+
 
 /* description + data-opener-type='description' */
 
@@ -233,6 +259,8 @@ input[data-opener-type='description']:checked + x-description {display: block}
 x-field[data-type='checkbox']    input[data-opener-type='description'],
 x-field[data-type='radiobutton'] input[data-opener-type='description'] {margin-left:  6px}
 x-field[data-type='switcher']    input[data-opener-type='description'] {margin-left: 12px}
+
+
 
 /* buttons */
 
@@ -274,6 +302,8 @@ button[data-style~='update'][data-style~='little'] {background-size: 20px 200px;
 button[data-style~='insert'][data-style~='little'] {background-size: 20px 200px; background-position: 50% -20px}
 button[data-style~='delete'][data-style~='little'] {background-size: 20px 200px; background-position: 50% -40px}
 
+
+
 /* disabled elements */
 
 x-field[aria-disabled='true']   {opacity: .3}
@@ -281,12 +311,16 @@ x-field[aria-disabled='true'] * {cursor: default !important}
        button:disabled {cursor: default; opacity: .3}
 select option:disabled {color: %%_color__field_text(0|0|0|.5)}
 
+
+
 /* checkbox color */
 
 x-field[data-type='checkbox-color'] input[type='checkbox'] {margin: 0 10px 0 0; border-width: 1px}
 x-field[data-type='checkbox-color'] input[type='checkbox']:checked {background-image: url('pictures/icons-element.svgd?color=black'); background-position: -58px 2px}
 x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']         {background-image:                                                 url('pictures/icons-element.svgd?color=black'); background-position:            -18px 2px}
 x-field[data-type='checkbox-color'] input[type='checkbox'][data-value='transparent']:checked {background-image: url('pictures/icons-element.svgd?color=black'), url('pictures/icons-element.svgd?color=black'); background-position: -58px 2px, -18px 2px}
+
+
 
 /* group 'palette' */
 
@@ -316,6 +350,8 @@ x-group[data-type='palette'] hr {
   margin: 0;
   border: 0;
 }
+
+
 
 /* rearrangeable */
 
@@ -349,6 +385,8 @@ x-group[data-type='palette'] hr {
   display: none;
 }
 
+
+
 /* widget */
 
 x-widget input[data-opener-type='title'] {margin: 0 10px 0 0; border-radius: 15px; background: %%_color__main url('pictures/icons-element.svgd?color=white') 0 -60px}
@@ -357,6 +395,8 @@ x-widget input[data-opener-type='title']:checked ~ [data-widget-content]:first-o
 
 x-widgets-group {display: block}
 x-widget {display: block}
+
+
 
 /* widget 'items' */
 
@@ -389,6 +429,8 @@ x-widget[data-type^='items'] x-widget[data-type='insert'] x-field[data-type^='fi
 x-widget[data-type^='items'] x-widget[data-type='insert'] button {margin: 32px 8px 0 0}
 x-widget[data-type^='items'] x-widget[data-type='insert'] button[data-style~='insert'] {border-radius: 5px}
 
+
+
 /* widget 'items-attributes' */
 
 x-widget[data-type='items-attributes'] x-group[data-type='text_object'] {display: inline-block; margin: 0}
@@ -396,6 +438,8 @@ x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[
 x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-field[data-type='checkbox'] {margin-top: 2px}
 x-widget[data-type='items-attributes'] x-group[data-type='text_object'] x-description {display: none}
 x-widget[data-type='items-attributes'] x-group[data-type='text_object'] [data-opener-type='description'] {display: none}
+
+
 
 /* widget 'query-settings' */
 
@@ -411,6 +455,8 @@ x-widget[data-type='items-query-conditions'] [data-role='value']    input  {widt
 x-widget[data-type='items-query-order'] [data-role='field'] select {width: 250px}
 x-widget[data-type='items-query-order'] [data-role='type']  select {width: 200px}
 
+
+
 /* widget 'decorator-settings' */
 
 x-widget[data-type='decorator-settings'] {margin: 30px 0}
@@ -418,9 +464,13 @@ x-widget[data-type='decorator-settings'] [data-widget-title] {display: inline-bl
 x-widget[data-type='decorator-settings'] [data-widget-title] + [data-widget-content] {margin-top: 30px}
 x-widget[data-type='decorator-settings']                     > [data-widget-content] {display: block; padding: 10px 16px 16px 16px; border-top: 5px solid %%_color__main}
 
+
+
 /* widget 'items-blocks' */
 
 x-widget[data-type='items-blocks'] {margin: 0}
+
+
 
 /* widget x-settings */
 
@@ -437,22 +487,27 @@ x-widget x-settings {
   background-size: 20px 20px;
 }
 
+
+
 /* audio player in: field 'file-audio' and widget 'items-files-audios' */
 
  x-field[data-type^='file-audio' ] audio,
 x-widget[data-type^='items-files'] audio,
  x-field[data-type^='file-audio' ] x-audio-player,
 x-widget[data-type^='items-files'] x-audio-player {
-  display: inline-block;
   margin: 0 10px 0 0;
-  max-width: 400px;
+  max-width: 300px;
   vertical-align: middle;
 }
 
+
+
 /* form 'instance_update' */
 
-form#instance_update x-layout-manager [data-area-id] {padding: 15px}
+form#instance_update x-layout-manager [data-area][data-id] {padding: 15px}
 form#instance_update x-layout-manager x-area-info {margin: -15px -15px 9px -15px}
+
+
 
 /* form 'install' */
 
@@ -460,6 +515,8 @@ form#install button[value='install'] {
   display: block;
   margin: 100px auto 50px auto;
 }
+
+
 
 /* form 'instance_select_multiple' */
 
@@ -475,6 +532,8 @@ form#instance_select_multiple button[value='insert'] {
   margin: 27px 0 0 20px;
 }
 
+
+
 /* form 'modules_update_files' */
 
 form#modules_update_files button[value^='repo_restore_'] {
@@ -483,10 +542,14 @@ form#modules_update_files button[value^='repo_restore_'] {
   margin-left: 20px;
 }
 
+
+
 /* form 'cache_update' */
 
 [data-id='block__form__cache_update'] form#cache_update {margin: 0; text-align: right}
 [data-id='block__form__cache_update'] form#cache_update button {margin: 0}
+
+
 
 /* Polls */
 

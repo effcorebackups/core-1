@@ -72,17 +72,18 @@ class Widget_Selection_field_settings extends Container {
         $field_format->cform = $widget->parent_widget->cform;
         $field_format->title = 'Format';
         $field_format->items_set([
-            ''             => 'by field type in the DB',
-            'raw'          => ' RAW',
-            'boolean'      => ' boolean',
-            'real'         => ' real',
-            'integer'      => ' integer',
-            'time'         => ' time',
-            'date'         => ' date',
-            'datetime'     => ' datetime',
-            'time_utc'     => ' time_utc',
-            'date_utc'     => ' date_utc',
-            'datetime_utc' => ' datetime_utc']);
+            ''              => 'by field type in the DB',
+            'raw'           => ' RAW',
+            'url_from_path' => ' url_from_path',
+            'boolean'       => ' boolean',
+            'real'          => ' real',
+            'integer'       => ' integer',
+            'time'          => ' time',
+            'date'          => ' date',
+            'datetime'      => ' datetime',
+            'time_utc'      => ' time_utc',
+            'date_utc'      => ' date_utc',
+            'datetime_utc'  => ' datetime_utc']);
         $field_format->build();
         $field_format->required_set(false);
         $field_format->name_set($widget->parent_widget->name_get_complex().'__format__'.$c_row_id);

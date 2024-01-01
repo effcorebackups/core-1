@@ -26,8 +26,8 @@ abstract class Events_Selection {
         if (array_key_exists('avatar_path', $c_instance->values_get())) {
             if ($c_instance->avatar_path) {
                 $result = new Markup('ul', ['data-type' => 'paths']);
-                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Text_simple('/'.$c_instance->avatar_path               )), 'original');
-                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Text_simple('/'.$c_instance->avatar_path.'?thumb=small')), 'small'   );
+                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Text_simple(Core::to_url_from_path($c_instance->avatar_path)               )), 'original');
+                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Text_simple(Core::to_url_from_path($c_instance->avatar_path).'?thumb=small')), 'small'   );
                    return $result;
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'avatar_path']);
@@ -37,8 +37,8 @@ abstract class Events_Selection {
         if (array_key_exists('avatar_path', $c_instance->values_get())) {
             if ($c_instance->avatar_path) {
                 $result = new Markup('ul', ['data-type' => 'paths']);
-                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => '/'.$c_instance->avatar_path               , 'target' => '_blank'], new Text_simple('/'.$c_instance->avatar_path               ))), 'original');
-                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => '/'.$c_instance->avatar_path.'?thumb=small', 'target' => '_blank'], new Text_simple('/'.$c_instance->avatar_path.'?thumb=small'))), 'small'   );
+                $result->child_insert(new Markup('li', ['data-name' => 'original'], new Markup('a', ['href' => Core::to_url_from_path($c_instance->avatar_path)               , 'target' => '_blank'], new Text_simple(Core::to_url_from_path($c_instance->avatar_path)               ))), 'original');
+                $result->child_insert(new Markup('li', ['data-name' => 'small'   ], new Markup('a', ['href' => Core::to_url_from_path($c_instance->avatar_path).'?thumb=small', 'target' => '_blank'], new Text_simple(Core::to_url_from_path($c_instance->avatar_path).'?thumb=small'))), 'small'   );
                    return $result;
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'avatar_path']);

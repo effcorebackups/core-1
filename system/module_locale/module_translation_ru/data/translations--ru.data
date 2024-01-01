@@ -21,6 +21,8 @@ translations
     - %%_entity_title_context \| change: %%_entity_title_context | изменить
     - %%_entity_title_context \| delete: %%_entity_title_context | удалить
     - %%_number sec.: %%_number сек.
+    - %%_number file%%_plural(number\|s): %%_number файл%%_plural(number|ov-a)
+    - %%_number piece%%_plural(number\|s): %%_number штук%%_plural(number|a-i)
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
     - A new password was sent to the selected EMail address.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - Absolute URL as link: Абсолютный URL как ссылка
@@ -29,7 +31,6 @@ translations
     - access allowed by role "%%_role": доступ разрешён по роли "%%_role"
     - access allowed by user ID "%%_user": доступ разрешен по ID пользователя "%%_user"
     - Access forbidden: Доступ запрещён
-    - Access recovery form: Форма восстановления доступа
     - Access settings are not applied if nothing is selected!: Настройки доступа не применяются, если ничего не выбрано!
     - access: доступ
     - Access: Доступ
@@ -77,6 +78,7 @@ translations
     - B: Б
     - Be careful, your mistake may lead to XSS injection.: Будьте осторожны, ваша ошибка может привести к внедрению XSS.
     - Belarusian: Белорусский
+    - big: большой
     - bind to my IP address: привязать к моему IP-адресу
     - Block: Блок
     - Blocked until: Заблокировано до
@@ -96,7 +98,6 @@ translations
     - Button\: text: Кнопка: текст
     - by field type in the DB: по типу поля в БД
     - By languages: По языкам
-    - Cache update form: Форма обновления кэша
     - cache: кэш
     - cancel: отменить
     - Canvas: Холст
@@ -116,9 +117,7 @@ translations
     - click to open in new window: нажмите, чтобы открыть в новом окне
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
-    - Color assignment form: Форма присвоения цвета
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
-    - Color preset apply form: Форма применения цветовых предустановок
     - Color settings have been changed.: Цветовые настройки были изменены.
     - Color settings have not been changed!: Цветовые настройки не были изменены!
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
@@ -128,7 +127,6 @@ translations
     - Colors: Цвета
     - Combination of values should be unique.: Комбинация значений должна быть уникальной.
     - Conditions: Условия
-    - Console settings form: Форма настроек консоли
     - Console settings: Настройки консоли
     - Content in the &lt;head&gt;: Содержимое в &lt;head&gt;
     - Content of the "global.cssd" file: Содержимое файла "global.cssd"
@@ -143,9 +141,14 @@ translations
     - Copyright: Авторские права
     - Core: Ядро
     - Correct format\: "%%_format": Правильный формат: "%%_format"
+    - cover big: обложка большая
+    - cover middle: обложка средняя
+    - cover original: обложка ориг.
     - Cover path: Путь обложки
     - Cover paths as links: Пути обложки как ссылки
     - Cover paths: Пути обложки
+    - cover small: обложка маленькая
+    - cover: обложка
     - Cover: Обложка
     - Created: Создано
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
@@ -156,14 +159,10 @@ translations
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
     - Current: Текущие
-    - Data deletion form: Форма удаления данных
     - Data hash: Хэш данных
     - Data ID: ID данных
-    - Data insertion form: Форма вставки данных
-    - Data management form: Форма управления данными
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Обновление данных №%%_number для модуля "%%_title" (%%_id) не было применено!
-    - Data update form: Форма обновления данных
     - Data update is required: Требуется обновление данных
     - Data: Данные
     - Database name: Имя базы данных
@@ -237,7 +236,6 @@ translations
     - expand: развернуть
     - Expiration date: Дата окончания
     - failure: неудача
-    - Feedback form: Форма обратной связи
     - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
     - Feedback: Отзыв
     - Feedback\: delete: Отзыв: удалить
@@ -300,9 +298,18 @@ translations
     - File "%%_file" is not exists!: Файл "%%_file" не существует!
     - File "%%_file" is not readable!: Файл "%%_file" недоступен для чтения!
     - File "%%_file" is not writable!: Файл "%%_file" недоступен для записи!
+    - File "%%_file" was converted to "%%_to".: Файл "%%_file" был преобразован в "%%_to".
+    - File "%%_file" was copied to "%%_to".: Файл "%%_file" был скопирован в "%%_to".
     - File "%%_file" was deleted.: Файл "%%_file" был удалён.
+    - File "%%_file" was moved to "%%_to".: Файл "%%_file" был перемещён в "%%_to".
+    - File "%%_file" was not converted to "%%_to"!: Файл "%%_file" не был преобразован в "%%_to"!
+    - file "%%_file" was not copied to "%%_to": файл "%%_file" не был скопирован в "%%_to"
+    - File "%%_file" was not copied to "%%_to"!: Файл "%%_file" не был скопирован в "%%_to"!
+    - file "%%_file" was not deleted physically: файл "%%_file" не был удалён физически
+    - File "%%_file" was not deleted physically!: Файл "%%_file" не был удалён физически!
     - file "%%_file" was not deleted: файл "%%_file" не был удалён
     - File "%%_file" was not deleted!: Файл "%%_file" не был удалён!
+    - File "%%_file" was not moved to "%%_to"!: Файл "%%_file" не был перемещён в "%%_to"!
     - File "%%_file" was not written to disc!: Файл "%%_file" не был записан на диск!
     - File "%%_file" was written to disc.: Файл "%%_file" был записан на диск.
     - file "%%_file": файл "%%_file"
@@ -327,9 +334,9 @@ translations
     - File not found: Файл не найден
     - file of this type is protected: файл этого типа защищён
     - File of type "%%_type" with title "%%_title" has been saved.: Файл типа "%%_type" с названием "%%_title" был сохранён.
+    - File of type "%%_type" with title "%%_title" was appended.: Файл типа "%%_type" с названием "%%_title" был добавлен.
     - File of type "%%_type" with title "%%_title" was deleted physically.: Файл типа "%%_type" с названием "%%_title" был удалён физически.
     - File of type "%%_type" with title "%%_title" was deleted.: Файл типа "%%_type" с названием "%%_title" был удалён.
-    - File of type "%%_type" with title "%%_title" was inserted.: Файл типа "%%_type" с названием "%%_title" был добавлен.
     - File path is invalid!: Путь к файлу недействителен!
     - file path: путь к файлу
     - File permissions are too strict!: Разрешения файла слишком строгие!
@@ -337,9 +344,6 @@ translations
     - File permissions should be checked.: Разрешения файла должны быть проверены.
     - File types: Типы файлов
     - File upload was stopped by PHP extension.: Загрузка файла была остановлена PHP-расширением.
-    - File was copied from "%%_from" to "%%_to".: Файл был скопирован из "%%_from" в "%%_to".
-    - file was not copied from "%%_from" to "%%_to": файл не был скопирован из "%%_from" в "%%_to"
-    - File was not copied from "%%_from" to "%%_to"!: Файл не был скопирован из "%%_from" в "%%_to"!
     - File was not written to disc!: Файл не был записан на диск!
     - File was only partially uploaded.: Файл был загружен только частично.
     - file: файл
@@ -348,8 +352,40 @@ translations
     - Files from repository: Файлы из репозитория
     - files: файлы
     - Files: Файлы
+    - First remove the dependent elements.: Сначала удалите зависимые элементы.
     - fix: исправить
     - Form elements: Элементы формы
+    - Form for сolor assignment: Форма для назначения цвета
+    - Form for adding data: Форма добавления данных
+    - Form for applying color presets: Форма для применения цветовых предустановок
+    - Form for changing data: Форма для изменения данных
+    - Form for changing user data: Форма для изменения данных пользователя
+    - Form for console configuration: Форма для настройки консоли
+    - Form for data management: Форма управления данными
+    - Form for deleting data: Форма для удаления данных
+    - Form for deleting module data: Форма для удаления данных модулей
+    - Form for editing global CSS: Форма для редактирования глобального CSS
+    - Form for editing META information: Форма для редактирования META-информации
+    - Form for editing the file "robots.txt": Форма для редактирования файла "robots.txt"
+    - Form for editing the file "sitemap.xml": Форма для редактирования файла "sitemap.xml"
+    - Form for editing the layout: Форма для редактирования макета
+    - Form for execution the test: Форма для выполнения теста
+    - Form for feedback: Форма для обратной связи
+    - Form for general locale settings: Форма для общей настройки локали
+    - Form for generating a palette: Форма для генерирования палитры
+    - Form for installing modules: Форма для установки модулей
+    - Form for login: Форма для входа
+    - Form for logout: Форма для выхода
+    - Form for registration: Форма для регистрации
+    - Form for restoring access: Форма для восстановления доступа
+    - Form for security settings: Форма для настроек безопасности
+    - Form for selecting installation parameters: Форма для выбора параметров установки
+    - Form for setting locale by language: Форма для настройки локали по языку
+    - Form for updating module data: Форма для обновления данных модулей
+    - Form for updating module files: Форма для обновления файлов модулей
+    - Form for updating the cache: Форма для обновления кэша
+    - Form for view customization: Форма для настройки вида
+    - Form for voting: Форма для голосования
     - form: форма
     - Form: Форма
     - Format: Формат
@@ -370,7 +406,6 @@ translations
     - generate: генерировать
     - Generation done.: Генерация выполнена.
     - GiB: ГиБ
-    - Global CSS editing form: Форма редактирования глобального CSS
     - Global CSS: Глобальный CSS
     - Glyphs: Глифы
     - go to %%_language language: перейти на %%_language язык
@@ -438,26 +473,23 @@ translations
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" находится за пределами допустимых границ!
     - Item "%%_dpath_value" must be of type "%%_type"!: Элемент "%%_dpath_value" должен быть типа "%%_type"!
     - Item "%%_dpath_value" must be one of the following types\: %%_types!: Элемент "%%_dpath_value" должен быть одним из следующих типов: %%_types!
+    - Item of type "%%_type" was appended.: Элемент типа "%%_type" был добавлен.
     - Item of type "%%_type" was deleted.: Элемент типа "%%_type" был удалён.
-    - Item of type "%%_type" was inserted.: Элемент типа "%%_type" был добавлен.
+    - Item of type "%%_type" was not appended!: Элемент типа "%%_type" не был добавлен!
     - Item of type "%%_type" was not deleted!: Элемент типа "%%_type" не был удалён!
-    - Item of type "%%_type" was not inserted!: Элемент типа "%%_type" не был добавлен!
-    - Item of type "%%_type" was not updated!: Элемент типа "%%_type" не был обновлён!
-    - Item of type "%%_type" was updated.: Элемент типа "%%_type" был обновлён.
+    - Item of type "%%_type" with ID = "%%_id" cannot be deleted because it has a relationship with elements of type "%%_related_type"!: Элемент типа "%%_type" с ID = "%%_id" не может быть удалён, так как он имеет связь с элементом типа "%%_related_type"!
+    - Item of type "%%_type" with ID = "%%_id" cannot be deleted because it is embedded!: Элемент типа "%%_type" с ID = "%%_id" не может быть удалён, потому что он является встроенным!
     - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент типа "%%_type" с ID = "%%_id" был сохранён.
+    - Item of type "%%_type" with ID = "%%_id" was appended.: Элемент типа "%%_type" с ID = "%%_id" был добавлен.
+    - Item of type "%%_type" with ID = "%%_id" was changed.: Элемент типа "%%_type" с ID = "%%_id" был изменён.
     - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент типа "%%_type" с ID = "%%_id" был удалён физически.
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент типа "%%_type" с ID = "%%_id" был удалён.
-    - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент типа "%%_type" с ID = "%%_id" был добавлен.
-    - Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!: Элемент типа "%%_type" с ID = "%%_id" не был удалён, потому что он является встроенным!
+    - Item of type "%%_type" with ID = "%%_id" was not appended!: Элемент типа "%%_type" с ID = "%%_id" не был добавлен!
+    - Item of type "%%_type" with ID = "%%_id" was not changed!: Элемент типа "%%_type" с ID = "%%_id" не был изменён!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент типа "%%_type" с ID = "%%_id" не был удалён!
-    - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент типа "%%_type" с ID = "%%_id" не был добавлен!
-    - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент типа "%%_type" с ID = "%%_id" не был обновлён!
-    - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент типа "%%_type" с ID = "%%_id" был обновлён.
+    - Item of type "%%_type" with title "%%_title" was not appended!: Элемент типа "%%_type" с названием "%%_title" не был добавлен!
     - Item of type "%%_type" with title "%%_title" was not deleted because it is embedded!: Элемент типа "%%_type" с названием "%%_title" не был удалён, потому что он является встроенным!
     - Item of type "%%_type" with title "%%_title" was not deleted!: Элемент типа "%%_type" с названием "%%_title" не был удалён!
-    - Item of type "%%_type" with title "%%_title" was not inserted!: Элемент типа "%%_type" с названием "%%_title" не был добавлен!
-    - Item of type "%%_type" with title "%%_title" was not updated!: Элемент типа "%%_type" с названием "%%_title" не был обновлён!
-    - Item of type "%%_type" with title "%%_title" was updated.: Элемент типа "%%_type" с названием "%%_title" был обновлён.
     - Item\: %%_item: Элемент: %%_item
     - items: элементы
     - Items: Элементы
@@ -473,7 +505,6 @@ translations
     - Language: Язык
     - Languages: Языки
     - launch: запуск
-    - Layout editing form: Форма редактирования макета
     - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
@@ -501,20 +532,16 @@ translations
     - Local Date: Локальная Дата
     - Local Date/Time: Локальная Дата/Время
     - Local Time: Локальное Время
-    - Locale general settings form: Форма общих настроек локали
-    - Locale setting form by language: Форма настройки локали по языку
     - Locale: Локаль
     - Locale\: manage: Локаль: управлять
     - Logic: Логика
     - Login attempts: Попытки входа
-    - Login form: Форма входа
     - login: вход
     - Login: Вход
     - logotype: логотип
     - Logotype: Логотип
     - logotypes: логотипы
     - Logotypes: Логотипы
-    - Logout form: Форма выхода
     - logout: выход
     - Logout: Выход
     - Long session, in days: Длительный сеанс, в днях
@@ -528,7 +555,6 @@ translations
     - management for this entity is not available: управление для этой сущности недоступно
     - Management: Управление
     - Managers: Управляющие
-    - Mapping: Картографирование
     - Match: Соответствие
     - Maximum number of votes: Максимальное число голосов
     - Maximum width: Максимальная ширина
@@ -543,9 +569,10 @@ translations
     - Message: Сообщение
     - Message\: %%_message: Сообщение: %%_message
     - Messages: Сообщения
-    - META editing form: Форма редактирования META
     - META: МЕТА
     - MiB: МиБ
+    - middle: средний
+    - Minimalistic layout: Минималистичный макет
     - Minimum width: Минимальная ширина
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependency_title" (%%_dependency_id)!: Модуль "%%_title" (%%_id) не может быть включен, когда Вы пытаетесь отключить зависимый модуль "%%_dependency_title" (%%_dependency_id)!
     - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!: Модуль "%%_title" (%%_id) зависит от модуля с ID = "%%_dependency_id" с минимальной версией = "%%_dependency_version"!
@@ -572,11 +599,7 @@ translations
     - Module for working with polls.: Модуль для работы с опросами.
     - Module for working with user accounts and permissions.: Модуль для работы с пользовательскими аккаунтами и разрешениями.
     - Module ID: ID модуля
-    - Module installation form: Форма установки модулей
     - Module: Модуль
-    - Modules data deletion form: Форма удаления данных модулей
-    - Modules data update form: Форма обновления данных модулей
-    - Modules files update form: Форма обновления файлов модулей
     - Modules: Модули
     - Modules\: manage: Модули: управлять
     - More info in "%%_info".: Больше информации в "%%_info".
@@ -592,6 +615,7 @@ translations
     - nickname: псевдоним
     - Nickname: Псевдоним
     - No additional parameters.: Нет дополнительных параметров.
+    - NO DESCRIPTION: НЕТ ОПИСАНИЯ
     - No fields.: Нет полей.
     - No items.: Нет элементов.
     - No modules.: Нет модулей.
@@ -603,6 +627,7 @@ translations
     - No URL.: Нет URL.
     - no: нет
     - No: Нет
+    - Number of detected relations = %%_number piece%%_plural(number\|s).: Количество обнаруженных связей = %%_number штук%%_plural(number|a-i).
     - Number of downloads: Количество загрузок
     - Number of login attempts: Количество попыток входа
     - Number: Номер
@@ -628,7 +653,6 @@ translations
     - Page\: update: Страница: обновить
     - Pager settings: Настройки пейджера
     - Pages: Страницы
-    - Palette generation form: Форма генерирования палитры
     - Palette: Палитра
     - Parameter: Параметр
     - Parameters: Параметры
@@ -642,7 +666,6 @@ translations
     - Paths as links: Пути как ссылки
     - paths: пути
     - Paths: Пути
-    - pcs.: шт.
     - Permission ID: ID разрешения
     - Permission: Разрешение
     - Permission\: select: Разрешение: выбрать
@@ -663,6 +686,7 @@ translations
     - Picture\: select: Изображение: выбрать
     - Picture\: update: Изображение: обновить
     - Pictures: Изображения
+    - Poll has been deleted.: Опрос был удалён.
     - Poll: Опрос
     - Poll\: delete: Опрос: удалить
     - Poll\: insert: Опрос: вставить
@@ -671,9 +695,14 @@ translations
     - Polls: Опросы
     - Port: Порт
     - Possible options can be seen on page\: %%_page: Возможные варианты можно увидеть на странице: %%_page
+    - poster big: плакат большой
+    - poster middle: плакат средний
+    - poster original: плакат ориг.
     - Poster path: Путь плаката
     - Poster paths as links: Пути плаката как ссылки
     - Poster paths: Пути плаката
+    - poster small: плакат маленький
+    - poster: плакат
     - Poster: Плакат
     - Pre-listening: Предварительное прослушивание
     - Prefix: Префикс
@@ -709,7 +738,6 @@ translations
     - Registered users: Зарегистрированные пользователи
     - Registered: Зарегистрированный
     - Registering a new user on %%_domain: Регистрация нового пользователя на %%_domain
-    - Registration form: Форма регистрации
     - Registration via EMail address: Регистрация через адрес электронной почты
     - registration: регистрация
     - Registration: Регистрация
@@ -724,6 +752,7 @@ translations
     - Relation\: Role ↔ User\: insert: Связь: Роль ↔ Пользователь: вставить
     - Relation\: Role ↔ User\: select: Связь: Роль ↔ Пользователь: выбрать
     - Relation\: Role ↔ User\: update: Связь: Роль ↔ Пользователь: обновить
+    - Relations for item template\: Variable in template ← Field in DB: Связи для шаблона элемента: Переменная в шаблоне ← Поле в БД
     - Relations: Связи
     - Relations\: Role ↔ Permission: Связи: Роль ↔ Разрешение
     - Relations\: Role ↔ User: Связи: Роль ↔ Пользователь
@@ -736,7 +765,6 @@ translations
     - review: обзор
     - right to left (rtl): справа налево (rtl)
     - right to left: справа налево
-    - robots.txt editing form: Форма редактирования robots.txt
     - Role ID: ID роли
     - role: роль
     - Role: Роль
@@ -753,7 +781,6 @@ translations
     - Search: Поиск
     - sec.: сек.
     - Section "%%_title": Раздел "%%_title"
-    - Security settings form: Форма настроек безопасности
     - Security: Безопасность
     - Security\: manage: Безопасность: управлять
     - select all rows: выбрать все строки
@@ -784,11 +811,11 @@ translations
     - Short session, in days: Короткий сеанс, в днях
     - Short session\: %%_short day%%_plural(short\|s) \| long session\: %%_long day%%_plural(long\|s): Короткий сеанс = %%_short %%_plural(short|day) | длительный сеанс = %%_long %%_plural(long|day)
     - Simple layout: Простой макет
-    - Sitemap editing form: Форма редактирования Sitemap
     - Size of uploaded file greater than %%_size.: Размер загружаемого файла больше чем %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Размер загружаемого файла больше чем MAX_FILE_SIZE (MAX_FILE_SIZE не поддерживается).
     - size: размер
     - Size: Размер
+    - small: маленький
     - Social networks: Социальные сети
     - SQL state\: %%_state: SQL состояние: %%_state
     - SQL storage: SQL хранилище
@@ -805,7 +832,6 @@ translations
     - Switchers: Выключатели
     - System breadcrumbs: Системные хлебные крошки
     - System information: Информация о системе
-    - System installation parameters form: Форма параметров установки системы
     - system logotype: логотип системы
     - System menu: Системное меню
     - System was installed.: Система была установлена.
@@ -819,12 +845,10 @@ translations
     - Table (adaptive): Таблица (адаптивная)
     - Table (DL): Таблица (DL)
     - Table prefix: Префикс таблиц
+    - Table row with Row ID = "%%_row_id" was appended.: Строка таблицы с Row ID = "%%_row_id" была добавлена.
     - Table row with Row ID = "%%_row_id" was deleted.: Строка таблицы с Row ID = "%%_row_id" была удалена.
-    - Table row with Row ID = "%%_row_id" was inserted.: Строка таблицы с Row ID = "%%_row_id" была добавлена.
+    - Table row with Row ID = "%%_row_id" was not appended!: Строка таблицы с Row ID = "%%_row_id" не была добавлена!
     - Table row with Row ID = "%%_row_id" was not deleted!: Строка таблицы с Row ID = "%%_row_id" не была удалена!
-    - Table row with Row ID = "%%_row_id" was not inserted!: Строка таблицы с Row ID = "%%_row_id" не была добавлена!
-    - Table row with Row ID = "%%_row_id" was not updated!: Строка таблицы с Row ID = "%%_row_id" не была обновлена!
-    - Table row with Row ID = "%%_row_id" was updated.: Строка таблицы с Row ID = "%%_row_id" была обновлена.
     - Table: Таблица
     - Table\: row even: Таблица: строка чётная
     - Table\: row odd: Таблица: строка нечётная
@@ -834,13 +858,13 @@ translations
     - Tabs\: link: Вкладки: ссылка
     - Telephone number: Номер телефона
     - Template "%%_name" was not found!: Шаблон "%%_name" не был найден!
-    - Template for a group of items: Шаблон для группы элементов
+    - Template for decorator: Шаблон для декоратора
     - Template for item: Шаблон для элемента
+    - Template for selection: Шаблон для выборки
     - Template settings: Настройки шаблона
     - Template: Шаблон
     - Templates: Шаблоны
     - Temporary login blocking, in minutes: Временная блокировка входа, в минутах
-    - Test execution form: Форма выполнения теста
     - Test: Тест
     - Tests: Тесты
     - Text (raw): Текст (необработанный)
@@ -915,7 +939,6 @@ translations
     - User name: Имя пользователя
     - User type as text: Тип пользователя как текст
     - User type: Тип пользователя
-    - User update form: Форма обновления пользователя
     - User update: Обновление пользователя
     - User was not registered!: Пользователь не был зарегистрирован!
     - User with this EMail address was already registered!: Пользователь с таким адресом электронной почты уже был зарегистрирован!
@@ -984,7 +1007,6 @@ translations
     - Video\: select: Видео: выбрать
     - Video\: update: Видео: обновить
     - Videos: Видео
-    - View customization form: Форма настройки вида
     - View more: Смотреть больше
     - View type: Тип вида
     - View: Вид
@@ -992,7 +1014,6 @@ translations
     - Visibility: Видимость
     - Vote can be canceled: Голос может быть отменён
     - vote: голосовать
-    - Voting form: Форма голосования
     - warning: предупреждение
     - Warning: Предупреждение
     - Web server: Веб-сервер

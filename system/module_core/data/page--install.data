@@ -1,7 +1,7 @@
 pages
 - install|Page
     id: install
-    id_layout: installation
+    id_layout: minimalistic
     title: Installation
     url: %^(?<base>/install)
 >>>>>>>>>(/(?<lang_code>[a-z]{2})|)$%
@@ -31,7 +31,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__install|Block
-          title: System installation parameters form
+          title: Form for selecting installation parameters
           title_is_visible: false
           attributes
           - data-id: block__form__install

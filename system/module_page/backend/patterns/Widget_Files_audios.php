@@ -43,7 +43,7 @@ class Widget_Files_audios extends Widget_Files {
                     $decorator->data[$c_row_id] = [
                         'type'     => ['value' => 'audio'  , 'is_apply_translation' => false],
                         'num'      => ['value' => $c_row_id, 'is_apply_translation' => false],
-                        'children' => ['value' => static::item_markup_get($c_item, $c_row_id)]
+                        'children' => ['value' => static::render_item($c_item, $c_row_id)]
                     ];
                 }
             }
@@ -51,21 +51,59 @@ class Widget_Files_audios extends Widget_Files {
         return $decorator;
     }
 
-    static function item_markup_get($item, $row_id) {
-        $src = '/'.$item->object->get_current_path(true);
-        if ($item->settings['data-cover-is-embedded'])
-             return new Node([], ['cover' => new Markup_simple('img', ['src' => $src.'?cover=middle', 'alt' => new Text('cover'), 'width' => '300', 'height' => '300', 'data-type' => 'cover']), 'audio' => new Markup('audio', ['src' => $src, 'data-cover-thumbnail' => $src.'?cover=middle'] + $item->settings)]);
-        else return new Node([], [                                                                                                                                                               'audio' => new Markup('audio', ['src' => $src                                                ] + $item->settings)]);
+    static function render_item($item, $row_id) {
+        $result = '';
+        $url = Core::to_url_from_path($item->object->get_current_path(true));
+        if ($item->settings['data-cover-is-embedded']) {
+            $result = Template::make_new(Template::pick_name('picture'), [
+                'id'         => $row_id,
+                'src'        => $url.'?cover=middle',
+                'attributes' => Core::data_to_attributes([
+                    'alt'       => new Text('cover'),
+                    'width'     => '300',
+                    'height'    => '300',
+                    'data-type' => 'cover'
+                ])
+            ])->render();
+            $result.= Template::make_new(Template::pick_name('audio'), [
+                'id'         => $row_id,
+                'src'        => $url,
+                'attributes' => Core::data_to_attributes(
+                    ['data-cover-thumbnail' => $url.'?cover=middle'] + $item->settings
+                )
+            ])->render();
+        } else {
+            $result = Template::make_new(Template::pick_name('audio'), [
+                'id'         => $row_id,
+                'src'        => $url,
+                'attributes' => Core::data_to_attributes($item->settings)
+            ])->render();
+        }
+        return $result;
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
+        $result->child_select('button_delete')->_kind = 'audio';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'audio') {
-            if (!empty($widget->audio_player_on_manage_is_visible)) $result->child_insert(new Markup('audio'     , ['src' => '/'.$item->object->get_current_path(true)] + $widget->audio_player_on_manage_settings, [], +500), 'player');
-            if (!empty($item->settings['data-cover-is-embedded']))  $result->child_insert(new Markup_simple('img', ['src' => '/'.$item->object->get_current_path(true).'?cover=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450), 'thumbnail');
+            if (!empty($widget->audio_player_on_manage_is_visible)) {
+                $result->child_insert(new Markup('audio', [
+                    'src' => Core::to_url_from_path($item->object->get_current_path(true))] + $widget->audio_player_on_manage_settings, [
+                ], +500), 'player'); }
+            if (!empty($item->settings['data-cover-is-embedded'])) {
+                $result->child_select('info')->child_select('title')->child_select('text')->text_append(
+                    ' + '.(new Text('cover'))->render());
+                $result->child_insert(new Markup_simple('img', [
+                    'data-type' => 'thumbnail',
+                    'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?cover=small',
+                    'alt'       => new Text('thumbnail'),
+                    'width'     => '44',
+                    'height'    => '44',
+                ], +450), 'thumbnail');
+            }
         }
         return $result;
     }
@@ -116,8 +154,7 @@ class Widget_Files_audios extends Widget_Files {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function on_file_prepare($widget, $form, $npath, $button, &$items, &$new_item) {
-        $pre_path = Temporary::DIRECTORY.'validation/'.$form->validation_cache_date_get().'/'.$form->validation_id.'-'.$widget->name_get_complex().'-'.array_key_last($items).'.'.$new_item->object->type;
-        if ($new_item->object->move_tmp_to_pre($pre_path)) {
+        if (parent::on_file_prepare($widget, $form, $npath, $button,  $items,  $new_item)) {
             $new_item->settings = $widget->audio_player_default_settings;
             $new_item->settings['data-cover-is-embedded'] = false;
             if ($widget->cover_is_allowed) {
@@ -127,6 +164,7 @@ class Widget_Files_audios extends Widget_Files {
                     if ($cover instanceof File_history) {
                         if (Media::media_class_get($cover->type) === 'picture') {
                             if (Media::is_type_for_thumbnail($cover->type)) {
+                                $pre_path = $new_item->object->get_current_path();
                                 if ($cover->move_tmp_to_pre($pre_path.'.'.$cover->type)) {
                                     if ($new_item->object->container_audio_make($widget->cover_thumbnails, $cover->get_current_path())) {
                                         $new_item->settings['data-cover-is-embedded'] = true;

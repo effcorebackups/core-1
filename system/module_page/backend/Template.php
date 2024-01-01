@@ -67,8 +67,8 @@ class Template {
 
     static function pick_name($name) {
         static::init();
-        if (isset(static::$cache[$name            ])) return $name;
-        if (isset(static::$cache[$name.'_embedded'])) return $name.'_embedded';
+        if (isset(static::$cache[$name             ])) return $name;
+        if (isset(static::$cache[$name.'__embedded'])) return $name.'__embedded';
         return null;
     }
 

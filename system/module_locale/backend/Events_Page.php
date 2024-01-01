@@ -56,7 +56,7 @@ abstract class Events_Page {
         Core::array_sort_by_string($languages, 'title_en', Core::SORT_DSC, false);
         $languages = ['en' => $languages['en']] + $languages;
         $menu = new Markup('x-tree', ['role' => 'tree', 'data-id' => 'languages', 'data-style' => 'linear']);
-        $menu->child_insert(new Markup('h2', ['data-tree-title' => true, 'aria-hidden' => 'true'], 'Language selection menu'), 'title');
+        $menu->child_insert(new Markup('h2', ['aria-hidden' => 'true'], 'Language selection menu'), 'title');
         $menu->child_insert(new Markup('ul'), 'container');
         foreach ($languages as $c_language) {
             $c_title = $c_language->code !== 'en' ?

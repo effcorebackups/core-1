@@ -57,10 +57,10 @@ class Tab_item extends Node {
     function render() {
         if (empty($this->is_hidden)) {
             if (Access::check($this->access)) {
-                $rendered_children = $this->children_select_count() ? (Template::make_new($this->template_children, [
+                $rendered_children = $this->children_select_count() ? (Template::make_new(Template::pick_name($this->template_children), [
                     'children' => $this->render_children($this->children_select(true))
                 ]))->render() : '';
-                return (Template::make_new($this->template, [
+                return (Template::make_new(Template::pick_name($this->template), [
                     'attributes' => $this->render_attributes(),
                     'self'       => $this->render_self(),
                     'children'   => $rendered_children

@@ -4,7 +4,7 @@ module|Module
   title: Poll
   description: Module for working with polls.
   copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
-  version: 0.912
+  version: 0.913
   dependencies
     system
-    - core: 0.912
+    - core: 0.913

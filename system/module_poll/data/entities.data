@@ -226,8 +226,8 @@ entities
         type: foreign
         fields
         - =: id_poll
-        references: polls
-        references_fields
+        reference_entity: poll
+        reference_fields
         - =: id
 - poll_vote|Entity
     name: poll_vote
@@ -255,15 +255,15 @@ entities
         type: foreign
         fields
         - =: id_answer
-        references: poll_answers
-        references_fields
+        reference_entity: poll_answer
+        reference_fields
         - =: id
     - foreign_id_user
         type: foreign
         fields
         - =: id_user
-        references: users
-        references_fields
+        reference_entity: user
+        reference_fields
         - =: id
     indexes
     - index_id_session

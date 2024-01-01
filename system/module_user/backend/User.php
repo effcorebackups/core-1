@@ -90,17 +90,18 @@ abstract class User {
     }
 
     static function related_roles_insert($id_user, $roles, $module_id = null) {
+        $result = [];
         foreach ($roles as $c_id_role) {
-            (new Instance('relation_role_with_user', [
+            $result[$c_id_role] = (new Instance('relation_role_with_user', [
                 'id_role'   => $c_id_role,
                 'id_user'   =>   $id_user,
                 'module_id' => $module_id
-            ]))->insert();
-        }
+            ]))->insert(); }
+        return $result;
     }
 
     static function related_roles_delete($id_user) {
-        Entity::get('relation_role_with_user')->instances_delete([
+        return Entity::get('relation_role_with_user')->instances_delete([
             'where' => [
                 'id_user_!f'       => 'id_user',
                 'id_user_operator' => '=',
@@ -109,7 +110,7 @@ abstract class User {
     }
 
     static function related_role_delete($id_user, $id_role) {
-        (new Instance('relation_role_with_user', [
+        return (new Instance('relation_role_with_user', [
             'id_user' => $id_user,
             'id_role' => $id_role
         ]))->delete();

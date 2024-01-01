@@ -11,6 +11,7 @@ use effcore\Core;
 use effcore\Test_feed__Core__Select_recursive;
 use effcore\Test_feed__Core__Serialize;
 use effcore\Test;
+use effcore\Text_RAW;
 use effcore\Text_simple;
 use effcore\Text;
 use stdCLass;
@@ -1006,6 +1007,7 @@ abstract class Events_Test__Class_Core {
             'value_boolean_true'       => true,
             'value_boolean_false'      => false,
             'value_null'               => null,
+            'value_raw'                => new Text_RAW('some_raw_text'),
             'value_object_text'        => new Text('some translated text'),
             'value_object_text_simple' => new Text_simple('some raw text'),
             'value_object_empty'       => (object)[],
@@ -1040,13 +1042,14 @@ abstract class Events_Test__Class_Core {
                     'value_integer="123" '.
                     'value_float="0.000001" '.
                     'value_boolean_true '.
+                    'some_raw_text '.
                     'value_object_text="some translated text" '.
                     'value_object_text_simple="some raw text" '.
                     'value_object_empty="__NO_RENDERER__" '.
                     'value_object="__NO_RENDERER__" '.
                     'value_object_nested="__NO_RENDERER__" '.
                     'value_resource="__UNSUPPORTED_TYPE__" '.
-                    'value_array_nested="nested text true false 456 0.000002 __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__"';
+                    'value_array_nested="nested text true false 456 0.000002 value_nested_boolean_true some nested translated text some nested raw text __NO_RENDERER__ __NO_RENDERER__ __NO_RENDERER__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__"';
 
         $gotten = Core::data_to_attributes($data);
         $result = $gotten === $expected;
@@ -1054,6 +1057,35 @@ abstract class Events_Test__Class_Core {
         if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '*', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
             $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
+            $c_results['return'] = 0;
+            return;
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $expected_for_XML = 'value_string="text" '.
+                    'value_string_empty="" '.
+                    'value_string_true="true" '.
+                    'value_string_false="false" '.
+                    'value_integer="123" '.
+                    'value_float="0.000001" '.
+                    'value_boolean_true="value_boolean_true" '.
+                    'some_raw_text '.
+                    'value_object_text="some translated text" '.
+                    'value_object_text_simple="some raw text" '.
+                    'value_object_empty="__NO_RENDERER__" '.
+                    'value_object="__NO_RENDERER__" '.
+                    'value_object_nested="__NO_RENDERER__" '.
+                    'value_resource="__UNSUPPORTED_TYPE__" '.
+                    'value_array_nested="nested text true false 456 0.000002 value_nested_boolean_true some nested translated text some nested raw text __NO_RENDERER__ __NO_RENDERER__ __NO_RENDERER__ __UNSUPPORTED_TYPE__ __UNSUPPORTED_TYPE__"';
+
+        $gotten = Core::data_to_attributes($data, true);
+        $result = $gotten === $expected_for_XML;
+        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* + XML', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => '* + XML', 'result' => (new Text('failure'))->render()]);
+        if ($result !== true) {
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected_for_XML)]);
             $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
             $c_results['return'] = 0;
             return;

@@ -12,6 +12,7 @@ use effcore\Markup;
 use effcore\Message;
 use effcore\Page;
 use effcore\Text;
+use effcore\Text_multiline;
 use effcore\Url;
 
 abstract class Events_Form_Instance_delete {
@@ -33,6 +34,24 @@ abstract class Events_Form_Instance_delete {
                         $form->_instance = new Instance($form->entity_name, $conditions);
                         if ($form->_instance->select()) {
                             if (empty($form->_instance->is_embedded)) {
+                                if (!empty($entity->has_relation_checking)) {
+                                    $statistics = $form->_instance->has_related_instances();
+                                    if ($statistics) {
+                                        $form->has_error_on_build = true;
+                                        foreach ($statistics as $c_related_entity_name => $c_count) {
+                                            $c_related_entity = Entity::get($c_related_entity_name);
+                                            Message::insert(new Text_multiline([
+                                                'Item of type "%%_type" with ID = "%%_id" cannot be deleted because it has a relationship with elements of type "%%_related_type"!',
+                                                'Number of detected relations = %%_number piece%%_plural(number|s).',
+                                                'First remove the dependent elements.'], [
+                                                'type'         => (new Text(          $entity->title))->render(),
+                                                'related_type' => (new Text($c_related_entity->title))->render(),
+                                                'id'           => $form->instance_id,
+                                                'number'       => $c_count]), 'warning'
+                                            );
+                                        }
+                                    }
+                                }
                                 $form->attribute_insert('data-entity_name', $form->entity_name);
                                 $form->attribute_insert('data-instance_id', $form->instance_id);
                                 $question = new Markup('p', [], new Text('Delete item of type "%%_type" with ID = "%%_id"?', ['type' => (new Text($entity->title))->render(), 'id' => $form->instance_id]));

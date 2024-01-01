@@ -32,8 +32,9 @@ class Decorator extends Markup {
         if (!$this->is_builded) {
 
             $result = new Node;
-            $this->attribute_insert('data-view-type', $this->view_type);
-            $this->attribute_insert('data-id'       , $this->id       );
+            $this->attribute_insert('data-view-type'  , $this->view_type);
+            $this->attribute_insert('data-id'         , $this->id       );
+            $this->attribute_insert('data-items-count', $this->data ? count($this->data) : 0);
             Event::start('on_decorator_build_before', $this->id, ['decorator' => &$this]);
 
             if ($this->data) {
@@ -63,10 +64,11 @@ class Decorator extends Markup {
                                     is_bool   ($this->data[$c_row_id][$c_cell_id]['value'])) {
                                     $type_by_entity = $this->data[$c_row_id][$c_cell_id][ 'type' ] ?? null;
                                     $type_by_format = $this->data[$c_row_id][$c_cell_id]['format'] ?? null;
-                                    if ($type_by_format === 'raw'    ) $this->data[$c_row_id][$c_cell_id]['value'] =                               $this->data[$c_row_id][$c_cell_id]['value'];
-                                    if ($type_by_format === 'boolean') $this->data[$c_row_id][$c_cell_id]['value'] =   Core::format_logic (  (bool)$this->data[$c_row_id][$c_cell_id]['value'] );
-                                    if ($type_by_format === 'real'   ) $this->data[$c_row_id][$c_cell_id]['value'] = Locale::format_number( (float)$this->data[$c_row_id][$c_cell_id]['value'], Core::FPART_MAX_LEN);
-                                    if ($type_by_format === 'integer') $this->data[$c_row_id][$c_cell_id]['value'] = Locale::format_number(   (int)$this->data[$c_row_id][$c_cell_id]['value'] );
+                                    if ($type_by_format === 'raw'          ) $this->data[$c_row_id][$c_cell_id]['value'] =                                $this->data[$c_row_id][$c_cell_id]['value'];
+                                    if ($type_by_format === 'url_from_path') $this->data[$c_row_id][$c_cell_id]['value'] = Core::to_url_from_path((string)$this->data[$c_row_id][$c_cell_id]['value'] );
+                                    if ($type_by_format === 'boolean'      ) $this->data[$c_row_id][$c_cell_id]['value'] =    Core::format_logic (  (bool)$this->data[$c_row_id][$c_cell_id]['value'] );
+                                    if ($type_by_format === 'real'         ) $this->data[$c_row_id][$c_cell_id]['value'] =  Locale::format_number( (float)$this->data[$c_row_id][$c_cell_id]['value'], Core::FPART_MAX_LEN);
+                                    if ($type_by_format === 'integer'      ) $this->data[$c_row_id][$c_cell_id]['value'] =  Locale::format_number(   (int)$this->data[$c_row_id][$c_cell_id]['value'] );
                                     # datetime → time / datetime → date / datetime → datetime
                                     if ($type_by_format === 'time'     && $type_by_entity !== 'datetime') $this->data[$c_row_id][$c_cell_id]['value'] = Locale::format_loc_time              ( (string)$this->data[$c_row_id][$c_cell_id]['value'] );
                                     if ($type_by_format === 'time'     && $type_by_entity === 'datetime') $this->data[$c_row_id][$c_cell_id]['value'] = Locale::format_loc_time_from_datetime( (string)$this->data[$c_row_id][$c_cell_id]['value'] );
@@ -300,7 +302,7 @@ class Decorator extends Markup {
                             $c_access    =                    array_key_exists('access'   , $c_row) ? $c_row['access'   ]['value'] : (array_key_exists('access'   , $this->mapping) && array_key_exists($this->mapping['access'   ], $c_row) ? $c_row[$this->mapping['access'   ]]['value'] : null);
                             $c_extra     =                    array_key_exists('extra'    , $c_row) ? $c_row['extra'    ]['value'] : (array_key_exists('extra'    , $this->mapping) && array_key_exists($this->mapping['extra'    ], $c_row) ? $c_row[$this->mapping['extra'    ]]['value'] : null);
                             $c_id_tree = 'decorator-'.$c_id_tree;
-                            $c_tree = Tree::insert($this->title ?? null, $c_id_tree, null, [], 0, 'page');
+                            $c_tree = Tree::insert($this->description ?? null, $c_id_tree, null, [], 0, 'page');
                             $c_tree->visualization_mode = $this->tree_visualization_mode;
                             if ($trees->child_select(         $c_id_tree) === null)
                                 $trees->child_insert($c_tree, $c_id_tree);

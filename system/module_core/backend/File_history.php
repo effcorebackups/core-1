@@ -15,8 +15,16 @@ class File_history {
     public $tmp_path; # file in PHP    'tmp'   directory
     public $pre_path; # file in system 'tmp'   directory (dynamic/tmp/*)
     public $fin_path; # file in system 'files' directory (dynamic/files/*)
+    public $size  = 0;
     public $error = 0;
-    public $size;
+
+    function __construct($path_relative = null) {
+        if ($path_relative) {
+            $this->init_from_fin($path_relative);
+        }
+    }
+
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     function get_current_path($is_relative = false) {
         if     (!empty($this->tmp_path)) return                                                                   $this->tmp_path;
@@ -74,13 +82,15 @@ class File_history {
                 unset($this->tmp_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions are too strict!'], ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                ['from' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]);
+                if ($src_file->is_exists())
+                     Message::insert(new Text_multiline(['File "%%_file" was not moved to "%%_to"!', 'Directory permissions are too strict!'], ['file' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
+                else Message::insert(new Text_multiline(['File "%%_file" was not moved to "%%_to"!', 'File is not exists!'],                   ['file' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not moved to "%%_to"', 'error', 0,                                     ['file' => $src_file->path_get(), 'to' => $dst_file->path_get_relative()]);
             }
         }
     }
 
-    function move_pre_to_fin($dst_path, $fixed_name = null, $fixed_type = null, $is_save_original_data = false) {
+    function move_pre_to_fin($dst_path, $fixed_name = null, $fixed_type = null) {
         if ($this->get_current_state() === 'pre') {
             $src_file = new File($this->pre_path);
             $dst_file = new File(Token::apply($dst_path));
@@ -88,15 +98,17 @@ class File_history {
             if ($fixed_type           ) $dst_file->type_set(Token::apply($fixed_type));
             if ($dst_file->is_exists()) $dst_file->name_set($dst_file->name_get().'-'.Core::random_part_generate());
             if ($src_file->move($dst_file->dirs_get(), $dst_file->file_get())) {
-                if ($is_save_original_data === false) $this->name = $dst_file->name_get();
-                if ($is_save_original_data === false) $this->type = $dst_file->type_get();
-                if ($is_save_original_data === false) $this->file = $dst_file->file_get();
+                $this->name     = $dst_file->name_get();
+                $this->type     = $dst_file->type_get();
+                $this->file     = $dst_file->file_get();
                 $this->fin_path = $dst_file->path_get();
                 unset($this->pre_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File was not copied from "%%_from" to "%%_to"!', 'Directory permissions are too strict!'], ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file was not copied from "%%_from" to "%%_to"', 'error', 0,                                ['from' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]);
+                if ($src_file->is_exists())
+                     Message::insert(new Text_multiline(['File "%%_file" was not moved to "%%_to"!', 'Directory permissions are too strict!'], ['file' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
+                else Message::insert(new Text_multiline(['File "%%_file" was not moved to "%%_to"!', 'File is not exists!'],                   ['file' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not moved to "%%_to"', 'error', 0,                                     ['file' => $src_file->path_get_relative(), 'to' => $dst_file->path_get_relative()]);
             }
         }
     }
@@ -110,26 +122,30 @@ class File_history {
 
     function delete_pre() {
         if ($this->get_current_state() === 'pre') {
-            $result = @unlink($this->pre_path);
+            $is_exists = file_exists($this->pre_path);
+            if ($is_exists !== true) $result = true;
+            if ($is_exists === true) $result = @unlink($this->pre_path);
             if ($result) {
                 unset($this->pre_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions are too strict!'], ['file' => (new File($this->pre_path))->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                ['file' => (new File($this->pre_path))->path_get_relative()]);
+                Message::insert(new Text_multiline(['File "%%_file" was not deleted physically!', 'Directory permissions are too strict!'], ['file' => (new File($this->pre_path))->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted physically', 'error', 0,                                ['file' => (new File($this->pre_path))->path_get_relative()]);
             }
         }
     }
 
     function delete_fin() {
         if ($this->get_current_state() === 'fin') {
-            $result = @unlink($this->fin_path);
+            $is_exists = file_exists($this->fin_path);
+            if ($is_exists !== true) $result = true;
+            if ($is_exists === true) $result = @unlink($this->fin_path);
             if ($result) {
                 unset($this->fin_path);
                 return true;
             } else {
-                Message::insert(new Text_multiline(['File "%%_file" was not deleted!', 'Directory permissions are too strict!'], ['file' => (new File($this->fin_path))->path_get_relative()]), 'error');
-                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted', 'error', 0,                                ['file' => (new File($this->fin_path))->path_get_relative()]);
+                Message::insert(new Text_multiline(['File "%%_file" was not deleted physically!', 'Directory permissions are too strict!'], ['file' => (new File($this->fin_path))->path_get_relative()]), 'error');
+                Console::log_insert('file', 'copy', 'file "%%_file" was not deleted physically', 'error', 0,                                ['file' => (new File($this->fin_path))->path_get_relative()]);
             }
         }
     }
@@ -175,30 +191,6 @@ class File_history {
         }
     }
 
-    function container_video_make($poster_thumbnails, $poster_path = null) {
-        $file_src = new File($this->get_current_path());
-        $file_dst = new File($file_src->dirs_get().
-                             $file_src->name_get().'.video');
-        $result = Media::container_make($file_src->path_get(), 'container://'.$file_dst->path_get(), [
-            'poster_thumbnails' => $poster_thumbnails,
-            'original' => [
-                'type' => $this->type,
-                'mime' => $this->mime,
-                'size' => $this->size
-        ]]);
-        if ($result) {
-            @unlink($file_src->path_get());
-            $this->type = 'video';
-            $this->file = $this->name.'.video';
-            $this->mime = $file_dst->mime_get();
-            $this->size = $file_dst->size_get();
-            $this->set_current_path($file_dst->path_get());
-            if ($poster_path)
-                Media::container_file_insert('container://'.$file_dst->path_get(), $poster_path, 'poster');
-            return true;
-        }
-    }
-
     function container_audio_make($cover_thumbnails, $cover_path = null) {
         $file_src = new File($this->get_current_path());
         $file_dst = new File($file_src->dirs_get().
@@ -219,6 +211,30 @@ class File_history {
             $this->set_current_path($file_dst->path_get());
             if ($cover_path)
                 Media::container_file_insert('container://'.$file_dst->path_get(), $cover_path, 'cover');
+            return true;
+        }
+    }
+
+    function container_video_make($poster_thumbnails, $poster_path = null) {
+        $file_src = new File($this->get_current_path());
+        $file_dst = new File($file_src->dirs_get().
+                             $file_src->name_get().'.video');
+        $result = Media::container_make($file_src->path_get(), 'container://'.$file_dst->path_get(), [
+            'poster_thumbnails' => $poster_thumbnails,
+            'original' => [
+                'type' => $this->type,
+                'mime' => $this->mime,
+                'size' => $this->size
+        ]]);
+        if ($result) {
+            @unlink($file_src->path_get());
+            $this->type = 'video';
+            $this->file = $this->name.'.video';
+            $this->mime = $file_dst->mime_get();
+            $this->size = $file_dst->size_get();
+            $this->set_current_path($file_dst->path_get());
+            if ($poster_path)
+                Media::container_file_insert('container://'.$file_dst->path_get(), $poster_path, 'poster');
             return true;
         }
     }

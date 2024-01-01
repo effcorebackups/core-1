@@ -32,10 +32,11 @@ class Widget_Selection_decorator extends Control implements Control_complex {
 
     function value_get($options = []) { # @return: array | serialize(array)
         $result = [];
-        $result['view_type'    ] = $this->controls['#view_type'    ]->     value_get();
-        $result['template'     ] = $this->controls['#template'     ]->     value_get();
-        $result['template_item'] = $this->controls['#template_item']->     value_get();
-        $result['mapping'      ] = $this->controls['#mapping'      ]->value_data_get()->mapping ?? [];
+        $result['view_type'         ] = $this->controls['#view_type'         ]->     value_get();
+        $result['template_selection'] = $this->controls['#template_selection']->     value_get();
+        $result['template_decorator'] = $this->controls['#template_decorator']->     value_get();
+        $result['template_item'     ] = $this->controls['#template_item'     ]->     value_get();
+        $result['mapping'           ] = $this->controls['#mapping'           ]->value_data_get()->mapping ?? [];
         if (!empty($options['return_serialized']))
              return serialize($result);
         else return           $result;
@@ -47,10 +48,11 @@ class Widget_Selection_decorator extends Control implements Control_complex {
         if ($value === null) $value = [];
         if ($value ===  '' ) $value = [];
         if (is_array($value)) {
-            if (!empty($value['view_type'    ])) $this->controls['#view_type'    ]->     value_set($value['view_type']);
-            if (!empty($value['template'     ])) $this->controls['#template'     ]->     value_set($value['template']);
-            if (!empty($value['template_item'])) $this->controls['#template_item']->     value_set($value['template_item']);
-            if (!empty($value['mapping'      ])) $this->controls['#mapping'      ]->value_data_set($value['mapping'], 'mapping');
+            if (!empty($value['view_type'         ])) $this->controls['#view_type'         ]->     value_set($value['view_type']);
+            if (!empty($value['template_selection'])) $this->controls['#template_selection']->     value_set($value['template_selection']);
+            if (!empty($value['template_decorator'])) $this->controls['#template_decorator']->     value_set($value['template_decorator']);
+            if (!empty($value['template_item'     ])) $this->controls['#template_item'     ]->     value_set($value['template_item']);
+            if (!empty($value['mapping'           ])) $this->controls['#mapping'           ]->value_data_set($value['mapping'], 'mapping');
         }
     }
 
@@ -98,19 +100,28 @@ class Widget_Selection_decorator extends Control implements Control_complex {
         $templates_list = [];
         $templates = Template::get_all();
         foreach ($templates as $c_template) {
-            if ($c_template->type === 'text') {
-                $c_name = preg_replace('%_embedded$%S', '', $c_template->name);
+            if (!empty($c_template->is_ready_for_selection)) {
+                $c_name = preg_replace('%__embedded$%S', '', $c_template->name);
                 $templates_list[$c_name] = ' '.$c_name; }}
         Core::array_sort($templates_list);
 
-        $field_select_template = new Field_Select;
-        $field_select_template->cform = $widget->cform;
-        $field_select_template->attributes['data-role'] = 'template';
-        $field_select_template->title = 'Template for a group of items';
-        $field_select_template->items_set(['not_selected' => '- select -'] + $templates_list);
-        $field_select_template->build();
-        $field_select_template->name_set($widget->name_get_complex().'__template');
-        $field_select_template->value_set('markup_html');
+        $field_select_template_selection = new Field_Select;
+        $field_select_template_selection->cform = $widget->cform;
+        $field_select_template_selection->attributes['data-role'] = 'template-selection';
+        $field_select_template_selection->title = 'Template for selection';
+        $field_select_template_selection->items_set(['not_selected' => '- select -'] + $templates_list);
+        $field_select_template_selection->build();
+        $field_select_template_selection->name_set($widget->name_get_complex().'__template_selection');
+        $field_select_template_selection->value_set('markup_html');
+
+        $field_select_template_decorator = new Field_Select;
+        $field_select_template_decorator->cform = $widget->cform;
+        $field_select_template_decorator->attributes['data-role'] = 'template-decorator';
+        $field_select_template_decorator->title = 'Template for decorator';
+        $field_select_template_decorator->items_set(['not_selected' => '- select -'] + $templates_list);
+        $field_select_template_decorator->build();
+        $field_select_template_decorator->name_set($widget->name_get_complex().'__template_decorator');
+        $field_select_template_decorator->value_set('markup_html');
 
         $field_select_template_item = new Field_Select;
         $field_select_template_item->cform = $widget->cform;
@@ -125,7 +136,7 @@ class Widget_Selection_decorator extends Control implements Control_complex {
         $field_textarea_data_mapping = new Field_Textarea_data;
         $field_textarea_data_mapping->cform = $widget->cform;
         $field_textarea_data_mapping->attributes['data-role'] = 'data-mapping';
-        $field_textarea_data_mapping->title = 'Mapping';
+        $field_textarea_data_mapping->title = 'Relations for item template: Variable in template ← Field in DB';
         $field_textarea_data_mapping->data_validator_id = 'mapping';
         $field_textarea_data_mapping->element_attributes['rows'] = 17;
         $field_textarea_data_mapping->build();
@@ -139,7 +150,9 @@ class Widget_Selection_decorator extends Control implements Control_complex {
             'description'     => 'description',
             'title'           => 'title',
             'url'             => 'url',
+            'src'             => 'path',
             'path'            => 'path',
+            'poster'          => 'poster_path',
             'text'            => 'text',
             'attributes'      => 'this_attributes',
             'link_attributes' => 'link_attributes',
@@ -152,13 +165,15 @@ class Widget_Selection_decorator extends Control implements Control_complex {
         ], 'mapping');
 
         # relate new controls with the widget
-        $widget->controls['#view_type'    ] = $field_select_view_type;
-        $widget->controls['#template'     ] = $field_select_template;
-        $widget->controls['#template_item'] = $field_select_template_item;
-        $widget->controls['#mapping'      ] = $field_textarea_data_mapping;
-        $fieldset_template_settings->child_insert($field_select_template      , 'field_select_template');
-        $fieldset_template_settings->child_insert($field_select_template_item , 'field_select_template_item');
-        $fieldset_template_settings->child_insert($field_textarea_data_mapping, 'field_textarea_data_mapping');
+        $widget->controls['#view_type'         ] = $field_select_view_type;
+        $widget->controls['#template_selection'] = $field_select_template_selection;
+        $widget->controls['#template_decorator'] = $field_select_template_decorator;
+        $widget->controls['#template_item'     ] = $field_select_template_item;
+        $widget->controls['#mapping'           ] = $field_textarea_data_mapping;
+        $fieldset_template_settings->child_insert($field_select_template_selection, 'field_select_template_selection');
+        $fieldset_template_settings->child_insert($field_select_template_decorator, 'field_select_template_decorator');
+        $fieldset_template_settings->child_insert($field_select_template_item     , 'field_select_template_item');
+        $fieldset_template_settings->child_insert($field_textarea_data_mapping    , 'field_textarea_data_mapping');
         $result->child_insert($field_select_view_type     , 'field_select_view_type');
         $result->child_insert($fieldset_template_settings , 'fieldset_template_settings');
         return $result;

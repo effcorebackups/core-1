@@ -638,7 +638,7 @@ tests
                 name: proxy
           - response_check-select_multiple-registered-role|Test_step_Check
               check: token
-              where: %%_test_step_transpositions_is_active_select
+              where: %%_test_step__transpositions__is_active__select
               match: 1
               on_success
               - response_check-http_code|Test_step_Check
@@ -669,7 +669,7 @@ tests
                 name: proxy
           - response_check-select-registered-role|Test_step_Check
               check: token
-              where: %%_test_step_transpositions_is_active_select
+              where: %%_test_step__transpositions__is_active__select
               match: 1
               on_success
               - response_check-http_code|Test_step_Check
@@ -700,7 +700,7 @@ tests
                 name: proxy
           - response_check-insert-registered-role|Test_step_Check
               check: token
-              where: %%_test_step_transpositions_is_active_insert
+              where: %%_test_step__transpositions__is_active__insert
               match: 1
               on_success
               - response_check-http_code|Test_step_Check
@@ -731,7 +731,7 @@ tests
                 name: proxy
           - response_check-update-registered-role|Test_step_Check
               check: token
-              where: %%_test_step_transpositions_is_active_update
+              where: %%_test_step__transpositions__is_active__update
               match: 1
               on_success
               - response_check-http_code|Test_step_Check
@@ -762,7 +762,7 @@ tests
                 name: proxy
           - response_check-delete-registered-role|Test_step_Check
               check: token
-              where: %%_test_step_transpositions_is_active_delete
+              where: %%_test_step__transpositions__is_active__delete
               match: 1
               on_success
               - response_check-http_code|Test_step_Check

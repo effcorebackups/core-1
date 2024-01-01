@@ -5,8 +5,8 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     width="220"
-    height="80"
-    viewBox="0 0 220 80"
+    height="64"
+    viewBox="0 0 220 64"
     style="shape-rendering: auto">
 
     <metadata>
@@ -21,8 +21,8 @@
     </metadata>
 
     <g id="logo">
-        <rect x="0.5" y="0.5" width="219" height="79" style="fill-opacity: .1; stroke: black"/>
-        <path transform="matrix(1, 0, 0, 1, 62.5, 52.5)" style="fill: #a5a5a5" d="M 0 -25 L 0 0 L 20 0 L 20 -5 L 5 -5 L 5 -25 L 0 -25 z M 25 -25 L 25 0 L 45 0 L 45 -25 L 25 -25 z M 50 -25 L 50 0 L 70 0 L 70 -15 L 60 -15 L 60 -10 L 65 -10 L 65 -5 L 55 -5 L 55 -20 L 70 -20 L 70 -25 L 50 -25 z M 75 -25 L 75 0 L 95 0 L 95 -25 L 75 -25 z M 30 -20 L 40 -20 L 40 -5 L 30 -5 L 30 -20 z M 80 -20 L 90 -20 L 90 -5 L 80 -5 L 80 -20 z"/>
+        <rect x="0.5" y="0.5" width="219" height="63" style="fill-opacity: .1; stroke: black"/>
+        <path transform="matrix(1, 0, 0, 1, 62.5, 19.5)" style="fill: #a5a5a5" d="M 48.5 0 L 48.5 25 L 28.5 25 L 28.5 0 L 48.5 0 Z M 73.5 0 L 73.5 5 L 58.5 5 L 58.5 25 L 53.5 25 L 53.5 0 L 73.5 0 Z M 98.5 0 L 98.5 25 L 78.5 25 L 78.5 0 L 98.5 0 Z M 33.5 20 L 43.5 20 L 43.5 5 L 33.5 5 L 33.5 20 Z M 83.5 20 L 93.5 20 L 93.5 5 L 83.5 5 L 83.5 20 Z M 23.5 0 L 23.5 25 L 18.5 25 L 18.5 5 L 8.5 5 L 8.5 25 L 3.5 25 L 0 25 L 0 20 L 3.5 20 L 3.5 0 L 23.5 0 Z"/>
     </g>
 
 </svg>

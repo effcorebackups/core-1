@@ -52,7 +52,7 @@ class Field_Nickname extends Field_Text {
         }
     }
 
-    static function on_validate_phase_2($field, $form, $npath) {
+    static function on_validate_after($field, $form, $npath) {
         $element = $field->child_select('element');
         $name = $field->name_get();
         $type = $field->type_get();

@@ -42,9 +42,11 @@ class Widget_Blocks extends Widget_Items {
             if (!isset($item->title) ||
                 !isset($item->attributes)) {
                 $preset = $item->preset_make();
-                $item->title            = $preset->title;
-                $item->title_is_visible = $preset->title_is_visible;
-                $item->attributes       = $preset->attributes; }}
+                $item->title                      = $preset->title;
+                $item->title_is_visible           = $preset->title_is_visible;
+                $item->title_is_apply_translation = $preset->title_is_apply_translation ?? true;
+                $item->title_is_apply_tokens      = $preset->title_is_apply_tokens ?? false;
+                $item->attributes                 = $preset->attributes; }}
         $widget_settings = new Widget_Block_settings($widget, $item, $c_row_id);
         $widget_settings->build();
         # relate new controls with the widget
@@ -94,7 +96,7 @@ class Widget_Blocks extends Widget_Items {
             $widget->items_set($items);
             $widget->controls['#insert']->value_set('');
             Message::insert(new Text_multiline([
-                'Item of type "%%_type" with ID = "%%_id" was inserted.',
+                'Item of type "%%_type" with ID = "%%_id" was appended.',
                 'Do not forget to save the changes!'], [
                 'type' => (new Text($widget->item_title))->render(),
                 'id'   => $new_item->id ]));

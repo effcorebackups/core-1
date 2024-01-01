@@ -27,7 +27,7 @@ class Test_step_Transpositions {
             for ($j = $actions_count - 1; $j >= 0; $j--) {
                 $c_row_id = $row_ids[$actions_count - 1 - $j];
                 $c_state = $i >> $j & 1;
-                Token::insert('test_step_transpositions_is_active_'.$c_row_id, 'text', $c_state, null, 'test');
+                Token::insert('test_step__transpositions__is_active__'.$c_row_id, 'text', $c_state, null, 'test');
             }
             # run "action_before"
             if ($this->action_before) {

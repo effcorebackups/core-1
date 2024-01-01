@@ -33,7 +33,7 @@ abstract class Events_Page_Data_NoSQL {
         if ($type === null) Url::go($page->args_get('base').'/events');
         if ($type === 'trees') {
             $trees = Tree::select_all('nosql');
-            Core::array_sort_by_string($trees);
+            Core::array_sort_by_string($trees, 'description');
             if (empty($trees[$id])) {
                 Url::go($page->args_get('base').'/trees/'.reset($trees)->id);
             }
@@ -51,9 +51,9 @@ abstract class Events_Page_Data_NoSQL {
         $type = Page::get_current()->args_get('type');
         if ($type === 'trees') {
             $trees = Tree::select_all('nosql');
-            Core::array_sort_by_string($trees);
+            Core::array_sort_by_string($trees, 'description');
             foreach ($trees as $c_tree) {
-                Tab_item::insert(                         $c_tree->title,
+                Tab_item::insert(                         $c_tree->description,
                     'nosql_trees_'                       .$c_tree->id,
                     'nosql_trees', 'data_nosql', 'trees/'.$c_tree->id, null, [], [], false, 0, 'develop'
                 );
@@ -106,7 +106,7 @@ abstract class Events_Page_Data_NoSQL {
         if ($id && isset($trees[$id])) {
             $tree = Tree::select($id);
             $tree_managing_id = 'managed-'.$id;
-            $tree_managing = Tree::insert($tree->title ?? null, $tree_managing_id, null, [], 0, 'develop');
+            $tree_managing = Tree::insert($tree->description ?? null, $tree_managing_id, null, [], 0, 'develop');
             $tree_managing->visualization_mode = 'decorated';
             foreach (Tree_item::select_all_by_id_tree($id) as $c_item) {
                 $c_tree_item = Tree_item::insert($c_item->title,
@@ -129,8 +129,8 @@ abstract class Events_Page_Data_NoSQL {
         $decorator->id = 'nosql_selections';
         foreach ($selection as $c_selection) {
             $decorator->data[] = [
-                'id'    => ['title' => 'ID'   , 'value' => $c_selection->id   , 'is_apply_translation' => false],
-                'title' => ['title' => 'Title', 'value' => $c_selection->title, 'is_apply_translation' => true ]
+                'id'          => ['title' => 'ID'         , 'value' => $c_selection->id         , 'is_apply_translation' => false],
+                'description' => ['title' => 'Description', 'value' => $c_selection->description, 'is_apply_translation' => true ]
             ];
         }
         return $decorator;

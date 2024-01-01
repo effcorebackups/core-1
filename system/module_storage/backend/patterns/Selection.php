@@ -14,12 +14,9 @@ class Selection extends Markup implements has_Data_cache {
 
     public $tag_name = 'x-selection';
     public $attributes = ['data-selection' => true];
-    public $template = 'container';
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $id;
-    public $title_tag_name = 'h2';
-    public $title_attributes = ['data-selection-title' => true];
-    public $title;
+    public $description;
     public $main_entity_name;
     public $has_error_on_build = false;
     public $origin = 'nosql'; # nosql | sql | dynamic
@@ -31,8 +28,8 @@ class Selection extends Markup implements has_Data_cache {
     public $pager_name = 'page';
     public $pager_id = 0;
 
-    function __construct($title = null, $weight = +0) {
-        if ($title) $this->title = $title;
+    function __construct($description = null, $weight = +0) {
+        if ($description) $this->description = $description;
         parent::__construct(null, [], [], $weight);
     }
 
@@ -137,8 +134,11 @@ class Selection extends Markup implements has_Data_cache {
                     $decorator->id = $this->id;
                     $decorator->_selection = $this;
                     $decorator->attribute_insert('data-entity_name', $this->main_entity_name);
-                    foreach ($this->decorator_settings ?? [] as $c_key => $c_value)
-                        $decorator->                           {$c_key} = $c_value;
+                    foreach ($this->decorator_settings ?? [] as $c_key => $c_value) {
+                        if     ($c_key === 'template_selection') $this->template      = $c_value;
+                        elseif ($c_key === 'template_decorator') $decorator->template = $c_value;
+                        else                                     $decorator->{$c_key} = $c_value;
+                    }
                     # processing of each instance (row)
                     foreach ($this->_instances as $c_instance) {
                         $c_row = [];
@@ -295,8 +295,10 @@ class Selection extends Markup implements has_Data_cache {
                         }
                     }
                     $this->child_insert($decorator, 'result');
+                    $this->attribute_insert('data-items-count', count($this->_instances));
                     $decorator->build();
                 } else {
+                    $this->attribute_insert('data-items-count', 0);
                     $this->child_insert(
                         new Markup('x-no-items', ['data-style' => 'table'], 'No items.'), 'message_no_items'
                     );
@@ -313,25 +315,9 @@ class Selection extends Markup implements has_Data_cache {
     # render
     # ─────────────────────────────────────────────────────────────────────
 
-    function render_self() {
-        return $this->title ? (
-            new Markup($this->title_tag_name, $this->title_attributes, $this->title
-        ))->render() : '';
-    }
-
     function render() {
         $this->build();
-        if ($this->template) {
-            return (Template::make_new(Template::pick_name($this->template), [
-                'tag_name'   => $this->tag_name,
-                'attributes' => $this->render_attributes(),
-                'self_t'     => $this->render_self(),
-                'children'   => $this->render_children($this->children_select(true))
-            ]))->render();
-        } else {
-            return $this->render_self().
-                   $this->render_children($this->children_select(true));
-        }
+        return parent::render();
     }
 
     ###########################
@@ -345,8 +331,8 @@ class Selection extends Markup implements has_Data_cache {
 
     static function not_external_properties_get() {
         return [
-            'id'    => 'id',
-            'title' => 'title'
+            'id'          => 'id',
+            'description' => 'description'
         ];
     }
 

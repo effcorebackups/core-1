@@ -40,7 +40,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__security_settings_captcha|Block
-          title: Security settings CAPTCHA form
+          title: Form for security settings of CAPTCHA
           title_is_visible: false
           attributes
           - data-id: block__form__security_settings_captcha

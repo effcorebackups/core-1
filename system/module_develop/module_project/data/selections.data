@@ -1,6 +1,7 @@
 selections
 - instance_select-project|Selection
     id: instance_select-project
+    description: Project
     main_entity_name: project
     decorator_settings
     - view_type: table-dl
@@ -33,6 +34,7 @@ selections
           weight: +320
 - instance_select-project_release|Selection
     id: instance_select-project_release
+    description: Project release
     main_entity_name: project_release
     decorator_settings
     - view_type: table-dl
@@ -95,6 +97,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-project|Selection
     id: instance_select_multiple-project
+    description: Projects
     main_entity_name: project
     pager_is_enabled: true
     decorator_settings
@@ -118,6 +121,7 @@ selections
           weight: +340
 - instance_select_multiple-project_release|Selection
     id: instance_select_multiple-project_release
+    description: Project releases
     main_entity_name: project_release
     pager_is_enabled: true
     decorator_settings
@@ -153,10 +157,7 @@ selections
 - project_release_current|Selection
     id: project_release_current
     main_entity_name: project_release
-    title|Text
-      is_apply_translation: true
-      is_apply_tokens: true
-      text: Current release of the project %%_project_title_context
+    description: Project release (current)
     decorator_settings
     - view_type: table-dl
     query_settings
@@ -166,7 +167,7 @@ selections
       - id_project_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_project_id_context
+          text: %%_project__id__context
     - order
       - build_!f: build
       - build_direction: DESC
@@ -202,10 +203,7 @@ selections
 - project_releases|Selection
     id: project_releases
     main_entity_name: project_release
-    title|Text
-      is_apply_translation: true
-      is_apply_tokens: true
-      text: Releases of the project %%_project_title_context
+    description: Project releases
     pager_is_enabled: true
     decorator_settings
     - view_type: table-dl
@@ -216,7 +214,7 @@ selections
       - id_project_!v|Text
           is_apply_translation: false
           is_apply_tokens: true
-          text: %%_project_id_context
+          text: %%_project__id__context
     - order
       - build_!f: build
       - build_direction: DESC

@@ -22,7 +22,7 @@ class Test_step_Repeat {
             $c_results['reports'][$dpath.':'.$i]['dpath'] = '### dpath: '.$dpath.':'.$i;
             $c_results['reports'][$dpath.':'.$i][] = new Text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
             foreach ($this->actions as $c_dpath_in_cycle => $c_step) {
-                if ($this->id) Token::insert('test_step_repeat_i_'.$this->id, 'text', $i, null, 'test');
+                if ($this->id) Token::insert('test_step__repeat_i__'.$this->id, 'text', $i, null, 'test');
                 $c_step->run($test, $dpath.':'.$i.'/'.$c_dpath_in_cycle, $c_results);
                 if (array_key_exists('return', $c_results)) {
                     return;

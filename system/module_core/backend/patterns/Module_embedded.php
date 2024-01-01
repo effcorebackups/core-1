@@ -105,8 +105,8 @@ class Module_embedded {
         foreach (Instance::get_all_by_module($this->id) as $c_row_id => $c_instance) {
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(false);
             if ($c_instance->insert())
-                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was inserted.'    , ['row_id' => $c_row_id])         );
-            else Message::insert(new Text('Table row with Row ID = "%%_row_id" was not inserted!', ['row_id' => $c_row_id]), 'error');
+                 Message::insert(new Text('Table row with Row ID = "%%_row_id" was appended.'    , ['row_id' => $c_row_id])         );
+            else Message::insert(new Text('Table row with Row ID = "%%_row_id" was not appended!', ['row_id' => $c_row_id]), 'error');
             $c_instance->entity_get()->storage_get()->foreign_keys_checks_set(true);
         }
 
@@ -135,8 +135,8 @@ class Module_embedded {
                 }
                 # trying to copy the file
                 if ($c_src_file->copy($c_dst_file->dirs_get(), $c_dst_file->file_get()))
-                     Message::insert(new Text('File was copied from "%%_from" to "%%_to".'    , ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
-                else Message::insert(new Text('File was not copied from "%%_from" to "%%_to"!', ['from' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
+                     Message::insert(new Text('File "%%_file" was copied to "%%_to".'    , ['file' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]));
+                else Message::insert(new Text('File "%%_file" was not copied to "%%_to"!', ['file' => $c_src_file->path_get_relative(), 'to' => $c_dst_file->path_get_relative()]), 'error');
             }
         }
 

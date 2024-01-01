@@ -42,7 +42,7 @@ class Field_File_picture extends Field_File {
 
     static function widget_manage_action_text_get($field, $item, $id, $scope) {
         if ($field->thumbnails_is_allowed) {
-            $thumbnail_markup = new Markup_simple('img', ['src' => '/'.$item->get_current_path(true).'?thumb=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
+            $thumbnail_markup = new Markup_simple('img', ['src' => Core::to_url_from_path($item->get_current_path(true)).'?thumb=small', 'alt' => new Text('thumbnail'), 'width' => '44', 'height' => '44', 'data-type' => 'thumbnail'], +450);
                return new Node([], [$thumbnail_markup, new Text('picture "%%_picture"', ['picture' => $item->file])]);
         } else return new Node([], [                   new Text('picture "%%_picture"', ['picture' => $item->file])]);
     }

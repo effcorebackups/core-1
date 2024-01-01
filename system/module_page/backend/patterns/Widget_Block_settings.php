@@ -66,7 +66,9 @@ class Widget_Block_settings extends Container {
         $field_title->build();
         $field_title->value_set($item->title instanceof Text ?
                                 $item->title :
-                       new Text($item->title));
+                       new Text($item->title, [],
+                                $item->title_is_apply_translation ?? true,
+                                $item->title_is_apply_tokens ?? false));
         # control for title visibility
         $field_title_is_visible = new Field_Select_logic;
         $field_title_is_visible->cform = $widget->parent_widget->cform;

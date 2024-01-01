@@ -3,8 +3,8 @@ translations
     code: uk
     data
     - CAPTCHA: Захисний код (CAPTCHA)
+    - Form for security settings of CAPTCHA: Форма для налаштування безпеки CAPTCHA
     - Module for working with CAPTCHA in forms.: Модуль для роботи із захисним кодом (CAPTCHA) у формах.
     - Number of attempts\: %%_attempts: Кількість спроб: %%_attempts
-    - Security settings CAPTCHA form: Форма налаштувань безпеки CAPTCHA
     - Value of "%%_title" field does not match the value in the picture!: Значення поля "%%_title" не відповідає значенню на картинці!
     - Write the characters from the picture.: Напишіть символи з зображення.

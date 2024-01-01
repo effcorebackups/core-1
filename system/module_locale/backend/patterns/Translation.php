@@ -63,22 +63,9 @@ class Translation implements has_Data_cache {
                 $c_args = isset($c_match['args']) ? explode('|', $c_match['args']) : [];
                 # plurals functionality
                 if ($c_name === 'plural') {
-                    if (isset($c_args[0]) &&
-                        isset($c_args[1])) {
-                        $p_number_name = $c_args[0];
-                        $p_plural_type = $c_args[1];
-                        $p_plurals     = Language::plurals_get($c_code);
-                        if (isset($p_plurals[$p_plural_type]) &&
-                            isset($args     [$p_number_name])) {
-                            $p_plural_info = $p_plurals[$p_plural_type];
-                            $p_matches     = [];
-                            if (preg_match($p_plural_info->formula, (string)$args[$p_number_name], $p_matches)) {
-                                $replacement = array_intersect_key($p_plural_info->matches, array_filter($p_matches, 'strlen'));
-                                return reset($replacement);
-                            } else {
-                                return '';
-                            }
-                        }
+                    $c_result = static::plural($c_args, $args, $c_code);
+                    if (is_string($c_result)) {
+                        return $c_result;
                     }
                 }
                 # default case
@@ -86,6 +73,25 @@ class Translation implements has_Data_cache {
             }, $string);
         } else {
             return $string;
+        }
+    }
+
+    static function plural($args = [], $transl_args = [], $code = 'en') { # @return: null | '' | 'string'
+        if (isset($args[0]) &&
+            isset($args[1])) {
+            $number_name = $args[0];
+            $plural_type = $args[1];
+            $plurals_all = Language::plurals_get($code);
+            $number      = array_key_exists($number_name, $transl_args) ? (string)$transl_args[$number_name] : null;
+            $plural_info = array_key_exists($plural_type, $plurals_all) ?         $plurals_all[$plural_type] : null;
+            if ($number      !== null &&
+                $plural_info !== null) {
+                $matches = [];
+                if (preg_match($plural_info->formula, $number, $matches)) {
+                       $replacement = array_intersect_key($plural_info->matches, array_filter($matches, 'strlen'));
+                       return reset($replacement);
+                } else return '';
+            }
         }
     }
 

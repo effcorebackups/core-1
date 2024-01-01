@@ -1875,8 +1875,7 @@ instances
     entity_name: tree
     values
     - id: user_anonymous
-    - title: Anonymous user's menu
-    - title_is_visible: 0
+    - description: Anonymous user's menu
     - is_embedded: 1
     - attributes
       - 0
@@ -1892,8 +1891,7 @@ instances
     entity_name: tree
     values
     - id: user_anonymous_ru
-    - title: Меню анонимного пользователя
-    - title_is_visible: 0
+    - description: Меню анонимного пользователя
     - attributes
       - 0
           weight: +0
@@ -1908,8 +1906,7 @@ instances
     entity_name: tree
     values
     - id: user_registered
-    - title: Registered user's menu
-    - title_is_visible: 0
+    - description: Registered user's menu
     - is_embedded: 1
     - attributes
       - 0
@@ -1925,8 +1922,7 @@ instances
     entity_name: tree
     values
     - id: user_registered_ru
-    - title: Меню зарегистрированного пользователя
-    - title_is_visible: 0
+    - description: Меню зарегистрированного пользователя
     - attributes
       - 0
           weight: +0
@@ -1941,8 +1937,7 @@ instances
     entity_name: tree
     values
     - id: languages
-    - title: Language selection menu
-    - title_is_visible: 0
+    - description: Language selection menu
     - attributes
       - 0
           weight: +0
@@ -1954,8 +1949,7 @@ instances
     entity_name: tree
     values
     - id: main
-    - title: Main menu
-    - title_is_visible: 0
+    - description: Main menu
     - attributes
       - 0
           weight: +0
@@ -1967,8 +1961,7 @@ instances
     entity_name: tree
     values
     - id: main_ru
-    - title: Меню главное
-    - title_is_visible: 0
+    - description: Меню главное
     - attributes
       - 0
           weight: +0
@@ -2240,7 +2233,7 @@ instances
     entity_name: gallery
     values
     - id: main
-    - title: Main gallery
+    - description: Main gallery
     - attributes
       - 0
           weight: +0
@@ -2251,10 +2244,11 @@ instances
     - items
       - 0
           weight: +0
+          title: 1000x1500-1.png
           object|File_history
-            name: 1000x1500-01
+            name: gallery-main-0
             type: picture
-            file: 1000x1500-01.picture
+            file: gallery-main-0.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-0.picture
             size: 6026
@@ -2265,10 +2259,11 @@ instances
           - data-thumbnails-is-embedded: true
       - 1
           weight: -5
+          title: 1000x1500-2.png
           object|File_history
-            name: 1000x1500-02
+            name: gallery-main-1
             type: picture
-            file: 1000x1500-02.picture
+            file: gallery-main-1.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-1.picture
             size: 6038
@@ -2279,10 +2274,11 @@ instances
           - data-thumbnails-is-embedded: true
       - 2
           weight: -10
+          title: 1000x1500-3.png
           object|File_history
-            name: 1000x1500-03
+            name: gallery-main-2
             type: picture
-            file: 1000x1500-03.picture
+            file: gallery-main-2.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-2.picture
             size: 6035
@@ -2293,10 +2289,11 @@ instances
           - data-thumbnails-is-embedded: true
       - 3
           weight: -15
+          title: 1500x1000-4.png
           object|File_history
-            name: 1500x1000-01
+            name: gallery-main-3
             type: picture
-            file: 1500x1000-01.picture
+            file: gallery-main-3.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-3.picture
             size: 5577
@@ -2307,10 +2304,11 @@ instances
           - data-thumbnails-is-embedded: true
       - 4
           weight: -20
+          title: 1500x1000-5.png
           object|File_history
-            name: 1500x1000-02
+            name: gallery-main-4
             type: picture
-            file: 1500x1000-02.picture
+            file: gallery-main-4.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-4.picture
             size: 5574
@@ -2321,10 +2319,11 @@ instances
           - data-thumbnails-is-embedded: true
       - 5
           weight: -25
+          title: 1500x1000-6.png
           object|File_history
-            name: 1500x1000-03
+            name: gallery-main-5
             type: picture
-            file: 1500x1000-03.picture
+            file: gallery-main-5.picture
             mime: application/octet-stream
             fin_path: dynamic/files/galleries/gallery-main-5.picture
             size: 5575
@@ -2335,16 +2334,35 @@ instances
           - data-thumbnails-is-embedded: true
       - 6
           weight: -30
+          title: audio.mp3
           object|File_history
-            name: audio-01
-            type: audio
-            file: audio-01.audio
-            mime: application/octet-stream
-            fin_path: dynamic/files/galleries/gallery-main-6.audio
-            size: 19763
+            name: gallery-main-6
+            type: mp3
+            file: gallery-main-6.mp3
+            mime: audio/mpeg
+            fin_path: dynamic/files/galleries/gallery-main-6.mp3
+            size: 16744
           settings
           - data-player-name: default
-          - data-player-timeline-is-visible|_string_true
+          - autoplay: null
+          - controls: true
+          - crossorigin: null
+          - loop: null
+          - muted: null
+          - preload: metadata
+          - data-cover-is-embedded: false
+      - 7
+          weight: -35
+          title: audio.mp3
+          object|File_history
+            name: gallery-main-7
+            type: audio
+            file: gallery-main-7.audio
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-7.audio
+            size: 17416
+          settings
+          - data-player-name: default
           - autoplay: null
           - controls: true
           - crossorigin: null
@@ -2352,31 +2370,13 @@ instances
           - muted: null
           - preload: metadata
           - data-cover-is-embedded: true
-      - 7
-          weight: -35
-          object|File_history
-            name: video-01
-            type: video
-            file: video-01.video
-            mime: application/octet-stream
-            fin_path: dynamic/files/galleries/gallery-main-7.video
-            size: 18269
-          settings
-          - autoplay: null
-          - buffered: null
-          - controls: true
-          - crossorigin: null
-          - loop: null
-          - muted: null
-          - played: null
-          - preload: metadata
-          - data-poster-is-embedded: true
       - 8
           weight: -40
+          title: video.mp4
           object|File_history
-            name: video-02
+            name: gallery-main-8
             type: mp4
-            file: video-02.mp4
+            file: gallery-main-8.mp4
             mime: video/mp4
             fin_path: dynamic/files/galleries/gallery-main-8.mp4
             size: 15148
@@ -2392,23 +2392,24 @@ instances
           - data-poster-is-embedded: false
       - 9
           weight: -45
+          title: video.mp4
           object|File_history
-            name: audio-02
-            type: mp3
-            file: audio-02.mp3
-            mime: audio/mpeg
-            fin_path: dynamic/files/galleries/gallery-main-9.mp3
-            size: 16744
+            name: gallery-main-9
+            type: video
+            file: gallery-main-9.video
+            mime: application/octet-stream
+            fin_path: dynamic/files/galleries/gallery-main-9.video
+            size: 15819
           settings
-          - data-player-name: default
-          - data-player-timeline-is-visible|_string_true
           - autoplay: null
+          - buffered: null
           - controls: true
           - crossorigin: null
           - loop: null
           - muted: null
+          - played: null
           - preload: metadata
-          - data-cover-is-embedded: false
+          - data-poster-is-embedded: true
 # ─────────────────────────────────────────────────────────────────────
 # selections
 # ─────────────────────────────────────────────────────────────────────
@@ -2416,7 +2417,7 @@ instances
     entity_name: selection
     values
     - id: user
-    - title: General information
+    - description: General information
     - main_entity_name: user
     - data
       - is_custom_conditions: true
@@ -2484,7 +2485,7 @@ instances
     entity_name: selection
     values
     - id: user_sessions
-    - title: Sessions
+    - description: Sessions
     - main_entity_name: session
     - data
       - is_custom_conditions: true
@@ -2539,19 +2540,19 @@ instances
     entity_name: selection
     values
     - id: social_networks
-    - title: Social networks
+    - description: Social networks
     - main_entity_name: picture
-    - data
-      - template: content
     - decorator_settings
       - view_type: template
+      - template_selection: markup_html
+      - template_decorator: markup_html
       - template_item: picture_in_link
       - mapping
-        - id: id
-        - path: path
-        - url: url
+        - =: id
+        - =: url
+        - src: path
         - attributes: this_attributes
-        - link_attributes: link_attributes
+        - =: link_attributes
     - query_settings
       - where
         - conjunction_!and
@@ -2574,6 +2575,7 @@ instances
             weight: -5
         - path
             entity_field_name: path
+            format: url_from_path
             weight: -10
         - url
             entity_field_name: url

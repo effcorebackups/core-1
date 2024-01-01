@@ -40,7 +40,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__instance_select_multiple|Block
-          title: Data management form
+          title: Form for data management
           title_is_visible: false
           attributes
           - data-id: block__form__instance_select_multiple

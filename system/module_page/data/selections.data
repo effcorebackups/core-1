@@ -1,6 +1,7 @@
 selections
 - instance_select-audio|Selection
     id: instance_select-audio
+    description: Audio
     main_entity_name: audio
     decorator_settings
     - view_type: table-dl
@@ -57,6 +58,7 @@ selections
           weight: +300
 - instance_select-gallery|Selection
     id: instance_select-gallery
+    description: Gallery
     main_entity_name: gallery
     decorator_settings
     - view_type: table-dl
@@ -73,8 +75,8 @@ selections
       - id
           entity_field_name: id
           weight: +400
-      - title
-          entity_field_name: title
+      - description
+          entity_field_name: description
           is_apply_translation: true
           weight: +380
       - this_attributes
@@ -83,6 +85,7 @@ selections
       - items
           title: Preview
           entity_field_name: items
+          is_not_visible: true
           weight: +340
       - created
           entity_field_name: created
@@ -94,8 +97,14 @@ selections
           entity_field_name: is_embedded
           is_apply_translation: true
           weight: +280
+    - handlers
+      - handler__gallery__items_manage
+          title: Preview
+          handler: \effcore\modules\page\Events_Selection::handler__gallery__items_manage
+          weight: +340
 - instance_select-page|Selection
     id: instance_select-page
+    description: Page
     main_entity_name: page
     decorator_settings
     - view_type: table-dl
@@ -167,6 +176,7 @@ selections
           weight: +280
 - instance_select-picture|Selection
     id: instance_select-picture
+    description: Picture
     main_entity_name: picture
     decorator_settings
     - view_type: table-dl
@@ -230,6 +240,7 @@ selections
           weight: +260
 - instance_select-text|Selection
     id: instance_select-text
+    description: Text
     main_entity_name: text
     decorator_settings
     - view_type: table-dl
@@ -275,6 +286,7 @@ selections
           weight: +260
 - instance_select-video|Selection
     id: instance_select-video
+    description: Video
     main_entity_name: video
     decorator_settings
     - view_type: table-dl
@@ -332,6 +344,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-audio|Selection
     id: instance_select_multiple-audio
+    description: Audios
     main_entity_name: audio
     pager_is_enabled: true
     decorator_settings
@@ -372,6 +385,7 @@ selections
           weight: +320
 - instance_select_multiple-gallery|Selection
     id: instance_select_multiple-gallery
+    description: Galleries
     main_entity_name: gallery
     pager_is_enabled: true
     decorator_settings
@@ -383,8 +397,8 @@ selections
       - id
           entity_field_name: id
           weight: +400
-      - title
-          entity_field_name: title
+      - description
+          entity_field_name: description
           is_apply_translation: true
           weight: +380
       - created
@@ -399,6 +413,7 @@ selections
           weight: +320
 - instance_select_multiple-page|Selection
     id: instance_select_multiple-page
+    description: Pages
     main_entity_name: page
     pager_is_enabled: true
     decorator_settings
@@ -432,6 +447,7 @@ selections
           weight: +360
 - instance_select_multiple-picture|Selection
     id: instance_select_multiple-picture
+    description: Pictures
     main_entity_name: picture
     pager_is_enabled: true
     decorator_settings
@@ -480,6 +496,7 @@ selections
           weight: +280
 - instance_select_multiple-text|Selection
     id: instance_select_multiple-text
+    description: Texts
     main_entity_name: text
     pager_is_enabled: true
     decorator_settings
@@ -507,6 +524,7 @@ selections
           weight: +320
 - instance_select_multiple-video|Selection
     id: instance_select_multiple-video
+    description: Videos
     main_entity_name: video
     pager_is_enabled: true
     decorator_settings
@@ -552,20 +570,21 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - audio|Selection
     id: audio
+    description: Audio
     main_entity_name: audio
-    template: content
     decorator_settings
     - view_type: template
-    - template: content
+    - template_selection: content
+    - template_decorator: content
     - template_item: audio
     - mapping
-      - id: id
-      - description: description
+      - =: id
+      - =: description
+      - src: path
       - attributes: this_attributes
-      - path: path
-      - created: created
-      - updated: updated
-      - is_embedded: is_embedded
+      - =: created
+      - =: updated
+      - =: is_embedded
     query_settings
     - where
       - id_!f: id
@@ -588,6 +607,7 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          format: url_from_path
           weight: +340
       - created
           entity_field_name: created
@@ -601,21 +621,22 @@ selections
           weight: +280
 - gallery|Selection
     id: gallery
+    description: Gallery
     main_entity_name: gallery
-    template: content
     decorator_settings
     - view_type: template
-    - template: content
-    - template_item: gallery
+    - template_selection: content
+    - template_decorator: content
+    - template_item: galleries_group
     - mapping
-      - id: id
-      - title: title
+      - =: id
+      - =: description
       - attributes: this_attributes
       - children: items
-      - items: items
-      - created: created
-      - updated: updated
-      - is_embedded: is_embedded
+      - =: items
+      - =: created
+      - =: updated
+      - =: is_embedded
     query_settings
     - where
       - id_!f: id
@@ -629,8 +650,8 @@ selections
       - id
           entity_field_name: id
           weight: +400
-      - title
-          entity_field_name: title
+      - description
+          entity_field_name: description
           is_apply_translation: true
           weight: +380
       - this_attributes
@@ -651,22 +672,23 @@ selections
           weight: +280
 - picture|Selection
     id: picture
+    description: Picture
     main_entity_name: picture
-    template: content
     decorator_settings
     - view_type: template
-    - template: content
+    - template_selection: content
+    - template_decorator: content
     - template_item: picture_or_picture_in_link
     - mapping
-      - id: id
-      - description: description
+      - =: id
+      - =: description
+      - src: path
       - attributes: this_attributes
-      - path: path
-      - link_attributes: link_attributes
-      - url: url
-      - created: created
-      - updated: updated
-      - is_embedded: is_embedded
+      - =: link_attributes
+      - =: url
+      - =: created
+      - =: updated
+      - =: is_embedded
     query_settings
     - where
       - id_!f: id
@@ -689,6 +711,7 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          format: url_from_path
           weight: +340
       - link_attributes
           entity_field_name: link_attributes
@@ -708,20 +731,21 @@ selections
           weight: +240
 - text|Selection
     id: text
+    description: Text
     main_entity_name: text
-    template: content
     decorator_settings
     - view_type: template
-    - template: content
+    - template_selection: content
+    - template_decorator: content
     - template_item: text
     - mapping
-      - id: id
-      - description: description
+      - =: id
+      - =: description
       - attributes: this_attributes
-      - text: text
-      - created: created
-      - updated: updated
-      - is_embedded: is_embedded
+      - =: text
+      - =: created
+      - =: updated
+      - =: is_embedded
     query_settings
     - where
       - id_!f: id
@@ -758,21 +782,22 @@ selections
           weight: +280
 - video|Selection
     id: video
+    description: Video
     main_entity_name: video
-    template: content
     decorator_settings
     - view_type: template
-    - template: content
+    - template_selection: content
+    - template_decorator: content
     - template_item: video
     - mapping
-      - id: id
-      - description: description
+      - =: id
+      - =: description
+      - src: path
       - attributes: this_attributes
-      - path: path
-      - poster_path: poster_path
-      - created: created
-      - updated: updated
-      - is_embedded: is_embedded
+      - poster: poster_path
+      - =: created
+      - =: updated
+      - =: is_embedded
     query_settings
     - where
       - id_!f: id
@@ -795,9 +820,11 @@ selections
           weight: +360
       - path
           entity_field_name: path
+          format: url_from_path
           weight: +340
       - poster_path
           entity_field_name: poster_path
+          format: url_from_path
           weight: +320
       - created
           entity_field_name: created

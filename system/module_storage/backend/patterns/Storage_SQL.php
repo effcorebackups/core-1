@@ -349,7 +349,15 @@ class Storage_SQL implements has_Data_cache {
                 if ($c_info->fields !== [$auto_name => $auto_name]) {
                     if ($c_info->type === 'primary') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'PRIMARY KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
                     if ($c_info->type ===  'unique') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'UNIQUE'     , 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')'];
-                    if ($c_info->type === 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')', 'references_begin' => 'REFERENCES', 'references_target_!t' => $c_info->references, 'references_fields_begin' => '(', 'references_fields_!,' => $this->prepare_fields($c_info->references_fields), 'references_fields_end' => ')', 'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade', 'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'];
+                    if ($c_info->type === 'foreign') $constraints['constraint-'.$c_name] = ['constraint' => 'CONSTRAINT', 'name_!f' => $this->table_prefix.$entity->table_name.'__'.$c_name, 'type' => 'FOREIGN KEY', 'fields_begin' => '(', 'fields_!,' => $this->prepare_fields($c_info->fields), 'fields_end' => ')',
+                        'reference_begin'        => 'REFERENCES',
+                        'reference_target_!t'    => '~'.$c_info->reference_entity,
+                        'reference_fields_begin' => '(',
+                        'reference_fields_!,'    => $this->prepare_fields($c_info->reference_fields),
+                        'reference_fields_end'   => ')',
+                        'on_update_begin' => 'ON UPDATE', 'on_update' => $c_info->on_update ?? 'cascade',
+                        'on_delete_begin' => 'ON DELETE', 'on_delete' => $c_info->on_delete ?? 'cascade'
+                    ];
                 }
             }
 
@@ -582,8 +590,7 @@ class Storage_SQL implements has_Data_cache {
                 'where_begin'  => 'WHERE',
                 'where'        => $this->prepare_attributes($id_fields)]);
             if ($row_count === 1) {
-                $instance->values_set([]);
-                return $instance;
+                return true;
             }
         }
     }

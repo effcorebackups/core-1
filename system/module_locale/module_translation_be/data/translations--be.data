@@ -21,6 +21,8 @@ translations
     - %%_entity_title_context \| change: %%_entity_title_context | змяніць
     - %%_entity_title_context \| delete: %%_entity_title_context | выдаліць
     - %%_number sec.: %%_number сек.
+    - %%_number file%%_plural(number\|s): %%_number файл%%_plural(number|au-a)
+    - %%_number piece%%_plural(number\|s): %%_number штук%%_plural(number|a-i)
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
     - A new password was sent to the selected EMail address.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - Absolute URL as link: Абсалютны URL як спасылка
@@ -29,7 +31,6 @@ translations
     - access allowed by role "%%_role": доступ дазволены па ролі "%%_role"
     - access allowed by user ID "%%_user": доступ дазволены па ID карыстальніка "%%_user"
     - Access forbidden: Доступ забаронены
-    - Access recovery form: Форма аднаўлення доступу
     - Access settings are not applied if nothing is selected!: Налады доступу не прымяняюцца, калі нічога не абрана!
     - access: доступ
     - Access: Доступ
@@ -77,6 +78,7 @@ translations
     - B: Б
     - Be careful, your mistake may lead to XSS injection.: Будзьце асцярожныя, ваша памылка можа прывесці да ўкаранення XSS.
     - Belarusian: Беларуская
+    - big: вялікі
     - bind to my IP address: прывязаць да майго IP-адраса
     - Block: Блок
     - Blocked until: Заблакавана да
@@ -96,7 +98,6 @@ translations
     - Button\: text: Кнопка: тэкст
     - by field type in the DB: па тыпе поля ў БД
     - By languages: Па мовах
-    - Cache update form: Форма абнаўлення кэша
     - cache: кэш
     - cancel: адмяніць
     - Canvas: Палатно
@@ -116,9 +117,7 @@ translations
     - click to open in new window: націсніце, каб адкрыць у новым акне
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
-    - Color assignment form: Форма прысваення колеру
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
-    - Color preset apply form: Форма прымянення каляровых перадусталёвак
     - Color settings have been changed.: Каляровыя налады былі змененыя.
     - Color settings have not been changed!: Каляровыя налады не былі змененыя!
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
@@ -128,7 +127,6 @@ translations
     - Colors: Колеры
     - Combination of values should be unique.: Камбінацыя значэнняў павінна быць унікальнай.
     - Conditions: Умовы
-    - Console settings form: Форма налад кансолі
     - Console settings: Налады кансолі
     - Content in the &lt;head&gt;: Змесціва ў &lt;head&gt;
     - Content of the "global.cssd" file: Змесціва файла "global.cssd"
@@ -143,9 +141,14 @@ translations
     - Copyright: Аўтарскія правы
     - Core: Ядро
     - Correct format\: "%%_format": Правільны фармат: "%%_format"
+    - cover big: вокладка вялікая
+    - cover middle: вокладка сярэдняя
+    - cover original: вокладка арыг.
     - Cover path: Шлях вокладкі
     - Cover paths as links: Шляхі вокладкі як спасылкі
     - Cover paths: Шляхі вокладкі
+    - cover small: вокладка мал.
+    - cover: вокладка
     - Cover: Вокладка
     - Created: Створана
     - Credentials for storage "%%_name" was not set!: Уліковыя дадзеныя для сховішча "%%_name" не былі зададзены!
@@ -156,14 +159,10 @@ translations
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
     - Current: Бягучыя
-    - Data deletion form: Форма выдалення дадзеных
     - Data hash: Хэш дадзеных
     - Data ID: ID дадзеных
-    - Data insertion form: Форма ўстаўкі дадзеных
-    - Data management form: Форма кіравання дадзенымі
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
     - Data update #%%_number for module "%%_title" (%%_id) was not applied!: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) не было ўжыта!
-    - Data update form: Форма абнаўлення дадзеных
     - Data update is required: Патрабуецца абнаўленне дадзеных
     - Data: Дадзеныя
     - Database name: Імя базы дадзеных
@@ -237,7 +236,6 @@ translations
     - expand: разгарнуць
     - Expiration date: Дата заканчэння
     - failure: няўдача
-    - Feedback form: Форма зваротнай сувязі
     - Feedback with ID = "%%_id" has been sent.: Водгук c ID = "%%_id" быў адпраўлены.
     - Feedback: Водгук
     - Feedback\: delete: Водгук: выдаліць
@@ -300,9 +298,18 @@ translations
     - File "%%_file" is not exists!: Файл "%%_file" не існуе!
     - File "%%_file" is not readable!: Файл "%%_file" недаступны для чытання!
     - File "%%_file" is not writable!: Файл "%%_file" недаступны для запісу!
+    - File "%%_file" was converted to "%%_to".: Файл "%%_file" быў ператвораны ў "%%_to".
+    - File "%%_file" was copied to "%%_to".: Файл "%%_file" быў скапіяваны ў "%%_to".
     - File "%%_file" was deleted.: Файл "%%_file" быў выдалены.
+    - File "%%_file" was moved to "%%_to".: Файл "%%_file" быў перамешчаны ў "%%_to".
+    - File "%%_file" was not converted to "%%_to"!: Файл "%%_file" не быў ператвораны ў "%%_to"!
+    - file "%%_file" was not copied to "%%_to": файл "%%_file" не быў скапіяваны ў "%%_to"
+    - File "%%_file" was not copied to "%%_to"!: Файл "%%_file" не быў скапіяваны ў "%%_to"!
+    - file "%%_file" was not deleted physically: файл "%%_file" не быў выдалены фізічна
+    - File "%%_file" was not deleted physically!: Файл "%%_file" не быў выдалены фізічна!
     - file "%%_file" was not deleted: файл "%%_file" не быў выдалены
     - File "%%_file" was not deleted!: Файл "%%_file" не быў выдалены!
+    - File "%%_file" was not moved to "%%_to"!: Файл "%%_file" не быў перамешчаны ў "%%_to"!
     - File "%%_file" was not written to disc!: Файл "%%_file" не быў запісаны на дыск!
     - File "%%_file" was written to disc.: Файл "%%_file" быў запісаны на дыск.
     - file "%%_file": файл "%%_file"
@@ -327,9 +334,9 @@ translations
     - File not found: Файл не знойдзены
     - file of this type is protected: файл гэтага тыпу абаронены
     - File of type "%%_type" with title "%%_title" has been saved.: Файл тыпу "%%_type" з назвай "%%_title" быў захаваны.
+    - File of type "%%_type" with title "%%_title" was appended.: Файл тыпу "%%_type" з назвай "%%_title" быў даданы.
     - File of type "%%_type" with title "%%_title" was deleted physically.: Файл тыпу "%%_type" з назвай "%%_title" быў выдалены фізічна.
     - File of type "%%_type" with title "%%_title" was deleted.: Файл тыпу "%%_type" з назвай "%%_title" быў выдалены.
-    - File of type "%%_type" with title "%%_title" was inserted.: Файл тыпу "%%_type" з назвай "%%_title" быў даданы.
     - File path is invalid!: Шлях да файла несапраўдны!
     - file path: шлях да файла
     - File permissions are too strict!: Дазволы файла надта строгія!
@@ -337,9 +344,6 @@ translations
     - File permissions should be checked.: Дазволы файла павінны быць правераны.
     - File types: Тыпы файлаў
     - File upload was stopped by PHP extension.: Загрузка файла была спыненая PHP-пашырэннем.
-    - File was copied from "%%_from" to "%%_to".: Файл быў скапіяваны з "%%_from" у "%%_to".
-    - file was not copied from "%%_from" to "%%_to": файл не быў скапіяваны з "%%_from" у "%%_to"
-    - File was not copied from "%%_from" to "%%_to"!: Файл не быў скапіяваны з "%%_from" у "%%_to"!
     - File was not written to disc!: Файл не быў запісаны на дыск!
     - File was only partially uploaded.: Файл быў загружаны толькі часткова.
     - file: файл
@@ -348,8 +352,40 @@ translations
     - Files from repository: Файлы з рэпазітара
     - files: файлы
     - Files: Файлы
+    - First remove the dependent elements.: Спачатку выдаліце ​​залежныя элементы.
     - fix: выправіць
     - Form elements: Элементы формы
+    - Form for сolor assignment: Форма для прызначэння колеру
+    - Form for adding data: Форма дадання дадзеных
+    - Form for applying color presets: Форма для прымянення каляровых перадусталёвак
+    - Form for changing data: Форма для змены дадзеных
+    - Form for changing user data: Форма для змены дадзеных карыстальніка
+    - Form for console configuration: Форма для налады кансолі
+    - Form for data management: Форма кіравання дадзенымі
+    - Form for deleting data: Форма для выдалення дадзеных
+    - Form for deleting module data: Форма для выдалення дадзеных модуляў
+    - Form for editing global CSS: Форма для рэдагавання глабальнага CSS
+    - Form for editing META information: Форма для рэдагавання META-інфармацыі
+    - Form for editing the file "robots.txt": Форма для рэдагавання файла "robots.txt"
+    - Form for editing the file "sitemap.xml": Форма для рэдагавання файла "sitemap.xml"
+    - Form for editing the layout: Форма для рэдагавання макета
+    - Form for execution the test: Формы для выканання тэсту
+    - Form for feedback: Форма для зваротнай сувязі
+    - Form for general locale settings: Форма для агульнай налады лакалі
+    - Form for generating a palette: Форма для генеравання палітры
+    - Form for installing modules: Форма для усталёўкі модуляў
+    - Form for login: Форма для ўваходу
+    - Form for logout: Форма для выхаду
+    - Form for registration: Форма для рэгістрацыі
+    - Form for restoring access: Форма для аднаўлення доступу
+    - Form for security settings: Форма для налад бяспекі
+    - Form for selecting installation parameters: Форма для выбару параметраў усталёўкі
+    - Form for setting locale by language: Форма для наладжвання лакалі па мове
+    - Form for updating module data: Форма для абнаўлення дадзеных модуляў
+    - Form for updating module files: Форма для абнаўлення файлаў модуляў
+    - Form for updating the cache: Форма для абнаўлення кэша
+    - Form for view customization: Форма для налады выгляду
+    - Form for voting: Форма для галасавання
     - form: форма
     - Form: Форма
     - Format: Фармат
@@ -370,7 +406,6 @@ translations
     - generate: генераваць
     - Generation done.: Генерацыя выканана.
     - GiB: ГіБ
-    - Global CSS editing form: Форма рэдагавання глабальнага CSS
     - Global CSS: Глабальны CSS
     - Glyphs: Гліфы
     - go to %%_language language: перайсці на %%_language мову
@@ -438,26 +473,23 @@ translations
     - Item "%%_dpath_value" is positioned outside the allowed boundaries!: Элемент "%%_dpath_value" знаходзіцца па-за межамі дапушчальных межаў!
     - Item "%%_dpath_value" must be of type "%%_type"!: Элемент "%%_dpath_value" павінен быць тыпу "%%_type"!
     - Item "%%_dpath_value" must be one of the following types\: %%_types!: Элемент "%%_dpath_value" павінен быць адным з наступных тыпаў: %%_types!
+    - Item of type "%%_type" was appended.: Элемент тыпу "%%_type" быў даданы.
     - Item of type "%%_type" was deleted.: Элемент тыпу "%%_type" быў выдалены.
-    - Item of type "%%_type" was inserted.: Элемент тыпу "%%_type" быў даданы.
+    - Item of type "%%_type" was not appended!: Элемент тыпу "%%_type" не быў даданы!
     - Item of type "%%_type" was not deleted!: Элемент тыпу "%%_type" не быў выдалены!
-    - Item of type "%%_type" was not inserted!: Элемент тыпу "%%_type" не быў даданы!
-    - Item of type "%%_type" was not updated!: Элемент тыпу "%%_type" не быў абноўлены!
-    - Item of type "%%_type" was updated.: Элемент тыпу "%%_type" быў абноўлены.
+    - Item of type "%%_type" with ID = "%%_id" cannot be deleted because it has a relationship with elements of type "%%_related_type"!: Элемент тыпу "%%_type" з ID = "%%_id" не можа быць выдалены, бо ён мае сувязь з элементам тыпу "%%_related_type"!
+    - Item of type "%%_type" with ID = "%%_id" cannot be deleted because it is embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не можа быць выдалены, таму што ён з'яўляецца убудаваным!
     - Item of type "%%_type" with ID = "%%_id" has been saved.: Элемент тыпу "%%_type" з ID = "%%_id" быў захаваны.
+    - Item of type "%%_type" with ID = "%%_id" was appended.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
+    - Item of type "%%_type" with ID = "%%_id" was changed.: Элемент тыпу "%%_type" з ID = "%%_id" быў зменены.
     - Item of type "%%_type" with ID = "%%_id" was deleted physically.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены фізічна.
     - Item of type "%%_type" with ID = "%%_id" was deleted.: Элемент тыпу "%%_type" з ID = "%%_id" быў выдалены.
-    - Item of type "%%_type" with ID = "%%_id" was inserted.: Элемент тыпу "%%_type" з ID = "%%_id" быў даданы.
-    - Item of type "%%_type" with ID = "%%_id" was not deleted because it is embedded!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены, таму што ён з'яўляецца убудаваным!
+    - Item of type "%%_type" with ID = "%%_id" was not appended!: Элемент тыпу "%%_type" з ID = "%%_id" не быў даданы!
+    - Item of type "%%_type" with ID = "%%_id" was not changed!: Элемент тыпу "%%_type" з ID = "%%_id" не быў зменены!
     - Item of type "%%_type" with ID = "%%_id" was not deleted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў выдалены!
-    - Item of type "%%_type" with ID = "%%_id" was not inserted!: Элемент тыпу "%%_type" з ID = "%%_id" не быў даданы!
-    - Item of type "%%_type" with ID = "%%_id" was not updated!: Элемент тыпу "%%_type" з ID = "%%_id" не быў абноўлены!
-    - Item of type "%%_type" with ID = "%%_id" was updated.: Элемент тыпу "%%_type" з ID = "%%_id" быў абноўлены.
+    - Item of type "%%_type" with title "%%_title" was not appended!: Элемент тыпу "%%_type" з назвай "%%_title" не быў даданы!
     - Item of type "%%_type" with title "%%_title" was not deleted because it is embedded!: Элемент тыпу "%%_type" з назвай "%%_title" не быў выдалены, таму што ён з'яўляецца убудаваным!
     - Item of type "%%_type" with title "%%_title" was not deleted!: Элемент тыпу "%%_type" з назвай "%%_title" не быў выдалены!
-    - Item of type "%%_type" with title "%%_title" was not inserted!: Элемент тыпу "%%_type" з назвай "%%_title" не быў даданы!
-    - Item of type "%%_type" with title "%%_title" was not updated!: Элемент тыпу "%%_type" з назвай "%%_title" не быў абноўлены!
-    - Item of type "%%_type" with title "%%_title" was updated.: Элемент тыпу "%%_type" з назвай "%%_title" быў абноўлены.
     - Item\: %%_item: Элемент: %%_item
     - items: элементы
     - Items: Элементы
@@ -473,7 +505,6 @@ translations
     - Language: Мова
     - Languages: Мовы
     - launch: запуск
-    - Layout editing form: Форма рэдагавання макета
     - Layout ID: ID макета
     - Layout: Макет
     - Layouts: Макеты
@@ -501,20 +532,16 @@ translations
     - Local Date: Лакальная Дата
     - Local Date/Time: Лакальная Дата/Час
     - Local Time: Лакальны Час
-    - Locale general settings form: Форма агульных налад лакалі
-    - Locale setting form by language: Форма налады лакалі па мове
     - Locale: Лакаль
     - Locale\: manage: Лакаль: кіраваць
     - Logic: Логіка
     - Login attempts: Спробы ўваходу
-    - Login form: Форма ўваходу
     - login: уваход
     - Login: Уваход
     - logotype: лагатып
     - Logotype: Лагатып
     - logotypes: лагатыпы
     - Logotypes: Лагатыпы
-    - Logout form: Форма выхаду
     - logout: выхад
     - Logout: Выхад
     - Long session, in days: Працяглы сеанс, у днях
@@ -528,7 +555,6 @@ translations
     - management for this entity is not available: кіраванне для гэтай сутнасьці недаступна
     - Management: Кіраванне
     - Managers: Кіраўнікі
-    - Mapping: Картаграфаванне
     - Match: Адпаведнасць
     - Maximum number of votes: Максімальная колькасць галасоў
     - Maximum width: Максімальная шырыня
@@ -543,9 +569,10 @@ translations
     - Message: Паведамленне
     - Message\: %%_message: Паведамленне: %%_message
     - Messages: Паведамленні
-    - META editing form: Форма рэдагавання META
     - META: МЕТА
     - MiB: МіБ
+    - middle: сярэдні
+    - Minimalistic layout: Мінімалістычны макет
     - Minimum width: Мінімальная шырыня
     - Module "%%_title" (%%_id) cannot be enabled when you try to disable dependent module "%%_dependency_title" (%%_dependency_id)!: Модуль "%%_title" (%%_id) не можа быць уключаны, калі Вы спрабуеце адключыць залежны модуль "%%_dependency_title" (%%_dependency_id)!
     - Module "%%_title" (%%_id) depend from module with ID = "%%_dependency_id" with minimal version = "%%_dependency_version"!: Модуль "%%_title" (%%_id) залежыць ад модуля з ID = "%%_dependency_id" з мінімальнай версіяй = "%%_dependency_version"!
@@ -572,11 +599,7 @@ translations
     - Module for working with polls.: Модуль для працы з апытаннямі.
     - Module for working with user accounts and permissions.: Модуль для працы з акаўнтамі і дазволамі карыстальнікаў.
     - Module ID: ID модуля
-    - Module installation form: Форма усталёўкі модуляў
     - Module: Модуль
-    - Modules data deletion form: Форма выдалення дадзеных модуляў
-    - Modules data update form: Форма абнаўлення дадзеных модуляў
-    - Modules files update form: Форма абнаўлення файлаў модуляў
     - Modules: Модулі
     - Modules\: manage: Модулі: кіраваць
     - More info in "%%_info".: Больш інфармацыі ў "%%_info".
@@ -592,6 +615,7 @@ translations
     - nickname: псеўданім
     - Nickname: Псеўданім
     - No additional parameters.: Няма дадатковых параметраў.
+    - NO DESCRIPTION: НЯМА АПІСАННЯ
     - No fields.: Няма палёў.
     - No items.: Няма элементаў.
     - No modules.: Няма модуляў.
@@ -603,6 +627,7 @@ translations
     - No URL.: Няма URL.
     - no: не
     - No: Не
+    - Number of detected relations = %%_number piece%%_plural(number\|s).: Колькасць выяўленых сувязей = %%_number штук%%_plural(number|a-i).
     - Number of downloads: Колькасць загрузак
     - Number of login attempts: Колькасць спроб ўваходу
     - Number: Нумар
@@ -628,7 +653,6 @@ translations
     - Page\: update: Старонка: абнавіць
     - Pager settings: Налады пэйджара
     - Pages: Старонкі
-    - Palette generation form: Форма генеравання палітры
     - Palette: Палітра
     - Parameter: Параметр
     - Parameters: Параметры
@@ -642,7 +666,6 @@ translations
     - Paths as links: Шляхі як спасылкі
     - paths: шляхі
     - Paths: Шляхі
-    - pcs.: шт.
     - Permission ID: ID дазволу
     - Permission: Дазвол
     - Permission\: select: Дазвол: абраць
@@ -663,6 +686,7 @@ translations
     - Picture\: select: Малюнак: абраць
     - Picture\: update: Малюнак: абнавіць
     - Pictures: Малюнкі
+    - Poll has been deleted.: Апытанне было выдалена.
     - Poll: Апытанне
     - Poll\: delete: Апытанне: выдаліць
     - Poll\: insert: Апытанне: уставіць
@@ -671,9 +695,14 @@ translations
     - Polls: Апытанні
     - Port: Порт
     - Possible options can be seen on page\: %%_page: Магчымыя варыянты можна ўбачыць на старонцы: %%_page
+    - poster big: плакат вялікі
+    - poster middle: плакат сярэдні
+    - poster original: плакат арыг.
     - Poster path: Шлях плаката
     - Poster paths as links: Шляхі плаката як спасылкі
     - Poster paths: Шляхі плаката
+    - poster small: плакат маленькі
+    - poster: плакат
     - Poster: Плакат
     - Pre-listening: Папярэдняе праслухоўванне
     - Prefix: Прэфікс
@@ -709,7 +738,6 @@ translations
     - Registered users: Зарэгістраваныя карыстальнікі
     - Registered: Зарэгістраваны
     - Registering a new user on %%_domain: Рэгістрацыя новага карыстальніка на %%_domain
-    - Registration form: Форма рэгістрацыі
     - Registration via EMail address: Рэгістрацыя праз адрас электроннай пошты
     - registration: рэгістрацыя
     - Registration: Рэгістрацыя
@@ -724,6 +752,7 @@ translations
     - Relation\: Role ↔ User\: insert: Сувязь: Роля ↔ Карыстальнік: уставіць
     - Relation\: Role ↔ User\: select: Сувязь: Роля ↔ Карыстальнік: абраць
     - Relation\: Role ↔ User\: update: Сувязь: Роля ↔ Карыстальнік: абнавіць
+    - Relations for item template\: Variable in template ← Field in DB: Сувязі для шаблона элемента: Пераменная ў шаблоне ← Поле ў БД
     - Relations: Сувязі
     - Relations\: Role ↔ Permission: Сувязі: Роля ↔ Дазвол
     - Relations\: Role ↔ User: Сувязі: Роля ↔ Карыстальнік
@@ -736,7 +765,6 @@ translations
     - review: агляд
     - right to left (rtl): справа налева (rtl)
     - right to left: справа налева
-    - robots.txt editing form: Форма рэдагавання robots.txt
     - Role ID: ID ролі
     - role: роля
     - Role: Роля
@@ -753,7 +781,6 @@ translations
     - Search: Пошук
     - sec.: сек.
     - Section "%%_title": Падзел "%%_title"
-    - Security settings form: Форма налад бяспекі
     - Security: Бяспека
     - Security\: manage: Бяспека: кіраваць
     - select all rows: абраць усе радкі
@@ -784,11 +811,11 @@ translations
     - Short session, in days: Кароткі сеанс, у днях
     - Short session\: %%_short day%%_plural(short\|s) \| long session\: %%_long day%%_plural(long\|s): Кароткі сеанс = %%_short %%_plural(short|day) | працяглы сеанс = %%_long %%_plural(long|day)
     - Simple layout: Просты макет
-    - Sitemap editing form: Форма рэдагавання Sitemap
     - Size of uploaded file greater than %%_size.: Памер загружанага файла больш чым %%_size.
     - Size of uploaded file greater than MAX_FILE_SIZE (MAX_FILE_SIZE is not supported).: Памер загружанага файла больш чым MAX_FILE_SIZE (MAX_FILE_SIZE не падтрымліваецца).
     - size: памер
     - Size: Памер
+    - small: маленькі
     - Social networks: Сацыяльныя сеткі
     - SQL state\: %%_state: SQL стан: %%_state
     - SQL storage: SQL сховішча
@@ -805,7 +832,6 @@ translations
     - Switchers: Выключальнікі
     - System breadcrumbs: Сістэмныя хлебныя крошкі
     - System information: Інфармацыя аб сістэме
-    - System installation parameters form: Форма параметраў усталёўкі сістэмы
     - system logotype: лагатып сістэмы
     - System menu: Сістэмнае меню
     - System was installed.: Сістэма была ўсталявана.
@@ -819,12 +845,10 @@ translations
     - Table (adaptive): Табліца (адаптыўная)
     - Table (DL): Табліца (DL)
     - Table prefix: Прэфікс табліц
+    - Table row with Row ID = "%%_row_id" was appended.: Радок табліцы з Row ID = "%%_row_id" быў даданы.
     - Table row with Row ID = "%%_row_id" was deleted.: Радок табліцы з Row ID = "%%_row_id" быў выдалены.
-    - Table row with Row ID = "%%_row_id" was inserted.: Радок табліцы з Row ID = "%%_row_id" быў даданы.
+    - Table row with Row ID = "%%_row_id" was not appended!: Радок табліцы з Row ID = "%%_row_id" не быў даданы!
     - Table row with Row ID = "%%_row_id" was not deleted!: Радок табліцы з Row ID = "%%_row_id" не быў выдалены!
-    - Table row with Row ID = "%%_row_id" was not inserted!: Радок табліцы з Row ID = "%%_row_id" не быў даданы!
-    - Table row with Row ID = "%%_row_id" was not updated!: Радок табліцы з Row ID = "%%_row_id" не быў абноўлены!
-    - Table row with Row ID = "%%_row_id" was updated.: Радок табліцы з Row ID = "%%_row_id" быў абноўлены.
     - Table: Табліца
     - Table\: row even: Табліца: радок цотны
     - Table\: row odd: Табліца: радок няцотны
@@ -834,13 +858,13 @@ translations
     - Tabs\: link: Укладкі: спасылка
     - Telephone number: Нумар тэлефона
     - Template "%%_name" was not found!: Шаблён "%%_name" не быў знойдзены!
-    - Template for a group of items: Шаблон для групы элементаў
+    - Template for decorator: Шаблон для дэкаратара
     - Template for item: Шаблон для элемента
+    - Template for selection: Шаблон для выбаркі
     - Template settings: Настройкі шаблону
     - Template: Шаблон
     - Templates: Шаблоны
     - Temporary login blocking, in minutes: Часавае блакаванне ўваходу, у хвілінах
-    - Test execution form: Форма выканання тэсту
     - Test: Тэст
     - Tests: Тэсты
     - Text (raw): Тэкст (неапрацаваны)
@@ -915,7 +939,6 @@ translations
     - User name: Імя карыстальніка
     - User type as text: Тып карыстальніка як тэкст
     - User type: Тып карыстальніка
-    - User update form: Форма абнаўлення карыстальніка
     - User update: Абнаўленне карыстальніка
     - User was not registered!: Карыстальнік не быў зарэгістраваны!
     - User with this EMail address was already registered!: Карыстальнік з такім адрасам электроннай пошты ўжо быў зарэгістраваны!
@@ -984,7 +1007,6 @@ translations
     - Video\: select: Відэа: абраць
     - Video\: update: Відэа: абнавіць
     - Videos: Відэа
-    - View customization form: Форма налады выгляду
     - View more: Глядзець больш
     - View type: Тып выгляду
     - View: Выгляд
@@ -992,7 +1014,6 @@ translations
     - Visibility: Бачнасць
     - Vote can be canceled: Голас можа быць адменены
     - vote: галасаваць
-    - Voting form: Форма галасавання
     - warning: папярэджанне
     - Warning: Папярэджанне
     - Web server: Вэб-сервер

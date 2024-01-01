@@ -30,8 +30,8 @@ class Widget_Items extends Control implements Control_complex {
         parent::__construct(null, null, null, $attributes, [], $weight);
     }
 
-    function build() {
-        if (!$this->is_builded) {
+    function build($reset = false) {
+        if (!$this->is_builded || $reset) {
             $this->child_insert(static::widget_manage_group_get($this), 'manage');
             $this->child_insert(static::widget_insert_get      ($this), 'insert');
             $this->build_widget_manage_group();
@@ -48,7 +48,8 @@ class Widget_Items extends Control implements Control_complex {
         foreach ($this->items_get() as $c_row_id => $c_item) {
             if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
             if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
-            $c_widget->weight = $c_widget->child_select('field_weight')->value_get();
+            $c_weight = $c_widget->child_select('field_weight')->value_get();
+            $c_widget->weight = (int)$c_weight;
         }
         # delete old widgets
         foreach ($group->children_select() as $c_row_id => $c_widget) {
@@ -111,10 +112,10 @@ class Widget_Items extends Control implements Control_complex {
         if ($this->title) {
             $html_name = 'f_widget_opener_'.$this->number;
             $opener = $this->render_opener();
-            if ((bool)$this->title_is_visible === true && $opener !== '') return $opener.(new Markup($this->title_tag_name, $this->title_attributes + ['for' => $html_name                         ], $this->title))->render();
-            if ((bool)$this->title_is_visible !== true && $opener !== '') return $opener.(new Markup($this->title_tag_name, $this->title_attributes + ['for' => $html_name, 'aria-hidden' => 'true'], $this->title))->render();
-            if ((bool)$this->title_is_visible !== true && $opener === '') return         (new Markup($this->title_tag_name, $this->title_attributes + [                     'aria-hidden' => 'true'], $this->title))->render();
-            if ((bool)$this->title_is_visible === true && $opener === '') return         (new Markup($this->title_tag_name, $this->title_attributes + [                                            ], $this->title))->render();
+            if ((bool)$this->title_is_visible === true && $opener !== '') return $opener.(new Markup($this->title_tag_name, $this->title_attributes + ['for' => $html_name                         ], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
+            if ((bool)$this->title_is_visible !== true && $opener !== '') return $opener.(new Markup($this->title_tag_name, $this->title_attributes + ['for' => $html_name, 'aria-hidden' => 'true'], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
+            if ((bool)$this->title_is_visible !== true && $opener === '') return         (new Markup($this->title_tag_name, $this->title_attributes + [                     'aria-hidden' => 'true'], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
+            if ((bool)$this->title_is_visible === true && $opener === '') return         (new Markup($this->title_tag_name, $this->title_attributes + [                                            ], is_string($this->title) ? new Text($this->title, [], $this->title_is_apply_translation, $this->title_is_apply_tokens) : $this->title))->render();
         }
     }
 
@@ -210,7 +211,7 @@ class Widget_Items extends Control implements Control_complex {
         $new_item->id = 0;
         $widget->items_set($items);
         Message::insert(new Text_multiline([
-            'Item of type "%%_type" was inserted.',
+            'Item of type "%%_type" was appended.',
             'Do not forget to save the changes!'], [
             'type' => (new Text($widget->item_title))->render() ]));
         return true;

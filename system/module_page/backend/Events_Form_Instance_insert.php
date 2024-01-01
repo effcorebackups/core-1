@@ -32,10 +32,9 @@ abstract class Events_Form_Instance_insert {
             if ($entity->name === 'audio') {
                 # widget 'attributes'
                 $items['*attributes']->value_set([
-                    (object)['weight' =>   0, 'name' => 'controls'                       , 'value' => ''        ],
-                    (object)['weight' =>  -5, 'name' => 'preload'                        , 'value' => 'metadata'],
-                    (object)['weight' => -10, 'name' => 'data-player-name'               , 'value' => 'default' ],
-                    (object)['weight' => -15, 'name' => 'data-player-timeline-is-visible', 'value' => 'true'    ]
+                    (object)['weight' =>   0, 'name' => 'controls'        , 'value' => ''        ],
+                    (object)['weight' =>  -5, 'name' => 'preload'         , 'value' => 'metadata'],
+                    (object)['weight' => -10, 'name' => 'data-player-name', 'value' => 'default' ]
                 ], ['once' => true]);
             }
             if ($entity->name === 'video') {

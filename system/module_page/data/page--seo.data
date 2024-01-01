@@ -42,7 +42,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__seo_meta|Block
-          title: META editing form
+          title: Form for editing META information
           title_is_visible: false
           attributes
           - data-id: block__form__seo_meta
@@ -53,7 +53,7 @@ pages
           type: link
           source: forms/page/seo_meta
       - block__form__seo_sitemap|Block
-          title: Sitemap editing form
+          title: Form for editing the file "sitemap.xml"
           title_is_visible: false
           attributes
           - data-id: block__form__seo_sitemap
@@ -64,7 +64,7 @@ pages
           type: link
           source: forms/page/seo_sitemap
       - block__form__seo_robots|Block
-          title: robots.txt editing form
+          title: Form for editing the file "robots.txt"
           title_is_visible: false
           attributes
           - data-id: block__form__seo_robots

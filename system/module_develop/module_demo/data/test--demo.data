@@ -34,7 +34,7 @@ tests
             title|Text
               text: Title with token: "current iteration" = "%%_value"
               args
-              - value: %%_test_step_repeat_i_cycle_1
+              - value: %%_test_step__repeat_i__cycle_1
               is_apply_tokens: true
         - request|Test_step_Request
             url: /
@@ -55,7 +55,7 @@ tests
             - param_1: value 1
             - param_2: value 2
             - param_3: value 3
-            - current_iteration: %%_test_step_repeat_i_cycle_1
+            - current_iteration: %%_test_step__repeat_i__cycle_1
             is_apply_tokens: true
         - transpositions|Test_step_Transpositions
             # ┌───╥───────────┬───────────┬───────────┐

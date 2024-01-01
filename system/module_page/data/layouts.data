@@ -1,7 +1,7 @@
 layouts
-- installation|Layout
-    id: installation
-    title: Installation
+- minimalistic|Layout
+    id: minimalistic
+    title: Minimalistic layout
     children
     - header|Area
         id: header

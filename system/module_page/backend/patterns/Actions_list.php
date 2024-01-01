@@ -48,7 +48,7 @@ class Actions_list extends Markup {
 
     function render() {
         $this->build();
-        return (Template::make_new($this->template, [
+        return (Template::make_new(Template::pick_name($this->template), [
             'tag_name'   => $this->tag_name,
             'attributes' => $this->render_attributes(),
             'self'       => $this->render_self(),

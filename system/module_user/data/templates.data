@@ -1,11 +1,11 @@
 templates
-- mail_recovery_subject_embedded
-    name: mail_recovery_subject_embedded
+- mail_recovery_subject__embedded
+    name: mail_recovery_subject__embedded
     type: text
     data|Text
       text: Password recovery on %%_domain
-- mail_recovery_message_embedded
-    name: mail_recovery_message_embedded
+- mail_recovery_message__embedded
+    name: mail_recovery_message__embedded
     type: text
     data|Text_multiline
       delimiter: &#10;&#10;
@@ -14,13 +14,13 @@ templates
       - 400: Your new password on %%_domain was changed automatically to: %%_new_password
       - 300: Your EMail address is not shown publicly on %%_domain and it is never shared with third parties!
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- mail_registration_subject_embedded
-    name: mail_registration_subject_embedded
+- mail_registration_subject__embedded
+    name: mail_registration_subject__embedded
     type: text
     data|Text
       text: Registering a new user on %%_domain
-- mail_registration_message_embedded
-    name: mail_registration_message_embedded
+- mail_registration_message__embedded
+    name: mail_registration_message__embedded
     type: text
     data|Text_multiline
       delimiter: &#10;&#10;

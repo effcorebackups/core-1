@@ -1,129 +1,237 @@
 templates
 # ─────────────────────────────────────────────────────────────────────
-# type: text
+# elementary types
 # ─────────────────────────────────────────────────────────────────────
-- markup_html
-    name: markup_html
-    type: text
-    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
-- markup_html_simple
-    name: markup_html_simple
+- markup_html_simple__embedded
+    name: markup_html_simple__embedded
     type: text
     data: <%%_tag_name %%_attributes>
-- markup_xml
-    name: markup_xml
+- markup_html__embedded
+    name: markup_html__embedded
     type: text
-    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
-- markup_xml_simple
-    name: markup_xml_simple
+    data: <%%_tag_name %%_attributes>
+>>>>>>>>>>>>%%_children
+>>>>>>>>>></%%_tag_name>
+    is_ready_for_selection: true
+- markup_xml_simple__embedded
+    name: markup_xml_simple__embedded
     type: text
     data: <%%_tag_name %%_attributes />
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- container
-    name: container
+- markup_xml__embedded
+    name: markup_xml__embedded
     type: text
-    data: <%%_tag_name %%_attributes>%%_self_t%%_description_t%%_children%%_self_b%%_description_b</%%_tag_name>
-- container_content
-    name: container_content
-    type: text
-    data: %%_self_t%%_description_t%%_children%%_self_b%%_description_b
-- content
-    name: content
-    type: text
-    data: %%_children
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- actions_list
-    name: actions_list
-    type: text
-    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
-- block
-    name: block
-    type: text
-    data: <%%_tag_name %%_attributes>%%_extra_t%%_self%%_children%%_extra_b</%%_tag_name>
-- form
-    name: form
-    type: text
-    data: <%%_tag_name %%_attributes>%%_self%%_children</%%_tag_name>
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- audio_embedded
-    name: audio_embedded
-    type: text
-    data: <audio data-id="%%_id" src="/%%_path" %%_attributes></audio>
-- gallery_embedded
-    name: gallery_embedded
-    type: text
-    data: <x-gallery data-id="%%_id" %%_attributes>%%_children</x-gallery>
-- gallery_item_embedded
-    name: gallery_item_embedded
-    type: text
-    data: <x-item data-num="%%_num" data-type="%%_type">%%_children</x-item>
-- picture_embedded
-    name: picture_embedded
-    type: text
-    data: <img data-id="%%_id" src="/%%_path" %%_attributes/>
-- picture_in_link_embedded
-    name: picture_in_link_embedded
-    type: text
-    data: <a data-id="picture-%%_id" href="%%_url" %%_link_attributes>
->>>>>>>>>>>>>><img data-id="%%_id" src="/%%_path" %%_attributes/>
->>>>>>>>>></a>
-- text_embedded
-    name: text_embedded
-    type: text
-    data: <x-text data-id="%%_id" %%_attributes>%%_text</x-text>
-- video_embedded
-    name: video_embedded
-    type: text
-    data: <video data-id="%%_id" src="/%%_path" poster="/%%_poster_path" %%_attributes></video>
-# ─────────────────────────────────────────────────────────────────────
-# type: code
-# ─────────────────────────────────────────────────────────────────────
-- picture_or_picture_in_link_embedded
-    name: picture_or_picture_in_link_embedded
-    type: code
-    handler: \effcore\modules\page\Events_Selection::template__picture_or_picture_in_link_embedded
-# ─────────────────────────────────────────────────────────────────────
-# type: file
-# ─────────────────────────────────────────────────────────────────────
-- page_access_forbidden_embedded
-    name: page_access_forbidden_embedded
-    type: file
-    path: frontend/template--page--access_forbidden.tpl
-- page_not_found_embedded
-    name: page_not_found_embedded
-    type: file
-    path: frontend/template--page--not_found.tpl
-- file_access_forbidden_embedded
-    name: file_access_forbidden_embedded
-    type: file
-    path: frontend/template--file--access_forbidden.tpl
-- file_not_found_embedded
-    name: file_not_found_embedded
-    type: file
-    path: frontend/template--file--not_found.tpl
-- canvas_svg_embedded
-    name: canvas_svg_embedded
+    data: <%%_tag_name %%_attributes>
+>>>>>>>>>>>>%%_children
+>>>>>>>>>></%%_tag_name>
+- canvas_svg__embedded
+    name: canvas_svg__embedded
     type: file
     path: frontend/template--canvas_svg.tpl
+- content__embedded
+    name: content__embedded
+    type: text
+    data: %%_children
+    is_ready_for_selection: true
 # ─────────────────────────────────────────────────────────────────────
-# type: node
+# basic types
 # ─────────────────────────────────────────────────────────────────────
-- page_embedded
-    name: page_embedded
-    type: node
-    pointers
-    - html: html
-    - charset: html/children/head/children/meta/children/meta_charset/attributes/charset
-    - head: html/children/head
-    - head_meta: html/children/head/children/meta
-    - head_meta_custom_global: html/children/head/children/meta_custom_global
-    - head_meta_custom: html/children/head/children/meta_custom
-    - head_title: html/children/head/children/title
-    - head_title_text: html/children/head/children/title/children/content/text
-    - head_icons: html/children/head/children/icons
-    - head_styles: html/children/head/children/styles
-    - head_scripts: html/children/head/children/scripts
-    - body: html/children/body
+- text__embedded
+    name: text__embedded
+    type: markup
+    data|Markup
+      tag_name: x-text
+      attributes
+      - data-id: %%_id
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - content|Text_RAW
+          text: %%_text
+    is_ready_for_selection: true
+- picture__embedded
+    name: picture__embedded
+    type: markup
+    data|Markup_simple
+      tag_name: img
+      attributes
+      - data-id: %%_id
+      - src: %%_src
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+    is_ready_for_selection: true
+- picture_in_link__embedded
+    name: picture_in_link__embedded
+    type: markup
+    data|Markup
+      tag_name: a
+      attributes
+      - data-id: picture-%%_id
+      - href: %%_url
+      - custom_attributes|Text_RAW
+          text: %%_link_attributes
+      children
+      - picture|Markup_simple
+          tag_name: img
+          attributes
+          - data-id: %%_id
+          - src: %%_src
+          - custom_attributes|Text_RAW
+              text: %%_attributes
+    is_ready_for_selection: true
+- picture_or_picture_in_link__embedded
+    name: picture_or_picture_in_link__embedded
+    type: code
+    handler: \effcore\modules\page\Events_Template::template__picture_or_picture_in_link__embedded
+    is_ready_for_selection: true
+- audio__embedded
+    name: audio__embedded
+    type: markup
+    data|Markup
+      tag_name: audio
+      attributes
+      - data-id: %%_id
+      - src: %%_src
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+    is_ready_for_selection: true
+- video__embedded
+    name: video__embedded
+    type: markup
+    data|Markup
+      tag_name: video
+      attributes
+      - data-id: %%_id
+      - src: %%_src
+      - poster: %%_poster
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+    is_ready_for_selection: true
+- galleries_group__embedded
+    name: galleries_group__embedded
+    type: markup
+    data|Markup
+      tag_name: x-galleries-group
+      attributes
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - content|Text_RAW
+          text: %%_children
+    is_ready_for_selection: true
+- gallery__embedded
+    name: gallery__embedded
+    type: markup
+    data|Markup
+      tag_name: x-gallery
+      attributes
+      - data-id: %%_id
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - content|Text_RAW
+          text: %%_children
+    is_ready_for_selection: true
+- gallery_item__embedded
+    name: gallery_item__embedded
+    type: markup
+    data|Markup
+      tag_name: x-item
+      attributes
+      - data-num: %%_num
+      - data-type: %%_type
+      children
+      - content|Text_RAW
+          text: %%_children
+    is_ready_for_selection: true
+# ─────────────────────────────────────────────────────────────────────
+# block types
+# ─────────────────────────────────────────────────────────────────────
+- container__embedded
+    name: container__embedded
+    type: markup
+    data|Markup
+      tag_name: %%_tag_name
+      attributes
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - title_header|Text_RAW
+          text: %%_title_header
+      - description_header|Text_RAW
+          text: %%_description_header
+      - children|Text_RAW
+          text: %%_children
+      - title_footer|Text_RAW
+          text: %%_title_footer
+      - description_footer|Text_RAW
+          text: %%_description_footer
+    is_ready_for_selection: true
+- container_content__embedded
+    name: container_content__embedded
+    type: markup
+    data|Node
+      children
+      - title_header|Text_RAW
+          text: %%_title_header
+      - description_header|Text_RAW
+          text: %%_description_header
+      - children|Text_RAW
+          text: %%_children
+      - title_footer|Text_RAW
+          text: %%_title_footer
+      - description_footer|Text_RAW
+          text: %%_description_footer
+    is_ready_for_selection: true
+- actions_list__embedded
+    name: actions_list__embedded
+    type: markup
+    data|Markup
+      tag_name: %%_tag_name
+      attributes
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - title|Text_RAW
+          text: %%_self
+      - content|Text_RAW
+          text: %%_children
+- block__embedded
+    name: block__embedded
+    type: text
+    type: markup
+    data|Markup
+      tag_name: %%_tag_name
+      attributes
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - header|Text_RAW
+          text: %%_header
+      - title|Text_RAW
+          text: %%_self
+      - content|Text_RAW
+          text: %%_children
+      - footer|Text_RAW
+          text: %%_footer
+- form__embedded
+    name: form__embedded
+    type: markup
+    data|Markup
+      tag_name: %%_tag_name
+      attributes
+      - custom_attributes|Text_RAW
+          text: %%_attributes
+      children
+      - title|Text_RAW
+          text: %%_self
+      - content|Text_RAW
+          text: %%_children
+# ─────────────────────────────────────────────────────────────────────
+# page types
+# ─────────────────────────────────────────────────────────────────────
+- page__embedded
+    name: page__embedded
+    type: markup
     data|Node
       children
       - doctype|Markup_simple
@@ -133,28 +241,50 @@ templates
       - html|Markup
           tag_name: html
           attributes
-          - lang: en
-          - dir: ltr
+          - lang: %%_lang
+          - dir: %%_dir
+          - custom_attributes|Text_RAW
+              text: %%_html_custom_attributes
           children
           - head|Markup
               tag_name: head
               children
-              - meta|Node
-                  children
-                  - meta_charset|Markup_simple
-                      tag_name: meta
-                      attributes
-                      - charset: utf-8
+              - meta|Text_RAW
+                  text: %%_meta
+              - meta_custom_global|Text_RAW
+                  text: %%_meta_custom_global
+              - meta_custom|Text_RAW
+                  text: %%_meta_custom
               - title|Markup
                   tag_name: title
                   children
-                  - content|Text
-                      is_apply_tokens: true
-                      text: 
-              - icons|Node
-              - styles|Node
-              - scripts|Node
-              - meta_custom_global|Node
-              - meta_custom|Node
+                  - content: %%_title
+              - icons|Text_RAW
+                  text: %%_icons
+              - styles|Text_RAW
+                  text: %%_styles
+              - scripts|Text_RAW
+                  text: %%_scripts
           - body|Markup
               tag_name: body
+              attributes
+              - custom_attributes|Text_RAW
+                  text: %%_body_custom_attributes
+              children
+              - content: %%_body
+- page_access_forbidden__embedded
+    name: page_access_forbidden__embedded
+    type: file
+    path: frontend/template--page--access_forbidden.tpl
+- page_not_found__embedded
+    name: page_not_found__embedded
+    type: file
+    path: frontend/template--page--not_found.tpl
+- file_access_forbidden__embedded
+    name: file_access_forbidden__embedded
+    type: file
+    path: frontend/template--file--access_forbidden.tpl
+- file_not_found__embedded
+    name: file_not_found__embedded
+    type: file
+    path: frontend/template--file--not_found.tpl

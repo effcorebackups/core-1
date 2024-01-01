@@ -1,6 +1,7 @@
 selections
 - instance_select-feedback|Selection
     id: instance_select-feedback
+    description: Feedback
     main_entity_name: feedback
     decorator_settings
     - view_type: table-dl
@@ -34,6 +35,7 @@ selections
           weight: +300
 - instance_select-permission|Selection
     id: instance_select-permission
+    description: Permission
     main_entity_name: permission
     decorator_settings
     - view_type: table-dl
@@ -66,6 +68,7 @@ selections
           weight: +320
 - instance_select-relation_role_with_permission|Selection
     id: instance_select-relation_role_with_permission
+    description: Relations: Role ↔ Permission
     main_entity_name: relation_role_with_permission
     decorator_settings
     - view_type: table-dl
@@ -127,6 +130,7 @@ selections
               weight: +380
 - instance_select-relation_role_with_user|Selection
     id: instance_select-relation_role_with_user
+    description: Relations: Role ↔ User
     main_entity_name: relation_role_with_user
     decorator_settings
     - view_type: table-dl
@@ -191,6 +195,7 @@ selections
               weight: +380
 - instance_select-role|Selection
     id: instance_select-role
+    description: Role
     main_entity_name: role
     decorator_settings
     - view_type: table-dl
@@ -226,6 +231,7 @@ selections
           weight: +300
 - instance_select-user|Selection
     id: instance_select-user
+    description: User
     main_entity_name: user
     decorator_settings
     - view_type: table-dl
@@ -284,6 +290,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select-session|Selection
     id: instance_select-session
+    description: Session
     main_entity_name: session
     decorator_settings
     - view_type: table-dl
@@ -327,6 +334,7 @@ selections
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - instance_select_multiple-feedback|Selection
     id: instance_select_multiple-feedback
+    description: Feedbacks
     main_entity_name: feedback
     pager_is_enabled: true
     decorator_settings
@@ -355,6 +363,7 @@ selections
           weight: +300
 - instance_select_multiple-permission|Selection
     id: instance_select_multiple-permission
+    description: Permissions
     main_entity_name: permission
     pager_is_enabled: true
     decorator_settings
@@ -376,6 +385,7 @@ selections
           weight: +360
 - instance_select_multiple-relation_role_with_permission|Selection
     id: instance_select_multiple-relation_role_with_permission
+    description: Relations: Role ↔ Permission
     main_entity_name: relation_role_with_permission
     pager_is_enabled: true
     decorator_settings
@@ -398,6 +408,7 @@ selections
           weight: +340
 - instance_select_multiple-relation_role_with_user|Selection
     id: instance_select_multiple-relation_role_with_user
+    description: Relations: Role ↔ User
     main_entity_name: relation_role_with_user
     pager_is_enabled: true
     decorator_settings
@@ -450,6 +461,7 @@ selections
               weight: +380
 - instance_select_multiple-role|Selection
     id: instance_select_multiple-role
+    description: Roles
     main_entity_name: role
     pager_is_enabled: true
     decorator_settings
@@ -477,6 +489,7 @@ selections
           weight: +320
 - instance_select_multiple-user|Selection
     id: instance_select_multiple-user
+    description: Users
     main_entity_name: user
     pager_is_enabled: true
     decorator_settings
@@ -506,6 +519,7 @@ selections
           weight: +300
 - instance_select_multiple-session|Selection
     id: instance_select_multiple-session
+    description: Sessions
     main_entity_name: session
     pager_is_enabled: true
     decorator_settings

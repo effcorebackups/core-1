@@ -112,8 +112,8 @@ abstract class Locale {
         return Translation::apply('%%_number second%%_plural(number|s)', ['number' => $seconds]);
     }
 
-    static function format_pieces($number) {
-        return static::format_number($number).' '.Translation::apply('pcs.');
+    static function format_pieces($pieces) {
+        return Translation::apply('%%_number piece%%_plural(number|s)', ['number' => $pieces]);
     }
 
 }

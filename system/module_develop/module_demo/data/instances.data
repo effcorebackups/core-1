@@ -94,7 +94,7 @@ instances
     entity_name: tree
     values
     - id: demo_sql
-    - title: Demonstration menu SQL
+    - description: Demonstration menu SQL
 # ─────────────────────────────────────────────────────────────────────
 # tree items
 # ─────────────────────────────────────────────────────────────────────

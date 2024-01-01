@@ -6,6 +6,7 @@ entities
     table_name: projects
     managing_is_enabled: true
     managing_group_id: project
+    has_relation_checking: true
     has_parallel_checking: true
     with_module_id: true
     with_data: true
@@ -281,8 +282,8 @@ entities
         type: foreign
         fields
         - =: id_project
-        references: projects
-        references_fields
+        reference_entity: project
+        reference_fields
         - =: id
     - unique_path
         type: unique

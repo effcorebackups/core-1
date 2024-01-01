@@ -33,7 +33,7 @@ pages
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
       - block__form__instance_delete|Block
-          title: Data deletion form
+          title: Form for deleting data
           title_is_visible: false
           attributes
           - data-id: block__form__instance_delete
