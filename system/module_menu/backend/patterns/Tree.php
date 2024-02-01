@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -16,7 +16,7 @@ class Tree extends Node {
     public $description;
     public $access;
     public $origin = 'nosql'; # nosql | sql | dynamic
-    public $visualization_mode; # null | decorated | decorated-rearrangeable
+    public $manage_mode; # null | decorate | rearrange
 
     function __construct($description = null, $id = null, $access = null, $attributes = [], $weight = +0) {
         if ($description) $this->description = $description;
@@ -28,8 +28,8 @@ class Tree extends Node {
     function build() {
         if (!$this->is_builded) {
             Event::start('on_tree_build_before', $this->id, ['tree' => &$this]);
-            $this->attribute_insert('data-id'                , $this->id                , 'attributes', true);
-            $this->attribute_insert('data-visualization-mode', $this->visualization_mode, 'attributes', true);
+            $this->attribute_insert('data-id'         , $this->id         , 'attributes', true);
+            $this->attribute_insert('data-manage-mode', $this->manage_mode, 'attributes', true);
             foreach (Tree_item::select_all_by_id_tree($this->id) as $c_item) {
                 if ($c_item->id_tree   === $this->id &&
                     $c_item->id_parent === null) {

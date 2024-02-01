@@ -32,7 +32,7 @@ tests
           name: proxy
     - response_check-admin|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -41,14 +41,14 @@ tests
     - request_url-admin-edit|Test_step_Request
         url: /user/Admin/edit
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-admin-edit|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -57,30 +57,30 @@ tests
     - request_url-security|Test_step_Request
         url: /manage/security/settings
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-security|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
             value: 0
-    # page "Management → View → Colors → Current"
+    # page "Management → View → Colors → Management"
     - request_url-view|Test_step_Request
-        url: /manage/view/colors/current
+        url: /manage/view/colors/manage
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-view|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -89,14 +89,14 @@ tests
     - request_url-locale|Test_step_Request
         url: /manage/locale
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-locale|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -105,14 +105,14 @@ tests
     - request_url-modules|Test_step_Request
         url: /manage/modules/install
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-modules|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -121,14 +121,14 @@ tests
     - request_url-info|Test_step_Request
         url: /manage/info
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check–info|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -137,14 +137,14 @@ tests
     - request_url-select_multiple|Test_step_Request
         url: /manage/data/content/text
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-select_multiple|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -153,14 +153,14 @@ tests
     - request_url-select|Test_step_Request
         url: /manage/data/content/text/test
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-select|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -169,14 +169,14 @@ tests
     - request_url-insert|Test_step_Request
         url: /manage/data/content/text//insert
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-insert|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -185,14 +185,14 @@ tests
     - request_url-update|Test_step_Request
         url: /manage/data/content/text/test/update
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-update|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -201,14 +201,14 @@ tests
     - request_url-delete|Test_step_Request
         url: /manage/data/content/text/test/delete
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-delete|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -224,7 +224,7 @@ tests
     - form_registration-warming_up|Test_step_Request
         url: /registration
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
@@ -232,25 +232,25 @@ tests
     - form_registration-submit|Test_step_Request
         url: /registration
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
         post
         - form_id: registration
-        - validation_id: %%_test_response_form_validation_id(registration)
-        - email: %%_test_email_random
-        - nickname: %%_test_nickname_random(0)
-        - password: %%_test_password_random
+        - validation_id: %%_test_response(form_validation_id|registration)
+        - email: %%_test_generate(email)
+        - nickname: %%_test_generate(nickname|0)
+        - password: %%_test_generate(password)
         - timezone: UTC
         - session_params[0]: is_long_session
         - session_params[1]: is_fixed_ip
-        - captcha: %%_test_response_captcha
+        - captcha: %%_test_response(captcha)
         - button: register
     - response_check|Test_step_Check
         check: token
-        where: %%_test_response_submit_error
+        where: %%_test_response(submit_error)
         match: 0
         on_failure
         - return_result|Test_step_Return
@@ -259,14 +259,14 @@ tests
     - request_url-admin-registered|Test_step_Request
         url: /user/Admin
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-admin-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -275,14 +275,14 @@ tests
     - request_url-admin-edit-registered|Test_step_Request
         url: /user/Admin/edit
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-admin-edit-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -291,30 +291,30 @@ tests
     - request_url-security-registered|Test_step_Request
         url: /manage/security/settings
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-security-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
             value: 0
-    # page "Management → View → Colors → Current"
+    # page "Management → View → Colors → Management"
     - request_url-view-registered|Test_step_Request
-        url: /manage/view/colors/current
+        url: /manage/view/colors/manage
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-view-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -323,14 +323,14 @@ tests
     - request_url-locale-registered|Test_step_Request
         url: /manage/locale
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-locale-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -339,14 +339,14 @@ tests
     - request_url-modules-registered|Test_step_Request
         url: /manage/modules/install
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-modules-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -355,14 +355,14 @@ tests
     - request_url-info-registered|Test_step_Request
         url: /manage/info
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-info-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -371,14 +371,14 @@ tests
     - request_url-select_multiple-registered|Test_step_Request
         url: /manage/data/content/text
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-select_multiple-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -387,14 +387,14 @@ tests
     - request_url-select-registered|Test_step_Request
         url: /manage/data/content/text/test
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-select-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -403,14 +403,14 @@ tests
     - request_url-insert-registered|Test_step_Request
         url: /manage/data/content/text//insert
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-insert-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -419,14 +419,14 @@ tests
     - request_url-update-registered|Test_step_Request
         url: /manage/data/content/text/test/update
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-update-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -435,14 +435,14 @@ tests
     - request_url-delete-registered|Test_step_Request
         url: /manage/data/content/text/test/delete
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-delete-registered|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -455,7 +455,7 @@ tests
     - title-registered_user_with_role|Test_step_Title
         title: REGISTERED USER + ROLE
     - set_user_roles|Test_step_Set_user_roles
-        nickname: %%_test_nickname_random(0)
+        nickname: %%_test_generate(nickname|0)
         roles
         - =: test
         is_reset: true
@@ -463,14 +463,14 @@ tests
     - request_url-admin-registered-role|Test_step_Request
         url: /user/Admin
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-admin-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -479,14 +479,14 @@ tests
     - request_url-admin-edit-registered-role|Test_step_Request
         url: /user/Admin/edit
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-admin-edit-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -495,30 +495,30 @@ tests
     - request_url-security-registered-role|Test_step_Request
         url: /manage/security/settings
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-security-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
             value: 0
-    # page "Management → View → Colors → Current"
+    # page "Management → View → Colors → Management"
     - request_url-view-registered-role|Test_step_Request
-        url: /manage/view/colors/current
+        url: /manage/view/colors/manage
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-view-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -527,14 +527,14 @@ tests
     - request_url-locale-registered-role|Test_step_Request
         url: /manage/locale
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-locale-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -543,14 +543,14 @@ tests
     - request_url-modules-registered-role|Test_step_Request
         url: /manage/modules/install
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-modules-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -559,14 +559,14 @@ tests
     - request_url-info-registered-role|Test_step_Request
         url: /manage/info
         headers
-        - cookie: %%_test_response_cookies
+        - cookie: %%_test_response(cookies)
         is_https|Param_from_form
           name: is_https
         proxy|Param_from_form
           name: proxy
     - response_check-info-registered-role|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 403
         on_failure
         - return_result|Test_step_Return
@@ -631,7 +631,7 @@ tests
           - request_url-select_multiple-registered-role|Test_step_Request
               url: /manage/data/content/text
               headers
-              - cookie: %%_test_response_cookies
+              - cookie: %%_test_response(cookies)
               is_https|Param_from_form
                 name: is_https
               proxy|Param_from_form
@@ -643,7 +643,7 @@ tests
               on_success
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 200
                   on_failure
                   - return_result|Test_step_Return
@@ -651,7 +651,7 @@ tests
               on_failure
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 403
                   on_failure
                   - return_result|Test_step_Return
@@ -662,7 +662,7 @@ tests
           - request_url-select-registered-role|Test_step_Request
               url: /manage/data/content/text/test
               headers
-              - cookie: %%_test_response_cookies
+              - cookie: %%_test_response(cookies)
               is_https|Param_from_form
                 name: is_https
               proxy|Param_from_form
@@ -674,7 +674,7 @@ tests
               on_success
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 200
                   on_failure
                   - return_result|Test_step_Return
@@ -682,7 +682,7 @@ tests
               on_failure
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 403
                   on_failure
                   - return_result|Test_step_Return
@@ -693,7 +693,7 @@ tests
           - request_url-insert-registered-role|Test_step_Request
               url: /manage/data/content/text//insert
               headers
-              - cookie: %%_test_response_cookies
+              - cookie: %%_test_response(cookies)
               is_https|Param_from_form
                 name: is_https
               proxy|Param_from_form
@@ -705,7 +705,7 @@ tests
               on_success
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 200
                   on_failure
                   - return_result|Test_step_Return
@@ -713,7 +713,7 @@ tests
               on_failure
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 403
                   on_failure
                   - return_result|Test_step_Return
@@ -724,7 +724,7 @@ tests
           - request_url-update-registered-role|Test_step_Request
               url: /manage/data/content/text/test/update
               headers
-              - cookie: %%_test_response_cookies
+              - cookie: %%_test_response(cookies)
               is_https|Param_from_form
                 name: is_https
               proxy|Param_from_form
@@ -736,7 +736,7 @@ tests
               on_success
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 200
                   on_failure
                   - return_result|Test_step_Return
@@ -744,7 +744,7 @@ tests
               on_failure
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 403
                   on_failure
                   - return_result|Test_step_Return
@@ -755,7 +755,7 @@ tests
           - request_url-delete-registered-role|Test_step_Request
               url: /manage/data/content/text/test/delete
               headers
-              - cookie: %%_test_response_cookies
+              - cookie: %%_test_response(cookies)
               is_https|Param_from_form
                 name: is_https
               proxy|Param_from_form
@@ -767,7 +767,7 @@ tests
               on_success
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 200
                   on_failure
                   - return_result|Test_step_Return
@@ -775,7 +775,7 @@ tests
               on_failure
               - response_check-http_code|Test_step_Check
                   check: token
-                  where: %%_test_response_http_code
+                  where: %%_test_response(http_code)
                   match: 403
                   on_failure
                   - return_result|Test_step_Return
@@ -784,7 +784,7 @@ tests
         id_role: test
         is_reset: true
     - reset_user_roles|Test_step_Set_user_roles
-        nickname: %%_test_nickname_random(0)
+        nickname: %%_test_generate(nickname|0)
         is_reset: true
     # ─────────────────────────────────────────────────────────────────────
     # return

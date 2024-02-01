@@ -1,12 +1,13 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
 
 use effcore\Core;
+use effcore\Cron;
 use effcore\Decorator;
 use effcore\Locale;
 use effcore\Markup_simple;
@@ -24,11 +25,11 @@ use effcore\User;
 abstract class Events_Page_Info {
 
     static function block_markup__system_info($page, $args = []) {
-        $logo      = new Markup('x-logo'     , [], new Markup_simple('img', ['src' => Core::to_url_from_path(Module::get('page')->path.Token::apply('frontend/pictures/logo.svgd?color=%%_return_token_color_encoded(color__text)&color_fire=%%_return_token_color_encoded(color__text)')), 'alt' => new Text('system logotype'), 'width' => '300']));
-        $copyright = new Markup('x-copyright', [], 'Copyright © 2017—2023 Maxim Rysevets. All rights reserved.');
+        $logo      = new Markup('x-logo'     , [], new Markup_simple('img', ['src' => Core::to_url_from_path(Module::get('page')->path.Token::apply('frontend/pictures/logo.svgd?color=%%_color(text|encoded=1)')), 'alt' => new Text('system logotype'), 'width' => '300']));
+        $copyright = new Markup('x-copyright', [], 'Copyright © 2017—2024 Maxim Rysevets. All rights reserved.');
         $build     = new Markup('x-build'    , [], [
             new Markup('x-title', [], 'Build number'),
-            new Markup('x-value', [], Storage::get('data')->select('bundle/system/build'))]);
+            new Markup('x-value', [], Core::system_build_number_get())]);
         return new Node([], [
             $logo,
             $copyright,
@@ -37,25 +38,23 @@ abstract class Events_Page_Info {
     }
 
     static function block_markup__service_info($page, $args = []) {
-        $settings           = Module::settings_get('core');
-        $is_required_update = Update::is_required();
-        $is_cron_run = Core::is_cron_run(Core::DATE_PERIOD_D);
-        $cron_auto_run_frequency = $settings->cron_auto_run_frequency ?
-            Locale::format_seconds($settings->cron_auto_run_frequency): 'no';
+        $settings                = Module::settings_get('core');
+        $is_required_update      = Update::is_required();
+        $is_cron_runned          = Cron::is_runned();
         $cron_url = Request::scheme_get().'://'.
                     Request::host_get(false).'/manage/cron/'.
                     User::key_get('cron');
         $fix_link_for_cron   = new Markup('a', ['href' => $cron_url                    , 'target' => 'cron'  ], 'fix');
         $fix_link_for_update = new Markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');
-        $sticker_for_cron_last_run      = new Markup('x-sticker', ['data-style' => $is_cron_run        ? 'ok' : 'warning'], $is_cron_run ? $settings->cron_last_run_date : [$settings->cron_last_run_date ? $settings->cron_last_run_date : 'no', ' → ', $fix_link_for_cron]);
+        $sticker_for_cron_last_run      = new Markup('x-sticker', ['data-style' => $is_cron_runned     ? 'ok' : 'warning'], $is_cron_runned ? [Cron::get_last_run()] : [Cron::get_last_run() ?: 'no', ' → ', $fix_link_for_cron]);
         $sticker_for_is_required_update = new Markup('x-sticker', ['data-style' => $is_required_update ? 'warning' : 'ok'], $is_required_update ? ['yes', ' → ', $fix_link_for_update] : 'no');
         $decorator = new Decorator('table-dl');
         $decorator->id = 'service_info';
         $decorator->data = [[
-            'cron_url'      => ['title' => 'Cron URL'               , 'value' => Url::url_to_markup($cron_url)  , 'is_apply_translation' => false],
-            'cron_auto_run' => ['title' => 'Cron autorun frequency' , 'value' => $cron_auto_run_frequency       , 'is_apply_translation' => false],
-            'cron_last_run' => ['title' => 'Cron last run'          , 'value' => $sticker_for_cron_last_run     , 'is_apply_translation' => false],
-            'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update, 'is_apply_translation' => false] ]];
+            'cron_url'      => ['title' => 'Cron URL'               , 'value' => Url::url_to_markup($cron_url)     , 'is_apply_translation' => false],
+            'cron_auto_run' => ['title' => 'Cron autorun frequency' , 'value' => Cron::get_auto_run_frequency(true), 'is_apply_translation' => false],
+            'cron_last_run' => ['title' => 'Cron last run (UTC)'    , 'value' => $sticker_for_cron_last_run        , 'is_apply_translation' => false],
+            'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update   , 'is_apply_translation' => false] ]];
         return new Node([], [
             $decorator
         ]);
@@ -108,7 +107,7 @@ abstract class Events_Page_Info {
             'request_port'            => ['title' => 'SERVER_PORT'               , 'value' => Request::port_get()                                            , 'is_apply_translation' => false],
             'request_addr_remote'     => ['title' => 'REMOTE_ADDR'               , 'value' => Request::addr_remote_get()                                     , 'is_apply_translation' => false],
             'request_port_remote'     => ['title' => 'REMOTE_PORT'               , 'value' => Request::port_remote_get()                                     , 'is_apply_translation' => false],
-            'datetime'                => ['title' => 'Date/Time'                 , 'value' => Core::datetime_get().' (UTC)'                                  , 'is_apply_translation' => false] ]];
+            'datetime'                => ['title' => 'Date/Time (UTC)'           , 'value' => Core::datetime_get()                                           , 'is_apply_translation' => false] ]];
         return new Node([], [
             $decorator
         ]);

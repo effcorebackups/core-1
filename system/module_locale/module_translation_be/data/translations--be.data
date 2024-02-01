@@ -38,11 +38,11 @@ translations
     - Action: Дзеянне
     - actions: дзеянні
     - Actions: Дзеянні
+    - Activate: Актываваць
     - Additional controls will become available after appending.: Дадатковыя элементы кіравання стануць даступныя пасля дадання.
     - Administrators: Адміністратары
     - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: Пасля перавышэння значэння "Колькасць спробаў ўваходу" будзе заблакавана магчымасць ўваходу на паказаны час.
     - All caches was reset.: Усе кэшы былі скінутыя.
-    - All colors: Усе колеры
     - An empty line was found.: Знойдзены пусты радок.
     - An error in parsing the "data" format was found!: Памылка разбору фармату "data" была знойдзена!
     - An error occurred during installation!: Адбылася памылка пры ўсталёўцы!
@@ -55,10 +55,12 @@ translations
     - Answer: Адказ
     - Answers: Адказы
     - append and change: дадаць і змяніць
+    - Append colors: Дадаць колеры
     - append: дадаць
     - apply: прымяніць
     - Architecture: Архітэктура
     - ascending: па ўзрастанні
+    - Assign colors: Прызначыць колеры
     - Attribute: Атрыбут
     - Attributes (example of working with "data"-format): Атрыбуты (прымер працы з "data"-фарматам)
     - Attributes: Атрыбуты
@@ -76,6 +78,7 @@ translations
     - Avatar paths: Шляхі аватара
     - Avatar: Аватар
     - B: Б
+    - Background: Фон
     - Be careful, your mistake may lead to XSS injection.: Будзьце асцярожныя, ваша памылка можа прывесці да ўкаранення XSS.
     - Belarusian: Беларуская
     - big: вялікі
@@ -118,12 +121,17 @@ translations
     - click to open the menu item "%%_title": націсніце, каб адкрыць пункт меню "%%_title"
     - click to open the tab "%%_title": націсніце, каб адкрыць укладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID колеру = "%%_id" і значэнне = "%%_value"
-    - Color settings have been changed.: Каляровыя налады былі змененыя.
-    - Color settings have not been changed!: Каляровыя налады не былі змененыя!
+    - Color limit has been exceeded!: Ліміт колераў быў перавышаны!
+    - Color profile is available in the user account settings: Каляровы профіль даступны ў наладах акаўнта карыстальніка
+    - Color profile was activated.: Каляровы профіль быў актываваны.
+    - Color profile was not activated!: Каляровы профіль не быў актываваны!
+    - Color profile: Каляровы профіль
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Колер павінен быць у фармаце "#abcdef", дзе "ab" — гэта значэнне чырвонай кампаненты, "cd" — зялёнай і "ef" — сіняй.
+    - Color with ID = "%%_id" and value = "%%_value" was appended.: Колер з ID = "%%_id" і значэннем = "%%_value" быў даданы.
+    - Color with ID = "%%_id" and value = "%%_value" was not appended!: Колер з ID = "%%_id" і значэннем = "%%_value" не быў даданы!
+    - Color with ID = "%%_id" was deleted.: Колер з ID = "%%_id" быў выдалены.
+    - Color with ID = "%%_id" was not deleted!: Колер з ID = "%%_id" не быў выдалены!
     - Color: Колер
-    - Colors was applied.: Колеры былі ўжыты.
-    - Colors was not applied!: Колеры не былі ўжыты!
     - Colors: Колеры
     - Combination of values should be unique.: Камбінацыя значэнняў павінна быць унікальнай.
     - Conditions: Умовы
@@ -136,7 +144,7 @@ translations
     - Cookie domain: Cookie-дамен
     - Cookies are disabled. You cannot log in!: Cookies адключаны. Вы не можаце ўвайсці ў сістэму!
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Аўтар/Праваўладальнік. Усе правы абаронены.
-    - Copyright © 2017—2023 Maxim Rysevets. All rights reserved.: Copyright © 2017—2023 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
+    - Copyright © 2017—2024 Maxim Rysevets. All rights reserved.: Copyright © 2017—2024 Рысевец Максім Уладзіміравіч. Усе правы абаронены.
     - copyright: аўтарскія правы
     - Copyright: Аўтарскія правы
     - Core: Ядро
@@ -154,11 +162,12 @@ translations
     - Credentials for storage "%%_name" was not set!: Уліковыя дадзеныя для сховішча "%%_name" не былі зададзены!
     - Credentials: Уліковыя дадзеныя
     - Cron autorun frequency: Частата аўтазапуску Cron
-    - Cron last run: Апошні запуск Cron
+    - Cron last run (UTC): Апошні запуск Cron (UTC)
     - Current language: Бягучая мова
     - Current page information: Інфармацыя бягучай старонкі
     - Current password: Бягучы пароль
-    - Current: Бягучыя
+    - Dark, blue palette: Цёмная, сіняя палітра
+    - Dark, green palette: Цёмная, зялёная палітра
     - Data hash: Хэш дадзеных
     - Data ID: ID дадзеных
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Абнаўленне дадзеных №%%_number для модуля "%%_title" (%%_id) было ўжыта.
@@ -167,10 +176,14 @@ translations
     - Data: Дадзеныя
     - Database name: Імя базы дадзеных
     - Date: Дата
+    - Date/Time (UTC): Дата/Час (UTC)
     - Date/Time: Дата/Час
     - Decimal point: Дзесятковая кропка
     - Decorator settings: Налады афармлення
+    - Default color profile was activated.: Каляровы профіль па змаўчанні быў актываваны.
+    - Default color profile was not activated!: Каляровы профіль па змаўчанні не быў актываваны!
     - Definition list: Спіс азначэнняў
+    - Delete colors: Выдаліць колеры
     - Delete item of type "%%_type" with ID = "%%_id"?: Выдаліць элемент тыпу "%%_type" з ID = "%%_id"?
     - delete: выдаліць
     - Delete: Выдаліць
@@ -235,6 +248,9 @@ translations
     - Execution: Выкананне
     - expand: разгарнуць
     - Expiration date: Дата заканчэння
+    - export custom colors for this profile: экспарт карыстацкіх колераў для гэтага профілю
+    - export: экспарт
+    - Export: Экспарт
     - failure: няўдача
     - Feedback with ID = "%%_id" has been sent.: Водгук c ID = "%%_id" быў адпраўлены.
     - Feedback: Водгук
@@ -352,14 +368,13 @@ translations
     - Files from repository: Файлы з рэпазітара
     - files: файлы
     - Files: Файлы
-    - First remove the dependent elements.: Спачатку выдаліце ​​залежныя элементы.
+    - First remove the dependent elements.: Спачатку выдаліце залежныя элементы.
     - fix: выправіць
     - Form elements: Элементы формы
-    - Form for сolor assignment: Форма для прызначэння колеру
     - Form for adding data: Форма дадання дадзеных
-    - Form for applying color presets: Форма для прымянення каляровых перадусталёвак
     - Form for changing data: Форма для змены дадзеных
     - Form for changing user data: Форма для змены дадзеных карыстальніка
+    - Form for color management: Форма для кіравання колерамі
     - Form for console configuration: Форма для налады кансолі
     - Form for data management: Форма кіравання дадзенымі
     - Form for deleting data: Форма для выдалення дадзеных
@@ -372,7 +387,6 @@ translations
     - Form for execution the test: Формы для выканання тэсту
     - Form for feedback: Форма для зваротнай сувязі
     - Form for general locale settings: Форма для агульнай налады лакалі
-    - Form for generating a palette: Форма для генеравання палітры
     - Form for installing modules: Форма для усталёўкі модуляў
     - Form for login: Форма для ўваходу
     - Form for logout: Форма для выхаду
@@ -386,6 +400,7 @@ translations
     - Form for updating the cache: Форма для абнаўлення кэша
     - Form for view customization: Форма для налады выгляду
     - Form for voting: Форма для галасавання
+    - Form for working with color profiles: Форма для працы з каляровымі профілямі
     - form: форма
     - Form: Форма
     - Format: Фармат
@@ -404,6 +419,7 @@ translations
     - General information: Агульная інфармацыя
     - General: Агульныя
     - generate: генераваць
+    - Generated colors: Згенераваныя колеры
     - Generation done.: Генерацыя выканана.
     - GiB: ГіБ
     - Global CSS: Глабальны CSS
@@ -415,6 +431,7 @@ translations
     - go to page %%_link: перайсці на старонку %%_link
     - go to Russian language: перайсці на Рускую мову
     - go to section "%%_title": перайсці на падзел "%%_title"
+    - Grid custom: Сетка карыстацкая
     - Group "%%_title" should contain a maximum %%_number item%%_plural(number\|s)!: Група "%%_title" павінна змяшчаць максімальна %%_number элемент%%_plural(number|au-a)!
     - Group "%%_title" should contain a minimum %%_number item%%_plural(number\|s)!: Група "%%_title" павінна змяшчаць мінімальна %%_number элемент%%_plural(number|au-a)!
     - Group "%%_title" should contain at least one selected item!: Група "%%_title" павінна змяшчаць як мінімум адзін абраны элемент!
@@ -517,7 +534,7 @@ translations
     - left to right: злева направа
     - Length: Даўжыня
     - License agreement: Ліцэнзійнае пагадненне
-    - Light preset: Светлая перадусталёўка
+    - Light, blue palette: Светлая, сіняя палітра
     - Limit: Ліміт
     - Line\: %%_line: Радок: %%_line
     - Linear diagram: Лінейная дыяграма
@@ -705,7 +722,6 @@ translations
     - poster: плакат
     - Poster: Плакат
     - Pre-listening: Папярэдняе праслухоўванне
-    - Prefix: Прэфікс
     - Presets: Перадусталёўкі
     - press to enable or disable the module "%%_title": націсніце, каб уключыць альбо выключыць модуль "%%_title"
     - press to show description: націсніце, каб паказаць апісанне
@@ -714,6 +730,7 @@ translations
     - press to show or hide available colors: націсніце, каб паказаць альбо схаваць даступныя колеры
     - press to show or hide nested content: націсніце, каб паказаць альбо схаваць укладзенае змесціва
     - Preview: Папярэдні прагляд
+    - profile export: экспарт профілю
     - Profile: Профіль
     - Profiles: Профілі
     - Project: Праект

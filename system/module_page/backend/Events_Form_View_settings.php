@@ -1,14 +1,14 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\page;
 
 use effcore\Message;
 use effcore\Module;
-use effcore\Storage;
+use effcore\Page;
 
 abstract class Events_Form_View_settings {
 
@@ -45,21 +45,23 @@ abstract class Events_Form_View_settings {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_min'    , (int)$items['#width_min'    ]->value_get(), false);
-                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_mobile' , (int)$items['#width_mobile' ]->value_get(), false);
-                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_width_max'    , (int)$items['#width_max'    ]->value_get(), false);
-                $result&= Storage::get('data')->changes_register('page', 'update', 'settings/page/page_meta_viewport',      $items['#meta_viewport']->value_get()       );
+                $result = Page::changes_store([
+                    'page_width_min'     => (int)$items['#width_min'    ]->value_get(),
+                    'page_width_mobile'  => (int)$items['#width_mobile' ]->value_get(),
+                    'page_width_max'     => (int)$items['#width_max'    ]->value_get(),
+                    'page_meta_viewport' =>      $items['#meta_viewport']->value_get() ]);
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
                 break;
             case 'reset':
-                $result = Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_min'   , false);
-                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_mobile', false);
-                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_max'   , false);
-                $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_meta_viewport'      );
+                $result = Page::changes_store([
+                    'page_width_min'     => null,
+                    'page_width_mobile'  => null,
+                    'page_width_max'     => null,
+                    'page_meta_viewport' => null ]);
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');
-                static::on_init(null, $form, $items);
+                $form->components_init();
                 break;
         }
     }

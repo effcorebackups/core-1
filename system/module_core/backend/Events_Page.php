@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
@@ -10,6 +10,7 @@ use effcore\Block;
 use effcore\Page;
 use effcore\Storage;
 use effcore\Tab_item;
+use effcore\Tabs;
 use effcore\Tree_item;
 
 abstract class Events_Page {
@@ -66,7 +67,7 @@ abstract class Events_Page {
                 foreach ($c_blocks_by_area as $c_block) {
                     if ($c_block instanceof Block && $c_block->type === 'link') {
                         if (str_starts_with($c_block->source, 'tabs/')) {
-                            $active_tab = Storage::get('data')->select($c_block->source, true);
+                            $active_tab = Tabs::select_by_source($c_block->source);
                         }
                     }
                 }

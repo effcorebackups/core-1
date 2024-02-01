@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
@@ -14,6 +14,7 @@ use effcore\Directory;
 use effcore\Event;
 use effcore\Extend_exception;
 use effcore\File;
+use effcore\Locale;
 use effcore\Message;
 use effcore\Module_as_profile;
 use effcore\Module;
@@ -245,8 +246,8 @@ abstract class Events_Form_Install {
                     ##############################################
 
                     if (count(Storage::get('sql')->errors) === 0) {
-                        Storage::get('data')->changes_register('core'  , 'insert', 'storages/storage/sql', $params, false);
-                        Storage::get('data')->changes_register('locale', 'update', 'settings/locale/lang_code', Page::get_current()->args_get('lang_code'));
+                        Storage::changes_store($params);
+                        Locale::changes_store(['lang_code' => Page::get_current()->args_get('lang_code')]);
                         $form->children_delete();
                         Message::insert('System was installed.');
                         Message::insert(new Text_multiline([

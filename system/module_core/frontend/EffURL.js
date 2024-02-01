@@ -1,6 +1,6 @@
 
 //////////////////////////////////////////////////////////////////
-/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+/// Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ///
 //////////////////////////////////////////////////////////////////
 
 'use strict';
@@ -46,7 +46,8 @@ class EffURL {
             this.anchor    = anchor;
             this.has_error = false;
             if (options['completion'] === true && this.protocol === '') this.protocol = window.location.protocol.replace(/[:]*$/g, '');
-            if (options['completion'] === true && this.domain   === '') this.domain   = window.location.hostname;
+            if (options['completion'] === true && this.domain   === '') this.domain   = window.location.host;
+            if (options['completion'] === true && this.port     === '') this.port     = window.location.port;
             if (options['completion'] === true && this.path     === '') this.path     = '/';
         } else {
             this.has_error = true;

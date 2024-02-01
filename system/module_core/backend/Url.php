@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -74,9 +74,10 @@ class Url {
     # officially allowed characters ACSII range: '[\\x21-\\x7e]'
     # ────────────────────────────────────────────────────────────────────────────────────────────────
 
-    const IS_DECODE_NOTHING   = 0b00;
-    const IS_DECODE_DOMAIN    = 0b01;
-    const IS_DECODE_PATH      = 0b10;
+    const IS_DECODE_NOTHING   = 0b000;
+    const IS_DECODE_DOMAIN    = 0b100;
+    const IS_DECODE_PATH      = 0b010;
+    const IS_DECODE_QUERY     = 0b001;
     const VALID_UNICODE_RANGE = '\\p{Ll}\\p{Lo}\\p{Lt}\\p{Lu}';
 
     public $raw;
@@ -89,7 +90,10 @@ class Url {
     public $has_error;
 
     function __construct($url, $options = []) {
-        $options += ['completion' => true, 'decode' => static::IS_DECODE_PATH, 'extra' => static::VALID_UNICODE_RANGE];
+        $options += [
+            'completion' => true,
+            'decode'     => static::IS_DECODE_PATH|static::IS_DECODE_QUERY,
+            'extra'      => static::VALID_UNICODE_RANGE];
         $this->raw = (string)$url;
         $matches = [];
         preg_match('%^(?:(?<protocol>[a-zA-Z]+)://|)'.
@@ -130,7 +134,8 @@ class Url {
             if ($options['completion'] && $this->protocol === '' && $this->domain !== Request::host_get(false)) $this->protocol = 'http';
             if ($options['completion'] && $this->path     === ''                                              ) $this->path     = '/';
             if ($options['decode'] & static::IS_DECODE_DOMAIN && function_exists('idn_to_utf8') && idn_to_utf8($this->domain)) $this->domain = idn_to_utf8($this->domain);
-            if ($options['decode'] & static::IS_DECODE_PATH) $this->path = rawurldecode($this->path);
+            if ($options['decode'] & static::IS_DECODE_PATH ) $this->path  = rawurldecode($this->path );
+            if ($options['decode'] & static::IS_DECODE_QUERY) $this->query = rawurldecode($this->query);
         } else $this->has_error = true;
     }
 
@@ -203,6 +208,10 @@ class Url {
     static function get_current() {
         static::init();
         return static::$cache;
+    }
+
+    static function set_current($url) {
+        static::$cache = new static($url);
     }
 
     static function is_absolute($url) {
@@ -307,7 +316,7 @@ class Url {
             foreach ($c_messages as $c_message)
                 Message::insert_to_storage($c_message, $c_type);
         Response::send_header_and_exit('redirect', null, null,
-            (new static($url))->absolute_get()
+            (new static($url, ['decode' => static::IS_DECODE_PATH]))->absolute_get()
         );
     }
 

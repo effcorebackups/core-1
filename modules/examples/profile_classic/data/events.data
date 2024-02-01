@@ -25,18 +25,7 @@ events
       for: examples
       handler: \effcore\modules\profile_classic\Events_Module_update::on_repo_restore
   # ═════════════════════════════════════════════════════════════════════
-  on_form_build
-  - colors|Event
-      for: colors
-      handler: \effcore\modules\profile_classic\Events_Form_Colors::on_build
-  on_form_init
-  - colors|Event
-      for: colors
-      handler: \effcore\modules\profile_classic\Events_Form_Colors::on_init
   on_form_submit
-  - colors|Event
-      for: colors
-      handler: \effcore\modules\profile_classic\Events_Form_Colors::on_submit
   - instance_update__user|Event
       for: instance_update
       weight: +600

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\develop;
@@ -26,9 +26,11 @@ abstract class Events_Module {
         if (Console::visible_mode_get()) {
             if (!Frontend::select('page_all__console__develop')) {
                  Frontend::insert('page_all__console__develop', (object)['check' => 'url', 'where' => 'path', 'match' => '%^(?!/develop/).*$%'], 'styles', [
-                    'path'       => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
-                    'attributes' => ['rel' => 'stylesheet', 'media' => 'all'],
-                    'weight'     => -500], 'console_style', 'develop'
+                    'path' => '/system/module_develop/frontend/develop.cssd?page_id=%%_page_id_context',
+                    'attributes' => [
+                        'rel'   => 'stylesheet',
+                        'media' => 'all'],
+                    'weight' => -500], 'console_style', 'develop'
                  );
             }
         }

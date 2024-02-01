@@ -1,47 +1,7 @@
 tokens
-- test_email_random
+- test_generate
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply
-- test_nickname_random
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_password_random
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-- test_response_content
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_http_code
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_content_length
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_content_range
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_location
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_return_level
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_submit_error
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_time_total
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_web_server_name
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_form_validation_id
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_cookies
-    type: code
-    handler: \effcore\modules\test\Events_Token::on_apply
-- test_response_captcha
+- test_response
     type: code
     handler: \effcore\modules\test\Events_Token::on_apply

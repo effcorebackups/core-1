@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -126,6 +126,10 @@ class Tabs extends Node {
     static function select($id) {
         static::init();
         return static::$cache[$id] ?? null;
+    }
+
+    static function select_by_source($source) {
+        return Storage::get('data')->select($source, true);
     }
 
     static function insert($id, $attributes = [], $weight = +0, $module_id = null) {

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
@@ -24,27 +24,66 @@ use effcore\Url;
 
 abstract class Events_Form_Modules_Install {
 
-    static function on_init($event, $form, $items) {
-        $info = $form->child_select('info');
+    static function on_build($event, $form) {
+        $form->child_select('info')->children_delete();
         $enabled  = Module::get_enabled_by_boot();
         $embedded = Module::get_embedded();
         $modules  = Module::get_all();
         $groups   = Module::groups_get();
-        $modules_by_groups = [];
+        $form->_modules = [];
         Core::array_sort($groups);
         foreach ($groups as $c_group_id => $c_group_title) {
             $c_fieldset = new Fieldset($c_group_title);
             $c_fieldset->state = 'closed';
-            $info->child_insert($c_fieldset, $c_group_id);
+            $c_fieldset->number = $c_group_id;
+            $form->child_select('info')->child_insert($c_fieldset, $c_group_id);
             foreach ($modules as $c_module)
                 if ($c_group_id === $c_module->group_get_id())
-                    $modules_by_groups[$c_group_id][$c_module->id] = $c_module;
+                    $form->_modules[$c_group_id][$c_module->id] = $c_module;
             Core::array_sort_by_string(
-                $modules_by_groups[$c_group_id]
+                $form->_modules[$c_group_id]
             );
         }
-        foreach ($modules_by_groups as $c_modules) {
+        foreach ($form->_modules as $c_group_id => $c_modules) {
             foreach ($c_modules as $c_module) {
+                $c_result = new Markup('x-module-info', ['data-id' => $c_module->id]);
+                $c_is_enabled = isset($enabled [$c_module->id]);
+                $c_switcher = new Field_Switcher;
+                $c_switcher->attribute_insert('title', new Text('press to enable or disable the module "%%_title"', ['title' => $c_module->title]), 'element_attributes');
+                $c_switcher->build();
+                $c_switcher->name_set('is_enabled[]');
+                $c_switcher->value_set($c_module->id);
+                $c_result->child_insert($c_switcher, 'switcher');
+                if ($c_module->icon_path  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'icon'              ], [new Markup('x-title', ['aria-hidden' => 'true'], 'icon'               ), new Markup('x-value', [], new Markup_simple('img', ['src' => $c_module->icon_path[0] === '/' ? $c_module->icon_path : '/'.$c_module->path.$c_module->icon_path, 'alt' => 'icon']) )]), 'icon');
+                if (true                  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'title'             ], [new Markup('x-title', ['aria-hidden' => 'true'], 'title'              ), new Markup('x-value', [],                        $c_module->title                  )]), 'title'             );
+                if (true                  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'id'                ], [new Markup('x-title', [                       ], 'id'                 ), new Markup('x-value', [],        new Text_simple($c_module->id)                    )]), 'id'                );
+                if (true                  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'version'           ], [new Markup('x-title', [                       ], 'version'            ), new Markup('x-value', [], Locale::format_version($c_module->version)               )]), 'version'           );
+                if (true                  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'is-embedded'       ], [new Markup('x-title', [                       ], 'is embedded'        ), new Markup('x-value', [],        isset($embedded[$c_module->id]) ? 'yes' : 'no'    )]), 'is_embedded'       );
+                if ($c_module->description) $c_result->child_insert(new Markup('x-param', ['data-type' => 'description'       ], [new Markup('x-title', [                       ], 'description'        ), new Markup('x-value', [],                        $c_module->description            )]), 'description'       );
+                if ($c_module->copyright  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'copyright'         ], [new Markup('x-title', [                       ], 'copyright'          ), new Markup('x-value', [],                        $c_module->copyright              )]), 'copyright'         );
+                if ($c_module->path       ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'path'              ], [new Markup('x-title', [                       ], 'path'               ), new Markup('x-value', [],                        $c_module->path                   )]), 'path'              );
+                if ($c_module->id_bundle  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'bundle-id'         ], [new Markup('x-title', [                       ], 'bundle id'          ), new Markup('x-value', [],        new Text_simple($c_module->id_bundle)             )]), 'bundle_id'         );
+                if ($c_module->id_bundle  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'bundle-build'      ], [new Markup('x-title', [                       ], 'bundle build number'), new Markup('x-value', [],     Module::bundle_get($c_module->id_bundle)->build      )]), 'bundle_build'      );
+                if ($c_module->id_bundle  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'bundle-title'      ], [new Markup('x-title', [                       ], 'bundle title'       ), new Markup('x-value', [],     Module::bundle_get($c_module->id_bundle)->title      )]), 'bundle_title'      );
+                if ($c_module->id_bundle  ) $c_result->child_insert(new Markup('x-param', ['data-type' => 'bundle-description'], [new Markup('x-title', [                       ], 'bundle description' ), new Markup('x-value', [],     Module::bundle_get($c_module->id_bundle)->description)]), 'bundle_description');
+                if (isset($c_module->urls) && is_array($c_module->urls)) {
+                    foreach ($c_module->urls as $c_title => $c_url) {
+                        if ($c_is_enabled) {
+                            $c_result->child_insert(new Markup('x-param', ['data-type' => 'url'], [
+                                new Markup('x-title', [], $c_title),
+                                new Markup('x-value', [], new Markup('a', ['href' => $c_url], Url::url_to_markup($c_url)))
+                            ]), 'url_'.Security::sanitize_id($c_title, '_')); }}}
+                $form->child_select('info')->child_select($c_group_id)->child_insert($c_result, 'module_'.$c_module->id);
+            }
+        }
+    }
+
+    static function on_init($event, $form, $items) {
+        $enabled  = Module::get_enabled_by_boot();
+        $embedded = Module::get_embedded();
+        foreach ($form->_modules as $c_group_id => $c_modules) {
+            foreach ($c_modules as $c_module) {
+                $c_result = $form->child_select('info')->child_select($c_group_id)->child_select('module_'.$c_module->id);
                 $c_is_enabled  = isset($enabled [$c_module->id]);
                 $c_is_embedded = isset($embedded[$c_module->id]);
                 $c_required_for_info      = $c_module->required_for_info_get('boot');
@@ -55,42 +94,17 @@ abstract class Events_Form_Modules_Install {
                 foreach ($c_required_for_info->req as $c_id => $c_info) $c_required_for_sys_items->child_insert(new Markup('x-sticker', ['data-style' => $c_info->state === 1 ? 'ok'      : null], [new Markup('x-title', [], new Text_simple(strtoupper($c_id)))]                                                                           ), strtolower($c_id));
                 foreach ($c_dependencies_info->sys as $c_id => $c_info) $c_dependencies_sys_items->child_insert(new Markup('x-sticker', ['data-style' => $c_info->state  <  2 ? 'warning' : null], [new Markup('x-title', [], new Text_simple(strtoupper($c_id))), new Markup('x-version', [], Locale::format_version($c_info->version_min))]), strtolower($c_id));
                 foreach ($c_dependencies_info->php as $c_id => $c_info) $c_dependencies_php_items->child_insert(new Markup('x-sticker', ['data-style' => $c_info->state  <  2 ? 'warning' : null], [new Markup('x-title', [], new Text_simple(strtoupper($c_id))), new Markup('x-version', [],                        $c_info->version_min )]), strtolower($c_id));
-                $c_info = new Markup('x-module-info', ['data-id' => $c_module->id]);
-                $c_switcher = new Field_Switcher;
-                $c_switcher->attribute_insert('title', new Text('press to enable or disable the module "%%_title"', ['title' => $c_module->title]), 'element_attributes');
-                $c_switcher->build();
-                $c_switcher->name_set('is_enabled[]');
-                $c_switcher->value_set($c_module->id);
+                if ($c_dependencies_php_items->children_select_count()) $c_result->child_insert(new Markup('x-param', ['data-type' => 'dependencies-sys'], [new Markup('x-title', [], 'depend from PHP extensions'), new Markup('x-value', [], $c_dependencies_php_items)]), 'dependencies_php');
+                if ($c_dependencies_sys_items->children_select_count()) $c_result->child_insert(new Markup('x-param', ['data-type' => 'dependencies-php'], [new Markup('x-title', [], 'depend from modules'       ), new Markup('x-value', [], $c_dependencies_sys_items)]), 'dependencies_sys');
+                if ($c_required_for_sys_items->children_select_count()) $c_result->child_insert(new Markup('x-param', ['data-type' => 'required-for-sys'], [new Markup('x-title', [], 'required for modules'      ), new Markup('x-value', [], $c_required_for_sys_items)]), 'required_for_sys');
+                $c_switcher = $c_result->child_select('switcher');
                 $c_switcher->checked_set($c_is_enabled);
                 $c_switcher->disabled_set(
                     ($c_is_embedded                     && $c_is_enabled) ||
                     ($c_required_for_info->has_required && $c_is_enabled) ||
                     ($c_dependencies_info->has_dependencies_sys)          ||
-                    ($c_dependencies_info->has_dependencies_php));
-                $c_info->child_insert($c_switcher, 'switcher');
-                if ($c_module->icon_path                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'icon'              ], [new Markup('x-title', ['aria-hidden' => 'true'], 'icon'                      ), new Markup('x-value', [], new Markup_simple('img', ['src' => $c_module->icon_path[0] === '/' ? $c_module->icon_path : '/'.$c_module->path.$c_module->icon_path, 'alt' => 'icon']) )]), 'icon'              );
-                if (true                                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'title'             ], [new Markup('x-title', ['aria-hidden' => 'true'], 'title'                     ), new Markup('x-value', [],                                    $c_module->title                                                                                                     )]), 'title'             );
-                if (true                                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'id'                ], [new Markup('x-title', [                       ], 'id'                        ), new Markup('x-value', [],                    new Text_simple($c_module->id)                                                                                                       )]), 'id'                );
-                if (true                                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'version'           ], [new Markup('x-title', [                       ], 'version'                   ), new Markup('x-value', [],             Locale::format_version($c_module->version)                                                                                                  )]), 'version'           );
-                if (true                                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'is-embedded'       ], [new Markup('x-title', [                       ], 'is embedded'               ), new Markup('x-value', [],                    isset($embedded[$c_module->id]) ? 'yes' : 'no'                                                                                       )]), 'is_embedded'       );
-                if ($c_module->description                            ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'description'       ], [new Markup('x-title', [                       ], 'description'               ), new Markup('x-value', [],                                    $c_module->description                                                                                               )]), 'description'       );
-                if ($c_module->copyright                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'copyright'         ], [new Markup('x-title', [                       ], 'copyright'                 ), new Markup('x-value', [],                                    $c_module->copyright                                                                                                 )]), 'copyright'         );
-                if ($c_module->path                                   ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'path'              ], [new Markup('x-title', [                       ], 'path'                      ), new Markup('x-value', [],                                    $c_module->path                                                                                                      )]), 'path'              );
-                if ($c_module->id_bundle                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'bundle-id'         ], [new Markup('x-title', [                       ], 'bundle id'                 ), new Markup('x-value', [],                    new Text_simple($c_module->id_bundle)                                                                                                )]), 'bundle_id'         );
-                if ($c_module->id_bundle                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'bundle-build'      ], [new Markup('x-title', [                       ], 'bundle build number'       ), new Markup('x-value', [],                 Module::bundle_get($c_module->id_bundle)->build                                                                                         )]), 'bundle_build'      );
-                if ($c_module->id_bundle                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'bundle-title'      ], [new Markup('x-title', [                       ], 'bundle title'              ), new Markup('x-value', [],                 Module::bundle_get($c_module->id_bundle)->title                                                                                         )]), 'bundle_title'      );
-                if ($c_module->id_bundle                              ) $c_info->child_insert(new Markup('x-param', ['data-type' => 'bundle-description'], [new Markup('x-title', [                       ], 'bundle description'        ), new Markup('x-value', [],                 Module::bundle_get($c_module->id_bundle)->description                                                                                   )]), 'bundle_description');
-                if ($c_dependencies_php_items->children_select_count()) $c_info->child_insert(new Markup('x-param', ['data-type' => 'dependencies-sys'  ], [new Markup('x-title', [                       ], 'depend from PHP extensions'), new Markup('x-value', [],                                    $c_dependencies_php_items                                                                                            )]), 'dependencies_php'  );
-                if ($c_dependencies_sys_items->children_select_count()) $c_info->child_insert(new Markup('x-param', ['data-type' => 'dependencies-php'  ], [new Markup('x-title', [                       ], 'depend from modules'       ), new Markup('x-value', [],                                    $c_dependencies_sys_items                                                                                            )]), 'dependencies_sys'  );
-                if ($c_required_for_sys_items->children_select_count()) $c_info->child_insert(new Markup('x-param', ['data-type' => 'required-for-sys'  ], [new Markup('x-title', [                       ], 'required for modules'      ), new Markup('x-value', [],                                    $c_required_for_sys_items                                                                                            )]), 'required_for_sys'  );
-                if (isset($c_module->urls) && is_array($c_module->urls))
-                    foreach ($c_module->urls as $c_title => $c_url)
-                        if ($c_is_enabled)
-                            $c_info->child_insert(new Markup('x-param', ['data-type' => 'url'], [
-                                new Markup('x-title', [], $c_title),
-                                new Markup('x-value', [], new Markup('a', ['href' => $c_url], Url::url_to_markup($c_url)))
-                            ]), 'url_'.Security::sanitize_id($c_title, '_'));
-                $info->child_select($c_module->group_get_id())->child_insert($c_info, 'module_'.$c_module->id);
+                    ($c_dependencies_info->has_dependencies_php)
+                );
             }
         }
     }
@@ -171,8 +185,7 @@ abstract class Events_Form_Modules_Install {
                 }
                 # update caches and this form
                 Cache::update_global();
-                $form->child_select('info')->children_delete();
-                static::on_init(null, $form, $items);
+                $form->components_init();
                 break;
         }
     }

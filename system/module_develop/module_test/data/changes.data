@@ -9,18 +9,18 @@ changes
   - test_data/test/boolean_true_insert: false
   - test_data/test/boolean_false_insert: true
   - test_data/test/null_insert: 0
+  - test_data/test/array_insert
+    - key_x: item value x
+  - test_data/test/object_insert
+      property_x: property value x
   - test_data/test/array
     - key_4: item value 4 (insert)
     - key_5: item value 5 (insert)
     - key_6: item value 6 (insert)
-  - test_data/test/array_insert
-    - key_7: item value 7
   - test_data/test/object
       property_4: property value 4 (insert)
       property_5: property value 5 (insert)
       property_6: property value 6 (insert)
-  - test_data/test/object_insert
-      property_7: property value 7
   # ─────────────────────────────────────────────────────────────────────
   # supported types: string|integer|double|boolean|null|array|object
   # ─────────────────────────────────────────────────────────────────────
@@ -32,15 +32,15 @@ changes
   - test_data/test/boolean_false_insert: false
   - test_data/test/null_insert: null
   - test_data/test/array/key_5: item value 5 (insert / update)
-  - test_data/test/array_insert
-    - key_7: item value 7
-    - key_8: item value 8
-    - key_9: item value 9
   - test_data/test/object/property_5: property value 5 (insert / update)
+  - test_data/test/array_insert
+    - key_x: item value x
+    - key_y: item value y
+    - key_z: item value z
   - test_data/test/object_insert
-      property_7: property value 7
-      property_8: property value 8
-      property_9: property value 9
+      property_x: property value x
+      property_y: property value y
+      property_z: property value z
   # ─────────────────────────────────────────────────────────────────────
   # supported types: null
   # ─────────────────────────────────────────────────────────────────────

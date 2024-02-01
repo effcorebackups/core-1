@@ -14,6 +14,14 @@ tests
           - name: Pager->build()
     - code-build|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Pager::test_step_code__build
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-url_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Pager::url_get()
+    - code-url_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Pager::test_step_code__url_get
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

@@ -44,7 +44,7 @@ tests
               name: proxy
         - check|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return

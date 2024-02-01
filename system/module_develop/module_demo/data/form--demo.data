@@ -12,6 +12,215 @@ forms
         - button_default|Button_default
             attributes
             - value: send
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # test names:
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_01
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_10[0]
+        # - name_11[0][1]
+        # - name_12[0][1][2]
+        # - name_13[0][1][2][3]
+        # - name_14[0][1][2][3][4]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_20[0][]
+        # - name_21[0][1][]
+        # - name_22[0][1][2][]
+        # - name_23[0][1][2][3][]
+        # - name_24[0][1][2][3][4][]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_30[1]
+        # - name_31[1][2]
+        # - name_32[1][2][3]
+        # - name_33[1][2][3][4]
+        # - name_34[1][2][3][4][5]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_40[1][]
+        # - name_41[1][2][]
+        # - name_42[1][2][3][]
+        # - name_43[1][2][3][4][]
+        # - name_44[1][2][3][4][5][]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_50[a]
+        # - name_51[a][b]
+        # - name_52[a][b][c]
+        # - name_53[a][b][c][d]
+        # - name_54[a][b][c][d][e]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_60[a][]
+        # - name_61[a][b][]
+        # - name_62[a][b][c][]
+        # - name_63[a][b][c][d][]
+        # - name_64[a][b][c][d][e][]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_70[]
+        # - name_71[][]
+        # - name_72[][][]
+        # - name_73[][][][]
+        # - name_74[][][][][]
+        #   ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # - name_80[][b][][1][]
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_00|Field_Hidden
+            attributes
+            - name: 
+        - hidden_name_01|Field_Hidden
+            attributes
+            - name: name_01
+            - value: 01
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_10|Field_Hidden
+            attributes
+            - name: name_10[0]
+            - value: 10
+        - hidden_name_11|Field_Hidden
+            attributes
+            - name: name_11[0][1]
+            - value: 11
+        - hidden_name_12|Field_Hidden
+            attributes
+            - name: name_12[0][1][2]
+            - value: 12
+        - hidden_name_13|Field_Hidden
+            attributes
+            - name: name_13[0][1][2][3]
+            - value: 13
+        - hidden_name_14|Field_Hidden
+            attributes
+            - name: name_14[0][1][2][3][4]
+            - value: 14
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_20|Field_Hidden
+            attributes
+            - name: name_20[0][]
+            - value: 20
+        - hidden_name_21|Field_Hidden
+            attributes
+            - name: name_21[0][1][]
+            - value: 21
+        - hidden_name_22|Field_Hidden
+            attributes
+            - name: name_22[0][1][2][]
+            - value: 22
+        - hidden_name_23|Field_Hidden
+            attributes
+            - name: name_23[0][1][2][3][]
+            - value: 23
+        - hidden_name_24|Field_Hidden
+            attributes
+            - name: name_24[0][1][2][3][4][]
+            - value: 24
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_30|Field_Hidden
+            attributes
+            - name: name_30[1]
+            - value: 30
+        - hidden_name_31|Field_Hidden
+            attributes
+            - name: name_31[1][2]
+            - value: 31
+        - hidden_name_32|Field_Hidden
+            attributes
+            - name: name_32[1][2][3]
+            - value: 32
+        - hidden_name_33|Field_Hidden
+            attributes
+            - name: name_33[1][2][3][4]
+            - value: 33
+        - hidden_name_34|Field_Hidden
+            attributes
+            - name: name_34[1][2][3][4][5]
+            - value: 34
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_40|Field_Hidden
+            attributes
+            - name: name_40[1][]
+            - value: 40
+        - hidden_name_41|Field_Hidden
+            attributes
+            - name: name_41[1][2][]
+            - value: 41
+        - hidden_name_42|Field_Hidden
+            attributes
+            - name: name_42[1][2][3][]
+            - value: 42
+        - hidden_name_43|Field_Hidden
+            attributes
+            - name: name_43[1][2][3][4][]
+            - value: 43
+        - hidden_name_44|Field_Hidden
+            attributes
+            - name: name_44[1][2][3][4][5][]
+            - value: 44
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_50|Field_Hidden
+            attributes
+            - name: name_50[a]
+            - value: 50
+        - hidden_name_51|Field_Hidden
+            attributes
+            - name: name_51[a][b]
+            - value: 51
+        - hidden_name_52|Field_Hidden
+            attributes
+            - name: name_52[a][b][c]
+            - value: 52
+        - hidden_name_53|Field_Hidden
+            attributes
+            - name: name_53[a][b][c][d]
+            - value: 53
+        - hidden_name_54|Field_Hidden
+            attributes
+            - name: name_54[a][b][c][d][e]
+            - value: 54
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_60|Field_Hidden
+            attributes
+            - name: name_60[a][]
+            - value: 60
+        - hidden_name_61|Field_Hidden
+            attributes
+            - name: name_61[a][b][]
+            - value: 61
+        - hidden_name_62|Field_Hidden
+            attributes
+            - name: name_62[a][b][c][]
+            - value: 62
+        - hidden_name_63|Field_Hidden
+            attributes
+            - name: name_63[a][b][c][d][]
+            - value: 63
+        - hidden_name_64|Field_Hidden
+            attributes
+            - name: name_64[a][b][c][d][e][]
+            - value: 64
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_70|Field_Hidden
+            attributes
+            - name: name_70[]
+            - value: 70
+        - hidden_name_71|Field_Hidden
+            attributes
+            - name: name_71[][]
+            - value: 71
+        - hidden_name_72|Field_Hidden
+            attributes
+            - name: name_72[][][]
+            - value: 72
+        - hidden_name_73|Field_Hidden
+            attributes
+            - name: name_73[][][][]
+            - value: 73
+        - hidden_name_74|Field_Hidden
+            attributes
+            - name: name_74[][][][][]
+            - value: 74
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - hidden_name_80|Field_Hidden
+            attributes
+            - name: name_80[][b][][1][]
+            - value: 80
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         # field 'File'
         - file_text|Field_File
             title: Text
@@ -121,7 +330,7 @@ forms
             - value: text in input
             - minlength: 5
             - pattern: ^[a-zA-Z0-9 ]+$
-            - size: 60
+            - data-is-wide-field: true
         # field 'Search'
         - search|Field_Search
             title: Search
@@ -132,7 +341,7 @@ forms
             element_attributes
             - name: search
             - value: text in search
-            - size: 57
+            - data-is-wide-field: true
         # field 'URL'
         - url|Field_URL
             title: URL
@@ -143,7 +352,7 @@ forms
             element_attributes
             - name: url
             - value: http://domain/path?q=w#p1
-            - size: 60
+            - data-is-wide-field: true
             is_trim_trailing_slash: false
             is_trim_trailing_question: false
             is_trim_trailing_sharp: false
@@ -171,7 +380,7 @@ forms
             - name: email
             - value: test1@example.com,test2@example.com
             - multiple: true
-            - size: 60
+            - data-is-wide-field: true
         # field 'Telephone number'
         - tel|Field_Tel
             title: Telephone number
@@ -684,10 +893,6 @@ forms
                 text: Main content of Micro Tab #%%_num
                 args
                 - num: 3
-    - hidden|Field_Hidden
-        attributes
-        - name: hidden_name
-        - value: hidden_value
     - button_send|Button
         title: send
         attributes

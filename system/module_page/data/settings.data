@@ -1,38 +1,14 @@
 settings
   apply_tokens_for_meta: true
-  apply_tokens_for_sitemap: true
   apply_tokens_for_robots: true
-  color__page_id: default_1
-  color__text_id: white
-  color__main_id: lightblue_l1
-  color__link_id: white
-  color__link_active_id: gold_r1
-  color__table_row_odd_id: default_2
-  color__table_row_even_id: default_3
-  color__menu_id: default_2
-  color__menu_active_id: default_3
-  color__menu_text_id: white
-  color__menu_link_id: white
-  color__menu_link_active_id: gold_r1
-  color__tabs_id: lightblue_l1
-  color__tabs_link_id: white
-  color__tabs_link_active_id: white
-  color__tabs_link_active_no_bg_id: gold_r1
-  color__ok_id: state_ok
-  color__warning_id: state_warning
-  color__error_id: state_error
-  color__fieldset_id: default_2
-  color__fieldset_nested_id: default_1
-  color__field_id: default_1
-  color__field_text_id: white
-  color__button_id: lightblue_l1
-  color__button_active_id: lightblue_l2
-  color__button_text_id: white
+  apply_tokens_for_sitemap: true
+  color_profile: dark_blue
   console_visibility: 0
-  page_width_min: 200
-  page_width_max: 990
-  page_width_mobile: 600
+  custom_colors|_empty_array
   page_meta_viewport: width=device-width, initial-scale=1.0
+  page_width_max: 990
+  page_width_min: 200
+  page_width_mobile: 600
   prepath__cover_is_not_found: system/module_page/frontend/pictures/message--cover-is-not-found
   prepath__file_is_outside_of_dynamic_directory: system/module_page/frontend/pictures/message--file-is-outside-of-dynamic-directory
   prepath__poster_is_not_found: system/module_page/frontend/pictures/message--poster-is-not-found
@@ -40,9 +16,9 @@ settings
   prepath__thumbnail_embedding_error: system/module_page/frontend/pictures/message--thumbnail-embedding-error
   prepath__thumbnail_is_not_allowed: system/module_page/frontend/pictures/message--thumbnail-is-not-allowed
   show_warning_if_not_https: false
-  thumbnail_quality_jpeg: 90
   thumbnail_path_cover_default: system/module_page/frontend/pictures/thumbnail-cover-default.svg
   thumbnail_path_poster_default: system/module_page/frontend/pictures/thumbnail-poster-default.svg
-  thumbnail_width_small: 100
-  thumbnail_width_middle: 300
+  thumbnail_quality_jpeg: 90
   thumbnail_width_big: 600
+  thumbnail_width_middle: 300
+  thumbnail_width_small: 100

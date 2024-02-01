@@ -92,22 +92,22 @@ tab_items
     id_parent: null
     id_tab: view
     action_name: colors
-    action_name_default: colors/current
+    action_name_default: colors/manage
     title: Colors
     weight: +500
-- view_colors_current|Tab_item
-    id: view_colors_current
+- view_color_management|Tab_item
+    id: view_color_management
     id_parent: view_colors
     id_tab: view
-    action_name: colors/current
-    title: Current
+    action_name: colors/manage
+    title: Management
     weight: +500
-- view_colors_presets|Tab_item
-    id: view_colors_presets
+- view_colors_profiles|Tab_item
+    id: view_colors_profiles
     id_parent: view_colors
     id_tab: view
-    action_name: colors/presets
-    title: Presets
+    action_name: colors/profiles
+    title: Profiles
     weight: +480
 - view_layouts|Tab_item
     id: view_layouts

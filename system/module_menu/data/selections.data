@@ -134,7 +134,7 @@ selections
     pager_is_enabled: true
     decorator_settings
     - view_type: tree
-    - tree_visualization_mode: decorated-rearrangeable
+    - tree_manage_mode: rearrange
     - mapping
       - =: id
       - =: id_parent

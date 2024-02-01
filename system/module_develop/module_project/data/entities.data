@@ -60,7 +60,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - description
         title: Description
         type: blob
@@ -238,7 +238,7 @@ entities
             - maxlength: 1024
             - required: null
             - disabled: true
-            - size: 60
+            - data-is-wide-field: true
     - downloads_num
         title: Number of downloads
         type: integer

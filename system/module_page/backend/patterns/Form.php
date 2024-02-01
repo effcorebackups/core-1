@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -53,32 +53,8 @@ class Form extends Markup implements has_Data_cache {
                 header('x-form-validation-id--'.$id.': '.$this->validation_id);
             }
 
-            # call "build" handlers
-            Event::start('on_form_build', $id, ['form' => &$this]);
-
-            # resolve form plugins
-            foreach ($this->children_select_recursive() as $c_npath => $c_child) {
-                if ($c_child instanceof Form_plugin) {
-                    $c_npath_parts = explode('/', $c_npath);
-                    $c_npath_last_part = end($c_npath_parts);
-                    $c_pointers = Core::npath_get_pointers($this, $c_npath);
-                    if ($c_child->is_available()) $c_pointers[$c_npath_last_part] = $c_child->object_get();
-                    else                    unset($c_pointers[$c_npath_last_part]);
-                }
-            }
-
-            # set cform → build → set cform (note: for new items after build)
-            foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof Control                  ) $c_child->cform = $this;
-            foreach ($this->children_select_recursive() as $c_child) if (is_object($c_child) && method_exists($c_child, 'build')) $c_child->build();
-            foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof Control                  ) $c_child->cform = $this;
-
-            # call "init" handlers
-            $this->items_update();
-            Event::start('on_form_init', $id, ['form' => &$this, 'items' => &$this->items], /* on_before_step */ null,
-                function ($event, $form, $items) { /* on_after_step */
-                    $form->items_update();
-                }
-            );
+            $this->components_build();
+            $this->components_init();
 
             # if user submit this form (note: dynamic buttons should be inserted before)
             if ($this->is_submitted()) {
@@ -156,6 +132,32 @@ class Form extends Markup implements has_Data_cache {
 
             $this->is_builded = true;
         }
+    }
+
+    function components_build() {
+        # call "build" handlers
+        Event::start('on_form_build', $this->id_get(), ['form' => &$this]);
+        # resolve form plugins
+        foreach ($this->children_select_recursive() as $c_npath => $c_child) {
+            if ($c_child instanceof Form_plugin) {
+                $c_npath_parts     = explode('/', $c_npath);
+                $c_npath_last_part = end($c_npath_parts);
+                $c_pointers        = Core::npath_get_pointers($this, $c_npath);
+                if ($c_child->is_available()) $c_pointers[$c_npath_last_part] = $c_child->object_get();
+                else                    unset($c_pointers[$c_npath_last_part]);
+            }
+        }
+        # set cform → build → set cform (note: for new items after build)
+        foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof Control                  ) $c_child->cform = $this;
+        foreach ($this->children_select_recursive() as $c_child) if (is_object($c_child) && method_exists($c_child, 'build')) $c_child->build();
+        foreach ($this->children_select_recursive() as $c_child) if (          $c_child instanceof Control                  ) $c_child->cform = $this;
+    }
+
+    function components_init() {
+        Event::start('on_form_init', $this->id_get(), ['form' => &$this, 'items' => &$this->items],
+            /* on_before_step */ function ($event, $form, $items) {$form->items_update();},
+            /* on_after_step */  function ($event, $form, $items) {$form->items_update();}
+        );
     }
 
     function render() {
@@ -313,6 +315,10 @@ class Form extends Markup implements has_Data_cache {
 
     static function current_number_generate() {
         return static::$c_form_number++;
+    }
+
+    static function is_posted() {
+        return Request::value_get('form_id', 0, '_POST', false) !== false;
     }
 
     # ─────────────────────────────────────────────────────────────────────

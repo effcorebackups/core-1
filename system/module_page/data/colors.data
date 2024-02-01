@@ -11,80 +11,108 @@ colors
     id: black
     value_hex: #000000
     group: base
+- default_1|Color
+    id: default_1
+    value_hex: #2a304a
+    group: base
+- default_2|Color
+    id: default_2
+    value_hex: #313852
+    group: base
+- default_3|Color
+    id: default_3
+    value_hex: #3b4157
+    group: base
+- default_4|Color
+    id: default_4
+    value_hex: #3278e3
+    group: base
+- default_5|Color
+    id: default_5
+    value_hex: #2a64bd
+    group: base
+- default_6|Color
+    id: default_6
+    value_hex: #215098
+    group: base
+- default_7|Color
+    id: default_7
+    value_hex: #193c72
+    group: base
 # ─────────────────────────────────────────────────────────────────────
 # gray group
 # ─────────────────────────────────────────────────────────────────────
 - gray_l10|Color
     id: gray_l10
-    value_hex: #101010
+    value_hex: #1a1a1a
     group: gray
 - gray_l9|Color
     id: gray_l9
-    value_hex: #1b1b1b
+    value_hex: #242424
     group: gray
 - gray_l8|Color
     id: gray_l8
-    value_hex: #252525
+    value_hex: #2e2e2e
     group: gray
 - gray_l7|Color
     id: gray_l7
-    value_hex: #2f2f2f
+    value_hex: #383838
     group: gray
 - gray_l6|Color
     id: gray_l6
-    value_hex: #393939
+    value_hex: #424242
     group: gray
 - gray_l5|Color
     id: gray_l5
-    value_hex: #444444
+    value_hex: #4d4d4d
     group: gray
 - gray_l4|Color
     id: gray_l4
-    value_hex: #505050
+    value_hex: #575757
     group: gray
 - gray_l3|Color
     id: gray_l3
-    value_hex: #5b5b5b
+    value_hex: #616161
     group: gray
 - gray_l2|Color
     id: gray_l2
-    value_hex: #676767
+    value_hex: #6b6b6b
     group: gray
 - gray_l1|Color
     id: gray_l1
-    value_hex: #737373
+    value_hex: #787878
     group: gray
 - gray|Color
     id: gray
-    value_hex: #7f7f7f
+    value_hex: #808080
     group: gray
 - gray_r1|Color
     id: gray_r1
-    value_hex: #8a8a8a
+    value_hex: #8c8c8c
     group: gray
 - gray_r2|Color
     id: gray_r2
-    value_hex: #959595
+    value_hex: #969696
     group: gray
 - gray_r3|Color
     id: gray_r3
-    value_hex: #a0a0a0
+    value_hex: #a3a3a3
     group: gray
 - gray_r4|Color
     id: gray_r4
-    value_hex: #acacac
+    value_hex: #adadad
     group: gray
 - gray_r5|Color
     id: gray_r5
-    value_hex: #b7b7b7
+    value_hex: #bababa
     group: gray
 - gray_r6|Color
     id: gray_r6
-    value_hex: #c3c3c3
+    value_hex: #c4c4c4
     group: gray
 - gray_r7|Color
     id: gray_r7
-    value_hex: #cfcfcf
+    value_hex: #d1d1d1
     group: gray
 - gray_r8|Color
     id: gray_r8
@@ -92,906 +120,966 @@ colors
     group: gray
 - gray_r9|Color
     id: gray_r9
-    value_hex: #e7e7e7
+    value_hex: #e8e8e8
     group: gray
 - gray_r10|Color
     id: gray_r10
-    value_hex: #f3f3f3
+    value_hex: #f2f2f2
     group: gray
 # ─────────────────────────────────────────────────────────────────────
 # red group
 # ─────────────────────────────────────────────────────────────────────
 - red_l10|Color
     id: red_l10
-    value_hex: #270600
+    value_hex: #330900
     group: red
 - red_l9|Color
     id: red_l9
-    value_hex: #3b0900
+    value_hex: #470c00
     group: red
 - red_l8|Color
     id: red_l8
-    value_hex: #4e0c00
+    value_hex: #5c0f00
     group: red
 - red_l7|Color
     id: red_l7
-    value_hex: #630f00
+    value_hex: #701300
     group: red
 - red_l6|Color
     id: red_l6
-    value_hex: #771200
+    value_hex: #851600
     group: red
 - red_l5|Color
     id: red_l5
-    value_hex: #8d1500
+    value_hex: #991a00
     group: red
 - red_l4|Color
     id: red_l4
-    value_hex: #a31800
+    value_hex: #ad1d00
     group: red
 - red_l3|Color
     id: red_l3
-    value_hex: #b91c00
+    value_hex: #c22000
     group: red
 - red_l2|Color
     id: red_l2
-    value_hex: #d01f00
+    value_hex: #d62400
     group: red
 - red_l1|Color
     id: red_l1
-    value_hex: #e72200
+    value_hex: #f02800
     group: red
 - red|Color
     id: red
-    value_hex: #ff2600
+    value_hex: #ff2b00
     group: red
 - red_r1|Color
     id: red_r1
-    value_hex: #ff4d2e
+    value_hex: #ff401a
     group: red
 - red_r2|Color
     id: red_r2
-    value_hex: #ff674d
+    value_hex: #ff512e
     group: red
 - red_r3|Color
     id: red_r3
-    value_hex: #ff7c65
+    value_hex: #ff6647
     group: red
 - red_r4|Color
     id: red_r4
-    value_hex: #ff8f7c
+    value_hex: #ff775c
     group: red
 - red_r5|Color
     id: red_r5
-    value_hex: #ffa190
+    value_hex: #ff8c75
     group: red
 - red_r6|Color
     id: red_r6
-    value_hex: #ffb2a4
+    value_hex: #ff9d8a
     group: red
 - red_r7|Color
     id: red_r7
-    value_hex: #ffc2b7
+    value_hex: #ffb3a3
     group: red
 - red_r8|Color
     id: red_r8
-    value_hex: #ffd1c9
+    value_hex: #ffc4b8
     group: red
 - red_r9|Color
     id: red_r9
-    value_hex: #ffe1dc
+    value_hex: #ffd9d1
     group: red
 - red_r10|Color
     id: red_r10
-    value_hex: #fff0ed
+    value_hex: #ffeae6
     group: red
 # ─────────────────────────────────────────────────────────────────────
 # orange group
 # ─────────────────────────────────────────────────────────────────────
 - orange_l10|Color
     id: orange_l10
-    value_hex: #1f1200
+    value_hex: #331a00
     group: orange
 - orange_l9|Color
     id: orange_l9
-    value_hex: #321d00
+    value_hex: #472400
     group: orange
 - orange_l8|Color
     id: orange_l8
-    value_hex: #462800
+    value_hex: #5c2e00
     group: orange
 - orange_l7|Color
     id: orange_l7
-    value_hex: #5b3400
+    value_hex: #703800
     group: orange
 - orange_l6|Color
     id: orange_l6
-    value_hex: #704100
+    value_hex: #854200
     group: orange
 - orange_l5|Color
     id: orange_l5
-    value_hex: #864e00
+    value_hex: #994d00
     group: orange
 - orange_l4|Color
     id: orange_l4
-    value_hex: #9d5b00
+    value_hex: #ad5700
     group: orange
 - orange_l3|Color
     id: orange_l3
-    value_hex: #b56800
+    value_hex: #c26100
     group: orange
 - orange_l2|Color
     id: orange_l2
-    value_hex: #cd7600
+    value_hex: #d66b00
     group: orange
 - orange_l1|Color
     id: orange_l1
-    value_hex: #e68400
+    value_hex: #f07800
     group: orange
 - orange|Color
     id: orange
-    value_hex: #ff9300
+    value_hex: #ff8000
     group: orange
 - orange_r1|Color
     id: orange_r1
-    value_hex: #ff9f1c
+    value_hex: #ff8c1a
     group: orange
 - orange_r2|Color
     id: orange_r2
-    value_hex: #ffaa36
+    value_hex: #ff962e
     group: orange
 - orange_r3|Color
     id: orange_r3
-    value_hex: #ffb54f
+    value_hex: #ffa347
     group: orange
 - orange_r4|Color
     id: orange_r4
-    value_hex: #ffbf67
+    value_hex: #ffad5c
     group: orange
 - orange_r5|Color
     id: orange_r5
-    value_hex: #ffc97f
+    value_hex: #ffba75
     group: orange
 - orange_r6|Color
     id: orange_r6
-    value_hex: #ffd295
+    value_hex: #ffc48a
     group: orange
 - orange_r7|Color
     id: orange_r7
-    value_hex: #ffdbab
+    value_hex: #ffd1a3
     group: orange
 - orange_r8|Color
     id: orange_r8
-    value_hex: #ffe5c1
+    value_hex: #ffdbb8
     group: orange
 - orange_r9|Color
     id: orange_r9
-    value_hex: #ffeed6
+    value_hex: #ffe8d1
     group: orange
 - orange_r10|Color
     id: orange_r10
-    value_hex: #fff6eb
+    value_hex: #fff2e6
     group: orange
 # ─────────────────────────────────────────────────────────────────────
-# gold group
+# orangeyellow group
 # ─────────────────────────────────────────────────────────────────────
-- gold_l10|Color
-    id: gold_l10
-    value_hex: #1c1702
-    group: gold
-- gold_l9|Color
-    id: gold_l9
-    value_hex: #2e2704
-    group: gold
-- gold_l8|Color
-    id: gold_l8
-    value_hex: #423806
-    group: gold
-- gold_l7|Color
-    id: gold_l7
-    value_hex: #574a08
-    group: gold
-- gold_l6|Color
-    id: gold_l6
-    value_hex: #6d5c09
-    group: gold
-- gold_l5|Color
-    id: gold_l5
-    value_hex: #846f0b
-    group: gold
-- gold_l4|Color
-    id: gold_l4
-    value_hex: #9b830d
-    group: gold
-- gold_l3|Color
-    id: gold_l3
-    value_hex: #b3970f
-    group: gold
-- gold_l2|Color
-    id: gold_l2
-    value_hex: #ccac12
-    group: gold
-- gold_l1|Color
-    id: gold_l1
-    value_hex: #e5c114
-    group: gold
-- gold|Color
-    id: gold
-    value_hex: #ffd716
-    group: gold
-- gold_r1|Color
-    id: gold_r1
-    value_hex: #ffdb30
-    group: gold
-- gold_r2|Color
-    id: gold_r2
-    value_hex: #ffe049
-    group: gold
-- gold_r3|Color
-    id: gold_r3
-    value_hex: #ffe460
-    group: gold
-- gold_r4|Color
-    id: gold_r4
-    value_hex: #ffe876
-    group: gold
-- gold_r5|Color
-    id: gold_r5
-    value_hex: #ffeb8c
-    group: gold
-- gold_r6|Color
-    id: gold_r6
-    value_hex: #ffefa1
-    group: gold
-- gold_r7|Color
-    id: gold_r7
-    value_hex: #fff2b5
-    group: gold
-- gold_r8|Color
-    id: gold_r8
-    value_hex: #fff6c8
-    group: gold
-- gold_r9|Color
-    id: gold_r9
-    value_hex: #fff9db
-    group: gold
-- gold_r10|Color
-    id: gold_r10
-    value_hex: #fffced
-    group: gold
+- orangeyellow_l10|Color
+    id: orangeyellow_l10
+    value_hex: #332600
+    group: orangeyellow
+- orangeyellow_l9|Color
+    id: orangeyellow_l9
+    value_hex: #473600
+    group: orangeyellow
+- orangeyellow_l8|Color
+    id: orangeyellow_l8
+    value_hex: #5c4500
+    group: orangeyellow
+- orangeyellow_l7|Color
+    id: orangeyellow_l7
+    value_hex: #705400
+    group: orangeyellow
+- orangeyellow_l6|Color
+    id: orangeyellow_l6
+    value_hex: #856300
+    group: orangeyellow
+- orangeyellow_l5|Color
+    id: orangeyellow_l5
+    value_hex: #997300
+    group: orangeyellow
+- orangeyellow_l4|Color
+    id: orangeyellow_l4
+    value_hex: #ad8200
+    group: orangeyellow
+- orangeyellow_l3|Color
+    id: orangeyellow_l3
+    value_hex: #c29100
+    group: orangeyellow
+- orangeyellow_l2|Color
+    id: orangeyellow_l2
+    value_hex: #d6a100
+    group: orangeyellow
+- orangeyellow_l1|Color
+    id: orangeyellow_l1
+    value_hex: #f0b400
+    group: orangeyellow
+- orangeyellow|Color
+    id: orangeyellow
+    value_hex: #ffbf00
+    group: orangeyellow
+- orangeyellow_r1|Color
+    id: orangeyellow_r1
+    value_hex: #ffc61a
+    group: orangeyellow
+- orangeyellow_r2|Color
+    id: orangeyellow_r2
+    value_hex: #ffcb2e
+    group: orangeyellow
+- orangeyellow_r3|Color
+    id: orangeyellow_r3
+    value_hex: #ffd147
+    group: orangeyellow
+- orangeyellow_r4|Color
+    id: orangeyellow_r4
+    value_hex: #ffd65c
+    group: orangeyellow
+- orangeyellow_r5|Color
+    id: orangeyellow_r5
+    value_hex: #ffdd75
+    group: orangeyellow
+- orangeyellow_r6|Color
+    id: orangeyellow_r6
+    value_hex: #ffe28a
+    group: orangeyellow
+- orangeyellow_r7|Color
+    id: orangeyellow_r7
+    value_hex: #ffe8a3
+    group: orangeyellow
+- orangeyellow_r8|Color
+    id: orangeyellow_r8
+    value_hex: #ffedb8
+    group: orangeyellow
+- orangeyellow_r9|Color
+    id: orangeyellow_r9
+    value_hex: #fff4d1
+    group: orangeyellow
+- orangeyellow_r10|Color
+    id: orangeyellow_r10
+    value_hex: #fff9e6
+    group: orangeyellow
 # ─────────────────────────────────────────────────────────────────────
 # yellow group
 # ─────────────────────────────────────────────────────────────────────
 - yellow_l10|Color
     id: yellow_l10
-    value_hex: #1a1a02
+    value_hex: #332e00
     group: yellow
 - yellow_l9|Color
     id: yellow_l9
-    value_hex: #2d2c04
+    value_hex: #474000
     group: yellow
 - yellow_l8|Color
     id: yellow_l8
-    value_hex: #414006
+    value_hex: #5c5300
     group: yellow
 - yellow_l7|Color
     id: yellow_l7
-    value_hex: #565507
+    value_hex: #706500
     group: yellow
 - yellow_l6|Color
     id: yellow_l6
-    value_hex: #6c6a09
+    value_hex: #857700
     group: yellow
 - yellow_l5|Color
     id: yellow_l5
-    value_hex: #82800b
+    value_hex: #998a00
     group: yellow
 - yellow_l4|Color
     id: yellow_l4
-    value_hex: #9a980d
+    value_hex: #ad9c00
     group: yellow
 - yellow_l3|Color
     id: yellow_l3
-    value_hex: #b2af0f
+    value_hex: #c2ae00
     group: yellow
 - yellow_l2|Color
     id: yellow_l2
-    value_hex: #cbc812
+    value_hex: #d6c100
     group: yellow
 - yellow_l1|Color
     id: yellow_l1
-    value_hex: #e4e114
+    value_hex: #f0d800
     group: yellow
 - yellow|Color
     id: yellow
-    value_hex: #fefa16
+    value_hex: #ffe600
     group: yellow
 - yellow_r1|Color
     id: yellow_r1
-    value_hex: #fefb41
+    value_hex: #ffe81a
     group: yellow
 - yellow_r2|Color
     id: yellow_r2
-    value_hex: #fefc61
+    value_hex: #ffea2e
     group: yellow
 - yellow_r3|Color
     id: yellow_r3
-    value_hex: #fefc7b
+    value_hex: #ffed47
     group: yellow
 - yellow_r4|Color
     id: yellow_r4
-    value_hex: #fffd91
+    value_hex: #ffef5c
     group: yellow
 - yellow_r5|Color
     id: yellow_r5
-    value_hex: #fffda5
+    value_hex: #fff175
     group: yellow
 - yellow_r6|Color
     id: yellow_r6
-    value_hex: #fffdb6
+    value_hex: #fff38a
     group: yellow
 - yellow_r7|Color
     id: yellow_r7
-    value_hex: #fffec7
+    value_hex: #fff6a3
     group: yellow
 - yellow_r8|Color
     id: yellow_r8
-    value_hex: #fffed6
+    value_hex: #fff8b8
     group: yellow
 - yellow_r9|Color
     id: yellow_r9
-    value_hex: #fffee5
+    value_hex: #fffad1
     group: yellow
 - yellow_r10|Color
     id: yellow_r10
-    value_hex: #fffff2
+    value_hex: #fffce6
     group: yellow
 # ─────────────────────────────────────────────────────────────────────
 # yellowgreen group
 # ─────────────────────────────────────────────────────────────────────
 - yellowgreen_l10|Color
     id: yellowgreen_l10
-    value_hex: #121806
+    value_hex: #223300
     group: yellowgreen
 - yellowgreen_l9|Color
     id: yellowgreen_l9
-    value_hex: #1d270a
+    value_hex: #304700
     group: yellowgreen
 - yellowgreen_l8|Color
     id: yellowgreen_l8
-    value_hex: #29370f
+    value_hex: #3d5c00
     group: yellowgreen
 - yellowgreen_l7|Color
     id: yellowgreen_l7
-    value_hex: #364813
+    value_hex: #4b7000
     group: yellowgreen
 - yellowgreen_l6|Color
     id: yellowgreen_l6
-    value_hex: #435a18
+    value_hex: #588500
     group: yellowgreen
 - yellowgreen_l5|Color
     id: yellowgreen_l5
-    value_hex: #516c1d
+    value_hex: #669900
     group: yellowgreen
 - yellowgreen_l4|Color
     id: yellowgreen_l4
-    value_hex: #5f7f22
+    value_hex: #74ad00
     group: yellowgreen
 - yellowgreen_l3|Color
     id: yellowgreen_l3
-    value_hex: #6e9227
+    value_hex: #81c200
     group: yellowgreen
 - yellowgreen_l2|Color
     id: yellowgreen_l2
-    value_hex: #7ca62c
+    value_hex: #8fd600
     group: yellowgreen
 - yellowgreen_l1|Color
     id: yellowgreen_l1
-    value_hex: #8cba32
+    value_hex: #a0f000
     group: yellowgreen
 - yellowgreen|Color
     id: yellowgreen
-    value_hex: #9bcf37
+    value_hex: #aaff00
     group: yellowgreen
 - yellowgreen_r1|Color
     id: yellowgreen_r1
-    value_hex: #a5d44b
+    value_hex: #b2ff1a
     group: yellowgreen
 - yellowgreen_r2|Color
     id: yellowgreen_r2
-    value_hex: #aed85e
+    value_hex: #b9ff2e
     group: yellowgreen
 - yellowgreen_r3|Color
     id: yellowgreen_r3
-    value_hex: #b8dd71
+    value_hex: #c2ff47
     group: yellowgreen
 - yellowgreen_r4|Color
     id: yellowgreen_r4
-    value_hex: #c1e183
+    value_hex: #c9ff5c
     group: yellowgreen
 - yellowgreen_r5|Color
     id: yellowgreen_r5
-    value_hex: #cae695
+    value_hex: #d1ff75
     group: yellowgreen
 - yellowgreen_r6|Color
     id: yellowgreen_r6
-    value_hex: #d3eaa7
+    value_hex: #d8ff8a
     group: yellowgreen
 - yellowgreen_r7|Color
     id: yellowgreen_r7
-    value_hex: #dceeb9
+    value_hex: #e0ffa3
     group: yellowgreen
 - yellowgreen_r8|Color
     id: yellowgreen_r8
-    value_hex: #e5f3cb
+    value_hex: #e7ffb8
     group: yellowgreen
 - yellowgreen_r9|Color
     id: yellowgreen_r9
-    value_hex: #eef7dc
+    value_hex: #f0ffd1
     group: yellowgreen
 - yellowgreen_r10|Color
     id: yellowgreen_r10
-    value_hex: #f6fbee
+    value_hex: #f7ffe6
     group: yellowgreen
 # ─────────────────────────────────────────────────────────────────────
 # green group
 # ─────────────────────────────────────────────────────────────────────
 - green_l10|Color
     id: green_l10
-    value_hex: #081708
+    value_hex: #003305
     group: green
 - green_l9|Color
     id: green_l9
-    value_hex: #0c260c
+    value_hex: #004707
     group: green
 - green_l8|Color
     id: green_l8
-    value_hex: #113511
+    value_hex: #005c09
     group: green
 - green_l7|Color
     id: green_l7
-    value_hex: #164416
+    value_hex: #00700b
     group: green
 - green_l6|Color
     id: green_l6
-    value_hex: #1c541c
+    value_hex: #00850d
     group: green
 - green_l5|Color
     id: green_l5
-    value_hex: #216521
+    value_hex: #00990f
     group: green
 - green_l4|Color
     id: green_l4
-    value_hex: #277627
+    value_hex: #00ad11
     group: green
 - green_l3|Color
     id: green_l3
-    value_hex: #2d882d
+    value_hex: #00c213
     group: green
 - green_l2|Color
     id: green_l2
-    value_hex: #339a33
+    value_hex: #00d615
     group: green
 - green_l1|Color
     id: green_l1
-    value_hex: #39ac39
+    value_hex: #00f018
     group: green
 - green|Color
     id: green
-    value_hex: #3fbf3f
+    value_hex: #00ff19
     group: green
 - green_r1|Color
     id: green_r1
-    value_hex: #53c653
+    value_hex: #1aff30
     group: green
 - green_r2|Color
     id: green_r2
-    value_hex: #67cc67
+    value_hex: #2eff43
     group: green
 - green_r3|Color
     id: green_r3
-    value_hex: #79d279
+    value_hex: #47ff5a
     group: green
 - green_r4|Color
     id: green_r4
-    value_hex: #8bd88b
+    value_hex: #5cff6c
     group: green
 - green_r5|Color
     id: green_r5
-    value_hex: #9cde9c
+    value_hex: #75ff83
     group: green
 - green_r6|Color
     id: green_r6
-    value_hex: #aee4ae
+    value_hex: #8aff95
     group: green
 - green_r7|Color
     id: green_r7
-    value_hex: #bee9be
+    value_hex: #a3ffac
     group: green
 - green_r8|Color
     id: green_r8
-    value_hex: #cfefcf
+    value_hex: #b8ffbf
     group: green
 - green_r9|Color
     id: green_r9
-    value_hex: #dff4df
+    value_hex: #d1ffd6
     group: green
 - green_r10|Color
     id: green_r10
-    value_hex: #effaef
+    value_hex: #e6ffe8
     group: green
 # ─────────────────────────────────────────────────────────────────────
-# greenlightblue group
+# greenblue group
 # ─────────────────────────────────────────────────────────────────────
-- greenlightblue_l10|Color
-    id: greenlightblue_l10
-    value_hex: #041811
-    group: greenlightblue
-- greenlightblue_l9|Color
-    id: greenlightblue_l9
-    value_hex: #06261c
-    group: greenlightblue
-- greenlightblue_l8|Color
-    id: greenlightblue_l8
-    value_hex: #093527
-    group: greenlightblue
-- greenlightblue_l7|Color
-    id: greenlightblue_l7
-    value_hex: #0c4532
-    group: greenlightblue
-- greenlightblue_l6|Color
-    id: greenlightblue_l6
-    value_hex: #0f553e
-    group: greenlightblue
-- greenlightblue_l5|Color
-    id: greenlightblue_l5
-    value_hex: #11664a
-    group: greenlightblue
-- greenlightblue_l4|Color
-    id: greenlightblue_l4
-    value_hex: #147857
-    group: greenlightblue
-- greenlightblue_l3|Color
-    id: greenlightblue_l3
-    value_hex: #178a64
-    group: greenlightblue
-- greenlightblue_l2|Color
-    id: greenlightblue_l2
-    value_hex: #1b9c71
-    group: greenlightblue
-- greenlightblue_l1|Color
-    id: greenlightblue_l1
-    value_hex: #1eaf7f
-    group: greenlightblue
-- greenlightblue|Color
-    id: greenlightblue
-    value_hex: #21c28d
-    group: greenlightblue
-- greenlightblue_r1|Color
-    id: greenlightblue_r1
-    value_hex: #39c999
-    group: greenlightblue
-- greenlightblue_r2|Color
-    id: greenlightblue_r2
-    value_hex: #50cfa5
-    group: greenlightblue
-- greenlightblue_r3|Color
-    id: greenlightblue_r3
-    value_hex: #66d5b1
-    group: greenlightblue
-- greenlightblue_r4|Color
-    id: greenlightblue_r4
-    value_hex: #7bdbbb
-    group: greenlightblue
-- greenlightblue_r5|Color
-    id: greenlightblue_r5
-    value_hex: #8fe0c6
-    group: greenlightblue
-- greenlightblue_r6|Color
-    id: greenlightblue_r6
-    value_hex: #a3e6d0
-    group: greenlightblue
-- greenlightblue_r7|Color
-    id: greenlightblue_r7
-    value_hex: #b6ebda
-    group: greenlightblue
-- greenlightblue_r8|Color
-    id: greenlightblue_r8
-    value_hex: #c9f0e3
-    group: greenlightblue
-- greenlightblue_r9|Color
-    id: greenlightblue_r9
-    value_hex: #dbf5ed
-    group: greenlightblue
-- greenlightblue_r10|Color
-    id: greenlightblue_r10
-    value_hex: #edfaf6
-    group: greenlightblue
+- greenblue_l10|Color
+    id: greenblue_l10
+    value_hex: #003133
+    group: greenblue
+- greenblue_l9|Color
+    id: greenblue_l9
+    value_hex: #004547
+    group: greenblue
+- greenblue_l8|Color
+    id: greenblue_l8
+    value_hex: #00595c
+    group: greenblue
+- greenblue_l7|Color
+    id: greenblue_l7
+    value_hex: #006c70
+    group: greenblue
+- greenblue_l6|Color
+    id: greenblue_l6
+    value_hex: #008085
+    group: greenblue
+- greenblue_l5|Color
+    id: greenblue_l5
+    value_hex: #009499
+    group: greenblue
+- greenblue_l4|Color
+    id: greenblue_l4
+    value_hex: #00a8ad
+    group: greenblue
+- greenblue_l3|Color
+    id: greenblue_l3
+    value_hex: #00bbc2
+    group: greenblue
+- greenblue_l2|Color
+    id: greenblue_l2
+    value_hex: #00cfd6
+    group: greenblue
+- greenblue_l1|Color
+    id: greenblue_l1
+    value_hex: #00e8f0
+    group: greenblue
+- greenblue|Color
+    id: greenblue
+    value_hex: #00f7ff
+    group: greenblue
+- greenblue_r1|Color
+    id: greenblue_r1
+    value_hex: #1af7ff
+    group: greenblue
+- greenblue_r2|Color
+    id: greenblue_r2
+    value_hex: #2ef8ff
+    group: greenblue
+- greenblue_r3|Color
+    id: greenblue_r3
+    value_hex: #47f9ff
+    group: greenblue
+- greenblue_r4|Color
+    id: greenblue_r4
+    value_hex: #5cfaff
+    group: greenblue
+- greenblue_r5|Color
+    id: greenblue_r5
+    value_hex: #75faff
+    group: greenblue
+- greenblue_r6|Color
+    id: greenblue_r6
+    value_hex: #8afbff
+    group: greenblue
+- greenblue_r7|Color
+    id: greenblue_r7
+    value_hex: #a3fcff
+    group: greenblue
+- greenblue_r8|Color
+    id: greenblue_r8
+    value_hex: #b8fdff
+    group: greenblue
+- greenblue_r9|Color
+    id: greenblue_r9
+    value_hex: #d1fdff
+    group: greenblue
+- greenblue_r10|Color
+    id: greenblue_r10
+    value_hex: #e6feff
+    group: greenblue
 # ─────────────────────────────────────────────────────────────────────
 # lightblue group
 # ─────────────────────────────────────────────────────────────────────
 - lightblue_l10|Color
     id: lightblue_l10
-    value_hex: #071121
+    value_hex: #002233
     group: lightblue
 - lightblue_l9|Color
     id: lightblue_l9
-    value_hex: #0c1c35
+    value_hex: #003047
     group: lightblue
 - lightblue_l8|Color
     id: lightblue_l8
-    value_hex: #102648
+    value_hex: #003d5c
     group: lightblue
 - lightblue_l7|Color
     id: lightblue_l7
-    value_hex: #14315d
+    value_hex: #004b70
     group: lightblue
 - lightblue_l6|Color
     id: lightblue_l6
-    value_hex: #193c72
+    value_hex: #005885
     group: lightblue
 - lightblue_l5|Color
     id: lightblue_l5
-    value_hex: #1e4887
+    value_hex: #006699
     group: lightblue
 - lightblue_l4|Color
     id: lightblue_l4
-    value_hex: #22539d
+    value_hex: #0074ad
     group: lightblue
 - lightblue_l3|Color
     id: lightblue_l3
-    value_hex: #275fb4
+    value_hex: #0081c2
     group: lightblue
 - lightblue_l2|Color
     id: lightblue_l2
-    value_hex: #2d6ccb
+    value_hex: #008fd6
     group: lightblue
 - lightblue_l1|Color
     id: lightblue_l1
-    value_hex: #3278e3
+    value_hex: #00a0f0
     group: lightblue
 - lightblue|Color
     id: lightblue
-    value_hex: #3785fb
+    value_hex: #00aaff
     group: lightblue
 - lightblue_r1|Color
     id: lightblue_r1
-    value_hex: #4b91fb
+    value_hex: #1ab2ff
     group: lightblue
 - lightblue_r2|Color
     id: lightblue_r2
-    value_hex: #5e9dfc
+    value_hex: #2eb9ff
     group: lightblue
 - lightblue_r3|Color
     id: lightblue_r3
-    value_hex: #71a8fc
+    value_hex: #47c2ff
     group: lightblue
 - lightblue_r4|Color
     id: lightblue_r4
-    value_hex: #83b3fd
+    value_hex: #5cc9ff
     group: lightblue
 - lightblue_r5|Color
     id: lightblue_r5
-    value_hex: #95befd
+    value_hex: #75d1ff
     group: lightblue
 - lightblue_r6|Color
     id: lightblue_r6
-    value_hex: #a7c9fd
+    value_hex: #8ad8ff
     group: lightblue
 - lightblue_r7|Color
     id: lightblue_r7
-    value_hex: #b9d4fe
+    value_hex: #a3e0ff
     group: lightblue
 - lightblue_r8|Color
     id: lightblue_r8
-    value_hex: #cadffe
+    value_hex: #b8e7ff
     group: lightblue
 - lightblue_r9|Color
     id: lightblue_r9
-    value_hex: #dceafe
+    value_hex: #d1f0ff
     group: lightblue
 - lightblue_r10|Color
     id: lightblue_r10
-    value_hex: #edf4ff
+    value_hex: #e6f7ff
     group: lightblue
+# ─────────────────────────────────────────────────────────────────────
+# blue group
+# ─────────────────────────────────────────────────────────────────────
+- blue_l10|Color
+    id: blue_l10
+    value_hex: #001233
+    group: blue
+- blue_l9|Color
+    id: blue_l9
+    value_hex: #001947
+    group: blue
+- blue_l8|Color
+    id: blue_l8
+    value_hex: #00205c
+    group: blue
+- blue_l7|Color
+    id: blue_l7
+    value_hex: #002770
+    group: blue
+- blue_l6|Color
+    id: blue_l6
+    value_hex: #002e85
+    group: blue
+- blue_l5|Color
+    id: blue_l5
+    value_hex: #003699
+    group: blue
+- blue_l4|Color
+    id: blue_l4
+    value_hex: #003dad
+    group: blue
+- blue_l3|Color
+    id: blue_l3
+    value_hex: #0044c2
+    group: blue
+- blue_l2|Color
+    id: blue_l2
+    value_hex: #004bd6
+    group: blue
+- blue_l1|Color
+    id: blue_l1
+    value_hex: #0054f0
+    group: blue
+- blue|Color
+    id: blue
+    value_hex: #0059ff
+    group: blue
+- blue_r1|Color
+    id: blue_r1
+    value_hex: #1a6aff
+    group: blue
+- blue_r2|Color
+    id: blue_r2
+    value_hex: #2e77ff
+    group: blue
+- blue_r3|Color
+    id: blue_r3
+    value_hex: #4788ff
+    group: blue
+- blue_r4|Color
+    id: blue_r4
+    value_hex: #5c95ff
+    group: blue
+- blue_r5|Color
+    id: blue_r5
+    value_hex: #75a5ff
+    group: blue
+- blue_r6|Color
+    id: blue_r6
+    value_hex: #8ab3ff
+    group: blue
+- blue_r7|Color
+    id: blue_r7
+    value_hex: #a3c3ff
+    group: blue
+- blue_r8|Color
+    id: blue_r8
+    value_hex: #b8d1ff
+    group: blue
+- blue_r9|Color
+    id: blue_r9
+    value_hex: #d1e1ff
+    group: blue
+- blue_r10|Color
+    id: blue_r10
+    value_hex: #e6eeff
+    group: blue
 # ─────────────────────────────────────────────────────────────────────
 # blueviolet group
 # ─────────────────────────────────────────────────────────────────────
 - blueviolet_l10|Color
     id: blueviolet_l10
-    value_hex: #0d071f
+    value_hex: #1a0033
     group: blueviolet
 - blueviolet_l9|Color
     id: blueviolet_l9
-    value_hex: #160c34
+    value_hex: #250047
     group: blueviolet
 - blueviolet_l8|Color
     id: blueviolet_l8
-    value_hex: #1d1044
+    value_hex: #2f005c
     group: blueviolet
 - blueviolet_l7|Color
     id: blueviolet_l7
-    value_hex: #241454
+    value_hex: #3a0070
     group: blueviolet
 - blueviolet_l6|Color
     id: blueviolet_l6
-    value_hex: #2a1864
+    value_hex: #450085
     group: blueviolet
 - blueviolet_l5|Color
     id: blueviolet_l5
-    value_hex: #311c74
+    value_hex: #4f0099
     group: blueviolet
 - blueviolet_l4|Color
     id: blueviolet_l4
-    value_hex: #382085
+    value_hex: #5a00ad
     group: blueviolet
 - blueviolet_l3|Color
     id: blueviolet_l3
-    value_hex: #402495
+    value_hex: #6400c2
     group: blueviolet
 - blueviolet_l2|Color
     id: blueviolet_l2
-    value_hex: #4728a7
+    value_hex: #6f00d6
     group: blueviolet
 - blueviolet_l1|Color
     id: blueviolet_l1
-    value_hex: #4e2cb8
+    value_hex: #7c00f0
     group: blueviolet
 - blueviolet|Color
     id: blueviolet
-    value_hex: #5630ca
+    value_hex: #8400ff
     group: blueviolet
 - blueviolet_r1|Color
     id: blueviolet_r1
-    value_hex: #6745cf
+    value_hex: #901aff
     group: blueviolet
 - blueviolet_r2|Color
     id: blueviolet_r2
-    value_hex: #7758d4
+    value_hex: #9a2eff
     group: blueviolet
 - blueviolet_r3|Color
     id: blueviolet_r3
-    value_hex: #866bd9
+    value_hex: #a647ff
     group: blueviolet
 - blueviolet_r4|Color
     id: blueviolet_r4
-    value_hex: #957dde
+    value_hex: #b05cff
     group: blueviolet
 - blueviolet_r5|Color
     id: blueviolet_r5
-    value_hex: #a490e3
+    value_hex: #bc75ff
     group: blueviolet
 - blueviolet_r6|Color
     id: blueviolet_r6
-    value_hex: #b3a2e7
+    value_hex: #c68aff
     group: blueviolet
 - blueviolet_r7|Color
     id: blueviolet_r7
-    value_hex: #c2b4ec
+    value_hex: #d3a3ff
     group: blueviolet
 - blueviolet_r8|Color
     id: blueviolet_r8
-    value_hex: #d1c7f1
+    value_hex: #dcb8ff
     group: blueviolet
 - blueviolet_r9|Color
     id: blueviolet_r9
-    value_hex: #e0d9f5
+    value_hex: #e9d1ff
     group: blueviolet
 - blueviolet_r10|Color
     id: blueviolet_r10
-    value_hex: #f0ecfa
+    value_hex: #f3e6ff
     group: blueviolet
 # ─────────────────────────────────────────────────────────────────────
 # violet group
 # ─────────────────────────────────────────────────────────────────────
 - violet_l10|Color
     id: violet_l10
-    value_hex: #170417
+    value_hex: #260033
     group: violet
 - violet_l9|Color
     id: violet_l9
-    value_hex: #240724
+    value_hex: #360047
     group: violet
 - violet_l8|Color
     id: violet_l8
-    value_hex: #2f082f
+    value_hex: #45005c
     group: violet
 - violet_l7|Color
     id: violet_l7
-    value_hex: #390a39
+    value_hex: #540070
     group: violet
 - violet_l6|Color
     id: violet_l6
-    value_hex: #430c43
+    value_hex: #630085
     group: violet
 - violet_l5|Color
     id: violet_l5
-    value_hex: #4d0e4d
+    value_hex: #730099
     group: violet
 - violet_l4|Color
     id: violet_l4
-    value_hex: #581058
+    value_hex: #8200ad
     group: violet
 - violet_l3|Color
     id: violet_l3
-    value_hex: #631263
+    value_hex: #9100c2
     group: violet
 - violet_l2|Color
     id: violet_l2
-    value_hex: #6e146e
+    value_hex: #a100d6
     group: violet
 - violet_l1|Color
     id: violet_l1
-    value_hex: #791679
+    value_hex: #b400f0
     group: violet
 - violet|Color
     id: violet
-    value_hex: #841884
+    value_hex: #bf00ff
     group: violet
 - violet_r1|Color
     id: violet_r1
-    value_hex: #923192
+    value_hex: #c61aff
     group: violet
 - violet_r2|Color
     id: violet_r2
-    value_hex: #9d489d
+    value_hex: #cb2eff
     group: violet
 - violet_r3|Color
     id: violet_r3
-    value_hex: #a95da9
+    value_hex: #d147ff
     group: violet
 - violet_r4|Color
     id: violet_r4
-    value_hex: #b471b4
+    value_hex: #d65cff
     group: violet
 - violet_r5|Color
     id: violet_r5
-    value_hex: #be86be
+    value_hex: #dd75ff
     group: violet
 - violet_r6|Color
     id: violet_r6
-    value_hex: #c99ac9
+    value_hex: #e28aff
     group: violet
 - violet_r7|Color
     id: violet_r7
-    value_hex: #d4aed4
+    value_hex: #e8a3ff
     group: violet
 - violet_r8|Color
     id: violet_r8
-    value_hex: #dec2de
+    value_hex: #edb8ff
     group: violet
 - violet_r9|Color
     id: violet_r9
-    value_hex: #e9d6e9
+    value_hex: #f4d1ff
     group: violet
 - violet_r10|Color
     id: violet_r10
-    value_hex: #f4eaf4
+    value_hex: #f9e6ff
     group: violet
-# ─────────────────────────────────────────────────────────────────────
-# default system colors
-# ─────────────────────────────────────────────────────────────────────
-- state_ok|Color
-    id: state_ok
-    value_hex: #48be38
-    group: default
-- state_warning|Color
-    id: state_warning
-    value_hex: #fd9a1e
-    group: default
-- state_error|Color
-    id: state_error
-    value_hex: #fa4c31
-    group: default
-- default_1|Color
-    id: default_1
-    value_hex: #2a304a
-    group: default
-- default_2|Color
-    id: default_2
-    value_hex: #313852
-    group: default
-- default_3|Color
-    id: default_3
-    value_hex: #3b4157
-    group: default

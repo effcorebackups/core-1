@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -25,8 +25,8 @@ class Language {
     ### static declarations ###
     ###########################
 
-    protected static $cache;
     protected static $current;
+    protected static $cache;
 
     static function cache_cleaning() {
         static::$cache = null;

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -15,6 +15,32 @@ abstract class Security {
                        'ul|ol|li|dl|dt|dd|table|caption|col|colgroup|thead|tbody|tfoot|tr|th|td|ruby|rp|rt|'.
                        'br|b|i|u|s|q|em|span|strong|small|sub|sup|del|ins|mark|abbr|cite|dfn|wbr|kbd|var|samp|'.
                        'img|map|area|svg|video|audio|source|track|bdi|bdo';
+
+    const CSS_COLORS = [
+        'aliceblue',      'darkblue',       'firebrick',   'lavender',             'magenta',           'palegoldenrod', 'saddlebrown', 'tan',
+        'antiquewhite',   'darkcyan',       'floralwhite', 'lavenderblush',        'maroon',            'palegreen',     'salmon',      'teal',
+        'aqua',           'darkgoldenrod',  'forestgreen', 'lawngreen',            'mediumaquamarine',  'paleturquoise', 'sandybrown',  'thistle',
+        'aquamarine',     'darkgray',       'fuchsia',     'lemonchiffon',         'mediumblue',        'palevioletred', 'seagreen',    'tomato',
+        'azure',          'darkgreen',      'gainsboro',   'lightblue',            'mediumorchid',      'papayawhip',    'seashell',    'turquoise',
+        'beige',          'darkkhaki',      'ghostwhite',  'lightcoral',           'mediumpurple',      'peachpuff',     'sienna',      'violet',
+        'bisque',         'darkmagenta',    'gold',        'lightcyan',            'mediumseagreen',    'peru',          'silver',      'wheat',
+        'black',          'darkolivegreen', 'goldenrod',   'lightgoldenrodyellow', 'mediumslateblue',   'pink',          'skyblue',     'white',
+        'blanchedalmond', 'darkorange',     'gray',        'lightgreen',           'mediumspringgreen', 'plum',          'slateblue',   'whitesmoke',
+        'blue',           'darkorchid',     'green',       'lightgrey',            'mediumturquoise',   'powderblue',    'slategray',   'yellow',
+        'blueviolet',     'darkred',        'greenyellow', 'lightpink',            'mediumvioletred',   'purple',        'snow',        'yellowgreen',
+        'brown',          'darksalmon',     'honeydew',    'lightsalmon',          'midnightblue',      'rebeccapurple', 'springgreen',
+        'burlywood',      'darkseagreen',   'hotpink',     'lightseagreen',        'mintcream',         'red',           'steelblue',
+        'cadetblue',      'darkslateblue',  'indianred',   'lightskyblue',         'mistyrose',         'rosybrown',
+        'chartreuse',     'darkslategray',  'indigo',      'lightslategray',       'moccasin',          'royalblue',
+        'chocolate',      'darkturquoise',  'ivory',       'lightsteelblue',       'navajowhite',
+        'coral',          'darkviolet',     'khaki',       'lightyellow',          'navy',
+        'cornflowerblue', 'deeppink',                      'lime',                 'oldlace',
+        'cornsilk',       'deepskyblue',                   'limegreen',            'olive',
+        'crimson',        'dimgray',                       'linen',                'olivedrab',
+        'cyan',           'dodgerblue',                                            'orange',
+                                                                                   'orangered',
+                                                                                   'orchid',
+    ];
 
     # hash performance (5 million iterations):
     # ┌────────────────────────╥─────────────┬────────┬─────────────────────────┐
@@ -146,6 +172,18 @@ abstract class Security {
         }
     }
 
+    # ─────────────────────────────────────────────────────────────────────
+    # min-max correction (example of range: from 1 to 10)
+    # ═════════════════════════════════════════════════════════════════════
+    #     max($min = 1, min($cur = -5, $max = 10) = -5) =  1
+    #     max($min = 1, min($cur =  5, $max = 10) =  5) =  5
+    #     max($min = 1, min($cur = 15, $max = 10) = 10) = 10
+    # ─────────────────────────────────────────────────────────────────────
+
+    static function sanitize_min_max($min, $max, $cur) {
+        return max($min, min($cur, $max));
+    }
+
     ####################################
     ### functionality for validation ###
     ####################################
@@ -167,6 +205,29 @@ abstract class Security {
         return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[a-f0-9]{'.$length.'}$%']]); # 32 - md5 | 40 - sha1 | …
     }
 
+    # ─────────────────────────────────────────────────────────────────────
+    # power of type conversion
+    # ═════════════════════════════════════════════════════════════════════
+    #     (string)(int)(string): '123456' → 123456 → '123456' === '123456'
+    #     (string)(int)(string): '123xyz' → 123    → '123'    !== '123xyz'
+    #     (string)(int)(string): 'xyz123' → 0      → '0'      !== 'xyz123'
+    # ─────────────────────────────────────────────────────────────────────
+
+    static function validate_str_int($value) {
+        return (is_int($value) || is_string($value)) && (string)$value === (string)(int)$value;
+    }
+
+    static function validate_int($value, $with_minus = true) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+            $with_minus ? '%^(?<int___1>'.             '[0]' .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'.')$|'.
+                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'.')$%S' :
+                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+                          '%^(?<int___1>'.             '[0]' .')$|'.
+                           '^(?<int___2>'.      '[1-9][0-9]*'.')$%S'
+        ]]);
+    }
+
     static function validate_number($value, $with_minus = true) {
         return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
             $with_minus ? '%^(?<int___1>'.             '[0]'                        .')$|'.
@@ -185,17 +246,6 @@ abstract class Security {
         ]]);
     }
 
-    static function validate_int($value, $with_minus = true) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            $with_minus ? '%^(?<int___1>'.             '[0]' .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'.')$|'.
-                           '^(?<int___3>'.'[-]'.'[1-9][0-9]*'.')$%S' :
-                    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                          '%^(?<int___1>'.             '[0]' .')$|'.
-                           '^(?<int___2>'.      '[1-9][0-9]*'.')$%S'
-        ]]);
-    }
-
     static function validate_range($min, $max, $step, $value) {
         if (bccomp(           $value, $min, 20) /* $value  <  $min */ ===  -1) return false;
         if (bccomp(           $value, $max, 20) /* $value  >  $max */ ===  +1) return false;
@@ -203,14 +253,6 @@ abstract class Security {
         if (bccomp(           $value, $max, 20) /* $value === $max */ ===   0) return true;
         if (rtrim(bcdiv(bcsub($value, $min, 20), $step, 20), '0')[-1] === '.') return true;
         return false;
-    }
-
-    static function validate_hex_color($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
-            '%^#(?<R>[a-f0-9]{2})'.
-               '(?<G>[a-f0-9]{2})'.
-               '(?<B>[a-f0-9]{2})$%'
-        ]]);
     }
 
     static function validate_ip_v4($value) {
@@ -248,14 +290,6 @@ abstract class Security {
         return $value;
     }
 
-    static function validate_css_color($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^\\#[a-fA-F0-9]{3}$|^\\#[a-fA-F0-9]{6}$|^[a-zA-Z]{3,20}$%S']]); # examples: "#ff0", "#a1b2c3", "Red", "LightGoldenrodYellow"
-    }
-
-    static function validate_css_float($value) {
-        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9]{0,4}[\\.]{0,1}[0-9]{1,3}$%S']]); # examples: ".567", "1234.567", "1234567" | fake values: ".", "123.", "1.2.3", "12..3"
-    }
-
     # valid values:
     # ┌────────────┬─────────────┐
     # │ 1234.567   │ -1234.567   │
@@ -273,7 +307,31 @@ abstract class Security {
         return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
             '%^(?<sign>[\\-]{0,1})'. # examples: "-1px", "1234.567em", ".5%", "-.567px" | fake values: "-", ".", "px", "123.", "123-", "12-3", "12--3", "12..3", "1-2-3", "1.2.3"
               '(?<value>[0-9]{0,4}[\\.]{0,1}[0-9]{1,3})'.
-              '(?<dimension>px|em|\\%|)$%S']]);
+              '(?<dimension>px|cm|mm|in|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|\\%|)$%S'
+        ]]);
+    }
+
+    static function validate_css_float($value) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '%^[0-9]{0,4}[\\.]{0,1}[0-9]{1,3}$%S']]); # examples: ".567", "1234.567", "1234567" | fake values: ".", "123.", "1.2.3", "12..3"
+    }
+
+    static function validate_css_color($value) {
+        # examples: "Red", "LightGoldenrodYellow"
+        if (Core::in_array(strtolower($value), static::CSS_COLORS))
+            return $value;
+        # examples: "#ff0", "#a1b2c3"
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+            '%^\\#[a-fA-F0-9]{3}$'.'|'.
+             '^\\#[a-fA-F0-9]{6}$'.'%S'
+        ]]);
+    }
+
+    static function validate_hex_color($value) {
+        return filter_var($value, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' =>
+            '%^#(?<R>[a-f0-9]{2})'.
+               '(?<G>[a-f0-9]{2})'.
+               '(?<B>[a-f0-9]{2})$%'
+        ]]);
     }
 
 }

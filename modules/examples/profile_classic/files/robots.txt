@@ -1,4 +1,4 @@
-Sitemap: http://%%_request_host/sitemap.xml
+Sitemap: http://%%_request(host)/sitemap.xml
 
 User-agent: *
 User-agent: AdsBot-Google

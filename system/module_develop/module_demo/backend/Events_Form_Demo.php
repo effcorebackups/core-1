@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\demo;
@@ -74,6 +74,46 @@ abstract class Events_Form_Demo {
                 Message::insert(
                     new Text('Call "%%_call" on click "%%_click"', ['call' => '\\'.__METHOD__, 'click' => (new Text('send'))->render()])
                 );
+                # check POST values
+                global $_POST;
+                if (array_key_exists('name_13', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_13' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_14', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_14' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_22', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_22' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_23', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_23' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_24', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_24' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_33', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_33' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_34', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_34' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_42', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_42' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_43', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_43' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_44', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_44' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_53', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_53' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_54', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_54' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_62', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_62' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_63', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_63' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_64', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_64' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_73', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_73' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_74', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_74' ]) ); # …\Field_Hidden
+                if (array_key_exists('name_80', $_POST)                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_80' ]) ); # …\Field_Hidden
+                if ($_POST['name_01'] !== '1'                             ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_01' ]) ); # …\Field_Hidden
+                if ($_POST['name_10'] !== [0 => '10']                     ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_10' ]) ); # …\Field_Hidden
+                if ($_POST['name_11'] !== [0 => [1 => '11']]              ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_11' ]) ); # …\Field_Hidden
+                if ($_POST['name_12'] !== [0 => [1 => [2 => '12']]]       ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_12' ]) ); # …\Field_Hidden
+                if ($_POST['name_20'] !== [0 => [0 => '20']]              ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_20' ]) ); # …\Field_Hidden
+                if ($_POST['name_21'] !== [0 => [1 => [0 => '21']]]       ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_21' ]) ); # …\Field_Hidden
+                if ($_POST['name_30'] !== [1 => '30']                     ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_30' ]) ); # …\Field_Hidden
+                if ($_POST['name_31'] !== [1 => [2 => '31']]              ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_31' ]) ); # …\Field_Hidden
+                if ($_POST['name_32'] !== [1 => [2 => [3 => '32']]]       ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_32' ]) ); # …\Field_Hidden
+                if ($_POST['name_40'] !== [1 => [0 => '40']]              ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_40' ]) ); # …\Field_Hidden
+                if ($_POST['name_41'] !== [1 => [2 => [0 => '41']]]       ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_41' ]) ); # …\Field_Hidden
+                if ($_POST['name_50'] !== ['a' => '50']                   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_50' ]) ); # …\Field_Hidden
+                if ($_POST['name_51'] !== ['a' => ['b' => '51']]          ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_51' ]) ); # …\Field_Hidden
+                if ($_POST['name_52'] !== ['a' => ['b' => ['c' => '52']]] ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_52' ]) ); # …\Field_Hidden
+                if ($_POST['name_60'] !== ['a' => [0 => '60']]            ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_60' ]) ); # …\Field_Hidden
+                if ($_POST['name_61'] !== ['a' => ['b' => [0 => '61']]]   ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_61' ]) ); # …\Field_Hidden
+                if ($_POST['name_70'] !== [0 => '70']                     ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_70' ]) ); # …\Field_Hidden
+                if ($_POST['name_71'] !== [0 => [0 => '71']]              ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_71' ]) ); # …\Field_Hidden
+                if ($_POST['name_72'] !== [0 => [0 => [0 => '72']]]       ) Message::insert( new Text('Value of "%%_title" field is incorrect!', ['title' => 'name_72' ]) ); # …\Field_Hidden
+                # check Fields values
                 $value_def_access = (object)['roles' => ['demo' => 'demo'], 'users' => []];
                 $value_def_checkboxes = Core::array_keys_map(['checkbox_2', 'checkbox_4']);
                 $value_def_switchers  = Core::array_keys_map(['switcher_2', 'switcher_4']);

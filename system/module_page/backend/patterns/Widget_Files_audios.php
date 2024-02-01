@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -86,17 +86,17 @@ class Widget_Files_audios extends Widget_Files {
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
-        $result->child_select('button_delete')->_kind = 'audio';
+        $result->child_select('head')->child_select('button_delete')->_kind = 'audio';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'audio') {
             if (!empty($widget->audio_player_on_manage_is_visible)) {
-                $result->child_insert(new Markup('audio', [
+                $result->child_select('body')->child_insert(new Markup('audio', [
                     'src' => Core::to_url_from_path($item->object->get_current_path(true))] + $widget->audio_player_on_manage_settings, [
                 ], +500), 'player'); }
             if (!empty($item->settings['data-cover-is-embedded'])) {
-                $result->child_select('info')->child_select('title')->child_select('text')->text_append(
+                $result->child_select('body')->child_select('info')->child_select('title')->child_select('text')->text_append(
                     ' + '.(new Text('cover'))->render());
-                $result->child_insert(new Markup_simple('img', [
+                $result->child_select('body')->child_insert(new Markup_simple('img', [
                     'data-type' => 'thumbnail',
                     'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?cover=small',
                     'alt'       => new Text('thumbnail'),

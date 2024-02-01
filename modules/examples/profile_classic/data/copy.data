@@ -13,12 +13,12 @@ copy
     if_exists: backup_and_replace
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - logotype
-    from: files/logotype.svg
-    to: dynamic/files/pictures/picture-logotype.svg
+    from: files/logotype.svgd
+    to: dynamic/files/pictures/picture-logotype.svgd
     if_exists: backup_and_replace
 - logotype_ru
-    from: files/logotype-ru.svg
-    to: dynamic/files/pictures/picture-logotype-ru.svg
+    from: files/logotype-ru.svgd
+    to: dynamic/files/pictures/picture-logotype-ru.svgd
     if_exists: backup_and_replace
 - logotype_behance
     from: files/logotype-behance.svgd
@@ -104,9 +104,9 @@ copy
     from: files/logotype-tumblr.svgd
     to: dynamic/files/pictures/picture-logotype_tumblr.svgd
     if_exists: backup_and_replace
-- logotype_twitter
-    from: files/logotype-twitter.svgd
-    to: dynamic/files/pictures/picture-logotype_twitter.svgd
+- logotype_x
+    from: files/logotype-x.svgd
+    to: dynamic/files/pictures/picture-logotype_x.svgd
     if_exists: backup_and_replace
 - logotype_viber
     from: files/logotype-viber.svgd

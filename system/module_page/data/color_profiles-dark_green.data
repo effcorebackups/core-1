@@ -1,0 +1,99 @@
+color_profiles
+- dark_green|Color_profile
+    id: dark_green
+    title: Dark, green palette
+    is_dark: true
+    groups
+    - main
+        title: Main colors
+        colors
+        - page
+            title: Page
+            color_id: green_l9
+        - text
+            title: Text
+            color_id: white
+        - main
+            title: Main color
+            color_id: green_l4
+        - link
+            title: Link
+            color_id: white
+        - link_active
+            title: Link active
+            color_id: green_r2
+        - table_row_odd
+            title: Table: row odd
+            color_id: green_l8
+        - table_row_even
+            title: Table: row even
+            color_id: green_l9
+    - menu
+        title: Menu
+        colors
+        - menu
+            title: Menu
+            color_id: green_l10
+        - menu_active
+            title: Menu active
+            color_id: green_l8
+        - menu_text
+            title: Menu: text
+            color_id: white
+        - menu_link
+            title: Menu: link
+            color_id: white
+        - menu_link_active
+            title: Menu: link active
+            color_id: yellowgreen_r2
+    - tabs
+        title: Tabs
+        colors
+        - tabs
+            title: Tabs
+            color_id: orange_l3
+        - tabs_link
+            title: Tabs: link
+            color_id: white
+        - tabs_link_active
+            title: Tabs: link active
+            color_id: white
+        - tabs_link_active_no_bg
+            title: Tabs: link active (no background)
+            color_id: yellowgreen_r2
+    - state
+        title: State
+        colors
+        - ok
+            title: Okay
+            color_id: green_l5
+        - warning
+            title: Warning
+            color_id: orange_l2
+        - error
+            title: Error
+            color_id: red_l3
+    - form
+        title: Form elements
+        colors
+        - fieldset
+            title: Fieldset
+            color_id: green_l8
+        - fieldset_nested
+            title: Fieldset nested
+            color_id: green_l9
+        - field
+            title: Field
+            color_id: green_l9
+        - field_text
+            title: Field: text
+            color_id: white
+        - button
+            title: Button
+            color_id: orange_l3
+        - button_active
+            title: Button active
+            color_id: orange_l4
+        - button_text
+            title: Button: text
+            color_id: white

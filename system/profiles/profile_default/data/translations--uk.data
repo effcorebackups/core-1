@@ -4,17 +4,17 @@ translations
     data
     - Access recovery: Відновлення доступу
     - Anonymous user's menu: Меню анонімного користувача
-    - Edit user %%_nickname_page_context(nickname): Редагувати користувача %%_nickname_page_context(nickname)
-    - Grid 2x5 \| profile "Default": Сітка 2x5 | профіль "За замовчуванням"
-    - Grid 3x5 \| profile "Default": Сітка 3x5 | профіль "За замовчуванням"
-    - Grid 4x5 \| profile "Default": Сітка 4x5 | профіль "За замовчуванням"
-    - Grid 5x5 \| profile "Default": Сітка 5x5 | профіль "За замовчуванням"
+    - Edit user %%_page_arg_context(nickname\|n/a): Редагувати користувача %%_page_arg_context(nickname|n/a)
+    - Grid 2x5: Сітка 2x5
+    - Grid 3x5: Сітка 3x5
+    - Grid 4x5: Сітка 4x5
+    - Grid 5x5: Сітка 5x5
     - Module for profile "Default".: Модуль для профілю "За замовчуванням".
     - New User Registration: Реєстрація нового користувача
     - Profile "Default": Профіль "За замовчуванням"
     - Registered user's menu: Меню зареєстрованого користувача
     - Text Front: Текст Головної
     - The main text of the page: Основний текст сторінки
-    - Universal layout \| profile "Default": Універсальний макет | профіль "За замовчуванням"
-    - User %%_nickname_page_context(nickname): Користувач %%_nickname_page_context(nickname)
+    - Universal layout: Універсальний макет
+    - User %%_page_arg_context(nickname\|n/a): Користувач %%_page_arg_context(nickname|n/a)
     - Welcome to our site!: Ласкаво просимо на наш сайт!

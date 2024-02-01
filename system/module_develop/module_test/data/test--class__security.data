@@ -62,6 +62,14 @@ tests
           - name: Security::validate_range()
     - code-validate_range|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_range
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-validate_str_int|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Security::validate_str_int()
+    - code-validate_str_int|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_str_int
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

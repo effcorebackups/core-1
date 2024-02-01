@@ -1,47 +1,10 @@
 
 body {
-  display: block;
-  margin: 0 auto;
-  padding: 0 30px 100px 30px;
-  box-sizing: border-box;
-  min-width: calc(%%_page_width_min_context(null)px + 60px);
-  max-width: calc(%%_page_width_max_context(null)px + 60px);
-  %%_return_if_token(page_width_max_context|0|max-width: 100%;)
   font-family: 'Arial';
   font-size: 15px;
   line-height: 1.5em;
-  color: %%_color__text;
-  background: %%_color__page;
-}
-
-
-
-/* layout */
-
-[data-area] {display: block; vertical-align: top}
-[data-area]:empty {display: none !important}
-[data-area]::after {content: ''; clear: both; display: block}
-
-[data-area][data-type^='grid-'] {display: grid}
-[data-area][data-type='grid-2x'] {grid-template-columns: repeat(2, 1fr)}
-[data-area][data-type='grid-3x'] {grid-template-columns: repeat(3, 1fr)}
-[data-area][data-type='grid-4x'] {grid-template-columns: repeat(4, 1fr)}
-[data-area][data-type='grid-5x'] {grid-template-columns: repeat(5, 1fr)}
-
-@media screen and (max-width: %%_page_width_mobile(null)px) {
-  [data-area][data-type^='grid-'] {display: block}
-}
-
-[data-area][data-type='flex'] {display: flex; flex-wrap: wrap}
-[data-area][data-type='flex'] > [data-area] {flex: 200px}
-[data-area][data-type='flex'] > [data-area]:empty {flex: 0}
-
-
-
-/* layout 'universal' */
-
-[data-layout-id='universal'] [data-group-id='main-columns'] > [data-group-id='center'] {
-  flex: 500px;
+  color: %%_color(text);
+  background: %%_color(page);
 }
 
 
@@ -56,10 +19,10 @@ h3 {margin: 2em 0 1em 0; font-size: 1em}
 
 /* links */
 
-a                             {color: %%_color__link}
-a[href]:hover                 {color: %%_color__link_active}
-a[aria-selected      ='true'] {color: %%_color__link_active}
-a[data-selected-trail='true'] {color: %%_color__link_active}
+a                             {color: %%_color(link)}
+a[href]:hover                 {color: %%_color(link_active)}
+a[aria-selected      ='true'] {color: %%_color(link_active)}
+a[data-selected-trail='true'] {color: %%_color(link_active)}
 
 x-url                {display: inline-block}
 x-url x-protocol     {display: inline-block}
@@ -74,8 +37,8 @@ x-url x-anchor       {display: inline-block}
 /* pictures */
 
 img {
-  max-width: %%_page_width_max_context(null)px;
-  %%_return_if_token(page_width_max_context|0|max-width: 100%;)
+  max-width: %%_page_width_max(context)px;
+  %%_return_if_token(page_width_max\(context\)|0|max-width: 100%;)
   border: 0;
 }
 
@@ -140,9 +103,9 @@ h3 + table {margin-top: 20px}
 table {border-collapse: collapse; width: 100%; margin: 50px 0}
 table td, table th {padding: 12px 15px}
 table thead th {font-weight: normal; text-align: left; font-size: 1.2em}
-table tbody {border-top: 5px solid %%_color__main; border-bottom: 1px solid %%_color__main; background: %%_color__table_row_even}
-table tbody tr:nth-child(odd)  td {background-color: %%_color__table_row_odd}
-table tbody tr:nth-child(even) td {background-color: %%_color__table_row_even}
+table tbody {border-top: 5px solid %%_color(main); border-bottom: 1px solid %%_color(main); background: %%_color(table_row_even)}
+table tbody tr:nth-child(odd)  td {background-color: %%_color(table_row_odd)}
+table tbody tr:nth-child(even) td {background-color: %%_color(table_row_even)}
 table tbody tr                 td:empty::after {content: 'x'; opacity: .3}
 
 table [data-cell-id$='checkbox_select'] {width: 1%; padding-right: 0}
@@ -173,9 +136,9 @@ x-table x-cell x-title {display: none}
 x-table {width: 100%; box-sizing: border-box; border-collapse: collapse; margin: 50px 0}
 x-table x-cell {padding: 12px 15px; vertical-align: middle}
 x-table x-head x-cell {font-size: 1.2em}
-x-table x-body {border-top: 5px solid %%_color__main; border-bottom: 1px solid %%_color__main; background: %%_color__table_row_even}
-x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color__table_row_odd}
-x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color__table_row_even}
+x-table x-body {border-top: 5px solid %%_color(main); border-bottom: 1px solid %%_color(main); background: %%_color(table_row_even)}
+x-table x-body x-row:nth-child(odd)  x-cell {background-color: %%_color(table_row_odd)}
+x-table x-body x-row:nth-child(even) x-cell {background-color: %%_color(table_row_even)}
 x-table x-body x-row                 x-cell x-value:empty::after {content: 'x'; opacity: .3}
 
 x-table [data-cell-id$='checkbox_select'] {width: 1%; padding-right: 0}
@@ -187,12 +150,12 @@ x-table x-body [data-cell-id='actions'] {text-align: right}
 x-table x-body [data-cell-id='actions'] x-value:empty::after {content: ''}
 
 x-table[data-view-type='table-dl'] x-cell {vertical-align: top}
-x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: 30%; border-right: 5px solid %%_color__main}
+x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: 30%; border-right: 5px solid %%_color(main)}
 x-table[data-view-type='table-dl'] x-cell[data-role='value'] {width: 70%}
-x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: %%_color__table_row_odd}
-x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: %%_color__table_row_even}
-x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: %%_color__table_row_odd}
-x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: %%_color__table_row_even}
+x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='title'] {background-color: %%_color(table_row_odd)}
+x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='title'] {background-color: %%_color(table_row_even)}
+x-table[data-view-type='table-dl'] x-row:nth-child(odd)  x-cell[data-role='value'] {background-color: %%_color(table_row_odd)}
+x-table[data-view-type='table-dl'] x-row:nth-child(even) x-cell[data-role='value'] {background-color: %%_color(table_row_even)}
 
 x-table[data-view-type='table-dl'] x-cell[data-role='value']:empty::after {
   content: 'x'; opacity: .3
@@ -223,7 +186,7 @@ x-table[data-style~='compact']        x-cell:last-child {padding-right: 17px}
   x-table x-body [data-cell-id$='checkbox_select'] {width: auto; padding-right: 15px}
   x-table x-body [data-cell-id='actions'] {text-align: left}
 
-  x-table[data-view-type='table-dl'] {border-top: 5px solid %%_color__main}
+  x-table[data-view-type='table-dl'] {border-top: 5px solid %%_color(main)}
   x-table[data-view-type='table-dl'] x-cell[data-role='title'] {width: auto; border-right: none}
   x-table[data-view-type='table-dl'] x-cell[data-role='value'] {width: auto}
 
@@ -260,28 +223,6 @@ x-table[data-style~='compact']        x-cell:last-child {padding-right: 17px}
 
 
 
-/* x-layout-manager */
-
-x-layout-manager {display: block; margin: 50px 0; border: 1px dotted %%_color__main}
-x-layout-manager [data-area] {border-right: 1px dotted %%_color__main}
-x-layout-manager [data-area][data-id] {min-height: 20px}
-
-x-layout-manager x-area-info {
-  display: block;
-  margin: 0 0 20px 0;
-  padding: 5px 9px;
-  line-height: 1.2em;
-  color: white;
-  background: %%_color__main url('pictures/lines.svgd');
-}
-
-x-layout-manager x-area-info * {vertical-align: middle}
-x-layout-manager x-area-info x-area-id {margin-right: 1em; font-size: .85em; text-transform: uppercase}
-x-layout-manager x-area-info x-area-tag-name {font-family: monospace; font-size: .8em; opacity: .5}
-x-layout-manager x-area-info x-area-tag-name::before {content: '<'}
-x-layout-manager x-area-info x-area-tag-name::after  {content: '>'}
-
-
 
 /* x-admin-actions */
 
@@ -292,7 +233,7 @@ x-admin-actions {
   line-height: 1.2em;
   color: white;
   text-align: right;
-  background: %%_color__main url('pictures/lines.svgd')}
+  background: %%_color(main) url('pictures/lines.svgd')}
 x-admin-actions::after {content: ''; clear: both; display: block}
 
 x-admin-actions a {color: white}
@@ -306,10 +247,10 @@ x-admin-actions a[data-id='update'] {
 }
 
 body[data-is-managed-layout] [data-block] {
-  min-height: 50px;
+  min-height: 65px;
   margin: 10px 0;
-  border: 1px dotted %%_color__warning}
-body[data-is-managed-layout] [data-block] x-admin-actions {margin-bottom: 5px; background-color: %%_color__warning}
+  border: 1px dotted %%_color(warning)}
+body[data-is-managed-layout] [data-block] x-admin-actions {background-color: %%_color(warning)}
 body[data-is-managed-layout] [data-block][data-id='block__page_actions'] {min-height: auto; margin-top: 0; border: 0}
 
 
@@ -321,12 +262,12 @@ nav[aria-label='breadcrumb'] a {
   display: inline-block;
   margin: 2px 5px 2px 0;
   padding: 5px 10px;
-  border: 1px solid %%_color__main;
+  border: 1px solid %%_color(main);
   border-radius: 10px;
-  color: %%_color__link}
-nav[aria-label='breadcrumb'] a:hover {color: %%_color__link_active}
+  color: %%_color(link)}
+nav[aria-label='breadcrumb'] a:hover {color: %%_color(link_active)}
 nav[aria-label='breadcrumb'] a:not([href]) {opacity: .5; cursor: default}
-nav[aria-label='breadcrumb'] a:not([href]):hover {color: %%_color__link}
+nav[aria-label='breadcrumb'] a:not([href]):hover {color: %%_color(link)}
 
 
 
@@ -342,7 +283,7 @@ nav[aria-label='pager'] a {
   margin: 3px 5px;
   font-size: 1.2em}
 nav[aria-label='pager'] a[aria-current='true'] {
-  color: %%_color__link_active;
+  color: %%_color(link_active);
 }
 
 
@@ -352,10 +293,10 @@ nav[aria-label='pager'] a[aria-current='true'] {
 x-messages {display: block; margin: 100px auto}
 x-messages p {margin: 0; padding: 0}
 x-messages ul {margin: 10px 0; padding: 15px 20px; background-color: gray; color: white; box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1)}
-x-messages ul[data-type='notice' ] {background-color: %%_color__main}
-x-messages ul[data-type='ok'     ] {background-color: %%_color__ok}
-x-messages ul[data-type='warning'] {background-color: %%_color__warning}
-x-messages ul[data-type='error'  ] {background-color: %%_color__error}
+x-messages ul[data-type='notice' ] {background-color: %%_color(main)}
+x-messages ul[data-type='ok'     ] {background-color: %%_color(ok)}
+x-messages ul[data-type='warning'] {background-color: %%_color(warning)}
+x-messages ul[data-type='error'  ] {background-color: %%_color(error)}
 x-messages ul li {margin: 0 0 0 15px; padding: 0; font-size: 16px; line-height: 1.5em}
 x-messages ul li:only-child {margin: 0; list-style: none}
 x-messages a {color: white}
@@ -363,7 +304,7 @@ x-messages a {color: white}
 x-messages ul[data-type='credentials'] {
   list-style: none;
   padding: 30px;
-  background: %%_color__main url('pictures/lines.svgd');
+  background: %%_color(main) url('pictures/lines.svgd');
 }
 
 x-messages ul[data-type='credentials'] li {
@@ -378,9 +319,9 @@ x-messages ul[data-type='credentials'] li {
 /* x-actions */
 
 x-actions a [data-action-title] {display: none}
-x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__main)')    no-repeat 0  -1px}
-x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__main)')    no-repeat 0 -41px}
-x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_return_token_color_encoded(color__warning)') no-repeat 0 -61px}
+x-actions a[data-id='select'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_color(main|encoded=1)')    no-repeat 0  -1px}
+x-actions a[data-id='update'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_color(main|encoded=1)')    no-repeat 0 -41px}
+x-actions a[data-id='delete'] {padding-left: 25px; background: url('pictures/icons-actions_list.svgd?color=%%_color(warning|encoded=1)') no-repeat 0 -61px}
 
 
 
@@ -396,9 +337,9 @@ x-sticker {
   color: white;
   background-color: gray}
 [data-page-palette-is-dark] x-sticker {color: black; background-color: silver}
-x-sticker[data-style~='ok'     ] {background: %%_color__ok}
-x-sticker[data-style~='warning'] {background: %%_color__warning}
-x-sticker[data-style~='error'  ] {background: %%_color__error}
+x-sticker[data-style~='ok'     ] {background: %%_color(ok)}
+x-sticker[data-style~='warning'] {background: %%_color(warning)}
+x-sticker[data-style~='error'  ] {background: %%_color(error)}
 x-sticker[title] {cursor: help}
 
                             x-sticker a {color: white !important}
@@ -438,8 +379,8 @@ x-no-items {
 x-no-items[data-style='table'] {
   margin: 50px 0;
   padding: 20px;
-  border-top: 5px solid %%_color__main;
-  background: %%_color__table_row_odd;
+  border-top: 5px solid %%_color(main);
+  background: %%_color(table_row_odd);
 }
 
 
@@ -454,9 +395,9 @@ x-document {
   max-width: 100%;
   box-sizing: border-box;
   overflow: auto;
-  border: 1px solid %%_color__main(0|0|0|.5);
-  color: %%_color__field_text;
-  background-color: %%_color__field;
+  border: 1px solid %%_color(main|o=.5);
+  color: %%_color(field_text);
+  background-color: %%_color(field);
 }
 
 x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}
@@ -491,16 +432,16 @@ x-diagram [data-diagram-title] {display: block; margin-bottom: 20px; font-size: 
 x-diagram[data-type='linear'] {}
 x-diagram[data-type='linear'] x-param {display: block; margin: 20px 0}
 x-diagram[data-type='linear'] x-param x-title {display: block; font-size: 1.2em}
-x-diagram[data-type='linear'] x-param x-scale {display: block; height: 15px; margin: 5px 0; border: 1px solid %%_color__main}
-x-diagram[data-type='linear'] x-param                       x-scale x-scale-fill {display: block; height: 15px; opacity: .5; background: %%_color__main}
-x-diagram[data-type='linear'] x-param[aria-selected='true'] x-scale x-scale-fill {background: %%_color__warning}
+x-diagram[data-type='linear'] x-param x-scale {display: block; height: 15px; margin: 5px 0; border: 1px solid %%_color(main)}
+x-diagram[data-type='linear'] x-param                       x-scale x-scale-fill {display: block; height: 15px; opacity: .5; background: %%_color(main)}
+x-diagram[data-type='linear'] x-param[aria-selected='true'] x-scale x-scale-fill {background: %%_color(warning)}
 x-diagram[data-type='linear'] x-param x-value {display: block; font-size: .8em}
 
 x-diagram[data-type='radial'] {text-align: center}
 x-diagram[data-type='radial'] svg {display: inline-block; vertical-align: middle}
 x-diagram[data-type='radial'] x-params {display: inline-block; margin-left: 10px; vertical-align: middle; text-align: left}
 x-diagram[data-type='radial'] x-param {display: block; margin: 2px 0; padding: 2px 7px; border: 1px dotted transparent; border-radius: 5px}
-x-diagram[data-type='radial'] x-param[aria-selected='true'] {border-color: %%_color__warning}
+x-diagram[data-type='radial'] x-param[aria-selected='true'] {border-color: %%_color(warning)}
 x-diagram[data-type='radial'] x-param x-color {display: inline-block; width: 10px; height: 10px; margin-right: 5px}
 x-diagram[data-type='radial'] x-param x-title {display: inline-block; margin-right: 5px}
 x-diagram[data-type='radial'] x-param x-title::after {content: ' – '}
@@ -514,7 +455,7 @@ x-diagram-total x-title::after {content: ': '}
 /* x-module-info */
 
 x-module-info {display: block; padding: 30px 20px}
-x-module-info:not(:last-child) {border-bottom: 1px dotted %%_color__main}
+x-module-info:not(:last-child) {border-bottom: 1px dotted %%_color(main)}
 
 x-module-info x-field[data-type='switcher'] {float: right; margin: 0 0 0 10px}
 x-module-info x-field[data-type='switcher'] input {margin: 0}

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -34,15 +34,45 @@ abstract class Request {
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # sanitize_structure(…):
+    # sanitize_args:
+    # ─────────────────────────────────────────────────────────────────────
+
+    static function sanitize_args($source = '_GET') {
+        $result = [];
+        global ${$source};
+        if (count(${$source})) {
+            $allowed_args = static::allowed_args_in_GET_get();
+            foreach (${$source} as $c_name => $c_value) {
+                if (isset($allowed_args[$c_name])) {
+                    $result[$c_name] = $c_value;
+                }
+            }
+        }
+        return $result;
+    }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # sanitize_structure:
     # ═════════════════════════════════════════════════════════════════════
-    #   (string)key => (string)value
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    #   (string)key => [
-    #     (int)0 => (string)value,
-    #     (int)1 => (string)value …
-    #     (int)N => (string)value
-    #   ]
+    #     (string)key_0 => (string)value
+    #     ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #     (string)key_0 => [
+    #         (string|int)key_1 => (string)value
+    #     ]
+    #     ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #     (string)key_0 => [
+    #         (string|int)key_1 => [
+    #             (string|int)key_2 => (string)value
+    #         ]
+    #     ]
+    #     ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #     (string)key_0 => [
+    #         (string|int)key_1 => [
+    #             (string|int)key_2 => [
+    #                 (string|int)key_3 => (string)value
+    #             ]
+    #         ]
+    #     ]
     # ─────────────────────────────────────────────────────────────────────
 
     static function sanitize_structure($source = '_POST') {
@@ -56,39 +86,44 @@ abstract class Request {
                 $c_k0 = $iterator->getSubIterator(0) ? $iterator->getSubIterator(0)->key() : null;
                 $c_k1 = $iterator->getSubIterator(1) ? $iterator->getSubIterator(1)->key() : null;
                 $c_k2 = $iterator->getSubIterator(2) ? $iterator->getSubIterator(2)->key() : null;
-                if ($c_depth === 0 && is_string($c_k0) &&                  is_string($c_value)) $result[$c_k0]   = $c_value;
-                if ($c_depth === 1 && is_string($c_k0) && is_int($c_k1) && is_string($c_value)) $result[$c_k0][] = $c_value;
-            }
-            # filtering by whitelist
-            if ($source === '_GET') {
-                $allowed_args = Request::allowed_args_in_GET_get();
-                foreach ($result as $c_name => $c_value) {
-                    if (!isset($allowed_args[$c_name])) {
-                        unset($result[$c_name]);
-                    }
-                }
+                $c_k3 = $iterator->getSubIterator(3) ? $iterator->getSubIterator(3)->key() : null;
+                if ($c_depth === 0 && is_string($c_k0) &&                                                             is_string($c_value)) $result[$c_k0]                      = $c_value;
+                if ($c_depth === 1 && is_string($c_k0) &&    is_int($c_k1) &&                                         is_string($c_value)) $result[$c_k0][$c_k1]               = $c_value;
+                if ($c_depth === 1 && is_string($c_k0) && is_string($c_k1) &&                                         is_string($c_value)) $result[$c_k0][$c_k1]               = $c_value;
+                if ($c_depth === 2 && is_string($c_k0) &&    is_int($c_k1) &&    is_int($c_k2) &&                     is_string($c_value)) $result[$c_k0][$c_k1][$c_k2]        = $c_value;
+                if ($c_depth === 2 && is_string($c_k0) && is_string($c_k1) &&    is_int($c_k2) &&                     is_string($c_value)) $result[$c_k0][$c_k1][$c_k2]        = $c_value;
+                if ($c_depth === 2 && is_string($c_k0) &&    is_int($c_k1) && is_string($c_k2) &&                     is_string($c_value)) $result[$c_k0][$c_k1][$c_k2]        = $c_value;
+                if ($c_depth === 2 && is_string($c_k0) && is_string($c_k1) && is_string($c_k2) &&                     is_string($c_value)) $result[$c_k0][$c_k1][$c_k2]        = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) &&    is_int($c_k1) &&    is_int($c_k2) &&    is_int($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) && is_string($c_k1) &&    is_int($c_k2) &&    is_int($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) &&    is_int($c_k1) && is_string($c_k2) &&    is_int($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) && is_string($c_k1) && is_string($c_k2) &&    is_int($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) &&    is_int($c_k1) &&    is_int($c_k2) && is_string($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) && is_string($c_k1) &&    is_int($c_k2) && is_string($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) &&    is_int($c_k1) && is_string($c_k2) && is_string($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
+                if ($c_depth === 3 && is_string($c_k0) && is_string($c_k1) && is_string($c_k2) && is_string($c_k3) && is_string($c_value)) $result[$c_k0][$c_k1][$c_k2][$c_k3] = $c_value;
             }
         }
         return $result;
     }
 
     # ─────────────────────────────────────────────────────────────────────
-    # sanitize_structure_files():
+    # sanitize_structure_FILES():
     # ═════════════════════════════════════════════════════════════════════
-    #   (string)key => [
-    #     (string)key => (string|int)value
-    #   ]
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    #   (string)key => [
-    #     (string)key => [
-    #       (int)0 => (string|int)value,
-    #       (int)1 => (string|int)value …
-    #       (int)N => (string|int)value
+    #     (string)key_0 => [
+    #         (string)key_1 => (string|int)value
     #     ]
-    #   ]
+    #     ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    #     (string)key_0 => [
+    #         (string)key_1 => [
+    #             (int=0)key_2 => (string|int)value,
+    #             (int=1)key_2 => (string|int)value …
+    #             (int=N)key_2 => (string|int)value
+    #         ]
+    #     ]
     # ─────────────────────────────────────────────────────────────────────
 
-    static function sanitize_structure_files($source = '_FILES') {
+    static function sanitize_structure_FILES($source = '_FILES') {
         $result = [];
         global ${$source};
         if (count(${$source})) {
@@ -121,13 +156,16 @@ abstract class Request {
     # │ source[field] === [0 => 'value']         ║ return 'value' │
     # └──────────────────────────────────────────╨────────────────┘
 
-    static function value_get($name, $number = 0, $source = '_POST', $default = '') {
+    static function value_get($name, $number = 0, $source = '_POST', $default = '', $strict = true) {
         global ${$source};
         if (   !isset(${$source}[$name])) return $default;
         if (is_string(${$source}[$name])) return ${$source}[$name];
-        if ( is_array(${$source}[$name]) &&
-                isset(${$source}[$name][$number]))
-        return        ${$source}[$name][$number];
+        if ( is_array(${$source}[$name])) {
+            if (isset(${$source}[$name][$number])) {
+                if ($strict !== true                                         ) return ${$source}[$name][$number];
+                if ($strict === true && is_string(${$source}[$name][$number])) return ${$source}[$name][$number];
+            }
+        }
         return $default;
     }
 
@@ -146,11 +184,19 @@ abstract class Request {
     # │ source[field] === [0 => 'value', …]      ║ return [0 => 'value', …] │
     # └──────────────────────────────────────────╨──────────────────────────┘
 
-    static function values_get($name, $source = '_POST', $default = []) {
+    static function values_get($name, $source = '_POST', $default = [], $strict = true) {
         global ${$source};
-        if (   !isset(${$source}[$name])) return  $default;
+        if (   !isset(${$source}[$name])) return $default;
         if (is_string(${$source}[$name])) return [${$source}[$name]];
-        if ( is_array(${$source}[$name])) return  ${$source}[$name];
+        if ( is_array(${$source}[$name])) {
+            if ($strict !== true) return ${$source}[$name];
+            if ($strict === true) {
+                foreach (${$source}[$name] as $c_value)
+                    if (!is_string($c_value))
+                        return $default;
+                return ${$source}[$name];
+            }
+        }
         return $default;
     }
 
@@ -159,15 +205,25 @@ abstract class Request {
         ${$source}[$name] = $values;
     }
 
-    static function values_reset() {
-        global $_POST;
-        global $_GET;
-        global $_REQUEST;
-        global $_FILES;
-        $_POST    = [];
-        $_GET     = [];
-        $_REQUEST = [];
-        $_FILES   = [];
+    static function value_reset($name, $source = '_POST') {
+        global ${$source};
+        unset(
+            ${$source}[$name]
+        );
+    }
+
+    static function values_reset($source = null) {
+        if ($source === null) {
+            global $_GET;
+            global $_POST;
+            global $_FILES;
+            $_GET   = [];
+            $_POST  = [];
+            $_FILES = [];
+        } else {
+            global ${$source};
+            ${$source} = [];
+        }
     }
 
     # conversion matrix:

@@ -6,7 +6,7 @@ x-audio-player {
   overflow: hidden;
   line-height: 0;
   color: white;
-  background: %%_color__main;
+  background: %%_color(main);
 }
 
 x-audio-player * {
@@ -24,11 +24,11 @@ x-audio-player button[value='play'] {
   border-radius: 0;
   vertical-align: top;
   cursor: pointer;
-  background: %%_color__main(20|20|20) url('../pictures/icons-button.svgd?color=white') 4px -118px;
+  background: %%_color(main|r=20|g=20|b=20) url('../pictures/icons-button.svgd?color=white') 4px -118px;
 }
 
-x-audio-player button[value='play']:enabled:hover  {background-color: %%_color__main(30|30|30)}
-x-audio-player button[value='play']:enabled:active {background-color: %%_color__main(40|40|40); box-shadow: none}
+x-audio-player button[value='play']:enabled:hover  {background-color: %%_color(main|r=30|g=30|b=30)}
+x-audio-player button[value='play']:enabled:active {background-color: %%_color(main|r=40|g=40|b=40); box-shadow: none}
 x-audio-player[data-is-playing] button[value='play'] {background-position: 2px -158px}
 
 x-audio-player x-timeline {
@@ -38,11 +38,11 @@ x-audio-player x-timeline {
   height: 20px;
   margin: 12px;
   cursor: not-allowed;
-  background: %%_color__main(10|10|10);
+  background: %%_color(main|r=10|g=10|b=10);
 }
 
 x-audio-player[data-is-loadedmetadata] x-timeline {cursor: pointer}
-x-audio-player[data-is-progressing]    x-timeline {background-image: url('pictures/lines.svgd?animation=true'); background-size: 20px 20px}
+x-audio-player[data-is-progressing]    x-timeline {background-image: url('../pictures/lines.svgd?animation=true'); background-size: 20px 20px}
 
 x-audio-player x-timeline x-track-position {
   display: block;
@@ -50,7 +50,7 @@ x-audio-player x-timeline x-track-position {
   height: 10px;
   margin-top: 10px;
   cursor: pointer;
-  background: %%_color__main(30|30|30);
+  background: %%_color(main|r=30|g=30|b=30);
 }
 
 x-audio-player x-time {

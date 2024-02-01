@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -35,10 +35,10 @@ abstract class Captcha {
     static function settings_get() {
         $settings = Module::settings_get('captcha');
         $result = new stdClass;
-        $result->length = $settings->captcha_length;
+        $result->length = $settings->length;
         $result->glyphs = [];
         foreach (Glyph::get_all() as $c_row_id => $c_item) {
-            if (isset($settings->captcha_glyphs[$c_row_id])) {
+            if (isset($settings->glyphs[$c_row_id])) {
                 $result->glyphs[$c_row_id] = $c_row_id;
             }
         }
@@ -97,7 +97,7 @@ abstract class Captcha {
         $result->canvas = null;
         $settings = Module::settings_get('captcha');
         $glyphs = Glyph::get_all();
-        $row_ids_settings = $settings->captcha_glyphs;
+        $row_ids_settings = $settings->glyphs;
         $row_ids_all = Core::array_keys_map(array_keys($glyphs));
         $row_ids_available = array_intersect($row_ids_settings, $row_ids_all);
         $row_ids_random = [];
@@ -107,13 +107,13 @@ abstract class Captcha {
             Message::insert('Module "CAPTCHA" uses glyphs by default!', 'warning');
         }
         # get random items
-        for ($i = 0; $i < $settings->captcha_length; $i++) {
+        for ($i = 0; $i < $settings->length; $i++) {
             $row_ids_random[$i] = array_rand($row_ids_available);
         }
         # calculate canvas dimensions
         $canvas_w = 0;
         $canvas_h = 0;
-        for ($i = 0; $i < $settings->captcha_length; $i++) {
+        for ($i = 0; $i < $settings->length; $i++) {
             $c_sizes = Glyph::get_sizes($glyphs[$row_ids_random[$i]]->glyph);
             $canvas_w +=     $c_sizes->width;
             $canvas_h  = max($c_sizes->height, $canvas_h);
@@ -122,7 +122,7 @@ abstract class Captcha {
         $c_width_offset = 0;
         $canvas = new Canvas_SVG($canvas_w + 2, $canvas_h + 2, 5);
         $canvas->fill('#000000', 0, 0, null, null, $noise);
-        for ($i = 0; $i < $settings->captcha_length; $i++) {
+        for ($i = 0; $i < $settings->length; $i++) {
             $c_sizes = Glyph::get_sizes($glyphs[$row_ids_random[$i]]->glyph);
             $canvas->glyph_set($glyphs[$row_ids_random[$i]]->glyph, $c_width_offset + 1 + random_int(-1, 1), 1 + random_int(-2, 2));
             $result->characters.= $glyphs[$row_ids_random[$i]]->character;
@@ -130,6 +130,18 @@ abstract class Captcha {
         }
         # return result
         $result->canvas = $canvas;
+        return $result;
+    }
+
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+    static function changes_store($length, $glyphs) {
+        $result = true;
+        if ($length !== null) $result&= Storage::get('data')->changes_register  ('captcha', 'update', 'settings/captcha/length', $length, false);
+        if ($glyphs !== null) $result&= Storage::get('data')->changes_register  ('captcha', 'update', 'settings/captcha/glyphs', $glyphs, false);
+        if ($length === null) $result&= Storage::get('data')->changes_unregister('captcha', 'update', 'settings/captcha/length',          false);
+        if ($glyphs === null) $result&= Storage::get('data')->changes_unregister('captcha', 'update', 'settings/captcha/glyphs',          false);
+        $result&= Storage_Data::cache_update();
         return $result;
     }
 

@@ -12,3 +12,10 @@ forms
         - value: save
         - disabled: true
         weight: -500
+    - button_reset|Button
+        title: reset
+        break_on_validate: true
+        attributes
+        - value: reset
+        - disabled: true
+        weight: -520

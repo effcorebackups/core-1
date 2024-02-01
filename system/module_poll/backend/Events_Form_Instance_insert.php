@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\poll;
@@ -72,7 +72,8 @@ abstract class Events_Form_Instance_insert {
                             Poll::answer_insert($form->_instance->id, $c_item->text, $c_item->weight);
                         # reset not actual data
                         $items['*widget_answers']->items_reset();
-                        static::on_init(null, $form, $items);
+                        $form->components_build();
+                        $form->components_init();
                         # redirect if no error
                         Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
                     }

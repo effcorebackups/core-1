@@ -1,0 +1,52 @@
+layouts
+- universal|Layout
+    id: universal
+    title: Universal layout
+    children
+    - system|Area
+        id: system
+    - header|Area
+        tag_name: header
+        id: header
+    - menu|Area
+        id: menu
+    - content|Area_group
+        id: main-columns
+        type: flex
+        children
+        - left|Area
+            tag_name: aside
+            id: left
+        - center|Area_group
+            id: center
+            children
+            - breadcrumbs|Area
+                id: breadcrumbs
+            - messages|Area
+                id: messages
+                render_weight: -500
+            - title|Area
+                id: title
+            - tabs|Area
+                id: tabs
+            - content|Area
+                id: content
+                render_weight: +500
+            - tiles|Area_group
+                id: center-tiles
+                type: flex
+                children
+                - tile_1|Area
+                    id: tile_1
+                - tile_2|Area
+                    id: tile_2
+                - tile_3|Area
+                    id: tile_3
+                - tile_4|Area
+                    id: tile_4
+        - right|Area
+            tag_name: aside
+            id: right
+    - footer|Area
+        tag_name: footer
+        id: footer

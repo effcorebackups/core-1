@@ -68,7 +68,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -246,7 +246,7 @@ entities
             - weight: +340
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -280,7 +280,7 @@ entities
             element_attributes
             - maxlength: 2048
             - required: null
-            - size: 60
+            - data-is-wide-field: true
     - link_attributes
         title: Link attributes
         type: blob

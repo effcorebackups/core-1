@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -65,8 +65,8 @@ class Field_File extends Field {
     public $result;
     public $is_debug_mode = false;
 
-    function build($reset = false) {
-        if (!$this->is_builded || $reset) {
+    function build($rebuild = false) {
+        if (!$this->is_builded || $rebuild) {
             parent::build();
             if ($this->is_debug_mode)
                 $this->attribute_insert('data-debug', true);

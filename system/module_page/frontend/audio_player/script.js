@@ -1,6 +1,6 @@
 
 //////////////////////////////////////////////////////////////////
-/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+/// Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ///
 //////////////////////////////////////////////////////////////////
 
 'use strict';
@@ -8,26 +8,26 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     Element.prototype.process__defaultAudioPlayer = function () {
-        var c_audio        = this;
-        var c_player       = document.createElement('x-audio-player');
-        var c_button_play  = document.createElement__withAttributes('button', {'type' : 'button'});
-        var c_timeline     = document.createElement('x-timeline');
-        var c_trackpos     = document.createElement('x-track-position');
-        var c_time         = document.createElement('x-time');
-        var c_time_elpsd   = document.createElement('x-time-elapsed');
-        var c_time_total   = document.createElement('x-time-total');
-        var c_timerId      = null;
-        var c_is_init      = null;
-        var on_updateTimeInfo = function () {
+        let c_audio        = this;
+        let c_player       = document.createElement('x-audio-player');
+        let c_button_play  = document.createElement__withAttributes('button', {'type' : 'button'});
+        let c_timeline     = document.createElement('x-timeline');
+        let c_trackpos     = document.createElement('x-track-position');
+        let c_time         = document.createElement('x-time');
+        let c_time_elpsd   = document.createElement('x-time-elapsed');
+        let c_time_total   = document.createElement('x-time-total');
+        let c_timerId      = null;
+        let c_is_init      = null;
+        let on_updateTimeInfo = function () {
             if (!isNaN(c_audio.duration)) {
-                var time_cur =     Math.floor(c_audio.currentTime);
-                var time_ttl =     Math.floor(c_audio.duration);
-                var h_cur =        Math.floor(time_cur / 3600);
-                var h_ttl =        Math.floor(time_ttl / 3600);
-                var m_cur = ('0' + Math.floor(time_cur / 60 % 60)).slice(-2);
-                var m_ttl = ('0' + Math.floor(time_ttl / 60 % 60)).slice(-2);
-                var s_cur = ('0' + Math.floor(time_cur      % 60)).slice(-2);
-                var s_ttl = ('0' + Math.floor(time_ttl      % 60)).slice(-2);
+                let time_cur =     Math.floor(c_audio.currentTime);
+                let time_ttl =     Math.floor(c_audio.duration);
+                let h_cur =        Math.floor(time_cur / 3600);
+                let h_ttl =        Math.floor(time_ttl / 3600);
+                let m_cur = ('0' + Math.floor(time_cur / 60 % 60)).slice(-2);
+                let m_ttl = ('0' + Math.floor(time_ttl / 60 % 60)).slice(-2);
+                let s_cur = ('0' + Math.floor(time_cur      % 60)).slice(-2);
+                let s_ttl = ('0' + Math.floor(time_ttl      % 60)).slice(-2);
                 c_trackpos.style.width = Math.floor(c_audio.currentTime / c_audio.duration * 100) + '%';
                 c_time_elpsd.innerText = h_cur + ':' + m_cur + ':' + s_cur;
                 c_time_total.innerText = h_ttl + ':' + m_ttl + ':' + s_ttl;

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\test;
@@ -18,21 +18,26 @@ use effcore\Timer;
 
 abstract class Events_Form_Test {
 
-    static function on_init($event, $form, $items) {
+    static function on_build($event, $form) {
         $id = Page::get_current()->args_get('id');
-        $test = Test::get($id);
-        if ($test) {
-            $items['params']->description = $test->description;
-            if ($test->params) {
-                foreach ($test->params as $c_id => $c_param) {
-                    $items['params']->child_insert($c_param, $c_id);
+        $form->_test = Test::get($id);
+        if ($form->_test) {
+            if ($form->_test->params) {
+                foreach ($form->_test->params as $c_id => $c_param) {
+                    $form->child_select('params')->child_insert($c_param, $c_id);
                     $c_param->build();
                 }
             } else {
-                $items['params']->child_insert(
+                $form->child_select('params')->child_insert(
                     new Text('No additional parameters.')
                 );
             }
+        }
+    }
+
+    static function on_init($event, $form, $items) {
+        if ($form->_test) {
+            $items['params']->description = $form->_test->description;
         } else {
             $items['~launch']->disabled_set();
         }

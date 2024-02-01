@@ -14,9 +14,3 @@ tokens
 - avatar_path
     type: code
     handler: \effcore\modules\user\Events_Token::on_apply
-# ─────────────────────────────────────────────────────────────────────
-# context tokens
-# ─────────────────────────────────────────────────────────────────────
-- nickname_page_context
-    type: code
-    handler: \effcore\modules\user\Events_Token::on_apply

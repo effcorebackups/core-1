@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -230,8 +230,8 @@ class Field extends Control {
 
     function name_get($trim = true) {
         $element = $this->child_select('element');
-        return $trim ? rtrim($element->attribute_select('name'), '[]') :
-                             $element->attribute_select('name');
+        if ($trim === false) return                   $element->attribute_select('name') ;
+        if ($trim !== false) return static::trim_name($element->attribute_select('name'));
     }
 
     function name_set($name) {
@@ -382,6 +382,7 @@ class Field extends Control {
             if ($element->attribute_select('min'      ) !== null                                                                                       ) $this->description['min'      ] = $this->render_description_min      ($element);
             if ($element->attribute_select('max'      ) !== null                                                                                       ) $this->description['max'      ] = $this->render_description_max      ($element);
             if ($element->attribute_select('value'    ) !== null && $element->attribute_select('type'     ) === 'range'                                ) $this->description['cur'      ] = $this->render_description_cur      ($element);
+            if ($element->attribute_select('value'    ) !== null && $element->attribute_select('type'     ) === 'color'                                ) $this->description['cur'      ] = $this->render_description_cur      ($element);
             if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['minlength'] = $this->render_description_minlength($element);
             if ($element->attribute_select('maxlength') !== null && $element->attribute_select('minlength') !== $element->attribute_select('maxlength')) $this->description['maxlength'] = $this->render_description_maxlength($element);
             if ($element->attribute_select('minlength') !== null && $element->attribute_select('minlength') === $element->attribute_select('maxlength')) $this->description['midlength'] = $this->render_description_midlength($element);
@@ -417,10 +418,18 @@ class Field extends Control {
                     ++static::$numbers[$name];
     }
 
-    static function on_validate         ($field, $form, $npath) {} /*
-    static function on_validate_after   ($field, $form, $npath) {}
-    static function on_validate_final   ($field, $form, $npath) {}
-    static function on_request_value_set($field, $form, $npath) {}
-    static function on_submit           ($field, $form, $npath) {} */
+  # static function on_request_value_set($field, $form, $npath) {}
+    static function on_validate         ($field, $form, $npath) {}
+  # static function on_validate_after   ($field, $form, $npath) {}
+  # static function on_validate_final   ($field, $form, $npath) {}
+  # static function on_submit           ($field, $form, $npath) {}
+
+    static function trim_name($name) {
+        if (is_string($name) && strlen($name)) {
+            $matches = [];
+            preg_match('%^(?<name>[^[]+).*%S', $name, $matches);
+               return $matches['name'];
+        } else return          $name;
+    }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\test;
@@ -980,6 +980,93 @@ abstract class Events_Test__Class_Security {
         $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', [
             'id' => 'range: -1000000 … +1000000', 'result' => (new Text('success')
         )->render()]);
+    }
+
+    static function test_step_code__validate_str_int(&$test, $dpath, &$c_results) {
+        $data = [
+            'value_null' => null,
+            'value_bool_true' => true,
+            'value_bool_false' => false,
+            'value_int_0' => 0,
+            'value_int_1' => 1,
+            'value_int_1_negative' => -1,
+            'value_int_exponential' => 123e1,
+            'value_int_hexadecimal' => 0x123,
+            'value_int_octal' => 01234,
+            'value_int_binary' => 0b101,
+            'value_float_0_0' => 0.0,
+            'value_float_1_0' => 1.0,
+            'value_float_1_0_negative' => -1.0,
+            'value_string_null' => 'null',
+            'value_string_bool_true' => 'true',
+            'value_string_bool_false' => 'false',
+            'value_string_empty' => '',
+            'value_string_not_number' => 'string',
+            'value_string_int_0' => '0',
+            'value_string_int_1' => '1',
+            'value_string_int_1_negative' => '-1',
+            'value_string_int_exponential' => '123e1',
+            'value_string_int_hexadecimal' => '0x123',
+            'value_string_int_octal' => '01234',
+            'value_string_int_binary' => '0b101',
+            'value_string_int_with_prefix' => 'а123',
+            'value_string_int_with_suffix' => '123а',
+            'value_string_int_with_delimiter' => '-1 000',
+            'value_string_float_0' => '0.0',
+            'value_string_float_1' => '1.0',
+            'value_string_float_1_negative' => '-1.0',
+            'value_string_float_comma' => '-1,1',
+            'value_array' => []
+        ];
+
+        $expected = [
+            'value_null' => false,
+            'value_bool_true' => false,
+            'value_bool_false' => false,
+            'value_int_0' => true,
+            'value_int_1' => true,
+            'value_int_1_negative' => true,
+            'value_int_exponential' => false, # note: === float(1230)
+            'value_int_hexadecimal' => true,  # note: === int(291)
+            'value_int_octal' => true,        # note: === int(668)
+            'value_int_binary' => true,       # note: === int(5)
+            'value_float_0_0' => false,
+            'value_float_1_0' => false,
+            'value_float_1_0_negative' => false,
+            'value_string_null' => false,
+            'value_string_bool_true' => false,
+            'value_string_bool_false' => false,
+            'value_string_empty' => false,
+            'value_string_not_number' => false,
+            'value_string_int_0' => true,
+            'value_string_int_1' => true,
+            'value_string_int_1_negative' => true,
+            'value_string_int_exponential' => false,
+            'value_string_int_hexadecimal' => false,
+            'value_string_int_octal' => false,
+            'value_string_int_binary' => false,
+            'value_string_int_with_prefix' => false,
+            'value_string_int_with_suffix' => false,
+            'value_string_int_with_delimiter' => false,
+            'value_string_float_0' => false,
+            'value_string_float_1' => false,
+            'value_string_float_1_negative' => false,
+            'value_string_float_comma' => false,
+            'value_array' => false
+        ];
+
+        foreach ($expected as $c_row_id => $c_expected) {
+            $c_gotten = Security::validate_str_int($data[$c_row_id]);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
     }
 
 }

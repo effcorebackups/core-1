@@ -1,53 +1,917 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\test;
 
+use effcore\Field_Hidden;
+use effcore\Field;
 use effcore\Request;
 use effcore\Test;
 use effcore\Text;
 
 abstract class Events_Test__Class_Request {
 
-    ##########################################################################################
-    ### $_POST: Request::sanitize_structure(), Request::value_get(), Request::values_get() ###
-    ##########################################################################################
+    static function test_step_code__name_get(&$test, $dpath, &$c_results) {
+        $data = [
+            'name_00' => '',
+            'name_01' => 'name_01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => 'name_10[0]',
+            'name_11' => 'name_11[0][1]',
+            'name_12' => 'name_12[0][1][2]',
+            'name_13' => 'name_13[0][1][2][3]',
+            'name_14' => 'name_14[0][1][2][3][4]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => 'name_20[0]'.'[]',
+            'name_21' => 'name_21[0][1]'.'[]',
+            'name_22' => 'name_22[0][1][2]'.'[]',
+            'name_23' => 'name_23[0][1][2][3]'.'[]',
+            'name_24' => 'name_24[0][1][2][3][4]'.'[]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => 'name_30[1]',
+            'name_31' => 'name_31[1][2]',
+            'name_32' => 'name_32[1][2][3]',
+            'name_33' => 'name_33[1][2][3][4]',
+            'name_34' => 'name_34[1][2][3][4][5]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => 'name_40[1]'.'[]',
+            'name_41' => 'name_41[1][2]'.'[]',
+            'name_42' => 'name_42[1][2][3]'.'[]',
+            'name_43' => 'name_43[1][2][3][4]'.'[]',
+            'name_44' => 'name_44[1][2][3][4][5]'.'[]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => 'name_50[a]',
+            'name_51' => 'name_51[a][b]',
+            'name_52' => 'name_52[a][b][c]',
+            'name_53' => 'name_53[a][b][c][d]',
+            'name_54' => 'name_54[a][b][c][d][e]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => 'name_60[a]'.'[]',
+            'name_61' => 'name_61[a][b]'.'[]',
+            'name_62' => 'name_62[a][b][c]'.'[]',
+            'name_63' => 'name_63[a][b][c][d]'.'[]',
+            'name_64' => 'name_64[a][b][c][d][e]'.'[]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => 'name_70[]',
+            'name_71' => 'name_71[][]',
+            'name_72' => 'name_72[][][]',
+            'name_73' => 'name_73[][][][]',
+            'name_74' => 'name_74[][][][][]',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => 'name_80[][b][][1][]',
+        ];
+
+        $trim = true;
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_field = new Field;
+            $c_field->build();
+            $c_field->name_set($c_value);
+            $c_expected = $c_value === '' ? '' : $c_row_id;
+            $c_gotten = $c_field->name_get($trim);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $trim = false;
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_field = new Field;
+            $c_field->build();
+            $c_field->name_set($c_value);
+            $c_expected = $c_value;
+            $c_gotten = $c_field->name_get($trim);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $trim = true;
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_field = new Field_Hidden;
+            $c_field->name_set($c_value);
+            $c_expected = $c_value === '' ? '' : $c_row_id;
+            $c_gotten = $c_field->name_get($trim);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $trim = false;
+
+        foreach ($data as $c_row_id => $c_value) {
+            $c_field = new Field_Hidden;
+            $c_field->name_set($c_value);
+            $c_expected = $c_value;
+            $c_gotten = $c_field->name_get($trim);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+    }
+
+    static function test_step_code__value_get(&$test, $dpath, &$c_results) {
+        global $_GET;
+        $ORIGINAL = $_GET;
+
+        $data = [
+            /* name_00 = ''                  */  'name_00' => '',
+            /* name_01 = 01                  */  'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_10[0] = 10               */  'name_10' => [0 => '10'],
+            /* name_11[0][1] = 11            */  'name_11' => [0 => [1 => '11']],
+            /* name_12[0][1][2] = 12         */  'name_12' => [0 => [1 => [2 => '12']]],
+            /* name_13[0][1][2][3] = 13      */  'name_13' => [0 => [1 => [2 => [3 => '13']]]],
+            /* name_14[0][1][2][3][4] = 14   */  'name_14' => [0 => [1 => [2 => [3 => [4 => '14']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_20[0][] = 20             */  'name_20' => [0 => [0 => '20']],
+            /* name_21[0][1][] = 21          */  'name_21' => [0 => [1 => [0 => '21']]],
+            /* name_22[0][1][2][] = 22       */  'name_22' => [0 => [1 => [2 => [0 => '22']]]],
+            /* name_23[0][1][2][3][] = 23    */  'name_23' => [0 => [1 => [2 => [3 => [0 => '23']]]]],
+            /* name_24[0][1][2][3][4][] = 24 */  'name_24' => [0 => [1 => [2 => [3 => [4 => [0 => '24']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_30[1] = 30               */  'name_30' => [1 => '30'],
+            /* name_31[1][2] = 31            */  'name_31' => [1 => [2 => '31']],
+            /* name_32[1][2][3] = 32         */  'name_32' => [1 => [2 => [3 => '32']]],
+            /* name_33[1][2][3][4] = 33      */  'name_33' => [1 => [2 => [3 => [4 => '33']]]],
+            /* name_34[1][2][3][4][5] = 34   */  'name_34' => [1 => [2 => [3 => [4 => [5 => '34']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_40[1][] = 40             */  'name_40' => [1 => [0 => '40']],
+            /* name_41[1][2][] = 41          */  'name_41' => [1 => [2 => [0 => '41']]],
+            /* name_42[1][2][3][] = 42       */  'name_42' => [1 => [2 => [3 => [0 => '42']]]],
+            /* name_43[1][2][3][4][] = 43    */  'name_43' => [1 => [2 => [3 => [4 => [0 => '43']]]]],
+            /* name_44[1][2][3][4][5][] = 44 */  'name_44' => [1 => [2 => [3 => [4 => [5 => [0 => '44']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_50[a] = 50               */  'name_50' => ['a' => '50'],
+            /* name_51[a][b] = 51            */  'name_51' => ['a' => ['b' => '51']],
+            /* name_52[a][b][c] = 52         */  'name_52' => ['a' => ['b' => ['c' => '52']]],
+            /* name_53[a][b][c][d] = 53      */  'name_53' => ['a' => ['b' => ['c' => ['d' => '53']]]],
+            /* name_54[a][b][c][d][e] = 54   */  'name_54' => ['a' => ['b' => ['c' => ['d' => ['e' => '54']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_60[a][] = 60             */  'name_60' => ['a' => [0 => '60']],
+            /* name_61[a][b][] = 61          */  'name_61' => ['a' => ['b' => [0 => '61']]],
+            /* name_62[a][b][c][] = 62       */  'name_62' => ['a' => ['b' => ['c' => [0 => '62']]]],
+            /* name_63[a][b][c][d][] = 63    */  'name_63' => ['a' => ['b' => ['c' => ['d' => [0 => '63']]]]],
+            /* name_64[a][b][c][d][e][] = 64 */  'name_64' => ['a' => ['b' => ['c' => ['d' => ['e' => [0 => '64']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_70[] = 70                */  'name_70' => [0 => '70'],
+            /* name_71[][] = 71              */  'name_71' => [0 => [0 => '71']],
+            /* name_72[][][] = 72            */  'name_72' => [0 => [0 => [0 => '72']]],
+            /* name_73[][][][] = 73          */  'name_73' => [0 => [0 => [0 => [0 => '73']]]],
+            /* name_74[][][][][] = 74        */  'name_74' => [0 => [0 => [0 => [0 => [0 => '74']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_80[][b][][1][] = 80      */  'name_80' => [0 => ['b' => [0 => [1 => [0 => '80']]]]]
+        ];
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 0;
+        $strict = true;
+
+        $expected = [
+            'name_00' => '',
+            'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => '10',
+            'name_11' => '',
+            'name_12' => '',
+            'name_13' => '',
+            'name_14' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => '',
+            'name_21' => '',
+            'name_22' => '',
+            'name_23' => '',
+            'name_24' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => '',
+            'name_31' => '',
+            'name_32' => '',
+            'name_33' => '',
+            'name_34' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => '',
+            'name_41' => '',
+            'name_42' => '',
+            'name_43' => '',
+            'name_44' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => '',
+            'name_51' => '',
+            'name_52' => '',
+            'name_53' => '',
+            'name_54' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => '',
+            'name_61' => '',
+            'name_62' => '',
+            'name_63' => '',
+            'name_64' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => '70',
+            'name_71' => '',
+            'name_72' => '',
+            'name_73' => '',
+            'name_74' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => ''
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 0;
+        $strict = false;
+
+        $expected = [
+            'name_00' => '',
+            'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => '10',
+            'name_11' => [1 => '11'],
+            'name_12' => [1 => [2 => '12']],
+            'name_13' => [1 => [2 => [3 => '13']]],
+            'name_14' => [1 => [2 => [3 => [4 => '14']]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => [0 => '20'],
+            'name_21' => [1 => [0 => '21']],
+            'name_22' => [1 => [2 => [0 => '22']]],
+            'name_23' => [1 => [2 => [3 => [0 => '23']]]],
+            'name_24' => [1 => [2 => [3 => [4 => [0 => '24']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => '',
+            'name_31' => '',
+            'name_32' => '',
+            'name_33' => '',
+            'name_34' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => '',
+            'name_41' => '',
+            'name_42' => '',
+            'name_43' => '',
+            'name_44' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => '',
+            'name_51' => '',
+            'name_52' => '',
+            'name_53' => '',
+            'name_54' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => '',
+            'name_61' => '',
+            'name_62' => '',
+            'name_63' => '',
+            'name_64' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => '70',
+            'name_71' => [0 => '71'],
+            'name_72' => [0 => [0 => '72']],
+            'name_73' => [0 => [0 => [0 => '73']]],
+            'name_74' => [0 => [0 => [0 => [0 => '74']]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => ['b' => [0 => [1 => [0 => '80']]]]
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 1;
+        $strict = true;
+
+        $expected = [
+            'name_00' => '',
+            'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => '',
+            'name_11' => '',
+            'name_12' => '',
+            'name_13' => '',
+            'name_14' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => '',
+            'name_21' => '',
+            'name_22' => '',
+            'name_23' => '',
+            'name_24' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => '30',
+            'name_31' => '',
+            'name_32' => '',
+            'name_33' => '',
+            'name_34' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => '',
+            'name_41' => '',
+            'name_42' => '',
+            'name_43' => '',
+            'name_44' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => '',
+            'name_51' => '',
+            'name_52' => '',
+            'name_53' => '',
+            'name_54' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => '',
+            'name_61' => '',
+            'name_62' => '',
+            'name_63' => '',
+            'name_64' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => '',
+            'name_71' => '',
+            'name_72' => '',
+            'name_73' => '',
+            'name_74' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => ''
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 1;
+        $strict = false;
+
+        $expected = [
+            'name_00' => '',
+            'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => '',
+            'name_11' => '',
+            'name_12' => '',
+            'name_13' => '',
+            'name_14' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => '',
+            'name_21' => '',
+            'name_22' => '',
+            'name_23' => '',
+            'name_24' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => '30',
+            'name_31' => [2 => '31'],
+            'name_32' => [2 => [3 => '32']],
+            'name_33' => [2 => [3 => [4 => '33']]],
+            'name_34' => [2 => [3 => [4 => [5 => '34']]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => [0 => '40'],
+            'name_41' => [2 => [0 => '41']],
+            'name_42' => [2 => [3 => [0 => '42']]],
+            'name_43' => [2 => [3 => [4 => [0 => '43']]]],
+            'name_44' => [2 => [3 => [4 => [5 => [0 => '44']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => '',
+            'name_51' => '',
+            'name_52' => '',
+            'name_53' => '',
+            'name_54' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => '',
+            'name_61' => '',
+            'name_62' => '',
+            'name_63' => '',
+            'name_64' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => '',
+            'name_71' => '',
+            'name_72' => '',
+            'name_73' => '',
+            'name_74' => '',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => ''
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        ###############################
+        ### transpositions in array ###
+        ###############################
+
+        # ┌─────────────────────────┐
+        # │ transpositions in array │
+        # ├────────────┬────────────┤
+        # │ undefined  │ undefined  │
+        # │ ''         │ undefined  │
+        # │ 'value'    │ undefined  │
+        # ├────────────┼────────────┤
+        # │ undefined  │ ''         │
+        # │ ''         │ ''         │
+        # │ 'value'    │ ''         │
+        # ├────────────┼────────────┤
+        # │ undefined  │ 'value'    │
+        # │ ''         │ 'value'    │
+        # │ 'value'    │ 'value'    │
+        # └────────────┴────────────┘
+
+        $data = [
+            'transposition_1' => [                  ],
+            'transposition_2' => [0 => ''           ],
+            'transposition_3' => [0 => 'X'          ],
+            'transposition_4' => [          1 => '' ],
+            'transposition_5' => [0 => '' , 1 => '' ],
+            'transposition_6' => [0 => 'X', 1 => '' ],
+            'transposition_7' => [          1 => 'Y'],
+            'transposition_8' => [0 => '' , 1 => 'Y'],
+            'transposition_9' => [0 => 'X', 1 => 'Y']
+        ];
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 0;
+
+        $expected = [
+            'transposition_1' => '',
+            'transposition_2' => '',
+            'transposition_3' => 'X',
+            'transposition_4' => '',
+            'transposition_5' => '',
+            'transposition_6' => 'X',
+            'transposition_7' => '',
+            'transposition_8' => '',
+            'transposition_9' => 'X'
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET');
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $number = 1;
+
+        $expected = [
+            'transposition_1' => '',
+            'transposition_2' => '',
+            'transposition_3' => '',
+            'transposition_4' => '',
+            'transposition_5' => '',
+            'transposition_6' => '',
+            'transposition_7' => 'Y',
+            'transposition_8' => 'Y',
+            'transposition_9' => 'Y'
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::value_get($c_row_id, $number, '_GET');
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        $_GET = $ORIGINAL;
+    }
+
+    static function test_step_code__values_get(&$test, $dpath, &$c_results) {
+        global $_GET;
+        $ORIGINAL = $_GET;
+
+        $data = [
+            /* name_00 = ''                  */  'name_00' => '',
+            /* name_01 = 01                  */  'name_01' => '01',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_10[0] = 10               */  'name_10' => [0 => '10'],
+            /* name_11[0][1] = 11            */  'name_11' => [0 => [1 => '11']],
+            /* name_12[0][1][2] = 12         */  'name_12' => [0 => [1 => [2 => '12']]],
+            /* name_13[0][1][2][3] = 13      */  'name_13' => [0 => [1 => [2 => [3 => '13']]]],
+            /* name_14[0][1][2][3][4] = 14   */  'name_14' => [0 => [1 => [2 => [3 => [4 => '14']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_20[0][] = 20             */  'name_20' => [0 => [0 => '20']],
+            /* name_21[0][1][] = 21          */  'name_21' => [0 => [1 => [0 => '21']]],
+            /* name_22[0][1][2][] = 22       */  'name_22' => [0 => [1 => [2 => [0 => '22']]]],
+            /* name_23[0][1][2][3][] = 23    */  'name_23' => [0 => [1 => [2 => [3 => [0 => '23']]]]],
+            /* name_24[0][1][2][3][4][] = 24 */  'name_24' => [0 => [1 => [2 => [3 => [4 => [0 => '24']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_30[1] = 30               */  'name_30' => [1 => '30'],
+            /* name_31[1][2] = 31            */  'name_31' => [1 => [2 => '31']],
+            /* name_32[1][2][3] = 32         */  'name_32' => [1 => [2 => [3 => '32']]],
+            /* name_33[1][2][3][4] = 33      */  'name_33' => [1 => [2 => [3 => [4 => '33']]]],
+            /* name_34[1][2][3][4][5] = 34   */  'name_34' => [1 => [2 => [3 => [4 => [5 => '34']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_40[1][] = 40             */  'name_40' => [1 => [0 => '40']],
+            /* name_41[1][2][] = 41          */  'name_41' => [1 => [2 => [0 => '41']]],
+            /* name_42[1][2][3][] = 42       */  'name_42' => [1 => [2 => [3 => [0 => '42']]]],
+            /* name_43[1][2][3][4][] = 43    */  'name_43' => [1 => [2 => [3 => [4 => [0 => '43']]]]],
+            /* name_44[1][2][3][4][5][] = 44 */  'name_44' => [1 => [2 => [3 => [4 => [5 => [0 => '44']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_50[a] = 50               */  'name_50' => ['a' => '50'],
+            /* name_51[a][b] = 51            */  'name_51' => ['a' => ['b' => '51']],
+            /* name_52[a][b][c] = 52         */  'name_52' => ['a' => ['b' => ['c' => '52']]],
+            /* name_53[a][b][c][d] = 53      */  'name_53' => ['a' => ['b' => ['c' => ['d' => '53']]]],
+            /* name_54[a][b][c][d][e] = 54   */  'name_54' => ['a' => ['b' => ['c' => ['d' => ['e' => '54']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_60[a][] = 60             */  'name_60' => ['a' => [0 => '60']],
+            /* name_61[a][b][] = 61          */  'name_61' => ['a' => ['b' => [0 => '61']]],
+            /* name_62[a][b][c][] = 62       */  'name_62' => ['a' => ['b' => ['c' => [0 => '62']]]],
+            /* name_63[a][b][c][d][] = 63    */  'name_63' => ['a' => ['b' => ['c' => ['d' => [0 => '63']]]]],
+            /* name_64[a][b][c][d][e][] = 64 */  'name_64' => ['a' => ['b' => ['c' => ['d' => ['e' => [0 => '64']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_70[] = 70                */  'name_70' => [0 => '70'],
+            /* name_71[][] = 71              */  'name_71' => [0 => [0 => '71']],
+            /* name_72[][][] = 72            */  'name_72' => [0 => [0 => [0 => '72']]],
+            /* name_73[][][][] = 73          */  'name_73' => [0 => [0 => [0 => [0 => '73']]]],
+            /* name_74[][][][][] = 74        */  'name_74' => [0 => [0 => [0 => [0 => [0 => '74']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            /* name_80[][b][][1][] = 80      */  'name_80' => [0 => ['b' => [0 => [1 => [0 => '80']]]]]
+        ];
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $strict = true;
+
+        $expected = [
+            'name_00' => [0 => ''],
+            'name_01' => [0 => '01'],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => [0 => '10'],
+            'name_11' => [],
+            'name_12' => [],
+            'name_13' => [],
+            'name_14' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => [],
+            'name_21' => [],
+            'name_22' => [],
+            'name_23' => [],
+            'name_24' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => [1 => '30'],
+            'name_31' => [],
+            'name_32' => [],
+            'name_33' => [],
+            'name_34' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => [],
+            'name_41' => [],
+            'name_42' => [],
+            'name_43' => [],
+            'name_44' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => ['a' => '50'],
+            'name_51' => [],
+            'name_52' => [],
+            'name_53' => [],
+            'name_54' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => [],
+            'name_61' => [],
+            'name_62' => [],
+            'name_63' => [],
+            'name_64' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => [0 => '70'],
+            'name_71' => [],
+            'name_72' => [],
+            'name_73' => [],
+            'name_74' => [],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => []
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::values_get($c_row_id, '_GET', [], $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $strict = false;
+
+        $expected = [
+            'name_00' => [0 => ''],
+            'name_01' => [0 => '01'],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_10' => [0 => '10'],
+            'name_11' => [0 => [1 => '11']],
+            'name_12' => [0 => [1 => [2 => '12']]],
+            'name_13' => [0 => [1 => [2 => [3 => '13']]]],
+            'name_14' => [0 => [1 => [2 => [3 => [4 => '14']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_20' => [0 => [0 => '20']],
+            'name_21' => [0 => [1 => [0 => '21']]],
+            'name_22' => [0 => [1 => [2 => [0 => '22']]]],
+            'name_23' => [0 => [1 => [2 => [3 => [0 => '23']]]]],
+            'name_24' => [0 => [1 => [2 => [3 => [4 => [0 => '24']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_30' => [1 => '30'],
+            'name_31' => [1 => [2 => '31']],
+            'name_32' => [1 => [2 => [3 => '32']]],
+            'name_33' => [1 => [2 => [3 => [4 => '33']]]],
+            'name_34' => [1 => [2 => [3 => [4 => [5 => '34']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_40' => [1 => [0 => '40']],
+            'name_41' => [1 => [2 => [0 => '41']]],
+            'name_42' => [1 => [2 => [3 => [0 => '42']]]],
+            'name_43' => [1 => [2 => [3 => [4 => [0 => '43']]]]],
+            'name_44' => [1 => [2 => [3 => [4 => [5 => [0 => '44']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_50' => ['a' => '50'],
+            'name_51' => ['a' => ['b' => '51']],
+            'name_52' => ['a' => ['b' => ['c' => '52']]],
+            'name_53' => ['a' => ['b' => ['c' => ['d' => '53']]]],
+            'name_54' => ['a' => ['b' => ['c' => ['d' => ['e' => '54']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_60' => ['a' => [0 => '60']],
+            'name_61' => ['a' => ['b' => [0 => '61']]],
+            'name_62' => ['a' => ['b' => ['c' => [0 => '62']]]],
+            'name_63' => ['a' => ['b' => ['c' => ['d' => [0 => '63']]]]],
+            'name_64' => ['a' => ['b' => ['c' => ['d' => ['e' => [0 => '64']]]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_70' => [0 => '70'],
+            'name_71' => [0 => [0 => '71']],
+            'name_72' => [0 => [0 => [0 => '72']]],
+            'name_73' => [0 => [0 => [0 => [0 => '73']]]],
+            'name_74' => [0 => [0 => [0 => [0 => [0 => '74']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'name_80' => [0 => ['b' => [0 => [1 => [0 => '80']]]]]
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::values_get($c_row_id, '_GET', [], $strict);
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        ###############################
+        ### transpositions in array ###
+        ###############################
+
+        # ┌─────────────────────────┐
+        # │ transpositions in array │
+        # ├────────────┬────────────┤
+        # │ undefined  │ undefined  │
+        # │ ''         │ undefined  │
+        # │ 'value'    │ undefined  │
+        # ├────────────┼────────────┤
+        # │ undefined  │ ''         │
+        # │ ''         │ ''         │
+        # │ 'value'    │ ''         │
+        # ├────────────┼────────────┤
+        # │ undefined  │ 'value'    │
+        # │ ''         │ 'value'    │
+        # │ 'value'    │ 'value'    │
+        # └────────────┴────────────┘
+
+        $data = [
+            'transposition_1' => [                  ],
+            'transposition_2' => [0 => ''           ],
+            'transposition_3' => [0 => 'X'          ],
+            'transposition_4' => [          1 => '' ],
+            'transposition_5' => [0 => '' , 1 => '' ],
+            'transposition_6' => [0 => 'X', 1 => '' ],
+            'transposition_7' => [          1 => 'Y'],
+            'transposition_8' => [0 => '' , 1 => 'Y'],
+            'transposition_9' => [0 => 'X', 1 => 'Y']
+        ];
+
+        $expected = [
+            'transposition_1' => [                  ],
+            'transposition_2' => [0 => ''           ],
+            'transposition_3' => [0 => 'X'          ],
+            'transposition_4' => [          1 => '' ],
+            'transposition_5' => [0 => '' , 1 => '' ],
+            'transposition_6' => [0 => 'X', 1 => '' ],
+            'transposition_7' => [          1 => 'Y'],
+            'transposition_8' => [0 => '' , 1 => 'Y'],
+            'transposition_9' => [0 => 'X', 1 => 'Y']
+        ];
+
+        foreach ($data as $c_row_id => $c_value) {
+            $_GET = [$c_row_id => $c_value];
+            $c_expected = $expected[$c_row_id];
+            $c_gotten = Request::values_get($c_row_id, '_GET');
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        $_GET = $ORIGINAL;
+    }
+
+    ############################################
+    ### $_GET: Request::sanitize_structure() ###
+    ############################################
 
     static function test_step_code__sanitize_structure(&$test, $dpath, &$c_results) {
         global $_POST;
-        $_POST_ORIGINAL = $_POST;
+        $ORIGINAL = $_POST;
 
         $data = [
-            'value_null' => null,
-            'value_bool_true' => true,
-            'value_bool_false' => false,
-            'value_int_0' => 0,
-            'value_int_1' => 1,
-            'value_float_0_0' => 0.0,
-            'value_float_1_0' => 1.0,
+            'value_null'         => null,
+            'value_bool_true'    => true,
+            'value_bool_false'   => false,
+            'value_int_0'        => 0,
+            'value_int_1'        => 1,
+            'value_float_0_0'    => 0.0,
+            'value_float_1_0'    => 1.0,
             'value_string_empty' => '',
-            'value_string_0' => '0',
-            'value_string_1' => '1',
-            'value_string_X' => 'X',
-            'value_array_empty' => [],
-            'value_array_null' => [null],
-            'value_array_bool_true' => [true],
-            'value_array_bool_false' => [false],
-            'value_array_int_0' => [0],
-            'value_array_int_1' => [1],
-            'value_array_float_0_0' => [0.0],
-            'value_array_float_1_0' => [1.0],
+            'value_string_0'     => '0',
+            'value_string_1'     => '1',
+            'value_string_X'     => 'X',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_empty'        => [],
+            'value_array_null'         => [null],
+            'value_array_bool_true'    => [true],
+            'value_array_bool_false'   => [false],
+            'value_array_int_0'        => [0],
+            'value_array_int_1'        => [1],
+            'value_array_float_0_0'    => [0.0],
+            'value_array_float_1_0'    => [1.0],
             'value_array_string_empty' => [''],
-            'value_array_string_0' => ['0'],
-            'value_array_string_1' => ['1'],
-            'value_array_string_X' => ['X'],
-            'value_array_array_empty' => [[]],
-            'value_array_wrong_keys' => [
-                100 => 'option_1',
-                200 => 'option_2'
+            'value_array_string_0'     => ['0'],
+            'value_array_string_1'     => ['1'],
+            'value_array_string_X'     => ['X'],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_empty'        => [[]],
+            'value_array_array_null'         => [[null]],
+            'value_array_array_bool_true'    => [[true]],
+            'value_array_array_bool_false'   => [[false]],
+            'value_array_array_int_0'        => [[0]],
+            'value_array_array_int_1'        => [[1]],
+            'value_array_array_float_0_0'    => [[0.0]],
+            'value_array_array_float_1_0'    => [[1.0]],
+            'value_array_array_string_empty' => [['']],
+            'value_array_array_string_0'     => [['0']],
+            'value_array_array_string_1'     => [['1']],
+            'value_array_array_string_X'     => [['X']],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_array_empty'        => [[[]]],
+            'value_array_array_array_null'         => [[[null]]],
+            'value_array_array_array_bool_true'    => [[[true]]],
+            'value_array_array_array_bool_false'   => [[[false]]],
+            'value_array_array_array_int_0'        => [[[0]]],
+            'value_array_array_array_int_1'        => [[[1]]],
+            'value_array_array_array_float_0_0'    => [[[0.0]]],
+            'value_array_array_array_float_1_0'    => [[[1.0]]],
+            'value_array_array_array_string_empty' => [[['']]],
+            'value_array_array_array_string_0'     => [[['0']]],
+            'value_array_array_array_string_1'     => [[['1']]],
+            'value_array_array_array_string_X'     => [[['X']]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_array_array_empty'        => [[[[]]]],
+            'value_array_array_array_array_null'         => [[[[null]]]],
+            'value_array_array_array_array_bool_true'    => [[[[true]]]],
+            'value_array_array_array_array_bool_false'   => [[[[false]]]],
+            'value_array_array_array_array_int_0'        => [[[[0]]]],
+            'value_array_array_array_array_int_1'        => [[[[1]]]],
+            'value_array_array_array_array_float_0_0'    => [[[[0.0]]]],
+            'value_array_array_array_array_float_1_0'    => [[[[1.0]]]],
+            'value_array_array_array_array_string_empty' => [[[['']]]],
+            'value_array_array_array_array_string_0'     => [[[['0']]]],
+            'value_array_array_array_array_string_1'     => [[[['1']]]],
+            'value_array_array_array_array_string_X'     => [[[['X']]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_array_array_array_empty'        => [[[[[]]]]],
+            'value_array_array_array_array_array_null'         => [[[[[null]]]]],
+            'value_array_array_array_array_array_bool_true'    => [[[[[true]]]]],
+            'value_array_array_array_array_array_bool_false'   => [[[[[false]]]]],
+            'value_array_array_array_array_array_int_0'        => [[[[[0]]]]],
+            'value_array_array_array_array_array_int_1'        => [[[[[1]]]]],
+            'value_array_array_array_array_array_float_0_0'    => [[[[[0.0]]]]],
+            'value_array_array_array_array_array_float_1_0'    => [[[[[1.0]]]]],
+            'value_array_array_array_array_array_string_empty' => [[[[['']]]]],
+            'value_array_array_array_array_array_string_0'     => [[[[['0']]]]],
+            'value_array_array_array_array_array_string_1'     => [[[[['1']]]]],
+            'value_array_array_array_array_array_string_X'     => [[[[['X']]]]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_inconsistent_keys' => [
+                100          => 'option_1',
+                200          => 'option_2',
+                'string_key' => 'option_3'
             ],
             'select' => 'option_1',
             'select_multiple' => [
@@ -62,16 +926,29 @@ abstract class Events_Test__Class_Request {
 
         $expected = [
             'value_string_empty' => '',
-            'value_string_0' => '0',
-            'value_string_1' => '1',
-            'value_string_X' => 'X',
+            'value_string_0'      => '0',
+            'value_string_1'      => '1',
+            'value_string_X'      => 'X',
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             'value_array_string_empty' => [''],
-            'value_array_string_0' => ['0'],
-            'value_array_string_1' => ['1'],
-            'value_array_string_X' => ['X'],
-            'value_array_wrong_keys' => [
-                0 => 'option_1',
-                1 => 'option_2'
+            'value_array_string_0'     => ['0'],
+            'value_array_string_1'     => ['1'],
+            'value_array_string_X'     => ['X'],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_string_empty' => [['']],
+            'value_array_array_string_0'     => [['0']],
+            'value_array_array_string_1'     => [['1']],
+            'value_array_array_string_X'     => [['X']],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_array_array_string_empty' => [[['']]],
+            'value_array_array_array_string_0'     => [[['0']]],
+            'value_array_array_array_string_1'     => [[['1']]],
+            'value_array_array_array_string_X'     => [[['X']]],
+            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            'value_array_inconsistent_keys' => [
+                100          => 'option_1',
+                200          => 'option_2',
+                'string_key' => 'option_3'
             ],
             'select' => 'option_1',
             'select_multiple' => [
@@ -99,424 +976,11 @@ abstract class Events_Test__Class_Request {
             }
         }
 
-        $_POST = $_POST_ORIGINAL;
-    }
-
-    static function test_step_code__sanitize_structure_and_value_get(&$test, $dpath, &$c_results) {
-        global $_POST;
-        $_POST_ORIGINAL = $_POST;
-
-        $data = [
-            'value_null' => null,
-            'value_bool_true' => true,
-            'value_bool_false' => false,
-            'value_int_0' => 0,
-            'value_int_1' => 1,
-            'value_float_0_0' => 0.0,
-            'value_float_1_0' => 1.0,
-            'value_string_empty' => '',
-            'value_string_0' => '0',
-            'value_string_1' => '1',
-            'value_string_X' => 'X',
-            'value_array_empty' => [],
-            'value_array_null' => [null],
-            'value_array_bool_true' => [true],
-            'value_array_bool_false' => [false],
-            'value_array_int_0' => [0],
-            'value_array_int_1' => [1],
-            'value_array_float_0_0' => [0.0],
-            'value_array_float_1_0' => [1.0],
-            'value_array_string_empty' => [''],
-            'value_array_string_0' => ['0'],
-            'value_array_string_1' => ['1'],
-            'value_array_string_X' => ['X'],
-            'value_array_array_empty' => [[]],
-            'value_array_array_null' => [[null]],
-            'value_array_array_bool_true' => [[true]],
-            'value_array_array_bool_false' => [[false]],
-            'value_array_array_int_0' => [[0]],
-            'value_array_array_int_1' => [[1]],
-            'value_array_array_float_0_0' => [[0.0]],
-            'value_array_array_float_1_0' => [[1.0]],
-            'value_array_array_string_empty' => [['']],
-            'value_array_array_string_0' => [['0']],
-            'value_array_array_string_1' => [['1']],
-            'value_array_array_string_X' => [['X']],
-            'value_array_array_array_empty' => [[[]]]
-        ];
-
-        ##################
-        ### number = 0 ###
-        ##################
-
-        $expected = [
-            'value_null' => '',
-            'value_bool_true' => '',
-            'value_bool_false' => '',
-            'value_int_0' => '',
-            'value_int_1' => '',
-            'value_float_0_0' => '',
-            'value_float_1_0' => '',
-            'value_string_empty' => '',
-            'value_string_0' => '0',
-            'value_string_1' => '1',
-            'value_string_X' => 'X',
-            'value_array_empty' => '',
-            'value_array_null' => '',
-            'value_array_bool_true' => '',
-            'value_array_bool_false' => '',
-            'value_array_int_0' => '',
-            'value_array_int_1' => '',
-            'value_array_float_0_0' => '',
-            'value_array_float_1_0' => '',
-            'value_array_string_empty' => '',
-            'value_array_string_0' => '0',
-            'value_array_string_1' => '1',
-            'value_array_string_X' => 'X',
-            'value_array_array_empty' => '',
-            'value_array_array_null' => '',
-            'value_array_array_bool_true' => '',
-            'value_array_array_bool_false' => '',
-            'value_array_array_int_0' => '',
-            'value_array_array_int_1' => '',
-            'value_array_array_float_0_0' => '',
-            'value_array_array_float_1_0' => '',
-            'value_array_array_string_empty' => '',
-            'value_array_array_string_0' => '',
-            'value_array_array_string_1' => '',
-            'value_array_array_string_X' => '',
-            'value_array_array_array_empty' => '',
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, 0, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        ##################
-        ### number = 1 ###
-        ##################
-
-        $expected = [
-            'value_null' => '',
-            'value_bool_true' => '',
-            'value_bool_false' => '',
-            'value_int_0' => '',
-            'value_int_1' => '',
-            'value_float_0_0' => '',
-            'value_float_1_0' => '',
-            'value_string_empty' => '',
-            'value_string_0' => '0', # $number is ignored on 1-st level
-            'value_string_1' => '1', # $number is ignored on 1-st level
-            'value_string_X' => 'X', # $number is ignored on 1-st level
-            'value_array_empty' => '',
-            'value_array_null' => '',
-            'value_array_bool_true' => '',
-            'value_array_bool_false' => '',
-            'value_array_int_0' => '',
-            'value_array_int_1' => '',
-            'value_array_float_0_0' => '',
-            'value_array_float_1_0' => '',
-            'value_array_string_empty' => '',
-            'value_array_string_0' => '',
-            'value_array_string_1' => '',
-            'value_array_string_X' => '',
-            'value_array_array_empty' => '',
-            'value_array_array_null' => '',
-            'value_array_array_bool_true' => '',
-            'value_array_array_bool_false' => '',
-            'value_array_array_int_0' => '',
-            'value_array_array_int_1' => '',
-            'value_array_array_float_0_0' => '',
-            'value_array_array_float_1_0' => '',
-            'value_array_array_string_empty' => '',
-            'value_array_array_string_0' => '',
-            'value_array_array_string_1' => '',
-            'value_array_array_string_X' => '',
-            'value_array_array_array_empty' => ''
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, 1, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        # ┌─────────────────────────┐
-        # │ transpositions in array │
-        # ├────────────┬────────────┤
-        # │ undefined  │ undefined  │
-        # │ ''         │ undefined  │
-        # │ 'value'    │ undefined  │
-        # ├────────────┼────────────┤
-        # │ undefined  │ ''         │
-        # │ ''         │ ''         │
-        # │ 'value'    │ ''         │
-        # ├────────────┼────────────┤
-        # │ undefined  │ 'value'    │
-        # │ ''         │ 'value'    │
-        # │ 'value'    │ 'value'    │
-        # └────────────┴────────────┘
-
-        $data = [
-            'transposition_1' => [                  ],
-            'transposition_2' => [0 => ''           ],
-            'transposition_3' => [0 => 'X'          ],
-            'transposition_4' => [          1 => '' ],
-            'transposition_5' => [0 => '' , 1 => '' ],
-            'transposition_6' => [0 => 'X', 1 => '' ],
-            'transposition_7' => [          1 => 'Y'],
-            'transposition_8' => [0 => '' , 1 => 'Y'],
-            'transposition_9' => [0 => 'X', 1 => 'Y']
-        ];
-
-        ##################
-        ### number = 0 ###
-        ##################
-
-        $expected = [
-            'transposition_1' => '',
-            'transposition_2' => '',
-            'transposition_3' => 'X',
-            'transposition_4' => '', # index '1' convert to '0' after sanitization
-            'transposition_5' => '',
-            'transposition_6' => 'X',
-            'transposition_7' => 'Y', # index '1' convert to '0' after sanitization
-            'transposition_8' => '',
-            'transposition_9' => 'X'
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, 0, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 0)', 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        ##################
-        ### number = 1 ###
-        ##################
-
-        $expected = [
-            'transposition_1' => '',
-            'transposition_2' => '',
-            'transposition_3' => '',
-            'transposition_4' => '',
-            'transposition_5' => '',
-            'transposition_6' => '',
-            'transposition_7' => '',
-            'transposition_8' => 'Y',
-            'transposition_9' => 'Y'
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, 1, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id.' (number = 1)', 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        $_POST = $_POST_ORIGINAL;
-    }
-
-    static function test_step_code__sanitize_structure_and_values_get(&$test, $dpath, &$c_results) {
-        global $_POST;
-        $_POST_ORIGINAL = $_POST;
-
-        $data = [
-            'value_null' => null,
-            'value_bool_true' => true,
-            'value_bool_false' => false,
-            'value_int_0' => 0,
-            'value_int_1' => 1,
-            'value_float_0_0' => 0.0,
-            'value_float_1_0' => 1.0,
-            'value_string_empty' => '',
-            'value_string_0' => '0',
-            'value_string_1' => '1',
-            'value_string_X' => 'X',
-            'value_array_empty' => [],
-            'value_array_null' => [null],
-            'value_array_bool_true' => [true],
-            'value_array_bool_false' => [false],
-            'value_array_int_0' => [0],
-            'value_array_int_1' => [1],
-            'value_array_float_0_0' => [0.0],
-            'value_array_float_1_0' => [1.0],
-            'value_array_string_empty' => [''],
-            'value_array_string_0' => ['0'],
-            'value_array_string_1' => ['1'],
-            'value_array_string_X' => ['X'],
-            'value_array_array_empty' => [[]],
-            'value_array_array_null' => [[null]],
-            'value_array_array_bool_true' => [[true]],
-            'value_array_array_bool_false' => [[false]],
-            'value_array_array_int_0' => [[0]],
-            'value_array_array_int_1' => [[1]],
-            'value_array_array_float_0_0' => [[0.0]],
-            'value_array_array_float_1_0' => [[1.0]],
-            'value_array_array_string_empty' => [['']],
-            'value_array_array_string_0' => [['0']],
-            'value_array_array_string_1' => [['1']],
-            'value_array_array_string_X' => [['X']],
-            'value_array_array_array_empty' => [[[]]]
-        ];
-
-        $expected = [
-            'value_null' => [],
-            'value_bool_true' => [],
-            'value_bool_false' => [],
-            'value_int_0' => [],
-            'value_int_1' => [],
-            'value_float_0_0' => [],
-            'value_float_1_0' => [],
-            'value_string_empty' => [''],
-            'value_string_0' => ['0'],
-            'value_string_1' => ['1'],
-            'value_string_X' => ['X'],
-            'value_array_empty' => [],
-            'value_array_null' => [],
-            'value_array_bool_true' => [],
-            'value_array_bool_false' => [],
-            'value_array_int_0' => [],
-            'value_array_int_1' => [],
-            'value_array_float_0_0' => [],
-            'value_array_float_1_0' => [],
-            'value_array_string_empty' => [''],
-            'value_array_string_0' => ['0'],
-            'value_array_string_1' => ['1'],
-            'value_array_string_X' => ['X'],
-            'value_array_array_empty' => [],
-            'value_array_array_null' => [],
-            'value_array_array_bool_true' => [],
-            'value_array_array_bool_false' => [],
-            'value_array_array_int_0' => [],
-            'value_array_array_int_1' => [],
-            'value_array_array_float_0_0' => [],
-            'value_array_array_float_1_0' => [],
-            'value_array_array_string_empty' => [],
-            'value_array_array_string_0' => [],
-            'value_array_array_string_1' => [],
-            'value_array_array_string_X' => [],
-            'value_array_array_array_empty' => []
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::values_get($c_row_id, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        # ┌─────────────────────────┐
-        # │ transpositions in array │
-        # ├────────────┬────────────┤
-        # │ undefined  │ undefined  │
-        # │ ''         │ undefined  │
-        # │ 'value'    │ undefined  │
-        # ├────────────┼────────────┤
-        # │ undefined  │ ''         │
-        # │ ''         │ ''         │
-        # │ 'value'    │ ''         │
-        # ├────────────┼────────────┤
-        # │ undefined  │ 'value'    │
-        # │ ''         │ 'value'    │
-        # │ 'value'    │ 'value'    │
-        # └────────────┴────────────┘
-
-        $data = [
-            'transposition_1' => [                  ],
-            'transposition_2' => [0 => ''           ],
-            'transposition_3' => [0 => 'X'          ],
-            'transposition_4' => [          1 => '' ],
-            'transposition_5' => [0 => '' , 1 => '' ],
-            'transposition_6' => [0 => 'X', 1 => '' ],
-            'transposition_7' => [          1 => 'Y'],
-            'transposition_8' => [0 => '' , 1 => 'Y'],
-            'transposition_9' => [0 => 'X', 1 => 'Y']
-        ];
-
-        $expected = [
-            'transposition_1' => [        ],
-            'transposition_2' => [''      ],
-            'transposition_3' => ['X'     ],
-            'transposition_4' => [''      ], # index '1' convert to '0' after sanitization
-            'transposition_5' => ['' ,  ''],
-            'transposition_6' => ['X', '' ],
-            'transposition_7' => ['Y'     ], # index '1' convert to '0' after sanitization
-            'transposition_8' => ['' , 'Y'],
-            'transposition_9' => ['X', 'Y']
-        ];
-
-        foreach ($data as $c_row_id => $c_value) {
-            $_POST = [$c_row_id => $c_value];
-            $_POST = Request::sanitize_structure('_POST');
-            $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::values_get($c_row_id, '_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
-            if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
-            }
-        }
-
-        $_POST = $_POST_ORIGINAL;
+        $_POST = $ORIGINAL;
     }
 
     ##########################################################################
-    ### $_FILES: Request::sanitize_structure_files(), Request::files_get() ###
+    ### $_FILES: Request::sanitize_structure_FILES(), Request::files_get() ###
     ##########################################################################
 
     static function test_step_code__sanitize_structure_files(&$test, $dpath, &$c_results) {
@@ -604,7 +1068,7 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_field) {
             $_FILES = [$c_row_id => $c_field];
             $c_expected = array_key_exists($c_row_id, $expected) === false ? [] : [$c_row_id => $expected[$c_row_id]];
-            $c_gotten = Request::sanitize_structure_files();
+            $c_gotten = Request::sanitize_structure_FILES();
             $c_result = $c_gotten === $c_expected;
             if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
             if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);

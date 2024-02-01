@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -14,7 +14,9 @@ class Widget_Blocks extends Widget_Items {
     public $title__not_selected__widget_insert = '- select -';
     public $item_title = 'Block';
     public $content_tag_name = null;
-    public $attributes = ['data-type' => 'items-blocks'];
+    public $attributes = [
+        'data-type' => 'items-blocks',
+        'data-with-settings' => true];
     public $name_complex = 'widget_blocks';
     public $id_area;
 
@@ -50,8 +52,8 @@ class Widget_Blocks extends Widget_Items {
         $widget_settings = new Widget_Block_settings($widget, $item, $c_row_id);
         $widget_settings->build();
         # relate new controls with the widget
-        $result->child_insert($info_markup, 'info');
-        $result->child_insert($widget_settings, 'settings');
+        $result->child_select('body')->child_insert($info_markup    , 'info');
+        $result->child_select('foot')->child_insert($widget_settings, 'settings');
         return $result;
     }
 

@@ -1,0 +1,27 @@
+tests
+- class__color|Test
+    id: class__color
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Color
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-RGB_to_HSV|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Color::RGB_to_HSV()
+    - code-RGB_to_HSV|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Color::test_step_code__RGB_to_HSV
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-RGB_to_HSL|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Color::RGB_to_HSL()
+    - code-RGB_to_HSL|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Color::test_step_code__RGB_to_HSL
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: 1

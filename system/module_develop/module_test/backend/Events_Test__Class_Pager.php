@@ -1,14 +1,16 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\test;
 
+use effcore\Core;
 use effcore\Pager;
 use effcore\Test;
 use effcore\Text;
+use effcore\Url;
 
 abstract class Events_Test__Class_Pager {
 
@@ -81,6 +83,10 @@ abstract class Events_Test__Class_Pager {
     # ──────────────────────────────────────┴────────────┴────────────┴───┴───┴───┴───┴───┘
 
     static function test_step_code__build(&$test, $dpath, &$c_results) {
+
+        global $_GET;
+        $ORIGINAL = $_GET;
+
         $result = [];
 
         $_GET = [];                       $pager = new Pager(1, 0);  $pager->build();  $result['1_0_undefined']            = ['max' => $pager->max === 1, 'cur' => $pager->cur === 1, 'err' => $pager->error_code_get() === (pager::ERR_CODE_MAX_LT_MIN                             ) ];
@@ -161,6 +167,210 @@ abstract class Events_Test__Class_Pager {
                 return;
             }
         }
+
+        $_GET = $ORIGINAL;
+    }
+
+    static function test_step_code__url_get(&$test, $dpath, &$c_results) {
+        global $_GET;
+        $ORIGINAL = $_GET;
+
+        if (Core::is_CLI()) {
+            Url::set_current('http://example.com');
+        }
+
+        $url = clone Url::get_current();
+        $url->query_arg_delete('page');
+        $base_url = $url->relative_get();
+
+        $incoming_states = [
+            '[- |- |-]' => ['pager_0' => null, 'pager_2' => null, 'pager_x' => null], # http://example.com
+            '[1 |- |-]' => ['pager_0' => 1   , 'pager_2' => null, 'pager_x' => null], # http://example.com
+            '[50|- |-]' => ['pager_0' => 50  , 'pager_2' => null, 'pager_x' => null], # http://example.com ? page=50
+            '[- |1 |-]' => ['pager_0' => null, 'pager_2' => 1   , 'pager_x' => null], # http://example.com
+            '[1 |1 |-]' => ['pager_0' => 1   , 'pager_2' => 1   , 'pager_x' => null], # http://example.com
+            '[50|1 |-]' => ['pager_0' => 50  , 'pager_2' => 1   , 'pager_x' => null], # http://example.com ? page=50
+            '[- |60|-]' => ['pager_0' => null, 'pager_2' => 60  , 'pager_x' => null], # http://example.com ?              page[2]=60
+            '[1 |60|-]' => ['pager_0' => 1   , 'pager_2' => 60  , 'pager_x' => null], # http://example.com ?              page[2]=60
+            '[50|60|-]' => ['pager_0' => 50  , 'pager_2' => 60  , 'pager_x' => null], # http://example.com ? page[0]=50 & page[2]=60
+            '[- |- |y]' => ['pager_0' => null, 'pager_2' => null, 'pager_x' => 'y' ], # http://example.com ?                           page[x]=y
+            '[1 |- |y]' => ['pager_0' => 1   , 'pager_2' => null, 'pager_x' => 'y' ], # http://example.com ?                           page[x]=y
+            '[50|- |y]' => ['pager_0' => 50  , 'pager_2' => null, 'pager_x' => 'y' ], # http://example.com ? page[0]=50 &              page[x]=y
+            '[- |1 |y]' => ['pager_0' => null, 'pager_2' => 1   , 'pager_x' => 'y' ], # http://example.com ?                           page[x]=y
+            '[1 |1 |y]' => ['pager_0' => 1   , 'pager_2' => 1   , 'pager_x' => 'y' ], # http://example.com ?                           page[x]=y
+            '[50|1 |y]' => ['pager_0' => 50  , 'pager_2' => 1   , 'pager_x' => 'y' ], # http://example.com ? page[0]=50 &              page[x]=y
+            '[- |60|y]' => ['pager_0' => null, 'pager_2' => 60  , 'pager_x' => 'y' ], # http://example.com ?              page[2]=60 & page[x]=y
+            '[1 |60|y]' => ['pager_0' => 1   , 'pager_2' => 60  , 'pager_x' => 'y' ], # http://example.com ?              page[2]=60 & page[x]=y
+            '[50|60|y]' => ['pager_0' => 50  , 'pager_2' => 60  , 'pager_x' => 'y' ], # http://example.com ? page[0]=50 & page[2]=60 & page[x]=y
+        ];
+
+        $result__pager_0__to_page_1 = [
+            '[- |- |-]' => $base_url                 ,
+            '[1 |- |-]' => $base_url                 ,
+            '[50|- |-]' => $base_url                 ,
+            '[- |1 |-]' => $base_url                 ,
+            '[1 |1 |-]' => $base_url                 ,
+            '[50|1 |-]' => $base_url                 ,
+            '[- |60|-]' => $base_url.'?'.'page[2]=60',
+            '[1 |60|-]' => $base_url.'?'.'page[2]=60',
+            '[50|60|-]' => $base_url.'?'.'page[2]=60',
+            '[- |- |y]' => $base_url                 ,
+            '[1 |- |y]' => $base_url                 ,
+            '[50|- |y]' => $base_url                 ,
+            '[- |1 |y]' => $base_url                 ,
+            '[1 |1 |y]' => $base_url                 ,
+            '[50|1 |y]' => $base_url                 ,
+            '[- |60|y]' => $base_url.'?'.'page[2]=60',
+            '[1 |60|y]' => $base_url.'?'.'page[2]=60',
+            '[50|60|y]' => $base_url.'?'.'page[2]=60',
+        ];
+
+        foreach ($incoming_states as $c_row_id => $c_state) {
+            $_GET = [];
+            if ($c_state['pager_0'] !== null) $_GET['page'][ 0 ] = $c_state['pager_0'];
+            if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
+            if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
+
+            $c_gotten = Pager::url_get('page', 0, 1);
+            $c_expected = $result__pager_0__to_page_1[$c_row_id];
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $result__pager_0__to_page_5 = [
+            '[- |- |-]' => $base_url.'?page=5'                    ,
+            '[1 |- |-]' => $base_url.'?page=5'                    ,
+            '[50|- |-]' => $base_url.'?page=5'                    ,
+            '[- |1 |-]' => $base_url.'?page=5'                    ,
+            '[1 |1 |-]' => $base_url.'?page=5'                    ,
+            '[50|1 |-]' => $base_url.'?page=5'                    ,
+            '[- |60|-]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+            '[1 |60|-]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+            '[50|60|-]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+            '[- |- |y]' => $base_url.'?page=5'                    ,
+            '[1 |- |y]' => $base_url.'?page=5'                    ,
+            '[50|- |y]' => $base_url.'?page=5'                    ,
+            '[- |1 |y]' => $base_url.'?page=5'                    ,
+            '[1 |1 |y]' => $base_url.'?page=5'                    ,
+            '[50|1 |y]' => $base_url.'?page=5'                    ,
+            '[- |60|y]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+            '[1 |60|y]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+            '[50|60|y]' => $base_url.'?page[0]=5'.'&'.'page[2]=60',
+        ];
+
+        foreach ($incoming_states as $c_row_id => $c_state) {
+            $_GET = [];
+            if ($c_state['pager_0'] !== null) $_GET['page'][ 0 ] = $c_state['pager_0'];
+            if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
+            if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
+
+            $c_gotten = Pager::url_get('page', 0, 5);
+            $c_expected = $result__pager_0__to_page_5[$c_row_id];
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $result__pager_2__to_page_1 = [
+            '[- |- |-]' => $base_url           ,
+            '[1 |- |-]' => $base_url           ,
+            '[50|- |-]' => $base_url.'?page=50',
+            '[- |1 |-]' => $base_url           ,
+            '[1 |1 |-]' => $base_url           ,
+            '[50|1 |-]' => $base_url.'?page=50',
+            '[- |60|-]' => $base_url           ,
+            '[1 |60|-]' => $base_url           ,
+            '[50|60|-]' => $base_url.'?page=50',
+            '[- |- |y]' => $base_url           ,
+            '[1 |- |y]' => $base_url           ,
+            '[50|- |y]' => $base_url.'?page=50',
+            '[- |1 |y]' => $base_url           ,
+            '[1 |1 |y]' => $base_url           ,
+            '[50|1 |y]' => $base_url.'?page=50',
+            '[- |60|y]' => $base_url           ,
+            '[1 |60|y]' => $base_url           ,
+            '[50|60|y]' => $base_url.'?page=50',
+        ];
+
+        foreach ($incoming_states as $c_row_id => $c_state) {
+            $_GET = [];
+            if ($c_state['pager_0'] !== null) $_GET['page'][ 0 ] = $c_state['pager_0'];
+            if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
+            if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
+
+            $c_gotten = Pager::url_get('page', 2, 1);
+            $c_expected = $result__pager_2__to_page_1[$c_row_id];
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+
+        $result__pager_2__to_page_6 = [
+            '[- |- |-]' => $base_url.'?'.              'page[2]=6',
+            '[1 |- |-]' => $base_url.'?'.              'page[2]=6',
+            '[50|- |-]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+            '[- |1 |-]' => $base_url.'?'.              'page[2]=6',
+            '[1 |1 |-]' => $base_url.'?'.              'page[2]=6',
+            '[50|1 |-]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+            '[- |60|-]' => $base_url.'?'.              'page[2]=6',
+            '[1 |60|-]' => $base_url.'?'.              'page[2]=6',
+            '[50|60|-]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+            '[- |- |y]' => $base_url.'?'.              'page[2]=6',
+            '[1 |- |y]' => $base_url.'?'.              'page[2]=6',
+            '[50|- |y]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+            '[- |1 |y]' => $base_url.'?'.              'page[2]=6',
+            '[1 |1 |y]' => $base_url.'?'.              'page[2]=6',
+            '[50|1 |y]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+            '[- |60|y]' => $base_url.'?'.              'page[2]=6',
+            '[1 |60|y]' => $base_url.'?'.              'page[2]=6',
+            '[50|60|y]' => $base_url.'?page[0]=50'.'&'.'page[2]=6',
+        ];
+
+        foreach ($incoming_states as $c_row_id => $c_state) {
+            $_GET = [];
+            if ($c_state['pager_0'] !== null) $_GET['page'][ 0 ] = $c_state['pager_0'];
+            if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
+            if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
+
+            $c_gotten = Pager::url_get('page', 2, 6);
+            $c_expected = $result__pager_2__to_page_6[$c_row_id];
+            $c_result = $c_gotten === $c_expected;
+            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            if ($c_result !== true) {
+                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
+                $c_results['return'] = 0;
+                return;
+            }
+        }
+
+        $_GET = $ORIGINAL;
     }
 
 }

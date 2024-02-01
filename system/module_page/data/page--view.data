@@ -3,12 +3,17 @@ pages
     id: view
     title: View
     url: %^(?<base>/manage/view)
->>>>>>>>>(/(?<type>colors/current|
->>>>>>>>>>>>>>>>>>>colors/presets|
+>>>>>>>>>(/(?<type>colors/manage|
+>>>>>>>>>>>>>>>>>>>colors/export|
+>>>>>>>>>>>>>>>>>>>colors/profiles|
+>>>>>>>>>>>>>>>>>>>colors/profiles/(?<profile_color_export_id>[a-z0-9_]+)/export/colors|
+>>>>>>>>>>>>>>>>>>>colors/profiles/(?<profile_export_id>[a-z0-9_]+)/export|
+>>>>>>>>>>>>>>>>>>>colors/profiles/(?<profile_id>[a-z0-9_]+)|
 >>>>>>>>>>>>>>>>>>>layouts|
+>>>>>>>>>>>>>>>>>>>layouts/(?<layout_id>[a-z0-9_]+)|
 >>>>>>>>>>>>>>>>>>>global_css|
 >>>>>>>>>>>>>>>>>>>settings)
->>>>>>>>>(/(?<id>[a-z0-9_]+)|)|)$%
+>>>>>>>>>|)$%
     is_https: true
     access
       roles
@@ -44,28 +49,49 @@ pages
           source: tabs/page/view
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - content
-      - block__form__colors|Block
-          title: Form for сolor assignment
+      - block__form__colors_manage|Block
+          title: Form for color management
           title_is_visible: false
           attributes
-          - data-id: block__form__colors
+          - data-id: block__form__colors_manage
           display
             check: page_args
             where: type
-            match: %^colors/current$%
+            match: %^colors/manage$%
           type: link
-          source: forms/page/colors
-      - block__form__colors_preset|Block
-          title: Form for applying color presets
-          title_is_visible: false
-          attributes
-          - data-id: block__form__colors_preset
+          source: forms/page/colors_manage
+      - block__export_custom_colors|Block
           display
             check: page_args
             where: type
-            match: %^colors/presets$%
+            match: %^colors/export$%
+          type: code
+          source: \effcore\modules\page\Events_Page_View::export_custom_colors
+      - block__form__color_profile|Block
+          title: Form for working with color profiles
+          title_is_visible: false
+          attributes
+          - data-id: block__form__color_profile
+          display
+            check: page_args
+            where: type
+            match: %^colors/profiles/[a-z0-9_]+$%
           type: link
-          source: forms/page/colors_preset
+          source: forms/page/color_profile
+      - block__export_profile_custom_colors|Block
+          display
+            check: page_args
+            where: type
+            match: %^colors/profiles/[a-z0-9_]+/export/colors$%
+          type: code
+          source: \effcore\modules\page\Events_Page_View::export_profile_custom_colors
+      - block__export_profile|Block
+          display
+            check: page_args
+            where: type
+            match: %^colors/profiles/[a-z0-9_]+/export$%
+          type: code
+          source: \effcore\modules\page\Events_Page_View::export_profile
       - block__form__layout|Block
           title: Form for editing the layout
           title_is_visible: false
@@ -74,7 +100,7 @@ pages
           display
             check: page_args
             where: type
-            match: %^layouts$%
+            match: %^layouts/[a-z0-9_]+$%
           type: link
           source: forms/page/layout
       - block__form__global_css|Block

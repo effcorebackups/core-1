@@ -192,7 +192,7 @@ entities
             properties
             - weight: +380
             element_attributes
-            - size: 60
+            - data-is-wide-field: true
     - created
         title: Created
         type: datetime
@@ -522,7 +522,7 @@ entities
             properties
             - weight: +380
             element_attributes
-            - size: 60
+            - data-is-wide-field: true
     - weight
         title: Weight
         type: integer
@@ -747,6 +747,29 @@ entities
             - weight: +320
             element_attributes
             - data-source: uagent-timezone
+    - color_profile
+        title: Color profile
+        type: varchar
+        size: 255
+        collate: binary
+        default: null
+        converters
+          on_insert
+          - -600: \effcore\Core::to_null_if_empty
+          on_update
+          - -600: \effcore\Core::to_null_if_empty
+        managing
+          is_enabled_on_insert: true
+          is_enabled_on_update: true
+          control
+            class: \effcore\Field_Select_color_profile
+            properties
+            - title__not_selected: - system value -
+            - weight: +300
+            element_attributes_on_update
+            - required: null
+            element_attributes_on_insert
+            - required: null
     - password_hash
         title: Password hash sum
         type: varchar
@@ -762,7 +785,7 @@ entities
             class: \effcore\Field_Password
             properties
             - title: New password
-            - weight: +300
+            - weight: -500
             properties_on_update
             - description: Leave the field blank if you do not want to change its value.
             element_attributes_on_update

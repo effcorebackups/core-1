@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\test;
@@ -1183,27 +1183,24 @@ abstract class Events_Test__Class_Core {
                                     '7f000001' => ['127.0.0.1'],
                                     'ffffffff' => ['255.255.255.255'],
             '00000000000000000000000000000000' => ['::'],
-            '00000000000000000000000000000001' => ['::1'],
+            '0000000000000000000000000000000f' => ['::f', '::0.0.0.15'],
+            '000000000000000000000000000000ff' => ['::ff', '::0.0.0.255'],
+            '00000000000000000000000000000fff' => ['::fff', '::0.0.15.255'],
             '0000000000000000000000000000ffff' => ['::ffff', '::0.0.255.255'],
-            '000000000000000000000000ffffffff' => ['::255.255.255.255'],
+            '000000000000000000000000000fffff' => ['::f:ffff', '::0.15.255.255'],
+            '00000000000000000000000000ffffff' => ['::ff:ffff', '::0.255.255.255'],
+            '0000000000000000000000000fffffff' => ['::fff:ffff', '::15.255.255.255'],
+            '000000000000000000000000ffffffff' => ['::ffff:ffff', '::255.255.255.255'],
             '00000000000000000000ffffffffffff' => ['::ffff:255.255.255.255'],
             '0000000000000000ffffffffffffffff' => ['::ffff:ffff:ffff:ffff'],
             '000000000000ffffffffffffffffffff' => ['::ffff:ffff:ffff:ffff:ffff'],
             '00000000ffffffffffffffffffffffff' => ['::ffff:ffff:ffff:ffff:ffff:ffff'],
             '0000ffffffffffffffffffffffffffff' => ['0:ffff:ffff:ffff:ffff:ffff:ffff:ffff', '::ffff:ffff:ffff:ffff:ffff:ffff:ffff'],
-            'ffffffffffffffffffffffffffffffff' => ['ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'],
+            '00000000000000000000000000000001' => ['::1'],
             'ffff000000000000000000000000ffff' => ['ffff::ffff'],
             'ffff00000000000000000000ffffffff' => ['ffff::ffff:ffff'],
             'ffffffff00000000000000000000ffff' => ['ffff:ffff::ffff'],
-            '00000000000000000000000000000000' => ['::'],
-            '0000000000000000000000000000000f' => ['::f', '::0.0.0.15'],
-            '000000000000000000000000000000ff' => ['::ff', '::0.0.0.255'],
-            '00000000000000000000000000000fff' => ['::fff', '::0.0.15.255'],
-            '0000000000000000000000000000ffff' => ['::ffff', '::0.0.255.255'],
-            '000000000000000000000000000fffff' => ['::0.15.255.255'],
-            '00000000000000000000000000ffffff' => ['::0.255.255.255'],
-            '0000000000000000000000000fffffff' => ['::15.255.255.255'],
-            '000000000000000000000000ffffffff' => ['::255.255.255.255']
+            'ffffffffffffffffffffffffffffffff' => ['ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'],
         ];
 
         foreach ($data as $c_value => $c_expected) {
@@ -1345,6 +1342,43 @@ abstract class Events_Test__Class_Core {
                 $c_results['return'] = 0;
                 return;
             }
+        }
+    }
+
+    static function test_step_code__generate_numerical_suffix(&$test, $dpath, &$c_results) {
+        $data = [
+            'x' => 'value x',
+            'y' => 'value y',
+        ];
+
+        $expected = [
+            'x'  => 'value x',
+            'y'  => 'value y',
+            'x2' => 'value x #2',
+            'y2' => 'value y #2',
+            'x3' => 'value x #3',
+            'y3' => 'value y #3',
+            'x4' => 'value x #4',
+            'y4' => 'value y #4',
+        ];
+
+        $gotten = $data;
+
+        $suffix = Core::generate_numerical_suffix('x', array_keys($gotten));  $gotten['x'.$suffix] = 'value x #2';
+        $suffix = Core::generate_numerical_suffix('y', array_keys($gotten));  $gotten['y'.$suffix] = 'value y #2';
+        $suffix = Core::generate_numerical_suffix('x', array_keys($gotten));  $gotten['x'.$suffix] = 'value x #3';
+        $suffix = Core::generate_numerical_suffix('y', array_keys($gotten));  $gotten['y'.$suffix] = 'value y #3';
+        $suffix = Core::generate_numerical_suffix('x', array_keys($gotten));  $gotten['x'.$suffix] = 'value x #4';
+        $suffix = Core::generate_numerical_suffix('y', array_keys($gotten));  $gotten['y'.$suffix] = 'value y #4';
+
+        $c_result = $gotten === $expected;
+        if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'generate_numerical_suffix', 'result' => (new Text('success'))->render()]);
+        if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'generate_numerical_suffix', 'result' => (new Text('failure'))->render()]);
+        if ($c_result !== true) {
+            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
+            $c_results['return'] = 0;
+            return;
         }
     }
 

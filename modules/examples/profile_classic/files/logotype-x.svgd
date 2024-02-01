@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="80"
+    height="80"
+    viewBox="0 0 76 76"
+    style="shape-rendering: auto">
+
+    <g id="logo_x" transform="matrix(1, 0, 0, 1, 3.753, 3)">
+        <path style="fill: %%_color(main)" d="M 40.764 29.641 L 66.262 0 L 60.221 0 L 38.08 25.737 L 20.397 0 L 0 0 L 26.741 38.918 L 0 70 L 6.043 70 L 29.424 42.823 L 48.098 70 L 68.494 70 L 40.762 29.641 L 40.764 29.641 Z M 32.487 39.26 L 29.778 35.384 L 8.221 4.549 L 17.501 4.549 L 34.899 29.434 L 37.609 33.312 L 60.223 65.658 L 50.941 65.658 L 32.487 39.263 L 32.487 39.26 Z"/>
+    </g>
+
+</svg>

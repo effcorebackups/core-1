@@ -1,0 +1,160 @@
+
+body {
+  display: block;
+  margin: 0 auto;
+  padding: 0 30px 100px 30px;
+  box-sizing: border-box;
+  min-width: calc(%%_page_width_min(context)px + 60px);
+  max-width: calc(%%_page_width_max(context)px + 60px);
+  %%_return_if_token(page_width_max\(context\)|0|max-width: 100%;)
+}
+
+@media screen and (max-width: %%_page_width_mobile(null)px) {
+  body {
+    padding: 0 15px 50px 15px;
+  }
+}
+
+
+
+/* area + group */
+
+[data-area-group] {display: block; vertical-align: top}
+[data-area-group]:empty {display: none !important}
+
+[data-area] {display: block; vertical-align: top}
+[data-area]:empty {display: none !important}
+[data-area]::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+
+
+/* area: grid */
+
+[data-area-group][data-type^='grid-'] {display: grid}
+[data-area-group][data-type='grid-2x'] {grid-template-columns: repeat(2, 1fr)}
+[data-area-group][data-type='grid-3x'] {grid-template-columns: repeat(3, 1fr)}
+[data-area-group][data-type='grid-4x'] {grid-template-columns: repeat(4, 1fr)}
+[data-area-group][data-type='grid-5x'] {grid-template-columns: repeat(5, 1fr)}
+
+@media screen and (max-width: %%_page_width_mobile(null)px) {
+  [data-area-group][data-type^='grid-'] {grid-template-columns: 1fr}
+}
+
+
+
+/* group-area: grid-custom */
+
+[data-type='grid-custom'][data-w='2'] {grid-template-columns: repeat(2, 1fr)}
+[data-type='grid-custom'][data-w='3'] {grid-template-columns: repeat(3, 1fr)}
+[data-type='grid-custom'][data-w='4'] {grid-template-columns: repeat(4, 1fr)}
+[data-type='grid-custom'][data-w='5'] {grid-template-columns: repeat(5, 1fr)}
+[data-type='grid-custom'][data-w='6'] {grid-template-columns: repeat(6, 1fr)}
+[data-type='grid-custom'][data-w='7'] {grid-template-columns: repeat(7, 1fr)}
+[data-type='grid-custom'][data-w='8'] {grid-template-columns: repeat(8, 1fr)}
+[data-type='grid-custom'][data-w='9'] {grid-template-columns: repeat(9, 1fr)}
+
+[data-type='grid-custom'][data-h='2'] {grid-template-rows: repeat(2, auto)}
+[data-type='grid-custom'][data-h='3'] {grid-template-rows: repeat(3, auto)}
+[data-type='grid-custom'][data-h='4'] {grid-template-rows: repeat(4, auto)}
+[data-type='grid-custom'][data-h='5'] {grid-template-rows: repeat(5, auto)}
+[data-type='grid-custom'][data-h='6'] {grid-template-rows: repeat(6, auto)}
+[data-type='grid-custom'][data-h='7'] {grid-template-rows: repeat(7, auto)}
+[data-type='grid-custom'][data-h='8'] {grid-template-rows: repeat(8, auto)}
+[data-type='grid-custom'][data-h='9'] {grid-template-rows: repeat(9, auto)}
+
+[data-type='grid-custom'] [data-area][data-start-x= '1'] {grid-column-start:  1}
+[data-type='grid-custom'] [data-area][data-start-x= '2'] {grid-column-start:  2}
+[data-type='grid-custom'] [data-area][data-start-x= '3'] {grid-column-start:  3}
+[data-type='grid-custom'] [data-area][data-start-x= '4'] {grid-column-start:  4}
+[data-type='grid-custom'] [data-area][data-start-x= '5'] {grid-column-start:  5}
+[data-type='grid-custom'] [data-area][data-start-x= '6'] {grid-column-start:  6}
+[data-type='grid-custom'] [data-area][data-start-x= '7'] {grid-column-start:  7}
+[data-type='grid-custom'] [data-area][data-start-x= '8'] {grid-column-start:  8}
+[data-type='grid-custom'] [data-area][data-start-x= '9'] {grid-column-start:  9}
+[data-type='grid-custom'] [data-area][data-start-x='10'] {grid-column-start: 10}
+
+[data-type='grid-custom'] [data-area][data-end-x= '1'] {grid-column-end:  1}
+[data-type='grid-custom'] [data-area][data-end-x= '2'] {grid-column-end:  2}
+[data-type='grid-custom'] [data-area][data-end-x= '3'] {grid-column-end:  3}
+[data-type='grid-custom'] [data-area][data-end-x= '4'] {grid-column-end:  4}
+[data-type='grid-custom'] [data-area][data-end-x= '5'] {grid-column-end:  5}
+[data-type='grid-custom'] [data-area][data-end-x= '6'] {grid-column-end:  6}
+[data-type='grid-custom'] [data-area][data-end-x= '7'] {grid-column-end:  7}
+[data-type='grid-custom'] [data-area][data-end-x= '8'] {grid-column-end:  8}
+[data-type='grid-custom'] [data-area][data-end-x= '9'] {grid-column-end:  9}
+[data-type='grid-custom'] [data-area][data-end-x='10'] {grid-column-end: 10}
+
+[data-type='grid-custom'] [data-area][data-start-y= '1'] {grid-row-start:  1}
+[data-type='grid-custom'] [data-area][data-start-y= '2'] {grid-row-start:  2}
+[data-type='grid-custom'] [data-area][data-start-y= '3'] {grid-row-start:  3}
+[data-type='grid-custom'] [data-area][data-start-y= '4'] {grid-row-start:  4}
+[data-type='grid-custom'] [data-area][data-start-y= '5'] {grid-row-start:  5}
+[data-type='grid-custom'] [data-area][data-start-y= '6'] {grid-row-start:  6}
+[data-type='grid-custom'] [data-area][data-start-y= '7'] {grid-row-start:  7}
+[data-type='grid-custom'] [data-area][data-start-y= '8'] {grid-row-start:  8}
+[data-type='grid-custom'] [data-area][data-start-y= '9'] {grid-row-start:  9}
+[data-type='grid-custom'] [data-area][data-start-y='10'] {grid-row-start: 10}
+
+[data-type='grid-custom'] [data-area][data-end-y= '1'] {grid-row-end:  1}
+[data-type='grid-custom'] [data-area][data-end-y= '2'] {grid-row-end:  2}
+[data-type='grid-custom'] [data-area][data-end-y= '3'] {grid-row-end:  3}
+[data-type='grid-custom'] [data-area][data-end-y= '4'] {grid-row-end:  4}
+[data-type='grid-custom'] [data-area][data-end-y= '5'] {grid-row-end:  5}
+[data-type='grid-custom'] [data-area][data-end-y= '6'] {grid-row-end:  6}
+[data-type='grid-custom'] [data-area][data-end-y= '7'] {grid-row-end:  7}
+[data-type='grid-custom'] [data-area][data-end-y= '8'] {grid-row-end:  8}
+[data-type='grid-custom'] [data-area][data-end-y= '9'] {grid-row-end:  9}
+[data-type='grid-custom'] [data-area][data-end-y='10'] {grid-row-end: 10}
+
+
+
+/* area: flex */
+
+[data-area-group][data-type='flex'] {display: flex; flex-wrap: wrap}
+[data-area-group][data-type='flex'] > [data-area] {flex: 150px}
+[data-area-group][data-type='flex'] > [data-area]:empty {flex: 0}
+
+
+
+/* layout 'universal' */
+
+[data-layout-id='universal'] [data-area-group][data-id='main-columns'] > [data-area-group][data-id='center'] {
+  flex: 500px;
+}
+
+
+
+/* x-layout-manager */
+
+x-layout-manager {
+  display: block;
+  margin: 50px 0;
+}
+
+x-layout-manager [data-area][data-id] {
+  min-height: 20px;
+  margin-bottom: 5px;
+  border: 1px solid %%_color(ok);
+  background: %%_color(ok|o=.1);
+}
+
+x-layout-manager [data-area-group][data-type^='grid'] {margin-bottom: 5px; grid-gap: 5px}
+x-layout-manager [data-area-group][data-type^='grid'] > [data-area][data-id] {margin: 0}
+x-layout-manager [data-area-group][data-type^='flex'] {margin-bottom: 5px; gap: 5px}
+x-layout-manager [data-area-group][data-type^='flex'] > [data-area][data-id] {margin: 0}
+x-layout-manager [data-area-group] > [data-area-group] {margin: 0}
+
+x-layout-manager [data-area][data-id] x-area-info {display: block; padding: 20px; text-align: center}
+x-layout-manager [data-area][data-id] x-area-info x-area-id {display: block; margin: 0 .5em; text-transform: capitalize}
+x-layout-manager [data-area][data-id] x-area-info x-area-tag-name {display: block; margin: 0 .5em; opacity: .5; font-family: monospace; font-size: .8em}
+x-layout-manager [data-area][data-id] x-area-info x-area-tag-name::before {content: '<'}
+x-layout-manager [data-area][data-id] x-area-info x-area-tag-name::after  {content: '>'}
+
+form#instance_update x-layout-manager [data-area][data-id] {background: %%_color(fieldset_nested)}
+form#instance_update x-layout-manager [data-area][data-id] x-area-info {padding: 10px; color: white; background: %%_color(ok) url('pictures/lines.svgd')}
+form#instance_update x-layout-manager [data-area][data-id] x-area-info x-area-id {display: inline-block}
+form#instance_update x-layout-manager [data-area][data-id] x-area-info x-area-tag-name {display: none}

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -75,13 +75,13 @@ class Widget_Files_videos extends Widget_Files {
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
-        $result->child_select('button_delete')->_kind = 'video';
+        $result->child_select('head')->child_select('button_delete')->_kind = 'video';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'video') {
             if (!empty($item->settings['data-poster-is-embedded'])) {
-                $result->child_select('info')->child_select('title')->child_select('text')->text_append(
+                $result->child_select('body')->child_select('info')->child_select('title')->child_select('text')->text_append(
                     ' + '.(new Text('poster'))->render());
-                $result->child_insert(new Markup_simple('img', [
+                $result->child_select('body')->child_insert(new Markup_simple('img', [
                     'data-type' => 'thumbnail',
                     'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?poster=small',
                     'alt'       => new Text('thumbnail'),

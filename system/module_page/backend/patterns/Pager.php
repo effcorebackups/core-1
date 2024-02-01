@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -36,9 +36,10 @@ class Pager extends Markup {
 
     function init() {
         if ($this->cur === null) {
-            $this->cur = Request::value_get($this->name_get(), 0, '_GET');
-            if ($this->cur === ''                                                  ) {$this->cur = $this->min;}
-            if ($this->cur !== '' && (string)$this->cur !== (string)(int)$this->cur) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_NO_INT;}
+            $url_args = Request::values_get($this->name, '_GET', [], false);
+            $this->cur = array_key_exists($this->id, $url_args) ? $url_args[$this->id] : '';
+            if ($this->cur === ''                                           ) {$this->cur = $this->min;}
+            if ($this->cur !== '' && !Security::validate_str_int($this->cur)) {$this->cur = $this->min; $this->error_code |= static::ERR_CODE_CUR_NO_INT;}
             $this->min = (int)$this->min;
             $this->max = (int)$this->max;
             $this->cur = (int)$this->cur;
@@ -51,24 +52,6 @@ class Pager extends Markup {
     function error_code_get() {
         $this->init();
         return $this->error_code;
-    }
-
-    function name_get($is_optimized = true) {
-        if (!$is_optimized)
-             return             $this->name.$this->id;
-        else return $this->id ? $this->name.$this->id :
-                                $this->name;
-    }
-
-    function url_page_max_get() {
-        $this->init();
-        $pager_name               = $this->name_get();
-        $pager_name_not_optimized = $this->name_get(false);
-        $url = clone Url::get_current();
-        $url->query_arg_delete($pager_name);
-        $url->query_arg_delete($pager_name_not_optimized);
-        if ($this->max > 1) $url->query_arg_insert($pager_name, $this->max);
-        return $url;
     }
 
     # ─────────────────────────────────────────────────────────────────────
@@ -121,11 +104,6 @@ class Pager extends Markup {
     function build() {
         if (!$this->is_builded) {
             $this->init();
-            $pager_name               = $this->name_get();
-            $pager_name_not_optimized = $this->name_get(false);
-            $url = clone Url::get_current();
-            $url->query_arg_delete($pager_name);
-            $url->query_arg_delete($pager_name_not_optimized);
 
             # ─────────────────────────────────────────────────────────────────────
             # min part
@@ -133,8 +111,8 @@ class Pager extends Markup {
 
             if ($this->max - $this->min > 0) {
                 if ($this->cur === $this->min)
-                     $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->relative_get(), 'aria-current' => 'true'], $this->min));
-                else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->min]), 'href' => $url->relative_get()                          ], $this->min));
+                     $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->min]), 'href' => static::url_get($this->name, $this->id), 'aria-current' => 'true'], $this->min));
+                else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->min]), 'href' => static::url_get($this->name, $this->id)                          ], $this->min));
             }
 
             # ─────────────────────────────────────────────────────────────────────
@@ -154,8 +132,7 @@ class Pager extends Markup {
                     $this->child_insert(new Text('…'));
                     for ($j = 1; $j < 4; $j++) {
                         $c_i = $this->min + (int)(($a - $this->min) / 4 * $j);
-                        $url->query_arg_insert($pager_name, $c_i);
-                        $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->relative_get()], $c_i));
+                        $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $c_i]), 'href' => static::url_get($this->name, $this->id, $c_i)], $c_i));
                     }
                 }
 
@@ -165,10 +142,9 @@ class Pager extends Markup {
                 }
                 for ($i = $a; $i <= $b; $i++) {
                     if ($i > $this->min && $i < $this->max) {
-                        $url->query_arg_insert($pager_name, $i);
                         if ($this->cur === $i)
-                             $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $i]), 'href' => $url->relative_get(), 'aria-current' => 'true'], $i));
-                        else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $i]), 'href' => $url->relative_get()                          ], $i));
+                             $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $i]), 'href' => static::url_get($this->name, $this->id, $i), 'aria-current' => 'true'], $i));
+                        else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $i]), 'href' => static::url_get($this->name, $this->id, $i)                          ], $i));
                     }
                 }
                 if ($b < $this->max - 1) {
@@ -179,8 +155,7 @@ class Pager extends Markup {
                 if ($b < $this->max - 10) {
                     for ($j = 1; $j < 4; $j++) {
                         $c_i = $b + (int)(($this->max - $b) / 4 * $j);
-                        $url->query_arg_insert($pager_name, $c_i);
-                        $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $c_i]), 'href' => $url->relative_get()], $c_i));
+                        $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $c_i]), 'href' => static::url_get($this->name, $this->id, $c_i)], $c_i));
                     }
                     $this->child_insert(new Text('…'));
                 }
@@ -191,10 +166,9 @@ class Pager extends Markup {
             # ─────────────────────────────────────────────────────────────────────
 
             if ($this->max - $this->min > 0) {
-                $url->query_arg_insert($pager_name, $this->max);
                 if ($this->cur === $this->max)
-                     $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->relative_get(), 'aria-current' => 'true'], $this->max));
-                else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->max]), 'href' => $url->relative_get()                          ], $this->max));
+                     $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->max]), 'href' => static::url_get($this->name, $this->id, $this->max), 'aria-current' => 'true'], $this->max));
+                else $this->child_insert(new Markup('a', ['title' => new Text('go to page #%%_number', ['number' => $this->max]), 'href' => static::url_get($this->name, $this->id, $this->max)                          ], $this->max));
             }
 
             $this->is_builded = true;
@@ -204,6 +178,33 @@ class Pager extends Markup {
     function render() {
         $this->build();
         return parent::render();
+    }
+
+    ###########################
+    ### static declarations ###
+    ###########################
+
+    static function url_get($name, $id, $number = 1) {
+        $url = clone Url::get_current();
+        $url->query_arg_delete($name);
+        $url_args = Request::values_get($name, '_GET', [], false);
+        unset($url_args[$id]);
+        if ($number !== 1)
+            $url_args[$id] = $number;
+        ksort($url_args);
+        # optimization for page #1: page[x]=1 & page[y]=100 & page[z]=1 → page[y]=100
+        foreach ($url_args as $c_id => $c_number)
+            if ($c_number === 1)
+                unset($url_args[$c_id]);
+        # sanitization: only numeric pairs (int|str_int) => (int|str_int) is available
+        foreach ($url_args as $c_id => $c_number)
+            if (!(Security::validate_str_int($c_id) && Security::validate_str_int($c_number)))
+                unset($url_args[$c_id]);
+        # optimization for single pager with id = 0: page[0]=1 → page=1, … , page[0]=N → page=N
+        if (count($url_args) === 1 && key($url_args) === 0)
+            $url_args = reset($url_args);
+        $url->query_arg_insert($name, $url_args);
+        return $url->relative_get();
     }
 
 }

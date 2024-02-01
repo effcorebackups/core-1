@@ -55,7 +55,7 @@ tests
               name: proxy
         - response_check-164b9b11|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -69,7 +69,7 @@ tests
               name: proxy
         - response_check-0dc172e1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -83,21 +83,21 @@ tests
               name: proxy
         - response_check-accb0053|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-accb0053-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section|/section)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-accb0053-content_length|Test_step_Check
             check: token
-            where: %%_test_response_content_length
+            where: %%_test_response(content_length)
             match: 0
             on_failure
             - return_result|Test_step_Return
@@ -111,14 +111,14 @@ tests
               name: proxy
         - response_check-a4a35be0|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-a4a35be0-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -132,7 +132,7 @@ tests
               name: proxy
         - response_check-7cd28f8a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -146,7 +146,7 @@ tests
               name: proxy
         - response_check-c97a7191|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -160,14 +160,14 @@ tests
               name: proxy
         - response_check-6c70764b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-6c70764b-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -181,7 +181,7 @@ tests
               name: proxy
         - response_check-b401a221|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -226,7 +226,7 @@ tests
               name: proxy
         - response_check-0dc172e1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -240,15 +240,15 @@ tests
               name: proxy
         - response_check-d19b00c2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-d19b00c2-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/|/)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/|/)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -261,15 +261,15 @@ tests
               name: proxy
         - response_check-e584344a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-e584344a-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/page|/page)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/page|/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -282,7 +282,7 @@ tests
               name: proxy
         - response_check-1ad9b473|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -296,7 +296,7 @@ tests
               name: proxy
         - response_check-30387409|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -310,7 +310,7 @@ tests
               name: proxy
         - response_check-e3dc5fc9|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -324,15 +324,15 @@ tests
               name: proxy
         - response_check-c86a8464|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c86a8464-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section|/section)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -345,15 +345,15 @@ tests
               name: proxy
         - response_check-0b991962|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0b991962-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/section/page|/section/page)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section/page|/section/page)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -366,7 +366,7 @@ tests
               name: proxy
         - response_check-c97a7191|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -380,14 +380,14 @@ tests
               name: proxy
         - response_check-995a5d08|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-995a5d08-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -401,14 +401,14 @@ tests
               name: proxy
         - response_check-23acb4d1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-23acb4d1-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -422,7 +422,7 @@ tests
               name: proxy
         - response_check-d6c69183|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -436,15 +436,15 @@ tests
               name: proxy
         - response_check-2e01cfd8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-2e01cfd8-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/file\.|/file\.)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/file\.|/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -457,15 +457,15 @@ tests
               name: proxy
         - response_check-d53f7856|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-d53f7856-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/file\.type|/file\.type)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/file\.type|/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -478,7 +478,7 @@ tests
               name: proxy
         - response_check-d84e7558|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -492,7 +492,7 @@ tests
               name: proxy
         - response_check-23e13486|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -506,7 +506,7 @@ tests
               name: proxy
         - response_check-3d72f97a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -520,14 +520,14 @@ tests
               name: proxy
         - response_check-f60feaff|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-f60feaff-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -541,14 +541,14 @@ tests
               name: proxy
         - response_check-d7a43c3a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-d7a43c3a-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -562,7 +562,7 @@ tests
               name: proxy
         - response_check-22ce1968|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -576,15 +576,15 @@ tests
               name: proxy
         - response_check-4154782f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-4154782f-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/directory/file\.|/directory/file\.)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -597,15 +597,15 @@ tests
               name: proxy
         - response_check-2137f0bd|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-2137f0bd-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -652,14 +652,14 @@ tests
               name: proxy
         - response_check-d2ab672d|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-d2ab672d-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -673,14 +673,14 @@ tests
               name: proxy
         - response_check-612d56be|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-612d56be-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -694,7 +694,7 @@ tests
               name: proxy
         - response_check-55326236|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -708,14 +708,14 @@ tests
               name: proxy
         - response_check-437576ff|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-437576ff-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -729,14 +729,14 @@ tests
               name: proxy
         - response_check-cdec9874|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-cdec9874-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -750,7 +750,7 @@ tests
               name: proxy
         - response_check-1e08b3b4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -764,14 +764,14 @@ tests
               name: proxy
         - response_check-3cb64a05|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-3cb64a05-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -785,14 +785,14 @@ tests
               name: proxy
         - response_check-78dcd218|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-78dcd218-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -806,7 +806,7 @@ tests
               name: proxy
         - response_check-bb2f4f1e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -820,14 +820,14 @@ tests
               name: proxy
         - response_check-469ee882|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-469ee882-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -841,14 +841,14 @@ tests
               name: proxy
         - response_check-648eb175|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-648eb175-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -862,7 +862,7 @@ tests
               name: proxy
         - response_check-de7858ac|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -876,7 +876,7 @@ tests
               name: proxy
         - response_check-09ac844f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -890,7 +890,7 @@ tests
               name: proxy
         - response_check-9eb799a4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -904,7 +904,7 @@ tests
               name: proxy
         - response_check-65892e2a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -918,14 +918,14 @@ tests
               name: proxy
         - response_check-e4697210|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-e4697210-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -939,14 +939,14 @@ tests
               name: proxy
         - response_check-8a93825e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-8a93825e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -960,7 +960,7 @@ tests
               name: proxy
         - response_check-94004fa2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -974,14 +974,14 @@ tests
               name: proxy
         - response_check-b2966069|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-b2966069-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -995,14 +995,14 @@ tests
               name: proxy
         - response_check-0bdb0682|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0bdb0682-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1016,7 +1016,7 @@ tests
               name: proxy
         - response_check-2a70d047|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1030,7 +1030,7 @@ tests
               name: proxy
         - response_check-fda40ca4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1044,7 +1044,7 @@ tests
               name: proxy
         - response_check-f1e22e53|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1058,7 +1058,7 @@ tests
               name: proxy
         - response_check-9181a6c1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1104,14 +1104,14 @@ tests
               name: proxy
         - response_check-80a67fa8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-80a67fa8-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1125,7 +1125,7 @@ tests
               name: proxy
         - response_check-6686c1c6|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1139,7 +1139,7 @@ tests
               name: proxy
         - response_check-5299f54e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1153,14 +1153,14 @@ tests
               name: proxy
         - response_check-1f8f109b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-1f8f109b-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1174,7 +1174,7 @@ tests
               name: proxy
         - response_check-48355c12|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1188,7 +1188,7 @@ tests
               name: proxy
         - response_check-9bd177d2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1202,14 +1202,14 @@ tests
               name: proxy
         - response_check-6ebb5280|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-6ebb5280-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1223,7 +1223,7 @@ tests
               name: proxy
         - response_check-7f774560|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1237,7 +1237,7 @@ tests
               name: proxy
         - response_check-bc84d866|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1251,14 +1251,14 @@ tests
               name: proxy
         - response_check-aedae111|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-aedae111-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1272,14 +1272,14 @@ tests
               name: proxy
         - response_check-e1577513|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-e1577513-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1293,7 +1293,7 @@ tests
               name: proxy
         - response_check-5ba19cca|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1307,7 +1307,7 @@ tests
               name: proxy
         - response_check-991c0edc|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1321,7 +1321,7 @@ tests
               name: proxy
         - response_check-6222b952|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1335,14 +1335,14 @@ tests
               name: proxy
         - response_check-0ec1776c|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0ec1776c-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1356,7 +1356,7 @@ tests
               name: proxy
         - response_check-cd66987f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1370,7 +1370,7 @@ tests
               name: proxy
         - response_check-d3f55583|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1384,14 +1384,14 @@ tests
               name: proxy
         - response_check-5ad269fa|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-5ad269fa-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1405,14 +1405,14 @@ tests
               name: proxy
         - response_check-8e02c2e4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-8e02c2e4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1426,7 +1426,7 @@ tests
               name: proxy
         - response_check-afa91421|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1440,7 +1440,7 @@ tests
               name: proxy
         - response_check-f649b92b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1454,7 +1454,7 @@ tests
               name: proxy
         - response_check-962a31b9|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1499,14 +1499,14 @@ tests
               name: proxy
         - response_check-c552515b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c552515b-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1520,17 +1520,17 @@ tests
               name: proxy
         - response_check-8aedd093|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 400
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_response_web_server_name
+                where: %%_test_response(web_server_name)
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
                     check: token
-                    where: %%_test_response_http_code
+                    where: %%_test_response(http_code)
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
@@ -1547,7 +1547,7 @@ tests
               name: proxy
         - response_check-dcd4cbe8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1561,14 +1561,14 @@ tests
               name: proxy
         - response_check-fdb24bf6|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-fdb24bf6-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1582,17 +1582,17 @@ tests
               name: proxy
         - response_check-98ab53b8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 400
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_response_web_server_name
+                where: %%_test_response(web_server_name)
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
                     check: token
-                    where: %%_test_response_http_code
+                    where: %%_test_response(http_code)
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
@@ -1609,7 +1609,7 @@ tests
               name: proxy
         - response_check-01e83dce|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1623,14 +1623,14 @@ tests
               name: proxy
         - response_check-9de767c8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-9de767c8-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1644,7 +1644,7 @@ tests
               name: proxy
         - response_check-36ef88fc|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1658,7 +1658,7 @@ tests
               name: proxy
         - response_check-8461fd7b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1672,14 +1672,14 @@ tests
               name: proxy
         - response_check-aac608ff|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-aac608ff-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1693,14 +1693,14 @@ tests
               name: proxy
         - response_check-31c97ab9|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-31c97ab9-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1714,7 +1714,7 @@ tests
               name: proxy
         - response_check-d7c8de63|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1728,7 +1728,7 @@ tests
               name: proxy
         - response_check-2c1fd13f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1742,7 +1742,7 @@ tests
               name: proxy
         - response_check-c8a46ddd|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1756,14 +1756,14 @@ tests
               name: proxy
         - response_check-caee742e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-caee742e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1777,17 +1777,17 @@ tests
               name: proxy
         - response_check-bee4a36f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 400
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_response_web_server_name
+                where: %%_test_response(web_server_name)
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
                     check: token
-                    where: %%_test_response_http_code
+                    where: %%_test_response(http_code)
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
@@ -1804,7 +1804,7 @@ tests
               name: proxy
         - response_check-d39c841e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1818,14 +1818,14 @@ tests
               name: proxy
         - response_check-b2dfe299|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-b2dfe299-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1839,14 +1839,14 @@ tests
               name: proxy
         - response_check-3d0bd099|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-3d0bd099-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -1860,7 +1860,7 @@ tests
               name: proxy
         - response_check-cfd13405|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1874,7 +1874,7 @@ tests
               name: proxy
         - response_check-20dd7b1f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1888,7 +1888,7 @@ tests
               name: proxy
         - response_check-d0bd87bb|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -1912,7 +1912,7 @@ tests
               name: proxy
         - response_check-dc7705fd|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -1926,15 +1926,15 @@ tests
               name: proxy
         - response_check-bb480ca7|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-bb480ca7-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/\?page=1|/\?page=1)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/\?page=1|/\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -1947,7 +1947,7 @@ tests
               name: proxy
         - response_check-c1090ffd|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -1961,15 +1961,15 @@ tests
               name: proxy
         - response_check-0b381b8b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 302
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0b381b8b-location|Test_step_Check
             check: token
-            where: %%_test_response_location
-            match: %^(http[s]{0,1}://%%_request_server_name(with_specific_port=yes|preg_quote=yes)/login\?page=1|/login\?page=1)$%
+            where: %%_test_response(location)
+            match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|Test_step_Return
                 value: 0
@@ -2040,7 +2040,7 @@ tests
         # /modules/examples/profile_classic/data/settings.data
         # /modules/examples/profile_classic/frontend/page.cssd
         # /modules/examples/profile_classic/frontend/template--page--not_found.tpl
-        # /modules/examples/profile_classic/frontend/pictures/page-bg.svg
+        # /modules/examples/profile_classic/frontend/pictures/page-bg.svgd
         # /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico
         # /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png
         # /modules/examples/profile_classic/module.data
@@ -2075,17 +2075,17 @@ tests
               name: proxy
         - response_check-8b2c14f2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 400
             on_failure
             - if-iis|Test_step_Check
                 check: token
-                where: %%_test_response_web_server_name
+                where: %%_test_response(web_server_name)
                 match: microsoft-iis
                 on_success
                 - if-iis-403|Test_step_Check
                     check: token
-                    where: %%_test_response_http_code
+                    where: %%_test_response(http_code)
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
@@ -2102,14 +2102,14 @@ tests
               name: proxy
         - response_check-c93cd2bb|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c93cd2bb-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2123,14 +2123,14 @@ tests
               name: proxy
         - response_check-f89ef490|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-f89ef490-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2144,14 +2144,14 @@ tests
               name: proxy
         - response_check-93965d50|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-93965d50-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2165,14 +2165,14 @@ tests
               name: proxy
         - response_check-87450670|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-87450670-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2186,14 +2186,14 @@ tests
               name: proxy
         - response_check-c94505d1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c94505d1-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2207,14 +2207,14 @@ tests
               name: proxy
         - response_check-c8ba8ef2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c8ba8ef2-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2228,14 +2228,14 @@ tests
               name: proxy
         - response_check-896fc938|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-896fc938-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2249,14 +2249,14 @@ tests
               name: proxy
         - response_check-52232503|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-52232503-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2270,14 +2270,14 @@ tests
               name: proxy
         - response_check-a7d50424|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-a7d50424-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2291,14 +2291,14 @@ tests
               name: proxy
         - response_check-8792240f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-8792240f-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2312,14 +2312,14 @@ tests
               name: proxy
         - response_check-0ae12bc6|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0ae12bc6-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2333,14 +2333,14 @@ tests
               name: proxy
         - response_check-de7fc307|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-de7fc307-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2354,14 +2354,14 @@ tests
               name: proxy
         - response_check-4639459d|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-4639459d-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2375,14 +2375,14 @@ tests
               name: proxy
         - response_check-ee2664c5|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-ee2664c5-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2396,14 +2396,14 @@ tests
               name: proxy
         - response_check-e044ca93|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-e044ca93-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2417,14 +2417,14 @@ tests
               name: proxy
         - response_check-f837a19f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-f837a19f-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2438,14 +2438,14 @@ tests
               name: proxy
         - response_check-01614d89|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-01614d89-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: %^(system-exit|)$%
             on_failure
             - return_result|Test_step_Return
@@ -2459,14 +2459,14 @@ tests
               name: proxy
         - response_check-639e6ebb|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-639e6ebb-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -2480,7 +2480,7 @@ tests
               name: proxy
         - response_check-755f86fe|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2494,14 +2494,14 @@ tests
               name: proxy
         - response_check-3c7ac230|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-3c7ac230-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -2515,7 +2515,7 @@ tests
               name: proxy
         - response_check-e1a381d6|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2529,14 +2529,14 @@ tests
               name: proxy
         - response_check-48c4fe72|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-48c4fe72-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2550,7 +2550,7 @@ tests
               name: proxy
         - response_check-fdb651fe|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2564,14 +2564,14 @@ tests
               name: proxy
         - response_check-e8d646b4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-e8d646b4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -2585,7 +2585,7 @@ tests
               name: proxy
         - response_check-84a36b38|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2599,14 +2599,14 @@ tests
               name: proxy
         - response_check-0bed921c|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0bed921c-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2620,14 +2620,14 @@ tests
               name: proxy
         - response_check-fe417926|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-fe417926-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2641,14 +2641,14 @@ tests
               name: proxy
         - response_check-97ee0155|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-97ee0155-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2662,7 +2662,7 @@ tests
               name: proxy
         - response_check-73f94e34|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2676,14 +2676,14 @@ tests
               name: proxy
         - response_check-ab22ac51|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-ab22ac51-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2697,14 +2697,14 @@ tests
               name: proxy
         - response_check-ec856453|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-ec856453-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2718,14 +2718,14 @@ tests
               name: proxy
         - response_check-1d25a671|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-1d25a671-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2739,14 +2739,14 @@ tests
               name: proxy
         - response_check-f9ec6f32|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-f9ec6f32-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2760,7 +2760,7 @@ tests
               name: proxy
         - response_check-c8c954e8|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2774,14 +2774,14 @@ tests
               name: proxy
         - response_check-daa8d8e4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-daa8d8e4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -2795,7 +2795,7 @@ tests
               name: proxy
         - response_check-8dca9be0|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2809,14 +2809,14 @@ tests
               name: proxy
         - response_check-9e4a0707|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-9e4a0707-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2830,7 +2830,7 @@ tests
               name: proxy
         - response_check-d8e3212a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2844,14 +2844,14 @@ tests
               name: proxy
         - response_check-07beb285|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-07beb285-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -2865,7 +2865,7 @@ tests
               name: proxy
         - response_check-6ce91b10|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2879,14 +2879,14 @@ tests
               name: proxy
         - response_check-999287c2|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-999287c2-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2900,14 +2900,14 @@ tests
               name: proxy
         - response_check-7ebbe527|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-7ebbe527-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2921,14 +2921,14 @@ tests
               name: proxy
         - response_check-c5e3478f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-c5e3478f-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2942,7 +2942,7 @@ tests
               name: proxy
         - response_check-846a1629|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -2956,14 +2956,14 @@ tests
               name: proxy
         - response_check-d893e680|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-d893e680-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2977,14 +2977,14 @@ tests
               name: proxy
         - response_check-690744f4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-690744f4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -2998,14 +2998,14 @@ tests
               name: proxy
         - response_check-fbd63b8e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-fbd63b8e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3019,7 +3019,7 @@ tests
               name: proxy
         - response_check-09f0bdd1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3033,7 +3033,7 @@ tests
               name: proxy
         - response_check-2604c783|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3047,7 +3047,7 @@ tests
               name: proxy
         - response_check-aea66a20|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3061,7 +3061,7 @@ tests
               name: proxy
         - response_check-df2345d1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3075,14 +3075,14 @@ tests
               name: proxy
         - response_check-66912de1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-66912de1-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
@@ -3096,7 +3096,7 @@ tests
               name: proxy
         - response_check-18d8bd8b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3110,7 +3110,7 @@ tests
               name: proxy
         - response_check-223a800f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3124,7 +3124,7 @@ tests
               name: proxy
         - response_check-9bfc39f4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 404
             on_failure
             - return_result|Test_step_Return
@@ -3138,7 +3138,7 @@ tests
               name: proxy
         - response_check-71034a5f|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
@@ -3152,14 +3152,14 @@ tests
               name: proxy
         - response_check-409b17ab|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-409b17ab-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3173,14 +3173,14 @@ tests
               name: proxy
         - response_check-70bcf379|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-70bcf379-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3194,14 +3194,14 @@ tests
               name: proxy
         - response_check-b8dea85e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-b8dea85e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3215,7 +3215,7 @@ tests
               name: proxy
         - response_check-49aa60f4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3229,14 +3229,14 @@ tests
               name: proxy
         - response_check-f802fc0d|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-f802fc0d-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3250,7 +3250,7 @@ tests
               name: proxy
         - response_check-b3ea6dde|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3264,28 +3264,28 @@ tests
               name: proxy
         - response_check-0608160e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-0608160e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
                 value: 0
-        # url "/modules/examples/profile_classic/frontend/pictures/page-bg.svg"
+        # url "/modules/examples/profile_classic/frontend/pictures/page-bg.svgd"
         - request_url-a3936075|Test_step_Request
-            url: /modules/examples/profile_classic/frontend/pictures/page-bg.svg
+            url: /modules/examples/profile_classic/frontend/pictures/page-bg.svgd
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
               name: proxy
         - response_check-a3936075|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3299,7 +3299,7 @@ tests
               name: proxy
         - response_check-549e7731|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3313,7 +3313,7 @@ tests
               name: proxy
         - response_check-04d09d18|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
@@ -3327,14 +3327,14 @@ tests
               name: proxy
         - response_check-997a889b|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-997a889b-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3348,14 +3348,14 @@ tests
               name: proxy
         - response_check-1b871a86|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-1b871a86-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3369,14 +3369,14 @@ tests
               name: proxy
         - response_check-55ac1826|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-55ac1826-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3390,14 +3390,14 @@ tests
               name: proxy
         - response_check-1dd9a50a|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-1dd9a50a-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3411,14 +3411,14 @@ tests
               name: proxy
         - response_check-592a9e29|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-592a9e29-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3432,14 +3432,14 @@ tests
               name: proxy
         - response_check-3dd2dabb|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-3dd2dabb-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3453,14 +3453,14 @@ tests
               name: proxy
         - response_check-733c5229|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-733c5229-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3474,14 +3474,14 @@ tests
               name: proxy
         - response_check-53378c68|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-53378c68-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3495,14 +3495,14 @@ tests
               name: proxy
         - response_check-23abc2e4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-23abc2e4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3516,14 +3516,14 @@ tests
               name: proxy
         - response_check-4bbc2982|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-4bbc2982-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3537,14 +3537,14 @@ tests
               name: proxy
         - response_check-5f0e5f42|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-5f0e5f42-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3558,14 +3558,14 @@ tests
               name: proxy
         - response_check-feb36501|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-feb36501-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3579,14 +3579,14 @@ tests
               name: proxy
         - response_check-79ed0e27|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-79ed0e27-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3600,14 +3600,14 @@ tests
               name: proxy
         - response_check-6cdf2c2e|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-6cdf2c2e-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3621,14 +3621,14 @@ tests
               name: proxy
         - response_check-dff52a28|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-dff52a28-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3642,14 +3642,14 @@ tests
               name: proxy
         - response_check-dd53a952|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-dd53a952-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3663,14 +3663,14 @@ tests
               name: proxy
         - response_check-745e60d4|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-745e60d4-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3684,14 +3684,14 @@ tests
               name: proxy
         - response_check-3c8d8acb|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-3c8d8acb-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3705,14 +3705,14 @@ tests
               name: proxy
         - response_check-aca63fc1|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-aca63fc1-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
@@ -3726,14 +3726,14 @@ tests
               name: proxy
         - response_check-80f3a769|Test_step_Check
             check: token
-            where: %%_test_response_http_code
+            where: %%_test_response(http_code)
             match: 403
             on_failure
             - return_result|Test_step_Return
                 value: 0
         - response_check-80f3a769-return_level|Test_step_Check
             check: token
-            where: %%_test_response_return_level
+            where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return

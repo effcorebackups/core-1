@@ -995,27 +995,7 @@ selections
     decorator_settings
     - view_type: table-adaptive
     query_settings
-    - where
-      - conjunction_!and
-        - id
-          - field_!f: id
-          - operator: <
-          - value_!v: 150
-        - is_even
-          - field_!f: is_even
-          - in_begin_operator: in (
-          - in_value_!v: 1
-          - in_end_operator: )
-        - email
-          - field_!f: ~demo_join.email
-          - operator: like
-          - value_!v: user#_1%
-          - escape_begin: escape
-          - escape_!v: #
-    - order
-      - title_!f: id
-      - title_direction: ASC
-    - limit: 5
+    - limit: 1
     fields
     - main
       - id

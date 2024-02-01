@@ -262,16 +262,20 @@ selections
           entity_field_name: timezone
           is_apply_translation: true
           weight: +320
+      - color_profile
+          title: Color profile
+          entity_field_name: color_profile
+          weight: +300
       - created
           entity_field_name: created
-          weight: +300
+          weight: +280
       - updated
           entity_field_name: updated
-          weight: +280
+          weight: +260
       - is_embedded
           entity_field_name: is_embedded
           is_apply_translation: true
-          weight: +260
+          weight: +240
     - handlers
       - handler__user__avatar_paths_as_links
           title: Avatar paths

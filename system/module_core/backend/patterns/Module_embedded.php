@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -222,6 +222,16 @@ class Module_embedded {
     static function is_installed($module_id) {
         $installed = Core::boot_select('installed');
         return isset($installed[$module_id]);
+    }
+
+    static function is_in_system_path($module_id) {
+        $module = static::get($module_id);
+        if ($module) return str_starts_with($module->path, 'system/');
+    }
+
+    static function is_in_modules_path($module_id) {
+        $module = static::get($module_id);
+        if ($module) return str_starts_with($module->path, 'modules/');
     }
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦

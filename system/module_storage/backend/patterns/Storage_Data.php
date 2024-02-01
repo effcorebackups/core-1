@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -191,40 +191,41 @@ class Storage_Data implements has_Data_cache {
     static function data_changes_apply($changes, &$data) {
         foreach ($changes as $module_id => $c_module_changes) {
             foreach ($c_module_changes as $c_action => $c_changes) {
-                foreach ($c_changes as $c_dpath => $c_data) {
-                    $c_pointers    = @Core::dpath_get_pointers($data, $c_dpath);
-                    $c_parent_name = @array_keys($c_pointers)[count($c_pointers)-2];
-                    $c_child_name  = @array_keys($c_pointers)[count($c_pointers)-1];
-                    $c_parent      =            &$c_pointers[$c_parent_name];
-                    $c_child       =            &$c_pointers[$c_child_name];
+                foreach ($c_changes as $c_dpath => $c_new_value) {
+                    $c_pointers      = Core::dpath_get_pointers($data, $c_dpath, true);
+                    $c_pointers_keys = array_keys($c_pointers);
+                    $c_child_name    = array_pop($c_pointers_keys);
+                    $c_parent_name   = array_pop($c_pointers_keys);
+                    $c_child         = &$c_pointers[$c_child_name];
+                    $c_parent        = &$c_pointers[$c_parent_name];
                     # supported types: array|object
                     if ($c_action === 'insert' && $c_child !== null) {
-                        if (gettype($c_data) === 'array'  ) foreach ($c_data as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
-                        if (gettype($c_data) === 'object' ) foreach ($c_data as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
+                        if (gettype($c_new_value) === 'array'  ) foreach ($c_new_value as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
+                        if (gettype($c_new_value) === 'object' ) foreach ($c_new_value as $c_key => $c_value) Core::arrobj_insert_value($c_child, $c_key, $c_value);
                     }
                     # supported types: array|object|string|integer|double|boolean|null
                     if ($c_action === 'insert' && $c_child === null) {
-                        if (gettype($c_data) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_new_value) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
                     }
                     # supported types: array|object|string|integer|double|boolean|null
                     if ($c_action === 'update' && $c_parent !== null) {
-                        if (gettype($c_data) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
-                        if (gettype($c_data) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_data);
+                        if (gettype($c_new_value) === 'array'  ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'object' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'string' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'integer') Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'double' ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'boolean') Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
+                        if (gettype($c_new_value) === 'NULL'   ) Core::arrobj_insert_value($c_parent, $c_child_name, $c_new_value);
                     }
                     # supported types: null
                     if ($c_action === 'delete' && $c_parent !== null) {
-                        if (gettype($c_data) === 'NULL') Core::arrobj_delete_child($c_parent, $c_child_name);
+                        if (gettype($c_new_value) === 'NULL') Core::arrobj_delete_child($c_parent, $c_child_name);
                     }
                 }
             }

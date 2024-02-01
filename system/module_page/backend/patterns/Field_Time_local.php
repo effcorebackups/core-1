@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -40,16 +40,16 @@ class Field_Time_local extends Field_Time {
     ### static declarations ###
     ###########################
 
-    static function on_validate($field, $form, $npath) {
+    static function on_request_value_set($field, $form, $npath) {
         $field->is_UTC = false;
-        $result = parent::on_validate($field, $form, $npath);
+        $result = parent::on_request_value_set($field, $form, $npath);
         $field->is_UTC = true;
         return $result;
     }
 
-    static function on_request_value_set($field, $form, $npath) {
+    static function on_validate($field, $form, $npath) {
         $field->is_UTC = false;
-        $result = parent::on_request_value_set($field, $form, $npath);
+        $result = parent::on_validate($field, $form, $npath);
         $field->is_UTC = true;
         return $result;
     }

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -74,11 +74,11 @@ class Widget_Files_pictures extends Widget_Files {
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = parent::widget_manage_get($widget, $item, $c_row_id);
-        $result->child_select('button_delete')->_kind = 'picture';
+        $result->child_select('head')->child_select('button_delete')->_kind = 'picture';
         $result->attribute_insert('data-is-new', $item->object->get_current_state() === 'pre' ? 'true' : 'false');
         if (Media::media_class_get($item->object->type) === 'picture') {
             if (!empty($item->settings['data-thumbnails-is-embedded'])) {
-                $result->child_insert(new Markup_simple('img', [
+                $result->child_select('body')->child_insert(new Markup_simple('img', [
                     'data-type' => 'thumbnail',
                     'src'       => Core::to_url_from_path($item->object->get_current_path(true)).'?thumb=small',
                     'alt'       => new Text('thumbnail'),

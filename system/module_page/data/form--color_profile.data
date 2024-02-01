@@ -1,0 +1,69 @@
+forms
+- color_profile|Form
+    attributes
+    - id: color_profile
+    - method: post
+    - novalidate: true
+    children
+    - assign|Fieldset
+        title: Assign colors
+    - settings|Fieldset
+        title: Settings
+        children
+        - is_user_selectable|Field_Checkbox
+            title: Color profile is available in the user account settings
+            element_attributes
+            - name: is_user_selectable
+            - value: checkbox
+            - checked: true
+        - export_profile|Markup
+            tag_name: div
+            attributes
+            - data-type: export-link-wrapper
+            children
+            - link|Markup
+                tag_name: a
+                attributes
+                - href|Text
+                    text: /manage/view/colors/profiles/%%_page_arg_context(profile_id)/export
+                    is_apply_translation: false
+                    is_apply_tokens: true
+                - target: _blank
+                children
+                - text|Text
+                    text: profile export
+        - export_custom_colors|Markup
+            tag_name: div
+            attributes
+            - data-type: export-link-wrapper
+            children
+            - link|Markup
+                tag_name: a
+                attributes
+                - href|Text
+                    text: /manage/view/colors/profiles/%%_page_arg_context(profile_id)/export/colors
+                    is_apply_translation: false
+                    is_apply_tokens: true
+                - target: _blank
+                children
+                - text|Text
+                    text: export custom colors for this profile
+    - button_save|Button
+        title: save
+        attributes
+        - value: save
+        - disabled: true
+        weight: -500
+    - button_reset|Button
+        title: reset
+        break_on_validate: true
+        attributes
+        - value: reset
+        - disabled: true
+        weight: -520
+    - button_activate|Button
+        title: Activate
+        attributes
+        - value: activate
+        - disabled: true
+        weight: -540

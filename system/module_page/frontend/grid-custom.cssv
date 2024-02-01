@@ -1,0 +1,8 @@
+/*
+
+    This is a virtual file.
+    This content is never sent to the client side.
+    The actual contents of this file are generated in handler
+    "Events_File::on_load_virtual_style__grid_custom".
+
+*/

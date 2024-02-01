@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -32,17 +32,20 @@ abstract class Response {
         if (!empty($template_name)) {
             if (!$message && Request::path_get() !== '/')
                  $message = 'go to <a href="/">front page</a>';
-            $settings = Module::settings_get('page');
-            $colors   = Color::get_all();
-            $content  = (Template::make_new($template_name, ['attributes' => Core::data_to_attributes([
-                'lang'               => Language::code_get_current()]),
-                'message'            => is_object($message) && method_exists($message, 'render') ? $message->render() : (new Text($message))->render(),
-                'title'              => is_object($title  ) && method_exists($title  , 'render') ? $title  ->render() : (new Text($title  ))->render(),
-                'color__page'        => isset($colors[$settings->color__page_id       ]) ? $colors[$settings->color__page_id       ]->value_hex : '',
-                'color__text'        => isset($colors[$settings->color__text_id       ]) ? $colors[$settings->color__text_id       ]->value_hex : '',
-                'color__link'        => isset($colors[$settings->color__link_id       ]) ? $colors[$settings->color__link_id       ]->value_hex : '',
-                'color__link_active' => isset($colors[$settings->color__link_active_id]) ? $colors[$settings->color__link_active_id]->value_hex : '',
-                'console'            => Console::visible_mode_get() === Console::IS_VISIBLE_FOR_EVERYONE ? (new Markup('pre', [], Console::text_get()))->render() : ''
+            $colors                = Color::get_all();
+            $color_id__page        = Color_profile::get_color_info( Color_profile::get_current()->id, 'page'       )->color_id ?? '';
+            $color_id__text        = Color_profile::get_color_info( Color_profile::get_current()->id, 'text'       )->color_id ?? '';
+            $color_id__link        = Color_profile::get_color_info( Color_profile::get_current()->id, 'link'       )->color_id ?? '';
+            $color_id__link_active = Color_profile::get_color_info( Color_profile::get_current()->id, 'link_active')->color_id ?? '';
+            $content               = (Template::make_new($template_name, ['attributes' => Core::data_to_attributes([
+                'lang'              => Language::code_get_current()]),
+                'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new Text($message))->render(),
+                'title'             => is_object($title  ) && method_exists($title  , 'render') ? $title  ->render() : (new Text($title  ))->render(),
+                'color_page'        => isset($colors[$color_id__page       ]) ? $colors[$color_id__page       ]->value_hex : 'white',
+                'color_text'        => isset($colors[$color_id__text       ]) ? $colors[$color_id__text       ]->value_hex : 'black',
+                'color_link'        => isset($colors[$color_id__link       ]) ? $colors[$color_id__link       ]->value_hex : 'steelblue',
+                'color_link_active' => isset($colors[$color_id__link_active]) ? $colors[$color_id__link_active]->value_hex : 'mediumvioletred',
+                'console'           => Console::visible_mode_get() === Console::IS_VISIBLE_FOR_EVERYONE ? (new Markup('pre', [], Console::text_get()))->render() : ''
             ]))->render();
             header('content-length: '.strlen($content));
             print $content;

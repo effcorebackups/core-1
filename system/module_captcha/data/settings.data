@@ -1,6 +1,6 @@
 settings
-  captcha_length: 6
-  captcha_glyphs
+  length: 6
+  glyphs
   - =: ch#
   - =: ch0
   - =: ch1

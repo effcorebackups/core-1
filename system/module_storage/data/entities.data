@@ -85,7 +85,7 @@ entities
             - weight: +360
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob

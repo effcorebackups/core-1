@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -26,6 +26,10 @@ abstract class Core {
     ###################
     ### environment ###
     ###################
+
+    static function system_build_number_get() {
+        return Storage::get('data')->select('bundle/system/build');
+    }
 
     static function is_CLI() {
         return PHP_SAPI === 'cli';
@@ -445,22 +449,30 @@ abstract class Core {
 
     static function dpath_get_pointers(&$data, $dpath, $is_unique_keys = false) {
         $result = [];
-        $c_pointer = $data;
-        foreach (explode('/', $dpath) as $c_part) {
-            $c_pointer = &static::arrobj_select_value($c_pointer, $c_part);
-            if ($is_unique_keys) $result[       ] = &$c_pointer;
-            else                 $result[$c_part] = &$c_pointer;
+        $null = null;
+        $c_pointer = &$data;
+        foreach (explode('/', $dpath) as $c_name) {
+            if ( $c_pointer !== null && static::arrobj_is_exists_value($c_pointer, $c_name) )
+                 $c_pointer = &static::arrobj_select_value($c_pointer, $c_name);
+            else $c_pointer = &$null;
+            if ($is_unique_keys && array_key_exists($c_name, $result))
+                 $c_key = $c_name.static::generate_numerical_suffix($c_name, array_keys($result));
+            else $c_key = $c_name;
+            $result[$c_key] = &$c_pointer;
         }
         return $result;
     }
 
     static function npath_get_pointers(&$node, $npath, $is_unique_keys = false) {
         $result = [];
-        $c_pointer = $node;
-        foreach (explode('/', $npath) as $c_part) {
-            $c_pointer = &$c_pointer->children[$c_part];
+        $null = null;
+        $c_pointer = &$node;
+        foreach (explode('/', $npath) as $c_name) {
+            if ( $c_pointer !== null && array_key_exists($c_name, $c_pointer->children) )
+                 $c_pointer = &$c_pointer->children[$c_name];
+            else $c_pointer = &$null;
             if ($is_unique_keys) $result[       ] = &$c_pointer;
-            else                 $result[$c_part] = &$c_pointer;
+            else                 $result[$c_name] = &$c_pointer;
         }
         return $result;
     }
@@ -472,6 +484,11 @@ abstract class Core {
     #############################################
     ### functionality for mix of array|object ###
     #############################################
+
+    static function arrobj_is_exists_value($data, $name) {
+        if (is_array ($data)) return array_key_exists($name, $data);
+        if (is_object($data)) return  property_exists($data, $name);
+    }
 
     static function &arrobj_select_value(&$data, $name) {
         if (is_array ($data)) return $data  [$name];
@@ -745,46 +762,60 @@ abstract class Core {
         return $value ? 'yes' : 'no';
     }
 
-    ##############################
-    ### functionality for cron ###
-    ##############################
+    ########################
+    ### generate strings ###
+    ########################
 
-    static function is_cron_run($period) {
-        $settings = Module::settings_get('core');
-        return !empty($settings->cron_last_run_date) &&
-                      $settings->cron_last_run_date > static::datetime_get('-'.$period.' second');
-    }
-
-    static function cron_run_register() {
-        return Storage::get('data')->changes_register('core', 'update', 'settings/core/cron_last_run_date', static::datetime_get());
-    }
-
-    ####################################
-    ### functionality for file parts ###
-    ####################################
-
-    static function random_bytes_generate($length = 8, $characters = '0123456789') {
+    static function generate_random_bytes($length = 8, $characters = '0123456789') {
         $result = '';
         for ($i = 0; $i < $length; $i++)
             $result.= $characters[random_int(0, strlen($characters) - 1)];
         return $result;
     }
 
-    static function random_part_generate() {
+    static function generate_random_part() {
         $hex_time = str_pad(dechex(time()),                        8, '0', STR_PAD_LEFT);
         $hex_rand = str_pad(dechex(random_int(0, PHP_INT_32_MAX)), 8, '0', STR_PAD_LEFT);
         return $hex_time.$hex_rand;
     }
 
-    static function numerical_suffix_generate($name, $used_names) {
-        $used_numbers = [];
+    static function generate_numerical_suffix($name, $used_names) {
+        $numbers = [];
         foreach ($used_names as $c_name) {
             if (str_starts_with($c_name, $name)) {
                 $suffix = substr($c_name, strlen($name));
-                if ((string)$suffix === (string)(int)$suffix) {
-                    $used_numbers[]= (int)$suffix; }}}
-        if (count($used_numbers) !== 0) return (string)(max($used_numbers) + 1);
-        if (count($used_numbers) === 0) return '2';
+                if (Security::validate_str_int($suffix)) {
+                    $numbers[]= (int)$suffix; }}}
+        if (count($numbers) !== 0) return (string)(max($numbers) + 1);
+        if (count($numbers) === 0) return '2';
+    }
+
+    #########################
+    ### numeric functions ###
+    #########################
+
+    static function fractional_part_length_get($value, $no_zeros = true) {
+        # case for strings (examples: '', '100', '0', '0.00100') but NOT exponential (examples: '1.23e-6')
+        if (is_string($value) && !strpbrk($value, 'eE')) {
+            $fpart = strrchr($value, '.');
+            if ($fpart !== false && $no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
+            if ($fpart !== false && $no_zeros !== true) return strlen(      $fpart      ) - 1;
+            return 0;
+        }
+        # case for integer and float (examples: 100, 0, 0.00100) but NOT exponential (examples: 1.23e-6)
+        if (is_int($value) || is_float($value)) {
+            $fpart = ltrim(bcsub($value, (string)(int)$value, 40), '0');
+            if ($no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
+            if ($no_zeros !== true) return strlen(      $fpart      ) - 1;
+            return 0;
+        }
+    }
+
+    static function exponencial_string_normalize($value) {
+        if (is_string($value) && is_numeric($value))
+            if ($value !== (string)(int)$value && $value[0] !== '0' && strpbrk($value, 'eE'))
+                return static::format_number($value, static::FPART_MAX_LEN);
+        return $value;
     }
 
     ########################
@@ -813,30 +844,6 @@ abstract class Core {
             if (!empty($c_match['dec_value'])) return mb_chr(       ltrim($c_match['dec_value'], '0'),  'UTF-8');
             return '';
         }, $value);
-        return $value;
-    }
-
-    static function fractional_part_length_get($value, $no_zeros = true) {
-        # case for strings (examples: '', '100', '0', '0.00100') but NOT exponential (examples: '1.23e-6')
-        if (is_string($value) && !strpbrk($value, 'eE')) {
-            $fpart = strrchr($value, '.');
-            if ($fpart !== false && $no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
-            if ($fpart !== false && $no_zeros !== true) return strlen(      $fpart      ) - 1;
-            return 0;
-        }
-        # case for integer and float (examples: 100, 0, 0.00100) but NOT exponential (examples: 1.23e-6)
-        if (is_int($value) || is_float($value)) {
-            $fpart = ltrim(bcsub($value, (string)(int)$value, 40), '0');
-            if ($no_zeros === true) return strlen(rtrim($fpart, '0')) - 1;
-            if ($no_zeros !== true) return strlen(      $fpart      ) - 1;
-            return 0;
-        }
-    }
-
-    static function exponencial_string_normalize($value) {
-        if (is_string($value) && is_numeric($value))
-            if ($value !== (string)(int)$value && $value[0] !== '0' && strpbrk($value, 'eE'))
-                return static::format_number($value, static::FPART_MAX_LEN);
         return $value;
     }
 

@@ -51,6 +51,9 @@ events
   - install|Event
       for: install
       handler: \effcore\modules\core\Events_Form_Install::on_build
+  - modules_install|Event
+      for: modules_install
+      handler: \effcore\modules\core\Events_Form_Modules_Install::on_build
   - modules_uninstall|Event
       for: modules_uninstall
       handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_build
@@ -80,9 +83,6 @@ events
   - modules_install|Event
       for: modules_install
       handler: \effcore\modules\core\Events_Form_Modules_Install::on_validate
-  - modules_uninstall|Event
-      for: modules_uninstall
-      handler: \effcore\modules\core\Events_Form_Modules_Uninstall::on_validate
   on_form_submit
   - install|Event
       for: install

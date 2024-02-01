@@ -1,6 +1,6 @@
 
 //////////////////////////////////////////////////////////////////
-/// Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ///
+/// Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ///
 //////////////////////////////////////////////////////////////////
 
 'use strict';
@@ -8,32 +8,32 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     Element.prototype.process__defaultGalleryPlayer = function () {
-        var c_gallery              = this;
-        var c_player               = document.createElement__withAttributes('x-gallery-player', {'aria-hidden' : 'true'});
-        var c_player_thumbnails    = document.createElement('x-thumbnails');
-        var c_player_button_l      = document.createElement('x-button-l');
-        var c_player_button_r      = document.createElement('x-button-r');
-        var c_player_button_c      = document.createElement('x-button-c');
-        var c_player_viewing_part  = document.createElement('x-viewing-part');
-        var c_player_viewing_area  = document.createElement('x-viewing-area');
-        var player_show            = function () {c_player.removeAttribute('aria-hidden'); document.body.setAttribute('data-is-active-gallery-player', 'true');}
-        var player_hide            = function () {c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); viewing_area_clear();}
-        var player_move_L          = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.previousSibling) {c_selected.previousSibling.click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
-        var player_move_R          = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
-        var button_L_set_state     = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
-        var button_R_set_state     = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
-        var thumbnails_centration  = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3; })}
-        var thumbnails_reset_state = function () {c_player_thumbnails.querySelectorAll          ('x-thumbnail[aria-selected="true"]').forEach(function (c_selected) { c_selected.removeAttribute('aria-selected'); });}
-        var viewing_area_clear     = function () {c_player_viewing_area.innerHTML = '';}
+        let c_gallery              = this;
+        let c_player               = document.createElement__withAttributes('x-gallery-player', {'aria-hidden' : 'true'});
+        let c_player_thumbnails    = document.createElement('x-thumbnails');
+        let c_player_button_l      = document.createElement('x-button-l');
+        let c_player_button_r      = document.createElement('x-button-r');
+        let c_player_button_c      = document.createElement('x-button-c');
+        let c_player_viewing_part  = document.createElement('x-viewing-part');
+        let c_player_viewing_area  = document.createElement('x-viewing-area');
+        let player_show            = function () {c_player.removeAttribute('aria-hidden'); document.body.setAttribute('data-is-active-gallery-player', 'true');}
+        let player_hide            = function () {c_player.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-is-active-gallery-player'); viewing_area_clear();}
+        let player_move_L          = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.previousSibling) {c_selected.previousSibling.click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
+        let player_move_R          = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.nextSibling    ) {c_selected.nextSibling    .click(); thumbnails_centration(); button_L_set_state(); button_R_set_state();} })}
+        let button_L_set_state     = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.previousSibling) c_player_button_l.removeAttribute('data-is-blocked'); else c_player_button_l.setAttribute('data-is-blocked', ''); })}
+        let button_R_set_state     = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { if (c_selected.nextSibling    ) c_player_button_r.removeAttribute('data-is-blocked'); else c_player_button_r.setAttribute('data-is-blocked', ''); })}
+        let thumbnails_centration  = function () {c_player_thumbnails.querySelector__withHandler('x-thumbnail[aria-selected="true"]',         function (c_selected) { c_player_thumbnails.scrollLeft = c_selected.offsetLeft - (c_player_thumbnails.clientWidth / 2) + (c_selected.clientWidth / 2) + 3; })}
+        let thumbnails_reset_state = function () {c_player_thumbnails.querySelectorAll          ('x-thumbnail[aria-selected="true"]').forEach(function (c_selected) { c_selected.removeAttribute('aria-selected'); });}
+        let viewing_area_clear     = function () {c_player_viewing_area.innerHTML = '';}
         c_gallery.prepend(c_player);
         c_gallery.setAttribute('data-player-is-processed', 'true');
         c_player_viewing_part.append(c_player_button_l, c_player_viewing_area, c_player_button_r);
         c_player.append(c_player_thumbnails, c_player_button_c, c_player_viewing_part);
 
         // bind events
-        c_player_button_l.addEventListener('click', function () {player_move_L();});
-        c_player_button_r.addEventListener('click', function () {player_move_R();});
-        c_player_button_c.addEventListener('click', function () {player_hide();});
+        c_player_button_c.addEventListener('click', player_hide);
+        c_player_button_l.addEventListener('click', player_move_L);
+        c_player_button_r.addEventListener('click', player_move_R);
         document.addEventListener('keydown', function (event) {
             if (c_player.getAttribute('aria-hidden') !== 'true') {
                 if (event.code === 'ArrowLeft' ) player_move_L();
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // process of each gallery item
         c_gallery.querySelectorAll('x-item').forEach(function (c_item) {
-            var c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
+            let c_thumbnail = document.createElement__withAttributes('x-thumbnail', {'data-type' : c_item.getAttribute('data-type'), 'data-num' : c_item.getAttribute('data-num')});
             switch (c_item.getAttribute('data-type')) {
                 case 'picture':
                     var c_image = c_item.getElementsByTagName('img')[0];

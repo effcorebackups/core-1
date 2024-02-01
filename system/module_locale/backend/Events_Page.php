@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\locale;
@@ -55,7 +55,7 @@ abstract class Events_Page {
         $languages = Language::get_all();
         Core::array_sort_by_string($languages, 'title_en', Core::SORT_DSC, false);
         $languages = ['en' => $languages['en']] + $languages;
-        $menu = new Markup('x-tree', ['role' => 'tree', 'data-id' => 'languages', 'data-style' => 'linear']);
+        $menu = new Markup('x-tree', ['role' => 'tree', 'data-id' => 'languages', 'data-style' => 'like-select']);
         $menu->child_insert(new Markup('h2', ['aria-hidden' => 'true'], 'Language selection menu'), 'title');
         $menu->child_insert(new Markup('ul'), 'container');
         foreach ($languages as $c_language) {
@@ -65,11 +65,8 @@ abstract class Events_Page {
                        $c_language->title_en;
             $c_href = $page->args_get('base').'/'.$c_language->code;
             if (Url::is_active($c_href, 'path'))
-                 $c_link = new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false), 'aria-selected' => 'true'], new Text_simple($c_title));
-            else $c_link = new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false)                           ], new Text_simple($c_title));
-            $menu->child_select('container')->child_insert(
-                new Markup('li', ['data-id' => 'language_'.$c_language->code], $c_link), $c_language->code
-            );
+                 $menu->child_select('container')->child_insert(new Markup('li', ['data-id' => 'language_'.$c_language->code, 'aria-selected' => 'true'], new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false), 'aria-selected' => 'true'], new Text_simple($c_title)) ), $c_language->code);
+            else $menu->child_select('container')->child_insert(new Markup('li', ['data-id' => 'language_'.$c_language->code                           ], new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false)                           ], new Text_simple($c_title)) ), $c_language->code);
         }
         return $menu;
     }

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\page;
@@ -10,7 +10,7 @@ use effcore\Dynamic;
 use effcore\File;
 use effcore\Message;
 use effcore\Module;
-use effcore\Storage;
+use effcore\Page;
 use effcore\Text_multiline;
 
 abstract class Events_Form_SEO_robots {
@@ -49,7 +49,9 @@ abstract class Events_Form_SEO_robots {
                     }
                 }
                 if ($result) {
-                    $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/apply_tokens_for_robots', $items['#is_apply_tokens']->checked_get());
+                    if ($items['#is_apply_tokens']->checked_get())
+                         $result = Page::changes_store(['apply_tokens_for_robots' => null]);
+                    else $result = Page::changes_store(['apply_tokens_for_robots' => false]);
                     if ($result) Message::insert('Changes was saved.'             );
                     else         Message::insert('Changes was not saved!', 'error');
                 }

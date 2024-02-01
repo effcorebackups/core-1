@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\poll;
@@ -122,8 +122,8 @@ abstract class Events_Form_Vote {
                     $form->_poll->update();
                        Message::insert('Your answer was accepted.');
                 } else Message::insert('Your answer was not accepted!', 'error');
-                static::on_build(null, $form);
-                static::on_init (null, $form, $form->items_update());
+                $form->components_build();
+                $form->components_init();
                 break;
             case 'cancel':
                 # delete votes by Answer ID or User ID, update cache
@@ -139,8 +139,8 @@ abstract class Events_Form_Vote {
                     $form->_poll->update();
                        Message::insert('Your answer was canceled.');
                 } else Message::insert('Your answer was not canceled!', 'error');
-                static::on_build(null, $form);
-                static::on_init (null, $form, $form->items_update());
+                $form->components_build();
+                $form->components_init();
                 break;
         }
     }

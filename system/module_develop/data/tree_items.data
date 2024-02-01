@@ -9,15 +9,6 @@ tree_items
     access
       roles
       - =: admins
-- palette|Tree_item
-    id: palette
-    id_parent: develop
-    id_tree: system
-    title: Palette
-    url: /develop/palette
-    access
-      roles
-      - =: admins
 - structures|Tree_item
     id: structures
     id_parent: develop

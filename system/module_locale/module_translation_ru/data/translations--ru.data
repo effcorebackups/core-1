@@ -38,11 +38,11 @@ translations
     - Action: Действие
     - actions: действия
     - Actions: Действия
+    - Activate: Активировать
     - Additional controls will become available after appending.: Дополнительные элементы управления станут доступны после добавления.
     - Administrators: Администраторы
     - After exceeding the "Number of login attempts" value, the login will be blocked for the specified time.: После превышения значения "Количество попыток входа" будет заблокирована возможность входа на указанное время.
     - All caches was reset.: Все кэши были сброшены.
-    - All colors: Все цвета
     - An empty line was found.: Обнаружена пустая строка.
     - An error in parsing the "data" format was found!: Ошибка разбора формата "data" была обнаружена!
     - An error occurred during installation!: Произошла ошибка при установке!
@@ -55,10 +55,12 @@ translations
     - Answer: Ответ
     - Answers: Ответы
     - append and change: добавить и изменить
+    - Append colors: Добавить цвета
     - append: добавить
     - apply: применить
     - Architecture: Архитектура
     - ascending: по возрастанию
+    - Assign colors: Назначить цвета
     - Attribute: Атрибут
     - Attributes (example of working with "data"-format): Атрибуты (пример работы с "data"-форматом)
     - Attributes: Атрибуты
@@ -76,6 +78,7 @@ translations
     - Avatar paths: Пути аватара
     - Avatar: Аватар
     - B: Б
+    - Background: Фон
     - Be careful, your mistake may lead to XSS injection.: Будьте осторожны, ваша ошибка может привести к внедрению XSS.
     - Belarusian: Белорусский
     - big: большой
@@ -118,12 +121,17 @@ translations
     - click to open the menu item "%%_title": нажмите, чтобы открыть пункт меню "%%_title"
     - click to open the tab "%%_title": нажмите, чтобы открыть вкладку "%%_title"
     - color ID = "%%_id" and value = "%%_value": ID цвета = "%%_id" и значение = "%%_value"
-    - Color settings have been changed.: Цветовые настройки были изменены.
-    - Color settings have not been changed!: Цветовые настройки не были изменены!
+    - Color limit has been exceeded!: Лимит цветов был превышен!
+    - Color profile is available in the user account settings: Цветовой профиль доступен в настройках аккаунта пользователя
+    - Color profile was activated.: Цветовой профиль был активирован.
+    - Color profile was not activated!: Цветовой профиль не был активирован!
+    - Color profile: Цветовой профиль
     - Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.: Цвет должен быть в формате "#abcdef", где "ab" — это значение красной компоненты, "cd" — зелёной и "ef" — синей.
+    - Color with ID = "%%_id" and value = "%%_value" was appended.: Цвет с ID = "%%_id" и значением = "%%_value" был добавлен.
+    - Color with ID = "%%_id" and value = "%%_value" was not appended!: Цвет с ID = "%%_id" и значением = "%%_value" не был добавлен!
+    - Color with ID = "%%_id" was deleted.: Цвет с ID = "%%_id" был удалён.
+    - Color with ID = "%%_id" was not deleted!: Цвет с ID = "%%_id" не был удалён!
     - Color: Цвет
-    - Colors was applied.: Цвета были применены.
-    - Colors was not applied!: Цвета не были применены!
     - Colors: Цвета
     - Combination of values should be unique.: Комбинация значений должна быть уникальной.
     - Conditions: Условия
@@ -136,7 +144,7 @@ translations
     - Cookie domain: Cookie-домен
     - Cookies are disabled. You cannot log in!: Cookies отключены. Вы не можете войти в систему!
     - Copyright © 20NN—20NN Author/Rightholder. All rights reserved.: Copyright © 20NN—20NN Автор/Правообладатель. Все права защищены.
-    - Copyright © 2017—2023 Maxim Rysevets. All rights reserved.: Copyright © 2017—2023 Рысевец Максим Владимирович. Все права защищены.
+    - Copyright © 2017—2024 Maxim Rysevets. All rights reserved.: Copyright © 2017—2024 Рысевец Максим Владимирович. Все права защищены.
     - copyright: авторские права
     - Copyright: Авторские права
     - Core: Ядро
@@ -154,11 +162,12 @@ translations
     - Credentials for storage "%%_name" was not set!: Учётные данные для хранилища "%%_name" не были заданы!
     - Credentials: Учётные данные
     - Cron autorun frequency: Частота автозапуска Cron
-    - Cron last run: Последний запуск Cron
+    - Cron last run (UTC): Последний запуск Cron (UTC)
     - Current language: Текущий язык
     - Current page information: Информация текущей страницы
     - Current password: Текущий пароль
-    - Current: Текущие
+    - Dark, blue palette: Тёмная, синяя палитра
+    - Dark, green palette: Тёмная, зелёная палитра
     - Data hash: Хэш данных
     - Data ID: ID данных
     - Data update #%%_number for module "%%_title" (%%_id) was applied.: Обновление данных №%%_number для модуля "%%_title" (%%_id) было применено.
@@ -167,10 +176,14 @@ translations
     - Data: Данные
     - Database name: Имя базы данных
     - Date: Дата
+    - Date/Time (UTC): Дата/Время (UTC)
     - Date/Time: Дата/Время
     - Decimal point: Десятичная точка
     - Decorator settings: Настройки оформления
+    - Default color profile was activated.: Цветовой профиль по умолчанию был активирован.
+    - Default color profile was not activated!: Цветовой профиль по умолчанию не был активирован!
     - Definition list: Список определений
+    - Delete colors: Удалить цвета
     - Delete item of type "%%_type" with ID = "%%_id"?: Удалить элемент типа "%%_type" с ID = "%%_id"?
     - delete: удалить
     - Delete: Удалить
@@ -235,6 +248,9 @@ translations
     - Execution: Выполнение
     - expand: развернуть
     - Expiration date: Дата окончания
+    - export custom colors for this profile: экспорт пользовательских цветов для этого профиля
+    - export: экспорт
+    - Export: Экспорт
     - failure: неудача
     - Feedback with ID = "%%_id" has been sent.: Отзыв c ID = "%%_id" был отправлен.
     - Feedback: Отзыв
@@ -355,11 +371,10 @@ translations
     - First remove the dependent elements.: Сначала удалите зависимые элементы.
     - fix: исправить
     - Form elements: Элементы формы
-    - Form for сolor assignment: Форма для назначения цвета
     - Form for adding data: Форма добавления данных
-    - Form for applying color presets: Форма для применения цветовых предустановок
     - Form for changing data: Форма для изменения данных
     - Form for changing user data: Форма для изменения данных пользователя
+    - Form for color management: Форма для управления цветами
     - Form for console configuration: Форма для настройки консоли
     - Form for data management: Форма управления данными
     - Form for deleting data: Форма для удаления данных
@@ -372,7 +387,6 @@ translations
     - Form for execution the test: Форма для выполнения теста
     - Form for feedback: Форма для обратной связи
     - Form for general locale settings: Форма для общей настройки локали
-    - Form for generating a palette: Форма для генерирования палитры
     - Form for installing modules: Форма для установки модулей
     - Form for login: Форма для входа
     - Form for logout: Форма для выхода
@@ -386,6 +400,7 @@ translations
     - Form for updating the cache: Форма для обновления кэша
     - Form for view customization: Форма для настройки вида
     - Form for voting: Форма для голосования
+    - Form for working with color profiles: Форма для работы с цветовыми профилями
     - form: форма
     - Form: Форма
     - Format: Формат
@@ -404,6 +419,7 @@ translations
     - General information: Общая информация
     - General: Общие
     - generate: генерировать
+    - Generated colors: Сгенерированные цвета
     - Generation done.: Генерация выполнена.
     - GiB: ГиБ
     - Global CSS: Глобальный CSS
@@ -415,6 +431,7 @@ translations
     - go to page %%_link: перейти на страницу %%_link
     - go to Russian language: перейти на Русский язык
     - go to section "%%_title": перейти на раздел "%%_title"
+    - Grid custom: Сетка пользовательская
     - Group "%%_title" should contain a maximum %%_number item%%_plural(number\|s)!: Группа "%%_title" должна содержать максимально %%_number элемент%%_plural(number|ov-a)!
     - Group "%%_title" should contain a minimum %%_number item%%_plural(number\|s)!: Группа "%%_title" должна содержать минимально %%_number элемент%%_plural(number|ov-a)!
     - Group "%%_title" should contain at least one selected item!: Группа "%%_title" должна содержать как минимум один выбранный элемент!
@@ -517,7 +534,7 @@ translations
     - left to right: слева направо
     - Length: Длина
     - License agreement: Лицензионное соглашение
-    - Light preset: Светлая предустановка
+    - Light, blue palette: Светлая, синяя палитра
     - Limit: Лимит
     - Line\: %%_line: Строка: %%_line
     - Linear diagram: Линейная диаграмма
@@ -705,7 +722,6 @@ translations
     - poster: плакат
     - Poster: Плакат
     - Pre-listening: Предварительное прослушивание
-    - Prefix: Префикс
     - Presets: Предустановки
     - press to enable or disable the module "%%_title": нажмите, чтобы включить или выключить модуль "%%_title"
     - press to show description: нажмите, чтобы показать описание
@@ -714,6 +730,7 @@ translations
     - press to show or hide available colors: нажмите, чтобы показать или скрыть доступные цвета
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Preview: Предварительный просмотр
+    - profile export: экспорт профиля
     - Profile: Профиль
     - Profiles: Профили
     - Project: Проект
@@ -759,7 +776,7 @@ translations
     - Reload this page and make changes again to prevent inconsistency.: Перезагрузите эту страницу и снова внесите изменения, чтобы предотвратить несогласованность действий.
     - Report: Отчёт
     - required for modules: требуется для модулей
-    - reset: сброс
+    - reset: сбросить
     - restore repository: восстановить репозиторий
     - Restore the storage credentials in "%%_file" or reinstall this system on the page\: %%_link: Восстановите учётные данные хранилища в "%%_file" или переустановите эту систему на странице: %%_link
     - review: обзор

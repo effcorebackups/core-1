@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
@@ -15,41 +15,27 @@ use effcore\Token;
 abstract class Events_Token {
 
     static function on_apply($name, $args) {
-        switch ($name) {
-            case 'request_scheme':
-                $result = Request::scheme_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_server_name':
+
+        if ($name === 'request') {
+            $type = $args->get(0);
+
+            if ($type === 'server_name') {
                 $result = Request::server_name_get($args->get_named('decode') === 'yes');
                 if ($args->get_named('with_specific_port') === 'yes' && Request::port_get() !== '80' && Request::port_get() !== '443') $result = $result.':'.Request::port_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
+                if ($args->get_named('preg_quote'        ) === 'yes'                                                                 ) $result = preg_quote($result);
                 return $result;
-            case 'request_host':
-                $result = Request::host_get($args->get_named('decode') === 'yes');
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_hostname':
-                $result = Request::hostname_get($args->get_named('decode') === 'yes');
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_addr':
-                $result = Request::addr_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_uri':
-                $result = Request::URI_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_path':
-                $result = Request::path_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            case 'request_query':
-                $result = Request::query_get();
-                if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result);
-                return $result;
-            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+            }
+
+            if ($type === 'host'    ) {$result = Request::host_get    ($args->get_named('decode') === 'yes'); if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'hostname') {$result = Request::hostname_get($args->get_named('decode') === 'yes'); if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'scheme'  ) {$result = Request::scheme_get();                                       if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'addr'    ) {$result = Request::addr_get();                                         if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'uri'     ) {$result = Request::URI_get();                                          if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'path'    ) {$result = Request::path_get();                                         if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+            if ($type === 'query'   ) {$result = Request::query_get();                                        if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
+        }
+
+        switch ($name) {
             case 'current_time_utc'                : return                              Core::    time_get();
             case 'current_date_utc'                : return                              Core::    date_get();
             case 'current_datetime_utc'            : return                              Core::datetime_get();

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -35,8 +35,8 @@ class Field_Radiobutton extends Field {
         $type = $field->type_get();
         if ($name && $type) {
             if ($field->disabled_get()) return true;
-            $new_values = Request::values_get($name, $form->source_get());
-            $field->checked_set(Core::in_array($field->value_get(), $new_values));
+            $fixed_values = Request::values_get($name, $form->source_get());
+            $field->checked_set(Core::in_array($field->value_get(), $fixed_values));
         }
     }
 
@@ -46,15 +46,15 @@ class Field_Radiobutton extends Field {
         $type = $field->type_get();
         if ($name && $type) {
             if ($field->disabled_get()) return true;
-            $new_values = Request::values_get($name, $form->source_get());
-            $result = static::validate_required($field, $form, $element, $new_values);
-            $field->checked_set(Core::in_array($field->value_get(), $new_values));
+            $fixed_values = Request::values_get($name, $form->source_get());
+            $result = static::validate_required($field, $form, $element, $fixed_values);
+            $field->checked_set(Core::in_array($field->value_get(), $fixed_values));
             return $result;
         }
     }
 
-    static function validate_required($field, $form, $element, &$new_values) {
-        if ($field->required_get() && !Core::in_array($field->value_get(), $new_values)) {
+    static function validate_required($field, $form, $element, &$fixed_values) {
+        if ($field->required_get() && !Core::in_array($field->value_get(), $fixed_values)) {
             $field->error_set(
                 'Field "%%_title" should be enabled!', ['title' => (new Text($field->title))->render() ]
             );

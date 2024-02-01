@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\page;
@@ -13,6 +13,7 @@ use effcore\Event;
 use effcore\File;
 use effcore\Media;
 use effcore\Module;
+use effcore\Area_Grid;
 use effcore\Request;
 use effcore\Response;
 
@@ -323,6 +324,33 @@ abstract class Events_File {
                     }         else Response::send_header_and_exit('unsupported_media_type');
                 }             else Response::send_header_and_exit('unsupported_media_type');
             }                 else Response::send_header_and_exit('unsupported_media_type');
+        }
+    }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # virtual files
+    # ─────────────────────────────────────────────────────────────────────
+
+    static function on_load_virtual_not_found($event, &$type_info, &$file) {
+        Response::send_header_and_exit('file_not_found');
+    }
+
+    static function on_load_virtual_style__grid_custom($event, &$type_info, &$file) {
+        if ($type_info->type === 'cssv') {
+            if ($file->path_get_relative() === 'system/module_page/frontend/layout-grid-custom.cssv') {
+                header('content-type: text/css');
+                header('x-content-type-options: nosniff');
+                header('cache-control: private, no-cache, no-store, must-revalidate');
+                header('expires: 0');
+                $col_count = (int)Request::value_get('col_count', 0, '_GET', Area_Grid::COL_COUNT_MAX);
+                $row_count = (int)Request::value_get('row_count', 0, '_GET', Area_Grid::ROW_COUNT_MAX);
+                Area_Grid::validate_col_count($col_count);
+                Area_Grid::validate_row_count($row_count);
+                print Area_Grid::generate_styles(
+                    $col_count,
+                    $row_count);
+                exit();
+            }
         }
     }
 

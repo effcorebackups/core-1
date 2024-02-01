@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -22,42 +22,7 @@ class Field_Select_selection_field extends Field_Select {
 
     function build($filter = null) {
         if (!$this->is_builded) {
-            parent::build();
-            $items = [];
-            $items['*'] = new stdClass;
-            $items['*']->title = 'universal handlers';
-            foreach (Selection::get_handlers('*') as $c_row_id => $c_handler) {
-                $items['*']->items['handler:'.$c_row_id] = new Text_multiline([
-                    'H: ', $c_handler->title ?? $c_row_id
-                ]);
-            }
-            $entities = Entity::get_all();
-            Core::array_sort_by_string($entities);
-            foreach ($entities as $c_entity) {
-                if (!empty($c_entity->managing_is_enabled)) {
-                    if ($filter === null ||
-                        $filter === $c_entity->name) {
-                        foreach ($c_entity->fields as $c_name => $c_field) {
-                            if (!isset($items[$c_entity->name])) {
-                                       $items[$c_entity->name] = new stdClass;
-                                       $items[$c_entity->name]->title = $c_entity->title; }
-                            $c_text_object = new Text_multiline(['title' => $c_field->title, 'id' => '(~'.$c_entity->name.'.'.$c_name.')'], [], ' ');
-                            $c_text_object->_text_translated = $c_text_object->render();
-                            $items[$c_entity->name]->items['main:'.$c_entity->name.'.'.$c_name] = $c_text_object;
-                        }
-                        Core::array_sort_by_string(
-                            $items[$c_entity->name]->items, '_text_translated', Core::SORT_DSC, false
-                        );
-                        foreach (Selection::get_handlers($c_entity->name) as $c_row_id => $c_handler) {
-                            $items[$c_entity->name]->items['handler:'.$c_row_id] = new Text_multiline([
-                                'H: ', $c_handler->title ?? $c_row_id
-                            ]);
-                        }
-                    }
-                }
-            }
-            $this->items = ['not_selected' => $this->title__not_selected] + $items;
-            $this->is_builded = false;
+            $this->items = ['not_selected' => $this->title__not_selected] + static::items_generate($filter);
             parent::build();
         }
     }
@@ -69,6 +34,46 @@ class Field_Select_selection_field extends Field_Select {
     ###########################
     ### static declarations ###
     ###########################
+
+    static function items_generate($filter) {
+        $result = [];
+        # universal handlers
+        $result['*'] = new stdClass;
+        $result['*']->title = 'universal handlers';
+        foreach (Selection::get_handlers('*') as $c_row_id => $c_handler) {
+            $result['*']->items['handler:'.$c_row_id] = (new Text_multiline([
+                'H: ', $c_handler->title ?? $c_row_id
+            ], [], ''))->render();
+        }
+        # fields by entity
+        $entities = Entity::get_all();
+        Core::array_sort_by_string($entities);
+        foreach ($entities as $c_entity) {
+            if (!empty($c_entity->managing_is_enabled)) {
+                if ($filter === null ||
+                    $filter === $c_entity->name) {
+                    foreach ($c_entity->fields as $c_name => $c_field) {
+                        if (!isset($result[$c_entity->name])) {
+                                   $result[$c_entity->name] = new stdClass;
+                                   $result[$c_entity->name]->title = $c_entity->title; }
+                        $result[$c_entity->name]->items['main:'.$c_entity->name.'.'.$c_name] = (new Text_multiline([
+                            'title' => $c_field->title, 'id' => '(~'.$c_entity->name.'.'.$c_name.')'
+                        ], [], ' '))->render();
+                    }
+                    Core::array_sort(
+                        $result[$c_entity->name]->items, Core::SORT_DSC, false
+                    );
+                    # handlers by entity
+                    foreach (Selection::get_handlers($c_entity->name) as $c_row_id => $c_handler) {
+                        $result[$c_entity->name]->items['handler:'.$c_row_id] = (new Text_multiline([
+                            'H: ', $c_handler->title ?? $c_row_id
+                        ], [], ''))->render();
+                    }
+                }
+            }
+        }
+        return $result;
+    }
 
     static function parse_value($value) {
         if (is_string($value) && strlen($value)) {

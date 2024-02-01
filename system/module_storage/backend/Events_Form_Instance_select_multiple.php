@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\storage;
@@ -138,8 +138,8 @@ abstract class Events_Form_Instance_select_multiple {
                         }
                     }
                 }
-                static::on_build(null, $form);
-                static::on_init (null, $form, $items);
+                $form->components_build();
+                $form->components_init();
                 break;
             case 'insert':
                 Url::go($entity->make_url_for_insert().'?'.Url::back_part_make());

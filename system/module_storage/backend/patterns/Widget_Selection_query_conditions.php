@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -136,9 +136,9 @@ class Widget_Selection_query_conditions extends Widget_Items {
         $widget->controls['#field_name__'.$c_row_id] = $field_select_entity_field;
         $widget->controls['#operator__'  .$c_row_id] = $field_select_operator;
         $widget->controls['#value__'     .$c_row_id] = $field_text_value;
-        $result->child_insert($field_select_entity_field, 'field_select_entity_field');
-        $result->child_insert($field_select_operator    , 'field_select_operator');
-        $result->child_insert($field_text_value         , 'field_text_value');
+        $result->child_select('body')->child_insert($field_select_entity_field, 'field_select_entity_field');
+        $result->child_select('body')->child_insert($field_select_operator    , 'field_select_operator');
+        $result->child_select('body')->child_insert($field_text_value         , 'field_text_value');
         return $result;
     }
 

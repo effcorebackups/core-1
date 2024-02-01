@@ -31,7 +31,8 @@ Server-side scripting language:
 - PHP v7.4.x;
 - PHP v8.0.x;
 - PHP v8.1.x;
-- PHP v8.2.x.
+- PHP v8.2.x;
+- PHP v8.3.x.
 
 Storage systems:
 - MySQL v5.6.x;

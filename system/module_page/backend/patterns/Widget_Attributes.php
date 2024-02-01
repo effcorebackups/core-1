@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -73,8 +73,8 @@ class Widget_Attributes extends Widget_Items {
         # relate new controls with the widget
         $widget->controls['#name__'. $c_row_id] = $field_text_name;
         $widget->controls['#value__'.$c_row_id] = $widget_text_object_value;
-        $result->child_insert($field_text_name         , 'field_text_name');
-        $result->child_insert($widget_text_object_value, 'widget_text_object_value');
+        $result->child_select('body')->child_insert($field_text_name         , 'field_text_name');
+        $result->child_select('body')->child_insert($widget_text_object_value, 'widget_text_object_value');
         return $result;
     }
 

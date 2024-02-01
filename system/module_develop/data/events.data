@@ -21,9 +21,6 @@ events
   - console|Event
       for: console
       handler: \effcore\modules\develop\Events_Form_Console::on_submit
-  - palette|Event
-      for: palette
-      handler: \effcore\modules\develop\Events_Form_Palette::on_submit
   # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
   on_page_build_before
   - structures|Event

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -24,10 +24,8 @@ class Field_Select_timezone extends Field_Select {
 
     function build() {
         if (!$this->is_builded) {
-            parent::build();
             if ($this->sort === 'by_zones') $this->items = ['not_selected' => $this->title__not_selected] + static::items_generate_by_zones();
             if ($this->sort === 'by_names') $this->items = ['not_selected' => $this->title__not_selected] + static::items_generate_by_names();
-            $this->is_builded = false;
             parent::build();
         }
     }
@@ -48,13 +46,12 @@ class Field_Select_timezone extends Field_Select {
                        $result[$c_time_offset]->title = str_replace('-', '−', Core::timezone_get_offset_string_time(reset($c_items))); }
             foreach ($c_items as $c_name) {
                 $c_parts = explode('/', $c_name, 2);
-                if (count($c_parts) === 2) $c_text_object = new Text_multiline(['region' => $c_parts[0], 'delimiter' => '/', 'country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[1])], [], ' ');
-                if (count($c_parts) === 1) $c_text_object = new Text_multiline([                                             'country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[0])], [], ' ');
-                $c_text_object->_text_translated = $c_text_object->render();
-                $result[$c_time_offset]->items[$c_name] = $c_text_object;
+                if (count($c_parts) === 2) $c_title = new Text_multiline(['region' => $c_parts[0], 'delimiter' => '/', 'country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[1])], [], ' ');
+                if (count($c_parts) === 1) $c_title = new Text_multiline([                                             'country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[0])], [], ' ');
+                $result[$c_time_offset]->items[$c_name] = $c_title->render();
             }
-            Core::array_sort_by_string(
-                $result[$c_time_offset]->items, '_text_translated', Core::SORT_DSC, false
+            Core::array_sort(
+                $result[$c_time_offset]->items, Core::SORT_DSC, false
             );
         }
         return $result;
@@ -67,20 +64,18 @@ class Field_Select_timezone extends Field_Select {
             $c_parts = explode('/', $c_name, 2);
             if (!isset($result[$c_parts[0]])) {
                        $result[$c_parts[0]] = new stdClass;
-                       $result[$c_parts[0]]->title = $c_parts[0];
-                       $result[$c_parts[0]]->_text_translated = (new Text($c_parts[0]))->render(); }
-            if (count($c_parts) === 2) $c_text_object = new Text_multiline(['country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[1]), 'offset' => '('.$c_offset.')'], [], ' ');
-            if (count($c_parts) === 1) $c_text_object = new Text_multiline(['country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[0]), 'offset' => '('.$c_offset.')'], [], ' ');
-            $c_text_object->_text_translated = $c_text_object->render();
-            $result[$c_parts[0]]->items[$c_name] = $c_text_object;
+                       $result[$c_parts[0]]->title = (new Text($c_parts[0]))->render(); }
+            if (count($c_parts) === 2) $c_title = new Text_multiline(['country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[1]), 'offset' => '('.$c_offset.')'], [], ' ');
+            if (count($c_parts) === 1) $c_title = new Text_multiline(['country' => str_replace(['_', '/'], ['-', ' / '], $c_parts[0]), 'offset' => '('.$c_offset.')'], [], ' ');
+            $result[$c_parts[0]]->items[$c_name] = $c_title->render();
         }
         foreach ($result as $c_id => $c_group) {
-            Core::array_sort_by_string(
-                $result[$c_id]->items, '_text_translated', Core::SORT_DSC, false
+            Core::array_sort(
+                $result[$c_id]->items, Core::SORT_DSC, false
             );
         }
         Core::array_sort_by_string(
-            $result, '_text_translated', Core::SORT_DSC, false
+            $result, 'title', Core::SORT_DSC, false
         );
         return $result;
     }

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -17,7 +17,7 @@ class Decorator extends Markup {
     public $template = 'markup_html';
     public $template_item;
     public $mapping = [];
-    public $tree_visualization_mode; # null | decorated | decorated-rearrangeable
+    public $tree_manage_mode; # null | decorate | rearrange
     public $result_attributes = [];
     public $visibility_row_id  = 'not_int'; # visible | not_int | hidden
     public $visibility_cell_id = 'not_int'; # visible | not_int | hidden
@@ -303,7 +303,7 @@ class Decorator extends Markup {
                             $c_extra     =                    array_key_exists('extra'    , $c_row) ? $c_row['extra'    ]['value'] : (array_key_exists('extra'    , $this->mapping) && array_key_exists($this->mapping['extra'    ], $c_row) ? $c_row[$this->mapping['extra'    ]]['value'] : null);
                             $c_id_tree = 'decorator-'.$c_id_tree;
                             $c_tree = Tree::insert($this->description ?? null, $c_id_tree, null, [], 0, 'page');
-                            $c_tree->visualization_mode = $this->tree_visualization_mode;
+                            $c_tree->manage_mode = $this->tree_manage_mode;
                             if ($trees->child_select(         $c_id_tree) === null)
                                 $trees->child_insert($c_tree, $c_id_tree);
                             $c_tree_item = Tree_item::insert($c_title,

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\user;
@@ -103,7 +103,7 @@ abstract class Events_Form_Instance_insert {
                 # feedback
                 if ($entity->name === 'feedback' && Page::get_current()->id !== 'instance_insert') {
                     Message::insert(new Text('Feedback with ID = "%%_id" has been sent.', ['id' => implode('+', $form->_instance->values_id_get()) ]));
-                    static::on_init(null, $form, $items);
+                    $form->components_init();
                 }
                 break;
         }

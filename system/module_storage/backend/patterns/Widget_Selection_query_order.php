@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -92,8 +92,8 @@ class Widget_Selection_query_order extends Widget_Items {
         # relate new controls with the widget
         $widget->controls['#field_name__'.$c_row_id] = $field_select_field;
         $widget->controls['#type__'      .$c_row_id] = $field_select_type;
-        $result->child_insert($field_select_field, 'field_select_field');
-        $result->child_insert($field_select_type , 'field_select_type');
+        $result->child_select('body')->child_insert($field_select_field, 'field_select_field');
+        $result->child_select('body')->child_insert($field_select_type , 'field_select_type');
         return $result;
     }
 

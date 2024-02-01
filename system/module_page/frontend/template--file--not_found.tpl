@@ -7,11 +7,11 @@
               padding: 100px 30px;
               font: normal 16px Arial;
               text-align: center;
-              color: %%_color__text;
-              background: %%_color__page}
+              color: %%_color_text;
+              background: %%_color_page}
             h1 {font-size: 1.6em}
-            a       {color: %%_color__link}
-            a:hover {color: %%_color__link_active}
+            a       {color: %%_color_link}
+            a:hover {color: %%_color_link_active}
             svg#icon {margin: 50px 0}
             /* console */
             pre {

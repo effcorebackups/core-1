@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\user;
@@ -60,7 +60,7 @@ abstract class Events_Form_Security_settings {
                 $result&= Storage::get('data')->changes_unregister('user', 'update', 'settings/user/send_password_to_email');
                 if ($result) Message::insert('Changes was deleted.'             );
                 else         Message::insert('Changes was not deleted!', 'error');
-                static::on_init(null, $form, $items);
+                $form->components_init();
                 break;
         }
     }

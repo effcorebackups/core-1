@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -30,8 +30,8 @@ class Widget_Items extends Control implements Control_complex {
         parent::__construct(null, null, null, $attributes, [], $weight);
     }
 
-    function build($reset = false) {
-        if (!$this->is_builded || $reset) {
+    function build($rebuild = false) {
+        if (!$this->is_builded || $rebuild) {
             $this->child_insert(static::widget_manage_group_get($this), 'manage');
             $this->child_insert(static::widget_insert_get      ($this), 'insert');
             $this->build_widget_manage_group();
@@ -48,7 +48,7 @@ class Widget_Items extends Control implements Control_complex {
         foreach ($this->items_get() as $c_row_id => $c_item) {
             if ($group->child_select($c_row_id) === null) {$c_widget = static::widget_manage_get($this, $c_item, $c_row_id); $group->child_insert($c_widget, $c_row_id);}
             if ($group->child_select($c_row_id) !== null) {$c_widget =                                                       $group->child_select(           $c_row_id);}
-            $c_weight = $c_widget->child_select('field_weight')->value_get();
+            $c_weight = $c_widget->child_select('body')->child_select('field_weight')->value_get();
             $c_widget->weight = (int)$c_weight;
         }
         # delete old widgets
@@ -123,15 +123,15 @@ class Widget_Items extends Control implements Control_complex {
         if ($this->state === 'opened' ||
             $this->state === 'closed') {
             $html_name    = 'f_widget_opener_'.$this->number;
-            $form_id      = Request::value_get('form_id');
+            $is_submited  = Form::is_posted();
             $submit_value = Request::value_get($html_name);
             $has_error    = $this->has_error_in();
-            if ($form_id === '' && $this->state === 'opened'                    ) /*               default = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null                          ]))->render();
-            if ($form_id === '' && $this->state === 'closed'                    ) /*               default = closed */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => true                          ]))->render();
-            if ($form_id !== '' && $has_error !== true && $submit_value !== 'on') /* no error + no checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null                          ]))->render();
-            if ($form_id !== '' && $has_error !== true && $submit_value === 'on') /* no error +    checked = closed */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => true                          ]))->render();
-            if ($form_id !== '' && $has_error === true && $submit_value !== 'on') /*    error + no checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null, 'aria-invalid' => 'true']))->render();
-            if ($form_id !== '' && $has_error === true && $submit_value === 'on') /*    error +    checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null, 'aria-invalid' => 'true']))->render();
+            if ($is_submited !== true && $this->state === 'opened'                    ) /*               default = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null                          ]))->render();
+            if ($is_submited !== true && $this->state === 'closed'                    ) /*               default = closed */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => true                          ]))->render();
+            if ($is_submited === true && $has_error !== true && $submit_value !== 'on') /* no error + no checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null                          ]))->render();
+            if ($is_submited === true && $has_error !== true && $submit_value === 'on') /* no error +    checked = closed */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => true                          ]))->render();
+            if ($is_submited === true && $has_error === true && $submit_value !== 'on') /*    error + no checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null, 'aria-invalid' => 'true']))->render();
+            if ($is_submited === true && $has_error === true && $submit_value === 'on') /*    error +    checked = opened */ return (new Markup_simple('input', ['type' => 'checkbox', 'role' => 'button', 'data-opener-type' => 'title', 'title' => new Text('press to show or hide nested content'), 'name' => $html_name, 'id' => $html_name, 'checked' => null, 'aria-invalid' => 'true']))->render();
         }
         return '';
     }
@@ -151,16 +151,28 @@ class Widget_Items extends Control implements Control_complex {
     static function widget_manage_group_get($widget) {
         return new Markup('x-widgets-group', [
             'data-type' => 'manage',
-            'data-has-rearrangeable' => true
+            'data-rearrangeable' => true
         ]);
     }
 
     static function widget_manage_get($widget, $item, $c_row_id) {
         $result = new Markup('x-widget', [
-            'data-row-id'        => $c_row_id,
-            'data-rearrangeable' => true], [], $item->weight);
+            'data-row-id' => $c_row_id,
+            'data-rearrangeable-item' => true], [
+            'icon' => new Markup('x-icon', [], [], +500),
+            'head' => new Markup('x-head', [], [], +400),
+            'body' => new Markup('x-body', [], [], +300),
+            'foot' => new Markup('x-foot', [], [], +200)
+        ], $item->weight);
+        # button for deletion of the item
+        $button_delete = new Button(null, ['data-style' => 'delete little', 'title' => new Text('delete')], -500);
+        $button_delete->break_on_validate = true;
+        $button_delete->build();
+        $button_delete->value_set($widget->name_get_complex().'__delete__'.$c_row_id);
+        $button_delete->_type = 'delete';
+        $button_delete->_id = $c_row_id;
         # control for weight
-        $field_weight = new Field_Weight(null, null, [], +400);
+        $field_weight = new Field_Weight(null, null, [], +500);
         $field_weight->cform = $widget->cform;
         $field_weight->attributes['data-role'] = 'weight';
         $field_weight->attributes['data-style'] = 'inline';
@@ -169,18 +181,11 @@ class Widget_Items extends Control implements Control_complex {
         $field_weight->name_set($widget->name_get_complex().'__weight__'.$c_row_id);
         $field_weight->required_set(false);
         $field_weight->value_set($item->weight);
-        # button for deletion of the old item
-        $button_delete = new Button(null, ['data-style' => 'delete little', 'title' => new Text('delete')], +500);
-        $button_delete->break_on_validate = true;
-        $button_delete->build();
-        $button_delete->value_set($widget->name_get_complex().'__delete__'.$c_row_id);
-        $button_delete->_type = 'delete';
-        $button_delete->_id = $c_row_id;
         # relate new controls with the widget
-        $widget->controls['#weight__'.$c_row_id] = $field_weight;
         $widget->controls['~delete__'.$c_row_id] = $button_delete;
-        $result->child_insert($field_weight , 'field_weight');
-        $result->child_insert($button_delete, 'button_delete');
+        $widget->controls['#weight__'.$c_row_id] = $field_weight;
+        $result->child_select('head')->child_insert($button_delete, 'button_delete');
+        $result->child_select('body')->child_insert($field_weight , 'field_weight');
         return $result;
     }
 

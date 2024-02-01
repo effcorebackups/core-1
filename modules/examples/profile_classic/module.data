@@ -5,9 +5,9 @@ module|Module_as_profile
   group: Profiles
   description: Module for example of profile "Classic".
   copyright: Copyright © 20NN—20NN Author/Rightholder. All rights reserved.
-  version: 0.913
+  version: 0.914
   dependencies
     system
-    - core: 0.913
-    - vendors: 0.913
-    - translation_ru: 0.913
+    - core: 0.914
+    - vendors: 0.914
+    - translation_ru: 0.914

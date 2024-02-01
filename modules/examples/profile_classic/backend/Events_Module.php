@@ -6,11 +6,13 @@
 
 namespace effcore\modules\profile_classic;
 
-use effcore\Color_preset;
+use effcore\Color_profile;
 use effcore\Message;
 use effcore\Module;
 
 abstract class Events_Module {
+
+    const COLOR_PROFILE = 'classic_violet';
 
     static function on_install($event) {
         $module = Module::get('profile_classic');
@@ -24,18 +26,20 @@ abstract class Events_Module {
 
     static function on_enable($event) {
         if (Module::is_installed('profile_classic')) {
-            $result = Color_preset::apply('original_classic');
-            if ($result) Message::insert('Color settings have been changed.'             );
-            else         Message::insert('Color settings have not been changed!', 'error');
+            $result = Color_profile::set_current(static::COLOR_PROFILE);
+            if ($result) Message::insert('Color profile was activated.'             );
+            else         Message::insert('Color profile was not activated!', 'error');
             $module = Module::get('profile_classic');
             $module->enable();
         }
     }
 
     static function on_disable($event) {
-        $result = Color_preset::reset();
-        if ($result) Message::insert('Color settings have been changed.'             );
-        else         Message::insert('Color settings have not been changed!', 'error');
+        if (Color_profile::get_current()->id === static::COLOR_PROFILE) {
+            $result = Color_profile::set_current(Color_profile::PROFILE_DEFAULT);
+            if ($result) Message::insert('Default color profile was activated.'             );
+            else         Message::insert('Default color profile was not activated!', 'error');
+        }
         $module = Module::get('profile_classic');
         $module->disable();
     }

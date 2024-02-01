@@ -3,8 +3,8 @@ module|Module_embedded
   id_bundle: system
   title: User
   description: Module for working with user accounts and permissions.
-  copyright: Copyright © 2017—2023 Maxim Rysevets. All rights reserved.
-  version: 0.913
+  copyright: Copyright © 2017—2024 Maxim Rysevets. All rights reserved.
+  version: 0.914
   dependencies
     system
-    - core: 0.913
+    - core: 0.914

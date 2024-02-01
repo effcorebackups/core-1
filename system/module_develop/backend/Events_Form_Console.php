@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\develop;
@@ -9,7 +9,6 @@ namespace effcore\modules\develop;
 use effcore\Console;
 use effcore\Message;
 use effcore\Module;
-use effcore\Storage;
 
 abstract class Events_Form_Console {
 
@@ -21,7 +20,9 @@ abstract class Events_Form_Console {
     static function on_submit($event, $form, $items) {
         switch ($form->clicked_button->value_get()) {
             case 'save':
-                $result = Storage::get('data')->changes_register('page', 'update', 'settings/page/console_visibility', $items['#visibility']->value_get());
+                if ($items['#visibility']->value_get() === Console::IS_VISIBLE_FOR_NOBODY)
+                     $result = Console::changes_store(null);
+                else $result = Console::changes_store($items['#visibility']->value_get());
                 if ($result) Message::insert('Changes was saved.'             );
                 else         Message::insert('Changes was not saved!', 'error');
                 Console::visible_mode_get(true);

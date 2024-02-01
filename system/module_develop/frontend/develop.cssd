@@ -1,170 +1,223 @@
 
 /* demo tokens:
 ═════════════════════════════════════════════════════════════════════
-demo_text: %%_demo_text
+demo_text                          : %%_demo_text
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-user_id: %%_user_id
-nickname: %%_nickname
-email: %%_email
-avatar_path: %%_avatar_path
-nickname_page_context: %%_nickname_page_context(some_page_arg|0)
+user_id                            : %%_user_id
+nickname                           : %%_nickname
+email                              : %%_email
+avatar_path                        : %%_avatar_path
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_time_utc: %%_current_time_utc
-current_time_utc_formatted: %%_current_time_utc_formatted
-current_time_local: %%_current_time_local
-current_time_local_formatted: %%_current_time_local_formatted
+current_time_utc                   : %%_current_time_utc
+current_time_utc_formatted         : %%_current_time_utc_formatted
+current_time_local                 : %%_current_time_local
+current_time_local_formatted       : %%_current_time_local_formatted
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_date_utc: %%_current_date_utc
-current_date_utc_formatted: %%_current_date_utc_formatted
-current_date_local: %%_current_date_local
-current_date_local_formatted: %%_current_date_local_formatted
+current_date_utc                   : %%_current_date_utc
+current_date_utc_formatted         : %%_current_date_utc_formatted
+current_date_local                 : %%_current_date_local
+current_date_local_formatted       : %%_current_date_local_formatted
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_datetime_utc: %%_current_datetime_utc
-current_datetime_utc_formatted: %%_current_datetime_utc_formatted
-current_datetime_local: %%_current_datetime_local
-current_datetime_local_formatted: %%_current_datetime_local_formatted
+current_datetime_utc               : %%_current_datetime_utc
+current_datetime_utc_formatted     : %%_current_datetime_utc_formatted
+current_datetime_local             : %%_current_datetime_local
+current_datetime_local_formatted   : %%_current_datetime_local_formatted
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-page_id_context: %%_page_id_context(front)
-thumbnail_width_small: %%_thumbnail_width_small
-thumbnail_width_middle: %%_thumbnail_width_middle
-thumbnail_width_big: %%_thumbnail_width_big
-thumbnail_path_cover_default: %%_thumbnail_path_cover_default
-thumbnail_path_poster_default: %%_thumbnail_path_poster_default
-page_width_min: %%_page_width_min
-page_width_max: %%_page_width_max
-page_width_min_context: %%_page_width_min_context
-page_width_max_context: %%_page_width_max_context
+page_arg_context                   : %%_page_arg_context
+page_arg_context(some_arg)         : %%_page_arg_context(some_arg)
+page_arg_context(some_arg|default) : %%_page_arg_context(some_arg|default)
+page_id_context                    : %%_page_id_context(front)
+thumbnail_width_small              : %%_thumbnail_width_small
+thumbnail_width_middle             : %%_thumbnail_width_middle
+thumbnail_width_big                : %%_thumbnail_width_big
+thumbnail_path_cover_default       : %%_thumbnail_path_cover_default
+thumbnail_path_poster_default      : %%_thumbnail_path_poster_default
+page_width_min                     : %%_page_width_min
+page_width_max                     : %%_page_width_max
+page_width_min(context)            : %%_page_width_min(context)
+page_width_max(context)            : %%_page_width_max(context)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-instance_id_context: %%_instance_id_context
-entity_name_context: %%_entity_name_context
-entity_title_context: %%_entity_title_context
-entity_title_plural_context: %%_entity_title_plural_context
+entity_title_context               : %%_entity_title_context
+entity_title_plural_context        : %%_entity_title_plural_context
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+translation(simple string)                                                       : %%_translation(simple string)
+translation(string with parameter = %_n|n=0)                                     : %%_translation(string with parameter = %%_n|n=0)
+translation(string with parameter = %_n|n=1)                                     : %%_translation(string with parameter = %%_n|n=1)
+translation(string with parameter = %_n|n=2)                                     : %%_translation(string with parameter = %%_n|n=2)
+translation(string with plural value = number second%_plural(number|s)|number=0) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
+translation(string with plural value = number second%_plural(number|s)|number=1) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
+translation(string with plural value = number second%_plural(number|s)|number=2) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
+translation(unknown string)                                                      : %%_translation(unknown string)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+Priorities when determining the color profile:
+     1) %%_color(profile=…)
+     2) $_COOKIE['color_profile'] = …
+     3) $user->color_profile = …
+     4) $global_settings->color_profile = …
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+Dependencies when determining the color profile:
+     ┌──────────────────────────────────────────────────────────────────────┐
+     │ *.cssd                                                               │
+     │◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│
+     │     css_attribute: url('*.svgd?color=%_return_if_scope_is_dark(…)')  │
+     │     css_attribute: url('*.svgd?color=%_color(…)')                    │
+     └────────────────────────────│─────────────────────────────────────────┘
+                                  │
+     ┌────────────────────────────▼─────────────────────────────────────────┐
+     │ *.svgd                                                               │
+     │◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│
+     │      style_attribute=%_return_url_arg(color|…)                       │
+     └──────────────────────────────────────────────────────────────────────┘
+
+     ┌──────────────────────────────────────────────────────────────────────┐
+     │ *logotype-*.svgd                                                     │
+     │◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦│
+     │      style_attribute: %_color(…)                                     │
+     └──────────────────────────────────────────────────────────────────────┘
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+color(page)                     : %%_color(page)
+color(text)                     : %%_color(text)
+color(main)                     : %%_color(main)
+color(link)                     : %%_color(link)
+color(link_active)              : %%_color(link_active)
+color(table_row_odd)            : %%_color(table_row_odd)
+color(table_row_even)           : %%_color(table_row_even)
+color(menu)                     : %%_color(menu)
+color(menu_active)              : %%_color(menu_active)
+color(menu_text)                : %%_color(menu_text)
+color(menu_link)                : %%_color(menu_link)
+color(menu_link_active)         : %%_color(menu_link_active)
+color(tabs)                     : %%_color(tabs)
+color(tabs_link)                : %%_color(tabs_link)
+color(tabs_link_active)         : %%_color(tabs_link_active)
+color(tabs_link_active_no_bg)   : %%_color(tabs_link_active_no_bg)
+color(ok)                       : %%_color(ok)
+color(warning)                  : %%_color(warning)
+color(error)                    : %%_color(error)
+color(fieldset)                 : %%_color(fieldset)
+color(fieldset_nested)          : %%_color(fieldset_nested)
+color(field)                    : %%_color(field)
+color(field_text)               : %%_color(field_text)
+color(button)                   : %%_color(button)
+color(button_active)            : %%_color(button_active)
+color(button_text)              : %%_color(button_text)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-translation(simple string): %%_translation(simple string)
-translation(string with parameter = %_n|n=0): %%_translation(string with parameter = %%_n|n=0)
-translation(string with parameter = %_n|n=1): %%_translation(string with parameter = %%_n|n=1)
-translation(string with parameter = %_n|n=2): %%_translation(string with parameter = %%_n|n=2)
-translation(string with plural value = number second%_plural(number|s)|number=0): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
-translation(string with plural value = number second%_plural(number|s)|number=1): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
-translation(string with plural value = number second%_plural(number|s)|number=2): %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
-translation(unknown string): %%_translation(unknown string)
+color(page)                     : %%_color(page)
+color(page|r=+15)               : %%_color(page|r=+15)
+color(page|g=+15)               : %%_color(page|g=+15)
+color(page|b=+15)               : %%_color(page|b=+15)
+color(page|r=-15)               : %%_color(page|r=-15)
+color(page|g=-15)               : %%_color(page|g=-15)
+color(page|b=-15)               : %%_color(page|b=-15)
+color(page|r=+1000)             : %%_color(page|r=+1000)
+color(page|r=-1000)             : %%_color(page|r=-1000)
+color(page|g=+1000)             : %%_color(page|g=+1000)
+color(page|g=-1000)             : %%_color(page|g=-1000)
+color(page|b=+1000)             : %%_color(page|b=+1000)
+color(page|b=-1000)             : %%_color(page|b=-1000)
+color(page|o=.5)                : %%_color(page|o=.5)
+color(page|o=+1000)             : %%_color(page|o=+1000)
+color(page|o=-1000)             : %%_color(page|o=-1000)
+color(page|profile=light_blue)  : %%_color(page|profile=light_blue)
+color(page|profile=dark_blue)   : %%_color(page|profile=dark_blue)
+color(page|…)                   : %%_color(page|profile=light_blue|r=-10|g=-20|b=-30|o=.5)
+color(page|…)                   : %%_color(page|profile=dark_blue|r=10|g=20|b=30|o=.5)
+color(page|…)                   : %%_color(page|profile=light_blue|encoded=1)
+color(page|…)                   : %%_color(page|profile=dark_blue|encoded=1)
+color(page|…)                   : %%_color(page|profile=light_blue|r=-10|g=-20|b=-30|o=.5|encoded=1)
+color(page|…)                   : %%_color(page|profile=dark_blue|r=10|g=20|b=30|o=.5|encoded=1)
+color(unknown_scope)                          : %%_color(unknown_scope)
+color(page|profile=unknown_profile)           : %%_color(page|profile=unknown_profile)
+color(unknown_scope|profile=unknown_profile)  : %%_color(unknown_scope|profile=unknown_profile)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_if_scope_is_dark(page|1|0)                                       : %%_return_if_scope_is_dark(page|1|0)
+return_if_scope_is_dark(page|0|1)                                       : %%_return_if_scope_is_dark(page|0|1)
+return_if_scope_is_dark(page|1|0|profile=dark_blue)                     : %%_return_if_scope_is_dark(page|1|0|profile=dark_blue)
+return_if_scope_is_dark(page|0|1|profile=dark_blue)                     : %%_return_if_scope_is_dark(page|0|1|profile=dark_blue)
+return_if_scope_is_dark(page|1|0|profile=light_blue)                    : %%_return_if_scope_is_dark(page|1|0|profile=light_blue)
+return_if_scope_is_dark(page|0|1|profile=light_blue)                    : %%_return_if_scope_is_dark(page|0|1|profile=light_blue)
+return_if_scope_is_dark(page|1|0|profile=unknown_profile)               : %%_return_if_scope_is_dark(page|1|0|profile=unknown_profile)
+return_if_scope_is_dark(page|0|1|profile=unknown_profile)               : %%_return_if_scope_is_dark(page|0|1|profile=unknown_profile)
+return_if_scope_is_dark(unknown_scope|1|0)                              : %%_return_if_scope_is_dark(unknown_scope|1|0)
+return_if_scope_is_dark(unknown_scope|1|0|profile=dark_blue)            : %%_return_if_scope_is_dark(unknown_scope|1|0|profile=dark_blue)
+return_if_scope_is_dark(unknown_scope|0|1|profile=dark_blue)            : %%_return_if_scope_is_dark(unknown_scope|0|1|profile=dark_blue_blue)
+return_if_scope_is_dark(unknown_scope|1|0|profile=light_blue)           : %%_return_if_scope_is_dark(unknown_scope|1|0|profile=light_blue)
+return_if_scope_is_dark(unknown_scope|0|1|profile=light_blue)           : %%_return_if_scope_is_dark(unknown_scope|0|1|profile=light_blue_blue)
+return_if_scope_is_dark(unknown_scope|1|0|profile=unknown_profile)      : %%_return_if_scope_is_dark(unknown_scope|1|0|profile=unknown_profile)
+return_if_scope_is_dark(unknown_scope|0|1|profile=unknown_profile)      : %%_return_if_scope_is_dark(unknown_scope|0|1|profile=unknown_profile)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_if_token(color(page)|#ffffff|1|0)                                : %%_return_if_token(color\(page\)|#ffffff|1|0)
+return_if_token(color(page)|#ffffff|0|1)                                : %%_return_if_token(color\(page\)|#ffffff|0|1)
+return_if_token(color(page)|transparent|1|0)                            : %%_return_if_token(color\(page\)|transparent|1|0)
+return_if_token(color(page)|transparent|0|1)                            : %%_return_if_token(color\(page\)|transparent|0|1)
+return_if_token(color(page|r=-10|g=-10|b=-10)|#f5f5f5|1|0)              : %%_return_if_token(color\(page\|r=-10\|g=-10\|b=-10\)|#f5f5f5|1|0)
+return_if_token(color(page|r=-10|g=-10|b=-10)|#f5f5f5|0|1)              : %%_return_if_token(color\(page\|r=-10\|g=-10\|b=-10\)|#f5f5f5|0|1)
+return_if_token(||1|0)                                                  : %%_return_if_token(||1|0)
+return_if_token(unknown_token||1|0)                                     : %%_return_if_token(unknown_token||1|0)
+return_if_token(return_if_token||1|0)                                   : %%_return_if_token(return_if_token||1|0)
+return_if_token(return_if_token|value|1|0)                              : %%_return_if_token(return_if_token|value|1|0)
+return_if_token(return_if_token(token_name|nested_value|2)|value|1|0)   : %%_return_if_token(return_if_token\(token_name\|nested_value\|2\)|value|1|0)
+return_if_token(return_if_token(token_name|nested_value|2|3)|value|1|0) : %%_return_if_token(return_if_token\(token_name\|nested_value\|2\|3\)|value|1|0)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_if_url_arg(page_id|front|1|0)                     : %%_return_if_url_arg(page_id|front|1|0)
+return_if_url_arg(page_id|front|0|1)                     : %%_return_if_url_arg(page_id|front|0|1)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+return_url_arg(color|default_value|filter_css_color=yes) : %%_return_url_arg(color|default_value|filter_css_color=yes)
+return_url_arg(color|default_value|filter_css_float=yes) : %%_return_url_arg(color|default_value|filter_css_float=yes)
+return_url_arg(color|default_value|filter_css_units=yes) : %%_return_url_arg(color|default_value|filter_css_units=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-color__page: %%_color__page
-color__text: %%_color__text
-color__main: %%_color__main
-color__link: %%_color__link
-color__link_active: %%_color__link_active
-color__table_row_odd: %%_color__table_row_odd
-color__table_row_even: %%_color__table_row_even
-color__menu: %%_color__menu
-color__menu_active: %%_color__menu_active
-color__menu_text: %%_color__menu_text
-color__menu_link: %%_color__menu_link
-color__menu_link_active: %%_color__menu_link_active
-color__tabs: %%_color__tabs
-color__tabs_link: %%_color__tabs_link
-color__tabs_link_active: %%_color__tabs_link_active
-color__tabs_link_active_no_bg: %%_color__tabs_link_active_no_bg
-color__ok: %%_color__ok
-color__warning: %%_color__warning
-color__error: %%_color__error
-color__fieldset: %%_color__fieldset
-color__fieldset_nested: %%_color__fieldset_nested
-color__field: %%_color__field
-color__field_text: %%_color__field_text
-color__button: %%_color__button
-color__button_active: %%_color__button_active
-color__button_text: %%_color__button_text
-color__unknown: %%_color__unknown
+request(scheme)                                          : %%_request(scheme)
+request(scheme|preg_quote=yes)                           : %%_request(scheme|preg_quote=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_token_color_encoded(color__page): %%_return_token_color_encoded(color__page)
-return_token_color_encoded(color__page(0|0|0)): %%_return_token_color_encoded(color__page\(0\|0\|0\))
-return_token_color_encoded(color__page(0|0|0|0)): %%_return_token_color_encoded(color__page\(0\|0\|0\|0\))
-return_token_color_encoded(color__page(-10|-10|-10)): %%_return_token_color_encoded(color__page\(-10\|-10\|-10\))
-return_token_color_encoded(color__page(+10|+10|+10)): %%_return_token_color_encoded(color__page\(+10\|+10\|+10\))
-return_token_color_encoded(color__page(-10|-10|-10|.5)): %%_return_token_color_encoded(color__page\(-10\|-10\|-10\|.5\))
-return_token_color_encoded(color__page(+10|+10|+10|.5)): %%_return_token_color_encoded(color__page\(+10\|+10\|+10\|.5\))
-return_token_color_encoded(color__page(-1000|-1000|-1000|-5)): %%_return_token_color_encoded(color__page\(-1000\|-1000\|-1000\|-5\))
-return_token_color_encoded(color__page(+1000|+1000|+1000|+5)): %%_return_token_color_encoded(color__page\(+1000\|+1000\|+1000\|+5\))
-return_token_color_encoded(color__page(x|y|z|a)): %%_return_token_color_encoded(color__page\(x\|y\|z\|a\))
-return_token_color_encoded(color__unknown): %%_return_token_color_encoded(color__unknown)
+request(host)                                            : %%_request(host)
+request(host|preg_quote=yes)                             : %%_request(host|preg_quote=yes)
+request(host|decode=yes)                                 : %%_request(host|decode=yes)
+request(host|decode=yes|preg_quote=yes)                  : %%_request(host|decode=yes|preg_quote=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_if_token_color_is_dark(color__page|1|0): %%_return_if_token_color_is_dark(color__page|1|0)
-return_if_token_color_is_dark(color__page|0|1): %%_return_if_token_color_is_dark(color__page|0|1)
-return_if_token_color_is_dark(color__unknown|1|0): %%_return_if_token_color_is_dark(color__unknown|1|0)
+request_hostname                                         : %%_request_hostname
+request_hostname(preg_quote=yes)                         : %%_request_hostname(preg_quote=yes)
+request_hostname(decode=yes)                             : %%_request_hostname(decode=yes)
+request_hostname(decode=yes|preg_quote=yes)              : %%_request_hostname(decode=yes|preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request(server_name)                                                  : %%_request(server_name)
+request(server_name|preg_quote=yes)                                   : %%_request(server_name|preg_quote=yes)
+request(server_name|with_specific_port=yes)                           : %%_request(server_name|with_specific_port=yes)
+request(server_name|with_specific_port=yes|preg_quote=yes)            : %%_request(server_name|with_specific_port=yes|preg_quote=yes)
+request(server_name|decode=yes)                                       : %%_request(server_name|decode=yes)
+request(server_name|decode=yes|preg_quote=yes)                        : %%_request(server_name|decode=yes|preg_quote=yes)
+request(server_name|decode=yes|with_specific_port=yes)                : %%_request(server_name|decode=yes|with_specific_port=yes)
+request(server_name|decode=yes|with_specific_port=yes|preg_quote=yes) : %%_request(server_name|decode=yes|with_specific_port=yes|preg_quote=yes)
+◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+request(addr)                     : %%_request(addr)
+request(addr|preg_quote=yes)      : %%_request(addr|preg_quote=yes)
+request(uri)                      : %%_request(uri)
+request(uri|preg_quote=yes)       : %%_request(uri|preg_quote=yes)
+request(path)                     : %%_request(path)
+request(path|preg_quote=yes)      : %%_request(path|preg_quote=yes)
+request(query)                    : %%_request(query)
+request(query|preg_quote=yes)     : %%_request(query|preg_quote=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_if_token(color__page|#ffffff|1|0): %%_return_if_token(color__page|#ffffff|1|0)
-return_if_token(color__page|#ffffff|0|1): %%_return_if_token(color__page|#ffffff|0|1)
-return_if_token(color__page|transparent|1|0): %%_return_if_token(color__page|transparent|1|0)
-return_if_token(color__page|transparent|0|1): %%_return_if_token(color__page|transparent|0|1)
-return_if_token(color__page(-10|-10|-10)|#f5f5f5|1|0): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|1|0)
-return_if_token(color__page(-10|-10|-10)|#f5f5f5|0|1): %%_return_if_token(color__page\(-10\|-10\|-10\)|#f5f5f5|0|1)
-return_if_token(||1|0): %%_return_if_token(||1|0)
-return_if_token(unknown||1|0): %%_return_if_token(unknown||1|0)
-return_if_token(return_if_token||1|0): %%_return_if_token(return_if_token||1|0)
-return_if_token(return_if_token|value|1|0): %%_return_if_token(return_if_token|value|1|0)
-return_if_token(return_if_token(token_name|nested_value|2)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\)|value|1|0)
-return_if_token(return_if_token(token_name|nested_value|2|3)|value|1|0): %%_return_if_token(return_if_token\(token_name\|nested_value\|2\|3\)|value|1|0)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_if_url_arg(page_id|front|1|0): %%_return_if_url_arg(page_id|front|1|0)
-return_if_url_arg(page_id|front|0|1): %%_return_if_url_arg(page_id|front|0|1)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-return_url_arg(color|default_value|filter_css_color=yes): %%_return_url_arg(color|default_value|filter_css_color=yes)
-return_url_arg(color|default_value|filter_css_float=yes): %%_return_url_arg(color|default_value|filter_css_float=yes)
-return_url_arg(color|default_value|filter_css_units=yes): %%_return_url_arg(color|default_value|filter_css_units=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-request_scheme: %%_request_scheme
-request_scheme(preg_quote=yes): %%_request_scheme(preg_quote=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-request_host: %%_request_host
-request_host(preg_quote=yes): %%_request_host(preg_quote=yes)
-request_host(decode=yes): %%_request_host(decode=yes)
-request_host(decode=yes|preg_quote=yes): %%_request_host(decode=yes|preg_quote=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-request_hostname: %%_request_hostname
-request_hostname(preg_quote=yes): %%_request_hostname(preg_quote=yes)
-request_hostname(decode=yes): %%_request_hostname(decode=yes)
-request_hostname(decode=yes|preg_quote=yes): %%_request_hostname(decode=yes|preg_quote=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-request_server_name: %%_request_server_name
-request_server_name(preg_quote=yes): %%_request_server_name(preg_quote=yes)
-request_server_name(with_specific_port=yes): %%_request_server_name(with_specific_port=yes)
-request_server_name(with_specific_port=yes|preg_quote=yes): %%_request_server_name(with_specific_port=yes|preg_quote=yes)
-request_server_name(decode=yes): %%_request_server_name(decode=yes)
-request_server_name(decode=yes|preg_quote=yes): %%_request_server_name(decode=yes|preg_quote=yes)
-request_server_name(decode=yes|with_specific_port=yes): %%_request_server_name(decode=yes|with_specific_port=yes)
-request_server_name(decode=yes|with_specific_port=yes|preg_quote=yes): %%_request_server_name(decode=yes|with_specific_port=yes|preg_quote=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-request_addr: %%_request_addr
-request_addr(preg_quote=yes): %%_request_addr(preg_quote=yes)
-request_uri: %%_request_uri
-request_uri(preg_quote=yes): %%_request_uri(preg_quote=yes)
-request_path: %%_request_path
-request_path(preg_quote=yes): %%_request_path(preg_quote=yes)
-request_query: %%_request_query
-request_query(preg_quote=yes): %%_request_query(preg_quote=yes)
-◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-test_email_random: %%_test_email_random
-test_email_random: %%_test_email_random(0)
-test_email_random: %%_test_email_random(0)
-test_nickname_random: %%_test_nickname_random
-test_nickname_random: %%_test_nickname_random(0)
-test_nickname_random: %%_test_nickname_random(0)
-test_password_random: %%_test_password_random
-test_password_random: %%_test_password_random(0)
-test_password_random: %%_test_password_random(0)
-test_response_http_code: %%_test_response_http_code
-test_response_location: %%_test_response_location
-test_response_content_length: %%_test_response_content_length
-test_response_content_range: %%_test_response_content_range
-test_response_submit_error: %%_test_response_submit_error
-test_response_time_total: %%_test_response_time_total
-test_response_return_level: %%_test_response_return_level
-test_response_content: %%_test_response_content
-test_response_web_server_name: %%_test_response_web_server_name
-test_response_form_validation_id: %%_test_response_form_validation_id(some_form_id)
-test_response_cookies: %%_test_response_cookies
-test_response_captcha: %%_test_response_captcha
+test_generate(email)              : %%_test_generate(email)
+test_generate(email)              : %%_test_generate(email|0)
+test_generate(email)              : %%_test_generate(email|0)
+test_generate(nickname)           : %%_test_generate(nickname)
+test_generate(nickname)           : %%_test_generate(nickname|0)
+test_generate(nickname)           : %%_test_generate(nickname|0)
+test_generate(password)           : %%_test_generate(password)
+test_generate(password)           : %%_test_generate(password|0)
+test_generate(password)           : %%_test_generate(password|0)
+test_response(captcha)            : %%_test_response(captcha)
+test_response(http_code)          : %%_test_response(http_code)
+test_response(location)           : %%_test_response(location)
+test_response(content_length)     : %%_test_response(content_length)
+test_response(content_range)      : %%_test_response(content_range)
+test_response(submit_error)       : %%_test_response(submit_error)
+test_response(time_total)         : %%_test_response(time_total)
+test_response(return_level)       : %%_test_response(return_level)
+test_response(content)            : %%_test_response(content)
+test_response(web_server_name)    : %%_test_response(web_server_name)
+test_response(form_validation_id) : %%_test_response(form_validation_id)(some_form_id)
+test_response(cookies)            : %%_test_response(cookies)
 ─────────────────────────────────────────────────────────────────────
 */
 
@@ -218,12 +271,12 @@ x-console [data-id='block__logs'] tbody tr[data-object='access'  ] {background-c
 
 x-console [data-id='block__logs'] tbody tr                         td {vertical-align: top; color: black; background-color: transparent}
 x-console [data-id='block__logs'] tbody tr                         td[data-cell-id='ram_dynamics'] {width: 8%}
-x-console [data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cell-id='time' ] {background-color: %%_color__warning}
-x-console [data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cell-id='time' ] {background-color: %%_color__error}
-x-console [data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cell-id='time' ] {background-color: %%_color__error}
-x-console [data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cell-id='time' ] {background-color: %%_color__error}
-x-console [data-id='block__logs'] tbody tr[data-value='error'  ]   td[data-cell-id='value'] {background-color: %%_color__error   !important}
-x-console [data-id='block__logs'] tbody tr[data-value='warning']   td[data-cell-id='value'] {background-color: %%_color__warning !important}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='2'] td[data-cell-id='time' ] {background-color: %%_color(warning)}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='3'] td[data-cell-id='time' ] {background-color: %%_color(error)}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='4'] td[data-cell-id='time' ] {background-color: %%_color(error)}
+x-console [data-id='block__logs'] tbody tr[data-loading-level='5'] td[data-cell-id='time' ] {background-color: %%_color(error)}
+x-console [data-id='block__logs'] tbody tr[data-value='error'  ]   td[data-cell-id='value'] {background-color: %%_color(error)   !important}
+x-console [data-id='block__logs'] tbody tr[data-value='warning']   td[data-cell-id='value'] {background-color: %%_color(warning) !important}
 
 x-console [data-id='block__logs'] tbody td[data-cell-id='description'] input[data-opener-type='info'] {appearance: none; -webkit-appearance: none; -moz-appearance: none; float: right; width: 20px; height: 20px; margin: 1px 0 1px 5px; border: none; cursor: pointer; opacity: .2; background: url('/system/module_page/frontend/pictures/icons-element.svgd') 0 -80px}
 x-console [data-id='block__logs'] tbody td[data-cell-id='description'] input[data-opener-type='info']:checked {background-position: -20px -80px}
@@ -250,7 +303,7 @@ x-targets a {
   display: inline-block;
   margin: 2px 5px 2px 0;
   padding: 5px 10px;
-  border: 1px solid %%_color__main;
+  border: 1px solid %%_color(main);
   border-radius: 10px;
 }
 
@@ -259,8 +312,8 @@ x-targets a {
 /* x-file-path */
 
 x-file-path {display: inline-block}
-x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat; margin-right: 10px}
-x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat 0 -30px}
+x-file-path x-directory {display: inline-block; padding: 3px 0 3px 32px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat 0   2px; margin-right: 10px}
+x-file-path x-file      {display: inline-block; padding: 3px 0 3px 26px; cursor: default; background: url('/system/module_page/frontend/pictures/icons-file.svg') no-repeat 0 -27px}
 
 
 
@@ -294,10 +347,10 @@ x-diagram-uml x-item[data-static] {text-decoration: underline}
 
 x-diagram-uml x-class-wrapper {padding-top: 20px}
 x-diagram-uml x-children x-class-wrapper {padding-left: 30px}
-x-diagram-uml x-children x-class-wrapper             {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') repeat-y}
-x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') repeat-y}
-x-diagram-uml x-children x-class-wrapper:last-child  {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat}
-x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_token_color_is_dark(color__text|black|white)') no-repeat}
+x-diagram-uml x-children x-class-wrapper             {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_scope_is_dark(text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_scope_is_dark(text|black|white)') repeat-y}
+x-diagram-uml x-children x-class-wrapper:first-child {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_scope_is_dark(text|black|white)') no-repeat, url('pictures/diagram-vline.svgd?color=%%_return_if_scope_is_dark(text|black|white)') repeat-y}
+x-diagram-uml x-children x-class-wrapper:last-child  {background:                url('pictures/diagram-hline.svgd?color=%%_return_if_scope_is_dark(text|black|white)') no-repeat}
+x-diagram-uml x-children x-class-wrapper:only-child  {background: url('pictures/diagram-arrow-generalization.svgd?color=%%_return_if_scope_is_dark(text|black|white)') no-repeat}
 
 x-diagram-uml x-item[data-visibility='public'   ]::before {content: '+ '}
 x-diagram-uml x-item[data-visibility='protected']::before {content: '# '}
@@ -321,20 +374,23 @@ x-diagram-uml x-item[data-visibility='private'  ]::before {content: '- '}
 
 
 
-/* palette */
-
-form#palette x-palette {display: block; margin: 5px 0; text-align: center}
-form#palette x-palette x-color {display: inline-block; width: 30px; height: 30px}
-form#palette x-palette x-color:nth-child(11) {border: 1px solid red; margin: -1px; position: relative; opacity: 1}
-
-
-
 /* decorators view */
 
-[data-css-path^='manage-data-demo-demo_types-'] [data-decorator] x-table[data-view-type='table-dl'] x-row[data-cell-id^="delimiter_"] {border-top: 1px dashed %%_color__main; border-bottom: 1px dashed %%_color__main; background: url('/system/module_page/frontend/pictures/lines.svgd?opacity=.04&color=%%_return_if_token_color_is_dark(color__page|white|black)')}
+[data-css-path^='manage-data-demo-demo_types-'] [data-decorator] x-table[data-view-type='table-dl'] x-row[data-cell-id^="delimiter_"] {border-top: 1px dashed %%_color(main); border-bottom: 1px dashed %%_color(main); background: url('/system/module_page/frontend/pictures/lines.svgd?opacity=.04&color=%%_return_if_scope_is_dark(page|white|black)')}
 [data-css-path^='manage-data-demo-demo_types-'] [data-decorator] x-table[data-view-type='table-dl'] x-row[data-cell-id^="delimiter_"] x-cell {height: 50px; background: none}
 
 [data-decorator][data-id='extensions_dependency'] {font-size: .9em}
 
 [data-decorator][data-id^='nosql_events_handlers'] {overflow: auto}
 [data-decorator][data-id^='nosql_events_handlers'] x-cell[data-cell-id='weight'] {white-space: nowrap}
+
+
+
+/* form 'test' */
+
+form#test x-description {
+  padding: 30px;
+  opacity: 1;
+  text-align: center;
+  background: %%_color(main) url('/system/module_page/frontend/pictures/lines.svgd');
+}

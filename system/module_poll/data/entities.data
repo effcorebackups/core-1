@@ -63,7 +63,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 2048
-            - size: 60
+            - data-is-wide-field: true
     - expired
         title: Expiration date
         type: datetime

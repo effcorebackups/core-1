@@ -28,14 +28,6 @@ tests
     - code-empty|Test_step_Code
         handler: \effcore\modules\test\Events_Test__PHP::test_step_code__empty
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-is_numeric|Test_step_Title
-        title|Text
-          text: FUNCTION "%%_name"
-          args
-          - name: is_numeric()
-    - code-is_numeric|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_numeric
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-is_float|Test_step_Title
         title|Text
           text: FUNCTION "%%_name"
@@ -51,6 +43,14 @@ tests
           - name: is_int()
     - code-is_int|Test_step_Code
         handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_int
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-is_numeric|Test_step_Title
+        title|Text
+          text: FUNCTION "%%_name"
+          args
+          - name: is_numeric()
+    - code-is_numeric|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__PHP::test_step_code__is_numeric
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-intval|Test_step_Title
         title|Text

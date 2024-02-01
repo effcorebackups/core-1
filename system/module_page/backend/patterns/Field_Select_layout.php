@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -20,17 +20,24 @@ class Field_Select_layout extends Field_Select {
 
     function build() {
         if (!$this->is_builded) {
-            parent::build();
-            $items = [];
-            foreach (Layout::select_all() as $c_layout) {
-                $c_text_object = new Text_multiline(['title' => $c_layout->title, 'id' => '('.$c_layout->id.')'], [], ' ');
-                $c_text_object->_text_translated = $c_text_object->render();
-                $items[$c_layout->id] = $c_text_object; }
-            Core::array_sort_by_string($items, '_text_translated', Core::SORT_DSC, false);
-            $this->items = ['not_selected' => $this->title__not_selected] + $items;
-            $this->is_builded = false;
+            $this->items = ['not_selected' => $this->title__not_selected] + static::items_generate();
             parent::build();
         }
+    }
+
+    ###########################
+    ### static declarations ###
+    ###########################
+
+    static function items_generate() {
+        $result = [];
+        $layouts = Layout::select_all();
+        Core::array_sort_by_string($layouts);
+        foreach ($layouts as $c_layout) {
+            $result[$c_layout->id] = (new Text_multiline([
+                'title' => $c_layout->title, 'id' => '('.$c_layout->id.')'], [], ' '
+            ))->render(); }
+        return $result;
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -66,12 +66,12 @@ class Tree_item extends Node {
     }
 
     function render() {
-        $visualization_mode = Tree::select($this->id_tree)->visualization_mode;
+        $manage_mode = Tree::select($this->id_tree)->manage_mode;
         if (Access::check($this->access)) {
-            $rendered_self = $visualization_mode ?
-                $this->render_self__managed() :
+            $rendered_self = $manage_mode ?
+                $this->render_self__in_manage_mode() :
                 $this->render_self();
-            $rendered_children = $visualization_mode === 'decorated-rearrangeable' || $this->children_select_count() ?
+            $rendered_children = $manage_mode === 'rearrange' || $this->children_select_count() ?
                 (Template::make_new(Template::pick_name($this->template_children), [
                     'children' => $this->render_children($this->children_select(true))]
                 ))->render() : '';
@@ -95,11 +95,17 @@ class Tree_item extends Node {
         ))->render();
     }
 
-    function render_self__managed() {
-        return (new Markup('x-item', $this->attributes_select('element_attributes'), [
-            new Markup('x-title', [], $this->title),
-            new Markup('x-extra', [], $this->extra),
-            $this->url ? Url::url_to_markup($this->url) : new Markup('x-url', ['data-no-url' => true], 'No URL.')
+    function render_self__in_manage_mode() {
+        if (!$this->url)
+             $attributes = $this->attributes_select('element_attributes') + ['data-no-url' => true];
+        else $attributes = $this->attributes_select('element_attributes');
+        return (new Markup('x-item', $attributes, [
+            new Markup('x-icon'),
+            new Markup('x-info', [], [
+                new Markup('x-title', [], $this->title),
+                new Markup('x-extra', [], $this->extra), $this->url ? Url::url_to_markup($this->url) :
+                new Markup('x-url', [], 'No URL.')
+            ])
         ]))->render();
     }
 

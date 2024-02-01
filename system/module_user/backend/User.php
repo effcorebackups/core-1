@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -124,11 +124,11 @@ abstract class User {
 
     static function keys_install() {
         return Storage::get('data')->changes_register('user', 'update', 'settings/user/keys', [
-            'cron' => Core::random_bytes_generate(40, Module::settings_get('user')->hash_characters),
-            'salt' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),
-            'form' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),
-            'user' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),
-            'args' => Core::random_bytes_generate(40, Module::settings_get('user')->key_characters),
+            'cron' => Core::generate_random_bytes(40, Module::settings_get('user')->hash_characters),
+            'salt' => Core::generate_random_bytes(40, Module::settings_get('user')->key_characters),
+            'form' => Core::generate_random_bytes(40, Module::settings_get('user')->key_characters),
+            'user' => Core::generate_random_bytes(40, Module::settings_get('user')->key_characters),
+            'args' => Core::generate_random_bytes(40, Module::settings_get('user')->key_characters),
         ], true, false);
     }
 
@@ -141,7 +141,7 @@ abstract class User {
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
     static function password_generate($length = 8) {
-        return Core::random_bytes_generate($length,
+        return Core::generate_random_bytes($length,
             Module::settings_get('user')->password_characters
         );
     }

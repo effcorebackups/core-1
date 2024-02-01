@@ -1,4 +1,16 @@
 frontend
+- layout_all__page|Frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    styles
+    - layout_style
+        path: frontend/layout.cssd?page_id=%%_page_id_context
+        weight: +600
+        attributes
+        - rel: stylesheet
+        - media: all
 - page_all__page|Frontend
     display
       check: url

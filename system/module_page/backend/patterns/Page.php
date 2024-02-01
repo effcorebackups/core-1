@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -29,6 +29,7 @@ class Page extends Node implements has_Data_cache {
     public $origin = 'nosql'; # nosql | sql
     public $module_id;
     public $_markup;
+    public $_layout;
     public $_areas_pointers = [];
     protected $args              = [];
     protected $used_blocks_dpath = [];
@@ -43,11 +44,23 @@ class Page extends Node implements has_Data_cache {
     function build() {
         if (!$this->is_builded) {
             Event::start('on_page_build_before', $this->id, ['page' => &$this]);
-            $this->_markup = Core::deep_clone(Layout::select($this->id_layout));
-            if ($this->_markup) {
-                foreach ($this->_markup->children_select_recursive() as $c_area) {
-                    if ($c_area instanceof Area && isset($c_area->id)) {
-                        if (isset($this->blocks[$c_area->id])) {
+            $this->_layout = Core::deep_clone(Layout::select($this->id_layout));
+            if ($this->_layout) {
+                # prepare each area
+                foreach ($this->_layout->children_select_recursive() as $c_area) {
+                    if ($c_area instanceof Area ||
+                        $c_area instanceof Area_group) {
+                        $c_area->states_set(
+                            $c_area->id &&
+                            isset($this->_layout->states[$c_area->id]) ?
+                                  $this->_layout->states[$c_area->id] : []);
+                        $c_area->build();
+                    }
+                }
+                # prepare each block
+                foreach ($this->_layout->children_select_recursive() as $c_area) {
+                    if ($c_area instanceof Area) {
+                        if (isset($c_area->id) && isset($this->blocks[$c_area->id])) {
                             $this->_areas_pointers[$c_area->id] = $c_area;
                             $c_blocks = $this->blocks[$c_area->id];
                             Core::array_sort_by_number($c_blocks);
@@ -70,6 +83,7 @@ class Page extends Node implements has_Data_cache {
                         }
                     }
                 }
+                $this->_markup = $this->_layout;
             } else {
                 $this->_markup = new Text(
                     'LOST LAYOUT: %%_id', ['id' => $this->id_layout ?: 'n/a']
@@ -94,14 +108,17 @@ class Page extends Node implements has_Data_cache {
         }
 
         # page palette is dark or light
-        $colors = Color::get_all();
-        $color_page = $colors[$settings->color__page_id] ?? null;
-        $is_dark_palette = $color_page && $color_page->is_dark();
+        $is_dark_palette = Color_profile::get_current()->is_dark ?? true;
 
         # global styles
         $file_global_cssd = new File(Dynamic::DIR_FILES.'global.cssd');
         if ($file_global_cssd->is_exists()) {
-            Frontend::insert('page_all__global__page', null, 'styles', ['path' => '/dynamic/files/global.cssd', 'attributes' => ['rel' => 'stylesheet', 'media' => 'all'], 'weight' => -600], 'page_style', 'page');
+            Frontend::insert('page_all__global__page', null, 'styles', [
+                'path' => '/dynamic/files/global.cssd',
+                'attributes' => [
+                    'rel'   => 'stylesheet',
+                    'media' => 'all'],
+                'weight' => -600], 'page_style', 'page');
         }
 
         # render page
@@ -299,6 +316,37 @@ class Page extends Node implements has_Data_cache {
             foreach ($result as $c_id => $c_item)
                 if ($c_item->origin !== $origin)
                     unset($result[$c_id]);
+        return $result;
+    }
+
+    static function changes_store($values = []) {
+        $result = true;
+        if (array_key_exists('apply_tokens_for_meta', $values)) {
+            if ($values['apply_tokens_for_meta'] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/apply_tokens_for_meta', $values['apply_tokens_for_meta'], false);
+            if ($values['apply_tokens_for_meta'] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/apply_tokens_for_meta', null                            , false);
+        }
+        if (array_key_exists('apply_tokens_for_robots', $values)) {
+            if ($values['apply_tokens_for_robots'] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/apply_tokens_for_robots', $values['apply_tokens_for_robots'], false);
+            if ($values['apply_tokens_for_robots'] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/apply_tokens_for_robots', null                              , false);
+        }
+        if (array_key_exists('apply_tokens_for_sitemap', $values)) {
+            if ($values['apply_tokens_for_sitemap'] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/apply_tokens_for_sitemap', $values['apply_tokens_for_sitemap'], false);
+            if ($values['apply_tokens_for_sitemap'] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/apply_tokens_for_sitemap', null                               , false);
+        }
+        if (array_key_exists('page_width_min',     $values) ||
+            array_key_exists('page_width_mobile',  $values) ||
+            array_key_exists('page_width_max',     $values) ||
+            array_key_exists('page_meta_viewport', $values)) {
+            if ($values['page_width_min'    ] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/page_width_min'    , $values['page_width_min'    ], false);
+            if ($values['page_width_mobile' ] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/page_width_mobile' , $values['page_width_mobile' ], false);
+            if ($values['page_width_max'    ] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/page_width_max'    , $values['page_width_max'    ], false);
+            if ($values['page_meta_viewport'] !== null) $result&= Storage::get('data')->changes_register  ('page', 'update', 'settings/page/page_meta_viewport', $values['page_meta_viewport'], false);
+            if ($values['page_width_min'    ] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_min'    , null                         , false);
+            if ($values['page_width_mobile' ] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_mobile' , null                         , false);
+            if ($values['page_width_max'    ] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_width_max'    , null                         , false);
+            if ($values['page_meta_viewport'] === null) $result&= Storage::get('data')->changes_unregister('page', 'update', 'settings/page/page_meta_viewport', null                         , false);
+        }
+        $result&= Storage_Data::cache_update();
         return $result;
     }
 

@@ -1,0 +1,56 @@
+forms
+- colors_manage|Form
+    attributes
+    - id: colors_manage
+    - method: post
+    - novalidate: true
+    children
+    - insert|Fieldset
+        title: Append colors
+        attributes
+        - data-type: insert
+        children
+        - color|Field_Color
+            title: Color for generation
+            attributes
+            - data-type: color
+            element_attributes
+            - value: #7f7f7f
+        - multiplier_l|Field_Range
+            title: Multiplier (left)
+            attributes
+            - data-type: multiplier_l
+            element_attributes
+            - name: multiplier_l
+            - min: -26
+            - max: -1
+            - value: -11
+        - multiplier_r|Field_Range
+            title: Multiplier (right)
+            attributes
+            - data-type: multiplier_r
+            element_attributes
+            - name: multiplier_r
+            - min: +1
+            - max: +26
+            - value: 11
+        - button_generate|Button
+            title: generate
+            attributes
+            - value: generate
+        - colors|Node
+    - button_insert|Button
+        title: append
+        attributes
+        - value: insert
+    - delete|Fieldset
+        title: Delete colors
+        attributes
+        - data-type: delete
+        children
+        - colors|Node
+        - export|Node
+    - button_delete|Button
+        title: delete
+        attributes
+        - value: delete

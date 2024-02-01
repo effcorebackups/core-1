@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\core;
@@ -29,14 +29,15 @@ abstract class Events_Form_Modules_Uninstall {
         $checkboxes_items = [];
         Core::array_sort_by_string($modules);
         foreach ($modules as $c_module) {
-            if  (!isset($embedded [$c_module->id]) &&
-                  isset($installed[$c_module->id])) {
-                if (isset($enabled  [$c_module->id]))
-                    $checkboxes->disabled[$c_module->id] = $c_module->id;
+            if ( !isset($embedded[$c_module->id]) && isset($installed[$c_module->id]) ) {
                 $checkboxes_items[$c_module->id] = $c_module->title;
+                if (isset($enabled[$c_module->id])) {
+                    $checkboxes->disabled[$c_module->id] = $c_module->id;
+                }
             }
         }
         $checkboxes->items_set($checkboxes_items);
+        $form->child_select('info')->children_delete();
         if (count($checkboxes_items))
              $form->child_select('info')->child_insert($checkboxes, 'checkboxes');
         else $form->child_update('info', new Markup('x-no-items', ['data-style' => 'table'], 'No modules.'));
@@ -47,13 +48,6 @@ abstract class Events_Form_Modules_Uninstall {
             $items['~apply']->disabled_set(
                 count($items['*uninstall']->items_get()) === count($items['*uninstall']->disabled)
             );
-        }
-    }
-
-    static function on_validate($event, $form, $items) {
-        switch ($form->clicked_button->value_get()) {
-            case 'apply':
-                break;
         }
     }
 
@@ -83,9 +77,8 @@ abstract class Events_Form_Modules_Uninstall {
                 }
                 # update caches and this form
                 Cache::update_global();
-                $form->child_select('info')->children_delete();
-                static::on_build(null, $form);
-                static::on_init (null, $form, $form->items_update());
+                $form->components_build();
+                $form->components_init();
                 break;
         }
     }

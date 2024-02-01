@@ -126,6 +126,14 @@ tests
           - name: Core::html_entity_decode_total()
     - code-html_entity_decode_total|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__html_entity_decode_total
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-generate_numerical_suffix|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Core::generate_numerical_suffix()
+    - code-generate_numerical_suffix|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__generate_numerical_suffix
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: 1

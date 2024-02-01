@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -34,6 +34,10 @@ abstract class Storage {
                static::$cache[$name] =
                static::$cache[$name]->load_from_nosql_storage();
         return static::$cache[$name];
+    }
+
+    static function changes_store($values) {
+        return Storage::get('data')->changes_register('core', 'insert', 'storages/storage/sql', $values);
     }
 
 }

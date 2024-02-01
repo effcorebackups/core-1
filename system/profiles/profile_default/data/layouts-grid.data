@@ -1,67 +1,13 @@
 layouts
-- universal|Layout
-    id: universal
-    title: Universal layout | profile "Default"
-    children
-    - system|Area
-        id: system
-    - header|Area
-        id: header
-        tag_name: header
-    - menu|Area
-        id: menu
-    - content|Area
-        type: flex
-        attributes
-        - data-group-id: main-columns
-        children
-        - left|Area
-            id: left
-            tag_name: aside
-        - center|Area
-            attributes
-            - data-group-id: center
-            children
-            - breadcrumbs|Area
-                id: breadcrumbs
-            - messages|Area
-                id: messages
-                render_weight: -500
-            - title|Area
-                id: title
-            - tabs|Area
-                id: tabs
-            - content|Area
-                id: content
-                render_weight: +500
-            - tiles|Area
-                type: flex
-                attributes
-                - data-group-id: center-tiles
-                children
-                - tile_1|Area
-                    id: tile_1
-                - tile_2|Area
-                    id: tile_2
-                - tile_3|Area
-                    id: tile_3
-                - tile_4|Area
-                    id: tile_4
-        - right|Area
-            id: right
-            tag_name: aside
-    - footer|Area
-        id: footer
-        tag_name: footer
 - grid_2x5|Layout
     id: grid_2x5
-    title: Grid 2x5 | profile "Default"
+    title: Grid 2x5
     children
     - system|Area
         id: system
     - header|Area
-        id: header
         tag_name: header
+        id: header
     - menu|Area
         id: menu
     - breadcrumbs|Area
@@ -76,7 +22,7 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_2x|Area
+    - grid_2x|Area_group
         type: grid-2x
         children
         - cell_1_1|Area
@@ -100,17 +46,17 @@ layouts
         - cell_5_2|Area
             id: cell_5_2
     - footer|Area
-        id: footer
         tag_name: footer
+        id: footer
 - grid_3x5|Layout
     id: grid_3x5
-    title: Grid 3x5 | profile "Default"
+    title: Grid 3x5
     children
     - system|Area
         id: system
     - header|Area
-        id: header
         tag_name: header
+        id: header
     - menu|Area
         id: menu
     - breadcrumbs|Area
@@ -125,7 +71,7 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_3x|Area
+    - grid_3x|Area_group
         type: grid-3x
         children
         - cell_1_1|Area
@@ -159,17 +105,17 @@ layouts
         - cell_5_3|Area
             id: cell_5_3
     - footer|Area
-        id: footer
         tag_name: footer
+        id: footer
 - grid_4x5|Layout
     id: grid_4x5
-    title: Grid 4x5 | profile "Default"
+    title: Grid 4x5
     children
     - system|Area
         id: system
     - header|Area
-        id: header
         tag_name: header
+        id: header
     - menu|Area
         id: menu
     - breadcrumbs|Area
@@ -184,7 +130,7 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_4x5|Area
+    - grid_4x5|Area_group
         type: grid-4x
         children
         - cell_1_1|Area
@@ -228,17 +174,17 @@ layouts
         - cell_5_4|Area
             id: cell_5_4
     - footer|Area
-        id: footer
         tag_name: footer
+        id: footer
 - grid_5x5|Layout
     id: grid_5x5
-    title: Grid 5x5 | profile "Default"
+    title: Grid 5x5
     children
     - system|Area
         id: system
     - header|Area
-        id: header
         tag_name: header
+        id: header
     - menu|Area
         id: menu
     - breadcrumbs|Area
@@ -253,7 +199,7 @@ layouts
     - content|Area
         id: content
         render_weight: +500
-    - grid_5x5|Area
+    - grid_5x5|Area_group
         type: grid-5x
         children
         - cell_1_1|Area
@@ -307,5 +253,5 @@ layouts
         - cell_5_5|Area
             id: cell_5_5
     - footer|Area
-        id: footer
         tag_name: footer
+        id: footer

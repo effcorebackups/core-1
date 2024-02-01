@@ -26,21 +26,21 @@ tests
           name: proxy
     - response_check-test_http_range|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 200
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: abcdefghij
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 10
         on_failure
         - return_result|Test_step_Return
@@ -56,7 +56,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -85,7 +85,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -101,7 +101,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -117,28 +117,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: abcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -154,28 +154,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=1-|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 1-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=1-|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 9
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=1-|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: bcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -191,7 +191,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -207,7 +207,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -223,7 +223,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -239,7 +239,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -255,7 +255,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -271,7 +271,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -287,7 +287,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -303,7 +303,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -319,7 +319,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -335,7 +335,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12--1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -351,7 +351,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -367,7 +367,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -383,28 +383,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-0|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-0/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-0|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 1
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-0|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: a
         on_failure
         - return_result|Test_step_Return
@@ -420,7 +420,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -436,7 +436,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -452,7 +452,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -468,7 +468,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-0|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -484,7 +484,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -500,7 +500,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -516,28 +516,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-1|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-1/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-1|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 2
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-1|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: ab
         on_failure
         - return_result|Test_step_Return
@@ -553,28 +553,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=1-1|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 1-1/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=1-1|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 1
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=1-1|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: b
         on_failure
         - return_result|Test_step_Return
@@ -590,7 +590,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -606,7 +606,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -622,7 +622,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-1|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -638,7 +638,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -654,7 +654,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -670,28 +670,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-10|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-10|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-10|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: abcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -707,28 +707,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=1-10|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 1-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=1-10|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 9
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=1-10|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: bcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -744,7 +744,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -760,7 +760,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -776,7 +776,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-10|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -792,7 +792,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -808,7 +808,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -824,28 +824,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-11|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-11|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-11|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: abcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -861,28 +861,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=1-11|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 1-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=1-11|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 9
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=1-11|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: bcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -898,7 +898,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -914,7 +914,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -930,7 +930,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-11|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -946,7 +946,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -962,7 +962,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=-1-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -978,28 +978,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=0-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=0-12|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 0-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=0-12|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=0-12|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: abcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -1015,28 +1015,28 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=1-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: 206
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_range-bytes=1-12|Test_step_Check
         check: token
-        where: %%_test_response_content_range
+        where: %%_test_response(content_range)
         match: bytes 1-9/10
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content_length-bytes=1-12|Test_step_Check
         check: token
-        where: %%_test_response_content_length
+        where: %%_test_response(content_length)
         match: 9
         on_failure
         - return_result|Test_step_Return
             value: 0
     - response_check-test_http_range-content-bytes=1-12|Test_step_Check
         check: token
-        where: %%_test_response_content
+        where: %%_test_response(content)
         match: bcdefghij
         on_failure
         - return_result|Test_step_Return
@@ -1052,7 +1052,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=10-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -1068,7 +1068,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=11-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return
@@ -1084,7 +1084,7 @@ tests
           name: proxy
     - response_check-test_http_range-bytes=12-12|Test_step_Check
         check: token
-        where: %%_test_response_http_code
+        where: %%_test_response(http_code)
         match: %^(416|400)$%
         on_failure
         - return_result|Test_step_Return

@@ -21,6 +21,10 @@ events
       for: captcha
       handler: \effcore\modules\captcha\Events_Module::on_cron_run
   # ═════════════════════════════════════════════════════════════════════
+  on_form_build
+  - security_settings_captcha|Event
+      for: security_settings_captcha
+      handler: \effcore\modules\captcha\Events_Form_Security_settings_captcha::on_build
   on_form_init
   - security_settings_captcha|Event
       for: security_settings_captcha

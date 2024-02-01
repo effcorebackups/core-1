@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -114,6 +114,22 @@ abstract class Locale {
 
     static function format_pieces($pieces) {
         return Translation::apply('%%_number piece%%_plural(number|s)', ['number' => $pieces]);
+    }
+
+    static function changes_store($values = []) {
+        $result = true;
+        if (array_key_exists('lang_code', $values)) {
+            if ($values['lang_code'] !== null) $result&= Storage::get('data')->changes_register  ('locale', 'update', 'settings/locale/lang_code', $values['lang_code'], false);
+            if ($values['lang_code'] === null) $result&= Storage::get('data')->changes_unregister('locale', 'update', 'settings/locale/lang_code',                       false);
+        }
+        if (array_key_exists('formats', $values)) {
+            foreach ($values['formats'] as $c_code => $c_info) {
+                if ($c_info !== null) $result&= Storage::get('data')->changes_register  ('locale', 'update', 'settings/locale/formats/'.$c_code, $c_info, false);
+                if ($c_info === null) $result&= Storage::get('data')->changes_unregister('locale', 'update', 'settings/locale/formats/'.$c_code,          false);
+            }
+        }
+        $result&= Storage_Data::cache_update();
+        return $result;
     }
 
 }

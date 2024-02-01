@@ -7,6 +7,30 @@ tests
       - name: Request
     scenario
     # ═════════════════════════════════════════════════════════════════════
+    - title-name_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Field->name_get()
+    - code-name_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__name_get
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-value_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::value_get()
+    - code-value_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__value_get
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-values_get|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Request::values_get()
+    - code-values_get|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__values_get
+    # ═════════════════════════════════════════════════════════════════════
     - title-sanitize_structure|Test_step_Title
         title|Text
           text: METHOD "%%_name"
@@ -14,22 +38,6 @@ tests
           - name: Request::sanitize_structure()
     - code-sanitize_structure|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-sanitize_structure+value_get|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Request::sanitize_structure() + Request::value_get()
-    - code-sanitize_structure+value_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_and_value_get
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-sanitize_structure+values_get|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Request::sanitize_structure() + Request::values_get()
-    - code-sanitize_structure+values_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_and_values_get
     # ═════════════════════════════════════════════════════════════════════
     - title-sanitize_structure_files-delimiter|Test_step_Title
         title: ==================================================================
@@ -37,7 +45,7 @@ tests
         title|Text
           text: METHOD "%%_name"
           args
-          - name: Request::sanitize_structure_files()
+          - name: Request::sanitize_structure_FILES()
     - code-sanitize_structure_files|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Request::test_step_code__sanitize_structure_files
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦

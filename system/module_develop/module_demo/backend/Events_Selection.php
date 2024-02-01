@@ -1,11 +1,12 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\demo;
 
+use effcore\Field_Checkbox;
 use effcore\Markup;
 use effcore\Text;
 use stdClass;
@@ -83,6 +84,10 @@ abstract class Events_Selection {
         $selection->fields['code']['code__data']->settings = ['demo_value' => 'text with translation'];
         $selection->fields['code']['code__data']->weight = +100;
         $selection->fields['code']['code__data']->closure = function ($c_cell_id, $c_row, $c_instance, $origin) {
+            if (isset($c_row['handler__data1__checkbox_select']['value']) && $c_row['handler__data1__checkbox_select']['value'] instanceof Field_Checkbox) $c_row['handler__data1__checkbox_select']['value']->checked_set();
+            if (isset($c_row['handler__data2__checkbox_select']['value']) && $c_row['handler__data2__checkbox_select']['value'] instanceof Field_Checkbox) $c_row['handler__data2__checkbox_select']['value']->checked_set();
+            if (isset($c_row['handler__code1__checkbox_select']['value']) && $c_row['handler__code1__checkbox_select']['value'] instanceof Field_Checkbox) $c_row['handler__code1__checkbox_select']['value']->checked_set();
+            if (isset($c_row['handler__code2__checkbox_select']['value']) && $c_row['handler__code2__checkbox_select']['value'] instanceof Field_Checkbox) $c_row['handler__code2__checkbox_select']['value']->checked_set();
             return new Markup('span', [], $origin->settings['demo_value'] ?? []);
         };
     }

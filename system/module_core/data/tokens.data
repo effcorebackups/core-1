@@ -2,28 +2,7 @@ tokens
 # ─────────────────────────────────────────────────────────────────────
 # context tokens
 # ─────────────────────────────────────────────────────────────────────
-- request_scheme
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_server_name
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_host
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_hostname
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_addr
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_uri
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_path
-    type: code
-    handler: \effcore\modules\core\Events_Token::on_apply
-- request_query
+- request
     type: code
     handler: \effcore\modules\core\Events_Token::on_apply
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦

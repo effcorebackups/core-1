@@ -15,7 +15,7 @@ instances
     values
     - id: logotype
     - description: Logotype main
-    - path: dynamic/files/pictures/picture-logotype.svg
+    - path: dynamic/files/pictures/picture-logotype.svgd
     - url: /
     - attributes
       - 0
@@ -28,7 +28,7 @@ instances
     values
     - id: logotype_ru
     - description: Логотип основной
-    - path: dynamic/files/pictures/picture-logotype-ru.svg
+    - path: dynamic/files/pictures/picture-logotype-ru.svgd
     - url: /ru
     - attributes
       - 0
@@ -414,18 +414,18 @@ instances
           weight: +0
           name: target
           value: _blank
-- logotype_twitter|Instance
+- logotype_x|Instance
     entity_name: picture
     values
-    - id: logotype_twitter
-    - description: Logotype Twitter
-    - path: dynamic/files/pictures/picture-logotype_twitter.svgd
+    - id: logotype_x
+    - description: Logotype X
+    - path: dynamic/files/pictures/picture-logotype_x.svgd
     - url: https://twitter.com
     - attributes
       - 0
           weight: +0
           name: alt
-          value: Logotype Twitter
+          value: Logotype X
           is_apply_translation: true
     - link_attributes
       - 0
@@ -1044,7 +1044,7 @@ instances
     values
     - id: user
     - id_layout: original_classic
-    - title: User %%_nickname_page_context(nickname)
+    - title: User %%_page_arg_context(nickname|n/a)
     - url: /user/%%_nickname
     - lang_code: en
     - is_https: 1
@@ -1105,7 +1105,7 @@ instances
     values
     - id: user_edit
     - id_layout: original_classic
-    - title: Edit user %%_nickname_page_context(nickname)
+    - title: Edit user %%_page_arg_context(nickname|n/a)
     - url: /user/%%_nickname/edit
     - lang_code: en
     - is_https: 1
@@ -1355,7 +1355,7 @@ instances
             title: Социальные сети
             title_is_visible: false
             attributes
-            - data-id: block__selection__social_networks
+            - data-id: block__selection_sql__social_networks
             - data-style: at-right
         - block__text_sql__copyright_ru|Block_preset_link
             id: block__text_sql__copyright_ru
@@ -1682,7 +1682,7 @@ instances
     values
     - id: user_ru
     - id_layout: original_classic
-    - title: Пользователь %%_nickname_page_context(nickname)
+    - title: Пользователь %%_page_arg_context(nickname|n/a)
     - url: /ru/user/%%_nickname
     - lang_code: ru
     - is_https: 1
@@ -1748,7 +1748,7 @@ instances
     values
     - id: user_edit_ru
     - id_layout: original_classic
-    - title: Редактировать пользователя %%_nickname_page_context(nickname)
+    - title: Редактировать пользователя %%_page_arg_context(nickname|n/a)
     - url: /ru/user/%%_nickname/edit
     - lang_code: ru
     - is_https: 1
@@ -2430,7 +2430,7 @@ instances
         - nickname_!v|Text
             is_apply_translation: false
             is_apply_tokens: true
-            text: %%_nickname_page_context(nickname)
+            text: %%_page_arg_context(nickname|n/a)
       - limit: 1
     - fields
       - main
@@ -2560,7 +2560,7 @@ instances
             - id_!f: id
             - id_in_begin_operator: in (
             - id_in_!v
-              - 0: logotype_twitter
+              - 0: logotype_x
               - 1: logotype_facebook
               - 2: logotype_instagram
             - id_in_end_operator: )

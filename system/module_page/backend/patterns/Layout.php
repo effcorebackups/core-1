@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -12,6 +12,8 @@ class Layout extends Node implements has_Data_cache {
 
     public $id;
     public $title;
+    public $is_manageable = false;
+    public $states = [];
 
     function render_self() {
         return '';
@@ -62,6 +64,16 @@ class Layout extends Node implements has_Data_cache {
                static::$cache[$id] =
                static::$cache[$id]->load_from_nosql_storage();
         return static::$cache[$id];
+    }
+
+    static function changes_store($module_id, $layout_id, $states = []) {
+        $result = true;
+        foreach ($states as $c_state) {
+            if ($c_state !== null) $result&= Storage::get('data')->changes_register  ($module_id, 'update', 'layouts/'.$module_id.'/'.$layout_id.'/states', $states, false);
+            if ($c_state === null) $result&= Storage::get('data')->changes_unregister($module_id, 'update', 'layouts/'.$module_id.'/'.$layout_id.'/states', null   , false);
+        }
+        $result&= Storage_Data::cache_update();
+        return $result;
     }
 
 }

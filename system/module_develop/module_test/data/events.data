@@ -16,6 +16,10 @@ events
       for: test
       handler: \effcore\modules\test\Events_Module::on_disable
   # ═════════════════════════════════════════════════════════════════════
+  on_form_build
+  - test|Event
+      for: test
+      handler: \effcore\modules\test\Events_Form_Test::on_build
   on_form_init
   - test|Event
       for: test

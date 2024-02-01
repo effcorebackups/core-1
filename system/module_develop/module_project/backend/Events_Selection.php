@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\project;
@@ -18,7 +18,7 @@ abstract class Events_Selection {
             if ($c_instance->path) {
                 $file = new File($c_instance->path);
                 return new Markup('a', ['href' => new Text(
-                    '%%_request_scheme://%%_request_host/'.$c_instance->path, [], false, true)
+                    '%%_request(scheme)://%%_request(host)/'.$c_instance->path, [], false, true)
                 ], new Text_simple($file->file_get()));
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'path']);

@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore\modules\menu;
@@ -13,6 +13,7 @@ use effcore\Message;
 use effcore\Node;
 use effcore\Page;
 use effcore\Request;
+use effcore\Security;
 use effcore\Text;
 use effcore\Tree;
 use effcore\Url;
@@ -58,7 +59,9 @@ abstract class Events_Form_Instance_select_multiple {
             $entity = Entity::get($form->entity_name);
             if ($entity->name === 'tree_item') {
                 $items['#actions']->disabled_set();
-                $items[ '~apply' ]->disabled_set(count($form->_selection->_instances) === 0);
+                $items[ '~apply' ]->disabled_set(
+                    count($form->_selection->_instances) === 0
+                );
             }
         }
     }
@@ -76,15 +79,13 @@ abstract class Events_Form_Instance_select_multiple {
                             'id_tree_operator' => '=',
                             'id_tree_!v'       => $form->category_id]], 'id');
                     foreach ($tree_items as $c_item) {
-                        $c_new_parent = Request::value_get('parent-'.$c_item->id) ?: null;
                         $c_new_weight = Request::value_get('weight-'.$c_item->id) ?: '0';
-                        if ( ($c_new_parent === null || isset($tree_items[$c_new_parent])) &&
-                             ($c_new_weight ===              (string)(int)$c_new_weight) ) {
-                            if ($c_item->id_parent !== $c_new_parent ||
-                                $c_item->weight    !== $c_new_weight) {
+                        $c_new_parent = Request::value_get('parent-'.$c_item->id) ?: null;
+                        if (Security::validate_str_int($c_new_weight) && ($c_new_parent === null || isset($tree_items[$c_new_parent]))) {
+                            if ($c_item->id_parent !== $c_new_parent || $c_item->weight !== (int)$c_new_weight) {
                                 $c_item->id_parent  =  $c_new_parent;
                                 $c_item->weight     =  $c_new_weight;
-                                $c_item->title = html_entity_decode($c_item->title);
+                                $c_item->title      = html_entity_decode($c_item->title);
                                 $has_changes = true;
                                 $c_result = $c_item->update();
                                 if ($form->is_show_result_message && $c_result !== null) Message::insert(new Text('Item of type "%%_type" with ID = "%%_id" was changed.'    , ['type' => (new Text($entity->title))->render(), 'id' => $c_item->id])           );
@@ -97,8 +98,8 @@ abstract class Events_Form_Instance_select_multiple {
                             'You have not made any changes before!', 'warning'
                         );
                     }
-                    static::on_build(null, $form);
-                    static::on_init (null, $form, $items);
+                    $form->components_build();
+                    $form->components_init();
                 }
                 break;
             case 'insert':

@@ -1,0 +1,107 @@
+layouts
+- grid_custom|Layout
+    id: grid_custom
+    title: Grid custom
+    is_manageable: true
+    children
+    - system|Area
+        id: system
+    - header|Area
+        id: header
+        tag_name: header
+    - menu|Area
+        id: menu
+    - breadcrumbs|Area
+        id: breadcrumbs
+    - messages|Area
+        id: messages
+        render_weight: -500
+    - title|Area
+        id: title
+    - tabs|Area
+        id: tabs
+    - grid|Area_Grid
+        id: grid
+        col_count: 9
+        row_count: 9
+        render_weight: +500
+    - footer|Area
+        id: footer
+        tag_name: footer
+    states
+    - grid
+      - grid_w: 8
+      - grid_h: 9
+      - items
+        - 1-1
+          - w: 8
+          - h: 1
+          - weight: 80
+        - 1-2
+          - w: 2
+          - h: 7
+          - weight: 71
+        - 3-2
+          - w: 2
+          - h: 1
+          - weight: 69
+        - 5-2
+          - w: 2
+          - h: 1
+          - weight: 67
+        - 7-2
+          - w: 2
+          - h: 1
+          - weight: 65
+        - 3-3
+          - w: 2
+          - h: 1
+          - weight: 60
+        - 5-3
+          - w: 2
+          - h: 1
+          - weight: 58
+        - 7-3
+          - w: 2
+          - h: 1
+          - weight: 56
+        - 3-4
+          - w: 6
+          - h: 1
+          - weight: 51
+        - 3-5
+          - w: 6
+          - h: 1
+          - weight: 42
+        - 3-6
+          - w: 6
+          - h: 1
+          - weight: 33
+        - 3-7
+          - w: 2
+          - h: 1
+          - weight: 24
+        - 5-7
+          - w: 2
+          - h: 1
+          - weight: 22
+        - 7-7
+          - w: 2
+          - h: 1
+          - weight: 20
+        - 3-8
+          - w: 2
+          - h: 1
+          - weight: 15
+        - 5-8
+          - w: 2
+          - h: 1
+          - weight: 13
+        - 7-8
+          - w: 2
+          - h: 1
+          - weight: 11
+        - 1-9
+          - w: 8
+          - h: 1
+          - weight: 8

@@ -21,8 +21,8 @@
     </metadata>
 
     <g id="logo">
-        <rect x="0.5" y="0.5" width="219" height="63" style="fill-opacity: .1; stroke: black"/>
-        <path transform="matrix(1, 0, 0, 1, 62.5, 19.5)" style="fill: #a5a5a5" d="M 48.5 0 L 48.5 25 L 28.5 25 L 28.5 0 L 48.5 0 Z M 73.5 0 L 73.5 5 L 58.5 5 L 58.5 25 L 53.5 25 L 53.5 0 L 73.5 0 Z M 98.5 0 L 98.5 25 L 78.5 25 L 78.5 0 L 98.5 0 Z M 33.5 20 L 43.5 20 L 43.5 5 L 33.5 5 L 33.5 20 Z M 83.5 20 L 93.5 20 L 93.5 5 L 83.5 5 L 83.5 20 Z M 23.5 0 L 23.5 25 L 18.5 25 L 18.5 5 L 8.5 5 L 8.5 25 L 3.5 25 L 0 25 L 0 20 L 3.5 20 L 3.5 0 L 23.5 0 Z"/>
+        <rect width="220" height="64" style="fill: %%_color(main); fill-opacity: .2"/>
+        <path transform="matrix(1, 0, 0, 1, 62.5, 19.5)" style="fill: %%_color(main)" d="M 48.5 0 L 48.5 25 L 28.5 25 L 28.5 0 L 48.5 0 Z M 73.5 0 L 73.5 5 L 58.5 5 L 58.5 25 L 53.5 25 L 53.5 0 L 73.5 0 Z M 98.5 0 L 98.5 25 L 78.5 25 L 78.5 0 L 98.5 0 Z M 33.5 20 L 43.5 20 L 43.5 5 L 33.5 5 L 33.5 20 Z M 83.5 20 L 93.5 20 L 93.5 5 L 83.5 5 L 83.5 20 Z M 23.5 0 L 23.5 25 L 18.5 25 L 18.5 5 L 8.5 5 L 8.5 25 L 3.5 25 L 0 25 L 0 20 L 3.5 20 L 3.5 0 L 23.5 0 Z"/>
     </g>
 
 </svg>

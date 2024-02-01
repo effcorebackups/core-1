@@ -1,12 +1,11 @@
 layouts
 - original_classic|Layout
     id: original_classic
-    title: Original | profile "Classic"
+    title: Original
     children
-    - part_head|Area
+    - part_head|Area_group
         tag_name: x-part
-        attributes
-        - data-group-id: head
+        id: head
         children
         - wrapper|Area
             tag_name: x-wrapper
@@ -16,28 +15,25 @@ layouts
             - system|Area
                 id: system
             - header|Area
-                id: header
                 tag_name: header
+                id: header
             - menu|Area
                 id: menu
-    - part_body|Area
+    - part_body|Area_group
         tag_name: x-part
-        attributes
-        - data-group-id: body
+        id: body
         children
         - wrapper|Area
             tag_name: x-wrapper
             attributes
             - data-wrapper: true
             children
-            - content|Area
+            - content|Area_group
+                id: content
                 type: flex
-                attributes
-                - data-group-id: content
                 children
-                - left|Area
-                    attributes
-                    - data-group-id: left
+                - left|Area_group
+                    id: left
                     children
                     - breadcrumbs|Area
                         id: breadcrumbs
@@ -52,12 +48,11 @@ layouts
                         id: content
                         render_weight: +500
                 - right|Area
-                    id: right
                     tag_name: aside
-    - part_foot|Area
+                    id: right
+    - part_foot|Area_group
         tag_name: x-part
-        attributes
-        - data-group-id: foot
+        id: foot
         children
         - wrapper|Area
             tag_name: x-wrapper
@@ -65,5 +60,5 @@ layouts
             - data-wrapper: true
             children
             - footer|Area
-                id: footer
                 tag_name: footer
+                id: footer

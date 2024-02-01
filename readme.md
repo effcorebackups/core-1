@@ -19,7 +19,7 @@ General information
 
 **EFFCORE** — the next-generation mini-CMS (Content Management System)
 and mini-CMF (Content Management Framework).
-It was developed between 2016 and 2023.
+It was developed between 2016 and 2024.
 Uses technologies such as: HTML5, CSS3, IP v6, SVG, SMIL,
 UTF8, UTC, WAI-ARIA, NoSQL, Markdown, UML, Composer, Docker…
 
@@ -138,8 +138,8 @@ To work with the decoration in the administrative interface of the System,
 there is a section _Management → View_, which includes the following
 subsections:
 
-- _Colors → Current_: change the color of a specific element;
-- _Colors → Presets_: change the color of many elements at the same time;
+- _Colors → Management_: work with colors;
+- _Colors → Profiles_: work with color profiles;
 - _Layouts_: view available page layouts;
 - _Global CSS_: adding users CSS directives;
 - _Settings_: change the minimum and maximum width of all pages (this
@@ -209,7 +209,7 @@ Architecture
 The architecture is made according to the classic MVC scheme.
 Data is stored in SQL and NoSQL storages.
 Structured data uses SQL storage. For unstructured data (for example,
-forms, color presets, tests, module settings), NoSQL storage is used.
+forms, color profiles, tests, module settings), NoSQL storage is used.
 SQL and NoSQL are described in their respective sections.
 
 The System operates with two types of classes:
@@ -452,15 +452,15 @@ in such files or perform any other operation with their content.
 
 An example of variables that can be used in dynamic files:
 
-    %%_color__main
-    %%_color__main(10|10|10|.5)
-    %%_return_if_token_color_is_dark(color__text|#000|#fff)
-    %%_return_if_token(color__text|#fff|1|0)
+    %%_color(main)
+    %%_color(main|profile=dark|r=10|g=20|b=30|o=.5)
+    %%_return_if_scope_is_dark(text|#000|#fff)
+    %%_return_if_token(color\(text\)|#fff|1|0)
     %%_avatar_path
-    %%_page_width_min_context
-    %%_page_width_max_context
-    %%_request_scheme
-    %%_request_host
+    %%_page_width_min(context)
+    %%_page_width_max(context)
+    %%_request(scheme)
+    %%_request(host)
     %%_translation(simple string)
 
 In fact:

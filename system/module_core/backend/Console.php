@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -331,6 +331,15 @@ abstract class Console {
         foreach ($data as $c_title => $c_value)
             $result->child_insert(new Text($c_title.': '.$c_value.'; '), $c_title);
         return $result->render();
+    }
+
+    # ─────────────────────────────────────────────────────────────────────
+    # settings
+    # ─────────────────────────────────────────────────────────────────────
+
+    static function changes_store($visibility) {
+        if ($visibility !== null) return Storage::get('data')->changes_register  ('page', 'update', 'settings/page/console_visibility', $visibility);
+        if ($visibility === null) return Storage::get('data')->changes_unregister('page', 'update', 'settings/page/console_visibility');
     }
 
 }

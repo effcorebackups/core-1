@@ -104,7 +104,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -137,7 +137,7 @@ entities
             - title: Audio
             - max_file_size: 30M
             - upload_dir: audios/
-            - fixed_name: audio-%%_instance_id_context
+            - fixed_name: audio-%%_page_arg_context(instance_id)
             - weight: +340
     - cover_path
         title: Cover path
@@ -154,7 +154,7 @@ entities
             - title: Cover
             - max_file_size: 1M
             - upload_dir: audios/
-            - fixed_name: audio-%%_instance_id_context-cover
+            - fixed_name: audio-%%_page_arg_context(instance_id)-cover
             - thumbnails
               - =: small
               - =: middle
@@ -265,7 +265,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -299,7 +299,7 @@ entities
             class: \effcore\Widget_Files_multimedia
             properties
             - upload_dir: galleries/
-            - fixed_name: gallery-%%_instance_id_context-%%_item_id_context
+            - fixed_name: gallery-%%_page_arg_context(instance_id)-%%_item_id_context
             - name_complex: items
             - thumbnails
               - =: small
@@ -444,7 +444,7 @@ entities
             element_attributes
             - maxlength: 1024
             - required: null
-            - size: 60
+            - data-is-wide-field: true
     - url
         title: URL
         type: varchar
@@ -462,7 +462,7 @@ entities
             - weight: +340
             element_attributes
             - maxlength: 255
-            - size: 60
+            - data-is-wide-field: true
             element_attributes_on_insert
             - value: /some/address
     - is_https
@@ -709,7 +709,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -742,7 +742,7 @@ entities
             - title: Picture
             - max_file_size: 1M
             - upload_dir: pictures/
-            - fixed_name: picture-%%_instance_id_context
+            - fixed_name: picture-%%_page_arg_context(instance_id)
             - types_allowed
               - =: jpeg
               - =: jpg
@@ -788,7 +788,7 @@ entities
             element_attributes
             - maxlength: 2048
             - required: null
-            - size: 60
+            - data-is-wide-field: true
     - created
         title: Created
         type: datetime
@@ -895,7 +895,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -1040,7 +1040,7 @@ entities
             - weight: +380
             element_attributes
             - maxlength: 1024
-            - size: 60
+            - data-is-wide-field: true
     - attributes
         title: Attributes
         type: blob
@@ -1073,7 +1073,7 @@ entities
             - title: Video
             - max_file_size: 500M
             - upload_dir: videos/
-            - fixed_name: video-%%_instance_id_context
+            - fixed_name: video-%%_page_arg_context(instance_id)
             - weight: +340
     - poster_path
         title: Poster path
@@ -1090,7 +1090,7 @@ entities
             - title: Poster
             - max_file_size: 1M
             - upload_dir: videos/
-            - fixed_name: video-%%_instance_id_context-poster
+            - fixed_name: video-%%_page_arg_context(instance_id)-poster
             - thumbnails
               - =: small
               - =: middle

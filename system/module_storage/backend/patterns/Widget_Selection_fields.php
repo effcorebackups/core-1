@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -15,7 +15,9 @@ class Widget_Selection_fields extends Widget_Items {
     public $title = 'Fields';
     public $title__not_selected__widget_insert = '- select -';
     public $item_title = 'Field';
-    public $attributes = ['data-type' => 'items-entity_fields'];
+    public $attributes = [
+        'data-type' => 'items-entity_fields',
+        'data-with-settings' => true];
     public $name_complex = 'widget_selection_fields';
     public $_instance;
 
@@ -118,8 +120,8 @@ class Widget_Selection_fields extends Widget_Items {
             $widget_settings = new Widget_Selection_field_settings($widget, $item, $c_row_id);
             $widget_settings->build();
             # grouping of previous elements in widget 'manage'
-            $result->child_insert($info_markup    , 'info');
-            $result->child_insert($widget_settings, 'widget_settings');
+            $result->child_select('body')->child_insert($info_markup    , 'info');
+            $result->child_select('foot')->child_insert($widget_settings, 'widget_settings');
         }
         # handler markup
         if ($item->type === 'handler') {
@@ -131,8 +133,8 @@ class Widget_Selection_fields extends Widget_Items {
             $widget_settings = new Widget_Selection_field_settings($widget, $item, $c_row_id);
             $widget_settings->build();
             # grouping of previous elements in widget 'manage'
-            $result->child_insert($info_markup    , 'info');
-            $result->child_insert($widget_settings, 'widget_settings');
+            $result->child_select('body')->child_insert($info_markup    , 'info');
+            $result->child_select('foot')->child_insert($widget_settings, 'settings');
         }
         return $result;
     }
@@ -187,7 +189,7 @@ class Widget_Selection_fields extends Widget_Items {
                         $new_row_id = $field_info->entity_field_name;
                         if ($new_row_id === 'attributes') $new_row_id = 'this_attributes';
                         if (array_key_exists($new_row_id, $items)) {
-                            $new_row_id.= Core::numerical_suffix_generate(
+                            $new_row_id.= Core::generate_numerical_suffix(
                                 $new_row_id, array_keys($items)
                             );
                         }
@@ -218,7 +220,7 @@ class Widget_Selection_fields extends Widget_Items {
                     $new_item->weight = count($items) ? $min_weight - +5 : +0;
                     $new_row_id = $field_info->handler_row_id;
                     if (array_key_exists($new_row_id, $items)) {
-                        $new_row_id.= Core::numerical_suffix_generate(
+                        $new_row_id.= Core::generate_numerical_suffix(
                             $new_row_id, array_keys($items)
                         );
                     }

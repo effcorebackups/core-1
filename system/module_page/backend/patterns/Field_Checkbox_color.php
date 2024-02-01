@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################
-### Copyright © 2017—2023 Maxim Rysevets. All rights reserved. ###
+### Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ###
 ##################################################################
 
 namespace effcore;
@@ -12,20 +12,22 @@ class Field_Checkbox_color extends Field_Checkbox {
 
     public $title = 'Color';
     public $attributes = [
-        'data-type' => 'checkbox-color'
+        'data-type'      => 'checkbox-color',
+        'data-hex-value' => '#ffffff'
     ];
 
-    function color_set($color_id) {
-        $colors = Color::get_all();
-        $element = $this->child_select('element');
-        if (isset($colors[$color_id])) {
-            $element->attribute_insert('style', 'background-color: '.($colors[$color_id]->value_hex ?: '#ffffff'));
-            $element->attribute_insert('data-value',                          $color_id);
-        } else {
-            $this->checked_set(false);
-            $this->invalid_set(true);
-            $this->disabled_set(true);
+    function build($reset = false) {
+        if (!$this->is_builded || $reset) {
+            parent::build();
+            $element = $this->child_select('element');
+            $element->attribute_insert('style', 'background-color: '.$this->attribute_select('data-hex-value'));
+            $this->is_builded = true;
         }
+    }
+
+    function color_set($hex_value) {
+        $this->attributes['data-hex-value'] = $hex_value;
+        $this->build(true);
     }
 
 }
